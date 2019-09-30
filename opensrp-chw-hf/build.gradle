@@ -107,8 +107,11 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(path: ':opensrp-opd')
+
     implementation ('org.smartregister:opensrp-client-chw-core:1.0.0-SNAPSHOT@aar'){
         transitive = true
+        exclude group: 'com.github.lecho', module: 'hellocharts-android'
     }
 
     implementation 'com.android.support:appcompat-v7:28.0.0'

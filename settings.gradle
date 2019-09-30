@@ -1,1 +1,2 @@
-include ':opensrp-chw-hf'
+include ':opensrp-chw-hf' , ':opensrp-opd'
+project(":opensrp-opd").projectDir = new File("../opensrp-client-opd/opensrp-opd")

@@ -21,6 +21,7 @@ import org.smartregister.chw.core.loggers.CrashlyticsTree;
 import org.smartregister.chw.core.service.CoreAuthorizationService;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.FormUtils;
+import org.smartregister.chw.hf.activity.AllClientsRegisterActivity;
 import org.smartregister.chw.hf.activity.AncRegisterActivity;
 import org.smartregister.chw.hf.activity.ChildRegisterActivity;
 import org.smartregister.chw.hf.activity.FamilyProfileActivity;
@@ -31,6 +32,7 @@ import org.smartregister.chw.hf.activity.ReferralRegisterActivity;
 import org.smartregister.chw.hf.custom_view.HfNavigationMenu;
 import org.smartregister.chw.hf.job.HfJobCreator;
 import org.smartregister.chw.hf.model.NavigationModel;
+import org.smartregister.chw.hf.provider.HfAllClientsRegisterProvider;
 import org.smartregister.chw.hf.repository.HfChwRepository;
 import org.smartregister.chw.hf.repository.HfTaskRepository;
 import org.smartregister.chw.hf.sync.HfSyncConfiguration;
@@ -42,6 +44,8 @@ import org.smartregister.family.FamilyLibrary;
 import org.smartregister.family.domain.FamilyMetadata;
 import org.smartregister.immunization.ImmunizationLibrary;
 import org.smartregister.location.helper.LocationHelper;
+import org.smartregister.opd.OpdLibrary;
+import org.smartregister.opd.configuration.OpdConfiguration;
 import org.smartregister.receiver.SyncStatusBroadcastReceiver;
 import org.smartregister.reporting.ReportingLibrary;
 import org.smartregister.repository.AllSharedPreferences;
@@ -108,6 +112,11 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
         AncLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
         PncLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
         MalariaLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
+        //Needed for all clients register
+        OpdLibrary.init(context, getRepository(),
+                new OpdConfiguration.Builder(HfAllClientsRegisterProvider.class)
+                        .build()
+        );
         setOpenSRPUrl();
 
         Configuration configuration = getApplicationContext().getResources().getConfiguration();
@@ -162,7 +171,7 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
         registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.CHILD_REGISTER_ACTIVITY, ChildRegisterActivity.class);
         registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.PNC_REGISTER_ACTIVITY, PncRegisterActivity.class);
         registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.REFERRALS_REGISTER_ACTIVITY, ReferralRegisterActivity.class);
-        //registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.MALARIA_REGISTER_ACTIVITY, FamilyRegisterActivity.class);
+        registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.ALL_CLIENTS_REGISTERED_ACTIVITY, AllClientsRegisterActivity.class);
         return registeredActivities;
     }
 
