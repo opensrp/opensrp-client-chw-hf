@@ -29,7 +29,7 @@
             android:name="org.smartregister.family.activity.FamilyWizardFormActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:theme="@style/FamilyTheme.NoActionBar"
+            android:theme="@style/HFTheme.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
 
         <activity
@@ -52,7 +52,7 @@
             android:name=".activity.FamilyOtherMemberProfileActivity"
             android:label="@string/title_family_detail"
             android:parentActivityName=".activity.FamilyRegisterActivity"
-            android:theme="@style/FamilyTheme.NoActionBar">
+            android:theme="@style/HFTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.FamilyProfileActivity" />
