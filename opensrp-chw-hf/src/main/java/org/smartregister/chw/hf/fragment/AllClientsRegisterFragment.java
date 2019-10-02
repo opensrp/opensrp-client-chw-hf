@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 
 import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
+import org.smartregister.chw.hf.dao.HfDao;
 import org.smartregister.chw.hf.provider.HfAllClientsRegisterProvider;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.cursoradapter.SmartRegisterQueryBuilder;
@@ -24,6 +25,8 @@ import org.smartregister.opd.utils.ConfigurationInstancesHelper;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+
+import timber.log.Timber;
 
 public class AllClientsRegisterFragment extends BaseOpdRegisterFragment {
 
@@ -74,8 +77,26 @@ public class AllClientsRegisterFragment extends BaseOpdRegisterFragment {
         return new CursorLoader(getActivity());
     }
 
+    @Override
+    public void countExecute() {
+        try {
+            clientAdapter.setTotalcount(getAllClientCount());
+            Timber.i("Total Register Count %d", clientAdapter.getTotalcount());
+
+            clientAdapter.setCurrentlimit(10);
+            clientAdapter.setCurrentoffset(0);
+        } catch (Exception e) {
+            Timber.e(e);
+        }
+    }
+
+    private int getAllClientCount() {
+        return HfDao.getAllClientsCount();
+    }
+
     @NotNull
     private Cursor getMergedCursor(List<Cursor> allClientCursors) {
+
         String childRegisterQuery = opdRegisterQueryProvider.getChildRegisterQuery().replace("%s", getObjectIds());
         Cursor childCursor = commonRepository().rawCustomQueryForAdapter(childRegisterQuery);
 
