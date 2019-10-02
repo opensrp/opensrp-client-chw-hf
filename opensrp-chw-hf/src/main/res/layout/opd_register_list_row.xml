@@ -118,7 +118,7 @@
                 android:layout_marginLeft="10dp"
                 android:paddingLeft="0dp"
                 android:paddingTop="7dp"
-                android:text="Lavington"
+                android:text=""
                 android:textColor="@color/light_grey_text"
                 android:textSize="@dimen/child_register_list_desc_size"
                 android:textStyle="bold"

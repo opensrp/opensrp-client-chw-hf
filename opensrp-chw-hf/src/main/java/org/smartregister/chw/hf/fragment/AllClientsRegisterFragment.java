@@ -85,7 +85,7 @@ public class AllClientsRegisterFragment extends BaseOpdRegisterFragment {
         String pncRegisterQuery = opdRegisterQueryProvider.getPNCRegisterQuery().replace("%s", getObjectIds());
         Cursor pncCursor = commonRepository().rawCustomQueryForAdapter(pncRegisterQuery);
 
-        allClientCursors.addAll(Arrays.asList(pncCursor));
+        allClientCursors.addAll(Arrays.asList(childCursor, ancCursor, pncCursor));
         return new MergeCursor(allClientCursors.toArray(new Cursor[0]));
     }
 
