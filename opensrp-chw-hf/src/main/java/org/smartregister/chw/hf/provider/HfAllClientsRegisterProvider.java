@@ -13,9 +13,9 @@ public class HfAllClientsRegisterProvider extends OpdRegisterQueryProviderContra
     @Override
     public String getObjectIdsQuery(@Nullable String filters) {
         if (TextUtils.isEmpty(filters)) {
-            return "SELECT object_id FROM (SELECT object_id, last_interacted_with FROM ec_child_search WHERE date_removed IS NULL) ORDER BY last_interacted_with";
+            return "SELECT object_id, last_interacted_with FROM (SELECT object_id, last_interacted_with FROM ec_family_member_search WHERE date_removed IS NULL) ORDER BY last_interacted_with DESC ";
         } else {
-            return "SELECT object_id FROM (SELECT object_id, last_interacted_with FROM ec_child_search WHERE date_removed IS NULL AND phrase MATCH '%s*') ORDER BY last_interacted_with";
+            return "SELECT object_id, last_interacted_with FROM (SELECT object_id, last_interacted_with FROM ec_family_member_search WHERE date_removed IS NULL) ORDER BY last_interacted_with DESC ";
         }
     }
 
@@ -32,6 +32,69 @@ public class HfAllClientsRegisterProvider extends OpdRegisterQueryProviderContra
     @NonNull
     @Override
     public String mainSelectWhereIDsIn() {
-        return "SELECT ec_child.id as _id, ec_child.relational_id as relationalid, ec_child.first_name, ec_child.last_name, ec_child.middle_name, ec_child.gender, ec_child.dob, 'Child' AS register_type FROM ec_child  WHERE is_closed IS 0 AND base_entity_id IN (%s)";
+        return "";
+    }
+
+    @NonNull
+    public String getChildRegisterQuery() {
+        return "SELECT ec_child.id            as _id,\n" +
+                "       ec_child.relational_id as relationalid,\n" +
+                "       ec_child.first_name,\n" +
+                "       ec_child.last_name,\n" +
+                "       ec_child.middle_name,\n" +
+                "       ec_child.gender,\n" +
+                "       ec_child.dob,\n" +
+                "       'Child'                AS register_type\n" +
+                "FROM ec_child\n" +
+                "WHERE is_closed IS 0\n" +
+                "  AND base_entity_id IN (%s)";
+    }
+
+
+    @NonNull
+    public String getANCRegisterQuery() {
+        return "SELECT ec_family_member.first_name,\n" +
+                "       ec_family_member.middle_name,\n" +
+                "       ec_family_member.last_name,\n" +
+                "       ec_family_member.gender,\n" +
+                "       ec_family_member.base_entity_id,\n" +
+                "       ec_family_member.dob,\n" +
+                "       ec_family_member.id            as _id,\n" +
+                "       'ANC'                          AS register_type,\n" +
+                "       ec_family_member.relational_id as relationalid,\n" +
+                "       ec_family.village_town         as home_address\n" +
+                "FROM ec_anc_register\n" +
+                "         inner join ec_family_member on ec_family_member.base_entity_id = ec_anc_register.base_entity_id\n" +
+                "         inner join ec_family on ec_family.base_entity_id = ec_family_member.relational_id\n" +
+                "where ec_family_member.date_removed is null\n" +
+                "  and ec_anc_register.is_closed is 0 AND  ec_family_member.base_entity_id IN (%s)";
+    }
+
+    @NonNull
+    public String getPNCRegisterQuery() {
+        return "SELECT ec_family_member.first_name,\n" +
+                "       ec_family_member.middle_name,\n" +
+                "       ec_family_member.last_name,\n" +
+                "       ec_family_member.gender,\n" +
+                "       ec_family_member.base_entity_id,\n" +
+                "       ec_family_member.id            as _id,\n" +
+                "       'PNC'                          AS register_type,\n" +
+                "       ec_family_member.relational_id as relationalid,\n" +
+                "       ec_family.village_town         as home_address\n" +
+                "FROM ec_pregnancy_outcome\n" +
+                "         inner join ec_family_member on ec_family_member.base_entity_id = ec_pregnancy_outcome.base_entity_id\n" +
+                "         inner join ec_family on ec_family.base_entity_id = ec_family_member.relational_id\n" +
+                "where ec_family_member.date_removed is null\n" +
+                "  and ec_pregnancy_outcome.is_closed is 0 AND ec_pregnancy_outcome.base_entity_id IN (%s)";
+    }
+
+    @NonNull
+    public String getFamilyPlanningRegisterQuery() {
+        return "";
+    }
+
+    @NonNull
+    public String getMalariaRegisterQuery() {
+        return "";
     }
 }
