@@ -66,85 +66,6 @@ import timber.log.Timber;
 public class HealthFacilityApplication extends CoreChwApplication implements CoreApplication {
 
     @Override
-    public void onCreate() {
-        super.onCreate();
-
-        mInstance = this;
-        context = Context.getInstance();
-        context.updateApplicationContext(getApplicationContext());
-        context.updateCommonFtsObject(createCommonFtsObject());
-
-        //init Job Manager
-        SyncStatusBroadcastReceiver.init(this);
-        JobManager.create(this).addJobCreator(new HfJobCreator());
-
-        //Necessary to determine the right form to pick from assets
-        CoreConstants.JSON_FORM.setLocaleAndAssetManager(HealthFacilityApplication.getCurrentLocale(),
-                HealthFacilityApplication.getInstance().getApplicationContext().getAssets());
-
-        //Setup Navigation menu. Done only once when app is created
-        NavigationMenu.setupNavigationMenu(this, new HfNavigationMenu(), new NavigationModel(),
-                getRegisteredActivities(), false);
-
-        if (BuildConfig.DEBUG) {
-            Timber.plant(new Timber.DebugTree());
-        } else {
-            Timber.plant(new CrashlyticsTree(this.context.allSharedPreferences().fetchRegisteredANM()));
-        }
-
-        Fabric.with(this, new Crashlytics.Builder().core(new CrashlyticsCore.Builder()
-                .disabled(BuildConfig.DEBUG).build()).build());
-
-        // init json helper
-        this.jsonSpecHelper = new JsonSpecHelper(this);
-
-        //Initialize Peer to peer modules
-        P2POptions p2POptions = new P2POptions(true);
-        p2POptions.setAuthorizationService(new CoreAuthorizationService());
-
-        // init libraries
-        CoreLibrary.init(context, new HfSyncConfiguration(), BuildConfig.BUILD_TIMESTAMP, p2POptions);
-        ConfigurableViewsLibrary.init(context, getRepository());
-        FamilyLibrary.init(context, getRepository(), getMetadata(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
-        ImmunizationLibrary.init(context, getRepository(), null, BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
-        LocationHelper.init(new ArrayList<>(Arrays.asList(BuildConfig.ALLOWED_LOCATION_LEVELS)), BuildConfig.DEFAULT_LOCATION);
-        ReportingLibrary.init(context, getRepository(), null, BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
-        AncLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
-        PncLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
-        MalariaLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
-        //Needed for all clients register
-        OpdLibrary.init(context, getRepository(),
-                new OpdConfiguration.Builder(HfAllClientsRegisterProvider.class)
-                        .build()
-        );
-        setOpenSRPUrl();
-
-        Configuration configuration = getApplicationContext().getResources().getConfiguration();
-        String language;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            language = configuration.getLocales().get(0).getLanguage();
-        } else {
-            language = configuration.locale.getLanguage();
-        }
-
-        if (language.equals(Locale.FRENCH.getLanguage())) {
-            saveLanguage(Locale.FRENCH.getLanguage());
-        }
-    }
-
-    @Override
-    public void logoutCurrentUser() {
-        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.addCategory(Intent.CATEGORY_HOME);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        getApplicationContext().startActivity(intent);
-        context.userService().logoutSession();
-        Timber.i("Logged out user %s", getContext().allSharedPreferences().fetchRegisteredANM());
-    }
-
-    @Override
     public FamilyMetadata getMetadata() {
         return FormUtils.getFamilyMetadata(new FamilyProfileActivity(), getDefaultLocationLevel(), getFacilityHierarchy(), getFamilyLocationFields());
     }
@@ -202,5 +123,85 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
             taskRepository = new HfTaskRepository(getRepository(), new TaskNotesRepository(getRepository()));
         }
         return taskRepository;
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+        mInstance = this;
+        context = Context.getInstance();
+        context.updateApplicationContext(getApplicationContext());
+        context.updateCommonFtsObject(createCommonFtsObject());
+
+        //init Job Manager
+        SyncStatusBroadcastReceiver.init(this);
+        JobManager.create(this).addJobCreator(new HfJobCreator());
+
+        //Necessary to determine the right form to pick from assets
+        CoreConstants.JSON_FORM.setLocaleAndAssetManager(HealthFacilityApplication.getCurrentLocale(),
+                HealthFacilityApplication.getInstance().getApplicationContext().getAssets());
+
+        //Setup Navigation menu. Done only once when app is created
+        NavigationMenu.setupNavigationMenu(this, new HfNavigationMenu(), new NavigationModel(),
+                getRegisteredActivities(), false);
+
+        if (BuildConfig.DEBUG) {
+            Timber.plant(new Timber.DebugTree());
+        } else {
+            Timber.plant(new CrashlyticsTree(this.context.allSharedPreferences().fetchRegisteredANM()));
+        }
+
+        Fabric.with(this, new Crashlytics.Builder().core(new CrashlyticsCore.Builder()
+                .disabled(BuildConfig.DEBUG).build()).build());
+
+        // init json helper
+        this.jsonSpecHelper = new JsonSpecHelper(this);
+
+        //Initialize Peer to peer modules
+        P2POptions p2POptions = new P2POptions(true);
+        p2POptions.setAuthorizationService(new CoreAuthorizationService());
+
+        // init libraries
+        CoreLibrary.init(context, new HfSyncConfiguration(), BuildConfig.BUILD_TIMESTAMP, p2POptions);
+        ConfigurableViewsLibrary.init(context, getRepository());
+        FamilyLibrary.init(context, getRepository(), getMetadata(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
+        ImmunizationLibrary.init(context, getRepository(), null, BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
+        LocationHelper.init(new ArrayList<>(Arrays.asList(BuildConfig.ALLOWED_LOCATION_LEVELS)), BuildConfig.DEFAULT_LOCATION);
+        ReportingLibrary.init(context, getRepository(), null, BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
+        AncLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
+        PncLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
+        MalariaLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
+        //Needed for all clients register
+        OpdLibrary.init(context, getRepository(),
+                new OpdConfiguration.Builder(HfAllClientsRegisterProvider.class)
+                        .build(),
+                BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION
+        );
+        setOpenSRPUrl();
+
+        Configuration configuration = getApplicationContext().getResources().getConfiguration();
+        String language;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            language = configuration.getLocales().get(0).getLanguage();
+        } else {
+            language = configuration.locale.getLanguage();
+        }
+
+        if (language.equals(Locale.FRENCH.getLanguage())) {
+            saveLanguage(Locale.FRENCH.getLanguage());
+        }
+    }
+
+    @Override
+    public void logoutCurrentUser() {
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        getApplicationContext().startActivity(intent);
+        context.userService().logoutSession();
+        Timber.i("Logged out user %s", getContext().allSharedPreferences().fetchRegisteredANM());
     }
 }
