@@ -12,11 +12,8 @@ import android.widget.TextView;
 
 import org.smartregister.chw.core.custom_views.NavigationMenu;
 import org.smartregister.chw.hf.R;
-import org.smartregister.chw.hf.provider.HfAllClientsRegisterProvider;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
-import org.smartregister.cursoradapter.RecyclerViewPaginatedAdapter;
 import org.smartregister.opd.fragment.BaseOpdRegisterFragment;
-import org.smartregister.opd.provider.OpdRegisterProvider;
 import org.smartregister.view.customcontrols.CustomFontTextView;
 
 public class AllClientsRegisterFragment extends BaseOpdRegisterFragment {
@@ -26,7 +23,6 @@ public class AllClientsRegisterFragment extends BaseOpdRegisterFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return super.onCreateView(inflater, container, savedInstanceState);
-
     }
 
     @Override
@@ -74,14 +70,6 @@ public class AllClientsRegisterFragment extends BaseOpdRegisterFragment {
                 normalFilter(dueOnlyLayout);
             }
         }
-    }
-
-    @Override
-    public void initializeAdapter() {
-        OpdRegisterProvider childRegisterProvider = new HfAllClientsRegisterProvider(getActivity(), registerActionHandler, paginationViewHandler);
-        clientAdapter = new RecyclerViewPaginatedAdapter(null, childRegisterProvider, context().commonrepository(this.tablename));
-        clientAdapter.setCurrentlimit(20);
-        clientsView.setAdapter(clientAdapter);
     }
 
     private void normalFilter(View dueOnlyLayout) {
