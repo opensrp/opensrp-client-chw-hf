@@ -1,5 +1,7 @@
 package org.smartregister.chw.hf.activity;
 
+import android.content.Intent;
+
 import org.smartregister.chw.core.activity.BaseReferralRegister;
 import org.smartregister.chw.core.presenter.BaseRefererralPresenter;
 import org.smartregister.chw.hf.fragment.ReferralRegisterFragment;
@@ -21,6 +23,13 @@ public class ReferralRegisterActivity extends BaseReferralRegister {
     @Override
     protected BaseRegisterFragment getRegisterFragment() {
         return new ReferralRegisterFragment();
+    }
+
+    @Override
+    public void switchToBaseFragment() {
+        Intent intent = new Intent(this, FamilyRegisterActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     @Override

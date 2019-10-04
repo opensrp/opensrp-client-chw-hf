@@ -112,7 +112,7 @@ dependencies {
         transitive = true
     }
 
-    implementation ('org.smartregister:opensrp-client-opd:0.13.3-SNAPSHOT@aar'){
+    implementation ('org.smartregister:opensrp-client-opd:0.0.30-SNAPSHOT@aar'){
         transitive = true
         exclude group: 'com.github.lecho', module: 'hellocharts-android'
     }

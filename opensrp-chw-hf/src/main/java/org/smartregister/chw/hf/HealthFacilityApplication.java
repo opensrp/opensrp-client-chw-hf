@@ -29,10 +29,11 @@ import org.smartregister.chw.hf.activity.FamilyRegisterActivity;
 import org.smartregister.chw.hf.activity.LoginActivity;
 import org.smartregister.chw.hf.activity.PncRegisterActivity;
 import org.smartregister.chw.hf.activity.ReferralRegisterActivity;
+import org.smartregister.chw.hf.configs.AllClientsRegisterRowOptions;
 import org.smartregister.chw.hf.custom_view.HfNavigationMenu;
 import org.smartregister.chw.hf.job.HfJobCreator;
 import org.smartregister.chw.hf.model.NavigationModel;
-import org.smartregister.chw.hf.provider.HfAllClientsRegisterProvider;
+import org.smartregister.chw.hf.provider.HfAllClientsRegisterQueryProvider;
 import org.smartregister.chw.hf.repository.HfChwRepository;
 import org.smartregister.chw.hf.repository.HfTaskRepository;
 import org.smartregister.chw.hf.sync.HfSyncConfiguration;
@@ -174,7 +175,9 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
         MalariaLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
         //Needed for all clients register
         OpdLibrary.init(context, getRepository(),
-                new OpdConfiguration.Builder(HfAllClientsRegisterProvider.class)
+                new OpdConfiguration.Builder(HfAllClientsRegisterQueryProvider.class)
+                        .setBottomNavigationEnabled(true)
+                        .setOpdRegisterRowOptions(AllClientsRegisterRowOptions.class)
                         .build(),
                 BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION
         );

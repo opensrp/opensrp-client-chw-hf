@@ -4,6 +4,7 @@ import net.sqlcipher.Cursor;
 
 import org.smartregister.chw.core.utils.ChwDBConstants;
 import org.smartregister.chw.core.utils.CoreConstants;
+import org.smartregister.chw.hf.utils.HfReferralUtils;
 import org.smartregister.domain.Task;
 import org.smartregister.repository.Repository;
 import org.smartregister.repository.TaskNotesRepository;
@@ -12,6 +13,7 @@ import org.smartregister.repository.TaskRepository;
 import timber.log.Timber;
 
 public class HfTaskRepository extends TaskRepository {
+
     public HfTaskRepository(Repository repository, TaskNotesRepository taskNotesRepository) {
         super(repository, taskNotesRepository);
     }
