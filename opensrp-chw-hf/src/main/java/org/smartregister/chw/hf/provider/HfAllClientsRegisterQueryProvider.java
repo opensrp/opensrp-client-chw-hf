@@ -12,9 +12,19 @@ public class HfAllClientsRegisterQueryProvider extends OpdRegisterQueryProviderC
     @Override
     public String getObjectIdsQuery(@Nullable String filters) {
         if (TextUtils.isEmpty(filters)) {
-            return "SELECT object_id, last_interacted_with FROM (SELECT object_id, last_interacted_with FROM ec_family_member_search WHERE date_removed IS NULL) ORDER BY last_interacted_with DESC ";
+            return "SELECT object_id, last_interacted_with\n" +
+                    "FROM (SELECT object_id, last_interacted_with FROM ec_family_member_search WHERE date_removed IS NULL)\n" +
+                    "ORDER BY last_interacted_with DESC;";
         } else {
-            return "SELECT object_id, last_interacted_with FROM (SELECT object_id, last_interacted_with FROM ec_family_member_search WHERE date_removed IS NULL) ORDER BY last_interacted_with DESC ";
+            String query = "SELECT object_id\n" +
+                    "FROM (SELECT object_id, last_interacted_with\n" +
+                    "      FROM ec_family_member_search\n" +
+                    "      WHERE date_removed IS NULL\n" +
+                    "        AND phrase MATCH '%s*'\n" +
+                    "     )\n" +
+                    "ORDER BY last_interacted_with DESC;";
+            query = query.replace("%s", filters);
+            return query;
         }
     }
 

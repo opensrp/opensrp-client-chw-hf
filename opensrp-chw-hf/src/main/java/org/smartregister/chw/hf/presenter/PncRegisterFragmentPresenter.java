@@ -1,6 +1,7 @@
 package org.smartregister.chw.hf.presenter;
 
 import org.smartregister.chw.anc.contract.BaseAncRegisterFragmentContract;
+import org.smartregister.chw.hf.R;
 import org.smartregister.chw.pnc.presenter.BasePncRegisterFragmentPresenter;
 
 public class PncRegisterFragmentPresenter extends BasePncRegisterFragmentPresenter {
@@ -12,7 +13,7 @@ public class PncRegisterFragmentPresenter extends BasePncRegisterFragmentPresent
     public void processViewConfigurations() {
         super.processViewConfigurations();
         if (config.getSearchBarText() != null && getView() != null) {
-            getView().updateSearchBarHint(getView().getContext().getString(org.smartregister.chw.core.R.string.search_name_or_id));
+            getView().updateSearchBarHint(getView().getContext().getString(R.string.search_name_or_id));
         }
     }
 }
