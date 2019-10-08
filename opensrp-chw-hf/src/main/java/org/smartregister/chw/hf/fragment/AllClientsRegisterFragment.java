@@ -12,12 +12,18 @@ import android.widget.TextView;
 
 import org.smartregister.chw.core.custom_views.NavigationMenu;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.dao.FamilyDao;
+import org.smartregister.chw.hf.model.FamilyDetailsModel;
+import org.smartregister.chw.hf.utils.AllClientsUtils;
+import org.smartregister.chw.hf.utils.HfReferralUtils;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.opd.fragment.BaseOpdRegisterFragment;
 import org.smartregister.view.customcontrols.CustomFontTextView;
 
 public class AllClientsRegisterFragment extends BaseOpdRegisterFragment {
+
     private static final Object DUE_FILTER_TAG = "PRESSED";
+    private View view;
 
     @Nullable
     @Override
@@ -28,6 +34,7 @@ public class AllClientsRegisterFragment extends BaseOpdRegisterFragment {
     @Override
     public void setupViews(View view) {
         super.setupViews(view);
+        this.view = view;
         Toolbar toolbar = view.findViewById(org.smartregister.R.id.register_toolbar);
         toolbar.setContentInsetsAbsolute(0, 0);
         toolbar.setContentInsetsRelative(0, 0);
@@ -57,8 +64,46 @@ public class AllClientsRegisterFragment extends BaseOpdRegisterFragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        Toolbar toolbar = view.findViewById(R.id.register_toolbar);
+        toolbar.setContentInsetsAbsolute(0, 0);
+        toolbar.setContentInsetsRelative(0, 0);
+        toolbar.setContentInsetStartWithNavigation(0);
+        NavigationMenu.getInstance(getActivity(), null, toolbar);
+    }
+
+    @Override
     protected void goToClientDetailActivity(@NonNull CommonPersonObjectClient commonPersonObjectClient) {
-        //TODO go to client profile from All Clients register
+
+        String registerType = commonPersonObjectClient.getDetails().get(HfReferralUtils.REGISTER_TYPE);
+
+        Bundle bundle = new Bundle();
+        FamilyDetailsModel familyDetailsModel = FamilyDao.getFamilyDetail(commonPersonObjectClient.entityId());
+        bundle.putString(org.smartregister.family.util.Constants.INTENT_KEY.FAMILY_BASE_ENTITY_ID, familyDetailsModel.getBaseEntityId());
+        bundle.putString(org.smartregister.family.util.Constants.INTENT_KEY.FAMILY_HEAD, familyDetailsModel.getFamilyHead());
+        bundle.putString(org.smartregister.family.util.Constants.INTENT_KEY.PRIMARY_CAREGIVER, familyDetailsModel.getPrimaryCareGiver());
+        bundle.putString(org.smartregister.family.util.Constants.INTENT_KEY.FAMILY_NAME, familyDetailsModel.getFamilyName());
+
+        if (registerType != null) {
+            switch (registerType) {
+                case "Child":
+                    AllClientsUtils.goToChildProfile(this.getActivity(), commonPersonObjectClient, bundle);
+                    break;
+                case "ANC":
+                case "PNC":
+                case "Malaria":
+                    AllClientsUtils.goToAdultMemberProfile(this.getActivity(), commonPersonObjectClient, bundle);
+                    break;
+                default:
+                    AllClientsUtils.goToOtherMemberProfile(this.getActivity(), commonPersonObjectClient, bundle,
+                            familyDetailsModel.getFamilyHead(), familyDetailsModel.getPrimaryCareGiver());
+                    break;
+            }
+        } else {
+            AllClientsUtils.goToOtherMemberProfile(this.getActivity(), commonPersonObjectClient, bundle,
+                    familyDetailsModel.getFamilyHead(), familyDetailsModel.getPrimaryCareGiver());
+        }
     }
 
     @Override

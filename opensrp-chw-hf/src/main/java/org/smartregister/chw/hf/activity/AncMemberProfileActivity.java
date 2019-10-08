@@ -102,10 +102,10 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
                     new CommonPersonObjectClient(commonPersonObject.getCaseId(), commonPersonObject.getDetails(), "");
             client.setColumnmaps(commonPersonObject.getColumnmaps());
 
-            // IndividualProfileRemoveActivity.startIndividualProfileActivity(AncMemberProfileActivity.this, client, memberObject.getFamilyBaseEntityId(), memberObject.getFamilyHead(), memberObject.getPrimaryCareGiver(), CoreAncRegisterActivity.class.getCanonicalName());
+            // IndividualProfileRemoveActivity.startIndividualProfileActivity(AncMemberProfileActivity.this, client, memberObject.getBaseEntityId(), memberObject.getFamilyHead(), memberObject.getPrimaryCareGiver(), CoreAncRegisterActivity.class.getCanonicalName());
             return true;
         } else if (itemId == org.smartregister.chw.core.R.id.action_pregnancy_out_come) {
-            // PncRegisterActivity.startAncRegistrationActivity(AncMemberProfileActivity.this, memberObject.getBaseEntityId(), null, CoreConstants.JSON_FORM.getPregnancyOutcome(), AncLibrary.getInstance().getUniqueIdRepository().getNextUniqueId().getOpenmrsId(), memberObject.getFamilyBaseEntityId(), memberObject.getFamilyName());
+            // PncRegisterActivity.startAncRegistrationActivity(AncMemberProfileActivity.this, memberObject.getBaseEntityId(), null, CoreConstants.JSON_FORM.getPregnancyOutcome(), AncLibrary.getInstance().getUniqueIdRepository().getNextUniqueId().getOpenmrsId(), memberObject.getBaseEntityId(), memberObject.getFamilyName());
             return true;
         }
         return super.onOptionsItemSelected(item);
