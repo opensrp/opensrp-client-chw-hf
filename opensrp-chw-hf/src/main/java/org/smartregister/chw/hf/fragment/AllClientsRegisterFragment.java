@@ -15,6 +15,7 @@ import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.dao.FamilyDao;
 import org.smartregister.chw.hf.model.FamilyDetailsModel;
 import org.smartregister.chw.hf.utils.AllClientsUtils;
+import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hf.utils.HfReferralUtils;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.opd.fragment.BaseOpdRegisterFragment;
@@ -87,12 +88,12 @@ public class AllClientsRegisterFragment extends BaseOpdRegisterFragment {
 
         if (registerType != null) {
             switch (registerType) {
-                case "Child":
+                case Constants.CHILD:
                     AllClientsUtils.goToChildProfile(this.getActivity(), commonPersonObjectClient, bundle);
                     break;
-                case "ANC":
-                case "PNC":
-                case "Malaria":
+                case Constants.ANC:
+                case Constants.PNC:
+                case Constants.MALARIA:
                     AllClientsUtils.goToAdultMemberProfile(this.getActivity(), commonPersonObjectClient, bundle);
                     break;
                 default:

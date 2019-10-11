@@ -85,12 +85,6 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     }
 
     @Override
-    public void setFamilyStatus(AlertStatus status) {
-        view_family_row.setVisibility(View.GONE);
-        rlFamilyServicesDue.setVisibility(View.GONE);
-    }
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         super.onOptionsItemSelected(item);
         int itemId = item.getItemId();
@@ -101,14 +95,17 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
             final CommonPersonObjectClient client =
                     new CommonPersonObjectClient(commonPersonObject.getCaseId(), commonPersonObject.getDetails(), "");
             client.setColumnmaps(commonPersonObject.getColumnmaps());
-
-            // IndividualProfileRemoveActivity.startIndividualProfileActivity(AncMemberProfileActivity.this, client, memberObject.getBaseEntityId(), memberObject.getFamilyHead(), memberObject.getPrimaryCareGiver(), CoreAncRegisterActivity.class.getCanonicalName());
             return true;
         } else if (itemId == org.smartregister.chw.core.R.id.action_pregnancy_out_come) {
-            // PncRegisterActivity.startAncRegistrationActivity(AncMemberProfileActivity.this, memberObject.getBaseEntityId(), null, CoreConstants.JSON_FORM.getPregnancyOutcome(), AncLibrary.getInstance().getUniqueIdRepository().getNextUniqueId().getOpenmrsId(), memberObject.getBaseEntityId(), memberObject.getFamilyName());
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void setFamilyStatus(AlertStatus status) {
+        view_family_row.setVisibility(View.GONE);
+        rlFamilyServicesDue.setVisibility(View.GONE);
     }
 
     @Override
@@ -223,7 +220,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
 
     @Override
     public void startFormActivity(JSONObject formJson) {
-        //Overridden
+        //Overridden but not used
     }
 
     @Override

@@ -24,12 +24,18 @@ public class AllClientsRegisterActivity extends BaseOpdRegisterActivity {
 
     @Override
     public void startFormActivity(JSONObject jsonObject) {
-        //Overridden
+        //Overridden from the extended abstract class - feature not required for HF app
     }
 
     @Override
     protected void onActivityResultExtended(int i, int i1, Intent intent) {
-        //Overridden
+        //Overridden from the extended abstract class - feature not required for HF app
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        NavigationMenu.getInstance(this, null, null);
     }
 
     @Override
@@ -45,6 +51,16 @@ public class AllClientsRegisterActivity extends BaseOpdRegisterActivity {
     }
 
     @Override
+    protected void onResumption() {
+        super.onResumption();
+        NavigationMenu menu = NavigationMenu.getInstance(this, null, null);
+        if (menu != null) {
+            menu.getNavigationAdapter()
+                    .setSelectedView(CoreConstants.DrawerMenu.ALL_CLIENTS);
+        }
+    }
+
+    @Override
     public void switchToBaseFragment() {
         Intent intent = new Intent(this, FamilyRegisterActivity.class);
         startActivity(intent);
@@ -53,22 +69,6 @@ public class AllClientsRegisterActivity extends BaseOpdRegisterActivity {
 
     @Override
     public void startRegistration() {
-        //Overridden
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        NavigationMenu.getInstance(this, null, null);
-    }
-
-    @Override
-    protected void onResumption() {
-        super.onResumption();
-        NavigationMenu menu = NavigationMenu.getInstance(this, null, null);
-        if (menu != null) {
-            menu.getNavigationAdapter()
-                    .setSelectedView(CoreConstants.DrawerMenu.ALL_CLIENTS);
-        }
+        //Overridden from the abstract class - registration feature not required for HF app
     }
 }

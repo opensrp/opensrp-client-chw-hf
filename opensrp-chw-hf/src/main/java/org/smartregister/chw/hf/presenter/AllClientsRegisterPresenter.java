@@ -12,21 +12,21 @@ public class AllClientsRegisterPresenter extends BaseOpdRegisterActivityPresente
 
     @Override
     public void onNoUniqueId() {
-        //Overridden
+        //Overridden from the abstract class - implementation not needed
     }
 
     @Override
     public void onUniqueIdFetched(Triple<String, String, String> triple, String s) {
-        //Overridden
+        //Overridden from the  abstract class - implementation not needed
     }
 
     @Override
     public void onRegistrationSaved(boolean b) {
-        //Overridden
+        //Overridden from the  abstract class - implementation not needed
     }
 
     @Override
     public void startForm(String s, String s1, String s2, String s3) {
-        //Overridden
+        //Overridden from the  abstract class - implementation not needed
     }
 }
