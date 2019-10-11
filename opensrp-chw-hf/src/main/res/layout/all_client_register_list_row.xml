@@ -197,7 +197,6 @@
         android:gravity="center"
         android:hapticFeedbackEnabled="true"
         android:paddingLeft="10dp"
-        android:paddingRight="10dp"
         android:src="@drawable/row_goto"
         android:textAllCaps="true"
         android:textAppearance="?android:textAppearanceSmall"
