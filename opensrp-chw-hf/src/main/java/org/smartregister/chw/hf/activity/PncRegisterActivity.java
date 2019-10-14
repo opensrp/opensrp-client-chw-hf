@@ -33,6 +33,13 @@ public class PncRegisterActivity extends CorePncRegisterActivity {
     }
 
     @Override
+    public void switchToBaseFragment() {
+        Intent intent = new Intent(this, FamilyRegisterActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
     protected Class<? extends CoreFamilyRegisterActivity> getFamilyRegisterActivity() {
         return FamilyRegisterActivity.class;
     }

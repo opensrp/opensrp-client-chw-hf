@@ -12,6 +12,7 @@ import org.smartregister.repository.TaskRepository;
 import timber.log.Timber;
 
 public class HfTaskRepository extends TaskRepository {
+
     public HfTaskRepository(Repository repository, TaskNotesRepository taskNotesRepository) {
         super(repository, taskNotesRepository);
     }

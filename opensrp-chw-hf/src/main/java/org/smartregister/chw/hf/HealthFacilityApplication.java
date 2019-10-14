@@ -21,16 +21,20 @@ import org.smartregister.chw.core.loggers.CrashlyticsTree;
 import org.smartregister.chw.core.service.CoreAuthorizationService;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.FormUtils;
+import org.smartregister.chw.hf.activity.AllClientsRegisterActivity;
 import org.smartregister.chw.hf.activity.AncRegisterActivity;
 import org.smartregister.chw.hf.activity.ChildRegisterActivity;
 import org.smartregister.chw.hf.activity.FamilyProfileActivity;
 import org.smartregister.chw.hf.activity.FamilyRegisterActivity;
 import org.smartregister.chw.hf.activity.LoginActivity;
+import org.smartregister.chw.hf.activity.MalariaRegisterActivity;
 import org.smartregister.chw.hf.activity.PncRegisterActivity;
 import org.smartregister.chw.hf.activity.ReferralRegisterActivity;
+import org.smartregister.chw.hf.configs.AllClientsRegisterRowOptions;
 import org.smartregister.chw.hf.custom_view.HfNavigationMenu;
 import org.smartregister.chw.hf.job.HfJobCreator;
 import org.smartregister.chw.hf.model.NavigationModel;
+import org.smartregister.chw.hf.provider.HfAllClientsRegisterQueryProvider;
 import org.smartregister.chw.hf.repository.HfChwRepository;
 import org.smartregister.chw.hf.repository.HfTaskRepository;
 import org.smartregister.chw.hf.sync.HfSyncConfiguration;
@@ -42,6 +46,8 @@ import org.smartregister.family.FamilyLibrary;
 import org.smartregister.family.domain.FamilyMetadata;
 import org.smartregister.immunization.ImmunizationLibrary;
 import org.smartregister.location.helper.LocationHelper;
+import org.smartregister.opd.OpdLibrary;
+import org.smartregister.opd.configuration.OpdConfiguration;
 import org.smartregister.receiver.SyncStatusBroadcastReceiver;
 import org.smartregister.reporting.ReportingLibrary;
 import org.smartregister.repository.AllSharedPreferences;
@@ -60,6 +66,67 @@ import io.fabric.sdk.android.Fabric;
 import timber.log.Timber;
 
 public class HealthFacilityApplication extends CoreChwApplication implements CoreApplication {
+
+    @Override
+    public FamilyMetadata getMetadata() {
+        return FormUtils.getFamilyMetadata(new FamilyProfileActivity(), getDefaultLocationLevel(), getFacilityHierarchy(), getFamilyLocationFields());
+    }
+
+    @Override
+    public ArrayList<String> getAllowedLocationLevels() {
+        return new ArrayList<>(Arrays.asList(BuildConfig.ALLOWED_LOCATION_LEVELS));
+    }
+
+    @Override
+    public ArrayList<String> getFacilityHierarchy() {
+        return new ArrayList<>(Arrays.asList(BuildConfig.LOCATION_HIERACHY));
+    }
+
+    @Override
+    public String getDefaultLocationLevel() {
+        return BuildConfig.DEFAULT_LOCATION;
+    }
+
+    public @NotNull Map<String, Class> getRegisteredActivities() {
+        Map<String, Class> registeredActivities = new HashMap<>();
+        registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.ANC_REGISTER_ACTIVITY, AncRegisterActivity.class);
+        registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.FAMILY_REGISTER_ACTIVITY, FamilyRegisterActivity.class);
+        registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.CHILD_REGISTER_ACTIVITY, ChildRegisterActivity.class);
+        registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.PNC_REGISTER_ACTIVITY, PncRegisterActivity.class);
+        registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.REFERRALS_REGISTER_ACTIVITY, ReferralRegisterActivity.class);
+        registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.ALL_CLIENTS_REGISTERED_ACTIVITY, AllClientsRegisterActivity.class);
+        registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.MALARIA_REGISTER_ACTIVITY, MalariaRegisterActivity.class);
+        return registeredActivities;
+    }
+
+    @Override
+    public Repository getRepository() {
+        try {
+            if (repository == null) {
+                repository = new HfChwRepository(getInstance().getApplicationContext(), context);
+            }
+        } catch (UnsatisfiedLinkError e) {
+            Timber.e(e);
+        }
+        return repository;
+    }
+
+    public void setOpenSRPUrl() {
+        AllSharedPreferences preferences = Utils.getAllSharedPreferences();
+        if (BuildConfig.DEBUG) {
+            preferences.savePreference(AllConstants.DRISHTI_BASE_URL, BuildConfig.opensrp_url_debug);
+        } else {
+            preferences.savePreference(AllConstants.DRISHTI_BASE_URL, BuildConfig.opensrp_url);
+        }
+    }
+
+    @Override
+    public TaskRepository getTaskRepository() {
+        if (taskRepository == null) {
+            taskRepository = new HfTaskRepository(getRepository(), new TaskNotesRepository(getRepository()));
+        }
+        return taskRepository;
+    }
 
     @Override
     public void onCreate() {
@@ -108,6 +175,14 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
         AncLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
         PncLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
         MalariaLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
+        //Needed for all clients register
+        OpdLibrary.init(context, getRepository(),
+                new OpdConfiguration.Builder(HfAllClientsRegisterQueryProvider.class)
+                        .setBottomNavigationEnabled(true)
+                        .setOpdRegisterRowOptions(AllClientsRegisterRowOptions.class)
+                        .build(),
+                BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION
+        );
         setOpenSRPUrl();
 
         Configuration configuration = getApplicationContext().getResources().getConfiguration();
@@ -133,65 +208,5 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
         getApplicationContext().startActivity(intent);
         context.userService().logoutSession();
         Timber.i("Logged out user %s", getContext().allSharedPreferences().fetchRegisteredANM());
-    }
-
-    @Override
-    public FamilyMetadata getMetadata() {
-        return FormUtils.getFamilyMetadata(new FamilyProfileActivity(), getDefaultLocationLevel(), getFacilityHierarchy(), getFamilyLocationFields());
-    }
-
-    @Override
-    public ArrayList<String> getAllowedLocationLevels() {
-        return new ArrayList<>(Arrays.asList(BuildConfig.ALLOWED_LOCATION_LEVELS));
-    }
-
-    @Override
-    public ArrayList<String> getFacilityHierarchy() {
-        return new ArrayList<>(Arrays.asList(BuildConfig.LOCATION_HIERACHY));
-    }
-
-    @Override
-    public String getDefaultLocationLevel() {
-        return BuildConfig.DEFAULT_LOCATION;
-    }
-
-    public @NotNull Map<String, Class> getRegisteredActivities() {
-        Map<String, Class> registeredActivities = new HashMap<>();
-        registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.ANC_REGISTER_ACTIVITY, AncRegisterActivity.class);
-        registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.FAMILY_REGISTER_ACTIVITY, FamilyRegisterActivity.class);
-        registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.CHILD_REGISTER_ACTIVITY, ChildRegisterActivity.class);
-        registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.PNC_REGISTER_ACTIVITY, PncRegisterActivity.class);
-        registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.REFERRALS_REGISTER_ACTIVITY, ReferralRegisterActivity.class);
-        //registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.MALARIA_REGISTER_ACTIVITY, FamilyRegisterActivity.class);
-        return registeredActivities;
-    }
-
-    @Override
-    public Repository getRepository() {
-        try {
-            if (repository == null) {
-                repository = new HfChwRepository(getInstance().getApplicationContext(), context);
-            }
-        } catch (UnsatisfiedLinkError e) {
-            Timber.e(e);
-        }
-        return repository;
-    }
-
-    public void setOpenSRPUrl() {
-        AllSharedPreferences preferences = Utils.getAllSharedPreferences();
-        if (BuildConfig.DEBUG) {
-            preferences.savePreference(AllConstants.DRISHTI_BASE_URL, BuildConfig.opensrp_url_debug);
-        } else {
-            preferences.savePreference(AllConstants.DRISHTI_BASE_URL, BuildConfig.opensrp_url);
-        }
-    }
-
-    @Override
-    public TaskRepository getTaskRepository() {
-        if (taskRepository == null) {
-            taskRepository = new HfTaskRepository(getRepository(), new TaskNotesRepository(getRepository()));
-        }
-        return taskRepository;
     }
 }

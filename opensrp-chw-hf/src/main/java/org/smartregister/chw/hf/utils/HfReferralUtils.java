@@ -3,6 +3,7 @@ package org.smartregister.chw.hf.utils;
 import android.view.View;
 import android.widget.TextView;
 
+import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.CoreReferralUtils;
 import org.smartregister.chw.core.utils.Utils;
 import org.smartregister.chw.hf.HealthFacilityApplication;
@@ -12,6 +13,8 @@ import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.domain.Task;
 
 public class HfReferralUtils extends CoreReferralUtils {
+
+    public static final String REGISTER_TYPE = "register_type";
 
     public static void displayReferralDay(CommonPersonObjectClient client, String referralType, TextView textViewReferralDay) {
         Task referralTask = getLatestClientReferralTask(client.entityId(), referralType);
@@ -43,5 +46,26 @@ public class HfReferralUtils extends CoreReferralUtils {
                         "  AND task.focus = '%f'\n" +
                         "  AND %t.is_closed is  '0'";
         return filterQuery.replace("%t", tableName).replace("%f", taskFocus);
+    }
+
+    public static String getTaskFocus(String registerType) {
+        String focus = Constants.OTHER;
+        if (registerType != null) {
+            switch (registerType) {
+                case Constants.CHILD:
+                    focus = CoreConstants.TASKS_FOCUS.SICK_CHILD;
+                    break;
+                case Constants.ANC:
+                    focus = CoreConstants.TASKS_FOCUS.ANC_DANGER_SIGNS;
+                    break;
+                case Constants.PNC:
+                    focus = CoreConstants.TASKS_FOCUS.PNC_DANGER_SIGNS;
+                    break;
+                default:
+                    focus = Constants.OTHER;
+                    break;
+            }
+        }
+        return focus;
     }
 }
