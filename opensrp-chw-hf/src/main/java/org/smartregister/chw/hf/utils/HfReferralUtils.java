@@ -32,4 +32,16 @@ public class HfReferralUtils extends CoreReferralUtils {
                 .getTaskRepository()).getLatestTaskByEntityId(baseEntityId, referralType);
 
     }
+
+    public static String getReferralDueFilter(String tableName, String taskFocus) {
+        String filterQuery =
+                "SELECT distinct (task.for)\n" +
+                "FROM task\n" +
+                "         INNER JOIN %t ON ec_child.base_entity_id = task.for\n" +
+                "WHERE task.business_status = 'Referred'\n" +
+                "  AND task.status = 'READY'\n" +
+                "  AND task.focus = '%f'\n" +
+                "  AND %t.date_removed is  null";
+        return filterQuery.replace("%t", tableName).replace("%f", taskFocus);
+    }
 }
