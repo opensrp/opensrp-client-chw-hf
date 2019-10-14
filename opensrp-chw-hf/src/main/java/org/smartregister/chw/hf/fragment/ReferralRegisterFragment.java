@@ -25,6 +25,7 @@ import java.util.Map;
 import timber.log.Timber;
 
 public class ReferralRegisterFragment extends BaseReferralRegisterFragment {
+
     public Handler handler = new Handler();
     private ReferralFragmentPresenter referralFragmentPresenter;
     private CommonPersonObjectClient commonPersonObjectClient;
