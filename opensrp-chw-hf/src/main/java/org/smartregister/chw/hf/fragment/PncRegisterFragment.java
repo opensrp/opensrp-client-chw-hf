@@ -17,7 +17,7 @@ public class PncRegisterFragment extends CorePncRegisterFragment {
 
     @Override
     public String getDueCondition() {
-        return " AND " + CoreConstants.TABLE_NAME.PNC_MEMBER + ".base_entity_id in ("
+        return CoreConstants.TABLE_NAME.PNC_MEMBER + ".base_entity_id in ("
                 + HfReferralUtils.getReferralDueFilter(CoreConstants.TABLE_NAME.PNC_MEMBER, CoreConstants.TASKS_FOCUS.PNC_DANGER_SIGNS)
                 + ")";
     }

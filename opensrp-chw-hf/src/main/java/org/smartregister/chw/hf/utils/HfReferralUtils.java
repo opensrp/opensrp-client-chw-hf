@@ -40,7 +40,7 @@ public class HfReferralUtils extends CoreReferralUtils {
         String filterQuery =
                 "SELECT distinct (task.for)\n" +
                         "FROM task\n" +
-                        "         INNER JOIN %t ON ec_child.base_entity_id = task.for\n" +
+                        "         INNER JOIN %t ON %t.base_entity_id = task.for\n" +
                         "WHERE task.business_status = 'Referred'\n" +
                         "  AND task.status = 'READY'\n" +
                         "  AND task.focus = '%f'\n" +
