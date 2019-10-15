@@ -3,6 +3,7 @@ package org.smartregister.chw.hf.utils;
 import android.view.View;
 import android.widget.TextView;
 
+import org.apache.commons.lang3.StringUtils;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.CoreReferralUtils;
 import org.smartregister.chw.core.utils.Utils;
@@ -11,6 +12,7 @@ import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.repository.HfTaskRepository;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.domain.Task;
+import org.smartregister.util.StringUtil;
 
 public class HfReferralUtils extends CoreReferralUtils {
 
@@ -37,15 +39,23 @@ public class HfReferralUtils extends CoreReferralUtils {
     }
 
     public static String getReferralDueFilter(String tableName, String taskFocus) {
-        String filterQuery =
-                "SELECT distinct (task.for)\n" +
-                        "FROM task\n" +
-                        "         INNER JOIN %t ON %t.base_entity_id = task.for\n" +
-                        "WHERE task.business_status = 'Referred'\n" +
-                        "  AND task.status = 'READY'\n" +
-                        "  AND task.focus = '%f'\n" +
-                        "  AND %t.is_closed is  '0'";
-        return filterQuery.replace("%t", tableName).replace("%f", taskFocus);
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(
+                " SELECT distinct (task.for) ")
+                .append(" FROM task ")
+                .append(" INNER JOIN %t ON %t.base_entity_id = task.for ")
+                .append(" WHERE task.business_status = 'Referred' ")
+                .append("  AND task.status = 'READY' ")
+                .append("  AND %t.is_closed is  '0' ");
+
+        if (taskFocus != null) {
+            stringBuilder.append("  AND task.focus = '%f'");
+        }
+        String filterQuery = stringBuilder.toString().replace("%t", tableName);
+        if (taskFocus != null) {
+            filterQuery = filterQuery.replace("%f", taskFocus);
+        }
+        return filterQuery;
     }
 
     public static String getTaskFocus(String registerType) {
