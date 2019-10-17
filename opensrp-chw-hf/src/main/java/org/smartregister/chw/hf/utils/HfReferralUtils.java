@@ -3,7 +3,6 @@ package org.smartregister.chw.hf.utils;
 import android.view.View;
 import android.widget.TextView;
 
-import org.apache.commons.lang3.StringUtils;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.CoreReferralUtils;
 import org.smartregister.chw.core.utils.Utils;
@@ -12,7 +11,6 @@ import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.repository.HfTaskRepository;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.domain.Task;
-import org.smartregister.util.StringUtil;
 
 public class HfReferralUtils extends CoreReferralUtils {
 
