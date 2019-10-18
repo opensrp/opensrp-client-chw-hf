@@ -24,7 +24,7 @@ import org.smartregister.view.customcontrols.CustomFontTextView;
 public class AllClientsRegisterFragment extends BaseOpdRegisterFragment {
 
     private static final Object DUE_FILTER_TAG = "PRESSED";
-    private View view;
+    private Toolbar toolbar;
 
     @Nullable
     @Override
@@ -35,8 +35,7 @@ public class AllClientsRegisterFragment extends BaseOpdRegisterFragment {
     @Override
     public void setupViews(View view) {
         super.setupViews(view);
-        this.view = view;
-        Toolbar toolbar = view.findViewById(org.smartregister.R.id.register_toolbar);
+        toolbar = view.findViewById(org.smartregister.R.id.register_toolbar);
         toolbar.setContentInsetsAbsolute(0, 0);
         toolbar.setContentInsetsRelative(0, 0);
         toolbar.setContentInsetStartWithNavigation(0);
@@ -56,7 +55,7 @@ public class AllClientsRegisterFragment extends BaseOpdRegisterFragment {
 
     @Override
     protected void startRegistration() {
-        //Overridden
+        //Implemented but not required for Health Facility app
     }
 
     @Override
@@ -67,10 +66,6 @@ public class AllClientsRegisterFragment extends BaseOpdRegisterFragment {
     @Override
     public void onResume() {
         super.onResume();
-        Toolbar toolbar = view.findViewById(R.id.register_toolbar);
-        toolbar.setContentInsetsAbsolute(0, 0);
-        toolbar.setContentInsetsRelative(0, 0);
-        toolbar.setContentInsetStartWithNavigation(0);
         NavigationMenu.getInstance(getActivity(), null, toolbar);
     }
 

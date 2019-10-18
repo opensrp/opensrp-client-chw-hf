@@ -1,7 +1,7 @@
 package org.smartregister.chw.hf.dao;
 
-import org.smartregister.chw.core.dao.AbstractDao;
 import org.smartregister.chw.hf.model.FamilyDetailsModel;
+import org.smartregister.dao.AbstractDao;
 
 import java.util.List;
 

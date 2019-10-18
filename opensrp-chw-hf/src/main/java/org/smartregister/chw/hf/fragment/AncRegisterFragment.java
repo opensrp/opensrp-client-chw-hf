@@ -10,6 +10,7 @@ import org.smartregister.chw.core.utils.Utils;
 import org.smartregister.chw.hf.activity.AncMemberProfileActivity;
 import org.smartregister.chw.hf.model.AncRegisterFragmentModel;
 import org.smartregister.chw.hf.provider.HfAncRegisterProvider;
+import org.smartregister.chw.hf.utils.HfReferralUtils;
 import org.smartregister.commonregistry.CommonPersonObject;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.commonregistry.CommonRepository;
@@ -52,6 +53,13 @@ public class AncRegisterFragment extends CoreAncRegisterFragment {
     @Override
     protected void openHomeVisit(CommonPersonObjectClient client) {
         //Not needed on HF
+    }
+
+    @Override
+    public String getDueCondition() {
+        return " AND " + CoreConstants.TABLE_NAME.ANC_MEMBER + ".base_entity_id in ("
+                + HfReferralUtils.getReferralDueFilter(CoreConstants.TABLE_NAME.ANC_MEMBER, CoreConstants.TASKS_FOCUS.ANC_DANGER_SIGNS)
+                + ")";
     }
 
     private Map<String, String> fetchCareGiverDetails(String careGiverId) {

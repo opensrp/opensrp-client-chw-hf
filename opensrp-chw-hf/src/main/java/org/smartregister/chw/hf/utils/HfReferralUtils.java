@@ -36,6 +36,26 @@ public class HfReferralUtils extends CoreReferralUtils {
 
     }
 
+    public static String getReferralDueFilter(String tableName, String taskFocus) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(
+                " SELECT distinct (task.for) ")
+                .append(" FROM task ")
+                .append(" INNER JOIN %t ON %t.base_entity_id = task.for ")
+                .append(" WHERE task.business_status = 'Referred' ")
+                .append("  AND task.status = 'READY' ")
+                .append("  AND %t.is_closed is  '0' ");
+
+        if (taskFocus != null) {
+            stringBuilder.append("  AND task.focus = '%f'");
+        }
+        String filterQuery = stringBuilder.toString().replace("%t", tableName);
+        if (taskFocus != null) {
+            filterQuery = filterQuery.replace("%f", taskFocus);
+        }
+        return filterQuery;
+    }
+
     public static String getTaskFocus(String registerType) {
         String focus = Constants.OTHER;
         if (registerType != null) {
