@@ -86,21 +86,6 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        super.onOptionsItemSelected(item);
-        int itemId = item.getItemId();
-        if (itemId == org.smartregister.chw.core.R.id.action_pregnancy_out_come) {
-            PncRegisterActivity.startAncRegistrationActivity(
-                    AncMemberProfileActivity.this, memberObject.getBaseEntityId(),
-                    null, CoreConstants.JSON_FORM.getPregnancyOutcome(),
-                    AncLibrary.getInstance().getUniqueIdRepository().getNextUniqueId().getOpenmrsId(),
-                    memberObject.getFamilyBaseEntityId(), memberObject.getFamilyName());
-            return true;
-        }
-        return true;
-    }
-
-    @Override
     public void setFamilyStatus(AlertStatus status) {
         view_family_row.setVisibility(View.GONE);
         rlFamilyServicesDue.setVisibility(View.GONE);
