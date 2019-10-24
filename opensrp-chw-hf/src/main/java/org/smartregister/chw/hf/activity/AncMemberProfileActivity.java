@@ -14,6 +14,7 @@ import android.widget.RelativeLayout;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.smartregister.chw.anc.AncLibrary;
 import org.smartregister.chw.anc.util.Constants;
 import org.smartregister.chw.anc.util.DBConstants;
 import org.smartregister.chw.anc.util.NCUtils;
@@ -88,18 +89,15 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         super.onOptionsItemSelected(item);
         int itemId = item.getItemId();
-        if (itemId == org.smartregister.chw.core.R.id.action_remove_member) {
-            CommonRepository commonRepository = Utils.context().commonrepository(Utils.metadata().familyMemberRegister.tableName);
-
-            final CommonPersonObject commonPersonObject = commonRepository.findByBaseEntityId(memberObject.getBaseEntityId());
-            final CommonPersonObjectClient client =
-                    new CommonPersonObjectClient(commonPersonObject.getCaseId(), commonPersonObject.getDetails(), "");
-            client.setColumnmaps(commonPersonObject.getColumnmaps());
-            return true;
-        } else if (itemId == org.smartregister.chw.core.R.id.action_pregnancy_out_come) {
+        if (itemId == org.smartregister.chw.core.R.id.action_pregnancy_out_come) {
+            PncRegisterActivity.startAncRegistrationActivity(
+                    AncMemberProfileActivity.this, memberObject.getBaseEntityId(),
+                    null, CoreConstants.JSON_FORM.getPregnancyOutcome(),
+                    AncLibrary.getInstance().getUniqueIdRepository().getNextUniqueId().getOpenmrsId(),
+                    memberObject.getFamilyBaseEntityId(), memberObject.getFamilyName());
             return true;
         }
-        return super.onOptionsItemSelected(item);
+        return true;
     }
 
     @Override
