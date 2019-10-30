@@ -108,7 +108,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation ('org.smartregister:opensrp-client-chw-core:1.0.18-SNAPSHOT@aar') {
+    implementation ('org.smartregister:opensrp-client-chw-core:1.0.19-SNAPSHOT@aar') {
         transitive = true
     }
 
