@@ -8,7 +8,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
 
@@ -27,9 +26,7 @@ import org.smartregister.chw.hf.adapter.ReferralCardViewAdapter;
 import org.smartregister.chw.hf.model.FamilyProfileModel;
 import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.commonregistry.AllCommonsRepository;
-import org.smartregister.commonregistry.CommonPersonObject;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
-import org.smartregister.commonregistry.CommonRepository;
 import org.smartregister.domain.AlertStatus;
 import org.smartregister.domain.Task;
 import org.smartregister.family.domain.FamilyEventClient;
@@ -82,24 +79,6 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     public void setUpComingServicesStatus(String service, AlertStatus status, Date date) {
         view_most_due_overdue_row.setVisibility(View.GONE);
         rlUpcomingServices.setVisibility(View.GONE);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        super.onOptionsItemSelected(item);
-        int itemId = item.getItemId();
-        if (itemId == org.smartregister.chw.core.R.id.action_remove_member) {
-            CommonRepository commonRepository = Utils.context().commonrepository(Utils.metadata().familyMemberRegister.tableName);
-
-            final CommonPersonObject commonPersonObject = commonRepository.findByBaseEntityId(memberObject.getBaseEntityId());
-            final CommonPersonObjectClient client =
-                    new CommonPersonObjectClient(commonPersonObject.getCaseId(), commonPersonObject.getDetails(), "");
-            client.setColumnmaps(commonPersonObject.getColumnmaps());
-            return true;
-        } else if (itemId == org.smartregister.chw.core.R.id.action_pregnancy_out_come) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
