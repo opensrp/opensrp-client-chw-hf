@@ -179,8 +179,7 @@
 
         <include
             android:id="@+id/record_visit_malaria"
-            layout="@layout/view_record_malaria"
-            android:visibility="gone" />
+            layout="@layout/view_record_malaria" />
 
         <include layout="@layout/content_malaria_profile" />
 
