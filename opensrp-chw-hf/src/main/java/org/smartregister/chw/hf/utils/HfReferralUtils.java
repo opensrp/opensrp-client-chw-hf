@@ -3,6 +3,9 @@ package org.smartregister.chw.hf.utils;
 import android.view.View;
 import android.widget.TextView;
 
+import org.joda.time.DateTime;
+import org.joda.time.Duration;
+import org.joda.time.Period;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.CoreReferralUtils;
 import org.smartregister.chw.core.utils.Utils;
@@ -11,6 +14,9 @@ import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.repository.HfTaskRepository;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.domain.Task;
+
+import java.util.Calendar;
+import java.util.Date;
 
 public class HfReferralUtils extends CoreReferralUtils {
 
@@ -21,12 +27,18 @@ public class HfReferralUtils extends CoreReferralUtils {
         if (referralTask.getExecutionStartDate() != null) {
             textViewReferralDay.setVisibility(View.VISIBLE);
             String referralDay = textViewReferralDay.getContext().getResources().getString(
-                    R.string.referral_day, Utils.formatReferralDuration(referralTask.getExecutionStartDate()
-                            , textViewReferralDay.getContext()));
+                    R.string.referral_day, getReferralPeriod(referralTask.getExecutionStartDate()));
             textViewReferralDay.setText(referralDay);
         } else {
             textViewReferralDay.setVisibility(View.GONE);
         }
+    }
+
+    private static String getReferralPeriod(DateTime executionStartDate) {
+        String standardDays = String.valueOf(new Duration(executionStartDate,
+                new DateTime(Calendar.getInstance().getTime())).abs().toStandardDays());
+
+        return standardDays.toLowerCase().replace("p", "");
     }
 
     private static Task getLatestClientReferralTask(String baseEntityId, String referralType) {
