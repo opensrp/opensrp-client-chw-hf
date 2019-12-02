@@ -5,10 +5,8 @@ import android.widget.TextView;
 
 import org.joda.time.DateTime;
 import org.joda.time.Duration;
-import org.joda.time.Period;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.CoreReferralUtils;
-import org.smartregister.chw.core.utils.Utils;
 import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.repository.HfTaskRepository;
@@ -16,7 +14,6 @@ import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.domain.Task;
 
 import java.util.Calendar;
-import java.util.Date;
 
 public class HfReferralUtils extends CoreReferralUtils {
 

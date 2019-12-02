@@ -2,7 +2,8 @@ package org.smartregister.chw.hf.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
 
 import org.json.JSONObject;
 import org.smartregister.chw.core.custom_views.NavigationMenu;
