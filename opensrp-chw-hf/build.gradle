@@ -10,7 +10,7 @@ buildscript {
         maven { url 'https://maven.fabric.io/public' }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.4.2'
+        classpath 'com.android.tools.build:gradle:3.5.2'
         classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.8.2'
         classpath 'io.fabric.tools:gradle:1.30.0'
     }
@@ -139,11 +139,11 @@ dependencies {
 
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    androidTestImplementation 'org.mockito:mockito-android:2.7.22'
+    androidTestImplementation 'org.mockito:mockito-android:3.0.0'
 
-    testImplementation 'org.mockito:mockito-core:2.8.47'
+    testImplementation 'org.mockito:mockito-core:3.0.0'
     testImplementation 'junit:junit:4.12'
-    testImplementation 'org.robolectric:robolectric:4.0.1'
+    testImplementation 'org.robolectric:robolectric:4.3.1'
     testImplementation 'org.robolectric:shadows-multidex:3.8'
     testImplementation 'org.robolectric:shadows-support-v4:3.4-rc2'
 
