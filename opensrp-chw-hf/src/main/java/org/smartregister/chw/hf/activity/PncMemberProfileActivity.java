@@ -61,6 +61,11 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
     }
 
     @Override
+    protected void startFpRegister() {
+
+    }
+
+    @Override
     public void openMedicalHistory() {
         PncMedicalHistoryActivity.startMe(this, memberObject);
     }
