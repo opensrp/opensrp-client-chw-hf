@@ -6,7 +6,6 @@ import android.content.Intent;
 import org.smartregister.chw.anc.domain.MemberObject;
 import org.smartregister.chw.anc.util.Constants;
 import org.smartregister.chw.core.activity.CoreChildMedicalHistoryActivity;
-import org.smartregister.chw.core.activity.DefaultChildMedicalHistoryActivityFlv;
 
 public class ChildMedicalHistoryActivity extends CoreChildMedicalHistoryActivity {
 
