@@ -62,7 +62,7 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
 
     @Override
     protected void startFpRegister() {
-
+        //TODO implement start family planning register for HF
     }
 
     @Override
