@@ -35,7 +35,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         buildConfigField "String", 'opensrp_url', '"https://boresha-afya.smartregister.org/opensrp/"'
-        buildConfigField "String", 'opensrp_url_debug', '"https://boresha-afya-stage.smartregister.org/opensrp/"'
+        buildConfigField "String", 'opensrp_url_debug', '"https://ba-unified-stage.smartregister.org/opensrp/"'
         buildConfigField "boolean", 'SUPPORT_QR', 'true'
         buildConfigField "int", "DATABASE_VERSION", '5'
         buildConfigField "int", "DATA_SYNC_DURATION_MINUTES", '15'
@@ -65,7 +65,8 @@ android {
             buildConfigField "boolean", 'SUPPORT_REPORT', 'false'
             buildConfigField "String[]", "ALLOWED_LOCATION_LEVELS", '{"Ward" , "Health Facility", "Village", "Village Sublocations"}'
             buildConfigField "String[]", "LOCATION_HIERACHY", '{"Country","Region","District","Ward" , "Health Facility", "Village", "Village Sublocations"}'
-            buildConfigField "String", 'DEFAULT_LOCATION', '"Health Facility"'
+            buildConfigField "String", 'DEFAULT_LOCATION', '"Facility"'
+            buildConfigField "String", 'FACILITY_LEVEL', '"Facility"'
         }
 
         debug {
@@ -80,9 +81,10 @@ android {
             buildConfigField "int", "REPORT_INDICATOR_GENERATION_MINUTES", '15'
             buildConfigField "int", "HOME_VISIT_MINUTES", '60'
             buildConfigField "boolean", 'SUPPORT_REPORT', 'false'
-            buildConfigField "String[]", "ALLOWED_LOCATION_LEVELS", '{"MOH Jhpiego Facility Name" , "Village"}'
-            buildConfigField "String[]", "LOCATION_HIERACHY", '{"Country","Region","District","Ward" , "Health Facility", "Village", "Village Sublocations"}'
-            buildConfigField "String", 'DEFAULT_LOCATION', '"Village"'
+            buildConfigField "String[]", "ALLOWED_LOCATION_LEVELS", '{"Ward" , "Council", "Facility", "Health Facility", "Village", "Village Sublocations"}'
+            buildConfigField "String[]", "LOCATION_HIERACHY", '{"Country","Region","District","Ward" ,"Council", "Facility", "Health Facility", "Village", "Village Sublocations"}'
+            buildConfigField "String", 'DEFAULT_LOCATION', '"Facility"'
+            buildConfigField "String", 'FACILITY_LEVEL', '"Facility"'
             testCoverageEnabled true
         }
     }
