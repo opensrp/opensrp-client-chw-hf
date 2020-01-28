@@ -118,6 +118,7 @@ dependencies {
     implementation ('org.smartregister:opensrp-client-chw-core:1.1.32-SNAPSHOT@aar') {
         transitive = true
         exclude group: 'org.smartregister', module: 'opensrp-client-native-form'
+        exclude group: 'com.rengwuxian.materialedittext', module: 'library'
     }
 
     implementation ('org.smartregister:opensrp-client-opd:0.0.8-SNAPSHOT@aar'){
