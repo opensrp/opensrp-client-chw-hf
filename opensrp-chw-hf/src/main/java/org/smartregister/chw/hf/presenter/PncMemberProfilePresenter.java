@@ -10,6 +10,7 @@ import org.smartregister.chw.hf.contract.PncMemberProfileContract;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.domain.Task;
 import org.smartregister.family.contract.FamilyProfileContract;
+import org.smartregister.family.domain.FamilyEventClient;
 
 import java.util.Set;
 
@@ -66,7 +67,12 @@ public class PncMemberProfilePresenter extends BaseAncMemberProfilePresenter imp
     }
 
     @Override
+    public void onRegistrationSaved(boolean b, boolean b1, FamilyEventClient familyEventClient) {
+
+    }
+
     public void onRegistrationSaved(boolean isEditMode) {
+        // TODO -> Look into this implementation
         Timber.d("onRegistrationSaved unimplemented");
     }
 }

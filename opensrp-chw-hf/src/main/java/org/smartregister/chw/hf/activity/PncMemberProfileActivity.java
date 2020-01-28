@@ -66,6 +66,16 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
     }
 
     @Override
+    protected void startFpChangeMethod() {
+        // TODO -> Implement for HF
+    }
+
+    @Override
+    protected void startMalariaFollowUpVisit() {
+        // TODO -> Implement for HF
+    }
+
+    @Override
     public void openMedicalHistory() {
         PncMedicalHistoryActivity.startMe(this, memberObject);
     }
