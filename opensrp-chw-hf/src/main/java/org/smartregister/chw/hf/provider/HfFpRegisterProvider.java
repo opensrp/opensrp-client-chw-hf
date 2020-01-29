@@ -31,7 +31,6 @@ public class HfFpRegisterProvider extends CoreFpProvider {
         super.getView(cursor, smartRegisterClient, registerViewHolder);
         registerViewHolder.dueWrapper.setVisibility(View.GONE);
         showLatestPncReferralDay((CommonPersonObjectClient) smartRegisterClient, (HfRegisterViewHolder) registerViewHolder);
-        // TODO -> Show family planning method (i.e. below latest referral day)
     }
 
     @Override
@@ -47,12 +46,10 @@ public class HfFpRegisterProvider extends CoreFpProvider {
     public class HfRegisterViewHolder extends BaseFpRegisterProvider.RegisterViewHolder {
 
         TextView textViewReferralDay;
-        TextView textViewfamilyPlanningMethod;
 
         public HfRegisterViewHolder(View itemView) {
             super(itemView);
             textViewReferralDay = itemView.findViewById(R.id.text_view_referral_day);
-            textViewfamilyPlanningMethod = itemView.findViewById(R.id.text_view_fp_method);
         }
     }
 }
