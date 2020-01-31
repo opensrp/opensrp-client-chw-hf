@@ -104,13 +104,6 @@
         "v_required": {
           "value": "true",
           "err": "Please select one choice"
-        },
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "family_planning_registration_relevance.yml"
-            }
-          }
         }
       },
       {
@@ -158,13 +151,6 @@
         "v_required": {
           "value": "true",
           "err": "Please select one choice"
-        },
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "family_planning_registration_relevance.yml"
-            }
-          }
         }
       }
     ]
@@ -210,13 +196,6 @@
         "v_required": {
           "value": "true",
           "err": "Please select one choice"
-        },
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "family_planning_registration_relevance.yml"
-            }
-          }
         }
       },
       {
@@ -459,7 +438,7 @@
         "key": "implanon_nxt_removal",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "iucd_removal",
+        "openmrs_entity_id": "implanon_nxt_removal",
         "type": "hidden",
         "calculation": {
           "rules-engine": {
