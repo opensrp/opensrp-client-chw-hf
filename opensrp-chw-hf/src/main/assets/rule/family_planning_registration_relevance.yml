@@ -1,120 +1,48 @@
 ---
-name: step2_user_toaster_info
-description: Oral Contraception List
-priority: 1
-condition: "step2_pill == 'yes'"
-actions:
-  - "isRelevant = true"
-
----
-name: step2_breast_lump
-description: breast lumps
-priority: 1
-condition: "step2_pill == 'yes'"
-actions:
-  - "isRelevant = true"
-
----
-name: step2_abnormal_vaginal
-description: abnormal vaginal
-priority: 1
-condition: "step2_pill == 'yes'"
-actions:
-  - "isRelevant = true"
-
----
-name: step2_pregnant
-description: pregnant
-priority: 1
-condition: "step2_pill == 'yes'"
-actions:
-  - "isRelevant = true"
-
----
-name: step2_difficultly_breathing
-description: difficultly breathing
-priority: 1
-condition: "step2_pill == 'yes' && step1_age < 35"
-actions:
-  - "isRelevant = true"
-
----
-name: step2_headaches
-description: headaches
-priority: 1
-condition: "step2_pill == 'yes' && step1_age < 35"
-actions:
-  - "isRelevant = true"
-
----
-name: step2_frequent_urge
-description: frequent urge
-priority: 1
-condition: "step2_pill == 'yes' && step1_age < 35"
-actions:
-  - "isRelevant = true"
-
----
-name: step2_falling_loss_unconsciousness
-description: falling loss unconsciousness
-priority: 1
-condition: "step2_pill == 'yes' && step1_age < 35"
-actions:
-  - "isRelevant = true"
-
----
-name: step2_breastfeed
-description: breastfeed
-priority: 1
-condition: "step2_pill == 'yes'"
-actions:
-  - "isRelevant = true"
-
----
-name: step2_COC_POP_note
-description: COC and POP note
-priority: 1
-condition: "step2_COC_POP == '1' && step1_using_method =='no'"
-actions:
-  - "isRelevant = true"
-
----
-name: step2_POP_note
-description: POP only note
-priority: 1
-condition: "step2_POP == '1' && step1_using_method =='no'"
-actions:
-  - "isRelevant = true"
-
----
-name: step2_no_pill_note
-description: no pill note
-priority: 1
-condition: "step2_no_pill == '1' && step1_using_method =='no'"
-actions:
-  - "isRelevant = true"
-
----
-name: step2_fp_method_chw
-description: fp method chw
-priority: 1
-condition: "step1_using_method =='no'"
-actions:
-  - "isRelevant = true"
-
----
-name: step2_fp_method_already
-description: fp method chw
-priority: 1
-condition: "step1_using_method == 'yes'"
-actions:
-  - "isRelevant = true"
-
----
 name: step2_ec_note
 description: ec note
 priority: 1
 condition: "step2_fp_method_accepted == 'Emergency contraceptive'"
+actions:
+  - "isRelevant = true"
+
+---
+name: step2_injection_due_note
+description: Injection due note
+priority: 1
+condition: "step2_fp_method_accepted == 'Injectable'"
+actions:
+  - "isRelevant = true"
+
+---
+name: step2_injection_symptoms
+description: Injection symptoms note
+priority: 1
+condition: "step2_fp_method_accepted == 'Injectable'"
+actions:
+  - "isRelevant = true"
+
+---
+name: step2_iucd_removal_note
+description: IUCD Removal note
+priority: 1
+condition: "step2_fp_method_accepted == 'IUCD'"
+actions:
+  - "isRelevant = true"
+
+---
+name: step2_iucd_symptoms
+description: IUCD Removal note
+priority: 1
+condition: "step2_fp_method_accepted == 'IUCD'"
+actions:
+  - "isRelevant = true"
+
+---
+name: step2_implanon_removal_note
+description: Implanon Removal note
+priority: 1
+condition: "step2_fp_method_accepted == 'Implanon - NXT'"
 actions:
   - "isRelevant = true"
 
@@ -135,7 +63,7 @@ actions:
   - "isRelevant = true"
 
 ---
-name: step3_counselling_use
+name: step2_counselling_use
 description: counselling of use given
 priority: 1
 condition: "step2_fp_method_accepted == 'Male condom' || step2_fp_method_accepted == 'Female condom' || step2_fp_method_accepted == 'Standard day method'  || step2_fp_method_accepted == 'COC' || step2_fp_method_accepted == 'POP' || step2_fp_method_accepted == 'Emergency contraceptive' "
@@ -143,7 +71,7 @@ actions:
   - "isRelevant = true"
 
 ---
-name: step3_fp_start_injectable
+name: step2_fp_start_injectable
 description: fp start injectable date
 priority: 1
 condition: "step2_fp_method_accepted == 'Injectable'"
@@ -151,7 +79,7 @@ actions:
   - "isRelevant = true"
 
 ---
-name: step3_fp_start_cocpop
+name: step2_fp_start_cocpop
 description: fp start cocpop date
 priority: 1
 condition: "step2_fp_method_accepted == 'COC' || step2_fp_method_accepted == 'POP'"
@@ -159,7 +87,7 @@ actions:
   - "isRelevant = true"
 
 ---
-name: step3_next_injection_due_date
+name: step2_next_injection_due_date
 description: fp next injectable date
 priority: 1
 condition: "step2_fp_method_accepted == 'Injectable'"
@@ -167,7 +95,7 @@ actions:
   - "isRelevant = true"
 
 ---
-name: step3_fp_start_iucd
+name: step2_fp_start_iucd
 description: fp start iucd date
 priority: 1
 condition: "step2_fp_method_accepted == 'IUCD'"
@@ -175,7 +103,7 @@ actions:
   - "isRelevant = true"
 
 ---
-name: step3_fp_start_implant_nxt
+name: step2_fp_start_implant_nxt
 description: fp start implant_nxt date
 priority: 1
 condition: "step2_fp_method_accepted == 'Implanon - NXT'"
@@ -183,7 +111,7 @@ actions:
   - "isRelevant = true"
 
 ---
-name: step3_fp_start_implant_jad
+name: step2_fp_start_implant_jad
 description: fp start jad date
 priority: 1
 condition: "step2_fp_method_accepted == 'Jadelle'"
@@ -191,7 +119,23 @@ actions:
   - "isRelevant = true"
 
 ---
-name: step3_fp_start_female_ster
+name: step2_implant_symptoms
+description: Implant symptoms note
+priority: 1
+condition: "step2_fp_method_accepted == 'Jadelle'"
+actions:
+  - "isRelevant = true"
+
+---
+name: step2_jadelle_removal_note
+description: Jadelle removal note
+priority: 1
+condition: "step2_fp_method_accepted == 'Jadelle'"
+actions:
+  - "isRelevant = true"
+
+---
+name: step2_fp_start_female_ster
 description: fp female_ster date
 priority: 1
 condition: "step2_fp_method_accepted == 'Female sterilization'"
@@ -199,7 +143,15 @@ actions:
   - "isRelevant = true"
 
 ---
-name: step3_fp_start_male_ster
+name: step2_fem_sterialization_symptoms
+description: Sterilization symptons
+priority: 1
+condition: "step2_fp_method_accepted == 'Female sterilization'"
+actions:
+  - "isRelevant = true"
+
+---
+name: step2_fp_start_male_ster
 description: fp male_ster date
 priority: 1
 condition: "step2_fp_method_accepted == 'Male sterilization'"
@@ -207,8 +159,8 @@ actions:
   - "isRelevant = true"
 
 ---
-name: step3_fp_male_ster_note
-description: fp male_ster date note
+name: step2_fp_male_ster_note
+description: fp male_ster note
 priority: 1
 condition: "step2_fp_method_accepted == 'Male sterilization'"
 actions:

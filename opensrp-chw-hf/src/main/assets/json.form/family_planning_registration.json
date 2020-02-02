@@ -689,6 +689,23 @@
             }
           }
         }
+      },
+      {
+        "key": "fp_male_ster_note",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "toaster_notes",
+        "text": "Advise the woman to use condoms for the first 3 months to prevent pregnancy",
+        "toaster_info_text": "Advise the woman to use condoms for the first 3 months to prevent pregnancy",
+        "toaster_type": "info",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "family_planning_registration_relevance.yml"
+            }
+          }
+        }
       }
     ]
   }
