@@ -30,12 +30,28 @@ actions:
   - "calculation = helper.addDuration(step2_fp_start_injectable,'3m')"
 
 ---
+name: step2_injection_due_note
+description: calculate next injection due date
+priority: 1
+condition: "step2_fp_method_accepted == 'Injectable'"
+actions:
+  - "calculation = 'Next injection due: ' + helper.addDuration(step2_fp_start_injectable,'3m')"
+
+---
 name: step2_iucd_removal
 description: calculate IUCD removal date
 priority: 1
 condition: "step2_fp_method_accepted == 'IUCD'"
 actions:
   - "calculation = helper.addDuration(step2_fp_start_iucd,'10y')"
+
+---
+name: step2_iucd_removal_note
+description: calculate IUCD removal date
+priority: 1
+condition: "step2_fp_method_accepted == 'IUCD'"
+actions:
+  - "calculation = 'Removal date: ' + helper.addDuration(step2_fp_start_iucd,'10y')"
 
 ---
 name: step2_implanon_nxt_removal
@@ -46,12 +62,28 @@ actions:
   - "calculation = helper.addDuration(step2_fp_start_implant_nxt,'3y')"
 
 ---
+name: step2_implanon_removal_note
+description: calculate Implanon - NXT removal date
+priority: 1
+condition: "step2_fp_method_accepted == 'Implanon - NXT'"
+actions:
+  - "calculation = 'Removal date: ' + helper.addDuration(step2_fp_start_implant_nxt,'3y')"
+
+---
 name: step2_jadelle_removal
 description: calculate Jadelle removal date
 priority: 1
 condition: "step2_fp_method_accepted == 'Jadelle'"
 actions:
   - "calculation = helper.addDuration(step2_fp_start_implant_jad,'5y')"
+
+---
+name: step2_jadelle_removal_note
+description: calculate Jadelle removal date
+priority: 1
+condition: "step2_fp_method_accepted == 'Jadelle'"
+actions:
+  - "calculation = 'Removal date: ' + helper.addDuration(step2_fp_start_implant_jad,'5y')"
 
 ---
 name: step3_fp_start_date

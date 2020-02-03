@@ -10,7 +10,7 @@ actions:
 name: step2_injection_due_note
 description: Injection due note
 priority: 1
-condition: "step2_fp_method_accepted == 'Injectable'"
+condition: "step2_fp_method_accepted == 'Injectable' && step2_next_injection_due_date != ''"
 actions:
   - "isRelevant = true"
 
@@ -26,9 +26,9 @@ actions:
 name: step2_iucd_removal_note
 description: IUCD Removal note
 priority: 1
-condition: "step2_fp_method_accepted == 'IUCD'"
+condition: "step2_fp_method_accepted == 'IUCD' && step2_fp_start_iucd != ''"
 actions:
-  - "isRelevant = true"12
+  - "isRelevant = true"
 
 ---
 name: step2_iucd_symptoms
@@ -42,7 +42,7 @@ actions:
 name: step2_implanon_removal_note
 description: Implanon Removal note
 priority: 1
-condition: "step2_fp_method_accepted == 'Implanon - NXT'"
+condition: "step2_fp_method_accepted == 'Implanon - NXT' && step2_fp_start_implant_nxt != ''"
 actions:
   - "isRelevant = true"
 
@@ -130,7 +130,7 @@ actions:
 name: step2_jadelle_removal_note
 description: Jadelle removal note
 priority: 1
-condition: "step2_fp_method_accepted == 'Jadelle'"
+condition: "step2_fp_method_accepted == 'Jadelle' && step2_fp_start_implant_jad != ''"
 actions:
   - "isRelevant = true"
 
