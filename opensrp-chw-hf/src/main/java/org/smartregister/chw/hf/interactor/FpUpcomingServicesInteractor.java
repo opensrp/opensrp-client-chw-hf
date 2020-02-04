@@ -35,14 +35,9 @@ public class FpUpcomingServicesInteractor extends BaseAncUpcomingServicesInterac
     }
 
     private void evaluateFp(List<BaseUpcomingService> serviceList) {
-        String fpMethod = null;
         String fp_date = null;
         Integer fp_pillCycles = null;
         Rules rule = null;
-        Integer count = null;
-        Date serviceDueDate = null;
-        Date serviceOverDueDate = null;
-        String serviceName = null;
         String fpMethodUsed = null;
         List<FpAlertObject> familyPlanningList = FpDao.getFpDetails(memberObject.getBaseEntityId());
         if (familyPlanningList.size() > 0) {
@@ -53,7 +48,7 @@ public class FpUpcomingServicesInteractor extends BaseAncUpcomingServicesInterac
                 rule = FpUtil.getFpRules(fpMethodUsed);
             }
         }
-        fpMethod = FpUtil.getTranslatedMethodValue(fpMethodUsed, context);
+        String fpMethod = FpUtil.getTranslatedMethodValue(fpMethodUsed, context);
         Date lastVisitDate = null;
         Visit lastVisit = null;
         Date fpDate = FpUtil.parseFpStartDate(fp_date);
@@ -66,6 +61,9 @@ public class FpUpcomingServicesInteractor extends BaseAncUpcomingServicesInterac
             lastVisitDate = lastVisit.getDate();
         }
         FpAlertRule alertRule = HomeVisitUtil.getFpVisitStatus(rule, lastVisitDate, fpDate, fp_pillCycles, fpMethod);
+        Date serviceDueDate = null;
+        Date serviceOverDueDate = null;
+        String serviceName = null;
         if (fpMethodUsed.equalsIgnoreCase(FamilyPlanningConstants.DBConstants.FP_COC) || fpMethodUsed.equalsIgnoreCase(FamilyPlanningConstants.DBConstants.FP_POP) ||
                 fpMethodUsed.equalsIgnoreCase(FamilyPlanningConstants.DBConstants.FP_MALE_CONDOM) || fpMethodUsed.equalsIgnoreCase(FamilyPlanningConstants.DBConstants.FP_FEMALE_CONDOM) || fpMethodUsed.equalsIgnoreCase(FamilyPlanningConstants.DBConstants.FP_INJECTABLE)) {
             serviceDueDate = alertRule.getDueDate();
@@ -86,6 +84,7 @@ public class FpUpcomingServicesInteractor extends BaseAncUpcomingServicesInterac
                     serviceOverDueDate = (DateTimeFormat.forPattern("dd-MM-yyyy").parseLocalDate(fp_date).plusMonths(4).plusWeeks(1)).toDate();
                     serviceName = MessageFormat.format(context.getString(R.string.follow_up_two), fpMethod);
                 } else {
+                    Integer count = null;
                     count = FpDao.getCountFpVisits(memberObject.getBaseEntityId(), FamilyPlanningConstants.EventType.FP_FOLLOW_UP_VISIT, fpMethod);
                     if (count == 2) {
                         serviceDueDate = (DateTimeFormat.forPattern("dd-MM-yyyy").parseLocalDate(fp_date).plusMonths(1)).toDate();
