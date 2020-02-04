@@ -123,6 +123,9 @@
         <activity
             android:name=".activity.MalariaProfileActivity"
             android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.FpUpcomingServicesActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
 
         <meta-data
             android:name="io.fabric.ApiKey"
