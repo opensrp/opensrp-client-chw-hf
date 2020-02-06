@@ -78,6 +78,11 @@
             android:theme="@style/HFTheme.NoActionBar" />
 
         <activity
+            android:name="org.smartregister.chw.hf.activity.FamilyPlanningMemberProfileActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/HFTheme.NoActionBar" />
+
+        <activity
             android:name="org.smartregister.chw.hf.activity.FamilyRemoveMemberActivity"
             android:theme="@style/HFTheme.NoActionBar" />
 
