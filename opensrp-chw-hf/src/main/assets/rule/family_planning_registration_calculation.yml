@@ -86,7 +86,7 @@ actions:
   - "calculation = 'Removal date: ' + helper.addDuration(step2_fp_start_implant_jad,'5y')"
 
 ---
-name: step3_fp_start_date
+name: step2_fp_start_date
 description: calculate fp start date
 priority: 1
 condition: "true"

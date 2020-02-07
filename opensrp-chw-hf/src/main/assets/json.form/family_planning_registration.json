@@ -162,7 +162,7 @@
         "key": "fp_method_accepted",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "160576AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_id": "fp_method_accepted",
         "type": "spinner",
         "hint": "Family planning method selected",
         "values": [
