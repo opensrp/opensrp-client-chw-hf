@@ -2,9 +2,11 @@ package org.smartregister.chw.hf.fragment;
 
 import org.smartregister.chw.core.fragment.CoreFpRegisterFragment;
 import org.smartregister.chw.core.provider.CoreFpProvider;
+import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.model.FpRegisterFragmentModel;
 import org.smartregister.chw.hf.presenter.FpRegisterFragmentPresenter;
 import org.smartregister.chw.hf.provider.HfFpRegisterProvider;
+import org.smartregister.chw.hf.utils.HfReferralUtils;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.configurableviews.model.View;
 import org.smartregister.cursoradapter.RecyclerViewPaginatedAdapter;
@@ -32,5 +34,12 @@ public class FpRegisterFragment extends CoreFpRegisterFragment {
     @Override
     protected void openProfile(CommonPersonObjectClient client) {
         // TODO -> FamilyPlanningMemberProfileActivity.startFpMemberProfileActivity(getActivity(), FpDao.getMember(client.getCaseId()));
+    }
+
+    @Override
+    public String getDueCondition() {
+        return " " + CoreConstants.TABLE_NAME.FP_MEMBER + ".base_entity_id in ("
+                + HfReferralUtils.getReferralDueFilter(CoreConstants.TABLE_NAME.FP_MEMBER, CoreConstants.TASKS_FOCUS.FP_SIDE_EFFECTS)
+                + ")";
     }
 }
