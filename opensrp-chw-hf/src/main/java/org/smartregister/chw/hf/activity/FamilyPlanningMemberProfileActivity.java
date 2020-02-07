@@ -3,6 +3,7 @@ package org.smartregister.chw.hf.activity;
 import android.app.Activity;
 import android.content.Intent;
 
+import org.smartregister.chw.anc.domain.Visit;
 import org.smartregister.chw.core.activity.CoreFamilyPlanningMemberProfileActivity;
 import org.smartregister.chw.core.activity.CoreFpUpcomingServicesActivity;
 import org.smartregister.chw.core.utils.CoreConstants;
@@ -58,6 +59,11 @@ public class FamilyPlanningMemberProfileActivity extends CoreFamilyPlanningMembe
             }
         };
         executeOnLoaded(listener);
+    }
+
+    @Override
+    public void updateFollowUpVisitStatusRow(Visit lastVisit) {
+        setupFollowupVisitEditViews(false);
     }
 
     @Override
