@@ -68,7 +68,7 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
 
     @Override
     protected void startMalariaFollowUpVisit() {
-
+        // TODO -> Implement for HF
     }
 
     @Override

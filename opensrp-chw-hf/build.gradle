@@ -115,9 +115,10 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation ('org.smartregister:opensrp-client-chw-core:1.1.11-SNAPSHOT@aar') {
+    implementation ('org.smartregister:opensrp-client-chw-core:1.1.34-SNAPSHOT@aar') {
         transitive = true
         exclude group: 'org.smartregister', module: 'opensrp-client-native-form'
+        exclude group: 'com.rengwuxian.materialedittext', module: 'library'
     }
 
     implementation ('org.smartregister:opensrp-client-opd:0.0.8-SNAPSHOT@aar'){
