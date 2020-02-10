@@ -248,13 +248,6 @@
               "rules-file": "family_planning_registration_calculation.yml"
             }
           }
-        },
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "family_planning_registration_relevance.yml"
-            }
-          }
         }
       },
       {
