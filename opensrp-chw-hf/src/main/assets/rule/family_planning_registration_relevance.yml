@@ -10,7 +10,7 @@ actions:
 name: step2_injection_due_note
 description: Injection due note
 priority: 1
-condition: "step2_fp_method_accepted == 'Injectable' && step2_next_injection_due_date != ''"
+condition: "step2_fp_method_accepted == 'Injectable' && step2_fp_start_injectable != ''"
 actions:
   - "isRelevant = true"
 
@@ -87,14 +87,6 @@ actions:
   - "isRelevant = true"
 
 ---
-name: step2_next_injection_due_date
-description: fp next injectable date
-priority: 1
-condition: "step2_fp_method_accepted == 'Injectable'"
-actions:
-  - "isRelevant = true"
-
----
 name: step2_fp_start_iucd
 description: fp start iucd date
 priority: 1
@@ -122,7 +114,7 @@ actions:
 name: step2_implant_symptoms
 description: Implant symptoms note
 priority: 1
-condition: "step2_fp_method_accepted == 'Jadelle'"
+condition: "step2_fp_method_accepted == 'Jadelle' || step2_fp_method_accepted == 'Implanon - NXT'"
 actions:
   - "isRelevant = true"
 
