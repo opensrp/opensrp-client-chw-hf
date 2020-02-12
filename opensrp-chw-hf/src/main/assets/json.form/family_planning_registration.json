@@ -240,7 +240,7 @@
         "key": "fp_start_condom",
         "openmrs_entity_parent": "190AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "163171AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_id": "fp_start_condom",
         "type": "edit_text",
         "hidden": true,
         "calculation": {
