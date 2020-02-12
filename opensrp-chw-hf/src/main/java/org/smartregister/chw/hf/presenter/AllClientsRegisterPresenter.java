@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 
 import org.apache.commons.lang3.tuple.Triple;
 import org.smartregister.opd.contract.OpdRegisterActivityContract;
-import org.smartregister.opd.pojos.RegisterParams;
+import org.smartregister.opd.pojo.RegisterParams;
 import org.smartregister.opd.presenter.BaseOpdRegisterActivityPresenter;
 
 public class AllClientsRegisterPresenter extends BaseOpdRegisterActivityPresenter {

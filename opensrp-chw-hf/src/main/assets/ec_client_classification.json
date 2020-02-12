@@ -139,6 +139,20 @@
           },
           {
             "field": "eventType",
+            "field_value": "Family Planning Registration",
+            "creates_case": [
+              "ec_family_planning"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "Family Planning Change Method",
+            "creates_case": [
+              "ec_family_planning"
+            ]
+          },
+          {
+            "field": "eventType",
             "field_value": "Pregnancy Outcome",
             "closes_case": [
               "ec_anc_register"
