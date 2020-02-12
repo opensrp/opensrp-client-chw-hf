@@ -54,8 +54,18 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
     }
 
     @Override
+    protected void startFpChangeMethod() {
+        //TODO implement start Fp Change Method
+    }
+
+    @Override
     protected void startMalariaRegister() {
         //TODO implement start malaria register for HF
+    }
+
+    @Override
+    protected void startMalariaFollowUpVisit() {
+        //TODO implement start Malaria Follow Up Visit
     }
 
     @Override

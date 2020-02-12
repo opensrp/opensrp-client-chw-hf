@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
 
@@ -37,6 +38,7 @@ import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.family.util.Utils;
 
 import java.util.Date;
+import java.util.Map;
 import java.util.Set;
 
 import timber.log.Timber;
@@ -63,6 +65,21 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
     @Override
     protected void startFpRegister() {
         //TODO implement start family planning register for HF
+    }
+
+    @Override
+    protected void startFpChangeMethod() {
+        //TODO Implement start Fp ChangeMethod
+    }
+
+    @Override
+    protected void startMalariaFollowUpVisit() {
+        //TODO Implement start Malaria Follow Up Visit
+    }
+
+    @Override
+    protected void getRemoveBabyMenuItem(MenuItem menuItem) {
+        //TODO Implement getRemoveBabyMenuItem
     }
 
     @Override

@@ -9,6 +9,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.Triple;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.smartregister.CoreLibrary;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.hf.HealthFacilityApplication;
@@ -70,7 +71,9 @@ public class JsonFormUtils extends CoreJsonFormUtils {
                 addRelationship(context, ss, baseClient);
                 SQLiteDatabase db = HealthFacilityApplication.getInstance().getRepository().getReadableDatabase();
                 HfChwRepository pathRepository = new HfChwRepository(context, HealthFacilityApplication.getInstance().getContext());
-                EventClientRepository eventClientRepository = new EventClientRepository(pathRepository);
+
+//                EventClientRepository eventClientRepository = new EventClientRepository(pathRepository);
+                EventClientRepository eventClientRepository = CoreLibrary.getInstance().context().getEventClientRepository();
                 JSONObject clientjson = eventClientRepository.getClient(db, lookUpBaseEntityId);
                 baseClient.setAddresses(getAddressFromClientJson(clientjson));
             }
