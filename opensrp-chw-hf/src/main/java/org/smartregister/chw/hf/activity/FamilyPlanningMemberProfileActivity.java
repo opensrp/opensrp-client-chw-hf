@@ -2,6 +2,9 @@ package org.smartregister.chw.hf.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.widget.RelativeLayout;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import org.smartregister.chw.anc.domain.Visit;
 import org.smartregister.chw.core.activity.CoreFamilyPlanningMemberProfileActivity;
@@ -16,6 +19,9 @@ import org.smartregister.chw.hf.presenter.HfFamilyPlanningMemberProfilePresenter
 import timber.log.Timber;
 
 public class FamilyPlanningMemberProfileActivity extends CoreFamilyPlanningMemberProfileActivity {
+
+    public RelativeLayout referralRow;
+    public RecyclerView referralRecyclerView;
 
     public static void startFpMemberProfileActivity(Activity activity, FpMemberObject memberObject) {
         Intent intent = new Intent(activity, FamilyPlanningMemberProfileActivity.class);
@@ -41,7 +47,7 @@ public class FamilyPlanningMemberProfileActivity extends CoreFamilyPlanningMembe
 
     @Override
     public void openMedicalHistory() {
-        onMemberTypeLoadedListener listener = memberType -> {
+        OnMemberTypeLoadedListener onMemberTypeLoadedListener = memberType -> {
 
             switch (memberType.getMemberType()) {
                 case CoreConstants.TABLE_NAME.ANC_MEMBER:
@@ -58,7 +64,7 @@ public class FamilyPlanningMemberProfileActivity extends CoreFamilyPlanningMembe
                     break;
             }
         };
-        executeOnLoaded(listener);
+        executeOnLoaded(onMemberTypeLoadedListener);
     }
 
     @Override
