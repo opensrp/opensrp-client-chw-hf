@@ -3,6 +3,7 @@ package org.smartregister.chw.hf.fragment;
 import org.smartregister.chw.core.fragment.CoreFpRegisterFragment;
 import org.smartregister.chw.core.provider.CoreFpProvider;
 import org.smartregister.chw.core.utils.CoreConstants;
+import org.smartregister.chw.hf.activity.FamilyPlanningMemberProfileActivity;
 import org.smartregister.chw.hf.model.FpRegisterFragmentModel;
 import org.smartregister.chw.hf.presenter.FpRegisterFragmentPresenter;
 import org.smartregister.chw.hf.provider.HfFpRegisterProvider;
@@ -33,7 +34,7 @@ public class FpRegisterFragment extends CoreFpRegisterFragment {
 
     @Override
     protected void openProfile(CommonPersonObjectClient client) {
-        // TODO -> FamilyPlanningMemberProfileActivity.startFpMemberProfileActivity(getActivity(), FpDao.getMember(client.getCaseId()));
+        FamilyPlanningMemberProfileActivity.startFpMemberProfileActivity(getActivity(), client);
     }
 
     @Override
