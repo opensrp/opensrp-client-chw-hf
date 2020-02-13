@@ -250,19 +250,13 @@
         "key": "fp_start_condom",
         "openmrs_entity_parent": "190AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "163171AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-        "type": "hidden",
+        "openmrs_entity_id": "fp_start_condom",
+        "type": "edit_text",
+        "hidden": "true",
         "calculation": {
           "rules-engine": {
             "ex-rules": {
               "rules-file": "family_planning_change_method_calculation.yml"
-            }
-          }
-        },
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "family_planning_change_method_relevance.yml"
             }
           }
         }
