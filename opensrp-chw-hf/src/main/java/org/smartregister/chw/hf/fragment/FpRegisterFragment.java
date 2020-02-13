@@ -36,10 +36,10 @@ public class FpRegisterFragment extends CoreFpRegisterFragment {
         // TODO -> FamilyPlanningMemberProfileActivity.startFpMemberProfileActivity(getActivity(), FpDao.getMember(client.getCaseId()));
     }
 
-   /* @Override
+    @Override
     public String getDueCondition() {
         return " " + CoreConstants.TABLE_NAME.FP_MEMBER + ".base_entity_id in ("
                 + HfReferralUtils.getReferralDueFilter(CoreConstants.TABLE_NAME.FP_MEMBER, CoreConstants.TASKS_FOCUS.FP_SIDE_EFFECTS)
                 + ")";
-    }*/
+    }
 }
