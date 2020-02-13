@@ -216,8 +216,16 @@
         "v_required": {
           "value": "true",
           "err": "Please select one choice"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "family_planning_change_method_relevance.yml"
+            }
+          }
         }
       },
+
       {
         "key": "no_condoms",
         "openmrs_entity_parent": "190AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",

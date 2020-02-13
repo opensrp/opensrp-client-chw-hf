@@ -70,7 +70,7 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
 
     @Override
     protected void startFpChangeMethod() {
-        // TODO -> Implement for HF
+        FpRegisterActivity.startFpRegistrationActivity(this, memberObject.getBaseEntityId(), memberObject.getDob(), CoreConstants.JSON_FORM.getFpChengeMethodForm(), FamilyPlanningConstants.ActivityPayload.CHANGE_METHOD_PAYLOAD_TYPE);
     }
 
     @Override
@@ -217,6 +217,7 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
     protected CorePncMemberProfileInteractor getPncMemberProfileInteractor() {
         return new PncMemberProfileInteractor();
     }
+
 
     @Override
     protected void removePncMember() {

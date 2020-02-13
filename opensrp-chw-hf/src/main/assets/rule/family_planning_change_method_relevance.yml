@@ -13,6 +13,13 @@ condition: "step1_reason_stop_fp_chw =='side_effects'"
 actions:
   - "isRelevant = true"
 ---
+name: step2_fp_method_accepted
+description: fp method accepted when changed
+priority: 1
+condition: "step1_reason_stop_fp_chw =='decided_to_change_method'"
+actions:
+  - "isRelevant = true"
+---
 name: step2_no_condoms
 description: no. condoms
 priority: 1
