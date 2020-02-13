@@ -16,7 +16,7 @@ public class HfAllClientsRegisterQueryProvider extends OpdRegisterQueryProviderC
      */
     @NonNull
     @Override
-    public String getObjectIdsQuery(@Nullable String filters) {
+    public String getObjectIdsQuery(@Nullable String filters, @Nullable String mainCondition) {
         if (TextUtils.isEmpty(filters)) {
             return "SELECT object_id, last_interacted_with\n" +
                     "FROM (SELECT object_id, last_interacted_with FROM ec_family_member_search WHERE date_removed IS NULL)\n" +
@@ -41,7 +41,7 @@ public class HfAllClientsRegisterQueryProvider extends OpdRegisterQueryProviderC
      */
     @NonNull
     @Override
-    public String[] countExecuteQueries(@Nullable String filters) {
+    public String[] countExecuteQueries(@Nullable String filters, @Nullable String mainCondition) {
         return new String[]{
                 "SELECT COUNT(*) AS c\n" +
                         "         FROM ec_child\n" +

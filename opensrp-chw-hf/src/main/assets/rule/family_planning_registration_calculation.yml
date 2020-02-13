@@ -18,9 +18,10 @@ actions:
 name: step2_fp_start_condom
 description: date of start condom use
 priority: 1
-condition: "true"
+condition: "step2_fp_method_accepted == 'Male condom' || step2_fp_method_accepted == 'Female condom'"
 actions:
-  - "calculation = step2_fp_method_accepted == 'Male condom' || step2_fp_method_accepted == 'Female condom' ? helper.getDateToday() : ''"
+  - "calculation = helper.getDateToday()"
+
 ---
 name: step2_next_injection_due_date
 description: calculate next injection due date
@@ -89,6 +90,6 @@ actions:
 name: step2_fp_start_date
 description: calculate fp start date
 priority: 1
-condition: "true"
+condition: "step2_fp_method_accepted != ''"
 actions:
   - "calculation = step2_fp_method_accepted == 'Standard day method' ? step1_fp_reg_date : helper.getNonBlankValue([step2_fp_start_condom,step2_fp_start_cocpop,step2_fp_start_injectable,step2_fp_start_iucd,step2_fp_start_implant_nxt,step2_fp_start_implant_jad,step2_fp_start_female_ster,step2_fp_start_male_ster])"
