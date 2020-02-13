@@ -33,6 +33,6 @@ public class FpRegisterFragment extends CoreFpRegisterFragment {
 
     @Override
     protected void openProfile(CommonPersonObjectClient client) {
-        FamilyPlanningMemberProfileActivity.startFpMemberProfileActivity(getActivity(), FpDao.getMember(client.getCaseId()));
+        FamilyPlanningMemberProfileActivity.startFpMemberProfileActivity(getActivity(), client);
     }
 }

@@ -6,12 +6,16 @@ import org.joda.time.LocalDate;
 import org.smartregister.chw.core.interactor.CoreFamilyPlanningProfileInteractor;
 import org.smartregister.chw.fp.contract.BaseFpProfileContract;
 import org.smartregister.chw.fp.domain.FpMemberObject;
+import org.smartregister.chw.hf.HealthFacilityApplication;
+import org.smartregister.chw.hf.contract.FamilyPlanningMemberProfileContract;
 import org.smartregister.domain.Alert;
 import org.smartregister.domain.AlertStatus;
+import org.smartregister.domain.Task;
 
 import java.util.Date;
+import java.util.Set;
 
-public class HfFamilyPlanningProfileInteractor extends CoreFamilyPlanningProfileInteractor {
+public class HfFamilyPlanningProfileInteractor extends CoreFamilyPlanningProfileInteractor implements FamilyPlanningMemberProfileContract.Interactor {
     private Context context;
 
     public HfFamilyPlanningProfileInteractor(Context context) {
@@ -39,5 +43,13 @@ public class HfFamilyPlanningProfileInteractor extends CoreFamilyPlanningProfile
             }
         };
         appExecutors.diskIO().execute(runnable);
+    }
+
+    @Override
+    public void getReferralTasks(String planId, String baseEntityId, FamilyPlanningMemberProfileContract.InteractorCallback callback) {
+        Set<Task> taskList = HealthFacilityApplication.getInstance().getTaskRepository()
+                .getTasksByEntityAndStatus(planId, baseEntityId, Task.TaskStatus.READY);
+
+        callback.updateReferralTasks(taskList);
     }
 }
