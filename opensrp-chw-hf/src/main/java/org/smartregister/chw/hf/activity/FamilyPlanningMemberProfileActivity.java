@@ -9,9 +9,15 @@ import android.widget.RelativeLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+
+import org.json.JSONObject;
 import org.smartregister.chw.anc.domain.Visit;
 import org.smartregister.chw.core.activity.CoreFamilyPlanningMemberProfileActivity;
 import org.smartregister.chw.core.activity.CoreFpUpcomingServicesActivity;
+import org.smartregister.chw.core.activity.CoreUpcomingServicesActivity;
+import org.smartregister.chw.core.presenter.CoreFamilyPlanningProfilePresenter;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.FpUtil;
 import org.smartregister.chw.fp.dao.FpDao;
@@ -24,7 +30,13 @@ import org.smartregister.chw.hf.interactor.HfFamilyPlanningProfileInteractor;
 import org.smartregister.chw.hf.presenter.HfFamilyPlanningMemberProfilePresenter;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.domain.Task;
+import org.smartregister.domain.db.Event;
+import org.smartregister.domain.db.EventClient;
+import org.smartregister.domain.db.Obs;
+import org.smartregister.family.util.JsonFormUtils;
+import org.smartregister.family.util.Utils;
 
+import java.util.List;
 import java.util.Set;
 
 import timber.log.Timber;
@@ -83,6 +95,11 @@ public class FamilyPlanningMemberProfileActivity extends CoreFamilyPlanningMembe
         }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
     public CommonPersonObjectClient getCommonPersonObjectClient() {
         return commonPersonObjectClient;
     }
@@ -104,7 +121,7 @@ public class FamilyPlanningMemberProfileActivity extends CoreFamilyPlanningMembe
 
     @Override
     public void openUpcomingServices() {
-        CoreFpUpcomingServicesActivity.startMe(this, FpUtil.toMember(fpMemberObject));
+        CoreUpcomingServicesActivity.startMe(this, FpUtil.toMember(fpMemberObject));
     }
 
     @Override

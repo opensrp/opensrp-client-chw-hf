@@ -1,0 +1,92 @@
+---
+name: step1_fp_change_or_stop_date
+description: date of fp registration calculation
+priority: 1
+condition: "true"
+actions:
+  - "calculation = helper.getDateToday()"
+---
+name: step2_fp_method_accepted
+description: calculate fp method accepted
+priority: 1
+condition: "true"
+actions:
+  - "calculation = step1_reason_stop_fp_chw =='decided_to_change_method' ? step2_fp_method_accepted : ''"
+---
+name: step2_fp_start_condom
+description: date of start condom use
+priority: 1
+condition: "true"
+actions:
+  - "calculation = step2_fp_method_accepted == 'Male condom' || step2_fp_method_accepted == 'Female condom' ? helper.getDateToday() : ''"
+---
+name: step2_next_injection_due_date
+description: calculate next injection due date
+priority: 1
+condition: "step2_fp_method_accepted == 'Injectable'"
+actions:
+  - "calculation = helper.addDuration(step2_fp_start_injectable,'3m')"
+
+---
+name: step2_injection_due_note
+description: calculate next injection due date
+priority: 1
+condition: "step2_fp_method_accepted == 'Injectable'"
+actions:
+  - "calculation = 'Next injection due: ' + helper.addDuration(step2_fp_start_injectable,'3m')"
+
+---
+name: step2_iucd_removal
+description: calculate IUCD removal date
+priority: 1
+condition: "step2_fp_method_accepted == 'IUCD'"
+actions:
+  - "calculation = helper.addDuration(step2_fp_start_iucd,'10y')"
+
+---
+name: step2_iucd_removal_note
+description: calculate IUCD removal date
+priority: 1
+condition: "step2_fp_method_accepted == 'IUCD'"
+actions:
+  - "calculation = 'Removal date: ' + helper.addDuration(step2_fp_start_iucd,'10y')"
+
+---
+name: step2_implanon_nxt_removal
+description: calculate Implanon - NXT removal date
+priority: 1
+condition: "step2_fp_method_accepted == 'Implanon - NXT'"
+actions:
+  - "calculation = helper.addDuration(step2_fp_start_implant_nxt,'3y')"
+
+---
+name: step2_implanon_removal_note
+description: calculate Implanon - NXT removal date
+priority: 1
+condition: "step2_fp_method_accepted == 'Implanon - NXT'"
+actions:
+  - "calculation = 'Removal date: ' + helper.addDuration(step2_fp_start_implant_nxt,'3y')"
+
+---
+name: step2_jadelle_removal
+description: calculate Jadelle removal date
+priority: 1
+condition: "step2_fp_method_accepted == 'Jadelle'"
+actions:
+  - "calculation = helper.addDuration(step2_fp_start_implant_jad,'5y')"
+
+---
+name: step2_jadelle_removal_note
+description: calculate Jadelle removal date
+priority: 1
+condition: "step2_fp_method_accepted == 'Jadelle'"
+actions:
+  - "calculation = 'Removal date: ' + helper.addDuration(step2_fp_start_implant_jad,'5y')"
+
+---
+name: step2_fp_start_date
+description: calculate fp start date
+priority: 1
+condition: "true"
+actions:
+  - "calculation = step2_fp_method_accepted == 'Standard day method' ? step1_fp_reg_date : helper.getNonBlankValue([step2_fp_start_condom,step2_fp_start_cocpop,step2_fp_start_injectable,step2_fp_start_iucd,step2_fp_start_implant_nxt,step2_fp_start_implant_jad,step2_fp_start_female_ster,step2_fp_start_male_ster])"
