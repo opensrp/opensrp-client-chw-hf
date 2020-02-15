@@ -137,6 +137,7 @@ public class FamilyPlanningMemberProfileActivity extends CoreFamilyPlanningMembe
     @Override
     public void updateFollowUpVisitStatusRow(Visit lastVisit) {
         setupFollowupVisitEditViews(false);
+        hideFollowUpVisitButton();
     }
 
     @Override
