@@ -22,7 +22,7 @@ public class ReferralCardViewHolder extends RecyclerView.ViewHolder {
 
     public ReferralCardViewHolder(@NonNull View itemView) {
         super(itemView);
-        referralRow = itemView.findViewById(R.id.referal_row);
+        referralRow = itemView.findViewById(R.id.referral_row);
         referralRowImage = itemView.findViewById(R.id.referal_row_image);
         referralArrowImage = itemView.findViewById(R.id.referal_arrow_image);
         textViewReferralHeader = itemView.findViewById(R.id.textview_referal_header);

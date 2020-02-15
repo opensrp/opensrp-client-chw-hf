@@ -137,7 +137,7 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
 
     private void initializeReferralsRecyclerView() {
         referralRecyclerView = findViewById(R.id.referral_card_recycler_view);
-        referralRow = findViewById(R.id.referal_row);
+        referralRow = findViewById(R.id.referral_row);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         referralRecyclerView.setLayoutManager(layoutManager);
     }
