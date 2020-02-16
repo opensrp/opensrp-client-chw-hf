@@ -31,7 +31,7 @@ import timber.log.Timber;
 
 public class FamilyPlanningMemberProfileActivity extends CoreFamilyPlanningMemberProfileActivity implements FamilyPlanningMemberProfileContract.View {
 
-    public RelativeLayout referralRow;
+    public RelativeLayout referralInfoRow;
     public RecyclerView referralRecyclerView;
     private CommonPersonObjectClient commonPersonObjectClient;
 
@@ -45,7 +45,7 @@ public class FamilyPlanningMemberProfileActivity extends CoreFamilyPlanningMembe
 
     private void initializeReferralsRecyclerView() {
         referralRecyclerView = findViewById(R.id.referral_card_recycler_view);
-        referralRow = findViewById(R.id.referral_row);
+        referralInfoRow = findViewById(R.id.referral_row);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         referralRecyclerView.setLayoutManager(layoutManager);
     }
@@ -55,7 +55,7 @@ public class FamilyPlanningMemberProfileActivity extends CoreFamilyPlanningMembe
             RecyclerView.Adapter mAdapter = new ReferralCardViewAdapter(taskList, this, FpUtil.toMember(fpMemberObject), fpMemberObject.getFamilyHeadName(),
                     fpMemberObject.getFamilyHeadPhoneNumber(), getCommonPersonObjectClient(), CoreConstants.REGISTERED_ACTIVITIES.FP_REGISTER_ACTIVITY);
             referralRecyclerView.setAdapter(mAdapter);
-            referralRow.setVisibility(View.VISIBLE);
+            referralInfoRow.setVisibility(View.VISIBLE);
         }
     }
 
