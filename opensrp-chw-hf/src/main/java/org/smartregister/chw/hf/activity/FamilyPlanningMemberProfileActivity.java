@@ -9,15 +9,9 @@ import android.widget.RelativeLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-
-import org.json.JSONObject;
 import org.smartregister.chw.anc.domain.Visit;
 import org.smartregister.chw.core.activity.CoreFamilyPlanningMemberProfileActivity;
-import org.smartregister.chw.core.activity.CoreFpUpcomingServicesActivity;
 import org.smartregister.chw.core.activity.CoreUpcomingServicesActivity;
-import org.smartregister.chw.core.presenter.CoreFamilyPlanningProfilePresenter;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.FpUtil;
 import org.smartregister.chw.fp.dao.FpDao;
@@ -30,20 +24,14 @@ import org.smartregister.chw.hf.interactor.HfFamilyPlanningProfileInteractor;
 import org.smartregister.chw.hf.presenter.HfFamilyPlanningMemberProfilePresenter;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.domain.Task;
-import org.smartregister.domain.db.Event;
-import org.smartregister.domain.db.EventClient;
-import org.smartregister.domain.db.Obs;
-import org.smartregister.family.util.JsonFormUtils;
-import org.smartregister.family.util.Utils;
 
-import java.util.List;
 import java.util.Set;
 
 import timber.log.Timber;
 
 public class FamilyPlanningMemberProfileActivity extends CoreFamilyPlanningMemberProfileActivity implements FamilyPlanningMemberProfileContract.View {
 
-    public RelativeLayout referralRow;
+    public RelativeLayout referralInfoRow;
     public RecyclerView referralRecyclerView;
     private CommonPersonObjectClient commonPersonObjectClient;
 
@@ -57,7 +45,7 @@ public class FamilyPlanningMemberProfileActivity extends CoreFamilyPlanningMembe
 
     private void initializeReferralsRecyclerView() {
         referralRecyclerView = findViewById(R.id.referral_card_recycler_view);
-        referralRow = findViewById(R.id.referral_row);
+        referralInfoRow = findViewById(R.id.referral_row);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         referralRecyclerView.setLayoutManager(layoutManager);
     }
@@ -67,7 +55,7 @@ public class FamilyPlanningMemberProfileActivity extends CoreFamilyPlanningMembe
             RecyclerView.Adapter mAdapter = new ReferralCardViewAdapter(taskList, this, FpUtil.toMember(fpMemberObject), fpMemberObject.getFamilyHeadName(),
                     fpMemberObject.getFamilyHeadPhoneNumber(), getCommonPersonObjectClient(), CoreConstants.REGISTERED_ACTIVITIES.FP_REGISTER_ACTIVITY);
             referralRecyclerView.setAdapter(mAdapter);
-            referralRow.setVisibility(View.VISIBLE);
+            referralInfoRow.setVisibility(View.VISIBLE);
         }
     }
 
@@ -93,11 +81,6 @@ public class FamilyPlanningMemberProfileActivity extends CoreFamilyPlanningMembe
         if (referralRecyclerView != null && referralRecyclerView.getAdapter() != null) {
             referralRecyclerView.getAdapter().notifyDataSetChanged();
         }
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
     }
 
     public CommonPersonObjectClient getCommonPersonObjectClient() {
@@ -149,6 +132,7 @@ public class FamilyPlanningMemberProfileActivity extends CoreFamilyPlanningMembe
     @Override
     public void updateFollowUpVisitStatusRow(Visit lastVisit) {
         setupFollowupVisitEditViews(false);
+        hideFollowUpVisitButton();
     }
 
     @Override

@@ -12,6 +12,7 @@ import org.smartregister.chw.core.fragment.FamilyCallDialogFragment;
 import org.smartregister.chw.core.utils.BAJsonFormUtils;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.Utils;
+import org.smartregister.chw.fp.dao.FpDao;
 import org.smartregister.chw.fp.util.FamilyPlanningConstants;
 import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
@@ -164,7 +165,13 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
 
         if (isWomanOfReproductiveAge(commonPersonObject, 10, 49)) {
             menu.findItem(R.id.action_pregnancy_confirmation).setVisible(true);
-            menu.findItem(R.id.action_family_planning_initiation).setVisible(true);
+            if (FpDao.isRegisteredForFp(baseEntityId)) {
+                menu.findItem(R.id.action_fp_change).setVisible(true);
+                menu.findItem(R.id.action_family_planning_initiation).setVisible(false);
+            } else {
+                menu.findItem(R.id.action_fp_change).setVisible(false);
+                menu.findItem(R.id.action_family_planning_initiation).setVisible(true);
+            }
         }
     }
 }

@@ -78,6 +78,9 @@ public class HfReferralUtils extends CoreReferralUtils {
                 case Constants.PNC:
                     focus = CoreConstants.TASKS_FOCUS.PNC_DANGER_SIGNS;
                     break;
+                case Constants.FAMILY_PLANNING:
+                    focus = CoreConstants.TASKS_FOCUS.FP_SIDE_EFFECTS;
+                    break;
                 default:
                     focus = Constants.OTHER;
                     break;
