@@ -13,8 +13,8 @@ import timber.log.Timber;
 
 public class HfTaskRepository extends TaskRepository {
 
-    public HfTaskRepository(Repository repository, TaskNotesRepository taskNotesRepository) {
-        super(repository, taskNotesRepository);
+    public HfTaskRepository(TaskNotesRepository taskNotesRepository) {
+        super(taskNotesRepository);
     }
 
     public Task getLatestTaskByEntityId(String forEntity, String referralType) {
