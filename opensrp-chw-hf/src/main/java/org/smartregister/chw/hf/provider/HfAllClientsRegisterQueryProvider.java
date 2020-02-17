@@ -282,6 +282,19 @@ public class HfAllClientsRegisterQueryProvider extends OpdRegisterQueryProviderC
                 "where ec_family_member.date_removed is null\n" +
                 "  AND ec_family_planning.is_closed is 0\n" +
                 "  AND ec_family_member.base_entity_id IN (%s)\n" +
+                "  AND ec_family_member.base_entity_id NOT IN (\n" +
+                "    SELECT ec_anc_register.base_entity_id AS base_entity_id\n" +
+                "    FROM ec_anc_register\n" +
+                "    UNION ALL\n" +
+                "    SELECT ec_pregnancy_outcome.base_entity_id AS base_entity_id\n" +
+                "    FROM ec_pregnancy_outcome\n" +
+                "    UNION ALL\n" +
+                "    SELECT ec_child.base_entity_id AS base_entity_id\n" +
+                "    FROM ec_child\n" +
+                "    UNION ALL\n" +
+                "    SELECT ec_malaria_confirmation.base_entity_id AS base_entity_id\n" +
+                "    FROM ec_malaria_confirmation\n" +
+                ")\n" +
                 "ORDER BY last_interacted_with DESC;";
     }
 }
