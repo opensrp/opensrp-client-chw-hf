@@ -16,7 +16,7 @@ public class HfAllClientsRegisterQueryProvider extends OpdRegisterQueryProviderC
      */
     @NonNull
     @Override
-    public String getObjectIdsQuery(@Nullable String filters) {
+    public String getObjectIdsQuery(@Nullable String filters, @Nullable String mainCondition) {
         if (TextUtils.isEmpty(filters)) {
             return "SELECT object_id, last_interacted_with\n" +
                     "FROM (SELECT object_id, last_interacted_with FROM ec_family_member_search WHERE date_removed IS NULL)\n" +
@@ -41,7 +41,7 @@ public class HfAllClientsRegisterQueryProvider extends OpdRegisterQueryProviderC
      */
     @NonNull
     @Override
-    public String[] countExecuteQueries(@Nullable String filters) {
+    public String[] countExecuteQueries(@Nullable String filters, @Nullable String mainCondition) {
         return new String[]{
                 "SELECT COUNT(*) AS c\n" +
                         "         FROM ec_child\n" +
@@ -257,6 +257,43 @@ public class HfAllClientsRegisterQueryProvider extends OpdRegisterQueryProviderC
                 "    UNION ALL\n" +
                 "    SELECT ec_child.base_entity_id AS base_entity_id\n" +
                 "    FROM ec_child\n" +
+                ")\n" +
+                "UNION ALL\n" +
+                "\n" +
+                "/*ONLY FAMILY PLANNING PLANNING PATIENTS*/\n" +
+                "SELECT ec_family_member.first_name,\n" +
+                "       ec_family_member.middle_name,\n" +
+                "       ec_family_member.last_name,\n" +
+                "       ec_family_member.gender,\n" +
+                "       ec_family_member.dob,\n" +
+                "       ec_family_member.base_entity_id,\n" +
+                "       ec_family_member.id                          as _id,\n" +
+                "       'Family Planning'                             AS register_type,\n" +
+                "       ec_family_member.relational_id               as relationalid,\n" +
+                "       ec_family.village_town                       as home_address,\n" +
+                "       NULL                                         AS mother_first_name,\n" +
+                "       NULL                                         AS mother_last_name,\n" +
+                "       NULL                                         AS mother_middle_name,\n" +
+                "       ec_family_planning.last_interacted_with AS last_interacted_with\n" +
+                "FROM ec_family_member\n" +
+                "         inner join ec_family on ec_family.base_entity_id = ec_family_member.relational_id\n" +
+                "         inner join ec_family_planning\n" +
+                "                    on ec_family_member.base_entity_id = ec_family_planning.base_entity_id\n" +
+                "where ec_family_member.date_removed is null\n" +
+                "  AND ec_family_planning.is_closed is 0\n" +
+                "  AND ec_family_member.base_entity_id IN (%s)\n" +
+                "  AND ec_family_member.base_entity_id NOT IN (\n" +
+                "    SELECT ec_anc_register.base_entity_id AS base_entity_id\n" +
+                "    FROM ec_anc_register\n" +
+                "    UNION ALL\n" +
+                "    SELECT ec_pregnancy_outcome.base_entity_id AS base_entity_id\n" +
+                "    FROM ec_pregnancy_outcome\n" +
+                "    UNION ALL\n" +
+                "    SELECT ec_child.base_entity_id AS base_entity_id\n" +
+                "    FROM ec_child\n" +
+                "    UNION ALL\n" +
+                "    SELECT ec_malaria_confirmation.base_entity_id AS base_entity_id\n" +
+                "    FROM ec_malaria_confirmation\n" +
                 ")\n" +
                 "ORDER BY last_interacted_with DESC;";
     }

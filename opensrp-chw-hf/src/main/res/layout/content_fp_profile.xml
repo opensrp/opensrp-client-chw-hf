@@ -5,13 +5,14 @@
     android:background="@color/white">
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/white">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
 
             <RelativeLayout
                 android:id="@+id/referral_row"
@@ -28,10 +29,9 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/rlLastVisit"
+                android:id="@+id/rl_last_visit_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/referral_row"
                 android:background="@drawable/list_item_background_selctor"
                 android:padding="20dp"
                 android:visibility="gone">
@@ -60,12 +60,13 @@
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@+id/tick_image"
                     android:gravity="center_horizontal"
-                    android:text="@string/last_visit_40_days_ago"
+                    android:text="@string/last_visit"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                    android:textColor="@android:color/black" />
+                    android:textColor="@android:color/black"
+                    android:visibility="gone" />
 
                 <org.smartregister.view.customcontrols.CustomFontTextView
-                    android:id="@+id/text_view_medical_hstory"
+                    android:id="@+id/textview_medical_history"
                     style="@style/CustomFontTextViewStyle.ListView.Normal.MultipleLines"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -82,7 +83,7 @@
                 android:id="@+id/view_last_visit_row"
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:layout_below="@+id/rlLastVisit"
+                android:layout_below="@+id/rl_last_visit_layout"
                 android:background="@color/light_grey"
                 android:visibility="gone" />
 
@@ -104,7 +105,7 @@
                     android:src="@drawable/childrow_upcoming" />
 
                 <ImageView
-                    android:id="@+id/right_arrow_image"
+                    android:id="@+id/iv_upcoming_services_arrow"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -117,7 +118,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:layout_toLeftOf="@+id/right_arrow_image"
+                    android:layout_toLeftOf="@+id/iv_upcoming_services_arrow"
                     android:layout_toRightOf="@+id/cross_image"
                     android:gravity="left|center_horizontal"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -125,7 +126,7 @@
 
 
                 <org.smartregister.view.customcontrols.CustomFontTextView
-                    android:id="@+id/text_view_upcoming_service"
+                    android:id="@+id/ivViewUpcomingServicesArrow"
                     style="@style/CustomFontTextViewStyle.ListView.Normal.MultipleLines"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -139,12 +140,75 @@
             </RelativeLayout>
 
             <View
-                android:id="@+id/view_most_due_overdue_row"
+                android:id="@+id/view_fp_method_date_row"
                 android:layout_width="match_parent"
                 android:layout_height="1px"
                 android:layout_below="@+id/rlUpcomingServices"
                 android:background="@color/light_grey"
                 android:visibility="gone" />
+
+            <RelativeLayout
+                android:id="@+id/rlFpRegistrationDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/view_fp_method_date_row"
+                android:background="@drawable/list_item_background_selctor"
+                android:padding="20dp"
+                android:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/fp_method_row_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingEnd="5dp"
+                    android:paddingStart="5dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/fp_method_row" />
+
+                <ImageView
+                    android:id="@+id/iv_fp_method_date_row_goto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/row_goto" />
+
+                <org.smartregister.view.customcontrols.CustomFontTextView
+                    android:id="@+id/textview_fp_method_date_row"
+                    style="@style/CustomFontTextViewStyle.ListView.Normal.MultipleLines"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_toLeftOf="@+id/iv_fp_method_date_row_goto"
+                    android:layout_toRightOf="@+id/fp_method_row_image"
+                    android:gravity="left|center_horizontal"
+                    android:text="Family Planning Registration Date"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textColor="@android:color/black" />
+
+
+                <org.smartregister.view.customcontrols.CustomFontTextView
+                    android:id="@+id/tvViewFpMethod"
+                    style="@style/CustomFontTextViewStyle.ListView.Normal.MultipleLines"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textview_fp_method_date_row"
+                    android:layout_marginLeft="8dp"
+                    android:layout_toRightOf="@+id/fp_method_row_image"
+                    android:text="@string/view_fp_registration"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@android:color/darker_gray" />
+
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/view_most_due_overdue_row"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_below="@+id/rlFpRegistrationDate"
+                android:background="@color/light_grey"
+                android:visibility="visible" />
 
             <RelativeLayout
                 android:id="@+id/rlFamilyServicesDue"
@@ -164,7 +228,7 @@
                     android:src="@drawable/childrow_family" />
 
                 <ImageView
-                    android:id="@+id/family_arrow_image"
+                    android:id="@+id/iv_family_services_arrow"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -203,7 +267,7 @@
                 android:background="@color/light_grey"
                 android:visibility="gone" />
 
-        </RelativeLayout>
+        </LinearLayout>
     </ScrollView>
 
     <ProgressBar

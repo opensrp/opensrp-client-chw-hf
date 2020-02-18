@@ -286,9 +286,10 @@ public class ReferralTaskViewActivity extends SecuredActivity {
             }
 
             //Hide Care giver for ANC referral
-            if (getTask().getFocus().equalsIgnoreCase(CoreConstants.TASKS_FOCUS.ANC_DANGER_SIGNS) ||
-                    getTask().getFocus().equalsIgnoreCase(CoreConstants.TASKS_FOCUS.PNC_DANGER_SIGNS)) {
-                careGiverLayout.setVisibility(View.GONE);
+            careGiverLayout.setVisibility(View.GONE);
+            if (getTask().getFocus().equalsIgnoreCase(CoreConstants.TASKS_FOCUS.SICK_CHILD)) {
+                // CG only shows for CHILD clients
+                careGiverLayout.setVisibility(View.VISIBLE);
             }
 
             careGiverName.setText(parentName);

@@ -12,6 +12,8 @@ import org.smartregister.chw.core.fragment.FamilyCallDialogFragment;
 import org.smartregister.chw.core.utils.BAJsonFormUtils;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.Utils;
+import org.smartregister.chw.fp.dao.FpDao;
+import org.smartregister.chw.fp.util.FamilyPlanningConstants;
 import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.custom_view.FamilyMemberFloatingMenu;
@@ -20,6 +22,7 @@ import org.smartregister.chw.hf.presenter.FamilyOtherMemberActivityPresenter;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.family.fragment.BaseFamilyOtherMemberProfileFragment;
 import org.smartregister.family.model.BaseFamilyOtherMemberProfileActivityModel;
+import org.smartregister.family.util.DBConstants;
 import org.smartregister.view.contract.BaseProfileContract;
 
 import timber.log.Timber;
@@ -55,7 +58,8 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
 
     @Override
     protected void startFpChangeMethod() {
-        //TODO implement start Fp Change Method
+        String dob = org.smartregister.family.util.Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.DOB, false);
+        FpRegisterActivity.startFpRegistrationActivity(this, baseEntityId, dob, CoreConstants.JSON_FORM.getFpChengeMethodForm(), FamilyPlanningConstants.ActivityPayload.CHANGE_METHOD_PAYLOAD_TYPE);
     }
 
     @Override
@@ -65,7 +69,7 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
 
     @Override
     protected void startMalariaFollowUpVisit() {
-        //TODO implement start Malaria Follow Up Visit
+        // TODO -> Implement for HF
     }
 
     @Override
@@ -161,7 +165,13 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
 
         if (isWomanOfReproductiveAge(commonPersonObject, 10, 49)) {
             menu.findItem(R.id.action_pregnancy_confirmation).setVisible(true);
-            menu.findItem(R.id.action_family_planning_initiation).setVisible(true);
+            if (FpDao.isRegisteredForFp(baseEntityId)) {
+                menu.findItem(R.id.action_fp_change).setVisible(true);
+                menu.findItem(R.id.action_family_planning_initiation).setVisible(false);
+            } else {
+                menu.findItem(R.id.action_fp_change).setVisible(false);
+                menu.findItem(R.id.action_family_planning_initiation).setVisible(true);
+            }
         }
     }
 }

@@ -22,6 +22,8 @@ import org.smartregister.chw.core.activity.CorePncRegisterActivity;
 import org.smartregister.chw.core.dao.MalariaDao;
 import org.smartregister.chw.core.interactor.CorePncMemberProfileInteractor;
 import org.smartregister.chw.core.utils.CoreConstants;
+import org.smartregister.chw.fp.dao.FpDao;
+import org.smartregister.chw.fp.util.FamilyPlanningConstants;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.adapter.ReferralCardViewAdapter;
 import org.smartregister.chw.hf.contract.PncMemberProfileContract;
@@ -64,22 +66,22 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
 
     @Override
     protected void startFpRegister() {
-        //TODO implement start family planning register for HF
+        FpRegisterActivity.startFpRegistrationActivity(this, memberObject.getBaseEntityId(), memberObject.getDob(), CoreConstants.JSON_FORM.getFpRegistrationForm(), FamilyPlanningConstants.ActivityPayload.REGISTRATION_PAYLOAD_TYPE);
     }
 
     @Override
     protected void startFpChangeMethod() {
-        //TODO Implement start Fp ChangeMethod
+        FpRegisterActivity.startFpRegistrationActivity(this, memberObject.getBaseEntityId(), memberObject.getDob(), CoreConstants.JSON_FORM.getFpChengeMethodForm(), FamilyPlanningConstants.ActivityPayload.CHANGE_METHOD_PAYLOAD_TYPE);
     }
 
     @Override
     protected void startMalariaFollowUpVisit() {
-        //TODO Implement start Malaria Follow Up Visit
+        // TODO -> Implement for HF
     }
 
     @Override
     protected void getRemoveBabyMenuItem(MenuItem menuItem) {
-        //TODO Implement getRemoveBabyMenuItem
+        // TODO -> Implement for HF
     }
 
     @Override
@@ -136,7 +138,7 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
 
     private void initializeReferralsRecyclerView() {
         referralRecyclerView = findViewById(R.id.referral_card_recycler_view);
-        referralRow = findViewById(R.id.referal_row);
+        referralRow = findViewById(R.id.referral_row);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         referralRecyclerView.setLayoutManager(layoutManager);
     }
@@ -167,6 +169,11 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
             menu.findItem(R.id.action_malaria_diagnosis).setVisible(false);
         } else {
             menu.findItem(R.id.action_malaria_diagnosis).setVisible(true);
+        }
+        if (FpDao.isRegisteredForFp(baseEntityID)) {
+            menu.findItem(R.id.action_fp_change).setVisible(true);
+        } else {
+            menu.findItem(R.id.action_fp_initiation).setVisible(true);
         }
         return true;
     }
@@ -211,6 +218,7 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
     protected CorePncMemberProfileInteractor getPncMemberProfileInteractor() {
         return new PncMemberProfileInteractor();
     }
+
 
     @Override
     protected void removePncMember() {

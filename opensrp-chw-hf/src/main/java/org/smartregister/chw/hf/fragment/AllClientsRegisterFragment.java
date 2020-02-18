@@ -90,6 +90,7 @@ public class AllClientsRegisterFragment extends BaseOpdRegisterFragment {
                 case Constants.ANC:
                 case Constants.PNC:
                 case Constants.MALARIA:
+                case Constants.FAMILY_PLANNING:
                     AllClientsUtils.goToAdultMemberProfile(this.getActivity(), commonPersonObjectClient, bundle);
                     break;
                 default:

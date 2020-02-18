@@ -13,7 +13,7 @@ import timber.log.Timber;
 
 public class HfTaskRepository extends TaskRepository {
 
-    public HfTaskRepository(Repository repository, TaskNotesRepository taskNotesRepository) {
+    public HfTaskRepository(TaskNotesRepository taskNotesRepository) {
         super(taskNotesRepository);
     }
 

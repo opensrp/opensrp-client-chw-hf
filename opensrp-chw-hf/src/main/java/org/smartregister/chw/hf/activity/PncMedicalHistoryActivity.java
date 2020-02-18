@@ -4,10 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 
-import org.smartregister.chw.anc.contract.BaseAncMedicalHistoryContract;
 import org.smartregister.chw.anc.domain.GroupedVisit;
 import org.smartregister.chw.anc.domain.MemberObject;
-import org.smartregister.chw.anc.domain.Visit;
 import org.smartregister.chw.anc.util.Constants;
 import org.smartregister.chw.core.activity.CorePncMedicalHistoryActivity;
 import org.smartregister.chw.core.helper.BaMedicalHistoryActivityHelper;
@@ -26,11 +24,12 @@ public class PncMedicalHistoryActivity extends CorePncMedicalHistoryActivity {
         activity.startActivity(intent);
     }
 
+
     @Override
-    public View renderMedicalHistoryView(List<GroupedVisit> visits) {
+    public View renderMedicalHistoryView(List<GroupedVisit> groupedVisits) {
         View view = flavor.bindViews(this);
         displayLoadingState(true);
-        flavor.processViewData(visits, this,memberObject);
+        flavor.processViewData(groupedVisits, this, memberObject);
         displayLoadingState(false);
         return view;
     }
