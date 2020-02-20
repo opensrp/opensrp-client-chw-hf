@@ -13,9 +13,11 @@ import org.smartregister.job.ImageUploadServiceJob;
 import org.smartregister.job.LocationStructureServiceJob;
 import org.smartregister.job.PlanIntentServiceJob;
 import org.smartregister.job.PullUniqueIdsServiceJob;
+import org.smartregister.job.SyncMissingTaskClientsAndEventsServiceJob;
 import org.smartregister.job.SyncServiceJob;
 import org.smartregister.job.SyncTaskServiceJob;
 import org.smartregister.job.ValidateSyncDataServiceJob;
+import org.smartregister.sync.intent.SyncClientEventsPerTaskIntentService;
 import org.smartregister.sync.intent.SyncIntentService;
 
 import timber.log.Timber;
@@ -46,6 +48,8 @@ public class HfJobCreator implements JobCreator {
                 return new SyncTaskServiceJob(HfSyncTaskIntentService.class);
             case PlanIntentServiceJob.TAG:
                 return new PlanIntentServiceJob();
+            case SyncMissingTaskClientsAndEventsServiceJob.TAG:
+                return new SyncMissingTaskClientsAndEventsServiceJob(SyncClientEventsPerTaskIntentService.class);
             default:
                 Timber.d("Please create job and specify the right job tag");
                 return null;
