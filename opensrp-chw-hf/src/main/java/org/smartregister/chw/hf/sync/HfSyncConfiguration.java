@@ -3,10 +3,10 @@ package org.smartregister.chw.hf.sync;
 
 import org.smartregister.SyncConfiguration;
 import org.smartregister.SyncFilter;
-import org.smartregister.chw.core.utils.Utils;
 import org.smartregister.chw.hf.BuildConfig;
 
-import timber.log.Timber;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * @author Elly Nerdstone
@@ -56,5 +56,15 @@ public class HfSyncConfiguration extends SyncConfiguration {
     @Override
     public boolean updateClientDetailsTable() {
         return false;
+    }
+
+    @Override
+    public List<String> getSynchronizedLocationTags() {
+         return Collections.emptyList();
+     }
+
+    @Override
+    public String getTopAllowedLocationLevel() {
+        return "";
     }
 }

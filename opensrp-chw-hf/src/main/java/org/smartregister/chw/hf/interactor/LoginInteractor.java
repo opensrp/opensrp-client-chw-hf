@@ -8,7 +8,6 @@ import org.smartregister.immunization.job.VaccineServiceJob;
 import org.smartregister.job.ImageUploadServiceJob;
 import org.smartregister.job.PlanIntentServiceJob;
 import org.smartregister.job.PullUniqueIdsServiceJob;
-import org.smartregister.job.SyncMissingTaskClientsAndEventsServiceJob;
 import org.smartregister.job.SyncServiceJob;
 import org.smartregister.job.SyncTaskServiceJob;
 import org.smartregister.login.interactor.BaseLoginInteractor;
@@ -38,13 +37,7 @@ public class LoginInteractor extends BaseLoginInteractor implements BaseLoginCon
         HomeVisitServiceJob.scheduleJob(HomeVisitServiceJob.TAG, TimeUnit.MINUTES.toMinutes(
                 BuildConfig.HOME_VISIT_MINUTES), getFlexValue(BuildConfig.HOME_VISIT_MINUTES));
 
-        /*PlanIntentServiceJob.scheduleJob(PlanIntentServiceJob.TAG, TimeUnit.MINUTES.toMinutes(
-                BuildConfig.DATA_SYNC_DURATION_MINUTES), getFlexValue(BuildConfig.DATA_SYNC_DURATION_MINUTES));*/
-
         SyncTaskServiceJob.scheduleJob(SyncTaskServiceJob.TAG, TimeUnit.MINUTES.toMinutes(
-                BuildConfig.DATA_SYNC_DURATION_MINUTES), getFlexValue(BuildConfig.DATA_SYNC_DURATION_MINUTES));
-
-        SyncMissingTaskClientsAndEventsServiceJob.scheduleJob(SyncMissingTaskClientsAndEventsServiceJob.TAG, TimeUnit.MINUTES.toMinutes(
                 BuildConfig.DATA_SYNC_DURATION_MINUTES), getFlexValue(BuildConfig.DATA_SYNC_DURATION_MINUTES));
 
     }
@@ -60,6 +53,5 @@ public class LoginInteractor extends BaseLoginInteractor implements BaseLoginCon
         PlanIntentServiceJob.scheduleJobImmediately(PlanIntentServiceJob.TAG);
         VaccineServiceJob.scheduleJobImmediately(VaccineServiceJob.TAG);
         VaccineRecurringServiceJob.scheduleJobImmediately(VaccineRecurringServiceJob.TAG);
-        SyncMissingTaskClientsAndEventsServiceJob.scheduleJobImmediately(SyncMissingTaskClientsAndEventsServiceJob.TAG);
     }
 }
