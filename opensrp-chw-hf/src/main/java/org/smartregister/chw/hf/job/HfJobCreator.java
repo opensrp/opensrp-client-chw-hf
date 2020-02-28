@@ -6,7 +6,9 @@ import androidx.annotation.Nullable;
 import com.evernote.android.job.Job;
 import com.evernote.android.job.JobCreator;
 
+import org.smartregister.chw.core.job.SyncTaskWithClientEventsServiceJob;
 import org.smartregister.chw.core.job.VaccineRecurringServiceJob;
+import org.smartregister.chw.core.sync.intent.SyncClientEventsPerTaskIntentService;
 import org.smartregister.chw.hf.sync.intent.HfSyncTaskIntentService;
 import org.smartregister.job.ExtendedSyncServiceJob;
 import org.smartregister.job.ImageUploadServiceJob;
@@ -15,9 +17,7 @@ import org.smartregister.job.PlanIntentServiceJob;
 import org.smartregister.job.PullUniqueIdsServiceJob;
 import org.smartregister.job.SyncServiceJob;
 import org.smartregister.job.SyncTaskServiceJob;
-import org.smartregister.job.SyncTaskWithClientEventsServiceJob;
 import org.smartregister.job.ValidateSyncDataServiceJob;
-import org.smartregister.sync.intent.SyncClientEventsPerTaskIntentService;
 import org.smartregister.sync.intent.SyncIntentService;
 
 import timber.log.Timber;
