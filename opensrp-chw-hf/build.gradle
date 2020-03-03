@@ -117,7 +117,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation ('org.smartregister:opensrp-client-chw-core:1.11.48-SNAPSHOT@aar') {
+    implementation ('org.smartregister:opensrp-client-chw-core:1.1.48-SNAPSHOT@aar') {
         transitive = true
         exclude group: 'org.smartregister', module: 'opensrp-client-native-form'
         exclude group: 'org.smartregister', module: 'opensrp-client-chw-referral'
@@ -144,7 +144,7 @@ dependencies {
         exclude group: 'io.ona.rdt-capture', module: 'lib'
     }
 
-    api('org.smartregister:opensrp-client-core:1.9.23-SNAPSHOT@aar') {
+    api('org.smartregister:opensrp-client-core:1.9.2-SNAPSHOT@aar') {
         transitive = true
         exclude group: 'com.github.bmelnychuk', module: 'atv'
         exclude group: 'com.google.guava', module: 'guava'
