@@ -388,7 +388,7 @@ public class ReferralTaskViewActivity extends SecuredActivity {
                     .withFormSubmissionId(JsonFormUtils.generateRandomUUIDString())
                     .withEntityType(CoreConstants.TABLE_NAME.CLOSE_REFERRAL)
                     .withProviderId(sharedPreferences.fetchRegisteredANM())
-                    .withLocationId(sharedPreferences.fetchDefaultLocalityId(sharedPreferences.fetchRegisteredANM()))
+                    .withLocationId(getTask().getLocation())
                     .withTeamId(sharedPreferences.fetchDefaultTeamId(sharedPreferences.fetchRegisteredANM()))
                     .withTeam(sharedPreferences.fetchDefaultTeam(sharedPreferences.fetchRegisteredANM()))
                     .withClientDatabaseVersion(BuildConfig.DATABASE_VERSION)
