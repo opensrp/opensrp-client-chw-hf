@@ -404,6 +404,9 @@ public class ReferralTaskViewActivity extends SecuredActivity {
 
             org.smartregister.chw.hf.utils.JsonFormUtils.tagSyncMetadata(Utils.context().allSharedPreferences(), baseEvent);// tag docs
 
+            //setting the location uuid of the referral initiator so that to allow the event to sync back to the chw app since it sync data by location.
+            baseEvent.setLocationId(getTask().getLocation());
+
             JSONObject eventJson = new JSONObject(JsonFormUtils.gson.toJson(baseEvent));
             syncHelper.addEvent(getBaseEntityId(), eventJson);
             long lastSyncTimeStamp = HealthFacilityApplication.getInstance().getContext().allSharedPreferences().fetchLastUpdatedAtDate(0);
