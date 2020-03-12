@@ -21,11 +21,6 @@ public class MalariaRegisterActivity extends CoreMalariaRegisterActivity {
     }
 
     @Override
-    protected Activity getMalariaRegisterActivity() {
-        return this;
-    }
-
-    @Override
     protected void registerBottomNavigation() {
 
         bottomNavigationHelper = new BottomNavigationHelper();
@@ -37,4 +32,5 @@ public class MalariaRegisterActivity extends CoreMalariaRegisterActivity {
     protected BaseRegisterFragment getRegisterFragment() {
         return new MalariaRegisterFragment();
     }
+
 }

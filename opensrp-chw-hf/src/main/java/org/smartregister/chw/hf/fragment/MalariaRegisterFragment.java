@@ -4,8 +4,6 @@ import org.smartregister.chw.core.fragment.CoreMalariaRegisterFragment;
 import org.smartregister.chw.core.model.CoreMalariaRegisterFragmentModel;
 import org.smartregister.chw.hf.activity.MalariaProfileActivity;
 import org.smartregister.chw.hf.presenter.MalariaRegisterFragmentPresenter;
-import org.smartregister.chw.malaria.domain.MemberObject;
-import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.view.activity.BaseRegisterActivity;
 
 public class MalariaRegisterFragment extends CoreMalariaRegisterFragment {
@@ -20,7 +18,7 @@ public class MalariaRegisterFragment extends CoreMalariaRegisterFragment {
     }
 
     @Override
-    protected void openProfile(CommonPersonObjectClient client) {
-        MalariaProfileActivity.openProfile(getActivity(), new MemberObject(client), client);
+    protected void openProfile(String baseEntityId) {
+        MalariaProfileActivity.startMalariaActivity(getActivity(), baseEntityId);
     }
 }
