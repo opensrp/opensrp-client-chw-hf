@@ -5,10 +5,10 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 
 import org.smartregister.chw.core.fragment.CoreAllClientsRegisterFragment;
+import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.dao.FamilyDao;
 import org.smartregister.chw.hf.model.FamilyDetailsModel;
 import org.smartregister.chw.hf.utils.AllClientsUtils;
-import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hf.utils.HfReferralUtils;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 
@@ -28,13 +28,13 @@ public class AllClientsRegisterFragment extends CoreAllClientsRegisterFragment {
 
         if (registerType != null) {
             switch (registerType) {
-                case Constants.CHILD:
+                case CoreConstants.REGISTER_TYPE.CHILD:
                     AllClientsUtils.goToChildProfile(this.getActivity(), commonPersonObjectClient, bundle);
                     break;
-                case Constants.ANC:
-                case Constants.PNC:
-                case Constants.MALARIA:
-                case Constants.FAMILY_PLANNING:
+                case CoreConstants.REGISTER_TYPE.ANC:
+                case CoreConstants.REGISTER_TYPE.PNC:
+                case CoreConstants.REGISTER_TYPE.MALARIA:
+                case CoreConstants.REGISTER_TYPE.FAMILY_PLANNING:
                     AllClientsUtils.goToAdultMemberProfile(this.getActivity(), commonPersonObjectClient, bundle);
                     break;
                 default:
