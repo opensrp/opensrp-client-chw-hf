@@ -1,43 +1,24 @@
 package org.smartregister.chw.hf.activity;
 
 import android.content.Intent;
-import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 
-import org.json.JSONObject;
-import org.smartregister.chw.core.custom_views.NavigationMenu;
-import org.smartregister.chw.core.utils.CoreConstants;
+import org.smartregister.chw.core.activity.CoreAllClientsRegisterActivity;
+import org.smartregister.chw.core.presenter.CoreAllClientsRegisterPresenter;
 import org.smartregister.chw.hf.fragment.AllClientsRegisterFragment;
-import org.smartregister.chw.hf.presenter.AllClientsRegisterPresenter;
 import org.smartregister.helper.BottomNavigationHelper;
-import org.smartregister.opd.activity.BaseOpdRegisterActivity;
 import org.smartregister.opd.contract.OpdRegisterActivityContract;
 import org.smartregister.opd.presenter.BaseOpdRegisterActivityPresenter;
 import org.smartregister.view.fragment.BaseRegisterFragment;
 
-public class AllClientsRegisterActivity extends BaseOpdRegisterActivity {
+public class AllClientsRegisterActivity extends CoreAllClientsRegisterActivity {
 
     @Override
     protected BaseRegisterFragment getRegisterFragment() {
         return new AllClientsRegisterFragment();
     }
 
-    @Override
-    public void startFormActivity(JSONObject jsonObject) {
-        //Overridden from the extended abstract class - feature not required for HF app
-    }
-
-    @Override
-    protected void onActivityResultExtended(int i, int i1, Intent intent) {
-        //Overridden from the extended abstract class - feature not required for HF app
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        NavigationMenu.getInstance(this, null, null);
-    }
 
     @Override
     protected void registerBottomNavigation() {
@@ -48,17 +29,7 @@ public class AllClientsRegisterActivity extends BaseOpdRegisterActivity {
 
     @Override
     protected BaseOpdRegisterActivityPresenter createPresenter(@NonNull OpdRegisterActivityContract.View view, @NonNull OpdRegisterActivityContract.Model model) {
-        return new AllClientsRegisterPresenter(view, model);
-    }
-
-    @Override
-    protected void onResumption() {
-        super.onResumption();
-        NavigationMenu menu = NavigationMenu.getInstance(this, null, null);
-        if (menu != null) {
-            menu.getNavigationAdapter()
-                    .setSelectedView(CoreConstants.DrawerMenu.ALL_CLIENTS);
-        }
+        return new CoreAllClientsRegisterPresenter(view, model);
     }
 
     @Override
@@ -68,8 +39,5 @@ public class AllClientsRegisterActivity extends BaseOpdRegisterActivity {
         finish();
     }
 
-    @Override
-    public void startRegistration() {
-        //Overridden from the abstract class - registration feature not required for HF app
-    }
+
 }
