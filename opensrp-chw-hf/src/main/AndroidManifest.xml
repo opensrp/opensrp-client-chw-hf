@@ -174,6 +174,7 @@
         <service android:name="org.smartregister.sync.intent.LocationIntentService" />
         <service android:name="org.smartregister.chw.hf.sync.intent.HfSyncTaskIntentService" />
         <service android:name="org.smartregister.sync.intent.PlanIntentService" />
+        <service android:name="org.smartregister.chw.core.sync.intent.SyncClientEventsPerTaskIntentService" />
 
         <uses-library
             android:name="org.apache.http.legacy"

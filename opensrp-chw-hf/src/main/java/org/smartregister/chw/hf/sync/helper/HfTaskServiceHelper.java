@@ -2,17 +2,19 @@ package org.smartregister.chw.hf.sync.helper;
 
 import org.smartregister.CoreLibrary;
 import org.smartregister.chw.core.utils.CoreConstants;
-import org.smartregister.chw.hf.HealthFacilityApplication;
+import org.smartregister.chw.hf.BuildConfig;
 import org.smartregister.location.helper.LocationHelper;
 import org.smartregister.repository.TaskRepository;
 import org.smartregister.sync.helper.TaskServiceHelper;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
 public class HfTaskServiceHelper extends TaskServiceHelper {
+
     protected static HfTaskServiceHelper instance;
 
     public HfTaskServiceHelper(TaskRepository taskRepository) {
@@ -29,12 +31,12 @@ public class HfTaskServiceHelper extends TaskServiceHelper {
     @Override
     protected List<String> getLocationIds() {
         LocationHelper locationHelper = LocationHelper.getInstance();
-        ArrayList<String> allowedLevels = HealthFacilityApplication.getInstance().getAllowedLocationLevels();
+        ArrayList<String> allowedLevels = new ArrayList<>(Arrays.asList(BuildConfig.FACILITY_LEVEL));
         List<String> locations = new ArrayList<>();
-        if (allowedLevels != null) {
-            List<String> locationIds = locationHelper.generateDefaultLocationHierarchy(allowedLevels);
-            if (locationIds != null) {
-                locations.add(locationHelper.getOpenMrsLocationId(locationIds.get(0)));
+        List<String> locationIds = locationHelper.generateDefaultLocationHierarchy(allowedLevels);
+        if (locationIds != null) {
+            for (String locationName : locationIds) {
+                locations.add(locationHelper.getOpenMrsLocationId(locationName));
             }
         }
         return locations;
