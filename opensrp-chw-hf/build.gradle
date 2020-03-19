@@ -67,7 +67,7 @@ android {
             buildConfigField "String[]", "ALLOWED_LOCATION_LEVELS", '{"Ward" , "Health Facility", "Village", "Village Sublocations"}'
             buildConfigField "String[]", "LOCATION_HIERACHY", '{"Country","Region","District","Ward" , "Health Facility", "Village", "Village Sublocations"}'
             buildConfigField "String", 'DEFAULT_LOCATION', '"Facility"'
-            buildConfigField "String", 'FACILITY_LEVEL', '"Facility"'
+            buildConfigField "String[]", 'FACILITY_LEVEL', '{"Facility"}'
         }
 
         debug {
@@ -85,7 +85,7 @@ android {
             buildConfigField "String[]", "ALLOWED_LOCATION_LEVELS", '{"Ward" , "Council", "Facility", "Health Facility", "Village", "Village Sublocations"}'
             buildConfigField "String[]", "LOCATION_HIERACHY", '{"Country","Region","District","Ward" ,"Council", "Facility", "Health Facility", "Village", "Village Sublocations"}'
             buildConfigField "String", 'DEFAULT_LOCATION', '"Facility"'
-            buildConfigField "String", 'FACILITY_LEVEL', '"Facility"'
+            buildConfigField "String[]", 'FACILITY_LEVEL', '{"Facility", "MOH Jhpiego Facility Name"}'
             testCoverageEnabled true
         }
     }
