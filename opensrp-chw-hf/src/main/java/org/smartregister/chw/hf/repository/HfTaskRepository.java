@@ -2,16 +2,15 @@ package org.smartregister.chw.hf.repository;
 
 import net.sqlcipher.Cursor;
 
+import org.smartregister.chw.core.repository.ChwTaskRepository;
 import org.smartregister.chw.core.utils.ChwDBConstants;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.domain.Task;
-import org.smartregister.repository.Repository;
 import org.smartregister.repository.TaskNotesRepository;
-import org.smartregister.repository.TaskRepository;
 
 import timber.log.Timber;
 
-public class HfTaskRepository extends TaskRepository {
+public class HfTaskRepository extends ChwTaskRepository {
 
     public HfTaskRepository(TaskNotesRepository taskNotesRepository) {
         super(taskNotesRepository);

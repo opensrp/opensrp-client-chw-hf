@@ -3,7 +3,6 @@ package org.smartregister.chw.hf.sync;
 
 import org.smartregister.SyncConfiguration;
 import org.smartregister.SyncFilter;
-import org.smartregister.chw.core.utils.Utils;
 import org.smartregister.chw.hf.BuildConfig;
 
 import java.util.Collections;
@@ -20,12 +19,13 @@ public class HfSyncConfiguration extends SyncConfiguration {
 
     @Override
     public SyncFilter getSyncFilterParam() {
-        return SyncFilter.LOCATION;
+        return SyncFilter.TEAM_ID;
     }
 
     @Override
     public String getSyncFilterValue() {
-        return Utils.getSyncFilterValue();
+        String providerId = org.smartregister.Context.getInstance().allSharedPreferences().fetchRegisteredANM();
+        return org.smartregister.Context.getInstance().allSharedPreferences().fetchDefaultTeamId(providerId);
     }
 
     @Override
