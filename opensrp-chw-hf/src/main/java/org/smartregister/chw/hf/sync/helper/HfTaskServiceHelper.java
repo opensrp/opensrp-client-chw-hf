@@ -8,6 +8,7 @@ import org.smartregister.repository.TaskRepository;
 import org.smartregister.sync.helper.TaskServiceHelper;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
@@ -30,7 +31,7 @@ public class HfTaskServiceHelper extends TaskServiceHelper {
     @Override
     protected List<String> getLocationIds() {
         LocationHelper locationHelper = LocationHelper.getInstance();
-        ArrayList<String> allowedLevels = new ArrayList<>(Collections.singletonList(BuildConfig.FACILITY_LEVEL));
+        ArrayList<String> allowedLevels = new ArrayList<>(Arrays.asList(BuildConfig.FACILITY_LEVEL));
         List<String> locations = new ArrayList<>();
         List<String> locationIds = locationHelper.generateDefaultLocationHierarchy(allowedLevels);
         if (locationIds != null) {

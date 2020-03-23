@@ -67,7 +67,7 @@ android {
             buildConfigField "String[]", "ALLOWED_LOCATION_LEVELS", '{"Ward" , "Health Facility", "Village", "Village Sublocations"}'
             buildConfigField "String[]", "LOCATION_HIERACHY", '{"Country","Region","District","Ward" , "Health Facility", "Village", "Village Sublocations"}'
             buildConfigField "String", 'DEFAULT_LOCATION', '"Facility"'
-            buildConfigField "String", 'FACILITY_LEVEL', '"Facility"'
+            buildConfigField "String[]", 'FACILITY_LEVEL', '{"Facility"}'
         }
 
         debug {
@@ -85,7 +85,7 @@ android {
             buildConfigField "String[]", "ALLOWED_LOCATION_LEVELS", '{"Ward" , "Council", "Facility", "Health Facility", "Village", "Village Sublocations"}'
             buildConfigField "String[]", "LOCATION_HIERACHY", '{"Country","Region","District","Ward" ,"Council", "Facility", "Health Facility", "Village", "Village Sublocations"}'
             buildConfigField "String", 'DEFAULT_LOCATION', '"Facility"'
-            buildConfigField "String", 'FACILITY_LEVEL', '"Facility"'
+            buildConfigField "String[]", 'FACILITY_LEVEL', '{"Facility", "MOH Jhpiego Facility Name"}'
             testCoverageEnabled true
         }
     }
@@ -122,7 +122,6 @@ dependencies {
         transitive = true
         exclude group: 'org.smartregister', module: 'opensrp-client-native-form'
         exclude group: 'org.smartregister', module: 'opensrp-client-chw-referral'
-        exclude group: 'org.smartregister', module: 'opensrp-client-core'
         exclude group: 'org.smartregister', module: 'opensrp-client-opd'
         exclude group: 'com.rengwuxian.materialedittext', module: 'library'
     }
@@ -144,16 +143,6 @@ dependencies {
         exclude group: 'com.android.support', module: 'design'
         exclude group: 'org.yaml', module: 'snakeyaml'
         exclude group: 'io.ona.rdt-capture', module: 'lib'
-    }
-
-    api('org.smartregister:opensrp-client-core:1.9.2-SNAPSHOT@aar') {
-        transitive = true
-        exclude group: 'com.github.bmelnychuk', module: 'atv'
-        exclude group: 'com.google.guava', module: 'guava'
-        exclude group: 'com.android.support', module: 'appcompat-v7'
-        exclude group: 'com.android.support', module: 'design'
-        exclude group: 'com.android.support', module: 'recyclerview-v7'
-        exclude group: 'com.rengwuxian.materialedittext', module: 'library'
     }
 
     implementation 'androidx.appcompat:appcompat:1.0.0' //Do not upgrade to 1.1.0 due to compatibility issues
