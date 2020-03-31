@@ -15,7 +15,6 @@ public class HfNavigationMenu implements NavigationMenu.Flavour {
     public List<Pair<String, Locale>> getSupportedLanguages() {
         return Arrays.asList(Pair.of("English", Locale.ENGLISH), Pair.of("Kiswahili", new Locale("sw")));
     }
-
     @Override
     public HashMap<String, String> getTableMapValues() {
         HashMap<String, String> tableMap = new HashMap<>();
