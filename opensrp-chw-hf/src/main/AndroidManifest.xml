@@ -97,7 +97,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
-            android:name="org.smartregister.chw.core.activity.CoreUpcomingServicesActivity"
+            android:name="org.smartregister.chw.core.activity.CoreFpUpcomingServicesActivity"
             android:screenOrientation="portrait"
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
