@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.smartregister.chw.anc.domain.Visit;
 import org.smartregister.chw.core.activity.CoreFamilyPlanningMemberProfileActivity;
-import org.smartregister.chw.core.activity.CoreUpcomingServicesActivity;
+import org.smartregister.chw.core.activity.CoreFpUpcomingServicesActivity;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.FpUtil;
 import org.smartregister.chw.fp.dao.FpDao;
@@ -104,7 +104,7 @@ public class FamilyPlanningMemberProfileActivity extends CoreFamilyPlanningMembe
 
     @Override
     public void openUpcomingServices() {
-        CoreUpcomingServicesActivity.startMe(this, FpUtil.toMember(fpMemberObject));
+        CoreFpUpcomingServicesActivity.startMe(this, FpUtil.toMember(fpMemberObject));
     }
 
     @Override
