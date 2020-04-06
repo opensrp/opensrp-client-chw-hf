@@ -126,7 +126,9 @@ public class ChildProfileActivity extends CoreChildProfileActivity {
     public boolean onOptionsItemSelected(@NotNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_sick_child_follow_up:
-                displayShortToast(R.string.clicked_sick_child);
+                if (presenter != null) {
+                    ((HfChildProfilePresenter) presenter).startSickChildForm(null);
+                }
                 return true;
             case R.id.action_malaria_diagnosis:
                 displayShortToast(R.string.clicked_malaria_diagnosis);
