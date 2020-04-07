@@ -20,6 +20,7 @@ import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.family.util.Constants;
 import org.smartregister.family.util.DBConstants;
 import org.smartregister.family.util.Utils;
+import org.smartregister.opd.utils.OpdDbConstants;
 
 public class AllClientsUtils {
 
@@ -61,6 +62,7 @@ public class AllClientsUtils {
         intent.putExtra(CoreConstants.INTENT_KEY.CHILD_COMMON_PERSON, patient);
         intent.putExtra(Constants.INTENT_KEY.FAMILY_HEAD, familyHead);
         intent.putExtra(Constants.INTENT_KEY.PRIMARY_CAREGIVER, primaryCaregiver);
+        intent.putExtra(Constants.INTENT_KEY.VILLAGE_TOWN, patient.getDetails().get(OpdDbConstants.KEY.HOME_ADDRESS));
         activity.startActivity(intent);
     }
 
@@ -81,7 +83,7 @@ public class AllClientsUtils {
         }
         intent.putExtra(org.smartregister.chw.anc.util.Constants.ANC_MEMBER_OBJECTS.BASE_ENTITY_ID, patient.entityId());
         intent.putExtra(CoreConstants.INTENT_KEY.CLIENT, patient);
-        intent.putExtra(org.smartregister.chw.anc.util.Constants.ANC_MEMBER_OBJECTS.TITLE_VIEW_TEXT,  R.string.return_to_all_client);
+        intent.putExtra(org.smartregister.chw.anc.util.Constants.ANC_MEMBER_OBJECTS.TITLE_VIEW_TEXT, R.string.return_to_all_client);
         return intent;
     }
 }
