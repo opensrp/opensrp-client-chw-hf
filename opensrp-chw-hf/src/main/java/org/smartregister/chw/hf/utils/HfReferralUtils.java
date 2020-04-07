@@ -66,23 +66,23 @@ public class HfReferralUtils extends CoreReferralUtils {
     }
 
     public static String getTaskFocus(String registerType) {
-        String focus = Constants.OTHER;
+        String focus = CoreConstants.REGISTER_TYPE.OTHER;
         if (registerType != null) {
             switch (registerType) {
-                case Constants.CHILD:
+                case CoreConstants.REGISTER_TYPE.CHILD:
                     focus = CoreConstants.TASKS_FOCUS.SICK_CHILD;
                     break;
-                case Constants.ANC:
+                case CoreConstants.REGISTER_TYPE.ANC:
                     focus = CoreConstants.TASKS_FOCUS.ANC_DANGER_SIGNS;
                     break;
-                case Constants.PNC:
+                case CoreConstants.REGISTER_TYPE.PNC:
                     focus = CoreConstants.TASKS_FOCUS.PNC_DANGER_SIGNS;
                     break;
-                case Constants.FAMILY_PLANNING:
+                case CoreConstants.REGISTER_TYPE.FAMILY_PLANNING:
                     focus = CoreConstants.TASKS_FOCUS.FP_SIDE_EFFECTS;
                     break;
                 default:
-                    focus = Constants.OTHER;
+                    focus = CoreConstants.REGISTER_TYPE.OTHER;
                     break;
             }
         }
