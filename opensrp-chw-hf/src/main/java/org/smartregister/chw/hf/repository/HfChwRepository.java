@@ -7,6 +7,7 @@ import net.sqlcipher.database.SQLiteDatabase;
 import org.smartregister.AllConstants;
 import org.smartregister.chw.core.application.CoreChwApplication;
 import org.smartregister.chw.core.repository.CoreChwRepository;
+import org.smartregister.chw.core.repository.StockUsageReportRepository;
 import org.smartregister.chw.hf.BuildConfig;
 import org.smartregister.domain.db.Column;
 import org.smartregister.immunization.repository.RecurringServiceRecordRepository;
@@ -44,6 +45,9 @@ public class HfChwRepository extends CoreChwRepository {
                     break;
                 case 5:
                     upgradeToVersion5(db);
+                    break;
+                case 6:
+                    upgradeToVersion6(db);
                     break;
                 default:
                     break;
@@ -114,6 +118,14 @@ public class HfChwRepository extends CoreChwRepository {
             db.execSQL(RecurringServiceRecordRepository.UPDATE_TABLE_ADD_CHILD_LOCATION_ID_COL);
         } catch (Exception e) {
             Timber.e(e, "upgradeToVersion5 ");
+        }
+    }
+
+    private static void upgradeToVersion6(SQLiteDatabase db) {
+        try {
+            StockUsageReportRepository.createTable(db);
+        } catch (Exception e) {
+            Timber.e(e);
         }
     }
 }

@@ -137,6 +137,19 @@
         <activity
             android:name=".activity.FpRegisterActivity"
             android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.HfStockInventoryReportActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.ProviderStockUsageReportListActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name="org.smartregister.chw.core.activity.CoreStockInventoryReportActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+
+        <activity
+            android:name="org.smartregister.chw.core.activity.CoreStockInventoryItemDetailsReportActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
 
         <meta-data
             android:name="io.fabric.ApiKey"
