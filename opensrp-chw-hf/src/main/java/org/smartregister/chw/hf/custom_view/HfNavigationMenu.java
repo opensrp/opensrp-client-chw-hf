@@ -8,8 +8,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import org.smartregister.chw.core.activity.HIA2ReportsActivity;
 import org.smartregister.chw.core.custom_views.NavigationMenu;
 import org.smartregister.chw.core.utils.CoreConstants;
-import org.smartregister.chw.hf.R;
-import org.smartregister.chw.hf.adapter.ProviderStockUsageReportListAdapter;
+import org.smartregister.chw.hf.activity.ProviderStockUsageReportListActivity;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -32,28 +31,22 @@ public class HfNavigationMenu implements NavigationMenu.Flavour {
     }
 
     @Override
-    public void registerServiceActivity(Activity activity) {
-        View rlIconServiceReport = rootView.findViewById(R.id.rlServiceReport);
-        rlIconServiceReport.setVisibility(View.VISIBLE);
-        rlIconServiceReport.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(activity, HIA2ReportsActivity.class);
-                activity.startActivity(intent);
-            }
-        });
+    public boolean hasServiceReport() {
+        return false;
     }
 
     @Override
-    public void registerStockReport(Activity activity) {
-        View rlIconStockReport = rootView.findViewById(R.id.rlIconStockReport);
-        rlIconStockReport.setVisibility(View.VISIBLE);
-        rlIconStockReport.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(activity, ProviderStockUsageReportListAdapter.class);
-                activity.startActivity(intent);
-            }
-        });
+    public boolean hasStockReport() {
+        return true;
+    }
+
+    @Override
+    public Intent getStockReportIntent(Activity activity) {
+        return new Intent(activity, ProviderStockUsageReportListActivity.class);
+    }
+
+    @Override
+    public Intent getServiceReportIntent(Activity activity) {
+        return new Intent(activity, HIA2ReportsActivity.class);
     }
 }

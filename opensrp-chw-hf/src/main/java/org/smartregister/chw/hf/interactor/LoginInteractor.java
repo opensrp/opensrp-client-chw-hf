@@ -1,6 +1,5 @@
 package org.smartregister.chw.hf.interactor;
 
-import org.smartregister.chw.core.job.ChwIndicatorGeneratingJob;
 import org.smartregister.chw.core.job.CoreBasePncCloseJob;
 import org.smartregister.chw.core.job.HomeVisitServiceJob;
 import org.smartregister.chw.core.job.StockUsageReportJob;
