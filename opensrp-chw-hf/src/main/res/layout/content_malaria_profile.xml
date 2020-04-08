@@ -12,12 +12,26 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/white">
+            <RelativeLayout
+                android:id="@+id/referral_row"
+                android:layout_width="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
 
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/referral_card_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </androidx.recyclerview.widget.RecyclerView>
+            </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/rlLastVisit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/referral_row"
                 android:background="@drawable/list_item_background_selctor"
                 android:padding="20dp"
                 android:visibility="gone">
@@ -47,8 +61,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@+id/tick_image"
                     android:text="@string/view_medical_history"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/light_grey_text" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
             </RelativeLayout>
 
@@ -58,7 +71,7 @@
                 android:layout_height="1px"
                 android:layout_below="@+id/rlLastVisit"
                 android:background="@color/light_grey"
-                android:visibility="gone" />
+                android:visibility="visible" />
 
             <RelativeLayout
                 android:id="@+id/rlUpcomingServices"
@@ -127,7 +140,7 @@
                 android:layout_below="@+id/view_positive_date_row"
                 android:background="@drawable/list_item_background_selctor"
                 android:padding="20dp"
-                android:visibility="visible">
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/cancel_image"
@@ -151,10 +164,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
+                    android:text="Malaria positive 12 Jan 2018"
                     android:layout_toLeftOf="@+id/iv_positive_date_arrow"
                     android:layout_toRightOf="@+id/cancel_image"
                     android:gravity="left|center_horizontal"
-                    android:text="Malaria positive 12 Jan 2018"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textColor="@android:color/black" />
 
@@ -179,7 +192,7 @@
                 android:layout_height="1px"
                 android:layout_below="@+id/rlMalariaPositiveDate"
                 android:background="@color/light_grey"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
             <RelativeLayout
                 android:id="@+id/rlFamilyServicesDue"
