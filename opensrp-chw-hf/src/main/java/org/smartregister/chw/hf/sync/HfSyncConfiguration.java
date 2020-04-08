@@ -60,8 +60,8 @@ public class HfSyncConfiguration extends SyncConfiguration {
 
     @Override
     public List<String> getSynchronizedLocationTags() {
-         return Collections.emptyList();
-     }
+        return Collections.emptyList();
+    }
 
     @Override
     public String getTopAllowedLocationLevel() {
