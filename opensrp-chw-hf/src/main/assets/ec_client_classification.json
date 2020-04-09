@@ -185,6 +185,13 @@
             "creates_case": [
               "ec_pnc_referral"
             ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "Sick Child Follow-up",
+            "creates_case": [
+              "ec_sick_child_followup"
+            ]
           }
         ]
       }
