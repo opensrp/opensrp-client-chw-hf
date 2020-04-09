@@ -8,6 +8,7 @@ import org.smartregister.chw.anc.domain.MemberObject;
 import org.smartregister.chw.hf.activity.AncMemberProfileActivity;
 import org.smartregister.chw.hf.activity.ChildProfileActivity;
 import org.smartregister.chw.hf.activity.FamilyPlanningMemberProfileActivity;
+import org.smartregister.chw.hf.activity.MalariaProfileActivity;
 import org.smartregister.chw.hf.activity.PncMemberProfileActivity;
 import org.smartregister.chw.hf.activity.ReferralTaskViewActivity;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
@@ -27,7 +28,7 @@ public class ReferralRecyclerClickListener implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        if (getActivity() instanceof AncMemberProfileActivity || getActivity() instanceof PncMemberProfileActivity || getActivity() instanceof FamilyPlanningMemberProfileActivity) {
+        if (getActivity() instanceof AncMemberProfileActivity || getActivity() instanceof PncMemberProfileActivity || getActivity() instanceof FamilyPlanningMemberProfileActivity || getActivity() instanceof MalariaProfileActivity) {
             ReferralTaskViewActivity.startReferralTaskViewActivity(getActivity(), getMemberObject(), getFamilyHeadName(), getFamilyHeadPhoneNumber(), getCommonPersonObjectClient(), getTask(), getStartingActivity());
         } else if (getActivity() instanceof ChildProfileActivity) {
             ReferralTaskViewActivity.startReferralTaskViewActivity(getActivity(), getCommonPersonObjectClient(), getTask(), getStartingActivity());
