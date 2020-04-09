@@ -12,6 +12,7 @@ import org.smartregister.chw.hf.model.ChildRegisterModel;
 import org.smartregister.clientandeventmodel.Client;
 import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
+import org.smartregister.repository.AllSharedPreferences;
 
 import java.lang.ref.WeakReference;
 
@@ -50,4 +51,11 @@ public class HfChildProfilePresenter extends CoreChildProfilePresenter {
             Timber.e(ex);
         }
     }
+
+    @Override
+    public void createSickChildEvent(AllSharedPreferences allSharedPreferences, String jsonString) throws Exception {
+        getInteractor().setChildBaseEntityId(getChildBaseEntityId());
+        getInteractor().createSickChildEvent(allSharedPreferences, jsonString);
+    }
+
 }

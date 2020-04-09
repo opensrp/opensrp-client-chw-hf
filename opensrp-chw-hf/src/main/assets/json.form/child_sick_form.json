@@ -61,14 +61,7 @@
         "openmrs_entity": "",
         "openmrs_entity_id": "concept",
         "openmrs_entity_parent": "",
-        "type": "hidden",
-        "calculation": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "sick_child_calculation.yml"
-            }
-          }
-        }
+        "type": "hidden"
       },
       {
         "key": "weight_sickchild",
