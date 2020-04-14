@@ -59,7 +59,7 @@
       {
         "key": "date_sickchild",
         "openmrs_entity": "",
-        "openmrs_entity_id": "concept",
+        "openmrs_entity_id": "date_sickchild",
         "openmrs_entity_parent": "",
         "type": "hidden",
         "calculation": {
