@@ -61,7 +61,14 @@
         "openmrs_entity": "",
         "openmrs_entity_id": "concept",
         "openmrs_entity_parent": "",
-        "type": "hidden"
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "sick_child_followup_calculation.yml"
+            }
+          }
+        }
       },
       {
         "key": "weight_sickchild",
@@ -140,6 +147,13 @@
             "text": "Days"
           }
         ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "sick_child_followup_relevance.yml"
+            }
+          }
+        },
         "v_required": {
           "value": "true",
           "err": "Please select the duration"
@@ -220,6 +234,16 @@
             "value": false
           }
         ],
+        "exclusive": [
+          "None"
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "sick_child_followup_relevance.yml"
+            }
+          }
+        },
         "v_required": {
           "value": "true",
           "err": "Please select other symptoms"
@@ -262,6 +286,9 @@
             "text": "None"
           }
         ],
+        "exclusive": [
+          "None"
+        ],
         "v_required": {
           "value": "true",
           "err": "Please select investigation ordered"
@@ -275,6 +302,13 @@
         "openmrs_entity_parent": "",
         "edit_type": "name",
         "hint": "Other investigations ordered",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "sick_child_followup_relevance.yml"
+            }
+          }
+        },
         "v_required": {
           "value": "true",
           "err": "Please enter other investigations ordered"
@@ -288,6 +322,13 @@
         "openmrs_entity_parent": "",
         "edit_type": "name",
         "hint": "Investigation results",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "sick_child_followup_relevance.yml"
+            }
+          }
+        },
         "v_required": {
           "value": "true",
           "err": "Please enter investigation results"
@@ -379,6 +420,13 @@
             "value": false
           }
         ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "sick_child_followup_relevance.yml"
+            }
+          }
+        },
         "v_required": {
           "value": "true",
           "err": "Please select drugs taken home"
@@ -405,6 +453,13 @@
         "openmrs_entity_parent": "",
         "edit_type": "number",
         "hint": "Time spent in DTC (mins)",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "sick_child_followup_relevance.yml"
+            }
+          }
+        },
         "v_required": {
           "value": "true",
           "err": "Please indicate the amount of time of the stay in minutes"

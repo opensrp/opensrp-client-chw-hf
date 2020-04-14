@@ -1,0 +1,7 @@
+---
+name: step1_date_sickchild
+description: Calculated age_at_death
+priority: 1
+condition: "true"
+actions:
+  - "calculation = helper.getDateToday()"
