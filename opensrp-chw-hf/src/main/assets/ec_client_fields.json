@@ -1828,6 +1828,30 @@
           }
         },
         {
+          "column_name": "diarrhea_treat_ors",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "diarrhea_treat_ors"
+          }
+        },
+        {
+          "column_name": "diarrhea_treat_rehydration",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "diarrhea_treat_rehydration"
+          }
+        },
+        {
+          "column_name": "diarrhea_treat_zinc",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "diarrhea_treat_zinc"
+          }
+        },
+        {
           "column_name": "diarrhea_treat_walkaway",
           "type": "Event",
           "json_mapping": {
