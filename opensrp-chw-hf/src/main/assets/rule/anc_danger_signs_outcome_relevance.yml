@@ -1,0 +1,7 @@
+---
+name: step1_other_anc_danger_signs
+description: Other danger sign
+priority: 1
+condition: "step1_danger_signs_present.contains('Other')"
+actions:
+  - "isRelevant = true"
