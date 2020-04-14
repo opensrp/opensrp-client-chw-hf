@@ -387,9 +387,76 @@
             "value": false
           }
         ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "sick_child_followup_relevance.yml"
+            }
+          }
+        },
         "v_required": {
           "value": "true",
           "err": "Please indicate treatment given"
+        }
+      },
+      {
+        "key": "diarrhea_treat_ors",
+        "type": "edit_text",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "diarrhea_treat_ors",
+        "openmrs_entity_parent": "",
+        "edit_type": "number",
+        "hint": "Amount of ORS solution (ml)",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "sick_child_followup_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter amount of ORS solution given"
+        }
+      },
+      {
+        "key": "diarrhea_treat_rehydration",
+        "type": "edit_text",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "diarrhea_treat_rehydration",
+        "openmrs_entity_parent": "",
+        "edit_type": "number",
+        "hint": "IV infusion (mls)",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "sick_child_followup_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter amount of IV infusion"
+        }
+      },
+      {
+        "key": "diarrhea_treat_zinc",
+        "type": "edit_text",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "diarrhea_treat_zinc",
+        "openmrs_entity_parent": "",
+        "edit_type": "number",
+        "hint": "Zinc (mg)",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "sick_child_followup_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter amount of Zinc given"
         }
       },
       {
