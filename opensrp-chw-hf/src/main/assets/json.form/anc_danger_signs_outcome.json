@@ -230,6 +230,13 @@
         "openmrs_entity_parent": "",
         "edit_type": "name",
         "hint": "How did the health facility manage the mother's condition?",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_danger_signs_outcome_relevance.yml"
+            }
+          }
+        },
         "v_required": {
           "value": "false",
           "err": null

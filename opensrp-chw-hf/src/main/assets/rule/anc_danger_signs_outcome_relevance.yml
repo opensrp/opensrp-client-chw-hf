@@ -5,3 +5,10 @@ priority: 1
 condition: "step1_danger_signs_present.contains('Other')"
 actions:
   - "isRelevant = true"
+---
+name: step1_managed_signs
+description: How other conditions were managed
+priority: 1
+condition: "step1_action_taken_anc_danger_signs.contains('Managed')"
+actions:
+  - "isRelevant = true"
