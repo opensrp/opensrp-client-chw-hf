@@ -1908,7 +1908,7 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "160939AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "formSubmissionField": "danger_signs_present"
           }
         },
         {
@@ -1924,7 +1924,7 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "164378AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "formSubmissionField": "action_taken_anc_danger_signs"
           }
         },
         {
