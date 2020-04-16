@@ -71,13 +71,41 @@
         }
       },
       {
+        "key": "lmp",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "concept",
+        "openmrs_entity_parent": "",
+        "type": "hidden"
+      },
+      {
+        "key": "gest_age",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "concept",
+        "openmrs_entity_parent": "",
+        "type": "hidden"
+      },
+      {
+        "key": "edd",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "concept",
+        "openmrs_entity_parent": "",
+        "type": "hidden"
+      },
+      {
         "key": "anc_key_info",
         "openmrs_entity_parent": "",
-        "openmrs_entity": "",
+        "openmrs_entity": "concept",
         "openmrs_entity_id": "anc_key_info",
         "type": "toaster_notes",
-        "text": "\"Key information for health facility:\nLast menstral period: (LNMP)\nGestational age: {gest_age}\nEDD: {edd}\"",
-        "toaster_type": "info"
+        "text": "Key information for health facility:\nLast menstrual period: (LNMP)\nGestational age: {gest_age}\nEDD: {edd}",
+        "toaster_type": "info",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_danger_signs_outcome_calculation.yml"
+            }
+          }
+        }
       },
       {
         "key": "danger_signs_present",
