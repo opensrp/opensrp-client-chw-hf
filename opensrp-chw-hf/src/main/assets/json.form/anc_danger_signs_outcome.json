@@ -58,8 +58,8 @@
     "fields": [
       {
         "key": "anc_danger_signs_visitdate",
-        "openmrs_entity": "",
-        "openmrs_entity_id": "concept",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "anc_danger_signs_visitdate",
         "openmrs_entity_parent": "",
         "type": "hidden",
         "calculation": {
@@ -73,21 +73,21 @@
       {
         "key": "lmp",
         "openmrs_entity": "",
-        "openmrs_entity_id": "concept",
+        "openmrs_entity_id": "lmp",
         "openmrs_entity_parent": "",
         "type": "hidden"
       },
       {
         "key": "gest_age",
         "openmrs_entity": "",
-        "openmrs_entity_id": "concept",
+        "openmrs_entity_id": "gest_age",
         "openmrs_entity_parent": "",
         "type": "hidden"
       },
       {
         "key": "edd",
         "openmrs_entity": "",
-        "openmrs_entity_id": "concept",
+        "openmrs_entity_id": "edd",
         "openmrs_entity_parent": "",
         "type": "hidden"
       },
@@ -274,7 +274,7 @@
         "key": "comment_anc_danger_signs",
         "type": "edit_text",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_id": "comment_anc_danger_signs",
         "openmrs_entity_parent": "",
         "edit_type": "name",
         "hint": "Remarks/Comments",

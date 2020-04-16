@@ -1884,6 +1884,66 @@
           }
         }
       ]
+    },
+    {
+      "name": "ec_danger_signs_outcome",
+      "columns": [
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "anc_danger_signs_visitdate",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "anc_danger_signs_visitdate"
+          }
+        },
+        {
+          "column_name": "danger_signs_present",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "160939AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          }
+        },
+        {
+          "column_name": "other_anc_danger_signs",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          }
+        },
+        {
+          "column_name": "action_taken_anc_danger_signs",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "164378AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          }
+        },
+        {
+          "column_name": "managed_signs",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "managed_signs"
+          }
+        },
+        {
+          "column_name": "comment_anc_danger_signs",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "comment_anc_danger_signs"
+          }
+        }
+      ]
     }
   ]
 }

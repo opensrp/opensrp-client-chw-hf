@@ -192,6 +192,13 @@
             "creates_case": [
               "ec_sick_child_followup"
             ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "ANC Danger Signs Outcome",
+            "creates_case": [
+              "ec_danger_signs_outcome"
+            ]
           }
         ]
       }
