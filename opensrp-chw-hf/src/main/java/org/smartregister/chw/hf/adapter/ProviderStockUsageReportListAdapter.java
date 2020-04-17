@@ -36,17 +36,16 @@ public class ProviderStockUsageReportListAdapter extends RecyclerView.Adapter<Pr
     @Override
     public void onBindViewHolder(ProviderStockUsageReportListViewHolder holder, int position) {
         String provider = providerList.get(position);
-        holder.providerName.setText(context.getString(R.string.return_to, provider));
+        holder.providerName.setText(context.getString(R.string.provider_text, provider));
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String providerName = "providerName";
                 Intent intent = new Intent(context, HfStockInventoryReportActivity.class);
 
-                if(position ==  0){
-                    intent.putExtra(providerName, "All-CHWs");
-                }
-                else {
+                if (position == 0) {
+                    intent.putExtra(providerName, context.getString(R.string.all_chw));
+                } else {
                     intent.putExtra(providerName, provider);
                 }
                 context.startActivity(intent);

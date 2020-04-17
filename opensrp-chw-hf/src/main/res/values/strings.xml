@@ -29,10 +29,4 @@
     <string name="anc_danger_sign_prefix">ANC Danger Signs; Symptoms: %s</string>
     <string name="referral_day">Referral %s ago</string>
     <string name="fp_update_family_planning">Update Family planning Registration</string>
-
-    <string name="stock_usage_title">Review CHW Stock Usage</string>
-    <string name="select_chw_to_review">Select a CHW to review</string>
-    <string name="provider_text">%s stock usage</string>
-
-
-</resources>
+    </resources>

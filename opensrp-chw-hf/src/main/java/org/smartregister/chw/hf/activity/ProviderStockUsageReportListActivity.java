@@ -21,6 +21,8 @@ import org.smartregister.chw.hf.utils.HfProviderStockUsageReportUtils;
 import org.smartregister.view.activity.SecuredActivity;
 import org.smartregister.view.customcontrols.CustomFontTextView;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -34,13 +36,16 @@ public class ProviderStockUsageReportListActivity extends SecuredActivity {
         HfStockUsageReportDao hfStockUsageReportDao = new HfStockUsageReportDao();
         HfProviderStockUsageReportUtils hfProviderStockUsageReportUtils = new HfProviderStockUsageReportUtils();
         List<String> arrayList = new LinkedList<>();
-        arrayList.add("All-CHWs");
+        List<String> providers = new ArrayList<>();
+        arrayList.add(this.getString(R.string.all_chw));
 
         if (stockUsageReportUtils.getPreviousMonths().size() > 0) {
             for (Map.Entry<Integer, Integer> entry : stockUsageReportUtils.getPreviousMonths().entrySet()) {
-                arrayList.addAll(hfStockUsageReportDao.getListOfProviders(hfProviderStockUsageReportUtils.getAppendedMonthNumber(String.valueOf(entry.getKey())), String.valueOf(entry.getValue())));
+                 providers.addAll(hfStockUsageReportDao.getListOfProviders(hfProviderStockUsageReportUtils.getAppendedMonthNumber(String.valueOf(entry.getKey())), String.valueOf(entry.getValue())));
             }
         }
+        arrayList.addAll(new HashSet<>(providers));
+
         return arrayList;
     }
 

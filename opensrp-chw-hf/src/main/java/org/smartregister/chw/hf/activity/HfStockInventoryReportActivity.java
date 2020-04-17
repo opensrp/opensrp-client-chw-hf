@@ -5,6 +5,7 @@ import android.content.Intent;
 import org.smartregister.chw.core.activity.CoreStockInventoryReportActivity;
 import org.smartregister.chw.core.dao.StockUsageReportDao;
 import org.smartregister.chw.core.model.StockUsageItemModel;
+import org.smartregister.chw.hf.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,9 +23,8 @@ public class HfStockInventoryReportActivity extends CoreStockInventoryReportActi
     @Override
     public List<StockUsageItemModel> getStockUsageItemReportList(String month, String year) {
         List<StockUsageItemModel> stockUsageItemModelsList = new ArrayList<>();
-        StockUsageReportDao stockUsageReportDao = new StockUsageReportDao();
         for (String item : getItems()) {
-            String usage = stockUsageReportDao.getStockUsageForMonth(month, item, year, providerName);
+            String usage = providerName.equalsIgnoreCase(this.getString(R.string.all_chw)) ? StockUsageReportDao.getAllStockUsageForMonth(month, item, year) : StockUsageReportDao.getStockUsageForMonth(month, item, year, providerName);
             stockUsageItemModelsList.add(new StockUsageItemModel(stockUsageReportUtils.getFormattedItem(item), stockUsageReportUtils.getUnitOfMeasure(item), usage, providerName));
         }
         return stockUsageItemModelsList;
