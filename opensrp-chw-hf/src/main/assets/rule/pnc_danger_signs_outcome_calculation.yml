@@ -1,0 +1,7 @@
+---
+name: pnc_danger_signs_visitdate
+description: Calculated pnc_danger_signs_visitdate
+priority: 1
+condition: "true"
+actions:
+  - "calculation = helper.getDateToday()"
