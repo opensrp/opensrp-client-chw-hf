@@ -30,4 +30,7 @@
     <string name="referral_day">Referral %s ago</string>
     <string name="fp_update_family_planning">Update Family planning Registration</string>
 
+    <string name="service_activity">Service Activity</string>
+    <string name="service_activity_reporting">Service activity reporting</string>
+    <string name="review_chw_services">Review CHW services</string>
 </resources>
