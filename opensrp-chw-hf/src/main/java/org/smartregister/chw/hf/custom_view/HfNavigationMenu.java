@@ -2,7 +2,6 @@ package org.smartregister.chw.hf.custom_view;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.view.View;
 
 import org.apache.commons.lang3.tuple.Pair;
 import org.smartregister.chw.core.activity.HIA2ReportsActivity;
@@ -16,8 +15,6 @@ import java.util.List;
 import java.util.Locale;
 
 public class HfNavigationMenu implements NavigationMenu.Flavour {
-    private View rootView = null;
-
     @Override
     public List<Pair<String, Locale>> getSupportedLanguages() {
         return Arrays.asList(Pair.of("English", Locale.ENGLISH), Pair.of("Kiswahili", new Locale("sw")));

@@ -47,13 +47,9 @@ public class ProviderStockUsageReportListActivity extends SecuredActivity {
         return arrayList;
     }
 
-
     @Override
     protected void onCreation() {
         setContentView(R.layout.activity_provider_stock_usage_list_report);
-
-        TextView title = findViewById(R.id.title_chw_to_review);
-
         RecyclerView recyclerView = findViewById(R.id.rv_provider_stock_usage_report);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         ProviderStockUsageReportListAdapter providerStockUsageReportListAdapter = new ProviderStockUsageReportListAdapter(getProviderList(), this);
@@ -86,6 +82,6 @@ public class ProviderStockUsageReportListActivity extends SecuredActivity {
 
     @Override
     protected void onResumption() {
-
+        //override super
     }
 }
