@@ -84,7 +84,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "164901AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
         "openmrs_entity_parent": "",
-        "label": "Reason the woman is stopping her current family planning method",
+        "label": "Reason the man is stopping her current family planning method",
         "options": [
           {
             "key": "side_effects",
@@ -106,13 +106,6 @@
             "openmrs_entity_id": "164260AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
             "openmrs_entity_parent": "",
             "text": "Doesn't want to use anymore"
-          },
-          {
-            "key": "menopause",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "134346AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-            "openmrs_entity_parent": "",
-            "text": "Menopause"
           },
           {
             "key": "decided_to_change_method",
@@ -190,27 +183,11 @@
         "values": [
           "Male condom",
           "Female condom",
-          "COC",
-          "POP",
-          "Standard day method",
-          "Injectable",
-          "IUCD",
-          "Implanon - NXT",
-          "Jadelle",
-          "Female sterilization",
           "Male sterilization"
         ],
         "openmrs_choice_ids": {
           "Male condom": "164813AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
           "Female condom": "164814AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-          "COC": "159783AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-          "POP": "159784AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-          "Standard day method": "5277AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-          "Injectable": "5279AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-          "IUCD": "5275AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-          "Implanon - NXT": "76022AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-          "Jadelle": "1873AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-          "Female sterilization": "5276AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
           "Male sterilization": "1489AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
         },
         "v_required": {
@@ -225,7 +202,6 @@
           }
         }
       },
-
       {
         "key": "no_condoms",
         "openmrs_entity_parent": "190AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
@@ -270,54 +246,6 @@
         }
       },
       {
-        "key": "no_pillcycles",
-        "openmrs_entity_parent": "5274AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "163171AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-        "type": "edit_text",
-        "edit_type": "number",
-        "hint": "How many pill cycles was she given?",
-        "v_required": {
-          "value": "true",
-          "err": "Equal or greater than 0"
-        },
-        "v_numeric_integer": {
-          "value": "true",
-          "err": "Must be a rounded number"
-        },
-        "v_min": {
-          "value": "0",
-          "err": "Number must be equal or greater than 0"
-        },
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "family_planning_change_method_relevance.yml"
-            }
-          }
-        }
-      },
-      {
-        "key": "fp_start_cocpop",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "fp_start_cocpop",
-        "type": "date_picker",
-        "hint": "When did she start or plan to start using COC/POP?",
-        "max_date": "today",
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "family_planning_change_method_relevance.yml"
-            }
-          }
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Required"
-        }
-      },
-      {
         "key": "counselling_use",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -342,172 +270,6 @@
               "rules-file": "family_planning_change_method_relevance.yml"
             }
           }
-        }
-      },
-      {
-        "key": "fp_start_injectable",
-        "openmrs_entity_parent": "5279AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "162881AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-        "type": "date_picker",
-        "hint": "Date of last injection",
-        "max_date": "today",
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "family_planning_change_method_relevance.yml"
-            }
-          }
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Required"
-        }
-      },
-      {
-        "key": "next_injection_due_date",
-        "openmrs_entity_parent": "5279AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-        "openmrs_entity": "5096AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-        "openmrs_entity_id": "next_injection_due_date",
-        "type": "edit_text",
-        "hint": "Next injection due:",
-        "read_only": "true",
-        "value": "0",
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "family_planning_change_method_relevance.yml"
-            }
-          }
-        },
-        "calculation": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "family_planning_change_method_calculation.yml"
-            }
-          }
-        }
-      },
-      {
-        "key": "fp_start_iucd",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "fp_start_iucd",
-        "type": "date_picker",
-        "hint": "Date of IUCD insertion",
-        "max_date": "today",
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "family_planning_change_method_relevance.yml"
-            }
-          }
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Required"
-        }
-      },
-      {
-        "key": "iucd_removal",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "iucd_removal",
-        "type": "hidden",
-        "calculation": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "family_planning_change_method_calculation.yml"
-            }
-          }
-        }
-      },
-      {
-        "key": "fp_start_implant_nxt",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "fp_start_implant_nxt",
-        "type": "date_picker",
-        "hint": "Date of Implanon - NXT insertion",
-        "max_date": "today",
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "family_planning_change_method_relevance.yml"
-            }
-          }
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Required"
-        }
-      },
-      {
-        "key": "implanon_nxt_removal",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "implanon_nxt_removal",
-        "type": "hidden",
-        "calculation": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "family_planning_change_method_calculation.yml"
-            }
-          }
-        }
-      },
-      {
-        "key": "fp_start_implant_jad",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "fp_start_implant_jad",
-        "type": "date_picker",
-        "hint": "Date of Jadelle insertion",
-        "max_date": "today",
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "family_planning_change_method_relevance.yml"
-            }
-          }
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Required"
-        }
-      },
-      {
-        "key": "jadelle_removal",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "jadelle_removal",
-        "type": "hidden",
-        "calculation": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "family_planning_change_method_calculation.yml"
-            }
-          }
-        }
-      },
-      {
-        "key": "fp_start_female_ster",
-        "openmrs_entity_parent": "5276AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "fp_start_female_ster",
-        "type": "date_picker",
-        "hint": "Date of female sterilization",
-        "max_date": "today",
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "family_planning_change_method_relevance.yml"
-            }
-          }
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Required"
         }
       },
       {
@@ -546,177 +308,13 @@
         }
       },
       {
-        "key": "injection_due_note",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "",
-        "type": "toaster_notes",
-        "text": "Next injection due: {next_injection_due_date}",
-        "toaster_info_text": "Next injection due: {next_injection_due_date}",
-        "toaster_type": "info",
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "family_planning_change_method_relevance.yml"
-            }
-          }
-        },
-        "calculation": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "family_planning_change_method_calculation.yml"
-            }
-          }
-        }
-      },
-      {
-        "key": "injection_symptoms",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "",
-        "type": "toaster_notes",
-        "text": "Tell the woman to check for the following symptoms:\n- Discharge (pus, blood) at injection site\n- Swollen or tender arm at injection site",
-        "toaster_info_text": "Tell the woman to check for the following symptoms:\n- Discharge (pus, blood) at injection site\n- Swollen or tender arm at injection site",
-        "toaster_type": "info",
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "family_planning_change_method_relevance.yml"
-            }
-          }
-        }
-      },
-      {
-        "key": "iucd_removal_note",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "",
-        "type": "toaster_notes",
-        "text": "Removal date: {iucd_removal}",
-        "toaster_info_text": "Removal date: {iucd_removal}",
-        "toaster_type": "info",
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "family_planning_change_method_relevance.yml"
-            }
-          }
-        },
-        "calculation": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "family_planning_change_method_calculation.yml"
-            }
-          }
-        }
-      },
-      {
-        "key": "iucd_symptoms",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "",
-        "type": "toaster_notes",
-        "text": "Tell the woman to check for the following: \n- Protrusion of the string outside or IUCD in the vagina\n- During menses, check for IUCD in her pad \n- During menses, if clots, inspect to see if IUCD has been expelled",
-        "toaster_info_text": "Tell the woman to check for the following: \n- Protrusion of the string outside or IUCD in the vagina\n- During menses, check for IUCD in her pad \n- During menses, if clots, inspect to see if IUCD has been expelled",
-        "toaster_type": "info",
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "family_planning_change_method_relevance.yml"
-            }
-          }
-        }
-      },
-      {
-        "key": "implanon_removal_note",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "",
-        "type": "toaster_notes",
-        "text": "Removal date: {implanon_nxt_removal}",
-        "toaster_info_text": "Removal date: {implanon_nxt_removal}",
-        "toaster_type": "info",
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "family_planning_change_method_relevance.yml"
-            }
-          }
-        },
-        "calculation": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "family_planning_change_method_calculation.yml"
-            }
-          }
-        }
-      },
-      {
-        "key": "jadelle_removal_note",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "",
-        "type": "toaster_notes",
-        "text": "Removal date: {jadelle_removal}",
-        "toaster_info_text": "Removal date: {jadelle_removal}",
-        "toaster_type": "info",
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "family_planning_change_method_relevance.yml"
-            }
-          }
-        },
-        "calculation": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "family_planning_change_method_calculation.yml"
-            }
-          }
-        }
-      },
-      {
-        "key": "implant_symptoms",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "",
-        "type": "toaster_notes",
-        "text": "Tell the woman to check the following and come back if any. \n- If there is protrusion of the rod  \n- Tender or swollen arm and/or discharge at insertion site",
-        "toaster_info_text": "Tell the woman to check the following and come back if any. \n- If there is protrusion of the rod  \n- Tender or swollen arm and/or discharge at insertion site",
-        "toaster_type": "info",
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "family_planning_change_method_relevance.yml"
-            }
-          }
-        }
-      },
-      {
-        "key": "fem_sterialization_symptoms",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "",
-        "type": "toaster_notes",
-        "text": "Tell the woman to come back if:\n- Swollen, tender with discharge at incision site",
-        "toaster_info_text": "Tell the woman to come back if:\n- Swollen, tender with discharge at incision site",
-        "toaster_type": "info",
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "family_planning_change_method_relevance.yml"
-            }
-          }
-        }
-      },
-      {
         "key": "fp_male_ster_note",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "",
         "type": "toaster_notes",
-        "text": "Advise the woman to use condoms for the first 3 months to prevent pregnancy",
-        "toaster_info_text": "Advise the woman to use condoms for the first 3 months to prevent pregnancy",
+        "text": "Advise the man to use condoms for the first 3 months to prevent pregnancy",
+        "toaster_info_text": "Advise the man to use condoms for the first 3 months to prevent pregnancy",
         "toaster_type": "info",
         "relevance": {
           "rules-engine": {
