@@ -5,6 +5,7 @@ import android.content.Intent;
 import org.smartregister.chw.core.activity.CoreStockInventoryReportActivity;
 import org.smartregister.chw.core.dao.StockUsageReportDao;
 import org.smartregister.chw.core.model.StockUsageItemModel;
+import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.R;
 
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public class HfStockInventoryReportActivity extends CoreStockInventoryReportActi
     protected void onCreation() {
         super.onCreation();
         Intent intent = getIntent();
-        providerName = intent.getStringExtra("providerName");
+        providerName = intent.getStringExtra(CoreConstants.HfStockUsageUtil.PROVIDER_NAME);
     }
 
     @Override
