@@ -8,6 +8,7 @@ import org.smartregister.chw.core.activity.CoreStockInventoryReportActivity;
 import org.smartregister.chw.core.activity.HIA2ReportsActivity;
 import org.smartregister.chw.core.custom_views.NavigationMenu;
 import org.smartregister.chw.core.utils.CoreConstants;
+import org.smartregister.chw.hf.activity.HfStockInventoryReportActivity;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -39,7 +40,7 @@ public class HfNavigationMenu implements NavigationMenu.Flavour {
 
     @Override
     public Intent getStockReportIntent(Activity activity) {
-        return new Intent(activity, CoreStockInventoryReportActivity.class);
+        return new Intent(activity, HfStockInventoryReportActivity.class);
     }
 
     @Override
