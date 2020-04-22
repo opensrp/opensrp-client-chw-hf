@@ -2,7 +2,7 @@
   "validate_on_submit": true,
   "show_errors_on_submit": false,
   "count": "1",
-  "encounter_type": "PNC danger signs outcome",
+  "encounter_type": "PNC Danger Signs Outcome",
   "entity_id": "",
   "relational_id": "",
   "metadata": {
@@ -77,6 +77,7 @@
         "openmrs_entity_id": "160939AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
         "openmrs_entity_parent": "",
         "label": "What danger sign did the mother/child have?",
+        "combine_checkbox_option_values": "true",
         "options": [
           {
             "key": "Fever",
@@ -202,10 +203,11 @@
       {
         "key": "action_taken_pnc_danger_signs",
         "type": "check_box",
-        "openmrs_entity": "",
+        "openmrs_entity": "concept",
         "openmrs_entity_id": "action_taken_pnc_danger_signs",
         "openmrs_entity_parent": "",
         "label": "Action taken by health facility",
+        "combine_checkbox_option_values": "true",
         "options": [
           {
             "key": "No_action_taken",
@@ -258,7 +260,7 @@
       {
         "key": "managed_signs",
         "type": "edit_text",
-        "openmrs_entity": "",
+        "openmrs_entity": "concept",
         "openmrs_entity_id": "managed_signs",
         "openmrs_entity_parent": "",
         "edit_type": "name",

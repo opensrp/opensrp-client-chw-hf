@@ -185,6 +185,13 @@
             "creates_case": [
               "ec_pnc_referral"
             ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "PNC Danger Signs Outcome",
+            "creates_case": [
+              "ec_pnc_danger_signs_outcome"
+            ]
           }
         ]
       }
