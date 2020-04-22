@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/referal_row_image"
-            android:gravity="center_horizontal"
+            android:gravity="left|center_horizontal"
             android:text="@string/referral_for"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="@android:color/holo_red_dark" />
