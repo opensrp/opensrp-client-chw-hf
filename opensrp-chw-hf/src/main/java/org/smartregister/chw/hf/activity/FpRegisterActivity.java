@@ -8,7 +8,6 @@ import org.json.JSONObject;
 import org.smartregister.chw.core.activity.CoreFpRegisterActivity;
 import org.smartregister.chw.core.dataloader.FPDataLoader;
 import org.smartregister.chw.core.form_data.NativeFormsDataBinder;
-import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.fp.util.FamilyPlanningConstants;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.fragment.FpRegisterFragment;
