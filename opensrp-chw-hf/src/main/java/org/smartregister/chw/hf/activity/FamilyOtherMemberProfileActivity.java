@@ -2,6 +2,8 @@ package org.smartregister.chw.hf.activity;
 
 import android.content.Context;
 import android.view.Menu;
+import android.view.View;
+import android.widget.RelativeLayout;
 
 import org.json.JSONObject;
 import org.smartregister.chw.core.activity.CoreFamilyOtherMemberProfileActivity;
@@ -28,13 +30,13 @@ import org.smartregister.view.contract.BaseProfileContract;
 
 import timber.log.Timber;
 
-import static org.smartregister.chw.core.utils.Utils.isMemberOfReproductiveAge;
 
 public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfileActivity {
     private FamilyMemberFloatingMenu familyFloatingMenu;
     private BAJsonFormUtils baJsonFormUtils;
     private String dob;
     private String gender;
+    private RelativeLayout layoutFamilyHasRow;
 
     @Override
     protected void onCreation() {
@@ -79,6 +81,18 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
     @Override
     protected void removeIndividualProfile() {
         Timber.d("Remove member action is not required in HF");
+    }
+
+    @Override
+    public void setFamilyServiceStatus(String status) {
+        super.setFamilyServiceStatus(status);
+        layoutFamilyHasRow.setVisibility(View.GONE);
+    }
+
+    @Override
+    protected void setupViews() {
+        super.setupViews();
+        layoutFamilyHasRow = this.findViewById(org.smartregister.chw.core.R.id.family_has_row);
     }
 
     @Override
@@ -168,7 +182,7 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
             menu.findItem(R.id.action_malaria_diagnosis).setVisible(true);
         }
 
-        if (isMemberOfReproductiveAge(commonPersonObject, 10, 49)) {
+        if (isOfReproductiveAge(commonPersonObject, gender)) {
             if (gender.equalsIgnoreCase("female") && !AncDao.isANCMember(baseEntityId)) {
                 menu.findItem(R.id.action_pregnancy_confirmation).setVisible(true);
             }
@@ -179,6 +193,16 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
                 menu.findItem(R.id.action_fp_change).setVisible(false);
                 menu.findItem(R.id.action_fp_initiation).setVisible(true);
             }
+        }
+    }
+
+    private boolean isOfReproductiveAge(CommonPersonObjectClient commonPersonObject, String gender) {
+        if (gender.equalsIgnoreCase("Female")) {
+            return Utils.isMemberOfReproductiveAge(commonPersonObject, 10, 49);
+        } else if (gender.equalsIgnoreCase("Male")) {
+            return Utils.isMemberOfReproductiveAge(commonPersonObject, 15, 49);
+        } else {
+            return false;
         }
     }
 }
