@@ -1755,7 +1755,7 @@
             "concept": "action_taken_pnc_danger_signs"
           }
         },
-        ,{
+        {
           "column_name": "managed_signs",
           "type": "Event",
           "json_mapping": {
