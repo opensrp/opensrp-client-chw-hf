@@ -2,11 +2,14 @@ package org.smartregister.chw.hf.activity;
 
 import android.content.Context;
 import android.view.Menu;
+import android.view.View;
+import android.widget.RelativeLayout;
 
 import org.json.JSONObject;
 import org.smartregister.chw.core.activity.CoreFamilyOtherMemberProfileActivity;
 import org.smartregister.chw.core.activity.CoreFamilyProfileActivity;
 import org.smartregister.chw.core.custom_views.CoreFamilyMemberFloatingMenu;
+import org.smartregister.chw.core.dao.AncDao;
 import org.smartregister.chw.core.fragment.FamilyCallDialogFragment;
 import org.smartregister.chw.core.utils.BAJsonFormUtils;
 import org.smartregister.chw.core.utils.CoreConstants;
@@ -27,16 +30,20 @@ import org.smartregister.view.contract.BaseProfileContract;
 
 import timber.log.Timber;
 
-import static org.smartregister.chw.core.utils.Utils.isWomanOfReproductiveAge;
 
 public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfileActivity {
     private FamilyMemberFloatingMenu familyFloatingMenu;
     private BAJsonFormUtils baJsonFormUtils;
+    private String dob;
+    private String gender;
+    private RelativeLayout layoutFamilyHasRow;
 
     @Override
     protected void onCreation() {
         super.onCreation();
         baJsonFormUtils = new BAJsonFormUtils(HealthFacilityApplication.getInstance());
+        dob = org.smartregister.family.util.Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.DOB, false);
+        gender = org.smartregister.family.util.Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.GENDER, false);
     }
 
     @Override
@@ -53,13 +60,12 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
 
     @Override
     protected void startFpRegister() {
-        //TODO implement start family planning register for HF
+        FpRegisterActivity.startFpRegistrationActivity(this, baseEntityId, dob, CoreConstants.JSON_FORM.getFpRegistrationForm(gender), FamilyPlanningConstants.ActivityPayload.REGISTRATION_PAYLOAD_TYPE);
     }
 
     @Override
     protected void startFpChangeMethod() {
-        String dob = org.smartregister.family.util.Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.DOB, false);
-        FpRegisterActivity.startFpRegistrationActivity(this, baseEntityId, dob, CoreConstants.JSON_FORM.getFpChengeMethodForm(), FamilyPlanningConstants.ActivityPayload.CHANGE_METHOD_PAYLOAD_TYPE);
+        FpRegisterActivity.startFpRegistrationActivity(this, baseEntityId, dob, CoreConstants.JSON_FORM.getFpChangeMethodForm(gender), FamilyPlanningConstants.ActivityPayload.CHANGE_METHOD_PAYLOAD_TYPE);
     }
 
     @Override
@@ -75,6 +81,18 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
     @Override
     protected void removeIndividualProfile() {
         Timber.d("Remove member action is not required in HF");
+    }
+
+    @Override
+    public void setFamilyServiceStatus(String status) {
+        super.setFamilyServiceStatus(status);
+        layoutFamilyHasRow.setVisibility(View.GONE);
+    }
+
+    @Override
+    protected void setupViews() {
+        super.setupViews();
+        layoutFamilyHasRow = this.findViewById(org.smartregister.chw.core.R.id.family_has_row);
     }
 
     @Override
@@ -149,6 +167,7 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
     }
 
     private void setupMenuOptions(Menu menu) {
+        String gender = Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.GENDER, false);
         menu.findItem(R.id.action_malaria_registration).setVisible(false);
         menu.findItem(R.id.action_malaria_followup_visit).setVisible(false);
         menu.findItem(R.id.action_sick_child_follow_up).setVisible(false);
@@ -163,15 +182,27 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
             menu.findItem(R.id.action_malaria_diagnosis).setVisible(true);
         }
 
-        if (isWomanOfReproductiveAge(commonPersonObject, 10, 49)) {
-            menu.findItem(R.id.action_pregnancy_confirmation).setVisible(true);
+        if (isOfReproductiveAge(commonPersonObject, gender)) {
+            if (gender.equalsIgnoreCase("female") && !AncDao.isANCMember(baseEntityId)) {
+                menu.findItem(R.id.action_pregnancy_confirmation).setVisible(true);
+            }
             if (FpDao.isRegisteredForFp(baseEntityId)) {
                 menu.findItem(R.id.action_fp_change).setVisible(true);
-                menu.findItem(R.id.action_family_planning_initiation).setVisible(false);
+                menu.findItem(R.id.action_fp_initiation).setVisible(false);
             } else {
                 menu.findItem(R.id.action_fp_change).setVisible(false);
-                menu.findItem(R.id.action_family_planning_initiation).setVisible(true);
+                menu.findItem(R.id.action_fp_initiation).setVisible(true);
             }
+        }
+    }
+
+    private boolean isOfReproductiveAge(CommonPersonObjectClient commonPersonObject, String gender) {
+        if (gender.equalsIgnoreCase("Female")) {
+            return Utils.isMemberOfReproductiveAge(commonPersonObject, 10, 49);
+        } else if (gender.equalsIgnoreCase("Male")) {
+            return Utils.isMemberOfReproductiveAge(commonPersonObject, 15, 49);
+        } else {
+            return false;
         }
     }
 }

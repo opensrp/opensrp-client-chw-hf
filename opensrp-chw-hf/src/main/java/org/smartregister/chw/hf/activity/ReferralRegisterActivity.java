@@ -3,7 +3,7 @@ package org.smartregister.chw.hf.activity;
 import android.content.Intent;
 
 import org.smartregister.chw.core.activity.BaseReferralRegister;
-import org.smartregister.chw.core.presenter.BaseRefererralPresenter;
+import org.smartregister.chw.core.presenter.BaseReferralPresenter;
 import org.smartregister.chw.hf.fragment.ReferralRegisterFragment;
 import org.smartregister.helper.BottomNavigationHelper;
 import org.smartregister.view.fragment.BaseRegisterFragment;
@@ -17,7 +17,7 @@ public class ReferralRegisterActivity extends BaseReferralRegister {
 
     @Override
     protected void initializePresenter() {
-        presenter = new BaseRefererralPresenter();
+        presenter = new BaseReferralPresenter();
     }
 
     @Override
