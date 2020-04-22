@@ -1,5 +1,8 @@
 package org.smartregister.chw.hf.custom_view;
 
+import android.app.Activity;
+import android.content.Intent;
+
 import org.apache.commons.lang3.tuple.Pair;
 import org.smartregister.chw.core.custom_views.NavigationMenu;
 import org.smartregister.chw.core.utils.CoreConstants;
@@ -30,5 +33,15 @@ public class HfNavigationMenu implements NavigationMenu.Flavour {
     @Override
     public boolean hasStockReport() {
         return false;
+    }
+
+    @Override
+    public Intent getStockReportIntent(Activity activity) {
+        return null;
+    }
+
+    @Override
+    public Intent getServiceReportIntent(Activity activity) {
+        return null;
     }
 }
