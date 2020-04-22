@@ -2,6 +2,8 @@ package org.smartregister.chw.hf.activity;
 
 import android.content.Context;
 import android.view.Menu;
+import android.view.View;
+import android.widget.RelativeLayout;
 
 import org.json.JSONObject;
 import org.smartregister.chw.core.activity.CoreFamilyOtherMemberProfileActivity;
@@ -34,6 +36,8 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
     private BAJsonFormUtils baJsonFormUtils;
     private String dob;
     private String gender;
+    private RelativeLayout layoutFamilyHasRow;
+
     @Override
     protected void onCreation() {
         super.onCreation();
@@ -77,6 +81,18 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
     @Override
     protected void removeIndividualProfile() {
         Timber.d("Remove member action is not required in HF");
+    }
+
+    @Override
+    public void setFamilyServiceStatus(String status) {
+        super.setFamilyServiceStatus(status);
+        layoutFamilyHasRow.setVisibility(View.GONE);
+    }
+
+    @Override
+    protected void setupViews() {
+        super.setupViews();
+        layoutFamilyHasRow = this.findViewById(org.smartregister.chw.core.R.id.family_has_row);
     }
 
     @Override
