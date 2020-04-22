@@ -1734,9 +1734,10 @@
         {
           "column_name": "danger_signs_present",
           "type": "Event",
+          "save_format": "json_array",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "160939AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "danger_signs_present"
           }
         },
         {
@@ -1750,6 +1751,7 @@
         {
           "column_name": "action_taken",
           "type": "Event",
+          "save_format": "json_array",
           "json_mapping": {
             "field": "obs.fieldCode",
             "concept": "action_taken_pnc_danger_signs"
