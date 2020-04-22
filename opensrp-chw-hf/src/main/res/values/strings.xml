@@ -29,5 +29,4 @@
     <string name="anc_danger_sign_prefix">ANC Danger Signs; Symptoms: %s</string>
     <string name="referral_day">Referral %s ago</string>
     <string name="fp_update_family_planning">Update Family planning Registration</string>
-
-</resources>
+    </resources>
