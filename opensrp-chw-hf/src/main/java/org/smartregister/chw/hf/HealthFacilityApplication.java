@@ -20,6 +20,7 @@ import org.smartregister.chw.core.custom_views.NavigationMenu;
 import org.smartregister.chw.core.loggers.CrashlyticsTree;
 import org.smartregister.chw.core.provider.CoreAllClientsRegisterQueryProvider;
 import org.smartregister.chw.core.service.CoreAuthorizationService;
+import org.smartregister.chw.core.sync.CoreClientProcessor;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.FormUtils;
 import org.smartregister.chw.fp.FpLibrary;
@@ -200,6 +201,8 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
         if (language.equals(Locale.FRENCH.getLanguage())) {
             saveLanguage(Locale.FRENCH.getLanguage());
         }
+        // set up processor
+        FamilyLibrary.getInstance().setClientProcessorForJava(CoreClientProcessor.getInstance(getApplicationContext()));
     }
 
     @Override

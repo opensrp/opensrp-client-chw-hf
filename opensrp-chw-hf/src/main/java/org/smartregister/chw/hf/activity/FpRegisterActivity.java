@@ -18,6 +18,7 @@ import org.smartregister.view.fragment.BaseRegisterFragment;
 public class FpRegisterActivity extends CoreFpRegisterActivity {
 
     private static String baseEntityId;
+    private static String fpFormName;
 
     public static void startFpRegistrationActivity(Activity activity, String baseEntityID, String dob, String formName, String payloadType) {
         Intent intent = new Intent(activity, FpRegisterActivity.class);
@@ -26,6 +27,7 @@ public class FpRegisterActivity extends CoreFpRegisterActivity {
         intent.putExtra(FamilyPlanningConstants.ActivityPayload.FP_FORM_NAME, formName);
         intent.putExtra(FamilyPlanningConstants.ActivityPayload.ACTION, payloadType);
         baseEntityId = baseEntityID;
+        fpFormName = formName;
         activity.startActivity(intent);
     }
 
@@ -35,7 +37,7 @@ public class FpRegisterActivity extends CoreFpRegisterActivity {
         NativeFormsDataBinder binder = new NativeFormsDataBinder(this, baseEntityId);
         binder.setDataLoader(new FPDataLoader(getString(R.string.fp_update_family_planning)));
 
-        JSONObject form = binder.getPrePopulatedForm(FamilyPlanningConstants.Forms.FAMILY_PLANNING_REGISTRATION_FORM);
+        JSONObject form = binder.getPrePopulatedForm(fpFormName);
         try {
             form.put(JsonFormUtils.ENCOUNTER_TYPE, FamilyPlanningConstants.EventType.UPDATE_FAMILY_PLANNING_REGISTRATION);
         } catch (JSONException e) {
