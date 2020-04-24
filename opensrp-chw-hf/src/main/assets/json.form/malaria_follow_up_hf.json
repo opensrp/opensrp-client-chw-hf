@@ -1,0 +1,500 @@
+{
+  "validate_on_submit": true,
+  "show_errors_on_submit": false,
+  "count": "1",
+  "encounter_type": "Malaria Follow up HF",
+  "entity_id": "",
+  "relational_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "malaria_hf_followup": {
+    "step1": "Malaria Follow-up",
+    "fields": [
+      {
+        "key": "date_malaria_visit_hf",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "date_malaria_visit_hf",
+        "openmrs_entity_parent": "",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "malaria_followup_hf_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "weight_malaria_hf",
+        "type": "edit_text",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "weight_malaria_hf",
+        "openmrs_entity_parent": "",
+        "edit_type": "number",
+        "hint": "Weight (kg)",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter weight"
+        }
+      },
+      {
+        "key": "height_malaria_hf",
+        "type": "edit_text",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "height_malaria_hf",
+        "openmrs_entity_parent": "",
+        "edit_type": "number",
+        "hint": "Height (cm)",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter height"
+        }
+      },
+      {
+        "key": "test_malaria_hf",
+        "type": "check_box",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "test_malaria_hf",
+        "openmrs_entity_parent": "",
+        "label": "Tests ordered",
+        "combine_checkbox_option_values": "true",
+        "options": [
+          {
+            "key": "mRDT",
+            "openmrs_choice_id": "",
+            "text": "mRDT",
+            "value": false
+          },
+          {
+            "key": "Microscopy_blood_smear",
+            "openmrs_choice_id": "",
+            "text": "Microscopy (Blood smear)",
+            "value": false
+          },
+          {
+            "key": "mRDT_not_done",
+            "openmrs_choice_id": "",
+            "text": "mRDT not done",
+            "value": false
+          },
+          {
+            "key": "Other_tests",
+            "openmrs_choice_id": "",
+            "text": "Other tests",
+            "value": false
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please indicate tests ordered"
+        }
+      },
+      {
+        "key": "no_mrdt_malaria_hf",
+        "type": "check_box",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "no_mrdt_malaria_hf",
+        "openmrs_entity_parent": "",
+        "label": "Reason for mRDT not done",
+        "combine_checkbox_option_values": "true",
+        "options": [
+          {
+            "key": "stock_out",
+            "openmrs_choice_id": "",
+            "text": "Stock out",
+            "value": false
+          },
+          {
+            "key": "mRDT_done_within_14_days",
+            "openmrs_choice_id": "",
+            "text": "mRDT done within 14 days",
+            "value": false
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select reason for mRDT not done"
+        }
+      },
+      {
+        "key": "other_test_malaria_hf",
+        "type": "edit_text",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_test_malaria_hf",
+        "openmrs_entity_parent": "",
+        "edit_type": "name",
+        "hint": "Other tests requested",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "malaria_followup_hf_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter other tests requested"
+        }
+      },
+      {
+        "key": "test_results_malaria_hf",
+        "type": "check_box",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "test_results_malaria_hf",
+        "openmrs_entity_parent": "",
+        "label": "Test results",
+        "combine_checkbox_option_values": "true",
+        "options": [
+          {
+            "key": "mRDT_positive",
+            "openmrs_choice_id": "",
+            "text": "mRDT positive",
+            "value": false
+          },
+          {
+            "key": "mRDT_negative",
+            "openmrs_choice_id": "",
+            "text": "mRDT negative",
+            "value": false
+          },
+          {
+            "key": "Malaria_parasite_seen",
+            "openmrs_choice_id": "",
+            "text": "Malaria parasite seen",
+            "value": false
+          },
+          {
+            "key": "No_malaria_parasite_seen",
+            "openmrs_choice_id": "",
+            "text": "No malaria parasite seen",
+            "value": false
+          },
+          {
+            "key": "Other_test_results",
+            "openmrs_choice_id": "",
+            "text": "Other test results",
+            "value": false
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select test results"
+        }
+      },
+      {
+        "key": "other_test_results_malaria_hf",
+        "type": "edit_text",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_test_results_malaria_hf",
+        "openmrs_entity_parent": "",
+        "edit_type": "name",
+        "hint": "Other test results",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "malaria_followup_hf_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter other test results"
+        }
+      },
+      {
+        "key": "diagnosis_malaria_hf",
+        "type": "check_box",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "diagnosis_malaria_hf",
+        "openmrs_entity_parent": "",
+        "label": "Diagnosis",
+        "combine_checkbox_option_values": "true",
+        "options": [
+          {
+            "key": "Uncomplicated_malaria",
+            "openmrs_choice_id": "",
+            "text": "Uncomplicated malaria",
+            "value": false
+          },
+          {
+            "key": "Severe_malaria",
+            "openmrs_choice_id": "",
+            "text": "Severe malaria",
+            "value": false
+          },
+          {
+            "key": "Other_diagnosis",
+            "openmrs_choice_id": "",
+            "text": "Other diagnosis",
+            "value": false
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select diagnosis"
+        }
+      },
+      {
+        "key": "other_diagnosis_malaria_hf",
+        "type": "edit_text",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_diagnosis_malaria_hf",
+        "openmrs_entity_parent": "",
+        "edit_type": "name",
+        "hint": "Other diagnosis",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "malaria_followup_hf_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter other diagnosis"
+        }
+      },
+      {
+        "key": "treat_malaria_hf",
+        "type": "check_box",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "treat_malaria_hf",
+        "openmrs_entity_parent": "",
+        "combine_checkbox_option_values": "true",
+        "label": "Treatment prescribed",
+        "options": [
+          {
+            "key": "ALU_1_x_6_strips",
+            "openmrs_choice_id": "",
+            "text": "ALU 1 x 6 strips",
+            "value": false
+          },
+          {
+            "key": "ALU_2_x_6_strips",
+            "openmrs_choice_id": "",
+            "text": "ALU 2 x 6 strips",
+            "value": false
+          },
+          {
+            "key": "ALU_3_x_6_strips",
+            "openmrs_choice_id": "",
+            "text": "ALU 3 x 6 strips",
+            "value": false
+          },
+          {
+            "key": "ALU_4_x_6_strips",
+            "openmrs_choice_id": "",
+            "text": "ALU 4 x 6 strips",
+            "value": false
+          },
+          {
+            "key": "Injection_artesunate",
+            "openmrs_choice_id": "",
+            "text": "Injection artesunate",
+            "value": false
+          },
+          {
+            "key": "Paracetamol",
+            "openmrs_choice_id": "",
+            "text": "Paracetamol",
+            "value": false
+          },
+          {
+            "key": "Other_drugs",
+            "openmrs_choice_id": "NA",
+            "text": "Other drugs",
+            "value": false
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please enter treatment prescribed"
+        }
+      },
+      {
+        "key": "treat_other_malaria_hf",
+        "type": "edit_text",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "treat_other_malaria_hf",
+        "openmrs_entity_parent": "",
+        "edit_type": "name",
+        "hint": "Mention other medication provided",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter other medication"
+        }
+      },
+      {
+        "key": "outcome_malaria_hf",
+        "type": "native_radio",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "outcome_malaria_hf",
+        "openmrs_entity_parent": "",
+        "label": "Outcomes",
+        "options": [
+          {
+            "key": "Referral",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "",
+            "openmrs_entity_parent": "",
+            "text": "Referral"
+          },
+          {
+            "key": "Admitted",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "",
+            "openmrs_entity_parent": "",
+            "text": "Admitted"
+          },
+          {
+            "key": "Death",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "",
+            "openmrs_entity_parent": "",
+            "text": "Death"
+          },
+          {
+            "key": "Discharge",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "",
+            "openmrs_entity_parent": "",
+            "text": "Discharge"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select outcome"
+        }
+      },
+      {
+        "key": "remark_malaria_hf",
+        "type": "edit_text",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "remark_malaria_hf",
+        "openmrs_entity_parent": "",
+        "edit_type": "name",
+        "hint": "Remarks / Comments",
+        "v_required": {
+          "value": "false",
+          "err": null
+        }
+      },
+      {
+        "key": "hcp_attending",
+        "type": "native_radio",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hcp_attending",
+        "openmrs_entity_parent": "",
+        "label": "Title of HCP attending the client",
+        "options": [
+          {
+            "key": "Medical_Doctor_MD",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "",
+            "openmrs_entity_parent": "",
+            "text": "Medical Doctor (MD)"
+          },
+          {
+            "key": "Assistant_Medical_Doctor_AMO",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "",
+            "openmrs_entity_parent": "",
+            "text": "Assistant Medical Doctor (AMO)"
+          },
+          {
+            "key": "Clinical_Officer_CO",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "",
+            "openmrs_entity_parent": "",
+            "text": "Clinical Officer (CO)"
+          },
+          {
+            "key": "Assistance_Clincal_Officer_ACO",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "",
+            "openmrs_entity_parent": "",
+            "text": "Assistance Clincal Officer (ACO)"
+          },
+          {
+            "key": "Nursing_Officer_NO",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "",
+            "openmrs_entity_parent": "",
+            "text": "Nursing Officer (NO)"
+          },
+          {
+            "key": "Assistant_Nursing_officer_ANO",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "NA",
+            "openmrs_entity_parent": "",
+            "text": "Assistant Nursing officer (ANO)"
+          },
+          {
+            "key": "Enrolled_Nurse_EN",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "NA",
+            "openmrs_entity_parent": "",
+            "text": "Enrolled Nurse (EN)"
+          },
+          {
+            "key": "Medical_Attendant_MAT",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "NA",
+            "openmrs_entity_parent": "",
+            "text": "Medical Attendant (MAT)"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select title of HCP attending"
+        }
+      }
+    ]
+  }
+}
