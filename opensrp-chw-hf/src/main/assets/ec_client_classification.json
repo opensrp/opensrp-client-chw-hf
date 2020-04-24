@@ -192,6 +192,13 @@
             "creates_case": [
               "ec_pnc_danger_signs_outcome"
             ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "Malaria Follow-up HF",
+            "creates_case": [
+              "ec_malaria_followup_hf"
+            ]
           }
         ]
       }

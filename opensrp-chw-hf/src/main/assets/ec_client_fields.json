@@ -1774,6 +1774,143 @@
           }
         }
       ]
+    },
+    {
+      "name": "ec_malaria_followup_hf",
+      "columns": [
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "visit_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "date_malaria_visit_hf"
+          }
+        },
+        {
+          "column_name": "weight",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "weight_malaria_hf"
+          }
+        },
+        {
+          "column_name": "height",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "height_malaria_hf"
+          }
+        },
+        {
+          "column_name": "tests_ordered",
+          "type": "Event",
+          "save_format": "json_array",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "test_malaria_hf"
+          }
+        },
+        {
+          "column_name": "no_mrdt_reason",
+          "type": "Event",
+          "save_format": "json_array",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "no_mrdt_malaria_hf"
+          }
+        },
+        {
+          "column_name": "other_tests",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "other_test_malaria_hf"
+          }
+        },
+        {
+          "column_name": "test_results",
+          "type": "Event",
+          "save_format": "json_array",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "test_results_malaria_hf"
+          }
+        },
+        {
+          "column_name": "other_test_results",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "other_test_results_malaria_hf"
+          }
+        },
+        {
+          "column_name": "diagnosis",
+          "type": "Event",
+          "save_format": "json_array",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "diagnosis_malaria_hf"
+          }
+        },
+        {
+          "column_name": "other_diagnosis",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "other_diagnosis_malaria_hf"
+          }
+        },
+        {
+          "column_name": "treatment_prescribed",
+          "type": "Event",
+          "save_format": "json_array",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "treat_malaria_hf"
+          }
+        },
+        {
+          "column_name": "other_treatment_prescribed",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "treat_other_malaria_hf"
+          }
+        },
+        {
+          "column_name": "outcomes",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "outcome_malaria_hf"
+          }
+        },
+        {
+          "column_name": "remarks",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "remark_malaria_hf"
+          }
+        },
+        {
+          "column_name": "hcp_attending",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "hcp_attending"
+          }
+        }
+      ]
     }
   ]
 }

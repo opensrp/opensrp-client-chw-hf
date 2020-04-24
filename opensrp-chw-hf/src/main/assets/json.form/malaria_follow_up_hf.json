@@ -2,7 +2,7 @@
   "validate_on_submit": true,
   "show_errors_on_submit": false,
   "count": "1",
-  "encounter_type": "Malaria Follow up HF",
+  "encounter_type": "Malaria Follow-up HF",
   "entity_id": "",
   "relational_id": "",
   "metadata": {
@@ -73,7 +73,7 @@
       {
         "key": "weight_malaria_hf",
         "type": "edit_text",
-        "openmrs_entity": "concept",
+        "openmrs_entity": "",
         "openmrs_entity_id": "weight_malaria_hf",
         "openmrs_entity_parent": "",
         "edit_type": "number",
@@ -86,7 +86,7 @@
       {
         "key": "height_malaria_hf",
         "type": "edit_text",
-        "openmrs_entity": "concept",
+        "openmrs_entity": "",
         "openmrs_entity_id": "height_malaria_hf",
         "openmrs_entity_parent": "",
         "edit_type": "number",
@@ -99,7 +99,7 @@
       {
         "key": "test_malaria_hf",
         "type": "check_box",
-        "openmrs_entity": "concept",
+        "openmrs_entity": "",
         "openmrs_entity_id": "test_malaria_hf",
         "openmrs_entity_parent": "",
         "label": "Tests ordered",
@@ -138,7 +138,7 @@
       {
         "key": "no_mrdt_malaria_hf",
         "type": "check_box",
-        "openmrs_entity": "concept",
+        "openmrs_entity": "",
         "openmrs_entity_id": "no_mrdt_malaria_hf",
         "openmrs_entity_parent": "",
         "label": "Reason for mRDT not done",
@@ -165,7 +165,7 @@
       {
         "key": "other_test_malaria_hf",
         "type": "edit_text",
-        "openmrs_entity": "concept",
+        "openmrs_entity": "",
         "openmrs_entity_id": "other_test_malaria_hf",
         "openmrs_entity_parent": "",
         "edit_type": "name",
@@ -185,7 +185,7 @@
       {
         "key": "test_results_malaria_hf",
         "type": "check_box",
-        "openmrs_entity": "concept",
+        "openmrs_entity": "",
         "openmrs_entity_id": "test_results_malaria_hf",
         "openmrs_entity_parent": "",
         "label": "Test results",
@@ -230,7 +230,7 @@
       {
         "key": "other_test_results_malaria_hf",
         "type": "edit_text",
-        "openmrs_entity": "concept",
+        "openmrs_entity": "",
         "openmrs_entity_id": "other_test_results_malaria_hf",
         "openmrs_entity_parent": "",
         "edit_type": "name",
@@ -250,7 +250,7 @@
       {
         "key": "diagnosis_malaria_hf",
         "type": "check_box",
-        "openmrs_entity": "concept",
+        "openmrs_entity": "",
         "openmrs_entity_id": "diagnosis_malaria_hf",
         "openmrs_entity_parent": "",
         "label": "Diagnosis",
@@ -283,7 +283,7 @@
       {
         "key": "other_diagnosis_malaria_hf",
         "type": "edit_text",
-        "openmrs_entity": "concept",
+        "openmrs_entity": "",
         "openmrs_entity_id": "other_diagnosis_malaria_hf",
         "openmrs_entity_parent": "",
         "edit_type": "name",
@@ -303,7 +303,7 @@
       {
         "key": "treat_malaria_hf",
         "type": "check_box",
-        "openmrs_entity": "concept",
+        "openmrs_entity": "",
         "openmrs_entity_id": "treat_malaria_hf",
         "openmrs_entity_parent": "",
         "combine_checkbox_option_values": "true",
@@ -360,7 +360,7 @@
       {
         "key": "treat_other_malaria_hf",
         "type": "edit_text",
-        "openmrs_entity": "concept",
+        "openmrs_entity": "",
         "openmrs_entity_id": "treat_other_malaria_hf",
         "openmrs_entity_parent": "",
         "edit_type": "name",
@@ -380,7 +380,7 @@
       {
         "key": "outcome_malaria_hf",
         "type": "native_radio",
-        "openmrs_entity": "concept",
+        "openmrs_entity": "",
         "openmrs_entity_id": "outcome_malaria_hf",
         "openmrs_entity_parent": "",
         "label": "Outcomes",
@@ -422,7 +422,7 @@
       {
         "key": "remark_malaria_hf",
         "type": "edit_text",
-        "openmrs_entity": "concept",
+        "openmrs_entity": "",
         "openmrs_entity_id": "remark_malaria_hf",
         "openmrs_entity_parent": "",
         "edit_type": "name",
@@ -435,7 +435,7 @@
       {
         "key": "hcp_attending",
         "type": "native_radio",
-        "openmrs_entity": "concept",
+        "openmrs_entity": "",
         "openmrs_entity_id": "hcp_attending",
         "openmrs_entity_parent": "",
         "label": "Title of HCP attending the client",
@@ -478,21 +478,21 @@
           {
             "key": "Assistant_Nursing_officer_ANO",
             "openmrs_entity": "",
-            "openmrs_entity_id": "NA",
+            "openmrs_entity_id": "",
             "openmrs_entity_parent": "",
             "text": "Assistant Nursing officer (ANO)"
           },
           {
             "key": "Enrolled_Nurse_EN",
             "openmrs_entity": "",
-            "openmrs_entity_id": "NA",
+            "openmrs_entity_id": "",
             "openmrs_entity_parent": "",
             "text": "Enrolled Nurse (EN)"
           },
           {
             "key": "Medical_Attendant_MAT",
             "openmrs_entity": "",
-            "openmrs_entity_id": "NA",
+            "openmrs_entity_id": "",
             "openmrs_entity_parent": "",
             "text": "Medical Attendant (MAT)"
           }
