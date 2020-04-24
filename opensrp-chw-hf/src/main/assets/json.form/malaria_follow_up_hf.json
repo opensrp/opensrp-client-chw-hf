@@ -53,8 +53,8 @@
       "value": ""
     }
   },
-  "malaria_hf_followup": {
-    "step1": "Malaria Follow-up",
+  "step1": {
+    "title": "Malaria Follow-up",
     "fields": [
       {
         "key": "date_malaria_visit_hf",
@@ -365,6 +365,13 @@
         "openmrs_entity_parent": "",
         "edit_type": "name",
         "hint": "Mention other medication provided",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "malaria_followup_hf_relevance.yml"
+            }
+          }
+        },
         "v_required": {
           "value": "true",
           "err": "Please enter other medication"
