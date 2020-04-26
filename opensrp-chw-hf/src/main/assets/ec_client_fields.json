@@ -1724,7 +1724,7 @@
           }
         },
         {
-          "column_name": "date_sickchild",
+          "column_name": "followup_date",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
@@ -1732,7 +1732,7 @@
           }
         },
         {
-          "column_name": "weight_sickchild",
+          "column_name": "weight",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
@@ -1740,7 +1740,7 @@
           }
         },
         {
-          "column_name": "height_sickchild",
+          "column_name": "height",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
@@ -1748,7 +1748,7 @@
           }
         },
         {
-          "column_name": "diarrhea_sickchild",
+          "column_name": "has_diarrhea",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
@@ -1756,7 +1756,7 @@
           }
         },
         {
-          "column_name": "diarrhea_time_sick_child",
+          "column_name": "diarrhea_duration",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
@@ -1764,15 +1764,7 @@
           }
         },
         {
-          "column_name": "diarrhea_time_sick_child",
-          "type": "Event",
-          "json_mapping": {
-            "field": "obs.fieldCode",
-            "concept": "5984AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-          }
-        },
-        {
-          "column_name": "dehydration_sick_child",
+          "column_name": "dehydration_status",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
@@ -1780,15 +1772,16 @@
           }
         },
         {
-          "column_name": "other_sympt_sick_child",
+          "column_name": "other_symptoms",
           "type": "Event",
+          "save_format": "json_array",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "1729AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "other_sympt_sick_child"
           }
         },
         {
-          "column_name": "test_ordered_sickchild",
+          "column_name": "test_ordered",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
@@ -1796,7 +1789,7 @@
           }
         },
         {
-          "column_name": "other_test_ordered_sickchild",
+          "column_name": "other_test_ordered",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
@@ -1804,7 +1797,7 @@
           }
         },
         {
-          "column_name": "test_results_sick_child",
+          "column_name": "test_results",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
@@ -1812,7 +1805,7 @@
           }
         },
         {
-          "column_name": "diagnosis_sick_child",
+          "column_name": "diagnosis",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
@@ -1820,15 +1813,16 @@
           }
         },
         {
-          "column_name": "diarrhea_treat",
+          "column_name": "diarrhea_treatment",
           "type": "Event",
+          "save_format": "json_array",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "1767AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "diarrhea_treat"
           }
         },
         {
-          "column_name": "diarrhea_treat_ors",
+          "column_name": "amount_of_ors",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
@@ -1836,7 +1830,7 @@
           }
         },
         {
-          "column_name": "diarrhea_treat_rehydration",
+          "column_name": "amount_rehydration_infusion",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
@@ -1844,7 +1838,7 @@
           }
         },
         {
-          "column_name": "diarrhea_treat_zinc",
+          "column_name": "amount_zinc",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
@@ -1852,15 +1846,16 @@
           }
         },
         {
-          "column_name": "diarrhea_treat_walkaway",
+          "column_name": "drugs_taken_home",
           "type": "Event",
+          "save_format": "json_array",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "1767AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "diarrhea_treat_walkaway"
           }
         },
         {
-          "column_name": "treatment_sick_child",
+          "column_name": "non_diarrhea_treatment",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
@@ -1876,7 +1871,7 @@
           }
         },
         {
-          "column_name": "results_sick_child",
+          "column_name": "results",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",

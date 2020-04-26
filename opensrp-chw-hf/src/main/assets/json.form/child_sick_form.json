@@ -286,9 +286,6 @@
             "text": "None"
           }
         ],
-        "exclusive": [
-          "None"
-        ],
         "v_required": {
           "value": "true",
           "err": "Please select investigation ordered"
@@ -386,6 +383,9 @@
             "text": "None",
             "value": false
           }
+        ],
+        "exclusive": [
+          "none"
         ],
         "relevance": {
           "rules-engine": {
