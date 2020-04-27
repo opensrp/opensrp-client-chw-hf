@@ -1724,7 +1724,7 @@
           }
         },
         {
-          "column_name": "followup_date",
+          "column_name": "visit_date",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
@@ -1881,7 +1881,7 @@
       ]
     },
     {
-      "name": "ec_danger_signs_outcome",
+      "name": "ec_anc_danger_signs_outcome",
       "columns": [
         {
           "column_name": "base_entity_id",
@@ -1891,7 +1891,7 @@
           }
         },
         {
-          "column_name": "anc_danger_signs_visitdate",
+          "column_name": "visit_date",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
@@ -1901,13 +1901,14 @@
         {
           "column_name": "danger_signs_present",
           "type": "Event",
+          "save_format": "json_array",
           "json_mapping": {
             "field": "obs.fieldCode",
             "formSubmissionField": "danger_signs_present"
           }
         },
         {
-          "column_name": "other_anc_danger_signs",
+          "column_name": "other_danger_signs",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
@@ -1915,8 +1916,9 @@
           }
         },
         {
-          "column_name": "action_taken_anc_danger_signs",
+          "column_name": "action_taken",
           "type": "Event",
+          "save_format": "json_array",
           "json_mapping": {
             "field": "obs.fieldCode",
             "formSubmissionField": "action_taken_anc_danger_signs"
@@ -1931,7 +1933,7 @@
           }
         },
         {
-          "column_name": "comment_anc_danger_signs",
+          "column_name": "comment",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",

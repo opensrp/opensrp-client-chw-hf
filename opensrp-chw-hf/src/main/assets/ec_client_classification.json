@@ -197,7 +197,7 @@
             "field": "eventType",
             "field_value": "ANC Danger Signs Outcome",
             "creates_case": [
-              "ec_danger_signs_outcome"
+              "ec_anc_danger_signs_outcome"
             ]
           }
         ]
