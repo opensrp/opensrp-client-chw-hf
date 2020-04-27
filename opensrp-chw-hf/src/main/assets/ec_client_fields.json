@@ -1712,6 +1712,235 @@
           }
         }
       ]
+    },
+    {
+      "name": "ec_sick_child_followup",
+      "columns": [
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "visit_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "date_sickchild"
+          }
+        },
+        {
+          "column_name": "weight",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "5089AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          }
+        },
+        {
+          "column_name": "height",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "5090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          }
+        },
+        {
+          "column_name": "has_diarrhea",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "142412AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          }
+        },
+        {
+          "column_name": "diarrhea_duration",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "5984AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          }
+        },
+        {
+          "column_name": "dehydration_status",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "1497AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          }
+        },
+        {
+          "column_name": "other_symptoms",
+          "type": "Event",
+          "save_format": "json_array",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "other_sympt_sick_child"
+          }
+        },
+        {
+          "column_name": "test_ordered",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "1271AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          }
+        },
+        {
+          "column_name": "other_test_ordered",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          }
+        },
+        {
+          "column_name": "test_results",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "161577AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          }
+        },
+        {
+          "column_name": "diagnosis",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "161602AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          }
+        },
+        {
+          "column_name": "diarrhea_treatment",
+          "type": "Event",
+          "save_format": "json_array",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "diarrhea_treat"
+          }
+        },
+        {
+          "column_name": "amount_of_ors",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "diarrhea_treat_ors"
+          }
+        },
+        {
+          "column_name": "amount_rehydration_infusion",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "diarrhea_treat_rehydration"
+          }
+        },
+        {
+          "column_name": "amount_zinc",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "diarrhea_treat_zinc"
+          }
+        },
+        {
+          "column_name": "drugs_taken_home",
+          "type": "Event",
+          "save_format": "json_array",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "diarrhea_treat_walkaway"
+          }
+        },
+        {
+          "column_name": "non_diarrhea_treatment",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          }
+        },
+        {
+          "column_name": "dtc_period",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "1785AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          }
+        },
+        {
+          "column_name": "results",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "160433AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ec_anc_danger_signs_outcome",
+      "columns": [
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "visit_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "anc_danger_signs_visitdate"
+          }
+        },
+        {
+          "column_name": "danger_signs_present",
+          "type": "Event",
+          "save_format": "json_array",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "danger_signs_present"
+          }
+        },
+        {
+          "column_name": "other_danger_signs",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          }
+        },
+        {
+          "column_name": "action_taken",
+          "type": "Event",
+          "save_format": "json_array",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "action_taken_anc_danger_signs"
+          }
+        },
+        {
+          "column_name": "managed_signs",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "managed_signs"
+          }
+        },
+        {
+          "column_name": "comment",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "comment_anc_danger_signs"
+          }
+        }
+      ]
     }
   ]
 }
