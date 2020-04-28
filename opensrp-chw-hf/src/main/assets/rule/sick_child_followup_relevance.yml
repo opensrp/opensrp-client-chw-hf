@@ -1,0 +1,70 @@
+---
+name: step1_diarrhea_time_sick_child
+description: Diarrhoea duration
+priority: 1
+condition: "step1_diarrhea_sickchild == 'Yes'"
+actions:
+  - "isRelevant = true"
+---
+name: step1_other_sympt_sick_child
+description: Other symptoms related to diarrhoea
+priority: 1
+condition: "step1_diarrhea_sickchild == 'Yes'"
+actions:
+  - "isRelevant = true"
+---
+name: step1_other_test_ordered_sickchild
+description: Other symptoms related to diarrhoea
+priority: 1
+condition: "step1_test_ordered_sickchild == 'Other_investigation'"
+actions:
+  - "isRelevant = true"
+---
+name: step1_test_results_sick_child
+description: Investigation results
+priority: 1
+condition: "step1_test_ordered_sickchild != 'None'"
+actions:
+  - "isRelevant = true"
+---
+name: step1_diarrhea_treat
+description: Treatment for diarrhea
+priority: 1
+condition: "step1_diarrhea_sickchild == 'Yes'"
+actions:
+  - "isRelevant = true"
+---
+name: step1_diarrhea_treat_ors
+description: Amount of ORS solution
+priority: 1
+condition: "step1_diarrhea_treat.contains('ORS_solution')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_diarrhea_treat_rehydration
+description: Amount of IV infusion
+priority: 1
+condition: "step1_diarrhea_treat.contains('IV_infusion_drip')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_diarrhea_treat_zinc
+description: Amount of Zinc
+priority: 1
+condition: "step1_diarrhea_treat.contains('Zinc')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_diarrhea_treat_walkaway
+description: Drugs taken home
+priority: 1
+condition: "step1_diarrhea_sickchild == 'Yes'"
+actions:
+  - "isRelevant = true"
+---
+name: step1_dtc_period
+description: Time spent in DTC (mins)
+priority: 1
+condition: "step1_diarrhea_sickchild == 'Yes'"
+actions:
+  - "isRelevant = true"

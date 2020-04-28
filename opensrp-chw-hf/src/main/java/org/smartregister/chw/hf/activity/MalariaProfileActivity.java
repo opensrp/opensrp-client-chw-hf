@@ -77,6 +77,7 @@ public class MalariaProfileActivity extends CoreMalariaProfileActivity implement
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
+        menu.findItem(R.id.action_malaria_followup).setVisible(true);
         MenuItem item = menu.findItem(R.id.action_remove_member);
         if (item != null) {
             menu.removeItem(item.getItemId());

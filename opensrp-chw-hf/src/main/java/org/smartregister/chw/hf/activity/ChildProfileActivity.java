@@ -1,6 +1,7 @@
 package org.smartregister.chw.hf.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONObject;
 import org.smartregister.chw.anc.domain.MemberObject;
 import org.smartregister.chw.core.activity.CoreChildHomeVisitActivity;
 import org.smartregister.chw.core.activity.CoreChildProfileActivity;
@@ -30,8 +32,12 @@ import org.smartregister.chw.hf.presenter.HfChildProfilePresenter;
 import org.smartregister.chw.malaria.dao.MalariaDao;
 import org.smartregister.domain.Task;
 import org.smartregister.family.util.Constants;
+import org.smartregister.family.util.JsonFormUtils;
+import org.smartregister.family.util.Utils;
 
 import java.util.Set;
+
+import timber.log.Timber;
 
 public class ChildProfileActivity extends CoreChildProfileActivity {
     public CoreFamilyMemberFloatingMenu familyFloatingMenu;
@@ -126,7 +132,9 @@ public class ChildProfileActivity extends CoreChildProfileActivity {
     public boolean onOptionsItemSelected(@NotNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_sick_child_follow_up:
-                displayShortToast(R.string.clicked_sick_child);
+                if (presenter != null) {
+                    ((HfChildProfilePresenter) presenter).startSickChildForm(null);
+                }
                 return true;
             case R.id.action_malaria_diagnosis:
                 displayShortToast(R.string.clicked_malaria_diagnosis);
@@ -211,5 +219,22 @@ public class ChildProfileActivity extends CoreChildProfileActivity {
         if (referralRecyclerView.getAdapter() != null) {
             referralRecyclerView.getAdapter().notifyDataSetChanged();
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == JsonFormUtils.REQUEST_CODE_GET_JSON) {
+            try {
+                String jsonString = data.getStringExtra(Constants.JSON_FORM_EXTRA.JSON);
+                JSONObject form = new JSONObject(jsonString);
+                String encounterType = form.getString(JsonFormUtils.ENCOUNTER_TYPE);
+                if (encounterType.equals(CoreConstants.EventType.SICK_CHILD_FOLLOW_UP)) {
+                    ((HfChildProfilePresenter) presenter).createSickChildEvent(Utils.getAllSharedPreferences(), jsonString);
+                }
+            } catch (Exception ex) {
+                Timber.e(ex);
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }
