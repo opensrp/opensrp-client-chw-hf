@@ -188,6 +188,20 @@
           },
           {
             "field": "eventType",
+            "field_value": "Sick Child Follow-up",
+            "creates_case": [
+              "ec_sick_child_followup"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "ANC Danger Signs Outcome",
+            "creates_case": [
+              "ec_anc_danger_signs_outcome"
+            ]
+          },
+          {
+            "field": "eventType",
             "field_value": "PNC Danger Signs Outcome",
             "creates_case": [
               "ec_pnc_danger_signs_outcome"

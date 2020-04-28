@@ -4,14 +4,19 @@ import android.util.Pair;
 
 import org.smartregister.chw.core.contract.CoreChildProfileContract;
 import org.smartregister.chw.core.presenter.CoreChildProfilePresenter;
+import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.interactor.HfChildProfileInteractor;
 import org.smartregister.chw.hf.interactor.HfFamilyProfileInteractor;
 import org.smartregister.chw.hf.model.ChildRegisterModel;
 import org.smartregister.clientandeventmodel.Client;
 import org.smartregister.clientandeventmodel.Event;
+import org.smartregister.commonregistry.CommonPersonObjectClient;
+import org.smartregister.repository.AllSharedPreferences;
 
 import java.lang.ref.WeakReference;
+
+import timber.log.Timber;
 
 public class HfChildProfilePresenter extends CoreChildProfilePresenter {
 
@@ -37,4 +42,20 @@ public class HfChildProfilePresenter extends CoreChildProfilePresenter {
 
         getInteractor().saveRegistration(pair, jsonString, true, this);
     }
+
+    @Override
+    public void startSickChildForm(CommonPersonObjectClient client) {
+        try {
+            getView().startFormActivity(getFormUtils().getFormJson(CoreConstants.JSON_FORM.getChildSickForm()));
+        } catch (Exception ex) {
+            Timber.e(ex);
+        }
+    }
+
+    @Override
+    public void createSickChildEvent(AllSharedPreferences allSharedPreferences, String jsonString) throws Exception {
+        getInteractor().setChildBaseEntityId(getChildBaseEntityId());
+        getInteractor().createSickChildEvent(allSharedPreferences, jsonString);
+    }
+
 }

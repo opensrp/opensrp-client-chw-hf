@@ -200,11 +200,6 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     }
 
     @Override
-    public void startFormActivity(JSONObject formJson) {
-        //Overridden but not used
-    }
-
-    @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
         // implemented but not used.
     }
