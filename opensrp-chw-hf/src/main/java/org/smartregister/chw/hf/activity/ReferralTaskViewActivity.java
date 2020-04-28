@@ -25,6 +25,7 @@ import org.smartregister.chw.core.dao.PNCDao;
 import org.smartregister.chw.core.model.ChildModel;
 import org.smartregister.chw.core.utils.ChildDBConstants;
 import org.smartregister.chw.core.utils.CoreConstants;
+import org.smartregister.chw.core.utils.CoreReferralUtils;
 import org.smartregister.chw.hf.BuildConfig;
 import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
@@ -421,14 +422,8 @@ public class ReferralTaskViewActivity extends SecuredActivity {
 
     private void completeTask() {
         Task currentTask = getTask();
-        DateTime now = new DateTime();
-        currentTask.setExecutionEndDate(now);
-        currentTask.setLastModified(now);
         currentTask.setForEntity(getBaseEntityId());
-        currentTask.setStatus(Task.TaskStatus.COMPLETED);
-        currentTask.setBusinessStatus(CoreConstants.BUSINESS_STATUS.COMPLETE);
-        currentTask.setSyncStatus(BaseRepository.TYPE_Unsynced);
-        CoreChwApplication.getInstance().getTaskRepository().addOrUpdate(currentTask);
+        CoreReferralUtils.completeTask(currentTask, false);
     }
 
     public String getBaseEntityId() {
@@ -438,6 +433,4 @@ public class ReferralTaskViewActivity extends SecuredActivity {
     public void setBaseEntityId(String baseEntityId) {
         this.baseEntityId = baseEntityId;
     }
-
-
 }
