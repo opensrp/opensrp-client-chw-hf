@@ -1,0 +1,288 @@
+{
+  "validate_on_submit": true,
+  "show_errors_on_submit": false,
+  "count": "1",
+  "encounter_type": "ANC Danger Signs Outcome",
+  "entity_id": "",
+  "relational_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "step1": {
+    "title": "ANC danger signs",
+    "fields": [
+      {
+        "key": "anc_danger_signs_visitdate",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "anc_danger_signs_visitdate",
+        "openmrs_entity_parent": "",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_danger_signs_outcome_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "lmp",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "lmp",
+        "openmrs_entity_parent": "",
+        "type": "hidden"
+      },
+      {
+        "key": "gest_age",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "gest_age",
+        "openmrs_entity_parent": "",
+        "type": "hidden"
+      },
+      {
+        "key": "edd",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "edd",
+        "openmrs_entity_parent": "",
+        "type": "hidden"
+      },
+      {
+        "key": "anc_key_info",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "anc_key_info",
+        "type": "toaster_notes",
+        "text": "Key information for health facility:\nLast menstrual period: (LNMP)\nGestational age: {gest_age}\nEDD: {edd}",
+        "toaster_type": "info",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_danger_signs_outcome_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "danger_signs_present",
+        "type": "check_box",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "160939AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_parent": "",
+        "label": "What dangers sign did the woman have?",
+        "combine_checkbox_option_values": "true",
+        "options": [
+          {
+            "key": "Fever",
+            "openmrs_choice_id": "140238AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "text": "Fever",
+            "value": false
+          },
+          {
+            "key": "Bleeding_vaginally",
+            "openmrs_choice_id": "150802AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "text": "Bleeding vaginally",
+            "value": false
+          },
+          {
+            "key": "Severe_headache",
+            "openmrs_choice_id": "139081AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "text": "Severe headache",
+            "value": false
+          },
+          {
+            "key": "Convulsions",
+            "openmrs_choice_id": "164483AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "text": "Convulsions",
+            "value": false
+          },
+          {
+            "key": "Difficulty_breathing",
+            "openmrs_choice_id": "142373AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "text": "Difficulty breathing",
+            "value": false
+          },
+          {
+            "key": "Severe_abdominal_pain",
+            "openmrs_choice_id": "165271AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "text": "Severe abdominal pain",
+            "value": false
+          },
+          {
+            "key": "Swelling_of_the_face_and/or_hands",
+            "openmrs_choice_id": "460AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "text": "Swelling of the face and/or hands",
+            "value": false
+          },
+          {
+            "key": "Discoloured_or_watery_liquid_vaginal_discharge_with_a_bad_smell",
+            "openmrs_choice_id": "123395AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "text": "Discoloured or watery, liquid vaginal discharge with a bad smell",
+            "value": false
+          },
+          {
+            "key": "No_movement_unusual_movement_for_a_child_in_the_womb",
+            "openmrs_choice_id": "113377AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "text": "No movement / unusual movement for a child in the womb",
+            "value": false
+          },
+          {
+            "key": "Other",
+            "openmrs_choice_id": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "text": "Other",
+            "value": false
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select a danger sign"
+        }
+      },
+      {
+        "key": "other_anc_danger_signs",
+        "type": "edit_text",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_parent": "",
+        "edit_type": "name",
+        "hint": "Other danger sign",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_danger_signs_outcome_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter other danger sign"
+        }
+      },
+      {
+        "key": "action_taken_anc_danger_signs",
+        "type": "check_box",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "164378AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_parent": "",
+        "label": "Action taken by health facility",
+        "combine_checkbox_option_values": "true",
+        "exclusive": [
+          "No_action_taken"
+        ],
+        "options": [
+          {
+            "key": "No_action_taken",
+            "openmrs_choice_id": "1107AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "text": "No action taken",
+            "value": false
+          },
+          {
+            "key": "Managed",
+            "openmrs_choice_id": "1692AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "text": "Managed",
+            "value": false
+          },
+          {
+            "key": "Referred",
+            "openmrs_choice_id": "1648AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "text": "Referred",
+            "value": false
+          },
+          {
+            "key": "Discharged",
+            "openmrs_choice_id": "1654AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "text": "Discharged",
+            "value": false
+          },
+          {
+            "key": "Died",
+            "openmrs_choice_id": "159AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "text": "Died",
+            "value": false
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select action taken"
+        }
+      },
+      {
+        "key": "managed_signs",
+        "type": "edit_text",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "managed_signs",
+        "openmrs_entity_parent": "",
+        "edit_type": "name",
+        "hint": "How did the health facility manage the mother's condition?",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_danger_signs_outcome_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "false",
+          "err": null
+        }
+      },
+      {
+        "key": "comment_anc_danger_signs",
+        "type": "edit_text",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "comment_anc_danger_signs",
+        "openmrs_entity_parent": "",
+        "edit_type": "name",
+        "hint": "Remarks/Comments",
+        "v_required": {
+          "value": "false",
+          "err": null
+        }
+      }
+    ]
+  }
+}
