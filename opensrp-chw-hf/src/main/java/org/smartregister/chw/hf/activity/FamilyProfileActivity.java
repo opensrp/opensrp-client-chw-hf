@@ -1,5 +1,6 @@
 package org.smartregister.chw.hf.activity;
 
+import android.app.Activity;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -18,6 +19,7 @@ import org.smartregister.chw.hf.model.FamilyProfileModel;
 import org.smartregister.chw.hf.presenter.FamilyProfilePresenter;
 import org.smartregister.chw.pnc.activity.BasePncMemberProfileActivity;
 import org.smartregister.commonregistry.CommonPersonObject;
+import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.family.adapter.ViewPagerAdapter;
 import org.smartregister.family.util.Constants;
 
@@ -106,6 +108,12 @@ public class FamilyProfileActivity extends CoreFamilyProfileActivity {
     }
 
     @Override
+    protected void goToFpProfile(String baseEntityId, Activity activity) {
+        CommonPersonObjectClient client = org.smartregister.chw.core.utils.Utils.clientForEdit(baseEntityId);
+        FamilyPlanningMemberProfileActivity.startFpMemberProfileActivity(this, client);
+    }
+
+    @Override
     protected boolean isAncMember(String baseEntityId) {
         return getFamilyProfilePresenter().isAncMember(baseEntityId);
     }
@@ -152,11 +160,4 @@ public class FamilyProfileActivity extends CoreFamilyProfileActivity {
     public FamilyProfilePresenter getFamilyProfilePresenter() {
         return (FamilyProfilePresenter) presenter;
     }
-
-    /*@Override
-    protected void goToFpProfile(String baseEntityId, Activity activity) {
-        CommonPersonObjectClient client = org.smartregister.chw.core.utils.Utils.clientForEdit(baseEntityId);
-        FamilyPlanningMemberProfileActivity.startFpMemberProfileActivity(this, client);
-    }*/
-
 }
