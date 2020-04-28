@@ -110,7 +110,7 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
     }
 
     @Override
-    protected void registerPresenter() {
+    public void registerPresenter() {
         presenter = new PncMemberProfilePresenter(this, new PncMemberProfileInteractor(), memberObject);
     }
 
@@ -187,21 +187,29 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == JsonFormUtils.REQUEST_CODE_GET_JSON && resultCode == RESULT_OK) {
+        if (resultCode != RESULT_OK)
+            return;
+
+        if (requestCode == JsonFormUtils.REQUEST_CODE_GET_JSON) {
             String jsonString = data.getStringExtra(org.smartregister.family.util.Constants.JSON_FORM_EXTRA.JSON);
             try {
                 JSONObject form = new JSONObject(jsonString);
-                if (form.getString(JsonFormUtils.ENCOUNTER_TYPE).equals(Utils.metadata().familyMemberRegister.updateEventType)) {
-
+                String encounterType = form.getString(JsonFormUtils.ENCOUNTER_TYPE);
+                if (encounterType.equals(Utils.metadata().familyMemberRegister.updateEventType)) {
                     FamilyEventClient familyEventClient =
                             new FamilyProfileModel(memberObject.getFamilyName()).processUpdateMemberRegistration(jsonString, memberObject.getBaseEntityId());
                     new FamilyProfileInteractor().saveRegistration(familyEventClient, jsonString, true, (FamilyProfileContract.InteractorCallBack) pncMemberProfilePresenter());
+                } else if (encounterType.equals(CoreConstants.EventType.PNC_DANGER_SIGNS_OUTCOME)) {
+                    try {
+                        getPncMemberProfilePresenter().createPncDangerSignsOutcomeEvent(Utils.getAllSharedPreferences(), jsonString, memberObject.getBaseEntityId());
+                    } catch (Exception ex) {
+                        Timber.e(ex);
+                    }
                 }
             } catch (JSONException jsonException) {
                 Timber.e(jsonException);
             }
         }
-
     }
 
     @Override
