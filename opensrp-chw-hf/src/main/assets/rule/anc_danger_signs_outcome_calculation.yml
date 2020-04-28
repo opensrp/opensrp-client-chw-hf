@@ -1,0 +1,14 @@
+---
+name: step1_anc_danger_signs_visitdate
+description: Calculated anc_danger_signs_visitdate
+priority: 1
+condition: "true"
+actions:
+  - "calculation = helper.getDateToday()"
+---
+name: step1_anc_key_info
+description: ANC key info
+priority: 1
+condition: "true"
+actions:
+  - "calculation = 'Key information for health facility:\nLast menstrual period: ' + step1_lmp + '\nGestational age: ' + step1_gest_age + '\nEDD: ' + step1_edd"
