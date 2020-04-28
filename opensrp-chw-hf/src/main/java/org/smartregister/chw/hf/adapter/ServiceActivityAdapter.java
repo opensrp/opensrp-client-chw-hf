@@ -11,17 +11,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.smartregister.chw.core.activity.CoreStockInventoryItemDetailsReportActivity;
-import org.smartregister.chw.core.model.StockUsageItemModel;
+import org.smartregister.chw.core.activity.HIA2ReportsActivity;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.activity.ProvidersReportListActivity;
 
 import java.util.List;
 
 public class ServiceActivityAdapter extends RecyclerView.Adapter<ServiceActivityAdapter.ServiceActivityViewHolder> {
-    protected LayoutInflater inflater;
     private List<String> serviceItems;
     private Context context;
+    private String providerType = CoreConstants.HfInAppUtil.PROVIDER_TYPE;
 
     public ServiceActivityAdapter(List<String> serviceItems, Context context) {
         this.serviceItems = serviceItems;
@@ -31,6 +31,7 @@ public class ServiceActivityAdapter extends RecyclerView.Adapter<ServiceActivity
     @NonNull
     @Override
     public ServiceActivityViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater inflater;
         inflater = LayoutInflater.from(parent.getContext());
         View v = inflater.inflate(R.layout.service_activity_items, parent, false);
         return new ServiceActivityAdapter.ServiceActivityViewHolder(v);
@@ -41,21 +42,29 @@ public class ServiceActivityAdapter extends RecyclerView.Adapter<ServiceActivity
         String Item = serviceItems.get(position);
         holder.serviceItem.setText(Item);
         holder.view.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-            /*    String stockName = CoreConstants.HfStockUsageUtil.STOCK_NAME;
-                String providerId = CoreConstants.HfStockUsageUtil.PROVIDER_NAME;
-                Intent intent = new Intent(context, CoreStockInventoryItemDetailsReportActivity.class);
-                intent.putExtra(stockName, usageModelItem.getStockName());
-                intent.putExtra(providerId, usageModelItem.getProviderName());
-                context.startActivity(intent);*/
+                Intent intent = getIntent(context, Item);
+                context.startActivity(intent);
             }
         });
     }
 
+    private Intent getIntent(Context activity, String Item) {
+        if (Item.equalsIgnoreCase(context.getString(R.string.service_activity_reporting))) {
+            return new Intent(activity, HIA2ReportsActivity.class);
+        } else if (Item.equalsIgnoreCase(context.getString(R.string.review_chw_services))) {
+            Intent intent = new  Intent(activity, ProvidersReportListActivity.class);
+            intent.putExtra(providerType, providerType);
+            return intent;
+        }
+        return new Intent(activity, null);
+    }
+
     @Override
     public int getItemCount() {
-        return 0;
+        return serviceItems.size();
     }
 
     public static class ServiceActivityViewHolder extends RecyclerView.ViewHolder {

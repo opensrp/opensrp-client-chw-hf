@@ -4,11 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 
 import org.apache.commons.lang3.tuple.Pair;
-import org.smartregister.chw.core.activity.CoreStockInventoryReportActivity;
-import org.smartregister.chw.core.activity.HIA2ReportsActivity;
 import org.smartregister.chw.core.custom_views.NavigationMenu;
 import org.smartregister.chw.core.utils.CoreConstants;
-import org.smartregister.chw.hf.activity.HfStockInventoryReportActivity;
+import org.smartregister.chw.hf.activity.ProvidersReportListActivity;
+import org.smartregister.chw.hf.activity.ServiceActivity;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -21,6 +20,7 @@ public class HfNavigationMenu implements NavigationMenu.Flavour {
     public List<Pair<String, Locale>> getSupportedLanguages() {
         return Arrays.asList(Pair.of("English", Locale.ENGLISH), Pair.of("Kiswahili", new Locale("sw")));
     }
+
     @Override
     public HashMap<String, String> getTableMapValues() {
         HashMap<String, String> tableMap = new HashMap<>();
@@ -40,11 +40,11 @@ public class HfNavigationMenu implements NavigationMenu.Flavour {
 
     @Override
     public Intent getStockReportIntent(Activity activity) {
-        return new Intent(activity, HfStockInventoryReportActivity.class);
+        return new Intent(activity, ProvidersReportListActivity.class);
     }
 
     @Override
     public Intent getServiceReportIntent(Activity activity) {
-        return new Intent(activity, HIA2ReportsActivity.class);
+        return new Intent(activity, ServiceActivity.class);
     }
 }
