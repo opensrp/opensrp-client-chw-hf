@@ -18,6 +18,7 @@ import org.smartregister.chw.core.utils.StockUsageReportUtils;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.adapter.ProvidersReportListAdapter;
 import org.smartregister.chw.hf.dao.HfStockUsageReportDao;
+import org.smartregister.chw.hf.utils.HfInnAppUtils;
 import org.smartregister.view.activity.SecuredActivity;
 import org.smartregister.view.customcontrols.CustomFontTextView;
 
@@ -51,7 +52,8 @@ public class ProvidersReportListActivity extends SecuredActivity {
 
     protected List<String> getDBProviders(String key, String value) {
         if(providerType.equalsIgnoreCase(CoreConstants.HfInAppUtil.PROVIDER_TYPE)){
-            return hfStockUsageReportDao.getListOfProviders(stockUsageReportUtils.getMonthNumber(key.substring(0, 3)), value, CoreConstants.HfInAppUtil.IN_APP_TABLE_NAME);
+            String yearMonth = HfInnAppUtils.getYearMonth(stockUsageReportUtils.getMonthNumber(key.substring(0, 3)), value);
+            return hfStockUsageReportDao.getHFListOfProviders(yearMonth, CoreConstants.HfInAppUtil.IN_APP_TABLE_NAME);
         }
         return hfStockUsageReportDao.getListOfProviders(stockUsageReportUtils.getMonthNumber(key.substring(0, 3)), value, CoreConstants.HfStockUsageUtil.STOCK_USAGE_TABLE_NAME);
     }

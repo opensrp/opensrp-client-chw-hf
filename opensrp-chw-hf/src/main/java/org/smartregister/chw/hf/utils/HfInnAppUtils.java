@@ -24,4 +24,11 @@ public class HfInnAppUtils {
 
         return null;
     }
+
+    public static String getYearMonth(String month, String year) {
+        return year.concat("-").concat(month);
+    }
+
 }
+
+

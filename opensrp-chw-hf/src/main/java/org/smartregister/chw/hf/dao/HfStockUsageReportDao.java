@@ -14,7 +14,7 @@ public class HfStockUsageReportDao extends AbstractDao {
                 "WHERE indicator_code = '" + indicatorCode + "'" +
                 "AND month = '" + month + "'" +
                 "AND provider_id = '" + providerName + "'" +
-                "GROUP by stock_name";
+                "GROUP by indicator_code";
 
         DataMap<InAppUsages> dataMap = cursor -> {
             InAppUsages inAppUsages = new InAppUsages();
@@ -34,7 +34,7 @@ public class HfStockUsageReportDao extends AbstractDao {
                 "FROM monthly_tallies " +
                 "WHERE indicator_code = '" + indicatorCode + "'" +
                 "AND month = '" + month + "'" +
-                "GROUP by stock_name";
+                "GROUP by indicator_code";
 
         DataMap<InAppUsages> dataMap = cursor -> {
             InAppUsages inAppUsages = new InAppUsages();
@@ -63,6 +63,18 @@ public class HfStockUsageReportDao extends AbstractDao {
         String sql = "SELECT DISTINCT provider_id FROM '" + tableName + "' " +
                 "WHERE month= '" + month + "' " +
                 "AND year= '" + year + "'" +
+                "order by provider_id DESC";
+        AbstractDao.DataMap<String> dataMap = cursor -> getCursorValue(cursor, "provider_id");
+        List<String> res = readData(sql, dataMap);
+        if (res == null)
+            return new ArrayList<>();
+
+        return res;
+    }
+
+    public List<String> getHFListOfProviders(String month, String tableName) {
+        String sql = "SELECT DISTINCT provider_id FROM '" + tableName + "' " +
+                "WHERE month= '" + month + "' " +
                 "order by provider_id DESC";
         AbstractDao.DataMap<String> dataMap = cursor -> getCursorValue(cursor, "provider_id");
         List<String> res = readData(sql, dataMap);

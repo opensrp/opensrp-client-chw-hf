@@ -43,16 +43,13 @@ public class InAppInventoryReportActivity extends CoreStockInventoryReportActivi
     public List<StockUsageItemModel> getStockUsageItemReportList(String month, String year) {
         List<StockUsageItemModel> stockUsageItemModelsList = new ArrayList<>();
         for (String item : getItems()) {
-            String usage = providerName.equalsIgnoreCase(this.getString(R.string.all_chw)) ? HfStockUsageReportDao.getAllProvidersMonthsValue(getYearMonth(month, year), item) : HfStockUsageReportDao.getProvidersMonthsValue(getYearMonth(month, year), item, providerName);
+            String usage = providerName.equalsIgnoreCase(this.getString(R.string.all_chw)) ? HfStockUsageReportDao.getAllProvidersMonthsValue(HfInnAppUtils.getYearMonth(month, year), item) : HfStockUsageReportDao.getProvidersMonthsValue(HfInnAppUtils.getYearMonth(month, year), item, providerName);
             String name = HfInnAppUtils.getStringResource(this, HfStockUsageReportDao.getIndicatorLabels(item));
             stockUsageItemModelsList.add(new StockUsageItemModel(name, "", usage, providerName));
         }
         return stockUsageItemModelsList;
     }
 
-    private String getYearMonth(String month, String year) {
-        return year.concat("-").concat(month);
-    }
 
     @Override
     public void reloadRecycler(MonthStockUsageModel selected) {

@@ -158,6 +158,13 @@
         <activity
             android:name=".activity.ServiceActivity"
             android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name="org.smartregister.chw.core.activity.ReportSummaryActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name="org.smartregister.chw.core.activity.ServiceJsonFormActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+
 
         <activity
             android:name=".activity.InAppInventoryReportActivity"

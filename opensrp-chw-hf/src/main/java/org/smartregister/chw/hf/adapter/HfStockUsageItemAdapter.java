@@ -57,8 +57,8 @@ public class HfStockUsageItemAdapter extends RecyclerView.Adapter<RecyclerView.V
 
     private void onBindViewHolder(HfStockUsageReportViewHolder holder, StockUsageItemModel model) {
         holder.stockItemName.setText(model.getStockName());
-
         holder.stockItemCount.setText(String.format("%s", model.getStockValue()));
+        holder.stockUnitOfMeasure.setVisibility(View.GONE);
     }
 
     private void onBindFooter(FooterViewHolder holder) {
@@ -112,14 +112,15 @@ public class HfStockUsageItemAdapter extends RecyclerView.Adapter<RecyclerView.V
         public View view;
         private TextView stockItemName;
         private TextView stockItemCount;
+        private TextView stockUnitOfMeasure;
 
         private HfStockUsageReportViewHolder(View v) {
             super(v);
             view = v;
             stockItemName = v.findViewById(R.id.stock_name);
             stockItemCount = v.findViewById(R.id.stock_count);
+            stockUnitOfMeasure = v.findViewById(R.id.stock_unit_of_measure);
         }
-
     }
 
     public static class FooterViewHolder extends RecyclerView.ViewHolder {
