@@ -52,7 +52,7 @@ public class InAppInventoryReportActivity extends CoreStockInventoryReportActivi
 
 
     @Override
-    public void reloadRecycler(MonthStockUsageModel selected) {
+    protected void reloadRecycler(MonthStockUsageModel selected) {
         String stockMonth = stockUsageReportUtils.getMonthNumber(selected.getMonth().substring(0, 3));
         String stockYear = selected.getYear();
 

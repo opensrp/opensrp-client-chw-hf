@@ -5,14 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import org.jetbrains.annotations.NotNull;
 import org.smartregister.chw.core.model.StockUsageItemModel;
 import org.smartregister.chw.hf.R;
-
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -90,7 +87,6 @@ public class HfStockUsageItemAdapter extends RecyclerView.Adapter<RecyclerView.V
             return 0;
         }
     }
-
 
     public interface Paginator {
         boolean hasPagination();

@@ -3,6 +3,7 @@ package org.smartregister.chw.hf.activity;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.view.Menu;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
@@ -35,20 +36,19 @@ public class ServiceActivity extends SecuredActivity {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
             final Drawable upArrow = getResources().getDrawable(R.drawable.ic_arrow_back_white_24dp);
-            upArrow.setColorFilter(getResources().getColor(R.color.text_blue), PorterDuff.Mode.SRC_ATOP);
+            upArrow.setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_ATOP);
             upArrow.setVisible(true, true);
             actionBar.setHomeAsUpIndicator(upArrow);
             actionBar.setElevation(0);
         }
         toolbar.setNavigationOnClickListener(v -> finish());
         toolBarTextView.setOnClickListener(v -> finish());
-        toolBarTextView.setText(this.getString(R.string.service_activity));
+        toolBarTextView.setText(this.getString(R.string.service_activity_title));
 
         appBarLayout = findViewById(R.id.app_bar);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             appBarLayout.setOutlineProvider(null);
         }
-
 
         RecyclerView recyclerView = findViewById(R.id.rv_stock_activity);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -68,6 +68,9 @@ public class ServiceActivity extends SecuredActivity {
         serviceActivityAdapter.notifyDataSetChanged();
     }
 
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
+    }
 
     @Override
     protected void onResumption() {

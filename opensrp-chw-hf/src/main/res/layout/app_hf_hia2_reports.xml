@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
-    tools:context=".activity.ServiceActivity">
+    tools:context=".activity.HfHIA2ReportsActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
@@ -46,20 +46,24 @@
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/hia_tabs"
+        android:layout_width="fill_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="#389CC8"
+        app:tabIndicatorHeight="4dp"
+        app:tabMaxWidth="0dp"
+        app:tabMode="fixed"
+        app:tabSelectedTextColor="#404040"
+        app:tabTextAppearance="@style/CustomFontTextViewStyle.tabIndicator" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_stock_activity"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:itemCount="5"
-            tools:listitem="@layout/service_activity_items" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+<androidx.viewpager.widget.ViewPager
+android:id="@+id/container"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+<include layout="@layout/notification_base" />
 </LinearLayout>

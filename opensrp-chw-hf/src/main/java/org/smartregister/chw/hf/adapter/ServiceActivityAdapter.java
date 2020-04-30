@@ -11,9 +11,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.smartregister.chw.core.activity.HIA2ReportsActivity;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.activity.HfHIA2ReportsActivity;
 import org.smartregister.chw.hf.activity.ProvidersReportListActivity;
 
 import java.util.List;
@@ -53,9 +53,9 @@ public class ServiceActivityAdapter extends RecyclerView.Adapter<ServiceActivity
 
     private Intent getIntent(Context activity, String Item) {
         if (Item.equalsIgnoreCase(context.getString(R.string.service_activity_reporting))) {
-            return new Intent(activity, HIA2ReportsActivity.class);
+            return new Intent(activity, HfHIA2ReportsActivity.class);
         } else if (Item.equalsIgnoreCase(context.getString(R.string.review_chw_services))) {
-            Intent intent = new  Intent(activity, ProvidersReportListActivity.class);
+            Intent intent = new Intent(activity, ProvidersReportListActivity.class);
             intent.putExtra(providerType, providerType);
             return intent;
         }
