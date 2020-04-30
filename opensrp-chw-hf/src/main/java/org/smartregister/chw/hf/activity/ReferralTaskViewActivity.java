@@ -423,6 +423,7 @@ public class ReferralTaskViewActivity extends SecuredActivity {
     private void completeTask() {
         Task currentTask = getTask();
         currentTask.setForEntity(getBaseEntityId());
+        currentTask.setStatus(Task.TaskStatus.IN_PROGRESS);
         CoreReferralUtils.completeTask(currentTask, false);
     }
 
