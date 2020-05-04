@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.json.JSONObject;
 import org.smartregister.chw.anc.domain.MemberObject;
 import org.smartregister.chw.core.activity.CoreFamilyProfileActivity;
 import org.smartregister.chw.core.activity.CoreMalariaProfileActivity;
@@ -28,8 +29,11 @@ import org.smartregister.commonregistry.CommonPersonObject;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.domain.Task;
 import org.smartregister.family.model.BaseFamilyOtherMemberProfileActivityModel;
+import org.smartregister.family.util.JsonFormUtils;
+import org.smartregister.family.util.Utils;
 import org.smartregister.view.customcontrols.CustomFontTextView;
 
+import java.util.ArrayList;
 import java.util.Set;
 
 import timber.log.Timber;
@@ -44,6 +48,7 @@ public class MalariaProfileActivity extends CoreMalariaProfileActivity implement
     public RelativeLayout referralRow;
     public RecyclerView referralRecyclerView;
     private CommonPersonObjectClient commonPersonObjectClient;
+    private Set<Task> taskList;
 
     public static void startMalariaActivity(Activity activity, String baseEntityId) {
         MalariaProfileActivity.baseEntityId = baseEntityId;
@@ -77,12 +82,40 @@ public class MalariaProfileActivity extends CoreMalariaProfileActivity implement
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        menu.findItem(R.id.action_malaria_followup).setVisible(true);
+        if (taskList.size() > 0) { // If we have referrals
+            menu.findItem(R.id.action_malaria_followup).setVisible(true);
+        }
         MenuItem item = menu.findItem(R.id.action_remove_member);
         if (item != null) {
             menu.removeItem(item.getItemId());
         }
         return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == Activity.RESULT_OK && requestCode == JsonFormUtils.REQUEST_CODE_GET_JSON) {
+            try {
+                String jsonString = data.getStringExtra(org.smartregister.family.util.Constants.JSON_FORM_EXTRA.JSON);
+                JSONObject form = new JSONObject(jsonString);
+                String encounterType = form.getString(JsonFormUtils.ENCOUNTER_TYPE);
+                if (encounterType.equals(CoreConstants.EventType.MALARIA_FOLLOW_UP_HF)) {
+                    getPresenter().createHfMalariaFollowupEvent(Utils.getAllSharedPreferences(), jsonString, memberObject.getBaseEntityId(), getLocationId());
+                }
+            } catch (Exception ex) {
+                Timber.e(ex);
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+
+    private String getLocationId() {
+        String locationId = null;
+        if (this.taskList != null) {
+            locationId = new ArrayList<>(taskList).get(taskList.size() - 1).getLocation();
+        }
+        return locationId;
     }
 
     @Override
@@ -191,6 +224,8 @@ public class MalariaProfileActivity extends CoreMalariaProfileActivity implement
 
     @Override
     public void updateReferralTasks(Set<Task> taskList) {
+        this.taskList = taskList;
+        invalidateOptionsMenu(); // We want to update the drop-down menu if we have referrals
         if (referralRecyclerView != null && taskList.size() > 0) {
             RecyclerView.Adapter mAdapter = new ReferralCardViewAdapter(taskList, this, getAncMemberObject(), memberObject.getFamilyHeadName(),
                     memberObject.getFamilyHeadPhoneNumber(), commonPersonObjectClient, CoreConstants.REGISTERED_ACTIVITIES.MALARIA_REGISTER_ACTIVITY);
