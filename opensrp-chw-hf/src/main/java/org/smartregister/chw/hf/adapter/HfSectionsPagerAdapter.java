@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import org.smartregister.chw.core.fragment.DraftMonthlyFragment;
 import org.smartregister.chw.core.fragment.SentMonthlyFragment;
 import org.smartregister.chw.hf.fragment.HfDraftMonthlyFragment;
 
