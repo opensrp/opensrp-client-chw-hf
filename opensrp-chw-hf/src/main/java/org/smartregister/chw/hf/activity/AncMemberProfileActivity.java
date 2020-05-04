@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
 
@@ -38,6 +39,7 @@ import org.smartregister.family.util.Utils;
 import org.smartregister.repository.AllSharedPreferences;
 import org.smartregister.view.customcontrols.CustomFontTextView;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Set;
 
@@ -48,6 +50,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     public RelativeLayout referralRow;
     public RecyclerView referralRecyclerView;
     private CommonPersonObjectClient commonPersonObjectClient;
+    private Set<Task> taskList;
 
     public static void startMe(Activity activity, String baseEntityID, CommonPersonObjectClient commonPersonObjectClient) {
         Intent intent = new Intent(activity, AncMemberProfileActivity.class);
@@ -92,6 +95,9 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
+        if (taskList == null || taskList.isEmpty()) {
+            menu.findItem(R.id.anc_danger_signs_outcome).setVisible(false);
+        }
         menu.findItem(R.id.action_anc_registration).setVisible(false);
         menu.findItem(R.id.action_remove_member).setVisible(false);
         return true;
@@ -104,11 +110,12 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
             try {
                 String jsonString = data.getStringExtra(org.smartregister.family.util.Constants.JSON_FORM_EXTRA.JSON);
                 JSONObject form = new JSONObject(jsonString);
-                if (form.getString(JsonFormUtils.ENCOUNTER_TYPE).equals(Utils.metadata().familyMemberRegister.updateEventType)) {
+                String encounterType = form.getString(JsonFormUtils.ENCOUNTER_TYPE);
+                if (encounterType.equals(Utils.metadata().familyMemberRegister.updateEventType)) {
                     FamilyEventClient familyEventClient =
                             new FamilyProfileModel(memberObject.getFamilyName()).processUpdateMemberRegistration(jsonString, memberObject.getBaseEntityId());
                     new FamilyProfileInteractor().saveRegistration(familyEventClient, jsonString, true, ancMemberProfilePresenter());
-                } else if (form.getString(JsonFormUtils.ENCOUNTER_TYPE).equals(CoreConstants.EventType.UPDATE_ANC_REGISTRATION)) {
+                } else if (encounterType.equals(CoreConstants.EventType.UPDATE_ANC_REGISTRATION)) {
                     AllSharedPreferences allSharedPreferences = org.smartregister.util.Utils.getAllSharedPreferences();
                     Event baseEvent = org.smartregister.chw.anc.util.JsonFormUtils.processJsonForm(allSharedPreferences, jsonString, Constants.TABLES.ANC_MEMBERS);
                     NCUtils.processEvent(baseEvent.getBaseEntityId(), new JSONObject(org.smartregister.chw.anc.util.JsonFormUtils.gson.toJson(baseEvent)));
@@ -123,7 +130,8 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
                         values.put(DBConstants.KEY.PHONE_NUMBER, phoneNumber);
                         CoreChwApplication.getInstance().getRepository().getWritableDatabase().update(CoreConstants.TABLE_NAME.ANC_MEMBER, values, DBConstants.KEY.BASE_ENTITY_ID + " = ?  ", new String[]{baseEntityId});
                     }
-
+                } else if (encounterType.equals(CoreConstants.EventType.ANC_DANGER_SIGNS_OUTCOME)) {
+                    ancMemberProfilePresenter().createAncDangerSignsOutcomeEvent(Utils.getAllSharedPreferences(), jsonString, baseEntityID, getLocationId());
                 }
             } catch (Exception e) {
                 Timber.e(e, "AncMemberProfileActivity -- > onActivityResult");
@@ -177,11 +185,21 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
 
     @Override
     public void setClientTasks(Set<Task> taskList) {
+        this.taskList = taskList;
+        invalidateOptionsMenu();
         if (referralRecyclerView != null && taskList.size() > 0) {
             RecyclerView.Adapter mAdapter = new ReferralCardViewAdapter(taskList, this, memberObject, memberObject.getFamilyHeadName(), memberObject.getFamilyHeadPhoneNumber(), getCommonPersonObjectClient(), CoreConstants.REGISTERED_ACTIVITIES.ANC_REGISTER_ACTIVITY);
             referralRecyclerView.setAdapter(mAdapter);
             referralRow.setVisibility(View.VISIBLE);
         }
+    }
+
+    private String getLocationId() {
+        String locationId = null;
+        if (taskList != null) {
+            locationId = new ArrayList<>(taskList).get(taskList.size() - 1).getLocation();
+        }
+        return locationId;
     }
 
     public CommonPersonObjectClient getCommonPersonObjectClient() {

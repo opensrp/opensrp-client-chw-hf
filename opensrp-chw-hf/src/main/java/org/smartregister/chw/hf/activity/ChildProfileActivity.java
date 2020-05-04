@@ -171,7 +171,7 @@ public class ChildProfileActivity extends CoreChildProfileActivity {
 
     private String getLocationId() {
         String locationId = null;
-        if (this.taskList != null) {
+        if (taskList != null) {
             locationId = new ArrayList<>(taskList).get(taskList.size() - 1).getLocation();
         }
         return locationId;
