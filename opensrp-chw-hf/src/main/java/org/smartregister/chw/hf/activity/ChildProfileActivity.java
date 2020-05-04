@@ -35,6 +35,7 @@ import org.smartregister.family.util.Constants;
 import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.family.util.Utils;
 
+import java.util.ArrayList;
 import java.util.Set;
 
 import timber.log.Timber;
@@ -43,6 +44,7 @@ public class ChildProfileActivity extends CoreChildProfileActivity {
     public CoreFamilyMemberFloatingMenu familyFloatingMenu;
     public RelativeLayout referralRow;
     public RecyclerView referralRecyclerView;
+    private Set<Task> taskList;
 
     @Override
     protected void onCreation() {
@@ -118,6 +120,8 @@ public class ChildProfileActivity extends CoreChildProfileActivity {
     @Override
     public void setClientTasks(Set<Task> taskList) {
         handler.postDelayed(() -> {
+            this.taskList = taskList;
+            invalidateOptionsMenu();
             if (referralRecyclerView != null && taskList.size() > 0) {
                 RecyclerView.Adapter mAdapter = new ReferralCardViewAdapter(taskList, this, ((HfChildProfilePresenter) presenter()).getChildClient(), CoreConstants.REGISTERED_ACTIVITIES.CHILD_REGISTER_ACTIVITY);
                 referralRecyclerView.setAdapter(mAdapter);
@@ -152,7 +156,9 @@ public class ChildProfileActivity extends CoreChildProfileActivity {
         menu.findItem(R.id.action_malaria_registration).setVisible(false);
         menu.findItem(R.id.action_malaria_followup_visit).setVisible(false);
         menu.findItem(R.id.action_remove_member).setVisible(false);
-        menu.findItem(R.id.action_sick_child_follow_up).setVisible(true);
+        if (this.taskList != null && this.taskList.size() > 0) {
+            menu.findItem(R.id.action_sick_child_follow_up).setVisible(true);
+        }
         if (MalariaDao.isRegisteredForMalaria(childBaseEntityId)) {
             menu.findItem(R.id.action_malaria_followup_visit).setTitle(R.string.hf_malaria_follow_up);
             menu.findItem(R.id.action_malaria_followup_visit).setVisible(true);
@@ -162,6 +168,15 @@ public class ChildProfileActivity extends CoreChildProfileActivity {
         }
         return true;
     }
+
+    private String getLocationId() {
+        String locationId = null;
+        if (this.taskList != null) {
+            locationId = new ArrayList<>(taskList).get(taskList.size() - 1).getLocation();
+        }
+        return locationId;
+    }
+
 
     @Override
     protected void onDestroy() {
@@ -223,18 +238,20 @@ public class ChildProfileActivity extends CoreChildProfileActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode != Activity.RESULT_OK) return;
         if (requestCode == JsonFormUtils.REQUEST_CODE_GET_JSON) {
             try {
                 String jsonString = data.getStringExtra(Constants.JSON_FORM_EXTRA.JSON);
                 JSONObject form = new JSONObject(jsonString);
                 String encounterType = form.getString(JsonFormUtils.ENCOUNTER_TYPE);
                 if (encounterType.equals(CoreConstants.EventType.SICK_CHILD_FOLLOW_UP)) {
-                    ((HfChildProfilePresenter) presenter).createSickChildEvent(Utils.getAllSharedPreferences(), jsonString);
+                    ((HfChildProfilePresenter) presenter).createSickChildFollowUpEvent(Utils.getAllSharedPreferences(), jsonString, getLocationId());
                 }
             } catch (Exception ex) {
                 Timber.e(ex);
             }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
         }
-        super.onActivityResult(requestCode, resultCode, data);
     }
 }
