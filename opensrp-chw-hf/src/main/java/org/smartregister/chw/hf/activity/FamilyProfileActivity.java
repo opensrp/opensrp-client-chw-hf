@@ -108,6 +108,12 @@ public class FamilyProfileActivity extends CoreFamilyProfileActivity {
     }
 
     @Override
+    protected void goToFpProfile(String baseEntityId, Activity activity) {
+        CommonPersonObjectClient client = org.smartregister.chw.core.utils.Utils.clientForEdit(baseEntityId);
+        FamilyPlanningMemberProfileActivity.startFpMemberProfileActivity(this, client);
+    }
+
+    @Override
     protected boolean isAncMember(String baseEntityId) {
         return getFamilyProfilePresenter().isAncMember(baseEntityId);
     }
@@ -154,11 +160,4 @@ public class FamilyProfileActivity extends CoreFamilyProfileActivity {
     public FamilyProfilePresenter getFamilyProfilePresenter() {
         return (FamilyProfilePresenter) presenter;
     }
-
-    @Override
-    protected void goToFpProfile(String baseEntityId, Activity activity) {
-        CommonPersonObjectClient client = org.smartregister.chw.core.utils.Utils.clientForEdit(baseEntityId);
-        FamilyPlanningMemberProfileActivity.startFpMemberProfileActivity(this, client);
-    }
-
 }
