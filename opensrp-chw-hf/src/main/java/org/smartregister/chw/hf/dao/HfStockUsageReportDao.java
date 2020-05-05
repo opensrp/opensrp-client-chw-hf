@@ -1,10 +1,13 @@
 package org.smartregister.chw.hf.dao;
 
+import org.smartregister.chw.core.domain.Hia2Indicator;
 import org.smartregister.chw.hf.model.InAppUsages;
 import org.smartregister.dao.AbstractDao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class HfStockUsageReportDao extends AbstractDao {
 
@@ -47,16 +50,26 @@ public class HfStockUsageReportDao extends AbstractDao {
         return (res == null || res.size() == 0) ? "0" : res.get(0).getStockValues();
     }
 
-    public static String getIndicatorLabels(String indicatorCode) {
-        String sql = "SELECT description " +
-                "FROM indicators " +
-                "WHERE indicator_code = '" + indicatorCode + "'";
-        AbstractDao.DataMap<String> dataMap = cursor -> getCursorValue(cursor, "description");
-        List<String> res = readData(sql, dataMap);
-        if (res == null)
-            return "";
+    public static Map<String, String> getIndicators() {
+        String sql = "SELECT description, indicator_code " +
+                "FROM indicators ";
 
-        return res.get(0);
+        Map<String, String> dataMapDetails = new HashMap<>();
+        AbstractDao.DataMap<Hia2Indicator> dataMap = cursor -> {
+            Hia2Indicator hia2Indicator = new Hia2Indicator();
+            hia2Indicator.setIndicatorCode(getCursorValue(cursor, "indicator_code"));
+            hia2Indicator.setDescription(getCursorValue(cursor, "description"));
+            return hia2Indicator;
+        };
+        List<Hia2Indicator> hia2IndicatorList = readData(sql, dataMap);
+
+        if (hia2IndicatorList != null && hia2IndicatorList.size() != 0) {
+            for (Hia2Indicator hia2Indicator : hia2IndicatorList) {
+                dataMapDetails.put(hia2Indicator.getIndicatorCode(), hia2Indicator.getDescription());
+            }
+        }
+
+        return dataMapDetails;
     }
 
     public List<String> getListOfProviders(String month, String year, String tableName) {
