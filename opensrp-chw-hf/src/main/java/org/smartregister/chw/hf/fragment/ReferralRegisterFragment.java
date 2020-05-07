@@ -37,7 +37,7 @@ public class ReferralRegisterFragment extends BaseReferralRegisterFragment {
 
     @Override
     protected String getMainCondition() {
-        return "task.status = '" + Task.TaskStatus.READY.name() + "' and  ec_family_member_search.date_removed is null";
+        return "task.business_status = '" + CoreConstants.BUSINESS_STATUS.REFERRED + "' and  ec_family_member_search.date_removed is null";
     }
 
     @Override
