@@ -6,6 +6,7 @@ import androidx.annotation.Nullable;
 import com.evernote.android.job.Job;
 import com.evernote.android.job.JobCreator;
 
+import org.smartregister.chw.core.job.CloseExpiredReferralsServiceJob;
 import org.smartregister.chw.core.job.SyncTaskWithClientEventsServiceJob;
 import org.smartregister.chw.core.job.VaccineRecurringServiceJob;
 import org.smartregister.chw.core.sync.intent.SyncClientEventsPerTaskIntentService;
@@ -50,6 +51,8 @@ public class HfJobCreator implements JobCreator {
                 return new PlanIntentServiceJob();
             case SyncTaskWithClientEventsServiceJob.TAG:
                 return new SyncTaskWithClientEventsServiceJob(SyncClientEventsPerTaskIntentService.class);
+            case CloseExpiredReferralsServiceJob.TAG:
+                return new CloseExpiredReferralsServiceJob();
             default:
                 Timber.d("Please create job and specify the right job tag");
                 return null;
