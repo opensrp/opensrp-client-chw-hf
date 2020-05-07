@@ -90,6 +90,13 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     }
 
     @Override
+    public void setFamilyLocation() {
+        view_family_location_row.setVisibility(View.VISIBLE);
+        rlFamilyLocation.setVisibility(View.VISIBLE);
+    }
+
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
         menu.findItem(R.id.action_anc_registration).setVisible(false);
