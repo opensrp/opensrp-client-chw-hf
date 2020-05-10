@@ -287,6 +287,13 @@
           "json_mapping": {
             "field": "attributes.dateRemoved"
           }
+        },
+        {
+          "column_name": "sync_location_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "locationId"
+          }
         }
       ]
     },
