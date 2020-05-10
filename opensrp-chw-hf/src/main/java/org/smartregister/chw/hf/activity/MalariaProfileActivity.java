@@ -48,7 +48,6 @@ public class MalariaProfileActivity extends CoreMalariaProfileActivity implement
     public RelativeLayout referralRow;
     public RecyclerView referralRecyclerView;
     private CommonPersonObjectClient commonPersonObjectClient;
-    private Set<Task> taskList;
 
     public static void startMalariaActivity(Activity activity, String baseEntityId) {
         MalariaProfileActivity.baseEntityId = baseEntityId;
@@ -82,9 +81,7 @@ public class MalariaProfileActivity extends CoreMalariaProfileActivity implement
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        if (taskList.size() > 0) { // If we have referrals
-            menu.findItem(R.id.action_malaria_followup).setVisible(true);
-        }
+        menu.findItem(R.id.action_malaria_followup).setVisible(true);
         MenuItem item = menu.findItem(R.id.action_remove_member);
         if (item != null) {
             menu.removeItem(item.getItemId());
@@ -100,7 +97,7 @@ public class MalariaProfileActivity extends CoreMalariaProfileActivity implement
                 JSONObject form = new JSONObject(jsonString);
                 String encounterType = form.getString(JsonFormUtils.ENCOUNTER_TYPE);
                 if (encounterType.equals(CoreConstants.EventType.MALARIA_FOLLOW_UP_HF)) {
-                    getPresenter().createHfMalariaFollowupEvent(Utils.getAllSharedPreferences(), jsonString, memberObject.getBaseEntityId(), getLocationId());
+                    getPresenter().createHfMalariaFollowupEvent(Utils.getAllSharedPreferences(), jsonString, memberObject.getBaseEntityId());
                 }
             } catch (Exception ex) {
                 Timber.e(ex);
@@ -108,14 +105,6 @@ public class MalariaProfileActivity extends CoreMalariaProfileActivity implement
         } else {
             super.onActivityResult(requestCode, resultCode, data);
         }
-    }
-
-    private String getLocationId() {
-        String locationId = null;
-        if (taskList != null) {
-            locationId = new ArrayList<>(taskList).get(taskList.size() - 1).getLocation();
-        }
-        return locationId;
     }
 
     @Override
@@ -224,8 +213,6 @@ public class MalariaProfileActivity extends CoreMalariaProfileActivity implement
 
     @Override
     public void updateReferralTasks(Set<Task> taskList) {
-        this.taskList = taskList;
-        invalidateOptionsMenu(); // We want to update the drop-down menu if we have referrals
         if (referralRecyclerView != null && taskList.size() > 0) {
             RecyclerView.Adapter mAdapter = new ReferralCardViewAdapter(taskList, this, getAncMemberObject(), memberObject.getFamilyHeadName(),
                     memberObject.getFamilyHeadPhoneNumber(), commonPersonObjectClient, CoreConstants.REGISTERED_ACTIVITIES.MALARIA_REGISTER_ACTIVITY);

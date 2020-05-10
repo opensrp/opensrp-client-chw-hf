@@ -57,9 +57,9 @@ public class HfChildProfilePresenter extends CoreChildProfilePresenter {
     }
 
     @Override
-    public void createSickChildFollowUpEvent(AllSharedPreferences allSharedPreferences, String jsonString, String locationId) throws Exception{
+    public void createSickChildFollowUpEvent(AllSharedPreferences allSharedPreferences, String jsonString) throws Exception {
         getInteractor().setChildBaseEntityId(getChildBaseEntityId());
-        getInteractor().createSickChildFollowUpEvent(allSharedPreferences, jsonString,locationId);
+        getInteractor().createSickChildFollowUpEvent(allSharedPreferences, jsonString);
     }
 
 }

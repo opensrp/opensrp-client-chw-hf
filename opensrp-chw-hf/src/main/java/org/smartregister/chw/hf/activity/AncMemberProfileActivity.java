@@ -50,7 +50,6 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     public RelativeLayout referralRow;
     public RecyclerView referralRecyclerView;
     private CommonPersonObjectClient commonPersonObjectClient;
-    private Set<Task> taskList;
 
     public static void startMe(Activity activity, String baseEntityID, CommonPersonObjectClient commonPersonObjectClient) {
         Intent intent = new Intent(activity, AncMemberProfileActivity.class);
@@ -95,9 +94,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        if (taskList == null || taskList.isEmpty()) {
-            menu.findItem(R.id.anc_danger_signs_outcome).setVisible(false);
-        }
+        menu.findItem(R.id.anc_danger_signs_outcome).setVisible(false);
         menu.findItem(R.id.action_anc_registration).setVisible(false);
         menu.findItem(R.id.action_remove_member).setVisible(false);
         return true;
@@ -131,7 +128,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
                         CoreChwApplication.getInstance().getRepository().getWritableDatabase().update(CoreConstants.TABLE_NAME.ANC_MEMBER, values, DBConstants.KEY.BASE_ENTITY_ID + " = ?  ", new String[]{baseEntityId});
                     }
                 } else if (encounterType.equals(CoreConstants.EventType.ANC_DANGER_SIGNS_OUTCOME)) {
-                    ancMemberProfilePresenter().createAncDangerSignsOutcomeEvent(Utils.getAllSharedPreferences(), jsonString, baseEntityID, getLocationId());
+                    ancMemberProfilePresenter().createAncDangerSignsOutcomeEvent(Utils.getAllSharedPreferences(), jsonString, baseEntityID);
                 }
             } catch (Exception e) {
                 Timber.e(e, "AncMemberProfileActivity -- > onActivityResult");
@@ -185,21 +182,11 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
 
     @Override
     public void setClientTasks(Set<Task> taskList) {
-        this.taskList = taskList;
-        invalidateOptionsMenu();
         if (referralRecyclerView != null && taskList.size() > 0) {
             RecyclerView.Adapter mAdapter = new ReferralCardViewAdapter(taskList, this, memberObject, memberObject.getFamilyHeadName(), memberObject.getFamilyHeadPhoneNumber(), getCommonPersonObjectClient(), CoreConstants.REGISTERED_ACTIVITIES.ANC_REGISTER_ACTIVITY);
             referralRecyclerView.setAdapter(mAdapter);
             referralRow.setVisibility(View.VISIBLE);
         }
-    }
-
-    private String getLocationId() {
-        String locationId = null;
-        if (taskList != null) {
-            locationId = new ArrayList<>(taskList).get(taskList.size() - 1).getLocation();
-        }
-        return locationId;
     }
 
     public CommonPersonObjectClient getCommonPersonObjectClient() {

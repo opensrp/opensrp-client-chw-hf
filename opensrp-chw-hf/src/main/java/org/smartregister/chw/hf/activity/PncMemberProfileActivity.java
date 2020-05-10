@@ -54,7 +54,6 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
     public RecyclerView referralRecyclerView;
     private CommonPersonObjectClient commonPersonObjectClient;
     private PncMemberProfilePresenter pncMemberProfilePresenter;
-    private Set<Task> taskList;
 
     public static void startMe(Activity activity, String baseEntityID, CommonPersonObjectClient commonPersonObjectClient) {
         Intent intent = new Intent(activity, PncMemberProfileActivity.class);
@@ -94,8 +93,6 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
     }
 
     public void setReferralTasks(Set<Task> taskList) {
-        this.taskList = taskList;
-        invalidateOptionsMenu(); // We want to update the drop-down menu if we have referrals
         if (referralRecyclerView != null && taskList.size() > 0) {
             RecyclerView.Adapter mAdapter = new ReferralCardViewAdapter(taskList, this, memberObject, getFamilyHeadName(),
                     getFamilyHeadPhoneNumber(), getCommonPersonObjectClient(), CoreConstants.REGISTERED_ACTIVITIES.PNC_REGISTER_ACTIVITY);
@@ -173,10 +170,7 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
             menuItemEditNames.put(getString(R.string.edit_child_form_title, childModels.get(i).getFirstName()), childModels.get(i).getBaseEntityId());
         }
         menu.findItem(R.id.action__pnc_remove_member).setVisible(false);
-
-        if (taskList.size() > 0) { // If we have referrals
-            menu.findItem(R.id.action__pnc_danger_sign_outcome).setVisible(true);
-        }
+        menu.findItem(R.id.action__pnc_danger_sign_outcome).setVisible(true);
 
         if (MalariaDao.isRegisteredForMalaria(baseEntityID)) {
             menu.findItem(R.id.action_malaria_followup_visit).setVisible(true);
@@ -209,7 +203,7 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
                     new FamilyProfileInteractor().saveRegistration(familyEventClient, jsonString, true, (FamilyProfileContract.InteractorCallBack) pncMemberProfilePresenter());
                 } else if (encounterType.equals(CoreConstants.EventType.PNC_DANGER_SIGNS_OUTCOME)) {
                     try {
-                        getPncMemberProfilePresenter().createPncDangerSignsOutcomeEvent(Utils.getAllSharedPreferences(), jsonString, memberObject.getBaseEntityId(), getLocationId());
+                        getPncMemberProfilePresenter().createPncDangerSignsOutcomeEvent(Utils.getAllSharedPreferences(), jsonString, memberObject.getBaseEntityId());
                     } catch (Exception ex) {
                         Timber.e(ex);
                     }
@@ -218,14 +212,6 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
                 Timber.e(jsonException);
             }
         }
-    }
-
-    private String getLocationId() {
-        String locationId = null;
-        if (taskList != null) {
-            locationId = new ArrayList<>(taskList).get(taskList.size() - 1).getLocation();
-        }
-        return locationId;
     }
 
     @Override
