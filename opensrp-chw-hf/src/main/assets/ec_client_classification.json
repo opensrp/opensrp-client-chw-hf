@@ -213,6 +213,13 @@
             "creates_case": [
               "ec_malaria_followup_hf"
             ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "Family Planning Update",
+            "creates_case": [
+              "ec_family_planning_update"
+            ]
           }
         ]
       }
