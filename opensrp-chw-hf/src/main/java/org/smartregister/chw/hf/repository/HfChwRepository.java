@@ -13,6 +13,7 @@ import org.smartregister.domain.db.Column;
 import org.smartregister.immunization.repository.RecurringServiceRecordRepository;
 import org.smartregister.immunization.repository.VaccineRepository;
 import org.smartregister.immunization.util.IMDatabaseUtils;
+import org.smartregister.reporting.ReportingLibrary;
 import org.smartregister.repository.AlertRepository;
 import org.smartregister.repository.EventClientRepository;
 
@@ -20,6 +21,7 @@ import timber.log.Timber;
 
 public class HfChwRepository extends CoreChwRepository {
     private Context context;
+    private static String appVersionCodePref = "APP_VERSION_CODE";
 
     public HfChwRepository(Context context, org.smartregister.Context openSRPContext) {
         super(context, AllConstants.DATABASE_NAME, BuildConfig.DATABASE_VERSION, openSRPContext.session(), CoreChwApplication.createCommonFtsObject(), openSRPContext.sharedRepositoriesArray());
@@ -48,6 +50,9 @@ public class HfChwRepository extends CoreChwRepository {
                     break;
                 case 6:
                     upgradeToVersion6(db);
+                    break;
+                case 7:
+                    upgradeToVersion7(db);
                     break;
                 default:
                     break;
@@ -124,6 +129,36 @@ public class HfChwRepository extends CoreChwRepository {
     private static void upgradeToVersion6(SQLiteDatabase db) {
         try {
             StockUsageReportRepository.createTable(db);
+        } catch (Exception e) {
+            Timber.e(e);
+        }
+    }
+
+
+    private static boolean checkIfAppUpdated() {
+        String savedAppVersion = ReportingLibrary.getInstance().getContext().allSharedPreferences().getPreference(appVersionCodePref);
+        if (savedAppVersion.isEmpty()) {
+            return true;
+        } else {
+            int savedVersion = Integer.parseInt(savedAppVersion);
+            return (org.smartregister.chw.core.BuildConfig.VERSION_CODE > savedVersion);
+        }
+    }
+
+    private static void upgradeToVersion7(SQLiteDatabase db) {
+        try {
+            String indicatorsConfigFile = "config/indicator-definitions.yml";
+            String indicatorDataInitialisedPref = "INDICATOR_DATA_INITIALISED";
+            ReportingLibrary reportingLibraryInstance = ReportingLibrary.getInstance();
+
+            boolean indicatorDataInitialised = Boolean.parseBoolean(reportingLibraryInstance.getContext().allSharedPreferences().getPreference(indicatorDataInitialisedPref));
+            boolean isUpdated = checkIfAppUpdated();
+            if (!indicatorDataInitialised || isUpdated) {
+                reportingLibraryInstance.readConfigFile(indicatorsConfigFile, db);
+                reportingLibraryInstance.initIndicatorData(indicatorsConfigFile, db); // This will persist the data in the DB
+                reportingLibraryInstance.getContext().allSharedPreferences().savePreference(indicatorDataInitialisedPref, "true");
+                reportingLibraryInstance.getContext().allSharedPreferences().savePreference(appVersionCodePref, String.valueOf(org.smartregister.chw.core.BuildConfig.VERSION_CODE));
+            }
         } catch (Exception e) {
             Timber.e(e);
         }

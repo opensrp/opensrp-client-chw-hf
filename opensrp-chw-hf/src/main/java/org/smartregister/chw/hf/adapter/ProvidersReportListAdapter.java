@@ -10,27 +10,31 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.activity.HfStockInventoryReportActivity;
+import org.smartregister.chw.hf.activity.InAppInventoryReportActivity;
 
 import java.util.List;
 
-public class ProviderStockUsageReportListAdapter extends RecyclerView.Adapter<ProviderStockUsageReportListAdapter.ProviderStockUsageReportListViewHolder> {
+public class ProvidersReportListAdapter extends RecyclerView.Adapter<ProvidersReportListAdapter.ProviderStockUsageReportListViewHolder> {
     protected LayoutInflater inflater;
     private List<String> providerList;
     private Context context;
+    private String providerType;
 
-    public ProviderStockUsageReportListAdapter(List<String> providerList, Context context) {
+    public ProvidersReportListAdapter(List<String> providerList, Context context, String providerType) {
         this.providerList = providerList;
         this.context = context;
+        this.providerType = providerType;
     }
 
     @NonNull
     @Override
-    public ProviderStockUsageReportListAdapter.ProviderStockUsageReportListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ProvidersReportListAdapter.ProviderStockUsageReportListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         inflater = LayoutInflater.from(parent.getContext());
         View v = inflater.inflate(R.layout.provider_stock_usage_items, parent, false);
-        return new ProviderStockUsageReportListAdapter.ProviderStockUsageReportListViewHolder(v);
+        return new ProvidersReportListAdapter.ProviderStockUsageReportListViewHolder(v);
     }
 
     @Override
@@ -40,9 +44,8 @@ public class ProviderStockUsageReportListAdapter extends RecyclerView.Adapter<Pr
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String providerName = "providerName";
-                Intent intent = new Intent(context, HfStockInventoryReportActivity.class);
-
+                String providerName = CoreConstants.HfStockUsageUtil.PROVIDER_NAME;
+                Intent intent = getIntent(context,providerType );
                 if (position == 0) {
                     intent.putExtra(providerName, context.getString(R.string.all_chw));
                 } else {
@@ -51,6 +54,13 @@ public class ProviderStockUsageReportListAdapter extends RecyclerView.Adapter<Pr
                 context.startActivity(intent);
             }
         });
+    }
+
+    protected Intent getIntent(Context activity, String providerType) {
+        if(providerType.equalsIgnoreCase(CoreConstants.HfInAppUtil.PROVIDER_TYPE)){
+            return new Intent(activity, InAppInventoryReportActivity.class);
+        }
+        return new Intent(activity, HfStockInventoryReportActivity.class);
     }
 
     @Override
