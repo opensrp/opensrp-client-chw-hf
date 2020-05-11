@@ -15,7 +15,6 @@ public class HfSyncTaskIntentService extends SyncTaskIntentService {
         HfTaskServiceHelper taskServiceHelper = HfTaskServiceHelper.getInstance();
         taskServiceHelper.syncTasks();
         SyncTaskWithClientEventsServiceJob.scheduleJobImmediately(SyncTaskWithClientEventsServiceJob.TAG);
-        Timber.e("Coze");
         CloseExpiredReferralsServiceJob.scheduleJobImmediately(CloseExpiredReferralsServiceJob.TAG);
     }
 }
