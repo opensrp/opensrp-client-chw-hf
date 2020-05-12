@@ -7,8 +7,6 @@ import org.smartregister.chw.core.job.SyncTaskWithClientEventsServiceJob;
 import org.smartregister.chw.hf.sync.helper.HfTaskServiceHelper;
 import org.smartregister.sync.intent.SyncTaskIntentService;
 
-import timber.log.Timber;
-
 public class HfSyncTaskIntentService extends SyncTaskIntentService {
     @Override
     protected void onHandleIntent(Intent intent) {
