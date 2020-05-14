@@ -90,7 +90,9 @@ public class ProvidersReportListActivity extends SecuredActivity {
         if (providerType.equalsIgnoreCase(CoreConstants.HfInAppUtil.PROVIDER_TYPE)) {
             toolBarTextView.setText(this.getString(R.string.review_chw_services));
         }
-        toolBarTextView.setText(this.getString(R.string.stock_usage_title));
+        else {
+            toolBarTextView.setText(this.getString(R.string.stock_usage_title));
+        }
         appBarLayout = findViewById(R.id.app_bar);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             appBarLayout.setOutlineProvider(null);

@@ -35,6 +35,8 @@ public class InAppInventoryReportActivity extends CoreStockInventoryReportActivi
         super.onCreation();
         Intent intent = getIntent();
         providerName = intent.getStringExtra(CoreConstants.HfStockUsageUtil.PROVIDER_NAME);
+        toolBarTextView.setText(getString(org.smartregister.chw.core.R.string.service_review));
+
     }
 
     @Override
