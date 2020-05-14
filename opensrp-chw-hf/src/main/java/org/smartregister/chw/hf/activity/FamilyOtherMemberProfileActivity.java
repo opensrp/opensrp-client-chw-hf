@@ -79,6 +79,11 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
     }
 
     @Override
+    protected void setIndependentClient(boolean b) {
+
+    }
+
+    @Override
     protected void removeIndividualProfile() {
         Timber.d("Remove member action is not required in HF");
     }
