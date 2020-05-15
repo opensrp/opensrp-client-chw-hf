@@ -40,7 +40,12 @@ public class ProvidersReportListAdapter extends RecyclerView.Adapter<ProvidersRe
     @Override
     public void onBindViewHolder(ProviderStockUsageReportListViewHolder holder, int position) {
         String provider = providerList.get(position);
-        holder.providerName.setText(context.getString(R.string.provider_text, provider));
+        if (providerType.equalsIgnoreCase(CoreConstants.HfInAppUtil.PROVIDER_TYPE)) {
+            holder.providerName.setText(context.getString(R.string.provider_service_text, provider));
+        }
+        else {
+            holder.providerName.setText(context.getString(R.string.provider_text, provider));
+        }
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
