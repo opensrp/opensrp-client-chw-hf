@@ -33,7 +33,6 @@ import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.family.util.Utils;
 import org.smartregister.view.customcontrols.CustomFontTextView;
 
-import java.util.ArrayList;
 import java.util.Set;
 
 import timber.log.Timber;

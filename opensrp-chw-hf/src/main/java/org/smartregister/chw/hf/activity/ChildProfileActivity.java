@@ -35,7 +35,6 @@ import org.smartregister.family.util.Constants;
 import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.family.util.Utils;
 
-import java.util.ArrayList;
 import java.util.Set;
 
 import timber.log.Timber;
@@ -44,7 +43,6 @@ public class ChildProfileActivity extends CoreChildProfileActivity {
     public CoreFamilyMemberFloatingMenu familyFloatingMenu;
     public RelativeLayout referralRow;
     public RecyclerView referralRecyclerView;
-    private Set<Task> taskList;
 
     @Override
     protected void onCreation() {

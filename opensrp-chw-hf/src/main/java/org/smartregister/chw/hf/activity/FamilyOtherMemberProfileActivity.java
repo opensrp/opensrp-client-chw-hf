@@ -80,7 +80,7 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
 
     @Override
     protected void setIndependentClient(boolean b) {
-
+        // TODO -> Implement for HF
     }
 
     @Override
