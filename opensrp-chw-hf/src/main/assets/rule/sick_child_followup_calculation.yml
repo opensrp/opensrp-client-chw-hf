@@ -4,4 +4,4 @@ description: Calculated date_sickchild
 priority: 1
 condition: "true"
 actions:
-  - "calculation = helper.getDateToday()"
+  - "calculation = helper.getDateTimeToday()"

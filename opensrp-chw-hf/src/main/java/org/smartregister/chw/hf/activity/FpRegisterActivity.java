@@ -8,9 +8,12 @@ import org.json.JSONObject;
 import org.smartregister.chw.core.activity.CoreFpRegisterActivity;
 import org.smartregister.chw.core.dataloader.FPDataLoader;
 import org.smartregister.chw.core.form_data.NativeFormsDataBinder;
+import org.smartregister.chw.fp.model.BaseFpRegisterModel;
 import org.smartregister.chw.fp.util.FamilyPlanningConstants;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.fragment.FpRegisterFragment;
+import org.smartregister.chw.hf.interactor.HFFamilyPlanningRegisterInteractor;
+import org.smartregister.chw.hf.presenter.FpRegisterPresenter;
 import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.helper.BottomNavigationHelper;
 import org.smartregister.view.fragment.BaseRegisterFragment;
@@ -51,6 +54,11 @@ public class FpRegisterActivity extends CoreFpRegisterActivity {
         startActivity(new Intent(this, FpRegisterActivity.class));
         super.onFormSaved();
         this.finish();
+    }
+
+    @Override
+    protected void initializePresenter() {
+        presenter = new FpRegisterPresenter(this, new BaseFpRegisterModel(), new HFFamilyPlanningRegisterInteractor());
     }
 
     @Override

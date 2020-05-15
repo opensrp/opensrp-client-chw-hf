@@ -153,6 +153,7 @@ public class ChildProfileActivity extends CoreChildProfileActivity {
         menu.findItem(R.id.action_malaria_followup_visit).setVisible(false);
         menu.findItem(R.id.action_remove_member).setVisible(false);
         menu.findItem(R.id.action_sick_child_follow_up).setVisible(true);
+
         if (MalariaDao.isRegisteredForMalaria(childBaseEntityId)) {
             menu.findItem(R.id.action_malaria_followup_visit).setTitle(R.string.hf_malaria_follow_up);
             menu.findItem(R.id.action_malaria_followup_visit).setVisible(true);
@@ -223,18 +224,20 @@ public class ChildProfileActivity extends CoreChildProfileActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode != Activity.RESULT_OK) return;
         if (requestCode == JsonFormUtils.REQUEST_CODE_GET_JSON) {
             try {
                 String jsonString = data.getStringExtra(Constants.JSON_FORM_EXTRA.JSON);
                 JSONObject form = new JSONObject(jsonString);
                 String encounterType = form.getString(JsonFormUtils.ENCOUNTER_TYPE);
                 if (encounterType.equals(CoreConstants.EventType.SICK_CHILD_FOLLOW_UP)) {
-                    ((HfChildProfilePresenter) presenter).createSickChildEvent(Utils.getAllSharedPreferences(), jsonString);
+                    ((HfChildProfilePresenter) presenter).createSickChildFollowUpEvent(Utils.getAllSharedPreferences(), jsonString);
                 }
             } catch (Exception ex) {
                 Timber.e(ex);
             }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
         }
-        super.onActivityResult(requestCode, resultCode, data);
     }
 }
