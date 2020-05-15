@@ -2207,6 +2207,14 @@
           }
         },
         {
+          "column_name": "fp_reg_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "fp_change_or_stop_date"
+          }
+        },
+        {
           "column_name": "date_marked_as_done",
           "type": "Event",
           "json_mapping": {
