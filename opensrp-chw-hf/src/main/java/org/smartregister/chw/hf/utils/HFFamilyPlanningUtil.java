@@ -56,7 +56,7 @@ public class HFFamilyPlanningUtil extends FpUtil {
         JSONObject jsonStepObject = jsonObject.getJSONObject("step1");
         JSONArray fieldsArray = jsonStepObject.getJSONArray(JsonFormConstants.FIELDS);
         String key = "fp_reg_date";
-        if (encounter.equals("Family Planning Change Method")) {
+        if (("Family Planning Change Method").equals(encounter)) {
             key = "fp_change_or_stop_date";
         }
         JSONObject startDateObject = JsonFormUtils.getFieldJSONObject(fieldsArray, key);
