@@ -170,6 +170,7 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
         }
         menu.findItem(R.id.action__pnc_remove_member).setVisible(false);
         menu.findItem(R.id.action__pnc_danger_sign_outcome).setVisible(true);
+
         if (MalariaDao.isRegisteredForMalaria(baseEntityID)) {
             menu.findItem(R.id.action_malaria_followup_visit).setVisible(true);
             menu.findItem(R.id.action_malaria_diagnosis).setVisible(false);

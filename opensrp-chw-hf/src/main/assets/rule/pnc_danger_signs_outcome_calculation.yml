@@ -4,4 +4,4 @@ description: Calculated pnc_danger_signs_visitdate
 priority: 1
 condition: "true"
 actions:
-  - "calculation = helper.getDateToday()"
+  - "calculation = helper.getDateTimeToday()"
