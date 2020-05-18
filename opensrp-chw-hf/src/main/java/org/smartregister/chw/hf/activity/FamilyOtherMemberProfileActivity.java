@@ -44,6 +44,7 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
         baJsonFormUtils = new BAJsonFormUtils(HealthFacilityApplication.getInstance());
         dob = org.smartregister.family.util.Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.DOB, false);
         gender = org.smartregister.family.util.Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.GENDER, false);
+        setIndependentClient(false);
     }
 
     @Override
@@ -80,7 +81,7 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
 
     @Override
     protected void setIndependentClient(boolean b) {
-        // TODO -> Implement for HF
+      this.isIndependent = false;
     }
 
     @Override
