@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.json.JSONObject;
 import org.smartregister.chw.anc.domain.MemberObject;
 import org.smartregister.chw.core.activity.CoreFamilyProfileActivity;
 import org.smartregister.chw.core.activity.CoreMalariaProfileActivity;
@@ -28,6 +29,8 @@ import org.smartregister.commonregistry.CommonPersonObject;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.domain.Task;
 import org.smartregister.family.model.BaseFamilyOtherMemberProfileActivityModel;
+import org.smartregister.family.util.JsonFormUtils;
+import org.smartregister.family.util.Utils;
 import org.smartregister.view.customcontrols.CustomFontTextView;
 
 import java.util.Set;
@@ -83,6 +86,24 @@ public class MalariaProfileActivity extends CoreMalariaProfileActivity implement
             menu.removeItem(item.getItemId());
         }
         return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == Activity.RESULT_OK && requestCode == JsonFormUtils.REQUEST_CODE_GET_JSON) {
+            try {
+                String jsonString = data.getStringExtra(org.smartregister.family.util.Constants.JSON_FORM_EXTRA.JSON);
+                JSONObject form = new JSONObject(jsonString);
+                String encounterType = form.getString(JsonFormUtils.ENCOUNTER_TYPE);
+                if (encounterType.equals(CoreConstants.EventType.MALARIA_FOLLOW_UP_HF)) {
+                    getPresenter().createHfMalariaFollowupEvent(Utils.getAllSharedPreferences(), jsonString, memberObject.getBaseEntityId());
+                }
+            } catch (Exception ex) {
+                Timber.e(ex);
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
     }
 
     @Override

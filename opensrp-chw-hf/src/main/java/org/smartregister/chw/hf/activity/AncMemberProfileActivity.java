@@ -92,6 +92,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
+        menu.findItem(R.id.anc_danger_signs_outcome).setVisible(true);
         menu.findItem(R.id.action_anc_registration).setVisible(false);
         menu.findItem(R.id.action_remove_member).setVisible(false);
         return true;
@@ -104,11 +105,12 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
             try {
                 String jsonString = data.getStringExtra(org.smartregister.family.util.Constants.JSON_FORM_EXTRA.JSON);
                 JSONObject form = new JSONObject(jsonString);
-                if (form.getString(JsonFormUtils.ENCOUNTER_TYPE).equals(Utils.metadata().familyMemberRegister.updateEventType)) {
+                String encounterType = form.getString(JsonFormUtils.ENCOUNTER_TYPE);
+                if (encounterType.equals(Utils.metadata().familyMemberRegister.updateEventType)) {
                     FamilyEventClient familyEventClient =
                             new FamilyProfileModel(memberObject.getFamilyName()).processUpdateMemberRegistration(jsonString, memberObject.getBaseEntityId());
                     new FamilyProfileInteractor().saveRegistration(familyEventClient, jsonString, true, ancMemberProfilePresenter());
-                } else if (form.getString(JsonFormUtils.ENCOUNTER_TYPE).equals(CoreConstants.EventType.UPDATE_ANC_REGISTRATION)) {
+                } else if (encounterType.equals(CoreConstants.EventType.UPDATE_ANC_REGISTRATION)) {
                     AllSharedPreferences allSharedPreferences = org.smartregister.util.Utils.getAllSharedPreferences();
                     Event baseEvent = org.smartregister.chw.anc.util.JsonFormUtils.processJsonForm(allSharedPreferences, jsonString, Constants.TABLES.ANC_MEMBERS);
                     NCUtils.processEvent(baseEvent.getBaseEntityId(), new JSONObject(org.smartregister.chw.anc.util.JsonFormUtils.gson.toJson(baseEvent)));
@@ -123,7 +125,8 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
                         values.put(DBConstants.KEY.PHONE_NUMBER, phoneNumber);
                         CoreChwApplication.getInstance().getRepository().getWritableDatabase().update(CoreConstants.TABLE_NAME.ANC_MEMBER, values, DBConstants.KEY.BASE_ENTITY_ID + " = ?  ", new String[]{baseEntityId});
                     }
-
+                } else if (encounterType.equals(CoreConstants.EventType.ANC_DANGER_SIGNS_OUTCOME)) {
+                    ancMemberProfilePresenter().createAncDangerSignsOutcomeEvent(Utils.getAllSharedPreferences(), jsonString, baseEntityID);
                 }
             } catch (Exception e) {
                 Timber.e(e, "AncMemberProfileActivity -- > onActivityResult");

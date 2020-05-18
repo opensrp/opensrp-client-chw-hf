@@ -241,6 +241,13 @@
             "creates_case": [
               "ec_referral"
             ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "Family Planning Update",
+            "creates_case": [
+              "ec_family_planning_update"
+            ]
           }
         ]
       }
