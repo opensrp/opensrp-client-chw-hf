@@ -8,14 +8,20 @@ import org.smartregister.AllConstants;
 import org.smartregister.chw.core.application.CoreChwApplication;
 import org.smartregister.chw.core.repository.CoreChwRepository;
 import org.smartregister.chw.core.repository.StockUsageReportRepository;
+import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.BuildConfig;
 import org.smartregister.domain.db.Column;
+import org.smartregister.family.util.DBConstants;
 import org.smartregister.immunization.repository.RecurringServiceRecordRepository;
 import org.smartregister.immunization.repository.VaccineRepository;
 import org.smartregister.immunization.util.IMDatabaseUtils;
 import org.smartregister.reporting.ReportingLibrary;
 import org.smartregister.repository.AlertRepository;
 import org.smartregister.repository.EventClientRepository;
+import org.smartregister.util.DatabaseMigrationUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import timber.log.Timber;
 
@@ -54,6 +60,8 @@ public class HfChwRepository extends CoreChwRepository {
                 case 7:
                     upgradeToVersion7(db);
                     break;
+                case 8:
+                    upgradeToVersion8(db);
                 default:
                     break;
             }
@@ -161,6 +169,22 @@ public class HfChwRepository extends CoreChwRepository {
             }
         } catch (Exception e) {
             Timber.e(e);
+        }
+    }
+
+    private void upgradeToVersion8(SQLiteDatabase db) {
+        try {
+
+            db.execSQL("ALTER TABLE ec_family ADD COLUMN entity_type VARCHAR; " +
+                    "UPDATE ec_family SET entity_type = 'ec_family' WHERE id is not null;");
+
+            List<String> columns = new ArrayList<>();
+            columns.add(CoreConstants.DB_CONSTANTS.DETAILS);
+            columns.add(DBConstants.KEY.ENTITY_TYPE);
+            DatabaseMigrationUtils.addFieldsToFTSTable(db, CoreChwApplication.createCommonFtsObject(), CoreConstants.TABLE_NAME.FAMILY, columns);
+
+        } catch (Exception e) {
+            Timber.e(e, "commonUpgrade -> Failed to add column 'entity_type' and 'details' to ec_family_search ");
         }
     }
 }
