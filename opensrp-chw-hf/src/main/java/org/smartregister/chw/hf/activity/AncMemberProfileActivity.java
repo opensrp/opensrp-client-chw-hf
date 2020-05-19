@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.smartregister.chw.anc.util.Constants;
@@ -87,6 +88,18 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     public void setFamilyStatus(AlertStatus status) {
         view_family_row.setVisibility(View.GONE);
         rlFamilyServicesDue.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void setFamilyLocation() {
+        if (!StringUtils.isBlank(getMemberGPS())){
+            view_family_location_row.setVisibility(View.VISIBLE);
+            rlFamilyLocation.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private String getMemberGPS(){
+        return memberObject.getGps();
     }
 
     @Override
