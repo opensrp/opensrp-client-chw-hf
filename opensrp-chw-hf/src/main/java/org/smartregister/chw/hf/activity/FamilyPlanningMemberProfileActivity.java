@@ -4,9 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.RelativeLayout;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.smartregister.chw.anc.domain.Visit;
@@ -31,8 +29,6 @@ import timber.log.Timber;
 
 public class FamilyPlanningMemberProfileActivity extends CoreFamilyPlanningMemberProfileActivity implements FamilyPlanningMemberProfileContract.View {
 
-    public RelativeLayout referralInfoRow;
-    public RecyclerView referralRecyclerView;
     private CommonPersonObjectClient commonPersonObjectClient;
 
     public static void startFpMemberProfileActivity(Activity activity, CommonPersonObjectClient client) {
@@ -43,19 +39,13 @@ public class FamilyPlanningMemberProfileActivity extends CoreFamilyPlanningMembe
         activity.startActivity(intent);
     }
 
-    private void initializeReferralsRecyclerView() {
-        referralRecyclerView = findViewById(R.id.referral_card_recycler_view);
-        referralInfoRow = findViewById(R.id.referral_row);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        referralRecyclerView.setLayoutManager(layoutManager);
-    }
-
     public void setReferralTasks(Set<Task> taskList) {
-        if (referralRecyclerView != null && taskList.size() > 0) {
+        if (notificationAndReferralRecyclerView != null && taskList.size() > 0) {
             RecyclerView.Adapter mAdapter = new ReferralCardViewAdapter(taskList, this, FpUtil.toMember(fpMemberObject), fpMemberObject.getFamilyHeadName(),
                     fpMemberObject.getFamilyHeadPhoneNumber(), getCommonPersonObjectClient(), CoreConstants.REGISTERED_ACTIVITIES.FP_REGISTER_ACTIVITY);
-            referralRecyclerView.setAdapter(mAdapter);
-            referralInfoRow.setVisibility(View.VISIBLE);
+            notificationAndReferralRecyclerView.setAdapter(mAdapter);
+            notificationAndReferralLayout.setVisibility(View.VISIBLE);
+            findViewById(R.id.view_notification_and_referral_row).setVisibility(View.VISIBLE);
         }
     }
 
@@ -69,17 +59,11 @@ public class FamilyPlanningMemberProfileActivity extends CoreFamilyPlanningMembe
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        initializeReferralsRecyclerView();
-    }
-
-    @Override
     protected void onResume() {
         super.onResume();
         ((FamilyPlanningMemberProfileContract.Presenter) fpProfilePresenter).fetchReferralTasks();
-        if (referralRecyclerView != null && referralRecyclerView.getAdapter() != null) {
-            referralRecyclerView.getAdapter().notifyDataSetChanged();
+        if (notificationAndReferralRecyclerView != null && notificationAndReferralRecyclerView.getAdapter() != null) {
+            notificationAndReferralRecyclerView.getAdapter().notifyDataSetChanged();
         }
     }
 

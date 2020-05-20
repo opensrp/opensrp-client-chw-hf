@@ -7,10 +7,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.json.JSONObject;
@@ -44,8 +42,6 @@ public class MalariaProfileActivity extends CoreMalariaProfileActivity implement
 
     private static boolean isStartedFromReferrals;
     private static String baseEntityId;
-    public RelativeLayout referralRow;
-    public RecyclerView referralRecyclerView;
     private CommonPersonObjectClient commonPersonObjectClient;
 
     public static void startMalariaActivity(Activity activity, String baseEntityId) {
@@ -59,6 +55,7 @@ public class MalariaProfileActivity extends CoreMalariaProfileActivity implement
     @Override
     protected void onCreation() {
         super.onCreation();
+        findViewById(R.id.record_visit_malaria).setVisibility(View.GONE);
         this.setOnMemberTypeLoadedListener(memberType -> {
             switch (memberType.getMemberType()) {
                 case CoreConstants.TABLE_NAME.ANC_MEMBER:
@@ -80,7 +77,10 @@ public class MalariaProfileActivity extends CoreMalariaProfileActivity implement
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        menu.findItem(R.id.action_malaria_followup).setVisible(true);
+        MenuItem malariaFollowupMenu = menu.findItem(R.id.action_malaria_followup).setVisible(true);
+        if (malariaFollowupMenu != null) {
+            menu.removeItem(malariaFollowupMenu.getItemId());
+        }
         MenuItem item = menu.findItem(R.id.action_remove_member);
         if (item != null) {
             menu.removeItem(item.getItemId());
@@ -132,7 +132,6 @@ public class MalariaProfileActivity extends CoreMalariaProfileActivity implement
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         updateCommonPersonObjectClient();
-        initializeTasksRecyclerView();
     }
 
     @Override
@@ -141,28 +140,15 @@ public class MalariaProfileActivity extends CoreMalariaProfileActivity implement
         super.onResumption();
         updateTitleWhenFromReferrals();
         ((FamilyOtherMemberActivityPresenter) presenter()).getReferralTasks(CoreConstants.REFERRAL_PLAN_ID, baseEntityId, this);
-        if (referralRecyclerView != null && referralRecyclerView.getAdapter() != null) {
-            referralRecyclerView.getAdapter().notifyDataSetChanged();
+        if (notificationAndReferralRecyclerView != null && notificationAndReferralRecyclerView.getAdapter() != null) {
+            notificationAndReferralRecyclerView.getAdapter().notifyDataSetChanged();
         }
-    }
-
-    @Override
-    protected void setupViews() {
-        super.setupViews();
-        initializeTasksRecyclerView();
     }
 
     private void updateTitleWhenFromReferrals() {
         if (isStartedFromReferrals) {
             ((CustomFontTextView) findViewById(R.id.toolbar_title)).setText(getString(R.string.return_to_task_details));
         }
-    }
-
-    private void initializeTasksRecyclerView() {
-        referralRecyclerView = findViewById(R.id.referral_card_recycler_view);
-        referralRow = findViewById(R.id.referral_row);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        referralRecyclerView.setLayoutManager(layoutManager);
     }
 
     @Override
@@ -197,7 +183,8 @@ public class MalariaProfileActivity extends CoreMalariaProfileActivity implement
 
     @Override
     public void setFamilyServiceStatus(String status) {
-        //Implemented from abstract class but not required right now for HF
+        findViewById(R.id.rlFamilyServicesDue).setVisibility(View.GONE);
+        findViewById(R.id.rlMalariaPositiveDate).setVisibility(View.GONE);
     }
 
     @Override
@@ -212,11 +199,12 @@ public class MalariaProfileActivity extends CoreMalariaProfileActivity implement
 
     @Override
     public void updateReferralTasks(Set<Task> taskList) {
-        if (referralRecyclerView != null && taskList.size() > 0) {
+        if (notificationAndReferralRecyclerView != null && taskList.size() > 0) {
             RecyclerView.Adapter mAdapter = new ReferralCardViewAdapter(taskList, this, getAncMemberObject(), memberObject.getFamilyHeadName(),
                     memberObject.getFamilyHeadPhoneNumber(), commonPersonObjectClient, CoreConstants.REGISTERED_ACTIVITIES.MALARIA_REGISTER_ACTIVITY);
-            referralRecyclerView.setAdapter(mAdapter);
-            referralRow.setVisibility(View.VISIBLE);
+            notificationAndReferralRecyclerView.setAdapter(mAdapter);
+            notificationAndReferralLayout.setVisibility(View.VISIBLE);
+            findViewById(R.id.view_notification_and_referral_row).setVisibility(View.VISIBLE);
         }
     }
 

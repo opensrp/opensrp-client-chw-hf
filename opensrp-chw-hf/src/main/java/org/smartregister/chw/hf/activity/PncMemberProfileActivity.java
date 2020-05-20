@@ -6,9 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.RelativeLayout;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -49,8 +47,6 @@ import timber.log.Timber;
 
 public class PncMemberProfileActivity extends CorePncMemberProfileActivity implements PncMemberProfileContract.View {
 
-    public RelativeLayout referralRow;
-    public RecyclerView referralRecyclerView;
     private CommonPersonObjectClient commonPersonObjectClient;
     private PncMemberProfilePresenter pncMemberProfilePresenter;
 
@@ -92,17 +88,19 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
     }
 
     public void setReferralTasks(Set<Task> taskList) {
-        if (referralRecyclerView != null && taskList.size() > 0) {
+        if (notificationAndReferralRecyclerView != null && taskList.size() > 0) {
             RecyclerView.Adapter mAdapter = new ReferralCardViewAdapter(taskList, this, memberObject, getFamilyHeadName(),
                     getFamilyHeadPhoneNumber(), getCommonPersonObjectClient(), CoreConstants.REGISTERED_ACTIVITIES.PNC_REGISTER_ACTIVITY);
-            referralRecyclerView.setAdapter(mAdapter);
-            referralRow.setVisibility(View.VISIBLE);
+            notificationAndReferralRecyclerView.setAdapter(mAdapter);
+            notificationAndReferralLayout.setVisibility(View.VISIBLE);
+            findViewById(R.id.view_notification_and_referral_row).setVisibility(View.VISIBLE);
         }
     }
 
     @Override
     protected void onCreation() {
         super.onCreation();
+        findViewById(R.id.record_visit_panel).setVisibility(View.GONE);
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             setCommonPersonObjectClient((CommonPersonObjectClient) getIntent().getSerializableExtra(CoreConstants.INTENT_KEY.CLIENT));
@@ -138,25 +136,12 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
         this.commonPersonObjectClient = commonPersonObjectClient;
     }
 
-    private void initializeReferralsRecyclerView() {
-        referralRecyclerView = findViewById(R.id.referral_card_recycler_view);
-        referralRow = findViewById(R.id.referral_row);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        referralRecyclerView.setLayoutManager(layoutManager);
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        initializeReferralsRecyclerView();
-    }
-
     @Override
     protected void onResume() {
         super.onResume();
         ((PncMemberProfileContract.Presenter) presenter()).fetchReferralTasks();
-        if (referralRecyclerView != null && referralRecyclerView.getAdapter() != null) {
-            referralRecyclerView.getAdapter().notifyDataSetChanged();
+        if (notificationAndReferralRecyclerView != null && notificationAndReferralRecyclerView.getAdapter() != null) {
+            notificationAndReferralRecyclerView.getAdapter().notifyDataSetChanged();
         }
     }
 

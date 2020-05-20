@@ -6,9 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
-import android.widget.RelativeLayout;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -46,8 +44,6 @@ import timber.log.Timber;
 
 public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     private static boolean isStartedFromReferrals;
-    public RelativeLayout referralRow;
-    public RecyclerView referralRecyclerView;
     private CommonPersonObjectClient commonPersonObjectClient;
 
     public static void startMe(Activity activity, String baseEntityID, CommonPersonObjectClient commonPersonObjectClient) {
@@ -61,6 +57,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     @Override
     protected void onCreation() {
         super.onCreation();
+        findViewById(R.id.record_visit_panel).setVisibility(View.GONE);
         Bundle extras = getIntent().getExtras();
 
         if (extras != null) {
@@ -92,13 +89,13 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
 
     @Override
     public void setFamilyLocation() {
-        if (!StringUtils.isBlank(getMemberGPS())){
+        if (!StringUtils.isBlank(getMemberGPS())) {
             view_family_location_row.setVisibility(View.VISIBLE);
             rlFamilyLocation.setVisibility(View.VISIBLE);
         }
     }
 
-    private String getMemberGPS(){
+    private String getMemberGPS() {
         return memberObject.getGps();
     }
 
@@ -108,6 +105,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         menu.findItem(R.id.anc_danger_signs_outcome).setVisible(true);
         menu.findItem(R.id.action_anc_registration).setVisible(false);
         menu.findItem(R.id.action_remove_member).setVisible(false);
+        menu.findItem(R.id.action_pregnancy_out_come).setVisible(false);
         return true;
     }
 
@@ -183,7 +181,6 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     @Override
     public void setupViews() {
         super.setupViews();
-        initializeTasksRecyclerView();
         if (baseAncFloatingMenu != null) {
             FloatingActionButton floatingActionButton = baseAncFloatingMenu.findViewById(R.id.anc_fab);
             if (floatingActionButton != null)
@@ -193,10 +190,11 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
 
     @Override
     public void setClientTasks(Set<Task> taskList) {
-        if (referralRecyclerView != null && taskList.size() > 0) {
+        if (notificationAndReferralRecyclerView != null && taskList.size() > 0) {
             RecyclerView.Adapter mAdapter = new ReferralCardViewAdapter(taskList, this, memberObject, memberObject.getFamilyHeadName(), memberObject.getFamilyHeadPhoneNumber(), getCommonPersonObjectClient(), CoreConstants.REGISTERED_ACTIVITIES.ANC_REGISTER_ACTIVITY);
-            referralRecyclerView.setAdapter(mAdapter);
-            referralRow.setVisibility(View.VISIBLE);
+            notificationAndReferralRecyclerView.setAdapter(mAdapter);
+            notificationAndReferralLayout.setVisibility(View.VISIBLE);
+            findViewById(R.id.view_notification_and_referral_row).setVisibility(View.VISIBLE);
         }
     }
 
@@ -206,13 +204,6 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
 
     public void setCommonPersonObjectClient(CommonPersonObjectClient commonPersonObjectClient) {
         this.commonPersonObjectClient = commonPersonObjectClient;
-    }
-
-    private void initializeTasksRecyclerView() {
-        referralRecyclerView = findViewById(R.id.referral_card_recycler_view);
-        referralRow = findViewById(R.id.referral_row);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        referralRecyclerView.setLayoutManager(layoutManager);
     }
 
     @Override
@@ -229,7 +220,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initializeTasksRecyclerView();
+        initializeNotificationReferralRecyclerView();
     }
 
     @Override
@@ -237,8 +228,8 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         super.onResume();
         updateTitleWhenFromReferrals();
         ancMemberProfilePresenter().fetchTasks();
-        if (referralRecyclerView != null && referralRecyclerView.getAdapter() != null) {
-            referralRecyclerView.getAdapter().notifyDataSetChanged();
+        if (notificationAndReferralRecyclerView != null && notificationAndReferralRecyclerView.getAdapter() != null) {
+            notificationAndReferralRecyclerView.getAdapter().notifyDataSetChanged();
         }
     }
 }
