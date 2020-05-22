@@ -157,6 +157,13 @@
             "value": false
           }
         ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "malaria_followup_hf_relevance.yml"
+            }
+          }
+        },
         "v_required": {
           "value": "true",
           "err": "Tafadhali chagua sababu ya mRDT haijafanywa"
@@ -184,12 +191,11 @@
       },
       {
         "key": "test_results_malaria_hf",
-        "type": "check_box",
+        "type": "native_radio",
         "openmrs_entity": "",
         "openmrs_entity_id": "test_results_malaria_hf",
         "openmrs_entity_parent": "",
         "label": "Matokeo ya vipimo",
-        "combine_checkbox_option_values": "true",
         "options": [
           {
             "key": "mRDT_positive",
@@ -352,6 +358,13 @@
             "value": false
           }
         ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "malaria_followup_hf_relevance.yml"
+            }
+          }
+        },
         "v_required": {
           "value": "true",
           "err": "Tafadhali ingiza matibabu iliyowekwa"
