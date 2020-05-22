@@ -220,21 +220,24 @@
         "options": [
           {
             "key": "No_action_taken",
-            "openmrs_choice_id": "",
-            "text": "Hakuna hatua zilizochukuliwa",
-            "value": false
+            "openmrs_entity": "",
+            "openmrs_entity_id": "No_action_taken",
+            "openmrs_entity_parent": "",
+            "text": "Hakuna hatua zilizochukuliwa"
           },
           {
             "key": "Managed",
-            "openmrs_choice_id": "",
-            "text": "Amefukuza",
-            "value": false
+            "openmrs_entity": "",
+            "openmrs_entity_id": "Managed",
+            "openmrs_entity_parent": "",
+            "text": "Amefukuza"
           },
           {
             "key": "Referred",
-            "openmrs_choice_id": "",
-            "text": "Amepewa rufaa",
-            "value": false
+            "openmrs_entity": "",
+            "openmrs_entity_id": "Referred",
+            "openmrs_entity_parent": "",
+            "text": "Amepewa rufaa"
           }
         ],
         "v_required": {
@@ -252,17 +255,26 @@
         "options": [
           {
             "key": "died",
-            "openmrs_choice_id": "",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "died",
+            "openmrs_entity_parent": "",
             "text": "Amekufa",
-            "value": false
           },
           {
             "key": "sent_home",
-            "openmrs_choice_id": "",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "died",
+            "openmrs_entity_parent": "",
             "text": "Amerudi nyumbani",
-            "value": false
           }
         ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pnc_danger_signs_outcome_relevance.yml"
+            }
+          }
+        },
         "v_required": {
           "value": "true",
           "err": "Please select the status of the mother/child"
