@@ -21,7 +21,6 @@ import org.smartregister.chw.core.activity.CoreAncMemberProfileActivity;
 import org.smartregister.chw.core.application.CoreChwApplication;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
-import org.smartregister.chw.core.utils.CoreReferralUtils;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.adapter.ReferralCardViewAdapter;
 import org.smartregister.chw.hf.model.FamilyProfileModel;
@@ -35,22 +34,21 @@ import org.smartregister.family.interactor.FamilyProfileInteractor;
 import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.family.util.Utils;
 import org.smartregister.repository.AllSharedPreferences;
-import org.smartregister.view.customcontrols.CustomFontTextView;
 
 import java.util.Date;
 import java.util.Set;
 
 import timber.log.Timber;
 
+import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
+
 public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
-    private static boolean isStartedFromReferrals;
     private CommonPersonObjectClient commonPersonObjectClient;
 
-    public static void startMe(Activity activity, String baseEntityID, CommonPersonObjectClient commonPersonObjectClient) {
+    public static void startMe(Activity activity, String baseEntityID) {
         Intent intent = new Intent(activity, AncMemberProfileActivity.class);
+        passToolbarTitle(activity, intent);
         intent.putExtra(Constants.ANC_MEMBER_OBJECTS.BASE_ENTITY_ID, baseEntityID);
-        intent.putExtra(CoreConstants.INTENT_KEY.CLIENT, commonPersonObjectClient);
-        isStartedFromReferrals = CoreReferralUtils.checkIfStartedFromReferrals(activity);
         activity.startActivity(intent);
     }
 
@@ -211,12 +209,6 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         // implemented but not used.
     }
 
-    private void updateTitleWhenFromReferrals() {
-        if (isStartedFromReferrals) {
-            ((CustomFontTextView) findViewById(R.id.toolbar_title)).setText(getString(R.string.return_to_task_details));
-        }
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -226,7 +218,6 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        updateTitleWhenFromReferrals();
         ancMemberProfilePresenter().fetchTasks();
         if (notificationAndReferralRecyclerView != null && notificationAndReferralRecyclerView.getAdapter() != null) {
             notificationAndReferralRecyclerView.getAdapter().notifyDataSetChanged();

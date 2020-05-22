@@ -45,15 +45,17 @@ import java.util.Set;
 
 import timber.log.Timber;
 
+import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
+
 public class PncMemberProfileActivity extends CorePncMemberProfileActivity implements PncMemberProfileContract.View {
 
     private CommonPersonObjectClient commonPersonObjectClient;
     private PncMemberProfilePresenter pncMemberProfilePresenter;
 
-    public static void startMe(Activity activity, String baseEntityID, CommonPersonObjectClient commonPersonObjectClient) {
+    public static void startMe(Activity activity, String baseEntityID) {
         Intent intent = new Intent(activity, PncMemberProfileActivity.class);
         intent.putExtra(Constants.ANC_MEMBER_OBJECTS.BASE_ENTITY_ID, baseEntityID);
-        intent.putExtra(CoreConstants.INTENT_KEY.CLIENT, commonPersonObjectClient);
+        passToolbarTitle(activity, intent);
         activity.startActivity(intent);
     }
 

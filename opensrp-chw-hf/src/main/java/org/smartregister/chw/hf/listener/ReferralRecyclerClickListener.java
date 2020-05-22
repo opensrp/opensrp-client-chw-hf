@@ -28,10 +28,11 @@ public class ReferralRecyclerClickListener implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        if (getActivity() instanceof AncMemberProfileActivity || getActivity() instanceof PncMemberProfileActivity || getActivity() instanceof FamilyPlanningMemberProfileActivity || getActivity() instanceof MalariaProfileActivity) {
-            ReferralTaskViewActivity.startReferralTaskViewActivity(getActivity(), getMemberObject(), getFamilyHeadName(), getFamilyHeadPhoneNumber(), getCommonPersonObjectClient(), getTask(), getStartingActivity());
-        } else if (getActivity() instanceof ChildProfileActivity) {
+        if (getActivity() instanceof ChildProfileActivity) {
             ReferralTaskViewActivity.startReferralTaskViewActivity(getActivity(), getCommonPersonObjectClient(), getTask(), getStartingActivity());
+        } else {
+            ReferralTaskViewActivity.startReferralTaskViewActivity(getActivity(), getMemberObject(), getFamilyHeadName(),
+                    getFamilyHeadPhoneNumber(), getCommonPersonObjectClient(), getTask(), getStartingActivity());
         }
     }
 

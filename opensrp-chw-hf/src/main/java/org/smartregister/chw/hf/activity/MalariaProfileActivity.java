@@ -18,7 +18,6 @@ import org.smartregister.chw.core.activity.CoreMalariaProfileActivity;
 import org.smartregister.chw.core.model.CoreMalariaRegisterFragmentModel;
 import org.smartregister.chw.core.presenter.CoreFamilyOtherMemberActivityPresenter;
 import org.smartregister.chw.core.utils.CoreConstants;
-import org.smartregister.chw.core.utils.CoreReferralUtils;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.adapter.ReferralCardViewAdapter;
 import org.smartregister.chw.hf.contract.MalariaProfileContract;
@@ -29,18 +28,17 @@ import org.smartregister.domain.Task;
 import org.smartregister.family.model.BaseFamilyOtherMemberProfileActivityModel;
 import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.family.util.Utils;
-import org.smartregister.view.customcontrols.CustomFontTextView;
 
 import java.util.Set;
 
 import timber.log.Timber;
 
 import static org.smartregister.chw.core.utils.CoreReferralUtils.getCommonRepository;
+import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
 import static org.smartregister.chw.malaria.util.Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID;
 
 public class MalariaProfileActivity extends CoreMalariaProfileActivity implements MalariaProfileContract.InteractorCallback {
 
-    private static boolean isStartedFromReferrals;
     private static String baseEntityId;
     private CommonPersonObjectClient commonPersonObjectClient;
 
@@ -48,7 +46,7 @@ public class MalariaProfileActivity extends CoreMalariaProfileActivity implement
         MalariaProfileActivity.baseEntityId = baseEntityId;
         Intent intent = new Intent(activity, MalariaProfileActivity.class);
         intent.putExtra(BASE_ENTITY_ID, baseEntityId);
-        isStartedFromReferrals = CoreReferralUtils.checkIfStartedFromReferrals(activity);
+        passToolbarTitle(activity, intent);
         activity.startActivity(intent);
     }
 
@@ -138,16 +136,9 @@ public class MalariaProfileActivity extends CoreMalariaProfileActivity implement
     protected void onResume() {
         super.onResume();
         super.onResumption();
-        updateTitleWhenFromReferrals();
         ((FamilyOtherMemberActivityPresenter) presenter()).getReferralTasks(CoreConstants.REFERRAL_PLAN_ID, baseEntityId, this);
         if (notificationAndReferralRecyclerView != null && notificationAndReferralRecyclerView.getAdapter() != null) {
             notificationAndReferralRecyclerView.getAdapter().notifyDataSetChanged();
-        }
-    }
-
-    private void updateTitleWhenFromReferrals() {
-        if (isStartedFromReferrals) {
-            ((CustomFontTextView) findViewById(R.id.toolbar_title)).setText(getString(R.string.return_to_task_details));
         }
     }
 

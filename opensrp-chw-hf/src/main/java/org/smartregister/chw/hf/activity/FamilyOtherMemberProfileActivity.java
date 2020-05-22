@@ -30,7 +30,6 @@ import org.smartregister.view.contract.BaseProfileContract;
 
 import timber.log.Timber;
 
-
 public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfileActivity {
     private FamilyMemberFloatingMenu familyFloatingMenu;
     private BAJsonFormUtils baJsonFormUtils;

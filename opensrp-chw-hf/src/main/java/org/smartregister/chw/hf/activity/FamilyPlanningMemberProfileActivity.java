@@ -12,7 +12,6 @@ import org.smartregister.chw.core.activity.CoreFamilyPlanningMemberProfileActivi
 import org.smartregister.chw.core.activity.CoreFpUpcomingServicesActivity;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.FpUtil;
-import org.smartregister.chw.fp.dao.FpDao;
 import org.smartregister.chw.fp.domain.FpMemberObject;
 import org.smartregister.chw.fp.util.FamilyPlanningConstants;
 import org.smartregister.chw.hf.R;
@@ -27,15 +26,16 @@ import java.util.Set;
 
 import timber.log.Timber;
 
+import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
+
 public class FamilyPlanningMemberProfileActivity extends CoreFamilyPlanningMemberProfileActivity implements FamilyPlanningMemberProfileContract.View {
 
     private CommonPersonObjectClient commonPersonObjectClient;
 
-    public static void startFpMemberProfileActivity(Activity activity, CommonPersonObjectClient client) {
-        FpMemberObject fpMemberObject = FpDao.getMember(client.getCaseId());
+    public static void startFpMemberProfileActivity(Activity activity, FpMemberObject memberObject) {
         Intent intent = new Intent(activity, FamilyPlanningMemberProfileActivity.class);
-        intent.putExtra(FamilyPlanningConstants.FamilyPlanningMemberObject.MEMBER_OBJECT, fpMemberObject);
-        intent.putExtra(CoreConstants.INTENT_KEY.CLIENT, client);
+        passToolbarTitle(activity, intent);
+        intent.putExtra(FamilyPlanningConstants.FamilyPlanningMemberObject.MEMBER_OBJECT, memberObject);
         activity.startActivity(intent);
     }
 

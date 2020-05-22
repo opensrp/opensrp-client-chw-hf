@@ -25,7 +25,6 @@ public class AllClientsRegisterFragment extends CoreAllClientsRegisterFragment {
 
     @Override
     protected void goToClientDetailActivity(@NonNull CommonPersonObjectClient commonPersonObjectClient) {
-
         String registerType = commonPersonObjectClient.getDetails().get(REGISTER_TYPE);
 
         Bundle bundle = new Bundle();
@@ -44,10 +43,16 @@ public class AllClientsRegisterFragment extends CoreAllClientsRegisterFragment {
                     AllClientsUtils.goToChildProfile(this.getActivity(), commonPersonObjectClient, bundle);
                     break;
                 case CoreConstants.REGISTER_TYPE.ANC:
+                    AllClientsUtils.goToAncProfile(this.getActivity(), commonPersonObjectClient, bundle);
+                    break;
                 case CoreConstants.REGISTER_TYPE.PNC:
+                    AllClientsUtils.gotToPncProfile(this.getActivity(), commonPersonObjectClient, bundle);
+                    break;
                 case CoreConstants.REGISTER_TYPE.MALARIA:
+                    AllClientsUtils.gotToMalariaProfile(this.getActivity(), commonPersonObjectClient);
+                    break;
                 case CoreConstants.REGISTER_TYPE.FAMILY_PLANNING:
-                    AllClientsUtils.goToAdultMemberProfile(this.getActivity(), commonPersonObjectClient, bundle);
+                    AllClientsUtils.goToFamilyPlanningProfile(this.getActivity(), commonPersonObjectClient);
                     break;
                 default:
                     AllClientsUtils.goToOtherMemberProfile(this.getActivity(), commonPersonObjectClient, bundle,
@@ -58,9 +63,6 @@ public class AllClientsRegisterFragment extends CoreAllClientsRegisterFragment {
             if (familyDetailsModel != null) {
                 AllClientsUtils.goToOtherMemberProfile(this.getActivity(), commonPersonObjectClient, bundle,
                         familyDetailsModel.getFamilyHead(), familyDetailsModel.getPrimaryCareGiver());
-            } else {
-                AllClientsUtils.goToOtherMemberProfile(this.getActivity(), commonPersonObjectClient, bundle,
-                        "", "");
             }
         }
     }

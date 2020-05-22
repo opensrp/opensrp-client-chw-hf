@@ -44,10 +44,7 @@ public class AncRegisterFragment extends CoreAncRegisterFragment {
 
     @Override
     protected void openProfile(CommonPersonObjectClient client) {
-        String careGiverId = org.smartregister.util.Utils.getValue(client.getColumnmaps(), DBConstants.KEY.PRIMARY_CAREGIVER, false);
-        client.getColumnmaps().putAll(fetchCareGiverDetails(careGiverId));
-
-        AncMemberProfileActivity.startMe(getActivity(), client.getCaseId(), client);
+        AncMemberProfileActivity.startMe(getActivity(), client.getCaseId());
     }
 
     @Override
