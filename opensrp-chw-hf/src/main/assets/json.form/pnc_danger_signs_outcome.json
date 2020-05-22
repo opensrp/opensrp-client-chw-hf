@@ -256,14 +256,14 @@
           {
             "key": "died",
             "openmrs_entity": "",
-            "openmrs_entity_id": "died",
+            "openmrs_entity_id": "159AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
             "openmrs_entity_parent": "",
             "text": "Died"
           },
           {
             "key": "sent_home",
             "openmrs_entity": "",
-            "openmrs_entity_id": "sent_home",
+            "openmrs_entity_id": "1654AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
             "openmrs_entity_parent": "",
             "text": "Sent home"
           }

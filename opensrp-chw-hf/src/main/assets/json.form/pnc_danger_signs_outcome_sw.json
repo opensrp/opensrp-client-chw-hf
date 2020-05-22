@@ -256,16 +256,16 @@
           {
             "key": "died",
             "openmrs_entity": "",
-            "openmrs_entity_id": "died",
+            "openmrs_entity_id": "159AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
             "openmrs_entity_parent": "",
-            "text": "Amekufa",
+            "text": "Amekufa"
           },
           {
             "key": "sent_home",
             "openmrs_entity": "",
-            "openmrs_entity_id": "died",
+            "openmrs_entity_id": "1654AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
             "openmrs_entity_parent": "",
-            "text": "Amerudi nyumbani",
+            "text": "Amerudi nyumbani"
           }
         ],
         "relevance": {

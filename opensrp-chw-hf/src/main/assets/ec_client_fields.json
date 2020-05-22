@@ -1954,10 +1954,9 @@
         {
           "column_name": "action_taken",
           "type": "Event",
-          "save_format": "json_array",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "formSubmissionField": "action_taken_anc_danger_signs"
+            "concept": "164378AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           }
         },
         {

@@ -225,21 +225,24 @@
         "options": [
           {
             "key": "No_action_taken",
-            "openmrs_choice_id": "1107AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "1107AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_entity_parent": "",
             "text": "Hakuna hatua zilizochukuliwa",
-            "value": false
           },
           {
             "key": "Managed",
-            "openmrs_choice_id": "1692AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "1692AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_entity_parent": "",
             "text": "Amefukuza",
-            "value": false
           },
           {
             "key": "Referred",
-            "openmrs_choice_id": "1648AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "1648AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_entity_parent": "",
             "text": "Amepewa rufaa",
-            "value": false
           }
         ],
         "v_required": {
@@ -257,17 +260,26 @@
         "options": [
           {
             "key": "Discharged",
-            "openmrs_choice_id": "1654AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-            "text": "Amelazwa",
-            "value": false
+            "openmrs_entity": "",
+            "openmrs_entity_id": "1654AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_entity_parent": "",
+            "text": "Amelazwa"
           },
           {
             "key": "Died",
-            "openmrs_choice_id": "159AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-            "text": "Amekufa",
-            "value": false
+            "openmrs_entity": "",
+            "openmrs_entity_id": "159AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_entity_parent": "",
+            "text": "Amekufa"
           }
         ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_danger_signs_outcome_relevance.yml"
+            }
+          }
+        },
         "v_required": {
           "value": "true",
           "err": "Tafadhali chagua hali ya mama / mtoto"
