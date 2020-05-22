@@ -98,23 +98,16 @@
       },
       {
         "key": "test_malaria_hf",
-        "type": "check_box",
+        "type": "native_radio",
         "openmrs_entity": "",
         "openmrs_entity_id": "test_malaria_hf",
         "openmrs_entity_parent": "",
         "label": "Tests ordered",
-        "combine_checkbox_option_values": "true",
         "options": [
           {
             "key": "mRDT",
             "openmrs_choice_id": "",
             "text": "mRDT",
-            "value": false
-          },
-          {
-            "key": "Microscopy_blood_smear",
-            "openmrs_choice_id": "",
-            "text": "Microscopy (Blood smear)",
             "value": false
           },
           {
@@ -185,7 +178,7 @@
           }
         },
         "v_required": {
-          "value": "true",
+          "value": false,
           "err": "Please enter other tests requested"
         }
       },
