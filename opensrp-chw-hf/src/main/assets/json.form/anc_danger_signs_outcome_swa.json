@@ -213,36 +213,32 @@
       },
       {
         "key": "action_taken_anc_danger_signs",
-        "type": "check_box",
+        "type": "native_radio",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "164378AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
         "openmrs_entity_parent": "",
         "label": "Hatua zilizochukuliwa na kituo cha kutolea huduma",
-        "combine_checkbox_option_values": "true",
-        "exclusive": [
-          "No_action_taken"
-        ],
         "options": [
           {
             "key": "No_action_taken",
             "openmrs_entity": "",
             "openmrs_entity_id": "1107AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
             "openmrs_entity_parent": "",
-            "text": "Hakuna hatua zilizochukuliwa",
+            "text": "Hakuna hatua zilizochukuliwa"
           },
           {
             "key": "Managed",
             "openmrs_entity": "",
             "openmrs_entity_id": "1692AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
             "openmrs_entity_parent": "",
-            "text": "Amefukuza",
+            "text": "Amefukuza"
           },
           {
             "key": "Referred",
             "openmrs_entity": "",
             "openmrs_entity_id": "1648AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
             "openmrs_entity_parent": "",
-            "text": "Amepewa rufaa",
+            "text": "Amepewa rufaa"
           }
         ],
         "v_required": {

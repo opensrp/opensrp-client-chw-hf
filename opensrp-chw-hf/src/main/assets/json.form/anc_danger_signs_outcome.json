@@ -175,7 +175,16 @@
             "openmrs_choice_id": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
             "text": "Other",
             "value": false
+          },
+          {
+            "key": "None",
+            "openmrs_choice_id": "",
+            "text": "None",
+            "value": false
           }
+        ],
+        "exclusive": [
+          "None"
         ],
         "v_required": {
           "value": "true",
