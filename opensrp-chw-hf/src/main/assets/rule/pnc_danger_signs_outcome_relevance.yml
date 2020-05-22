@@ -1,0 +1,15 @@
+---
+name: step1_other_pnc_danger_signs
+description: Mention the other danger signs that the health facility personnel encountered
+priority: 1
+condition: "step1_danger_signs_present.contains('Other')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_status_visit
+description: Status of the mother/child
+priority: 1
+condition: "step1_action_taken_pnc_danger_signs.contains('Managed') || step1_action_taken_pnc_danger_signs.contains('No_action_taken')"
+actions:
+  - "isRelevant = true"
+---

@@ -175,7 +175,16 @@
             "openmrs_choice_id": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
             "text": "Nyingine",
             "value": false
+          },
+          {
+            "key": "None",
+            "openmrs_choice_id": "",
+            "text": "None",
+            "value": false
           }
+        ],
+        "exclusive": [
+          "None"
         ],
         "v_required": {
           "value": "true",
@@ -231,7 +240,21 @@
             "openmrs_choice_id": "1648AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
             "text": "Amepewa rufaa",
             "value": false
-          },
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua hatua iliyochukuliwa"
+        }
+      },
+      {
+        "key": "status_visit",
+        "type": "native_radio",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "status_visit",
+        "openmrs_entity_parent": "",
+        "label": "Hali ya mama / mtoto",
+        "options": [
           {
             "key": "Discharged",
             "openmrs_choice_id": "1654AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
@@ -247,7 +270,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhali chagua hatua iliyochukuliwa"
+          "err": "Tafadhali chagua hali ya mama / mtoto"
         }
       },
       {

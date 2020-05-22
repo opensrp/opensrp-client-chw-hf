@@ -204,15 +204,11 @@
       },
       {
         "key": "action_taken_anc_danger_signs",
-        "type": "check_box",
+        "type": "native_radio",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "164378AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
         "openmrs_entity_parent": "",
         "label": "Action taken by health facility",
-        "combine_checkbox_option_values": "true",
-        "exclusive": [
-          "No_action_taken"
-        ],
         "options": [
           {
             "key": "No_action_taken",
@@ -231,23 +227,37 @@
             "openmrs_choice_id": "1648AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
             "text": "Referred",
             "value": false
-          },
-          {
-            "key": "Discharged",
-            "openmrs_choice_id": "1654AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-            "text": "Discharged",
-            "value": false
-          },
-          {
-            "key": "Died",
-            "openmrs_choice_id": "159AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-            "text": "Died",
-            "value": false
           }
         ],
         "v_required": {
           "value": "true",
           "err": "Please select action taken"
+        }
+      },
+      {
+        "key": "status_visit",
+        "type": "native_radio",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "status_visit",
+        "openmrs_entity_parent": "",
+        "label": "Status of the mother/child",
+        "options": [
+          {
+            "key": "died",
+            "openmrs_choice_id": "",
+            "text": "Died",
+            "value": false
+          },
+          {
+            "key": "sent_home",
+            "openmrs_choice_id": "",
+            "text": "Sent home",
+            "value": false
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select the status of the mother/child"
         }
       },
       {

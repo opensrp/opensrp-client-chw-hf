@@ -1961,6 +1961,14 @@
           }
         },
         {
+          "column_name": "status_visit",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "status_visit"
+          }
+        },
+        {
           "column_name": "managed_signs",
           "type": "Event",
           "json_mapping": {
@@ -2031,10 +2039,17 @@
         {
           "column_name": "action_taken",
           "type": "Event",
-          "save_format": "json_array",
           "json_mapping": {
             "field": "obs.fieldCode",
             "concept": "action_taken_pnc_danger_signs"
+          }
+        },
+        {
+          "column_name": "status_visit",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "status_visit"
           }
         },
         {
