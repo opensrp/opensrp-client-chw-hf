@@ -79,6 +79,11 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     }
 
     @Override
+    public boolean hasEmergencyTransport() {
+        return true;
+    }
+
+    @Override
     public void setUpComingServicesStatus(String service, AlertStatus status, Date date) {
         view_most_due_overdue_row.setVisibility(View.GONE);
         rlUpcomingServices.setVisibility(View.GONE);
