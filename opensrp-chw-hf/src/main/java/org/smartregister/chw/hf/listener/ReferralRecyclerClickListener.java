@@ -4,12 +4,6 @@ import android.app.Activity;
 import android.view.View;
 
 import org.jetbrains.annotations.Contract;
-import org.smartregister.chw.anc.domain.MemberObject;
-import org.smartregister.chw.hf.activity.AncMemberProfileActivity;
-import org.smartregister.chw.hf.activity.ChildProfileActivity;
-import org.smartregister.chw.hf.activity.FamilyPlanningMemberProfileActivity;
-import org.smartregister.chw.hf.activity.MalariaProfileActivity;
-import org.smartregister.chw.hf.activity.PncMemberProfileActivity;
 import org.smartregister.chw.hf.activity.ReferralTaskViewActivity;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.domain.Task;
@@ -22,18 +16,10 @@ public class ReferralRecyclerClickListener implements View.OnClickListener {
     private CommonPersonObjectClient commonPersonObjectClient;
     private Activity activity;
     private String startingActivity;
-    private MemberObject memberObject;
-    private String familyHeadName;
-    private String familyHeadPhoneNumber;
 
     @Override
     public void onClick(View view) {
-        if (getActivity() instanceof ChildProfileActivity) {
-            ReferralTaskViewActivity.startReferralTaskViewActivity(getActivity(), getCommonPersonObjectClient(), getTask(), getStartingActivity());
-        } else {
-            ReferralTaskViewActivity.startReferralTaskViewActivity(getActivity(), getMemberObject(), getFamilyHeadName(),
-                    getFamilyHeadPhoneNumber(), getCommonPersonObjectClient(), getTask(), getStartingActivity());
-        }
+        ReferralTaskViewActivity.startReferralTaskViewActivity(getActivity(), getCommonPersonObjectClient(), getTask(), getStartingActivity());
     }
 
     public Activity getActivity() {
@@ -42,33 +28,6 @@ public class ReferralRecyclerClickListener implements View.OnClickListener {
 
     public void setActivity(Activity activity) {
         this.activity = activity;
-    }
-
-    @Contract(pure = true)
-    private MemberObject getMemberObject() {
-        return memberObject;
-    }
-
-    public void setMemberObject(MemberObject memberObject) {
-        this.memberObject = memberObject;
-    }
-
-    @Contract(pure = true)
-    private String getFamilyHeadName() {
-        return familyHeadName;
-    }
-
-    public void setFamilyHeadName(String familyHeadName) {
-        this.familyHeadName = familyHeadName;
-    }
-
-    @Contract(pure = true)
-    private String getFamilyHeadPhoneNumber() {
-        return familyHeadPhoneNumber;
-    }
-
-    public void setFamilyHeadPhoneNumber(String familyHeadPhoneNumber) {
-        this.familyHeadPhoneNumber = familyHeadPhoneNumber;
     }
 
     @Contract(pure = true)

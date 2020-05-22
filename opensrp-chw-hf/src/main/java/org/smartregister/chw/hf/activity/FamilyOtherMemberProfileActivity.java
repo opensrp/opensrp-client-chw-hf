@@ -30,6 +30,8 @@ import org.smartregister.view.contract.BaseProfileContract;
 
 import timber.log.Timber;
 
+import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
+
 public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfileActivity {
     private FamilyMemberFloatingMenu familyFloatingMenu;
     private BAJsonFormUtils baJsonFormUtils;
@@ -41,9 +43,10 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
     protected void onCreation() {
         super.onCreation();
         baJsonFormUtils = new BAJsonFormUtils(HealthFacilityApplication.getInstance());
-        dob = org.smartregister.family.util.Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.DOB, false);
-        gender = org.smartregister.family.util.Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.GENDER, false);
+        dob = Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.DOB, false);
+        gender = Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.GENDER, false);
         setIndependentClient(false);
+        updateToolbarTitle(this, R.id.toolbar_title, familyName);
     }
 
     @Override

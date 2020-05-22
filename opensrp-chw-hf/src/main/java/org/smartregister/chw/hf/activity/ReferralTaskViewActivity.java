@@ -5,21 +5,23 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+
 import org.json.JSONObject;
-import org.smartregister.chw.anc.domain.MemberObject;
 import org.smartregister.chw.core.activity.BaseReferralTaskViewActivity;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.CoreReferralUtils;
-import org.smartregister.chw.fp.dao.FpDao;
 import org.smartregister.chw.hf.BuildConfig;
 import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.utils.AllClientsUtils;
 import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.clientandeventmodel.Obs;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.domain.Task;
 import org.smartregister.family.FamilyLibrary;
 import org.smartregister.family.util.Utils;
+import org.smartregister.opd.utils.OpdDbConstants;
 import org.smartregister.repository.AllSharedPreferences;
 import org.smartregister.repository.BaseRepository;
 import org.smartregister.sync.helper.ECSyncHelper;
@@ -31,27 +33,21 @@ import java.util.Date;
 
 import timber.log.Timber;
 
+import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
+
 public class ReferralTaskViewActivity extends BaseReferralTaskViewActivity implements View.OnClickListener {
 
+    private static CommonPersonObjectClient personObjectClient;
+
     public static void startReferralTaskViewActivity(Activity activity, CommonPersonObjectClient personObjectClient, Task task, String startingActivity) {
+        ReferralTaskViewActivity.personObjectClient = personObjectClient;
         Intent intent = new Intent(activity, ReferralTaskViewActivity.class);
         intent.putExtra(CoreConstants.INTENT_KEY.USERS_TASKS, task);
         intent.putExtra(CoreConstants.INTENT_KEY.CHILD_COMMON_PERSON, personObjectClient);
         intent.putExtra(CoreConstants.INTENT_KEY.STARTING_ACTIVITY, startingActivity);
+        passToolbarTitle(activity, intent);
         activity.startActivity(intent);
     }
-
-    public static void startReferralTaskViewActivity(Activity activity, MemberObject memberObject, String familyHeadName, String familiyHeadPhoneNumber, CommonPersonObjectClient personObjectClient, Task task, String startingActivity) {
-        Intent intent = new Intent(activity, ReferralTaskViewActivity.class);
-        intent.putExtra(CoreConstants.INTENT_KEY.USERS_TASKS, task);
-        intent.putExtra(CoreConstants.INTENT_KEY.MEMBER_OBJECT, memberObject);
-        intent.putExtra(CoreConstants.INTENT_KEY.FAMILY_HEAD_NAME, familyHeadName);
-        intent.putExtra(CoreConstants.INTENT_KEY.FAMILY_HEAD_PHONE_NUMBER, familiyHeadPhoneNumber);
-        intent.putExtra(CoreConstants.INTENT_KEY.CHILD_COMMON_PERSON, personObjectClient);
-        intent.putExtra(CoreConstants.INTENT_KEY.STARTING_ACTIVITY, startingActivity);
-        activity.startActivity(intent);
-    }
-
 
     @Override
     protected void onCreation() {
@@ -184,31 +180,28 @@ public class ReferralTaskViewActivity extends BaseReferralTaskViewActivity imple
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.view_profile) {
-            goToClientProfile();
+            personObjectClient.getColumnmaps().put(OpdDbConstants.KEY.REGISTER_TYPE, mapTaskFocusToRegisterType());
+            AllClientsUtils.goToClientProfile(this, personObjectClient);
         } else if (view.getId() == R.id.mark_ask_done) {
             closeReferral();
         }
     }
 
-    private void goToClientProfile() {
+    @NonNull
+    private String mapTaskFocusToRegisterType() {
         switch (task.getFocus()) {
             case CoreConstants.TASKS_FOCUS.SICK_CHILD:
-                ChildProfileActivity.startMe(this, getMemberObject(), ChildProfileActivity.class);
-                break;
-            case CoreConstants.TASKS_FOCUS.ANC_DANGER_SIGNS:
-                AncMemberProfileActivity.startMe(this, getMemberObject().getBaseEntityId());
-                break;
-            case CoreConstants.TASKS_FOCUS.PNC_DANGER_SIGNS:
-                PncMemberProfileActivity.startMe(this, getMemberObject().getBaseEntityId());
-                break;
+                return CoreConstants.REGISTER_TYPE.CHILD;
             case CoreConstants.TASKS_FOCUS.SUSPECTED_MALARIA:
-                MalariaProfileActivity.startMalariaActivity(this, getMemberObject().getBaseEntityId());
-                break;
+                return CoreConstants.REGISTER_TYPE.MALARIA;
+            case CoreConstants.TASKS_FOCUS.ANC_DANGER_SIGNS:
+                return CoreConstants.REGISTER_TYPE.ANC;
+            case CoreConstants.TASKS_FOCUS.PNC_DANGER_SIGNS:
+                return CoreConstants.REGISTER_TYPE.PNC;
             case CoreConstants.TASKS_FOCUS.FP_SIDE_EFFECTS:
-                FamilyPlanningMemberProfileActivity.startFpMemberProfileActivity(this, FpDao.getMember(getMemberObject().getBaseEntityId()));
-                break;
+                return CoreConstants.REGISTER_TYPE.FAMILY_PLANNING;
             default:
-                break;
+                return "";
         }
     }
 }

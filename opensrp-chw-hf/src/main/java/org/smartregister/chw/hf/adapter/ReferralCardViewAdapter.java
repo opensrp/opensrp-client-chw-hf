@@ -62,9 +62,6 @@ public class ReferralCardViewAdapter extends RecyclerView.Adapter<ReferralCardVi
         referralRecyclerClickListener.setCommonPersonObjectClient(personObjectClient);
         referralRecyclerClickListener.setActivity(context);
         referralRecyclerClickListener.setStartingActivity(startingActivity);
-        referralRecyclerClickListener.setMemberObject(memberObject);
-        referralRecyclerClickListener.setFamilyHeadName(familyHeadName);
-        referralRecyclerClickListener.setFamilyHeadPhoneNumber(familyHeadPhoneNumber);
         referralCardViewHolder.textViewReferralHeader.setText(String.format(context.getApplicationContext().getResources().getString(R.string.referral_for), tasks.get(position).getFocus()));
         referralCardViewHolder.referralRow.setOnClickListener(referralRecyclerClickListener);
     }
