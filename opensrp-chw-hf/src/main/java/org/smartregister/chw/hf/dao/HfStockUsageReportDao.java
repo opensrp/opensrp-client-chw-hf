@@ -6,6 +6,7 @@ import org.smartregister.dao.AbstractDao;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -54,7 +55,7 @@ public class HfStockUsageReportDao extends AbstractDao {
         String sql = "SELECT description, indicator_code " +
                 "FROM indicators ";
 
-        Map<String, String> dataMapDetails = new HashMap<>();
+        LinkedHashMap<String, String> dataMapDetails = new LinkedHashMap<>();
         AbstractDao.DataMap<Hia2Indicator> dataMap = cursor -> {
             Hia2Indicator hia2Indicator = new Hia2Indicator();
             hia2Indicator.setIndicatorCode(getCursorValue(cursor, "indicator_code"));
