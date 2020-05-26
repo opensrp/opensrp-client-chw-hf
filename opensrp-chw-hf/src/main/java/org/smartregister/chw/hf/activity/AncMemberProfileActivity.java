@@ -56,11 +56,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     protected void onCreation() {
         super.onCreation();
         findViewById(R.id.record_visit_panel).setVisibility(View.GONE);
-        Bundle extras = getIntent().getExtras();
-
-        if (extras != null) {
-            setCommonPersonObjectClient((CommonPersonObjectClient) getIntent().getSerializableExtra(CoreConstants.INTENT_KEY.CLIENT));
-        }
+        setCommonPersonObjectClient(getClientDetailsByBaseEntityID(baseEntityID));
     }
 
     @Override
@@ -171,7 +167,6 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         intent.putExtra(org.smartregister.family.util.Constants.INTENT_KEY.FAMILY_HEAD, memberObject.getFamilyHead());
         intent.putExtra(org.smartregister.family.util.Constants.INTENT_KEY.PRIMARY_CAREGIVER, memberObject.getPrimaryCareGiver());
         intent.putExtra(org.smartregister.family.util.Constants.INTENT_KEY.FAMILY_NAME, memberObject.getFamilyName());
-
         intent.putExtra(CoreConstants.INTENT_KEY.SERVICE_DUE, true);
         startActivity(intent);
     }
@@ -189,7 +184,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     @Override
     public void setClientTasks(Set<Task> taskList) {
         if (notificationAndReferralRecyclerView != null && taskList.size() > 0) {
-            RecyclerView.Adapter mAdapter = new ReferralCardViewAdapter(taskList, this, memberObject, memberObject.getFamilyHeadName(), memberObject.getFamilyHeadPhoneNumber(), getCommonPersonObjectClient(), CoreConstants.REGISTERED_ACTIVITIES.ANC_REGISTER_ACTIVITY);
+            RecyclerView.Adapter mAdapter = new ReferralCardViewAdapter(taskList, this, getCommonPersonObjectClient(), CoreConstants.REGISTERED_ACTIVITIES.ANC_REGISTER_ACTIVITY);
             notificationAndReferralRecyclerView.setAdapter(mAdapter);
             notificationAndReferralLayout.setVisibility(View.VISIBLE);
             findViewById(R.id.view_notification_and_referral_row).setVisibility(View.VISIBLE);

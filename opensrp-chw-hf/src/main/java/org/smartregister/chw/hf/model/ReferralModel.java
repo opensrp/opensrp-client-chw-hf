@@ -1,7 +1,6 @@
 package org.smartregister.chw.hf.model;
 
 import org.smartregister.chw.core.model.BaseReferralModel;
-import org.smartregister.chw.core.utils.ChwDBConstants;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.cursoradapter.SmartRegisterQueryBuilder;
 import org.smartregister.family.util.DBConstants;
@@ -16,7 +15,8 @@ public class ReferralModel extends BaseReferralModel {
     public String mainSelect(String tableName, String entityTable, String mainCondition) {
         SmartRegisterQueryBuilder queryBuilder = new SmartRegisterQueryBuilder();
         queryBuilder.selectInitiateMainTable(tableName, mainColumns(tableName, entityTable), CoreConstants.DB_CONSTANTS.ID);
-        queryBuilder.customJoin(String.format("INNER JOIN %s  ON  %s.%s = %s.%s AND %s.%s = '%s' COLLATE NOCASE ", entityTable, entityTable, DBConstants.KEY.BASE_ENTITY_ID, tableName, CoreConstants.DB_CONSTANTS.FOR, tableName,CoreConstants.DB_CONSTANTS.STATUS, ChwDBConstants.TASK_STATUS_READY));
+        queryBuilder.customJoin(String.format("INNER JOIN %s  ON  %s.%s = %s.%s AND task.business_status = 'Referred' COLLATE NOCASE ",
+                entityTable, entityTable, DBConstants.KEY.BASE_ENTITY_ID, tableName, CoreConstants.DB_CONSTANTS.FOR));
         queryBuilder.customJoin("LEFT JOIN ec_family  ON  ec_family_member.relational_id = ec_family.id COLLATE NOCASE");
 
         return queryBuilder.mainCondition(mainCondition);

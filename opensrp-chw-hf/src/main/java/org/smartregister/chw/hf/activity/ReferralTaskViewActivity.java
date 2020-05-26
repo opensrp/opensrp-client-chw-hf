@@ -3,6 +3,7 @@ package org.smartregister.chw.hf.activity;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -37,8 +38,6 @@ import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
 
 public class ReferralTaskViewActivity extends BaseReferralTaskViewActivity implements View.OnClickListener {
 
-    private static CommonPersonObjectClient personObjectClient;
-
     public static void startReferralTaskViewActivity(Activity activity, CommonPersonObjectClient personObjectClient, Task task, String startingActivity) {
         ReferralTaskViewActivity.personObjectClient = personObjectClient;
         Intent intent = new Intent(activity, ReferralTaskViewActivity.class);
@@ -50,22 +49,26 @@ public class ReferralTaskViewActivity extends BaseReferralTaskViewActivity imple
     }
 
     @Override
-    protected void onCreation() {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.referrals_tasks_view_layout);
         if (getIntent().getExtras() != null) {
-            extractPersonObjectClient();
             extraClientTask();
             extraDetails();
             setStartingActivity((String) getIntent().getSerializableExtra(CoreConstants.INTENT_KEY.STARTING_ACTIVITY));
+            inflateToolbar();
+            setUpViews();
         }
+    }
 
-        inflateToolbar();
-        setUpViews();
+    @Override
+    protected void onCreation() {
+        //overridden
     }
 
     @Override
     protected void onResumption() {
-        //// TODO: 15/08/19
+        //Overridden
     }
 
     public void setUpViews() {

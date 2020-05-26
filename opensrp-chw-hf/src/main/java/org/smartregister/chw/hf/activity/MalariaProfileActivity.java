@@ -2,7 +2,6 @@ package org.smartregister.chw.hf.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,17 +11,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.json.JSONObject;
-import org.smartregister.chw.anc.domain.MemberObject;
 import org.smartregister.chw.core.activity.CoreFamilyProfileActivity;
 import org.smartregister.chw.core.activity.CoreMalariaProfileActivity;
-import org.smartregister.chw.core.model.CoreMalariaRegisterFragmentModel;
 import org.smartregister.chw.core.presenter.CoreFamilyOtherMemberActivityPresenter;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.adapter.ReferralCardViewAdapter;
 import org.smartregister.chw.hf.contract.MalariaProfileContract;
 import org.smartregister.chw.hf.presenter.FamilyOtherMemberActivityPresenter;
-import org.smartregister.commonregistry.CommonPersonObject;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.domain.Task;
 import org.smartregister.family.model.BaseFamilyOtherMemberProfileActivityModel;
@@ -33,7 +29,6 @@ import java.util.Set;
 
 import timber.log.Timber;
 
-import static org.smartregister.chw.core.utils.CoreReferralUtils.getCommonRepository;
 import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
 import static org.smartregister.chw.malaria.util.Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID;
 
@@ -129,7 +124,7 @@ public class MalariaProfileActivity extends CoreMalariaProfileActivity implement
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        updateCommonPersonObjectClient();
+        setCommonPersonObjectClient(getClientDetailsByBaseEntityID(memberObject.getBaseEntityId()));
     }
 
     @Override
@@ -191,37 +186,14 @@ public class MalariaProfileActivity extends CoreMalariaProfileActivity implement
     @Override
     public void updateReferralTasks(Set<Task> taskList) {
         if (notificationAndReferralRecyclerView != null && taskList.size() > 0) {
-            RecyclerView.Adapter mAdapter = new ReferralCardViewAdapter(taskList, this, getAncMemberObject(), memberObject.getFamilyHeadName(),
-                    memberObject.getFamilyHeadPhoneNumber(), commonPersonObjectClient, CoreConstants.REGISTERED_ACTIVITIES.MALARIA_REGISTER_ACTIVITY);
+            RecyclerView.Adapter mAdapter = new ReferralCardViewAdapter(taskList, this, commonPersonObjectClient, CoreConstants.REGISTERED_ACTIVITIES.MALARIA_REGISTER_ACTIVITY);
             notificationAndReferralRecyclerView.setAdapter(mAdapter);
             notificationAndReferralLayout.setVisibility(View.VISIBLE);
             findViewById(R.id.view_notification_and_referral_row).setVisibility(View.VISIBLE);
         }
     }
 
-    public MemberObject getAncMemberObject() {
-        MemberObject memberObject = new MemberObject();
-        memberObject.setFirstName(this.memberObject.getFirstName());
-        memberObject.setBaseEntityId(this.memberObject.getBaseEntityId());
-        memberObject.setFirstName(this.memberObject.getFirstName());
-        memberObject.setLastName(this.memberObject.getLastName());
-        memberObject.setMiddleName(this.memberObject.getMiddleName());
-        memberObject.setDob(this.memberObject.getAge());
-        return memberObject;
-    }
-
-    public void updateCommonPersonObjectClient() {
-        String query = new CoreMalariaRegisterFragmentModel().mainSelect(CoreConstants.TABLE_NAME.MALARIA_CONFIRMATION, String.format("ec_malaria_confirmation.base_entity_id = '%s'", baseEntityId));
-
-        try (Cursor cursor = getCommonRepository(CoreConstants.TABLE_NAME.MALARIA_CONFIRMATION).rawCustomQueryForAdapter(query)) {
-            if (cursor != null && cursor.moveToFirst()) {
-                CommonPersonObject personObject = getCommonRepository(CoreConstants.TABLE_NAME.MALARIA_CONFIRMATION).readAllcommonforCursorAdapter(cursor);
-                commonPersonObjectClient = new CommonPersonObjectClient(personObject.getCaseId(),
-                        personObject.getDetails(), "");
-                commonPersonObjectClient.setColumnmaps(personObject.getColumnmaps());
-            }
-        } catch (Exception ex) {
-            Timber.e(ex, "Malaria profile --> setCommonPersonObjectClient");
-        }
+    public void setCommonPersonObjectClient(CommonPersonObjectClient commonPersonObjectClient) {
+        this.commonPersonObjectClient = commonPersonObjectClient;
     }
 }

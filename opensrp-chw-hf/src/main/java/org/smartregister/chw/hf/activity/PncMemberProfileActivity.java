@@ -2,7 +2,6 @@ package org.smartregister.chw.hf.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -91,8 +90,7 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
 
     public void setReferralTasks(Set<Task> taskList) {
         if (notificationAndReferralRecyclerView != null && taskList.size() > 0) {
-            RecyclerView.Adapter mAdapter = new ReferralCardViewAdapter(taskList, this, memberObject, getFamilyHeadName(),
-                    getFamilyHeadPhoneNumber(), getCommonPersonObjectClient(), CoreConstants.REGISTERED_ACTIVITIES.PNC_REGISTER_ACTIVITY);
+            RecyclerView.Adapter mAdapter = new ReferralCardViewAdapter(taskList, this, getCommonPersonObjectClient(), CoreConstants.REGISTERED_ACTIVITIES.PNC_REGISTER_ACTIVITY);
             notificationAndReferralRecyclerView.setAdapter(mAdapter);
             notificationAndReferralLayout.setVisibility(View.VISIBLE);
             findViewById(R.id.view_notification_and_referral_row).setVisibility(View.VISIBLE);
@@ -103,10 +101,7 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
     protected void onCreation() {
         super.onCreation();
         findViewById(R.id.record_visit_panel).setVisibility(View.GONE);
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            setCommonPersonObjectClient((CommonPersonObjectClient) getIntent().getSerializableExtra(CoreConstants.INTENT_KEY.CLIENT));
-        }
+        setCommonPersonObjectClient(getClientDetailsByBaseEntityID(baseEntityID));
     }
 
     @Override
