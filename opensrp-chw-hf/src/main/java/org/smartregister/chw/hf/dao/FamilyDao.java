@@ -6,9 +6,7 @@ import org.json.JSONObject;
 import org.smartregister.chw.hf.model.FamilyDetailsModel;
 import org.smartregister.dao.AbstractDao;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import timber.log.Timber;
 
@@ -38,9 +36,8 @@ public class FamilyDao extends AbstractDao {
         return familyProfileModels.get(0);
     }
 
-    public static void migrateAddLocationIdCol() {
-        String updateSqlString = "ALTER TABLE ec_family_member ADD COLUMN sync_location_id";
-        updateDB(updateSqlString);
+    public static String getAddLocationIdColSQLString() {
+       return "ALTER TABLE ec_family_member ADD COLUMN sync_location_id";
     }
 
     public static void migrateInsertLocationIDs() {

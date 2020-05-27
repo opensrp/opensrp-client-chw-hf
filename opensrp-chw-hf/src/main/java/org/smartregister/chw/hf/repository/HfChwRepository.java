@@ -9,7 +9,6 @@ import org.smartregister.chw.core.application.CoreChwApplication;
 import org.smartregister.chw.core.repository.CoreChwRepository;
 import org.smartregister.chw.core.repository.StockUsageReportRepository;
 import org.smartregister.chw.core.utils.CoreConstants;
-import org.smartregister.chw.fp.dao.FpDao;
 import org.smartregister.chw.hf.BuildConfig;
 import org.smartregister.chw.hf.dao.FamilyDao;
 import org.smartregister.domain.db.Column;
@@ -193,7 +192,7 @@ public class HfChwRepository extends CoreChwRepository {
 
     private void upgradeToVersion9(SQLiteDatabase db) {
         try {
-            FamilyDao.migrateAddLocationIdCol();
+            db.execSQL(FamilyDao.getAddLocationIdColSQLString());
             FamilyDao.migrateInsertLocationIDs();
         } catch (Exception ex) {
             Timber.e(ex, "Problems adding sync location ids");
