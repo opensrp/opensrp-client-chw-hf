@@ -10,9 +10,9 @@ buildscript {
         maven { url 'https://maven.fabric.io/public' }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.2'
-        classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.8.2'
-        classpath 'io.fabric.tools:gradle:1.30.0'
+        classpath 'com.android.tools.build:gradle:3.6.3'
+        classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.8.3'
+        classpath 'io.fabric.tools:gradle:1.31.2'
     }
 }
 
@@ -119,9 +119,8 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation('org.smartregister:opensrp-client-chw-core:1.2.8-SNAPSHOT@aar') {
+    implementation('org.smartregister:opensrp-client-chw-core:1.2.10-SNAPSHOT@aar') {
         transitive = true
-        exclude group: 'org.smartregister', module: 'opensrp-client-native-form'
         exclude group: 'org.smartregister', module: 'opensrp-client-chw-referral'
         exclude group: 'com.rengwuxian.materialedittext', module: 'library'
     }
