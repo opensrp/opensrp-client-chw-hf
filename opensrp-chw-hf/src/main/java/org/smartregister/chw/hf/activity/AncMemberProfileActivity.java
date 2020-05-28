@@ -6,9 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
-import android.widget.RelativeLayout;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -23,7 +21,6 @@ import org.smartregister.chw.core.activity.CoreAncMemberProfileActivity;
 import org.smartregister.chw.core.application.CoreChwApplication;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
-import org.smartregister.chw.core.utils.CoreReferralUtils;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.adapter.ReferralCardViewAdapter;
 import org.smartregister.chw.hf.model.FamilyProfileModel;
@@ -37,35 +34,29 @@ import org.smartregister.family.interactor.FamilyProfileInteractor;
 import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.family.util.Utils;
 import org.smartregister.repository.AllSharedPreferences;
-import org.smartregister.view.customcontrols.CustomFontTextView;
 
 import java.util.Date;
 import java.util.Set;
 
 import timber.log.Timber;
 
+import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
+
 public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
-    private static boolean isStartedFromReferrals;
-    public RelativeLayout referralRow;
-    public RecyclerView referralRecyclerView;
     private CommonPersonObjectClient commonPersonObjectClient;
 
-    public static void startMe(Activity activity, String baseEntityID, CommonPersonObjectClient commonPersonObjectClient) {
+    public static void startMe(Activity activity, String baseEntityID) {
         Intent intent = new Intent(activity, AncMemberProfileActivity.class);
+        passToolbarTitle(activity, intent);
         intent.putExtra(Constants.ANC_MEMBER_OBJECTS.BASE_ENTITY_ID, baseEntityID);
-        intent.putExtra(CoreConstants.INTENT_KEY.CLIENT, commonPersonObjectClient);
-        isStartedFromReferrals = CoreReferralUtils.checkIfStartedFromReferrals(activity);
         activity.startActivity(intent);
     }
 
     @Override
     protected void onCreation() {
         super.onCreation();
-        Bundle extras = getIntent().getExtras();
-
-        if (extras != null) {
-            setCommonPersonObjectClient((CommonPersonObjectClient) getIntent().getSerializableExtra(CoreConstants.INTENT_KEY.CLIENT));
-        }
+        findViewById(R.id.record_visit_panel).setVisibility(View.GONE);
+        setCommonPersonObjectClient(getClientDetailsByBaseEntityID(baseEntityID));
     }
 
     @Override
@@ -97,13 +88,13 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
 
     @Override
     public void setFamilyLocation() {
-        if (!StringUtils.isBlank(getMemberGPS())){
+        if (!StringUtils.isBlank(getMemberGPS())) {
             view_family_location_row.setVisibility(View.VISIBLE);
             rlFamilyLocation.setVisibility(View.VISIBLE);
         }
     }
 
-    private String getMemberGPS(){
+    private String getMemberGPS() {
         return memberObject.getGps();
     }
 
@@ -113,6 +104,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         menu.findItem(R.id.anc_danger_signs_outcome).setVisible(true);
         menu.findItem(R.id.action_anc_registration).setVisible(false);
         menu.findItem(R.id.action_remove_member).setVisible(false);
+        menu.findItem(R.id.action_pregnancy_out_come).setVisible(false);
         return true;
     }
 
@@ -180,7 +172,6 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         intent.putExtra(org.smartregister.family.util.Constants.INTENT_KEY.FAMILY_HEAD, memberObject.getFamilyHead());
         intent.putExtra(org.smartregister.family.util.Constants.INTENT_KEY.PRIMARY_CAREGIVER, memberObject.getPrimaryCareGiver());
         intent.putExtra(org.smartregister.family.util.Constants.INTENT_KEY.FAMILY_NAME, memberObject.getFamilyName());
-
         intent.putExtra(CoreConstants.INTENT_KEY.SERVICE_DUE, true);
         startActivity(intent);
     }
@@ -188,7 +179,6 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     @Override
     public void setupViews() {
         super.setupViews();
-        initializeTasksRecyclerView();
         if (baseAncFloatingMenu != null) {
             FloatingActionButton floatingActionButton = baseAncFloatingMenu.findViewById(R.id.anc_fab);
             if (floatingActionButton != null)
@@ -198,10 +188,11 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
 
     @Override
     public void setClientTasks(Set<Task> taskList) {
-        if (referralRecyclerView != null && taskList.size() > 0) {
-            RecyclerView.Adapter mAdapter = new ReferralCardViewAdapter(taskList, this, memberObject, memberObject.getFamilyHeadName(), memberObject.getFamilyHeadPhoneNumber(), getCommonPersonObjectClient(), CoreConstants.REGISTERED_ACTIVITIES.ANC_REGISTER_ACTIVITY);
-            referralRecyclerView.setAdapter(mAdapter);
-            referralRow.setVisibility(View.VISIBLE);
+        if (notificationAndReferralRecyclerView != null && taskList.size() > 0) {
+            RecyclerView.Adapter mAdapter = new ReferralCardViewAdapter(taskList, this, getCommonPersonObjectClient(), CoreConstants.REGISTERED_ACTIVITIES.ANC_REGISTER_ACTIVITY);
+            notificationAndReferralRecyclerView.setAdapter(mAdapter);
+            notificationAndReferralLayout.setVisibility(View.VISIBLE);
+            findViewById(R.id.view_notification_and_referral_row).setVisibility(View.VISIBLE);
         }
     }
 
@@ -213,37 +204,23 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         this.commonPersonObjectClient = commonPersonObjectClient;
     }
 
-    private void initializeTasksRecyclerView() {
-        referralRecyclerView = findViewById(R.id.referral_card_recycler_view);
-        referralRow = findViewById(R.id.referral_row);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        referralRecyclerView.setLayoutManager(layoutManager);
-    }
-
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
         // implemented but not used.
     }
 
-    private void updateTitleWhenFromReferrals() {
-        if (isStartedFromReferrals) {
-            ((CustomFontTextView) findViewById(R.id.toolbar_title)).setText(getString(R.string.return_to_task_details));
-        }
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initializeTasksRecyclerView();
+        initializeNotificationReferralRecyclerView();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        updateTitleWhenFromReferrals();
         ancMemberProfilePresenter().fetchTasks();
-        if (referralRecyclerView != null && referralRecyclerView.getAdapter() != null) {
-            referralRecyclerView.getAdapter().notifyDataSetChanged();
+        if (notificationAndReferralRecyclerView != null && notificationAndReferralRecyclerView.getAdapter() != null) {
+            notificationAndReferralRecyclerView.getAdapter().notifyDataSetChanged();
         }
     }
 }

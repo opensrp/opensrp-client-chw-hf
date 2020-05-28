@@ -6,7 +6,6 @@ import org.smartregister.chw.core.interactor.CoreFamilyProfileInteractor;
 import org.smartregister.chw.core.presenter.CoreFamilyOtherMemberActivityPresenter;
 import org.smartregister.chw.core.repository.ChwTaskRepository;
 import org.smartregister.chw.core.utils.CoreConstants;
-import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.contract.MalariaProfileContract;
 import org.smartregister.chw.hf.interactor.HfFamilyInteractor;
 import org.smartregister.chw.hf.interactor.HfFamilyProfileInteractor;

@@ -9,7 +9,6 @@ import org.smartregister.chw.core.repository.ChwTaskRepository;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.fp.contract.BaseFpProfileContract;
 import org.smartregister.chw.fp.domain.FpMemberObject;
-import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.contract.FamilyPlanningMemberProfileContract;
 import org.smartregister.domain.Alert;
 import org.smartregister.domain.AlertStatus;

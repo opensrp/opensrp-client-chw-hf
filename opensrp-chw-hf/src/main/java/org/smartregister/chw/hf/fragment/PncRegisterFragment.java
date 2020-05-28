@@ -1,5 +1,6 @@
 package org.smartregister.chw.hf.fragment;
 
+import org.smartregister.chw.anc.domain.MemberObject;
 import org.smartregister.chw.core.fragment.CorePncRegisterFragment;
 import org.smartregister.chw.core.model.PncRegisterFragmentModel;
 import org.smartregister.chw.core.provider.ChwPncRegisterProvider;
@@ -44,6 +45,7 @@ public class PncRegisterFragment extends CorePncRegisterFragment {
 
     @Override
     protected void openPncMemberProfile(CommonPersonObjectClient client) {
-        PncMemberProfileActivity.startMe(getActivity(), client.getCaseId(), client);
+        MemberObject memberObject = new MemberObject(client);
+        PncMemberProfileActivity.startMe(getActivity(), memberObject.getBaseEntityId());
     }
 }
