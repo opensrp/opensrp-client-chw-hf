@@ -7,10 +7,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.jetbrains.annotations.NotNull;
@@ -23,7 +21,6 @@ import org.smartregister.chw.core.custom_views.CoreFamilyMemberFloatingMenu;
 import org.smartregister.chw.core.fragment.FamilyCallDialogFragment;
 import org.smartregister.chw.core.listener.OnClickFloatingMenu;
 import org.smartregister.chw.core.model.CoreChildProfileModel;
-import org.smartregister.chw.core.presenter.CoreChildProfilePresenter;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.adapter.ReferralCardViewAdapter;
@@ -41,8 +38,6 @@ import timber.log.Timber;
 
 public class ChildProfileActivity extends CoreChildProfileActivity {
     public CoreFamilyMemberFloatingMenu familyFloatingMenu;
-    public RelativeLayout referralRow;
-    public RecyclerView referralRecyclerView;
 
     @Override
     protected void onCreation() {
@@ -81,7 +76,6 @@ public class ChildProfileActivity extends CoreChildProfileActivity {
     @Override
     protected void setupViews() {
         super.setupViews();
-        initializeTasksRecyclerView();
         View recordVisitPanel = findViewById(R.id.record_visit_panel);
         recordVisitPanel.setVisibility(View.GONE);
         familyFloatingMenu = new FamilyMemberFloatingMenu(this);
@@ -118,10 +112,12 @@ public class ChildProfileActivity extends CoreChildProfileActivity {
     @Override
     public void setClientTasks(Set<Task> taskList) {
         handler.postDelayed(() -> {
-            if (referralRecyclerView != null && taskList.size() > 0) {
-                RecyclerView.Adapter mAdapter = new ReferralCardViewAdapter(taskList, this, ((HfChildProfilePresenter) presenter()).getChildClient(), CoreConstants.REGISTERED_ACTIVITIES.CHILD_REGISTER_ACTIVITY);
-                referralRecyclerView.setAdapter(mAdapter);
-                referralRow.setVisibility(View.VISIBLE);
+            if (notificationAndReferralRecyclerView != null && taskList.size() > 0) {
+                RecyclerView.Adapter mAdapter = new ReferralCardViewAdapter(taskList, this,
+                        presenter().getChildClient(), CoreConstants.REGISTERED_ACTIVITIES.CHILD_REGISTER_ACTIVITY);
+                notificationAndReferralRecyclerView.setAdapter(mAdapter);
+                notificationAndReferralLayout.setVisibility(View.VISIBLE);
+                findViewById(R.id.view_notification_and_referral_row).setVisibility(View.VISIBLE);
 
             }
         }, 100);
@@ -174,13 +170,13 @@ public class ChildProfileActivity extends CoreChildProfileActivity {
     }
 
     private void openUpcomingServicePage() {
-        MemberObject memberObject = new MemberObject(((CoreChildProfilePresenter) presenter()).getChildClient());
+        MemberObject memberObject = new MemberObject(presenter().getChildClient());
         CoreUpcomingServicesActivity.startMe(this, memberObject);
     }
 
     //TODO Child Refactor
     private void openVisitHomeScreen(boolean isEditMode) {
-        CoreChildHomeVisitActivity.startMe(this, ((HfChildProfilePresenter) presenter()).getChildClient().getCaseId(), isEditMode);
+        CoreChildHomeVisitActivity.startMe(this, presenter().getChildClient().getCaseId(), isEditMode);
     }
 
     public OnClickFloatingMenu getOnClickFloatingMenu(final Activity activity, final HfChildProfilePresenter presenter) {
@@ -198,14 +194,6 @@ public class ChildProfileActivity extends CoreChildProfileActivity {
         };
     }
 
-    private void initializeTasksRecyclerView() {
-        referralRecyclerView = findViewById(R.id.referral_card_recycler_view);
-        referralRow = findViewById(R.id.referral_row);
-        referralRow.setVisibility(View.VISIBLE);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        referralRecyclerView.setLayoutManager(layoutManager);
-    }
-
     private void prepareFab() {
         familyFloatingMenu.fab.setOnClickListener(v -> FamilyCallDialogFragment.launchDialog(
                 this, ((HfChildProfilePresenter) presenter).getFamilyId()));
@@ -217,8 +205,8 @@ public class ChildProfileActivity extends CoreChildProfileActivity {
         super.onResume();
         fetchProfileData();
         presenter().fetchTasks();
-        if (referralRecyclerView.getAdapter() != null) {
-            referralRecyclerView.getAdapter().notifyDataSetChanged();
+        if (notificationAndReferralRecyclerView.getAdapter() != null) {
+            notificationAndReferralRecyclerView.getAdapter().notifyDataSetChanged();
         }
     }
 

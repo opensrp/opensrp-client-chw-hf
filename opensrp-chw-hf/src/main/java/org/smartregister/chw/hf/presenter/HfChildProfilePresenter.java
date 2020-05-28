@@ -14,8 +14,6 @@ import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.repository.AllSharedPreferences;
 
-import java.lang.ref.WeakReference;
-
 import timber.log.Timber;
 
 public class HfChildProfilePresenter extends CoreChildProfilePresenter {

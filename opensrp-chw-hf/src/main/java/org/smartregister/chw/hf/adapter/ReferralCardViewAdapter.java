@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.smartregister.chw.anc.domain.MemberObject;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.holder.ReferralCardViewHolder;
 import org.smartregister.chw.hf.listener.ReferralRecyclerClickListener;
@@ -27,25 +26,12 @@ public class ReferralCardViewAdapter extends RecyclerView.Adapter<ReferralCardVi
     private CommonPersonObjectClient personObjectClient;
     private Activity context;
     private String startingActivity;
-    private MemberObject memberObject;
-    private String familyHeadName;
-    private String familyHeadPhoneNumber;
 
     public ReferralCardViewAdapter(Set<Task> taskList, Activity activity, CommonPersonObjectClient personObjectClient, String startingActivity) {
         this.tasks = new ArrayList<>(taskList);
         this.context = activity;
         this.personObjectClient = personObjectClient;
         this.startingActivity = startingActivity;
-    }
-
-    public ReferralCardViewAdapter(Set<Task> taskList, Activity activity, MemberObject memberObject, String familyHeadName, String familyHeadPhoneNumber, CommonPersonObjectClient personObjectClient, String startingActivity) {
-        this.tasks = new ArrayList<>(taskList);
-        this.context = activity;
-        this.personObjectClient = personObjectClient;
-        this.startingActivity = startingActivity;
-        this.memberObject = memberObject;
-        this.familyHeadName = familyHeadName;
-        this.familyHeadPhoneNumber = familyHeadPhoneNumber;
     }
 
     @NonNull
@@ -62,9 +48,6 @@ public class ReferralCardViewAdapter extends RecyclerView.Adapter<ReferralCardVi
         referralRecyclerClickListener.setCommonPersonObjectClient(personObjectClient);
         referralRecyclerClickListener.setActivity(context);
         referralRecyclerClickListener.setStartingActivity(startingActivity);
-        referralRecyclerClickListener.setMemberObject(memberObject);
-        referralRecyclerClickListener.setFamilyHeadName(familyHeadName);
-        referralRecyclerClickListener.setFamilyHeadPhoneNumber(familyHeadPhoneNumber);
         referralCardViewHolder.textViewReferralHeader.setText(String.format(context.getApplicationContext().getResources().getString(R.string.referral_for), tasks.get(position).getFocus()));
         referralCardViewHolder.referralRow.setOnClickListener(referralRecyclerClickListener);
     }
