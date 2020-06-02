@@ -145,7 +145,6 @@ public class HfChwRepository extends CoreChwRepository {
         }
     }
 
-
     private static boolean checkIfAppUpdated() {
         String savedAppVersion = ReportingLibrary.getInstance().getContext().allSharedPreferences().getPreference(appVersionCodePref);
         if (savedAppVersion.isEmpty()) {
@@ -192,8 +191,8 @@ public class HfChwRepository extends CoreChwRepository {
 
     private void upgradeToVersion9(SQLiteDatabase db) {
         try {
-            db.execSQL(FamilyDao.getAddLocationIdColSQLString());
-            FamilyDao.migrateInsertLocationIDs();
+            FamilyDao.migrateAddLocationIdColSQLString(db);
+            FamilyDao.migrateInsertLocationIDs(db);
         } catch (Exception ex) {
             Timber.e(ex, "Problems adding sync location ids");
         }
