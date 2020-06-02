@@ -10,6 +10,7 @@ import org.smartregister.chw.core.repository.CoreChwRepository;
 import org.smartregister.chw.core.repository.StockUsageReportRepository;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.BuildConfig;
+import org.smartregister.chw.hf.dao.FamilyDao;
 import org.smartregister.domain.db.Column;
 import org.smartregister.family.util.DBConstants;
 import org.smartregister.immunization.repository.RecurringServiceRecordRepository;
@@ -62,6 +63,8 @@ public class HfChwRepository extends CoreChwRepository {
                     break;
                 case 8:
                     upgradeToVersion8(db);
+                case 9:
+                    upgradeToVersion9(db);
                 default:
                     break;
             }
@@ -142,7 +145,6 @@ public class HfChwRepository extends CoreChwRepository {
         }
     }
 
-
     private static boolean checkIfAppUpdated() {
         String savedAppVersion = ReportingLibrary.getInstance().getContext().allSharedPreferences().getPreference(appVersionCodePref);
         if (savedAppVersion.isEmpty()) {
@@ -174,7 +176,6 @@ public class HfChwRepository extends CoreChwRepository {
 
     private void upgradeToVersion8(SQLiteDatabase db) {
         try {
-
             db.execSQL("ALTER TABLE ec_family ADD COLUMN entity_type VARCHAR; " +
                     "UPDATE ec_family SET entity_type = 'ec_family' WHERE id is not null;");
 
@@ -185,6 +186,15 @@ public class HfChwRepository extends CoreChwRepository {
 
         } catch (Exception e) {
             Timber.e(e, "commonUpgrade -> Failed to add column 'entity_type' and 'details' to ec_family_search ");
+        }
+    }
+
+    private void upgradeToVersion9(SQLiteDatabase db) {
+        try {
+            FamilyDao.migrateAddLocationIdColSQLString(db);
+            FamilyDao.migrateInsertLocationIDs(db);
+        } catch (Exception ex) {
+            Timber.e(ex, "Problems adding sync location ids");
         }
     }
 }

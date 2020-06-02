@@ -76,109 +76,109 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "160939AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
         "openmrs_entity_parent": "",
-        "label": "What danger sign did the mother/child have?",
+        "label": "Je, mama/mtoto alikuwa na dalili za hatari gani?",
         "combine_checkbox_option_values": "true",
         "options": [
           {
             "key": "Fever",
             "openmrs_choice_id": "",
-            "text": "Fever",
+            "text": "Homa",
             "value": false
           },
           {
             "key": "Bleeding_vaginally",
             "openmrs_choice_id": "",
-            "text": "Bleeding vaginally",
+            "text": "Damu kutoka ukeni",
             "value": false
           },
           {
             "key": "Severe_headache",
             "openmrs_choice_id": "",
-            "text": "Severe headache",
+            "text": "Maumivu ya kichwa",
             "value": false
           },
           {
             "key": "Convulsions",
             "openmrs_choice_id": "",
-            "text": "Convulsions",
+            "text": "Degedege",
             "value": false
           },
           {
             "key": "Difficulty_breathing",
             "openmrs_choice_id": "",
-            "text": "Difficulty breathing",
+            "text": "Kushindwa kupumua",
             "value": false
           },
           {
             "key": "Severe_abdominal_pain",
             "openmrs_choice_id": "",
-            "text": "Severe abdominal pain",
+            "text": "Maumivu makali ya tumbo",
             "value": false
           },
           {
             "key": "Vaginal_discharge_with_a_bad_smell",
             "openmrs_choice_id": "",
-            "text": "Vaginal discharge with a bad smell",
+            "text": "Kutoka uchafu / majimaji ukeni yenye harufu mbaya",
             "value": false
           },
           {
             "key": "Redness_around_the_umbilical_cord_foul_smelling_discharge_from_the_umbilical_cord",
             "openmrs_choice_id": "",
-            "text": "Redness around the umbilical cord, foul-smelling discharge from the umbilical cord",
+            "text": "Uambukizo kwenye kitovu",
             "value": false
           },
           {
             "key": "Excessive_crying",
             "openmrs_choice_id": "",
-            "text": "Excessive crying",
+            "text": "Mtoto kulia sana",
             "value": false
           },
           {
             "key": "Fast_breathing",
             "openmrs_choice_id": "",
-            "text": "Fast breathing",
+            "text": "Kushindwa kupumua",
             "value": false
           },
           {
             "key": "Chest_indrawing",
             "openmrs_choice_id": "",
-            "text": "Chest indrawing",
+            "text": "Kifua kikovu",
             "value": false
           },
           {
             "key": "Unable_to_suck",
             "openmrs_choice_id": "",
-            "text": "Unable to suck",
+            "text": "Kushindwa kunyonya",
             "value": false
           },
           {
             "key": "No_movement",
             "openmrs_choice_id": "",
-            "text": "No movement",
+            "text": "Hakuna harakati",
             "value": false
           },
           {
             "key": "Pale_or_jaundiced",
             "openmrs_choice_id": "",
-            "text": "Pale or jaundiced",
+            "text": "Mwili kuwa njano",
             "value": false
           },
           {
             "key": "Lethargy",
             "openmrs_choice_id": "",
-            "text": "Lethargy",
+            "text": "Uchovu",
             "value": false
           },
           {
             "key": "Other",
             "openmrs_choice_id": "",
-            "text": "Other",
+            "text": "Nyingine",
             "value": false
           },
           {
             "key": "None",
             "openmrs_choice_id": "",
-            "text": "None",
+            "text": "Hakuna",
             "value": false
           }
         ],
@@ -187,7 +187,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Please indicate any danger signs"
+          "err": "Tafadhali ingiza dalili za hatari"
         }
       },
       {
@@ -197,7 +197,7 @@
         "openmrs_entity_id": "160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
         "openmrs_entity_parent": "",
         "edit_type": "name",
-        "hint": "Other danger sign",
+        "hint": "Dalili za hatari nyingine",
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -207,7 +207,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Please enter other danger sign"
+          "err": "Tafadhali dalili za hatari nyingine"
         }
       },
       {
@@ -216,33 +216,33 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "action_taken_pnc_danger_signs",
         "openmrs_entity_parent": "",
-        "label": "Action taken by health facility",
+        "label": "Hatua zilizochukuliwa na kituo cha afya",
         "options": [
           {
             "key": "No_action_taken",
             "openmrs_entity": "",
             "openmrs_entity_id": "No_action_taken",
             "openmrs_entity_parent": "",
-            "text": "No action taken"
+            "text": "Hakuna hatua zilizochukuliwa"
           },
           {
             "key": "Managed",
             "openmrs_entity": "",
             "openmrs_entity_id": "Managed",
             "openmrs_entity_parent": "",
-            "text": "Managed"
+            "text": "Amefukuza"
           },
           {
             "key": "Referred",
             "openmrs_entity": "",
             "openmrs_entity_id": "Referred",
             "openmrs_entity_parent": "",
-            "text": "Referred"
+            "text": "Amepewa rufaa"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Please indicate action taken by health facility"
+          "err": "Tafadhali eleza hatua zinazochukuliwa na kituo cha afya"
         }
       },
       {
@@ -251,21 +251,21 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "status_visit",
         "openmrs_entity_parent": "",
-        "label": "Status of the mother/child",
+        "label": "Hali ya mama / mtoto",
         "options": [
           {
             "key": "died",
             "openmrs_entity": "",
             "openmrs_entity_id": "159AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
             "openmrs_entity_parent": "",
-            "text": "Died"
+            "text": "Amekufa"
           },
           {
             "key": "sent_home",
             "openmrs_entity": "",
             "openmrs_entity_id": "1654AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
             "openmrs_entity_parent": "",
-            "text": "Sent home"
+            "text": "Amerudi nyumbani"
           }
         ],
         "relevance": {
@@ -287,7 +287,7 @@
         "openmrs_entity_id": "managed_signs",
         "openmrs_entity_parent": "",
         "edit_type": "name",
-        "hint": "How did the health facility manage the mother's condition?",
+        "hint": "Kituo cha afya alisimamiaje hali ya mama?",
         "v_required": {
           "value": "false",
           "err": null
@@ -300,7 +300,7 @@
         "openmrs_entity_id": "comment_pnc_danger_signs",
         "openmrs_entity_parent": "",
         "edit_type": "name",
-        "hint": "Remarks/Comments",
+        "hint": "Toa maoni",
         "v_required": {
           "value": "false",
           "err": null

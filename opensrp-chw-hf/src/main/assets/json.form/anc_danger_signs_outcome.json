@@ -175,7 +175,16 @@
             "openmrs_choice_id": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
             "text": "Other",
             "value": false
+          },
+          {
+            "key": "None",
+            "openmrs_choice_id": "",
+            "text": "None",
+            "value": false
           }
+        ],
+        "exclusive": [
+          "None"
         ],
         "v_required": {
           "value": "true",
@@ -204,50 +213,72 @@
       },
       {
         "key": "action_taken_anc_danger_signs",
-        "type": "check_box",
+        "type": "native_radio",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "164378AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
         "openmrs_entity_parent": "",
         "label": "Action taken by health facility",
-        "combine_checkbox_option_values": "true",
-        "exclusive": [
-          "No_action_taken"
-        ],
         "options": [
           {
             "key": "No_action_taken",
-            "openmrs_choice_id": "1107AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-            "text": "No action taken",
-            "value": false
+            "openmrs_entity": "",
+            "openmrs_entity_id": "1107AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_entity_parent": "",
+            "text": "No action taken"
           },
           {
             "key": "Managed",
-            "openmrs_choice_id": "1692AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-            "text": "Managed",
-            "value": false
+            "openmrs_entity": "",
+            "openmrs_entity_id": "1692AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_entity_parent": "",
+            "text": "Managed"
           },
           {
             "key": "Referred",
-            "openmrs_choice_id": "1648AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-            "text": "Referred",
-            "value": false
-          },
-          {
-            "key": "Discharged",
-            "openmrs_choice_id": "1654AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-            "text": "Discharged",
-            "value": false
-          },
-          {
-            "key": "Died",
-            "openmrs_choice_id": "159AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-            "text": "Died",
-            "value": false
+            "openmrs_entity": "",
+            "openmrs_entity_id": "1648AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_entity_parent": "",
+            "text": "Referred"
           }
         ],
         "v_required": {
           "value": "true",
           "err": "Please select action taken"
+        }
+      },
+      {
+        "key": "status_visit",
+        "type": "native_radio",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "status_visit",
+        "openmrs_entity_parent": "",
+        "label": "Status of the mother/child",
+        "options": [
+          {
+            "key": "Discharged",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "1654AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_entity_parent": "",
+            "text": "Discharged"
+          },
+          {
+            "key": "Died",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "159AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_entity_parent": "",
+            "text": "Died"
+          }
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_danger_signs_outcome_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select the status of the mother/child"
         }
       },
       {
