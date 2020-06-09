@@ -25,6 +25,8 @@ import org.smartregister.family.util.Constants;
 
 import java.util.HashMap;
 
+import static org.smartregister.chw.core.utils.FormUtils.getFormUtils;
+
 public class FamilyProfileActivity extends CoreFamilyProfileActivity {
 
     @Override
@@ -110,6 +112,16 @@ public class FamilyProfileActivity extends CoreFamilyProfileActivity {
     @Override
     protected void goToFpProfile(String baseEntityId, Activity activity) {
         FamilyPlanningMemberProfileActivity.startFpMemberProfileActivity(activity, FpDao.getMember(baseEntityId));
+    }
+
+    @Override
+    protected void goToHivProfile(String baseEntityId, Activity activity) {
+        HivRegisterActivity.startHIVFormActivity(this, baseEntityId,CoreConstants.JSON_FORM.getHivRegistration(),getFormUtils().getFormJsonFromRepositoryOrAssets(CoreConstants.JSON_FORM.getHivRegistration()).toString());
+    }
+
+    @Override
+    protected void goToTbProfile(String baseEntityId, Activity activity) {
+        TbRegisterActivity.startTbFormActivity(this, baseEntityId,CoreConstants.JSON_FORM.getTbRegistration(),getFormUtils().getFormJsonFromRepositoryOrAssets(CoreConstants.JSON_FORM.getTbRegistration()).toString());
     }
 
     @Override

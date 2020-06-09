@@ -30,10 +30,12 @@ import org.smartregister.chw.hf.activity.ChildRegisterActivity;
 import org.smartregister.chw.hf.activity.FamilyProfileActivity;
 import org.smartregister.chw.hf.activity.FamilyRegisterActivity;
 import org.smartregister.chw.hf.activity.FpRegisterActivity;
+import org.smartregister.chw.hf.activity.HivRegisterActivity;
 import org.smartregister.chw.hf.activity.LoginActivity;
 import org.smartregister.chw.hf.activity.MalariaRegisterActivity;
 import org.smartregister.chw.hf.activity.PncRegisterActivity;
 import org.smartregister.chw.hf.activity.ReferralRegisterActivity;
+import org.smartregister.chw.hf.activity.TbRegisterActivity;
 import org.smartregister.chw.hf.configs.AllClientsRegisterRowOptions;
 import org.smartregister.chw.hf.custom_view.HfNavigationMenu;
 import org.smartregister.chw.hf.job.HfJobCreator;
@@ -41,8 +43,10 @@ import org.smartregister.chw.hf.model.NavigationModel;
 import org.smartregister.chw.hf.repository.HfChwRepository;
 import org.smartregister.chw.hf.repository.HfTaskRepository;
 import org.smartregister.chw.hf.sync.HfSyncConfiguration;
+import org.smartregister.chw.hiv.HivLibrary;
 import org.smartregister.chw.malaria.MalariaLibrary;
 import org.smartregister.chw.pnc.PncLibrary;
+import org.smartregister.chw.tb.TbLibrary;
 import org.smartregister.configurableviews.ConfigurableViewsLibrary;
 import org.smartregister.configurableviews.helper.JsonSpecHelper;
 import org.smartregister.family.FamilyLibrary;
@@ -100,6 +104,8 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
         registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.ALL_CLIENTS_REGISTERED_ACTIVITY, AllClientsRegisterActivity.class);
         registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.MALARIA_REGISTER_ACTIVITY, MalariaRegisterActivity.class);
         registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.FP_REGISTER_ACTIVITY, FpRegisterActivity.class);
+        registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.HIV_REGISTER_ACTIVITY, HivRegisterActivity.class);
+        registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.TB_REGISTER_ACTIVITY, TbRegisterActivity.class);
         return registeredActivities;
     }
 
@@ -180,6 +186,17 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
         PncLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
         MalariaLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
         FpLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
+
+        //Setup hiv library
+        HivLibrary.init(this);
+        HivLibrary.getInstance().setAppVersion(BuildConfig.VERSION_CODE);
+        HivLibrary.getInstance().setDatabaseVersion(BuildConfig.DATABASE_VERSION);
+
+        //Setup tb library
+        TbLibrary.init(this);
+        TbLibrary.getInstance().setAppVersion(BuildConfig.VERSION_CODE);
+        TbLibrary.getInstance().setDatabaseVersion(BuildConfig.DATABASE_VERSION);
+
         //Needed for all clients register
         OpdLibrary.init(context, getRepository(),
                 new OpdConfiguration.Builder(CoreAllClientsRegisterQueryProvider.class)

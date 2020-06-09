@@ -30,6 +30,7 @@ import org.smartregister.view.contract.BaseProfileContract;
 
 import timber.log.Timber;
 
+import static org.smartregister.chw.core.utils.FormUtils.getFormUtils;
 import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
 
 public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfileActivity {
@@ -74,6 +75,16 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
     @Override
     protected void startMalariaRegister() {
         //TODO implement start malaria register for HF
+    }
+
+    @Override
+    protected void startHivRegister() {
+        HivRegisterActivity.startHIVFormActivity(this, baseEntityId,CoreConstants.JSON_FORM.getHivRegistration(),getFormUtils().getFormJsonFromRepositoryOrAssets(CoreConstants.JSON_FORM.getHivRegistration()).toString());
+    }
+
+    @Override
+    protected void startTbRegister() {
+        TbRegisterActivity.startTbFormActivity(this, baseEntityId,CoreConstants.JSON_FORM.getTbRegistration(),getFormUtils().getFormJsonFromRepositoryOrAssets(CoreConstants.JSON_FORM.getTbRegistration()).toString());
     }
 
     @Override

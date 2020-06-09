@@ -194,6 +194,23 @@
             android:theme="@style/HFTheme.NoActionBar" />
 
 
+        <activity
+            android:name=".activity.HivRegisterActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+
+        <activity
+            android:name=".activity.HivProfileActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+
+        <activity
+            android:name=".activity.TbRegisterActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+
+        <activity
+            android:name=".activity.TbProfileActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+
+
         <service android:name="org.smartregister.immunization.service.intent.VaccineIntentService" />
         <service android:name="org.smartregister.immunization.service.intent.RecurringIntentService" />
         <service android:name="org.smartregister.sync.intent.PullUniqueIdsIntentService" />

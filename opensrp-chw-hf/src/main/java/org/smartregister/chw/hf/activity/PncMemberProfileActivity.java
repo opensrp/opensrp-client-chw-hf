@@ -44,6 +44,7 @@ import java.util.Set;
 
 import timber.log.Timber;
 
+import static org.smartregister.chw.core.utils.FormUtils.getFormUtils;
 import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
 
 public class PncMemberProfileActivity extends CorePncMemberProfileActivity implements PncMemberProfileContract.View {
@@ -76,6 +77,16 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
     @Override
     protected void startMalariaFollowUpVisit() {
         // TODO -> Implement for HF
+    }
+
+    @Override
+    protected void startHivRegister() {
+        HivRegisterActivity.startHIVFormActivity(this, memberObject.getBaseEntityId(),CoreConstants.JSON_FORM.getHivRegistration(),getFormUtils().getFormJsonFromRepositoryOrAssets(CoreConstants.JSON_FORM.getHivRegistration()).toString());
+    }
+
+    @Override
+    protected void startTbRegister() {
+        TbRegisterActivity.startTbFormActivity(this, memberObject.getBaseEntityId(),CoreConstants.JSON_FORM.getTbRegistration(),getFormUtils().getFormJsonFromRepositoryOrAssets(CoreConstants.JSON_FORM.getTbRegistration()).toString());
     }
 
     @Override
