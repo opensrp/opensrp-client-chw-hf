@@ -25,7 +25,6 @@ import org.smartregister.domain.Task;
 import java.util.Date;
 import java.util.Set;
 
-import static android.view.View.GONE;
 import static org.smartregister.chw.core.utils.FormUtils.getFormUtils;
 
 public class HivProfileActivity extends CoreHivProfileActivity implements HivProfileContract.View {
