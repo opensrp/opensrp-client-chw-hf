@@ -3,6 +3,8 @@ package org.smartregister.chw.hf.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -84,6 +86,29 @@ public class TbProfileActivity extends CoreTbProfileActivity
         showProgressBar(true);
         setTbProfilePresenter(new TbProfilePresenter(this, new HfTbProfileInteractor(this), getTbMemberObject()));
         fetchProfileData();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int itemId = item.getItemId();
+        if (itemId == R.id.action_tb_outcome) {
+            TbRegisterActivity.startTbFormActivity(this, getTbMemberObject().getBaseEntityId(),CoreConstants.JSON_FORM.getTbOutcome(),getFormUtils().getFormJsonFromRepositoryOrAssets(CoreConstants.JSON_FORM.getTbOutcome()).toString());
+            return true;
+        } else if (itemId == R.id.action_issue_tb_community_followup_referral) {
+            TbRegisterActivity.startTbFormActivity(this, getTbMemberObject().getBaseEntityId(),CoreConstants.JSON_FORM.getTbIssueCommunityFollowupReferral(),getFormUtils().getFormJsonFromRepositoryOrAssets(CoreConstants.JSON_FORM.getTbIssueCommunityFollowupReferral()).toString());
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(org.smartregister.chw.core.R.menu.tb_profile_menu, menu);
+        menu.findItem(R.id.action_tb_outcome).setVisible(true);
+        menu.findItem(R.id.action_issue_tb_community_followup_referral).setVisible(true);
+        return true;
     }
 
     @Override

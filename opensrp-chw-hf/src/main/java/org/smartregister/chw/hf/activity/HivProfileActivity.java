@@ -3,6 +3,8 @@ package org.smartregister.chw.hf.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -86,13 +88,37 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
         fetchProfileData();
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int itemId = item.getItemId();
+        if (itemId == R.id.action_hiv_outcome) {
+            HivRegisterActivity.startHIVFormActivity(this, getHivMemberObject().getBaseEntityId(),CoreConstants.JSON_FORM.getHivOutcome(),getFormUtils().getFormJsonFromRepositoryOrAssets(CoreConstants.JSON_FORM.getHivOutcome()).toString());
+            return true;
+        } else if (itemId == R.id.action_issue_hiv_community_followup_referral) {
+            HivRegisterActivity.startHIVFormActivity(this, getHivMemberObject().getBaseEntityId(),CoreConstants.JSON_FORM.getHivIssueCommunityFollowupReferral(),getFormUtils().getFormJsonFromRepositoryOrAssets(CoreConstants.JSON_FORM.getHivIssueCommunityFollowupReferral()).toString());
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
-    public void updateLastVisitRow(Date lastVisitDate){
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(org.smartregister.chw.core.R.menu.hiv_profile_menu, menu);
+        menu.findItem(R.id.action_hiv_outcome).setVisible(true);
+        menu.findItem(R.id.action_issue_hiv_community_followup_referral).setVisible(true);
+        return true;
+    }
+
+
+    @Override
+    public void updateLastVisitRow(Date lastVisitDate) {
         //overriding showing of last visit row
     }
+
     @Override
-    public void setupFollowupVisitEditViews(boolean isWithin24Hours){
+    public void setupFollowupVisitEditViews(boolean isWithin24Hours) {
         //overriding setupFollowupVisitEditViews row
     }
 
