@@ -96,7 +96,7 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
             HivRegisterActivity.startHIVFormActivity(this, getHivMemberObject().getBaseEntityId(),CoreConstants.JSON_FORM.getHivOutcome(),getFormUtils().getFormJsonFromRepositoryOrAssets(CoreConstants.JSON_FORM.getHivOutcome()).toString());
             return true;
         } else if (itemId == R.id.action_issue_hiv_community_followup_referral) {
-            HivRegisterActivity.startHIVFormActivity(this, getHivMemberObject().getBaseEntityId(),CoreConstants.JSON_FORM.getHivIssueCommunityFollowupReferral(),getFormUtils().getFormJsonFromRepositoryOrAssets(CoreConstants.JSON_FORM.getHivIssueCommunityFollowupReferral()).toString());
+            HivRegisterActivity.startHIVFormActivity(this, getHivMemberObject().getBaseEntityId(),CoreConstants.JSON_FORM.getHivCommunityFollowupReferral(),getFormUtils().getFormJsonFromRepositoryOrAssets(CoreConstants.JSON_FORM.getHivCommunityFollowupReferral()).toString());
             return true;
         }
 

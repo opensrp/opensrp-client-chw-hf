@@ -24,7 +24,7 @@ public class TbRegisterActivity extends CoreTbRegisterActivity {
         intent.putExtra(org.smartregister.chw.tb.util.Constants.ActivityPayload.BASE_ENTITY_ID, baseEntityID);
         intent.putExtra(org.smartregister.chw.tb.util.Constants.ActivityPayload.ACTION, payloadType);
         intent.putExtra(org.smartregister.chw.tb.util.Constants.ActivityPayload.TB_REGISTRATION_FORM_NAME, formName);
-        activity.startActivityForResult(intent, JsonFormUtils.REQUEST_CODE_GET_JSON);
+        activity.startActivity(intent);
     }
 
     @NotNull

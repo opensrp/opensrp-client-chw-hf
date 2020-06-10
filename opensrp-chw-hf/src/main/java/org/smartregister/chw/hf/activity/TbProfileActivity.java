@@ -96,7 +96,7 @@ public class TbProfileActivity extends CoreTbProfileActivity
             TbRegisterActivity.startTbFormActivity(this, getTbMemberObject().getBaseEntityId(),CoreConstants.JSON_FORM.getTbOutcome(),getFormUtils().getFormJsonFromRepositoryOrAssets(CoreConstants.JSON_FORM.getTbOutcome()).toString());
             return true;
         } else if (itemId == R.id.action_issue_tb_community_followup_referral) {
-            TbRegisterActivity.startTbFormActivity(this, getTbMemberObject().getBaseEntityId(),CoreConstants.JSON_FORM.getTbIssueCommunityFollowupReferral(),getFormUtils().getFormJsonFromRepositoryOrAssets(CoreConstants.JSON_FORM.getTbIssueCommunityFollowupReferral()).toString());
+            TbRegisterActivity.startTbFormActivity(this, getTbMemberObject().getBaseEntityId(),CoreConstants.JSON_FORM.getTbCommunityFollowupReferral(),getFormUtils().getFormJsonFromRepositoryOrAssets(CoreConstants.JSON_FORM.getTbCommunityFollowupReferral()).toString());
             return true;
         }
 
