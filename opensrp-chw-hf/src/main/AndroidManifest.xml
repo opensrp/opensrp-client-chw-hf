@@ -207,6 +207,7 @@
         <service android:name="org.smartregister.sync.intent.PlanIntentService" />
         <service android:name="org.smartregister.chw.core.sync.intent.SyncClientEventsPerTaskIntentService" />
         <service android:name="org.smartregister.chw.core.sync.intent.CloseExpiredReferralsIntentService" />
+        <service android:name="org.smartregister.sync.intent.SyncLocationsByTeamIdsIntentService" />
 
         <uses-library
             android:name="org.apache.http.legacy"
