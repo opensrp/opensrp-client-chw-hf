@@ -187,7 +187,6 @@
             {
               "name": "tested",
               "text": "Tested",
-              "is_exclusive": true,
               "meta_data": {
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "tested",
@@ -231,7 +230,6 @@
             {
               "name": "negative",
               "text": "Negative",
-              "is_exclusive": true,
               "meta_data": {
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "negative",
@@ -266,7 +264,6 @@
             {
               "name": "no",
               "text": "No",
-              "is_exclusive": true,
               "meta_data": {
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "no",

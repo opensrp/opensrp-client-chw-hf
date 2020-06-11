@@ -2369,14 +2369,14 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "163182AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "problem"
           }
         },
         {
           "column_name": "problem_other",
           "type": "Event",
           "json_mapping": {
-            "field": "obs.formSubmissionField",
+            "field": "obs.fieldCode",
             "concept": "problem_other"
           }
         },
@@ -2384,7 +2384,7 @@
           "column_name": "action_taken_hiv_problems",
           "type": "Event",
           "json_mapping": {
-            "field": "obs.fieldCode",
+            "field": "obs.formSubmissionField",
             "concept": "action_taken_hiv_problems"
           }
         },
@@ -2613,7 +2613,7 @@
           "column_name": "action_taken_tb_problems",
           "type": "Event",
           "json_mapping": {
-            "field": "obs.fieldCode",
+            "field": "obs.formSubmissionField",
             "concept": "action_taken_tb_problems"
           }
         },

@@ -196,7 +196,6 @@
             {
               "name": "tested",
               "text": "Tested",
-              "is_exclusive": true,
               "meta_data": {
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "tested",
@@ -206,7 +205,6 @@
             {
               "name": "referred",
               "text": "Referred",
-              "is_exclusive": true,
               "meta_data": {
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "referred",
