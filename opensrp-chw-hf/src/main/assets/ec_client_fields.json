@@ -2332,7 +2332,7 @@
           "column_name": "client_hiv_status_after_testing",
           "type": "Event",
           "json_mapping": {
-            "field": "obs.fieldCode",
+            "field": "obs.formSubmissionField",
             "concept": "test_results"
           }
         },
@@ -2536,7 +2536,7 @@
           "column_name": "client_tb_status_after_testing",
           "type": "Event",
           "json_mapping": {
-            "field": "obs.fieldCode",
+            "field": "obs.formSubmissionField",
             "concept": "test_results"
           }
         },
@@ -2598,7 +2598,7 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "163182AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "problem"
           }
         },
         {

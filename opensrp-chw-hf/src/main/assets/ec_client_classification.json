@@ -274,13 +274,7 @@
             "field": "eventType",
             "field_value": "HIV Outcome",
             "creates_case": [
-              "ec_hiv_register"
-            ]
-          },
-          {
-            "field": "eventType",
-            "field_value": "HIV Outcome",
-            "creates_case": [
+              "ec_hiv_register",
               "ec_hiv_outcome"
             ]
           },
@@ -288,13 +282,7 @@
             "field": "eventType",
             "field_value": "TB Outcome",
             "creates_case": [
-              "ec_tb_register"
-            ]
-          },
-          {
-            "field": "eventType",
-            "field_value": "TB Outcome",
-            "creates_case": [
+              "ec_tb_register",
               "ec_tb_outcome"
             ]
           }
