@@ -15,6 +15,8 @@ import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.fragment.FamilyRegisterFragment;
 import org.smartregister.chw.hf.listener.HfFamilyBottomNavListener;
+import org.smartregister.chw.hf.model.FamilyRegisterModel;
+import org.smartregister.family.presenter.BaseFamilyRegisterPresenter;
 import org.smartregister.helper.BottomNavigationHelper;
 import org.smartregister.view.fragment.BaseRegisterFragment;
 
@@ -67,5 +69,10 @@ public class FamilyRegisterActivity extends CoreFamilyRegisterActivity {
     @Override
     protected BaseRegisterFragment getRegisterFragment() {
         return new FamilyRegisterFragment();
+    }
+
+    @Override
+    protected void initializePresenter() {
+        presenter = new BaseFamilyRegisterPresenter(this, new FamilyRegisterModel());
     }
 }

@@ -8,6 +8,7 @@ import net.sqlcipher.database.SQLiteDatabase;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.Triple;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
@@ -29,7 +30,7 @@ import timber.log.Timber;
 public class JsonFormUtils extends CoreJsonFormUtils {
     public static final String METADATA = "metadata";
     public static final String ENCOUNTER_TYPE = "encounter_type";
-
+    public static final String SYNC_LOCATION_ID = "sync_location_id";
 
     public static Pair<Client, Event> processChildRegistrationForm(AllSharedPreferences allSharedPreferences, String jsonString) {
         try {
@@ -73,6 +74,13 @@ public class JsonFormUtils extends CoreJsonFormUtils {
                 EventClientRepository eventClientRepository = new EventClientRepository();
                 JSONObject clientjson = eventClientRepository.getClient(db, lookUpBaseEntityId);
                 baseClient.setAddresses(getAddressFromClientJson(clientjson));
+            }
+
+            try {
+                JSONObject syncLocationField = CoreJsonFormUtils.getJsonField(new JSONObject(jsonString), STEP1,  SYNC_LOCATION_ID);
+                    baseEvent.setLocationId(CoreJsonFormUtils.getSyncLocationUUIDFromDropdown(syncLocationField));
+            } catch (JSONException e) {
+                Timber.e(e, "Error retrieving Sync location Field");
             }
 
             return Pair.create(baseClient, baseEvent);
