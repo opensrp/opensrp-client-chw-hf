@@ -83,6 +83,13 @@ public class JsonFormUtils extends CoreJsonFormUtils {
                 Timber.e(e, "Error retrieving Sync location Field");
             }
 
+            try {
+                JSONObject syncLocationField = CoreJsonFormUtils.getJsonField(new JSONObject(jsonString), STEP1, SYNC_LOCATION_ID);
+                baseEvent.setLocationId(CoreJsonFormUtils.getSyncLocationUUIDFromDropdown(syncLocationField));
+            } catch (JSONException e) {
+                Timber.e(e, "Error retrieving Sync location Field");
+            }
+
             return Pair.create(baseClient, baseEvent);
         } catch (Exception e) {
             Timber.e(e);

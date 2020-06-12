@@ -123,6 +123,7 @@ dependencies {
         transitive = true
         exclude group: 'org.smartregister', module: 'opensrp-client-chw-referral'
         exclude group: 'com.rengwuxian.materialedittext', module: 'library'
+        exclude group: 'org.smartregister' , module: 'opensrp-client-chw-referral'
     }
 
     implementation 'androidx.multidex:multidex:2.0.1'
