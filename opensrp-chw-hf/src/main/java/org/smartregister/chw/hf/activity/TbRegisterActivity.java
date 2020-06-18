@@ -29,12 +29,6 @@ public class TbRegisterActivity extends CoreTbRegisterActivity {
 
     @NotNull
     @Override
-    protected Fragment[] getOtherFragments() {
-        return new Fragment[]{};
-    }
-
-    @NotNull
-    @Override
     protected BaseTbRegisterFragment getRegisterFragment() {
         return new TbRegisterFragment();
     }
@@ -56,6 +50,7 @@ public class TbRegisterActivity extends CoreTbRegisterActivity {
             bottomNavigationView.getMenu().removeItem(org.smartregister.chw.tb.R.id.action_register);
             bottomNavigationView.getMenu().removeItem(org.smartregister.R.id.action_search);
             bottomNavigationView.getMenu().removeItem(org.smartregister.R.id.action_library);
+            bottomNavigationView.getMenu().removeItem(org.smartregister.chw.tb.R.id.action_received_referrals);
 
             bottomNavigationView.inflateMenu(getMenuResource());
             bottomNavigationHelper.disableShiftMode(bottomNavigationView);

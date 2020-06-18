@@ -11,6 +11,7 @@ import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 import org.jetbrains.annotations.NotNull;
 import org.smartregister.chw.core.activity.CoreHivRegisterActivity;
 import org.smartregister.chw.core.custom_views.NavigationMenu;
+import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.fragment.HivRegisterFragment;
 import org.smartregister.chw.hiv.fragment.BaseHivRegisterFragment;
 import org.smartregister.helper.BottomNavigationHelper;
@@ -26,12 +27,6 @@ public class HivRegisterActivity extends CoreHivRegisterActivity {
         intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.ACTION, payloadType);
         intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.HIV_REGISTRATION_FORM_NAME, formName);
         activity.startActivity(intent);
-    }
-
-    @NotNull
-    @Override
-    protected Fragment[] getOtherFragments() {
-        return new Fragment[]{};
     }
 
     @NotNull
@@ -62,6 +57,7 @@ public class HivRegisterActivity extends CoreHivRegisterActivity {
             bottomNavigationView.getMenu().removeItem(org.smartregister.chw.hiv.R.id.action_register);
             bottomNavigationView.getMenu().removeItem(org.smartregister.R.id.action_search);
             bottomNavigationView.getMenu().removeItem(org.smartregister.R.id.action_library);
+            bottomNavigationView.getMenu().removeItem(org.smartregister.chw.hiv.R.id.action_received_referrals);
 
             bottomNavigationView.inflateMenu(getMenuResource());
             bottomNavigationHelper.disableShiftMode(bottomNavigationView);
@@ -71,6 +67,7 @@ public class HivRegisterActivity extends CoreHivRegisterActivity {
 
         }
     }
+
 
 }
  
