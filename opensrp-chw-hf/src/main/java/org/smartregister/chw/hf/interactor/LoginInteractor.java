@@ -9,6 +9,7 @@ import org.smartregister.immunization.job.VaccineServiceJob;
 import org.smartregister.job.ImageUploadServiceJob;
 import org.smartregister.job.PlanIntentServiceJob;
 import org.smartregister.job.PullUniqueIdsServiceJob;
+import org.smartregister.job.SyncLocationsByTeamIdsJob;
 import org.smartregister.job.SyncServiceJob;
 import org.smartregister.job.SyncTaskServiceJob;
 import org.smartregister.login.interactor.BaseLoginInteractor;
@@ -59,6 +60,6 @@ public class LoginInteractor extends BaseLoginInteractor implements BaseLoginCon
         VaccineServiceJob.scheduleJobImmediately(VaccineServiceJob.TAG);
         VaccineRecurringServiceJob.scheduleJobImmediately(VaccineRecurringServiceJob.TAG);
         StockUsageReportJob.scheduleJobImmediately(StockUsageReportJob.TAG);
-
+        SyncLocationsByTeamIdsJob.scheduleJobImmediately(SyncLocationsByTeamIdsJob.TAG);
     }
 }

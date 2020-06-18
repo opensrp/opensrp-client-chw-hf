@@ -33,10 +33,12 @@ public class HfTaskServiceHelper extends TaskServiceHelper {
         LocationHelper locationHelper = LocationHelper.getInstance();
         ArrayList<String> allowedLevels = new ArrayList<>(Arrays.asList(BuildConfig.FACILITY_LEVEL));
         List<String> locations = new ArrayList<>();
-        List<String> locationIds = locationHelper.generateDefaultLocationHierarchy(allowedLevels);
-        if (locationIds != null) {
-            for (String locationName : locationIds) {
-                locations.add(locationHelper.getOpenMrsLocationId(locationName));
+        if (locationHelper != null) {
+            List<String> locationIds = locationHelper.generateDefaultLocationHierarchy(allowedLevels);
+            if (locationIds != null) {
+                for (String locationName : locationIds) {
+                    locations.add(locationHelper.getOpenMrsLocationId(locationName));
+                }
             }
         }
         return locations;

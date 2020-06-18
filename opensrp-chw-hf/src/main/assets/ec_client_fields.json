@@ -2488,6 +2488,13 @@
             "field": "obs.formSubmissionField",
             "concept": "hiv_community_referral_date"
           }
+        },
+        {
+          "column_name": "last_interacted_with",
+          "type": "Event",
+          "json_mapping": {
+            "field": "version"
+          }
         }
       ]
     },
@@ -2716,6 +2723,13 @@
           "json_mapping": {
             "field": "obs.formSubmissionField",
             "concept": "tb_community_referral_date"
+          }
+        },
+        {
+          "column_name": "last_interacted_with",
+          "type": "Event",
+          "json_mapping": {
+            "field": "version"
           }
         }
       ]
