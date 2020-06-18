@@ -129,6 +129,17 @@
             android:name=".activity.AllClientsRegisterActivity"
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
+            android:name=".activity.AllClientsMemberProfileActivity"
+            android:label="@string/title_family_detail"
+            android:parentActivityName=".activity.AllClientsRegisterActivity"
+            android:theme="@style/FamilyTheme.NoActionBar" />
+        <activity
+            android:name=".activity.IndividualProfileRemoveActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name="org.smartregister.opd.activity.BaseOpdFormActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
             android:name=".activity.MalariaRegisterActivity"
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
