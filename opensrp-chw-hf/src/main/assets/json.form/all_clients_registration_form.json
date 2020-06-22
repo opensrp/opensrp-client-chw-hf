@@ -136,17 +136,15 @@
         "spacer_height": "15dp"
       },
       {
-        "key": "nearest_facility",
+        "key": "sync_location_id",
         "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "162724AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-        "openmrs_data_type": "text",
-        "type": "tree",
-        "hint": "Nearest health facility",
-        "tree": [],
+        "openmrs_entity": "person_attribute",
+        "openmrs_entity_id": "sync_location_id",
+        "type": "spinner",
+        "hint": "Select CHW Location",
         "v_required": {
-          "value": true,
-          "err": "Please enter the nearest health facility"
+          "value": "true",
+          "err": "Please select CHW Location"
         }
       }
     ]

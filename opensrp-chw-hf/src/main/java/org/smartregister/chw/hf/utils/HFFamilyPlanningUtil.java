@@ -43,12 +43,7 @@ public class HFFamilyPlanningUtil extends FpUtil {
             AllSharedPreferences allSharedPreferences = Utils.getAllSharedPreferences();
             Event baseEvent = org.smartregister.chw.anc.util.JsonFormUtils.processJsonForm(allSharedPreferences, CoreReferralUtils.setEntityId(formObject.toString(), baseEntityId), CoreConstants.TABLE_NAME.FAMILY_PLANNING_UPDATE);
             org.smartregister.chw.anc.util.JsonFormUtils.tagEvent(allSharedPreferences, baseEvent);
-            try {
-                JSONObject syncLocationField = CoreJsonFormUtils.getJsonField(new JSONObject(jsonString), STEP1, SYNC_LOCATION_ID);
-                baseEvent.setLocationId(CoreJsonFormUtils.getSyncLocationUUIDFromDropdown(syncLocationField));
-            } catch (JSONException e) {
-                Timber.e(e, "Error retrieving Sync location Field");
-            }
+            baseEvent.setLocationId(ChwNotificationDao.getSyncLocationId(baseEntityId));
             NCUtils.processEvent(baseEvent.getBaseEntityId(), new JSONObject(JsonFormUtils.gson.toJson(baseEvent)));
         } catch (Exception ex) {
             Timber.e(ex);

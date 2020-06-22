@@ -55,18 +55,6 @@
     "title": "Ongeza mtoto chini ya miaki 5",
     "fields": [
       {
-        "key": "sync_location_id",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "person_attribute",
-        "openmrs_entity_id": "sync_location_id",
-        "type": "spinner",
-        "hint": "Chagua eneo la CHW",
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhali chagua eneo la CHW"
-        }
-      },
-      {
         "key": "photo",
         "openmrs_entity_parent": "",
         "openmrs_entity": "",
