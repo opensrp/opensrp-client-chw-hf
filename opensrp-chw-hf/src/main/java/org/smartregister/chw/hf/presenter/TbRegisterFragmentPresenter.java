@@ -24,6 +24,12 @@ public class TbRegisterFragmentPresenter extends BaseTbRegisterFragmentPresenter
     }
 
     @Override
+    @NotNull
+    public String getDueFilterCondition() {
+        return CoreConstants.TABLE_NAME.TB_MEMBER + ".base_entity_id IN (SELECT for FROM task WHERE business_status = 'Referred')";
+    }
+
+    @Override
     public void processViewConfigurations() {
         super.processViewConfigurations();
         if (getConfig().getSearchBarText() != null && getView() != null) {

@@ -23,6 +23,12 @@ public class HivRegisterFragmentPresenter extends BaseHivRegisterFragmentPresent
     }
 
     @Override
+    @NotNull
+    public String getDueFilterCondition() {
+        return CoreConstants.TABLE_NAME.HIV_MEMBER + ".base_entity_id IN (SELECT for FROM task WHERE business_status = 'Referred')";
+    }
+
+    @Override
     public void processViewConfigurations() {
         super.processViewConfigurations();
         if (getConfig().getSearchBarText() != null && getView() != null) {
