@@ -1,13 +1,13 @@
 package org.smartregister.chw.hf.contract;
 
 import org.smartregister.chw.core.contract.CoreTbProfileContract;
-import org.smartregister.domain.Task;
+import org.smartregister.chw.hf.model.HivTbReferralTasksAndFollowupFeedbackModel;
 
-import java.util.Set;
+import java.util.List;
 
 public interface TbProfileContract extends CoreTbProfileContract {
     interface View extends CoreTbProfileContract.View {
-        void setReferralTasks(Set<Task> taskList);
+        void setReferralTasksAndFollowupFeedback(List<HivTbReferralTasksAndFollowupFeedbackModel> tasksAndFollowupFeedbackModels);
     }
 
     interface Presenter extends CoreTbProfileContract.Presenter {
@@ -19,6 +19,6 @@ public interface TbProfileContract extends CoreTbProfileContract {
     }
 
     interface InteractorCallback {
-        void updateReferralTasks(Set<Task> taskList);
+        void updateReferralTasksAndFollowupFeedback(List<HivTbReferralTasksAndFollowupFeedbackModel> tasksAndFollowupFeedbackModels);
     }
 }

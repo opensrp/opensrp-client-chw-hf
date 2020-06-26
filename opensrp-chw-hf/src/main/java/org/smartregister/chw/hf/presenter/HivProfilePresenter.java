@@ -4,9 +4,11 @@ import org.smartregister.chw.core.contract.CoreHivProfileContract;
 import org.smartregister.chw.core.presenter.CoreHivProfilePresenter;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.contract.HivProfileContract;
+import org.smartregister.chw.hf.model.HivTbReferralTasksAndFollowupFeedbackModel;
 import org.smartregister.chw.hiv.domain.HivMemberObject;
 import org.smartregister.domain.Task;
 
+import java.util.List;
 import java.util.Set;
 
 public class HivProfilePresenter extends CoreHivProfilePresenter
@@ -28,7 +30,7 @@ public class HivProfilePresenter extends CoreHivProfilePresenter
     }
 
     @Override
-    public void updateReferralTasks(Set<Task> taskList) {
-        ((HivProfileContract.View) getView()).setReferralTasks(taskList);
+    public void updateReferralTasksAndFollowupFeedback(List<HivTbReferralTasksAndFollowupFeedbackModel> tasksAndFollowupFeedbackModels) {
+        ((HivProfileContract.View) getView()).setReferralTasksAndFollowupFeedback(tasksAndFollowupFeedbackModels);
     }
 }

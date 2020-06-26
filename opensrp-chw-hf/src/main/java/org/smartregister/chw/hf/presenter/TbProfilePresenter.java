@@ -3,10 +3,13 @@ package org.smartregister.chw.hf.presenter;
 import org.smartregister.chw.core.contract.CoreTbProfileContract;
 import org.smartregister.chw.core.presenter.CoreTbProfilePresenter;
 import org.smartregister.chw.core.utils.CoreConstants;
+import org.smartregister.chw.hf.contract.HivProfileContract;
 import org.smartregister.chw.hf.contract.TbProfileContract;
+import org.smartregister.chw.hf.model.HivTbReferralTasksAndFollowupFeedbackModel;
 import org.smartregister.chw.tb.domain.TbMemberObject;
 import org.smartregister.domain.Task;
 
+import java.util.List;
 import java.util.Set;
 
 public class TbProfilePresenter extends CoreTbProfilePresenter
@@ -28,7 +31,7 @@ public class TbProfilePresenter extends CoreTbProfilePresenter
     }
 
     @Override
-    public void updateReferralTasks(Set<Task> taskList) {
-        ((TbProfileContract.View) getView()).setReferralTasks(taskList);
+    public void updateReferralTasksAndFollowupFeedback(List<HivTbReferralTasksAndFollowupFeedbackModel> tasksAndFollowupFeedbackModels) {
+        ((TbProfileContract.View) getView()).setReferralTasksAndFollowupFeedback(tasksAndFollowupFeedbackModels);
     }
 }

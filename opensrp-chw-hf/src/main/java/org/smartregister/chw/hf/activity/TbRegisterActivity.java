@@ -11,7 +11,11 @@ import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 import org.jetbrains.annotations.NotNull;
 import org.smartregister.chw.core.activity.CoreTbRegisterActivity;
 import org.smartregister.chw.core.custom_views.NavigationMenu;
+import org.smartregister.chw.hf.fragment.HivFollowupFragment;
+import org.smartregister.chw.hf.fragment.TbFollowupFragment;
 import org.smartregister.chw.hf.fragment.TbRegisterFragment;
+import org.smartregister.chw.hiv.fragment.BaseHivCommunityFollowupRegisterFragment;
+import org.smartregister.chw.tb.fragment.BaseTbCommunityFollowupRegisterFragment;
 import org.smartregister.chw.tb.fragment.BaseTbRegisterFragment;
 import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.helper.BottomNavigationHelper;
@@ -37,6 +41,13 @@ public class TbRegisterActivity extends CoreTbRegisterActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         NavigationMenu.getInstance(this, null, null);
+    }
+
+    @NotNull
+    @Override
+    protected BaseTbCommunityFollowupRegisterFragment[] getOtherFragments() {
+        return new TbFollowupFragment[]{
+                new TbFollowupFragment()};
     }
 
     @Override

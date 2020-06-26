@@ -288,6 +288,20 @@
           },
           {
             "field": "eventType",
+            "field_value": "HIV Community Followup",
+            "creates_case": [
+              "ec_hiv_community_followup"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "TB Community Followup",
+            "creates_case": [
+              "ec_tb_community_followup"
+            ]
+          },
+          {
+            "field": "eventType",
             "field_value": "HIV Community Followup Feedback",
             "creates_case": [
               "ec_hiv_community_feedback"
@@ -296,6 +310,20 @@
           {
             "field": "eventType",
             "field_value": "TB Community Followup Feedback",
+            "creates_case": [
+              "ec_tb_community_feedback"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "Close Hiv Feedback",
+            "creates_case": [
+              "ec_hiv_community_feedback"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "Close Tb Feedback",
             "creates_case": [
               "ec_tb_community_feedback"
             ]

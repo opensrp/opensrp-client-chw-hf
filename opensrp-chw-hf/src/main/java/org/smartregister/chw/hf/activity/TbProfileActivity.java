@@ -13,19 +13,19 @@ import org.smartregister.chw.core.activity.CoreTbProfileActivity;
 import org.smartregister.chw.core.activity.CoreTbUpcomingServicesActivity;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.R;
-import org.smartregister.chw.hf.adapter.ReferralCardViewAdapter;
+import org.smartregister.chw.hf.adapter.HivAndTbReferralCardViewAdapter;
 import org.smartregister.chw.hf.contract.TbProfileContract;
 import org.smartregister.chw.hf.interactor.HfTbProfileInteractor;
+import org.smartregister.chw.hf.model.HivTbReferralTasksAndFollowupFeedbackModel;
 import org.smartregister.chw.hf.presenter.TbProfilePresenter;
 import org.smartregister.chw.tb.activity.BaseTbRegistrationFormsActivity;
 import org.smartregister.chw.tb.domain.TbMemberObject;
 import org.smartregister.chw.tb.util.Constants;
 import org.smartregister.chw.tb.util.TbUtil;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
-import org.smartregister.domain.Task;
 
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 import static org.smartregister.chw.core.utils.FormUtils.getFormUtils;
 
@@ -49,9 +49,9 @@ public class TbProfileActivity extends CoreTbProfileActivity
         activity.startActivityForResult(intent, org.smartregister.chw.anc.util.Constants.REQUEST_CODE_HOME_VISIT);
     }
 
-    public void setReferralTasks(Set<Task> taskList) {
-        if (notificationAndReferralRecyclerView != null && taskList.size() > 0) {
-            RecyclerView.Adapter mAdapter = new ReferralCardViewAdapter(taskList, this, getCommonPersonObjectClient(), CoreConstants.REGISTERED_ACTIVITIES.FP_REGISTER_ACTIVITY);
+    public void setReferralTasksAndFollowupFeedback(List<HivTbReferralTasksAndFollowupFeedbackModel> tasksAndFollowupFeedbackModels) {
+        if (notificationAndReferralRecyclerView != null && tasksAndFollowupFeedbackModels.size() > 0) {
+            RecyclerView.Adapter mAdapter = new HivAndTbReferralCardViewAdapter(tasksAndFollowupFeedbackModels, this, getCommonPersonObjectClient(), CoreConstants.REGISTERED_ACTIVITIES.FP_REGISTER_ACTIVITY);
             notificationAndReferralRecyclerView.setAdapter(mAdapter);
             notificationAndReferralLayout.setVisibility(View.VISIBLE);
             findViewById(R.id.view_notification_and_referral_row).setVisibility(View.VISIBLE);
@@ -93,10 +93,10 @@ public class TbProfileActivity extends CoreTbProfileActivity
 
         int itemId = item.getItemId();
         if (itemId == R.id.action_tb_outcome) {
-            TbRegisterActivity.startTbFormActivity(this, getTbMemberObject().getBaseEntityId(),CoreConstants.JSON_FORM.getTbOutcome(),getFormUtils().getFormJsonFromRepositoryOrAssets(CoreConstants.JSON_FORM.getTbOutcome()).toString());
+            TbRegisterActivity.startTbFormActivity(this, getTbMemberObject().getBaseEntityId(), CoreConstants.JSON_FORM.getTbOutcome(), getFormUtils().getFormJsonFromRepositoryOrAssets(CoreConstants.JSON_FORM.getTbOutcome()).toString());
             return true;
         } else if (itemId == R.id.action_issue_tb_community_followup_referral) {
-            TbRegisterActivity.startTbFormActivity(this, getTbMemberObject().getBaseEntityId(),CoreConstants.JSON_FORM.getTbCommunityFollowupReferral(),getFormUtils().getFormJsonFromRepositoryOrAssets(CoreConstants.JSON_FORM.getTbCommunityFollowupReferral()).toString());
+            TbRegisterActivity.startTbFormActivity(this, getTbMemberObject().getBaseEntityId(), CoreConstants.JSON_FORM.getTbCommunityFollowupReferral(), getFormUtils().getFormJsonFromRepositoryOrAssets(CoreConstants.JSON_FORM.getTbCommunityFollowupReferral()).toString());
             return true;
         }
 

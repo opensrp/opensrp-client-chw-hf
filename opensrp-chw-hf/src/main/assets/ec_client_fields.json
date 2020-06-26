@@ -2503,7 +2503,7 @@
           }
         },
         {
-          "column_name": "comment_hiv_community_followup",
+          "column_name": "comment",
           "type": "Event",
           "json_mapping": {
             "field": "obs.formSubmissionField",
@@ -2739,7 +2739,7 @@
           }
         },
         {
-          "column_name": "comment_tb_community_followup",
+          "column_name": "comment",
           "type": "Event",
           "json_mapping": {
             "field": "obs.formSubmissionField",
@@ -2800,7 +2800,7 @@
           "column_name": "hiv_community_followup_visit_date",
           "type": "Event",
           "json_mapping": {
-            "field": "obs.fieldCode",
+            "field": "obs.formSubmissionField",
             "concept": "hiv_community_followup_visit_date"
           }
         },
@@ -2818,6 +2818,22 @@
           "json_mapping": {
             "field": "obs.formSubmissionField",
             "concept": "community_referral_form_id"
+          }
+        },
+        {
+          "column_name": "chw_name",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "chw_name"
+          }
+        },
+        {
+          "column_name": "mark_as_done",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "mark_as_done"
           }
         }
       ]
@@ -2858,7 +2874,7 @@
           "column_name": "tb_community_followup_visit_date",
           "type": "Event",
           "json_mapping": {
-            "field": "obs.fieldCode",
+            "field": "obs.formSubmissionField",
             "concept": "tb_community_followup_visit_date"
           }
         },
@@ -2876,6 +2892,22 @@
           "json_mapping": {
             "field": "obs.formSubmissionField",
             "concept": "community_referral_form_id"
+          }
+        },
+        {
+          "column_name": "chw_name",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "chw_name"
+          }
+        },
+        {
+          "column_name": "mark_as_done",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "mark_as_done"
           }
         }
       ]

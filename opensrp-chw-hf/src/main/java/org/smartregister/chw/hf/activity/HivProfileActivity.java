@@ -13,19 +13,19 @@ import org.smartregister.chw.core.activity.CoreHivProfileActivity;
 import org.smartregister.chw.core.activity.CoreHivUpcomingServicesActivity;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.R;
-import org.smartregister.chw.hf.adapter.ReferralCardViewAdapter;
+import org.smartregister.chw.hf.adapter.HivAndTbReferralCardViewAdapter;
 import org.smartregister.chw.hf.contract.HivProfileContract;
 import org.smartregister.chw.hf.interactor.HfHivProfileInteractor;
+import org.smartregister.chw.hf.model.HivTbReferralTasksAndFollowupFeedbackModel;
 import org.smartregister.chw.hf.presenter.HivProfilePresenter;
 import org.smartregister.chw.hiv.activity.BaseHivRegistrationFormsActivity;
 import org.smartregister.chw.hiv.domain.HivMemberObject;
 import org.smartregister.chw.hiv.util.HivUtil;
 import org.smartregister.chw.tb.util.Constants;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
-import org.smartregister.domain.Task;
 
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 import static org.smartregister.chw.core.utils.FormUtils.getFormUtils;
 
@@ -49,9 +49,9 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
         activity.startActivityForResult(intent, org.smartregister.chw.anc.util.Constants.REQUEST_CODE_HOME_VISIT);
     }
 
-    public void setReferralTasks(Set<Task> taskList) {
-        if (notificationAndReferralRecyclerView != null && taskList.size() > 0) {
-            RecyclerView.Adapter mAdapter = new ReferralCardViewAdapter(taskList, this, getCommonPersonObjectClient(), CoreConstants.REGISTERED_ACTIVITIES.FP_REGISTER_ACTIVITY);
+    public void setReferralTasksAndFollowupFeedback(List<HivTbReferralTasksAndFollowupFeedbackModel> tasksAndFollowupFeedbackModels) {
+        if (notificationAndReferralRecyclerView != null && tasksAndFollowupFeedbackModels.size() > 0) {
+            RecyclerView.Adapter mAdapter = new HivAndTbReferralCardViewAdapter(tasksAndFollowupFeedbackModels, this, getCommonPersonObjectClient(), CoreConstants.REGISTERED_ACTIVITIES.FP_REGISTER_ACTIVITY);
             notificationAndReferralRecyclerView.setAdapter(mAdapter);
             notificationAndReferralLayout.setVisibility(View.VISIBLE);
             findViewById(R.id.view_notification_and_referral_row).setVisibility(View.VISIBLE);
@@ -93,10 +93,10 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
 
         int itemId = item.getItemId();
         if (itemId == R.id.action_hiv_outcome) {
-            HivRegisterActivity.startHIVFormActivity(this, getHivMemberObject().getBaseEntityId(),CoreConstants.JSON_FORM.getHivOutcome(),getFormUtils().getFormJsonFromRepositoryOrAssets(CoreConstants.JSON_FORM.getHivOutcome()).toString());
+            HivRegisterActivity.startHIVFormActivity(this, getHivMemberObject().getBaseEntityId(), CoreConstants.JSON_FORM.getHivOutcome(), getFormUtils().getFormJsonFromRepositoryOrAssets(CoreConstants.JSON_FORM.getHivOutcome()).toString());
             return true;
         } else if (itemId == R.id.action_issue_hiv_community_followup_referral) {
-            HivRegisterActivity.startHIVFormActivity(this, getHivMemberObject().getBaseEntityId(),CoreConstants.JSON_FORM.getHivCommunityFollowupReferral(),getFormUtils().getFormJsonFromRepositoryOrAssets(CoreConstants.JSON_FORM.getHivCommunityFollowupReferral()).toString());
+            HivRegisterActivity.startHIVFormActivity(this, getHivMemberObject().getBaseEntityId(), CoreConstants.JSON_FORM.getHivCommunityFollowupReferral(), getFormUtils().getFormJsonFromRepositoryOrAssets(CoreConstants.JSON_FORM.getHivCommunityFollowupReferral()).toString());
             return true;
         }
 
