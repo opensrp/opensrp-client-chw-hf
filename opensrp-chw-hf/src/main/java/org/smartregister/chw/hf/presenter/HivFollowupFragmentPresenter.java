@@ -28,7 +28,7 @@ public class HivFollowupFragmentPresenter extends BaseHivCommunityFollowupPresen
     public String getDueFilterCondition() {
         return " " + CoreConstants.TABLE_NAME.FAMILY_MEMBER + "." + DBConstants.Key.DATE_REMOVED + " is null " +
                 "AND " + Tables.HIV_COMMUNITY_FOLLOWUP + "." + DBConstants.Key.IS_CLOSED + " = '0' " +
-                "AND " + Tables.HIV_COMMUNITY_FOLLOWUP + "." + DBConstants.Key.BASE_ENTITY_ID + " NOT IN (SELECT " + DBConstants.Key.COMMUNITY_REFERRAL_FORM_ID + " FROM " + Tables.HIV_COMMUNITY_FEEDBACK + " ) ";
+                "AND " + Tables.HIV_COMMUNITY_FOLLOWUP + "." + DBConstants.Key.BASE_ENTITY_ID + " IN (SELECT " + DBConstants.Key.COMMUNITY_REFERRAL_FORM_ID + " FROM " + Tables.HIV_COMMUNITY_FEEDBACK + " ) ";
 
     }
 

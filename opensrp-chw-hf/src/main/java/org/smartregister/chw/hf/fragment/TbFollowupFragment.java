@@ -40,7 +40,7 @@ public class TbFollowupFragment extends CoreTbCommunityFollowupRegisterFragment 
     public void setupViews(android.view.View view) {
         super.setupViews(view);
         TextView dueOnlyTextView = view.findViewById(R.id.due_only_text_view);
-        dueOnlyTextView.setText(getString(R.string.due));
+        dueOnlyTextView.setText(getString(R.string.feedback_due_only));
     }
 
     @Override
