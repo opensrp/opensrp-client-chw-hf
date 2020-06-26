@@ -4,20 +4,15 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.fragment.app.Fragment;
-
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 
 import org.jetbrains.annotations.NotNull;
 import org.smartregister.chw.core.activity.CoreTbRegisterActivity;
 import org.smartregister.chw.core.custom_views.NavigationMenu;
-import org.smartregister.chw.hf.fragment.HivFollowupFragment;
 import org.smartregister.chw.hf.fragment.TbFollowupFragment;
 import org.smartregister.chw.hf.fragment.TbRegisterFragment;
-import org.smartregister.chw.hiv.fragment.BaseHivCommunityFollowupRegisterFragment;
 import org.smartregister.chw.tb.fragment.BaseTbCommunityFollowupRegisterFragment;
 import org.smartregister.chw.tb.fragment.BaseTbRegisterFragment;
-import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.helper.BottomNavigationHelper;
 import org.smartregister.listener.BottomNavigationListener;
 

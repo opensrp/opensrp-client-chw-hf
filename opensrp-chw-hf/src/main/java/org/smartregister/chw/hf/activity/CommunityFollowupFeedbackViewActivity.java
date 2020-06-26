@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 
 import org.json.JSONObject;
 import org.smartregister.chw.core.activity.BaseReferralTaskViewActivity;
-import org.smartregister.chw.core.utils.ChildDBConstants;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.CoreReferralUtils;
 import org.smartregister.chw.hf.BuildConfig;

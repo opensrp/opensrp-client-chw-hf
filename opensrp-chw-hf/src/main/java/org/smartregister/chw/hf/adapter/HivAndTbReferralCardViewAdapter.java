@@ -54,7 +54,7 @@ public class HivAndTbReferralCardViewAdapter extends RecyclerView.Adapter<Referr
             referralRecyclerClickListener.setStartingActivity(startingActivity);
             referralCardViewHolder.textViewReferralHeader.setText(String.format(context.getApplicationContext().getResources().getString(R.string.referral_for), tasksAndFollowupFeedbackModel.getTask().getFocus()));
             referralCardViewHolder.referralRow.setOnClickListener(referralRecyclerClickListener);
-        }else if(tasksAndFollowupFeedbackModel.getType().equals("FOLLOWUP_FEEDBACK")){
+        } else if (tasksAndFollowupFeedbackModel.getType().equals("FOLLOWUP_FEEDBACK")) {
             CommunityFollowupFeedbackRecyclerClickListener listener = new CommunityFollowupFeedbackRecyclerClickListener();
             listener.setActivity(context);
             listener.setFollowupFeedbackDetailsModel(tasksAndFollowupFeedbackModel.getFollowupFeedbackDetailsModel());

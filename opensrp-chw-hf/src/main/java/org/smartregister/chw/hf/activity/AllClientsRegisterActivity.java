@@ -6,10 +6,7 @@ import android.view.MenuItem;
 import androidx.annotation.NonNull;
 
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
-import com.vijay.jsonwizard.constants.JsonFormConstants;
-import com.vijay.jsonwizard.domain.Form;
 
-import org.json.JSONObject;
 import org.smartregister.AllConstants;
 import org.smartregister.chw.core.activity.CoreAllClientsRegisterActivity;
 import org.smartregister.chw.core.utils.CoreConstants;
@@ -17,12 +14,9 @@ import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.fragment.AllClientsRegisterFragment;
 import org.smartregister.chw.hf.model.HfAllClientsRegisterModel;
 import org.smartregister.chw.hf.presenter.HfAllClientRegisterPresenter;
-import org.smartregister.chw.hf.utils.JsonFormUtils;
 import org.smartregister.helper.BottomNavigationHelper;
-import org.smartregister.opd.activity.BaseOpdFormActivity;
 import org.smartregister.opd.contract.OpdRegisterActivityContract;
 import org.smartregister.opd.presenter.BaseOpdRegisterActivityPresenter;
-import org.smartregister.opd.utils.OpdConstants;
 import org.smartregister.view.fragment.BaseRegisterFragment;
 
 import timber.log.Timber;

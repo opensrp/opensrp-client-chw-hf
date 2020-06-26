@@ -6,10 +6,8 @@ import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.contract.HivProfileContract;
 import org.smartregister.chw.hf.model.HivTbReferralTasksAndFollowupFeedbackModel;
 import org.smartregister.chw.hiv.domain.HivMemberObject;
-import org.smartregister.domain.Task;
 
 import java.util.List;
-import java.util.Set;
 
 public class HivProfilePresenter extends CoreHivProfilePresenter
         implements HivProfileContract.Presenter, HivProfileContract.InteractorCallback {

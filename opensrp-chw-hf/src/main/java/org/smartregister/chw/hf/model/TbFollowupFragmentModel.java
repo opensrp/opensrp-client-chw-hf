@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 import org.jetbrains.annotations.NotNull;
 import org.smartregister.chw.core.utils.ChildDBConstants;
 import org.smartregister.chw.core.utils.CoreConstants;
-import org.smartregister.chw.hiv.util.Constants;
 import org.smartregister.chw.tb.model.BaseTbRegisterFragmentModel;
 import org.smartregister.chw.tb.util.Constants.Tables;
 import org.smartregister.chw.tb.util.DBConstants.Key;
@@ -15,8 +14,6 @@ import org.smartregister.family.util.DBConstants;
 
 import java.util.HashSet;
 import java.util.Set;
-
-import timber.log.Timber;
 
 public class TbFollowupFragmentModel extends BaseTbRegisterFragmentModel {
 
@@ -30,7 +27,7 @@ public class TbFollowupFragmentModel extends BaseTbRegisterFragmentModel {
         queryBuilder.customJoin("INNER JOIN " + CoreConstants.TABLE_NAME.FAMILY + " ON  " + CoreConstants.TABLE_NAME.FAMILY_MEMBER + "." + DBConstants.KEY.RELATIONAL_ID + " = " + CoreConstants.TABLE_NAME.FAMILY + "." + DBConstants.KEY.BASE_ENTITY_ID);
         queryBuilder.customJoin("LEFT JOIN " + CoreConstants.TABLE_NAME.FAMILY_MEMBER + " as T1 ON  " + CoreConstants.TABLE_NAME.FAMILY + "." + DBConstants.KEY.PRIMARY_CAREGIVER + " = T1." + DBConstants.KEY.BASE_ENTITY_ID);
         queryBuilder.customJoin("LEFT JOIN " + CoreConstants.TABLE_NAME.FAMILY_MEMBER + " as T2 ON  " + CoreConstants.TABLE_NAME.FAMILY + "." + DBConstants.KEY.FAMILY_HEAD + " = T2." + DBConstants.KEY.BASE_ENTITY_ID);
-        queryBuilder.customJoin("LEFT JOIN " + Tables.TB_COMMUNITY_FEEDBACK + " as T3 ON  " +tableName + "." + Key.ENTITY_ID + " = T3." +  Key.ENTITY_ID);
+        queryBuilder.customJoin("LEFT JOIN " + Tables.TB_COMMUNITY_FEEDBACK + " as T3 ON  " + tableName + "." + Key.ENTITY_ID + " = T3." + Key.ENTITY_ID);
 
         return queryBuilder.mainCondition(mainCondition);
     }

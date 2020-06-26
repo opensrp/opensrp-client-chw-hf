@@ -2,7 +2,6 @@ package org.smartregister.chw.hf.dao;
 
 import org.smartregister.chw.hf.model.HivTbFollowupFeedbackDetailsModel;
 import org.smartregister.dao.AbstractDao;
-import org.smartregister.util.Utils;
 
 import java.util.List;
 

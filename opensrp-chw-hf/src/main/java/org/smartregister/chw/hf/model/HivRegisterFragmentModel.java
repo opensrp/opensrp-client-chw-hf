@@ -45,7 +45,7 @@ public class HivRegisterFragmentModel extends BaseHivRegisterFragmentModel {
         columnList.add(CoreConstants.TABLE_NAME.FAMILY_MEMBER + "." + DBConstants.KEY.PHONE_NUMBER);
         columnList.add(CoreConstants.TABLE_NAME.FAMILY_MEMBER + "." + DBConstants.KEY.OTHER_PHONE_NUMBER);
         columnList.add(CoreConstants.TABLE_NAME.FAMILY + "." + DBConstants.KEY.VILLAGE_TOWN);
-       columnList.add(CoreConstants.TABLE_NAME.FAMILY + "." + DBConstants.KEY.FIRST_NAME + " as " + org.smartregister.chw.anc.util.DBConstants.KEY.FAMILY_NAME);
+        columnList.add(CoreConstants.TABLE_NAME.FAMILY + "." + DBConstants.KEY.FIRST_NAME + " as " + org.smartregister.chw.anc.util.DBConstants.KEY.FAMILY_NAME);
         columnList.add(Tables.HIV + "." + Key.CTC_NUMBER);
         columnList.add(Tables.HIV + "." + Key.CBHS_NUMBER);
         columnList.add(Tables.HIV + "." + Key.CLIENT_HIV_STATUS_DURING_REGISTRATION);

@@ -9,7 +9,6 @@ import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.hf.utils.AllClientsUtils;
 import org.smartregister.dao.LocationsDao;
 import org.smartregister.domain.tag.FormTag;
-import org.smartregister.family.domain.FamilyEventClient;
 import org.smartregister.family.util.Constants;
 import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.opd.model.OpdRegisterActivityModel;
