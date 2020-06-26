@@ -16,6 +16,7 @@ import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.fp.dao.FpDao;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.activity.AboveFiveChildProfileActivity;
+import org.smartregister.chw.hf.activity.AllClientsMemberProfileActivity;
 import org.smartregister.chw.hf.activity.AncMemberProfileActivity;
 import org.smartregister.chw.hf.activity.ChildProfileActivity;
 import org.smartregister.chw.hf.activity.FamilyOtherMemberProfileActivity;
@@ -137,13 +138,19 @@ public class AllClientsUtils {
         return intent;
     }
 
-    private static void goToOtherMemberProfile(Activity activity, CommonPersonObjectClient patient,
-                                               Bundle bundle, String familyHead, String primaryCaregiver) {
+    public static void goToOtherMemberProfile(Activity activity, CommonPersonObjectClient patient,
+                                              Bundle bundle, String familyHead, String primaryCaregiver) {
 
         if (StringUtils.isBlank(familyHead) && StringUtils.isBlank(primaryCaregiver)) {
             showShortToast(activity, activity.getString(R.string.error_opening_profile));
         } else {
-            Intent intent = new Intent(activity, FamilyOtherMemberProfileActivity.class);
+            String registerType = patient.getDetails().get(REGISTER_TYPE);
+            Intent intent;
+            if (CoreConstants.REGISTER_TYPE.INDEPENDENT.equals(registerType)) {
+                intent = new Intent(activity, AllClientsMemberProfileActivity.class);
+            } else {
+                intent = new Intent(activity, FamilyOtherMemberProfileActivity.class);
+            }
             intent.putExtras(bundle != null ? bundle : new Bundle());
             intent.putExtra(Constants.INTENT_KEY.BASE_ENTITY_ID, patient.getCaseId());
             intent.putExtra(CoreConstants.INTENT_KEY.CHILD_COMMON_PERSON, patient);
