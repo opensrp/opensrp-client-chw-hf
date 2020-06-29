@@ -32,4 +32,4 @@ description: "hiv_facility_visit_date calculation"
 priority: 1
 condition: "true"
 actions:
-  - "hiv_facility_visit_date_calculation = System.currentTimeMillis()"
+  - "hiv_facility_visit_date_calculation = helper.getDateTimeToday()"

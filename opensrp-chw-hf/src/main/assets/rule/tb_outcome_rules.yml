@@ -32,4 +32,4 @@ description: "tb_facility_visit_date calculation"
 priority: 1
 condition: "true"
 actions:
-  - "tb_facility_visit_date_calculation = System.currentTimeMillis()"
+  - "tb_facility_visit_date_calculation = helper.getDateTimeToday()"
