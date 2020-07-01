@@ -2824,7 +2824,7 @@
           "column_name": "chw_name",
           "type": "Event",
           "json_mapping": {
-            "field": "obs.fieldCode",
+            "field": "obs.formSubmissionField",
             "concept": "chw_name"
           }
         },
@@ -2898,7 +2898,7 @@
           "column_name": "chw_name",
           "type": "Event",
           "json_mapping": {
-            "field": "obs.fieldCode",
+            "field": "obs.formSubmissionField",
             "concept": "chw_name"
           }
         },
