@@ -32,4 +32,9 @@ description: "hiv_facility_visit_date calculation"
 priority: 1
 condition: "true"
 actions:
-  - "hiv_facility_visit_date_calculation = helper.getDateTimeToday()"
+  - "def getDate(dateFormat) {
+          import java.util.*;
+          import java.text.SimpleDateFormat;
+          return new SimpleDateFormat(dateFormat).format(Calendar.getInstance().getTime());
+      }"
+  - "hiv_facility_visit_date_calculation  = getDate('yyyy-MM-dd hh:mm:ss') "
