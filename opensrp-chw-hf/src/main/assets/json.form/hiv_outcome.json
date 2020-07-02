@@ -115,15 +115,6 @@
               }
             },
             {
-              "name": "mouth_ulcers",
-              "text": "Mouth ulcers",
-              "meta_data": {
-                "openmrs_entity": "",
-                "openmrs_entity_id": "mouth_ulcers",
-                "openmrs_entity_parent": ""
-              }
-            },
-            {
               "name": "Other",
               "text": "Other",
               "meta_data": {

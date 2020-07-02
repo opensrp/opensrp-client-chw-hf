@@ -2354,7 +2354,7 @@
           "column_name": "client_hiv_status_during_registration",
           "type": "Event",
           "json_mapping": {
-            "field": "obs.fieldCode",
+            "field": "obs.formSubmissionField",
             "concept": "client_hiv_status_during_registration"
           }
         },
@@ -2565,7 +2565,7 @@
           "column_name": "client_tb_status_during_registration",
           "type": "Event",
           "json_mapping": {
-            "field": "obs.fieldCode",
+            "field": "obs.formSubmissionField",
             "concept": "client_tb_status_during_registration"
           }
         },
@@ -2589,7 +2589,7 @@
           "column_name": "client_tb_screening_results",
           "type": "Event",
           "json_mapping": {
-            "field": "obs.fieldCode",
+            "field": "obs.formSubmissionField",
             "concept": "client_tb_screening_results"
           }
         },

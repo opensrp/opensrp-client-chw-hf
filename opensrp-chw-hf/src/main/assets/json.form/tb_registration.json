@@ -68,51 +68,11 @@
             "openmrs_entity_id": "community_client_tb_registration_number",
             "openmrs_entity_parent": ""
           },
-          "required_status": "no"
-        },
-        {
-          "name": "client_tb_status_during_registration",
-          "type": "spinner",
-          "meta_data": {
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "client_tb_status_during_registration",
-            "openmrs_entity_parent": ""
-          },
-          "properties": {
-            "text": "Client's TB status during registration"
-          },
-          "options": [
-            {
-              "name": "unknown",
-              "text": "Unknown",
-              "meta_data": {
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "unknown",
-                "openmrs_entity_parent": ""
-              }
-            },
-            {
-              "name": "positive",
-              "text": "Positive",
-              "meta_data": {
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "positive",
-                "openmrs_entity_parent": ""
-              }
-            },
-            {
-              "name": "negative",
-              "text": "Negative",
-              "meta_data": {
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "negative",
-                "openmrs_entity_parent": ""
-              }
-            }
-          ],
-          "required_status": "yes:Please specify Client's TB status during registration",
+          "required_status": "yes: Please fill the clients TB clinic registration number",
           "dependent_calculations": [
-            "tb_registration_date"
+            "tb_registration_date",
+            "client_tb_status_during_registration",
+            "test_results"
           ]
         },
         {
@@ -274,11 +234,11 @@
           "subjects": "community_gathering:text"
         },
         {
-          "name": "client_screening_results",
+          "name": "client_tb_screening_results",
           "type": "spinner",
           "meta_data": {
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "client_screening_results",
+            "openmrs_entity_id": "client_tb_screening_results",
             "openmrs_entity_parent": ""
           },
           "properties": {
