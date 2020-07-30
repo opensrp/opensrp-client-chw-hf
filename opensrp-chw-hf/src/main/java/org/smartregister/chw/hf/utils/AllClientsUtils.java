@@ -167,7 +167,7 @@ public class AllClientsUtils {
     public static List<OpdEventClient> getOpdEventClients(String jsonString) {
         List<OpdEventClient> allClientMemberEvents = new ArrayList<>();
 
-        FamilyEventClient locationDetailsEvent = org.smartregister.family.util.JsonFormUtils.processFamilyUpdateForm(
+        FamilyEventClient locationDetailsEvent = JsonFormUtils.processFamilyUpdateForm(
                 Utils.context().allSharedPreferences(), jsonString);
         if (locationDetailsEvent == null) {
             return allClientMemberEvents;
@@ -204,7 +204,7 @@ public class AllClientsUtils {
     public static void updateHivMenuItems(String baseEntityId, Menu menu) {
         if (HivDao.isRegisteredForHiv(baseEntityId)) {
             menu.findItem(R.id.action_hiv_registration).setVisible(false);
-        }else{
+        } else {
             menu.findItem(R.id.action_hiv_registration).setVisible(true);
         }
     }
@@ -212,7 +212,7 @@ public class AllClientsUtils {
     public static void updateTbMenuItems(String baseEntityId, Menu menu) {
         if (TbDao.isRegisteredForTb(baseEntityId)) {
             menu.findItem(R.id.action_tb_registration).setVisible(false);
-        }else{
+        } else {
             menu.findItem(R.id.action_tb_registration).setVisible(true);
         }
     }

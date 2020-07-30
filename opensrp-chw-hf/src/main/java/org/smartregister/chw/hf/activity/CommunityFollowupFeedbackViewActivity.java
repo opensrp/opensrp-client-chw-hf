@@ -218,13 +218,6 @@ public class CommunityFollowupFeedbackViewActivity extends BaseReferralTaskViewA
 
     }
 
-    private void completeTask() {
-        Task currentTask = getTask();
-        currentTask.setForEntity(getBaseEntityId());
-        currentTask.setStatus(Task.TaskStatus.IN_PROGRESS);
-        CoreReferralUtils.completeTask(currentTask, false);
-    }
-
     public String getBaseEntityId() {
         return baseEntityId;
     }

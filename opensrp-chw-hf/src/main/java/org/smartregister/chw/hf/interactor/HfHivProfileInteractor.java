@@ -20,11 +20,9 @@ import java.util.List;
 import java.util.Set;
 
 public class HfHivProfileInteractor extends CoreHivProfileInteractor implements HivProfileContract.Interactor {
-    private Context context;
 
     public HfHivProfileInteractor(Context context) {
         super(context);
-        this.context = context;
     }
 
     @Override

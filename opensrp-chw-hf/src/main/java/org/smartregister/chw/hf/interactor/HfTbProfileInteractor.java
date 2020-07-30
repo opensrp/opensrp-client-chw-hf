@@ -20,11 +20,9 @@ import java.util.List;
 import java.util.Set;
 
 public class HfTbProfileInteractor extends CoreTbProfileInteractor implements TbProfileContract.Interactor {
-    private Context context;
 
     public HfTbProfileInteractor(Context context) {
         super(context);
-        this.context = context;
     }
 
     @Override

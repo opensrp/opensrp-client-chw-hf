@@ -44,7 +44,7 @@ public class HfTbRegisterProvider extends CoreTbProvider {
     }
 
     public class HfRegisterViewHolder extends RegisterViewHolder {
-        TextView textViewReferralDay;
+        public TextView textViewReferralDay;
 
         public HfRegisterViewHolder(View itemView) {
             super(itemView);
