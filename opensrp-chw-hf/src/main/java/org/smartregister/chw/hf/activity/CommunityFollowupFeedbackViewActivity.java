@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import org.json.JSONObject;
 import org.smartregister.chw.core.activity.BaseReferralTaskViewActivity;
 import org.smartregister.chw.core.utils.CoreConstants;
-import org.smartregister.chw.core.utils.CoreReferralUtils;
 import org.smartregister.chw.hf.BuildConfig;
 import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
@@ -20,7 +19,6 @@ import org.smartregister.chw.hf.utils.AllClientsUtils;
 import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.clientandeventmodel.Obs;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
-import org.smartregister.domain.Task;
 import org.smartregister.family.FamilyLibrary;
 import org.smartregister.family.util.DBConstants;
 import org.smartregister.family.util.Utils;
@@ -187,10 +185,10 @@ public class CommunityFollowupFeedbackViewActivity extends BaseReferralTaskViewA
                     .withClientApplicationVersion(BuildConfig.VERSION_CODE)
                     .withDateCreated(new Date());
 
-            if(followupFeedbackDetailsModel.getFeedbackType().equals("HIV")){
+            if (followupFeedbackDetailsModel.getFeedbackType().equals("HIV")) {
                 baseEvent.setEventType(CoreConstants.EventType.CLOSE_HIV_FEEDBACK);
                 baseEvent.setEntityType(HIV_COMMUNITY_FEEDBACK);
-            }else{
+            } else {
                 baseEvent.setEventType(CoreConstants.EventType.CLOSE_TB_FEEDBACK);
                 baseEvent.setEntityType(TB_COMMUNITY_FEEDBACK);
             }
@@ -203,7 +201,6 @@ public class CommunityFollowupFeedbackViewActivity extends BaseReferralTaskViewA
                     .withFieldCode("mark_as_done").withFieldType("formsubmissionField").withFieldDataType("text").withParentCode("").withHumanReadableValues(new ArrayList<>()));
 
             org.smartregister.chw.hf.utils.JsonFormUtils.tagSyncMetadata(Utils.context().allSharedPreferences(), baseEvent);// tag docs
-
 
 
             JSONObject eventJson = new JSONObject(JsonFormUtils.gson.toJson(baseEvent));
