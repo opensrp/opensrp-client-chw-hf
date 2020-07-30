@@ -2,6 +2,8 @@ package org.smartregister.chw.hf.fragment;
 
 import android.widget.TextView;
 
+import com.vijay.jsonwizard.utils.FormUtils;
+
 import org.jetbrains.annotations.Nullable;
 import org.smartregister.chw.core.fragment.CoreHivCommunityFollowupRegisterFragment;
 import org.smartregister.chw.core.provider.CoreHivProvider;
@@ -22,8 +24,6 @@ import java.util.Objects;
 import java.util.Set;
 
 import timber.log.Timber;
-
-import static org.smartregister.chw.core.utils.FormUtils.getFormUtils;
 
 public class HivFollowupFragment extends CoreHivCommunityFollowupRegisterFragment {
 
@@ -66,7 +66,7 @@ public class HivFollowupFragment extends CoreHivCommunityFollowupRegisterFragmen
     @Override
     protected void openFollowUpVisit(@Nullable HivMemberObject hivMemberObject) {
         if (getActivity() != null)
-            HivRegisterActivity.startHIVFormActivity(getActivity(), hivMemberObject.getBaseEntityId(), CoreConstants.JSON_FORM.getHivRegistration(), getFormUtils().getFormJsonFromRepositoryOrAssets(CoreConstants.JSON_FORM.getHivFollowupVisit()).toString());
+            HivRegisterActivity.startHIVFormActivity(getActivity(), hivMemberObject.getBaseEntityId(), CoreConstants.JSON_FORM.getHivRegistration(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(getActivity(), CoreConstants.JSON_FORM.getHivFollowupVisit()).toString());
     }
 
 

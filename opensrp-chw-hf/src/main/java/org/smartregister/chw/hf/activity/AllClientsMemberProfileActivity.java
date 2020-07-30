@@ -5,6 +5,8 @@ import android.view.Menu;
 
 import androidx.viewpager.widget.ViewPager;
 
+import com.vijay.jsonwizard.utils.FormUtils;
+
 import org.json.JSONObject;
 import org.smartregister.chw.core.activity.CoreAllClientsMemberProfileActivity;
 import org.smartregister.chw.core.activity.CoreFamilyProfileActivity;
@@ -14,6 +16,7 @@ import org.smartregister.chw.core.fragment.FamilyCallDialogFragment;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.Utils;
 import org.smartregister.chw.fp.util.FamilyPlanningConstants;
+import org.smartregister.chw.hf.BuildConfig;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.custom_view.FamilyMemberFloatingMenu;
 import org.smartregister.chw.hf.dataloader.FamilyMemberDataLoader;
@@ -33,7 +36,6 @@ import timber.log.Timber;
 
 import static com.vijay.jsonwizard.constants.JsonFormConstants.COUNT;
 import static com.vijay.jsonwizard.constants.JsonFormConstants.STEP1;
-import static org.smartregister.chw.core.utils.FormUtils.getFormUtils;
 import static org.smartregister.family.util.JsonFormUtils.STEP2;
 
 public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfileActivity {
@@ -45,8 +47,11 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
         menu.findItem(R.id.action_location_info).setVisible(true);
-        AllClientsUtils.updateHivMenuItems(baseEntityId, menu);
-        AllClientsUtils.updateTbMenuItems(baseEntityId, menu);
+
+        if(BuildConfig.BUILD_FOR_BORESHA_AFYA_SOUTH) {
+            AllClientsUtils.updateHivMenuItems(baseEntityId, menu);
+            AllClientsUtils.updateTbMenuItems(baseEntityId, menu);
+        }
         menu.findItem(R.id.action_anc_registration).setVisible(false);
         menu.findItem(R.id.action_sick_child_follow_up).setVisible(false);
         menu.findItem(R.id.action_malaria_diagnosis).setVisible(false);
@@ -73,12 +78,12 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
 
     @Override
     protected void startHivRegister() {
-        HivRegisterActivity.startHIVFormActivity(AllClientsMemberProfileActivity.this, baseEntityId, CoreConstants.JSON_FORM.getHivRegistration(), getFormUtils().getFormJsonFromRepositoryOrAssets(CoreConstants.JSON_FORM.getHivRegistration()).toString());
+        HivRegisterActivity.startHIVFormActivity(AllClientsMemberProfileActivity.this, baseEntityId, CoreConstants.JSON_FORM.getHivRegistration(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getHivRegistration()).toString());
     }
 
     @Override
     protected void startTbRegister() {
-        TbRegisterActivity.startTbFormActivity(AllClientsMemberProfileActivity.this, baseEntityId, CoreConstants.JSON_FORM.getTbRegistration(), getFormUtils().getFormJsonFromRepositoryOrAssets(CoreConstants.JSON_FORM.getTbRegistration()).toString());
+        TbRegisterActivity.startTbFormActivity(AllClientsMemberProfileActivity.this, baseEntityId, CoreConstants.JSON_FORM.getTbRegistration(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getTbRegistration()).toString());
     }
 
     @Override

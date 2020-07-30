@@ -9,6 +9,8 @@ import android.view.View;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.vijay.jsonwizard.utils.FormUtils;
+
 import org.smartregister.chw.core.activity.CoreHivProfileActivity;
 import org.smartregister.chw.core.activity.CoreHivUpcomingServicesActivity;
 import org.smartregister.chw.core.utils.CoreConstants;
@@ -27,8 +29,6 @@ import org.smartregister.commonregistry.CommonPersonObjectClient;
 import java.util.Date;
 import java.util.List;
 
-import static org.smartregister.chw.core.utils.FormUtils.getFormUtils;
-
 public class HivProfileActivity extends CoreHivProfileActivity implements HivProfileContract.View {
 
     private CommonPersonObjectClient commonPersonObjectClient;
@@ -42,7 +42,7 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
     public static void startHivFollowupActivity(Activity activity, String baseEntityID) {
         Intent intent = new Intent(activity, BaseHivRegistrationFormsActivity.class);
         intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.BASE_ENTITY_ID, baseEntityID);
-        intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.JSON_FORM, getFormUtils().getFormJsonFromRepositoryOrAssets(CoreConstants.JSON_FORM.getHivFollowupVisit()).toString());
+        intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.JSON_FORM, (new FormUtils()).getFormJsonFromRepositoryOrAssets(activity, CoreConstants.JSON_FORM.getHivFollowupVisit()).toString());
         intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.ACTION, Constants.ActivityPayloadType.FOLLOW_UP_VISIT);
         intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.USE_DEFAULT_NEAT_FORM_LAYOUT, false);
 
@@ -93,10 +93,10 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
 
         int itemId = item.getItemId();
         if (itemId == R.id.action_hiv_outcome) {
-            HivRegisterActivity.startHIVFormActivity(this, getHivMemberObject().getBaseEntityId(), CoreConstants.JSON_FORM.getHivOutcome(), getFormUtils().getFormJsonFromRepositoryOrAssets(CoreConstants.JSON_FORM.getHivOutcome()).toString());
+            HivRegisterActivity.startHIVFormActivity(this, getHivMemberObject().getBaseEntityId(), CoreConstants.JSON_FORM.getHivOutcome(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getHivOutcome()).toString());
             return true;
         } else if (itemId == R.id.action_issue_hiv_community_followup_referral) {
-            HivRegisterActivity.startHIVFormActivity(this, getHivMemberObject().getBaseEntityId(), CoreConstants.JSON_FORM.getHivCommunityFollowupReferral(), getFormUtils().getFormJsonFromRepositoryOrAssets(CoreConstants.JSON_FORM.getHivCommunityFollowupReferral()).toString());
+            HivRegisterActivity.startHIVFormActivity(this, getHivMemberObject().getBaseEntityId(), CoreConstants.JSON_FORM.getHivCommunityFollowupReferral(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getHivCommunityFollowupReferral()).toString());
             return true;
         }
 
@@ -125,7 +125,7 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
 
     @Override
     public void openHivRegistrationForm() {
-        HivRegisterActivity.startHIVFormActivity(this, getHivMemberObject().getBaseEntityId(), CoreConstants.JSON_FORM.getHivRegistration(), getFormUtils().getFormJsonFromRepositoryOrAssets(CoreConstants.JSON_FORM.getHivRegistration()).toString());
+        HivRegisterActivity.startHIVFormActivity(this, getHivMemberObject().getBaseEntityId(), CoreConstants.JSON_FORM.getHivRegistration(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getHivRegistration()).toString());
     }
 
     @Override

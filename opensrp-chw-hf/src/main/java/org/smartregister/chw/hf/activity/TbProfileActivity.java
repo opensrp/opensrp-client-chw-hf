@@ -9,6 +9,8 @@ import android.view.View;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.vijay.jsonwizard.utils.FormUtils;
+
 import org.smartregister.chw.core.activity.CoreTbProfileActivity;
 import org.smartregister.chw.core.activity.CoreTbUpcomingServicesActivity;
 import org.smartregister.chw.core.utils.CoreConstants;
@@ -27,8 +29,6 @@ import org.smartregister.commonregistry.CommonPersonObjectClient;
 import java.util.Date;
 import java.util.List;
 
-import static org.smartregister.chw.core.utils.FormUtils.getFormUtils;
-
 public class TbProfileActivity extends CoreTbProfileActivity
         implements TbProfileContract.View {
 
@@ -43,7 +43,7 @@ public class TbProfileActivity extends CoreTbProfileActivity
     public void startTbFollowupActivity(Activity activity, String baseEntityID) {
         Intent intent = new Intent(activity, BaseTbRegistrationFormsActivity.class);
         intent.putExtra(Constants.ActivityPayload.BASE_ENTITY_ID, baseEntityID);
-        intent.putExtra(Constants.ActivityPayload.JSON_FORM, getFormUtils().getFormJsonFromRepositoryOrAssets(CoreConstants.JSON_FORM.getTbFollowupVisit()).toString());
+        intent.putExtra(Constants.ActivityPayload.JSON_FORM, (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getTbFollowupVisit()).toString());
         intent.putExtra(Constants.ActivityPayload.USE_DEFAULT_NEAT_FORM_LAYOUT, false);
 
         activity.startActivityForResult(intent, org.smartregister.chw.anc.util.Constants.REQUEST_CODE_HOME_VISIT);
@@ -93,10 +93,10 @@ public class TbProfileActivity extends CoreTbProfileActivity
 
         int itemId = item.getItemId();
         if (itemId == R.id.action_tb_outcome) {
-            TbRegisterActivity.startTbFormActivity(this, getTbMemberObject().getBaseEntityId(), CoreConstants.JSON_FORM.getTbOutcome(), getFormUtils().getFormJsonFromRepositoryOrAssets(CoreConstants.JSON_FORM.getTbOutcome()).toString());
+            TbRegisterActivity.startTbFormActivity(this, getTbMemberObject().getBaseEntityId(), CoreConstants.JSON_FORM.getTbOutcome(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getTbOutcome()).toString());
             return true;
         } else if (itemId == R.id.action_issue_tb_community_followup_referral) {
-            TbRegisterActivity.startTbFormActivity(this, getTbMemberObject().getBaseEntityId(), CoreConstants.JSON_FORM.getTbCommunityFollowupReferral(), getFormUtils().getFormJsonFromRepositoryOrAssets(CoreConstants.JSON_FORM.getTbCommunityFollowupReferral()).toString());
+            TbRegisterActivity.startTbFormActivity(this, getTbMemberObject().getBaseEntityId(), CoreConstants.JSON_FORM.getTbCommunityFollowupReferral(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getTbCommunityFollowupReferral()).toString());
             return true;
         }
 
@@ -118,7 +118,7 @@ public class TbProfileActivity extends CoreTbProfileActivity
 
     @Override
     protected void startTbCaseClosure() {
-        TbRegisterActivity.startTbFormActivity(this, getTbMemberObject().getBaseEntityId(), CoreConstants.JSON_FORM.getTbCaseClosure(), getFormUtils().getFormJsonFromRepositoryOrAssets(CoreConstants.JSON_FORM.getTbCaseClosure()).toString());
+        TbRegisterActivity.startTbFormActivity(this, getTbMemberObject().getBaseEntityId(), CoreConstants.JSON_FORM.getTbCaseClosure(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getTbCaseClosure()).toString());
     }
 
     @Override
@@ -152,7 +152,7 @@ public class TbProfileActivity extends CoreTbProfileActivity
 
     @Override
     public void openTbRegistrationForm() {
-        TbRegisterActivity.startTbFormActivity(this, getTbMemberObject().getBaseEntityId(), CoreConstants.JSON_FORM.getTbRegistration(), getFormUtils().getFormJsonFromRepositoryOrAssets(CoreConstants.JSON_FORM.getTbRegistration()).toString());
+        TbRegisterActivity.startTbFormActivity(this, getTbMemberObject().getBaseEntityId(), CoreConstants.JSON_FORM.getTbRegistration(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getTbRegistration()).toString());
 
     }
 
