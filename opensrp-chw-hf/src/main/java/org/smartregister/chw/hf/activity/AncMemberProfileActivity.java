@@ -70,7 +70,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     }
 
     @Override
-    public boolean hasEmergencyTransport() {
+    public boolean usesPregnancyRiskProfileLayout() {
         return true;
     }
 
