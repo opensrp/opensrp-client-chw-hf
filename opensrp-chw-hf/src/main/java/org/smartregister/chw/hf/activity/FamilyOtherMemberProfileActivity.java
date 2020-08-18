@@ -82,6 +82,11 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
     }
 
     @Override
+    protected void startHfMalariaFollowupForm() {
+        // TODO -> Implement for HF
+    }
+
+    @Override
     protected void setIndependentClient(boolean b) {
       this.isIndependent = false;
     }
