@@ -5,7 +5,8 @@ import android.content.Intent;
 
 import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.getMalariaFollowUpHfForm;
 
-public class MalariaFollowUpVisitActivity {
+public class MalariaFollowUpVisitHelperActivity {
+
     public static void startMalariaFollowUpActivity(Activity activity, String baseEntityID) {
         Intent intent = new Intent(activity, MalariaRegisterActivity.class);
         intent.putExtra(org.smartregister.chw.malaria.util.Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID, baseEntityID);

@@ -143,7 +143,7 @@ public class ChildProfileActivity extends CoreChildProfileActivity {
     }
 
     private void startHfMalariaFollowupForm() {
-        MalariaFollowUpVisitActivity.startMalariaFollowUpActivity(this, memberObject.getBaseEntityId());
+        MalariaFollowUpVisitHelperActivity.startMalariaFollowUpActivity(this, memberObject.getBaseEntityId());
     }
 
 
