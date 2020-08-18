@@ -80,7 +80,7 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
 
     @Override
     protected void startHfMalariaFollowupForm() {
-        MalariaFollowUpVisitHelperActivity.startMalariaFollowUpActivity(this, memberObject.getBaseEntityId());
+        MalariaFollowUpVisitActivityHelper.startMalariaFollowUpActivity(this, memberObject.getBaseEntityId());
     }
 
     @Override
