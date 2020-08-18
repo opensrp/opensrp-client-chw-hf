@@ -79,6 +79,11 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
     }
 
     @Override
+    protected void startHfMalariaFollowupForm() {
+        MalariaFollowUpVisitActivity.startMalariaFollowUpActivity(this, memberObject.getBaseEntityId());
+    }
+
+    @Override
     protected void getRemoveBabyMenuItem(MenuItem menuItem) {
         // TODO -> Implement for HF
     }
