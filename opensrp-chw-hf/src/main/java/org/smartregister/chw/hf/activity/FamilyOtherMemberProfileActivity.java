@@ -83,7 +83,7 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
 
     @Override
     protected void startHfMalariaFollowupForm() {
-        // TODO -> Implement for HF
+        MalariaFollowUpVisitActivityHelper.startMalariaFollowUpActivity(this, baseEntityId);
     }
 
     @Override
