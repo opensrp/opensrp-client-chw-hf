@@ -54,7 +54,7 @@
     }
   },
   "step1": {
-    "title": "Family planning registration Info",
+    "title": "Maelezo ya usajili wa uzazi wa mpango",
     "next": "step2",
     "fields": [
       {
@@ -63,10 +63,10 @@
         "openmrs_entity": "person_attribute",
         "openmrs_entity_id": "sync_location_id",
         "type": "spinner",
-        "hint": "Tafadhali chagua mahali pa CHW",
+        "hint": "Tafadhali chagua eneo la CHW",
         "v_required": {
           "value": "true",
-          "err": "Tafadhali chagua mahali pa CHWn"
+          "err": "Tafadhali chagua eno la CHWn"
         }
       },
       {
@@ -115,7 +115,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Please select one choice"
+          "err": "Tafadhali chagua chaguo moja"
         }
       },
       {
@@ -143,7 +143,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Please select one choice"
+          "err": "Tafadhali chagua chaguo moja"
         }
       }
     ]
@@ -175,7 +175,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Please select one choice"
+          "err": "Tafadhali chagua chaguo moja"
         }
       },
       {
@@ -202,15 +202,15 @@
         "hint": "Amepata vipande vya kondpmu vingapi?",
         "v_required": {
           "value": "true",
-          "err": "Equal or greater than 0"
+          "err": "Sawa au kubwa kuliko 0"
         },
         "v_numeric_integer": {
           "value": "true",
-          "err": "Must be a rounded number"
+          "err": "Lazima iwe nambari iliyo na mviringo"
         },
         "v_min": {
           "value": "0",
-          "err": "Number must be equal or greater than 0"
+          "err": "Nambari lazima iwe sawa au kubwa kuliko 0"
         },
         "relevance": {
           "rules-engine": {
@@ -256,7 +256,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Please select one choice"
+          "err": "Tafadhali chagua chaguo moja"
         },
         "relevance": {
           "rules-engine": {
@@ -283,7 +283,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Ni lazime kuingiza tarehe ya kufunga kizazi cha mwanamume"
         }
       },
       {
