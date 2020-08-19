@@ -54,7 +54,7 @@
     }
   },
   "step1": {
-    "title": "Change or Stop FP form",
+    "title": "Badilisha au acha fomu ya uzazi wa mpango",
     "next": "step2",
     "fields": [
       {
@@ -132,7 +132,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Please select one option"
+          "err": "Tafadhali chagua chaguo moja"
         }
       },
       {
@@ -145,7 +145,7 @@
         "hint": "Sababu nyingine",
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Ni lazima kuingiza sababu nyingine"
         },
         "relevance": {
           "rules-engine": {
@@ -165,7 +165,7 @@
         "hint": "Madhara",
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Ni lazima kuingiza madhara"
         },
         "relevance": {
           "rules-engine": {
@@ -228,7 +228,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Please select one choice"
+          "err": "Tafadhali chagua chaguo moja"
         },
         "relevance": {
           "rules-engine": {
@@ -249,15 +249,15 @@
         "hint": "Amepata vipande vya kondpmu vingapi?",
         "v_required": {
           "value": "true",
-          "err": "Equal or greater than 0"
+          "err": "Sawa au kubwa kuliko 0"
         },
         "v_numeric_integer": {
           "value": "true",
-          "err": "Must be a rounded number"
+          "err": "Lazima iwe nambari iliyo na mviringo"
         },
         "v_min": {
           "value": "0",
-          "err": "Number must be equal or greater than 0"
+          "err": "Nambari lazima iwe sawa au kubwa kuliko 0"
         },
         "relevance": {
           "rules-engine": {
@@ -292,15 +292,15 @@
         "hint": "Amepata saiko ngapi?",
         "v_required": {
           "value": "true",
-          "err": "Equal or greater than 0"
+          "err": "Sawa au kubwa kuliko 0"
         },
         "v_numeric_integer": {
           "value": "true",
-          "err": "Must be a rounded number"
+          "err": "Lazima iwe nambari iliyo na mviringo"
         },
         "v_min": {
           "value": "0",
-          "err": "Number must be equal or greater than 0"
+          "err": "Nambari lazima iwe sawa au kubwa kuliko 0"
         },
         "relevance": {
           "rules-engine": {
@@ -327,7 +327,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Ni lazima kuingiza tarehe ambao anapanga kuanza vidonge vya kumeza vyenye vichocheo viwili au kimoja"
         }
       },
       {
@@ -378,7 +378,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Ni lazima kuingiza tarehe ya sindano iliyopita"
         }
       },
       {
@@ -422,7 +422,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Ni lazima kuingiza tarehe ya kuweka kitanzi"
         }
       },
       {
@@ -456,7 +456,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Ni lazima kuingiza tarehe ya kuweka kipandikizi cha miaka 3"
         }
       },
       {
@@ -490,7 +490,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Ni lazima kuingiza tarehe ya kuweka kipandikizi cha miaka 5"
         }
       },
       {
@@ -513,7 +513,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "fp_start_female_ster",
         "type": "date_picker",
-        "hint": "Tarehe y kufunga kizazi mwanmke",
+        "hint": "Tarehe y kufunga kizazi mwanamke",
         "max_date": "today",
         "relevance": {
           "rules-engine": {
@@ -524,7 +524,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Ni lazima kuingiza tarehe ya kufunga kizazi mwanamke"
         }
       },
       {
@@ -533,7 +533,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "fp_start_male_ster",
         "type": "date_picker",
-        "hint": "Tarehe ya kufunga kizazi mwanamume ya mume wake",
+        "hint": "Tarehe ya kufunga kizazi mwanamume",
         "max_date": "today",
         "relevance": {
           "rules-engine": {
@@ -544,7 +544,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Ni lazima kuingiza tarehe ya kufunga kizazi mwanamume"
         }
       },
       {
@@ -733,7 +733,7 @@
         "openmrs_entity_id": "",
         "type": "toaster_notes",
          "text": "Tumia kondomu kwa miezi mitatu kuzuia ujazito",
-        "toaster_info_text": "Advise the woman to use condoms for the first 3 months to prevent pregnancy",
+        "toaster_info_text": "Tumia kondomu kwa miezi mitatu kuzuia ujazito",
         "toaster_type": "info",
         "relevance": {
           "rules-engine": {
