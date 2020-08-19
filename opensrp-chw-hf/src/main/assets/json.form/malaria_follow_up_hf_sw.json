@@ -1,0 +1,513 @@
+{
+  "validate_on_submit": true,
+  "show_errors_on_submit": false,
+  "count": "1",
+  "encounter_type": "Malaria Follow-up HF",
+  "entity_id": "",
+  "relational_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "step1": {
+    "title": "Malaria Follow-up",
+    "fields": [
+      {
+        "key": "date_malaria_visit_hf",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "date_malaria_visit_hf",
+        "openmrs_entity_parent": "",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "malaria_followup_hf_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "weight_malaria_hf",
+        "type": "edit_text",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "weight_malaria_hf",
+        "openmrs_entity_parent": "",
+        "edit_type": "number",
+        "hint": "Uzito (kg)",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali ingiza uzito (kg)"
+        }
+      },
+      {
+        "key": "height_malaria_hf",
+        "type": "edit_text",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "height_malaria_hf",
+        "openmrs_entity_parent": "",
+        "edit_type": "number",
+        "hint": "Urefu (cm)",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali ingiza urefu (cm)"
+        }
+      },
+      {
+        "key": "test_malaria_hf",
+        "type": "native_radio",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "test_malaria_hf",
+        "openmrs_entity_parent": "",
+        "label": "Vipimo vilivyoagizwa",
+        "options": [
+          {
+            "key": "mRDT",
+            "openmrs_choice_id": "",
+            "text": "mRDT",
+            "value": false
+          },
+          {
+            "key": "mRDT_not_done",
+            "openmrs_choice_id": "",
+            "text": "Kipimo cha mRDT hakitakiwi kufanyika",
+            "value": false
+          },
+          {
+            "key": "Other_tests",
+            "openmrs_choice_id": "",
+            "text": "Vipimo vingine",
+            "value": false
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali onesha vipimo vilivyoamuru"
+        }
+      },
+      {
+        "key": "no_mrdt_malaria_hf",
+        "type": "check_box",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "no_mrdt_malaria_hf",
+        "openmrs_entity_parent": "",
+        "label": "Sababu ya kutofanyika kipimo cha mRDT",
+        "combine_checkbox_option_values": "true",
+        "options": [
+          {
+            "key": "stock_out",
+            "openmrs_choice_id": "",
+            "text": "Ukosefu wa vitendanishi",
+            "value": false
+          },
+          {
+            "key": "mRDT_done_within_14_days",
+            "openmrs_choice_id": "",
+            "text": "Kipimo cha mRDT kimefanyika ndani ya siku 14",
+            "value": false
+          }
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "malaria_followup_hf_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua sababu ya mRDT haijafanywa"
+        }
+      },
+      {
+        "key": "other_test_malaria_hf",
+        "type": "edit_text",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "other_test_malaria_hf",
+        "openmrs_entity_parent": "",
+        "edit_type": "name",
+        "hint": "Taja vipimo vingine vilivyoagizwa",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "malaria_followup_hf_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": false,
+          "err": "Tafadhali ingiza majaribio mengine yaliyoombewa"
+        }
+      },
+      {
+        "key": "test_results_malaria_hf",
+        "type": "native_radio",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "test_results_malaria_hf",
+        "openmrs_entity_parent": "",
+        "label": "Matokeo ya vipimo",
+        "options": [
+          {
+            "key": "mRDT_positive",
+            "openmrs_choice_id": "",
+            "text": "mRDT chanya",
+            "value": false
+          },
+          {
+            "key": "mRDT_negative",
+            "openmrs_choice_id": "",
+            "text": "mRDT hasi",
+            "value": false
+          },
+          {
+            "key": "Malaria_parasite_seen",
+            "openmrs_choice_id": "",
+            "text": "Kuna vimelea vya malaria",
+            "value": false
+          },
+          {
+            "key": "No_malaria_parasite_seen",
+            "openmrs_choice_id": "",
+            "text": "Hakuna vimelea vya malaria",
+            "value": false
+          },
+          {
+            "key": "Other_test_results",
+            "openmrs_choice_id": "",
+            "text": "Matokeo ya vipimo vingines",
+            "value": false
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua matokeo ya jaribio"
+        }
+      },
+      {
+        "key": "other_test_results_malaria_hf",
+        "type": "edit_text",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "other_test_results_malaria_hf",
+        "openmrs_entity_parent": "",
+        "edit_type": "name",
+        "hint": "Matokeo ya vipimo vingine",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "malaria_followup_hf_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali ingiza matokeo mengine"
+        }
+      },
+      {
+        "key": "diagnosis_malaria_hf",
+        "type": "check_box",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "diagnosis_malaria_hf",
+        "openmrs_entity_parent": "",
+        "label": "Diagnosis",
+        "combine_checkbox_option_values": "true",
+        "options": [
+          {
+            "key": "Uncomplicated_malaria",
+            "openmrs_choice_id": "",
+            "text": "Malaria isiyo kali",
+            "value": false
+          },
+          {
+            "key": "Severe_malaria",
+            "openmrs_choice_id": "",
+            "text": "Malaria kali",
+            "value": false
+          },
+          {
+            "key": "Other_diagnosis",
+            "openmrs_choice_id": "",
+            "text": "Diagnosis nyingine",
+            "value": false
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua utambuzi"
+        }
+      },
+      {
+        "key": "other_diagnosis_malaria_hf",
+        "type": "edit_text",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "other_diagnosis_malaria_hf",
+        "openmrs_entity_parent": "",
+        "edit_type": "name",
+        "hint": "Diagnosis nyingine",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "malaria_followup_hf_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali ingiza diagnosis nyingine"
+        }
+      },
+      {
+        "key": "treat_malaria_hf",
+        "type": "check_box",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "treat_malaria_hf",
+        "openmrs_entity_parent": "",
+        "combine_checkbox_option_values": "true",
+        "label": "Matibabu aliyoandikiwa",
+        "options": [
+          {
+            "key": "ALU_1_x_6_strips",
+            "openmrs_choice_id": "",
+            "text": "ALU ya 1 x 6",
+            "value": false
+          },
+          {
+            "key": "ALU_2_x_6_strips",
+            "openmrs_choice_id": "",
+            "text": "ALU ya 2 x 6",
+            "value": false
+          },
+          {
+            "key": "ALU_3_x_6_strips",
+            "openmrs_choice_id": "",
+            "text": "ALU ya 3 x 6",
+            "value": false
+          },
+          {
+            "key": "ALU_4_x_6_strips",
+            "openmrs_choice_id": "",
+            "text": "ALU ya 4 x 6",
+            "value": false
+          },
+          {
+            "key": "Injection_artesunate",
+            "openmrs_choice_id": "",
+            "text": "Sindano ya Artesunate",
+            "value": false
+          },
+          {
+            "key": "Paracetamol",
+            "openmrs_choice_id": "",
+            "text": "Panadol (Dawa ya kupunguza maumivu)",
+            "value": false
+          },
+          {
+            "key": "Other_drugs",
+            "openmrs_choice_id": "NA",
+            "text": "Dawa nyingine",
+            "value": false
+          }
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "malaria_followup_hf_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali ingiza matibabu iliyowekwa"
+        }
+      },
+      {
+        "key": "treat_other_malaria_hf",
+        "type": "edit_text",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "treat_other_malaria_hf",
+        "openmrs_entity_parent": "",
+        "edit_type": "name",
+        "hint": "Taja dawa nyingine zilizotolewa",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "malaria_followup_hf_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Taja dawa nyingine zilizotolewa"
+        }
+      },
+      {
+        "key": "outcome_malaria_hf",
+        "type": "native_radio",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "outcome_malaria_hf",
+        "openmrs_entity_parent": "",
+        "label": "Matokeo",
+        "options": [
+          {
+            "key": "Referral",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "",
+            "openmrs_entity_parent": "",
+            "text": "Rufaa"
+          },
+          {
+            "key": "Admitted",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "",
+            "openmrs_entity_parent": "",
+            "text": "Amelazwa"
+          },
+          {
+            "key": "Death",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "",
+            "openmrs_entity_parent": "",
+            "text": "Kifo"
+          },
+          {
+            "key": "Discharge",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "",
+            "openmrs_entity_parent": "",
+            "text": "Ameruhusiwa"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua matokeo"
+        }
+      },
+      {
+        "key": "remark_malaria_hf",
+        "type": "edit_text",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "remark_malaria_hf",
+        "openmrs_entity_parent": "",
+        "edit_type": "name",
+        "hint": "Maoni",
+        "v_required": {
+          "value": "false",
+          "err": null
+        }
+      },
+      {
+        "key": "hcp_attending",
+        "type": "native_radio",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "hcp_attending",
+        "openmrs_entity_parent": "",
+        "label": "Kada ya mtoa huduma kwa mteja",
+        "options": [
+          {
+            "key": "Medical_Doctor_MD",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "",
+            "openmrs_entity_parent": "",
+            "text": "Medical Doctor (MD)"
+          },
+          {
+            "key": "Assistant_Medical_Doctor_AMO",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "",
+            "openmrs_entity_parent": "",
+            "text": "Assistant Medical Doctor (AMO)"
+          },
+          {
+            "key": "Clinical_Officer_CO",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "",
+            "openmrs_entity_parent": "",
+            "text": "Clinical Officer (CO)"
+          },
+          {
+            "key": "Assistance_Clincal_Officer_ACO",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "",
+            "openmrs_entity_parent": "",
+            "text": "Assistance Clincal Officer (ACO)"
+          },
+          {
+            "key": "Nursing_Officer_NO",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "",
+            "openmrs_entity_parent": "",
+            "text": "Nursing Officer (NO)"
+          },
+          {
+            "key": "Assistant_Nursing_officer_ANO",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "",
+            "openmrs_entity_parent": "",
+            "text": "Assistant Nursing officer (ANO)"
+          },
+          {
+            "key": "Enrolled_Nurse_EN",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "",
+            "openmrs_entity_parent": "",
+            "text": "Enrolled Nurse (EN)"
+          },
+          {
+            "key": "Medical_Attendant_MAT",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "",
+            "openmrs_entity_parent": "",
+            "text": "Medical Attendant (MAT)"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua kichwa cha kuhudhuria"
+        }
+      }
+    ]
+  }
+}

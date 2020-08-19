@@ -8,18 +8,27 @@ import org.smartregister.AllConstants;
 import org.smartregister.chw.core.application.CoreChwApplication;
 import org.smartregister.chw.core.repository.CoreChwRepository;
 import org.smartregister.chw.core.repository.StockUsageReportRepository;
+import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.BuildConfig;
+import org.smartregister.chw.hf.dao.FamilyDao;
 import org.smartregister.domain.db.Column;
+import org.smartregister.family.util.DBConstants;
 import org.smartregister.immunization.repository.RecurringServiceRecordRepository;
 import org.smartregister.immunization.repository.VaccineRepository;
 import org.smartregister.immunization.util.IMDatabaseUtils;
+import org.smartregister.reporting.ReportingLibrary;
 import org.smartregister.repository.AlertRepository;
 import org.smartregister.repository.EventClientRepository;
+import org.smartregister.util.DatabaseMigrationUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import timber.log.Timber;
 
 public class HfChwRepository extends CoreChwRepository {
     private Context context;
+    private static String appVersionCodePref = "APP_VERSION_CODE";
 
     public HfChwRepository(Context context, org.smartregister.Context openSRPContext) {
         super(context, AllConstants.DATABASE_NAME, BuildConfig.DATABASE_VERSION, openSRPContext.session(), CoreChwApplication.createCommonFtsObject(), openSRPContext.sharedRepositoriesArray());
@@ -49,6 +58,13 @@ public class HfChwRepository extends CoreChwRepository {
                 case 6:
                     upgradeToVersion6(db);
                     break;
+                case 7:
+                    upgradeToVersion7(db);
+                    break;
+                case 8:
+                    upgradeToVersion8(db);
+                case 9:
+                    upgradeToVersion9(db);
                 default:
                     break;
             }
@@ -126,6 +142,59 @@ public class HfChwRepository extends CoreChwRepository {
             StockUsageReportRepository.createTable(db);
         } catch (Exception e) {
             Timber.e(e);
+        }
+    }
+
+    private static boolean checkIfAppUpdated() {
+        String savedAppVersion = ReportingLibrary.getInstance().getContext().allSharedPreferences().getPreference(appVersionCodePref);
+        if (savedAppVersion.isEmpty()) {
+            return true;
+        } else {
+            int savedVersion = Integer.parseInt(savedAppVersion);
+            return (org.smartregister.chw.core.BuildConfig.VERSION_CODE > savedVersion);
+        }
+    }
+
+    private static void upgradeToVersion7(SQLiteDatabase db) {
+        try {
+            String indicatorsConfigFile = "config/indicator-definitions.yml";
+            String indicatorDataInitialisedPref = "INDICATOR_DATA_INITIALISED";
+            ReportingLibrary reportingLibraryInstance = ReportingLibrary.getInstance();
+
+            boolean indicatorDataInitialised = Boolean.parseBoolean(reportingLibraryInstance.getContext().allSharedPreferences().getPreference(indicatorDataInitialisedPref));
+            boolean isUpdated = checkIfAppUpdated();
+            if (!indicatorDataInitialised || isUpdated) {
+                reportingLibraryInstance.readConfigFile(indicatorsConfigFile, db);
+                reportingLibraryInstance.initIndicatorData(indicatorsConfigFile, db); // This will persist the data in the DB
+                reportingLibraryInstance.getContext().allSharedPreferences().savePreference(indicatorDataInitialisedPref, "true");
+                reportingLibraryInstance.getContext().allSharedPreferences().savePreference(appVersionCodePref, String.valueOf(org.smartregister.chw.core.BuildConfig.VERSION_CODE));
+            }
+        } catch (Exception e) {
+            Timber.e(e);
+        }
+    }
+
+    private void upgradeToVersion8(SQLiteDatabase db) {
+        try {
+            db.execSQL("ALTER TABLE ec_family ADD COLUMN entity_type VARCHAR; " +
+                    "UPDATE ec_family SET entity_type = 'ec_family' WHERE id is not null;");
+
+            List<String> columns = new ArrayList<>();
+            columns.add(CoreConstants.DB_CONSTANTS.DETAILS);
+            columns.add(DBConstants.KEY.ENTITY_TYPE);
+            DatabaseMigrationUtils.addFieldsToFTSTable(db, CoreChwApplication.createCommonFtsObject(), CoreConstants.TABLE_NAME.FAMILY, columns);
+
+        } catch (Exception e) {
+            Timber.e(e, "commonUpgrade -> Failed to add column 'entity_type' and 'details' to ec_family_search ");
+        }
+    }
+
+    private void upgradeToVersion9(SQLiteDatabase db) {
+        try {
+            FamilyDao.migrateAddLocationIdColSQLString(db);
+            FamilyDao.migrateInsertLocationIDs(db);
+        } catch (Exception ex) {
+            Timber.e(ex, "Problems adding sync location ids");
         }
     }
 }

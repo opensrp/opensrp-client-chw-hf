@@ -10,9 +10,9 @@ buildscript {
         maven { url 'https://maven.fabric.io/public' }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.2'
-        classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.8.2'
-        classpath 'io.fabric.tools:gradle:1.30.0'
+        classpath 'com.android.tools.build:gradle:4.0.1'
+        classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.8.3'
+        classpath 'io.fabric.tools:gradle:1.31.2'
     }
 }
 
@@ -30,15 +30,15 @@ android {
         applicationId "org.smartregister.chw.hf"
         minSdkVersion 18
         targetSdkVersion 28
-        versionCode 5
-        versionName "1.2.7"
+        versionCode 8
+        versionName "1.2.10"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         buildConfigField "String", 'opensrp_url', '"https://boresha-afya.smartregister.org/opensrp/"'
         buildConfigField "String", 'opensrp_url_debug', '"https://boresha-afya-stage.smartregister.org/opensrp/"'
-//        buildConfigField "String", 'opensrp_url_debug', '"https://ba-unified-stage.smartregister.org/opensrp/"'
+       // buildConfigField "String", 'opensrp_url_debug', '"https://ba-unified-stage.smartregister.org/opensrp/"'
         buildConfigField "boolean", 'SUPPORT_QR', 'true'
-        buildConfigField "int", "DATABASE_VERSION", '6'
+        buildConfigField "int", "DATABASE_VERSION", '9'
         buildConfigField "int", "DATA_SYNC_DURATION_MINUTES", '15'
         buildConfigField "long", "MAX_SERVER_TIME_DIFFERENCE", "1800000l"
         buildConfigField "boolean", "TIME_CHECK", "false"
@@ -46,10 +46,18 @@ android {
         buildConfigField "int", "MAX_SYNC_RETRIES", '3'
         buildConfigField "long", "BUILD_TIMESTAMP", System.currentTimeMillis() + "L"
         buildConfigField "boolean", "IS_SYNC_SETTINGS", "false"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath = true
+            }
+        }
     }
+
+    android.defaultConfig.javaCompileOptions.annotationProcessorOptions.includeCompileClasspath = true
 
     buildTypes {
         release {
+//            debuggable true //Useful when debugging release builds
             minifyEnabled false
             zipAlignEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -65,10 +73,10 @@ android {
             buildConfigField "int", "HOME_VISIT_MINUTES", '60'
             buildConfigField "int", "STOCK_USAGE_REPORT_MINUTES", '1440'
             buildConfigField "boolean", 'SUPPORT_REPORT', 'false'
-            buildConfigField "String[]", "ALLOWED_LOCATION_LEVELS", '{"Ward" , "Health Facility", "Village", "Village Sublocations"}'
-            buildConfigField "String[]", "LOCATION_HIERACHY", '{"Country","Region","District","Ward" , "Health Facility", "Village", "Village Sublocations"}'
+            buildConfigField "String[]", "ALLOWED_LOCATION_LEVELS", '{"Ward" , "Council", "Facility", "MOH Jhpiego Facility Name", "Health Facility", "Village", "Village Sublocations"}'
+            buildConfigField "String[]", "LOCATION_HIERACHY", '{"Country","Region","District","Ward" ,"Council", "Facility", "MOH Jhpiego Facility Name", "Health Facility", "Village", "Village Sublocations"}'
             buildConfigField "String", 'DEFAULT_LOCATION', '"Facility"'
-            buildConfigField "String[]", 'FACILITY_LEVEL', '{"Facility"}'
+            buildConfigField "String[]", 'FACILITY_LEVEL', '{"MOH Jhpiego Facility Name", "Health Facility", "Facility"}'
         }
 
         debug {
@@ -84,12 +92,33 @@ android {
             buildConfigField "int", "HOME_VISIT_MINUTES", '60'
             buildConfigField "int", "STOCK_USAGE_REPORT_MINUTES", '1440'
             buildConfigField "boolean", 'SUPPORT_REPORT', 'false'
-            buildConfigField "String[]", "ALLOWED_LOCATION_LEVELS", '{"Ward" , "Council", "Facility", "Health Facility", "Village", "Village Sublocations"}'
-            buildConfigField "String[]", "LOCATION_HIERACHY", '{"Country","Region","District","Ward" ,"Council", "Facility", "Health Facility", "Village", "Village Sublocations"}'
+            buildConfigField "String[]", "ALLOWED_LOCATION_LEVELS", '{"Ward" , "Council", "Facility", "MOH Jhpiego Facility Name", "Health Facility", "Village", "Village Sublocations"}'
+            buildConfigField "String[]", "LOCATION_HIERACHY", '{"Country","Region","District","Ward" ,"Council", "Facility", "MOH Jhpiego Facility Name", "Health Facility", "Village", "Village Sublocations"}'
             buildConfigField "String", 'DEFAULT_LOCATION', '"Facility"'
-            buildConfigField "String[]", 'FACILITY_LEVEL', '{"Facility", "MOH Jhpiego Facility Name"}'
+            buildConfigField "String[]", 'FACILITY_LEVEL', '{"MOH Jhpiego Facility Name", "Health Facility", "Facility"}'
             testCoverageEnabled true
         }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/dependencies.txt'
+        exclude 'META-INF/LGPL2.1'
+        exclude 'LICENSE.txt'
+        exclude 'META-INF/LICENSE.md'
+        exclude 'META-INF/NOTICE.md'
+
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
     }
 
     testOptions {
@@ -119,26 +148,14 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    implementation('org.smartregister:opensrp-client-chw-core:1.1.64-SNAPSHOT@aar') {
+    implementation('org.smartregister:opensrp-client-chw-core:1.4.3-SNAPSHOT@aar') {
         transitive = true
-        exclude group: 'org.smartregister', module: 'opensrp-client-native-form'
         exclude group: 'org.smartregister', module: 'opensrp-client-chw-referral'
         exclude group: 'com.rengwuxian.materialedittext', module: 'library'
+        exclude group: 'org.smartregister' , module: 'opensrp-client-chw-referral'
     }
 
-    implementation('org.smartregister:opensrp-client-native-form:1.7.32-SNAPSHOT@aar') {
-        transitive = true
-        exclude group: 'com.android.support', module: 'recyclerview-v7'
-        exclude group: 'com.android.support', module: 'appcompat-v7'
-        exclude group: 'com.android.support', module: 'cardview-v7'
-        exclude group: 'com.android.support', module: 'support-media-compat'
-        exclude group: 'com.android.support', module: 'support-v4'
-        exclude group: 'com.android.support', module: 'design'
-        exclude group: 'org.yaml', module: 'snakeyaml'
-        exclude group: 'io.ona.rdt-capture', module: 'lib'
-    }
-
+    implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'androidx.appcompat:appcompat:1.0.0'
     //Do not upgrade to 1.1.0 due to compatibility issues
     implementation 'com.google.android.material:material:1.0.0'
@@ -188,11 +205,11 @@ task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'crea
     def debugTree = fileTree(dir: "$project.buildDir/intermediates/classes/debug", excludes: fileFilter)
     def mainSrc = "$project.projectDir/src/main/java"
 
-    sourceDirectories = files([mainSrc])
-    classDirectories = files([debugTree])
-    executionData = fileTree(dir: project.buildDir, includes: [
+    sourceDirectories.setFrom(files([mainSrc]))
+    classDirectories.setFrom(files([debugTree]))
+    executionData.setFrom(fileTree(dir: project.buildDir, includes: [
             'jacoco/testDebugUnitTest.exec', 'outputs/code-coverage/connected/*coverage.ec'
-    ])
+    ]))
 }
 
 tasks.withType(Test) {

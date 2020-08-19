@@ -1,4 +1,11 @@
 ---
+name: step1_no_mrdt_malaria_hf
+description: Reason that a patient did not receive an mRdt
+priority: 1
+condition: "step1_test_malaria_hf.contains('mRDT_not_done')"
+actions:
+  - "isRelevant = true"
+---
 name: step1_other_test_malaria_hf
 description: Other test requested
 priority: 1
@@ -17,6 +24,13 @@ name: step1_other_diagnosis_malaria_hf
 description: Other diagnosis
 priority: 1
 condition: "step1_diagnosis_malaria_hf.contains('Other_diagnosis')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_treat_malaria_hf
+description: Treatment prescribed by the attendant given a positive malaria
+priority: 1
+condition: "step1_diagnosis_malaria_hf.contains('Uncomplicated_malaria') || step1_diagnosis_malaria_hf.contains('Severe_malaria')"
 actions:
   - "isRelevant = true"
 ---

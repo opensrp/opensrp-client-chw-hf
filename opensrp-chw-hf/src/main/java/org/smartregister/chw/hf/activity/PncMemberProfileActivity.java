@@ -2,13 +2,10 @@ package org.smartregister.chw.hf.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.RelativeLayout;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -47,17 +44,17 @@ import java.util.Set;
 
 import timber.log.Timber;
 
+import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
+
 public class PncMemberProfileActivity extends CorePncMemberProfileActivity implements PncMemberProfileContract.View {
 
-    public RelativeLayout referralRow;
-    public RecyclerView referralRecyclerView;
     private CommonPersonObjectClient commonPersonObjectClient;
     private PncMemberProfilePresenter pncMemberProfilePresenter;
 
-    public static void startMe(Activity activity, String baseEntityID, CommonPersonObjectClient commonPersonObjectClient) {
+    public static void startMe(Activity activity, String baseEntityID) {
         Intent intent = new Intent(activity, PncMemberProfileActivity.class);
         intent.putExtra(Constants.ANC_MEMBER_OBJECTS.BASE_ENTITY_ID, baseEntityID);
-        intent.putExtra(CoreConstants.INTENT_KEY.CLIENT, commonPersonObjectClient);
+        passToolbarTitle(activity, intent);
         activity.startActivity(intent);
     }
 
@@ -82,6 +79,11 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
     }
 
     @Override
+    protected void startHfMalariaFollowupForm() {
+        MalariaFollowUpVisitActivityHelper.startMalariaFollowUpActivity(this, memberObject.getBaseEntityId());
+    }
+
+    @Override
     protected void getRemoveBabyMenuItem(MenuItem menuItem) {
         // TODO -> Implement for HF
     }
@@ -92,21 +94,19 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
     }
 
     public void setReferralTasks(Set<Task> taskList) {
-        if (referralRecyclerView != null && taskList.size() > 0) {
-            RecyclerView.Adapter mAdapter = new ReferralCardViewAdapter(taskList, this, memberObject, getFamilyHeadName(),
-                    getFamilyHeadPhoneNumber(), getCommonPersonObjectClient(), CoreConstants.REGISTERED_ACTIVITIES.PNC_REGISTER_ACTIVITY);
-            referralRecyclerView.setAdapter(mAdapter);
-            referralRow.setVisibility(View.VISIBLE);
+        if (notificationAndReferralRecyclerView != null && taskList.size() > 0) {
+            RecyclerView.Adapter mAdapter = new ReferralCardViewAdapter(taskList, this, getCommonPersonObjectClient(), CoreConstants.REGISTERED_ACTIVITIES.PNC_REGISTER_ACTIVITY);
+            notificationAndReferralRecyclerView.setAdapter(mAdapter);
+            notificationAndReferralLayout.setVisibility(View.VISIBLE);
+            findViewById(R.id.view_notification_and_referral_row).setVisibility(View.VISIBLE);
         }
     }
 
     @Override
     protected void onCreation() {
         super.onCreation();
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            setCommonPersonObjectClient((CommonPersonObjectClient) getIntent().getSerializableExtra(CoreConstants.INTENT_KEY.CLIENT));
-        }
+        findViewById(R.id.record_visit_panel).setVisibility(View.GONE);
+        setCommonPersonObjectClient(getClientDetailsByBaseEntityID(baseEntityID));
     }
 
     @Override
@@ -138,25 +138,12 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
         this.commonPersonObjectClient = commonPersonObjectClient;
     }
 
-    private void initializeReferralsRecyclerView() {
-        referralRecyclerView = findViewById(R.id.referral_card_recycler_view);
-        referralRow = findViewById(R.id.referral_row);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        referralRecyclerView.setLayoutManager(layoutManager);
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        initializeReferralsRecyclerView();
-    }
-
     @Override
     protected void onResume() {
         super.onResume();
         ((PncMemberProfileContract.Presenter) presenter()).fetchReferralTasks();
-        if (referralRecyclerView != null && referralRecyclerView.getAdapter() != null) {
-            referralRecyclerView.getAdapter().notifyDataSetChanged();
+        if (notificationAndReferralRecyclerView != null && notificationAndReferralRecyclerView.getAdapter() != null) {
+            notificationAndReferralRecyclerView.getAdapter().notifyDataSetChanged();
         }
     }
 
@@ -170,6 +157,7 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
         }
         menu.findItem(R.id.action__pnc_remove_member).setVisible(false);
         menu.findItem(R.id.action__pnc_danger_sign_outcome).setVisible(true);
+
         if (MalariaDao.isRegisteredForMalaria(baseEntityID)) {
             menu.findItem(R.id.action_malaria_followup_visit).setVisible(true);
             menu.findItem(R.id.action_malaria_diagnosis).setVisible(false);

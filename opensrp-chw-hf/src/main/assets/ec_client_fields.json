@@ -287,6 +287,13 @@
           "json_mapping": {
             "field": "attributes.dateRemoved"
           }
+        },
+        {
+          "column_name": "sync_location_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "locationId"
+          }
         }
       ]
     },
@@ -1536,10 +1543,17 @@
           }
         },
         {
-          "column_name": "base_entity_id",
+          "column_name": "entity_id",
           "type": "Event",
           "json_mapping": {
             "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "formSubmissionId"
           }
         },
         {
@@ -1717,10 +1731,17 @@
       "name": "ec_sick_child_followup",
       "columns": [
         {
-          "column_name": "base_entity_id",
+          "column_name": "entity_id",
           "type": "Event",
           "json_mapping": {
             "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "formSubmissionId"
           }
         },
         {
@@ -1877,6 +1898,14 @@
             "field": "obs.fieldCode",
             "concept": "160433AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           }
+        },
+        {
+          "column_name": "date_marked_as_done",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "date_marked_as_done"
+          }
         }
       ]
     },
@@ -1884,10 +1913,17 @@
       "name": "ec_anc_danger_signs_outcome",
       "columns": [
         {
-          "column_name": "base_entity_id",
+          "column_name": "entity_id",
           "type": "Event",
           "json_mapping": {
             "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "formSubmissionId"
           }
         },
         {
@@ -1918,10 +1954,17 @@
         {
           "column_name": "action_taken",
           "type": "Event",
-          "save_format": "json_array",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "formSubmissionField": "action_taken_anc_danger_signs"
+            "concept": "164378AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          }
+        },
+        {
+          "column_name": "status_visit",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "status_visit"
           }
         },
         {
@@ -1939,6 +1982,14 @@
             "field": "obs.fieldCode",
             "concept": "comment_anc_danger_signs"
           }
+        },
+        {
+          "column_name": "date_marked_as_done",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "date_marked_as_done"
+          }
         }
       ]
     },
@@ -1946,10 +1997,17 @@
       "name": "ec_pnc_danger_signs_outcome",
       "columns": [
         {
-          "column_name": "base_entity_id",
+          "column_name": "entity_id",
           "type": "Event",
           "json_mapping": {
             "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "formSubmissionId"
           }
         },
         {
@@ -1980,10 +2038,17 @@
         {
           "column_name": "action_taken",
           "type": "Event",
-          "save_format": "json_array",
           "json_mapping": {
             "field": "obs.fieldCode",
             "concept": "action_taken_pnc_danger_signs"
+          }
+        },
+        {
+          "column_name": "status_visit",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "status_visit"
           }
         },
         {
@@ -2001,6 +2066,14 @@
             "field": "obs.fieldCode",
             "concept": "comment_pnc_danger_signs"
           }
+        },
+        {
+          "column_name": "date_marked_as_done",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "date_marked_as_done"
+          }
         }
       ]
     },
@@ -2008,10 +2081,17 @@
       "name": "ec_malaria_followup_hf",
       "columns": [
         {
-          "column_name": "base_entity_id",
+          "column_name": "entity_id",
           "type": "Event",
           "json_mapping": {
             "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "formSubmissionId"
           }
         },
         {
@@ -2067,7 +2147,6 @@
         {
           "column_name": "test_results",
           "type": "Event",
-          "save_format": "json_array",
           "json_mapping": {
             "field": "obs.fieldCode",
             "concept": "test_results_malaria_hf"
@@ -2137,6 +2216,65 @@
           "json_mapping": {
             "field": "obs.fieldCode",
             "concept": "hcp_attending"
+          }
+        },
+        {
+          "column_name": "date_marked_as_done",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "date_marked_as_done"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ec_family_planning_update",
+      "columns": [
+        {
+          "column_name": "entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "formSubmissionId"
+          }
+        },
+        {
+          "column_name": "fp_method_accepted",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "fp_method_accepted"
+          }
+        },
+        {
+          "column_name": "fp_reg_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "fp_reg_date"
+          }
+        },
+        {
+          "column_name": "fp_reg_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "fp_change_or_stop_date"
+          }
+        },
+        {
+          "column_name": "date_marked_as_done",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "date_marked_as_done"
           }
         }
       ]

@@ -16,7 +16,6 @@ import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.commonregistry.CommonRepository;
 import org.smartregister.configurableviews.model.View;
 import org.smartregister.cursoradapter.RecyclerViewPaginatedAdapter;
-import org.smartregister.family.util.DBConstants;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -44,10 +43,7 @@ public class AncRegisterFragment extends CoreAncRegisterFragment {
 
     @Override
     protected void openProfile(CommonPersonObjectClient client) {
-        String careGiverId = org.smartregister.util.Utils.getValue(client.getColumnmaps(), DBConstants.KEY.PRIMARY_CAREGIVER, false);
-        client.getColumnmaps().putAll(fetchCareGiverDetails(careGiverId));
-
-        AncMemberProfileActivity.startMe(getActivity(), client.getCaseId(), client);
+        AncMemberProfileActivity.startMe(getActivity(), client.getCaseId());
     }
 
     @Override

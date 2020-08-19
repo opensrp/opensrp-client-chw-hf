@@ -136,17 +136,15 @@
         "spacer_height": "15dp"
       },
       {
-        "key": "nearest_facility",
+        "key": "sync_location_id",
         "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "162724AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-        "openmrs_data_type": "text",
-        "type": "tree",
-        "hint": "Kituo cha karibu cha kutolea huduma za afya",
-        "tree": [],
+        "openmrs_entity": "person_attribute",
+        "openmrs_entity_id": "sync_location_id",
+        "type": "spinner",
+        "hint": "Chagua eneo la CHW",
         "v_required": {
-          "value": true,
-          "err": "Tafadhali ingiza kituo cha afya kilicho karibu"
+          "value": "true",
+          "err": "Tafadhali chagua eneo la CHW"
         }
       }
     ]

@@ -1,0 +1,579 @@
+{
+  "validate_on_submit": true,
+  "show_errors_on_submit": false,
+  "count": "1",
+  "encounter_type": "Sick Child Follow-up",
+  "entity_id": "",
+  "relational_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "step1": {
+    "title": "Sick Child Follow-up",
+    "fields": [
+      {
+        "key": "date_sickchild",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "date_sickchild",
+        "openmrs_entity_parent": "",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "sick_child_followup_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "weight_sickchild",
+        "type": "edit_text",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "5089AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_parent": "",
+        "edit_type": "number",
+        "hint": "Uzito (kg)",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadahili ingiza uzito"
+        }
+      },
+      {
+        "key": "height_sickchild",
+        "type": "edit_text",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "5090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_parent": "",
+        "edit_type": "number",
+        "hint": "Urefu/Kimo (sm)",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali ingiza urefu"
+        }
+      },
+      {
+        "key": "diarrhea_sickchild",
+        "type": "native_radio",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "142412AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_parent": "",
+        "label": "Mtoto anaharisha?",
+        "options": [
+          {
+            "key": "Yes",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_entity_parent": "",
+            "text": "Ndiyo"
+          },
+          {
+            "key": "No",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_entity_parent": "",
+            "text": "Hapana"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali onesha ikiwa mtoto ana kuhara"
+        }
+      },
+      {
+        "key": "diarrhea_time_sick_child",
+        "type": "native_radio",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "5984AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_parent": "",
+        "label": "Ameharisha kwa muda gani?",
+        "options": [
+          {
+            "key": "Less_than_24_hours",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "164449AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_entity_parent": "",
+            "text": "Chini ya masaa 24"
+          },
+          {
+            "key": "Days",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "1072AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_entity_parent": "",
+            "text": "Siku"
+          }
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "sick_child_followup_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua muda"
+        }
+      },
+      {
+        "key": "dehydration_sick_child",
+        "type": "native_radio",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "1497AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_parent": "",
+        "label": "Upungufu wa maji na chumvichumvi mwilini",
+        "options": [
+          {
+            "key": "No_dehydration",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "1107AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_entity_parent": "",
+            "text": "Hakuna upungufu"
+          },
+          {
+            "key": "Some_dehydration",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "1499AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_entity_parent": "",
+            "text": "Kuna kiasi cha upungufu"
+          },
+          {
+            "key": "Severe_dehydration",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "1500AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_entity_parent": "",
+            "text": "Kuna upungufu mkubwan"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua hali ya upungufu wa maji mwilini ya mtoto"
+        }
+      },
+      {
+        "key": "other_sympt_sick_child",
+        "type": "check_box",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "1729AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_parent": "",
+        "label": "Dalili za ziada zinazohusiana na kuharisha",
+        "combine_checkbox_option_values": "true",
+        "options": [
+          {
+            "key": "Bloody_diarrhoea",
+            "openmrs_choice_id": "138868AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "text": "Damu kwenye kinyesi",
+            "value": false
+          },
+          {
+            "key": "Fever",
+            "openmrs_choice_id": "140238AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "text": "Homa",
+            "value": false
+          },
+          {
+            "key": "Vomiting",
+            "openmrs_choice_id": "122983AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "text": "Kutapika",
+            "value": false
+          },
+          {
+            "key": "Other",
+            "openmrs_choice_id": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "text": "Dalili zingine",
+            "value": false
+          },
+          {
+            "key": "None",
+            "openmrs_choice_id": "164369AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "text": "Hakuna",
+            "value": false
+          }
+        ],
+        "exclusive": [
+          "None"
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "sick_child_followup_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua dalili zingine"
+        }
+      },
+      {
+        "key": "test_ordered_sickchild",
+        "type": "native_radio",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "1271AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_parent": "",
+        "label": "Vipimo vilivyoagizwa",
+        "options": [
+          {
+            "key": "Blood_test",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "1019AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_entity_parent": "",
+            "text": "Vipimo vya damu"
+          },
+          {
+            "key": "Stool_test",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "161451AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_entity_parent": "",
+            "text": "Vipimo vya kinyesi"
+          },
+          {
+            "key": "Other_investigation",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_entity_parent": "",
+            "text": "Vipimo vingine"
+          },
+          {
+            "key": "None",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "164369AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_entity_parent": "",
+            "text": "Hakuna"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua uchunguzi umeamuru"
+        }
+      },
+      {
+        "key": "other_test_ordered_sickchild",
+        "type": "edit_text",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_parent": "",
+        "edit_type": "name",
+        "hint": "Vipimo vingine vilivyoangizwa",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "sick_child_followup_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali ingiza uchunguzi mwingine umeamuru"
+        }
+      },
+      {
+        "key": "test_results_sick_child",
+        "type": "edit_text",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "161577AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_parent": "",
+        "edit_type": "name",
+        "hint": "Matokeo ya vipimo",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "sick_child_followup_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali ingiza matokeo ya vipimo"
+        }
+      },
+      {
+        "key": "diagnosis_sick_child",
+        "type": "edit_text",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "161602AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_parent": "",
+        "edit_type": "name",
+        "hint": "Diagnosis (Utambuzi)",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali ingiza diagnosis"
+        }
+      },
+      {
+        "key": "diarrhea_treat",
+        "type": "check_box",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "1767AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_parent": "",
+        "label": "Matibabu ya kuharisha",
+        "combine_checkbox_option_values": "true",
+        "options": [
+          {
+            "key": "ORS_solution",
+            "openmrs_choice_id": "351AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "text": "ORS",
+            "value": false
+          },
+          {
+            "key": "IV_infusion_drip",
+            "openmrs_choice_id": "162651AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "text": "Maji kwa njia ya mshipa",
+            "value": false
+          },
+          {
+            "key": "Zinc",
+            "openmrs_choice_id": "86672AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "text": "Zinc",
+            "value": false
+          },
+          {
+            "key": "Other_treatments",
+            "openmrs_choice_id": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "text": "Matibabu mengineyo",
+            "value": false
+          },
+          {
+            "key": "None",
+            "openmrs_choice_id": "164369AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "text": "Hakuna",
+            "value": false
+          }
+        ],
+        "exclusive": [
+          "none"
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "sick_child_followup_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali onyesha matibabu uliyopewa"
+        }
+      },
+      {
+        "key": "diarrhea_treat_ors",
+        "type": "edit_text",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "diarrhea_treat_ors",
+        "openmrs_entity_parent": "",
+        "edit_type": "number",
+        "hint": "Kiasi cha mchanganyiko wa ORS  (ml)",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "sick_child_followup_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali ingiza kiasi cha mchanganyiko wa ORS"
+        }
+      },
+      {
+        "key": "diarrhea_treat_rehydration",
+        "type": "edit_text",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "diarrhea_treat_rehydration",
+        "openmrs_entity_parent": "",
+        "edit_type": "number",
+        "hint": "Maji kwa njia ya mshipa (mls)",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "sick_child_followup_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali ingiza maji kwa njia ya mshipa"
+        }
+      },
+      {
+        "key": "diarrhea_treat_zinc",
+        "type": "edit_text",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "diarrhea_treat_zinc",
+        "openmrs_entity_parent": "",
+        "edit_type": "number",
+        "hint": "Zinki (mg)",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "sick_child_followup_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali ingiza kiasi cha Zinki"
+        }
+      },
+      {
+        "key": "diarrhea_treat_walkaway",
+        "type": "check_box",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "160742AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_parent": "",
+        "label": "Dawa anazo ondoka nazo",
+        "combine_checkbox_option_values": "true",
+        "options": [
+          {
+            "key": "ORS_Packs",
+            "openmrs_choice_id": "351AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "text": "ORS (Pks)",
+            "value": false
+          },
+          {
+            "key": "Zinc_pills",
+            "openmrs_choice_id": "86672AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "text": "Zinki (vidonge)",
+            "value": false
+          },
+          {
+            "key": "Other_drugs",
+            "openmrs_choice_id": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "text": "Dawa nyingineyo",
+            "value": false
+          }
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "sick_child_followup_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua dawa zilizopelekwa nyumbani"
+        }
+      },
+      {
+        "key": "treatment_sick_child",
+        "type": "edit_text",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_parent": "",
+        "edit_type": "name",
+        "hint": "Matibabu kutokana na utambuzi ambayo siyo kuharisha",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali ongeza matibabu kutokana na utambuzi ambayo siyo kuharisha"
+        }
+      },
+      {
+        "key": "dtc_period",
+        "type": "edit_text",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "1785AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_parent": "",
+        "edit_type": "number",
+        "hint": "Muda wa kukaa DTC (dakika)",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "sick_child_followup_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali ingiza muda wa kukaa DTC (dakika)"
+        }
+      },
+      {
+        "key": "results_sick_child",
+        "type": "native_radio",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "160433AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_parent": "",
+        "label": "Matokeo",
+        "options": [
+          {
+            "key": "Discharged",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "160433AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_entity_parent": "",
+            "text": "Ameruhusiwa"
+          },
+          {
+            "key": "Referred",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "1692AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_entity_parent": "",
+            "text": "Amepewa rufaa"
+          },
+          {
+            "key": "Admitted",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "1648AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_entity_parent": "",
+            "text": "Amelazwa"
+          },
+          {
+            "key": "Died",
+            "openmrs_entity": "",
+            "openmrs_entity_id": "1654AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_entity_parent": "",
+            "text": "Amekufa"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua matokeo kwenye uwezeshajiy"
+        }
+      }
+    ]
+  }
+}

@@ -1,9 +1,11 @@
 package org.smartregister.chw.hf.presenter;
 
+import org.smartregister.chw.core.application.CoreChwApplication;
 import org.smartregister.chw.core.contract.FamilyOtherMemberProfileExtendedContract;
 import org.smartregister.chw.core.interactor.CoreFamilyProfileInteractor;
 import org.smartregister.chw.core.presenter.CoreFamilyOtherMemberActivityPresenter;
-import org.smartregister.chw.hf.HealthFacilityApplication;
+import org.smartregister.chw.core.repository.ChwTaskRepository;
+import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.contract.MalariaProfileContract;
 import org.smartregister.chw.hf.interactor.HfFamilyInteractor;
 import org.smartregister.chw.hf.interactor.HfFamilyProfileInteractor;
@@ -11,6 +13,7 @@ import org.smartregister.chw.hf.model.FamilyProfileModel;
 import org.smartregister.domain.Task;
 import org.smartregister.family.contract.FamilyOtherMemberContract;
 import org.smartregister.family.contract.FamilyProfileContract;
+import org.smartregister.repository.TaskRepository;
 
 import java.util.Set;
 
@@ -47,8 +50,8 @@ public class FamilyOtherMemberActivityPresenter extends CoreFamilyOtherMemberAct
     }
 
     public void getReferralTasks(String planId, String baseEntityId, MalariaProfileContract.InteractorCallback callback) {
-        Set<Task> taskList = HealthFacilityApplication.getInstance().getTaskRepository()
-                .getTasksByEntityAndStatus(planId, baseEntityId, Task.TaskStatus.READY);
+        TaskRepository taskRepository = CoreChwApplication.getInstance().getTaskRepository();
+        Set<Task> taskList = ((ChwTaskRepository)taskRepository).getReferralTasksForClientByStatus(planId, baseEntityId, CoreConstants.BUSINESS_STATUS.REFERRED);
 
         callback.updateReferralTasks(taskList);
     }

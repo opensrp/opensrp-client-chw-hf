@@ -5,7 +5,6 @@ import android.content.Context;
 import androidx.annotation.VisibleForTesting;
 
 import org.json.JSONObject;
-import org.smartregister.chw.anc.util.NCUtils;
 import org.smartregister.chw.core.contract.CoreChildProfileContract;
 import org.smartregister.chw.core.interactor.CoreChildProfileInteractor;
 import org.smartregister.chw.core.model.ChildVisit;
@@ -17,10 +16,8 @@ import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.core.utils.Utils;
 import org.smartregister.chw.hf.utils.HfChildUtils;
-import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.family.util.AppExecutors;
 import org.smartregister.family.util.DBConstants;
-import org.smartregister.repository.AllSharedPreferences;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -120,12 +117,6 @@ public class HfChildProfileInteractor extends CoreChildProfileInteractor {
             appExecutors.mainThread().execute(() -> callback.updateAfterBackGroundProcessed());
         };
         appExecutors.diskIO().execute(runnable);
-    }
-
-    @Override
-    public void createSickChildEvent(AllSharedPreferences allSharedPreferences, String jsonString) throws Exception {
-        Event baseEvent = org.smartregister.chw.anc.util.JsonFormUtils.processJsonForm(allSharedPreferences, org.smartregister.chw.core.utils.CoreReferralUtils.setEntityId(jsonString, getChildBaseEntityId()), CoreConstants.TABLE_NAME.SICK_CHILD_FOLLOW_UP);
-        NCUtils.processEvent(baseEvent.getBaseEntityId(), new JSONObject(org.smartregister.chw.anc.util.JsonFormUtils.gson.toJson(baseEvent)));
     }
 
     private void updateUpcomingServices(final CoreChildProfileContract.InteractorCallBack callback, Context context) {

@@ -141,7 +141,7 @@
             android:name=".activity.HfStockInventoryReportActivity"
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
-            android:name=".activity.ProviderStockUsageReportListActivity"
+            android:name=".activity.ProvidersReportListActivity"
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
             android:name="org.smartregister.chw.core.activity.CoreStockInventoryReportActivity"
@@ -150,6 +150,24 @@
         <activity
             android:name="org.smartregister.chw.core.activity.CoreStockInventoryItemDetailsReportActivity"
             android:theme="@style/HFTheme.NoActionBar" />
+
+        <activity
+            android:name=".activity.ServiceActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name="org.smartregister.chw.core.activity.ReportSummaryActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name="org.smartregister.chw.core.activity.ServiceJsonFormActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.HfHIA2ReportsActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+
+        <activity
+            android:name=".activity.InAppInventoryReportActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+
 
         <meta-data
             android:name="io.fabric.ApiKey"
@@ -188,6 +206,8 @@
         <service android:name="org.smartregister.chw.hf.sync.intent.HfSyncTaskIntentService" />
         <service android:name="org.smartregister.sync.intent.PlanIntentService" />
         <service android:name="org.smartregister.chw.core.sync.intent.SyncClientEventsPerTaskIntentService" />
+        <service android:name="org.smartregister.chw.core.sync.intent.CloseExpiredReferralsIntentService" />
+        <service android:name="org.smartregister.sync.intent.SyncLocationsByTeamIdsIntentService" />
 
         <uses-library
             android:name="org.apache.http.legacy"
