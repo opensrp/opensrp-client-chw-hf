@@ -671,13 +671,6 @@
         "v_required": {
           "value": false,
           "err": "Tafadhali taja numbe ya simu"
-        },
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "family_member_relevance.yml"
-            }
-          }
         }
       },
       {
@@ -694,13 +687,6 @@
         "v_regex": {
           "value": "(0[0-9]{9})|\\s*",
           "err": "Nambari lazima iwe na nambari 10 na lazima ianze na 0."
-        },
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "family_member_relevance.yml"
-            }
-          }
         }
       },
       {
