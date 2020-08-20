@@ -47,7 +47,7 @@
     "encounter_location": ""
   },
   "step1": {
-    "title": "Vitamin A {0} dose",
+    "title": "Dozi ya Vitamini A ya {0}",
     "fields": [
       {
         "key": "vitamin_a{0}_date",
