@@ -30,8 +30,8 @@ android {
         applicationId "org.smartregister.chw.hf"
         minSdkVersion 18
         targetSdkVersion 28
-        versionCode 8
-        versionName "1.2.10"
+        versionCode 9
+        versionName "1.2.11"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         buildConfigField "String", 'opensrp_url', '"https://boresha-afya.smartregister.org/opensrp/"'
@@ -148,7 +148,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation('org.smartregister:opensrp-client-chw-core:1.4.4-SNAPSHOT@aar') {
+    implementation('org.smartregister:opensrp-client-chw-core:1.4.5-SNAPSHOT@aar') {
         transitive = true
         exclude group: 'org.smartregister', module: 'opensrp-client-chw-referral'
         exclude group: 'com.rengwuxian.materialedittext', module: 'library'

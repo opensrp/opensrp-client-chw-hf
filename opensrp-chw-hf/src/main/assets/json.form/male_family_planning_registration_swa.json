@@ -66,7 +66,7 @@
         "hint": "Tafadhali chagua eneo la CHW",
         "v_required": {
           "value": "true",
-          "err": "Tafadhali chagua eno la CHWn"
+          "err": "Tafadhali chagua eno la CHW"
         }
       },
       {
