@@ -216,4 +216,8 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
         context.userService().logoutSession();
         Timber.i("Logged out user %s", getContext().allSharedPreferences().fetchRegisteredANM());
     }
+
+    public boolean getChildFlavorUtil(){
+        return true;
+    }
 }
