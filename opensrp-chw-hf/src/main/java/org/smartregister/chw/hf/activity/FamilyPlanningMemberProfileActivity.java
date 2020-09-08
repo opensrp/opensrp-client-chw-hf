@@ -10,8 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.smartregister.chw.anc.domain.Visit;
 import org.smartregister.chw.core.activity.CoreFamilyPlanningMemberProfileActivity;
 import org.smartregister.chw.core.activity.CoreFpUpcomingServicesActivity;
-import org.smartregister.chw.core.dao.PNCDao;
-import org.smartregister.chw.core.model.ChildModel;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.FpUtil;
 import org.smartregister.chw.fp.dao.FpDao;
@@ -26,7 +24,6 @@ import org.smartregister.chw.malaria.dao.MalariaDao;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.domain.Task;
 
-import java.util.List;
 import java.util.Set;
 
 import timber.log.Timber;
@@ -137,7 +134,7 @@ public class FamilyPlanningMemberProfileActivity extends CoreFamilyPlanningMembe
 
     @Override
     protected void startMalariaRegister() {
-    //Implements from Super
+        //Implements from Super
     }
 
     @Override
