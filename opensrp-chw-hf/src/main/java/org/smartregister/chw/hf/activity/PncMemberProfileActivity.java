@@ -81,12 +81,17 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
 
     @Override
     protected void startHivRegister() {
-        HivRegisterActivity.startHIVFormActivity(this, memberObject.getBaseEntityId(),CoreConstants.JSON_FORM.getHivRegistration(),(new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getHivRegistration()).toString());
+        HivRegisterActivity.startHIVFormActivity(this, memberObject.getBaseEntityId(), CoreConstants.JSON_FORM.getHivRegistration(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getHivRegistration()).toString());
     }
 
     @Override
     protected void startTbRegister() {
-        TbRegisterActivity.startTbFormActivity(this, memberObject.getBaseEntityId(),CoreConstants.JSON_FORM.getTbRegistration(),(new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getTbRegistration()).toString());
+        TbRegisterActivity.startTbFormActivity(this, memberObject.getBaseEntityId(), CoreConstants.JSON_FORM.getTbRegistration(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getTbRegistration()).toString());
+    }
+
+    @Override
+    protected void startHfMalariaFollowupForm() {
+        MalariaFollowUpVisitActivityHelper.startMalariaFollowUpActivity(this, memberObject.getBaseEntityId());
     }
 
     @Override
