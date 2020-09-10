@@ -9,8 +9,10 @@ import android.view.View;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.fasterxml.jackson.core.io.JsonEOFException;
 import com.vijay.jsonwizard.utils.FormUtils;
 
+import org.json.JSONException;
 import org.smartregister.chw.core.activity.CoreHivProfileActivity;
 import org.smartregister.chw.core.activity.CoreHivUpcomingServicesActivity;
 import org.smartregister.chw.core.utils.CoreConstants;
@@ -29,6 +31,8 @@ import org.smartregister.commonregistry.CommonPersonObjectClient;
 import java.util.Date;
 import java.util.List;
 
+import timber.log.Timber;
+
 public class HivProfileActivity extends CoreHivProfileActivity implements HivProfileContract.View {
 
     private CommonPersonObjectClient commonPersonObjectClient;
@@ -39,7 +43,7 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
         activity.startActivity(intent);
     }
 
-    public static void startHivFollowupActivity(Activity activity, String baseEntityID) {
+    public static void startHivFollowupActivity(Activity activity, String baseEntityID) throws JSONException {
         Intent intent = new Intent(activity, BaseHivRegistrationFormsActivity.class);
         intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.BASE_ENTITY_ID, baseEntityID);
         intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.JSON_FORM, (new FormUtils()).getFormJsonFromRepositoryOrAssets(activity, CoreConstants.JSON_FORM.getHivFollowupVisit()).toString());
@@ -90,16 +94,18 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         int itemId = item.getItemId();
-        if (itemId == R.id.action_hiv_outcome) {
-            HivRegisterActivity.startHIVFormActivity(this, getHivMemberObject().getBaseEntityId(), CoreConstants.JSON_FORM.getHivOutcome(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getHivOutcome()).toString());
-            return true;
-        } else if (itemId == R.id.action_issue_hiv_community_followup_referral) {
-            HivRegisterActivity.startHIVFormActivity(this, getHivMemberObject().getBaseEntityId(), CoreConstants.JSON_FORM.getHivCommunityFollowupReferral(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getHivCommunityFollowupReferral()).toString());
-            return true;
+        try {
+            if (itemId == R.id.action_hiv_outcome) {
+                HivRegisterActivity.startHIVFormActivity(this, getHivMemberObject().getBaseEntityId(), CoreConstants.JSON_FORM.getHivOutcome(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getHivOutcome()).toString());
+                return true;
+            } else if (itemId == R.id.action_issue_hiv_community_followup_referral) {
+                HivRegisterActivity.startHIVFormActivity(this, getHivMemberObject().getBaseEntityId(), CoreConstants.JSON_FORM.getHivCommunityFollowupReferral(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getHivCommunityFollowupReferral()).toString());
+                return true;
+            }
+        } catch (JSONException e){
+            Timber.e(e);
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -125,7 +131,11 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
 
     @Override
     public void openHivRegistrationForm() {
-        HivRegisterActivity.startHIVFormActivity(this, getHivMemberObject().getBaseEntityId(), CoreConstants.JSON_FORM.getHivRegistration(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getHivRegistration()).toString());
+        try {
+            HivRegisterActivity.startHIVFormActivity(this, getHivMemberObject().getBaseEntityId(), CoreConstants.JSON_FORM.getHivRegistration(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getHivRegistration()).toString());
+        } catch (JSONException e) {
+            Timber.e(e);
+        }
     }
 
     @Override
@@ -148,8 +158,13 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
 
     @Override
     public void openFollowUpVisitForm(boolean isEdit) {
-        if (!isEdit)
-            startHivFollowupActivity(this, getHivMemberObject().getBaseEntityId());
+        if (!isEdit) {
+            try {
+                startHivFollowupActivity(this, getHivMemberObject().getBaseEntityId());
+            } catch (JSONException e) {
+                Timber.e(e);
+            }
+        }
     }
 
     @Override

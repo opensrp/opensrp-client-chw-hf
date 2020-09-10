@@ -7,6 +7,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.vijay.jsonwizard.utils.FormUtils;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.core.activity.CoreAllClientsMemberProfileActivity;
 import org.smartregister.chw.core.activity.CoreFamilyProfileActivity;
@@ -48,7 +49,7 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
         super.onCreateOptionsMenu(menu);
         menu.findItem(R.id.action_location_info).setVisible(true);
 
-        if(BuildConfig.BUILD_FOR_BORESHA_AFYA_SOUTH) {
+        if (BuildConfig.BUILD_FOR_BORESHA_AFYA_SOUTH) {
             AllClientsUtils.updateHivMenuItems(baseEntityId, menu);
             AllClientsUtils.updateTbMenuItems(baseEntityId, menu);
         }
@@ -78,12 +79,20 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
 
     @Override
     protected void startHivRegister() {
-        HivRegisterActivity.startHIVFormActivity(AllClientsMemberProfileActivity.this, baseEntityId, CoreConstants.JSON_FORM.getHivRegistration(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getHivRegistration()).toString());
+        try {
+            HivRegisterActivity.startHIVFormActivity(AllClientsMemberProfileActivity.this, baseEntityId, CoreConstants.JSON_FORM.getHivRegistration(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getHivRegistration()).toString());
+        } catch (JSONException e) {
+            Timber.e(e);
+        }
     }
 
     @Override
     protected void startTbRegister() {
-        TbRegisterActivity.startTbFormActivity(AllClientsMemberProfileActivity.this, baseEntityId, CoreConstants.JSON_FORM.getTbRegistration(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getTbRegistration()).toString());
+        try {
+            TbRegisterActivity.startTbFormActivity(AllClientsMemberProfileActivity.this, baseEntityId, CoreConstants.JSON_FORM.getTbRegistration(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getTbRegistration()).toString());
+        } catch (JSONException e) {
+            Timber.e(e);
+        }
     }
 
     @Override
@@ -190,7 +199,12 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
 
     @Override
     protected void startMalariaFollowUpVisit() {
-        // TODO -> Implement for HF
+        //Do nothing - not required for HF
+    }
+
+    @Override
+    protected void startHfMalariaFollowupForm() {
+        //Do nothing - not required for HF
     }
 
     @Override
@@ -209,6 +223,5 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
     public CoreAllClientsMemberContract.Presenter getAllClientsMemberPresenter() {
         return allClientsMemberPresenter;
     }
-
 
 }

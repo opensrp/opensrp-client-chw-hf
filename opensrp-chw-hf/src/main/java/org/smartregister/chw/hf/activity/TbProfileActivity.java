@@ -9,8 +9,10 @@ import android.view.View;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.fasterxml.jackson.core.io.JsonEOFException;
 import com.vijay.jsonwizard.utils.FormUtils;
 
+import org.json.JSONException;
 import org.smartregister.chw.core.activity.CoreTbProfileActivity;
 import org.smartregister.chw.core.activity.CoreTbUpcomingServicesActivity;
 import org.smartregister.chw.core.utils.CoreConstants;
@@ -29,6 +31,8 @@ import org.smartregister.commonregistry.CommonPersonObjectClient;
 import java.util.Date;
 import java.util.List;
 
+import timber.log.Timber;
+
 public class TbProfileActivity extends CoreTbProfileActivity
         implements TbProfileContract.View {
 
@@ -40,7 +44,7 @@ public class TbProfileActivity extends CoreTbProfileActivity
         activity.startActivity(intent);
     }
 
-    public void startTbFollowupActivity(Activity activity, String baseEntityID) {
+    public void startTbFollowupActivity(Activity activity, String baseEntityID) throws JSONException {
         Intent intent = new Intent(activity, BaseTbRegistrationFormsActivity.class);
         intent.putExtra(Constants.ActivityPayload.BASE_ENTITY_ID, baseEntityID);
         intent.putExtra(Constants.ActivityPayload.JSON_FORM, (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getTbFollowupVisit()).toString());
@@ -92,12 +96,17 @@ public class TbProfileActivity extends CoreTbProfileActivity
     public boolean onOptionsItemSelected(MenuItem item) {
 
         int itemId = item.getItemId();
-        if (itemId == R.id.action_tb_outcome) {
-            TbRegisterActivity.startTbFormActivity(this, getTbMemberObject().getBaseEntityId(), CoreConstants.JSON_FORM.getTbOutcome(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getTbOutcome()).toString());
-            return true;
-        } else if (itemId == R.id.action_issue_tb_community_followup_referral) {
-            TbRegisterActivity.startTbFormActivity(this, getTbMemberObject().getBaseEntityId(), CoreConstants.JSON_FORM.getTbCommunityFollowupReferral(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getTbCommunityFollowupReferral()).toString());
-            return true;
+        try {
+            if (itemId == R.id.action_tb_outcome) {
+                TbRegisterActivity.startTbFormActivity(this, getTbMemberObject().getBaseEntityId(), CoreConstants.JSON_FORM.getTbOutcome(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getTbOutcome()).toString());
+                return true;
+            } else if (itemId == R.id.action_issue_tb_community_followup_referral) {
+                TbRegisterActivity.startTbFormActivity(this, getTbMemberObject().getBaseEntityId(), CoreConstants.JSON_FORM.getTbCommunityFollowupReferral(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getTbCommunityFollowupReferral()).toString());
+                return true;
+            }
+
+        } catch (JSONException e) {
+            Timber.e(e);
         }
 
         return super.onOptionsItemSelected(item);
@@ -118,7 +127,11 @@ public class TbProfileActivity extends CoreTbProfileActivity
 
     @Override
     protected void startTbCaseClosure() {
-        TbRegisterActivity.startTbFormActivity(this, getTbMemberObject().getBaseEntityId(), CoreConstants.JSON_FORM.getTbCaseClosure(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getTbCaseClosure()).toString());
+        try {
+            TbRegisterActivity.startTbFormActivity(this, getTbMemberObject().getBaseEntityId(), CoreConstants.JSON_FORM.getTbCaseClosure(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getTbCaseClosure()).toString());
+        } catch (JSONException e) {
+            Timber.e(e);
+        }
     }
 
     @Override
@@ -152,7 +165,11 @@ public class TbProfileActivity extends CoreTbProfileActivity
 
     @Override
     public void openTbRegistrationForm() {
-        TbRegisterActivity.startTbFormActivity(this, getTbMemberObject().getBaseEntityId(), CoreConstants.JSON_FORM.getTbRegistration(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getTbRegistration()).toString());
+        try {
+            TbRegisterActivity.startTbFormActivity(this, getTbMemberObject().getBaseEntityId(), CoreConstants.JSON_FORM.getTbRegistration(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getTbRegistration()).toString());
+        } catch (JSONException e) {
+            Timber.e(e);
+        }
 
     }
 
@@ -176,8 +193,13 @@ public class TbProfileActivity extends CoreTbProfileActivity
 
     @Override
     public void openFollowUpVisitForm(boolean isEdit) {
-        if (!isEdit)
-            startTbFollowupActivity(this, getTbMemberObject().getBaseEntityId());
+        if (!isEdit) {
+            try {
+                startTbFollowupActivity(this, getTbMemberObject().getBaseEntityId());
+            } catch (JSONException e) {
+                Timber.e(e);
+            }
+        }
     }
 
 
