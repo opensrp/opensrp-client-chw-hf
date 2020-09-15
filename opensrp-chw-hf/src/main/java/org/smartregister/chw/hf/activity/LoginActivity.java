@@ -2,7 +2,11 @@ package org.smartregister.chw.hf.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
 
+import androidx.core.content.ContextCompat;
+
+import org.smartregister.chw.hf.BuildConfig;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.presenter.LoginPresenter;
 import org.smartregister.family.util.Constants;
@@ -18,6 +22,12 @@ public class LoginActivity extends BaseLoginActivity implements BaseLoginContrac
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ImageView imageView = findViewById(R.id.login_logo);
+        if (BuildConfig.BUILD_FOR_BORESHA_AFYA_SOUTH) {
+            imageView.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_logo));
+        } else {
+            imageView.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_logo_ba));
+        }
     }
 
     @Override

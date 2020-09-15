@@ -21,6 +21,7 @@ import java.lang.ref.WeakReference;
 import timber.log.Timber;
 
 public class LoginPresenter extends BaseLoginPresenter implements BaseLoginContract.Presenter {
+
     public LoginPresenter(BaseLoginContract.View loginView) {
         mLoginView = new WeakReference<>(loginView);
         mLoginInteractor = new LoginInteractor(this);
@@ -59,7 +60,6 @@ public class LoginPresenter extends BaseLoginPresenter implements BaseLoginContr
                         Color.parseColor(background.getEndColor())});
                 loginLayout.setBackground(gradientDrawable);
             }
-
 
         } catch (Exception e) {
             Timber.e(e);

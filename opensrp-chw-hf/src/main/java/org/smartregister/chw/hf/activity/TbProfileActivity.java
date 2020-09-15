@@ -9,7 +9,6 @@ import android.view.View;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.fasterxml.jackson.core.io.JsonEOFException;
 import com.vijay.jsonwizard.utils.FormUtils;
 
 import org.json.JSONException;

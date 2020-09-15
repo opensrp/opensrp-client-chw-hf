@@ -32,7 +32,6 @@ import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.family.domain.FamilyEventClient;
 import org.smartregister.family.util.Constants;
 import org.smartregister.family.util.DBConstants;
-import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.family.util.Utils;
 import org.smartregister.opd.pojo.OpdEventClient;
 import org.smartregister.opd.utils.OpdDbConstants;
