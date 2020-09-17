@@ -18,7 +18,7 @@ buildscript {
 
 android {
     useLibrary 'org.apache.http.legacy'
-    compileSdkVersion 28
+    compileSdkVersion 29
     buildToolsVersion androidBuildToolsVersion
 
     compileOptions {
@@ -29,9 +29,9 @@ android {
     defaultConfig {
         applicationId "org.smartregister.chw.hf"
         minSdkVersion 18
-        targetSdkVersion 28
-        versionCode 10
-        versionName "1.2.12"
+        targetSdkVersion 29
+        versionCode 11
+        versionName "1.2.13"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         buildConfigField "String", 'opensrp_url', '"https://boresha-afya.smartregister.org/opensrp/"'
@@ -148,7 +148,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation('org.smartregister:opensrp-client-chw-core:1.4.7-SNAPSHOT@aar') {
+    implementation('org.smartregister:opensrp-client-chw-core:1.4.7-SWAHILI-REVERT-SNAPSHOT@aar') {
         transitive = true
         exclude group: 'com.android.support', module: 'appcompat-v7'
         exclude group: 'androidx.legacy', module: 'legacy-support-v4'
