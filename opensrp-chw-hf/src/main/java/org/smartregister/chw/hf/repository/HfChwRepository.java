@@ -30,51 +30,12 @@ import java.util.List;
 import timber.log.Timber;
 
 public class HfChwRepository extends CoreChwRepository {
-    private Context context;
     private static String appVersionCodePref = "APP_VERSION_CODE";
+    private Context context;
 
     public HfChwRepository(Context context, org.smartregister.Context openSRPContext) {
         super(context, AllConstants.DATABASE_NAME, BuildConfig.DATABASE_VERSION, openSRPContext.session(), CoreChwApplication.createCommonFtsObject(), openSRPContext.sharedRepositoriesArray());
         this.context = context;
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        Timber.w(HfChwRepository.class.getName(),
-                "Upgrading database from version " + oldVersion + " to "
-                        + newVersion + ", which will destroy all old data");
-        int upgradeTo = oldVersion + 1;
-        while (upgradeTo <= newVersion) {
-            switch (upgradeTo) {
-                case 2:
-                    upgradeToVersion2(context, db);
-                    break;
-                case 3:
-                    upgradeToVersion3(db);
-                    break;
-                case 4:
-                    upgradeToVersion4(db);
-                    break;
-                case 5:
-                    upgradeToVersion5(db);
-                    break;
-                case 6:
-                    upgradeToVersion6(db);
-                    break;
-                case 7:
-                    upgradeToVersion7(db);
-                    break;
-                case 8:
-                    upgradeToVersion8(db);
-                case 9:
-                    upgradeToVersion9(db);
-                case 10:
-                    upgradeToVersion10(db);
-                default:
-                    break;
-            }
-            upgradeTo++;
-        }
     }
 
     private static void upgradeToVersion2(Context context, SQLiteDatabase db) {
@@ -179,6 +140,60 @@ public class HfChwRepository extends CoreChwRepository {
         }
     }
 
+    private static void upgradeToVersion10(SQLiteDatabase db) {
+        try {
+            String addMissingColumnsQuery = "ALTER TABLE ec_family_member ADD COLUMN reasons_for_registration TEXT NULL;\n" +
+                    "ALTER TABLE ec_family_member ADD COLUMN has_primary_caregiver VARCHAR;\n" +
+                    "ALTER TABLE ec_family_member ADD COLUMN primary_caregiver_name VARCHAR;";
+            db.execSQL(addMissingColumnsQuery);
+
+            DatabaseMigrationUtils.createAddedECTables(db,
+                    new HashSet<>(Arrays.asList("ec_hiv_register", "ec_hiv_outcome", "ec_hiv_community_followup", "ec_tb_register", "ec_tb_outcome", "ec_tb_community_followup", "ec_hiv_community_feedback", "ec_tb_community_feedback")),
+                    HealthFacilityApplication.createCommonFtsObject());
+        } catch (Exception e) {
+            Timber.e(e, "upgradeToVersion21");
+        }
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        Timber.w(HfChwRepository.class.getName(),
+                "Upgrading database from version " + oldVersion + " to "
+                        + newVersion + ", which will destroy all old data");
+        int upgradeTo = oldVersion + 1;
+        while (upgradeTo <= newVersion) {
+            switch (upgradeTo) {
+                case 2:
+                    upgradeToVersion2(context, db);
+                    break;
+                case 3:
+                    upgradeToVersion3(db);
+                    break;
+                case 4:
+                    upgradeToVersion4(db);
+                    break;
+                case 5:
+                    upgradeToVersion5(db);
+                    break;
+                case 6:
+                    upgradeToVersion6(db);
+                    break;
+                case 7:
+                    upgradeToVersion7(db);
+                    break;
+                case 8:
+                    upgradeToVersion8(db);
+                case 9:
+                    upgradeToVersion9(db);
+                case 10:
+                    upgradeToVersion10(db);
+                default:
+                    break;
+            }
+            upgradeTo++;
+        }
+    }
+
     private void upgradeToVersion8(SQLiteDatabase db) {
         try {
             db.execSQL("ALTER TABLE ec_family ADD COLUMN entity_type VARCHAR; " +
@@ -200,16 +215,6 @@ public class HfChwRepository extends CoreChwRepository {
             FamilyDao.migrateInsertLocationIDs(db);
         } catch (Exception ex) {
             Timber.e(ex, "Problems adding sync location ids");
-        }
-    }
-
-    private static void upgradeToVersion10(SQLiteDatabase db) {
-        try {
-            DatabaseMigrationUtils.createAddedECTables(db,
-                    new HashSet<>(Arrays.asList("ec_hiv_register", "ec_hiv_outcome", "ec_hiv_community_followup", "ec_tb_register", "ec_tb_outcome", "ec_tb_community_followup", "ec_hiv_community_feedback", "ec_tb_community_feedback")),
-                    HealthFacilityApplication.createCommonFtsObject());
-        } catch (Exception e) {
-            Timber.e(e, "upgradeToVersion21");
         }
     }
 }
