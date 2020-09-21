@@ -186,7 +186,7 @@
           "options": [
             {
               "name": "no_action_taken",
-              "text": "No action taken",
+              "text": "Hajapewa matibabu yoyote",
               "meta_data": {
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "no_action_taken",
@@ -195,7 +195,7 @@
             },
             {
               "name": "tested",
-              "text": "Tested",
+              "text": "Amepimwa",
               "meta_data": {
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "tested",
@@ -204,7 +204,7 @@
             },
             {
               "name": "referred",
-              "text": "Referred",
+              "text": "Amepewa rufaa",
               "meta_data": {
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "referred",
