@@ -10,6 +10,7 @@ import org.smartregister.chw.core.repository.CoreChwRepository;
 import org.smartregister.chw.core.repository.StockUsageReportRepository;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.BuildConfig;
+import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.dao.FamilyDao;
 import org.smartregister.domain.db.Column;
 import org.smartregister.family.util.DBConstants;
@@ -22,6 +23,8 @@ import org.smartregister.repository.EventClientRepository;
 import org.smartregister.util.DatabaseMigrationUtils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 import timber.log.Timber;
@@ -65,6 +68,8 @@ public class HfChwRepository extends CoreChwRepository {
                     upgradeToVersion8(db);
                 case 9:
                     upgradeToVersion9(db);
+                case 10:
+                    upgradeToVersion10(db);
                 default:
                     break;
             }
@@ -195,6 +200,16 @@ public class HfChwRepository extends CoreChwRepository {
             FamilyDao.migrateInsertLocationIDs(db);
         } catch (Exception ex) {
             Timber.e(ex, "Problems adding sync location ids");
+        }
+    }
+
+    private static void upgradeToVersion10(SQLiteDatabase db) {
+        try {
+            DatabaseMigrationUtils.createAddedECTables(db,
+                    new HashSet<>(Arrays.asList("ec_hiv_register", "ec_hiv_outcome", "ec_hiv_community_followup", "ec_tb_register", "ec_tb_outcome", "ec_tb_community_followup", "ec_hiv_community_feedback", "ec_tb_community_feedback")),
+                    HealthFacilityApplication.createCommonFtsObject());
+        } catch (Exception e) {
+            Timber.e(e, "upgradeToVersion21");
         }
     }
 }

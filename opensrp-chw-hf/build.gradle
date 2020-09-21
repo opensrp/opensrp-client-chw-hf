@@ -38,7 +38,7 @@ android {
         buildConfigField "String", 'opensrp_url_debug', '"https://boresha-afya-stage.smartregister.org/opensrp/"'
 //        buildConfigField "String", 'opensrp_url_debug', '"https://ba-unified-stage.smartregister.org/opensrp/"'
         buildConfigField "boolean", 'SUPPORT_QR', 'true'
-        buildConfigField "int", "DATABASE_VERSION", '9'
+        buildConfigField "int", "DATABASE_VERSION", '10'
         buildConfigField "int", "DATA_SYNC_DURATION_MINUTES", '15'
         buildConfigField "long", "MAX_SERVER_TIME_DIFFERENCE", "1800000l"
         buildConfigField "boolean", "TIME_CHECK", "false"
