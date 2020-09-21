@@ -1,0 +1,156 @@
+{
+  "form": "TB Community Followup",
+  "count": "1",
+  "encounter_type": "TB Community Followup",
+  "entity_id": "",
+  "relational_id": "",
+  "rules_file": "rule/tb_community_followup_referral_rules.yml",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "steps": [
+    {
+      "title": "Rufaa ya ufwatiliaji wa wateja wa TB katika ngazi ya jamii",
+      "fields": [
+        {
+          "name": "reasons_for_issuing_community_referral",
+          "type": "radio_group",
+          "properties": {
+            "text": "Sababu za kutoa rufaa ya ufwatiliaji kwenye Jamii"
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "reasons_for_issuing_community_referral",
+            "openmrs_entity_parent": ""
+          },
+          "options": [
+            {
+              "name": "missed_appointment",
+              "text": "Missed Appointment",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "missed_appointment",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "lost_to_followup",
+              "text": "Lost to followup client",
+              "is_exclusive": true,
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "lost_to_followup",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "Other",
+              "text": "Nyinginezo",
+              "is_exclusive": true,
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "Other",
+                "openmrs_entity_parent": ""
+              }
+            }
+          ],
+          "required_status": "yes:Tafadhali chagua sababu za kutoa rufaa ya ufwatiliaji katika ngazi ya jamii",
+          "dependent_calculations": [
+            "tb_community_referral_date"
+          ]
+        },
+        {
+          "name": "reason_for_issuing_community_referral_other",
+          "type": "text_input_edit_text",
+          "properties": {
+            "hint": "Sababu nyinginezo",
+            "type": "name"
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "reason_for_issuing_community_referral_other",
+            "openmrs_entity_parent": "reasons_for_issuing_community_referral"
+          },
+          "required_status": "true:Tafadhali jaza sababu zinginezo",
+          "subjects": "reasons_for_issuing_community_referral:map"
+        },
+        {
+          "name": "last_client_visit_date",
+          "type": "datetime_picker",
+          "properties": {
+            "hint": "Tarehe ya mwisho ya ya mteja kuhudhuria kliniki",
+            "type": "date_picker",
+            "display_format": "dd/MM/yyyy",
+            "max_date": "today"
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "last_client_visit_date",
+            "openmrs_entity_parent": ""
+          },
+          "required_status": "true:Tafadhali chagua tarehe ya mwisho ya ya mteja kuhudhuria kliniki",
+          "subjects": "reasons_for_issuing_community_referral:map"
+        },
+        {
+          "name": "comment_tb_community_followup",
+          "type": "text_input_edit_text",
+          "properties": {
+            "hint": "Toa maoni"
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "comment_tb_community_followup",
+            "openmrs_entity_parent": ""
+          },
+          "required_status": "false"
+        }
+      ]
+    }
+  ]
+}
+
