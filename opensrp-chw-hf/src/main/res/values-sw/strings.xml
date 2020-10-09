@@ -26,4 +26,5 @@
     <string name="referral_day">Rufaa %s iliyopita</string>
     <string name="fp_update_family_planning">Update usajili wa uzazi wa mpango</string>
     <string name="error_opening_profile">Tatizo kufungua taarifa za mteja</string>
+    <string name="family">Kaya ya %s</string>
 </resources>
