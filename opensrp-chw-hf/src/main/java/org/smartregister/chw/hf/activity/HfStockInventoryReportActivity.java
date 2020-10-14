@@ -26,7 +26,7 @@ public class HfStockInventoryReportActivity extends CoreStockInventoryReportActi
         List<StockUsageItemModel> stockUsageItemModelsList = new ArrayList<>();
         for (String item : getItems()) {
             String usage = providerName.equalsIgnoreCase(this.getString(R.string.all_chw)) ? StockUsageReportDao.getAllStockUsageForMonth(month, item, year) : StockUsageReportDao.getStockUsageForMonth(month, item, year, providerName);
-            stockUsageItemModelsList.add(new StockUsageItemModel(stockUsageReportUtils.getFormattedItem(item, this), stockUsageReportUtils.getUnitOfMeasure(item, this), usage, providerName));
+            stockUsageItemModelsList.add(new StockUsageItemModel(stockUsageReportUtils.getFormattedItem(item), stockUsageReportUtils.getUnitOfMeasure(item), usage, providerName));
         }
         return stockUsageItemModelsList;
     }
