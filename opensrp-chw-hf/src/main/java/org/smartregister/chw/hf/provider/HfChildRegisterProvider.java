@@ -51,7 +51,13 @@ public class HfChildRegisterProvider extends CoreChildRegisterProvider {
     @Override
     public void setAddressAndGender(CommonPersonObjectClient pc, RegisterViewHolder viewHolder) {
         String address = Utils.getValue(pc.getColumnmaps(), ChildDBConstants.KEY.FAMILY_HOME_ADDRESS, true);
-        String gender = Utils.getValue(pc.getColumnmaps(), DBConstants.KEY.GENDER, true);
+        String gender_key = Utils.getValue(pc.getColumnmaps(), DBConstants.KEY.GENDER, true);
+        String gender = "";
+        if (gender_key.equalsIgnoreCase("Male")) {
+            gender = context.getString(org.smartregister.chw.core.R.string.male);
+        } else if (gender_key.equalsIgnoreCase("Female")) {
+            gender = context.getString(org.smartregister.chw.core.R.string.female);
+        }
         fillValue(viewHolder.textViewAddressGender, gender + " \u00B7 " + address);
     }
 
