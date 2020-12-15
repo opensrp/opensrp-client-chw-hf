@@ -8,6 +8,7 @@ import org.smartregister.AllConstants;
 import org.smartregister.chw.core.application.CoreChwApplication;
 import org.smartregister.chw.core.repository.CoreChwRepository;
 import org.smartregister.chw.core.repository.StockUsageReportRepository;
+import org.smartregister.chw.core.utils.ChwDBConstants;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.BuildConfig;
 import org.smartregister.chw.hf.dao.FamilyDao;
@@ -195,6 +196,34 @@ public class HfChwRepository extends CoreChwRepository {
             FamilyDao.migrateInsertLocationIDs(db);
         } catch (Exception ex) {
             Timber.e(ex, "Problems adding sync location ids");
+        }
+    }
+
+    private static void upgradeToVersion10(SQLiteDatabase db) {
+        try {
+            db.execSQL("ALTER TABLE ec_family ADD COLUMN event_date VARCHAR; ");
+            // add missing columns
+        } catch (Exception e) {
+            Timber.e(e, "upgradeToVersion10 ");
+        }
+
+        try {
+            db.execSQL("UPDATE ec_family SET event_date = (select min(eventDate) from event where event.baseEntityId = ec_family.base_entity_id and event.eventType = 'Family Registration') where event_date is null;");
+        } catch (Exception e) {
+            Timber.e(e, "upgradeToVersion10 ");
+        }
+
+    }
+
+    private static void upgradeToVersion11(SQLiteDatabase db) {
+        try {
+            List<String> columns = new ArrayList<>();
+            columns.add(DBConstants.KEY.VILLAGE_TOWN);
+            columns.add(ChwDBConstants.NEAREST_HEALTH_FACILITY);
+            DatabaseMigrationUtils.addFieldsToFTSTable(db, CoreChwApplication.createCommonFtsObject(), CoreConstants.TABLE_NAME.FAMILY, columns);
+
+        } catch (Exception e) {
+            Timber.e(e, "upgradeToVersion11 ");
         }
     }
 }

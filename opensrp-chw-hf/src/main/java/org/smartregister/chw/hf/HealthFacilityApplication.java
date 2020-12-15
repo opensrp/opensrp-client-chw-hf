@@ -20,6 +20,8 @@ import org.smartregister.chw.core.custom_views.NavigationMenu;
 import org.smartregister.chw.core.loggers.CrashlyticsTree;
 import org.smartregister.chw.core.provider.CoreAllClientsRegisterQueryProvider;
 import org.smartregister.chw.core.service.CoreAuthorizationService;
+import org.smartregister.chw.core.utils.ChildDBConstants;
+import org.smartregister.chw.core.utils.ChwDBConstants;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.FormUtils;
 import org.smartregister.chw.fp.FpLibrary;
@@ -43,10 +45,12 @@ import org.smartregister.chw.hf.sync.HfClientProcessor;
 import org.smartregister.chw.hf.sync.HfSyncConfiguration;
 import org.smartregister.chw.malaria.MalariaLibrary;
 import org.smartregister.chw.pnc.PncLibrary;
+import org.smartregister.commonregistry.CommonFtsObject;
 import org.smartregister.configurableviews.ConfigurableViewsLibrary;
 import org.smartregister.configurableviews.helper.JsonSpecHelper;
 import org.smartregister.family.FamilyLibrary;
 import org.smartregister.family.domain.FamilyMetadata;
+import org.smartregister.family.util.DBConstants;
 import org.smartregister.immunization.ImmunizationLibrary;
 import org.smartregister.location.helper.LocationHelper;
 import org.smartregister.opd.OpdLibrary;
@@ -69,6 +73,7 @@ import io.fabric.sdk.android.Fabric;
 import timber.log.Timber;
 
 public class HealthFacilityApplication extends CoreChwApplication implements CoreApplication {
+    private CommonFtsObject commonFtsObject;
 
     @Override
     public FamilyMetadata getMetadata() {
@@ -132,6 +137,23 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
         return taskRepository;
     }
 
+    public CommonFtsObject getCommonFtsObject() {
+        if (commonFtsObject == null) {
+
+            String[] tables = getFTSTables();
+
+            Map<String, String[]> searchMap = getFTSSearchMap();
+            Map<String, String[]> sortMap = getFTSSortMap();
+
+            commonFtsObject = new CommonFtsObject(tables);
+            for (String ftsTable : commonFtsObject.getTables()) {
+                commonFtsObject.updateSearchFields(ftsTable, searchMap.get(ftsTable));
+                commonFtsObject.updateSortFields(ftsTable, sortMap.get(ftsTable));
+            }
+        }
+        return commonFtsObject;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -140,6 +162,7 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
         context = Context.getInstance();
         context.updateApplicationContext(getApplicationContext());
         context.updateCommonFtsObject(createCommonFtsObject());
+        context.updateCommonFtsObject(getCommonFtsObject());
 
         //init Job Manager
         SyncStatusBroadcastReceiver.init(this);
@@ -219,5 +242,45 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
 
     public boolean getChildFlavorUtil(){
         return true;
+    }
+
+    public String[] getFTSTables() {
+        return new String[]{CoreConstants.TABLE_NAME.FAMILY, CoreConstants.TABLE_NAME.FAMILY_MEMBER, CoreConstants.TABLE_NAME.CHILD};
+    }
+
+    public Map<String, String[]> getFTSSearchMap() {
+        Map<String, String[]> map = new HashMap<>();
+        map.put(CoreConstants.TABLE_NAME.FAMILY, new String[]{
+                DBConstants.KEY.BASE_ENTITY_ID, DBConstants.KEY.VILLAGE_TOWN, DBConstants.KEY.FIRST_NAME,
+                DBConstants.KEY.LAST_NAME, DBConstants.KEY.UNIQUE_ID, ChwDBConstants.NEAREST_HEALTH_FACILITY
+        });
+
+        map.put(CoreConstants.TABLE_NAME.FAMILY_MEMBER, new String[]{
+                DBConstants.KEY.BASE_ENTITY_ID, DBConstants.KEY.FIRST_NAME, DBConstants.KEY.MIDDLE_NAME,
+                DBConstants.KEY.LAST_NAME, DBConstants.KEY.UNIQUE_ID, ChildDBConstants.KEY.ENTRY_POINT, DBConstants.KEY.DOB, DBConstants.KEY.DATE_REMOVED
+        });
+
+        map.put(CoreConstants.TABLE_NAME.CHILD, new String[]{
+                DBConstants.KEY.BASE_ENTITY_ID, DBConstants.KEY.FIRST_NAME, DBConstants.KEY.MIDDLE_NAME,
+                DBConstants.KEY.LAST_NAME, DBConstants.KEY.UNIQUE_ID, ChildDBConstants.KEY.ENTRY_POINT, DBConstants.KEY.DOB, DBConstants.KEY.DATE_REMOVED
+        });
+        return map;
+    }
+
+    public Map<String, String[]> getFTSSortMap() {
+        Map<String, String[]> map = new HashMap<>();
+        map.put(CoreConstants.TABLE_NAME.FAMILY, new String[]{DBConstants.KEY.LAST_INTERACTED_WITH, DBConstants.KEY.DATE_REMOVED,
+                DBConstants.KEY.FAMILY_HEAD, DBConstants.KEY.PRIMARY_CAREGIVER, DBConstants.KEY.ENTITY_TYPE,
+                CoreConstants.DB_CONSTANTS.DETAILS
+        });
+
+        map.put(CoreConstants.TABLE_NAME.FAMILY_MEMBER, new String[]{DBConstants.KEY.DOB, DBConstants.KEY.DOD,
+                DBConstants.KEY.LAST_INTERACTED_WITH, DBConstants.KEY.DATE_REMOVED, DBConstants.KEY.RELATIONAL_ID
+        });
+
+        map.put(CoreConstants.TABLE_NAME.CHILD, new String[]{ChildDBConstants.KEY.LAST_HOME_VISIT, ChildDBConstants.KEY.VISIT_NOT_DONE, DBConstants.KEY
+                .LAST_INTERACTED_WITH, ChildDBConstants.KEY.DATE_CREATED, DBConstants.KEY.DATE_REMOVED, DBConstants.KEY.DOB, ChildDBConstants.KEY.ENTRY_POINT
+        });
+        return map;
     }
 }

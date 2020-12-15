@@ -3,6 +3,8 @@ package org.smartregister.chw.hf.activity;
 import android.app.Activity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
@@ -15,6 +17,7 @@ import org.smartregister.chw.core.activity.CoreFamilyProfileMenuActivity;
 import org.smartregister.chw.core.activity.CoreFamilyRemoveMemberActivity;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.fp.dao.FpDao;
+import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.fragment.FamilyProfileMemberFragment;
 import org.smartregister.chw.hf.model.FamilyProfileModel;
 import org.smartregister.chw.hf.presenter.FamilyProfilePresenter;
@@ -26,6 +29,9 @@ import org.smartregister.family.util.Constants;
 import java.util.HashMap;
 
 public class FamilyProfileActivity extends CoreFamilyProfileActivity {
+    private TextView tvEventDate;
+    private TextView tvInterpunct;
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -47,6 +53,19 @@ public class FamilyProfileActivity extends CoreFamilyProfileActivity {
                 familyProfileMemberFragment.refreshListView();
             }
         }
+    }
+    @Override
+    protected void setupViews() {
+        super.setupViews();
+        tvEventDate = findViewById(R.id.textview_event_date);
+        tvInterpunct = findViewById(R.id.interpunct);
+    }
+
+    @Override
+    public void setEventDate(String eventDate) {
+        tvEventDate.setVisibility(View.VISIBLE);
+        tvInterpunct.setVisibility(View.VISIBLE);
+        tvEventDate.setText(String.format(this.getString(R.string.created), eventDate));
     }
 
     @Override
