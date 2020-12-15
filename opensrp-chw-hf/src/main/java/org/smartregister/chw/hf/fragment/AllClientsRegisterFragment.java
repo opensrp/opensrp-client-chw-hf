@@ -6,8 +6,10 @@ import androidx.annotation.NonNull;
 
 import org.smartregister.chw.core.fragment.CoreAllClientsRegisterFragment;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.provider.HfOpdRegisterProvider;
 import org.smartregister.chw.hf.utils.AllClientsUtils;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
+import org.smartregister.cursoradapter.RecyclerViewPaginatedAdapter;
 
 public class AllClientsRegisterFragment extends CoreAllClientsRegisterFragment {
 
@@ -21,6 +23,14 @@ public class AllClientsRegisterFragment extends CoreAllClientsRegisterFragment {
     @Override
     protected void goToClientDetailActivity(@NonNull CommonPersonObjectClient commonPersonObjectClient) {
         AllClientsUtils.goToClientProfile(this.getActivity(), commonPersonObjectClient);
+    }
+
+    @Override
+    public void initializeAdapter() {
+        HfOpdRegisterProvider childRegisterProvider = new HfOpdRegisterProvider(getActivity(), registerActionHandler, paginationViewHandler);
+        clientAdapter = new RecyclerViewPaginatedAdapter(null, childRegisterProvider, context().commonrepository(this.tablename));
+        clientAdapter.setCurrentlimit(20);
+        clientsView.setAdapter(clientAdapter);
     }
 }
 
