@@ -5,6 +5,7 @@ import android.content.Context;
 import net.sqlcipher.database.SQLiteDatabase;
 
 import org.smartregister.AllConstants;
+import org.smartregister.chw.anc.repository.VisitRepository;
 import org.smartregister.chw.core.application.CoreChwApplication;
 import org.smartregister.chw.core.repository.CoreChwRepository;
 import org.smartregister.chw.core.repository.StockUsageReportRepository;
@@ -70,6 +71,8 @@ public class HfChwRepository extends CoreChwRepository {
                     upgradeToVersion10(db);
                 case 11:
                     upgradeToVersion11(db);
+                case 12:
+                    upgradeToVersion12(db);
                 default:
                     break;
             }
@@ -228,6 +231,14 @@ public class HfChwRepository extends CoreChwRepository {
 
         } catch (Exception e) {
             Timber.e(e, "upgradeToVersion11 ");
+        }
+    }
+
+    private static void upgradeToVersion12(SQLiteDatabase db) {
+        try {
+            db.execSQL(VisitRepository.ADD_VISIT_GROUP_COLUMN);
+        }catch (Exception e) {
+            Timber.e(e, "upgradeToVersion12");
         }
     }
 }
