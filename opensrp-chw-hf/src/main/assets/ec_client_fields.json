@@ -90,10 +90,11 @@
           }
         },
         {
-          "column_name": "entity_type",
+          "column_name": "event_date",
           "type": "Event",
           "json_mapping": {
-            "field": "entityType"
+            "field": "eventDate",
+            "event_type": "Family Registration"
           }
         }
       ]

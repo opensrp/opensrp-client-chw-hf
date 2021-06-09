@@ -5,9 +5,11 @@ import android.content.Context;
 import net.sqlcipher.database.SQLiteDatabase;
 
 import org.smartregister.AllConstants;
+import org.smartregister.chw.anc.repository.VisitRepository;
 import org.smartregister.chw.core.application.CoreChwApplication;
 import org.smartregister.chw.core.repository.CoreChwRepository;
 import org.smartregister.chw.core.repository.StockUsageReportRepository;
+import org.smartregister.chw.core.utils.ChwDBConstants;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.BuildConfig;
 import org.smartregister.chw.hf.HealthFacilityApplication;
@@ -30,12 +32,56 @@ import java.util.List;
 import timber.log.Timber;
 
 public class HfChwRepository extends CoreChwRepository {
-    private static String appVersionCodePref = "APP_VERSION_CODE";
     private Context context;
+    private static String appVersionCodePref = "APP_VERSION_CODE";
 
     public HfChwRepository(Context context, org.smartregister.Context openSRPContext) {
         super(context, AllConstants.DATABASE_NAME, BuildConfig.DATABASE_VERSION, openSRPContext.session(), CoreChwApplication.createCommonFtsObject(), openSRPContext.sharedRepositoriesArray());
         this.context = context;
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        Timber.w(HfChwRepository.class.getName(),
+                "Upgrading database from version " + oldVersion + " to "
+                        + newVersion + ", which will destroy all old data");
+        int upgradeTo = oldVersion + 1;
+        while (upgradeTo <= newVersion) {
+            switch (upgradeTo) {
+                case 2:
+                    upgradeToVersion2(context, db);
+                    break;
+                case 3:
+                    upgradeToVersion3(db);
+                    break;
+                case 4:
+                    upgradeToVersion4(db);
+                    break;
+                case 5:
+                    upgradeToVersion5(db);
+                    break;
+                case 6:
+                    upgradeToVersion6(db);
+                    break;
+                case 7:
+                    upgradeToVersion7(db);
+                    break;
+                case 8:
+                    upgradeToVersion8(db);
+                case 9:
+                    upgradeToVersion9(db);
+                case 10:
+                    upgradeToVersion10(db);
+                    upgradeToVersion10ForBaSouth(db);
+                case 11:
+                    upgradeToVersion11(db);
+                case 12:
+                    upgradeToVersion12(db);
+                default:
+                    break;
+            }
+            upgradeTo++;
+        }
     }
 
     private static void upgradeToVersion2(Context context, SQLiteDatabase db) {
@@ -140,45 +186,6 @@ public class HfChwRepository extends CoreChwRepository {
         }
     }
 
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        Timber.w(HfChwRepository.class.getName(),
-                "Upgrading database from version " + oldVersion + " to "
-                        + newVersion + ", which will destroy all old data");
-        int upgradeTo = oldVersion + 1;
-        while (upgradeTo <= newVersion) {
-            switch (upgradeTo) {
-                case 2:
-                    upgradeToVersion2(context, db);
-                    break;
-                case 3:
-                    upgradeToVersion3(db);
-                    break;
-                case 4:
-                    upgradeToVersion4(db);
-                    break;
-                case 5:
-                    upgradeToVersion5(db);
-                    break;
-                case 6:
-                    upgradeToVersion6(db);
-                    break;
-                case 7:
-                    upgradeToVersion7(db);
-                    break;
-                case 8:
-                    upgradeToVersion8(db);
-                case 9:
-                    upgradeToVersion9(db);
-                case 10:
-                    upgradeToVersion10(db);
-                default:
-                    break;
-            }
-            upgradeTo++;
-        }
-    }
-
     private void upgradeToVersion8(SQLiteDatabase db) {
         try {
             db.execSQL("ALTER TABLE ec_family ADD COLUMN entity_type VARCHAR; " +
@@ -204,6 +211,42 @@ public class HfChwRepository extends CoreChwRepository {
     }
 
     private static void upgradeToVersion10(SQLiteDatabase db) {
+        try {
+            db.execSQL("ALTER TABLE ec_family ADD COLUMN event_date VARCHAR; ");
+            // add missing columns
+        } catch (Exception e) {
+            Timber.e(e, "upgradeToVersion10 ");
+        }
+
+        try {
+            db.execSQL("UPDATE ec_family SET event_date = (select min(eventDate) from event where event.baseEntityId = ec_family.base_entity_id and event.eventType = 'Family Registration') where event_date is null;");
+        } catch (Exception e) {
+            Timber.e(e, "upgradeToVersion10 ");
+        }
+
+    }
+
+    private static void upgradeToVersion11(SQLiteDatabase db) {
+        try {
+            List<String> columns = new ArrayList<>();
+            columns.add(DBConstants.KEY.VILLAGE_TOWN);
+            columns.add(ChwDBConstants.NEAREST_HEALTH_FACILITY);
+            DatabaseMigrationUtils.addFieldsToFTSTable(db, CoreChwApplication.createCommonFtsObject(), CoreConstants.TABLE_NAME.FAMILY, columns);
+
+        } catch (Exception e) {
+            Timber.e(e, "upgradeToVersion11 ");
+        }
+    }
+
+    private static void upgradeToVersion12(SQLiteDatabase db) {
+        try {
+            db.execSQL(VisitRepository.ADD_VISIT_GROUP_COLUMN);
+        }catch (Exception e) {
+            Timber.e(e, "upgradeToVersion12");
+        }
+    }
+
+    private static void upgradeToVersion10ForBaSouth(SQLiteDatabase db) {
         try {
             db.execSQL("ALTER TABLE ec_family_member ADD COLUMN reasons_for_registration TEXT NULL;");
             db.execSQL("ALTER TABLE ec_family_member ADD COLUMN has_primary_caregiver VARCHAR;");
