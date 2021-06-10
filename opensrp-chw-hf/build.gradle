@@ -75,7 +75,7 @@ android {
             buildConfigField "String[]", "ALLOWED_LOCATION_LEVELS", '{"Ward" , "Council", "Facility", "MOH Jhpiego Facility Name", "Health Facility", "Village", "Village Sublocations"}'
             buildConfigField "String[]", "LOCATION_HIERACHY", '{"Country","Region","District","Ward" ,"Council", "Facility", "MOH Jhpiego Facility Name", "Health Facility", "Village", "Village Sublocations"}'
             buildConfigField "String", 'DEFAULT_LOCATION', '"Facility"'
-            buildConfigField "boolean", "BUILD_FOR_BORESHA_AFYA_SOUTH", "false"
+            buildConfigField "boolean", "BUILD_FOR_BORESHA_AFYA_SOUTH", "true"
             buildConfigField "String[]", 'FACILITY_LEVEL', '{"MOH Jhpiego Facility Name", "Health Facility", "Facility"}'
         }
 
@@ -95,7 +95,7 @@ android {
             buildConfigField "String[]", "ALLOWED_LOCATION_LEVELS", '{"Ward" , "Council", "Facility", "MOH Jhpiego Facility Name", "Health Facility", "Village", "Village Sublocations"}'
             buildConfigField "String[]", "LOCATION_HIERACHY", '{"Country","Region","District","Ward" ,"Council", "Facility", "MOH Jhpiego Facility Name", "Health Facility", "Village", "Village Sublocations"}'
             buildConfigField "String", 'DEFAULT_LOCATION', '"Facility"'
-            buildConfigField "boolean", "BUILD_FOR_BORESHA_AFYA_SOUTH", "false"
+            buildConfigField "boolean", "BUILD_FOR_BORESHA_AFYA_SOUTH", "true"
             buildConfigField "String[]", 'FACILITY_LEVEL', '{"MOH Jhpiego Facility Name", "Health Facility", "Facility"}'
             testCoverageEnabled true
         }

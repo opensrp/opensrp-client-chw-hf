@@ -3,21 +3,26 @@ package org.smartregister.chw.hf.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.vijay.jsonwizard.utils.FormUtils;
 
+import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
 import org.smartregister.chw.core.activity.CoreHivProfileActivity;
 import org.smartregister.chw.core.activity.CoreHivUpcomingServicesActivity;
+import org.smartregister.chw.core.listener.OnClickFloatingMenu;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.adapter.HivAndTbReferralCardViewAdapter;
 import org.smartregister.chw.hf.contract.HivProfileContract;
+import org.smartregister.chw.hf.custom_view.HivFloatingMenu;
 import org.smartregister.chw.hf.interactor.HfHivProfileInteractor;
 import org.smartregister.chw.hf.model.HivTbReferralTasksAndFollowupFeedbackModel;
 import org.smartregister.chw.hf.presenter.HivProfilePresenter;
@@ -178,6 +183,44 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
         if (id == R.id.record_hiv_followup_visit) {
             openFollowUpVisitForm(false);
         }
+    }
+
+    @Override
+    public void initializeCallFAB() {
+        setHivFloatingMenu(new HivFloatingMenu(this, getHivMemberObject()));
+
+        OnClickFloatingMenu onClickFloatingMenu = viewId -> {
+            switch (viewId) {
+                case R.id.hiv_fab:
+                    checkPhoneNumberProvided();
+                    ((HivFloatingMenu) getHivFloatingMenu()).animateFAB();
+                    break;
+                case R.id.call_layout:
+                    ((HivFloatingMenu) getHivFloatingMenu()).launchCallWidget();
+                    ((HivFloatingMenu) getHivFloatingMenu()).animateFAB();
+                    break;
+                case R.id.register_index_clients_layout:
+                    Timber.d("Register Index Clients FAB clicked");
+                    break;
+                default:
+                    Timber.d("Unknown fab action");
+                    break;
+            }
+
+        };
+
+        ((HivFloatingMenu) getHivFloatingMenu()).setFloatMenuClickListener(onClickFloatingMenu);
+        getHivFloatingMenu().setGravity(Gravity.BOTTOM | Gravity.END);
+        LinearLayout.LayoutParams linearLayoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT);
+        addContentView(getHivFloatingMenu(), linearLayoutParams);
+    }
+
+    private void checkPhoneNumberProvided() {
+        boolean phoneNumberAvailable = (StringUtils.isNotBlank(getHivMemberObject().getPhoneNumber())
+                || StringUtils.isNotBlank(getHivMemberObject().getPrimaryCareGiverPhoneNumber()));
+
+        ((HivFloatingMenu) getHivFloatingMenu()).redraw(phoneNumberAvailable);
     }
 
     @Override
