@@ -15,6 +15,8 @@ import com.vijay.jsonwizard.utils.FormUtils;
 
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
+import org.json.JSONObject;
+import org.smartregister.AllConstants;
 import org.smartregister.chw.core.activity.CoreHivProfileActivity;
 import org.smartregister.chw.core.activity.CoreHivUpcomingServicesActivity;
 import org.smartregister.chw.core.listener.OnClickFloatingMenu;
@@ -31,6 +33,10 @@ import org.smartregister.chw.hiv.domain.HivMemberObject;
 import org.smartregister.chw.hiv.util.HivUtil;
 import org.smartregister.chw.tb.util.Constants;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
+import org.smartregister.opd.pojo.RegisterParams;
+import org.smartregister.opd.utils.OpdConstants;
+import org.smartregister.opd.utils.OpdJsonFormUtils;
+import org.smartregister.opd.utils.OpdUtils;
 
 import java.util.Date;
 import java.util.List;
@@ -107,7 +113,7 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
                 HivRegisterActivity.startHIVFormActivity(this, getHivMemberObject().getBaseEntityId(), CoreConstants.JSON_FORM.getHivCommunityFollowupReferral(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getHivCommunityFollowupReferral()).toString());
                 return true;
             }
-        } catch (JSONException e){
+        } catch (JSONException e) {
             Timber.e(e);
         }
         return super.onOptionsItemSelected(item);
@@ -201,12 +207,12 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
                     break;
                 case R.id.register_index_clients_layout:
                     Timber.d("Register Index Clients FAB clicked");
+                    startHivIndexClientsRegistration();
                     break;
                 default:
                     Timber.d("Unknown fab action");
                     break;
             }
-
         };
 
         ((HivFloatingMenu) getHivFloatingMenu()).setFloatMenuClickListener(onClickFloatingMenu);
@@ -225,7 +231,7 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
 
     @Override
     public Context getContext() {
-        return null;
+        return HivProfileActivity.this;
     }
 
     @Override
@@ -242,5 +248,39 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
     public void openMedicalHistory() {
         //TODO implement
     }
+
+    private void startHivIndexClientsRegistration() {
+        try {
+            String locationId = org.smartregister.family.util.Utils.context().allSharedPreferences().getPreference(AllConstants.CURRENT_LOCATION_ID);
+
+            ((HivProfilePresenter) getHivProfilePresenter()).startForm(CoreConstants.JSON_FORM.getHivIndexClientsRegistrationForm(), null, null, locationId);
+        } catch (Exception e) {
+            Timber.e(e);
+            displayToast(org.smartregister.family.R.string.error_unable_to_start_form);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode != Activity.RESULT_OK) return;
+        try {
+            String jsonString = data.getStringExtra(OpdConstants.JSON_FORM_EXTRA.JSON);
+            Timber.d("JSONResult : %s", jsonString);
+
+            JSONObject form = new JSONObject(jsonString);
+            String encounterType = form.getString(OpdJsonFormUtils.ENCOUNTER_TYPE);
+            if (encounterType.equals(CoreConstants.EventType.FAMILY_REGISTRATION)) {
+                RegisterParams registerParam = new RegisterParams();
+                registerParam.setEditMode(false);
+                registerParam.setFormTag(OpdJsonFormUtils.formTag(OpdUtils.context().allSharedPreferences()));
+                showProgressDialog(org.smartregister.chw.core.R.string.saving_dialog_title);
+                ((HivProfilePresenter) getHivProfilePresenter()).saveForm(jsonString, registerParam);
+            }
+        } catch (Exception e) {
+            Timber.e(e);
+        }
+    }
+
 }
 

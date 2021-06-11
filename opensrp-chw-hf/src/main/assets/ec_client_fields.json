@@ -2912,6 +2912,114 @@
           }
         }
       ]
+    },
+    {
+      "name": "ec_hiv_index",
+      "columns": [
+        {
+          "column_name": "hiv_client_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "index_client_base_entity_id"
+          }
+        },
+        {
+          "column_name": "hiv_status",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "hiv_status"
+          }
+        },
+        {
+          "column_name": "started_medication",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "started_medication"
+          }
+        },
+        {
+          "column_name": "gbv_analysis",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "gbv_analysis"
+          }
+        },
+        {
+          "column_name": "readiness_to_test_for_hiv",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "readiness_to_test_for_hiv"
+          }
+        },
+        {
+          "column_name": "notification_method",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "notification_method"
+          }
+        },
+        {
+          "column_name": "has_the_client_been_tested_for_hiv",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "has_the_client_been_tested_for_hiv"
+          }
+        },
+        {
+          "column_name": "hiv_test_results",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "hiv_test_results"
+          }
+        },
+        {
+          "column_name": "joined_home_based_services",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "joined_home_based_services"
+          }
+        },
+        {
+          "column_name": "ctc_number",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "ctc_number"
+          }
+        },
+        {
+          "column_name": "comments",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "comments"
+          }
+        },
+        {
+          "column_name": "chw_name",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "status"
+          }
+        }
+      ]
     }
   ]
 }

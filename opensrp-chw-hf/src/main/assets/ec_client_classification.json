@@ -327,6 +327,13 @@
             "creates_case": [
               "ec_tb_community_feedback"
             ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "Register Hiv Index",
+            "creates_case": [
+              "ec_hiv_index"
+            ]
           }
         ]
       }
