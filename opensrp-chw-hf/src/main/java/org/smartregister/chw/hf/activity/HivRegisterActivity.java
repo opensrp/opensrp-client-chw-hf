@@ -8,7 +8,6 @@ import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 
 import org.jetbrains.annotations.NotNull;
 import org.smartregister.chw.core.activity.CoreHivRegisterActivity;
-import org.smartregister.chw.core.custom_views.NavigationMenu;
 import org.smartregister.chw.hf.fragment.HivFollowupFragment;
 import org.smartregister.chw.hf.fragment.HivRegisterFragment;
 import org.smartregister.chw.hiv.fragment.BaseHivCommunityFollowupRegisterFragment;
@@ -48,7 +47,6 @@ public class HivRegisterActivity extends CoreHivRegisterActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        NavigationMenu.getInstance(this, null, null);
         super.onCreate(savedInstanceState);
     }
 

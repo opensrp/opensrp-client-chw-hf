@@ -3,25 +3,25 @@ package org.smartregister.chw.hf.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.view.View;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 
 import org.jetbrains.annotations.NotNull;
-import org.smartregister.chw.core.activity.CoreHivRegisterActivity;
-import org.smartregister.chw.core.custom_views.NavigationMenu;
-import org.smartregister.chw.hf.fragment.HivFollowupFragment;
-import org.smartregister.chw.hf.fragment.HivRegisterFragment;
-import org.smartregister.chw.hiv.fragment.BaseHivCommunityFollowupRegisterFragment;
-import org.smartregister.chw.hiv.fragment.BaseHivRegisterFragment;
+import org.smartregister.chw.core.activity.CoreHivIndexRegisterActivity;
+import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.fragment.HivIndexRegisterFragment;
+import org.smartregister.chw.hiv.fragment.BaseHivIndexRegisterFragment;
 import org.smartregister.helper.BottomNavigationHelper;
-import org.smartregister.listener.BottomNavigationListener;
 
-import java.util.List;
-
-public class HivRegisterActivity extends CoreHivRegisterActivity {
+public class HivIndexRegisterActivity extends CoreHivIndexRegisterActivity {
 
     public static void startHIVFormActivity(Activity activity, String baseEntityID, String formName, String payloadType) {
-        Intent intent = new Intent(activity, HivRegisterActivity.class);
+        Intent intent = new Intent(activity, HivIndexRegisterActivity.class);
         intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.BASE_ENTITY_ID, baseEntityID);
         intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.ACTION, payloadType);
         intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.HIV_REGISTRATION_FORM_NAME, formName);
@@ -30,25 +30,18 @@ public class HivRegisterActivity extends CoreHivRegisterActivity {
 
     @NotNull
     @Override
-    protected BaseHivRegisterFragment getRegisterFragment() {
-        return new HivRegisterFragment();
+    protected BaseHivIndexRegisterFragment getRegisterFragment() {
+        return new HivIndexRegisterFragment();
     }
 
     @NotNull
     @Override
-    protected BaseHivCommunityFollowupRegisterFragment[] getOtherFragments() {
-        return new HivFollowupFragment[]{
-                new HivFollowupFragment()};
-    }
-
-    @Override
-    public List<String> getViewIdentifiers() {
-        return null;
+    protected Fragment[] getOtherFragments() {
+        return new Fragment[0];
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        NavigationMenu.getInstance(this, null, null);
         super.onCreate(savedInstanceState);
     }
 
@@ -66,10 +59,9 @@ public class HivRegisterActivity extends CoreHivRegisterActivity {
             bottomNavigationView.getMenu().removeItem(org.smartregister.chw.hiv.R.id.action_received_referrals);
 
             bottomNavigationView.inflateMenu(getMenuResource());
+            bottomNavigationView.getMenu().removeItem(org.smartregister.chw.hiv.R.id.action_received_referrals);
             bottomNavigationHelper.disableShiftMode(bottomNavigationView);
 
-            BottomNavigationListener hivBottomNavigationListener = getBottomNavigation(this);
-            bottomNavigationView.setOnNavigationItemSelectedListener(hivBottomNavigationListener);
 
         }
     }

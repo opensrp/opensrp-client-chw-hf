@@ -214,6 +214,10 @@
             android:theme="@style/HFTheme.NoActionBar" />
 
         <activity
+            android:name=".activity.HivIndexRegisterActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+
+        <activity
             android:name=".activity.HivProfileActivity"
             android:theme="@style/HFTheme.NoActionBar" />
 
