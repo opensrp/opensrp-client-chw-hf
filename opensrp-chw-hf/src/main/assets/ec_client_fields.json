@@ -2940,11 +2940,11 @@
           }
         },
         {
-          "column_name": "started_medication",
+          "column_name": "has_started_medication",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "started_medication"
+            "concept": "has_started_medication"
           }
         },
         {
@@ -2980,19 +2980,19 @@
           }
         },
         {
-          "column_name": "hiv_test_results",
+          "column_name": "client_hiv_status_after_testing",
           "type": "Event",
           "json_mapping": {
             "field": "obs.formSubmissionField",
-            "concept": "hiv_test_results"
+            "concept": "client_hiv_status_after_testing"
           }
         },
         {
-          "column_name": "joined_home_based_services",
+          "column_name": "has_joined_home_based_services",
           "type": "Event",
           "json_mapping": {
             "field": "obs.formSubmissionField",
-            "concept": "joined_home_based_services"
+            "concept": "has_joined_home_based_services"
           }
         },
         {
@@ -3004,19 +3004,11 @@
           }
         },
         {
-          "column_name": "comments",
+          "column_name": "comment",
           "type": "Event",
           "json_mapping": {
             "field": "obs.formSubmissionField",
-            "concept": "comments"
-          }
-        },
-        {
-          "column_name": "chw_name",
-          "type": "Event",
-          "json_mapping": {
-            "field": "obs.formSubmissionField",
-            "concept": "status"
+            "concept": "comment"
           }
         }
       ]
