@@ -3010,6 +3010,13 @@
             "field": "obs.formSubmissionField",
             "concept": "comment"
           }
+        },
+        {
+          "column_name": "hiv_index_registration_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "eventDate"
+          }
         }
       ]
     }
