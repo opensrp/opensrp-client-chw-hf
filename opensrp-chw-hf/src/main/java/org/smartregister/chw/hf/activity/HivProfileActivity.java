@@ -29,7 +29,6 @@ import org.smartregister.chw.hf.interactor.HfHivProfileInteractor;
 import org.smartregister.chw.hf.model.HivTbReferralTasksAndFollowupFeedbackModel;
 import org.smartregister.chw.hf.presenter.HivProfilePresenter;
 import org.smartregister.chw.hiv.activity.BaseHivRegistrationFormsActivity;
-import org.smartregister.chw.hiv.dao.HivDao;
 import org.smartregister.chw.hiv.domain.HivMemberObject;
 import org.smartregister.chw.hiv.util.HivUtil;
 import org.smartregister.chw.tb.util.Constants;
@@ -157,7 +156,7 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
 
     @Override
     public void openIndexClientsList(HivMemberObject hivMemberObject) {
-        HivClientIndexListActivity.startHivClientIndexListActivity(this, Objects.requireNonNull(hivMemberObject));
+        IndexContactsListActivity.startHivClientIndexListActivity(this, Objects.requireNonNull(hivMemberObject));
     }
 
     @Override

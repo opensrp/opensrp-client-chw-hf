@@ -9,15 +9,15 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 
 import org.jetbrains.annotations.NotNull;
-import org.smartregister.chw.core.activity.CoreHivIndexRegisterActivity;
-import org.smartregister.chw.hf.fragment.HivIndexRegisterFragment;
-import org.smartregister.chw.hiv.fragment.BaseHivIndexRegisterFragment;
+import org.smartregister.chw.core.activity.CoreHivIndexContactsRegisterActivity;
+import org.smartregister.chw.hf.fragment.HivIndexContactsRegisterFragment;
+import org.smartregister.chw.hiv.fragment.BaseHivIndexContactsRegisterFragment;
 import org.smartregister.helper.BottomNavigationHelper;
 
-public class HivIndexContactsRegisterActivity extends CoreHivIndexRegisterActivity {
+public class HivIndexContactsContactsRegisterActivity extends CoreHivIndexContactsRegisterActivity {
 
     public static void startHIVFormActivity(Activity activity, String baseEntityID, String formName, String payloadType) {
-        Intent intent = new Intent(activity, HivIndexContactsRegisterActivity.class);
+        Intent intent = new Intent(activity, HivIndexContactsContactsRegisterActivity.class);
         intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.BASE_ENTITY_ID, baseEntityID);
         intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.ACTION, payloadType);
         intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.HIV_REGISTRATION_FORM_NAME, formName);
@@ -26,8 +26,8 @@ public class HivIndexContactsRegisterActivity extends CoreHivIndexRegisterActivi
 
     @NotNull
     @Override
-    protected BaseHivIndexRegisterFragment getRegisterFragment() {
-        return new HivIndexRegisterFragment();
+    protected BaseHivIndexContactsRegisterFragment getRegisterFragment() {
+        return new HivIndexContactsRegisterFragment();
     }
 
     @NotNull

@@ -4,12 +4,12 @@ import com.vijay.jsonwizard.utils.FormUtils;
 
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONException;
-import org.smartregister.chw.core.fragment.CoreHivIndexRegisterFragment;
+import org.smartregister.chw.core.fragment.CoreHivIndexContactsRegisterFragment;
 import org.smartregister.chw.core.provider.CoreHivProvider;
 import org.smartregister.chw.core.utils.CoreConstants;
-import org.smartregister.chw.hf.activity.HivIndexContactsRegisterActivity;
+import org.smartregister.chw.hf.activity.HivIndexContactsContactsRegisterActivity;
 import org.smartregister.chw.hf.model.HivIndexContactsRegisterFragmentModel;
-import org.smartregister.chw.hf.presenter.HivIndexContactsRegisterFragmentPresenter;
+import org.smartregister.chw.hf.presenter.HivIndexContactsContactsRegisterFragmentPresenter;
 import org.smartregister.chw.hf.provider.HfHivRegisterProvider;
 import org.smartregister.chw.hiv.domain.HivMemberObject;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
@@ -20,7 +20,7 @@ import java.util.Set;
 
 import timber.log.Timber;
 
-public class HivIndexRegisterFragment extends CoreHivIndexRegisterFragment {
+public class HivIndexContactsRegisterFragment extends CoreHivIndexContactsRegisterFragment {
 
     @Override
     public void initializeAdapter(@Nullable Set<? extends View> visibleColumns) {
@@ -37,11 +37,11 @@ public class HivIndexRegisterFragment extends CoreHivIndexRegisterFragment {
         }
         String viewConfigurationIdentifier = null;
         try {
-            viewConfigurationIdentifier = ((HivIndexContactsRegisterActivity) getActivity()).getViewIdentifiers().get(0);
+            viewConfigurationIdentifier = ((HivIndexContactsContactsRegisterActivity) getActivity()).getViewIdentifiers().get(0);
         } catch (NullPointerException e) {
             Timber.e(e);
         }
-        presenter = new HivIndexContactsRegisterFragmentPresenter(this, new HivIndexContactsRegisterFragmentModel(), viewConfigurationIdentifier);
+        presenter = new HivIndexContactsContactsRegisterFragmentPresenter(this, new HivIndexContactsRegisterFragmentModel(), viewConfigurationIdentifier);
     }
 
     @Override
@@ -56,7 +56,7 @@ public class HivIndexRegisterFragment extends CoreHivIndexRegisterFragment {
     protected void openFollowUpVisit(@Nullable HivMemberObject hivMemberObject) {
         if (getActivity() != null) {
             try {
-                HivIndexContactsRegisterActivity.startHIVFormActivity(getActivity(), hivMemberObject.getBaseEntityId(), CoreConstants.JSON_FORM.getHivRegistration(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(getActivity(), CoreConstants.JSON_FORM.getHivFollowupVisit()).toString());
+                HivIndexContactsContactsRegisterActivity.startHIVFormActivity(getActivity(), hivMemberObject.getBaseEntityId(), CoreConstants.JSON_FORM.getHivRegistration(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(getActivity(), CoreConstants.JSON_FORM.getHivFollowupVisit()).toString());
             } catch (JSONException e) {
                 Timber.e(e);
             }

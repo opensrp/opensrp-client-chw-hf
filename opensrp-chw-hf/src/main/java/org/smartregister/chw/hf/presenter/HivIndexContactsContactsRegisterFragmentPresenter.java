@@ -1,17 +1,15 @@
 package org.smartregister.chw.hf.presenter;
 
 import org.jetbrains.annotations.NotNull;
-import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hiv.contract.BaseHivRegisterFragmentContract;
-import org.smartregister.chw.hiv.presenter.BaseHivIndexRegisterFragmentPresenter;
-import org.smartregister.chw.hiv.presenter.BaseHivRegisterFragmentPresenter;
+import org.smartregister.chw.hiv.presenter.BaseHivIndexContactsRegisterFragmentPresenter;
 import org.smartregister.chw.hiv.util.Constants.Tables;
 import org.smartregister.chw.hiv.util.DBConstants;
 
-public class HivIndexContactsRegisterFragmentPresenter extends BaseHivIndexRegisterFragmentPresenter {
+public class HivIndexContactsContactsRegisterFragmentPresenter extends BaseHivIndexContactsRegisterFragmentPresenter {
 
-    public HivIndexContactsRegisterFragmentPresenter(BaseHivRegisterFragmentContract.View view, BaseHivRegisterFragmentContract.Model model, String viewConfigurationIdentifier) {
+    public HivIndexContactsContactsRegisterFragmentPresenter(BaseHivRegisterFragmentContract.View view, BaseHivRegisterFragmentContract.Model model, String viewConfigurationIdentifier) {
         super(view, model, viewConfigurationIdentifier);
     }
 

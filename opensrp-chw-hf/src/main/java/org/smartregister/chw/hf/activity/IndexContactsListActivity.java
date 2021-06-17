@@ -7,18 +7,18 @@ import android.os.Bundle;
 import com.google.gson.Gson;
 
 import org.smartregister.chw.anc.util.AppExecutors;
-import org.smartregister.chw.hiv.activity.BaseHivClientIndexListActivity;
+import org.smartregister.chw.hiv.activity.BaseIndexContactsListActivity;
 import org.smartregister.chw.hiv.domain.HivMemberObject;
-import org.smartregister.chw.hiv.interactor.BaseHivClientIndexListInteractor;
-import org.smartregister.chw.hiv.presenter.BaseHivClientIndexListPresenter;
+import org.smartregister.chw.hiv.interactor.BaseHivIndexContactsListInteractor;
+import org.smartregister.chw.hiv.presenter.BaseHivIndexcContactsListPresenter;
 import org.smartregister.chw.hiv.util.Constants;
 
 import timber.log.Timber;
 
-public class HivClientIndexListActivity extends BaseHivClientIndexListActivity {
+public class IndexContactsListActivity extends BaseIndexContactsListActivity {
 
     public static void startHivClientIndexListActivity(Activity activity, HivMemberObject memberObject) {
-        Intent intent = new Intent(activity, HivClientIndexListActivity.class);
+        Intent intent = new Intent(activity, IndexContactsListActivity.class);
         intent.putExtra(Constants.HivMemberObject.MEMBER_OBJECT, memberObject);
         activity.startActivity(intent);
     }
@@ -31,7 +31,7 @@ public class HivClientIndexListActivity extends BaseHivClientIndexListActivity {
 
     @Override
     public void initializePresenter() {
-        setPresenter(new BaseHivClientIndexListPresenter("3956c8e4-576c-4d56-9648-082a12b31032", new BaseHivClientIndexListInteractor(new AppExecutors()), this));
+        setPresenter(new BaseHivIndexcContactsListPresenter("3956c8e4-576c-4d56-9648-082a12b31032", new BaseHivIndexContactsListInteractor(new AppExecutors()), this));
     }
 
 
