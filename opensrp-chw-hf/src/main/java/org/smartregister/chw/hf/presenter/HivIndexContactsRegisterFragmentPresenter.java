@@ -9,9 +9,9 @@ import org.smartregister.chw.hiv.presenter.BaseHivRegisterFragmentPresenter;
 import org.smartregister.chw.hiv.util.Constants.Tables;
 import org.smartregister.chw.hiv.util.DBConstants;
 
-public class HivIndexRegisterFragmentPresenter extends BaseHivIndexRegisterFragmentPresenter {
+public class HivIndexContactsRegisterFragmentPresenter extends BaseHivIndexRegisterFragmentPresenter {
 
-    public HivIndexRegisterFragmentPresenter(BaseHivRegisterFragmentContract.View view, BaseHivRegisterFragmentContract.Model model, String viewConfigurationIdentifier) {
+    public HivIndexContactsRegisterFragmentPresenter(BaseHivRegisterFragmentContract.View view, BaseHivRegisterFragmentContract.Model model, String viewConfigurationIdentifier) {
         super(view, model, viewConfigurationIdentifier);
     }
 

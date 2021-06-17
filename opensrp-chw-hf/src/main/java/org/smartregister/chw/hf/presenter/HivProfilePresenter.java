@@ -72,7 +72,7 @@ public class HivProfilePresenter extends CoreHivProfilePresenter
 
         JSONObject form = model.getFormAsJson(formName, entityId, currentLocationId);
         if (getView() != null)
-            getView().startFormActivity(form, hivMemberObject, ((HivProfileActivity) getView()).getString(R.string.register_hiv_index_clients));
+            getView().startFormActivity(form, hivMemberObject, ((HivProfileActivity) getView()).getString(R.string.register_hiv_index_clients_contacts));
 
     }
 
@@ -85,7 +85,7 @@ public class HivProfilePresenter extends CoreHivProfilePresenter
             ((HivFloatingMenu) Objects.requireNonNull(view.getHivFloatingMenu())).animateFAB();
         }
 
-        view.showToast(view.getString(R.string.successful_hiv_index_registration_toast));
+        view.showToast(view.getString(R.string.successful_index_contact_registration_toast));
 
     }
 

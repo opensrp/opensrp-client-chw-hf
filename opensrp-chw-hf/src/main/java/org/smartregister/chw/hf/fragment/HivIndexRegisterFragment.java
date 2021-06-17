@@ -7,10 +7,9 @@ import org.json.JSONException;
 import org.smartregister.chw.core.fragment.CoreHivIndexRegisterFragment;
 import org.smartregister.chw.core.provider.CoreHivProvider;
 import org.smartregister.chw.core.utils.CoreConstants;
-import org.smartregister.chw.hf.activity.HivClientIndexListActivity;
-import org.smartregister.chw.hf.activity.HivIndexRegisterActivity;
-import org.smartregister.chw.hf.model.HivIndexRegisterFragmentModel;
-import org.smartregister.chw.hf.presenter.HivIndexRegisterFragmentPresenter;
+import org.smartregister.chw.hf.activity.HivIndexContactsRegisterActivity;
+import org.smartregister.chw.hf.model.HivIndexContactsRegisterFragmentModel;
+import org.smartregister.chw.hf.presenter.HivIndexContactsRegisterFragmentPresenter;
 import org.smartregister.chw.hf.provider.HfHivRegisterProvider;
 import org.smartregister.chw.hiv.domain.HivMemberObject;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
@@ -38,11 +37,11 @@ public class HivIndexRegisterFragment extends CoreHivIndexRegisterFragment {
         }
         String viewConfigurationIdentifier = null;
         try {
-            viewConfigurationIdentifier = ((HivIndexRegisterActivity) getActivity()).getViewIdentifiers().get(0);
+            viewConfigurationIdentifier = ((HivIndexContactsRegisterActivity) getActivity()).getViewIdentifiers().get(0);
         } catch (NullPointerException e) {
             Timber.e(e);
         }
-        presenter = new HivIndexRegisterFragmentPresenter(this, new HivIndexRegisterFragmentModel(), viewConfigurationIdentifier);
+        presenter = new HivIndexContactsRegisterFragmentPresenter(this, new HivIndexContactsRegisterFragmentModel(), viewConfigurationIdentifier);
     }
 
     @Override
@@ -57,7 +56,7 @@ public class HivIndexRegisterFragment extends CoreHivIndexRegisterFragment {
     protected void openFollowUpVisit(@Nullable HivMemberObject hivMemberObject) {
         if (getActivity() != null) {
             try {
-                HivIndexRegisterActivity.startHIVFormActivity(getActivity(), hivMemberObject.getBaseEntityId(), CoreConstants.JSON_FORM.getHivRegistration(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(getActivity(), CoreConstants.JSON_FORM.getHivFollowupVisit()).toString());
+                HivIndexContactsRegisterActivity.startHIVFormActivity(getActivity(), hivMemberObject.getBaseEntityId(), CoreConstants.JSON_FORM.getHivRegistration(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(getActivity(), CoreConstants.JSON_FORM.getHivFollowupVisit()).toString());
             } catch (JSONException e) {
                 Timber.e(e);
             }

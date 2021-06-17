@@ -15,7 +15,7 @@ import org.smartregister.family.util.DBConstants;
 import java.util.HashSet;
 import java.util.Set;
 
-public class HivIndexRegisterFragmentModel extends BaseHivRegisterFragmentModel {
+public class HivIndexContactsRegisterFragmentModel extends BaseHivRegisterFragmentModel {
 
     @NonNull
     @Override

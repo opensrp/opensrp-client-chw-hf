@@ -3,25 +3,21 @@ package org.smartregister.chw.hf.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.view.View;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 
 import org.jetbrains.annotations.NotNull;
 import org.smartregister.chw.core.activity.CoreHivIndexRegisterActivity;
-import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.fragment.HivIndexRegisterFragment;
 import org.smartregister.chw.hiv.fragment.BaseHivIndexRegisterFragment;
 import org.smartregister.helper.BottomNavigationHelper;
 
-public class HivIndexRegisterActivity extends CoreHivIndexRegisterActivity {
+public class HivIndexContactsRegisterActivity extends CoreHivIndexRegisterActivity {
 
     public static void startHIVFormActivity(Activity activity, String baseEntityID, String formName, String payloadType) {
-        Intent intent = new Intent(activity, HivIndexRegisterActivity.class);
+        Intent intent = new Intent(activity, HivIndexContactsRegisterActivity.class);
         intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.BASE_ENTITY_ID, baseEntityID);
         intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.ACTION, payloadType);
         intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.HIV_REGISTRATION_FORM_NAME, formName);
