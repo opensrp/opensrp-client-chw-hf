@@ -7,6 +7,7 @@ import org.json.JSONException;
 import org.smartregister.chw.core.fragment.CoreHivIndexRegisterFragment;
 import org.smartregister.chw.core.provider.CoreHivProvider;
 import org.smartregister.chw.core.utils.CoreConstants;
+import org.smartregister.chw.hf.activity.HivClientIndexListActivity;
 import org.smartregister.chw.hf.activity.HivIndexRegisterActivity;
 import org.smartregister.chw.hf.model.HivIndexRegisterFragmentModel;
 import org.smartregister.chw.hf.presenter.HivIndexRegisterFragmentPresenter;
@@ -46,8 +47,9 @@ public class HivIndexRegisterFragment extends CoreHivIndexRegisterFragment {
 
     @Override
     protected void openProfile(CommonPersonObjectClient client) {
-//        if (getActivity() != null)
-        //TODO implement open profile
+        if (getActivity() != null){
+//            HivClientIndexListActivity.startHivClientIndexListActivity(getActivity(),new HivMemberObject(null));
+        }
     }
 
 
