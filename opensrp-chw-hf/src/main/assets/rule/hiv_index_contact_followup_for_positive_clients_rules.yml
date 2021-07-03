@@ -1,0 +1,21 @@
+---
+name: "eligibility_for_testing_calculation"
+description: "eligibility_for_testing visibility"
+priority: 1
+condition: "true"
+actions:
+  - "eligibility_for_testing = false"
+---
+name: "enrolled_to_clinic_visibility"
+description: "enrolled_to_clinic visibility"
+priority: 1
+condition: "willing_to_start_medication['yes'] != null  "
+actions:
+  - "enrolled_to_clinic_visibility =  true"
+---
+name: "ctc_number_visibility"
+description: "ctc_number visibility"
+priority: 1
+condition: "willing_to_start_medication['yes'] != null && enrolled_to_clinic['yes'] != null"
+actions:
+  - "ctc_number_visibility =  true"

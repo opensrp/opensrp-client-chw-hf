@@ -1,0 +1,63 @@
+---
+name: step2_has_started_medication
+description: has_started_medication relevance
+priority: 1
+condition: "step2_hiv_status.equals('positive')"
+actions:
+  - "isRelevant = true"
+---
+name: step2_relationship_15_to_19
+description: relationship_15_to_19 relevance
+priority: 1
+condition: "(step2_age_calculated >= 15 && step2_age_calculated < 19)"
+actions:
+  - "isRelevant = true"
+---
+name: step2_relationship_adult
+description: relationship_adult relevance
+priority: 1
+condition: "step2_age_calculated >= 19 "
+actions:
+  - "isRelevant = true"
+---
+name: step2_gbv_analysis
+description: gbv_analysis relevance
+priority: 1
+condition: "!step2_relationship.equals('biological_child_under_15')"
+actions:
+  - "isRelevant = true"
+---
+name: step2_physical_abuse
+description: physical_abuse relevance
+priority: 1
+condition: "!step2_relationship.equals('biological_child_under_15')"
+actions:
+  - "isRelevant = true"
+---
+name: step2_threatened_to_be_hurt
+description: threatened_to_be_hurt relevance
+priority: 1
+condition: "!step2_relationship.equals('biological_child_under_15')"
+actions:
+  - "isRelevant = true"
+---
+name: step2_sexual_assault
+description: sexual_assault relevance
+priority: 1
+condition: "!step2_relationship.equals('biological_child_under_15')"
+actions:
+  - "isRelevant = true"
+---
+name: step2_fearful_of_contact_client
+description: sexual_assault relevance
+priority: 1
+condition: "!step2_relationship.equals('biological_child_under_15')"
+actions:
+  - "isRelevant = true"
+---
+name: step2_additional_details
+description: additional_details relevance
+priority: 1
+condition: "!step2_relationship.equals('biological_child_under_15')"
+actions:
+  - "isRelevant = true"

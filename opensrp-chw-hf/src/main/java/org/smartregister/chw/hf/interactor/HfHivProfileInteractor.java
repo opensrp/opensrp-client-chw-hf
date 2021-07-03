@@ -82,7 +82,7 @@ public class HfHivProfileInteractor extends CoreHivProfileInteractor implements 
                                  final RegisterParams registerParams, final HivMemberObject hivMemberObject, final OpdRegisterActivityContract.InteractorCallBack callBack) {
         for (OpdEventClient opdEventClient : opdEventClientList) {
             if (!opdEventClient.getClient().getIdentifier("opensrp_id").contains("family")) {
-                saveRegisterHivIndexEvent(hivMemberObject.getBaseEntityId(), opdEventClient.getClient().getBaseEntityId(), opdEventClient.getEvent().getLocationId());
+                saveRegisterHivIndexEvent(opdEventClient,hivMemberObject.getBaseEntityId(), opdEventClient.getClient().getBaseEntityId(), opdEventClient.getEvent().getLocationId());
             }
         }
         hfAllClientsRegisterInteractor.saveRegistration(opdEventClientList, jsonString, registerParams, callBack);
@@ -94,14 +94,14 @@ public class HfHivProfileInteractor extends CoreHivProfileInteractor implements 
         //overriding updateProfileHivStatusInfo
     }
 
-    private void saveRegisterHivIndexEvent(String hivClientBaseEntityId, String indexClientBaseEntityId, String locationId) {
+    private void saveRegisterHivIndexEvent(OpdEventClient opdEventClient, String hivClientBaseEntityId, String contactClientBaseEntityId, String locationId) {
         try {
             AllSharedPreferences sharedPreferences = Utils.getAllSharedPreferences();
             ECSyncHelper syncHelper = FamilyLibrary.getInstance().getEcSyncHelper();
             Event baseEvent = (Event) new Event()
-                    .withBaseEntityId(hivClientBaseEntityId)
+                    .withBaseEntityId(contactClientBaseEntityId)
                     .withEventDate(new Date())
-                    .withEventType(CoreConstants.EventType.REGISTER_HIV_INDEX)
+                    .withEventType(CoreConstants.EventType.HIV_INDEX_CONTACT_REGISTRATION)
                     .withFormSubmissionId(JsonFormUtils.generateRandomUUIDString())
                     .withEntityType(CoreConstants.TABLE_NAME.HIV_INDEX)
                     .withProviderId(sharedPreferences.fetchRegisteredANM())
@@ -112,7 +112,8 @@ public class HfHivProfileInteractor extends CoreHivProfileInteractor implements 
                     .withClientApplicationVersion(BuildConfig.VERSION_CODE)
                     .withDateCreated(new Date());
 
-            baseEvent.addObs((new Obs()).withFormSubmissionField(CoreConstants.FORM_CONSTANTS.FORM_SUBMISSION_FIELD.INDEX_CLIENT_BASE_ENTITY_ID).withValue(indexClientBaseEntityId)
+            baseEvent.setObs(opdEventClient.getEvent().getObs());
+            baseEvent.addObs((new Obs()).withFormSubmissionField(CoreConstants.FORM_CONSTANTS.FORM_SUBMISSION_FIELD.INDEX_CLIENT_BASE_ENTITY_ID).withValue(hivClientBaseEntityId)
                     .withFieldCode(CoreConstants.FORM_CONSTANTS.FORM_SUBMISSION_FIELD.INDEX_CLIENT_BASE_ENTITY_ID).withFieldType("formsubmissionField").withFieldDataType("text").withParentCode("").withHumanReadableValues(new ArrayList<>()));
 
 

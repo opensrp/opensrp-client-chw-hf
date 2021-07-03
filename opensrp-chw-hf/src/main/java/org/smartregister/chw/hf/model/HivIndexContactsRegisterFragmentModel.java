@@ -47,13 +47,12 @@ public class HivIndexContactsRegisterFragmentModel extends BaseHivRegisterFragme
         columnList.add(CoreConstants.TABLE_NAME.FAMILY + "." + DBConstants.KEY.VILLAGE_TOWN);
         columnList.add(CoreConstants.TABLE_NAME.FAMILY + "." + DBConstants.KEY.FIRST_NAME + " as " + org.smartregister.chw.anc.util.DBConstants.KEY.FAMILY_NAME);
         columnList.add(Tables.HIV_INDEX + "." + Key.HIV_CLIENT_ID);
-        columnList.add(Tables.HIV_INDEX + "." + Key.READINESS_TO_TEST_FOR_HIV);
+        columnList.add(Tables.HIV_INDEX + "." + Key.HIV_TEST_ELIGIBILITY);
         columnList.add(Tables.HIV_INDEX + "." + Key.HAS_STARTED_MEDICATION);
-        columnList.add(Tables.HIV_INDEX + "." + Key.CLIENT_HIV_STATUS_AFTER_TESTING);
-        columnList.add(Tables.HIV_INDEX + "." + Key.GBV_ANALYSIS);
-        columnList.add(Tables.HIV_INDEX + "." + Key.NOTIFICATION_METHOD);
-        columnList.add(Tables.HIV_INDEX + "." + Key.HAS_THE_CLIENT_BEEN_TESTED_FOR_HIV);
-        columnList.add(Tables.HIV_INDEX + "." + Key.HAS_JOINED_HOME_BASED_SERVICES);
+        columnList.add(Tables.HIV_INDEX + "." + Key.TEST_RESULTS);
+        columnList.add(Tables.HIV_INDEX + "." + Key.HOW_TO_NOTIFY_CONTACT_CLIENT);
+        columnList.add(Tables.HIV_INDEX + "." + Key.HAS_THE_CONTACT_CLIENT_BEEN_TESTED);
+        columnList.add(Tables.HIV_INDEX + "." + Key.ENROLLED_TO_CLINIC);
         columnList.add(Tables.HIV_INDEX + "." + Key.HIV_INDEX_REGISTRATION_DATE);
         columnList.add(Tables.HIV_INDEX + "." + Key.IS_CLOSED);
 

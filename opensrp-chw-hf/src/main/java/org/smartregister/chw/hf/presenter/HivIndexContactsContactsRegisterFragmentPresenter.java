@@ -16,7 +16,7 @@ public class HivIndexContactsContactsRegisterFragmentPresenter extends BaseHivIn
     @Override
     @NotNull
     public String getMainCondition() {
-        return " " + Tables.HIV_INDEX + "." + DBConstants.Key.IS_CLOSED + " = '0' ";
+        return " " + Tables.HIV_INDEX + "." + DBConstants.Key.TEST_RESULTS + " IS NULL ";
 
     }
 

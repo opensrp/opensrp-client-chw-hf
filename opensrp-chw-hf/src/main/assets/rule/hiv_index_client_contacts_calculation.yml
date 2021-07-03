@@ -19,3 +19,10 @@ priority: 1
 condition: "true"
 actions:
   - "calculation = step1_fam_name"
+---
+name: step2_relationship
+description: set relationship
+priority: 1
+condition: "true"
+actions:
+  - "calculation = step2_age_calculated >= 19 ? step2_relationship_adult : (step2_age_calculated >= 15 ? step2_relationship_15_to_19 : 'biological_child_under_15')"

@@ -1,0 +1,70 @@
+---
+name: "relationship_calculation"
+description: "relationship visibility"
+priority: 1
+condition: "true"
+actions:
+  - "relationship = 'non_sex_partner'"
+---
+name: "months_after_last_test_calculation"
+description: "months_after_last_test visibility"
+priority: 1
+condition: "true"
+actions:
+  - "import java.util.Calendar;
+     Calendar c2 = Calendar.getInstance();
+     c2.setTimeInMillis(when_the_test_was_conducted);"
+  - "months_after_last_test = java.lang.Math.abs((12*(c2).get(Calendar.YEAR)+(c2).get(Calendar.MONTH)) - ((12*Calendar.getInstance().get(Calendar.YEAR))+Calendar.getInstance().get(Calendar.MONTH)))"
+---
+name: "eligibility_for_testing_calculation"
+description: "eligibility_for_testing visibility"
+priority: 2
+condition: "true"
+actions:
+  - "eligibility_for_testing = months_after_last_test >= 3"
+---
+name: "enrolled_to_prep_visibility"
+description: "enrolled_to_prep visibility"
+priority: 2
+condition: "relationship == 'sex_partner' && months_after_last_test < 3 "
+actions:
+  - "enrolled_to_prep_visibility = true"
+---
+name: "reason_for_not_being_enrolled_to_prep_visibility"
+description: "reason_for_not_being_enrolled_to_prep visibility"
+priority: 3
+condition: "enrolled_to_prep['no'] != null && months_after_last_test < 3"
+actions:
+  - "reason_for_not_being_enrolled_to_prep_visibility = true"
+---
+name: "toast_notification_visibility"
+description: "toast_notification visibility"
+priority: 2
+condition: "months_after_last_test >= 3"
+actions:
+  - "toast_notification_visibility = true"
+
+---
+name: "test_results_visibility"
+description: "test_results visibility"
+priority: 2
+condition: "true"
+actions:
+  - "import java.util.Calendar;
+     Calendar c2 = Calendar.getInstance();
+     c2.setTimeInMillis(when_the_test_was_conducted);"
+  - "test_results_visibility = java.lang.Math.abs((12*(c2).get(Calendar.YEAR)+(c2).get(Calendar.MONTH)) - ((12*Calendar.getInstance().get(Calendar.YEAR))+Calendar.getInstance().get(Calendar.MONTH))) >= 3"
+---
+name: "enrolled_to_clinic_visibility"
+description: "enrolled_to_clinic visibility"
+priority: 2
+condition: "test_results['positive'] != null && months_after_last_test >= 3  "
+actions:
+  - "enrolled_to_clinic_visibility =  true"
+---
+name: "ctc_number_visibility"
+description: "ctc_number visibility"
+priority: 2
+condition: " months_after_last_test >= 3 && test_results['positive'] != null && enrolled_to_clinic['yes'] != null"
+actions:
+  - "ctc_number_visibility =  true"

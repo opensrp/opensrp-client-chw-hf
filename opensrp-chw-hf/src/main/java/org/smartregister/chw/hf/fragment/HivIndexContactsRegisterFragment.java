@@ -7,15 +7,18 @@ import org.json.JSONException;
 import org.smartregister.chw.core.fragment.CoreHivIndexContactsRegisterFragment;
 import org.smartregister.chw.core.provider.CoreHivProvider;
 import org.smartregister.chw.core.utils.CoreConstants;
+import org.smartregister.chw.hf.activity.HivIndexContactProfileActivity;
 import org.smartregister.chw.hf.activity.HivIndexContactsContactsRegisterActivity;
 import org.smartregister.chw.hf.model.HivIndexContactsRegisterFragmentModel;
 import org.smartregister.chw.hf.presenter.HivIndexContactsContactsRegisterFragmentPresenter;
 import org.smartregister.chw.hf.provider.HfHivRegisterProvider;
+import org.smartregister.chw.hiv.dao.HivIndexDao;
 import org.smartregister.chw.hiv.domain.HivMemberObject;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.configurableviews.model.View;
 import org.smartregister.cursoradapter.RecyclerViewPaginatedAdapter;
 
+import java.util.Objects;
 import java.util.Set;
 
 import timber.log.Timber;
@@ -47,7 +50,7 @@ public class HivIndexContactsRegisterFragment extends CoreHivIndexContactsRegist
     @Override
     protected void openProfile(CommonPersonObjectClient client) {
         if (getActivity() != null){
-//            HivClientIndexListActivity.startHivClientIndexListActivity(getActivity(),new HivMemberObject(null));
+            HivIndexContactProfileActivity.startHivIndexContactProfileActivity(getActivity(), Objects.requireNonNull(HivIndexDao.getMember(client.getCaseId())));
         }
     }
 

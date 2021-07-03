@@ -223,6 +223,16 @@
 
         <activity
             android:name=".activity.HivProfileActivity"
+            android:parentActivityName=".activity.HivRegisterActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+
+        <activity
+            android:name=".activity.HivIndexContactProfileActivity"
+            android:parentActivityName=".activity.HivIndexContactsContactsRegisterActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+
+        <activity
+            android:name=".activity.HivNeatFormsActivity"
             android:theme="@style/HFTheme.NoActionBar" />
 
         <activity

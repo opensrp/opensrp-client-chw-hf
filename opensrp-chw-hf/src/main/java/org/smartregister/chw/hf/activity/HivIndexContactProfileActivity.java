@@ -17,26 +17,22 @@ import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.AllConstants;
-import org.smartregister.chw.core.activity.CoreHivProfileActivity;
-import org.smartregister.chw.core.activity.CoreHivUpcomingServicesActivity;
+import org.smartregister.chw.core.activity.CoreHivIndexContactProfileActivity;
 import org.smartregister.chw.core.listener.OnClickFloatingMenu;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.adapter.HivAndTbReferralCardViewAdapter;
-import org.smartregister.chw.hf.contract.HivProfileContract;
-import org.smartregister.chw.hf.custom_view.HivFloatingMenu;
-import org.smartregister.chw.hf.interactor.HfHivProfileInteractor;
+import org.smartregister.chw.hf.contract.HivIndexContactProfileContract;
+import org.smartregister.chw.hf.custom_view.HivIndexContactFloatingMenu;
+import org.smartregister.chw.hf.interactor.HfHivIndexContactProfileInteractor;
 import org.smartregister.chw.hf.model.HivTbReferralTasksAndFollowupFeedbackModel;
+import org.smartregister.chw.hf.presenter.HivIndexContactProfilePresenter;
 import org.smartregister.chw.hf.presenter.HivProfilePresenter;
-import org.smartregister.chw.hiv.activity.BaseHivNeatFormsActivity;
-import org.smartregister.chw.hiv.domain.HivMemberObject;
-import org.smartregister.chw.hiv.util.HivUtil;
+import org.smartregister.chw.hiv.dao.HivDao;
+import org.smartregister.chw.hiv.dao.HivIndexDao;
+import org.smartregister.chw.hiv.domain.HivIndexContactObject;
 import org.smartregister.chw.tb.util.Constants;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
-import org.smartregister.opd.pojo.RegisterParams;
-import org.smartregister.opd.utils.OpdConstants;
-import org.smartregister.opd.utils.OpdJsonFormUtils;
-import org.smartregister.opd.utils.OpdUtils;
 
 import java.util.Date;
 import java.util.List;
@@ -46,20 +42,46 @@ import timber.log.Timber;
 
 import static org.smartregister.chw.hiv.util.Constants.ActivityPayload.HIV_MEMBER_OBJECT;
 
-public class HivProfileActivity extends CoreHivProfileActivity implements HivProfileContract.View {
+public class HivIndexContactProfileActivity extends CoreHivIndexContactProfileActivity implements HivIndexContactProfileContract.View {
 
+    public final static String REGISTERED_TO_HIV_REGISTRY = "registered_to_hiv_registry";
     private CommonPersonObjectClient commonPersonObjectClient;
 
-    public static void startHivProfileActivity(Activity activity, HivMemberObject memberObject) {
-        Intent intent = new Intent(activity, HivProfileActivity.class);
-        intent.putExtra(HIV_MEMBER_OBJECT, memberObject);
+    public static void startHivIndexContactProfileActivity(Activity activity, HivIndexContactObject hivIndexContactObject) {
+        Intent intent = new Intent(activity, HivIndexContactProfileActivity.class);
+        intent.putExtra(HIV_MEMBER_OBJECT, hivIndexContactObject);
         activity.startActivity(intent);
     }
 
-    public static void startHivFollowupActivity(Activity activity, String baseEntityID) throws JSONException {
-        Intent intent = new Intent(activity, BaseHivNeatFormsActivity.class);
+    public static void startHivIndexContactFollowupActivity(Activity activity, String baseEntityID) throws JSONException {
+
+        Intent intent = new Intent(activity, HivNeatFormsActivity.class);
         intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.BASE_ENTITY_ID, baseEntityID);
-        intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.JSON_FORM, (new FormUtils()).getFormJsonFromRepositoryOrAssets(activity, CoreConstants.JSON_FORM.getHivFollowupVisit()).toString());
+
+        HivIndexContactObject hivIndexContactObject = HivIndexDao.getMember(baseEntityID);
+
+        if (hivIndexContactObject.getHivStatus().equals("negative")) {
+            if (hivIndexContactObject.getRelationship().equals("sexual_partner")) { //Changing the rule file to the rule file for index contacts who are sex partners
+                JSONObject form = (new FormUtils()).getFormJsonFromRepositoryOrAssets(activity, CoreConstants.JSON_FORM.getHivIndexContactFollowupVisitForNegativeClients());
+                if (form != null)
+                    form.put("rules_file", "rule/hiv_index_contact_followup_for_negative_sex_partners_rules.yml");
+                intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.JSON_FORM, form.toString());
+            } else { //Leaving the default rule files for non sex partners index contacts
+                intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.JSON_FORM, (new FormUtils()).getFormJsonFromRepositoryOrAssets(activity, CoreConstants.JSON_FORM.getHivIndexContactFollowupVisitForNegativeClients()).toString());
+            }
+        } else if (hivIndexContactObject.getHivStatus().equals("positive")) {
+            intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.JSON_FORM, (new FormUtils()).getFormJsonFromRepositoryOrAssets(activity, CoreConstants.JSON_FORM.getHivIndexContactFollowupVisitForPositiveClients()).toString());
+        } else {
+            if (hivIndexContactObject.getRelationship().equals("sexual_partner")) { //Changing the rule file to the rule file for index contacts who are sex partners
+                JSONObject form = (new FormUtils()).getFormJsonFromRepositoryOrAssets(activity, CoreConstants.JSON_FORM.getHivIndexContactFollowupVisit());
+                if (form != null)
+                    form.put("rules_file", "rule/hiv_index_contact_followup_for_unknown_status_sex_partner_rules.yml");
+                intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.JSON_FORM, form.toString());
+            } else { //Leaving the default rule files for non sex partners index contacts
+                intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.JSON_FORM, (new FormUtils()).getFormJsonFromRepositoryOrAssets(activity, CoreConstants.JSON_FORM.getHivIndexContactFollowupVisit()).toString());
+            }
+        }
+
         intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.ACTION, Constants.ActivityPayloadType.FOLLOW_UP_VISIT);
         intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.USE_DEFAULT_NEAT_FORM_LAYOUT, false);
 
@@ -78,14 +100,14 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
     @Override
     protected void onCreation() {
         super.onCreation();
-        setCommonPersonObjectClient(getClientDetailsByBaseEntityID(getHivMemberObject().getBaseEntityId()));
-        getRecordIndexContactLayout().setVisibility(View.VISIBLE);
+        setCommonPersonObjectClient(getClientDetailsByBaseEntityID(getHivIndexContactObject().getBaseEntityId()));
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        ((HivProfileContract.Presenter) getHivProfilePresenter()).fetchReferralTasks();
+        //TODO implement fetch referral tasks
+//        ((HivIndexContactProfilePresenter.Presenter) getHivContactProfilePresenter()).fetchReferralTasks();
         if (notificationAndReferralRecyclerView != null && notificationAndReferralRecyclerView.getAdapter() != null) {
             notificationAndReferralRecyclerView.getAdapter().notifyDataSetChanged();
         }
@@ -102,7 +124,7 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
     @Override
     protected void initializePresenter() {
         showProgressBar(true);
-        setHivProfilePresenter(new HivProfilePresenter(this, new HfHivProfileInteractor(this), getHivMemberObject()));
+        setHivContactProfilePresenter(new HivIndexContactProfilePresenter(this, new HfHivIndexContactProfileInteractor(this), getHivIndexContactObject()));
         fetchProfileData();
     }
 
@@ -111,10 +133,10 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
         int itemId = item.getItemId();
         try {
             if (itemId == R.id.action_hiv_outcome) {
-                HivRegisterActivity.startHIVFormActivity(this, getHivMemberObject().getBaseEntityId(), CoreConstants.JSON_FORM.getHivOutcome(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getHivOutcome()).toString());
+                HivRegisterActivity.startHIVFormActivity(this, getHivIndexContactObject().getBaseEntityId(), CoreConstants.JSON_FORM.getHivOutcome(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getHivOutcome()).toString());
                 return true;
             } else if (itemId == R.id.action_issue_hiv_community_followup_referral) {
-                HivRegisterActivity.startHIVFormActivity(this, getHivMemberObject().getBaseEntityId(), CoreConstants.JSON_FORM.getHivCommunityFollowupReferral(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getHivCommunityFollowupReferral()).toString());
+                HivRegisterActivity.startHIVFormActivity(this, getHivIndexContactObject().getBaseEntityId(), CoreConstants.JSON_FORM.getHivCommunityFollowupReferral(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getHivCommunityFollowupReferral()).toString());
                 return true;
             }
         } catch (JSONException e) {
@@ -138,38 +160,12 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
     }
 
     @Override
-    public void setupFollowupVisitEditViews(boolean isWithin24Hours) {
-        //overriding setupFollowupVisitEditViews row
-    }
-
-
-    @Override
-    public void openHivRegistrationForm() {
-        try {
-            HivRegisterActivity.startHIVFormActivity(this, getHivMemberObject().getBaseEntityId(), CoreConstants.JSON_FORM.getHivRegistration(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getHivRegistration()).toString());
-        } catch (JSONException e) {
-            Timber.e(e);
-        }
-    }
-
-    @Override
-    public void openUpcomingServices() {
-        CoreHivUpcomingServicesActivity.startMe(this, HivUtil.toMember(getHivMemberObject()));
-    }
-
-    @Override
-    public void openIndexClientsList(HivMemberObject hivMemberObject) {
-        IndexContactsListActivity.startHivClientIndexListActivity(this, Objects.requireNonNull(hivMemberObject));
-    }
-
-    @Override
     public void openFamilyDueServices() {
         Intent intent = new Intent(this, FamilyProfileActivity.class);
 
-        intent.putExtra(org.smartregister.family.util.Constants.INTENT_KEY.FAMILY_BASE_ENTITY_ID, getHivMemberObject().getFamilyBaseEntityId());
-        intent.putExtra(org.smartregister.family.util.Constants.INTENT_KEY.FAMILY_HEAD, getHivMemberObject().getFamilyHead());
-        intent.putExtra(org.smartregister.family.util.Constants.INTENT_KEY.PRIMARY_CAREGIVER, getHivMemberObject().getPrimaryCareGiver());
-        intent.putExtra(org.smartregister.family.util.Constants.INTENT_KEY.FAMILY_NAME, getHivMemberObject().getFamilyName());
+        intent.putExtra(org.smartregister.family.util.Constants.INTENT_KEY.FAMILY_BASE_ENTITY_ID, getHivIndexContactObject().getFamilyBaseEntityId());
+        intent.putExtra(org.smartregister.family.util.Constants.INTENT_KEY.FAMILY_HEAD, getHivIndexContactObject().getFamilyHead());
+        intent.putExtra(org.smartregister.family.util.Constants.INTENT_KEY.FAMILY_NAME, getHivIndexContactObject().getFamilyName());
 
         intent.putExtra(CoreConstants.INTENT_KEY.SERVICE_DUE, true);
         startActivity(intent);
@@ -179,7 +175,7 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
     public void openFollowUpVisitForm(boolean isEdit) {
         if (!isEdit) {
             try {
-                startHivFollowupActivity(this, getHivMemberObject().getBaseEntityId());
+                startHivIndexContactFollowupActivity(this, getHivIndexContactObject().getBaseEntityId());
             } catch (JSONException e) {
                 Timber.e(e);
             }
@@ -202,17 +198,17 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
 
     @Override
     public void initializeCallFAB() {
-        setHivFloatingMenu(new HivFloatingMenu(this, getHivMemberObject()));
+        setHivFloatingMenu(new HivIndexContactFloatingMenu(this, getHivIndexContactObject()));
 
         OnClickFloatingMenu onClickFloatingMenu = viewId -> {
             switch (viewId) {
                 case R.id.hiv_fab:
                     checkPhoneNumberProvided();
-                    ((HivFloatingMenu) getHivFloatingMenu()).animateFAB();
+                    ((HivIndexContactFloatingMenu) getHivFloatingMenu()).animateFAB();
                     break;
                 case R.id.call_layout:
-                    ((HivFloatingMenu) getHivFloatingMenu()).launchCallWidget();
-                    ((HivFloatingMenu) getHivFloatingMenu()).animateFAB();
+                    ((HivIndexContactFloatingMenu) getHivFloatingMenu()).launchCallWidget();
+                    ((HivIndexContactFloatingMenu) getHivFloatingMenu()).animateFAB();
                     break;
                 case R.id.register_index_clients_layout:
                     Timber.d("Register Index Clients FAB clicked");
@@ -224,7 +220,7 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
             }
         };
 
-        ((HivFloatingMenu) getHivFloatingMenu()).setFloatMenuClickListener(onClickFloatingMenu);
+        ((HivIndexContactFloatingMenu) getHivFloatingMenu()).setFloatMenuClickListener(onClickFloatingMenu);
         getHivFloatingMenu().setGravity(Gravity.BOTTOM | Gravity.END);
         LinearLayout.LayoutParams linearLayoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.MATCH_PARENT);
@@ -232,15 +228,13 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
     }
 
     private void checkPhoneNumberProvided() {
-        boolean phoneNumberAvailable = (StringUtils.isNotBlank(getHivMemberObject().getPhoneNumber())
-                || StringUtils.isNotBlank(getHivMemberObject().getPrimaryCareGiverPhoneNumber()));
-
-        ((HivFloatingMenu) getHivFloatingMenu()).redraw(phoneNumberAvailable);
+        boolean phoneNumberAvailable = (StringUtils.isNotBlank(getHivIndexContactObject().getPhoneNumber()));
+        ((HivIndexContactFloatingMenu) getHivFloatingMenu()).redraw(phoneNumberAvailable);
     }
 
     @Override
     public Context getContext() {
-        return HivProfileActivity.this;
+        return HivIndexContactProfileActivity.this;
     }
 
     @Override
@@ -253,21 +247,11 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
         // TODO -> Implement for HF
     }
 
-    @Override
-    public void openMedicalHistory() {
-        //TODO implement
-    }
-
-    @Override
-    public void openIndexContactRegistration() {
-        startHivIndexClientsRegistration();
-    }
-
     private void startHivIndexClientsRegistration() {
         try {
             String locationId = org.smartregister.family.util.Utils.context().allSharedPreferences().getPreference(AllConstants.CURRENT_LOCATION_ID);
 
-            ((HivProfilePresenter) getHivProfilePresenter()).startForm(CoreConstants.JSON_FORM.getHivIndexClientsContactsRegistrationForm(), null, null, locationId);
+            ((HivProfilePresenter) getHivContactProfilePresenter()).startForm(CoreConstants.JSON_FORM.getHivIndexClientsContactsRegistrationForm(), null, null, locationId);
         } catch (Exception e) {
             Timber.e(e);
             displayToast(org.smartregister.family.R.string.error_unable_to_start_form);
@@ -279,17 +263,14 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode != Activity.RESULT_OK) return;
         try {
-            String jsonString = data.getStringExtra(OpdConstants.JSON_FORM_EXTRA.JSON);
-            Timber.d("JSONResult : %s", jsonString);
-
-            JSONObject form = new JSONObject(jsonString);
-            String encounterType = form.getString(OpdJsonFormUtils.ENCOUNTER_TYPE);
-            if (encounterType.equals(CoreConstants.EventType.FAMILY_REGISTRATION)) {
-                RegisterParams registerParam = new RegisterParams();
-                registerParam.setEditMode(false);
-                registerParam.setFormTag(OpdJsonFormUtils.formTag(OpdUtils.context().allSharedPreferences()));
-                showProgressDialog(org.smartregister.chw.core.R.string.saving_dialog_title);
-                ((HivProfilePresenter) getHivProfilePresenter()).saveForm(jsonString, registerParam);
+            boolean savedToHivRegistry = data.getBooleanExtra(REGISTERED_TO_HIV_REGISTRY, false);
+            if (savedToHivRegistry) {
+                HivProfileActivity.startHivProfileActivity(this, Objects.requireNonNull(HivDao.getMember(getHivIndexContactObject().getBaseEntityId())));
+                finish();
+            } else {
+                setHivIndexContactObject(HivIndexDao.getMember(getHivIndexContactObject().getBaseEntityId()));
+                initializePresenter();
+                fetchProfileData();
             }
         } catch (Exception e) {
             Timber.e(e);

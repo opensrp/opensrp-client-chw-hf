@@ -41,11 +41,6 @@ public class HivRegisterActivity extends CoreHivRegisterActivity {
     }
 
     @Override
-    public List<String> getViewIdentifiers() {
-        return null;
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
