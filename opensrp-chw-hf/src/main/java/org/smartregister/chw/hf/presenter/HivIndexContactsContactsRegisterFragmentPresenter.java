@@ -16,7 +16,9 @@ public class HivIndexContactsContactsRegisterFragmentPresenter extends BaseHivIn
     @Override
     @NotNull
     public String getMainCondition() {
-        return " " + Tables.HIV_INDEX + "." + DBConstants.Key.TEST_RESULTS + " IS NULL ";
+        return " " +
+                Tables.HIV_INDEX_HF + "." + DBConstants.Key.TEST_RESULTS + " IS NULL AND " +
+                Tables.HIV_INDEX_HF + "." + DBConstants.Key.HOW_TO_NOTIFY_CONTACT_CLIENT + " <> 'na'";
 
     }
 
@@ -41,6 +43,6 @@ public class HivIndexContactsContactsRegisterFragmentPresenter extends BaseHivIn
 
     @Override
     public String getMainTable() {
-        return Tables.HIV_INDEX;
+        return Tables.HIV_INDEX_HF;
     }
 }

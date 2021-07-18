@@ -58,6 +58,39 @@
       "title": "HIV Clients Registration form",
       "fields": [
         {
+          "name": "new_or_current_hiv_client",
+          "type": "radio_group",
+          "properties": {
+            "text": "Is the registered client a new HIV Client or and existing HIV Client?"
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "new_or_current_hiv_client",
+            "openmrs_entity_parent": ""
+          },
+          "options": [
+            {
+              "name": "new",
+              "text": "New HIV client",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "new",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "existing",
+              "text": "Existing HIV Client",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "existing",
+                "openmrs_entity_parent": ""
+              }
+            }
+          ],
+          "required_status": "yes:Please select the answer"
+        },
+        {
           "name": "place_where_test_was_conducted",
           "type": "radio_group",
           "properties": {
@@ -201,6 +234,12 @@
             "openmrs_entity_id": "ctc_number",
             "openmrs_entity_parent": ""
           },
+          "validation": [
+            {
+              "condition": "value.matches(\"(\\\\d{2}-\\\\d{2}-\\\\d{4}-\\\\d{6})?\")",
+              "message": "Not a valid CTC Number."
+            }
+          ],
           "required_status": "yes:Please specify client's CTC number",
           "dependent_calculations": [
             "hiv_registration_date",

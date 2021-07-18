@@ -28,7 +28,7 @@ import org.smartregister.chw.hf.custom_view.HivFloatingMenu;
 import org.smartregister.chw.hf.interactor.HfHivProfileInteractor;
 import org.smartregister.chw.hf.model.HivTbReferralTasksAndFollowupFeedbackModel;
 import org.smartregister.chw.hf.presenter.HivProfilePresenter;
-import org.smartregister.chw.hiv.activity.BaseHivNeatFormsActivity;
+import org.smartregister.chw.hiv.activity.BaseHivFormsActivity;
 import org.smartregister.chw.hiv.domain.HivMemberObject;
 import org.smartregister.chw.hiv.util.HivUtil;
 import org.smartregister.chw.tb.util.Constants;
@@ -57,7 +57,7 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
     }
 
     public static void startHivFollowupActivity(Activity activity, String baseEntityID) throws JSONException {
-        Intent intent = new Intent(activity, BaseHivNeatFormsActivity.class);
+        Intent intent = new Intent(activity, BaseHivFormsActivity.class);
         intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.BASE_ENTITY_ID, baseEntityID);
         intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.JSON_FORM, (new FormUtils()).getFormJsonFromRepositoryOrAssets(activity, CoreConstants.JSON_FORM.getHivFollowupVisit()).toString());
         intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.ACTION, Constants.ActivityPayloadType.FOLLOW_UP_VISIT);
@@ -68,7 +68,7 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
 
     public void setReferralTasksAndFollowupFeedback(List<HivTbReferralTasksAndFollowupFeedbackModel> tasksAndFollowupFeedbackModels) {
         if (notificationAndReferralRecyclerView != null && tasksAndFollowupFeedbackModels.size() > 0) {
-            RecyclerView.Adapter mAdapter = new HivAndTbReferralCardViewAdapter(tasksAndFollowupFeedbackModels, this, getCommonPersonObjectClient(), CoreConstants.REGISTERED_ACTIVITIES.FP_REGISTER_ACTIVITY);
+            RecyclerView.Adapter mAdapter = new HivAndTbReferralCardViewAdapter(tasksAndFollowupFeedbackModels, this, getCommonPersonObjectClient(), CoreConstants.REGISTERED_ACTIVITIES.HIV_REGISTER_ACTIVITY);
             notificationAndReferralRecyclerView.setAdapter(mAdapter);
             notificationAndReferralLayout.setVisibility(View.VISIBLE);
             findViewById(R.id.view_notification_and_referral_row).setVisibility(View.VISIBLE);
@@ -213,10 +213,6 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
                 case R.id.call_layout:
                     ((HivFloatingMenu) getHivFloatingMenu()).launchCallWidget();
                     ((HivFloatingMenu) getHivFloatingMenu()).animateFAB();
-                    break;
-                case R.id.register_index_clients_layout:
-                    Timber.d("Register Index Clients FAB clicked");
-                    startHivIndexClientsRegistration();
                     break;
                 default:
                     Timber.d("Unknown fab action");

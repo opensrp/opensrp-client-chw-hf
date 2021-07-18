@@ -31,7 +31,6 @@ public class HfHivIndexContactProfileInteractor extends CoreHivIndexContactProfi
     private HfAllClientsRegisterInteractor hfAllClientsRegisterInteractor;
 
     public HfHivIndexContactProfileInteractor(Context context) {
-        super(context);
         hfAllClientsRegisterInteractor = new HfAllClientsRegisterInteractor();
     }
 
@@ -75,21 +74,6 @@ public class HfHivIndexContactProfileInteractor extends CoreHivIndexContactProfi
             }
         }
         hfAllClientsRegisterInteractor.saveRegistration(opdEventClientList, jsonString, registerParams, callBack);
-    }
-
-
-    @Override
-    public void updateProfileHivStatusInfo(HivIndexContactObject hivIndexContactObject, BaseIndexContactProfileContract.InteractorCallback callback) {
-        //overriding updateProfileHivStatusInfo
-
-        AppExecutors appExecutors = new AppExecutors();
-        Runnable runnable = () -> {
-            appExecutors.mainThread().execute(() -> {
-                callback.refreshProfileTopSection(hivIndexContactObject);
-            });
-        };
-
-        appExecutors.diskIO().execute(runnable);
     }
 
 }

@@ -10,6 +10,8 @@ import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 
 import org.jetbrains.annotations.NotNull;
 import org.smartregister.chw.core.activity.CoreHivIndexContactsRegisterActivity;
+import org.smartregister.chw.core.custom_views.NavigationMenu;
+import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.fragment.HivIndexContactsRegisterFragment;
 import org.smartregister.chw.hiv.fragment.BaseHivIndexContactsRegisterFragment;
 import org.smartregister.helper.BottomNavigationHelper;
@@ -57,8 +59,15 @@ public class HivIndexContactsContactsRegisterActivity extends CoreHivIndexContac
             bottomNavigationView.inflateMenu(getMenuResource());
             bottomNavigationView.getMenu().removeItem(org.smartregister.chw.hiv.R.id.action_received_referrals);
             bottomNavigationHelper.disableShiftMode(bottomNavigationView);
+        }
+    }
 
-
+    @Override
+    protected void onResumption() {
+        super.onResumption();
+        NavigationMenu menu = NavigationMenu.getInstance(this, null, null);
+        if (menu != null) {
+            menu.getNavigationAdapter().setSelectedView(CoreConstants.DrawerMenu.HIV_INDEX_CLIENTS_HF);
         }
     }
 

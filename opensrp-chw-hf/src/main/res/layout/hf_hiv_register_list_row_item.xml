@@ -57,6 +57,23 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/text_view_re_elicit"
+            style="@style/CustomFontTextViewStyle.ClientList.Light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center_vertical"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:background="@color/referral_text_background"
+            android:backgroundTint="@color/referral_text_background"
+            android:text="@string/index_client_re_elicit"
+            android:textColor="@color/due_vaccine_red"
+            android:textSize="@dimen/referral_text_size"
+            android:textStyle="normal"
+            android:visibility="gone" />
+
+
+        <TextView
             android:id="@+id/text_view_referral_day"
             style="@style/CustomFontTextViewStyle.ClientList.Light"
             android:layout_width="wrap_content"
@@ -72,6 +89,7 @@
             android:textSize="@dimen/referral_text_size"
             android:textStyle="normal"
             android:visibility="visible" />
+
 
     </LinearLayout>
 

@@ -119,15 +119,6 @@
                 "openmrs_entity_id": "positive",
                 "openmrs_entity_parent": ""
               }
-            },
-            {
-              "name": "na",
-              "text": "N/A",
-              "meta_data": {
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "na",
-                "openmrs_entity_parent": ""
-              }
             }
           ],
           "required_status": "yes:Tafadhali chagua majibu ya vipimo vya VVU",
@@ -179,6 +170,12 @@
             "openmrs_entity_id": "ctc_number",
             "openmrs_entity_parent": ""
           },
+          "validation": [
+            {
+              "condition": "value.matches(\"(\\\\d{2}-\\\\d{2}-\\\\d{4}-\\\\d{6})?\")",
+              "message": "Namba ya CTC iliyojazwa si sahihi."
+            }
+          ],
           "required_status": "yes:Tafadhali jaza namba ya CTC ya mteja",
           "subjects": "test_results:map"
         },

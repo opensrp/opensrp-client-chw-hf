@@ -9,6 +9,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_launcher"
+        android:usesCleartextTraffic="true"
         android:supportsRtl="true"
         android:theme="@style/HFTheme"
         tools:replace="android:theme">
@@ -232,7 +233,7 @@
             android:theme="@style/HFTheme.NoActionBar" />
 
         <activity
-            android:name=".activity.HivNeatFormsActivity"
+            android:name=".activity.HivFormsActivity"
             android:theme="@style/HFTheme.NoActionBar" />
 
         <activity

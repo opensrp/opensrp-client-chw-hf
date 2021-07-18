@@ -123,15 +123,6 @@
                 "openmrs_entity_id": "positive",
                 "openmrs_entity_parent": ""
               }
-            },
-            {
-              "name": "na",
-              "text": "N/A",
-              "meta_data": {
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "na",
-                "openmrs_entity_parent": ""
-              }
             }
           ],
           "required_status": "yes:Please select the test results",
@@ -206,6 +197,19 @@
           ],
           "required_status": "yes:Please select the answer",
           "subjects": "test_results:map"
+        },
+        {
+          "name": "toast_enroll_the_client_to_prep",
+          "type": "toast_notification",
+          "properties": {
+            "notification_type": "info",
+            "dismissible": "no",
+            "title": "Client should be enrolled to PREP",
+            "text": "The client is a sex partner of a HIV Positive client and should be enrolled to PREP",
+            "background_color": "#082455",
+            "text_color": "#EBEE2F"
+          },
+          "subjects": "relationship:text, test_results:map"
         },
         {
           "name": "enrolled_to_prep",
@@ -302,6 +306,12 @@
             "openmrs_entity_id": "ctc_number",
             "openmrs_entity_parent": ""
           },
+          "validation": [
+            {
+              "condition": "value.matches(\"(\\\\d{2}-\\\\d{2}-\\\\d{4}-\\\\d{6})?\")",
+              "message": "Not a valid CTC Number."
+            }
+          ],
           "required_status": "yes:Please specify client's CTC number",
           "subjects": "enrolled_to_clinic:map"
         },

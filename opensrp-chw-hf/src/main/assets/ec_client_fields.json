@@ -2914,7 +2914,7 @@
       ]
     },
     {
-      "name": "ec_hiv_index",
+      "name": "ec_hiv_index_hf",
       "columns": [
         {
           "column_name": "base_entity_id",
@@ -3001,6 +3001,30 @@
           "json_mapping": {
             "field": "obs.formSubmissionField",
             "concept": "ctc_number"
+          }
+        },
+        {
+          "column_name": "refer_to_chw",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "refer_to_chw"
+          }
+        },
+        {
+          "column_name": "hiv_index_contact_community_followup_referral_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "hiv_index_contact_community_followup_referral_date"
+          }
+        },
+        {
+          "column_name": "client_followed_up_by_chw",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "client_followed_up_by_chw"
           }
         },
         {

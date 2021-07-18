@@ -1,10 +1,10 @@
 {
-  "form": "HIV Outcome",
+  "form": "HIV Index Contact Testing Followup",
   "count": "1",
-  "encounter_type": "HIV Outcome",
+  "encounter_type": "HIV Index Contact Testing Followup",
   "entity_id": "",
   "relational_id": "",
-  "rules_file": "rule/hiv_outcome_rules.yml",
+  "rules_file": "rule/hiv_index_contact_followup_for_positive_clients_rules.yml",
   "metadata": {
     "start": {
       "openmrs_entity_parent": "",
@@ -55,187 +55,182 @@
   },
   "steps": [
     {
-      "title": "HIV Problems Outcome",
+      "title": "Index Client Contact HIV Outcome",
       "fields": [
         {
-          "name": "problem",
-          "type": "multi_choice_checkbox",
+          "name": "place_where_test_was_conducted",
+          "type": "radio_group",
           "properties": {
-            "text": "Pick problem/condition associated with the client."
+            "text": "Alikopimia mteja"
           },
           "meta_data": {
-            "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "problem"
+            "openmrs_entity_id": "place_where_test_was_conducted",
+            "openmrs_entity_parent": ""
           },
           "options": [
             {
-              "name": "frequent_fever",
-              "text": "Frequent fever",
+              "name": "tb_clinic_outpatient",
+              "text": "kliniki ya kifuwa kikuu(wagonjwa wa njee)",
               "meta_data": {
-                "openmrs_entity": "",
-                "openmrs_entity_id": "frequent_fever",
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "tb_clinic_outpatient",
                 "openmrs_entity_parent": ""
               }
             },
             {
-              "name": "weight_loss",
-              "text": "Weight loss",
+              "name": "sexual_transmitted_diseases_clinic",
+              "text": "kiliniki ya magonjwa ya zinaa",
               "meta_data": {
-                "openmrs_entity": "",
-                "openmrs_entity_id": "weight_loss",
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "sexual_transmitted_diseases_clinic",
                 "openmrs_entity_parent": ""
               }
             },
             {
-              "name": "rashes",
-              "text": "Rashes",
+              "name": "outpatient_department",
+              "text": "Idara ya wagonjwa wa njee",
               "meta_data": {
-                "openmrs_entity": "",
-                "openmrs_entity_id": "rashes",
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "outpatient_department",
                 "openmrs_entity_parent": ""
               }
             },
             {
-              "name": "fatigue",
-              "text": "Fatigue",
+              "name": "inpatient_department",
+              "text": "Idara ya wagonjwa wa ndani",
               "meta_data": {
-                "openmrs_entity": "",
-                "openmrs_entity_id": "fatigue",
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "inpatient_department",
                 "openmrs_entity_parent": ""
               }
             },
             {
-              "name": "mouth_ulcers",
-              "text": "Mouth ulcers",
+              "name": "blood_transfusion_service",
+              "text": "Huduma ya uchangiaji wa damu",
               "meta_data": {
-                "openmrs_entity": "",
-                "openmrs_entity_id": "mouth_ulcers",
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "blood_transfusion_service",
                 "openmrs_entity_parent": ""
               }
             },
             {
-              "name": "Other",
-              "text": "Other",
+              "name": "home_selftest_service",
+              "text": "Huduma ya kujipima mwenyewe nyumbani",
               "meta_data": {
-                "openmrs_entity": "",
-                "openmrs_entity_id": "Other",
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "home_selftest_service",
                 "openmrs_entity_parent": ""
               }
             },
             {
-              "name": "None",
-              "text": "None",
-              "is_exclusive": true,
+              "name": "voluntary_patients",
+              "text": "Wateja wakujitolea",
               "meta_data": {
-                "openmrs_entity": "",
-                "openmrs_entity_id": "None",
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "voluntary_patients",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "family_planning_clinic",
+              "text": "Kiliniki ya uzazi salama",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "family_planning_clinic",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "ctc",
+              "text": "CTC",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "ctc",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "men_circumcision",
+              "text": "Tohara kwa wanaume",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "men_circumcision",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "outreach_services",
+              "text": "Huduma ya Mkoba",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "outreach_services",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "reproductive_an_child_health",
+              "text": "Afya ya uzazi na mtoto",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "reproductive_an_child_health",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "other",
+              "text": "Mengineo",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "other",
                 "openmrs_entity_parent": ""
               }
             }
           ],
-          "required_status": "yes:Please specify client's problems",
+          "required_status": "yes:Please select the answer",
           "dependent_calculations": [
-            "hiv_facility_visit_date"
+            "eligibility_for_testing",
+            "test_results"
           ]
         },
         {
-          "name": "problem_other",
-          "type": "text_input_edit_text",
-          "properties": {
-            "hint": "Other Problems",
-            "type": "name"
-          },
-          "meta_data": {
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "problem_other",
-            "openmrs_entity_parent": "problem"
-          },
-          "required_status": "true:Please specify other symptoms",
-          "subjects": "problem:map"
-        },
-        {
-          "name": "action_taken_hiv_problems",
+          "name": "willing_to_start_medication",
           "type": "radio_group",
           "properties": {
-            "text": "Action taken by health facility."
+            "text": "je mshirika muathirika yuko teyari kuanza dawa?"
           },
           "meta_data": {
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "action_taken_hiv_problems",
+            "openmrs_entity_id": "willing_to_start_medication",
             "openmrs_entity_parent": ""
           },
           "options": [
             {
-              "name": "no_action_taken",
-              "text": "No action taken",
+              "name": "yes",
+              "text": "Ndio",
               "meta_data": {
                 "openmrs_entity": "concept",
-                "openmrs_entity_id": "no_action_taken",
+                "openmrs_entity_id": "yes",
                 "openmrs_entity_parent": ""
               }
             },
             {
-              "name": "tested",
-              "text": "Tested",
+              "name": "no",
+              "text": "Hapana",
               "meta_data": {
                 "openmrs_entity": "concept",
-                "openmrs_entity_id": "tested",
-                "openmrs_entity_parent": ""
-              }
-            },
-            {
-              "name": "referred",
-              "text": "Referred",
-              "is_exclusive": true,
-              "meta_data": {
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "referred",
+                "openmrs_entity_id": "no",
                 "openmrs_entity_parent": ""
               }
             }
           ],
-          "required_status": "yes:Please select action taken"
-        },
-        {
-          "name": "test_results",
-          "type": "radio_group",
-          "properties": {
-            "text": "Select client’s HIV test results."
-          },
-          "meta_data": {
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "test_results",
-            "openmrs_entity_parent": ""
-          },
-          "options": [
-            {
-              "name": "positive",
-              "text": "Positive",
-              "meta_data": {
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "positive",
-                "openmrs_entity_parent": ""
-              }
-            },
-            {
-              "name": "negative",
-              "text": "Negative",
-              "meta_data": {
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "negative",
-                "openmrs_entity_parent": ""
-              }
-            }
-          ],
-          "required_status": "yes:Please select the test results",
-          "subjects": "action_taken_hiv_problems:map"
+          "required_status": "yes:Please select the answer"
         },
         {
           "name": "enrolled_to_clinic",
           "type": "radio_group",
           "properties": {
-            "text": "Is the client enrolled to CTC clinic?"
+            "text": "Je mteja ameandikishwa kwenye kilinic ya matunzo na tiba?"
           },
           "meta_data": {
             "openmrs_entity": "concept",
@@ -245,7 +240,7 @@
           "options": [
             {
               "name": "yes",
-              "text": "Yes",
+              "text": "Ndio",
               "meta_data": {
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "yes",
@@ -254,7 +249,7 @@
             },
             {
               "name": "no",
-              "text": "No",
+              "text": "Hapana",
               "meta_data": {
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "no",
@@ -263,14 +258,14 @@
             }
           ],
           "required_status": "yes:Please select the answer",
-          "subjects": "test_results:map"
+          "subjects": "willing_to_start_medication:map"
         },
         {
           "name": "ctc_number",
           "type": "text_input_edit_text",
           "properties": {
-            "hint": "Please fill client's CTC number",
-            "type": "name"
+            "hint": "Ingiza number ya mteja  wa CTC",
+            "type": "Clinic of Treatment and Care registration number (CTC Number)"
           },
           "meta_data": {
             "openmrs_entity": "concept",
@@ -280,27 +275,21 @@
           "validation": [
             {
               "condition": "value.matches(\"(\\\\d{2}-\\\\d{2}-\\\\d{4}-\\\\d{6})?\")",
-              "message": "Not a valid CTC Number."
+              "message": "Namba ya CTC iliyojazwa si sahihi."
             }
           ],
-          "validation": [
-            {
-              "condition": "value.matches(\"(\\\\d{2}-\\\\d{2}-\\\\d{4}-\\\\d{6})?\")",
-              "message": "Not a valid CTC Number."
-            }
-          ],
-          "required_status": "true:Please fill client's CTC number",
-          "subjects": "enrolled_to_clinic:map"
+          "required_status": "yes:Please specify client's CTC number",
+          "subjects": "willing_to_start_medication:map, enrolled_to_clinic:map"
         },
         {
-          "name": "comment_hiv_problems",
+          "name": "comment",
           "type": "text_input_edit_text",
           "properties": {
-            "hint": "Remarks/Comments"
+            "hint": "Maoni"
           },
           "meta_data": {
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "comment_hiv_problems",
+            "openmrs_entity_id": "comment",
             "openmrs_entity_parent": ""
           },
           "required_status": "false"

@@ -7,11 +7,11 @@ actions:
   - "relationship = 'non_sex_partner'"
 ---
 name: "eligibility_for_testing_calculation"
-description: "eligibility_for_testing visibility"
+description: "eligibility_for_testing calculation"
 priority: 1
 condition: "true"
 actions:
-  - "eligibility_for_testing = true"
+  - "eligibility_for_testing_calculation = true"
 ---
 name: "test_results_visibility"
 description: "test_results visibility"
@@ -26,6 +26,13 @@ priority: 1
 condition: "test_results['positive'] != null && has_the_contact_client_been_tested['yes'] != null "
 actions:
   - "place_where_test_was_conducted_visibility = true"
+---
+name: "toast_enroll_the_client_to_prep_visibility"
+description: "toast_enroll_the_client_to_prep visibility"
+priority: 2
+condition: "relationship == 'sex_partner' && test_results['negative'] != null "
+actions:
+  - "toast_enroll_the_client_to_prep_visibility = true"
 ---
 name: "enrolled_to_prep_visibility"
 description: "enrolled_to_prep visibility"

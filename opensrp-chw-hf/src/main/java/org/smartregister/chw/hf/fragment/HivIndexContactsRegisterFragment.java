@@ -5,13 +5,13 @@ import com.vijay.jsonwizard.utils.FormUtils;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONException;
 import org.smartregister.chw.core.fragment.CoreHivIndexContactsRegisterFragment;
-import org.smartregister.chw.core.provider.CoreHivProvider;
+import org.smartregister.chw.core.provider.CoreHivIndexContactsProvider;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.activity.HivIndexContactProfileActivity;
 import org.smartregister.chw.hf.activity.HivIndexContactsContactsRegisterActivity;
 import org.smartregister.chw.hf.model.HivIndexContactsRegisterFragmentModel;
 import org.smartregister.chw.hf.presenter.HivIndexContactsContactsRegisterFragmentPresenter;
-import org.smartregister.chw.hf.provider.HfHivRegisterProvider;
+import org.smartregister.chw.hf.provider.HfHivIndexContactsRegisterProvider;
 import org.smartregister.chw.hiv.dao.HivIndexDao;
 import org.smartregister.chw.hiv.domain.HivMemberObject;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
@@ -27,7 +27,7 @@ public class HivIndexContactsRegisterFragment extends CoreHivIndexContactsRegist
 
     @Override
     public void initializeAdapter(@Nullable Set<? extends View> visibleColumns) {
-        CoreHivProvider hivRegisterProvider = new HfHivRegisterProvider(getActivity(), visibleColumns, registerActionHandler, paginationViewHandler);
+        CoreHivIndexContactsProvider hivRegisterProvider = new HfHivIndexContactsRegisterProvider(getActivity(), visibleColumns, registerActionHandler, paginationViewHandler);
         clientAdapter = new RecyclerViewPaginatedAdapter(null, hivRegisterProvider, context().commonrepository(this.tablename));
         clientAdapter.setCurrentlimit(20);
         clientsView.setAdapter(clientAdapter);
@@ -49,7 +49,7 @@ public class HivIndexContactsRegisterFragment extends CoreHivIndexContactsRegist
 
     @Override
     protected void openProfile(CommonPersonObjectClient client) {
-        if (getActivity() != null){
+        if (getActivity() != null) {
             HivIndexContactProfileActivity.startHivIndexContactProfileActivity(getActivity(), Objects.requireNonNull(HivIndexDao.getMember(client.getCaseId())));
         }
     }

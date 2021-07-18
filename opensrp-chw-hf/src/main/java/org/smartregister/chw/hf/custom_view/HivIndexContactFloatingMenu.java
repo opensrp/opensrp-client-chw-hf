@@ -11,6 +11,5 @@ public class HivIndexContactFloatingMenu extends CoreHivIndexContactFloatingMenu
     public HivIndexContactFloatingMenu(Context context, HivIndexContactObject hivIndexContactObject) {
         super(context, hivIndexContactObject);
         referLayout.setVisibility(GONE);
-        registerHivIndexClientsLayout.setVisibility(GONE);
     }
 }
