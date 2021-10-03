@@ -11,7 +11,7 @@ import org.json.JSONObject;
 import org.smartregister.chw.hf.presenter.HivFormActivityActivityPresenter;
 import org.smartregister.chw.hiv.activity.BaseHivFormsActivity;
 import org.smartregister.chw.hiv.interactor.BaseHivFormsInteractor;
-import org.smartregister.chw.hiv.presenter.BaseNeatFormActivityPresenter;
+import org.smartregister.chw.hiv.presenter.BaseHivFormsActivityPresenter;
 import org.smartregister.chw.hiv.util.Constants;
 import org.smartregister.chw.hiv.util.DBConstants;
 import org.smartregister.chw.hiv.util.JsonFormConstants;
@@ -21,7 +21,7 @@ import java.util.HashMap;
 public class HivFormsActivity extends BaseHivFormsActivity {
     @NotNull
     @Override
-    public BaseNeatFormActivityPresenter presenter() {
+    public BaseHivFormsActivityPresenter presenter() {
         return new HivFormActivityActivityPresenter(getBaseEntityId(), this, new BaseHivFormsInteractor());
     }
 

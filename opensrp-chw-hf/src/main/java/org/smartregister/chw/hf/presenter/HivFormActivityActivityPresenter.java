@@ -11,7 +11,7 @@ import org.smartregister.chw.core.utils.CoreChildUtils;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.activity.HivFormsActivity;
 import org.smartregister.chw.hiv.contract.BaseHivFormsContract;
-import org.smartregister.chw.hiv.presenter.BaseNeatFormActivityPresenter;
+import org.smartregister.chw.hiv.presenter.BaseHivFormsActivityPresenter;
 import org.smartregister.chw.hiv.util.Constants;
 import org.smartregister.chw.hiv.util.DBConstants;
 import org.smartregister.chw.hiv.util.JsonFormConstants;
@@ -19,7 +19,7 @@ import org.smartregister.chw.hiv.util.JsonFormConstants;
 import java.util.Calendar;
 import java.util.HashMap;
 
-public class HivFormActivityActivityPresenter extends BaseNeatFormActivityPresenter {
+public class HivFormActivityActivityPresenter extends BaseHivFormsActivityPresenter {
 
     public HivFormActivityActivityPresenter(@NotNull String baseEntityID, @NotNull BaseHivFormsContract.View view, @NotNull BaseHivFormsContract.Interactor interactor) {
         super(baseEntityID, view, interactor);
