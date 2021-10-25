@@ -1,0 +1,248 @@
+{
+  "count": "1",
+  "encounter_type": "Baseline Investigation",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "step1": {
+    "title": "Baseline Investigation",
+    "fields": [
+      {
+        "type": "native_radio",
+        "key": "glucose_in_urine",
+        "label": "Glucose In Urine",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "glucose_in_urine",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "positive",
+            "text": "Positive",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "positive"
+          },
+          {
+            "key": "negative",
+            "text": "Negative",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "negative"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
+      },
+      {
+        "type": "native_radio",
+        "key": "protein_in_urine",
+        "label": "Protein In Urine",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "protein_in_urine",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "positive",
+            "text": "Positive",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "positive"
+          },
+          {
+            "key": "negative",
+            "text": "Negative",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "negative"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
+      },
+      {
+        "type": "normal_edit_text",
+        "key": "blood_grouping",
+        "hint": "Blood Grouping and Cross match",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "blood_grouping",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
+      },
+      {
+        "type": "normal_edit_text",
+        "key": "hb_level",
+        "edit_type": "number",
+        "hint": "HB Level",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hb_level",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
+      },
+      {
+        "type": "normal_edit_text",
+        "key": "blood_for_glucose",
+        "edit_type": "number",
+        "hint": "Blood For Glucose",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "blood_for_glucose",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
+      },
+      {
+        "type": "native_radio",
+        "key": "mRDT_for_malaria",
+        "label": "mRDT for Malaria Results",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "mRDT_for_malaria",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "positive",
+            "text": "Positive",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "positive"
+          },
+          {
+            "key": "negative",
+            "text": "Negative",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "negative"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
+      },
+      {
+        "type": "native_radio",
+        "key": "hiv",
+        "label": "HIV Test Results",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hiv",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "positive",
+            "text": "Positive",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "positive"
+          },
+          {
+            "key": "negative",
+            "text": "Negative",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "negative"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
+      },
+      {
+        "type": "native_radio",
+        "key": "syphilis",
+        "label": "Syphilis Test Results",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "syphilis",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "positive",
+            "text": "Positive",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "positive"
+          },
+          {
+            "key": "negative",
+            "text": "Negative",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "negative"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
+      },
+      {
+        "type": "native_radio",
+        "key": "hepatitis",
+        "label": "Hepatitis Test Results",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hepatitis",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "positive",
+            "text": "Positive",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "positive"
+          },
+          {
+            "key": "negative",
+            "text": "Negative",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "negative"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,208 @@
+{
+  "count": "1",
+  "encounter_type": "Medical and Surgical History",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "step1": {
+    "title": "Medical and Surgical History",
+    "fields": [
+      {
+        "key": "medical_surgical_history",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "medical_surgical_history",
+        "type": "check_box",
+        "label_info_image_src": "img/chw.png",
+        "label_info_has_image": true,
+        "label": "Any Medical and surgical History of the Patient?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "exclusive": [
+          "none"
+        ],
+        "options": [
+          {
+            "key": "diabetes_mellitus",
+            "text": "Diabetes Mellitus",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "diabetes_mellitus"
+          },
+          {
+            "key": "sickle_cell_disease",
+            "text": "Sickle Cell Disease",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "sickle_cell_disease"
+          },
+          {
+            "key": "heart_diseases",
+            "text": "Heart Diseases",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "heart_diseases"
+          },
+          {
+            "key": "thyroid_diseases",
+            "text": "Thyroid Diseases",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "thyroid_diseases"
+          },
+          {
+            "key": "anaemia_blood_transfusion",
+            "text": "Anaemia/blood transfusion",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "anaemia_blood_transfusion"
+          },
+          {
+            "key": "hiv_aids",
+            "text": "HIV/AIDS",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "hiv_aids"
+          },
+          {
+            "key": "epilepsy",
+            "text": "Epilepsy",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "epilepsy"
+          },
+          {
+            "key": "previous_c_s",
+            "text": "Previous C/S",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "previous_c_s"
+          },
+          {
+            "key": "myomectomy",
+            "text": "Myomectomy",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "myomectomy"
+          },
+          {
+            "key": "third_degree_tear",
+            "text": "Third Degree Tear",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "third_degree_tear"
+          },
+          {
+            "key": "repaired_fistula",
+            "text": "Repaired Fistula",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "repaired_fistula"
+          },
+          {
+            "key": "female_genital_mutilation",
+            "text": "Female Genital Mutilation",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "female_genital_mutilation"
+          },
+          {
+            "key": "closely_spaced_pregnancy",
+            "text": "Closely spaced pregnancy (within 2 years)",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "closely_spaced_pregnancy"
+          },
+          {
+            "key": "hx_hemorrhage",
+            "text": "Hx of Hemorrhage",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "hx_hemorrhage"
+          },
+          {
+            "key": "history_of_high_blood_pressure",
+            "text": "History of high blood pressure",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "history_of_high_blood_pressure"
+          },
+          {
+            "key": "anaemia",
+            "text": "Anaemia",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "anaemia"
+          },
+          {
+            "key": "difficult_delivery",
+            "text": "Difficult delivery (Vacuum, episiotomy)",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "difficult_delivery"
+          },
+          {
+            "key": "hx_abortions",
+            "text": "Hx of Abortions",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "hx_abortions"
+          },
+          {
+            "key": "none",
+            "text": "None",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "none"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please pick at least one"
+        }
+      }
+    ]
+  }
+}

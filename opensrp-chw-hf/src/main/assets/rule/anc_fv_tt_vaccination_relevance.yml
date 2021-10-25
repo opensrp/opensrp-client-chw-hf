@@ -1,0 +1,7 @@
+---
+name: step1_give_tt_vaccination
+description: give_tt_vaccination relevance
+priority: 1
+condition: "step1_has_tt_card.contains('no') || step1_if_vaccinated_per_schedule.contains('no')"
+actions:
+  - "isRelevant = true"

@@ -1,0 +1,180 @@
+{
+  "count": "1",
+  "encounter_type": "ANC Consultation",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "step1": {
+    "title": "Consultation (ANC assessment and Update Maternal Handbook)",
+    "fields": [
+      {
+        "type": "check_box",
+        "key": "examination_findings",
+        "label": "Examination Findings on current visit",
+        "openmrs_entity":"concept",
+        "openmrs_entity_id": "examination_findings",
+        "openmrs_entity_parent": "",
+        "exclusive": ["none"],
+        "options": [
+          {
+            "key": "puffy_face",
+            "text": "Face is puffy",
+            "openmrs_entity":"concept",
+            "openmrs_entity_id": "puffy_face"
+          },
+          {
+            "key": "pallor",
+            "text": "Pallor(conjunctiva, palms, tip of the tongue, gums)",
+            "openmrs_entity":"concept",
+            "openmrs_entity_id": "pallor"
+          },
+          {
+            "key": "breasts_and_lymph_nodes",
+            "text": "Breasts and lymph nodes (Normal/Abnormal)",
+            "openmrs_entity":"concept",
+            "openmrs_entity_id": "breasts_and_lymph_nodes"
+          },
+          {
+            "key": "none",
+            "text": "None",
+            "openmrs_entity":"concept",
+            "openmrs_entity_id": "none"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please select at least one"
+        }
+      },
+      {
+        "type": "edit_text",
+        "hint": "Weight(Kg)",
+        "key": "weight",
+        "edit_type": "number",
+        "openmrs_entity":"concept",
+        "openmrs_entity_id": "weight",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": true,
+          "err": "Please enter weight"
+        }
+      },
+      {
+        "type": "edit_text",
+        "hint": "Height(CM)",
+        "edit_type": "number",
+        "key": "height",
+        "openmrs_entity":"concept",
+        "openmrs_entity_id": "height",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": true,
+          "err": "Please enter height"
+        }
+      },
+      {
+        "type": "edit_text",
+        "text": "Blood Pressure",
+        "key": "blood_pressure",
+        "text_color": "#000000",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "blood_pressure",
+        "openmrs_entity_parent": ""
+      },
+      {
+        "type": "edit_text",
+        "hint": "Systolic",
+        "key": "systolic",
+        "edit_type": "number",
+        "openmrs_entity_id": "systolic",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "v_required": {
+          "value": true,
+          "err": "Enter Systolic value"
+        }
+      },
+      {
+        "type": "edit_text",
+        "hint": "Diastolic",
+        "key": "diastolic",
+        "edit_type": "number",
+        "openmrs_entity_id": "diastolic",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "v_required": {
+          "value": true,
+          "err": "Enter Diastolic value"
+        }
+      },
+      {
+        "type": "edit_text",
+        "hint": "Pulse Rate(Beats per minute)",
+        "key": "pulse_rate",
+        "edit_type": "number",
+        "openmrs_entity_id": "pulse_rate",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "v_required": {
+          "value": true,
+          "err": "Pulse Rate is required"
+        }
+      },
+      {
+        "type": "edit_text",
+        "hint": "Temperature(C)",
+        "key": "temperature",
+        "edit_type": "number",
+        "openmrs_entity_id": "temperature",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "v_required": {
+          "value": true,
+          "err": "Enter temperature value"
+        }
+      }
+    ]
+  }
+}

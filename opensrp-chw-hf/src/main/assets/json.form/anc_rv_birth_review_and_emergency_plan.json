@@ -1,0 +1,157 @@
+{
+  "count": "1",
+  "encounter_type": "Emergency Plan",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "step1": {
+    "title": "Review birth and emergency plan",
+    "fields": [
+      {
+        "type": "check_box",
+        "key": "partner_involved",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "text": "Partner Involved",
+            "key": "partner_involved_chk"
+          }
+        ]
+      },
+      {
+        "type": "edit_text",
+        "key": "name_of_hf",
+        "hint": "Name of Health Facility",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": true,
+          "err": "Please give a name"
+        }
+      },
+      {
+        "type": "native_radio",
+        "key": "level_of_hf",
+        "hint": "Level of Health Facility",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": true,
+          "err": "Please select one"
+        },
+        "options": [
+          {
+            "text": "HC",
+            "key": "hc"
+          },
+          {
+            "text": "District Hospital",
+            "key": "district_hosp"
+          },
+          {
+            "text": "RRH",
+            "key": "rrh"
+          }
+        ]
+      },
+      {
+        "type": "check_box",
+        "key": "transport",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "text": "Method of Transport Identified",
+            "key": "method_of_transport_identified"
+          }
+        ]
+      },
+      {
+        "type": "check_box",
+        "key": "birth_companion",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "text": "Birth Companion Identified and notified",
+            "key": "birth_companion_identified"
+          }
+        ]
+      },
+      {
+        "type": "check_box",
+        "key": "emergency_funds",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "text": "Emergency Birth Funds",
+            "key": "emergency_birth_funds"
+          }
+        ]
+      },
+      {
+        "type": "check_box",
+        "key": "household_support",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "text": "Household Caregiver support prepared",
+            "key": "household_caregiver_support_prepared"
+          }
+        ]
+      }
+    ]
+  }
+}

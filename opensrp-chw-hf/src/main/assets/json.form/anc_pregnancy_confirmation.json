@@ -1,0 +1,427 @@
+{
+  "count": "3",
+  "skip_blank_steps": true,
+  "encounter_type": "Pregnancy Confirmation",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "step1": {
+    "title": "Triage",
+    "next": "step2",
+    "fields": [
+      {
+        "type": "check_box",
+        "key": "danger_signs_analysis",
+        "label": "The HCW performs a quick analysis/examination to identify clients with danger signs",
+        "openmrs_entity_id": "danger_signs_analysis",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "exclusive": [
+          "none"
+        ],
+        "options": [
+          {
+            "key": "bleeding_vag",
+            "text": "Bleeding Vaginally",
+            "value": false
+          },
+          {
+            "key": "headache_visual_disturbance",
+            "text": "Headache and Visual Disturbance",
+            "value": false
+          },
+          {
+            "key": "severely_pale",
+            "text": "Severely Pale",
+            "value": false
+          },
+          {
+            "key": "severe_vomiting",
+            "text": "Severe Vomiting",
+            "value": false
+          },
+          {
+            "key": "convulsion",
+            "text": "Convulsion",
+            "value": false
+          },
+          {
+            "key": "looking_very_ill",
+            "text": "Looking Very Ill",
+            "value": false
+          },
+          {
+            "key": "fever",
+            "text": "Fever",
+            "value": false
+          },
+          {
+            "key": "unconscious",
+            "text": "Unconscious",
+            "value": false
+          },
+          {
+            "key": "severe_pain",
+            "text": "Severe Pain",
+            "value": false
+          },
+          {
+            "key": "in_labour",
+            "text": "In Labour",
+            "value": false
+          },
+          {
+            "key": "imminent_labour",
+            "text": "Imminent Labour",
+            "value": false
+          },
+          {
+            "key": "none",
+            "text": "None",
+            "value": false
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select the danger sings"
+        }
+      }
+    ]
+  },
+  "step2": {
+    "title": "Pregnancy Confirmation",
+    "next": "step3",
+    "fields": [
+      {
+        "type": "native_radio",
+        "openmrs_entity_id": "type_of_pregnancy_test",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "label": "Select the type of test conducted",
+        "key": "type_of_pregnancy_test",
+        "options": [
+          {
+            "text": "UPT",
+            "key": "upt",
+            "value": false
+          },
+          {
+            "text": "USS",
+            "key": "uss",
+            "value": false
+          }
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_pregnancy_confirmation_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select the type of pregnancy conducted"
+        }
+      },
+      {
+        "type": "native_radio",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "label": "Please select UPT Results",
+        "key": "upt",
+        "options": [
+          {
+            "text": "Positive",
+            "key": "positive",
+            "value": false
+          },
+          {
+            "text": "Negative",
+            "key": "negative",
+            "value": false
+          }
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_pregnancy_confirmation_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select the UPT test results"
+        }
+      },
+      {
+        "type": "native_radio",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "label": "Please select USS results",
+        "key": "uss",
+        "options": [
+          {
+            "key": "present_gestation_sac",
+            "text": "Present Gestation Sac",
+            "value": false
+          },
+          {
+            "key": "absent_gestation_sac",
+            "text": "Absent Gestation Sac",
+            "value": false
+          }
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_pregnancy_confirmation_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select the USS test results"
+        }
+      }
+    ]
+  },
+  "step3": {
+    "title": "End",
+    "fields": [
+      {
+        "key": "last_menstrual_period",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "1427AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "type": "date_picker",
+        "hint": "Last Menstrual Period (LMP)",
+        "label_info_title": "LMP",
+        "label_info_text": "LMP = first day of Last Menstrual Period. If the exact date is unknown, but the period of the month is known, use day 5 for beginning of the month, day 15 for middle of the month and day 25 for end of the month.",
+        "expanded": false,
+        "max_date": "today",
+        "min_date": "today-50w",
+        "v_required": {
+          "value": "true",
+          "err": "LMP required"
+        },
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_pregnancy_confirmation_calculation.yml"
+            }
+          }
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_pregnancy_confirmation_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "last_menstrual_period_unknown",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "last_menstrual_period_unknown",
+        "openmrs_data_type": "text",
+        "type": "check_box",
+        "options": [
+          {
+            "key": "lmp_unknown",
+            "text": "LMP unknown?",
+            "text_size": "18px",
+            "value": "false"
+          }
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_pregnancy_confirmation_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "edd",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "5596AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "type": "date_picker",
+        "hint": "Expected Date of Delivery (EDD)",
+        "max_date": "today+50w",
+        "min_date": "today",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_pregnancy_confirmation_calculation.yml"
+            }
+          }
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_pregnancy_confirmation_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        }
+      },
+      {
+        "key": "gest_age_note",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "edit_text",
+        "hint": "Gestational Age (GA)",
+        "read_only": true,
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_pregnancy_confirmation_calculation.yml"
+            }
+          }
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_pregnancy_confirmation_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "edd_note",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "",
+        "type": "edit_text",
+        "hint": "Expected Date of Delivery (EDD)",
+        "read_only": true,
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_pregnancy_confirmation_calculation.yml"
+            }
+          }
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_pregnancy_confirmation_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "gest_age",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "1438AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_pregnancy_confirmation_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "not_pregnant",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "toaster_notes",
+        "text": "The client is not pregnant. \nPlease refer the client to Family Plannning Services",
+        "toaster_info_text": "The client is not pregnant. Please refer the client to Family Planning Services",
+        "toaster_type": "info",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_pregnancy_confirmation_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "danger_signs_present_toaster",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "toaster_notes",
+        "text": "Danger sign! \nRefer immediately to Emergency Ward.",
+        "text_color": "#CF0800",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:danger_signs_analysis": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "bleeding_vag",
+                  "headache_visual_disturbance",
+                  "severely_pale",
+                  "severe_vomiting",
+                  "convulsion",
+                  "looking_very_ill",
+                  "fever",
+                  "unconscious",
+                  "severe_pain",
+                  "in_labour",
+                  "imminent_labour"
+                ]
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

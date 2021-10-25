@@ -1,0 +1,196 @@
+{
+  "count": "1",
+  "encounter_type": "Obstetric Examination",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "step1": {
+    "title": "Obstetric Examination",
+    "fields": [
+      {
+        "type": "native_radio",
+        "key": "abdominal_scars",
+        "label": "Are there any abdominal scars",
+        "openmrs_entity_id": "abdominal_scars",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_id": "yes",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_id": "no",
+            "openmrs_entity": "concept"
+          }
+        ]
+      },
+      {
+        "type": "native_radio",
+        "key": "abdominal_movement_with_respiration",
+        "label": "Does the Abdomen Move with respiration",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "abdominal_movement_with_respiration",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_id": "yes",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_id": "no",
+            "openmrs_entity": "concept"
+          }
+        ]
+      },
+      {
+        "type": "spinner",
+        "key": "abdominal_movement_with_respiration",
+        "hint": "Shape of the abdomen",
+        "label_info_title": "Abdomen shape",
+        "label_info_text": "Observer the shape of the abdomen",
+        "openmrs_entity_id": "abdominal_movement_with_respiration",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "values": [
+          "shape"
+        ]
+      },
+      {
+        "type": "normal_edit_text",
+        "edit_type": "number",
+        "openmrs_entity_id": "fundal_height",
+        "key": "fundal_height",
+        "hint": "Fundal Height after 20 wks (CM)",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": ""
+      },
+      {
+        "type": "normal_edit_text",
+        "edit_type": "number",
+        "openmrs_entity_id": "fetal_heart_rate",
+        "key": "fetal_heart_rate",
+        "hint": "Count fetal heart rate",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": ""
+      },
+      {
+        "type": "native_radio",
+        "key": "abnormal_vaginal_discharge",
+        "label": "Abnormal Vaginal Discharge",
+        "openmrs_entity_id": "abnormal_vaginal_discharge",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_id": "yes",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_id": "no",
+            "openmrs_entity": "concept"
+          }
+        ]
+      },
+      {
+        "type": "native_radio",
+        "key": "vaginal_sores",
+        "label": "Vaginal Sores",
+        "openmrs_entity_id": "vaginal_sores",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_id": "yes",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_id": "no",
+            "openmrs_entity": "concept"
+          }
+        ]
+      },
+      {
+        "type": "native_radio",
+        "key": "vaginal_swelling",
+        "label": "Vaginal Swelling",
+        "openmrs_entity_id": "vaginal_swelling",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_id": "yes",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_id": "no",
+            "openmrs_entity": "concept"
+          }
+        ]
+      }
+    ]
+  }
+
+}

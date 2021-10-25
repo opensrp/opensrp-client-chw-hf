@@ -1,7 +1,10 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
+
 import android.content.Context;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
 
@@ -25,6 +28,7 @@ import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.custom_view.FamilyMemberFloatingMenu;
 import org.smartregister.chw.hf.fragment.FamilyOtherMemberProfileFragment;
 import org.smartregister.chw.hf.presenter.FamilyOtherMemberActivityPresenter;
+import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hiv.dao.HivDao;
 import org.smartregister.chw.hiv.dao.HivIndexDao;
 import org.smartregister.chw.malaria.dao.MalariaDao;
@@ -35,8 +39,6 @@ import org.smartregister.family.util.DBConstants;
 import org.smartregister.view.contract.BaseProfileContract;
 
 import timber.log.Timber;
-
-import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
 
 public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfileActivity {
     private FamilyMemberFloatingMenu familyFloatingMenu;
@@ -235,6 +237,23 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
         if (BuildConfig.BUILD_FOR_BORESHA_AFYA_SOUTH) {
             menu.findItem(R.id.action_hiv_registration).setVisible(!(HivDao.isRegisteredForHiv(baseEntityId) || HivIndexDao.isRegisteredIndex(baseEntityId)));
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int i = item.getItemId();
+        if (i == org.smartregister.chw.core.R.id.action_pregnancy_confirmation) {
+            startPregnancyConfirmation();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    protected void startPregnancyConfirmation() {
+        AncRegisterActivity.startAncRegistrationActivity(FamilyOtherMemberProfileActivity.this, baseEntityId, PhoneNumber,
+                Constants.JSON_FORM.getAncPregnancyConfirmation(), null, familyBaseEntityId, familyName);
     }
 
     private boolean isOfReproductiveAge(CommonPersonObjectClient commonPersonObject, String gender) {
