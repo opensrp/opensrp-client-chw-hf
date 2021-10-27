@@ -46,9 +46,41 @@
     },
     "encounter_location": ""
   },
+  "global": {
+  },
   "step1": {
     "title": "Triage",
     "fields": [
+      {
+        "key": "gest_age",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "1438AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_triage_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "gest_age_note",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "edit_text",
+        "hint": "Gestational Age (GA)",
+        "read_only": true,
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_triage_calculation.yml"
+            }
+          }
+        }
+      },
       {
         "type": "check_box",
         "key": "rapid_examination",
@@ -79,6 +111,10 @@
           {
             "key": "difficulty_in_breathing",
             "text": "Difficulty in breathing"
+          },
+          {
+            "key": "none",
+            "text": "None"
           }
         ]
       },
@@ -106,21 +142,19 @@
       },
       {
         "type": "edit_text",
-        "edit_type": "number",
-        "key": "gestation_age",
-        "hint": "What is your gestation age? (in weeks)",
-        "openmrs_entity": "",
-        "openmrs_entity_id": "",
-        "openmrs_entity_parent": ""
-      },
-      {
-        "type": "edit_text",
         "edit_type": "text",
-        "key": "your_concern",
+        "key": "client_concern",
         "hint": "What is your concern?",
-        "openmrs_entity": "",
-        "openmrs_entity_id": "",
-        "openmrs_entity_parent": ""
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "client_concern",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_triage_relevance.yml"
+            }
+          }
+        }
       },
       {
         "type": "check_box",
@@ -200,7 +234,7 @@
           {
             "key": "none",
             "text": "None",
-            "value": true
+            "value": false
           }
         ]
       },

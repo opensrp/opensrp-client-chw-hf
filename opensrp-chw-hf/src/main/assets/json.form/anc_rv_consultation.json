@@ -53,33 +53,35 @@
         "type": "check_box",
         "key": "examination_findings",
         "label": "Examination Findings on current visit",
-        "openmrs_entity":"concept",
+        "openmrs_entity": "concept",
         "openmrs_entity_id": "examination_findings",
         "openmrs_entity_parent": "",
-        "exclusive": ["none"],
+        "exclusive": [
+          "none"
+        ],
         "options": [
           {
             "key": "puffy_face",
             "text": "Face is puffy",
-            "openmrs_entity":"concept",
+            "openmrs_entity": "concept",
             "openmrs_entity_id": "puffy_face"
           },
           {
             "key": "pallor",
             "text": "Pallor(conjunctiva, palms, tip of the tongue, gums)",
-            "openmrs_entity":"concept",
+            "openmrs_entity": "concept",
             "openmrs_entity_id": "pallor"
           },
           {
             "key": "breasts_and_lymph_nodes",
             "text": "Breasts and lymph nodes (Normal/Abnormal)",
-            "openmrs_entity":"concept",
+            "openmrs_entity": "concept",
             "openmrs_entity_id": "breasts_and_lymph_nodes"
           },
           {
             "key": "none",
             "text": "None",
-            "openmrs_entity":"concept",
+            "openmrs_entity": "concept",
             "openmrs_entity_id": "none"
           }
         ],
@@ -93,7 +95,7 @@
         "hint": "Weight(Kg)",
         "key": "weight",
         "edit_type": "number",
-        "openmrs_entity":"concept",
+        "openmrs_entity": "concept",
         "openmrs_entity_id": "weight",
         "openmrs_entity_parent": "",
         "v_required": {
@@ -106,7 +108,7 @@
         "hint": "Height(CM)",
         "edit_type": "number",
         "key": "height",
-        "openmrs_entity":"concept",
+        "openmrs_entity": "concept",
         "openmrs_entity_id": "height",
         "openmrs_entity_parent": "",
         "v_required": {
@@ -116,12 +118,16 @@
       },
       {
         "type": "edit_text",
-        "text": "Blood Pressure",
+        "hint": "Blood Pressure",
         "key": "blood_pressure",
-        "text_color": "#000000",
+        "edit_type": "number",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "blood_pressure",
-        "openmrs_entity_parent": ""
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": true,
+          "err": "Please enter the blood pressure"
+        }
       },
       {
         "type": "edit_text",
