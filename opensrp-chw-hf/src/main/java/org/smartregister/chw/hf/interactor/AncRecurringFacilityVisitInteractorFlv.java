@@ -6,6 +6,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.smartregister.chw.anc.AncLibrary;
 import org.smartregister.chw.anc.contract.BaseAncHomeVisitContract;
 import org.smartregister.chw.anc.domain.MemberObject;
@@ -13,6 +15,8 @@ import org.smartregister.chw.anc.domain.Visit;
 import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
 import org.smartregister.chw.anc.util.VisitUtils;
+import org.smartregister.chw.core.utils.CoreConstants;
+import org.smartregister.chw.core.utils.FormUtils;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.actionhelper.AncBirthReviewAction;
 import org.smartregister.chw.hf.actionhelper.AncConsultationAction;
@@ -78,9 +82,19 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                                                    Map<String, List<VisitDetail>> details,
                                                    final MemberObject memberObject,
                                                    final Context context) throws BaseAncHomeVisitAction.ValidationException {
+
+        JSONObject triageForm = null;
+        try {
+            triageForm = FormUtils.getFormUtils().getFormJson(Constants.JSON_FORM.ANC_RECURRING_VISIT.TRIAGE);
+            triageForm.getJSONObject("global").put("last_menstrual_period",memberObject.getLastMenstrualPeriod());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
         BaseAncHomeVisitAction triage = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_triage))
                 .withOptional(false)
                 .withDetails(details)
+                .withJsonPayload(triageForm.toString())
                 .withFormName(Constants.JSON_FORM.ANC_RECURRING_VISIT.getTriage())
                 .withHelper(new AncTriageAction(memberObject))
                 .build();

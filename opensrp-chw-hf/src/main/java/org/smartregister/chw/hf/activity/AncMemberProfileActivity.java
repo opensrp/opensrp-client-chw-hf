@@ -284,8 +284,9 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
             } else {
                 AncRecurringFacilityVisitActivity.startMe(this, memberObject.getBaseEntityId(), false);
             }
-        } else if (id != R.id.textview_edit) {
-            if (getVisit(ANC_RECURRING_FACILITY_VISIT) == null)
+        } else if (id == R.id.textview_edit) {
+            Visit lastVisit = getVisit(ANC_RECURRING_FACILITY_VISIT);
+            if (lastVisit == null)
                 AncFirstFacilityVisitActivity.startMe(this, memberObject.getBaseEntityId(), true);
             else
                 AncRecurringFacilityVisitActivity.startMe(this, memberObject.getBaseEntityId(), true);
