@@ -1,8 +1,11 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.hiv.util.Constants.ActivityPayload.HIV_MEMBER_OBJECT;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -29,6 +32,8 @@ import org.smartregister.chw.hf.interactor.HfHivProfileInteractor;
 import org.smartregister.chw.hf.model.HivTbReferralTasksAndFollowupFeedbackModel;
 import org.smartregister.chw.hf.presenter.HivProfilePresenter;
 import org.smartregister.chw.hiv.activity.BaseHivFormsActivity;
+import org.smartregister.chw.hiv.dao.HivIndexDao;
+import org.smartregister.chw.hiv.domain.HivIndexContactObject;
 import org.smartregister.chw.hiv.domain.HivMemberObject;
 import org.smartregister.chw.hiv.util.HivUtil;
 import org.smartregister.chw.tb.util.Constants;
@@ -43,8 +48,6 @@ import java.util.List;
 import java.util.Objects;
 
 import timber.log.Timber;
-
-import static org.smartregister.chw.hiv.util.Constants.ActivityPayload.HIV_MEMBER_OBJECT;
 
 public class HivProfileActivity extends CoreHivProfileActivity implements HivProfileContract.View {
 
@@ -76,10 +79,25 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
     }
 
     @Override
+    public void setupViews() {
+        super.setupViews();
+        new SetIndexClientsTask(getHivMemberObject()).execute();
+    }
+
+    @Override
+    public void setProfileViewDetails(@androidx.annotation.Nullable HivMemberObject hivMemberObject) {
+        super.setProfileViewDetails(hivMemberObject);
+        hideFollowUpVisitButton();
+    }
+
+    @Override
     protected void onCreation() {
         super.onCreation();
         setCommonPersonObjectClient(getClientDetailsByBaseEntityID(getHivMemberObject().getBaseEntityId()));
-        getRecordIndexContactLayout().setVisibility(View.VISIBLE);
+
+        //Only showing the option to register index contacts for positive HIV clients with CTC Numbers
+        if (!getHivMemberObject().getCtcNumber().isEmpty())
+            getRecordIndexContactLayout().setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -126,8 +144,13 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(org.smartregister.chw.core.R.menu.hiv_profile_menu, menu);
-        menu.findItem(R.id.action_hiv_outcome).setVisible(true);
-        menu.findItem(R.id.action_issue_hiv_community_followup_referral).setVisible(true);
+
+        //Only showing the hiv outcome menu for positive HIV clients
+        if (getHivMemberObject().getCtcNumber().isEmpty()) {
+            menu.findItem(R.id.action_hiv_outcome).setVisible(true);
+        }else {
+            menu.findItem(R.id.action_issue_hiv_community_followup_referral).setVisible(true);
+        }
         return true;
     }
 
@@ -292,5 +315,27 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
         }
     }
 
+
+    private class SetIndexClientsTask extends AsyncTask<Void, Void, Integer> {
+        private HivMemberObject hivMemberObject;
+
+        public SetIndexClientsTask(HivMemberObject hivMemberObject) {
+            this.hivMemberObject = hivMemberObject;
+        }
+
+        @Override
+        protected Integer doInBackground(Void... voids) {
+            List<HivIndexContactObject> indexContactObjectList = HivIndexDao.getIndexContacts(hivMemberObject.getBaseEntityId());
+            if (indexContactObjectList != null)
+                return indexContactObjectList.size();
+            else
+                return 0;
+        }
+
+        @Override
+        protected void onPostExecute(Integer param) {
+            setIndexClientsStatus(param > 0);
+        }
+    }
 }
 

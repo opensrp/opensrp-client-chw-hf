@@ -61,7 +61,7 @@
           "name": "new_or_current_hiv_client",
           "type": "radio_group",
           "properties": {
-            "text": "Is the registered client a new HIV Client or and existing HIV Client?"
+            "text": "Is the registered client a new HIV Client or an existing HIV Client?"
           },
           "meta_data": {
             "openmrs_entity": "concept",

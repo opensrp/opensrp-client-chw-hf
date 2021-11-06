@@ -57,26 +57,13 @@ public class HivIndexContactProfileActivity extends CoreHivIndexContactProfileAc
 
         HivIndexContactObject hivIndexContactObject = HivIndexDao.getMember(baseEntityID);
 
-        if (hivIndexContactObject.getHivStatus().equals("negative")) {
-            if (hivIndexContactObject.getRelationship().equals("sexual_partner")) { //Changing the rule file to the rule file for index contacts who are sex partners
-                JSONObject form = (new FormUtils()).getFormJsonFromRepositoryOrAssets(activity, CoreConstants.JSON_FORM.getHivIndexContactFollowupVisitForNegativeClients());
-                if (form != null)
-                    form.put("rules_file", "rule/hiv_index_contact_followup_for_negative_sex_partners_rules.yml");
-                intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.JSON_FORM, form.toString());
-            } else { //Leaving the default rule files for non sex partners index contacts
-                intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.JSON_FORM, (new FormUtils()).getFormJsonFromRepositoryOrAssets(activity, CoreConstants.JSON_FORM.getHivIndexContactFollowupVisitForNegativeClients()).toString());
-            }
-        } else if (hivIndexContactObject.getHivStatus().equals("positive")) {
-            intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.JSON_FORM, (new FormUtils()).getFormJsonFromRepositoryOrAssets(activity, CoreConstants.JSON_FORM.getHivIndexContactFollowupVisitForPositiveClients()).toString());
-        } else {
-            if (hivIndexContactObject.getRelationship().equals("sexual_partner")) { //Changing the rule file to the rule file for index contacts who are sex partners
-                JSONObject form = (new FormUtils()).getFormJsonFromRepositoryOrAssets(activity, CoreConstants.JSON_FORM.getHivIndexContactFollowupVisit());
-                if (form != null)
-                    form.put("rules_file", "rule/hiv_index_contact_followup_for_unknown_status_sex_partner_rules.yml");
-                intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.JSON_FORM, form.toString());
-            } else { //Leaving the default rule files for non sex partners index contacts
-                intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.JSON_FORM, (new FormUtils()).getFormJsonFromRepositoryOrAssets(activity, CoreConstants.JSON_FORM.getHivIndexContactFollowupVisit()).toString());
-            }
+        if (hivIndexContactObject.getRelationship().equals("sexual_partner")) { //Changing the rule file to the rule file for index contacts who are sex partners
+            JSONObject form = (new FormUtils()).getFormJsonFromRepositoryOrAssets(activity, CoreConstants.JSON_FORM.getHivIndexContactFollowupVisit());
+            if (form != null)
+                form.put("rules_file", "rule/hiv_index_contact_followup_for_sex_partner_rules.yml");
+            intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.JSON_FORM, form.toString());
+        } else { //Leaving the default rule files for non sex partners index contacts
+            intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.JSON_FORM, (new FormUtils()).getFormJsonFromRepositoryOrAssets(activity, CoreConstants.JSON_FORM.getHivIndexContactFollowupVisit()).toString());
         }
 
         intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.ACTION, Constants.ActivityPayloadType.FOLLOW_UP_VISIT);

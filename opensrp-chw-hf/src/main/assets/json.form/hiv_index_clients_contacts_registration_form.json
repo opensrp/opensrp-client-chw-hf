@@ -120,14 +120,6 @@
         }
       },
       {
-        "key": "gps",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "163277AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-        "openmrs_data_type": "text",
-        "type": "gps"
-      },
-      {
         "key": "spacer",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -159,7 +151,7 @@
         "openmrs_entity_id": "opensrp_id",
         "type": "barcode",
         "barcode_type": "qrcode",
-        "hint": "Boresha Afya ID",
+        "hint": "Kituoni ID",
         "scanButtonText": "Scan QR Code",
         "v_numeric": {
           "value": "true",
@@ -395,7 +387,7 @@
         }
       },
       {
-        "key": "relationship_15_to_19",
+        "key": "relationship_under_15",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "relationship",
@@ -405,25 +397,18 @@
         "text_color": "#C0C0C0",
         "options": [
           {
-            "key": "sexual_partner",
-            "text": "Sexual partner",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "sexual_partner"
-          },
-          {
-            "key": "drugs_injecting_partner",
-            "text": "Drugs Injecting partner",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "drugs_injecting_partner"
-          },
-          {
             "key": "biological_child_under_15",
-            "text": "Biological child",
+            "text": "Biological child Under 15",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "biological_child_under_15"
+          },
+          {
+            "key": "siblings_under_15",
+            "text": "Siblings Under 15",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "siblings_under_15"
           }
         ],
         "v_required": {
@@ -439,7 +424,7 @@
         }
       },
       {
-        "key": "relationship_adult",
+        "key": "relationship_above_15",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "relationship",
@@ -456,11 +441,25 @@
             "openmrs_entity_id": "sexual_partner"
           },
           {
-            "key": "drugs_injecting_partner",
-            "text": "Drugs Injecting partner",
+            "key": "needle_sharing_partner",
+            "text": "Needle Sharing partner",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "drugs_injecting_partner"
+            "openmrs_entity_id": "needle_sharing_partner"
+          },
+          {
+            "key": "biological_mother",
+            "text": "Biological Mother",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "biological_mother"
+          },
+          {
+            "key": "biological_father",
+            "text": "Biological Father (If Mother is Deceased)",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "biological_father"
           }
         ],
         "v_required": {
@@ -485,152 +484,6 @@
           "rules-engine": {
             "ex-rules": {
               "rules-file": "hiv_index_client_contacts_calculation.yml"
-            }
-          }
-        }
-      },
-      {
-        "key": "hiv_status_child",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "hiv_status",
-        "type": "native_radio",
-        "label": "HIV Status",
-        "label_text_style": "normal",
-        "text_color": "#C0C0C0",
-        "options": [
-          {
-            "key": "negative",
-            "text": "Negative",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "negative"
-          },
-          {
-            "key": "positive",
-            "text": "Positive",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "positive"
-          },
-          {
-            "key": "unknown",
-            "text": "Unknown",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "unknown"
-          },
-          {
-            "key": "child_born_from_positive_mother",
-            "text": "Child born from positive mother",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "child_born_from_positive_mother"
-          }
-        ],
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "hiv_index_contacts_registration_relevance.yml"
-            }
-          }
-        },
-        "v_required": {
-          "value": "true",
-          "err": "HIV Infection status is required"
-        }
-      },
-      {
-        "key": "hiv_status_adult",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "hiv_status",
-        "type": "native_radio",
-        "label": "HIV Status",
-        "label_text_style": "normal",
-        "text_color": "#C0C0C0",
-        "options": [
-          {
-            "key": "negative",
-            "text": "Negative",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "negative"
-          },
-          {
-            "key": "positive",
-            "text": "Positive",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "positive"
-          },
-          {
-            "key": "unknown",
-            "text": "Unknown",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "unknown"
-          }
-        ],
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "hiv_index_contacts_registration_relevance.yml"
-            }
-          }
-        },
-        "v_required": {
-          "value": "true",
-          "err": "HIV Infection status is required"
-        }
-      },
-      {
-        "key": "hiv_status",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "hiv_status",
-        "type": "hidden",
-        "calculation": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "hiv_index_client_contacts_calculation.yml"
-            }
-          }
-        }
-      },
-      {
-        "key": "has_started_medication",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "has_started_medication",
-        "type": "native_radio",
-        "label": "Started ARV medication?",
-        "label_text_style": "normal",
-        "text_color": "#C0C0C0",
-        "options": [
-          {
-            "key": "yes",
-            "text": "Yes",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "yes"
-          },
-          {
-            "key": "no",
-            "text": "No",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "no"
-          }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Started ARV Medication is required"
-        },
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "hiv_index_contacts_registration_relevance.yml"
             }
           }
         }
@@ -802,10 +655,26 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "fearful_of_contact_client",
-        "type": "edit_text",
-        "hint": "Are there any additional details about gender violence that you have faced?",
+        "type": "native_radio",
+        "label": "Do you have any complimentary information regarding the violence you have been subjected to?",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -815,10 +684,10 @@
         }
       },
       {
-        "key": "how_to_notify_the_contact_client_who_is_not_on_arv_medication",
+        "key": "how_to_notify_the_contact_client",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "how_to_notify_the_contact_client_who_is_not_on_arv_medication",
+        "openmrs_entity_id": "how_to_notify_the_contact_client",
         "type": "native_radio",
         "label": "How to communicate with contact client",
         "label_text_style": "normal",
@@ -853,30 +722,9 @@
             "openmrs_entity_id": "dual_referral"
           }
         ],
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "hiv_index_contacts_registration_relevance.yml"
-            }
-          }
-        },
         "v_required": {
           "value": "true",
           "err": "The answer to this question is required"
-        }
-      },
-      {
-        "key": "how_to_notify_the_contact_client",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "how_to_notify_the_contact_client",
-        "type": "hidden",
-        "calculation": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "hiv_index_client_contacts_calculation.yml"
-            }
-          }
         }
       }
     ]

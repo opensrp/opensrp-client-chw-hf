@@ -30,7 +30,7 @@ public class AllClientsRegisterActivity extends CoreAllClientsRegisterActivity {
 
     @Override
     public void startRegistration() {
-        startFormActivity(CoreConstants.JSON_FORM.getAllClientRegistrationForm(),null, null);
+        startFormActivity(CoreConstants.JSON_FORM.getAllClientRegistrationForm(), null, null);
     }
 
 
@@ -38,7 +38,7 @@ public class AllClientsRegisterActivity extends CoreAllClientsRegisterActivity {
     public void startFormActivity(String formName, String entityId, String metaData) {
         try {
             String locationId = org.smartregister.family.util.Utils.context().allSharedPreferences().getPreference(AllConstants.CURRENT_LOCATION_ID);
-            ((HfAllClientRegisterPresenter)presenter()).startForm(formName, entityId, metaData, locationId);
+            ((HfAllClientRegisterPresenter) presenter()).startForm(formName, entityId, metaData, locationId);
 
         } catch (Exception e) {
             Timber.e(e);
@@ -68,7 +68,7 @@ public class AllClientsRegisterActivity extends CoreAllClientsRegisterActivity {
 
     @Override
     public void switchToBaseFragment() {
-        Intent intent = new Intent(this, FamilyRegisterActivity.class);
+        Intent intent = new Intent(this, AllClientsRegisterActivity.class);
         startActivity(intent);
         finish();
     }

@@ -120,14 +120,6 @@
         }
       },
       {
-        "key": "gps",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "163277AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-        "openmrs_data_type": "text",
-        "type": "gps"
-      },
-      {
         "key": "spacer",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -395,7 +387,7 @@
         }
       },
       {
-        "key": "relationship_15_to_19",
+        "key": "relationship_under_15",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "relationship",
@@ -405,25 +397,18 @@
         "text_color": "#C0C0C0",
         "options": [
           {
-            "key": "sexual_partner",
-            "text": "Mshirika wa ngono",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "sexual_partner"
-          },
-          {
-            "key": "drugs_injecting_partner",
-            "text": "Mshirika wa kujidunga",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "drugs_injecting_partner"
-          },
-          {
             "key": "biological_child_under_15",
-            "text": "Mtoto wa kuzaa",
+            "text": "Mtoto wa kuzaa chini ya miaka 15",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "biological_child_under_15"
+          },
+          {
+            "key": "siblings_under_15",
+            "text": "Ndugu wa damu chini ya miaka 15",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "siblings_under_15"
           }
         ],
         "v_required": {
@@ -439,7 +424,7 @@
         }
       },
       {
-        "key": "relationship_adult",
+        "key": "relationship_above_15",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "relationship",
@@ -456,11 +441,25 @@
             "openmrs_entity_id": "sexual_partner"
           },
           {
-            "key": "drugs_injecting_partner",
+            "key": "needle_sharing_partner",
             "text": "Mshirika wa kujidunga",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "drugs_injecting_partner"
+            "openmrs_entity_id": "needle_sharing_partner"
+          },
+          {
+            "key": "biological_mother",
+            "text": "Mama Mzazi",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "biological_mother"
+          },
+          {
+            "key": "biological_father",
+            "text": "Baba Mzazi (Kama Mama mzazi amefariki)",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "biological_father"
           }
         ],
         "v_required": {
@@ -485,159 +484,6 @@
           "rules-engine": {
             "ex-rules": {
               "rules-file": "hiv_index_client_contacts_calculation.yml"
-            }
-          }
-        }
-      },
-      {
-        "key": "hiv_status_child",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "hiv_status",
-        "type": "native_radio",
-        "label": "Hali ya maambukizi",
-        "label_text_style": "normal",
-        "text_color": "#C0C0C0",
-        "options": [
-          {
-            "key": "negative",
-            "text": "Hasi",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "negative"
-          },
-          {
-            "key": "positive",
-            "text": "Chanya",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "positive"
-          },
-          {
-            "key": "unknown",
-            "text": "Haijulikani",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "unknown"
-          },
-          {
-            "key": "child_born_from_positive_mother",
-            "text": "Mtoto aliyezaliwa na mama mwenye VVU",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "child_born_from_positive_mother"
-          }
-        ],
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "hiv_index_contacts_registration_relevance.yml"
-            }
-          }
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Hali ya maambukizi ya VVU yanahitajika"
-        }
-      },
-      {
-        "key": "hiv_status_adult",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "hiv_status",
-        "type": "native_radio",
-        "label": "Hali ya maambukizi",
-        "label_text_style": "normal",
-        "text_color": "#C0C0C0",
-        "options": [
-          {
-            "key": "negative",
-            "text": "Hasi",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "negative"
-          },
-          {
-            "key": "positive",
-            "text": "Chanya",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "positive"
-          },
-          {
-            "key": "unknown",
-            "text": "Haijulikani",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "unknown"
-          },
-          {
-            "key": "child_born_from_positive_mother",
-            "text": "Mtoto aliyezaliwa na mama mwenye VVU",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "child_born_from_positive_mother"
-          }
-        ],
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "hiv_index_contacts_registration_relevance.yml"
-            }
-          }
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Hali ya maambukizi ya VVU yanahitajika"
-        }
-      },
-      {
-        "key": "hiv_status",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "hiv_status",
-        "type": "hidden",
-        "calculation": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "hiv_index_client_contacts_calculation.yml"
-            }
-          }
-        }
-      },
-      {
-        "key": "has_started_medication",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "has_started_medication",
-        "type": "native_radio",
-        "label": "Ameanza dawa za ARV?",
-        "label_text_style": "normal",
-        "text_color": "#C0C0C0",
-        "options": [
-          {
-            "key": "yes",
-            "text": "Ndio",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "yes"
-          },
-          {
-            "key": "no",
-            "text": "Hapana",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "no"
-          }
-        ],
-        "v_required": {
-          "value": "Ndio",
-          "err": "Inahitajika kuanza kutumia dawa za ARV"
-        },
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "hiv_index_contacts_registration_relevance.yml"
             }
           }
         }
@@ -809,10 +655,26 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "fearful_of_contact_client",
-        "type": "edit_text",
-        "hint": "Je kuna chochote unachoweza kunielezea kuhusiana na unyanyasaji wa kijinsia ulioupata?",
+        "type": "native_radio",
+        "label": "Je kuna chochote unachoweza kunielezea kuhusiana na unyanyasaji wa kijinsia ulioupata?",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndio",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -822,10 +684,10 @@
         }
       },
       {
-        "key": "how_to_notify_the_contact_client_who_is_not_on_arv_medication",
+        "key": "how_to_notify_the_contact_client",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "how_to_notify_the_contact_client_who_is_not_on_arv_medication",
+        "openmrs_entity_id": "how_to_notify_the_contact_client",
         "type": "native_radio",
         "label": "Utaratibu wa kumtaarifu mshirika",
         "label_text_style": "normal",
@@ -860,30 +722,9 @@
             "openmrs_entity_id": "dual_referral"
           }
         ],
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "hiv_index_contacts_registration_relevance.yml"
-            }
-          }
-        },
         "v_required": {
           "value": "true",
           "err": "Jibu la hili swali linahitajika"
-        }
-      },
-      {
-        "key": "how_to_notify_the_contact_client",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "how_to_notify_the_contact_client",
-        "type": "hidden",
-        "calculation": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "hiv_index_client_contacts_calculation.yml"
-            }
-          }
         }
       }
     ]
