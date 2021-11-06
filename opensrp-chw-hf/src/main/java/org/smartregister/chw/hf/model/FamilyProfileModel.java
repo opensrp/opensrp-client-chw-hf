@@ -2,6 +2,7 @@ package org.smartregister.chw.hf.model;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.smartregister.chw.core.dao.ChwNotificationDao;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.core.utils.FormUtils;
 import org.smartregister.dao.LocationsDao;
@@ -31,8 +32,12 @@ public class FamilyProfileModel extends BaseFamilyProfileModel {
     public JSONObject getFormAsJson(String formName, String entityId, String currentLocationId) throws Exception {
         JSONObject form = super.getFormAsJson(formName, entityId, currentLocationId);
         JSONObject syncLocationField = CoreJsonFormUtils.getJsonField(form, STEP1, SYNC_LOCATION_ID);
-        CoreJsonFormUtils.addLocationsToDropdownField(LocationsDao.getLocationsByTags(
-                Collections.singleton(SPECIAL_TAG_FOR_OPENMRS_TEAM_MEMBERS)), syncLocationField);
+        try {
+            CoreJsonFormUtils.addLocationsToDropdownField(LocationsDao.getLocationsByTags(
+                    Collections.singleton(SPECIAL_TAG_FOR_OPENMRS_TEAM_MEMBERS)), syncLocationField);
+        }catch (JSONException e){
+            Timber.e(e);
+        }
         return form;
     }
 
@@ -46,14 +51,14 @@ public class FamilyProfileModel extends BaseFamilyProfileModel {
     @Override
     public FamilyEventClient processMemberRegistration(String jsonString, String familyBaseEntityId) {
         FamilyEventClient familyEventClient = super.processMemberRegistration(jsonString, familyBaseEntityId);
-        setChwLocationId(jsonString, familyEventClient);
+        setFamilyHeadSyncLocationId(familyBaseEntityId, familyEventClient);
         return familyEventClient;
     }
 
     @Override
     public FamilyEventClient processUpdateMemberRegistration(String jsonString, String familyBaseEntityId) {
         FamilyEventClient familyEventClient = super.processUpdateMemberRegistration(jsonString, familyBaseEntityId);
-        setChwLocationId(jsonString, familyEventClient);
+        setFamilyHeadSyncLocationId(familyBaseEntityId, familyEventClient);
         return familyEventClient;
     }
 
@@ -65,5 +70,9 @@ public class FamilyProfileModel extends BaseFamilyProfileModel {
         } catch (JSONException e) {
             Timber.e(e, "Error retrieving Sync location Field");
         }
+    }
+
+    private void setFamilyHeadSyncLocationId(String familyBaseEntityId, FamilyEventClient familyEventClient) {
+        familyEventClient.getEvent().setLocationId(ChwNotificationDao.getFamilyHeadSyncLocationId(familyBaseEntityId));
     }
 }

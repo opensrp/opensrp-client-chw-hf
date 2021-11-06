@@ -1,7 +1,7 @@
 package org.smartregister.chw.hf.activity;
 
 import org.smartregister.chw.core.activity.CoreAboveFiveChildProfileActivity;
-import org.smartregister.chw.hf.model.ChildProfileModel;
+import org.smartregister.chw.core.model.CoreChildProfileModel;
 import org.smartregister.chw.hf.presenter.HfChildProfilePresenter;
 import org.smartregister.family.util.Constants;
 
@@ -14,6 +14,6 @@ public class AboveFiveChildProfileActivity extends CoreAboveFiveChildProfileActi
             familyName = "";
         }
 
-        presenter = new HfChildProfilePresenter(this, new ChildProfileModel(familyName), childBaseEntityId);
+        presenter = new HfChildProfilePresenter(this, new CoreChildProfileModel(familyName), childBaseEntityId);
     }
 }

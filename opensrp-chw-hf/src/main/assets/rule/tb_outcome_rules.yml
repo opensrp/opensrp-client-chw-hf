@@ -1,0 +1,40 @@
+---
+name: "problem_other_visibility"
+description: "Specify other symptoms"
+priority: 1
+condition: "problem['Other'] != null"
+actions:
+  - "problem_other_visibility =  true"
+---
+name: "test_results_visibility"
+description: "test_results visibility"
+priority: 1
+condition: "action_taken_tb_problems['tested'] != null"
+actions:
+  - "test_results_visibility =  true"
+---
+name: "enrolled_to_clinic_visibility"
+description: "enrolled_to_clinic visibility"
+priority: 1
+condition: "test_results['positive'] != null && action_taken_tb_problems['tested'] != null "
+actions:
+  - "enrolled_to_clinic_visibility =  true"
+---
+name: "tb_clinic_number_visibility"
+description: "tb_clinic_number visibility"
+priority: 1
+condition: "enrolled_to_clinic['yes'] != null"
+actions:
+  - "tb_clinic_number_visibility =  true"
+---
+name: "tb_facility_visit_date_calculation"
+description: "tb_facility_visit_date calculation"
+priority: 1
+condition: "true"
+actions:
+  - "def getDate(dateFormat) {
+             import java.util.*;
+             import java.text.SimpleDateFormat;
+             return new SimpleDateFormat(dateFormat).format(Calendar.getInstance().getTime());
+         }"
+  - "tb_facility_visit_date_calculation  = getDate('yyyy-MM-dd hh:mm:ss') "

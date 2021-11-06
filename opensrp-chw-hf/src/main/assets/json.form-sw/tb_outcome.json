@@ -1,0 +1,319 @@
+{
+  "form": "TB Outcome",
+  "count": "1",
+  "encounter_type": "TB Outcome",
+  "entity_id": "",
+  "relational_id": "",
+  "rules_file": "rule/tb_outcome_rules.yml",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "steps": [
+    {
+      "title": "Matokeo ya Vipimo vya TB",
+      "fields": [
+        {
+          "name": "problem",
+          "type": "multi_choice_checkbox",
+          "properties": {
+            "text": "Chagua dalili za hatari za TB alizonazo mteja."
+          },
+          "meta_data": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "problem"
+          },
+          "options": [
+            {
+              "name": "coughing_blood",
+              "text": "Kukohoa damu",
+              "meta_data": {
+                "openmrs_entity": "",
+                "openmrs_entity_id": "coughing_blood",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "pain_in_the_chest",
+              "text": "Maumivu ya kifua",
+              "meta_data": {
+                "openmrs_entity": "",
+                "openmrs_entity_id": "cough_lasting_3_weeks_or_more",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "cough_lasting_3_weeks_or_more",
+              "text": "Kikohozi kilicho endelea kwa zaidi ya wiki tatu ",
+              "meta_data": {
+                "openmrs_entity": "",
+                "openmrs_entity_id": "cough_lasting_3_weeks_or_more",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "fever",
+              "text": "Homa",
+              "meta_data": {
+                "openmrs_entity": "",
+                "openmrs_entity_id": "fever",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "weight_loss",
+              "text": "Kupungua uzito",
+              "meta_data": {
+                "openmrs_entity": "",
+                "openmrs_entity_id": "weight_loss",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "lack_of_appetite",
+              "text": "Kukosa hamu ya chakula",
+              "meta_data": {
+                "openmrs_entity": "",
+                "openmrs_entity_id": "lack_of_appetite",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "night_sweats",
+              "text": "Kutokwa jasho wakati wa usiku",
+              "meta_data": {
+                "openmrs_entity": "",
+                "openmrs_entity_id": "night_sweats",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "Other",
+              "text": "Dalili nyinginezo",
+              "meta_data": {
+                "openmrs_entity": "",
+                "openmrs_entity_id": "Other",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "None",
+              "text": "Hana dalili za hatari",
+              "is_exclusive": true,
+              "meta_data": {
+                "openmrs_entity": "",
+                "openmrs_entity_id": "None",
+                "openmrs_entity_parent": ""
+              }
+            }
+          ],
+          "required_status": "yes:Tafadhali chagua dalili za hatari",
+          "dependent_calculations": [
+            "tb_facility_visit_date"
+          ]
+        },
+        {
+          "name": "problem_other",
+          "type": "text_input_edit_text",
+          "properties": {
+            "hint": "Dalili nyingine",
+            "type": "name"
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "problem_other",
+            "openmrs_entity_parent": "problem"
+          },
+          "required_status": "true:Tafadhali jaza dalili nyingine za hatari",
+          "subjects": "problem:map"
+        },
+        {
+          "name": "action_taken_tb_problems",
+          "type": "radio_group",
+          "properties": {
+            "text": "Hatua zilizochukuliwa."
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "action_taken_tb_problems",
+            "openmrs_entity_parent": ""
+          },
+          "options": [
+            {
+              "name": "no_action_taken",
+              "text": "Hajapewa matibabu yoyote",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "no_action_taken",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "tested",
+              "text": "Amepimwa",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "tested",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "referred",
+              "text": "Amepewa rufaa",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "referred",
+                "openmrs_entity_parent": ""
+              }
+            }
+          ],
+          "required_status": "yes:Tafadhali chagua hatua zilizochukuliwa"
+        },
+        {
+          "name": "test_results",
+          "type": "radio_group",
+          "properties": {
+            "text": "Chagua matokeo ya vipimo vya TB.."
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "test_results",
+            "openmrs_entity_parent": ""
+          },
+          "options": [
+            {
+              "name": "positive",
+              "text": "Ana TB",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "positive",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "negative",
+              "text": "Hana TB",
+              "is_exclusive": true,
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "negative",
+                "openmrs_entity_parent": ""
+              }
+            }
+          ],
+          "required_status": "yes:Tafadhali chagua matokeo ya vipimo vya TB",
+          "subjects": "action_taken_tb_problems:map"
+        },
+        {
+          "name": "enrolled_to_clinic",
+          "type": "radio_group",
+          "properties": {
+            "text": "Je mteja amesajiliwa kwenye kliniki ya TB?"
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "enrolled_to_clinic",
+            "openmrs_entity_parent": ""
+          },
+          "options": [
+            {
+              "name": "yes",
+              "text": "Ndio",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "yes",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "no",
+              "text": "Hapana",
+              "is_exclusive": true,
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "no",
+                "openmrs_entity_parent": ""
+              }
+            }
+          ],
+          "required_status": "yes:Tafadhali jaza jibu sahihi",
+          "subjects": "test_results:map"
+        },
+        {
+          "name": "tb_clinic_number",
+          "type": "text_input_edit_text",
+          "properties": {
+            "hint": "Jaza namba ya Kliniki ya TB ya mteja",
+            "type": "name"
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "tb_clinic_number",
+            "openmrs_entity_parent": ""
+          },
+          "required_status": "true:Tafadhali jaza namba ya Kliniki ya TB ya mteja",
+          "subjects": "enrolled_to_clinic:map"
+        },
+        {
+          "name": "comment_tb_problems",
+          "type": "text_input_edit_text",
+          "properties": {
+            "hint": "Toa maoni"
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "comment_tb_problems",
+            "openmrs_entity_parent": ""
+          },
+          "required_status": "false"
+        }
+      ]
+    }
+  ]
+}
+

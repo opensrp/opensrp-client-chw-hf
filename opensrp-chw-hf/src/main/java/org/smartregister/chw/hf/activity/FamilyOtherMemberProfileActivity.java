@@ -5,6 +5,9 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.RelativeLayout;
 
+import com.vijay.jsonwizard.utils.FormUtils;
+
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.core.activity.CoreFamilyOtherMemberProfileActivity;
 import org.smartregister.chw.core.activity.CoreFamilyProfileActivity;
@@ -16,11 +19,14 @@ import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.Utils;
 import org.smartregister.chw.fp.dao.FpDao;
 import org.smartregister.chw.fp.util.FamilyPlanningConstants;
+import org.smartregister.chw.hf.BuildConfig;
 import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.custom_view.FamilyMemberFloatingMenu;
 import org.smartregister.chw.hf.fragment.FamilyOtherMemberProfileFragment;
 import org.smartregister.chw.hf.presenter.FamilyOtherMemberActivityPresenter;
+import org.smartregister.chw.hiv.dao.HivDao;
+import org.smartregister.chw.hiv.dao.HivIndexDao;
 import org.smartregister.chw.malaria.dao.MalariaDao;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.family.fragment.BaseFamilyOtherMemberProfileFragment;
@@ -77,6 +83,24 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
     }
 
     @Override
+    protected void startHivRegister() {
+        try {
+            HivRegisterActivity.startHIVFormActivity(this, baseEntityId, CoreConstants.JSON_FORM.getHivRegistration(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getHivRegistration()).toString());
+        } catch (JSONException e) {
+            Timber.e(e);
+        }
+    }
+
+    @Override
+    protected void startTbRegister() {
+        try {
+            TbRegisterActivity.startTbFormActivity(this, baseEntityId, CoreConstants.JSON_FORM.getTbRegistration(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getTbRegistration()).toString());
+        } catch (JSONException e) {
+            Timber.e(e);
+        }
+    }
+
+    @Override
     protected void startMalariaFollowUpVisit() {
         // TODO -> Implement for HF
     }
@@ -88,7 +112,7 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
 
     @Override
     protected void setIndependentClient(boolean b) {
-      this.isIndependent = false;
+        this.isIndependent = false;
     }
 
     @Override
@@ -206,6 +230,10 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
                 menu.findItem(R.id.action_fp_change).setVisible(false);
                 menu.findItem(R.id.action_fp_initiation).setVisible(true);
             }
+        }
+
+        if (BuildConfig.BUILD_FOR_BORESHA_AFYA_SOUTH) {
+            menu.findItem(R.id.action_hiv_registration).setVisible(!(HivDao.isRegisteredForHiv(baseEntityId) || HivIndexDao.isRegisteredIndex(baseEntityId)));
         }
     }
 

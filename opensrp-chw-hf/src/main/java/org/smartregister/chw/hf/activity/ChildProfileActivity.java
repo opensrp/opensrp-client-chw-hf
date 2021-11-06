@@ -20,11 +20,11 @@ import org.smartregister.chw.core.activity.CoreUpcomingServicesActivity;
 import org.smartregister.chw.core.custom_views.CoreFamilyMemberFloatingMenu;
 import org.smartregister.chw.core.fragment.FamilyCallDialogFragment;
 import org.smartregister.chw.core.listener.OnClickFloatingMenu;
+import org.smartregister.chw.core.model.CoreChildProfileModel;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.adapter.ReferralCardViewAdapter;
 import org.smartregister.chw.hf.custom_view.FamilyMemberFloatingMenu;
-import org.smartregister.chw.hf.model.ChildProfileModel;
 import org.smartregister.chw.hf.presenter.HfChildProfilePresenter;
 import org.smartregister.chw.malaria.dao.MalariaDao;
 import org.smartregister.domain.Task;
@@ -70,7 +70,7 @@ public class ChildProfileActivity extends CoreChildProfileActivity {
             familyName = "";
         }
 
-        presenter = new HfChildProfilePresenter(this, new ChildProfileModel(familyName), childBaseEntityId);
+        presenter = new HfChildProfilePresenter(this, new CoreChildProfileModel(familyName), childBaseEntityId);
     }
 
     @Override

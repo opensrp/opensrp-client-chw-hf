@@ -1,0 +1,395 @@
+{
+  "form": "HIV Index Contact Testing Followup",
+  "count": "1",
+  "encounter_type": "HIV Index Contact Testing Followup",
+  "entity_id": "",
+  "relational_id": "",
+  "rules_file": "rule/hiv_index_contact_followup_for_negative_non_sex_partners_rules.yml",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "steps": [
+    {
+      "title": "Ufatiliyaji wa mshirika ambaye hajaathirika",
+      "fields": [
+        {
+          "name": "place_where_test_was_conducted",
+          "type": "radio_group",
+          "properties": {
+            "text": "Amepimiwa Wapi?"
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "place_where_test_was_conducted",
+            "openmrs_entity_parent": ""
+          },
+          "options": [
+            {
+              "name": "tb_clinic_outpatient",
+              "text": "Kiliniki ya Kifuwa Kikuu (Wateja wa Nje)",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "tb_clinic_outpatient",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "sexual_transmitted_diseases_clinic",
+              "text": "Kliniki ya magonjwa ya zinaa",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "sexual_transmitted_diseases_clinic",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "outpatient_department",
+              "text": "Idara ya wagonjwa wa njee",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "outpatient_department",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "inpatient_department",
+              "text": "Idara ya wagonjwa wa ndani",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "inpatient_department",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "blood_transfusion_service",
+              "text": "Huduma za uchagiaji damu",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "blood_transfusion_service",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "home_selftest_service",
+              "text": "Huduma ya kujipima mwenyewe",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "home_selftest_service",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "voluntary_patients",
+              "text": "Mteja wakujitolea",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "voluntary_patients",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "family_planning_clinic",
+              "text": "Kiliniki ya uzazi wa mpango",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "family_planning_clinic",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "ctc",
+              "text": "CTC",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "ctc",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "men_circumcision",
+              "text": "Tohara ya wanaume",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "men_circumcision",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "outreach_services",
+              "text": "Huduma ya Mkoba",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "outreach_services",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "reproductive_an_child_health",
+              "text": "Afya ya mama na mtoto",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "reproductive_an_child_health",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "other",
+              "text": "Mengineo",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "other",
+                "openmrs_entity_parent": ""
+              }
+            }
+          ],
+          "dependent_calculations": [
+            "eligibility_for_testing"
+          ],
+          "required_status": "yes:Please select the answer"
+        },
+        {
+          "name": "when_the_test_was_conducted",
+          "type": "datetime_picker",
+          "properties": {
+            "hint": "Lini mshiriki wa mteja alipimwa virusi vya ukimwi?",
+            "type": "date_picker",
+            "display_format": "dd/MM/yyyy"
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "when_the_test_was_conducted",
+            "openmrs_entity_parent": ""
+          },
+          "dependent_calculations": [
+            "relationship",
+            "months_after_last_test"
+          ],
+          "required_status": "true:Tafadhali chagua tarehe aliyopimwa virusi?"
+        },
+        {
+          "name": "toast_enroll_the_client_to_prep",
+          "type": "toast_notification",
+          "properties": {
+            "notification_type": "info",
+            "dismissible": "no",
+            "title": "Mteja anatakiwa anzishiwe PREP",
+            "text": "Mteja ni mshiriki wa kingono wa muathirika wa ukimwi, Anatakiwa kuanzishiwa PREP",
+            "background_color": "#082455",
+            "text_color": "#EBEE2F"
+          },
+          "subjects": "relationship:text, when_the_test_was_conducted:number , months_after_last_test:number"
+        },
+        {
+          "name": "enrolled_to_prep",
+          "type": "radio_group",
+          "properties": {
+            "text": "Mteja amenazishwa PREP?"
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "enrolled_to_prep",
+            "openmrs_entity_parent": ""
+          },
+          "options": [
+            {
+              "name": "yes",
+              "text": "Ndio",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "yes",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "no",
+              "text": "Hapana",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "no",
+                "openmrs_entity_parent": ""
+              }
+            }
+          ],
+          "required_status": "yes:Please select the answer",
+          "subjects": "relationship:text, when_the_test_was_conducted:number , months_after_last_test:number"
+        },
+        {
+          "name": "reason_for_not_being_enrolled_to_prep",
+          "type": "text_input_edit_text",
+          "properties": {
+            "hint": "Sababu ya kuanzishwa PREP",
+            "input_type": "text"
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "reason_for_not_being_enrolled_to_prep",
+            "openmrs_entity_parent": ""
+          },
+          "required_status": "yes:Please add the reasons",
+          "subjects": "when_the_test_was_conducted:number , enrolled_to_prep:map, months_after_last_test:number"
+        },
+        {
+          "name": "toast_client_eligible_for_testing",
+          "type": "toast_notification",
+          "properties": {
+            "notification_type": "info",
+            "dismissible": "no",
+            "title": "Mteja anatakiwa kupimwa tena Ukimwi",
+            "text": "Mteja amepimwa miezi mitatu iliyopita. Mteja anatakiwa kupima tena virusi vya ukimwi",
+            "background_color": "#082455",
+            "text_color": "#EBEE2F"
+          },
+          "subjects": "when_the_test_was_conducted:number, months_after_last_test:number"
+        },
+        {
+          "name": "test_results",
+          "type": "radio_group",
+          "properties": {
+            "text": "Majibu ya Vipimo vya Ukimwi?"
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "test_results",
+            "openmrs_entity_parent": ""
+          },
+          "options": [
+            {
+              "name": "negative",
+              "text": "Hasi",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "negative",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "positive",
+              "text": "Chanya",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "positive",
+                "openmrs_entity_parent": ""
+              }
+            }
+          ],
+          "required_status": "yes:Please select the test results",
+          "subjects": "when_the_test_was_conducted:number, months_after_last_test:number"
+        },
+        {
+          "name": "enrolled_to_clinic",
+          "type": "radio_group",
+          "properties": {
+            "text": "Mteja amenazishwa kwenye kiliniki ya tiba na matunzo?"
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "enrolled_to_clinic",
+            "openmrs_entity_parent": ""
+          },
+          "options": [
+            {
+              "name": "yes",
+              "text": "Ndio",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "yes",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "no",
+              "text": "Hapana",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "no",
+                "openmrs_entity_parent": ""
+              }
+            }
+          ],
+          "required_status": "yes:Tafadhali jibu swali hili",
+          "subjects": "when_the_test_was_conducted:number, test_results:map, months_after_last_test:number"
+        },
+        {
+          "name": "ctc_number",
+          "type": "text_input_edit_text",
+          "properties": {
+            "hint": "Jaza numbari ya CTC ya mteja",
+            "type": "Clinic of Treatment and Care registration number (CTC Number)"
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "ctc_number",
+            "openmrs_entity_parent": ""
+          },
+          "validation": [
+            {
+              "condition": "value.matches(\"(\\\\d{2}-\\\\d{2}-\\\\d{4}-\\\\d{6})?\")",
+              "message": "Namba ya CTC iliyojazwa si sahihi."
+            }
+          ],
+          "required_status": "yes:Tafadhali jaza namba ya CTC ya mteja",
+          "subjects": "when_the_test_was_conducted:number, months_after_last_test:number, enrolled_to_clinic:map, test_results:map "
+        },
+        {
+          "name": "comment",
+          "type": "text_input_edit_text",
+          "properties": {
+            "hint": "Maoni"
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "comment",
+            "openmrs_entity_parent": ""
+          },
+          "required_status": "false"
+        }
+      ]
+    }
+  ]
+}
+

@@ -8,23 +8,15 @@ import org.json.JSONObject;
 import org.smartregister.chw.core.activity.CoreFpRegisterActivity;
 import org.smartregister.chw.core.dataloader.FPDataLoader;
 import org.smartregister.chw.core.form_data.NativeFormsDataBinder;
-import org.smartregister.chw.core.utils.CoreJsonFormUtils;
+import org.smartregister.chw.fp.model.BaseFpRegisterModel;
 import org.smartregister.chw.fp.util.FamilyPlanningConstants;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.fragment.FpRegisterFragment;
 import org.smartregister.chw.hf.interactor.HFFamilyPlanningRegisterInteractor;
-import org.smartregister.chw.hf.model.FpRegisterModel;
 import org.smartregister.chw.hf.presenter.FpRegisterPresenter;
-import org.smartregister.dao.LocationsDao;
 import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.helper.BottomNavigationHelper;
 import org.smartregister.view.fragment.BaseRegisterFragment;
-
-import java.util.Collections;
-
-import static org.smartregister.AllConstants.LocationConstants.SPECIAL_TAG_FOR_OPENMRS_TEAM_MEMBERS;
-import static org.smartregister.chw.hf.utils.JsonFormUtils.SYNC_LOCATION_ID;
-import static org.smartregister.util.JsonFormUtils.STEP1;
 
 public class FpRegisterActivity extends CoreFpRegisterActivity {
 
@@ -51,9 +43,6 @@ public class FpRegisterActivity extends CoreFpRegisterActivity {
         JSONObject form = binder.getPrePopulatedForm(fpFormName);
         try {
             form.put(JsonFormUtils.ENCOUNTER_TYPE, FamilyPlanningConstants.EventType.UPDATE_FAMILY_PLANNING_REGISTRATION);
-            JSONObject syncLocationField = CoreJsonFormUtils.getJsonField(form, STEP1, SYNC_LOCATION_ID);
-            CoreJsonFormUtils.addLocationsToDropdownField(LocationsDao.getLocationsByTags(
-                    Collections.singleton(SPECIAL_TAG_FOR_OPENMRS_TEAM_MEMBERS)), syncLocationField);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -69,7 +58,7 @@ public class FpRegisterActivity extends CoreFpRegisterActivity {
 
     @Override
     protected void initializePresenter() {
-        presenter = new FpRegisterPresenter(this, new FpRegisterModel(), new HFFamilyPlanningRegisterInteractor());
+        presenter = new FpRegisterPresenter(this, new BaseFpRegisterModel(), new HFFamilyPlanningRegisterInteractor());
     }
 
     @Override

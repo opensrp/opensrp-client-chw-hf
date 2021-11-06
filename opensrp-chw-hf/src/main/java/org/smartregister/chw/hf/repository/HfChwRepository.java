@@ -12,6 +12,7 @@ import org.smartregister.chw.core.repository.StockUsageReportRepository;
 import org.smartregister.chw.core.utils.ChwDBConstants;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.BuildConfig;
+import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.dao.FamilyDao;
 import org.smartregister.domain.db.Column;
 import org.smartregister.family.util.DBConstants;
@@ -24,6 +25,8 @@ import org.smartregister.repository.EventClientRepository;
 import org.smartregister.util.DatabaseMigrationUtils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 import timber.log.Timber;
@@ -69,6 +72,7 @@ public class HfChwRepository extends CoreChwRepository {
                     upgradeToVersion9(db);
                 case 10:
                     upgradeToVersion10(db);
+                    upgradeToVersion10ForBaSouth(db);
                 case 11:
                     upgradeToVersion11(db);
                 case 12:
@@ -239,6 +243,20 @@ public class HfChwRepository extends CoreChwRepository {
             db.execSQL(VisitRepository.ADD_VISIT_GROUP_COLUMN);
         }catch (Exception e) {
             Timber.e(e, "upgradeToVersion12");
+        }
+    }
+
+    private static void upgradeToVersion10ForBaSouth(SQLiteDatabase db) {
+        try {
+            db.execSQL("ALTER TABLE ec_family_member ADD COLUMN reasons_for_registration TEXT NULL;");
+            db.execSQL("ALTER TABLE ec_family_member ADD COLUMN has_primary_caregiver VARCHAR;");
+            db.execSQL("ALTER TABLE ec_family_member ADD COLUMN primary_caregiver_name VARCHAR;");
+
+            DatabaseMigrationUtils.createAddedECTables(db,
+                    new HashSet<>(Arrays.asList("ec_hiv_register", "ec_hiv_outcome", "ec_hiv_community_followup", "ec_tb_register", "ec_tb_outcome", "ec_tb_community_followup", "ec_hiv_community_feedback", "ec_tb_community_feedback")),
+                    HealthFacilityApplication.createCommonFtsObject());
+        } catch (Exception e) {
+            Timber.e(e, "upgradeToVersion10");
         }
     }
 }

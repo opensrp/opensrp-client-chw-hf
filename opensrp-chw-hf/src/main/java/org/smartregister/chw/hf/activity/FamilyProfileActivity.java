@@ -9,6 +9,9 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import com.vijay.jsonwizard.utils.FormUtils;
+
+import org.json.JSONException;
 import org.smartregister.chw.anc.activity.BaseAncMemberProfileActivity;
 import org.smartregister.chw.core.activity.CoreAboveFiveChildProfileActivity;
 import org.smartregister.chw.core.activity.CoreChildProfileActivity;
@@ -27,6 +30,8 @@ import org.smartregister.family.adapter.ViewPagerAdapter;
 import org.smartregister.family.util.Constants;
 
 import java.util.HashMap;
+
+import timber.log.Timber;
 
 public class FamilyProfileActivity extends CoreFamilyProfileActivity {
     private TextView tvEventDate;
@@ -129,6 +134,24 @@ public class FamilyProfileActivity extends CoreFamilyProfileActivity {
     @Override
     protected void goToFpProfile(String baseEntityId, Activity activity) {
         FamilyPlanningMemberProfileActivity.startFpMemberProfileActivity(activity, FpDao.getMember(baseEntityId));
+    }
+
+    @Override
+    protected void goToHivProfile(String baseEntityId, Activity activity) {
+        try {
+            HivRegisterActivity.startHIVFormActivity(this, baseEntityId,CoreConstants.JSON_FORM.getHivRegistration(),(new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getHivRegistration()).toString());
+        } catch (JSONException e) {
+            Timber.e(e);
+        }
+    }
+
+    @Override
+    protected void goToTbProfile(String baseEntityId, Activity activity) {
+        try {
+            TbRegisterActivity.startTbFormActivity(this, baseEntityId,CoreConstants.JSON_FORM.getTbRegistration(),(new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getTbRegistration()).toString());
+        } catch (JSONException e) {
+            Timber.e(e);
+        }
     }
 
     @Override

@@ -10,7 +10,6 @@ import org.json.JSONObject;
 import org.smartregister.chw.anc.util.NCUtils;
 import org.smartregister.chw.core.dao.ChwNotificationDao;
 import org.smartregister.chw.core.utils.CoreConstants;
-import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.core.utils.CoreReferralUtils;
 import org.smartregister.chw.fp.FpLibrary;
 import org.smartregister.chw.fp.util.FpJsonFormUtils;
@@ -20,9 +19,6 @@ import org.smartregister.repository.AllSharedPreferences;
 import org.smartregister.util.Utils;
 
 import timber.log.Timber;
-
-import static org.smartregister.chw.hf.utils.JsonFormUtils.SYNC_LOCATION_ID;
-import static org.smartregister.util.JsonFormUtils.STEP1;
 
 public class HFFamilyPlanningUtil extends FpUtil {
 
@@ -43,12 +39,7 @@ public class HFFamilyPlanningUtil extends FpUtil {
             AllSharedPreferences allSharedPreferences = Utils.getAllSharedPreferences();
             Event baseEvent = org.smartregister.chw.anc.util.JsonFormUtils.processJsonForm(allSharedPreferences, CoreReferralUtils.setEntityId(formObject.toString(), baseEntityId), CoreConstants.TABLE_NAME.FAMILY_PLANNING_UPDATE);
             org.smartregister.chw.anc.util.JsonFormUtils.tagEvent(allSharedPreferences, baseEvent);
-            try {
-                JSONObject syncLocationField = CoreJsonFormUtils.getJsonField(new JSONObject(jsonString), STEP1, SYNC_LOCATION_ID);
-                baseEvent.setLocationId(CoreJsonFormUtils.getSyncLocationUUIDFromDropdown(syncLocationField));
-            } catch (JSONException e) {
-                Timber.e(e, "Error retrieving Sync location Field");
-            }
+            baseEvent.setLocationId(ChwNotificationDao.getSyncLocationId(baseEntityId));
             NCUtils.processEvent(baseEvent.getBaseEntityId(), new JSONObject(JsonFormUtils.gson.toJson(baseEvent)));
         } catch (Exception ex) {
             Timber.e(ex);

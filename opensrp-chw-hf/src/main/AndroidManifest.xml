@@ -9,6 +9,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_launcher"
+        android:usesCleartextTraffic="true"
         android:supportsRtl="true"
         android:theme="@style/HFTheme"
         tools:replace="android:theme">
@@ -109,6 +110,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
+            android:name="org.smartregister.chw.hf.activity.CommunityFollowupFeedbackViewActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
             android:name=".activity.AncRegisterActivity"
             android:screenOrientation="portrait"
             android:theme="@style/HFTheme.NoActionBar" />
@@ -127,6 +132,17 @@
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
             android:name=".activity.AllClientsRegisterActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.AllClientsMemberProfileActivity"
+            android:label="@string/title_family_detail"
+            android:parentActivityName=".activity.AllClientsRegisterActivity"
+            android:theme="@style/FamilyTheme.NoActionBar" />
+        <activity
+            android:name=".activity.IndividualProfileRemoveActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name="org.smartregister.opd.activity.BaseOpdFormActivity"
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
             android:name=".activity.MalariaRegisterActivity"
@@ -191,6 +207,45 @@
         <activity android:name="org.smartregister.chw.core.activity.ChwP2pModeSelectActivity" />
         <activity
             android:name=".activity.ChildMedicalHistoryActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+
+
+        <activity
+            android:name=".activity.HivRegisterActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+
+        <activity
+            android:name=".activity.HtsRegisterActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+
+        <activity
+            android:name=".activity.HivIndexContactsContactsRegisterActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+
+        <activity
+            android:name=".activity.IndexContactsListActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+
+        <activity
+            android:name=".activity.HivProfileActivity"
+            android:parentActivityName=".activity.HivRegisterActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+
+        <activity
+            android:name=".activity.HivIndexContactProfileActivity"
+            android:parentActivityName=".activity.HivIndexContactsContactsRegisterActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+
+        <activity
+            android:name=".activity.HivFormsActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+
+        <activity
+            android:name=".activity.TbRegisterActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+
+        <activity
+            android:name=".activity.TbProfileActivity"
             android:theme="@style/HFTheme.NoActionBar" />
 
 

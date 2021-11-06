@@ -3,10 +3,12 @@ package org.smartregister.chw.hf.utils;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 
 import androidx.annotation.NonNull;
 
 import org.apache.commons.lang3.StringUtils;
+import org.jetbrains.annotations.NotNull;
 import org.smartregister.chw.anc.domain.MemberObject;
 import org.smartregister.chw.core.application.CoreChwApplication;
 import org.smartregister.chw.core.utils.CoreChildUtils;
@@ -14,6 +16,7 @@ import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.fp.dao.FpDao;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.activity.AboveFiveChildProfileActivity;
+import org.smartregister.chw.hf.activity.AllClientsMemberProfileActivity;
 import org.smartregister.chw.hf.activity.AncMemberProfileActivity;
 import org.smartregister.chw.hf.activity.ChildProfileActivity;
 import org.smartregister.chw.hf.activity.FamilyOtherMemberProfileActivity;
@@ -22,11 +25,19 @@ import org.smartregister.chw.hf.activity.MalariaProfileActivity;
 import org.smartregister.chw.hf.activity.PncMemberProfileActivity;
 import org.smartregister.chw.hf.dao.FamilyDao;
 import org.smartregister.chw.hf.model.FamilyDetailsModel;
+import org.smartregister.chw.hiv.dao.HivDao;
+import org.smartregister.chw.tb.dao.TbDao;
+import org.smartregister.clientandeventmodel.Client;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
+import org.smartregister.family.domain.FamilyEventClient;
 import org.smartregister.family.util.Constants;
 import org.smartregister.family.util.DBConstants;
 import org.smartregister.family.util.Utils;
+import org.smartregister.opd.pojo.OpdEventClient;
 import org.smartregister.opd.utils.OpdDbConstants;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.smartregister.chw.core.utils.CoreConstants.INTENT_KEY.CLIENT;
 import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
@@ -126,13 +137,19 @@ public class AllClientsUtils {
         return intent;
     }
 
-    private static void goToOtherMemberProfile(Activity activity, CommonPersonObjectClient patient,
-                                               Bundle bundle, String familyHead, String primaryCaregiver) {
+    public static void goToOtherMemberProfile(Activity activity, CommonPersonObjectClient patient,
+                                              Bundle bundle, String familyHead, String primaryCaregiver) {
 
         if (StringUtils.isBlank(familyHead) && StringUtils.isBlank(primaryCaregiver)) {
             showShortToast(activity, activity.getString(R.string.error_opening_profile));
         } else {
-            Intent intent = new Intent(activity, FamilyOtherMemberProfileActivity.class);
+            String registerType = patient.getDetails().get(REGISTER_TYPE);
+            Intent intent;
+            if (CoreConstants.REGISTER_TYPE.INDEPENDENT.equals(registerType)) {
+                intent = new Intent(activity, AllClientsMemberProfileActivity.class);
+            } else {
+                intent = new Intent(activity, FamilyOtherMemberProfileActivity.class);
+            }
             intent.putExtras(bundle != null ? bundle : new Bundle());
             intent.putExtra(Constants.INTENT_KEY.BASE_ENTITY_ID, patient.getCaseId());
             intent.putExtra(CoreConstants.INTENT_KEY.CHILD_COMMON_PERSON, patient);
@@ -144,4 +161,58 @@ public class AllClientsUtils {
         }
     }
 
+
+    @NotNull
+    public static List<OpdEventClient> getOpdEventClients(String jsonString) {
+        List<OpdEventClient> allClientMemberEvents = new ArrayList<>();
+
+        FamilyEventClient locationDetailsEvent = JsonFormUtils.processFamilyUpdateForm(
+                Utils.context().allSharedPreferences(), jsonString);
+        if (locationDetailsEvent == null) {
+            return allClientMemberEvents;
+        }
+
+        FamilyEventClient clientDetailsEvent = JsonFormUtils.processFamilyHeadRegistrationForm(
+                Utils.context().allSharedPreferences(), jsonString, locationDetailsEvent.getClient().getBaseEntityId());
+        if (clientDetailsEvent == null) {
+            return allClientMemberEvents;
+        }
+
+        if (clientDetailsEvent.getClient() != null && locationDetailsEvent.getClient() != null) {
+            String headUniqueId = clientDetailsEvent.getClient().getIdentifier(Utils.metadata().uniqueIdentifierKey);
+            if (StringUtils.isNotBlank(headUniqueId)) {
+                String familyUniqueId = headUniqueId + Constants.IDENTIFIER.FAMILY_SUFFIX;
+                locationDetailsEvent.getClient().addIdentifier(Utils.metadata().uniqueIdentifierKey, familyUniqueId);
+            }
+        }
+
+        // Update the family head and primary caregiver
+        Client familyClient = locationDetailsEvent.getClient();
+        familyClient.addRelationship(Utils.metadata().familyRegister.familyHeadRelationKey, clientDetailsEvent.getClient().getBaseEntityId());
+        familyClient.addRelationship(Utils.metadata().familyRegister.familyCareGiverRelationKey, clientDetailsEvent.getClient().getBaseEntityId());
+
+        //Use different entity type for independent members
+        locationDetailsEvent.getEvent().setEntityType(CoreConstants.TABLE_NAME.INDEPENDENT_CLIENT);
+        clientDetailsEvent.getEvent().setEntityType(CoreConstants.TABLE_NAME.INDEPENDENT_CLIENT);
+
+        allClientMemberEvents.add(new OpdEventClient(locationDetailsEvent.getClient(), locationDetailsEvent.getEvent()));
+        allClientMemberEvents.add(new OpdEventClient(clientDetailsEvent.getClient(), clientDetailsEvent.getEvent()));
+        return allClientMemberEvents;
+    }
+
+    public static void updateHivMenuItems(String baseEntityId, Menu menu) {
+        if (HivDao.isRegisteredForHiv(baseEntityId)) {
+            menu.findItem(R.id.action_hiv_registration).setVisible(false);
+        } else {
+            menu.findItem(R.id.action_hiv_registration).setVisible(true);
+        }
+    }
+
+    public static void updateTbMenuItems(String baseEntityId, Menu menu) {
+        if (TbDao.isRegisteredForTb(baseEntityId)) {
+            menu.findItem(R.id.action_tb_registration).setVisible(false);
+        } else {
+            menu.findItem(R.id.action_tb_registration).setVisible(true);
+        }
+    }
 }

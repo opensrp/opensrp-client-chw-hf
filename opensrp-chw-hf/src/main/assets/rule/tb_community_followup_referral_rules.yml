@@ -1,0 +1,21 @@
+---
+name: "reason_for_issuing_community_referral_other_visibility"
+description: "reason_for_issuing_community_referral_other symptoms"
+priority: 1
+condition: "reasons_for_issuing_community_referral['Other'] != null"
+actions:
+  - "reason_for_issuing_community_referral_other_visibility =  true"
+---
+name: "last_client_visit_date_visibility"
+description: "last_client_visit_date visibility"
+priority: 1
+condition: "reasons_for_issuing_community_referral['Other'] == null"
+actions:
+  - "last_client_visit_date_visibility =  true"
+---
+name: "tb_community_referral_date_calculation"
+description: "hiv_community_referral_date calculation"
+priority: 1
+condition: "true"
+actions:
+  - "tb_community_referral_date_calculation = System.currentTimeMillis()"

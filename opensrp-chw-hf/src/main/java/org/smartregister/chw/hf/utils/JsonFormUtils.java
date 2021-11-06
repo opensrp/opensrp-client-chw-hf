@@ -8,8 +8,8 @@ import net.sqlcipher.database.SQLiteDatabase;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.Triple;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
+import org.smartregister.chw.core.dao.ChwNotificationDao;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.hf.HealthFacilityApplication;
@@ -74,20 +74,7 @@ public class JsonFormUtils extends CoreJsonFormUtils {
                 EventClientRepository eventClientRepository = new EventClientRepository();
                 JSONObject clientjson = eventClientRepository.getClient(db, lookUpBaseEntityId);
                 baseClient.setAddresses(getAddressFromClientJson(clientjson));
-            }
-
-            try {
-                JSONObject syncLocationField = CoreJsonFormUtils.getJsonField(new JSONObject(jsonString), STEP1,  SYNC_LOCATION_ID);
-                    baseEvent.setLocationId(CoreJsonFormUtils.getSyncLocationUUIDFromDropdown(syncLocationField));
-            } catch (JSONException e) {
-                Timber.e(e, "Error retrieving Sync location Field");
-            }
-
-            try {
-                JSONObject syncLocationField = CoreJsonFormUtils.getJsonField(new JSONObject(jsonString), STEP1, SYNC_LOCATION_ID);
-                baseEvent.setLocationId(CoreJsonFormUtils.getSyncLocationUUIDFromDropdown(syncLocationField));
-            } catch (JSONException e) {
-                Timber.e(e, "Error retrieving Sync location Field");
+                baseEvent.setLocationId(ChwNotificationDao.getFamilyHeadSyncLocationId(lookUpBaseEntityId));
             }
 
             return Pair.create(baseClient, baseEvent);

@@ -1,0 +1,319 @@
+{
+  "form": "TB Outcome",
+  "count": "1",
+  "encounter_type": "TB Outcome",
+  "entity_id": "",
+  "relational_id": "",
+  "rules_file": "rule/tb_outcome_rules.yml",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "steps": [
+    {
+      "title": "TB Problems Outcome",
+      "fields": [
+        {
+          "name": "problem",
+          "type": "multi_choice_checkbox",
+          "properties": {
+            "text": "Pick problem/condition associated with the client."
+          },
+          "meta_data": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "problem"
+          },
+          "options": [
+            {
+              "name": "coughing_blood",
+              "text": "Coughing up blood or sputum",
+              "meta_data": {
+                "openmrs_entity": "",
+                "openmrs_entity_id": "coughing_blood",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "pain_in_the_chest",
+              "text": "Pain in the chest",
+              "meta_data": {
+                "openmrs_entity": "",
+                "openmrs_entity_id": "cough_lasting_3_weeks_or_more",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "cough_lasting_3_weeks_or_more",
+              "text": "A bad cough that lasts 3 weeks or longer",
+              "meta_data": {
+                "openmrs_entity": "",
+                "openmrs_entity_id": "cough_lasting_3_weeks_or_more",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "fever",
+              "text": "Fever",
+              "meta_data": {
+                "openmrs_entity": "",
+                "openmrs_entity_id": "fever",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "weight_loss",
+              "text": "Weight loss",
+              "meta_data": {
+                "openmrs_entity": "",
+                "openmrs_entity_id": "weight_loss",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "lack_of_appetite",
+              "text": "Lack of appetite",
+              "meta_data": {
+                "openmrs_entity": "",
+                "openmrs_entity_id": "lack_of_appetite",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "night_sweats",
+              "text": "Night Sweats",
+              "meta_data": {
+                "openmrs_entity": "",
+                "openmrs_entity_id": "night_sweats",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "Other",
+              "text": "Other",
+              "meta_data": {
+                "openmrs_entity": "",
+                "openmrs_entity_id": "Other",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "None",
+              "text": "None",
+              "is_exclusive": true,
+              "meta_data": {
+                "openmrs_entity": "",
+                "openmrs_entity_id": "None",
+                "openmrs_entity_parent": ""
+              }
+            }
+          ],
+          "required_status": "yes:Please specify client's problems",
+          "dependent_calculations": [
+            "tb_facility_visit_date"
+          ]
+        },
+        {
+          "name": "problem_other",
+          "type": "text_input_edit_text",
+          "properties": {
+            "hint": "Other Problems",
+            "type": "name"
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "problem_other",
+            "openmrs_entity_parent": "problem"
+          },
+          "required_status": "true:Please specify other symptoms",
+          "subjects": "problem:map"
+        },
+        {
+          "name": "action_taken_tb_problems",
+          "type": "radio_group",
+          "properties": {
+            "text": "Action taken by health facility."
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "action_taken_tb_problems",
+            "openmrs_entity_parent": ""
+          },
+          "options": [
+            {
+              "name": "no_action_taken",
+              "text": "No action taken",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "no_action_taken",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "tested",
+              "text": "Tested",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "tested",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "referred",
+              "text": "Referred",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "referred",
+                "openmrs_entity_parent": ""
+              }
+            }
+          ],
+          "required_status": "yes:Please select action taken"
+        },
+        {
+          "name": "test_results",
+          "type": "radio_group",
+          "properties": {
+            "text": "Select client’s TB test results."
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "test_results",
+            "openmrs_entity_parent": ""
+          },
+          "options": [
+            {
+              "name": "positive",
+              "text": "Positive",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "positive",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "negative",
+              "text": "Negative",
+              "is_exclusive": true,
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "negative",
+                "openmrs_entity_parent": ""
+              }
+            }
+          ],
+          "required_status": "yes:Please select the test results",
+          "subjects": "action_taken_tb_problems:map"
+        },
+        {
+          "name": "enrolled_to_clinic",
+          "type": "radio_group",
+          "properties": {
+            "text": "Is the client enrolled to TB clinic?"
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "enrolled_to_clinic",
+            "openmrs_entity_parent": ""
+          },
+          "options": [
+            {
+              "name": "yes",
+              "text": "Yes",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "yes",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "no",
+              "text": "No",
+              "is_exclusive": true,
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "no",
+                "openmrs_entity_parent": ""
+              }
+            }
+          ],
+          "required_status": "yes:Please select the answer",
+          "subjects": "test_results:map"
+        },
+        {
+          "name": "tb_clinic_number",
+          "type": "text_input_edit_text",
+          "properties": {
+            "hint": "Please fill client's TB Clinic number",
+            "type": "name"
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "tb_clinic_number",
+            "openmrs_entity_parent": ""
+          },
+          "required_status": "true:Please fill client's CTC number",
+          "subjects": "enrolled_to_clinic:map"
+        },
+        {
+          "name": "comment_tb_problems",
+          "type": "text_input_edit_text",
+          "properties": {
+            "hint": "Remarks/Comments"
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "comment_tb_problems",
+            "openmrs_entity_parent": ""
+          },
+          "required_status": "false"
+        }
+      ]
+    }
+  ]
+}
+
