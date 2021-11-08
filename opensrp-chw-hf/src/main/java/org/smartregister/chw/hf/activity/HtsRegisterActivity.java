@@ -8,22 +8,26 @@ import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 
 import org.jetbrains.annotations.NotNull;
 import org.smartregister.chw.core.activity.CoreHivRegisterActivity;
-import org.smartregister.chw.hf.fragment.HivFollowupFragment;
-import org.smartregister.chw.hf.fragment.HivRegisterFragment;
+import org.smartregister.chw.core.custom_views.NavigationMenu;
+import org.smartregister.chw.core.utils.CoreConstants;
+import org.smartregister.chw.hf.fragment.HtsRegisterFragment;
 import org.smartregister.chw.hiv.fragment.BaseHivCommunityFollowupRegisterFragment;
 import org.smartregister.chw.hiv.fragment.BaseHivRegisterFragment;
 import org.smartregister.helper.BottomNavigationHelper;
 import org.smartregister.listener.BottomNavigationListener;
 
 /**
- * HIV Register.
- * This is the register for HIV Positive Clients.
- * HIV Positive clients will elicit their contact clients for HIV Testing
+ * HIV Testing Services Register.
+ *
+ *
+ * This is the register used for HIV Testing.
+ * This register will contain clients referred from CHWs to health facility for testing.
+ * HIV Positive clients will be moved to the HIV Registry which contains HIV Positive Clients So that they can elicite contact clients
  */
-public class HivRegisterActivity extends CoreHivRegisterActivity {
+public class HtsRegisterActivity extends CoreHivRegisterActivity {
 
     public static void startHIVFormActivity(Activity activity, String baseEntityID, String formName, String payloadType) {
-        Intent intent = new Intent(activity, HivRegisterActivity.class);
+        Intent intent = new Intent(activity, HtsRegisterActivity.class);
         intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.BASE_ENTITY_ID, baseEntityID);
         intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.ACTION, payloadType);
         intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.HIV_REGISTRATION_FORM_NAME, formName);
@@ -33,14 +37,13 @@ public class HivRegisterActivity extends CoreHivRegisterActivity {
     @NotNull
     @Override
     protected BaseHivRegisterFragment getRegisterFragment() {
-        return new HivRegisterFragment();
+        return new HtsRegisterFragment();
     }
 
     @NotNull
     @Override
     protected BaseHivCommunityFollowupRegisterFragment[] getOtherFragments() {
-        return new HivFollowupFragment[]{
-                new HivFollowupFragment()};
+        return new BaseHivCommunityFollowupRegisterFragment[0];
     }
 
     @Override
@@ -62,6 +65,8 @@ public class HivRegisterActivity extends CoreHivRegisterActivity {
             bottomNavigationView.getMenu().removeItem(org.smartregister.chw.hiv.R.id.action_received_referrals);
 
             bottomNavigationView.inflateMenu(getMenuResource());
+            bottomNavigationView.getMenu().removeItem(org.smartregister.chw.hiv.R.id.action_received_referrals);
+
             bottomNavigationHelper.disableShiftMode(bottomNavigationView);
 
             BottomNavigationListener hivBottomNavigationListener = getBottomNavigation(this);
@@ -70,6 +75,14 @@ public class HivRegisterActivity extends CoreHivRegisterActivity {
         }
     }
 
+    @Override
+    protected void onResumption() {
+        super.onResumption();
+        NavigationMenu menu = NavigationMenu.getInstance(this, null, null);
+        if (menu != null) {
+            menu.getNavigationAdapter().setSelectedView(CoreConstants.DrawerMenu.HTS_CLIENTS);
+        }
+    }
 
 }
  

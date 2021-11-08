@@ -20,23 +20,9 @@ condition: "true"
 actions:
   - "calculation = step1_fam_name"
 ---
-name: step2_hiv_status
-description: set hiv_status
-priority: 1
-condition: "true"
-actions:
-  - "calculation = step2_age_calculated >= 19 ? step2_hiv_status_adult : (step2_age_calculated >= 15 ? step2_hiv_status_child : 'child_born_from_positive_mother')"
----
 name: step2_relationship
 description: set relationship
 priority: 1
 condition: "true"
 actions:
-  - "calculation = step2_age_calculated >= 19 ? step2_relationship_adult : (step2_age_calculated >= 15 ? step2_relationship_15_to_19 : 'biological_child_under_15')"
----
-name: step2_how_to_notify_the_contact_client
-description: set how_to_notify_the_contact_client
-priority: 1
-condition: "true"
-actions:
-  - "calculation = (!(step2_hiv_status.equals('positive') && step2_has_started_medication.equals('yes')))? step2_how_to_notify_the_contact_client_who_is_not_on_arv_medication : 'na'"
+  - "calculation = step2_age_calculated >= 15 ? step2_relationship_above_15 : step2_relationship_under_15"

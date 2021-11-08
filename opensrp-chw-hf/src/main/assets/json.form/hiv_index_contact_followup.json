@@ -4,7 +4,7 @@
   "encounter_type": "HIV Index Contact Testing Followup",
   "entity_id": "",
   "relational_id": "",
-  "rules_file": "rule/hiv_index_contact_followup_for_unknown_status_non_sex_partner_rules.yml",
+  "rules_file": "rule/hiv_index_contact_followup_for_non_sex_partner_rules.yml",
   "metadata": {
     "start": {
       "openmrs_entity_parent": "",
@@ -58,6 +58,76 @@
       "title": "Index Client Contact HIV Outcome",
       "fields": [
         {
+          "name": "has_the_client_been_reached",
+          "type": "radio_group",
+          "properties": {
+            "text": "Has the client been reached?"
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "has_the_client_been_reached",
+            "openmrs_entity_parent": ""
+          },
+          "options": [
+            {
+              "name": "yes",
+              "text": "Yes",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "yes",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "no",
+              "text": "No",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "no",
+                "openmrs_entity_parent": ""
+              }
+            }
+          ],
+          "required_status": "yes:Please select the answer",
+          "dependent_calculations": [
+            "relationship"
+          ]
+        },
+        {
+          "name": "eligibility_for_testing",
+          "type": "radio_group",
+          "properties": {
+            "text": "Is the Client Eligible for testing?"
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "eligibility_for_testing",
+            "openmrs_entity_parent": ""
+          },
+          "options": [
+            {
+              "name": "yes",
+              "text": "Yes",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "yes",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "no",
+              "text": "No",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "no",
+                "openmrs_entity_parent": ""
+              }
+            }
+          ],
+          "required_status": "yes:Please select the answer",
+          "subjects": "has_the_client_been_reached:map"
+        },
+        {
           "name": "has_the_contact_client_been_tested",
           "type": "radio_group",
           "properties": {
@@ -89,10 +159,7 @@
             }
           ],
           "required_status": "yes:Please select the answer",
-          "dependent_calculations": [
-            "eligibility_for_testing",
-            "relationship"
-          ]
+          "subjects": "eligibility_for_testing:map"
         },
         {
           "name": "test_results",

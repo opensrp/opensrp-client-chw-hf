@@ -223,6 +223,10 @@
             android:theme="@style/HFTheme.NoActionBar" />
 
         <activity
+            android:name=".activity.HtsRegisterActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+
+        <activity
             android:name=".activity.HivIndexContactsContactsRegisterActivity"
             android:theme="@style/HFTheme.NoActionBar" />
 

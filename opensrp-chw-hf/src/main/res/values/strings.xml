@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Kituoni</string>
     <string name="logo">logo</string>
-    <string name="login_title">USAID Boresha Afya\nHealth Facility</string>
-    <string name="nav_logo">USAID Boresha Afya Health Facility</string>
+    <string name="login_title">Ministry of Health\nKituoni App</string>
+    <string name="nav_logo">Ministry of Health Health Facility</string>
     <string name="due_only">Referred</string>
 
     <string name="clicked_sick_child">You have clicked the sick child follow-up action</string>
@@ -28,6 +28,8 @@
     <string name="error_opening_profile">Error opening client\'s profile</string>
     <string name="family">%s Family</string>
     <string name="created">Created: %s</string>
+    <string name="submit">SAVE</string>
+    <string name="hts_clients">HTS Clients</string>
     <string name="anc_first_visit_medical_and_surgical_history">Medical And Surgical History</string>
     <string name="anc_first_visit_baseline_investigation">Baseline Investigation</string>
     <string name="anc_first_visit_obstetric_examination">Obstetric Examination</string>

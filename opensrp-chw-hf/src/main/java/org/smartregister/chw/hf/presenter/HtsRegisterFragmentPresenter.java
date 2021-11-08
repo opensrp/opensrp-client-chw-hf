@@ -8,9 +8,9 @@ import org.smartregister.chw.hiv.presenter.BaseHivRegisterFragmentPresenter;
 import org.smartregister.chw.hiv.util.Constants.Tables;
 import org.smartregister.chw.hiv.util.DBConstants;
 
-public class HivRegisterFragmentPresenter extends BaseHivRegisterFragmentPresenter {
+public class HtsRegisterFragmentPresenter extends BaseHivRegisterFragmentPresenter {
 
-    public HivRegisterFragmentPresenter(BaseHivRegisterFragmentContract.View view, BaseHivRegisterFragmentContract.Model model, String viewConfigurationIdentifier) {
+    public HtsRegisterFragmentPresenter(BaseHivRegisterFragmentContract.View view, BaseHivRegisterFragmentContract.Model model, String viewConfigurationIdentifier) {
         super(view, model, viewConfigurationIdentifier);
     }
 
@@ -18,7 +18,7 @@ public class HivRegisterFragmentPresenter extends BaseHivRegisterFragmentPresent
     @NotNull
     public String getMainCondition() {
         return " " + CoreConstants.TABLE_NAME.FAMILY_MEMBER + "." + DBConstants.Key.DATE_REMOVED + " is null " +
-                "AND " + Tables.HIV + "." + DBConstants.Key.CTC_NUMBER + " IS NOT NULL "+
+                "AND " + Tables.HIV + "." + DBConstants.Key.CTC_NUMBER + " IS NULL "+
                 "AND " + Tables.HIV + "." + DBConstants.Key.IS_CLOSED + " = '0' ";
 
     }

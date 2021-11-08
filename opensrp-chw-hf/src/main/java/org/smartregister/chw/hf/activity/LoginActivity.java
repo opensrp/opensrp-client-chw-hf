@@ -61,7 +61,12 @@ public class LoginActivity extends BaseLoginActivity implements BaseLoginContrac
     }
 
     private void getToFamilyList(boolean remote) {
-        Intent intent = new Intent(this, FamilyRegisterActivity.class);
+        Intent intent;
+        if (BuildConfig.BUILD_FOR_BORESHA_AFYA_SOUTH)
+            intent = new Intent(this, AllClientsRegisterActivity.class);
+        else
+            intent = new Intent(this, FamilyRegisterActivity.class);
+
         intent.putExtra(Constants.INTENT_KEY.IS_REMOTE_LOGIN, remote);
         startActivity(intent);
     }

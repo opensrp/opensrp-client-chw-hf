@@ -6,17 +6,24 @@ condition: "true"
 actions:
   - "relationship = 'sex_partner'"
 ---
-name: "eligibility_for_testing_calculation"
-description: "eligibility_for_testing calculation"
+name: "eligibility_for_testing_visibility"
+description: "eligibility_for_testing visibility"
 priority: 1
-condition: "true"
+condition: "has_the_client_been_reached['yes'] != null"
 actions:
-  - "eligibility_for_testing_calculation = true"
+  - "eligibility_for_testing_visibility = true"
+---
+name: "has_the_contact_client_been_tested_visibility"
+description: "has_the_contact_client_been_tested visibility"
+priority: 1
+condition: "has_the_client_been_reached['yes'] != null && eligibility_for_testing['yes'] != null"
+actions:
+  - "has_the_contact_client_been_tested_visibility = true"
 ---
 name: "test_results_visibility"
 description: "test_results visibility"
 priority: 1
-condition: "has_the_contact_client_been_tested['yes'] != null"
+condition: "has_the_client_been_reached['yes'] != null && eligibility_for_testing['yes'] != null && has_the_contact_client_been_tested['yes'] != null"
 actions:
   - "test_results_visibility = true"
 ---
