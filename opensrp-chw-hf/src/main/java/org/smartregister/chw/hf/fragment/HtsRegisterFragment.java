@@ -26,6 +26,8 @@ import java.util.Set;
 
 import timber.log.Timber;
 
+import static org.smartregister.chw.hf.utils.Constants.JSON_FORM.HIV_REGISTRATION;
+
 public class HtsRegisterFragment extends CoreHivRegisterFragment {
     @Override
     public void setupViews(android.view.View view) {
@@ -63,15 +65,8 @@ public class HtsRegisterFragment extends CoreHivRegisterFragment {
 
 
     @Override
-    protected void openFollowUpVisit(@Nullable HivMemberObject hivMemberObject) {
-        if (getActivity() != null) {
-            try {
-                HivRegisterActivity.startHIVFormActivity(getActivity(), hivMemberObject.getBaseEntityId(), CoreConstants.JSON_FORM.getHivRegistration(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(getActivity(), CoreConstants.JSON_FORM.getHivFollowupVisit()).toString());
-            } catch (JSONException e) {
-                Timber.e(e);
-            }
-        }
-    }
+    protected void openFollowUpVisit(@Nullable HivMemberObject hivMemberObject) { }
+
 }
 
 

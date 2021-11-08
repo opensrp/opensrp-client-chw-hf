@@ -22,9 +22,14 @@ public class Constants extends CoreConstants {
 
     public static final class JSON_FORM {
         private static final String ANC_PREGANCY_CONFIRMATION = "anc_pregnancy_confirmation";
+        public static final String HIV_REGISTRATION = "hiv_registration";
 
         public static String getAncPregnancyConfirmation() {
             return Utils.getLocalForm(ANC_PREGANCY_CONFIRMATION, locale, assetManager);
+        }
+
+        public static String getHivRegistration(){
+            return Utils.getLocalForm(HIV_REGISTRATION,locale,assetManager);
         }
 
         public static String getAncPregnancyConfirmationForm() {

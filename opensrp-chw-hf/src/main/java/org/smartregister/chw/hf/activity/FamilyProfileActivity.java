@@ -33,6 +33,8 @@ import java.util.HashMap;
 
 import timber.log.Timber;
 
+import static org.smartregister.chw.hf.utils.Constants.JSON_FORM.HIV_REGISTRATION;
+
 public class FamilyProfileActivity extends CoreFamilyProfileActivity {
     private TextView tvEventDate;
     private TextView tvInterpunct;
@@ -139,7 +141,7 @@ public class FamilyProfileActivity extends CoreFamilyProfileActivity {
     @Override
     protected void goToHivProfile(String baseEntityId, Activity activity) {
         try {
-            HivRegisterActivity.startHIVFormActivity(this, baseEntityId,CoreConstants.JSON_FORM.getHivRegistration(),(new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getHivRegistration()).toString());
+            HivRegisterActivity.startHIVFormActivity(this, baseEntityId,HIV_REGISTRATION,(new FormUtils()).getFormJsonFromRepositoryOrAssets(this, HIV_REGISTRATION).toString());
         } catch (JSONException e) {
             Timber.e(e);
         }

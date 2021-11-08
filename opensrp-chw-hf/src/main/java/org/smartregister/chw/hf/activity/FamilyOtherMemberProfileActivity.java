@@ -1,6 +1,7 @@
 package org.smartregister.chw.hf.activity;
 
 import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
+import static org.smartregister.chw.hf.utils.Constants.JSON_FORM.HIV_REGISTRATION;
 
 import android.content.Context;
 import android.view.Menu;
@@ -87,7 +88,7 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
     @Override
     protected void startHivRegister() {
         try {
-            HivRegisterActivity.startHIVFormActivity(this, baseEntityId, CoreConstants.JSON_FORM.getHivRegistration(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getHivRegistration()).toString());
+            HivRegisterActivity.startHIVFormActivity(this, baseEntityId, HIV_REGISTRATION, (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, HIV_REGISTRATION).toString());
         } catch (JSONException e) {
             Timber.e(e);
         }
