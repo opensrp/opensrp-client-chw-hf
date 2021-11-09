@@ -356,6 +356,13 @@
             "creates_case": [
               "ec_hiv_index_hf"
             ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "PMTCT Registration",
+            "creates_case": [
+              "ec_pmtct_registration"
+            ]
           }
         ]
       }

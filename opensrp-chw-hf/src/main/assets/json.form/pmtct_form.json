@@ -1,0 +1,353 @@
+{
+  "count": "5",
+  "encounter_type": "PMTCT Registration",
+  "mother": {},
+  "entity_id": "",
+  "relational_id": "",
+  "metadata": {},
+  "step1": {
+    "title": "Known on ART",
+    "next": "step2",
+    "fields": [
+      {
+        "type": "edit_text",
+        "key": "pmtct_register_date",
+        "hidden": "true",
+        "openmrs_entity_id": "pmtct_register_date",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_form_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "type": "check_box",
+        "key": "known_on_art",
+        "label": "Is the client known on ART",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes"
+          }
+        ],
+        "value": ["yes"]
+      },
+      {
+        "type": "edit_text",
+        "key": "clinician_name",
+        "hint": "Clinician Name",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "step1:known_on_art": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "yes"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "type": "edit_text",
+        "key": "clinician_position",
+        "hint": "Clinician Position",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "step1:known_on_art": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "yes"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "type": "edit_text",
+        "key": "clinician_phone_no",
+        "hint": "Clinician Phone Number",
+        "edit_type": "number",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "step1:known_on_art": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "yes"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "type": "date_picker",
+        "key": "collection_date",
+        "hint": "Collection Date",
+        "openmrs_entity_id": "",
+        "max_date": "today",
+        "min_date": "today-5y",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "step1:known_on_art": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "yes"
+                ]
+              }
+            ]
+          }
+        }
+      },{
+        "type": "time_picker",
+        "key": "collection_time",
+        "hint": "Collection Time",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "step1:known_on_art": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "yes"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "type": "edit_text",
+        "key": "sample_id",
+        "hint": "Sample ID",
+        "edit_type": "number",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "step1:known_on_art": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "yes"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "reminder_take_sample",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "",
+        "type": "toaster_notes",
+        "text": "Take HVL sample after 3 months since ART initiation\n",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:known_on_art": {
+            "ex-checkbox": [
+              {
+                "not": [
+                  "yes"
+                ]
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "step2": {
+    "title": "ARV Prescription",
+    "next": "step3",
+    "fields": [
+      {
+        "type": "spinner",
+        "key": "first_line",
+        "hint": "First",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "values": [
+          "1gA",
+          "1pA",
+          "1rA",
+          "1uA",
+          "1hA",
+          "1xA",
+          "2fA"
+        ]
+      },
+      {
+        "type": "spinner",
+        "key": "second_line",
+        "hint": "Second",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "values": [
+          "2hA",
+          "2sA",
+          "2GA",
+          "2kA",
+          "2nA",
+          "2uA",
+          "2xA",
+          "3yA"
+        ]
+      },
+      {
+        "type": "spinner",
+        "key": "third_line",
+        "hint": "Third",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "values": [
+          "3wA",
+          "3kA",
+          "3tA",
+          "3hA",
+          "3gA",
+          "3zA",
+          "3xA"
+        ]
+      }
+    ]
+  },
+  "step3": {
+    "title": "Clinical Staging of the disease",
+    "next": "step4",
+    "fields": [
+      {
+        "type": "check_box",
+        "key": "client_who_clinical_stage",
+        "label": "Client WHO HIV clinical Stage 1-4",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "exclusive": [
+          "stage1",
+          "stage2",
+          "stage3",
+          "stage4"
+        ],
+        "options": [
+          {
+            "key": "stage1",
+            "text": "Stage 1",
+            "label_info_title": "Stage 1",
+            "label_info_text": "• Asymptomatic\n• Persistent generalized\nlymphadenopathy\n(PGL)\nUnexplained, asymptomatic\nhepatosplenomegaly\n"
+          },
+          {
+            "key": "stage2",
+            "text": "Stage 2",
+            "label_info_title": "Stage 2",
+            "label_info_text": "Papular pruritic eruptions (PPE)\n• Seborrheic dermatitis\n• Fungal nail infections\n• Angular cheilitis\n• Linear gingival erythema\n• Extensive HPV or molluscum infection\n(>5% of body area/face)\n• Recurrent oral ulcerations (>2 episodes/ in\n6 months)\n• Parotid enlargement\n• Herpes zoster (>1 episode/12 months)\n• Recurrent or chronic upper respiratory\ninfection (URI): otitis media, otorrhoea,\nsinusitis (>2 episodes/6 months)\n\n"
+          },
+          {
+            "key": "stage3",
+            "text": "Stage 3",
+            "label_info_title": "Stage 3",
+            "label_info_text": "• Unexplained moderate malnutrition (-\n2SD or Z score) not responding to\nstandard therapy\n• Unexplained persistent diarrhoea (>14\ndays)\n• Unexplained persistent fever\n(intermittent or constant, > 1 mo.)\n• Oral candidiasis (outside neonatal\nperiod)\n• Oral hairy Leucoplakia\n• Pulmonary tuberculosis\n• Severe recurrent presumed bacterial\npneumonia (>2 episodes/12 months)\n• Acute necrotizing ulcerative gingivitis/\nperiodontitis\n• Lymphoid interstitial pneumonitis\n(LIP)\n• Unexplained anaemia (<8g/dL),\nneutropenia (<1000/mm3), or\nthrombocytopenia (<30,000/mm3) for\n>1 mo.\n"
+          },
+          {
+            "key": "stage4",
+            "text": "Stage 4",
+            "label_info_title": "Stage 4",
+            "label_info_text": "• Unexplained severe wasting or severe\nmalnutrition (-3 SD or Z score) not\nresponding to standard therapy\n• Pneumocystis pneumonia\n• Recurrent severe bacterial infections (>2\nepisodes/12 months, excluding pneumonia)\n• Chronic orolabial or cutaneous HSV\n(lasting > 1 mo)\n• Extra-pulmonary tuberculosis\n• Kaposi’s sarcoma\n• Oesophageal candidiasis\n• CNS toxoplasmosis\n• Cryptococcal meningitis\n• Any disseminated endemic mycosis\n• Cryptosporidiosis or Isosporiasis (with\ndiarrhoea > 1 month)\n• CMV infection of organ other than liver,\nspleen, lymph nodes (and onset age >1\nmonth)\n• Disseminated mycobacterial disease other\n"
+          }
+        ]
+      }
+    ]
+  },
+  "step4": {
+    "title": "HVL Suppression",
+    "next": "step5",
+    "fields": [
+      {
+        "type": "check_box",
+        "key": "hvl_suppression",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "",
+        "openmrs_entity_parent": "",
+        "label": "HVL Suppression",
+        "options": [
+          {
+            "text": "Yes",
+            "key": "yes",
+            "value": true
+          }
+        ]
+      },
+      {
+        "key": "notify_continue_regimen",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "",
+        "type": "toaster_notes",
+        "text": "Continue current regimen",
+        "toaster_info_text": "Repeat HVL after 6, 12 and 18 months",
+        "toaster_type": "info",
+        "relevance": {
+          "step5:hvl_suppression": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "yes"
+                ]
+              }
+            ]
+          }
+        }
+
+      }
+    ]
+  },
+  "step5": {
+    "title": "Re-test",
+    "fields": [
+      {
+        "key": "re-test",
+        "label": "Re-Test?",
+        "type": "native_radio",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "label_info_text":"Confirmation on previous test if new On ART",
+        "label_info_title": "Info",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes"
+          },
+          {
+            "key": "no",
+            "text": "No"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -40,4 +40,5 @@
     <string name="anc_recuring_visit_pharmacy">Pharmacy</string>
     <string name="anc_recuring_visit_pregnancy_status">Pregnancy Status</string>
     <string name="anc_recuring_visit_review_birth_and_emergency_plan">Review Birth and Emergency Plan</string>
+    <string name="PMTCT">PMTCT</string>
 </resources>

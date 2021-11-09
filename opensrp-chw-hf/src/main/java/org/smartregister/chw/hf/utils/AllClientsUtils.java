@@ -26,6 +26,7 @@ import org.smartregister.chw.hf.activity.PncMemberProfileActivity;
 import org.smartregister.chw.hf.dao.FamilyDao;
 import org.smartregister.chw.hf.model.FamilyDetailsModel;
 import org.smartregister.chw.hiv.dao.HivDao;
+import org.smartregister.chw.pmtct.dao.PmtctDao;
 import org.smartregister.chw.tb.dao.TbDao;
 import org.smartregister.clientandeventmodel.Client;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
@@ -214,5 +215,8 @@ public class AllClientsUtils {
         } else {
             menu.findItem(R.id.action_tb_registration).setVisible(true);
         }
+    }
+    public static void updatePmtctMenuItems(String baseEntityId, Menu menu){
+        menu.findItem(R.id.action_pmtct_register).setVisible(!PmtctDao.isRegisteredForPmtct(baseEntityId));
     }
 }

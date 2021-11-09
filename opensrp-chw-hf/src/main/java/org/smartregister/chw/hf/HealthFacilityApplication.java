@@ -36,6 +36,7 @@ import org.smartregister.chw.hf.activity.HivRegisterActivity;
 import org.smartregister.chw.hf.activity.HtsRegisterActivity;
 import org.smartregister.chw.hf.activity.LoginActivity;
 import org.smartregister.chw.hf.activity.MalariaRegisterActivity;
+import org.smartregister.chw.hf.activity.PmtctRegisterActivity;
 import org.smartregister.chw.hf.activity.PncRegisterActivity;
 import org.smartregister.chw.hf.activity.ReferralRegisterActivity;
 import org.smartregister.chw.hf.activity.TbRegisterActivity;
@@ -49,6 +50,7 @@ import org.smartregister.chw.hf.sync.HfClientProcessor;
 import org.smartregister.chw.hf.sync.HfSyncConfiguration;
 import org.smartregister.chw.hiv.HivLibrary;
 import org.smartregister.chw.malaria.MalariaLibrary;
+import org.smartregister.chw.pmtct.PmtctLibrary;
 import org.smartregister.chw.pnc.PncLibrary;
 import org.smartregister.commonregistry.CommonFtsObject;
 import org.smartregister.chw.tb.TbLibrary;
@@ -111,6 +113,7 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
         registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.ALL_CLIENTS_REGISTERED_ACTIVITY, AllClientsRegisterActivity.class);
         registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.MALARIA_REGISTER_ACTIVITY, MalariaRegisterActivity.class);
         registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.FP_REGISTER_ACTIVITY, FpRegisterActivity.class);
+        registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.PMTCT_REGISTER_ACTIVITY, PmtctRegisterActivity.class);
 
         if (BuildConfig.BUILD_FOR_BORESHA_AFYA_SOUTH) {
             registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.HIV_REGISTER_ACTIVITY, HivRegisterActivity.class);
@@ -227,6 +230,9 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
         TbLibrary.init(this);
         TbLibrary.getInstance().setAppVersion(BuildConfig.VERSION_CODE);
         TbLibrary.getInstance().setDatabaseVersion(BuildConfig.DATABASE_VERSION);
+
+        //Setup pmtct library
+        PmtctLibrary.init(context,getRepository(),BuildConfig.VERSION_CODE,BuildConfig.DATABASE_VERSION);
 
         //Needed for all clients register
         OpdLibrary.init(context, getRepository(),

@@ -28,8 +28,9 @@ public class NavigationModel implements org.smartregister.chw.core.model.Navigat
             NavigationOption op10 =new NavigationOption(R.mipmap.sidemenu_hiv, R.mipmap.sidemenu_hiv_active, R.string.menu_hiv_index_contacts, CoreConstants.DrawerMenu.HIV_INDEX_CLIENTS_HF, 0);
             NavigationOption op11 =new NavigationOption(R.mipmap.sidemenu_tb, R.mipmap.sidemenu_tb_active, R.string.menu_tb, CoreConstants.DrawerMenu.TB_CLIENTS, 0);
             NavigationOption op12=new NavigationOption(R.mipmap.sidemenu_referrals, R.mipmap.sidemenu_referrals_active, R.string.menu_referrals, CoreConstants.DrawerMenu.REFERRALS, 0);
+            NavigationOption op13 = new NavigationOption(R.mipmap.sidemenu_hiv,R.mipmap.sidemenu_hiv_active,R.string.PMTCT,CoreConstants.DrawerMenu.PMTCT,0);
             if (BuildConfig.BUILD_FOR_BORESHA_AFYA_SOUTH) {
-                navigationOptions.addAll(Arrays.asList(op1,op2,op8,op9,op10,op12,op3,op4,op5,op6,op7,op11));
+                navigationOptions.addAll(Arrays.asList(op1,op2,op8,op9,op10,op12,op3,op4,op5,op6,op7,op11,op13));
             }else{
                 navigationOptions.addAll(Arrays.asList(op1,op2,op3,op4,op5,op6,op7,op12));
             }

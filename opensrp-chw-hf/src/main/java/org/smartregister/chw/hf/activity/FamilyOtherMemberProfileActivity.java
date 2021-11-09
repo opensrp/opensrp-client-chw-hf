@@ -33,6 +33,7 @@ import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hiv.dao.HivDao;
 import org.smartregister.chw.hiv.dao.HivIndexDao;
 import org.smartregister.chw.malaria.dao.MalariaDao;
+import org.smartregister.chw.pmtct.dao.PmtctDao;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.family.fragment.BaseFamilyOtherMemberProfileFragment;
 import org.smartregister.family.model.BaseFamilyOtherMemberProfileActivityModel;
@@ -111,6 +112,15 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
     @Override
     protected void startHfMalariaFollowupForm() {
         MalariaFollowUpVisitActivityHelper.startMalariaFollowUpActivity(this, baseEntityId);
+    }
+
+    @Override
+    protected void startPmtctRegisration() {
+        try{
+            PmtctRegisterActivity.startPmtctRegistrationActivity(this,baseEntityId,familyBaseEntityId);
+        } catch (Exception e){
+            Timber.e(e);
+        }
     }
 
     @Override
@@ -234,6 +244,18 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
                 menu.findItem(R.id.action_fp_initiation).setVisible(true);
             }
         }
+
+
+        if(isOfReproductiveAge(commonPersonObject, "Female")){
+            if(gender.equalsIgnoreCase("Male")){
+                menu.findItem(R.id.action_pmtct_register).setVisible(false);
+            }else{
+                menu.findItem(R.id.action_pmtct_register).setVisible(!PmtctDao.isRegisteredForPmtct(baseEntityId));
+            }
+        }
+
+
+
 
         if (BuildConfig.BUILD_FOR_BORESHA_AFYA_SOUTH) {
             menu.findItem(R.id.action_hiv_registration).setVisible(!(HivDao.isRegisteredForHiv(baseEntityId) || HivIndexDao.isRegisteredIndex(baseEntityId)));

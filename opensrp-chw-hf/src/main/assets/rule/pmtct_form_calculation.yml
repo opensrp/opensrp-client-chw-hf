@@ -1,0 +1,7 @@
+---
+name: step1_pmtct_register_date
+description: date of pmtct registration
+priority: 1
+condition: "true"
+actions:
+  - "calculation = helper.getDateToday()"

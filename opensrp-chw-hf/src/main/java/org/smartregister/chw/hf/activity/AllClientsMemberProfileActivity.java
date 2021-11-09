@@ -53,6 +53,7 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
         if (BuildConfig.BUILD_FOR_BORESHA_AFYA_SOUTH) {
             AllClientsUtils.updateHivMenuItems(baseEntityId, menu);
             AllClientsUtils.updateTbMenuItems(baseEntityId, menu);
+            AllClientsUtils.updatePmtctMenuItems(baseEntityId,menu);
         }
         menu.findItem(R.id.action_anc_registration).setVisible(false);
         menu.findItem(R.id.action_sick_child_follow_up).setVisible(false);
@@ -206,6 +207,15 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
     @Override
     protected void startHfMalariaFollowupForm() {
         //Do nothing - not required for HF
+    }
+
+    @Override
+    protected void startPmtctRegisration() {
+        try{
+            PmtctRegisterActivity.startPmtctRegistrationActivity(this,baseEntityId,familyBaseEntityId);
+        } catch (Exception e){
+            Timber.e(e);
+        }
     }
 
     @Override

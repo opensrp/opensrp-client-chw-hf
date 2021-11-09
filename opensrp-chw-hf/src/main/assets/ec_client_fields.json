@@ -1,6 +1,46 @@
 {
   "bindobjects": [
     {
+      "name": "ec_pmtct_registration",
+      "columns": [
+        {
+          "column_name": "base_entity_id",
+          "type": "Client",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "pmtct_register_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "pmtct_register_date"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ec_pmtct_followup",
+      "columns": [
+        {
+          "column_name": "base_entity_id",
+          "type": "Client",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "followup_visit_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "followup_visit_date"
+          }
+        }
+      ]
+    },
+    {
       "name": "ec_family",
       "columns": [
         {
