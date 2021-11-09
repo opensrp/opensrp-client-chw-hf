@@ -5,40 +5,23 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Bundle;
-import android.util.Pair;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.google.gson.Gson;
-
 import org.apache.commons.lang3.StringUtils;
-import org.jeasy.rules.api.Rules;
-import org.joda.time.DateTime;
-import org.joda.time.Days;
-import org.json.JSONException;
 import org.json.JSONObject;
-import org.smartregister.chw.anc.domain.Visit;
-import org.smartregister.chw.anc.util.NCUtils;
-import org.smartregister.chw.anc.util.VisitUtils;
 import org.smartregister.chw.core.activity.CoreFamilyProfileActivity;
 import org.smartregister.chw.core.activity.CorePmtctProfileActivity;
-import org.smartregister.chw.core.adapter.NotificationListAdapter;
-import org.smartregister.chw.core.application.CoreChwApplication;
 import org.smartregister.chw.core.custom_views.CorePmtctFloatingMenu;
-import org.smartregister.chw.core.dao.AncDao;
-import org.smartregister.chw.core.dao.PNCDao;
 import org.smartregister.chw.core.interactor.CorePmtctProfileInteractor;
 import org.smartregister.chw.core.listener.OnClickFloatingMenu;
+import org.smartregister.chw.core.presenter.CorePmtctMemberProfilePresenter;
 import org.smartregister.chw.core.rule.PmtctFollowUpRule;
-import org.smartregister.chw.core.rule.PncVisitAlertRule;
-import org.smartregister.chw.core.utils.ChwNotificationUtil;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.FpUtil;
 import org.smartregister.chw.core.utils.HomeVisitUtil;
-import org.smartregister.chw.core.utils.VisitSummary;
 import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.adapter.HivAndTbReferralCardViewAdapter;
@@ -46,28 +29,21 @@ import org.smartregister.chw.hf.contract.PmtctProfileContract;
 import org.smartregister.chw.hf.custom_view.PmtctFloatingMenu;
 import org.smartregister.chw.hf.model.HivTbReferralTasksAndFollowupFeedbackModel;
 import org.smartregister.chw.hf.presenter.FamilyOtherMemberActivityPresenter;
+import org.smartregister.chw.hf.presenter.PmtctProfilePresenter;
 import org.smartregister.chw.pmtct.dao.PmtctDao;
-import org.smartregister.chw.pmtct.domain.MemberObject;
 import org.smartregister.chw.pmtct.presenter.BasePmtctProfilePresenter;
-import org.smartregister.chw.pnc.PncLibrary;
-import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.family.model.BaseFamilyOtherMemberProfileActivityModel;
-import org.smartregister.family.util.Utils;
 import org.smartregister.util.FormUtils;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import timber.log.Timber;
 
-import static org.smartregister.chw.anc.AncLibrary.getInstance;
 import static org.smartregister.chw.core.utils.Utils.getCommonPersonObjectClient;
-import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
 import static org.smartregister.chw.pmtct.util.Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID;
 
 public class PmtctProfileActivity extends CorePmtctProfileActivity implements PmtctProfileContract.View {
@@ -122,7 +98,7 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity implements Pm
         String baseEntityId = getIntent().getStringExtra(BASE_ENTITY_ID);
 
         memberObject = PmtctDao.getMember(baseEntityId);
-        profilePresenter = new BasePmtctProfilePresenter(this, new CorePmtctProfileInteractor(), memberObject);
+        profilePresenter = new PmtctProfilePresenter(this, new CorePmtctProfileInteractor(), memberObject);
         fetchProfileData();
         profilePresenter.refreshProfileBottom();
     }
