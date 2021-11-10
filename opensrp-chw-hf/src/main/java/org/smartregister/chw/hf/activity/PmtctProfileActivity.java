@@ -17,7 +17,6 @@ import org.smartregister.chw.core.activity.CorePmtctProfileActivity;
 import org.smartregister.chw.core.custom_views.CorePmtctFloatingMenu;
 import org.smartregister.chw.core.interactor.CorePmtctProfileInteractor;
 import org.smartregister.chw.core.listener.OnClickFloatingMenu;
-import org.smartregister.chw.core.presenter.CorePmtctMemberProfilePresenter;
 import org.smartregister.chw.core.rule.PmtctFollowUpRule;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.FpUtil;
@@ -31,7 +30,6 @@ import org.smartregister.chw.hf.model.HivTbReferralTasksAndFollowupFeedbackModel
 import org.smartregister.chw.hf.presenter.FamilyOtherMemberActivityPresenter;
 import org.smartregister.chw.hf.presenter.PmtctProfilePresenter;
 import org.smartregister.chw.pmtct.dao.PmtctDao;
-import org.smartregister.chw.pmtct.presenter.BasePmtctProfilePresenter;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.family.model.BaseFamilyOtherMemberProfileActivityModel;
 import org.smartregister.util.FormUtils;
