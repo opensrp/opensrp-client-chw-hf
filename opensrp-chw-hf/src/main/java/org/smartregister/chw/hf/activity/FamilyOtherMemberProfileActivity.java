@@ -37,6 +37,7 @@ import org.smartregister.view.contract.BaseProfileContract;
 import timber.log.Timber;
 
 import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
+import static org.smartregister.chw.hf.utils.Constants.JSON_FORM.HIV_REGISTRATION;
 
 public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfileActivity {
     private FamilyMemberFloatingMenu familyFloatingMenu;
@@ -85,7 +86,7 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
     @Override
     protected void startHivRegister() {
         try {
-            HivRegisterActivity.startHIVFormActivity(this, baseEntityId, CoreConstants.JSON_FORM.getHivRegistration(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getHivRegistration()).toString());
+            HivRegisterActivity.startHIVFormActivity(this, baseEntityId, HIV_REGISTRATION, (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, HIV_REGISTRATION).toString());
         } catch (JSONException e) {
             Timber.e(e);
         }

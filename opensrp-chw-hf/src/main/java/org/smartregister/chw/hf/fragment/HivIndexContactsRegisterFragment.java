@@ -59,7 +59,7 @@ public class HivIndexContactsRegisterFragment extends CoreHivIndexContactsRegist
     protected void openFollowUpVisit(@Nullable HivMemberObject hivMemberObject) {
         if (getActivity() != null) {
             try {
-                HivIndexContactsContactsRegisterActivity.startHIVFormActivity(getActivity(), hivMemberObject.getBaseEntityId(), CoreConstants.JSON_FORM.getHivRegistration(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(getActivity(), CoreConstants.JSON_FORM.getHivFollowupVisit()).toString());
+                HivIndexContactsContactsRegisterActivity.startHIVFormActivity(getActivity(), hivMemberObject.getBaseEntityId(), CoreConstants.JSON_FORM.getHivIndexContactFollowupVisit(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(getActivity(), CoreConstants.JSON_FORM.getHivIndexContactFollowupVisit()).toString());
             } catch (JSONException e) {
                 Timber.e(e);
             }

@@ -64,13 +64,7 @@ public class HtsRegisterFragment extends CoreHivRegisterFragment {
 
     @Override
     protected void openFollowUpVisit(@Nullable HivMemberObject hivMemberObject) {
-        if (getActivity() != null) {
-            try {
-                HivRegisterActivity.startHIVFormActivity(getActivity(), hivMemberObject.getBaseEntityId(), CoreConstants.JSON_FORM.getHivRegistration(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(getActivity(), CoreConstants.JSON_FORM.getHivFollowupVisit()).toString());
-            } catch (JSONException e) {
-                Timber.e(e);
-            }
-        }
+
     }
 }
 
