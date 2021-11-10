@@ -19,6 +19,8 @@ import org.smartregister.chw.hiv.util.JsonFormConstants;
 import java.util.Calendar;
 import java.util.HashMap;
 
+import static org.smartregister.chw.hf.utils.Constants.JSON_FORM.HIV_REGISTRATION;
+
 public class HivFormActivityActivityPresenter extends BaseHivFormsActivityPresenter {
 
     public HivFormActivityActivityPresenter(@NotNull String baseEntityID, @NotNull BaseHivFormsContract.View view, @NotNull BaseHivFormsContract.Interactor interactor) {
@@ -50,7 +52,7 @@ public class HivFormActivityActivityPresenter extends BaseHivFormsActivityPresen
         hivRegistrationValuesHashMap.put(DBConstants.Key.HIV_REGISTRATION_DATE, new NFormViewData("Calculation", Calendar.getInstance().getTimeInMillis(), null, true));
 
         try {
-            JSONObject hivRegistrationFormJsonObject = (new FormUtils()).getFormJsonFromRepositoryOrAssets(((HivFormsActivity) getView()), CoreConstants.JSON_FORM.getHivRegistration());
+            JSONObject hivRegistrationFormJsonObject = (new FormUtils()).getFormJsonFromRepositoryOrAssets(((HivFormsActivity) getView()), HIV_REGISTRATION);
             if (hivRegistrationFormJsonObject != null) {
                 super.saveForm(hivRegistrationValuesHashMap, hivRegistrationFormJsonObject);
             }

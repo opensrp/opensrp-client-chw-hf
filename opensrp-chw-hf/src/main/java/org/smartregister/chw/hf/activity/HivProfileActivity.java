@@ -1,5 +1,6 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.hf.utils.Constants.JSON_FORM.HIV_REGISTRATION;
 import static org.smartregister.chw.hiv.util.Constants.ActivityPayload.HIV_MEMBER_OBJECT;
 
 import android.app.Activity;
@@ -62,7 +63,7 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
     public static void startHivFollowupActivity(Activity activity, String baseEntityID) throws JSONException {
         Intent intent = new Intent(activity, BaseHivFormsActivity.class);
         intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.BASE_ENTITY_ID, baseEntityID);
-        intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.JSON_FORM, (new FormUtils()).getFormJsonFromRepositoryOrAssets(activity, CoreConstants.JSON_FORM.getHivFollowupVisit()).toString());
+        intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.JSON_FORM, (new FormUtils()).getFormJsonFromRepositoryOrAssets(activity, HIV_REGISTRATION).toString());
         intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.ACTION, Constants.ActivityPayloadType.FOLLOW_UP_VISIT);
         intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.USE_DEFAULT_NEAT_FORM_LAYOUT, false);
 
@@ -148,7 +149,7 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
         //Only showing the hiv outcome menu for positive HIV clients
         if (getHivMemberObject().getCtcNumber().isEmpty()) {
             menu.findItem(R.id.action_hiv_outcome).setVisible(true);
-        }else {
+        } else {
             menu.findItem(R.id.action_issue_hiv_community_followup_referral).setVisible(true);
         }
         return true;
@@ -169,7 +170,7 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
     @Override
     public void openHivRegistrationForm() {
         try {
-            HivRegisterActivity.startHIVFormActivity(this, getHivMemberObject().getBaseEntityId(), CoreConstants.JSON_FORM.getHivRegistration(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getHivRegistration()).toString());
+            HivRegisterActivity.startHIVFormActivity(this, getHivMemberObject().getBaseEntityId(), HIV_REGISTRATION, (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, HIV_REGISTRATION).toString());
         } catch (JSONException e) {
             Timber.e(e);
         }
