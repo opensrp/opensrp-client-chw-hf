@@ -24,6 +24,17 @@ public class Constants extends CoreConstants {
         private static final String ANC_PREGANCY_CONFIRMATION = "anc_pregnancy_confirmation";
         public static final String HIV_REGISTRATION = "hiv_registration";
 
+        public static String getHvlTestForm() {
+            return HVL_TEST_FORM;
+        }
+
+        public static String getHvlSuppressionForm() {
+            return HVL_SUPPRESSION_FORM;
+        }
+
+        private static final String HVL_TEST_FORM = "pmtct_hvl_test";
+        private static final String HVL_SUPPRESSION_FORM = "pmtct_hvl_suppression";
+
         public static String getAncPregnancyConfirmation() {
             return Utils.getLocalForm(ANC_PREGANCY_CONFIRMATION, locale, assetManager);
         }

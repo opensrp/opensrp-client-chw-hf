@@ -1,0 +1,31 @@
+{
+  "validate_on_submit": true,
+  "count": "1",
+  "encounter_type": "PMTCT Hvl Suppression",
+  "entity_id": "",
+  "relational_id": "",
+  "metadata": {},
+  "step1": {
+    "title": "HVL Suppression",
+    "fields": [
+      {
+        "key": "continue_regimen",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "continue_regimen",
+        "type": "toaster_notes",
+        "text": "Continue current regimen, repeat HVL at 6, 12, 18 ETC",
+        "toaster_type": "info"
+      },
+      {
+        "key": "go_eac",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "go_eac",
+        "type": "toaster_notes",
+        "text": "Go for EAC",
+        "toaster_type": "warning"
+      }
+    ]
+  }
+}
