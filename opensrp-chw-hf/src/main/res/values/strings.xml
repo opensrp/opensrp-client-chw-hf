@@ -30,4 +30,5 @@
     <string name="created">Created: %s</string>
     <string name="submit">SAVE</string>
     <string name="hts_clients">HTS Clients</string>
+    <string name="hiv_registration">HIV Registration</string>
 </resources>
