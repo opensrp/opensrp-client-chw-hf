@@ -292,10 +292,6 @@
         "v_max": {
           "value": "120",
           "err": "Umri uwe miaka 120 na kushuka chini"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Tafadhali ingiza umri"
         }
       },
       {
