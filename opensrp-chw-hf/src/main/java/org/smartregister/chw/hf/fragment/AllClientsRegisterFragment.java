@@ -5,11 +5,14 @@ import android.view.View;
 import androidx.annotation.NonNull;
 
 import org.smartregister.chw.core.fragment.CoreAllClientsRegisterFragment;
+import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.provider.HfOpdRegisterProvider;
 import org.smartregister.chw.hf.utils.AllClientsUtils;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.cursoradapter.RecyclerViewPaginatedAdapter;
+
+import static org.smartregister.chw.hf.utils.HfReferralUtils.REGISTER_TYPE;
 
 public class AllClientsRegisterFragment extends CoreAllClientsRegisterFragment {
 
@@ -22,7 +25,22 @@ public class AllClientsRegisterFragment extends CoreAllClientsRegisterFragment {
 
     @Override
     protected void goToClientDetailActivity(@NonNull CommonPersonObjectClient commonPersonObjectClient) {
-        AllClientsUtils.goToClientProfile(this.getActivity(), commonPersonObjectClient);
+        String registerType = commonPersonObjectClient.getDetails().get(REGISTER_TYPE);
+
+        if(registerType != null){
+            switch (registerType){
+                case CoreConstants.REGISTER_TYPE.HIV:
+                    AllClientsUtils.goToHivProfile(this.getActivity(),commonPersonObjectClient);
+                    break;
+                case CoreConstants.REGISTER_TYPE.TB:
+                    AllClientsUtils.goToTbProfile(this.getActivity(),commonPersonObjectClient);
+                    break;
+                default:
+                    AllClientsUtils.goToClientProfile(this.getActivity(),commonPersonObjectClient);
+            }
+        }else {
+            AllClientsUtils.goToClientProfile(this.getActivity(), commonPersonObjectClient);
+        }
     }
 
     @Override

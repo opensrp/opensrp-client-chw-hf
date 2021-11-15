@@ -24,7 +24,9 @@ import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.fragment.FamilyProfileMemberFragment;
 import org.smartregister.chw.hf.model.FamilyProfileModel;
 import org.smartregister.chw.hf.presenter.FamilyProfilePresenter;
+import org.smartregister.chw.hiv.dao.HivDao;
 import org.smartregister.chw.pnc.activity.BasePncMemberProfileActivity;
+import org.smartregister.chw.tb.dao.TbDao;
 import org.smartregister.commonregistry.CommonPersonObject;
 import org.smartregister.family.adapter.ViewPagerAdapter;
 import org.smartregister.family.util.Constants;
@@ -141,20 +143,12 @@ public class FamilyProfileActivity extends CoreFamilyProfileActivity {
 
     @Override
     protected void goToHivProfile(String baseEntityId, Activity activity) {
-        try {
-            HivRegisterActivity.startHIVFormActivity(this, baseEntityId, HIV_REGISTRATION, (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, HIV_REGISTRATION).toString());
-        } catch (JSONException e) {
-            Timber.e(e);
-        }
+       HivProfileActivity.startHivProfileActivity(activity, HivDao.getMember(baseEntityId));
     }
 
     @Override
     protected void goToTbProfile(String baseEntityId, Activity activity) {
-        try {
-            TbRegisterActivity.startTbFormActivity(this, baseEntityId, CoreConstants.JSON_FORM.getTbRegistration(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getTbRegistration()).toString());
-        } catch (JSONException e) {
-            Timber.e(e);
-        }
+       TbProfileActivity.startTbProfileActivity(activity, TbDao.getMember(baseEntityId));
     }
 
     @Override
