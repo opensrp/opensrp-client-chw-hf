@@ -266,6 +266,23 @@
           "subjects": "test_results:map"
         },
         {
+          "name": "client_test_date",
+          "type": "datetime_picker",
+          "properties": {
+            "hint": "Client's test date",
+            "type": "date_picker",
+            "display_format": "dd/MM/yyyy",
+            "max_date": "today"
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "client_test_date",
+            "openmrs_entity_parent": ""
+          },
+          "required_status": "true:Please specify the client's test date",
+          "subjects": "test_results:map"
+        },
+        {
           "name": "toast_enroll_the_client_to_prep",
           "type": "toast_notification",
           "properties": {
