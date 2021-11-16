@@ -17,7 +17,6 @@ import org.smartregister.view.contract.SmartRegisterClient;
 
 import java.util.Set;
 
-import timber.log.Timber;
 
 public class HfHivIndexContactsRegisterProvider extends CoreHivIndexContactsProvider {
 
