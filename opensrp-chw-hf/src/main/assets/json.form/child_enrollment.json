@@ -217,7 +217,14 @@
             "text_size": "18px",
             "value": "false"
           }
-        ]
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "family-child-relevance.yml"
+            }
+          }
+        }
       },
       {
         "key": "age",
