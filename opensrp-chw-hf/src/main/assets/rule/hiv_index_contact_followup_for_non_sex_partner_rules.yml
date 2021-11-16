@@ -34,6 +34,13 @@ condition: "test_results['positive'] != null && has_the_contact_client_been_test
 actions:
   - "place_where_test_was_conducted_visibility = true"
 ---
+name: "client_test_date_visibility"
+description: "client_test_date visibility"
+priority: 1
+condition: "(test_results['positive'] != null || test_results['negative'] != null) && has_the_contact_client_been_tested['yes'] != null "
+actions:
+  - "client_test_date_visibility = true"
+---
 name: "toast_enroll_the_client_to_prep_visibility"
 description: "toast_enroll_the_client_to_prep visibility"
 priority: 2
