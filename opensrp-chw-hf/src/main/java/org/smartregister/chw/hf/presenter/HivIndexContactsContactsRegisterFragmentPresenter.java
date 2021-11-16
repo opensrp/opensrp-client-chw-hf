@@ -25,7 +25,7 @@ public class HivIndexContactsContactsRegisterFragmentPresenter extends BaseHivIn
     @Override
     @NotNull
     public String getDueFilterCondition() {
-        return "";
+        return " " + Tables.HIV_INDEX_HF + "." + DBConstants.Key.REFER_TO_CHW + " IS NOT NULL" ;
     }
 
     @Override

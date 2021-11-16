@@ -8,14 +8,16 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import org.smartregister.chw.core.provider.CoreHivIndexContactsProvider;
-import org.smartregister.chw.core.provider.CoreHivProvider;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.utils.HfReferralUtils;
+import org.smartregister.chw.hiv.dao.HivIndexDao;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.view.contract.SmartRegisterClient;
 
 import java.util.Set;
+
+import timber.log.Timber;
 
 public class HfHivIndexContactsRegisterProvider extends CoreHivIndexContactsProvider {
 
@@ -42,6 +44,19 @@ public class HfHivIndexContactsRegisterProvider extends CoreHivIndexContactsProv
 
     private void showLatestHivReferralDay(CommonPersonObjectClient client, HfHivIndexContactsRegisterProvider.HfRegisterViewHolder viewHolder) {
         HfReferralUtils.displayReferralDay(client, CoreConstants.TASKS_FOCUS.SUSPECTED_HIV, viewHolder.textViewReferralDay);
+        displayReferralSent(client,viewHolder);
+    }
+
+    private void displayReferralSent(CommonPersonObjectClient client,HfHivIndexContactsRegisterProvider.HfRegisterViewHolder viewHolder){
+        String baseEntityId = client.entityId();
+
+        if (HivIndexDao.isReferralSent(baseEntityId)) {
+            viewHolder.textViewReferralDay.setVisibility(View.VISIBLE);
+            String referralDay = "Referral Sent ";
+            viewHolder.textViewReferralDay.setText(referralDay);
+        } else {
+            viewHolder.textViewReferralDay.setVisibility(View.GONE);
+        }
     }
 
     public class HfRegisterViewHolder extends RegisterViewHolder {
