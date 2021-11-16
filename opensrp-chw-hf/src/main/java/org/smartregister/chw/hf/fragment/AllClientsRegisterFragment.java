@@ -2,8 +2,6 @@ package org.smartregister.chw.hf.fragment;
 
 import android.view.View;
 
-import androidx.annotation.NonNull;
-
 import org.smartregister.chw.core.fragment.CoreAllClientsRegisterFragment;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.R;
@@ -11,6 +9,8 @@ import org.smartregister.chw.hf.provider.HfOpdRegisterProvider;
 import org.smartregister.chw.hf.utils.AllClientsUtils;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.cursoradapter.RecyclerViewPaginatedAdapter;
+
+import androidx.annotation.NonNull;
 
 import static org.smartregister.chw.hf.utils.HfReferralUtils.REGISTER_TYPE;
 
@@ -37,6 +37,7 @@ public class AllClientsRegisterFragment extends CoreAllClientsRegisterFragment {
                     break;
                 default:
                     AllClientsUtils.goToClientProfile(this.getActivity(),commonPersonObjectClient);
+                    break;
             }
         }else {
             AllClientsUtils.goToClientProfile(this.getActivity(), commonPersonObjectClient);

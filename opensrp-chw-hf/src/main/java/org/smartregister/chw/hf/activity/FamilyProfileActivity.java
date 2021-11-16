@@ -6,12 +6,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
-
-import com.vijay.jsonwizard.utils.FormUtils;
-
-import org.json.JSONException;
 import org.smartregister.chw.anc.activity.BaseAncMemberProfileActivity;
 import org.smartregister.chw.core.activity.CoreAboveFiveChildProfileActivity;
 import org.smartregister.chw.core.activity.CoreChildProfileActivity;
@@ -33,9 +27,8 @@ import org.smartregister.family.util.Constants;
 
 import java.util.HashMap;
 
-import timber.log.Timber;
-
-import static org.smartregister.chw.hf.utils.Constants.JSON_FORM.HIV_REGISTRATION;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
 public class FamilyProfileActivity extends CoreFamilyProfileActivity {
     private TextView tvEventDate;
