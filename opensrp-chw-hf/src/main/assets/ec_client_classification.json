@@ -351,6 +351,13 @@
           },
           {
             "field": "eventType",
+            "field_value": "HIV Index Contact CHW Followup",
+            "creates_case": [
+              "ec_hiv_index_chw_followup"
+            ]
+          },
+          {
+            "field": "eventType",
             "field_value": "HIV Index Contact Community Followup Referral",
             "creates_case": [
               "ec_hiv_index_hf"

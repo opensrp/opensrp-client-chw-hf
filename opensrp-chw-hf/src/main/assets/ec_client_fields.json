@@ -2915,6 +2915,72 @@
       ]
     },
     {
+      "name": "ec_hiv_index_chw_followup",
+      "columns": [
+        {
+          "column_name": "entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "formSubmissionId"
+          }
+        },
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "relational_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "relational_id"
+          }
+        },
+        {
+          "column_name": "last_interacted_with",
+          "type": "Event",
+          "json_mapping": {
+            "field": "version"
+          }
+        },
+        {
+          "column_name": "followed_by_chw",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "client_followed_up_by_chw"
+          }
+        },
+        {
+          "column_name": "agreed_to_be_tested",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "has_the_client_agreed_to_be_tested"
+          }
+        },
+        {
+          "column_name": "client_found",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "has_the_contact_client_been_found"
+          }
+        },
+        {
+          "column_name": "test_location",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "place_where_test_will_be_conducted"
+          }
+        }
+      ]
+    },
+    {
       "name": "ec_tb_community_feedback",
       "columns": [
         {

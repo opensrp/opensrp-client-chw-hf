@@ -31,4 +31,8 @@
     <string name="submit">SAVE</string>
     <string name="hts_clients">HTS Clients</string>
     <string name="hiv_registration">HIV Registration</string>
+    <string name="chw_client_found">Has the contact client been found</string>
+    <string name="chw_followed_details">Has the client been followed up by chw</string>
+    <string name="chw_agreed_to_be_tested">Has the client agree to be tested</string>
+    <string name="chw_test_location">Client test location</string>
 </resources>
