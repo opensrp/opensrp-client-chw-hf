@@ -2389,6 +2389,14 @@
       "name": "ec_hts_register",
       "columns": [
         {
+          "column_name": "chw_referral_service",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "chw_referral_service"
+          }
+        },
+        {
           "column_name": "base_entity_id",
           "type": "Event",
           "json_mapping": {

@@ -218,7 +218,8 @@
             "field": "eventType",
             "field_value": "Referral Registration",
             "creates_case": [
-              "ec_referral"
+              "ec_referral",
+              "ec_hts_register"
             ]
           },
           {
@@ -282,7 +283,8 @@
             "field_value": "HIV Outcome",
             "creates_case": [
               "ec_hiv_register",
-              "ec_hiv_outcome"
+              "ec_hiv_outcome",
+              "ec_hts_register"
             ]
           },
           {
