@@ -2,10 +2,8 @@ package org.smartregister.chw.hf.contract;
 
 import org.apache.commons.lang3.tuple.Triple;
 import org.smartregister.chw.core.contract.CoreIndexContactProfileContract;
-import org.smartregister.chw.core.contract.CoreIndexContactProfileContract;
-import org.smartregister.chw.hf.model.HivTbReferralTasksAndFollowupFeedbackModel;
+import org.smartregister.chw.hf.model.HivIndexFollowupFeedbackDetailsModel;
 import org.smartregister.chw.hiv.domain.HivIndexContactObject;
-import org.smartregister.chw.hiv.domain.HivMemberObject;
 import org.smartregister.opd.contract.OpdRegisterActivityContract;
 import org.smartregister.opd.pojo.OpdEventClient;
 import org.smartregister.opd.pojo.RegisterParams;
@@ -14,7 +12,7 @@ import java.util.List;
 
 public interface HivIndexContactProfileContract extends CoreIndexContactProfileContract {
     interface View extends CoreIndexContactProfileContract.View {
-        void setReferralTasksAndFollowupFeedback(List<HivTbReferralTasksAndFollowupFeedbackModel> tasksAndFollowupFeedbackModels);
+        void setReferralAndFollowupFeedback(List<HivIndexFollowupFeedbackDetailsModel> followupFeedbackDetailsModel);
     }
 
     interface Presenter extends CoreIndexContactProfileContract.Presenter {
@@ -30,6 +28,6 @@ public interface HivIndexContactProfileContract extends CoreIndexContactProfileC
     }
 
     interface InteractorCallback {
-        void updateReferralTasksAndFollowupFeedback(List<HivTbReferralTasksAndFollowupFeedbackModel> tasksAndFollowupFeedbackModels);
+        void getReferralAndFollowupFeedback(List<HivIndexFollowupFeedbackDetailsModel> followupFeedbackDetailsModel);
     }
 }

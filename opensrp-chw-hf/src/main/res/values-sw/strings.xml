@@ -31,4 +31,8 @@
     <string name="submit">HIFADHI</string>
     <string name="hts_clients">Wateja wa Ushauri nasaha na upimaji</string>
     <string name="hiv_registration">Usajili kwenye huduma za VVU</string>
+    <string name="chw_client_found">Mtajwa amepatikana</string>
+    <string name="chw_followed_details">Waja ameonana na mtajwa</string>
+    <string name="chw_agreed_to_be_tested">Amekubali kupimwa</string>
+    <string name="chw_test_location">Atapimwa wapi</string>
 </resources>

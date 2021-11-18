@@ -9,8 +9,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.vijay.jsonwizard.utils.FormUtils;
 
 import org.apache.commons.lang3.StringUtils;
@@ -20,11 +18,11 @@ import org.smartregister.chw.core.activity.CoreHivIndexContactProfileActivity;
 import org.smartregister.chw.core.listener.OnClickFloatingMenu;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.R;
-import org.smartregister.chw.hf.adapter.HivAndTbReferralCardViewAdapter;
+import org.smartregister.chw.hf.adapter.HivIndexFollowupCardViewAdapter;
 import org.smartregister.chw.hf.contract.HivIndexContactProfileContract;
 import org.smartregister.chw.hf.custom_view.HivIndexContactFloatingMenu;
 import org.smartregister.chw.hf.interactor.HfHivIndexContactProfileInteractor;
-import org.smartregister.chw.hf.model.HivTbReferralTasksAndFollowupFeedbackModel;
+import org.smartregister.chw.hf.model.HivIndexFollowupFeedbackDetailsModel;
 import org.smartregister.chw.hf.presenter.HivIndexContactProfilePresenter;
 import org.smartregister.chw.hiv.dao.HivDao;
 import org.smartregister.chw.hiv.dao.HivIndexDao;
@@ -35,6 +33,7 @@ import org.smartregister.commonregistry.CommonPersonObjectClient;
 import java.util.List;
 import java.util.Objects;
 
+import androidx.recyclerview.widget.RecyclerView;
 import timber.log.Timber;
 
 import static org.smartregister.chw.hiv.util.Constants.ActivityPayload.HIV_MEMBER_OBJECT;
@@ -72,9 +71,9 @@ public class HivIndexContactProfileActivity extends CoreHivIndexContactProfileAc
         activity.startActivityForResult(intent, org.smartregister.chw.anc.util.Constants.REQUEST_CODE_HOME_VISIT);
     }
 
-    public void setReferralTasksAndFollowupFeedback(List<HivTbReferralTasksAndFollowupFeedbackModel> tasksAndFollowupFeedbackModels) {
-        if (notificationAndReferralRecyclerView != null && tasksAndFollowupFeedbackModels.size() > 0) {
-            RecyclerView.Adapter mAdapter = new HivAndTbReferralCardViewAdapter(tasksAndFollowupFeedbackModels, this, getCommonPersonObjectClient(), CoreConstants.REGISTERED_ACTIVITIES.HIV_INDEX_REGISTER_ACTIVITY);
+    public void setReferralAndFollowupFeedback(List<HivIndexFollowupFeedbackDetailsModel> followupFeedbackDetailsModel) {
+        if (notificationAndReferralRecyclerView != null && followupFeedbackDetailsModel.size() > 0) {
+            RecyclerView.Adapter mAdapter = new HivIndexFollowupCardViewAdapter(followupFeedbackDetailsModel,this,getCommonPersonObjectClient(),CoreConstants.REGISTERED_ACTIVITIES.HIV_INDEX_REGISTER_ACTIVITY);
             notificationAndReferralRecyclerView.setAdapter(mAdapter);
             notificationAndReferralLayout.setVisibility(View.VISIBLE);
             findViewById(R.id.view_notification_and_referral_row).setVisibility(View.VISIBLE);
