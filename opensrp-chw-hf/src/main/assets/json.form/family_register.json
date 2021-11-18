@@ -408,7 +408,14 @@
             "openmrs_entity": "person_attribute",
             "openmrs_entity_id": "chk_none"
           }
-        ]
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "family_register_relevance.yml"
+            }
+          }
+        }
       },
       {
         "key": "national_id",
