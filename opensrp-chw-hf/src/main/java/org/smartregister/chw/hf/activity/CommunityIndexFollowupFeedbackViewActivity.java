@@ -27,13 +27,10 @@ public class CommunityIndexFollowupFeedbackViewActivity extends BaseReferralTask
     private LinearLayout chwClientAgreeTestingLayout;
 
     private CustomFontTextView testLocation;
-    private CustomFontTextView testLocationLabel;
 
     private CustomFontTextView chwClientFound;
-    private CustomFontTextView chwClientFoundLabel;
 
     private CustomFontTextView chwClientAgreeTesting;
-    private CustomFontTextView chwClientAgreeTestingLabel;
 
 
     public static void startCommunityIndexFollowupFeedbackViewActivity(Activity activity, CommonPersonObjectClient personObjectClient, String startingActivity, HivIndexFollowupFeedbackDetailsModel followupFeedbackDetailsModel) {
@@ -65,15 +62,15 @@ public class CommunityIndexFollowupFeedbackViewActivity extends BaseReferralTask
 
         chwClientFound = findViewById(R.id.woman_ga);
         chwClientFoundLayout = findViewById(R.id.woman_ga_layout);
-        chwClientFoundLabel = findViewById(R.id.woman_ga_label);
+        CustomFontTextView chwClientFoundLabel = findViewById(R.id.woman_ga_label);
 
         testLocationLayout = findViewById(R.id.referral_date_layout);
-        testLocationLabel = findViewById(R.id.referral_date_label);
+        CustomFontTextView testLocationLabel = findViewById(R.id.referral_date_label);
         testLocation = findViewById(R.id.referral_date);
 
         chwClientAgreeTestingLayout = findViewById(R.id.client_referral_problem_layout);
         chwClientAgreeTesting = findViewById(R.id.client_referral_problem);
-        chwClientAgreeTestingLabel = findViewById(R.id.cclient_referral_problem_label);
+        CustomFontTextView chwClientAgreeTestingLabel = findViewById(R.id.cclient_referral_problem_label);
 
         chwClientAgreeTestingLabel.setText(getString(R.string.chw_agreed_to_be_tested));
         testLocationLabel.setText(getString(R.string.chw_test_location));
