@@ -55,7 +55,7 @@
   },
   "steps": [
     {
-      "title": "Index Client Contact HIV Outcome",
+      "title": "Index Contact HIV Outcome",
       "fields": [
         {
           "name": "has_the_client_been_reached",
@@ -174,20 +174,20 @@
           },
           "options": [
             {
-              "name": "negative",
-              "text": "Negative",
-              "meta_data": {
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "negative",
-                "openmrs_entity_parent": ""
-              }
-            },
-            {
               "name": "positive",
               "text": "Positive",
               "meta_data": {
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "positive",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "negative",
+              "text": "Negative",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "negative",
                 "openmrs_entity_parent": ""
               }
             }
@@ -382,7 +382,7 @@
           "name": "ctc_number",
           "type": "text_input_edit_text",
           "properties": {
-            "hint": "Enter the client's CTC Number",
+            "hint": "CTC Number e.g 12-34-5678-912345",
             "type": "Clinic of Treatment and Care registration number (CTC Number)"
           },
           "meta_data": {
@@ -393,7 +393,7 @@
           "validation": [
             {
               "condition": "value.matches(\"(\\\\d{2}-\\\\d{2}-\\\\d{4}-\\\\d{6})?\")",
-              "message": "Not a valid CTC Number."
+              "message": "CTC Number should be of the format (XX-XX-XXXX-XXXXXX)."
             }
           ],
           "required_status": "yes:Please specify client's CTC number",
