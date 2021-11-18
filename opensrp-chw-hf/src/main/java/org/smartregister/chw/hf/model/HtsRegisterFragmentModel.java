@@ -5,7 +5,6 @@ import org.jetbrains.annotations.NotNull;
 import org.smartregister.chw.core.utils.ChildDBConstants;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hiv.model.BaseHivRegisterFragmentModel;
-import org.smartregister.chw.hiv.util.Constants.Tables;
 import org.smartregister.chw.hiv.util.DBConstants.Key;
 import org.smartregister.cursoradapter.SmartRegisterQueryBuilder;
 import org.smartregister.family.util.DBConstants;

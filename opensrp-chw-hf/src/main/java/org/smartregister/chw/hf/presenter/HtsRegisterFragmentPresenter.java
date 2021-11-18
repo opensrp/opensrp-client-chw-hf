@@ -1,13 +1,11 @@
 package org.smartregister.chw.hf.presenter;
 
-import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hiv.contract.BaseHivRegisterFragmentContract;
 import org.smartregister.chw.hiv.presenter.BaseHivRegisterFragmentPresenter;
-import org.smartregister.chw.hiv.util.DBConstants;
 
 import androidx.annotation.NonNull;
 
@@ -20,10 +18,10 @@ public class HtsRegisterFragmentPresenter extends BaseHivRegisterFragmentPresent
     @Override
     @NotNull
     public String getMainCondition() {
-        return " " + CoreConstants.TABLE_NAME.FAMILY_MEMBER + "." + DBConstants.Key.DATE_REMOVED + " is null " +
-                "AND " + CoreConstants.TABLE_NAME.HTS_MEMBERS + "." + DBConstants.Key.CTC_NUMBER + " IS NULL "+
-                "AND " + CoreConstants.TABLE_NAME.HTS_MEMBERS + "." + Constants.DB_CONSTANTS.CHW_REFERRAL_SERVICE + " = 'Suspected HIV' "+
-                "AND " + CoreConstants.TABLE_NAME.HTS_MEMBERS + "." + DBConstants.Key.IS_CLOSED + " = '0' ";
+        return " " + CoreConstants.TABLE_NAME.FAMILY_MEMBER + "." + org.smartregister.chw.hiv.util.DBConstants.Key.DATE_REMOVED + " is null " +
+                "AND " + CoreConstants.TABLE_NAME.HTS_MEMBERS + "." + org.smartregister.chw.hiv.util.DBConstants.Key.CTC_NUMBER + " IS NULL "+
+                "AND " + CoreConstants.TABLE_NAME.HTS_MEMBERS + "." + Constants.DBConstants.CHW_REFERRAL_SERVICE + " = 'Suspected HIV' "+
+                "AND " + CoreConstants.TABLE_NAME.HTS_MEMBERS + "." + org.smartregister.chw.hiv.util.DBConstants.Key.IS_CLOSED + " = '0' ";
 
     }
 
@@ -36,7 +34,7 @@ public class HtsRegisterFragmentPresenter extends BaseHivRegisterFragmentPresent
     @NonNull
     @Override
     public String getDefaultSortQuery() {
-       return CoreConstants.TABLE_NAME.HTS_MEMBERS + "." + DBConstants.Key.HIV_REGISTRATION_DATE + " DESC ";
+       return CoreConstants.TABLE_NAME.HTS_MEMBERS + "." + org.smartregister.chw.hiv.util.DBConstants.Key.HIV_REGISTRATION_DATE + " DESC ";
     }
 
     @Override
