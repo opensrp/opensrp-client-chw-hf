@@ -12,6 +12,7 @@ import org.smartregister.chw.hf.activity.HivProfileActivity;
 import org.smartregister.chw.hf.activity.HivRegisterActivity;
 import org.smartregister.chw.hf.activity.HtsRegisterActivity;
 import org.smartregister.chw.hf.model.HivRegisterFragmentModel;
+import org.smartregister.chw.hf.model.HtsRegisterFragmentModel;
 import org.smartregister.chw.hf.presenter.HtsRegisterFragmentPresenter;
 import org.smartregister.chw.hf.provider.HfHivRegisterProvider;
 import org.smartregister.chw.hiv.dao.HivDao;
@@ -52,7 +53,7 @@ public class HtsRegisterFragment extends CoreHivRegisterFragment {
         } catch (NullPointerException e) {
             Timber.e(e);
         }
-        presenter = new HtsRegisterFragmentPresenter(this, new HivRegisterFragmentModel(), viewConfigurationIdentifier);
+        presenter = new HtsRegisterFragmentPresenter(this, new HtsRegisterFragmentModel(), viewConfigurationIdentifier);
     }
 
     @Override
