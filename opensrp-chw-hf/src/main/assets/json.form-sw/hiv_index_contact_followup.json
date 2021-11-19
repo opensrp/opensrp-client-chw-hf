@@ -288,8 +288,8 @@
           "properties": {
             "notification_type": "info",
             "dismissible": "no",
-            "title": "Mteja anatakiwa kusajiliwa kwenye PREP",
-            "text": "Mteja ni mshirika wa kingono wa mteja wa VVU, anatakiwa kusajiliwa kwenye huduma ya PREP",
+            "title": "Mteja anatakiwa kusajiliwa kwenye PrEP",
+            "text": "Mteja ni mshirika wa kingono wa mteja wa VVU, anatakiwa kusajiliwa kwenye huduma ya PrEP",
             "background_color": "#082455",
             "text_color": "#EBEE2F"
           },
@@ -299,7 +299,7 @@
           "name": "enrolled_to_prep",
           "type": "radio_group",
           "properties": {
-            "text": "Mteja amasajiliwa kwenye huduma ya PREP?"
+            "text": "Mteja amasajiliwa kwenye huduma ya PrEP?"
           },
           "meta_data": {
             "openmrs_entity": "concept",
@@ -333,7 +333,7 @@
           "name": "reason_for_not_being_enrolled_to_prep",
           "type": "text_input_edit_text",
           "properties": {
-            "hint": "Sababu gani mteja hajasajiliwa kwenye huduma ya PREP?",
+            "hint": "Sababu gani mteja hajasajiliwa kwenye huduma ya PrEP?",
             "input_type": "text"
           },
           "meta_data": {
