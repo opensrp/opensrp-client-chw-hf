@@ -288,8 +288,8 @@
           "properties": {
             "notification_type": "info",
             "dismissible": "no",
-            "title": "Client should be enrolled to PREP",
-            "text": "The client is a sex partner of a HIV Positive client and should be enrolled to PREP",
+            "title": "Client should be enrolled to PrEP",
+            "text": "The client is a sex partner of a HIV Positive client and should be enrolled to PrEP",
             "background_color": "#082455",
             "text_color": "#EBEE2F"
           },
@@ -299,7 +299,7 @@
           "name": "enrolled_to_prep",
           "type": "radio_group",
           "properties": {
-            "text": "Has the client been enrolled into Prep?"
+            "text": "Has the client been enrolled into PrEP?"
           },
           "meta_data": {
             "openmrs_entity": "concept",
@@ -333,7 +333,7 @@
           "name": "reason_for_not_being_enrolled_to_prep",
           "type": "text_input_edit_text",
           "properties": {
-            "hint": "What are the reasons for not being enrolled to Prep",
+            "hint": "What are the reasons for not being enrolled to PrEP",
             "input_type": "text"
           },
           "meta_data": {

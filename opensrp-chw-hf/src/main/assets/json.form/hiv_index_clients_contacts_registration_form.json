@@ -96,7 +96,7 @@
         "openmrs_entity_id": "cityVillage",
         "type": "edit_text",
         "edit_type": "name",
-        "hint": "Village/ Street",
+        "hint": "Village/Street",
         "v_required": {
           "value": "true",
           "err": "Please enter the village or street name"
@@ -113,7 +113,7 @@
         "openmrs_entity_id": "landmark",
         "type": "edit_text",
         "edit_type": "name",
-        "hint": "Landmark/ description of house location",
+        "hint": "Landmark/Description of house location",
         "v_required": {
           "value": true,
           "err": "Please enter the landmark/description of location."
@@ -281,13 +281,9 @@
           "value": "true",
           "err": "Must be a rounded number"
         },
-        "v_numeric": {
-          "value": "true",
-          "err": "Number must begin with 0 and must be a total of 10 digits in length"
-        },
         "v_min": {
-          "value": "5",
-          "err": "Age must be equal or greater than 5"
+          "value": "0",
+          "err": "Enter a valid age"
         },
         "v_max": {
           "value": "120",
