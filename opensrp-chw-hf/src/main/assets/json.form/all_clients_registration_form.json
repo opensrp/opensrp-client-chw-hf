@@ -70,8 +70,8 @@
           "err": "Please enter the surname"
         },
         "v_regex": {
-          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-]*",
-          "err": "Please enter surname"
+          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
+          "err": "Please enter the surname"
         }
       },
       {
@@ -121,6 +121,116 @@
         "v_numeric": {
           "value": "true",
           "err": "Please enter a valid ID"
+        }
+      },
+      {
+        "key": "client_dob",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "person",
+        "openmrs_entity_id": "client_birthdate",
+        "type": "date_picker",
+        "hint": "Date of birth (DOB)",
+        "expanded": false,
+        "duration": {
+          "label": "Age"
+        },
+        "min_date": "today-120y",
+        "max_date": "today",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the date of birth"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "all_clients_member_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "client_age_calculated",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "client_age_calculated",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "all_clients_member_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "client_dob_unknown",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "person",
+        "openmrs_entity_id": "client_birthdateApprox",
+        "type": "check_box",
+        "label": "",
+        "options": [
+          {
+            "key": "client_dob_unknown",
+            "text": "DOB unknown?",
+            "text_size": "18px",
+            "value": "false"
+          }
+        ]
+      },
+      {
+        "key": "client_age",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "person_attribute",
+        "openmrs_entity_id": "client_age",
+        "type": "edit_text",
+        "hint": "Age",
+        "v_numeric_integer": {
+          "value": "true",
+          "err": "Must be a rounded number"
+        },
+        "v_numeric": {
+          "value": "true",
+          "err": "Number must begin with 0 and must be a total of 10 digits in length"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Age must be equal or greater than 0"
+        },
+        "v_max": {
+          "value": "120",
+          "err": "Age must be equal or less than 120"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "all_clients_member_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter the age"
+        }
+      },
+      {
+        "key": "client_sex",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "person",
+        "openmrs_entity_id": "client_gender",
+        "type": "spinner",
+        "hint": "Sex",
+        "values": [
+          "Male",
+          "Female"
+        ],
+        "keys": [
+          "Male",
+          "Female"
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the sex"
         }
       },
       {
@@ -206,7 +316,7 @@
         "edit_type": "name",
         "read_only": true,
         "v_regex": {
-          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-]*",
+          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
           "err": "Please enter a valid name"
         },
         "v_required": {
@@ -276,22 +386,18 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "person",
         "openmrs_entity_id": "birthdate",
-        "type": "date_picker",
-        "hint": "Date of birth (DOB)",
-        "expanded": false,
-        "duration": {
-          "label": "Age"
-        },
-        "min_date": "today-120y",
-        "max_date": "today-5y",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the date of birth"
-        },
+        "type": "hidden",
         "relevance": {
           "rules-engine": {
             "ex-rules": {
               "rules-file": "all_clients_member_relevance.yml"
+            }
+          }
+        },
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "all_clients_member_calculation.yml"
             }
           }
         }
@@ -315,40 +421,8 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "person",
         "openmrs_entity_id": "birthdateApprox",
-        "type": "check_box",
+        "type": "hidden",
         "label": "",
-        "options": [
-          {
-            "key": "dob_unknown",
-            "text": "DOB unknown?",
-            "text_size": "18px",
-            "value": "false"
-          }
-        ]
-      },
-      {
-        "key": "age",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "person_attribute",
-        "openmrs_entity_id": "age",
-        "type": "edit_text",
-        "hint": "Age",
-        "v_numeric_integer": {
-          "value": "true",
-          "err": "Must be a rounded number"
-        },
-        "v_numeric": {
-          "value": "true",
-          "err": "Number must begin with 0 and must be a total of 10 digits in length"
-        },
-        "v_min": {
-          "value": "5",
-          "err": "Age must be equal or greater than 5"
-        },
-        "v_max": {
-          "value": "120",
-          "err": "Age must be equal or less than 120"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -356,9 +430,34 @@
             }
           }
         },
-        "v_required": {
-          "value": true,
-          "err": "Please enter the age"
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "all_clients_member_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "age",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "person_attribute",
+        "openmrs_entity_id": "age",
+        "type": "hidden",
+        "hint": "Age",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "all_clients_member_relevance.yml"
+            }
+          }
+        },
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "all_clients_member_calculation.yml"
+            }
+          }
         }
       },
       {
@@ -367,7 +466,7 @@
         "openmrs_entity": "person_attribute",
         "openmrs_entity_id": "id_avail",
         "type": "check_box",
-        "label": "Do have any of the following IDs?",
+        "label": "Do you have any of the following IDs?",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "exclusive": [
@@ -506,8 +605,7 @@
         "type": "spinner",
         "hint": "Health insurance provider",
         "values": [
-          "Community Health Fund (CHF)",
-          "iCHF",
+          "Community Health Fund (CHF)/(iCHF)",
           "National Social Security Fund - Social Health Insurance Benefit (SHIB)",
           "Tiba Kwa Kadi (TIKA)",
           "AAR Healthcare",
@@ -522,7 +620,6 @@
         ],
         "keys": [
           "Community Health Fund (CHF)",
-          "iCHF",
           "National Social Security Fund - Social Health Insurance Benefit (SHIB)",
           "Tiba Kwa Kadi (TIKA)",
           "AAR Healthcare",
@@ -537,7 +634,6 @@
         ],
         "openmrs_choice_ids": {
           "Community Health Fund (CHF)": "Community_Health_Fund",
-          "iCHF": "iCHF",
           "National Social Security Fund - Social Health Insurance Benefit (SHIB)": "National_Social_Security_Fund",
           "Tiba Kwa Kadi (TIKA)": "Tiba_kwa_Kadi",
           "AAR Healthcare": "AAR_Healthcare",
@@ -598,19 +694,14 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "person",
         "openmrs_entity_id": "gender",
-        "type": "spinner",
+        "type": "hidden",
         "hint": "Sex",
-        "values": [
-          "Male",
-          "Female"
-        ],
-        "keys": [
-          "Male",
-          "Female"
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the sex"
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "all_clients_member_calculation.yml"
+            }
+          }
         }
       },
       {
@@ -866,6 +957,52 @@
         }
       },
       {
+        "key": "marital_status",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "marital_status",
+        "type": "spinner",
+        "hint": "Client's Marital Status?",
+        "values": [
+          "Single",
+          "Married",
+          "Divorced",
+          "Monogamy",
+          "Polygamy",
+          "Widowed",
+          "Cohabitation"
+        ],
+        "keys": [
+          "Single",
+          "Married",
+          "Divorced",
+          "Monogamy",
+          "Polygamy",
+          "Widowed",
+          "Cohabitation"
+        ],
+        "openmrs_choice_ids": {
+          "Single": "Single",
+          "Married": "Married",
+          "Divorced": "Divorced",
+          "Monogamy": "Monogamy",
+          "Polygamy": "Polygamy",
+          "Widowed": "Widowed",
+          "Cohabitation": "Cohabitation"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select one"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "all_clients_member_relevance.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "service_provider",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -973,6 +1110,13 @@
         "v_required": {
           "value": "true",
           "err": "Please pick at least one"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "all_clients_member_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -1058,6 +1202,13 @@
         "v_required": {
           "value": "true",
           "err": "Please pick at least one"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "all_clients_member_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -1145,14 +1296,14 @@
           },
           {
             "key": "homosexual",
-            "text": "Man who has sex with a man",
+            "text": "Men who have sex with men",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
           },
           {
             "key": "sex_worker_woman",
-            "text": "Woman who sell sex",
+            "text": "Sex worker",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
