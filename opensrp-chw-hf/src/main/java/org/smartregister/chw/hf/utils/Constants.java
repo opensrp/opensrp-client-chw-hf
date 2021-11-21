@@ -39,8 +39,8 @@ public class Constants extends CoreConstants {
             return Utils.getLocalForm(ANC_PREGANCY_CONFIRMATION, locale, assetManager);
         }
 
-        public static String getHivRegistration(){
-            return Utils.getLocalForm(HIV_REGISTRATION,locale,assetManager);
+        public static String getHivRegistration() {
+            return Utils.getLocalForm(HIV_REGISTRATION, locale, assetManager);
         }
 
         public static String getAncPregnancyConfirmationForm() {
@@ -106,9 +106,14 @@ public class Constants extends CoreConstants {
         }
     }
 
+    public static final class DBConstants {
+        public static final String CHW_REFERRAL_SERVICE = "chw_referral_service";
+    }
+
     public interface SCHEDULE_GROUPS {
         String FACILITY_VISIT = "FACILITY_VISIT";
     }
+
     public interface PREGNANCY_CONFIRMATION_GROUPS {
         String PREGNANCY_CONFIRMATION = "Pregnancy Confirmation";
     }

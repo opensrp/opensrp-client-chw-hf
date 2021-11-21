@@ -42,6 +42,9 @@ import org.smartregister.view.contract.BaseProfileContract;
 
 import timber.log.Timber;
 
+import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
+import static org.smartregister.chw.hf.utils.Constants.JSON_FORM.HIV_REGISTRATION;
+
 public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfileActivity {
     private FamilyMemberFloatingMenu familyFloatingMenu;
     private BAJsonFormUtils baJsonFormUtils;

@@ -11,7 +11,7 @@
     <string name="full_referral_info">Angalia taarifa za rufaa</string>
     <string name="back_to_referrals">Rudi kwa rufaa</string>
     <string name="mark_done">Imefanyika</string>
-    <string name="mark_as_done">Imefanyika</string>
+    <string name="mark_as_done">Rufaa imepokelewa</string>
     <string name="view_profile">Angalia taarifa za huyu</string>
     <string name="chw_phone">Simu ya Mja</string>
     <string name="chw">Mja</string>
@@ -30,4 +30,9 @@
     <string name="created">Imeumbwa: %s</string>
     <string name="submit">HIFADHI</string>
     <string name="hts_clients">Wateja wa Ushauri nasaha na upimaji</string>
+    <string name="hiv_registration">Usajili kwenye huduma za VVU</string>
+    <string name="chw_client_found">Mtajwa amepatikana</string>
+    <string name="chw_followed_details">Waja ameonana na mtajwa</string>
+    <string name="chw_agreed_to_be_tested">Amekubali kupimwa</string>
+    <string name="chw_test_location">Atapimwa wapi</string>
 </resources>

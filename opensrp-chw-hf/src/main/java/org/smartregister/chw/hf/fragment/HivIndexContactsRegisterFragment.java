@@ -1,5 +1,7 @@
 package org.smartregister.chw.hf.fragment;
 
+import android.widget.TextView;
+
 import com.vijay.jsonwizard.utils.FormUtils;
 
 import org.jetbrains.annotations.Nullable;
@@ -7,6 +9,7 @@ import org.json.JSONException;
 import org.smartregister.chw.core.fragment.CoreHivIndexContactsRegisterFragment;
 import org.smartregister.chw.core.provider.CoreHivIndexContactsProvider;
 import org.smartregister.chw.core.utils.CoreConstants;
+import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.activity.HivIndexContactProfileActivity;
 import org.smartregister.chw.hf.activity.HivIndexContactsContactsRegisterActivity;
 import org.smartregister.chw.hf.model.HivIndexContactsRegisterFragmentModel;
@@ -33,6 +36,12 @@ public class HivIndexContactsRegisterFragment extends CoreHivIndexContactsRegist
         clientAdapter = new RecyclerViewPaginatedAdapter(null, hivRegisterProvider, context().commonrepository(this.tablename));
         clientAdapter.setCurrentlimit(20);
         clientsView.setAdapter(clientAdapter);
+    }
+    @Override
+    public void setupViews(android.view.View view) {
+        super.setupViews(view);
+        TextView dueOnlyTextView = view.findViewById(R.id.due_only_text_view);
+        dueOnlyTextView.setText(getString(R.string.feedback_due_only));
     }
 
     @Override

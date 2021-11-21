@@ -124,116 +124,6 @@
         }
       },
       {
-        "key": "client_dob",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "person",
-        "openmrs_entity_id": "client_birthdate",
-        "type": "date_picker",
-        "hint": "Date of birth (DOB)",
-        "expanded": false,
-        "duration": {
-          "label": "Age"
-        },
-        "min_date": "today-120y",
-        "max_date": "today",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the date of birth"
-        },
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "all_clients_member_relevance.yml"
-            }
-          }
-        }
-      },
-      {
-        "key": "client_age_calculated",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "client_age_calculated",
-        "type": "hidden",
-        "calculation": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "all_clients_member_calculation.yml"
-            }
-          }
-        }
-      },
-      {
-        "key": "client_dob_unknown",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "person",
-        "openmrs_entity_id": "client_birthdateApprox",
-        "type": "check_box",
-        "label": "",
-        "options": [
-          {
-            "key": "client_dob_unknown",
-            "text": "DOB unknown?",
-            "text_size": "18px",
-            "value": "false"
-          }
-        ]
-      },
-      {
-        "key": "client_age",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "person_attribute",
-        "openmrs_entity_id": "client_age",
-        "type": "edit_text",
-        "hint": "Age",
-        "v_numeric_integer": {
-          "value": "true",
-          "err": "Must be a rounded number"
-        },
-        "v_numeric": {
-          "value": "true",
-          "err": "Number must begin with 0 and must be a total of 10 digits in length"
-        },
-        "v_min": {
-          "value": "0",
-          "err": "Age must be equal or greater than 0"
-        },
-        "v_max": {
-          "value": "120",
-          "err": "Age must be equal or less than 120"
-        },
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "all_clients_member_relevance.yml"
-            }
-          }
-        },
-        "v_required": {
-          "value": true,
-          "err": "Please enter the age"
-        }
-      },
-      {
-        "key": "client_sex",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "person",
-        "openmrs_entity_id": "client_gender",
-        "type": "spinner",
-        "hint": "Sex",
-        "values": [
-          "Male",
-          "Female"
-        ],
-        "keys": [
-          "Male",
-          "Female"
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the sex"
-        }
-      },
-      {
         "key": "fam_village",
         "openmrs_entity_parent": "",
         "openmrs_entity": "person_address",
@@ -257,7 +147,7 @@
         "openmrs_entity_id": "landmark",
         "type": "edit_text",
         "edit_type": "name",
-        "hint": "Landmark/ description of house location",
+        "hint": "Landmark/Description of house location",
         "v_required": {
           "value": true,
           "err": "Please enter the landmark/description of location."
@@ -386,18 +276,22 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "person",
         "openmrs_entity_id": "birthdate",
-        "type": "hidden",
+        "type": "date_picker",
+        "hint": "Date of birth (DOB)",
+        "expanded": false,
+        "duration": {
+          "label": "Age"
+        },
+        "min_date": "today-120y",
+        "max_date": "today",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the date of birth"
+        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
               "rules-file": "all_clients_member_relevance.yml"
-            }
-          }
-        },
-        "calculation": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "all_clients_member_calculation.yml"
             }
           }
         }
@@ -421,19 +315,20 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "person",
         "openmrs_entity_id": "birthdateApprox",
-        "type": "hidden",
+        "type": "check_box",
         "label": "",
+        "options": [
+          {
+            "key": "dob_unknown",
+            "text": "DOB unknown?",
+            "text_size": "18px",
+            "value": "false"
+          }
+        ],
         "relevance": {
           "rules-engine": {
             "ex-rules": {
               "rules-file": "all_clients_member_relevance.yml"
-            }
-          }
-        },
-        "calculation": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "all_clients_member_calculation.yml"
             }
           }
         }
@@ -443,8 +338,24 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "person_attribute",
         "openmrs_entity_id": "age",
-        "type": "hidden",
+        "type": "edit_text",
         "hint": "Age",
+        "v_numeric_integer": {
+          "value": "true",
+          "err": "Must be a rounded number"
+        },
+        "v_numeric": {
+          "value": "true",
+          "err": "Number must begin with 0 and must be a total of 10 digits in length"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Age must be equal or greater than 0"
+        },
+        "v_max": {
+          "value": "120",
+          "err": "Age must be equal or less than 120"
+        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -452,12 +363,9 @@
             }
           }
         },
-        "calculation": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "all_clients_member_calculation.yml"
-            }
-          }
+        "v_required": {
+          "value": true,
+          "err": "Please enter the age"
         }
       },
       {
@@ -523,8 +431,12 @@
         "openmrs_entity": "person_attribute",
         "openmrs_entity_id": "National_ID",
         "type": "edit_text",
-        "hint": "National ID number",
+        "hint": "National ID number e.g 12345678-91234-56789-12",
         "edit_type": "name",
+        "v_regex": {
+          "value": "^\\d{8}-\\d{5}-\\d{5}-\\d{2}$",
+          "err": "National ID number should be of the format (XXXXXXXX-XXXXX-XXXXX-XX)"
+        },
         "relevance": {
           "step2:id_avail": {
             "ex-checkbox": [
@@ -543,8 +455,12 @@
         "openmrs_entity": "person_attribute",
         "openmrs_entity_id": "Voter_Registration_Number",
         "type": "edit_text",
-        "hint": "Voter's registration number",
+        "hint": "Voter's registration number e.g T-1234-5678-912-3",
         "edit_type": "name",
+        "v_regex": {
+          "value": "^T-\\d{4}-\\d{4}-\\d{3}-\\d{1}$",
+          "err": "Voter's registration number should be of the format (T-XXXX-XXXX-XXX-X)"
+        },
         "relevance": {
           "step2:id_avail": {
             "ex-checkbox": [
@@ -563,8 +479,12 @@
         "openmrs_entity": "person_attribute",
         "openmrs_entity_id": "Driver_License_Number",
         "type": "edit_text",
-        "hint": "Driver's license number",
+        "hint": "Driver's license number e.g 1234567891",
         "edit_type": "name",
+        "v_regex": {
+          "value": "^([0-9]{10})",
+          "err": "Driver's license number should be of the format (XXXXXXXXXX)"
+        },
         "relevance": {
           "step2:id_avail": {
             "ex-checkbox": [
@@ -694,14 +614,19 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "person",
         "openmrs_entity_id": "gender",
-        "type": "hidden",
+        "type": "spinner",
         "hint": "Sex",
-        "calculation": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "all_clients_member_calculation.yml"
-            }
-          }
+        "values": [
+          "Male",
+          "Female"
+        ],
+        "keys": [
+          "Male",
+          "Female"
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the sex"
         }
       },
       {
@@ -1247,7 +1172,7 @@
         "options": [
           {
             "key": "hiv_aids_transmission",
-            "text": "HIV/AIDs transimission",
+            "text": "HIV/AIDs transmission",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""

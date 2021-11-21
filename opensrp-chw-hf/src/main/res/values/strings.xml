@@ -2,7 +2,7 @@
     <string name="app_name">Kituoni</string>
     <string name="logo">logo</string>
     <string name="login_title">Ministry of Health\nKituoni App</string>
-    <string name="nav_logo">Ministry of Health Health Facility</string>
+    <string name="nav_logo">Ministry of Health Facility App</string>
     <string name="due_only">Referred</string>
 
     <string name="clicked_sick_child">You have clicked the sick child follow-up action</string>
@@ -11,7 +11,7 @@
     <string name="full_referral_info">View full referral info</string>
     <string name="back_to_referrals">Back to Referrals</string>
     <string name="mark_done">Mark Done</string>
-    <string name="mark_as_done">Mark as done</string>
+    <string name="mark_as_done">Referral received</string>
     <string name="view_profile">View Profile</string>
     <string name="chw_phone">CHW Phone</string>
     <string name="chw">CHW</string>
@@ -30,6 +30,11 @@
     <string name="created">Created: %s</string>
     <string name="submit">SAVE</string>
     <string name="hts_clients">HTS Clients</string>
+    <string name="hiv_registration">HIV Registration</string>
+    <string name="chw_client_found">Has the contact client been found</string>
+    <string name="chw_followed_details">Has the client been followed up by chw</string>
+    <string name="chw_agreed_to_be_tested">Has the client agree to be tested</string>
+    <string name="chw_test_location">Client test location</string>
     <string name="anc_first_visit_medical_and_surgical_history">Medical And Surgical History</string>
     <string name="anc_first_visit_baseline_investigation">Baseline Investigation</string>
     <string name="anc_first_visit_obstetric_examination">Obstetric Examination</string>

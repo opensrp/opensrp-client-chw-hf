@@ -2426,6 +2426,82 @@
       ]
     },
     {
+      "name": "ec_hts_register",
+      "columns": [
+        {
+          "column_name": "chw_referral_service",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "chw_referral_service"
+          }
+        },
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "relational_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "relational_id"
+          }
+        },
+        {
+          "column_name": "last_interacted_with",
+          "type": "Event",
+          "json_mapping": {
+            "field": "version"
+          }
+        },
+        {
+          "column_name": "ctc_number",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "ctc_number"
+          }
+        },
+        {
+          "column_name": "cbhs_number",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "cbhs_number"
+          }
+        },
+        {
+          "column_name": "client_hiv_status_during_registration",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "client_hiv_status_during_registration"
+          }
+        },
+        {
+          "column_name": "client_hiv_status_after_testing",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "test_results"
+          }
+        },
+        {
+          "column_name": "hiv_registration_date",
+          "type": "Event",
+          "data_type": "date",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "hiv_registration_date"
+          }
+        }
+      ]
+    },
+    {
       "name": "ec_hiv_outcome",
       "columns": [
         {
@@ -2882,6 +2958,72 @@
           "json_mapping": {
             "field": "obs.fieldCode",
             "concept": "mark_as_done"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ec_hiv_index_chw_followup",
+      "columns": [
+        {
+          "column_name": "entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "formSubmissionId"
+          }
+        },
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "relational_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "relational_id"
+          }
+        },
+        {
+          "column_name": "last_interacted_with",
+          "type": "Event",
+          "json_mapping": {
+            "field": "version"
+          }
+        },
+        {
+          "column_name": "followed_by_chw",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "client_followed_up_by_chw"
+          }
+        },
+        {
+          "column_name": "agreed_to_be_tested",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "has_the_client_agreed_to_be_tested"
+          }
+        },
+        {
+          "column_name": "client_found",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "has_the_contact_client_been_found"
+          }
+        },
+        {
+          "column_name": "test_location",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "place_where_test_will_be_conducted"
           }
         }
       ]

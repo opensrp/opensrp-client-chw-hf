@@ -226,7 +226,8 @@
             "field": "eventType",
             "field_value": "Referral Registration",
             "creates_case": [
-              "ec_referral"
+              "ec_referral",
+              "ec_hts_register"
             ]
           },
           {
@@ -266,6 +267,13 @@
           },
           {
             "field": "eventType",
+            "field_value": "Hiv Registration",
+            "creates_case": [
+              "ec_hts_register"
+            ]
+          },
+          {
+            "field": "eventType",
             "field_value": "Tb Registration",
             "creates_case": [
               "ec_tb_register"
@@ -283,7 +291,8 @@
             "field_value": "HIV Outcome",
             "creates_case": [
               "ec_hiv_register",
-              "ec_hiv_outcome"
+              "ec_hiv_outcome",
+              "ec_hts_register"
             ]
           },
           {
@@ -348,6 +357,13 @@
             "field_value": "HIV Index Contact Testing Followup",
             "creates_case": [
               "ec_hiv_index_hf"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "HIV Index Contact CHW Followup",
+            "creates_case": [
+              "ec_hiv_index_chw_followup"
             ]
           },
           {

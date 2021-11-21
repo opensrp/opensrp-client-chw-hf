@@ -1,12 +1,8 @@
 package org.smartregister.chw.hf.fragment;
 
-import com.vijay.jsonwizard.utils.FormUtils;
-
 import org.jetbrains.annotations.Nullable;
-import org.json.JSONException;
 import org.smartregister.chw.core.fragment.CoreHivRegisterFragment;
 import org.smartregister.chw.core.provider.CoreHivProvider;
-import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.activity.HivProfileActivity;
 import org.smartregister.chw.hf.activity.HivRegisterActivity;
 import org.smartregister.chw.hf.model.HivRegisterFragmentModel;

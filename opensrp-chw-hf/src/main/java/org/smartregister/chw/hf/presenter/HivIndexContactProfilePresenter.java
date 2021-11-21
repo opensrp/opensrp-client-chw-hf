@@ -13,7 +13,7 @@ import org.smartregister.chw.hf.activity.HivProfileActivity;
 import org.smartregister.chw.hf.contract.HivIndexContactProfileContract;
 import org.smartregister.chw.hf.custom_view.HivFloatingMenu;
 import org.smartregister.chw.hf.model.HfAllClientsRegisterModel;
-import org.smartregister.chw.hf.model.HivTbReferralTasksAndFollowupFeedbackModel;
+import org.smartregister.chw.hf.model.HivIndexFollowupFeedbackDetailsModel;
 import org.smartregister.chw.hiv.domain.HivIndexContactObject;
 import org.smartregister.opd.contract.OpdRegisterActivityContract;
 import org.smartregister.opd.pojo.OpdDiagnosisAndTreatmentForm;
@@ -45,9 +45,11 @@ public class HivIndexContactProfilePresenter extends CoreHivIndexContactProfileP
         interactor.getReferralTasks(CoreConstants.REFERRAL_PLAN_ID, hivIndexContactObject.getBaseEntityId(), this);
     }
 
+
     @Override
-    public void updateReferralTasksAndFollowupFeedback(List<HivTbReferralTasksAndFollowupFeedbackModel> tasksAndFollowupFeedbackModels) {
-        ((HivIndexContactProfileContract.View) getView()).setReferralTasksAndFollowupFeedback(tasksAndFollowupFeedbackModels);
+    public void getReferralAndFollowupFeedback(List<HivIndexFollowupFeedbackDetailsModel> followupFeedbackDetailsModel) {
+        ((HivIndexContactProfileContract.View) getView()).setReferralAndFollowupFeedback(followupFeedbackDetailsModel);
+
     }
 
     public void saveForm(String jsonString, @NonNull RegisterParams registerParams) {

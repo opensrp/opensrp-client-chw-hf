@@ -55,7 +55,7 @@
   },
   "steps": [
     {
-      "title": "Index Client Contact HIV Outcome",
+      "title": "Index Contact HIV Outcome",
       "fields": [
         {
           "name": "has_the_client_been_reached",
@@ -174,20 +174,20 @@
           },
           "options": [
             {
-              "name": "negative",
-              "text": "Negative",
-              "meta_data": {
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "negative",
-                "openmrs_entity_parent": ""
-              }
-            },
-            {
               "name": "positive",
               "text": "Positive",
               "meta_data": {
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "positive",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "negative",
+              "text": "Negative",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "negative",
                 "openmrs_entity_parent": ""
               }
             }
@@ -266,13 +266,30 @@
           "subjects": "test_results:map"
         },
         {
+          "name": "client_test_date",
+          "type": "datetime_picker",
+          "properties": {
+            "hint": "Client's test date",
+            "type": "date_picker",
+            "display_format": "dd/MM/yyyy",
+            "max_date": "today"
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "client_test_date",
+            "openmrs_entity_parent": ""
+          },
+          "required_status": "true:Please specify the client's test date",
+          "subjects": "test_results:map"
+        },
+        {
           "name": "toast_enroll_the_client_to_prep",
           "type": "toast_notification",
           "properties": {
             "notification_type": "info",
             "dismissible": "no",
-            "title": "Client should be enrolled to PREP",
-            "text": "The client is a sex partner of a HIV Positive client and should be enrolled to PREP",
+            "title": "Client should be enrolled to PrEP",
+            "text": "The client is a sex partner of a HIV Positive client and should be enrolled to PrEP",
             "background_color": "#082455",
             "text_color": "#EBEE2F"
           },
@@ -282,7 +299,7 @@
           "name": "enrolled_to_prep",
           "type": "radio_group",
           "properties": {
-            "text": "Has the client been enrolled into Prep?"
+            "text": "Has the client been enrolled into PrEP?"
           },
           "meta_data": {
             "openmrs_entity": "concept",
@@ -316,7 +333,7 @@
           "name": "reason_for_not_being_enrolled_to_prep",
           "type": "text_input_edit_text",
           "properties": {
-            "hint": "What are the reasons for not being enrolled to Prep",
+            "hint": "What are the reasons for not being enrolled to PrEP",
             "input_type": "text"
           },
           "meta_data": {
@@ -365,7 +382,7 @@
           "name": "ctc_number",
           "type": "text_input_edit_text",
           "properties": {
-            "hint": "Enter the client's CTC Number",
+            "hint": "CTC Number e.g 12-34-5678-912345",
             "type": "Clinic of Treatment and Care registration number (CTC Number)"
           },
           "meta_data": {
@@ -376,7 +393,7 @@
           "validation": [
             {
               "condition": "value.matches(\"(\\\\d{2}-\\\\d{2}-\\\\d{4}-\\\\d{6})?\")",
-              "message": "Not a valid CTC Number."
+              "message": "CTC Number should be of the format (XX-XX-XXXX-XXXXXX)."
             }
           ],
           "required_status": "yes:Please specify client's CTC number",

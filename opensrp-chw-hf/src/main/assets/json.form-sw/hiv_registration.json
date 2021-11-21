@@ -58,6 +58,39 @@
       "title": "Usajili wa wateja wa VVU",
       "fields": [
         {
+          "name": "new_or_current_hiv_client",
+          "type": "radio_group",
+          "properties": {
+            "text": "Je, mteja aliyesajiliwa ni mpya au aliyewepo kwenye huduma ya VVU?"
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "new_or_current_hiv_client",
+            "openmrs_entity_parent": ""
+          },
+          "options": [
+            {
+              "name": "new",
+              "text": "Mteja mpya wa VVU",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "new",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "existing",
+              "text": "Mteja aliyopo kwenye huduma ya VVU",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "existing",
+                "openmrs_entity_parent": ""
+              }
+            }
+          ],
+          "required_status": "yes:Tafadhali chagua jibu"
+        },
+        {
           "name": "place_where_test_was_conducted",
           "type": "radio_group",
           "properties": {
@@ -179,7 +212,7 @@
             },
             {
               "name": "other",
-              "text": "KW=Kwingineko",
+              "text": "Kwingineko",
               "meta_data": {
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "other",
@@ -193,7 +226,7 @@
           "name": "ctc_number",
           "type": "text_input_edit_text",
           "properties": {
-            "hint": "Namba ya CTC",
+            "hint": "Namba ya CTC, mfano: 12-34-5678-912345",
             "type": "Namba ya CTC"
           },
           "meta_data": {
@@ -204,7 +237,7 @@
           "validation": [
             {
               "condition": "value.matches(\"(\\\\d{2}-\\\\d{2}-\\\\d{4}-\\\\d{6})?\")",
-              "message": "Namba ya CTC iliyojazwa si sahihi."
+              "message": "Namba ya CTC inatakiwa kuwa (XX-XX-XXXX-XXXXXX)."
             }
           ],
           "required_status": "yes:Tafadhali jaza namba ya CTC ya mteja",

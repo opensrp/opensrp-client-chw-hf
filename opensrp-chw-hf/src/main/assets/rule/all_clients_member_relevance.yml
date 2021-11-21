@@ -20,6 +20,13 @@ condition: "!step2_dob_unknown.contains('dob_unknown')"
 actions:
   - "isRelevant = true"
 ---
+name: step2_dob_unknown
+description: dob unknown relevance
+priority: 1
+condition: "step2_dob.isEmpty()"
+actions:
+  - "isRelevant = true"
+---
 name: step2_age
 description: age relevance
 priority: 1
@@ -59,6 +66,27 @@ name: step2_marital_status
 description: marital_status relevance
 priority: 1
 condition: "(step1_client_dob != '' && helper.formatDate(step1_client_dob,'y') >= 18) || (step1_client_age != '' && step1_client_age >= 18)"
+actions:
+  - "isRelevant = true"
+---
+name: step2_service_provider
+description: service_provider relevance
+priority: 1
+condition: "(step2_dob != '' && helper.formatDate(step2_dob,'y') >= 18) || (step2_age != '' && step2_age >= 18)"
+actions:
+  - "isRelevant = true"
+---
+name: step2_leader
+description: leader relevance
+priority: 1
+condition: "(step2_dob != '' && helper.formatDate(step2_dob,'y') >= 18) || (step2_age != '' && step2_age >= 18)"
+actions:
+  - "isRelevant = true"
+---
+name: step2_marital_status
+description: marital_status relevance
+priority: 1
+condition: "(step2_dob != '' && helper.formatDate(step2_dob,'y') >= 14) || (step2_age != '' && step2_age >= 14)"
 actions:
   - "isRelevant = true"
 

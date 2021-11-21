@@ -3,10 +3,12 @@ package org.smartregister.chw.hf.presenter;
 import org.jetbrains.annotations.NotNull;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hiv.contract.BaseHivRegisterFragmentContract;
 import org.smartregister.chw.hiv.presenter.BaseHivRegisterFragmentPresenter;
-import org.smartregister.chw.hiv.util.Constants.Tables;
 import org.smartregister.chw.hiv.util.DBConstants;
+
+import androidx.annotation.NonNull;
 
 public class HtsRegisterFragmentPresenter extends BaseHivRegisterFragmentPresenter {
 
@@ -18,15 +20,27 @@ public class HtsRegisterFragmentPresenter extends BaseHivRegisterFragmentPresent
     @NotNull
     public String getMainCondition() {
         return " " + CoreConstants.TABLE_NAME.FAMILY_MEMBER + "." + DBConstants.Key.DATE_REMOVED + " is null " +
-                "AND " + Tables.HIV + "." + DBConstants.Key.CTC_NUMBER + " IS NULL "+
-                "AND " + Tables.HIV + "." + DBConstants.Key.IS_CLOSED + " = '0' ";
+                "AND " + CoreConstants.TABLE_NAME.HTS_MEMBERS + "." + DBConstants.Key.CTC_NUMBER + " IS NULL " +
+                "AND " + CoreConstants.TABLE_NAME.HTS_MEMBERS + "." + Constants.DBConstants.CHW_REFERRAL_SERVICE + " = 'Suspected HIV' " +
+                "AND  (" +
+                CoreConstants.TABLE_NAME.HTS_MEMBERS + "." + DBConstants.Key.CLIENT_HIV_STATUS_AFTER_TESTING + " is NULL OR " +
+                CoreConstants.TABLE_NAME.HTS_MEMBERS + "." + DBConstants.Key.CLIENT_HIV_STATUS_AFTER_TESTING + " ='Positive' )" +
+                "AND " + CoreConstants.TABLE_NAME.HTS_MEMBERS + "." + DBConstants.Key.IS_CLOSED + " = '0' " +
+                "AND " + CoreConstants.TABLE_NAME.HTS_MEMBERS + "." + DBConstants.Key.BASE_ENTITY_ID +
+                " NOT IN (SELECT base_entity_id FROM " + org.smartregister.chw.hiv.util.Constants.Tables.HIV_INDEX_HF + ")";
 
     }
 
     @Override
     @NotNull
     public String getDueFilterCondition() {
-        return CoreConstants.TABLE_NAME.HIV_MEMBER + ".base_entity_id IN (SELECT for FROM task WHERE business_status = 'Referred')";
+        return CoreConstants.TABLE_NAME.HTS_MEMBERS + ".base_entity_id IN (SELECT for FROM task WHERE business_status = 'Referred')";
+    }
+
+    @NonNull
+    @Override
+    public String getDefaultSortQuery() {
+        return CoreConstants.TABLE_NAME.HTS_MEMBERS + "." + org.smartregister.chw.hiv.util.DBConstants.Key.HIV_REGISTRATION_DATE + " DESC ";
     }
 
     @Override
@@ -39,6 +53,6 @@ public class HtsRegisterFragmentPresenter extends BaseHivRegisterFragmentPresent
 
     @Override
     public String getMainTable() {
-        return Tables.HIV;
+        return CoreConstants.TABLE_NAME.HTS_MEMBERS;
     }
 }

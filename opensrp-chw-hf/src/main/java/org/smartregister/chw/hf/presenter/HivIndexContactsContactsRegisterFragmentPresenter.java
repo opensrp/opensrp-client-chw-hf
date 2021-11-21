@@ -25,7 +25,7 @@ public class HivIndexContactsContactsRegisterFragmentPresenter extends BaseHivIn
     @Override
     @NotNull
     public String getDueFilterCondition() {
-        return "";
+        return " " + Tables.HIV_INDEX_HF + ".base_entity_id IN (SELECT base_entity_id FROM ec_hiv_index_chw_followup WHERE followed_by_chw = 'true' )" ;
     }
 
     @Override

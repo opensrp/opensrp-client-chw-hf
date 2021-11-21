@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 
 import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
@@ -21,8 +22,10 @@ import org.smartregister.chw.hf.activity.AncMemberProfileActivity;
 import org.smartregister.chw.hf.activity.ChildProfileActivity;
 import org.smartregister.chw.hf.activity.FamilyOtherMemberProfileActivity;
 import org.smartregister.chw.hf.activity.FamilyPlanningMemberProfileActivity;
+import org.smartregister.chw.hf.activity.HivProfileActivity;
 import org.smartregister.chw.hf.activity.MalariaProfileActivity;
 import org.smartregister.chw.hf.activity.PncMemberProfileActivity;
+import org.smartregister.chw.hf.activity.TbProfileActivity;
 import org.smartregister.chw.hf.dao.FamilyDao;
 import org.smartregister.chw.hf.model.FamilyDetailsModel;
 import org.smartregister.chw.hiv.dao.HivDao;
@@ -215,6 +218,14 @@ public class AllClientsUtils {
         } else {
             menu.findItem(R.id.action_tb_registration).setVisible(true);
         }
+    }
+
+    public static void goToHivProfile(FragmentActivity activity, CommonPersonObjectClient hivClient) {
+        HivProfileActivity.startHivProfileActivity(activity,HivDao.getMember(hivClient.getCaseId()));
+    }
+
+    public static void goToTbProfile(FragmentActivity activity, CommonPersonObjectClient tbClient) {
+        TbProfileActivity.startTbProfileActivity(activity,TbDao.getMember(tbClient.getCaseId()));
     }
     public static void updatePmtctMenuItems(String baseEntityId, Menu menu){
         menu.findItem(R.id.action_pmtct_register).setVisible(!PmtctDao.isRegisteredForPmtct(baseEntityId));

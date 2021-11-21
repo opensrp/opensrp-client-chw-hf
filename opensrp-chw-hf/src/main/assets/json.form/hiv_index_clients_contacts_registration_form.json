@@ -70,7 +70,7 @@
           "err": "Please enter the surname"
         },
         "v_regex": {
-          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-]*",
+          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
           "err": "Please enter surname"
         }
       },
@@ -96,14 +96,14 @@
         "openmrs_entity_id": "cityVillage",
         "type": "edit_text",
         "edit_type": "name",
-        "hint": "Village",
+        "hint": "Village/Street",
         "v_required": {
           "value": "true",
-          "err": "Please enter the village or town"
+          "err": "Please enter the village or street name"
         },
         "v_regex": {
           "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-]*",
-          "err": "Please enter a valid village name"
+          "err": "Please enter a valid village or street name"
         }
       },
       {
@@ -113,7 +113,7 @@
         "openmrs_entity_id": "landmark",
         "type": "edit_text",
         "edit_type": "name",
-        "hint": "Landmark/ description of house location",
+        "hint": "Landmark/Description of house location",
         "v_required": {
           "value": true,
           "err": "Please enter the landmark/description of location."
@@ -172,7 +172,7 @@
         "edit_type": "name",
         "read_only": true,
         "v_regex": {
-          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-]*",
+          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
           "err": "Please enter a valid name"
         },
         "v_required": {
@@ -281,21 +281,13 @@
           "value": "true",
           "err": "Must be a rounded number"
         },
-        "v_numeric": {
-          "value": "true",
-          "err": "Number must begin with 0 and must be a total of 10 digits in length"
-        },
         "v_min": {
-          "value": "5",
-          "err": "Age must be equal or greater than 5"
+          "value": "0",
+          "err": "Enter a valid age"
         },
         "v_max": {
           "value": "120",
           "err": "Age must be equal or less than 120"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Please enter the age"
         }
       },
       {

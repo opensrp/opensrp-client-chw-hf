@@ -149,7 +149,7 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
         //Only showing the hiv outcome menu for positive HIV clients
         if (getHivMemberObject().getCtcNumber().isEmpty()) {
             menu.findItem(R.id.action_hiv_outcome).setVisible(true);
-        }else {
+        } else {
             menu.findItem(R.id.action_issue_hiv_community_followup_referral).setVisible(true);
         }
         return true;

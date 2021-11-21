@@ -12,6 +12,7 @@ import org.smartregister.chw.hf.activity.HivProfileActivity;
 import org.smartregister.chw.hf.activity.HivRegisterActivity;
 import org.smartregister.chw.hf.activity.HtsRegisterActivity;
 import org.smartregister.chw.hf.model.HivRegisterFragmentModel;
+import org.smartregister.chw.hf.model.HtsRegisterFragmentModel;
 import org.smartregister.chw.hf.presenter.HtsRegisterFragmentPresenter;
 import org.smartregister.chw.hf.provider.HfHivRegisterProvider;
 import org.smartregister.chw.hiv.dao.HivDao;
@@ -25,8 +26,6 @@ import java.util.Objects;
 import java.util.Set;
 
 import timber.log.Timber;
-
-import static org.smartregister.chw.hf.utils.Constants.JSON_FORM.HIV_REGISTRATION;
 
 public class HtsRegisterFragment extends CoreHivRegisterFragment {
     @Override
@@ -54,7 +53,7 @@ public class HtsRegisterFragment extends CoreHivRegisterFragment {
         } catch (NullPointerException e) {
             Timber.e(e);
         }
-        presenter = new HtsRegisterFragmentPresenter(this, new HivRegisterFragmentModel(), viewConfigurationIdentifier);
+        presenter = new HtsRegisterFragmentPresenter(this, new HtsRegisterFragmentModel(), viewConfigurationIdentifier);
     }
 
     @Override
@@ -65,8 +64,9 @@ public class HtsRegisterFragment extends CoreHivRegisterFragment {
 
 
     @Override
-    protected void openFollowUpVisit(@Nullable HivMemberObject hivMemberObject) { }
+    protected void openFollowUpVisit(@Nullable HivMemberObject hivMemberObject) {
 
+    }
 }
 
 
