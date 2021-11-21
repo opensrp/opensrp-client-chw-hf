@@ -17,7 +17,7 @@
         "type": "edit_text",
         "edit_type": "number",
         "v_required": {
-          "value": "true",
+          "value": "false",
           "err": "Please enter the HVL number"
         }
       }
