@@ -10,6 +10,7 @@ import org.smartregister.sync.intent.SyncTaskIntentService;
 public class HfSyncTaskIntentService extends SyncTaskIntentService {
     @Override
     protected void onHandleIntent(Intent intent) {
+        super.onHandleIntent(intent);
         HfTaskServiceHelper taskServiceHelper = HfTaskServiceHelper.getInstance();
         taskServiceHelper.syncTasks();
         SyncTaskWithClientEventsServiceJob.scheduleJobImmediately(SyncTaskWithClientEventsServiceJob.TAG);
