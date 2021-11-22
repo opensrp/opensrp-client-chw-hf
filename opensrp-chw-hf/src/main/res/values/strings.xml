@@ -46,4 +46,8 @@
     <string name="anc_recuring_visit_pregnancy_status">Pregnancy Status</string>
     <string name="anc_recuring_visit_review_birth_and_emergency_plan">Review Birth and Emergency Plan</string>
     <string name="PMTCT">PMTCT</string>
+    <string name="record_anc_first_visit">Record ANC First Visit</string>
+    <string name="record_anc_followup_visit">Record ANC Followup Visit</string>
+    <string name="anc_first_visit">ANC First Visit</string>
+    <string name="anc_followup_visit">ANC Followup Visit</string>
 </resources>

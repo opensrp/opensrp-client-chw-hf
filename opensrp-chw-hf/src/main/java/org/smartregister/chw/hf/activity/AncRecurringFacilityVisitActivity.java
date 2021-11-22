@@ -3,8 +3,11 @@ package org.smartregister.chw.hf.activity;
 import android.app.Activity;
 import android.content.Intent;
 
+import org.smartregister.chw.anc.domain.MemberObject;
 import org.smartregister.chw.anc.presenter.BaseAncHomeVisitPresenter;
 import org.smartregister.chw.hf.interactor.AncRecurringFacilityVisitInteractor;
+
+import java.text.MessageFormat;
 
 /**
  * @author ilakozejumanne@gmail.com
@@ -22,6 +25,11 @@ public class AncRecurringFacilityVisitActivity extends AncFirstFacilityVisitActi
     @Override
     protected void registerPresenter() {
         presenter = new BaseAncHomeVisitPresenter(memberObject, this, new AncRecurringFacilityVisitInteractor());
+    }
+
+    @Override
+    public void redrawHeader(MemberObject memberObject) {
+        tvTitle.setText(MessageFormat.format("{0}, {1} \u00B7 {2}", memberObject.getFullName(), memberObject.getAge(), getString(org.smartregister.chw.hf.R.string.anc_followup_visit)));
     }
 
     @Override

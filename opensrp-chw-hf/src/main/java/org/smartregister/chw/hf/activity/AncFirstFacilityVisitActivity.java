@@ -9,6 +9,7 @@ import com.vijay.jsonwizard.domain.Form;
 
 import org.json.JSONObject;
 import org.smartregister.chw.anc.activity.BaseAncHomeVisitActivity;
+import org.smartregister.chw.anc.domain.MemberObject;
 import org.smartregister.chw.anc.presenter.BaseAncHomeVisitPresenter;
 import org.smartregister.chw.core.R;
 import org.smartregister.chw.core.task.RunnableTask;
@@ -19,6 +20,7 @@ import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.family.util.Utils;
 import org.smartregister.util.LangUtils;
 
+import java.text.MessageFormat;
 import java.util.Date;
 
 import timber.log.Timber;
@@ -67,6 +69,11 @@ public class AncFirstFacilityVisitActivity extends BaseAncHomeVisitActivity {
         // get language from prefs
         String lang = LangUtils.getLanguage(base.getApplicationContext());
         super.attachBaseContext(LangUtils.setAppLocale(base, lang));
+    }
+
+    @Override
+    public void redrawHeader(MemberObject memberObject) {
+        tvTitle.setText(MessageFormat.format("{0}, {1} \u00B7 {2}", memberObject.getFullName(), memberObject.getAge(), getString(org.smartregister.chw.hf.R.string.anc_first_visit)));
     }
 
     @Override
