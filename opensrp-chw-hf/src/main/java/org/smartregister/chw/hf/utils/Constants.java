@@ -78,7 +78,7 @@ public class Constants extends CoreConstants {
             private static final String LAB_TESTS = "anc_rv_lab_test";
             private static final String PHARMACY = "anc_rv_pharmacy";
             private static final String PREGNANCY_STATUS = "anc_rv_pregnancy_status";
-            private static final String BIRTH_REVIEW_AND_EMERGENCY_PLAN = "anc_rv_birth_review_and_emergency_plan";
+            public static final String BIRTH_REVIEW_AND_EMERGENCY_PLAN = "anc_rv_birth_review_and_emergency_plan";
 
             public static String getTriage() {
                 return Utils.getLocalForm(TRIAGE, locale, assetManager);
@@ -104,6 +104,11 @@ public class Constants extends CoreConstants {
                 return Utils.getLocalForm(BIRTH_REVIEW_AND_EMERGENCY_PLAN, locale, assetManager);
             }
         }
+    }
+
+    public static final class JsonFormConstants {
+        public static final String NAME_OF_HF = "name_of_hf";
+        public static final String STEP1 = "step1";
     }
 
     public static final class DBConstants {

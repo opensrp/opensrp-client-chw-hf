@@ -306,13 +306,19 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
                 lastNotDoneVisit = null;
             }
         }
-
-        Visit lastVisit = AncLibrary.getInstance().visitRepository().getLatestVisit(baseEntityID, org.smartregister.chw.anc.util.Constants.EVENT_TYPE.ANC_HOME_VISIT);
+        Visit lastVisit = getVisit(ANC_FIRST_FACILITY_VISIT);
         String visitDate = lastVisit != null ? new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(lastVisit.getDate()) : null;
         String lastVisitNotDone = lastNotDoneVisit != null ? new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(lastNotDoneVisit.getDate()) : null;
 
         VisitSummary visitSummary = HomeVisitUtil.getAncVisitStatus(this, rules, visitDate, lastVisitNotDone, getDateCreated());
+
         String visitStatus = visitSummary.getVisitStatus();
+       if(lastVisit == null){
+           textview_record_anc_visit.setText(R.string.record_anc_first_visit);
+       }else{
+           textview_record_anc_visit.setText(R.string.record_anc_followup_visit);
+       }
+
 
         if (visitStatus.equalsIgnoreCase(CoreConstants.VISIT_STATE.OVERDUE)) {
             textview_record_anc_visit.setBackgroundResource(org.smartregister.chw.core.R.drawable.record_btn_selector_overdue);

@@ -63,15 +63,34 @@
         ]
       },
       {
-        "type": "edit_text",
+        "type": "spinner",
         "key": "name_of_hf",
+        "hint": "Health Facility",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "name_of_hf",
+        "openmrs_entity_parent": "",
+        "values": [],
+        "v_required": {
+          "value": true,
+          "err": "Please select a facility"
+        }
+      },
+      {
+        "type": "edit_text",
+        "key": "name_of_hf_other",
         "hint": "Name of Health Facility",
-        "openmrs_entity": "",
-        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "name_of_hf_other",
         "openmrs_entity_parent": "",
         "v_required": {
           "value": true,
-          "err": "Please give a name"
+          "err": "Please enter the name of health facility facility"
+        },
+        "relevance": {
+          "step1:name_of_hf": {
+            "type": "string",
+            "ex": "equalTo(., \"Other\")"
+          }
         }
       },
       {
