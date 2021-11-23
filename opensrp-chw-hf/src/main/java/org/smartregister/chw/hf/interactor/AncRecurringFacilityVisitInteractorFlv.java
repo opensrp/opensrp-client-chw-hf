@@ -173,7 +173,6 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                 ArrayList<String> healthFacilitiesOptions = new ArrayList<>();
                 for (Location location : locations) {
                     healthFacilitiesOptions.add(location.getProperties().getName());
-                    healthFacilitiesOptions.add(location.getProperties().getUid());
                 }
                 healthFacilitiesOptions.add("Other");
                 if (referralHealthFacilities != null) {

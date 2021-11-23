@@ -23,6 +23,7 @@ import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.anc.AncLibrary;
 import org.smartregister.chw.anc.domain.Visit;
@@ -202,27 +203,24 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         if (lastVisit != null) {
             boolean within24Hours = VisitUtils.isVisitWithin24Hours(lastVisit);
             String lastVisitDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(lastVisit.getDate());
-            if (isVisitThisMonth(formatter.parseLocalDate(lastVisitDate), new LocalDate())) {
-                if (within24Hours) {
-                    Calendar cal = Calendar.getInstance();
-                    int offset = cal.getTimeZone().getOffset(cal.getTimeInMillis());
-                    Long longDate = lastVisit.getDate().getTime();
-                    Date date = new Date(longDate - (long) offset);
-                    String monthString = (String) DateFormat.format("MMMM", date);
-                    layoutRecordView.setVisibility(View.GONE);
-                    tvEdit.setVisibility(View.VISIBLE);
-                    layoutNotRecordView.setVisibility(View.VISIBLE);
-                    textViewNotVisitMonth.setText(getContext().getString(org.smartregister.chw.core.R.string.anc_visit_done, monthString));
-                    imageViewCross.setImageResource(org.smartregister.chw.core.R.drawable.activityrow_visited);
-                } else {
-                    record_reccuringvisit_done_bar.setVisibility(View.VISIBLE);
-                    layoutNotRecordView.setVisibility(View.GONE);
-                }
-                textViewUndo.setVisibility(View.GONE);
-                textViewAncVisitNot.setVisibility(View.GONE);
+            try {
+                JSONObject jsonObject = new JSONObject(lastVisit.getJson());
+                JSONArray obs = jsonObject.getJSONArray("obs");
+                boolean isMedicalAndSurgicalHistoryDone = computeCompletionStatus(obs, "medical_surgical_history");
+                boolean isObestericExaminationDone = computeCompletionStatus(obs, "abdominal_scars");
+                boolean isBaselineInvestigationDone = computeCompletionStatus(obs, "glucose_in_urine");
+                boolean isTTVaccinationDone = computeCompletionStatus(obs, "tt_card");
+                if (isVisitThisMonth(formatter.parseLocalDate(lastVisitDate), new LocalDate())) {
+                    checkForFirstVisit(lastVisit, within24Hours, isMedicalAndSurgicalHistoryDone, isObestericExaminationDone, isBaselineInvestigationDone, isTTVaccinationDone);
+                    textViewUndo.setVisibility(View.GONE);
+                    textViewAncVisitNot.setVisibility(View.GONE);
 
-            } else {
-                getButtonStatus();
+                } else {
+                    getButtonStatus();
+                }
+            }
+            catch (JSONException e) {
+                Timber.e(e);
             }
         } else {
             getButtonStatus();
@@ -233,6 +231,43 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
             if (floatingActionButton != null)
                 floatingActionButton.setImageResource(R.drawable.floating_call);
         }
+    }
+
+    private void checkForFirstVisit(Visit lastVisit, boolean within24Hours, boolean isMedicalAndSurgicalHistoryDone, boolean isObestericExaminationDone, boolean isBaselineInvestigationDone, boolean isTTVaccinationDone) {
+        if (within24Hours) {
+            Calendar cal = Calendar.getInstance();
+            int offset = cal.getTimeZone().getOffset(cal.getTimeInMillis());
+            Long longDate = lastVisit.getDate().getTime();
+            Date date = new Date(longDate - (long) offset);
+            String monthString = (String) DateFormat.format("MMMM", date);
+            layoutRecordView.setVisibility(View.GONE);
+            tvEdit.setVisibility(View.VISIBLE);
+            layoutNotRecordView.setVisibility(View.VISIBLE);
+            displayVisitStatus(isMedicalAndSurgicalHistoryDone, isObestericExaminationDone, isBaselineInvestigationDone, isTTVaccinationDone, monthString);
+        } else {
+            record_reccuringvisit_done_bar.setVisibility(View.VISIBLE);
+            layoutNotRecordView.setVisibility(View.GONE);
+        }
+    }
+
+    private void displayVisitStatus(boolean isMedicalAndSurgicalHistoryDone, boolean isObestericExaminationDone, boolean isBaselineInvestigationDone, boolean isTTVaccinationDone, String monthString) {
+        if (isMedicalAndSurgicalHistoryDone && isObestericExaminationDone && isBaselineInvestigationDone && isTTVaccinationDone) {
+            textViewNotVisitMonth.setText(getContext().getString(org.smartregister.chw.core.R.string.anc_visit_done, monthString));
+            imageViewCross.setImageResource(org.smartregister.chw.core.R.drawable.activityrow_visited);
+        }else{
+            textViewNotVisitMonth.setText(R.string.visit_in_progress);
+            imageViewCross.setImageResource(org.smartregister.chw.core.R.drawable.activityrow_notvisited );
+        }
+    }
+
+    private boolean computeCompletionStatus(JSONArray obs, String checkString) throws JSONException {
+        for(int i = 0; i < obs.length(); i++){
+            JSONObject checkObj = obs.getJSONObject(i);
+            if(checkObj.getString("fieldCode").equalsIgnoreCase(checkString)){
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
