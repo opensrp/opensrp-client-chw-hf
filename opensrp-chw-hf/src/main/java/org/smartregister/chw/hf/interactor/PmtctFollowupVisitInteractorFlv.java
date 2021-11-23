@@ -18,7 +18,8 @@ import java.util.LinkedHashMap;
 import timber.log.Timber;
 
 public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitInteractor.Flavor {
-   public String hvlTestValue;
+    public String hvlTestValue;
+
     @Override
     public LinkedHashMap<String, BasePmtctHomeVisitAction> calculateActions(BasePmtctHomeVisitContract.View view, MemberObject memberObject, BasePmtctHomeVisitContract.InteractorCallBack interactorCallBack) throws BasePmtctHomeVisitAction.ValidationException {
         LinkedHashMap<String, BasePmtctHomeVisitAction> actionList = new LinkedHashMap<>();
@@ -46,9 +47,16 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
                 .withHelper(new HvlSuppression())
                 .build();
         actionList.put("HVL SUPPRESSION", hvlSuppression);
+
+        BasePmtctHomeVisitAction pmtctFirstVisit = new BasePmtctHomeVisitAction.Builder(context, "ART")
+                .withOptional(false)
+                .withFormName("pmtct_first_visit")
+                //  .withHelper(new HvlSuppression())
+                .build();
+        actionList.put("ART", pmtctFirstVisit);
     }
 
-    private class HvlTestAction extends PmtctVisitAction{
+    private class HvlTestAction extends PmtctVisitAction {
         private String received_hvl_test_value;
         private Context context;
 
@@ -61,7 +69,7 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
         public void onPayloadReceived(String jsonPayload) {
             try {
                 JSONObject jsonObject = new JSONObject(jsonPayload);
-                received_hvl_test_value = CoreJsonFormUtils.getValue(jsonObject,"hvl_test");
+                received_hvl_test_value = CoreJsonFormUtils.getValue(jsonObject, "hvl_test");
                 hvlTestValue = received_hvl_test_value;
             } catch (JSONException e) {
                 Timber.e(e);
@@ -99,7 +107,7 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
 
     }
 
-    private class HvlSuppression extends PmtctVisitAction{
+    private class HvlSuppression extends PmtctVisitAction {
         @Override
         public String getPreProcessed() {
             return null;
@@ -143,6 +151,7 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
             }
         }
     }
+
 }
 
 

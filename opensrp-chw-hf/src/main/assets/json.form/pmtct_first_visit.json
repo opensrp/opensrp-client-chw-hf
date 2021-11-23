@@ -1,0 +1,667 @@
+{
+  "count": "1",
+  "encounter_type": "PMTCT FIRST VISIT",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "step1": {
+    "title": "PMTCT FIRST VISIT",
+    "fields": [
+      {
+        "type": "native_radio",
+        "label": "Is the client known on ART?",
+        "key": "known_on_art",
+        "openmrs_entity_id": "known_on_art",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_id": "yes",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_id": "no",
+            "openmrs_entity": "concept"
+          }
+        ]
+      },
+      {
+        "type": "edit_text",
+        "key": "clinician_name",
+        "hint": "Clinician Name",
+        "openmrs_entity_id": "clinician_name",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "step1:known_on_art": {
+            "type": "string",
+            "ex": "equalTo(.,\"yes\")"
+          }
+        }
+      },
+      {
+        "type": "edit_text",
+        "key": "clinician_position",
+        "hint": "Clinician Position",
+        "openmrs_entity_id": "clinician_position",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "step1:known_on_art": {
+            "type": "string",
+            "ex": "equalTo(.,\"yes\")"
+          }
+        }
+      },
+      {
+        "type": "edit_text",
+        "key": "clinician_phone_no",
+        "hint": "Clinician Phone Number",
+        "edit_type": "number",
+        "openmrs_entity_id": "clinician_phone_no",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "step1:known_on_art": {
+            "type": "string",
+            "ex": "equalTo(.,\"yes\")"
+          }
+        }
+      },
+      {
+        "type": "date_picker",
+        "key": "collection_date",
+        "hint": "Collection Date",
+        "openmrs_entity_id": "collection_date",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "max_date": "today",
+        "min_date": "today-5y",
+        "relevance": {
+          "step1:known_on_art": {
+            "type": "string",
+            "ex": "equalTo(.,\"yes\")"
+          }
+        }
+      },
+      {
+        "type": "time_picker",
+        "key": "collection_time",
+        "hint": "Collection Time",
+        "openmrs_entity_id": "collection_time",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "step1:known_on_art": {
+            "type": "string",
+            "ex": "equalTo(.,\"yes\")"
+          }
+        }
+      },
+      {
+        "type": "edit_text",
+        "key": "sample_id",
+        "hint": "Sample ID",
+        "edit_type": "number",
+        "openmrs_entity_id": "sample_id",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "step1:known_on_art": {
+            "type": "string",
+            "ex": "equalTo(.,\"yes\")"
+          }
+        }
+      },
+      {
+        "type": "edit_text",
+        "key": "hvl_suppression",
+        "hint": "HVL Suppression",
+        "openmrs_entity_id": "hvl_suppression",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter a valid value"
+        },
+        "relevance": {
+          "step1:known_on_art": {
+            "type": "string",
+            "ex": "equalTo(.,\"yes\")"
+          }
+        }
+      },
+      {
+        "key": "notify_continue_regimen",
+        "type": "toaster_notes",
+        "text": "Continue current regimen",
+        "openmrs_entity_id": "notify_continue_regimen",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_info_text": "Repeat HVL after 6, 12 and 18 months",
+        "toaster_type": "info",
+        "relevance": {
+          "step1:hvl_suppression": {
+            "type": "numeric",
+            "ex": "lessThanEqualTo(.,\"1000\")"
+          }
+        }
+      },
+      {
+        "key": "notify_continue_eac",
+        "type": "toaster_notes",
+        "text": "Client has to be enrolled to EAC",
+        "openmrs_entity_id": "notify_continue_eac",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:hvl_suppression": {
+            "type": "numeric",
+            "ex": "greaterThan(.,\"1000\")"
+          }
+        }
+      },
+      {
+        "type": "native_radio",
+        "label": "Re-Test?",
+        "key": "re_test",
+        "openmrs_entity_id": "re_test",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "label_info_text": "Confirmation on previous test if new On ART",
+        "label_info_title": "Info",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes"
+          },
+          {
+            "key": "no",
+            "text": "No"
+          }
+        ],
+        "relevance": {
+          "step1:known_on_art": {
+            "type": "string",
+            "ex": "equalTo(.,\"no\")"
+          }
+        }
+      },
+      {
+        "type": "native_radio",
+        "label": "HIV status",
+        "key": "hiv_status_pmtct",
+        "openmrs_entity_id": "hiv_status_pmtct",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "positive",
+            "text": "Positive"
+          },
+          {
+            "key": "negative",
+            "text": "Negative"
+          }
+        ],
+        "relevance": {
+          "step1:re_test": {
+            "type": "string",
+            "ex": "equalTo(.,\"yes\")"
+          }
+        }
+      },
+      {
+        "type": "spinner",
+        "hint": "Clinical Staging of the disease",
+        "key": "clinical_staging_disease",
+        "openmrs_entity_id": "clinical_staging_disease",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "values": [
+          "Stage 1",
+          "Stage 2",
+          "Stage 3",
+          "Stage 4"
+        ],
+        "keys": [
+          "Stage 1",
+          "Stage 2",
+          "Stage 3",
+          "Stage 4"
+        ],
+        "relevance": {
+          "step1:hiv_status_pmtct": {
+            "type": "string",
+            "ex": "equalTo(.,\"positive\")"
+          }
+        }
+      },
+      {
+        "type": "check_box",
+        "label": "Select the symptoms associated with the patient",
+        "key": "stage_1_symptoms",
+        "openmrs_entity_id": "stage_1_symptoms",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "chk_asymptomatic",
+            "text": "Asymptomatic",
+            "openmrs_entity_id": "chk_asymptomatic",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "chk_pgl",
+            "text": " Persistent generalized lymphadenopathy (PGL) Unexplained, asymptomatic hepatosplenomegaly",
+            "openmrs_entity_id": "chk_pgl",
+            "openmrs_entity": "concept"
+          }
+        ],
+        "relevance": {
+          "step1:clinical_staging_disease": {
+            "type": "string",
+            "ex": "equalTo(.,\"Stage 1\")"
+          }
+        }
+      },
+      {
+        "type": "check_box",
+        "label": "Select the symptoms associated with the patient",
+        "key": "stage_2_symptoms",
+        "openmrs_entity_id": "stage_2_symptoms",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "chk_ppe",
+            "text": "Papular pruritic eruptions (PPE)",
+            "openmrs_entity_id": "chk_ppe",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "chk_seb_derm",
+            "text": "Seborrheic dermatitis",
+            "openmrs_entity_id": "chk_seb_derm",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "chk_fung_infection",
+            "text": "Fungal nail infections",
+            "openmrs_entity_id": "chk_fung_infection",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "chk_seb_dermatitis",
+            "text": "Seborrheic dermatitis",
+            "openmrs_entity_id": "chk_seb_dermatitis",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "chk_ang_cheilities",
+            "text": "Angular cheilitis",
+            "openmrs_entity_id": "chk_ang_cheilities",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "chk_lin_erythema",
+            "text": "Linear gingival erythema",
+            "openmrs_entity_id": "chk_lin_erythema",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "chk_hpv_infection",
+            "text": "Extensive HPV or molluscum infection (>5% of body area/face)",
+            "openmrs_entity_id": "chk_hpv_infection",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "chk_oral_ulcer",
+            "text": "Recurrent oral ulcerations (>2 episodes/ in 6 months)",
+            "openmrs_entity_id": "chk_oral_ulcer",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "chk_par_enlargement",
+            "text": "Parotid enlargement",
+            "openmrs_entity_id": "chk_par_enlargement",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "chk_herp_zoster",
+            "text": "Herpes zoster (>1 episode/12 months)",
+            "openmrs_entity_id": "chk_herp_zoster",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "chk_rec_uri",
+            "text": " Recurrent or chronic upper respiratory infection (URI): otitis media, otorrhoea, sinusitis (>2 episodes/6 months)",
+            "openmrs_entity_id": "chk_rec_uri",
+            "openmrs_entity": "concept"
+          }
+        ],
+        "relevance": {
+          "step1:clinical_staging_disease": {
+            "type": "string",
+            "ex": "equalTo(.,\"Stage 2\")"
+          }
+        }
+      },
+      {
+        "type": "check_box",
+        "label": "Select the symptoms associated with the patient",
+        "key": "stage_3_symptoms",
+        "openmrs_entity_id": "stage_3_symptoms",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "chk_mod_malnutrition",
+            "text": "Unexplained moderate malnutrition (-2SD or Z score) not responding to standard therapy",
+            "openmrs_entity_id": "chk_mod_malnutrition",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "chk_per_diarrhoea",
+            "text": "Unexplained persistent diarrhoea (>14 days)",
+            "openmrs_entity_id": "chk_per_diarrhoea",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "chk_per_fever",
+            "text": "Unexplained persistent fever (intermittent or constant, > 1 mo.)",
+            "openmrs_entity_id": "chk_per_fever",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "chk_oral_candidiasis",
+            "text": "Oral candidiasis (outside neonatal period)",
+            "openmrs_entity_id": "chk_oral_candidiasis",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "chk_oral_leucoplakia",
+            "text": "Oral hairy Leucoplakia",
+            "openmrs_entity_id": "chk_oral_leucoplakia",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "chk_pul_tuberculosis",
+            "text": "Pulmonary tuberculosis",
+            "openmrs_entity_id": "chk_pul_tuberculosis",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "chk_rec_pneumonia",
+            "text": "Severe recurrent presumed bacterial pneumonia (>2 episodes/12 months)",
+            "openmrs_entity_id": "chk_rec_pneumonia",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "chk_acute_gingivitis",
+            "text": "Acute necrotizing ulcerative gingivitis/periodontitis",
+            "openmrs_entity_id": "chk_acute_gingivitis",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "chk_lym_pneumonitis",
+            "text": "Lymphoid interstitial pneumonitis (LIP)",
+            "openmrs_entity_id": "chk_lym_pneumonitis",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "chk_unexp_anaemia",
+            "text": "Unexplained anaemia (<8g/dL), neutropenia (<1000/mm3), or thrombocytopenia (<30,000/mm3) for >1 mo.",
+            "openmrs_entity_id": "chk_unexp_anaemia",
+            "openmrs_entity": "concept"
+          }
+        ],
+        "relevance": {
+          "step1:clinical_staging_disease": {
+            "type": "string",
+            "ex": "equalTo(.,\"Stage 3\")"
+          }
+        }
+      },
+      {
+        "type": "check_box",
+        "label": "Select the symptoms associated with the patient",
+        "key": "stage_4_symptoms",
+        "openmrs_entity_id": "stage_4_symptoms",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "chk_sev_wasting",
+            "text": "Unexplained severe wasting or severe malnutrition (-3 SD or Z score) not responding to standard therapy",
+            "openmrs_entity_id": "chk_sev_wasting",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "chk_pneu_penumonia",
+            "text": "Pneumocystis pneumonia",
+            "openmrs_entity_id": "chk_pneu_penumonia",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "chk_recurrent_bacinf",
+            "text": "Recurrent severe bacterial infections (>2 episodes/12 months, excluding pneumonia)",
+            "openmrs_entity_id": "chk_recurrent_bacinf",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "chk_orol_hsv",
+            "text": "Chronic orolabial or cutaneous HSV (lasting > 1 mo)",
+            "openmrs_entity_id": "chk_orol_hsv",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "chk_extra_tuber",
+            "text": "Extra-pulmonary tuberculosis",
+            "openmrs_entity_id": "chk_extra_tuber",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "chk_kap_sarcoma",
+            "text": "Kaposi’s sarcoma",
+            "openmrs_entity_id": "chk_kap_sarcoma",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "chk_oes_candidiasis",
+            "text": "Oesophageal candidiasis",
+            "openmrs_entity_id": "chk_oes_candidiasis",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "chk_cns_toxoplasmosis",
+            "text": "CNS toxoplasmosis",
+            "openmrs_entity_id": "chk_cns_toxoplasmosis",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "chk_crypt_meningitis",
+            "text": "Cryptococcal meningitis",
+            "openmrs_entity_id": "chk_crypt_meningitis",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "chk_ende_mycosis",
+            "text": "Any disseminated endemic mycosis",
+            "openmrs_entity_id": "chk_ende_mycosis",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "chk_cryp_isos",
+            "text": "Cryptosporidiosis or Isosporiasis (with diarrhoea > 1 month)",
+            "openmrs_entity_id": "chk_cryp_isos",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "chk_cmv_organ",
+            "text": "CMV infection of organ other than liver, spleen, lymph nodes (and onset age >1 month)",
+            "openmrs_entity_id": "chk_cmv_organ",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "chk_dis_mycobacterial",
+            "text": "Disseminated mycobacterial disease other",
+            "openmrs_entity_id": "chk_dis_mycobacterial",
+            "openmrs_entity": "concept"
+          }
+        ],
+        "relevance": {
+          "step1:clinical_staging_disease": {
+            "type": "string",
+            "ex": "equalTo(.,\"Stage 4\")"
+          }
+        }
+      },
+      {
+        "type": "spinner",
+        "key": "first_line",
+        "hint": "Write a prescription for ARVs \nFirst Line",
+        "openmrs_entity_id": "first_line",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "values": [
+          "1gA",
+          "1pA",
+          "1rA",
+          "1uA",
+          "1hA",
+          "1xA",
+          "2fA"
+        ],
+        "keys": [
+          "1gA",
+          "1pA",
+          "1rA",
+          "1uA",
+          "1hA",
+          "1xA",
+          "2fA"
+        ],
+        "relevance": {
+          "step1:hiv_status_pmtct": {
+            "type": "string",
+            "ex": "equalTo(.,\"positive\")"
+          }
+        }
+      },
+      {
+        "type": "spinner",
+        "key": "second_line",
+        "hint": "Write a prescription for ARVs \nSecond Line",
+        "openmrs_entity_id": "second_line",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "values": [
+          "2hA",
+          "2sA",
+          "2GA",
+          "2kA",
+          "2nA",
+          "2uA",
+          "2xA",
+          "3yA"
+        ],
+        "keys": [
+          "2hA",
+          "2sA",
+          "2GA",
+          "2kA",
+          "2nA",
+          "2uA",
+          "2xA",
+          "3yA"
+        ],
+        "relevance": {
+          "step1:hiv_status_pmtct": {
+            "type": "string",
+            "ex": "equalTo(.,\"positive\")"
+          }
+        }
+      },
+      {
+        "type": "spinner",
+        "key": "third_line",
+        "hint": "Write a prescription for ARVs \nThird Line",
+        "openmrs_entity_id": "third_line",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "values": [
+          "3wA",
+          "3kA",
+          "3tA",
+          "3hA",
+          "3gA",
+          "3zA",
+          "3xA"
+        ],
+        "keys": [
+          "3wA",
+          "3kA",
+          "3tA",
+          "3hA",
+          "3gA",
+          "3zA",
+          "3xA"
+        ],
+        "relevance": {
+          "step1:hiv_status_pmtct": {
+            "type": "string",
+            "ex": "equalTo(.,\"positive\")"
+          }
+        }
+      }
+    ]
+  }
+}
