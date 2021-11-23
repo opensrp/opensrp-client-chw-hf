@@ -63,6 +63,7 @@ public class FamilyMemberDataLoader extends NativeFormsDataLoader {
                         .replace("-", "");
 
             case CoreConstants.JsonAssets.FAM_NAME:
+            case CoreConstants.JsonAssets.SURNAME:
                 computeFamName(client, jsonObject, jsonArray, familyName);
                 break;
 
@@ -140,7 +141,7 @@ public class FamilyMemberDataLoader extends NativeFormsDataLoader {
             if (!familyName.equals(lastName)) {
                 surname.put(JsonFormUtils.VALUE, lastName);
             } else {
-                surname.put(JsonFormUtils.VALUE, "");
+                surname.put(JsonFormUtils.VALUE, familyName);
             }
         }
     }
