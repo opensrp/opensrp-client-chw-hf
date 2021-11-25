@@ -140,7 +140,7 @@
         },
         "v_min": {
           "value": "0",
-          "err": "Fundal height must be equal or greater 0 CM"
+          "err": "Fundal height must be equal or greater than 0 CM"
         },
         "v_max": {
           "value": "36",
@@ -164,7 +164,7 @@
         },
         "v_min": {
           "value": "0",
-          "err": "Fetal heart rate must be equal or greater 0"
+          "err": "Fetal heart rate must be equal or greater than 0"
         },
         "v_max": {
           "value": "300",

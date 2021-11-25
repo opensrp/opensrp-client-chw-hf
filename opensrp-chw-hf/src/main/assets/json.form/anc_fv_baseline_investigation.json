@@ -170,7 +170,7 @@
         },
         "v_min": {
           "value": "0",
-          "err": "HB level must be equal or greater 0 (g/dl)"
+          "err": "HB level must be equal or greater than 0 (g/dl)"
         },
         "v_max": {
           "value": "20",
@@ -194,7 +194,7 @@
         },
         "v_min": {
           "value": "0",
-          "err": "Blood for glucose must be equal or greater 0 (mmol/L)"
+          "err": "Blood for glucose must be equal or greater than 0 (mmol/L)"
         },
         "v_max": {
           "value": "45",

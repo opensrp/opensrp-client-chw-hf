@@ -92,93 +92,146 @@
       },
       {
         "type": "edit_text",
-        "hint": "Weight(Kg)",
+        "hint": "Weight (KG)",
         "key": "weight",
-        "edit_type": "number",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "weight",
         "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the weight"
+        },
+        "v_min": {
+          "value": "20",
+          "err": "The weight must be equal or greater than 20 (KG)"
+        },
+        "v_max": {
+          "value": "300",
+          "err": "The weight must be equal or less than 300 (KG)"
+        },
         "v_required": {
           "value": true,
-          "err": "Please enter weight"
+          "err": "Please enter the weight"
         }
       },
       {
         "type": "edit_text",
-        "hint": "Height(CM)",
-        "edit_type": "number",
+        "hint": "Height (CM)",
         "key": "height",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "height",
         "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the height"
+        },
+        "v_min": {
+          "value": "60",
+          "err": "The height must be equal or greater than 60 (CM)"
+        },
+        "v_max": {
+          "value": "200",
+          "err": "The height must be equal or less than 200 (CM)"
+        },
         "v_required": {
           "value": true,
-          "err": "Please enter height"
+          "err": "Please enter the height"
         }
       },
       {
         "type": "edit_text",
-        "hint": "Blood Pressure",
-        "key": "blood_pressure",
-        "edit_type": "number",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "blood_pressure",
-        "openmrs_entity_parent": "",
-        "v_required": {
-          "value": true,
-          "err": "Please enter the blood pressure"
-        }
-      },
-      {
-        "type": "edit_text",
-        "hint": "Systolic",
+        "hint": "Systolic (Blood Pressure)",
         "key": "systolic",
-        "edit_type": "number",
         "openmrs_entity_id": "systolic",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the systolic value"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Systolic value must be equal or greater than 0"
+        },
+        "v_max": {
+          "value": "320",
+          "err": "Systolic value must be equal or less than 320"
+        },
         "v_required": {
           "value": true,
-          "err": "Enter Systolic value"
+          "err": "Please enter the systolic value"
         }
       },
       {
         "type": "edit_text",
-        "hint": "Diastolic",
+        "hint": "Diastolic (Blood Pressure)",
         "key": "diastolic",
-        "edit_type": "number",
         "openmrs_entity_id": "diastolic",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the diastolic value"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Diastolic value must be equal or greater than 0"
+        },
+        "v_max": {
+          "value": "200",
+          "err": "Diastolic value must be equal or less than 200"
+        },
         "v_required": {
           "value": true,
-          "err": "Enter Diastolic value"
+          "err": "Please enter the diastolic value"
         }
       },
       {
         "type": "edit_text",
-        "hint": "Pulse Rate(Beats per minute)",
+        "hint": "Pulse Rate (Beats per minute)",
         "key": "pulse_rate",
-        "edit_type": "number",
         "openmrs_entity_id": "pulse_rate",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the pulse rate"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "The pulse rate must be equal or greater than 0 (bpm)"
+        },
+        "v_max": {
+          "value": "200",
+          "err": "The pulse rate must be equal or less than 200 (bpm)"
+        },
         "v_required": {
           "value": true,
-          "err": "Pulse Rate is required"
+          "err": "Please enter the pulse rate"
         }
       },
       {
         "type": "edit_text",
-        "hint": "Temperature(C)",
+        "hint": "Temperature (C)",
         "key": "temperature",
-        "edit_type": "number",
         "openmrs_entity_id": "temperature",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the temperature"
+        },
+        "v_min": {
+          "value": "10",
+          "err": "Temperature must be equal or greater than 10"
+        },
+        "v_max": {
+          "value": "50",
+          "err": "Temperature must be equal or less than 50"
+        },
         "v_required": {
           "value": true,
-          "err": "Enter temperature value"
+          "err": "Please enter the temperature"
         }
       }
     ]

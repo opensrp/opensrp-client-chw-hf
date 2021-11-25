@@ -53,26 +53,57 @@
         "type": "native_radio",
         "label": "Pregnancy Status",
         "key": "pregnancy_status",
-        "openmrs_entity": "",
-        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "pregnancy_status",
         "openmrs_entity_parent": "",
         "options": [
           {
-            "key": "visible",
-            "text": "Visible"
+            "key": "viable",
+            "text": "Viable"
           },
           {
             "key": "spontaneous_abortion",
-            "text": "spontaneous_abortion"
+            "text": "Spontaneous Abortion"
           },
           {
             "key": "intrauterine_fetal_death",
-            "text": "Intrauterine Fetal Death"
+            "text": "Intrauterine Fetal Death (Still Birth)"
           }
         ],
         "v_required": {
           "value": true,
-          "err": "Select one"
+          "err": "Please answer this question"
+        }
+      },
+      {
+        "key": "reg_cpac",
+        "type": "toaster_notes",
+        "text": "Register client for CPAC",
+        "openmrs_entity_id": "reg_cpac",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "toaster_info_text": "Comprehensive Post Abortal Care (CPAC)",
+        "relevance": {
+          "step1:pregnancy_status": {
+            "type": "string",
+            "ex": "equalTo(.,\"spontaneous_abortion\")"
+          }
+        }
+      },
+      {
+        "key": "still_birth",
+        "type": "toaster_notes",
+        "text": "Register client for Family Planning",
+        "openmrs_entity_id": "still_birth",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:pregnancy_status": {
+            "type": "string",
+            "ex": "equalTo(.,\"intrauterine_fetal_death\")"
+          }
         }
       }
     ]
