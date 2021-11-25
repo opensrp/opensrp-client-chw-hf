@@ -238,9 +238,9 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "1427AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
         "type": "date_picker",
-        "hint": "Last Menstrual Period (LMP)",
-        "label_info_title": "LMP",
-        "label_info_text": "LMP = first day of Last Menstrual Period. If the exact date is unknown, but the period of the month is known, use day 5 for beginning of the month, day 15 for middle of the month and day 25 for end of the month.",
+        "hint": "Last Normal Menstrual Period (LNMP)",
+        "label_info_title": "LNMP",
+        "label_info_text": "LNMP = first day of Last Menstrual Period. If the exact date is unknown, but the period of the month is known, use day 5 for beginning of the month, day 15 for middle of the month and day 25 for end of the month.",
         "expanded": false,
         "max_date": "today",
         "min_date": "today-50w",
@@ -287,14 +287,12 @@
         }
       },
       {
-        "key": "edd",
+        "key": "fundal_height",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "5596AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-        "type": "date_picker",
-        "hint": "Expected Date of Delivery (EDD)",
-        "max_date": "today+50w",
-        "min_date": "today",
+        "openmrs_entity_id": "fundal_height",
+        "type": "edit_text",
+        "hint": "Fundal Height(CM)",
         "calculation": {
           "rules-engine": {
             "ex-rules": {
@@ -312,6 +310,41 @@
         "v_required": {
           "value": "true",
           "err": "Required"
+        },
+        "v_numeric": {
+          "value": "true",
+          "err": "Has to be a number"
+        },
+        "v_min": {
+          "value": "1",
+          "err": "Fundal height must be equal or more than 1"
+        },
+        "v_max": {
+          "value": "36",
+          "err": "Age must be equal or less than 36"
+        }
+      },
+      {
+        "key": "estimated_last_menstrual_period",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "1427AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "type": "edit_text",
+        "read_only": true,
+        "hint": "Estimated Last Normal Menstrual Period (LNMP)",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_pregnancy_confirmation_calculation.yml"
+            }
+          }
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_pregnancy_confirmation_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -338,10 +371,10 @@
         }
       },
       {
-        "key": "edd_note",
+        "key": "edd",
         "openmrs_entity_parent": "",
-        "openmrs_entity": "",
-        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "5596AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
         "type": "edit_text",
         "hint": "Expected Date of Delivery (EDD)",
         "read_only": true,

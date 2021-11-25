@@ -34,8 +34,15 @@ condition: "step1_danger_signs_analysis.contains('none') && (step2_uss.contains(
 actions:
   - "isRelevant = true"
 ---
-name: step3_edd
-description: edd relevance
+name: step3_fundal_height
+description: fundal_height relevance
+priority: 1
+condition: "step1_danger_signs_analysis.contains('none') && (step2_uss.contains('present_gestation_sac') || step2_upt.contains('positive')) && step3_last_menstrual_period_unknown.contains('lmp_unknown')"
+actions:
+  - "isRelevant = true"
+---
+name: step3_estimated_last_menstrual_period
+description: estimated_last_menstrual_period relevance
 priority: 1
 condition: "step1_danger_signs_analysis.contains('none') && (step2_uss.contains('present_gestation_sac') || step2_upt.contains('positive')) && step3_last_menstrual_period_unknown.contains('lmp_unknown')"
 actions:
@@ -48,7 +55,7 @@ condition: "step1_danger_signs_analysis.contains('none') && (step2_uss.contains(
 actions:
   - "isRelevant = true"
 ---
-name: step3_edd_note
+name: step3_edd
 description: edd_note relevance
 priority: 1
 condition: "step1_danger_signs_analysis.contains('none') && (step2_uss.contains('present_gestation_sac') || step2_upt.contains('positive'))"
