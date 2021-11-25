@@ -51,19 +51,26 @@ public class HfAncRegisterProvider extends ChwAncRegisterProvider {
         // calculate LMP
         String dobString = Utils.getValue(pc.getColumnmaps(), DBConstants.KEY.DOB, false);
         String lmpString = Utils.getValue(pc.getColumnmaps(), DBConstants.KEY.LAST_MENSTRUAL_PERIOD, false);
-        if (StringUtils.isNotBlank(dobString) && StringUtils.isNotBlank(lmpString)) {
+        if (StringUtils.isNotBlank(dobString) ) {
             int age = Years.yearsBetween(new DateTime(dobString), new DateTime()).getYears();
-
-            String gaLocation = MessageFormat.format("{0}: {1} {2} {3} {4}",
-                    context.getString(R.string.gestation_age_initial),
-                    NCUtils.gestationAgeString(lmpString, context, false),
-                    context.getString(R.string.abbrv_weeks),
-                    context.getString(R.string.interpunct),
-                    Utils.getValue(pc.getColumnmaps(), DBConstants.KEY.VILLAGE_TOWN, true));
+            String gaLocation;
+            if(StringUtils.isNotBlank(lmpString)){
+               gaLocation = MessageFormat.format("{0}: {1} {2} {3} {4}",
+                        context.getString(R.string.gestation_age_initial),
+                        NCUtils.gestationAgeString(lmpString, context, false),
+                        context.getString(R.string.abbrv_weeks),
+                        context.getString(R.string.interpunct),
+                        Utils.getValue(pc.getColumnmaps(), DBConstants.KEY.VILLAGE_TOWN, true));
+            }else{
+                gaLocation = MessageFormat.format("{0}{1}",
+                        context.getString(R.string.interpunct),
+                        Utils.getValue(pc.getColumnmaps(),DBConstants.KEY.VILLAGE_TOWN, true));
+            }
+            viewHolder.patientAge.setText(gaLocation);
 
             String patientNameAge = MessageFormat.format("{0}, {1}", patientName, age);
             viewHolder.patientName.setText(patientNameAge);
-            viewHolder.patientAge.setText(gaLocation);
+
         }
 
         // add patient listener
