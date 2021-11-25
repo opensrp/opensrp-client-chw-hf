@@ -69,15 +69,19 @@
             "openmrs_entity_id": "no",
             "openmrs_entity": "concept"
           }
-        ]
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
       },
       {
         "type": "native_radio",
         "key": "abdominal_movement_with_respiration",
         "label": "Does the Abdomen Move with respiration",
-        "openmrs_entity_id": "",
+        "openmrs_entity_id": "abdominal_movement_with_respiration",
         "openmrs_entity": "concept",
-        "openmrs_entity_parent": "abdominal_movement_with_respiration",
+        "openmrs_entity_parent": "",
         "options": [
           {
             "key": "yes",
@@ -91,38 +95,85 @@
             "openmrs_entity_id": "no",
             "openmrs_entity": "concept"
           }
-        ]
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
       },
       {
         "type": "spinner",
         "key": "abdominal_movement_with_respiration",
-        "hint": "Shape of the abdomen",
-        "label_info_title": "Abdomen shape",
-        "label_info_text": "Observer the shape of the abdomen",
+        "hint": "Abdominal Contour",
+        "label_info_title": "Abdominal Contour",
+        "label_info_text": "Observe the shape of the abdomen",
         "openmrs_entity_id": "abdominal_movement_with_respiration",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "values": [
-          "shape"
-        ]
+          "Distended",
+          "Normal Contour"
+        ],
+        "keys": [
+          "Distended",
+          "Normal Contour"
+        ],
+        "openmrs_choice_ids": {
+          "Distended": "Distended",
+          "Normal Contour": "Normal_Contour"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
       },
       {
-        "type": "normal_edit_text",
-        "edit_type": "number",
-        "openmrs_entity_id": "fundal_height",
         "key": "fundal_height",
-        "hint": "Fundal Height after 20 wks (CM)",
+        "type": "edit_text",
+        "openmrs_entity_id": "fundal_height",
         "openmrs_entity": "concept",
-        "openmrs_entity_parent": ""
+        "openmrs_entity_parent": "",
+        "hint": "Fundal Height after 20 wks (CM)",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the fundal height"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Fundal height must be equal or greater 0 CM"
+        },
+        "v_max": {
+          "value": "36",
+          "err": "Fundal height must be equal or less than 36 CM"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the fundal height"
+        }
       },
       {
-        "type": "normal_edit_text",
-        "edit_type": "number",
-        "openmrs_entity_id": "fetal_heart_rate",
+        "type": "edit_text",
         "key": "fetal_heart_rate",
-        "hint": "Count fetal heart rate",
+        "hint": "Count Fetal Heart Rate",
+        "openmrs_entity_id": "fetal_heart_rate",
         "openmrs_entity": "concept",
-        "openmrs_entity_parent": ""
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the fetal heart rate"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Fetal heart rate must be equal or greater 0"
+        },
+        "v_max": {
+          "value": "300",
+          "err": "Fetal heart rate must be equal or less than 300"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the fetal heart rate"
+        }
       },
       {
         "type": "native_radio",
@@ -144,7 +195,11 @@
             "openmrs_entity_id": "no",
             "openmrs_entity": "concept"
           }
-        ]
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
       },
       {
         "type": "native_radio",
@@ -166,7 +221,11 @@
             "openmrs_entity_id": "no",
             "openmrs_entity": "concept"
           }
-        ]
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
       },
       {
         "type": "native_radio",
@@ -188,9 +247,12 @@
             "openmrs_entity_id": "no",
             "openmrs_entity": "concept"
           }
-        ]
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
       }
     ]
   }
-
 }

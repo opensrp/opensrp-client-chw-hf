@@ -102,41 +102,107 @@
         }
       },
       {
-        "type": "normal_edit_text",
+        "type": "spinner",
         "key": "blood_grouping",
-        "hint": "Blood Grouping and Cross match",
+        "hint": "Blood Group",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "blood_grouping",
         "openmrs_entity_parent": "",
+        "values": [
+          "A",
+          "B",
+          "AB",
+          "O"
+        ],
+        "keys": [
+          "A",
+          "B",
+          "AB",
+          "O"
+        ],
+        "openmrs_choice_ids": {
+          "A": "A",
+          "B": "B",
+          "AB": "AB",
+          "O": "O"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please choose a blood group"
+        }
+      },
+      {
+        "type": "native_radio",
+        "key": "rh_factor",
+        "label": "Rh",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "rh_factor",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "positive",
+            "text": "Positive",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "positive"
+          },
+          {
+            "key": "negative",
+            "text": "Negative",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "negative"
+          }
+        ],
         "v_required": {
           "value": "true",
           "err": "Please answer this question"
         }
       },
       {
-        "type": "normal_edit_text",
+        "type": "edit_text",
         "key": "hb_level",
-        "edit_type": "number",
-        "hint": "HB Level",
+        "hint": "HB Level (g/dl)",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "hb_level",
         "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the HB level"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "HB level must be equal or greater 0 (g/dl)"
+        },
+        "v_max": {
+          "value": "20",
+          "err": "HB level must be equal or less than 20 (g/dl)"
+        },
         "v_required": {
           "value": "true",
-          "err": "Please answer this question"
+          "err": "Please enter the HB level"
         }
       },
       {
-        "type": "normal_edit_text",
+        "type": "edit_text",
         "key": "blood_for_glucose",
-        "edit_type": "number",
-        "hint": "Blood For Glucose",
+        "hint": "Blood For Glucose (mmol/L)",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "blood_for_glucose",
         "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the blood for glucose (mmol/L)"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Blood for glucose must be equal or greater 0 (mmol/L)"
+        },
+        "v_max": {
+          "value": "45",
+          "err": "Blood for glucose must be equal or less than 45 (mmol/L)"
+        },
         "v_required": {
           "value": "true",
-          "err": "Please answer this question"
+          "err": "Please enter the blood for glucose (mmol/L)"
         }
       },
       {
@@ -192,6 +258,36 @@
         }
       },
       {
+        "key": "prescribe_arv",
+        "type": "toaster_notes",
+        "text": "Prescribe client to ARVs",
+        "openmrs_entity_id": "prescribe_arv",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:hiv": {
+            "type": "string",
+            "ex": "equalTo(.,\"positive\")"
+          }
+        }
+      },
+      {
+        "key": "register_pmtct",
+        "type": "toaster_notes",
+        "text": "Register client for PMTCT",
+        "openmrs_entity_id": "register_pmtct",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:hiv": {
+            "type": "string",
+            "ex": "equalTo(.,\"positive\")"
+          }
+        }
+      },
+      {
         "type": "native_radio",
         "key": "syphilis",
         "label": "Syphilis Test Results",
@@ -218,9 +314,24 @@
         }
       },
       {
+        "key": "prescribe_anti_sy",
+        "type": "toaster_notes",
+        "text": "Prescribe client to Antibiotics",
+        "openmrs_entity_id": "prescribe_anti_sy",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:syphilis": {
+            "type": "string",
+            "ex": "equalTo(.,\"positive\")"
+          }
+        }
+      },
+      {
         "type": "native_radio",
         "key": "hepatitis",
-        "label": "Hepatitis Test Results",
+        "label": "Hepatitis B Test Results",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "hepatitis",
         "openmrs_entity_parent": "",
@@ -241,6 +352,21 @@
         "v_required": {
           "value": "true",
           "err": "Please answer this question"
+        }
+      },
+      {
+        "key": "prescribe_arv_hepb",
+        "type": "toaster_notes",
+        "text": "Prescribe client to ARVs",
+        "openmrs_entity_id": "prescribe_arv_hepb",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:hepatitis": {
+            "type": "string",
+            "ex": "equalTo(.,\"positive\")"
+          }
         }
       }
     ]
