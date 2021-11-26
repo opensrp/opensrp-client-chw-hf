@@ -171,12 +171,22 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                 }
 
                 ArrayList<String> healthFacilitiesOptions = new ArrayList<>();
+                ArrayList<String> healthFacilitiesIds = new ArrayList<>();
                 for (Location location : locations) {
                     healthFacilitiesOptions.add(location.getProperties().getName());
+                    healthFacilitiesIds.add(location.getProperties().getUid());
                 }
                 healthFacilitiesOptions.add("Other");
+                healthFacilitiesIds.add("Other");
+
+                JSONObject openmrsChoiceIds = new JSONObject();
+                for(int i = 0; i < healthFacilitiesOptions.size(); i++){
+                    openmrsChoiceIds.put(healthFacilitiesOptions.get(i),healthFacilitiesIds.get(i));
+                }
                 if (referralHealthFacilities != null) {
                     referralHealthFacilities.put("values", new JSONArray(healthFacilitiesOptions));
+                    referralHealthFacilities.put("keys", new JSONArray(healthFacilitiesOptions));
+                    referralHealthFacilities.put("openmrs_choice_ids", openmrsChoiceIds);
                 }
             } catch (JSONException e) {
                 Timber.e(e);
