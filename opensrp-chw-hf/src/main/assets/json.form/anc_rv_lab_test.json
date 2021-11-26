@@ -56,7 +56,9 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "lab_tests",
         "openmrs_entity_parent": "",
-        "exclusive": ["none"],
+        "exclusive": [
+          "none"
+        ],
         "options": [
           {
             "key": "hb_test",
@@ -82,149 +84,120 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "none"
           }
-        ]
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please answer this question"
+        }
       },
       {
         "type": "edit_text",
-        "edit_type": "number",
-        "hint": "HB Value (g/dl)",
+        "hint": "HB Level (g/dl)",
         "key": "hb_value",
-        "openmrs_entity": "",
-        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hb_value",
         "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the HB level"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "HB level must be equal or greater than 0 (g/dl)"
+        },
+        "v_max": {
+          "value": "20",
+          "err": "HB level must be equal or less than 20 (g/dl)"
+        },
         "v_required": {
           "value": true,
           "err": "Please provide a value"
         },
         "relevance": {
-          "step1:lab_check": {
+          "step1:lab_tests": {
             "ex-checkbox": [
               {
-                "or": ["hb_test"]
+                "or": [
+                  "hb_test"
+                ]
               }
             ]
           }
         }
       },
       {
-        "type": "check_box",
+        "type": "native_radio",
         "key": "glucosuria",
-        "openmrs_entity": "",
-        "openmrs_entity_id": "",
+        "label": "Glucose In Urine",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "glucosuria",
         "openmrs_entity_parent": "",
-        "v_required": {
-          "value": true,
-          "err": "Please provide a value"
-        },
         "options": [
           {
-            "key": "glucosuria_yes",
-            "text": "Glucosuria"
+            "key": "positive",
+            "text": "Positive",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "positive"
+          },
+          {
+            "key": "negative",
+            "text": "Negative",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "negative"
           }
         ],
+        "v_required": {
+          "value": true,
+          "err": "Please answer this question"
+        },
         "relevance": {
-          "step1:lab_check": {
+          "step1:lab_tests": {
             "ex-checkbox": [
               {
-                "or": ["urine_glucose_test"]
+                "or": [
+                  "urine_glucose_test"
+                ]
               }
             ]
           }
         }
       },
       {
-        "type": "check_box",
+        "type": "native_radio",
         "key": "proteinuria",
-        "openmrs_entity": "",
-        "openmrs_entity_id": "",
+        "label": "Protein In Urine",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "proteinuria",
         "openmrs_entity_parent": "",
-        "v_required": {
-          "value": true,
-          "err": "Please provide a value"
-        },
         "options": [
           {
-            "key": "proteinuria_yes",
-            "text": "Proteinuria"
+            "key": "positive",
+            "text": "Positive",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "positive"
+          },
+          {
+            "key": "negative",
+            "text": "Negative",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "negative"
           }
         ],
+        "v_required": {
+          "value": true,
+          "err": "Please answer this question"
+        },
         "relevance": {
-          "step1:lab_check": {
+          "step1:lab_tests": {
             "ex-checkbox": [
               {
-                "or": ["urine_protein_test"]
+                "or": [
+                  "urine_protein_test"
+                ]
               }
             ]
           }
         }
-      },
-      {
-        "type": "label",
-        "text": "Provider prescribe and issue supplements and prophylactic medications",
-        "key": "pharmacy",
-        "text_color": "#000000",
-        "openmrs_entity": "",
-        "openmrs_entity_id": "",
-        "openmrs_entity_parent":""
-      },
-      {
-        "type": "check_box",
-        "key": "iron_foltae_suppliment",
-        "label": "Iron and Folate Supplement",
-        "openmrs_entity_id": "",
-        "openmrs_entity": "",
-        "openmrs_entity_parent": "",
-        "options": [
-          {
-            "text": "FeFo",
-            "key": "FeFo"
-          }
-        ]
-      },
-      {
-        "type": "check_box",
-        "key": "malaria_preventive_therapy",
-        "label": "Malaria Preventive Therapy",
-        "openmrs_entity_id": "",
-        "openmrs_entity": "",
-        "openmrs_entity_parent": "",
-        "options": [
-          {
-            "text": "IPT1 (≥13 week)",
-            "key": "ipt1"
-          },
-          {
-            "text": "IPT2 (IPT1 +4 weeks)",
-            "key": "ipt2"
-          },
-          {
-            "text": "IPT3 (IPT2 +4 weeks)",
-            "key": "ipt3"
-          },
-          {
-            "text": "IPT4+(IPT3+4 weeks but ≤36 Gestation Weeks)",
-            "key": "ipt4"
-          }
-        ]
-      },
-      {
-        "type": "check_box",
-        "key": "deworming",
-        "label": "Deworming",
-        "openmrs_entity_id": "",
-        "openmrs_entity": "",
-        "openmrs_entity_parent": "",
-        "exclusive": ["mebendazole","albendazole"],
-        "options": [
-          {
-            "text": "Mebendazole(500Mg)",
-            "key": "mebendazole"
-          },
-          {
-            "text": "Albendazole(400Mg)",
-            "key": "albendazole"
-          }
-        ]
       }
     ]
   }

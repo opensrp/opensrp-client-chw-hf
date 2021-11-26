@@ -96,9 +96,9 @@
       {
         "type": "native_radio",
         "key": "level_of_hf",
-        "hint": "Level of Health Facility",
-        "openmrs_entity": "",
-        "openmrs_entity_id": "",
+        "label": "Level of Health Facility",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "level_of_hf",
         "openmrs_entity_parent": "",
         "v_required": {
           "value": true,
@@ -106,68 +106,94 @@
         },
         "options": [
           {
-            "text": "HC",
-            "key": "hc"
+            "text": "National Hospital",
+            "key": "national_hosp",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "national_hosp"
+          },
+          {
+            "text": "Regional Referral Hospital (RRH)",
+            "key": "regional_hosp",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "regional_hosp"
+          },
+          {
+            "text": "Zonal Referral Hospital (ZRH)",
+            "key": "zonal_hosp",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "zonal_hosp"
           },
           {
             "text": "District Hospital",
-            "key": "district_hosp"
+            "key": "district_hosp",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "district_hosp"
           },
           {
-            "text": "RRH",
-            "key": "rrh"
+            "text": "Dispensary",
+            "key": "dispensary",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "dispensary"
           }
         ]
       },
       {
         "type": "check_box",
         "key": "transport",
-        "openmrs_entity": "",
-        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "transport",
         "openmrs_entity_parent": "",
         "options": [
           {
             "text": "Method of Transport Identified",
-            "key": "method_of_transport_identified"
+            "key": "method_of_transport_identified",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "method_of_transport_identified"
           }
         ]
       },
       {
         "type": "check_box",
         "key": "birth_companion",
-        "openmrs_entity": "",
-        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "birth_companion",
         "openmrs_entity_parent": "",
         "options": [
           {
             "text": "Birth Companion Identified and notified",
-            "key": "birth_companion_identified"
+            "key": "birth_companion_identified",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "birth_companion_identified"
           }
         ]
       },
       {
         "type": "check_box",
         "key": "emergency_funds",
-        "openmrs_entity": "",
-        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "emergency_funds",
         "openmrs_entity_parent": "",
         "options": [
           {
             "text": "Emergency Birth Funds",
-            "key": "emergency_birth_funds"
+            "key": "emergency_birth_funds",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "emergency_birth_funds"
           }
         ]
       },
       {
         "type": "check_box",
         "key": "household_support",
-        "openmrs_entity": "",
-        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "household_support",
         "openmrs_entity_parent": "",
         "options": [
           {
             "text": "Household Caregiver support prepared",
-            "key": "household_caregiver_support_prepared"
+            "key": "household_caregiver_support_prepared",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "household_caregiver_support_prepared"
           }
         ]
       }
