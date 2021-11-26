@@ -16,6 +16,7 @@ import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
 import org.smartregister.chw.anc.util.VisitUtils;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
+import org.smartregister.chw.core.utils.FormUtils;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.actionhelper.AncTtVaccinationAction;
 import org.smartregister.chw.hf.utils.Constants;
@@ -77,6 +78,15 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
                                                    Map<String, List<VisitDetail>> details,
                                                    final MemberObject memberObject,
                                                    final Context context) throws BaseAncHomeVisitAction.ValidationException {
+        JSONObject obstetricForm = null;
+        try {
+            obstetricForm = FormUtils.getFormUtils().getFormJson(Constants.JSON_FORM.ANC_FIRST_VISIT.OBSTETRIC_EXAMINATION);
+            obstetricForm.getJSONObject("global").put("last_menstrual_period", memberObject.getLastMenstrualPeriod());
+        } catch (JSONException e) {
+            Timber.e(e);
+        }
+
+
         BaseAncHomeVisitAction medicalAndSurgicalHistory = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_first_visit_medical_and_surgical_history))
                 .withOptional(false)
                 .withDetails(details)
@@ -88,6 +98,7 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
         BaseAncHomeVisitAction obstretricExaminationAction = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_first_visit_obstetric_examination))
                 .withOptional(true)
                 .withDetails(details)
+                .withJsonPayload(obstetricForm.toString())
                 .withFormName(Constants.JSON_FORM.ANC_FIRST_VISIT.getObstetricExamination())
                 .withHelper(new AncObstretricExaminationAction(memberObject))
                 .build();

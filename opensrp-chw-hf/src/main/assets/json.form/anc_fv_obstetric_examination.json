@@ -46,9 +46,24 @@
     },
     "encounter_location": ""
   },
+  "global": {},
   "step1": {
     "title": "Obstetric Examination",
     "fields": [
+      {
+        "key": "gest_age",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "gest_age",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_obstetric_examination_calculation.yml"
+            }
+          }
+        }
+      },
       {
         "type": "native_radio",
         "key": "abdominal_scars",
@@ -133,7 +148,14 @@
         "openmrs_entity_id": "fundal_height",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "hint": "Fundal Height after 20 wks (CM)",
+        "hint": "Fundal Height",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_obstetric_examination_relevance.yml"
+            }
+          }
+        },
         "v_numeric": {
           "value": "true",
           "err": "Please enter the fundal height"
@@ -149,6 +171,50 @@
         "v_required": {
           "value": "true",
           "err": "Please enter the fundal height"
+        }
+      },
+      {
+        "key": "lie",
+        "type": "spinner",
+        "openmrs_entity_id": "lie",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "hint": "lie",
+        "values": [
+          "lie"
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_obstetric_examination_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select lie"
+        }
+      },
+      {
+        "key": "presentation",
+        "type": "spinner",
+        "openmrs_entity_id": "presentation",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "hint": "presentation",
+        "values": [
+          "presentation"
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_obstetric_examination_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select presentation"
         }
       },
       {
