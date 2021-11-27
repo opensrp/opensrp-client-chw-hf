@@ -1,5 +1,6 @@
 {
-  "count": "1",
+  "count": "2",
+  "skip_blank_steps": true,
   "encounter_type": "PMTCT FIRST VISIT",
   "entity_id": "",
   "metadata": {
@@ -47,7 +48,8 @@
     "encounter_location": ""
   },
   "step1": {
-    "title": "PMTCT FIRST VISIT",
+    "title": "PMTCT First Visit",
+    "next": "step2",
     "fields": [
       {
         "type": "native_radio",
@@ -69,7 +71,11 @@
             "openmrs_entity_id": "no",
             "openmrs_entity": "concept"
           }
-        ]
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please answer this question"
+        }
       },
       {
         "type": "edit_text",
@@ -83,6 +89,14 @@
             "type": "string",
             "ex": "equalTo(.,\"yes\")"
           }
+        },
+        "v_regex": {
+          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
+          "err": "Please enter the clinician name"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter the clinician name"
         }
       },
       {
@@ -97,6 +111,10 @@
             "type": "string",
             "ex": "equalTo(.,\"yes\")"
           }
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter the clinician position"
         }
       },
       {
@@ -112,6 +130,14 @@
             "type": "string",
             "ex": "equalTo(.,\"yes\")"
           }
+        },
+        "v_regex": {
+          "value": "(0[0-9]{9})|\\s*",
+          "err": "Number must be 10 digits and must start with 0."
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter the clinician phone number"
         }
       },
       {
@@ -128,6 +154,10 @@
             "type": "string",
             "ex": "equalTo(.,\"yes\")"
           }
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter the collection date"
         }
       },
       {
@@ -142,6 +172,10 @@
             "type": "string",
             "ex": "equalTo(.,\"yes\")"
           }
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter the collection time"
         }
       },
       {
@@ -157,8 +191,17 @@
             "type": "string",
             "ex": "equalTo(.,\"yes\")"
           }
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter the sample ID"
         }
-      },
+      }
+    ]
+  },
+  "step2": {
+    "title": "PMTCT First Visit",
+    "fields": [
       {
         "type": "edit_text",
         "key": "hvl_suppression",
@@ -187,7 +230,7 @@
         "toaster_info_text": "Repeat HVL after 6, 12 and 18 months",
         "toaster_type": "info",
         "relevance": {
-          "step1:hvl_suppression": {
+          "step2:hvl_suppression": {
             "type": "numeric",
             "ex": "lessThanEqualTo(.,\"1000\")"
           }
@@ -202,7 +245,7 @@
         "openmrs_entity_parent": "",
         "toaster_type": "problem",
         "relevance": {
-          "step1:hvl_suppression": {
+          "step2:hvl_suppression": {
             "type": "numeric",
             "ex": "greaterThan(.,\"1000\")"
           }
@@ -252,7 +295,7 @@
           }
         ],
         "relevance": {
-          "step1:re_test": {
+          "step2:re_test": {
             "type": "string",
             "ex": "equalTo(.,\"yes\")"
           }
@@ -278,7 +321,7 @@
           "Stage 4"
         ],
         "relevance": {
-          "step1:hiv_status_pmtct": {
+          "step2:hiv_status_pmtct": {
             "type": "string",
             "ex": "equalTo(.,\"positive\")"
           }
@@ -306,7 +349,7 @@
           }
         ],
         "relevance": {
-          "step1:clinical_staging_disease": {
+          "step2:clinical_staging_disease": {
             "type": "string",
             "ex": "equalTo(.,\"Stage 1\")"
           }
@@ -388,7 +431,7 @@
           }
         ],
         "relevance": {
-          "step1:clinical_staging_disease": {
+          "step2:clinical_staging_disease": {
             "type": "string",
             "ex": "equalTo(.,\"Stage 2\")"
           }
@@ -464,7 +507,7 @@
           }
         ],
         "relevance": {
-          "step1:clinical_staging_disease": {
+          "step2:clinical_staging_disease": {
             "type": "string",
             "ex": "equalTo(.,\"Stage 3\")"
           }
@@ -558,7 +601,7 @@
           }
         ],
         "relevance": {
-          "step1:clinical_staging_disease": {
+          "step2:clinical_staging_disease": {
             "type": "string",
             "ex": "equalTo(.,\"Stage 4\")"
           }
@@ -590,7 +633,7 @@
           "2fA"
         ],
         "relevance": {
-          "step1:hiv_status_pmtct": {
+          "step2:hiv_status_pmtct": {
             "type": "string",
             "ex": "equalTo(.,\"positive\")"
           }
@@ -624,7 +667,7 @@
           "3yA"
         ],
         "relevance": {
-          "step1:hiv_status_pmtct": {
+          "step2:hiv_status_pmtct": {
             "type": "string",
             "ex": "equalTo(.,\"positive\")"
           }
@@ -656,7 +699,7 @@
           "3xA"
         ],
         "relevance": {
-          "step1:hiv_status_pmtct": {
+          "step2:hiv_status_pmtct": {
             "type": "string",
             "ex": "equalTo(.,\"positive\")"
           }
