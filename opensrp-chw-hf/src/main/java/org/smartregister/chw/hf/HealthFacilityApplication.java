@@ -43,6 +43,7 @@ import org.smartregister.chw.hf.configs.AllClientsRegisterRowOptions;
 import org.smartregister.chw.hf.custom_view.HfNavigationMenu;
 import org.smartregister.chw.hf.job.HfJobCreator;
 import org.smartregister.chw.hf.model.NavigationModel;
+import org.smartregister.chw.hf.provider.HfAllClientsRegisterQueryProvider;
 import org.smartregister.chw.hf.repository.HfChwRepository;
 import org.smartregister.chw.hf.repository.HfTaskRepository;
 import org.smartregister.chw.hf.sync.HfClientProcessor;
@@ -230,7 +231,7 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
 
         //Needed for all clients register
         OpdLibrary.init(context, getRepository(),
-                new OpdConfiguration.Builder(CoreAllClientsRegisterQueryProvider.class)
+                new OpdConfiguration.Builder(HfAllClientsRegisterQueryProvider.class)
                         .setBottomNavigationEnabled(true)
                         .setOpdRegisterRowOptions(AllClientsRegisterRowOptions.class)
                         .build(),
