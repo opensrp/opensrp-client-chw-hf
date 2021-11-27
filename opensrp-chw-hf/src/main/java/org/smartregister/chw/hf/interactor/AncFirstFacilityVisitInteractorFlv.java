@@ -14,6 +14,7 @@ import org.smartregister.chw.anc.domain.MemberObject;
 import org.smartregister.chw.anc.domain.Visit;
 import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
+import org.smartregister.chw.anc.util.JsonFormUtils;
 import org.smartregister.chw.anc.util.VisitUtils;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.core.utils.FormUtils;
@@ -82,6 +83,9 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
         try {
             obstetricForm = FormUtils.getFormUtils().getFormJson(Constants.JSON_FORM.ANC_FIRST_VISIT.OBSTETRIC_EXAMINATION);
             obstetricForm.getJSONObject("global").put("last_menstrual_period", memberObject.getLastMenstrualPeriod());
+            if (details != null && !details.isEmpty()) {
+                JsonFormUtils.populateForm(obstetricForm, details);
+            }
         } catch (JSONException e) {
             Timber.e(e);
         }
@@ -302,7 +306,9 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
 
         @Override
         public String evaluateSubTitle() {
-            return "Baseline Investigation Conducted";
+            if (!StringUtils.isBlank(glucose_in_urine))
+                return "Baseline Investigation Conducted";
+            return "";
         }
     }
 

@@ -51,4 +51,5 @@
     <string name="anc_first_visit">ANC First Visit</string>
     <string name="anc_followup_visit">ANC Followup Visit</string>
     <string name="visit_in_progress">Visit still in progress</string>
+    <string name="optional"></string>
 </resources>

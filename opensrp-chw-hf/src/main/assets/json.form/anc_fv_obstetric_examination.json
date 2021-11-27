@@ -118,11 +118,11 @@
       },
       {
         "type": "spinner",
-        "key": "abdominal_movement_with_respiration",
+        "key": "abdominal_contour",
         "hint": "Abdominal Contour",
         "label_info_title": "Abdominal Contour",
         "label_info_text": "Observe the shape of the abdomen",
-        "openmrs_entity_id": "abdominal_movement_with_respiration",
+        "openmrs_entity_id": "abdominal_contour",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "values": [
@@ -130,12 +130,12 @@
           "Normal Contour"
         ],
         "keys": [
-          "Distended",
-          "Normal Contour"
+          "distended",
+          "normal_contour"
         ],
         "openmrs_choice_ids": {
-          "Distended": "Distended",
-          "Normal Contour": "Normal_Contour"
+          "distended": "distended",
+          "normal_contour": "normal_contour"
         },
         "v_required": {
           "value": "true",

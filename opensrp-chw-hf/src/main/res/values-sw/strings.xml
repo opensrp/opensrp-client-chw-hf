@@ -35,4 +35,5 @@
     <string name="chw_followed_details">Waja ameonana na mtajwa</string>
     <string name="chw_agreed_to_be_tested">Amekubali kupimwa</string>
     <string name="chw_test_location">Atapimwa wapi</string>
+    <string name="optional"></string>
 </resources>
