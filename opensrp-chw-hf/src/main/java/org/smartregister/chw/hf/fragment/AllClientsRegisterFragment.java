@@ -30,6 +30,7 @@ public class AllClientsRegisterFragment extends CoreAllClientsRegisterFragment {
         if(registerType != null){
             switch (registerType){
                 case CoreConstants.REGISTER_TYPE.HIV:
+                case CoreConstants.REGISTER_TYPE.HTS:
                     AllClientsUtils.goToHivProfile(this.getActivity(),commonPersonObjectClient);
                     break;
                 case CoreConstants.REGISTER_TYPE.TB:
