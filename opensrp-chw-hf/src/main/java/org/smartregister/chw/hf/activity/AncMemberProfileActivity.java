@@ -200,6 +200,16 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         super.setupViews();
         updateToolbarTitle(this, org.smartregister.chw.core.R.id.toolbar_title, memberObject.getFamilyName());
         Visit lastVisit = getVisit(ANC_FIRST_FACILITY_VISIT);
+        checkVisitStatus(lastVisit);
+
+        if (baseAncFloatingMenu != null) {
+            FloatingActionButton floatingActionButton = baseAncFloatingMenu.findViewById(R.id.anc_fab);
+            if (floatingActionButton != null)
+                floatingActionButton.setImageResource(R.drawable.floating_call);
+        }
+    }
+
+    private void checkVisitStatus(Visit lastVisit) {
         if (lastVisit != null) {
             boolean within24Hours = VisitUtils.isVisitWithin24Hours(lastVisit);
             String lastVisitDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(lastVisit.getDate());
@@ -224,12 +234,6 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
             }
         } else {
             getButtonStatus();
-        }
-
-        if (baseAncFloatingMenu != null) {
-            FloatingActionButton floatingActionButton = baseAncFloatingMenu.findViewById(R.id.anc_fab);
-            if (floatingActionButton != null)
-                floatingActionButton.setImageResource(R.drawable.floating_call);
         }
     }
 
@@ -385,6 +389,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         Visit lastVisit = getVisit(ANC_FIRST_FACILITY_VISIT);
         if (lastVisit != null) {
             setUpEditViews(true, VisitUtils.isVisitWithin24Hours(lastVisit), lastVisit.getDate().getTime());
+            checkVisitStatus(lastVisit);
         }
     }
 }
