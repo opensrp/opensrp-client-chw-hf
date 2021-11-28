@@ -180,7 +180,8 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                 healthFacilitiesIds.add("Other");
 
                 JSONObject openmrsChoiceIds = new JSONObject();
-                for(int i = 0; i < healthFacilitiesOptions.size(); i++){
+                int size = healthFacilitiesOptions.size();
+                for(int i = 0; i < size; i++){
                     openmrsChoiceIds.put(healthFacilitiesOptions.get(i),healthFacilitiesIds.get(i));
                 }
                 if (referralHealthFacilities != null) {
