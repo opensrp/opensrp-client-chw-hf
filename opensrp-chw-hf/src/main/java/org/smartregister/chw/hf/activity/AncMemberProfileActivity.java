@@ -4,6 +4,7 @@ import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
 import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
 import static org.smartregister.chw.hf.utils.Constants.Events.ANC_FIRST_FACILITY_VISIT;
 import static org.smartregister.chw.hf.utils.Constants.Events.ANC_RECURRING_FACILITY_VISIT;
+import static org.smartregister.chw.hf.utils.Constants.JSON_FORM.ANC_RECURRING_VISIT.getLabTests;
 
 import android.app.Activity;
 import android.content.ContentValues;
@@ -11,6 +12,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -40,6 +42,7 @@ import org.smartregister.chw.core.utils.VisitSummary;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.adapter.ReferralCardViewAdapter;
 import org.smartregister.chw.hf.model.FamilyProfileModel;
+import org.smartregister.chw.pmtct.dao.PmtctDao;
 import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.commonregistry.AllCommonsRepository;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
@@ -124,6 +127,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         menu.findItem(R.id.action_remove_member).setVisible(false);
         menu.findItem(R.id.action_pregnancy_out_come).setVisible(false);
         menu.findItem(R.id.action_malaria_diagnosis).setVisible(false);
+        menu.findItem(R.id.action_pmtct_register).setVisible(!PmtctDao.isRegisteredForPmtct(baseEntityID));
         return true;
     }
 
@@ -228,8 +232,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
                 } else {
                     getButtonStatus();
                 }
-            }
-            catch (JSONException e) {
+            } catch (JSONException e) {
                 Timber.e(e);
             }
         } else {
@@ -258,16 +261,16 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         if (isMedicalAndSurgicalHistoryDone && isObstetricExaminationDone && isBaselineInvestigationDone && isTTVaccinationDone) {
             textViewNotVisitMonth.setText(getContext().getString(org.smartregister.chw.core.R.string.anc_visit_done, monthString));
             imageViewCross.setImageResource(org.smartregister.chw.core.R.drawable.activityrow_visited);
-        }else{
+        } else {
             textViewNotVisitMonth.setText(R.string.visit_in_progress);
-            imageViewCross.setImageResource(org.smartregister.chw.core.R.drawable.activityrow_notvisited );
+            imageViewCross.setImageResource(org.smartregister.chw.core.R.drawable.activityrow_notvisited);
         }
     }
 
     private boolean computeCompletionStatus(JSONArray obs, String checkString) throws JSONException {
-        for(int i = 0; i < obs.length(); i++){
+        for (int i = 0; i < obs.length(); i++) {
             JSONObject checkObj = obs.getJSONObject(i);
-            if(checkObj.getString("fieldCode").equalsIgnoreCase(checkString)){
+            if (checkObj.getString("fieldCode").equalsIgnoreCase(checkString)) {
                 return true;
             }
         }
@@ -352,11 +355,11 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         VisitSummary visitSummary = HomeVisitUtil.getAncVisitStatus(this, rules, visitDate, lastVisitNotDone, getDateCreated());
 
         String visitStatus = visitSummary.getVisitStatus();
-       if(lastVisit == null){
-           textview_record_anc_visit.setText(R.string.record_anc_first_visit);
-       }else{
-           textview_record_anc_visit.setText(R.string.record_anc_followup_visit);
-       }
+        if (lastVisit == null) {
+            textview_record_anc_visit.setText(R.string.record_anc_first_visit);
+        } else {
+            textview_record_anc_visit.setText(R.string.record_anc_followup_visit);
+        }
 
 
         if (visitStatus.equalsIgnoreCase(CoreConstants.VISIT_STATE.OVERDUE)) {
@@ -392,4 +395,25 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
             checkVisitStatus(lastVisit);
         }
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int i = item.getItemId();
+        if (i == org.smartregister.chw.core.R.id.action_pmtct_register) {
+            startPmtctRegistration();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    protected void startPmtctRegistration() {
+        try {
+            PmtctRegisterActivity.startPmtctRegistrationActivity(this, baseEntityID);
+        } catch (Exception e) {
+            Timber.e(e);
+        }
+    }
+
+
 }

@@ -1,7 +1,6 @@
 {
   "count": "2",
-  "skip_blank_steps": true,
-  "encounter_type": "PMTCT FIRST VISIT",
+  "encounter_type": "PMTCT Registration",
   "entity_id": "",
   "metadata": {
     "start": {
@@ -51,6 +50,21 @@
     "title": "PMTCT First Visit",
     "next": "step2",
     "fields": [
+      {
+        "type": "edit_text",
+        "key": "pmtct_register_date",
+        "hidden": "true",
+        "openmrs_entity_id": "pmtct_register_date",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_form_calculation.yml"
+            }
+          }
+        }
+      },
       {
         "type": "native_radio",
         "label": "Is the client known on ART?",

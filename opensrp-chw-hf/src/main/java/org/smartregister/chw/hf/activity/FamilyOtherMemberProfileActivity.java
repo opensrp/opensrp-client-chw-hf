@@ -119,11 +119,7 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
 
     @Override
     protected void startPmtctRegisration() {
-        try{
-            PmtctRegisterActivity.startPmtctRegistrationActivity(this,baseEntityId,familyBaseEntityId);
-        } catch (Exception e){
-            Timber.e(e);
-        }
+        //Do nothing - not required here
     }
 
     @Override
@@ -247,17 +243,6 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
                 menu.findItem(R.id.action_fp_initiation).setVisible(true);
             }
         }
-
-
-        if(isOfReproductiveAge(commonPersonObject, "Female")){
-            if(gender.equalsIgnoreCase("Male")){
-                menu.findItem(R.id.action_pmtct_register).setVisible(false);
-            }else{
-                menu.findItem(R.id.action_pmtct_register).setVisible(!PmtctDao.isRegisteredForPmtct(baseEntityId));
-            }
-        }
-
-
 
 
         if (BuildConfig.BUILD_FOR_BORESHA_AFYA_SOUTH) {

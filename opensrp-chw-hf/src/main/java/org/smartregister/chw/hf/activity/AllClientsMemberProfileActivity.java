@@ -57,7 +57,7 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
         if (BuildConfig.BUILD_FOR_BORESHA_AFYA_SOUTH) {
             AllClientsUtils.updateHivMenuItems(baseEntityId, menu);
             AllClientsUtils.updateTbMenuItems(baseEntityId, menu);
-            AllClientsUtils.updatePmtctMenuItems(baseEntityId,menu);
+
         }
         if (isOfReproductiveAge(commonPersonObject, gender)) {
             if (gender.equalsIgnoreCase("female") && !AncDao.isANCMember(baseEntityId)) {
@@ -73,7 +73,7 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemId = item.getItemId();
-        if(itemId == org.smartregister.chw.core.R.id.action_pregnancy_confirmation){
+        if (itemId == org.smartregister.chw.core.R.id.action_pregnancy_confirmation) {
             startPregnancyConfirmation();
             return true;
         }
@@ -230,11 +230,7 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
 
     @Override
     protected void startPmtctRegisration() {
-        try{
-            PmtctRegisterActivity.startPmtctRegistrationActivity(this,baseEntityId,familyBaseEntityId);
-        } catch (Exception e){
-            Timber.e(e);
-        }
+        //Do nothing - not required here
     }
 
     @Override

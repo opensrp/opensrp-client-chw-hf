@@ -14,16 +14,17 @@ import org.smartregister.view.fragment.BaseRegisterFragment;
 import androidx.annotation.Nullable;
 
 import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.getPmtctForm;
+import static org.smartregister.chw.hf.utils.Constants.JSON_FORM.getPmtctRegistration;
 
 public class PmtctRegisterActivity extends CorePmtctRegisterActivity {
-    public static void startPmtctRegistrationActivity(Activity activity, String baseEntityID, @Nullable String familyBaseEntityID) {
+    public static void startPmtctRegistrationActivity(Activity activity, String baseEntityID) {
         Intent intent = new Intent(activity, PmtctRegisterActivity.class);
         intent.putExtra(org.smartregister.chw.pmtct.util.Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID, baseEntityID);
-        intent.putExtra(org.smartregister.chw.pmtct.util.Constants.ACTIVITY_PAYLOAD.FAMILY_BASE_ENTITY_ID, familyBaseEntityID);
-        intent.putExtra(org.smartregister.chw.pmtct.util.Constants.ACTIVITY_PAYLOAD.PMTCT_FORM_NAME, getPmtctForm());
+        intent.putExtra(org.smartregister.chw.pmtct.util.Constants.ACTIVITY_PAYLOAD.PMTCT_FORM_NAME, getPmtctRegistration());
         intent.putExtra(org.smartregister.chw.pmtct.util.Constants.ACTIVITY_PAYLOAD.ACTION, org.smartregister.chw.anc.util.Constants.ACTIVITY_PAYLOAD_TYPE.REGISTRATION);
         activity.startActivity(intent);
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +32,7 @@ public class PmtctRegisterActivity extends CorePmtctRegisterActivity {
     }
 
     @Override
-    protected BaseRegisterFragment getRegisterFragment(){
+    protected BaseRegisterFragment getRegisterFragment() {
         return new PmtctRegisterFragment();
     }
 

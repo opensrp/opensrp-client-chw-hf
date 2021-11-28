@@ -24,6 +24,12 @@ public class Constants extends CoreConstants {
         private static final String ANC_PREGANCY_CONFIRMATION = "anc_pregnancy_confirmation";
         public static final String HIV_REGISTRATION = "hiv_registration";
 
+        public static String getPmtctRegistration() {
+            return PMTCT_REGISTRATION;
+        }
+
+        private static final String PMTCT_REGISTRATION = "pmtct_first_visit";
+
         public static String getHvlTestForm() {
             return HVL_TEST_FORM;
         }
