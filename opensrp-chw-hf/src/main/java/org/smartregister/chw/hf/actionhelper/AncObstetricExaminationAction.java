@@ -15,7 +15,7 @@ import java.util.Map;
 
 import timber.log.Timber;
 
-public class AncObstretricExaminationAction implements BaseAncHomeVisitAction.AncHomeVisitActionHelper {
+public class AncObstetricExaminationAction implements BaseAncHomeVisitAction.AncHomeVisitActionHelper {
     protected MemberObject memberObject;
     private Context context;
     private String jsonPayload;
@@ -24,7 +24,7 @@ public class AncObstretricExaminationAction implements BaseAncHomeVisitAction.An
     private BaseAncHomeVisitAction.ScheduleStatus scheduleStatus;
     private String subTitle;
 
-    public AncObstretricExaminationAction(MemberObject memberObject) {
+    public AncObstetricExaminationAction(MemberObject memberObject) {
         this.memberObject = memberObject;
     }
 

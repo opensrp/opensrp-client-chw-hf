@@ -99,14 +99,14 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
                 .build();
         actionList.put(context.getString(R.string.anc_first_visit_medical_and_surgical_history), medicalAndSurgicalHistory);
 
-        BaseAncHomeVisitAction obstretricExaminationAction = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_first_visit_obstetric_examination))
+        BaseAncHomeVisitAction obstetricExaminationAction = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_first_visit_obstetric_examination))
                 .withOptional(true)
                 .withDetails(details)
                 .withJsonPayload(obstetricForm.toString())
                 .withFormName(Constants.JSON_FORM.ANC_FIRST_VISIT.getObstetricExamination())
-                .withHelper(new AncObstretricExaminationAction(memberObject))
+                .withHelper(new AncObstetricExaminationAction(memberObject))
                 .build();
-        actionList.put(context.getString(R.string.anc_first_visit_obstetric_examination), obstretricExaminationAction);
+        actionList.put(context.getString(R.string.anc_first_visit_obstetric_examination), obstetricExaminationAction);
 
         BaseAncHomeVisitAction baselineInvestigationAction = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_first_visit_baseline_investigation))
                 .withOptional(true)
@@ -189,11 +189,11 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
         }
     }
 
-    private class AncObstretricExaminationAction extends org.smartregister.chw.hf.actionhelper.AncObstretricExaminationAction {
+    private class AncObstetricExaminationAction extends org.smartregister.chw.hf.actionhelper.AncObstetricExaminationAction {
         private String abdominal_scars;
         private Context context;
 
-        public AncObstretricExaminationAction(MemberObject memberObject) {
+        public AncObstetricExaminationAction(MemberObject memberObject) {
             super(memberObject);
         }
 

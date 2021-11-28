@@ -217,11 +217,11 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
                 JSONObject jsonObject = new JSONObject(lastVisit.getJson());
                 JSONArray obs = jsonObject.getJSONArray("obs");
                 boolean isMedicalAndSurgicalHistoryDone = computeCompletionStatus(obs, "medical_surgical_history");
-                boolean isObestericExaminationDone = computeCompletionStatus(obs, "abdominal_scars");
+                boolean isObstetricExaminationDone = computeCompletionStatus(obs, "abdominal_scars");
                 boolean isBaselineInvestigationDone = computeCompletionStatus(obs, "glucose_in_urine");
                 boolean isTTVaccinationDone = computeCompletionStatus(obs, "tt_card");
                 if (isVisitThisMonth(formatter.parseLocalDate(lastVisitDate), new LocalDate())) {
-                    checkForFirstVisit(lastVisit, within24Hours, isMedicalAndSurgicalHistoryDone, isObestericExaminationDone, isBaselineInvestigationDone, isTTVaccinationDone);
+                    checkForFirstVisit(lastVisit, within24Hours, isMedicalAndSurgicalHistoryDone, isObstetricExaminationDone, isBaselineInvestigationDone, isTTVaccinationDone);
                     textViewUndo.setVisibility(View.GONE);
                     textViewAncVisitNot.setVisibility(View.GONE);
 
@@ -237,7 +237,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         }
     }
 
-    private void checkForFirstVisit(Visit lastVisit, boolean within24Hours, boolean isMedicalAndSurgicalHistoryDone, boolean isObestericExaminationDone, boolean isBaselineInvestigationDone, boolean isTTVaccinationDone) {
+    private void checkForFirstVisit(Visit lastVisit, boolean within24Hours, boolean isMedicalAndSurgicalHistoryDone, boolean isObstetricExaminationDone, boolean isBaselineInvestigationDone, boolean isTTVaccinationDone) {
         if (within24Hours) {
             Calendar cal = Calendar.getInstance();
             int offset = cal.getTimeZone().getOffset(cal.getTimeInMillis());
@@ -247,15 +247,15 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
             layoutRecordView.setVisibility(View.GONE);
             tvEdit.setVisibility(View.VISIBLE);
             layoutNotRecordView.setVisibility(View.VISIBLE);
-            displayVisitStatus(isMedicalAndSurgicalHistoryDone, isObestericExaminationDone, isBaselineInvestigationDone, isTTVaccinationDone, monthString);
+            displayVisitStatus(isMedicalAndSurgicalHistoryDone, isObstetricExaminationDone, isBaselineInvestigationDone, isTTVaccinationDone, monthString);
         } else {
             record_reccuringvisit_done_bar.setVisibility(View.VISIBLE);
             layoutNotRecordView.setVisibility(View.GONE);
         }
     }
 
-    private void displayVisitStatus(boolean isMedicalAndSurgicalHistoryDone, boolean isObestericExaminationDone, boolean isBaselineInvestigationDone, boolean isTTVaccinationDone, String monthString) {
-        if (isMedicalAndSurgicalHistoryDone && isObestericExaminationDone && isBaselineInvestigationDone && isTTVaccinationDone) {
+    private void displayVisitStatus(boolean isMedicalAndSurgicalHistoryDone, boolean isObstetricExaminationDone, boolean isBaselineInvestigationDone, boolean isTTVaccinationDone, String monthString) {
+        if (isMedicalAndSurgicalHistoryDone && isObstetricExaminationDone && isBaselineInvestigationDone && isTTVaccinationDone) {
             textViewNotVisitMonth.setText(getContext().getString(org.smartregister.chw.core.R.string.anc_visit_done, monthString));
             imageViewCross.setImageResource(org.smartregister.chw.core.R.drawable.activityrow_visited);
         }else{
