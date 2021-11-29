@@ -32,6 +32,7 @@ import org.smartregister.domain.Location;
 import org.smartregister.repository.LocationRepository;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -161,6 +162,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
         LocationRepository locationRepository = new LocationRepository();
         List<Location> locations = locationRepository.getAllLocations();
         if (locations != null && form != null) {
+            Collections.sort(locations, (location1, location2) -> StringUtils.capitalize(location1.getProperties().getName()).compareTo(StringUtils.capitalize(location2.getProperties().getName())));
             try {
                 JSONArray fields = form.getJSONObject(Constants.JsonFormConstants.STEP1)
                         .getJSONArray(JsonFormConstants.FIELDS);
@@ -177,7 +179,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                 ArrayList<String> healthFacilitiesOptions = new ArrayList<>();
                 ArrayList<String> healthFacilitiesIds = new ArrayList<>();
                 for (Location location : locations) {
-                    healthFacilitiesOptions.add(location.getProperties().getName());
+                    healthFacilitiesOptions.add(StringUtils.capitalize(location.getProperties().getName()));
                     healthFacilitiesIds.add(location.getProperties().getUid());
                 }
                 healthFacilitiesOptions.add("Other");
@@ -185,8 +187,8 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
 
                 JSONObject openmrsChoiceIds = new JSONObject();
                 int size = healthFacilitiesOptions.size();
-                for(int i = 0; i < size; i++){
-                    openmrsChoiceIds.put(healthFacilitiesOptions.get(i),healthFacilitiesIds.get(i));
+                for (int i = 0; i < size; i++) {
+                    openmrsChoiceIds.put(healthFacilitiesOptions.get(i), healthFacilitiesIds.get(i));
                 }
                 if (referralHealthFacilities != null) {
                     referralHealthFacilities.put("values", new JSONArray(healthFacilitiesOptions));

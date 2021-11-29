@@ -6,6 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.anc.AncLibrary;
@@ -19,11 +20,17 @@ import org.smartregister.chw.anc.util.VisitUtils;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.core.utils.FormUtils;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.actionhelper.AncBirthReviewAction;
 import org.smartregister.chw.hf.actionhelper.AncTtVaccinationAction;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hf.utils.ContactUtil;
+import org.smartregister.chw.referral.util.JsonFormConstants;
+import org.smartregister.domain.Location;
+import org.smartregister.repository.LocationRepository;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -123,6 +130,16 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
                 .withHelper(new AncTtVaccinationAction(memberObject))
                 .build();
         actionList.put(context.getString(R.string.anc_first_visit_tt_vaccination), vaccinationAction);
+
+        JSONObject birthReviewForm = initializeHealthFacilitiesList(FormUtils.getFormUtils().getFormJson(Constants.JSON_FORM.ANC_RECURRING_VISIT.BIRTH_REVIEW_AND_EMERGENCY_PLAN));
+        BaseAncHomeVisitAction birthReview = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_review_birth_and_emergency_plan))
+                .withOptional(true)
+                .withDetails(details)
+                .withJsonPayload(birthReviewForm.toString())
+                .withFormName(Constants.JSON_FORM.ANC_RECURRING_VISIT.getBirthReviewAndEmergencyPlan())
+                .withHelper(new AncBirthReviewAction(memberObject))
+                .build();
+        actionList.put(context.getString(R.string.anc_recuring_visit_review_birth_and_emergency_plan), birthReview);
     }
 
 
@@ -245,12 +262,59 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
         public void onPayloadReceived(BaseAncHomeVisitAction baseAncHomeVisitAction) {
             Timber.v("onPayloadReceived");
         }
+
         @Override
         public String evaluateSubTitle() {
             if (!StringUtils.isBlank(abdominal_scars))
                 return "Obstetric Examination Complete";
             return "";
         }
+    }
+
+    private static JSONObject initializeHealthFacilitiesList(JSONObject form) {
+        LocationRepository locationRepository = new LocationRepository();
+        List<Location> locations = locationRepository.getAllLocations();
+        if (locations != null && form != null) {
+
+            Collections.sort(locations, (location1, location2) -> StringUtils.capitalize(location1.getProperties().getName()).compareTo(StringUtils.capitalize(location2.getProperties().getName())));
+            try {
+                JSONArray fields = form.getJSONObject(Constants.JsonFormConstants.STEP1)
+                        .getJSONArray(JsonFormConstants.FIELDS);
+                JSONObject referralHealthFacilities = null;
+                for (int i = 0; i < fields.length(); i++) {
+                    if (fields.getJSONObject(i)
+                            .getString(JsonFormConstants.KEY).equals(Constants.JsonFormConstants.NAME_OF_HF)
+                    ) {
+                        referralHealthFacilities = fields.getJSONObject(i);
+                        break;
+                    }
+                }
+
+                ArrayList<String> healthFacilitiesOptions = new ArrayList<>();
+                ArrayList<String> healthFacilitiesIds = new ArrayList<>();
+                for (Location location : locations) {
+                    healthFacilitiesOptions.add(StringUtils.capitalize(location.getProperties().getName()));
+                    healthFacilitiesIds.add(location.getProperties().getUid());
+                }
+                healthFacilitiesOptions.add("Other");
+                healthFacilitiesIds.add("Other");
+
+                JSONObject openmrsChoiceIds = new JSONObject();
+                int size = healthFacilitiesOptions.size();
+                for (int i = 0; i < size; i++) {
+                    openmrsChoiceIds.put(healthFacilitiesOptions.get(i), healthFacilitiesIds.get(i));
+                }
+                if (referralHealthFacilities != null) {
+                    referralHealthFacilities.put("values", new JSONArray(healthFacilitiesOptions));
+                    referralHealthFacilities.put("keys", new JSONArray(healthFacilitiesOptions));
+                    referralHealthFacilities.put("openmrs_choice_ids", openmrsChoiceIds);
+                }
+            } catch (JSONException e) {
+                Timber.e(e);
+            }
+
+        }
+        return form;
     }
 
     private class AncBaselineInvestigationAction extends org.smartregister.chw.hf.actionhelper.AncBaselineInvestigationAction {
