@@ -47,7 +47,7 @@
     "encounter_location": ""
   },
   "step1": {
-    "title": "PMTCT First Visit",
+    "title": "ART",
     "next": "step2",
     "fields": [
       {
@@ -161,8 +161,8 @@
         "openmrs_entity_id": "collection_date",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "max_date": "today",
         "min_date": "today-5y",
+        "max_date": "today",
         "relevance": {
           "step1:known_on_art": {
             "type": "string",
@@ -214,7 +214,7 @@
     ]
   },
   "step2": {
-    "title": "PMTCT First Visit",
+    "title": "End",
     "fields": [
       {
         "type": "edit_text",
@@ -276,16 +276,20 @@
         "openmrs_entity_id": "re_test",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "label_info_text": "Confirmation on previous test if new On ART",
-        "label_info_title": "Info",
+        "label_info_text": "Client has to be re-tested for HIV",
+        "label_info_title": "Re-test",
         "options": [
           {
             "key": "yes",
-            "text": "Yes"
+            "text": "Yes",
+            "openmrs_entity_id": "yes",
+            "openmrs_entity": "concept"
           },
           {
             "key": "no",
-            "text": "No"
+            "text": "No",
+            "openmrs_entity_id": "no",
+            "openmrs_entity": "concept"
           }
         ],
         "relevance": {
@@ -324,11 +328,15 @@
         "options": [
           {
             "key": "positive",
-            "text": "Positive"
+            "text": "Positive",
+            "openmrs_entity_id": "positive",
+            "openmrs_entity": "concept"
           },
           {
             "key": "negative",
-            "text": "Negative"
+            "text": "Negative",
+            "openmrs_entity_id": "negative",
+            "openmrs_entity": "concept"
           }
         ],
         "relevance": {

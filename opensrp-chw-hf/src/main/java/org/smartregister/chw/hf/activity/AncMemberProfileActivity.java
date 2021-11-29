@@ -17,6 +17,7 @@ import android.view.View;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.gson.JsonArray;
 
 import org.apache.commons.lang3.StringUtils;
 import org.jeasy.rules.api.Rules;
@@ -64,7 +65,7 @@ import timber.log.Timber;
 public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     DateTimeFormatter formatter = DateTimeFormat.forPattern("dd-MM-yyyy");
     private CommonPersonObjectClient commonPersonObjectClient;
-
+    private boolean hivPositive;
     public static void startMe(Activity activity, String baseEntityID) {
         Intent intent = new Intent(activity, AncMemberProfileActivity.class);
         passToolbarTitle(activity, intent);
@@ -126,7 +127,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         menu.findItem(R.id.action_remove_member).setVisible(false);
         menu.findItem(R.id.action_pregnancy_out_come).setVisible(false);
         menu.findItem(R.id.action_malaria_diagnosis).setVisible(false);
-        menu.findItem(R.id.action_pmtct_register).setVisible(!PmtctDao.isRegisteredForPmtct(baseEntityID));
+        menu.findItem(R.id.action_pmtct_register).setVisible(!PmtctDao.isRegisteredForPmtct(baseEntityID) && hivPositive);
         return true;
     }
 
@@ -164,6 +165,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
                 Timber.e(e, "AncMemberProfileActivity -- > onActivityResult");
             }
         }
+        invalidateOptionsMenu();
     }
 
     @Override
@@ -210,6 +212,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         updateToolbarTitle(this, org.smartregister.chw.core.R.id.toolbar_title, memberObject.getFamilyName());
         Visit firstVisit = getVisit(ANC_FIRST_FACILITY_VISIT);
         Visit lastVisit = getVisit(ANC_RECURRING_FACILITY_VISIT);
+        setHivPositive(firstVisit);
         if(firstVisit == null){
             textview_record_anc_visit.setText(R.string.record_anc_first_visit);
         }else{
@@ -229,6 +232,29 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
             if (floatingActionButton != null)
                 floatingActionButton.setImageResource(R.drawable.floating_call);
         }
+    }
+
+    private boolean setHivPositive(Visit firstVisit) {
+        hivPositive = false;
+       if(firstVisit != null){
+            try {
+                JSONObject jsonObject = new JSONObject(firstVisit.getJson());
+                JSONArray obs = jsonObject.getJSONArray("obs");
+                int obsSize = obs.length();
+                for(int i = 0; i < obsSize; i++){
+                    JSONObject checkObj = obs.getJSONObject(i);
+                    if(checkObj.getString("fieldCode").equalsIgnoreCase("hiv")){
+                       JSONArray values = checkObj.getJSONArray("values");
+                        if(values.getString(0).equalsIgnoreCase("positive")){
+                            hivPositive = true;
+                        }
+                    }
+                }
+            }catch (JSONException e){
+                Timber.e(e);
+            }
+       }
+        return hivPositive;
     }
 
     private void checkVisitStatus(Visit firstVisit) {
@@ -372,6 +398,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         }
         Visit firstVisit = getVisit(ANC_FIRST_FACILITY_VISIT);
         Visit lastVisit = getVisit(ANC_RECURRING_FACILITY_VISIT);
+        setHivPositive(firstVisit);
         if(lastVisit == null){
             if(firstVisit != null){
                 checkVisitStatus(firstVisit);
