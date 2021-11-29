@@ -59,15 +59,21 @@
         "options": [
           {
             "key": "viable",
-            "text": "Viable"
+            "text": "Viable",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "viable"
           },
           {
             "key": "spontaneous_abortion",
-            "text": "Spontaneous Abortion"
+            "text": "Spontaneous Abortion",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "spontaneous_abortion"
           },
           {
             "key": "intrauterine_fetal_death",
-            "text": "Intrauterine Fetal Death (Still Birth)"
+            "text": "Intrauterine Fetal Death (Still Birth)",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "intrauterine_fetal_death"
           }
         ],
         "v_required": {

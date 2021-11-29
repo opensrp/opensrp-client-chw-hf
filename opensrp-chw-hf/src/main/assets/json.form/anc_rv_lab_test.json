@@ -64,23 +64,27 @@
             "key": "hb_test",
             "text": "HB Test",
             "openmrs_entity": "concept",
+            "value": false,
             "openmrs_entity_id": "hb_test"
           },
           {
             "key": "urine_glucose_test",
             "text": "Urine Glucose Test",
             "openmrs_entity": "concept",
+            "value": false,
             "openmrs_entity_id": "urine_glucose_test"
           },
           {
             "key": "urine_protein_test",
             "text": "Urine Protein Test",
             "openmrs_entity": "concept",
+            "value": false,
             "openmrs_entity_id": "urine_protein_test"
           },
           {
             "key": "none",
             "text": "None",
+            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "none"
           }
@@ -137,11 +141,13 @@
             "key": "positive",
             "text": "Positive",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "positive"
+            "openmrs_entity_id": "positive",
+            "openmrs_entity_parent": "glucosuria"
           },
           {
             "key": "negative",
             "text": "Negative",
+            "openmrs_entity_parent": "glucosuria",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "negative"
           }
@@ -174,13 +180,15 @@
             "key": "positive",
             "text": "Positive",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "positive"
+            "openmrs_entity_id": "positive",
+            "openmrs_entity_parent": "proteinuria"
           },
           {
             "key": "negative",
             "text": "Negative",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "negative"
+            "openmrs_entity_id": "negative",
+            "openmrs_entity_parent": "proteinuria"
           }
         ],
         "v_required": {

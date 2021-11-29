@@ -245,6 +245,12 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
         public void onPayloadReceived(BaseAncHomeVisitAction baseAncHomeVisitAction) {
             Timber.v("onPayloadReceived");
         }
+        @Override
+        public String evaluateSubTitle() {
+            if (!StringUtils.isBlank(abdominal_scars))
+                return "Obstetric Examination Complete";
+            return "";
+        }
     }
 
     private class AncBaselineInvestigationAction extends org.smartregister.chw.hf.actionhelper.AncBaselineInvestigationAction {

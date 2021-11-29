@@ -4,7 +4,6 @@ import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
 import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
 import static org.smartregister.chw.hf.utils.Constants.Events.ANC_FIRST_FACILITY_VISIT;
 import static org.smartregister.chw.hf.utils.Constants.Events.ANC_RECURRING_FACILITY_VISIT;
-import static org.smartregister.chw.hf.utils.Constants.JSON_FORM.ANC_RECURRING_VISIT.getLabTests;
 
 import android.app.Activity;
 import android.content.ContentValues;
@@ -32,7 +31,6 @@ import org.smartregister.chw.anc.domain.Visit;
 import org.smartregister.chw.anc.util.Constants;
 import org.smartregister.chw.anc.util.DBConstants;
 import org.smartregister.chw.anc.util.NCUtils;
-import org.smartregister.chw.anc.util.VisitUtils;
 import org.smartregister.chw.core.activity.CoreAncMemberProfileActivity;
 import org.smartregister.chw.core.application.CoreChwApplication;
 import org.smartregister.chw.core.utils.CoreConstants;
@@ -42,6 +40,7 @@ import org.smartregister.chw.core.utils.VisitSummary;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.adapter.ReferralCardViewAdapter;
 import org.smartregister.chw.hf.model.FamilyProfileModel;
+import org.smartregister.chw.hf.utils.VisitUtils;
 import org.smartregister.chw.pmtct.dao.PmtctDao;
 import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.commonregistry.AllCommonsRepository;
@@ -202,9 +201,28 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     @Override
     public void setupViews() {
         super.setupViews();
+        getButtonStatus();
+        try {
+            VisitUtils.processVisits();
+        } catch (Exception e) {
+            Timber.e(e);
+        }
         updateToolbarTitle(this, org.smartregister.chw.core.R.id.toolbar_title, memberObject.getFamilyName());
-        Visit lastVisit = getVisit(ANC_FIRST_FACILITY_VISIT);
-        checkVisitStatus(lastVisit);
+        Visit firstVisit = getVisit(ANC_FIRST_FACILITY_VISIT);
+        Visit lastVisit = getVisit(ANC_RECURRING_FACILITY_VISIT);
+        if(firstVisit == null){
+            textview_record_anc_visit.setText(R.string.record_anc_first_visit);
+        }else{
+            textview_record_anc_visit.setText(R.string.record_anc_followup_visit);
+        }
+
+        if(lastVisit == null){
+            if(firstVisit != null){
+              checkVisitStatus(firstVisit);
+           }
+        }else{
+            checkVisitStatus(lastVisit);
+        }
 
         if (baseAncFloatingMenu != null) {
             FloatingActionButton floatingActionButton = baseAncFloatingMenu.findViewById(R.id.anc_fab);
@@ -213,69 +231,25 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         }
     }
 
-    private void checkVisitStatus(Visit lastVisit) {
-        if (lastVisit != null) {
-            boolean within24Hours = VisitUtils.isVisitWithin24Hours(lastVisit);
-            String lastVisitDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(lastVisit.getDate());
-            try {
-                JSONObject jsonObject = new JSONObject(lastVisit.getJson());
-                JSONArray obs = jsonObject.getJSONArray("obs");
-                boolean isMedicalAndSurgicalHistoryDone = computeCompletionStatus(obs, "medical_surgical_history");
-                boolean isObstetricExaminationDone = computeCompletionStatus(obs, "abdominal_scars");
-                boolean isBaselineInvestigationDone = computeCompletionStatus(obs, "glucose_in_urine");
-                boolean isTTVaccinationDone = computeCompletionStatus(obs, "tt_card");
-                if (isVisitThisMonth(formatter.parseLocalDate(lastVisitDate), new LocalDate())) {
-                    checkForFirstVisit(lastVisit, within24Hours, isMedicalAndSurgicalHistoryDone, isObstetricExaminationDone, isBaselineInvestigationDone, isTTVaccinationDone);
-                    textViewUndo.setVisibility(View.GONE);
-                    textViewAncVisitNot.setVisibility(View.GONE);
-
-                } else {
-                    getButtonStatus();
-                }
-            } catch (JSONException e) {
-                Timber.e(e);
+    private void checkVisitStatus(Visit firstVisit) {
+            boolean visitDone = firstVisit.getProcessed();
+            if (!visitDone) {
+                showVisitInProgress();
+                textViewUndo.setVisibility(View.GONE);
+                textViewAncVisitNot.setVisibility(View.GONE);
+            }else{
+                getButtonStatus();
             }
-        } else {
-            getButtonStatus();
-        }
     }
 
-    private void checkForFirstVisit(Visit lastVisit, boolean within24Hours, boolean isMedicalAndSurgicalHistoryDone, boolean isObstetricExaminationDone, boolean isBaselineInvestigationDone, boolean isTTVaccinationDone) {
-        if (within24Hours) {
-            Calendar cal = Calendar.getInstance();
-            int offset = cal.getTimeZone().getOffset(cal.getTimeInMillis());
-            Long longDate = lastVisit.getDate().getTime();
-            Date date = new Date(longDate - (long) offset);
-            String monthString = (String) DateFormat.format("MMMM", date);
-            layoutRecordView.setVisibility(View.GONE);
-            tvEdit.setVisibility(View.VISIBLE);
-            layoutNotRecordView.setVisibility(View.VISIBLE);
-            displayVisitStatus(isMedicalAndSurgicalHistoryDone, isObstetricExaminationDone, isBaselineInvestigationDone, isTTVaccinationDone, monthString);
-        } else {
-            record_reccuringvisit_done_bar.setVisibility(View.VISIBLE);
-            layoutNotRecordView.setVisibility(View.GONE);
-        }
+    private void showVisitInProgress() {
+       layoutRecordView.setVisibility(View.GONE);
+       tvEdit.setVisibility(View.VISIBLE);
+       layoutNotRecordView.setVisibility(View.VISIBLE);
+       textViewNotVisitMonth.setText(R.string.visit_in_progress);
+       imageViewCross.setImageResource(org.smartregister.chw.core.R.drawable.activityrow_notvisited);
     }
 
-    private void displayVisitStatus(boolean isMedicalAndSurgicalHistoryDone, boolean isObstetricExaminationDone, boolean isBaselineInvestigationDone, boolean isTTVaccinationDone, String monthString) {
-        if (isMedicalAndSurgicalHistoryDone && isObstetricExaminationDone && isBaselineInvestigationDone && isTTVaccinationDone) {
-            textViewNotVisitMonth.setText(getContext().getString(org.smartregister.chw.core.R.string.anc_visit_done, monthString));
-            imageViewCross.setImageResource(org.smartregister.chw.core.R.drawable.activityrow_visited);
-        } else {
-            textViewNotVisitMonth.setText(R.string.visit_in_progress);
-            imageViewCross.setImageResource(org.smartregister.chw.core.R.drawable.activityrow_notvisited);
-        }
-    }
-
-    private boolean computeCompletionStatus(JSONArray obs, String checkString) throws JSONException {
-        for (int i = 0; i < obs.length(); i++) {
-            JSONObject checkObj = obs.getJSONObject(i);
-            if (checkObj.getString("fieldCode").equalsIgnoreCase(checkString)) {
-                return true;
-            }
-        }
-        return false;
-    }
 
     @Override
     public void setClientTasks(Set<Task> taskList) {
@@ -320,8 +294,8 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         super.onClick(view);
         int id = view.getId();
         if (id == R.id.textview_record_visit || id == R.id.textview_record_reccuring_visit) {
-            Visit lastVisit = getVisit(ANC_FIRST_FACILITY_VISIT);
-            if (lastVisit == null) {
+            Visit firstVisit = getVisit(ANC_FIRST_FACILITY_VISIT);
+            if (firstVisit == null) {
                 AncFirstFacilityVisitActivity.startMe(this, memberObject.getBaseEntityId(), false);
             } else {
                 AncRecurringFacilityVisitActivity.startMe(this, memberObject.getBaseEntityId(), false);
@@ -348,25 +322,28 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
                 lastNotDoneVisit = null;
             }
         }
-        Visit lastVisit = getVisit(ANC_FIRST_FACILITY_VISIT);
-        String visitDate = lastVisit != null ? new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(lastVisit.getDate()) : null;
+        Visit latestVisit = getVisit(ANC_FIRST_FACILITY_VISIT);
+        String visitDate = latestVisit != null ? new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(latestVisit.getDate()) : null;
         String lastVisitNotDone = lastNotDoneVisit != null ? new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(lastNotDoneVisit.getDate()) : null;
 
         VisitSummary visitSummary = HomeVisitUtil.getAncVisitStatus(this, rules, visitDate, lastVisitNotDone, getDateCreated());
 
         String visitStatus = visitSummary.getVisitStatus();
-        if (lastVisit == null) {
-            textview_record_anc_visit.setText(R.string.record_anc_first_visit);
-        } else {
-            textview_record_anc_visit.setText(R.string.record_anc_followup_visit);
+        String monthString = null;
+        if(latestVisit != null){
+            Calendar cal = Calendar.getInstance();
+            int offset = cal.getTimeZone().getOffset(cal.getTimeInMillis());
+
+            Long longDate = latestVisit.getDate().getTime();
+            Date date = new Date(longDate - (long) offset);
+            monthString = (String) DateFormat.format("MMMM", date);
         }
 
 
         if (visitStatus.equalsIgnoreCase(CoreConstants.VISIT_STATE.OVERDUE)) {
             textview_record_anc_visit.setBackgroundResource(org.smartregister.chw.core.R.drawable.record_btn_selector_overdue);
             getLayoutVisibility();
-
-        } else if (visitStatus.equalsIgnoreCase(CoreConstants.VISIT_STATE.DUE)) {
+        } else if (visitStatus.equalsIgnoreCase(CoreConstants.VISIT_STATE.DUE) || visitStatus.equalsIgnoreCase("VISIT_THIS_MONTH")) {
             textview_record_anc_visit.setBackgroundResource(org.smartregister.chw.core.R.drawable.record_btn_anc_selector);
             getLayoutVisibility();
         } else if (visitStatus.equalsIgnoreCase(CoreConstants.VISIT_STATE.NOT_VISIT_THIS_MONTH)) {
@@ -374,6 +351,10 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
             textViewUndo.setText(getString(org.smartregister.chw.opensrp_chw_anc.R.string.undo));
             record_reccuringvisit_done_bar.setVisibility(View.GONE);
             openVisitMonthView();
+        }else if(visitStatus.equalsIgnoreCase("LESS_TWENTY_FOUR")){
+            layoutNotRecordView.setVisibility(View.VISIBLE);
+            textViewNotVisitMonth.setText(getContext().getString(org.smartregister.chw.core.R.string.anc_visit_done, monthString));
+            imageViewCross.setImageResource(org.smartregister.chw.core.R.drawable.activityrow_visited);
         }
     }
 
@@ -389,9 +370,13 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         } else if (lastAncHomeVisitNotDoneUndoEvent == null && lastAncHomeVisitNotDoneEvent != null && ancHomeVisitNotDoneEvent(lastAncHomeVisitNotDoneEvent)) {
             setVisitViews();
         }
-        Visit lastVisit = getVisit(ANC_FIRST_FACILITY_VISIT);
-        if (lastVisit != null) {
-            setUpEditViews(true, VisitUtils.isVisitWithin24Hours(lastVisit), lastVisit.getDate().getTime());
+        Visit firstVisit = getVisit(ANC_FIRST_FACILITY_VISIT);
+        Visit lastVisit = getVisit(ANC_RECURRING_FACILITY_VISIT);
+        if(lastVisit == null){
+            if(firstVisit != null){
+                checkVisitStatus(firstVisit);
+            }
+        }else{
             checkVisitStatus(lastVisit);
         }
     }

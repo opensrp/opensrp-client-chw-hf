@@ -94,27 +94,39 @@
         "options": [
           {
             "key": "facial_expression",
-            "text": "Facial Expression (Pain expression)"
+            "text": "Facial Expression (Pain expression)",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "facial_expression"
           },
           {
             "key": "pallor",
-            "text": "Pallor"
+            "text": "Pallor",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "pallor"
           },
           {
             "key": "sweating",
-            "text": "Sweating"
+            "text": "Sweating",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "sweating"
           },
           {
             "key": "shivering",
-            "text": "Shivering"
+            "text": "Shivering",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "shivering"
           },
           {
             "key": "difficulty_in_breathing",
-            "text": "Difficulty in breathing"
+            "text": "Difficulty in breathing",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "difficulty_in_breathing"
           },
           {
             "key": "none",
-            "text": "None"
+            "text": "None",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "none"
           }
         ],
         "v_required": {
@@ -136,11 +148,15 @@
         "options": [
           {
             "text": "Sick/Concerned",
-            "key": "sick_concerned"
+            "key": "sick_concerned",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "sick_concerned"
           },
           {
             "text": "Routine Scheduled Visit",
-            "key": "routine_visit"
+            "key": "routine_visit",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "routine_visit"
           }
         ]
       },
@@ -182,67 +198,93 @@
           {
             "key": "bleeding_vag",
             "text": "Bleeding Vaginally",
-            "value": false
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "bleeding_vag"
           },
           {
             "key": "headache_visual_disturbance",
             "text": "Headache and Visual Disturbance",
-            "value": false
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "headache_visual_disturbance"
           },
           {
             "key": "severely_pale",
             "text": "Severely Pale",
-            "value": false
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "severely_pale"
           },
           {
             "key": "severe_vomiting",
             "text": "Severe Vomiting",
-            "value": false
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "severe_vomiting"
           },
           {
             "key": "convulsing",
             "text": "Convulsing",
-            "value": false
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "convulsing"
           },
           {
             "key": "looking_very_ill",
             "text": "Looking Very ill(lethargic,drowsy)",
-            "value": false
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "looking_very_ill"
           },
           {
             "key": "fever",
             "text": "A fever",
-            "value": false
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "fever"
           },
           {
             "key": "unconscious",
             "text": "Unconscious",
-            "value": false
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "unconscious"
           },
           {
             "key": "severe_pain",
             "text": "Severe Pain",
-            "value": false
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "severe_pain"
           },
           {
             "key": "severe_breathing_difficulty",
             "text": "Severe Breathing Difficulty",
-            "value": false
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "severe_breathing_difficulty"
           },
           {
             "key": "in_labour",
             "text": "In Labour",
-            "value": false
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "in_labour"
           },
           {
             "key": "imminent_delivery",
             "text": "Imminent delivery",
-            "value": false
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "imminent_delivery"
           },
           {
             "key": "none",
             "text": "None",
-            "value": false
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "none"
           }
         ]
       },

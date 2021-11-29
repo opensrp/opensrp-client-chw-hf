@@ -62,13 +62,15 @@
         "type": "check_box",
         "key": "iron_folate_supplements",
         "label": "Iron and Folate Supplement",
-        "openmrs_entity_id": "",
-        "openmrs_entity": "",
+        "openmrs_entity_id": "iron_folate_supplements",
+        "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "options": [
           {
             "text": "FeFo",
-            "key": "FeFo"
+            "key": "FeFo",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "FeFo"
           }
         ]
       },
@@ -76,25 +78,33 @@
         "type": "check_box",
         "key": "malaria_preventive_therapy",
         "label": "Malaria Preventive Therapy",
-        "openmrs_entity_id": "",
-        "openmrs_entity": "",
+        "openmrs_entity_id": "malaria_preventive_therapy",
+        "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "options": [
           {
             "text": "IPT1 (≥13 week)",
-            "key": "ipt1"
+            "key": "ipt1",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "ipt1"
           },
           {
             "text": "IPT2 (IPT1 +4 weeks)",
-            "key": "ipt2"
+            "key": "ipt2",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "ipt2"
           },
           {
             "text": "IPT3 (IPT2 +4 weeks)",
-            "key": "ipt3"
+            "key": "ipt3",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "ipt3"
           },
           {
             "text": "IPT4+(IPT3+4 weeks but ≤36 Gestation Weeks)",
-            "key": "ipt4"
+            "key": "ipt4",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "ipt4"
           }
         ]
       },
@@ -102,8 +112,8 @@
         "type": "check_box",
         "key": "deworming",
         "label": "Deworming",
-        "openmrs_entity_id": "",
-        "openmrs_entity": "",
+        "openmrs_entity_id": "deworming",
+        "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "exclusive": [
           "mebendazole",
@@ -112,11 +122,15 @@
         "options": [
           {
             "text": "Mebendazole(500Mg)",
-            "key": "mebendazole"
+            "key": "mebendazole",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "mebendazole"
           },
           {
             "text": "Albendazole(400Mg)",
-            "key": "albendazole"
+            "key": "albendazole",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "albendazole"
           }
         ]
       }

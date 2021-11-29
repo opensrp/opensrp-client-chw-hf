@@ -79,7 +79,7 @@ public class AncTriageAction implements BaseAncHomeVisitAction.AncHomeVisitActio
         StringBuilder stringBuilder = new StringBuilder();
 
         //TODO ilakoze extract to string resources
-        stringBuilder.append("Baseline Investigation Complete");
+        stringBuilder.append("Triage Complete");
 
         return stringBuilder.toString();
     }
