@@ -22,11 +22,14 @@ import org.smartregister.chw.core.utils.FormUtils;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.actionhelper.AncBirthReviewAction;
 import org.smartregister.chw.hf.actionhelper.AncTtVaccinationAction;
+import org.smartregister.chw.hf.repository.HfLocationRepository;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hf.utils.ContactUtil;
 import org.smartregister.chw.referral.util.JsonFormConstants;
 import org.smartregister.domain.Location;
+import org.smartregister.domain.LocationTag;
 import org.smartregister.repository.LocationRepository;
+import org.smartregister.repository.LocationTagRepository;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
@@ -34,6 +37,7 @@ import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import timber.log.Timber;
 
@@ -272,8 +276,8 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
     }
 
     private static JSONObject initializeHealthFacilitiesList(JSONObject form) {
-        LocationRepository locationRepository = new LocationRepository();
-        List<Location> locations = locationRepository.getAllLocations();
+        HfLocationRepository locationRepository = new HfLocationRepository();
+        List<Location> locations = locationRepository.getAllLocationsWithTags();
         if (locations != null && form != null) {
 
             Collections.sort(locations, (location1, location2) -> StringUtils.capitalize(location1.getProperties().getName()).compareTo(StringUtils.capitalize(location2.getProperties().getName())));
@@ -293,8 +297,11 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
                 ArrayList<String> healthFacilitiesOptions = new ArrayList<>();
                 ArrayList<String> healthFacilitiesIds = new ArrayList<>();
                 for (Location location : locations) {
-                    healthFacilitiesOptions.add(StringUtils.capitalize(location.getProperties().getName()));
-                    healthFacilitiesIds.add(location.getProperties().getUid());
+                    Set<LocationTag> locationTags = location.getLocationTags();
+                   if(locationTags.iterator().next().getName().equalsIgnoreCase("Facility") ){
+                        healthFacilitiesOptions.add(StringUtils.capitalize(location.getProperties().getName()));
+                        healthFacilitiesIds.add(location.getProperties().getUid());
+                   }
                 }
                 healthFacilitiesOptions.add("Other");
                 healthFacilitiesIds.add("Other");
