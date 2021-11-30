@@ -241,6 +241,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
                        JSONArray values = checkObj.getJSONArray("values");
                         if(values.getString(0).equalsIgnoreCase("positive")){
                             hivPositive = true;
+                            break;
                         }
                     }
                 }

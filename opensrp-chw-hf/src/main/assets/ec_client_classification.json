@@ -147,6 +147,13 @@
           },
           {
             "field": "eventType",
+            "field_value": "ANC Close Followup Visits",
+            "closes_case": [
+              "ec_anc_register"
+            ]
+          },
+          {
+            "field": "eventType",
             "field_value": "ANC Recurring Facility Visit",
             "creates_case": [
               "ec_anc_register"

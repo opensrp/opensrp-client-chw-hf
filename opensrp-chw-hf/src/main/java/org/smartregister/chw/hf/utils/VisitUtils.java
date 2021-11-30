@@ -1,5 +1,7 @@
 package org.smartregister.chw.hf.utils;
 
+import com.google.gson.Gson;
+
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -8,10 +10,16 @@ import org.smartregister.chw.anc.AncLibrary;
 import org.smartregister.chw.anc.domain.Visit;
 import org.smartregister.chw.anc.repository.VisitDetailsRepository;
 import org.smartregister.chw.anc.repository.VisitRepository;
+import org.smartregister.chw.anc.util.NCUtils;
+import org.smartregister.clientandeventmodel.Event;
+import org.smartregister.repository.AllSharedPreferences;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.UUID;
+
+import javax.json.Json;
 
 import timber.log.Timber;
 
@@ -72,11 +80,32 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
                 }
             }
         }
-        processVisits(firstVisitsCompleted,visitRepository,visitDetailsRepository);
-        processVisits(followupVisitsCompleted,visitRepository,visitDetailsRepository);
+        if(firstVisitsCompleted.size() > 0){
+            processVisits(firstVisitsCompleted,visitRepository,visitDetailsRepository);
+        }
+
+        if(followupVisitsCompleted.size() > 0){
+            processVisits(followupVisitsCompleted,visitRepository,visitDetailsRepository);
+            for(Visit v: followupVisitsCompleted) {
+                if (isNextVisitsCancelled(v)) {
+                   createCancelledEvent(v.getJson());
+                }
+            }
+        }
     }
+
+    private static void createCancelledEvent(String json) throws Exception {
+        Event baseEvent = new Gson().fromJson(json, Event.class);
+        baseEvent.setFormSubmissionId(UUID.randomUUID().toString());
+        baseEvent.setEventType("ANC Close Followup Visits");
+        AllSharedPreferences allSharedPreferences = AncLibrary.getInstance().context().allSharedPreferences();
+        NCUtils.addEvent(allSharedPreferences, baseEvent);
+        NCUtils.startClientProcessing();
+    }
+
     public static boolean computeCompletionStatus(JSONArray obs, String checkString) throws JSONException {
-        for(int i = 0; i < obs.length(); i++){
+        int size = obs.length();
+        for(int i = 0; i < size; i++){
             JSONObject checkObj = obs.getJSONObject(i);
             if(checkObj.getString("fieldCode").equalsIgnoreCase(checkString)){
                 return true;
@@ -84,4 +113,27 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
         }
         return false;
     }
+
+    public static boolean isNextVisitsCancelled(Visit visit){
+        boolean isCancelled = false;
+        try{
+            JSONObject jsonObject = new JSONObject(visit.getJson());
+            JSONArray obs = jsonObject.getJSONArray("obs");
+            int size = obs.length();
+            for(int i = 0; i< size; i++){
+                JSONObject checkObj = obs.getJSONObject(i);
+                if(checkObj.getString("fieldCode").equalsIgnoreCase("pregnancy_status")){
+                    JSONArray values = checkObj.getJSONArray("values");
+                    if(!(values.getString(0).equalsIgnoreCase("viable"))){
+                        isCancelled = true;
+                        break;
+                    }
+                }
+            }
+        }catch (Exception e){
+            Timber.e(e);
+        }
+        return isCancelled;
+    }
+
 }
