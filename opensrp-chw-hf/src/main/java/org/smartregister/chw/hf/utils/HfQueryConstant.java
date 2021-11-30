@@ -24,7 +24,7 @@ public interface HfQueryConstant {
             "  AND ec_family_member.base_entity_id IN (%s)\n" +
             "  AND ec_family_member.base_entity_id NOT IN (\n" +
             "    SELECT ec_anc_register.base_entity_id AS base_entity_id\n" +
-            "    FROM ec_anc_register\n" +
+            "    FROM ec_anc_register where ec_anc_register.is_closed is 0\n" +
             "    UNION ALL\n" +
             "    SELECT ec_pregnancy_outcome.base_entity_id AS base_entity_id\n" +
             "    FROM ec_pregnancy_outcome\n" +

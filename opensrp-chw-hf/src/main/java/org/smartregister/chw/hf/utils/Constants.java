@@ -20,6 +20,10 @@ public class Constants extends CoreConstants {
         public static final String ANC_RECURRING_FACILITY_VISIT = "ec_anc_recurring_facility_visit";
     }
 
+    public static final class Visits {
+        public static final String TERMINATED = "Terminated";
+    }
+
     public static final class JSON_FORM {
         private static final String ANC_PREGANCY_CONFIRMATION = "anc_pregnancy_confirmation";
         public static final String HIV_REGISTRATION = "hiv_registration";

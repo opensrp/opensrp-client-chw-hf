@@ -18,18 +18,22 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.anc.AncLibrary;
 import org.smartregister.chw.anc.domain.Visit;
+import org.smartregister.chw.anc.interactor.BaseAncMemberProfileInteractor;
 import org.smartregister.chw.anc.util.Constants;
 import org.smartregister.chw.anc.util.DBConstants;
 import org.smartregister.chw.anc.util.NCUtils;
 import org.smartregister.chw.core.activity.CoreAncMemberProfileActivity;
 import org.smartregister.chw.core.application.CoreChwApplication;
+import org.smartregister.chw.core.interactor.CoreAncMemberProfileInteractor;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.core.utils.HomeVisitUtil;
 import org.smartregister.chw.core.utils.VisitSummary;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.adapter.ReferralCardViewAdapter;
+import org.smartregister.chw.hf.dao.HfAncDao;
 import org.smartregister.chw.hf.model.FamilyProfileModel;
+import org.smartregister.chw.hf.presenter.AncMemberProfilePresenter;
 import org.smartregister.chw.hf.utils.VisitUtils;
 import org.smartregister.chw.pmtct.dao.PmtctDao;
 import org.smartregister.clientandeventmodel.Event;
@@ -82,6 +86,11 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
             if (floatingActionButton != null)
                 floatingActionButton.setImageResource(R.drawable.floating_call);
         }
+    }
+
+    @Override
+    protected void registerPresenter() {
+        presenter = new AncMemberProfilePresenter(this, new CoreAncMemberProfileInteractor(this),memberObject);
     }
 
     @Override
@@ -197,28 +206,33 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     @Override
     public void setupViews() {
         super.setupViews();
-        getButtonStatus();
-        try {
-            VisitUtils.processVisits();
-        } catch (Exception e) {
-            Timber.e(e);
-        }
         updateToolbarTitle(this, org.smartregister.chw.core.R.id.toolbar_title, memberObject.getFamilyName());
-        Visit firstVisit = getVisit(ANC_FIRST_FACILITY_VISIT);
-        Visit lastVisit = getVisit(ANC_RECURRING_FACILITY_VISIT);
-        setHivPositive(firstVisit);
-        if(firstVisit == null){
-            textview_record_anc_visit.setText(R.string.record_anc_first_visit);
-        }else{
-            textview_record_anc_visit.setText(R.string.record_anc_followup_visit);
-        }
+        if(!HfAncDao.isClientClosed(baseEntityID)){
+            getButtonStatus();
+            try {
+                VisitUtils.processVisits();
+            } catch (Exception e) {
+                Timber.e(e);
+            }Visit firstVisit = getVisit(ANC_FIRST_FACILITY_VISIT);
+            Visit lastVisit = getVisit(ANC_RECURRING_FACILITY_VISIT);
+            setHivPositive(firstVisit);
+            if(firstVisit == null){
+                textview_record_anc_visit.setText(R.string.record_anc_first_visit);
+            }else{
+                textview_record_anc_visit.setText(R.string.record_anc_followup_visit);
+            }
 
-        if(lastVisit == null){
-            if(firstVisit != null){
-              checkVisitStatus(firstVisit);
-           }
-        }else{
-            checkVisitStatus(lastVisit);
+            if(lastVisit == null){
+                if(firstVisit != null){
+                  checkVisitStatus(firstVisit);
+               }
+            }else{
+                checkVisitStatus(lastVisit);
+            }
+        }
+        else{
+            layoutRecordView.setVisibility(View.GONE);
+            pregnancyRiskLabel.setTextSize(12);
         }
 
         if (baseAncFloatingMenu != null) {
@@ -376,6 +390,46 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
             layoutNotRecordView.setVisibility(View.VISIBLE);
             textViewNotVisitMonth.setText(getContext().getString(org.smartregister.chw.core.R.string.anc_visit_done, monthString));
             imageViewCross.setImageResource(org.smartregister.chw.core.R.drawable.activityrow_visited);
+        }
+    }
+
+    @Override
+    public void setPregnancyRiskLabel(String pregnancyRiskLevel) {
+        if (pregnancyRiskLabel != null && StringUtils.isNotBlank(pregnancyRiskLevel)) {
+            int labelTextColor;
+            int background;
+            String labelText;
+            switch (pregnancyRiskLevel) {
+                case Constants.HOME_VISIT.PREGNANCY_RISK_LOW:
+                    labelTextColor = context().getColorResource(org.smartregister.chw.opensrp_chw_anc.R.color.low_risk_text_green);
+                    background = org.smartregister.chw.opensrp_chw_anc.R.drawable.low_risk_label;
+                    labelText = getContext().getString(org.smartregister.chw.opensrp_chw_anc.R.string.low_pregnancy_risk);
+                    break;
+                case Constants.HOME_VISIT.PREGNANCY_RISK_MEDIUM:
+                    labelTextColor = context().getColorResource(org.smartregister.chw.opensrp_chw_anc.R.color.medium_risk_text_orange);
+                    background = org.smartregister.chw.opensrp_chw_anc.R.drawable.medium_risk_label;
+                    labelText = getContext().getString(org.smartregister.chw.opensrp_chw_anc.R.string.medium_pregnancy_risk);
+                    break;
+                case Constants.HOME_VISIT.PREGNANCY_RISK_HIGH:
+                    labelTextColor = context().getColorResource(org.smartregister.chw.opensrp_chw_anc.R.color.high_risk_text_red);
+                    background = org.smartregister.chw.opensrp_chw_anc.R.drawable.high_risk_label;
+                    labelText = getContext().getString(org.smartregister.chw.opensrp_chw_anc.R.string.high_pregnancy_risk);
+                    break;
+                case org.smartregister.chw.hf.utils.Constants.Visits.TERMINATED:
+                    labelTextColor = context().getColorResource(org.smartregister.chw.opensrp_chw_anc.R.color.high_risk_text_red);
+                    background = org.smartregister.chw.opensrp_chw_anc.R.drawable.high_risk_label;
+                    labelText = "Services Ended";
+                    break;
+                default:
+                    labelTextColor = context().getColorResource(org.smartregister.chw.opensrp_chw_anc.R.color.default_risk_text_black);
+                    background = org.smartregister.chw.opensrp_chw_anc.R.drawable.risk_label;
+                    labelText = getContext().getString(org.smartregister.chw.opensrp_chw_anc.R.string.low_pregnancy_risk);
+                    break;
+            }
+            pregnancyRiskLabel.setVisibility(View.VISIBLE);
+            pregnancyRiskLabel.setText(labelText);
+            pregnancyRiskLabel.setTextColor(labelTextColor);
+            pregnancyRiskLabel.setBackgroundResource(background);
         }
     }
 
