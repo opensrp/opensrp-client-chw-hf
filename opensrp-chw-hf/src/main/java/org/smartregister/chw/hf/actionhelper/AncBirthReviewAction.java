@@ -20,7 +20,7 @@ public class AncBirthReviewAction implements BaseAncHomeVisitAction.AncHomeVisit
     private Context context;
     private String jsonPayload;
 
-    private String partner_involved;
+    private String name_of_hf;
     private BaseAncHomeVisitAction.ScheduleStatus scheduleStatus;
     private String subTitle;
 
@@ -50,7 +50,7 @@ public class AncBirthReviewAction implements BaseAncHomeVisitAction.AncHomeVisit
     public void onPayloadReceived(String jsonPayload) {
         try {
             JSONObject jsonObject = new JSONObject(jsonPayload);
-            partner_involved = CoreJsonFormUtils.getValue(jsonObject, "partner_involved");
+            name_of_hf = CoreJsonFormUtils.getValue(jsonObject, "name_of_hf");
         } catch (JSONException e) {
             Timber.e(e);
         }
@@ -73,7 +73,7 @@ public class AncBirthReviewAction implements BaseAncHomeVisitAction.AncHomeVisit
 
     @Override
     public String evaluateSubTitle() {
-        if (StringUtils.isBlank(partner_involved))
+        if (StringUtils.isBlank(name_of_hf))
             return null;
 
         StringBuilder stringBuilder = new StringBuilder();
@@ -86,7 +86,7 @@ public class AncBirthReviewAction implements BaseAncHomeVisitAction.AncHomeVisit
 
     @Override
     public BaseAncHomeVisitAction.Status evaluateStatusOnPayload() {
-        if (StringUtils.isBlank(partner_involved))
+        if (StringUtils.isBlank(name_of_hf))
             return BaseAncHomeVisitAction.Status.PENDING;
         else {
             return BaseAncHomeVisitAction.Status.COMPLETED;
