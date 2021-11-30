@@ -14,9 +14,9 @@ import timber.log.Timber;
 
 public class AncRecurringFacilityVisitInteractor extends CoreAncHomeVisitInteractor {
     private Flavor flavor;
-    public AncRecurringFacilityVisitInteractor() {
-        setFlavor(new AncRecurringFacilityVisitInteractorFlv());
-        flavor = new AncRecurringFacilityVisitInteractorFlv();
+    public AncRecurringFacilityVisitInteractor(String baseEntityId) {
+        setFlavor(new AncRecurringFacilityVisitInteractorFlv(baseEntityId));
+        flavor = new AncRecurringFacilityVisitInteractorFlv(baseEntityId);
     }
 
     @Override

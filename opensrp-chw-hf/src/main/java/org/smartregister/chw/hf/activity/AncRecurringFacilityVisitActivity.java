@@ -24,7 +24,7 @@ public class AncRecurringFacilityVisitActivity extends AncFirstFacilityVisitActi
 
     @Override
     protected void registerPresenter() {
-        presenter = new BaseAncHomeVisitPresenter(memberObject, this, new AncRecurringFacilityVisitInteractor());
+        presenter = new BaseAncHomeVisitPresenter(memberObject, this, new AncRecurringFacilityVisitInteractor(baseEntityID));
     }
 
     @Override

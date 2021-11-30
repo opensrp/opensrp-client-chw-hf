@@ -751,7 +751,7 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "1438AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "no_prev_preg"
           }
         },
         {
@@ -800,6 +800,14 @@
           "json_mapping": {
             "field": "obs.fieldCode",
             "concept": "anc_visit_not_done_date"
+          }
+        },
+        {
+          "column_name": "name_of_hf",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "name_of_hf"
           }
         },
         {

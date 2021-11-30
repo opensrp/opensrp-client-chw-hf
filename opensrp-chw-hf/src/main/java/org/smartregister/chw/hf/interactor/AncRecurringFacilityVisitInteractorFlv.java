@@ -25,6 +25,7 @@ import org.smartregister.chw.hf.actionhelper.AncLabTestAction;
 import org.smartregister.chw.hf.actionhelper.AncPharmacyAction;
 import org.smartregister.chw.hf.actionhelper.AncPregnancyStatusAction;
 import org.smartregister.chw.hf.actionhelper.AncTriageAction;
+import org.smartregister.chw.hf.dao.HfAncDao;
 import org.smartregister.chw.hf.repository.HfLocationRepository;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hf.utils.ContactUtil;
@@ -43,6 +44,11 @@ import java.util.Set;
 import timber.log.Timber;
 
 public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityVisitInteractor.Flavor {
+    String baseEntityId;
+    public AncRecurringFacilityVisitInteractorFlv(String baseEntityId) {
+        this.baseEntityId = baseEntityId;
+    }
+
     @Override
     public LinkedHashMap<String, BaseAncHomeVisitAction> calculateActions(BaseAncHomeVisitContract.View view, MemberObject memberObject, BaseAncHomeVisitContract.InteractorCallBack callBack) throws BaseAncHomeVisitAction.ValidationException {
         LinkedHashMap<String, BaseAncHomeVisitAction> actionList = new LinkedHashMap<>();
@@ -147,16 +153,17 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                 .build();
         actionList.put(context.getString(R.string.anc_recuring_visit_pregnancy_status), pregnancyStatus);
 
-
-        JSONObject birthReviewForm = initializeHealthFacilitiesList(FormUtils.getFormUtils().getFormJson(Constants.JSON_FORM.ANC_RECURRING_VISIT.BIRTH_REVIEW_AND_EMERGENCY_PLAN));
-        BaseAncHomeVisitAction birthReview = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_review_birth_and_emergency_plan))
-                .withOptional(true)
-                .withDetails(details)
-                .withJsonPayload(birthReviewForm.toString())
-                .withFormName(Constants.JSON_FORM.ANC_RECURRING_VISIT.getBirthReviewAndEmergencyPlan())
-                .withHelper(new AncBirthReviewAction(memberObject))
-                .build();
-        actionList.put(context.getString(R.string.anc_recuring_visit_review_birth_and_emergency_plan), birthReview);
+        if(!HfAncDao.isReviewFormFilled(baseEntityId)){
+            JSONObject birthReviewForm = initializeHealthFacilitiesList(FormUtils.getFormUtils().getFormJson(Constants.JSON_FORM.ANC_RECURRING_VISIT.BIRTH_REVIEW_AND_EMERGENCY_PLAN));
+            BaseAncHomeVisitAction birthReview = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_review_birth_and_emergency_plan))
+                    .withOptional(true)
+                    .withDetails(details)
+                    .withJsonPayload(birthReviewForm.toString())
+                    .withFormName(Constants.JSON_FORM.ANC_RECURRING_VISIT.getBirthReviewAndEmergencyPlan())
+                    .withHelper(new AncBirthReviewAction(memberObject))
+                    .build();
+            actionList.put(context.getString(R.string.anc_recuring_visit_review_birth_and_emergency_plan), birthReview);
+        }
 
 
     }

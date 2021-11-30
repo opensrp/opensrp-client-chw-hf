@@ -1,10 +1,5 @@
 package org.smartregister.chw.hf.activity;
 
-import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
-import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
-import static org.smartregister.chw.hf.utils.Constants.Events.ANC_FIRST_FACILITY_VISIT;
-import static org.smartregister.chw.hf.utils.Constants.Events.ANC_RECURRING_FACILITY_VISIT;
-
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
@@ -14,16 +9,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.gson.JsonArray;
 
 import org.apache.commons.lang3.StringUtils;
 import org.jeasy.rules.api.Rules;
-import org.joda.time.LocalDate;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -60,10 +49,15 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Set;
 
+import androidx.recyclerview.widget.RecyclerView;
 import timber.log.Timber;
 
+import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
+import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
+import static org.smartregister.chw.hf.utils.Constants.Events.ANC_FIRST_FACILITY_VISIT;
+import static org.smartregister.chw.hf.utils.Constants.Events.ANC_RECURRING_FACILITY_VISIT;
+
 public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
-    DateTimeFormatter formatter = DateTimeFormat.forPattern("dd-MM-yyyy");
     private CommonPersonObjectClient commonPersonObjectClient;
     private boolean hivPositive;
     public static void startMe(Activity activity, String baseEntityID) {
