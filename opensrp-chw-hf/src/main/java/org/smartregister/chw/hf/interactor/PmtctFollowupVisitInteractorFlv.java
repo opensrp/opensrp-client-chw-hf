@@ -5,6 +5,7 @@ import android.content.Context;
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.hf.actionhelper.PmtctVisitAction;
 import org.smartregister.chw.hf.utils.Constants;
@@ -14,6 +15,8 @@ import org.smartregister.chw.pmtct.model.BasePmtctHomeVisitAction;
 
 import java.text.MessageFormat;
 import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 import timber.log.Timber;
 
@@ -34,26 +37,11 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
 
     private void evaluatePmtctActions(LinkedHashMap<String, BasePmtctHomeVisitAction> actionList, final MemberObject memberObject, Context context) throws BasePmtctHomeVisitAction.ValidationException {
 
-        BasePmtctHomeVisitAction hvlTestAction = new BasePmtctHomeVisitAction.Builder(context, "HVL TEST")
-                .withOptional(true)
-                .withFormName(Constants.JSON_FORM.getHvlTestForm())
-                .withHelper(new HvlTestAction())
-                .build();
-        actionList.put("HVL TEST", hvlTestAction);
-
-        BasePmtctHomeVisitAction hvlSuppression = new BasePmtctHomeVisitAction.Builder(context, "HVL SUPPRESSION")
-                .withOptional(true)
-                .withFormName(Constants.JSON_FORM.getHvlSuppressionForm())
-                .withHelper(new HvlSuppression())
-                .build();
-        actionList.put("HVL SUPPRESSION", hvlSuppression);
-
-        BasePmtctHomeVisitAction pmtctFirstVisit = new BasePmtctHomeVisitAction.Builder(context, "ART")
+        BasePmtctHomeVisitAction pmtctEac = new BasePmtctHomeVisitAction.Builder(context, "Enhanced Adherence Counselling (EAC)")
                 .withOptional(false)
-                .withFormName("pmtct_first_visit")
-                //  .withHelper(new HvlSuppression())
+                .withFormName(Constants.JSON_FORM.getPmtctEacFirst())
                 .build();
-        actionList.put("ART", pmtctFirstVisit);
+        actionList.put("Enhanced Adherence Counselling (EAC)", pmtctEac);
     }
 
     private class HvlTestAction extends PmtctVisitAction {

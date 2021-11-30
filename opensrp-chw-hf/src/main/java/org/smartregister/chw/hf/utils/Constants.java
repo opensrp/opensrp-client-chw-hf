@@ -34,6 +34,12 @@ public class Constants extends CoreConstants {
 
         private static final String PMTCT_REGISTRATION = "pmtct_first_visit";
 
+        public static String getPmtctEacFirst() {
+            return PMTCT_EAC_FIRST;
+        }
+
+        private static final String PMTCT_EAC_FIRST = "pmtct_eac_first";
+
         public static String getHvlTestForm() {
             return HVL_TEST_FORM;
         }
