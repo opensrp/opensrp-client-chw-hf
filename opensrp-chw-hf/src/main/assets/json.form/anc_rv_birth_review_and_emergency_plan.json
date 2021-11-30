@@ -52,15 +52,187 @@
       {
         "type": "check_box",
         "key": "partner_involved",
-        "openmrs_entity": "",
-        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "partner_involved",
         "openmrs_entity_parent": "",
         "options": [
           {
             "text": "Partner Involved",
-            "key": "partner_involved_chk"
+            "key": "partner_involved_chk",
+            "openmrs_entity_id": "partner_involved_chk",
+            "openmrs_entity": "concept"
           }
         ]
+      },
+      {
+        "type": "edit_text",
+        "key": "partner_surname",
+        "hint": "Partner's Surname",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "partner_surname",
+        "openmrs_entity_parent": "",
+        "v_regex": {
+          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
+          "err": "Please enter partner's surname"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter partner's surname"
+        },
+        "relevance": {
+          "step1:partner_involved": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "partner_involved_chk"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "type": "edit_text",
+        "key": "partner_first_name",
+        "hint": "Partner's First Name",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "partner_first_name",
+        "openmrs_entity_parent": "",
+        "v_regex": {
+          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
+          "err": "Please enter partner's first name"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter partner's first name"
+        },
+        "relevance": {
+          "step1:partner_involved": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "partner_involved_chk"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "type": "edit_text",
+        "key": "partner_last_name",
+        "hint": "Partner's Last Name",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "partner_last_name",
+        "openmrs_entity_parent": "",
+        "v_regex": {
+          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
+          "err": "Please enter partner's last name"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter partner's last name"
+        },
+        "relevance": {
+          "step1:partner_involved": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "partner_involved_chk"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "partner_age",
+        "hint": "Partner's Age",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "partner_age",
+        "openmrs_entity_parent": "",
+        "type": "edit_text",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter partner's age"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Age must be equal or greater than 0"
+        },
+        "v_max": {
+          "value": "120",
+          "err": "Age must be equal or less than 120"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter partner's age"
+        },
+        "relevance": {
+          "step1:partner_involved": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "partner_involved_chk"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "type": "edit_text",
+        "key": "partner_education",
+        "hint": "Partner's Education Level",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "partner_education",
+        "openmrs_entity_parent": "",
+        "v_regex": {
+          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
+          "err": "Please enter partner's education level"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter partner's education level"
+        },
+        "relevance": {
+          "step1:partner_involved": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "partner_involved_chk"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "type": "edit_text",
+        "key": "partner_work",
+        "hint": "Partner's Work",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "partner_work",
+        "openmrs_entity_parent": "",
+        "v_regex": {
+          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
+          "err": "Please enter partner's work"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter partner's work"
+        },
+        "relevance": {
+          "step1:partner_involved": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "partner_involved_chk"
+                ]
+              }
+            ]
+          }
+        }
       },
       {
         "type": "spinner",
