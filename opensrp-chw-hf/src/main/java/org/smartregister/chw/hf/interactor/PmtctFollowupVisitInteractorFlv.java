@@ -37,107 +37,17 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
 
     private void evaluatePmtctActions(LinkedHashMap<String, BasePmtctHomeVisitAction> actionList, final MemberObject memberObject, Context context) throws BasePmtctHomeVisitAction.ValidationException {
 
-        BasePmtctHomeVisitAction pmtctEac = new BasePmtctHomeVisitAction.Builder(context, "Enhanced Adherence Counselling (EAC)")
+        BasePmtctHomeVisitAction HVLFollowup = new BasePmtctHomeVisitAction.Builder(context, "HIV Viral Load (HVL)")
+                .withOptional(false)
+                .withFormName(Constants.JSON_FORM.getHvlSuppressionForm())
+                .build();
+        actionList.put("HIV Viral Load (HVL)", HVLFollowup);
+
+        BasePmtctHomeVisitAction EAC = new BasePmtctHomeVisitAction.Builder(context, "Enhanced Adherence Counselling (EAC)")
                 .withOptional(false)
                 .withFormName(Constants.JSON_FORM.getPmtctEacFirst())
                 .build();
-        actionList.put("Enhanced Adherence Counselling (EAC)", pmtctEac);
-    }
-
-    private class HvlTestAction extends PmtctVisitAction {
-        private String received_hvl_test_value;
-        private Context context;
-
-        @Override
-        public String getPreProcessed() {
-            return null;
-        }
-
-        @Override
-        public void onPayloadReceived(String jsonPayload) {
-            try {
-                JSONObject jsonObject = new JSONObject(jsonPayload);
-                received_hvl_test_value = CoreJsonFormUtils.getValue(jsonObject, "hvl_test");
-                hvlTestValue = received_hvl_test_value;
-            } catch (JSONException e) {
-                Timber.e(e);
-            }
-        }
-
-        @Override
-        public BasePmtctHomeVisitAction.ScheduleStatus getPreProcessedStatus() {
-            return null;
-        }
-
-        @Override
-        public String getPreProcessedSubTitle() {
-            return null;
-        }
-
-        @Override
-        public String postProcess(String s) {
-            return null;
-        }
-
-        @Override
-        public String evaluateSubTitle() {
-            return MessageFormat.format("HVL Test Value : {0}", received_hvl_test_value);
-        }
-
-        @Override
-        public BasePmtctHomeVisitAction.Status evaluateStatusOnPayload() {
-            if (StringUtils.isBlank(received_hvl_test_value)) {
-                return BasePmtctHomeVisitAction.Status.PENDING;
-            } else {
-                return BasePmtctHomeVisitAction.Status.COMPLETED;
-            }
-        }
-
-    }
-
-    private class HvlSuppression extends PmtctVisitAction {
-        @Override
-        public String getPreProcessed() {
-            return null;
-        }
-
-        @Override
-        public void onPayloadReceived(String jsonPayload) {
-            try {
-                JSONObject jsonObject = new JSONObject(jsonPayload);
-            } catch (JSONException e) {
-                Timber.e(e);
-            }
-        }
-
-        @Override
-        public BasePmtctHomeVisitAction.ScheduleStatus getPreProcessedStatus() {
-            return null;
-        }
-
-        @Override
-        public String getPreProcessedSubTitle() {
-            return null;
-        }
-
-        @Override
-        public String postProcess(String s) {
-            return null;
-        }
-
-        @Override
-        public String evaluateSubTitle() {
-            return MessageFormat.format("HVL Test Value : {0}", hvlTestValue);
-        }
-
-        @Override
-        public BasePmtctHomeVisitAction.Status evaluateStatusOnPayload() {
-            if (StringUtils.isBlank(hvlTestValue)) {
-                return BasePmtctHomeVisitAction.Status.PENDING;
-            } else {
-                return BasePmtctHomeVisitAction.Status.COMPLETED;
-            }
-        }
+        actionList.put("Enhanced Adherence Counselling (EAC)", EAC);
     }
 
 }
