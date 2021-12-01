@@ -9,8 +9,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import androidx.annotation.NonNull;
-
 import org.apache.commons.lang3.StringUtils;
 import org.smartregister.chw.core.activity.CoreFamilyProfileActivity;
 import org.smartregister.chw.core.activity.CorePmtctProfileActivity;
@@ -32,6 +30,7 @@ import org.smartregister.family.model.BaseFamilyOtherMemberProfileActivityModel;
 
 import java.util.Date;
 
+import androidx.annotation.NonNull;
 import timber.log.Timber;
 
 import static org.smartregister.chw.hf.utils.Constants.JSON_FORM.getHvlSuppressionForm;
@@ -51,24 +50,19 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         Intent intent = new Intent(activity, PmtctRegisterActivity.class);
         intent.putExtra(Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID,baseEntityID );
         intent.putExtra(Constants.ACTIVITY_PAYLOAD.PMTCT_FORM_NAME, getHvlSuppressionForm());
-        intent.putExtra(Constants.ACTIVITY_PAYLOAD.ACTION, "ACTION");
+        intent.putExtra(Constants.ACTIVITY_PAYLOAD.ACTION, org.smartregister.chw.hf.utils.Constants.Actions.FOLLOWUP);
         activity.startActivityForResult(intent, Constants.REQUEST_CODE_GET_JSON);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        ((PmtctProfileContract.Presenter)getPresenter()).fetchReferralTasks();
-        if(notificationAndReferralRecyclerView != null && notificationAndReferralRecyclerView.getAdapter() != null){
-            notificationAndReferralRecyclerView.getAdapter().notifyDataSetChanged();
-        }
     }
 
     @Override
     protected void initializePresenter() {
         showProgressBar(true);
         String baseEntityId = getIntent().getStringExtra(BASE_ENTITY_ID);
-
         memberObject = PmtctDao.getMember(baseEntityId);
         profilePresenter = new PmtctProfilePresenter(this, new CorePmtctProfileInteractor(), memberObject);
         fetchProfileData();
@@ -79,27 +73,69 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
     protected void onCreation() {
         super.onCreation();
         org.smartregister.util.Utils.startAsyncTask(new UpdateVisitDueTask(), null);
-        this.setOnMemberTypeLoadedListener(memberType -> {
-            switch (memberType.getMemberType()) {
-                case CoreConstants.TABLE_NAME.ANC_MEMBER:
-                    AncMedicalHistoryActivity.startMe(PmtctProfileActivity.this, memberType.getMemberObject());
-                    break;
-                case CoreConstants.TABLE_NAME.PNC_MEMBER:
-                    PncMedicalHistoryActivity.startMe(PmtctProfileActivity.this, memberType.getMemberObject());
-                    break;
-                case CoreConstants.TABLE_NAME.CHILD:
-                    ChildMedicalHistoryActivity.startMe(PmtctProfileActivity.this, memberType.getMemberObject());
-                    break;
-                default:
-                    Timber.v("Member info undefined");
-                    break;
-            }
-        });
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         return super.onOptionsItemSelected(item);
+    }
+
+
+    @Override
+    public void initializeFloatingMenu() {
+        basePmtctFloatingMenu = new PmtctFloatingMenu(this, memberObject);
+        checkPhoneNumberProvided(StringUtils.isNotBlank(memberObject.getPhoneNumber()));
+        OnClickFloatingMenu onClickFloatingMenu = viewId -> {
+            switch (viewId) {
+                case R.id.call_layout:
+                    ((CorePmtctFloatingMenu) basePmtctFloatingMenu).launchCallWidget();
+                    ((CorePmtctFloatingMenu) basePmtctFloatingMenu).animateFAB();
+                    break;
+                default:
+                    Timber.d("Unknown fab action");
+                    break;
+            }
+
+        };
+
+        ((CorePmtctFloatingMenu) basePmtctFloatingMenu).setFloatMenuClickListener(onClickFloatingMenu);
+        basePmtctFloatingMenu.setGravity(Gravity.BOTTOM | Gravity.END);
+        LinearLayout.LayoutParams linearLayoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT);
+        addContentView(basePmtctFloatingMenu, linearLayoutParams);
+    }
+
+    private class UpdateVisitDueTask extends AsyncTask<Void, Void, Void> {
+        private PmtctFollowUpRule pmtctFollowUpRule;
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            Date pmtctRegisterDate = PmtctDao.getPmtctRegisterDate(memberObject.getBaseEntityId());
+            Date followUpVisitDate = PmtctDao.getPmtctFollowUpVisitDate(memberObject.getBaseEntityId());
+            pmtctFollowUpRule = HomeVisitUtil.getPmtctVisitStatus(pmtctRegisterDate, followUpVisitDate);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void param) {
+            profilePresenter.recordPmtctButton(pmtctFollowUpRule.getButtonStatus());
+            boolean showEac = !pmtctFollowUpRule.getButtonStatus().equalsIgnoreCase("DUE")
+                                && !pmtctFollowUpRule.getButtonStatus().equalsIgnoreCase("OVERDUE")
+                                && !pmtctFollowUpRule.getButtonStatus().equalsIgnoreCase("EXPIRY");
+
+            if(showEac){
+                recordVisits.setWeightSum(1);
+                textViewRecordAnc.setVisibility(View.VISIBLE);
+                textViewRecordAnc.setText("Record EAC Visits");
+            }
+            profilePresenter.visitRow(pmtctFollowUpRule.getButtonStatus());
+            profilePresenter.nextRow(pmtctFollowUpRule.getButtonStatus(), FpUtil.sdf.format(pmtctFollowUpRule.getDueDate()));
+        }
+    }
+
+    @Override
+    protected void setupViews() {
+        super.setupViews();
     }
 
     @NonNull
@@ -183,7 +219,6 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         intent.putExtra(CoreConstants.INTENT_KEY.SERVICE_DUE, true);
         startActivity(intent);
     }
-
     @Override
     protected Class<? extends CoreFamilyProfileActivity> getFamilyProfileActivityClass() {
         return FamilyProfileActivity.class;
@@ -201,61 +236,6 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
 
     private void checkPhoneNumberProvided(boolean hasPhoneNumber) {
         ((CorePmtctFloatingMenu) basePmtctFloatingMenu).redraw(hasPhoneNumber);
-    }
-
-    @Override
-    public void initializeFloatingMenu() {
-        basePmtctFloatingMenu = new PmtctFloatingMenu(this, memberObject);
-        checkPhoneNumberProvided(StringUtils.isNotBlank(memberObject.getPhoneNumber()));
-        OnClickFloatingMenu onClickFloatingMenu = viewId -> {
-            switch (viewId) {
-                case R.id.malaria_fab:
-                    ((CorePmtctFloatingMenu) basePmtctFloatingMenu).animateFAB();
-                    break;
-                case R.id.call_layout:
-                    ((CorePmtctFloatingMenu) basePmtctFloatingMenu).launchCallWidget();
-                    ((CorePmtctFloatingMenu) basePmtctFloatingMenu).animateFAB();
-                    break;
-                default:
-                    Timber.d("Unknown fab action");
-                    break;
-            }
-
-        };
-
-        ((CorePmtctFloatingMenu) basePmtctFloatingMenu).setFloatMenuClickListener(onClickFloatingMenu);
-        basePmtctFloatingMenu.setGravity(Gravity.BOTTOM | Gravity.END);
-        LinearLayout.LayoutParams linearLayoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.MATCH_PARENT);
-        addContentView(basePmtctFloatingMenu, linearLayoutParams);
-    }
-
-    private class UpdateVisitDueTask extends AsyncTask<Void, Void, Void> {
-        private PmtctFollowUpRule pmtctFollowUpRule;
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            Date pmtctRegisterDate = PmtctDao.getPmtctRegisterDate(memberObject.getBaseEntityId());
-            Date followUpVisitDate = PmtctDao.getPmtctFollowUpVisitDate(memberObject.getBaseEntityId());
-            pmtctFollowUpRule = HomeVisitUtil.getPmtctVisitStatus(pmtctRegisterDate, followUpVisitDate);
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void param) {
-            profilePresenter.recordPmtctButton(pmtctFollowUpRule.getButtonStatus());
-            // textViewVisitDone.setVisibility(View.VISIBLE);
-            profilePresenter.visitRow(pmtctFollowUpRule.getButtonStatus());
-            profilePresenter.nextRow(pmtctFollowUpRule.getButtonStatus(), FpUtil.sdf.format(pmtctFollowUpRule.getDueDate()));
-        }
-    }
-
-    @Override
-    protected void setupViews() {
-        super.setupViews();
-        recordVisits.setWeightSum(1);
-        textViewRecordAnc.setVisibility(View.VISIBLE);
-        textViewRecordAnc.setText("Record EAC Visits");
     }
 
 

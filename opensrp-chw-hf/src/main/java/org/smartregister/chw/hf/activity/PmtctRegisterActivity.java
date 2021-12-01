@@ -7,13 +7,14 @@ import android.os.Bundle;
 import org.json.JSONObject;
 import org.smartregister.chw.core.activity.CorePmtctRegisterActivity;
 import org.smartregister.chw.core.custom_views.NavigationMenu;
+import org.smartregister.chw.core.utils.FormUtils;
+import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.fragment.PmtctRegisterFragment;
+import org.smartregister.chw.hf.utils.Constants;
+import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.helper.BottomNavigationHelper;
 import org.smartregister.view.fragment.BaseRegisterFragment;
 
-import androidx.annotation.Nullable;
-
-import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.getPmtctForm;
 import static org.smartregister.chw.hf.utils.Constants.JSON_FORM.getPmtctRegistration;
 
 public class PmtctRegisterActivity extends CorePmtctRegisterActivity {
@@ -36,16 +37,22 @@ public class PmtctRegisterActivity extends CorePmtctRegisterActivity {
         return new PmtctRegisterFragment();
     }
 
-    @Override
-    public void startFormActivity(JSONObject jsonForm) {
-        super.startFormActivity(jsonForm);
-    }
+
 
     @Override
     protected void registerBottomNavigation() {
         bottomNavigationHelper = new BottomNavigationHelper();
         bottomNavigationView = findViewById(org.smartregister.R.id.bottom_navigation);
         FamilyRegisterActivity.registerBottomNavigation(bottomNavigationHelper, bottomNavigationView, this);
+    }
+
+    @Override
+    public void startFormActivity(JSONObject jsonForm) {
+        if(ACTION.equalsIgnoreCase(Constants.Actions.FOLLOWUP)){
+            startActivityForResult(FormUtils.getStartFormActivity(jsonForm, getString(R.string.pmtct_followup_form_title), this), JsonFormUtils.REQUEST_CODE_GET_JSON);
+        }else{
+            startActivityForResult(FormUtils.getStartFormActivity(jsonForm, this.getString(org.smartregister.chw.core.R.string.pmtct_registration), this), JsonFormUtils.REQUEST_CODE_GET_JSON);
+        }
     }
 
 }
