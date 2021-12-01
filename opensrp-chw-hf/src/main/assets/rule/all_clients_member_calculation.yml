@@ -1,45 +1,10 @@
 ---
-name: step1_client_age_calculated
-description: Age calculated
-priority: 1
-condition: "true"
-actions:
-  - "calculation = (!step1_client_dob_unknown.isEmpty() && step1_client_dob_unknown.contains('client_dob_unknown')) ? step1_client_age : helper.getDifferenceDays(step1_client_dob) / 365.25"
----
 name: step2_age_calculated
 description: Age calculated
 priority: 1
 condition: "true"
 actions:
-  - "calculation = step1_client_age_calculated"
----
-name: step2_dob
-description: Date of Birth
-priority: 1
-condition: "true"
-actions:
-  - "calculation = step1_client_dob"
----
-name: step2_sex
-description: Register sex
-priority: 1
-condition: "true"
-actions:
-  - "calculation = step1_client_sex"
----
-name: step2_dob_unknown
-description: Date of birth unknown value
-priority: 1
-condition: "true"
-actions:
-  - "calculation = step1_client_dob_unknown.contains('client_dob_unknown')"
----
-name: step2_age
-description: Age
-priority: 1
-condition: "true"
-actions:
-  - "calculation = step1_client_age"
+  - "calculation = (!step2_dob_unknown.isEmpty() && step2_dob_unknown.contains('dob_unknown')) ? step2_age : helper.getDifferenceDays(step2_dob) / 365.25"
 ---
 name: step2_wra
 description: wra calculation
