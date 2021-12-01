@@ -400,6 +400,13 @@
             "creates_case": [
               "ec_pmtct_registration"
             ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "PMTCT Follow-up Visit",
+            "creates_case": [
+              "ec_pmtct_followup"
+            ]
           }
         ]
       }

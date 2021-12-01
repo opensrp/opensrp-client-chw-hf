@@ -1,6 +1,6 @@
 {
   "count": "2",
-  "encounter_type": "PMTCT Hvl Suppression",
+  "encounter_type": "PMTCT Follow-up Visit",
   "entity_id": "",
   "metadata": {
     "start": {
@@ -50,6 +50,21 @@
     "title": "Clinician Details",
     "next": "step2",
     "fields": [
+      {
+        "type": "edit_text",
+        "key": "followup_visit_date",
+        "hidden": "true",
+        "openmrs_entity_id": "followup_visit_date",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_followup_calculation.yml"
+            }
+          }
+        }
+      },
       {
         "type": "edit_text",
         "key": "clinician_name_followup",

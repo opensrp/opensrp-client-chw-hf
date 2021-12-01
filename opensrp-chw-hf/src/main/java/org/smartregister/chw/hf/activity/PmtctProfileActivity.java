@@ -1,6 +1,5 @@
 package org.smartregister.chw.hf.activity;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -10,8 +9,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import androidx.annotation.NonNull;
+
 import org.apache.commons.lang3.StringUtils;
-import org.json.JSONObject;
 import org.smartregister.chw.core.activity.CoreFamilyProfileActivity;
 import org.smartregister.chw.core.activity.CorePmtctProfileActivity;
 import org.smartregister.chw.core.custom_views.CorePmtctFloatingMenu;
@@ -21,27 +21,20 @@ import org.smartregister.chw.core.rule.PmtctFollowUpRule;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.FpUtil;
 import org.smartregister.chw.core.utils.HomeVisitUtil;
-import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
-import org.smartregister.chw.hf.adapter.HivAndTbReferralCardViewAdapter;
 import org.smartregister.chw.hf.contract.PmtctProfileContract;
 import org.smartregister.chw.hf.custom_view.PmtctFloatingMenu;
-import org.smartregister.chw.hf.model.HivTbReferralTasksAndFollowupFeedbackModel;
 import org.smartregister.chw.hf.presenter.FamilyOtherMemberActivityPresenter;
 import org.smartregister.chw.hf.presenter.PmtctProfilePresenter;
 import org.smartregister.chw.pmtct.dao.PmtctDao;
-import org.smartregister.commonregistry.CommonPersonObjectClient;
+import org.smartregister.chw.pmtct.util.Constants;
 import org.smartregister.family.model.BaseFamilyOtherMemberProfileActivityModel;
-import org.smartregister.util.FormUtils;
 
 import java.util.Date;
-import java.util.List;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 import timber.log.Timber;
 
-import static org.smartregister.chw.core.utils.Utils.getCommonPersonObjectClient;
+import static org.smartregister.chw.hf.utils.Constants.JSON_FORM.getHvlSuppressionForm;
 import static org.smartregister.chw.pmtct.util.Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID;
 
 public class PmtctProfileActivity extends CorePmtctProfileActivity {
@@ -52,6 +45,14 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         Intent intent = new Intent(activity, PmtctProfileActivity.class);
         intent.putExtra(BASE_ENTITY_ID, baseEntityId);
         activity.startActivity(intent);
+    }
+
+    public void startFollowupForm(Activity activity, String baseEntityID){
+        Intent intent = new Intent(activity, PmtctRegisterActivity.class);
+        intent.putExtra(Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID,baseEntityID );
+        intent.putExtra(Constants.ACTIVITY_PAYLOAD.PMTCT_FORM_NAME, getHvlSuppressionForm());
+        intent.putExtra(Constants.ACTIVITY_PAYLOAD.ACTION, "ACTION");
+        activity.startActivityForResult(intent, Constants.REQUEST_CODE_GET_JSON);
     }
 
     @Override
@@ -125,7 +126,7 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         super.onClick(view);
         int id = view.getId();
         if (id == R.id.textview_record_pmtct) {
-            PmtctFollowupVisitActivity.startPmtctFollowUpActivity(this, memberObject.getBaseEntityId());
+            startFollowupForm(this, memberObject.getBaseEntityId());
         }else if(id == R.id.textview_record_anc){
             PmtctEacVisitActivity.startEacActivity(this, memberObject.getBaseEntityId());
         }
