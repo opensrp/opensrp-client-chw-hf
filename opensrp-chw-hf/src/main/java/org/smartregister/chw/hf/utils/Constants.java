@@ -13,11 +13,13 @@ public class Constants extends CoreConstants {
         public static final String ANC_RECURRING_FACILITY_VISIT = "ANC Recurring Facility Visit";
         public static final String ANC_FACILITY_VISIT_NOT_DONE = "ANC Facility Visit Not Done";
         public static final String ANC_FACILITY_VISIT_NOT_DONE_UNDO = "ANC Facility Visit Not Done Undo";
+        public static final String PMTCT_EAC_VISIT = "PMTCT EAC Visit";
     }
 
     public static final class Tables {
         public static final String ANC_FIRST_FACILITY_VISIT = "ec_anc_first_facility_visit";
         public static final String ANC_RECURRING_FACILITY_VISIT = "ec_anc_recurring_facility_visit";
+        public static final String PMTCT_EAC_VISIT = "ec_pmtct_eac_visit" ;
     }
 
     public static final class Visits {

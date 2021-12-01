@@ -44,42 +44,15 @@ import timber.log.Timber;
 import static org.smartregister.chw.core.utils.Utils.getCommonPersonObjectClient;
 import static org.smartregister.chw.pmtct.util.Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID;
 
-public class PmtctProfileActivity extends CorePmtctProfileActivity implements PmtctProfileContract.View {
-
+public class PmtctProfileActivity extends CorePmtctProfileActivity {
     private static String baseEntityId;
-    private static final String ANC = "anc";
-    private static final String PNC = "pnc";
-    private FormUtils formUtils;
 
-
-
-    @SuppressLint("LogNotTimber")
     public static void startPmtctActivity(Activity activity, String baseEntityId) {
         PmtctProfileActivity.baseEntityId = baseEntityId;
         Intent intent = new Intent(activity, PmtctProfileActivity.class);
         intent.putExtra(BASE_ENTITY_ID, baseEntityId);
-
         activity.startActivity(intent);
     }
-
-    private FormUtils getFormUtils() throws Exception {
-        if (formUtils == null) {
-            formUtils = FormUtils.getInstance(HealthFacilityApplication.getInstance());
-        }
-        return formUtils;
-    }
-
-    @Override
-    public void setReferralTasksAndFollowupFeedback(List<HivTbReferralTasksAndFollowupFeedbackModel> tasksAndFollowupFeedbackModels) {
-        if (notificationAndReferralRecyclerView != null && tasksAndFollowupFeedbackModels.size() > 0) {
-            RecyclerView.Adapter mAdapter = new HivAndTbReferralCardViewAdapter(tasksAndFollowupFeedbackModels, this, getCommonPersonObjectClient(baseEntityId), CoreConstants.REGISTERED_ACTIVITIES.HIV_REGISTER_ACTIVITY);
-            notificationAndReferralRecyclerView.setAdapter(mAdapter);
-            notificationAndReferralLayout.setVisibility(View.VISIBLE);
-            findViewById(R.id.view_notification_and_referral_row).setVisibility(View.VISIBLE);
-        }
-    }
-
-
 
     @Override
     protected void onResume() {
@@ -123,24 +96,8 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity implements Pm
         });
     }
 
-
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-            case R.id.action_registration:
-                startFormForEdit(R.string.registration_info,
-                        CoreConstants.JSON_FORM.FAMILY_MEMBER_REGISTER);
-                return true;
-            case R.id.action_remove_member:
-                IndividualProfileRemoveActivity.startIndividualProfileActivity(PmtctProfileActivity.this, getClientDetailsByBaseEntityID(memberObject.getBaseEntityId()), memberObject.getFamilyBaseEntityId(), memberObject.getFamilyHead(), memberObject.getPrimaryCareGiver(), PmtctRegisterActivity.class.getCanonicalName());
-                return true;
-            default:
-                break;
-        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -169,10 +126,10 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity implements Pm
         int id = view.getId();
         if (id == R.id.textview_record_pmtct) {
             PmtctFollowupVisitActivity.startPmtctFollowUpActivity(this, memberObject.getBaseEntityId());
+        }else if(id == R.id.textview_record_anc){
+            PmtctEacVisitActivity.startEacActivity(this, memberObject.getBaseEntityId());
         }
     }
-
-
 
     @Override
     public void setProfileDetailThree(String s) {
@@ -187,29 +144,6 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity implements Pm
     @Override
     public void togglePrimaryCaregiver(boolean b) {
         //implement
-    }
-
-    @Override
-    public void startFormForEdit(Integer title_resource, String formName) {
-
-        //Todo: figure out how its done in hf
-        JSONObject form = null;
-        CommonPersonObjectClient client = org.smartregister.chw.core.utils.Utils.clientForEdit(memberObject.getBaseEntityId());
-
-//        if (formName.equals(CoreConstants.JSON_FORM.getFamilyMemberRegister())) {
-//            form = org.smartregister.chw.core.utils.Utils.get(
-//                    (title_resource != null) ? getResources().getString(title_resource) : null,
-//                    CoreConstants.JSON_FORM.getFamilyMemberRegister(),
-//                    this, client,
-//                    Utils.metadata().familyMemberRegister.updateEventType, memberObject.getLastName(), false);
-//        }
-
-        try {
-            assert form != null;
-            startFormActivity(form);
-        } catch (Exception e) {
-            Timber.e(e);
-        }
     }
 
     @Override
@@ -281,10 +215,6 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity implements Pm
                     ((CorePmtctFloatingMenu) basePmtctFloatingMenu).launchCallWidget();
                     ((CorePmtctFloatingMenu) basePmtctFloatingMenu).animateFAB();
                     break;
-                case R.id.refer_to_facility_layout:
-                    //referToFacility();
-                    ((CorePmtctFloatingMenu) basePmtctFloatingMenu).animateFAB();
-                    break;
                 default:
                     Timber.d("Unknown fab action");
                     break;
@@ -298,9 +228,6 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity implements Pm
                 LinearLayout.LayoutParams.MATCH_PARENT);
         addContentView(basePmtctFloatingMenu, linearLayoutParams);
     }
-
-
-
 
     private class UpdateVisitDueTask extends AsyncTask<Void, Void, Void> {
         private PmtctFollowUpRule pmtctFollowUpRule;
@@ -322,9 +249,13 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity implements Pm
         }
     }
 
-
     @Override
     protected void setupViews() {
         super.setupViews();
+        recordVisits.setWeightSum(1);
+        textViewRecordAnc.setVisibility(View.VISIBLE);
+        textViewRecordAnc.setText("Record EAC Visits");
     }
+
+
 }

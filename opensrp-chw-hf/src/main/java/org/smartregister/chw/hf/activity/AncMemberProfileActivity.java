@@ -213,7 +213,8 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
                 VisitUtils.processVisits();
             } catch (Exception e) {
                 Timber.e(e);
-            }Visit firstVisit = getVisit(ANC_FIRST_FACILITY_VISIT);
+            }
+            Visit firstVisit = getVisit(ANC_FIRST_FACILITY_VISIT);
             Visit lastVisit = getVisit(ANC_RECURRING_FACILITY_VISIT);
             setHivPositive(firstVisit);
             if(firstVisit == null){
