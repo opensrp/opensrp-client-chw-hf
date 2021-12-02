@@ -10,8 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.sun.xml.bind.v2.runtime.reflect.opt.Const;
-
 import org.apache.commons.lang3.StringUtils;
 import org.smartregister.chw.core.activity.CoreFamilyProfileActivity;
 import org.smartregister.chw.core.activity.CorePmtctProfileActivity;
