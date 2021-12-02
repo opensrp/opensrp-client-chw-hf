@@ -39,14 +39,14 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
 
         BasePmtctHomeVisitAction HVLFollowup = new BasePmtctHomeVisitAction.Builder(context, "HIV Viral Load (HVL)")
                 .withOptional(false)
-                .withFormName(Constants.JSON_FORM.getHvlSuppressionForm())
+                .withFormName(Constants.JsonForm.getHvlSuppressionForm())
                 .withHelper(new HVLAction(memberObject))
                 .build();
         actionList.put("HIV Viral Load (HVL)", HVLFollowup);
 
         BasePmtctHomeVisitAction EAC = new BasePmtctHomeVisitAction.Builder(context, "Enhanced Adherence Counselling (EAC)")
                 .withOptional(false)
-                .withFormName(Constants.JSON_FORM.getPmtctEacFirst())
+                .withFormName(Constants.JsonForm.getPmtctEacFirst())
                 .build();
         actionList.put("Enhanced Adherence Counselling (EAC)", EAC);
     }

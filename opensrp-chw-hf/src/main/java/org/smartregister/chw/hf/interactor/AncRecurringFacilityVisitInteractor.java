@@ -26,7 +26,7 @@ public class AncRecurringFacilityVisitInteractor extends CoreAncHomeVisitInterac
 
     @Override
     protected String getTableName() {
-        return Constants.Tables.ANC_RECURRING_FACILITY_VISIT;
+        return Constants.TableName.ANC_RECURRING_FACILITY_VISIT;
     }
 
     @Override

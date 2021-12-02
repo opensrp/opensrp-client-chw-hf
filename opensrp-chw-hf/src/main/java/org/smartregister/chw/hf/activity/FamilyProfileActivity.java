@@ -30,8 +30,6 @@ import java.util.HashMap;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
-import static org.smartregister.chw.hf.utils.Constants.JSON_FORM.HIV_REGISTRATION;
-
 public class FamilyProfileActivity extends CoreFamilyProfileActivity {
     private TextView tvEventDate;
     private TextView tvInterpunct;

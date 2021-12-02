@@ -26,8 +26,6 @@ import java.util.Set;
 
 import timber.log.Timber;
 
-import static org.smartregister.chw.hf.utils.Constants.JSON_FORM.HIV_REGISTRATION;
-
 public class HivIndexContactsRegisterFragment extends CoreHivIndexContactsRegisterFragment {
 
     @Override

@@ -1,6 +1,6 @@
 package org.smartregister.chw.hf.activity;
 
-import static org.smartregister.chw.hf.utils.Constants.JSON_FORM.HIV_REGISTRATION;
+import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
 import static org.smartregister.chw.hiv.util.Constants.ActivityPayload.HIV_MEMBER_OBJECT;
 
 import android.app.Activity;

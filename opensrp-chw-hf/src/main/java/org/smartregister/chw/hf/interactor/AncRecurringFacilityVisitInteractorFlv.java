@@ -32,7 +32,6 @@ import org.smartregister.chw.hf.utils.ContactUtil;
 import org.smartregister.chw.referral.util.JsonFormConstants;
 import org.smartregister.domain.Location;
 import org.smartregister.domain.LocationTag;
-import org.smartregister.repository.LocationRepository;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -100,7 +99,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
 
         JSONObject triageForm = null;
         try {
-            triageForm = FormUtils.getFormUtils().getFormJson(Constants.JSON_FORM.ANC_RECURRING_VISIT.TRIAGE);
+            triageForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.TRIAGE);
             triageForm.getJSONObject("global").put("last_menstrual_period", memberObject.getLastMenstrualPeriod());
             if (details != null && !details.isEmpty()) {
                 JsonFormUtils.populateForm(triageForm, details);
@@ -113,7 +112,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                 .withOptional(false)
                 .withDetails(details)
                 .withJsonPayload(triageForm.toString())
-                .withFormName(Constants.JSON_FORM.ANC_RECURRING_VISIT.getTriage())
+                .withFormName(Constants.JsonForm.AncRecurringVisit.getTriage())
                 .withHelper(new AncTriageAction(memberObject))
                 .build();
         actionList.put(context.getString(R.string.anc_recuring_visit_triage), triage);
@@ -121,7 +120,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
         BaseAncHomeVisitAction consultation = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_cunsultation))
                 .withOptional(true)
                 .withDetails(details)
-                .withFormName(Constants.JSON_FORM.ANC_RECURRING_VISIT.getConsultation())
+                .withFormName(Constants.JsonForm.AncRecurringVisit.getConsultation())
                 .withHelper(new AncConsultationAction(memberObject))
                 .build();
         actionList.put(context.getString(R.string.anc_recuring_visit_cunsultation), consultation);
@@ -130,7 +129,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
         BaseAncHomeVisitAction labTests = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_lab_tests))
                 .withOptional(true)
                 .withDetails(details)
-                .withFormName(Constants.JSON_FORM.ANC_RECURRING_VISIT.getLabTests())
+                .withFormName(Constants.JsonForm.AncRecurringVisit.getLabTests())
                 .withHelper(new AncLabTestAction(memberObject))
                 .build();
         actionList.put(context.getString(R.string.anc_recuring_visit_lab_tests), labTests);
@@ -139,7 +138,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
         BaseAncHomeVisitAction pharmacy = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_pharmacy))
                 .withOptional(true)
                 .withDetails(details)
-                .withFormName(Constants.JSON_FORM.ANC_RECURRING_VISIT.getPharmacy())
+                .withFormName(Constants.JsonForm.AncRecurringVisit.getPharmacy())
                 .withHelper(new AncPharmacyAction(memberObject))
                 .build();
         actionList.put(context.getString(R.string.anc_recuring_visit_pharmacy), pharmacy);
@@ -148,18 +147,18 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
         BaseAncHomeVisitAction pregnancyStatus = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_pregnancy_status))
                 .withOptional(true)
                 .withDetails(details)
-                .withFormName(Constants.JSON_FORM.ANC_RECURRING_VISIT.getPregnancyStatus())
+                .withFormName(Constants.JsonForm.AncRecurringVisit.getPregnancyStatus())
                 .withHelper(new AncPregnancyStatusAction(memberObject))
                 .build();
         actionList.put(context.getString(R.string.anc_recuring_visit_pregnancy_status), pregnancyStatus);
 
         if(!HfAncDao.isReviewFormFilled(baseEntityId)){
-            JSONObject birthReviewForm = initializeHealthFacilitiesList(FormUtils.getFormUtils().getFormJson(Constants.JSON_FORM.ANC_RECURRING_VISIT.BIRTH_REVIEW_AND_EMERGENCY_PLAN));
+            JSONObject birthReviewForm = initializeHealthFacilitiesList(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.BIRTH_REVIEW_AND_EMERGENCY_PLAN));
             BaseAncHomeVisitAction birthReview = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_review_birth_and_emergency_plan))
                     .withOptional(true)
                     .withDetails(details)
                     .withJsonPayload(birthReviewForm.toString())
-                    .withFormName(Constants.JSON_FORM.ANC_RECURRING_VISIT.getBirthReviewAndEmergencyPlan())
+                    .withFormName(Constants.JsonForm.AncRecurringVisit.getBirthReviewAndEmergencyPlan())
                     .withHelper(new AncBirthReviewAction(memberObject))
                     .build();
             actionList.put(context.getString(R.string.anc_recuring_visit_review_birth_and_emergency_plan), birthReview);

@@ -18,7 +18,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.anc.AncLibrary;
 import org.smartregister.chw.anc.domain.Visit;
-import org.smartregister.chw.anc.interactor.BaseAncMemberProfileInteractor;
 import org.smartregister.chw.anc.util.Constants;
 import org.smartregister.chw.anc.util.DBConstants;
 import org.smartregister.chw.anc.util.NCUtils;

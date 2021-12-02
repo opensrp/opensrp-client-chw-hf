@@ -17,7 +17,6 @@ import timber.log.Timber;
 
 public class AncPharmacyAction implements BaseAncHomeVisitAction.AncHomeVisitActionHelper {
     protected MemberObject memberObject;
-    private Context context;
     private String jsonPayload;
 
     private String iron_folate_supplements;
@@ -30,7 +29,6 @@ public class AncPharmacyAction implements BaseAncHomeVisitAction.AncHomeVisitAct
 
     @Override
     public void onJsonFormLoaded(String jsonPayload, Context context, Map<String, List<VisitDetail>> map) {
-        this.context = context;
         this.jsonPayload = jsonPayload;
     }
 

@@ -46,7 +46,7 @@ import java.util.Set;
 import timber.log.Timber;
 
 import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
-import static org.smartregister.chw.hf.utils.Constants.JSON_FORM.HIV_REGISTRATION;
+import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
 
 public class PncMemberProfileActivity extends CorePncMemberProfileActivity implements PncMemberProfileContract.View {
 

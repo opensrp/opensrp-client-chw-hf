@@ -4,10 +4,8 @@ import org.smartregister.chw.core.interactor.CorePmtctHomeVisitInteractor;
 import org.smartregister.chw.hf.utils.Constants;
 
 public class EacVisitInteractor extends CorePmtctHomeVisitInteractor {
-    private final Flavor flavor;
     public EacVisitInteractor(){
         setFlavor(new EacVisitInteractorFlv());
-        flavor = new EacVisitInteractorFlv();
     }
 
 
@@ -18,6 +16,6 @@ public class EacVisitInteractor extends CorePmtctHomeVisitInteractor {
 
     @Override
     protected String getTableName() {
-        return Constants.Tables.PMTCT_EAC_VISIT;
+        return Constants.TableName.PMTCT_EAC_VISIT;
     }
 }

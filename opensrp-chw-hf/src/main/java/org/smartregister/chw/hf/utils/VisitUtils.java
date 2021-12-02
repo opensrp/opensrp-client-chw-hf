@@ -2,7 +2,6 @@ package org.smartregister.chw.hf.utils;
 
 import com.google.gson.Gson;
 
-import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,8 +17,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.UUID;
-
-import javax.json.Json;
 
 import timber.log.Timber;
 

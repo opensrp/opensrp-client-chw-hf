@@ -28,8 +28,6 @@ import org.smartregister.chw.hf.utils.ContactUtil;
 import org.smartregister.chw.referral.util.JsonFormConstants;
 import org.smartregister.domain.Location;
 import org.smartregister.domain.LocationTag;
-import org.smartregister.repository.LocationRepository;
-import org.smartregister.repository.LocationTagRepository;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
@@ -92,7 +90,7 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
                                                    final Context context) throws BaseAncHomeVisitAction.ValidationException {
         JSONObject obstetricForm = null;
         try {
-            obstetricForm = FormUtils.getFormUtils().getFormJson(Constants.JSON_FORM.ANC_FIRST_VISIT.OBSTETRIC_EXAMINATION);
+            obstetricForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncFirstVisit.OBSTETRIC_EXAMINATION);
             obstetricForm.getJSONObject("global").put("last_menstrual_period", memberObject.getLastMenstrualPeriod());
             if (details != null && !details.isEmpty()) {
                 JsonFormUtils.populateForm(obstetricForm, details);
@@ -105,7 +103,7 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
         BaseAncHomeVisitAction medicalAndSurgicalHistory = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_first_visit_medical_and_surgical_history))
                 .withOptional(false)
                 .withDetails(details)
-                .withFormName(Constants.JSON_FORM.ANC_FIRST_VISIT.getMedicalAndSurgicalHistory())
+                .withFormName(Constants.JsonForm.AncFirstVisit.getMedicalAndSurgicalHistory())
                 .withHelper(new AncMedicalAndSurgicalHistoryAction(memberObject))
                 .build();
         actionList.put(context.getString(R.string.anc_first_visit_medical_and_surgical_history), medicalAndSurgicalHistory);
@@ -114,7 +112,7 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
                 .withOptional(true)
                 .withDetails(details)
                 .withJsonPayload(obstetricForm.toString())
-                .withFormName(Constants.JSON_FORM.ANC_FIRST_VISIT.getObstetricExamination())
+                .withFormName(Constants.JsonForm.AncFirstVisit.getObstetricExamination())
                 .withHelper(new AncObstetricExaminationAction(memberObject))
                 .build();
         actionList.put(context.getString(R.string.anc_first_visit_obstetric_examination), obstetricExaminationAction);
@@ -122,7 +120,7 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
         BaseAncHomeVisitAction baselineInvestigationAction = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_first_visit_baseline_investigation))
                 .withOptional(true)
                 .withDetails(details)
-                .withFormName(Constants.JSON_FORM.ANC_FIRST_VISIT.getBaselineInvestigation())
+                .withFormName(Constants.JsonForm.AncFirstVisit.getBaselineInvestigation())
                 .withHelper(new AncBaselineInvestigationAction(memberObject))
                 .build();
         actionList.put(context.getString(R.string.anc_first_visit_baseline_investigation), baselineInvestigationAction);
@@ -130,17 +128,17 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
         BaseAncHomeVisitAction vaccinationAction = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_first_visit_tt_vaccination))
                 .withOptional(true)
                 .withDetails(details)
-                .withFormName(Constants.JSON_FORM.ANC_FIRST_VISIT.getTtVaccination())
+                .withFormName(Constants.JsonForm.AncFirstVisit.getTtVaccination())
                 .withHelper(new AncTtVaccinationAction(memberObject))
                 .build();
         actionList.put(context.getString(R.string.anc_first_visit_tt_vaccination), vaccinationAction);
 
-        JSONObject birthReviewForm = initializeHealthFacilitiesList(FormUtils.getFormUtils().getFormJson(Constants.JSON_FORM.ANC_RECURRING_VISIT.BIRTH_REVIEW_AND_EMERGENCY_PLAN));
+        JSONObject birthReviewForm = initializeHealthFacilitiesList(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.BIRTH_REVIEW_AND_EMERGENCY_PLAN));
         BaseAncHomeVisitAction birthReview = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_review_birth_and_emergency_plan))
                 .withOptional(true)
                 .withDetails(details)
                 .withJsonPayload(birthReviewForm.toString())
-                .withFormName(Constants.JSON_FORM.ANC_RECURRING_VISIT.getBirthReviewAndEmergencyPlan())
+                .withFormName(Constants.JsonForm.AncRecurringVisit.getBirthReviewAndEmergencyPlan())
                 .withHelper(new AncBirthReviewAction(memberObject))
                 .build();
         actionList.put(context.getString(R.string.anc_recuring_visit_review_birth_and_emergency_plan), birthReview);

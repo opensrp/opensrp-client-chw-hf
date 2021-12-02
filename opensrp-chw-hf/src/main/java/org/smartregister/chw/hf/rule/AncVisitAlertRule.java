@@ -29,7 +29,6 @@ public class AncVisitAlertRule implements ICommonRule, RegisterAlert {
     private LocalDate lastVisitDate;
     private LocalDate visitNotDoneDate;
     private Context context;
-    private Date anchor;
 
 
     public AncVisitAlertRule(Context context, String lmpDate, String visitDate, String visitNotDoneDate, LocalDate dateCreated) {

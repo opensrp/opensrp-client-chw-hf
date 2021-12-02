@@ -18,7 +18,6 @@ import timber.log.Timber;
 
 public class PmtctVisitAction implements BasePmtctHomeVisitAction.PmtctHomeVisitActionHelper {
     protected MemberObject memberObject;
-    private Context context;
     private String jsonPayload;
 
     private String visit;
@@ -31,7 +30,6 @@ public class PmtctVisitAction implements BasePmtctHomeVisitAction.PmtctHomeVisit
 
     @Override
     public  void onJsonFormLoaded(String jsonPayload, Context context, Map<String, List<VisitDetail>> map) {
-        this.context = context;
         this.jsonPayload = jsonPayload;
     }
 

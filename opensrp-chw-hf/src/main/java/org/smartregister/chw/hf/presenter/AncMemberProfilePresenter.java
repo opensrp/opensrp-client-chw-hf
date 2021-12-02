@@ -1,8 +1,6 @@
 package org.smartregister.chw.hf.presenter;
 
-import org.smartregister.chw.anc.contract.BaseAncMemberProfileContract;
 import org.smartregister.chw.anc.domain.MemberObject;
-
 import org.smartregister.chw.core.contract.AncMemberProfileContract;
 import org.smartregister.chw.core.presenter.CoreAncMemberProfilePresenter;
 import org.smartregister.chw.hf.dao.HfAncDao;

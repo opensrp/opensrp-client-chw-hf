@@ -4,8 +4,6 @@ import android.content.Context;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import androidx.viewpager.widget.ViewPager;
-
 import com.vijay.jsonwizard.utils.FormUtils;
 
 import org.json.JSONException;
@@ -36,11 +34,12 @@ import org.smartregister.family.util.DBConstants;
 import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.view.contract.BaseProfileContract;
 
+import androidx.viewpager.widget.ViewPager;
 import timber.log.Timber;
 
 import static com.vijay.jsonwizard.constants.JsonFormConstants.COUNT;
 import static com.vijay.jsonwizard.constants.JsonFormConstants.STEP1;
-import static org.smartregister.chw.hf.utils.Constants.JSON_FORM.HIV_REGISTRATION;
+import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
 import static org.smartregister.family.util.JsonFormUtils.STEP2;
 
 public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfileActivity {
@@ -59,10 +58,8 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
             AllClientsUtils.updateTbMenuItems(baseEntityId, menu);
 
         }
-        if (isOfReproductiveAge(commonPersonObject, gender)) {
-            if (gender.equalsIgnoreCase("female") && !AncDao.isANCMember(baseEntityId)) {
+        if (isOfReproductiveAge(commonPersonObject, gender) && gender.equalsIgnoreCase("female") && !AncDao.isANCMember(baseEntityId)) {
                 menu.findItem(R.id.action_pregnancy_confirmation).setVisible(true);
-            }
         }
         menu.findItem(R.id.action_anc_registration).setVisible(false);
         menu.findItem(R.id.action_sick_child_follow_up).setVisible(false);
@@ -262,7 +259,7 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
 
     protected void startPregnancyConfirmation() {
         AncRegisterActivity.startAncRegistrationActivity(AllClientsMemberProfileActivity.this, baseEntityId, PhoneNumber,
-                Constants.JSON_FORM.getAncPregnancyConfirmation(), null, familyBaseEntityId, familyName);
+                Constants.JsonForm.getAncPregnancyConfirmation(), null, familyBaseEntityId, familyName);
     }
 
 }

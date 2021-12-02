@@ -10,6 +10,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.sun.xml.bind.v2.runtime.reflect.opt.Const;
+
 import org.apache.commons.lang3.StringUtils;
 import org.smartregister.chw.core.activity.CoreFamilyProfileActivity;
 import org.smartregister.chw.core.activity.CorePmtctProfileActivity;
@@ -39,8 +41,7 @@ import androidx.annotation.NonNull;
 import timber.log.Timber;
 
 import static org.smartregister.chw.hf.utils.Constants.Events.PMTCT_EAC_VISIT;
-import static org.smartregister.chw.hf.utils.Constants.JSON_FORM.getHvlSuppressionForm;
-import static org.smartregister.chw.pmtct.util.Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID;
+import static org.smartregister.chw.hf.utils.Constants.JsonForm.getHvlSuppressionForm;
 
 public class PmtctProfileActivity extends CorePmtctProfileActivity {
     private static String baseEntityId;
@@ -48,15 +49,15 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
     public static void startPmtctActivity(Activity activity, String baseEntityId) {
         PmtctProfileActivity.baseEntityId = baseEntityId;
         Intent intent = new Intent(activity, PmtctProfileActivity.class);
-        intent.putExtra(BASE_ENTITY_ID, baseEntityId);
+        intent.putExtra(Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID, baseEntityId);
         activity.startActivity(intent);
     }
 
-    public void startFollowupForm(Activity activity, String baseEntityID){
+    public void startFollowupForm(Activity activity, String baseEntityID) {
         Intent intent = new Intent(activity, PmtctRegisterActivity.class);
-        intent.putExtra(Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID,baseEntityID );
+        intent.putExtra(Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID, baseEntityID);
         intent.putExtra(Constants.ACTIVITY_PAYLOAD.PMTCT_FORM_NAME, getHvlSuppressionForm());
-        intent.putExtra(Constants.ACTIVITY_PAYLOAD.ACTION, org.smartregister.chw.hf.utils.Constants.Actions.FOLLOWUP);
+        intent.putExtra(Constants.ACTIVITY_PAYLOAD.ACTION, org.smartregister.chw.hf.utils.Constants.ActionList.FOLLOWUP);
         activity.startActivityForResult(intent, Constants.REQUEST_CODE_GET_JSON);
     }
 
@@ -68,7 +69,7 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
     @Override
     protected void initializePresenter() {
         showProgressBar(true);
-        String baseEntityId = getIntent().getStringExtra(BASE_ENTITY_ID);
+        String baseEntityId = getIntent().getStringExtra(Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID);
         memberObject = PmtctDao.getMember(baseEntityId);
         profilePresenter = new PmtctProfilePresenter(this, new CorePmtctProfileInteractor(), memberObject);
         fetchProfileData();
@@ -136,15 +137,15 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         protected void onPostExecute(Void param) {
             profilePresenter.recordPmtctButton(pmtctFollowUpRule.getButtonStatus());
             boolean showEac = !pmtctFollowUpRule.getButtonStatus().equalsIgnoreCase("DUE")
-                                && !pmtctFollowUpRule.getButtonStatus().equalsIgnoreCase("OVERDUE")
-                                && !pmtctFollowUpRule.getButtonStatus().equalsIgnoreCase("EXPIRY");
+                    && !pmtctFollowUpRule.getButtonStatus().equalsIgnoreCase("OVERDUE")
+                    && !pmtctFollowUpRule.getButtonStatus().equalsIgnoreCase("EXPIRY");
             boolean isEligible = HfPmtctDao.isEligibleForEac(baseEntityId);
 
-            if(showEac && isEligible){
+            if (showEac && isEligible) {
                 recordVisits.setWeightSum(1);
                 textViewRecordAnc.setVisibility(View.VISIBLE);
                 textViewRecordAnc.setText(R.string.pmtct_record_eac_visit);
-            }else{
+            } else {
                 profilePresenter.visitRow(pmtctFollowUpRule.getButtonStatus());
             }
             profilePresenter.nextRow(pmtctFollowUpRule.getButtonStatus(), FpUtil.sdf.format(pmtctFollowUpRule.getDueDate()));
@@ -155,7 +156,7 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
     protected void setupViews() {
         super.setupViews();
         Visit lastEacVisit = getVisit(PMTCT_EAC_VISIT);
-        if(lastEacVisit != null && !lastEacVisit.getProcessed()){
+        if (lastEacVisit != null && !lastEacVisit.getProcessed()) {
             showVisitInProgress();
         }
 
@@ -186,12 +187,12 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         int id = view.getId();
         if (id == R.id.textview_record_pmtct) {
             startFollowupForm(this, memberObject.getBaseEntityId());
-        }else if(id == R.id.textview_record_anc){
+        } else if (id == R.id.textview_record_anc) {
             PmtctEacVisitActivity.startEacActivity(this, memberObject.getBaseEntityId(), false);
-        }else if (id == R.id.textview_edit){
+        } else if (id == R.id.textview_edit) {
             Visit lastVisit = getVisit(PMTCT_EAC_VISIT);
-            if(lastVisit != null){
-                PmtctEacVisitActivity.startEacActivity(this,memberObject.getBaseEntityId(),true);
+            if (lastVisit != null) {
+                PmtctEacVisitActivity.startEacActivity(this, memberObject.getBaseEntityId(), true);
             }
         }
 
@@ -207,7 +208,8 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         imageViewCross.setImageResource(org.smartregister.chw.core.R.drawable.activityrow_notvisited);
     }
 
-    public @Nullable Visit getVisit(String eventType){
+    public @Nullable
+    Visit getVisit(String eventType) {
         return PmtctLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), eventType);
     }
 
@@ -262,6 +264,7 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         intent.putExtra(CoreConstants.INTENT_KEY.SERVICE_DUE, true);
         startActivity(intent);
     }
+
     @Override
     protected Class<? extends CoreFamilyProfileActivity> getFamilyProfileActivityClass() {
         return FamilyProfileActivity.class;

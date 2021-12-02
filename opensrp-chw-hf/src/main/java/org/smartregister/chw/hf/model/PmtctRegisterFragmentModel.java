@@ -4,7 +4,6 @@ import org.jetbrains.annotations.NotNull;
 import org.smartregister.chw.core.utils.ChildDBConstants;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.pmtct.model.BasePmtctRegisterFragmentModel;
-import org.smartregister.chw.pmtct.model.BasePmtctRegisterModel;
 import org.smartregister.cursoradapter.SmartRegisterQueryBuilder;
 import org.smartregister.family.util.DBConstants;
 
@@ -47,10 +46,10 @@ public class PmtctRegisterFragmentModel extends BasePmtctRegisterFragmentModel {
         columnList.add("T1." + DBConstants.KEY.FIRST_NAME + " || " + "' '" + " || " + "T1." + DBConstants.KEY.MIDDLE_NAME + " || " + "' '" + " || " + "T1." + DBConstants.KEY.LAST_NAME + " AS " + DBConstants.KEY.PRIMARY_CAREGIVER);
         columnList.add("T2." + DBConstants.KEY.FIRST_NAME + " || " + "' '" + " || " + "T2." + DBConstants.KEY.MIDDLE_NAME + " || " + "' '" + " || " + "T2." + DBConstants.KEY.LAST_NAME + " AS " + DBConstants.KEY.FAMILY_HEAD);
         columnList.add(Constants.TABLE_NAME.FAMILY + "." + DBConstants.KEY.FIRST_NAME + " as " + org.smartregister.chw.anc.util.DBConstants.KEY.FAMILY_NAME);
-//        columnList.add(org.smartregister.chw.tb.util.Constants.Tables.TB + "." + org.smartregister.chw.tb.util.DBConstants.Key.PLACE_OF_DOMICILE);
-//        columnList.add(org.smartregister.chw.tb.util.Constants.Tables.TB + "." + org.smartregister.chw.tb.util.DBConstants.Key.COMMUNITY_CLIENT_TB_REGISTRATION_NUMBER);
-//        columnList.add(org.smartregister.chw.tb.util.Constants.Tables.TB + "." + org.smartregister.chw.tb.util.DBConstants.Key.CLIENT_TB_STATUS_DURING_REGISTRATION);
-//        columnList.add(org.smartregister.chw.tb.util.Constants.Tables.TB + "." + org.smartregister.chw.tb.util.DBConstants.Key.CLIENT_TB_STATUS_AFTER_TESTING);
+//        columnList.add(org.smartregister.chw.tb.util.Constants.TableName.TB + "." + org.smartregister.chw.tb.util.DBConstants.Key.PLACE_OF_DOMICILE);
+//        columnList.add(org.smartregister.chw.tb.util.Constants.TableName.TB + "." + org.smartregister.chw.tb.util.DBConstants.Key.COMMUNITY_CLIENT_TB_REGISTRATION_NUMBER);
+//        columnList.add(org.smartregister.chw.tb.util.Constants.TableName.TB + "." + org.smartregister.chw.tb.util.DBConstants.Key.CLIENT_TB_STATUS_DURING_REGISTRATION);
+//        columnList.add(org.smartregister.chw.tb.util.Constants.TableName.TB + "." + org.smartregister.chw.tb.util.DBConstants.Key.CLIENT_TB_STATUS_AFTER_TESTING);
 
         return columnList.toArray(new String[columnList.size()]);
     }

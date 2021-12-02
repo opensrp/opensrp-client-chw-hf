@@ -5,9 +5,6 @@ import android.content.Context;
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.smartregister.chw.anc.AncLibrary;
-import org.smartregister.chw.pmtct.domain.Visit;
-import org.smartregister.chw.pmtct.util.VisitUtils;
 import org.smartregister.chw.core.interactor.CorePmtctHomeVisitInteractor;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.hf.actionhelper.PmtctVisitAction;
@@ -15,12 +12,12 @@ import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.pmtct.PmtctLibrary;
 import org.smartregister.chw.pmtct.contract.BasePmtctHomeVisitContract;
 import org.smartregister.chw.pmtct.domain.MemberObject;
+import org.smartregister.chw.pmtct.domain.Visit;
 import org.smartregister.chw.pmtct.domain.VisitDetail;
 import org.smartregister.chw.pmtct.model.BasePmtctHomeVisitAction;
+import org.smartregister.chw.pmtct.util.VisitUtils;
 
 import java.text.MessageFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -52,7 +49,7 @@ public class EacVisitInteractorFlv implements CorePmtctHomeVisitInteractor.Flavo
         BasePmtctHomeVisitAction EACFirstVisit = new BasePmtctHomeVisitAction.Builder(context, "Enhanced Adherence Counselling (EAC), First Visit")
                 .withOptional(false)
                 .withDetails(details)
-                .withFormName(Constants.JSON_FORM.getPmtctEacFirst())
+                .withFormName(Constants.JsonForm.getPmtctEacFirst())
                 .withHelper(new EACFirstVisitAction(memberObject))
                 .build();
         actionList.put("Enhanced Adherence Counselling (EAC), First Visit", EACFirstVisit);

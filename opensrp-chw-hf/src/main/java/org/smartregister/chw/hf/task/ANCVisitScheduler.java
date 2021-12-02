@@ -83,6 +83,6 @@ public class ANCVisitScheduler extends BaseTaskExecutor {
 
     @Override
     public String getScheduleGroup() {
-        return Constants.SCHEDULE_GROUPS.FACILITY_VISIT;
+        return Constants.ScheduleGroups.FACILITY_VISIT;
     }
 }
