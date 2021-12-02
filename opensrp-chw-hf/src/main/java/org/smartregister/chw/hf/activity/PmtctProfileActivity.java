@@ -25,6 +25,7 @@ import org.smartregister.chw.hf.custom_view.PmtctFloatingMenu;
 import org.smartregister.chw.hf.dao.HfPmtctDao;
 import org.smartregister.chw.hf.presenter.FamilyOtherMemberActivityPresenter;
 import org.smartregister.chw.hf.presenter.PmtctProfilePresenter;
+import org.smartregister.chw.hf.utils.PmtctVisitUtils;
 import org.smartregister.chw.pmtct.PmtctLibrary;
 import org.smartregister.chw.pmtct.dao.PmtctDao;
 import org.smartregister.chw.pmtct.domain.Visit;
@@ -142,7 +143,7 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
             if (showEac && isEligible) {
                 recordVisits.setWeightSum(1);
                 textViewRecordAnc.setVisibility(View.VISIBLE);
-                textViewRecordAnc.setText(R.string.pmtct_record_eac_visit);
+                textViewRecordAnc.setText(R.string.record_eac_visits);
             } else {
                 profilePresenter.visitRow(pmtctFollowUpRule.getButtonStatus());
             }
@@ -153,11 +154,15 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
     @Override
     protected void setupViews() {
         super.setupViews();
+        try {
+            PmtctVisitUtils.processVisits();
+        } catch (Exception e) {
+            Timber.e(e);
+        }
         Visit lastEacVisit = getVisit(PMTCT_EAC_VISIT);
         if (lastEacVisit != null && !lastEacVisit.getProcessed()) {
             showVisitInProgress();
         }
-
     }
 
     @NonNull

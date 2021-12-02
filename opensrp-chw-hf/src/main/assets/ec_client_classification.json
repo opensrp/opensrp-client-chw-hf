@@ -408,6 +408,13 @@
             "creates_case": [
               "ec_pmtct_followup"
             ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "PMTCT EAC Visit",
+            "creates_case": [
+              "ec_pmtct_followup"
+            ]
           }
         ]
       }

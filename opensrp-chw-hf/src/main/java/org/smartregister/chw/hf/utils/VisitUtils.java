@@ -31,8 +31,9 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
 
         List<Visit> visits = visitRepository.getAllUnSynced(calendar.getTime().getTime());
 
-        List<Visit> firstVisitsCompleted = new ArrayList<>();
-        List<Visit> followupVisitsCompleted = new ArrayList<>();
+        List<Visit> ancFirstVisitsCompleted = new ArrayList<>();
+        List<Visit> ancFollowupVisitsCompleted = new ArrayList<>();
+
 
         for(Visit v : visits){
             if(v.getVisitType().equalsIgnoreCase(Constants.Events.ANC_FIRST_FACILITY_VISIT)){
@@ -48,7 +49,7 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
                       isObstetricExaminationDone &&
                       isBaselineInvestigationDone &&
                       isTTVaccinationDone  ){
-                       firstVisitsCompleted.add(v);
+                       ancFirstVisitsCompleted.add(v);
                    }
                } catch (Exception e){
                    Timber.e(e);
@@ -70,20 +71,20 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
                             isLabTestsDone &&
                             isPharmacyDone &&
                             isPregnancyStatusDone){
-                        followupVisitsCompleted.add(v);
+                        ancFollowupVisitsCompleted.add(v);
                     }
                 } catch (Exception e){
                     Timber.e(e);
                 }
             }
         }
-        if(firstVisitsCompleted.size() > 0){
-            processVisits(firstVisitsCompleted,visitRepository,visitDetailsRepository);
+        if(ancFirstVisitsCompleted.size() > 0){
+            processVisits(ancFirstVisitsCompleted,visitRepository,visitDetailsRepository);
         }
 
-        if(followupVisitsCompleted.size() > 0){
-            processVisits(followupVisitsCompleted,visitRepository,visitDetailsRepository);
-            for(Visit v: followupVisitsCompleted) {
+        if(ancFollowupVisitsCompleted.size() > 0){
+            processVisits(ancFollowupVisitsCompleted,visitRepository,visitDetailsRepository);
+            for(Visit v: ancFollowupVisitsCompleted) {
                 if (isNextVisitsCancelled(v)) {
                    createCancelledEvent(v.getJson());
                 }

@@ -45,6 +45,30 @@
             "field": "obs.fieldCode",
             "concept": "hvl_suppression"
           }
+        },
+        {
+          "column_name": "eac_day_1",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "eac_day_1"
+          }
+        },
+        {
+          "column_name": "eac_day_2",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "eac_day_2"
+          }
+        },
+        {
+          "column_name": "eac_day_3",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "eac_day_3"
+          }
         }
       ]
     },
