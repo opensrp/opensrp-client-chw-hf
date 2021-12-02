@@ -49,43 +49,38 @@ public class EacVisitInteractorFlv implements CorePmtctHomeVisitInteractor.Flavo
     }
 
     private void evaluateEacActions(LinkedHashMap<String, BasePmtctHomeVisitAction> actionList, Map<String, List<VisitDetail>> details, MemberObject memberObject, Context context) throws BasePmtctHomeVisitAction.ValidationException {
-        BasePmtctHomeVisitAction EAC = new BasePmtctHomeVisitAction.Builder(context, "Enhanced Adherence Counselling (EAC)")
+        BasePmtctHomeVisitAction EACFirstVisit = new BasePmtctHomeVisitAction.Builder(context, "Enhanced Adherence Counselling (EAC), First Visit")
                 .withOptional(false)
                 .withDetails(details)
                 .withFormName(Constants.JSON_FORM.getPmtctEacFirst())
                 .withHelper(new EACFirstVisitAction(memberObject))
                 .build();
-        actionList.put("Enhanced Adherence Counselling (EAC)", EAC);
+        actionList.put("Enhanced Adherence Counselling (EAC), First Visit", EACFirstVisit);
+
+        BasePmtctHomeVisitAction EACSecondVisit = new BasePmtctHomeVisitAction.Builder(context, "Enhanced Adherence Counselling (EAC), Second Visit")
+                .withOptional(true)
+                .withDetails(details)
+                .withFormName("pmtct_eac_second")
+                .withHelper(new EACSecondVisitAction(memberObject))
+                .build();
+        actionList.put("Enhanced Adherence Counselling (EAC), Second Visit", EACSecondVisit);
+
+        BasePmtctHomeVisitAction EACThirdVisit = new BasePmtctHomeVisitAction.Builder(context, "Enhanced Adherence Counselling (EAC), Third Visit")
+                .withOptional(true)
+                .withDetails(details)
+                .withFormName("pmtct_eac_third")
+                .withHelper(new EACThirdVisitAction(memberObject))
+                .build();
+        actionList.put("Enhanced Adherence Counselling (EAC), Third Visit", EACThirdVisit);
     }
 
     private class EACFirstVisitAction extends PmtctVisitAction {
         protected MemberObject memberObject;
-        private Context context;
-        private String jsonPayload;
-
         private String first_visit;
-        private BasePmtctHomeVisitAction.ScheduleStatus scheduleStatus;
-        private String subTitle;
 
         public EACFirstVisitAction(MemberObject memberObject) {
+            super(memberObject);
             this.memberObject = memberObject;
-        }
-
-        @Override
-        public  void onJsonFormLoaded(String jsonPayload, Context context, Map<String, List<VisitDetail>> map) {
-            this.context = context;
-            this.jsonPayload = jsonPayload;
-        }
-
-        @Override
-        public String getPreProcessed() {
-            try{
-                JSONObject jsonObject = new JSONObject(jsonPayload);
-                return jsonObject.toString();
-            }catch (Exception e){
-                Timber.e(e);
-            }
-            return null;
         }
 
         @Override
@@ -96,21 +91,6 @@ public class EacVisitInteractorFlv implements CorePmtctHomeVisitInteractor.Flavo
             } catch (JSONException e) {
                 Timber.e(e);
             }
-        }
-
-        @Override
-        public BasePmtctHomeVisitAction.ScheduleStatus getPreProcessedStatus() {
-            return scheduleStatus;
-        }
-
-        @Override
-        public String getPreProcessedSubTitle() {
-            return subTitle;
-        }
-
-        @Override
-        public String postProcess(String s) {
-            return null;
         }
 
         @Override
@@ -130,9 +110,80 @@ public class EacVisitInteractorFlv implements CorePmtctHomeVisitInteractor.Flavo
             }
         }
 
+    }
+
+    private class EACSecondVisitAction extends PmtctVisitAction {
+        protected MemberObject memberObject;
+        private String second_visit;
+
+        public EACSecondVisitAction(MemberObject memberObject) {
+            super(memberObject);
+            this.memberObject = memberObject;
+        }
+
         @Override
-        public void onPayloadReceived(BasePmtctHomeVisitAction basePmtctHomeVisitAction){
-            Timber.d("onPayloadReceived");
+        public void onPayloadReceived(String jsonPayload) {
+            try{
+                JSONObject jsonObject = new JSONObject(jsonPayload);
+                second_visit = CoreJsonFormUtils.getValue(jsonObject, "eac_day_2");
+            } catch (JSONException e) {
+                Timber.e(e);
+            }
+        }
+
+        @Override
+        public String evaluateSubTitle() {
+            if (StringUtils.isBlank(second_visit))
+                return null;
+
+            return MessageFormat.format("Visit Date: {0}", second_visit);
+        }
+
+        @Override
+        public BasePmtctHomeVisitAction.Status evaluateStatusOnPayload() {
+            if (StringUtils.isBlank(second_visit)) {
+                return BasePmtctHomeVisitAction.Status.PENDING;
+            } else {
+                return BasePmtctHomeVisitAction.Status.COMPLETED;
+            }
+        }
+
+    }
+
+    private class EACThirdVisitAction extends PmtctVisitAction {
+        protected MemberObject memberObject;
+        private String third_visit;
+
+        public EACThirdVisitAction(MemberObject memberObject) {
+            super(memberObject);
+            this.memberObject = memberObject;
+        }
+
+        @Override
+        public void onPayloadReceived(String jsonPayload) {
+            try{
+                JSONObject jsonObject = new JSONObject(jsonPayload);
+                third_visit = CoreJsonFormUtils.getValue(jsonObject, "eac_day_3");
+            } catch (JSONException e) {
+                Timber.e(e);
+            }
+        }
+
+        @Override
+        public String evaluateSubTitle() {
+            if (StringUtils.isBlank(third_visit))
+                return null;
+
+            return MessageFormat.format("Visit Date: {0}", third_visit);
+        }
+
+        @Override
+        public BasePmtctHomeVisitAction.Status evaluateStatusOnPayload() {
+            if (StringUtils.isBlank(third_visit)) {
+                return BasePmtctHomeVisitAction.Status.PENDING;
+            } else {
+                return BasePmtctHomeVisitAction.Status.COMPLETED;
+            }
         }
     }
 

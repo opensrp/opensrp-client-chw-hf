@@ -61,6 +61,7 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
         private String subTitle;
 
         public HVLAction(MemberObject memberObject) {
+            super(memberObject);
             this.memberObject = memberObject;
         }
 

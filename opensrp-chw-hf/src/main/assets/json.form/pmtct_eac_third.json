@@ -1,6 +1,6 @@
 {
   "count": "1",
-  "encounter_type": "PMTCT EAC First",
+  "encounter_type": "PMTCT EAC Third",
   "entity_id": "",
   "metadata": {
     "start": {
@@ -47,32 +47,32 @@
     "encounter_location": ""
   },
   "step1": {
-    "title": "EAC First Visit",
+    "title": "EAC Third Visit",
     "fields": [
       {
         "type": "date_picker",
-        "key": "eac_day_1",
-        "hint": "EAC Visit Date Day 1",
-        "openmrs_entity_id": "eac_day_1",
+        "key": "eac_day_3",
+        "hint": "EAC Visit Date Day 3",
+        "openmrs_entity_id": "eac_day_3",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "min_date": "today-5d",
+        "min_date": "today-1d",
         "max_date": "today",
         "v_required": {
           "value": "true",
-          "err": "Please enter EAC visit date for day 1"
+          "err": "Please enter EAC visit date for day 3"
         }
       },
       {
         "type": "time_picker",
-        "key": "eac_day_1_time",
-        "hint": "EAC Visit Time Day 1",
-        "openmrs_entity_id": "eac_day_1_time",
+        "key": "eac_day_3_time",
+        "hint": "EAC Visit Time Day 3",
+        "openmrs_entity_id": "eac_day_3_time",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "v_required": {
           "value": "true",
-          "err": "Please enter EAC visit time for day 1"
+          "err": "Please enter EAC visit time for day 3"
         }
       }
     ]
