@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.view.Gravity;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -81,6 +82,13 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        menu.findItem(R.id.action_remove_member).setVisible(false);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         return super.onOptionsItemSelected(item);
     }
@@ -92,7 +100,7 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         checkPhoneNumberProvided(StringUtils.isNotBlank(memberObject.getPhoneNumber()));
         OnClickFloatingMenu onClickFloatingMenu = viewId -> {
             switch (viewId) {
-                case R.id.malaria_fab:
+                case R.id.pmtct_fab:
                     ((CorePmtctFloatingMenu) basePmtctFloatingMenu).animateFAB();
                     break;
                 case R.id.call_layout:
