@@ -21,36 +21,36 @@ public class PmtctProfilePresenter extends CorePmtctMemberProfilePresenter imple
     //TODO: Implement tasks for the presenter
     @Override
     public void fetchReferralTasks() {
-
+        //implement
     }
 
     @Override
     public void updateReferralTasksAndFollowupFeedback(List<HivTbReferralTasksAndFollowupFeedbackModel> tasksAndFollowupFeedbackModels) {
-
+        //implement
     }
 
     @Override
     public void onNoUniqueId() {
-
+        //implement
     }
 
     @Override
     public void onUniqueIdFetched(Triple<String, String, String> triple, String s) {
-
+        //implement
     }
 
     @Override
     public void onRegistrationSaved(boolean b) {
-
+        //implement
     }
 
     @Override
     public void onEventSaved() {
-
+        //implement
     }
 
     @Override
     public void onFetchedSavedDiagnosisAndTreatmentForm(@Nullable OpdDiagnosisAndTreatmentForm opdDiagnosisAndTreatmentForm, @NonNull String s, @Nullable String s1) {
-
+    //implement
     }
 }

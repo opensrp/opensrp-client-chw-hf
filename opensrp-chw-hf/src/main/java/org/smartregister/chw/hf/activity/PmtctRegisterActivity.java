@@ -15,7 +15,7 @@ import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.helper.BottomNavigationHelper;
 import org.smartregister.view.fragment.BaseRegisterFragment;
 
-import static org.smartregister.chw.hf.utils.Constants.JSON_FORM.getPmtctRegistration;
+import static org.smartregister.chw.hf.utils.Constants.JsonForm.getPmtctRegistration;
 
 public class PmtctRegisterActivity extends CorePmtctRegisterActivity {
     public static void startPmtctRegistrationActivity(Activity activity, String baseEntityID) {
@@ -48,7 +48,7 @@ public class PmtctRegisterActivity extends CorePmtctRegisterActivity {
 
     @Override
     public void startFormActivity(JSONObject jsonForm) {
-        if(ACTION.equalsIgnoreCase(Constants.Actions.FOLLOWUP)){
+        if(ACTION.equalsIgnoreCase(Constants.ActionList.FOLLOWUP)){
             startActivityForResult(FormUtils.getStartFormActivity(jsonForm, getString(R.string.pmtct_followup_form_title), this), JsonFormUtils.REQUEST_CODE_GET_JSON);
         }else{
             startActivityForResult(FormUtils.getStartFormActivity(jsonForm, this.getString(org.smartregister.chw.core.R.string.pmtct_registration), this), JsonFormUtils.REQUEST_CODE_GET_JSON);

@@ -27,7 +27,7 @@ public class AncFirstFacilityVisitInteractor extends CoreAncHomeVisitInteractor 
 
     @Override
     protected String getTableName() {
-        return Constants.Tables.ANC_FIRST_FACILITY_VISIT;
+        return Constants.TableName.ANC_FIRST_FACILITY_VISIT;
     }
 
     @Override

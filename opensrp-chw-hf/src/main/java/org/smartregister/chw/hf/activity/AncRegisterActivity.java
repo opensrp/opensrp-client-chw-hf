@@ -1,7 +1,5 @@
 package org.smartregister.chw.hf.activity;
 
-import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.isMultiPartForm;
-
 import android.app.Activity;
 import android.content.Intent;
 
@@ -11,7 +9,6 @@ import com.vijay.jsonwizard.domain.Form;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.smartregister.chw.anc.interactor.BaseAncRegisterInteractor;
 import org.smartregister.chw.anc.model.BaseAncRegisterModel;
 import org.smartregister.chw.anc.presenter.BaseAncRegisterPresenter;
 import org.smartregister.chw.anc.util.Constants;
@@ -33,6 +30,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import timber.log.Timber;
+
+import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.isMultiPartForm;
 
 public class AncRegisterActivity extends CoreAncRegisterActivity {
 
@@ -97,7 +96,7 @@ public class AncRegisterActivity extends CoreAncRegisterActivity {
     }
 
     public static String getFormTable() {
-        if (form_name != null && (form_name.equals(CoreConstants.JSON_FORM.getAncRegistration()) || form_name.equals(org.smartregister.chw.hf.utils.Constants.JSON_FORM.getAncPregnancyConfirmationForm()))) {
+        if (form_name != null && (form_name.equals(CoreConstants.JSON_FORM.getAncRegistration()) || form_name.equals(org.smartregister.chw.hf.utils.Constants.JsonForm.getAncPregnancyConfirmationForm()))) {
             return CoreConstants.TABLE_NAME.ANC_MEMBER;
         }
         return CoreConstants.TABLE_NAME.ANC_PREGNANCY_OUTCOME;
@@ -144,7 +143,7 @@ public class AncRegisterActivity extends CoreAncRegisterActivity {
 
     @Override
     public Class getRegisterActivity(String register) {
-        if (register.equals(org.smartregister.chw.hf.utils.Constants.PREGNANCY_CONFIRMATION_GROUPS.PREGNANCY_CONFIRMATION) || register.equals(CoreConstants.SERVICE_GROUPS.ANC))
+        if (register.equals(org.smartregister.chw.hf.utils.Constants.PregnancyConfirmationGroups.PREGNANCY_CONFIRMATION) || register.equals(CoreConstants.SERVICE_GROUPS.ANC))
             return AncRegisterActivity.class;
         else
             return CorePncRegisterActivity.class;

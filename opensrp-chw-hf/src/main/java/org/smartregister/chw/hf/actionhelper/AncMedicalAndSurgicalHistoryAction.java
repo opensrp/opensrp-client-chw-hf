@@ -3,7 +3,6 @@ package org.smartregister.chw.hf.actionhelper;
 import android.content.Context;
 
 import org.apache.commons.lang3.StringUtils;
-import org.joda.time.LocalDate;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.anc.domain.MemberObject;
@@ -18,7 +17,6 @@ import timber.log.Timber;
 
 public class AncMedicalAndSurgicalHistoryAction implements BaseAncHomeVisitAction.AncHomeVisitActionHelper {
     protected MemberObject memberObject;
-    private Context context;
     private String jsonPayload;
 
     private String anc_medical_surgical_history;
@@ -31,7 +29,6 @@ public class AncMedicalAndSurgicalHistoryAction implements BaseAncHomeVisitActio
 
     @Override
     public void onJsonFormLoaded(String jsonPayload, Context context, Map<String, List<VisitDetail>> map) {
-        this.context = context;
         this.jsonPayload = jsonPayload;
     }
 

@@ -39,7 +39,7 @@ import androidx.annotation.NonNull;
 import timber.log.Timber;
 
 import static org.smartregister.chw.hf.utils.Constants.Events.PMTCT_EAC_VISIT;
-import static org.smartregister.chw.hf.utils.Constants.JSON_FORM.getHvlSuppressionForm;
+import static org.smartregister.chw.hf.utils.Constants.JsonForm.getHvlSuppressionForm;
 import static org.smartregister.chw.pmtct.util.Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID;
 
 public class PmtctProfileActivity extends CorePmtctProfileActivity {
@@ -56,7 +56,7 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         Intent intent = new Intent(activity, PmtctRegisterActivity.class);
         intent.putExtra(Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID,baseEntityID );
         intent.putExtra(Constants.ACTIVITY_PAYLOAD.PMTCT_FORM_NAME, getHvlSuppressionForm());
-        intent.putExtra(Constants.ACTIVITY_PAYLOAD.ACTION, org.smartregister.chw.hf.utils.Constants.Actions.FOLLOWUP);
+        intent.putExtra(Constants.ACTIVITY_PAYLOAD.ACTION, org.smartregister.chw.hf.utils.Constants.ActionList.FOLLOWUP);
         activity.startActivityForResult(intent, Constants.REQUEST_CODE_GET_JSON);
     }
 

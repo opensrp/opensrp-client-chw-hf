@@ -17,7 +17,6 @@ import timber.log.Timber;
 
 public class AncTt1VaccinationAction implements BaseAncHomeVisitAction.AncHomeVisitActionHelper {
     protected MemberObject memberObject;
-    private Context context;
     private String jsonPayload;
 
     private String tt1_vaccination_given;
@@ -30,7 +29,6 @@ public class AncTt1VaccinationAction implements BaseAncHomeVisitAction.AncHomeVi
 
     @Override
     public void onJsonFormLoaded(String jsonPayload, Context context, Map<String, List<VisitDetail>> map) {
-        this.context = context;
         this.jsonPayload = jsonPayload;
     }
 

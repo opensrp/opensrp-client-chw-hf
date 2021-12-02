@@ -41,14 +41,13 @@ public class HfClientProcessor extends CoreClientProcessor {
     protected void processEvents(ClientClassification clientClassification, Table vaccineTable, Table serviceTable, EventClient eventClient, Event event, String eventType) throws Exception {
         super.processEvents(clientClassification, vaccineTable, serviceTable, eventClient, event, eventType);
 
-        switch (eventType) {
-            case ANC_FIRST_FACILITY_VISIT:
-                if (eventClient.getEvent() == null) {
-                    return;
-                }
-                processVisitEvent(eventClient);
-                processEvent(eventClient.getEvent(), eventClient.getClient(), clientClassification);
-                break;
+        //TODO: For other events
+        if (ANC_FIRST_FACILITY_VISIT.equals(eventType)) {
+            if (eventClient.getEvent() == null) {
+                return;
+            }
+            processVisitEvent(eventClient);
+            processEvent(eventClient.getEvent(), eventClient.getClient(), clientClassification);
         }
     }
 

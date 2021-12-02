@@ -17,7 +17,6 @@ import timber.log.Timber;
 
 public class AncObstetricExaminationAction implements BaseAncHomeVisitAction.AncHomeVisitActionHelper {
     protected MemberObject memberObject;
-    private Context context;
     private String jsonPayload;
 
     private String abdominal_scars;
@@ -30,7 +29,6 @@ public class AncObstetricExaminationAction implements BaseAncHomeVisitAction.Anc
 
     @Override
     public void onJsonFormLoaded(String jsonPayload, Context context, Map<String, List<VisitDetail>> map) {
-        this.context = context;
         this.jsonPayload = jsonPayload;
     }
 

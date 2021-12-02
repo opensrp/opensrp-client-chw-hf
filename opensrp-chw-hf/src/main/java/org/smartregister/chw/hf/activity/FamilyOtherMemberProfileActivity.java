@@ -1,8 +1,5 @@
 package org.smartregister.chw.hf.activity;
 
-import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
-import static org.smartregister.chw.hf.utils.Constants.JSON_FORM.HIV_REGISTRATION;
-
 import android.content.Context;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -33,7 +30,6 @@ import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hiv.dao.HivDao;
 import org.smartregister.chw.hiv.dao.HivIndexDao;
 import org.smartregister.chw.malaria.dao.MalariaDao;
-import org.smartregister.chw.pmtct.dao.PmtctDao;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.family.fragment.BaseFamilyOtherMemberProfileFragment;
 import org.smartregister.family.model.BaseFamilyOtherMemberProfileActivityModel;
@@ -43,7 +39,7 @@ import org.smartregister.view.contract.BaseProfileContract;
 import timber.log.Timber;
 
 import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
-import static org.smartregister.chw.hf.utils.Constants.JSON_FORM.HIV_REGISTRATION;
+import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
 
 public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfileActivity {
     private FamilyMemberFloatingMenu familyFloatingMenu;
@@ -264,7 +260,7 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
 
     protected void startPregnancyConfirmation() {
         AncRegisterActivity.startAncRegistrationActivity(FamilyOtherMemberProfileActivity.this, baseEntityId, PhoneNumber,
-                Constants.JSON_FORM.getAncPregnancyConfirmation(), null, familyBaseEntityId, familyName);
+                Constants.JsonForm.getAncPregnancyConfirmation(), null, familyBaseEntityId, familyName);
     }
 
     private boolean isOfReproductiveAge(CommonPersonObjectClient commonPersonObject, String gender) {

@@ -1,7 +1,6 @@
 package org.smartregister.chw.hf.presenter;
 
 import org.smartregister.chw.pmtct.contract.PmtctRegisterFragmentContract;
-import org.smartregister.chw.pmtct.fragment.BasePmtctRegisterFragment;
 import org.smartregister.chw.pmtct.presenter.BasePmtctRegisterFragmentPresenter;
 
 public class PmtctRegisterFragmentPresenter extends BasePmtctRegisterFragmentPresenter {
