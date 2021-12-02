@@ -20,8 +20,8 @@ import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.FpUtil;
 import org.smartregister.chw.core.utils.HomeVisitUtil;
 import org.smartregister.chw.hf.R;
-import org.smartregister.chw.hf.contract.PmtctProfileContract;
 import org.smartregister.chw.hf.custom_view.PmtctFloatingMenu;
+import org.smartregister.chw.hf.dao.HfPmtctDao;
 import org.smartregister.chw.hf.presenter.FamilyOtherMemberActivityPresenter;
 import org.smartregister.chw.hf.presenter.PmtctProfilePresenter;
 import org.smartregister.chw.pmtct.dao.PmtctDao;
@@ -122,11 +122,12 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
             boolean showEac = !pmtctFollowUpRule.getButtonStatus().equalsIgnoreCase("DUE")
                                 && !pmtctFollowUpRule.getButtonStatus().equalsIgnoreCase("OVERDUE")
                                 && !pmtctFollowUpRule.getButtonStatus().equalsIgnoreCase("EXPIRY");
+            boolean isEligible = HfPmtctDao.isEligibleForEac(baseEntityId);
 
-            if(showEac){
+            if(showEac && isEligible){
                 recordVisits.setWeightSum(1);
                 textViewRecordAnc.setVisibility(View.VISIBLE);
-                textViewRecordAnc.setText("Record EAC Visits");
+                textViewRecordAnc.setText(R.string.pmtct_record_eac_visit);
             }
             profilePresenter.visitRow(pmtctFollowUpRule.getButtonStatus());
             profilePresenter.nextRow(pmtctFollowUpRule.getButtonStatus(), FpUtil.sdf.format(pmtctFollowUpRule.getDueDate()));

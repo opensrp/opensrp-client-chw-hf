@@ -37,6 +37,14 @@
             "field": "obs.fieldCode",
             "concept": "followup_visit_date"
           }
+        },
+        {
+          "column_name": "hvl_suppression",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "hvl_suppression"
+          }
         }
       ]
     },

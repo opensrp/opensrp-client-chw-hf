@@ -156,9 +156,9 @@
     "fields": [
       {
         "type": "edit_text",
-        "key": "hvl_suppression_followup",
+        "key": "hvl_suppression",
         "hint": "HVL Suppression",
-        "openmrs_entity_id": "hvl_suppression_followup",
+        "openmrs_entity_id": "hvl_suppression",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "v_numeric": {
