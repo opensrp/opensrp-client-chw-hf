@@ -56,7 +56,7 @@
         "openmrs_entity_id": "eac_day_1",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "min_date": "today-5d",
+        "min_date": "today-3m",
         "max_date": "today",
         "v_required": {
           "value": "true",
