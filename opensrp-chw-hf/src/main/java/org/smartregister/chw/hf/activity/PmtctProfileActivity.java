@@ -24,15 +24,20 @@ import org.smartregister.chw.hf.custom_view.PmtctFloatingMenu;
 import org.smartregister.chw.hf.dao.HfPmtctDao;
 import org.smartregister.chw.hf.presenter.FamilyOtherMemberActivityPresenter;
 import org.smartregister.chw.hf.presenter.PmtctProfilePresenter;
+import org.smartregister.chw.pmtct.PmtctLibrary;
 import org.smartregister.chw.pmtct.dao.PmtctDao;
+import org.smartregister.chw.pmtct.domain.Visit;
 import org.smartregister.chw.pmtct.util.Constants;
 import org.smartregister.family.model.BaseFamilyOtherMemberProfileActivityModel;
 
 import java.util.Date;
 
+import javax.annotation.Nullable;
+
 import androidx.annotation.NonNull;
 import timber.log.Timber;
 
+import static org.smartregister.chw.hf.utils.Constants.Events.PMTCT_EAC_VISIT;
 import static org.smartregister.chw.hf.utils.Constants.JSON_FORM.getHvlSuppressionForm;
 import static org.smartregister.chw.pmtct.util.Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID;
 
@@ -87,6 +92,9 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         checkPhoneNumberProvided(StringUtils.isNotBlank(memberObject.getPhoneNumber()));
         OnClickFloatingMenu onClickFloatingMenu = viewId -> {
             switch (viewId) {
+                case R.id.malaria_fab:
+                    ((CorePmtctFloatingMenu) basePmtctFloatingMenu).animateFAB();
+                    break;
                 case R.id.call_layout:
                     ((CorePmtctFloatingMenu) basePmtctFloatingMenu).launchCallWidget();
                     ((CorePmtctFloatingMenu) basePmtctFloatingMenu).animateFAB();
@@ -128,8 +136,9 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
                 recordVisits.setWeightSum(1);
                 textViewRecordAnc.setVisibility(View.VISIBLE);
                 textViewRecordAnc.setText(R.string.pmtct_record_eac_visit);
+            }else{
+                profilePresenter.visitRow(pmtctFollowUpRule.getButtonStatus());
             }
-            profilePresenter.visitRow(pmtctFollowUpRule.getButtonStatus());
             profilePresenter.nextRow(pmtctFollowUpRule.getButtonStatus(), FpUtil.sdf.format(pmtctFollowUpRule.getDueDate()));
         }
     }
@@ -137,6 +146,11 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
     @Override
     protected void setupViews() {
         super.setupViews();
+        Visit lastEacVisit = getVisit(PMTCT_EAC_VISIT);
+        if(lastEacVisit != null && !lastEacVisit.getProcessed()){
+            showVisitInProgress();
+        }
+
     }
 
     @NonNull
@@ -165,8 +179,28 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         if (id == R.id.textview_record_pmtct) {
             startFollowupForm(this, memberObject.getBaseEntityId());
         }else if(id == R.id.textview_record_anc){
-            PmtctEacVisitActivity.startEacActivity(this, memberObject.getBaseEntityId());
+            PmtctEacVisitActivity.startEacActivity(this, memberObject.getBaseEntityId(), false);
+        }else if (id == R.id.textview_edit){
+            Visit lastVisit = getVisit(PMTCT_EAC_VISIT);
+            if(lastVisit != null){
+                PmtctEacVisitActivity.startEacActivity(this,memberObject.getBaseEntityId(),true);
+            }
         }
+
+    }
+
+
+    private void showVisitInProgress() {
+        recordVisits.setVisibility(View.GONE);
+        textViewVisitDoneEdit.setVisibility(View.VISIBLE);
+        visitDone.setVisibility(View.VISIBLE);
+        textViewVisitDone.setText(R.string.visit_in_progress);
+        textViewVisitDone.setTextColor(getResources().getColor(R.color.black_text_color));
+        imageViewCross.setImageResource(org.smartregister.chw.core.R.drawable.activityrow_notvisited);
+    }
+
+    public @Nullable Visit getVisit(String eventType){
+        return PmtctLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), eventType);
     }
 
     @Override

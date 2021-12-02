@@ -13,10 +13,10 @@ import java.text.MessageFormat;
 
 
 public class PmtctEacVisitActivity extends PmtctFollowupVisitActivity{
-    public static void startEacActivity(Activity activity, String baseEntityID) {
+    public static void startEacActivity(Activity activity, String baseEntityID,Boolean isEditMode) {
         Intent intent = new Intent(activity, PmtctEacVisitActivity.class);
         intent.putExtra(Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID,baseEntityID );
-        intent.putExtra(Constants.ACTIVITY_PAYLOAD.EDIT_MODE, false);
+        intent.putExtra(Constants.ACTIVITY_PAYLOAD.EDIT_MODE, isEditMode);
         activity.startActivity(intent);
     }
     @Override
