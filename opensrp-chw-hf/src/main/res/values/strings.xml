@@ -53,6 +53,6 @@
     <string name="visit_in_progress">Visit still in progress</string>
     <string name="optional"></string>
     <string name="pmtct_record_eac_visit">EAC Visit</string>
-    <string name="record_eac_visits">Record EAC Visits</string>
+    <string name="record_eac_first_visit">Record First EAC Visit</string>
     <string name="pmtct_followup_form_title">PMTCT Followup</string>
 </resources>

@@ -139,11 +139,11 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
                     && !pmtctFollowUpRule.getButtonStatus().equalsIgnoreCase("OVERDUE")
                     && !pmtctFollowUpRule.getButtonStatus().equalsIgnoreCase("EXPIRY");
             boolean isEligible = HfPmtctDao.isEligibleForEac(baseEntityId);
-
-            if (showEac && isEligible) {
+            boolean isEacNotDone = !HfPmtctDao.isEacFirstDone(baseEntityId);
+            if (showEac && isEligible && isEacNotDone) {
                 recordVisits.setWeightSum(1);
                 textViewRecordAnc.setVisibility(View.VISIBLE);
-                textViewRecordAnc.setText(R.string.record_eac_visits);
+                textViewRecordAnc.setText(R.string.record_eac_first_visit);
             } else {
                 profilePresenter.visitRow(pmtctFollowUpRule.getButtonStatus());
             }
