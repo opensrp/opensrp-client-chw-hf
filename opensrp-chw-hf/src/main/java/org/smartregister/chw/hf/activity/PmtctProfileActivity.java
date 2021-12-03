@@ -53,13 +53,6 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         activity.startActivity(intent);
     }
 
-    public void startFollowupForm(Activity activity, String baseEntityID) {
-        Intent intent = new Intent(activity, PmtctRegisterActivity.class);
-        intent.putExtra(Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID, baseEntityID);
-        intent.putExtra(Constants.ACTIVITY_PAYLOAD.PMTCT_FORM_NAME, getHvlSuppressionForm());
-        intent.putExtra(Constants.ACTIVITY_PAYLOAD.ACTION, org.smartregister.chw.hf.utils.Constants.ActionList.FOLLOWUP);
-        activity.startActivityForResult(intent, Constants.REQUEST_CODE_GET_JSON);
-    }
 
     @Override
     protected void onResume() {
@@ -210,7 +203,7 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         boolean isEligibleForFirst = HfPmtctDao.isEligibleForEac(baseEntityId);
         boolean isEligibleForSecond = HfPmtctDao.isEligibleForSecondEac(baseEntityId);
         if (id == R.id.textview_record_pmtct) {
-            startFollowupForm(this, memberObject.getBaseEntityId());
+            PmtctFollowupVisitActivity.startPmtctFollowUpActivity(this,baseEntityId);
         } else if (id == R.id.textview_record_anc) {
             if (isEligibleForFirst) {
                 PmtctEacFirstVisitActivity.startEacActivity(this, memberObject.getBaseEntityId(), false);

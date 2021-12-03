@@ -25,6 +25,7 @@ public class PmtctVisitUtils extends VisitUtils {
 
         List<Visit> visits = visitRepository.getAllUnSynced(calendar.getTime().getTime());
         List<Visit> pmtctEacVisitsCompleted = new ArrayList<>();
+        List<Visit> pmtctFollowupVisits = new ArrayList<>();
 
 
         for(Visit v: visits){
@@ -45,9 +46,30 @@ public class PmtctVisitUtils extends VisitUtils {
                     Timber.e(e);
                 }
             }
+            else if(v.getVisitType().equalsIgnoreCase(Constants.Events.PMTCT_SECOND_EAC_VISIT)){
+                try{
+                    JSONObject jsonObject = new JSONObject(v.getJson());
+                    JSONArray obs = jsonObject.getJSONArray("obs");
+
+                    boolean isEacVisit1Done = computeCompletionStatus(obs,"eac_month_1");
+                    boolean isEacVisit2Done = computeCompletionStatus(obs,"eac_month_2");
+                    boolean isEacVisit3Done = computeCompletionStatus(obs,"eac_month_3");
+
+                    if(isEacVisit1Done && isEacVisit2Done && isEacVisit3Done){
+                        pmtctEacVisitsCompleted.add(v);
+                    }
+                } catch (Exception e){
+                    Timber.e(e);
+                }
+            }else if(v.getVisitType().equalsIgnoreCase(org.smartregister.chw.pmtct.util.Constants.EVENT_TYPE.PMTCT_FOLLOWUP)){
+                pmtctFollowupVisits.add(v);
+            }
         }
         if(pmtctEacVisitsCompleted.size() > 0){
             processVisits(pmtctEacVisitsCompleted,visitRepository,visitDetailsRepository);
+        }
+        if(pmtctFollowupVisits.size() > 0){
+            processVisits(pmtctFollowupVisits,visitRepository,visitDetailsRepository);
         }
     }
 
