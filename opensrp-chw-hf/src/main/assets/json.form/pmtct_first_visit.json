@@ -319,6 +319,20 @@
         }
       },
       {
+        "type": "hidden",
+        "key": "hiv_status_art_yes",
+        "openmrs_entity_id": "hiv_status_art_yes",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_form_calculation.yml"
+            }
+          }
+        }
+      },
+      {
         "type": "native_radio",
         "label": "HIV status",
         "key": "hiv_status_pmtct",
