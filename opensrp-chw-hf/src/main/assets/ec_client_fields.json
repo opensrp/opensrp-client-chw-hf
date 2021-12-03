@@ -47,6 +47,14 @@
           }
         },
         {
+          "column_name": "hvl_suppression_after_eac",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "hvl_suppression_after_eac"
+          }
+        },
+        {
           "column_name": "eac_day_1",
           "type": "Event",
           "json_mapping": {
@@ -68,6 +76,30 @@
           "json_mapping": {
             "field": "obs.fieldCode",
             "concept": "eac_day_3"
+          }
+        },
+        {
+          "column_name": "eac_month_1",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "eac_month_1"
+          }
+        },
+        {
+          "column_name": "eac_month_2",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "eac_month_2"
+          }
+        },
+        {
+          "column_name": "eac_month_3",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "eac_month_3"
           }
         }
       ]

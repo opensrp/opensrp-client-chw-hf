@@ -69,7 +69,9 @@
             android:theme="@style/HFTheme.NoActionBar"/>
         <activity android:name=".activity.PmtctFollowupVisitActivity"
             android:theme="@style/HFTheme.NoActionBar"/>
-        <activity android:name=".activity.PmtctEacVisitActivity"
+        <activity android:name=".activity.PmtctEacFirstVisitActivity"
+            android:theme="@style/HFTheme.NoActionBar"/>
+        <activity android:name=".activity.PmtctSecondVisitActivity"
             android:theme="@style/HFTheme.NoActionBar"/>
         <activity
             android:name="org.smartregister.chw.hf.activity.ChildRegisterActivity"

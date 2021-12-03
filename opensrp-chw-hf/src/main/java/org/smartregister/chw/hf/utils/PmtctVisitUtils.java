@@ -28,7 +28,7 @@ public class PmtctVisitUtils extends VisitUtils {
 
 
         for(Visit v: visits){
-            if(v.getVisitType().equalsIgnoreCase(Constants.Events.PMTCT_EAC_VISIT)){
+            if(v.getVisitType().equalsIgnoreCase(Constants.Events.PMTCT_FIRST_EAC_VISIT)){
                 try {
                     JSONObject jsonObject = new JSONObject(v.getJson());
                     JSONArray obs = jsonObject.getJSONArray("obs");

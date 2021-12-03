@@ -52,7 +52,7 @@
     <string name="anc_followup_visit">ANC Followup Visit</string>
     <string name="visit_in_progress">Visit still in progress</string>
     <string name="optional"></string>
-    <string name="pmtct_record_eac_visit">EAC Visit</string>
-    <string name="record_eac_first_visit">Record First EAC Visit</string>
+    <string name="record_eac_first_visit">First EAC Visit</string>
+    <string name="record_eac_second_visit">Second EAC Visit</string>
     <string name="pmtct_followup_form_title">PMTCT Followup</string>
 </resources>

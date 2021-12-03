@@ -11,17 +11,17 @@ import java.util.Map;
 
 import timber.log.Timber;
 
-public class EacVisitInteractor extends CorePmtctHomeVisitInteractor {
+public class EacFirstVisitInteractor extends CorePmtctHomeVisitInteractor {
     private final Flavor flavor;
-    public EacVisitInteractor(){
-        setFlavor(new EacVisitInteractorFlv());
-        flavor = new EacVisitInteractorFlv();
+    public EacFirstVisitInteractor(){
+        setFlavor(new EacFirstVisitInteractorFlv());
+        flavor = new EacFirstVisitInteractorFlv();
     }
 
 
     @Override
     protected String getEncounterType() {
-        return Constants.Events.PMTCT_EAC_VISIT;
+        return Constants.Events.PMTCT_FIRST_EAC_VISIT;
     }
 
     @Override

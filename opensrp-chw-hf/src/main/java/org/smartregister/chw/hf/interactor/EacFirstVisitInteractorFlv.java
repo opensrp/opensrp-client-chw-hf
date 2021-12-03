@@ -24,7 +24,7 @@ import java.util.Map;
 
 import timber.log.Timber;
 
-public class EacVisitInteractorFlv implements CorePmtctHomeVisitInteractor.Flavor {
+public class EacFirstVisitInteractorFlv implements CorePmtctHomeVisitInteractor.Flavor {
     @Override
     public LinkedHashMap<String, BasePmtctHomeVisitAction> calculateActions(BasePmtctHomeVisitContract.View view, MemberObject memberObject, BasePmtctHomeVisitContract.InteractorCallBack interactorCallBack) throws BasePmtctHomeVisitAction.ValidationException {
         LinkedHashMap<String, BasePmtctHomeVisitAction> actionList = new LinkedHashMap<>();
@@ -34,7 +34,7 @@ public class EacVisitInteractorFlv implements CorePmtctHomeVisitInteractor.Flavo
         Map<String, List<VisitDetail>> details = null;
         // get the preloaded data
         if (view.getEditMode()) {
-            Visit lastVisit = PmtctLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), Constants.Events.PMTCT_EAC_VISIT);
+            Visit lastVisit = PmtctLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), Constants.Events.PMTCT_FIRST_EAC_VISIT);
         if (lastVisit != null) {
             details = VisitUtils.getVisitGroups(PmtctLibrary.getInstance().visitDetailsRepository().getVisits(lastVisit.getVisitId()));
         }
