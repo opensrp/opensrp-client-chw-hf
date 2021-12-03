@@ -6,12 +6,18 @@ import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
+import org.smartregister.chw.core.utils.FormUtils;
 import org.smartregister.chw.hf.actionhelper.PmtctVisitAction;
+import org.smartregister.chw.hf.dao.HfPmtctDao;
 import org.smartregister.chw.hf.utils.Constants;
+import org.smartregister.chw.pmtct.PmtctLibrary;
 import org.smartregister.chw.pmtct.contract.BasePmtctHomeVisitContract;
 import org.smartregister.chw.pmtct.domain.MemberObject;
+import org.smartregister.chw.pmtct.domain.Visit;
 import org.smartregister.chw.pmtct.domain.VisitDetail;
 import org.smartregister.chw.pmtct.model.BasePmtctHomeVisitAction;
+import org.smartregister.chw.pmtct.util.JsonFormUtils;
+import org.smartregister.chw.pmtct.util.VisitUtils;
 
 import java.text.MessageFormat;
 import java.util.LinkedHashMap;
@@ -29,34 +35,51 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
 
         Context context = view.getContext();
 
-        evaluatePmtctActions(actionList, memberObject, context);
+        Map<String, List<VisitDetail>> details = null;
+        // get the preloaded data
+        if (view.getEditMode()) {
+            Visit lastVisit = PmtctLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), org.smartregister.chw.pmtct.util.Constants.EVENT_TYPE.PMTCT_FOLLOWUP);
+            if (lastVisit != null) {
+                details = VisitUtils.getVisitGroups(PmtctLibrary.getInstance().visitDetailsRepository().getVisits(lastVisit.getVisitId()));
+            }
+        }
+        evaluatePmtctActions(actionList,details, memberObject, context);
 
         return actionList;
     }
 
 
-    private void evaluatePmtctActions(LinkedHashMap<String, BasePmtctHomeVisitAction> actionList, final MemberObject memberObject, Context context) throws BasePmtctHomeVisitAction.ValidationException {
-
+    private void evaluatePmtctActions(LinkedHashMap<String, BasePmtctHomeVisitAction> actionList, Map<String, List<VisitDetail>> details, MemberObject memberObject, Context context) throws BasePmtctHomeVisitAction.ValidationException {
+        JSONObject hvlForm = null;
+        try{
+            hvlForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.HVL_SUPPRESSION_FORM);
+            if(HfPmtctDao.isEacFirstDone(memberObject.getBaseEntityId())){
+                hvlForm.getJSONObject("global").put("eac_visit","first_done");
+            }else{
+                hvlForm.getJSONObject("global").put("eac_visit","first_not_done");
+            }
+            if (details != null && !details.isEmpty()) {
+                JsonFormUtils.populateForm(hvlForm, details);
+            }
+        }catch (JSONException e){
+            Timber.e(e);
+        }
         BasePmtctHomeVisitAction HVLFollowup = new BasePmtctHomeVisitAction.Builder(context, "HIV Viral Load (HVL)")
                 .withOptional(false)
+                .withJsonPayload(hvlForm.toString())
                 .withFormName(Constants.JsonForm.getHvlSuppressionForm())
                 .withHelper(new HVLAction(memberObject))
                 .build();
         actionList.put("HIV Viral Load (HVL)", HVLFollowup);
 
-        BasePmtctHomeVisitAction EAC = new BasePmtctHomeVisitAction.Builder(context, "Enhanced Adherence Counselling (EAC)")
-                .withOptional(false)
-                .withFormName(Constants.JsonForm.getPmtctEacFirst())
-                .build();
-        actionList.put("Enhanced Adherence Counselling (EAC)", EAC);
     }
 
     private class HVLAction extends PmtctVisitAction {
         protected MemberObject memberObject;
-        private Context context;
         private String jsonPayload;
 
         private String hvl_suppression;
+        private String hvl_suppression_after_eac;
         private BasePmtctHomeVisitAction.ScheduleStatus scheduleStatus;
         private String subTitle;
 
@@ -67,7 +90,6 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
 
         @Override
         public  void onJsonFormLoaded(String jsonPayload, Context context, Map<String, List<VisitDetail>> map) {
-            this.context = context;
             this.jsonPayload = jsonPayload;
         }
 
@@ -86,7 +108,8 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
         public void onPayloadReceived(String jsonPayload) {
             try{
                 JSONObject jsonObject = new JSONObject(jsonPayload);
-                hvl_suppression = CoreJsonFormUtils.getValue(jsonObject, "hvl_suppression_followup");
+                hvl_suppression = CoreJsonFormUtils.getValue(jsonObject, "hvl_suppression");
+                hvl_suppression_after_eac = CoreJsonFormUtils.getValue(jsonObject,"hvl_suppression_after_eac");
             } catch (JSONException e) {
                 Timber.e(e);
             }
@@ -109,15 +132,18 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
 
         @Override
         public String evaluateSubTitle() {
-            if (StringUtils.isBlank(hvl_suppression))
+            if (StringUtils.isBlank(hvl_suppression) && StringUtils.isBlank(hvl_suppression_after_eac))
                 return null;
-
-            return MessageFormat.format("HVL Suppression is: {0}", hvl_suppression);
+            if(hvl_suppression_after_eac != null)
+                return MessageFormat.format("HVL Suppression is: {0}", hvl_suppression_after_eac);
+            if(hvl_suppression != null)
+                return MessageFormat.format("HVL Suppression is: {0}", hvl_suppression);
+            return null;
         }
 
         @Override
         public BasePmtctHomeVisitAction.Status evaluateStatusOnPayload() {
-            if (StringUtils.isBlank(hvl_suppression)) {
+            if (StringUtils.isBlank(hvl_suppression) && StringUtils.isBlank(hvl_suppression_after_eac)) {
                 return BasePmtctHomeVisitAction.Status.PENDING;
             } else {
                 return BasePmtctHomeVisitAction.Status.COMPLETED;

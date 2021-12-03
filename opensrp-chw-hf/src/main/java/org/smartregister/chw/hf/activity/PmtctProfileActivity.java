@@ -202,12 +202,14 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         int id = view.getId();
         boolean isEligibleForFirst = HfPmtctDao.isEligibleForEac(baseEntityId);
         boolean isEligibleForSecond = HfPmtctDao.isEligibleForSecondEac(baseEntityId);
+        boolean isEacFirstDone = HfPmtctDao.isEacFirstDone(baseEntityId);
+        boolean isEacSecondDone = HfPmtctDao.isSecondEacDone(baseEntityId);
         if (id == R.id.textview_record_pmtct) {
             PmtctFollowupVisitActivity.startPmtctFollowUpActivity(this,baseEntityId);
         } else if (id == R.id.textview_record_anc) {
-            if (isEligibleForFirst) {
+            if (isEligibleForFirst && !isEacFirstDone ) {
                 PmtctEacFirstVisitActivity.startEacActivity(this, memberObject.getBaseEntityId(), false);
-            }else if(isEligibleForSecond){
+            }else if(isEligibleForSecond && !isEacSecondDone){
                 PmtctSecondVisitActivity.startSecondEacActivity(this,memberObject.getBaseEntityId(),false);
             }
         } else if (id == R.id.textview_edit) {

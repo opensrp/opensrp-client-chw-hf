@@ -1,0 +1,295 @@
+{
+  "count": "1",
+  "encounter_type": "PMTCT EAC Visits",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "global": {},
+  "step1": {
+    "title": "EAC Visit",
+    "fields": [
+      {
+        "type": "date_picker",
+        "key": "eac_day_1",
+        "hint": "EAC Visit Date Day 1",
+        "openmrs_entity_id": "eac_day_1",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "min_date": "today-3m",
+        "max_date": "today",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_eac_visits_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter EAC visit date for day 1"
+        }
+      },
+      {
+        "type": "time_picker",
+        "key": "eac_day_1_time",
+        "hint": "EAC Visit Time Day 1",
+        "openmrs_entity_id": "eac_day_1_time",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_eac_visits_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter EAC visit time for day 1"
+        }
+      },
+      {
+        "type": "date_picker",
+        "key": "eac_day_2",
+        "hint": "EAC Visit Date Day 2",
+        "openmrs_entity_id": "eac_day_2",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "min_date": "today-3m",
+        "max_date": "today",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_eac_visits_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter EAC visit date for day 2"
+        }
+      },
+      {
+        "type": "time_picker",
+        "key": "eac_day_2_time",
+        "hint": "EAC Visit Time Day 2",
+        "openmrs_entity_id": "eac_day_2_time",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_eac_visits_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter EAC visit time for day 2"
+        }
+      },
+      {
+        "type": "date_picker",
+        "key": "eac_day_3",
+        "hint": "EAC Visit Date Day 3",
+        "openmrs_entity_id": "eac_day_3",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "min_date": "today-3m",
+        "max_date": "today",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_eac_visits_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter EAC visit date for day 3"
+        }
+      },
+      {
+        "type": "time_picker",
+        "key": "eac_day_3_time",
+        "hint": "EAC Visit Time Day 3",
+        "openmrs_entity_id": "eac_day_3_time",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_eac_visits_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter EAC visit time for day 3"
+        }
+      },
+      {
+        "type": "date_picker",
+        "key": "eac_month_1",
+        "hint": "EAC Visit Date Month 1",
+        "openmrs_entity_id": "eac_month_1",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "min_date": "today-3m",
+        "max_date": "today",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_eac_visits_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter EAC visit date for month 1"
+        }
+      },
+      {
+        "type": "time_picker",
+        "key": "eac_month_1_time",
+        "hint": "EAC Visit Time Month 1",
+        "openmrs_entity_id": "eac_month_1_time",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_eac_visits_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter EAC visit time for month 1"
+        }
+      },
+      {
+        "type": "date_picker",
+        "key": "eac_month_2",
+        "hint": "EAC Visit Date Month 2",
+        "openmrs_entity_id": "eac_month_2",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "min_date": "today-3m",
+        "max_date": "today",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_eac_visits_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter EAC visit date for month 2"
+        }
+      },
+      {
+        "type": "time_picker",
+        "key": "eac_month_2_time",
+        "hint": "EAC Visit Time Day 2",
+        "openmrs_entity_id": "eac_month_2_time",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_eac_visits_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter EAC visit time for month 2"
+        }
+      },
+      {
+        "type": "date_picker",
+        "key": "eac_month_3",
+        "hint": "EAC Visit Date Month 3",
+        "openmrs_entity_id": "eac_month_3",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "min_date": "today-3m",
+        "max_date": "today",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_eac_visits_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter EAC visit date for month 3"
+        }
+      },
+      {
+        "type": "time_picker",
+        "key": "eac_month_3_time",
+        "hint": "EAC Visit Time Month 3",
+        "openmrs_entity_id": "eac_month_3_time",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_eac_visits_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter EAC visit time for month 3"
+        }
+      }
+    ]
+  }
+}
