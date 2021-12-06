@@ -41,7 +41,6 @@ import timber.log.Timber;
 
 import static org.smartregister.chw.hf.utils.Constants.Events.PMTCT_FIRST_EAC_VISIT;
 import static org.smartregister.chw.hf.utils.Constants.Events.PMTCT_SECOND_EAC_VISIT;
-import static org.smartregister.chw.hf.utils.Constants.JsonForm.getHvlSuppressionForm;
 
 public class PmtctProfileActivity extends CorePmtctProfileActivity {
     private static String baseEntityId;
@@ -207,16 +206,16 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         if (id == R.id.textview_record_pmtct) {
             PmtctFollowupVisitActivity.startPmtctFollowUpActivity(this,baseEntityId);
         } else if (id == R.id.textview_record_anc) {
-            if (isEligibleForFirst && !isEacFirstDone ) {
+            if (isEligibleForFirst && !isEacFirstDone) {
                 PmtctEacFirstVisitActivity.startEacActivity(this, memberObject.getBaseEntityId(), false);
             }else if(isEligibleForSecond && !isEacSecondDone){
-                PmtctSecondVisitActivity.startSecondEacActivity(this,memberObject.getBaseEntityId(),false);
+                PmtctEacSecondVisitActivity.startSecondEacActivity(this,memberObject.getBaseEntityId(),false);
             }
         } else if (id == R.id.textview_edit) {
-            if (isEligibleForFirst) {
+            if (isEligibleForFirst && !isEacFirstDone) {
                 PmtctEacFirstVisitActivity.startEacActivity(this, memberObject.getBaseEntityId(), true);
-            }else if(isEligibleForSecond){
-                PmtctSecondVisitActivity.startSecondEacActivity(this,memberObject.getBaseEntityId(),true);
+            }else if(isEligibleForSecond && !isEacSecondDone){
+                PmtctEacSecondVisitActivity.startSecondEacActivity(this,memberObject.getBaseEntityId(),true);
             }
         }
 

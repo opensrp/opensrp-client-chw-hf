@@ -72,7 +72,7 @@ public class EacSecondVisitInteractorFlv implements CorePmtctHomeVisitInteractor
         }
         try{
             thirdEacVisitForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.EacVisits.PMTCT_EAC_VISIT);
-            firstEacVisitForm.getJSONObject("global").put("type_of_visit","eac_month_3");
+            thirdEacVisitForm.getJSONObject("global").put("type_of_visit","eac_month_3");
             if (details != null && !details.isEmpty()) {
                 JsonFormUtils.populateForm(thirdEacVisitForm, details);
             }
@@ -80,32 +80,32 @@ public class EacSecondVisitInteractorFlv implements CorePmtctHomeVisitInteractor
             Timber.e(e);
         }
 
-        BasePmtctHomeVisitAction EACFirstVisit = new BasePmtctHomeVisitAction.Builder(context, "Enhanced Adherence Counselling (EAC), First Visit")
+        BasePmtctHomeVisitAction EACFirstVisit = new BasePmtctHomeVisitAction.Builder(context, "EAC Visit - Month One")
                 .withOptional(false)
                 .withDetails(details)
                 .withJsonPayload(firstEacVisitForm.toString())
                 .withFormName(Constants.JsonForm.EacVisits.getPmtctEacVisit())
                 .withHelper(new EACFirstVisitAction(memberObject))
                 .build();
-        actionList.put("Enhanced Adherence Counselling (EAC), First Visit", EACFirstVisit);
+        actionList.put("EAC Visit - Month One", EACFirstVisit);
 
-        BasePmtctHomeVisitAction EACSecondVisit = new BasePmtctHomeVisitAction.Builder(context, "Enhanced Adherence Counselling (EAC), Second Visit")
+        BasePmtctHomeVisitAction EACSecondVisit = new BasePmtctHomeVisitAction.Builder(context, "EAC Visit - Month Two")
                 .withOptional(true)
                 .withDetails(details)
                 .withJsonPayload(secondEacVisitForm.toString())
                 .withFormName(Constants.JsonForm.EacVisits.getPmtctEacVisit())
                 .withHelper(new EACSecondVisitAction(memberObject))
                 .build();
-        actionList.put("Enhanced Adherence Counselling (EAC), Second Visit", EACSecondVisit);
+        actionList.put("EAC Visit - Month Two", EACSecondVisit);
 
-        BasePmtctHomeVisitAction EACThirdVisit = new BasePmtctHomeVisitAction.Builder(context, "Enhanced Adherence Counselling (EAC), Third Visit")
+        BasePmtctHomeVisitAction EACThirdVisit = new BasePmtctHomeVisitAction.Builder(context, "EAC Visit - Month Three")
                 .withOptional(true)
                 .withDetails(details)
                 .withJsonPayload(thirdEacVisitForm.toString())
                 .withFormName(Constants.JsonForm.EacVisits.getPmtctEacVisit())
                 .withHelper(new EACThirdVisitAction(memberObject))
                 .build();
-        actionList.put("Enhanced Adherence Counselling (EAC), Third Visit", EACThirdVisit);
+        actionList.put("EAC Visit - Month Three", EACThirdVisit);
     }
 
     private class EACFirstVisitAction extends PmtctVisitAction {
@@ -121,7 +121,7 @@ public class EacSecondVisitInteractorFlv implements CorePmtctHomeVisitInteractor
         public void onPayloadReceived(String jsonPayload) {
             try{
                 JSONObject jsonObject = new JSONObject(jsonPayload);
-                first_visit = CoreJsonFormUtils.getValue(jsonObject, "eac_day_1");
+                first_visit = CoreJsonFormUtils.getValue(jsonObject, "eac_month_1");
             } catch (JSONException e) {
                 Timber.e(e);
             }
@@ -159,7 +159,7 @@ public class EacSecondVisitInteractorFlv implements CorePmtctHomeVisitInteractor
         public void onPayloadReceived(String jsonPayload) {
             try{
                 JSONObject jsonObject = new JSONObject(jsonPayload);
-                second_visit = CoreJsonFormUtils.getValue(jsonObject, "eac_day_2");
+                second_visit = CoreJsonFormUtils.getValue(jsonObject, "eac_month_2");
             } catch (JSONException e) {
                 Timber.e(e);
             }
@@ -197,7 +197,7 @@ public class EacSecondVisitInteractorFlv implements CorePmtctHomeVisitInteractor
         public void onPayloadReceived(String jsonPayload) {
             try{
                 JSONObject jsonObject = new JSONObject(jsonPayload);
-                third_visit = CoreJsonFormUtils.getValue(jsonObject, "eac_day_3");
+                third_visit = CoreJsonFormUtils.getValue(jsonObject, "eac_month_3");
             } catch (JSONException e) {
                 Timber.e(e);
             }

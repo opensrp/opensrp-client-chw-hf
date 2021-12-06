@@ -80,32 +80,32 @@ public class EacFirstVisitInteractorFlv implements CorePmtctHomeVisitInteractor.
             Timber.e(e);
         }
 
-        BasePmtctHomeVisitAction EACFirstVisit = new BasePmtctHomeVisitAction.Builder(context, "Enhanced Adherence Counselling (EAC), First Visit")
+        BasePmtctHomeVisitAction EACFirstVisit = new BasePmtctHomeVisitAction.Builder(context, "EAC Visit - Day One")
                 .withOptional(false)
                 .withDetails(details)
                 .withJsonPayload(firstEacVisitForm.toString())
                 .withFormName(Constants.JsonForm.EacVisits.getPmtctEacVisit())
                 .withHelper(new EACFirstVisitAction(memberObject))
                 .build();
-        actionList.put("Enhanced Adherence Counselling (EAC), First Visit", EACFirstVisit);
+        actionList.put("EAC Visit - Day One", EACFirstVisit);
 
-        BasePmtctHomeVisitAction EACSecondVisit = new BasePmtctHomeVisitAction.Builder(context, "Enhanced Adherence Counselling (EAC), Second Visit")
+        BasePmtctHomeVisitAction EACSecondVisit = new BasePmtctHomeVisitAction.Builder(context, "EAC Visit - Day Two")
                 .withOptional(true)
                 .withDetails(details)
                 .withJsonPayload(secondEacVisitForm.toString())
                 .withFormName(Constants.JsonForm.EacVisits.getPmtctEacVisit())
                 .withHelper(new EACSecondVisitAction(memberObject))
                 .build();
-        actionList.put("Enhanced Adherence Counselling (EAC), Second Visit", EACSecondVisit);
+        actionList.put("EAC Visit - Day Two", EACSecondVisit);
 
-        BasePmtctHomeVisitAction EACThirdVisit = new BasePmtctHomeVisitAction.Builder(context, "Enhanced Adherence Counselling (EAC), Third Visit")
+        BasePmtctHomeVisitAction EACThirdVisit = new BasePmtctHomeVisitAction.Builder(context, "EAC Visit - Day Three")
                 .withOptional(true)
                 .withDetails(details)
                 .withJsonPayload(thirdEacVisitForm.toString())
                 .withFormName(Constants.JsonForm.EacVisits.getPmtctEacVisit())
                 .withHelper(new EACThirdVisitAction(memberObject))
                 .build();
-        actionList.put("Enhanced Adherence Counselling (EAC), Third Visit", EACThirdVisit);
+        actionList.put("EAC Visit - Day Three", EACThirdVisit);
     }
 
     private class EACFirstVisitAction extends PmtctVisitAction {

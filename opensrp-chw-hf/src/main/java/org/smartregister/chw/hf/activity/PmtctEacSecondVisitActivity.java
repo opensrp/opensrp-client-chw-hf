@@ -11,9 +11,9 @@ import org.smartregister.chw.pmtct.util.Constants;
 
 import java.text.MessageFormat;
 
-public class PmtctSecondVisitActivity extends  PmtctEacFirstVisitActivity{
+public class PmtctEacSecondVisitActivity extends  PmtctEacFirstVisitActivity{
     public static void startSecondEacActivity(Activity activity, String baseEntityID, Boolean isEditMode) {
-        Intent intent = new Intent(activity, PmtctEacFirstVisitActivity.class);
+        Intent intent = new Intent(activity, PmtctEacSecondVisitActivity.class);
         intent.putExtra(Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID,baseEntityID );
         intent.putExtra(Constants.ACTIVITY_PAYLOAD.EDIT_MODE, isEditMode);
         activity.startActivity(intent);
