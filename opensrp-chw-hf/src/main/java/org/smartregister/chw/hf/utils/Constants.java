@@ -35,7 +35,7 @@ public class Constants extends CoreConstants {
     public static final class JsonForm {
         private static final String ANC_PREGANCY_CONFIRMATION = "anc_pregnancy_confirmation";
         public static final String HIV_REGISTRATION = "hiv_registration";
-        private static final String PMTCT_REGISTRATION = "pmtct_first_visit";
+        private static final String PMTCT_REGISTRATION = "pmtct_registration";
         private static final String HVL_TEST_FORM = "pmtct_hvl_test";
         public static final String HVL_SUPPRESSION_FORM = "pmtct_hvl_suppression";
 

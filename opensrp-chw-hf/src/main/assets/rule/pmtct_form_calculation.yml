@@ -6,9 +6,9 @@ condition: "true"
 actions:
   - "calculation = helper.getDateToday()"
 ---
-name: step2_hiv_status_art_yes
-description: hiv status if client is known on art
+name: step2_hiv_status_value
+description: hiv status of the client
 priority: 1
-condition: "(!step1_known_on_art.isEmpty() && step1_known_on_art.contains('yes'))"
+condition: "true"
 actions:
-  - "calculation = 'positive'"
+  - "calculation = (!step1_known_on_art.isEmpty() && step1_known_on_art.contains('yes')) ? 'positive' : step2_hiv_status"

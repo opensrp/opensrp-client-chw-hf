@@ -319,9 +319,10 @@
         }
       },
       {
-        "type": "hidden",
-        "key": "hiv_status_art_yes",
-        "openmrs_entity_id": "hiv_status_art_yes",
+        "type": "edit_text",
+        "key": "hiv_status_value",
+        "hidden": "true",
+        "openmrs_entity_id": "hiv_status_value",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "calculation": {
@@ -335,8 +336,8 @@
       {
         "type": "native_radio",
         "label": "HIV status",
-        "key": "hiv_status_pmtct",
-        "openmrs_entity_id": "hiv_status_pmtct",
+        "key": "hiv_status",
+        "openmrs_entity_id": "hiv_status",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "options": [

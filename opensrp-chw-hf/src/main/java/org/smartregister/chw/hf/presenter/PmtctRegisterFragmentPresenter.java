@@ -2,6 +2,7 @@ package org.smartregister.chw.hf.presenter;
 
 import org.smartregister.chw.pmtct.contract.PmtctRegisterFragmentContract;
 import org.smartregister.chw.pmtct.presenter.BasePmtctRegisterFragmentPresenter;
+import org.smartregister.chw.pmtct.util.Constants;
 
 public class PmtctRegisterFragmentPresenter extends BasePmtctRegisterFragmentPresenter {
     public PmtctRegisterFragmentPresenter(PmtctRegisterFragmentContract.View view, PmtctRegisterFragmentContract.Model model, String viewConfigurationIdentifier) {
@@ -9,6 +10,7 @@ public class PmtctRegisterFragmentPresenter extends BasePmtctRegisterFragmentPre
     }
     @Override
     public String getMainCondition() {
-        return " ec_family_member.date_removed is null";
+        return "" + Constants.TABLES.PMTCT_REGISTRATION + "." + "hiv_status = 'positive' "+
+                " AND ec_family_member.date_removed is null";
     }
 }
