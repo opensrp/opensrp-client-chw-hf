@@ -97,7 +97,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "anc_key_info",
         "type": "toaster_notes",
-        "text": "Key information for health facility:\nLast menstrual period: (LNMP)\nGestational age: {gest_age}\nEDD: {edd}",
+        "text": "Key information for health facility:\nLast normal menstrual period: (LNMP)\nGestational age: {gest_age}\nEDD: {edd}",
         "toaster_type": "info",
         "calculation": {
           "rules-engine": {

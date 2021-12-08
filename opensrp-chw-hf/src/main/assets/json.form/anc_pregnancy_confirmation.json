@@ -273,7 +273,7 @@
         "options": [
           {
             "key": "lmp_unknown",
-            "text": "LMP unknown?",
+            "text": "LNMP unknown?",
             "text_size": "18px",
             "value": "false"
           }
