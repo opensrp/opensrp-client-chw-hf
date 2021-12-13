@@ -36,7 +36,7 @@ public class EacSecondVisitInteractorFlv implements CorePmtctHomeVisitInteractor
         Map<String, List<VisitDetail>> details = null;
         // get the preloaded data
         if (view.getEditMode()) {
-            Visit lastVisit = PmtctLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), Constants.Events.PMTCT_FIRST_EAC_VISIT);
+            Visit lastVisit = PmtctLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), Constants.Events.PMTCT_SECOND_EAC_VISIT);
         if (lastVisit != null) {
             details = VisitUtils.getVisitGroups(PmtctLibrary.getInstance().visitDetailsRepository().getVisits(lastVisit.getVisitId()));
         }
