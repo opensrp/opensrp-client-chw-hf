@@ -257,7 +257,7 @@
       {
         "key": "notify_continue_eac",
         "type": "toaster_notes",
-        "text": "Client has to be enrolled to EAC",
+        "text": "Client will automatically be enrolled to EAC",
         "openmrs_entity_id": "notify_continue_eac",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -357,7 +357,7 @@
           "stage_4": "stage_4"
         },
         "relevance": {
-          "step2:hiv_status_pmtct": {
+          "step2:hiv_status": {
             "type": "string",
             "ex": "equalTo(.,\"positive\")"
           }
@@ -686,7 +686,7 @@
           "third_line": "third_line"
         },
         "relevance": {
-          "step2:hiv_status_pmtct": {
+          "step2:hiv_status": {
             "type": "string",
             "ex": "equalTo(.,\"positive\")"
           }
