@@ -30,7 +30,7 @@ actions:
 name: step3_last_menstrual_period_unknown
 description: last_menstrual_period_unknown relevance
 priority: 1
-condition: "step1_danger_signs_analysis.contains('none') && (step2_uss.contains('present_gestation_sac') || step2_upt.contains('positive'))"
+condition: "step1_danger_signs_analysis.contains('none') && (step2_uss.contains('present_gestation_sac') || step2_upt.contains('positive')) && step3_last_menstrual_period.isEmpty()"
 actions:
   - "isRelevant = true"
 ---

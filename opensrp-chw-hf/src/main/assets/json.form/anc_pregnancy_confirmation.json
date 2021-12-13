@@ -240,7 +240,7 @@
         "type": "date_picker",
         "hint": "Last Normal Menstrual Period (LNMP)",
         "label_info_title": "LNMP",
-        "label_info_text": "LNMP = first day of Last Menstrual Period. If the exact date is unknown, but the period of the month is known, use day 5 for beginning of the month, day 15 for middle of the month and day 25 for end of the month.",
+        "label_info_text": "LNMP = first day of Last Normal Menstrual Period. If the exact date is unknown, but the period of the month is known, use day 5 for beginning of the month, day 15 for middle of the month and day 25 for end of the month.",
         "expanded": false,
         "max_date": "today",
         "min_date": "today-50w",
