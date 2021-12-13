@@ -270,49 +270,15 @@
         }
       },
       {
-        "type": "native_radio",
-        "label": "Re-Test?",
-        "key": "re_test",
-        "openmrs_entity_id": "re_test",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "label_info_text": "Client has to be re-tested for HIV",
-        "label_info_title": "Re-test",
-        "options": [
-          {
-            "key": "yes",
-            "text": "Yes",
-            "openmrs_entity_id": "yes",
-            "openmrs_entity": "concept"
-          },
-          {
-            "key": "no",
-            "text": "No",
-            "openmrs_entity_id": "no",
-            "openmrs_entity": "concept"
-          }
-        ],
-        "relevance": {
-          "step1:known_on_art": {
-            "type": "string",
-            "ex": "equalTo(.,\"no\")"
-          }
-        },
-        "v_required": {
-          "value": true,
-          "err": "Please answer this question"
-        }
-      },
-      {
         "key": "notify_retest",
         "type": "toaster_notes",
-        "text": "Client must be tested for HIV",
+        "text": "Client must be re-tested for HIV",
         "openmrs_entity_id": "notify_retest",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "toaster_type": "problem",
+        "toaster_type": "warning",
         "relevance": {
-          "step2:re_test": {
+          "step1:known_on_art": {
             "type": "string",
             "ex": "equalTo(.,\"no\")"
           }
@@ -355,9 +321,9 @@
           }
         ],
         "relevance": {
-          "step2:re_test": {
+          "step1:known_on_art": {
             "type": "string",
-            "ex": "equalTo(.,\"yes\")"
+            "ex": "equalTo(.,\"no\")"
           }
         },
         "v_required": {
