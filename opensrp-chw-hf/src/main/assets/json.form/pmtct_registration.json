@@ -257,7 +257,7 @@
       {
         "key": "notify_continue_eac",
         "type": "toaster_notes",
-        "text": "Client will automatically be enrolled to EAC",
+        "text": "Client will be enrolled to EAC",
         "openmrs_entity_id": "notify_continue_eac",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
