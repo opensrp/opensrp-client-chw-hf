@@ -53,10 +53,12 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
         JSONObject hvlForm = null;
         try{
             hvlForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.HVL_SUPPRESSION_FORM);
-            if(HfPmtctDao.isEacFirstDone(memberObject.getBaseEntityId())){
+            if(HfPmtctDao.isEacFirstDone(memberObject.getBaseEntityId()) && !HfPmtctDao.isSecondEacDone(memberObject.getBaseEntityId())){
                 hvlForm.getJSONObject("global").put("eac_visit","first_done");
+            }else if(HfPmtctDao.isSecondEacDone(memberObject.getBaseEntityId())){
+                hvlForm.getJSONObject("global").put("eac_visit","second_done");
             }else{
-                hvlForm.getJSONObject("global").put("eac_visit","first_not_done");
+                hvlForm.getJSONObject("global").put("eac_visit","not_done");
             }
             if (details != null && !details.isEmpty()) {
                 JsonFormUtils.populateForm(hvlForm, details);
@@ -79,7 +81,8 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
         private String jsonPayload;
 
         private String hvl_suppression;
-        private String hvl_suppression_after_eac;
+        private String hvl_suppression_after_eac_1;
+        private String hvl_suppression_after_eac_2;
         private BasePmtctHomeVisitAction.ScheduleStatus scheduleStatus;
         private String subTitle;
 
@@ -109,7 +112,8 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
             try{
                 JSONObject jsonObject = new JSONObject(jsonPayload);
                 hvl_suppression = CoreJsonFormUtils.getValue(jsonObject, "hvl_suppression");
-                hvl_suppression_after_eac = CoreJsonFormUtils.getValue(jsonObject,"hvl_suppression_after_eac");
+                hvl_suppression_after_eac_1 = CoreJsonFormUtils.getValue(jsonObject,"hvl_suppression_after_eac_1");
+                hvl_suppression_after_eac_2 = CoreJsonFormUtils.getValue(jsonObject,"hvl_suppression_after_eac_2");
             } catch (JSONException e) {
                 Timber.e(e);
             }
@@ -132,10 +136,12 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
 
         @Override
         public String evaluateSubTitle() {
-            if (StringUtils.isBlank(hvl_suppression) && StringUtils.isBlank(hvl_suppression_after_eac))
+            if (StringUtils.isBlank(hvl_suppression) && StringUtils.isBlank(hvl_suppression_after_eac_1) && StringUtils.isBlank(hvl_suppression_after_eac_2))
                 return null;
-            if(hvl_suppression_after_eac != null && !StringUtils.isBlank(hvl_suppression_after_eac))
-                return MessageFormat.format("HVL Suppression is: {0}", hvl_suppression_after_eac);
+            if(hvl_suppression_after_eac_1 != null && !StringUtils.isBlank(hvl_suppression_after_eac_1))
+                return MessageFormat.format("HVL Suppression is: {0}", hvl_suppression_after_eac_1);
+            if(hvl_suppression_after_eac_2 != null && !StringUtils.isBlank(hvl_suppression_after_eac_2))
+                return MessageFormat.format("HVL Suppression is: {0}", hvl_suppression_after_eac_2);
             if(hvl_suppression != null)
                 return MessageFormat.format("HVL Suppression is: {0}", hvl_suppression);
             return null;
@@ -143,7 +149,7 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
 
         @Override
         public BasePmtctHomeVisitAction.Status evaluateStatusOnPayload() {
-            if (StringUtils.isBlank(hvl_suppression) && StringUtils.isBlank(hvl_suppression_after_eac)) {
+            if (StringUtils.isBlank(hvl_suppression) && StringUtils.isBlank(hvl_suppression_after_eac_1) && StringUtils.isBlank(hvl_suppression_after_eac_2)) {
                 return BasePmtctHomeVisitAction.Status.PENDING;
             } else {
                 return BasePmtctHomeVisitAction.Status.COMPLETED;

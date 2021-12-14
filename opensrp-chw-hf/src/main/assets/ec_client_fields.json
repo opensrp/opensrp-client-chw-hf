@@ -55,11 +55,19 @@
           }
         },
         {
-          "column_name": "hvl_suppression_after_eac",
+          "column_name": "hvl_suppression_after_eac_1",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "hvl_suppression_after_eac"
+            "concept": "hvl_suppression_after_eac_1"
+          }
+        },
+        {
+          "column_name": "hvl_suppression_after_eac_2",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "hvl_suppression_after_eac_2"
           }
         },
         {

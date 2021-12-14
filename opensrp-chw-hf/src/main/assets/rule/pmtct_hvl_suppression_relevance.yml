@@ -1,15 +1,22 @@
 ---
-name: step2_hvl_suppression_after_eac
+name: step2_hvl_suppression_after_eac_1
 description: hvl_suppression_after_eac relevance
 priority: 1
 condition: "global_eac_visit == 'first_done'"
 actions:
   - "isRelevant = true"
 ---
+name: step2_hvl_suppression_after_eac_2
+description: hvl_suppression_after_eac relevance
+priority: 1
+condition: "global_eac_visit == 'second_done'"
+actions:
+  - "isRelevant = true"
+---
 name: step2_hvl_suppression
 description: hvl_suppression relevance
 priority: 1
-condition: "global_eac_visit == 'first_not_done'"
+condition: "global_eac_visit == 'not_done'"
 actions:
   - "isRelevant = true"
 ---

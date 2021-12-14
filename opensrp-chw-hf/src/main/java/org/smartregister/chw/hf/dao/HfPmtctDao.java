@@ -20,10 +20,10 @@ public class HfPmtctDao extends PmtctDao {
         return false;
     }
     public static boolean isEligibleForSecondEac(String baseEntityID) {
-        String sql = "SELECT hvl_suppression_after_eac FROM ec_pmtct_followup p " +
+        String sql = "SELECT hvl_suppression_after_eac_1 FROM ec_pmtct_followup p " +
                 "WHERE p.base_entity_id = '" + baseEntityID + "'";
 
-        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "hvl_suppression_after_eac");
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "hvl_suppression_after_eac_1");
 
         List<String> res = readData(sql, dataMap);
 
