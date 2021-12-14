@@ -23,6 +23,6 @@ actions:
 name: step2_notify_continue_regimen_followup
 description: notification to continue regimen relevance
 priority: 1
-condition: "!step2_hvl_suppression.isEmpty() && step2_hvl_suppression <= 1000 || !step2_hvl_suppression_after_eac.isEmpty() && step2_hvl_suppression_after_eac <= 1000"
+condition: "!step2_hvl_suppression.isEmpty() && step2_hvl_suppression <= 1000 || !step2_hvl_suppression_after_eac_1.isEmpty() && step2_hvl_suppression_after_eac_1 <= 1000 || !step2_hvl_suppression_after_eac_2.isEmpty() && step2_hvl_suppression_after_eac_2 <= 1000"
 actions:
   - "isRelevant = true"
