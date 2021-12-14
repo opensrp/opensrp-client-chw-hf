@@ -31,6 +31,10 @@ public class PmtctFollowupVisitActivity extends BasePmtctHomeVisitActivity {
         activity.startActivity(intent);
     }
 
+    public void returnToRegister(){
+        Intent intent = new Intent(this,PmtctRegisterActivity.class);
+        startActivity(intent);
+    }
     @Override
     protected void registerPresenter() {
         presenter = new BasePmtctHomeVisitPresenter(memberObject,this,new PmtctFollowupVisitInteractor());
@@ -41,6 +45,7 @@ public class PmtctFollowupVisitActivity extends BasePmtctHomeVisitActivity {
         Runnable runnable = () -> HfScheduleTaskExecutor.getInstance().execute(memberObject.getBaseEntityId(), Constants.EVENT_TYPE.PMTCT_FOLLOWUP, new Date());
         Utils.startAsyncTask(new RunnableTask(runnable), null);
         super.submittedAndClose();
+        returnToRegister();
     }
 
     @Override
