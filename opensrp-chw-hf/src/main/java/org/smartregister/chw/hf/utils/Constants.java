@@ -37,6 +37,7 @@ public class Constants extends CoreConstants {
         public static final String HIV_REGISTRATION = "hiv_registration";
         private static final String PMTCT_REGISTRATION = "pmtct_registration";
         public static final String HVL_SUPPRESSION_FORM = "pmtct_hvl_suppression";
+        private static final String CLINICIAN_DETAILS_FORM = "pmtct_fv_clinician_details";
 
         public static String getPmtctRegistration() {
             return PMTCT_REGISTRATION;
@@ -52,6 +53,10 @@ public class Constants extends CoreConstants {
         }
         public static String getAncPregnancyConfirmationForm() {
             return ANC_PREGANCY_CONFIRMATION;
+        }
+
+        public static String getClinicianDetailsForm() {
+            return CLINICIAN_DETAILS_FORM;
         }
 
         public static class EacVisits {

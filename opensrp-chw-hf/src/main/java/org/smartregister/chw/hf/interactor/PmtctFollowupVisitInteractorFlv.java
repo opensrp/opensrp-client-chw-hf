@@ -66,17 +66,100 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
         }catch (JSONException e){
             Timber.e(e);
         }
-        BasePmtctHomeVisitAction HVLFollowup = new BasePmtctHomeVisitAction.Builder(context, "HIV Viral Load (HVL)")
+        BasePmtctHomeVisitAction ClinicianDetails = new BasePmtctHomeVisitAction.Builder(context, "Clinician Details")
                 .withOptional(false)
+                .withFormName(Constants.JsonForm.getClinicianDetailsForm())
+                .withHelper(new ClinicianDetailsAction(memberObject))
+                .build();
+        actionList.put("Clinician Details", ClinicianDetails);
+        BasePmtctHomeVisitAction ViralLoad = new BasePmtctHomeVisitAction.Builder(context, "HIV Viral Load")
+                .withOptional(true)
                 .withJsonPayload(hvlForm.toString())
                 .withFormName(Constants.JsonForm.getHvlSuppressionForm())
-                .withHelper(new HVLAction(memberObject))
+                .withHelper(new HVLResultsAction(memberObject))
                 .build();
-        actionList.put("HIV Viral Load (HVL)", HVLFollowup);
-
+        actionList.put("HIV Viral Load", ViralLoad);
     }
 
-    private class HVLAction extends PmtctVisitAction {
+    private static class ClinicianDetailsAction extends PmtctVisitAction {
+        protected MemberObject memberObject;
+        private String jsonPayload;
+
+        private String clinician_name;
+        private BasePmtctHomeVisitAction.ScheduleStatus scheduleStatus;
+        private String subTitle;
+
+        public ClinicianDetailsAction(MemberObject memberObject) {
+            super(memberObject);
+            this.memberObject = memberObject;
+        }
+
+        @Override
+        public  void onJsonFormLoaded(String jsonPayload, Context context, Map<String, List<VisitDetail>> map) {
+            this.jsonPayload = jsonPayload;
+        }
+
+        @Override
+        public String getPreProcessed() {
+            try{
+                JSONObject jsonObject = new JSONObject(jsonPayload);
+                return jsonObject.toString();
+            }catch (Exception e){
+                Timber.e(e);
+            }
+            return null;
+        }
+
+        @Override
+        public void onPayloadReceived(String jsonPayload) {
+            try{
+                JSONObject jsonObject = new JSONObject(jsonPayload);
+                clinician_name = CoreJsonFormUtils.getValue(jsonObject, "clinician_name_followup");
+            } catch (JSONException e) {
+                Timber.e(e);
+            }
+        }
+
+        @Override
+        public BasePmtctHomeVisitAction.ScheduleStatus getPreProcessedStatus() {
+            return scheduleStatus;
+        }
+
+        @Override
+        public String getPreProcessedSubTitle() {
+            return subTitle;
+        }
+
+        @Override
+        public String postProcess(String s) {
+            return null;
+        }
+
+        @Override
+        public String evaluateSubTitle() {
+            if (StringUtils.isBlank(clinician_name))
+                return null;
+            if(clinician_name != null)
+                return MessageFormat.format("Attended by: {0}", clinician_name);
+            return null;
+        }
+
+        @Override
+        public BasePmtctHomeVisitAction.Status evaluateStatusOnPayload() {
+            if (StringUtils.isBlank(clinician_name)) {
+                return BasePmtctHomeVisitAction.Status.PENDING;
+            } else {
+                return BasePmtctHomeVisitAction.Status.COMPLETED;
+            }
+        }
+
+        @Override
+        public void onPayloadReceived(BasePmtctHomeVisitAction basePmtctHomeVisitAction){
+            Timber.d("onPayloadReceived");
+        }
+    }
+
+    private static class HVLResultsAction extends PmtctVisitAction {
         protected MemberObject memberObject;
         private String jsonPayload;
 
@@ -86,7 +169,7 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
         private BasePmtctHomeVisitAction.ScheduleStatus scheduleStatus;
         private String subTitle;
 
-        public HVLAction(MemberObject memberObject) {
+        public HVLResultsAction(MemberObject memberObject) {
             super(memberObject);
             this.memberObject = memberObject;
         }

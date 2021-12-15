@@ -1,5 +1,5 @@
 {
-  "count": "2",
+  "count": "1",
   "encounter_type": "PMTCT Follow-up Visit",
   "entity_id": "",
   "metadata": {
@@ -48,111 +48,6 @@
   },
   "global": {},
   "step1": {
-    "title": "Clinician Details",
-    "next": "step2",
-    "fields": [
-      {
-        "type": "edit_text",
-        "key": "followup_visit_date",
-        "hidden": "true",
-        "openmrs_entity_id": "followup_visit_date",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "calculation": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "pmtct_followup_calculation.yml"
-            }
-          }
-        }
-      },
-      {
-        "type": "edit_text",
-        "key": "clinician_name_followup",
-        "hint": "Clinician Name",
-        "openmrs_entity_id": "clinician_name_followup",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "v_regex": {
-          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
-          "err": "Please enter the clinician name"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Please enter the clinician name"
-        }
-      },
-      {
-        "type": "edit_text",
-        "key": "clinician_position_followup",
-        "hint": "Clinician Position",
-        "openmrs_entity_id": "clinician_position_followup",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "v_required": {
-          "value": true,
-          "err": "Please enter the clinician position"
-        }
-      },
-      {
-        "type": "edit_text",
-        "key": "clinician_phone_no_followup",
-        "hint": "Clinician Phone Number",
-        "edit_type": "number",
-        "openmrs_entity_id": "clinician_phone_no_followup",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "v_regex": {
-          "value": "(0[0-9]{9})|\\s*",
-          "err": "Number must be 10 digits and must start with 0."
-        },
-        "v_required": {
-          "value": true,
-          "err": "Please enter the clinician phone number"
-        }
-      },
-      {
-        "type": "date_picker",
-        "key": "collection_date_followup",
-        "hint": "Collection Date",
-        "openmrs_entity_id": "collection_date_followup",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "min_date": "today-5y",
-        "max_date": "today",
-        "v_required": {
-          "value": true,
-          "err": "Please enter the collection date"
-        }
-      },
-      {
-        "type": "time_picker",
-        "key": "collection_time_followup",
-        "hint": "Collection Time",
-        "openmrs_entity_id": "collection_time_followup",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "v_required": {
-          "value": true,
-          "err": "Please enter the collection time"
-        }
-      },
-      {
-        "type": "edit_text",
-        "key": "sample_id_followup",
-        "hint": "Sample ID",
-        "edit_type": "number",
-        "openmrs_entity_id": "sample_id_followup",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "v_required": {
-          "value": true,
-          "err": "Please enter the sample ID"
-        }
-      }
-    ]
-  },
-  "step2": {
     "title": "HVL Suppression",
     "fields": [
       {
@@ -250,7 +145,7 @@
         "openmrs_entity_parent": "",
         "toaster_type": "problem",
         "relevance": {
-          "step2:hvl_suppression": {
+          "step1:hvl_suppression": {
             "type": "numeric",
             "ex": "greaterThan(.,\"1000\")"
           }
@@ -265,7 +160,7 @@
         "openmrs_entity_parent": "",
         "toaster_type": "problem",
         "relevance": {
-          "step2:hvl_suppression_after_eac_1": {
+          "step1:hvl_suppression_after_eac_1": {
             "type": "numeric",
             "ex": "greaterThan(.,\"1000\")"
           }
@@ -294,7 +189,7 @@
           "third_line": "third_line"
         },
         "relevance": {
-          "step2:hvl_suppression_after_eac_2": {
+          "step1:hvl_suppression_after_eac_2": {
             "type": "numeric",
             "ex": "greaterThan(.,\"1000\")"
           }
@@ -339,7 +234,7 @@
           "2_fA": "2_fA"
         },
         "relevance": {
-          "step2:choose_presc_line": {
+          "step1:choose_presc_line": {
             "type": "string",
             "ex": "equalTo(.,\"first_line\")"
           }
@@ -387,7 +282,7 @@
           "3_yA": "3_yA"
         },
         "relevance": {
-          "step2:choose_presc_line": {
+          "step1:choose_presc_line": {
             "type": "string",
             "ex": "equalTo(.,\"second_line\")"
           }
@@ -432,7 +327,7 @@
           "3_xA": "3_xA"
         },
         "relevance": {
-          "step2:choose_presc_line": {
+          "step1:choose_presc_line": {
             "type": "string",
             "ex": "equalTo(.,\"third_line\")"
           }
