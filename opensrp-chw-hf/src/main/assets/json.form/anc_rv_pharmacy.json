@@ -72,7 +72,11 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "FeFo"
           }
-        ]
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
       },
       {
         "type": "check_box",
@@ -106,7 +110,11 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "ipt4"
           }
-        ]
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select at least one option"
+        }
       },
       {
         "type": "check_box",
@@ -132,7 +140,11 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "albendazole"
           }
-        ]
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select one option"
+        }
       }
     ]
   }
