@@ -149,6 +149,13 @@
             "openmrs_entity_id": "female_genital_mutilation"
           },
           {
+            "key": "parity",
+            "text": "Parity",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "parity"
+          },
+          {
             "key": "closely_spaced_pregnancy",
             "text": "Closely spaced pregnancy (within 2 years)",
             "value": false,
@@ -201,6 +208,34 @@
         "v_required": {
           "value": "true",
           "err": "Please pick at least one"
+        }
+      },
+      {
+        "type": "edit_text",
+        "hint": "Parity",
+        "key": "parity_value",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "parity_value",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter parity number"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter the parity number"
+        },
+        "relevance": {
+          "step1:medical_surgical_history": {
+            "type": "string",
+            "ex-checkbox": [
+              {
+                "or": [
+                  "parity"
+                ]
+              }
+            ]
+          }
         }
       }
     ]

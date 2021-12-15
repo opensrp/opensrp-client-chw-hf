@@ -68,7 +68,7 @@
           },
           {
             "key": "pallor",
-            "text": "Pallor(conjunctiva, palms, tip of the tongue, gums)",
+            "text": "Pallor (conjunctiva, palms, tip of the tongue, gums)",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "pallor"
           },
@@ -232,6 +232,21 @@
         "v_required": {
           "value": true,
           "err": "Please enter the temperature"
+        }
+      },
+      {
+        "key": "notify_client_has_fever",
+        "type": "toaster_notes",
+        "text": "Client has a fever",
+        "openmrs_entity_id": "notify_client_has_fever",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:temperature": {
+            "type": "numeric",
+            "ex": "greaterThanEqualTo(.,\"39\")"
+          }
         }
       }
     ]

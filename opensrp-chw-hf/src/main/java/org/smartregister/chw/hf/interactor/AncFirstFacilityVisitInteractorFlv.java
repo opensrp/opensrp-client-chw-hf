@@ -167,7 +167,7 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
         public void onPayloadReceived(String jsonPayload) {
             try {
                 JSONObject jsonObject = new JSONObject(jsonPayload);
-                medical_and_surgical_history_present = CoreJsonFormUtils.getCheckBoxValue(jsonObject, "anc_medical_surgical_history");
+                medical_and_surgical_history_present = CoreJsonFormUtils.getCheckBoxValue(jsonObject, "medical_surgical_history");
             } catch (JSONException e) {
                 Timber.e(e);
             }

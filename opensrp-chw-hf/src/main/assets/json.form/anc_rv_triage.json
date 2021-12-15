@@ -94,7 +94,7 @@
         "options": [
           {
             "key": "facial_expression",
-            "text": "Facial Expression (Pain expression)",
+            "text": "Facial Expression (normal, pain expression)",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "facial_expression"
           },
@@ -168,10 +168,6 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "client_concern",
         "openmrs_entity_parent": "",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter your concern"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -225,21 +221,21 @@
           },
           {
             "key": "convulsing",
-            "text": "Convulsing",
+            "text": "Convulsion",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "convulsing"
           },
           {
             "key": "looking_very_ill",
-            "text": "Looking Very ill(lethargic,drowsy)",
+            "text": "Looking Very Ill (lethargic, drowsy)",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "looking_very_ill"
           },
           {
             "key": "fever",
-            "text": "A fever",
+            "text": "A Fever",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "fever"
@@ -274,7 +270,7 @@
           },
           {
             "key": "imminent_delivery",
-            "text": "Imminent delivery",
+            "text": "Imminent Delivery",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "imminent_delivery"
