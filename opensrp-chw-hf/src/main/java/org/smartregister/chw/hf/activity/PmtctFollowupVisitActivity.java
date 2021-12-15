@@ -24,10 +24,10 @@ import java.util.Date;
 import timber.log.Timber;
 
 public class PmtctFollowupVisitActivity extends BasePmtctHomeVisitActivity {
-    public static void startPmtctFollowUpActivity(Activity activity, String baseEntityID) {
+    public static void startPmtctFollowUpActivity(Activity activity, String baseEntityID, Boolean editMode) {
         Intent intent = new Intent(activity, PmtctFollowupVisitActivity.class);
         intent.putExtra(Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID,baseEntityID );
-        intent.putExtra(Constants.ACTIVITY_PAYLOAD.EDIT_MODE, false);
+        intent.putExtra(Constants.ACTIVITY_PAYLOAD.EDIT_MODE, editMode);
         activity.startActivity(intent);
     }
 

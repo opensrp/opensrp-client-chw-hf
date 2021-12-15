@@ -136,6 +136,7 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
             boolean isEligibleForSecondEac = HfPmtctDao.isEligibleForSecondEac(baseEntityId);
             boolean isEacFirstDone = HfPmtctDao.isEacFirstDone(baseEntityId);
             boolean isEacSecondDone = HfPmtctDao.isSecondEacDone(baseEntityId);
+            Visit lastFolllowUpVisit = getVisit(Constants.EVENT_TYPE.PMTCT_FOLLOWUP);
 
             if (showEac && isEligibleForFirstEac && !isEacFirstDone) {
                 recordVisits.setWeightSum(1);
@@ -146,7 +147,9 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
                 textViewRecordAnc.setVisibility(View.VISIBLE);
                 textViewRecordAnc.setText(R.string.record_eac_second_visit);
             } else {
-                profilePresenter.visitRow(pmtctFollowUpRule.getButtonStatus());
+                if(lastFolllowUpVisit != null && lastFolllowUpVisit.getProcessed()){
+                    profilePresenter.visitRow(pmtctFollowUpRule.getButtonStatus());
+                }
             }
             profilePresenter.nextRow(pmtctFollowUpRule.getButtonStatus(), FpUtil.sdf.format(pmtctFollowUpRule.getDueDate()));
         }
@@ -173,6 +176,10 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
             if (lastEacVisit != null && !lastEacVisit.getProcessed()) {
                 showVisitInProgress();
             }
+        }
+        Visit lastFollowupVisit = getVisit(Constants.EVENT_TYPE.PMTCT_FOLLOWUP);
+        if(lastFollowupVisit != null && !lastFollowupVisit.getProcessed()){
+            showVisitInProgress();
         }
 
     }
@@ -206,12 +213,13 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
     public void onClick(View view) {
         super.onClick(view);
         int id = view.getId();
+        Visit lastFollowupVisit = getVisit(Constants.EVENT_TYPE.PMTCT_FOLLOWUP);
         boolean isEligibleForFirst = HfPmtctDao.isEligibleForEac(baseEntityId);
         boolean isEligibleForSecond = HfPmtctDao.isEligibleForSecondEac(baseEntityId);
         boolean isEacFirstDone = HfPmtctDao.isEacFirstDone(baseEntityId);
         boolean isEacSecondDone = HfPmtctDao.isSecondEacDone(baseEntityId);
         if (id == R.id.textview_record_pmtct) {
-            PmtctFollowupVisitActivity.startPmtctFollowUpActivity(this, baseEntityId);
+            PmtctFollowupVisitActivity.startPmtctFollowUpActivity(this, baseEntityId,false);
         } else if (id == R.id.textview_record_anc) {
             if (isEligibleForFirst && !isEacFirstDone) {
                 PmtctEacFirstVisitActivity.startEacActivity(this, memberObject.getBaseEntityId(), false);
@@ -223,6 +231,8 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
                 PmtctEacFirstVisitActivity.startEacActivity(this, memberObject.getBaseEntityId(), true);
             } else if (isEligibleForSecond && !isEacSecondDone) {
                 PmtctEacSecondVisitActivity.startSecondEacActivity(this, memberObject.getBaseEntityId(), true);
+            }else if(lastFollowupVisit != null && !lastFollowupVisit.getProcessed() ){
+                PmtctFollowupVisitActivity.startPmtctFollowUpActivity(this, baseEntityId,true);
             }
         }
 
@@ -231,6 +241,7 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
 
     private void showVisitInProgress() {
         recordVisits.setVisibility(View.GONE);
+        textViewRecordPmtct.setVisibility(View.GONE);
         textViewVisitDoneEdit.setVisibility(View.VISIBLE);
         visitDone.setVisibility(View.VISIBLE);
         textViewVisitDone.setText(R.string.visit_in_progress);

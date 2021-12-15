@@ -68,12 +68,14 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
         }
         BasePmtctHomeVisitAction ClinicianDetails = new BasePmtctHomeVisitAction.Builder(context, "Clinician Details")
                 .withOptional(false)
+                .withDetails(details)
                 .withFormName(Constants.JsonForm.getClinicianDetailsForm())
                 .withHelper(new ClinicianDetailsAction(memberObject))
                 .build();
         actionList.put("Clinician Details", ClinicianDetails);
         BasePmtctHomeVisitAction ViralLoad = new BasePmtctHomeVisitAction.Builder(context, "HIV Viral Load")
                 .withOptional(true)
+                .withDetails(details)
                 .withJsonPayload(hvlForm.toString())
                 .withFormName(Constants.JsonForm.getHvlSuppressionForm())
                 .withHelper(new HVLResultsAction(memberObject))
