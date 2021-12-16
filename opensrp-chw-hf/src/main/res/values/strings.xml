@@ -50,7 +50,7 @@
     <string name="record_anc_followup_visit">Record ANC Followup Visit</string>
     <string name="anc_first_visit">ANC First Visit</string>
     <string name="anc_followup_visit">ANC Followup Visit</string>
-    <string name="visit_in_progress">Visit still in progress</string>
+    <string name="visit_in_progress">%s visit still in progress</string>
     <string name="optional"></string>
     <string name="record_eac_first_visit">First EAC Visit</string>
     <string name="record_eac_second_visit">Second EAC Visit</string>
