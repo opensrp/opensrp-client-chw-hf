@@ -2,6 +2,7 @@ package org.smartregister.chw.hf.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.widget.Toast;
 
 import com.vijay.jsonwizard.constants.JsonFormConstants;
 import com.vijay.jsonwizard.domain.Form;
@@ -138,6 +139,42 @@ public class AncRegisterActivity extends CoreAncRegisterActivity {
     @Override
     protected void initializePresenter() {
         this.presenter = new BaseAncRegisterPresenter(this, new BaseAncRegisterModel(), new AncRegisterInteractor());
+    }
+
+    @Override
+    protected void onActivityResultExtended(int requestCode, int resultCode, Intent data) {
+
+        if (resultCode == Activity.RESULT_OK && requestCode == Constants.REQUEST_CODE_GET_JSON) {
+//            process the form
+            try {
+                String jsonString = data.getStringExtra(Constants.JSON_FORM_EXTRA.JSON);
+                Timber.d("JSONResult %s", jsonString);
+
+                JSONObject form = new JSONObject(jsonString);
+                String encounter_type = form.optString(Constants.JSON_FORM_EXTRA.ENCOUNTER_TYPE);
+                String upt = CoreJsonFormUtils.getValue(form,"upt");
+                String uss = CoreJsonFormUtils.getValue(form, "uss");
+                String danger_sign_analysis = CoreJsonFormUtils.getCheckBoxValue(form,"danger_signs_analysis");
+                String table = data.getStringExtra(Constants.ACTIVITY_PAYLOAD.TABLE_NAME);
+
+                if (encounter_type.equalsIgnoreCase(getRegisterEventType())) {
+                    if(danger_sign_analysis.equalsIgnoreCase("None") && (upt.equalsIgnoreCase("positive") || uss.equalsIgnoreCase("present_gestation_sac") ))
+                        presenter().saveForm(jsonString, false, table);
+
+                } else if (encounter_type.equalsIgnoreCase(Constants.EVENT_TYPE.PREGNANCY_OUTCOME)) {
+
+                    presenter().saveForm(jsonString, false, table);
+
+                } else if (encounter_type.startsWith(Constants.EVENT_TYPE.UPDATE_EVENT_CONDITION)) {
+
+                    presenter().saveForm(form.toString(), true, TABLE);
+
+                }
+            } catch (Exception e) {
+                Timber.e(e);
+                Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
 
