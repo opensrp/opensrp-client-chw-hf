@@ -34,6 +34,7 @@ import org.smartregister.chw.hf.dao.HfAncDao;
 import org.smartregister.chw.hf.model.FamilyProfileModel;
 import org.smartregister.chw.hf.presenter.AncMemberProfilePresenter;
 import org.smartregister.chw.hf.utils.VisitUtils;
+import org.smartregister.chw.hiv.dao.HivDao;
 import org.smartregister.chw.pmtct.dao.PmtctDao;
 import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.commonregistry.AllCommonsRepository;
@@ -129,7 +130,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         menu.findItem(R.id.action_remove_member).setVisible(false);
         menu.findItem(R.id.action_pregnancy_out_come).setVisible(!HfAncDao.isClientClosed(baseEntityID));
         menu.findItem(R.id.action_malaria_diagnosis).setVisible(false);
-        menu.findItem(R.id.action_pmtct_register).setVisible(!PmtctDao.isRegisteredForPmtct(baseEntityID) && hivPositive);
+        menu.findItem(R.id.action_pmtct_register).setVisible(!PmtctDao.isRegisteredForPmtct(baseEntityID) && (hivPositive || HivDao.isRegisteredForHiv(baseEntityID)));
         return true;
     }
 
