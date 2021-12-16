@@ -26,6 +26,9 @@ public class Constants extends CoreConstants {
 
     public static final class Visits {
         public static final String TERMINATED = "Terminated";
+        public static final String FIRST_EAC = "First Eac";
+        public static final String SECOND_EAC = "Second Eac";
+        public static final String PMTCT_FOLLOWUP = "Pmtct Followup";
     }
 
     public static final class ActionList {
