@@ -1,0 +1,7 @@
+---
+name: step1_gest_age_followup
+description: Gestational age calculated
+priority: 1
+condition: "true"
+actions:
+  - "calculation = (helper.getDifferenceDays(global_last_menstrual_period)-helper.getDifferenceDays(helper.getDateToday())) /7"

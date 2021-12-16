@@ -148,7 +148,7 @@
         "openmrs_entity_id": "fundal_height",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "hint": "Fundal Height",
+        "hint": "Fundal Height (CM)",
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -179,10 +179,25 @@
         "openmrs_entity_id": "lie",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "hint": "lie",
+        "hint": "Lie",
         "values": [
-          "lie"
+          "Transverse",
+          "Oblique",
+          "Longitudinal",
+          "Other"
         ],
+        "keys": [
+          "transverse",
+          "oblique",
+          "longitudinal",
+          "other"
+        ],
+        "openmrs_choice_ids": {
+          "transverse": "transverse",
+          "oblique": "oblique",
+          "longitudinal": "longitudinal",
+          "other": "other"
+        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -192,7 +207,26 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Please select lie"
+          "err": "Please select an option for lie"
+        }
+      },
+      {
+        "key": "lie_other",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "lie_other",
+        "type": "edit_text",
+        "edit_type": "name",
+        "hint": "Lie Other",
+        "v_required": {
+          "value": "true",
+          "err": "Please specify the lie"
+        },
+        "relevance": {
+          "step1:lie": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
+          }
         }
       },
       {
@@ -201,10 +235,28 @@
         "openmrs_entity_id": "presentation",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "hint": "presentation",
+        "hint": "Presentation",
         "values": [
-          "presentation"
+          "Occipital Posterior Presentation",
+          "Eye Brow Presentation",
+          "Breech Presentation",
+          "Chin Presentation",
+          "Other"
         ],
+        "keys": [
+          "occipital_posterior",
+          "eye_brow",
+          "breech",
+          "chin",
+          "other"
+        ],
+        "openmrs_choice_ids": {
+          "occipital_posterior": "occipital_posterior",
+          "eye_brow": "eye_brow",
+          "breech": "breech",
+          "chin": "chin",
+          "other": "other"
+        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -214,7 +266,26 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Please select presentation"
+          "err": "Please select an option for presentation"
+        }
+      },
+      {
+        "key": "presentation_other",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "presentation_other",
+        "type": "edit_text",
+        "edit_type": "name",
+        "hint": "Presentation Other",
+        "v_required": {
+          "value": "true",
+          "err": "Please specify the presentation"
+        },
+        "relevance": {
+          "step1:presentation": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
+          }
         }
       },
       {

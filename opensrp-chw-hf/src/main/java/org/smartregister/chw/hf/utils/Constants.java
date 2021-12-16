@@ -93,7 +93,7 @@ public class Constants extends CoreConstants {
         }
         public static class AncRecurringVisit {
             public static final String TRIAGE = "anc_rv_triage";
-            private static final String CONSULTATION = "anc_rv_consultation";
+            public static final String CONSULTATION = "anc_rv_consultation";
             private static final String LAB_TESTS = "anc_rv_lab_test";
             private static final String PHARMACY = "anc_rv_pharmacy";
             private static final String PREGNANCY_STATUS = "anc_rv_pregnancy_status";

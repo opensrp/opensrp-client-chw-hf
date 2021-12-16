@@ -46,6 +46,8 @@
     },
     "encounter_location": ""
   },
+  "global": {
+  },
   "step1": {
     "title": "Consultation (ANC assessment and Update Maternal Handbook)",
     "fields": [
@@ -88,6 +90,166 @@
         "v_required": {
           "value": true,
           "err": "Please select at least one"
+        }
+      },
+      {
+        "key": "gest_age_followup",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "gest_age_followup",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_consultation_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "fundal_height_followup",
+        "type": "edit_text",
+        "openmrs_entity_id": "fundal_height_followup",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "hint": "Fundal Height (CM)",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_consultation_relevance.yml"
+            }
+          }
+        },
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the fundal height"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Fundal height must be equal or greater than 0 CM"
+        },
+        "v_max": {
+          "value": "36",
+          "err": "Fundal height must be equal or less than 36 CM"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the fundal height"
+        }
+      },
+      {
+        "key": "lie_followup",
+        "type": "spinner",
+        "openmrs_entity_id": "lie_followup",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "hint": "Lie",
+        "values": [
+          "Transverse",
+          "Oblique",
+          "Longitudinal",
+          "Other"
+        ],
+        "keys": [
+          "transverse",
+          "oblique",
+          "longitudinal",
+          "other"
+        ],
+        "openmrs_choice_ids": {
+          "transverse": "transverse",
+          "oblique": "oblique",
+          "longitudinal": "longitudinal",
+          "other": "other"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_consultation_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select an option for lie"
+        }
+      },
+      {
+        "key": "lie_other_followup",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "lie_other_followup",
+        "type": "edit_text",
+        "edit_type": "name",
+        "hint": "Lie Other",
+        "v_required": {
+          "value": "true",
+          "err": "Please specify the lie"
+        },
+        "relevance": {
+          "step1:lie_followup": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
+          }
+        }
+      },
+      {
+        "key": "presentation_followup",
+        "type": "spinner",
+        "openmrs_entity_id": "presentation_followup",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "hint": "Presentation",
+        "values": [
+          "Occipital Posterior Presentation",
+          "Eye Brow Presentation",
+          "Breech Presentation",
+          "Chin Presentation",
+          "Other"
+        ],
+        "keys": [
+          "occipital_posterior",
+          "eye_brow",
+          "breech",
+          "chin",
+          "other"
+        ],
+        "openmrs_choice_ids": {
+          "occipital_posterior": "occipital_posterior",
+          "eye_brow": "eye_brow",
+          "breech": "breech",
+          "chin": "chin",
+          "other": "other"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_consultation_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select an option for presentation"
+        }
+      },
+      {
+        "key": "presentation_other_followup",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "presentation_other_followup",
+        "type": "edit_text",
+        "edit_type": "name",
+        "hint": "Presentation Other",
+        "v_required": {
+          "value": "true",
+          "err": "Please specify the presentation"
+        },
+        "relevance": {
+          "step1:presentation_followup": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
+          }
         }
       },
       {

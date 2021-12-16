@@ -108,6 +108,17 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
             e.printStackTrace();
         }
 
+        JSONObject consultationForm = null;
+        try {
+            consultationForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.CONSULTATION);
+            consultationForm.getJSONObject("global").put("last_menstrual_period", memberObject.getLastMenstrualPeriod());
+            if (details != null && !details.isEmpty()) {
+                JsonFormUtils.populateForm(consultationForm, details);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
         BaseAncHomeVisitAction triage = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_triage))
                 .withOptional(false)
                 .withDetails(details)
@@ -120,6 +131,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
         BaseAncHomeVisitAction consultation = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_cunsultation))
                 .withOptional(true)
                 .withDetails(details)
+                .withJsonPayload(consultationForm.toString())
                 .withFormName(Constants.JsonForm.AncRecurringVisit.getConsultation())
                 .withHelper(new AncConsultationAction(memberObject))
                 .build();

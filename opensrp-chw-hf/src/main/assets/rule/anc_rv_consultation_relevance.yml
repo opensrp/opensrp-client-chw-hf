@@ -1,0 +1,21 @@
+---
+name: step1_fundal_height_followup
+description: fundal height should be recorded if gestational age is greater than 20
+priority: 1
+condition: "step1_gest_age_followup >= 20"
+actions:
+  - "isRelevant = true"
+---
+name: step1_lie_followup
+description: lie should be recorded if gestational age is greater than 36
+priority: 1
+condition: "step1_gest_age_followup >= 36"
+actions:
+  - "isRelevant = true"
+---
+name: step1_presentation_followup
+description: presentation should be recorded if gestational age is greater than 36
+priority: 1
+condition: "step1_gest_age_followup >= 36"
+actions:
+  - "isRelevant = true"
