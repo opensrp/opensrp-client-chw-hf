@@ -365,6 +365,14 @@
           }
         },
         {
+          "column_name": "marital_status",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "marital_status"
+          }
+        },
+        {
           "column_name": "type_of_disability",
           "type": "Event",
           "json_mapping": {
