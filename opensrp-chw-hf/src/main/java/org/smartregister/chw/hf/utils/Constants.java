@@ -40,6 +40,8 @@ public class Constants extends CoreConstants {
         public static final String HIV_REGISTRATION = "hiv_registration";
         private static final String PMTCT_REGISTRATION = "pmtct_registration";
         public static final String HVL_SUPPRESSION_FORM = "pmtct_hvl_suppression";
+        public static final String HVL_SUPPRESSION_FORM_AFTER_EAC_1 = "pmtct_hvl_suppression_after_eac_1";
+        public static final String HVL_SUPPRESSION_FORM_AFTER_EAC_2 = "pmtct_hvl_suppression_after_eac_2";
         public static final String CLINICIAN_DETAILS_FORM = "pmtct_fv_clinician_details";
 
         public static String getPmtctRegistration() {
@@ -47,6 +49,12 @@ public class Constants extends CoreConstants {
         }
         public static String getHvlSuppressionForm() {
             return HVL_SUPPRESSION_FORM;
+        }
+        public static String getHvlSuppressionFormAfterEac1() {
+            return HVL_SUPPRESSION_FORM_AFTER_EAC_1;
+        }
+        public static String getHvlSuppressionFormAfterEac2() {
+            return HVL_SUPPRESSION_FORM_AFTER_EAC_2;
         }
         public static String getAncPregnancyConfirmation() {
             return Utils.getLocalForm(ANC_PREGANCY_CONFIRMATION, locale, assetManager);

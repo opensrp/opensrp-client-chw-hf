@@ -52,9 +52,9 @@
     "fields": [
       {
         "type": "edit_text",
-        "key": "hvl_suppression",
+        "key": "hvl_suppression_after_eac_1",
         "hint": "HVL Suppression",
-        "openmrs_entity_id": "hvl_suppression",
+        "openmrs_entity_id": "hvl_suppression_after_eac_1",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "v_numeric": {
@@ -84,15 +84,15 @@
         }
       },
       {
-        "key": "notify_continue_eac_followup",
+        "key": "notify_continue_eac_second",
         "type": "toaster_notes",
-        "text": "Client will be enrolled to EAC",
-        "openmrs_entity_id": "notify_continue_eac_followup",
+        "text": "Client will be enrolled to second EAC",
+        "openmrs_entity_id": "notify_continue_eac_second",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "toaster_type": "problem",
         "relevance": {
-          "step1:hvl_suppression": {
+          "step1:hvl_suppression_after_eac_1": {
             "type": "numeric",
             "ex": "greaterThan(.,\"1000\")"
           }

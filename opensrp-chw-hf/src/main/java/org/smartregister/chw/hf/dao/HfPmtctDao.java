@@ -20,7 +20,6 @@ public class HfPmtctDao extends PmtctDao {
                 int viralLoad = Integer.parseInt(res.get(0));
                 return viralLoad >= 1000;
             } catch (Exception e) {
-                Timber.e(e);
                 return false;
             }
         }
@@ -40,7 +39,6 @@ public class HfPmtctDao extends PmtctDao {
                 int viralLoad = Integer.parseInt(res.get(0));
                 return viralLoad >= 1000;
             } catch (Exception e) {
-                Timber.e(e);
                 return false;
             }
         }

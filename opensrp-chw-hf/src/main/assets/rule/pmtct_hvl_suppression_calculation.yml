@@ -1,0 +1,56 @@
+---
+name: step1_hvl_suppression
+description: clear_suppression
+priority: 1
+condition: "global_eac_visit == 'second_done'"
+actions:
+  - "calculation = 'NULL'"
+---
+name: step1_hvl_suppression_after_eac_1
+description: clear_suppression
+priority: 1
+condition: "global_eac_visit == 'second_done'"
+actions:
+  - "calculation = 'NULL'"
+---
+name: step1_eac_day_1
+description: clear_eac_dates
+priority: 1
+condition: "global_eac_visit == 'second_done'"
+actions:
+  - "calculation = 'NULL'"
+---
+name: step1_eac_day_2
+description: clear_eac_dates
+priority: 1
+condition: "global_eac_visit == 'second_done'"
+actions:
+  - "calculation = 'NULL'"
+---
+name: step1_eac_day_3
+description: clear_eac_dates
+priority: 1
+condition: "global_eac_visit == 'second_done'"
+actions:
+  - "calculation = 'NULL'"
+---
+name: step1_eac_month_1
+description: clear_eac_dates
+priority: 1
+condition: "global_eac_visit == 'second_done'"
+actions:
+  - "calculation = 'NULL'"
+---
+name: step1_eac_month_2
+description: clear_eac_dates
+priority: 1
+condition: "global_eac_visit == 'second_done'"
+actions:
+  - "calculation = 'NULL'"
+---
+name: step1_eac_month_3
+description: clear_eac_dates
+priority: 1
+condition: "global_eac_visit == 'second_done'"
+actions:
+  - "calculation = 'NULL'"
