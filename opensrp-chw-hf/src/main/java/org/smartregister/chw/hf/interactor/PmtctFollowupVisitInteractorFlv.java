@@ -252,11 +252,11 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
         public String evaluateSubTitle() {
             if (StringUtils.isBlank(hvl_suppression) && StringUtils.isBlank(hvl_suppression_after_eac_1) && StringUtils.isBlank(hvl_suppression_after_eac_2))
                 return null;
-            if (hvl_suppression_after_eac_1 != null && !hvl_suppression_after_eac_1.equalsIgnoreCase("NULL"))
+            if (hvl_suppression_after_eac_1 != null && !hvl_suppression_after_eac_1.equalsIgnoreCase("NULL") && !StringUtils.isBlank(hvl_suppression_after_eac_1))
                 return MessageFormat.format("HVL Suppression is: {0}", hvl_suppression_after_eac_1);
-            if (hvl_suppression_after_eac_2 != null && !hvl_suppression_after_eac_2.equalsIgnoreCase("NULL"))
+            if (hvl_suppression_after_eac_2 != null && !hvl_suppression_after_eac_2.equalsIgnoreCase("NULL") && !StringUtils.isBlank(hvl_suppression_after_eac_2))
                 return MessageFormat.format("HVL Suppression is: {0}", hvl_suppression_after_eac_2);
-            if (hvl_suppression != null)
+            if (hvl_suppression != null && !StringUtils.isBlank(hvl_suppression))
                 return MessageFormat.format("HVL Suppression is: {0}", hvl_suppression);
             return null;
         }
