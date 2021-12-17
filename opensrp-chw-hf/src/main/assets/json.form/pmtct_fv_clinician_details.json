@@ -113,7 +113,7 @@
       {
         "type": "date_picker",
         "key": "collection_date_followup",
-        "hint": "Collection Date",
+        "hint": "Sample Collection Date",
         "openmrs_entity_id": "collection_date_followup",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -127,7 +127,7 @@
       {
         "type": "time_picker",
         "key": "collection_time_followup",
-        "hint": "Collection Time",
+        "hint": "Sample Collection Time",
         "openmrs_entity_id": "collection_time_followup",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
