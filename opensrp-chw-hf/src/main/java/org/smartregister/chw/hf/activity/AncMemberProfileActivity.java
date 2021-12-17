@@ -390,6 +390,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         }else if(visitStatus.equalsIgnoreCase("LESS_TWENTY_FOUR")){
             layoutNotRecordView.setVisibility(View.VISIBLE);
             textViewNotVisitMonth.setText(getContext().getString(org.smartregister.chw.core.R.string.anc_visit_done, monthString));
+            tvEdit.setVisibility(View.GONE);
             imageViewCross.setImageResource(org.smartregister.chw.core.R.drawable.activityrow_visited);
         }
     }
