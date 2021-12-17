@@ -282,7 +282,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
        layoutRecordView.setVisibility(View.GONE);
        tvEdit.setVisibility(View.VISIBLE);
        layoutNotRecordView.setVisibility(View.VISIBLE);
-       textViewNotVisitMonth.setText(R.string.visit_in_progress);
+       textViewNotVisitMonth.setText(getContext().getString(R.string.visit_in_progress,"ANC"));
        imageViewCross.setImageResource(org.smartregister.chw.core.R.drawable.activityrow_notvisited);
     }
 
