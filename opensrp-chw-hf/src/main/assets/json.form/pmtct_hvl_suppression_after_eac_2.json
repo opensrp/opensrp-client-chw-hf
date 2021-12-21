@@ -76,10 +76,9 @@
         "toaster_info_text": "Repeat HVL after 6, 12 and 18 months",
         "toaster_type": "info",
         "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "pmtct_hvl_suppression_relevance.yml"
-            }
+          "step1:hvl_suppression_after_eac_2": {
+            "type": "numeric",
+            "ex": "lessThanEqualTo(.,\"1000\")"
           }
         }
       },
