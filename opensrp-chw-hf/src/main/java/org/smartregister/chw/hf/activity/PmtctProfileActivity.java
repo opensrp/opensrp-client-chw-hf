@@ -185,8 +185,8 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         }
         Visit lastFollowupVisit = getVisit(Constants.EVENT_TYPE.PMTCT_FOLLOWUP);
         if(lastFollowupVisit != null && !lastFollowupVisit.getProcessed()){
-            showVisitInProgress(org.smartregister.chw.hf.utils.Constants.Visits.PMTCT_FOLLOWUP);
-            setUpEditButton(org.smartregister.chw.hf.utils.Constants.Visits.PMTCT_FOLLOWUP);
+            showVisitInProgress(org.smartregister.chw.hf.utils.Constants.Visits.PMTCT_VISIT);
+            setUpEditButton(org.smartregister.chw.hf.utils.Constants.Visits.PMTCT_VISIT);
         }
 
     }
@@ -241,7 +241,7 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
 
     private void showVisitInProgress(String typeOfVisit) {
         recordVisits.setVisibility(View.GONE);
-        if(typeOfVisit.equalsIgnoreCase(org.smartregister.chw.hf.utils.Constants.Visits.PMTCT_FOLLOWUP)){
+        if(typeOfVisit.equalsIgnoreCase(org.smartregister.chw.hf.utils.Constants.Visits.PMTCT_VISIT)){
             textViewRecordPmtct.setVisibility(View.GONE);
         }
         textViewVisitDoneEdit.setVisibility(View.VISIBLE);
@@ -260,7 +260,7 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
                 case org.smartregister.chw.hf.utils.Constants.Visits.SECOND_EAC:
                     PmtctEacSecondVisitActivity.startSecondEacActivity(PmtctProfileActivity.this, memberObject.getBaseEntityId(), true);
                     break;
-                case org.smartregister.chw.hf.utils.Constants.Visits.PMTCT_FOLLOWUP:
+                case org.smartregister.chw.hf.utils.Constants.Visits.PMTCT_VISIT:
                     PmtctFollowupVisitActivity.startPmtctFollowUpActivity(PmtctProfileActivity.this, baseEntityId, true);
                     break;
             }
