@@ -130,6 +130,9 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         @Override
         protected void onPostExecute(Void param) {
             profilePresenter.recordPmtctButton(pmtctFollowUpRule.getButtonStatus());
+            if (pmtctFollowUpRule.isFirstVisit())
+                textViewRecordPmtct.setText("Record PMTCT First Visit");
+
             boolean showEac = !pmtctFollowUpRule.getButtonStatus().equalsIgnoreCase("DUE")
                     && !pmtctFollowUpRule.getButtonStatus().equalsIgnoreCase("OVERDUE")
                     && !pmtctFollowUpRule.getButtonStatus().equalsIgnoreCase("EXPIRY");

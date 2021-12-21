@@ -90,126 +90,6 @@
           "value": true,
           "err": "Please answer this question"
         }
-      },
-      {
-        "type": "edit_text",
-        "key": "clinician_name",
-        "hint": "Clinician Name",
-        "openmrs_entity_id": "clinician_name",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "relevance": {
-          "step1:known_on_art": {
-            "type": "string",
-            "ex": "equalTo(.,\"yes\")"
-          }
-        },
-        "v_regex": {
-          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
-          "err": "Please enter the clinician name"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Please enter the clinician name"
-        }
-      },
-      {
-        "type": "edit_text",
-        "key": "clinician_position",
-        "hint": "Clinician Position",
-        "openmrs_entity_id": "clinician_position",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "relevance": {
-          "step1:known_on_art": {
-            "type": "string",
-            "ex": "equalTo(.,\"yes\")"
-          }
-        },
-        "v_required": {
-          "value": true,
-          "err": "Please enter the clinician position"
-        }
-      },
-      {
-        "type": "edit_text",
-        "key": "clinician_phone_no",
-        "hint": "Clinician Phone Number",
-        "edit_type": "number",
-        "openmrs_entity_id": "clinician_phone_no",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "relevance": {
-          "step1:known_on_art": {
-            "type": "string",
-            "ex": "equalTo(.,\"yes\")"
-          }
-        },
-        "v_regex": {
-          "value": "(0[0-9]{9})|\\s*",
-          "err": "Number must be 10 digits and must start with 0."
-        },
-        "v_required": {
-          "value": true,
-          "err": "Please enter the clinician phone number"
-        }
-      },
-      {
-        "type": "date_picker",
-        "key": "collection_date",
-        "hint": "Sample Collection Date",
-        "openmrs_entity_id": "collection_date",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "min_date": "today-5y",
-        "max_date": "today",
-        "relevance": {
-          "step1:known_on_art": {
-            "type": "string",
-            "ex": "equalTo(.,\"yes\")"
-          }
-        },
-        "v_required": {
-          "value": true,
-          "err": "Please enter the collection date"
-        }
-      },
-      {
-        "type": "time_picker",
-        "key": "collection_time",
-        "hint": "Sample Collection Time",
-        "openmrs_entity_id": "collection_time",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "relevance": {
-          "step1:known_on_art": {
-            "type": "string",
-            "ex": "equalTo(.,\"yes\")"
-          }
-        },
-        "v_required": {
-          "value": true,
-          "err": "Please enter the collection time"
-        }
-      },
-      {
-        "type": "edit_text",
-        "key": "sample_id",
-        "hint": "Sample ID",
-        "edit_type": "number",
-        "openmrs_entity_id": "sample_id",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "relevance": {
-          "step1:known_on_art": {
-            "type": "string",
-            "ex": "equalTo(.,\"yes\")"
-          }
-        },
-        "v_required": {
-          "value": true,
-          "err": "Please enter the sample ID"
-        }
       }
     ]
   },
@@ -217,55 +97,17 @@
     "title": "End",
     "fields": [
       {
-        "type": "edit_text",
-        "key": "hvl_suppression",
-        "hint": "HVL Suppression",
-        "openmrs_entity_id": "hvl_suppression",
-        "openmrs_entity": "concept",
+        "key": "notify_first_visit",
+        "type": "toaster_notes",
+        "text": "Perform PMTCT First Visit",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
         "openmrs_entity_parent": "",
-        "v_numeric": {
-          "value": "true",
-          "err": "Please enter a valid value"
-        },
+        "toaster_type": "info",
         "relevance": {
           "step1:known_on_art": {
             "type": "string",
             "ex": "equalTo(.,\"yes\")"
-          }
-        },
-        "v_required": {
-          "value": true,
-          "err": "Please enter the HVL suppression value"
-        }
-      },
-      {
-        "key": "notify_continue_regimen",
-        "type": "toaster_notes",
-        "text": "Continue current regimen",
-        "openmrs_entity_id": "notify_continue_regimen",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "toaster_info_text": "Repeat HVL after 6, 12 and 18 months",
-        "toaster_type": "info",
-        "relevance": {
-          "step2:hvl_suppression": {
-            "type": "numeric",
-            "ex": "lessThanEqualTo(.,\"1000\")"
-          }
-        }
-      },
-      {
-        "key": "notify_continue_eac",
-        "type": "toaster_notes",
-        "text": "Client will be enrolled to EAC",
-        "openmrs_entity_id": "notify_continue_eac",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "toaster_type": "problem",
-        "relevance": {
-          "step2:hvl_suppression": {
-            "type": "numeric",
-            "ex": "greaterThan(.,\"1000\")"
           }
         }
       },
