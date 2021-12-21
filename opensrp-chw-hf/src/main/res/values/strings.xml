@@ -55,4 +55,5 @@
     <string name="record_eac_first_visit">First EAC Visit</string>
     <string name="record_eac_second_visit">Second EAC Visit</string>
     <string name="pmtct_followup_form_title">PMTCT Followup</string>
+    <string name="record_first_pmtct">Record PMTCT First Visit</string>
 </resources>
