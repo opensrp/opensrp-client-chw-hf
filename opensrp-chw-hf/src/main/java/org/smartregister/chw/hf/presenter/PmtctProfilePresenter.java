@@ -6,6 +6,9 @@ import org.smartregister.chw.core.presenter.CorePmtctMemberProfilePresenter;
 import org.smartregister.chw.hf.contract.PmtctProfileContract;
 import org.smartregister.chw.hf.model.HivTbReferralTasksAndFollowupFeedbackModel;
 import org.smartregister.chw.pmtct.domain.MemberObject;
+import org.smartregister.commonregistry.CommonPersonObjectClient;
+import org.smartregister.family.contract.FamilyProfileContract;
+import org.smartregister.family.domain.FamilyEventClient;
 import org.smartregister.opd.contract.OpdRegisterActivityContract;
 import org.smartregister.opd.pojo.OpdDiagnosisAndTreatmentForm;
 
@@ -14,23 +17,18 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-public class PmtctProfilePresenter extends CorePmtctMemberProfilePresenter implements PmtctProfileContract.Presenter, PmtctProfileContract.InteractorCallback, OpdRegisterActivityContract.InteractorCallBack {
+public class PmtctProfilePresenter extends CorePmtctMemberProfilePresenter implements FamilyProfileContract.InteractorCallBack {
     public PmtctProfilePresenter(CorePmtctProfileContract.View view, CorePmtctProfileContract.Interactor interactor, MemberObject memberObject) {
         super(view, interactor, memberObject);
     }
-    //TODO: Implement tasks for the presenter
+
     @Override
-    public void fetchReferralTasks() {
+    public void startFormForEdit(CommonPersonObjectClient commonPersonObjectClient) {
         //implement
     }
 
     @Override
-    public void updateReferralTasksAndFollowupFeedback(List<HivTbReferralTasksAndFollowupFeedbackModel> tasksAndFollowupFeedbackModels) {
-        //implement
-    }
-
-    @Override
-    public void onNoUniqueId() {
+    public void refreshProfileTopSection(CommonPersonObjectClient commonPersonObjectClient) {
         //implement
     }
 
@@ -40,17 +38,12 @@ public class PmtctProfilePresenter extends CorePmtctMemberProfilePresenter imple
     }
 
     @Override
-    public void onRegistrationSaved(boolean b) {
+    public void onNoUniqueId() {
         //implement
     }
 
     @Override
-    public void onEventSaved() {
+    public void onRegistrationSaved(boolean b, boolean b1, FamilyEventClient familyEventClient) {
         //implement
-    }
-
-    @Override
-    public void onFetchedSavedDiagnosisAndTreatmentForm(@Nullable OpdDiagnosisAndTreatmentForm opdDiagnosisAndTreatmentForm, @NonNull String s, @Nullable String s1) {
-    //implement
     }
 }

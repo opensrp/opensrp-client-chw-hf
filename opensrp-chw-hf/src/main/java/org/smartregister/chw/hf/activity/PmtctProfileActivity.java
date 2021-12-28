@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import org.apache.commons.lang3.StringUtils;
+import org.json.JSONObject;
 import org.smartregister.chw.core.activity.CoreFamilyProfileActivity;
 import org.smartregister.chw.core.activity.CorePmtctProfileActivity;
 import org.smartregister.chw.core.custom_views.CorePmtctFloatingMenu;
@@ -24,6 +25,7 @@ import org.smartregister.chw.core.utils.HomeVisitUtil;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.custom_view.PmtctFloatingMenu;
 import org.smartregister.chw.hf.dao.HfPmtctDao;
+import org.smartregister.chw.hf.model.FamilyProfileModel;
 import org.smartregister.chw.hf.presenter.FamilyOtherMemberActivityPresenter;
 import org.smartregister.chw.hf.presenter.PmtctProfilePresenter;
 import org.smartregister.chw.hf.utils.PmtctVisitUtils;
@@ -32,7 +34,12 @@ import org.smartregister.chw.pmtct.dao.PmtctDao;
 import org.smartregister.chw.pmtct.domain.Visit;
 import org.smartregister.chw.pmtct.util.Constants;
 import org.smartregister.domain.AlertStatus;
+import org.smartregister.family.contract.FamilyProfileContract;
+import org.smartregister.family.domain.FamilyEventClient;
+import org.smartregister.family.interactor.FamilyProfileInteractor;
 import org.smartregister.family.model.BaseFamilyOtherMemberProfileActivityModel;
+import org.smartregister.family.util.JsonFormUtils;
+import org.smartregister.family.util.Utils;
 
 import java.util.Date;
 
@@ -86,6 +93,29 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         return super.onOptionsItemSelected(item);
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == Constants.REQUEST_CODE_GET_JSON && resultCode == RESULT_OK) {
+            try {
+                String jsonString = data.getStringExtra(org.smartregister.family.util.Constants.JSON_FORM_EXTRA.JSON);
+                JSONObject form = new JSONObject(jsonString);
+                String encounterType = form.getString(JsonFormUtils.ENCOUNTER_TYPE);
+                if (encounterType.equals(Utils.metadata().familyMemberRegister.updateEventType)) {
+                    FamilyEventClient familyEventClient =
+                            new FamilyProfileModel(memberObject.getFamilyName()).processUpdateMemberRegistration(jsonString, memberObject.getBaseEntityId());
+                    new FamilyProfileInteractor().saveRegistration(familyEventClient, jsonString, true, (FamilyProfileContract.InteractorCallBack) profilePresenter);
+                }else{
+                    profilePresenter.saveForm(data.getStringExtra(Constants.JSON_FORM_EXTRA.JSON));
+                    finish();
+                }
+            }catch (Exception e){
+                Timber.e(e, "PmtctProfileActivity -- > onActivityResult");
+            }
+        }
     }
 
 
