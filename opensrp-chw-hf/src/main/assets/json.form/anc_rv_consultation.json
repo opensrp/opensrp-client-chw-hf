@@ -75,12 +75,6 @@
             "openmrs_entity_id": "pallor"
           },
           {
-            "key": "breasts_and_lymph_nodes",
-            "text": "Breasts and lymph nodes (Normal/Abnormal)",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "breasts_and_lymph_nodes"
-          },
-          {
             "key": "none",
             "text": "None",
             "openmrs_entity": "concept",
@@ -409,6 +403,32 @@
             "type": "numeric",
             "ex": "greaterThanEqualTo(.,\"39\")"
           }
+        }
+      },
+      {
+        "type": "native_radio",
+        "key": "breast_and_and_lymph_nodes",
+        "label": "Breasts and lymph nodes",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "breast_and_and_lymph_nodes",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "normal",
+            "text": "Normal",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "normal"
+          },
+          {
+            "key": "abnormal",
+            "text": "Abnormal",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "abnormal"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
         }
       }
     ]
