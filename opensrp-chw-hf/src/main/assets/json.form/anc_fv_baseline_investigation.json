@@ -258,10 +258,10 @@
         }
       },
       {
-        "key": "prescribe_arv",
+        "key": "register_pmtct",
         "type": "toaster_notes",
-        "text": "Prescribe client to ARVs",
-        "openmrs_entity_id": "prescribe_arv",
+        "text": "Register client for PMTCT",
+        "openmrs_entity_id": "register_pmtct",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "toaster_type": "warning",
@@ -273,10 +273,10 @@
         }
       },
       {
-        "key": "register_pmtct",
+        "key": "prescribe_arv",
         "type": "toaster_notes",
-        "text": "Register client for PMTCT",
-        "openmrs_entity_id": "register_pmtct",
+        "text": "Prescribe client to ARVs",
+        "openmrs_entity_id": "prescribe_arv",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "toaster_type": "warning",

@@ -120,10 +120,10 @@
       },
       {
         "type": "edit_text",
-        "key": "partner_last_name",
-        "hint": "Partner's Last Name",
+        "key": "partner_middle_name",
+        "hint": "Partner's Middle Name",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "partner_last_name",
+        "openmrs_entity_id": "partner_middle_name",
         "openmrs_entity_parent": "",
         "v_regex": {
           "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
@@ -181,19 +181,68 @@
         }
       },
       {
-        "type": "edit_text",
         "key": "partner_education",
-        "hint": "Partner's Education Level",
+        "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "partner_education",
-        "openmrs_entity_parent": "",
-        "v_regex": {
-          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
-          "err": "Please enter partner's education level"
-        },
+        "type": "native_radio",
+        "label": "Partner's Highest level of education completed",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "no_education",
+            "text": "No education",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": ""
+          },
+          {
+            "key": "primary",
+            "text": "primary",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": ""
+          },
+          {
+            "key": "secondary_o_level",
+            "text": "Secondary 'O' Level",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": ""
+          },
+          {
+            "key": "secondary_a_level",
+            "text": "Secondary 'A' Level",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": ""
+          },
+          {
+            "key": "tertiary",
+            "text": "Tertiary",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": ""
+          },
+          {
+            "key": "university",
+            "text": "University",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": ""
+          },
+          {
+            "key": "unknown",
+            "text": "Don't Know",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": ""
+          }
+        ],
         "v_required": {
-          "value": true,
-          "err": "Please enter partner's education level"
+          "value": "true",
+          "err": "Please select the partner's highest level of education completed"
         },
         "relevance": {
           "step1:partner_involved": {
@@ -208,19 +257,113 @@
         }
       },
       {
-        "type": "edit_text",
         "key": "partner_work",
-        "hint": "Partner's Work",
+        "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "partner_work",
-        "openmrs_entity_parent": "",
-        "v_regex": {
-          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
-          "err": "Please enter partner's work"
-        },
+        "type": "check_box",
+        "label": "Partner's Occupation",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "exclusive": [
+          "chk_none"
+        ],
+        "options": [
+          {
+            "key": "chk_farmer",
+            "text": "Farmer",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "1538AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          },
+          {
+            "key": "chk_cs",
+            "text": "Civil Servant",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "162944AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          },
+          {
+            "key": "chk_nurse",
+            "text": "Nurse",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "1577AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          },
+          {
+            "key": "chk_teacher",
+            "text": "Teacher",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "162946AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          },
+          {
+            "key": "chk_th",
+            "text": "Traditional Healer",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "1821AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          },
+          {
+            "key": "chk_chw",
+            "text": "Community Health Worker (CHW)",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "1555AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          },
+          {
+            "key": "chk_tba",
+            "text": "Traditional Birth Attendant",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "1575AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          },
+          {
+            "key": "chk_chmis",
+            "text": "Community HMIS (cHMIS)",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "163334AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          },
+          {
+            "key": "chk_cbd",
+            "text": "Community Based Distributor",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "1744AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          },
+          {
+            "key": "chk_hbc",
+            "text": "Home Based Care (HBC)",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "161359AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          },
+          {
+            "key": "chk_cimmci",
+            "text": "Community IMCI",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "163096AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          },
+          {
+            "key": "chk_other",
+            "text": "Other",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          },
+          {
+            "key": "chk_none",
+            "text": "None",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "164369AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          }
+        ],
         "v_required": {
-          "value": true,
-          "err": "Please enter partner's work"
+          "value": "true",
+          "err": "Please pick at least one"
         },
         "relevance": {
           "step1:partner_involved": {
@@ -228,6 +371,30 @@
               {
                 "or": [
                   "partner_involved_chk"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "partner_work_other",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "partner_work_other",
+        "type": "edit_text",
+        "hint": "Partner's other Occupation",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Please specify the occupation"
+        },
+        "relevance": {
+          "step1:partner_work": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "chk_other"
                 ]
               }
             ]
@@ -264,50 +431,6 @@
             "ex": "equalTo(., \"Other\")"
           }
         }
-      },
-      {
-        "type": "native_radio",
-        "key": "level_of_hf",
-        "label": "Level of Health Facility",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "level_of_hf",
-        "openmrs_entity_parent": "",
-        "v_required": {
-          "value": true,
-          "err": "Please select one"
-        },
-        "options": [
-          {
-            "text": "National Hospital",
-            "key": "national_hosp",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "national_hosp"
-          },
-          {
-            "text": "Regional Referral Hospital (RRH)",
-            "key": "regional_hosp",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "regional_hosp"
-          },
-          {
-            "text": "Zonal Referral Hospital (ZRH)",
-            "key": "zonal_hosp",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "zonal_hosp"
-          },
-          {
-            "text": "District Hospital",
-            "key": "district_hosp",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "district_hosp"
-          },
-          {
-            "text": "Dispensary",
-            "key": "dispensary",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "dispensary"
-          }
-        ]
       },
       {
         "type": "check_box",
