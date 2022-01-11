@@ -1,9 +1,15 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.isMultiPartForm;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.widget.Toast;
 
+import androidx.annotation.MenuRes;
+import androidx.fragment.app.Fragment;
+
+import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 import com.vijay.jsonwizard.constants.JsonFormConstants;
 import com.vijay.jsonwizard.domain.Form;
 
@@ -27,12 +33,15 @@ import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.core.utils.FormUtils;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.fragment.AncReferralListRegisterFragment;
 import org.smartregister.chw.hf.fragment.AncRegisterFragment;
 import org.smartregister.chw.hf.interactor.AncRegisterInteractor;
+import org.smartregister.chw.hf.listener.AncBottomNavigationListener;
 import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.family.util.Utils;
 import org.smartregister.helper.BottomNavigationHelper;
+import org.smartregister.listener.BottomNavigationListener;
 import org.smartregister.repository.AllSharedPreferences;
 import org.smartregister.view.fragment.BaseRegisterFragment;
 
@@ -40,8 +49,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import timber.log.Timber;
-
-import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.isMultiPartForm;
 
 public class AncRegisterActivity extends CoreAncRegisterActivity {
 
@@ -62,7 +69,6 @@ public class AncRegisterActivity extends CoreAncRegisterActivity {
 
     @Override
     public void startFormActivity(JSONObject jsonForm) {
-
         try {
             JSONObject stepOne = jsonForm.getJSONObject(JsonFormUtils.STEP1);
             JSONArray jsonArray = stepOne.getJSONArray(JsonFormUtils.FIELDS);
@@ -105,6 +111,12 @@ public class AncRegisterActivity extends CoreAncRegisterActivity {
         }
     }
 
+    @Override
+    protected Fragment[] getOtherFragments() {
+        return new AncReferralListRegisterFragment[]{
+                new AncReferralListRegisterFragment()};
+    }
+
     public static String getFormTable() {
         if (form_name != null && (form_name.equals(CoreConstants.JSON_FORM.getAncRegistration()) || form_name.equals(org.smartregister.chw.hf.utils.Constants.JsonForm.getAncPregnancyConfirmationForm()))) {
             return CoreConstants.TABLE_NAME.ANC_MEMBER;
@@ -117,7 +129,32 @@ public class AncRegisterActivity extends CoreAncRegisterActivity {
         super.registerBottomNavigation();
         bottomNavigationHelper = new BottomNavigationHelper();
         bottomNavigationView = findViewById(R.id.bottom_navigation);
-        FamilyRegisterActivity.registerBottomNavigation(bottomNavigationHelper, bottomNavigationView, this);
+
+        if (bottomNavigationView != null) {
+            bottomNavigationView.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
+            bottomNavigationView.getMenu().removeItem(org.smartregister.R.id.action_clients);
+            bottomNavigationView.getMenu().removeItem(org.smartregister.chw.tb.R.id.action_register);
+            bottomNavigationView.getMenu().removeItem(org.smartregister.R.id.action_search);
+            bottomNavigationView.getMenu().removeItem(org.smartregister.R.id.action_library);
+//
+//            bottomNavigationView.inflateMenu(getMenuResource());
+//            bottomNavigationHelper.disableShiftMode(bottomNavigationView);
+
+            BottomNavigationListener ancBottomNavigationListener = getBottomNavigation(this);
+            bottomNavigationView.setOnNavigationItemSelectedListener(ancBottomNavigationListener);
+
+        }
+    }
+
+
+    @Override
+    public BottomNavigationListener getBottomNavigation(Activity activity) {
+        return new AncBottomNavigationListener(activity);
+    }
+
+    @MenuRes
+    public int getMenuResource() {
+        return R.menu.bottom_nav_anc_menu;
     }
 
     @Override
@@ -168,8 +205,7 @@ public class AncRegisterActivity extends CoreAncRegisterActivity {
 
                 if (encounter_type.equalsIgnoreCase(getRegisterEventType())) {
                     if (danger_sign_analysis.equalsIgnoreCase("None") && (upt.equalsIgnoreCase("positive") || uss.equalsIgnoreCase("present_gestation_sac")))
-                        saveFormForPregnancyConfirmation(jsonString,table);
-
+                        saveFormForPregnancyConfirmation(jsonString, table);
                 } else if (encounter_type.equalsIgnoreCase(Constants.EVENT_TYPE.PREGNANCY_OUTCOME)) {
 
                     presenter().saveForm(jsonString, false, table);
@@ -200,7 +236,7 @@ public class AncRegisterActivity extends CoreAncRegisterActivity {
                 LocalDate lmpDate = dateTimeFormat.parseLocalDate(eddJson.optString(JsonFormUtils.VALUE)).plusDays(-280);
                 lmp.put(JsonFormUtils.VALUE, dateTimeFormat.print(lmpDate));
             }
-            processPregnancyConfirmation(form.toString(),table);
+            processPregnancyConfirmation(form.toString(), table);
         } catch (Exception e) {
             Timber.e(e);
         }
