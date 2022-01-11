@@ -13,15 +13,22 @@ import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 import com.vijay.jsonwizard.constants.JsonFormConstants;
 import com.vijay.jsonwizard.domain.Form;
 
+import org.apache.commons.lang3.StringUtils;
+import org.joda.time.LocalDate;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.smartregister.chw.anc.AncLibrary;
 import org.smartregister.chw.anc.model.BaseAncRegisterModel;
 import org.smartregister.chw.anc.presenter.BaseAncRegisterPresenter;
 import org.smartregister.chw.anc.util.Constants;
 import org.smartregister.chw.anc.util.DBConstants;
+import org.smartregister.chw.anc.util.NCUtils;
 import org.smartregister.chw.core.activity.CoreAncRegisterActivity;
 import org.smartregister.chw.core.activity.CorePncRegisterActivity;
+import org.smartregister.chw.core.dao.ChwNotificationDao;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.core.utils.FormUtils;
@@ -34,6 +41,11 @@ import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.family.util.Utils;
 import org.smartregister.helper.BottomNavigationHelper;
 import org.smartregister.listener.BottomNavigationListener;
+import org.smartregister.clientandeventmodel.Event;
+import org.smartregister.family.util.JsonFormUtils;
+import org.smartregister.family.util.Utils;
+import org.smartregister.helper.BottomNavigationHelper;
+import org.smartregister.repository.AllSharedPreferences;
 import org.smartregister.view.fragment.BaseRegisterFragment;
 
 import java.util.HashMap;
@@ -196,8 +208,7 @@ public class AncRegisterActivity extends CoreAncRegisterActivity {
 
                 if (encounter_type.equalsIgnoreCase(getRegisterEventType())) {
                     if (danger_sign_analysis.equalsIgnoreCase("None") && (upt.equalsIgnoreCase("positive") || uss.equalsIgnoreCase("present_gestation_sac")))
-                        presenter().saveForm(jsonString, false, table);
-
+                        saveFormForPregnancyConfirmation(jsonString,table);
                 } else if (encounter_type.equalsIgnoreCase(Constants.EVENT_TYPE.PREGNANCY_OUTCOME)) {
 
                     presenter().saveForm(jsonString, false, table);
@@ -212,6 +223,39 @@ public class AncRegisterActivity extends CoreAncRegisterActivity {
                 Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    public static void saveFormForPregnancyConfirmation(String jsonString, String table) {
+        try {
+            JSONObject form = new JSONObject(jsonString);
+            JSONArray fields = org.smartregister.util.JsonFormUtils.fields(form);
+            JSONObject lmp = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, DBConstants.KEY.LAST_MENSTRUAL_PERIOD);
+            boolean hasLmp = StringUtils.isNotBlank(lmp.optString(JsonFormUtils.VALUE));
+
+            if (!hasLmp) {
+                JSONObject eddJson = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, DBConstants.KEY.EDD);
+                DateTimeFormatter dateTimeFormat = DateTimeFormat.forPattern("dd-MM-yyyy");
+
+                LocalDate lmpDate = dateTimeFormat.parseLocalDate(eddJson.optString(JsonFormUtils.VALUE)).plusDays(-280);
+                lmp.put(JsonFormUtils.VALUE, dateTimeFormat.print(lmpDate));
+            }
+            processPregnancyConfirmation(form.toString(),table);
+        } catch (Exception e) {
+            Timber.e(e);
+        }
+    }
+
+    public static void processPregnancyConfirmation(String jsonString, String table) throws Exception {
+        AllSharedPreferences allSharedPreferences = AncLibrary.getInstance().context().allSharedPreferences();
+        Event baseEvent = org.smartregister.chw.anc.util.JsonFormUtils.processJsonForm(allSharedPreferences, jsonString, table);
+        org.smartregister.chw.anc.util.JsonFormUtils.tagEvent(allSharedPreferences, baseEvent);
+        String syncLocationId = ChwNotificationDao.getSyncLocationId(baseEvent.getBaseEntityId());
+        if (syncLocationId != null) {
+            // Allows setting the ID for sync purposes
+            baseEvent.setLocationId(syncLocationId);
+        }
+        NCUtils.processEvent(baseEvent.getBaseEntityId(), new JSONObject(org.smartregister.chw.anc.util.JsonFormUtils.gson.toJson(baseEvent)));
+
     }
 
 
