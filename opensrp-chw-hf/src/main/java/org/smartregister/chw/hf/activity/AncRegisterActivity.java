@@ -37,14 +37,11 @@ import org.smartregister.chw.hf.fragment.AncReferralListRegisterFragment;
 import org.smartregister.chw.hf.fragment.AncRegisterFragment;
 import org.smartregister.chw.hf.interactor.AncRegisterInteractor;
 import org.smartregister.chw.hf.listener.AncBottomNavigationListener;
-import org.smartregister.family.util.JsonFormUtils;
-import org.smartregister.family.util.Utils;
-import org.smartregister.helper.BottomNavigationHelper;
-import org.smartregister.listener.BottomNavigationListener;
 import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.family.util.Utils;
 import org.smartregister.helper.BottomNavigationHelper;
+import org.smartregister.listener.BottomNavigationListener;
 import org.smartregister.repository.AllSharedPreferences;
 import org.smartregister.view.fragment.BaseRegisterFragment;
 
@@ -208,7 +205,7 @@ public class AncRegisterActivity extends CoreAncRegisterActivity {
 
                 if (encounter_type.equalsIgnoreCase(getRegisterEventType())) {
                     if (danger_sign_analysis.equalsIgnoreCase("None") && (upt.equalsIgnoreCase("positive") || uss.equalsIgnoreCase("present_gestation_sac")))
-                        saveFormForPregnancyConfirmation(jsonString,table);
+                        saveFormForPregnancyConfirmation(jsonString, table);
                 } else if (encounter_type.equalsIgnoreCase(Constants.EVENT_TYPE.PREGNANCY_OUTCOME)) {
 
                     presenter().saveForm(jsonString, false, table);
@@ -239,7 +236,7 @@ public class AncRegisterActivity extends CoreAncRegisterActivity {
                 LocalDate lmpDate = dateTimeFormat.parseLocalDate(eddJson.optString(JsonFormUtils.VALUE)).plusDays(-280);
                 lmp.put(JsonFormUtils.VALUE, dateTimeFormat.print(lmpDate));
             }
-            processPregnancyConfirmation(form.toString(),table);
+            processPregnancyConfirmation(form.toString(), table);
         } catch (Exception e) {
             Timber.e(e);
         }
