@@ -36,4 +36,5 @@
     <string name="chw_agreed_to_be_tested">Amekubali kupimwa</string>
     <string name="chw_test_location">Atapimwa wapi</string>
     <string name="optional"></string>
+    <string name="action_pregnancy_confirmation_referrals">Pregnancy Confirmation</string>
 </resources>

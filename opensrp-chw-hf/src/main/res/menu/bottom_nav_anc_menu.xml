@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_anc"
+        android:enabled="true"
+        android:icon="@mipmap/ic_home"
+        android:title="@string/home"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_view_pregnancy_confirmation_referrals"
+        android:enabled="true"
+        android:icon="@drawable/ic_trending_down_black_24dp"
+        android:title="@string/action_pregnancy_confirmation_referrals"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_scan_qr"
+        android:enabled="true"
+        android:icon="@mipmap/ic_scan_qr"
+        android:title="@string/scan_qr"
+        app:showAsAction="ifRoom" />
+
+</menu>
