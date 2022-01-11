@@ -551,8 +551,7 @@
           "1rA",
           "1uA",
           "1hA",
-          "1xA",
-          "2fA"
+          "1xA"
         ],
         "keys": [
           "1_gA",
@@ -560,8 +559,7 @@
           "1_rA",
           "1_uA",
           "1_hA",
-          "1_xA",
-          "2_fA"
+          "1_xA"
         ],
         "openmrs_choice_ids": {
           "1_gA": "1_gA",
@@ -569,8 +567,7 @@
           "1_rA": "1_rA",
           "1_uA": "1_uA",
           "1_hA": "1_hA",
-          "1_xA": "1_xA",
-          "2_fA": "2_fA"
+          "1_xA": "1_xA"
         },
         "relevance": {
           "step2:choose_presc_line": {
@@ -591,34 +588,34 @@
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "values": [
+          "2fA",
           "2hA",
           "2sA",
           "2GA",
           "2kA",
           "2nA",
           "2uA",
-          "2xA",
-          "3yA"
+          "2xA"
         ],
         "keys": [
+          "2_fA",
           "2_hA",
           "2_sA",
           "2_GA",
           "2_kA",
           "2_nA",
           "2_uA",
-          "2_xA",
-          "3_yA"
+          "2_xA"
         ],
         "openmrs_choice_ids": {
+          "2_fA": "2_fA",
           "2_hA": "2_hA",
           "2_sA": "2_sA",
           "2_GA": "2_GA",
           "2_kA": "2_kA",
           "2_nA": "2_nA",
           "2_uA": "2_uA",
-          "2_xA": "2_xA",
-          "3_yA": "3_yA"
+          "2_xA": "2_xA"
         },
         "relevance": {
           "step2:choose_presc_line": {
@@ -639,6 +636,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "values": [
+          "3yA",
           "3wA",
           "3kA",
           "3tA",
@@ -648,6 +646,7 @@
           "3xA"
         ],
         "keys": [
+          "3_yA",
           "3_wA",
           "3_kA",
           "3_tA",
@@ -663,7 +662,8 @@
           "3_hA": "3_hA",
           "3_gA": "3_gA",
           "3_zA": "3_zA",
-          "3_xA": "3_xA"
+          "3_xA": "3_xA",
+          "3_yA": "3_yA"
         },
         "relevance": {
           "step2:choose_presc_line": {
