@@ -61,7 +61,7 @@ public class HfSyncConfiguration extends SyncConfiguration {
 
     @Override
     public List<String> getSynchronizedLocationTags() {
-        return Arrays.asList("Health Facility", "Facility");
+        return Arrays.asList("Country","Zone","Region","Council","Facility");
     }
 
     @Override
