@@ -209,6 +209,21 @@
         }
       },
       {
+        "type": "hidden",
+        "key": "hiv_test_at_32",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hiv_test_at_32",
+        "openmrs_entity_parent": "",
+        "value": "true",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_lab_test_relevance.yml"
+            }
+          }
+        }
+      },
+      {
         "type": "native_radio",
         "key": "hiv",
         "label": "HIV Test Results",

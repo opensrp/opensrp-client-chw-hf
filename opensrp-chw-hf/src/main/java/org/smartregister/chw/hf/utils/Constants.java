@@ -143,6 +143,10 @@ public class Constants extends CoreConstants {
 
     public static final class DBConstants {
         public static final String CHW_REFERRAL_SERVICE = "chw_referral_service";
+        public static final String ANC_MRDT_FOR_MALARIA = "mRDT_for_malaria";
+        public static final String ANC_HIV = "hiv";
+        public static final String ANC_SYPHILIS= "syphilis";
+        public static final String ANC_HEPATITIS = "hepatitis";
     }
 
     public interface ScheduleGroups {
