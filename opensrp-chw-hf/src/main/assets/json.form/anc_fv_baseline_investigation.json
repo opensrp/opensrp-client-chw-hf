@@ -322,7 +322,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "other_reason_for_not_conducting_hiv_test",
         "type": "edit_text",
-        "hint": "Other reason for not conducting HIV test",
+        "hint": "Specify other reasons for not conducting HIV test",
         "edit_type": "name",
         "v_required": {
           "value": "true",
