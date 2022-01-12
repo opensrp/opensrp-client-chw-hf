@@ -51,43 +51,26 @@
     "title": "ANC Lab Tests",
     "fields": [
       {
-        "type": "check_box",
-        "label": "Lab Tests Conducted",
-        "key": "lab_tests",
+        "type": "native_radio",
+        "key": "hb_level_test",
+        "label": "HB Level Test",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "lab_tests",
+        "openmrs_entity_id": "hb_level_test",
         "openmrs_entity_parent": "",
-        "exclusive": [
-          "none"
-        ],
         "options": [
           {
-            "key": "hb_test",
-            "text": "HB Test",
+            "key": "hb_level_conducted",
+            "text": "Test conducted",
             "openmrs_entity": "concept",
-            "value": false,
-            "openmrs_entity_id": "hb_test"
+            "openmrs_entity_id": "hb_level_conducted",
+            "openmrs_entity_parent": ""
           },
           {
-            "key": "urine_glucose_test",
-            "text": "Urine Glucose Test",
+            "key": "hb_level_not_conducted",
+            "text": "Test not conducted",
+            "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "value": false,
-            "openmrs_entity_id": "urine_glucose_test"
-          },
-          {
-            "key": "urine_protein_test",
-            "text": "Urine Protein Test",
-            "openmrs_entity": "concept",
-            "value": false,
-            "openmrs_entity_id": "urine_protein_test"
-          },
-          {
-            "key": "none",
-            "text": "None",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "none"
+            "openmrs_entity_id": "hb_level_not_conducted"
           }
         ],
         "v_required": {
@@ -119,14 +102,183 @@
           "err": "Please provide a value"
         },
         "relevance": {
-          "step1:lab_tests": {
-            "ex-checkbox": [
-              {
-                "or": [
-                  "hb_test"
-                ]
-              }
-            ]
+          "step1:hb_level_test": {
+            "type": "string",
+            "ex": "equalTo(., \"hb_level_conducted\")"
+          }
+        }
+      },
+      {
+        "key": "reason_for_not_conducting_hb_test",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_conducting_hb_test",
+        "type": "spinner",
+        "hint": "Reason as to why the HB Level test was not conducted",
+        "values": [
+          "Test kits are out of stock",
+          "The client was in an emergency situation",
+          "The client refused to be tested",
+          "We are still counselling the client",
+          "Other"
+        ],
+        "keys": [
+          "test_kits_are_out_of_stock",
+          "the_client_was_in_an_emergency_situation",
+          "the_client_refused_to_be_tested",
+          "we_are_still_counselling_the_client",
+          "other"
+        ],
+        "openmrs_choice_ids": {
+          "test_kits_are_out_of_stock": "test_kits_are_out_of_stock",
+          "the_client_was_in_an_emergency_situation": "the_client_was_in_an_emergency_situation",
+          "the_client_refused_to_be_tested": "the_client_refused_to_be_tested",
+          "we_are_still_counselling_the_client": "we_are_still_counselling_the_client",
+          "other": "other"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select a reason"
+        },
+        "relevance": {
+          "step1:hb_level_test": {
+            "type": "string",
+            "ex": "equalTo(., \"hb_level_not_conducted\")"
+          }
+        }
+      },
+      {
+        "key": "other_reason_hb_test_not_conducted",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reason_hb_test_not_conducted",
+        "type": "edit_text",
+        "hint": "Other reason for why the HB Level test was not conducted",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the reason"
+        },
+        "relevance": {
+          "step1:reason_for_not_conducting_hb_test": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
+          }
+        }
+      },
+      {
+        "type": "native_radio",
+        "key": "blood_for_glucose_test",
+        "label": "Blood For GlucoseTest",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "blood_for_glucose_test",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "blood_glucose_conducted",
+            "text": "Test conducted",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "blood_glucose_conducted",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "blood_glucose_not_conducted",
+            "text": "Test not conducted",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "blood_glucose_not_conducted"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please answer this question"
+        }
+      },
+      {
+        "type": "edit_text",
+        "key": "blood_for_glucose_value",
+        "hint": "Blood For Glucose (mmol/L)",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "blood_for_glucose_value",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the blood for glucose (mmol/L)"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Blood for glucose must be equal or greater than 0 (mmol/L)"
+        },
+        "v_max": {
+          "value": "45",
+          "err": "Blood for glucose must be equal or less than 45 (mmol/L)"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the blood for glucose (mmol/L)"
+        },
+        "relevance": {
+          "step1:blood_for_glucose_test": {
+            "type": "string",
+            "ex": "equalTo(., \"hb_level_conducted\")"
+          }
+        }
+      },
+      {
+        "key": "reason_for_not_conducting_blood_glucose_test",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_conducting_blood_glucose_test",
+        "type": "spinner",
+        "hint": "Reason as to why the Blood for Glucose test was not conducted",
+        "values": [
+          "Test kits are out of stock",
+          "The client was in an emergency situation",
+          "The client refused to be tested",
+          "We are still counselling the client",
+          "Other"
+        ],
+        "keys": [
+          "test_kits_are_out_of_stock",
+          "the_client_was_in_an_emergency_situation",
+          "the_client_refused_to_be_tested",
+          "we_are_still_counselling_the_client",
+          "other"
+        ],
+        "openmrs_choice_ids": {
+          "test_kits_are_out_of_stock": "test_kits_are_out_of_stock",
+          "the_client_was_in_an_emergency_situation": "the_client_was_in_an_emergency_situation",
+          "the_client_refused_to_be_tested": "the_client_refused_to_be_tested",
+          "we_are_still_counselling_the_client": "we_are_still_counselling_the_client",
+          "other": "other"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select a reason"
+        },
+        "relevance": {
+          "step1:blood_for_glucose_test": {
+            "type": "string",
+            "ex": "equalTo(., \"blood_glucose_not_conducted\")"
+          }
+        }
+      },
+      {
+        "key": "other_reason_blood_glucose_test_not_conducted",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reason_blood_glucose_test_not_conducted",
+        "type": "edit_text",
+        "hint": "Other reason for why the Blood for Glucose test was not conducted",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the reason"
+        },
+        "relevance": {
+          "step1:reason_for_not_conducting_blood_glucose_test": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
           }
         }
       },
@@ -151,21 +303,75 @@
             "openmrs_entity_parent": "glucosuria",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "negative"
+          },
+          {
+            "key": "glucose_test_not_conducted",
+            "text": "Test not conducted",
+            "openmrs_entity_parent": "glucosuria",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "glucose_test_not_conducted"
           }
         ],
         "v_required": {
           "value": true,
           "err": "Please answer this question"
+        }
+      },
+      {
+        "key": "reason_for_not_conducting_glucose_test",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_conducting_glucose_test",
+        "type": "spinner",
+        "hint": "Reason as to why the Glucose in Urine test was not conducted",
+        "values": [
+          "Test kits are out of stock",
+          "The client was in an emergency situation",
+          "The client refused to be tested",
+          "We are still counselling the client",
+          "Other"
+        ],
+        "keys": [
+          "test_kits_are_out_of_stock",
+          "the_client_was_in_an_emergency_situation",
+          "the_client_refused_to_be_tested",
+          "we_are_still_counselling_the_client",
+          "other"
+        ],
+        "openmrs_choice_ids": {
+          "test_kits_are_out_of_stock": "test_kits_are_out_of_stock",
+          "the_client_was_in_an_emergency_situation": "the_client_was_in_an_emergency_situation",
+          "the_client_refused_to_be_tested": "the_client_refused_to_be_tested",
+          "we_are_still_counselling_the_client": "we_are_still_counselling_the_client",
+          "other": "other"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select a reason"
         },
         "relevance": {
-          "step1:lab_tests": {
-            "ex-checkbox": [
-              {
-                "or": [
-                  "urine_glucose_test"
-                ]
-              }
-            ]
+          "step1:glucosuria": {
+            "type": "string",
+            "ex": "equalTo(., \"glucose_test_not_conducted\")"
+          }
+        }
+      },
+      {
+        "key": "other_reason_glucose_test_not_conducted",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reason_glucose_test_not_conducted",
+        "type": "edit_text",
+        "hint": "Other reason for why the Glucose in Urine test was not conducted",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the reason"
+        },
+        "relevance": {
+          "step1:reason_for_not_conducting_glucose_test": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
           }
         }
       },
@@ -190,21 +396,75 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "negative",
             "openmrs_entity_parent": "proteinuria"
+          },
+          {
+            "key": "protein_test_not_conducted",
+            "text": "Test not conducted",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "protein_test_not_conducted",
+            "openmrs_entity_parent": "proteinuria"
           }
         ],
         "v_required": {
           "value": true,
           "err": "Please answer this question"
+        }
+      },
+      {
+        "key": "reason_for_not_conducting_protein_test",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_conducting_protein_test",
+        "type": "spinner",
+        "hint": "Reason as to why the Protein in Urine test was not conducted",
+        "values": [
+          "Test kits are out of stock",
+          "The client was in an emergency situation",
+          "The client refused to be tested",
+          "We are still counselling the client",
+          "Other"
+        ],
+        "keys": [
+          "test_kits_are_out_of_stock",
+          "the_client_was_in_an_emergency_situation",
+          "the_client_refused_to_be_tested",
+          "we_are_still_counselling_the_client",
+          "other"
+        ],
+        "openmrs_choice_ids": {
+          "test_kits_are_out_of_stock": "test_kits_are_out_of_stock",
+          "the_client_was_in_an_emergency_situation": "the_client_was_in_an_emergency_situation",
+          "the_client_refused_to_be_tested": "the_client_refused_to_be_tested",
+          "we_are_still_counselling_the_client": "we_are_still_counselling_the_client",
+          "other": "other"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select a reason"
         },
         "relevance": {
-          "step1:lab_tests": {
-            "ex-checkbox": [
-              {
-                "or": [
-                  "urine_protein_test"
-                ]
-              }
-            ]
+          "step1:proteinuria": {
+            "type": "string",
+            "ex": "equalTo(., \"protein_test_not_conducted\")"
+          }
+        }
+      },
+      {
+        "key": "other_reason_protein_test_not_conducted",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reason_glucose_test_not_conducted",
+        "type": "edit_text",
+        "hint": "Other reason for why the Protein in Urine test was not conducted",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the reason"
+        },
+        "relevance": {
+          "step1:reason_for_not_conducting_protein_test": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
           }
         }
       },
@@ -259,6 +519,64 @@
             "ex-rules": {
               "rules-file": "anc_rv_lab_test_relevance.yml"
             }
+          }
+        }
+      },
+      {
+        "key": "reason_for_not_conducting_hiv_test",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_conducting_hiv_test",
+        "type": "spinner",
+        "hint": "Reason as to why the HIV test was not conducted",
+        "values": [
+          "Test kits are out of stock",
+          "The client was in an emergency situation",
+          "The client refused to be tested",
+          "We are still counselling the client",
+          "Other"
+        ],
+        "keys": [
+          "test_kits_are_out_of_stock",
+          "the_client_was_in_an_emergency_situation",
+          "the_client_refused_to_be_tested",
+          "we_are_still_counselling_the_client",
+          "other"
+        ],
+        "openmrs_choice_ids": {
+          "test_kits_are_out_of_stock": "test_kits_are_out_of_stock",
+          "the_client_was_in_an_emergency_situation": "the_client_was_in_an_emergency_situation",
+          "the_client_refused_to_be_tested": "the_client_refused_to_be_tested",
+          "we_are_still_counselling_the_client": "we_are_still_counselling_the_client",
+          "other": "other"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select a reason"
+        },
+        "relevance": {
+          "step1:hiv": {
+            "type": "string",
+            "ex": "equalTo(., \"hiv_test_not_conducted\")"
+          }
+        }
+      },
+      {
+        "key": "other_reason_hiv_test_not_conducted",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reason_hiv_test_not_conducted",
+        "type": "edit_text",
+        "hint": "Other reason for why the HIV test was not conducted",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the reason"
+        },
+        "relevance": {
+          "step1:reason_for_not_conducting_hiv_test": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
           }
         }
       }
