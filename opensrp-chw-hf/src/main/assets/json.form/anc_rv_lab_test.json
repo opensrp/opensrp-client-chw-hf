@@ -227,6 +227,12 @@
             "text": "Negative",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "negative"
+          },
+          {
+            "key": "hiv_test_not_conducted",
+            "text": "HIV Test not conducted",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "hiv_test_not_conducted"
           }
         ],
         "v_required": {
