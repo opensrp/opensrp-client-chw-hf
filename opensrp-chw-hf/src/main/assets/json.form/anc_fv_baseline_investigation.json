@@ -89,10 +89,10 @@
         "type": "spinner",
         "hint": "Reason as to why the Glucose In Urine test was not conducted",
         "values": [
-          "Test kits out of stock",
-          "A client was in an emergency situation",
-          "Client refused to be tested",
-          "We are still counselling a client",
+          "Test kits are out of stock",
+          "The client was in an emergency situation",
+          "The client refused to be tested",
+          "We are still counselling the client",
           "Other (Specify)"
         ],
         "keys": [
@@ -179,10 +179,10 @@
         "type": "spinner",
         "hint": "Reason as to why the Protein In Urine test was not conducted",
         "values": [
-          "Test kits out of stock",
-          "A client was in an emergency situation",
-          "Client refused to be tested",
-          "We are still counselling a client",
+          "Test kits are out of stock",
+          "The client was in an emergency situation",
+          "The client refused to be tested",
+          "We are still counselling the client",
           "Other (Specify)"
         ],
         "keys": [
@@ -286,6 +286,34 @@
         }
       },
       {
+        "type": "native_radio",
+        "key": "hb_level_test_fv",
+        "label": "HB Level Test",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hb_level_test_fv",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "hb_level_fv_conducted",
+            "text": "HB Level Test conducted",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "hb_level_fv_conducted",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "hb_level_fv_not_conducted",
+            "text": "HB Level Test not conducted",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "hb_level_fv_not_conducted"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please answer this question"
+        }
+      },
+      {
         "type": "edit_text",
         "key": "hb_level",
         "hint": "HB Level (g/dl)",
@@ -307,6 +335,98 @@
         "v_required": {
           "value": "true",
           "err": "Please enter the HB level"
+        },
+        "relevance": {
+          "step1:hb_level_test_fv": {
+            "type": "string",
+            "ex": "equalTo(., \"hb_level_fv_conducted\")"
+          }
+        }
+      },
+      {
+        "key": "reason_not_conducting_fv_hb_test",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_not_conducting_fv_hb_test",
+        "type": "spinner",
+        "hint": "Reason as to why the HB Level test was not conducted",
+        "values": [
+          "Test kits are out of stock",
+          "The client was in an emergency situation",
+          "The client refused to be tested",
+          "We are still counselling the client",
+          "Other (Specify)"
+        ],
+        "keys": [
+          "test_kits_are_out_of_stock",
+          "the_client_was_in_an_emergency_situation",
+          "the_client_refused_to_be_tested",
+          "we_are_still_counselling_the_client",
+          "other"
+        ],
+        "openmrs_choice_ids": {
+          "test_kits_are_out_of_stock": "test_kits_are_out_of_stock",
+          "the_client_was_in_an_emergency_situation": "the_client_was_in_an_emergency_situation",
+          "the_client_refused_to_be_tested": "the_client_refused_to_be_tested",
+          "we_are_still_counselling_the_client": "we_are_still_counselling_the_client",
+          "other": "other"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select a reason"
+        },
+        "relevance": {
+          "step1:hb_level_test_fv": {
+            "type": "string",
+            "ex": "equalTo(., \"hb_level_fv_not_conducted\")"
+          }
+        }
+      },
+      {
+        "key": "other_reason_hb_fv_test_not_conducted",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reason_hb_fv_test_not_conducted",
+        "type": "edit_text",
+        "hint": "Specify other reasons for not conducting the HB Level Test",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the reason"
+        },
+        "relevance": {
+          "step1:reason_not_conducting_fv_hb_test": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
+          }
+        }
+      },
+      {
+        "type": "native_radio",
+        "key": "blood_for_glucose_fv_test",
+        "label": "Blood For GlucoseTest",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "blood_for_glucose_fv_test",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "blood_glucose_fv_conducted",
+            "text": "Blood for Glucose Test conducted",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "blood_glucose_fv_conducted",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "blood_glucose_fv_not_conducted",
+            "text": "Blood for Glucose Test not conducted",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "blood_glucose_fv_not_conducted"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please answer this question"
         }
       },
       {
@@ -331,6 +451,70 @@
         "v_required": {
           "value": "true",
           "err": "Please enter the blood for glucose (mmol/L)"
+        },
+        "relevance": {
+          "step1:blood_for_glucose_fv_test": {
+            "type": "string",
+            "ex": "equalTo(., \"blood_glucose_fv_conducted\")"
+          }
+        }
+      },
+      {
+        "key": "reason_not_conducting_fv_blood_glucose_test",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_not_conducting_fv_blood_glucose_test",
+        "type": "spinner",
+        "hint": "Reason as to why the Blood for Glucose test was not conducted",
+        "values": [
+          "Test kits are out of stock",
+          "The client was in an emergency situation",
+          "The client refused to be tested",
+          "We are still counselling the client",
+          "Other (Specify)"
+        ],
+        "keys": [
+          "test_kits_are_out_of_stock",
+          "the_client_was_in_an_emergency_situation",
+          "the_client_refused_to_be_tested",
+          "we_are_still_counselling_the_client",
+          "other"
+        ],
+        "openmrs_choice_ids": {
+          "test_kits_are_out_of_stock": "test_kits_are_out_of_stock",
+          "the_client_was_in_an_emergency_situation": "the_client_was_in_an_emergency_situation",
+          "the_client_refused_to_be_tested": "the_client_refused_to_be_tested",
+          "we_are_still_counselling_the_client": "we_are_still_counselling_the_client",
+          "other": "other"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select a reason"
+        },
+        "relevance": {
+          "step1:blood_for_glucose_fv_test": {
+            "type": "string",
+            "ex": "equalTo(., \"blood_glucose_fv_not_conducted\")"
+          }
+        }
+      },
+      {
+        "key": "other_reason_fv_blood_glucose_test_not_conducted",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reason_fv_blood_glucose_test_not_conducted",
+        "type": "edit_text",
+        "hint": "Specify other reasons for not conducting the Blood for Glucose test",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the reason"
+        },
+        "relevance": {
+          "step1:reason_not_conducting_fv_blood_glucose_test": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
+          }
         }
       },
       {
@@ -373,10 +557,10 @@
         "type": "spinner",
         "hint": "Reason as to why the Malaria test was not conducted",
         "values": [
-          "Test kits out of stock",
-          "A client was in an emergency situation",
-          "Client refused to be tested",
-          "We are still counselling a client",
+          "Test kits are out of stock",
+          "The client was in an emergency situation",
+          "The client refused to be tested",
+          "We are still counselling the client",
           "Other (Specify)"
         ],
         "keys": [
@@ -477,10 +661,10 @@
         "type": "spinner",
         "hint": "Reason as to why the HIV test was not conducted",
         "values": [
-          "Test kits out of stock",
-          "A client was in an emergency situation",
-          "Client refused to be tested",
-          "We are still counselling a client",
+          "Test kits are out of stock",
+          "The client was in an emergency situation",
+          "The client refused to be tested",
+          "We are still counselling the client",
           "Other (Specify)"
         ],
         "keys": [
@@ -612,10 +796,10 @@
         "type": "spinner",
         "hint": "Reason as to why the Syphilis test was not conducted",
         "values": [
-          "Test kits out of stock",
-          "A client was in an emergency situation",
-          "Client refused to be tested",
-          "We are still counselling a client",
+          "Test kits are out of stock",
+          "The client was in an emergency situation",
+          "The client refused to be tested",
+          "We are still counselling the client",
           "Other (Specify)"
         ],
         "keys": [
@@ -719,10 +903,10 @@
         "type": "spinner",
         "hint": "Reason as to why the Hepatitis B test was not conducted",
         "values": [
-          "Test kits out of stock",
-          "A client was in an emergency situation",
-          "Client refused to be tested",
-          "We are still counselling a client",
+          "Test kits are out of stock",
+          "The client was in an emergency situation",
+          "The client refused to be tested",
+          "We are still counselling the client",
           "Other (Specify)"
         ],
         "keys": [
