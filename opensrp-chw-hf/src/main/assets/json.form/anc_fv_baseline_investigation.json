@@ -250,11 +250,31 @@
             "text": "Negative",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "negative"
+          },
+          {
+            "key": "hiv_test_not_conducted",
+            "text": "HIV Test not conducted",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "hiv_test_not_conducted"
           }
         ],
         "v_required": {
           "value": "true",
           "err": "Please answer this question"
+        }
+      },
+      {
+        "key": "date_anc_hiv_test",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "date_anc_hiv_test",
+        "type": "edit_text",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_baseline_investigation_calculation.yml"
+            }
+          }
         }
       },
       {
