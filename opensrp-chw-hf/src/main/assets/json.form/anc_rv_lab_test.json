@@ -46,6 +46,7 @@
     },
     "encounter_location": ""
   },
+  "global": {},
   "step1": {
     "title": "ANC Lab Tests",
     "fields": [
@@ -204,6 +205,39 @@
                 ]
               }
             ]
+          }
+        }
+      },
+      {
+        "type": "native_radio",
+        "key": "hiv",
+        "label": "HIV Test Results",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hiv",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "positive",
+            "text": "Positive",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "positive"
+          },
+          {
+            "key": "negative",
+            "text": "Negative",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "negative"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "HIV Test has to be conducted when woman is at week 32"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_lab_test_relevance.yml"
+            }
           }
         }
       }

@@ -119,6 +119,17 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
             e.printStackTrace();
         }
 
+        JSONObject labTestForm = null;
+        try{
+            labTestForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.LAB_TESTS);
+            labTestForm.getJSONObject("global").put("gestational_age", memberObject.getGestationAge());
+            if(details != null && !details.isEmpty()){
+                JsonFormUtils.populateForm(labTestForm,details);
+            }
+        }catch (JSONException e){
+            Timber.e(e);
+        }
+
         BaseAncHomeVisitAction triage = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_triage))
                 .withOptional(false)
                 .withDetails(details)
@@ -141,6 +152,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
         BaseAncHomeVisitAction labTests = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_lab_tests))
                 .withOptional(true)
                 .withDetails(details)
+                .withJsonPayload(labTestForm.toString())
                 .withFormName(Constants.JsonForm.AncRecurringVisit.getLabTests())
                 .withHelper(new AncLabTestAction(memberObject))
                 .build();

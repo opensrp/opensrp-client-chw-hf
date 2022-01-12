@@ -216,7 +216,11 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
             }
             Visit firstVisit = getVisit(ANC_FIRST_FACILITY_VISIT);
             Visit lastVisit = getVisit(ANC_RECURRING_FACILITY_VISIT);
-            setHivPositive(firstVisit);
+            try {
+                setHivPositive(firstVisit,lastVisit);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
             if(firstVisit == null){
                 textview_record_anc_visit.setText(R.string.record_anc_first_visit);
             }else{
@@ -243,28 +247,31 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         }
     }
 
-    private boolean setHivPositive(Visit firstVisit) {
+    private void setHivPositive(Visit firstVisit, Visit lastVisit) throws JSONException{
         hivPositive = false;
-       if(firstVisit != null){
-            try {
-                JSONObject jsonObject = new JSONObject(firstVisit.getJson());
-                JSONArray obs = jsonObject.getJSONArray("obs");
-                int obsSize = obs.length();
-                for(int i = 0; i < obsSize; i++){
-                    JSONObject checkObj = obs.getJSONObject(i);
-                    if(checkObj.getString("fieldCode").equalsIgnoreCase("hiv")){
-                       JSONArray values = checkObj.getJSONArray("values");
-                        if(values.getString(0).equalsIgnoreCase("positive")){
-                            hivPositive = true;
-                            break;
-                        }
+        JSONObject jsonObject = null;
+        if(firstVisit != null){
+            jsonObject = new JSONObject(firstVisit.getJson());
+        }
+        if(lastVisit != null){
+            jsonObject = new JSONObject(lastVisit.getJson());
+        }
+
+       if(jsonObject != null){
+            JSONArray obs = jsonObject.getJSONArray("obs");
+            int obsSize = obs.length();
+            for(int i = 0; i < obsSize; i++){
+                JSONObject checkObj = obs.getJSONObject(i);
+                if(checkObj.getString("fieldCode").equalsIgnoreCase("hiv")){
+                   JSONArray values = checkObj.getJSONArray("values");
+                    if(values.getString(0).equalsIgnoreCase("positive")){
+                        hivPositive = true;
+                        break;
                     }
                 }
-            }catch (JSONException e){
-                Timber.e(e);
             }
-       }
-        return hivPositive;
+        }
+
     }
 
     private void checkVisitStatus(Visit firstVisit) {
@@ -449,7 +456,11 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         }
         Visit firstVisit = getVisit(ANC_FIRST_FACILITY_VISIT);
         Visit lastVisit = getVisit(ANC_RECURRING_FACILITY_VISIT);
-        setHivPositive(firstVisit);
+        try {
+            setHivPositive(firstVisit,lastVisit);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         if(lastVisit == null){
             if(firstVisit != null){
                 checkVisitStatus(firstVisit);
