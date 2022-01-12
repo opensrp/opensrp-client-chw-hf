@@ -36,4 +36,46 @@ public class HfAncDao extends AbstractDao {
 
         return res.size() == 1;
     }
+
+    public static boolean isTestConducted(String testName,String baseEntityId) {
+        DataMap<String> dataMap =  cursor -> getCursorValue(cursor, testName);
+
+        String sql = String.format(
+                "SELECT %s FROM %s WHERE base_entity_id = '%s' " +
+                        "AND is_closed = 0",
+                testName,
+                "ec_anc_register",
+                baseEntityId
+        );
+
+        List<String> res = readData(sql,dataMap);
+        return res.get(0).equalsIgnoreCase("positive") || res.get(0).equalsIgnoreCase("negative");
+    }
+
+    public static boolean isHivTestConductedAtWk32(String baseEntityId){
+        DataMap<String> dataMap =  cursor -> getCursorValue(cursor,"hiv_test_at_32");
+
+        String sql = String.format(
+                "SELECT hiv_test_at_32 FROM %s WHERE base_entity_id = '%s' " +
+                        "AND is_closed = 0",
+                "ec_anc_register",
+                baseEntityId
+        );
+
+        List<String> res = readData(sql,dataMap);
+        return res.get(0) != null;
+    }
+    public static String getHivStatus(String baseEntityId){
+        DataMap<String> dataMap =  cursor -> getCursorValue(cursor,"hiv");
+
+        String sql = String.format(
+                "SELECT hiv FROM %s WHERE base_entity_id = '%s' " +
+                        "AND is_closed = 0",
+                "ec_anc_register",
+                baseEntityId
+        );
+
+        List<String> res = readData(sql,dataMap);
+        return res.get(0);
+    }
 }

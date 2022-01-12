@@ -899,6 +899,54 @@
           }
         },
         {
+          "column_name": "mRDT_for_malaria",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "mRDT_for_malaria"
+          }
+        },
+        {
+          "column_name": "hiv",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "hiv"
+          }
+        },
+        {
+          "column_name": "syphilis",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "syphilis"
+          }
+        },
+        {
+          "column_name": "hepatitis",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "hepatitis"
+          }
+        },
+        {
+          "column_name": "date_anc_hiv_test",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "date_anc_hiv_test"
+          }
+        },
+        {
+          "column_name": "hiv_test_at_32",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "hiv_test_at_32"
+          }
+        },
+        {
           "column_name": "confirmed_visits",
           "type": "Event",
           "json_mapping": {
