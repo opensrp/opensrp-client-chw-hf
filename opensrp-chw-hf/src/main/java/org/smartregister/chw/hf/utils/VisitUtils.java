@@ -62,7 +62,7 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
 
                     boolean isTriageDone = computeCompletionStatus(obs, "rapid_examination");
                     boolean isConsultationDone = computeCompletionStatus(obs, "examination_findings");
-                    boolean isLabTestsDone = computeCompletionStatus(obs, "lab_tests");
+                    boolean isLabTestsDone = computeCompletionStatus(obs, "hb_level_test");
                     boolean isPharmacyDone = computeCompletionStatus(obs, "iron_folate_supplements");
                     boolean isPregnancyStatusDone = computeCompletionStatus(obs,"pregnancy_status");
 

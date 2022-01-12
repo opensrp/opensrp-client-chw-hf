@@ -49,7 +49,7 @@ public class AncLabTestAction implements BaseAncHomeVisitAction.AncHomeVisitActi
     public void onPayloadReceived(String jsonPayload) {
         try {
             JSONObject jsonObject = new JSONObject(jsonPayload);
-            lab_tests = CoreJsonFormUtils.getCheckBoxValue(jsonObject, "lab_tests");
+            lab_tests = CoreJsonFormUtils.getValue(jsonObject, "hb_level_test");
         } catch (JSONException e) {
             Timber.e(e);
         }
@@ -76,7 +76,7 @@ public class AncLabTestAction implements BaseAncHomeVisitAction.AncHomeVisitActi
             return null;
 
         //TODO ilakoze extract to string resources
-        return MessageFormat.format("Lab Tests Conducted : {0}", lab_tests);
+        return "Lab Tests Complete";
     }
 
     @Override
