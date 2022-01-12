@@ -19,6 +19,7 @@ import org.smartregister.chw.anc.util.JsonFormUtils;
 import org.smartregister.chw.anc.util.VisitUtils;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.core.utils.FormUtils;
+import org.smartregister.chw.hf.BuildConfig;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.actionhelper.AncBirthReviewAction;
 import org.smartregister.chw.hf.actionhelper.AncTtVaccinationAction;
@@ -31,6 +32,7 @@ import org.smartregister.domain.LocationTag;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -291,35 +293,56 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
                         break;
                     }
                 }
-
-                ArrayList<String> healthFacilitiesOptions = new ArrayList<>();
-                ArrayList<String> healthFacilitiesIds = new ArrayList<>();
+                JSONArray tree = referralHealthFacilities.getJSONArray("tree");
+                String parentTagName = "Zone";
                 for (Location location : locations) {
                     Set<LocationTag> locationTags = location.getLocationTags();
-                   if(locationTags.iterator().next().getName().equalsIgnoreCase("Facility") ){
-                        healthFacilitiesOptions.add(StringUtils.capitalize(location.getProperties().getName()));
-                        healthFacilitiesIds.add(location.getProperties().getUid());
-                   }
-                }
-                healthFacilitiesOptions.add("Other");
-                healthFacilitiesIds.add("Other");
+                    if (locationTags.iterator().next().getName().equalsIgnoreCase(parentTagName)) {
+                        JSONObject treeNode = new JSONObject();
+                        treeNode.put("name", StringUtils.capitalize(location.getProperties().getName()));
+                        treeNode.put("key", StringUtils.capitalize(location.getProperties().getName()));
 
-                JSONObject openmrsChoiceIds = new JSONObject();
-                int size = healthFacilitiesOptions.size();
-                for (int i = 0; i < size; i++) {
-                    openmrsChoiceIds.put(healthFacilitiesOptions.get(i), healthFacilitiesIds.get(i));
-                }
-                if (referralHealthFacilities != null) {
-                    referralHealthFacilities.put("values", new JSONArray(healthFacilitiesOptions));
-                    referralHealthFacilities.put("keys", new JSONArray(healthFacilitiesOptions));
-                    referralHealthFacilities.put("openmrs_choice_ids", openmrsChoiceIds);
+                        JSONArray childNodes = setChildNodes(locations, location.getId(), parentTagName);
+                        if (childNodes != null)
+                            treeNode.put("nodes", childNodes);
+
+                        tree.put(treeNode);
+                    }
                 }
             } catch (JSONException e) {
                 Timber.e(e);
             }
-
         }
         return form;
+    }
+
+    private static JSONArray setChildNodes(List<Location> locations, String parentLocationId, String parentTagName) {
+        JSONArray nodes = new JSONArray();
+        ArrayList<String> locationHierarchyTags = new ArrayList<>(Arrays.asList(BuildConfig.LOCATION_HIERACHY));
+
+        for (Location location : locations) {
+            Set<LocationTag> locationTags = location.getLocationTags();
+            String childTagName = locationHierarchyTags.get(locationHierarchyTags.indexOf(parentTagName) + 1);
+            if (locationTags.iterator().next().getName().equalsIgnoreCase(childTagName) && location.getProperties().getParentId().equals(parentLocationId)) {
+                JSONObject childNode = new JSONObject();
+                try {
+                    childNode.put("name", StringUtils.capitalize(location.getProperties().getName()));
+                    childNode.put("key", StringUtils.capitalize(location.getProperties().getName()));
+
+                    JSONArray childNodes = setChildNodes(locations, location.getId(), childTagName);
+                    if (childNodes != null)
+                        childNode.put("nodes", childNodes);
+
+                    nodes.put(childNode);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        if (nodes.length() > 0) {
+            return nodes;
+        } else return null;
+
     }
 
     private class AncBaselineInvestigationAction extends org.smartregister.chw.hf.actionhelper.AncBaselineInvestigationAction {
