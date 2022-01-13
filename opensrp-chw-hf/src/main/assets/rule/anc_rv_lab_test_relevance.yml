@@ -33,3 +33,12 @@ priority: 1
 condition: "!global_syphilis_test_complete"
 actions:
   - "isRelevant = true"
+
+
+---
+name: step1_prompt_for_moderate_anaemia_management
+description:  prompt for moderate anaemia management
+priority: 1
+condition: "Float.parseFloat(step1_hb_level) > 8.5 && Float.parseFloat(step1_hb_level) <= 11"
+actions:
+  - "isRelevant = true"

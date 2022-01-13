@@ -291,7 +291,7 @@
       {
         "type": "edit_text",
         "key": "fetal_heart_rate",
-        "hint": "Count Fetal Heart Rate",
+        "hint": "Count Fetal Heart Rate(bpm)",
         "openmrs_entity_id": "fetal_heart_rate",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -310,6 +310,21 @@
         "v_required": {
           "value": "true",
           "err": "Please enter the fetal heart rate"
+        }
+      },
+      {
+        "key": "prompt_for_fetal_distress",
+        "type": "toaster_notes",
+        "text": "The Fetal is in Distress",
+        "openmrs_entity_id": "prompt_for_fetal_distress",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:fetal_heart_rate": {
+            "type": "numeric",
+            "ex": "greaterThan(.,\"120\")"
+          }
         }
       },
       {

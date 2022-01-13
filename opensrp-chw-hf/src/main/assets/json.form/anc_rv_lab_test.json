@@ -81,9 +81,9 @@
       {
         "type": "edit_text",
         "hint": "HB Level (g/dl)",
-        "key": "hb_value",
+        "key": "hb_level",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "hb_value",
+        "openmrs_entity_id": "hb_level",
         "openmrs_entity_parent": "",
         "v_numeric": {
           "value": "true",
@@ -105,6 +105,37 @@
           "step1:hb_level_test": {
             "type": "string",
             "ex": "equalTo(., \"hb_level_conducted\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_severe_anaemia_treatment",
+        "type": "toaster_notes",
+        "text": "The client should receive severe anaemia treatment",
+        "openmrs_entity_id": "prompt_for_severe_anaemia_treatment",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:hb_level": {
+            "type": "numeric",
+            "ex": "lessThanEqualTo(.,\"8.5\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_moderate_anaemia_management",
+        "type": "toaster_notes",
+        "text": "The client should receive moderate anaemia management",
+        "openmrs_entity_id": "prompt_for_moderate_anaemia_management",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_lab_test_relevance.yml"
+            }
           }
         }
       },
@@ -196,10 +227,10 @@
       },
       {
         "type": "edit_text",
-        "key": "blood_for_glucose_value",
+        "key": "blood_for_glucose",
         "hint": "Blood For Glucose (mmol/L)",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "blood_for_glucose_value",
+        "openmrs_entity_id": "blood_for_glucose",
         "openmrs_entity_parent": "",
         "v_numeric": {
           "value": "true",
@@ -221,6 +252,36 @@
           "step1:blood_for_glucose_test": {
             "type": "string",
             "ex": "equalTo(., \"blood_glucose_conducted\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_gestational_diabetes_mellitus",
+        "type": "toaster_notes",
+        "text": "The client has Gestational Diabetes Mellitus",
+        "openmrs_entity_id": "prompt_for_gestational_diabetes_mellitus",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:blood_for_glucose": {
+            "type": "numeric",
+            "ex": "greaterThan(.,\"11\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_hypoglycaemia",
+        "type": "toaster_notes",
+        "text": "The client has hypoglycaemia",
+        "openmrs_entity_id": "prompt_for_hypoglycaemia",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:blood_for_glucose": {
+            "type": "numeric",
+            "ex": "lessThan(.,\"3.5\")"
           }
         }
       },
