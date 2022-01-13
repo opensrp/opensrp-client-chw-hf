@@ -123,6 +123,12 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
         try{
             labTestForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.LAB_TESTS);
             labTestForm.getJSONObject("global").put("gestational_age", memberObject.getGestationAge());
+            labTestForm.getJSONObject("global").put("hepatitis_test_complete", HfAncDao.isTestConducted(Constants.DBConstants.ANC_HEPATITIS,baseEntityId));
+            labTestForm.getJSONObject("global").put("malaria_test_complete", HfAncDao.isTestConducted(Constants.DBConstants.ANC_MRDT_FOR_MALARIA,baseEntityId));
+            labTestForm.getJSONObject("global").put("syphilis_test_complete", HfAncDao.isTestConducted(Constants.DBConstants.ANC_SYPHILIS,baseEntityId));
+            labTestForm.getJSONObject("global").put("hiv_test_complete", HfAncDao.isTestConducted(Constants.DBConstants.ANC_HIV,baseEntityId));
+            labTestForm.getJSONObject("global").put("hiv_test_at_32_complete", HfAncDao.isHivTestConductedAtWk32(baseEntityId));
+            labTestForm.getJSONObject("global").put("hiv_status", HfAncDao.getHivStatus(baseEntityId));
             if(details != null && !details.isEmpty()){
                 JsonFormUtils.populateForm(labTestForm,details);
             }

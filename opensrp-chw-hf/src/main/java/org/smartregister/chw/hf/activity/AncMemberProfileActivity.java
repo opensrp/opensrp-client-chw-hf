@@ -130,7 +130,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         menu.findItem(R.id.action_remove_member).setVisible(false);
         menu.findItem(R.id.action_pregnancy_out_come).setVisible(!HfAncDao.isClientClosed(baseEntityID));
         menu.findItem(R.id.action_malaria_diagnosis).setVisible(false);
-        menu.findItem(R.id.action_pmtct_register).setVisible(!PmtctDao.isRegisteredForPmtct(baseEntityID) && (hivPositive || HivDao.isRegisteredForHiv(baseEntityID)));
+        menu.findItem(R.id.action_pmtct_register).setVisible(!PmtctDao.isRegisteredForPmtct(baseEntityID) && (hivPositive || HivDao.isRegisteredForHiv(baseEntityID) || HfAncDao.getHivStatus(baseEntityID).equalsIgnoreCase("positive")));
         return true;
     }
 

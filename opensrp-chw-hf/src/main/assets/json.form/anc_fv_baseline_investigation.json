@@ -651,6 +651,12 @@
               "rules-file": "anc_fv_baseline_investigation_calculation.yml"
             }
           }
+        },
+        "relevance": {
+          "step1:hiv": {
+            "type": "string",
+            "ex": "notEqualTo(., \"test_not_conducted\")"
+          }
         }
       },
       {

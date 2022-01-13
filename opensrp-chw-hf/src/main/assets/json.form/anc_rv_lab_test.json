@@ -220,7 +220,7 @@
         "relevance": {
           "step1:blood_for_glucose_test": {
             "type": "string",
-            "ex": "equalTo(., \"hb_level_conducted\")"
+            "ex": "equalTo(., \"blood_glucose_conducted\")"
           }
         }
       },
@@ -469,17 +469,99 @@
         }
       },
       {
-        "type": "hidden",
-        "key": "hiv_test_at_32",
+        "type": "native_radio",
+        "key": "mRDT_for_malaria",
+        "label": "mRDT for Malaria Results",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "hiv_test_at_32",
+        "openmrs_entity_id": "mRDT_for_malaria",
         "openmrs_entity_parent": "",
-        "value": "true",
+        "options": [
+          {
+            "key": "positive",
+            "text": "Positive",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "positive"
+          },
+          {
+            "key": "negative",
+            "text": "Negative",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "negative"
+          },
+          {
+            "key": "test_not_conducted",
+            "text": "Malaria Test not conducted",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "test_not_conducted"
+          }
+        ],
         "relevance": {
           "rules-engine": {
             "ex-rules": {
               "rules-file": "anc_rv_lab_test_relevance.yml"
             }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
+      },
+      {
+        "key": "reason_for_not_conducting_malaria_test",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_conducting_malaria_test",
+        "type": "spinner",
+        "hint": "Reason as to why the Malaria test was not conducted",
+        "values": [
+          "Test kits out of stock",
+          "A client was in an emergency situation",
+          "Client refused to be tested",
+          "We are still counselling a client",
+          "Other (Specify)"
+        ],
+        "keys": [
+          "test_kits_out_of_stock",
+          "client_was_in_an_emergency_situation",
+          "client_refused_to_be_tested",
+          "still_counselling_the_client",
+          "other"
+        ],
+        "openmrs_choice_ids": {
+          "test_kits_out_of_stock": "test_kits_out_of_stock",
+          "client_was_in_an_emergency_situation": "client_was_in_an_emergency_situation",
+          "client_refused_to_be_tested": "client_refused_to_be_tested",
+          "still_counselling_the_client": "still_counselling_the_client",
+          "Other": "other"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select a reason"
+        },
+        "relevance": {
+          "step1:mRDT_for_malaria": {
+            "type": "string",
+            "ex": "equalTo(., \"test_not_conducted\")"
+          }
+        }
+      },
+      {
+        "key": "other_reason_for_not_conducting_malaria_test",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reason_for_not_conducting_malaria_test",
+        "type": "edit_text",
+        "hint": "Specify other reasons for not conducting Malaria test",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the reason"
+        },
+        "relevance": {
+          "step1:reason_for_not_conducting_malaria_test": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
           }
         }
       },
@@ -504,15 +586,15 @@
             "openmrs_entity_id": "negative"
           },
           {
-            "key": "hiv_test_not_conducted",
+            "key": "test_not_conducted",
             "text": "HIV Test not conducted",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "hiv_test_not_conducted"
+            "openmrs_entity_id": "test_not_conducted"
           }
         ],
         "v_required": {
-          "value": true,
-          "err": "HIV Test has to be conducted when woman is at week 32"
+          "value": "true",
+          "err": "Please answer this question"
         },
         "relevance": {
           "rules-engine": {
@@ -530,25 +612,25 @@
         "type": "spinner",
         "hint": "Reason as to why the HIV test was not conducted",
         "values": [
-          "Test kits are out of stock",
-          "The client was in an emergency situation",
-          "The client refused to be tested",
-          "We are still counselling the client",
-          "Other"
+          "Test kits out of stock",
+          "A client was in an emergency situation",
+          "Client refused to be tested",
+          "We are still counselling a client",
+          "Other (Specify)"
         ],
         "keys": [
-          "test_kits_are_out_of_stock",
-          "the_client_was_in_an_emergency_situation",
-          "the_client_refused_to_be_tested",
-          "we_are_still_counselling_the_client",
+          "test_kits_out_of_stock",
+          "client_was_in_an_emergency_situation",
+          "client_refused_to_be_tested",
+          "still_counselling_the_client",
           "other"
         ],
         "openmrs_choice_ids": {
-          "test_kits_are_out_of_stock": "test_kits_are_out_of_stock",
-          "the_client_was_in_an_emergency_situation": "the_client_was_in_an_emergency_situation",
-          "the_client_refused_to_be_tested": "the_client_refused_to_be_tested",
-          "we_are_still_counselling_the_client": "we_are_still_counselling_the_client",
-          "other": "other"
+          "test_kits_out_of_stock": "test_kits_out_of_stock",
+          "client_was_in_an_emergency_situation": "client_was_in_an_emergency_situation",
+          "client_refused_to_be_tested": "client_refused_to_be_tested",
+          "still_counselling_the_client": "still_counselling_the_client",
+          "Other": "other"
         },
         "v_required": {
           "value": "true",
@@ -557,17 +639,17 @@
         "relevance": {
           "step1:hiv": {
             "type": "string",
-            "ex": "equalTo(., \"hiv_test_not_conducted\")"
+            "ex": "equalTo(., \"test_not_conducted\")"
           }
         }
       },
       {
-        "key": "other_reason_hiv_test_not_conducted",
+        "key": "other_reason_for_not_conducting_hiv_test",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "other_reason_hiv_test_not_conducted",
+        "openmrs_entity_id": "other_reason_for_not_conducting_hiv_test",
         "type": "edit_text",
-        "hint": "Other reason for why the HIV test was not conducted",
+        "hint": "Specify other reasons for not conducting HIV test",
         "edit_type": "name",
         "v_required": {
           "value": "true",
@@ -577,6 +659,295 @@
           "step1:reason_for_not_conducting_hiv_test": {
             "type": "string",
             "ex": "equalTo(., \"other\")"
+          }
+        }
+      },
+      {
+        "key": "register_pmtct",
+        "type": "toaster_notes",
+        "text": "Register client for PMTCT",
+        "openmrs_entity_id": "register_pmtct",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:hiv": {
+            "type": "string",
+            "ex": "equalTo(.,\"positive\")"
+          }
+        }
+      },
+      {
+        "key": "prescribe_arv",
+        "type": "toaster_notes",
+        "text": "Prescribe client to ARVs",
+        "openmrs_entity_id": "prescribe_arv",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:hiv": {
+            "type": "string",
+            "ex": "equalTo(.,\"positive\")"
+          }
+        }
+      },
+      {
+        "type": "native_radio",
+        "key": "syphilis",
+        "label": "Syphilis Test Results",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "syphilis",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "positive",
+            "text": "Positive",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "positive"
+          },
+          {
+            "key": "negative",
+            "text": "Negative",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "negative"
+          },
+          {
+            "key": "test_not_conducted",
+            "text": "Syphilis Test not conducted",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "test_not_conducted"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_lab_test_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prescribe_anti_sy",
+        "type": "toaster_notes",
+        "text": "Prescribe client to Antibiotics",
+        "openmrs_entity_id": "prescribe_anti_sy",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:syphilis": {
+            "type": "string",
+            "ex": "equalTo(.,\"positive\")"
+          }
+        }
+      },
+      {
+        "key": "reason_for_not_conducting_syphilis_test",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_conducting_syphilis_test",
+        "type": "spinner",
+        "hint": "Reason as to why the Syphilis test was not conducted",
+        "values": [
+          "Test kits out of stock",
+          "A client was in an emergency situation",
+          "Client refused to be tested",
+          "We are still counselling a client",
+          "Other (Specify)"
+        ],
+        "keys": [
+          "test_kits_out_of_stock",
+          "client_was_in_an_emergency_situation",
+          "client_refused_to_be_tested",
+          "still_counselling_the_client",
+          "other"
+        ],
+        "openmrs_choice_ids": {
+          "test_kits_out_of_stock": "test_kits_out_of_stock",
+          "client_was_in_an_emergency_situation": "client_was_in_an_emergency_situation",
+          "client_refused_to_be_tested": "client_refused_to_be_tested",
+          "still_counselling_the_client": "still_counselling_the_client",
+          "Other": "other"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select a reason"
+        },
+        "relevance": {
+          "step1:syphilis": {
+            "type": "string",
+            "ex": "equalTo(., \"test_not_conducted\")"
+          }
+        }
+      },
+      {
+        "key": "other_reason_for_not_conducting_syphilis_test",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reason_for_not_conducting_syphilis_test",
+        "type": "edit_text",
+        "hint": "Specify other reasons for not conducting Syphilis test",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the reason"
+        },
+        "relevance": {
+          "step1:reason_for_not_conducting_syphilis_test": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
+          }
+        }
+      },
+      {
+        "type": "native_radio",
+        "key": "hepatitis",
+        "label": "Hepatitis B Test Results",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hepatitis",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "positive",
+            "text": "Positive",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "positive"
+          },
+          {
+            "key": "negative",
+            "text": "Negative",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "negative"
+          },
+          {
+            "key": "test_not_conducted",
+            "text": "Hepatitis B Test not conducted",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "test_not_conducted"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_lab_test_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prescribe_arv_hepb",
+        "type": "toaster_notes",
+        "text": "Prescribe client to ARVs",
+        "openmrs_entity_id": "prescribe_arv_hepb",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:hepatitis": {
+            "type": "string",
+            "ex": "equalTo(.,\"positive\")"
+          }
+        }
+      },
+      {
+        "key": "reason_for_not_conducting_hepatitis_test",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_conducting_hepatitis_test",
+        "type": "spinner",
+        "hint": "Reason as to why the Hepatitis B test was not conducted",
+        "values": [
+          "Test kits out of stock",
+          "A client was in an emergency situation",
+          "Client refused to be tested",
+          "We are still counselling a client",
+          "Other (Specify)"
+        ],
+        "keys": [
+          "test_kits_out_of_stock",
+          "client_was_in_an_emergency_situation",
+          "client_refused_to_be_tested",
+          "still_counselling_the_client",
+          "other"
+        ],
+        "openmrs_choice_ids": {
+          "test_kits_out_of_stock": "test_kits_out_of_stock",
+          "client_was_in_an_emergency_situation": "client_was_in_an_emergency_situation",
+          "client_refused_to_be_tested": "client_refused_to_be_tested",
+          "still_counselling_the_client": "still_counselling_the_client",
+          "Other": "other"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select a reason"
+        },
+        "relevance": {
+          "step1:hepatitis": {
+            "type": "string",
+            "ex": "equalTo(., \"test_not_conducted\")"
+          }
+        }
+      },
+      {
+        "key": "other_reason_for_not_conducting_hepatitis_test",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reason_for_not_conducting_hepatitis_test",
+        "type": "edit_text",
+        "hint": "Specify other reasons for not conducting Hepatitis B test",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the reason"
+        },
+        "relevance": {
+          "step1:reason_for_not_conducting_hepatitis_test": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
+          }
+        }
+      },
+      {
+        "type": "hidden",
+        "key": "hiv_test_at_32",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hiv_test_at_32",
+        "openmrs_entity_parent": "",
+        "value": "true",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_lab_test_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "date_anc_hiv_test",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "date_anc_hiv_test",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_baseline_investigation_calculation.yml"
+            }
+          }
+        },
+        "relevance": {
+          "step1:hiv": {
+            "type": "string",
+            "ex": "notEqualTo(., \"test_not_conducted\")"
           }
         }
       }
