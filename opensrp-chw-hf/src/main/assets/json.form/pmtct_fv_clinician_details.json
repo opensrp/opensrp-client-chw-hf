@@ -82,12 +82,30 @@
         }
       },
       {
-        "type": "edit_text",
+        "type": "spinner",
         "key": "clinician_position_followup",
         "hint": "Clinician Position",
         "openmrs_entity_id": "clinician_position_followup",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
+        "values": [
+          "Medical Officer",
+          "Assistant Medical Officer",
+          "Clinical Officer",
+          "Assistant Clinical Officer"
+        ],
+        "keys": [
+          "medical_officer",
+          "assistant_medical_officer",
+          "clinical_officer",
+          "assistant_clinical_officer"
+        ],
+        "openmrs_choice_ids": {
+          "medical_officer": "medical_officer",
+          "assistant_medical_officer": "assistant_medical_officer" ,
+          "clinical_officer": "clinical_officer" ,
+          "assistant_clinical_officer":  "assistant_clinical_officer"
+        },
         "v_required": {
           "value": true,
           "err": "Please enter the clinician position"

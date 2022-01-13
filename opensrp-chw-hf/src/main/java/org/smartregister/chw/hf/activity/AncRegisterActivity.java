@@ -204,7 +204,7 @@ public class AncRegisterActivity extends CoreAncRegisterActivity {
                 String table = data.getStringExtra(Constants.ACTIVITY_PAYLOAD.TABLE_NAME);
 
                 if (encounter_type.equalsIgnoreCase(getRegisterEventType())) {
-                    if (danger_sign_analysis.equalsIgnoreCase("None") && (upt.equalsIgnoreCase("positive") || uss.equalsIgnoreCase("present_gestation_sac")))
+                    if (danger_sign_analysis.equalsIgnoreCase("None") && ((uss.equalsIgnoreCase("present_gestation_sac") && upt.equalsIgnoreCase("positive")) || (uss.equalsIgnoreCase("absent_gestation_sac") && upt.equalsIgnoreCase("positive")) || (upt.isEmpty() && uss.equalsIgnoreCase("present_gestation_sac")) || (upt.equalsIgnoreCase("positive") && uss.isEmpty())))
                         saveFormForPregnancyConfirmation(jsonString, table);
                 } else if (encounter_type.equalsIgnoreCase(Constants.EVENT_TYPE.PREGNANCY_OUTCOME)) {
 
