@@ -37,5 +37,7 @@ public class ReferralRegisterActivity extends BaseReferralRegister {
         bottomNavigationHelper = new BottomNavigationHelper();
         bottomNavigationView = findViewById(org.smartregister.R.id.bottom_navigation);
         FamilyRegisterActivity.registerBottomNavigation(bottomNavigationHelper, bottomNavigationView, this);
+        bottomNavigationView.getMenu().removeItem(org.smartregister.family.R.id.action_register);
+
     }
 }
