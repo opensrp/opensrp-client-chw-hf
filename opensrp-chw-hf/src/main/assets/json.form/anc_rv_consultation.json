@@ -407,10 +407,62 @@
       },
       {
         "type": "native_radio",
-        "key": "breast_and_and_lymph_nodes",
-        "label": "Breasts and lymph nodes",
+        "key": "breast",
+        "label": "Breasts",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "breast_and_and_lymph_nodes",
+        "openmrs_entity_id": "breast",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "normal",
+            "text": "Normal",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "normal"
+          },
+          {
+            "key": "abnormal",
+            "text": "Abnormal",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "abnormal"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
+      },
+      {
+        "type": "native_radio",
+        "key": "lymph_node_under_arm",
+        "label": "Lymph Node (under the arm)",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "lymph_node_under_arm",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "normal",
+            "text": "Normal",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "normal"
+          },
+          {
+            "key": "abnormal",
+            "text": "Abnormal",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "abnormal"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
+      },
+      {
+        "type": "native_radio",
+        "key": "lymph_node_cervical",
+        "label": "Lymph Node (cervical)",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "lymph_node_cervical",
         "openmrs_entity_parent": "",
         "options": [
           {
