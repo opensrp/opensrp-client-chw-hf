@@ -76,6 +76,9 @@ public class HfAncDao extends AbstractDao {
         );
 
         List<String> res = readData(sql,dataMap);
-        return res.get(0);
+        if(res.get(0) != null){
+            return res.get(0);
+        }
+        return "null";
     }
 }
