@@ -18,7 +18,6 @@ import org.smartregister.chw.core.application.CoreChwApplication;
 import org.smartregister.chw.core.contract.CoreApplication;
 import org.smartregister.chw.core.custom_views.NavigationMenu;
 import org.smartregister.chw.core.loggers.CrashlyticsTree;
-import org.smartregister.chw.core.provider.CoreAllClientsRegisterQueryProvider;
 import org.smartregister.chw.core.service.CoreAuthorizationService;
 import org.smartregister.chw.core.utils.ChildDBConstants;
 import org.smartregister.chw.core.utils.ChwDBConstants;
@@ -39,7 +38,6 @@ import org.smartregister.chw.hf.activity.MalariaRegisterActivity;
 import org.smartregister.chw.hf.activity.PmtctRegisterActivity;
 import org.smartregister.chw.hf.activity.PncRegisterActivity;
 import org.smartregister.chw.hf.activity.ReferralRegisterActivity;
-import org.smartregister.chw.hf.activity.TbRegisterActivity;
 import org.smartregister.chw.hf.configs.AllClientsRegisterRowOptions;
 import org.smartregister.chw.hf.custom_view.HfNavigationMenu;
 import org.smartregister.chw.hf.job.HfJobCreator;
@@ -53,8 +51,8 @@ import org.smartregister.chw.hiv.HivLibrary;
 import org.smartregister.chw.malaria.MalariaLibrary;
 import org.smartregister.chw.pmtct.PmtctLibrary;
 import org.smartregister.chw.pnc.PncLibrary;
-import org.smartregister.commonregistry.CommonFtsObject;
 import org.smartregister.chw.tb.TbLibrary;
+import org.smartregister.commonregistry.CommonFtsObject;
 import org.smartregister.configurableviews.ConfigurableViewsLibrary;
 import org.smartregister.configurableviews.helper.JsonSpecHelper;
 import org.smartregister.family.FamilyLibrary;
@@ -112,16 +110,17 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
         registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.PNC_REGISTER_ACTIVITY, PncRegisterActivity.class);
         registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.REFERRALS_REGISTER_ACTIVITY, ReferralRegisterActivity.class);
         registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.ALL_CLIENTS_REGISTERED_ACTIVITY, AllClientsRegisterActivity.class);
-        registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.MALARIA_REGISTER_ACTIVITY, MalariaRegisterActivity.class);
-        registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.FP_REGISTER_ACTIVITY, FpRegisterActivity.class);
-        registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.PMTCT_REGISTER_ACTIVITY, PmtctRegisterActivity.class);
 
-        if (BuildConfig.BUILD_FOR_BORESHA_AFYA_SOUTH) {
+        if (!BuildConfig.BUILD_FOR_BORESHA_AFYA_SOUTH) {
+            registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.MALARIA_REGISTER_ACTIVITY, MalariaRegisterActivity.class);
+            registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.FP_REGISTER_ACTIVITY, FpRegisterActivity.class);
+        } else {
             registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.HIV_REGISTER_ACTIVITY, HivRegisterActivity.class);
             registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.HTS_REGISTER_ACTIVITY, HtsRegisterActivity.class);
             registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.HIV_INDEX_REGISTER_ACTIVITY, HivIndexContactsContactsRegisterActivity.class);
-            registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.TB_REGISTER_ACTIVITY, TbRegisterActivity.class);
-
+            registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.PMTCT_REGISTER_ACTIVITY, PmtctRegisterActivity.class);
+//          TODO uncomment these when NACP is ready to test these modules
+//          registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.TB_REGISTER_ACTIVITY, TbRegisterActivity.class);
         }
         return registeredActivities;
     }
@@ -233,7 +232,7 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
         TbLibrary.getInstance().setDatabaseVersion(BuildConfig.DATABASE_VERSION);
 
         //Setup pmtct library
-        PmtctLibrary.init(context,getRepository(),BuildConfig.VERSION_CODE,BuildConfig.DATABASE_VERSION);
+        PmtctLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
 
         //Needed for all clients register
         OpdLibrary.init(context, getRepository(),
@@ -272,7 +271,7 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
         Timber.i("Logged out user %s", getContext().allSharedPreferences().fetchRegisteredANM());
     }
 
-    public boolean getChildFlavorUtil(){
+    public boolean getChildFlavorUtil() {
         return true;
     }
 
