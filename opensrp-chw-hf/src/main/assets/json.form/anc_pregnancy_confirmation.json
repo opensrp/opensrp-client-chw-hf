@@ -135,22 +135,28 @@
     "next": "step3",
     "fields": [
       {
-        "type": "native_radio",
-        "openmrs_entity_id": "type_of_pregnancy_test",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "label": "Select the type of test conducted",
         "key": "type_of_pregnancy_test",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "type_of_pregnancy_test",
+        "type": "check_box",
+        "label": "Select the type of test conducted",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
         "options": [
           {
-            "text": "UPT",
             "key": "upt",
-            "value": false
+            "text": "UPT",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "upt"
           },
           {
-            "text": "USS",
             "key": "uss",
-            "value": false
+            "text": "USS",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "uss"
           }
         ],
         "relevance": {
@@ -246,7 +252,7 @@
         "min_date": "today-50w",
         "v_required": {
           "value": "true",
-          "err": "LMP required"
+          "err": "LNMP required"
         },
         "calculation": {
           "rules-engine": {
@@ -292,7 +298,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "fundal_height",
         "type": "edit_text",
-        "hint": "Fundal Height(CM)",
+        "hint": "Fundal Height (CM)",
         "calculation": {
           "rules-engine": {
             "ex-rules": {
@@ -452,6 +458,22 @@
                 ]
               }
             ]
+          }
+        }
+      },
+      {
+        "key": "see_a_doctor",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "see_a_doctor",
+        "type": "toaster_notes",
+        "text": "Please request the client to consult a doctor",
+        "toaster_type": "warning",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_pregnancy_confirmation_relevance.yml"
+            }
           }
         }
       }
