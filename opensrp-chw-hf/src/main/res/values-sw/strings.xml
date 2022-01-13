@@ -37,4 +37,8 @@
     <string name="chw_test_location">Atapimwa wapi</string>
     <string name="optional"></string>
     <string name="action_pregnancy_confirmation_referrals">Pregnancy Confirmation</string>
+    <string name="anc_pregnacy_status">Hali ya ujauzito: "</string>
+    <string name="anc_pregnacy_status_viable">Viable</string>
+    <string name="anc_pregnacy_status_fetal_death">Intrauterine Fetal Death (Still Birth)</string>
+    <string name="anc_pregnacy_status_spontaneous_abortion">Spontaneous Abortion</string>
 </resources>

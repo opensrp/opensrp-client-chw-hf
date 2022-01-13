@@ -57,5 +57,9 @@
     <string name="pmtct_followup_form_title">PMTCT Followup</string>
     <string name="record_first_pmtct">Record PMTCT First Visit</string>
     <string name="action_pregnancy_confirmation_referrals">Pregnancy Confirmation</string>
+    <string name="anc_pregnacy_status">Pregnancy Status: </string>
+    <string name="anc_pregnacy_status_viable">Viable</string>
+    <string name="anc_pregnacy_status_fetal_death">Intrauterine Fetal Death (Still Birth)</string>
+    <string name="anc_pregnacy_status_spontaneous_abortion">Spontaneous Abortion</string>
 
 </resources>

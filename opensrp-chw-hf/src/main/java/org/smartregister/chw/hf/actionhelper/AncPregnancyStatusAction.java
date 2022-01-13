@@ -19,7 +19,7 @@ public class AncPregnancyStatusAction implements BaseAncHomeVisitAction.AncHomeV
     protected MemberObject memberObject;
     private String jsonPayload;
 
-    private String pregnancy_status;
+    protected String pregnancy_status;
     private BaseAncHomeVisitAction.ScheduleStatus scheduleStatus;
     private String subTitle;
 
@@ -73,13 +73,7 @@ public class AncPregnancyStatusAction implements BaseAncHomeVisitAction.AncHomeV
     public String evaluateSubTitle() {
         if (StringUtils.isBlank(pregnancy_status))
             return null;
-
-        StringBuilder stringBuilder = new StringBuilder();
-
-        //TODO ilakoze extract to string resources
-        stringBuilder.append("Pregnancy Status Complete");
-
-        return stringBuilder.toString();
+        return pregnancy_status;
     }
 
     @Override

@@ -4,10 +4,13 @@ import android.app.Activity;
 import android.content.Intent;
 
 import org.smartregister.chw.anc.domain.MemberObject;
+import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
 import org.smartregister.chw.anc.presenter.BaseAncHomeVisitPresenter;
 import org.smartregister.chw.hf.interactor.AncRecurringFacilityVisitInteractor;
 
 import java.text.MessageFormat;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 /**
  * @author ilakozejumanne@gmail.com
@@ -32,11 +35,17 @@ public class AncRecurringFacilityVisitActivity extends AncFirstFacilityVisitActi
         tvTitle.setText(MessageFormat.format("{0}, {1} \u00B7 {2}", memberObject.getFullName(), memberObject.getAge(), getString(org.smartregister.chw.hf.R.string.anc_followup_visit)));
     }
 
+
     @Override
-    public void submittedAndClose() {
-        // TODO ilakoze recompute schedule
-//        Runnable runnable = () -> ChwScheduleTaskExecutor.getInstance().execute(memberObject.getBaseEntityId(), CoreConstants.EventType.ANC_HOME_VISIT, new Date());
-//        org.smartregister.chw.util.Utils.startAsyncTask(new RunnableTask(runnable), null);
-        super.submittedAndClose();
+    public void initializeActions(LinkedHashMap<String, BaseAncHomeVisitAction> map) {
+        actionList.clear();
+        for (Map.Entry<String, BaseAncHomeVisitAction> entry : map.entrySet()) {
+            actionList.put(entry.getKey(), entry.getValue());
+        }
+
+        if (mAdapter != null) {
+            mAdapter.notifyDataSetChanged();
+        }
+        displayProgressBar(false);
     }
 }
