@@ -355,6 +355,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     private void getButtonStatus() {
         openVisitMonthView();
         textViewUndo.setVisibility(View.GONE);
+        boolean pmtctPendingRegistration = HfAncDao.getHivStatus(baseEntityID).equalsIgnoreCase("positive") && !PmtctDao.isRegisteredForPmtct(baseEntityID);
 
         Rules rules = CoreChwApplication.getInstance().getRulesEngineHelper().rules(CoreConstants.RULE_FILE.ANC_HOME_VISIT);
         Visit lastNotDoneVisit = AncLibrary.getInstance().visitRepository().getLatestVisit(baseEntityID, org.smartregister.chw.anc.util.Constants.EVENT_TYPE.ANC_HOME_VISIT_NOT_DONE);
@@ -383,22 +384,29 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         }
 
 
-        if (visitStatus.equalsIgnoreCase(CoreConstants.VISIT_STATE.OVERDUE)) {
+        if (visitStatus.equalsIgnoreCase(CoreConstants.VISIT_STATE.OVERDUE) && !pmtctPendingRegistration) {
             textview_record_anc_visit.setBackgroundResource(org.smartregister.chw.core.R.drawable.record_btn_selector_overdue);
             getLayoutVisibility();
-        } else if (visitStatus.equalsIgnoreCase(CoreConstants.VISIT_STATE.DUE) || visitStatus.equalsIgnoreCase("VISIT_THIS_MONTH")) {
+        } else if (visitStatus.equalsIgnoreCase(CoreConstants.VISIT_STATE.DUE) || visitStatus.equalsIgnoreCase("VISIT_THIS_MONTH") && !pmtctPendingRegistration) {
             textview_record_anc_visit.setBackgroundResource(org.smartregister.chw.core.R.drawable.record_btn_anc_selector);
             getLayoutVisibility();
-        } else if (visitStatus.equalsIgnoreCase(CoreConstants.VISIT_STATE.NOT_VISIT_THIS_MONTH)) {
+        } else if (visitStatus.equalsIgnoreCase(CoreConstants.VISIT_STATE.NOT_VISIT_THIS_MONTH) && !pmtctPendingRegistration) {
             textViewUndo.setVisibility(View.VISIBLE);
             textViewUndo.setText(getString(org.smartregister.chw.opensrp_chw_anc.R.string.undo));
             record_reccuringvisit_done_bar.setVisibility(View.GONE);
             openVisitMonthView();
-        }else if(visitStatus.equalsIgnoreCase("LESS_TWENTY_FOUR")){
+        }else if(visitStatus.equalsIgnoreCase("LESS_TWENTY_FOUR") && !pmtctPendingRegistration){
             layoutNotRecordView.setVisibility(View.VISIBLE);
             textViewNotVisitMonth.setText(getContext().getString(org.smartregister.chw.core.R.string.anc_visit_done, monthString));
             tvEdit.setVisibility(View.GONE);
             imageViewCross.setImageResource(org.smartregister.chw.core.R.drawable.activityrow_visited);
+        } else if(pmtctPendingRegistration){
+            layoutNotRecordView.setVisibility(View.VISIBLE);
+            textViewNotVisitMonth.setText(getContext().getString(R.string.pmtct_pending_registration));
+            tvEdit.setText(getContext().getString(R.string.register_button_text));
+            tvEdit.setVisibility(View.VISIBLE);
+            tvEdit.setOnClickListener(v -> startPmtctRegistration());
+            imageViewCross.setImageResource(org.smartregister.chw.core.R.drawable.activityrow_notvisited);
         }
     }
 
