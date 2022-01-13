@@ -947,6 +947,14 @@
           }
         },
         {
+          "column_name": "malaria_preventive_therapy",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "malaria_preventive_therapy"
+          }
+        },
+        {
           "column_name": "confirmed_visits",
           "type": "Event",
           "json_mapping": {

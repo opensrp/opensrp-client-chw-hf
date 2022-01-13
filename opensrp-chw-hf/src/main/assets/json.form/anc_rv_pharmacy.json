@@ -46,6 +46,8 @@
     },
     "encounter_location": ""
   },
+  "global": {
+  },
   "step1": {
     "title": "Medication and Supplements",
     "fields": [
@@ -79,41 +81,23 @@
         }
       },
       {
-        "type": "check_box",
         "key": "malaria_preventive_therapy",
-        "label": "Malaria Preventive Therapy",
+        "type": "native_radio",
         "openmrs_entity_id": "malaria_preventive_therapy",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "options": [
-          {
-            "text": "IPT1 (≥13 week)",
-            "key": "ipt1",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "ipt1"
-          },
-          {
-            "text": "IPT2 (IPT1 +4 weeks)",
-            "key": "ipt2",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "ipt2"
-          },
-          {
-            "text": "IPT3 (IPT2 +4 weeks)",
-            "key": "ipt3",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "ipt3"
-          },
-          {
-            "text": "IPT4+(IPT3+4 weeks but ≤36 Gestation Weeks)",
-            "key": "ipt4",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "ipt4"
-          }
-        ],
+        "label": "Malaria Preventive Therapy",
+        "options": [],
         "v_required": {
           "value": "true",
-          "err": "Please select at least one option"
+          "err": "Please select the medication for Malaria Preventive Therapy"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_pharmacy_relevance.yml"
+            }
+          }
         }
       },
       {
