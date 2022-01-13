@@ -10,6 +10,7 @@ import org.smartregister.chw.anc.domain.Visit;
 import org.smartregister.chw.anc.repository.VisitDetailsRepository;
 import org.smartregister.chw.anc.repository.VisitRepository;
 import org.smartregister.chw.anc.util.NCUtils;
+import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.repository.AllSharedPreferences;
 
@@ -61,17 +62,20 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
                     JSONArray obs = jsonObject.getJSONArray("obs");
 
                     boolean isTriageDone = computeCompletionStatus(obs, "rapid_examination");
-                    boolean isConsultationDone = computeCompletionStatus(obs, "examination_findings");
-                    boolean isLabTestsDone = computeCompletionStatus(obs, "hb_level_test");
-                    boolean isPharmacyDone = computeCompletionStatus(obs, "iron_folate_supplements");
                     boolean isPregnancyStatusDone = computeCompletionStatus(obs,"pregnancy_status");
 
-                    if(isTriageDone &&
-                            isConsultationDone &&
-                            isLabTestsDone &&
-                            isPharmacyDone &&
-                            isPregnancyStatusDone){
-                        ancFollowupVisitsCompleted.add(v);
+                    if(isTriageDone && isPregnancyStatusDone){
+                        if(checkIfStatusIsViable(obs)){
+                            boolean isConsultationDone = computeCompletionStatus(obs, "examination_findings");
+                            boolean isLabTestsDone = computeCompletionStatus(obs, "hb_level_test");
+                            boolean isPharmacyDone = computeCompletionStatus(obs, "iron_folate_supplements");
+                            if(isConsultationDone && isLabTestsDone && isPharmacyDone){
+                                ancFollowupVisitsCompleted.add(v);
+                            }
+                        }
+                        else{
+                            ancFollowupVisitsCompleted.add(v);
+                        }
                     }
                 } catch (Exception e){
                     Timber.e(e);
@@ -110,6 +114,20 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
             }
         }
         return false;
+    }
+
+    public static boolean checkIfStatusIsViable(JSONArray obs) throws  JSONException{
+       String pregnancyStatus = "";
+        int size = obs.length();
+        for(int i = 0; i< size; i++){
+            JSONObject checkObj = obs.getJSONObject(i);
+            if(checkObj.getString("fieldCode").equalsIgnoreCase("pregnancy_status")){
+                JSONArray values = checkObj.getJSONArray("values");
+                pregnancyStatus = values.getString(0);
+                break;
+            }
+        }
+       return pregnancyStatus.equalsIgnoreCase("viable");
     }
 
     public static boolean isNextVisitsCancelled(Visit visit){
