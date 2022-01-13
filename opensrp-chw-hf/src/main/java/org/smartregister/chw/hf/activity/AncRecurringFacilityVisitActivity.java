@@ -2,10 +2,12 @@ package org.smartregister.chw.hf.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 
 import org.smartregister.chw.anc.domain.MemberObject;
 import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
 import org.smartregister.chw.anc.presenter.BaseAncHomeVisitPresenter;
+import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.interactor.AncRecurringFacilityVisitInteractor;
 
 import java.text.MessageFormat;
@@ -39,8 +41,24 @@ public class AncRecurringFacilityVisitActivity extends AncFirstFacilityVisitActi
     @Override
     public void initializeActions(LinkedHashMap<String, BaseAncHomeVisitAction> map) {
         actionList.clear();
+
+        //Necessary evil to rearrange the actions according to a specific arrangement
+        if (map.containsKey(getString(R.string.anc_recuring_visit_triage))) {
+            BaseAncHomeVisitAction triageAncHomeVisitAction = map.get(getString(R.string.anc_recuring_visit_triage));
+            actionList.put(getString(R.string.anc_recuring_visit_triage), triageAncHomeVisitAction);
+        }
+        if (map.containsKey(getString(R.string.anc_recuring_visit_pregnancy_status))) {
+            BaseAncHomeVisitAction pregnancyStatusAncHomeVisitAction = map.get(getString(R.string.anc_recuring_visit_pregnancy_status));
+            actionList.put(getString(R.string.anc_recuring_visit_pregnancy_status), pregnancyStatusAncHomeVisitAction);
+        }
+        //====================End of Necessary evil ====================================
+
         for (Map.Entry<String, BaseAncHomeVisitAction> entry : map.entrySet()) {
-            actionList.put(entry.getKey(), entry.getValue());
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                actionList.putIfAbsent(entry.getKey(), entry.getValue());
+            } else {
+                actionList.put(entry.getKey(), entry.getValue());
+            }
         }
 
         if (mAdapter != null) {
