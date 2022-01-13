@@ -157,8 +157,8 @@
           "err": "Please enter partner's age"
         },
         "v_min": {
-          "value": "0",
-          "err": "Age must be equal or greater than 0"
+          "value": "11",
+          "err": "Age must be equal or greater than 11"
         },
         "v_max": {
           "value": "120",
@@ -402,16 +402,17 @@
         }
       },
       {
-        "type": "spinner",
         "key": "name_of_hf",
-        "hint": "Health Facility",
+        "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "name_of_hf",
-        "openmrs_entity_parent": "",
-        "values": [],
+        "openmrs_data_type": "text",
+        "type": "tree",
+        "hint": "Health Facility",
+        "tree": [],
         "v_required": {
           "value": true,
-          "err": "Please select a facility"
+          "err": "Please select the health facility"
         }
       },
       {
