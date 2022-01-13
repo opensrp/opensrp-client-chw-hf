@@ -457,7 +457,7 @@
         "hint": "Namba ya hati ya kusafiria",
         "v_regex": {
           "value": "^TAE-\\d{6}$",
-          "err": "Passport Number should be in the format (TAE-XXXXXX)"
+          "err": "Namba ya hati ya kusafiria inatakiwa kuwa (TAE-XXXXXX)"
         },
         "edit_type": "name",
         "relevance": {
