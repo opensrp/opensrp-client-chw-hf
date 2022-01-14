@@ -41,4 +41,5 @@
     <string name="anc_pregnacy_status_viable">Viable</string>
     <string name="anc_pregnacy_status_fetal_death">Intrauterine Fetal Death (Still Birth)</string>
     <string name="anc_pregnacy_status_spontaneous_abortion">Spontaneous Abortion</string>
+    <string name="any_changes_you_make">Any Changes You Make Will Be Discarded</string>
 </resources>
