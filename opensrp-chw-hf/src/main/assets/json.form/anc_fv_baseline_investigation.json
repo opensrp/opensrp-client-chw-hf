@@ -943,7 +943,6 @@
           }
         }
       },
-
       {
         "type": "native_radio",
         "key": "hepatitis",
@@ -991,7 +990,6 @@
           }
         }
       },
-
       {
         "key": "reason_for_not_conducting_hepatitis_test",
         "openmrs_entity_parent": "",
