@@ -6,10 +6,17 @@ condition: "(step2_age_calculated < 15)"
 actions:
   - "isRelevant = true"
 ---
-name: step2_relationship_above_15
+name: step2_relationship_above_15_male
 description: relationship_above_15 relevance
 priority: 1
-condition: "step2_age_calculated >= 15 "
+condition: "step2_age_calculated >= 15 && step2_sex == 'Male' "
+actions:
+  - "isRelevant = true"
+---
+name: step2_relationship_above_15_female
+description: relationship_above_15 relevance
+priority: 1
+condition: "step2_age_calculated >= 15 && step2_sex == 'Female' "
 actions:
   - "isRelevant = true"
 ---

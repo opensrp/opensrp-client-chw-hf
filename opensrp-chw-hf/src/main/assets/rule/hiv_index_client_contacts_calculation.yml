@@ -25,4 +25,4 @@ description: set relationship
 priority: 1
 condition: "true"
 actions:
-  - "calculation = step2_age_calculated >= 15 ? step2_relationship_above_15 : step2_relationship_under_15"
+  - "calculation = step2_age_calculated >= 15 ? (step2_sex == 'Female' ? relationship_above_15_female : relationship_above_15_male) : step2_relationship_under_15"

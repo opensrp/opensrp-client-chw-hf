@@ -415,7 +415,51 @@
         }
       },
       {
-        "key": "relationship_above_15",
+        "key": "relationship_above_15_male",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "relationship",
+        "type": "native_radio",
+        "label": "Relationship",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "sexual_partner",
+            "text": "Sexual partner",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "sexual_partner"
+          },
+          {
+            "key": "needle_sharing_partner",
+            "text": "Needle Sharing partner",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "needle_sharing_partner"
+          },
+          {
+            "key": "biological_father",
+            "text": "Biological Father",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "biological_father"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Relationship is required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "hiv_index_contacts_registration_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "relationship_above_15_female",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "relationship",
@@ -444,13 +488,6 @@
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "biological_mother"
-          },
-          {
-            "key": "biological_father",
-            "text": "Biological Father (If Mother is Deceased)",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "biological_father"
           }
         ],
         "v_required": {
