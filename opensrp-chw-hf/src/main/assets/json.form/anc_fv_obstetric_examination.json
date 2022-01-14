@@ -189,9 +189,9 @@
         }
       },
       {
+        "key": "systolic",
         "type": "edit_text",
         "hint": "Systolic (Blood Pressure)",
-        "key": "systolic",
         "openmrs_entity_id": "systolic",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -213,9 +213,9 @@
         }
       },
       {
+        "key": "diastolic",
         "type": "edit_text",
         "hint": "Diastolic (Blood Pressure)",
-        "key": "diastolic",
         "openmrs_entity_id": "diastolic",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",

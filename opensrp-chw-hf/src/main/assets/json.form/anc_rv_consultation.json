@@ -52,8 +52,8 @@
     "title": "Consultation (ANC assessment and Update Maternal Handbook)",
     "fields": [
       {
-        "type": "check_box",
         "key": "examination_findings",
+        "type": "check_box",
         "label": "Examination Findings on current visit",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "examination_findings",
@@ -101,6 +101,151 @@
         }
       },
       {
+        "key": "height",
+        "type": "edit_text",
+        "hint": "Height (CM)",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "height",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the height"
+        },
+        "v_min": {
+          "value": "60",
+          "err": "The height must be equal or greater than 60 (CM)"
+        },
+        "v_max": {
+          "value": "200",
+          "err": "The height must be equal or less than 200 (CM)"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter the height"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_consultation_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "height_calculated",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "height_calculated",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_consultation_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_short_stature",
+        "type": "toaster_notes",
+        "text": "The client has short stature",
+        "openmrs_entity_id": "prompt_for_short_stature",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:height_calculated": {
+            "type": "numeric",
+            "ex": "lessThan(.,\"145\")"
+          }
+        }
+      },
+      {
+        "key": "weight",
+        "type": "edit_text",
+        "hint": "Weight (KG)",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "weight",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the weight"
+        },
+        "v_min": {
+          "value": "20",
+          "err": "The weight must be equal or greater than 20 (KG)"
+        },
+        "v_max": {
+          "value": "300",
+          "err": "The weight must be equal or less than 300 (KG)"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter the weight"
+        }
+      },
+      {
+        "key": "bmi",
+        "type": "edit_text",
+        "hint": "Body Mass Index (BMI)",
+        "read_only": "true",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "bmi",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the height"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter the height"
+        },
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_consultation_calculation.yml"
+            }
+          }
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_obstetric_examination_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_underweight",
+        "type": "toaster_notes",
+        "text": "The client is underweight",
+        "openmrs_entity_id": "prompt_for_underweight",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:bmi": {
+            "type": "numeric",
+            "ex": "lessThan(.,\"18.5\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_overweight",
+        "type": "toaster_notes",
+        "text": "The client overweight and should manage her weight",
+        "openmrs_entity_id": "prompt_for_overweight",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:bmi": {
+            "type": "numeric",
+            "ex": "greaterThanEqualTo(.,\"29\")"
+          }
+        }
+      },
+      {
         "key": "fundal_height",
         "type": "edit_text",
         "openmrs_entity_id": "fundal_height",
@@ -129,6 +274,52 @@
         "v_required": {
           "value": "true",
           "err": "Please enter the fundal height"
+        }
+      },
+      {
+        "type": "edit_text",
+        "key": "fetal_heart_rate",
+        "hint": "Count Fetal Heart Rate(bpm)",
+        "openmrs_entity_id": "fetal_heart_rate",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the fetal heart rate"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Fetal heart rate must be equal or greater than 0"
+        },
+        "v_max": {
+          "value": "300",
+          "err": "Fetal heart rate must be equal or less than 300"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the fetal heart rate"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_obstetric_examination_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_fetal_distress",
+        "type": "toaster_notes",
+        "text": "The Fetal is in Distress",
+        "openmrs_entity_id": "prompt_for_fetal_distress",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:fetal_heart_rate": {
+            "type": "numeric",
+            "ex": "greaterThan(.,\"120\")"
+          }
         }
       },
       {
@@ -247,64 +438,9 @@
         }
       },
       {
-        "type": "edit_text",
-        "hint": "Weight (KG)",
-        "key": "weight",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "weight",
-        "openmrs_entity_parent": "",
-        "v_numeric": {
-          "value": "true",
-          "err": "Please enter the weight"
-        },
-        "v_min": {
-          "value": "20",
-          "err": "The weight must be equal or greater than 20 (KG)"
-        },
-        "v_max": {
-          "value": "300",
-          "err": "The weight must be equal or less than 300 (KG)"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Please enter the weight"
-        }
-      },
-      {
-        "type": "edit_text",
-        "hint": "Height (CM)",
-        "key": "height",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "height",
-        "openmrs_entity_parent": "",
-        "v_numeric": {
-          "value": "true",
-          "err": "Please enter the height"
-        },
-        "v_min": {
-          "value": "60",
-          "err": "The height must be equal or greater than 60 (CM)"
-        },
-        "v_max": {
-          "value": "200",
-          "err": "The height must be equal or less than 200 (CM)"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Please enter the height"
-        },
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "anc_rv_consultation_relevance.yml"
-            }
-          }
-        }
-      },
-      {
+        "key": "systolic",
         "type": "edit_text",
         "hint": "Systolic (Blood Pressure)",
-        "key": "systolic",
         "openmrs_entity_id": "systolic",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -326,9 +462,9 @@
         }
       },
       {
+        "key": "diastolic",
         "type": "edit_text",
         "hint": "Diastolic (Blood Pressure)",
-        "key": "diastolic",
         "openmrs_entity_id": "diastolic",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -347,6 +483,38 @@
         "v_required": {
           "value": true,
           "err": "Please enter the diastolic value"
+        }
+      },
+      {
+        "key": "prompt_for_management_of_hypertension",
+        "type": "toaster_notes",
+        "text": "The client has Hypertension",
+        "openmrs_entity_id": "prompt_for_management_of_hypertension",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_consultation_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_management_of_hypotension",
+        "type": "toaster_notes",
+        "text": "The client has Hypotension",
+        "openmrs_entity_id": "prompt_for_management_of_hypotension",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_consultation_relevance.yml"
+            }
+          }
         }
       },
       {

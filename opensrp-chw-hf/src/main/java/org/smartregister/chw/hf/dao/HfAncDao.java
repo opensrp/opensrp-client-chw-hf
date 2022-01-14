@@ -98,4 +98,20 @@ public class HfAncDao extends AbstractDao {
         }
         return "null";
     }
+    public static String getClientHeight(String baseEntityId){
+        DataMap<String> dataMap =  cursor -> getCursorValue(cursor,"height");
+
+        String sql = String.format(
+                "SELECT height FROM %s WHERE base_entity_id = '%s' " +
+                        "AND is_closed = 0",
+                "ec_anc_register",
+                baseEntityId
+        );
+
+        List<String> res = readData(sql,dataMap);
+        if(res.get(0) != null){
+            return res.get(0);
+        }
+        return "null";
+    }
 }

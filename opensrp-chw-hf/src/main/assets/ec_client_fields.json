@@ -931,6 +931,14 @@
           }
         },
         {
+          "column_name": "height",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "height"
+          }
+        },
+        {
           "column_name": "date_anc_hiv_test",
           "type": "Event",
           "json_mapping": {
