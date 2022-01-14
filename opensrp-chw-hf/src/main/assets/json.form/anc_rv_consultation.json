@@ -87,10 +87,10 @@
         }
       },
       {
-        "key": "gest_age_followup",
+        "key": "gest_age",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "gest_age_followup",
+        "openmrs_entity_id": "gest_age",
         "type": "hidden",
         "calculation": {
           "rules-engine": {
@@ -101,9 +101,9 @@
         }
       },
       {
-        "key": "fundal_height_followup",
+        "key": "fundal_height",
         "type": "edit_text",
-        "openmrs_entity_id": "fundal_height_followup",
+        "openmrs_entity_id": "fundal_height",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "hint": "Fundal Height (CM)",
@@ -132,9 +132,9 @@
         }
       },
       {
-        "key": "lie_followup",
+        "key": "lie",
         "type": "spinner",
-        "openmrs_entity_id": "lie_followup",
+        "openmrs_entity_id": "lie",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "hint": "Lie",
@@ -169,10 +169,10 @@
         }
       },
       {
-        "key": "lie_other_followup",
+        "key": "lie_other",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "lie_other_followup",
+        "openmrs_entity_id": "lie_other",
         "type": "edit_text",
         "edit_type": "name",
         "hint": "Lie Other",
@@ -181,16 +181,16 @@
           "err": "Please specify the lie"
         },
         "relevance": {
-          "step1:lie_followup": {
+          "step1:lie": {
             "type": "string",
             "ex": "equalTo(., \"other\")"
           }
         }
       },
       {
-        "key": "presentation_followup",
+        "key": "presentation",
         "type": "spinner",
-        "openmrs_entity_id": "presentation_followup",
+        "openmrs_entity_id": "presentation",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "hint": "Presentation",
@@ -228,10 +228,10 @@
         }
       },
       {
-        "key": "presentation_other_followup",
+        "key": "presentation_other",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "presentation_other_followup",
+        "openmrs_entity_id": "presentation_other",
         "type": "edit_text",
         "edit_type": "name",
         "hint": "Presentation Other",
@@ -240,7 +240,7 @@
           "err": "Please specify the presentation"
         },
         "relevance": {
-          "step1:presentation_followup": {
+          "step1:presentation": {
             "type": "string",
             "ex": "equalTo(., \"other\")"
           }
@@ -292,6 +292,13 @@
         "v_required": {
           "value": true,
           "err": "Please enter the height"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_consultation_relevance.yml"
+            }
+          }
         }
       },
       {
