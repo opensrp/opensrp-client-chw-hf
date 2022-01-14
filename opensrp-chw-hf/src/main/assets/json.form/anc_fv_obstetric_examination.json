@@ -65,9 +65,9 @@
         }
       },
       {
+        "key": "weight",
         "type": "edit_text",
         "hint": "Weight (KG)",
-        "key": "weight",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "weight",
         "openmrs_entity_parent": "",
@@ -89,9 +89,9 @@
         }
       },
       {
+        "key": "height",
         "type": "edit_text",
         "hint": "Height (CM)",
-        "key": "height",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "height",
         "openmrs_entity_parent": "",
@@ -128,9 +128,9 @@
         }
       },
       {
+        "key": "bmi",
         "type": "edit_text",
         "hint": "Body Mass Index (BMI)",
-        "key": "bmi",
         "read_only": "true",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "bmi",
@@ -269,9 +269,9 @@
         }
       },
       {
+        "key": "pulse_rate",
         "type": "edit_text",
         "hint": "Pulse Rate (Beats per minute)",
-        "key": "pulse_rate",
         "openmrs_entity_id": "pulse_rate",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -293,9 +293,39 @@
         }
       },
       {
+        "key": "prompt_for_Bradycardia",
+        "type": "toaster_notes",
+        "text": "The Client has Bradycardia",
+        "openmrs_entity_id": "prompt_for_Bradycardia",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:pulse_rate": {
+            "type": "numeric",
+            "ex": "lessThan(.,\"70\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_Tachycardia",
+        "type": "toaster_notes",
+        "text": "The Client has Tachycardia",
+        "openmrs_entity_id": "prompt_for_Tachycardia",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:pulse_rate": {
+            "type": "numeric",
+            "ex": "greaterThan(.,\"140\")"
+          }
+        }
+      },
+      {
+        "key": "temperature",
         "type": "edit_text",
         "hint": "Temperature (C)",
-        "key": "temperature",
         "openmrs_entity_id": "temperature",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -332,8 +362,8 @@
         }
       },
       {
-        "type": "native_radio",
         "key": "abdominal_scars",
+        "type": "native_radio",
         "label": "Are there any abdominal scars",
         "openmrs_entity_id": "abdominal_scars",
         "openmrs_entity": "concept",
@@ -358,8 +388,8 @@
         }
       },
       {
-        "type": "native_radio",
         "key": "abdominal_movement_with_respiration",
+        "type": "native_radio",
         "label": "Does the Abdomen Move with respiration",
         "openmrs_entity_id": "abdominal_movement_with_respiration",
         "openmrs_entity": "concept",
@@ -384,8 +414,8 @@
         }
       },
       {
-        "type": "spinner",
         "key": "abdominal_contour",
+        "type": "spinner",
         "hint": "Abdominal Contour",
         "label_info_title": "Abdominal Contour",
         "label_info_text": "Observe the shape of the abdomen",
@@ -556,8 +586,8 @@
         }
       },
       {
-        "type": "edit_text",
         "key": "fetal_heart_rate",
+        "type": "edit_text",
         "hint": "Count Fetal Heart Rate(bpm)",
         "openmrs_entity_id": "fetal_heart_rate",
         "openmrs_entity": "concept",
@@ -602,8 +632,8 @@
         }
       },
       {
-        "type": "native_radio",
         "key": "abnormal_vaginal_discharge",
+        "type": "native_radio",
         "label": "Abnormal Vaginal Discharge",
         "openmrs_entity_id": "abnormal_vaginal_discharge",
         "openmrs_entity": "concept",
@@ -628,8 +658,8 @@
         }
       },
       {
-        "type": "native_radio",
         "key": "vaginal_sores",
+        "type": "native_radio",
         "label": "Vaginal Sores",
         "openmrs_entity_id": "vaginal_sores",
         "openmrs_entity": "concept",
@@ -654,8 +684,8 @@
         }
       },
       {
-        "type": "native_radio",
         "key": "vaginal_swelling",
+        "type": "native_radio",
         "label": "Vaginal Swelling",
         "openmrs_entity_id": "vaginal_swelling",
         "openmrs_entity": "concept",

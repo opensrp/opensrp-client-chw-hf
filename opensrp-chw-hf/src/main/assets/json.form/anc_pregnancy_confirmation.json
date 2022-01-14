@@ -322,8 +322,8 @@
           "err": "Has to be a number"
         },
         "v_min": {
-          "value": "1",
-          "err": "Fundal height must be equal or more than 1"
+          "value": "12",
+          "err": "Fundal height must be equal or more than 12 CM"
         },
         "v_max": {
           "value": "36",

@@ -542,6 +542,36 @@
         }
       },
       {
+        "key": "prompt_for_Bradycardia",
+        "type": "toaster_notes",
+        "text": "The Client has Bradycardia",
+        "openmrs_entity_id": "prompt_for_Bradycardia",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:pulse_rate": {
+            "type": "numeric",
+            "ex": "lessThan(.,\"70\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_Tachycardia",
+        "type": "toaster_notes",
+        "text": "The Client has Tachycardia",
+        "openmrs_entity_id": "prompt_for_Tachycardia",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:pulse_rate": {
+            "type": "numeric",
+            "ex": "greaterThan(.,\"140\")"
+          }
+        }
+      },
+      {
         "type": "edit_text",
         "hint": "Temperature (C)",
         "key": "temperature",
