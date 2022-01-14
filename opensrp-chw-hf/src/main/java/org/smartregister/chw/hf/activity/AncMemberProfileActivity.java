@@ -387,7 +387,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         if (visitStatus.equalsIgnoreCase(CoreConstants.VISIT_STATE.OVERDUE) && !pmtctPendingRegistration) {
             textview_record_anc_visit.setBackgroundResource(org.smartregister.chw.core.R.drawable.record_btn_selector_overdue);
             getLayoutVisibility();
-        } else if (visitStatus.equalsIgnoreCase(CoreConstants.VISIT_STATE.DUE) || visitStatus.equalsIgnoreCase("VISIT_THIS_MONTH") && !pmtctPendingRegistration) {
+        } else if ((visitStatus.equalsIgnoreCase(CoreConstants.VISIT_STATE.DUE) || visitStatus.equalsIgnoreCase("VISIT_THIS_MONTH")) && !pmtctPendingRegistration) {
             textview_record_anc_visit.setBackgroundResource(org.smartregister.chw.core.R.drawable.record_btn_anc_selector);
             getLayoutVisibility();
         } else if (visitStatus.equalsIgnoreCase(CoreConstants.VISIT_STATE.NOT_VISIT_THIS_MONTH) && !pmtctPendingRegistration) {
