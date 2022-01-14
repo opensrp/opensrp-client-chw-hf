@@ -153,7 +153,7 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         protected Void doInBackground(Void... voids) {
             Date pmtctRegisterDate = PmtctDao.getPmtctRegisterDate(memberObject.getBaseEntityId());
             Date followUpVisitDate = PmtctDao.getPmtctFollowUpVisitDate(memberObject.getBaseEntityId());
-            pmtctFollowUpRule = HomeVisitUtil.getPmtctVisitStatus(pmtctRegisterDate, followUpVisitDate);
+            pmtctFollowUpRule = HomeVisitUtil.getPmtctVisitStatus(pmtctRegisterDate, followUpVisitDate,baseEntityId);
             return null;
         }
 

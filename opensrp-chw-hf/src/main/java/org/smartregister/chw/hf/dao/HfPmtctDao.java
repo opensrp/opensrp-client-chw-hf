@@ -1,12 +1,12 @@
 package org.smartregister.chw.hf.dao;
 
-import org.smartregister.chw.pmtct.dao.PmtctDao;
+import org.smartregister.chw.core.dao.CorePmtctDao;
 
 import java.util.List;
 
-import timber.log.Timber;
 
-public class HfPmtctDao extends PmtctDao {
+
+public class HfPmtctDao extends CorePmtctDao {
     public static boolean isEligibleForEac(String baseEntityID) {
         String sql = "SELECT hvl_suppression FROM ec_pmtct_followup p " +
                 "WHERE p.base_entity_id = '" + baseEntityID + "'";
