@@ -31,16 +31,12 @@ import org.smartregister.family.adapter.ViewPagerAdapter;
 import org.smartregister.family.fragment.BaseFamilyOtherMemberProfileFragment;
 import org.smartregister.family.model.BaseFamilyOtherMemberProfileActivityModel;
 import org.smartregister.family.util.DBConstants;
-import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.view.contract.BaseProfileContract;
 
 import androidx.viewpager.widget.ViewPager;
 import timber.log.Timber;
 
-import static com.vijay.jsonwizard.constants.JsonFormConstants.COUNT;
-import static com.vijay.jsonwizard.constants.JsonFormConstants.STEP1;
 import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
-import static org.smartregister.family.util.JsonFormUtils.STEP2;
 
 public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfileActivity {
 
@@ -59,7 +55,7 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
 
         }
         if (isOfReproductiveAge(commonPersonObject, gender) && gender.equalsIgnoreCase("female") && !AncDao.isANCMember(baseEntityId)) {
-                menu.findItem(R.id.action_pregnancy_confirmation).setVisible(true);
+            menu.findItem(R.id.action_pregnancy_confirmation).setVisible(true);
         }
         menu.findItem(R.id.action_anc_registration).setVisible(false);
         menu.findItem(R.id.action_sick_child_follow_up).setVisible(false);
@@ -148,20 +144,10 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
         NativeFormsDataBinder binder = new NativeFormsDataBinder(getContext(), commonPersonObject.getCaseId());
         binder.setDataLoader(new FamilyMemberDataLoader(familyName, isPrimaryCareGiver, titleString,
                 Utils.metadata().familyMemberRegister.updateEventType, uniqueID));
-        JSONObject jsonObject = binder.getPrePopulatedForm(CoreConstants.JSON_FORM.getAllClientRegistrationForm());
+        JSONObject jsonObject = binder.getPrePopulatedForm(CoreConstants.JSON_FORM.getAllClientUpdateRegistrationInfoForm());
 
         try {
-            //Remove the first step and use the updated one
-            if (jsonObject != null && jsonObject.has(STEP1)) {
-
-                jsonObject.put(JsonFormUtils.ENTITY_ID, baseEntityId);
-                jsonObject.put(COUNT, "1");
-                jsonObject.remove(STEP1);
-                jsonObject.put(STEP1, jsonObject.getJSONObject(STEP2));
-                jsonObject.remove(STEP2);
-                startFormActivity(jsonObject);
-            }
-
+            startFormActivity(jsonObject);
         } catch (Exception e) {
             Timber.e(e);
         }
