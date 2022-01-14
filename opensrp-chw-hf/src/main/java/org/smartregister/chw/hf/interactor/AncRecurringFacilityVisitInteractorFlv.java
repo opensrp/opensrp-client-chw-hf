@@ -175,6 +175,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                 try {
                     consultationForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.CONSULTATION);
                     consultationForm.getJSONObject("global").put("last_menstrual_period", memberObject.getLastMenstrualPeriod());
+                    consultationForm.getJSONObject("global").put("client_age", memberObject.getAge());
                     if (details != null && !details.isEmpty()) {
                         JsonFormUtils.populateForm(consultationForm, details);
                     }
