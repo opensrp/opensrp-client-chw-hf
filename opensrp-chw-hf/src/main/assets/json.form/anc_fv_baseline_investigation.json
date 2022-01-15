@@ -435,7 +435,7 @@
       {
         "type": "native_radio",
         "key": "blood_for_glucose_fv_test",
-        "label": "Blood For GlucoseTest",
+        "label": "Blood For Glucose Test",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "blood_for_glucose_fv_test",
         "openmrs_entity_parent": "",
@@ -515,36 +515,6 @@
         "toaster_type": "problem",
         "relevance": {
           "step1:blood_for_glucose": {
-            "type": "numeric",
-            "ex": "lessThan(.,\"3.5\")"
-          }
-        }
-      },
-      {
-        "key": "prompt_for_gestational_diabetes_mellitus",
-        "type": "toaster_notes",
-        "text": "The client has Gestational Diabetes Mellitus",
-        "openmrs_entity_id": "prompt_for_gestational_diabetes_mellitus",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "toaster_type": "problem",
-        "relevance": {
-          "step1:blood_for_glucose_value": {
-            "type": "numeric",
-            "ex": "greaterThan(.,\"11\")"
-          }
-        }
-      },
-      {
-        "key": "prompt_for_hypoglycaemia",
-        "type": "toaster_notes",
-        "text": "The client has hypoglycaemia",
-        "openmrs_entity_id": "prompt_for_hypoglycaemia",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "toaster_type": "problem",
-        "relevance": {
-          "step1:blood_for_glucose_value": {
             "type": "numeric",
             "ex": "lessThan(.,\"3.5\")"
           }
