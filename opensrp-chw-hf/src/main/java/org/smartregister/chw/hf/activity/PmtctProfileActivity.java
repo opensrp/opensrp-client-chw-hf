@@ -293,6 +293,8 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
                 case org.smartregister.chw.hf.utils.Constants.Visits.PMTCT_VISIT:
                     PmtctFollowupVisitActivity.startPmtctFollowUpActivity(PmtctProfileActivity.this, baseEntityId, true);
                     break;
+                default:
+                    break;
             }
         });
     }

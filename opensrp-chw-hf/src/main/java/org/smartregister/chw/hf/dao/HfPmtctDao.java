@@ -5,7 +5,6 @@ import org.smartregister.chw.core.dao.CorePmtctDao;
 import java.util.List;
 
 
-
 public class HfPmtctDao extends CorePmtctDao {
     public static boolean isEligibleForEac(String baseEntityID) {
         String sql = "SELECT hvl_suppression FROM ec_pmtct_followup p " +

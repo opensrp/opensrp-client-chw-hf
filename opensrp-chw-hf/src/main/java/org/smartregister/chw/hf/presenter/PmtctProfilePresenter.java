@@ -3,19 +3,10 @@ package org.smartregister.chw.hf.presenter;
 import org.apache.commons.lang3.tuple.Triple;
 import org.smartregister.chw.core.contract.CorePmtctProfileContract;
 import org.smartregister.chw.core.presenter.CorePmtctMemberProfilePresenter;
-import org.smartregister.chw.hf.contract.PmtctProfileContract;
-import org.smartregister.chw.hf.model.HivTbReferralTasksAndFollowupFeedbackModel;
 import org.smartregister.chw.pmtct.domain.MemberObject;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.family.contract.FamilyProfileContract;
 import org.smartregister.family.domain.FamilyEventClient;
-import org.smartregister.opd.contract.OpdRegisterActivityContract;
-import org.smartregister.opd.pojo.OpdDiagnosisAndTreatmentForm;
-
-import java.util.List;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 public class PmtctProfilePresenter extends CorePmtctMemberProfilePresenter implements FamilyProfileContract.InteractorCallBack {
     public PmtctProfilePresenter(CorePmtctProfileContract.View view, CorePmtctProfileContract.Interactor interactor, MemberObject memberObject) {

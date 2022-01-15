@@ -4,8 +4,6 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.view.View;
 
-import androidx.annotation.NonNull;
-
 import org.apache.commons.text.WordUtils;
 import org.joda.time.DateTime;
 import org.joda.time.Period;
@@ -20,9 +18,10 @@ import org.smartregister.opd.holders.OpdRegisterViewHolder;
 import org.smartregister.opd.provider.OpdRegisterProvider;
 import org.smartregister.opd.utils.ConfigurationInstancesHelper;
 import org.smartregister.opd.utils.OpdDbConstants;
-import org.smartregister.opd.utils.OpdUtils;
 
 import java.util.Map;
+
+import androidx.annotation.NonNull;
 
 public class HfOpdRegisterProvider extends OpdRegisterProvider {
     private final Context context;
@@ -57,7 +56,7 @@ public class HfOpdRegisterProvider extends OpdRegisterProvider {
         String lastName = opdRegisterProviderMetadata.getClientLastName(patientColumnMaps);
         String fullName = org.smartregister.util.Utils.getName(firstName, middleName + " " + lastName);
 
-        String age = String.valueOf(new Period(new DateTime(opdRegisterProviderMetadata.getDob(patientColumnMaps)),new DateTime()).getYears());
+        String age = String.valueOf(new Period(new DateTime(opdRegisterProviderMetadata.getDob(patientColumnMaps)), new DateTime()).getYears());
 
         fillValue(viewHolder.textViewChildName, WordUtils.capitalize(fullName) + ", " +
                 WordUtils.capitalize(age));
