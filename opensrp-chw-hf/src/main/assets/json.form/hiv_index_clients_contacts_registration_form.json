@@ -61,7 +61,7 @@
         "key": "fam_name",
         "openmrs_entity_parent": "",
         "openmrs_entity": "person",
-        "openmrs_entity_id": "first_name",
+        "openmrs_entity_id": "fam_name",
         "type": "edit_text",
         "hint": "Surname",
         "edit_type": "name",
@@ -72,6 +72,40 @@
         "v_regex": {
           "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
           "err": "Please enter surname"
+        }
+      },
+      {
+        "key": "client_first_name",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "person",
+        "openmrs_entity_id": "first_name",
+        "type": "edit_text",
+        "hint": "First name",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the first name"
+        },
+        "v_regex": {
+          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
+          "err": "Please enter a valid name"
+        }
+      },
+      {
+        "key": "client_middle_name",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "person",
+        "openmrs_entity_id": "middle_name",
+        "type": "edit_text",
+        "hint": "Middle name",
+        "edit_type": "name",
+        "v_regex": {
+          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
+          "err": "Please enter a valid name"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the middle name"
         }
       },
       {
@@ -165,7 +199,7 @@
         "key": "surname",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "",
+        "openmrs_entity_id": "last_name",
         "type": "edit_text",
         "hint": "Surname",
         "edit_type": "name",
@@ -201,6 +235,14 @@
         "v_regex": {
           "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-]*",
           "err": "Please enter a valid name"
+        },
+        "read_only": true,
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "hiv_index_client_contacts_calculation.yml"
+            }
+          }
         }
       },
       {
@@ -218,6 +260,14 @@
         "v_required": {
           "value": "true",
           "err": "Please enter the middle name"
+        },
+        "read_only": true,
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "hiv_index_client_contacts_calculation.yml"
+            }
+          }
         }
       },
       {
