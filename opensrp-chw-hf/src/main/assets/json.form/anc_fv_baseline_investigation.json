@@ -433,8 +433,8 @@
         }
       },
       {
-        "type": "native_radio",
         "key": "blood_for_glucose_fv_test",
+        "type": "native_radio",
         "label": "Blood For Glucose Test",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "blood_for_glucose_fv_test",
@@ -461,6 +461,40 @@
         }
       },
       {
+        "key": "type_of_blood_for_glucose_test",
+        "type": "native_radio",
+        "label": "Type Blood For Glucose Test Conducted",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "type_of_blood_for_glucose_test",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "rgb",
+            "text": " Random Blood Glucose Test (RGB)",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "rgb",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "btt",
+            "text": "Glucose Tolerance test (GTT)",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "btt"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please answer this question"
+        },
+        "relevance": {
+          "step1:blood_for_glucose_fv_test": {
+            "type": "string",
+            "ex": "equalTo(., \"blood_glucose_fv_conducted\")"
+          }
+        }
+      },
+      {
         "type": "edit_text",
         "key": "blood_for_glucose",
         "hint": "Blood For Glucose (mmol/L)",
@@ -484,9 +518,10 @@
           "err": "Please enter the blood for glucose (mmol/L)"
         },
         "relevance": {
-          "step1:blood_for_glucose_fv_test": {
-            "type": "string",
-            "ex": "equalTo(., \"blood_glucose_fv_conducted\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_baseline_investigation_relevance.yml"
+            }
           }
         }
       },
@@ -499,9 +534,10 @@
         "openmrs_entity_parent": "",
         "toaster_type": "problem",
         "relevance": {
-          "step1:blood_for_glucose": {
-            "type": "numeric",
-            "ex": "greaterThan(.,\"11\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_baseline_investigation_relevance.yml"
+            }
           }
         }
       },
@@ -514,9 +550,10 @@
         "openmrs_entity_parent": "",
         "toaster_type": "problem",
         "relevance": {
-          "step1:blood_for_glucose": {
-            "type": "numeric",
-            "ex": "lessThan(.,\"3.5\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_baseline_investigation_relevance.yml"
+            }
           }
         }
       },
@@ -608,6 +645,21 @@
         "v_required": {
           "value": "true",
           "err": "Please answer this question"
+        }
+      },
+      {
+        "key": "prompt_for_mRDT",
+        "type": "toaster_notes",
+        "text": "Please provide appropriate anti-malaria medicine",
+        "openmrs_entity_id": "prompt_for_mRDT",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:mRDT_for_malaria": {
+            "type": "string",
+            "ex": "equalTo(., \"positive\")"
+          }
         }
       },
       {
