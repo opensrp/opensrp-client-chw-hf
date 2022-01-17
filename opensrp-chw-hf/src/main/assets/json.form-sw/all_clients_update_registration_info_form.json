@@ -600,8 +600,8 @@
           "No"
         ],
         "openmrs_choice_ids": {
-          "Yes": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-          "No": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          "Yes": "Yes",
+          "No": "No"
         },
         "v_required": {
           "value": "true",
@@ -631,8 +631,8 @@
           "No"
         ],
         "openmrs_choice_ids": {
-          "Yes": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-          "No": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          "Yes": "Yes",
+          "No": "No"
         },
         "v_required": {
           "value": "true",
@@ -641,9 +641,9 @@
       },
       {
         "key": "type_of_disability",
-        "openmrs_entity_parent": "162558AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_id": "type_of_disability",
         "type": "edit_text",
         "hint": "Aina ya ulemavu",
         "v_required": {
@@ -746,91 +746,91 @@
             "text": "Mkulima",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "1538AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "openmrs_entity_id": "chk_farmer"
           },
           {
             "key": "chk_cs",
             "text": "Mtumishi wa serikali",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "162944AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "openmrs_entity_id": "chk_cs"
           },
           {
             "key": "chk_nurse",
             "text": "Muuguzi",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "1577AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "openmrs_entity_id": "chk_nurse"
           },
           {
             "key": "chk_teacher",
             "text": "Mwalimu",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "162946AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "openmrs_entity_id": "chk_teacher"
           },
           {
             "key": "chk_th",
             "text": "Waganga wa tiba asilia (THs)",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "1821AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "openmrs_entity_id": "chk_th"
           },
           {
             "key": "chk_chw",
             "text": "Wahudumu wa afya ngazi ya jamii–WAJA",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "1555AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "openmrs_entity_id": "chk_chw"
           },
           {
             "key": "chk_tba",
             "text": "Wakunga wa jadi (TBAs)",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "1575AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "openmrs_entity_id": "chk_tba"
           },
           {
             "key": "chk_chmis",
             "text": "Wakusanyaji takwimu za afya katika jamii (cHIMS)",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "163334AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "openmrs_entity_id": "chk_chmis"
           },
           {
             "key": "chk_cbd",
             "text": "Wasambazaji wa dawa na vifaa vya uzazi wa mpango katika jamii (CBD)",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "1744AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "openmrs_entity_id": "chk_cbd"
           },
           {
             "key": "chk_hbc",
             "text": "Watoa huduma kwa wagonjwa majumbani (HBC)",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "161359AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "openmrs_entity_id": "chk_hbc"
           },
           {
             "key": "chk_cimmci",
             "text": "Watoa huduma za udhibiti wa magonjwa ya watoto kwa uwiano katika jamii (cIMCI)",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "163096AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "openmrs_entity_id": "chk_cimmci"
           },
           {
             "key": "chk_other",
             "text": "Nyingine",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "openmrs_entity_id": "chk_other"
           },
           {
             "key": "chk_none",
             "text": "Hakuna",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "164369AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "openmrs_entity_id": "chk_none"
           }
         ],
         "v_required": {
