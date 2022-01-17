@@ -173,7 +173,7 @@
       },
       {
         "type": "native_radio",
-        "openmrs_entity_id": "",
+        "openmrs_entity_id": "upt",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
         "label": "Please select UPT Results",
@@ -204,7 +204,7 @@
       },
       {
         "type": "native_radio",
-        "openmrs_entity_id": "",
+        "openmrs_entity_id": "uss",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
         "label": "Please select USS results",
@@ -242,7 +242,7 @@
         "key": "last_menstrual_period",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "1427AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_id": "last_menstrual_period",
         "type": "date_picker",
         "hint": "Last Normal Menstrual Period (LNMP)",
         "label_info_title": "LNMP",
@@ -334,7 +334,7 @@
         "key": "estimated_last_menstrual_period",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "1427AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_id": "estimated_last_menstrual_period",
         "type": "edit_text",
         "read_only": true,
         "hint": "Estimated Last Normal Menstrual Period (LNMP)",
@@ -380,7 +380,7 @@
         "key": "edd",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "5596AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_id": "edd",
         "type": "edit_text",
         "hint": "Expected Date of Delivery (EDD)",
         "read_only": true,
@@ -403,7 +403,7 @@
         "key": "gest_age",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "1438AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_id": "gest_age",
         "type": "hidden",
         "calculation": {
           "rules-engine": {
