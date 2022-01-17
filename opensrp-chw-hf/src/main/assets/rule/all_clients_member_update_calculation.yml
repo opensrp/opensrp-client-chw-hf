@@ -13,7 +13,7 @@ condition: "step1_sex == 'Female' && (step1_age_calculated >= 10 && step1_age_ca
 actions:
   - "calculation = 1"
 ---
-name: step2_reasons_for_registration
+name: step1_reasons_for_registration
 description: set reasons for registration
 priority: 1
 condition: "true"
