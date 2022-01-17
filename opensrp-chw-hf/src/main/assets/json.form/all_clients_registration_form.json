@@ -437,7 +437,7 @@
         "key": "phone_number",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "159635AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_id": "phone_number",
         "type": "edit_text",
         "hint": "Client phone number",
         "v_numeric": {
@@ -733,7 +733,7 @@
         "key": "preg_1yr",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "160692AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_id": "preg_1yr",
         "type": "spinner",
         "hint": "Has the woman delivered in the last 1 year?",
         "values": [
@@ -764,7 +764,7 @@
         "key": "disabilities",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "162558AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_id": "disabilities",
         "type": "spinner",
         "hint": "Physical disabilities",
         "values": [
@@ -786,7 +786,7 @@
       },
       {
         "key": "type_of_disability",
-        "openmrs_entity_parent": "162558AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "type_of_disability",
         "type": "check_box",
@@ -908,9 +908,9 @@
       },
       {
         "key": "other_phone_number",
-        "openmrs_entity_parent": "159635AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_id": "other_phone_number",
         "type": "edit_text",
         "hint": "Primary caregiver phone number",
         "v_numeric": {
@@ -937,7 +937,7 @@
         "key": "service_provider",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "1542AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_id": "service_provider",
         "type": "check_box",
         "label": "Occupation of the Client",
         "label_text_style": "normal",
