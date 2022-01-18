@@ -564,7 +564,7 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "161543AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "early_bf_1hr"
           }
         },
         {
@@ -572,7 +572,7 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "162558AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "disabilities"
           }
         },
         {
