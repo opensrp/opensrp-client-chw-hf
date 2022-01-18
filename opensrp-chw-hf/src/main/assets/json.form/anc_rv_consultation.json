@@ -90,7 +90,7 @@
         "key": "gest_age",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "gest_age",
+        "openmrs_entity_id": "gest_age_consultation",
         "type": "hidden",
         "calculation": {
           "rules-engine": {

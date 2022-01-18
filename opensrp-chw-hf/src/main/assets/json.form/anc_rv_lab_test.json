@@ -53,21 +53,21 @@
       {
         "type": "native_radio",
         "key": "hb_level_test",
-        "label": "HB Level Test",
+        "label": "Kipimo cha wingi wa damu",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "hb_level_test",
         "openmrs_entity_parent": "",
         "options": [
           {
             "key": "hb_level_conducted",
-            "text": "Test conducted",
+            "text": "Kipimo kilifanyika",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "hb_level_conducted",
             "openmrs_entity_parent": ""
           },
           {
             "key": "hb_level_not_conducted",
-            "text": "Test not conducted",
+            "text": "Kipimo hakikufanyika",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "hb_level_not_conducted"
@@ -382,10 +382,10 @@
       },
       {
         "type": "native_radio",
-        "key": "glucosuria",
+        "key": "glucose_in_urine",
         "label": "Glucose In Urine",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "glucosuria",
+        "openmrs_entity_id": "glucose_in_urine",
         "openmrs_entity_parent": "",
         "options": [
           {
@@ -416,10 +416,10 @@
         }
       },
       {
-        "key": "reason_for_not_conducting_glucose_test",
+        "key": "reason_for_not_conducting_glucose_in_urine_test",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "reason_for_not_conducting_glucose_test",
+        "openmrs_entity_id": "reason_for_not_conducting_glucose_in_urine_test",
         "type": "spinner",
         "hint": "Reason as to why the Glucose in Urine test was not conducted",
         "values": [
@@ -455,10 +455,10 @@
         }
       },
       {
-        "key": "other_reason_glucose_test_not_conducted",
+        "key": "other_reason_for_not_conducting_glucose_in_urine_test",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "other_reason_glucose_test_not_conducted",
+        "openmrs_entity_id": "other_reason_for_not_conducting_glucose_in_urine_test",
         "type": "edit_text",
         "hint": "Other reason for why the Glucose in Urine test was not conducted",
         "edit_type": "name",
@@ -475,10 +475,10 @@
       },
       {
         "type": "native_radio",
-        "key": "proteinuria",
+        "key": "protein_in_urine",
         "label": "Protein In Urine",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "proteinuria",
+        "openmrs_entity_id": "protein_in_urine",
         "openmrs_entity_parent": "",
         "options": [
           {
@@ -509,10 +509,10 @@
         }
       },
       {
-        "key": "reason_for_not_conducting_protein_test",
+        "key": "reason_for_not_conducting_protein_in_urine_test",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "reason_for_not_conducting_protein_test",
+        "openmrs_entity_id": "reason_for_not_conducting_protein_in_urine_test",
         "type": "spinner",
         "hint": "Reason as to why the Protein in Urine test was not conducted",
         "values": [
@@ -548,10 +548,10 @@
         }
       },
       {
-        "key": "other_reason_protein_test_not_conducted",
+        "key": "other_reason_for_not_conducting_protein_in_urine_test",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "other_reason_glucose_test_not_conducted",
+        "openmrs_entity_id": "other_reason_for_not_conducting_protein_in_urine_test",
         "type": "edit_text",
         "hint": "Other reason for why the Protein in Urine test was not conducted",
         "edit_type": "name",
