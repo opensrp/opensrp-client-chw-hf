@@ -20,7 +20,7 @@ condition: "step2_type_of_pregnancy_test.contains('uss')  && step1_danger_signs_
 actions:
   - "isRelevant = true"
 ---
-name: step3_last_menstrual_period
+name: step3_known_last_menstrual_period
 description: lmp_entered relevance
 priority: 1
 condition: "step1_danger_signs_analysis.contains('none') && ((step2_uss.contains('present_gestation_sac') && step2_upt.contains('positive')) || (step2_uss.contains('absent_gestation_sac') && step2_upt.contains('positive')) || (step2_upt.isEmpty() && step2_uss.contains('present_gestation_sac')) || (step2_upt.contains('positive') && step2_uss.isEmpty())) && !step3_last_menstrual_period_unknown.contains('lmp_unknown')"
@@ -30,7 +30,7 @@ actions:
 name: step3_last_menstrual_period_unknown
 description: last_menstrual_period_unknown relevance
 priority: 1
-condition: "step1_danger_signs_analysis.contains('none') && ((step2_uss.contains('present_gestation_sac') && step2_upt.contains('positive')) || (step2_uss.contains('absent_gestation_sac') && step2_upt.contains('positive')) || (step2_upt.isEmpty() && step2_uss.contains('present_gestation_sac')) || (step2_upt.contains('positive') && step2_uss.isEmpty())) && step3_last_menstrual_period.isEmpty()"
+condition: "step1_danger_signs_analysis.contains('none') && ((step2_uss.contains('present_gestation_sac') && step2_upt.contains('positive')) || (step2_uss.contains('absent_gestation_sac') && step2_upt.contains('positive')) || (step2_upt.isEmpty() && step2_uss.contains('present_gestation_sac')) || (step2_upt.contains('positive') && step2_uss.isEmpty()))"
 actions:
   - "isRelevant = true"
 ---
