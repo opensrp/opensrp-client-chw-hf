@@ -39,6 +39,7 @@
     <string name="anc_first_visit_baseline_investigation">Baseline Investigation</string>
     <string name="anc_first_visit_obstetric_examination">Obstetric Examination</string>
     <string name="anc_first_visit_tt_vaccination">TT Vaccination</string>
+    <string name="anc_first_and_recurring_visit_counselling">Counselling</string>
     <string name="anc_recuring_visit_triage">Triage</string>
     <string name="anc_recuring_visit_cunsultation">Consultation</string>
     <string name="anc_recuring_visit_lab_tests">Lab Tests</string>
