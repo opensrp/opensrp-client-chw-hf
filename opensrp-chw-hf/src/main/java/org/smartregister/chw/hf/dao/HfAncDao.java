@@ -114,4 +114,21 @@ public class HfAncDao extends AbstractDao {
         }
         return "null";
     }
+
+    public static int getVisitNumber(String baseEntityId){
+        DataMap<String> dataMap =  cursor -> getCursorValue(cursor,"visit_number");
+
+        String sql = String.format(
+                "SELECT visit_number FROM %s WHERE base_entity_id = '%s' " +
+                        "AND is_closed = 0",
+                "ec_anc_register",
+                baseEntityId
+        );
+
+        List<String> res = readData(sql,dataMap);
+        if(res.get(0) != null){
+            return Integer.parseInt(res.get(0));
+        }
+        return 0;
+    }
 }

@@ -979,6 +979,14 @@
           }
         },
         {
+          "column_name": "visit_number",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "visit_number"
+          }
+        },
+        {
           "column_name": "last_contact_visit",
           "type": "Event",
           "json_mapping": {

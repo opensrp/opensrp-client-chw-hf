@@ -315,6 +315,20 @@
             ]
           }
         }
+      },
+      {
+        "key": "visit_number",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id":"visit_number",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_triage_calculation.yml"
+            }
+          }
+        }
       }
     ]
   }
