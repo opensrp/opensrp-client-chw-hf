@@ -128,17 +128,15 @@
         "spacer_height": "15dp"
       },
       {
-        "key": "nearest_facility",
+        "key": "sync_location_id",
         "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "162724AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-        "openmrs_data_type": "text",
-        "type": "tree",
-        "hint": "Eneo la mtumishi wa afya ngazi ya jamiiChagua eneo la mtumishi wa afya ngazi ya jamii",
-        "tree": [],
+        "openmrs_entity": "person_attribute",
+        "openmrs_entity_id": "sync_location_id",
+        "type": "spinner",
+        "hint": "Chagua eneo la WAJA",
         "v_required": {
-          "value": true,
-          "err": "Tafadhali Chagua eneo la mtumishi wa afya ngazi ya jamii"
+          "value": "true",
+          "err": "Chagua eneo la WAJA"
         }
       }
     ]
