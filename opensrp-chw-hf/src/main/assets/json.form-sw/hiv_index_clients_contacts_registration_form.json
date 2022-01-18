@@ -342,7 +342,7 @@
         "key": "phone_number",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "159635AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_id": "phone_number",
         "type": "edit_text",
         "hint": "Nambari ya simu ya mteja",
         "v_numeric": {
@@ -360,9 +360,9 @@
       },
       {
         "key": "other_phone_number",
-        "openmrs_entity_parent": "159635AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_parent": "phone_number",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_id": "other_phone_number",
         "type": "edit_text",
         "hint": "Nambari ya simu ya ziada",
         "v_numeric": {

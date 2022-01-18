@@ -195,49 +195,49 @@
             "text": "No education",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
+            "openmrs_entity_id": "no_education"
           },
           {
             "key": "primary",
             "text": "primary",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
+            "openmrs_entity_id": "primary"
           },
           {
             "key": "secondary_o_level",
             "text": "Secondary 'O' Level",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
+            "openmrs_entity_id": "secondary_o_level"
           },
           {
             "key": "secondary_a_level",
             "text": "Secondary 'A' Level",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
+            "openmrs_entity_id": "secondary_a_level"
           },
           {
             "key": "tertiary",
             "text": "Tertiary",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
+            "openmrs_entity_id": "tertiary"
           },
           {
             "key": "university",
             "text": "University",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
+            "openmrs_entity_id": "university"
           },
           {
             "key": "unknown",
             "text": "Don't Know",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
+            "openmrs_entity_id": "unknown"
           }
         ],
         "v_required": {
@@ -274,91 +274,91 @@
             "text": "Farmer",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "1538AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "openmrs_entity_id": "chk_farmer"
           },
           {
             "key": "chk_cs",
             "text": "Civil Servant",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "162944AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "openmrs_entity_id": "chk_cs"
           },
           {
             "key": "chk_nurse",
             "text": "Nurse",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "1577AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "openmrs_entity_id": "chk_nurse"
           },
           {
             "key": "chk_teacher",
             "text": "Teacher",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "162946AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "openmrs_entity_id": "chk_teacher"
           },
           {
             "key": "chk_th",
             "text": "Traditional Healer",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "1821AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "openmrs_entity_id": "chk_th"
           },
           {
             "key": "chk_chw",
             "text": "Community Health Worker (CHW)",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "1555AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "openmrs_entity_id": "chk_chw"
           },
           {
             "key": "chk_tba",
             "text": "Traditional Birth Attendant",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "1575AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "openmrs_entity_id": "chk_tba"
           },
           {
             "key": "chk_chmis",
             "text": "Community HMIS (cHMIS)",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "163334AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "openmrs_entity_id": "chk_chmis"
           },
           {
             "key": "chk_cbd",
             "text": "Community Based Distributor",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "1744AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "openmrs_entity_id": "chk_cbd"
           },
           {
             "key": "chk_hbc",
             "text": "Home Based Care (HBC)",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "161359AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "openmrs_entity_id": "chk_hbc"
           },
           {
             "key": "chk_cimmci",
             "text": "Community IMCI",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "163096AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "openmrs_entity_id": "chk_cimmci"
           },
           {
             "key": "chk_other",
             "text": "Other",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "openmrs_entity_id": "chk_other"
           },
           {
             "key": "chk_none",
             "text": "None",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "164369AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "openmrs_entity_id": "chk_none"
           }
         ],
         "v_required": {
