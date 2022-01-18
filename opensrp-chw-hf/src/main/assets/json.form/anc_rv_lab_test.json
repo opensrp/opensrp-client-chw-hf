@@ -53,21 +53,21 @@
       {
         "type": "native_radio",
         "key": "hb_level_test",
-        "label": "Kipimo cha wingi wa damu",
+        "label": "HB Level Test",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "hb_level_test",
         "openmrs_entity_parent": "",
         "options": [
           {
             "key": "hb_level_conducted",
-            "text": "Kipimo kilifanyika",
+            "text": "Test conducted",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "hb_level_conducted",
             "openmrs_entity_parent": ""
           },
           {
             "key": "hb_level_not_conducted",
-            "text": "Kipimo hakikufanyika",
+            "text": "Test not conducted",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "hb_level_not_conducted"
