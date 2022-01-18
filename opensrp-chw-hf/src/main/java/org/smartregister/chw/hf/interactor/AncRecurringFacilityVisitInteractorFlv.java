@@ -23,6 +23,7 @@ import org.smartregister.chw.hf.BuildConfig;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.actionhelper.AncBirthReviewAction;
 import org.smartregister.chw.hf.actionhelper.AncConsultationAction;
+import org.smartregister.chw.hf.actionhelper.AncCounsellingAction;
 import org.smartregister.chw.hf.actionhelper.AncLabTestAction;
 import org.smartregister.chw.hf.actionhelper.AncPharmacyAction;
 import org.smartregister.chw.hf.actionhelper.AncTriageAction;
@@ -250,6 +251,18 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                                 .withHelper(new AncPharmacyAction(memberObject))
                                 .build();
                         actionList.put(context.getString(R.string.anc_recuring_visit_pharmacy), pharmacy);
+                    } catch (BaseAncHomeVisitAction.ValidationException e) {
+                        e.printStackTrace();
+                    }
+
+                    try {
+                        BaseAncHomeVisitAction counselling = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_first_and_recurring_visit_counselling))
+                                .withOptional(true)
+                                .withDetails(details)
+                                .withFormName(Constants.JsonForm.getCounselling())
+                                .withHelper(new AncCounsellingAction(memberObject))
+                                .build();
+                        actionList.put(context.getString(R.string.anc_first_and_recurring_visit_counselling), counselling);
                     } catch (BaseAncHomeVisitAction.ValidationException e) {
                         e.printStackTrace();
                     }

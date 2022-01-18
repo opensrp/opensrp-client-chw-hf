@@ -22,6 +22,7 @@ import org.smartregister.chw.core.utils.FormUtils;
 import org.smartregister.chw.hf.BuildConfig;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.actionhelper.AncBirthReviewAction;
+import org.smartregister.chw.hf.actionhelper.AncCounsellingAction;
 import org.smartregister.chw.hf.actionhelper.AncTtVaccinationAction;
 import org.smartregister.chw.hf.repository.HfLocationRepository;
 import org.smartregister.chw.hf.utils.Constants;
@@ -134,6 +135,14 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
                 .withHelper(new AncTtVaccinationAction(memberObject))
                 .build();
         actionList.put(context.getString(R.string.anc_first_visit_tt_vaccination), vaccinationAction);
+
+        BaseAncHomeVisitAction counsellingAction = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_first_and_recurring_visit_counselling))
+                .withOptional(true)
+                .withDetails(details)
+                .withFormName(Constants.JsonForm.getCounselling())
+                .withHelper(new AncCounsellingAction(memberObject))
+                .build();
+        actionList.put(context.getString(R.string.anc_first_and_recurring_visit_counselling), counsellingAction);
 
         JSONObject birthReviewForm = initializeHealthFacilitiesList(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.BIRTH_REVIEW_AND_EMERGENCY_PLAN));
         BaseAncHomeVisitAction birthReview = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_review_birth_and_emergency_plan))

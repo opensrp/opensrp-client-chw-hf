@@ -43,6 +43,11 @@ public class Constants extends CoreConstants {
         public static final String HVL_SUPPRESSION_FORM_AFTER_EAC_1 = "pmtct_hvl_suppression_after_eac_1";
         public static final String HVL_SUPPRESSION_FORM_AFTER_EAC_2 = "pmtct_hvl_suppression_after_eac_2";
         public static final String CLINICIAN_DETAILS_FORM = "pmtct_fv_clinician_details";
+        private static final String COUNSELLING = "anc_counselling";
+
+        public static String getCounselling() {
+            return COUNSELLING;
+        }
 
         public static String getPmtctRegistration() {
             return PMTCT_REGISTRATION;

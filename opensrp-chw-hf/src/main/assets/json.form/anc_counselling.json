@@ -1,0 +1,157 @@
+{
+  "count": "1",
+  "encounter_type": "ANC Counselling",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "step1": {
+    "title": "Counselling",
+    "fields": [
+      {
+        "key": "given_counselling",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "given_counselling",
+        "type": "check_box",
+        "label": "Counselling provided to the client",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "exclusive": [
+          "chk_none"
+        ],
+        "options": [
+          {
+            "key": "chk_sexual_relationship",
+            "text": "1. Sexual relationship",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_sexual_relationship"
+          },
+          {
+            "key": "chk_birth_emergency_plan",
+            "text": "2. Birth and emergency plan",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_birth_emergency_plan"
+          },
+          {
+            "key": "chk_danger_signs",
+            "text": "3. Danger sings",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_danger_signs"
+          },
+          {
+            "key": "chk_discussion_std_hiv",
+            "text": "4. Discussion on STD/HIV",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_discussion_std_hiv"
+          },
+          {
+            "key": "chk_condom_use",
+            "text": "5. Condom use",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_condom_use"
+          },
+          {
+            "key": "chk_advice_gravid",
+            "text": "6. Advice on common gravid discomfort",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_advice_gravid"
+          },
+          {
+            "key": "chk_self_care",
+            "text": "7. Self care",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_self_care"
+          },
+          {
+            "key": "chk_healthy_eating",
+            "text": "8. Healthy eating",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_healthy_eating"
+          },
+          {
+            "key": "chk_physical_activity",
+            "text": "9. Physical activity",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_physical_activity"
+          },
+          {
+            "key": "chk_use_folic_acid",
+            "text": "10. Daily use of Iron folic acid",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_use_folic_acid"
+          },
+          {
+            "key": "chk_counsel_llin",
+            "text": "11. Provide and counsel on use of LLIN",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_counsel_llin"
+          },
+          {
+            "key": "chk_none",
+            "text": "None",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_none"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please pick at least one"
+        }
+      }
+    ]
+  }
+}

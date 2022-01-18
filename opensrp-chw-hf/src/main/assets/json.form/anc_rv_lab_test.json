@@ -253,7 +253,7 @@
           "err": "Please answer this question"
         },
         "relevance": {
-          "step1:blood_for_glucose_fv_test": {
+          "step1:blood_for_glucose_test": {
             "type": "string",
             "ex": "equalTo(., \"blood_glucose_conducted\")"
           }
