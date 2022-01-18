@@ -6,6 +6,14 @@ condition: "!global_hiv_test_complete || (global_gestational_age >= 32 && !globa
 actions:
   - "isRelevant = true"
 ---
+name: step1_date_anc_hiv_test
+description:  HIV Test Results should be recorded when gest_age is greater than 32
+priority: 1
+condition: "(!global_hiv_test_complete || (global_gestational_age >= 32 && !global_hiv_test_at_32_complete)) && !step1_hiv.equals('test_not_conducted')"
+actions:
+  - "isRelevant = true"
+  -
+---
 name: step1_hiv_test_at_32
 description: Check to mark if test was conducted at week 32 if client was marked negative
 priority: 1

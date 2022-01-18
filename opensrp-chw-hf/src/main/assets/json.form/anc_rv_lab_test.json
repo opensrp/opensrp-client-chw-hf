@@ -718,6 +718,27 @@
         }
       },
       {
+        "key": "date_anc_hiv_test",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "date_anc_hiv_test",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_baseline_investigation_calculation.yml"
+            }
+          }
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_lab_test_relevance.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "reason_for_not_conducting_hiv_test",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -1041,26 +1062,6 @@
             "ex-rules": {
               "rules-file": "anc_rv_lab_test_relevance.yml"
             }
-          }
-        }
-      },
-      {
-        "key": "date_anc_hiv_test",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "date_anc_hiv_test",
-        "type": "hidden",
-        "calculation": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "anc_fv_baseline_investigation_calculation.yml"
-            }
-          }
-        },
-        "relevance": {
-          "step1:hiv": {
-            "type": "string",
-            "ex": "notEqualTo(., \"test_not_conducted\")"
           }
         }
       }
