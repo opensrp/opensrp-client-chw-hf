@@ -289,6 +289,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                 actionList.remove(context.getString(R.string.anc_recuring_visit_cunsultation));
                 actionList.remove(context.getString(R.string.anc_recuring_visit_lab_tests));
                 actionList.remove(context.getString(R.string.anc_recuring_visit_pharmacy));
+                actionList.remove(context.getString(R.string.anc_first_and_recurring_visit_counselling));
                 actionList.remove(context.getString(R.string.anc_recuring_visit_review_birth_and_emergency_plan));
             }
             new AppExecutors().mainThread().execute(() -> callBack.preloadActions(actionList));
