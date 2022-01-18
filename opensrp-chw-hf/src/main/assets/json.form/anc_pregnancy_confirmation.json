@@ -65,62 +65,86 @@
           {
             "key": "bleeding_vag",
             "text": "Bleeding Vaginally",
-            "value": false
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "bleeding_vag"
           },
           {
             "key": "headache_visual_disturbance",
             "text": "Headache and Visual Disturbance",
-            "value": false
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "headache_visual_disturbance"
           },
           {
             "key": "severely_pale",
             "text": "Severely Pale",
-            "value": false
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "severely_pale"
           },
           {
             "key": "severe_vomiting",
             "text": "Severe Vomiting",
-            "value": false
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "severe_vomiting"
           },
           {
             "key": "convulsion",
             "text": "Convulsion",
-            "value": false
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "convulsion"
           },
           {
             "key": "looking_very_ill",
             "text": "Looking Very Ill",
-            "value": false
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "looking_very_ill"
           },
           {
             "key": "fever",
             "text": "Fever",
-            "value": false
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "fever"
           },
           {
             "key": "unconscious",
             "text": "Unconscious",
-            "value": false
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "unconscious"
           },
           {
             "key": "severe_pain",
             "text": "Severe Pain",
-            "value": false
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "severe_pain"
           },
           {
             "key": "in_labour",
             "text": "In Labour",
-            "value": false
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "in_labour"
           },
           {
             "key": "imminent_labour",
             "text": "Imminent Labour",
-            "value": false
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "imminent_labour"
           },
           {
             "key": "none",
             "text": "None",
-            "value": false
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "none"
           }
         ],
         "v_required": {
@@ -182,12 +206,16 @@
           {
             "text": "Positive",
             "key": "positive",
-            "value": false
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "positive"
           },
           {
             "text": "Negative",
             "key": "negative",
-            "value": false
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "negative"
           }
         ],
         "relevance": {
@@ -213,12 +241,16 @@
           {
             "key": "present_gestation_sac",
             "text": "Present Gestation Sac",
-            "value": false
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "present_gestation_sac"
           },
           {
             "key": "absent_gestation_sac",
             "text": "Absent Gestation Sac",
-            "value": false
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "absent_gestation_sac"
           }
         ],
         "relevance": {
@@ -281,7 +313,9 @@
             "key": "lmp_unknown",
             "text": "LNMP unknown?",
             "text_size": "18px",
-            "value": "false"
+            "value": "false",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "lmp_unknown"
           }
         ],
         "relevance": {
