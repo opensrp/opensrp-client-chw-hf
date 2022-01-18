@@ -100,6 +100,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
         try {
             triageForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.TRIAGE);
             triageForm.getJSONObject("global").put("last_menstrual_period", memberObject.getLastMenstrualPeriod());
+            triageForm.getJSONObject("global").put("current_visit_number",HfAncDao.getVisitNumber(baseEntityId));
             if (details != null && !details.isEmpty()) {
                 JsonFormUtils.populateForm(triageForm, details);
             }

@@ -13,3 +13,11 @@ priority: 1
 condition: "true"
 actions:
   - "calculation = step1_gest_age + ' weeks'"
+---
+name: step1_visit_number
+description: Visit Number
+priority: 1
+condition: "true"
+actions:
+  - "calculation = global_current_visit_number + 1"
+
