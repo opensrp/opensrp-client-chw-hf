@@ -133,13 +133,6 @@
           },
           {
             "field": "eventType",
-            "field_value": "ANC Home Visit",
-            "creates_case": [
-              "ec_anc_register"
-            ]
-          },
-          {
-            "field": "eventType",
             "field_value": "ANC First Facility Visit",
             "creates_case": [
               "ec_anc_register"
