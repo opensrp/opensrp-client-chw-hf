@@ -991,7 +991,7 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "last_contact_visit"
+            "concept": "anc_visit_date"
           }
         }
       ]

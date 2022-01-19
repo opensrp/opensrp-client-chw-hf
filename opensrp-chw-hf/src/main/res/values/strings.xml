@@ -65,5 +65,7 @@
     <string name="anc_pregnacy_status_fetal_death">Intrauterine Fetal Death (Still Birth)</string>
     <string name="anc_pregnacy_status_spontaneous_abortion">Spontaneous Abortion</string>
     <string name="any_changes_you_make">Any Changes You Made Will Be Discarded</string>
+    <string name="gestation_age">Gestation Age: {0} Weeks</string>
+    <string name="malaria">mRDT for Malaria: {0}</string>
 
 </resources>
