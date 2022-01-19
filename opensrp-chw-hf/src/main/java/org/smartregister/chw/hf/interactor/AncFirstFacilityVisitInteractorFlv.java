@@ -24,6 +24,7 @@ import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.actionhelper.AncBirthReviewAction;
 import org.smartregister.chw.hf.actionhelper.AncCounsellingAction;
 import org.smartregister.chw.hf.actionhelper.AncTtVaccinationAction;
+import org.smartregister.chw.hf.dao.HfAncDao;
 import org.smartregister.chw.hf.repository.HfLocationRepository;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hf.utils.ContactUtil;
@@ -93,7 +94,7 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
                                                    final Context context) throws BaseAncHomeVisitAction.ValidationException {
         JSONObject obstetricForm = null;
         try {
-            obstetricForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncFirstVisit.OBSTETRIC_EXAMINATION);
+            obstetricForm = setMinFundalHeight(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncFirstVisit.OBSTETRIC_EXAMINATION), memberObject.getBaseEntityId());
             obstetricForm.getJSONObject("global").put("last_menstrual_period", memberObject.getLastMenstrualPeriod());
             if (details != null && !details.isEmpty()) {
                 JsonFormUtils.populateForm(obstetricForm, details);
@@ -352,6 +353,30 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
             return nodes;
         } else return null;
 
+    }
+
+    private static JSONObject setMinFundalHeight(JSONObject form, String baseEntityId) {
+        String fundalHeight = HfAncDao.getFundalHeight(baseEntityId);
+        try {
+            JSONArray fields = form.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+            JSONObject fundalHeightQnObj = null;
+            for (int i = 0; i < fields.length(); i++) {
+                if (fields.getJSONObject(i).getString(JsonFormConstants.KEY).equals("fundal_height")) {
+                    fundalHeightQnObj = fields.getJSONObject(i);
+                    break;
+                }
+            }
+
+            assert fundalHeightQnObj != null;
+            JSONObject v_min = fundalHeightQnObj.getJSONObject("v_min");
+            v_min.put("value", fundalHeight);
+            v_min.put("err", "Fundal height must be equal or greater than " + fundalHeight + " CM");
+
+
+        } catch (JSONException e) {
+            Timber.e(e);
+        }
+        return form;
     }
 
     private class AncBaselineInvestigationAction extends org.smartregister.chw.hf.actionhelper.AncBaselineInvestigationAction {

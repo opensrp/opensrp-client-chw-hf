@@ -859,6 +859,14 @@
           }
         },
         {
+          "column_name": "fundal_height",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "fundal_height"
+          }
+        },
+        {
           "column_name": "no_surv_children",
           "type": "Event",
           "json_mapping": {

@@ -263,10 +263,7 @@
           "value": "true",
           "err": "Please enter the fundal height"
         },
-        "v_min": {
-          "value": "0",
-          "err": "Fundal height must be equal or greater than 0 CM"
-        },
+        "v_min": {},
         "v_max": {
           "value": "36",
           "err": "Fundal height must be equal or less than 36 CM"

@@ -131,4 +131,21 @@ public class HfAncDao extends AbstractDao {
         }
         return 0;
     }
+
+    public static String getFundalHeight(String baseEntityId){
+        DataMap<String> dataMap =  cursor -> getCursorValue(cursor,"fundal_height");
+
+        String sql = String.format(
+                "SELECT fundal_height FROM %s WHERE base_entity_id = '%s' " +
+                        "AND is_closed = 0",
+                "ec_anc_register",
+                baseEntityId
+        );
+
+        List<String> res = readData(sql,dataMap);
+        if(res.get(0) != null){
+            return res.get(0);
+        }
+        return "12";
+    }
 }

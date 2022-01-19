@@ -101,7 +101,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
         try {
             triageForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.TRIAGE);
             triageForm.getJSONObject("global").put("last_menstrual_period", memberObject.getLastMenstrualPeriod());
-            triageForm.getJSONObject("global").put("current_visit_number",HfAncDao.getVisitNumber(baseEntityId));
+            triageForm.getJSONObject("global").put("current_visit_number", HfAncDao.getVisitNumber(baseEntityId));
             if (details != null && !details.isEmpty()) {
                 JsonFormUtils.populateForm(triageForm, details);
             }
@@ -175,11 +175,11 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
             if (pregnancy_status.equals("viable")) {
                 JSONObject consultationForm = null;
                 try {
-                    consultationForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.CONSULTATION);
+                    consultationForm = setMinFundalHeight(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.CONSULTATION), memberObject.getBaseEntityId());
                     consultationForm.getJSONObject("global").put("last_menstrual_period", memberObject.getLastMenstrualPeriod());
                     consultationForm.getJSONObject("global").put("client_age", memberObject.getAge());
                     String height = HfAncDao.getClientHeight(memberObject.getBaseEntityId());
-                    consultationForm.getJSONObject("global").put("client_height", HfAncDao.getClientHeight(memberObject.getBaseEntityId()));
+                    consultationForm.getJSONObject("global").put("client_height", height);
                     if (details != null && !details.isEmpty()) {
                         JsonFormUtils.populateForm(consultationForm, details);
                     }
@@ -435,6 +435,31 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
         } else return null;
 
     }
+
+    private static JSONObject setMinFundalHeight(JSONObject form, String baseEntityId) {
+        String fundalHeight = HfAncDao.getFundalHeight(baseEntityId);
+        try {
+            JSONArray fields = form.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+            JSONObject fundalHeightQnObj = null;
+            for (int i = 0; i < fields.length(); i++) {
+                if (fields.getJSONObject(i).getString(JsonFormConstants.KEY).equals("fundal_height")) {
+                    fundalHeightQnObj = fields.getJSONObject(i);
+                    break;
+                }
+            }
+
+            assert fundalHeightQnObj != null;
+            JSONObject v_min = fundalHeightQnObj.getJSONObject("v_min");
+            v_min.put("value", fundalHeight);
+            v_min.put("err", "Fundal height must be equal or greater than " + fundalHeight + "CM");
+
+
+        } catch (JSONException e) {
+            Timber.e(e);
+        }
+        return form;
+    }
+
 
 }
 
