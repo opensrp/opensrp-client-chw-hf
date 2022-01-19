@@ -73,8 +73,8 @@ android {
             buildConfigField "int", "HOME_VISIT_MINUTES", '60'
             buildConfigField "int", "STOCK_USAGE_REPORT_MINUTES", '1440'
             buildConfigField "boolean", 'SUPPORT_REPORT', 'false'
-            buildConfigField "String[]", "ALLOWED_LOCATION_LEVELS", '{"Ward" , "Council", "Facility", "MOH Jhpiego Facility Name", "Health Facility", "Village", "Village Sublocations"}'
-            buildConfigField "String[]", "LOCATION_HIERACHY", '{"Country","Region","District","Ward" ,"Council", "Facility", "MOH Jhpiego Facility Name", "Health Facility", "Village", "Village Sublocations"}'
+            buildConfigField "String[]", "ALLOWED_LOCATION_LEVELS", '{"Ward" , "Council", "Facility", "Village"}'
+            buildConfigField "String[]", "LOCATION_HIERACHY", '{"Country","Zone","Region","Council", "Facility","Village"}'
             buildConfigField "String", 'DEFAULT_LOCATION', '"Facility"'
             buildConfigField "boolean", "BUILD_FOR_BORESHA_AFYA_SOUTH", "true"
             buildConfigField "String[]", 'FACILITY_LEVEL', '{"MOH Jhpiego Facility Name", "Health Facility", "Facility"}'
@@ -93,8 +93,8 @@ android {
             buildConfigField "int", "HOME_VISIT_MINUTES", '60'
             buildConfigField "int", "STOCK_USAGE_REPORT_MINUTES", '1440'
             buildConfigField "boolean", 'SUPPORT_REPORT', 'false'
-            buildConfigField "String[]", "ALLOWED_LOCATION_LEVELS", '{"Ward" , "Council", "Facility", "MOH Jhpiego Facility Name", "Health Facility", "Village", "Village Sublocations"}'
-            buildConfigField "String[]", "LOCATION_HIERACHY", '{"Country","Region","District","Ward" ,"Council", "Facility", "MOH Jhpiego Facility Name", "Health Facility", "Village", "Village Sublocations"}'
+            buildConfigField "String[]", "ALLOWED_LOCATION_LEVELS", '{"Ward" , "Council", "Facility", "Village"}'
+            buildConfigField "String[]", "LOCATION_HIERACHY", '{"Country","Zone","Region","Council", "Facility","Village"}'
             buildConfigField "String", 'DEFAULT_LOCATION', '"Facility"'
             buildConfigField "boolean", "BUILD_FOR_BORESHA_AFYA_SOUTH", "true"
             buildConfigField "String[]", 'FACILITY_LEVEL', '{"MOH Jhpiego Facility Name", "Health Facility", "Facility"}'
@@ -154,7 +154,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation('org.smartregister:opensrp-client-chw-core:1.5.30.5-NACP-SNAPSHOT@aar') {
+    implementation('org.smartregister:opensrp-client-chw-core:1.5.30.6-NACP-SNAPSHOT@aar') {
 //    implementation(project(":opensrp-chw-core")) {
         transitive = true
         exclude group: 'com.android.support', module: 'appcompat-v7'

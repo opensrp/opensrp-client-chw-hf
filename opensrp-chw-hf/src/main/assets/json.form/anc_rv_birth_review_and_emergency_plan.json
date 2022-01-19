@@ -1,0 +1,498 @@
+{
+  "count": "1",
+  "encounter_type": "Emergency Plan",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "step1": {
+    "title": "Review birth and emergency plan",
+    "fields": [
+      {
+        "type": "check_box",
+        "key": "partner_involved",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "partner_involved",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "text": "Partner Involved",
+            "key": "partner_involved_chk",
+            "openmrs_entity_id": "partner_involved_chk",
+            "openmrs_entity": "concept"
+          }
+        ]
+      },
+      {
+        "type": "edit_text",
+        "key": "partner_surname",
+        "hint": "Partner's Surname",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "partner_surname",
+        "openmrs_entity_parent": "",
+        "v_regex": {
+          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
+          "err": "Please enter partner's surname"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter partner's surname"
+        },
+        "relevance": {
+          "step1:partner_involved": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "partner_involved_chk"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "type": "edit_text",
+        "key": "partner_first_name",
+        "hint": "Partner's First Name",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "partner_first_name",
+        "openmrs_entity_parent": "",
+        "v_regex": {
+          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
+          "err": "Please enter partner's first name"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter partner's first name"
+        },
+        "relevance": {
+          "step1:partner_involved": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "partner_involved_chk"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "type": "edit_text",
+        "key": "partner_middle_name",
+        "hint": "Partner's Middle Name",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "partner_middle_name",
+        "openmrs_entity_parent": "",
+        "v_regex": {
+          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
+          "err": "Please enter partner's last name"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter partner's last name"
+        },
+        "relevance": {
+          "step1:partner_involved": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "partner_involved_chk"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "partner_age",
+        "hint": "Partner's Age",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "partner_age",
+        "openmrs_entity_parent": "",
+        "type": "edit_text",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter partner's age"
+        },
+        "v_min": {
+          "value": "11",
+          "err": "Age must be equal or greater than 11"
+        },
+        "v_max": {
+          "value": "120",
+          "err": "Age must be equal or less than 120"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter partner's age"
+        },
+        "relevance": {
+          "step1:partner_involved": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "partner_involved_chk"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "partner_education",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "partner_education",
+        "type": "native_radio",
+        "label": "Partner's Highest level of education completed",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "no_education",
+            "text": "No education",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no_education"
+          },
+          {
+            "key": "primary",
+            "text": "primary",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "primary"
+          },
+          {
+            "key": "secondary_o_level",
+            "text": "Secondary 'O' Level",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "secondary_o_level"
+          },
+          {
+            "key": "secondary_a_level",
+            "text": "Secondary 'A' Level",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "secondary_a_level"
+          },
+          {
+            "key": "tertiary",
+            "text": "Tertiary",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "tertiary"
+          },
+          {
+            "key": "university",
+            "text": "University",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "university"
+          },
+          {
+            "key": "unknown",
+            "text": "Don't Know",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "unknown"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select the partner's highest level of education completed"
+        },
+        "relevance": {
+          "step1:partner_involved": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "partner_involved_chk"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "partner_work",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "partner_work",
+        "type": "check_box",
+        "label": "Partner's Occupation",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "exclusive": [
+          "chk_none"
+        ],
+        "options": [
+          {
+            "key": "chk_farmer",
+            "text": "Farmer",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_farmer"
+          },
+          {
+            "key": "chk_cs",
+            "text": "Civil Servant",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_cs"
+          },
+          {
+            "key": "chk_nurse",
+            "text": "Nurse",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_nurse"
+          },
+          {
+            "key": "chk_teacher",
+            "text": "Teacher",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_teacher"
+          },
+          {
+            "key": "chk_th",
+            "text": "Traditional Healer",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_th"
+          },
+          {
+            "key": "chk_chw",
+            "text": "Community Health Worker (CHW)",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_chw"
+          },
+          {
+            "key": "chk_tba",
+            "text": "Traditional Birth Attendant",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_tba"
+          },
+          {
+            "key": "chk_chmis",
+            "text": "Community HMIS (cHMIS)",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_chmis"
+          },
+          {
+            "key": "chk_cbd",
+            "text": "Community Based Distributor",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_cbd"
+          },
+          {
+            "key": "chk_hbc",
+            "text": "Home Based Care (HBC)",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_hbc"
+          },
+          {
+            "key": "chk_cimmci",
+            "text": "Community IMCI",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_cimmci"
+          },
+          {
+            "key": "chk_other",
+            "text": "Other",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_other"
+          },
+          {
+            "key": "chk_none",
+            "text": "None",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_none"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please pick at least one"
+        },
+        "relevance": {
+          "step1:partner_involved": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "partner_involved_chk"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "partner_work_other",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "partner_work_other",
+        "type": "edit_text",
+        "hint": "Partner's other Occupation",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Please specify the occupation"
+        },
+        "relevance": {
+          "step1:partner_work": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "chk_other"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "name_of_hf",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "name_of_hf",
+        "openmrs_data_type": "text",
+        "type": "tree",
+        "hint": "Health Facility",
+        "tree": [],
+        "v_required": {
+          "value": true,
+          "err": "Please select the health facility"
+        }
+      },
+      {
+        "type": "edit_text",
+        "key": "name_of_hf_other",
+        "hint": "Name of Health Facility",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "name_of_hf_other",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": true,
+          "err": "Please enter the name of health facility facility"
+        },
+        "relevance": {
+          "step1:name_of_hf": {
+            "type": "string",
+            "ex": "equalTo(., \"Other\")"
+          }
+        }
+      },
+      {
+        "type": "check_box",
+        "key": "transport",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "transport",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "text": "Method of Transport Identified",
+            "key": "method_of_transport_identified",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "method_of_transport_identified"
+          }
+        ]
+      },
+      {
+        "type": "check_box",
+        "key": "birth_companion",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "birth_companion",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "text": "Birth Companion Identified and notified",
+            "key": "birth_companion_identified",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "birth_companion_identified"
+          }
+        ]
+      },
+      {
+        "type": "check_box",
+        "key": "emergency_funds",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "emergency_funds",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "text": "Emergency Birth Funds",
+            "key": "emergency_birth_funds",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "emergency_birth_funds"
+          }
+        ]
+      },
+      {
+        "type": "check_box",
+        "key": "household_support",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "household_support",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "text": "Household Caregiver support prepared",
+            "key": "household_caregiver_support_prepared",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "household_caregiver_support_prepared"
+          }
+        ]
+      }
+    ]
+  }
+}

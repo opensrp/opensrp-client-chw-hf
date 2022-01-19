@@ -8,7 +8,6 @@ import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.core.utils.CoreChildUtils;
-import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.activity.HivFormsActivity;
 import org.smartregister.chw.hiv.contract.BaseHivFormsContract;
 import org.smartregister.chw.hiv.presenter.BaseHivFormsActivityPresenter;
@@ -19,7 +18,7 @@ import org.smartregister.chw.hiv.util.JsonFormConstants;
 import java.util.Calendar;
 import java.util.HashMap;
 
-import static org.smartregister.chw.hf.utils.Constants.JSON_FORM.HIV_REGISTRATION;
+import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
 
 public class HivFormActivityActivityPresenter extends BaseHivFormsActivityPresenter {
 

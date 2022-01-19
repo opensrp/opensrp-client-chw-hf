@@ -1,6 +1,6 @@
 package org.smartregister.chw.hf.activity;
 
-import static org.smartregister.chw.hf.utils.Constants.JSON_FORM.HIV_REGISTRATION;
+import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
 import static org.smartregister.chw.hiv.util.Constants.ActivityPayload.HIV_MEMBER_OBJECT;
 
 import android.app.Activity;
@@ -23,8 +23,10 @@ import org.json.JSONObject;
 import org.smartregister.AllConstants;
 import org.smartregister.chw.core.activity.CoreHivProfileActivity;
 import org.smartregister.chw.core.activity.CoreHivUpcomingServicesActivity;
+import org.smartregister.chw.core.dao.AncDao;
 import org.smartregister.chw.core.listener.OnClickFloatingMenu;
 import org.smartregister.chw.core.utils.CoreConstants;
+import org.smartregister.chw.core.utils.Utils;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.adapter.HivAndTbReferralCardViewAdapter;
 import org.smartregister.chw.hf.contract.HivProfileContract;
@@ -39,6 +41,7 @@ import org.smartregister.chw.hiv.domain.HivMemberObject;
 import org.smartregister.chw.hiv.util.HivUtil;
 import org.smartregister.chw.tb.util.Constants;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
+import org.smartregister.family.util.DBConstants;
 import org.smartregister.opd.pojo.RegisterParams;
 import org.smartregister.opd.utils.OpdConstants;
 import org.smartregister.opd.utils.OpdJsonFormUtils;
@@ -135,6 +138,9 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
             } else if (itemId == R.id.action_issue_hiv_community_followup_referral) {
                 HivRegisterActivity.startHIVFormActivity(this, getHivMemberObject().getBaseEntityId(), CoreConstants.JSON_FORM.getHivCommunityFollowupReferral(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getHivCommunityFollowupReferral()).toString());
                 return true;
+            }else if(itemId == R.id.action_pregnancy_confirmation){
+                startPregnancyConfirmation(Objects.requireNonNull(getHivMemberObject()));
+                return true;
             }
         } catch (JSONException e) {
             Timber.e(e);
@@ -151,6 +157,11 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
             menu.findItem(R.id.action_hiv_outcome).setVisible(true);
         } else {
             menu.findItem(R.id.action_issue_hiv_community_followup_referral).setVisible(true);
+        }
+        CommonPersonObjectClient commonPersonObject = getCommonPersonObjectClient();
+        String gender = Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.GENDER, false);
+        if (isOfReproductiveAge(commonPersonObject, gender) && gender.equalsIgnoreCase("female") && !AncDao.isANCMember(getHivMemberObject().getBaseEntityId())) {
+            menu.findItem(R.id.action_pregnancy_confirmation).setVisible(true);
         }
         return true;
     }
@@ -336,6 +347,22 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
         @Override
         protected void onPostExecute(Integer param) {
             setIndexClientsStatus(param > 0);
+        }
+    }
+
+    protected void startPregnancyConfirmation(HivMemberObject hivMemberObject) {
+
+        AncRegisterActivity.startAncRegistrationActivity(HivProfileActivity.this,hivMemberObject.getBaseEntityId() , hivMemberObject.getPhoneNumber(),
+                org.smartregister.chw.hf.utils.Constants.JsonForm.getAncPregnancyConfirmation(), null, hivMemberObject.getFamilyBaseEntityId(), hivMemberObject.getFamilyName());
+    }
+
+    private boolean isOfReproductiveAge(CommonPersonObjectClient commonPersonObject, String gender) {
+        if (gender.equalsIgnoreCase("Female")) {
+            return Utils.isMemberOfReproductiveAge(commonPersonObject, 10, 49);
+        } else if (gender.equalsIgnoreCase("Male")) {
+            return Utils.isMemberOfReproductiveAge(commonPersonObject, 15, 49);
+        } else {
+            return false;
         }
     }
 }

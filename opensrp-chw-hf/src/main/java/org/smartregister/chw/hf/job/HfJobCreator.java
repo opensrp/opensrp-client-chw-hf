@@ -15,6 +15,7 @@ import org.smartregister.job.ExtendedSyncServiceJob;
 import org.smartregister.job.ImageUploadServiceJob;
 import org.smartregister.job.LocationStructureServiceJob;
 import org.smartregister.job.PullUniqueIdsServiceJob;
+import org.smartregister.job.SyncLocationsByLevelAndTagsServiceJob;
 import org.smartregister.job.SyncLocationsByTeamIdsJob;
 import org.smartregister.job.SyncServiceJob;
 import org.smartregister.job.SyncTaskServiceJob;
@@ -56,6 +57,8 @@ public class HfJobCreator implements JobCreator {
                 return new CloseExpiredReferralsServiceJob();
             case SyncLocationsByTeamIdsJob.TAG:
                 return new SyncLocationsByTeamIdsJob();
+            case SyncLocationsByLevelAndTagsServiceJob.TAG:
+                return new SyncLocationsByLevelAndTagsServiceJob();
             default:
                 Timber.d("Please create job and specify the right job tag");
                 return null;

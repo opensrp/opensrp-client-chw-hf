@@ -2,8 +2,7 @@ package org.smartregister.chw.hf.activity;
 
 import android.content.Context;
 import android.view.Menu;
-
-import androidx.viewpager.widget.ViewPager;
+import android.view.MenuItem;
 
 import com.vijay.jsonwizard.utils.FormUtils;
 
@@ -12,6 +11,7 @@ import org.json.JSONObject;
 import org.smartregister.chw.core.activity.CoreAllClientsMemberProfileActivity;
 import org.smartregister.chw.core.activity.CoreFamilyProfileActivity;
 import org.smartregister.chw.core.contract.CoreAllClientsMemberContract;
+import org.smartregister.chw.core.dao.AncDao;
 import org.smartregister.chw.core.form_data.NativeFormsDataBinder;
 import org.smartregister.chw.core.fragment.FamilyCallDialogFragment;
 import org.smartregister.chw.core.utils.CoreConstants;
@@ -25,20 +25,18 @@ import org.smartregister.chw.hf.fragment.FamilyOtherMemberProfileFragment;
 import org.smartregister.chw.hf.presenter.FamilyOtherMemberActivityPresenter;
 import org.smartregister.chw.hf.presenter.HfAllClientsMemberPresenter;
 import org.smartregister.chw.hf.utils.AllClientsUtils;
+import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.family.adapter.ViewPagerAdapter;
 import org.smartregister.family.fragment.BaseFamilyOtherMemberProfileFragment;
 import org.smartregister.family.model.BaseFamilyOtherMemberProfileActivityModel;
 import org.smartregister.family.util.DBConstants;
-import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.view.contract.BaseProfileContract;
 
+import androidx.viewpager.widget.ViewPager;
 import timber.log.Timber;
 
-import static com.vijay.jsonwizard.constants.JsonFormConstants.COUNT;
-import static com.vijay.jsonwizard.constants.JsonFormConstants.STEP1;
-import static org.smartregister.chw.hf.utils.Constants.JSON_FORM.HIV_REGISTRATION;
-import static org.smartregister.family.util.JsonFormUtils.STEP2;
+import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
 
 public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfileActivity {
 
@@ -48,11 +46,16 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
+        String gender = Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.GENDER, false);
         menu.findItem(R.id.action_location_info).setVisible(true);
 
         if (BuildConfig.BUILD_FOR_BORESHA_AFYA_SOUTH) {
             AllClientsUtils.updateHivMenuItems(baseEntityId, menu);
             AllClientsUtils.updateTbMenuItems(baseEntityId, menu);
+
+        }
+        if (isOfReproductiveAge(commonPersonObject, gender) && gender.equalsIgnoreCase("female") && !AncDao.isANCMember(baseEntityId)) {
+            menu.findItem(R.id.action_pregnancy_confirmation).setVisible(true);
         }
         menu.findItem(R.id.action_anc_registration).setVisible(false);
         menu.findItem(R.id.action_sick_child_follow_up).setVisible(false);
@@ -60,6 +63,16 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int itemId = item.getItemId();
+        if (itemId == org.smartregister.chw.core.R.id.action_pregnancy_confirmation) {
+            startPregnancyConfirmation();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     public FamilyOtherMemberActivityPresenter presenter() {
@@ -131,20 +144,10 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
         NativeFormsDataBinder binder = new NativeFormsDataBinder(getContext(), commonPersonObject.getCaseId());
         binder.setDataLoader(new FamilyMemberDataLoader(familyName, isPrimaryCareGiver, titleString,
                 Utils.metadata().familyMemberRegister.updateEventType, uniqueID));
-        JSONObject jsonObject = binder.getPrePopulatedForm(CoreConstants.JSON_FORM.getAllClientRegistrationForm());
+        JSONObject jsonObject = binder.getPrePopulatedForm(CoreConstants.JSON_FORM.getAllClientUpdateRegistrationInfoForm());
 
         try {
-            //Remove the first step and use the updated one
-            if (jsonObject != null && jsonObject.has(STEP1)) {
-
-                jsonObject.put(JsonFormUtils.ENTITY_ID, baseEntityId);
-                jsonObject.put(COUNT, "1");
-                jsonObject.remove(STEP1);
-                jsonObject.put(STEP1, jsonObject.getJSONObject(STEP2));
-                jsonObject.remove(STEP2);
-                startFormActivity(jsonObject);
-            }
-
+            startFormActivity(jsonObject);
         } catch (Exception e) {
             Timber.e(e);
         }
@@ -210,7 +213,7 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
 
     @Override
     protected void startPmtctRegisration() {
-        //implement
+        //Do nothing - not required here
     }
 
     @Override
@@ -228,6 +231,21 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
     @Override
     public CoreAllClientsMemberContract.Presenter getAllClientsMemberPresenter() {
         return allClientsMemberPresenter;
+    }
+
+    private boolean isOfReproductiveAge(CommonPersonObjectClient commonPersonObject, String gender) {
+        if (gender.equalsIgnoreCase("Female")) {
+            return Utils.isMemberOfReproductiveAge(commonPersonObject, 10, 49);
+        } else if (gender.equalsIgnoreCase("Male")) {
+            return Utils.isMemberOfReproductiveAge(commonPersonObject, 15, 49);
+        } else {
+            return false;
+        }
+    }
+
+    protected void startPregnancyConfirmation() {
+        AncRegisterActivity.startAncRegistrationActivity(AllClientsMemberProfileActivity.this, baseEntityId, PhoneNumber,
+                Constants.JsonForm.getAncPregnancyConfirmation(), null, familyBaseEntityId, familyName);
     }
 
 }

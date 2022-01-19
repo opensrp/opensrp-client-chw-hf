@@ -1,6 +1,134 @@
 {
   "bindobjects": [
     {
+      "name": "ec_pmtct_registration",
+      "columns": [
+        {
+          "column_name": "base_entity_id",
+          "type": "Client",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "pmtct_register_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "pmtct_register_date"
+          }
+        },
+        {
+          "column_name": "hiv_status",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "hiv_status_value"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ec_pmtct_followup",
+      "columns": [
+        {
+          "column_name": "base_entity_id",
+          "type": "Client",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "followup_visit_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "followup_visit_date"
+          }
+        },
+        {
+          "column_name": "known_on_art",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "known_on_art"
+          }
+        },
+        {
+          "column_name": "hvl_suppression",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "hvl_suppression"
+          }
+        },
+        {
+          "column_name": "hvl_suppression_after_eac_1",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "hvl_suppression_after_eac_1"
+          }
+        },
+        {
+          "column_name": "hvl_suppression_after_eac_2",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "hvl_suppression_after_eac_2"
+          }
+        },
+        {
+          "column_name": "eac_day_1",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "eac_day_1"
+          }
+        },
+        {
+          "column_name": "eac_day_2",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "eac_day_2"
+          }
+        },
+        {
+          "column_name": "eac_day_3",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "eac_day_3"
+          }
+        },
+        {
+          "column_name": "eac_month_1",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "eac_month_1"
+          }
+        },
+        {
+          "column_name": "eac_month_2",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "eac_month_2"
+          }
+        },
+        {
+          "column_name": "eac_month_3",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "eac_month_3"
+          }
+        }
+      ]
+    },
+    {
       "name": "ec_family",
       "columns": [
         {
@@ -50,7 +178,7 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "163277AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "gps"
           }
         },
         {
@@ -58,7 +186,7 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "162724AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "nearest_facility"
           }
         },
         {
@@ -184,7 +312,7 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "159635AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "phone_number"
           }
         },
         {
@@ -192,7 +320,7 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "other_phone_number"
           }
         },
         {
@@ -245,11 +373,19 @@
           }
         },
         {
+          "column_name": "marital_status",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "marital_status"
+          }
+        },
+        {
           "column_name": "type_of_disability",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "type_of_disability"
           }
         },
         {
@@ -257,7 +393,7 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "162558AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "disabilities"
           }
         },
         {
@@ -265,7 +401,7 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "1542AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "service_provider"
           }
         },
         {
@@ -428,7 +564,7 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "161543AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "early_bf_1hr"
           }
         },
         {
@@ -436,7 +572,7 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "162558AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "disabilities"
           }
         },
         {
@@ -444,7 +580,7 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "type_of_disability"
           }
         },
         {
@@ -452,7 +588,7 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "165406AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "birth_cert_available"
           }
         },
         {
@@ -460,7 +596,7 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "164147AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "rhc_card"
           }
         },
         {
@@ -468,7 +604,7 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "163301AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "nutrition_status"
           }
         },
         {
@@ -521,7 +657,7 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "162052AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "birth_regist_number"
           }
         },
         {
@@ -687,7 +823,7 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "1427AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "last_menstrual_period"
           }
         },
         {
@@ -695,7 +831,7 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "1438AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "gest_age"
           }
         },
         {
@@ -703,7 +839,7 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "5596AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "edd"
           }
         },
         {
@@ -711,7 +847,7 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "1438AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "no_prev_preg"
           }
         },
         {
@@ -719,7 +855,15 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "5624AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "gravida"
+          }
+        },
+        {
+          "column_name": "fundal_height",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "fundal_height"
           }
         },
         {
@@ -727,7 +871,7 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "164894AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "no_surv_children"
           }
         },
         {
@@ -735,7 +879,7 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "159635AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "phone_number"
           }
         },
         {
@@ -743,7 +887,7 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "1054AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "marital_status"
           }
         },
         {
@@ -763,6 +907,78 @@
           }
         },
         {
+          "column_name": "name_of_hf",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "name_of_hf"
+          }
+        },
+        {
+          "column_name": "mRDT_for_malaria",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "mRDT_for_malaria"
+          }
+        },
+        {
+          "column_name": "hiv",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "hiv"
+          }
+        },
+        {
+          "column_name": "syphilis",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "syphilis"
+          }
+        },
+        {
+          "column_name": "hepatitis",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "hepatitis"
+          }
+        },
+        {
+          "column_name": "height",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "height"
+          }
+        },
+        {
+          "column_name": "date_anc_hiv_test",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "date_anc_hiv_test"
+          }
+        },
+        {
+          "column_name": "hiv_test_at_32",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "hiv_test_at_32"
+          }
+        },
+        {
+          "column_name": "malaria_preventive_therapy",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "malaria_preventive_therapy"
+          }
+        },
+        {
           "column_name": "confirmed_visits",
           "type": "Event",
           "json_mapping": {
@@ -771,11 +987,19 @@
           }
         },
         {
+          "column_name": "visit_number",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "visit_number"
+          }
+        },
+        {
           "column_name": "last_contact_visit",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "159590AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "anc_visit_date"
           }
         }
       ]
@@ -1164,7 +1388,7 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "161033AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "preg_outcome"
           }
         },
         {
@@ -1172,7 +1396,7 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "165248AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "miscarriage_date"
           }
         },
         {
@@ -1180,7 +1404,7 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "5599AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "delivery_date"
           }
         },
         {
@@ -1188,7 +1412,7 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "1572AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "delivery_place"
           }
         },
         {
@@ -1393,7 +1617,7 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "163182AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "problem"
           }
         },
         {
@@ -1401,7 +1625,7 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "problem_other"
           }
         },
         {
@@ -1409,7 +1633,7 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "164378AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "service_before_referral"
           }
         },
         {
@@ -1417,7 +1641,7 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "service_before_referral_other"
           }
         },
         {
@@ -1426,7 +1650,7 @@
           "data_type": "date",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "163181AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "referral_appointment_date"
           }
         },
         {
@@ -1599,7 +1823,7 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "163182AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "problem"
           }
         },
         {
@@ -1615,7 +1839,7 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "164378AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "service_before_referral"
           }
         },
         {
@@ -1986,7 +2210,7 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "other_anc_danger_signs"
           }
         },
         {
@@ -1994,7 +2218,7 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "164378AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "concept": "action_taken_anc_danger_signs"
           }
         },
         {

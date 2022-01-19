@@ -61,7 +61,7 @@
         "key": "fam_name",
         "openmrs_entity_parent": "",
         "openmrs_entity": "person",
-        "openmrs_entity_id": "first_name",
+        "openmrs_entity_id": "fam_name",
         "type": "edit_text",
         "hint": "Surname",
         "edit_type": "name",
@@ -72,6 +72,40 @@
         "v_regex": {
           "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
           "err": "Please enter surname"
+        }
+      },
+      {
+        "key": "client_first_name",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "person",
+        "openmrs_entity_id": "first_name",
+        "type": "edit_text",
+        "hint": "First name",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the first name"
+        },
+        "v_regex": {
+          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
+          "err": "Please enter a valid name"
+        }
+      },
+      {
+        "key": "client_middle_name",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "person",
+        "openmrs_entity_id": "middle_name",
+        "type": "edit_text",
+        "hint": "Middle name",
+        "edit_type": "name",
+        "v_regex": {
+          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
+          "err": "Please enter a valid name"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the middle name"
         }
       },
       {
@@ -149,10 +183,9 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "person_identifier",
         "openmrs_entity_id": "opensrp_id",
-        "type": "barcode",
-        "barcode_type": "qrcode",
+        "type": "edit_text",
+        "read_only": true,
         "hint": "Kituoni ID",
-        "scanButtonText": "Scan QR Code",
         "v_numeric": {
           "value": "true",
           "err": "Please enter a valid ID"
@@ -166,7 +199,7 @@
         "key": "surname",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "",
+        "openmrs_entity_id": "last_name",
         "type": "edit_text",
         "hint": "Surname",
         "edit_type": "name",
@@ -202,6 +235,14 @@
         "v_regex": {
           "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-]*",
           "err": "Please enter a valid name"
+        },
+        "read_only": true,
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "hiv_index_client_contacts_calculation.yml"
+            }
+          }
         }
       },
       {
@@ -219,6 +260,14 @@
         "v_required": {
           "value": "true",
           "err": "Please enter the middle name"
+        },
+        "read_only": true,
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "hiv_index_client_contacts_calculation.yml"
+            }
+          }
         }
       },
       {
@@ -342,7 +391,7 @@
         "key": "phone_number",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "159635AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_id": "phone_number",
         "type": "edit_text",
         "hint": "Client phone number",
         "v_numeric": {
@@ -360,9 +409,9 @@
       },
       {
         "key": "other_phone_number",
-        "openmrs_entity_parent": "159635AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_id": "other_phone_number",
         "type": "edit_text",
         "hint": "Other phone number",
         "v_numeric": {
@@ -416,7 +465,51 @@
         }
       },
       {
-        "key": "relationship_above_15",
+        "key": "relationship_above_15_male",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "relationship",
+        "type": "native_radio",
+        "label": "Relationship",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "sexual_partner",
+            "text": "Sexual partner",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "sexual_partner"
+          },
+          {
+            "key": "needle_sharing_partner",
+            "text": "Needle Sharing partner",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "needle_sharing_partner"
+          },
+          {
+            "key": "biological_father",
+            "text": "Biological Father",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "biological_father"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Relationship is required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "hiv_index_contacts_registration_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "relationship_above_15_female",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "relationship",
@@ -445,13 +538,6 @@
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "biological_mother"
-          },
-          {
-            "key": "biological_father",
-            "text": "Biological Father (If Mother is Deceased)",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "biological_father"
           }
         ],
         "v_required": {

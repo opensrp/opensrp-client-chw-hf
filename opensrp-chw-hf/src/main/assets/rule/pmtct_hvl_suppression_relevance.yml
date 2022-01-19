@@ -1,0 +1,28 @@
+---
+name: step1_hvl_suppression_after_eac_1
+description: hvl_suppression_after_eac relevance
+priority: 1
+condition: "global_eac_visit == 'first_done'"
+actions:
+  - "isRelevant = true"
+---
+name: step1_hvl_suppression_after_eac_2
+description: hvl_suppression_after_eac relevance
+priority: 1
+condition: "global_eac_visit == 'second_done'"
+actions:
+  - "isRelevant = true"
+---
+name: step1_hvl_suppression
+description: hvl_suppression relevance
+priority: 1
+condition: "global_eac_visit == 'not_done'"
+actions:
+  - "isRelevant = true"
+---
+name: step1_notify_continue_regimen_followup
+description: notification to continue regimen relevance
+priority: 1
+condition: "!step1_hvl_suppression.isEmpty() && step1_hvl_suppression <= 1000"
+actions:
+  - "isRelevant = true"

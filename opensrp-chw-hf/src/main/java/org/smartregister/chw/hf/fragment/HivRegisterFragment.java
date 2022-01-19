@@ -54,6 +54,7 @@ public class HivRegisterFragment extends CoreHivRegisterFragment {
     protected void openFollowUpVisit(@Nullable HivMemberObject hivMemberObject) {
 
     }
+
 }
 
 

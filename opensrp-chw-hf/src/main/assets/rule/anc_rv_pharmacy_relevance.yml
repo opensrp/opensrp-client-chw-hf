@@ -1,0 +1,7 @@
+---
+name: step1_malaria_preventive_therapy
+description: malaria preventive therapy should be recorded if gestational age is greater than 13
+priority: 1
+condition: "global_gestational_age >= 13 && !global_malaria_dosage.equals('ipt4')"
+actions:
+  - "isRelevant = true"

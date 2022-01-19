@@ -35,4 +35,37 @@
     <string name="chw_followed_details">Has the client been followed up by chw</string>
     <string name="chw_agreed_to_be_tested">Has the client agree to be tested</string>
     <string name="chw_test_location">Client test location</string>
+    <string name="anc_first_visit_medical_and_surgical_history">Medical And Surgical History</string>
+    <string name="anc_first_visit_baseline_investigation">Baseline Investigation</string>
+    <string name="anc_first_visit_obstetric_examination">Obstetric Examination</string>
+    <string name="anc_first_visit_tt_vaccination">TT Vaccination</string>
+    <string name="anc_first_and_recurring_visit_counselling">Counselling</string>
+    <string name="anc_recuring_visit_triage">Triage</string>
+    <string name="anc_recuring_visit_cunsultation">Consultation</string>
+    <string name="anc_recuring_visit_lab_tests">Lab Tests</string>
+    <string name="anc_recuring_visit_pharmacy">Pharmacy</string>
+    <string name="anc_recuring_visit_pregnancy_status">Pregnancy Status</string>
+    <string name="anc_recuring_visit_review_birth_and_emergency_plan">Review Birth and Emergency Plan</string>
+    <string name="PMTCT">PMTCT</string>
+    <string name="record_anc_first_visit">Record ANC First Visit</string>
+    <string name="record_anc_followup_visit">Record ANC Followup Visit</string>
+    <string name="anc_first_visit">ANC First Visit</string>
+    <string name="anc_followup_visit">ANC Followup Visit</string>
+    <string name="visit_in_progress">%s visit still in progress</string>
+    <string name="optional"></string>
+    <string name="record_eac_first_visit">First EAC Visit</string>
+    <string name="record_eac_second_visit">Second EAC Visit</string>
+    <string name="pmtct_followup_form_title">PMTCT Followup</string>
+    <string name="record_first_pmtct">Record PMTCT First Visit</string>
+    <string name="action_pregnancy_confirmation_referrals">Pregnancy Confirmation</string>git p
+    <string name="pmtct_pending_registration">PMTCT Pending Registration</string>
+    <string name="register_button_text">REGISTER</string>
+    <string name="anc_pregnacy_status">Pregnancy Status: </string>
+    <string name="anc_pregnacy_status_viable">Viable</string>
+    <string name="anc_pregnacy_status_fetal_death">Intrauterine Fetal Death (Still Birth)</string>
+    <string name="anc_pregnacy_status_spontaneous_abortion">Spontaneous Abortion</string>
+    <string name="any_changes_you_make">Any Changes You Made Will Be Discarded</string>
+    <string name="gestation_age">Gestation Age: {0} Weeks</string>
+    <string name="malaria">mRDT for Malaria: {0}</string>
+
 </resources>

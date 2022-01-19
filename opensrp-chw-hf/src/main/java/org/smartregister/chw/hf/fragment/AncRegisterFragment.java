@@ -3,12 +3,12 @@ package org.smartregister.chw.hf.fragment;
 import android.database.Cursor;
 
 import org.smartregister.chw.core.fragment.CoreAncRegisterFragment;
-import org.smartregister.chw.core.presenter.AncRegisterFragmentPresenter;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.CoreReferralUtils;
 import org.smartregister.chw.core.utils.Utils;
 import org.smartregister.chw.hf.activity.AncMemberProfileActivity;
 import org.smartregister.chw.hf.model.AncRegisterFragmentModel;
+import org.smartregister.chw.hf.presenter.HfAncRegisterFragmentPresenter;
 import org.smartregister.chw.hf.provider.HfAncRegisterProvider;
 import org.smartregister.chw.hf.utils.HfReferralUtils;
 import org.smartregister.commonregistry.CommonPersonObject;
@@ -38,7 +38,7 @@ public class AncRegisterFragment extends CoreAncRegisterFragment {
         if (getActivity() == null) {
             return;
         }
-        presenter = new AncRegisterFragmentPresenter(this, new AncRegisterFragmentModel(), null);
+        presenter = new HfAncRegisterFragmentPresenter(this, new AncRegisterFragmentModel(), null);
     }
 
     @Override

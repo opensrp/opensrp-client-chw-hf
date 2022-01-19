@@ -117,6 +117,14 @@
           },
           {
             "field": "eventType",
+            "field_value": "Pregnancy Confirmation",
+            "creates_case": [
+              "ec_anc_register",
+              "ec_anc_log"
+            ]
+          },
+          {
+            "field": "eventType",
             "field_value": "ANC Registration",
             "creates_case": [
               "ec_anc_register",
@@ -125,7 +133,21 @@
           },
           {
             "field": "eventType",
-            "field_value": "ANC Home Visit",
+            "field_value": "ANC First Facility Visit",
+            "creates_case": [
+              "ec_anc_register"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "ANC Close Followup Visits",
+            "closes_case": [
+              "ec_anc_register"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "ANC Recurring Facility Visit",
             "creates_case": [
               "ec_anc_register"
             ]
@@ -363,6 +385,35 @@
             "field_value": "HIV Index Contact Community Followup Referral",
             "creates_case": [
               "ec_hiv_index_hf"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "PMTCT Registration",
+            "creates_case": [
+              "ec_pmtct_registration",
+              "ec_pmtct_followup"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "PMTCT Follow-up Visit",
+            "creates_case": [
+              "ec_pmtct_followup"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "PMTCT EAC First Visit",
+            "creates_case": [
+              "ec_pmtct_followup"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "PMTCT EAC Second Visit",
+            "creates_case": [
+              "ec_pmtct_followup"
             ]
           }
         ]

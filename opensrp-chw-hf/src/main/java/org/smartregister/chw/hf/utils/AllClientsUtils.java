@@ -29,6 +29,7 @@ import org.smartregister.chw.hf.activity.TbProfileActivity;
 import org.smartregister.chw.hf.dao.FamilyDao;
 import org.smartregister.chw.hf.model.FamilyDetailsModel;
 import org.smartregister.chw.hiv.dao.HivDao;
+import org.smartregister.chw.pmtct.dao.PmtctDao;
 import org.smartregister.chw.tb.dao.TbDao;
 import org.smartregister.clientandeventmodel.Client;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
@@ -69,7 +70,7 @@ public class AllClientsUtils {
                     AllClientsUtils.goToChildProfile(activity, commonPersonObjectClient, bundle);
                     break;
                 case CoreConstants.REGISTER_TYPE.ANC:
-                    AllClientsUtils.goToAncProfile(activity, commonPersonObjectClient, bundle);
+                    AllClientsUtils.goToAncProfile(activity, commonPersonObjectClient);
                     break;
                 case CoreConstants.REGISTER_TYPE.PNC:
                     AllClientsUtils.gotToPncProfile(activity, commonPersonObjectClient, bundle);
@@ -116,9 +117,8 @@ public class AllClientsUtils {
         activity.startActivity(initProfileActivityIntent(activity, patient, bundle, PncMemberProfileActivity.class));
     }
 
-    private static void goToAncProfile(Activity activity, CommonPersonObjectClient patient, Bundle bundle) {
-        patient.getColumnmaps().putAll(CoreChwApplication.ancRegisterRepository().getAncCommonPersonObject(patient.entityId()).getColumnmaps());
-        activity.startActivity(initProfileActivityIntent(activity, patient, bundle, AncMemberProfileActivity.class));
+    private static void goToAncProfile(Activity activity, CommonPersonObjectClient patient) {
+        AncMemberProfileActivity.startMe(activity,patient.getCaseId());
     }
 
     private static void gotToMalariaProfile(Activity activity, CommonPersonObjectClient patient) {
@@ -225,5 +225,8 @@ public class AllClientsUtils {
 
     public static void goToTbProfile(FragmentActivity activity, CommonPersonObjectClient tbClient) {
         TbProfileActivity.startTbProfileActivity(activity,TbDao.getMember(tbClient.getCaseId()));
+    }
+    public static void updatePmtctMenuItems(String baseEntityId, Menu menu){
+        menu.findItem(R.id.action_pmtct_register).setVisible(!PmtctDao.isRegisteredForPmtct(baseEntityId));
     }
 }

@@ -111,74 +111,74 @@
         "key": "danger_signs_present",
         "type": "check_box",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "160939AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_id": "danger_signs_present",
         "openmrs_entity_parent": "",
         "label": "Je, mama alikuwa na dalili  yoyote ya hatari ",
         "combine_checkbox_option_values": "true",
         "options": [
           {
             "key": "Fever",
-            "openmrs_choice_id": "140238AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_choice_id": "Fever",
             "text": "Homa",
             "value": false
           },
           {
             "key": "Bleeding_vaginally",
-            "openmrs_choice_id": "150802AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_choice_id": "Bleeding_vaginally",
             "text": "Damu kutoka ukeni",
             "value": false
           },
           {
             "key": "Severe_headache",
-            "openmrs_choice_id": "139081AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_choice_id": "Severe_headache",
             "text": "Maumivu ya kichwa",
             "value": false
           },
           {
             "key": "Convulsions",
-            "openmrs_choice_id": "164483AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_choice_id": "Convulsions",
             "text": "Degedege",
             "value": false
           },
           {
             "key": "Difficulty_breathing",
-            "openmrs_choice_id": "142373AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_choice_id": "Difficulty_breathing",
             "text": "Kushindwa kupumua",
             "value": false
           },
           {
             "key": "Severe_abdominal_pain",
-            "openmrs_choice_id": "165271AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_choice_id": "Severe_abdominal_pain",
             "text": "Maumivu makali ya tumbo",
             "value": false
           },
           {
             "key": "Swelling_of_the_face_and/or_hands",
-            "openmrs_choice_id": "460AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_choice_id": "Swelling_of_the_face_and",
             "text": "Kuvimba uso na / au mikono",
             "value": false
           },
           {
             "key": "Discoloured_or_watery_liquid_vaginal_discharge_with_a_bad_smell",
-            "openmrs_choice_id": "123395AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_choice_id": "Discoloured_or_watery_liquid_vaginal_discharge_with_a_bad_smell",
             "text": "Kutoka uchafu / majimaji ukeni yenye harufu mbaya",
             "value": false
           },
           {
             "key": "No_movement_unusual_movement_for_a_child_in_the_womb",
-            "openmrs_choice_id": "113377AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_choice_id": "No_movement_unusual_movement_for_a_child_in_the_womb",
             "text": "Kutocheza / kucheza kusiko kwa kawaida kwa mtoto aliye tumboni",
             "value": false
           },
           {
             "key": "Other",
-            "openmrs_choice_id": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_choice_id": "Other",
             "text": "Nyingine",
             "value": false
           },
           {
             "key": "None",
-            "openmrs_choice_id": "",
+            "openmrs_choice_id": "None",
             "text": "None",
             "value": false
           }
@@ -195,7 +195,7 @@
         "key": "other_anc_danger_signs",
         "type": "edit_text",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_id": "other_anc_danger_signs",
         "openmrs_entity_parent": "",
         "edit_type": "name",
         "hint": "Dalili nyinginezo  za  hatari",
@@ -215,28 +215,28 @@
         "key": "action_taken_anc_danger_signs",
         "type": "native_radio",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "164378AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_id": "action_taken_anc_danger_signs",
         "openmrs_entity_parent": "",
         "label": "Hatua zilizochukuliwa na kituo cha kutolea huduma",
         "options": [
           {
             "key": "No_action_taken",
             "openmrs_entity": "",
-            "openmrs_entity_id": "1107AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_entity_id": "No_action_taken",
             "openmrs_entity_parent": "",
             "text": "Hakuna hatua zilizochukuliwa"
           },
           {
             "key": "Managed",
             "openmrs_entity": "",
-            "openmrs_entity_id": "1692AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_entity_id": "Managed",
             "openmrs_entity_parent": "",
             "text": "Amefukuza"
           },
           {
             "key": "Referred",
             "openmrs_entity": "",
-            "openmrs_entity_id": "1648AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_entity_id": "Referred",
             "openmrs_entity_parent": "",
             "text": "Amepewa rufaa"
           }
@@ -257,14 +257,14 @@
           {
             "key": "Discharged",
             "openmrs_entity": "",
-            "openmrs_entity_id": "1654AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_entity_id": "Discharged",
             "openmrs_entity_parent": "",
             "text": "Amelazwa"
           },
           {
             "key": "Died",
             "openmrs_entity": "",
-            "openmrs_entity_id": "159AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "openmrs_entity_id": "Died",
             "openmrs_entity_parent": "",
             "text": "Amekufa"
           }

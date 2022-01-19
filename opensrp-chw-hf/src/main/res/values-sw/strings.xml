@@ -35,4 +35,13 @@
     <string name="chw_followed_details">Waja ameonana na mtajwa</string>
     <string name="chw_agreed_to_be_tested">Amekubali kupimwa</string>
     <string name="chw_test_location">Atapimwa wapi</string>
+    <string name="optional"></string>
+    <string name="action_pregnancy_confirmation_referrals">Pregnancy Confirmation</string>
+    <string name="anc_pregnacy_status">Hali ya ujauzito: "</string>
+    <string name="anc_pregnacy_status_viable">Viable</string>
+    <string name="anc_pregnacy_status_fetal_death">Intrauterine Fetal Death (Still Birth)</string>
+    <string name="anc_pregnacy_status_spontaneous_abortion">Spontaneous Abortion</string>
+    <string name="any_changes_you_make">Any Changes You Make Will Be Discarded</string>
+    <string name="gestation_age">Umri wa Mimba: Wiki {0}</string>
+    <string name="malaria">Malaria: {0}</string>
 </resources>

@@ -110,7 +110,7 @@
         "key": "nearest_facility",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "162724AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "openmrs_entity_id": "nearest_facility",
         "openmrs_data_type": "text",
         "type": "tree",
         "hint": "Kituo cha karibu cha kutolea huduma za afya",

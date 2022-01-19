@@ -61,6 +61,18 @@
                 android:value=".activity.FamilyProfileActivity" />
         </activity>
 
+        <activity android:name=".activity.PmtctRegisterActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/HFTheme.NoActionBar"/>
+        <activity android:name=".activity.PmtctProfileActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/HFTheme.NoActionBar"/>
+        <activity android:name=".activity.PmtctFollowupVisitActivity"
+            android:theme="@style/HFTheme.NoActionBar"/>
+        <activity android:name=".activity.PmtctEacFirstVisitActivity"
+            android:theme="@style/HFTheme.NoActionBar"/>
+        <activity android:name=".activity.PmtctEacSecondVisitActivity"
+            android:theme="@style/HFTheme.NoActionBar"/>
         <activity
             android:name="org.smartregister.chw.hf.activity.ChildRegisterActivity"
             android:screenOrientation="portrait"
@@ -110,6 +122,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
+            android:name="org.smartregister.chw.hf.activity.PregnancyConfirmationViewActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
             android:name="org.smartregister.chw.hf.activity.CommunityFollowupFeedbackViewActivity"
             android:screenOrientation="portrait"
             android:theme="@style/HFTheme.NoActionBar" />
@@ -122,6 +138,14 @@
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
             android:name=".activity.AncMemberProfileActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.AncFirstFacilityVisitActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.AncRecurringFacilityVisitActivity"
             android:screenOrientation="portrait"
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
@@ -266,6 +290,7 @@
         <service android:name="org.smartregister.chw.core.sync.intent.SyncClientEventsPerTaskIntentService" />
         <service android:name="org.smartregister.chw.core.sync.intent.CloseExpiredReferralsIntentService" />
         <service android:name="org.smartregister.sync.intent.SyncLocationsByTeamIdsIntentService" />
+        <service android:name="org.smartregister.sync.intent.SyncLocationsByLevelAndTagsIntentService" />
 
         <uses-library
             android:name="org.apache.http.legacy"

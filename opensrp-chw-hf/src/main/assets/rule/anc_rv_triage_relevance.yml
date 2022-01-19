@@ -1,0 +1,7 @@
+---
+name: step1_client_concern
+description:  client_concern relevance
+priority: 1
+condition: "step1_reasons_to_clinic.contains('sick_concerned')"
+actions:
+  - "isRelevant = true"

@@ -1,0 +1,71 @@
+---
+name: step1_hiv
+description:  HIV Test Results should be recorded when gest_age is greater than 32
+priority: 1
+condition: "!global_hiv_test_complete || (global_gestational_age >= 32 && !global_hiv_test_at_32_complete)"
+actions:
+  - "isRelevant = true"
+---
+name: step1_date_anc_hiv_test
+description:  HIV Test Results should be recorded when gest_age is greater than 32
+priority: 1
+condition: "(!global_hiv_test_complete || (global_gestational_age >= 32 && !global_hiv_test_at_32_complete)) && !step1_hiv.equals('test_not_conducted')"
+actions:
+  - "isRelevant = true"
+  -
+---
+name: step1_hiv_test_at_32
+description: Check to mark if test was conducted at week 32 if client was marked negative
+priority: 1
+condition: "global_gestational_age >= 32 && global_hiv_status.contains('negative')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_hepatitis
+description:  Hepatitis test should show up if wasn't conducted in first visit
+priority: 1
+condition: "!global_hepatitis_test_complete"
+actions:
+  - "isRelevant = true"
+---
+name: step1_mRDT_for_malaria
+description:  mRDT_for_malaria test should show up if wasn't conducted in first visit
+priority: 1
+condition: "!global_malaria_test_complete"
+actions:
+  - "isRelevant = true"
+---
+name: step1_syphilis
+description:  syphilis test should show up if wasn't conducted in first visit
+priority: 1
+condition: "!global_syphilis_test_complete"
+actions:
+  - "isRelevant = true"
+---
+name: step1_prompt_for_moderate_anaemia_management
+description:  prompt for moderate anaemia management
+priority: 1
+condition: "Float.parseFloat(step1_hb_level) > 8.5 && Float.parseFloat(step1_hb_level) <= 11"
+actions:
+  - "isRelevant = true"
+---
+name: step1_blood_for_glucose
+description:  blood for glucose
+priority: 1
+condition: "!step1_type_of_blood_for_glucose_test.equals('')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_prompt_for_gestational_diabetes_mellitus
+description:  prompt for gestational diabetes mellitus
+priority: 1
+condition: " (step1_type_of_blood_for_glucose_test.equals('rgb') && step1_blood_for_glucose > 11.0) ||  (step1_type_of_blood_for_glucose_test.equals('btt') && step1_blood_for_glucose > 7.8) "
+actions:
+  - "isRelevant = true"
+---
+name: step1_prompt_for_hypoglycaemia
+description:  prompt for hypoglycaemia
+priority: 1
+condition: "(step1_type_of_blood_for_glucose_test.equals('rgb') && step1_blood_for_glucose < 3) ||  (step1_type_of_blood_for_glucose_test.equals('btt') && step1_blood_for_glucose < 3.5) "
+actions:
+  - "isRelevant = true"

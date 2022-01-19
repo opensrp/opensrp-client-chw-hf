@@ -1,0 +1,16 @@
+---
+name: step1_gest_age
+description: Gestational age calculated
+priority: 1
+condition: "true"
+actions:
+  - "calculation = (helper.getDifferenceDays(global_last_menstrual_period)-helper.getDifferenceDays(helper.getDateToday())) /7"
+---
+name: step1_bmi
+description: BMI calculated
+priority: 1
+condition: "true"
+actions:
+  - "calculation = Float.parseFloat(step1_weight) / (Float.parseFloat(step1_height) * Float.parseFloat(step1_height) / 10000)"
+
+

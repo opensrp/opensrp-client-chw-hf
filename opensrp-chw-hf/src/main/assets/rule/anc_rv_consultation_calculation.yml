@@ -1,0 +1,21 @@
+---
+name: step1_gest_age
+description: Gestational age calculated
+priority: 1
+condition: "true"
+actions:
+  - "calculation = (helper.getDifferenceDays(global_last_menstrual_period)-helper.getDifferenceDays(helper.getDateToday())) /7"
+---
+name: step1_height_calculated
+description: height calculated
+priority: 1
+condition: "true"
+actions:
+  - "calculation = global_client_age <  25 ? step1_height : global_client_height"
+---
+name: step1_bmi
+description: BMI calculated
+priority: 1
+condition: "true"
+actions:
+  - "calculation = Float.parseFloat(step1_weight) / (Float.parseFloat(step1_height_calculated) * Float.parseFloat(step1_height_calculated) / 10000)"

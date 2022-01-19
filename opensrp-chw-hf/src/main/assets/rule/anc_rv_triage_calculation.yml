@@ -1,0 +1,23 @@
+---
+name: step1_gest_age
+description: Gestational age calculated
+priority: 1
+condition: "true"
+actions:
+  - "calculation = (helper.getDifferenceDays(global_last_menstrual_period)-helper.getDifferenceDays(helper.getDateToday())) /7"
+
+---
+name: step1_gest_age_note
+description: Gestational age calculated
+priority: 1
+condition: "true"
+actions:
+  - "calculation = step1_gest_age + ' weeks'"
+---
+name: step1_visit_number
+description: Visit Number
+priority: 1
+condition: "true"
+actions:
+  - "calculation = global_current_visit_number + 1"
+
