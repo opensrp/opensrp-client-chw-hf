@@ -46,10 +46,11 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
                    boolean isObstetricExaminationDone = computeCompletionStatus(obs, "abdominal_scars");
                    boolean isBaselineInvestigationDone = computeCompletionStatus(obs, "glucose_in_urine");
                    boolean isTTVaccinationDone = computeCompletionStatus(obs, "tt_card");
+                   boolean isCounsellingDone = computeCompletionStatus(obs, "given_counselling");
                    if(isMedicalAndSurgicalHistoryDone &&
                       isObstetricExaminationDone &&
                       isBaselineInvestigationDone &&
-                      isTTVaccinationDone  ){
+                      isTTVaccinationDone && isCounsellingDone ){
                        ancFirstVisitsCompleted.add(v);
                    }
                } catch (Exception e){
@@ -69,7 +70,8 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
                             boolean isConsultationDone = computeCompletionStatus(obs, "examination_findings");
                             boolean isLabTestsDone = computeCompletionStatus(obs, "hb_level_test");
                             boolean isPharmacyDone = computeCompletionStatus(obs, "iron_folate_supplements");
-                            if(isConsultationDone && isLabTestsDone && isPharmacyDone){
+                            boolean isCounsellingDone = computeCompletionStatus(obs, "given_counselling");
+                            if(isConsultationDone && isLabTestsDone && isPharmacyDone && isCounsellingDone){
                                 ancFollowupVisitsCompleted.add(v);
                             }
                         }
