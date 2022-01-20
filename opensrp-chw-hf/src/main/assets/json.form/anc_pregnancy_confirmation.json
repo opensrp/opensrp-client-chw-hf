@@ -52,10 +52,10 @@
     "next": "step2",
     "fields": [
       {
+        "key": "danger_signs",
         "type": "check_box",
-        "key": "danger_signs_analysis",
         "label": "The HCW performs a quick analysis/examination to identify clients with danger signs",
-        "openmrs_entity_id": "danger_signs_analysis",
+        "openmrs_entity_id": "danger_signs",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "exclusive": [
@@ -124,6 +124,13 @@
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "severe_pain"
+          },
+          {
+            "key": "severe_breathing_difficulty",
+            "text": "Severe Breathing Difficulty",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "severe_breathing_difficulty"
           },
           {
             "key": "in_labour",
@@ -196,12 +203,12 @@
         }
       },
       {
+        "key": "upt",
         "type": "native_radio",
         "openmrs_entity_id": "upt",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
         "label": "Please select UPT Results",
-        "key": "upt",
         "options": [
           {
             "text": "Positive",
@@ -231,12 +238,12 @@
         }
       },
       {
+        "key": "uss",
         "type": "native_radio",
         "openmrs_entity_id": "uss",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
         "label": "Please select USS results",
-        "key": "uss",
         "options": [
           {
             "key": "present_gestation_sac",
@@ -488,7 +495,7 @@
         "text_color": "#CF0800",
         "toaster_type": "problem",
         "relevance": {
-          "step1:danger_signs_analysis": {
+          "step1:danger_signs": {
             "ex-checkbox": [
               {
                 "or": [
@@ -496,6 +503,7 @@
                   "headache_visual_disturbance",
                   "severely_pale",
                   "severe_vomiting",
+                  "severe_breathing_difficulty",
                   "convulsion",
                   "looking_very_ill",
                   "fever",
@@ -513,7 +521,7 @@
         "key": "see_a_doctor",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "see_a_doctor",
+        "openmrs_entity_id": "",
         "type": "toaster_notes",
         "text": "Please request the client to consult a doctor",
         "toaster_type": "warning",

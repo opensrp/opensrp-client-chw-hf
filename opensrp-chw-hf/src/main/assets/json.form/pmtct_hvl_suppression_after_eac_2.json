@@ -51,8 +51,8 @@
     "title": "HVL Suppression",
     "fields": [
       {
-        "type": "edit_text",
         "key": "hvl_suppression_after_eac_2",
+        "type": "edit_text",
         "hint": "HVL Suppression",
         "openmrs_entity_id": "hvl_suppression_after_eac_2",
         "openmrs_entity": "concept",
@@ -67,11 +67,11 @@
         }
       },
       {
-        "key": "notify_continue_regimen_followup",
+        "key": "notify_continue_regimen",
         "type": "toaster_notes",
         "text": "Continue current regimen",
-        "openmrs_entity_id": "notify_continue_regimen_followup",
-        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
         "openmrs_entity_parent": "",
         "toaster_info_text": "Repeat HVL after 6, 12 and 18 months",
         "toaster_type": "info",
@@ -83,8 +83,8 @@
         }
       },
       {
-        "type": "spinner",
         "key": "choose_presc_line",
+        "type": "spinner",
         "hint": "Prescribe a new regimen",
         "openmrs_entity_id": "choose_presc_line",
         "openmrs_entity": "concept",
@@ -116,8 +116,8 @@
         }
       },
       {
-        "type": "spinner",
         "key": "first_line",
+        "type": "spinner",
         "hint": "Prescription for ARVs \nFirst Line",
         "openmrs_entity_id": "first_line",
         "openmrs_entity": "concept",
@@ -158,8 +158,8 @@
         }
       },
       {
-        "type": "spinner",
         "key": "second_line",
+        "type": "spinner",
         "hint": "Prescription for ARVs \nSecond Line",
         "openmrs_entity_id": "second_line",
         "openmrs_entity": "concept",
@@ -206,8 +206,8 @@
         }
       },
       {
-        "type": "spinner",
         "key": "third_line",
+        "type": "spinner",
         "hint": "Prescription for ARVs \nThird Line",
         "openmrs_entity_id": "third_line",
         "openmrs_entity": "concept",

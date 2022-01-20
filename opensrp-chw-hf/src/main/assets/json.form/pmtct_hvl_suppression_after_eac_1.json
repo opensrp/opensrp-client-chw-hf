@@ -51,8 +51,8 @@
     "title": "HVL Suppression",
     "fields": [
       {
-        "type": "edit_text",
         "key": "hvl_suppression_after_eac_1",
+        "type": "edit_text",
         "hint": "HVL Suppression",
         "openmrs_entity_id": "hvl_suppression_after_eac_1",
         "openmrs_entity": "concept",
@@ -67,11 +67,11 @@
         }
       },
       {
-        "key": "notify_continue_regimen_followup",
+        "key": "notify_continue_regimen",
         "type": "toaster_notes",
         "text": "Continue current regimen",
-        "openmrs_entity_id": "notify_continue_regimen_followup",
-        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
         "openmrs_entity_parent": "",
         "toaster_info_text": "Repeat HVL after 6, 12 and 18 months",
         "toaster_type": "info",
@@ -86,8 +86,8 @@
         "key": "notify_continue_eac_second",
         "type": "toaster_notes",
         "text": "Client will be enrolled to second EAC",
-        "openmrs_entity_id": "notify_continue_eac_second",
-        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
         "openmrs_entity_parent": "",
         "toaster_type": "problem",
         "relevance": {

@@ -50,8 +50,8 @@
     "title": "Baseline Investigation",
     "fields": [
       {
-        "type": "native_radio",
         "key": "glucose_in_urine",
+        "type": "native_radio",
         "label": "Glucose In Urine",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "glucose_in_urine",
@@ -140,8 +140,8 @@
         }
       },
       {
-        "type": "native_radio",
         "key": "protein_in_urine",
+        "type": "native_radio",
         "label": "Protein In Urine",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "protein_in_urine",
@@ -230,11 +230,11 @@
         }
       },
       {
+        "key": "blood_group",
         "type": "spinner",
-        "key": "blood_grouping",
         "hint": "Blood Group",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "blood_grouping",
+        "openmrs_entity_id": "blood_group",
         "openmrs_entity_parent": "",
         "values": [
           "A",
@@ -260,8 +260,8 @@
         }
       },
       {
-        "type": "native_radio",
         "key": "rh_factor",
+        "type": "native_radio",
         "label": "Rh",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "rh_factor",
@@ -286,26 +286,26 @@
         }
       },
       {
+        "key": "hb_level_test",
         "type": "native_radio",
-        "key": "hb_level_test_fv",
         "label": "HB Level Test",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "hb_level_test_fv",
+        "openmrs_entity_id": "hb_level_test",
         "openmrs_entity_parent": "",
         "options": [
           {
-            "key": "hb_level_fv_conducted",
+            "key": "test_conducted",
             "text": "HB Level Test conducted",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "hb_level_fv_conducted",
+            "openmrs_entity_id": "test_conducted",
             "openmrs_entity_parent": ""
           },
           {
-            "key": "hb_level_fv_not_conducted",
+            "key": "test_not_conducted",
             "text": "HB Level Test not conducted",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "hb_level_fv_not_conducted"
+            "openmrs_entity_id": "test_not_conducted"
           }
         ],
         "v_required": {
@@ -314,8 +314,8 @@
         }
       },
       {
-        "type": "edit_text",
         "key": "hb_level",
+        "type": "edit_text",
         "hint": "HB Level (g/dl)",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "hb_level",
@@ -337,9 +337,9 @@
           "err": "Please enter the HB level"
         },
         "relevance": {
-          "step1:hb_level_test_fv": {
+          "step1:hb_level_test": {
             "type": "string",
-            "ex": "equalTo(., \"hb_level_fv_conducted\")"
+            "ex": "equalTo(., \"test_conducted\")"
           }
         }
       },
@@ -375,10 +375,10 @@
         }
       },
       {
-        "key": "reason_not_conducting_fv_hb_test",
+        "key": "reason_not_conducting_hb_test",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "reason_not_conducting_fv_hb_test",
+        "openmrs_entity_id": "reason_not_conducting_hb_test",
         "type": "spinner",
         "hint": "Reason as to why the HB Level test was not conducted",
         "values": [
@@ -407,17 +407,17 @@
           "err": "Please select a reason"
         },
         "relevance": {
-          "step1:hb_level_test_fv": {
+          "step1:hb_level_test": {
             "type": "string",
-            "ex": "equalTo(., \"hb_level_fv_not_conducted\")"
+            "ex": "equalTo(., \"test_not_conducted\")"
           }
         }
       },
       {
-        "key": "other_reason_hb_fv_test_not_conducted",
+        "key": "other_reason_hb_test_not_conducted",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "other_reason_hb_fv_test_not_conducted",
+        "openmrs_entity_id": "other_reason_hb_test_not_conducted",
         "type": "edit_text",
         "hint": "Specify other reasons for not conducting the HB Level Test",
         "edit_type": "name",
@@ -426,33 +426,33 @@
           "err": "Please enter the reason"
         },
         "relevance": {
-          "step1:reason_not_conducting_fv_hb_test": {
+          "step1:reason_not_conducting_hb_test": {
             "type": "string",
             "ex": "equalTo(., \"other\")"
           }
         }
       },
       {
-        "key": "blood_for_glucose_fv_test",
+        "key": "blood_for_glucose_test",
         "type": "native_radio",
         "label": "Blood For Glucose Test",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "blood_for_glucose_fv_test",
+        "openmrs_entity_id": "blood_for_glucose_test",
         "openmrs_entity_parent": "",
         "options": [
           {
-            "key": "blood_glucose_fv_conducted",
+            "key": "test_conducted",
             "text": "Blood for Glucose Test conducted",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "blood_glucose_fv_conducted",
+            "openmrs_entity_id": "test_conducted",
             "openmrs_entity_parent": ""
           },
           {
-            "key": "blood_glucose_fv_not_conducted",
+            "key": "test_not_conducted",
             "text": "Blood for Glucose Test not conducted",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "blood_glucose_fv_not_conducted"
+            "openmrs_entity_id": "test_not_conducted"
           }
         ],
         "v_required": {
@@ -463,7 +463,7 @@
       {
         "key": "type_of_blood_for_glucose_test",
         "type": "native_radio",
-        "label": "Type Blood For Glucose Test Conducted",
+        "label": "Type Of Blood For Glucose Test Conducted",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "type_of_blood_for_glucose_test",
         "openmrs_entity_parent": "",
@@ -488,15 +488,15 @@
           "err": "Please answer this question"
         },
         "relevance": {
-          "step1:blood_for_glucose_fv_test": {
+          "step1:blood_for_glucose_test": {
             "type": "string",
-            "ex": "equalTo(., \"blood_glucose_fv_conducted\")"
+            "ex": "equalTo(., \"test_conducted\")"
           }
         }
       },
       {
-        "type": "edit_text",
         "key": "blood_for_glucose",
+        "type": "edit_text",
         "hint": "Blood For Glucose (mmol/L)",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "blood_for_glucose",
@@ -558,10 +558,10 @@
         }
       },
       {
-        "key": "reason_not_conducting_fv_blood_glucose_test",
+        "key": "reason_not_conducting_blood_glucose_test",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "reason_not_conducting_fv_blood_glucose_test",
+        "openmrs_entity_id": "reason_not_conducting_blood_glucose_test",
         "type": "spinner",
         "hint": "Reason as to why the Blood for Glucose test was not conducted",
         "values": [
@@ -590,17 +590,17 @@
           "err": "Please select a reason"
         },
         "relevance": {
-          "step1:blood_for_glucose_fv_test": {
+          "step1:blood_for_glucose_test": {
             "type": "string",
-            "ex": "equalTo(., \"blood_glucose_fv_not_conducted\")"
+            "ex": "equalTo(., \"test_not_conducted\")"
           }
         }
       },
       {
-        "key": "other_reason_fv_blood_glucose_test_not_conducted",
+        "key": "other_reason_blood_glucose_test_not_conducted",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "other_reason_fv_blood_glucose_test_not_conducted",
+        "openmrs_entity_id": "other_reason_blood_glucose_test_not_conducted",
         "type": "edit_text",
         "hint": "Specify other reasons for not conducting the Blood for Glucose test",
         "edit_type": "name",
@@ -609,15 +609,15 @@
           "err": "Please enter the reason"
         },
         "relevance": {
-          "step1:reason_not_conducting_fv_blood_glucose_test": {
+          "step1:reason_not_conducting_blood_glucose_test": {
             "type": "string",
             "ex": "equalTo(., \"other\")"
           }
         }
       },
       {
-        "type": "native_radio",
         "key": "mRDT_for_malaria",
+        "type": "native_radio",
         "label": "mRDT for Malaria Results",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "mRDT_for_malaria",
@@ -721,8 +721,8 @@
         }
       },
       {
-        "type": "native_radio",
         "key": "hiv",
+        "type": "native_radio",
         "label": "HIV Test Results",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "hiv",
@@ -750,26 +750,6 @@
         "v_required": {
           "value": "true",
           "err": "Please answer this question"
-        }
-      },
-      {
-        "key": "date_anc_hiv_test",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "date_anc_hiv_test",
-        "type": "hidden",
-        "calculation": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "anc_fv_baseline_investigation_calculation.yml"
-            }
-          }
-        },
-        "relevance": {
-          "step1:hiv": {
-            "type": "string",
-            "ex": "notEqualTo(., \"test_not_conducted\")"
-          }
         }
       },
       {
@@ -861,8 +841,8 @@
         }
       },
       {
-        "type": "native_radio",
         "key": "syphilis",
+        "type": "native_radio",
         "label": "Syphilis Test Results",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "syphilis",
@@ -966,8 +946,8 @@
         }
       },
       {
-        "type": "native_radio",
         "key": "hepatitis",
+        "type": "native_radio",
         "label": "Hepatitis B Test Results",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "hepatitis",
@@ -1067,6 +1047,26 @@
           "step1:reason_for_not_conducting_hepatitis_test": {
             "type": "string",
             "ex": "equalTo(., \"other\")"
+          }
+        }
+      },
+      {
+        "key": "date_anc_hiv_test",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "date_anc_hiv_test",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_baseline_investigation_calculation.yml"
+            }
+          }
+        },
+        "relevance": {
+          "step1:hiv": {
+            "type": "string",
+            "ex": "notEqualTo(., \"test_not_conducted\")"
           }
         }
       }

@@ -50,8 +50,8 @@
     "title": "TT Vaccination",
     "fields": [
       {
-        "type": "native_radio",
         "key": "has_tt_card",
+        "type": "native_radio",
         "label": "Does the client have TT card",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "tt_card",
@@ -76,8 +76,8 @@
         }
       },
       {
-        "type": "native_radio",
         "key": "if_vaccinated_per_schedule",
+        "type": "native_radio",
         "label": "Observe the card if vaccinated as per schedule,",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "if_vaccinated_per_schedule",
