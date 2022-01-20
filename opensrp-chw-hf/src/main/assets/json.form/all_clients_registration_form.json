@@ -518,6 +518,11 @@
         "type": "edit_text",
         "hint": "National ID number e.g 12345678-91234-56789-12",
         "edit_type": "name",
+        "v_max_length": {
+          "value": "23",
+          "is_fixed_size": "true",
+          "err": "Please enter a valid nationa id"
+        },
         "v_regex": {
           "value": "^\\d{8}-\\d{5}-\\d{5}-\\d{2}$",
           "err": "National ID number should be of the format (XXXXXXXX-XXXXX-XXXXX-XX)"
