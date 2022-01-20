@@ -234,18 +234,18 @@
         "openmrs_entity_parent": "",
         "options": [
           {
-            "key": "rgb",
-            "text": " Random Blood Glucose Test (RGB)",
+            "key": "rbg",
+            "text": " Random Blood Glucose Test (rbg)",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "rgb",
+            "openmrs_entity_id": "rbg",
             "openmrs_entity_parent": ""
           },
           {
-            "key": "btt",
+            "key": "gtt",
             "text": "Glucose Tolerance test (GTT)",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "btt"
+            "openmrs_entity_id": "gtt"
           }
         ],
         "v_required": {
