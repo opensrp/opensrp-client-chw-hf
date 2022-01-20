@@ -51,8 +51,8 @@
     "next": "step2",
     "fields": [
       {
-        "type": "edit_text",
         "key": "pmtct_register_date",
+        "type": "edit_text",
         "hidden": "true",
         "openmrs_entity_id": "pmtct_register_date",
         "openmrs_entity": "concept",
@@ -66,9 +66,9 @@
         }
       },
       {
+        "key": "known_on_art",
         "type": "native_radio",
         "label": "Is the client known on ART?",
-        "key": "known_on_art",
         "openmrs_entity_id": "known_on_art",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -127,8 +127,8 @@
         }
       },
       {
-        "type": "edit_text",
         "key": "hiv_status_value",
+        "type": "edit_text",
         "hidden": "true",
         "openmrs_entity_id": "hiv_status_value",
         "openmrs_entity": "concept",
@@ -142,9 +142,9 @@
         }
       },
       {
+        "key": "hiv_status",
         "type": "native_radio",
         "label": "HIV status",
-        "key": "hiv_status",
         "openmrs_entity_id": "hiv_status",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -174,9 +174,9 @@
         }
       },
       {
+        "key": "clinical_staging_disease",
         "type": "spinner",
         "hint": "Clinical Staging of the disease",
-        "key": "clinical_staging_disease",
         "openmrs_entity_id": "clinical_staging_disease",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -210,9 +210,9 @@
         }
       },
       {
+        "key": "stage_1_symptoms",
         "type": "check_box",
         "label": "Select the symptoms associated with the patient",
-        "key": "stage_1_symptoms",
         "openmrs_entity_id": "stage_1_symptoms",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -242,9 +242,9 @@
         }
       },
       {
+        "key": "stage_2_symptoms",
         "type": "check_box",
         "label": "Select the symptoms associated with the patient",
-        "key": "stage_2_symptoms",
         "openmrs_entity_id": "stage_2_symptoms",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -328,9 +328,9 @@
         }
       },
       {
+        "key": "stage_3_symptoms",
         "type": "check_box",
         "label": "Select the symptoms associated with the patient",
-        "key": "stage_3_symptoms",
         "openmrs_entity_id": "stage_3_symptoms",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -408,9 +408,9 @@
         }
       },
       {
+        "key": "stage_4_symptoms",
         "type": "check_box",
         "label": "Select the symptoms associated with the patient",
-        "key": "stage_4_symptoms",
         "openmrs_entity_id": "stage_4_symptoms",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -506,8 +506,8 @@
         }
       },
       {
-        "type": "spinner",
         "key": "choose_presc_line",
+        "type": "spinner",
         "hint": "Choose the ARV Line",
         "openmrs_entity_id": "choose_presc_line",
         "openmrs_entity": "concept",
@@ -539,8 +539,8 @@
         }
       },
       {
-        "type": "spinner",
         "key": "first_line",
+        "type": "spinner",
         "hint": "Prescription for ARVs \nFirst Line",
         "openmrs_entity_id": "first_line",
         "openmrs_entity": "concept",
@@ -581,8 +581,8 @@
         }
       },
       {
-        "type": "spinner",
         "key": "second_line",
+        "type": "spinner",
         "hint": "Prescription for ARVs \nSecond Line",
         "openmrs_entity_id": "second_line",
         "openmrs_entity": "concept",
@@ -629,8 +629,8 @@
         }
       },
       {
-        "type": "spinner",
         "key": "third_line",
+        "type": "spinner",
         "hint": "Prescription for ARVs \nThird Line",
         "openmrs_entity_id": "third_line",
         "openmrs_entity": "concept",

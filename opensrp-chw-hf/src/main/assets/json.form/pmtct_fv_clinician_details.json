@@ -51,8 +51,8 @@
     "title": "Clinician Details",
     "fields": [
       {
-        "type": "edit_text",
         "key": "followup_visit_date",
+        "type": "edit_text",
         "hidden": "true",
         "openmrs_entity_id": "followup_visit_date",
         "openmrs_entity": "concept",
@@ -66,10 +66,10 @@
         }
       },
       {
+        "key": "clinician_name",
         "type": "edit_text",
-        "key": "clinician_name_followup",
         "hint": "Clinician Name",
-        "openmrs_entity_id": "clinician_name_followup",
+        "openmrs_entity_id": "clinician_name",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "v_regex": {
@@ -82,10 +82,10 @@
         }
       },
       {
+        "key": "clinician_position",
         "type": "spinner",
-        "key": "clinician_position_followup",
         "hint": "Clinician Position",
-        "openmrs_entity_id": "clinician_position_followup",
+        "openmrs_entity_id": "clinician_position",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "values": [
@@ -112,11 +112,11 @@
         }
       },
       {
+        "key": "clinician_phone_number",
         "type": "edit_text",
-        "key": "clinician_phone_no_followup",
         "hint": "Clinician Phone Number",
         "edit_type": "number",
-        "openmrs_entity_id": "clinician_phone_no_followup",
+        "openmrs_entity_id": "clinician_phone_number",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "v_regex": {
@@ -129,10 +129,10 @@
         }
       },
       {
+        "key": "collection_date",
         "type": "date_picker",
-        "key": "collection_date_followup",
         "hint": "Sample Collection Date",
-        "openmrs_entity_id": "collection_date_followup",
+        "openmrs_entity_id": "collection_date",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "min_date": "today-5y",
@@ -143,10 +143,10 @@
         }
       },
       {
+        "key": "collection_time",
         "type": "time_picker",
-        "key": "collection_time_followup",
         "hint": "Sample Collection Time",
-        "openmrs_entity_id": "collection_time_followup",
+        "openmrs_entity_id": "collection_time",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "v_required": {
@@ -155,11 +155,11 @@
         }
       },
       {
+        "key": "sample_id",
         "type": "edit_text",
-        "key": "sample_id_followup",
         "hint": "Sample ID",
         "edit_type": "number",
-        "openmrs_entity_id": "sample_id_followup",
+        "openmrs_entity_id": "sample_id",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "v_required": {

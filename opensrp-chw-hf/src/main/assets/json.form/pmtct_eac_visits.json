@@ -51,8 +51,8 @@
     "title": "EAC Visit",
     "fields": [
       {
-        "type": "date_picker",
         "key": "eac_day_1",
+        "type": "date_picker",
         "hint": "EAC Visit Date Day 1",
         "openmrs_entity_id": "eac_day_1",
         "openmrs_entity": "concept",
@@ -72,8 +72,8 @@
         }
       },
       {
-        "type": "time_picker",
         "key": "eac_day_1_time",
+        "type": "time_picker",
         "hint": "EAC Visit Time Day 1",
         "openmrs_entity_id": "eac_day_1_time",
         "openmrs_entity": "concept",
@@ -91,8 +91,8 @@
         }
       },
       {
-        "type": "date_picker",
         "key": "eac_day_2",
+        "type": "date_picker",
         "hint": "EAC Visit Date Day 2",
         "openmrs_entity_id": "eac_day_2",
         "openmrs_entity": "concept",
@@ -112,8 +112,8 @@
         }
       },
       {
-        "type": "time_picker",
         "key": "eac_day_2_time",
+        "type": "time_picker",
         "hint": "EAC Visit Time Day 2",
         "openmrs_entity_id": "eac_day_2_time",
         "openmrs_entity": "concept",
@@ -131,8 +131,8 @@
         }
       },
       {
-        "type": "date_picker",
         "key": "eac_day_3",
+        "type": "date_picker",
         "hint": "EAC Visit Date Day 3",
         "openmrs_entity_id": "eac_day_3",
         "openmrs_entity": "concept",
@@ -152,8 +152,8 @@
         }
       },
       {
-        "type": "time_picker",
         "key": "eac_day_3_time",
+        "type": "time_picker",
         "hint": "EAC Visit Time Day 3",
         "openmrs_entity_id": "eac_day_3_time",
         "openmrs_entity": "concept",
@@ -171,8 +171,8 @@
         }
       },
       {
-        "type": "date_picker",
         "key": "eac_month_1",
+        "type": "date_picker",
         "hint": "EAC Visit Date Month 1",
         "openmrs_entity_id": "eac_month_1",
         "openmrs_entity": "concept",
@@ -192,8 +192,8 @@
         }
       },
       {
-        "type": "time_picker",
         "key": "eac_month_1_time",
+        "type": "time_picker",
         "hint": "EAC Visit Time Month 1",
         "openmrs_entity_id": "eac_month_1_time",
         "openmrs_entity": "concept",
@@ -211,8 +211,8 @@
         }
       },
       {
-        "type": "date_picker",
         "key": "eac_month_2",
+        "type": "date_picker",
         "hint": "EAC Visit Date Month 2",
         "openmrs_entity_id": "eac_month_2",
         "openmrs_entity": "concept",
@@ -232,8 +232,8 @@
         }
       },
       {
-        "type": "time_picker",
         "key": "eac_month_2_time",
+        "type": "time_picker",
         "hint": "EAC Visit Time Day 2",
         "openmrs_entity_id": "eac_month_2_time",
         "openmrs_entity": "concept",
@@ -251,8 +251,8 @@
         }
       },
       {
-        "type": "date_picker",
         "key": "eac_month_3",
+        "type": "date_picker",
         "hint": "EAC Visit Date Month 3",
         "openmrs_entity_id": "eac_month_3",
         "openmrs_entity": "concept",
@@ -272,8 +272,8 @@
         }
       },
       {
-        "type": "time_picker",
         "key": "eac_month_3_time",
+        "type": "time_picker",
         "hint": "EAC Visit Time Month 3",
         "openmrs_entity_id": "eac_month_3_time",
         "openmrs_entity": "concept",
