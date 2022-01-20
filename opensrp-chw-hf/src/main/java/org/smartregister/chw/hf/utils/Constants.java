@@ -1,10 +1,10 @@
 package org.smartregister.chw.hf.utils;
 
-import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.assetManager;
-import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.locale;
-
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.Utils;
+
+import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.assetManager;
+import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.locale;
 
 public class Constants extends CoreConstants {
     public static final class Events {
@@ -21,7 +21,7 @@ public class Constants extends CoreConstants {
     public static final class TableName {
         public static final String ANC_FIRST_FACILITY_VISIT = "ec_anc_first_facility_visit";
         public static final String ANC_RECURRING_FACILITY_VISIT = "ec_anc_recurring_facility_visit";
-        public static final String PMTCT_EAC_VISIT = "ec_pmtct_eac_visit" ;
+        public static final String PMTCT_EAC_VISIT = "ec_pmtct_eac_visit";
     }
 
     public static final class Visits {
@@ -52,21 +52,27 @@ public class Constants extends CoreConstants {
         public static String getPmtctRegistration() {
             return PMTCT_REGISTRATION;
         }
+
         public static String getHvlSuppressionForm() {
             return HVL_SUPPRESSION_FORM;
         }
+
         public static String getHvlSuppressionFormAfterEac1() {
             return HVL_SUPPRESSION_FORM_AFTER_EAC_1;
         }
+
         public static String getHvlSuppressionFormAfterEac2() {
             return HVL_SUPPRESSION_FORM_AFTER_EAC_2;
         }
+
         public static String getAncPregnancyConfirmation() {
             return Utils.getLocalForm(ANC_PREGANCY_CONFIRMATION, locale, assetManager);
         }
+
         public static String getHivRegistration() {
             return Utils.getLocalForm(HIV_REGISTRATION, locale, assetManager);
         }
+
         public static String getAncPregnancyConfirmationForm() {
             return ANC_PREGANCY_CONFIRMATION;
         }
@@ -78,7 +84,7 @@ public class Constants extends CoreConstants {
         public static class EacVisits {
             public static final String PMTCT_EAC_VISIT = "pmtct_eac_visits";
 
-            public static String getPmtctEacVisit(){
+            public static String getPmtctEacVisit() {
                 return PMTCT_EAC_VISIT;
             }
         }
@@ -107,6 +113,7 @@ public class Constants extends CoreConstants {
 
 
         }
+
         public static class AncRecurringVisit {
             public static final String TRIAGE = "anc_rv_triage";
             public static final String CONSULTATION = "anc_rv_consultation";
@@ -115,6 +122,7 @@ public class Constants extends CoreConstants {
             private static final String PHARMACY = "anc_rv_pharmacy";
             private static final String PREGNANCY_STATUS = "anc_rv_pregnancy_status";
             public static final String BIRTH_REVIEW_AND_EMERGENCY_PLAN = "anc_rv_birth_review_and_emergency_plan";
+            public static final String PARTNER_TESTING = "anc_partner_testing";
 
             public static String getTriage() {
                 return Utils.getLocalForm(TRIAGE, locale, assetManager);
@@ -129,7 +137,7 @@ public class Constants extends CoreConstants {
             }
 
             public static String getPartnerRegistration() {
-                return PARTNER_REGISTRATION;
+                return Utils.getLocalForm(PARTNER_REGISTRATION, locale, assetManager);
             }
 
             public static String getPharmacy() {
@@ -143,6 +151,10 @@ public class Constants extends CoreConstants {
             public static String getBirthReviewAndEmergencyPlan() {
                 return Utils.getLocalForm(BIRTH_REVIEW_AND_EMERGENCY_PLAN, locale, assetManager);
             }
+
+            public static String getPartnerTesting() {
+                return Utils.getLocalForm(PARTNER_TESTING, locale, assetManager);
+            }
         }
     }
 
@@ -155,7 +167,7 @@ public class Constants extends CoreConstants {
         public static final String CHW_REFERRAL_SERVICE = "chw_referral_service";
         public static final String ANC_MRDT_FOR_MALARIA = "mRDT_for_malaria";
         public static final String ANC_HIV = "hiv";
-        public static final String ANC_SYPHILIS= "syphilis";
+        public static final String ANC_SYPHILIS = "syphilis";
         public static final String ANC_HEPATITIS = "hepatitis";
     }
 

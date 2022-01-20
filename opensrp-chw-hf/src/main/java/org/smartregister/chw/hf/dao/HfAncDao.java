@@ -38,6 +38,43 @@ public class HfAncDao extends AbstractDao {
         return res.size() == 1;
     }
 
+    public static boolean isPartnerTestedForHiv(String baseEntityId) {
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor,"partner_hiv");
+
+        String sql = String.format(
+                "SELECT partner_hiv FROM %s WHERE base_entity_id = '%s' " +
+                        "AND partner_hiv is not null " +
+                        "AND is_closed = 0",
+                "ec_anc_register",
+                baseEntityId
+        );
+
+        List<String> res = readData(sql,dataMap);
+
+        if(res.size() == 1){
+            return !res.get(0).equalsIgnoreCase("test_not_conducted");
+        };
+        return false;
+    }
+
+    public static boolean isPartnerTestedForSyphilis(String baseEntityId) {
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor,"partner_syphilis");
+
+        String sql = String.format(
+                "SELECT partner_syphilis FROM %s WHERE base_entity_id = '%s' " +
+                        "AND partner_syphilis is not null " +
+                        "AND is_closed = 0",
+                "ec_anc_register",
+                baseEntityId
+        );
+
+        List<String> res = readData(sql,dataMap);
+
+        if(res.size() == 1){
+            return !res.get(0).equalsIgnoreCase("test_not_conducted");
+        };
+        return false;
+    }
 
     public static boolean isClientClosed(String baseEntityId){
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "is_closed");
