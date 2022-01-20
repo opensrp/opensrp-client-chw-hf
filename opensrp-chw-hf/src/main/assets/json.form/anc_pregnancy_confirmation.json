@@ -52,8 +52,8 @@
     "next": "step2",
     "fields": [
       {
-        "type": "check_box",
         "key": "danger_signs_analysis",
+        "type": "check_box",
         "label": "The HCW performs a quick analysis/examination to identify clients with danger signs",
         "openmrs_entity_id": "danger_signs_analysis",
         "openmrs_entity": "concept",
@@ -196,12 +196,12 @@
         }
       },
       {
+        "key": "upt",
         "type": "native_radio",
         "openmrs_entity_id": "upt",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
         "label": "Please select UPT Results",
-        "key": "upt",
         "options": [
           {
             "text": "Positive",
@@ -231,12 +231,12 @@
         }
       },
       {
+        "key": "uss",
         "type": "native_radio",
         "openmrs_entity_id": "uss",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
         "label": "Please select USS results",
-        "key": "uss",
         "options": [
           {
             "key": "present_gestation_sac",

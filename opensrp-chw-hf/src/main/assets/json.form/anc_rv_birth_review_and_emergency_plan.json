@@ -50,8 +50,8 @@
     "title": "Review birth and emergency plan",
     "fields": [
       {
-        "type": "check_box",
         "key": "partner_involved",
+        "type": "check_box",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "partner_involved",
         "openmrs_entity_parent": "",
@@ -65,8 +65,8 @@
         ]
       },
       {
-        "type": "edit_text",
         "key": "partner_surname",
+        "type": "edit_text",
         "hint": "Partner's Surname",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "partner_surname",
@@ -92,8 +92,8 @@
         }
       },
       {
-        "type": "edit_text",
         "key": "partner_first_name",
+        "type": "edit_text",
         "hint": "Partner's First Name",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "partner_first_name",
@@ -119,8 +119,8 @@
         }
       },
       {
-        "type": "edit_text",
         "key": "partner_middle_name",
+        "type": "edit_text",
         "hint": "Partner's Middle Name",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "partner_middle_name",
@@ -416,8 +416,8 @@
         }
       },
       {
-        "type": "edit_text",
         "key": "name_of_hf_other",
+        "type": "edit_text",
         "hint": "Name of Health Facility",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "name_of_hf_other",
@@ -434,8 +434,8 @@
         }
       },
       {
-        "type": "check_box",
         "key": "transport",
+        "type": "check_box",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "transport",
         "openmrs_entity_parent": "",
@@ -449,8 +449,8 @@
         ]
       },
       {
-        "type": "check_box",
         "key": "birth_companion",
+        "type": "check_box",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "birth_companion",
         "openmrs_entity_parent": "",
@@ -464,8 +464,8 @@
         ]
       },
       {
-        "type": "check_box",
         "key": "emergency_funds",
+        "type": "check_box",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "emergency_funds",
         "openmrs_entity_parent": "",
@@ -479,8 +479,8 @@
         ]
       },
       {
-        "type": "check_box",
         "key": "household_support",
+        "type": "check_box",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "household_support",
         "openmrs_entity_parent": "",
