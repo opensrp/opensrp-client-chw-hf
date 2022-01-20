@@ -194,6 +194,11 @@
         "openmrs_entity_id": "age",
         "type": "edit_text",
         "hint": "Umri",
+        "v_max_length": {
+          "value": "3",
+          "is_fixed_size": "true",
+          "err": "Tafadhali weka namba sahihi"
+        },
         "v_numeric_integer": {
           "value": "true",
           "err": "Must be a rounded number"
@@ -294,6 +299,11 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "phone_number",
         "type": "edit_text",
+        "v_max_length": {
+          "value": "10",
+          "is_fixed_size": "true",
+          "err": "Tafadhali weka namba sahihi"
+        },
         "hint": "Namba ya simu",
         "v_numeric": {
           "value": "true",
@@ -371,6 +381,11 @@
         "openmrs_entity": "person_attribute",
         "openmrs_entity_id": "National_ID",
         "type": "edit_text",
+        "v_max_length": {
+          "value": "23",
+          "is_fixed_size": "true",
+          "err": "Tafadhali weka namba sahihi"
+        },
         "hint": "Namba ya kitambulisho cha taifa",
         "edit_type": "name",
         "v_regex": {
@@ -395,6 +410,11 @@
         "openmrs_entity": "person_attribute",
         "openmrs_entity_id": "Voter_Registration_Number",
         "type": "edit_text",
+        "v_max_length": {
+          "value": "17",
+          "is_fixed_size": "true",
+          "err": "Tafadhali weka namba sahihi"
+        },
         "hint": "Namba ya kitambulisho cha mpiga kura",
         "edit_type": "name",
         "v_regex": {
@@ -421,6 +441,11 @@
         "type": "edit_text",
         "hint": "Namba ya leseni ya udereva",
         "edit_type": "name",
+        "v_max_length": {
+          "value": "10",
+          "is_fixed_size": "true",
+          "err": "Tafadhali weka namba sahihi"
+        },
         "v_regex": {
           "value": "^([0-9]{10})",
           "err": "Namba ya leseni ya udereva inatakiwa kuwa (XXXXXXXXXX)"
@@ -443,6 +468,11 @@
         "openmrs_entity": "person_attribute",
         "openmrs_entity_id": "Passport_Number",
         "type": "edit_text",
+        "v_max_length": {
+          "value": "10",
+          "is_fixed_size": "true",
+          "err": "Tafadhali weka namba sahihi"
+        },
         "hint": "Namba ya hati ya kusafiria",
         "v_regex": {
           "value": "^TAE-\\d{6}$",
@@ -712,6 +742,11 @@
           "value": "true",
           "err": "Nambari lazima iwe jumla ya nambari 10 kwa urefu"
         },
+        "v_max_length": {
+          "value": "10",
+          "is_fixed_size": "true",
+          "err": "Tafadhali weka namba sahihi"
+        },
         "v_regex": {
           "value": "(0[0-9]{9})|\\s*",
           "err": "Nambari lazima iwe na nambari 10 na lazima ianze na 0."
@@ -970,7 +1005,7 @@
         "calculation": {
           "rules-engine": {
             "ex-rules": {
-              "rules-file": "all_clients_member_calculation.yml"
+              "rules-file": "all_clients_member_update_relevance.yml"
             }
           }
         }
@@ -1063,7 +1098,7 @@
         "relevance": {
           "rules-engine": {
             "ex-rules": {
-              "rules-file": "all_clients_member_relevance.yml"
+              "rules-file": "all_clients_member_update_relevance.yml"
             }
           }
         }
@@ -1170,7 +1205,7 @@
         "relevance": {
           "rules-engine": {
             "ex-rules": {
-              "rules-file": "all_clients_member_relevance.yml"
+              "rules-file": "all_clients_member_update_relevance.yml"
             }
           }
         }
@@ -1298,7 +1333,7 @@
         "relevance": {
           "rules-engine": {
             "ex-rules": {
-              "rules-file": "all_clients_member_relevance.yml"
+              "rules-file": "all_clients_member_update_relevance.yml"
             }
           }
         }
