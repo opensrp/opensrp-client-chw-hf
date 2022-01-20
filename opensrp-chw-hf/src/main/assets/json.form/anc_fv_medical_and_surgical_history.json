@@ -164,7 +164,7 @@
           },
           {
             "key": "pregnant_more_than_four",
-            "text": "Pregnant more than four times",
+            "text": "Pregnant four or more times",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "pregnant_more_than_four"
