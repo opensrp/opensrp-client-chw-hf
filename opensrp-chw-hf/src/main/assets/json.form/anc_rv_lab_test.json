@@ -51,26 +51,26 @@
     "title": "ANC Lab Tests",
     "fields": [
       {
-        "type": "native_radio",
         "key": "hb_level_test",
+        "type": "native_radio",
         "label": "HB Level Test",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "hb_level_test",
         "openmrs_entity_parent": "",
         "options": [
           {
-            "key": "hb_level_conducted",
-            "text": "Test conducted",
+            "key": "test_conducted",
+            "text": "HB Level Test conducted",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "hb_level_conducted",
+            "openmrs_entity_id": "test_conducted",
             "openmrs_entity_parent": ""
           },
           {
-            "key": "hb_level_not_conducted",
-            "text": "Test not conducted",
+            "key": "test_not_conducted",
+            "text": "HB Level Test not conducted",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "hb_level_not_conducted"
+            "openmrs_entity_id": "test_not_conducted"
           }
         ],
         "v_required": {
@@ -79,9 +79,9 @@
         }
       },
       {
+        "key": "hb_level",
         "type": "edit_text",
         "hint": "HB Level (g/dl)",
-        "key": "hb_level",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "hb_level",
         "openmrs_entity_parent": "",
@@ -104,7 +104,7 @@
         "relevance": {
           "step1:hb_level_test": {
             "type": "string",
-            "ex": "equalTo(., \"hb_level_conducted\")"
+            "ex": "equalTo(., \"test_conducted\")"
           }
         }
       },
@@ -174,7 +174,7 @@
         "relevance": {
           "step1:hb_level_test": {
             "type": "string",
-            "ex": "equalTo(., \"hb_level_not_conducted\")"
+            "ex": "equalTo(., \"test_not_conducted\")"
           }
         }
       },
@@ -206,18 +206,18 @@
         "openmrs_entity_parent": "",
         "options": [
           {
-            "key": "blood_glucose_conducted",
+            "key": "test_conducted",
             "text": "Blood for Glucose Test conducted",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "blood_glucose_conducted",
+            "openmrs_entity_id": "test_conducted",
             "openmrs_entity_parent": ""
           },
           {
-            "key": "blood_glucose_not_conducted",
+            "key": "test_not_conducted",
             "text": "Blood for Glucose Test not conducted",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "blood_glucose_not_conducted"
+            "openmrs_entity_id": "test_not_conducted"
           }
         ],
         "v_required": {
@@ -228,7 +228,7 @@
       {
         "key": "type_of_blood_for_glucose_test",
         "type": "native_radio",
-        "label": "Type Blood For Glucose Test Conducted",
+        "label": "Type Of Blood For Glucose Test Conducted",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "type_of_blood_for_glucose_test",
         "openmrs_entity_parent": "",
@@ -255,13 +255,13 @@
         "relevance": {
           "step1:blood_for_glucose_test": {
             "type": "string",
-            "ex": "equalTo(., \"blood_glucose_conducted\")"
+            "ex": "equalTo(., \"test_conducted\")"
           }
         }
       },
       {
-        "type": "edit_text",
         "key": "blood_for_glucose",
+        "type": "edit_text",
         "hint": "Blood For Glucose (mmol/L)",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "blood_for_glucose",
@@ -357,7 +357,7 @@
         "relevance": {
           "step1:blood_for_glucose_test": {
             "type": "string",
-            "ex": "equalTo(., \"blood_glucose_not_conducted\")"
+            "ex": "equalTo(., \"test_not_conducted\")"
           }
         }
       },
@@ -381,8 +381,8 @@
         }
       },
       {
-        "type": "native_radio",
         "key": "glucose_in_urine",
+        "type": "native_radio",
         "label": "Glucose In Urine",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "glucose_in_urine",
@@ -393,21 +393,21 @@
             "text": "Positive",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "positive",
-            "openmrs_entity_parent": "glucosuria"
+            "openmrs_entity_parent": ""
           },
           {
             "key": "negative",
             "text": "Negative",
-            "openmrs_entity_parent": "glucosuria",
+            "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "negative"
           },
           {
-            "key": "glucose_test_not_conducted",
-            "text": "Test not conducted",
-            "openmrs_entity_parent": "glucosuria",
+            "key": "test_not_conducted",
+            "text": "Glucose In Urine Test not conducted",
+            "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "glucose_test_not_conducted"
+            "openmrs_entity_id": "test_not_conducted"
           }
         ],
         "v_required": {
@@ -448,9 +448,9 @@
           "err": "Please select a reason"
         },
         "relevance": {
-          "step1:glucosuria": {
+          "step1:glucose_in_urine": {
             "type": "string",
-            "ex": "equalTo(., \"glucose_test_not_conducted\")"
+            "ex": "equalTo(., \"test_not_conducted\")"
           }
         }
       },
@@ -474,8 +474,8 @@
         }
       },
       {
-        "type": "native_radio",
         "key": "protein_in_urine",
+        "type": "native_radio",
         "label": "Protein In Urine",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "protein_in_urine",
@@ -486,21 +486,21 @@
             "text": "Positive",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "positive",
-            "openmrs_entity_parent": "proteinuria"
+            "openmrs_entity_parent": ""
           },
           {
             "key": "negative",
             "text": "Negative",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "negative",
-            "openmrs_entity_parent": "proteinuria"
+            "openmrs_entity_parent": ""
           },
           {
-            "key": "protein_test_not_conducted",
-            "text": "Test not conducted",
+            "key": "test_not_conducted",
+            "text": "Protein In Urine Test not conducted",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "protein_test_not_conducted",
-            "openmrs_entity_parent": "proteinuria"
+            "openmrs_entity_id": "test_not_conducted",
+            "openmrs_entity_parent": ""
           }
         ],
         "v_required": {
@@ -541,9 +541,9 @@
           "err": "Please select a reason"
         },
         "relevance": {
-          "step1:proteinuria": {
+          "step1:protein_in_urine": {
             "type": "string",
-            "ex": "equalTo(., \"protein_test_not_conducted\")"
+            "ex": "equalTo(., \"test_not_conducted\")"
           }
         }
       },
@@ -567,8 +567,8 @@
         }
       },
       {
-        "type": "native_radio",
         "key": "mRDT_for_malaria",
+        "type": "native_radio",
         "label": "mRDT for Malaria Results",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "mRDT_for_malaria",
@@ -679,8 +679,8 @@
         }
       },
       {
-        "type": "native_radio",
         "key": "hiv",
+        "type": "native_radio",
         "label": "HIV Test Results",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "hiv",
@@ -708,27 +708,6 @@
         "v_required": {
           "value": "true",
           "err": "Please answer this question"
-        },
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "anc_rv_lab_test_relevance.yml"
-            }
-          }
-        }
-      },
-      {
-        "key": "date_anc_hiv_test",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "date_anc_hiv_test",
-        "type": "hidden",
-        "calculation": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "anc_fv_baseline_investigation_calculation.yml"
-            }
-          }
         },
         "relevance": {
           "rules-engine": {
@@ -827,8 +806,8 @@
         }
       },
       {
-        "type": "native_radio",
         "key": "syphilis",
+        "type": "native_radio",
         "label": "Syphilis Test Results",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "syphilis",
@@ -939,8 +918,8 @@
         }
       },
       {
-        "type": "native_radio",
         "key": "hepatitis",
+        "type": "native_radio",
         "label": "Hepatitis B Test Results",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "hepatitis",
@@ -1051,12 +1030,33 @@
         }
       },
       {
-        "type": "hidden",
         "key": "hiv_test_at_32",
+        "type": "hidden",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "hiv_test_at_32",
         "openmrs_entity_parent": "",
         "value": "true",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_lab_test_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "date_anc_hiv_test",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "date_anc_hiv_test",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_baseline_investigation_calculation.yml"
+            }
+          }
+        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {

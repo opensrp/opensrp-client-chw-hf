@@ -52,17 +52,17 @@
     "title": "Medication and Supplements",
     "fields": [
       {
+        "key": "pharmacy",
         "type": "label",
         "text": "Provider prescribe and issue supplements and prophylactic medications",
-        "key": "pharmacy",
         "text_color": "#000000",
         "openmrs_entity": "",
         "openmrs_entity_id": "",
         "openmrs_entity_parent": ""
       },
       {
-        "type": "check_box",
         "key": "iron_folate_supplements",
+        "type": "check_box",
         "label": "Iron and Folate Supplement",
         "openmrs_entity_id": "iron_folate_supplements",
         "openmrs_entity": "concept",
@@ -101,8 +101,8 @@
         }
       },
       {
-        "type": "check_box",
         "key": "deworming",
+        "type": "check_box",
         "label": "Deworming",
         "openmrs_entity_id": "deworming",
         "openmrs_entity": "concept",

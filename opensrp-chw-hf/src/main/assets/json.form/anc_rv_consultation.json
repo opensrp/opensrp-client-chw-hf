@@ -274,8 +274,8 @@
         }
       },
       {
-        "type": "edit_text",
         "key": "fetal_heart_rate",
+        "type": "edit_text",
         "hint": "Count Fetal Heart Rate(bpm)",
         "openmrs_entity_id": "fetal_heart_rate",
         "openmrs_entity": "concept",
@@ -515,9 +515,9 @@
         }
       },
       {
+        "key": "pulse_rate",
         "type": "edit_text",
         "hint": "Pulse Rate (Beats per minute)",
-        "key": "pulse_rate",
         "openmrs_entity_id": "pulse_rate",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -569,9 +569,9 @@
         }
       },
       {
+        "key": "temperature",
         "type": "edit_text",
         "hint": "Temperature (C)",
-        "key": "temperature",
         "openmrs_entity_id": "temperature",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -608,8 +608,8 @@
         }
       },
       {
-        "type": "native_radio",
         "key": "breast",
+        "type": "native_radio",
         "label": "Breasts",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "breast",
@@ -634,8 +634,8 @@
         }
       },
       {
-        "type": "native_radio",
         "key": "lymph_node_under_arm",
+        "type": "native_radio",
         "label": "Lymph Node (under the arm)",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "lymph_node_under_arm",
@@ -660,8 +660,8 @@
         }
       },
       {
-        "type": "native_radio",
         "key": "lymph_node_cervical",
+        "type": "native_radio",
         "label": "Lymph Node (cervical)",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "lymph_node_cervical",

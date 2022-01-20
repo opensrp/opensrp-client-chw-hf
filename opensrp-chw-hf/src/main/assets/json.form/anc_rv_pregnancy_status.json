@@ -50,9 +50,9 @@
     "title": "Pregnancy Status",
     "fields": [
       {
+        "key": "pregnancy_status",
         "type": "native_radio",
         "label": "Pregnancy Status",
-        "key": "pregnancy_status",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "pregnancy_status",
         "openmrs_entity_parent": "",
@@ -85,8 +85,8 @@
         "key": "reg_cpac",
         "type": "toaster_notes",
         "text": "Register client for CPAC",
-        "openmrs_entity_id": "reg_cpac",
-        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
         "openmrs_entity_parent": "",
         "toaster_type": "warning",
         "toaster_info_text": "Comprehensive Post Abortal Care (CPAC)",
@@ -101,8 +101,8 @@
         "key": "still_birth",
         "type": "toaster_notes",
         "text": "Register client for Family Planning",
-        "openmrs_entity_id": "still_birth",
-        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
         "openmrs_entity_parent": "",
         "toaster_type": "warning",
         "relevance": {
