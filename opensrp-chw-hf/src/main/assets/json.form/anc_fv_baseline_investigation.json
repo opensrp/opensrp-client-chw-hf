@@ -375,10 +375,10 @@
         }
       },
       {
-        "key": "reason_not_conducting_hb_test",
+        "key": "reason_for_not_conducting_hb_test",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "reason_not_conducting_hb_test",
+        "openmrs_entity_id": "reason_for_not_conducting_hb_test",
         "type": "spinner",
         "hint": "Reason as to why the HB Level test was not conducted",
         "values": [
@@ -426,7 +426,7 @@
           "err": "Please enter the reason"
         },
         "relevance": {
-          "step1:reason_not_conducting_hb_test": {
+          "step1:reason_for_not_conducting_hb_test": {
             "type": "string",
             "ex": "equalTo(., \"other\")"
           }
@@ -558,10 +558,10 @@
         }
       },
       {
-        "key": "reason_not_conducting_blood_glucose_test",
+        "key": "reason_for_not_conducting_blood_glucose_test",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "reason_not_conducting_blood_glucose_test",
+        "openmrs_entity_id": "reason_for_not_conducting_blood_glucose_test",
         "type": "spinner",
         "hint": "Reason as to why the Blood for Glucose test was not conducted",
         "values": [
@@ -609,7 +609,7 @@
           "err": "Please enter the reason"
         },
         "relevance": {
-          "step1:reason_not_conducting_blood_glucose_test": {
+          "step1:reason_for_not_conducting_blood_glucose_test": {
             "type": "string",
             "ex": "equalTo(., \"other\")"
           }
