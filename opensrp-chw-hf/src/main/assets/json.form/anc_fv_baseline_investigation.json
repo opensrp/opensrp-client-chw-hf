@@ -294,18 +294,18 @@
         "openmrs_entity_parent": "",
         "options": [
           {
-            "key": "hb_level_conducted",
+            "key": "test_conducted",
             "text": "HB Level Test conducted",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "hb_level_conducted",
+            "openmrs_entity_id": "test_conducted",
             "openmrs_entity_parent": ""
           },
           {
-            "key": "hb_level_not_conducted",
+            "key": "test_not_conducted",
             "text": "HB Level Test not conducted",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "hb_level_not_conducted"
+            "openmrs_entity_id": "test_not_conducted"
           }
         ],
         "v_required": {
@@ -339,7 +339,7 @@
         "relevance": {
           "step1:hb_level_test": {
             "type": "string",
-            "ex": "equalTo(., \"hb_level_conducted\")"
+            "ex": "equalTo(., \"test_conducted\")"
           }
         }
       },
@@ -409,7 +409,7 @@
         "relevance": {
           "step1:hb_level_test": {
             "type": "string",
-            "ex": "equalTo(., \"hb_level_not_conducted\")"
+            "ex": "equalTo(., \"test_not_conducted\")"
           }
         }
       },
@@ -441,18 +441,18 @@
         "openmrs_entity_parent": "",
         "options": [
           {
-            "key": "blood_glucose_conducted",
+            "key": "test_conducted",
             "text": "Blood for Glucose Test conducted",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "blood_glucose_conducted",
+            "openmrs_entity_id": "test_conducted",
             "openmrs_entity_parent": ""
           },
           {
-            "key": "blood_glucose_not_conducted",
+            "key": "test_not_conducted",
             "text": "Blood for Glucose Test not conducted",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "blood_glucose_not_conducted"
+            "openmrs_entity_id": "test_not_conducted"
           }
         ],
         "v_required": {
@@ -463,7 +463,7 @@
       {
         "key": "type_of_blood_for_glucose_test",
         "type": "native_radio",
-        "label": "Type Blood For Glucose Test Conducted",
+        "label": "Type Of Blood For Glucose Test Conducted",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "type_of_blood_for_glucose_test",
         "openmrs_entity_parent": "",
@@ -490,14 +490,13 @@
         "relevance": {
           "step1:blood_for_glucose_test": {
             "type": "string",
-            "ex": "equalTo(., \"blood_glucose_conducted\")"
+            "ex": "equalTo(., \"test_conducted\")"
           }
         }
       },
       {
         "key": "blood_for_glucose",
         "type": "edit_text",
-
         "hint": "Blood For Glucose (mmol/L)",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "blood_for_glucose",
@@ -593,7 +592,7 @@
         "relevance": {
           "step1:blood_for_glucose_test": {
             "type": "string",
-            "ex": "equalTo(., \"blood_glucose_not_conducted\")"
+            "ex": "equalTo(., \"test_not_conducted\")"
           }
         }
       },

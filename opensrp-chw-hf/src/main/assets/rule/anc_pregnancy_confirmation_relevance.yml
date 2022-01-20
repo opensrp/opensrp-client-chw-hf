@@ -2,76 +2,76 @@
 name: step2_type_of_pregnancy_test
 description: type_of_pregnancy_test relevance
 priority: 1
-condition: "step1_danger_signs_analysis.contains('none')"
+condition: "step1_danger_signs.contains('none')"
 actions:
   - "isRelevant = true"
 ---
 name: step2_upt
 description: upt relevance
 priority: 1
-condition: "step2_type_of_pregnancy_test.contains('upt') && step1_danger_signs_analysis.contains('none')"
+condition: "step2_type_of_pregnancy_test.contains('upt') && step1_danger_signs.contains('none')"
 actions:
   - "isRelevant = true"
 ---
 name: step2_uss
 description: uss relevance
 priority: 1
-condition: "step2_type_of_pregnancy_test.contains('uss')  && step1_danger_signs_analysis.contains('none')"
+condition: "step2_type_of_pregnancy_test.contains('uss')  && step1_danger_signs.contains('none')"
 actions:
   - "isRelevant = true"
 ---
 name: step3_known_last_menstrual_period
 description: lmp_entered relevance
 priority: 1
-condition: "step1_danger_signs_analysis.contains('none') && ((step2_uss.contains('present_gestation_sac') && step2_upt.contains('positive')) || (step2_uss.contains('absent_gestation_sac') && step2_upt.contains('positive')) || (step2_upt.isEmpty() && step2_uss.contains('present_gestation_sac')) || (step2_upt.contains('positive') && step2_uss.isEmpty())) && !step3_last_menstrual_period_unknown.contains('lmp_unknown')"
+condition: "((step2_uss.contains('present_gestation_sac') && step2_upt.contains('positive')) || (step2_uss.contains('absent_gestation_sac') && step2_upt.contains('positive')) || (step2_upt.isEmpty() && step2_uss.contains('present_gestation_sac')) || (step2_upt.contains('positive') && step2_uss.isEmpty())) && !step3_last_menstrual_period_unknown.contains('lmp_unknown')"
 actions:
   - "isRelevant = true"
 ---
 name: step3_last_menstrual_period_unknown
 description: last_menstrual_period_unknown relevance
 priority: 1
-condition: "step1_danger_signs_analysis.contains('none') && ((step2_uss.contains('present_gestation_sac') && step2_upt.contains('positive')) || (step2_uss.contains('absent_gestation_sac') && step2_upt.contains('positive')) || (step2_upt.isEmpty() && step2_uss.contains('present_gestation_sac')) || (step2_upt.contains('positive') && step2_uss.isEmpty()))"
+condition: "((step2_uss.contains('present_gestation_sac') && step2_upt.contains('positive')) || (step2_uss.contains('absent_gestation_sac') && step2_upt.contains('positive')) || (step2_upt.isEmpty() && step2_uss.contains('present_gestation_sac')) || (step2_upt.contains('positive') && step2_uss.isEmpty()))"
 actions:
   - "isRelevant = true"
 ---
 name: step3_fundal_height
 description: fundal_height relevance
 priority: 1
-condition: "step1_danger_signs_analysis.contains('none') && ((step2_uss.contains('present_gestation_sac') && step2_upt.contains('positive')) || (step2_uss.contains('absent_gestation_sac') && step2_upt.contains('positive')) || (step2_upt.isEmpty() && step2_uss.contains('present_gestation_sac')) || (step2_upt.contains('positive') && step2_uss.isEmpty())) && step3_last_menstrual_period_unknown.contains('lmp_unknown')"
+condition: "((step2_uss.contains('present_gestation_sac') && step2_upt.contains('positive')) || (step2_uss.contains('absent_gestation_sac') && step2_upt.contains('positive')) || (step2_upt.isEmpty() && step2_uss.contains('present_gestation_sac')) || (step2_upt.contains('positive') && step2_uss.isEmpty())) && step3_last_menstrual_period_unknown.contains('lmp_unknown')"
 actions:
   - "isRelevant = true"
 ---
 name: step3_estimated_last_menstrual_period
 description: estimated_last_menstrual_period relevance
 priority: 1
-condition: "step1_danger_signs_analysis.contains('none') && ((step2_uss.contains('present_gestation_sac') && step2_upt.contains('positive')) || (step2_uss.contains('absent_gestation_sac') && step2_upt.contains('positive')) || (step2_upt.isEmpty() && step2_uss.contains('present_gestation_sac')) || (step2_upt.contains('positive') && step2_uss.isEmpty())) && step3_last_menstrual_period_unknown.contains('lmp_unknown')"
+condition: " ((step2_uss.contains('present_gestation_sac') && step2_upt.contains('positive')) || (step2_uss.contains('absent_gestation_sac') && step2_upt.contains('positive')) || (step2_upt.isEmpty() && step2_uss.contains('present_gestation_sac')) || (step2_upt.contains('positive') && step2_uss.isEmpty())) && step3_last_menstrual_period_unknown.contains('lmp_unknown')"
 actions:
   - "isRelevant = true"
 ---
 name: step3_gest_age_note
 description: gest_age_note relevance
 priority: 1
-condition: "step1_danger_signs_analysis.contains('none') && ((step2_uss.contains('present_gestation_sac') && step2_upt.contains('positive')) || (step2_uss.contains('absent_gestation_sac') && step2_upt.contains('positive')) || (step2_upt.isEmpty() && step2_uss.contains('present_gestation_sac')) || (step2_upt.contains('positive') && step2_uss.isEmpty()))"
+condition: "((step2_uss.contains('present_gestation_sac') && step2_upt.contains('positive')) || (step2_uss.contains('absent_gestation_sac') && step2_upt.contains('positive')) || (step2_upt.isEmpty() && step2_uss.contains('present_gestation_sac')) || (step2_upt.contains('positive') && step2_uss.isEmpty()))"
 actions:
   - "isRelevant = true"
 ---
 name: step3_edd
 description: edd_note relevance
 priority: 1
-condition: "step1_danger_signs_analysis.contains('none') && ((step2_uss.contains('present_gestation_sac') && step2_upt.contains('positive')) || (step2_uss.contains('absent_gestation_sac') && step2_upt.contains('positive')) || (step2_upt.isEmpty() && step2_uss.contains('present_gestation_sac')) || (step2_upt.contains('positive') && step2_uss.isEmpty()))"
+condition: "((step2_uss.contains('present_gestation_sac') && step2_upt.contains('positive')) || (step2_uss.contains('absent_gestation_sac') && step2_upt.contains('positive')) || (step2_upt.isEmpty() && step2_uss.contains('present_gestation_sac')) || (step2_upt.contains('positive') && step2_uss.isEmpty()))"
 actions:
   - "isRelevant = true"
 ---
 name: step3_not_pregnant
 description: not_pregnant relevance
 priority: 1
-condition: "step1_danger_signs_analysis.contains('none') && (!step2_uss.contains('present_gestation_sac') && !step2_upt.contains('positive'))"
+condition: "step1_danger_signs.contains('none') && (!step2_uss.contains('present_gestation_sac') && !step2_upt.contains('positive'))"
 actions:
   - "isRelevant = true"
 ---
 name: step3_see_a_doctor
 description: see a doctor toaster note relevance
 priority: 1
-condition: "step1_danger_signs_analysis.contains('none') && (step2_uss.contains('present_gestation_sac') && step2_upt.contains('negative'))"
+condition: "(step2_uss.contains('present_gestation_sac') && step2_upt.contains('negative'))"
 actions:
   - "isRelevant = true"
