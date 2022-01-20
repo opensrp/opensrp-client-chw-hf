@@ -22,6 +22,23 @@ public class HfAncDao extends AbstractDao {
         return res.size() == 1;
     }
 
+    public static boolean isPartnerRegistered(String baseEntityId){
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor,"partner_registered");
+
+        String sql = String.format(
+                "SELECT partner_registered FROM %s WHERE base_entity_id = '%s' " +
+                        "AND partner_registered is not null " +
+                        "AND is_closed = 0",
+                "ec_anc_register",
+                baseEntityId
+        );
+
+        List<String> res = readData(sql,dataMap);
+
+        return res.size() == 1;
+    }
+
+
     public static boolean isClientClosed(String baseEntityId){
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "is_closed");
 

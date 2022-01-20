@@ -25,6 +25,7 @@ import org.smartregister.chw.hf.actionhelper.AncBirthReviewAction;
 import org.smartregister.chw.hf.actionhelper.AncConsultationAction;
 import org.smartregister.chw.hf.actionhelper.AncCounsellingAction;
 import org.smartregister.chw.hf.actionhelper.AncLabTestAction;
+import org.smartregister.chw.hf.actionhelper.AncPartnerRegistrationAction;
 import org.smartregister.chw.hf.actionhelper.AncPharmacyAction;
 import org.smartregister.chw.hf.actionhelper.AncTriageAction;
 import org.smartregister.chw.hf.dao.HfAncDao;
@@ -267,7 +268,19 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                     } catch (BaseAncHomeVisitAction.ValidationException e) {
                         e.printStackTrace();
                     }
-
+                    if(!HfAncDao.isPartnerRegistered(baseEntityId)){
+                        try {
+                            BaseAncHomeVisitAction partnerRegistration = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.partner_registration_action_title))
+                                    .withOptional(true)
+                                    .withDetails(details)
+                                    .withHelper(new AncPartnerRegistrationAction(memberObject))
+                                    .withFormName(Constants.JsonForm.AncRecurringVisit.getPartnerRegistration())
+                                    .build();
+                            actionList.put(context.getString(R.string.partner_registration_action_title), partnerRegistration);
+                        } catch (BaseAncHomeVisitAction.ValidationException e) {
+                            Timber.e(e);
+                        }
+                    }
 
                     if (!HfAncDao.isReviewFormFilled(baseEntityId)) {
                         JSONObject birthReviewForm = initializeHealthFacilitiesList(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.BIRTH_REVIEW_AND_EMERGENCY_PLAN));
@@ -290,6 +303,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                 actionList.remove(context.getString(R.string.anc_recuring_visit_lab_tests));
                 actionList.remove(context.getString(R.string.anc_recuring_visit_pharmacy));
                 actionList.remove(context.getString(R.string.anc_first_and_recurring_visit_counselling));
+                actionList.remove(context.getString(R.string.partner_registration_action_title));
                 actionList.remove(context.getString(R.string.anc_recuring_visit_review_birth_and_emergency_plan));
             }
             new AppExecutors().mainThread().execute(() -> callBack.preloadActions(actionList));
