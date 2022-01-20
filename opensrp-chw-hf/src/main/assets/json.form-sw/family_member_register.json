@@ -249,6 +249,11 @@
         "openmrs_entity_id": "age",
         "type": "edit_text",
         "hint": "Umri",
+        "v_max_length": {
+          "value": "3",
+          "is_fixed_size": "true",
+          "err": "Tafadhali weka namba sahihi"
+        },
         "v_numeric": {
           "value": "true",
           "err": "Tafadhali ingiza umri"
@@ -422,6 +427,11 @@
         "openmrs_entity": "person_attribute",
         "openmrs_entity_id": "National_ID",
         "type": "edit_text",
+        "v_max_length": {
+          "value": "23",
+          "is_fixed_size": "true",
+          "err": "Tafadhali weka namba sahihi"
+        },
         "hint": "Namba ya kitambulisho cha taifa, mfano: 12345678-91234-56789-12",
         "edit_type": "name",
         "v_regex": {
@@ -446,6 +456,11 @@
         "openmrs_entity": "person_attribute",
         "openmrs_entity_id": "Voter_Registration_Number",
         "type": "edit_text",
+        "v_max_length": {
+          "value": "17",
+          "is_fixed_size": "true",
+          "err": "Tafadhali weka namba sahihi"
+        },
         "hint": "Namba ya kitambulisho cha mpiga kura, mfano: T-1234-5678-912-3",
         "edit_type": "name",
         "v_regex": {
@@ -470,6 +485,11 @@
         "openmrs_entity": "person_attribute",
         "openmrs_entity_id": "Driver_License_Number",
         "type": "edit_text",
+        "v_max_length": {
+          "value": "10",
+          "is_fixed_size": "true",
+          "err": "Tafadhali weka namba sahihi"
+        },
         "hint": "Namba ya leseni ya udereva, mfano: 1234567891",
         "edit_type": "name",
         "v_regex": {
@@ -494,6 +514,11 @@
         "openmrs_entity": "person_attribute",
         "openmrs_entity_id": "Passport_Number",
         "type": "edit_text",
+        "v_max_length": {
+          "value": "10",
+          "is_fixed_size": "true",
+          "err": "Tafadhali weka namba sahihi"
+        },
         "hint": "Namba ya hati ya kusafiria",
         "v_regex": {
           "value": "^TAE-\\d{6}$",
@@ -795,6 +820,11 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "other_phone_number",
         "type": "edit_text",
+        "v_max_length": {
+          "value": "10",
+          "is_fixed_size": "true",
+          "err": "Tafadhali weka namba sahihi"
+        },
         "hint": "Namba za simu nyingine",
         "v_numeric": {
           "value": "true",

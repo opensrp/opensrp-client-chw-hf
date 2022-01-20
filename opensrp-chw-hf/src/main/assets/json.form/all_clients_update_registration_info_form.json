@@ -194,6 +194,11 @@
         "openmrs_entity_id": "age",
         "type": "edit_text",
         "hint": "Age",
+        "v_max_length": {
+          "value": "3",
+          "is_fixed_size": "true",
+          "err": "Please enter a valid age"
+        },
         "v_numeric_integer": {
           "value": "true",
           "err": "Must be a rounded number"
@@ -295,6 +300,11 @@
         "openmrs_entity_id": "phone_number",
         "type": "edit_text",
         "hint": "Client phone number",
+        "v_max_length": {
+          "value": "10",
+          "is_fixed_size": "true",
+          "err": "Please enter a valid phone number"
+        },
         "v_numeric": {
           "value": "true",
           "err": "Number must be a total of 10 digits in length"
@@ -371,8 +381,13 @@
         "openmrs_entity": "person_attribute",
         "openmrs_entity_id": "National_ID",
         "type": "edit_text",
-        "hint": "National ID number",
+        "hint": "National ID number e.g 12345678-91234-56789-12",
         "edit_type": "name",
+        "v_max_length": {
+          "value": "23",
+          "is_fixed_size": "true",
+          "err": "Please enter a valid national id"
+        },
         "v_regex": {
           "value": "^\\d{8}-\\d{5}-\\d{5}-\\d{2}$",
           "err": "National ID number should be of the format (XXXXXXXX-XXXXX-XXXXX-XX)"
@@ -395,8 +410,13 @@
         "openmrs_entity": "person_attribute",
         "openmrs_entity_id": "Voter_Registration_Number",
         "type": "edit_text",
-        "hint": "Voter's registration number",
+        "hint": "Voter's registration number e.g T-1234-5678-912-3",
         "edit_type": "name",
+        "v_max_length": {
+          "value": "17",
+          "is_fixed_size": "true",
+          "err": "Please enter a valid voters registration"
+        },
         "v_regex": {
           "value": "^T-\\d{4}-\\d{4}-\\d{3}-\\d{1}$",
           "err": "Voter's registration number should be of the format (T-XXXX-XXXX-XXX-X)"
@@ -419,8 +439,13 @@
         "openmrs_entity": "person_attribute",
         "openmrs_entity_id": "Driver_License_Number",
         "type": "edit_text",
-        "hint": "Driver's license number",
+        "hint": "Driver's license number e.g 1234567891",
         "edit_type": "name",
+        "v_max_length": {
+          "value": "10",
+          "is_fixed_size": "true",
+          "err": "Please enter a valid drivers license number"
+        },
         "v_regex": {
           "value": "^([0-9]{10})",
           "err": "Driver's license number should be of the format (XXXXXXXXXX)"
@@ -444,6 +469,11 @@
         "openmrs_entity_id": "Passport_Number",
         "type": "edit_text",
         "hint": "Passport number",
+        "v_max_length": {
+          "value": "10",
+          "is_fixed_size": "true",
+          "err": "Please enter a valid passport number"
+        },
         "v_regex": {
           "value": "^TAE-\\d{6}$",
           "err": "Passport Number should be in the format (TAE-XXXXXX)"
@@ -779,6 +809,11 @@
         "v_required": {
           "value": "true",
           "err": "Please  caregiver contact."
+        },
+        "v_max_length": {
+          "value": "10",
+          "is_fixed_size": "true",
+          "err": "Please enter a valid phone number"
         },
         "relevance": {
           "rules-engine": {
