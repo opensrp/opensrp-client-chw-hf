@@ -891,6 +891,38 @@
           }
         },
         {
+          "column_name": "partner_registered",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "partner_registered"
+          }
+        },
+        {
+          "column_name": "partner_hiv",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "partner_hiv"
+          }
+        },
+        {
+          "column_name": "partner_syphilis",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "partner_syphilis"
+          }
+        },
+        {
+          "column_name": "partner_hepatitis",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "partner_hepatitis"
+          }
+        },
+        {
           "column_name": "last_home_visit",
           "type": "Event",
           "json_mapping": {

@@ -1,0 +1,21 @@
+---
+name: step1_partner_hiv
+description: Hiv testing for partner if it was not conducted in first visit
+priority: 1
+condition: "!global_hiv_testing_done"
+actions:
+  - "isRelevant = true"
+---
+name: step1_partner_syphilis
+description: Syphilis testing for partner if it was not conducted in first visit
+priority: 1
+condition: "!global_syphilis_testing_done"
+actions:
+  - "isRelevant = true"
+---
+name: step1_partner_hepatitis
+description: Syphilis testing for partner if it was not conducted in first visit
+priority: 1
+condition: "!global_hepatitis_testing_done"
+actions:
+  - "isRelevant = true"
