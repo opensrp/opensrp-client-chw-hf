@@ -72,7 +72,14 @@ public class AncCounsellingAction implements BaseAncHomeVisitAction.AncHomeVisit
 
     @Override
     public String evaluateSubTitle() {
-        return MessageFormat.format("Counselling given : {0}", anc_counselling);
+        if (StringUtils.isBlank(anc_counselling))
+            return null;
+
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append("Counselling given: " + anc_counselling);
+
+        return stringBuilder.toString();
 
     }
 
