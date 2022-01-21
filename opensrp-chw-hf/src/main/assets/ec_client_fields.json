@@ -914,7 +914,14 @@
             "concept": "partner_syphilis"
           }
         },
-
+        {
+          "column_name": "partner_hepatitis",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "partner_hepatitis"
+          }
+        },
         {
           "column_name": "last_home_visit",
           "type": "Event",

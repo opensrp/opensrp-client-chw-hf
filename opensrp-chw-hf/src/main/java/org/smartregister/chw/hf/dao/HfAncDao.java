@@ -78,6 +78,24 @@ public class HfAncDao extends AbstractDao {
         };
         return false;
     }
+    public static boolean isPartnerTestedForHepatitis(String baseEntityId) {
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor,"partner_hepatitis");
+
+        String sql = String.format(
+                "SELECT partner_hepatitis FROM %s WHERE base_entity_id = '%s' " +
+                        "AND partner_hepatitis is not null " +
+                        "AND is_closed = 0",
+                "ec_anc_register",
+                baseEntityId
+        );
+
+        List<String> res = readData(sql,dataMap);
+
+        if(res.size() == 1){
+            return !res.get(0).equalsIgnoreCase("test_not_conducted");
+        };
+        return false;
+    }
 
     public static boolean isClientClosed(String baseEntityId){
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "is_closed");

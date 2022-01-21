@@ -223,6 +223,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                     partnerTestingForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.PARTNER_TESTING);
                     partnerTestingForm.getJSONObject("global").put("hiv_testing_done", HfAncDao.isPartnerTestedForHiv(baseEntityId));
                     partnerTestingForm.getJSONObject("global").put("syphilis_testing_done", HfAncDao.isPartnerTestedForSyphilis(baseEntityId));
+                    partnerTestingForm.getJSONObject("global").put("hepatitis_testing_done", HfAncDao.isPartnerTestedForHepatitis(baseEntityId));
                     if (details != null && !details.isEmpty()) {
                         JsonFormUtils.populateForm(partnerTestingForm, details);
                     }
@@ -295,7 +296,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                         }
                     }
 
-                    if(!HfAncDao.isPartnerTestedForHiv(baseEntityId) || !HfAncDao.isPartnerTestedForSyphilis(baseEntityId)){
+                    if(!HfAncDao.isPartnerTestedForHiv(baseEntityId) || !HfAncDao.isPartnerTestedForSyphilis(baseEntityId) || !HfAncDao.isPartnerTestedForHepatitis(baseEntityId)){
                         try {
                             BaseAncHomeVisitAction partnerTesting = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.partner_testing_action_title))
                                     .withOptional(true)
