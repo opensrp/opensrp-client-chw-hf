@@ -326,7 +326,13 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "partner_registered",
         "openmrs_entity_parent": "",
-        "value": 1
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_partner_registration_calculation.yml"
+            }
+          }
+        }
       }
     ]
   }

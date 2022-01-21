@@ -35,7 +35,10 @@ public class HfAncDao extends AbstractDao {
 
         List<String> res = readData(sql,dataMap);
 
-        return res.size() == 1;
+        if(res.size() == 1){
+            return !res.get(0).equals("0");
+        };
+        return  false;
     }
 
     public static boolean isPartnerTestedForHiv(String baseEntityId) {

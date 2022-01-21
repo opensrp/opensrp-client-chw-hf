@@ -19,6 +19,8 @@ public class AncPartnerTestingAction implements BaseAncHomeVisitAction.AncHomeVi
     protected MemberObject memberObject;
     private String jsonPayload;
     private String partner_hiv_results;
+    private String partner_syphilis_results;
+    private String partner_hepatitis_results;
     private BaseAncHomeVisitAction.ScheduleStatus scheduleStatus;
     private String subTitle;
 
@@ -48,6 +50,7 @@ public class AncPartnerTestingAction implements BaseAncHomeVisitAction.AncHomeVi
         try {
             JSONObject jsonObject = new JSONObject(jsonPayload);
             partner_hiv_results = CoreJsonFormUtils.getValue(jsonObject, "partner_hiv");
+            partner_syphilis_results = CoreJsonFormUtils.getValue(jsonObject,"partner_syphilis");
         } catch (JSONException e) {
             Timber.e(e);
         }
@@ -70,7 +73,7 @@ public class AncPartnerTestingAction implements BaseAncHomeVisitAction.AncHomeVi
 
     @Override
     public String evaluateSubTitle() {
-        if (StringUtils.isBlank(partner_hiv_results))
+        if (StringUtils.isBlank(partner_hiv_results) || StringUtils.isBlank(partner_syphilis_results) || StringUtils.isBlank(partner_hepatitis_results))
             return null;
 
         return "Partner Tested";
@@ -78,7 +81,7 @@ public class AncPartnerTestingAction implements BaseAncHomeVisitAction.AncHomeVi
 
     @Override
     public BaseAncHomeVisitAction.Status evaluateStatusOnPayload() {
-        if (StringUtils.isBlank(partner_hiv_results))
+        if (StringUtils.isBlank(partner_hiv_results) || StringUtils.isBlank(partner_syphilis_results) || StringUtils.isBlank(partner_hepatitis_results))
             return BaseAncHomeVisitAction.Status.PENDING;
         else {
             return BaseAncHomeVisitAction.Status.COMPLETED;

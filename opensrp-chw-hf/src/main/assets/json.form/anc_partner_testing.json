@@ -46,7 +46,10 @@
     },
     "encounter_location": ""
   },
-  "global": {},
+  "global": {
+    "hiv_testing_done": false,
+    "syphilis_testing_done": false
+  },
   "step1": {
     "title": "Partner Testing",
     "fields": [
@@ -204,7 +207,7 @@
       {
         "key": "prescribe_anti_sy",
         "type": "toaster_notes",
-        "text": "Prescribe client to Antibiotics",
+        "text": "Prescribe partner to Antibiotics",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
