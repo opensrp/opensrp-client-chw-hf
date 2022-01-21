@@ -105,10 +105,21 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
             Timber.e(e);
         }
 
+        JSONObject medicalSurgicalHistoryForm = null;
+        try {
+            medicalSurgicalHistoryForm = firstPregnancyAboveThirtyFive(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncFirstVisit.getMedicalAndSurgicalHistory()), memberObject);
+            if (details != null && !details.isEmpty()) {
+                JsonFormUtils.populateForm(medicalSurgicalHistoryForm, details);
+            }
+        } catch (JSONException e) {
+            Timber.e(e);
+        }
+
 
         BaseAncHomeVisitAction medicalAndSurgicalHistory = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_first_visit_medical_and_surgical_history))
                 .withOptional(false)
                 .withDetails(details)
+                .withJsonPayload(medicalSurgicalHistoryForm.toString())
                 .withFormName(Constants.JsonForm.AncFirstVisit.getMedicalAndSurgicalHistory())
                 .withHelper(new AncMedicalAndSurgicalHistoryAction(memberObject))
                 .build();
@@ -460,6 +471,42 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
                 return "Baseline Investigation Conducted";
             return "";
         }
+    }
+
+    private static JSONObject firstPregnancyAboveThirtyFive(JSONObject form, MemberObject memberObject) throws JSONException{
+
+            JSONArray fields = form.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+            JSONObject medicalSurgicalHistory = null;
+            for (int i = 0; i < fields.length(); i++) {
+                if (fields.getJSONObject(i).getString(JsonFormConstants.KEY).equals("medical_surgical_history")) {
+                    medicalSurgicalHistory = fields.getJSONObject(i);
+                    break;
+                }
+            }
+
+            JSONArray options = medicalSurgicalHistory.getJSONArray("options");
+
+            JSONObject pregnantAtAboveThirtyFive = new JSONObject();
+            pregnantAtAboveThirtyFive.put("key", "first_pregnancy_at_or_above_thirty_five");
+            pregnantAtAboveThirtyFive.put("text", "First pregnancy");
+            pregnantAtAboveThirtyFive.put("value", false);
+            pregnantAtAboveThirtyFive.put("openmrs_entity", "concept");
+            pregnantAtAboveThirtyFive.put("openmrs_entity_id", "first_pregnancy_at_or_above_thirty_five");
+
+            JSONObject none = new JSONObject();
+            none.put("key", "none");
+            none.put("text", "None");
+            none.put("value", false);
+            none.put("openmrs_entity", "concept");
+            none.put("openmrs_entity_id", "none");
+
+            if (memberObject.getAge() >= 35) {
+                options.put(pregnantAtAboveThirtyFive);
+            }
+
+            options.put(none);
+
+        return form;
     }
 
 }
