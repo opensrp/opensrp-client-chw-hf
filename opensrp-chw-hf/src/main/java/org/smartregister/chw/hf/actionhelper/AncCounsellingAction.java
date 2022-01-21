@@ -10,6 +10,7 @@ import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 
+import java.text.MessageFormat;
 import java.util.List;
 import java.util.Map;
 
@@ -76,9 +77,10 @@ public class AncCounsellingAction implements BaseAncHomeVisitAction.AncHomeVisit
 
         StringBuilder stringBuilder = new StringBuilder();
 
-        stringBuilder.append("Counselling Done");
+        stringBuilder.append("Counselling given: " + anc_counselling);
 
         return stringBuilder.toString();
+
     }
 
     @Override

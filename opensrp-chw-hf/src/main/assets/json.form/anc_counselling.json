@@ -78,7 +78,7 @@
           },
           {
             "key": "chk_danger_signs",
-            "text": "3. Danger sings",
+            "text": "3. Danger signs",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_danger_signs"
