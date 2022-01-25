@@ -431,7 +431,10 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "phone_number",
-        "type": "edit_text",
+        "type": "mask_edit_text",
+        "mask": "0#########",
+        "mask_hint": "714000000",
+        "allowed_chars": "0123456789",
         "hint": "Phone number",
         "v_max_length": {
           "value": "10",
@@ -443,8 +446,8 @@
           "err": "Number must be a total of 10 digits in length"
         },
         "v_regex": {
-          "value": "(0[0-9]{9})|\\s*",
-          "err": "Number must be 10 digits and must start with 0."
+          "value": "(0[6-7][1-9][1-9][0-9]{6})|\\s*",
+          "err": "Number must be 10 digits and must start with 06 or 07."
         }
       },
       {
@@ -509,9 +512,12 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "person_attribute",
         "openmrs_entity_id": "National_ID",
-        "type": "edit_text",
+        "type": "mask_edit_text",
+        "mask": "########-#####-#####-##",
+        "mask_hint": "12345678912345678912",
+        "allowed_chars": "0123456789",
         "hint": "National ID number e.g 12345678-91234-56789-12",
-        "edit_type": "name",
+        "edit_type": "number",
         "v_regex": {
           "value": "^\\d{8}-\\d{5}-\\d{5}-\\d{2}$",
           "err": "National ID number should be of the format (XXXXXXXX-XXXXX-XXXXX-XX)"
@@ -520,6 +526,10 @@
           "value": "23",
           "is_fixed_size": "true",
           "err": "Please enter a valid national id"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter a valid national ID"
         },
         "relevance": {
           "step2:id_avail": {
@@ -538,9 +548,12 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "person_attribute",
         "openmrs_entity_id": "Voter_Registration_Number",
-        "type": "edit_text",
+        "type": "mask_edit_text",
+        "mask": "T-####-####-###-#",
+        "mask_hint": "123456789123",
+        "allowed_chars": "0123456789",
         "hint": "Voter's registration number e.g T-1234-5678-912-3",
-        "edit_type": "name",
+        "edit_type": "number",
         "v_regex": {
           "value": "^T-\\d{4}-\\d{4}-\\d{3}-\\d{1}$",
           "err": "Voter's registration number should be of the format (T-XXXX-XXXX-XXX-X)"
@@ -549,6 +562,10 @@
           "value": "17",
           "is_fixed_size": "true",
           "err": "Please enter a valid voters registration"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter a valid voters registration number"
         },
         "relevance": {
           "step2:id_avail": {
@@ -567,9 +584,12 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "person_attribute",
         "openmrs_entity_id": "Driver_License_Number",
-        "type": "edit_text",
+        "type": "mask_edit_text",
+        "mask": "##########",
+        "mask_hint": "1234567891",
+        "allowed_chars": "0123456789",
         "hint": "Driver's license number e.g 1234567891",
-        "edit_type": "name",
+        "edit_type": "number",
         "v_max_length": {
           "value": "10",
           "is_fixed_size": "true",
@@ -578,6 +598,10 @@
         "v_regex": {
           "value": "^([0-9]{10})",
           "err": "Driver's license number should be of the format (XXXXXXXXXX)"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter a valid driver's license number"
         },
         "relevance": {
           "step2:id_avail": {
@@ -596,7 +620,10 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "person_attribute",
         "openmrs_entity_id": "Passport_Number",
-        "type": "edit_text",
+        "type": "mask_edit_text",
+        "mask": "TAE-######",
+        "mask_hint": "123456",
+        "allowed_chars": "0123456789",
         "hint": "Passport number",
         "v_regex": {
           "value": "^TAE-\\d{6}$",
@@ -607,7 +634,11 @@
           "is_fixed_size": "true",
           "err": "Please enter a valid passport number"
         },
-        "edit_type": "name",
+        "v_required": {
+          "value": true,
+          "err": "Please enter a valid passport number"
+        },
+        "edit_type": "number",
         "relevance": {
           "step2:id_avail": {
             "ex-checkbox": [
@@ -872,7 +903,10 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "other_phone_number",
-        "type": "edit_text",
+        "type": "mask_edit_text",
+        "mask": "0#########",
+        "mask_hint": "714000000",
+        "allowed_chars": "0123456789",
         "hint": "Other phone number",
         "v_max_length": {
           "value": "10",
@@ -884,8 +918,8 @@
           "err": "Number must be a total of 10 digits in length"
         },
         "v_regex": {
-          "value": "(0[0-9]{9})|\\s*",
-          "err": "Number must be 10 digits and must start with 0."
+          "value": "(0[6-7][1-9][1-9][0-9]{6})|\\s*",
+          "err": "Number must be 10 digits and must start with 06 or 07."
         }
       },
       {
