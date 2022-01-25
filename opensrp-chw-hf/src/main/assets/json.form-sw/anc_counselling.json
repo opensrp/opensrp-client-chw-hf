@@ -1,0 +1,157 @@
+{
+  "count": "1",
+  "encounter_type": "ANC Counselling",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "step1": {
+    "title": "Counselling",
+    "fields": [
+      {
+        "key": "given_counselling",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "given_counselling",
+        "type": "check_box",
+        "label": "Ushauri uliyotolewa kwa mteja",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "exclusive": [
+          "chk_none"
+        ],
+        "options": [
+          {
+            "key": "chk_sexual_relationship",
+            "text": "Uhusiano wa kimapenzi",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_sexual_relationship"
+          },
+          {
+            "key": "chk_birth_emergency_plan",
+            "text": "Mpango wa kujifungua na wa dharura",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_birth_emergency_plan"
+          },
+          {
+            "key": "chk_danger_signs",
+            "text": "Dalili hatarishi",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_danger_signs"
+          },
+          {
+            "key": "chk_discussion_std_hiv",
+            "text": "Majadiliano juu ya STD/VVU",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_discussion_std_hiv"
+          },
+          {
+            "key": "chk_condom_use",
+            "text": "Maumizi ya kondomu",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_condom_use"
+          },
+          {
+            "key": "chk_advice_gravid",
+            "text": "Ushauri juu ya usumbufu unaojitokeza wakati wa ujauzito",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_advice_gravid"
+          },
+          {
+            "key": "chk_self_care",
+            "text": "Kujijali",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_self_care"
+          },
+          {
+            "key": "chk_healthy_eating",
+            "text": "Kula lishe yenye afya",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_healthy_eating"
+          },
+          {
+            "key": "chk_physical_activity",
+            "text": "Shuguli za kimwili",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_physical_activity"
+          },
+          {
+            "key": "chk_use_folic_acid",
+            "text": "Matumizi ya Iron Folic Acid kwa kila siku",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_use_folic_acid"
+          },
+          {
+            "key": "chk_counsel_llin",
+            "text": "Utoaji na ushauri juu ya  matumizi ya chandarua (LLIN)",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_counsel_llin"
+          },
+          {
+            "key": "chk_none",
+            "text": "Hakuna",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_none"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua angalau moja"
+        }
+      }
+    ]
+  }
+}
