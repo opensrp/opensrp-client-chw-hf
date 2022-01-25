@@ -200,7 +200,7 @@ public class AncRegisterActivity extends CoreAncRegisterActivity {
                 String encounter_type = form.optString(Constants.JSON_FORM_EXTRA.ENCOUNTER_TYPE);
                 String upt = CoreJsonFormUtils.getValue(form, "upt");
                 String uss = CoreJsonFormUtils.getValue(form, "uss");
-                String danger_sign_analysis = CoreJsonFormUtils.getCheckBoxValue(form, "danger_signs_analysis");
+                String danger_sign_analysis = CoreJsonFormUtils.getCheckBoxValue(form, "danger_signs");
                 String table = data.getStringExtra(Constants.ACTIVITY_PAYLOAD.TABLE_NAME);
 
                 if (encounter_type.equalsIgnoreCase(getRegisterEventType())) {
