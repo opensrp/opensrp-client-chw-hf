@@ -3,10 +3,16 @@ package org.smartregister.chw.hf.activity;
 import android.app.Activity;
 import android.content.Intent;
 
+import org.apache.commons.lang3.EnumUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.smartregister.chw.anc.util.Constants;
+import org.smartregister.chw.anc.util.JsonFormUtils;
 import org.smartregister.chw.core.activity.CoreFamilyRegisterActivity;
 import org.smartregister.chw.core.activity.CorePncRegisterActivity;
+import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.fragment.PncRegisterFragment;
+import org.smartregister.job.SyncServiceJob;
 import org.smartregister.view.fragment.BaseRegisterFragment;
 import timber.log.Timber;
 
@@ -56,5 +62,32 @@ public class PncRegisterActivity extends CorePncRegisterActivity {
     @Override
     protected BaseRegisterFragment getRegisterFragment() {
         return new PncRegisterFragment();
+    }
+
+    @Override
+    protected void onActivityResult (int requestCode, int resultCode, Intent data) {
+        super.onActivityResultExtended(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK) {
+            try {
+                JSONObject form = new JSONObject(data.getStringExtra(Constants.JSON_FORM_EXTRA.JSON));
+                String encounter_type = form.optString(Constants.JSON_FORM_EXTRA.ENCOUNTER_TYPE);
+
+                if (CoreConstants.EventType.PREGNANCY_OUTCOME.equals(encounter_type)) {
+                    JSONArray fields = org.smartregister.util.JsonFormUtils.fields(form);
+                    String pregnancyOutcome = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, org.smartregister.chw.hf.utils.Constants.pregnancyOutcome).optString(JsonFormUtils.VALUE);
+                    if (EnumUtils.isValidEnum(org.smartregister.chw.hf.utils.Constants.FamilyRegisterOptionsUtil.class, pregnancyOutcome)) {
+                        startRegisterActivity(FamilyRegisterActivity.class);
+                        this.finish();
+                        return;
+                    }
+
+
+                }
+                SyncServiceJob.scheduleJobImmediately(SyncServiceJob.TAG);
+
+            } catch (Exception e) {
+                Timber.e(e);
+            }
+        }
     }
 }
