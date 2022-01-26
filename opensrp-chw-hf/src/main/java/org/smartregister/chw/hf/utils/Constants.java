@@ -7,6 +7,7 @@ import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.assetMana
 import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.locale;
 
 public class Constants extends CoreConstants {
+    public static String pregnancyOutcome = "preg_outcome";
     public static final class Events {
         public static final String ANC_PREGNANCY_CONFIRMATION = "Pregnancy Confirmation";
         public static final String ANC_FIRST_FACILITY_VISIT = "ANC First Facility Visit";
@@ -34,6 +35,7 @@ public class Constants extends CoreConstants {
     public static final class ActionList {
         public static final String FOLLOWUP = "Followup_action";
     }
+    public enum FamilyRegisterOptionsUtil {Miscarriage, Other}
 
     public static final class JsonForm {
         private static final String ANC_PREGANCY_CONFIRMATION = "anc_pregnancy_confirmation";
