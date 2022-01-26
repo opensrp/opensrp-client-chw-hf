@@ -435,11 +435,6 @@
         "openmrs_entity_id": "phone_number",
         "type": "edit_text",
         "hint": "Namba ya simu",
-        "v_max_length": {
-          "value": "10",
-          "is_fixed_size": "true",
-          "err": "Please enter a valid phone number"
-        },
         "v_numeric": {
           "value": "true",
           "err": "Namba inatakiwa iwe na tarakimu 10"
@@ -904,11 +899,6 @@
         "openmrs_entity_id": "other_phone_number",
         "type": "edit_text",
         "hint": "Namba ya simu nyingine",
-        "v_max_length": {
-          "value": "10",
-          "is_fixed_size": "true",
-          "err": "Please enter a valid phone number"
-        },
         "v_numeric": {
           "value": "true",
           "err": "Namba ya simu inatakiwa kuwa na tarakimu 10"

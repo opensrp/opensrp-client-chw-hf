@@ -302,11 +302,6 @@
         "openmrs_entity_id": "phone_number",
         "type": "edit_text",
         "hint": "Namba ya simu",
-        "v_max_length": {
-          "value": "10",
-          "is_fixed_size": "true",
-          "err": "Please enter a valid phone number"
-        },
         "v_numeric": {
           "value": "true",
           "err": "namba lazima iwe na tarakimu 10"
@@ -314,10 +309,6 @@
         "v_regex": {
           "value": "(0[6-7][1-9][1-9][0-9]{6})|\\s*",
           "err": "Nambari lazima iwe na tarakimu 10 na lazima ianze na 0."
-        },
-        "v_required": {
-          "value": false,
-          "err": "Tafadhari ingiza namba"
         }
       },
       {
@@ -835,15 +826,6 @@
         "v_regex": {
           "value": "(0[6-7][1-9][1-9][0-9]{6})|\\s*",
           "err": "Nambari lazima iwe na tarakimu 10 na lazima ianze na 0."
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhari ingiza namba ya simu ya msaidizi"
-        },
-        "v_max_length": {
-          "value": "10",
-          "is_fixed_size": "true",
-          "err": "Please enter a valid phone number"
         },
         "relevance": {
           "rules-engine": {
