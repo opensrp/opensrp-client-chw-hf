@@ -52,7 +52,7 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
 
         if (BuildConfig.BUILD_FOR_BORESHA_AFYA_SOUTH) {
             AllClientsUtils.updateHivMenuItems(baseEntityId, menu);
-            AllClientsUtils.updateTbMenuItems(baseEntityId, menu);
+           // AllClientsUtils.updateTbMenuItems(baseEntityId, menu);
 
         }
         if (isOfReproductiveAge(commonPersonObject, gender) && gender.equalsIgnoreCase("female") && !AncDao.isANCMember(baseEntityId)) {
