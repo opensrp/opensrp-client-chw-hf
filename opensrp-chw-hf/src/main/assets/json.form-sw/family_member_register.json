@@ -244,7 +244,7 @@
         "v_max_length": {
           "value": "3",
           "is_fixed_size": "true",
-          "err": "Please enter a valid age"
+          "err": "Weka umri halali"
         },
         "v_numeric": {
           "value": "true",
@@ -252,11 +252,11 @@
         },
         "v_min": {
           "value": "5",
-          "err": "Age must be equal or greater than 5"
+          "err": "Umri lazima uwe sawa au zaidi ya 5"
         },
         "v_max": {
           "value": "120",
-          "err": "Age must be equal or less than 120"
+          "err": "Umri lazima uwe sawa au chini ya 120"
         },
         "relevance": {
           "rules-engine": {
@@ -268,9 +268,7 @@
         "v_required": {
           "value": true,
           "err": "Tafadhali weka umri"
-        },
-        "v_min.err": "Umri lazima uwe sawa au zaidi ya 5",
-        "v_max.err": "Umri lazima uwe sawa au chini ya 120"
+        }
       },
       {
         "key": "sex",
@@ -351,7 +349,7 @@
         },
         "v_regex": {
           "value": "(0[0-9]{9})|\\s*",
-          "err": "Nambari lazima iwe na tarakimu 10 na lazima ianze na 07 au 06."
+          "err": "Nambari lazima iwe na tarakimu 10 na lazima ianze na 06 au 07."
         }
       },
       {
@@ -813,7 +811,7 @@
         },
         "v_regex": {
           "value": "(0[0-9]{9})|\\s*",
-          "err": "Nambari lazima iwe na tarakimu 10 na lazima ianze na 0."
+          "err": "Nambari lazima iwe na tarakimu 10 na lazima ianze na 06 au 07."
         }
       },
       {

@@ -1,1 +1,689 @@
-{"count":"1","encounter_type":"ANC Consultation","entity_id":"","metadata":{"start":{"openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_data_type":"start","openmrs_entity_id":"163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"end":{"openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_data_type":"end","openmrs_entity_id":"163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"today":{"openmrs_entity_parent":"","openmrs_entity":"encounter","openmrs_entity_id":"encounter_date"},"deviceid":{"openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_data_type":"deviceid","openmrs_entity_id":"163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"subscriberid":{"openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_data_type":"subscriberid","openmrs_entity_id":"163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"simserial":{"openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_data_type":"simserial","openmrs_entity_id":"163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"phonenumber":{"openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_data_type":"phonenumber","openmrs_entity_id":"163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"encounter_location":""},"global":{},"step1":{"title":"Consultation (ANC assessment and Update Maternal Handbook)","fields":[{"key":"examination_findings","type":"check_box","label":"Matokeo ya Uchunguzi kwenye ziara ya sasa","openmrs_entity":"concept","openmrs_entity_id":"examination_findings","openmrs_entity_parent":"","exclusive":["none"],"options":[{"key":"puffy_face","text":"Uso umevimba","openmrs_entity":"concept","openmrs_entity_id":"puffy_face"},{"key":"pallor","text":"Kupauka (jicho, viganja, ncha ya ulimi, fizi)","openmrs_entity":"concept","openmrs_entity_id":"pallor"},{"key":"none","text":"Hakuna","openmrs_entity":"concept","openmrs_entity_id":"none"}],"v_required":{"value":true,"err":"Tafadhali chagua moja"}},{"key":"gest_age","openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_entity_id":"gest_age_consultation","type":"hidden","calculation":{"rules-engine":{"ex-rules":{"rules-file":"anc_rv_consultation_calculation.yml"}}}},{"key":"height","type":"edit_text","hint":"Urefu (CM)","openmrs_entity":"concept","openmrs_entity_id":"height","openmrs_entity_parent":"","v_numeric":{"value":"true","err":"Please enter the height"},"v_min":{"value":"60","err":"The height must be equal or greater than 60 (CM)"},"v_max":{"value":"200","err":"The height must be equal or less than 200 (CM)"},"v_required":{"value":true,"err":"Please enter the height"},"relevance":{"rules-engine":{"ex-rules":{"rules-file":"anc_rv_consultation_relevance.yml"}}},"v_min.err":"Urefu lazima uwe sawasawa au zaidi ya 60 (CM)","v_max.err":"Urefu lazima uwe sawasawa au chini ya 200 (CM)"},{"key":"height_calculated","type":"hidden","openmrs_entity":"concept","openmrs_entity_id":"height_calculated","openmrs_entity_parent":"","calculation":{"rules-engine":{"ex-rules":{"rules-file":"anc_rv_consultation_calculation.yml"}}}},{"key":"prompt_for_short_stature","type":"toaster_notes","text":"Mteja ana kimo kifupi","openmrs_entity_id":"prompt_for_short_stature","openmrs_entity":"concept","openmrs_entity_parent":"","toaster_type":"warning","relevance":{"step1:height_calculated":{"type":"numeric","ex":"lessThan(.,\"145\")"}}},{"key":"weight","type":"edit_text","hint":"Uzito (KG)","openmrs_entity":"concept","openmrs_entity_id":"weight","openmrs_entity_parent":"","v_numeric":{"value":"true","err":"Tafadhali ingiza uzito"},"v_min":{"value":"20","err":"The weight must be equal or greater than 20 (KG)"},"v_max":{"value":"300","err":"The weight must be equal or less than 300 (KG)"},"v_required":{"value":true,"err":"Tafadhali ingiza uzito"},"v_min.err":"Uzito lazima uwe sawasawa au zaidi ya 20 (KG)","v_max.err":"Uzito lazima uwe sawasawa au chini ya 300 (KG)"},{"key":"bmi","type":"edit_text","hint":"Kielezo cha Uzito wa Mwili (BMI)","read_only":"true","openmrs_entity":"concept","openmrs_entity_id":"bmi","openmrs_entity_parent":"","v_numeric":{"value":"true","err":"Tafadhali ingiza urefu"},"v_required":{"value":true,"err":"Tafadhali ingiza urefu"},"calculation":{"rules-engine":{"ex-rules":{"rules-file":"anc_rv_consultation_calculation.yml"}}},"relevance":{"rules-engine":{"ex-rules":{"rules-file":"anc_fv_obstetric_examination_relevance.yml"}}}},{"key":"prompt_for_underweight","type":"toaster_notes","text":"Mteja ana uzito mdogo","openmrs_entity_id":"prompt_for_underweight","openmrs_entity":"concept","openmrs_entity_parent":"","toaster_type":"warning","relevance":{"step1:bmi":{"type":"numeric","ex":"lessThan(.,\"18.5\")"}}},{"key":"prompt_for_overweight","type":"toaster_notes","text":"Mteja ana uzito mkubwa na anapaswa kudhibiti uzito wake","openmrs_entity_id":"prompt_for_overweight","openmrs_entity":"concept","openmrs_entity_parent":"","toaster_type":"problem","relevance":{"step1:bmi":{"type":"numeric","ex":"greaterThanEqualTo(.,\"29\")"}}},{"key":"fundal_height","type":"edit_text","openmrs_entity_id":"fundal_height","openmrs_entity":"concept","openmrs_entity_parent":"","hint":"Ukubwa wa mimba (CM)","relevance":{"rules-engine":{"ex-rules":{"rules-file":"anc_rv_consultation_relevance.yml"}}},"v_numeric":{"value":"true","err":"Tafadhali ingiza ukubwa wa mimba"},"v_min":{},"v_max":{"value":"36","err":"Fundal height must be equal or less than 36 CM"},"v_required":{"value":"true","err":"Tafadhali ingiza ukubwa wa mimba"},"v_min.err":"haijatambulika","v_max.err":"Ukubwa wa mimba lazima uwe sawasawa au chini ya 36 CM"},{"key":"fetal_heart_rate","type":"edit_text","hint":"Hesabu Kiwango cha Moyo wa mtoto (bpm)","openmrs_entity_id":"fetal_heart_rate","openmrs_entity":"concept","openmrs_entity_parent":"","v_numeric":{"value":"true","err":"Tafadhali ingiza kiwango cha mapigo ya moyo wa mtoto"},"v_min":{"value":"0","err":"Fetal heart rate must be equal or greater than 0"},"v_max":{"value":"300","err":"Fetal heart rate must be equal or less than 300"},"v_required":{"value":"true","err":"Tafadhali ingiza kiwango cha mapigo ya moyo wa mtoto"},"relevance":{"rules-engine":{"ex-rules":{"rules-file":"anc_fv_obstetric_examination_relevance.yml"}}},"v_min.err":"Kiwango cha mapigo ya moyo wa mtoto lazima kiwe sawasawa au zaidi ya 0","v_max.err":"Kiwango cha mapigo ya moyo wa mtoto lazima kiwe sawasawa au chini ya 300"},{"key":"prompt_for_fetal_distress","type":"toaster_notes","text":"Mtoto yuko kwenye Dhiki","openmrs_entity_id":"prompt_for_fetal_distress","openmrs_entity":"concept","openmrs_entity_parent":"","toaster_type":"problem","relevance":{"step1:fetal_heart_rate":{"type":"numeric","ex":"greaterThan(.,\"120\")"}}},{"key":"lie","type":"spinner","openmrs_entity_id":"lie","openmrs_entity":"concept","openmrs_entity_parent":"","hint":"Mlalo wa mtoto","values":["Usawa","Kiupande","Wima","Nyingine"],"keys":["transverse","oblique","longitudinal","other"],"openmrs_choice_ids":{"transverse":"transverse","oblique":"oblique","longitudinal":"longitudinal","other":"other"},"relevance":{"rules-engine":{"ex-rules":{"rules-file":"anc_rv_consultation_relevance.yml"}}},"v_required":{"value":"true","err":"Tafadhali chagua chaguo kwa ajili ya mlalo wa mtoto"}},{"key":"lie_other","openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_entity_id":"lie_other","type":"edit_text","edit_type":"name","hint":"Mlalo mwingine","v_required":{"value":"true","err":"Tafadhali bainisha mlalo wa mtoto"},"relevance":{"step1:lie":{"type":"string","ex":"equalTo(., \"other\")"}}},{"key":"presentation","type":"spinner","openmrs_entity_id":"presentation","openmrs_entity":"concept","openmrs_entity_parent":"","hint":"Mkao wa mtoto","values":["Kichwa chini, annagalia chini","Kichwa chini, anaangalia mbele","Miguu chini","Kichwa chini, kidevu kimetangulia mbele","Nyingine"],"keys":["occipital_posterior","eye_brow","breech","chin","other"],"openmrs_choice_ids":{"occipital_posterior":"occipital_posterior","eye_brow":"eye_brow","breech":"breech","chin":"chin","other":"other"},"relevance":{"rules-engine":{"ex-rules":{"rules-file":"anc_rv_consultation_relevance.yml"}}},"v_required":{"value":"true","err":"Tafadhali chagua chaguo kwa ajili ya mlalo wa mtoto"}},{"key":"presentation_other","openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_entity_id":"presentation_other","type":"edit_text","edit_type":"name","hint":"Mlalo mwingine","v_required":{"value":"true","err":"Tafadhali bainisha mlalo wa mtoto"},"relevance":{"step1:presentation":{"type":"string","ex":"equalTo(., \"other\")"}}},{"key":"systolic","type":"edit_text","hint":"Systolic (Shinikizo la Damu)","openmrs_entity_id":"systolic","openmrs_entity_parent":"","openmrs_entity":"concept","v_numeric":{"value":"true","err":"Tafadhali ingiza thamani ya systolic"},"v_min":{"value":"0","err":"Systolic value must be equal or greater than 0"},"v_max":{"value":"320","err":"Systolic value must be equal or less than 320"},"v_required":{"value":true,"err":"Tafadhali ingiza thamani ya systolic"},"v_min.err":"Thamani ya systolic lazima iwe sawasawa au zaidi ya 0","v_max.err":"\t Thamani ya systolic lazima iwe sawasawa au chini ya 320"},{"key":"diastolic","type":"edit_text","hint":"Diastolic (Shinikizo la Damu)","openmrs_entity_id":"diastolic","openmrs_entity_parent":"","openmrs_entity":"concept","v_numeric":{"value":"true","err":"Tafadhali ingiza thamani ya diastoli"},"v_min":{"value":"0","err":"Diastolic value must be equal or greater than 0"},"v_max":{"value":"200","err":"Diastolic value must be equal or less than 200"},"v_required":{"value":true,"err":"Tafadhali ingiza thamani ya diastoli"},"v_min.err":"Thamani ya diastolic lazima iwe sawasawa au zaidi ya 0","v_max.err":"Thamani ya diastolic lazima iwe sawasawa au chini ya 200"},{"key":"prompt_for_management_of_hypertension","type":"toaster_notes","text":"Mteja ana Shinikizo la juu la damu (hypertension)","openmrs_entity_id":"prompt_for_management_of_hypertension","openmrs_entity":"concept","openmrs_entity_parent":"","toaster_type":"problem","relevance":{"rules-engine":{"ex-rules":{"rules-file":"anc_rv_consultation_relevance.yml"}}}},{"key":"prompt_for_management_of_hypotension","type":"toaster_notes","text":"Mteja ana Shinikizo la chini la damu (hypotension)","openmrs_entity_id":"prompt_for_management_of_hypotension","openmrs_entity":"concept","openmrs_entity_parent":"","toaster_type":"problem","relevance":{"rules-engine":{"ex-rules":{"rules-file":"anc_rv_consultation_relevance.yml"}}}},{"key":"pulse_rate","type":"edit_text","hint":"Kiwango cha Mapigo ya moyo (Midundo kwa dakika)","openmrs_entity_id":"pulse_rate","openmrs_entity_parent":"","openmrs_entity":"concept","v_numeric":{"value":"true","err":"Tafadhali ingiza kasi ya mapigo ya moyo"},"v_min":{"value":"0","err":"The pulse rate must be equal or greater than 0 (bpm)"},"v_max":{"value":"200","err":"The pulse rate must be equal or less than 200 (bpm)"},"v_required":{"value":true,"err":"Tafadhali ingiza kasi ya mapigo ya moyo"},"v_min.err":"Kiwango cha mpigo lazima kiwe sawasawa au zaidi ya 0 (bpm)","v_max.err":"Kiwango cha mpigo lazima kiwe sawasawa au chini ya 200 (bpm)"},{"key":"prompt_for_Bradycardia","type":"toaster_notes","text":"Mteja ana moyo unaodunda polepole (Bradycardia)","openmrs_entity_id":"prompt_for_Bradycardia","openmrs_entity":"concept","openmrs_entity_parent":"","toaster_type":"problem","relevance":{"step1:pulse_rate":{"type":"numeric","ex":"lessThan(.,\"70\")"}}},{"key":"prompt_for_Tachycardia","type":"toaster_notes","text":"Mteja ana moyo unaodunda haraka (tachycardia)","openmrs_entity_id":"prompt_for_Tachycardia","openmrs_entity":"concept","openmrs_entity_parent":"","toaster_type":"problem","relevance":{"step1:pulse_rate":{"type":"numeric","ex":"greaterThan(.,\"140\")"}}},{"key":"temperature","type":"edit_text","hint":"Halijoto (C)","openmrs_entity_id":"temperature","openmrs_entity_parent":"","openmrs_entity":"concept","v_numeric":{"value":"true","err":"Tafadhali ingiza halijoto"},"v_min":{"value":"10","err":"Temperature must be equal or greater than 10"},"v_max":{"value":"50","err":"Temperature must be equal or less than 50"},"v_required":{"value":true,"err":"Tafadhali ingiza halijoto"},"v_min.err":"Halijoto lazima liwe sawasawa au zaidi ya 10","v_max.err":"Halijoto lazima liwe sawasawa au chini ya 50"},{"key":"notify_client_has_fever","type":"toaster_notes","text":"Mteja ana homa","openmrs_entity_id":"notify_client_has_fever","openmrs_entity":"concept","openmrs_entity_parent":"","toaster_type":"warning","relevance":{"step1:temperature":{"type":"numeric","ex":"greaterThanEqualTo(.,\"39\")"}}},{"key":"breast","type":"native_radio","label":"Matiti","openmrs_entity":"concept","openmrs_entity_id":"breast","openmrs_entity_parent":"","options":[{"key":"normal","text":"Kawaida","openmrs_entity":"concept","openmrs_entity_id":"normal"},{"key":"abnormal","text":"SIo kawaida","openmrs_entity":"concept","openmrs_entity_id":"abnormal"}],"v_required":{"value":"true","err":"Tafadhali jibu swali hili"}},{"key":"lymph_node_under_arm","type":"native_radio","label":"Nodi ya limfu (kwenye kwapa)","openmrs_entity":"concept","openmrs_entity_id":"lymph_node_under_arm","openmrs_entity_parent":"","options":[{"key":"normal","text":"Kawaida","openmrs_entity":"concept","openmrs_entity_id":"normal"},{"key":"abnormal","text":"Sio kawaida","openmrs_entity":"concept","openmrs_entity_id":"abnormal"}],"v_required":{"value":"true","err":"Tafadhali jibu swali hili"}},{"key":"lymph_node_cervical","type":"native_radio","label":"Nodi ya limfu (Kizazi)","openmrs_entity":"concept","openmrs_entity_id":"lymph_node_cervical","openmrs_entity_parent":"","options":[{"key":"normal","text":"Kawaida","openmrs_entity":"concept","openmrs_entity_id":"normal"},{"key":"abnormal","text":"Sio kawaida","openmrs_entity":"concept","openmrs_entity_id":"abnormal"}],"v_required":{"value":"true","err":"Tafadhali jibu swali hili"}}]}}
+{
+  "count": "1",
+  "encounter_type": "ANC Consultation",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "global": {},
+  "step1": {
+    "title": "Consultation (ANC assessment and Update Maternal Handbook)",
+    "fields": [
+      {
+        "key": "examination_findings",
+        "type": "check_box",
+        "label": "Matokeo ya Uchunguzi kwenye ziara ya sasa",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "examination_findings",
+        "openmrs_entity_parent": "",
+        "exclusive": [
+          "none"
+        ],
+        "options": [
+          {
+            "key": "puffy_face",
+            "text": "Uso umevimba",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "puffy_face"
+          },
+          {
+            "key": "pallor",
+            "text": "Kupauka (jicho, viganja, ncha ya ulimi, fizi)",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "pallor"
+          },
+          {
+            "key": "none",
+            "text": "Hakuna",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "none"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali chagua moja"
+        }
+      },
+      {
+        "key": "gest_age",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "gest_age_consultation",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_consultation_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "height",
+        "type": "edit_text",
+        "hint": "Urefu (CM)",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "height",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the height"
+        },
+        "v_min": {
+          "value": "60",
+          "err": "Urefu lazima uwe sawasawa au zaidi ya 60 (CM)"
+        },
+        "v_max": {
+          "value": "200",
+          "err": "Urefu lazima uwe sawasawa au chini ya 200 (CM)"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter the height"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_consultation_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "height_calculated",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "height_calculated",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_consultation_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_short_stature",
+        "type": "toaster_notes",
+        "text": "Mteja ana kimo kifupi",
+        "openmrs_entity_id": "prompt_for_short_stature",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:height_calculated": {
+            "type": "numeric",
+            "ex": "lessThan(.,\"145\")"
+          }
+        }
+      },
+      {
+        "key": "weight",
+        "type": "edit_text",
+        "hint": "Uzito (KG)",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "weight",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Tafadhali ingiza uzito"
+        },
+        "v_min": {
+          "value": "20",
+          "err": "Uzito lazima uwe sawasawa au zaidi ya 20 (KG)"
+        },
+        "v_max": {
+          "value": "300",
+          "err": "Uzito lazima uwe sawasawa au chini ya 300 (KG)"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali ingiza uzito"
+        }
+      },
+      {
+        "key": "bmi",
+        "type": "edit_text",
+        "hint": "Kielezo cha Uzito wa Mwili (BMI)",
+        "read_only": "true",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "bmi",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Tafadhali ingiza urefu"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali ingiza urefu"
+        },
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_consultation_calculation.yml"
+            }
+          }
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_obstetric_examination_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_underweight",
+        "type": "toaster_notes",
+        "text": "Mteja ana uzito mdogo",
+        "openmrs_entity_id": "prompt_for_underweight",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:bmi": {
+            "type": "numeric",
+            "ex": "lessThan(.,\"18.5\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_overweight",
+        "type": "toaster_notes",
+        "text": "Mteja ana uzito mkubwa na anapaswa kudhibiti uzito wake",
+        "openmrs_entity_id": "prompt_for_overweight",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:bmi": {
+            "type": "numeric",
+            "ex": "greaterThanEqualTo(.,\"29\")"
+          }
+        }
+      },
+      {
+        "key": "fundal_height",
+        "type": "edit_text",
+        "openmrs_entity_id": "fundal_height",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "hint": "Ukubwa wa mimba (CM)",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_consultation_relevance.yml"
+            }
+          }
+        },
+        "v_numeric": {
+          "value": "true",
+          "err": "Tafadhali ingiza ukubwa wa mimba"
+        },
+        "v_min": {},
+        "v_max": {
+          "value": "36",
+          "err": "Ukubwa wa mimba lazima uwe sawasawa au chini ya 36 CM"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali ingiza ukubwa wa mimba"
+        }
+      },
+      {
+        "key": "fetal_heart_rate",
+        "type": "edit_text",
+        "hint": "Hesabu Kiwango cha Moyo wa mtoto (bpm)",
+        "openmrs_entity_id": "fetal_heart_rate",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Tafadhali ingiza kiwango cha mapigo ya moyo wa mtoto"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Kiwango cha mapigo ya moyo wa mtoto lazima kiwe sawasawa au zaidi ya 0"
+        },
+        "v_max": {
+          "value": "300",
+          "err": "Kiwango cha mapigo ya moyo wa mtoto lazima kiwe sawasawa au chini ya 300"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali ingiza kiwango cha mapigo ya moyo wa mtoto"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_obstetric_examination_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_fetal_distress",
+        "type": "toaster_notes",
+        "text": "Mtoto yuko kwenye Dhiki",
+        "openmrs_entity_id": "prompt_for_fetal_distress",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:fetal_heart_rate": {
+            "type": "numeric",
+            "ex": "greaterThan(.,\"120\")"
+          }
+        }
+      },
+      {
+        "key": "lie",
+        "type": "spinner",
+        "openmrs_entity_id": "lie",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "hint": "Mlalo wa mtoto",
+        "values": [
+          "Usawa",
+          "Kiupande",
+          "Wima",
+          "Nyingine"
+        ],
+        "keys": [
+          "transverse",
+          "oblique",
+          "longitudinal",
+          "other"
+        ],
+        "openmrs_choice_ids": {
+          "transverse": "transverse",
+          "oblique": "oblique",
+          "longitudinal": "longitudinal",
+          "other": "other"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_consultation_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua chaguo kwa ajili ya mlalo wa mtoto"
+        }
+      },
+      {
+        "key": "lie_other",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "lie_other",
+        "type": "edit_text",
+        "edit_type": "name",
+        "hint": "Mlalo mwingine",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali bainisha mlalo wa mtoto"
+        },
+        "relevance": {
+          "step1:lie": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
+          }
+        }
+      },
+      {
+        "key": "presentation",
+        "type": "spinner",
+        "openmrs_entity_id": "presentation",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "hint": "Mkao wa mtoto",
+        "values": [
+          "Kichwa chini, annagalia chini",
+          "Kichwa chini, anaangalia mbele",
+          "Miguu chini",
+          "Kichwa chini, kidevu kimetangulia mbele",
+          "Nyingine"
+        ],
+        "keys": [
+          "occipital_posterior",
+          "eye_brow",
+          "breech",
+          "chin",
+          "other"
+        ],
+        "openmrs_choice_ids": {
+          "occipital_posterior": "occipital_posterior",
+          "eye_brow": "eye_brow",
+          "breech": "breech",
+          "chin": "chin",
+          "other": "other"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_consultation_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua chaguo kwa ajili ya mlalo wa mtoto"
+        }
+      },
+      {
+        "key": "presentation_other",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "presentation_other",
+        "type": "edit_text",
+        "edit_type": "name",
+        "hint": "Mlalo mwingine",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali bainisha mlalo wa mtoto"
+        },
+        "relevance": {
+          "step1:presentation": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
+          }
+        }
+      },
+      {
+        "key": "systolic",
+        "type": "edit_text",
+        "hint": "Systolic (Shinikizo la Damu)",
+        "openmrs_entity_id": "systolic",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "v_numeric": {
+          "value": "true",
+          "err": "Tafadhali ingiza thamani ya systolic"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Thamani ya systolic lazima iwe sawasawa au zaidi ya 0"
+        },
+        "v_max": {
+          "value": "320",
+          "err": "Thamani ya systolic lazima iwe sawasawa au chini ya 320"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali ingiza thamani ya systolic"
+        }
+      },
+      {
+        "key": "diastolic",
+        "type": "edit_text",
+        "hint": "Diastolic (Shinikizo la Damu)",
+        "openmrs_entity_id": "diastolic",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "v_numeric": {
+          "value": "true",
+          "err": "Tafadhali ingiza thamani ya diastoli"
+        },
+        "v_min": {
+          "value": "0",
+          "err":"Thamani ya diastolic lazima iwe sawasawa au zaidi ya 0"
+        },
+        "v_max": {
+          "value": "200",
+          "err":"Thamani ya diastolic lazima iwe sawasawa au chini ya 200"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali ingiza thamani ya diastoli"
+        }
+      },
+      {
+        "key": "prompt_for_management_of_hypertension",
+        "type": "toaster_notes",
+        "text": "Mteja ana Shinikizo la juu la damu (hypertension)",
+        "openmrs_entity_id": "prompt_for_management_of_hypertension",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_consultation_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_management_of_hypotension",
+        "type": "toaster_notes",
+        "text": "Mteja ana Shinikizo la chini la damu (hypotension)",
+        "openmrs_entity_id": "prompt_for_management_of_hypotension",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_consultation_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "pulse_rate",
+        "type": "edit_text",
+        "hint": "Kiwango cha Mapigo ya moyo (Midundo kwa dakika)",
+        "openmrs_entity_id": "pulse_rate",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "v_numeric": {
+          "value": "true",
+          "err": "Tafadhali ingiza kasi ya mapigo ya moyo"
+        },
+        "v_min": {
+          "value": "0",
+          "err":"Kiwango cha mpigo lazima kiwe sawasawa au zaidi ya 0 (bpm)"
+        },
+        "v_max": {
+          "value": "200",
+          "err": "Kiwango cha mpigo lazima kiwe sawasawa au chini ya 200 (bpm)"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali ingiza kasi ya mapigo ya moyo"
+        }
+      },
+      {
+        "key": "prompt_for_Bradycardia",
+        "type": "toaster_notes",
+        "text": "Mteja ana moyo unaodunda polepole (Bradycardia)",
+        "openmrs_entity_id": "prompt_for_Bradycardia",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:pulse_rate": {
+            "type": "numeric",
+            "ex": "lessThan(.,\"70\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_Tachycardia",
+        "type": "toaster_notes",
+        "text": "Mteja ana moyo unaodunda haraka (tachycardia)",
+        "openmrs_entity_id": "prompt_for_Tachycardia",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:pulse_rate": {
+            "type": "numeric",
+            "ex": "greaterThan(.,\"140\")"
+          }
+        }
+      },
+      {
+        "key": "temperature",
+        "type": "edit_text",
+        "hint": "Halijoto (C)",
+        "openmrs_entity_id": "temperature",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "v_numeric": {
+          "value": "true",
+          "err": "Tafadhali ingiza halijoto"
+        },
+        "v_min": {
+          "value": "10",
+          "err":  "Halijoto lazima liwe sawasawa au zaidi ya 10"
+        },
+        "v_max": {
+          "value": "50",
+          "err": "Halijoto lazima liwe sawasawa au chini ya 50"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali ingiza halijoto"
+        }
+      },
+      {
+        "key": "notify_client_has_fever",
+        "type": "toaster_notes",
+        "text": "Mteja ana homa",
+        "openmrs_entity_id": "notify_client_has_fever",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:temperature": {
+            "type": "numeric",
+            "ex": "greaterThanEqualTo(.,\"39\")"
+          }
+        }
+      },
+      {
+        "key": "breast",
+        "type": "native_radio",
+        "label": "Matiti",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "breast",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "normal",
+            "text": "Kawaida",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "normal"
+          },
+          {
+            "key": "abnormal",
+            "text": "SIo kawaida",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "abnormal"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jibu swali hili"
+        }
+      },
+      {
+        "key": "lymph_node_under_arm",
+        "type": "native_radio",
+        "label": "Nodi ya limfu (kwenye kwapa)",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "lymph_node_under_arm",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "normal",
+            "text": "Kawaida",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "normal"
+          },
+          {
+            "key": "abnormal",
+            "text": "Sio kawaida",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "abnormal"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jibu swali hili"
+        }
+      },
+      {
+        "key": "lymph_node_cervical",
+        "type": "native_radio",
+        "label": "Nodi ya limfu (Kizazi)",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "lymph_node_cervical",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "normal",
+            "text": "Kawaida",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "normal"
+          },
+          {
+            "key": "abnormal",
+            "text": "Sio kawaida",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "abnormal"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jibu swali hili"
+        }
+      }
+    ]
+  }
+}

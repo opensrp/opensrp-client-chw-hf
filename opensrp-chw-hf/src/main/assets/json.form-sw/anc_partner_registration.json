@@ -1,1 +1,339 @@
-{"count":"1","encounter_type":"Partner Registration","entity_id":"","metadata":{"start":{"openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_data_type":"start","openmrs_entity_id":"163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"end":{"openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_data_type":"end","openmrs_entity_id":"163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"today":{"openmrs_entity_parent":"","openmrs_entity":"encounter","openmrs_entity_id":"encounter_date"},"deviceid":{"openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_data_type":"deviceid","openmrs_entity_id":"163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"subscriberid":{"openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_data_type":"subscriberid","openmrs_entity_id":"163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"simserial":{"openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_data_type":"simserial","openmrs_entity_id":"163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"phonenumber":{"openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_data_type":"phonenumber","openmrs_entity_id":"163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"encounter_location":""},"step1":{"title":"Partner Registration","fields":[{"key":"partner_surname","type":"edit_text","hint":"Jina la mwisho la mwenza","openmrs_entity":"concept","openmrs_entity_id":"partner_surname","openmrs_entity_parent":"","v_regex":{"value":"[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*","err":"Tafadhali ingiza jina la mwisho la mwenza"},"v_required":{"value":true,"err":"Tafadhali ingiza jina la mwisho la mwenza"}},{"key":"partner_first_name","type":"edit_text","hint":"Jina la kwanza la mwenza","openmrs_entity":"concept","openmrs_entity_id":"partner_first_name","openmrs_entity_parent":"","v_regex":{"value":"[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*","err":"Tafadhali ingiza jina la kwanza la mwenza"},"v_required":{"value":true,"err":"Tafadhali ingiza jina la kwanza la mwenza"}},{"key":"partner_middle_name","type":"edit_text","hint":"Jina la kati la mwenza","openmrs_entity":"concept","openmrs_entity_id":"partner_middle_name","openmrs_entity_parent":"","v_regex":{"value":"[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*","err":"Tafadhali ingiza jina la kati la mwenza"},"v_required":{"value":true,"err":"Tafadhali ingiza jina la kati la mwenza"}},{"key":"partner_age","hint":"Umri wa mwenza","openmrs_entity":"concept","openmrs_entity_id":"partner_age","openmrs_entity_parent":"","type":"edit_text","v_numeric":{"value":"true","err":"Tafadhali ingiza umri wa mwenza"},"v_min":{"value":"11","err":"Age must be equal or greater than 11"},"v_max":{"value":"120","err":"Age must be equal or less than 120"},"v_required":{"value":true,"err":"Tafadhali ingiza umri wa mwenza"},"v_min.err":"Umri lazima uwe sawasawa au zaidi ya 11","v_max.err":"Umri lazima uwe sawasawa au chini ya 120"},{"key":"partner_education","openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_entity_id":"partner_education","type":"native_radio","label":"Kiwango cha juu cha elimu mwenza alichokamilisha ","label_text_style":"normal","text_color":"#C0C0C0","options":[{"key":"no_education","text":"Hajasoma","value":false,"openmrs_entity":"concept","openmrs_entity_id":"no_education"},{"key":"primary","text":"Elimu ya msingi","value":false,"openmrs_entity":"concept","openmrs_entity_id":"primary"},{"key":"secondary_o_level","text":"Elimu ya sekondari (Kiwango cha kawaida)","value":false,"openmrs_entity":"concept","openmrs_entity_id":"secondary_o_level"},{"key":"secondary_a_level","text":"Elimu ya sekondari (Kiwango cha juu)","value":false,"openmrs_entity":"concept","openmrs_entity_id":"secondary_a_level"},{"key":"tertiary","text":"Elimu ya juu","value":false,"openmrs_entity":"concept","openmrs_entity_id":"tertiary"},{"key":"university","text":"Chuo kikuu","value":false,"openmrs_entity":"concept","openmrs_entity_id":"university"},{"key":"unknown","text":"Haijulikani","value":false,"openmrs_entity":"concept","openmrs_entity_id":"unknown"}],"v_required":{"value":"true","err":"Tafadhali chagua kiwango cha juu cha elimu mwenza alichokamilisha"}},{"key":"partner_work","openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_entity_id":"partner_work","type":"check_box","label":"Kazi ya mwenza","label_text_style":"normal","text_color":"#C0C0C0","exclusive":["chk_none"],"options":[{"key":"chk_farmer","text":"Mkulima","value":false,"openmrs_entity":"concept","openmrs_entity_id":"chk_farmer"},{"key":"chk_cs","text":"Mtumishi wa umma","value":false,"openmrs_entity":"concept","openmrs_entity_id":"chk_cs"},{"key":"chk_nurse","text":"Muuguzi","value":false,"openmrs_entity":"concept","openmrs_entity_id":"chk_nurse"},{"key":"chk_teacher","text":"Mwalimu","value":false,"openmrs_entity":"concept","openmrs_entity_id":"chk_teacher"},{"key":"chk_th","text":"Mganga wa kienyeji","value":false,"openmrs_entity":"concept","openmrs_entity_id":"chk_th"},{"key":"chk_chw","text":"Mhudumu wa Afya ya Jamii (MJA)","value":false,"openmrs_entity":"concept","openmrs_entity_id":"chk_chw"},{"key":"chk_tba","text":"Mkunga wa jadi","value":false,"openmrs_entity":"concept","openmrs_entity_id":"chk_tba"},{"key":"chk_chmis","text":"HMIS wa Jumuiya (cHMIS)","value":false,"openmrs_entity":"concept","openmrs_entity_id":"chk_chmis"},{"key":"chk_cbd","text":"Msambazaji wa Jamii","value":false,"openmrs_entity":"concept","openmrs_entity_id":"chk_cbd"},{"key":"chk_hbc","text":"Utunzaji wa Nyumbani (HBC)","value":false,"openmrs_entity":"concept","openmrs_entity_id":"chk_hbc"},{"key":"chk_cimmci","text":"IMCI wa jamii","value":false,"openmrs_entity":"concept","openmrs_entity_id":"chk_cimmci"},{"key":"chk_other","text":"Nyingine","value":false,"openmrs_entity":"concept","openmrs_entity_id":"chk_other"},{"key":"chk_none","text":"Hakuna","value":false,"openmrs_entity":"concept","openmrs_entity_id":"chk_none"}],"v_required":{"value":"true","err":"Tafadhali chagua angalau moja"}},{"key":"partner_work_other","openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_entity_id":"partner_work_other","type":"edit_text","hint":"Kazi  nyingine ya mwenza","edit_type":"name","v_required":{"value":"true","err":"Tafadhali bainisha kazi"},"relevance":{"step1:partner_work":{"ex-checkbox":[{"or":["chk_other"]}]}}},{"key":"partner_registered","type":"hidden","openmrs_entity":"concept","openmrs_entity_id":"partner_registered","openmrs_entity_parent":"","calculation":{"rules-engine":{"ex-rules":{"rules-file":"anc_partner_registration_calculation.yml"}}}}]}}
+{
+  "count": "1",
+  "encounter_type": "Partner Registration",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "step1": {
+    "title": "Partner Registration",
+    "fields": [
+      {
+        "key": "partner_surname",
+        "type": "edit_text",
+        "hint": "Jina la mwisho la mwenza",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "partner_surname",
+        "openmrs_entity_parent": "",
+        "v_regex": {
+          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
+          "err": "Tafadhali ingiza jina la mwisho la mwenza"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali ingiza jina la mwisho la mwenza"
+        }
+      },
+      {
+        "key": "partner_first_name",
+        "type": "edit_text",
+        "hint": "Jina la kwanza la mwenza",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "partner_first_name",
+        "openmrs_entity_parent": "",
+        "v_regex": {
+          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
+          "err": "Tafadhali ingiza jina la kwanza la mwenza"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali ingiza jina la kwanza la mwenza"
+        }
+      },
+      {
+        "key": "partner_middle_name",
+        "type": "edit_text",
+        "hint": "Jina la kati la mwenza",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "partner_middle_name",
+        "openmrs_entity_parent": "",
+        "v_regex": {
+          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
+          "err": "Tafadhali ingiza jina la kati la mwenza"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali ingiza jina la kati la mwenza"
+        }
+      },
+      {
+        "key": "partner_age",
+        "hint": "Umri wa mwenza",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "partner_age",
+        "openmrs_entity_parent": "",
+        "type": "edit_text",
+        "v_numeric": {
+          "value": "true",
+          "err": "Tafadhali ingiza umri wa mwenza"
+        },
+        "v_min": {
+          "value": "11",
+          "err": "Umri lazima uwe sawasawa au zaidi ya 11"
+        },
+        "v_max": {
+          "value": "120",
+          "err": "Umri lazima uwe sawasawa au chini ya 120"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali ingiza umri wa mwenza"
+        }
+      },
+      {
+        "key": "partner_education",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "partner_education",
+        "type": "native_radio",
+        "label": "Kiwango cha juu cha elimu mwenza alichokamilisha ",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "no_education",
+            "text": "Hajasoma",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no_education"
+          },
+          {
+            "key": "primary",
+            "text": "Elimu ya msingi",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "primary"
+          },
+          {
+            "key": "secondary_o_level",
+            "text": "Elimu ya sekondari (Kiwango cha kawaida)",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "secondary_o_level"
+          },
+          {
+            "key": "secondary_a_level",
+            "text": "Elimu ya sekondari (Kiwango cha juu)",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "secondary_a_level"
+          },
+          {
+            "key": "tertiary",
+            "text": "Elimu ya juu",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "tertiary"
+          },
+          {
+            "key": "university",
+            "text": "Chuo kikuu",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "university"
+          },
+          {
+            "key": "unknown",
+            "text": "Haijulikani",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "unknown"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua kiwango cha juu cha elimu mwenza alichokamilisha"
+        }
+      },
+      {
+        "key": "partner_work",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "partner_work",
+        "type": "check_box",
+        "label": "Kazi ya mwenza",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "exclusive": [
+          "chk_none"
+        ],
+        "options": [
+          {
+            "key": "chk_farmer",
+            "text": "Mkulima",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_farmer"
+          },
+          {
+            "key": "chk_cs",
+            "text": "Mtumishi wa umma",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_cs"
+          },
+          {
+            "key": "chk_nurse",
+            "text": "Muuguzi",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_nurse"
+          },
+          {
+            "key": "chk_teacher",
+            "text": "Mwalimu",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_teacher"
+          },
+          {
+            "key": "chk_th",
+            "text": "Mganga wa kienyeji",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_th"
+          },
+          {
+            "key": "chk_chw",
+            "text": "Mhudumu wa Afya ya Jamii (MJA)",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_chw"
+          },
+          {
+            "key": "chk_tba",
+            "text": "Mkunga wa jadi",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_tba"
+          },
+          {
+            "key": "chk_chmis",
+            "text": "HMIS wa Jumuiya (cHMIS)",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_chmis"
+          },
+          {
+            "key": "chk_cbd",
+            "text": "Msambazaji wa Jamii",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_cbd"
+          },
+          {
+            "key": "chk_hbc",
+            "text": "Utunzaji wa Nyumbani (HBC)",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_hbc"
+          },
+          {
+            "key": "chk_cimmci",
+            "text": "IMCI wa jamii",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_cimmci"
+          },
+          {
+            "key": "chk_other",
+            "text": "Nyingine",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_other"
+          },
+          {
+            "key": "chk_none",
+            "text": "Hakuna",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_none"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua angalau moja"
+        }
+      },
+      {
+        "key": "partner_work_other",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "partner_work_other",
+        "type": "edit_text",
+        "hint": "Kazi  nyingine ya mwenza",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali bainisha kazi"
+        },
+        "relevance": {
+          "step1:partner_work": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "chk_other"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "partner_registered",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "partner_registered",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_partner_registration_calculation.yml"
+            }
+          }
+        }
+      }
+    ]
+  }
+}
