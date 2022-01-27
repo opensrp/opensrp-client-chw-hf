@@ -204,6 +204,13 @@
           }
         },
         {
+          "column_name": "sync_location_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "locationId"
+          }
+        },
+        {
           "column_name": "last_interacted_with",
           "type": "Event",
           "json_mapping": {
