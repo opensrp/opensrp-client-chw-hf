@@ -54,24 +54,58 @@
     }
   },
   "step1": {
-    "title": "Taarifa ya eneo",
+    "title": "Location details",
     "next": "step2",
     "fields": [
       {
         "key": "fam_name",
         "openmrs_entity_parent": "",
         "openmrs_entity": "person",
-        "openmrs_entity_id": "first_name",
+        "openmrs_entity_id": "fam_name",
         "type": "edit_text",
-        "hint": "Jina la mwisho (Ukoo)",
+        "hint": "Jina la Ukoo",
         "edit_type": "name",
         "v_required": {
           "value": "true",
-          "err": "Tafadhali ingiza jina la ukoo"
+          "err": "Tafadhali weka jina la ukoo"
         },
         "v_regex": {
           "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
-          "err": "Tafadhali ingiza jina la ukoo"
+          "err": "Tafadhali weka jina la ukoo"
+        }
+      },
+      {
+        "key": "client_first_name",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "person",
+        "openmrs_entity_id": "first_name",
+        "type": "edit_text",
+        "hint": "Jina la kwanza",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali weka jina la kwanza"
+        },
+        "v_regex": {
+          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
+          "err": "Tafadhali weka jina halali"
+        }
+      },
+      {
+        "key": "client_middle_name",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "person",
+        "openmrs_entity_id": "middle_name",
+        "type": "edit_text",
+        "hint": "Jina la kati",
+        "edit_type": "name",
+        "v_regex": {
+          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
+          "err": "Tafadhali weka jina halali"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali weka jina la kati"
         }
       },
       {
@@ -80,13 +114,13 @@
         "openmrs_entity": "person_identifier",
         "openmrs_entity_id": "opensrp_id",
         "hidden": "true",
-        "type": "edit_text",
+        "type": "barcode",
         "barcode_type": "qrcode",
-        "hint": "ID",
-        "scanButtonText": "Chukua QR code",
+        "hint": "Nambari ya utambulisho",
+        "scanButtonText": "Scan QR Code",
         "v_numeric": {
           "value": "true",
-          "err": "Tafadhali ingiza namba halali"
+          "err": "Tafadhali weka kitambulisho halali"
         }
       },
       {
@@ -99,11 +133,11 @@
         "hint": "Jina la eneo",
         "v_required": {
           "value": "true",
-          "err": "Tafadhali ingiza jina la eneo"
+          "err": "Tafadhali weka jina la eneo au mji"
         },
         "v_regex": {
           "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-]*",
-          "err": "Tafadhali ingiza jina halali la eneo"
+          "err": "Tafadhali weka jina halali la kijiji"
         }
       },
       {
@@ -113,10 +147,10 @@
         "openmrs_entity_id": "landmark",
         "type": "edit_text",
         "edit_type": "name",
-        "hint": "Alama ya eneo la makazi",
+        "hint": "Alama/Maelezo ya eneo la nyumba",
         "v_required": {
           "value": true,
-          "err": "Tafadhali ingiza maelezo ya alama au eneo la makazi"
+          "err": "Tafadhali weka alama/maelezo ya eneo."
         }
       },
       {
@@ -142,7 +176,7 @@
     ]
   },
   "step2": {
-    "title": "Taarifa ya mteja",
+    "title": "Client details",
     "fields": [
       {
         "key": "unique_id",
@@ -154,29 +188,29 @@
         "hint": "Kituoni ID",
         "v_numeric": {
           "value": "true",
-          "err": "Tafadhali ingiza namba halali"
+          "err": "Tafadhali weka kitambulisho halali"
         },
         "v_required": {
           "value": "true",
-          "err": "Tafadhali ingiza namba ya kipekee"
+          "err": "Tafadhali weka kitambulisho cha KIPEKEE"
         }
       },
       {
         "key": "surname",
         "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "",
+        "openmrs_entity": "person",
+        "openmrs_entity_id": "last_name",
         "type": "edit_text",
-        "hint": "Jina la mwisho (ukoo)",
+        "hint": "Jina la ukoo",
         "edit_type": "name",
         "read_only": true,
         "v_regex": {
           "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
-          "err": "Tafadhali ingiza jina halali"
+          "err": "Tafadhali weka jina halali"
         },
         "v_required": {
           "value": "true",
-          "err": "Tafadhali ingiza jina la ukoo"
+          "err": "Tafadhali weka jina la ukoo"
         },
         "calculation": {
           "rules-engine": {
@@ -196,11 +230,19 @@
         "edit_type": "name",
         "v_required": {
           "value": "true",
-          "err": "Tafadhali ingiza jina la kwanza"
+          "err": "Tafadhali weka jina la kwanza"
         },
         "v_regex": {
           "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
-          "err": "Tafadhali ingiza jina halali"
+          "err": "Tafadhali weka jina halali"
+        },
+        "read_only": true,
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "all_clients_member_calculation.yml"
+            }
+          }
         }
       },
       {
@@ -213,11 +255,19 @@
         "edit_type": "name",
         "v_regex": {
           "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
-          "err": "Tafadhali ingiza jina halali"
+          "err": "Tafadhali weka jina halali"
         },
         "v_required": {
           "value": "true",
-          "err": "Tafadhali ingiza jina la kati"
+          "err": "Tafadhali weka jina la kati"
+        },
+        "read_only": true,
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "all_clients_member_calculation.yml"
+            }
+          }
         }
       },
       {
@@ -226,7 +276,7 @@
         "openmrs_entity": "person",
         "openmrs_entity_id": "birthdate",
         "type": "date_picker",
-        "hint": "Tarehe ya kuzaliwa",
+        "hint": "Tarehe ya kuzaliwa (DOB)",
         "expanded": false,
         "duration": {
           "label": "Age"
@@ -235,7 +285,7 @@
         "max_date": "today",
         "v_required": {
           "value": "true",
-          "err": "Tafadhali ingiza tarehe ya kuzaliwa"
+          "err": "Tarehe ya kuzaliwa (DOB)"
         },
         "relevance": {
           "rules-engine": {
@@ -269,7 +319,7 @@
         "options": [
           {
             "key": "dob_unknown",
-            "text": "Tarehe ya kuzaliwa haijulikani?",
+            "text": "Tarehe ya kuzaliwa haijulikani",
             "text_size": "18px",
             "value": "false"
           }
@@ -293,18 +343,18 @@
           "value": "true",
           "err": "Must be a rounded number"
         },
-        "v_numeric": {
-          "value": "true",
-          "err": "Tafadhali ingiza umri"
-        },
         "v_max_length": {
           "value": "3",
           "is_fixed_size": "true",
-          "err": "Tafadhali ingiza umri"
+          "err": "Please enter a valid age"
+        },
+        "v_numeric": {
+          "value": "true",
+          "err": "Lazima iwe nambari kamili"
         },
         "v_min": {
           "value": "0",
-          "err": "Umri lazima uwe sawa au mkubwa kuliko 0"
+          "err": "Umri lazima uwe sawa au zaidi ya 0"
         },
         "v_max": {
           "value": "120",
@@ -319,7 +369,7 @@
         },
         "v_required": {
           "value": true,
-          "err": "Tafadhali ingiza umri"
+          "err": "Tafadhali weka umri"
         }
       },
       {
@@ -328,10 +378,10 @@
         "openmrs_entity": "person",
         "openmrs_entity_id": "gender",
         "type": "spinner",
-        "hint": "Jinsi",
+        "hint": "Jinsia",
         "values": [
-          "Me",
-          "Ke"
+          "Mwanamume",
+          "Mwanamke"
         ],
         "keys": [
           "Male",
@@ -339,7 +389,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhali ingiza jinsi"
+          "err": "Tafadhali ingiza jinsia"
         }
       },
       {
@@ -348,14 +398,14 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "marital_status",
         "type": "spinner",
-        "hint": "Hali ya ndoa ya mteja?",
+        "hint": "Hali ya Ndoa ya Mteja?",
         "values": [
-          "Hajaolewa",
-          "Ameolewa",
-          "Ameachwa",
-          "Ndoa ya mme/mke mmoja",
-          "Mitala",
-          "Mjane",
+          "Hajaoa/Kuolewa",
+          "Ameoa/Kuolewa",
+          "Wameachwa",
+          "Ndoa ya mke/mume moja",
+          "Ndoa za wake wengi",
+          "Mjane/Mgane",
           "Kuishi pamoja"
         ],
         "keys": [
@@ -392,16 +442,16 @@
         "key": "phone_number",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "",
+        "openmrs_entity_id": "phone_number",
         "type": "edit_text",
-        "hint": "Namba ya simu",
+        "hint": "Nambari ya simu ya mteja",
         "v_numeric": {
           "value": "true",
-          "err": "Nambari lazima iwe jumla ya nambari 10 kwa urefu"
+          "err": "Nambari lazima iwe jumla ya tarakimu 10 kwa urefu"
         },
         "v_regex": {
-          "value": "(0[0-9]{9})|\\s*",
-          "err": "Nambari lazima iwe na nambari 10 na lazima ianze na 0."
+          "value": "(0[6-7][1-9][1-9][0-9]{6})|\\s*",
+          "err": "Nambari lazima iwe na tarakimu 10 na lazima ianze na 06 au 07."
         }
       },
       {
@@ -410,7 +460,7 @@
         "openmrs_entity": "person_attribute",
         "openmrs_entity_id": "id_avail",
         "type": "check_box",
-        "label": "Je, ana kitambulisho chochote kati ya hivi??",
+        "label": "Je, una kitambulisho chochote kati ya vifuatavyo?",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "exclusive": [
@@ -419,28 +469,28 @@
         "options": [
           {
             "key": "chk_national_id",
-            "text": "Kitambulisho cha taifa",
+            "text": "Kitambulisho cha Taifa",
             "value": false,
             "openmrs_entity": "person_attribute",
             "openmrs_entity_id": "chk_national_id"
           },
           {
             "key": "chk_voters_id",
-            "text": "Kitambulisho cha mpiga kura",
+            "text": "Kitambulisho cha usajili wa mpiga kura",
             "value": false,
             "openmrs_entity": "person_attribute",
             "openmrs_entity_id": "chk_voters_id"
           },
           {
             "key": "chk_drivers_license",
-            "text": "Leseni ya dereva",
+            "text": "Leseni ya udereva",
             "value": false,
             "openmrs_entity": "person_attribute",
             "openmrs_entity_id": "chk_drivers_license"
           },
           {
             "key": "chk_passport",
-            "text": "Hati ya kusafiria",
+            "text": "Pasipoti",
             "value": false,
             "openmrs_entity": "person_attribute",
             "openmrs_entity_id": "chk_passport"
@@ -466,17 +516,24 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "person_attribute",
         "openmrs_entity_id": "National_ID",
-        "type": "edit_text",
-        "hint": "Namba ya kitambulisho cha taifa, mfano: 12345678-91234-56789-12",
+        "type": "mask_edit_text",
+        "mask": "########-#####-#####-##",
+        "mask_hint": "12345678912345678912",
+        "allowed_chars": "0123456789",
+        "hint": "Nambari ya kitambulisho cha taifa k.m 12345678-91234-56789-12",
         "edit_type": "name",
         "v_max_length": {
           "value": "23",
           "is_fixed_size": "true",
-          "err": "Tafadhali weka namba sahihi"
+          "err":"Tafadhali weka namba sahihi"
         },
         "v_regex": {
           "value": "^\\d{8}-\\d{5}-\\d{5}-\\d{2}$",
-          "err": "Namba ya kitambulisho cha taifa inatakiwa kuwa (XXXXXXXX-XXXXX-XXXXX-XX)"
+          "err": "Nambari ya kitambulisho cha kitaifa inapaswa kuwa ya umbizo (XXXXXXXX-XXXXX-XXXXX-XX)"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali weka namba sahihi"
         },
         "relevance": {
           "step2:id_avail": {
@@ -495,8 +552,11 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "person_attribute",
         "openmrs_entity_id": "Voter_Registration_Number",
-        "type": "edit_text",
-        "hint": "Namba ya kitambulisho cha mpiga kura, mfano: T-1234-5678-912-3",
+        "type": "mask_edit_text",
+        "mask": "T-####-####-###-#",
+        "mask_hint": "123456789123",
+        "allowed_chars": "0123456789",
+        "hint": "Nambari ya usajili ya mpiga kura k.m T-1234-5678-912-3",
         "edit_type": "name",
         "v_max_length": {
           "value": "17",
@@ -505,7 +565,11 @@
         },
         "v_regex": {
           "value": "^T-\\d{4}-\\d{4}-\\d{3}-\\d{1}$",
-          "err": "Namba ya kitambulisho cha mpiga kura inatakiwa kuwa (T-XXXX-XXXX-XXX-X)"
+          "err": "Nambari ya usajili wa mpiga kura inapaswa kuwa ya umbizo (T-XXXX-XXXX-XXX-X)"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali weka namba sahihi"
         },
         "relevance": {
           "step2:id_avail": {
@@ -524,17 +588,24 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "person_attribute",
         "openmrs_entity_id": "Driver_License_Number",
-        "type": "edit_text",
-        "hint": "Namba ya leseni ya udereva, mfano: 1234567891",
+        "type": "mask_edit_text",
+        "mask": "##########",
+        "mask_hint": "1234567891",
+        "allowed_chars": "0123456789",
+        "hint": "Nambari ya leseni ya udereva k.m 1234567891",
         "edit_type": "name",
         "v_max_length": {
           "value": "10",
           "is_fixed_size": "true",
           "err": "Tafadhali weka namba sahihi"
         },
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali weka namba sahihi"
+        },
         "v_regex": {
           "value": "^([0-9]{10})",
-          "err": "Namba ya leseni ya udereva inatakiwa kuwa (XXXXXXXXXX)"
+          "err": "Nambari ya leseni ya udereva inapaswa kuwa ya umbizo (XXXXXXXXX)"
         },
         "relevance": {
           "step2:id_avail": {
@@ -553,18 +624,25 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "person_attribute",
         "openmrs_entity_id": "Passport_Number",
-        "type": "edit_text",
-        "hint": "Namba ya hati ya kusafiria",
-        "v_regex": {
-          "value": "^TAE-\\d{6}$",
-          "err": "Namba ya hati ya kusafiria inatakiwa kuwa (TAE-XXXXXX)"
-        },
-        "edit_type": "name",
+        "type": "mask_edit_text",
+        "mask": "TAE-######",
+        "mask_hint": "123456",
+        "allowed_chars": "0123456789",
+        "hint": "Nambari ya pasipoti",
         "v_max_length": {
           "value": "10",
           "is_fixed_size": "true",
-          "err": "Tafadhali weka namba sahihi"
+          "err":  "Tafadhali weka namba sahihi"
         },
+        "v_required": {
+          "value": true,
+          "err":  "Tafadhali weka namba sahihi"
+        },
+        "v_regex": {
+          "value": "^TAE-\\d{6}$",
+          "err": "Nambari ya Pasipoti inapaswa kuwa katika muundo (TAE-XXXXXX)"
+        },
+        "edit_type": "name",
         "relevance": {
           "step2:id_avail": {
             "ex-checkbox": [
@@ -583,20 +661,20 @@
         "openmrs_entity": "person_attribute",
         "openmrs_entity_id": "Health_Insurance_Type",
         "type": "spinner",
-        "hint": "Bima ya afya unaotumia",
+        "hint": "Mtoa huduma ya bima ya afya",
         "values": [
-          "Bima ya afya ya jamii (CHF)/(iCHF)",
-          "National Social Security Fund - Social Health Insurance Benefit (SHIB)",
+          "Mfuko wa Afya ya Jamii (CHF)/(iCHF)",
+          "Mfuko wa Taifa wa Hifadhi ya Jamii - Manufaa ya Bima ya Afya ya Jamii (SHIB)",
           "Mfuko wa Taifa wa Bima ya Afya (NHIF)",
           "Tiba Kwa Kadi (TIKA)",
           "AAR Healthcare",
-          "Strategies Insurance",
+          "Bima ya Strategies",
           "Milvik Tanzania Ltd (BIMA Mkononi)",
-          "Britam Insurance Tanzania",
-          "Jubilee Insurance",
-          "Resolutions Insurance",
-          "Reliance Insurance",
-          "Bima ya afya nyingezo",
+          "Bima ya Britam Tanzania",
+          "Bima ya Jubilee",
+          "Bima ya resolution",
+          "Bima ya reliance",
+          "Nyinginezo",
           "Hakuna"
         ],
         "keys": [
@@ -631,7 +709,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Tafadhali ingiza bima"
+          "err": "Tafadhali ingiza mtoa huduma wa bima"
         }
       },
       {
@@ -640,10 +718,10 @@
         "openmrs_entity": "person_attribute",
         "openmrs_entity_id": "Other_Health_Insurance_Type",
         "type": "edit_text",
-        "hint": "Bima ya afya mwingine unaotumia",
+        "hint": "Mtoa huduma mwingine wa bima ya afya",
         "v_required": {
           "value": "true",
-          "err": "Tafadhali ingiza bima"
+          "err": "Tafadhali bainisha mtoa huduma wa bima"
         },
         "relevance": {
           "rules-engine": {
@@ -659,10 +737,10 @@
         "openmrs_entity": "person_attribute",
         "openmrs_entity_id": "Health_Insurance_Number",
         "type": "edit_text",
-        "hint": "Namba ya bima ya afya umaotumia",
+        "hint": "Nambari ya mtoa huduma ya bima ya afya",
         "v_required": {
           "value": "true",
-          "err": "Tafadhali ingiza namba ya mfuko wa bima ya afya umaotumia"
+          "err": "Tafadhali ongeza Nambari ya kitambulisho ya mtoa huduma wa bima ya afya"
         },
         "relevance": {
           "rules-engine": {
@@ -706,9 +784,9 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "preg_1yr",
         "type": "spinner",
-        "hint": "Je, amejifungua ndani ya mwaka 1?",
+        "hint": "Je, mwanamke amejifungua katika mwaka 1 uliopita?",
         "values": [
-          "Ndiyo",
+          "Ndio",
           "Hapana"
         ],
         "keys": [
@@ -737,9 +815,9 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "disabilities",
         "type": "spinner",
-        "hint": "Hali ya ulemavu",
+        "hint": "Ulemavu wa kimwili",
         "values": [
-          "Ndiyo",
+          "Ndio ",
           "Hapana"
         ],
         "keys": [
@@ -767,56 +845,56 @@
         "options": [
           {
             "key": "physical_impairments",
-            "text": "Mobility and Physical Impairments",
+            "text": "Ulemavu wa kimwili",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "physical_impairments"
           },
           {
             "key": "spinal_cord_disability",
-            "text": "Spinal Cord Disability",
+            "text": "Ulemavu wa Uti wa Mgongo",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "spinal_cord_disability"
           },
           {
             "key": "brain_disability",
-            "text": "Head Injuries - Brain Disability",
+            "text": "Majeraha ya Kichwa - Ulemavu wa Ubongo",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "brain_disability"
           },
           {
             "key": "vision_disability",
-            "text": "Vision Disability",
+            "text": "Ulemavu wa Maono",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "vision_disability"
           },
           {
             "key": "hearing_disability",
-            "text": "Hearing Disability",
+            "text": "Ulemavu wa Kusikia",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "hearing_disability"
           },
           {
             "key": "learning_disabilities",
-            "text": "Cognitive or Learning Disabilities",
+            "text": "Ulemavu wa Utambuzi au Kujifunza",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "learning_disabilities"
           },
           {
             "key": "psychological_disorders",
-            "text": "Psychological Disorders",
+            "text": "Matatizo ya Kisaikolojia",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "psychological_disorders"
           },
           {
             "key": "invisible_disabilities",
-            "text": "Invisible Disabilities",
+            "text": "Ulemavu Usioonekana",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "invisible_disabilities"
@@ -828,6 +906,10 @@
               "rules-file": "all_clients_member_relevance.yml"
             }
           }
+        },
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali chagua aina ya ulemavu wa kimwili"
         }
       },
       {
@@ -836,9 +918,9 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "Has_Primary_Caregiver",
         "type": "spinner",
-        "hint": "Je una mlezi msaidizi?\n",
+        "hint": "Je, una mlezi/msaidizi wa Tiba?",
         "values": [
-          "Ndiyo",
+          "Ndio",
           "Hapana"
         ],
         "keys": [
@@ -860,10 +942,10 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "Primary_Caregiver_Name",
         "type": "edit_text",
-        "hint": "Majina ya msaidizi",
+        "hint": "Jina la mlezi",
         "v_required": {
           "value": "true",
-          "err": "Jina la msaidizi lazima iwe."
+          "err": "Tafadhali taja jina la mlezi."
         },
         "relevance": {
           "rules-engine": {
@@ -879,14 +961,14 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "other_phone_number",
         "type": "edit_text",
-        "hint": "Namba ya simu ya msaidizi",
+        "hint": "Nambari ya simu ya mlezi mkuu",
         "v_numeric": {
           "value": "true",
-          "err": "Nambari lazima iwe jumla ya nambari 10 kwa urefu"
+          "err": "Nambari lazima iwe jumla ya tarakimu 10 kwa urefu"
         },
         "v_regex": {
-          "value": "(0[0-9]{9})|\\s*",
-          "err": "Nambari lazima iwe na nambari 10 na lazima ianze na 0."
+          "value": "(0[6-7][1-9][1-9][0-9]{6})|\\s*",
+          "err": "Nambari lazima iwe na tarakimu 10 na lazima ianze na 06 au 07."
         },
         "relevance": {
           "rules-engine": {
@@ -902,7 +984,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "service_provider",
         "type": "check_box",
-        "label": "Aina ya kazi anayojishughulisha",
+        "label": "Kazi ya Mteja",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "exclusive": [
@@ -918,7 +1000,7 @@
           },
           {
             "key": "chk_cs",
-            "text": "Mtumishi wa serikali",
+            "text": "Mtumishi wa Umaa",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_cs"
@@ -939,49 +1021,49 @@
           },
           {
             "key": "chk_th",
-            "text": "Waganga wa tiba asilia (THs)",
+            "text": "Mganga",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_th"
           },
           {
             "key": "chk_chw",
-            "text": "Wahudumu wa afya ngazi ya jamii–WAJA",
+            "text": "Mhudumu wa Afya ya Jamii (CHW)",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_chw"
           },
           {
             "key": "chk_tba",
-            "text": "Wakunga wa jadi (TBAs)",
+            "text": "Mkunga wa Jadi",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_tba"
           },
           {
             "key": "chk_chmis",
-            "text": "Wakusanyaji takwimu za afya katika jamii (cHIMS)",
+            "text": "Mkusanyaji wa takrimu za jamii",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_chmis"
           },
           {
             "key": "chk_cbd",
-            "text": "Wasambazaji wa dawa na vifaa vya uzazi wa mpango katika jamii (CBD)",
+            "text": "Msambazaji wa vifaa vya uzazi wa mpango katika jamii",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_cbd"
           },
           {
             "key": "chk_hbc",
-            "text": "Watoa huduma kwa wagonjwa majumbani (HBC)",
+            "text": "Utunzaji wa Nyumbani (HBC)",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_hbc"
           },
           {
             "key": "chk_cimmci",
-            "text": "Watoa huduma za udhibiti wa magonjwa ya watoto kwa uwiano katika jamii (cIMCI)",
+            "text": "IMCI ya Jumuiya",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_cimmci"
@@ -1004,6 +1086,37 @@
         "v_required": {
           "value": "true",
           "err": "Tafadhali chagua angalau moja"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "all_clients_member_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "service_provider_other",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "service_provider_other",
+        "type": "edit_text",
+        "hint": "Taja Kazi nyingine",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali taja kazi"
+        },
+        "relevance": {
+          "step2:service_provider": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "chk_other"
+                ]
+              }
+            ]
+          }
         }
       },
       {
@@ -1012,7 +1125,7 @@
         "openmrs_entity": "person_attribute",
         "openmrs_entity_id": "Community_Leader",
         "type": "check_box",
-        "label": "Una jukumu lolote la uongozi kwenye ngazi ya jamii?",
+        "label": "Kuna nafasi yoyote ya uongozi katika jamii?",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "exclusive": [
@@ -1028,7 +1141,7 @@
           },
           {
             "key": "chk_traditional",
-            "text": "Kiongozi wa kimila",
+            "text": "Kiongozi wa jadi",
             "value": false,
             "openmrs_entity": "person_attribute",
             "openmrs_entity_id": "Traditional_leader"
@@ -1042,14 +1155,14 @@
           },
           {
             "key": "chk_influential",
-            "text": "Mtu mwenye ushawishi kwenye jamii",
+            "text": "Kiongozi mwenye ushawishi",
             "value": false,
             "openmrs_entity": "person_attribute",
             "openmrs_entity_id": "Influential_Leader"
           },
           {
             "key": "chk_other",
-            "text": "Nyinginezo",
+            "text": "Nyingine",
             "value": false,
             "openmrs_entity": "person_attribute",
             "openmrs_entity_id": "Other_Community_Leader_Type"
@@ -1065,6 +1178,13 @@
         "v_required": {
           "value": "true",
           "err": "Tafadhali chagua angalau moja"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "all_clients_member_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -1073,11 +1193,11 @@
         "openmrs_entity": "person_attribute",
         "openmrs_entity_id": "Other_Community_Leader_Type_Name",
         "type": "edit_text",
-        "hint": "Taja hayo majukumu mengine",
+        "hint": "Taja nafasi nyingine katika jamii",
         "edit_type": "name",
         "v_required": {
           "value": "true",
-          "err": "Tafadhali taja jukumu"
+          "err": "Tafadhali bainisha jukumu"
         },
         "relevance": {
           "step2:leader": {
@@ -1117,70 +1237,70 @@
         "options": [
           {
             "key": "hiv_aids_transmission",
-            "text": "Maambukizo ya VVU",
+            "text": "maambukizi ya VVU/UKIMWI",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
           },
           {
             "key": "sickle_cell_disease",
-            "text": "Sickle cell disease ",
+            "text": "Ugonjwa wa seli mundu",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
           },
           {
             "key": "heart_disease",
-            "text": "Magonjwa ya moyo ",
+            "text": "Magonjwa ya moyo",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
           },
           {
             "key": "diabetes",
-            "text": "Kisukari ",
+            "text": "Kisukari",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
           },
           {
             "key": "cerebral_palsy",
-            "text": "Mtindio wa ubongo",
+            "text": "Ugonjwa wa kupooza kwa ubongo",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
           },
           {
             "key": "cancer",
-            "text": "Saratani ",
+            "text": "Saratani",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
           },
           {
             "key": "tuberculosis",
-            "text": "Kifua kikuu ",
+            "text": "Kifuwa kikuu",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
           },
           {
             "key": "homosexual",
-            "text": "Mwanaume anayefanya ngono na mwanaume mwenzake",
+            "text": "Wanaume wanaofanya mapenzi na wanaume",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
           },
           {
             "key": "gender_violence",
-            "text": "Mtu aliyenyanyaswa kijinsia",
+            "text": "Ukatili wa kijinsia",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
           },
           {
             "key": "drug_abuse",
-            "text": "Mtu anayejidunga",
+            "text": "Matumizi mabaya ya dawa za kulevya",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
@@ -1188,7 +1308,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Sababu ya kisajili mteja inahitajika"
+          "err": "Sababu ya usajili inahitajika"
         },
         "relevance": {
           "rules-engine": {
@@ -1210,70 +1330,70 @@
         "options": [
           {
             "key": "hiv_aids_transmission",
-            "text": "Maambukizo ya VVU",
+            "text": "maambukizi ya VVU/UKIMWI",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
           },
           {
             "key": "sickle_cell_disease",
-            "text": "Sickle cell disease ",
+            "text": "Ugonjwa wa seli mundu",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
           },
           {
             "key": "heart_disease",
-            "text": "Magonjwa ya moyo ",
+            "text": "Magonjwa ya moyo",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
           },
           {
             "key": "diabetes",
-            "text": "Kisukari ",
+            "text": "Kisukari",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
           },
           {
             "key": "cerebral_palsy",
-            "text": "Mtindio wa ubongo",
+            "text": "Ugonjwa wa kupooza kwa ubongo",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
           },
           {
             "key": "cancer",
-            "text": "Saratani ",
+            "text": "Saratani",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
           },
           {
             "key": "tuberculosis",
-            "text": "Kifua kikuu ",
+            "text": "Kifuwa kikuu",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
           },
           {
             "key": "sex_worker_woman",
-            "text": "Mwanamke anayefanya biashara ya ngono",
+            "text": "Mfanyabiashara ya ngono",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
           },
           {
             "key": "gender_violence",
-            "text": "Mtu aliyenyanyaswa kijinsia",
+            "text": "Ukatili wa kijinsia",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
           },
           {
             "key": "drug_abuse",
-            "text": "Mtu anayejidunga",
+            "text": "Matumizi mabaya ya dawa za kulevya",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
@@ -1287,7 +1407,7 @@
           },
           {
             "key": "breastfeeding_mother",
-            "text": "Mama anayenyonyesha ",
+            "text": "Mama anayenyonyesha",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
@@ -1295,7 +1415,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Sababu ya kisajili mteja inahitajika"
+          "err": "Sababu ya usajili inahitajika"
         },
         "relevance": {
           "rules-engine": {
@@ -1317,105 +1437,105 @@
         "options": [
           {
             "key": "hiv_aids_transmission",
-            "text": "Maambukizo ya VVU",
+            "text": "maambukizi ya VVU/UKIMWI",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
           },
           {
             "key": "sickle_cell_disease",
-            "text": "Sickle cell disease ",
+            "text": "Ugonjwa wa seli mundu",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
           },
           {
             "key": "heart_disease",
-            "text": "Magonjwa ya moyo ",
+            "text": "Magonjwa ya moyo",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
           },
           {
             "key": "diabetes",
-            "text": "Kisukari ",
+            "text": "Kisukari",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
           },
           {
             "key": "cerebral_palsy",
-            "text": "Mtindio wa ubongo",
+            "text": "Ugonjwa wa kupooza kwa ubongo",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
           },
           {
             "key": "cancer",
-            "text": "Saratani ",
+            "text": "saratani",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
           },
           {
             "key": "tuberculosis",
-            "text": "Kifua kikuu ",
+            "text": "Kifuwa kikuu",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
           },
           {
             "key": "hiv_infected_child",
-            "text": "Mtoto aliyezaliwa na mama mwenye VVU",
+            "text": "Mtoto aliyezaliwa na mama mwenye VVU/UKIMWI",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
           },
           {
             "key": "untested_hiv_infected_child",
-            "text": "Mtoto ambaye hajapimwa VVU ",
+            "text": "Mtoto ambaye hajapimwa VVU/UKIMWI",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
           },
           {
             "key": "weight_stagnation_child",
-            "text": "Mtoto asiyeongezeka uzito",
+            "text": "Mtoto mwenye vilio vya uzito",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
           },
           {
             "key": "child_with_fever",
-            "text": "Mtoto anayepata homa za mara kwa mara",
+            "text": "Mtoto mwenye homa za mara kwa mara",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
           },
           {
             "key": "abused_child",
-            "text": "Mtoto anayefanyiwa ukatili",
+            "text": "Unyanyasaji wa mtoto",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
           },
           {
             "key": "gender_violence",
-            "text": "Mtu aliyenyanyaswa kijinsia",
+            "text": "Ukatili wa kijinsia",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
           },
           {
             "key": "drug_abuse",
-            "text": "Mtu anayejidunga",
+            "text": "Matumizi mabaya ya dawa za kulevya",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
           },
           {
             "key": "child_in_risky_environment",
-            "text": "Mtoto anayeishi mazingira hatarishi",
+            "text": "Mtoto anayeishi katika mazingira hatarishi",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
@@ -1423,7 +1543,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Sababu ya kisajili mteja inahitajika"
+          "err": "Sababu ya usajili inahitajika"
         },
         "relevance": {
           "rules-engine": {
