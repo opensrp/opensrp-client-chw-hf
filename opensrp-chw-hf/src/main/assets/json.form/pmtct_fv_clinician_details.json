@@ -120,8 +120,8 @@
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "v_regex": {
-          "value": "(0[0-9]{9})|\\s*",
-          "err": "Number must be 10 digits and must start with 0."
+          "value": "(0[6-7][1-9][1-9][0-9]{6})|\\s*",
+          "err": "Number must be 10 digits and must start with 06 or 07."
         },
         "v_required": {
           "value": true,

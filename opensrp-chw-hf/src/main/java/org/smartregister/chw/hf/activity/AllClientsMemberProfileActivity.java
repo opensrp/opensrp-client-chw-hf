@@ -37,6 +37,7 @@ import androidx.viewpager.widget.ViewPager;
 import timber.log.Timber;
 
 import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
+import static org.smartregister.chw.hf.utils.JsonFormUtils.getAutoPopulatedJsonEditFormString;
 
 public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfileActivity {
 
@@ -68,6 +69,13 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
         int itemId = item.getItemId();
         if (itemId == org.smartregister.chw.core.R.id.action_pregnancy_confirmation) {
             startPregnancyConfirmation();
+            return true;
+        }
+        if (itemId == org.smartregister.chw.core.R.id.action_location_info) {
+            JSONObject preFilledForm = getAutoPopulatedJsonEditFormString(
+                    CoreConstants.JSON_FORM.getFamilyDetailsRegister(), this,
+                    getFamilyRegistrationDetails(), Utils.metadata().familyRegister.updateEventType);
+            if (preFilledForm != null) startFormActivity(preFilledForm);
             return true;
         }
 
