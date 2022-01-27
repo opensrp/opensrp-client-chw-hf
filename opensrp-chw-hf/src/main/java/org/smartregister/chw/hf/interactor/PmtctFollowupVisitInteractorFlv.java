@@ -145,7 +145,7 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
         public void onPayloadReceived(String jsonPayload) {
             try {
                 JSONObject jsonObject = new JSONObject(jsonPayload);
-                clinician_name = CoreJsonFormUtils.getValue(jsonObject, "clinician_name_followup");
+                clinician_name = CoreJsonFormUtils.getValue(jsonObject, "clinician_name");
             } catch (JSONException e) {
                 Timber.e(e);
             }
