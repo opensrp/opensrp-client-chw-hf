@@ -355,10 +355,6 @@
             }
           }
         },
-        "v_required": {
-          "value": true,
-          "err": "Please enter the number of children born alive"
-        },
 
         "value": [
           {
