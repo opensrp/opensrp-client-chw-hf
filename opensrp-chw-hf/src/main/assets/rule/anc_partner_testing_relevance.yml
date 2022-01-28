@@ -2,7 +2,7 @@
 name: step1_partner_hiv
 description: Hiv testing for partner if it was not conducted in first visit
 priority: 1
-condition: "!global_hiv_testing_done"
+condition: "!global_hiv_testing_done || ((global_gestational_age >= 32  && global_partner_hiv_status.contains('negative')) && !global_partner_hiv_test_at_32_done)"
 actions:
   - "isRelevant = true"
 ---
@@ -17,5 +17,12 @@ name: step1_partner_hepatitis
 description: Syphilis testing for partner if it was not conducted in first visit
 priority: 1
 condition: "!global_hepatitis_testing_done"
+actions:
+  - "isRelevant = true"
+---
+name: step1_partner_hiv_test_at_32
+description: Check to mark if test was conducted at week 32 if client was marked negative
+priority: 1
+condition: "((global_gestational_age >= 32  && global_partner_hiv_status.contains('negative')) && !global_partner_hiv_test_at_32_done)"
 actions:
   - "isRelevant = true"

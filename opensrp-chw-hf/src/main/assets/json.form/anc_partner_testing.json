@@ -49,7 +49,9 @@
   "global": {
     "hiv_testing_done": false,
     "syphilis_testing_done": false,
-    "hepatitis_testing_done": false
+    "hepatitis_testing_done": false,
+    "partner_hiv_status": "",
+    "partner_hiv_test_at_32_done": false
   },
   "step1": {
     "title": "Partner Testing",
@@ -372,6 +374,27 @@
           "step1:reason_for_not_conducting_partner_hepatitis_test": {
             "type": "string",
             "ex": "equalTo(., \"other\")"
+          }
+        }
+      },
+      {
+        "key": "partner_hiv_test_at_32",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "partner_hiv_test_at_32",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_partner_testing_relevance.yml"
+            }
+          }
+        },
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_partner_testing_calculation.yml"
+            }
           }
         }
       }

@@ -222,8 +222,11 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                 try{
                     partnerTestingForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.PARTNER_TESTING);
                     partnerTestingForm.getJSONObject("global").put("hiv_testing_done", HfAncDao.isPartnerTestedForHiv(baseEntityId));
+                    partnerTestingForm.getJSONObject("global").put("gestational_age", memberObject.getGestationAge());
                     partnerTestingForm.getJSONObject("global").put("syphilis_testing_done", HfAncDao.isPartnerTestedForSyphilis(baseEntityId));
                     partnerTestingForm.getJSONObject("global").put("hepatitis_testing_done", HfAncDao.isPartnerTestedForHepatitis(baseEntityId));
+                    partnerTestingForm.getJSONObject("global").put("partner_hiv_test_at_32_done", HfAncDao.isPartnerHivTestConductedAtWk32(baseEntityId));
+                    partnerTestingForm.getJSONObject("global").put("partner_hiv_status", HfAncDao.getPartnerHivStatus(baseEntityId));
                     if (details != null && !details.isEmpty()) {
                         JsonFormUtils.populateForm(partnerTestingForm, details);
                     }
@@ -296,7 +299,9 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                         }
                     }
 
-                    if(!HfAncDao.isPartnerTestedForHiv(baseEntityId) || !HfAncDao.isPartnerTestedForSyphilis(baseEntityId) || !HfAncDao.isPartnerTestedForHepatitis(baseEntityId)){
+                    boolean retestPartnerAt32 = ((memberObject.getGestationAge() >= 32 && HfAncDao.getPartnerHivStatus(baseEntityId).equalsIgnoreCase("negative")) && !HfAncDao.isPartnerHivTestConductedAtWk32(baseEntityId));
+
+                    if(!(HfAncDao.isPartnerTestedForHiv(baseEntityId) && HfAncDao.isPartnerTestedForSyphilis(baseEntityId) && HfAncDao.isPartnerTestedForHepatitis(baseEntityId)) || retestPartnerAt32){
                         try {
                             BaseAncHomeVisitAction partnerTesting = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.partner_testing_action_title))
                                     .withOptional(true)

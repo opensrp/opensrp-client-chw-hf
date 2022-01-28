@@ -114,6 +114,16 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
         } catch (JSONException e) {
             Timber.e(e);
         }
+        JSONObject partnerTestingForm = null;
+        try{
+            partnerTestingForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.PARTNER_TESTING);
+            partnerTestingForm.getJSONObject("global").put("gestational_age", memberObject.getGestationAge());
+            if(details != null && !details.isEmpty()){
+                JsonFormUtils.populateForm(partnerTestingForm,details);
+            }
+        }catch (JSONException e){
+            Timber.e(e);
+        }
 
 
         BaseAncHomeVisitAction medicalAndSurgicalHistory = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_first_visit_medical_and_surgical_history))
@@ -170,6 +180,7 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
                 .withOptional(true)
                 .withDetails(details)
                 .withHelper(new AncPartnerTestingAction(memberObject))
+                .withJsonPayload(partnerTestingForm.toString())
                 .withFormName(Constants.JsonForm.AncRecurringVisit.getPartnerTesting())
                 .build();
         actionList.put(context.getString(R.string.partner_testing_action_title), partnerTesting);
