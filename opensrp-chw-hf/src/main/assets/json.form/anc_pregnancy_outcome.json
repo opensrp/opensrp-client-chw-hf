@@ -347,12 +347,17 @@
         "openmrs_entity": "",
         "openmrs_entity_id": "",
         "repeating_group_max": "10",
+        "expand_on_text_change": "true",
         "relevance": {
           "rules-engine": {
             "ex-rules": {
               "rules-file": "anc_pregnancy_outcome_relevance.yml"
             }
           }
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter the number of children born alive"
         },
 
         "value": [
