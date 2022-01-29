@@ -54,7 +54,7 @@
     }
   },
   "step1": {
-    "title": "Location details",
+    "title": "Taarifa za mteja",
     "next": "step2",
     "fields": [
       {
@@ -1279,7 +1279,7 @@
           },
           {
             "key": "tuberculosis",
-            "text": "Kifuwa kikuu",
+            "text": "Kifua kikuu",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
@@ -1372,7 +1372,7 @@
           },
           {
             "key": "tuberculosis",
-            "text": "Kifuwa kikuu",
+            "text": "Kifua kikuu",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
@@ -1479,7 +1479,7 @@
           },
           {
             "key": "tuberculosis",
-            "text": "Kifuwa kikuu",
+            "text": "Kifua kikuu",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""

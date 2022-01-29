@@ -71,7 +71,7 @@
           "options": [
             {
               "name": "tb_clinic_outpatient",
-              "text": "kliniki ya kifuwa kikuu(wagonjwa wa njee)",
+              "text": "kliniki ya kifua kikuu(wagonjwa wa njee)",
               "meta_data": {
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "tb_clinic_outpatient",

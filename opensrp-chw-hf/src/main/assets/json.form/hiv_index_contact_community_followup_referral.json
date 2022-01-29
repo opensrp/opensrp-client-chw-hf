@@ -64,7 +64,7 @@
             "notification_type": "info",
             "dismissible": "no",
             "title": "Client will be referred to CHW",
-            "text": "The client is about to be referred to the CHW tied to client's village for follow-up at the community level.\n\nAdd any additional comments that should be sent the the CHW\n\nSave the form the send the referral",
+            "text": "The client is about to be referred to the CHW tied to client's village for follow-up at the community level.\n\nAdd any additional comments that should be sent the the CHW\n\nSave the form to send the referral",
             "background_color": "#082455",
             "text_color": "#EBEE2F"
           }
