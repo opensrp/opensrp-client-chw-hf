@@ -6,6 +6,7 @@ import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -100,7 +101,7 @@ public class PregnancyConfirmationViewActivity extends ReferralTaskViewActivity 
             AllClientsUtils.goToClientProfile(this, personObjectClient);
         } else if (view.getId() == R.id.mark_ask_done) {
             AncRegisterActivity.startAncRegistrationActivity(PregnancyConfirmationViewActivity.this, getBaseEntityId(), getFamilyMemberContacts(),
-                    Constants.JsonForm.getAncPregnancyConfirmation(), null, getBaseEntityId(), name);
+                    Constants.JsonForm.getAncPregnancyConfirmation(), null, getBaseEntityId(), name, task.getIdentifier());
         }
     }
 

@@ -158,6 +158,13 @@
           "value": "true",
           "err": "Please select the danger sings"
         }
+      },
+      {
+        "key": "task_id",
+        "type": "hidden",
+        "openmrs_entity_id": "task_id",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": ""
       }
     ]
   },

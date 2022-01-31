@@ -53,6 +53,8 @@ import timber.log.Timber;
 
 public class AncRegisterActivity extends CoreAncRegisterActivity {
 
+    private static String taskId = null;
+
     public static void startAncRegistrationActivity(Activity activity, String memberBaseEntityID, String phoneNumber, String formName,
                                                     String uniqueId, String familyBaseID, String family_name) {
         Intent intent = new Intent(activity, AncRegisterActivity.class);
@@ -64,6 +66,21 @@ public class AncRegisterActivity extends CoreAncRegisterActivity {
         unique_id = uniqueId;
         intent.putExtra(org.smartregister.chw.anc.util.Constants.ACTIVITY_PAYLOAD.ACTION, org.smartregister.chw.anc.util.Constants.ACTIVITY_PAYLOAD_TYPE.REGISTRATION);
         intent.putExtra(Constants.ACTIVITY_PAYLOAD.TABLE_NAME, getFormTable());
+        activity.startActivity(intent);
+    }
+
+    public static void startAncRegistrationActivity(Activity activity, String memberBaseEntityID, String phoneNumber, String formName,
+                                                    String uniqueId, String familyBaseID, String family_name, String taskID) {
+        Intent intent = new Intent(activity, AncRegisterActivity.class);
+        intent.putExtra(org.smartregister.chw.anc.util.Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID, memberBaseEntityID);
+        phone_number = phoneNumber;
+        familyBaseEntityId = familyBaseID;
+        form_name = formName;
+        familyName = family_name;
+        unique_id = uniqueId;
+        intent.putExtra(org.smartregister.chw.anc.util.Constants.ACTIVITY_PAYLOAD.ACTION, org.smartregister.chw.anc.util.Constants.ACTIVITY_PAYLOAD_TYPE.REGISTRATION);
+        intent.putExtra(Constants.ACTIVITY_PAYLOAD.TABLE_NAME, getFormTable());
+        taskId = taskID;
         activity.startActivity(intent);
     }
 
@@ -81,6 +98,9 @@ public class AncRegisterActivity extends CoreAncRegisterActivity {
             values.put(CoreConstants.JsonAssets.FAMILY_MEMBER.PHONE_NUMBER, phone_number);
             values.put(org.smartregister.family.util.DBConstants.KEY.RELATIONAL_ID, familyBaseEntityId);
             values.put(DBConstants.KEY.LAST_MENSTRUAL_PERIOD, lastMenstrualPeriod);
+            if(taskId != null) {
+                values.put(org.smartregister.chw.hf.utils.Constants.DBConstants.TASK_ID, taskId);
+            }
             try {
                 JSONObject min_date = CoreJsonFormUtils.getFieldJSONObject(jsonArray, "delivery_date");
                 min_date.put("min_date", lastMenstrualPeriod);

@@ -171,6 +171,7 @@ public class Constants extends CoreConstants {
         public static final String ANC_HIV = "hiv";
         public static final String ANC_SYPHILIS = "syphilis";
         public static final String ANC_HEPATITIS = "hepatitis";
+        public static final String TASK_ID = "task_id";
     }
 
     public interface ScheduleGroups {

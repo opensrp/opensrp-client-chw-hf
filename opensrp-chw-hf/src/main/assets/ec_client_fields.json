@@ -842,6 +842,14 @@
           }
         },
         {
+          "column_name": "task_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "task_id"
+          }
+        },
+        {
           "column_name": "last_menstrual_period",
           "type": "Event",
           "json_mapping": {
