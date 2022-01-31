@@ -193,7 +193,7 @@
             }
           ],
           "required_status": "yes:Please select the test results",
-          "subjects": "has_the_contact_client_been_tested:map"
+          "subjects": "has_the_contact_client_been_tested:map, eligibility_for_testing:map"
         },
         {
           "name": "place_where_test_was_conducted",
@@ -263,7 +263,7 @@
             }
           ],
           "required_status": "yes:Please select the answer",
-          "subjects": "test_results:map"
+          "subjects": "test_results:map, eligibility_for_testing:map"
         },
         {
           "name": "client_test_date",
@@ -280,7 +280,7 @@
             "openmrs_entity_parent": ""
           },
           "required_status": "true:Please specify the client's test date",
-          "subjects": "test_results:map"
+          "subjects": "test_results:map, eligibility_for_testing:map"
         },
         {
           "name": "toast_enroll_the_client_to_prep",
@@ -376,7 +376,55 @@
             }
           ],
           "required_status": "yes:Please select the answer",
-          "subjects": "test_results:map"
+          "subjects": "test_results:map, eligibility_for_testing:map"
+        },
+        {
+          "name": "reasons_for_ineligibility_for_testing",
+          "type": "spinner",
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "reasons_for_ineligibility_for_testing",
+            "openmrs_entity_parent": ""
+          },
+          "properties": {
+            "text": "Reasons for Ineligibility for testing"
+          },
+          "options": [
+            {
+              "name": "known_positive",
+              "text": "The contact is known HIV positive",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "known_positive",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "other",
+              "text": "Other",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "other",
+                "openmrs_entity_parent": ""
+              }
+            }
+          ],
+          "required_status": "yes: Please Select",
+          "subjects": "eligibility_for_testing:map"
+        },
+        {
+          "name": "other_reason_for_ineligibility",
+          "type": "text_input_edit_text",
+          "properties": {
+            "hint": "Other"
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other_reason_for_ineligibility",
+            "openmrs_entity_parent": ""
+          },
+          "required_status": "yes: Please input the other reason",
+          "subjects": "reasons_for_ineligibility_for_testing:map, eligibility_for_testing:map"
         },
         {
           "name": "ctc_number",
@@ -400,7 +448,7 @@
             }
           ],
           "required_status": "yes:Please specify client's CTC number",
-          "subjects": "enrolled_to_clinic:map"
+          "subjects": "enrolled_to_clinic:map, reasons_for_ineligibility_for_testing:map, eligibility_for_testing:map"
         },
         {
           "name": "comment",
