@@ -55,13 +55,13 @@
   },
   "steps": [
     {
-      "title": "Majibu ya mshirika wa ngono/wakujidunga na /mtoto wa kuzaa wa mteja",
+      "title": "Majibu ya mshirika wa kingono/wakujidunga",
       "fields": [
         {
           "name": "has_the_client_been_reached",
           "type": "radio_group",
           "properties": {
-            "text": "Mteja amepatikana?"
+            "text": "Je, mteja amepatikana?"
           },
           "meta_data": {
             "openmrs_entity": "concept",
@@ -97,7 +97,7 @@
           "name": "eligibility_for_testing",
           "type": "radio_group",
           "properties": {
-            "text": "Mteja ana kidhi vigezo vya upimaji?"
+            "text": "Je, mteja ana kidhi vigezo vya upimaji wa VVU?"
           },
           "meta_data": {
             "openmrs_entity": "concept",
@@ -131,7 +131,7 @@
           "name": "has_the_contact_client_been_tested",
           "type": "radio_group",
           "properties": {
-            "text": "Je mshirika amepimwa ugonjwa wa VVU?"
+            "text": "Je, amepimwa VVU?"
           },
           "meta_data": {
             "openmrs_entity": "concept",
@@ -165,7 +165,7 @@
           "name": "test_results",
           "type": "radio_group",
           "properties": {
-            "text": "Chagua matokeo ya vipimo vya VVU"
+            "text": "Ni nini matokeo ya kipimo cha VVU?"
           },
           "meta_data": {
             "openmrs_entity": "concept",
@@ -199,7 +199,7 @@
           "name": "place_where_test_was_conducted",
           "type": "radio_group",
           "properties": {
-            "text": "Alikopimia mteja"
+            "text": "Mahali alikopimia mteja"
           },
           "meta_data": {
             "openmrs_entity": "concept",
@@ -209,7 +209,7 @@
           "options": [
             {
               "name": "outpatient_department",
-              "text": "Idara ya magonjwa ya nje",
+              "text": "Idara ya wagonjwa wa nje",
               "meta_data": {
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "outpatient_department",
@@ -218,7 +218,7 @@
             },
             {
               "name": "inpatient_department",
-              "text": "Wagonjwa waliolazwa",
+              "text": "Idara ya wagonjwa waliolazwa",
               "meta_data": {
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "inpatient_department",
@@ -245,7 +245,7 @@
             },
             {
               "name": "outreach_services",
-              "text": "Huduma ya mkoba(outreach services)",
+              "text": "Huduma ya mkoba (outreach services)",
               "meta_data": {
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "outreach_services",
@@ -279,7 +279,7 @@
             "openmrs_entity_id": "client_test_date",
             "openmrs_entity_parent": ""
           },
-          "required_status": "true:Tafadhali jaza tarehe ya upimaji ya mteja",
+          "required_status": "true:Tafadhali jaza tarehe ya upimaji wa VVU wa mteja",
           "subjects": "test_results:map"
         },
         {
@@ -299,7 +299,7 @@
           "name": "enrolled_to_prep",
           "type": "radio_group",
           "properties": {
-            "text": "Mteja amasajiliwa kwenye huduma ya PrEP?"
+            "text": "Je, mteja amasajiliwa kwenye huduma ya PrEP?"
           },
           "meta_data": {
             "openmrs_entity": "concept",
@@ -348,7 +348,7 @@
           "name": "enrolled_to_clinic",
           "type": "radio_group",
           "properties": {
-            "text": "Je mteja amesajiliwa kwenye kliniki ya VVU?"
+            "text": "Je, mteja amesajiliwa kwenye kliniki ya VVU?"
           },
           "meta_data": {
             "openmrs_entity": "concept",

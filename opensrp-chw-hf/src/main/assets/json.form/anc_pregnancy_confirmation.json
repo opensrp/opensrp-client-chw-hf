@@ -523,7 +523,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "",
         "type": "toaster_notes",
-        "text": "Please request the client to consult a doctor",
+        "text": "Refer the client for a gynaecological review",
         "toaster_type": "warning",
         "relevance": {
           "rules-engine": {
