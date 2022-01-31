@@ -987,17 +987,34 @@
         }
       },
       {
-        "key": "prescribe_arv_hepb",
+        "key": "prescribe_arv_hepb_at_above_twenty_eight",
         "type": "toaster_notes",
         "text": "Prescribe ARVs to the client according to standard guidelines",
-        "openmrs_entity_id": "prescribe_arv_hepb",
+        "openmrs_entity_id": "prescribe_arv_hepb_at_above_twenty_eight",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "toaster_type": "problem",
         "relevance": {
-          "step1:hepatitis": {
-            "type": "string",
-            "ex": "equalTo(.,\"positive\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_lab_test_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "counsel_arv_hepb_below_twenty_eight",
+        "type": "toaster_notes",
+        "text": "Counsel on ARVs uptake at 28-weeks of gestation",
+        "openmrs_entity_id": "counsel_arv_hepb_below_twenty_eight",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_lab_test_relevance.yml"
+            }
           }
         }
       },
