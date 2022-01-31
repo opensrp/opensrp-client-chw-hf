@@ -54,7 +54,7 @@
     "partner_hiv_test_at_32_done": false
   },
   "step1": {
-    "title": "Partner Testing",
+    "title": "Upimaji kwa Mwenza",
     "fields": [
       {
         "key": "partner_hiv",
@@ -171,7 +171,7 @@
       {
         "key": "partner_syphilis",
         "type": "native_radio",
-        "label": "Matokeo ya kipimo cha kaswende",
+        "label": "Matokeo ya kipimo cha Kaswende",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "partner_syphilis",
         "openmrs_entity_parent": "",
@@ -283,7 +283,7 @@
       {
         "key": "partner_hepatitis",
         "type": "native_radio",
-        "label": "Matokeo ya kipimo cha homa ya ini",
+        "label": "Matokeo ya kipimo cha homa ya Ini",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "partner_hepatitis",
         "openmrs_entity_parent": "",

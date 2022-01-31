@@ -48,7 +48,7 @@
   },
   "global": {},
   "step1": {
-    "title": "Obstetric Examination",
+    "title": "Uchunguzi wa Uzazi",
     "fields": [
       {
         "key": "gest_age",
@@ -130,7 +130,7 @@
       {
         "key": "bmi",
         "type": "edit_text",
-        "hint": "KIelezo cha Uzito wa Mwili (BMI)",
+        "hint": "Kielezo cha Uzito wa Mwili (BMI)",
         "read_only": "true",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "bmi",
@@ -191,7 +191,7 @@
       {
         "key": "systolic",
         "type": "edit_text",
-        "hint": "Systolic (Blood Pressure)",
+        "hint": "Systolic (Shinikizo la Damu)",
         "openmrs_entity_id": "systolic",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -215,7 +215,7 @@
       {
         "key": "diastolic",
         "type": "edit_text",
-        "hint": "Diastolic (Blood Pressure)",
+        "hint": "Diastolic (Shinikizo la Damu)",
         "openmrs_entity_id": "diastolic",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -423,7 +423,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "values": [
-          "LImevimba",
+          "Limevimba",
           "Umbo la kawaida"
         ],
         "keys": [

@@ -47,7 +47,7 @@
     "encounter_location": ""
   },
   "step1": {
-    "title": "Partner Registration",
+    "title": "Usajili wa Mwenza",
     "fields": [
       {
         "key": "partner_surname",
@@ -208,7 +208,7 @@
           },
           {
             "key": "chk_cs",
-            "text": "Mtumishi wa umma",
+            "text": "Mtumishi wa Serikali",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_cs"
@@ -229,14 +229,14 @@
           },
           {
             "key": "chk_th",
-            "text": "Mganga wa kienyeji",
+            "text": "Mganga wa tiba asili",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_th"
           },
           {
             "key": "chk_chw",
-            "text": "Mhudumu wa Afya ya Jamii (MJA)",
+            "text": "Muhudumu wa afya ngazi ya jamii (WAJA)",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_chw"
@@ -250,35 +250,35 @@
           },
           {
             "key": "chk_chmis",
-            "text": "HMIS wa Jumuiya (cHMIS)",
+            "text": "Wakusanyaji takrimu za afya ngazi ya jamii",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_chmis"
           },
           {
             "key": "chk_cbd",
-            "text": "Msambazaji wa Jamii",
+            "text": "Msambazaji wa dawa na vifaa vya uzazi wa mpango ngazi ya Jamii",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_cbd"
           },
           {
             "key": "chk_hbc",
-            "text": "Utunzaji wa Nyumbani (HBC)",
+            "text": "Watoa huduma kwa wagonjwa majumbani",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_hbc"
           },
           {
             "key": "chk_cimmci",
-            "text": "IMCI wa jamii",
+            "text": "Watoa huduma za udhibiti wa magonjwa ya watoto ngazi ya jamii",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_cimmci"
           },
           {
             "key": "chk_other",
-            "text": "Nyingine",
+            "text": "Nyinginezo",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_other"
