@@ -415,6 +415,13 @@
             "creates_case": [
               "ec_pmtct_followup"
             ]
+          },
+          {
+            "field":"eventType",
+            "field_value": "Pregnancy Unconfirmed",
+            "closes_case": [
+              "ec_anc_register"
+            ]
           }
         ]
       }

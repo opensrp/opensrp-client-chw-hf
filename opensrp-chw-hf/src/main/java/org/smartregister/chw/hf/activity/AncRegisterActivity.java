@@ -47,6 +47,7 @@ import org.smartregister.view.fragment.BaseRegisterFragment;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 import timber.log.Timber;
 
@@ -198,14 +199,15 @@ public class AncRegisterActivity extends CoreAncRegisterActivity {
 
                 JSONObject form = new JSONObject(jsonString);
                 String encounter_type = form.optString(Constants.JSON_FORM_EXTRA.ENCOUNTER_TYPE);
-                String upt = CoreJsonFormUtils.getValue(form, "upt");
-                String uss = CoreJsonFormUtils.getValue(form, "uss");
-                String danger_sign_analysis = CoreJsonFormUtils.getCheckBoxValue(form, "danger_signs");
+                String pregnancyConfirmationStatus = CoreJsonFormUtils.getValue(form, "pregnancy_confirmation_status");
                 String table = data.getStringExtra(Constants.ACTIVITY_PAYLOAD.TABLE_NAME);
+                boolean isPregnancyConfirmed = pregnancyConfirmationStatus.equalsIgnoreCase("confirmed");
 
                 if (encounter_type.equalsIgnoreCase(getRegisterEventType())) {
-                    if (danger_sign_analysis.equalsIgnoreCase("None") && ((uss.equalsIgnoreCase("present_gestation_sac") && upt.equalsIgnoreCase("positive")) || (uss.equalsIgnoreCase("absent_gestation_sac") && upt.equalsIgnoreCase("positive")) || (upt.isEmpty() && uss.equalsIgnoreCase("present_gestation_sac")) || (upt.equalsIgnoreCase("positive") && uss.isEmpty())))
-                        saveFormForPregnancyConfirmation(jsonString, table);
+                     saveFormForPregnancyConfirmation(jsonString,table);
+                    if (!isPregnancyConfirmed) {
+                        closeForUnconfirmed(jsonString,table);
+                    }
                 } else if (encounter_type.equalsIgnoreCase(Constants.EVENT_TYPE.PREGNANCY_OUTCOME)) {
 
                     presenter().saveForm(jsonString, false, table);
@@ -253,6 +255,20 @@ public class AncRegisterActivity extends CoreAncRegisterActivity {
         }
         NCUtils.processEvent(baseEvent.getBaseEntityId(), new JSONObject(org.smartregister.chw.anc.util.JsonFormUtils.gson.toJson(baseEvent)));
 
+    }
+
+    private static void closeForUnconfirmed(String json, String table) throws Exception {
+        AllSharedPreferences allSharedPreferences = AncLibrary.getInstance().context().allSharedPreferences();
+        Event baseEvent = org.smartregister.chw.anc.util.JsonFormUtils.processJsonForm(allSharedPreferences,json,table);
+        org.smartregister.chw.anc.util.JsonFormUtils.tagEvent(allSharedPreferences, baseEvent);
+        String syncLocationId = ChwNotificationDao.getSyncLocationId(baseEvent.getBaseEntityId());
+        if (syncLocationId != null) {
+            // Allows setting the ID for sync purposes
+            baseEvent.setLocationId(syncLocationId);
+        }
+        baseEvent.setFormSubmissionId(UUID.randomUUID().toString());
+        baseEvent.setEventType("Pregnancy Unconfirmed");
+        NCUtils.processEvent(baseEvent.getBaseEntityId(), new JSONObject(org.smartregister.chw.anc.util.JsonFormUtils.gson.toJson(baseEvent)));
     }
 
 

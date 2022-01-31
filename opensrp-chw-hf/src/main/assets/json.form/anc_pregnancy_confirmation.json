@@ -532,6 +532,34 @@
             }
           }
         }
+      },
+      {
+        "key": "pregnancy_confirmation_status",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "pregnancy_confirmation_status",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_pregnancy_confirmation_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "pregnancy_confirmation_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "pregnancy_confirmation_date",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_pregnancy_confirmation_calculation.yml"
+            }
+          }
+        }
       }
     ]
   }

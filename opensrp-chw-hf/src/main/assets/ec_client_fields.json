@@ -826,6 +826,22 @@
           }
         },
         {
+          "column_name": "confirmation_status",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "pregnancy_confirmation_status"
+          }
+        },
+        {
+          "column_name": "confirmation_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "pregnancy_confirmation_date"
+          }
+        },
+        {
           "column_name": "last_menstrual_period",
           "type": "Event",
           "json_mapping": {
