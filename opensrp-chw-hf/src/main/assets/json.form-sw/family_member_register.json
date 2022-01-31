@@ -52,7 +52,7 @@
     }
   },
   "step1": {
-    "title": "Add Family Member",
+    "title": "Sajili mwanafamilia",
     "fields": [
       {
         "key": "unique_id",
@@ -61,7 +61,7 @@
         "openmrs_entity_id": "opensrp_id",
         "type": "edit_text",
         "read_only": true,
-        "hint": "Number ya kitambulisho ya kituo",
+        "hint": "Namba ya kitambulisho ya kituo",
         "v_numeric": {
           "value": "true",
           "err": "Tafadhali weka kitambulisho halali"
@@ -109,7 +109,7 @@
         "options": [
           {
             "key": "same_as_fam_name",
-            "text": "Jina la ukoo sawa na jina la ukoo",
+            "text": "Jina la ukoo sawa na jina la familia",
             "text_size": "18px",
             "value": "false"
           }
@@ -276,10 +276,10 @@
         "openmrs_entity": "person",
         "openmrs_entity_id": "gender",
         "type": "spinner",
-        "hint": "Jinsia",
+        "hint": "Jinsi",
         "values": [
-          "Mwanaume",
-          "Mwanamke"
+          "Me",
+          "Ke"
         ],
         "keys": [
           "Male",
@@ -287,7 +287,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhali ingiza jinsia"
+          "err": "Tafadhali ingiza jinsi"
         }
       },
       {
@@ -298,13 +298,13 @@
         "type": "spinner",
         "hint": "Hali ya Ndoa ya Mteja?",
         "values": [
-          "Hajaolewa/hajaowa",
-          "Meolewa/ameolewa",
+          "Hajaowa/Hajaolewa",
+          "Ameowa/Ameolewa",
           "Ameachika",
           "Ndoa ya mke au mke moja",
           "Ndoa za wake wengi",
           "Mjane/Mgane",
-          "Wanaishi pamoja"
+          "Kuishi pamoja bila ndoa"
         ],
         "keys": [
           "Single",
@@ -342,14 +342,14 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "phone_number",
         "type": "edit_text",
-        "hint": "Nambari ya simu",
+        "hint": "Namba ya simu",
         "v_numeric": {
           "value": "true",
-          "err": "Nambari lazima iwe jumla ya tarakimu 10 kwa urefu"
+          "err": "Namba lazima iwe jumla ya tarakimu 10 kwa urefu"
         },
         "v_regex": {
           "value": "(0[0-9]{9})|\\s*",
-          "err": "Nambari lazima iwe na tarakimu 10 na lazima ianze na 06 au 07."
+          "err": "Namba lazima iwe na tarakimu 10 na lazima ianze na 06 au 07."
         }
       },
       {
@@ -388,7 +388,7 @@
           },
           {
             "key": "chk_passport",
-            "text": "Pasipoti",
+            "text": "Hati ya kusafiria",
             "value": false,
             "openmrs_entity": "person_attribute",
             "openmrs_entity_id": "chk_passport"
@@ -415,7 +415,7 @@
         "openmrs_entity": "person_attribute",
         "openmrs_entity_id": "National_ID",
         "type": "edit_text",
-        "hint": "Nambari ya kitambulisho cha taifa k.m 12345678-91234-56789-12",
+        "hint": "Namba ya kitambulisho cha taifa k.m 12345678-91234-56789-12",
         "edit_type": "name",
         "v_max_length": {
           "value": "23",
@@ -424,7 +424,7 @@
         },
         "v_regex": {
           "value": "^\\d{8}-\\d{5}-\\d{5}-\\d{2}$",
-          "err": "Nambari ya kitambulisho cha kitaifa inapaswa kuwa ya umbizo (XXXXXXXX-XXXXX-XXXXX-XX)"
+          "err": "Namba ya kitambulisho cha kitaifa inapaswa kuwa ya umbizo (XXXXXXXX-XXXXX-XXXXX-XX)"
         },
         "relevance": {
           "step1:id_avail": {
@@ -444,7 +444,7 @@
         "openmrs_entity": "person_attribute",
         "openmrs_entity_id": "Voter_Registration_Number",
         "type": "edit_text",
-        "hint": "Nambari ya usajili ya mpiga kura k.m T-1234-5678-912-3",
+        "hint": "Namba ya kitambulisho cha mpiga kura k.m T-1234-5678-912-3",
         "edit_type": "name",
         "v_max_length": {
           "value": "17",
@@ -453,7 +453,7 @@
         },
         "v_regex": {
           "value": "^T-\\d{4}-\\d{4}-\\d{3}-\\d{1}$",
-          "err": "Nambari ya usajili wa mpiga kura inapaswa kuwa ya umbizo (T-XXXX-XXXX-XXX-X)"
+          "err": "Namba ya usajili wa mpiga kura inapaswa kuwa ya umbizo (T-XXXX-XXXX-XXX-X)"
         },
         "relevance": {
           "step1:id_avail": {
@@ -473,7 +473,7 @@
         "openmrs_entity": "person_attribute",
         "openmrs_entity_id": "Driver_License_Number",
         "type": "edit_text",
-        "hint": "Nambari ya leseni ya udereva k.m 1234567891",
+        "hint": "Namba ya leseni ya udereva k.m 1234567891",
         "edit_type": "name",
         "v_max_length": {
           "value": "10",
@@ -482,7 +482,7 @@
         },
         "v_regex": {
           "value": "^([0-9]{10})",
-          "err": "Nambari ya leseni ya udereva inapaswa kuwa ya umbizo (XXXXXXXXX)"
+          "err": "Namba ya leseni ya udereva inapaswa kuwa ya umbizo (XXXXXXXXX)"
         },
         "relevance": {
           "step1:id_avail": {
@@ -502,15 +502,19 @@
         "openmrs_entity": "person_attribute",
         "openmrs_entity_id": "Passport_Number",
         "type": "edit_text",
-        "hint": "Nambari ya pasipoti",
+        "hint": "Namba ya hati ya kusafiria",
         "v_max_length": {
           "value": "10",
           "is_fixed_size": "true",
-          "err": "Please enter a valid passport number"
+          "err": "Tafadhali weka namba sahihi"
         },
         "v_regex": {
           "value": "^TAE-\\d{6}$",
-          "err": "Nambari ya Pasipoti inapaswa kuwa katika muundo (TAE-XXXXXX)"
+          "err": "Namba ya hati ya kusafiria inapaswa kuwa katika muundo (TAE-XXXXXX)"
+        },
+        "v_required": {
+          "value": true,
+          "err":  "Tafadhali weka namba sahihi"
         },
         "edit_type": "name",
         "relevance": {
@@ -538,12 +542,12 @@
           "Mfuko wa Taifa wa Bima ya Afya (NHIF)",
           "Tiba Kwa Kadi (TIKA)",
           "AAR Healthcare",
-          "Bima ya Strategies",
+          "Bima ya afya ya Strategies",
           "Milvik Tanzania Ltd (BIMA Mkononi)",
-          "Britam Insurance Tanzania",
-          "Bima ya Jubilee",
-          "Bima ya Resolutions ",
-          "Bima ya Reliance",
+          "Bima ya afya ya Britam",
+          "Bima ya afya ya Jubilee",
+          "Bima ya afya ya Resolutions ",
+          "Bima ya afya ya Reliance",
           "Nyinginezo",
           "Hakuna"
         ],
@@ -555,10 +559,10 @@
           "AAR Healthcare",
           "Strategies Insurance",
           "Milvik Tanzania Ltd (BIMA Mkononi)",
-          "Britam Insurance Tanzania",
-          "Jubilee Insurance",
-          "Resolutions Insurance",
-          "Reliance Insurance",
+          "Bima ya afya ya Britam",
+          "Bima ya afya ya Jubilee",
+          "Bima ya afya ya Resolutions",
+          "Bima ya afya ya Reliance",
           "Other",
           "None"
         ],
@@ -607,10 +611,10 @@
         "openmrs_entity": "person_attribute",
         "openmrs_entity_id": "Health_Insurance_Number",
         "type": "edit_text",
-        "hint": "Nambari ya mtoa huduma ya bima ya afya",
+        "hint": "Namba ya mtoa huduma ya bima ya afya",
         "v_required": {
           "value": "true",
-          "err": "Tafadhali ongeza Nambari ya kitambulisho ya mtoa huduma wa bima ya afya"
+          "err": "Tafadhali ongeza namba ya kitambulisho ya mtoa huduma wa bima ya afya"
         },
         "relevance": {
           "rules-engine": {
@@ -784,7 +788,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "is_primary_caregiver",
         "type": "spinner",
-        "hint": "Je, mlezi mkuu?",
+        "hint": "Je, ana mlezi mkuu?",
         "values": [
           "Ndio",
           "Hapana"
@@ -804,14 +808,14 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "other_phone_number",
         "type": "edit_text",
-        "hint": "Nambari nyingine ya simu",
+        "hint": "Namba nyingine ya simu",
         "v_numeric": {
           "value": "true",
-          "err": "Nambari lazima iwe jumla ya tarakimu 10 kwa urefu"
+          "err": "Namba lazima iwe jumla ya tarakimu 10 kwa urefu"
         },
         "v_regex": {
           "value": "(0[0-9]{9})|\\s*",
-          "err": "Nambari lazima iwe na tarakimu 10 na lazima ianze na 06 au 07."
+          "err": "Namba lazima iwe na tarakimu 10 na lazima ianze na 06 au 07."
         }
       },
       {
@@ -836,14 +840,14 @@
           },
           {
             "key": "chk_cs",
-            "text": "Mtumishi wa umaa",
+            "text": "Mtumishi wa Serikali",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_cs"
           },
           {
             "key": "chk_nurse",
-            "text": "muhuguzi",
+            "text": "Muuguzi",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_nurse"
@@ -857,49 +861,49 @@
           },
           {
             "key": "chk_th",
-            "text": "Mganga",
+            "text": "Mganga wa tiba asili",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_th"
           },
           {
             "key": "chk_chw",
-            "text": "Mhudumu wa Afya ya Jamii (WAJA)",
+            "text": "Muhudumu wa afya ngazi ya jamii (WAJA)",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_chw"
           },
           {
             "key": "chk_tba",
-            "text": "Mhudumu wa Uzazi wa Jadi",
+            "text": "Mkunga wa Jadi",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_tba"
           },
           {
             "key": "chk_chmis",
-            "text": "Mkusanya Tarifa za jamii",
+            "text": "Wakusanyaji takrimu za afya ngazi ya jamii",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_chmis"
           },
           {
             "key": "chk_cbd",
-            "text": "Msambazaji wa vifaa vya afya na uzazi wa mpango kwenye jamii",
+            "text": "Msambazaji wa dawa na vifaa vya uzazi wa mpango ngazi ya Jamii",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_cbd"
           },
           {
             "key": "chk_hbc",
-            "text": "Utunzaji wa Nyumbani (HBC)",
+            "text": "Watoa huduma kwa wagonjwa majumbani",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_hbc"
           },
           {
             "key": "chk_cimmci",
-            "text": "Jumuiya ya IMCI",
+            "text": "Watoa huduma za udhibiti wa magonjwa ya watoto ngazi ya jamii",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_cimmci"
