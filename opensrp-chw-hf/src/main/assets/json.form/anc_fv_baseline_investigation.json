@@ -82,6 +82,21 @@
         }
       },
       {
+        "key": "prompt_for_glucose_in_urine",
+        "type": "toaster_notes",
+        "text": "Check Random Blood Glucose to rule-out gestational diabetes ",
+        "openmrs_entity_id": "prompt_for_glucose_in_urine",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:glucose_in_urine": {
+            "type": "string",
+            "ex": "equalTo(., \"positive\")"
+          }
+        }
+      },
+      {
         "key": "reason_for_not_conducting_glucose_in_urine_test",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -169,6 +184,21 @@
         "v_required": {
           "value": "true",
           "err": "Please answer this question"
+        }
+      },
+      {
+        "key": "prompt_for_protein_in_urine",
+        "type": "toaster_notes",
+        "text": "Monitor Blood Pressure to rule out pre-eclampsia, elicit symptoms of Urinary Tract Infection and manage the cause of proteinuria according to standard guidelines",
+        "openmrs_entity_id": "prompt_for_protein_in_urine",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:protein_in_urine": {
+            "type": "string",
+            "ex": "equalTo(., \"positive\")"
+          }
         }
       },
       {
@@ -346,7 +376,7 @@
       {
         "key": "prompt_for_severe_anaemia_treatment",
         "type": "toaster_notes",
-        "text": "The client should receive severe anaemia treatment",
+        "text": "Manage the severe anaemia according to standard guidelines",
         "openmrs_entity_id": "prompt_for_severe_anaemia_treatment",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -361,7 +391,7 @@
       {
         "key": "prompt_for_moderate_anaemia_management",
         "type": "toaster_notes",
-        "text": "The client should receive moderate anaemia management",
+        "text": "Manage the mild anaemia according to standard guidelines",
         "openmrs_entity_id": "prompt_for_moderate_anaemia_management",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -528,7 +558,7 @@
       {
         "key": "prompt_for_gestational_diabetes_mellitus",
         "type": "toaster_notes",
-        "text": "The client has Gestational Diabetes Mellitus",
+        "text": "Manage the gestational diabetes mellitus according to standard guidelines",
         "openmrs_entity_id": "prompt_for_gestational_diabetes_mellitus",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -544,7 +574,7 @@
       {
         "key": "prompt_for_hypoglycaemia",
         "type": "toaster_notes",
-        "text": "The client has hypoglycaemia",
+        "text": "Manage the hypoglycaemia according to standard guidelines",
         "openmrs_entity_id": "prompt_for_hypoglycaemia",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -650,7 +680,7 @@
       {
         "key": "prompt_for_mRDT",
         "type": "toaster_notes",
-        "text": "Please provide appropriate anti-malaria medicine",
+        "text": "Provide anti-malaria medication and manage according to standard guidelines",
         "openmrs_entity_id": "prompt_for_mRDT",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -813,7 +843,7 @@
       {
         "key": "register_pmtct",
         "type": "toaster_notes",
-        "text": "Register client for PMTCT",
+        "text": "Register the client for PMTCT care and follow up",
         "openmrs_entity_id": "register_pmtct",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -828,7 +858,7 @@
       {
         "key": "prescribe_arv",
         "type": "toaster_notes",
-        "text": "Prescribe client to ARVs",
+        "text": "Prescribe ARVs to the client according to standard guidelines",
         "openmrs_entity_id": "prescribe_arv",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -980,7 +1010,7 @@
       {
         "key": "prescribe_arv_hepb",
         "type": "toaster_notes",
-        "text": "Prescribe client to ARVs",
+        "text": "Prescribe ARVs to the client according to standard guidelines",
         "openmrs_entity_id": "prescribe_arv_hepb",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",

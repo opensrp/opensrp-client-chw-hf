@@ -135,6 +135,30 @@
         }
       },
       {
+        "key": "prompt_for_rapid_examination",
+        "type": "toaster_notes",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "prompt_for_rapid_examination",
+        "openmrs_entity_parent": "",
+        "text": "Provide supportive care and refer the client for advanced emergency care",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:rapid_examination": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "pallor",
+                  "sweating",
+                  "shivering",
+                  "difficulty_in_breathing",
+                  "facial_expression"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
         "key": "reasons_to_clinic",
         "type": "native_radio",
         "label": "Why did you come to the clinic today?",
@@ -289,10 +313,9 @@
         "type": "toaster_notes",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "is_emergency",
-
         "openmrs_entity_parent": "",
-        "text": "Client Needs Emergency Care",
-        "toaster_type": "warning",
+        "text": "Provide emergency care to the client",
+        "toaster_type": "problem",
         "toaster_info": "The client exhibits one or more of the emergency signs and needs emergency care",
         "relevance": {
           "step1:danger_signs": {

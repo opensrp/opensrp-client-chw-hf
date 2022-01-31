@@ -84,12 +84,11 @@
       {
         "key": "reg_cpac",
         "type": "toaster_notes",
-        "text": "Register client for CPAC",
+        "text": "Provide comprehensive post-abortal care (cPAC) according to standard guidelines",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
         "toaster_type": "warning",
-        "toaster_info_text": "Comprehensive Post Abortal Care (CPAC)",
         "relevance": {
           "step1:pregnancy_status": {
             "type": "string",
@@ -100,7 +99,7 @@
       {
         "key": "still_birth",
         "type": "toaster_notes",
-        "text": "Register client for Family Planning",
+        "text": "Counsel the client on appropriate Family Planning methods and offer her the method of choice",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
