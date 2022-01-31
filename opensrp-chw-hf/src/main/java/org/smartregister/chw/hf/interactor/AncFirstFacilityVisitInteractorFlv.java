@@ -114,12 +114,24 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
         } catch (JSONException e) {
             Timber.e(e);
         }
+
+        JSONObject baselineInvestigationForm = null;
+        try{
+            baselineInvestigationForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncFirstVisit.getBaselineInvestigation());
+            baselineInvestigationForm.getJSONObject("global").put("gestational_age", memberObject.getGestationAge());
+            if(details != null && !details.isEmpty()){
+                JsonFormUtils.populateForm(baselineInvestigationForm, details);
+            }
+        }catch (JSONException e){
+            Timber.e(e);
+        }
+
         JSONObject partnerTestingForm = null;
         try{
             partnerTestingForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.PARTNER_TESTING);
             partnerTestingForm.getJSONObject("global").put("gestational_age", memberObject.getGestationAge());
             if(details != null && !details.isEmpty()){
-                JsonFormUtils.populateForm(partnerTestingForm,details);
+                JsonFormUtils.populateForm(partnerTestingForm, details);
             }
         }catch (JSONException e){
             Timber.e(e);
@@ -147,6 +159,7 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
         BaseAncHomeVisitAction baselineInvestigationAction = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_first_visit_baseline_investigation))
                 .withOptional(true)
                 .withDetails(details)
+                .withJsonPayload(baselineInvestigationForm.toString())
                 .withFormName(Constants.JsonForm.AncFirstVisit.getBaselineInvestigation())
                 .withHelper(new AncBaselineInvestigationAction(memberObject))
                 .build();

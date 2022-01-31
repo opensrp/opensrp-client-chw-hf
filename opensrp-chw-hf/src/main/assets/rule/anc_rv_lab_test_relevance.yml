@@ -68,3 +68,17 @@ priority: 1
 condition: "(step1_type_of_blood_for_glucose_test.equals('rbg') && step1_blood_for_glucose < 3) ||  (step1_type_of_blood_for_glucose_test.equals('gtt') && step1_blood_for_glucose < 3.5) "
 actions:
   - "isRelevant = true"
+---
+name: step1_prescribe_arv_hepb_at_above_twenty_eight
+description:  prompt for hepatitis B when GA is at or above 28 weeks
+priority: 1
+condition: "(step1_hepatitis.contains('positive') && global_gestational_age >= 28)"
+actions:
+  - "isRelevant = true"
+---
+name: step1_counsel_arv_hepb_below_twenty_eight
+description:  prompt for hepatitis B when GA is less than 28 weeks
+priority: 1
+condition: "(step1_hepatitis.contains('positive') && global_gestational_age < 28)"
+actions:
+  - "isRelevant = true"
