@@ -46,11 +46,12 @@ import java.util.Set;
 import timber.log.Timber;
 
 public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisitInteractor.Flavor {
+
     @Override
     public LinkedHashMap<String, BaseAncHomeVisitAction> calculateActions(BaseAncHomeVisitContract.View view, MemberObject memberObject, BaseAncHomeVisitContract.InteractorCallBack callBack) throws BaseAncHomeVisitAction.ValidationException {
         LinkedHashMap<String, BaseAncHomeVisitAction> actionList = new LinkedHashMap<>();
 
-        Context context = view.getContext();
+        Context  context = view.getContext();
 
         Map<String, List<VisitDetail>> details = null;
         // get the preloaded data
@@ -107,7 +108,7 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
 
         JSONObject medicalSurgicalHistoryForm = null;
         try {
-            medicalSurgicalHistoryForm = firstPregnancyAboveThirtyFive(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncFirstVisit.getMedicalAndSurgicalHistory()), memberObject);
+            medicalSurgicalHistoryForm = firstPregnancyAboveThirtyFive(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncFirstVisit.getMedicalAndSurgicalHistory()), memberObject, context);
             if (details != null && !details.isEmpty()) {
                 JsonFormUtils.populateForm(medicalSurgicalHistoryForm, details);
             }
@@ -497,7 +498,7 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
         }
     }
 
-    private static JSONObject firstPregnancyAboveThirtyFive(JSONObject form, MemberObject memberObject) throws JSONException{
+    private static JSONObject firstPregnancyAboveThirtyFive(JSONObject form, MemberObject memberObject, Context context) throws JSONException{
 
             JSONArray fields = form.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
             JSONObject medicalSurgicalHistory = null;
@@ -512,14 +513,14 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
 
             JSONObject pregnantAtAboveThirtyFive = new JSONObject();
             pregnantAtAboveThirtyFive.put("key", "first_pregnancy_at_or_above_thirty_five");
-            pregnantAtAboveThirtyFive.put("text", "First pregnancy");
+            pregnantAtAboveThirtyFive.put("text", context.getString(R.string.first_pregnancy_option));
             pregnantAtAboveThirtyFive.put("value", false);
             pregnantAtAboveThirtyFive.put("openmrs_entity", "concept");
             pregnantAtAboveThirtyFive.put("openmrs_entity_id", "first_pregnancy_at_or_above_thirty_five");
 
             JSONObject none = new JSONObject();
             none.put("key", "none");
-            none.put("text", "None");
+            none.put("text", context.getString(R.string.none_option_for_medical_surgical_history));
             none.put("value", false);
             none.put("openmrs_entity", "concept");
             none.put("openmrs_entity_id", "none");

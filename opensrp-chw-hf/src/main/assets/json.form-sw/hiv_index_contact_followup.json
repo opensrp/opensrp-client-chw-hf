@@ -162,6 +162,72 @@
           "subjects": "eligibility_for_testing:map"
         },
         {
+          "name": "reasons_conducting_testing_for_index_contact",
+          "type": "spinner",
+          "properties": {
+            "text": "Sababu ya kutofanya kipimo cha VVU"
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "reasons_conducting_testing_for_index_contact",
+            "openmrs_entity_parent": ""
+          },
+          "options": [
+            {
+              "name": "test_kits_are_out_of_stock",
+              "text": "Vifaa vya kupima vimeisha",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "test_kits_are_out_of_stock",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "the_client_refused_to_be_tested",
+              "text":  "Mteja alikataa kupimwa",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "the_client_refused_to_be_tested",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "we_are_still_counselling_the_client",
+              "text": "Tunaendelea kumshauri mteja",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "we_are_still_counselling_the_client",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "other",
+              "text": "Nyingine",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "other",
+                "openmrs_entity_parent": ""
+              }
+            }
+          ],
+          "required_status": "yes:Tafadhali ingiza sababu",
+          "subjects": "eligibility_for_testing:map,has_the_contact_client_been_tested:map "
+        },
+        {
+          "name": "other_reason_for_not_testing",
+          "type": "text_input_edit_text",
+          "properties": {
+            "hint": "Sababu nyingine ya kutofanya kipimo cha VVU"
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other_reason_for_not_testing",
+            "openmrs_entity_parent": ""
+          },
+          "required_status": "yes:Please enter the reason",
+          "subjects": "reasons_conducting_testing_for_index_contact:map,eligibility_for_testing:map,has_the_contact_client_been_tested:map"
+        },
+        {
           "name": "test_results",
           "type": "radio_group",
           "properties": {
@@ -377,6 +443,54 @@
           ],
           "required_status": "yes:Tafadhali jaza jibu",
           "subjects": "test_results:map"
+        },
+        {
+          "name": "reasons_for_ineligibility_for_testing",
+          "type": "spinner",
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "reasons_for_ineligibility_for_testing",
+            "openmrs_entity_parent": ""
+          },
+          "properties": {
+            "text": "Sababu zinazomfanya mteja asifanyiwe kipimo cha HIV"
+          },
+          "options": [
+            {
+              "name": "known_positive",
+              "text": "Mteja tayari amekwisha pima na ana HIV",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "known_positive",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "other",
+              "text": "Nyingine",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "other",
+                "openmrs_entity_parent": ""
+              }
+            }
+          ],
+          "required_status": "yes: Tafadhali Chagua",
+          "subjects": "eligibility_for_testing:map"
+        },
+        {
+          "name": "other_reason_for_ineligibility",
+          "type": "text_input_edit_text",
+          "properties": {
+            "hint": "Nyingine"
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other_reason_for_ineligibility",
+            "openmrs_entity_parent": ""
+          },
+          "required_status": "yes: Tafadhali jaza sababu nyingine",
+          "subjects": "reasons_for_ineligibility_for_testing:map, eligibility_for_testing:map"
         },
         {
           "name": "ctc_number",
