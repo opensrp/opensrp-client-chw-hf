@@ -57,4 +57,6 @@
     <string name="anc_recuring_visit_cunsultation">Mashauriano ya ANC</string>
     <string name="anc_recuring_visit_lab_tests">Vipimo Vya Maabara</string>
     <string name="anc_recuring_visit_pharmacy">Duka la Dawa</string>
+    <string name="first_pregnancy_option">Mimba ya kwanza</string>
+    <string name="none_option_for_medical_surgical_history">Hakuna</string>
 </resources>

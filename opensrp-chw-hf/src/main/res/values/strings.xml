@@ -69,5 +69,7 @@
     <string name="malaria">mRDT for Malaria: {0}</string>
     <string name="partner_registration_action_title">Partner Registration</string>
     <string name="partner_testing_action_title">Partner Testing</string>
+    <string name="first_pregnancy_option">First pregnancy</string>
+    <string name="none_option_for_medical_surgical_history">None</string>
 
 </resources>
