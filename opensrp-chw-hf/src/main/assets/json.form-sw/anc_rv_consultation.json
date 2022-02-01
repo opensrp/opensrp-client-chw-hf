@@ -48,12 +48,12 @@
   },
   "global": {},
   "step1": {
-    "title": "Consultation (ANC assessment and Update Maternal Handbook)",
+    "title": "Mashauriano ya ANC",
     "fields": [
       {
         "key": "examination_findings",
         "type": "check_box",
-        "label": "Matokeo ya Uchunguzi kwenye ziara ya sasa",
+        "label": "Matokeo ya Uchunguzi kwenye hudhurio la leo",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "examination_findings",
         "openmrs_entity_parent": "",

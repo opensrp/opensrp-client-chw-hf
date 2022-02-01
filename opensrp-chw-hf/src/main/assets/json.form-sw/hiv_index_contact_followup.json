@@ -379,6 +379,54 @@
           "subjects": "test_results:map"
         },
         {
+          "name": "reasons_for_ineligibility_for_testing",
+          "type": "spinner",
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "reasons_for_ineligibility_for_testing",
+            "openmrs_entity_parent": ""
+          },
+          "properties": {
+            "text": "Sababu zinazomfanya mteja asifanyiwe kipimo cha HIV"
+          },
+          "options": [
+            {
+              "name": "known_positive",
+              "text": "Mteja tayari amekwisha pima na ana HIV",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "known_positive",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "other",
+              "text": "Nyingine",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "other",
+                "openmrs_entity_parent": ""
+              }
+            }
+          ],
+          "required_status": "yes: Tafadhali Chagua",
+          "subjects": "eligibility_for_testing:map"
+        },
+        {
+          "name": "other_reason_for_ineligibility",
+          "type": "text_input_edit_text",
+          "properties": {
+            "hint": "Nyingine"
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other_reason_for_ineligibility",
+            "openmrs_entity_parent": ""
+          },
+          "required_status": "yes: Tafadhali jaza sababu nyingine",
+          "subjects": "reasons_for_ineligibility_for_testing:map, eligibility_for_testing:map"
+        },
+        {
           "name": "ctc_number",
           "type": "masked_edit_text",
           "properties": {
