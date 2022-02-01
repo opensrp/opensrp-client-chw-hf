@@ -67,17 +67,87 @@
         "openmrs_entity_id": "iron_folate_supplements",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
+        "exclusive": [
+          "FeFo"
+        ],
         "options": [
           {
             "text": "FeFo",
             "key": "FeFo",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "FeFo"
+          },
+          {
+            "text": "FeFo medication not given",
+            "key": "medication_not_given",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "medication_not_given"
           }
         ],
         "v_required": {
           "value": "true",
           "err": "Please answer this question"
+        }
+      },
+      {
+        "key": "reason_for_not_giving_fefo_medication",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_giving_fefo_medication",
+        "type": "spinner",
+        "hint": "Reason as to why FeFo medication was not given",
+        "values": [
+          "Out of stock",
+          "The client was did not agree to take the medication",
+          "The client is allergic to medication",
+          "Other (Specify)"
+        ],
+        "keys": [
+          "out_of_stock",
+          "client_did_not_agree_medication",
+          "client_is_allergic_to_medication",
+          "other"
+        ],
+        "openmrs_choice_ids": {
+          "out_of_stock":  "out_of_stock",
+          "client_did_not_agree_medication": "client_did_not_agree_medication",
+          "the_client_refused_to_be_tested": "the_client_refused_to_be_tested",
+          "client_is_allergic_to_medication": "client_is_allergic_to_medication",
+          "other": "other"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select a reason"
+        },
+        "relevance": {
+          "step1:iron_folate_supplements": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "medication_not_given"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "other_reason_fefo_medication_not_given",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reason_fefo_medication_not_given",
+        "type": "edit_text",
+        "hint": "Specify other reasons for not giving FeFo medication",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the reason"
+        },
+        "relevance": {
+          "step1:reason_for_not_giving_fefo_medication": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
+          }
         }
       },
       {
@@ -87,7 +157,15 @@
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "label": "Malaria Preventive Therapy",
-        "options": [],
+        "options": [
+          {
+            "key": "medication_not_given",
+            "text": "Malaria medication not given",
+            "openmrs_entity_id": "medication_not_given",
+            "openmrs_entity": "concept",
+            "value": false
+          }
+        ],
         "v_required": {
           "value": "true",
           "err": "Please select the medication for Malaria Preventive Therapy"
@@ -101,6 +179,62 @@
         }
       },
       {
+        "key": "reason_for_not_giving_malaria_medication",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_giving_malaria_medication",
+        "type": "spinner",
+        "hint": "Reason as to why the Malaria medication was not given",
+        "values": [
+          "Out of stock",
+          "The client was did not agree to take the medication",
+          "The client is allergic to medication",
+          "Other (Specify)"
+        ],
+        "keys": [
+          "out_of_stock",
+          "client_did_not_agree_medication",
+          "client_is_allergic_to_medication",
+          "other"
+        ],
+        "openmrs_choice_ids": {
+          "out_of_stock":  "out_of_stock",
+          "client_did_not_agree_medication": "client_did_not_agree_medication",
+          "the_client_refused_to_be_tested": "the_client_refused_to_be_tested",
+          "client_is_allergic_to_medication": "client_is_allergic_to_medication",
+          "other": "other"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select a reason"
+        },
+        "relevance": {
+          "step1:malaria_preventive_therapy": {
+            "type": "string",
+            "ex": "equalTo(., \"medication_not_given\")"
+          }
+        }
+      },
+      {
+        "key": "other_reason_malaria_medication_not_given",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reason_malaria_medication_not_given",
+        "type": "edit_text",
+        "hint": "Specify other reasons for not giving the Malaria medication",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the reason"
+        },
+        "relevance": {
+          "step1:reason_for_not_giving_malaria_medication": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
+          }
+        }
+      },
+      {
         "key": "deworming",
         "type": "check_box",
         "label": "Deworming",
@@ -109,7 +243,8 @@
         "openmrs_entity_parent": "",
         "exclusive": [
           "mebendazole",
-          "albendazole"
+          "albendazole",
+          "medication_not_given"
         ],
         "options": [
           {
@@ -123,11 +258,78 @@
             "key": "albendazole",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "albendazole"
+          },
+          {
+            "text": "Deworming medication not given",
+            "key": "medication_not_given",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "medication_not_given"
           }
         ],
         "v_required": {
           "value": "true",
           "err": "Please select one option"
+        }
+      },
+      {
+        "key": "reason_for_not_giving_deworming_medication",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_giving_deworming_medication",
+        "type": "spinner",
+        "hint": "Reason as to why the Deworming medication was not given",
+        "values": [
+          "Out of stock",
+          "The client was did not agree to take the medication",
+          "The client is allergic to medication",
+          "Other (Specify)"
+        ],
+        "keys": [
+          "out_of_stock",
+          "client_did_not_agree_medication",
+          "client_is_allergic_to_medication",
+          "other"
+        ],
+        "openmrs_choice_ids": {
+          "out_of_stock":  "out_of_stock",
+          "client_did_not_agree_medication": "client_did_not_agree_medication",
+          "the_client_refused_to_be_tested": "the_client_refused_to_be_tested",
+          "client_is_allergic_to_medication": "client_is_allergic_to_medication",
+          "other": "other"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select a reason"
+        },
+        "relevance": {
+          "step1:deworming": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "medication_not_given"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "other_reason_deworming_medication_not_given",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reason_deworming_medication_not_given",
+        "type": "edit_text",
+        "hint": "Specify other reasons for not giving the Deworming medication",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the reason"
+        },
+        "relevance": {
+          "step1:reason_for_not_giving_deworming_medication": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
+          }
         }
       }
     ]

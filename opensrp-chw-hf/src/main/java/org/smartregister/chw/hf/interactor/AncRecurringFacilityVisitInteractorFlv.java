@@ -409,6 +409,8 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                 }
             }
             JSONArray options = malariaDosage.getJSONArray("options");
+            JSONObject medicationNotGiven = options.getJSONObject(0);
+
             JSONObject ipt1 = new JSONObject();
             ipt1.put("text", "IPT1");
             ipt1.put("key", "ipt1");
@@ -438,16 +440,20 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
             ipt4.put("value", false);
 
             if (HfAncDao.malariaDosageGiven(baseEntityId).equalsIgnoreCase("null")) {
-                options.put(ipt1);
+                options.put(0, ipt1);
+                options.put(1, medicationNotGiven);
             }
             if (HfAncDao.malariaDosageGiven(baseEntityId).equalsIgnoreCase("ipt1")) {
-                options.put(ipt2);
+                options.put(0, ipt2);
+                options.put(1, medicationNotGiven);
             }
             if (HfAncDao.malariaDosageGiven(baseEntityId).equalsIgnoreCase("ipt2")) {
-                options.put(ipt3);
+                options.put(0, ipt3);
+                options.put(1, medicationNotGiven);
             }
             if (HfAncDao.malariaDosageGiven(baseEntityId).equalsIgnoreCase("ipt3")) {
-                options.put(ipt4);
+                options.put(0, ipt4);
+                options.put(1, medicationNotGiven);
             }
 
         } catch (JSONException e) {
