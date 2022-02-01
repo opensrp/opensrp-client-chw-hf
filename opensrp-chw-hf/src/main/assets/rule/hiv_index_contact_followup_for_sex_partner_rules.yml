@@ -20,6 +20,20 @@ condition: "has_the_client_been_reached['yes'] != null && eligibility_for_testin
 actions:
   - "has_the_contact_client_been_tested_visibility = true"
 ---
+name: "reasons_conducting_testing_for_index_contact_visibility"
+description: "Show reasons to why the client was not tested"
+priority: 1
+condition: "has_the_contact_client_been_tested['no'] != null && eligibility_for_testing['yes'] != null && has_the_client_been_reached['yes'] != null"
+actions:
+  - "reasons_conducting_testing_for_index_contact_visibility = true"
+---
+name: "other_reason_for_not_testing_visibility"
+description: "Specify other reasons to why the client was not tested"
+priority: 1
+condition: "reasons_conducting_testing_for_index_contact.value == 'Other' && has_the_contact_client_been_tested['no'] != null && eligibility_for_testing['yes'] != null && has_the_client_been_reached['yes'] != null"
+actions:
+  - "other_reason_for_not_testing_visibility = true"
+---
 name: "test_results_visibility"
 description: "test_results visibility"
 priority: 1
