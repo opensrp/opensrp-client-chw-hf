@@ -35,8 +35,10 @@ public class HfAncReferralListRegisterFragmentPresenter extends AncRegisterFragm
     @Override
     public String getMainCondition() {
         return " (" +
-                " task._id <> ec_anc_register.task_id " +
+                " ec_anc_register.task_id IS NOT NULL AND "+
+                " ec_anc_register.task_id  NOT LIKE '%' || task._id || '%' " +
                 " AND ec_anc_register.confirmation_status <> 'Confirmed' " +
+                " AND focus='Pregnancy Confirmation' " +
                 ") "
                 + " OR (focus='Pregnancy Confirmation' AND ec_anc_register.base_entity_id IS NULL) ";
     }

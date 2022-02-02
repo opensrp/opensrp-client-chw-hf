@@ -2,6 +2,7 @@ package org.smartregister.chw.hf.dao;
 
 import org.smartregister.dao.AbstractDao;
 
+import java.util.Collections;
 import java.util.List;
 
 public class HfAncDao extends AbstractDao {
@@ -255,5 +256,16 @@ public class HfAncDao extends AbstractDao {
             return res.get(0);
         }
         return "12";
+    }
+
+    public static List<String> getPresentTaskIds(String baseEntityId){
+        DataMap<List<String>> dataMap = cursor -> Collections.singletonList(getCursorValue(cursor, "task_id"));
+
+        String sql = String.format(
+                "SELECT task_id FROM ec_anc_register WHERE base_entity_id = '%s' ", baseEntityId);
+
+        List<List<String>> res = readData(sql, dataMap);
+
+        return res.get(0);
     }
 }

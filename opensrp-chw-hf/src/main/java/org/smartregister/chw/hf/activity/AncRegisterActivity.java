@@ -33,6 +33,7 @@ import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.core.utils.FormUtils;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.dao.HfAncDao;
 import org.smartregister.chw.hf.fragment.AncReferralListRegisterFragment;
 import org.smartregister.chw.hf.fragment.AncRegisterFragment;
 import org.smartregister.chw.hf.interactor.AncRegisterInteractor;
@@ -45,7 +46,11 @@ import org.smartregister.listener.BottomNavigationListener;
 import org.smartregister.repository.AllSharedPreferences;
 import org.smartregister.view.fragment.BaseRegisterFragment;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -54,6 +59,7 @@ import timber.log.Timber;
 public class AncRegisterActivity extends CoreAncRegisterActivity {
 
     private static String taskId = null;
+    private static String baseEntityId;
 
     public static void startAncRegistrationActivity(Activity activity, String memberBaseEntityID, String phoneNumber, String formName,
                                                     String uniqueId, String familyBaseID, String family_name) {
@@ -78,6 +84,7 @@ public class AncRegisterActivity extends CoreAncRegisterActivity {
         form_name = formName;
         familyName = family_name;
         unique_id = uniqueId;
+        baseEntityId = memberBaseEntityID;
         intent.putExtra(org.smartregister.chw.anc.util.Constants.ACTIVITY_PAYLOAD.ACTION, org.smartregister.chw.anc.util.Constants.ACTIVITY_PAYLOAD_TYPE.REGISTRATION);
         intent.putExtra(Constants.ACTIVITY_PAYLOAD.TABLE_NAME, getFormTable());
         taskId = taskID;
@@ -99,7 +106,15 @@ public class AncRegisterActivity extends CoreAncRegisterActivity {
             values.put(org.smartregister.family.util.DBConstants.KEY.RELATIONAL_ID, familyBaseEntityId);
             values.put(DBConstants.KEY.LAST_MENSTRUAL_PERIOD, lastMenstrualPeriod);
             if(taskId != null) {
-                values.put(org.smartregister.chw.hf.utils.Constants.DBConstants.TASK_ID, taskId);
+                List<String> existingTaskIds = HfAncDao.getPresentTaskIds(baseEntityId);
+                if(!existingTaskIds.isEmpty()){
+                    ArrayList<String> list = new ArrayList<>(Collections.singleton(existingTaskIds.toString()));
+                    list.add(taskId);
+                    String taskIdsString = list.toString();
+                    values.put(org.smartregister.chw.hf.utils.Constants.DBConstants.TASK_ID, taskIdsString);
+                }else{
+                    values.put(org.smartregister.chw.hf.utils.Constants.DBConstants.TASK_ID, taskId);
+                }
             }
             try {
                 JSONObject min_date = CoreJsonFormUtils.getFieldJSONObject(jsonArray, "delivery_date");
