@@ -530,7 +530,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "",
         "type": "toaster_notes",
-        "text": "Please request the client to consult a doctor",
+        "text": "Mpeleke Mama aweze kufanyiwa tathmini na uchunguzi wa kizazi",
         "toaster_type": "warning",
         "relevance": {
           "rules-engine": {

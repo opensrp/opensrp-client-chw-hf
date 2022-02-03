@@ -84,12 +84,11 @@
       {
         "key": "reg_cpac",
         "type": "toaster_notes",
-        "text": "Msajili mteja kwa ajili ya CPAC",
+        "text": "Tafadhari mpatie mteja matibabu stahiki kutokana na kuharibika/ kutoka kwa mimba kulingana na mwongozo wa Wizara ya Afya",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
         "toaster_type": "warning",
-        "toaster_info_text": "Utunzaji Kamili wa Baada ya Kutoa Mimba (CPAC)",
         "relevance": {
           "step1:pregnancy_status": {
             "type": "string",
@@ -100,7 +99,7 @@
       {
         "key": "still_birth",
         "type": "toaster_notes",
-        "text": "Msajili mteja kwa ajili ya uzazi wa mpango",
+        "text": "Mshauri Mteja kuhusiana na njia za Uzazi wa Mpango  na mpatie njia ambayo amechagua mwenyewe",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",

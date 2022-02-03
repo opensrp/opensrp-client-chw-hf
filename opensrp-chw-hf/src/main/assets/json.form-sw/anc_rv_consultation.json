@@ -86,6 +86,27 @@
         }
       },
       {
+        "key": "prompt_for_examination_findings",
+        "type": "toaster_notes",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "prompt_for_examination_findings",
+        "openmrs_entity_parent": "",
+        "text": "Tafadhali mpatie Mteja huduma ya dharura kuhusiana na hali hii ya upungufu wa damu na moyo/figo kushindwa kufanya kazi vizuri. Bainisha sababu na dhibiti hali hii kulingana na mwongozo wa Wizara ya Afya.",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:examination_findings": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "pallor",
+                  "puffy_face"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
         "key": "gest_age",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -147,7 +168,7 @@
       {
         "key": "prompt_for_short_stature",
         "type": "toaster_notes",
-        "text": "Mteja ana kimo kifupi",
+        "text": "Mshauri Mama kuhusiana na hatari ya  kuchelewa kujifungua na mshauri akajifungulie kwenye Kituo cha Afya",
         "openmrs_entity_id": "prompt_for_short_stature",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -217,7 +238,7 @@
       {
         "key": "prompt_for_underweight",
         "type": "toaster_notes",
-        "text": "Mteja ana uzito mdogo",
+        "text": "Mshauri Mteja kuhusiana na hali yake ya uzito mdogo kulingana na muongozo kutoka Wizara ya Afya",
         "openmrs_entity_id": "prompt_for_underweight",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -232,7 +253,7 @@
       {
         "key": "prompt_for_overweight",
         "type": "toaster_notes",
-        "text": "Mteja ana uzito mkubwa na anapaswa kudhibiti uzito wake",
+        "text": "Mshauri Mteja kuhusiana na hali yake ya uzito mkubwa kulingana na muongozo kutoka Wizara ya Afya",
         "openmrs_entity_id": "prompt_for_overweight",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -306,7 +327,7 @@
       {
         "key": "prompt_for_fetal_distress",
         "type": "toaster_notes",
-        "text": "Mtoto yuko kwenye Dhiki",
+        "text": "Tafadhali mpigie simu/ muite Dakatari kwa ajili ya kumfanyie Mama upasuaji wakati wa kujifungua",
         "openmrs_entity_id": "prompt_for_fetal_distress",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -484,7 +505,7 @@
       {
         "key": "prompt_for_management_of_hypertension",
         "type": "toaster_notes",
-        "text": "Mteja ana Shinikizo la juu la damu (hypertension)",
+        "text": "Dhibiti hali hii ya Hypertension kulingana na muongozo wa Wizara ya Afya",
         "openmrs_entity_id": "prompt_for_management_of_hypertension",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -500,7 +521,7 @@
       {
         "key": "prompt_for_management_of_hypotension",
         "type": "toaster_notes",
-        "text": "Mteja ana Shinikizo la chini la damu (hypotension)",
+        "text": "Bainisha sababu za Hypotension na njia za udhibiti  kulingana na muongozo kutoka Wizara ya Afya",
         "openmrs_entity_id": "prompt_for_management_of_hypotension",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -540,7 +561,7 @@
       {
         "key": "prompt_for_Bradycardia",
         "type": "toaster_notes",
-        "text": "Mteja ana moyo unaodunda polepole (Bradycardia)",
+        "text": "Bainisha sababu za Bradycardia na njia za udhibiti  kulingana na muongozo kutoka Wizara ya Afya",
         "openmrs_entity_id": "prompt_for_Bradycardia",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -555,7 +576,7 @@
       {
         "key": "prompt_for_Tachycardia",
         "type": "toaster_notes",
-        "text": "Mteja ana moyo unaodunda haraka (tachycardia)",
+        "text": "Bainisha sababu za Tachycardia na njia za udhibiti  kulingana na muongozo kutoka Wizara ya Afya",
         "openmrs_entity_id": "prompt_for_Tachycardia",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -594,7 +615,7 @@
       {
         "key": "notify_client_has_fever",
         "type": "toaster_notes",
-        "text": "Mteja ana homa",
+        "text": "Mfanyie Mama vipimo kwa ajili ya kubainisha sababu ya Homa na dhibiti hali hii kulingana na mwongozo kutoka Wizara ya Afya",
         "openmrs_entity_id": "notify_client_has_fever",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -603,6 +624,21 @@
           "step1:temperature": {
             "type": "numeric",
             "ex": "greaterThanEqualTo(.,\"39\")"
+          }
+        }
+      },
+      {
+        "key": "notify_client_has_hypothermia",
+        "type": "toaster_notes",
+        "text": "Dhibiti hali hii ya Hypothermia kulingana na muongozo wa Wizara ya Afya",
+        "openmrs_entity_id": "notify_client_has_hypothermia",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:temperature": {
+            "type": "numeric",
+            "ex": "lessThan(.,\"37\")"
           }
         }
       },
@@ -633,6 +669,21 @@
         }
       },
       {
+        "key": "prompt_for_breasts",
+        "type": "toaster_notes",
+        "text": "Mfanyie Mama uchunguzi wa matiti ilikuweza kugundua kama ana 'Mastitis' au 'Breast lump'. Mpatie Antibiotic kama ana 'Mastitis' na dhibiti hali hii kulingana na mwongozo wa Wizara ya Afya. Mpe rufaa kwa ajili ya kipimo cha  Biopsy kama na 'Breast lump'",
+        "openmrs_entity_id": "prompt_for_breasts",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:breast": {
+            "type": "string",
+            "ex": "equalTo(.,\"abnormal\")"
+          }
+        }
+      },
+      {
         "key": "lymph_node_under_arm",
         "type": "native_radio",
         "label": "Nodi ya limfu (kwenye kwapa)",
@@ -659,6 +710,21 @@
         }
       },
       {
+        "key": "prompt_for_lymph_under_the_arm",
+        "type": "toaster_notes",
+        "text": "Tafadhali mpe rufaa mteja kwa ajili ya kipimo cha biopsy",
+        "openmrs_entity_id": "prompt_for_lymph_under_the_arm",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:lymph_node_under_arm": {
+            "type": "string",
+            "ex": "equalTo(.,\"abnormal\")"
+          }
+        }
+      },
+      {
         "key": "lymph_node_cervical",
         "type": "native_radio",
         "label": "Nodi ya limfu (Kizazi)",
@@ -682,6 +748,21 @@
         "v_required": {
           "value": "true",
           "err": "Tafadhali jibu swali hili"
+        }
+      },
+      {
+        "key": "prompt_for_lymph_cervical",
+        "type": "toaster_notes",
+        "text": "Tafadhali mpe rufaa mteja kwa ajili ya kipimo cha biopsy",
+        "openmrs_entity_id": "prompt_for_lymph_cervical",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:lymph_node_cervical": {
+            "type": "string",
+            "ex": "equalTo(.,\"abnormal\")"
+          }
         }
       }
     ]

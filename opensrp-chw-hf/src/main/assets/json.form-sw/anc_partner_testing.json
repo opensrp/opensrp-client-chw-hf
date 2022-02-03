@@ -156,7 +156,7 @@
       {
         "key": "register_for_hiv_services",
         "type": "toaster_notes",
-        "text": "Msajili mwenza kwenye huduma za VVU",
+        "text": "Mpe rufaa Mteja kwenda CTC kwa ajili ufuatiliaji na Matunzo",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -210,7 +210,7 @@
       {
         "key": "prescribe_anti_sy",
         "type": "toaster_notes",
-        "text": "Muagizie mwenza dawa za atibiotics",
+        "text": "Mpe mwenza wa mama mjamzito  dawa za Antibiotic kulingana na muongozo wa Wizara ya Afya",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -316,6 +316,21 @@
             "ex-rules": {
               "rules-file": "anc_partner_testing_relevance.yml"
             }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_partner_hepatitis",
+        "type": "toaster_notes",
+        "text": "Mpatie Mteja dawa za kufubaza virusi vya Ukimwi (ARV) kulingana na muongozo wa Wizara ya Afya",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:partner_hepatitis": {
+            "type": "string",
+            "ex": "equalTo(.,\"positive\")"
           }
         }
       },

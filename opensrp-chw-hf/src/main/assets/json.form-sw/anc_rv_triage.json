@@ -134,6 +134,30 @@
         }
       },
       {
+        "key": "prompt_for_rapid_examination",
+        "type": "toaster_notes",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "prompt_for_rapid_examination",
+        "openmrs_entity_parent": "",
+        "text": "Tafadhali mpatie Mteja msaada na uangalizi wa karibu na mpe rufaa kwa ajili ya matibabu ya dharura",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:rapid_examination": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "pallor",
+                  "sweating",
+                  "shivering",
+                  "difficulty_in_breathing",
+                  "facial_expression"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
         "key": "reasons_to_clinic",
         "type": "native_radio",
         "label": "Kwa nini ulikuja kliniki leo?",
@@ -289,7 +313,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "is_emergency",
         "openmrs_entity_parent": "",
-        "text": "Mteja anahitaji huduma ya matunzo ya dharura",
+        "text": "Toa huduma ya dharura kwa Mteja",
         "toaster_type": "warning",
         "toaster_info": "The client exhibits one or more of the emergency signs and needs emergency care",
         "relevance": {
