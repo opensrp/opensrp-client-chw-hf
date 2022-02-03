@@ -8,10 +8,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.vijay.jsonwizard.utils.FormUtils;
 
 import org.apache.commons.lang3.StringUtils;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.core.activity.CoreHivIndexContactProfileActivity;
@@ -27,6 +29,7 @@ import org.smartregister.chw.hf.presenter.HivIndexContactProfilePresenter;
 import org.smartregister.chw.hiv.dao.HivDao;
 import org.smartregister.chw.hiv.dao.HivIndexDao;
 import org.smartregister.chw.hiv.domain.HivIndexContactObject;
+import org.smartregister.chw.hiv.util.DBConstants;
 import org.smartregister.chw.tb.util.Constants;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 
@@ -41,6 +44,10 @@ import static org.smartregister.chw.hiv.util.Constants.ActivityPayload.HIV_MEMBE
 public class HivIndexContactProfileActivity extends CoreHivIndexContactProfileActivity implements HivIndexContactProfileContract.View {
 
     public final static String REGISTERED_TO_HIV_REGISTRY = "registered_to_hiv_registry";
+    public static final String NAME = "name";
+    public static final String PROPERTIES = "properties";
+    public static final String TEXT = "text";
+    public static final String SELECTION = "selection";
     private CommonPersonObjectClient commonPersonObjectClient;
 
     public static void startHivIndexContactProfileActivity(Activity activity, HivIndexContactObject hivIndexContactObject) {
@@ -73,7 +80,7 @@ public class HivIndexContactProfileActivity extends CoreHivIndexContactProfileAc
 
     public void setReferralAndFollowupFeedback(List<HivIndexFollowupFeedbackDetailsModel> followupFeedbackDetailsModel) {
         if (notificationAndReferralRecyclerView != null && followupFeedbackDetailsModel.size() > 0) {
-            RecyclerView.Adapter mAdapter = new HivIndexFollowupCardViewAdapter(followupFeedbackDetailsModel,this,getCommonPersonObjectClient(),CoreConstants.REGISTERED_ACTIVITIES.HIV_INDEX_REGISTER_ACTIVITY);
+            RecyclerView.Adapter mAdapter = new HivIndexFollowupCardViewAdapter(followupFeedbackDetailsModel, this, getCommonPersonObjectClient(), CoreConstants.REGISTERED_ACTIVITIES.HIV_INDEX_REGISTER_ACTIVITY);
             notificationAndReferralRecyclerView.setAdapter(mAdapter);
             notificationAndReferralLayout.setVisibility(View.VISIBLE);
             findViewById(R.id.view_notification_and_referral_row).setVisibility(View.VISIBLE);
@@ -226,6 +233,46 @@ public class HivIndexContactProfileActivity extends CoreHivIndexContactProfileAc
     public void setFollowUpButtonDue() {
         super.setFollowUpButtonDue();
         showFollowUpVisitButton(!getHivIndexContactObject().getContactClientNotificationMethod().equals("na"));
+    }
+
+    @Override
+    public void setupViews() {
+        super.setupViews();
+        TextView tvRecordHivFollowup = findViewById(R.id.textview_record_reccuring_visit);
+        if (!(getHivIndexContactObject().getEnrolledToClinic() || getHivIndexContactObject().getHasTheContactClientBeenTested().equals(""))) {
+            tvRecordHivFollowup.setText(R.string.record_ctc_number);
+            tvRecordHivFollowup.setOnClickListener(v -> {
+                try {
+                    startUpdateFollowup(HivIndexContactProfileActivity.this, getHivIndexContactObject().getBaseEntityId());
+                } catch (JSONException e) {
+                    Timber.e(e);
+                }
+            });
+        }
+    }
+
+    protected void startUpdateFollowup(Activity activity, String baseEntityID) throws JSONException {
+        Intent intent = new Intent(activity, HivFormsActivity.class);
+        intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.BASE_ENTITY_ID, baseEntityID);
+        HivIndexContactObject hivIndexContactObject = getHivIndexContactObject();
+        JSONObject form = (new FormUtils()).getFormJsonFromRepositoryOrAssets(activity, org.smartregister.chw.hf.utils.Constants.JsonForm.getHivIndexContactCtcEnrollment());
+        if (form != null) {
+            JSONArray fields = form.getJSONArray("steps").getJSONObject(0).getJSONArray("fields");
+            for (int i = 0; i < fields.length(); i++) {
+                JSONObject field = fields.getJSONObject(i);
+                if (field.getString(NAME).equals(DBConstants.Key.PLACE_WHERE_TEST_WAS_CONDUCTED)) {
+                    field.getJSONObject(PROPERTIES).put(TEXT, hivIndexContactObject.getPlaceWhereTestWasConducted());
+                } else if (field.getString(NAME).equals(DBConstants.Key.TEST_RESULTS)) {
+                    field.getJSONObject(PROPERTIES).put(TEXT, hivIndexContactObject.getTestResults());
+                }
+
+            }
+            intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.JSON_FORM, form.toString());
+            intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.ACTION, Constants.ActivityPayloadType.FOLLOW_UP_VISIT);
+            intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.USE_DEFAULT_NEAT_FORM_LAYOUT, false);
+        }
+
+        activity.startActivityForResult(intent, org.smartregister.chw.anc.util.Constants.REQUEST_CODE_HOME_VISIT);
     }
 }
 

@@ -16,6 +16,7 @@ public class Constants extends CoreConstants {
         public static final String ANC_FACILITY_VISIT_NOT_DONE_UNDO = "ANC Facility Visit Not Done Undo";
         public static final String PMTCT_FIRST_EAC_VISIT = "PMTCT EAC First Visit";
         public static final String PMTCT_SECOND_EAC_VISIT = "PMTCT EAC Second Visit";
+        public static final String UPDATE_HIV_INDEX_TESTING_FOLLOWUP= "Update HIV Index Contact Testing Followup";
 
     }
 
@@ -46,6 +47,7 @@ public class Constants extends CoreConstants {
         public static final String HVL_SUPPRESSION_FORM_AFTER_EAC_2 = "pmtct_hvl_suppression_after_eac_2";
         public static final String CLINICIAN_DETAILS_FORM = "pmtct_fv_clinician_details";
         private static final String COUNSELLING = "anc_counselling";
+        private static final String HIV_INDEX_CONTACT_CTC_ENROLLMENT = "hiv_index_contact_ctc_enrollment";
 
         public static String getCounselling() {
             return COUNSELLING;
@@ -61,6 +63,10 @@ public class Constants extends CoreConstants {
 
         public static String getHvlSuppressionFormAfterEac1() {
             return HVL_SUPPRESSION_FORM_AFTER_EAC_1;
+        }
+
+        public static String getHivIndexContactCtcEnrollment() {
+            return HIV_INDEX_CONTACT_CTC_ENROLLMENT;
         }
 
         public static String getHvlSuppressionFormAfterEac2() {

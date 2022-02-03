@@ -71,5 +71,6 @@
     <string name="partner_testing_action_title">Partner Testing</string>
     <string name="first_pregnancy_option">First pregnancy</string>
     <string name="none_option_for_medical_surgical_history">None</string>
+    <string name="record_ctc_number">Record CTC Number</string>
 
 </resources>
