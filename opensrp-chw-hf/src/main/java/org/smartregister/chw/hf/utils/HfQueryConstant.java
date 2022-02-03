@@ -42,6 +42,9 @@ public interface HfQueryConstant {
             "    FROM ec_tb_register\n" +
             "    WHERE ec_tb_register.tb_case_closure_date is null\n" +
             "    UNION ALL\n" +
+            "    SELECT ec_hiv_index_hf.base_entity_id AS base_entity_id\n" +
+            "    FROM ec_hiv_index_hf\n" +
+            "    UNION ALL\n" +
             "    SELECT ec_hiv_register.base_entity_id AS base_entity_id\n" +
             "    FROM ec_hiv_register where ec_hiv_register.ctc_number is not null\n" +
             ")" +
