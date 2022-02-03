@@ -259,7 +259,7 @@
             }
           ],
           "required_status": "yes:Tafadhali chagua matokeo ya vipimo vya VVU",
-          "subjects": "has_the_contact_client_been_tested:map"
+          "subjects": "has_the_contact_client_been_tested:map, eligibility_for_testing:map"
         },
         {
           "name": "place_where_test_was_conducted",
@@ -329,7 +329,7 @@
             }
           ],
           "required_status": "yes:Tafadhali chagua jibu sahihi",
-          "subjects": "test_results:map"
+          "subjects": "test_results:map, eligibility_for_testing:map"
         },
         {
           "name": "client_test_date",
@@ -346,7 +346,7 @@
             "openmrs_entity_parent": ""
           },
           "required_status": "true:Tafadhali jaza tarehe ya upimaji wa VVU wa mteja",
-          "subjects": "test_results:map"
+          "subjects": "test_results:map, eligibility_for_testing:map"
         },
         {
           "name": "toast_enroll_the_client_to_prep",
@@ -442,7 +442,7 @@
             }
           ],
           "required_status": "yes:Tafadhali jaza jibu",
-          "subjects": "test_results:map"
+          "subjects": "test_results:map, eligibility_for_testing:map"
         },
         {
           "name": "reasons_for_ineligibility_for_testing",
@@ -514,7 +514,7 @@
             }
           ],
           "required_status": "yes:Tafadhali jaza namba ya CTC ya mteja",
-          "subjects": "enrolled_to_clinic:map"
+          "subjects": "enrolled_to_clinic:map, reasons_for_ineligibility_for_testing:map, eligibility_for_testing:map"
         },
         {
           "name": "comment",
