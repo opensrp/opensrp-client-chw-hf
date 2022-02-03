@@ -175,11 +175,11 @@
               }
             },
             {
-              "name": "vct",
+              "name": "ctc",
               "text": "Kituo cha huduma ya tiba na matunzo ya UKIMWI",
               "meta_data": {
                 "openmrs_entity": "concept",
-                "openmrs_entity_id": "vct",
+                "openmrs_entity_id": "ctc",
                 "openmrs_entity_parent": ""
               }
             },
@@ -221,6 +221,21 @@
             }
           ],
           "required_status": "yes:Tafadhali chagua jibu sahihi"
+        },
+        {
+          "name": "place_where_test_was_conducted_other",
+          "type": "text_input_edit_text",
+          "properties": {
+            "hint": "Nyingine",
+            "type": "name"
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "place_where_test_was_conducted_other",
+            "openmrs_entity_parent": ""
+          },
+          "required_status": "true:Tafadhali jaza sehemu nyingine",
+          "subjects": "place_where_test_was_conducted:map"
         },
         {
           "name": "ctc_number",
