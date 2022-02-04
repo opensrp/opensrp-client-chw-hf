@@ -1,13 +1,8 @@
 package org.smartregister.chw.hf.activity;
 
-import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.isMultiPartForm;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.widget.Toast;
-
-import androidx.annotation.MenuRes;
-import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 import com.vijay.jsonwizard.constants.JsonFormConstants;
@@ -47,14 +42,17 @@ import org.smartregister.repository.AllSharedPreferences;
 import org.smartregister.view.fragment.BaseRegisterFragment;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import androidx.annotation.MenuRes;
+import androidx.fragment.app.Fragment;
 import timber.log.Timber;
+
+import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.isMultiPartForm;
 
 public class AncRegisterActivity extends CoreAncRegisterActivity {
 
@@ -105,14 +103,14 @@ public class AncRegisterActivity extends CoreAncRegisterActivity {
             values.put(CoreConstants.JsonAssets.FAMILY_MEMBER.PHONE_NUMBER, phone_number);
             values.put(org.smartregister.family.util.DBConstants.KEY.RELATIONAL_ID, familyBaseEntityId);
             values.put(DBConstants.KEY.LAST_MENSTRUAL_PERIOD, lastMenstrualPeriod);
-            if(taskId != null) {
+            if (taskId != null) {
                 List<String> existingTaskIds = HfAncDao.getPresentTaskIds(baseEntityId);
-                if(!existingTaskIds.isEmpty()){
+                if (!existingTaskIds.isEmpty()) {
                     ArrayList<String> list = new ArrayList<>(Collections.singleton(existingTaskIds.toString()));
                     list.add(taskId);
                     String taskIdsString = list.toString();
                     values.put(org.smartregister.chw.hf.utils.Constants.DBConstants.TASK_ID, taskIdsString);
-                }else{
+                } else {
                     values.put(org.smartregister.chw.hf.utils.Constants.DBConstants.TASK_ID, taskId);
                 }
             }
@@ -239,9 +237,9 @@ public class AncRegisterActivity extends CoreAncRegisterActivity {
                 boolean isPregnancyConfirmed = pregnancyConfirmationStatus.equalsIgnoreCase("confirmed");
 
                 if (encounter_type.equalsIgnoreCase(getRegisterEventType())) {
-                     saveFormForPregnancyConfirmation(jsonString,table);
+                    saveFormForPregnancyConfirmation(jsonString, table);
                     if (!isPregnancyConfirmed) {
-                        closeForUnconfirmed(jsonString,table);
+                        closeForUnconfirmed(jsonString, table);
                     }
                 } else if (encounter_type.equalsIgnoreCase(Constants.EVENT_TYPE.PREGNANCY_OUTCOME)) {
 
@@ -294,7 +292,7 @@ public class AncRegisterActivity extends CoreAncRegisterActivity {
 
     private static void closeForUnconfirmed(String json, String table) throws Exception {
         AllSharedPreferences allSharedPreferences = AncLibrary.getInstance().context().allSharedPreferences();
-        Event baseEvent = org.smartregister.chw.anc.util.JsonFormUtils.processJsonForm(allSharedPreferences,json,table);
+        Event baseEvent = org.smartregister.chw.anc.util.JsonFormUtils.processJsonForm(allSharedPreferences, json, table);
         org.smartregister.chw.anc.util.JsonFormUtils.tagEvent(allSharedPreferences, baseEvent);
         String syncLocationId = ChwNotificationDao.getSyncLocationId(baseEvent.getBaseEntityId());
         if (syncLocationId != null) {

@@ -1,15 +1,9 @@
 package org.smartregister.chw.hf.activity;
 
-import static android.view.View.GONE;
-import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-
-import androidx.annotation.NonNull;
 
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.R;
@@ -19,6 +13,11 @@ import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.domain.Task;
 import org.smartregister.opd.utils.OpdDbConstants;
 import org.smartregister.view.customcontrols.CustomFontTextView;
+
+import androidx.annotation.NonNull;
+
+import static android.view.View.GONE;
+import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
 
 public class PregnancyConfirmationViewActivity extends ReferralTaskViewActivity implements View.OnClickListener {
 
