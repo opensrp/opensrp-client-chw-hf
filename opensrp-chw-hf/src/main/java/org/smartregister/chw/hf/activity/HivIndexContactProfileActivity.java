@@ -239,7 +239,7 @@ public class HivIndexContactProfileActivity extends CoreHivIndexContactProfileAc
     public void setupViews() {
         super.setupViews();
         TextView tvRecordHivFollowup = findViewById(R.id.textview_record_reccuring_visit);
-        if (!(getHivIndexContactObject().getEnrolledToClinic() || getHivIndexContactObject().getHasTheContactClientBeenTested().equals(""))) {
+        if (!(getHivIndexContactObject().getEnrolledToClinic() || getHivIndexContactObject().getHasTheContactClientBeenTested().equals("")) && getHivIndexContactObject().getTestResults().equalsIgnoreCase("Positive")) {
             tvRecordHivFollowup.setText(R.string.record_ctc_number);
             tvRecordHivFollowup.setOnClickListener(v -> {
                 try {

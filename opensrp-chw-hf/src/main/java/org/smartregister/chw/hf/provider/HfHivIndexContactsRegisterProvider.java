@@ -12,6 +12,7 @@ import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.utils.HfReferralUtils;
 import org.smartregister.chw.hiv.dao.HivIndexDao;
+import org.smartregister.chw.hiv.domain.HivIndexContactObject;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.view.contract.SmartRegisterClient;
 
@@ -48,12 +49,17 @@ public class HfHivIndexContactsRegisterProvider extends CoreHivIndexContactsProv
 
     private void displayReferralSent(CommonPersonObjectClient client,HfHivIndexContactsRegisterProvider.HfRegisterViewHolder viewHolder){
         String baseEntityId = client.entityId();
-
+        HivIndexContactObject hivIndexContactObject = HivIndexDao.getMember(baseEntityId);
         if (HivIndexDao.isReferralSent(baseEntityId)) {
             viewHolder.textViewReferralDay.setVisibility(View.VISIBLE);
-            String referralDay = "Referral Sent ";
+            String referralDay = viewHolder.itemView.getContext().getString(R.string.referral_sent);
             viewHolder.textViewReferralDay.setText(referralDay);
-        } else {
+        }  else if (!hivIndexContactObject.getHasTheContactClientBeenTested().equals("") && hivIndexContactObject.getCtcNumber().equals("")){
+            viewHolder.textViewReferralDay.setVisibility(View.VISIBLE);
+            String pendingCtcRegistration = viewHolder.itemView.getContext().getString(R.string.pending_ctc_registration);
+            viewHolder.textViewReferralDay.setText(pendingCtcRegistration);
+        }
+        else {
             viewHolder.textViewReferralDay.setVisibility(View.GONE);
         }
     }

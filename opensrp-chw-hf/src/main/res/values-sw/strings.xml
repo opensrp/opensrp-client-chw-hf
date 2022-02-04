@@ -60,4 +60,6 @@
     <string name="first_pregnancy_option">Mimba ya kwanza</string>
     <string name="none_option_for_medical_surgical_history">Hakuna</string>
     <string name="record_ctc_number">Rekodi namba ya CTC</string>
+    <string name="referral_sent">Rufaa Imetumwa</string>
+    <string name="pending_ctc_registration">Usajili wa CTC haujakamilika</string>
 </resources>
