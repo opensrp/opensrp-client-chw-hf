@@ -2,6 +2,7 @@ package org.smartregister.chw.hf.dao;
 
 import org.smartregister.dao.AbstractDao;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -265,7 +266,9 @@ public class HfAncDao extends AbstractDao {
                 "SELECT task_id FROM ec_anc_register WHERE base_entity_id = '%s' ", baseEntityId);
 
         List<List<String>> res = readData(sql, dataMap);
-
-        return res.get(0);
+        if(res.size() > 0) {
+            return res.get(0);
+        }
+        return new ArrayList<>();
     }
 }
