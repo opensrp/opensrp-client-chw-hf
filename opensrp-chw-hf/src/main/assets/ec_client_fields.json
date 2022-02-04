@@ -3432,6 +3432,14 @@
           }
         },
         {
+          "column_name": "place_where_test_was_conducted",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "place_where_test_was_conducted"
+          }
+        },
+        {
           "column_name": "enrolled_to_clinic",
           "type": "Event",
           "json_mapping": {

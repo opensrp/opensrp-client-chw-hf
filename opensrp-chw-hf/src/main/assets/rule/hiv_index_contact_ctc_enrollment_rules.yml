@@ -1,0 +1,14 @@
+---
+name: "test_results_visibility"
+description: "test_results visibility"
+priority: 1
+condition: "true"
+actions:
+  - "test_results_visibility = false"
+---
+name: "place_where_test_was_conducted_visibility"
+description: "place_where_test_was_conducted visibility"
+priority: 1
+condition: "true"
+actions:
+  - "place_where_test_was_conducted_visibility = false"
