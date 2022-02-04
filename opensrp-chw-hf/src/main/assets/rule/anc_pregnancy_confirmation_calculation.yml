@@ -33,3 +33,17 @@ priority: 1
 condition: "true"
 actions:
   - "calculation = step3_estimated_last_menstrual_period == '' ? step3_known_last_menstrual_period : step3_estimated_last_menstrual_period"
+---
+name: step3_pregnancy_confirmation_status
+description: Pregnancy Confirmation Status
+priority: 1
+condition: "true"
+actions:
+  - "calculation = (step2_uss.contains('present_gestation_sac') && step2_upt.contains('negative')) || (!step2_uss.contains('present_gestation_sac') && !step2_upt.contains('positive'))  ? 'Unconfirmed' : 'Confirmed'"
+---
+name: step3_pregnancy_confirmation_date
+description: Pregnancy Confirmation Date
+priority: 1
+condition: "true"
+actions:
+  - "calculation = helper.getDateToday()"

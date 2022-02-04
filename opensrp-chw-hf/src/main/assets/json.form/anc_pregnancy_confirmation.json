@@ -158,6 +158,13 @@
           "value": "true",
           "err": "Please select the danger sings"
         }
+      },
+      {
+        "key": "task_id",
+        "type": "hidden",
+        "openmrs_entity_id": "task_id",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": ""
       }
     ]
   },
@@ -523,12 +530,40 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "",
         "type": "toaster_notes",
-        "text": "Please request the client to consult a doctor",
+        "text": "Refer the client for a gynaecological review",
         "toaster_type": "warning",
         "relevance": {
           "rules-engine": {
             "ex-rules": {
               "rules-file": "anc_pregnancy_confirmation_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "pregnancy_confirmation_status",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "pregnancy_confirmation_status",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_pregnancy_confirmation_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "pregnancy_confirmation_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "pregnancy_confirmation_date",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_pregnancy_confirmation_calculation.yml"
             }
           }
         }

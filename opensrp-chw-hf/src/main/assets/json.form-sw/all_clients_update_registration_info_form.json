@@ -261,7 +261,7 @@
           "Mke/mme mmoja",
           "Mke/waume wengi",
           "Mgane/Mjane",
-          "Wanaishi pamoja lakini hawana ndoa"
+          "Kuishi pamoja bila ndoa"
         ],
         "keys": [
           "Single",
@@ -411,7 +411,7 @@
         "mask": "T-####-####-###-#",
         "mask_hint": "123456789123",
         "allowed_chars": "0123456789",
-        "hint": "Namba ya Mpiga kura mfano: T-1234-5678-912-3",
+        "hint": "Namba ya kitambulisho cha mpiga kura mfano: T-1234-5678-912-3",
         "edit_type": "number",
         "v_max_length": {
           "value": "17",
@@ -420,7 +420,7 @@
         },
         "v_regex": {
           "value": "^T-\\d{4}-\\d{4}-\\d{3}-\\d{1}$",
-          "err": "Namba ya mpiga kura inapaswa ijazwe hii (T-XXXX-XXXX-XXX-X)"
+          "err": "Namba ya mpiga kura inapaswa ijazwe hivi (T-XXXX-XXXX-XXX-X)"
         },
         "v_required": {
           "value": true,
@@ -483,7 +483,7 @@
         "mask": "TAE-######",
         "mask_hint": "123456",
         "allowed_chars": "0123456789",
-        "hint": "Namba ya pasi ya kusafiria",
+        "hint": "Namba ya hati ya kusafiria",
         "v_max_length": {
           "value": "10",
           "is_fixed_size": "true",
@@ -491,7 +491,7 @@
         },
         "v_regex": {
           "value": "^TAE-\\d{6}$",
-          "err": "Namba ya pasi ya kusafiria ijawe kwa utaratibu huu: (TAE-XXXXXX)"
+          "err": "Namba ya hati ya kusafiria ijawe kwa utaratibu huu: (TAE-XXXXXX)"
         },
         "v_required": {
           "value": true,
@@ -525,10 +525,10 @@
           "AAR Healthcare",
           "Strategies Insurance",
           "Milvik Tanzania Ltd (BIMA Mkononi)",
-          "Britam Insurance Tanzania",
-          "Jubilee Insurance",
-          "Resolutions Insurance",
-          "Reliance Insurance",
+          "Bima ya afya ya Britam",
+          "Bima ya afya ya Jubilee",
+          "Bima ya afya ya Resolutions",
+          "Bima ya afya ya Reliance",
           "Nyingine",
           "Hakuna"
         ],
@@ -823,7 +823,7 @@
         },
         "v_regex": {
           "value": "(0[6-7][1-9][1-9][0-9]{6})|\\s*",
-          "err": "Nambari lazima iwe na tarakimu 10 na lazima ianze na 06 au 07."
+          "err": "Namba lazima iwe na tarakimu 10 na lazima ianze na 06 au 07."
         },
         "relevance": {
           "rules-engine": {
@@ -855,14 +855,14 @@
           },
           {
             "key": "chk_cs",
-            "text": "Mtumishi wa Umma",
+            "text": "Mtumishi wa Serikali",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_cs"
           },
           {
             "key": "chk_nurse",
-            "text": "Nesi",
+            "text": "Muuguzi",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_nurse"
@@ -876,56 +876,56 @@
           },
           {
             "key": "chk_th",
-            "text": "Mganga wa Kienyeji",
+            "text": "Mganga wa tiba asili",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_th"
           },
           {
             "key": "chk_chw",
-            "text": "Mtoa huduma ngazi ya jamii",
+            "text": "Muhudumu wa afya ngazi ya jamii (WAJA)",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_chw"
           },
           {
             "key": "chk_tba",
-            "text": "Mkunga",
+            "text": "Mkunga wa Jadi",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_tba"
           },
           {
             "key": "chk_chmis",
-            "text": "Community Based Distributor",
+            "text": "Wakusanyaji takrimu za afya ngazi ya jamii",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_chmis"
           },
           {
             "key": "chk_cbd",
-            "text": "Community Based DistributorHome Based Care (HBC)",
+            "text": "Msambazaji wa dawa na vifaa vya uzazi wa mpango ngazi ya Jamii",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_cbd"
           },
           {
             "key": "chk_hbc",
-            "text": "Home Based Care (HBC",
+            "text": "Watoa huduma kwa wagonjwa majumbani",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_hbc"
           },
           {
             "key": "chk_cimmci",
-            "text": "Community IMCI",
+            "text": "Watoa huduma za udhibiti wa magonjwa ya watoto ngazi ya jamii",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_cimmci"
           },
           {
             "key": "chk_other",
-            "text": "Nyingine",
+            "text": "Nyinginezo",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_other"

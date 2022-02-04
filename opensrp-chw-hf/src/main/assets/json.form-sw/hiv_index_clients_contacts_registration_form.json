@@ -54,7 +54,7 @@
     }
   },
   "step1": {
-    "title": "Location details",
+    "title": "Taarifa za mteja",
     "next": "step2",
     "fields": [
       {
@@ -63,7 +63,7 @@
         "openmrs_entity": "person",
         "openmrs_entity_id": "fam_name",
         "type": "edit_text",
-        "hint": "jina la ukoo",
+        "hint": "Jina la ukoo",
         "edit_type": "name",
         "v_required": {
           "value": "true",
@@ -114,13 +114,13 @@
         "openmrs_entity": "person_identifier",
         "openmrs_entity_id": "opensrp_id",
         "hidden": "true",
-        "type": "barcode",
+        "type": "edit_text",
         "barcode_type": "qrcode",
-        "hint": "Numbari ya utambulisho",
+        "hint": "Nambari ya utambulisho",
         "scanButtonText": "Scan QR Code",
         "v_numeric": {
           "value": "true",
-          "err": "Tafadhali weka numba ya utambulisho"
+          "err": "Tafadhali weka namba ya utambulisho"
         }
       },
       {
@@ -167,10 +167,10 @@
         "openmrs_entity": "person_attribute",
         "openmrs_entity_id": "sync_location_id",
         "type": "spinner",
-        "hint": "Select CHW Location",
+        "hint": "Chagua eneo la WAJA",
         "v_required": {
           "value": "true",
-          "err": "Please select CHW Location"
+          "err": "Tafadhali chagua eneo la WAJA"
         }
       }
     ]
@@ -198,7 +198,7 @@
       {
         "key": "surname",
         "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
+        "openmrs_entity": "person",
         "openmrs_entity_id": "last_name",
         "type": "edit_text",
         "hint": "Jina la ukoo",
@@ -276,16 +276,16 @@
         "openmrs_entity": "person",
         "openmrs_entity_id": "birthdate",
         "type": "hidden",
-        "hint": "Date of birth (DOB)",
+        "hint": "Tarehe ya kuzaliwa",
         "expanded": false,
         "duration": {
-          "label": "Age"
+          "label": "Umri"
         },
         "min_date": "today-120y",
         "max_date": "today-5y",
         "v_required": {
           "value": "true",
-          "err": "Please enter the date of birth"
+          "err": "Tafadhali jaza tarehe ya kuzaliwa"
         }
       },
       {
@@ -345,10 +345,10 @@
         "openmrs_entity": "person",
         "openmrs_entity_id": "gender",
         "type": "spinner",
-        "hint": "Jinsia",
+        "hint": "Jinsi",
         "values": [
-          "Mwanaume",
-          "Mwanamke"
+          "Me",
+          "Ke"
         ],
         "keys": [
           "Male",
@@ -356,7 +356,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhali ingiza jinsia"
+          "err": "Tafadhali ingiza jinsi"
         }
       },
       {
@@ -476,7 +476,7 @@
         "options": [
           {
             "key": "sexual_partner",
-            "text": "Mwenzi wa ngono",
+            "text": "Mwenzi wa kingono",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "sexual_partner"
@@ -490,7 +490,7 @@
           },
           {
             "key": "biological_father",
-            "text": "Baba Mzamzi",
+            "text": "Baba Mzazi",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "biological_father"
@@ -542,7 +542,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Relationship is required"
+          "err": "Uhusiano unahitajika"
         },
         "relevance": {
           "rules-engine": {
@@ -586,7 +586,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "physical_abuse",
         "type": "native_radio",
-        "label": "Je mtajwa amewahi kukupiga au kukunyanyasa kimwili?",
+        "label": "Je, mtajwa amewahi kukupiga au kukunyanyasa kimwili?",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [
@@ -623,7 +623,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "threatened_to_be_hurt",
         "type": "native_radio",
-        "label": "Je Mtajwa amewahi kutishia kukupiga au kukuumiza?",
+        "label": "Je, Mtajwa amewahi kutishia kukupiga au kukuumiza?",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [
@@ -660,7 +660,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "sexual_assault",
         "type": "native_radio",
-        "label": "Je mtajwa amewahi kutumia nguvu au kukushawishi kufanya ngono bila kupenda kwako?",
+        "label": "Je, mtajwa amewahi kutumia nguvu au kukushawishi kufanya ngono bila kupenda kwako?",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [
@@ -697,7 +697,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "fearful_of_contact_client",
         "type": "native_radio",
-        "label": "Je, unatishiwa au unaogopa kuwasiliana na mteja?",
+        "label": "Je, unatishika au unamuogopa mshiriki wako wa kingono?",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [
@@ -734,7 +734,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "fearful_of_contact_client",
         "type": "native_radio",
-        "label": "Je, una maelezo yoyote ya kukupongeza kuhusu ukatili ambao umefanyiwa?",
+        "label": "Je, una maelezo yoyote ya ziada kuhusu ukatili ambao umefanyiwa?",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [
@@ -767,7 +767,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "how_to_notify_the_contact_client",
         "type": "native_radio",
-        "label": "Jinsi ya kuwasiliana na mteja wa mawasiliano",
+        "label": "Jinsi ya kuwasiliana na mteja wa mshirika wako wa kingono",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [
@@ -794,7 +794,7 @@
           },
           {
             "key": "dual_referral",
-            "text": "Rufaa Mbili",
+            "text": "Ufuatiliaji kwa njia mbili",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "dual_referral"

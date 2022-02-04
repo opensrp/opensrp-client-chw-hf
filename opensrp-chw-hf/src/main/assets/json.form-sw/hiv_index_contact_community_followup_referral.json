@@ -55,7 +55,7 @@
   },
   "steps": [
     {
-      "title": "Ufuatiliaje wa wenza wa Kingono au wa Kujidunga wa mshirika katika jamii",
+      "title": "Ufuatiliaji wa wenza wa Kingono au wa Kujidunga wa mshirika katika jamii",
       "fields": [
         {
           "name": "toast_refer_to_chw",
@@ -63,8 +63,8 @@
           "properties": {
             "notification_type": "info",
             "dismissible": "no",
-            "title": "Mteja atapewa rufaa kwenda kwa mtumishi wa afya ngazi ya jamii",
-            "text": "Mteja anapewa rufaa kwenda kwa mtumishi wa afya ngazi ya jamii katika kijiji cha mteja kwa ajili ya ufuatiliaje ngazi ya jamii.\n\n Ongeza maoni ya ziada yatakayo kwenda kwa mtumishi wa afya ngazi ya jamii should be sent the the CHW\n\nHifadhi fomu ya rufaa",
+            "title": "Mteja atapewa rufaa kwenda kwa mtoa huduma ya afya ngazi ya jamii",
+            "text": "Mteja anapewa rufaa kwenda kwa mtoa huduma wa afya ngazi ya jamii katika kijiji cha mteja kwa ajili ya ufuatiliaji.\n\n Ongeza maoni ya ziada yatakayo kwenda kwa mtoa huduma wa afya ngazi ya jamii\n\nHifadhi fomu ya rufaa kwajili ya kutuma rufaa",
             "background_color": "#082455",
             "text_color": "#EBEE2F"
           }
@@ -73,7 +73,7 @@
           "name": "refer_to_chw",
           "type": "radio_group",
           "properties": {
-            "text": "Tuma ufuatiliaji wa rufaa kwenda kwa mtumishi wa afya ngazi ya jamii?"
+            "text": "Mpe rufaa kwa ajili ya ufuatiliaji wa huduma za VVU katika ngazi ya jamii?"
           },
           "meta_data": {
             "openmrs_entity": "concept",

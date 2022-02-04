@@ -23,4 +23,39 @@ public class FamilyMemberFloatingMenu extends CoreFamilyMemberFloatingMenu {
     public void reDraw(boolean has_phone) {
         redrawWithOption(this, has_phone);
     }
+
+    @Override
+    public void animateFAB() {
+        if (menuBar.getVisibility() == GONE) {
+            menuBar.setVisibility(VISIBLE);
+        }
+
+        if (isFabMenuOpen) {
+            activityMain.setBackgroundResource(org.smartregister.chw.core.R.color.transparent);
+
+            fab.startAnimation(rotateBack);
+            fab.setImageResource(org.smartregister.chw.core.R.drawable.ic_call_black_24dp);
+
+            callLayout.startAnimation(fabClose);
+            referLayout.startAnimation(fabClose);
+
+            callLayout.setClickable(false);
+            referLayout.setClickable(false);
+            isFabMenuOpen = false;
+
+        } else {
+            activityMain.setBackgroundResource(org.smartregister.chw.core.R.color.grey_tranparent_50);
+
+            fab.startAnimation(rotateForward);
+            fab.setImageResource(org.smartregister.chw.core.R.drawable.ic_input_add);
+
+            callLayout.startAnimation(fabOpen);
+            referLayout.startAnimation(fabOpen);
+
+            callLayout.setClickable(true);
+            referLayout.setClickable(true);
+
+            isFabMenuOpen = true;
+        }
+    }
 }

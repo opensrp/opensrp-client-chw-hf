@@ -1,1 +1,116 @@
-{"count":"1","encounter_type":"Pregnancy Status","entity_id":"","metadata":{"start":{"openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_data_type":"start","openmrs_entity_id":"163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"end":{"openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_data_type":"end","openmrs_entity_id":"163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"today":{"openmrs_entity_parent":"","openmrs_entity":"encounter","openmrs_entity_id":"encounter_date"},"deviceid":{"openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_data_type":"deviceid","openmrs_entity_id":"163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"subscriberid":{"openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_data_type":"subscriberid","openmrs_entity_id":"163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"simserial":{"openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_data_type":"simserial","openmrs_entity_id":"163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"phonenumber":{"openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_data_type":"phonenumber","openmrs_entity_id":"163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"encounter_location":""},"step1":{"title":"Pregnancy Status","fields":[{"key":"pregnancy_status","type":"native_radio","label":"Hali ya mimba","openmrs_entity":"concept","openmrs_entity_id":"pregnancy_status","openmrs_entity_parent":"","options":[{"key":"viable","text":"Bado ipo","openmrs_entity":"concept","openmrs_entity_id":"viable"},{"key":"spontaneous_abortion","text":"Mima imeharibika","openmrs_entity":"concept","openmrs_entity_id":"spontaneous_abortion"},{"key":"intrauterine_fetal_death","text":"Mtoto amefia tumboni","openmrs_entity":"concept","openmrs_entity_id":"intrauterine_fetal_death"}],"v_required":{"value":true,"err":"Tafadhali jibu swali hili"}},{"key":"reg_cpac","type":"toaster_notes","text":"Msajili mteja kwa ajili ya CPAC","openmrs_entity_id":"","openmrs_entity":"","openmrs_entity_parent":"","toaster_type":"warning","toaster_info_text":"Utunzaji Kamili wa Baada ya Kutoa Mimba (CPAC)","relevance":{"step1:pregnancy_status":{"type":"string","ex":"equalTo(.,\"spontaneous_abortion\")"}}},{"key":"still_birth","type":"toaster_notes","text":"Msajili mteja kwa ajili ya uzazi wa mpango","openmrs_entity_id":"","openmrs_entity":"","openmrs_entity_parent":"","toaster_type":"warning","relevance":{"step1:pregnancy_status":{"type":"string","ex":"equalTo(.,\"intrauterine_fetal_death\")"}}}]}}
+{
+  "count": "1",
+  "encounter_type": "Pregnancy Status",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "step1": {
+    "title": "Hali ya Ujauzito",
+    "fields": [
+      {
+        "key": "pregnancy_status",
+        "type": "native_radio",
+        "label": "Hali ya mimba",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "pregnancy_status",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "viable",
+            "text": "Bado ana ujauzito",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "viable"
+          },
+          {
+            "key": "spontaneous_abortion",
+            "text": "Mima imeharibika",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "spontaneous_abortion"
+          },
+          {
+            "key": "intrauterine_fetal_death",
+            "text": "Mtoto amefia tumboni",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "intrauterine_fetal_death"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali jibu swali hili"
+        }
+      },
+      {
+        "key": "reg_cpac",
+        "type": "toaster_notes",
+        "text": "Tafadhari mpatie mteja matibabu stahiki kutokana na kuharibika/ kutoka kwa mimba kulingana na mwongozo wa Wizara ya Afya",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:pregnancy_status": {
+            "type": "string",
+            "ex": "equalTo(.,\"spontaneous_abortion\")"
+          }
+        }
+      },
+      {
+        "key": "still_birth",
+        "type": "toaster_notes",
+        "text": "Mshauri Mteja kuhusiana na njia za Uzazi wa Mpango  na mpatie njia ambayo amechagua mwenyewe",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:pregnancy_status": {
+            "type": "string",
+            "ex": "equalTo(.,\"intrauterine_fetal_death\")"
+          }
+        }
+      }
+    ]
+  }
+}

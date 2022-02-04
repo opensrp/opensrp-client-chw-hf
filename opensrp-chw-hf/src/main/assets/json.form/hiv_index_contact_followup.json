@@ -162,6 +162,72 @@
           "subjects": "eligibility_for_testing:map"
         },
         {
+          "name": "reasons_conducting_testing_for_index_contact",
+          "type": "spinner",
+          "properties": {
+            "text": "Reasons as to why client was not tested"
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "reasons_conducting_testing_for_index_contact",
+            "openmrs_entity_parent": ""
+          },
+          "options": [
+            {
+              "name": "test_kits_are_out_of_stock",
+              "text": "Test kits are out of stock",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "test_kits_are_out_of_stock",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "the_client_refused_to_be_tested",
+              "text": "The client refused to be tested",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "the_client_refused_to_be_tested",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "we_are_still_counselling_the_client",
+              "text": "We are still counselling the client",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "we_are_still_counselling_the_client",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "other",
+              "text": "Other",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "other",
+                "openmrs_entity_parent": ""
+              }
+            }
+          ],
+          "required_status": "yes:Please select a reason",
+          "subjects": "eligibility_for_testing:map,has_the_contact_client_been_tested:map "
+        },
+        {
+          "name": "other_reason_for_not_testing",
+          "type": "text_input_edit_text",
+          "properties": {
+            "hint": "Specify the other reason for not testing the client"
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other_reason_for_not_testing",
+            "openmrs_entity_parent": ""
+          },
+          "required_status": "yes:Please enter the reason",
+          "subjects": "reasons_conducting_testing_for_index_contact:map,eligibility_for_testing:map,has_the_contact_client_been_tested:map"
+        },
+        {
           "name": "test_results",
           "type": "radio_group",
           "properties": {
@@ -193,7 +259,7 @@
             }
           ],
           "required_status": "yes:Please select the test results",
-          "subjects": "has_the_contact_client_been_tested:map"
+          "subjects": "has_the_contact_client_been_tested:map, eligibility_for_testing:map"
         },
         {
           "name": "place_where_test_was_conducted",
@@ -263,7 +329,7 @@
             }
           ],
           "required_status": "yes:Please select the answer",
-          "subjects": "test_results:map"
+          "subjects": "test_results:map, eligibility_for_testing:map"
         },
         {
           "name": "client_test_date",
@@ -280,7 +346,7 @@
             "openmrs_entity_parent": ""
           },
           "required_status": "true:Please specify the client's test date",
-          "subjects": "test_results:map"
+          "subjects": "test_results:map, eligibility_for_testing:map"
         },
         {
           "name": "toast_enroll_the_client_to_prep",
@@ -376,7 +442,55 @@
             }
           ],
           "required_status": "yes:Please select the answer",
-          "subjects": "test_results:map"
+          "subjects": "test_results:map, eligibility_for_testing:map"
+        },
+        {
+          "name": "reasons_for_ineligibility_for_testing",
+          "type": "spinner",
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "reasons_for_ineligibility_for_testing",
+            "openmrs_entity_parent": ""
+          },
+          "properties": {
+            "text": "Reasons for Ineligibility for testing"
+          },
+          "options": [
+            {
+              "name": "known_positive",
+              "text": "The contact is known HIV positive",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "known_positive",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "other",
+              "text": "Other",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "other",
+                "openmrs_entity_parent": ""
+              }
+            }
+          ],
+          "required_status": "yes: Please Select",
+          "subjects": "eligibility_for_testing:map"
+        },
+        {
+          "name": "other_reason_for_ineligibility",
+          "type": "text_input_edit_text",
+          "properties": {
+            "hint": "Other"
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other_reason_for_ineligibility",
+            "openmrs_entity_parent": ""
+          },
+          "required_status": "yes: Please input the other reason",
+          "subjects": "reasons_for_ineligibility_for_testing:map, eligibility_for_testing:map"
         },
         {
           "name": "ctc_number",
@@ -400,7 +514,7 @@
             }
           ],
           "required_status": "yes:Please specify client's CTC number",
-          "subjects": "enrolled_to_clinic:map"
+          "subjects": "enrolled_to_clinic:map, reasons_for_ineligibility_for_testing:map, eligibility_for_testing:map"
         },
         {
           "name": "comment",

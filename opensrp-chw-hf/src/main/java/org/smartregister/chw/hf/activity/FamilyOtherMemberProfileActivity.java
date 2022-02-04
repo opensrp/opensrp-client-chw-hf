@@ -218,26 +218,22 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
         menu.findItem(R.id.action_sick_child_follow_up).setVisible(false);
         menu.findItem(R.id.action_anc_registration).setVisible(false);
         menu.findItem(R.id.action_remove_member).setVisible(false);
+        menu.findItem(R.id.action_tb_registration).setVisible(false);
 
         if (MalariaDao.isRegisteredForMalaria(baseEntityId)) {
             menu.findItem(R.id.action_malaria_followup_visit).setTitle(R.string.hf_malaria_follow_up);
             menu.findItem(R.id.action_malaria_followup_visit).setVisible(true);
             menu.findItem(R.id.action_malaria_diagnosis).setVisible(false);
         } else {
-            menu.findItem(R.id.action_malaria_diagnosis).setVisible(true);
+            menu.findItem(R.id.action_malaria_diagnosis).setVisible(false);
         }
 
         if (isOfReproductiveAge(commonPersonObject, gender)) {
             if (gender.equalsIgnoreCase("female") && !AncDao.isANCMember(baseEntityId)) {
                 menu.findItem(R.id.action_pregnancy_confirmation).setVisible(true);
             }
-            if (FpDao.isRegisteredForFp(baseEntityId)) {
-                menu.findItem(R.id.action_fp_change).setVisible(true);
-                menu.findItem(R.id.action_fp_initiation).setVisible(false);
-            } else {
-                menu.findItem(R.id.action_fp_change).setVisible(false);
-                menu.findItem(R.id.action_fp_initiation).setVisible(true);
-            }
+            menu.findItem(R.id.action_fp_change).setVisible(false);
+            menu.findItem(R.id.action_fp_initiation).setVisible(false);
         }
 
 

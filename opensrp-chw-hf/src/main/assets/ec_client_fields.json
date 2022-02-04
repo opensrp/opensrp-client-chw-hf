@@ -826,6 +826,30 @@
           }
         },
         {
+          "column_name": "confirmation_status",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "pregnancy_confirmation_status"
+          }
+        },
+        {
+          "column_name": "confirmation_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "pregnancy_confirmation_date"
+          }
+        },
+        {
+          "column_name": "task_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "task_id"
+          }
+        },
+        {
           "column_name": "last_menstrual_period",
           "type": "Event",
           "json_mapping": {
@@ -911,6 +935,14 @@
           "json_mapping": {
             "field": "obs.fieldCode",
             "concept": "partner_hiv"
+          }
+        },
+        {
+          "column_name": "partner_hiv_test_at_32",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "partner_hiv_test_at_32"
           }
         },
         {
@@ -3397,6 +3429,14 @@
           "json_mapping": {
             "field": "obs.formSubmissionField",
             "concept": "test_results"
+          }
+        },
+        {
+          "column_name": "place_where_test_was_conducted",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "place_where_test_was_conducted"
           }
         },
         {

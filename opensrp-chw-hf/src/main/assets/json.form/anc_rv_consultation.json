@@ -87,6 +87,27 @@
         }
       },
       {
+        "key": "prompt_for_examination_findings",
+        "type": "toaster_notes",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "prompt_for_examination_findings",
+        "openmrs_entity_parent": "",
+        "text": "Provide emergency care for severe anaemia with heart/renal failure, elicit the cause and manage according to standard guidelines",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:examination_findings": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "pallor",
+                  "puffy_face"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
         "key": "gest_age",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -148,7 +169,7 @@
       {
         "key": "prompt_for_short_stature",
         "type": "toaster_notes",
-        "text": "The client has short stature",
+        "text": "Counsel the client on her risk of obstructed labour and advise her to deliver at a health care facility",
         "openmrs_entity_id": "prompt_for_short_stature",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -218,7 +239,7 @@
       {
         "key": "prompt_for_underweight",
         "type": "toaster_notes",
-        "text": "The client is underweight",
+        "text": "Manage the undernourished client using standard guidelines",
         "openmrs_entity_id": "prompt_for_underweight",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -233,7 +254,7 @@
       {
         "key": "prompt_for_overweight",
         "type": "toaster_notes",
-        "text": "The client overweight and should manage her weight",
+        "text": "Manage the overweight client using standard guidelines",
         "openmrs_entity_id": "prompt_for_overweight",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -307,7 +328,7 @@
       {
         "key": "prompt_for_fetal_distress",
         "type": "toaster_notes",
-        "text": "The Fetal is in Distress",
+        "text": "Call the doctor for emergency caesarian section",
         "openmrs_entity_id": "prompt_for_fetal_distress",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -485,7 +506,7 @@
       {
         "key": "prompt_for_management_of_hypertension",
         "type": "toaster_notes",
-        "text": "The client has Hypertension",
+        "text": "Manage the hypertension according to standard guidelines",
         "openmrs_entity_id": "prompt_for_management_of_hypertension",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -501,7 +522,7 @@
       {
         "key": "prompt_for_management_of_hypotension",
         "type": "toaster_notes",
-        "text": "The client has Hypotension",
+        "text": "Elicit the cause of hypotension and manage according to standard guidelines",
         "openmrs_entity_id": "prompt_for_management_of_hypotension",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -541,7 +562,7 @@
       {
         "key": "prompt_for_Bradycardia",
         "type": "toaster_notes",
-        "text": "The Client has Bradycardia",
+        "text": "Elicit the cause of bradycardia and manage according to standard guidelines",
         "openmrs_entity_id": "prompt_for_Bradycardia",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -556,7 +577,7 @@
       {
         "key": "prompt_for_Tachycardia",
         "type": "toaster_notes",
-        "text": "The Client has Tachycardia",
+        "text": "Elicit the cause of tachycardia and manage according to standard guidelines",
         "openmrs_entity_id": "prompt_for_Tachycardia",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -595,7 +616,7 @@
       {
         "key": "notify_client_has_fever",
         "type": "toaster_notes",
-        "text": "Client has a fever",
+        "text": "Conduct relevant laboratory tests to elicit the cause of fever and manage according to standard guidelines ",
         "openmrs_entity_id": "notify_client_has_fever",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -604,6 +625,21 @@
           "step1:temperature": {
             "type": "numeric",
             "ex": "greaterThanEqualTo(.,\"39\")"
+          }
+        }
+      },
+      {
+        "key": "notify_client_has_hypothermia",
+        "type": "toaster_notes",
+        "text": "Manage the hypothermia according to standard guidelines",
+        "openmrs_entity_id": "notify_client_has_hypothermia",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:temperature": {
+            "type": "numeric",
+            "ex": "lessThan(.,\"37\")"
           }
         }
       },
@@ -634,6 +670,21 @@
         }
       },
       {
+        "key": "prompt_for_breasts",
+        "type": "toaster_notes",
+        "text": "Palpate the breast to elicit mastitis or breast lump.\nProvide antibiotics for mastitis and manage according to standard guidelines.\nRefer the client for biopsy if she has a breast lump",
+        "openmrs_entity_id": "prompt_for_breasts",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:breast": {
+            "type": "string",
+            "ex": "equalTo(.,\"abnormal\")"
+          }
+        }
+      },
+      {
         "key": "lymph_node_under_arm",
         "type": "native_radio",
         "label": "Lymph Node (under the arm)",
@@ -660,6 +711,21 @@
         }
       },
       {
+        "key": "prompt_for_lymph_under_the_arm",
+        "type": "toaster_notes",
+        "text": "Refer the client for biopsy",
+        "openmrs_entity_id": "prompt_for_lymph_under_the_arm",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:lymph_node_under_arm": {
+            "type": "string",
+            "ex": "equalTo(.,\"abnormal\")"
+          }
+        }
+      },
+      {
         "key": "lymph_node_cervical",
         "type": "native_radio",
         "label": "Lymph Node (cervical)",
@@ -683,6 +749,21 @@
         "v_required": {
           "value": "true",
           "err": "Please answer this question"
+        }
+      },
+      {
+        "key": "prompt_for_lymph_cervical",
+        "type": "toaster_notes",
+        "text": "Refer the client for biopsy",
+        "openmrs_entity_id": "prompt_for_lymph_cervical",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:lymph_node_cervical": {
+            "type": "string",
+            "ex": "equalTo(.,\"abnormal\")"
+          }
         }
       }
     ]

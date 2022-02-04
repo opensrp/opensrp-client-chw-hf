@@ -31,11 +31,18 @@ public class HivFormActivityActivityPresenter extends BaseHivFormsActivityPresen
         super.saveForm(valuesHashMap, jsonObject);
         try {
             if (jsonObject.getString(JsonFormConstants.ENCOUNTER_TYPE).equals(Constants.EventType.HIV_INDEX_CONTACT_TESTING_FOLLOWUP)) {
-                if (valuesHashMap.containsKey(DBConstants.Key.TEST_RESULTS) && StringUtils.containsIgnoreCase(String.valueOf(valuesHashMap.get(DBConstants.Key.TEST_RESULTS).getValue()), "positive")) {
-                    //The following implementation is used to generate an HIV Registration event since Index Clients who have tested positive
+                boolean is_to_be_registered_to_hiv_registry = valuesHashMap.containsKey(DBConstants.Key.TEST_RESULTS)
+                        && StringUtils.containsIgnoreCase(String.valueOf(valuesHashMap.get(DBConstants.Key.TEST_RESULTS).getValue()), "positive")
+                        && StringUtils.containsIgnoreCase(String.valueOf(valuesHashMap.get(DBConstants.Key.ENROLLED_TO_CLINIC).getValue()), "yes");
+
+                if (is_to_be_registered_to_hiv_registry) {
+                    //The following implementation is used to generate an HIV Registration event since Index Clients who have tested positive and registered for ctc
                     // need to be added to the HIV Register so that they can also elicit their contacts for Index testing
                     generateAndSaveAnHivRegistrationEvent(valuesHashMap);
                 }
+            }
+            if(jsonObject.getString(JsonFormConstants.ENCOUNTER_TYPE).equals(org.smartregister.chw.hf.utils.Constants.Events.UPDATE_HIV_INDEX_TESTING_FOLLOWUP)){
+                generateAndSaveAnHivRegistrationEvent(valuesHashMap);
             }
         } catch (JSONException e) {
             e.printStackTrace();

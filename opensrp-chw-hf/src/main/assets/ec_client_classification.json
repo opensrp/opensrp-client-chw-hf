@@ -415,6 +415,20 @@
             "creates_case": [
               "ec_pmtct_followup"
             ]
+          },
+          {
+            "field":"eventType",
+            "field_value": "Pregnancy Unconfirmed",
+            "closes_case": [
+              "ec_anc_register"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "Update HIV Index Contact Testing Followup",
+            "creates_case": [
+              "ec_hiv_index_hf"
+            ]
           }
         ]
       }

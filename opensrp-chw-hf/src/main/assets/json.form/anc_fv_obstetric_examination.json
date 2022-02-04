@@ -115,7 +115,7 @@
       {
         "key": "prompt_for_short_stature",
         "type": "toaster_notes",
-        "text": "The client has short stature",
+        "text": "Counsel the client on her risk of obstructed labour and advise her to deliver at a health care facility",
         "openmrs_entity_id": "prompt_for_short_stature",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -161,7 +161,7 @@
       {
         "key": "prompt_for_underweight",
         "type": "toaster_notes",
-        "text": "The client is underweight",
+        "text": "Manage the undernourished client using standard guidelines",
         "openmrs_entity_id": "prompt_for_underweight",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -176,7 +176,7 @@
       {
         "key": "prompt_for_overweight",
         "type": "toaster_notes",
-        "text": "The client overweight and should manage her weight",
+        "text": "Manage the overweight client using standard guidelines",
         "openmrs_entity_id": "prompt_for_overweight",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -239,7 +239,7 @@
       {
         "key": "prompt_for_management_of_hypertension",
         "type": "toaster_notes",
-        "text": "The client has Hypertension",
+        "text": "Manage the hypertension according to standard guidelines",
         "openmrs_entity_id": "prompt_for_management_of_hypertension",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -255,7 +255,7 @@
       {
         "key": "prompt_for_management_of_hypotension",
         "type": "toaster_notes",
-        "text": "The client has Hypotension",
+        "text": "Elicit the cause of hypotension and manage according to standard guidelines",
         "openmrs_entity_id": "prompt_for_management_of_hypotension",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -295,7 +295,7 @@
       {
         "key": "prompt_for_Bradycardia",
         "type": "toaster_notes",
-        "text": "The Client has Bradycardia",
+        "text": "Elicit the cause of bradycardia and manage according to standard guidelines",
         "openmrs_entity_id": "prompt_for_Bradycardia",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -310,7 +310,7 @@
       {
         "key": "prompt_for_Tachycardia",
         "type": "toaster_notes",
-        "text": "The Client has Tachycardia",
+        "text": "Elicit the cause of tachycardia and manage according to standard guidelines",
         "openmrs_entity_id": "prompt_for_Tachycardia",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -349,7 +349,7 @@
       {
         "key": "notify_client_has_fever",
         "type": "toaster_notes",
-        "text": "Client has a fever",
+        "text": "Conduct relevant laboratory tests to elicit the cause of fever and manage according to standard guidelines ",
         "openmrs_entity_id": "notify_client_has_fever",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -362,9 +362,24 @@
         }
       },
       {
+        "key": "notify_client_has_hypothermia",
+        "type": "toaster_notes",
+        "text": "Manage the hypothermia according to standard guidelines",
+        "openmrs_entity_id": "notify_client_has_hypothermia",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:temperature": {
+            "type": "numeric",
+            "ex": "lessThan(.,\"37\")"
+          }
+        }
+      },
+      {
         "key": "abdominal_scars",
         "type": "native_radio",
-        "label": "Are there any abdominal scars",
+        "label": "Are there any lower abdominal caesarian scars?",
         "openmrs_entity_id": "abdominal_scars",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -385,6 +400,21 @@
         "v_required": {
           "value": "true",
           "err": "Please answer this question"
+        }
+      },
+      {
+        "key": "prompt_for_abdominal_scars",
+        "type": "toaster_notes",
+        "text": "Counsel the client on her risk of uterine rupture during labour and advise her to deliver at a health care facility",
+        "openmrs_entity_id": "prompt_for_abdominal_scars",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:abdominal_scars": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
         }
       },
       {
@@ -616,7 +646,7 @@
       {
         "key": "prompt_for_fetal_distress",
         "type": "toaster_notes",
-        "text": "The Fetal is in Distress",
+        "text": "Call the doctor for emergency caesarian section",
         "openmrs_entity_id": "prompt_for_fetal_distress",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -655,6 +685,21 @@
         }
       },
       {
+        "key": "prompt_for_vaginal_discharge",
+        "type": "toaster_notes",
+        "text": "Identify the cause of vaginal discharge and manage according to standard guidelines",
+        "openmrs_entity_id": "prompt_for_vaginal_discharge",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:abnormal_vaginal_discharge": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
         "key": "vaginal_sores",
         "type": "native_radio",
         "label": "Vaginal Sores",
@@ -681,6 +726,21 @@
         }
       },
       {
+        "key": "prompt_for_vaginal_sores",
+        "type": "toaster_notes",
+        "text": "Identify the cause of vaginal sores and manage according to standard guidelines",
+        "openmrs_entity_id": "prompt_for_vaginal_sores",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:vaginal_sores": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
         "key": "vaginal_swelling",
         "type": "native_radio",
         "label": "Vaginal Swelling",
@@ -704,6 +764,21 @@
         "v_required": {
           "value": "true",
           "err": "Please answer this question"
+        }
+      },
+      {
+        "key": "prompt_for_vaginal_swelling",
+        "type": "toaster_notes",
+        "text": "Identify the cause of vaginal swelling and manage according to standard guidelines",
+        "openmrs_entity_id": "prompt_for_vaginal_swelling",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:vaginal_swelling": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
         }
       }
     ]

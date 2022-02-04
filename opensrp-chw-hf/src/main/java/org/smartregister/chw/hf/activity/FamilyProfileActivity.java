@@ -1,6 +1,7 @@
 package org.smartregister.chw.hf.activity;
 
 import android.app.Activity;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,6 +23,7 @@ import org.smartregister.chw.hiv.dao.HivDao;
 import org.smartregister.chw.pnc.activity.BasePncMemberProfileActivity;
 import org.smartregister.chw.tb.dao.TbDao;
 import org.smartregister.commonregistry.CommonPersonObject;
+import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.family.adapter.ViewPagerAdapter;
 import org.smartregister.family.util.Constants;
 
@@ -142,6 +144,10 @@ public class FamilyProfileActivity extends CoreFamilyProfileActivity {
     @Override
     protected void goToTbProfile(String baseEntityId, Activity activity) {
        TbProfileActivity.startTbProfileActivity(activity, TbDao.getMember(baseEntityId));
+    }
+    @Override
+    public void goToAncProfileActivity(CommonPersonObjectClient patient, Bundle bundle) {
+        AncMemberProfileActivity.startMe(this,patient.getCaseId());
     }
 
     @Override

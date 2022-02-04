@@ -61,7 +61,7 @@
           "name": "new_or_current_hiv_client",
           "type": "radio_group",
           "properties": {
-            "text": "Je, mteja aliyesajiliwa ni mpya au aliyewepo kwenye huduma ya VVU?"
+            "text": "Je, mteja aliyesajiliwa ni mpya au alikuwepo kwenye huduma ya VVU?"
           },
           "meta_data": {
             "openmrs_entity": "concept",
@@ -80,7 +80,7 @@
             },
             {
               "name": "existing",
-              "text": "Mteja aliyopo kwenye huduma ya VVU",
+              "text": "Mteja aliyepo kwenye huduma ya VVU",
               "meta_data": {
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "existing",
@@ -94,7 +94,7 @@
           "name": "place_where_test_was_conducted",
           "type": "radio_group",
           "properties": {
-            "text": "Alikopimia mteja"
+            "text": "Mahali mteja alipopimia VVU"
           },
           "meta_data": {
             "openmrs_entity": "concept",
@@ -104,7 +104,7 @@
           "options": [
             {
               "name": "tb_clinic_outpatient",
-              "text": "Kliniki ya kifua kikuu(wagonjwa wa nje)",
+              "text": "Kliniki ya kifua kikuu (wagonjwa wa nje)",
               "meta_data": {
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "tb_clinic_outpatient",
@@ -113,7 +113,7 @@
             },
             {
               "name": "sexual_transmitted_diseases_clinic",
-              "text": "Kliniki ya wagonjwa ya ngono",
+              "text": "Kliniki ya magonjwa ya ngono",
               "meta_data": {
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "sexual_transmitted_diseases_clinic",
@@ -122,7 +122,7 @@
             },
             {
               "name": "outpatient_department",
-              "text": "Idara ya magonjwa ya nje",
+              "text": "Idara ya wagonjwa wa nje",
               "meta_data": {
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "outpatient_department",
@@ -131,7 +131,7 @@
             },
             {
               "name": "inpatient_department",
-              "text": "Wagonjwa waliolazwa",
+              "text": "Idara ya wagonjwa waliolazwa",
               "meta_data": {
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "inpatient_department",
@@ -175,17 +175,17 @@
               }
             },
             {
-              "name": "vct",
-              "text": "Kituo cha huduma na tiba ya UKIMWI",
+              "name": "ctc",
+              "text": "Kituo cha huduma ya tiba na matunzo ya UKIMWI",
               "meta_data": {
                 "openmrs_entity": "concept",
-                "openmrs_entity_id": "vct",
+                "openmrs_entity_id": "ctc",
                 "openmrs_entity_parent": ""
               }
             },
             {
               "name": "men_circumcision",
-              "text": "Tohara kwa wanaume",
+              "text": "Wakati wa tohara ya wanaume",
               "meta_data": {
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "men_circumcision",
@@ -194,7 +194,7 @@
             },
             {
               "name": "outreach_services",
-              "text": "Huduma ya mkoba(outreach services)",
+              "text": "Huduma ya mkoba (outreach services)",
               "meta_data": {
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "outreach_services",
@@ -212,7 +212,7 @@
             },
             {
               "name": "other",
-              "text": "Kwingineko",
+              "text": "Sehemu nyingine",
               "meta_data": {
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "other",
@@ -221,6 +221,21 @@
             }
           ],
           "required_status": "yes:Tafadhali chagua jibu sahihi"
+        },
+        {
+          "name": "place_where_test_was_conducted_other",
+          "type": "text_input_edit_text",
+          "properties": {
+            "hint": "Nyingine",
+            "type": "name"
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "place_where_test_was_conducted_other",
+            "openmrs_entity_parent": ""
+          },
+          "required_status": "true:Tafadhali jaza sehemu nyingine",
+          "subjects": "place_where_test_was_conducted:map"
         },
         {
           "name": "ctc_number",

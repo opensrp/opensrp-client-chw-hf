@@ -113,7 +113,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "",
         "type": "toaster_notes",
-        "text": "Please Vaccinate the client TT1.",
+        "text": "Provide TT1 vaccination dose and follow-up immunization doses to the client according to immunization schedule",
         "text_color": "#CF0800",
         "toaster_type": "problem",
         "relevance": {

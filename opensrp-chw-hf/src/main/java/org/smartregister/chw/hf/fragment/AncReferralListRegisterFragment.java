@@ -7,6 +7,7 @@ import android.widget.TextView;
 import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
 
+import org.apache.commons.lang3.StringUtils;
 import org.smartregister.chw.core.fragment.CoreAncRegisterFragment;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.CoreReferralUtils;
@@ -24,6 +25,7 @@ import org.smartregister.configurableviews.model.View;
 import org.smartregister.cursoradapter.RecyclerViewPaginatedAdapter;
 import org.smartregister.cursoradapter.SmartRegisterQueryBuilder;
 import org.smartregister.domain.Task;
+import org.smartregister.family.util.DBConstants;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -130,5 +132,37 @@ public class AncReferralListRegisterFragment extends CoreAncRegisterFragment {
             };
         }
         return super.onCreateLoader(id, args);
+    }
+
+    @Override
+    public void countExecute() {
+        Cursor cursor = null;
+        try {
+
+            String query = "select count(*) from " + presenter().getMainTable() +
+                    " INNER JOIN " + CoreConstants.TABLE_NAME.TASK + " ON  " + presenter().getMainTable() + "." + org.smartregister.family.util.DBConstants.KEY.BASE_ENTITY_ID + " = " + CoreConstants.TABLE_NAME.TASK + "." + CoreConstants.DB_CONSTANTS.FOR + " COLLATE NOCASE " +
+                    " INNER JOIN " + CoreConstants.TABLE_NAME.FAMILY + " ON  " + CoreConstants.TABLE_NAME.FAMILY_MEMBER + "." + org.smartregister.family.util.DBConstants.KEY.RELATIONAL_ID + " = " + CoreConstants.TABLE_NAME.FAMILY + "." + org.smartregister.family.util.DBConstants.KEY.BASE_ENTITY_ID + " COLLATE NOCASE "+
+                    " LEFT JOIN " + CoreConstants.TABLE_NAME.ANC_MEMBER + " ON " + CoreConstants.TABLE_NAME.TASK + "." + CoreConstants.DB_CONSTANTS.FOR + " = " + CoreConstants.TABLE_NAME.ANC_MEMBER + "." + DBConstants.KEY.BASE_ENTITY_ID + " COLLATE NOCASE "+
+                    " where " + presenter().getMainCondition();
+
+            if (StringUtils.isNotBlank(filters))
+                query = query + getFilterString();
+
+            cursor = commonRepository().rawCustomQueryForAdapter(query);
+            cursor.moveToFirst();
+            clientAdapter.setTotalcount(cursor.getInt(0));
+            Timber.v("total count here %d", clientAdapter.getTotalcount());
+
+            clientAdapter.setCurrentlimit(20);
+            clientAdapter.setCurrentoffset(0);
+
+
+        } catch (Exception e) {
+            Timber.e(e);
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
     }
 }

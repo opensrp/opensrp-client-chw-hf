@@ -34,7 +34,13 @@ public class HfAncReferralListRegisterFragmentPresenter extends AncRegisterFragm
 
     @Override
     public String getMainCondition() {
-        return " ec_family_member.base_entity_id NOT  IN (SELECT base_entity_id FROM ec_anc_register ) AND focus='Pregnancy Confirmation'";
+        return " (" +
+                " ec_anc_register.task_id IS NOT NULL AND "+
+                " ec_anc_register.task_id  NOT LIKE '%' || task._id || '%' " +
+                " AND ec_anc_register.confirmation_status <> 'Confirmed' " +
+                " AND focus='Pregnancy Confirmation' " +
+                ") "
+                + " OR (focus='Pregnancy Confirmation' AND ec_anc_register.base_entity_id IS NULL) ";
     }
 
 

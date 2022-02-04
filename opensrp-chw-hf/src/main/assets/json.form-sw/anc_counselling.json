@@ -47,7 +47,7 @@
     "encounter_location": ""
   },
   "step1": {
-    "title": "Counselling",
+    "title": "Ushauri",
     "fields": [
       {
         "key": "given_counselling",
@@ -113,7 +113,7 @@
           },
           {
             "key": "chk_healthy_eating",
-            "text": "Kula lishe yenye afya",
+            "text": "Lishe bora",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_healthy_eating"

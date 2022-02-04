@@ -48,7 +48,7 @@
   },
   "global": {},
   "step1": {
-    "title": "ANC Lab Tests",
+    "title": "ANC Vipimo Vya Maabara",
     "fields": [
       {
         "key": "hb_level_test",
@@ -111,7 +111,7 @@
       {
         "key": "prompt_for_severe_anaemia_treatment",
         "type": "toaster_notes",
-        "text": "Mgonjwa anapaswa kupata matibabu ya upungufu wa damu",
+        "text": "Dhibiti hali hii ya upungufu mkubwa wa damu kulingana na muongozo wa Wizara ya Afya",
         "openmrs_entity_id": "prompt_for_severe_anaemia_treatment",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -126,7 +126,7 @@
       {
         "key": "prompt_for_moderate_anaemia_management",
         "type": "toaster_notes",
-        "text": "Mteja anapaswa kupokea udhibiti wa wastani wa upungufu wa damu",
+        "text": "Dhibiti hali hii ya ukosefu wa damu kulingana na muongozo wa Wizara ya Afya",
         "openmrs_entity_id": "prompt_for_moderate_anaemia_management",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -293,7 +293,7 @@
       {
         "key": "prompt_for_gestational_diabetes_mellitus",
         "type": "toaster_notes",
-        "text": "Mteja ana kisukari cha ujauzito",
+        "text": "Dhibiti hali hii ya Gestational diabetes mellitus kulingana na muongozo wa Wizara ya Afya",
         "openmrs_entity_id": "prompt_for_gestational_diabetes_mellitus",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -309,7 +309,7 @@
       {
         "key": "prompt_for_hypoglycaemia",
         "type": "toaster_notes",
-        "text": "Mteja ana sukari pungufu kwenye damu (hypoglcaemia)",
+        "text": "Dhibiti hali hii ya hypoglycaemia kulingana na muongozo wa Wizara ya Afya",
         "openmrs_entity_id": "prompt_for_hypoglycaemia",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -416,6 +416,21 @@
         }
       },
       {
+        "key": "prompt_for_glucose_in_urine",
+        "type": "toaster_notes",
+        "text": "Angalia kiasi cha sukari katika damu ili kumuepusha Mteja na Ugonjwa wa kisukari wakati wa Ujauzito",
+        "openmrs_entity_id": "prompt_for_glucose_in_urine",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:glucose_in_urine": {
+            "type": "string",
+            "ex": "equalTo(., \"positive\")"
+          }
+        }
+      },
+      {
         "key": "reason_for_not_conducting_glucose_in_urine_test",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -506,6 +521,21 @@
         "v_required": {
           "value": true,
           "err": "Tafadhali jibu swali hili"
+        }
+      },
+      {
+        "key": "prompt_for_protein_in_urine",
+        "type": "toaster_notes",
+        "text": "Tafadhali fuatilia shinikizo la damu kwa Mteja ili uweze kuepusha na hatari ya Kifafa cha mimba, bainisha dalili za UTI dhibiti viashiria vya Proteinuria kulingana na mwongozo wa Wizara ya Afya",
+        "openmrs_entity_id": "prompt_for_protein_in_urine",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:protein_in_urine": {
+            "type": "string",
+            "ex": "equalTo(., \"positive\")"
+          }
         }
       },
       {
@@ -778,7 +808,7 @@
       {
         "key": "register_pmtct",
         "type": "toaster_notes",
-        "text": "Msajili na PMTCT",
+        "text": "Msajili Mteja kwenye PMTCT kwa ajili ya matunzo na ufuatiliaji",
         "openmrs_entity_id": "register_pmtct",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -793,7 +823,7 @@
       {
         "key": "prescribe_arv",
         "type": "toaster_notes",
-        "text": "Muagizie mteja dawa za ARV",
+        "text": "Mpatie Mteja dawa za kufubaza virusi vya Ukimwi (ARV) kulingana na muongozo wa Wizara ya Afya",
         "openmrs_entity_id": "prescribe_arv",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -957,10 +987,10 @@
         }
       },
       {
-        "key": "prescribe_arv_hepb",
+        "key": "prescribe_arv_hepb_at_above_twenty_eight",
         "type": "toaster_notes",
-        "text": "Muagizie mteja dawa za ARV",
-        "openmrs_entity_id": "prescribe_arv_hepb",
+        "text": "Mpatie Mteja  dawa za kufubaza virusi vya Ukimwi (ARV) kulingana na muongozo wa Wizara ya Afya",
+        "openmrs_entity_id": "prescribe_arv_hepb_at_above_twenty_eight",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "toaster_type": "problem",
@@ -968,6 +998,22 @@
           "step1:hepatitis": {
             "type": "string",
             "ex": "equalTo(.,\"positive\")"
+          }
+        }
+      },
+      {
+        "key": "counsel_arv_hepb_below_twenty_eight",
+        "type": "toaster_notes",
+        "text": "To ushauri kwa Mama mwenye ujauzito wa wiki 28 kuhusiana na matumizi  ya dawa za kufubaza virusi vya Ukimwi (ARV)",
+        "openmrs_entity_id": "counsel_arv_hepb_below_twenty_eight",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_lab_test_relevance.yml"
+            }
           }
         }
       },

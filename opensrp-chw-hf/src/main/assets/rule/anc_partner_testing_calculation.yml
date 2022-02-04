@@ -1,0 +1,7 @@
+---
+name: step1_partner_hiv_test_at_32
+description: Check to mark if test was conducted at week 32 if client was marked negative
+priority: 1
+condition: "true"
+actions:
+  - "calculation = ((global_gestational_age >= 32  && global_partner_hiv_status.contains('negative')) && !global_partner_hiv_test_at_32_done)? 'true' : 'false' "

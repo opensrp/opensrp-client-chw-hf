@@ -54,7 +54,7 @@
     }
   },
   "step1": {
-    "title": "Family details",
+    "title": "Taarifa za familia",
     "next": "step2",
     "fields": [
       {
@@ -147,7 +147,7 @@
         "openmrs_entity_id": "landmark",
         "type": "edit_text",
         "edit_type": "name",
-        "hint": "maelezo ya eneo la makazim",
+        "hint": "Maelezo ya eneo la makazi",
         "v_required": {
           "value": true,
           "err": "Tafadhari ingiza jina eneo la makazi"
@@ -167,16 +167,16 @@
         "openmrs_entity": "person_attribute",
         "openmrs_entity_id": "sync_location_id",
         "type": "spinner",
-        "hint": "Select CHW Location",
+        "hint": "Chagua eneo la WAJA",
         "v_required": {
           "value": "true",
-          "err": "Please select CHW Location"
+          "err": "Tafadhali chagua eneo la WAJA"
         }
       }
     ]
   },
   "step2": {
-    "title": "Family head",
+    "title": "Mkuu wa kaya",
     "fields": [
       {
         "key": "unique_id",
@@ -386,15 +386,15 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "marital_status",
         "type": "spinner",
-        "hint": "Client's Marital Status?",
+        "hint": "Hali ya Ndoa ya Mteja?",
         "values": [
-          "Single",
-          "Married",
-          "Divorced",
-          "Monogamy",
-          "Polygamy",
-          "Widowed",
-          "Cohabitation"
+          "Hajaoa/Hajaolewa",
+          "Ameolewa/Ameoa",
+          "Ameachika",
+          "Ndoa ya mke au mke moja",
+          "Ndoa za wake wengi",
+          "Mjane/Mgane",
+          "Kuishi pamoja bila ndoa"
         ],
         "keys": [
           "Single",
@@ -416,7 +416,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Please select one"
+          "err": "Tafadhali chagua moja"
         },
         "relevance": {
           "rules-engine": {
@@ -478,7 +478,7 @@
           },
           {
             "key": "chk_passport",
-            "text": "Pasi ya kusafiria",
+            "text": "Hati ya kusafiria",
             "value": false,
             "openmrs_entity": "person_attribute",
             "openmrs_entity_id": "chk_passport"
@@ -616,15 +616,15 @@
         "mask": "TAE-######",
         "mask_hint": "123456",
         "allowed_chars": "0123456789",
-        "hint": "Namba ya psi ya kusafiria",
+        "hint": "Namba ya hati ya kusafiria",
         "v_regex": {
           "value": "^TAE-\\d{6}$",
-          "err": "Namba ya pasi ya kusafiria inapaswa kuandikwa katika utaratibu huu:(TAE-XXXXXX)"
+          "err": "Namba ya hati ya kusafiria inapaswa kuandikwa katika utaratibu huu:(TAE-XXXXXX)"
         },
         "v_max_length": {
           "value": "10",
           "is_fixed_size": "true",
-          "err": "Please enter a valid passport number"
+          "err": "Tafadhali weka namba sahihi"
         },
         "v_required": {
           "value": true,
@@ -658,10 +658,10 @@
           "AAR Healthcare",
           "Strategies Insurance",
           "Milvik Tanzania Ltd (BIMA Mkononi)",
-          "Britam Insurance Tanzania",
-          "Jubilee Insurance",
-          "Reliance Insurance",
-          "Reliance Insurance",
+          "Bima ya afya ya Britam",
+          "Bima ya afya ya Jubilee ",
+          "Bima ya afya ya Reliance",
+          "Bima ya afya ya Reliance",
           "Nyingine",
           "Hakuna"
         ],
@@ -903,7 +903,7 @@
         },
         "v_regex": {
           "value": "(0[6-7][1-9][1-9][0-9]{6})|\\s*",
-          "err": "Nambari lazima iwe na tarakimu 10 na lazima ianze na 06 au 07."
+          "err": "Namba lazima iwe na tarakimu 10 na lazima ianze na 06 au 07."
         }
       },
       {
@@ -928,14 +928,14 @@
           },
           {
             "key": "chk_cs",
-            "text": "Mtumishi wa Umma",
+            "text": "Mtumishi wa Serikali",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_cs"
           },
           {
             "key": "chk_nurse",
-            "text": "Nesi",
+            "text": "Muuguzi",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_nurse"
@@ -949,56 +949,56 @@
           },
           {
             "key": "chk_th",
-            "text": "Mganga wa Kienyeji",
+            "text": "Mganga wa tiba asili",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_th"
           },
           {
             "key": "chk_chw",
-            "text": "Mtoa huduma ngazi ya jamii",
+            "text": "Muhudumu wa afya ngazi ya jamii (WAJA)",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_chw"
           },
           {
             "key": "chk_tba",
-            "text": "Mkunga",
+            "text": "Mkunga wa Jadi",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_tba"
           },
           {
             "key": "chk_chmis",
-            "text": "Community HMIS (cHMIS)",
+            "text": "Wakusanyaji takrimu za afya ngazi ya jamii",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_chmis"
           },
           {
             "key": "chk_cbd",
-            "text": "Community Based Distributor",
+            "text": "Msambazaji wa dawa na vifaa vya uzazi wa mpango ngazi ya Jamii",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_cbd"
           },
           {
             "key": "chk_hbc",
-            "text": "Home Based Care (HBC)",
+            "text": "Watoa huduma kwa wagonjwa majumbani",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_hbc"
           },
           {
             "key": "chk_cimmci",
-            "text": "Community IMCI",
+            "text": "Watoa huduma za udhibiti wa magonjwa ya watoto ngazi ya jamii",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_cimmci"
           },
           {
             "key": "chk_other",
-            "text": "Nyingine",
+            "text": "Nyinginezo",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_other"

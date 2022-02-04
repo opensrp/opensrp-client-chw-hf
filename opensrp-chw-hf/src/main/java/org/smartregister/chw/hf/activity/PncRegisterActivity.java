@@ -6,14 +6,18 @@ import android.content.Intent;
 import org.apache.commons.lang3.EnumUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.smartregister.chw.anc.model.BaseAncRegisterModel;
+import org.smartregister.chw.anc.presenter.BaseAncRegisterPresenter;
 import org.smartregister.chw.anc.util.Constants;
 import org.smartregister.chw.anc.util.JsonFormUtils;
 import org.smartregister.chw.core.activity.CoreFamilyRegisterActivity;
 import org.smartregister.chw.core.activity.CorePncRegisterActivity;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.fragment.PncRegisterFragment;
+import org.smartregister.chw.hf.interactor.AncRegisterInteractor;
 import org.smartregister.job.SyncServiceJob;
 import org.smartregister.view.fragment.BaseRegisterFragment;
+
 import timber.log.Timber;
 
 public class PncRegisterActivity extends CorePncRegisterActivity {
@@ -59,13 +63,20 @@ public class PncRegisterActivity extends CorePncRegisterActivity {
             super.onRegistrationSaved(encounterType, isEdit, hasChildren);
         }
     }
+
     @Override
     protected BaseRegisterFragment getRegisterFragment() {
         return new PncRegisterFragment();
     }
 
     @Override
-    protected void onActivityResult (int requestCode, int resultCode, Intent data) {
+    protected void initializePresenter() {
+        this.presenter = new BaseAncRegisterPresenter(this, new BaseAncRegisterModel(), new AncRegisterInteractor());
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResultExtended(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK) {
             try {

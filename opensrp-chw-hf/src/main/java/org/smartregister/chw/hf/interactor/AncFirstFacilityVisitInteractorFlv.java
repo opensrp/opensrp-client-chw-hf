@@ -46,11 +46,12 @@ import java.util.Set;
 import timber.log.Timber;
 
 public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisitInteractor.Flavor {
+
     @Override
     public LinkedHashMap<String, BaseAncHomeVisitAction> calculateActions(BaseAncHomeVisitContract.View view, MemberObject memberObject, BaseAncHomeVisitContract.InteractorCallBack callBack) throws BaseAncHomeVisitAction.ValidationException {
         LinkedHashMap<String, BaseAncHomeVisitAction> actionList = new LinkedHashMap<>();
 
-        Context context = view.getContext();
+        Context  context = view.getContext();
 
         Map<String, List<VisitDetail>> details = null;
         // get the preloaded data
@@ -107,11 +108,33 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
 
         JSONObject medicalSurgicalHistoryForm = null;
         try {
-            medicalSurgicalHistoryForm = firstPregnancyAboveThirtyFive(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncFirstVisit.getMedicalAndSurgicalHistory()), memberObject);
+            medicalSurgicalHistoryForm = firstPregnancyAboveThirtyFive(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncFirstVisit.getMedicalAndSurgicalHistory()), memberObject, context);
             if (details != null && !details.isEmpty()) {
                 JsonFormUtils.populateForm(medicalSurgicalHistoryForm, details);
             }
         } catch (JSONException e) {
+            Timber.e(e);
+        }
+
+        JSONObject baselineInvestigationForm = null;
+        try{
+            baselineInvestigationForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncFirstVisit.getBaselineInvestigation());
+            baselineInvestigationForm.getJSONObject("global").put("gestational_age", memberObject.getGestationAge());
+            if(details != null && !details.isEmpty()){
+                JsonFormUtils.populateForm(baselineInvestigationForm, details);
+            }
+        }catch (JSONException e){
+            Timber.e(e);
+        }
+
+        JSONObject partnerTestingForm = null;
+        try{
+            partnerTestingForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.PARTNER_TESTING);
+            partnerTestingForm.getJSONObject("global").put("gestational_age", memberObject.getGestationAge());
+            if(details != null && !details.isEmpty()){
+                JsonFormUtils.populateForm(partnerTestingForm, details);
+            }
+        }catch (JSONException e){
             Timber.e(e);
         }
 
@@ -137,6 +160,7 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
         BaseAncHomeVisitAction baselineInvestigationAction = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_first_visit_baseline_investigation))
                 .withOptional(true)
                 .withDetails(details)
+                .withJsonPayload(baselineInvestigationForm.toString())
                 .withFormName(Constants.JsonForm.AncFirstVisit.getBaselineInvestigation())
                 .withHelper(new AncBaselineInvestigationAction(memberObject))
                 .build();
@@ -170,6 +194,7 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
                 .withOptional(true)
                 .withDetails(details)
                 .withHelper(new AncPartnerTestingAction(memberObject))
+                .withJsonPayload(partnerTestingForm.toString())
                 .withFormName(Constants.JsonForm.AncRecurringVisit.getPartnerTesting())
                 .build();
         actionList.put(context.getString(R.string.partner_testing_action_title), partnerTesting);
@@ -473,7 +498,7 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
         }
     }
 
-    private static JSONObject firstPregnancyAboveThirtyFive(JSONObject form, MemberObject memberObject) throws JSONException{
+    private static JSONObject firstPregnancyAboveThirtyFive(JSONObject form, MemberObject memberObject, Context context) throws JSONException{
 
             JSONArray fields = form.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
             JSONObject medicalSurgicalHistory = null;
@@ -488,14 +513,14 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
 
             JSONObject pregnantAtAboveThirtyFive = new JSONObject();
             pregnantAtAboveThirtyFive.put("key", "first_pregnancy_at_or_above_thirty_five");
-            pregnantAtAboveThirtyFive.put("text", "First pregnancy");
+            pregnantAtAboveThirtyFive.put("text", context.getString(R.string.first_pregnancy_option));
             pregnantAtAboveThirtyFive.put("value", false);
             pregnantAtAboveThirtyFive.put("openmrs_entity", "concept");
             pregnantAtAboveThirtyFive.put("openmrs_entity_id", "first_pregnancy_at_or_above_thirty_five");
 
             JSONObject none = new JSONObject();
             none.put("key", "none");
-            none.put("text", "None");
+            none.put("text", context.getString(R.string.none_option_for_medical_surgical_history));
             none.put("value", false);
             none.put("openmrs_entity", "concept");
             none.put("openmrs_entity_id", "none");

@@ -17,7 +17,9 @@ public class HivIndexContactsContactsRegisterFragmentPresenter extends BaseHivIn
     @NotNull
     public String getMainCondition() {
         return " " +
-                Tables.HIV_INDEX_HF + "." + DBConstants.Key.TEST_RESULTS + " IS NULL AND " +
+                Tables.HIV_INDEX_HF + "." + DBConstants.Key.CTC_NUMBER + " IS NULL AND (" +
+                Tables.HIV_INDEX_HF + "." + DBConstants.Key.TEST_RESULTS + " IS NULL OR " +
+                Tables.HIV_INDEX_HF + "." + DBConstants.Key.TEST_RESULTS + " <> 'Negative')  AND " +
                 Tables.HIV_INDEX_HF + "." + DBConstants.Key.HOW_TO_NOTIFY_CONTACT_CLIENT + " <> 'na'";
 
     }

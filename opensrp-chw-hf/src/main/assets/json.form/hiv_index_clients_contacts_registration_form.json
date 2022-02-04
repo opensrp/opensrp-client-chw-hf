@@ -198,7 +198,7 @@
       {
         "key": "surname",
         "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
+        "openmrs_entity": "person",
         "openmrs_entity_id": "last_name",
         "type": "edit_text",
         "hint": "Surname",
@@ -399,8 +399,8 @@
           "err": "Number must be a total of 10 digits in length"
         },
         "v_regex": {
-          "value": "(0[0-9]{9})|\\s*",
-          "err": "Number must be 10 digits and must start with 0."
+          "value": "(0[6-7][1-9][1-9][0-9]{6})|\\s*",
+          "err": "Number must be 10 digits and must start with 06 or 07."
         },
         "v_required": {
           "value": false,
@@ -419,8 +419,8 @@
           "err": "Number must be a total of 10 digits in length"
         },
         "v_regex": {
-          "value": "(0[0-9]{9})|\\s*",
-          "err": "Number must be 10 digits and must start with 0."
+          "value": "(0[6-7][1-9][1-9][0-9]{6})|\\s*",
+          "err": "Number must be 10 digits and must start with 06 or 07."
         },
         "v_required": {
           "value": false,
@@ -660,7 +660,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "sexual_assault",
         "type": "native_radio",
-        "label": "Has contact client ever use force or persuade you to have sex against your will?",
+        "label": "Has the contact client ever used force or persuade you to have sex against your will?",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [

@@ -3,11 +3,8 @@ package org.smartregister.chw.hf.fragment;
 import android.database.Cursor;
 import android.os.Bundle;
 
-import com.vijay.jsonwizard.utils.FormUtils;
-
 import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.Nullable;
-import org.json.JSONException;
 import org.smartregister.chw.anc.util.DBConstants;
 import org.smartregister.chw.core.fragment.CoreHivRegisterFragment;
 import org.smartregister.chw.core.provider.CoreHivProvider;
@@ -15,13 +12,11 @@ import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.QueryBuilder;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.activity.HivProfileActivity;
-import org.smartregister.chw.hf.activity.HivRegisterActivity;
 import org.smartregister.chw.hf.activity.HtsRegisterActivity;
-import org.smartregister.chw.hf.model.HivRegisterFragmentModel;
+import org.smartregister.chw.hf.dao.HfHtsDao;
 import org.smartregister.chw.hf.model.HtsRegisterFragmentModel;
 import org.smartregister.chw.hf.presenter.HtsRegisterFragmentPresenter;
 import org.smartregister.chw.hf.provider.HfHivRegisterProvider;
-import org.smartregister.chw.hiv.dao.HivDao;
 import org.smartregister.chw.hiv.domain.HivMemberObject;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.commonregistry.CommonRepository;
@@ -100,7 +95,7 @@ public class HtsRegisterFragment extends CoreHivRegisterFragment {
             customFilter.append(MessageFormat.format(" and ( {0}.{1} like ''%{2}%'' ", CoreConstants.TABLE_NAME.FAMILY_MEMBER, DBConstants.KEY.FIRST_NAME, filters));
             customFilter.append(MessageFormat.format(" or {0}.{1} like ''%{2}%'' ", CoreConstants.TABLE_NAME.FAMILY_MEMBER, DBConstants.KEY.LAST_NAME, filters));
             customFilter.append(MessageFormat.format(" or {0}.{1} like ''%{2}%'' ", CoreConstants.TABLE_NAME.FAMILY_MEMBER, DBConstants.KEY.MIDDLE_NAME, filters));
-            customFilter.append(MessageFormat.format(" or {0}.{1} like ''%{2}%'' ) ", CoreConstants.TABLE_NAME.FAMILY_MEMBER,DBConstants.KEY.UNIQUE_ID,filters));
+            customFilter.append(MessageFormat.format(" or {0}.{1} like ''%{2}%'' ) ", CoreConstants.TABLE_NAME.FAMILY_MEMBER, DBConstants.KEY.UNIQUE_ID, filters));
 
         }
         if (dueFilterActive) {
@@ -130,7 +125,7 @@ public class HtsRegisterFragment extends CoreHivRegisterFragment {
     @Override
     protected void openProfile(CommonPersonObjectClient client) {
         if (getActivity() != null)
-            HivProfileActivity.startHivProfileActivity(getActivity(), Objects.requireNonNull(HivDao.getMember(client.getCaseId())));
+            HivProfileActivity.startHivProfileActivity(getActivity(), Objects.requireNonNull(HfHtsDao.getMember(client.getCaseId())));
     }
 
 

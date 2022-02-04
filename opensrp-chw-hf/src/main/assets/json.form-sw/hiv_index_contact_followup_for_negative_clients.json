@@ -71,7 +71,7 @@
           "options": [
             {
               "name": "tb_clinic_outpatient",
-              "text": "Kiliniki ya Kifuwa Kikuu (Wateja wa Nje)",
+              "text": "Kiliniki ya Kifua Kikuu (Wateja wa Nje)",
               "meta_data": {
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "tb_clinic_outpatient",
