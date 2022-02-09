@@ -74,5 +74,6 @@
     <string name="record_ctc_number">Record CTC Number</string>
     <string name="referral_sent">Referral Sent</string>
     <string name="pending_ctc_registration">Pending CTC Registration</string>
+    <string name="menu_independent">Independent</string>
 
 </resources>
