@@ -36,7 +36,7 @@ android {
         buildConfigField "String", 'opensrp_url', '"https://boresha-afya.smartregister.org/opensrp/"'
         buildConfigField "String", 'opensrp_url_debug', '"http://50.116.15.4:8082/opensrp/"'
 //        buildConfigField "String", 'opensrp_url_debug', '"https://boresha-afya-stage.smartregister.org/opensrp/"'
-       // buildConfigField "String", 'opensrp_url_debug', '"https://ba-unified-stage.smartregister.org/opensrp/"'
+        // buildConfigField "String", 'opensrp_url_debug', '"https://ba-unified-stage.smartregister.org/opensrp/"'
         buildConfigField "boolean", 'SUPPORT_QR', 'true'
         buildConfigField "int", "DATABASE_VERSION", '12'
         buildConfigField "int", "DATA_SYNC_DURATION_MINUTES", '15'
@@ -141,6 +141,61 @@ android {
         }
     }
 
+    flavorDimensions 'baseDimension'
+    productFlavors {
+        nacp {
+            applicationId "org.smartregister.chw.nacp.hf"
+            minSdkVersion 18
+            targetSdkVersion 28
+            versionCode 11
+            versionName "1.2.13"
+            testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+            multiDexEnabled true
+            buildConfigField "String", 'opensrp_url', '"https://boresha-afya.smartregister.org/opensrp/"'
+            buildConfigField "String", 'opensrp_url_debug', '"http://50.116.15.4:8082/opensrp/"'
+            buildConfigField "boolean", 'SUPPORT_QR', 'true'
+            buildConfigField "int", "DATABASE_VERSION", '12'
+            buildConfigField "int", "DATA_SYNC_DURATION_MINUTES", '15'
+            buildConfigField "long", "MAX_SERVER_TIME_DIFFERENCE", "1800000l"
+            buildConfigField "boolean", "TIME_CHECK", "false"
+            buildConfigField "String", "SYNC_TYPE", '"teamId"'
+            buildConfigField "int", "MAX_SYNC_RETRIES", '3'
+            buildConfigField "long", "BUILD_TIMESTAMP", System.currentTimeMillis() + "L"
+            buildConfigField "boolean", "IS_SYNC_SETTINGS", "false"
+            javaCompileOptions {
+                annotationProcessorOptions {
+                    includeCompileClasspath = true
+                }
+            }
+        }
+        ba {
+            applicationId "org.smartregister.chw.hf"
+            minSdkVersion 18
+            targetSdkVersion 28
+            versionCode 11
+            versionName "1.2.13"
+            testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+            multiDexEnabled true
+            buildConfigField "String", 'opensrp_url', '"https://boresha-afya.smartregister.org/opensrp/"'
+            buildConfigField "String", 'opensrp_url_debug', '"https://boresha-afya-stage.smartregister.org/opensrp/"'
+            // buildConfigField "String", 'opensrp_url_debug', '"https://ba-unified-stage.smartregister.org/opensrp/"'
+            buildConfigField "boolean", 'SUPPORT_QR', 'true'
+            buildConfigField "int", "DATABASE_VERSION", '12'
+            buildConfigField "int", "DATA_SYNC_DURATION_MINUTES", '15'
+            buildConfigField "long", "MAX_SERVER_TIME_DIFFERENCE", "1800000l"
+            buildConfigField "boolean", "TIME_CHECK", "false"
+            buildConfigField "String", "SYNC_TYPE", '"teamId"'
+            buildConfigField "int", "MAX_SYNC_RETRIES", '3'
+            buildConfigField "long", "BUILD_TIMESTAMP", System.currentTimeMillis() + "L"
+            buildConfigField "boolean", "IS_SYNC_SETTINGS", "false"
+            javaCompileOptions {
+                annotationProcessorOptions {
+                    includeCompileClasspath = true
+                }
+            }
+        }
+    }
+
     lintOptions {
         checkReleaseBuilds false
         abortOnError false
@@ -150,6 +205,15 @@ android {
         enabled = true
     }
 
+}
+
+def flavors = android.productFlavors.collect { flavor -> flavor.name }
+if (!flavors) flavors.add('')
+
+def testDependencies = []
+flavors.each { productFlavorName ->
+    testDependencies.add("test${productFlavorName.capitalize()}DebugUnitTest")
+    testDependencies.add("create${productFlavorName.capitalize()}DebugCoverageReport")
 }
 
 dependencies {
@@ -194,7 +258,9 @@ tasks.withType(Test) {
     jacoco.includeNoLocationClasses = true
 }
 
-task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'createDebugCoverageReport']) {
+task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'createDebugCoverageReport',
+                                                      'testBaDebugUnitTest', 'createBaDebugCoverageReport',
+                                                      'testNacpDebugUnitTest', 'createNacpDebugCoverageReport']) {
 
     reports {
         xml.enabled = true
