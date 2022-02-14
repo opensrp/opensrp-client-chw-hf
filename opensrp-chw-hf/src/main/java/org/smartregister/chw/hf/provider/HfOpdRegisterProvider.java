@@ -73,6 +73,8 @@ public class HfOpdRegisterProvider extends OpdRegisterProvider {
             return context.getString(R.string.menu_family_planning);
         } else if (registerType.equalsIgnoreCase(CoreConstants.REGISTER_TYPE.MALARIA)) {
             return context.getString(R.string.menu_malaria);
+        } else if (registerType.equalsIgnoreCase(CoreConstants.REGISTER_TYPE.INDEPENDENT)) {
+            return context.getString(R.string.menu_independent);
         }
         return registerType;
     }
