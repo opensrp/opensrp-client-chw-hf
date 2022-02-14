@@ -30,7 +30,7 @@ actions:
 name: "other_reason_for_not_testing_visibility"
 description: "Specify other reasons to why the client was not tested"
 priority: 1
-condition: "reasons_conducting_testing_for_index_contact.value == 'Other' && has_the_contact_client_been_tested['no'] != null && eligibility_for_testing['yes'] != null && has_the_client_been_reached['yes'] != null"
+condition: "(reasons_conducting_testing_for_index_contact.value == 'Other' || reasons_conducting_testing_for_index_contact.value == 'Nyingine') && has_the_contact_client_been_tested['no'] != null && eligibility_for_testing['yes'] != null && has_the_client_been_reached['yes'] != null"
 actions:
   - "other_reason_for_not_testing_visibility = true"
 ---
@@ -124,6 +124,6 @@ actions:
 name: "other_reason_for_ineligibility_visibility"
 description: "other_reason_for_ineligibility  visibility"
 priority: 1
-condition: "eligibility_for_testing['no'] != null && has_the_client_been_reached['yes'] != null && reasons_for_ineligibility_for_testing.value == 'Other'"
+condition: "eligibility_for_testing['no'] != null && has_the_client_been_reached['yes'] != null && (reasons_for_ineligibility_for_testing.value == 'Other' || reasons_for_ineligibility_for_testing.value == 'Nyingine')"
 actions:
   - "other_reason_for_ineligibility_visibility = true"
