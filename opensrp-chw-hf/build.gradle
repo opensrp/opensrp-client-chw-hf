@@ -147,8 +147,8 @@ android {
             applicationId "org.smartregister.chw.nacp.hf"
             minSdkVersion 18
             targetSdkVersion 28
-            versionCode 11
-            versionName "1.2.13"
+            versionCode 1
+            versionName "1.0.0"
             testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
             multiDexEnabled true
             buildConfigField "String", 'opensrp_url', '"https://boresha-afya.smartregister.org/opensrp/"'
