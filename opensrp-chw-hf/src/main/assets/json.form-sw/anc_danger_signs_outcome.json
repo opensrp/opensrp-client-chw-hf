@@ -92,10 +92,10 @@
         "type": "hidden"
       },
       {
-        "key": "anc_key_info",
+        "key": "anc_key_info_swahili",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "anc_key_info",
+        "openmrs_entity_id": "anc_key_info_swahili",
         "type": "toaster_notes",
         "text": "Taarifa muhimu kwa kituo cha afya: Kipindi cha mwisho cha kawaida cha hedhi: (LNMP) Umri wa ujauzito: {gest_age} EDD: {edd}",
         "toaster_type": "info",
