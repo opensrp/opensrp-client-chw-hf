@@ -72,4 +72,5 @@
     <string name="record_first_pmtct">Rekodi Hudhurio la Kwanza la PMTCT</string>
     <string name="pmtct_pending_registration">Usajili wa PMTCT haujakamilika</string>
     <string name="menu_independent">Huru</string>
+    <string name="client_registration" >Usajili wa Mteja</string>
 </resources>
