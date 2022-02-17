@@ -1,6 +1,19 @@
 package org.smartregister.chw.hf.model;
 
+import static com.vijay.jsonwizard.utils.FormUtils.fields;
+import static com.vijay.jsonwizard.utils.FormUtils.getFieldJSONObject;
+import static org.smartregister.AllConstants.LocationConstants.SPECIAL_TAG_FOR_OPENMRS_TEAM_MEMBERS;
+import static org.smartregister.chw.hf.utils.JsonFormUtils.METADATA;
+import static org.smartregister.chw.hf.utils.JsonFormUtils.SYNC_LOCATION_ID;
+import static org.smartregister.family.util.JsonFormUtils.STEP2;
+import static org.smartregister.util.JsonFormUtils.ENCOUNTER_LOCATION;
+import static org.smartregister.util.JsonFormUtils.STEP1;
+
+import android.content.Context;
+
 import androidx.annotation.Nullable;
+
+import com.vijay.jsonwizard.utils.FormUtils;
 
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
@@ -20,22 +33,24 @@ import java.util.List;
 
 import timber.log.Timber;
 
-import static com.vijay.jsonwizard.utils.FormUtils.fields;
-import static com.vijay.jsonwizard.utils.FormUtils.getFieldJSONObject;
-import static org.smartregister.AllConstants.LocationConstants.SPECIAL_TAG_FOR_OPENMRS_TEAM_MEMBERS;
-import static org.smartregister.chw.hf.utils.JsonFormUtils.METADATA;
-import static org.smartregister.chw.hf.utils.JsonFormUtils.SYNC_LOCATION_ID;
-import static org.smartregister.family.util.JsonFormUtils.STEP2;
-import static org.smartregister.util.JsonFormUtils.ENCOUNTER_LOCATION;
-import static org.smartregister.util.JsonFormUtils.STEP1;
-
 public class HfAllClientsRegisterModel extends OpdRegisterActivityModel {
+    private Context context;
+
+    public HfAllClientsRegisterModel(Context context) {
+        this.context = context;
+    }
+
 
     @Nullable
     @Override
     public JSONObject getFormAsJson(String formName, String entityId, String currentLocationId) {
         try {
-            JSONObject form = OpdUtils.getJsonFormToJsonObject(formName);
+            JSONObject form;
+            if (context != null) {
+                form = (new FormUtils()).getFormJsonFromRepositoryOrAssets(context, formName);
+            } else
+                form = OpdUtils.getJsonFormToJsonObject(formName);
+
             if (form == null) {
                 return null;
             }
@@ -77,8 +92,8 @@ public class HfAllClientsRegisterModel extends OpdRegisterActivityModel {
 
         List<OpdEventClient> opdEventClients = AllClientsUtils.getOpdEventClients(jsonString);
         try {
-            JSONObject syncLocationField = CoreJsonFormUtils.getJsonField(new JSONObject(jsonString), STEP1,  SYNC_LOCATION_ID);
-            for (OpdEventClient opdEventClient: opdEventClients){
+            JSONObject syncLocationField = CoreJsonFormUtils.getJsonField(new JSONObject(jsonString), STEP1, SYNC_LOCATION_ID);
+            for (OpdEventClient opdEventClient : opdEventClients) {
                 opdEventClient.getEvent().setLocationId(CoreJsonFormUtils.getSyncLocationUUIDFromDropdown(syncLocationField));
             }
         } catch (JSONException e) {

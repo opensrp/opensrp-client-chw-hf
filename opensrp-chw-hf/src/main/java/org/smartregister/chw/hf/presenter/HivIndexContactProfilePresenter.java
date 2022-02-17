@@ -37,7 +37,7 @@ public class HivIndexContactProfilePresenter extends CoreHivIndexContactProfileP
         super(view, interactor, hivIndexContactObject);
         this.hivIndexContactObject = hivIndexContactObject;
         this.interactor = (HivIndexContactProfileContract.Interactor) interactor;
-        this.model = new HfAllClientsRegisterModel();
+        this.model = new HfAllClientsRegisterModel(view.getContext());
     }
 
     @Override

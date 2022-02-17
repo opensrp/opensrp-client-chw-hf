@@ -1,15 +1,20 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
+
 import android.content.Intent;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
+import com.vijay.jsonwizard.utils.FormUtils;
 
+import org.json.JSONException;
 import org.smartregister.AllConstants;
 import org.smartregister.chw.core.activity.CoreAllClientsRegisterActivity;
 import org.smartregister.chw.core.utils.CoreConstants;
+import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.fragment.AllClientsRegisterFragment;
 import org.smartregister.chw.hf.model.HfAllClientsRegisterModel;
@@ -18,6 +23,8 @@ import org.smartregister.helper.BottomNavigationHelper;
 import org.smartregister.opd.contract.OpdRegisterActivityContract;
 import org.smartregister.opd.presenter.BaseOpdRegisterActivityPresenter;
 import org.smartregister.view.fragment.BaseRegisterFragment;
+
+import java.util.Objects;
 
 import timber.log.Timber;
 
@@ -30,6 +37,12 @@ public class AllClientsRegisterActivity extends CoreAllClientsRegisterActivity {
 
     @Override
     public void startRegistration() {
+        try {
+            ((HealthFacilityApplication) this.getApplication()).notifyAppContextChange();
+            Objects.requireNonNull((new FormUtils()).getFormJsonFromRepositoryOrAssets(this, HIV_REGISTRATION)).toString();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         startFormActivity(CoreConstants.JSON_FORM.getAllClientRegistrationForm(), null, null);
     }
 
@@ -92,7 +105,7 @@ public class AllClientsRegisterActivity extends CoreAllClientsRegisterActivity {
     }
 
     public OpdRegisterActivityContract.Model createActivityModel() {
-        return new HfAllClientsRegisterModel();
+        return new HfAllClientsRegisterModel(this);
     }
 
 }

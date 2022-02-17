@@ -42,7 +42,7 @@ public class HivProfilePresenter extends CoreHivProfilePresenter
         super(view, interactor, hivMemberObject);
         this.hivMemberObject = hivMemberObject;
         this.interactor = (HivProfileContract.Interactor) interactor;
-        this.model = new HfAllClientsRegisterModel();
+        this.model = new HfAllClientsRegisterModel(view.getContext());
     }
 
     @Override
