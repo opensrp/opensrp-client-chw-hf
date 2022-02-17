@@ -346,6 +346,7 @@
         "openmrs_entity": "",
         "openmrs_entity_id": "",
         "repeating_group_max": "10",
+        "expand_on_text_change": "true",
         "relevance": {
           "rules-engine": {
             "ex-rules": {
