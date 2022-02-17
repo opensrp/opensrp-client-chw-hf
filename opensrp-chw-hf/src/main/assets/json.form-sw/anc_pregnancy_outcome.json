@@ -271,7 +271,7 @@
         "options": [
           {
             "key": "facility_family_member",
-            "text": "Alijifungua katika kituo cha afya, na alisindikizwa na wanafamilia.",
+            "text": "Alisindikizwa na wanafamilia.",
             "value": false,
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
@@ -279,7 +279,7 @@
           },
           {
             "key": "facility_midwife",
-            "text": "Alijifungua katika kituo cha afya, na alisindikizwa na mkunga wa jadi",
+            "text": "Alisindikizwa na mkunga wa jadi",
             "value": false,
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
@@ -287,7 +287,7 @@
           },
           {
             "key": "alone",
-            "text": "Alijifungua katika kituo cha afya, na alikuja peke yake",
+            "text": "Alikuja peke yake",
             "value": false,
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
@@ -295,7 +295,7 @@
           },
           {
             "key": "other_pple",
-            "text": "Alijifungua katika kituo cha afya, na alisindikizwa na watu wengine",
+            "text": "Alisindikizwa na watu wengine",
             "value": false,
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
@@ -303,7 +303,7 @@
           },
           {
             "key": "other_chw",
-            "text": "Alijifungua katika kituo cha afya, na aliandamana na CHW",
+            "text": "Aliandamana na CHW",
             "value": false,
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
