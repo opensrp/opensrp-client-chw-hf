@@ -1050,6 +1050,38 @@
           }
         },
         {
+          "column_name": "malaria_preventive_therapy_ipt1",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "malaria_preventive_therapy_ipt1"
+          }
+        },
+        {
+          "column_name": "malaria_preventive_therapy_ipt2",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "malaria_preventive_therapy_ipt2"
+          }
+        },
+        {
+          "column_name": "malaria_preventive_therapy_ipt3",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "malaria_preventive_therapy_ipt3"
+          }
+        },
+        {
+          "column_name": "malaria_preventive_therapy_ipt4",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "malaria_preventive_therapy_ipt4"
+          }
+        },
+        {
           "column_name": "confirmed_visits",
           "type": "Event",
           "json_mapping": {

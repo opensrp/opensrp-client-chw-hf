@@ -191,9 +191,12 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
 
                 JSONObject pharmacyForm = null;
                 try {
-                    pharmacyForm = malariaPreventiveTherapy(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.getPharmacy()), baseEntityId);
+                    pharmacyForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.getPharmacy());
                     pharmacyForm.getJSONObject("global").put("gestational_age", memberObject.getGestationAge());
-                    pharmacyForm.getJSONObject("global").put("malaria_dosage", HfAncDao.malariaDosageGiven(baseEntityId));
+                    pharmacyForm.getJSONObject("global").put("malaria_preventive_therapy_ipt1", HfAncDao.malariaDosageIpt1(baseEntityId));
+                    pharmacyForm.getJSONObject("global").put("malaria_preventive_therapy_ipt2", HfAncDao.malariaDosageIpt2(baseEntityId));
+                    pharmacyForm.getJSONObject("global").put("malaria_preventive_therapy_ipt3", HfAncDao.malariaDosageIpt3(baseEntityId));
+                    pharmacyForm.getJSONObject("global").put("malaria_preventive_therapy_ipt4", HfAncDao.malariaDosageIpt4(baseEntityId));
                     if (details != null && !details.isEmpty()) {
                         JsonFormUtils.populateForm(pharmacyForm, details);
                     }
@@ -394,70 +397,6 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
             } catch (JSONException e) {
                 Timber.e(e);
             }
-        }
-        return form;
-    }
-
-    private static JSONObject malariaPreventiveTherapy(JSONObject form, String baseEntityId) {
-        try {
-            JSONArray fields = form.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
-            JSONObject malariaDosage = null;
-            for (int i = 0; i < fields.length(); i++) {
-                if (fields.getJSONObject(i).getString(JsonFormConstants.KEY).equals("malaria_preventive_therapy")) {
-                    malariaDosage = fields.getJSONObject(i);
-                    break;
-                }
-            }
-            JSONArray options = malariaDosage.getJSONArray("options");
-            JSONObject medicationNotGiven = options.getJSONObject(0);
-
-            JSONObject ipt1 = new JSONObject();
-            ipt1.put("text", "IPT1");
-            ipt1.put("key", "ipt1");
-            ipt1.put("openmrs_entity", "concept");
-            ipt1.put("openmrs_entity_id", "ipt1");
-            ipt1.put("value", false);
-
-            JSONObject ipt2 = new JSONObject();
-            ipt2.put("text", "IPT2");
-            ipt2.put("key", "ipt2");
-            ipt2.put("openmrs_entity", "concept");
-            ipt2.put("openmrs_entity_id", "ipt2");
-            ipt2.put("value", false);
-
-            JSONObject ipt3 = new JSONObject();
-            ipt3.put("text", "IPT3");
-            ipt3.put("key", "ipt3");
-            ipt3.put("openmrs_entity", "concept");
-            ipt3.put("openmrs_entity_id", "ipt3");
-            ipt3.put("value", false);
-
-            JSONObject ipt4 = new JSONObject();
-            ipt4.put("text", "IPT4");
-            ipt4.put("key", "ipt4");
-            ipt4.put("openmrs_entity", "concept");
-            ipt4.put("openmrs_entity_id", "ipt4");
-            ipt4.put("value", false);
-
-            if (HfAncDao.malariaDosageGiven(baseEntityId).equalsIgnoreCase("null")) {
-                options.put(0, ipt1);
-                options.put(1, medicationNotGiven);
-            }
-            if (HfAncDao.malariaDosageGiven(baseEntityId).equalsIgnoreCase("ipt1")) {
-                options.put(0, ipt2);
-                options.put(1, medicationNotGiven);
-            }
-            if (HfAncDao.malariaDosageGiven(baseEntityId).equalsIgnoreCase("ipt2")) {
-                options.put(0, ipt3);
-                options.put(1, medicationNotGiven);
-            }
-            if (HfAncDao.malariaDosageGiven(baseEntityId).equalsIgnoreCase("ipt3")) {
-                options.put(0, ipt4);
-                options.put(1, medicationNotGiven);
-            }
-
-        } catch (JSONException e) {
-            Timber.e(e);
         }
         return form;
     }

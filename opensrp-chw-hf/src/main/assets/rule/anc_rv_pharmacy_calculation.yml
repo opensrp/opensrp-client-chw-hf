@@ -1,0 +1,7 @@
+---
+name: step1_malaria_preventive_therapy
+description: malaria preventive therapy calculation
+priority: 1
+condition: "!step1_malaria_preventive_therapy_ipt1.isEmpty()"
+actions:
+  - "calculation = step1_malaria_preventive_therapy_ipt1"
