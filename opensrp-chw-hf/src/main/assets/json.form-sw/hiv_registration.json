@@ -245,6 +245,7 @@
             "type": "Namba ya CTC",
             "mask": "##-##-####-######",
             "mask_hint": "12345678912345",
+            "input_type": "number",
             "allowed_chars": "0123456789"
           },
           "meta_data": {
