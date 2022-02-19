@@ -152,7 +152,7 @@
       },
       {
         "key": "malaria_preventive_therapy",
-        "type": "edit_text",
+        "type": "hidden",
         "openmrs_entity_id": "malaria_preventive_therapy",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",

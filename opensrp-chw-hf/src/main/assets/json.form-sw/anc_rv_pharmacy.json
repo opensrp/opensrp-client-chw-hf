@@ -151,12 +151,33 @@
       },
       {
         "key": "malaria_preventive_therapy",
-        "type": "native_radio",
+        "type": "hidden",
         "openmrs_entity_id": "malaria_preventive_therapy",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_pharmacy_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "malaria_preventive_therapy_ipt1",
+        "type": "native_radio",
+        "openmrs_entity_id": "malaria_preventive_therapy_ipt1",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "label": "Kinga ya kuzuia Malaria",
         "options": [
+          {
+            "key": "ipt1",
+            "text": "IPT1",
+            "openmrs_entity_id": "ipt1",
+            "openmrs_entity": "concept",
+            "value": false
+          },
           {
             "key": "medication_not_given",
             "text": "Hajapewa dawa ya Malaria",
@@ -167,7 +188,112 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhali chagua dawa kwaa ajili ya kinga ya kuzuia Malaria"
+          "err": "Tafadhali chagua dawa kwa ajili ya kinga ya kuzuia Malaria"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_pharmacy_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "malaria_preventive_therapy_ipt2",
+        "type": "native_radio",
+        "openmrs_entity_id": "malaria_preventive_therapy_ipt2",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "label": "Kinga ya kuzuia Malaria",
+        "options": [
+          {
+            "key": "ipt2",
+            "text": "IPT2",
+            "openmrs_entity_id": "ipt2",
+            "openmrs_entity": "concept",
+            "value": false
+          },
+          {
+            "key": "medication_not_given",
+            "text": "Hajapewa dawa ya Malaria",
+            "openmrs_entity_id": "medication_not_given",
+            "openmrs_entity": "concept",
+            "value": false
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua dawa kwa ajili ya kinga ya kuzuia Malaria"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_pharmacy_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "malaria_preventive_therapy_ipt3",
+        "type": "native_radio",
+        "openmrs_entity_id": "malaria_preventive_therapy_ipt3",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "label": "Kinga ya kuzuia Malaria",
+        "options": [
+          {
+            "key": "ipt3",
+            "text": "IPT3",
+            "openmrs_entity_id": "ipt3",
+            "openmrs_entity": "concept",
+            "value": false
+          },
+          {
+            "key": "medication_not_given",
+            "text": "Hajapewa dawa ya Malaria",
+            "openmrs_entity_id": "medication_not_given",
+            "openmrs_entity": "concept",
+            "value": false
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua dawa kwa ajili ya kinga ya kuzuia Malaria"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_pharmacy_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "malaria_preventive_therapy_ipt4",
+        "type": "native_radio",
+        "openmrs_entity_id": "malaria_preventive_therapy_ipt4",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "label": "Kinga ya kuzuia Malaria",
+        "options": [
+          {
+            "key": "ipt4",
+            "text": "IPT4",
+            "openmrs_entity_id": "ipt4",
+            "openmrs_entity": "concept",
+            "value": false
+          },
+          {
+            "key": "medication_not_given",
+            "text": "Hajapewa dawa ya Malaria",
+            "openmrs_entity_id": "medication_not_given",
+            "openmrs_entity": "concept",
+            "value": false
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua dawa kwa ajili ya kinga ya kuzuia Malaria"
         },
         "relevance": {
           "rules-engine": {
