@@ -256,7 +256,10 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
 
         @Override
         public String evaluateSubTitle() {
-            return MessageFormat.format("Medical and Surgical History : {0}", medical_and_surgical_history_present);
+            if (StringUtils.isBlank(medical_and_surgical_history_present))
+                return null;
+
+            return context.getString(R.string.medical_and_surgical_filled);
         }
 
         @Override
@@ -334,7 +337,7 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
         @Override
         public String evaluateSubTitle() {
             if (!StringUtils.isBlank(abdominal_scars))
-                return "Obstetric Examination Complete";
+                return context.getString(R.string.obstetric_exam_complete);
             return "";
         }
     }

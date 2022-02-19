@@ -73,4 +73,12 @@
     <string name="pmtct_pending_registration">Usajili wa PMTCT haujakamilika</string>
     <string name="menu_independent">Huru</string>
     <string name="client_registration" >Usajili wa Mteja</string>
+    <string name="medical_and_surgical_filled">Historia ya Matibabu na Upasuaji Umekamilika</string>
+    <string name="obstetric_exam_complete">Uchunguzi wa Uzazi Umefanyika</string>
+    <string name="baseline_investigation_conducted">Uchunguzi wa Vipimo vya Awali Umefanyika</string>
+    <string name="tt_vaccination_filled">Chanjo ya Pepopunda (Tetenasi) Imejazwa</string>
+    <string name="counselling_given">Mteja Ameshauriwa</string>
+    <string name="partner_registered">Mwenza Amesajiliwa</string>
+    <string name="partner_tested">Mwenza Amepimwa</string>
+    <string name="review_birth_emergency_plan">Kupitia na Kuhakiki Mpango wa Kujifungua na Dharura Umekamilika</string>
 </resources>

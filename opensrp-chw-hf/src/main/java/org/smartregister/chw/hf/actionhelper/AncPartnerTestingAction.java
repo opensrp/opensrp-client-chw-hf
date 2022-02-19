@@ -9,6 +9,7 @@ import org.smartregister.chw.anc.domain.MemberObject;
 import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
+import org.smartregister.chw.hf.R;
 
 import java.util.List;
 import java.util.Map;
@@ -23,6 +24,7 @@ public class AncPartnerTestingAction implements BaseAncHomeVisitAction.AncHomeVi
     private String partner_hepatitis_results;
     private BaseAncHomeVisitAction.ScheduleStatus scheduleStatus;
     private String subTitle;
+    private Context context;
 
     public AncPartnerTestingAction(MemberObject memberObject) {
         this.memberObject = memberObject;
@@ -31,6 +33,7 @@ public class AncPartnerTestingAction implements BaseAncHomeVisitAction.AncHomeVi
     @Override
     public void onJsonFormLoaded(String jsonPayload, Context context, Map<String, List<VisitDetail>> map) {
         this.jsonPayload = jsonPayload;
+        this.context = context;
     }
 
     @Override
@@ -77,7 +80,7 @@ public class AncPartnerTestingAction implements BaseAncHomeVisitAction.AncHomeVi
         if (StringUtils.isBlank(partner_hiv_results) && StringUtils.isBlank(partner_syphilis_results) && StringUtils.isBlank(partner_hepatitis_results))
             return null;
 
-        return "Partner Tested";
+        return context.getString(R.string.partner_tested);
     }
 
     @Override
