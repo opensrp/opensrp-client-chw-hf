@@ -38,9 +38,9 @@
     <string name="optional"></string>
     <string name="action_pregnancy_confirmation_referrals">Pregnancy Confirmation</string>
     <string name="anc_pregnacy_status">Hali ya ujauzito: "</string>
-    <string name="anc_pregnacy_status_viable">Viable</string>
-    <string name="anc_pregnacy_status_fetal_death">Intrauterine Fetal Death (Still Birth)</string>
-    <string name="anc_pregnacy_status_spontaneous_abortion">Spontaneous Abortion</string>
+    <string name="anc_pregnacy_status_viable">Bado ana ujauzito</string>
+    <string name="anc_pregnacy_status_fetal_death">Mtoto amefia tumboni</string>
+    <string name="anc_pregnacy_status_spontaneous_abortion">Mimba imeharibika</string>
     <string name="any_changes_you_make">Any Changes You Make Will Be Discarded</string>
     <string name="gestation_age">Umri wa Mimba: Wiki {0}</string>
     <string name="malaria">Malaria: {0}</string>
@@ -81,4 +81,8 @@
     <string name="partner_registered">Mwenza Amesajiliwa</string>
     <string name="partner_tested">Mwenza Amepimwa</string>
     <string name="review_birth_emergency_plan">Kupitia na Kuhakiki Mpango wa Kujifungua na Dharura Umekamilika</string>
+    <string name="triage_complete">Tathmini ya Awali ya Mteja Imekamilika</string>
+    <string name="anc_consultation_done">Tathmini ya ANC na kusasisha kijitabu cha wajawazito umekamilika</string>
+    <string name="lab_tests_complete">Vipimo Vya Maabara Vimefanyika</string>
+    <string name="med_and_supp_issued">Dawa na Virutubisho Vimetolewa</string>
 </resources>

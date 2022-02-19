@@ -65,7 +65,7 @@
           },
           {
             "key": "spontaneous_abortion",
-            "text": "Mima imeharibika",
+            "text": "Mimba imeharibika",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "spontaneous_abortion"
           },
