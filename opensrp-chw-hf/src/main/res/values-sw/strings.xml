@@ -85,4 +85,5 @@
     <string name="anc_consultation_done">Tathmini ya ANC na kusasisha kijitabu cha wajawazito umekamilika</string>
     <string name="lab_tests_complete">Vipimo Vya Maabara Vimefanyika</string>
     <string name="med_and_supp_issued">Dawa na Virutubisho Vimetolewa</string>
+    <string name="visit_in_progress">Hudhurio la %s linaendelea</string>
 </resources>
