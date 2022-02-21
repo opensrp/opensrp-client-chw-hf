@@ -9,6 +9,7 @@ import org.smartregister.chw.anc.domain.MemberObject;
 import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
+import org.smartregister.chw.hf.R;
 
 import java.util.List;
 import java.util.Map;
@@ -22,6 +23,7 @@ public class AncBirthReviewAction implements BaseAncHomeVisitAction.AncHomeVisit
     private String name_of_hf;
     private BaseAncHomeVisitAction.ScheduleStatus scheduleStatus;
     private String subTitle;
+    private Context context;
 
     public AncBirthReviewAction(MemberObject memberObject) {
         this.memberObject = memberObject;
@@ -30,6 +32,7 @@ public class AncBirthReviewAction implements BaseAncHomeVisitAction.AncHomeVisit
     @Override
     public void onJsonFormLoaded(String jsonPayload, Context context, Map<String, List<VisitDetail>> map) {
         this.jsonPayload = jsonPayload;
+        this.context = context;
     }
 
     @Override
@@ -77,7 +80,7 @@ public class AncBirthReviewAction implements BaseAncHomeVisitAction.AncHomeVisit
         StringBuilder stringBuilder = new StringBuilder();
 
         //TODO ilakoze extract to string resources
-        stringBuilder.append("Pregnancy Status Complete");
+        stringBuilder.append(context.getString(R.string.review_birth_emergency_plan));
 
         return stringBuilder.toString();
     }

@@ -9,6 +9,7 @@ import org.smartregister.chw.anc.domain.MemberObject;
 import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
+import org.smartregister.chw.hf.R;
 
 import java.text.MessageFormat;
 import java.util.List;
@@ -23,6 +24,7 @@ public class AncLabTestAction implements BaseAncHomeVisitAction.AncHomeVisitActi
     private String lab_tests;
     private BaseAncHomeVisitAction.ScheduleStatus scheduleStatus;
     private String subTitle;
+    private Context context;
 
     public AncLabTestAction(MemberObject memberObject) {
         this.memberObject = memberObject;
@@ -31,6 +33,7 @@ public class AncLabTestAction implements BaseAncHomeVisitAction.AncHomeVisitActi
     @Override
     public void onJsonFormLoaded(String jsonPayload, Context context, Map<String, List<VisitDetail>> map) {
         this.jsonPayload = jsonPayload;
+        this.context = context;
     }
 
     @Override
@@ -76,7 +79,7 @@ public class AncLabTestAction implements BaseAncHomeVisitAction.AncHomeVisitActi
             return null;
 
         //TODO ilakoze extract to string resources
-        return "Lab Tests Complete";
+        return context.getString(R.string.lab_tests_complete);
     }
 
     @Override

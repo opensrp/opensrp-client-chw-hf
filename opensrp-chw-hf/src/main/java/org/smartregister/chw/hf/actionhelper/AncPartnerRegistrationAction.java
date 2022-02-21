@@ -9,6 +9,7 @@ import org.smartregister.chw.anc.domain.MemberObject;
 import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
+import org.smartregister.chw.hf.R;
 
 import java.util.List;
 import java.util.Map;
@@ -23,6 +24,7 @@ public class AncPartnerRegistrationAction implements BaseAncHomeVisitAction.AncH
     private String partner_middlename;
     private BaseAncHomeVisitAction.ScheduleStatus scheduleStatus;
     private String subTitle;
+    private Context context;
 
     public AncPartnerRegistrationAction(MemberObject memberObject) {
         this.memberObject = memberObject;
@@ -31,6 +33,7 @@ public class AncPartnerRegistrationAction implements BaseAncHomeVisitAction.AncH
     @Override
     public void onJsonFormLoaded(String jsonPayload, Context context, Map<String, List<VisitDetail>> map) {
         this.jsonPayload = jsonPayload;
+        this.context = context;
     }
 
     @Override
@@ -77,7 +80,7 @@ public class AncPartnerRegistrationAction implements BaseAncHomeVisitAction.AncH
         if (StringUtils.isBlank(partner_surname))
             return null;
 
-        return "Partner Registered: " + partner_firstname + " " + partner_middlename + " " + partner_surname;
+        return context.getString(R.string.partner_registered) + ": " + partner_firstname + " " + partner_middlename + " " + partner_surname;
     }
 
     @Override

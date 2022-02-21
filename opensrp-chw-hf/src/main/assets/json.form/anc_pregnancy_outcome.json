@@ -224,7 +224,7 @@
         "options": [
           {
             "key": "gave_birth_alone",
-            "text": "She gave birth at home alone",
+            "text": "She gave birth alone",
             "value": false,
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
@@ -232,7 +232,7 @@
           },
           {
             "key": "gave_birth_with_help",
-            "text": "She gave birth at home with the help of a family member/friend/neighbor",
+            "text": "She gave birth with the help of a family member/friend/neighbor",
             "value": false,
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
@@ -240,7 +240,7 @@
           },
           {
             "key": "midwife_help",
-            "text": "She gave birth at home with the help of a traditional midwife",
+            "text": "She gave birth with the help of a traditional midwife",
             "value": false,
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
@@ -271,7 +271,7 @@
         "options": [
           {
             "key": "facility_family_member",
-            "text": "She gave birth in a health facility, and she was accompanied by family member(s)",
+            "text": "She was accompanied by family member(s)",
             "value": false,
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
@@ -279,7 +279,7 @@
           },
           {
             "key": "facility_midwife",
-            "text": "She gave birth in a health facility, and she was accompanied by a traditional midwife",
+            "text": "She was accompanied by a traditional midwife",
             "value": false,
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
@@ -287,7 +287,7 @@
           },
           {
             "key": "alone",
-            "text": "She gave birth in a health facility, and she came by herself",
+            "text": "She came by herself",
             "value": false,
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
@@ -295,7 +295,7 @@
           },
           {
             "key": "other_pple",
-            "text": "She gave birth in a health facility, and she was accompanied by other people",
+            "text": "She was accompanied by other people",
             "value": false,
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
@@ -303,7 +303,7 @@
           },
           {
             "key": "other_chw",
-            "text": "She gave birth in a health facility, and she was accompanied by the CHW",
+            "text": "Se was accompanied by the CHW",
             "value": false,
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
@@ -484,9 +484,68 @@
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "type_of_disability",
-            "type": "edit_text",
-            "hint": "Type of physical disabilities",
-            "edit_type": "name",
+            "type": "check_box",
+            "label": "Type of disability",
+            "label_text_style": "normal",
+            "text_color": "#C0C0C0",
+            "options": [
+              {
+                "key": "physical_impairments",
+                "text": "Mobility and Physical Impairments",
+                "value": false,
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "physical_impairments"
+              },
+              {
+                "key": "spinal_cord_disability",
+                "text": "Spinal Cord Disability",
+                "value": false,
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "spinal_cord_disability"
+              },
+              {
+                "key": "brain_disability",
+                "text": "Head Injuries - Brain Disability",
+                "value": false,
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "brain_disability"
+              },
+              {
+                "key": "vision_disability",
+                "text": "Vision Disability",
+                "value": false,
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "vision_disability"
+              },
+              {
+                "key": "hearing_disability",
+                "text": "Hearing Disability",
+                "value": false,
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "hearing_disability"
+              },
+              {
+                "key": "learning_disabilities",
+                "text": "Cognitive or Learning Disabilities",
+                "value": false,
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "learning_disabilities"
+              },
+              {
+                "key": "psychological_disorders",
+                "text": "Psychological Disorders",
+                "value": false,
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "psychological_disorders"
+              },
+              {
+                "key": "invisible_disabilities",
+                "text": "Invisible Disabilities",
+                "value": false,
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "invisible_disabilities"
+              }
+            ],
             "relevance": {
               "rules-engine": {
                 "ex-rules": {

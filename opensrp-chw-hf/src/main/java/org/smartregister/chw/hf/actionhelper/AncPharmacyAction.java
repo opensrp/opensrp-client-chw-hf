@@ -9,6 +9,7 @@ import org.smartregister.chw.anc.domain.MemberObject;
 import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
+import org.smartregister.chw.hf.R;
 
 import java.util.List;
 import java.util.Map;
@@ -22,6 +23,7 @@ public class AncPharmacyAction implements BaseAncHomeVisitAction.AncHomeVisitAct
     private String iron_folate_supplements;
     private BaseAncHomeVisitAction.ScheduleStatus scheduleStatus;
     private String subTitle;
+    private Context context;
 
     public AncPharmacyAction(MemberObject memberObject) {
         this.memberObject = memberObject;
@@ -30,6 +32,7 @@ public class AncPharmacyAction implements BaseAncHomeVisitAction.AncHomeVisitAct
     @Override
     public void onJsonFormLoaded(String jsonPayload, Context context, Map<String, List<VisitDetail>> map) {
         this.jsonPayload = jsonPayload;
+        this.context = context;
     }
 
     @Override
@@ -77,7 +80,7 @@ public class AncPharmacyAction implements BaseAncHomeVisitAction.AncHomeVisitAct
         StringBuilder stringBuilder = new StringBuilder();
 
         //TODO ilakoze extract to string recources
-        stringBuilder.append("Medications and Supplements Issued");
+        stringBuilder.append(context.getString(R.string.med_and_supp_issued));
 
         return stringBuilder.toString();
     }

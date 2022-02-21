@@ -75,5 +75,17 @@
     <string name="referral_sent">Referral Sent</string>
     <string name="pending_ctc_registration">Pending CTC Registration</string>
     <string name="menu_independent">Independent</string>
+    <string name="medical_and_surgical_filled">Medical And Surgical History Filled</string>
+    <string name="obstetric_exam_complete">Obstetric Examination Complete</string>
+    <string name="baseline_investigation_conducted">Baseline Investigation Conducted</string>
+    <string name="tt_vaccination_filled">TT Vaccination Filled</string>
+    <string name="counselling_given">Counselling given</string>
+    <string name="partner_registered">Partner Registered</string>
+    <string name="partner_tested">Partner Tested</string>
+    <string name="review_birth_emergency_plan">Review of Birth and Emergency Plan is Complete</string>
+    <string name="triage_complete">Triage Complete</string>
+    <string name="anc_consultation_done">ANC assessment and Update Maternal Handbook Complete</string>
+    <string name="lab_tests_complete">Lab Tests Complete</string>
+    <string name="med_and_supp_issued">Medications and Supplements Issued</string>
 
 </resources>

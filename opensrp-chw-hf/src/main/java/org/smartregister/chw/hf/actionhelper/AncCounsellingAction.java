@@ -9,6 +9,7 @@ import org.smartregister.chw.anc.domain.MemberObject;
 import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
+import org.smartregister.chw.hf.R;
 
 import java.text.MessageFormat;
 import java.util.List;
@@ -23,6 +24,7 @@ public class AncCounsellingAction implements BaseAncHomeVisitAction.AncHomeVisit
     private String anc_counselling;
     private BaseAncHomeVisitAction.ScheduleStatus scheduleStatus;
     private String subTitle;
+    private Context context;
 
     public AncCounsellingAction(MemberObject memberObject) {
         this.memberObject = memberObject;
@@ -31,6 +33,7 @@ public class AncCounsellingAction implements BaseAncHomeVisitAction.AncHomeVisit
     @Override
     public void onJsonFormLoaded(String jsonPayload, Context context, Map<String, List<VisitDetail>> map) {
         this.jsonPayload = jsonPayload;
+        this.context = context;
     }
 
     @Override
@@ -75,12 +78,7 @@ public class AncCounsellingAction implements BaseAncHomeVisitAction.AncHomeVisit
         if (StringUtils.isBlank(anc_counselling))
             return null;
 
-        StringBuilder stringBuilder = new StringBuilder();
-
-        stringBuilder.append("Counselling given: " + anc_counselling);
-
-        return stringBuilder.toString();
-
+        return context.getString(R.string.counselling_given);
     }
 
     @Override

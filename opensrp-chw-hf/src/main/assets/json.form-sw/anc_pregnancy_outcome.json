@@ -271,7 +271,7 @@
         "options": [
           {
             "key": "facility_family_member",
-            "text": "Alijifungua katika kituo cha afya, na alisindikizwa na wanafamilia.",
+            "text": "Alisindikizwa na wanafamilia.",
             "value": false,
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
@@ -279,7 +279,7 @@
           },
           {
             "key": "facility_midwife",
-            "text": "Alijifungua katika kituo cha afya, na alisindikizwa na mkunga wa jadi",
+            "text": "Alisindikizwa na mkunga wa jadi",
             "value": false,
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
@@ -287,7 +287,7 @@
           },
           {
             "key": "alone",
-            "text": "Alijifungua katika kituo cha afya, na alikuja peke yake",
+            "text": "Alikuja peke yake",
             "value": false,
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
@@ -295,7 +295,7 @@
           },
           {
             "key": "other_pple",
-            "text": "Alijifungua katika kituo cha afya, na alisindikizwa na watu wengine",
+            "text": "Alisindikizwa na watu wengine",
             "value": false,
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
@@ -303,7 +303,7 @@
           },
           {
             "key": "other_chw",
-            "text": "Alijifungua katika kituo cha afya, na aliandamana na CHW",
+            "text": "Aliandamana na CHW",
             "value": false,
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
@@ -346,6 +346,7 @@
         "openmrs_entity": "",
         "openmrs_entity_id": "",
         "repeating_group_max": "10",
+        "expand_on_text_change": "true",
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -360,7 +361,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "",
             "type": "edit_text",
-            "hint": "Surname",
+            "hint": "Jina la mwisho",
             "edit_type": "name",
             "v_regex": {
               "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-]*",
@@ -388,7 +389,7 @@
             "options": [
               {
                 "key": "same_as_fam_name",
-                "text": "Surname same as family name",
+                "text": "Jina la mwisho ni sawa na jina la familia",
                 "text_size": "18px",
                 "value": "false"
               }
@@ -400,7 +401,7 @@
             "openmrs_entity": "person",
             "openmrs_entity_id": "first_name",
             "type": "edit_text",
-            "hint": "First name",
+            "hint": "Jina la kwanza",
             "edit_type": "name",
             "v_required": {
               "value": "true",
@@ -417,7 +418,7 @@
             "openmrs_entity": "person",
             "openmrs_entity_id": "middle_name",
             "type": "edit_text",
-            "hint": "Middle name",
+            "hint": "Jina la kati",
             "edit_type": "name",
             "v_regex": {
               "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-]*",
@@ -439,8 +440,8 @@
             "type": "spinner",
             "hint": "Sex",
             "values": [
-              "Male",
-              "Female"
+              "Me",
+              "Ke"
             ],
             "keys": [
               "Male",
@@ -459,8 +460,8 @@
             "type": "spinner",
             "hint": "Physical disabilities",
             "values": [
-              "Yes",
-              "No"
+              "Ndio",
+              "Hapana"
             ],
             "keys": [
               "Yes",
@@ -480,9 +481,68 @@
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "type_of_disability",
-            "type": "edit_text",
-            "hint": "Type of physical disabilities",
-            "edit_type": "name",
+            "type": "check_box",
+            "label": "Aina ya ulemavu wa kimwili",
+            "label_text_style": "normal",
+            "text_color": "#C0C0C0",
+            "options": [
+              {
+                "key": "physical_impairments",
+                "text": "Ulemavu wa Kimwili na utembeaji",
+                "value": false,
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "physical_impairments"
+              },
+              {
+                "key": "spinal_cord_disability",
+                "text": "Ulemavu wa uti wa mgongo",
+                "value": false,
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "spinal_cord_disability"
+              },
+              {
+                "key": "brain_disability",
+                "text": "Majeraha ya kichwa  - ulemavu wa ubongo",
+                "value": false,
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "brain_disability"
+              },
+              {
+                "key": "vision_disability",
+                "text": "Ulemavu wa Kuona",
+                "value": false,
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "vision_disability"
+              },
+              {
+                "key": "hearing_disability",
+                "text": "Ulemavu wa Kuskia ",
+                "value": false,
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "hearing_disability"
+              },
+              {
+                "key": "learning_disabilities",
+                "text": "Ulemavu wa Utambuzi au Kujifunza",
+                "value": false,
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "learning_disabilities"
+              },
+              {
+                "key": "psychological_disorders",
+                "text": "Matatizo ya Kisaikolojia",
+                "value": false,
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "psychological_disorders"
+              },
+              {
+                "key": "invisible_disabilities",
+                "text": "Ulemavu usioonekana",
+                "value": false,
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "invisible_disabilities"
+              }
+            ],
             "relevance": {
               "rules-engine": {
                 "ex-rules": {
@@ -497,10 +557,10 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "early_bf_1hr",
             "type": "spinner",
-            "hint": "Early initiation of breastfeeding (1 hr)?",
+            "hint": "Kuanza kunyonya/kunyonyeshwa mapema (Saa 1)?",
             "values": [
-              "Yes",
-              "No"
+              "Ndio",
+              "Hapana"
             ],
             "keys": [
               "Yes",
@@ -517,7 +577,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "vacc_birth",
             "type": "check_box",
-            "label": "Which vaccinations were given?",
+            "label": "Chanjo zipi alipatiwa?",
             "label_text_style": "normal",
             "text_color": "#C0C0C0",
             "exclusive": [
@@ -526,7 +586,7 @@
             "options": [
               {
                 "key": "chk_none",
-                "text": "None",
+                "text": "Hakuna",
                 "value": false,
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "chk_none"
@@ -548,7 +608,7 @@
             ],
             "v_required": {
               "value": "true",
-              "err": "vaccinations given required"
+              "err": "Chanjo alizopewa zinahijtajika"
             }
           }
         ]
