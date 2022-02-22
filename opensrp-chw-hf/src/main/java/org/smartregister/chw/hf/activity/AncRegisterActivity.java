@@ -170,6 +170,7 @@ public class AncRegisterActivity extends CoreAncRegisterActivity {
             bottomNavigationView.getMenu().removeItem(org.smartregister.chw.tb.R.id.action_register);
             bottomNavigationView.getMenu().removeItem(org.smartregister.R.id.action_search);
             bottomNavigationView.getMenu().removeItem(org.smartregister.R.id.action_library);
+            bottomNavigationView.getMenu().removeItem(R.id.action_scan_qr);
 //
 //            bottomNavigationView.inflateMenu(getMenuResource());
 //            bottomNavigationHelper.disableShiftMode(bottomNavigationView);
