@@ -146,18 +146,11 @@
             "openmrs_entity_id": "primary"
           },
           {
-            "key": "secondary_o_level",
-            "text": "Elimu ya sekondari (Kiwango cha kawaida)",
+            "key": "secondary",
+            "text": "Elimu ya sekondari",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "secondary_o_level"
-          },
-          {
-            "key": "secondary_a_level",
-            "text": "Elimu ya sekondari (Kiwango cha juu)",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "secondary_a_level"
+            "openmrs_entity_id": "secondary"
           },
           {
             "key": "tertiary",
@@ -165,20 +158,6 @@
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "tertiary"
-          },
-          {
-            "key": "university",
-            "text": "Chuo kikuu",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "university"
-          },
-          {
-            "key": "unknown",
-            "text": "Haijulikani",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "unknown"
           }
         ],
         "v_required": {
