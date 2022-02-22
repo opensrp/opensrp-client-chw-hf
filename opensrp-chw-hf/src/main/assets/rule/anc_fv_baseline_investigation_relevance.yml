@@ -41,3 +41,10 @@ priority: 1
 condition: "(step1_hepatitis.contains('positive') && global_gestational_age < 28)"
 actions:
   - "isRelevant = true"
+---
+name: step1_rh_factor
+description:  rh factor to only appear when blood group is relevant
+priority: 1
+condition: "!step1_blood_group.contains('test_not_conducted')"
+actions:
+  - "isRelevant = true"
