@@ -711,7 +711,7 @@
       {
         "key": "hiv",
         "type": "native_radio",
-        "label": "HIV Test Results",
+        "label": "HIV Second Test Results",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "hiv",
         "openmrs_entity_parent": "",
