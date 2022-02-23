@@ -88,5 +88,6 @@
     <string name="lab_tests_complete">Lab Tests Complete</string>
     <string name="med_and_supp_issued">Medications and Supplements Issued</string>
     <string name="second_hiv_test_results_woman">Second HIV Test Results</string>
+    <string name="second_hiv_test_results_partner">Second HIV Test Results</string>
 
 </resources>

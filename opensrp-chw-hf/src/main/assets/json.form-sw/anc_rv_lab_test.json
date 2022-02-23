@@ -711,7 +711,7 @@
       {
         "key": "hiv",
         "type": "native_radio",
-        "label": "Matokeo ya Kipimo ya Pili cha VVU",
+        "label": "Matokeo ya Kipimo cha VVU",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "hiv",
         "openmrs_entity_parent": "",

@@ -496,7 +496,7 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
         @Override
         public String evaluateSubTitle() {
             if (!StringUtils.isBlank(glucose_in_urine))
-                return context.getString(R.string.baseline_investigation_conducted);
+                return "Baseline Investigation Conducted";
             return "";
         }
     }

@@ -87,4 +87,5 @@
     <string name="med_and_supp_issued">Dawa na Virutubisho Vimetolewa</string>
     <string name="visit_in_progress">Hudhurio la %s linaendelea</string>
     <string name="second_hiv_test_results_woman">Matokeo ya Kipimo ya Pili cha VVU</string>
+    <string name="second_hiv_test_results_partner">Matokeo ya Kipimo ya Pili cha VVU</string>
 </resources>
