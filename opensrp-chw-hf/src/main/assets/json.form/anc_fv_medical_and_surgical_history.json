@@ -100,11 +100,11 @@
             "openmrs_entity_id": "anaemia_blood_transfusion"
           },
           {
-            "key": "hiv_aids",
-            "text": "HIV/AIDS",
+            "key": "known_on_art",
+            "text": "Known On ART",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "hiv_aids"
+            "openmrs_entity_id": "known_on_art"
           },
           {
             "key": "epilepsy",
@@ -171,7 +171,7 @@
           },
           {
             "key": "hx_hemorrhage",
-            "text": "Hx of Hemorrhage",
+            "text": "History of Hemorrhage",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "hx_hemorrhage"
@@ -199,7 +199,7 @@
           },
           {
             "key": "hx_abortions",
-            "text": "Hx of Abortions",
+            "text": "History of Abortions",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "hx_abortions"
