@@ -140,24 +140,17 @@
           },
           {
             "key": "primary",
-            "text": "primary",
+            "text": "Primary",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "primary"
           },
           {
-            "key": "secondary_o_level",
-            "text": "Secondary 'O' Level",
+            "key": "secondary",
+            "text": "Secondary",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "secondary_o_level"
-          },
-          {
-            "key": "secondary_a_level",
-            "text": "Secondary 'A' Level",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "secondary_a_level"
+            "openmrs_entity_id": "secondary"
           },
           {
             "key": "tertiary",
@@ -165,20 +158,6 @@
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "tertiary"
-          },
-          {
-            "key": "university",
-            "text": "University",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "university"
-          },
-          {
-            "key": "unknown",
-            "text": "Don't Know",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "unknown"
           }
         ],
         "v_required": {

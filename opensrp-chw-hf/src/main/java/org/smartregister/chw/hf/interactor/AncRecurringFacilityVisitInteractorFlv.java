@@ -214,6 +214,19 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                     labTestForm.getJSONObject("global").put("hiv_test_complete", HfAncDao.isTestConducted(Constants.DBConstants.ANC_HIV, baseEntityId));
                     labTestForm.getJSONObject("global").put("hiv_test_at_32_complete", HfAncDao.isHivTestConductedAtWk32(baseEntityId));
                     labTestForm.getJSONObject("global").put("hiv_status", HfAncDao.getHivStatus(baseEntityId));
+                    if((memberObject.getGestationAge() >= 32 || HfAncDao.getHivStatus(baseEntityId).equalsIgnoreCase("negative")) && (!HfAncDao.isHivTestConductedAtWk32(baseEntityId) || HfAncDao.getHivStatus(baseEntityId).equalsIgnoreCase("test_not_conducted")))
+                    {
+                        JSONArray fields = labTestForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+                        JSONObject renameSecondHivAt32 = null;
+                        for (int i = 0; i < fields.length(); i++) {
+                            if (fields.getJSONObject(i).getString(JsonFormConstants.KEY).equals("hiv")) {
+                                renameSecondHivAt32 = fields.getJSONObject(i);
+                                break;
+                            }
+                        }
+                        renameSecondHivAt32.put("label", context.getString(R.string.second_hiv_test_results_woman));
+
+                    }
                     if (details != null && !details.isEmpty()) {
                         JsonFormUtils.populateForm(labTestForm, details);
                     }
@@ -230,6 +243,18 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                     partnerTestingForm.getJSONObject("global").put("hepatitis_testing_done", HfAncDao.isPartnerTestedForHepatitis(baseEntityId));
                     partnerTestingForm.getJSONObject("global").put("partner_hiv_test_at_32_done", HfAncDao.isPartnerHivTestConductedAtWk32(baseEntityId));
                     partnerTestingForm.getJSONObject("global").put("partner_hiv_status", HfAncDao.getPartnerHivStatus(baseEntityId));
+                    if((memberObject.getGestationAge() >= 32 || HfAncDao.getPartnerHivStatus(baseEntityId).equalsIgnoreCase("negative")) && (!HfAncDao.isPartnerHivTestConductedAtWk32(baseEntityId) || HfAncDao.getPartnerHivStatus(baseEntityId).equalsIgnoreCase("test_not_conducted")))
+                    {
+                        JSONArray fields = partnerTestingForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+                        JSONObject renamePartnerSecondHivAt32 = null;
+                        for (int i = 0; i < fields.length(); i++) {
+                            if (fields.getJSONObject(i).getString(JsonFormConstants.KEY).equals("partner_hiv")) {
+                                renamePartnerSecondHivAt32 = fields.getJSONObject(i);
+                                break;
+                            }
+                        }
+                        renamePartnerSecondHivAt32.put("label", context.getString(R.string.second_hiv_test_results_partner));
+                    }
                     if (details != null && !details.isEmpty()) {
                         JsonFormUtils.populateForm(partnerTestingForm, details);
                     }
