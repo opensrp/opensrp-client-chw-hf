@@ -100,11 +100,11 @@
             "openmrs_entity_id": "anaemia_blood_transfusion"
           },
           {
-            "key": "hiv_aids",
-            "text": "VVU/UKIMWI",
+            "key": "known_on_art",
+            "text": "Known On ART",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "hiv_aids"
+            "openmrs_entity_id": "known_on_art"
           },
           {
             "key": "epilepsy",

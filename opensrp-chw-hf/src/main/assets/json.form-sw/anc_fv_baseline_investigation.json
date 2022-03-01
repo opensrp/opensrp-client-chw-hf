@@ -849,6 +849,13 @@
         "v_required": {
           "value": "true",
           "err": "Tafadhali jibu swali hili"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_baseline_investigation_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -1094,7 +1101,7 @@
       {
         "key": "counsel_arv_hepb_below_twenty_eight",
         "type": "toaster_notes",
-        "text": "To ushauri kwa Mama mwenye ujauzito wa wiki 28 kuhusiana na matumizi  ya dawa za kufubaza virusi vya Ukimwi (ARV)",
+        "text": "Toa ushauri kwa Mama mwenye ujauzito wa wiki 28 kuhusiana na matumizi  ya dawa za kufubaza virusi vya Ukimwi (ARV)",
         "openmrs_entity_id": "counsel_arv_hepb_below_twenty_eight",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -1102,7 +1109,7 @@
         "relevance": {
           "rules-engine": {
             "ex-rules": {
-              "rules-file": "anc_rv_lab_test_relevance.yml"
+              "rules-file": "anc_fv_baseline_investigation_relevance.yml"
             }
           }
         }

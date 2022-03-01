@@ -9,6 +9,7 @@ import org.smartregister.chw.anc.domain.MemberObject;
 import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
+import org.smartregister.chw.hf.R;
 
 import java.util.List;
 import java.util.Map;
@@ -17,31 +18,30 @@ import timber.log.Timber;
 
 public class AncObstetricExaminationAction implements BaseAncHomeVisitAction.AncHomeVisitActionHelper {
     protected MemberObject memberObject;
-    private String jsonPayload;
-
     private String abdominal_scars;
-    private BaseAncHomeVisitAction.ScheduleStatus scheduleStatus;
-    private String subTitle;
+    private Context context;
 
     public AncObstetricExaminationAction(MemberObject memberObject) {
         this.memberObject = memberObject;
     }
 
     @Override
-    public void onJsonFormLoaded(String jsonPayload, Context context, Map<String, List<VisitDetail>> map) {
-        this.jsonPayload = jsonPayload;
+    public void onJsonFormLoaded(String s, Context context, Map<String, List<VisitDetail>> map) {
+        this.context = context;
     }
 
     @Override
     public String getPreProcessed() {
-
-        try {
-            JSONObject jsonObject = new JSONObject(jsonPayload);
-            return jsonObject.toString();
-        } catch (Exception e) {
-            Timber.e(e);
-        }
         return null;
+    }
+
+    @Override
+    public BaseAncHomeVisitAction.Status evaluateStatusOnPayload() {
+        if (StringUtils.isBlank(abdominal_scars))
+            return BaseAncHomeVisitAction.Status.PENDING;
+        else {
+            return BaseAncHomeVisitAction.Status.COMPLETED;
+        }
     }
 
     @Override
@@ -56,43 +56,28 @@ public class AncObstetricExaminationAction implements BaseAncHomeVisitAction.Anc
 
     @Override
     public BaseAncHomeVisitAction.ScheduleStatus getPreProcessedStatus() {
-        return scheduleStatus;
+        return null;
     }
 
     @Override
     public String getPreProcessedSubTitle() {
-        return subTitle;
+        return null;
     }
 
     @Override
     public String postProcess(String s) {
-        return s;
-    }
-
-    @Override
-    public String evaluateSubTitle() {
-        if (StringUtils.isBlank(abdominal_scars))
-            return null;
-
-        StringBuilder stringBuilder = new StringBuilder();
-
-        //TODO ilakoze extract to string recources
-        stringBuilder.append("Obstetric Examination Completed");
-
-        return stringBuilder.toString();
-    }
-
-    @Override
-    public BaseAncHomeVisitAction.Status evaluateStatusOnPayload() {
-        if (StringUtils.isBlank(abdominal_scars))
-            return BaseAncHomeVisitAction.Status.PENDING;
-        else {
-            return BaseAncHomeVisitAction.Status.COMPLETED;
-        }
+        return null;
     }
 
     @Override
     public void onPayloadReceived(BaseAncHomeVisitAction baseAncHomeVisitAction) {
-        Timber.d("onPayloadReceived");
+        Timber.v("onPayloadReceived");
+    }
+
+    @Override
+    public String evaluateSubTitle() {
+        if (!StringUtils.isBlank(abdominal_scars))
+            return context.getString(R.string.obstetric_exam_complete);
+        return "";
     }
 }
