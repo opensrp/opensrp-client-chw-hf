@@ -8,6 +8,8 @@ import android.text.format.DateFormat;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -245,6 +247,9 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
             if (floatingActionButton != null)
                 floatingActionButton.setImageResource(R.drawable.floating_call);
         }
+
+        RelativeLayout partnerView = findViewById(R.id.rlPartnerView);
+        partnerView.setOnClickListener(this);
     }
 
     private void setHivPositive(Visit firstVisit, Visit lastVisit) throws JSONException{
@@ -349,6 +354,10 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
                 AncFirstFacilityVisitActivity.startMe(this, memberObject.getBaseEntityId(), true);
             else
                 AncRecurringFacilityVisitActivity.startMe(this, memberObject.getBaseEntityId(), true);
+        }
+        else if(id == R.id.rlPartnerView){
+            Intent intent = new Intent(this,PartnerRegistrationActivity.class);
+            startActivity(intent);
         }
     }
 
