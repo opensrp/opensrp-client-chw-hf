@@ -58,9 +58,10 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/register_columns"
+        android:id="@+id/new_client_registration"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:clickable="true"
         android:background="@color/white">
 
         <com.vijay.jsonwizard.views.CustomTextView
@@ -113,9 +114,10 @@
             app:layout_constraintBottom_toBottomOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/register_columns"
+        android:id="@+id/existing_client_registration"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:clickable="true"
         android:background="@color/white">
 
         <com.vijay.jsonwizard.views.CustomTextView

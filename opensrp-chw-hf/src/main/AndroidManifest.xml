@@ -202,14 +202,11 @@
         <activity
             android:name=".activity.InAppInventoryReportActivity"
             android:theme="@style/HFTheme.NoActionBar" />
-
         <activity
             android:name=".activity.AboveFiveChildProfileActivity"
             android:label="@string/child_details"
             android:theme="@style/HFTheme.NoActionBar" />
-
         <activity android:name="org.smartregister.chw.core.activity.ChwP2pModeSelectActivity" />
-
         <activity
             android:name=".activity.ChildMedicalHistoryActivity"
             android:theme="@style/HFTheme.NoActionBar" />
@@ -244,11 +241,14 @@
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
             android:name=".activity.PartnerRegistrationActivity"
-            android:exported="false"
-            android:theme="@style/HFTheme.NoActionBar"/>
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.AllMaleClientsActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="3f94f9c3caeff331b3a2bd8c2182b663ad6a955a" />
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"
