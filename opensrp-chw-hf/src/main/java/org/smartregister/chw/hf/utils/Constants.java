@@ -17,6 +17,7 @@ public class Constants extends CoreConstants {
         public static final String PMTCT_FIRST_EAC_VISIT = "PMTCT EAC First Visit";
         public static final String PMTCT_SECOND_EAC_VISIT = "PMTCT EAC Second Visit";
         public static final String UPDATE_HIV_INDEX_TESTING_FOLLOWUP= "Update HIV Index Contact Testing Followup";
+        public static final String PARTNER_REGISTRATION_EVENT = "Partner Registration";
 
     }
 
@@ -186,5 +187,12 @@ public class Constants extends CoreConstants {
 
     public interface PregnancyConfirmationGroups {
         String PREGNANCY_CONFIRMATION = "Pregnancy Confirmation";
+    }
+
+    public interface PartnerRegistrationConstants {
+        int EXISTING_PARTNER_REQUEST_CODE = 12344;
+        int NEW_PARTNER_REQUEST_CODE = 12345;
+        String BASE_ENTITY_ID = "BASE_ENTITY_ID";
+        String PARTNER_BASE_ENTITY_ID = "partner_base_entity_id";
     }
 }

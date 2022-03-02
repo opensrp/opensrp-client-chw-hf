@@ -922,6 +922,14 @@
           }
         },
         {
+          "column_name": "partner_base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "partner_base_entity_id"
+          }
+        },
+        {
           "column_name": "partner_registered",
           "type": "Event",
           "json_mapping": {

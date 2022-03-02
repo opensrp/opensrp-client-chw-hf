@@ -62,6 +62,7 @@ import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
 import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
 import static org.smartregister.chw.hf.utils.Constants.Events.ANC_FIRST_FACILITY_VISIT;
 import static org.smartregister.chw.hf.utils.Constants.Events.ANC_RECURRING_FACILITY_VISIT;
+import static org.smartregister.chw.hf.utils.Constants.PartnerRegistrationConstants.BASE_ENTITY_ID;
 
 public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     private CommonPersonObjectClient commonPersonObjectClient;
@@ -357,6 +358,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         }
         else if(id == R.id.rlPartnerView){
             Intent intent = new Intent(this,PartnerRegistrationActivity.class);
+            intent.putExtra(BASE_ENTITY_ID,memberObject.getBaseEntityId());
             startActivity(intent);
         }
     }

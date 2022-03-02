@@ -23,6 +23,8 @@ import java.util.Map;
 
 import androidx.annotation.NonNull;
 
+import static org.smartregister.chw.hf.utils.Constants.PartnerRegistrationConstants.BASE_ENTITY_ID;
+
 public class HfMaleClientRegisterProvider extends OpdRegisterProvider {
     private final Context context;
 
@@ -64,7 +66,7 @@ public class HfMaleClientRegisterProvider extends OpdRegisterProvider {
             builder.setPositiveButton(v.getContext().getString(R.string.yes), (dialog, id) -> {
                 Activity parentActivity = (Activity) context;
                 Intent intent = new Intent();
-                intent.putExtra("BASE_ENTITY_ID", baseEntityId);
+                intent.putExtra(BASE_ENTITY_ID, baseEntityId);
                 parentActivity.setResult(Activity.RESULT_OK, intent);
                 parentActivity.finish();
             });
