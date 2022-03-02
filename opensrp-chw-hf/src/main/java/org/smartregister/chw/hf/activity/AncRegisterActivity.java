@@ -1,8 +1,13 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.isMultiPartForm;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.widget.Toast;
+
+import androidx.annotation.MenuRes;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 import com.vijay.jsonwizard.constants.JsonFormConstants;
@@ -48,11 +53,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import androidx.annotation.MenuRes;
-import androidx.fragment.app.Fragment;
 import timber.log.Timber;
-
-import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.isMultiPartForm;
 
 public class AncRegisterActivity extends CoreAncRegisterActivity {
 
@@ -131,7 +132,13 @@ public class AncRegisterActivity extends CoreAncRegisterActivity {
             form.setWizard(false);
             intent.putExtra(JsonFormConstants.JSON_FORM_KEY.FORM, form);
 
-            if (isMultiPartForm(jsonForm)) {
+            if (jsonForm.getString("encounter_type").equals("ANC Partner Community Followup Referral")) {
+                form.setWizard(true);
+                form.setNavigationBackground(org.smartregister.chw.core.R.color.family_navigation);
+                form.setName(this.getString(R.string.anc_partner_followup_referral));
+                form.setNextLabel(this.getResources().getString(org.smartregister.chw.core.R.string.next));
+                form.setPreviousLabel(this.getResources().getString(org.smartregister.chw.core.R.string.back));
+            } else if (isMultiPartForm(jsonForm)) {
                 form.setWizard(true);
                 form.setNavigationBackground(org.smartregister.chw.core.R.color.family_navigation);
                 form.setName(this.getString(R.string.pregnancy_confirmation));
