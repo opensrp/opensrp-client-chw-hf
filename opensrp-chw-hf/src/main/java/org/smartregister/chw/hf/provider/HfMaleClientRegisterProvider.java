@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
-import android.widget.Toast;
 
 import org.apache.commons.text.WordUtils;
 import org.joda.time.DateTime;
@@ -23,7 +22,6 @@ import org.smartregister.opd.utils.ConfigurationInstancesHelper;
 import java.util.Map;
 
 import androidx.annotation.NonNull;
-import timber.log.Timber;
 
 public class HfMaleClientRegisterProvider extends OpdRegisterProvider {
     private final Context context;
@@ -60,14 +58,14 @@ public class HfMaleClientRegisterProvider extends OpdRegisterProvider {
         viewHolder.itemView.findViewById(R.id.go_to_profile_image_view).setVisibility(View.GONE);
         viewHolder.itemView.setOnClickListener(v -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
-            builder.setTitle("Register this client as Partner?");
-            builder.setMessage(firstName + " " + middleName + " " + lastName);
+            builder.setTitle(R.string.register_partner_dialog_title);
+            builder.setMessage(WordUtils.capitalize(fullName) + ", " + WordUtils.capitalize(age));
             builder.setCancelable(true);
             builder.setPositiveButton(v.getContext().getString(R.string.yes), (dialog, id) -> {
                 Activity parentActivity = (Activity) context;
                 Intent intent = new Intent();
                 intent.putExtra("BASE_ENTITY_ID", baseEntityId);
-                parentActivity.setResult(Activity.RESULT_OK,intent);
+                parentActivity.setResult(Activity.RESULT_OK, intent);
                 parentActivity.finish();
             });
             builder.setNegativeButton(v.getContext().getString(R.string.cancel), ((dialog, id) -> dialog.cancel()));
@@ -75,8 +73,6 @@ public class HfMaleClientRegisterProvider extends OpdRegisterProvider {
             AlertDialog alertDialog = builder.create();
             alertDialog.show();
         });
-        //addButtonClickListeners(commonPersonObjectClient, viewHolder);
-
     }
 
 

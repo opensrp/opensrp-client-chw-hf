@@ -259,8 +259,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/view_family_location_row"
             android:background="@drawable/list_item_background_selctor"
-            android:padding="20dp"
             android:clickable="true"
+            android:padding="20dp"
             android:visibility="visible">
 
             <ImageView
@@ -286,7 +286,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@+id/partner_view_image"
-                android:text="Register Partner"
+                android:text="@string/register_partner"
                 android:textColor="@android:color/darker_gray" />
 
         </RelativeLayout>

@@ -89,5 +89,10 @@
     <string name="med_and_supp_issued">Medications and Supplements Issued</string>
     <string name="second_hiv_test_results_woman">Second HIV Test Results</string>
     <string name="second_hiv_test_results_partner">Second HIV Test Results</string>
+    <string name="register_partner">Register Partner</string>
+    <string name="new_client">New Client</string>
+    <string name="existing_client">Existing Client</string>
+    <string name="all_male_clients">All Male Clients</string>
+    <string name="register_partner_dialog_title">Register this client as Partner?</string>
 
 </resources>
