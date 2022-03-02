@@ -383,7 +383,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
                 intent.putExtra(org.smartregister.family.util.Constants.INTENT_KEY.FAMILY_HEAD, familyDetailsModel.getFamilyHead());
                 intent.putExtra(org.smartregister.family.util.Constants.INTENT_KEY.PRIMARY_CAREGIVER, familyDetailsModel.getPrimaryCareGiver());
                 intent.putExtra(org.smartregister.family.util.Constants.INTENT_KEY.VILLAGE_TOWN, familyDetailsModel.getVillageTown());
-                intent.putExtra(CoreConstants.INTENT_KEY.TOOLBAR_TITLE, "Return to ANC Member Profile");
+                intent.putExtra(CoreConstants.INTENT_KEY.TOOLBAR_TITLE, R.string.return_to_anc_profile);
                 startActivity(intent);
             } else {
                 Intent intent = new Intent(this, PartnerRegistrationActivity.class);

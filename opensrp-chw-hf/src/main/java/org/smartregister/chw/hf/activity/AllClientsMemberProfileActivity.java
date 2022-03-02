@@ -3,6 +3,7 @@ package org.smartregister.chw.hf.activity;
 import android.content.Context;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.vijay.jsonwizard.utils.FormUtils;
 
@@ -62,6 +63,18 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
         menu.findItem(R.id.action_sick_child_follow_up).setVisible(false);
         menu.findItem(R.id.action_malaria_diagnosis).setVisible(false);
         return true;
+    }
+
+    @Override
+    protected void setupViews() {
+        super.setupViews();
+        TextView toolbarTitleView = findViewById(org.smartregister.chw.core.R.id.toolbar_title);
+        int toolbarTitle = getIntent().getIntExtra(CoreConstants.INTENT_KEY.TOOLBAR_TITLE,0);
+        if(toolbarTitle != 0){
+            toolbarTitleView.setText(getString(toolbarTitle));
+        }else{
+            toolbarTitleView.setText(getString(org.smartregister.chw.core.R.string.return_to_all_client));
+        }
     }
 
     @Override
