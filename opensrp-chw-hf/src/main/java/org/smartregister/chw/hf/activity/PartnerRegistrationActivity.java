@@ -1,8 +1,10 @@
 package org.smartregister.chw.hf.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import org.smartregister.chw.hf.R;
 import org.smartregister.view.activity.SecuredActivity;
@@ -11,6 +13,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 public class PartnerRegistrationActivity extends SecuredActivity implements View.OnClickListener {
 
+    private final int EXISTING_PARTNER_REQUEST_CODE = 12344;
     @Override
     protected void onCreation() {
         setContentView(R.layout.activity_partner_registration);
@@ -49,6 +52,19 @@ public class PartnerRegistrationActivity extends SecuredActivity implements View
     }
 
     private void searchForPartner() {
-        startActivity(new Intent(this,AllMaleClientsActivity.class));
+        startActivityForResult(new Intent(this,AllMaleClientsActivity.class),EXISTING_PARTNER_REQUEST_CODE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == EXISTING_PARTNER_REQUEST_CODE){
+            if(resultCode == Activity.RESULT_OK){
+                String partner_id = data.getStringExtra("BASE_ENTITY_ID");
+                Toast.makeText(this,partner_id,Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        }
+
     }
 }

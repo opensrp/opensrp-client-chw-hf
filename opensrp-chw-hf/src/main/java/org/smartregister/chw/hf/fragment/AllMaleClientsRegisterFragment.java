@@ -46,7 +46,7 @@ public class AllMaleClientsRegisterFragment extends CoreAllClientsRegisterFragme
         View dueOnlyLayout = view.findViewById(R.id.due_only_layout);
         toolbar = view.findViewById(org.smartregister.R.id.register_toolbar);
         toolbar.setVisibility(View.INVISIBLE);
-        ViewGroup.LayoutParams layoutParams = (ViewGroup.LayoutParams) toolbar.getLayoutParams();
+        ViewGroup.LayoutParams layoutParams = toolbar.getLayoutParams();
         layoutParams.height = 20;
         toolbar.setLayoutParams(layoutParams);
 
