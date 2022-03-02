@@ -115,7 +115,7 @@ public class PartnerRegistrationActivity extends SecuredActivity implements View
         if (StringUtils.isBlank(entityId)) {
             Toast.makeText(this, R.string.no_unique_id, Toast.LENGTH_SHORT).show();
         } else {
-            JSONObject jsonObject = getFormAsJson(CoreConstants.JSON_FORM.getAllClientRegistrationForm(), entityId, null);
+            JSONObject jsonObject = getFormAsJson(org.smartregister.chw.hf.utils.Constants.JsonForm.getPartnerRegistrationForm(), entityId, null);
             startFormActivity(jsonObject);
         }
     }

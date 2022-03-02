@@ -50,6 +50,12 @@ public class Constants extends CoreConstants {
         private static final String COUNSELLING = "anc_counselling";
         private static final String HIV_INDEX_CONTACT_CTC_ENROLLMENT = "hiv_index_contact_ctc_enrollment";
 
+        public static String getPartnerRegistrationForm() {
+            return Utils.getLocalForm(PARTNER_REGISTRATION_FORM, locale, assetManager);
+        }
+
+        private static final String PARTNER_REGISTRATION_FORM = "male_partner_registration_form";
+
         public static String getCounselling() {
             return COUNSELLING;
         }
