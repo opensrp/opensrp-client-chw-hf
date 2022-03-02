@@ -188,28 +188,31 @@ public class PartnerRegistrationActivity extends SecuredActivity implements View
             if (resultCode == Activity.RESULT_OK) {
                 String partner_id = data.getStringExtra(BASE_ENTITY_ID);
                 savePartnerDetails(partner_id, clientBaseEntityId);
-                finish();
+                startActivity(new Intent(this,AncRegisterActivity.class));
             }
         }
         if (requestCode == NEW_PARTNER_REQUEST_CODE) {
-            String jsonString = data.getStringExtra(OpdConstants.JSON_FORM_EXTRA.JSON);
-            Timber.d("JSONResult : %s", jsonString);
+            if (resultCode == Activity.RESULT_OK){
+                String jsonString = data.getStringExtra(OpdConstants.JSON_FORM_EXTRA.JSON);
+                Timber.d("JSONResult : %s", jsonString);
 
-            JSONObject form;
-            try {
-                form = new JSONObject(jsonString);
+                JSONObject form;
+                try {
+                    form = new JSONObject(jsonString);
 
-                String encounterType;
-                encounterType = form.getString(OpdJsonFormUtils.ENCOUNTER_TYPE);
-                if (encounterType.equals(CoreConstants.EventType.FAMILY_REGISTRATION)) {
-                    RegisterParams registerParam = new RegisterParams();
-                    registerParam.setEditMode(false);
-                    registerParam.setFormTag(OpdJsonFormUtils.formTag(OpdUtils.context().allSharedPreferences()));
-                    saveForm(jsonString, registerParam);
-                    finish();
+                    String encounterType;
+                    encounterType = form.getString(OpdJsonFormUtils.ENCOUNTER_TYPE);
+                    if (encounterType.equals(CoreConstants.EventType.FAMILY_REGISTRATION)) {
+                        RegisterParams registerParam = new RegisterParams();
+                        registerParam.setEditMode(false);
+                        registerParam.setFormTag(OpdJsonFormUtils.formTag(OpdUtils.context().allSharedPreferences()));
+                        saveForm(jsonString, registerParam);
+                        startActivity(new Intent(this,AncRegisterActivity.class));
+
+                    }
+                } catch (JSONException e) {
+                    Timber.e(e);
                 }
-            } catch (JSONException e) {
-                Timber.e(e);
             }
         }
 

@@ -288,6 +288,17 @@
                 android:layout_toRightOf="@+id/partner_view_image"
                 android:text="@string/register_partner"
                 android:textColor="@android:color/darker_gray" />
+            <org.smartregister.view.customcontrols.CustomFontTextView
+                android:id="@+id/partner_details"
+                style="@style/CustomFontTextViewStyle.ClientList.Light"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/partner_view_image"
+                android:layout_below="@id/text_view_partner_profile"
+                android:visibility="gone"
+                android:textColor="@android:color/darker_gray" />
 
         </RelativeLayout>
 

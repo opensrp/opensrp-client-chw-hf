@@ -31,7 +31,9 @@ import org.smartregister.chw.core.utils.HomeVisitUtil;
 import org.smartregister.chw.core.utils.VisitSummary;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.adapter.ReferralCardViewAdapter;
+import org.smartregister.chw.hf.dao.FamilyDao;
 import org.smartregister.chw.hf.dao.HfAncDao;
+import org.smartregister.chw.hf.model.FamilyDetailsModel;
 import org.smartregister.chw.hf.model.FamilyProfileModel;
 import org.smartregister.chw.hf.presenter.AncMemberProfilePresenter;
 import org.smartregister.chw.hf.utils.VisitUtils;
@@ -49,9 +51,11 @@ import org.smartregister.family.util.Utils;
 import org.smartregister.repository.AllSharedPreferences;
 import org.smartregister.view.customcontrols.CustomFontTextView;
 
+import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.Set;
 
@@ -252,11 +256,17 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
 
         RelativeLayout partnerView = findViewById(R.id.rlPartnerView);
         partnerView.setOnClickListener(this);
-        CustomFontTextView tvPartnerProfile = findViewById(R.id.text_view_partner_profile);
+        CustomFontTextView tvPartnerProfileView = findViewById(R.id.text_view_partner_profile);
+        CustomFontTextView tvPartnerDetails = findViewById(R.id.partner_details);
 
         partnerBaseEntityId = HfAncDao.getPartnerBaseEntityId(memberObject.getBaseEntityId());
         if (StringUtils.isNotBlank(partnerBaseEntityId)) {
-            tvPartnerProfile.setText(R.string.view_partner_prefile);
+            tvPartnerProfileView.setText(R.string.view_partner_prefile);
+            tvPartnerDetails.setVisibility(View.VISIBLE);
+            CommonPersonObjectClient partnerClient = getClientDetailsByBaseEntityID(partnerBaseEntityId);
+            HashMap<String, String> clientDetails = (HashMap<String, String>) partnerClient.getColumnmaps();
+            tvPartnerDetails.setText(MessageFormat.format("{0} {1} {2}", clientDetails.get("first_name"), clientDetails.get("middle_name"), clientDetails.get("last_name") != null ? clientDetails.get("last_name") : ""));
+
         }
 
     }
@@ -365,11 +375,21 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
                 AncRecurringFacilityVisitActivity.startMe(this, memberObject.getBaseEntityId(), true);
         } else if (id == R.id.rlPartnerView) {
             if (StringUtils.isNotBlank(partnerBaseEntityId)) {
-
+                FamilyDetailsModel familyDetailsModel = FamilyDao.getFamilyDetail(partnerBaseEntityId);
+                Intent intent = new Intent(this, AllClientsMemberProfileActivity.class);
+                intent.putExtras(new Bundle());
+                intent.putExtra(org.smartregister.family.util.Constants.INTENT_KEY.BASE_ENTITY_ID, partnerBaseEntityId);
+                intent.putExtra(CoreConstants.INTENT_KEY.CHILD_COMMON_PERSON, org.smartregister.chw.core.utils.Utils.getCommonPersonObjectClient(partnerBaseEntityId));
+                intent.putExtra(org.smartregister.family.util.Constants.INTENT_KEY.FAMILY_HEAD, familyDetailsModel.getFamilyHead());
+                intent.putExtra(org.smartregister.family.util.Constants.INTENT_KEY.PRIMARY_CAREGIVER, familyDetailsModel.getPrimaryCareGiver());
+                intent.putExtra(org.smartregister.family.util.Constants.INTENT_KEY.VILLAGE_TOWN, familyDetailsModel.getVillageTown());
+                intent.putExtra(CoreConstants.INTENT_KEY.TOOLBAR_TITLE, "Return to ANC Member Profile");
+                startActivity(intent);
             } else {
                 Intent intent = new Intent(this, PartnerRegistrationActivity.class);
                 intent.putExtra(BASE_ENTITY_ID, memberObject.getBaseEntityId());
                 startActivity(intent);
+                setupViews();
             }
         }
     }
