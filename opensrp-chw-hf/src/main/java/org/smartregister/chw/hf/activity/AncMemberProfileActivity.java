@@ -31,6 +31,7 @@ import org.smartregister.chw.core.utils.VisitSummary;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.adapter.ReferralCardViewAdapter;
 import org.smartregister.chw.hf.dao.HfAncDao;
+import org.smartregister.chw.hf.interactor.AncMemberProfileInteractor;
 import org.smartregister.chw.hf.model.FamilyProfileModel;
 import org.smartregister.chw.hf.presenter.AncMemberProfilePresenter;
 import org.smartregister.chw.hf.utils.VisitUtils;
@@ -90,7 +91,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
 
     @Override
     protected void registerPresenter() {
-        presenter = new AncMemberProfilePresenter(this, new CoreAncMemberProfileInteractor(this),memberObject);
+        presenter = new AncMemberProfilePresenter(this, new AncMemberProfileInteractor(this),memberObject);
     }
 
     @Override
