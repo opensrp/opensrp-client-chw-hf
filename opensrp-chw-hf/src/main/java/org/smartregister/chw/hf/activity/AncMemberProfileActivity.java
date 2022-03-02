@@ -9,7 +9,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -48,6 +47,7 @@ import org.smartregister.family.interactor.FamilyProfileInteractor;
 import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.family.util.Utils;
 import org.smartregister.repository.AllSharedPreferences;
+import org.smartregister.view.customcontrols.CustomFontTextView;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -67,6 +67,8 @@ import static org.smartregister.chw.hf.utils.Constants.PartnerRegistrationConsta
 public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     private CommonPersonObjectClient commonPersonObjectClient;
     private boolean hivPositive;
+    private String partnerBaseEntityId;
+
     public static void startMe(Activity activity, String baseEntityID) {
         Intent intent = new Intent(activity, AncMemberProfileActivity.class);
         passToolbarTitle(activity, intent);
@@ -93,7 +95,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
 
     @Override
     protected void registerPresenter() {
-        presenter = new AncMemberProfilePresenter(this, new CoreAncMemberProfileInteractor(this),memberObject);
+        presenter = new AncMemberProfilePresenter(this, new CoreAncMemberProfileInteractor(this), memberObject);
     }
 
     @Override
@@ -210,7 +212,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     public void setupViews() {
         super.setupViews();
         updateToolbarTitle(this, org.smartregister.chw.core.R.id.toolbar_title, memberObject.getFamilyName());
-        if(!HfAncDao.isClientClosed(baseEntityID)){
+        if (!HfAncDao.isClientClosed(baseEntityID)) {
             getButtonStatus();
             try {
                 VisitUtils.processVisits();
@@ -220,25 +222,24 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
             Visit firstVisit = getVisit(ANC_FIRST_FACILITY_VISIT);
             Visit lastVisit = getVisit(ANC_RECURRING_FACILITY_VISIT);
             try {
-                setHivPositive(firstVisit,lastVisit);
+                setHivPositive(firstVisit, lastVisit);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            if(firstVisit == null){
+            if (firstVisit == null) {
                 textview_record_anc_visit.setText(R.string.record_anc_first_visit);
-            }else{
+            } else {
                 textview_record_anc_visit.setText(R.string.record_anc_followup_visit);
             }
 
-            if(lastVisit == null){
-                if(firstVisit != null){
-                  checkVisitStatus(firstVisit);
-               }
-            }else{
+            if (lastVisit == null) {
+                if (firstVisit != null) {
+                    checkVisitStatus(firstVisit);
+                }
+            } else {
                 checkVisitStatus(lastVisit);
             }
-        }
-        else{
+        } else {
             layoutRecordView.setVisibility(View.GONE);
             pregnancyRiskLabel.setTextSize(12);
         }
@@ -251,26 +252,33 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
 
         RelativeLayout partnerView = findViewById(R.id.rlPartnerView);
         partnerView.setOnClickListener(this);
+        CustomFontTextView tvPartnerProfile = findViewById(R.id.text_view_partner_profile);
+
+        partnerBaseEntityId = HfAncDao.getPartnerBaseEntityId(memberObject.getBaseEntityId());
+        if (StringUtils.isNotBlank(partnerBaseEntityId)) {
+            tvPartnerProfile.setText(R.string.view_partner_prefile);
+        }
+
     }
 
-    private void setHivPositive(Visit firstVisit, Visit lastVisit) throws JSONException{
+    private void setHivPositive(Visit firstVisit, Visit lastVisit) throws JSONException {
         hivPositive = false;
         JSONObject jsonObject = null;
-        if(firstVisit != null){
+        if (firstVisit != null) {
             jsonObject = new JSONObject(firstVisit.getJson());
         }
-        if(lastVisit != null){
+        if (lastVisit != null) {
             jsonObject = new JSONObject(lastVisit.getJson());
         }
 
-       if(jsonObject != null){
+        if (jsonObject != null) {
             JSONArray obs = jsonObject.getJSONArray("obs");
             int obsSize = obs.length();
-            for(int i = 0; i < obsSize; i++){
+            for (int i = 0; i < obsSize; i++) {
                 JSONObject checkObj = obs.getJSONObject(i);
-                if(checkObj.getString("fieldCode").equalsIgnoreCase("hiv")){
-                   JSONArray values = checkObj.getJSONArray("values");
-                    if(values.getString(0).equalsIgnoreCase("positive")){
+                if (checkObj.getString("fieldCode").equalsIgnoreCase("hiv")) {
+                    JSONArray values = checkObj.getJSONArray("values");
+                    if (values.getString(0).equalsIgnoreCase("positive")) {
                         hivPositive = true;
                         break;
                     }
@@ -281,22 +289,22 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     }
 
     private void checkVisitStatus(Visit firstVisit) {
-            boolean visitDone = firstVisit.getProcessed();
-            if (!visitDone) {
-                showVisitInProgress();
-                textViewUndo.setVisibility(View.GONE);
-                textViewAncVisitNot.setVisibility(View.GONE);
-            }else{
-                getButtonStatus();
-            }
+        boolean visitDone = firstVisit.getProcessed();
+        if (!visitDone) {
+            showVisitInProgress();
+            textViewUndo.setVisibility(View.GONE);
+            textViewAncVisitNot.setVisibility(View.GONE);
+        } else {
+            getButtonStatus();
+        }
     }
 
     private void showVisitInProgress() {
-       layoutRecordView.setVisibility(View.GONE);
-       tvEdit.setVisibility(View.VISIBLE);
-       layoutNotRecordView.setVisibility(View.VISIBLE);
-       textViewNotVisitMonth.setText(getContext().getString(R.string.visit_in_progress,"ANC"));
-       imageViewCross.setImageResource(org.smartregister.chw.core.R.drawable.activityrow_notvisited);
+        layoutRecordView.setVisibility(View.GONE);
+        tvEdit.setVisibility(View.VISIBLE);
+        layoutNotRecordView.setVisibility(View.VISIBLE);
+        textViewNotVisitMonth.setText(getContext().getString(R.string.visit_in_progress, "ANC"));
+        imageViewCross.setImageResource(org.smartregister.chw.core.R.drawable.activityrow_notvisited);
     }
 
 
@@ -355,11 +363,14 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
                 AncFirstFacilityVisitActivity.startMe(this, memberObject.getBaseEntityId(), true);
             else
                 AncRecurringFacilityVisitActivity.startMe(this, memberObject.getBaseEntityId(), true);
-        }
-        else if(id == R.id.rlPartnerView){
-            Intent intent = new Intent(this,PartnerRegistrationActivity.class);
-            intent.putExtra(BASE_ENTITY_ID,memberObject.getBaseEntityId());
-            startActivity(intent);
+        } else if (id == R.id.rlPartnerView) {
+            if (StringUtils.isNotBlank(partnerBaseEntityId)) {
+
+            } else {
+                Intent intent = new Intent(this, PartnerRegistrationActivity.class);
+                intent.putExtra(BASE_ENTITY_ID, memberObject.getBaseEntityId());
+                startActivity(intent);
+            }
         }
     }
 
@@ -385,7 +396,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
 
         String visitStatus = visitSummary.getVisitStatus();
         String monthString = null;
-        if(latestVisit != null){
+        if (latestVisit != null) {
             Calendar cal = Calendar.getInstance();
             int offset = cal.getTimeZone().getOffset(cal.getTimeInMillis());
 
@@ -406,12 +417,12 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
             textViewUndo.setText(getString(org.smartregister.chw.opensrp_chw_anc.R.string.undo));
             record_reccuringvisit_done_bar.setVisibility(View.GONE);
             openVisitMonthView();
-        }else if(visitStatus.equalsIgnoreCase("LESS_TWENTY_FOUR") && !pmtctPendingRegistration){
+        } else if (visitStatus.equalsIgnoreCase("LESS_TWENTY_FOUR") && !pmtctPendingRegistration) {
             layoutNotRecordView.setVisibility(View.VISIBLE);
             textViewNotVisitMonth.setText(getContext().getString(org.smartregister.chw.core.R.string.anc_visit_done, monthString));
             tvEdit.setVisibility(View.GONE);
             imageViewCross.setImageResource(org.smartregister.chw.core.R.drawable.activityrow_visited);
-        } else if(pmtctPendingRegistration){
+        } else if (pmtctPendingRegistration) {
             layoutNotRecordView.setVisibility(View.VISIBLE);
             textViewNotVisitMonth.setText(getContext().getString(R.string.pmtct_pending_registration));
             tvEdit.setText(getContext().getString(R.string.register_button_text));
@@ -476,15 +487,15 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         Visit firstVisit = getVisit(ANC_FIRST_FACILITY_VISIT);
         Visit lastVisit = getVisit(ANC_RECURRING_FACILITY_VISIT);
         try {
-            setHivPositive(firstVisit,lastVisit);
+            setHivPositive(firstVisit, lastVisit);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        if(lastVisit == null){
-            if(firstVisit != null){
+        if (lastVisit == null) {
+            if (firstVisit != null) {
                 checkVisitStatus(firstVisit);
             }
-        }else{
+        } else {
             checkVisitStatus(lastVisit);
         }
     }
@@ -495,8 +506,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         if (itemId == org.smartregister.chw.core.R.id.action_pmtct_register) {
             startPmtctRegistration();
             return true;
-        }
-        else if (itemId == R.id.action_pregnancy_out_come) {
+        } else if (itemId == R.id.action_pregnancy_out_come) {
             PncRegisterActivity.startPncRegistrationActivity(AncMemberProfileActivity.this, memberObject.getBaseEntityId(), null, CoreConstants.JSON_FORM.getPregnancyOutcome(), AncLibrary.getInstance().getUniqueIdRepository().getNextUniqueId().getOpenmrsId(), memberObject.getFamilyBaseEntityId(), memberObject.getFamilyName(), memberObject.getLastMenstrualPeriod());
             return true;
         }

@@ -94,5 +94,6 @@
     <string name="existing_client">Existing Client</string>
     <string name="all_male_clients">All Male Clients</string>
     <string name="register_partner_dialog_title">Register this client as Partner?</string>
+    <string name="view_partner_prefile">View Partner Profile</string>
 
 </resources>

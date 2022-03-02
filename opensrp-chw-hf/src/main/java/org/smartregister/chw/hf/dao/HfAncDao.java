@@ -43,6 +43,26 @@ public class HfAncDao extends AbstractDao {
         return  false;
     }
 
+    public static String getPartnerBaseEntityId(String baseEntityId){
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor,"partner_base_entity_id");
+
+        String sql = String.format(
+                "SELECT partner_base_entity_id FROM %s WHERE base_entity_id = '%s' " +
+                        "AND partner_base_entity_id is not null " +
+                        "AND is_closed = 0",
+                "ec_anc_register",
+                baseEntityId
+        );
+
+        List<String> res = readData(sql,dataMap);
+
+        if(res.size() == 1){
+            return res.get(0);
+        };
+        return  "";
+    }
+
+
     public static boolean isPartnerTestedForHiv(String baseEntityId) {
         DataMap<String> dataMap = cursor -> getCursorValue(cursor,"partner_hiv");
 
