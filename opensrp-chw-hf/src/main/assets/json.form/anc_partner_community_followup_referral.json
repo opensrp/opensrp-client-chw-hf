@@ -72,6 +72,21 @@
           "value": "false",
           "err": "Please enter the your remarks/comments"
         }
+      },
+      {
+        "key": "anc_partner_community_referral_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "anc_partner_community_referral_date",
+        "type": "hidden",
+        "is_problem": false,
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_partner_community_followup_calculation.yml"
+            }
+          }
+        }
       }
     ]
   }
