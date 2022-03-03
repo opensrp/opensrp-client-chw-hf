@@ -5,7 +5,7 @@ import android.view.View;
 
 import org.jetbrains.annotations.Contract;
 import org.smartregister.chw.hf.activity.CommunityFollowupFeedbackViewActivity;
-import org.smartregister.chw.hf.model.HivTbFollowupFeedbackDetailsModel;
+import org.smartregister.chw.hf.model.ChwFollowupFeedbackDetailsModel;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 
 /**
@@ -15,7 +15,7 @@ import org.smartregister.commonregistry.CommonPersonObjectClient;
  */
 
 public class CommunityFollowupFeedbackRecyclerClickListener implements View.OnClickListener {
-    private HivTbFollowupFeedbackDetailsModel followupFeedbackDetailsModel;
+    private ChwFollowupFeedbackDetailsModel followupFeedbackDetailsModel;
     private Activity activity;
     private String startingActivity;
     private CommonPersonObjectClient commonPersonObjectClient;
@@ -33,11 +33,11 @@ public class CommunityFollowupFeedbackRecyclerClickListener implements View.OnCl
         this.activity = activity;
     }
 
-    public HivTbFollowupFeedbackDetailsModel getFollowupFeedbackDetailsModel() {
+    public ChwFollowupFeedbackDetailsModel getFollowupFeedbackDetailsModel() {
         return followupFeedbackDetailsModel;
     }
 
-    public void setFollowupFeedbackDetailsModel(HivTbFollowupFeedbackDetailsModel followupFeedbackDetailsModel) {
+    public void setFollowupFeedbackDetailsModel(ChwFollowupFeedbackDetailsModel followupFeedbackDetailsModel) {
         this.followupFeedbackDetailsModel = followupFeedbackDetailsModel;
     }
 

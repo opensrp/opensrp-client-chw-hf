@@ -7,8 +7,8 @@ import org.smartregister.chw.core.interactor.CoreTbProfileInteractor;
 import org.smartregister.chw.core.repository.ChwTaskRepository;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.contract.TbProfileContract;
-import org.smartregister.chw.hf.dao.HivFollowupFeedbackDao;
-import org.smartregister.chw.hf.model.HivTbFollowupFeedbackDetailsModel;
+import org.smartregister.chw.hf.dao.HfFollowupFeedbackDao;
+import org.smartregister.chw.hf.model.ChwFollowupFeedbackDetailsModel;
 import org.smartregister.chw.hf.model.HivTbReferralTasksAndFollowupFeedbackModel;
 import org.smartregister.chw.tb.contract.BaseTbProfileContract;
 import org.smartregister.chw.tb.domain.TbMemberObject;
@@ -38,9 +38,9 @@ public class HfTbProfileInteractor extends CoreTbProfileInteractor implements Tb
             tasksAndFollowupFeedbackModels.add(tasksAndFollowupFeedbackModel);
         }
 
-        List<HivTbFollowupFeedbackDetailsModel> followupFeedbackList = HivFollowupFeedbackDao.getTbFollowupFeedback(baseEntityId);
+        List<ChwFollowupFeedbackDetailsModel> followupFeedbackList = HfFollowupFeedbackDao.getTbFollowupFeedback(baseEntityId);
 
-        for (HivTbFollowupFeedbackDetailsModel followupFeedbackDetailsModel : followupFeedbackList) {
+        for (ChwFollowupFeedbackDetailsModel followupFeedbackDetailsModel : followupFeedbackList) {
             HivTbReferralTasksAndFollowupFeedbackModel tasksAndFollowupFeedbackModel = new HivTbReferralTasksAndFollowupFeedbackModel();
             tasksAndFollowupFeedbackModel.setFollowupFeedbackDetailsModel(followupFeedbackDetailsModel);
             tasksAndFollowupFeedbackModel.setType("FOLLOWUP_FEEDBACK");

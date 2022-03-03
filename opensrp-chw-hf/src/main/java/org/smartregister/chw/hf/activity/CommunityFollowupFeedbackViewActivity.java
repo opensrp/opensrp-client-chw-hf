@@ -14,7 +14,7 @@ import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.BuildConfig;
 import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
-import org.smartregister.chw.hf.model.HivTbFollowupFeedbackDetailsModel;
+import org.smartregister.chw.hf.model.ChwFollowupFeedbackDetailsModel;
 import org.smartregister.chw.hf.utils.AllClientsUtils;
 import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.clientandeventmodel.Obs;
@@ -45,9 +45,9 @@ import static org.smartregister.chw.tb.util.Constants.Tables.TB_COMMUNITY_FEEDBA
  * @author cozej4 https://github.com/cozej4
  */
 public class CommunityFollowupFeedbackViewActivity extends BaseReferralTaskViewActivity implements View.OnClickListener {
-    public HivTbFollowupFeedbackDetailsModel followupFeedbackDetailsModel;
+    public ChwFollowupFeedbackDetailsModel followupFeedbackDetailsModel;
 
-    public static void startCommunityFollowupFeedbackViewActivity(Activity activity, CommonPersonObjectClient personObjectClient, HivTbFollowupFeedbackDetailsModel followupFeedbackDetailsModel, String startingActivity) {
+    public static void startCommunityFollowupFeedbackViewActivity(Activity activity, CommonPersonObjectClient personObjectClient, ChwFollowupFeedbackDetailsModel followupFeedbackDetailsModel, String startingActivity) {
         Intent intent = new Intent(activity, CommunityFollowupFeedbackViewActivity.class);
         CommunityFollowupFeedbackViewActivity.personObjectClient = personObjectClient;
         intent.putExtra(CoreConstants.INTENT_KEY.USERS_TASKS, followupFeedbackDetailsModel);
@@ -70,7 +70,7 @@ public class CommunityFollowupFeedbackViewActivity extends BaseReferralTaskViewA
     }
 
     protected void extraFollowupFeedback() {
-        followupFeedbackDetailsModel = (HivTbFollowupFeedbackDetailsModel) getIntent().getSerializableExtra(CoreConstants.INTENT_KEY.USERS_TASKS);
+        followupFeedbackDetailsModel = (ChwFollowupFeedbackDetailsModel) getIntent().getSerializableExtra(CoreConstants.INTENT_KEY.USERS_TASKS);
         if (followupFeedbackDetailsModel == null) {
             Timber.e("CommunityFollowupFeedbackViewActivity --> The followup feedback object is null");
             finish();

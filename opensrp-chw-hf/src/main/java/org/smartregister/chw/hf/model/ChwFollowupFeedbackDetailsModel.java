@@ -2,7 +2,7 @@ package org.smartregister.chw.hf.model;
 
 import java.io.Serializable;
 
-public class HivTbFollowupFeedbackDetailsModel implements Serializable {
+public class ChwFollowupFeedbackDetailsModel implements Serializable {
     private String feedbackType;
     private String baseEntityId;
     private String feedbackFormSubmissionId;

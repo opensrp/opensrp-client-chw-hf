@@ -1,0 +1,95 @@
+{
+  "validate_on_submit": true,
+  "show_errors_on_submit": false,
+  "count": "1",
+  "encounter_type": "ANC Partner Community Followup Referral",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "step1": {
+    "title": "ANC Partner Community Followup",
+    "fields": [
+      {
+        "key": "toast_refer_to_chw",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "toaster_notes",
+        "text": "Client will be referred to CHW for Partner Followup\n\nSave the form to send the referral",
+        "toaster_info_text": "The client is about to be referred to the CHW tied to client's village for follow-up at the community level.\n\nAdd any additional comments that should be sent the the CHW",
+        "toaster_type": "info"
+      },
+      {
+        "key": "anc_partner_followup_comment",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "anc_partner_followup_comment",
+        "type": "edit_text",
+        "hint": "Remarks/Comments",
+        "v_required": {
+          "value": "false",
+          "err": "Please enter the your remarks/comments"
+        }
+      },
+      {
+        "key": "anc_partner_community_referral_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "anc_partner_community_referral_date",
+        "type": "hidden",
+        "is_problem": false,
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_partner_community_followup_calculation.yml"
+            }
+          }
+        }
+      }
+    ]
+  }
+}
+
+

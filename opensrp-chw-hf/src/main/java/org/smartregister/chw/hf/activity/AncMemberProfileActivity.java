@@ -1,5 +1,10 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
+import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
+import static org.smartregister.chw.hf.utils.Constants.Events.ANC_FIRST_FACILITY_VISIT;
+import static org.smartregister.chw.hf.utils.Constants.Events.ANC_RECURRING_FACILITY_VISIT;
+
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
@@ -9,6 +14,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -34,6 +41,7 @@ import org.smartregister.chw.hf.dao.FamilyDao;
 import org.smartregister.chw.hf.dao.HfAncDao;
 import org.smartregister.chw.hf.interactor.AncMemberProfileInteractor;
 import org.smartregister.chw.hf.model.FamilyDetailsModel;
+import org.smartregister.chw.hf.interactor.AncMemberProfileInteractor;
 import org.smartregister.chw.hf.model.FamilyProfileModel;
 import org.smartregister.chw.hf.presenter.AncMemberProfilePresenter;
 import org.smartregister.chw.hf.utils.VisitUtils;
@@ -59,7 +67,6 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Set;
 
-import androidx.recyclerview.widget.RecyclerView;
 import timber.log.Timber;
 
 import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
@@ -139,6 +146,9 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         menu.findItem(R.id.action_remove_member).setVisible(false);
         menu.findItem(R.id.action_pregnancy_out_come).setVisible(!HfAncDao.isClientClosed(baseEntityID));
         menu.findItem(R.id.action_malaria_diagnosis).setVisible(false);
+
+//      TODO implement checks for whether a partner has been registered
+        menu.findItem(R.id.action_anc_partner_followup_referral).setVisible(true);
         menu.findItem(R.id.action_pmtct_register).setVisible(!PmtctDao.isRegisteredForPmtct(baseEntityID) && (hivPositive || HivDao.isRegisteredForHiv(baseEntityID) || HfAncDao.getHivStatus(baseEntityID).equalsIgnoreCase("positive")));
         return true;
     }
@@ -172,6 +182,8 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
                     }
                 } else if (encounterType.equals(CoreConstants.EventType.ANC_DANGER_SIGNS_OUTCOME)) {
                     ancMemberProfilePresenter().createAncDangerSignsOutcomeEvent(Utils.getAllSharedPreferences(), jsonString, baseEntityID);
+                } else if (encounterType.equals(CoreConstants.EventType.ANC_PARTNER_COMMUNITY_FOLLOWUP_REFERRAL)) {
+                    ((AncMemberProfilePresenter) presenter()).createPartnerFollowupReferralEvent(Utils.getAllSharedPreferences(), jsonString, baseEntityID);
                 }
             } catch (Exception e) {
                 Timber.e(e, "AncMemberProfileActivity -- > onActivityResult");
@@ -529,6 +541,9 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
             return true;
         } else if (itemId == R.id.action_pregnancy_out_come) {
             PncRegisterActivity.startPncRegistrationActivity(AncMemberProfileActivity.this, memberObject.getBaseEntityId(), null, CoreConstants.JSON_FORM.getPregnancyOutcome(), AncLibrary.getInstance().getUniqueIdRepository().getNextUniqueId().getOpenmrsId(), memberObject.getFamilyBaseEntityId(), memberObject.getFamilyName(), memberObject.getLastMenstrualPeriod());
+            return true;
+        } else if (itemId == R.id.action_anc_partner_followup_referral) {
+            ((AncMemberProfilePresenter) presenter()).startPartnerFollowupReferralForm(memberObject);
             return true;
         }
 

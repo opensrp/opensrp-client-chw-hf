@@ -3,14 +3,37 @@ package org.smartregister.chw.hf.presenter;
 import org.apache.commons.lang3.tuple.Triple;
 import org.smartregister.chw.core.contract.CorePmtctProfileContract;
 import org.smartregister.chw.core.presenter.CorePmtctMemberProfilePresenter;
+import org.smartregister.chw.hf.activity.PmtctProfileActivity;
+import org.smartregister.chw.hf.dao.HfFollowupFeedbackDao;
+import org.smartregister.chw.hf.model.ChwFollowupFeedbackDetailsModel;
+import org.smartregister.chw.hf.model.PmtctFollowupFeedbackModel;
 import org.smartregister.chw.pmtct.domain.MemberObject;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.family.contract.FamilyProfileContract;
 import org.smartregister.family.domain.FamilyEventClient;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PmtctProfilePresenter extends CorePmtctMemberProfilePresenter implements FamilyProfileContract.InteractorCallBack {
     public PmtctProfilePresenter(CorePmtctProfileContract.View view, CorePmtctProfileContract.Interactor interactor, MemberObject memberObject) {
         super(view, interactor, memberObject);
+    }
+
+    public void updateFollowupFeedback(String baseEntityId) {
+        List<ChwFollowupFeedbackDetailsModel> followupFeedbackList = HfFollowupFeedbackDao.getPmtctFollowupFeedback(baseEntityId);
+
+        List<PmtctFollowupFeedbackModel> pmtctFollowupFeedback = new ArrayList<>();
+        if (followupFeedbackList != null) {
+            for (ChwFollowupFeedbackDetailsModel followupFeedbackDetailsModel : followupFeedbackList) {
+                PmtctFollowupFeedbackModel followupFeedbackModel = new PmtctFollowupFeedbackModel();
+                followupFeedbackModel.setFollowupFeedbackDetailsModel(followupFeedbackDetailsModel);
+                followupFeedbackModel.setType("FOLLOWUP_FEEDBACK");
+                pmtctFollowupFeedback.add(followupFeedbackModel);
+            }
+
+            ((PmtctProfileActivity) getView()).setFollowupFeedback(pmtctFollowupFeedback);
+        }
     }
 
     @Override
