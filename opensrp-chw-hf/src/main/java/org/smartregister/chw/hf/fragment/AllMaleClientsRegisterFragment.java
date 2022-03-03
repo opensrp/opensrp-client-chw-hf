@@ -25,7 +25,6 @@ import androidx.appcompat.widget.Toolbar;
 import static org.smartregister.chw.hf.utils.HfReferralUtils.REGISTER_TYPE;
 
 public class AllMaleClientsRegisterFragment extends CoreAllClientsRegisterFragment {
-    private Toolbar toolbar;
 
     @Nullable
     @Override
@@ -44,7 +43,7 @@ public class AllMaleClientsRegisterFragment extends CoreAllClientsRegisterFragme
     public void setupViews(View view) {
         super.setupViews(view);
         View dueOnlyLayout = view.findViewById(R.id.due_only_layout);
-        toolbar = view.findViewById(org.smartregister.R.id.register_toolbar);
+        Toolbar toolbar = view.findViewById(org.smartregister.R.id.register_toolbar);
         toolbar.setVisibility(View.INVISIBLE);
         ViewGroup.LayoutParams layoutParams = toolbar.getLayoutParams();
         layoutParams.height = 20;

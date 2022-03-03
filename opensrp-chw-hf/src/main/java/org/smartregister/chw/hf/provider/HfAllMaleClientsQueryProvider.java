@@ -1,7 +1,6 @@
 package org.smartregister.chw.hf.provider;
 
 import org.smartregister.chw.core.provider.CoreAllClientsRegisterQueryProvider;
-import org.smartregister.chw.hf.utils.HfQueryConstant;
 import org.smartregister.chw.hf.utils.HfQueryForMaleClients;
 
 import androidx.annotation.NonNull;

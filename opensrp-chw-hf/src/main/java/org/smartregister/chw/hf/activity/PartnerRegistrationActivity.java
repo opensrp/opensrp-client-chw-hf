@@ -51,8 +51,8 @@ import static com.vijay.jsonwizard.utils.FormUtils.fields;
 import static com.vijay.jsonwizard.utils.FormUtils.getFieldJSONObject;
 import static org.smartregister.AllConstants.LocationConstants.SPECIAL_TAG_FOR_OPENMRS_TEAM_MEMBERS;
 import static org.smartregister.chw.hf.utils.Constants.Events.PARTNER_REGISTRATION_EVENT;
-import static org.smartregister.chw.hf.utils.Constants.PartnerRegistrationConstants.INTENT_BASE_ENTITY_ID;
 import static org.smartregister.chw.hf.utils.Constants.PartnerRegistrationConstants.EXISTING_PARTNER_REQUEST_CODE;
+import static org.smartregister.chw.hf.utils.Constants.PartnerRegistrationConstants.INTENT_BASE_ENTITY_ID;
 import static org.smartregister.chw.hf.utils.Constants.PartnerRegistrationConstants.NEW_PARTNER_REQUEST_CODE;
 import static org.smartregister.chw.hf.utils.Constants.PartnerRegistrationConstants.PARTNER_BASE_ENTITY_ID;
 import static org.smartregister.chw.hf.utils.JsonFormUtils.METADATA;
@@ -184,36 +184,34 @@ public class PartnerRegistrationActivity extends SecuredActivity implements View
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == EXISTING_PARTNER_REQUEST_CODE) {
-            if (resultCode == Activity.RESULT_OK) {
-                String partner_id = data.getStringExtra(INTENT_BASE_ENTITY_ID);
-                savePartnerDetails(partner_id, clientBaseEntityId);
-                startActivity(new Intent(this,AncRegisterActivity.class));
-            }
+        if (requestCode == EXISTING_PARTNER_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            String partner_id = data.getStringExtra(INTENT_BASE_ENTITY_ID);
+            savePartnerDetails(partner_id, clientBaseEntityId);
+            startActivity(new Intent(this, AncRegisterActivity.class));
+
         }
-        if (requestCode == NEW_PARTNER_REQUEST_CODE) {
-            if (resultCode == Activity.RESULT_OK){
-                String jsonString = data.getStringExtra(OpdConstants.JSON_FORM_EXTRA.JSON);
-                Timber.d("JSONResult : %s", jsonString);
+        if (requestCode == NEW_PARTNER_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            String jsonString = data.getStringExtra(OpdConstants.JSON_FORM_EXTRA.JSON);
+            Timber.d("JSONResult : %s", jsonString);
 
-                JSONObject form;
-                try {
-                    form = new JSONObject(jsonString);
+            JSONObject form;
+            try {
+                form = new JSONObject(jsonString);
 
-                    String encounterType;
-                    encounterType = form.getString(OpdJsonFormUtils.ENCOUNTER_TYPE);
-                    if (encounterType.equals(CoreConstants.EventType.FAMILY_REGISTRATION)) {
-                        RegisterParams registerParam = new RegisterParams();
-                        registerParam.setEditMode(false);
-                        registerParam.setFormTag(OpdJsonFormUtils.formTag(OpdUtils.context().allSharedPreferences()));
-                        saveForm(jsonString, registerParam);
-                        startActivity(new Intent(this,AncRegisterActivity.class));
+                String encounterType;
+                encounterType = form.getString(OpdJsonFormUtils.ENCOUNTER_TYPE);
+                if (encounterType.equals(CoreConstants.EventType.FAMILY_REGISTRATION)) {
+                    RegisterParams registerParam = new RegisterParams();
+                    registerParam.setEditMode(false);
+                    registerParam.setFormTag(OpdJsonFormUtils.formTag(OpdUtils.context().allSharedPreferences()));
+                    saveForm(jsonString, registerParam);
+                    startActivity(new Intent(this, AncRegisterActivity.class));
 
-                    }
-                } catch (JSONException e) {
-                    Timber.e(e);
                 }
+            } catch (JSONException e) {
+                Timber.e(e);
             }
+
         }
 
     }
