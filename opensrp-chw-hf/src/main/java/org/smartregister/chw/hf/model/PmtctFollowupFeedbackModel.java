@@ -1,19 +1,8 @@
 package org.smartregister.chw.hf.model;
 
-import org.smartregister.domain.Task;
-
-public class HivTbReferralTasksAndFollowupFeedbackModel {
-    private Task task;
+public class PmtctFollowupFeedbackModel {
     private ChwFollowupFeedbackDetailsModel followupFeedbackDetailsModel;
     private String type;
-
-    public Task getTask() {
-        return task;
-    }
-
-    public void setTask(Task task) {
-        this.task = task;
-    }
 
     public ChwFollowupFeedbackDetailsModel getFollowupFeedbackDetailsModel() {
         return followupFeedbackDetailsModel;

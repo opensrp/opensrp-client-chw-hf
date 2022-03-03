@@ -1,5 +1,8 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.hf.utils.Constants.Events.PMTCT_FIRST_EAC_VISIT;
+import static org.smartregister.chw.hf.utils.Constants.Events.PMTCT_SECOND_EAC_VISIT;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -11,7 +14,13 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.vijay.jsonwizard.utils.FormUtils;
+
 import org.apache.commons.lang3.StringUtils;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.core.activity.CoreFamilyProfileActivity;
 import org.smartregister.chw.core.activity.CorePmtctProfileActivity;
@@ -23,10 +32,13 @@ import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.FpUtil;
 import org.smartregister.chw.core.utils.HomeVisitUtil;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.adapter.PmtctReferralCardViewAdapter;
 import org.smartregister.chw.hf.custom_view.PmtctFloatingMenu;
 import org.smartregister.chw.hf.dao.HfPmtctDao;
 import org.smartregister.chw.hf.model.FamilyProfileModel;
+import org.smartregister.chw.hf.model.PmtctFollowupFeedbackModel;
 import org.smartregister.chw.hf.presenter.FamilyOtherMemberActivityPresenter;
+import org.smartregister.chw.hf.presenter.PmtctMemberActivityPresenter;
 import org.smartregister.chw.hf.presenter.PmtctProfilePresenter;
 import org.smartregister.chw.hf.utils.PmtctVisitUtils;
 import org.smartregister.chw.pmtct.PmtctLibrary;
@@ -42,14 +54,11 @@ import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.family.util.Utils;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.Nullable;
 
-import androidx.annotation.NonNull;
 import timber.log.Timber;
-
-import static org.smartregister.chw.hf.utils.Constants.Events.PMTCT_FIRST_EAC_VISIT;
-import static org.smartregister.chw.hf.utils.Constants.Events.PMTCT_SECOND_EAC_VISIT;
 
 public class PmtctProfileActivity extends CorePmtctProfileActivity {
     private static String baseEntityId;
@@ -65,6 +74,10 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        ((PmtctMemberActivityPresenter) getPresenter()).updateFollowupFeedback();
+        if (notificationAndReferralRecyclerView != null && notificationAndReferralRecyclerView.getAdapter() != null) {
+            notificationAndReferralRecyclerView.getAdapter().notifyDataSetChanged();
+        }
     }
 
     @Override
@@ -92,6 +105,15 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        int itemId = item.getItemId();
+        try {
+            if (itemId == R.id.action_issue_pmtct_followup_referral) {
+                HivRegisterActivity.startHIVFormActivity(this, memberObject.getBaseEntityId(), CoreConstants.JSON_FORM.getPmtctcCommunityFollowupReferral(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getPmtctcCommunityFollowupReferral()).toString());
+                return true;
+            }
+        } catch (JSONException e) {
+            Timber.e(e);
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -108,11 +130,11 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
                     FamilyEventClient familyEventClient =
                             new FamilyProfileModel(memberObject.getFamilyName()).processUpdateMemberRegistration(jsonString, memberObject.getBaseEntityId());
                     new FamilyProfileInteractor().saveRegistration(familyEventClient, jsonString, true, (FamilyProfileContract.InteractorCallBack) profilePresenter);
-                }else{
+                } else {
                     profilePresenter.saveForm(data.getStringExtra(Constants.JSON_FORM_EXTRA.JSON));
                     finish();
                 }
-            }catch (Exception e){
+            } catch (Exception e) {
                 Timber.e(e, "PmtctProfileActivity -- > onActivityResult");
             }
         }
@@ -153,7 +175,7 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         protected Void doInBackground(Void... voids) {
             Date pmtctRegisterDate = PmtctDao.getPmtctRegisterDate(memberObject.getBaseEntityId());
             Date followUpVisitDate = PmtctDao.getPmtctFollowUpVisitDate(memberObject.getBaseEntityId());
-            pmtctFollowUpRule = HomeVisitUtil.getPmtctVisitStatus(pmtctRegisterDate, followUpVisitDate,baseEntityId);
+            pmtctFollowUpRule = HomeVisitUtil.getPmtctVisitStatus(pmtctRegisterDate, followUpVisitDate, baseEntityId);
             return null;
         }
 
@@ -181,7 +203,7 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
                 textViewRecordAnc.setVisibility(View.VISIBLE);
                 textViewRecordAnc.setText(R.string.record_eac_second_visit);
             } else {
-                if(lastFolllowUpVisit != null && lastFolllowUpVisit.getProcessed()){
+                if (lastFolllowUpVisit != null && lastFolllowUpVisit.getProcessed()) {
                     profilePresenter.visitRow(pmtctFollowUpRule.getButtonStatus());
                 }
             }
@@ -214,7 +236,7 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
             }
         }
         Visit lastFollowupVisit = getVisit(Constants.EVENT_TYPE.PMTCT_FOLLOWUP);
-        if(lastFollowupVisit != null && !lastFollowupVisit.getProcessed()){
+        if (lastFollowupVisit != null && !lastFollowupVisit.getProcessed()) {
             showVisitInProgress(org.smartregister.chw.hf.utils.Constants.Visits.PMTCT_VISIT);
             setUpEditButton(org.smartregister.chw.hf.utils.Constants.Visits.PMTCT_VISIT);
         }
@@ -230,7 +252,7 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
     @NonNull
     @Override
     public FamilyOtherMemberActivityPresenter presenter() {
-        return new FamilyOtherMemberActivityPresenter(this, new BaseFamilyOtherMemberProfileActivityModel(), null, memberObject.getRelationalId(), memberObject.getBaseEntityId(), memberObject.getFamilyHead(), memberObject.getPrimaryCareGiver(), memberObject.getAddress(), memberObject.getLastName());
+        return new PmtctMemberActivityPresenter(this, new BaseFamilyOtherMemberProfileActivityModel(), null, memberObject.getRelationalId(), memberObject.getBaseEntityId(), memberObject.getFamilyHead(), memberObject.getPrimaryCareGiver(), memberObject.getAddress(), memberObject.getLastName());
     }
 
     @Override
@@ -255,7 +277,7 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         boolean isEacFirstDone = HfPmtctDao.isEacFirstDone(baseEntityId);
         boolean isEacSecondDone = HfPmtctDao.isSecondEacDone(baseEntityId);
         if (id == R.id.textview_record_pmtct) {
-            PmtctFollowupVisitActivity.startPmtctFollowUpActivity(this, baseEntityId,false);
+            PmtctFollowupVisitActivity.startPmtctFollowUpActivity(this, baseEntityId, false);
         } else if (id == R.id.textview_record_anc) {
             if (isEligibleForFirst && !isEacFirstDone) {
                 PmtctEacFirstVisitActivity.startEacActivity(this, memberObject.getBaseEntityId(), false);
@@ -263,7 +285,7 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
                 PmtctEacSecondVisitActivity.startSecondEacActivity(this, memberObject.getBaseEntityId(), false);
             }
         } else if (id == R.id.textview_edit) {
-            Toast.makeText(this,"Action Not Defined", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Action Not Defined", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -271,12 +293,12 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
 
     private void showVisitInProgress(String typeOfVisit) {
         recordVisits.setVisibility(View.GONE);
-        if(typeOfVisit.equalsIgnoreCase(org.smartregister.chw.hf.utils.Constants.Visits.PMTCT_VISIT)){
+        if (typeOfVisit.equalsIgnoreCase(org.smartregister.chw.hf.utils.Constants.Visits.PMTCT_VISIT)) {
             textViewRecordPmtct.setVisibility(View.GONE);
         }
         textViewVisitDoneEdit.setVisibility(View.VISIBLE);
         visitDone.setVisibility(View.VISIBLE);
-        textViewVisitDone.setText(getContext().getString(R.string.visit_in_progress,typeOfVisit));
+        textViewVisitDone.setText(getContext().getString(R.string.visit_in_progress, typeOfVisit));
         textViewVisitDone.setTextColor(getResources().getColor(R.color.black_text_color));
         imageViewCross.setImageResource(org.smartregister.chw.core.R.drawable.activityrow_notvisited);
     }
@@ -373,6 +395,15 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
 
     private void checkPhoneNumberProvided(boolean hasPhoneNumber) {
         ((CorePmtctFloatingMenu) basePmtctFloatingMenu).redraw(hasPhoneNumber);
+    }
+
+    public void setFollowupFeedback(List<PmtctFollowupFeedbackModel> followupFeedbacks) {
+        if (notificationAndReferralRecyclerView != null && followupFeedbacks.size() > 0) {
+            RecyclerView.Adapter mAdapter = new PmtctReferralCardViewAdapter(followupFeedbacks, this, org.smartregister.chw.core.utils.Utils.getCommonPersonObjectClient(memberObject.getBaseEntityId()), CoreConstants.REGISTERED_ACTIVITIES.PMTCT_REGISTER_ACTIVITY);
+            notificationAndReferralRecyclerView.setAdapter(mAdapter);
+            notificationAndReferralLayout.setVisibility(View.VISIBLE);
+            findViewById(R.id.view_notification_and_referral_row).setVisibility(View.VISIBLE);
+        }
     }
 
 
