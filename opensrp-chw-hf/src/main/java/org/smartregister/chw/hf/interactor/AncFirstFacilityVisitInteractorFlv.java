@@ -189,15 +189,16 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
                 .build();
         actionList.put(context.getString(R.string.anc_first_and_recurring_visit_counselling), counsellingAction);
 
-
-        BaseAncHomeVisitAction partnerTesting = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.partner_testing_action_title))
-                .withOptional(true)
-                .withDetails(details)
-                .withHelper(new AncPartnerTestingAction(memberObject))
-                .withJsonPayload(partnerTestingForm.toString())
-                .withFormName(Constants.JsonForm.AncRecurringVisit.getPartnerTesting())
-                .build();
-        actionList.put(context.getString(R.string.partner_testing_action_title), partnerTesting);
+        if (HfAncDao.isPartnerRegistered(memberObject.getBaseEntityId())) {
+            BaseAncHomeVisitAction partnerTesting = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.partner_testing_action_title))
+                    .withOptional(true)
+                    .withDetails(details)
+                    .withHelper(new AncPartnerTestingAction(memberObject))
+                    .withJsonPayload(partnerTestingForm.toString())
+                    .withFormName(Constants.JsonForm.AncRecurringVisit.getPartnerTesting())
+                    .build();
+            actionList.put(context.getString(R.string.partner_testing_action_title), partnerTesting);
+        }
 
         JSONObject birthReviewForm = initializeHealthFacilitiesList(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.BIRTH_REVIEW_AND_EMERGENCY_PLAN));
         BaseAncHomeVisitAction birthReview = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_review_birth_and_emergency_plan))
