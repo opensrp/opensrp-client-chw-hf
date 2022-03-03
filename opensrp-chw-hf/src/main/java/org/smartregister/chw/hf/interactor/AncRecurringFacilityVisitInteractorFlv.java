@@ -25,7 +25,6 @@ import org.smartregister.chw.hf.actionhelper.AncBirthReviewAction;
 import org.smartregister.chw.hf.actionhelper.AncConsultationAction;
 import org.smartregister.chw.hf.actionhelper.AncCounsellingAction;
 import org.smartregister.chw.hf.actionhelper.AncLabTestAction;
-import org.smartregister.chw.hf.actionhelper.AncPartnerRegistrationAction;
 import org.smartregister.chw.hf.actionhelper.AncPartnerTestingAction;
 import org.smartregister.chw.hf.actionhelper.AncPharmacyAction;
 import org.smartregister.chw.hf.actionhelper.AncTriageAction;
@@ -53,325 +52,6 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
 
     public AncRecurringFacilityVisitInteractorFlv(String baseEntityId) {
         this.baseEntityId = baseEntityId;
-    }
-
-    @Override
-    public LinkedHashMap<String, BaseAncHomeVisitAction> calculateActions(BaseAncHomeVisitContract.View view, MemberObject memberObject, BaseAncHomeVisitContract.InteractorCallBack callBack) throws BaseAncHomeVisitAction.ValidationException {
-        Map<String, List<VisitDetail>> details = null;
-        // get the preloaded data
-        if (view.getEditMode()) {
-            Visit lastVisit = AncLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), Constants.Events.ANC_RECURRING_FACILITY_VISIT);
-            if (lastVisit != null) {
-                details = VisitUtils.getVisitGroups(AncLibrary.getInstance().visitDetailsRepository().getVisits(lastVisit.getVisitId()));
-            }
-        }
-
-        // get contact
-        LocalDate lastContact = new DateTime(memberObject.getDateCreated()).toLocalDate();
-        boolean isFirst = (StringUtils.isBlank(memberObject.getLastContactVisit()));
-        LocalDate lastMenstrualPeriod = new LocalDate();
-        try {
-            lastMenstrualPeriod = DateTimeFormat.forPattern("dd-MM-yyyy").parseLocalDate(memberObject.getLastMenstrualPeriod());
-        } catch (Exception e) {
-            Timber.e(e);
-        }
-
-
-        if (StringUtils.isNotBlank(memberObject.getLastContactVisit())) {
-            lastContact = DateTimeFormat.forPattern("dd-MM-yyyy").parseLocalDate(memberObject.getLastContactVisit());
-        }
-
-        Map<Integer, LocalDate> dateMap = new LinkedHashMap<>();
-
-        // today is the due date for the very first visit
-        if (isFirst) {
-            dateMap.put(0, LocalDate.now());
-        }
-
-        dateMap.putAll(ContactUtil.getContactWeeks(isFirst, lastContact, lastMenstrualPeriod));
-
-        evaluateMedicalAndSurgicalHistory(view, memberObject, callBack, details);
-
-        return actionList;
-    }
-
-    private void evaluateMedicalAndSurgicalHistory(BaseAncHomeVisitContract.View view, MemberObject memberObject, BaseAncHomeVisitContract.InteractorCallBack callBack, Map<String, List<VisitDetail>> details
-    ) throws BaseAncHomeVisitAction.ValidationException {
-
-        Context context = view.getContext();
-        JSONObject triageForm = null;
-        try {
-            triageForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.TRIAGE);
-            triageForm.getJSONObject("global").put("last_menstrual_period", memberObject.getLastMenstrualPeriod());
-            triageForm.getJSONObject("global").put("current_visit_number", HfAncDao.getVisitNumber(baseEntityId));
-            if (details != null && !details.isEmpty()) {
-                JsonFormUtils.populateForm(triageForm, details);
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        BaseAncHomeVisitAction triage = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_triage))
-                .withOptional(false)
-                .withDetails(details)
-                .withJsonPayload(triageForm.toString())
-                .withFormName(Constants.JsonForm.AncRecurringVisit.getTriage())
-                .withHelper(new AncTriageAction(memberObject))
-                .build();
-        actionList.put(context.getString(R.string.anc_recuring_visit_triage), triage);
-
-        BaseAncHomeVisitAction pregnancyStatus = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_pregnancy_status))
-                .withOptional(true)
-                .withDetails(details)
-                .withFormName(Constants.JsonForm.AncRecurringVisit.getPregnancyStatus())
-                .withHelper(new AncPregnancyStatusAction(view, memberObject, callBack, details))
-                .build();
-        actionList.put(context.getString(R.string.anc_recuring_visit_pregnancy_status), pregnancyStatus);
-
-
-    }
-
-
-    private class AncPregnancyStatusAction extends org.smartregister.chw.hf.actionhelper.AncPregnancyStatusAction {
-        Map<String, List<VisitDetail>> details;
-        BaseAncHomeVisitContract.View view;
-        MemberObject memberObject;
-        BaseAncHomeVisitContract.InteractorCallBack callBack;
-
-
-        public AncPregnancyStatusAction(BaseAncHomeVisitContract.View view, MemberObject memberObject, BaseAncHomeVisitContract.InteractorCallBack callBack, Map<String, List<VisitDetail>> details) {
-            super(memberObject);
-            this.details = details;
-            this.view = view;
-            this.memberObject = memberObject;
-            this.callBack = callBack;
-        }
-
-        @Override
-        public String evaluateSubTitle() {
-            if (StringUtils.isBlank(pregnancy_status))
-                return null;
-
-            StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.append(view.getContext().getString(R.string.anc_pregnacy_status));
-            stringBuilder.append(" ");
-            stringBuilder.append(getPregnancyStatusString(pregnancy_status, view.getContext()));
-
-            return stringBuilder.toString();
-        }
-
-        @Override
-        public BaseAncHomeVisitAction.Status evaluateStatusOnPayload() {
-            if (StringUtils.isBlank(pregnancy_status))
-                return BaseAncHomeVisitAction.Status.PENDING;
-            else if (pregnancy_status.equals("viable")) {
-                return BaseAncHomeVisitAction.Status.COMPLETED;
-            } else {
-                return BaseAncHomeVisitAction.Status.PARTIALLY_COMPLETED;
-            }
-        }
-
-        @Override
-        public String postProcess(String s) {
-            Context context = view.getContext();
-            if (pregnancy_status.equals("viable")) {
-                JSONObject consultationForm = null;
-                try {
-                    consultationForm = setMinFundalHeight(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.CONSULTATION), memberObject.getBaseEntityId());
-                    consultationForm.getJSONObject("global").put("last_menstrual_period", memberObject.getLastMenstrualPeriod());
-                    consultationForm.getJSONObject("global").put("client_age", memberObject.getAge());
-                    String height = HfAncDao.getClientHeight(memberObject.getBaseEntityId());
-                    consultationForm.getJSONObject("global").put("client_height", height);
-                    if (details != null && !details.isEmpty()) {
-                        JsonFormUtils.populateForm(consultationForm, details);
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-                JSONObject pharmacyForm = null;
-                try {
-                    pharmacyForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.getPharmacy());
-                    pharmacyForm.getJSONObject("global").put("gestational_age", memberObject.getGestationAge());
-                    pharmacyForm.getJSONObject("global").put("malaria_preventive_therapy_ipt1", HfAncDao.malariaDosageIpt1(baseEntityId));
-                    pharmacyForm.getJSONObject("global").put("malaria_preventive_therapy_ipt2", HfAncDao.malariaDosageIpt2(baseEntityId));
-                    pharmacyForm.getJSONObject("global").put("malaria_preventive_therapy_ipt3", HfAncDao.malariaDosageIpt3(baseEntityId));
-                    pharmacyForm.getJSONObject("global").put("malaria_preventive_therapy_ipt4", HfAncDao.malariaDosageIpt4(baseEntityId));
-                    if (details != null && !details.isEmpty()) {
-                        JsonFormUtils.populateForm(pharmacyForm, details);
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-                JSONObject labTestForm = null;
-                try {
-                    labTestForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.LAB_TESTS);
-                    labTestForm.getJSONObject("global").put("gestational_age", memberObject.getGestationAge());
-                    labTestForm.getJSONObject("global").put("hepatitis_test_complete", HfAncDao.isTestConducted(Constants.DBConstants.ANC_HEPATITIS, baseEntityId));
-                    labTestForm.getJSONObject("global").put("malaria_test_complete", HfAncDao.isTestConducted(Constants.DBConstants.ANC_MRDT_FOR_MALARIA, baseEntityId));
-                    labTestForm.getJSONObject("global").put("syphilis_test_complete", HfAncDao.isTestConducted(Constants.DBConstants.ANC_SYPHILIS, baseEntityId));
-                    labTestForm.getJSONObject("global").put("hiv_test_complete", HfAncDao.isTestConducted(Constants.DBConstants.ANC_HIV, baseEntityId));
-                    labTestForm.getJSONObject("global").put("hiv_test_at_32_complete", HfAncDao.isHivTestConductedAtWk32(baseEntityId));
-                    labTestForm.getJSONObject("global").put("hiv_status", HfAncDao.getHivStatus(baseEntityId));
-                    if((memberObject.getGestationAge() >= 32 || HfAncDao.getHivStatus(baseEntityId).equalsIgnoreCase("negative")) && (!HfAncDao.isHivTestConductedAtWk32(baseEntityId) || HfAncDao.getHivStatus(baseEntityId).equalsIgnoreCase("test_not_conducted")))
-                    {
-                        JSONArray fields = labTestForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
-                        JSONObject renameSecondHivAt32 = null;
-                        for (int i = 0; i < fields.length(); i++) {
-                            if (fields.getJSONObject(i).getString(JsonFormConstants.KEY).equals("hiv")) {
-                                renameSecondHivAt32 = fields.getJSONObject(i);
-                                break;
-                            }
-                        }
-                        renameSecondHivAt32.put("label", context.getString(R.string.second_hiv_test_results_woman));
-
-                    }
-                    if (details != null && !details.isEmpty()) {
-                        JsonFormUtils.populateForm(labTestForm, details);
-                    }
-                } catch (JSONException e) {
-                    Timber.e(e);
-                }
-
-                JSONObject partnerTestingForm = null;
-                try{
-                    partnerTestingForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.PARTNER_TESTING);
-                    partnerTestingForm.getJSONObject("global").put("hiv_testing_done", HfAncDao.isPartnerTestedForHiv(baseEntityId));
-                    partnerTestingForm.getJSONObject("global").put("gestational_age", memberObject.getGestationAge());
-                    partnerTestingForm.getJSONObject("global").put("syphilis_testing_done", HfAncDao.isPartnerTestedForSyphilis(baseEntityId));
-                    partnerTestingForm.getJSONObject("global").put("hepatitis_testing_done", HfAncDao.isPartnerTestedForHepatitis(baseEntityId));
-                    partnerTestingForm.getJSONObject("global").put("partner_hiv_test_at_32_done", HfAncDao.isPartnerHivTestConductedAtWk32(baseEntityId));
-                    partnerTestingForm.getJSONObject("global").put("partner_hiv_status", HfAncDao.getPartnerHivStatus(baseEntityId));
-                    if((memberObject.getGestationAge() >= 32 || HfAncDao.getPartnerHivStatus(baseEntityId).equalsIgnoreCase("negative")) && (!HfAncDao.isPartnerHivTestConductedAtWk32(baseEntityId) || HfAncDao.getPartnerHivStatus(baseEntityId).equalsIgnoreCase("test_not_conducted")))
-                    {
-                        JSONArray fields = partnerTestingForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
-                        JSONObject renamePartnerSecondHivAt32 = null;
-                        for (int i = 0; i < fields.length(); i++) {
-                            if (fields.getJSONObject(i).getString(JsonFormConstants.KEY).equals("partner_hiv")) {
-                                renamePartnerSecondHivAt32 = fields.getJSONObject(i);
-                                break;
-                            }
-                        }
-                        renamePartnerSecondHivAt32.put("label", context.getString(R.string.second_hiv_test_results_partner));
-                    }
-                    if (details != null && !details.isEmpty()) {
-                        JsonFormUtils.populateForm(partnerTestingForm, details);
-                    }
-                }catch (JSONException e){
-                    Timber.e(e);
-                }
-
-                if (pregnancy_status != null) {
-                    try {
-                        BaseAncHomeVisitAction consultation = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_cunsultation))
-                                .withOptional(true)
-                                .withDetails(details)
-                                .withJsonPayload(consultationForm.toString())
-                                .withFormName(Constants.JsonForm.AncRecurringVisit.getConsultation())
-                                .withHelper(new AncConsultationAction(memberObject))
-                                .build();
-                        actionList.put(context.getString(R.string.anc_recuring_visit_cunsultation), consultation);
-                    } catch (BaseAncHomeVisitAction.ValidationException e) {
-                        e.printStackTrace();
-                    }
-
-                    try {
-                        BaseAncHomeVisitAction labTests = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_lab_tests))
-                                .withOptional(true)
-                                .withDetails(details)
-                                .withJsonPayload(labTestForm.toString())
-                                .withFormName(Constants.JsonForm.AncRecurringVisit.getLabTests())
-                                .withHelper(new AncLabTestAction(memberObject))
-                                .build();
-                        actionList.put(context.getString(R.string.anc_recuring_visit_lab_tests), labTests);
-                    } catch (BaseAncHomeVisitAction.ValidationException e) {
-                        e.printStackTrace();
-                    }
-
-                    try {
-                        BaseAncHomeVisitAction pharmacy = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_pharmacy))
-                                .withOptional(true)
-                                .withDetails(details)
-                                .withJsonPayload(pharmacyForm.toString())
-                                .withFormName(Constants.JsonForm.AncRecurringVisit.getPharmacy())
-                                .withHelper(new AncPharmacyAction(memberObject))
-                                .build();
-                        actionList.put(context.getString(R.string.anc_recuring_visit_pharmacy), pharmacy);
-                    } catch (BaseAncHomeVisitAction.ValidationException e) {
-                        e.printStackTrace();
-                    }
-
-                    try {
-                        BaseAncHomeVisitAction counselling = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_first_and_recurring_visit_counselling))
-                                .withOptional(true)
-                                .withDetails(details)
-                                .withFormName(Constants.JsonForm.getCounselling())
-                                .withHelper(new AncCounsellingAction(memberObject))
-                                .build();
-                        actionList.put(context.getString(R.string.anc_first_and_recurring_visit_counselling), counselling);
-                    } catch (BaseAncHomeVisitAction.ValidationException e) {
-                        e.printStackTrace();
-                    }
-                    if(!HfAncDao.isPartnerRegistered(baseEntityId)){
-                        try {
-                            BaseAncHomeVisitAction partnerRegistration = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.partner_registration_action_title))
-                                    .withOptional(true)
-                                    .withDetails(details)
-                                    .withHelper(new AncPartnerRegistrationAction(memberObject))
-                                    .withFormName(Constants.JsonForm.AncRecurringVisit.getPartnerRegistration())
-                                    .build();
-                            actionList.put(context.getString(R.string.partner_registration_action_title), partnerRegistration);
-                        } catch (BaseAncHomeVisitAction.ValidationException e) {
-                            Timber.e(e);
-                        }
-                    }
-
-                    boolean retestPartnerAt32 = ((memberObject.getGestationAge() >= 32 && HfAncDao.getPartnerHivStatus(baseEntityId).equalsIgnoreCase("negative")) && !HfAncDao.isPartnerHivTestConductedAtWk32(baseEntityId));
-
-                    if(!(HfAncDao.isPartnerTestedForHiv(baseEntityId) && HfAncDao.isPartnerTestedForSyphilis(baseEntityId) && HfAncDao.isPartnerTestedForHepatitis(baseEntityId)) || retestPartnerAt32){
-                        try {
-                            BaseAncHomeVisitAction partnerTesting = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.partner_testing_action_title))
-                                    .withOptional(true)
-                                    .withDetails(details)
-                                    .withJsonPayload(partnerTestingForm.toString())
-                                    .withHelper(new AncPartnerTestingAction(memberObject))
-                                    .withFormName(Constants.JsonForm.AncRecurringVisit.getPartnerTesting())
-                                    .build();
-                            actionList.put(context.getString(R.string.partner_testing_action_title), partnerTesting);
-                        } catch (BaseAncHomeVisitAction.ValidationException e) {
-                            Timber.e(e);
-                        }
-                    }
-
-                    if (!HfAncDao.isReviewFormFilled(baseEntityId)) {
-                        JSONObject birthReviewForm = initializeHealthFacilitiesList(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.BIRTH_REVIEW_AND_EMERGENCY_PLAN));
-                        try {
-                            BaseAncHomeVisitAction birthReview = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_review_birth_and_emergency_plan))
-                                    .withOptional(true)
-                                    .withDetails(details)
-                                    .withJsonPayload(birthReviewForm.toString())
-                                    .withFormName(Constants.JsonForm.AncRecurringVisit.getBirthReviewAndEmergencyPlan())
-                                    .withHelper(new AncBirthReviewAction(memberObject))
-                                    .build();
-                            actionList.put(context.getString(R.string.anc_recuring_visit_review_birth_and_emergency_plan), birthReview);
-                        } catch (BaseAncHomeVisitAction.ValidationException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-            } else {
-                actionList.remove(context.getString(R.string.anc_recuring_visit_cunsultation));
-                actionList.remove(context.getString(R.string.anc_recuring_visit_lab_tests));
-                actionList.remove(context.getString(R.string.anc_recuring_visit_pharmacy));
-                actionList.remove(context.getString(R.string.anc_first_and_recurring_visit_counselling));
-                actionList.remove(context.getString(R.string.partner_registration_action_title));
-                actionList.remove(context.getString(R.string.partner_testing_action_title));
-                actionList.remove(context.getString(R.string.anc_recuring_visit_review_birth_and_emergency_plan));
-            }
-            new AppExecutors().mainThread().execute(() -> callBack.preloadActions(actionList));
-            return super.postProcess(s);
-        }
     }
 
     private static String getPregnancyStatusString(String pregnancyStatus, Context context) {
@@ -477,6 +157,309 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
             Timber.e(e);
         }
         return form;
+    }
+
+    @Override
+    public LinkedHashMap<String, BaseAncHomeVisitAction> calculateActions(BaseAncHomeVisitContract.View view, MemberObject memberObject, BaseAncHomeVisitContract.InteractorCallBack callBack) throws BaseAncHomeVisitAction.ValidationException {
+        Map<String, List<VisitDetail>> details = null;
+        // get the preloaded data
+        if (view.getEditMode()) {
+            Visit lastVisit = AncLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), Constants.Events.ANC_RECURRING_FACILITY_VISIT);
+            if (lastVisit != null) {
+                details = VisitUtils.getVisitGroups(AncLibrary.getInstance().visitDetailsRepository().getVisits(lastVisit.getVisitId()));
+            }
+        }
+
+        // get contact
+        LocalDate lastContact = new DateTime(memberObject.getDateCreated()).toLocalDate();
+        boolean isFirst = (StringUtils.isBlank(memberObject.getLastContactVisit()));
+        LocalDate lastMenstrualPeriod = new LocalDate();
+        try {
+            lastMenstrualPeriod = DateTimeFormat.forPattern("dd-MM-yyyy").parseLocalDate(memberObject.getLastMenstrualPeriod());
+        } catch (Exception e) {
+            Timber.e(e);
+        }
+
+
+        if (StringUtils.isNotBlank(memberObject.getLastContactVisit())) {
+            lastContact = DateTimeFormat.forPattern("dd-MM-yyyy").parseLocalDate(memberObject.getLastContactVisit());
+        }
+
+        Map<Integer, LocalDate> dateMap = new LinkedHashMap<>();
+
+        // today is the due date for the very first visit
+        if (isFirst) {
+            dateMap.put(0, LocalDate.now());
+        }
+
+        dateMap.putAll(ContactUtil.getContactWeeks(isFirst, lastContact, lastMenstrualPeriod));
+
+        evaluateMedicalAndSurgicalHistory(view, memberObject, callBack, details);
+
+        return actionList;
+    }
+
+    private void evaluateMedicalAndSurgicalHistory(BaseAncHomeVisitContract.View view, MemberObject memberObject, BaseAncHomeVisitContract.InteractorCallBack callBack, Map<String, List<VisitDetail>> details
+    ) throws BaseAncHomeVisitAction.ValidationException {
+
+        Context context = view.getContext();
+        JSONObject triageForm = null;
+        try {
+            triageForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.TRIAGE);
+            triageForm.getJSONObject("global").put("last_menstrual_period", memberObject.getLastMenstrualPeriod());
+            triageForm.getJSONObject("global").put("current_visit_number", HfAncDao.getVisitNumber(baseEntityId));
+            if (details != null && !details.isEmpty()) {
+                JsonFormUtils.populateForm(triageForm, details);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        BaseAncHomeVisitAction triage = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_triage))
+                .withOptional(false)
+                .withDetails(details)
+                .withJsonPayload(triageForm.toString())
+                .withFormName(Constants.JsonForm.AncRecurringVisit.getTriage())
+                .withHelper(new AncTriageAction(memberObject))
+                .build();
+        actionList.put(context.getString(R.string.anc_recuring_visit_triage), triage);
+
+        BaseAncHomeVisitAction pregnancyStatus = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_pregnancy_status))
+                .withOptional(true)
+                .withDetails(details)
+                .withFormName(Constants.JsonForm.AncRecurringVisit.getPregnancyStatus())
+                .withHelper(new AncPregnancyStatusAction(view, memberObject, callBack, details))
+                .build();
+        actionList.put(context.getString(R.string.anc_recuring_visit_pregnancy_status), pregnancyStatus);
+
+
+    }
+
+    private class AncPregnancyStatusAction extends org.smartregister.chw.hf.actionhelper.AncPregnancyStatusAction {
+        Map<String, List<VisitDetail>> details;
+        BaseAncHomeVisitContract.View view;
+        MemberObject memberObject;
+        BaseAncHomeVisitContract.InteractorCallBack callBack;
+
+
+        public AncPregnancyStatusAction(BaseAncHomeVisitContract.View view, MemberObject memberObject, BaseAncHomeVisitContract.InteractorCallBack callBack, Map<String, List<VisitDetail>> details) {
+            super(memberObject);
+            this.details = details;
+            this.view = view;
+            this.memberObject = memberObject;
+            this.callBack = callBack;
+        }
+
+        @Override
+        public String evaluateSubTitle() {
+            if (StringUtils.isBlank(pregnancy_status))
+                return null;
+
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append(view.getContext().getString(R.string.anc_pregnacy_status));
+            stringBuilder.append(" ");
+            stringBuilder.append(getPregnancyStatusString(pregnancy_status, view.getContext()));
+
+            return stringBuilder.toString();
+        }
+
+        @Override
+        public BaseAncHomeVisitAction.Status evaluateStatusOnPayload() {
+            if (StringUtils.isBlank(pregnancy_status))
+                return BaseAncHomeVisitAction.Status.PENDING;
+            else if (pregnancy_status.equals("viable")) {
+                return BaseAncHomeVisitAction.Status.COMPLETED;
+            } else {
+                return BaseAncHomeVisitAction.Status.PARTIALLY_COMPLETED;
+            }
+        }
+
+        @Override
+        public String postProcess(String s) {
+            Context context = view.getContext();
+            if (pregnancy_status.equals("viable")) {
+                JSONObject consultationForm = null;
+                try {
+                    consultationForm = setMinFundalHeight(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.CONSULTATION), memberObject.getBaseEntityId());
+                    consultationForm.getJSONObject("global").put("last_menstrual_period", memberObject.getLastMenstrualPeriod());
+                    consultationForm.getJSONObject("global").put("client_age", memberObject.getAge());
+                    String height = HfAncDao.getClientHeight(memberObject.getBaseEntityId());
+                    consultationForm.getJSONObject("global").put("client_height", height);
+                    if (details != null && !details.isEmpty()) {
+                        JsonFormUtils.populateForm(consultationForm, details);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                JSONObject pharmacyForm = null;
+                try {
+                    pharmacyForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.getPharmacy());
+                    pharmacyForm.getJSONObject("global").put("gestational_age", memberObject.getGestationAge());
+                    pharmacyForm.getJSONObject("global").put("malaria_preventive_therapy_ipt1", HfAncDao.malariaDosageIpt1(baseEntityId));
+                    pharmacyForm.getJSONObject("global").put("malaria_preventive_therapy_ipt2", HfAncDao.malariaDosageIpt2(baseEntityId));
+                    pharmacyForm.getJSONObject("global").put("malaria_preventive_therapy_ipt3", HfAncDao.malariaDosageIpt3(baseEntityId));
+                    pharmacyForm.getJSONObject("global").put("malaria_preventive_therapy_ipt4", HfAncDao.malariaDosageIpt4(baseEntityId));
+                    if (details != null && !details.isEmpty()) {
+                        JsonFormUtils.populateForm(pharmacyForm, details);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                JSONObject labTestForm = null;
+                try {
+                    labTestForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.LAB_TESTS);
+                    labTestForm.getJSONObject("global").put("gestational_age", memberObject.getGestationAge());
+                    labTestForm.getJSONObject("global").put("hepatitis_test_complete", HfAncDao.isTestConducted(Constants.DBConstants.ANC_HEPATITIS, baseEntityId));
+                    labTestForm.getJSONObject("global").put("malaria_test_complete", HfAncDao.isTestConducted(Constants.DBConstants.ANC_MRDT_FOR_MALARIA, baseEntityId));
+                    labTestForm.getJSONObject("global").put("syphilis_test_complete", HfAncDao.isTestConducted(Constants.DBConstants.ANC_SYPHILIS, baseEntityId));
+                    labTestForm.getJSONObject("global").put("hiv_test_complete", HfAncDao.isTestConducted(Constants.DBConstants.ANC_HIV, baseEntityId));
+                    labTestForm.getJSONObject("global").put("hiv_test_at_32_complete", HfAncDao.isHivTestConductedAtWk32(baseEntityId));
+                    labTestForm.getJSONObject("global").put("hiv_status", HfAncDao.getHivStatus(baseEntityId));
+                    if ((memberObject.getGestationAge() >= 32 || HfAncDao.getHivStatus(baseEntityId).equalsIgnoreCase("negative")) && (!HfAncDao.isHivTestConductedAtWk32(baseEntityId) || HfAncDao.getHivStatus(baseEntityId).equalsIgnoreCase("test_not_conducted"))) {
+                        JSONArray fields = labTestForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+                        JSONObject renameSecondHivAt32 = null;
+                        for (int i = 0; i < fields.length(); i++) {
+                            if (fields.getJSONObject(i).getString(JsonFormConstants.KEY).equals("hiv")) {
+                                renameSecondHivAt32 = fields.getJSONObject(i);
+                                break;
+                            }
+                        }
+                        renameSecondHivAt32.put("label", context.getString(R.string.second_hiv_test_results_woman));
+
+                    }
+                    if (details != null && !details.isEmpty()) {
+                        JsonFormUtils.populateForm(labTestForm, details);
+                    }
+                } catch (JSONException e) {
+                    Timber.e(e);
+                }
+
+                JSONObject partnerTestingForm = null;
+                try {
+                    partnerTestingForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.PARTNER_TESTING);
+                    partnerTestingForm.getJSONObject("global").put("hiv_testing_done", HfAncDao.isPartnerTestedForHiv(baseEntityId));
+                    partnerTestingForm.getJSONObject("global").put("gestational_age", memberObject.getGestationAge());
+                    partnerTestingForm.getJSONObject("global").put("syphilis_testing_done", HfAncDao.isPartnerTestedForSyphilis(baseEntityId));
+                    partnerTestingForm.getJSONObject("global").put("hepatitis_testing_done", HfAncDao.isPartnerTestedForHepatitis(baseEntityId));
+                    partnerTestingForm.getJSONObject("global").put("partner_hiv_test_at_32_done", HfAncDao.isPartnerHivTestConductedAtWk32(baseEntityId));
+                    partnerTestingForm.getJSONObject("global").put("partner_hiv_status", HfAncDao.getPartnerHivStatus(baseEntityId));
+                    if ((memberObject.getGestationAge() >= 32 || HfAncDao.getPartnerHivStatus(baseEntityId).equalsIgnoreCase("negative")) && (!HfAncDao.isPartnerHivTestConductedAtWk32(baseEntityId) || HfAncDao.getPartnerHivStatus(baseEntityId).equalsIgnoreCase("test_not_conducted"))) {
+                        JSONArray fields = partnerTestingForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+                        JSONObject renamePartnerSecondHivAt32 = null;
+                        for (int i = 0; i < fields.length(); i++) {
+                            if (fields.getJSONObject(i).getString(JsonFormConstants.KEY).equals("partner_hiv")) {
+                                renamePartnerSecondHivAt32 = fields.getJSONObject(i);
+                                break;
+                            }
+                        }
+                        renamePartnerSecondHivAt32.put("label", context.getString(R.string.second_hiv_test_results_partner));
+                    }
+                    if (details != null && !details.isEmpty()) {
+                        JsonFormUtils.populateForm(partnerTestingForm, details);
+                    }
+                } catch (JSONException e) {
+                    Timber.e(e);
+                }
+
+                if (pregnancy_status != null) {
+                    try {
+                        BaseAncHomeVisitAction consultation = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_cunsultation))
+                                .withOptional(true)
+                                .withDetails(details)
+                                .withJsonPayload(consultationForm.toString())
+                                .withFormName(Constants.JsonForm.AncRecurringVisit.getConsultation())
+                                .withHelper(new AncConsultationAction(memberObject))
+                                .build();
+                        actionList.put(context.getString(R.string.anc_recuring_visit_cunsultation), consultation);
+                    } catch (BaseAncHomeVisitAction.ValidationException e) {
+                        e.printStackTrace();
+                    }
+
+                    try {
+                        BaseAncHomeVisitAction labTests = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_lab_tests))
+                                .withOptional(true)
+                                .withDetails(details)
+                                .withJsonPayload(labTestForm.toString())
+                                .withFormName(Constants.JsonForm.AncRecurringVisit.getLabTests())
+                                .withHelper(new AncLabTestAction(memberObject))
+                                .build();
+                        actionList.put(context.getString(R.string.anc_recuring_visit_lab_tests), labTests);
+                    } catch (BaseAncHomeVisitAction.ValidationException e) {
+                        e.printStackTrace();
+                    }
+
+                    try {
+                        BaseAncHomeVisitAction pharmacy = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_pharmacy))
+                                .withOptional(true)
+                                .withDetails(details)
+                                .withJsonPayload(pharmacyForm.toString())
+                                .withFormName(Constants.JsonForm.AncRecurringVisit.getPharmacy())
+                                .withHelper(new AncPharmacyAction(memberObject))
+                                .build();
+                        actionList.put(context.getString(R.string.anc_recuring_visit_pharmacy), pharmacy);
+                    } catch (BaseAncHomeVisitAction.ValidationException e) {
+                        e.printStackTrace();
+                    }
+
+                    try {
+                        BaseAncHomeVisitAction counselling = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_first_and_recurring_visit_counselling))
+                                .withOptional(true)
+                                .withDetails(details)
+                                .withFormName(Constants.JsonForm.getCounselling())
+                                .withHelper(new AncCounsellingAction(memberObject))
+                                .build();
+                        actionList.put(context.getString(R.string.anc_first_and_recurring_visit_counselling), counselling);
+                    } catch (BaseAncHomeVisitAction.ValidationException e) {
+                        e.printStackTrace();
+                    }
+
+
+                    boolean retestPartnerAt32 = ((memberObject.getGestationAge() >= 32 && HfAncDao.getPartnerHivStatus(baseEntityId).equalsIgnoreCase("negative")) && !HfAncDao.isPartnerHivTestConductedAtWk32(baseEntityId));
+
+                    if (HfAncDao.isPartnerRegistered(baseEntityId) && (!(HfAncDao.isPartnerTestedForHiv(baseEntityId) && HfAncDao.isPartnerTestedForSyphilis(baseEntityId) && HfAncDao.isPartnerTestedForHepatitis(baseEntityId)) || retestPartnerAt32)) {
+                        try {
+                            BaseAncHomeVisitAction partnerTesting = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.partner_testing_action_title))
+                                    .withOptional(true)
+                                    .withDetails(details)
+                                    .withJsonPayload(partnerTestingForm.toString())
+                                    .withHelper(new AncPartnerTestingAction(memberObject))
+                                    .withFormName(Constants.JsonForm.AncRecurringVisit.getPartnerTesting())
+                                    .build();
+                            actionList.put(context.getString(R.string.partner_testing_action_title), partnerTesting);
+                        } catch (BaseAncHomeVisitAction.ValidationException e) {
+                            Timber.e(e);
+                        }
+                    }
+
+                    if (!HfAncDao.isReviewFormFilled(baseEntityId)) {
+                        JSONObject birthReviewForm = initializeHealthFacilitiesList(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.BIRTH_REVIEW_AND_EMERGENCY_PLAN));
+                        try {
+                            BaseAncHomeVisitAction birthReview = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_review_birth_and_emergency_plan))
+                                    .withOptional(true)
+                                    .withDetails(details)
+                                    .withJsonPayload(birthReviewForm.toString())
+                                    .withFormName(Constants.JsonForm.AncRecurringVisit.getBirthReviewAndEmergencyPlan())
+                                    .withHelper(new AncBirthReviewAction(memberObject))
+                                    .build();
+                            actionList.put(context.getString(R.string.anc_recuring_visit_review_birth_and_emergency_plan), birthReview);
+                        } catch (BaseAncHomeVisitAction.ValidationException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            } else {
+                actionList.remove(context.getString(R.string.anc_recuring_visit_cunsultation));
+                actionList.remove(context.getString(R.string.anc_recuring_visit_lab_tests));
+                actionList.remove(context.getString(R.string.anc_recuring_visit_pharmacy));
+                actionList.remove(context.getString(R.string.anc_first_and_recurring_visit_counselling));
+                actionList.remove(context.getString(R.string.partner_testing_action_title));
+                actionList.remove(context.getString(R.string.anc_recuring_visit_review_birth_and_emergency_plan));
+            }
+            new AppExecutors().mainThread().execute(() -> callBack.preloadActions(actionList));
+            return super.postProcess(s);
+        }
     }
 
 

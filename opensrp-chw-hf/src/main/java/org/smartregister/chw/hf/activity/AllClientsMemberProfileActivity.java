@@ -3,9 +3,11 @@ package org.smartregister.chw.hf.activity;
 import android.content.Context;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.vijay.jsonwizard.utils.FormUtils;
 
+import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.core.activity.CoreAllClientsMemberProfileActivity;
@@ -52,7 +54,7 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
 
         if (BuildConfig.BUILD_FOR_BORESHA_AFYA_SOUTH) {
             AllClientsUtils.updateHivMenuItems(baseEntityId, menu);
-           // AllClientsUtils.updateTbMenuItems(baseEntityId, menu);
+            // AllClientsUtils.updateTbMenuItems(baseEntityId, menu);
 
         }
         if (isOfReproductiveAge(commonPersonObject, gender) && gender.equalsIgnoreCase("female") && !AncDao.isANCMember(baseEntityId)) {
@@ -62,6 +64,18 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
         menu.findItem(R.id.action_sick_child_follow_up).setVisible(false);
         menu.findItem(R.id.action_malaria_diagnosis).setVisible(false);
         return true;
+    }
+
+    @Override
+    protected void setupViews() {
+        super.setupViews();
+        TextView toolbarTitleView = findViewById(org.smartregister.chw.core.R.id.toolbar_title);
+        String toolbarTitle = getIntent().getStringExtra(CoreConstants.INTENT_KEY.TOOLBAR_TITLE);
+        if (StringUtils.isNotBlank(toolbarTitle)) {
+            toolbarTitleView.setText(toolbarTitle);
+        } else {
+            toolbarTitleView.setText(getString(org.smartregister.chw.core.R.string.return_to_all_client));
+        }
     }
 
     @Override
