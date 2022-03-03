@@ -51,7 +51,7 @@ import static com.vijay.jsonwizard.utils.FormUtils.fields;
 import static com.vijay.jsonwizard.utils.FormUtils.getFieldJSONObject;
 import static org.smartregister.AllConstants.LocationConstants.SPECIAL_TAG_FOR_OPENMRS_TEAM_MEMBERS;
 import static org.smartregister.chw.hf.utils.Constants.Events.PARTNER_REGISTRATION_EVENT;
-import static org.smartregister.chw.hf.utils.Constants.PartnerRegistrationConstants.BASE_ENTITY_ID;
+import static org.smartregister.chw.hf.utils.Constants.PartnerRegistrationConstants.INTENT_BASE_ENTITY_ID;
 import static org.smartregister.chw.hf.utils.Constants.PartnerRegistrationConstants.EXISTING_PARTNER_REQUEST_CODE;
 import static org.smartregister.chw.hf.utils.Constants.PartnerRegistrationConstants.NEW_PARTNER_REQUEST_CODE;
 import static org.smartregister.chw.hf.utils.Constants.PartnerRegistrationConstants.PARTNER_BASE_ENTITY_ID;
@@ -72,7 +72,7 @@ public class PartnerRegistrationActivity extends SecuredActivity implements View
     @Override
     protected void onCreation() {
         setContentView(R.layout.activity_partner_registration);
-        this.clientBaseEntityId = getIntent().getStringExtra(BASE_ENTITY_ID);
+        this.clientBaseEntityId = getIntent().getStringExtra(INTENT_BASE_ENTITY_ID);
         setupView();
     }
 
@@ -186,7 +186,7 @@ public class PartnerRegistrationActivity extends SecuredActivity implements View
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == EXISTING_PARTNER_REQUEST_CODE) {
             if (resultCode == Activity.RESULT_OK) {
-                String partner_id = data.getStringExtra(BASE_ENTITY_ID);
+                String partner_id = data.getStringExtra(INTENT_BASE_ENTITY_ID);
                 savePartnerDetails(partner_id, clientBaseEntityId);
                 startActivity(new Intent(this,AncRegisterActivity.class));
             }

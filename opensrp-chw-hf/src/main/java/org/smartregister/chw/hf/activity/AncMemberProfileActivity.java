@@ -66,7 +66,7 @@ import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
 import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
 import static org.smartregister.chw.hf.utils.Constants.Events.ANC_FIRST_FACILITY_VISIT;
 import static org.smartregister.chw.hf.utils.Constants.Events.ANC_RECURRING_FACILITY_VISIT;
-import static org.smartregister.chw.hf.utils.Constants.PartnerRegistrationConstants.BASE_ENTITY_ID;
+import static org.smartregister.chw.hf.utils.Constants.PartnerRegistrationConstants.INTENT_BASE_ENTITY_ID;
 
 public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     private CommonPersonObjectClient commonPersonObjectClient;
@@ -255,10 +255,11 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         }
 
         RelativeLayout partnerView = findViewById(R.id.rlPartnerView);
-        partnerView.setOnClickListener(this);
         CustomFontTextView tvPartnerProfileView = findViewById(R.id.text_view_partner_profile);
         CustomFontTextView tvPartnerDetails = findViewById(R.id.partner_details);
 
+        partnerView.setVisibility(View.VISIBLE);
+        partnerView.setOnClickListener(this);
         partnerBaseEntityId = HfAncDao.getPartnerBaseEntityId(memberObject.getBaseEntityId());
         if (StringUtils.isNotBlank(partnerBaseEntityId)) {
             tvPartnerProfileView.setText(R.string.view_partner_prefile);
@@ -383,11 +384,11 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
                 intent.putExtra(org.smartregister.family.util.Constants.INTENT_KEY.FAMILY_HEAD, familyDetailsModel.getFamilyHead());
                 intent.putExtra(org.smartregister.family.util.Constants.INTENT_KEY.PRIMARY_CAREGIVER, familyDetailsModel.getPrimaryCareGiver());
                 intent.putExtra(org.smartregister.family.util.Constants.INTENT_KEY.VILLAGE_TOWN, familyDetailsModel.getVillageTown());
-                intent.putExtra(CoreConstants.INTENT_KEY.TOOLBAR_TITLE, R.string.return_to_anc_profile);
+                intent.putExtra(CoreConstants.INTENT_KEY.TOOLBAR_TITLE, String.format(getString(R.string.return_to_anc_profile), memberObject.getFirstName()));
                 startActivity(intent);
             } else {
                 Intent intent = new Intent(this, PartnerRegistrationActivity.class);
-                intent.putExtra(BASE_ENTITY_ID, memberObject.getBaseEntityId());
+                intent.putExtra(INTENT_BASE_ENTITY_ID, memberObject.getBaseEntityId());
                 startActivity(intent);
                 setupViews();
             }

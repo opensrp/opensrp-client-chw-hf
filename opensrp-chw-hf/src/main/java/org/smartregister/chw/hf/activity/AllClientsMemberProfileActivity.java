@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.vijay.jsonwizard.utils.FormUtils;
 
+import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.core.activity.CoreAllClientsMemberProfileActivity;
@@ -53,7 +54,7 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
 
         if (BuildConfig.BUILD_FOR_BORESHA_AFYA_SOUTH) {
             AllClientsUtils.updateHivMenuItems(baseEntityId, menu);
-           // AllClientsUtils.updateTbMenuItems(baseEntityId, menu);
+            // AllClientsUtils.updateTbMenuItems(baseEntityId, menu);
 
         }
         if (isOfReproductiveAge(commonPersonObject, gender) && gender.equalsIgnoreCase("female") && !AncDao.isANCMember(baseEntityId)) {
@@ -69,10 +70,10 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
     protected void setupViews() {
         super.setupViews();
         TextView toolbarTitleView = findViewById(org.smartregister.chw.core.R.id.toolbar_title);
-        int toolbarTitle = getIntent().getIntExtra(CoreConstants.INTENT_KEY.TOOLBAR_TITLE,0);
-        if(toolbarTitle != 0){
-            toolbarTitleView.setText(getString(toolbarTitle));
-        }else{
+        String toolbarTitle = getIntent().getStringExtra(CoreConstants.INTENT_KEY.TOOLBAR_TITLE);
+        if (StringUtils.isNotBlank(toolbarTitle)) {
+            toolbarTitleView.setText(toolbarTitle);
+        } else {
             toolbarTitleView.setText(getString(org.smartregister.chw.core.R.string.return_to_all_client));
         }
     }

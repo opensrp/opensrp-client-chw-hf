@@ -198,7 +198,7 @@ public class Constants extends CoreConstants {
     public interface PartnerRegistrationConstants {
         int EXISTING_PARTNER_REQUEST_CODE = 12344;
         int NEW_PARTNER_REQUEST_CODE = 12345;
-        String BASE_ENTITY_ID = "BASE_ENTITY_ID";
+        String INTENT_BASE_ENTITY_ID = "BASE_ENTITY_ID";
         String PARTNER_BASE_ENTITY_ID = "partner_base_entity_id";
     }
 }
