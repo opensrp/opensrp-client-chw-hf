@@ -77,7 +77,7 @@ public class HfAncDao extends AbstractDao {
         if (res.size() == 1) {
             return !res.get(0).equalsIgnoreCase("test_not_conducted");
         }
-        ;
+
         return false;
     }
 
@@ -131,7 +131,7 @@ public class HfAncDao extends AbstractDao {
         if (res.size() == 1) {
             return !res.get(0).equalsIgnoreCase("test_not_conducted");
         }
-        ;
+
         return false;
     }
 
@@ -151,7 +151,7 @@ public class HfAncDao extends AbstractDao {
         if (res.size() == 1) {
             return !res.get(0).equalsIgnoreCase("test_not_conducted");
         }
-        ;
+
         return false;
     }
 
