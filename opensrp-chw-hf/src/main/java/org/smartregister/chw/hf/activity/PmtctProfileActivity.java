@@ -38,7 +38,6 @@ import org.smartregister.chw.hf.dao.HfPmtctDao;
 import org.smartregister.chw.hf.model.FamilyProfileModel;
 import org.smartregister.chw.hf.model.PmtctFollowupFeedbackModel;
 import org.smartregister.chw.hf.presenter.FamilyOtherMemberActivityPresenter;
-import org.smartregister.chw.hf.presenter.PmtctMemberActivityPresenter;
 import org.smartregister.chw.hf.presenter.PmtctProfilePresenter;
 import org.smartregister.chw.hf.utils.PmtctVisitUtils;
 import org.smartregister.chw.pmtct.PmtctLibrary;
@@ -74,7 +73,7 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        ((PmtctMemberActivityPresenter) getPresenter()).updateFollowupFeedback();
+        ((PmtctProfilePresenter) profilePresenter).updateFollowupFeedback(baseEntityId);
         if (notificationAndReferralRecyclerView != null && notificationAndReferralRecyclerView.getAdapter() != null) {
             notificationAndReferralRecyclerView.getAdapter().notifyDataSetChanged();
         }
@@ -252,7 +251,7 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
     @NonNull
     @Override
     public FamilyOtherMemberActivityPresenter presenter() {
-        return new PmtctMemberActivityPresenter(this, new BaseFamilyOtherMemberProfileActivityModel(), null, memberObject.getRelationalId(), memberObject.getBaseEntityId(), memberObject.getFamilyHead(), memberObject.getPrimaryCareGiver(), memberObject.getAddress(), memberObject.getLastName());
+        return new FamilyOtherMemberActivityPresenter(this, new BaseFamilyOtherMemberProfileActivityModel(), null, memberObject.getRelationalId(), memberObject.getBaseEntityId(), memberObject.getFamilyHead(), memberObject.getPrimaryCareGiver(), memberObject.getAddress(), memberObject.getLastName());
     }
 
     @Override
