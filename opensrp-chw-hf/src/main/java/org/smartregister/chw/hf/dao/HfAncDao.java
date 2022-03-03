@@ -56,7 +56,7 @@ public class HfAncDao extends AbstractDao {
         if (res.size() == 1) {
             return res.get(0);
         }
-        ;
+
         return "";
     }
 
