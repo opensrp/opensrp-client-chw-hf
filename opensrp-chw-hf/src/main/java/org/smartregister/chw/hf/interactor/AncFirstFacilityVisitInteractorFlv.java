@@ -26,7 +26,6 @@ import org.smartregister.chw.hf.actionhelper.AncBaselineInvestigationAction;
 import org.smartregister.chw.hf.actionhelper.AncBirthReviewAction;
 import org.smartregister.chw.hf.actionhelper.AncCounsellingAction;
 import org.smartregister.chw.hf.actionhelper.AncObstetricExaminationAction;
-import org.smartregister.chw.hf.actionhelper.AncPartnerRegistrationAction;
 import org.smartregister.chw.hf.actionhelper.AncPartnerTestingAction;
 import org.smartregister.chw.hf.actionhelper.AncTtVaccinationAction;
 import org.smartregister.chw.hf.dao.HfAncDao;
@@ -190,13 +189,6 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
                 .build();
         actionList.put(context.getString(R.string.anc_first_and_recurring_visit_counselling), counsellingAction);
 
-        BaseAncHomeVisitAction partnerRegistration = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.partner_registration_action_title))
-                .withOptional(true)
-                .withDetails(details)
-                .withHelper(new AncPartnerRegistrationAction(memberObject))
-                .withFormName(Constants.JsonForm.AncRecurringVisit.getPartnerRegistration())
-                .build();
-        actionList.put(context.getString(R.string.partner_registration_action_title), partnerRegistration);
 
         BaseAncHomeVisitAction partnerTesting = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.partner_testing_action_title))
                 .withOptional(true)

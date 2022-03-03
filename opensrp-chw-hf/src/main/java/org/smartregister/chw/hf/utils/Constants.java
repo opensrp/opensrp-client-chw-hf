@@ -151,7 +151,6 @@ public class Constants extends CoreConstants {
             public static final String LAB_TESTS = "anc_rv_lab_test";
             public static final String BIRTH_REVIEW_AND_EMERGENCY_PLAN = "anc_rv_birth_review_and_emergency_plan";
             public static final String PARTNER_TESTING = "anc_partner_testing";
-            private static final String PARTNER_REGISTRATION = "anc_partner_registration";
             private static final String PHARMACY = "anc_rv_pharmacy";
             private static final String PREGNANCY_STATUS = "anc_rv_pregnancy_status";
 
@@ -167,9 +166,6 @@ public class Constants extends CoreConstants {
                 return Utils.getLocalForm(LAB_TESTS, locale, assetManager);
             }
 
-            public static String getPartnerRegistration() {
-                return Utils.getLocalForm(PARTNER_REGISTRATION, locale, assetManager);
-            }
 
             public static String getPharmacy() {
                 return Utils.getLocalForm(PHARMACY, locale, assetManager);

@@ -25,7 +25,6 @@ import org.smartregister.chw.hf.actionhelper.AncBirthReviewAction;
 import org.smartregister.chw.hf.actionhelper.AncConsultationAction;
 import org.smartregister.chw.hf.actionhelper.AncCounsellingAction;
 import org.smartregister.chw.hf.actionhelper.AncLabTestAction;
-import org.smartregister.chw.hf.actionhelper.AncPartnerRegistrationAction;
 import org.smartregister.chw.hf.actionhelper.AncPartnerTestingAction;
 import org.smartregister.chw.hf.actionhelper.AncPharmacyAction;
 import org.smartregister.chw.hf.actionhelper.AncTriageAction;
@@ -313,19 +312,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                     } catch (BaseAncHomeVisitAction.ValidationException e) {
                         e.printStackTrace();
                     }
-                    if(!HfAncDao.isPartnerRegistered(baseEntityId)){
-                        try {
-                            BaseAncHomeVisitAction partnerRegistration = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.partner_registration_action_title))
-                                    .withOptional(true)
-                                    .withDetails(details)
-                                    .withHelper(new AncPartnerRegistrationAction(memberObject))
-                                    .withFormName(Constants.JsonForm.AncRecurringVisit.getPartnerRegistration())
-                                    .build();
-                            actionList.put(context.getString(R.string.partner_registration_action_title), partnerRegistration);
-                        } catch (BaseAncHomeVisitAction.ValidationException e) {
-                            Timber.e(e);
-                        }
-                    }
+
 
                     boolean retestPartnerAt32 = ((memberObject.getGestationAge() >= 32 && HfAncDao.getPartnerHivStatus(baseEntityId).equalsIgnoreCase("negative")) && !HfAncDao.isPartnerHivTestConductedAtWk32(baseEntityId));
 
@@ -365,7 +352,6 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                 actionList.remove(context.getString(R.string.anc_recuring_visit_lab_tests));
                 actionList.remove(context.getString(R.string.anc_recuring_visit_pharmacy));
                 actionList.remove(context.getString(R.string.anc_first_and_recurring_visit_counselling));
-                actionList.remove(context.getString(R.string.partner_registration_action_title));
                 actionList.remove(context.getString(R.string.partner_testing_action_title));
                 actionList.remove(context.getString(R.string.anc_recuring_visit_review_birth_and_emergency_plan));
             }

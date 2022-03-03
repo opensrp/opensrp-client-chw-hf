@@ -930,14 +930,6 @@
           }
         },
         {
-          "column_name": "partner_registered",
-          "type": "Event",
-          "json_mapping": {
-            "field": "obs.fieldCode",
-            "concept": "partner_registered"
-          }
-        },
-        {
           "column_name": "partner_hiv",
           "type": "Event",
           "json_mapping": {
