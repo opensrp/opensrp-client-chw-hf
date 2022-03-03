@@ -1,5 +1,10 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
+import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
+import static org.smartregister.chw.hf.utils.Constants.Events.ANC_FIRST_FACILITY_VISIT;
+import static org.smartregister.chw.hf.utils.Constants.Events.ANC_RECURRING_FACILITY_VISIT;
+
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
@@ -8,6 +13,8 @@ import android.text.format.DateFormat;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -23,7 +30,6 @@ import org.smartregister.chw.anc.util.DBConstants;
 import org.smartregister.chw.anc.util.NCUtils;
 import org.smartregister.chw.core.activity.CoreAncMemberProfileActivity;
 import org.smartregister.chw.core.application.CoreChwApplication;
-import org.smartregister.chw.core.interactor.CoreAncMemberProfileInteractor;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.core.utils.HomeVisitUtil;
@@ -31,6 +37,7 @@ import org.smartregister.chw.core.utils.VisitSummary;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.adapter.ReferralCardViewAdapter;
 import org.smartregister.chw.hf.dao.HfAncDao;
+import org.smartregister.chw.hf.interactor.AncMemberProfileInteractor;
 import org.smartregister.chw.hf.model.FamilyProfileModel;
 import org.smartregister.chw.hf.presenter.AncMemberProfilePresenter;
 import org.smartregister.chw.hf.utils.VisitUtils;
@@ -53,13 +60,7 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Set;
 
-import androidx.recyclerview.widget.RecyclerView;
 import timber.log.Timber;
-
-import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
-import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
-import static org.smartregister.chw.hf.utils.Constants.Events.ANC_FIRST_FACILITY_VISIT;
-import static org.smartregister.chw.hf.utils.Constants.Events.ANC_RECURRING_FACILITY_VISIT;
 
 public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     private CommonPersonObjectClient commonPersonObjectClient;
@@ -90,7 +91,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
 
     @Override
     protected void registerPresenter() {
-        presenter = new AncMemberProfilePresenter(this, new CoreAncMemberProfileInteractor(this),memberObject);
+        presenter = new AncMemberProfilePresenter(this, new AncMemberProfileInteractor(this),memberObject);
     }
 
     @Override
