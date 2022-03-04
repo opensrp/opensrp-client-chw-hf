@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.rey.material.widget.Button;
@@ -180,8 +179,8 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
                     ancMemberProfilePresenter().createAncDangerSignsOutcomeEvent(Utils.getAllSharedPreferences(), jsonString, baseEntityID);
                 } else if (encounterType.equals(CoreConstants.EventType.ANC_PARTNER_COMMUNITY_FOLLOWUP_REFERRAL)) {
                     ((AncMemberProfilePresenter) presenter()).createPartnerFollowupReferralEvent(Utils.getAllSharedPreferences(), jsonString, baseEntityID);
-                } else if (encounterType.equals(org.smartregister.chw.hf.utils.Constants.Events.ANC_PARTNER_TESTING)){
-                    ((AncMemberProfilePresenter) presenter()).savePartnerTestingEvent(Utils.getAllSharedPreferences(),jsonString,baseEntityID);
+                } else if (encounterType.equals(org.smartregister.chw.hf.utils.Constants.Events.ANC_PARTNER_TESTING)) {
+                    ((AncMemberProfilePresenter) presenter()).savePartnerTestingEvent(Utils.getAllSharedPreferences(), jsonString, baseEntityID);
                     displayToast(R.string.recorded_partner_testing_results);
                     setupViews();
                 }
@@ -417,7 +416,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
                 startActivity(intent);
                 setupViews();
             }
-        }else if(id == R.id.test_partner_btn){
+        } else if (id == R.id.test_partner_btn) {
             ((AncMemberProfilePresenter) presenter()).startPartnerTestingForm();
         }
     }

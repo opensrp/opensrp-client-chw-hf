@@ -2,7 +2,6 @@ package org.smartregister.chw.hf.interactor;
 
 import android.content.Context;
 
-import org.apache.commons.lang3.StringUtils;
 import org.json.JSONObject;
 import org.smartregister.chw.anc.AncLibrary;
 import org.smartregister.chw.anc.domain.MemberObject;
