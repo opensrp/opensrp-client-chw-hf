@@ -5,19 +5,23 @@ import org.smartregister.chw.core.contract.CorePmtctProfileContract;
 import org.smartregister.chw.core.presenter.CorePmtctMemberProfilePresenter;
 import org.smartregister.chw.hf.activity.PmtctProfileActivity;
 import org.smartregister.chw.hf.dao.HfFollowupFeedbackDao;
+import org.smartregister.chw.hf.interactor.PmtctProfileInteractor;
 import org.smartregister.chw.hf.model.ChwFollowupFeedbackDetailsModel;
 import org.smartregister.chw.hf.model.PmtctFollowupFeedbackModel;
 import org.smartregister.chw.pmtct.domain.MemberObject;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.family.contract.FamilyProfileContract;
 import org.smartregister.family.domain.FamilyEventClient;
+import org.smartregister.repository.AllSharedPreferences;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PmtctProfilePresenter extends CorePmtctMemberProfilePresenter implements FamilyProfileContract.InteractorCallBack {
+    private PmtctProfileInteractor createPartnerFollowupReferralEvent;
     public PmtctProfilePresenter(CorePmtctProfileContract.View view, CorePmtctProfileContract.Interactor interactor, MemberObject memberObject) {
         super(view, interactor, memberObject);
+        this.createPartnerFollowupReferralEvent = (PmtctProfileInteractor) interactor;
     }
 
     public void updateFollowupFeedback(String baseEntityId) {
@@ -59,5 +63,9 @@ public class PmtctProfilePresenter extends CorePmtctMemberProfilePresenter imple
     @Override
     public void onRegistrationSaved(boolean b, boolean b1, FamilyEventClient familyEventClient) {
         //implement
+    }
+
+    public void createPmtctCommunityFollowupReferralEvent(AllSharedPreferences allSharedPreferences, String jsonString, String entityID) throws Exception {
+        createPartnerFollowupReferralEvent.createPmtctCommunityFollowupReferralEvent(allSharedPreferences, jsonString, entityID);
     }
 }

@@ -1,5 +1,6 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.core.utils.CoreConstants.EventType.PMTCT_COMMUNITY_FOLLOWUP;
 import static org.smartregister.chw.hf.utils.Constants.Events.PMTCT_FIRST_EAC_VISIT;
 import static org.smartregister.chw.hf.utils.Constants.Events.PMTCT_SECOND_EAC_VISIT;
 
@@ -25,7 +26,6 @@ import org.json.JSONObject;
 import org.smartregister.chw.core.activity.CoreFamilyProfileActivity;
 import org.smartregister.chw.core.activity.CorePmtctProfileActivity;
 import org.smartregister.chw.core.custom_views.CorePmtctFloatingMenu;
-import org.smartregister.chw.core.interactor.CorePmtctProfileInteractor;
 import org.smartregister.chw.core.listener.OnClickFloatingMenu;
 import org.smartregister.chw.core.rule.PmtctFollowUpRule;
 import org.smartregister.chw.core.utils.CoreConstants;
@@ -35,6 +35,7 @@ import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.adapter.PmtctReferralCardViewAdapter;
 import org.smartregister.chw.hf.custom_view.PmtctFloatingMenu;
 import org.smartregister.chw.hf.dao.HfPmtctDao;
+import org.smartregister.chw.hf.interactor.PmtctProfileInteractor;
 import org.smartregister.chw.hf.model.FamilyProfileModel;
 import org.smartregister.chw.hf.model.PmtctFollowupFeedbackModel;
 import org.smartregister.chw.hf.presenter.FamilyOtherMemberActivityPresenter;
@@ -84,7 +85,7 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         showProgressBar(true);
         String baseEntityId = getIntent().getStringExtra(Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID);
         memberObject = PmtctDao.getMember(baseEntityId);
-        profilePresenter = new PmtctProfilePresenter(this, new CorePmtctProfileInteractor(), memberObject);
+        profilePresenter = new PmtctProfilePresenter(this, new PmtctProfileInteractor(), memberObject);
         fetchProfileData();
         profilePresenter.refreshProfileBottom();
     }
@@ -107,7 +108,8 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         int itemId = item.getItemId();
         try {
             if (itemId == R.id.action_issue_pmtct_followup_referral) {
-                HivRegisterActivity.startHIVFormActivity(this, memberObject.getBaseEntityId(), CoreConstants.JSON_FORM.getPmtctcCommunityFollowupReferral(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getPmtctcCommunityFollowupReferral()).toString());
+                JSONObject formJsonObject = (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getPmtctcCommunityFollowupReferral());
+                startFormActivity(formJsonObject);
                 return true;
             }
         } catch (JSONException e) {
@@ -129,6 +131,8 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
                     FamilyEventClient familyEventClient =
                             new FamilyProfileModel(memberObject.getFamilyName()).processUpdateMemberRegistration(jsonString, memberObject.getBaseEntityId());
                     new FamilyProfileInteractor().saveRegistration(familyEventClient, jsonString, true, (FamilyProfileContract.InteractorCallBack) profilePresenter);
+                } else if (encounterType.equals(PMTCT_COMMUNITY_FOLLOWUP)) {
+                    profilePresenter.saveForm(data.getStringExtra(Constants.JSON_FORM_EXTRA.JSON));
                 } else {
                     profilePresenter.saveForm(data.getStringExtra(Constants.JSON_FORM_EXTRA.JSON));
                     finish();
