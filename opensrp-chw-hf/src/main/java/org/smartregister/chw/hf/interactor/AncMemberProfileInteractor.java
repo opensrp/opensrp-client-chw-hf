@@ -2,6 +2,7 @@ package org.smartregister.chw.hf.interactor;
 
 import android.content.Context;
 
+import org.apache.commons.lang3.StringUtils;
 import org.json.JSONObject;
 import org.smartregister.chw.anc.AncLibrary;
 import org.smartregister.chw.anc.domain.MemberObject;
@@ -49,6 +50,12 @@ public class AncMemberProfileInteractor extends CoreAncMemberProfileInteractor {
             // Allows setting the ID for sync purposes
             baseEvent.setLocationId(syncLocationId);
         }
+        NCUtils.processEvent(baseEvent.getBaseEntityId(), new JSONObject(JsonFormUtils.gson.toJson(baseEvent)));
+    }
+
+    public void createTestingEvent(AllSharedPreferences allSharedPreferences, String jsonString, String entityID) throws Exception {
+        Event baseEvent = JsonFormUtils.processJsonForm(allSharedPreferences, CoreReferralUtils.setEntityId(jsonString, entityID), CoreConstants.TABLE_NAME.ANC_MEMBER);
+        JsonFormUtils.tagEvent(allSharedPreferences, baseEvent);
         NCUtils.processEvent(baseEvent.getBaseEntityId(), new JSONObject(JsonFormUtils.gson.toJson(baseEvent)));
     }
 }

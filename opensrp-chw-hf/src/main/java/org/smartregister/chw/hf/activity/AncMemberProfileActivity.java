@@ -1,10 +1,5 @@
 package org.smartregister.chw.hf.activity;
 
-import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
-import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
-import static org.smartregister.chw.hf.utils.Constants.Events.ANC_FIRST_FACILITY_VISIT;
-import static org.smartregister.chw.hf.utils.Constants.Events.ANC_RECURRING_FACILITY_VISIT;
-
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
@@ -13,11 +8,12 @@ import android.text.format.DateFormat;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
-
-import androidx.recyclerview.widget.RecyclerView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.rey.material.widget.Button;
 
 import org.apache.commons.lang3.StringUtils;
 import org.jeasy.rules.api.Rules;
@@ -41,7 +37,6 @@ import org.smartregister.chw.hf.dao.FamilyDao;
 import org.smartregister.chw.hf.dao.HfAncDao;
 import org.smartregister.chw.hf.interactor.AncMemberProfileInteractor;
 import org.smartregister.chw.hf.model.FamilyDetailsModel;
-import org.smartregister.chw.hf.interactor.AncMemberProfileInteractor;
 import org.smartregister.chw.hf.model.FamilyProfileModel;
 import org.smartregister.chw.hf.presenter.AncMemberProfilePresenter;
 import org.smartregister.chw.hf.utils.VisitUtils;
@@ -67,6 +62,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Set;
 
+import androidx.recyclerview.widget.RecyclerView;
 import timber.log.Timber;
 
 import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
@@ -184,6 +180,10 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
                     ancMemberProfilePresenter().createAncDangerSignsOutcomeEvent(Utils.getAllSharedPreferences(), jsonString, baseEntityID);
                 } else if (encounterType.equals(CoreConstants.EventType.ANC_PARTNER_COMMUNITY_FOLLOWUP_REFERRAL)) {
                     ((AncMemberProfilePresenter) presenter()).createPartnerFollowupReferralEvent(Utils.getAllSharedPreferences(), jsonString, baseEntityID);
+                } else if (encounterType.equals(org.smartregister.chw.hf.utils.Constants.Events.ANC_PARTNER_TESTING)){
+                    ((AncMemberProfilePresenter) presenter()).savePartnerTestingEvent(Utils.getAllSharedPreferences(),jsonString,baseEntityID);
+                    displayToast(R.string.recorded_partner_testing_results);
+                    setupViews();
                 }
             } catch (Exception e) {
                 Timber.e(e, "AncMemberProfileActivity -- > onActivityResult");
@@ -267,19 +267,32 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         }
 
         RelativeLayout partnerView = findViewById(R.id.rlPartnerView);
+        RelativeLayout partnerTestingView = findViewById(R.id.rlPartnerTesting);
         CustomFontTextView tvPartnerProfileView = findViewById(R.id.text_view_partner_profile);
         CustomFontTextView tvPartnerDetails = findViewById(R.id.partner_details);
+        ImageView goToProfileBtn = findViewById(R.id.partner_arrow_image);
+        Button registerBtn = findViewById(R.id.register_partner_btn);
+        Button testingBtn = findViewById(R.id.test_partner_btn);
+        View partnerTestingBottomView = findViewById(R.id.partner_testing_row);
+        View partnerBottomView = findViewById(R.id.view_partner_row);
 
         partnerView.setVisibility(View.VISIBLE);
+        partnerBottomView.setVisibility(View.VISIBLE);
+
         partnerView.setOnClickListener(this);
+        registerBtn.setOnClickListener(this);
+        testingBtn.setOnClickListener(this);
         partnerBaseEntityId = HfAncDao.getPartnerBaseEntityId(memberObject.getBaseEntityId());
         if (StringUtils.isNotBlank(partnerBaseEntityId)) {
             tvPartnerProfileView.setText(R.string.view_partner_prefile);
             tvPartnerDetails.setVisibility(View.VISIBLE);
+            registerBtn.setVisibility(View.GONE);
+            partnerTestingView.setVisibility(View.VISIBLE);
+            partnerTestingBottomView.setVisibility(View.VISIBLE);
+            goToProfileBtn.setVisibility(View.VISIBLE);
             CommonPersonObjectClient partnerClient = getClientDetailsByBaseEntityID(partnerBaseEntityId);
             HashMap<String, String> clientDetails = (HashMap<String, String>) partnerClient.getColumnmaps();
             tvPartnerDetails.setText(MessageFormat.format("{0} {1} {2}", clientDetails.get("first_name"), clientDetails.get("middle_name"), clientDetails.get("last_name") != null ? clientDetails.get("last_name") : ""));
-
         }
 
     }
@@ -386,7 +399,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
                 AncFirstFacilityVisitActivity.startMe(this, memberObject.getBaseEntityId(), true);
             else
                 AncRecurringFacilityVisitActivity.startMe(this, memberObject.getBaseEntityId(), true);
-        } else if (id == R.id.rlPartnerView) {
+        } else if (id == R.id.rlPartnerView || id == R.id.register_partner_btn) {
             if (StringUtils.isNotBlank(partnerBaseEntityId)) {
                 FamilyDetailsModel familyDetailsModel = FamilyDao.getFamilyDetail(partnerBaseEntityId);
                 Intent intent = new Intent(this, AllClientsMemberProfileActivity.class);
@@ -404,6 +417,8 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
                 startActivity(intent);
                 setupViews();
             }
+        }else if(id == R.id.test_partner_btn){
+            ((AncMemberProfilePresenter) presenter()).startPartnerTestingForm();
         }
     }
 

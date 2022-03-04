@@ -66,7 +66,20 @@ public class AncMemberProfilePresenter extends CoreAncMemberProfilePresenter {
         }
     }
 
+    public void startPartnerTestingForm() {
+        try {
+            JSONObject formJsonObject = (new FormUtils()).getFormJsonFromRepositoryOrAssets((Context) getView(), Constants.JsonForm.AncRecurringVisit.PARTNER_TESTING);
+            getView().startFormActivity(formJsonObject);
+        } catch (Exception e) {
+            Timber.e(e);
+        }
+    }
+
     public void createPartnerFollowupReferralEvent(AllSharedPreferences allSharedPreferences, String jsonString, String entityID) throws Exception {
         ancMemberProfileInteractor.createPartnerFollowupReferralEvent(allSharedPreferences, jsonString, entityID);
+    }
+
+    public void savePartnerTestingEvent(AllSharedPreferences allSharedPreferences, String jsonString, String entityID) throws Exception {
+        ancMemberProfileInteractor.createTestingEvent(allSharedPreferences,jsonString,entityID);
     }
 }
