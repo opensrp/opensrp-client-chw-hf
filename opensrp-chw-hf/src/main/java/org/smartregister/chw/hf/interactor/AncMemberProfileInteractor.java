@@ -51,4 +51,10 @@ public class AncMemberProfileInteractor extends CoreAncMemberProfileInteractor {
         }
         NCUtils.processEvent(baseEvent.getBaseEntityId(), new JSONObject(JsonFormUtils.gson.toJson(baseEvent)));
     }
+
+    public void createTestingEvent(AllSharedPreferences allSharedPreferences, String jsonString, String entityID) throws Exception {
+        Event baseEvent = JsonFormUtils.processJsonForm(allSharedPreferences, CoreReferralUtils.setEntityId(jsonString, entityID), CoreConstants.TABLE_NAME.ANC_MEMBER);
+        JsonFormUtils.tagEvent(allSharedPreferences, baseEvent);
+        NCUtils.processEvent(baseEvent.getBaseEntityId(), new JSONObject(JsonFormUtils.gson.toJson(baseEvent)));
+    }
 }

@@ -36,7 +36,7 @@ public class Constants extends CoreConstants {
         public static final String PMTCT_SECOND_EAC_VISIT = "PMTCT EAC Second Visit";
         public static final String UPDATE_HIV_INDEX_TESTING_FOLLOWUP = "Update HIV Index Contact Testing Followup";
         public static final String PARTNER_REGISTRATION_EVENT = "Partner Registration";
-
+        public static final String ANC_PARTNER_TESTING ="Partner Testing" ;
     }
 
     public static final class TableName {

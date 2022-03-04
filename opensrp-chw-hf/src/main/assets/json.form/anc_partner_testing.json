@@ -57,6 +57,32 @@
     "title": "Partner Testing",
     "fields": [
       {
+        "key": "couple_testing",
+        "type": "native_radio",
+        "label": "Did the partner test together with the mother?",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "couple_testing",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "No"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
+      },
+      {
         "key": "partner_hiv",
         "type": "native_radio",
         "label": "HIV Test Results",
