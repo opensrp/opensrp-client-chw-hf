@@ -132,8 +132,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "comment_pmtct_community_followup",
         "type": "edit_text",
-        "hint": "Remarks/Comments",
-        "edit_type": "name"
+        "hint": "Remarks/Comments"
       },
       {
         "key": "pmtct_community_referral_date",

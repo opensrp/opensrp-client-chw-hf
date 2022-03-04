@@ -142,8 +142,11 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         menu.findItem(R.id.action_pregnancy_out_come).setVisible(!HfAncDao.isClientClosed(baseEntityID));
         menu.findItem(R.id.action_malaria_diagnosis).setVisible(false);
 
-//      TODO implement checks for whether a partner has been registered
-        menu.findItem(R.id.action_anc_partner_followup_referral).setVisible(true);
+
+        partnerBaseEntityId = HfAncDao.getPartnerBaseEntityId(memberObject.getBaseEntityId());
+        if (StringUtils.isBlank(partnerBaseEntityId)) {
+            menu.findItem(R.id.action_anc_partner_followup_referral).setVisible(true);
+        }
         menu.findItem(R.id.action_pmtct_register).setVisible(!PmtctDao.isRegisteredForPmtct(baseEntityID) && (hivPositive || HivDao.isRegisteredForHiv(baseEntityID) || HfAncDao.getHivStatus(baseEntityID).equalsIgnoreCase("positive")));
         return true;
     }
