@@ -978,6 +978,14 @@
           }
         },
         {
+          "column_name": "couple_testing",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "couple_testing"
+          }
+        },
+        {
           "column_name": "name_of_hf",
           "type": "Event",
           "json_mapping": {

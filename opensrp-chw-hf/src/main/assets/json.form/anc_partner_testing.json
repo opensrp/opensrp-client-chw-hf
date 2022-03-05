@@ -59,7 +59,7 @@
       {
         "key": "couple_testing",
         "type": "native_radio",
-        "label": "Did the partner test together with the mother?",
+        "label": "Did the partner test together with the mother? (Couple testing)",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "couple_testing",
         "openmrs_entity_parent": "",
@@ -74,7 +74,7 @@
             "key": "no",
             "text": "No",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "No"
+            "openmrs_entity_id": "no"
           }
         ],
         "v_required": {

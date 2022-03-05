@@ -4,14 +4,19 @@ import android.content.Context;
 
 import com.vijay.jsonwizard.utils.FormUtils;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.anc.domain.MemberObject;
+import org.smartregister.chw.anc.util.JsonFormUtils;
 import org.smartregister.chw.core.contract.AncMemberProfileContract;
 import org.smartregister.chw.core.presenter.CoreAncMemberProfilePresenter;
 import org.smartregister.chw.core.utils.CoreConstants;
+import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.dao.HfAncDao;
 import org.smartregister.chw.hf.interactor.AncMemberProfileInteractor;
 import org.smartregister.chw.hf.utils.Constants;
+import org.smartregister.chw.referral.util.JsonFormConstants;
 import org.smartregister.repository.AllSharedPreferences;
 
 import timber.log.Timber;
@@ -66,11 +71,29 @@ public class AncMemberProfilePresenter extends CoreAncMemberProfilePresenter {
         }
     }
 
-    public void startPartnerTestingForm() {
+    public void startPartnerTestingForm(MemberObject memberObject) {
+        JSONObject partnerTestingForm = null;
         try {
-            JSONObject formJsonObject = (new FormUtils()).getFormJsonFromRepositoryOrAssets((Context) getView(), Constants.JsonForm.AncRecurringVisit.PARTNER_TESTING);
-            getView().startFormActivity(formJsonObject);
-        } catch (Exception e) {
+            partnerTestingForm = org.smartregister.chw.core.utils.FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.PARTNER_TESTING);
+            partnerTestingForm.getJSONObject("global").put("hiv_testing_done", HfAncDao.isPartnerTestedForHiv(memberObject.getBaseEntityId()));
+            partnerTestingForm.getJSONObject("global").put("gestational_age", memberObject.getGestationAge());
+            partnerTestingForm.getJSONObject("global").put("syphilis_testing_done", HfAncDao.isPartnerTestedForSyphilis(memberObject.getBaseEntityId()));
+            partnerTestingForm.getJSONObject("global").put("hepatitis_testing_done", HfAncDao.isPartnerTestedForHepatitis(memberObject.getBaseEntityId()));
+            partnerTestingForm.getJSONObject("global").put("partner_hiv_test_at_32_done", HfAncDao.isPartnerHivTestConductedAtWk32(memberObject.getBaseEntityId()));
+            partnerTestingForm.getJSONObject("global").put("partner_hiv_status", HfAncDao.getPartnerHivStatus(memberObject.getBaseEntityId()));
+            if ((memberObject.getGestationAge() >= 32 || HfAncDao.getPartnerHivStatus(memberObject.getBaseEntityId()).equalsIgnoreCase("negative")) && (!HfAncDao.isPartnerHivTestConductedAtWk32(memberObject.getBaseEntityId()) || HfAncDao.getPartnerHivStatus(memberObject.getBaseEntityId()).equalsIgnoreCase("test_not_conducted"))) {
+                JSONArray fields = partnerTestingForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+                JSONObject renamePartnerSecondHivAt32 = null;
+                for (int i = 0; i < fields.length(); i++) {
+                    if (fields.getJSONObject(i).getString(JsonFormConstants.KEY).equals("partner_hiv")) {
+                        renamePartnerSecondHivAt32 = fields.getJSONObject(i);
+                        break;
+                    }
+                }
+                renamePartnerSecondHivAt32.put("label", getView().getContext().getString(R.string.second_hiv_test_results_partner));
+            }
+            getView().startFormActivity(partnerTestingForm);
+        } catch (JSONException e) {
             Timber.e(e);
         }
     }
