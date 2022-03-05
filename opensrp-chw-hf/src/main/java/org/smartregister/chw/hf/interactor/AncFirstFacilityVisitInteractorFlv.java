@@ -26,7 +26,6 @@ import org.smartregister.chw.hf.actionhelper.AncBaselineInvestigationAction;
 import org.smartregister.chw.hf.actionhelper.AncBirthReviewAction;
 import org.smartregister.chw.hf.actionhelper.AncCounsellingAction;
 import org.smartregister.chw.hf.actionhelper.AncObstetricExaminationAction;
-import org.smartregister.chw.hf.actionhelper.AncPartnerTestingAction;
 import org.smartregister.chw.hf.actionhelper.AncTtVaccinationAction;
 import org.smartregister.chw.hf.dao.HfAncDao;
 import org.smartregister.chw.hf.repository.HfLocationRepository;
@@ -51,255 +50,6 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
 
     LinkedHashMap<String, BaseAncHomeVisitAction> actionList = new LinkedHashMap<>();
     JSONObject baselineInvestigationForm = null;
-
-    @Override
-    public LinkedHashMap<String, BaseAncHomeVisitAction> calculateActions(BaseAncHomeVisitContract.View view, MemberObject memberObject, BaseAncHomeVisitContract.InteractorCallBack callBack) throws BaseAncHomeVisitAction.ValidationException {
-
-        Context context = view.getContext();
-
-        Map<String, List<VisitDetail>> details = null;
-        // get the preloaded data
-        if (view.getEditMode()) {
-            Visit lastVisit = AncLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), Constants.Events.ANC_FIRST_FACILITY_VISIT);
-            if (lastVisit != null) {
-                details = VisitUtils.getVisitGroups(AncLibrary.getInstance().visitDetailsRepository().getVisits(lastVisit.getVisitId()));
-            }
-        }
-
-        // get contact
-        LocalDate lastContact = new DateTime(memberObject.getDateCreated()).toLocalDate();
-        boolean isFirst = (StringUtils.isBlank(memberObject.getLastContactVisit()));
-        LocalDate lastMenstrualPeriod = new LocalDate();
-        try {
-            lastMenstrualPeriod = DateTimeFormat.forPattern("dd-MM-yyyy").parseLocalDate(memberObject.getLastMenstrualPeriod());
-        } catch (Exception e) {
-            Timber.e(e);
-        }
-
-
-        if (StringUtils.isNotBlank(memberObject.getLastContactVisit())) {
-            lastContact = DateTimeFormat.forPattern("dd-MM-yyyy").parseLocalDate(memberObject.getLastContactVisit());
-        }
-
-        Map<Integer, LocalDate> dateMap = new LinkedHashMap<>();
-
-        // today is the due date for the very first visit
-        if (isFirst) {
-            dateMap.put(0, LocalDate.now());
-        }
-
-        dateMap.putAll(ContactUtil.getContactWeeks(isFirst, lastContact, lastMenstrualPeriod));
-
-        evaluateMedicalAndSurgicalHistory(actionList, details, memberObject, context, callBack);
-
-        return actionList;
-    }
-
-    private void evaluateMedicalAndSurgicalHistory(LinkedHashMap<String, BaseAncHomeVisitAction> actionList,
-                                                   Map<String, List<VisitDetail>> details,
-                                                   final MemberObject memberObject,
-                                                   final Context context,
-                                                   BaseAncHomeVisitContract.InteractorCallBack callBack
-    ) throws BaseAncHomeVisitAction.ValidationException {
-        JSONObject obstetricForm = null;
-        try {
-            obstetricForm = setMinFundalHeight(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncFirstVisit.OBSTETRIC_EXAMINATION), memberObject.getBaseEntityId());
-            obstetricForm.getJSONObject("global").put("last_menstrual_period", memberObject.getLastMenstrualPeriod());
-            if (details != null && !details.isEmpty()) {
-                JsonFormUtils.populateForm(obstetricForm, details);
-            }
-        } catch (JSONException e) {
-            Timber.e(e);
-        }
-
-        JSONObject medicalSurgicalHistoryForm = null;
-        try {
-            medicalSurgicalHistoryForm = firstPregnancyAboveThirtyFive(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncFirstVisit.getMedicalAndSurgicalHistory()), memberObject, context);
-            if (details != null && !details.isEmpty()) {
-                JsonFormUtils.populateForm(medicalSurgicalHistoryForm, details);
-            }
-        } catch (JSONException e) {
-            Timber.e(e);
-        }
-
-
-        try {
-            baselineInvestigationForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncFirstVisit.getBaselineInvestigation());
-            baselineInvestigationForm.getJSONObject("global").put("gestational_age", memberObject.getGestationAge());
-            baselineInvestigationForm.getJSONObject("global").put("known_positive",false);
-            if (details != null && !details.isEmpty()) {
-                JsonFormUtils.populateForm(baselineInvestigationForm, details);
-            }
-        } catch (JSONException e) {
-            Timber.e(e);
-        }
-
-        JSONObject partnerTestingForm = null;
-        try {
-            partnerTestingForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.PARTNER_TESTING);
-            partnerTestingForm.getJSONObject("global").put("gestational_age", memberObject.getGestationAge());
-            if (details != null && !details.isEmpty()) {
-                JsonFormUtils.populateForm(partnerTestingForm, details);
-            }
-        } catch (JSONException e) {
-            Timber.e(e);
-        }
-
-
-        BaseAncHomeVisitAction medicalAndSurgicalHistory = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_first_visit_medical_and_surgical_history))
-                .withOptional(false)
-                .withDetails(details)
-                .withJsonPayload(medicalSurgicalHistoryForm.toString())
-                .withFormName(Constants.JsonForm.AncFirstVisit.getMedicalAndSurgicalHistory())
-                .withHelper(new AncMedicalAndSurgicalHistoryAction(memberObject, details, callBack))
-                .build();
-        actionList.put(context.getString(R.string.anc_first_visit_medical_and_surgical_history), medicalAndSurgicalHistory);
-
-        BaseAncHomeVisitAction obstetricExaminationAction = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_first_visit_obstetric_examination))
-                .withOptional(true)
-                .withDetails(details)
-                .withJsonPayload(obstetricForm.toString())
-                .withFormName(Constants.JsonForm.AncFirstVisit.getObstetricExamination())
-                .withHelper(new AncObstetricExaminationAction(memberObject))
-                .build();
-        actionList.put(context.getString(R.string.anc_first_visit_obstetric_examination), obstetricExaminationAction);
-
-        BaseAncHomeVisitAction baselineInvestigationAction = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_first_visit_baseline_investigation))
-                .withOptional(true)
-                .withDetails(details)
-                .withJsonPayload(baselineInvestigationForm.toString())
-                .withFormName(Constants.JsonForm.AncFirstVisit.getBaselineInvestigation())
-                .withHelper(new AncBaselineInvestigationAction(memberObject))
-                .build();
-        actionList.put(context.getString(R.string.anc_first_visit_baseline_investigation), baselineInvestigationAction);
-
-        BaseAncHomeVisitAction vaccinationAction = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_first_visit_tt_vaccination))
-                .withOptional(true)
-                .withDetails(details)
-                .withFormName(Constants.JsonForm.AncFirstVisit.getTtVaccination())
-                .withHelper(new AncTtVaccinationAction(memberObject))
-                .build();
-        actionList.put(context.getString(R.string.anc_first_visit_tt_vaccination), vaccinationAction);
-
-        BaseAncHomeVisitAction counsellingAction = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_first_and_recurring_visit_counselling))
-                .withOptional(true)
-                .withDetails(details)
-                .withFormName(Constants.JsonForm.getCounselling())
-                .withHelper(new AncCounsellingAction(memberObject))
-                .build();
-        actionList.put(context.getString(R.string.anc_first_and_recurring_visit_counselling), counsellingAction);
-
-        if (HfAncDao.isPartnerRegistered(memberObject.getBaseEntityId())) {
-            BaseAncHomeVisitAction partnerTesting = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.partner_testing_action_title))
-                    .withOptional(true)
-                    .withDetails(details)
-                    .withHelper(new AncPartnerTestingAction(memberObject))
-                    .withJsonPayload(partnerTestingForm.toString())
-                    .withFormName(Constants.JsonForm.AncRecurringVisit.getPartnerTesting())
-                    .build();
-            actionList.put(context.getString(R.string.partner_testing_action_title), partnerTesting);
-        }
-
-        JSONObject birthReviewForm = initializeHealthFacilitiesList(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.BIRTH_REVIEW_AND_EMERGENCY_PLAN));
-        BaseAncHomeVisitAction birthReview = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_review_birth_and_emergency_plan))
-                .withOptional(true)
-                .withDetails(details)
-                .withJsonPayload(birthReviewForm.toString())
-                .withFormName(Constants.JsonForm.AncRecurringVisit.getBirthReviewAndEmergencyPlan())
-                .withHelper(new AncBirthReviewAction(memberObject))
-                .build();
-        actionList.put(context.getString(R.string.anc_recuring_visit_review_birth_and_emergency_plan), birthReview);
-    }
-
-    private class AncMedicalAndSurgicalHistoryAction extends org.smartregister.chw.hf.actionhelper.AncMedicalAndSurgicalHistoryAction {
-        private String medical_and_surgical_history_present;
-        private Context context;
-        BaseAncHomeVisitContract.InteractorCallBack callBack;
-        private final Map<String, List<VisitDetail>> details;
-
-        public AncMedicalAndSurgicalHistoryAction(MemberObject memberObject, Map<String, List<VisitDetail>> details, BaseAncHomeVisitContract.InteractorCallBack callBack) {
-            super(memberObject);
-            this.details = details;
-            this.callBack = callBack;
-        }
-
-        @Override
-        public void onJsonFormLoaded(String s, Context context, Map<String, List<VisitDetail>> map) {
-            this.context = context;
-        }
-
-        @Override
-        public String getPreProcessed() {
-            return null;
-        }
-
-        @Override
-        public void onPayloadReceived(String jsonPayload) {
-            try {
-                JSONObject jsonObject = new JSONObject(jsonPayload);
-                medical_and_surgical_history_present = CoreJsonFormUtils.getCheckBoxValue(jsonObject, "medical_surgical_history");
-            } catch (JSONException e) {
-                Timber.e(e);
-            }
-        }
-
-        @Override
-        public BaseAncHomeVisitAction.ScheduleStatus getPreProcessedStatus() {
-            return null;
-        }
-
-        @Override
-        public String getPreProcessedSubTitle() {
-            return null;
-        }
-
-        @Override
-        public String postProcess(String s) {
-            if (!StringUtils.isBlank(medical_and_surgical_history_present)) {
-                List<String> medicalHistory = Arrays.asList(medical_and_surgical_history_present.split(","));
-                if (medicalHistory.contains("Known On ART")) {
-                    JSONObject baselineInvestigationFormForKnownPositive = null;
-                    try {
-                        baselineInvestigationFormForKnownPositive = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncFirstVisit.getBaselineInvestigation());
-                        baselineInvestigationFormForKnownPositive.getJSONObject("global").put("gestational_age", memberObject.getGestationAge());
-                        baselineInvestigationFormForKnownPositive.getJSONObject("global").put("known_positive",true);
-                        if (details != null && !details.isEmpty()) {
-                            JsonFormUtils.populateForm(baselineInvestigationFormForKnownPositive, details);
-                        }
-                    } catch (JSONException e) {
-                        Timber.e(e);
-                    }
-                    Objects.requireNonNull(actionList.get(context.getString(R.string.anc_first_visit_baseline_investigation))).setJsonPayload(baselineInvestigationFormForKnownPositive.toString());
-                } else {
-                    Objects.requireNonNull(actionList.get(context.getString(R.string.anc_first_visit_baseline_investigation))).setJsonPayload(baselineInvestigationForm.toString());
-                }
-                new AppExecutors().mainThread().execute(() -> callBack.preloadActions(actionList));
-            }
-            return super.postProcess(s);
-        }
-
-        @Override
-        public String evaluateSubTitle() {
-            if (StringUtils.isBlank(medical_and_surgical_history_present))
-                return null;
-
-            return context.getString(R.string.medical_and_surgical_filled);
-        }
-
-        @Override
-        public BaseAncHomeVisitAction.Status evaluateStatusOnPayload() {
-            if (StringUtils.isBlank(medical_and_surgical_history_present)) {
-                return BaseAncHomeVisitAction.Status.PENDING;
-            } else {
-                return BaseAncHomeVisitAction.Status.COMPLETED;
-            }
-        }
-
-        @Override
-        public void onPayloadReceived(BaseAncHomeVisitAction baseAncHomeVisitAction) {
-            Timber.v("onPayloadReceived");
-        }
-    }
 
     private static JSONObject initializeHealthFacilitiesList(JSONObject form) {
         HfLocationRepository locationRepository = new HfLocationRepository();
@@ -429,6 +179,238 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
         options.put(none);
 
         return form;
+    }
+
+    @Override
+    public LinkedHashMap<String, BaseAncHomeVisitAction> calculateActions(BaseAncHomeVisitContract.View view, MemberObject memberObject, BaseAncHomeVisitContract.InteractorCallBack callBack) throws BaseAncHomeVisitAction.ValidationException {
+
+        Context context = view.getContext();
+
+        Map<String, List<VisitDetail>> details = null;
+        // get the preloaded data
+        if (view.getEditMode()) {
+            Visit lastVisit = AncLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), Constants.Events.ANC_FIRST_FACILITY_VISIT);
+            if (lastVisit != null) {
+                details = VisitUtils.getVisitGroups(AncLibrary.getInstance().visitDetailsRepository().getVisits(lastVisit.getVisitId()));
+            }
+        }
+
+        // get contact
+        LocalDate lastContact = new DateTime(memberObject.getDateCreated()).toLocalDate();
+        boolean isFirst = (StringUtils.isBlank(memberObject.getLastContactVisit()));
+        LocalDate lastMenstrualPeriod = new LocalDate();
+        try {
+            lastMenstrualPeriod = DateTimeFormat.forPattern("dd-MM-yyyy").parseLocalDate(memberObject.getLastMenstrualPeriod());
+        } catch (Exception e) {
+            Timber.e(e);
+        }
+
+
+        if (StringUtils.isNotBlank(memberObject.getLastContactVisit())) {
+            lastContact = DateTimeFormat.forPattern("dd-MM-yyyy").parseLocalDate(memberObject.getLastContactVisit());
+        }
+
+        Map<Integer, LocalDate> dateMap = new LinkedHashMap<>();
+
+        // today is the due date for the very first visit
+        if (isFirst) {
+            dateMap.put(0, LocalDate.now());
+        }
+
+        dateMap.putAll(ContactUtil.getContactWeeks(isFirst, lastContact, lastMenstrualPeriod));
+
+        evaluateMedicalAndSurgicalHistory(actionList, details, memberObject, context, callBack);
+
+        return actionList;
+    }
+
+    private void evaluateMedicalAndSurgicalHistory(LinkedHashMap<String, BaseAncHomeVisitAction> actionList,
+                                                   Map<String, List<VisitDetail>> details,
+                                                   final MemberObject memberObject,
+                                                   final Context context,
+                                                   BaseAncHomeVisitContract.InteractorCallBack callBack
+    ) throws BaseAncHomeVisitAction.ValidationException {
+        JSONObject obstetricForm = null;
+        try {
+            obstetricForm = setMinFundalHeight(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncFirstVisit.OBSTETRIC_EXAMINATION), memberObject.getBaseEntityId());
+            obstetricForm.getJSONObject("global").put("last_menstrual_period", memberObject.getLastMenstrualPeriod());
+            if (details != null && !details.isEmpty()) {
+                JsonFormUtils.populateForm(obstetricForm, details);
+            }
+        } catch (JSONException e) {
+            Timber.e(e);
+        }
+
+        JSONObject medicalSurgicalHistoryForm = null;
+        try {
+            medicalSurgicalHistoryForm = firstPregnancyAboveThirtyFive(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncFirstVisit.getMedicalAndSurgicalHistory()), memberObject, context);
+            if (details != null && !details.isEmpty()) {
+                JsonFormUtils.populateForm(medicalSurgicalHistoryForm, details);
+            }
+        } catch (JSONException e) {
+            Timber.e(e);
+        }
+
+
+        try {
+            baselineInvestigationForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncFirstVisit.getBaselineInvestigation());
+            baselineInvestigationForm.getJSONObject("global").put("gestational_age", memberObject.getGestationAge());
+            baselineInvestigationForm.getJSONObject("global").put("known_positive", false);
+            JSONArray fields = baselineInvestigationForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+            JSONObject hivTestNumberField = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "hiv_test_number");
+            hivTestNumberField.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getNextHivTestNumber(memberObject.getBaseEntityId()));
+
+            if (details != null && !details.isEmpty()) {
+                JsonFormUtils.populateForm(baselineInvestigationForm, details);
+            }
+        } catch (JSONException e) {
+            Timber.e(e);
+        }
+
+
+        BaseAncHomeVisitAction medicalAndSurgicalHistory = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_first_visit_medical_and_surgical_history))
+                .withOptional(false)
+                .withDetails(details)
+                .withJsonPayload(medicalSurgicalHistoryForm.toString())
+                .withFormName(Constants.JsonForm.AncFirstVisit.getMedicalAndSurgicalHistory())
+                .withHelper(new AncMedicalAndSurgicalHistoryAction(memberObject, details, callBack))
+                .build();
+        actionList.put(context.getString(R.string.anc_first_visit_medical_and_surgical_history), medicalAndSurgicalHistory);
+
+        BaseAncHomeVisitAction obstetricExaminationAction = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_first_visit_obstetric_examination))
+                .withOptional(true)
+                .withDetails(details)
+                .withJsonPayload(obstetricForm.toString())
+                .withFormName(Constants.JsonForm.AncFirstVisit.getObstetricExamination())
+                .withHelper(new AncObstetricExaminationAction(memberObject))
+                .build();
+        actionList.put(context.getString(R.string.anc_first_visit_obstetric_examination), obstetricExaminationAction);
+
+        BaseAncHomeVisitAction baselineInvestigationAction = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_first_visit_baseline_investigation))
+                .withOptional(true)
+                .withDetails(details)
+                .withJsonPayload(baselineInvestigationForm.toString())
+                .withFormName(Constants.JsonForm.AncFirstVisit.getBaselineInvestigation())
+                .withHelper(new AncBaselineInvestigationAction(memberObject))
+                .build();
+        actionList.put(context.getString(R.string.anc_first_visit_baseline_investigation), baselineInvestigationAction);
+
+        BaseAncHomeVisitAction vaccinationAction = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_first_visit_tt_vaccination))
+                .withOptional(true)
+                .withDetails(details)
+                .withFormName(Constants.JsonForm.AncFirstVisit.getTtVaccination())
+                .withHelper(new AncTtVaccinationAction(memberObject))
+                .build();
+        actionList.put(context.getString(R.string.anc_first_visit_tt_vaccination), vaccinationAction);
+
+        BaseAncHomeVisitAction counsellingAction = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_first_and_recurring_visit_counselling))
+                .withOptional(true)
+                .withDetails(details)
+                .withFormName(Constants.JsonForm.getCounselling())
+                .withHelper(new AncCounsellingAction(memberObject))
+                .build();
+        actionList.put(context.getString(R.string.anc_first_and_recurring_visit_counselling), counsellingAction);
+
+
+        JSONObject birthReviewForm = initializeHealthFacilitiesList(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.BIRTH_REVIEW_AND_EMERGENCY_PLAN));
+        BaseAncHomeVisitAction birthReview = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_review_birth_and_emergency_plan))
+                .withOptional(true)
+                .withDetails(details)
+                .withJsonPayload(birthReviewForm.toString())
+                .withFormName(Constants.JsonForm.AncRecurringVisit.getBirthReviewAndEmergencyPlan())
+                .withHelper(new AncBirthReviewAction(memberObject))
+                .build();
+        actionList.put(context.getString(R.string.anc_recuring_visit_review_birth_and_emergency_plan), birthReview);
+    }
+
+    private class AncMedicalAndSurgicalHistoryAction extends org.smartregister.chw.hf.actionhelper.AncMedicalAndSurgicalHistoryAction {
+        private final Map<String, List<VisitDetail>> details;
+        BaseAncHomeVisitContract.InteractorCallBack callBack;
+        private String medical_and_surgical_history_present;
+        private Context context;
+
+        public AncMedicalAndSurgicalHistoryAction(MemberObject memberObject, Map<String, List<VisitDetail>> details, BaseAncHomeVisitContract.InteractorCallBack callBack) {
+            super(memberObject);
+            this.details = details;
+            this.callBack = callBack;
+        }
+
+        @Override
+        public void onJsonFormLoaded(String s, Context context, Map<String, List<VisitDetail>> map) {
+            this.context = context;
+        }
+
+        @Override
+        public String getPreProcessed() {
+            return null;
+        }
+
+        @Override
+        public void onPayloadReceived(String jsonPayload) {
+            try {
+                JSONObject jsonObject = new JSONObject(jsonPayload);
+                medical_and_surgical_history_present = CoreJsonFormUtils.getCheckBoxValue(jsonObject, "medical_surgical_history");
+            } catch (JSONException e) {
+                Timber.e(e);
+            }
+        }
+
+        @Override
+        public BaseAncHomeVisitAction.ScheduleStatus getPreProcessedStatus() {
+            return null;
+        }
+
+        @Override
+        public String getPreProcessedSubTitle() {
+            return null;
+        }
+
+        @Override
+        public String postProcess(String s) {
+            if (!StringUtils.isBlank(medical_and_surgical_history_present)) {
+                List<String> medicalHistory = Arrays.asList(medical_and_surgical_history_present.split(","));
+                if (medicalHistory.contains("Known On ART")) {
+                    JSONObject baselineInvestigationFormForKnownPositive = null;
+                    try {
+                        baselineInvestigationFormForKnownPositive = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncFirstVisit.getBaselineInvestigation());
+                        baselineInvestigationFormForKnownPositive.getJSONObject("global").put("gestational_age", memberObject.getGestationAge());
+                        baselineInvestigationFormForKnownPositive.getJSONObject("global").put("known_positive", true);
+                        if (details != null && !details.isEmpty()) {
+                            JsonFormUtils.populateForm(baselineInvestigationFormForKnownPositive, details);
+                        }
+                    } catch (JSONException e) {
+                        Timber.e(e);
+                    }
+                    Objects.requireNonNull(actionList.get(context.getString(R.string.anc_first_visit_baseline_investigation))).setJsonPayload(baselineInvestigationFormForKnownPositive.toString());
+                } else {
+                    Objects.requireNonNull(actionList.get(context.getString(R.string.anc_first_visit_baseline_investigation))).setJsonPayload(baselineInvestigationForm.toString());
+                }
+                new AppExecutors().mainThread().execute(() -> callBack.preloadActions(actionList));
+            }
+            return super.postProcess(s);
+        }
+
+        @Override
+        public String evaluateSubTitle() {
+            if (StringUtils.isBlank(medical_and_surgical_history_present))
+                return null;
+
+            return context.getString(R.string.medical_and_surgical_filled);
+        }
+
+        @Override
+        public BaseAncHomeVisitAction.Status evaluateStatusOnPayload() {
+            if (StringUtils.isBlank(medical_and_surgical_history_present)) {
+                return BaseAncHomeVisitAction.Status.PENDING;
+            } else {
+                return BaseAncHomeVisitAction.Status.COMPLETED;
+            }
+        }
+
+        @Override
+        public void onPayloadReceived(BaseAncHomeVisitAction baseAncHomeVisitAction) {
+            Timber.v("onPayloadReceived");
+        }
     }
 
 }

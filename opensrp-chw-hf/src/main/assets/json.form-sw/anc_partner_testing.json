@@ -57,6 +57,32 @@
     "title": "Upimaji kwa Mwenza",
     "fields": [
       {
+        "key": "couple_testing",
+        "type": "native_radio",
+        "label": "Je mwenza alipima pamjoa na mama? (Couple testing)",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "couple_testing",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndio",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
+      },
+      {
         "key": "partner_hiv",
         "type": "native_radio",
         "label": "Matokeo ya Kipimo cha VVU",
@@ -412,6 +438,20 @@
             }
           }
         }
+      },
+      {
+        "key": "partner_hiv_test_number",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "partner_hiv_test_number",
+        "openmrs_entity_parent": ""
+      },
+      {
+        "key": "gest_age",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "gest_age",
+        "openmrs_entity_parent": ""
       }
     ]
   }

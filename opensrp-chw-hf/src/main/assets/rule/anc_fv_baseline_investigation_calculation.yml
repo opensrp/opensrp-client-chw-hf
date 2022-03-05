@@ -5,3 +5,10 @@ priority: 1
 condition: "true"
 actions:
   - "calculation = helper.getDateToday()"
+---
+name: step1_hiv_test_at_32
+description: Record true if test was conducted at gestational age of 32 or more
+priority: 1
+condition: "true"
+actions:
+  - "calculation = global_gestational_age >= 32 ? 'true' : 'false'"

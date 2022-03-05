@@ -289,12 +289,17 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
             tvPartnerProfileView.setText(R.string.view_partner_prefile);
             tvPartnerDetails.setVisibility(View.VISIBLE);
             registerBtn.setVisibility(View.GONE);
-            partnerTestingView.setVisibility(View.VISIBLE);
-            partnerTestingBottomView.setVisibility(View.VISIBLE);
             goToProfileBtn.setVisibility(View.VISIBLE);
             CommonPersonObjectClient partnerClient = getClientDetailsByBaseEntityID(partnerBaseEntityId);
             HashMap<String, String> clientDetails = (HashMap<String, String>) partnerClient.getColumnmaps();
             tvPartnerDetails.setText(MessageFormat.format("{0} {1} {2}", clientDetails.get("first_name"), clientDetails.get("middle_name"), clientDetails.get("last_name") != null ? clientDetails.get("last_name") : ""));
+        }
+        boolean retestPartnerAt32 = ((memberObject.getGestationAge() >= 32 && HfAncDao.getPartnerHivStatus(memberObject.getBaseEntityId()).equalsIgnoreCase("negative")) && !HfAncDao.isPartnerHivTestConductedAtWk32(memberObject.getBaseEntityId()));
+        boolean partnerTestedAll= (HfAncDao.isPartnerTestedForHiv(memberObject.getBaseEntityId()) && HfAncDao.isPartnerTestedForSyphilis(memberObject.getBaseEntityId()) && HfAncDao.isPartnerTestedForHepatitis(memberObject.getBaseEntityId()));
+       // HfAncDao.getPartnerHivTestNumber(memberObject.getBaseEntityId()) == 0
+        if (HfAncDao.isPartnerRegistered(memberObject.getBaseEntityId()) && (!partnerTestedAll ||retestPartnerAt32)){
+            partnerTestingView.setVisibility(View.VISIBLE);
+            partnerTestingBottomView.setVisibility(View.VISIBLE);
         }
 
     }
@@ -420,7 +425,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
                 setupViews();
             }
         } else if (id == R.id.test_partner_btn) {
-            ((AncMemberProfilePresenter) presenter()).startPartnerTestingForm();
+            ((AncMemberProfilePresenter) presenter()).startPartnerTestingForm(memberObject);
         }
     }
 
