@@ -1192,6 +1192,27 @@
             "ex": "notEqualTo(., \"test_not_conducted\")"
           }
         }
+      },
+      {
+        "key": "hiv_test_number",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hiv_test_number",
+        "type": "hidden"
+      },
+      {
+        "key": "hiv_test_at_32",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hiv_test_at_32",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_baseline_investigation_calculation.yml"
+            }
+          }
+        }
       }
     ]
   }

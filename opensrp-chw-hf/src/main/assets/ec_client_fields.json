@@ -1050,6 +1050,14 @@
           }
         },
         {
+          "column_name": "hiv_test_number",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "hiv_test_number"
+          }
+        },
+        {
           "column_name": "hiv_test_at_32",
           "type": "Event",
           "json_mapping": {
