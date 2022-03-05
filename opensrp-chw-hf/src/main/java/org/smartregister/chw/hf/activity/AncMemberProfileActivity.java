@@ -296,7 +296,8 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         }
         boolean retestPartnerAt32 = ((memberObject.getGestationAge() >= 32 && HfAncDao.getPartnerHivStatus(memberObject.getBaseEntityId()).equalsIgnoreCase("negative")) && !HfAncDao.isPartnerHivTestConductedAtWk32(memberObject.getBaseEntityId()));
         boolean partnerTestedAll= (HfAncDao.isPartnerTestedForHiv(memberObject.getBaseEntityId()) && HfAncDao.isPartnerTestedForSyphilis(memberObject.getBaseEntityId()) && HfAncDao.isPartnerTestedForHepatitis(memberObject.getBaseEntityId()));
-        if (HfAncDao.isPartnerRegistered(memberObject.getBaseEntityId()) && (!partnerTestedAll || retestPartnerAt32)){
+       // HfAncDao.getPartnerHivTestNumber(memberObject.getBaseEntityId()) == 0
+        if (HfAncDao.isPartnerRegistered(memberObject.getBaseEntityId()) && (!partnerTestedAll ||retestPartnerAt32)){
             partnerTestingView.setVisibility(View.VISIBLE);
             partnerTestingBottomView.setVisibility(View.VISIBLE);
         }

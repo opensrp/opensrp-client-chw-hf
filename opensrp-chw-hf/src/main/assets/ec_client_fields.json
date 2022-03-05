@@ -946,6 +946,14 @@
           }
         },
         {
+          "column_name": "partner_hiv_test_number",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "partner_hiv_test_number"
+          }
+        },
+        {
           "column_name": "partner_syphilis",
           "type": "Event",
           "json_mapping": {

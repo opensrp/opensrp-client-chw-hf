@@ -424,13 +424,6 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "partner_hiv_test_at_32",
         "openmrs_entity_parent": "",
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "anc_partner_testing_relevance.yml"
-            }
-          }
-        },
         "calculation": {
           "rules-engine": {
             "ex-rules": {
@@ -438,7 +431,22 @@
             }
           }
         }
+      },
+      {
+        "key": "partner_hiv_test_number",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "partner_hiv_test_number",
+        "openmrs_entity_parent": ""
+      },
+      {
+        "key": "gest_age",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "gest_age",
+        "openmrs_entity_parent": ""
       }
+
     ]
   }
 }
