@@ -42,6 +42,7 @@ import org.smartregister.chw.hf.presenter.FamilyOtherMemberActivityPresenter;
 import org.smartregister.chw.hf.presenter.PmtctProfilePresenter;
 import org.smartregister.chw.hf.utils.PmtctVisitUtils;
 import org.smartregister.chw.pmtct.PmtctLibrary;
+import org.smartregister.chw.pmtct.activity.BaseHvlResultsViewActivity;
 import org.smartregister.chw.pmtct.dao.PmtctDao;
 import org.smartregister.chw.pmtct.domain.Visit;
 import org.smartregister.chw.pmtct.util.Constants;
@@ -224,6 +225,8 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         } catch (Exception e) {
             Timber.e(e);
         }
+        view_hvl_results_row.setVisibility(View.VISIBLE);
+        rlHvlResults.setVisibility(View.VISIBLE);
         boolean isEligibleForFirst = HfPmtctDao.isEligibleForEac(baseEntityId);
         boolean isEligibleForSecond = HfPmtctDao.isEligibleForSecondEac(baseEntityId);
         if (isEligibleForFirst) {
@@ -409,6 +412,13 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
             notificationAndReferralLayout.setVisibility(View.VISIBLE);
             findViewById(R.id.view_notification_and_referral_row).setVisibility(View.VISIBLE);
         }
+    }
+
+    @Override
+    public void openHvlResultsHistory() {
+        //implement
+        Intent intent = new Intent(this, HvlResultsViewActivity.class);
+        startActivity(intent);
     }
 
 

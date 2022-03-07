@@ -239,6 +239,8 @@
         <activity
             android:name=".activity.TbProfileActivity"
             android:theme="@style/HFTheme.NoActionBar" />
+        <activity android:name=".activity.HvlResultsViewActivity"
+            android:theme="@style/HFTheme.NoActionBar"/>
         <activity
             android:name=".activity.PartnerRegistrationActivity"
             android:theme="@style/HFTheme.NoActionBar" />
