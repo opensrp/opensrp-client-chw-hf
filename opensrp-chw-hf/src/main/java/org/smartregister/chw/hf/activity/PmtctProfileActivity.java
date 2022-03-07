@@ -52,6 +52,7 @@ import org.smartregister.family.interactor.FamilyProfileInteractor;
 import org.smartregister.family.model.BaseFamilyOtherMemberProfileActivityModel;
 import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.family.util.Utils;
+import org.smartregister.repository.AllSharedPreferences;
 
 import java.util.Date;
 import java.util.List;
@@ -132,7 +133,8 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
                             new FamilyProfileModel(memberObject.getFamilyName()).processUpdateMemberRegistration(jsonString, memberObject.getBaseEntityId());
                     new FamilyProfileInteractor().saveRegistration(familyEventClient, jsonString, true, (FamilyProfileContract.InteractorCallBack) profilePresenter);
                 } else if (encounterType.equals(PMTCT_COMMUNITY_FOLLOWUP)) {
-                    profilePresenter.saveForm(data.getStringExtra(Constants.JSON_FORM_EXTRA.JSON));
+                    AllSharedPreferences allSharedPreferences = org.smartregister.util.Utils.getAllSharedPreferences();
+                    ((PmtctProfilePresenter) profilePresenter).createPmtctCommunityFollowupReferralEvent(allSharedPreferences, data.getStringExtra(Constants.JSON_FORM_EXTRA.JSON), baseEntityId);
                 } else {
                     profilePresenter.saveForm(data.getStringExtra(Constants.JSON_FORM_EXTRA.JSON));
                     finish();
