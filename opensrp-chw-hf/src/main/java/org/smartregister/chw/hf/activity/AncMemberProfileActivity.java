@@ -1,5 +1,11 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
+import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
+import static org.smartregister.chw.hf.utils.Constants.Events.ANC_FIRST_FACILITY_VISIT;
+import static org.smartregister.chw.hf.utils.Constants.Events.ANC_RECURRING_FACILITY_VISIT;
+import static org.smartregister.chw.hf.utils.Constants.PartnerRegistrationConstants.INTENT_BASE_ENTITY_ID;
+
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
@@ -10,6 +16,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.rey.material.widget.Button;
@@ -61,14 +69,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Set;
 
-import androidx.recyclerview.widget.RecyclerView;
 import timber.log.Timber;
-
-import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
-import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
-import static org.smartregister.chw.hf.utils.Constants.Events.ANC_FIRST_FACILITY_VISIT;
-import static org.smartregister.chw.hf.utils.Constants.Events.ANC_RECURRING_FACILITY_VISIT;
-import static org.smartregister.chw.hf.utils.Constants.PartnerRegistrationConstants.INTENT_BASE_ENTITY_ID;
 
 public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     private CommonPersonObjectClient commonPersonObjectClient;
@@ -295,9 +296,9 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
             tvPartnerDetails.setText(MessageFormat.format("{0} {1} {2}", clientDetails.get("first_name"), clientDetails.get("middle_name"), clientDetails.get("last_name") != null ? clientDetails.get("last_name") : ""));
         }
         boolean retestPartnerAt32 = ((memberObject.getGestationAge() >= 32 && HfAncDao.getPartnerHivStatus(memberObject.getBaseEntityId()).equalsIgnoreCase("negative")) && !HfAncDao.isPartnerHivTestConductedAtWk32(memberObject.getBaseEntityId()));
-        boolean partnerTestedAll= (HfAncDao.isPartnerTestedForHiv(memberObject.getBaseEntityId()) && HfAncDao.isPartnerTestedForSyphilis(memberObject.getBaseEntityId()) && HfAncDao.isPartnerTestedForHepatitis(memberObject.getBaseEntityId()));
-       // HfAncDao.getPartnerHivTestNumber(memberObject.getBaseEntityId()) == 0
-        if (HfAncDao.isPartnerRegistered(memberObject.getBaseEntityId()) && (!partnerTestedAll ||retestPartnerAt32)){
+        boolean partnerTestedAll = (HfAncDao.isPartnerTestedForHiv(memberObject.getBaseEntityId()) && HfAncDao.isPartnerTestedForSyphilis(memberObject.getBaseEntityId()) && HfAncDao.isPartnerTestedForHepatitis(memberObject.getBaseEntityId()));
+        // HfAncDao.getPartnerHivTestNumber(memberObject.getBaseEntityId()) == 0
+        if (HfAncDao.isPartnerRegistered(memberObject.getBaseEntityId()) && (!partnerTestedAll || retestPartnerAt32)) {
             partnerTestingView.setVisibility(View.VISIBLE);
             partnerTestingBottomView.setVisibility(View.VISIBLE);
         }
@@ -319,7 +320,10 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
             int obsSize = obs.length();
             for (int i = 0; i < obsSize; i++) {
                 JSONObject checkObj = obs.getJSONObject(i);
-                if (checkObj.getString("fieldCode").equalsIgnoreCase("hiv")) {
+                if (checkObj.getString("fieldCode").equalsIgnoreCase("known_on_art")) {
+                    hivPositive = true;
+                    break;
+                } else if (checkObj.getString("fieldCode").equalsIgnoreCase("hiv")) {
                     JSONArray values = checkObj.getJSONArray("values");
                     if (values.getString(0).equalsIgnoreCase("positive")) {
                         hivPositive = true;

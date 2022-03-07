@@ -211,6 +211,31 @@
         }
       },
       {
+        "key": "known_on_art",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "known_on_art",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "step1:medical_surgical_history": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "known_on_art"
+                ]
+              }
+            ]
+          }
+        },
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_medical_and_surgical_history_calculation.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "parity_value",
         "type": "edit_text",
         "hint": "Parity",
@@ -242,11 +267,10 @@
         "key": "visit_number",
         "type": "hidden",
         "openmrs_entity": "concept",
-        "openmrs_entity_id":"visit_number",
+        "openmrs_entity_id": "visit_number",
         "openmrs_entity_parent": "",
         "value": 1
       }
-
     ]
   }
 }

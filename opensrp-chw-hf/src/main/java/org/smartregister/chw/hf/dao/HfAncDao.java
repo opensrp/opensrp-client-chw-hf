@@ -326,8 +326,14 @@ public class HfAncDao extends AbstractDao {
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "hiv");
 
         String sql = String.format(
-                "SELECT hiv FROM %s WHERE base_entity_id = '%s' " +
-                        "AND is_closed = 0",
+                "SELECT CASE known_on_art\n" +
+                "           WHEN 'true'\n" +
+                "               THEN 'positive'\n" +
+                "           ELSE hiv\n" +
+                "           END\n" +
+                "           as 'hiv'\n" +
+                "FROM %s WHERE base_entity_id = '%s' " +
+                "AND is_closed = 0",
                 "ec_anc_register",
                 baseEntityId
         );

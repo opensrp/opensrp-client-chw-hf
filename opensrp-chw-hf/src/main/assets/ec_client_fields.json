@@ -842,6 +842,14 @@
           }
         },
         {
+          "column_name": "known_on_art",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "known_on_art"
+          }
+        },
+        {
           "column_name": "task_id",
           "type": "Event",
           "json_mapping": {

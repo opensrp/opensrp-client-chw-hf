@@ -1,0 +1,7 @@
+---
+name: step1_known_on_art
+description: known on art calculation
+priority: 1
+condition: "true"
+actions:
+  - "calculation = true"
