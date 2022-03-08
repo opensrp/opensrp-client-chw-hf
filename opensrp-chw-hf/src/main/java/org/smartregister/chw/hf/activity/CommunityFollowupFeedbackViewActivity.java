@@ -188,7 +188,10 @@ public class CommunityFollowupFeedbackViewActivity extends BaseReferralTaskViewA
             if (followupFeedbackDetailsModel.getFeedbackType().equals("HIV")) {
                 baseEvent.setEventType(CoreConstants.EventType.CLOSE_HIV_FEEDBACK);
                 baseEvent.setEntityType(HIV_COMMUNITY_FEEDBACK);
-            } else {
+            }else if (followupFeedbackDetailsModel.getFeedbackType().equals("PMTCT")) {
+                baseEvent.setEventType(CoreConstants.EventType.CLOSE_PMTCT_FEEDBACK);
+                baseEvent.setEntityType(CoreConstants.TABLE_NAME.PMTCT_COMMUNITY_FEEDBACK);
+            }  else {
                 baseEvent.setEventType(CoreConstants.EventType.CLOSE_TB_FEEDBACK);
                 baseEvent.setEntityType(TB_COMMUNITY_FEEDBACK);
             }

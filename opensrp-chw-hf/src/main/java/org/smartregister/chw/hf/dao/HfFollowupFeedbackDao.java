@@ -18,7 +18,7 @@ public class HfFollowupFeedbackDao extends AbstractDao {
         followupFeedbackDetailsModel.setFeedbackFormSubmissionId(getCursorValue(cursor, "base_entity_id"));
         followupFeedbackDetailsModel.setChwName(getCursorValue(cursor, "chw_name"));
         followupFeedbackDetailsModel.setFollowupFeedback(getCursorValue(cursor, "followup_status"));
-        followupFeedbackDetailsModel.setFollowupFeedbackDate(getCursorValue(cursor, "hiv_community_followup_visit_date"));
+        followupFeedbackDetailsModel.setFollowupFeedbackDate(getCursorValue(cursor, "pmtct_community_followup_visit_date"));
         followupFeedbackDetailsModel.setFeedbackType(getCursorValue(cursor, "feedback_type"));
         return followupFeedbackDetailsModel;
     };
@@ -37,7 +37,7 @@ public class HfFollowupFeedbackDao extends AbstractDao {
 
     public static List<ChwFollowupFeedbackDetailsModel> getPmtctFollowupFeedback(String baseEntityId) {
         String sql = String.format(
-                "SELECT  'PMTCT' as feedback_type, ec_hiv_community_feedback.* FROM ec_pmtct_community_feedback " +
+                "SELECT  'PMTCT' as feedback_type, ec_pmtct_community_feedback.* FROM ec_pmtct_community_feedback " +
                         "WHERE ec_pmtct_community_feedback.entity_id = '%s' AND mark_as_done IS NULL ", baseEntityId);
         List<ChwFollowupFeedbackDetailsModel> feedbackList = readData(sql, dataMap);
 

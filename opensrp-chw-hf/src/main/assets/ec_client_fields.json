@@ -3392,7 +3392,7 @@
           "column_name": "followup_status",
           "type": "Event",
           "json_mapping": {
-            "field": "obs.fieldCode",
+            "field": "obs.formSubmissionField",
             "concept": "followup_status"
           }
         },
