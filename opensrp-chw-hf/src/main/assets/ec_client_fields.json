@@ -25,6 +25,14 @@
             "field": "obs.fieldCode",
             "concept": "hiv_status_value"
           }
+        },
+        {
+          "column_name": "ctc_number",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "ctc_number"
+          }
         }
       ]
     },
@@ -847,6 +855,14 @@
           "json_mapping": {
             "field": "obs.fieldCode",
             "concept": "known_on_art"
+          }
+        },
+        {
+          "column_name": "ctc_number",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "ctc_number"
           }
         },
         {

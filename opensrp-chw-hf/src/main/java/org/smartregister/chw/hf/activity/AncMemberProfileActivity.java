@@ -74,6 +74,8 @@ import timber.log.Timber;
 public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     private CommonPersonObjectClient commonPersonObjectClient;
     private boolean hivPositive;
+    private boolean isKnownOnArt;
+    private String ctcNumber;
     private String partnerBaseEntityId;
 
     public static void startMe(Activity activity, String baseEntityID) {
@@ -307,6 +309,8 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
 
     private void setHivPositive(Visit firstVisit, Visit lastVisit) throws JSONException {
         hivPositive = false;
+        ctcNumber = null;
+        isKnownOnArt = false;
         JSONObject jsonObject = null;
         if (firstVisit != null) {
             jsonObject = new JSONObject(firstVisit.getJson());
@@ -322,13 +326,15 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
                 JSONObject checkObj = obs.getJSONObject(i);
                 if (checkObj.getString("fieldCode").equalsIgnoreCase("known_on_art")) {
                     hivPositive = true;
-                    break;
+                    isKnownOnArt = true;
                 } else if (checkObj.getString("fieldCode").equalsIgnoreCase("hiv")) {
                     JSONArray values = checkObj.getJSONArray("values");
                     if (values.getString(0).equalsIgnoreCase("positive")) {
                         hivPositive = true;
-                        break;
                     }
+                } else if (checkObj.getString("fieldCode").equalsIgnoreCase("ctc_number")) {
+                    JSONArray values = checkObj.getJSONArray("values");
+                    ctcNumber = values.getString(0);
                 }
             }
         }
@@ -578,7 +584,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
 
     protected void startPmtctRegistration() {
         try {
-            PmtctRegisterActivity.startPmtctRegistrationActivity(this, baseEntityID);
+            PmtctRegisterActivity.startPmtctRegistrationActivity(this, baseEntityID,ctcNumber,isKnownOnArt||HfAncDao.isClientKnownOnArt(baseEntityID));
         } catch (Exception e) {
             Timber.e(e);
         }

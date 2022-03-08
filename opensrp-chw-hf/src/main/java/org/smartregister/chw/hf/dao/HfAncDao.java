@@ -112,7 +112,7 @@ public class HfAncDao extends AbstractDao {
         List<String> res = readData(sql, dataMap);
         List<String> testNumberRes = readData(sql, testNumberMap);
         if (res.size() > 0) {
-            if(res.get(0).equalsIgnoreCase("test_not_conducted")){
+            if (res.get(0).equalsIgnoreCase("test_not_conducted")) {
                 return Integer.parseInt(testNumberRes.get(0)) - 1;
             }
             return Integer.parseInt(testNumberRes.get(0));
@@ -120,7 +120,7 @@ public class HfAncDao extends AbstractDao {
         return 0;
     }
 
-    public static int getNextPartnerHivTestNumber(String baseEntityId){
+    public static int getNextPartnerHivTestNumber(String baseEntityId) {
         return getPartnerHivTestNumber(baseEntityId) + 1;
     }
 
@@ -310,7 +310,7 @@ public class HfAncDao extends AbstractDao {
         List<String> res = readData(sql, dataMap);
         List<String> testNumberRes = readData(sql, testNumberMap);
         if (res.size() > 0) {
-            if(res.get(0).equalsIgnoreCase("test_not_conducted")){
+            if (res.get(0).equalsIgnoreCase("test_not_conducted")) {
                 return Integer.parseInt(testNumberRes.get(0)) - 1;
             }
             return Integer.parseInt(testNumberRes.get(0));
@@ -318,7 +318,7 @@ public class HfAncDao extends AbstractDao {
         return 0;
     }
 
-    public static int getNextHivTestNumber(String baseEntityId){
+    public static int getNextHivTestNumber(String baseEntityId) {
         return getHivTestNumber(baseEntityId) + 1;
     }
 
@@ -327,13 +327,47 @@ public class HfAncDao extends AbstractDao {
 
         String sql = String.format(
                 "SELECT CASE known_on_art\n" +
-                "           WHEN 'true'\n" +
-                "               THEN 'positive'\n" +
-                "           ELSE hiv\n" +
-                "           END\n" +
-                "           as 'hiv'\n" +
-                "FROM %s WHERE base_entity_id = '%s' " +
-                "AND is_closed = 0",
+                        "           WHEN 'true'\n" +
+                        "               THEN 'positive'\n" +
+                        "           ELSE hiv\n" +
+                        "           END\n" +
+                        "           as 'hiv'\n" +
+                        "FROM %s WHERE base_entity_id = '%s' " +
+                        "AND is_closed = 0",
+                "ec_anc_register",
+                baseEntityId
+        );
+
+        List<String> res = readData(sql, dataMap);
+        if (res.get(0) != null) {
+            return res.get(0);
+        }
+        return "null";
+    }
+
+    public static boolean isClientKnownOnArt(String baseEntityId) {
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "known_on_art");
+
+        String sql = String.format(
+                "SELECT  known_on_art\n" +
+                        "FROM %s WHERE base_entity_id = '%s' " +
+                        "AND known_on_art IS NOT NULL " +
+                        "AND is_closed = 0",
+                "ec_anc_register",
+                baseEntityId
+        );
+
+        List<String> res = readData(sql, dataMap);
+        return res.size() > 0;
+    }
+
+    public static String getClientCtcNumber(String baseEntityId) {
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "ctc_number");
+
+        String sql = String.format(
+                "SELECT ctc_number FROM %s WHERE base_entity_id = '%s' " +
+                        " AND ctc_number IS NOT NULL" +
+                        " AND is_closed = 0",
                 "ec_anc_register",
                 baseEntityId
         );

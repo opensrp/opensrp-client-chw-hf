@@ -97,21 +97,6 @@
     "title": "End",
     "fields": [
       {
-        "key": "notify_first_visit",
-        "type": "toaster_notes",
-        "text": "Perform PMTCT Visit 0",
-        "openmrs_entity_id": "",
-        "openmrs_entity": "",
-        "openmrs_entity_parent": "",
-        "toaster_type": "info",
-        "relevance": {
-          "step1:known_on_art": {
-            "type": "string",
-            "ex": "equalTo(.,\"yes\")"
-          }
-        }
-      },
-      {
         "key": "notify_retest",
         "type": "toaster_notes",
         "text": "Please conduct HIV verification test for the client",
@@ -171,6 +156,68 @@
         "v_required": {
           "value": true,
           "err": "Please answer this question"
+        }
+      },
+      {
+        "key": "ctc_number",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "ctc_number",
+        "type": "mask_edit_text",
+        "mask": "##-##-####-######",
+        "mask_hint": "12345678912345",
+        "allowed_chars": "0123456789",
+        "hint": "CTC Number",
+        "edit_type": "number",
+        "v_regex": {
+          "value": "(\\d{2}-\\d{2}-\\d{4}-\\d{6})?",
+          "err": "CTC number should be of the format (XX-XX-XXXX-XXXXXX)"
+        },
+        "v_max_length": {
+          "value": "17",
+          "is_fixed_size": "true",
+          "err": "Please enter a valid CTC Number"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter a valid CTC Number"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_registration_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "notify_first_visit",
+        "type": "toaster_notes",
+        "text": "Perform PMTCT Visit 0",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "info",
+        "relevance": {
+          "step1:known_on_art": {
+            "type": "string",
+            "ex": "equalTo(.,\"yes\")"
+          }
+        }
+      },
+      {
+        "key": "notify_continue_with_anc",
+        "type": "toaster_notes",
+        "text": "Ask the client to continue with routine ANC Services",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "info",
+        "relevance": {
+          "step2:hiv_status": {
+            "type": "string",
+            "ex": "equalTo(.,\"negative\")"
+          }
         }
       }
     ]

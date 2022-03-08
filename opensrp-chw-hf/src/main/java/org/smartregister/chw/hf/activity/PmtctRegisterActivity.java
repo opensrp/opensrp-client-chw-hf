@@ -1,5 +1,8 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.hf.utils.Constants.JsonForm.getPmtctRegistration;
+import static org.smartregister.chw.hf.utils.Constants.JsonForm.getPmtctRegistrationForClientsKnownOnArtForm;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,24 +13,39 @@ import org.smartregister.chw.core.custom_views.NavigationMenu;
 import org.smartregister.chw.core.utils.FormUtils;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.fragment.PmtctRegisterFragment;
+import org.smartregister.chw.hf.presenter.PmtctRegisterPresenter;
 import org.smartregister.chw.hf.utils.Constants;
+import org.smartregister.chw.pmtct.interactor.BasePmtctRegisterInteractor;
+import org.smartregister.chw.pmtct.model.BasePmtctRegisterModel;
 import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.helper.BottomNavigationHelper;
 import org.smartregister.view.fragment.BaseRegisterFragment;
 
-import static org.smartregister.chw.hf.utils.Constants.JsonForm.getPmtctRegistration;
-
 public class PmtctRegisterActivity extends CorePmtctRegisterActivity {
-    public static void startPmtctRegistrationActivity(Activity activity, String baseEntityID) {
+    private static final String CTC_NUMBER = "ctc_number";
+    private String ctcNumber;
+
+    public static void startPmtctRegistrationActivity(Activity activity, String baseEntityID, String ctcNumber, boolean isKnownOnArt) {
         Intent intent = new Intent(activity, PmtctRegisterActivity.class);
         intent.putExtra(org.smartregister.chw.pmtct.util.Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID, baseEntityID);
-        intent.putExtra(org.smartregister.chw.pmtct.util.Constants.ACTIVITY_PAYLOAD.PMTCT_FORM_NAME, getPmtctRegistration());
+        if (isKnownOnArt) {
+            intent.putExtra(org.smartregister.chw.pmtct.util.Constants.ACTIVITY_PAYLOAD.PMTCT_FORM_NAME, getPmtctRegistrationForClientsKnownOnArtForm());
+            intent.putExtra(CTC_NUMBER, ctcNumber);
+        } else {
+            intent.putExtra(org.smartregister.chw.pmtct.util.Constants.ACTIVITY_PAYLOAD.PMTCT_FORM_NAME, getPmtctRegistration());
+        }
         intent.putExtra(org.smartregister.chw.pmtct.util.Constants.ACTIVITY_PAYLOAD.ACTION, org.smartregister.chw.anc.util.Constants.ACTIVITY_PAYLOAD_TYPE.REGISTRATION);
         activity.startActivity(intent);
     }
 
     @Override
+    protected void initializePresenter() {
+        presenter = new PmtctRegisterPresenter(this, new BasePmtctRegisterModel(), new BasePmtctRegisterInteractor());
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ctcNumber = getIntent().getStringExtra(CTC_NUMBER);
         super.onCreate(savedInstanceState);
         NavigationMenu.getInstance(this, null, null);
     }
@@ -36,7 +54,6 @@ public class PmtctRegisterActivity extends CorePmtctRegisterActivity {
     protected BaseRegisterFragment getRegisterFragment() {
         return new PmtctRegisterFragment();
     }
-
 
 
     @Override
@@ -48,11 +65,14 @@ public class PmtctRegisterActivity extends CorePmtctRegisterActivity {
 
     @Override
     public void startFormActivity(JSONObject jsonForm) {
-        if(ACTION.equalsIgnoreCase(Constants.ActionList.FOLLOWUP)){
+        if (ACTION.equalsIgnoreCase(Constants.ActionList.FOLLOWUP)) {
             startActivityForResult(FormUtils.getStartFormActivity(jsonForm, getString(R.string.pmtct_followup_form_title), this), JsonFormUtils.REQUEST_CODE_GET_JSON);
-        }else{
+        } else {
             startActivityForResult(FormUtils.getStartFormActivity(jsonForm, this.getString(org.smartregister.chw.core.R.string.pmtct_registration), this), JsonFormUtils.REQUEST_CODE_GET_JSON);
         }
     }
 
+    public String getCtcNumber() {
+        return ctcNumber;
+    }
 }

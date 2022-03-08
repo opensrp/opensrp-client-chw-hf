@@ -1,0 +1,14 @@
+---
+name: step1_known_on_art_client
+description: known_on_art_client info
+priority: 1
+condition: "true"
+actions:
+  - "calculation = ['ctc_number':global_ctc_number]"
+---
+name: step1_ctc_number
+description: ctc_number calculation
+priority: 1
+condition: "true"
+actions:
+  - "calculation = global_ctc_number"

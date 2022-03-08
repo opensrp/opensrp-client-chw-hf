@@ -1,0 +1,7 @@
+---
+name: step2_ctc_number
+description: ctc_number relevance
+priority: 1
+condition: "step1_known_on_art.contains('yes') || step2_hiv_status.contains('positive')"
+actions:
+  - "isRelevant = true"
