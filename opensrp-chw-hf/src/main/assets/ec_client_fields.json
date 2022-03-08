@@ -129,6 +129,57 @@
       ]
     },
     {
+      "name": "ec_pmtct_hvl_results",
+      "columns": [
+        {
+          "column_name": "entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "formSubmissionId"
+          }
+        },
+        {
+          "column_name": "hvl_result",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "hvl_result"
+          }
+        },
+        {
+          "column_name": "hvl_sample_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "sample_id"
+          }
+        },
+        {
+          "column_name": "hvl_collection_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "collection_date"
+          }
+        },
+        {
+          "column_name": "hvl_result_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "hvl_result_date"
+          }
+        }
+      ]
+    },
+    {
       "name": "ec_family",
       "columns": [
         {

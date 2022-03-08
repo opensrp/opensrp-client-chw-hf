@@ -404,6 +404,13 @@
           },
           {
             "field": "eventType",
+            "field_value": "PMTCT HVL Results",
+            "creates_case": [
+              "ec_pmtct_hvl_results"
+            ]
+          },
+          {
+            "field": "eventType",
             "field_value": "PMTCT EAC First Visit",
             "creates_case": [
               "ec_pmtct_followup"

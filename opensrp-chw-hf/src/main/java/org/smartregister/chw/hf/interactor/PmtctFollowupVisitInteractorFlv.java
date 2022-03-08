@@ -6,9 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
-import org.smartregister.chw.core.utils.FormUtils;
 import org.smartregister.chw.hf.actionhelper.PmtctVisitAction;
-import org.smartregister.chw.hf.dao.HfPmtctDao;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.pmtct.PmtctLibrary;
 import org.smartregister.chw.pmtct.contract.BasePmtctHomeVisitContract;
@@ -16,7 +14,6 @@ import org.smartregister.chw.pmtct.domain.MemberObject;
 import org.smartregister.chw.pmtct.domain.Visit;
 import org.smartregister.chw.pmtct.domain.VisitDetail;
 import org.smartregister.chw.pmtct.model.BasePmtctHomeVisitAction;
-import org.smartregister.chw.pmtct.util.JsonFormUtils;
 import org.smartregister.chw.pmtct.util.VisitUtils;
 
 import java.text.MessageFormat;
@@ -50,31 +47,6 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
 
 
     private void evaluatePmtctActions(LinkedHashMap<String, BasePmtctHomeVisitAction> actionList, Map<String, List<VisitDetail>> details, MemberObject memberObject, Context context) throws BasePmtctHomeVisitAction.ValidationException {
-        JSONObject hvlFormAfterEac1 = null;
-        JSONObject hvlFormAfterEac2 = null;
-
-        try {
-            hvlFormAfterEac1 = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.HVL_SUPPRESSION_FORM_AFTER_EAC_1);
-            if (HfPmtctDao.isEacFirstDone(memberObject.getBaseEntityId()) && !HfPmtctDao.isSecondEacDone(memberObject.getBaseEntityId())) {
-                hvlFormAfterEac1.getJSONObject("global").put("eac_visit", "first_done");
-            }
-            if (details != null && !details.isEmpty()) {
-                JsonFormUtils.populateForm(hvlFormAfterEac1, details);
-            }
-        } catch (JSONException e) {
-            Timber.e(e);
-        }
-        try {
-            hvlFormAfterEac2 = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.HVL_SUPPRESSION_FORM_AFTER_EAC_2);
-            if (HfPmtctDao.isSecondEacDone(memberObject.getBaseEntityId())) {
-                hvlFormAfterEac2.getJSONObject("global").put("eac_visit", "second_done");
-            }
-            if (details != null && !details.isEmpty()) {
-                JsonFormUtils.populateForm(hvlFormAfterEac2, details);
-            }
-        } catch (JSONException e) {
-            Timber.e(e);
-        }
         BasePmtctHomeVisitAction ClinicianDetails = new BasePmtctHomeVisitAction.Builder(context, "Clinician Details")
                 .withOptional(false)
                 .withDetails(details)
@@ -82,34 +54,6 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
                 .withHelper(new ClinicianDetailsAction(memberObject))
                 .build();
         actionList.put("Clinician Details", ClinicianDetails);
-        BasePmtctHomeVisitAction ViralLoad;
-        if (HfPmtctDao.isEacFirstDone(memberObject.getBaseEntityId()) && !HfPmtctDao.isSecondEacDone(memberObject.getBaseEntityId())) {
-            ViralLoad = new BasePmtctHomeVisitAction.Builder(context, "HIV Viral Load")
-                    .withOptional(true)
-                    .withDetails(details)
-                    .withJsonPayload(hvlFormAfterEac1.toString())
-                    .withFormName(Constants.JsonForm.getHvlSuppressionFormAfterEac1())
-                    .withHelper(new HVLResultsAction(memberObject))
-                    .build();
-        }
-        else if (HfPmtctDao.isSecondEacDone(memberObject.getBaseEntityId())) {
-            ViralLoad = new BasePmtctHomeVisitAction.Builder(context, "HIV Viral Load")
-                    .withOptional(true)
-                    .withDetails(details)
-                    .withJsonPayload(hvlFormAfterEac2.toString())
-                    .withFormName(Constants.JsonForm.getHvlSuppressionFormAfterEac2())
-                    .withHelper(new HVLResultsAction(memberObject))
-                    .build();
-        }
-        else {
-            ViralLoad = new BasePmtctHomeVisitAction.Builder(context, "HIV Viral Load")
-                    .withOptional(true)
-                    .withDetails(details)
-                    .withFormName(Constants.JsonForm.getHvlSuppressionForm())
-                    .withHelper(new HVLResultsAction(memberObject))
-                    .build();
-        }
-        actionList.put("HIV Viral Load", ViralLoad);
     }
 
     private static class ClinicianDetailsAction extends PmtctVisitAction {
@@ -190,91 +134,6 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
         }
     }
 
-    private static class HVLResultsAction extends PmtctVisitAction {
-        protected MemberObject memberObject;
-        private String jsonPayload;
-
-        private String hvl_suppression;
-        private String hvl_suppression_after_eac_1;
-        private String hvl_suppression_after_eac_2;
-        private BasePmtctHomeVisitAction.ScheduleStatus scheduleStatus;
-        private String subTitle;
-
-        public HVLResultsAction(MemberObject memberObject) {
-            super(memberObject);
-            this.memberObject = memberObject;
-        }
-
-        @Override
-        public void onJsonFormLoaded(String jsonPayload, Context context, Map<String, List<VisitDetail>> map) {
-            this.jsonPayload = jsonPayload;
-        }
-
-        @Override
-        public String getPreProcessed() {
-            try {
-                JSONObject jsonObject = new JSONObject(jsonPayload);
-                return jsonObject.toString();
-            } catch (Exception e) {
-                Timber.e(e);
-            }
-            return null;
-        }
-
-        @Override
-        public void onPayloadReceived(String jsonPayload) {
-            try {
-                JSONObject jsonObject = new JSONObject(jsonPayload);
-                hvl_suppression = CoreJsonFormUtils.getValue(jsonObject, "hvl_suppression");
-                hvl_suppression_after_eac_1 = CoreJsonFormUtils.getValue(jsonObject, "hvl_suppression_after_eac_1");
-                hvl_suppression_after_eac_2 = CoreJsonFormUtils.getValue(jsonObject, "hvl_suppression_after_eac_2");
-            } catch (JSONException e) {
-                Timber.e(e);
-            }
-        }
-
-        @Override
-        public BasePmtctHomeVisitAction.ScheduleStatus getPreProcessedStatus() {
-            return scheduleStatus;
-        }
-
-        @Override
-        public String getPreProcessedSubTitle() {
-            return subTitle;
-        }
-
-        @Override
-        public String postProcess(String s) {
-            return null;
-        }
-
-        @Override
-        public String evaluateSubTitle() {
-            if (StringUtils.isBlank(hvl_suppression) && StringUtils.isBlank(hvl_suppression_after_eac_1) && StringUtils.isBlank(hvl_suppression_after_eac_2))
-                return null;
-            if (hvl_suppression_after_eac_1 != null && !hvl_suppression_after_eac_1.equalsIgnoreCase("NULL") && !StringUtils.isBlank(hvl_suppression_after_eac_1))
-                return MessageFormat.format("HVL Suppression is: {0}", hvl_suppression_after_eac_1);
-            if (hvl_suppression_after_eac_2 != null && !hvl_suppression_after_eac_2.equalsIgnoreCase("NULL") && !StringUtils.isBlank(hvl_suppression_after_eac_2))
-                return MessageFormat.format("HVL Suppression is: {0}", hvl_suppression_after_eac_2);
-            if (hvl_suppression != null && !StringUtils.isBlank(hvl_suppression))
-                return MessageFormat.format("HVL Suppression is: {0}", hvl_suppression);
-            return null;
-        }
-
-        @Override
-        public BasePmtctHomeVisitAction.Status evaluateStatusOnPayload() {
-            if (StringUtils.isBlank(hvl_suppression) && StringUtils.isBlank(hvl_suppression_after_eac_1) && StringUtils.isBlank(hvl_suppression_after_eac_2)) {
-                return BasePmtctHomeVisitAction.Status.PENDING;
-            } else {
-                return BasePmtctHomeVisitAction.Status.COMPLETED;
-            }
-        }
-
-        @Override
-        public void onPayloadReceived(BasePmtctHomeVisitAction basePmtctHomeVisitAction) {
-            Timber.d("onPayloadReceived");
-        }
-    }
 }
 
 
