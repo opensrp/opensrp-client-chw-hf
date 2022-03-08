@@ -50,6 +50,8 @@ public class HivIndexFollowupCardViewAdapter extends RecyclerView.Adapter<Referr
         holder.textViewReferralHeader.setText(context.getApplicationContext().getResources().getString(R.string.followup_feedback));
         holder.textViewReferralInfo.setText(context.getApplicationContext().getResources().getString(R.string.view_followup_feedback_info));
         holder.referralRow.setOnClickListener(listener);
+        holder.textViewReferralHeader.setTextColor(context.getResources().getColor(R.color.accent));
+        holder.referralRowImage.setImageResource(R.drawable.ic_feedback);
     }
 
     @Override

@@ -63,6 +63,8 @@ public class HivAndTbReferralCardViewAdapter extends RecyclerView.Adapter<Referr
             referralCardViewHolder.textViewReferralHeader.setText(context.getApplicationContext().getResources().getString(R.string.followup_feedback));
             referralCardViewHolder.textViewReferralInfo.setText(context.getApplicationContext().getResources().getString(R.string.view_followup_feedback_info));
             referralCardViewHolder.referralRow.setOnClickListener(listener);
+            referralCardViewHolder.textViewReferralHeader.setTextColor(context.getResources().getColor(R.color.accent));
+            referralCardViewHolder.referralRowImage.setImageResource(R.drawable.ic_feedback);
         }
     }
 
