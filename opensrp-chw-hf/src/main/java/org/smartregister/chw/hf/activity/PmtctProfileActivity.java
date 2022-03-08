@@ -1,9 +1,5 @@
 package org.smartregister.chw.hf.activity;
 
-import static org.smartregister.chw.core.utils.CoreConstants.EventType.PMTCT_COMMUNITY_FOLLOWUP;
-import static org.smartregister.chw.hf.utils.Constants.Events.PMTCT_FIRST_EAC_VISIT;
-import static org.smartregister.chw.hf.utils.Constants.Events.PMTCT_SECOND_EAC_VISIT;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -14,9 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.vijay.jsonwizard.utils.FormUtils;
 
@@ -42,7 +35,6 @@ import org.smartregister.chw.hf.presenter.FamilyOtherMemberActivityPresenter;
 import org.smartregister.chw.hf.presenter.PmtctProfilePresenter;
 import org.smartregister.chw.hf.utils.PmtctVisitUtils;
 import org.smartregister.chw.pmtct.PmtctLibrary;
-import org.smartregister.chw.pmtct.activity.BaseHvlResultsViewActivity;
 import org.smartregister.chw.pmtct.dao.PmtctDao;
 import org.smartregister.chw.pmtct.domain.Visit;
 import org.smartregister.chw.pmtct.util.Constants;
@@ -60,7 +52,13 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import timber.log.Timber;
+
+import static org.smartregister.chw.core.utils.CoreConstants.EventType.PMTCT_COMMUNITY_FOLLOWUP;
+import static org.smartregister.chw.hf.utils.Constants.Events.PMTCT_FIRST_EAC_VISIT;
+import static org.smartregister.chw.hf.utils.Constants.Events.PMTCT_SECOND_EAC_VISIT;
 
 public class PmtctProfileActivity extends CorePmtctProfileActivity {
     private static String baseEntityId;
@@ -174,49 +172,6 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         addContentView(basePmtctFloatingMenu, linearLayoutParams);
     }
 
-    private class UpdateVisitDueTask extends AsyncTask<Void, Void, Void> {
-        private PmtctFollowUpRule pmtctFollowUpRule;
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            Date pmtctRegisterDate = PmtctDao.getPmtctRegisterDate(memberObject.getBaseEntityId());
-            Date followUpVisitDate = PmtctDao.getPmtctFollowUpVisitDate(memberObject.getBaseEntityId());
-            pmtctFollowUpRule = HomeVisitUtil.getPmtctVisitStatus(pmtctRegisterDate, followUpVisitDate, baseEntityId);
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void param) {
-            profilePresenter.recordPmtctButton(pmtctFollowUpRule.getButtonStatus());
-            if (pmtctFollowUpRule.isFirstVisit())
-                textViewRecordPmtct.setText(R.string.record_first_pmtct);
-
-            boolean showEac = !pmtctFollowUpRule.getButtonStatus().equalsIgnoreCase("DUE")
-                    && !pmtctFollowUpRule.getButtonStatus().equalsIgnoreCase("OVERDUE")
-                    && !pmtctFollowUpRule.getButtonStatus().equalsIgnoreCase("EXPIRY");
-            boolean isEligibleForFirstEac = HfPmtctDao.isEligibleForEac(baseEntityId);
-            boolean isEligibleForSecondEac = HfPmtctDao.isEligibleForSecondEac(baseEntityId);
-            boolean isEacFirstDone = HfPmtctDao.isEacFirstDone(baseEntityId);
-            boolean isEacSecondDone = HfPmtctDao.isSecondEacDone(baseEntityId);
-            Visit lastFolllowUpVisit = getVisit(Constants.EVENT_TYPE.PMTCT_FOLLOWUP);
-
-            if (showEac && isEligibleForFirstEac && !isEacFirstDone) {
-                recordVisits.setWeightSum(1);
-                textViewRecordAnc.setVisibility(View.VISIBLE);
-                textViewRecordAnc.setText(R.string.record_eac_first_visit);
-            } else if (showEac && isEligibleForSecondEac && !isEacSecondDone) {
-                recordVisits.setWeightSum(1);
-                textViewRecordAnc.setVisibility(View.VISIBLE);
-                textViewRecordAnc.setText(R.string.record_eac_second_visit);
-            } else {
-                if (lastFolllowUpVisit != null && lastFolllowUpVisit.getProcessed()) {
-                    profilePresenter.visitRow(pmtctFollowUpRule.getButtonStatus());
-                }
-            }
-            profilePresenter.nextRow(pmtctFollowUpRule.getButtonStatus(), FpUtil.sdf.format(pmtctFollowUpRule.getDueDate()));
-        }
-    }
-
     @Override
     protected void setupViews() {
         super.setupViews();
@@ -297,7 +252,6 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         }
 
     }
-
 
     private void showVisitInProgress(String typeOfVisit) {
         recordVisits.setVisibility(View.GONE);
@@ -419,6 +373,49 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         //implement
         Intent intent = new Intent(this, HvlResultsViewActivity.class);
         startActivity(intent);
+    }
+
+    private class UpdateVisitDueTask extends AsyncTask<Void, Void, Void> {
+        private PmtctFollowUpRule pmtctFollowUpRule;
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            Date pmtctRegisterDate = PmtctDao.getPmtctRegisterDate(memberObject.getBaseEntityId());
+            Date followUpVisitDate = PmtctDao.getPmtctFollowUpVisitDate(memberObject.getBaseEntityId());
+            pmtctFollowUpRule = HomeVisitUtil.getPmtctVisitStatus(pmtctRegisterDate, followUpVisitDate, baseEntityId);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void param) {
+            profilePresenter.recordPmtctButton(pmtctFollowUpRule.getButtonStatus());
+            if (pmtctFollowUpRule.isFirstVisit())
+                textViewRecordPmtct.setText(R.string.record_first_pmtct);
+
+            boolean showEac = !pmtctFollowUpRule.getButtonStatus().equalsIgnoreCase("DUE")
+                    && !pmtctFollowUpRule.getButtonStatus().equalsIgnoreCase("OVERDUE")
+                    && !pmtctFollowUpRule.getButtonStatus().equalsIgnoreCase("EXPIRY");
+            boolean isEligibleForFirstEac = HfPmtctDao.isEligibleForEac(baseEntityId);
+            boolean isEligibleForSecondEac = HfPmtctDao.isEligibleForSecondEac(baseEntityId);
+            boolean isEacFirstDone = HfPmtctDao.isEacFirstDone(baseEntityId);
+            boolean isEacSecondDone = HfPmtctDao.isSecondEacDone(baseEntityId);
+            Visit lastFolllowUpVisit = getVisit(Constants.EVENT_TYPE.PMTCT_FOLLOWUP);
+
+            if (showEac && isEligibleForFirstEac && !isEacFirstDone) {
+                recordVisits.setWeightSum(1);
+                textViewRecordAnc.setVisibility(View.VISIBLE);
+                textViewRecordAnc.setText(R.string.record_eac_first_visit);
+            } else if (showEac && isEligibleForSecondEac && !isEacSecondDone) {
+                recordVisits.setWeightSum(1);
+                textViewRecordAnc.setVisibility(View.VISIBLE);
+                textViewRecordAnc.setText(R.string.record_eac_second_visit);
+            } else {
+                if (lastFolllowUpVisit != null && lastFolllowUpVisit.getProcessed()) {
+                    profilePresenter.visitRow(pmtctFollowUpRule.getButtonStatus());
+                }
+            }
+            profilePresenter.nextRow(pmtctFollowUpRule.getButtonStatus(), FpUtil.sdf.format(pmtctFollowUpRule.getDueDate()));
+        }
     }
 
 
