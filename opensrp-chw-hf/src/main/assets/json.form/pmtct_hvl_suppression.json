@@ -1,6 +1,6 @@
 {
   "count": "1",
-  "encounter_type": "PMTCT Follow-up Visit",
+  "encounter_type": "PMTCT HVL Results",
   "entity_id": "",
   "metadata": {
     "start": {
@@ -51,10 +51,10 @@
     "title": "HVL Suppression",
     "fields": [
       {
-        "key": "hvl_suppression",
+        "key": "hvl_result",
         "type": "edit_text",
         "hint": "HVL Suppression",
-        "openmrs_entity_id": "hvl_suppression",
+        "openmrs_entity_id": "hvl_result",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "v_numeric": {
@@ -92,7 +92,7 @@
         "openmrs_entity_parent": "",
         "toaster_type": "problem",
         "relevance": {
-          "step1:hvl_suppression": {
+          "step1:hvl_result": {
             "type": "numeric",
             "ex": "greaterThan(.,\"1000\")"
           }

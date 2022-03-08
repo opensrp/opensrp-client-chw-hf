@@ -176,14 +176,6 @@
             "field": "obs.fieldCode",
             "concept": "hvl_result_date"
           }
-        },
-        {
-          "column_name": "parent_event_form_id",
-          "type": "Event",
-          "json_mapping": {
-            "field": "obs.fieldCode",
-            "concept": "parent_event_form_id"
-          }
         }
       ]
     },

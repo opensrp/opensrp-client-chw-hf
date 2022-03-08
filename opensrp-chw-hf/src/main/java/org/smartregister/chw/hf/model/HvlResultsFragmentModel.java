@@ -27,7 +27,8 @@ public class HvlResultsFragmentModel extends BaseHvlResultsFragmentModel {
     @Override
     protected String[] mainColumns(String tableName) {
         Set<String> columnList = new HashSet<>();
-        columnList.add(tableName + "." + DBConstants.KEY.BASE_ENTITY_ID);
+        columnList.add(tableName + "." + org.smartregister.chw.pmtct.util.DBConstants.KEY.ENTITY_ID + " as " + DBConstants.KEY.BASE_ENTITY_ID);
+        columnList.add(tableName + "." + DBConstants.KEY.BASE_ENTITY_ID + " as " + org.smartregister.chw.pmtct.util.DBConstants.KEY.ENTITY_ID);
         columnList.add(Constants.TABLE_NAME.FAMILY_MEMBER + "." + DBConstants.KEY.RELATIONAL_ID + " as " + ChildDBConstants.KEY.RELATIONAL_ID);
         columnList.add(Constants.TABLE_NAME.FAMILY_MEMBER + "." + DBConstants.KEY.FIRST_NAME);
         columnList.add(Constants.TABLE_NAME.FAMILY_MEMBER + "." + DBConstants.KEY.MIDDLE_NAME);
