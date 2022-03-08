@@ -62,20 +62,7 @@ public class PmtctVisitUtils extends VisitUtils {
                     Timber.e(e);
                 }
             }else if(v.getVisitType().equalsIgnoreCase(org.smartregister.chw.pmtct.util.Constants.EVENT_TYPE.PMTCT_FOLLOWUP)){
-                try{
-                    JSONObject jsonObject = new JSONObject(v.getJson());
-                    JSONArray obs = jsonObject.getJSONArray("obs");
-
-                    boolean isHvlSuppressionFilled = computeCompletionStatus(obs,"hvl_suppression");
-                    boolean isHvlSuppressionAfterEac1Filled = computeCompletionStatus(obs,"hvl_suppression_after_eac_1");
-                    boolean isHvlSuppressionAfterEac2Filled = computeCompletionStatus(obs,"hvl_suppression_after_eac_2");
-
-                    if(isHvlSuppressionFilled || isHvlSuppressionAfterEac1Filled || isHvlSuppressionAfterEac2Filled){
-                        pmtctFollowupVisits.add(v);
-                    }
-                } catch (Exception e){
-                    Timber.e(e);
-                }
+                pmtctFollowupVisits.add(v);
             }
         }
         if(pmtctEacVisitsCompleted.size() > 0){
