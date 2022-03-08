@@ -52,6 +52,21 @@
     "title": "Known on ART",
     "fields": [
       {
+        "key": "pmtct_register_date",
+        "type": "edit_text",
+        "hidden": "true",
+        "openmrs_entity_id": "pmtct_register_date",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_form_calculation.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "known_on_art",
         "type": "hidden",
         "openmrs_entity_id": "known_on_art",
@@ -60,9 +75,9 @@
         "value": "yes"
       },
       {
-        "key": "hiv_status",
+        "key": "hiv_status_value",
         "type": "hidden",
-        "openmrs_entity_id": "hiv_status",
+        "openmrs_entity_id": "hiv_status_value",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "value": "positive"
