@@ -33,6 +33,14 @@
             "field": "obs.fieldCode",
             "concept": "ctc_number"
           }
+        },
+        {
+          "column_name": "known_on_art",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "known_on_art"
+          }
         }
       ]
     },
@@ -40,10 +48,17 @@
       "name": "ec_pmtct_followup",
       "columns": [
         {
-          "column_name": "base_entity_id",
-          "type": "Client",
+          "column_name": "entity_id",
+          "type": "Event",
           "json_mapping": {
             "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "formSubmissionId"
           }
         },
         {
@@ -55,83 +70,59 @@
           }
         },
         {
-          "column_name": "known_on_art",
+          "column_name": "hvl_sample_id",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "known_on_art"
+            "concept": "hlv_sample_id"
           }
         },
         {
-          "column_name": "hvl_suppression",
+          "column_name": "hvl_collection_date",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "hvl_suppression"
+            "concept": "hvl_collection_date"
           }
         },
         {
-          "column_name": "hvl_suppression_after_eac_1",
+          "column_name": "cd4_sample_id",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "hvl_suppression_after_eac_1"
+            "concept": "cd4_sample_id"
           }
         },
         {
-          "column_name": "hvl_suppression_after_eac_2",
+          "column_name": "cd4_collection_date",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "hvl_suppression_after_eac_2"
+            "concept": "cd4_collection_date"
           }
         },
         {
-          "column_name": "eac_day_1",
+          "column_name": "arv_line",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "eac_day_1"
+            "concept": "arv_line"
           }
         },
         {
-          "column_name": "eac_day_2",
+          "column_name": "arv_regimen",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "eac_day_2"
+            "concept": "arv_regimen"
           }
         },
         {
-          "column_name": "eac_day_3",
+          "column_name": "visit_number",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "eac_day_3"
-          }
-        },
-        {
-          "column_name": "eac_month_1",
-          "type": "Event",
-          "json_mapping": {
-            "field": "obs.fieldCode",
-            "concept": "eac_month_1"
-          }
-        },
-        {
-          "column_name": "eac_month_2",
-          "type": "Event",
-          "json_mapping": {
-            "field": "obs.fieldCode",
-            "concept": "eac_month_2"
-          }
-        },
-        {
-          "column_name": "eac_month_3",
-          "type": "Event",
-          "json_mapping": {
-            "field": "obs.fieldCode",
-            "concept": "eac_month_3"
+            "concept": "visit_number"
           }
         }
       ]
@@ -154,6 +145,14 @@
           }
         },
         {
+          "column_name": "hvl_pmctc_followup_form_submission_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "hvl_pmctc_followup_form_submission_id"
+          }
+        },
+        {
           "column_name": "hvl_result",
           "type": "Event",
           "json_mapping": {
@@ -162,27 +161,113 @@
           }
         },
         {
-          "column_name": "hvl_sample_id",
-          "type": "Event",
-          "json_mapping": {
-            "field": "obs.fieldCode",
-            "concept": "sample_id"
-          }
-        },
-        {
-          "column_name": "hvl_collection_date",
-          "type": "Event",
-          "json_mapping": {
-            "field": "obs.fieldCode",
-            "concept": "collection_date"
-          }
-        },
-        {
           "column_name": "hvl_result_date",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
             "concept": "hvl_result_date"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ec_pmtct_cd4_results",
+      "columns": [
+        {
+          "column_name": "entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "formSubmissionId"
+          }
+        },
+        {
+          "column_name": "cd4_pmctc_followup_form_submission_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "cd4_pmctc_followup_form_submission_id"
+          }
+        },
+        {
+          "column_name": "cd4_result",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "cd4_result"
+          }
+        },
+        {
+          "column_name": "cd4_result_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "cd4_result_date"
+          }
+        },
+        {
+          "column_name": "started_ctx",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "started_ctx"
+          }
+        },
+        {
+          "column_name": "reason_for_not_starting_ctx",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "reason_for_not_starting_ctx"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ec_pmtct_eac_visit",
+      "columns": [
+        {
+          "column_name": "entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "formSubmissionId"
+          }
+        },
+        {
+          "column_name": "eac_visit_type",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "eac_visit_type"
+          }
+        },
+        {
+          "column_name": "eac",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "eac"
+          }
+        },
+        {
+          "column_name": "eac_visit_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "eac_visit_date"
           }
         }
       ]
