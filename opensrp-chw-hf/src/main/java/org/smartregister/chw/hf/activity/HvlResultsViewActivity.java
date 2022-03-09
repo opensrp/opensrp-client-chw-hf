@@ -17,12 +17,18 @@ import org.smartregister.chw.hf.fragment.HvlResultsFragment;
 import org.smartregister.chw.pmtct.activity.BaseHvlResultsViewActivity;
 import org.smartregister.chw.pmtct.fragment.BaseHvlResultsFragment;
 import org.smartregister.chw.pmtct.util.Constants;
+import org.smartregister.chw.pmtct.util.DBConstants;
 import org.smartregister.chw.pmtct.util.NCUtils;
 import org.smartregister.clientandeventmodel.Event;
+import org.smartregister.clientandeventmodel.Obs;
 import org.smartregister.family.util.Utils;
 import org.smartregister.repository.AllSharedPreferences;
 
+import java.util.ArrayList;
+
 import timber.log.Timber;
+
+import static org.smartregister.chw.hf.utils.Constants.PartnerRegistrationConstants.PARTNER_BASE_ENTITY_ID;
 
 public class HvlResultsViewActivity extends BaseHvlResultsViewActivity implements View.OnClickListener {
 
@@ -106,8 +112,15 @@ public class HvlResultsViewActivity extends BaseHvlResultsViewActivity implement
                 Event baseEvent = org.smartregister.chw.pmtct.util.JsonFormUtils.processJsonForm(allSharedPreferences, jsonString, Constants.TABLES.PMTCT_HVL_RESULTS);
                 org.smartregister.chw.pmtct.util.JsonFormUtils.tagEvent(allSharedPreferences, baseEvent);
                 baseEvent.setBaseEntityId(baseEntityId);
-                //reimplement this to save a reference field with the parentFormSubmissionId
-                //baseEvent.setFormSubmissionId(parentFormSubmissionId);
+                baseEvent.addObs(
+                        (new Obs())
+                                .withFormSubmissionField(DBConstants.KEY.HVL_FOLLOWUP_FORM_SUBMISSION_ID)
+                                .withValue(parentFormSubmissionId)
+                                .withFieldCode(DBConstants.KEY.HVL_FOLLOWUP_FORM_SUBMISSION_ID)
+                                .withFieldType("formsubmissionField")
+                                .withFieldDataType("text")
+                                .withParentCode("")
+                                .withHumanReadableValues(new ArrayList<>()));
                 NCUtils.processEvent(baseEvent.getBaseEntityId(), new JSONObject(org.smartregister.chw.pmtct.util.JsonFormUtils.gson.toJson(baseEvent)));
 
             } catch (JSONException e) {

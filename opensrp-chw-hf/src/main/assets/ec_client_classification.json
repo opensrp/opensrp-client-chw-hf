@@ -391,8 +391,7 @@
             "field": "eventType",
             "field_value": "PMTCT Registration",
             "creates_case": [
-              "ec_pmtct_registration",
-              "ec_pmtct_followup"
+              "ec_pmtct_registration"
             ]
           },
           {

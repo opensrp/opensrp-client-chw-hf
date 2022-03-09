@@ -22,6 +22,7 @@ public class HvlResultsFragmentModel extends BaseHvlResultsFragmentModel {
         queryBuilder.customJoin("INNER JOIN " + Constants.TABLE_NAME.FAMILY + " ON  " + Constants.TABLE_NAME.FAMILY_MEMBER + "." + DBConstants.KEY.RELATIONAL_ID + " = " + Constants.TABLE_NAME.FAMILY + "." + DBConstants.KEY.BASE_ENTITY_ID);
         queryBuilder.customJoin("LEFT JOIN " + Constants.TABLE_NAME.FAMILY_MEMBER + " as T1 ON  " + Constants.TABLE_NAME.FAMILY + "." + DBConstants.KEY.PRIMARY_CAREGIVER + " = T1." + DBConstants.KEY.BASE_ENTITY_ID);
         queryBuilder.customJoin("LEFT JOIN " + Constants.TABLE_NAME.FAMILY_MEMBER + " as T2 ON  " + Constants.TABLE_NAME.FAMILY + "." + DBConstants.KEY.FAMILY_HEAD + " = T2." + DBConstants.KEY.BASE_ENTITY_ID);
+        queryBuilder.customJoin("LEFT JOIN " + org.smartregister.chw.pmtct.util.Constants.TABLES.PMTCT_HVL_RESULTS + " ON " + org.smartregister.chw.pmtct.util.Constants.TABLES.PMTCT_HVL_RESULTS + "." + org.smartregister.chw.pmtct.util.DBConstants.KEY.HVL_FOLLOWUP_FORM_SUBMISSION_ID + " = "+ tableName + "." + DBConstants.KEY.BASE_ENTITY_ID);
         return queryBuilder.mainCondition(mainCondition);
     }
     @Override
@@ -44,10 +45,11 @@ public class HvlResultsFragmentModel extends BaseHvlResultsFragmentModel {
         columnList.add("T1." + DBConstants.KEY.FIRST_NAME + " || " + "' '" + " || " + "T1." + DBConstants.KEY.MIDDLE_NAME + " || " + "' '" + " || " + "T1." + DBConstants.KEY.LAST_NAME + " AS " + DBConstants.KEY.PRIMARY_CAREGIVER);
         columnList.add("T2." + DBConstants.KEY.FIRST_NAME + " || " + "' '" + " || " + "T2." + DBConstants.KEY.MIDDLE_NAME + " || " + "' '" + " || " + "T2." + DBConstants.KEY.LAST_NAME + " AS " + DBConstants.KEY.FAMILY_HEAD);
         columnList.add(Constants.TABLE_NAME.FAMILY + "." + DBConstants.KEY.FIRST_NAME + " as " + org.smartregister.chw.anc.util.DBConstants.KEY.FAMILY_NAME);
-        columnList.add(tableName + "." + org.smartregister.chw.pmtct.util.DBConstants.KEY.HVL_SAMPLE_ID);
-        columnList.add(tableName + "." + org.smartregister.chw.pmtct.util.DBConstants.KEY.HVL_RESULT);
-        columnList.add(tableName + "." + org.smartregister.chw.pmtct.util.DBConstants.KEY.HVL_SAMPLE_COLLECTION_DATE);
-        columnList.add(tableName + "." + org.smartregister.chw.pmtct.util.DBConstants.KEY.HVL_RESULT_DATE);
+        columnList.add(org.smartregister.chw.pmtct.util.Constants.TABLES.PMTCT_FOLLOW_UP + "." + org.smartregister.chw.pmtct.util.DBConstants.KEY.HVL_SAMPLE_ID);
+        columnList.add(org.smartregister.chw.pmtct.util.Constants.TABLES.PMTCT_HVL_RESULTS + "." + org.smartregister.chw.pmtct.util.DBConstants.KEY.HVL_RESULT);
+        columnList.add(org.smartregister.chw.pmtct.util.Constants.TABLES.PMTCT_FOLLOW_UP + "." + org.smartregister.chw.pmtct.util.DBConstants.KEY.HVL_SAMPLE_COLLECTION_DATE);
+        columnList.add(org.smartregister.chw.pmtct.util.Constants.TABLES.PMTCT_HVL_RESULTS + "." + org.smartregister.chw.pmtct.util.DBConstants.KEY.HVL_RESULT_DATE);
+        columnList.add(org.smartregister.chw.pmtct.util.Constants.TABLES.PMTCT_HVL_RESULTS + "." + org.smartregister.chw.pmtct.util.DBConstants.KEY.HVL_FOLLOWUP_FORM_SUBMISSION_ID);
 
         return columnList.toArray(new String[columnList.size()]);
 
