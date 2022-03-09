@@ -92,6 +92,17 @@ public class HfPmtctDao extends CorePmtctDao {
         return null;
     }
 
+    public static boolean isEligibleForCD4Retest(String baseEntityID) {
+        String sql = "SELECT cd4_collection_date FROM ec_pmtct_followup WHERE cd4_collection_date IS NOT NULL AND p.base_entity_id = '" + baseEntityID + "'";
+
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "cd4_collection_date");
+        List<String> res = readData(sql, dataMap);
+
+        if (res.size() > 0 && res.get(0) != null) {
+            return getElapsedTimeInMonths(res.get(0)) >= 6;
+        }
+        return false;
+    }
 
     private static int getElapsedTimeInMonths(String startDate) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
