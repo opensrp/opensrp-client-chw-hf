@@ -50,6 +50,21 @@
     "title": "Counselling",
     "fields": [
       {
+        "key": "followup_visit_date",
+        "type": "edit_text",
+        "hidden": "true",
+        "openmrs_entity_id": "followup_visit_date",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_followup_calculation.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "is_client_counselled",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",

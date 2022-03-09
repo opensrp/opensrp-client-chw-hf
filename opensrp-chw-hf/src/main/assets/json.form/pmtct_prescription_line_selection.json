@@ -47,8 +47,38 @@
     "encounter_location": ""
   },
   "step1": {
-    "title": "Selection of Prescription Line",
+    "title": "ARV Prescription",
     "fields": [
+      {
+        "key": "prescribed_regimes",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "prescribed_regimes",
+        "type": "native_radio",
+        "label": "Has the client been prescribed ARVs regimes?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an option"
+        }
+      },
       {
         "key": "arv_line",
         "type": "spinner",
@@ -74,6 +104,12 @@
         "v_required": {
           "value": true,
           "err": "Please answer this question"
+        },
+        "relevance": {
+          "step1:prescribed_regimes": {
+            "type": "string",
+            "ex": "equalTo(.,\"yes\")"
+          }
         }
       },
       {
@@ -108,7 +144,7 @@
           "1_xA": "1_xA"
         },
         "relevance": {
-          "step1:choose_presc_line": {
+          "step1:arv_line": {
             "type": "string",
             "ex": "equalTo(.,\"first_line\")"
           }
@@ -156,7 +192,7 @@
           "2_xA": "2_xA"
         },
         "relevance": {
-          "step1:choose_presc_line": {
+          "step1:arv_line": {
             "type": "string",
             "ex": "equalTo(.,\"second_line\")"
           }
@@ -204,7 +240,7 @@
           "3_yA": "3_yA"
         },
         "relevance": {
-          "step1:choose_presc_line": {
+          "step1:arv_line": {
             "type": "string",
             "ex": "equalTo(.,\"third_line\")"
           }
@@ -212,6 +248,42 @@
         "v_required": {
           "value": true,
           "err": "Please answer this question"
+        }
+      },
+      {
+        "key": "reason_for_not_starting_ctx",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_starting_ctx",
+        "type": "native_radio",
+        "label": "Reason for not starting CTX",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "out_of_medicine",
+            "text": "Stock out of medicine",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "out_of_medicine"
+          },
+          {
+            "key": "client_refused_medication",
+            "text": "The client refused medication",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "client_refused_medication"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an option"
+        },
+        "relevance": {
+          "step1:prescribed_regimes": {
+            "type": "string",
+            "ex": "equalTo(., \"no\")"
+          }
         }
       }
     ]
