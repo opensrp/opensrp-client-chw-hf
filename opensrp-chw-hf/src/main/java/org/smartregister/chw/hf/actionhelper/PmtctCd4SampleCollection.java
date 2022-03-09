@@ -16,83 +16,83 @@ import java.util.Map;
 
 import timber.log.Timber;
 
-public class PmtctCd4SampleCollection implements BasePmtctHomeVisitAction.PmtctHomeVisitActionHelper{
-   protected MemberObject memberObject;
-   private String jsonPayload;
-   private String cd4_sample_id;
-   private Context context;
-   private String subTitle;
-   private BasePmtctHomeVisitAction.ScheduleStatus scheduleStatus;
+public class PmtctCd4SampleCollection implements BasePmtctHomeVisitAction.PmtctHomeVisitActionHelper {
+    protected MemberObject memberObject;
+    private String jsonPayload;
+    private String cd4_sample_id;
+    private Context context;
+    private String subTitle;
+    private BasePmtctHomeVisitAction.ScheduleStatus scheduleStatus;
 
-   public PmtctCd4SampleCollection(MemberObject memberObject) {
-      this.memberObject = memberObject;
-   }
+    public PmtctCd4SampleCollection(MemberObject memberObject) {
+        this.memberObject = memberObject;
+    }
 
-   @Override
-   public void onJsonFormLoaded(String jsonPayload, Context context, Map<String, List<VisitDetail>> map) {
-      this.jsonPayload = jsonPayload;
-      this.context = context;
-   }
+    @Override
+    public void onJsonFormLoaded(String jsonPayload, Context context, Map<String, List<VisitDetail>> map) {
+        this.jsonPayload = jsonPayload;
+        this.context = context;
+    }
 
-   @Override
-   public String getPreProcessed() {
-      try {
-         JSONObject jsonObject = new JSONObject(jsonPayload);
-         return jsonObject.toString();
-      } catch (JSONException e) {
-         e.printStackTrace();
-      }
+    @Override
+    public String getPreProcessed() {
+        try {
+            JSONObject jsonObject = new JSONObject(jsonPayload);
+            return jsonObject.toString();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
-      return null;
-   }
+        return null;
+    }
 
-   @Override
-   public void onPayloadReceived(String jsonPayload) {
-      try {
-         JSONObject jsonObject = new JSONObject(jsonPayload);
-         cd4_sample_id = CoreJsonFormUtils.getValue(jsonObject, "cd4_sample_id");
-      } catch (JSONException e) {
-         e.printStackTrace();
-      }
-   }
+    @Override
+    public void onPayloadReceived(String jsonPayload) {
+        try {
+            JSONObject jsonObject = new JSONObject(jsonPayload);
+            cd4_sample_id = CoreJsonFormUtils.getValue(jsonObject, "cd4_sample_id");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
 
-   @Override
-   public BasePmtctHomeVisitAction.ScheduleStatus getPreProcessedStatus() {
-      return scheduleStatus;
-   }
+    @Override
+    public BasePmtctHomeVisitAction.ScheduleStatus getPreProcessedStatus() {
+        return scheduleStatus;
+    }
 
-   @Override
-   public String getPreProcessedSubTitle() {
-      return subTitle;
-   }
+    @Override
+    public String getPreProcessedSubTitle() {
+        return subTitle;
+    }
 
-   @Override
-   public String postProcess(String s) {
-      return s;
-   }
+    @Override
+    public String postProcess(String s) {
+        return s;
+    }
 
-   @Override
-   public String evaluateSubTitle() {
-      if (StringUtils.isBlank(cd4_sample_id))
-         return null;
+    @Override
+    public String evaluateSubTitle() {
+        if (StringUtils.isBlank(cd4_sample_id))
+            return null;
 
-      StringBuilder stringBuilder = new StringBuilder();
-      stringBuilder.append(context.getString(R.string.cd4_sample_collected));
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(context.getString(R.string.cd4_sample_collected));
 
-      return stringBuilder.toString();
-   }
+        return stringBuilder.toString();
+    }
 
-   @Override
-   public BasePmtctHomeVisitAction.Status evaluateStatusOnPayload() {
-      if (StringUtils.isBlank(cd4_sample_id))
-         return BasePmtctHomeVisitAction.Status.PENDING;
-      else {
-         return BasePmtctHomeVisitAction.Status.COMPLETED;
-      }
-   }
+    @Override
+    public BasePmtctHomeVisitAction.Status evaluateStatusOnPayload() {
+        if (StringUtils.isBlank(cd4_sample_id))
+            return BasePmtctHomeVisitAction.Status.PENDING;
+        else {
+            return BasePmtctHomeVisitAction.Status.COMPLETED;
+        }
+    }
 
-   @Override
-   public void onPayloadReceived(BasePmtctHomeVisitAction basePmtctHomeVisitAction) {
-      Timber.d("onPayloadReceived");
-   }
+    @Override
+    public void onPayloadReceived(BasePmtctHomeVisitAction basePmtctHomeVisitAction) {
+        Timber.d("onPayloadReceived");
+    }
 }

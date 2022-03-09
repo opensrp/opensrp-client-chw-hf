@@ -75,7 +75,7 @@ public class PmtctCounsellingAction implements BasePmtctHomeVisitAction.PmtctHom
     public String evaluateSubTitle() {
         if (StringUtils.isBlank(is_client_counselled))
             return null;
-        
+
         return is_client_counselled.equalsIgnoreCase("yes") ? context.getString(R.string.pmtct_counselling) : context.getString(R.string.pmtct_counselling_not_given);
     }
 

@@ -17,82 +17,82 @@ import java.util.Map;
 import timber.log.Timber;
 
 public class PmtctDiseaseStagingAction implements BasePmtctHomeVisitAction.PmtctHomeVisitActionHelper {
-   protected MemberObject memberObject;
-   private String jsonPayload;
-   private String clinical_staging_disease;
-   private Context context;
-   private String subTitle;
-   private BasePmtctHomeVisitAction.ScheduleStatus scheduleStatus;
+    protected MemberObject memberObject;
+    private String jsonPayload;
+    private String clinical_staging_disease;
+    private Context context;
+    private String subTitle;
+    private BasePmtctHomeVisitAction.ScheduleStatus scheduleStatus;
 
-   public PmtctDiseaseStagingAction(MemberObject memberObject) {
-      this.memberObject = memberObject;
-   }
+    public PmtctDiseaseStagingAction(MemberObject memberObject) {
+        this.memberObject = memberObject;
+    }
 
-   @Override
-   public void onJsonFormLoaded(String jsonPayload, Context context, Map<String, List<VisitDetail>> map) {
-      this.jsonPayload = jsonPayload;
-      this.context = context;
-   }
+    @Override
+    public void onJsonFormLoaded(String jsonPayload, Context context, Map<String, List<VisitDetail>> map) {
+        this.jsonPayload = jsonPayload;
+        this.context = context;
+    }
 
-   @Override
-   public String getPreProcessed() {
-      try {
-         JSONObject jsonObject = new JSONObject(jsonPayload);
-         return jsonObject.toString();
-      } catch (JSONException e) {
-         e.printStackTrace();
-      }
+    @Override
+    public String getPreProcessed() {
+        try {
+            JSONObject jsonObject = new JSONObject(jsonPayload);
+            return jsonObject.toString();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
-      return null;
-   }
+        return null;
+    }
 
-   @Override
-   public void onPayloadReceived(String jsonPayload) {
-      try {
-         JSONObject jsonObject = new JSONObject(jsonPayload);
-         clinical_staging_disease = CoreJsonFormUtils.getValue(jsonObject, "clinical_staging_disease");
-      } catch (JSONException e) {
-         e.printStackTrace();
-      }
-   }
+    @Override
+    public void onPayloadReceived(String jsonPayload) {
+        try {
+            JSONObject jsonObject = new JSONObject(jsonPayload);
+            clinical_staging_disease = CoreJsonFormUtils.getValue(jsonObject, "clinical_staging_disease");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
 
-   @Override
-   public BasePmtctHomeVisitAction.ScheduleStatus getPreProcessedStatus() {
-      return scheduleStatus;
-   }
+    @Override
+    public BasePmtctHomeVisitAction.ScheduleStatus getPreProcessedStatus() {
+        return scheduleStatus;
+    }
 
-   @Override
-   public String getPreProcessedSubTitle() {
-      return subTitle;
-   }
+    @Override
+    public String getPreProcessedSubTitle() {
+        return subTitle;
+    }
 
-   @Override
-   public String postProcess(String s) {
-      return s;
-   }
+    @Override
+    public String postProcess(String s) {
+        return s;
+    }
 
-   @Override
-   public String evaluateSubTitle() {
-      if (StringUtils.isBlank(clinical_staging_disease))
-         return null;
+    @Override
+    public String evaluateSubTitle() {
+        if (StringUtils.isBlank(clinical_staging_disease))
+            return null;
 
-      StringBuilder stringBuilder = new StringBuilder();
-      stringBuilder.append(context.getString(R.string.pmtct_clinical_disease_staging));
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(context.getString(R.string.pmtct_clinical_disease_staging));
 
-      return stringBuilder.toString();
-   }
+        return stringBuilder.toString();
+    }
 
-   @Override
-   public BasePmtctHomeVisitAction.Status evaluateStatusOnPayload() {
-      if (StringUtils.isBlank(clinical_staging_disease))
-         return BasePmtctHomeVisitAction.Status.PENDING;
-      else {
-         return BasePmtctHomeVisitAction.Status.COMPLETED;
-      }
-   }
+    @Override
+    public BasePmtctHomeVisitAction.Status evaluateStatusOnPayload() {
+        if (StringUtils.isBlank(clinical_staging_disease))
+            return BasePmtctHomeVisitAction.Status.PENDING;
+        else {
+            return BasePmtctHomeVisitAction.Status.COMPLETED;
+        }
+    }
 
-   @Override
-   public void onPayloadReceived(BasePmtctHomeVisitAction basePmtctHomeVisitAction) {
-      Timber.d("onPayloadReceived");
-   }
+    @Override
+    public void onPayloadReceived(BasePmtctHomeVisitAction basePmtctHomeVisitAction) {
+        Timber.d("onPayloadReceived");
+    }
 }
