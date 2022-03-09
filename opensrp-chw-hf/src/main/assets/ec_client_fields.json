@@ -145,11 +145,11 @@
           }
         },
         {
-          "column_name": "hvl_pmctc_followup_form_submission_id",
+          "column_name": "hvl_pmtct_followup_form_submission_id",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "hvl_pmctc_followup_form_submission_id"
+            "concept": "hvl_pmtct_followup_form_submission_id"
           }
         },
         {
@@ -188,11 +188,11 @@
           }
         },
         {
-          "column_name": "cd4_pmctc_followup_form_submission_id",
+          "column_name": "cd4_pmtct_followup_form_submission_id",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "cd4_pmctc_followup_form_submission_id"
+            "concept": "cd4_pmtct_followup_form_submission_id"
           }
         },
         {
