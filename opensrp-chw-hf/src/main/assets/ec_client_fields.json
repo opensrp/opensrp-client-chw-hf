@@ -74,7 +74,7 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "hlv_sample_id"
+            "concept": "hvl_sample_id"
           }
         },
         {
