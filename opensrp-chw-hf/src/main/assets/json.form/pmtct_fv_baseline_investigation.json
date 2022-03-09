@@ -1,0 +1,275 @@
+{
+  "count": "1",
+  "encounter_type": "PMTCT baseline investigation",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "step1": {
+    "title": "Baseline Investigation",
+    "fields": [
+      {
+        "key": "cd4_count",
+        "type": "edit_text",
+        "hint": "Fill in the CD4 count",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "cd4_count",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the CD4 count"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the CD4 count"
+        }
+      },
+      {
+        "key": "prompt_to_start_ctx",
+        "type": "toaster_notes",
+        "text": "Advise the client to start CTX",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:cd4_count": {
+            "type": "numeric",
+            "ex": "lessThan(.,\"350\")"
+          }
+        }
+      },
+      {
+        "key": "started_ctx",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "started_ctx",
+        "type": "native_radio",
+        "label": "Has the client started CTX?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an option"
+        },
+        "relevance": {
+          "step1:cd4_count": {
+            "type": "numeric",
+            "ex": "lessThan(.,\"350\")"
+          }
+        }
+      },
+      {
+        "key": "reason_for_not_starting_ctx",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_starting_ctx",
+        "type": "native_radio",
+        "label": "Reason for not starting CTX",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "out_of_medicine",
+            "text": "Stock out of medicine",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "out_of_medicine"
+          },
+          {
+            "key": "client_refused_medication",
+            "text": "The client refused medication",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "client_refused_medication"
+          },
+          {
+            "key": "client_allergic_to_ctx",
+            "text": "Client allergic to CTX",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "client_allergic_to_ctx"
+          },
+          {
+            "key": "drug_interaction",
+            "text": "Drug interaction",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "drug_interaction"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an option"
+        },
+        "relevance": {
+          "step1:has_client_started_ctx": {
+            "type": "string",
+            "ex": "equalTo(., \"no\")"
+          }
+        }
+      },
+      {
+        "key": "liver_function_test_results",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "liver_function_test_results",
+        "type": "native_radio",
+        "label": "Select the Liver function test results",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "elevated_liver_enzymes",
+            "text": "Elevated Liver enzymes",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "elevated_liver_enzymes"
+          },
+          {
+            "key": "normal",
+            "text": "Normal",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "normal"
+          },
+          {
+            "key": "test_not_conducted",
+            "text": "Test not conducted",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "test_not_conducted"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an option"
+        }
+      },
+      {
+        "key": "prompt_for_liver_function_test",
+        "type": "toaster_notes",
+        "text": "Refer to Physician",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:liver_function_test_results": {
+            "type": "string",
+            "ex": "equalTo(., \"elevated_liver_enzymes\")"
+          }
+        }
+      },
+      {
+        "key": "renal_function_test_results",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "renal_function_test_results",
+        "type": "native_radio",
+        "label": "Select the Renal function test results",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "elevated_serum_creatinine",
+            "text": "Elevated Serum Creatinine",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "elevated_serum_creatinine"
+          },
+          {
+            "key": "normal",
+            "text": "Normal",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "normal"
+          },
+          {
+            "key": "test_not_conducted",
+            "text": "Test not conducted",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "test_not_conducted"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an option"
+        }
+      },
+      {
+        "key": "prompt_for_renal_function_test_results",
+        "type": "toaster_notes",
+        "text": "Refer to Physician",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:renal_function_test_results": {
+            "type": "string",
+            "ex": "equalTo(., \"elevated_serum_creatinine\")"
+          }
+        }
+      }
+    ]
+  }
+}
