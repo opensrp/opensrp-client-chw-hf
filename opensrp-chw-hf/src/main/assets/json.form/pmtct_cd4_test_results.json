@@ -160,7 +160,7 @@
           "err": "Please select an option"
         },
         "relevance": {
-          "step1:has_client_started_ctx": {
+          "step1:started_ctx": {
             "type": "string",
             "ex": "equalTo(., \"no\")"
           }

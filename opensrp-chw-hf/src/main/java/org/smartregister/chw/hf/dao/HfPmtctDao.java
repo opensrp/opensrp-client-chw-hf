@@ -129,32 +129,32 @@ public class HfPmtctDao extends CorePmtctDao {
     }
 
     public static boolean isEacFirstDone(String baseEntityID) {
-        String sql = "SELECT count(" +
-                "           CASE WHEN eac_day_1 IS NOT NULL AND eac_day_2 IS NOT NULL AND eac_day_3 IS NOT NULL " +
-                "                  AND eac_day_1 <> 'NULL' AND eac_day_2 <> 'NULL' AND eac_day_3 <> 'NULL' " +
-                "           THEN 0 END)  as count_eac  " +
-                "               FROM ec_pmtct_followup p " +
-                "               WHERE p.base_entity_id = '" + baseEntityID + "'";
+//        String sql = "SELECT count(" +
+//                "           CASE WHEN eac_day_1 IS NOT NULL AND eac_day_2 IS NOT NULL AND eac_day_3 IS NOT NULL " +
+//                "                  AND eac_day_1 <> 'NULL' AND eac_day_2 <> 'NULL' AND eac_day_3 <> 'NULL' " +
+//                "           THEN 0 END)  as count_eac  " +
+//                "               FROM ec_pmtct_followup p " +
+//                "               WHERE p.base_entity_id = '" + baseEntityID + "'";
+//
+//        DataMap<Integer> dataMap = cursor -> getCursorIntValue(cursor, "count_eac");
+//
+//        List<Integer> res = readData(sql, dataMap);
 
-        DataMap<Integer> dataMap = cursor -> getCursorIntValue(cursor, "count_eac");
-
-        List<Integer> res = readData(sql, dataMap);
-
-        return res.get(0) == 1;
+        return false;
     }
 
     public static boolean isSecondEacDone(String baseEntityID) {
-        String sql = "SELECT count(" +
-                "               CASE WHEN eac_month_1 IS NOT NULL AND eac_month_2 IS NOT NULL AND eac_month_3 IS NOT NULL " +
-                "                    AND   eac_month_1 <> 'NULL' AND eac_month_2 <> 'NULL' AND eac_month_3 <> 'NULL' " +
-                "               THEN 0 END)  as count_eac  " +
-                "                   FROM ec_pmtct_followup p " +
-                "                   WHERE p.base_entity_id = '" + baseEntityID + "'";
+//        String sql = "SELECT count(" +
+//                "               CASE WHEN eac_month_1 IS NOT NULL AND eac_month_2 IS NOT NULL AND eac_month_3 IS NOT NULL " +
+//                "                    AND   eac_month_1 <> 'NULL' AND eac_month_2 <> 'NULL' AND eac_month_3 <> 'NULL' " +
+//                "               THEN 0 END)  as count_eac  " +
+//                "                   FROM ec_pmtct_followup p " +
+//                "                   WHERE p.base_entity_id = '" + baseEntityID + "'";
+//
+//        DataMap<Integer> dataMap = cursor -> getCursorIntValue(cursor, "count_eac");
+//
+//        List<Integer> res = readData(sql, dataMap);
 
-        DataMap<Integer> dataMap = cursor -> getCursorIntValue(cursor, "count_eac");
-
-        List<Integer> res = readData(sql, dataMap);
-
-        return res.get(0) == 1;
+        return false;
     }
 }

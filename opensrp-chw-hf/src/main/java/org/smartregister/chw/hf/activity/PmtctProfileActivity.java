@@ -182,6 +182,9 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         }
         view_hvl_results_row.setVisibility(View.VISIBLE);
         rlHvlResults.setVisibility(View.VISIBLE);
+
+        view_baseline_results_row.setVisibility(View.VISIBLE);
+        rlBaselineResults.setVisibility(View.VISIBLE);
         boolean isEligibleForFirst = HfPmtctDao.isEligibleForEac(baseEntityId);
         boolean isEligibleForSecond = HfPmtctDao.isEligibleForSecondEac(baseEntityId);
         if (isEligibleForFirst) {
@@ -372,6 +375,12 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
     public void openHvlResultsHistory() {
         //implement
         Intent intent = new Intent(this, HvlResultsViewActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void openBaselineInvestigationResults() {
+        Intent intent = new Intent(this, Cd4ResultsViewActivity.class);
         startActivity(intent);
     }
 
