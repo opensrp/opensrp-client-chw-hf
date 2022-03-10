@@ -64,7 +64,7 @@ public class HfPmtctDao extends CorePmtctDao {
 
     public static Boolean isEligibleForHlvTestForNewlyRegisteredClientsWithVisitsButNotTestedViralLoad(String baseEntityID) {
         //Checking eligibility for newly registered PMTCT clients with visits but who have not tested Viral Load
-        String sql = "SELECT pmtct_register_date FROM ec_pmtct_registration p WHERE p.base_entity_id = '" + baseEntityID + "' AND known_on_art = 'yes' AND p.base_entity_id NOT IN (SELECT entity_id FROM ec_pmtct_followup WHERE hvl_sample_id IS NOT NULL)";
+        String sql = "SELECT pmtct_register_date FROM ec_pmtct_registration p WHERE p.base_entity_id = '" + baseEntityID + "' AND known_on_art = 'no' AND p.base_entity_id NOT IN (SELECT entity_id FROM ec_pmtct_followup WHERE hvl_sample_id IS NOT NULL)";
 
         DataMap<String> registrationDateMap = cursor -> getCursorValue(cursor, "pmtct_register_date");
         List<String> res = readData(sql, registrationDateMap);
@@ -79,7 +79,7 @@ public class HfPmtctDao extends CorePmtctDao {
         String sql =
                 "SELECT  hvl_collection_date " +
                         "FROM ec_pmtct_followup epf  " +
-                        "WHERE epf.hvl_sample_id IS NOT NULL AND p.base_entity_id = '" + baseEntityID + "' " +
+                        "WHERE epf.hvl_sample_id IS NOT NULL AND epf.entity_id = '" + baseEntityID + "' " +
                         "ORDER BY epf.visit_number DESC " +
                         "LIMIT 1";
 
@@ -126,7 +126,7 @@ public class HfPmtctDao extends CorePmtctDao {
     }
 
     public static boolean isEligibleForBaselineInvestigationOnFollowupVisit(String baseEntityID) {
-        String sql = "SELECT base_entity_id FROM ec_pmtct_registration as p INNER JOIN (SELECT * FROM ec_pmtct_followup ORDER BY visit_number DESC LIMIT 1) as pf on pf.entity_id = p.base_entity_id WHERE (pf.liver_function_test_conducted = 'test_not_conducted' OR pf.receive_liver_function_test_results='no' OR  pf.renal_function_test_conducted = 'test_not_conducted' OR pf.receive_renal_function_test_results='no') AND p.base_entity_id = '" + baseEntityID + "'";
+        String sql = "SELECT p.base_entity_id FROM ec_pmtct_registration as p INNER JOIN (SELECT * FROM ec_pmtct_followup ORDER BY visit_number DESC LIMIT 1) as pf on pf.entity_id = p.base_entity_id WHERE (pf.liver_function_test_conducted = 'test_not_conducted' OR pf.receive_liver_function_test_results='no' OR  pf.renal_function_test_conducted = 'test_not_conducted' OR pf.receive_renal_function_test_results='no') AND p.base_entity_id = '" + baseEntityID + "'";
 
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "base_entity_id");
         List<String> res = readData(sql, dataMap);
@@ -134,19 +134,24 @@ public class HfPmtctDao extends CorePmtctDao {
         return res != null && res.size() > 0 && res.get(0) != null;
     }
 
-    private static int getElapsedTimeInMonths(String startDate) {
+    private static int getElapsedTimeInMonths(String startDateString) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
-        Date hvlCollectionDate = null;
+        Date startDate = null;
         try {
-            hvlCollectionDate = simpleDateFormat.parse(startDate);
+            startDate = simpleDateFormat.parse(startDateString);
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
+        Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(startDate.getTime());
+        cal.set(Calendar.DAY_OF_MONTH, 1);
+        startDate = cal.getTime();
+
         Date now = new Date(System.currentTimeMillis());
 
         Calendar c = Calendar.getInstance();
-        c.setTimeInMillis(now.getTime() - hvlCollectionDate.getTime());
+        c.setTimeInMillis(now.getTime() - startDate.getTime());
         return c.get(Calendar.MONTH);
     }
 
