@@ -51,6 +51,7 @@ public class Cd4ResultsViewProvider extends HvlResultsViewProvider {
             viewHolder.recordHvl.setTag(pc);
             viewHolder.recordHvl.setTag(org.smartregister.pmtct.R.id.VIEW_ID, BaseHvlResultsFragment.CLICK_VIEW_NORMAL);
             viewHolder.recordHvl.setText("Record CD4");
+            viewHolder.resultTitle.setText("CD4 Count");
             viewHolder.recordHvl.setOnClickListener(onClickListener);
 
         } catch (Exception e) {
