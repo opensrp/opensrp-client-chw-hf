@@ -134,6 +134,19 @@ public class HfPmtctDao extends CorePmtctDao {
         return res != null && res.size() > 0 && res.get(0) != null;
     }
 
+    public static int getVisitNumber(String baseEntityID) {
+        String sql = "SELECT base_entity_id FROM ec_pmtct_followup WHERE entity_id = '" + baseEntityID + "'";
+
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "base_entity_id");
+        List<String> res = readData(sql, dataMap);
+
+        if (res != null && res.size() > 0 && res.get(0) != null) {
+            return res.size();
+        }
+
+        return 0;
+    }
+
     private static int getElapsedTimeInMonths(String startDateString) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
         Date startDate = null;
