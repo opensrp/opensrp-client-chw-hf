@@ -101,14 +101,13 @@
       {
         "key": "hvl_result_date",
         "type": "hidden",
-        "hint": "HVL Suppression",
         "openmrs_entity_id": "hvl_result_date",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "calculation": {
           "rules-engine": {
             "ex-rules": {
-              "rules-file": "pmtct_hvl_suppression_calculation.yml"
+              "rules-file": "pmtct_hvl_test_results_calculation.yml"
             }
           }
         }

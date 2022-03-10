@@ -6,6 +6,13 @@ import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
+import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.actionhelper.PmtctArvLineAction;
+import org.smartregister.chw.hf.actionhelper.PmtctBaselineInvestigationAction;
+import org.smartregister.chw.hf.actionhelper.PmtctCd4SampleCollection;
+import org.smartregister.chw.hf.actionhelper.PmtctCounsellingAction;
+import org.smartregister.chw.hf.actionhelper.PmtctDiseaseStagingAction;
+import org.smartregister.chw.hf.actionhelper.PmtctTbScreeningAction;
 import org.smartregister.chw.hf.actionhelper.PmtctVisitAction;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.pmtct.PmtctLibrary;
@@ -16,7 +23,6 @@ import org.smartregister.chw.pmtct.domain.VisitDetail;
 import org.smartregister.chw.pmtct.model.BasePmtctHomeVisitAction;
 import org.smartregister.chw.pmtct.util.VisitUtils;
 
-import java.text.MessageFormat;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,24 +53,73 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
 
 
     private void evaluatePmtctActions(LinkedHashMap<String, BasePmtctHomeVisitAction> actionList, Map<String, List<VisitDetail>> details, MemberObject memberObject, Context context) throws BasePmtctHomeVisitAction.ValidationException {
-        BasePmtctHomeVisitAction ClinicianDetails = new BasePmtctHomeVisitAction.Builder(context, "Clinician Details")
+        BasePmtctHomeVisitAction Counselling = new BasePmtctHomeVisitAction.Builder(context, "Counselling")
                 .withOptional(false)
                 .withDetails(details)
-                .withFormName(Constants.JsonForm.getClinicianDetailsForm())
-                .withHelper(new ClinicianDetailsAction(memberObject))
+                .withFormName(Constants.JsonForm.getPmtctCounselling())
+                .withHelper(new PmtctCounsellingAction(memberObject))
                 .build();
-        actionList.put("Clinician Details", ClinicianDetails);
+        actionList.put("Counselling", Counselling);
+
+        BasePmtctHomeVisitAction BaselineInvestigation = new BasePmtctHomeVisitAction.Builder(context, "Baseline Investigation")
+                .withOptional(true)
+                .withDetails(details)
+                .withFormName(Constants.JsonForm.getPmtctBaselineInvestigation())
+                .withHelper(new PmtctBaselineInvestigationAction(memberObject))
+                .build();
+        actionList.put("Baseline Investigation", BaselineInvestigation);
+
+        BasePmtctHomeVisitAction HvlSampleCollection = new BasePmtctHomeVisitAction.Builder(context, "HVL Sample Collection")
+                .withOptional(true)
+                .withDetails(details)
+                .withFormName(Constants.JsonForm.getHvlClinicianDetailsForm())
+                .withHelper(new HvlSampleCollectionAction(memberObject))
+                .build();
+        actionList.put("HVL Sample Collection", HvlSampleCollection);
+
+        BasePmtctHomeVisitAction Cd4SampleCollection = new BasePmtctHomeVisitAction.Builder(context, "CD4 Sample Collection")
+                .withOptional(true)
+                .withDetails(details)
+                .withFormName(Constants.JsonForm.getPmtctCd4SampleCollection())
+                .withHelper(new PmtctCd4SampleCollection(memberObject))
+                .build();
+        actionList.put("CD4 Sample Collection", Cd4SampleCollection);
+
+        BasePmtctHomeVisitAction ClinicalDiseaseStaging = new BasePmtctHomeVisitAction.Builder(context, "Clinical Staging of HIV")
+                .withOptional(true)
+                .withDetails(details)
+                .withFormName(Constants.JsonForm.getPmtctClinicalStagingOfDisease())
+                .withHelper(new PmtctDiseaseStagingAction(memberObject))
+                .build();
+        actionList.put("Clinical Staging of HIV", ClinicalDiseaseStaging);
+
+        BasePmtctHomeVisitAction TbScreening = new BasePmtctHomeVisitAction.Builder(context, "TB Screening")
+                .withOptional(true)
+                .withDetails(details)
+                .withFormName(Constants.JsonForm.getPmtctTbScreening())
+                .withHelper(new PmtctTbScreeningAction(memberObject))
+                .build();
+        actionList.put("TB Screening", TbScreening);
+
+        BasePmtctHomeVisitAction ArvPrescription = new BasePmtctHomeVisitAction.Builder(context, "ARV Prescription")
+                .withOptional(true)
+                .withDetails(details)
+                .withFormName(Constants.JsonForm.getPmtctArvLine())
+                .withHelper(new PmtctArvLineAction(memberObject))
+                .build();
+        actionList.put("ARV Prescription", ArvPrescription);
     }
 
-    private static class ClinicianDetailsAction extends PmtctVisitAction {
+    private static class HvlSampleCollectionAction extends PmtctVisitAction {
         protected MemberObject memberObject;
         private String jsonPayload;
 
         private String clinician_name;
         private BasePmtctHomeVisitAction.ScheduleStatus scheduleStatus;
         private String subTitle;
+        private Context context;
 
-        public ClinicianDetailsAction(MemberObject memberObject) {
+        public HvlSampleCollectionAction(MemberObject memberObject) {
             super(memberObject);
             this.memberObject = memberObject;
         }
@@ -72,6 +127,7 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
         @Override
         public void onJsonFormLoaded(String jsonPayload, Context context, Map<String, List<VisitDetail>> map) {
             this.jsonPayload = jsonPayload;
+            this.context = context;
         }
 
         @Override
@@ -114,9 +170,11 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
         public String evaluateSubTitle() {
             if (StringUtils.isBlank(clinician_name))
                 return null;
-            if (clinician_name != null)
-                return MessageFormat.format("Attended by: {0}", clinician_name);
-            return null;
+            
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append(context.getString(R.string.hvl_sample_collected));
+
+            return stringBuilder.toString();
         }
 
         @Override

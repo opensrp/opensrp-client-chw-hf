@@ -1,0 +1,7 @@
+---
+name: step1_cd4_result_date
+description: cd4 result date calculation
+priority: 1
+condition: "true"
+actions:
+  - "calculation = helper.getDateToday()"
