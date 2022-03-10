@@ -28,8 +28,6 @@ import java.util.ArrayList;
 
 import timber.log.Timber;
 
-import static org.smartregister.chw.hf.utils.Constants.PartnerRegistrationConstants.PARTNER_BASE_ENTITY_ID;
-
 public class HvlResultsViewActivity extends BaseHvlResultsViewActivity implements View.OnClickListener {
 
     private String baseEntityId;
