@@ -129,8 +129,7 @@ public class HvlResultsViewActivity extends BaseHvlResultsViewActivity implement
                 Timber.e(e);
             }
             //handles going back to activity after save
-            Intent intent = new Intent(this, HvlResultsViewActivity.class);
-            startActivity(intent);
+            finish();
         }
 
     }
