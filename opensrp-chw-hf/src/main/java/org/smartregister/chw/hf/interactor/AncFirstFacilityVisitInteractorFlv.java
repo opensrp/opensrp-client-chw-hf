@@ -31,6 +31,7 @@ import org.smartregister.chw.hf.dao.HfAncDao;
 import org.smartregister.chw.hf.repository.HfLocationRepository;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hf.utils.ContactUtil;
+import org.smartregister.chw.hiv.dao.HivDao;
 import org.smartregister.chw.referral.util.JsonFormConstants;
 import org.smartregister.domain.Location;
 import org.smartregister.domain.LocationTag;
@@ -244,6 +245,20 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
         JSONObject medicalSurgicalHistoryForm = null;
         try {
             medicalSurgicalHistoryForm = firstPregnancyAboveThirtyFive(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncFirstVisit.getMedicalAndSurgicalHistory()), memberObject, context);
+
+            if(HivDao.isRegisteredForHiv(memberObject.getBaseEntityId())){
+                JSONArray fields = medicalSurgicalHistoryForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+
+                JSONObject questionField = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "medical_surgical_history");
+                JSONArray options = org.smartregister.util.JsonFormUtils.getJSONArray(questionField,"options");
+                JSONObject knownOnArtOption = org.smartregister.util.JsonFormUtils.getFieldJSONObject(options,"known_on_art");
+                knownOnArtOption.put(JsonFormUtils.VALUE,true);
+
+                JSONObject ctcNumber = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "ctc_number");
+                ctcNumber.put(JsonFormUtils.VALUE,HivDao.getMember(memberObject.getBaseEntityId()).getCtcNumber());
+                ctcNumber.put("read_only",true);
+            }
+
             if (details != null && !details.isEmpty()) {
                 JsonFormUtils.populateForm(medicalSurgicalHistoryForm, details);
             }

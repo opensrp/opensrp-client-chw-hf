@@ -584,7 +584,11 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
 
     protected void startPmtctRegistration() {
         try {
-            PmtctRegisterActivity.startPmtctRegistrationActivity(this, baseEntityID,ctcNumber,isKnownOnArt||HfAncDao.isClientKnownOnArt(baseEntityID));
+            if(HivDao.isRegisteredForHiv(baseEntityID)){
+                PmtctRegisterActivity.startPmtctRegistrationActivity(this, baseEntityID,HivDao.getMember(baseEntityID).getCtcNumber(),true);
+            }else{
+                PmtctRegisterActivity.startPmtctRegistrationActivity(this, baseEntityID,ctcNumber,isKnownOnArt||HfAncDao.isClientKnownOnArt(baseEntityID));
+            }
         } catch (Exception e) {
             Timber.e(e);
         }

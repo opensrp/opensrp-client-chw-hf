@@ -211,6 +211,42 @@
         }
       },
       {
+        "key": "ctc_number",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "ctc_number",
+        "type": "mask_edit_text",
+        "mask": "##-##-####-######",
+        "mask_hint": "12345678912345",
+        "allowed_chars": "0123456789",
+        "hint": "Namba ya CTC",
+        "edit_type": "number",
+        "v_regex": {
+          "value": "(\\d{2}-\\d{2}-\\d{4}-\\d{6})?",
+          "err": "Namba ya CTC inatakiwa kuwa (XX-XX-XXXX-XXXXXX)"
+        },
+        "v_max_length": {
+          "value": "17",
+          "is_fixed_size": "true",
+          "err":"Tafadhali jaza namba ya CTC ya mtejar"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali jaza namba ya CTC ya mteja"
+        },
+        "relevance": {
+          "step1:medical_surgical_history": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "known_on_art"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
         "key": "parity_value",
         "type": "edit_text",
         "hint": "Idadi ya mimba zilizofikia wiki 24 au zaidi",
@@ -245,6 +281,31 @@
         "openmrs_entity_id": "visit_number",
         "openmrs_entity_parent": "",
         "value": 1
+      },
+      {
+        "key": "known_on_art",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "known_on_art",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "step1:medical_surgical_history": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "known_on_art"
+                ]
+              }
+            ]
+          }
+        },
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_medical_and_surgical_history_calculation.yml"
+            }
+          }
+        }
       }
     ]
   }
