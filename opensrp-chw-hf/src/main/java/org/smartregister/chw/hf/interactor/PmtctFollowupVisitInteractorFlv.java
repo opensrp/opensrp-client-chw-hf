@@ -3,9 +3,11 @@ package org.smartregister.chw.hf.interactor;
 import android.content.Context;
 
 import org.apache.commons.lang3.StringUtils;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
+import org.smartregister.chw.core.utils.FormUtils;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.actionhelper.PmtctArvLineAction;
 import org.smartregister.chw.hf.actionhelper.PmtctBaselineInvestigationAction;
@@ -22,7 +24,9 @@ import org.smartregister.chw.pmtct.domain.MemberObject;
 import org.smartregister.chw.pmtct.domain.Visit;
 import org.smartregister.chw.pmtct.domain.VisitDetail;
 import org.smartregister.chw.pmtct.model.BasePmtctHomeVisitAction;
+import org.smartregister.chw.pmtct.util.JsonFormUtils;
 import org.smartregister.chw.pmtct.util.VisitUtils;
+import org.smartregister.chw.referral.util.JsonFormConstants;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -54,10 +58,28 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
 
 
     private void evaluatePmtctActions(LinkedHashMap<String, BasePmtctHomeVisitAction> actionList, Map<String, List<VisitDetail>> details, MemberObject memberObject, Context context) throws BasePmtctHomeVisitAction.ValidationException {
+        JSONObject counsellingForm = null;
+        try {
+            counsellingForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.getPmtctCounselling());
+
+            JSONArray fields = counsellingForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+            //update visit number
+            JSONObject visitNumber = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "visit_number");
+            visitNumber.put(org.smartregister.chw.pmtct.util.JsonFormUtils.VALUE, HfPmtctDao.getVisitNumber(memberObject.getBaseEntityId()));
+
+            //loads details to the form
+            if (details != null && !details.isEmpty()) {
+                JsonFormUtils.populateForm(counsellingForm, details);
+            }
+        } catch (JSONException e) {
+            Timber.e(e);
+        }
+
         BasePmtctHomeVisitAction Counselling = new BasePmtctHomeVisitAction.Builder(context, "Counselling")
                 .withOptional(false)
                 .withDetails(details)
                 .withFormName(Constants.JsonForm.getPmtctCounselling())
+                .withJsonPayload(counsellingForm.toString())
                 .withHelper(new PmtctCounsellingAction(memberObject))
                 .build();
         actionList.put("Counselling", Counselling);
