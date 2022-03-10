@@ -93,7 +93,7 @@ public class HfPmtctDao extends CorePmtctDao {
     }
 
     public static boolean isEligibleForCD4Retest(String baseEntityID) {
-        String sql = "SELECT cd4_collection_date FROM ec_pmtct_followup WHERE cd4_collection_date IS NOT NULL AND ec_pmtct_followup.base_entity_id = '" + baseEntityID + "'";
+        String sql = "SELECT cd4_collection_date FROM ec_pmtct_followup f INNER JOIN ec_pmtct_cd4_results epc4r on f.base_entity_id = epc4r.cd4_pmtct_followup_form_submission_id WHERE cd4_collection_date IS NOT NULL AND epc4r.cd4_result IS NOT NULL AND epc4r.cd4_result < 350 AND f.entity_id = '" + baseEntityID + "' ORDER BY visit_number DESC LIMIT 1";
 
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "cd4_collection_date");
         List<String> res = readData(sql, dataMap);
