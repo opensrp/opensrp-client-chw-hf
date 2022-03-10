@@ -179,6 +179,29 @@ public class HfPmtctDao extends CorePmtctDao {
         c.setTimeInMillis(now.getTime() - startDate.getTime());
         return c.get(Calendar.MONTH);
     }
+    public static boolean hasHvlResults(String baseEntityId){
+        String sql = "SELECT hvl_sample_id from ec_pmtct_followup\n" +
+                    "       WHERE entity_id = '"+baseEntityId + "'" +
+                    "       AND hvl_sample_id IS NOT NULL";
+
+
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "hvl_sample_id");
+        List<String> res = readData(sql, dataMap);
+
+        return res != null && res.size() > 0;
+    }
+
+    public static boolean hasCd4Results(String baseEntityId){
+        String sql = "SELECT cd4_sample_id from ec_pmtct_followup\n" +
+                "       WHERE entity_id = '"+baseEntityId + "'" +
+                "       AND cd4_sample_id IS NOT NULL";
+
+
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "cd4_sample_id");
+        List<String> res = readData(sql, dataMap);
+
+        return res != null && res.size() > 0;
+    }
 
     public static boolean isEligibleForSecondEac(String baseEntityID) {
 //        String sql = "SELECT hvl_suppression_after_eac_1 FROM ec_pmtct_followup p " +
