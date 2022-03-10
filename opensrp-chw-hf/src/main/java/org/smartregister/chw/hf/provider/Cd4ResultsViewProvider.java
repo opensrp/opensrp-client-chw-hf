@@ -1,11 +1,11 @@
 package org.smartregister.chw.hf.provider;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
 import android.view.View;
 
 import org.apache.commons.lang3.StringUtils;
+import org.smartregister.chw.hf.R;
 import org.smartregister.chw.pmtct.fragment.BaseHvlResultsFragment;
 import org.smartregister.chw.pmtct.util.DBConstants;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
@@ -19,17 +19,19 @@ import timber.log.Timber;
 
 public class Cd4ResultsViewProvider extends HvlResultsViewProvider {
     private Set<org.smartregister.configurableviews.model.View> visibleColumns;
+
     public Cd4ResultsViewProvider(Context context, View.OnClickListener paginationClickListener, View.OnClickListener onClickListener, Set visibleColumns) {
         super(context, paginationClickListener, onClickListener, visibleColumns);
         this.visibleColumns = visibleColumns;
     }
+
     public void getView(Cursor cursor, SmartRegisterClient smartRegisterClient, RegisterViewHolder registerViewHolder) {
         CommonPersonObjectClient pc = (CommonPersonObjectClient) smartRegisterClient;
         if (visibleColumns.isEmpty()) {
             populatePatientColumn(pc, registerViewHolder);
         }
     }
-    @SuppressLint("SetTextI18n")
+
     private void populatePatientColumn(CommonPersonObjectClient pc, final RegisterViewHolder viewHolder) {
         try {
 
@@ -50,8 +52,8 @@ public class Cd4ResultsViewProvider extends HvlResultsViewProvider {
             viewHolder.collectionDate.setText(collectionDate);
             viewHolder.recordHvl.setTag(pc);
             viewHolder.recordHvl.setTag(org.smartregister.pmtct.R.id.VIEW_ID, BaseHvlResultsFragment.CLICK_VIEW_NORMAL);
-            viewHolder.recordHvl.setText("Record CD4");
-            viewHolder.resultTitle.setText("CD4 Count");
+            viewHolder.recordHvl.setText(R.string.record_cd4);
+            viewHolder.resultTitle.setText(R.string.cd4_count);
             viewHolder.recordHvl.setOnClickListener(onClickListener);
 
         } catch (Exception e) {

@@ -5,7 +5,6 @@ import com.vijay.jsonwizard.utils.FormUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.hf.activity.Cd4ResultsViewActivity;
-import org.smartregister.chw.hf.activity.HvlResultsViewActivity;
 import org.smartregister.chw.hf.model.Cd4ResultsFragmentModel;
 import org.smartregister.chw.hf.presenter.Cd4ResultsFragmentPresenter;
 import org.smartregister.chw.hf.provider.Cd4ResultsViewProvider;

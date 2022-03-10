@@ -15,7 +15,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.fragment.Cd4ResultsFragment;
-import org.smartregister.chw.hf.fragment.HvlResultsFragment;
 import org.smartregister.chw.pmtct.activity.BaseHvlResultsViewActivity;
 import org.smartregister.chw.pmtct.fragment.BaseHvlResultsFragment;
 import org.smartregister.chw.pmtct.util.Constants;
@@ -63,7 +62,7 @@ public class Cd4ResultsViewActivity extends BaseHvlResultsViewActivity implement
             backImageView.setOnClickListener(this);
 
             TextView titleView = findViewById(R.id.textview_title);
-            titleView.setText("CD4 Results");
+            titleView.setText(getString(R.string.Cd4_results));
         } else {
             try {
                 JSONObject form = new JSONObject(jsonString);
@@ -88,7 +87,7 @@ public class Cd4ResultsViewActivity extends BaseHvlResultsViewActivity implement
         intent.putExtra(Constants.JSON_FORM_EXTRA.JSON, jsonObject.toString());
 
         Form form = new Form();
-        form.setName("CD4 Results");
+        form.setName(getString(R.string.Cd4_results));
         form.setActionBarBackground(org.smartregister.chw.core.R.color.family_actionbar);
         form.setNavigationBackground(org.smartregister.chw.core.R.color.family_navigation);
         form.setHomeAsUpIndicator(org.smartregister.chw.core.R.mipmap.ic_cross_white);
