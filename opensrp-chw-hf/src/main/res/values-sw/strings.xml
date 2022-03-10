@@ -96,4 +96,5 @@
     <string name="cd4_sample_collected">CD4 Sample Collected</string>
     <string name="pmtct_counselling_not_given">Counselling Not Given</string>
     <string name="pmtct_baseline_investigation_complete">Baseline Investigation Complete</string>
+    <string name="hvl_sample_collected">HVL Sample Collected</string>
 </resources>
