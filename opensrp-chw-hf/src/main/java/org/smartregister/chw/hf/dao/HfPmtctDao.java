@@ -93,7 +93,7 @@ public class HfPmtctDao extends CorePmtctDao {
     }
 
     public static boolean isEligibleForCD4Retest(String baseEntityID) {
-        String sql = "SELECT cd4_collection_date FROM ec_pmtct_followup WHERE cd4_collection_date IS NOT NULL AND p.base_entity_id = '" + baseEntityID + "'";
+        String sql = "SELECT cd4_collection_date FROM ec_pmtct_followup WHERE cd4_collection_date IS NOT NULL AND ec_pmtct_followup.base_entity_id = '" + baseEntityID + "'";
 
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "cd4_collection_date");
         List<String> res = readData(sql, dataMap);
@@ -105,12 +105,15 @@ public class HfPmtctDao extends CorePmtctDao {
     }
 
     public static boolean isEligibleForCD4Test(String baseEntityID) {
-        String sql = "SELECT base_entity_id FROM ec_pmtct_registration WHERE known_on_art = 'no' AND base_entity_id NOT IN (SELECT entity_id FROM ec_pmtct_followup WHERE cd4_sample_id IS NOT NULL) AND ec_pmtct_registration.base_entity_id = '" + baseEntityID + "'";
+        String sql = "SELECT known_on_art FROM ec_pmtct_registration WHERE base_entity_id NOT IN (SELECT entity_id FROM ec_pmtct_followup WHERE cd4_sample_id IS NOT NULL) AND ec_pmtct_registration.base_entity_id = '" + baseEntityID + "'";
 
-        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "base_entity_id");
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "known_on_art");
         List<String> res = readData(sql, dataMap);
 
-        return res == null || res.size() <= 0 || res.get(0) == null;
+        if (res != null && res.size() > 0 && res.get(0) != null) {
+            return !res.get(0).equals("yes");
+        }
+        return false;
     }
 
     public static boolean isEligibleForBaselineInvestigation(String baseEntityID) {
