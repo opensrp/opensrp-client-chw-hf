@@ -251,12 +251,12 @@
         }
       },
       {
-        "key": "reason_for_not_starting_ctx",
+        "key": "reason_for_not_prescribing_arv",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "reason_for_not_starting_ctx",
+        "openmrs_entity_id": "reason_for_not_prescribing_arv",
         "type": "native_radio",
-        "label": "Reason for not starting CTX",
+        "label": "Reason for not prescribing ARVs",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [
@@ -273,6 +273,13 @@
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "client_refused_medication"
+          },
+          {
+            "key": "other",
+            "text": "Other(Specify)",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other"
           }
         ],
         "v_required": {
@@ -283,6 +290,25 @@
           "step1:prescribed_regimes": {
             "type": "string",
             "ex": "equalTo(., \"no\")"
+          }
+        }
+      },
+      {
+        "key": "other_reason_for_not_prescribing_arv",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reason_for_not_prescribing_arv",
+        "type": "edit_text",
+        "hint": "Other reason",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Please specify other reason(s) for not prescribing ARVs"
+        },
+        "relevance": {
+          "step1:reason_for_not_prescribing_arv": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
           }
         }
       }
