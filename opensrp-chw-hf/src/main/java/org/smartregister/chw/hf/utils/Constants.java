@@ -58,16 +58,46 @@ public class Constants extends CoreConstants {
 
     public static final class JsonForm {
         public static final String HIV_REGISTRATION = "hiv_registration";
-        public static final String HVL_SUPPRESSION_FORM = "pmtct_hvl_suppression";
+        public static final String HVL_SUPPRESSION_FORM = "pmtct_hvl_test_results";
         public static final String HVL_SUPPRESSION_FORM_AFTER_EAC_1 = "pmtct_hvl_suppression_after_eac_1";
         public static final String HVL_SUPPRESSION_FORM_AFTER_EAC_2 = "pmtct_hvl_suppression_after_eac_2";
-        public static final String CLINICIAN_DETAILS_FORM = "pmtct_fv_clinician_details";
+        public static final String HVL_CLINICIAN_DETAILS_FORM = "pmtct_hvl_sample_collection";
         private static final String ANC_PREGANCY_CONFIRMATION = "anc_pregnancy_confirmation";
         private static final String PMTCT_REGISTRATION = "pmtct_registration";
         private static final String PMTCT_REGISTRATION_FOR_CLIENTS_KNOWN_ON_ART_FORM = "pmtct_registration_for_clients_known_on_art";
         private static final String COUNSELLING = "anc_counselling";
         private static final String HIV_INDEX_CONTACT_CTC_ENROLLMENT = "hiv_index_contact_ctc_enrollment";
         private static final String PARTNER_REGISTRATION_FORM = "male_partner_registration_form";
+        private static final String PMTCT_COUNSELLING = "pmtct_fv_counselling";
+        private static final String PMTCT_BASELINE_INVESTIGATION = "pmtct_fv_baseline_investigation";
+        private static final String PMTCT_CD4_SAMPLE_COLLECTION = "pmtct_cd4_sample_collection";
+        private static final String PMTCT_CLINICAL_STAGING_OF_DISEASE = "pmtct_clinical_staging_of_disease";
+        private static final String PMTCT_TB_SCREENING = "pmtct_tb_screening";
+        private static final String PMTCT_ARV_LINE = "pmtct_prescription_line_selection";
+
+        public static String getPmtctCounselling() {
+            return PMTCT_COUNSELLING;
+        }
+
+        public static String getPmtctBaselineInvestigation() {
+            return PMTCT_BASELINE_INVESTIGATION;
+        }
+
+        public static String getPmtctCd4SampleCollection() {
+            return PMTCT_CD4_SAMPLE_COLLECTION;
+        }
+
+        public static String getPmtctClinicalStagingOfDisease() {
+            return PMTCT_CLINICAL_STAGING_OF_DISEASE;
+        }
+
+        public static String getPmtctTbScreening() {
+            return PMTCT_TB_SCREENING;
+        }
+
+        public static String getPmtctArvLine() {
+            return PMTCT_ARV_LINE;
+        }
 
         public static String getPartnerRegistrationForm() {
             return Utils.getLocalForm(PARTNER_REGISTRATION_FORM, locale, assetManager);
@@ -114,8 +144,8 @@ public class Constants extends CoreConstants {
             return ANC_PREGANCY_CONFIRMATION;
         }
 
-        public static String getClinicianDetailsForm() {
-            return CLINICIAN_DETAILS_FORM;
+        public static String getHvlClinicianDetailsForm() {
+            return HVL_CLINICIAN_DETAILS_FORM;
         }
 
         public static class EacVisits {

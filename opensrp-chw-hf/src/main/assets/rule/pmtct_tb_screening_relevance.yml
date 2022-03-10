@@ -1,0 +1,7 @@
+---
+name: step1_eligibility_for_tpt
+description: tpt eligibility relevance
+priority: 1
+condition: "(step1_investigate_for_tb.contains('negative') || step1_tb_symptoms_screening.contains('chk_none'))"
+actions:
+  - "isRelevant = true"

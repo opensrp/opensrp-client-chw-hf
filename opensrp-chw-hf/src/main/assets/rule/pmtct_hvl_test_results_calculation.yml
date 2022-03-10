@@ -1,0 +1,7 @@
+---
+name: step1_hvl_result_date
+description: hvl result date calculation
+priority: 1
+condition: "true"
+actions:
+  - "calculation = helper.getDateToday()"
