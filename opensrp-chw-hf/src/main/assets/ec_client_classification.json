@@ -391,8 +391,7 @@
             "field": "eventType",
             "field_value": "PMTCT Registration",
             "creates_case": [
-              "ec_pmtct_registration",
-              "ec_pmtct_followup"
+              "ec_pmtct_registration"
             ]
           },
           {
@@ -407,6 +406,13 @@
             "field_value": "PMTCT HVL Results",
             "creates_case": [
               "ec_pmtct_hvl_results"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "PMTCT CD4 Test Results",
+            "creates_case": [
+              "ec_pmtct_cd4_results"
             ]
           },
           {

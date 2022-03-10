@@ -177,8 +177,7 @@ public class HfPmtctDao extends CorePmtctDao {
 //        DataMap<Integer> dataMap = cursor -> getCursorIntValue(cursor, "count_eac");
 //
 //        List<Integer> res = readData(sql, dataMap);
-//
-//        return res.get(0) == 1;
+
         return false;
     }
 
@@ -193,8 +192,7 @@ public class HfPmtctDao extends CorePmtctDao {
 //        DataMap<Integer> dataMap = cursor -> getCursorIntValue(cursor, "count_eac");
 //
 //        List<Integer> res = readData(sql, dataMap);
-//
-//        return res.get(0) == 1;
+
         return false;
     }
 }
