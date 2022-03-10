@@ -410,6 +410,13 @@
           },
           {
             "field": "eventType",
+            "field_value": "PMTCT CD4 Test Results",
+            "creates_case": [
+              "ec_pmtct_cd4_results"
+            ]
+          },
+          {
+            "field": "eventType",
             "field_value": "PMTCT EAC First Visit",
             "creates_case": [
               "ec_pmtct_followup"

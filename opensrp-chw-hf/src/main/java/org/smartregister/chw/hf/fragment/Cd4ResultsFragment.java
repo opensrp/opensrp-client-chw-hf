@@ -4,6 +4,7 @@ import com.vijay.jsonwizard.utils.FormUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.smartregister.chw.hf.activity.Cd4ResultsViewActivity;
 import org.smartregister.chw.hf.activity.HvlResultsViewActivity;
 import org.smartregister.chw.hf.model.Cd4ResultsFragmentModel;
 import org.smartregister.chw.hf.presenter.Cd4ResultsFragmentPresenter;
@@ -40,10 +41,9 @@ public class Cd4ResultsFragment extends BaseHvlResultsFragment {
         String baseEntityId = Utils.getValue(client.getColumnmaps(), DBConstants.KEY.BASE_ENTITY_ID, false);
         String formSubmissionId = Utils.getValue(client.getColumnmaps(), DBConstants.KEY.ENTITY_ID, false);
         try {
-            //TODO: Load correct form
-            JSONObject jsonObject = (new FormUtils()).getFormJsonFromRepositoryOrAssets(requireContext(), org.smartregister.chw.hf.utils.Constants.JsonForm.getHvlSuppressionForm());
+            JSONObject jsonObject = (new FormUtils()).getFormJsonFromRepositoryOrAssets(requireContext(), org.smartregister.chw.hf.utils.Constants.JsonForm.getCd4TestResultsForm());
             assert jsonObject != null;
-            HvlResultsViewActivity.startResultsForm(getContext(), jsonObject.toString(), baseEntityId, formSubmissionId);
+            Cd4ResultsViewActivity.startResultsForm(getContext(), jsonObject.toString(), baseEntityId, formSubmissionId);
         } catch (JSONException e) {
             e.printStackTrace();
         }

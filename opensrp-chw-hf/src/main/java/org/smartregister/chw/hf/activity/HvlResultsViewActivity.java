@@ -100,8 +100,7 @@ public class HvlResultsViewActivity extends BaseHvlResultsViewActivity implement
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == Constants.REQUEST_CODE_GET_JSON && resultCode == Activity.RESULT_CANCELED) {
             //handle form close
-            Intent intent = new Intent(this, HvlResultsViewActivity.class);
-            startActivity(intent);
+            finish();
         }
 
         if (requestCode == Constants.REQUEST_CODE_GET_JSON && resultCode == Activity.RESULT_OK) {

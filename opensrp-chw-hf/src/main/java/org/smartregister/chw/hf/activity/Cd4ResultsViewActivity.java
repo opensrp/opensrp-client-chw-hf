@@ -88,7 +88,7 @@ public class Cd4ResultsViewActivity extends BaseHvlResultsViewActivity implement
         intent.putExtra(Constants.JSON_FORM_EXTRA.JSON, jsonObject.toString());
 
         Form form = new Form();
-        form.setName(getString(org.smartregister.pmtct.R.string.hvl_results));
+        form.setName("CD4 Results");
         form.setActionBarBackground(org.smartregister.chw.core.R.color.family_actionbar);
         form.setNavigationBackground(org.smartregister.chw.core.R.color.family_navigation);
         form.setHomeAsUpIndicator(org.smartregister.chw.core.R.mipmap.ic_cross_white);
@@ -103,8 +103,7 @@ public class Cd4ResultsViewActivity extends BaseHvlResultsViewActivity implement
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == Constants.REQUEST_CODE_GET_JSON && resultCode == Activity.RESULT_CANCELED) {
             //handle form close
-            Intent intent = new Intent(this, Cd4ResultsViewActivity.class);
-            startActivity(intent);
+            finish();
         }
 
         if (requestCode == Constants.REQUEST_CODE_GET_JSON && resultCode == Activity.RESULT_OK) {
@@ -112,14 +111,14 @@ public class Cd4ResultsViewActivity extends BaseHvlResultsViewActivity implement
             String jsonString = data.getStringExtra(Constants.JSON_FORM_EXTRA.JSON);
             try {
                 AllSharedPreferences allSharedPreferences = org.smartregister.util.Utils.getAllSharedPreferences();
-                Event baseEvent = org.smartregister.chw.pmtct.util.JsonFormUtils.processJsonForm(allSharedPreferences, jsonString, Constants.TABLES.PMTCT_HVL_RESULTS);
+                Event baseEvent = org.smartregister.chw.pmtct.util.JsonFormUtils.processJsonForm(allSharedPreferences, jsonString, Constants.TABLES.PMTCT_CD4_RESULTS);
                 org.smartregister.chw.pmtct.util.JsonFormUtils.tagEvent(allSharedPreferences, baseEvent);
                 baseEvent.setBaseEntityId(baseEntityId);
                 baseEvent.addObs(
                         (new Obs())
-                                .withFormSubmissionField(DBConstants.KEY.HVL_FOLLOWUP_FORM_SUBMISSION_ID)
+                                .withFormSubmissionField(DBConstants.KEY.CD4_FOLLOWUP_FORM_SUBMISSION_ID)
                                 .withValue(parentFormSubmissionId)
-                                .withFieldCode(DBConstants.KEY.HVL_FOLLOWUP_FORM_SUBMISSION_ID)
+                                .withFieldCode(DBConstants.KEY.CD4_FOLLOWUP_FORM_SUBMISSION_ID)
                                 .withFieldType("formsubmissionField")
                                 .withFieldDataType("text")
                                 .withParentCode("")

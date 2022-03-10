@@ -58,7 +58,8 @@ public class Constants extends CoreConstants {
 
     public static final class JsonForm {
         public static final String HIV_REGISTRATION = "hiv_registration";
-        public static final String HVL_SUPPRESSION_FORM = "pmtct_hvl_test_results";
+        public static final String HVL_TEST_RESULTS = "pmtct_hvl_test_results";
+        public static final String CD4_TEST_RESULTS = "pmtct_cd4_test_results";
         public static final String HVL_SUPPRESSION_FORM_AFTER_EAC_1 = "pmtct_hvl_suppression_after_eac_1";
         public static final String HVL_SUPPRESSION_FORM_AFTER_EAC_2 = "pmtct_hvl_suppression_after_eac_2";
         public static final String HVL_CLINICIAN_DETAILS_FORM = "pmtct_hvl_sample_collection";
@@ -116,8 +117,10 @@ public class Constants extends CoreConstants {
             return PMTCT_REGISTRATION_FOR_CLIENTS_KNOWN_ON_ART_FORM;
         }
 
-        public static String getHvlSuppressionForm() {
-            return HVL_SUPPRESSION_FORM;
+         public static String getHvlTestResultsForm() {
+            return HVL_TEST_RESULTS;
+        } public static String getCd4TestResultsForm() {
+            return CD4_TEST_RESULTS;
         }
 
         public static String getHvlSuppressionFormAfterEac1() {
