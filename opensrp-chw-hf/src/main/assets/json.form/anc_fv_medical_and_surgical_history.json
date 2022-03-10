@@ -211,31 +211,6 @@
         }
       },
       {
-        "key": "known_on_art",
-        "type": "hidden",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "known_on_art",
-        "openmrs_entity_parent": "",
-        "relevance": {
-          "step1:medical_surgical_history": {
-            "ex-checkbox": [
-              {
-                "or": [
-                  "known_on_art"
-                ]
-              }
-            ]
-          }
-        },
-        "calculation": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "anc_fv_medical_and_surgical_history_calculation.yml"
-            }
-          }
-        }
-      },
-      {
         "key": "ctc_number",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -244,7 +219,7 @@
         "mask": "##-##-####-######",
         "mask_hint": "12345678912345",
         "allowed_chars": "0123456789",
-        "hint": "CTC Number e.g 12-34-5678-912345",
+        "hint": "CTC Number",
         "edit_type": "number",
         "v_regex": {
           "value": "(\\d{2}-\\d{2}-\\d{4}-\\d{6})?",
@@ -296,6 +271,31 @@
                 ]
               }
             ]
+          }
+        }
+      },
+      {
+        "key": "known_on_art",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "known_on_art",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "step1:medical_surgical_history": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "known_on_art"
+                ]
+              }
+            ]
+          }
+        },
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_medical_and_surgical_history_calculation.yml"
+            }
           }
         }
       },
