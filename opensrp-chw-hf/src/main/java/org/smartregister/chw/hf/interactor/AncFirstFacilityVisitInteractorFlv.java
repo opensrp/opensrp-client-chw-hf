@@ -368,8 +368,8 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
         @Override
         public String postProcess(String s) {
             if (!StringUtils.isBlank(medical_and_surgical_history_present)) {
-                List<String> medicalHistory = Arrays.asList(medical_and_surgical_history_present.split(","));
-                if (medicalHistory.contains("Known On ART")) {
+                //TODO: implement this in swahili as well
+                if (medical_and_surgical_history_present.contains("Known On ART")) {
                     JSONObject baselineInvestigationFormForKnownPositive = null;
                     try {
                         baselineInvestigationFormForKnownPositive = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncFirstVisit.getBaselineInvestigation());

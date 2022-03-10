@@ -88,4 +88,13 @@
     <string name="visit_in_progress">Hudhurio la %s linaendelea</string>
     <string name="second_hiv_test_results_woman">Matokeo ya Kipimo ya Pili cha VVU</string>
     <string name="second_hiv_test_results_partner">Matokeo ya Kipimo ya Pili cha VVU</string>
+    <string name="pmtct_counselling">Ameshauriwa</string>
+    <string name="pmtct_tb_screening">TB Screening Complete</string>
+    <string name="pmtct_clinical_disease_staging">Clinical Staging of Disease Complete</string>
+    <string name="given_arv_prescription">ARV Prescription Given</string>
+    <string name="not_given_arv_prescription">ARV Prescription Not Given</string>
+    <string name="cd4_sample_collected">CD4 Sample Collected</string>
+    <string name="pmtct_counselling_not_given">Counselling Not Given</string>
+    <string name="pmtct_baseline_investigation_complete">Baseline Investigation Complete</string>
+    <string name="hvl_sample_collected">HVL Sample Collected</string>
 </resources>

@@ -51,21 +51,6 @@
     "title": "Clinician Details",
     "fields": [
       {
-        "key": "followup_visit_date",
-        "type": "edit_text",
-        "hidden": "true",
-        "openmrs_entity_id": "followup_visit_date",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "calculation": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "pmtct_followup_calculation.yml"
-            }
-          }
-        }
-      },
-      {
         "key": "clinician_name",
         "type": "edit_text",
         "hint": "Clinician Name",
@@ -133,10 +118,10 @@
         }
       },
       {
-        "key": "collection_date",
+        "key": "hvl_collection_date",
         "type": "date_picker",
-        "hint": "Sample Collection Date",
-        "openmrs_entity_id": "collection_date",
+        "hint": "HVL Sample Collection Date",
+        "openmrs_entity_id": "hvl_collection_date",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "min_date": "today-5y",
@@ -147,10 +132,10 @@
         }
       },
       {
-        "key": "collection_time",
+        "key": "hvl_collection_time",
         "type": "time_picker",
-        "hint": "Sample Collection Time",
-        "openmrs_entity_id": "collection_time",
+        "hint": "HVL Sample Collection Time",
+        "openmrs_entity_id": "hvl_collection_time",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "v_required": {
@@ -159,11 +144,11 @@
         }
       },
       {
-        "key": "sample_id",
+        "key": "hvl_sample_id",
         "type": "edit_text",
-        "hint": "Sample ID",
+        "hint": "HVL Sample ID",
         "edit_type": "number",
-        "openmrs_entity_id": "sample_id",
+        "openmrs_entity_id": "hvl_sample_id",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "v_required": {

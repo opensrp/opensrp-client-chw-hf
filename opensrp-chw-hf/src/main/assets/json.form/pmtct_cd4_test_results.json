@@ -1,0 +1,185 @@
+{
+  "count": "1",
+  "encounter_type": "PMTCT CD4 Test Results",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "step1": {
+    "title": "CD4 Test Results",
+    "fields": [
+      {
+        "key": "cd4_result",
+        "type": "edit_text",
+        "hint": "Fill in the CD4 count",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "cd4_result",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the CD4 count"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the CD4 count"
+        }
+      },
+      {
+        "key": "prompt_to_start_ctx",
+        "type": "toaster_notes",
+        "text": "Advise the client to start CTX",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:cd4_result": {
+            "type": "numeric",
+            "ex": "lessThan(.,\"350\")"
+          }
+        }
+      },
+      {
+        "key": "started_ctx",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "started_ctx",
+        "type": "native_radio",
+        "label": "Has the client started CTX?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an option"
+        },
+        "relevance": {
+          "step1:cd4_result": {
+            "type": "numeric",
+            "ex": "lessThan(.,\"350\")"
+          }
+        }
+      },
+      {
+        "key": "reason_for_not_starting_ctx",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_starting_ctx",
+        "type": "native_radio",
+        "label": "Reason for not starting CTX",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "out_of_medicine",
+            "text": "Stock out of medicine",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "out_of_medicine"
+          },
+          {
+            "key": "client_refused_medication",
+            "text": "The client refused medication",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "client_refused_medication"
+          },
+          {
+            "key": "client_allergic_to_ctx",
+            "text": "Client allergic to CTX",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "client_allergic_to_ctx"
+          },
+          {
+            "key": "drug_interaction",
+            "text": "Drug interaction",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "drug_interaction"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an option"
+        },
+        "relevance": {
+          "step1:has_client_started_ctx": {
+            "type": "string",
+            "ex": "equalTo(., \"no\")"
+          }
+        }
+      },
+      {
+        "key": "cd4_result_date",
+        "type": "hidden",
+        "openmrs_entity_id": "cd4_result_date",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_cd4_test_results_calculation.yml"
+            }
+          }
+        }
+      }
+    ]
+  }
+}
