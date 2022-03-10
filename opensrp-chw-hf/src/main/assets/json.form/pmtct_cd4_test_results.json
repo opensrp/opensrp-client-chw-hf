@@ -50,11 +50,11 @@
     "title": "CD4 Test Results",
     "fields": [
       {
-        "key": "cd4_count",
+        "key": "cd4_result",
         "type": "edit_text",
         "hint": "Fill in the CD4 count",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "cd4_count",
+        "openmrs_entity_id": "cd4_result",
         "openmrs_entity_parent": "",
         "v_numeric": {
           "value": "true",
@@ -74,7 +74,7 @@
         "openmrs_entity_parent": "",
         "toaster_type": "problem",
         "relevance": {
-          "step1:cd4_count": {
+          "step1:cd4_result": {
             "type": "numeric",
             "ex": "lessThan(.,\"350\")"
           }
@@ -110,7 +110,7 @@
           "err": "Please select an option"
         },
         "relevance": {
-          "step1:cd4_count": {
+          "step1:cd4_result": {
             "type": "numeric",
             "ex": "lessThan(.,\"350\")"
           }
@@ -163,6 +163,20 @@
           "step1:has_client_started_ctx": {
             "type": "string",
             "ex": "equalTo(., \"no\")"
+          }
+        }
+      },
+      {
+        "key": "cd4_result_date",
+        "type": "hidden",
+        "openmrs_entity_id": "cd4_result_date",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_cd4_test_results_calculation.yml"
+            }
           }
         }
       }
