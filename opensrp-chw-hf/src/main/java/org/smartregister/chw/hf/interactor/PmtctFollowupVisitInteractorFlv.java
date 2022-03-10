@@ -65,7 +65,7 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
             JSONArray fields = counsellingForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
             //update visit number
             JSONObject visitNumber = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "visit_number");
-            visitNumber.put(org.smartregister.chw.pmtct.util.JsonFormUtils.VALUE, HfPmtctDao.getVisitNumber(memberObject.getBaseEntityId()));
+            visitNumber.put(JsonFormUtils.VALUE, HfPmtctDao.getVisitNumber(memberObject.getBaseEntityId()));
 
             //loads details to the form
             if (details != null && !details.isEmpty()) {
