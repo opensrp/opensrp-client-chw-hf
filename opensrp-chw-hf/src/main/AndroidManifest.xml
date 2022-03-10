@@ -241,6 +241,8 @@
             android:theme="@style/HFTheme.NoActionBar" />
         <activity android:name=".activity.HvlResultsViewActivity"
             android:theme="@style/HFTheme.NoActionBar"/>
+        <activity android:name=".activity.Cd4ResultsViewActivity"
+            android:theme="@style/HFTheme.NoActionBar"/>
         <activity
             android:name=".activity.PartnerRegistrationActivity"
             android:theme="@style/HFTheme.NoActionBar" />
