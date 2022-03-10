@@ -14,6 +14,7 @@ import org.smartregister.chw.hf.actionhelper.PmtctCounsellingAction;
 import org.smartregister.chw.hf.actionhelper.PmtctDiseaseStagingAction;
 import org.smartregister.chw.hf.actionhelper.PmtctTbScreeningAction;
 import org.smartregister.chw.hf.actionhelper.PmtctVisitAction;
+import org.smartregister.chw.hf.dao.HfPmtctDao;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.pmtct.PmtctLibrary;
 import org.smartregister.chw.pmtct.contract.BasePmtctHomeVisitContract;
@@ -67,7 +68,9 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
                 .withFormName(Constants.JsonForm.getPmtctBaselineInvestigation())
                 .withHelper(new PmtctBaselineInvestigationAction(memberObject))
                 .build();
-        actionList.put("Baseline Investigation", BaselineInvestigation);
+
+        if (HfPmtctDao.isEligibleForBaselineInvestigation(memberObject.getBaseEntityId()) || HfPmtctDao.isEligibleForBaselineInvestigationOnFollowupVisit(memberObject.getBaseEntityId()))
+            actionList.put("Baseline Investigation", BaselineInvestigation);
 
         BasePmtctHomeVisitAction HvlSampleCollection = new BasePmtctHomeVisitAction.Builder(context, "HVL Sample Collection")
                 .withOptional(true)
@@ -75,7 +78,9 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
                 .withFormName(Constants.JsonForm.getHvlClinicianDetailsForm())
                 .withHelper(new HvlSampleCollectionAction(memberObject))
                 .build();
-        actionList.put("HVL Sample Collection", HvlSampleCollection);
+
+        if (HfPmtctDao.isEligibleForHlvTest(memberObject.getBaseEntityId()))
+            actionList.put("HVL Sample Collection", HvlSampleCollection);
 
         BasePmtctHomeVisitAction Cd4SampleCollection = new BasePmtctHomeVisitAction.Builder(context, "CD4 Sample Collection")
                 .withOptional(true)
@@ -83,7 +88,9 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
                 .withFormName(Constants.JsonForm.getPmtctCd4SampleCollection())
                 .withHelper(new PmtctCd4SampleCollection(memberObject))
                 .build();
-        actionList.put("CD4 Sample Collection", Cd4SampleCollection);
+
+        if (HfPmtctDao.isEligibleForCD4Retest(memberObject.getBaseEntityId()) || HfPmtctDao.isEligibleForCD4Test(memberObject.getBaseEntityId()))
+            actionList.put("CD4 Sample Collection", Cd4SampleCollection);
 
         BasePmtctHomeVisitAction ClinicalDiseaseStaging = new BasePmtctHomeVisitAction.Builder(context, "Clinical Staging of HIV")
                 .withOptional(true)
@@ -170,7 +177,7 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
         public String evaluateSubTitle() {
             if (StringUtils.isBlank(clinician_name))
                 return null;
-            
+
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append(context.getString(R.string.hvl_sample_collected));
 

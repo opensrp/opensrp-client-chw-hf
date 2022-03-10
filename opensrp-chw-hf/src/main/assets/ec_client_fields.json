@@ -69,6 +69,40 @@
             "concept": "followup_visit_date"
           }
         },
+
+        {
+          "column_name": "liver_function_test_conducted",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "liver_function_test_conducted"
+          }
+        },
+        {
+          "column_name": "receive_liver_function_test_results",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "receive_liver_function_test_results"
+          }
+        },
+        {
+          "column_name": "renal_function_test_conducted",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "renal_function_test_conducted"
+          }
+        },
+        {
+          "column_name": "receive_renal_function_test_results",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "receive_renal_function_test_results"
+          }
+        },
+
         {
           "column_name": "hvl_sample_id",
           "type": "Event",
