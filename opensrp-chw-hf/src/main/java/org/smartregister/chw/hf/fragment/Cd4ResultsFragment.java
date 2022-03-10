@@ -6,15 +6,26 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.hf.activity.HvlResultsViewActivity;
 import org.smartregister.chw.hf.model.Cd4ResultsFragmentModel;
-import org.smartregister.chw.hf.model.HvlResultsFragmentModel;
 import org.smartregister.chw.hf.presenter.Cd4ResultsFragmentPresenter;
+import org.smartregister.chw.hf.provider.Cd4ResultsViewProvider;
 import org.smartregister.chw.pmtct.fragment.BaseHvlResultsFragment;
-import org.smartregister.chw.pmtct.presenter.BaseHvlResultsFragmentPresenter;
 import org.smartregister.chw.pmtct.util.DBConstants;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
+import org.smartregister.configurableviews.model.View;
+import org.smartregister.cursoradapter.RecyclerViewPaginatedAdapter;
 import org.smartregister.util.Utils;
 
+import java.util.Set;
+
 public class Cd4ResultsFragment extends BaseHvlResultsFragment {
+
+    @Override
+    public void initializeAdapter(Set<View> visibleColumns) {
+        Cd4ResultsViewProvider resultsViewProvider = new Cd4ResultsViewProvider(getActivity(), paginationViewHandler, registerActionHandler, visibleColumns);
+        clientAdapter = new RecyclerViewPaginatedAdapter(null, resultsViewProvider, context().commonrepository(this.tablename));
+        clientAdapter.setCurrentlimit(20);
+        clientsView.setAdapter(clientAdapter);
+    }
 
     @Override
     protected void initializePresenter() {
