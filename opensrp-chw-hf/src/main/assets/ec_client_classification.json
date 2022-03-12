@@ -463,6 +463,13 @@
             "creates_case": [
               "ec_pmtct_community_feedback"
             ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "HEI Registration",
+            "creates_case": [
+              "ec_hei"
+            ]
           }
         ]
       }

@@ -1,6 +1,7 @@
 package org.smartregister.chw.hf.interactor;
 
 import static org.smartregister.chw.anc.util.Constants.TABLES.EC_CHILD;
+import static org.smartregister.chw.hf.utils.Constants.Events.HEI_REGISTRATION;
 import static org.smartregister.chw.hf.utils.Constants.HIV_STATUS.POSITIVE;
 import static org.smartregister.chw.hf.utils.Constants.TableName.HEI;
 
@@ -59,8 +60,12 @@ public class AncRegisterInteractor extends BaseAncRegisterInteractor {
                     saveRegistration(form.toString(), table);
 
                     String motherBaseId = form.optString(Constants.JSON_FORM_EXTRA.ENTITY_TYPE);
-                    String riskCategory = form.optString(org.smartregister.chw.hf.utils.Constants.JSON_FORM_EXTRA.RISK_CATEGORY);
-                    String hivStatus = form.optString(org.smartregister.chw.hf.utils.Constants.JSON_FORM_EXTRA.HIV_STATUS);
+
+                    //TODO uncomment this
+//                    String riskCategory = form.optString(org.smartregister.chw.hf.utils.Constants.JSON_FORM_EXTRA.RISK_CATEGORY);
+//                    String hivStatus = form.optString(org.smartregister.chw.hf.utils.Constants.JSON_FORM_EXTRA.HIV_STATUS);
+                    String riskCategory = "high";
+                    String hivStatus = "positive";
                     JSONArray fields = org.smartregister.util.JsonFormUtils.fields(form);
                     JSONObject deliveryDate = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, DBConstants.KEY.DELIVERY_DATE);
                     JSONObject famNameObject = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, DBConstants.KEY.FAM_NAME);
@@ -201,7 +206,7 @@ public class AncRegisterInteractor extends BaseAncRegisterInteractor {
                 }
                 if (motherHivStatus.equals(POSITIVE) && pncForm != null) {
                     pncForm.put("risk_category", childRiskCategory);
-                    pncForm.put("encounter_type", org.smartregister.chw.hf.utils.Constants.JsonForm.getHeiRegistration());
+                    pncForm.put("encounter_type", HEI_REGISTRATION);
                     saveRegistration(pncForm.toString(), HEI);
                 }
 

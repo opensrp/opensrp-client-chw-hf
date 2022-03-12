@@ -38,6 +38,7 @@ public class Constants extends CoreConstants {
         public static final String UPDATE_HIV_INDEX_TESTING_FOLLOWUP = "Update HIV Index Contact Testing Followup";
         public static final String PARTNER_REGISTRATION_EVENT = "Partner Registration";
         public static final String ANC_PARTNER_TESTING ="Partner Testing" ;
+        public static final String HEI_REGISTRATION = "HEI Registration";
     }
 
     public static final class TableName {
@@ -79,7 +80,6 @@ public class Constants extends CoreConstants {
         private static final String PMTCT_CLINICAL_STAGING_OF_DISEASE = "pmtct_clinical_staging_of_disease";
         private static final String PMTCT_TB_SCREENING = "pmtct_tb_screening";
         private static final String PMTCT_ARV_LINE = "pmtct_prescription_line_selection";
-        private static final String HEI_REGISTRATION = "hei_registration";
 
         public static String getPmtctCounselling() {
             return PMTCT_COUNSELLING;
@@ -232,9 +232,6 @@ public class Constants extends CoreConstants {
             }
         }
 
-        public static String getHeiRegistration() {
-            return HEI_REGISTRATION;
-        }
     }
 
     public static final class JsonFormConstants {
