@@ -62,6 +62,13 @@
         "type": "hidden"
       },
       {
+        "key": "risk_category",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "risk_category",
+        "type": "hidden"
+      },
+      {
         "key": "entry_point",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",

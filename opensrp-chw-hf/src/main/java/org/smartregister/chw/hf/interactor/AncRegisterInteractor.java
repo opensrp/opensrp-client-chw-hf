@@ -1,9 +1,20 @@
 package org.smartregister.chw.hf.interactor;
 
 import static org.smartregister.chw.anc.util.Constants.TABLES.EC_CHILD;
+import static org.smartregister.chw.anc.util.DBConstants.KEY.DOB;
+import static org.smartregister.chw.anc.util.DBConstants.KEY.LAST_NAME;
+import static org.smartregister.chw.anc.util.DBConstants.KEY.MOTHER_ENTITY_ID;
+import static org.smartregister.chw.anc.util.DBConstants.KEY.RELATIONAL_ID;
+import static org.smartregister.chw.anc.util.DBConstants.KEY.UNIQUE_ID;
+import static org.smartregister.chw.anc.util.JsonFormUtils.updateFormField;
 import static org.smartregister.chw.hf.utils.Constants.Events.HEI_REGISTRATION;
 import static org.smartregister.chw.hf.utils.Constants.HIV_STATUS.POSITIVE;
+import static org.smartregister.chw.hf.utils.Constants.JSON_FORM_EXTRA.RISK_CATEGORY;
 import static org.smartregister.chw.hf.utils.Constants.TableName.HEI;
+import static org.smartregister.chw.hf.utils.JsonFormUtils.ENCOUNTER_TYPE;
+import static org.smartregister.util.JsonFormUtils.getFieldJSONObject;
+
+import com.vijay.jsonwizard.constants.JsonFormConstants;
 
 import org.apache.commons.lang3.StringUtils;
 import org.joda.time.LocalDate;
@@ -67,14 +78,14 @@ public class AncRegisterInteractor extends BaseAncRegisterInteractor {
                     String riskCategory = "high";
                     String hivStatus = "positive";
                     JSONArray fields = org.smartregister.util.JsonFormUtils.fields(form);
-                    JSONObject deliveryDate = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, DBConstants.KEY.DELIVERY_DATE);
-                    JSONObject famNameObject = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, DBConstants.KEY.FAM_NAME);
+                    JSONObject deliveryDate = getFieldJSONObject(fields, DBConstants.KEY.DELIVERY_DATE);
+                    JSONObject famNameObject = getFieldJSONObject(fields, DBConstants.KEY.FAM_NAME);
 
                     String familyName = famNameObject != null ? famNameObject.optString(JsonFormUtils.VALUE) : "";
                     String dob = deliveryDate.optString(JsonFormUtils.VALUE);
                     hasChildren = StringUtils.isNotBlank(deliveryDate.optString(JsonFormUtils.VALUE));
 
-                    JSONObject familyIdObject = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, DBConstants.KEY.RELATIONAL_ID);
+                    JSONObject familyIdObject = getFieldJSONObject(fields, DBConstants.KEY.RELATIONAL_ID);
                     String familyBaseEntityId = familyIdObject.getString(JsonFormUtils.VALUE);
 
                     Map<String, List<JSONObject>> jsonObjectMap = getChildFieldMaps(fields);
@@ -84,11 +95,11 @@ public class AncRegisterInteractor extends BaseAncRegisterInteractor {
                 } else if (encounterType.equalsIgnoreCase(Constants.EVENT_TYPE.ANC_REGISTRATION)) {
 
                     JSONArray fields = org.smartregister.util.JsonFormUtils.fields(form);
-                    JSONObject lmp = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, DBConstants.KEY.LAST_MENSTRUAL_PERIOD);
+                    JSONObject lmp = getFieldJSONObject(fields, DBConstants.KEY.LAST_MENSTRUAL_PERIOD);
                     boolean hasLmp = StringUtils.isNotBlank(lmp.optString(JsonFormUtils.VALUE));
 
                     if (!hasLmp) {
-                        JSONObject eddJson = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, DBConstants.KEY.EDD);
+                        JSONObject eddJson = getFieldJSONObject(fields, DBConstants.KEY.EDD);
                         DateTimeFormatter dateTimeFormat = DateTimeFormat.forPattern("dd-MM-yyyy");
 
                         LocalDate lmpDate = dateTimeFormat.parseLocalDate(eddJson.optString(JsonFormUtils.VALUE)).plusDays(-280);
@@ -188,7 +199,7 @@ public class AncRegisterInteractor extends BaseAncRegisterInteractor {
             String childBaseEntityId = JsonFormUtils.generateRandomUUIDString();
             try {
 
-                JSONObject surNameObject = org.smartregister.util.JsonFormUtils.getFieldJSONObject(childFields, DBConstants.KEY.SUR_NAME);
+                JSONObject surNameObject = getFieldJSONObject(childFields, DBConstants.KEY.SUR_NAME);
                 String surName = surNameObject != null ? surNameObject.optString(JsonFormUtils.VALUE) : null;
 
                 String lastName = sameASFamilyNameCheck(childFields) ? familyName : surName;
@@ -198,15 +209,14 @@ public class AncRegisterInteractor extends BaseAncRegisterInteractor {
                         childBaseEntityId,
                         getLocationID()
                 );
-                pncForm = JsonFormUtils.populatePNCForm(pncForm, childFields, familyBaseEntityId, motherBaseId, uniqueChildID, dob, lastName);
+                pncForm = populatePNCForm(pncForm, childFields, familyBaseEntityId, motherBaseId, childRiskCategory, uniqueChildID, dob, lastName);
                 processPncChild(childFields, allSharedPreferences, childBaseEntityId, familyBaseEntityId, motherBaseId, uniqueChildID, lastName, dob);
                 if (pncForm != null) {
                     saveRegistration(pncForm.toString(), EC_CHILD);
                     saveVaccineEvents(childFields, childBaseEntityId, dob);
                 }
                 if (motherHivStatus.equals(POSITIVE) && pncForm != null) {
-                    pncForm.put("risk_category", childRiskCategory);
-                    pncForm.put("encounter_type", HEI_REGISTRATION);
+                    pncForm.put(ENCOUNTER_TYPE, HEI_REGISTRATION);
                     saveRegistration(pncForm.toString(), HEI);
                 }
 
@@ -216,10 +226,49 @@ public class AncRegisterInteractor extends BaseAncRegisterInteractor {
         }
     }
 
+    public static JSONObject populatePNCForm(JSONObject form, JSONArray fields, String familyBaseEntityId, String motherBaseId, String childRiskCategory, String uniqueChildID, String dob, String lastName) {
+        try {
+            if (form != null) {
+                form.put(RELATIONAL_ID, familyBaseEntityId);
+                form.put(MOTHER_ENTITY_ID, motherBaseId);
+                JSONObject stepOne = form.getJSONObject(JsonFormUtils.STEP1);
+                JSONArray jsonArray = stepOne.getJSONArray(JsonFormUtils.FIELDS);
+
+
+                JSONObject preLoadObject;
+                JSONObject jsonObject;
+                updateFormField(jsonArray, MOTHER_ENTITY_ID, motherBaseId);
+                updateFormField(jsonArray, RISK_CATEGORY, childRiskCategory);
+                updateFormField(jsonArray, UNIQUE_ID, uniqueChildID);
+                updateFormField(jsonArray, DOB, dob);
+                updateFormField(jsonArray, LAST_NAME, lastName);
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    jsonObject = jsonArray.getJSONObject(i);
+                    preLoadObject = getFieldJSONObject(fields, jsonObject.optString(JsonFormUtils.KEY));
+                    if (preLoadObject != null) {
+                        jsonObject.put(JsonFormUtils.VALUE, preLoadObject.opt(JsonFormUtils.VALUE));
+
+                        String type = preLoadObject.getString(JsonFormConstants.TYPE);
+                        if (type.equals(JsonFormConstants.CHECK_BOX)) {
+                            // replace the options
+                            jsonObject.put(JsonFormConstants.OPTIONS_FIELD_NAME, preLoadObject.opt(JsonFormConstants.OPTIONS_FIELD_NAME));
+                        }
+                    }
+                }
+
+                return form;
+            }
+        } catch (Exception e) {
+            Timber.e(e);
+        }
+
+        return null;
+    }
+
     private boolean sameASFamilyNameCheck(JSONArray childFields) {
         if (childFields.length() > 0) {
-            JSONObject sameAsFamNameCheck = org.smartregister.util.JsonFormUtils.getFieldJSONObject(childFields, DBConstants.KEY.SAME_AS_FAM_NAME_CHK);
-            sameAsFamNameCheck = sameAsFamNameCheck != null ? sameAsFamNameCheck : org.smartregister.util.JsonFormUtils.getFieldJSONObject(childFields, DBConstants.KEY.SAME_AS_FAM_NAME);
+            JSONObject sameAsFamNameCheck = getFieldJSONObject(childFields, DBConstants.KEY.SAME_AS_FAM_NAME_CHK);
+            sameAsFamNameCheck = sameAsFamNameCheck != null ? sameAsFamNameCheck : getFieldJSONObject(childFields, DBConstants.KEY.SAME_AS_FAM_NAME);
             JSONObject sameAsFamNameObject = sameAsFamNameCheck.optJSONArray(DBConstants.KEY.OPTIONS).optJSONObject(0);
             if (sameAsFamNameCheck != null) {
                 return sameAsFamNameObject.optBoolean(JsonFormUtils.VALUE);
