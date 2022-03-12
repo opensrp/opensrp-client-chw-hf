@@ -1,5 +1,10 @@
 package org.smartregister.chw.hf.interactor;
 
+import static org.smartregister.chw.anc.util.Constants.TABLES.EC_CHILD;
+import static org.smartregister.chw.hf.utils.Constants.Events.HEI_REGISTRATION;
+import static org.smartregister.chw.hf.utils.Constants.HIV_STATUS.POSITIVE;
+import static org.smartregister.chw.hf.utils.Constants.TableName.HEI;
+
 import org.apache.commons.lang3.StringUtils;
 import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
@@ -25,8 +30,6 @@ import java.util.List;
 import java.util.Map;
 
 import timber.log.Timber;
-
-import static org.smartregister.chw.anc.util.Constants.TABLES.EC_CHILD;
 
 public class AncRegisterInteractor extends BaseAncRegisterInteractor {
     private String locationID;
@@ -57,6 +60,12 @@ public class AncRegisterInteractor extends BaseAncRegisterInteractor {
                     saveRegistration(form.toString(), table);
 
                     String motherBaseId = form.optString(Constants.JSON_FORM_EXTRA.ENTITY_TYPE);
+
+                    //TODO uncomment this
+//                    String riskCategory = form.optString(org.smartregister.chw.hf.utils.Constants.JSON_FORM_EXTRA.RISK_CATEGORY);
+//                    String hivStatus = form.optString(org.smartregister.chw.hf.utils.Constants.JSON_FORM_EXTRA.HIV_STATUS);
+                    String riskCategory = "high";
+                    String hivStatus = "positive";
                     JSONArray fields = org.smartregister.util.JsonFormUtils.fields(form);
                     JSONObject deliveryDate = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, DBConstants.KEY.DELIVERY_DATE);
                     JSONObject famNameObject = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, DBConstants.KEY.FAM_NAME);
@@ -70,7 +79,7 @@ public class AncRegisterInteractor extends BaseAncRegisterInteractor {
 
                     Map<String, List<JSONObject>> jsonObjectMap = getChildFieldMaps(fields);
 
-                    generateAndSaveFormsForEachChild(jsonObjectMap, motherBaseId, familyBaseEntityId, dob, familyName);
+                    generateAndSaveFormsForEachChild(jsonObjectMap, motherBaseId, hivStatus, riskCategory, familyBaseEntityId, dob, familyName);
 
                 } else if (encounterType.equalsIgnoreCase(Constants.EVENT_TYPE.ANC_REGISTRATION)) {
 
@@ -147,8 +156,7 @@ public class AncRegisterInteractor extends BaseAncRegisterInteractor {
         NCUtils.processEvent(baseEvent.getBaseEntityId(), new JSONObject(org.smartregister.chw.anc.util.JsonFormUtils.gson.toJson(baseEvent)));
     }
 
-    @Override
-    protected void generateAndSaveFormsForEachChild(Map<String, List<JSONObject>> jsonObjectMap, String motherBaseId, String familyBaseEntityId, String dob, String familyName) {
+    protected void generateAndSaveFormsForEachChild(Map<String, List<JSONObject>> jsonObjectMap, String motherBaseId, String motherHivStatus, String childRiskCategory, String familyBaseEntityId, String dob, String familyName) {
 
         AllSharedPreferences allSharedPreferences = ImmunizationLibrary.getInstance().context().allSharedPreferences();
 
@@ -167,12 +175,12 @@ public class AncRegisterInteractor extends BaseAncRegisterInteractor {
                         e.printStackTrace();
                     }
                 }
-                saveChild(childFields, motherBaseId, allSharedPreferences, familyBaseEntityId, dob, familyName);
+                saveChild(childFields, motherBaseId, motherHivStatus, childRiskCategory, allSharedPreferences, familyBaseEntityId, dob, familyName);
             }
         }
     }
 
-    private void saveChild(JSONArray childFields, String motherBaseId, AllSharedPreferences
+    private void saveChild(JSONArray childFields, String motherBaseId, String motherHivStatus, String childRiskCategory, AllSharedPreferences
             allSharedPreferences, String familyBaseEntityId, String dob, String familyName) {
         String uniqueChildID = AncLibrary.getInstance().getUniqueIdRepository().getNextUniqueId().getOpenmrsId();
 
@@ -195,6 +203,11 @@ public class AncRegisterInteractor extends BaseAncRegisterInteractor {
                 if (pncForm != null) {
                     saveRegistration(pncForm.toString(), EC_CHILD);
                     saveVaccineEvents(childFields, childBaseEntityId, dob);
+                }
+                if (motherHivStatus.equals(POSITIVE) && pncForm != null) {
+                    pncForm.put("risk_category", childRiskCategory);
+                    pncForm.put("encounter_type", HEI_REGISTRATION);
+                    saveRegistration(pncForm.toString(), HEI);
                 }
 
             } catch (Exception e) {

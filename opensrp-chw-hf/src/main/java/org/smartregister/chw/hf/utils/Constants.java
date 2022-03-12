@@ -38,12 +38,14 @@ public class Constants extends CoreConstants {
         public static final String UPDATE_HIV_INDEX_TESTING_FOLLOWUP = "Update HIV Index Contact Testing Followup";
         public static final String PARTNER_REGISTRATION_EVENT = "Partner Registration";
         public static final String ANC_PARTNER_TESTING ="Partner Testing" ;
+        public static final String HEI_REGISTRATION = "HEI Registration";
     }
 
     public static final class TableName {
         public static final String ANC_FIRST_FACILITY_VISIT = "ec_anc_first_facility_visit";
         public static final String ANC_RECURRING_FACILITY_VISIT = "ec_anc_recurring_facility_visit";
         public static final String PMTCT_EAC_VISIT = "ec_pmtct_eac_visit";
+        public static final String HEI = "ec_hei";
     }
 
     public static final class Visits {
@@ -229,6 +231,7 @@ public class Constants extends CoreConstants {
                 return Utils.getLocalForm(PARTNER_TESTING, locale, assetManager);
             }
         }
+
     }
 
     public static final class JsonFormConstants {
@@ -248,5 +251,15 @@ public class Constants extends CoreConstants {
     public static final class EacVisitTypes {
         public static final String EAC_FIRST_VISIT = "EAC FIRST VISIT";
         public static final String EAC_SECOND_VISIT = "EAC SECOND VISIT";
+    }
+
+    public static final class JSON_FORM_EXTRA{
+        public static final String RISK_CATEGORY = "risk_category";
+        public static final String HIV_STATUS = "hiv_status";
+    }
+
+    public static final class HIV_STATUS{
+        public static final String POSITIVE = "positive";
+        public static final String NEGATIVE = "negative";
     }
 }
