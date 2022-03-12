@@ -417,16 +417,9 @@
           },
           {
             "field": "eventType",
-            "field_value": "PMTCT EAC First Visit",
+            "field_value": "PMTCT EAC Visit",
             "creates_case": [
-              "ec_pmtct_followup"
-            ]
-          },
-          {
-            "field": "eventType",
-            "field_value": "PMTCT EAC Second Visit",
-            "creates_case": [
-              "ec_pmtct_followup"
+              "ec_pmtct_eac_visit"
             ]
           },
           {
