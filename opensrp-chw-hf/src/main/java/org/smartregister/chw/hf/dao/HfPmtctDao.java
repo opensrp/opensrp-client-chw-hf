@@ -1,6 +1,7 @@
 package org.smartregister.chw.hf.dao;
 
 import org.smartregister.chw.core.dao.CorePmtctDao;
+import org.smartregister.chw.hf.utils.Constants;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -15,7 +16,7 @@ public class HfPmtctDao extends CorePmtctDao {
         String sql = "SELECT hvl_collection_date\n" +
                 "FROM (SELECT *\n" +
                 "      FROM ec_pmtct_followup\n" +
-                "      WHERE entity_id = '"+baseEntityID+"'\n" +
+                "      WHERE entity_id = '" + baseEntityID + "'\n" +
                 "        AND hvl_sample_id IS NOT NULL\n" +
                 "        AND hvl_collection_date IS NOT NULL\n" +
                 "      ORDER BY visit_number DESC\n" +
@@ -99,7 +100,7 @@ public class HfPmtctDao extends CorePmtctDao {
         String sql = "SELECT cd4_collection_date\n" +
                 "FROM (SELECT *\n" +
                 "      FROM ec_pmtct_followup f\n" +
-                "      WHERE f.entity_id = '"+baseEntityID+"'\n" +
+                "      WHERE f.entity_id = '" + baseEntityID + "'\n" +
                 "        AND cd4_sample_id IS NOT NULL\n" +
                 "        AND cd4_collection_date IS NOT NULL\n" +
                 "      ORDER BY visit_number DESC\n" +
@@ -182,10 +183,11 @@ public class HfPmtctDao extends CorePmtctDao {
         c.setTimeInMillis(now.getTime() - startDate.getTime());
         return c.get(Calendar.MONTH);
     }
-    public static boolean hasHvlResults(String baseEntityId){
+
+    public static boolean hasHvlResults(String baseEntityId) {
         String sql = "SELECT hvl_sample_id from ec_pmtct_followup\n" +
-                    "       WHERE entity_id = '"+baseEntityId + "'" +
-                    "       AND hvl_sample_id IS NOT NULL";
+                "       WHERE entity_id = '" + baseEntityId + "'" +
+                "       AND hvl_sample_id IS NOT NULL";
 
 
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "hvl_sample_id");
@@ -194,9 +196,9 @@ public class HfPmtctDao extends CorePmtctDao {
         return res != null && res.size() > 0;
     }
 
-    public static boolean hasCd4Results(String baseEntityId){
+    public static boolean hasCd4Results(String baseEntityId) {
         String sql = "SELECT cd4_sample_id from ec_pmtct_followup\n" +
-                "       WHERE entity_id = '"+baseEntityId + "'" +
+                "       WHERE entity_id = '" + baseEntityId + "'" +
                 "       AND cd4_sample_id IS NOT NULL";
 
 
@@ -204,6 +206,28 @@ public class HfPmtctDao extends CorePmtctDao {
         List<String> res = readData(sql, dataMap);
 
         return res != null && res.size() > 0;
+    }
+
+    public static String getEacVisitType(String baseEntityID) {
+        String sql = "SELECT hvl_collection_date\n" +
+                "FROM (SELECT *\n" +
+                "      FROM ec_pmtct_followup\n" +
+                "      WHERE entity_id = '" + baseEntityID + "'\n" +
+                "        AND hvl_sample_id IS NOT NULL\n" +
+                "        AND hvl_collection_date IS NOT NULL\n" +
+                "      ORDER BY visit_number DESC\n" +
+                "      LIMIT 1 OFFSET 1) pm\n" +
+                "         INNER JOIN ec_pmtct_hvl_results ephr on pm.base_entity_id = ephr.hvl_pmtct_followup_form_submission_id\n" +
+                "WHERE ephr.hvl_result > 1000 AND ephr.hvl_result IS NOT NULL";
+
+        DataMap<Integer> dataMap = cursor -> getCursorIntValue(cursor, "hvl_collection_date");
+
+        List<Integer> res = readData(sql, dataMap);
+
+        if (res.size() > 0 && res.get(0) != null) {
+            return Constants.EacVisitTypes.EAC_SECOND_VISIT;
+        }
+        return Constants.EacVisitTypes.EAC_FIRST_VISIT;
     }
 
     public static boolean isEligibleForSecondEac(String baseEntityID) {
@@ -222,21 +246,6 @@ public class HfPmtctDao extends CorePmtctDao {
 //                return false;
 //            }
 //        }
-        return false;
-    }
-
-    public static boolean isEacFirstDone(String baseEntityID) {
-//        String sql = "SELECT count(" +
-//                "           CASE WHEN eac_day_1 IS NOT NULL AND eac_day_2 IS NOT NULL AND eac_day_3 IS NOT NULL " +
-//                "                  AND eac_day_1 <> 'NULL' AND eac_day_2 <> 'NULL' AND eac_day_3 <> 'NULL' " +
-//                "           THEN 0 END)  as count_eac  " +
-//                "               FROM ec_pmtct_followup p " +
-//                "               WHERE p.base_entity_id = '" + baseEntityID + "'";
-//
-//        DataMap<Integer> dataMap = cursor -> getCursorIntValue(cursor, "count_eac");
-//
-//        List<Integer> res = readData(sql, dataMap);
-
         return false;
     }
 

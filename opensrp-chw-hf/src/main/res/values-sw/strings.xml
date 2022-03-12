@@ -97,4 +97,6 @@
     <string name="pmtct_counselling_not_given">Counselling Not Given</string>
     <string name="pmtct_baseline_investigation_complete">Baseline Investigation Complete</string>
     <string name="hvl_sample_collected">HVL Sample Collected</string>
+    <string name="eac_first_visit">EAC First Visit</string>
+    <string name="eac_second_visit">EAC second Visit</string>
 </resources>

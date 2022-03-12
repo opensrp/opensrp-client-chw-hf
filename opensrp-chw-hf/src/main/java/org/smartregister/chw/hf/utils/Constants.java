@@ -237,4 +237,9 @@ public class Constants extends CoreConstants {
         public static final String ANC_HEPATITIS = "hepatitis";
         public static final String TASK_ID = "task_id";
     }
+
+    public static final class EacVisitTypes {
+        public static final String EAC_FIRST_VISIT = "EAC FIRST VISIT";
+        public static final String EAC_SECOND_VISIT = "EAC SECOND VISIT";
+    }
 }
