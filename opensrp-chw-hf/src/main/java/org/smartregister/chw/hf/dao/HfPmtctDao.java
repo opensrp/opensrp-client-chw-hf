@@ -244,7 +244,7 @@ public class HfPmtctDao extends CorePmtctDao {
                 "        AND hvl_sample_id IS NOT NULL\n" +
                 "        AND hvl_collection_date IS NOT NULL\n" +
                 "      ORDER BY visit_number DESC\n" +
-                "      LIMIT 1 OFFSET 1) pm\n" +
+                "      LIMIT 1 OFFSET 2) pm\n" +
                 "         INNER JOIN ec_pmtct_hvl_results ephr on pm.base_entity_id = ephr.hvl_pmtct_followup_form_submission_id\n" +
                 "WHERE ephr.hvl_result > 1000 AND ephr.hvl_result IS NOT NULL";
 
@@ -253,7 +253,10 @@ public class HfPmtctDao extends CorePmtctDao {
         List<Integer> res = readData(sql, dataMap);
 
         if (res.size() > 0 && res.get(0) != null) {
-            return Constants.EacVisitTypes.EAC_SECOND_VISIT;
+            if (res.size() == 1)
+                return Constants.EacVisitTypes.EAC_SECOND_VISIT;
+            else
+                return Constants.EacVisitTypes.EAC_FIRST_VISIT;
         }
         return Constants.EacVisitTypes.EAC_FIRST_VISIT;
     }
