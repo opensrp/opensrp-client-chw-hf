@@ -30,6 +30,7 @@ import org.smartregister.chw.hf.activity.ChildRegisterActivity;
 import org.smartregister.chw.hf.activity.FamilyProfileActivity;
 import org.smartregister.chw.hf.activity.FamilyRegisterActivity;
 import org.smartregister.chw.hf.activity.FpRegisterActivity;
+import org.smartregister.chw.hf.activity.HeiRegisterActivity;
 import org.smartregister.chw.hf.activity.HivIndexContactsContactsRegisterActivity;
 import org.smartregister.chw.hf.activity.HivRegisterActivity;
 import org.smartregister.chw.hf.activity.HtsRegisterActivity;
@@ -119,6 +120,7 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
             registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.HTS_REGISTER_ACTIVITY, HtsRegisterActivity.class);
             registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.HIV_INDEX_REGISTER_ACTIVITY, HivIndexContactsContactsRegisterActivity.class);
             registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.PMTCT_REGISTER_ACTIVITY, PmtctRegisterActivity.class);
+            registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.HEI, HeiRegisterActivity.class);
 //          TODO uncomment these when NACP is ready to test these modules
 //          registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.TB_REGISTER_ACTIVITY, TbRegisterActivity.class);
         }

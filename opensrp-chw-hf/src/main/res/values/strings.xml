@@ -108,5 +108,6 @@
     <string name="Cd4_results">CD4 Results</string>
     <string name="eac_first_visit">EAC First Visit</string>
     <string name="eac_second_visit">EAC second Visit</string>
+    <string name="menu_hei">HEI</string>
 
 </resources>
