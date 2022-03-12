@@ -69,7 +69,6 @@
             "concept": "followup_visit_date"
           }
         },
-
         {
           "column_name": "liver_function_test_conducted",
           "type": "Event",
@@ -102,7 +101,6 @@
             "concept": "receive_renal_function_test_results"
           }
         },
-
         {
           "column_name": "hvl_sample_id",
           "type": "Event",
@@ -302,6 +300,164 @@
           "json_mapping": {
             "field": "obs.fieldCode",
             "concept": "eac_visit_date"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ec_hei",
+      "columns": [
+        {
+          "column_name": "base_entity_id",
+          "type": "Client",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "unique_id",
+          "type": "Client",
+          "json_mapping": {
+            "field": "identifiers.opensrp_id"
+          }
+        },
+        {
+          "column_name": "relational_id",
+          "type": "Client",
+          "json_mapping": {
+            "field": "relationships.family"
+          }
+        },
+        {
+          "column_name": "mother_entity_id",
+          "type": "Client",
+          "json_mapping": {
+            "field": "relationships.mother"
+          }
+        },
+        {
+          "column_name": "risk_category",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "risk_category"
+          }
+        },
+        {
+          "column_name": "dob",
+          "type": "Client",
+          "json_mapping": {
+            "field": "birthdate"
+          }
+        },
+        {
+          "column_name": "hiv_status",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "hiv_status"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ec_hei_followup",
+      "columns": [
+        {
+          "column_name": "entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "formSubmissionId"
+          }
+        },
+        {
+          "column_name": "followup_visit_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "followup_visit_date"
+          }
+        },
+        {
+          "column_name": "sample_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "sample_id"
+          }
+        },
+        {
+          "column_name": "sample_collection_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "sample_collection_date"
+          }
+        },
+        {
+          "column_name": "type_of_hiv_test",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "type_of_hiv_test"
+          }
+        },
+        {
+          "column_name": "visit_number",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "visit_number"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ec_hei_hiv_results",
+      "columns": [
+        {
+          "column_name": "entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "formSubmissionId"
+          }
+        },
+        {
+          "column_name": "hei_followup_form_submission_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "hei_followup_form_submission_id"
+          }
+        },
+        {
+          "column_name": "hiv_test_result",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "hiv_status"
+          }
+        },
+        {
+          "column_name": "hiv_test_result_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "hiv_test_result_date"
           }
         }
       ]
