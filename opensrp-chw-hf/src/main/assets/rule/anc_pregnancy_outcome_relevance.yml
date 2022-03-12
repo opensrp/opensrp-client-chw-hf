@@ -77,3 +77,24 @@ priority: 1
 condition: "!step1_same_as_fam_name_chk.contains('same_as_fam_name')"
 actions:
   - "isRelevant = true"
+---
+name: step1_hiv_status
+description: hiv question relevance
+priority: 1
+condition: "((step1_preg_outcome == 'born_alive' || step1_preg_outcome == 'alive_with_problem') && !global_hiv_status_mother)"
+actions:
+  - "isRelevant = true"
+---
+name: step1_risk_category
+description: risk_category question relevance
+priority: 1
+condition: "((step1_preg_outcome == 'born_alive' || step1_preg_outcome == 'alive_with_problem') && (step1_hiv_status.contains('positive') || global_hiv_status_mother))"
+actions:
+  - "isRelevant = true"
+---
+name: step1_hei_id
+description: hei_id question relevance
+priority: 1
+condition: "((step1_preg_outcome == 'born_alive' || step1_preg_outcome == 'alive_with_problem') && (step1_hiv_status.contains('positive') || global_hiv_status_mother))"
+actions:
+  - "isRelevant = true"

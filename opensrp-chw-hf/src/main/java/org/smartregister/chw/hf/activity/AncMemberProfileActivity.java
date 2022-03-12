@@ -572,7 +572,8 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
             startPmtctRegistration();
             return true;
         } else if (itemId == R.id.action_pregnancy_out_come) {
-            PncRegisterActivity.startPncRegistrationActivity(AncMemberProfileActivity.this, memberObject.getBaseEntityId(), null, CoreConstants.JSON_FORM.getPregnancyOutcome(), AncLibrary.getInstance().getUniqueIdRepository().getNextUniqueId().getOpenmrsId(), memberObject.getFamilyBaseEntityId(), memberObject.getFamilyName(), memberObject.getLastMenstrualPeriod());
+            boolean motherHivStatus = hivPositive || HivDao.isRegisteredForHiv(baseEntityID) || isKnownOnArt || HfAncDao.isClientKnownOnArt(baseEntityID) || HfAncDao.getHivStatus(baseEntityID).equalsIgnoreCase("positive");
+            PncRegisterActivity.startPncRegistrationActivity(AncMemberProfileActivity.this, memberObject.getBaseEntityId(), null, CoreConstants.JSON_FORM.getPregnancyOutcome(), AncLibrary.getInstance().getUniqueIdRepository().getNextUniqueId().getOpenmrsId(), memberObject.getFamilyBaseEntityId(), memberObject.getFamilyName(), memberObject.getLastMenstrualPeriod(), motherHivStatus);
             return true;
         } else if (itemId == R.id.action_anc_partner_followup_referral) {
             ((AncMemberProfilePresenter) presenter()).startPartnerFollowupReferralForm(memberObject);
@@ -584,10 +585,10 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
 
     protected void startPmtctRegistration() {
         try {
-            if(HivDao.isRegisteredForHiv(baseEntityID)){
-                PmtctRegisterActivity.startPmtctRegistrationActivity(this, baseEntityID,HivDao.getMember(baseEntityID).getCtcNumber(),true);
-            }else{
-                PmtctRegisterActivity.startPmtctRegistrationActivity(this, baseEntityID,ctcNumber,isKnownOnArt||HfAncDao.isClientKnownOnArt(baseEntityID));
+            if (HivDao.isRegisteredForHiv(baseEntityID)) {
+                PmtctRegisterActivity.startPmtctRegistrationActivity(this, baseEntityID, HivDao.getMember(baseEntityID).getCtcNumber(), true);
+            } else {
+                PmtctRegisterActivity.startPmtctRegistrationActivity(this, baseEntityID, ctcNumber, isKnownOnArt || HfAncDao.isClientKnownOnArt(baseEntityID));
             }
         } catch (Exception e) {
             Timber.e(e);
