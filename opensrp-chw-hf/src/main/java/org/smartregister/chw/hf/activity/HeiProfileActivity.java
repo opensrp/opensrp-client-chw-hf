@@ -7,7 +7,10 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONObject;
@@ -22,14 +25,20 @@ import org.smartregister.chw.hf.interactor.HeiProfileInteractor;
 import org.smartregister.chw.hf.presenter.HeiProfilePresenter;
 import org.smartregister.chw.pmtct.activity.BasePmtctProfileActivity;
 import org.smartregister.chw.pmtct.util.Constants;
+import org.smartregister.chw.pmtct.util.PmtctUtil;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
+import org.smartregister.domain.AlertStatus;
+import org.smartregister.family.util.DBConstants;
 import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.family.util.Utils;
+
+import java.util.Date;
 
 import androidx.annotation.NonNull;
 import timber.log.Timber;
 
 import static org.smartregister.chw.core.utils.Utils.getCommonPersonObjectClient;
+import static org.smartregister.chw.core.utils.Utils.getDuration;
 import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
 
 public class HeiProfileActivity extends BasePmtctProfileActivity {
@@ -62,6 +71,37 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
         profilePresenter = new HeiProfilePresenter(this, new HeiProfileInteractor(), memberObject);
         fetchProfileData();
         profilePresenter.refreshProfileBottom();
+    }
+
+    @Override
+    protected void setupViews() {
+        super.setupViews();
+        int defaultImage = org.smartregister.chw.core.R.drawable.rowavatar_child;
+        ImageView imageViewProfile = findViewById(org.smartregister.chw.core.R.id.imageview_profile);
+        imageViewProfile.setImageDrawable(getResources().getDrawable(defaultImage));
+        TextView toolbarTitle = findViewById(R.id.toolbar_title);
+        toolbarTitle.setText("Return To All HEI Clients");
+
+        textViewRecordPmtct.setText("Record HEI Followup");
+    }
+
+    @SuppressLint("DefaultLocale")
+    @Override
+    public void setProfileViewWithData() {
+        CommonPersonObjectClient client = getCommonPersonObjectClient(baseEntityId);
+        String age = Utils.getTranslatedDate(getDuration(Utils.getValue(client.getColumnmaps(), DBConstants.KEY.DOB, false)), this);
+        textViewName.setText(String.format("%s %s %s, %s", memberObject.getFirstName(),
+                memberObject.getMiddleName(), memberObject.getLastName(), age));
+        textViewGender.setText(PmtctUtil.getGenderTranslated(this, memberObject.getGender()));
+        textViewLocation.setText(memberObject.getAddress());
+        textViewUniqueID.setText(memberObject.getUniqueId());
+
+        if (StringUtils.isNotBlank(memberObject.getFamilyHead()) && memberObject.getFamilyHead().equals(memberObject.getBaseEntityId())) {
+            findViewById(org.smartregister.pmtct.R.id.family_malaria_head).setVisibility(View.VISIBLE);
+        }
+        if (StringUtils.isNotBlank(memberObject.getPrimaryCareGiver()) && memberObject.getPrimaryCareGiver().equals(memberObject.getBaseEntityId())) {
+            findViewById(org.smartregister.pmtct.R.id.primary_malaria_caregiver).setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -114,7 +154,7 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(org.smartregister.chw.core.R.menu.pmtct_profile_menu, menu);
+        getMenuInflater().inflate(org.smartregister.chw.core.R.menu.hei_profile_menu, menu);
         return true;
     }
 
@@ -159,4 +199,22 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
         startActivityForResult(intent, JsonFormUtils.REQUEST_CODE_GET_JSON);
     }
 
+
+    @Override
+    public void refreshFamilyStatus(AlertStatus status) {
+        super.refreshFamilyStatus(status);
+        rlFamilyServicesDue.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void refreshMedicalHistory(boolean hasHistory) {
+        super.refreshMedicalHistory(hasHistory);
+        rlLastVisit.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void refreshUpComingServicesStatus(String service, AlertStatus status, Date date) {
+        super.refreshUpComingServicesStatus(service, status, date);
+        rlUpcomingServices.setVisibility(View.GONE);
+    }
 }
