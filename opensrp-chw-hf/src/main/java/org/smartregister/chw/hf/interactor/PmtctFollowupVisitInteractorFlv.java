@@ -75,6 +75,23 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
             Timber.e(e);
         }
 
+        JSONObject baselineInvestigationForm = null;
+        try {
+            baselineInvestigationForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.getPmtctBaselineInvestigation());
+            JSONObject global = baselineInvestigationForm.getJSONObject("global");
+
+            global.put("isLiverFunctionTestConducted", HfPmtctDao.isLiverFunctionTestConducted(memberObject.getBaseEntityId()));
+            global.put("isLiverFunctionTestResultsFilled", HfPmtctDao.isLiverFunctionTestResultsFilled(memberObject.getBaseEntityId()));
+            global.put("isRenalFunctionTestConducted", HfPmtctDao.isRenalFunctionTestConducted(memberObject.getBaseEntityId()));
+            global.put("isRenalFunctionTestResultsFilled", HfPmtctDao.isRenalFunctionTestResultsFilled(memberObject.getBaseEntityId()));
+            //loads details to the form
+            if (details != null && !details.isEmpty()) {
+                JsonFormUtils.populateForm(baselineInvestigationForm, details);
+            }
+        } catch (JSONException e) {
+            Timber.e(e);
+        }
+
         BasePmtctHomeVisitAction Counselling = new BasePmtctHomeVisitAction.Builder(context, "Counselling")
                 .withOptional(false)
                 .withDetails(details)
@@ -88,6 +105,7 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
                 .withOptional(true)
                 .withDetails(details)
                 .withFormName(Constants.JsonForm.getPmtctBaselineInvestigation())
+                .withJsonPayload(baselineInvestigationForm.toString())
                 .withHelper(new PmtctBaselineInvestigationAction(memberObject))
                 .build();
 

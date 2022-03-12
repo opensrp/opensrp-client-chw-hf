@@ -1,0 +1,14 @@
+---
+name: step1_liver_function_test_conducted
+description: check to decide if liver function test is conducted
+priority: 1
+condition: "true"
+actions:
+  - "calculation = global_isLiverFunctionTestConducted ? 'test_conducted' : step1_liver_function_test_conducted_question"
+---
+name: step1_renal_function_test_conducted
+description: check to decide if renal function test is conducted
+priority: 1
+condition: "true"
+actions:
+  - "calculation = global_isRenalFunctionTestConducted ? 'test_conducted' : step1_renal_function_test_conducted_question"

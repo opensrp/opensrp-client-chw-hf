@@ -1,0 +1,28 @@
+---
+name: step1_liver_function_test_conducted_question
+description: liver function test conducted relevance
+priority: 1
+condition: "!global_isLiverFunctionTestConducted"
+actions:
+  - "isRelevant = true"
+---
+name: step1_receive_liver_function_test_results
+description: liver function test results relevance
+priority: 1
+condition: "(step1_liver_function_test_conducted_question.contains('test_conducted') || global_isLiverFunctionTestConducted) && !global_isLiverFunctionTestResultsFilled"
+actions:
+  - "isRelevant = true"
+---
+name: step1_renal_function_test_conducted_question
+description: renal function test conducted relevance
+priority: 1
+condition: "!global_isRenalFunctionTestConducted"
+actions:
+  - "isRelevant = true"
+---
+name: step1_receive_renal_function_test_results
+description: renal function test results relevance
+priority: 1
+condition: "(step1_renal_function_test_conducted_question.contains('test_conducted') || global_isRenalFunctionTestConducted) && !global_isRenalFunctionTestResultsFilled"
+actions:
+  - "isRelevant = true"

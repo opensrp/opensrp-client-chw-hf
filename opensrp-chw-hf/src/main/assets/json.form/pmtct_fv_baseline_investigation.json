@@ -2,6 +2,7 @@
   "count": "1",
   "encounter_type": "PMTCT baseline investigation",
   "entity_id": "",
+  "global": {},
   "metadata": {
     "start": {
       "openmrs_entity_parent": "",
@@ -54,6 +55,20 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "liver_function_test_conducted",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_fv_baseline_investigation_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "liver_function_test_conducted_question",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "liver_function_test_conducted_question",
         "type": "native_radio",
         "label": "Is the Liver Function Test conducted?",
         "label_text_style": "normal",
@@ -64,7 +79,7 @@
             "text": "Liver Function Test conducted",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "yes"
+            "openmrs_entity_id": "test_conducted"
           },
           {
             "key": "test_not_conducted",
@@ -77,6 +92,13 @@
         "v_required": {
           "value": "true",
           "err": "Please select an option"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_fv_baseline_investigation_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -166,9 +188,10 @@
           "err": "Please select an option"
         },
         "relevance": {
-          "step1:liver_function_test_conducted": {
-            "type": "string",
-            "ex": "equalTo(., \"test_conducted\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_fv_baseline_investigation_relevance.yml"
+            }
           }
         }
       },
@@ -228,6 +251,20 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "renal_function_test_conducted",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_fv_baseline_investigation_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "renal_function_test_conducted_question",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "renal_function_test_conducted_question",
         "type": "native_radio",
         "label": "Is the Renal Function Test conducted?",
         "label_text_style": "normal",
@@ -238,7 +275,7 @@
             "text": "Renal Function Test conducted",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "yes"
+            "openmrs_entity_id": "test_conducted"
           },
           {
             "key": "test_not_conducted",
@@ -251,6 +288,13 @@
         "v_required": {
           "value": "true",
           "err": "Please select an option"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_fv_baseline_investigation_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -340,9 +384,10 @@
           "err": "Please select an option"
         },
         "relevance": {
-          "step1:renal_function_test_conducted": {
-            "type": "string",
-            "ex": "equalTo(., \"test_conducted\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_fv_baseline_investigation_relevance.yml"
+            }
           }
         }
       },
