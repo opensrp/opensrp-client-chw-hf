@@ -14,8 +14,10 @@ import android.widget.Toast;
 import com.vijay.jsonwizard.utils.FormUtils;
 
 import org.apache.commons.lang3.StringUtils;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.smartregister.chw.anc.util.NCUtils;
 import org.smartregister.chw.core.activity.CoreFamilyProfileActivity;
 import org.smartregister.chw.core.activity.CorePmtctProfileActivity;
 import org.smartregister.chw.core.custom_views.CorePmtctFloatingMenu;
@@ -38,6 +40,8 @@ import org.smartregister.chw.pmtct.PmtctLibrary;
 import org.smartregister.chw.pmtct.dao.PmtctDao;
 import org.smartregister.chw.pmtct.domain.Visit;
 import org.smartregister.chw.pmtct.util.Constants;
+import org.smartregister.chw.referral.util.JsonFormConstants;
+import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.domain.AlertStatus;
 import org.smartregister.family.contract.FamilyProfileContract;
 import org.smartregister.family.domain.FamilyEventClient;
@@ -57,8 +61,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import timber.log.Timber;
 
 import static org.smartregister.chw.core.utils.CoreConstants.EventType.PMTCT_COMMUNITY_FOLLOWUP;
-import static org.smartregister.chw.hf.utils.Constants.Events.PMTCT_FIRST_EAC_VISIT;
-import static org.smartregister.chw.hf.utils.Constants.Events.PMTCT_SECOND_EAC_VISIT;
 
 public class PmtctProfileActivity extends CorePmtctProfileActivity {
     private static String baseEntityId;
@@ -121,7 +123,6 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == Constants.REQUEST_CODE_GET_JSON && resultCode == RESULT_OK) {
             try {
                 String jsonString = data.getStringExtra(org.smartregister.family.util.Constants.JSON_FORM_EXTRA.JSON);
@@ -134,6 +135,16 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
                 } else if (encounterType.equals(PMTCT_COMMUNITY_FOLLOWUP)) {
                     AllSharedPreferences allSharedPreferences = org.smartregister.util.Utils.getAllSharedPreferences();
                     ((PmtctProfilePresenter) profilePresenter).createPmtctCommunityFollowupReferralEvent(allSharedPreferences, data.getStringExtra(Constants.JSON_FORM_EXTRA.JSON), baseEntityId);
+                } else if (encounterType.equals(org.smartregister.chw.hf.utils.Constants.Events.PMTCT_EAC_VISIT)) {
+                    AllSharedPreferences allSharedPreferences = org.smartregister.util.Utils.getAllSharedPreferences();
+                    Event baseEvent = org.smartregister.chw.anc.util.JsonFormUtils.processJsonForm(allSharedPreferences, jsonString, Constants.TABLES.PMTCT_EAC_VISITS);
+                    org.smartregister.chw.anc.util.JsonFormUtils.tagEvent(allSharedPreferences, baseEvent);
+                    baseEvent.setBaseEntityId(baseEntityId);
+                    try {
+                        NCUtils.processEvent(baseEvent.getBaseEntityId(), new JSONObject(org.smartregister.chw.anc.util.JsonFormUtils.gson.toJson(baseEvent)));
+                    } catch (Exception e) {
+                        Timber.e(e);
+                    }
                 } else {
                     profilePresenter.saveForm(data.getStringExtra(Constants.JSON_FORM_EXTRA.JSON));
                     finish();
@@ -180,36 +191,28 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         } catch (Exception e) {
             Timber.e(e);
         }
-        if(HfPmtctDao.hasHvlResults(baseEntityId)){
+        if (HfPmtctDao.hasHvlResults(baseEntityId)) {
             view_hvl_results_row.setVisibility(View.VISIBLE);
             rlHvlResults.setVisibility(View.VISIBLE);
         }
 
-        if(HfPmtctDao.hasCd4Results(baseEntityId)){
+        if (HfPmtctDao.hasCd4Results(baseEntityId)) {
             view_baseline_results_row.setVisibility(View.VISIBLE);
             rlBaselineResults.setVisibility(View.VISIBLE);
         }
-
-        boolean isEligibleForFirst = HfPmtctDao.isEligibleForEac(baseEntityId);
-        boolean isEligibleForSecond = HfPmtctDao.isEligibleForSecondEac(baseEntityId);
-        if (isEligibleForFirst) {
-            Visit lastEacVisit = getVisit(PMTCT_FIRST_EAC_VISIT);
-            if (lastEacVisit != null && !lastEacVisit.getProcessed()) {
-                showVisitInProgress(org.smartregister.chw.hf.utils.Constants.Visits.FIRST_EAC);
-                setUpEditButton(org.smartregister.chw.hf.utils.Constants.Visits.FIRST_EAC);
-            }
-        }
-        if (isEligibleForSecond) {
-            Visit lastEacVisit = getVisit(PMTCT_SECOND_EAC_VISIT);
-            if (lastEacVisit != null && !lastEacVisit.getProcessed()) {
-                showVisitInProgress(org.smartregister.chw.hf.utils.Constants.Visits.SECOND_EAC);
-                setUpEditButton(org.smartregister.chw.hf.utils.Constants.Visits.SECOND_EAC);
+        if (HfPmtctDao.isEligibleForEac(baseEntityId)) {
+            textViewRecordEac.setVisibility(View.VISIBLE);
+            textViewRecordEac.setOnClickListener(this);
+            if (HfPmtctDao.getEacVisitType(baseEntityId).equalsIgnoreCase(org.smartregister.chw.hf.utils.Constants.EacVisitTypes.EAC_FIRST_VISIT)) {
+                textViewRecordEac.setText(R.string.record_eac_first_visit);
+            } else {
+                textViewRecordEac.setText(R.string.record_eac_second_visit);
             }
         }
         Visit lastFollowupVisit = getVisit(Constants.EVENT_TYPE.PMTCT_FOLLOWUP);
         if (lastFollowupVisit != null && !lastFollowupVisit.getProcessed()) {
             showVisitInProgress(org.smartregister.chw.hf.utils.Constants.Visits.PMTCT_VISIT);
-            setUpEditButton(org.smartregister.chw.hf.utils.Constants.Visits.PMTCT_VISIT);
+            setUpEditButton();
         }
 
     }
@@ -243,17 +246,24 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
     public void onClick(View view) {
         super.onClick(view);
         int id = view.getId();
-        boolean isEligibleForFirst = HfPmtctDao.isEligibleForEac(baseEntityId);
-        boolean isEligibleForSecond = HfPmtctDao.isEligibleForSecondEac(baseEntityId);
-        boolean isEacFirstDone = HfPmtctDao.isEacFirstDone(baseEntityId);
-        boolean isEacSecondDone = HfPmtctDao.isSecondEacDone(baseEntityId);
+
         if (id == R.id.textview_record_pmtct) {
             PmtctFollowupVisitActivity.startPmtctFollowUpActivity(this, baseEntityId, false);
-        } else if (id == R.id.textview_record_anc) {
-            if (isEligibleForFirst && !isEacFirstDone) {
-                PmtctEacFirstVisitActivity.startEacActivity(this, memberObject.getBaseEntityId(), false);
-            } else if (isEligibleForSecond && !isEacSecondDone) {
-                PmtctEacSecondVisitActivity.startSecondEacActivity(this, memberObject.getBaseEntityId(), false);
+        } else if (id == R.id.textview_record_eac) {
+            JSONObject formJsonObject;
+            try {
+                formJsonObject = (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, org.smartregister.chw.hf.utils.Constants.JsonForm.getEacVisitsForm());
+                if (formJsonObject != null) {
+                    JSONArray fields = formJsonObject.getJSONObject(org.smartregister.chw.hf.utils.Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+                    JSONObject visit_type = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "eac_visit_type");
+
+                    assert visit_type != null;
+                    visit_type.put(JsonFormUtils.VALUE, HfPmtctDao.getEacVisitType(baseEntityId));
+
+                    startFormActivity(formJsonObject);
+                }
+            } catch (JSONException e) {
+                Timber.e(e);
             }
         } else if (id == R.id.textview_edit) {
             Toast.makeText(this, "Action Not Defined", Toast.LENGTH_SHORT).show();
@@ -273,21 +283,9 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         imageViewCross.setImageResource(org.smartregister.chw.core.R.drawable.activityrow_notvisited);
     }
 
-    private void setUpEditButton(String typeOfVisit) {
+    private void setUpEditButton() {
         textViewVisitDoneEdit.setOnClickListener(v -> {
-            switch (typeOfVisit) {
-                case org.smartregister.chw.hf.utils.Constants.Visits.FIRST_EAC:
-                    PmtctEacFirstVisitActivity.startEacActivity(PmtctProfileActivity.this, memberObject.getBaseEntityId(), true);
-                    break;
-                case org.smartregister.chw.hf.utils.Constants.Visits.SECOND_EAC:
-                    PmtctEacSecondVisitActivity.startSecondEacActivity(PmtctProfileActivity.this, memberObject.getBaseEntityId(), true);
-                    break;
-                case org.smartregister.chw.hf.utils.Constants.Visits.PMTCT_VISIT:
-                    PmtctFollowupVisitActivity.startPmtctFollowUpActivity(PmtctProfileActivity.this, baseEntityId, true);
-                    break;
-                default:
-                    break;
-            }
+            PmtctFollowupVisitActivity.startPmtctFollowUpActivity(PmtctProfileActivity.this, baseEntityId, true);
         });
     }
 
@@ -406,28 +404,12 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
             if (pmtctFollowUpRule.isFirstVisit())
                 textViewRecordPmtct.setText(R.string.record_first_pmtct);
 
-            boolean showEac = !pmtctFollowUpRule.getButtonStatus().equalsIgnoreCase("DUE")
-                    && !pmtctFollowUpRule.getButtonStatus().equalsIgnoreCase("OVERDUE")
-                    && !pmtctFollowUpRule.getButtonStatus().equalsIgnoreCase("EXPIRY");
-            boolean isEligibleForFirstEac = HfPmtctDao.isEligibleForEac(baseEntityId);
-            boolean isEligibleForSecondEac = HfPmtctDao.isEligibleForSecondEac(baseEntityId);
-            boolean isEacFirstDone = HfPmtctDao.isEacFirstDone(baseEntityId);
-            boolean isEacSecondDone = HfPmtctDao.isSecondEacDone(baseEntityId);
             Visit lastFolllowUpVisit = getVisit(Constants.EVENT_TYPE.PMTCT_FOLLOWUP);
 
-            if (showEac && isEligibleForFirstEac && !isEacFirstDone) {
-                recordVisits.setWeightSum(1);
-                textViewRecordAnc.setVisibility(View.VISIBLE);
-                textViewRecordAnc.setText(R.string.record_eac_first_visit);
-            } else if (showEac && isEligibleForSecondEac && !isEacSecondDone) {
-                recordVisits.setWeightSum(1);
-                textViewRecordAnc.setVisibility(View.VISIBLE);
-                textViewRecordAnc.setText(R.string.record_eac_second_visit);
-            } else {
-                if (lastFolllowUpVisit != null && lastFolllowUpVisit.getProcessed()) {
-                    profilePresenter.visitRow(pmtctFollowUpRule.getButtonStatus());
-                }
+            if (lastFolllowUpVisit != null && lastFolllowUpVisit.getProcessed()) {
+                profilePresenter.visitRow(pmtctFollowUpRule.getButtonStatus());
             }
+
             profilePresenter.nextRow(pmtctFollowUpRule.getButtonStatus(), FpUtil.sdf.format(pmtctFollowUpRule.getDueDate()));
         }
     }
