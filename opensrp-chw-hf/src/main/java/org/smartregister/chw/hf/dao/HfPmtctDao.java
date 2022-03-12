@@ -22,7 +22,7 @@ public class HfPmtctDao extends CorePmtctDao {
                 "      ORDER BY visit_number DESC\n" +
                 "      LIMIT 1) pm\n" +
                 "         INNER JOIN ec_pmtct_hvl_results ephr on pm.base_entity_id = ephr.hvl_pmtct_followup_form_submission_id\n" +
-                "WHERE ephr.hvl_result > 1000 AND ephr.hvl_result IS NOT NULL";
+                "WHERE CAST(ephr.hvl_result as INT) > 1000 AND ephr.hvl_result IS NOT NULL";
 
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "hvl_collection_date");
 
@@ -95,7 +95,7 @@ public class HfPmtctDao extends CorePmtctDao {
                 "      ORDER BY visit_number DESC\n" +
                 "      LIMIT 1) pm\n" +
                 "         INNER JOIN ec_pmtct_hvl_results ephr on pm.base_entity_id = ephr.hvl_pmtct_followup_form_submission_id\n" +
-                "WHERE ephr.hvl_result > 1000 AND ephr.hvl_result IS NOT NULL";
+                "WHERE CAST(ephr.hvl_result as INT) > 1000 AND ephr.hvl_result IS NOT NULL";
 
 
         DataMap<String> hvlCollectionDateMap = cursor -> getCursorValue(cursor, "hvl_collection_date");
@@ -135,7 +135,7 @@ public class HfPmtctDao extends CorePmtctDao {
                 "      LIMIT 1) f\n" +
                 "         LEFT JOIN ec_pmtct_cd4_results epc4r on f.base_entity_id = epc4r.cd4_pmtct_followup_form_submission_id\n" +
                 "WHERE epc4r.cd4_result IS NULL\n" +
-                "   OR epc4r.cd4_result < 350\n" +
+                "   OR CAST(epc4r.cd4_result as INT) < 350\n" +
                 "ORDER BY visit_number DESC\n" +
                 "LIMIT 1";
 
@@ -170,7 +170,7 @@ public class HfPmtctDao extends CorePmtctDao {
     }
 
     public static boolean isEligibleForBaselineInvestigationOnFollowupVisit(String baseEntityID) {
-        String sql = "SELECT p.base_entity_id FROM ec_pmtct_registration as p INNER JOIN (SELECT * FROM ec_pmtct_followup ORDER BY visit_number DESC LIMIT 1) as pf on pf.entity_id = p.base_entity_id WHERE (pf.liver_function_test_conducted = 'test_not_conducted' OR pf.receive_liver_function_test_results='no' OR  pf.renal_function_test_conducted = 'test_not_conducted' OR pf.receive_renal_function_test_results='no') AND p.base_entity_id = '" + baseEntityID + "'";
+        String sql = "SELECT p.base_entity_id FROM ec_pmtct_registration as p INNER JOIN (SELECT * FROM ec_pmtct_followup WHERE entity_id = '" + baseEntityID + "' ORDER BY visit_number DESC LIMIT 1) as pf on pf.entity_id = p.base_entity_id WHERE (pf.liver_function_test_conducted = 'test_not_conducted' OR pf.receive_liver_function_test_results='no' OR  pf.renal_function_test_conducted = 'test_not_conducted' OR pf.receive_renal_function_test_results='no')";
 
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "base_entity_id");
         List<String> res = readData(sql, dataMap);
@@ -246,7 +246,7 @@ public class HfPmtctDao extends CorePmtctDao {
                 "      ORDER BY visit_number DESC\n" +
                 "      LIMIT 2 OFFSET 1) pm\n" +
                 "         INNER JOIN ec_pmtct_hvl_results ephr on pm.base_entity_id = ephr.hvl_pmtct_followup_form_submission_id\n" +
-                "WHERE ephr.hvl_result > 1000 AND ephr.hvl_result IS NOT NULL";
+                "WHERE CAST(ephr.hvl_result as INT) > 1000 AND ephr.hvl_result IS NOT NULL";
 
         DataMap<Integer> dataMap = cursor -> getCursorIntValue(cursor, "hvl_collection_date");
 
@@ -295,39 +295,5 @@ public class HfPmtctDao extends CorePmtctDao {
         List<String> res = readData(sql, dataMap);
 
         return res != null && res.size() > 0 && res.get(0) != null;
-    }
-
-    public static boolean isEligibleForSecondEac(String baseEntityID) {
-//        String sql = "SELECT hvl_suppression_after_eac_1 FROM ec_pmtct_followup p " +
-//                "WHERE p.base_entity_id = '" + baseEntityID + "'";
-//
-//        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "hvl_suppression_after_eac_1");
-//
-//        List<String> res = readData(sql, dataMap);
-//
-//        if (res.size() > 0 && res.get(0) != null) {
-//            try {
-//                int viralLoad = Integer.parseInt(res.get(0));
-//                return viralLoad >= 1000;
-//            } catch (Exception e) {
-//                return false;
-//            }
-//        }
-        return false;
-    }
-
-    public static boolean isSecondEacDone(String baseEntityID) {
-//        String sql = "SELECT count(" +
-//                "               CASE WHEN eac_month_1 IS NOT NULL AND eac_month_2 IS NOT NULL AND eac_month_3 IS NOT NULL " +
-//                "                    AND   eac_month_1 <> 'NULL' AND eac_month_2 <> 'NULL' AND eac_month_3 <> 'NULL' " +
-//                "               THEN 0 END)  as count_eac  " +
-//                "                   FROM ec_pmtct_followup p " +
-//                "                   WHERE p.base_entity_id = '" + baseEntityID + "'";
-//
-//        DataMap<Integer> dataMap = cursor -> getCursorIntValue(cursor, "count_eac");
-//
-//        List<Integer> res = readData(sql, dataMap);
-
-        return false;
     }
 }
