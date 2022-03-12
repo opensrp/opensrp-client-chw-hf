@@ -203,6 +203,42 @@ public class HfPmtctDao extends CorePmtctDao {
         return res != null && res.size() > 0;
     }
 
+    public static boolean isLiverFunctionTestConducted(String baseEntityID) {
+        String sql = "SELECT p.base_entity_id FROM ec_pmtct_registration as p INNER JOIN (SELECT * FROM ec_pmtct_followup ORDER BY visit_number DESC LIMIT 1) as pf on pf.entity_id = p.base_entity_id WHERE (pf.liver_function_test_conducted = 'test_conducted') AND p.base_entity_id = '" + baseEntityID + "'";
+
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "base_entity_id");
+        List<String> res = readData(sql, dataMap);
+
+        return res != null && res.size() > 0 && res.get(0) != null;
+    }
+
+    public static boolean isLiverFunctionTestResultsFilled(String baseEntityID) {
+        String sql = "SELECT p.base_entity_id FROM ec_pmtct_registration as p INNER JOIN (SELECT * FROM ec_pmtct_followup ORDER BY visit_number DESC LIMIT 1) as pf on pf.entity_id = p.base_entity_id WHERE (pf.receive_liver_function_test_results='yes') AND p.base_entity_id = '" + baseEntityID + "'";
+
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "base_entity_id");
+        List<String> res = readData(sql, dataMap);
+
+        return res != null && res.size() > 0 && res.get(0) != null;
+    }
+
+    public static boolean isRenalFunctionTestConducted(String baseEntityID) {
+        String sql = "SELECT p.base_entity_id FROM ec_pmtct_registration as p INNER JOIN (SELECT * FROM ec_pmtct_followup ORDER BY visit_number DESC LIMIT 1) as pf on pf.entity_id = p.base_entity_id WHERE (pf.renal_function_test_conducted = 'test_conducted') AND p.base_entity_id = '" + baseEntityID + "'";
+
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "base_entity_id");
+        List<String> res = readData(sql, dataMap);
+
+        return res != null && res.size() > 0 && res.get(0) != null;
+    }
+
+    public static boolean isRenalFunctionTestResultsFilled(String baseEntityID) {
+        String sql = "SELECT p.base_entity_id FROM ec_pmtct_registration as p INNER JOIN (SELECT * FROM ec_pmtct_followup ORDER BY visit_number DESC LIMIT 1) as pf on pf.entity_id = p.base_entity_id WHERE (pf.receive_renal_function_test_results='yes') AND p.base_entity_id = '" + baseEntityID + "'";
+
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "base_entity_id");
+        List<String> res = readData(sql, dataMap);
+
+        return res != null && res.size() > 0 && res.get(0) != null;
+    }
+
     public static boolean isEligibleForSecondEac(String baseEntityID) {
 //        String sql = "SELECT hvl_suppression_after_eac_1 FROM ec_pmtct_followup p " +
 //                "WHERE p.base_entity_id = '" + baseEntityID + "'";
