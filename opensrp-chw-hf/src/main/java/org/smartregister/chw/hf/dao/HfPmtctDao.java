@@ -12,21 +12,24 @@ import java.util.Locale;
 
 public class HfPmtctDao extends CorePmtctDao {
     public static boolean isEligibleForEac(String baseEntityID) {
-//        String sql = "SELECT hvl_suppression FROM ec_pmtct_followup p " +
-//                "WHERE p.base_entity_id = '" + baseEntityID + "'";
-//
-//        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "hvl_suppression");
-//
-//        List<String> res = readData(sql, dataMap);
-//
-//        if (res.size() > 0 && res.get(0) != null) {
-//            try {
-//                int viralLoad = Integer.parseInt(res.get(0));
-//                return viralLoad >= 1000;
-//            } catch (Exception e) {
-//                return false;
-//            }
-//        }
+        String sql = "SELECT hvl_collection_date\n" +
+                "FROM (SELECT *\n" +
+                "      FROM ec_pmtct_followup\n" +
+                "      WHERE entity_id = '"+baseEntityID+"'\n" +
+                "        AND hvl_sample_id IS NOT NULL\n" +
+                "        AND hvl_collection_date IS NOT NULL\n" +
+                "      ORDER BY visit_number DESC\n" +
+                "      LIMIT 1) pm\n" +
+                "         INNER JOIN ec_pmtct_hvl_results ephr on pm.base_entity_id = ephr.hvl_pmtct_followup_form_submission_id\n" +
+                "WHERE ephr.hvl_result > 1000 AND ephr.hvl_result IS NOT NULL";
+
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "hvl_collection_date");
+
+        List<String> res = readData(sql, dataMap);
+
+        if (res.size() > 0 && res.get(0) != null) {
+            return getElapsedTimeInMonths(res.get(0)) < 3;
+        }
         return false;
     }
 
