@@ -34,6 +34,7 @@ public class Constants extends CoreConstants {
         public static final String ANC_FACILITY_VISIT_NOT_DONE_UNDO = "ANC Facility Visit Not Done Undo";
         public static final String PMTCT_FIRST_EAC_VISIT = "PMTCT EAC First Visit";
         public static final String PMTCT_SECOND_EAC_VISIT = "PMTCT EAC Second Visit";
+        public static final String PMTCT_EAC_VISIT = "PMTCT EAC Visit";
         public static final String UPDATE_HIV_INDEX_TESTING_FOLLOWUP = "Update HIV Index Contact Testing Followup";
         public static final String PARTNER_REGISTRATION_EVENT = "Partner Registration";
         public static final String ANC_PARTNER_TESTING ="Partner Testing" ;
@@ -57,9 +58,11 @@ public class Constants extends CoreConstants {
     }
 
     public static final class JsonForm {
+        //TODO: cleanup
         public static final String HIV_REGISTRATION = "hiv_registration";
         public static final String HVL_TEST_RESULTS = "pmtct_hvl_test_results";
         public static final String CD4_TEST_RESULTS = "pmtct_cd4_test_results";
+        public static final String EAC_VISITS_FORM = "pmtct_eac_visits";
         public static final String HVL_SUPPRESSION_FORM_AFTER_EAC_1 = "pmtct_hvl_suppression_after_eac_1";
         public static final String HVL_SUPPRESSION_FORM_AFTER_EAC_2 = "pmtct_hvl_suppression_after_eac_2";
         public static final String HVL_CLINICIAN_DETAILS_FORM = "pmtct_hvl_sample_collection";
@@ -90,6 +93,10 @@ public class Constants extends CoreConstants {
 
         public static String getPmtctClinicalStagingOfDisease() {
             return PMTCT_CLINICAL_STAGING_OF_DISEASE;
+        }
+
+        public static String getEacVisitsForm(){
+            return EAC_VISITS_FORM;
         }
 
         public static String getPmtctTbScreening() {
@@ -236,5 +243,10 @@ public class Constants extends CoreConstants {
         public static final String ANC_SYPHILIS = "syphilis";
         public static final String ANC_HEPATITIS = "hepatitis";
         public static final String TASK_ID = "task_id";
+    }
+
+    public static final class EacVisitTypes {
+        public static final String EAC_FIRST_VISIT = "EAC FIRST VISIT";
+        public static final String EAC_SECOND_VISIT = "EAC SECOND VISIT";
     }
 }
