@@ -180,11 +180,16 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         } catch (Exception e) {
             Timber.e(e);
         }
-        view_hvl_results_row.setVisibility(View.VISIBLE);
-        rlHvlResults.setVisibility(View.VISIBLE);
+        if(HfPmtctDao.hasHvlResults(baseEntityId)){
+            view_hvl_results_row.setVisibility(View.VISIBLE);
+            rlHvlResults.setVisibility(View.VISIBLE);
+        }
 
-        view_baseline_results_row.setVisibility(View.VISIBLE);
-        rlBaselineResults.setVisibility(View.VISIBLE);
+        if(HfPmtctDao.hasCd4Results(baseEntityId)){
+            view_baseline_results_row.setVisibility(View.VISIBLE);
+            rlBaselineResults.setVisibility(View.VISIBLE);
+        }
+
         boolean isEligibleForFirst = HfPmtctDao.isEligibleForEac(baseEntityId);
         boolean isEligibleForSecond = HfPmtctDao.isEligibleForSecondEac(baseEntityId);
         if (isEligibleForFirst) {
