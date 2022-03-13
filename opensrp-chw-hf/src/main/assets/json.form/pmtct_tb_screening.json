@@ -291,7 +291,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "reason_for_not_providing_tpt",
         "type": "native_radio",
-        "label": "Reason for not starting CTX",
+        "label": "Reason for not providing TPT",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [
@@ -311,7 +311,7 @@
           },
           {
             "key": "client_allergic_to_tpt",
-            "text": "Client allergic to TPT",
+            "text": "Client is allergic to TPT",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "client_allergic_to_tpt"
