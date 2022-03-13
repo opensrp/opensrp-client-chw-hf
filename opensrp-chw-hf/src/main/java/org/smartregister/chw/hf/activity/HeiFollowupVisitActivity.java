@@ -51,7 +51,7 @@ public class HeiFollowupVisitActivity extends BasePmtctHomeVisitActivity {
 
     @Override
     public void submittedAndClose() {
-        Runnable runnable = () -> HfScheduleTaskExecutor.getInstance().execute(memberObject.getBaseEntityId(), Constants.EVENT_TYPE.PMTCT_FOLLOWUP, new Date());
+        Runnable runnable = () -> HfScheduleTaskExecutor.getInstance().execute(memberObject.getBaseEntityId(), org.smartregister.chw.hf.utils.Constants.Events.HEI_FOLLOWUP, new Date());
         Utils.startAsyncTask(new RunnableTask(runnable), null);
         super.submittedAndClose();
         returnToRegister();
