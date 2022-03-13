@@ -32,15 +32,15 @@ public class HeiFollowupVisitInteractorFlv implements PmtctFollowupVisitInteract
                 details = VisitUtils.getVisitGroups(PmtctLibrary.getInstance().visitDetailsRepository().getVisits(lastVisit.getVisitId()));
             }
         }
-        evaluateHEIActions(actionList, details, memberObject, context);
+        //TODO: implement
+        //evaluateHEIActions(actionList, details, memberObject, context);
 
         return actionList;
     }
 
-
-    private void evaluateHEIActions(LinkedHashMap<String, BasePmtctHomeVisitAction> actionList, Map<String, List<VisitDetail>> details, MemberObject memberObject, Context context) throws BasePmtctHomeVisitAction.ValidationException {
-        //implement
-    }
+//    private void evaluateHEIActions(LinkedHashMap<String, BasePmtctHomeVisitAction> actionList, Map<String, List<VisitDetail>> details, MemberObject memberObject, Context context) throws BasePmtctHomeVisitAction.ValidationException {
+//        //implement
+//    }
 
 
 }
