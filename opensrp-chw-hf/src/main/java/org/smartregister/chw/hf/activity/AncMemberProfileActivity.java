@@ -572,7 +572,9 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
             startPmtctRegistration();
             return true;
         } else if (itemId == R.id.action_pregnancy_out_come) {
-            PncRegisterActivity.startPncRegistrationActivity(AncMemberProfileActivity.this, memberObject.getBaseEntityId(), null, CoreConstants.JSON_FORM.getPregnancyOutcome(), AncLibrary.getInstance().getUniqueIdRepository().getNextUniqueId().getOpenmrsId(), memberObject.getFamilyBaseEntityId(), memberObject.getFamilyName(), memberObject.getLastMenstrualPeriod());
+            CommonPersonObjectClient client = getCommonPersonObjectClient();
+            String familyBaseEntityId = org.smartregister.util.Utils.getValue(client.getColumnmaps(), org.smartregister.family.util.DBConstants.KEY.RELATIONAL_ID, false);
+            PncRegisterActivity.startPncRegistrationActivity(AncMemberProfileActivity.this, memberObject.getBaseEntityId(), null, CoreConstants.JSON_FORM.getPregnancyOutcome(), AncLibrary.getInstance().getUniqueIdRepository().getNextUniqueId().getOpenmrsId(), familyBaseEntityId, memberObject.getFamilyName(), memberObject.getLastMenstrualPeriod());
             return true;
         } else if (itemId == R.id.action_anc_partner_followup_referral) {
             ((AncMemberProfilePresenter) presenter()).startPartnerFollowupReferralForm(memberObject);

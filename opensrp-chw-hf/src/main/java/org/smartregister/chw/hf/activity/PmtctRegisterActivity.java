@@ -7,12 +7,15 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.google.android.material.bottomnavigation.LabelVisibilityMode;
+
 import org.json.JSONObject;
 import org.smartregister.chw.core.activity.CorePmtctRegisterActivity;
 import org.smartregister.chw.core.custom_views.NavigationMenu;
 import org.smartregister.chw.core.utils.FormUtils;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.fragment.PmtctRegisterFragment;
+import org.smartregister.chw.hf.listener.HfFamilyBottomNavListener;
 import org.smartregister.chw.hf.presenter.PmtctRegisterPresenter;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.pmtct.interactor.BasePmtctRegisterInteractor;
@@ -59,8 +62,21 @@ public class PmtctRegisterActivity extends CorePmtctRegisterActivity {
     @Override
     protected void registerBottomNavigation() {
         bottomNavigationHelper = new BottomNavigationHelper();
-        bottomNavigationView = findViewById(org.smartregister.R.id.bottom_navigation);
-        FamilyRegisterActivity.registerBottomNavigation(bottomNavigationHelper, bottomNavigationView, this);
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+        if (bottomNavigationView != null) {
+            bottomNavigationView.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
+            bottomNavigationView.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
+
+            bottomNavigationView.getMenu().clear();
+            bottomNavigationView.inflateMenu(R.menu.bottom_nav_family_menu);
+            bottomNavigationView.getMenu().removeItem(org.smartregister.R.id.action_clients);
+            bottomNavigationView.getMenu().removeItem(org.smartregister.chw.tb.R.id.action_register);
+            bottomNavigationView.getMenu().removeItem(org.smartregister.R.id.action_search);
+            bottomNavigationView.getMenu().removeItem(org.smartregister.R.id.action_library);
+            bottomNavigationView.getMenu().removeItem(org.smartregister.family.R.id.action_job_aids);
+            bottomNavigationView.setOnNavigationItemSelectedListener(new HfFamilyBottomNavListener(this, bottomNavigationView));
+        }
     }
 
     @Override
