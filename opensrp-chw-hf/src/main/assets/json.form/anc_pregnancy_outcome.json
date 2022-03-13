@@ -234,25 +234,6 @@
         }
       },
       {
-        "key": "hei_id",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "hei_id",
-        "type": "edit_text",
-        "hint": "HEI ID",
-        "v_required": {
-          "value": true,
-          "err": "Please enter the HEI ID"
-        },
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "anc_pregnancy_outcome_relevance.yml"
-            }
-          }
-        }
-      },
-      {
         "key": "delivery_date",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
