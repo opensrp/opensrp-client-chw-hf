@@ -3,7 +3,6 @@ package org.smartregister.chw.hf.provider;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
-import android.view.LayoutInflater;
 import android.view.View;
 
 import org.smartregister.chw.pmtct.fragment.BasePmtctRegisterFragment;
@@ -22,16 +21,12 @@ import static org.smartregister.chw.core.utils.Utils.getDuration;
 import static org.smartregister.util.Utils.getName;
 
 public class HeiRegisterProvider extends PmtctRegisterProvider {
-    private final LayoutInflater inflater;
 
-    private View.OnClickListener paginationClickListener;
     private Context context;
     private Set<org.smartregister.configurableviews.model.View> visibleColumns;
 
     public HeiRegisterProvider(Context context, View.OnClickListener paginationClickListener, View.OnClickListener onClickListener, Set visibleColumns) {
         super(context, paginationClickListener, onClickListener, visibleColumns);
-        inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        this.paginationClickListener = paginationClickListener;
         this.onClickListener = onClickListener;
         this.visibleColumns = visibleColumns;
         this.context = context;

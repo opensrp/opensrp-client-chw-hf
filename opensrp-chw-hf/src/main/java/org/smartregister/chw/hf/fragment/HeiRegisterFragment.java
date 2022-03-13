@@ -26,7 +26,6 @@ import org.smartregister.view.customcontrols.CustomFontTextView;
 
 import java.text.MessageFormat;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 
 import androidx.appcompat.widget.Toolbar;
@@ -36,7 +35,6 @@ import timber.log.Timber;
 
 public class HeiRegisterFragment extends BasePmtctRegisterFragment {
     private View view;
-    private View dueOnlyLayout;
 
     @Override
     public void initializeAdapter(Set<org.smartregister.configurableviews.model.View> visibleColumns) {
@@ -89,7 +87,7 @@ public class HeiRegisterFragment extends BasePmtctRegisterFragment {
         View filterSortLayout = view.findViewById(org.smartregister.chw.core.R.id.filter_sort_layout);
         filterSortLayout.setVisibility(View.GONE);
 
-        dueOnlyLayout = view.findViewById(org.smartregister.chw.core.R.id.due_only_layout);
+        View dueOnlyLayout = view.findViewById(org.smartregister.chw.core.R.id.due_only_layout);
         dueOnlyLayout.setVisibility(View.GONE);
         dueOnlyLayout.setOnClickListener(registerActionHandler);
         if (getSearchView() != null) {
@@ -213,6 +211,6 @@ public class HeiRegisterFragment extends BasePmtctRegisterFragment {
 
     @Override
     protected void openProfile(String baseEntityId) {
-        HeiProfileActivity.startProfile(requireActivity(),baseEntityId);
+        HeiProfileActivity.startProfile(requireActivity(), baseEntityId);
     }
 }
