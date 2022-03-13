@@ -80,9 +80,9 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
         ImageView imageViewProfile = findViewById(org.smartregister.chw.core.R.id.imageview_profile);
         imageViewProfile.setImageDrawable(getResources().getDrawable(defaultImage));
         TextView toolbarTitle = findViewById(R.id.toolbar_title);
-        toolbarTitle.setText("Return To All HEI Clients");
+        toolbarTitle.setText(R.string.hei_toolbar_title);
 
-        textViewRecordPmtct.setText("Record HEI Followup");
+        textViewRecordPmtct.setText(R.string.record_followup);
     }
 
     @SuppressLint("DefaultLocale")
@@ -143,7 +143,7 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
             return true;
         } else if (itemId == org.smartregister.chw.core.R.id.action_registration) {
             startFormForEdit(org.smartregister.chw.core.R.string.registration_info,
-                    CoreConstants.JSON_FORM.getFamilyMemberRegister());
+                    CoreConstants.JSON_FORM.getChildRegister());
             return true;
         } else if (itemId == org.smartregister.chw.core.R.id.action_remove_member) {
             removeMember();
@@ -175,17 +175,13 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
         JSONObject form = null;
         CommonPersonObjectClient client = org.smartregister.chw.core.utils.Utils.clientForEdit(memberObject.getBaseEntityId());
 
-        if (formName.equals(CoreConstants.JSON_FORM.getFamilyMemberRegister())) {
+        if (formName.equals(CoreConstants.JSON_FORM.getChildRegister())) {
             form = CoreJsonFormUtils.getAutoPopulatedJsonEditMemberFormString(
                     (title_resource != null) ? getResources().getString(title_resource) : null,
-                    CoreConstants.JSON_FORM.getFamilyMemberRegister(),
+                    CoreConstants.JSON_FORM.getChildRegister(),
                     this, client,
-                    Utils.metadata().familyMemberRegister.updateEventType, memberObject.getLastName(), false);
-        } else if (formName.equals(CoreConstants.JSON_FORM.getAncRegistration())) {
-            form = CoreJsonFormUtils.getAutoJsonEditAncFormString(
-                    memberObject.getBaseEntityId(), this, formName, CoreConstants.EventType.UPDATE_ANC_REGISTRATION, getResources().getString(title_resource));
+                    CoreConstants.EventType.UPDATE_CHILD_REGISTRATION, memberObject.getLastName(), false);
         }
-
         try {
             assert form != null;
             startFormActivity(form);
