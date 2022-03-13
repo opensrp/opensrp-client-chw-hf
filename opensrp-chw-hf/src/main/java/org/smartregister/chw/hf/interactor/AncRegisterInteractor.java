@@ -74,6 +74,7 @@ public class AncRegisterInteractor extends BaseAncRegisterInteractor {
 
                     String riskCategory = form.optString(org.smartregister.chw.hf.utils.Constants.JSON_FORM_EXTRA.RISK_CATEGORY);
                     String hivStatus = form.optString(org.smartregister.chw.hf.utils.Constants.JSON_FORM_EXTRA.HIV_STATUS);
+
                     JSONArray fields = org.smartregister.util.JsonFormUtils.fields(form);
                     JSONObject deliveryDate = getFieldJSONObject(fields, DBConstants.KEY.DELIVERY_DATE);
                     JSONObject famNameObject = getFieldJSONObject(fields, DBConstants.KEY.FAM_NAME);

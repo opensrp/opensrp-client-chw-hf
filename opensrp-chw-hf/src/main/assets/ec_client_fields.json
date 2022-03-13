@@ -410,6 +410,14 @@
           }
         },
         {
+          "column_name": "test_at_age",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "test_at_age"
+          }
+        },
+        {
           "column_name": "visit_number",
           "type": "Event",
           "json_mapping": {

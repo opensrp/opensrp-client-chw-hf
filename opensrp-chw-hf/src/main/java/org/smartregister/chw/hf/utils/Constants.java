@@ -1,10 +1,10 @@
 package org.smartregister.chw.hf.utils;
 
-import org.smartregister.chw.core.utils.CoreConstants;
-import org.smartregister.chw.core.utils.Utils;
-
 import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.assetManager;
 import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.locale;
+
+import org.smartregister.chw.core.utils.CoreConstants;
+import org.smartregister.chw.core.utils.Utils;
 
 public class Constants extends CoreConstants {
     public static String pregnancyOutcome = "preg_outcome";
@@ -37,7 +37,7 @@ public class Constants extends CoreConstants {
         public static final String PMTCT_EAC_VISIT = "PMTCT EAC Visit";
         public static final String UPDATE_HIV_INDEX_TESTING_FOLLOWUP = "Update HIV Index Contact Testing Followup";
         public static final String PARTNER_REGISTRATION_EVENT = "Partner Registration";
-        public static final String ANC_PARTNER_TESTING ="Partner Testing" ;
+        public static final String ANC_PARTNER_TESTING = "Partner Testing";
         public static final String HEI_REGISTRATION = "HEI Registration";
     }
 
@@ -97,7 +97,7 @@ public class Constants extends CoreConstants {
             return PMTCT_CLINICAL_STAGING_OF_DISEASE;
         }
 
-        public static String getEacVisitsForm(){
+        public static String getEacVisitsForm() {
             return EAC_VISITS_FORM;
         }
 
@@ -126,9 +126,11 @@ public class Constants extends CoreConstants {
             return PMTCT_REGISTRATION_FOR_CLIENTS_KNOWN_ON_ART_FORM;
         }
 
-         public static String getHvlTestResultsForm() {
+        public static String getHvlTestResultsForm() {
             return HVL_TEST_RESULTS;
-        } public static String getCd4TestResultsForm() {
+        }
+
+        public static String getCd4TestResultsForm() {
             return CD4_TEST_RESULTS;
         }
 
@@ -253,13 +255,21 @@ public class Constants extends CoreConstants {
         public static final String EAC_SECOND_VISIT = "EAC SECOND VISIT";
     }
 
-    public static final class JSON_FORM_EXTRA{
+    public static final class JSON_FORM_EXTRA {
         public static final String RISK_CATEGORY = "risk_category";
         public static final String HIV_STATUS = "hiv_status";
     }
 
-    public static final class HIV_STATUS{
+    public static final class HIV_STATUS {
         public static final String POSITIVE = "positive";
         public static final String NEGATIVE = "negative";
+    }
+
+    public static final class HeiHIVTestAtAge {
+        public static final String AT_BIRTH = "At Birth";
+        public static final String AT_6_WEEKS = "6 Weeks";
+        public static final String AT_9_MONTHS = "9 Months";
+        public static final String AT_15_MONTHS = "15 Months";
+        public static final String AT_18_MONTHS = "18 Months";
     }
 }
