@@ -83,6 +83,16 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
         toolbarTitle.setText(R.string.hei_toolbar_title);
 
         textViewRecordPmtct.setText(R.string.record_followup);
+        textViewRecordPmtct.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        super.onClick(view);
+        int id = view.getId();
+        if(id == R.id.textview_record_pmtct){
+            HeiFollowupVisitActivity.startHeiFollowUpActivity(this, baseEntityId,false);
+        }
     }
 
     @SuppressLint("DefaultLocale")
