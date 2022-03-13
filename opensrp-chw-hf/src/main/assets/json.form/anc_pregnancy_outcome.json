@@ -4,6 +4,7 @@
   "count": "1",
   "encounter_type": "Pregnancy Outcome",
   "entity_id": "",
+  "global": {},
   "metadata": {
     "start": {
       "openmrs_entity_parent": "",
@@ -126,6 +127,103 @@
         "v_required": {
           "value": "true",
           "err": "Please enter date the woman miscarried."
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_pregnancy_outcome_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "hiv_status",
+        "type": "native_radio",
+        "label": "HIV status",
+        "openmrs_entity_id": "hiv_status",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "positive",
+            "text": "Positive",
+            "openmrs_entity_id": "positive",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "negative",
+            "text": "Negative",
+            "openmrs_entity_id": "negative",
+            "openmrs_entity": "concept"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please answer this question"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_pregnancy_outcome_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "ctc_number",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "ctc_number",
+        "type": "mask_edit_text",
+        "mask": "##-##-####-######",
+        "mask_hint": "12345678912345",
+        "allowed_chars": "0123456789",
+        "hint": "CTC Number",
+        "edit_type": "number",
+        "v_regex": {
+          "value": "(\\d{2}-\\d{2}-\\d{4}-\\d{6})?",
+          "err": "CTC number should be of the format (XX-XX-XXXX-XXXXXX)"
+        },
+        "v_max_length": {
+          "value": "17",
+          "is_fixed_size": "true",
+          "err":"Please enter a valid CTC Number"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter a valid CTC Number"
+        },
+        "relevance": {
+          "step1:hiv_status": {
+            "type": "string",
+            "ex": "equalTo(., \"positive\")"
+          }
+        }
+      },
+      {
+        "key": "risk_category",
+        "type": "native_radio",
+        "label": "Risk category",
+        "openmrs_entity_id": "risk_category",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "high",
+            "text": "High",
+            "openmrs_entity_id": "high",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "low",
+            "text": "Low",
+            "openmrs_entity_id": "low",
+            "openmrs_entity": "concept"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please answer this question"
         },
         "relevance": {
           "rules-engine": {

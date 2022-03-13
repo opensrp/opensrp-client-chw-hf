@@ -39,6 +39,7 @@ public class Constants extends CoreConstants {
         public static final String PARTNER_REGISTRATION_EVENT = "Partner Registration";
         public static final String ANC_PARTNER_TESTING = "Partner Testing";
         public static final String HEI_REGISTRATION = "HEI Registration";
+        public static final String HEI_FOLLOWUP = "HEI Followup";
     }
 
     public static final class TableName {
