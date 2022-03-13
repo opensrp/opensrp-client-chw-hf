@@ -34,7 +34,7 @@ public class HeiFollowupVisitInteractor extends CorePmtctHomeVisitInteractor {
     }
 
     @Override
-    public void calculateActions(BasePmtctHomeVisitContract.View view, org.smartregister.chw.pmtct.domain.MemberObject memberObject, BasePmtctHomeVisitContract.InteractorCallBack callBack) {
+    public void calculateActions(BasePmtctHomeVisitContract.View view, MemberObject memberObject, BasePmtctHomeVisitContract.InteractorCallBack callBack) {
         super.calculateActions(view, memberObject, callBack);
         try {
             PmtctVisitUtils.processVisits();
