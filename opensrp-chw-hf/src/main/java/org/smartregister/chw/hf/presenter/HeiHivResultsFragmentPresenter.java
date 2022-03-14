@@ -5,13 +5,17 @@ import org.smartregister.chw.pmtct.contract.HvlResultsFragmentContract;
 import org.smartregister.chw.pmtct.presenter.BaseHvlResultsFragmentPresenter;
 
 public class HeiHivResultsFragmentPresenter extends BaseHvlResultsFragmentPresenter {
-    public HeiHivResultsFragmentPresenter(HvlResultsFragmentContract.View view, HvlResultsFragmentContract.Model model, String viewConfigurationIdentifier) {
+    private String baseEntityId;
+
+    public HeiHivResultsFragmentPresenter(String baseEntityId, HvlResultsFragmentContract.View view, HvlResultsFragmentContract.Model model, String viewConfigurationIdentifier) {
         super(view, model, viewConfigurationIdentifier);
+        this.baseEntityId = baseEntityId;
     }
 
     @Override
     public String getMainCondition() {
-        return " " + Constants.TableName.HEI_FOLLOWUP + "." + Constants.DBConstants.HEI_HIV_SAMPLE_ID + " IS NOT NULL ";
+        return " " + Constants.TableName.HEI_FOLLOWUP + "." + Constants.DBConstants.HEI_HIV_SAMPLE_ID + " IS NOT NULL " +
+                " AND ec_hei_followup.entity_id = '" + baseEntityId + "'";
     }
 
     @Override

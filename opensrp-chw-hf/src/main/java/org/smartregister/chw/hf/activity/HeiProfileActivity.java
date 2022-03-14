@@ -112,6 +112,7 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
         }
         if (id == R.id.rlHvlResults) {
             Intent intent = new Intent(this, HeiHivResultsViewActivity.class);
+            intent.putExtra(Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID, baseEntityId);
             startActivity(intent);
         }
     }

@@ -43,7 +43,7 @@ public class HeiHivResultsViewActivity extends BaseHvlResultsViewActivity implem
 
     @Override
     public BaseHvlResultsFragment getBaseFragment() {
-        return new HeiHivResultsFragment();
+        return HeiHivResultsFragment.newInstance(baseEntityId);
     }
 
     @Override
