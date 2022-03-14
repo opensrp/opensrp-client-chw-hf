@@ -376,14 +376,15 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
 
     @Override
     public void openHvlResultsHistory() {
-        //implement
         Intent intent = new Intent(this, HvlResultsViewActivity.class);
+        intent.putExtra(Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID, baseEntityId);
         startActivity(intent);
     }
 
     @Override
     public void openBaselineInvestigationResults() {
         Intent intent = new Intent(this, Cd4ResultsViewActivity.class);
+        intent.putExtra(Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID, baseEntityId);
         startActivity(intent);
     }
 
