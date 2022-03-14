@@ -418,6 +418,22 @@
           }
         },
         {
+          "column_name": "prophylaxis_arv_at_birth_given",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "prophylaxis_arv_at_birth_given"
+          }
+        },
+        {
+          "column_name": "prophylaxis_arv_at_6_weeks_given",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "prophylaxis_arv_at_6_weeks_given"
+          }
+        },
+        {
           "column_name": "visit_number",
           "type": "Event",
           "json_mapping": {
