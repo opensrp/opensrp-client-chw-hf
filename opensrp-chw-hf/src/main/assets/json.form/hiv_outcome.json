@@ -98,7 +98,10 @@
               }
             }
           ],
-          "required_status": "yes:Please select action taken"
+          "required_status": "yes:Please select action taken",
+          "dependent_calculations": [
+            "hiv_facility_visit_date"
+          ]
         },
         {
           "name": "test_results",
