@@ -99,4 +99,12 @@
     <string name="hvl_sample_collected">HVL Sample Collected</string>
     <string name="eac_first_visit">EAC First Visit</string>
     <string name="eac_second_visit">EAC second Visit</string>
+    <string name="antibody_test_sample_collected">Antibody Test Sample Collected</string>
+    <string name="hei_arv_prescription_given">ARV Prescription Given</string>
+    <string name="hei_arv_prescription_not_given">ARV Prescription Not Given</string>
+    <string name="other_combination_given">Other Combinations Given</string>
+    <string name="arv_pres_other_combinations_not_given">ARV Prescription and Other Combinations Not Given</string>
+    <string name="ctx_given">CTX Given</string>
+    <string name="dna_pcr_sample_collected">DNA-PCR Sample Collected</string>
+    <string name="ctx_not_given">CTX Not Given</string>
 </resources>

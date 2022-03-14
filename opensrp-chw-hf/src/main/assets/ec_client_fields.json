@@ -418,6 +418,22 @@
           }
         },
         {
+          "column_name": "prophylaxis_arv_at_birth_given",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "prophylaxis_arv_at_birth_given"
+          }
+        },
+        {
+          "column_name": "prophylaxis_arv_at_6_weeks_given",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "prophylaxis_arv_at_6_weeks_given"
+          }
+        },
+        {
           "column_name": "visit_number",
           "type": "Event",
           "json_mapping": {
@@ -3185,22 +3201,6 @@
           "type": "Event",
           "json_mapping": {
             "field": "formSubmissionId"
-          }
-        },
-        {
-          "column_name": "problem",
-          "type": "Event",
-          "json_mapping": {
-            "field": "obs.fieldCode",
-            "concept": "problem"
-          }
-        },
-        {
-          "column_name": "problem_other",
-          "type": "Event",
-          "json_mapping": {
-            "field": "obs.fieldCode",
-            "concept": "problem_other"
           }
         },
         {

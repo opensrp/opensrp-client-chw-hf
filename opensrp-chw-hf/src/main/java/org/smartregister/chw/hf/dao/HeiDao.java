@@ -91,6 +91,54 @@ public class HeiDao extends AbstractDao {
             return riskCategoryRes.get(0).equals("high") && getNextHivTestAge(baseEntityID).equals(Constants.HeiHIVTestAtAge.AT_BIRTH);
     }
 
+    public static boolean isEligibleForProphylaxisArvAtBirth(String baseEntityID) {
+        String sql = "SELECT * FROM ec_hei hei\n" +
+                "         LEFT JOIN (SELECT * FROM ec_hei_followup WHERE prophylaxis_arv_at_birth_given IS NOT NULL ORDER BY visit_number DESC LIMIT 1) heif\n" +
+                "                   on hei.base_entity_id = heif.entity_id\n" +
+                "WHERE hei.base_entity_id='" + baseEntityID + "'";
+
+        DataMap<String> dobMap = cursor -> getCursorValue(cursor, "dob");
+        DataMap<String> prophylaxisArvAtBirthGivenMap = cursor -> getCursorValue(cursor, "prophylaxis_arv_at_birth_given");
+        DataMap<String> riskCategoryMap = cursor -> getCursorValue(cursor, "risk_category");
+
+        List<String> dobRes = readData(sql, dobMap);
+        List<String> prophylaxisArvAtBirthGivenRes = readData(sql, prophylaxisArvAtBirthGivenMap);
+        List<String> riskCategoryRes = readData(sql, riskCategoryMap);
+
+        DateTime dobDateTime = new DateTime(dobRes.get(0));
+        Date dob = dobDateTime.toDate();
+
+        int weeks = getElapsedTimeInWeeks(simpleDateFormat.format(dob));
+
+        if (weeks < 6 && getNextHivTestAge(baseEntityID).equals(Constants.HeiHIVTestAtAge.AT_BIRTH) && riskCategoryRes != null && riskCategoryRes.get(0) != null && riskCategoryRes.get(0).equals("high")) {
+            return prophylaxisArvAtBirthGivenRes == null || prophylaxisArvAtBirthGivenRes.get(0) == null;
+        } else return false;
+    }
+
+    public static boolean isEligibleForProphylaxisArvAt6Weeks(String baseEntityID) {
+        String sql = "SELECT * FROM ec_hei hei\n" +
+                "         LEFT JOIN (SELECT * FROM ec_hei_followup WHERE prophylaxis_arv_at_6_weeks_given IS NOT NULL ORDER BY visit_number DESC LIMIT 1) heif\n" +
+                "                   on hei.base_entity_id = heif.entity_id\n" +
+                "WHERE hei.base_entity_id='" + baseEntityID + "'";
+
+        DataMap<String> dobMap = cursor -> getCursorValue(cursor, "dob");
+        DataMap<String> prophylaxisArvAt6WeeksGivenMap = cursor -> getCursorValue(cursor, "prophylaxis_arv_at_6_weeks_given");
+        DataMap<String> riskCategoryMap = cursor -> getCursorValue(cursor, "risk_category");
+        List<String> riskCategoryRes = readData(sql, riskCategoryMap);
+
+        List<String> dobRes = readData(sql, dobMap);
+        List<String> prophylaxisArvAt6WeeksGivenRes = readData(sql, prophylaxisArvAt6WeeksGivenMap);
+
+        DateTime dobDateTime = new DateTime(dobRes.get(0));
+        Date dob = dobDateTime.toDate();
+
+        int weeks = getElapsedTimeInWeeks(simpleDateFormat.format(dob));
+
+        if (weeks >= 6 && getNextHivTestAge(baseEntityID).equals(Constants.HeiHIVTestAtAge.AT_6_WEEKS) && riskCategoryRes != null && riskCategoryRes.get(0) != null && riskCategoryRes.get(0).equals("high")) {
+            return prophylaxisArvAt6WeeksGivenRes == null || prophylaxisArvAt6WeeksGivenRes.get(0) == null;
+        } else return weeks < 6 && getNextHivTestAge(baseEntityID).equals(Constants.HeiHIVTestAtAge.AT_BIRTH) && riskCategoryRes != null && riskCategoryRes.get(0) != null && riskCategoryRes.get(0).equals("low");
+    }
+
     public static boolean isEligibleForAntiBodiesHivTest(String baseEntityID) {
         String sql = "SELECT * FROM ec_hei hei\n" +
                 "         LEFT JOIN (SELECT * FROM ec_hei_followup WHERE sample_id IS NOT NULL ORDER BY visit_number DESC LIMIT 1) heif\n" +
@@ -108,6 +156,21 @@ public class HeiDao extends AbstractDao {
             return true;
         } else
             return months >= 18 && getNextHivTestAge(baseEntityID).equals(Constants.HeiHIVTestAtAge.AT_18_MONTHS);
+    }
+
+    public static boolean isEligibleForCtx(String baseEntityID) {
+        String sql = "SELECT * FROM ec_hei hei\n" +
+                "WHERE hei.base_entity_id='" + baseEntityID + "'";
+
+        DataMap<String> dobMap = cursor -> getCursorValue(cursor, "dob");
+
+        List<String> dobRes = readData(sql, dobMap);
+
+        DateTime dobDateTime = new DateTime(dobRes.get(0));
+        Date dob = dobDateTime.toDate();
+
+        int weeks = getElapsedTimeInWeeks(simpleDateFormat.format(dob));
+        return weeks >= 6;
     }
 
     private static int getElapsedTimeInMonths(String startDateString) {

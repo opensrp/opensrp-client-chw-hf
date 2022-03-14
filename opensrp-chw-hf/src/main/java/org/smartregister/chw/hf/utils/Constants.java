@@ -83,6 +83,31 @@ public class Constants extends CoreConstants {
         private static final String PMTCT_CLINICAL_STAGING_OF_DISEASE = "pmtct_clinical_staging_of_disease";
         private static final String PMTCT_TB_SCREENING = "pmtct_tb_screening";
         private static final String PMTCT_ARV_LINE = "pmtct_prescription_line_selection";
+        private static final String HEI_DNA_PCR_SAMPLE_COLLECTION = "hei_dna_pcr_sample_collection";
+        private static final String HEI_ANTIBODY_TEST_SAMPLE_COLLECTION = "hei_antibody_test_sample_collection";
+        private static final String HEI_ARV_PRESCRIPTION_HIGH_RISK_INFANT = "hei_arv_prescription_high_risk_infant";
+        private static final String HEI_ARV_PRESCRIPTION_HIGH_OR_LOW_RISK_INFANT = "hei_arv_prescription_high_or_low_risk_infant";
+        private static final String HEI_CTX_PRESCRIPTION = "hei_rv_ctx";
+
+        public static String getHeiCtxPrescription() {
+            return HEI_CTX_PRESCRIPTION;
+        }
+
+        public static String getHeiAntibodyTestSampleCollection() {
+            return HEI_ANTIBODY_TEST_SAMPLE_COLLECTION;
+        }
+
+        public static String getHeiArvPrescriptionHighOrLowRiskInfant() {
+            return HEI_ARV_PRESCRIPTION_HIGH_OR_LOW_RISK_INFANT;
+        }
+
+        public static String getHeiDnaPcrSampleCollection() {
+            return HEI_DNA_PCR_SAMPLE_COLLECTION;
+        }
+
+        public static String getHeiArvPrescriptionHighRiskInfant() {
+            return HEI_ARV_PRESCRIPTION_HIGH_RISK_INFANT;
+        }
 
         public static String getPmtctCounselling() {
             return PMTCT_COUNSELLING;
