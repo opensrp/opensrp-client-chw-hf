@@ -252,7 +252,7 @@ public class HeiDao extends AbstractDao {
             else if (months >= 9)
                 return Constants.HeiHIVTestAtAge.AT_9_MONTHS;
             else if (weeks >= 6)
-                return Constants.HeiHIVTestAtAge.AT_9_MONTHS;
+                return Constants.HeiHIVTestAtAge.AT_6_WEEKS;
             else return Constants.HeiHIVTestAtAge.AT_BIRTH;
         }
 
