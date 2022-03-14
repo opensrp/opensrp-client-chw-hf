@@ -1,6 +1,9 @@
 package org.smartregister.chw.hf.dao;
 
 import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
+import org.joda.time.Months;
+import org.joda.time.Weeks;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.pmtct.domain.MemberObject;
 import org.smartregister.dao.AbstractDao;
@@ -184,16 +187,17 @@ public class HeiDao extends AbstractDao {
             e.printStackTrace();
         }
 
-        Calendar cal = Calendar.getInstance();
-        cal.setTimeInMillis(startDate.getTime());
-        cal.set(Calendar.DAY_OF_MONTH, 1);
-        startDate = cal.getTime();
+        Calendar startDateCal = Calendar.getInstance();
+        startDateCal.setTimeInMillis(startDate.getTime());
+        startDateCal.set(Calendar.DAY_OF_MONTH, 1);
 
-        Date now = new Date(System.currentTimeMillis());
 
-        Calendar c = Calendar.getInstance();
-        c.setTimeInMillis(now.getTime() - startDate.getTime());
-        return c.get(Calendar.MONTH);
+        LocalDate startLocalDate = new LocalDate(startDateCal.get(Calendar.YEAR), startDateCal.get(Calendar.MONTH), startDateCal.get(Calendar.DAY_OF_MONTH));
+
+
+        LocalDate now = new LocalDate();
+
+        return Months.monthsBetween(startLocalDate, now).getMonths();
     }
 
     private static int getElapsedTimeInWeeks(String startDateString) {
@@ -205,11 +209,13 @@ public class HeiDao extends AbstractDao {
             e.printStackTrace();
         }
 
-        Date now = new Date(System.currentTimeMillis());
+        Calendar startDateCal = Calendar.getInstance();
+        startDateCal.setTimeInMillis(startDate.getTime());
 
-        Calendar c = Calendar.getInstance();
-        c.setTimeInMillis(now.getTime() - startDate.getTime());
-        return c.get(Calendar.WEEK_OF_YEAR);
+        LocalDate startLocalDate = new LocalDate(startDateCal.get(Calendar.YEAR), startDateCal.get(Calendar.MONTH), startDateCal.get(Calendar.DAY_OF_MONTH));
+        LocalDate now = new LocalDate();
+
+        return Weeks.weeksBetween(startLocalDate, now).getWeeks();
     }
 
     public static String getNextHivTestAge(String baseEntityID) {
