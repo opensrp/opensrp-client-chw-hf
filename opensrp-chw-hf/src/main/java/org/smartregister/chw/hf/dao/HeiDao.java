@@ -156,6 +156,21 @@ public class HeiDao extends AbstractDao {
             return months >= 18 && getNextHivTestAge(baseEntityID).equals(Constants.HeiHIVTestAtAge.AT_18_MONTHS);
     }
 
+    public static boolean isEligibleForCtx(String baseEntityID) {
+        String sql = "SELECT * FROM ec_hei hei\n" +
+                "WHERE hei.base_entity_id='" + baseEntityID + "'";
+
+        DataMap<String> dobMap = cursor -> getCursorValue(cursor, "dob");
+
+        List<String> dobRes = readData(sql, dobMap);
+
+        DateTime dobDateTime = new DateTime(dobRes.get(0));
+        Date dob = dobDateTime.toDate();
+
+        int weeks = getElapsedTimeInWeeks(simpleDateFormat.format(dob));
+        return weeks >= 6;
+    }
+
     private static int getElapsedTimeInMonths(String startDateString) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
         Date startDate = null;
