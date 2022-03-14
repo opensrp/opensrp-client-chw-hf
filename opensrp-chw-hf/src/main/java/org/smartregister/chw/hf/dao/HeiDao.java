@@ -91,18 +91,18 @@ public class HeiDao extends AbstractDao {
             return riskCategoryRes.get(0).equals("high") && getNextHivTestAge(baseEntityID).equals(Constants.HeiHIVTestAtAge.AT_BIRTH);
     }
 
-    public static boolean isEligibleForProphylaxisArvAtBirth(String baseEntityID) {
+    public static boolean isEligibleForArvPrescriptionForHighRisk(String baseEntityID) {
         String sql = "SELECT * FROM ec_hei hei\n" +
-                "         LEFT JOIN (SELECT * FROM ec_hei_followup WHERE prophylaxis_arv_at_birth_given IS NOT NULL ORDER BY visit_number DESC LIMIT 1) heif\n" +
+                "         LEFT JOIN (SELECT * FROM ec_hei_followup WHERE prophylaxis_arv_for_high_risk_given IS NOT NULL ORDER BY visit_number DESC LIMIT 1) heif\n" +
                 "                   on hei.base_entity_id = heif.entity_id\n" +
                 "WHERE hei.base_entity_id='" + baseEntityID + "'";
 
         DataMap<String> dobMap = cursor -> getCursorValue(cursor, "dob");
-        DataMap<String> prophylaxisArvAtBirthGivenMap = cursor -> getCursorValue(cursor, "prophylaxis_arv_at_birth_given");
+        DataMap<String> prophylaxisArvForHighRiskMap = cursor -> getCursorValue(cursor, "prophylaxis_arv_for_high_risk_given");
         DataMap<String> riskCategoryMap = cursor -> getCursorValue(cursor, "risk_category");
 
         List<String> dobRes = readData(sql, dobMap);
-        List<String> prophylaxisArvAtBirthGivenRes = readData(sql, prophylaxisArvAtBirthGivenMap);
+        List<String> prophylaxisArvForHighRiskRes = readData(sql, prophylaxisArvForHighRiskMap);
         List<String> riskCategoryRes = readData(sql, riskCategoryMap);
 
         DateTime dobDateTime = new DateTime(dobRes.get(0));
@@ -111,23 +111,23 @@ public class HeiDao extends AbstractDao {
         int weeks = getElapsedTimeInWeeks(simpleDateFormat.format(dob));
 
         if (weeks < 6 && getNextHivTestAge(baseEntityID).equals(Constants.HeiHIVTestAtAge.AT_BIRTH) && riskCategoryRes != null && riskCategoryRes.get(0) != null && riskCategoryRes.get(0).equals("high")) {
-            return prophylaxisArvAtBirthGivenRes == null || prophylaxisArvAtBirthGivenRes.get(0) == null;
+            return prophylaxisArvForHighRiskRes == null || prophylaxisArvForHighRiskRes.get(0) == null;
         } else return false;
     }
 
-    public static boolean isEligibleForProphylaxisArvAt6Weeks(String baseEntityID) {
+    public static boolean isEligibleForArvPrescriptionForHighAndLowRisk(String baseEntityID) {
         String sql = "SELECT * FROM ec_hei hei\n" +
-                "         LEFT JOIN (SELECT * FROM ec_hei_followup WHERE prophylaxis_arv_at_6_weeks_given IS NOT NULL ORDER BY visit_number DESC LIMIT 1) heif\n" +
+                "         LEFT JOIN (SELECT * FROM ec_hei_followup WHERE prophylaxis_arv_for_high_and_low_risk_given IS NOT NULL ORDER BY visit_number DESC LIMIT 1) heif\n" +
                 "                   on hei.base_entity_id = heif.entity_id\n" +
                 "WHERE hei.base_entity_id='" + baseEntityID + "'";
 
         DataMap<String> dobMap = cursor -> getCursorValue(cursor, "dob");
-        DataMap<String> prophylaxisArvAt6WeeksGivenMap = cursor -> getCursorValue(cursor, "prophylaxis_arv_at_6_weeks_given");
+        DataMap<String> prophylaxisArvForHighAndLowRiskMap = cursor -> getCursorValue(cursor, "prophylaxis_arv_for_high_and_low_risk_given");
         DataMap<String> riskCategoryMap = cursor -> getCursorValue(cursor, "risk_category");
         List<String> riskCategoryRes = readData(sql, riskCategoryMap);
 
         List<String> dobRes = readData(sql, dobMap);
-        List<String> prophylaxisArvAt6WeeksGivenRes = readData(sql, prophylaxisArvAt6WeeksGivenMap);
+        List<String> prophylaxisArvForHighAndLowRiskRes = readData(sql, prophylaxisArvForHighAndLowRiskMap);
 
         DateTime dobDateTime = new DateTime(dobRes.get(0));
         Date dob = dobDateTime.toDate();
@@ -135,8 +135,9 @@ public class HeiDao extends AbstractDao {
         int weeks = getElapsedTimeInWeeks(simpleDateFormat.format(dob));
 
         if (weeks >= 6 && getNextHivTestAge(baseEntityID).equals(Constants.HeiHIVTestAtAge.AT_6_WEEKS) && riskCategoryRes != null && riskCategoryRes.get(0) != null && riskCategoryRes.get(0).equals("high")) {
-            return prophylaxisArvAt6WeeksGivenRes == null || prophylaxisArvAt6WeeksGivenRes.get(0) == null;
-        } else return weeks < 6 && getNextHivTestAge(baseEntityID).equals(Constants.HeiHIVTestAtAge.AT_BIRTH) && riskCategoryRes != null && riskCategoryRes.get(0) != null && riskCategoryRes.get(0).equals("low");
+            return prophylaxisArvForHighAndLowRiskRes == null || prophylaxisArvForHighAndLowRiskRes.get(0) == null;
+        } else
+            return weeks < 6 && getNextHivTestAge(baseEntityID).equals(Constants.HeiHIVTestAtAge.AT_BIRTH) && riskCategoryRes != null && riskCategoryRes.get(0) != null && riskCategoryRes.get(0).equals("low");
     }
 
     public static boolean isEligibleForAntiBodiesHivTest(String baseEntityID) {
