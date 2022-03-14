@@ -29,4 +29,11 @@ priority: 1
 condition: "step1_preg_outcome == 'born_alive' || step1_preg_outcome == 'alive_with_problem'"
 actions:
   - "calculation = step1_temp_unique_id"
+---
+name: step1_hiv_status
+description: hiv_status calculation
+priority: 1
+condition: "true"
+actions:
+  - "calculation = !step1_hiv_status_question.isEmpty() ? step1_hiv_status_question : global_hiv_status_mother"
 

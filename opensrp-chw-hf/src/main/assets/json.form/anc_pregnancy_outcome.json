@@ -137,10 +137,10 @@
         }
       },
       {
-        "key": "hiv_status",
+        "key": "hiv_status_question",
         "type": "native_radio",
         "label": "HIV status",
-        "openmrs_entity_id": "hiv_status",
+        "openmrs_entity_id": "hiv_status_question",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "options": [
@@ -165,6 +165,27 @@
           "rules-engine": {
             "ex-rules": {
               "rules-file": "anc_pregnancy_outcome_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "hiv_status",
+        "type": "hidden",
+        "openmrs_entity_id": "hiv_status",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_pregnancy_outcome_relevance.yml"
+            }
+          }
+        },
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_pregnancy_outcome_calculation.yml"
             }
           }
         }
