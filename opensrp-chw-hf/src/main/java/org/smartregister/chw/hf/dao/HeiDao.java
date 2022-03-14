@@ -77,13 +77,11 @@ public class HeiDao extends AbstractDao {
         List<String> dobRes = readData(sql, dobMap);
         List<String> riskCategoryRes = readData(sql, riskCategoryMap);
 
-
         DateTime dobDateTime = new DateTime(dobRes.get(0));
         Date dob = dobDateTime.toDate();
 
         int weeks = getElapsedTimeInWeeks(simpleDateFormat.format(dob));
         int months = getElapsedTimeInMonths(simpleDateFormat.format(dob));
-
 
         if (months >= 9 && getNextHivTestAge(baseEntityID).equals(Constants.HeiHIVTestAtAge.AT_9_MONTHS)) {
             return true;
