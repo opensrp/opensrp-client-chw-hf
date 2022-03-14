@@ -3,11 +3,14 @@ package org.smartregister.chw.hf.provider;
 import android.content.Context;
 import android.database.Cursor;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import org.apache.commons.lang3.StringUtils;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.pmtct.fragment.BaseHvlResultsFragment;
-import org.smartregister.chw.pmtct.util.DBConstants;
+
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.provider.HvlResultsViewProvider;
 import org.smartregister.util.Utils;
@@ -35,9 +38,10 @@ public class HeiHivResultsViewProvider extends HvlResultsViewProvider {
     private void populatePatientColumn(CommonPersonObjectClient pc, final RegisterViewHolder viewHolder) {
         try {
 
-            String sampleId = Utils.getValue(pc.getColumnmaps(), DBConstants.KEY.CD4_SAMPLE_ID, false);
-            String collectionDate = Utils.getValue(pc.getColumnmaps(), DBConstants.KEY.CD4_SAMPLE_COLLECTION_DATE, false);
-            String hvlResult = Utils.getValue(pc.getColumnmaps(), DBConstants.KEY.CD4_RESULT, false);
+            String sampleId = Utils.getValue(pc.getColumnmaps(), Constants.DBConstants.HEI_HIV_SAMPLE_ID, false);
+            String collectionDate = Utils.getValue(pc.getColumnmaps(), Constants.DBConstants.HEI_HIV_SAMPLE_COLLECTION_DATE, false);
+            String hvlResult = Utils.getValue(pc.getColumnmaps(), Constants.DBConstants.HEI_HIV_TEST_RESULT, false);
+            String typeOfTest = Utils.getValue(pc.getColumnmaps(), Constants.DBConstants.HEI_HIV_TYPE_OF_TEST, false);
 
             if (StringUtils.isBlank(hvlResult)) {
                 viewHolder.hvlWrapper.setVisibility(View.GONE);
@@ -52,12 +56,19 @@ public class HeiHivResultsViewProvider extends HvlResultsViewProvider {
             viewHolder.collectionDate.setText(collectionDate);
             viewHolder.recordHvl.setTag(pc);
             viewHolder.recordHvl.setTag(org.smartregister.pmtct.R.id.VIEW_ID, BaseHvlResultsFragment.CLICK_VIEW_NORMAL);
-            viewHolder.recordHvl.setText(R.string.record_cd4);
-            viewHolder.resultTitle.setText(R.string.cd4_count);
             viewHolder.recordHvl.setOnClickListener(onClickListener);
+
+            TextView tvTypeOfTest = viewHolder.itemView.findViewById(R.id.type_of_test);
+            tvTypeOfTest.setText(typeOfTest);
 
         } catch (Exception e) {
             Timber.e(e);
         }
+    }
+
+    @Override
+    public RegisterViewHolder createViewHolder(ViewGroup parent) {
+        View view = inflater().inflate(R.layout.hei_hiv_results_list_row, parent, false);
+        return new RegisterViewHolder(view);
     }
 }

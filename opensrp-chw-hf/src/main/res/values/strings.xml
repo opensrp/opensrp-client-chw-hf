@@ -112,5 +112,8 @@
     <string name="hei_toolbar_title">Return To All HEI Clients</string>
     <string name="record_followup">Record HEI Followup</string>
     <string name="hei_visit">HEI Visit</string>
+    <string name="result">Result</string>
+    <string name="type_of_test">Type Of Test</string>
+    <string name="record_result">Record Result</string>
 
 </resources>
