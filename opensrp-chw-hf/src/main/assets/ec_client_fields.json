@@ -418,19 +418,19 @@
           }
         },
         {
-          "column_name": "prophylaxis_arv_at_birth_given",
+          "column_name": "prophylaxis_arv_for_high_risk_given",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "prophylaxis_arv_at_birth_given"
+            "concept": "prophylaxis_arv_for_high_risk_given"
           }
         },
         {
-          "column_name": "prophylaxis_arv_at_6_weeks_given",
+          "column_name": "prophylaxis_arv_for_high_and_low_risk_given",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "prophylaxis_arv_at_6_weeks_given"
+            "concept": "prophylaxis_arv_for_high_and_low_risk_given"
           }
         },
         {
