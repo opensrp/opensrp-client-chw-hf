@@ -3188,22 +3188,6 @@
           }
         },
         {
-          "column_name": "problem",
-          "type": "Event",
-          "json_mapping": {
-            "field": "obs.fieldCode",
-            "concept": "problem"
-          }
-        },
-        {
-          "column_name": "problem_other",
-          "type": "Event",
-          "json_mapping": {
-            "field": "obs.fieldCode",
-            "concept": "problem_other"
-          }
-        },
-        {
           "column_name": "action_taken_hiv_problems",
           "type": "Event",
           "json_mapping": {

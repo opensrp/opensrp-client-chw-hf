@@ -58,103 +58,6 @@
       "title": "HIV Testing Outcome",
       "fields": [
         {
-          "name": "problem",
-          "type": "multi_choice_checkbox",
-          "properties": {
-            "text": "Pick problem/condition associated with the client."
-          },
-          "meta_data": {
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "problem"
-          },
-          "options": [
-            {
-              "name": "frequent_fever",
-              "text": "Frequent fever",
-              "meta_data": {
-                "openmrs_entity": "",
-                "openmrs_entity_id": "frequent_fever",
-                "openmrs_entity_parent": ""
-              }
-            },
-            {
-              "name": "weight_loss",
-              "text": "Weight loss",
-              "meta_data": {
-                "openmrs_entity": "",
-                "openmrs_entity_id": "weight_loss",
-                "openmrs_entity_parent": ""
-              }
-            },
-            {
-              "name": "rashes",
-              "text": "Rashes",
-              "meta_data": {
-                "openmrs_entity": "",
-                "openmrs_entity_id": "rashes",
-                "openmrs_entity_parent": ""
-              }
-            },
-            {
-              "name": "fatigue",
-              "text": "Fatigue",
-              "meta_data": {
-                "openmrs_entity": "",
-                "openmrs_entity_id": "fatigue",
-                "openmrs_entity_parent": ""
-              }
-            },
-            {
-              "name": "mouth_ulcers",
-              "text": "Mouth ulcers",
-              "meta_data": {
-                "openmrs_entity": "",
-                "openmrs_entity_id": "mouth_ulcers",
-                "openmrs_entity_parent": ""
-              }
-            },
-            {
-              "name": "Other",
-              "text": "Other",
-              "meta_data": {
-                "openmrs_entity": "",
-                "openmrs_entity_id": "Other",
-                "openmrs_entity_parent": ""
-              }
-            },
-            {
-              "name": "None",
-              "text": "None",
-              "is_exclusive": true,
-              "meta_data": {
-                "openmrs_entity": "",
-                "openmrs_entity_id": "None",
-                "openmrs_entity_parent": ""
-              }
-            }
-          ],
-          "required_status": "yes:Please specify client's problems",
-          "dependent_calculations": [
-            "hiv_facility_visit_date"
-          ]
-        },
-        {
-          "name": "problem_other",
-          "type": "text_input_edit_text",
-          "properties": {
-            "hint": "Other Problems",
-            "type": "name"
-          },
-          "meta_data": {
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "problem_other",
-            "openmrs_entity_parent": "problem"
-          },
-          "required_status": "true:Please specify other symptoms",
-          "subjects": "problem:map"
-        },
-        {
           "name": "action_taken_hiv_problems",
           "type": "radio_group",
           "properties": {
@@ -288,7 +191,7 @@
             }
           ],
           "required_status": "true:Please fill client's CTC number",
-          "subjects": "enrolled_to_clinic:map"
+          "subjects": "enrolled_to_clinic:map,test_results:map"
         },
         {
           "name": "comment_hiv_problems",
