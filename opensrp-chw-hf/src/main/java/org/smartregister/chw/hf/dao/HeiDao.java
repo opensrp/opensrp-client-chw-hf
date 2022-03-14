@@ -213,13 +213,19 @@ public class HeiDao extends AbstractDao {
     }
 
     public static String getNextHivTestAge(String baseEntityID) {
-        String sql = "SELECT test_at_age FROM ec_hei_followup WHERE sample_id IS NOT NULL AND entity_id='" + baseEntityID + "' ORDER BY visit_number DESC LIMIT 1";
-        DataMap<String> map = cursor -> getCursorValue(cursor, "test_at_age");
-        List<String> res = readData(sql, map);
+        String sql = "SELECT * FROM ec_hei hei\n" +
+                "         LEFT JOIN (SELECT * FROM ec_hei_followup WHERE sample_id IS NOT NULL ORDER BY visit_number DESC LIMIT 1) heif\n" +
+                "                   on hei.base_entity_id = heif.entity_id\n" +
+                "WHERE hei.base_entity_id='" + baseEntityID + "'";
 
-        if (res != null && res.size() > 0 && res.get(0) != null) {
+        DataMap<String> testAtAgeMap = cursor -> getCursorValue(cursor, "test_at_age");
+        DataMap<String> dobMap = cursor -> getCursorValue(cursor, "dob");
+        List<String> testAtAgeRes = readData(sql, testAtAgeMap);
+        List<String> dobRes = readData(sql, dobMap);
+
+        if (testAtAgeRes != null && testAtAgeRes.size() > 0 && testAtAgeRes.get(0) != null) {
             String testAt = null;
-            switch (res.get(0)) {
+            switch (testAtAgeRes.get(0)) {
                 case Constants.HeiHIVTestAtAge.AT_BIRTH:
                     testAt = Constants.HeiHIVTestAtAge.AT_6_WEEKS;
                     break;
@@ -234,8 +240,21 @@ public class HeiDao extends AbstractDao {
                     break;
             }
             return testAt;
-        } else
-            return Constants.HeiHIVTestAtAge.AT_BIRTH;
+        } else {
+            DateTime dobDateTime = new DateTime(dobRes.get(0));
+            Date dob = dobDateTime.toDate();
+
+            int weeks = getElapsedTimeInWeeks(simpleDateFormat.format(dob));
+            int months = getElapsedTimeInMonths(simpleDateFormat.format(dob));
+
+            if (months >= 15)
+                return Constants.HeiHIVTestAtAge.AT_15_MONTHS;
+            else if (months >= 9)
+                return Constants.HeiHIVTestAtAge.AT_9_MONTHS;
+            else if (weeks >= 6)
+                return Constants.HeiHIVTestAtAge.AT_9_MONTHS;
+            else return Constants.HeiHIVTestAtAge.AT_BIRTH;
+        }
 
     }
 
