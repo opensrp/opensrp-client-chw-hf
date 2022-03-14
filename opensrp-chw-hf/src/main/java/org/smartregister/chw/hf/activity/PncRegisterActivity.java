@@ -13,6 +13,7 @@ import org.json.JSONObject;
 import org.smartregister.chw.anc.model.BaseAncRegisterModel;
 import org.smartregister.chw.anc.presenter.BaseAncRegisterPresenter;
 import org.smartregister.chw.anc.util.Constants;
+import org.smartregister.chw.anc.util.DBConstants;
 import org.smartregister.chw.anc.util.JsonFormUtils;
 import org.smartregister.chw.core.activity.CoreFamilyRegisterActivity;
 import org.smartregister.chw.core.activity.CorePncRegisterActivity;
@@ -24,6 +25,8 @@ import org.smartregister.job.SyncServiceJob;
 import org.smartregister.view.fragment.BaseRegisterFragment;
 
 import timber.log.Timber;
+
+import static org.smartregister.util.JsonFormUtils.getFieldJSONObject;
 
 public class PncRegisterActivity extends CorePncRegisterActivity {
     protected static boolean motherHivStatus;
@@ -47,7 +50,13 @@ public class PncRegisterActivity extends CorePncRegisterActivity {
     @Override
     public void startFormActivity(JSONObject jsonForm) {
         try {
+            JSONArray fields = org.smartregister.util.JsonFormUtils.fields(jsonForm);
             JSONObject global = jsonForm.getJSONObject("global");
+
+            JSONObject familyIdObject = getFieldJSONObject(fields, DBConstants.KEY.RELATIONAL_ID);
+            familyIdObject.put(JsonFormUtils.VALUE, familyBaseEntityId);
+
+
             global.put("hiv_status_mother", motherHivStatus);
             Intent intent = new Intent(this, Utils.metadata().familyMemberFormActivity);
             intent.putExtra(org.smartregister.family.util.Constants.JSON_FORM_EXTRA.JSON, jsonForm.toString());
