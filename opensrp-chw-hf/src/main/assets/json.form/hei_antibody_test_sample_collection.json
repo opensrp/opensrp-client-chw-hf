@@ -162,6 +162,13 @@
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "value": "Antibody Confirmation Test"
+      },
+      {
+        "key": "test_at_age",
+        "type": "hidden",
+        "openmrs_entity_id": "test_at_age",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": ""
       }
     ]
   }

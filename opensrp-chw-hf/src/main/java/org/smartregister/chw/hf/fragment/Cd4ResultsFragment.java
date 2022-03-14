@@ -1,5 +1,7 @@
 package org.smartregister.chw.hf.fragment;
 
+import android.os.Bundle;
+
 import com.vijay.jsonwizard.utils.FormUtils;
 
 import org.json.JSONException;
@@ -19,6 +21,25 @@ import java.util.Set;
 
 public class Cd4ResultsFragment extends BaseHvlResultsFragment {
 
+    public static final String BASE_ENTITY_ID = "BASE_ENTITY_ID";
+    private String baseEntityId;
+
+    public static HeiHivResultsFragment newInstance(String baseEntityId) {
+        HeiHivResultsFragment heiHivResultsFragment = new HeiHivResultsFragment();
+        Bundle b = new Bundle();
+        b.putString(BASE_ENTITY_ID, baseEntityId);
+        heiHivResultsFragment.setArguments(b);
+        return heiHivResultsFragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        if (getArguments() != null) {
+            this.baseEntityId = getArguments().getString(BASE_ENTITY_ID);
+        }
+        super.onCreate(savedInstanceState);
+    }
+
     @Override
     public void initializeAdapter(Set<View> visibleColumns) {
         Cd4ResultsViewProvider resultsViewProvider = new Cd4ResultsViewProvider(getActivity(), paginationViewHandler, registerActionHandler, visibleColumns);
@@ -32,7 +53,7 @@ public class Cd4ResultsFragment extends BaseHvlResultsFragment {
         if (getActivity() == null) {
             return;
         }
-        presenter = new Cd4ResultsFragmentPresenter(this, new Cd4ResultsFragmentModel(), null);
+        presenter = new Cd4ResultsFragmentPresenter(baseEntityId, this, new Cd4ResultsFragmentModel(), null);
     }
 
     @Override

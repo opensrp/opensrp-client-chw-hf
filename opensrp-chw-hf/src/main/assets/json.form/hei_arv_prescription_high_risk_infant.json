@@ -211,6 +211,14 @@
         "type": "hidden"
       },
       {
+        "key": "prophylaxis_arv_for_high_risk_given",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "prophylaxis_arv_for_high_risk_given",
+        "type": "hidden",
+        "value": "true"
+      },
+      {
         "key": "followup_visit_date",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",

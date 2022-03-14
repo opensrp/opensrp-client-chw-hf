@@ -72,6 +72,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
+            android:name=".activity.HeiHivResultsViewActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
             android:name=".activity.PmtctProfileActivity"
             android:screenOrientation="portrait"
             android:theme="@style/HFTheme.NoActionBar" />
