@@ -123,6 +123,8 @@ public class HeiDao extends AbstractDao {
 
         DataMap<String> dobMap = cursor -> getCursorValue(cursor, "dob");
         DataMap<String> prophylaxisArvAt6WeeksGivenMap = cursor -> getCursorValue(cursor, "prophylaxis_arv_at_6_weeks_given");
+        DataMap<String> riskCategoryMap = cursor -> getCursorValue(cursor, "risk_category");
+        List<String> riskCategoryRes = readData(sql, riskCategoryMap);
 
         List<String> dobRes = readData(sql, dobMap);
         List<String> prophylaxisArvAt6WeeksGivenRes = readData(sql, prophylaxisArvAt6WeeksGivenMap);
@@ -132,9 +134,9 @@ public class HeiDao extends AbstractDao {
 
         int weeks = getElapsedTimeInWeeks(simpleDateFormat.format(dob));
 
-        if (weeks >= 6 && getNextHivTestAge(baseEntityID).equals(Constants.HeiHIVTestAtAge.AT_6_WEEKS)) {
+        if (weeks >= 6 && getNextHivTestAge(baseEntityID).equals(Constants.HeiHIVTestAtAge.AT_6_WEEKS) && riskCategoryRes != null && riskCategoryRes.get(0) != null && riskCategoryRes.get(0).equals("high")) {
             return prophylaxisArvAt6WeeksGivenRes == null || prophylaxisArvAt6WeeksGivenRes.get(0) == null;
-        } else return false;
+        } else return weeks < 6 && getNextHivTestAge(baseEntityID).equals(Constants.HeiHIVTestAtAge.AT_BIRTH) && riskCategoryRes != null && riskCategoryRes.get(0) != null && riskCategoryRes.get(0).equals("low");
     }
 
     public static boolean isEligibleForAntiBodiesHivTest(String baseEntityID) {
