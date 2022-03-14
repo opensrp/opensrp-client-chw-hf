@@ -43,7 +43,7 @@ public class HvlResultsViewActivity extends BaseHvlResultsViewActivity implement
 
     @Override
     public BaseHvlResultsFragment getBaseFragment() {
-        return new HvlResultsFragment();
+        return HvlResultsFragment.newInstance(baseEntityId);
     }
 
     @Override
