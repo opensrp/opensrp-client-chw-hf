@@ -170,27 +170,6 @@
         }
       },
       {
-        "key": "hiv_status",
-        "type": "hidden",
-        "openmrs_entity_id": "hiv_status",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "anc_pregnancy_outcome_relevance.yml"
-            }
-          }
-        },
-        "calculation": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "anc_pregnancy_outcome_calculation.yml"
-            }
-          }
-        }
-      },
-      {
         "key": "ctc_number",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -215,7 +194,7 @@
           "err": "Please enter a valid CTC Number"
         },
         "relevance": {
-          "step1:hiv_status": {
+          "step1:hiv_status_question": {
             "type": "string",
             "ex": "equalTo(., \"positive\")"
           }
@@ -734,6 +713,27 @@
             }
           }
         ]
+      },
+      {
+        "key": "hiv_status",
+        "type": "hidden",
+        "openmrs_entity_id": "hiv_status",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_pregnancy_outcome_relevance.yml"
+            }
+          }
+        },
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_pregnancy_outcome_calculation.yml"
+            }
+          }
+        }
       }
     ]
   }
