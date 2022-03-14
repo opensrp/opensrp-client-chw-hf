@@ -212,7 +212,7 @@ public class HfPmtctDao extends CorePmtctDao {
 
         LocalDate now = new LocalDate();
 
-        return Months.monthsBetween(startLocalDate, now).getMonths();
+        return Months.monthsBetween(startLocalDate, now).getMonths()-1;
     }
 
     public static boolean hasHvlResults(String baseEntityId) {

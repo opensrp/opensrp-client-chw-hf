@@ -197,7 +197,7 @@ public class HeiDao extends AbstractDao {
 
         LocalDate now = new LocalDate();
 
-        return Months.monthsBetween(startLocalDate, now).getMonths();
+        return Months.monthsBetween(startLocalDate, now).getMonths() - 1;
     }
 
     private static int getElapsedTimeInWeeks(String startDateString) {
@@ -215,38 +215,16 @@ public class HeiDao extends AbstractDao {
         LocalDate startLocalDate = new LocalDate(startDateCal.get(Calendar.YEAR), startDateCal.get(Calendar.MONTH), startDateCal.get(Calendar.DAY_OF_MONTH));
         LocalDate now = new LocalDate();
 
-        return Weeks.weeksBetween(startLocalDate, now).getWeeks();
+        return Weeks.weeksBetween(startLocalDate, now).getWeeks() - 1;
     }
 
     public static String getNextHivTestAge(String baseEntityID) {
-        String sql = "SELECT * FROM ec_hei hei\n" +
-                "         LEFT JOIN (SELECT * FROM ec_hei_followup WHERE sample_id IS NOT NULL ORDER BY visit_number DESC LIMIT 1) heif\n" +
-                "                   on hei.base_entity_id = heif.entity_id\n" +
-                "WHERE hei.base_entity_id='" + baseEntityID + "'";
+        String sql = "SELECT * FROM ec_hei  WHERE base_entity_id='" + baseEntityID + "'";
 
-        DataMap<String> testAtAgeMap = cursor -> getCursorValue(cursor, "test_at_age");
         DataMap<String> dobMap = cursor -> getCursorValue(cursor, "dob");
-        List<String> testAtAgeRes = readData(sql, testAtAgeMap);
         List<String> dobRes = readData(sql, dobMap);
 
-        if (testAtAgeRes != null && testAtAgeRes.size() > 0 && testAtAgeRes.get(0) != null) {
-            String testAt = null;
-            switch (testAtAgeRes.get(0)) {
-                case Constants.HeiHIVTestAtAge.AT_BIRTH:
-                    testAt = Constants.HeiHIVTestAtAge.AT_6_WEEKS;
-                    break;
-                case Constants.HeiHIVTestAtAge.AT_6_WEEKS:
-                    testAt = Constants.HeiHIVTestAtAge.AT_9_MONTHS;
-                    break;
-                case Constants.HeiHIVTestAtAge.AT_9_MONTHS:
-                    testAt = Constants.HeiHIVTestAtAge.AT_15_MONTHS;
-                    break;
-                case Constants.HeiHIVTestAtAge.AT_15_MONTHS:
-                    testAt = Constants.HeiHIVTestAtAge.AT_18_MONTHS;
-                    break;
-            }
-            return testAt;
-        } else {
+        if (dobRes != null && dobRes.size() > 0 && dobRes.get(0) != null) {
             DateTime dobDateTime = new DateTime(dobRes.get(0));
             Date dob = dobDateTime.toDate();
 
@@ -260,7 +238,7 @@ public class HeiDao extends AbstractDao {
             else if (weeks >= 6)
                 return Constants.HeiHIVTestAtAge.AT_6_WEEKS;
             else return Constants.HeiHIVTestAtAge.AT_BIRTH;
-        }
+        } else return Constants.HeiHIVTestAtAge.AT_BIRTH;
 
     }
 
