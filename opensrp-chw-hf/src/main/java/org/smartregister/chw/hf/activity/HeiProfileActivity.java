@@ -84,6 +84,17 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
 
         textViewRecordPmtct.setText(R.string.record_followup);
         textViewRecordPmtct.setOnClickListener(this);
+
+        view_hvl_results_row.setVisibility(View.VISIBLE);
+        rlHvlResults.setVisibility(View.VISIBLE);
+
+        TextView tvHeiResultsTitle = findViewById(R.id.textview_hvl_results);
+        TextView tvHeiResultsSubTitle = findViewById(R.id.tv_view_hvl_results);
+
+        tvHeiResultsTitle.setText("HIV Test Results");
+        tvHeiResultsSubTitle.setText("View Child's HIV Test Results");
+
+        rlHvlResults.setOnClickListener(this);
     }
 
     @Override
@@ -93,7 +104,13 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
         if(id == R.id.textview_record_pmtct){
             HeiFollowupVisitActivity.startHeiFollowUpActivity(this, baseEntityId,false);
         }
+        if(id == R.id.rlHvlResults){
+            Intent intent = new Intent(this, HeiHivResultsViewActivity.class);
+            startActivity(intent);
+        }
     }
+
+
 
     @SuppressLint("DefaultLocale")
     @Override

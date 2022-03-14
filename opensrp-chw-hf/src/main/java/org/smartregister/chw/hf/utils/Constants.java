@@ -47,6 +47,8 @@ public class Constants extends CoreConstants {
         public static final String ANC_RECURRING_FACILITY_VISIT = "ec_anc_recurring_facility_visit";
         public static final String PMTCT_EAC_VISIT = "ec_pmtct_eac_visit";
         public static final String HEI = "ec_hei";
+        public static final String HEI_HIV_RESULTS = "ec_hei_hiv_results";
+        public static final String HEI_FOLLOWUP = "ec_hei_followup";
     }
 
     public static final class Visits {
@@ -249,6 +251,12 @@ public class Constants extends CoreConstants {
         public static final String ANC_SYPHILIS = "syphilis";
         public static final String ANC_HEPATITIS = "hepatitis";
         public static final String TASK_ID = "task_id";
+        public static final String HEI_FOLLOWUP_FORM_SUBMISSION_ID = "hei_followup_form_submission_id";
+        public static final String HEI_HIV_SAMPLE_ID = "sample_id";
+        public static final String HEI_HIV_TEST_RESULT ="hiv_test_result";
+        public static final String HEI_HIV_SAMPLE_COLLECTION_DATE = "sample_collection_date";
+        public static final String HEI_HIV_RESULT_DATE = "hiv_test_result_date";
+        public static final String HEI_HIV_TYPE_OF_TEST = "type_of_hiv_test";
     }
 
     public static final class EacVisitTypes {
