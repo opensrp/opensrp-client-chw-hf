@@ -4,7 +4,7 @@ import org.smartregister.chw.core.interactor.CorePmtctHomeVisitInteractor;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.dao.HeiDao;
 import org.smartregister.chw.hf.utils.Constants;
-import org.smartregister.chw.hf.utils.PmtctVisitUtils;
+import org.smartregister.chw.hf.utils.HeiVisitUtils;
 import org.smartregister.chw.pmtct.contract.BasePmtctHomeVisitContract;
 import org.smartregister.chw.pmtct.domain.MemberObject;
 import org.smartregister.chw.pmtct.model.BasePmtctHomeVisitAction;
@@ -37,7 +37,7 @@ public class HeiFollowupVisitInteractor extends CorePmtctHomeVisitInteractor {
     public void calculateActions(BasePmtctHomeVisitContract.View view, MemberObject memberObject, BasePmtctHomeVisitContract.InteractorCallBack callBack) {
         super.calculateActions(view, memberObject, callBack);
         try {
-            PmtctVisitUtils.processVisits();
+            HeiVisitUtils.processVisits();
         } catch (Exception e) {
             Timber.e(e);
         }

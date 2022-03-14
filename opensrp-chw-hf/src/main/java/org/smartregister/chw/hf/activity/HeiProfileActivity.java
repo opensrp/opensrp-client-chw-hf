@@ -23,6 +23,7 @@ import org.smartregister.chw.hf.custom_view.PmtctFloatingMenu;
 import org.smartregister.chw.hf.dao.HeiDao;
 import org.smartregister.chw.hf.interactor.HeiProfileInteractor;
 import org.smartregister.chw.hf.presenter.HeiProfilePresenter;
+import org.smartregister.chw.hf.utils.HeiVisitUtils;
 import org.smartregister.chw.pmtct.activity.BasePmtctProfileActivity;
 import org.smartregister.chw.pmtct.util.Constants;
 import org.smartregister.chw.pmtct.util.PmtctUtil;
@@ -76,6 +77,11 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
     @Override
     protected void setupViews() {
         super.setupViews();
+        try {
+            HeiVisitUtils.processVisits();
+        } catch (Exception e) {
+            Timber.e(e);
+        }
         int defaultImage = org.smartregister.chw.core.R.drawable.rowavatar_child;
         ImageView imageViewProfile = findViewById(org.smartregister.chw.core.R.id.imageview_profile);
         imageViewProfile.setImageDrawable(getResources().getDrawable(defaultImage));
@@ -101,15 +107,14 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
     public void onClick(View view) {
         super.onClick(view);
         int id = view.getId();
-        if(id == R.id.textview_record_pmtct){
-            HeiFollowupVisitActivity.startHeiFollowUpActivity(this, baseEntityId,false);
+        if (id == R.id.textview_record_pmtct) {
+            HeiFollowupVisitActivity.startHeiFollowUpActivity(this, baseEntityId, false);
         }
-        if(id == R.id.rlHvlResults){
+        if (id == R.id.rlHvlResults) {
             Intent intent = new Intent(this, HeiHivResultsViewActivity.class);
             startActivity(intent);
         }
     }
-
 
 
     @SuppressLint("DefaultLocale")
