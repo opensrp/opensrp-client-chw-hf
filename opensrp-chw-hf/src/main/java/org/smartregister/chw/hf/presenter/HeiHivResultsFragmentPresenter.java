@@ -15,7 +15,7 @@ public class HeiHivResultsFragmentPresenter extends BaseHvlResultsFragmentPresen
     @Override
     public String getMainCondition() {
         return " " + Constants.TableName.HEI_FOLLOWUP + "." + Constants.DBConstants.HEI_HIV_SAMPLE_ID + " IS NOT NULL " +
-                " AND ec_hei_followup.entity_id = '" + baseEntityId + "'";
+                " AND " + Constants.TableName.HEI_FOLLOWUP +".entity_id = '" + baseEntityId + "'";
     }
 
     @Override
