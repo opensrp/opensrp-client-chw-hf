@@ -88,6 +88,8 @@ public class Constants extends CoreConstants {
         private static final String HEI_ARV_PRESCRIPTION_HIGH_RISK_INFANT = "hei_arv_prescription_high_risk_infant";
         private static final String HEI_ARV_PRESCRIPTION_HIGH_OR_LOW_RISK_INFANT = "hei_arv_prescription_high_or_low_risk_infant";
         private static final String HEI_CTX_PRESCRIPTION = "hei_rv_ctx";
+        private static final String HEI_HIV_TEST_RESULTS = "hei_hiv_test_results";
+
 
         public static String getHeiCtxPrescription() {
             return HEI_CTX_PRESCRIPTION;
@@ -95,6 +97,10 @@ public class Constants extends CoreConstants {
 
         public static String getHeiAntibodyTestSampleCollection() {
             return HEI_ANTIBODY_TEST_SAMPLE_COLLECTION;
+        }
+
+        public static String getHeiHivTestResults() {
+            return HEI_HIV_TEST_RESULTS;
         }
 
         public static String getHeiArvPrescriptionHighOrLowRiskInfant() {

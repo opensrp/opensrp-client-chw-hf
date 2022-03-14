@@ -109,7 +109,7 @@ public class HeiHivResultsViewActivity extends BaseHvlResultsViewActivity implem
             String jsonString = data.getStringExtra(Constants.JSON_FORM_EXTRA.JSON);
             try {
                 AllSharedPreferences allSharedPreferences = org.smartregister.util.Utils.getAllSharedPreferences();
-                Event baseEvent = org.smartregister.chw.pmtct.util.JsonFormUtils.processJsonForm(allSharedPreferences, jsonString, Constants.TABLES.PMTCT_CD4_RESULTS);
+                Event baseEvent = org.smartregister.chw.pmtct.util.JsonFormUtils.processJsonForm(allSharedPreferences, jsonString, org.smartregister.chw.hf.utils.Constants.TableName.HEI_HIV_RESULTS);
                 org.smartregister.chw.pmtct.util.JsonFormUtils.tagEvent(allSharedPreferences, baseEvent);
                 baseEvent.setBaseEntityId(baseEntityId);
                 baseEvent.addObs(
