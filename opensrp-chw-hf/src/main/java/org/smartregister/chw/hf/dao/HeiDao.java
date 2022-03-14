@@ -76,9 +76,11 @@ public class HeiDao extends AbstractDao {
 
         DataMap<String> dobMap = cursor -> getCursorValue(cursor, "dob");
         DataMap<String> riskCategoryMap = cursor -> getCursorValue(cursor, "risk_category");
+        DataMap<String> sampleIdMap = cursor -> getCursorValue(cursor, "sample_id");
 
         List<String> dobRes = readData(sql, dobMap);
         List<String> riskCategoryRes = readData(sql, riskCategoryMap);
+        List<String> sampleIdRes = readData(sql, sampleIdMap);
 
         DateTime dobDateTime = new DateTime(dobRes.get(0));
         Date dob = dobDateTime.toDate();
@@ -86,12 +88,12 @@ public class HeiDao extends AbstractDao {
         int weeks = getElapsedTimeInWeeks(simpleDateFormat.format(dob));
         int months = getElapsedTimeInMonths(simpleDateFormat.format(dob));
 
-        if (months >= 9 && getNextHivTestAge(baseEntityID).equals(Constants.HeiHIVTestAtAge.AT_9_MONTHS)) {
+        if (months >= 9 && getNextHivTestAge(baseEntityID).equals(Constants.HeiHIVTestAtAge.AT_9_MONTHS) && sampleIdRes != null && sampleIdRes.size() > 0 && sampleIdRes.get(0) != null) {
             return true;
-        } else if (weeks >= 6 && getNextHivTestAge(baseEntityID).equals(Constants.HeiHIVTestAtAge.AT_6_WEEKS)) {
+        } else if (weeks >= 6 && getNextHivTestAge(baseEntityID).equals(Constants.HeiHIVTestAtAge.AT_6_WEEKS) && sampleIdRes != null && sampleIdRes.size() > 0 && sampleIdRes.get(0) != null) {
             return true;
         } else
-            return riskCategoryRes.get(0).equals("high") && getNextHivTestAge(baseEntityID).equals(Constants.HeiHIVTestAtAge.AT_BIRTH);
+            return riskCategoryRes.get(0).equals("high") && getNextHivTestAge(baseEntityID).equals(Constants.HeiHIVTestAtAge.AT_BIRTH) && sampleIdRes != null && sampleIdRes.size() > 0 && sampleIdRes.get(0) != null;
     }
 
     public static boolean isEligibleForArvPrescriptionForHighRisk(String baseEntityID) {
