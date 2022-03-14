@@ -1,19 +1,5 @@
 package org.smartregister.chw.hf.interactor;
 
-import static org.smartregister.chw.anc.util.Constants.TABLES.EC_CHILD;
-import static org.smartregister.chw.anc.util.DBConstants.KEY.DOB;
-import static org.smartregister.chw.anc.util.DBConstants.KEY.LAST_NAME;
-import static org.smartregister.chw.anc.util.DBConstants.KEY.MOTHER_ENTITY_ID;
-import static org.smartregister.chw.anc.util.DBConstants.KEY.RELATIONAL_ID;
-import static org.smartregister.chw.anc.util.DBConstants.KEY.UNIQUE_ID;
-import static org.smartregister.chw.anc.util.JsonFormUtils.updateFormField;
-import static org.smartregister.chw.hf.utils.Constants.Events.HEI_REGISTRATION;
-import static org.smartregister.chw.hf.utils.Constants.HIV_STATUS.POSITIVE;
-import static org.smartregister.chw.hf.utils.Constants.JSON_FORM_EXTRA.RISK_CATEGORY;
-import static org.smartregister.chw.hf.utils.Constants.TableName.HEI;
-import static org.smartregister.chw.hf.utils.JsonFormUtils.ENCOUNTER_TYPE;
-import static org.smartregister.util.JsonFormUtils.getFieldJSONObject;
-
 import com.vijay.jsonwizard.constants.JsonFormConstants;
 
 import org.apache.commons.lang3.StringUtils;
@@ -42,8 +28,61 @@ import java.util.Map;
 
 import timber.log.Timber;
 
+import static org.smartregister.chw.anc.util.Constants.TABLES.EC_CHILD;
+import static org.smartregister.chw.anc.util.DBConstants.KEY.DOB;
+import static org.smartregister.chw.anc.util.DBConstants.KEY.LAST_NAME;
+import static org.smartregister.chw.anc.util.DBConstants.KEY.MOTHER_ENTITY_ID;
+import static org.smartregister.chw.anc.util.DBConstants.KEY.RELATIONAL_ID;
+import static org.smartregister.chw.anc.util.DBConstants.KEY.UNIQUE_ID;
+import static org.smartregister.chw.anc.util.JsonFormUtils.updateFormField;
+import static org.smartregister.chw.hf.utils.Constants.Events.HEI_REGISTRATION;
+import static org.smartregister.chw.hf.utils.Constants.HIV_STATUS.POSITIVE;
+import static org.smartregister.chw.hf.utils.Constants.JSON_FORM_EXTRA.RISK_CATEGORY;
+import static org.smartregister.chw.hf.utils.Constants.TableName.HEI;
+import static org.smartregister.chw.hf.utils.JsonFormUtils.ENCOUNTER_TYPE;
+import static org.smartregister.util.JsonFormUtils.getFieldJSONObject;
+
 public class AncRegisterInteractor extends BaseAncRegisterInteractor {
     private String locationID;
+
+    public static JSONObject populatePNCForm(JSONObject form, JSONArray fields, String familyBaseEntityId, String motherBaseId, String childRiskCategory, String uniqueChildID, String dob, String lastName) {
+        try {
+            if (form != null) {
+                form.put(RELATIONAL_ID, familyBaseEntityId);
+                form.put(MOTHER_ENTITY_ID, motherBaseId);
+                JSONObject stepOne = form.getJSONObject(JsonFormUtils.STEP1);
+                JSONArray jsonArray = stepOne.getJSONArray(JsonFormUtils.FIELDS);
+
+
+                JSONObject preLoadObject;
+                JSONObject jsonObject;
+                updateFormField(jsonArray, MOTHER_ENTITY_ID, motherBaseId);
+                updateFormField(jsonArray, RISK_CATEGORY, childRiskCategory);
+                updateFormField(jsonArray, UNIQUE_ID, uniqueChildID);
+                updateFormField(jsonArray, DOB, dob);
+                updateFormField(jsonArray, LAST_NAME, lastName);
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    jsonObject = jsonArray.getJSONObject(i);
+                    preLoadObject = getFieldJSONObject(fields, jsonObject.optString(JsonFormUtils.KEY));
+                    if (preLoadObject != null) {
+                        jsonObject.put(JsonFormUtils.VALUE, preLoadObject.opt(JsonFormUtils.VALUE));
+
+                        String type = preLoadObject.getString(JsonFormConstants.TYPE);
+                        if (type.equals(JsonFormConstants.CHECK_BOX)) {
+                            // replace the options
+                            jsonObject.put(JsonFormConstants.OPTIONS_FIELD_NAME, preLoadObject.opt(JsonFormConstants.OPTIONS_FIELD_NAME));
+                        }
+                    }
+                }
+
+                return form;
+            }
+        } catch (Exception e) {
+            Timber.e(e);
+        }
+
+        return null;
+    }
 
     @Override
     protected String getLocationID() {
@@ -72,14 +111,17 @@ public class AncRegisterInteractor extends BaseAncRegisterInteractor {
 
                     String motherBaseId = form.optString(Constants.JSON_FORM_EXTRA.ENTITY_TYPE);
 
-                    String riskCategory = form.optString(org.smartregister.chw.hf.utils.Constants.JSON_FORM_EXTRA.RISK_CATEGORY);
-                    String hivStatus = form.optString(org.smartregister.chw.hf.utils.Constants.JSON_FORM_EXTRA.HIV_STATUS);
-
                     JSONArray fields = org.smartregister.util.JsonFormUtils.fields(form);
                     JSONObject deliveryDate = getFieldJSONObject(fields, DBConstants.KEY.DELIVERY_DATE);
                     JSONObject famNameObject = getFieldJSONObject(fields, DBConstants.KEY.FAM_NAME);
+                    JSONObject riskCategoryObject = getFieldJSONObject(fields, org.smartregister.chw.hf.utils.Constants.JSON_FORM_EXTRA.RISK_CATEGORY);
+                    JSONObject hivStatusObject = getFieldJSONObject(fields, org.smartregister.chw.hf.utils.Constants.JSON_FORM_EXTRA.HIV_STATUS);
 
                     String familyName = famNameObject != null ? famNameObject.optString(JsonFormUtils.VALUE) : "";
+
+                    String hivStatus = hivStatusObject != null ? hivStatusObject.optString(JsonFormUtils.VALUE) : "";
+                    String riskCategory = riskCategoryObject != null ? riskCategoryObject.optString(JsonFormUtils.VALUE) : "";
+
                     String dob = deliveryDate.optString(JsonFormUtils.VALUE);
                     hasChildren = StringUtils.isNotBlank(deliveryDate.optString(JsonFormUtils.VALUE));
 
@@ -222,45 +264,6 @@ public class AncRegisterInteractor extends BaseAncRegisterInteractor {
                 e.printStackTrace();
             }
         }
-    }
-
-    public static JSONObject populatePNCForm(JSONObject form, JSONArray fields, String familyBaseEntityId, String motherBaseId, String childRiskCategory, String uniqueChildID, String dob, String lastName) {
-        try {
-            if (form != null) {
-                form.put(RELATIONAL_ID, familyBaseEntityId);
-                form.put(MOTHER_ENTITY_ID, motherBaseId);
-                JSONObject stepOne = form.getJSONObject(JsonFormUtils.STEP1);
-                JSONArray jsonArray = stepOne.getJSONArray(JsonFormUtils.FIELDS);
-
-
-                JSONObject preLoadObject;
-                JSONObject jsonObject;
-                updateFormField(jsonArray, MOTHER_ENTITY_ID, motherBaseId);
-                updateFormField(jsonArray, RISK_CATEGORY, childRiskCategory);
-                updateFormField(jsonArray, UNIQUE_ID, uniqueChildID);
-                updateFormField(jsonArray, DOB, dob);
-                updateFormField(jsonArray, LAST_NAME, lastName);
-                for (int i = 0; i < jsonArray.length(); i++) {
-                    jsonObject = jsonArray.getJSONObject(i);
-                    preLoadObject = getFieldJSONObject(fields, jsonObject.optString(JsonFormUtils.KEY));
-                    if (preLoadObject != null) {
-                        jsonObject.put(JsonFormUtils.VALUE, preLoadObject.opt(JsonFormUtils.VALUE));
-
-                        String type = preLoadObject.getString(JsonFormConstants.TYPE);
-                        if (type.equals(JsonFormConstants.CHECK_BOX)) {
-                            // replace the options
-                            jsonObject.put(JsonFormConstants.OPTIONS_FIELD_NAME, preLoadObject.opt(JsonFormConstants.OPTIONS_FIELD_NAME));
-                        }
-                    }
-                }
-
-                return form;
-            }
-        } catch (Exception e) {
-            Timber.e(e);
-        }
-
-        return null;
     }
 
     private boolean sameASFamilyNameCheck(JSONArray childFields) {
