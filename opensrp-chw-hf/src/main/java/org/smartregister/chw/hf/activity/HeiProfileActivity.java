@@ -97,10 +97,12 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
         TextView tvHeiResultsTitle = findViewById(R.id.textview_hvl_results);
         TextView tvHeiResultsSubTitle = findViewById(R.id.tv_view_hvl_results);
 
-        tvHeiResultsTitle.setText("HIV Test Results");
-        tvHeiResultsSubTitle.setText("View Child's HIV Test Results");
+        tvHeiResultsTitle.setText(R.string.hiv_test_results);
+        tvHeiResultsSubTitle.setText(R.string.view_child_hiv_results);
 
         rlHvlResults.setOnClickListener(this);
+
+        showRiskLabel(HeiDao.getRiskLevel(baseEntityId));
     }
 
     @Override
