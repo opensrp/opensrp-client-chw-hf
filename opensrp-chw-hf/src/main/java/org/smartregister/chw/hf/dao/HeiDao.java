@@ -93,7 +93,7 @@ public class HeiDao extends AbstractDao {
         } else if (weeks >= 6 && getNextHivTestAge(baseEntityID).equals(Constants.HeiHIVTestAtAge.AT_6_WEEKS) && sampleIdRes != null && sampleIdRes.size() > 0 && sampleIdRes.get(0) != null) {
             return true;
         } else
-            return riskCategoryRes.get(0).equals("high") && getNextHivTestAge(baseEntityID).equals(Constants.HeiHIVTestAtAge.AT_BIRTH) && sampleIdRes != null && sampleIdRes.size() > 0 && sampleIdRes.get(0) != null;
+            return riskCategoryRes.get(0).equals("high") && getNextHivTestAge(baseEntityID).equals(Constants.HeiHIVTestAtAge.AT_BIRTH) && (sampleIdRes == null || sampleIdRes.size() == 0 || sampleIdRes.get(0) == null);
     }
 
     public static boolean isEligibleForArvPrescriptionForHighRisk(String baseEntityID) {
