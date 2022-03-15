@@ -255,4 +255,21 @@ public class HeiDao extends AbstractDao {
             return 0;
 
     }
+
+    public static String getRiskLevel(String baseEntityID){
+        String sql = "SELECT risk_category FROM ec_hei hei\n" +
+                    "       WHERE hei.base_entity_id='" + baseEntityID + "'" +
+                    "       AND risk_category IS NOT NULL";
+
+        DataMap<String> riskCategoryMap = cursor -> getCursorValue(cursor, "risk_category");
+
+        List<String> riskCategoryRes = readData(sql, riskCategoryMap);
+        if(riskCategoryRes.get(0).equals("high")){
+            return org.smartregister.chw.pmtct.util.Constants.RISK_LEVELS.RISK_HIGH;
+        }
+        if(riskCategoryRes.get(0).equals("low")){
+            return org.smartregister.chw.pmtct.util.Constants.RISK_LEVELS.RISK_LOW;
+        }
+        return "";
+    }
 }
