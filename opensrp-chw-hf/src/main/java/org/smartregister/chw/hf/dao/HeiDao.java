@@ -217,7 +217,7 @@ public class HeiDao extends AbstractDao {
         LocalDate startLocalDate = new LocalDate(startDateCal.get(Calendar.YEAR), startDateCal.get(Calendar.MONTH)+1, startDateCal.get(Calendar.DAY_OF_MONTH));
         LocalDate now = new LocalDate();
 
-        return Weeks.weeksBetween(startLocalDate, now).getWeeks() - 1;
+        return Weeks.weeksBetween(startLocalDate, now).getWeeks();
     }
 
     public static String getNextHivTestAge(String baseEntityID) {
