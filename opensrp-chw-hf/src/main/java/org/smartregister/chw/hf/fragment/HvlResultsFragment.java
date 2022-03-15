@@ -19,12 +19,12 @@ public class HvlResultsFragment extends BaseHvlResultsFragment {
     public static final String BASE_ENTITY_ID = "BASE_ENTITY_ID";
     private String baseEntityId;
 
-    public static HeiHivResultsFragment newInstance(String baseEntityId) {
-        HeiHivResultsFragment heiHivResultsFragment = new HeiHivResultsFragment();
+    public static HvlResultsFragment newInstance(String baseEntityId) {
+        HvlResultsFragment hvlResultsFragment = new HvlResultsFragment();
         Bundle b = new Bundle();
         b.putString(BASE_ENTITY_ID, baseEntityId);
-        heiHivResultsFragment.setArguments(b);
-        return heiHivResultsFragment;
+        hvlResultsFragment.setArguments(b);
+        return hvlResultsFragment;
     }
 
     @Override
