@@ -37,6 +37,7 @@ import static org.smartregister.chw.anc.util.DBConstants.KEY.UNIQUE_ID;
 import static org.smartregister.chw.anc.util.JsonFormUtils.updateFormField;
 import static org.smartregister.chw.hf.utils.Constants.Events.HEI_REGISTRATION;
 import static org.smartregister.chw.hf.utils.Constants.HIV_STATUS.POSITIVE;
+import static org.smartregister.chw.hf.utils.Constants.JSON_FORM_EXTRA.HIV_STATUS;
 import static org.smartregister.chw.hf.utils.Constants.JSON_FORM_EXTRA.RISK_CATEGORY;
 import static org.smartregister.chw.hf.utils.Constants.TableName.HEI;
 import static org.smartregister.chw.hf.utils.JsonFormUtils.ENCOUNTER_TYPE;
@@ -114,8 +115,8 @@ public class AncRegisterInteractor extends BaseAncRegisterInteractor {
                     JSONArray fields = org.smartregister.util.JsonFormUtils.fields(form);
                     JSONObject deliveryDate = getFieldJSONObject(fields, DBConstants.KEY.DELIVERY_DATE);
                     JSONObject famNameObject = getFieldJSONObject(fields, DBConstants.KEY.FAM_NAME);
-                    JSONObject riskCategoryObject = getFieldJSONObject(fields, org.smartregister.chw.hf.utils.Constants.JSON_FORM_EXTRA.RISK_CATEGORY);
-                    JSONObject hivStatusObject = getFieldJSONObject(fields, org.smartregister.chw.hf.utils.Constants.JSON_FORM_EXTRA.HIV_STATUS);
+                    JSONObject riskCategoryObject = getFieldJSONObject(fields, RISK_CATEGORY);
+                    JSONObject hivStatusObject = getFieldJSONObject(fields, HIV_STATUS);
 
                     String familyName = famNameObject != null ? famNameObject.optString(JsonFormUtils.VALUE) : "";
 

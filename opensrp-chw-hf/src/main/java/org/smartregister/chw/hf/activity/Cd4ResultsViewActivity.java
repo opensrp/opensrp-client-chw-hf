@@ -44,7 +44,7 @@ public class Cd4ResultsViewActivity extends BaseHvlResultsViewActivity implement
 
     @Override
     public BaseHvlResultsFragment getBaseFragment() {
-        return new Cd4ResultsFragment();
+        return Cd4ResultsFragment.newInstance(baseEntityId);
     }
 
     @Override

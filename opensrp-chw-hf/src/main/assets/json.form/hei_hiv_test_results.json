@@ -1,6 +1,6 @@
 {
   "count": "1",
-  "encounter_type": "HEI DNA PCR Test Results",
+  "encounter_type": "HEI HIV Test Results",
   "entity_id": "",
   "global": {},
   "metadata": {
@@ -54,7 +54,7 @@
         "key": "hiv_test_result",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "hiv_test_result",
+        "openmrs_entity_id": "hiv_status",
         "type": "native_radio",
         "label": "Select the test result",
         "label_text_style": "normal",

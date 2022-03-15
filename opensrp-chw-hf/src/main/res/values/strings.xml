@@ -120,5 +120,8 @@
     <string name="ctx_given">CTX Given</string>
     <string name="dna_pcr_sample_collected">DNA-PCR Sample Collected</string>
     <string name="ctx_not_given">CTX Not Given</string>
+    <string name="result">Result</string>
+    <string name="type_of_test">Type Of Test</string>
+    <string name="record_result">Record Result</string>
 
 </resources>
