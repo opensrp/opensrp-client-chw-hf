@@ -17,7 +17,8 @@ public class HeiRegisterFragmentPresenter extends BasePmtctRegisterFragmentPrese
     @Override
     public String getMainCondition() {
         return "" +
-                " ec_family_member.date_removed is null";
+                " ec_family_member.date_removed is null " +
+                " AND " + CoreConstants.TABLE_NAME.HEI  +"."  + "is_closed is 0";
     }
 
 }
