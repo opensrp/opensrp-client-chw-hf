@@ -180,7 +180,7 @@ public class HeiDao extends AbstractDao {
         return weeks >= 6;
     }
 
-    private static int getElapsedTimeInMonths(String startDateString) {
+    public static int getElapsedTimeInMonths(String startDateString) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
         Date startDate = null;
         try {
@@ -194,7 +194,7 @@ public class HeiDao extends AbstractDao {
         startDateCal.set(Calendar.DAY_OF_MONTH, 1);
 
 
-        LocalDate startLocalDate = new LocalDate(startDateCal.get(Calendar.YEAR), startDateCal.get(Calendar.MONTH)+1, startDateCal.get(Calendar.DAY_OF_MONTH));
+        LocalDate startLocalDate = new LocalDate(startDateCal.get(Calendar.YEAR), startDateCal.get(Calendar.MONTH) + 1, startDateCal.get(Calendar.DAY_OF_MONTH));
 
 
         LocalDate now = new LocalDate();
@@ -214,7 +214,7 @@ public class HeiDao extends AbstractDao {
         Calendar startDateCal = Calendar.getInstance();
         startDateCal.setTimeInMillis(startDate.getTime());
 
-        LocalDate startLocalDate = new LocalDate(startDateCal.get(Calendar.YEAR), startDateCal.get(Calendar.MONTH)+1, startDateCal.get(Calendar.DAY_OF_MONTH));
+        LocalDate startLocalDate = new LocalDate(startDateCal.get(Calendar.YEAR), startDateCal.get(Calendar.MONTH) + 1, startDateCal.get(Calendar.DAY_OF_MONTH));
         LocalDate now = new LocalDate();
 
         return Weeks.weeksBetween(startLocalDate, now).getWeeks();
@@ -256,20 +256,31 @@ public class HeiDao extends AbstractDao {
 
     }
 
-    public static String getRiskLevel(String baseEntityID){
+    public static String getRiskLevel(String baseEntityID) {
         String sql = "SELECT risk_category FROM ec_hei hei\n" +
-                    "       WHERE hei.base_entity_id='" + baseEntityID + "'" +
-                    "       AND risk_category IS NOT NULL";
+                "       WHERE hei.base_entity_id='" + baseEntityID + "'" +
+                "       AND risk_category IS NOT NULL";
 
         DataMap<String> riskCategoryMap = cursor -> getCursorValue(cursor, "risk_category");
 
         List<String> riskCategoryRes = readData(sql, riskCategoryMap);
-        if(riskCategoryRes.get(0).equals("high")){
+        if (riskCategoryRes.get(0).equals("high")) {
             return org.smartregister.chw.pmtct.util.Constants.RISK_LEVELS.RISK_HIGH;
         }
-        if(riskCategoryRes.get(0).equals("low")){
+        if (riskCategoryRes.get(0).equals("low")) {
             return org.smartregister.chw.pmtct.util.Constants.RISK_LEVELS.RISK_LOW;
         }
         return "";
+    }
+
+    public static String getMotherBaseEntityId(String baseEntityID) {
+        String sql = "SELECT mother_entity_id FROM ec_hei hei\n" +
+                "       WHERE hei.base_entity_id='" + baseEntityID + "'";
+
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "mother_entity_id");
+
+        List<String> res = readData(sql, dataMap);
+
+        return (res != null && res.get(0) != null) ? res.get(0) : "";
     }
 }

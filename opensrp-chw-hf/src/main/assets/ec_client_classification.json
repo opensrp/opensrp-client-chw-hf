@@ -417,6 +417,13 @@
           },
           {
             "field": "eventType",
+            "field_value": "PMTCT Close Visits",
+            "closes_case": [
+              "ec_pmtct_registration"
+            ]
+          },
+          {
+            "field": "eventType",
             "field_value": "PMTCT CD4 Test Results",
             "creates_case": [
               "ec_pmtct_cd4_results"
@@ -490,6 +497,23 @@
             "field_value": "HEI HIV Test Results",
             "creates_case": [
               "ec_hei_hiv_results",
+              "ec_hei"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "HEI Positive Infant",
+            "closes_case": [
+              "ec_hei"
+            ],
+            "creates_case": [
+              "ec_hiv_register"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "HEI Negative Infant",
+            "closes_case": [
               "ec_hei"
             ]
           }
