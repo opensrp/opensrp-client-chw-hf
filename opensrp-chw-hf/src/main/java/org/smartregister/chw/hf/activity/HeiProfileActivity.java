@@ -1,5 +1,9 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.core.utils.Utils.getCommonPersonObjectClient;
+import static org.smartregister.chw.core.utils.Utils.getDuration;
+import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
@@ -11,6 +15,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONObject;
@@ -35,12 +41,7 @@ import org.smartregister.family.util.Utils;
 
 import java.util.Date;
 
-import androidx.annotation.NonNull;
 import timber.log.Timber;
-
-import static org.smartregister.chw.core.utils.Utils.getCommonPersonObjectClient;
-import static org.smartregister.chw.core.utils.Utils.getDuration;
-import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
 
 public class HeiProfileActivity extends BasePmtctProfileActivity {
 
@@ -103,6 +104,14 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
         rlHvlResults.setOnClickListener(this);
 
         showRiskLabel(HeiDao.getRiskLevel(baseEntityId));
+
+        if (shouldShowRecordFollowupVisitButton()) {
+            textViewRecordPmtct.setVisibility(View.VISIBLE);
+            visitDone.setVisibility(View.GONE);
+        } else {
+            textViewRecordPmtct.setVisibility(View.GONE);
+            visitDone.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -117,6 +126,14 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
             intent.putExtra(Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID, baseEntityId);
             startActivity(intent);
         }
+    }
+
+    private boolean shouldShowRecordFollowupVisitButton() {
+        return HeiDao.isEligibleForDnaCprHivTest(memberObject.getBaseEntityId()) ||
+                HeiDao.isEligibleForAntiBodiesHivTest(memberObject.getBaseEntityId()) ||
+                HeiDao.isEligibleForCtx(memberObject.getBaseEntityId()) ||
+                HeiDao.isEligibleForArvPrescriptionForHighRisk(memberObject.getBaseEntityId()) ||
+                HeiDao.isEligibleForArvPrescriptionForHighAndLowRisk(memberObject.getBaseEntityId());
     }
 
 
