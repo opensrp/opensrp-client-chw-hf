@@ -1,12 +1,12 @@
 ---
-name: step1_pmtct_register_date
+name: step1_hiv_registration_date
 description: date of pmtct registration
 priority: 1
 condition: "true"
 actions:
   - "calculation = helper.getDateToday()"
 ---
-name: step2_hiv_status_value
+name: step2_test_results
 description: hiv status of the client
 priority: 1
 condition: "true"

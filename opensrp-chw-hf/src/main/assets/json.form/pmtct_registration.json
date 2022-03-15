@@ -51,10 +51,10 @@
     "next": "step2",
     "fields": [
       {
-        "key": "pmtct_register_date",
+        "key": "hiv_registration_date",
         "type": "edit_text",
         "hidden": "true",
-        "openmrs_entity_id": "pmtct_register_date",
+        "openmrs_entity_id": "hiv_registration_date",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "calculation": {
@@ -112,10 +112,10 @@
         }
       },
       {
-        "key": "hiv_status_value",
+        "key": "test_results",
         "type": "edit_text",
         "hidden": "true",
-        "openmrs_entity_id": "hiv_status_value",
+        "openmrs_entity_id": "test_results",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "calculation": {
