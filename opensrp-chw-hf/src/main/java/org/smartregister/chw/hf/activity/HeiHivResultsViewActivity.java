@@ -11,6 +11,10 @@ import com.vijay.jsonwizard.constants.JsonFormConstants;
 import com.vijay.jsonwizard.domain.Form;
 
 import org.apache.commons.lang3.StringUtils;
+import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
+import org.joda.time.Months;
+import org.joda.time.Period;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -25,10 +29,13 @@ import org.smartregister.chw.pmtct.util.JsonFormUtils;
 import org.smartregister.chw.pmtct.util.NCUtils;
 import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.clientandeventmodel.Obs;
+import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.family.util.Utils;
 import org.smartregister.repository.AllSharedPreferences;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import timber.log.Timber;
 
@@ -113,7 +120,9 @@ public class HeiHivResultsViewActivity extends BaseHvlResultsViewActivity implem
             String jsonString = data.getStringExtra(Constants.JSON_FORM_EXTRA.JSON);
             try {
                 MemberObject heiMemberObject = HeiDao.getMember(baseEntityId);
-                int ageInMonths = HeiDao.getElapsedTimeInMonths(heiMemberObject.getDob());
+                LocalDate now = new LocalDate();
+                LocalDate dob = new LocalDate(new DateTime(heiMemberObject.getDob()));
+                int ageInMonths = Months.monthsBetween(dob,now).getMonths();
 
                 AllSharedPreferences allSharedPreferences = org.smartregister.util.Utils.getAllSharedPreferences();
                 Event baseEvent = JsonFormUtils.processJsonForm(allSharedPreferences, jsonString, org.smartregister.chw.hf.utils.Constants.TableName.HEI_HIV_RESULTS);
