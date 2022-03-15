@@ -530,7 +530,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
                     labelText = getContext().getString(org.smartregister.chw.opensrp_chw_anc.R.string.low_pregnancy_risk);
                     break;
             }
-            pregnancyRiskLabel.setVisibility(View.VISIBLE);
+            pregnancyRiskLabel.setVisibility(View.GONE);
             pregnancyRiskLabel.setText(labelText);
             pregnancyRiskLabel.setTextColor(labelTextColor);
             pregnancyRiskLabel.setBackgroundResource(background);
