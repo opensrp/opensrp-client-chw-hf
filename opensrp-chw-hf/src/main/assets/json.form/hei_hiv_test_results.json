@@ -142,24 +142,11 @@
         }
       },
       {
-        "key": "age_positive",
+        "key": "actual_age",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "age_positive",
-        "type": "hidden",
-        "relevance": {
-          "step1:hiv_test_result": {
-            "type": "string",
-            "ex": "equalTo(.,\"positive\")"
-          }
-        },
-        "calculation": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "hei_age_positive_calculation.yml"
-            }
-          }
-        }
+        "openmrs_entity_id": "actual_age",
+        "type": "hidden"
       }
     ]
   }
