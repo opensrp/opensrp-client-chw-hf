@@ -169,6 +169,13 @@
         "openmrs_entity_id": "test_at_age",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": ""
+      },
+      {
+        "key": "actual_age",
+        "type": "hidden",
+        "openmrs_entity_id": "actual_age",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": ""
       }
     ]
   }

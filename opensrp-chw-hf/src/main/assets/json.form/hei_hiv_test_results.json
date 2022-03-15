@@ -140,13 +140,6 @@
             "ex": "equalTo(.,\"positive\")"
           }
         }
-      },
-      {
-        "key": "actual_age",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "actual_age",
-        "type": "hidden"
       }
     ]
   }

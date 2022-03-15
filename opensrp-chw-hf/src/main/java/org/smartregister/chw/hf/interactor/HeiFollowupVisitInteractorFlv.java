@@ -22,12 +22,16 @@ import org.smartregister.chw.pmtct.model.BasePmtctHomeVisitAction;
 import org.smartregister.chw.pmtct.util.JsonFormUtils;
 import org.smartregister.chw.pmtct.util.VisitUtils;
 import org.smartregister.chw.referral.util.JsonFormConstants;
+import org.smartregister.commonregistry.CommonPersonObjectClient;
 
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 import timber.log.Timber;
+
+import static org.smartregister.chw.core.utils.Utils.getCommonPersonObjectClient;
+import static org.smartregister.chw.core.utils.Utils.getDuration;
 
 public class HeiFollowupVisitInteractorFlv implements PmtctFollowupVisitInteractor.Flavor {
 
@@ -59,9 +63,13 @@ public class HeiFollowupVisitInteractorFlv implements PmtctFollowupVisitInteract
             dnaPcrForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.getHeiDnaPcrSampleCollection());
 
             JSONArray fields = dnaPcrForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
-            //update visit number
+            //update fields
             JSONObject testAtAge = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "test_at_age");
             testAtAge.put(JsonFormUtils.VALUE, HeiDao.getNextHivTestAge(memberObject.getBaseEntityId()));
+
+            JSONObject actualAge = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "actual_age");
+            CommonPersonObjectClient client = getCommonPersonObjectClient(memberObject.getBaseEntityId());
+            actualAge.put(JsonFormUtils.VALUE, getDuration(org.smartregister.family.util.Utils.getValue(client.getColumnmaps(), org.smartregister.family.util.DBConstants.KEY.DOB, false)));
 
             //loads details to the form
             if (details != null && !details.isEmpty()) {
@@ -76,9 +84,13 @@ public class HeiFollowupVisitInteractorFlv implements PmtctFollowupVisitInteract
             antibodyTestForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.getHeiAntibodyTestSampleCollection());
 
             JSONArray fields = antibodyTestForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
-            //update visit number
+            //update fields
             JSONObject testAtAge = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "test_at_age");
             testAtAge.put(JsonFormUtils.VALUE, HeiDao.getNextHivTestAge(memberObject.getBaseEntityId()));
+
+            JSONObject actualAge = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "actual_age");
+            CommonPersonObjectClient client = getCommonPersonObjectClient(memberObject.getBaseEntityId());
+            actualAge.put(JsonFormUtils.VALUE, getDuration(org.smartregister.family.util.Utils.getValue(client.getColumnmaps(), org.smartregister.family.util.DBConstants.KEY.DOB, false)));
 
             //loads details to the form
             if (details != null && !details.isEmpty()) {
