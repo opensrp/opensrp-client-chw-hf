@@ -24,12 +24,12 @@ public class Cd4ResultsFragment extends BaseHvlResultsFragment {
     public static final String BASE_ENTITY_ID = "BASE_ENTITY_ID";
     private String baseEntityId;
 
-    public static HeiHivResultsFragment newInstance(String baseEntityId) {
-        HeiHivResultsFragment heiHivResultsFragment = new HeiHivResultsFragment();
+    public static Cd4ResultsFragment newInstance(String baseEntityId) {
+        Cd4ResultsFragment cd4ResultsFragment = new Cd4ResultsFragment();
         Bundle b = new Bundle();
         b.putString(BASE_ENTITY_ID, baseEntityId);
-        heiHivResultsFragment.setArguments(b);
-        return heiHivResultsFragment;
+        cd4ResultsFragment.setArguments(b);
+        return cd4ResultsFragment;
     }
 
     @Override
