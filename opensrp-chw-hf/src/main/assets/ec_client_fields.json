@@ -15,7 +15,7 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "hiv_registration_date"
+            "concept": "pmtct_register_date"
           }
         },
         {

@@ -51,6 +51,21 @@
     "next": "step2",
     "fields": [
       {
+        "key": "pmtct_register_date",
+        "type": "edit_text",
+        "hidden": "true",
+        "openmrs_entity_id": "pmtct_register_date",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_form_calculation.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "hiv_registration_date",
         "type": "edit_text",
         "hidden": "true",
