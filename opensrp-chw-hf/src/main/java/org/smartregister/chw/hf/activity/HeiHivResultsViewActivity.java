@@ -11,13 +11,17 @@ import com.vijay.jsonwizard.constants.JsonFormConstants;
 import com.vijay.jsonwizard.domain.Form;
 
 import org.apache.commons.lang3.StringUtils;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.dao.HeiDao;
 import org.smartregister.chw.hf.fragment.HeiHivResultsFragment;
 import org.smartregister.chw.pmtct.activity.BaseHvlResultsViewActivity;
+import org.smartregister.chw.pmtct.domain.MemberObject;
 import org.smartregister.chw.pmtct.fragment.BaseHvlResultsFragment;
 import org.smartregister.chw.pmtct.util.Constants;
+import org.smartregister.chw.pmtct.util.JsonFormUtils;
 import org.smartregister.chw.pmtct.util.NCUtils;
 import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.clientandeventmodel.Obs;
@@ -108,9 +112,12 @@ public class HeiHivResultsViewActivity extends BaseHvlResultsViewActivity implem
             //handle form saving
             String jsonString = data.getStringExtra(Constants.JSON_FORM_EXTRA.JSON);
             try {
+                MemberObject heiMemberObject = HeiDao.getMember(baseEntityId);
+                int ageInMonths = HeiDao.getElapsedTimeInMonths(heiMemberObject.getDob());
+
                 AllSharedPreferences allSharedPreferences = org.smartregister.util.Utils.getAllSharedPreferences();
-                Event baseEvent = org.smartregister.chw.pmtct.util.JsonFormUtils.processJsonForm(allSharedPreferences, jsonString, org.smartregister.chw.hf.utils.Constants.TableName.HEI_HIV_RESULTS);
-                org.smartregister.chw.pmtct.util.JsonFormUtils.tagEvent(allSharedPreferences, baseEvent);
+                Event baseEvent = JsonFormUtils.processJsonForm(allSharedPreferences, jsonString, org.smartregister.chw.hf.utils.Constants.TableName.HEI_HIV_RESULTS);
+                JsonFormUtils.tagEvent(allSharedPreferences, baseEvent);
                 baseEvent.setBaseEntityId(baseEntityId);
                 baseEvent.addObs(
                         (new Obs())
@@ -123,6 +130,30 @@ public class HeiHivResultsViewActivity extends BaseHvlResultsViewActivity implem
                                 .withHumanReadableValues(new ArrayList<>()));
                 NCUtils.processEvent(baseEvent.getBaseEntityId(), new JSONObject(org.smartregister.chw.pmtct.util.JsonFormUtils.gson.toJson(baseEvent)));
 
+                JSONObject jsonForm = new JSONObject(jsonString);
+                JSONArray fields = jsonForm.getJSONObject(org.smartregister.chw.hf.utils.Constants.JsonFormConstants.STEP1).getJSONArray(org.smartregister.chw.referral.util.JsonFormConstants.FIELDS);
+
+                JSONObject hivTestResultObj = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "hiv_test_result");
+                String hivTestResult = hivTestResultObj.optString(JsonFormUtils.VALUE);
+
+                Event closePmtctEvent = JsonFormUtils.processJsonForm(allSharedPreferences, jsonString, Constants.TABLES.PMTCT_REGISTRATION);
+                JsonFormUtils.tagEvent(allSharedPreferences, closePmtctEvent);
+                closePmtctEvent.setEventType(org.smartregister.chw.hf.utils.Constants.Events.PMTCT_CLOSE_VISITS);
+                closePmtctEvent.setBaseEntityId(HeiDao.getMotherBaseEntityId(baseEntityId));
+
+                if (hivTestResult.equalsIgnoreCase("positive")) {
+                    Event closeHeiEvent = getCloseEventForPositive(allSharedPreferences, jsonString);
+                    //process the events
+                    NCUtils.processEvent(closePmtctEvent.getBaseEntityId(), new JSONObject(org.smartregister.chw.pmtct.util.JsonFormUtils.gson.toJson(closePmtctEvent)));
+                    NCUtils.processEvent(closeHeiEvent.getBaseEntityId(), new JSONObject(org.smartregister.chw.pmtct.util.JsonFormUtils.gson.toJson(closeHeiEvent)));
+                }
+
+                if (hivTestResult.equalsIgnoreCase("negative") && ageInMonths >= 18) {
+                    Event closeHeiEvent = getCloseEventForNegative(allSharedPreferences, jsonString);
+                    //process the events
+                    NCUtils.processEvent(closePmtctEvent.getBaseEntityId(), new JSONObject(org.smartregister.chw.pmtct.util.JsonFormUtils.gson.toJson(closePmtctEvent)));
+                    NCUtils.processEvent(closeHeiEvent.getBaseEntityId(), new JSONObject(org.smartregister.chw.pmtct.util.JsonFormUtils.gson.toJson(closeHeiEvent)));
+                }
             } catch (JSONException e) {
                 Timber.e(e);
             } catch (Exception e) {
@@ -133,4 +164,32 @@ public class HeiHivResultsViewActivity extends BaseHvlResultsViewActivity implem
         }
 
     }
+
+    protected Event getCloseEventForPositive(AllSharedPreferences allSharedPreferences, String jsonString) {
+        Event closeHeiEvent = JsonFormUtils.processJsonForm(allSharedPreferences, jsonString, org.smartregister.chw.hf.utils.Constants.TableName.HEI_HIV_RESULTS);
+        JsonFormUtils.tagEvent(allSharedPreferences, closeHeiEvent);
+        closeHeiEvent.setEventType(org.smartregister.chw.hf.utils.Constants.Events.HEI_POSITIVE_INFANT);
+        closeHeiEvent.setBaseEntityId(baseEntityId);
+        closeHeiEvent.addObs(
+                (new Obs())
+                        .withFormSubmissionField(org.smartregister.chw.hf.utils.Constants.DBConstants.HIV_REGISTRATION_DATE)
+                        .withValue(System.currentTimeMillis())
+                        .withFieldCode(org.smartregister.chw.hf.utils.Constants.DBConstants.HIV_REGISTRATION_DATE)
+                        .withFieldType("formsubmissionField")
+                        .withFieldDataType("text")
+                        .withParentCode("")
+                        .withHumanReadableValues(new ArrayList<>()));
+
+        return closeHeiEvent;
+    }
+
+    protected Event getCloseEventForNegative(AllSharedPreferences allSharedPreferences, String jsonString) {
+        Event closeHeiEvent = JsonFormUtils.processJsonForm(allSharedPreferences, jsonString, org.smartregister.chw.hf.utils.Constants.TableName.HEI_HIV_RESULTS);
+        JsonFormUtils.tagEvent(allSharedPreferences, closeHeiEvent);
+        closeHeiEvent.setEventType(org.smartregister.chw.hf.utils.Constants.Events.HEI_NEGATIVE_INFANT);
+        closeHeiEvent.setBaseEntityId(baseEntityId);
+
+        return closeHeiEvent;
+    }
+
 }

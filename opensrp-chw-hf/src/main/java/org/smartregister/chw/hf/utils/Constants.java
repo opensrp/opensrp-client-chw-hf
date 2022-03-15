@@ -40,6 +40,9 @@ public class Constants extends CoreConstants {
         public static final String ANC_PARTNER_TESTING = "Partner Testing";
         public static final String HEI_REGISTRATION = "HEI Registration";
         public static final String HEI_FOLLOWUP = "HEI Followup";
+        public static final String HEI_POSITIVE_INFANT = "HEI Positive Infant";
+        public static final String HEI_NEGATIVE_INFANT = "HEI Negative Infant";
+        public static final String PMTCT_CLOSE_VISITS = "PMTCT Close Visits";
     }
 
     public static final class TableName {
@@ -288,6 +291,7 @@ public class Constants extends CoreConstants {
         public static final String HEI_HIV_SAMPLE_COLLECTION_DATE = "sample_collection_date";
         public static final String HEI_HIV_RESULT_DATE = "hiv_test_result_date";
         public static final String HEI_HIV_TYPE_OF_TEST = "type_of_hiv_test";
+        public static final String HIV_REGISTRATION_DATE = "hiv_registration_date";
     }
 
     public static final class EacVisitTypes {
