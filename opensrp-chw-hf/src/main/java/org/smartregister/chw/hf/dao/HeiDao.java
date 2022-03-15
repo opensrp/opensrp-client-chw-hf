@@ -283,4 +283,15 @@ public class HeiDao extends AbstractDao {
 
         return (res != null && res.get(0) != null) ? res.get(0) : "";
     }
+
+    public static String getTestAtAgeForFollowupVisit(String baseEntityID) {
+        String sql = "SELECT test_at_age FROM ec_hei_followup \n" +
+                "       WHERE base_entity_id='" + baseEntityID + "'";
+
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "test_at_age");
+
+        List<String> res = readData(sql, dataMap);
+
+        return (res != null && res.get(0) != null) ? res.get(0) : null;
+    }
 }
