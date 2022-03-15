@@ -115,10 +115,8 @@ public class HeiHivResultsViewActivity extends BaseHvlResultsViewActivity implem
             //handle form saving
             String jsonString = data.getStringExtra(Constants.JSON_FORM_EXTRA.JSON);
             try {
-                MemberObject heiMemberObject = HeiDao.getMember(baseEntityId);
-                LocalDate now = new LocalDate();
-                LocalDate dob = new LocalDate(new DateTime(heiMemberObject.getDob()));
-                int ageInMonths = Months.monthsBetween(dob, now).getMonths();
+
+                String testAtAge = HeiDao.getTestAtAgeForFollowupVisit(parentFormSubmissionId);
 
                 AllSharedPreferences allSharedPreferences = org.smartregister.util.Utils.getAllSharedPreferences();
                 Event baseEvent = JsonFormUtils.processJsonForm(allSharedPreferences, jsonString, org.smartregister.chw.hf.utils.Constants.TableName.HEI_HIV_RESULTS);
@@ -152,8 +150,8 @@ public class HeiHivResultsViewActivity extends BaseHvlResultsViewActivity implem
                     NCUtils.processEvent(closePmtctEvent.getBaseEntityId(), new JSONObject(org.smartregister.chw.pmtct.util.JsonFormUtils.gson.toJson(closePmtctEvent)));
                     NCUtils.processEvent(closeHeiEvent.getBaseEntityId(), new JSONObject(org.smartregister.chw.pmtct.util.JsonFormUtils.gson.toJson(closeHeiEvent)));
                 }
-
-                if (hivTestResult.equalsIgnoreCase("negative") && ageInMonths >= 18) {
+                //processes closing negative client if test results are for month 18
+                if (hivTestResult.equalsIgnoreCase("negative") && (testAtAge.equalsIgnoreCase(org.smartregister.chw.hf.utils.Constants.HeiHIVTestAtAge.AT_18_MONTHS))) {
                     Event closeHeiEvent = getCloseEventForNegative(allSharedPreferences, jsonString);
                     //process the events
                     NCUtils.processEvent(closePmtctEvent.getBaseEntityId(), new JSONObject(org.smartregister.chw.pmtct.util.JsonFormUtils.gson.toJson(closePmtctEvent)));
