@@ -18,6 +18,7 @@ public class HivRegisterFragmentPresenter extends BaseHivRegisterFragmentPresent
     @NotNull
     public String getMainCondition() {
         return " " + CoreConstants.TABLE_NAME.FAMILY_MEMBER + "." + DBConstants.Key.DATE_REMOVED + " is null " +
+                "AND UPPER (" + DBConstants.Key.CLIENT_HIV_STATUS_AFTER_TESTING + ") LIKE UPPER('Positive') " +
                 "AND " + Tables.HIV + "." + DBConstants.Key.IS_CLOSED + " = '0' ";
 
     }
