@@ -92,6 +92,7 @@ public class Constants extends CoreConstants {
         private static final String HEI_ARV_PRESCRIPTION_HIGH_OR_LOW_RISK_INFANT = "hei_arv_prescription_high_or_low_risk_infant";
         private static final String HEI_CTX_PRESCRIPTION = "hei_rv_ctx";
         private static final String HEI_HIV_TEST_RESULTS = "hei_hiv_test_results";
+        private static final String HIV_CLIENT_UPDATE_CTC_NUMBER = "hiv_client_update_ctc_number";
 
 
         public static String getHeiCtxPrescription() {
@@ -197,6 +198,10 @@ public class Constants extends CoreConstants {
 
         public static String getHvlClinicianDetailsForm() {
             return HVL_CLINICIAN_DETAILS_FORM;
+        }
+
+        public static String getHivClientUpdateCtcNumber() {
+            return HIV_CLIENT_UPDATE_CTC_NUMBER;
         }
 
         public static class EacVisits {

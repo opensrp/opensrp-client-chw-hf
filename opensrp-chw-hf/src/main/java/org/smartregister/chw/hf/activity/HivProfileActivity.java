@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -85,8 +86,35 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
     @Override
     public void setupViews() {
         super.setupViews();
+        TextView tvRecordHivFollowup = findViewById(R.id.textview_record_reccuring_visit);
+
+        if (getHivMemberObject().getCtcNumber() == null || getHivMemberObject().getCtcNumber().equals("")) {
+            findViewById(R.id.record_recurring_layout).setVisibility(View.VISIBLE);
+            tvRecordHivFollowup.setText(R.string.record_ctc_number);
+            tvRecordHivFollowup.setOnClickListener(v -> {
+                try {
+                    startUpdateFollowup(HivProfileActivity.this, getHivMemberObject().getBaseEntityId());
+                } catch (JSONException e) {
+                    Timber.e(e);
+                }
+            });
+        }
         new SetIndexClientsTask(getHivMemberObject()).execute();
     }
+
+    protected void startUpdateFollowup(Activity activity, String baseEntityID) throws JSONException {
+        Intent intent = new Intent(activity, HivFormsActivity.class);
+        intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.BASE_ENTITY_ID, baseEntityID);
+        JSONObject form = (new FormUtils()).getFormJsonFromRepositoryOrAssets(activity, org.smartregister.chw.hf.utils.Constants.JsonForm.getHivClientUpdateCtcNumber());
+        if (form != null) {
+            intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.JSON_FORM, form.toString());
+            intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.ACTION, Constants.ActivityPayloadType.FOLLOW_UP_VISIT);
+            intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.USE_DEFAULT_NEAT_FORM_LAYOUT, false);
+        }
+
+        activity.startActivityForResult(intent, org.smartregister.chw.anc.util.Constants.REQUEST_CODE_HOME_VISIT);
+    }
+
 
     @Override
     public void setProfileViewDetails(@androidx.annotation.Nullable HivMemberObject hivMemberObject) {
@@ -138,7 +166,7 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
             } else if (itemId == R.id.action_issue_hiv_community_followup_referral) {
                 HivRegisterActivity.startHIVFormActivity(this, getHivMemberObject().getBaseEntityId(), CoreConstants.JSON_FORM.getHivCommunityFollowupReferral(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getHivCommunityFollowupReferral()).toString());
                 return true;
-            }else if(itemId == R.id.action_pregnancy_confirmation){
+            } else if (itemId == R.id.action_pregnancy_confirmation) {
                 startPregnancyConfirmation(Objects.requireNonNull(getHivMemberObject()));
                 return true;
             }
@@ -352,7 +380,7 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
 
     protected void startPregnancyConfirmation(HivMemberObject hivMemberObject) {
 
-        AncRegisterActivity.startAncRegistrationActivity(HivProfileActivity.this,hivMemberObject.getBaseEntityId() , hivMemberObject.getPhoneNumber(),
+        AncRegisterActivity.startAncRegistrationActivity(HivProfileActivity.this, hivMemberObject.getBaseEntityId(), hivMemberObject.getPhoneNumber(),
                 org.smartregister.chw.hf.utils.Constants.JsonForm.getAncPregnancyConfirmation(), null, hivMemberObject.getFamilyBaseEntityId(), hivMemberObject.getFamilyName());
     }
 

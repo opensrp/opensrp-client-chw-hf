@@ -11,8 +11,10 @@ import org.smartregister.chw.core.provider.CoreHivProvider;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.utils.HfReferralUtils;
+import org.smartregister.chw.hiv.dao.HivDao;
 import org.smartregister.chw.hiv.dao.HivIndexDao;
 import org.smartregister.chw.hiv.domain.HivIndexContactObject;
+import org.smartregister.chw.hiv.domain.HivMemberObject;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.view.contract.SmartRegisterClient;
 
@@ -22,9 +24,11 @@ import java.util.Set;
 public class HfHivRegisterProvider extends CoreHivProvider {
 
     private final LayoutInflater inflater;
+    private Context context;
 
     public HfHivRegisterProvider(Context context, Set visibleColumns, View.OnClickListener onClickListener, View.OnClickListener paginationClickListener) {
         super(context, visibleColumns, onClickListener, paginationClickListener);
+        this.context = context;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
@@ -38,7 +42,7 @@ public class HfHivRegisterProvider extends CoreHivProvider {
         if (hivIndexContactObjects != null && hivIndexContactObjects.size() > 0) {
             boolean hasPositiveContacts = false;
             for (HivIndexContactObject hivIndexContactObject : hivIndexContactObjects) {
-                if (!hasPositiveContacts && !hivIndexContactObject.getTestResults().toLowerCase().equals("negative") )
+                if (!hasPositiveContacts && !hivIndexContactObject.getTestResults().toLowerCase().equals("negative"))
                     hasPositiveContacts = true;
             }
 
@@ -58,7 +62,14 @@ public class HfHivRegisterProvider extends CoreHivProvider {
     }
 
     private void showLatestHivReferralDay(CommonPersonObjectClient client, HfHivRegisterProvider.HfRegisterViewHolder viewHolder) {
-        HfReferralUtils.displayReferralDay(client, CoreConstants.TASKS_FOCUS.SUSPECTED_HIV, viewHolder.textViewReferralDay);
+        HivMemberObject hivMemberObject = HivDao.getMember(client.entityId());
+        if (hivMemberObject != null && (hivMemberObject.getCtcNumber() == null || hivMemberObject.getCtcNumber().equals(""))) {
+            viewHolder.textViewReferralDay.setVisibility(View.VISIBLE);
+            String pendingCtcRegistration = context.getString(R.string.pending_ctc_registration);
+            viewHolder.textViewReferralDay.setText(pendingCtcRegistration);
+        } else {
+            HfReferralUtils.displayReferralDay(client, CoreConstants.TASKS_FOCUS.SUSPECTED_HIV, viewHolder.textViewReferralDay);
+        }
     }
 
     public class HfRegisterViewHolder extends RegisterViewHolder {
