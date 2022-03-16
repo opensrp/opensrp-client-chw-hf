@@ -233,7 +233,9 @@ public class HeiDao extends AbstractDao {
             int weeks = getElapsedTimeInWeeks(simpleDateFormat.format(dob));
             int months = getElapsedTimeInMonths(simpleDateFormat.format(dob));
 
-            if (months >= 15)
+            if (months >= 18)
+                return Constants.HeiHIVTestAtAge.AT_18_MONTHS;
+            else if (months >= 15)
                 return Constants.HeiHIVTestAtAge.AT_15_MONTHS;
             else if (months >= 9)
                 return Constants.HeiHIVTestAtAge.AT_9_MONTHS;
