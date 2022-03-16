@@ -60,6 +60,38 @@
         "type": "hidden"
       },
       {
+        "key": "mothers_condition",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "mothers_condition",
+        "type": "native_radio",
+        "label": "Mother's Condition",
+        "label_text_style": "bold",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "alive",
+            "text": "Alive",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "alive",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "deceased",
+            "text": "Deceased",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "deceased",
+            "openmrs_entity_parent": ""
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select the mother's condition"
+        }
+      },
+      {
         "key": "preg_outcome",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -189,10 +221,6 @@
           "is_fixed_size": "true",
           "err":"Please enter a valid CTC Number"
         },
-        "v_required": {
-          "value": true,
-          "err": "Please enter a valid CTC Number"
-        },
         "relevance": {
           "step1:hiv_status_question": {
             "type": "string",
@@ -203,7 +231,7 @@
       {
         "key": "risk_category",
         "type": "native_radio",
-        "label": "Risk category",
+        "label": "HIV exposure risk of the newborn(s)",
         "openmrs_entity_id": "risk_category",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -270,22 +298,22 @@
         "type": "spinner",
         "hint": "The place the mother gave birth",
         "values": [
-          "At home",
           "At a health facility",
-          "On the way to the health facility",
-          "Other"
+          "Birth before Arrival (BBA)",
+          "At home",
+          "Traditional birth attendant"
         ],
         "keys": [
-          "At home",
           "At a health facility",
-          "On the way to the health facility",
-          "Other"
+          "Birth before Arrival (BBA)",
+          "At home",
+          "Traditional birth attendant"
         ],
         "openmrs_choice_ids": {
-          "At home": "At home",
           "At a health facility": "At a health facility",
-          "On the way to the health facility":   "On the way to the health facility",
-          "Other":   "Other"
+          "Birth before Arrival (BBA)":   "Birth before Arrival (BBA)",
+          "At home": "At home",
+          "Traditional birth attendant":   "Traditional birth attendant"
         },
         "v_required": {
           "value": "true",
@@ -401,7 +429,7 @@
           },
           {
             "key": "other_chw",
-            "text": "Se was accompanied by the CHW",
+            "text": "She was accompanied by the CHW",
             "value": false,
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
@@ -455,6 +483,258 @@
         },
 
         "value": [
+          {
+            "key": "spacer",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "",
+            "type": "spacer",
+            "spacer_height": "15dp"
+          },
+          {
+            "key": "appearance_score_label",
+            "type": "label",
+            "text": "Appearance score",
+            "text_size": "7sp",
+            "text_color": "#000000",
+            "label_info_title": "Appearance score",
+            "label_info_text": "0: Pale or blue body and face \n1: Pink body, blue arms and legs \n2: Completely pink body and face",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": ""
+          },
+          {
+            "key": "spacer",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "",
+            "type": "spacer",
+            "spacer_height": "8dp"
+          },
+          {
+            "key": "appearance_score",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "appearance_score",
+            "type": "numbers_selector",
+            "number_of_selectors": "3",
+            "start_number": "0",
+            "max_value": "2",
+            "text_size": "18px",
+            "text_color": "#000000",
+            "selected_text_color": "#ffffff",
+            "v_required": {
+              "value": true,
+              "err": "Please enter the appearance score"
+
+            }
+          },
+          {
+            "key": "spacer",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "",
+            "type": "spacer",
+            "spacer_height": "15dp"
+          },
+          {
+            "key": "pulses_score_label",
+            "type": "label",
+            "text": "Pulses score",
+            "text_size": "7sp",
+            "label_info_title": "Pulses score",
+            "label_info_text": "0: No heart beat \n1: 100 beats per minute or less, weak heart beat \n2: More than 100 beats per minute, strong heart rates",
+            "text_color": "#000000",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": ""
+          },
+          {
+            "key": "spacer",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "",
+            "type": "spacer",
+            "spacer_height": "8dp"
+          },
+          {
+            "key": "pulses_score",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "pulses_score",
+            "type": "numbers_selector",
+            "number_of_selectors": "3",
+            "start_number": "0",
+            "max_value": "2",
+            "text_size": "18px",
+            "text_color": "#000000",
+            "selected_text_color": "#ffffff",
+            "v_required": {
+              "value": true,
+              "err": "Please enter the pulses score"
+
+            }
+          },
+          {
+            "key": "spacer",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "",
+            "type": "spacer",
+            "spacer_height": "15dp"
+          },
+          {
+            "key": "grimace_score_label",
+            "type": "label",
+            "text": "Grimace score (reflex to stimulation)",
+            "label_info_title": "Grimace score (reflex to stimulation)",
+            "label_info_text": "0: No response \n1: Puckering of face \n2: Crying, coughing or sneezing",
+            "text_size": "7sp",
+            "text_color": "#000000",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": ""
+          },
+          {
+            "key": "spacer",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "",
+            "type": "spacer",
+            "spacer_height": "5dp"
+          },
+          {
+            "key": "grimace_score",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "grimace_score",
+            "type": "numbers_selector",
+            "number_of_selectors": "3",
+            "start_number": "0",
+            "max_value": "2",
+            "text_size": "18px",
+            "text_color": "#000000",
+            "selected_text_color": "#ffffff",
+            "v_required": {
+              "value": true,
+              "err": "Please enter the grimace score"
+
+            }
+          },
+          {
+            "key": "spacer",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "",
+            "type": "spacer",
+            "spacer_height": "15dp"
+          },
+          {
+            "key": "activities_score_label",
+            "type": "label",
+            "text": "Activities (Muscles) score",
+            "label_info_title": "Activities (Muscles) score",
+            "label_info_text": "0: Limp arms and legs, no flexion, no movement \n1: Some movement, some flexion \n2: Active movement, waving arms and legs, flexion",
+            "text_size": "7sp",
+            "text_color": "#000000",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": ""
+          },
+          {
+            "key": "spacer",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "",
+            "type": "spacer",
+            "spacer_height": "5dp"
+          },
+          {
+            "key": "activities_score",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "activities_score",
+            "type": "numbers_selector",
+            "number_of_selectors": "3",
+            "start_number": "0",
+            "max_value": "2",
+            "text_size": "18px",
+            "text_color": "#000000",
+            "selected_text_color": "#ffffff",
+            "v_required": {
+              "value": true,
+              "err": "Please enter the activities score"
+
+            }
+          },
+          {
+            "key": "spacer",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "",
+            "type": "spacer",
+            "spacer_height": "15dp"
+          },
+          {
+            "key": "respiration_score_label",
+            "type": "label",
+            "text": "Respiration score",
+            "label_info_title": "Respiration score",
+            "label_info_text": "0: No beating, no cry \n1: Slow, irregular breathing; retracting of chest wall; grunting or weak \n2: Strong cry, regular breathing",
+            "text_size": "7sp",
+            "text_color": "#000000",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": ""
+          },
+          {
+            "key": "spacer",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "",
+            "type": "spacer",
+            "spacer_height": "5dp"
+          },
+          {
+            "key": "respiration_score",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "respiration_score",
+            "type": "numbers_selector",
+            "number_of_selectors": "3",
+            "start_number": "0",
+            "max_value": "2",
+            "text_size": "18px",
+            "text_color": "#000000",
+            "selected_text_color": "#ffffff",
+            "v_required": {
+              "value": true,
+              "err": "Please enter the respiration score"
+
+            }
+          },
+          {
+            "key": "spacer",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "",
+            "type": "spacer",
+            "spacer_height": "15dp"
+          },
+          {
+            "key": "apgar_score",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "apgar_score",
+            "type": "edit_text",
+            "calculation": {
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "anc_pregnancy_outcome_relevance.yml"
+                }
+              }
+            }
+          },
           {
             "key": "surname",
             "openmrs_entity_parent": "",
@@ -524,6 +804,10 @@
             "v_regex": {
               "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-]*",
               "err": "Please enter a valid name"
+            },
+            "v_required": {
+              "value": "true",
+              "err": "Please enter the middle name"
             }
           },
           {
