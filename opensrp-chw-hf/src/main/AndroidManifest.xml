@@ -14,6 +14,9 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:theme">
         <activity
+            android:name=".activity.PmtctReportsViewActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.LoginActivity"
             android:launchMode="singleTask"
             android:roundIcon="@drawable/ic_launcher_round"
@@ -255,16 +258,19 @@
         <activity
             android:name=".activity.TbProfileActivity"
             android:theme="@style/HFTheme.NoActionBar" />
-        <activity android:name=".activity.HvlResultsViewActivity"
-            android:theme="@style/HFTheme.NoActionBar"/>
-        <activity android:name=".activity.Cd4ResultsViewActivity"
-            android:theme="@style/HFTheme.NoActionBar"/>
+        <activity
+            android:name=".activity.HvlResultsViewActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.Cd4ResultsViewActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
         <activity
             android:name=".activity.PartnerRegistrationActivity"
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
             android:name=".activity.AllMaleClientsActivity"
             android:theme="@style/HFTheme.NoActionBar" />
+
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="3f94f9c3caeff331b3a2bd8c2182b663ad6a955a" />

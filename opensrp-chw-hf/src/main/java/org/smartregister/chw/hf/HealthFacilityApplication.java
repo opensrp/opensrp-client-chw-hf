@@ -37,6 +37,7 @@ import org.smartregister.chw.hf.activity.HtsRegisterActivity;
 import org.smartregister.chw.hf.activity.LoginActivity;
 import org.smartregister.chw.hf.activity.MalariaRegisterActivity;
 import org.smartregister.chw.hf.activity.PmtctRegisterActivity;
+import org.smartregister.chw.hf.activity.PmtctReportsViewActivity;
 import org.smartregister.chw.hf.activity.PncRegisterActivity;
 import org.smartregister.chw.hf.activity.ReferralRegisterActivity;
 import org.smartregister.chw.hf.configs.AllClientsRegisterRowOptions;
@@ -122,7 +123,7 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
             registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.PMTCT_REGISTER_ACTIVITY, PmtctRegisterActivity.class);
             registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.HEI, HeiRegisterActivity.class);
 //          TODO uncomment these when NACP is ready to test these modules
-//          registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.TB_REGISTER_ACTIVITY, TbRegisterActivity.class);
+          registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.TB_REGISTER_ACTIVITY, PmtctReportsViewActivity.class);
         }
         return registeredActivities;
     }
