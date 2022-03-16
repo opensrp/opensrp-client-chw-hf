@@ -18,6 +18,7 @@ import org.smartregister.chw.anc.util.JsonFormUtils;
 import org.smartregister.chw.core.activity.CoreFamilyRegisterActivity;
 import org.smartregister.chw.core.activity.CorePncRegisterActivity;
 import org.smartregister.chw.core.utils.CoreConstants;
+import org.smartregister.chw.core.utils.FormUtils;
 import org.smartregister.chw.hf.fragment.PncRegisterFragment;
 import org.smartregister.chw.hf.interactor.AncRegisterInteractor;
 import org.smartregister.family.util.Utils;
@@ -27,6 +28,9 @@ import org.smartregister.view.fragment.BaseRegisterFragment;
 import timber.log.Timber;
 
 import static org.smartregister.util.JsonFormUtils.getFieldJSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class PncRegisterActivity extends CorePncRegisterActivity {
     protected static boolean motherHivStatus;
@@ -50,12 +54,16 @@ public class PncRegisterActivity extends CorePncRegisterActivity {
     @Override
     public void startFormActivity(JSONObject jsonForm) {
         try {
-            JSONArray fields = org.smartregister.util.JsonFormUtils.fields(jsonForm);
+            JSONObject stepOne = jsonForm.getJSONObject(org.smartregister.family.util.JsonFormUtils.STEP1);
+            JSONArray fields = stepOne.getJSONArray(org.smartregister.family.util.JsonFormUtils.FIELDS);
             JSONObject global = jsonForm.getJSONObject("global");
 
-            JSONObject familyIdObject = getFieldJSONObject(fields, DBConstants.KEY.RELATIONAL_ID);
-            familyIdObject.put(JsonFormUtils.VALUE, familyBaseEntityId);
-
+            Map<String, String> values = new HashMap<>();
+            values.put(DBConstants.KEY.TEMP_UNIQUE_ID, unique_id);
+            values.put(CoreConstants.JsonAssets.FAM_NAME, familyName);
+            values.put(CoreConstants.JsonAssets.FAMILY_MEMBER.PHONE_NUMBER, phone_number);
+            values.put(org.smartregister.family.util.DBConstants.KEY.RELATIONAL_ID, familyBaseEntityId);
+            FormUtils.updateFormField(fields, values);
 
             global.put("hiv_status_mother", motherHivStatus);
             Intent intent = new Intent(this, Utils.metadata().familyMemberFormActivity);
