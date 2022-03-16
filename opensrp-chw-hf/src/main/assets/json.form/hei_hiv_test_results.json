@@ -130,10 +130,6 @@
           "is_fixed_size": "true",
           "err":"Please enter a valid CTC Number"
         },
-        "v_required": {
-          "value": true,
-          "err": "Please enter a valid CTC Number"
-        },
         "relevance": {
           "step1:hiv_test_result": {
             "type": "string",
