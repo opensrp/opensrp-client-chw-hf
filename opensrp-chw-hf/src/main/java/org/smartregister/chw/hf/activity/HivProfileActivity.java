@@ -86,23 +86,10 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
     @Override
     public void setupViews() {
         super.setupViews();
-        TextView tvRecordHivFollowup = findViewById(R.id.textview_record_reccuring_visit);
-
-        if (getHivMemberObject().getCtcNumber() == null || getHivMemberObject().getCtcNumber().equals("")) {
-            findViewById(R.id.record_recurring_layout).setVisibility(View.VISIBLE);
-            tvRecordHivFollowup.setText(R.string.record_ctc_number);
-            tvRecordHivFollowup.setOnClickListener(v -> {
-                try {
-                    startUpdateFollowup(HivProfileActivity.this, getHivMemberObject().getBaseEntityId());
-                } catch (JSONException e) {
-                    Timber.e(e);
-                }
-            });
-        }
         new SetIndexClientsTask(getHivMemberObject()).execute();
     }
 
-    protected void startUpdateFollowup(Activity activity, String baseEntityID) throws JSONException {
+    protected void startUpdateCtcNumber(Activity activity, String baseEntityID) throws JSONException {
         Intent intent = new Intent(activity, HivFormsActivity.class);
         intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.BASE_ENTITY_ID, baseEntityID);
         JSONObject form = (new FormUtils()).getFormJsonFromRepositoryOrAssets(activity, org.smartregister.chw.hf.utils.Constants.JsonForm.getHivClientUpdateCtcNumber());
@@ -127,9 +114,20 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
         super.onCreation();
         setCommonPersonObjectClient(getClientDetailsByBaseEntityID(getHivMemberObject().getBaseEntityId()));
 
-        //Only showing the option to register index contacts for positive HIV clients with CTC Numbers
-        if (!getHivMemberObject().getCtcNumber().isEmpty())
+        getRecordIndexContactLayout().setVisibility(View.VISIBLE);
+
+        TextView tvRecordCtcNumber = findViewById(R.id.textview_record_index_contact_visit);
+        if (getHivMemberObject().getCtcNumber() == null || getHivMemberObject().getCtcNumber().equals("")) {
             getRecordIndexContactLayout().setVisibility(View.VISIBLE);
+            tvRecordCtcNumber.setText(R.string.record_ctc_number);
+            tvRecordCtcNumber.setOnClickListener(v -> {
+                try {
+                    startUpdateCtcNumber(HivProfileActivity.this, getHivMemberObject().getBaseEntityId());
+                } catch (JSONException e) {
+                    Timber.e(e);
+                }
+            });
+        }
     }
 
     @Override
@@ -256,10 +254,17 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
 
     @Override
     public void onClick(View view) {
-        super.onClick(view);
         int id = view.getId();
         if (id == R.id.record_hiv_followup_visit) {
             openFollowUpVisitForm(false);
+        } else if (id == R.id.textview_record_index_contact_visit && getHivMemberObject().getCtcNumber().isEmpty()) {
+            try {
+                startUpdateCtcNumber(HivProfileActivity.this, getHivMemberObject().getBaseEntityId());
+            } catch (JSONException e) {
+                Timber.e(e);
+            }
+        } else {
+            super.onClick(view);
         }
     }
 
@@ -340,6 +345,9 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
         try {
             String jsonString = data.getStringExtra(OpdConstants.JSON_FORM_EXTRA.JSON);
             Timber.d("JSONResult : %s", jsonString);
+
+            if (jsonString == null)
+                finish();
 
             JSONObject form = new JSONObject(jsonString);
             String encounterType = form.getString(OpdJsonFormUtils.ENCOUNTER_TYPE);
