@@ -1974,19 +1974,19 @@
           }
         },
         {
-          "column_name": "hepatitis_b_vaccinations",
+          "column_name": "hepatitis_b_vaccination",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "hepatitis_b_vaccinations"
+            "concept": "hepatitis_b_vaccination"
           }
         },
         {
-          "column_name": "tetanus_vaccinations",
+          "column_name": "tetanus_vaccination",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "tetanus_vaccinations"
+            "concept": "tetanus_vaccination"
           }
         },
         {
