@@ -95,7 +95,36 @@ public class Constants extends CoreConstants {
         private static final String HEI_CTX_PRESCRIPTION = "hei_rv_ctx";
         private static final String HEI_HIV_TEST_RESULTS = "hei_hiv_test_results";
         private static final String HIV_CLIENT_UPDATE_CTC_NUMBER = "hiv_client_update_ctc_number";
+        private static final String PNC_MOTHER_GENERAL_EXAMINATION = "pnc_mother_general_examination";
+        private static final String PNC_CHILD_GENERAL_EXAMINATION = "pnc_child_general_examination";
+        private static final String PNC_FAMILY_PLANNING_SERVICES = "pnc_family_planning_services";
+        private static final String PNC_IMMUNIZATION = "pnc_immunization";
+        private static final String PNC_HIV_TEST_RESULTS = "pnc_hiv_test_results";
+        private static final String PNC_NUTRITIONAL_SUPPLEMENT = "pnc_nutritional_supplement";
 
+        public static String getPncChildGeneralExamination() {
+            return PNC_CHILD_GENERAL_EXAMINATION;
+        }
+
+        public static String getPncFamilyPlanningServices() {
+            return PNC_FAMILY_PLANNING_SERVICES;
+        }
+
+        public static String getPncImmunization() {
+            return PNC_IMMUNIZATION;
+        }
+
+        public static String getPncHivTestResults() {
+            return PNC_HIV_TEST_RESULTS;
+        }
+
+        public static String getPncNutritionalSupplement() {
+            return PNC_NUTRITIONAL_SUPPLEMENT;
+        }
+
+        public static String getPncMotherGeneralExamination() {
+            return PNC_MOTHER_GENERAL_EXAMINATION;
+        }
 
         public static String getHeiCtxPrescription() {
             return HEI_CTX_PRESCRIPTION;

@@ -107,4 +107,18 @@
     <string name="ctx_given">CTX Given</string>
     <string name="dna_pcr_sample_collected">DNA-PCR Sample Collected</string>
     <string name="ctx_not_given">CTX Not Given</string>
+    <string name="mother_general_examination_complete">Mother\'s General Examination Complete</string>
+    <string name="mother_general_examination">Mother\'s General Examination</string>
+    <string name="child_general_examination_complete">Infant\'s General Examination Complete</string>
+    <string name="child_general_examination">Child\'s General Examination</string>
+    <string name="immunization_complete">Immunization Complete</string>
+    <string name="immunization_title">Immunization</string>
+    <string name="nutritional_supplements_complete">Nutritional Supplements Complete</string>
+    <string name="nutritional_supplements_title">Nutritional Supplements</string>
+    <string name="family_planning_services_complete">Family Planning Services Complete</string>
+    <string name="family_planning_services_title">Family Planning Services</string>
+    <string name="hiv_testing_done">HIV Testing Done</string>
+    <string name="hiv_testing_not_done">HIV Testing Not Done</string>
+    <string name="pnc_hiv_testing">HIV Testing</string>
+
 </resources>
