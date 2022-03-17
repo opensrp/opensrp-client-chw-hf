@@ -39,11 +39,11 @@ public class PncFacilityVisitInteractorFlv implements AncFirstFacilityVisitInter
             }
         }
 
-        evaluatePncActions(view, memberObject, details, context);
+        evaluatePncActions(memberObject, details, context);
         return actionList;
     }
 
-    private void evaluatePncActions(BaseAncHomeVisitContract.View view, MemberObject memberObject, Map<String, List<VisitDetail>> details, Context context
+    private void evaluatePncActions(MemberObject memberObject, Map<String, List<VisitDetail>> details, Context context
     ) throws BaseAncHomeVisitAction.ValidationException {
 
         BaseAncHomeVisitAction motherGeneralExamination = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.mother_general_examination))
