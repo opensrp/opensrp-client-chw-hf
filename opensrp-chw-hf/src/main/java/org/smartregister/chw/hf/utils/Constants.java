@@ -43,6 +43,7 @@ public class Constants extends CoreConstants {
         public static final String HEI_POSITIVE_INFANT = "HEI Positive Infant";
         public static final String HEI_NEGATIVE_INFANT = "HEI Negative Infant";
         public static final String PMTCT_CLOSE_VISITS = "PMTCT Close Visits";
+        public static final String PNC_VISIT = "PNC VISIT";
     }
 
     public static final class TableName {
@@ -52,6 +53,7 @@ public class Constants extends CoreConstants {
         public static final String HEI = "ec_hei";
         public static final String HEI_HIV_RESULTS = "ec_hei_hiv_results";
         public static final String HEI_FOLLOWUP = "ec_hei_followup";
+        public static final String PNC_FOLLOWUP = "ec_pnc_followup";
     }
 
     public static final class Visits {
