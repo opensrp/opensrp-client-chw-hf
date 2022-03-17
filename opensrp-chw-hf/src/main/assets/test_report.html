@@ -68,7 +68,7 @@
         <td>
             Idadi umri wa miaka 10-14
         </td>
-        <td id="data-B3a"></td>
+        <td id="B3a"></td>
     </tr>
     <tr>
         <td>
@@ -79,7 +79,7 @@
         <td>
             Idadi umri wa miaka 15-19
         </td>
-        <td id="data-B3b"></td>
+        <td id="B3b"></td>
     </tr>
     <tr>
         <td>
@@ -90,7 +90,7 @@
         <td>
             Idadi umri wa miaka 20-24
         </td>
-        <td id="data-B3c"></td>
+        <td id="B3c"></td>
     </tr>
     <tr>
         <td>
@@ -101,7 +101,7 @@
         <td>
             Idadi umri wa miaka 25+
         </td>
-        <td id="data-B3d"></td>
+        <td id="B3d"></td>
     </tr>
     <tr>
         <td>
@@ -112,7 +112,7 @@
         <td>
             Idadi walioanza tiba ART(initiates)
         </td>
-        <td id="data-C3a"></td>
+        <td id="C3a"></td>
     </tr>
     <tr>
         <td>
@@ -123,7 +123,7 @@
         <td>
             Idadi waliyotayari kwenye tiba ya ART
         </td>
-        <td id="data-C3b"></td>
+        <td id="C3b"></td>
     </tr>
     <th colspan="4">
         Tafuta jumla ya kundi
@@ -135,7 +135,7 @@
         <td colspan="2" class="list-title">
             Jumla waliohamia kliniki hii ya PMTCT(T1) tangu month 0
         </td>
-        <td id="data-D3"></td>
+        <td id="D3"></td>
     </tr>
     <tr>
         <td>
@@ -144,7 +144,7 @@
         <td colspan="2" class="list-title">
             Jumla waliohama kutoka kliniki hii ya PMTCT (T0) tangu month 0
         </td>
-        <td id="data-E3"></td>
+        <td id="E3"></td>
     </tr>
     <tr>
         <td>
@@ -153,7 +153,7 @@
         <td colspan="2" class="list-title">
             Jumla ta kundi = (A3+D3-E3)
         </td>
-        <td id="data-F3"></td>
+        <td id="F3"></td>
     </tr>
     <th colspan="4">
         Matokeo ya ufuatiliaji wa mama
@@ -165,7 +165,7 @@
         <td colspan="2" class="list-title">
             Idadi ya kina mama wanaoendelea na huduma (CTN katika M1 au M2 au M3)
         </td>
-        <td id="data-G3"></td>
+        <td id=" G3"></td>
     </tr>
     <tr>
         <td>
@@ -174,7 +174,7 @@
         <td colspan="2" class="list-title">
             Idadi waliokosa mahudurio matatu mfululizo (M1, M2 na M3)
         </td>
-        <td id="data-H3"></td>
+        <td id="H3"></td>
     </tr>
     <tr>
         <td>
@@ -183,7 +183,7 @@
         <td colspan="2" class="list-title">
             Waliofariki
         </td>
-        <td id="data-I3"></td>
+        <td id="I3"></td>
     </tr>
     <tr>
         <td>
@@ -192,7 +192,7 @@
         <td colspan="2" class="list-title">
             Waliomaliza ufuatiliaji na kwenda CTC(Exit)
         </td>
-        <td id="data-J3"></td>
+        <td id="J3"></td>
     </tr>
     <tr>
         <td>
@@ -201,19 +201,19 @@
         <td colspan="2" class="list-title">
             (Early retention)% walio hai na wanatumia huduma ya PMTCT [G3/(F3-J3)*100]%
         </td>
-        <td id="data-K3"></td>
+        <td id="K3"></td>
     </tr>
     </tbody>
 </table>
 </body>
 <script type="text/javascript">
     function onLoad() {
-        const dataCell = document.getElementById('data-B3a');
-        const dataCell2 = document.getElementById('data-B3b');
-        const data = (Android.getData());
-        dataCell.innerHTML = data;
-        console.log(data, "here happended")
-        dataCell2.innerHTML = Android.getData();
+        const data = JSON.parse(Android.getData());
+        const keys = Object.keys(data.nameValuePairs)
+        keys.forEach(key => {
+            document.getElementById(key).innerHTML = data.nameValuePairs[key]
+        })
+
     }
 </script>
 

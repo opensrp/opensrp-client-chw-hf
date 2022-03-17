@@ -17,6 +17,9 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.hf.R;
@@ -81,20 +84,22 @@ public class PmtctReportsViewActivity extends AppCompatActivity {
         }
 
         @JavascriptInterface
-        public JSONObject getData() {
+        public String getData() {
             JSONObject jsonObject = new JSONObject();
             try {
-                jsonObject.put("data-B3a", 10 );
-                jsonObject.put("data-B3b", 12 );
-                jsonObject.put("data-B3c", 13 );
-                jsonObject.put("data-B3d", 14 );
-                jsonObject.put("data-C3a", 15 );
-                jsonObject.put("data-C3b", 19 );
+                jsonObject.put("B3a", 10 );
+                jsonObject.put("B3b", 12 );
+                jsonObject.put("B3c", 13 );
+                jsonObject.put("B3d", 14 );
+                jsonObject.put("C3a", 15 );
+                jsonObject.put("C3b", 19 );
             } catch (JSONException e) {
                 Timber.e(e);
             }
+            Gson gson = new Gson();
+            gson.toJson(jsonObject);
             Timber.d(jsonObject.toString());
-            return jsonObject;
+            return gson.toJson(jsonObject);
         }
 
     }
