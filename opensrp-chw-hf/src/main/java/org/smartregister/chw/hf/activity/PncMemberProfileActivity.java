@@ -24,6 +24,7 @@ import org.smartregister.chw.fp.util.FamilyPlanningConstants;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.adapter.ReferralCardViewAdapter;
 import org.smartregister.chw.hf.contract.PncMemberProfileContract;
+import org.smartregister.chw.hf.dao.HfPncDao;
 import org.smartregister.chw.hf.interactor.PncMemberProfileInteractor;
 import org.smartregister.chw.hf.model.FamilyProfileModel;
 import org.smartregister.chw.hf.presenter.PncMemberProfilePresenter;
@@ -224,6 +225,18 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
         super.setupViews();
         textview_record_anc_visit.setVisibility(View.VISIBLE);
         textview_record_anc_visit.setOnClickListener(this);
+
+
+        if (HfPncDao.isMotherEligibleForPmtctRegistration(baseEntityID)) {
+            textview_record_anc_visit.setVisibility(View.GONE);
+            layoutNotRecordView.setVisibility(View.VISIBLE);
+            textViewUndo.setVisibility(View.GONE);
+            textViewNotVisitMonth.setText(getContext().getString(R.string.pmtct_pending_registration));
+            tvEdit.setText(getContext().getString(R.string.register_button_text));
+            tvEdit.setVisibility(View.VISIBLE);
+            tvEdit.setOnClickListener(v -> startPmtctRegistration());
+            imageViewCross.setImageResource(org.smartregister.chw.core.R.drawable.activityrow_notvisited);
+        }
     }
 
     @Override
@@ -266,5 +279,13 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
             pncMemberProfilePresenter = new PncMemberProfilePresenter(this, new PncMemberProfileInteractor(), memberObject);
         }
         return pncMemberProfilePresenter;
+    }
+
+    protected void startPmtctRegistration() {
+        try {
+            PmtctRegisterActivity.startPmtctRegistrationActivity(this, baseEntityID, "", false);
+        } catch (Exception e) {
+            Timber.e(e);
+        }
     }
 }
