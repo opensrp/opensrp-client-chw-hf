@@ -219,7 +219,7 @@
         "v_max_length": {
           "value": "17",
           "is_fixed_size": "true",
-          "err":"Please enter a valid CTC Number"
+          "err": "Please enter a valid CTC Number"
         },
         "relevance": {
           "step1:hiv_status_question": {
@@ -311,9 +311,9 @@
         ],
         "openmrs_choice_ids": {
           "At a health facility": "At a health facility",
-          "Birth before Arrival (BBA)":   "Birth before Arrival (BBA)",
+          "Birth before Arrival (BBA)": "Birth before Arrival (BBA)",
           "At home": "At home",
-          "Traditional birth attendant":   "Traditional birth attendant"
+          "Traditional birth attendant": "Traditional birth attendant"
         },
         "v_required": {
           "value": "true",
@@ -448,7 +448,6 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "",
-
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -481,7 +480,6 @@
             }
           }
         },
-
         "value": [
           {
             "key": "spacer",
@@ -526,7 +524,6 @@
             "v_required": {
               "value": true,
               "err": "Please enter the appearance score"
-
             }
           },
           {
@@ -572,7 +569,6 @@
             "v_required": {
               "value": true,
               "err": "Please enter the pulses score"
-
             }
           },
           {
@@ -618,7 +614,6 @@
             "v_required": {
               "value": true,
               "err": "Please enter the grimace score"
-
             }
           },
           {
@@ -664,7 +659,6 @@
             "v_required": {
               "value": true,
               "err": "Please enter the activities score"
-
             }
           },
           {
@@ -854,7 +848,6 @@
                 }
               }
             }
-
           },
           {
             "key": "same_as_fam_name_chk",
@@ -1077,43 +1070,59 @@
             }
           },
           {
-            "key": "vacc_birth",
+            "key": "child_bcg_vaccination",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "vacc_birth",
-            "type": "check_box",
-            "label": "Which vaccinations were given?",
+            "openmrs_entity_id": "child_bcg_vaccination",
+            "type": "native_radio",
+            "label": "Was BCG vaccination given?",
             "label_text_style": "normal",
             "text_color": "#C0C0C0",
-            "exclusive": [
-              "chk_none"
-            ],
             "options": [
               {
-                "key": "chk_none",
-                "text": "None",
-                "value": false,
+                "key": "yes",
+                "text": "Yes",
                 "openmrs_entity": "concept",
-                "openmrs_entity_id": "chk_none"
+                "openmrs_entity_id": "yes"
               },
               {
-                "key": "chk_opv_0",
-                "text": "OPV 0",
-                "value": false,
+                "key": "no",
+                "text": "No",
                 "openmrs_entity": "concept",
-                "openmrs_entity_id": "chk_opv_0"
-              },
-              {
-                "key": "chk_bcg",
-                "text": "BCG",
-                "value": false,
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "chk_bcg"
+                "openmrs_entity_id": "no"
               }
             ],
             "v_required": {
               "value": "true",
-              "err": "vaccinations given required"
+              "err": "Please select one"
+            }
+          },
+          {
+            "key": "child_opv0_vaccination",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "child_opv0_vaccination",
+            "type": "native_radio",
+            "label": "Was OPV 0 vaccination given?",
+            "label_text_style": "normal",
+            "text_color": "#C0C0C0",
+            "options": [
+              {
+                "key": "yes",
+                "text": "Yes",
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "yes"
+              },
+              {
+                "key": "no",
+                "text": "No",
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "no"
+              }
+            ],
+            "v_required": {
+              "value": "true",
+              "err": "Please select one"
             }
           }
         ]
@@ -1135,7 +1144,6 @@
             }
           }
         },
-
         "value": [
           {
             "key": "surname",
@@ -1160,7 +1168,6 @@
                 }
               }
             }
-
           },
           {
             "key": "same_as_fam_name_chk",
@@ -1383,43 +1390,59 @@
             }
           },
           {
-            "key": "vacc_birth",
+            "key": "child_bcg_vaccination",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "vacc_birth",
-            "type": "check_box",
-            "label": "Which vaccinations were given?",
+            "openmrs_entity_id": "child_bcg_vaccination",
+            "type": "native_radio",
+            "label": "Was BCG vaccination given?",
             "label_text_style": "normal",
             "text_color": "#C0C0C0",
-            "exclusive": [
-              "chk_none"
-            ],
             "options": [
               {
-                "key": "chk_none",
-                "text": "None",
-                "value": false,
+                "key": "yes",
+                "text": "Yes",
                 "openmrs_entity": "concept",
-                "openmrs_entity_id": "chk_none"
+                "openmrs_entity_id": "yes"
               },
               {
-                "key": "chk_opv_0",
-                "text": "OPV 0",
-                "value": false,
+                "key": "no",
+                "text": "No",
                 "openmrs_entity": "concept",
-                "openmrs_entity_id": "chk_opv_0"
-              },
-              {
-                "key": "chk_bcg",
-                "text": "BCG",
-                "value": false,
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "chk_bcg"
+                "openmrs_entity_id": "no"
               }
             ],
             "v_required": {
               "value": "true",
-              "err": "vaccinations given required"
+              "err": "Please select one"
+            }
+          },
+          {
+            "key": "child_opv0_vaccination",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "child_opv0_vaccination",
+            "type": "native_radio",
+            "label": "Was OPV 0 vaccination given?",
+            "label_text_style": "normal",
+            "text_color": "#C0C0C0",
+            "options": [
+              {
+                "key": "yes",
+                "text": "Yes",
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "yes"
+              },
+              {
+                "key": "no",
+                "text": "No",
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "no"
+              }
+            ],
+            "v_required": {
+              "value": "true",
+              "err": "Please select one"
             }
           }
         ]

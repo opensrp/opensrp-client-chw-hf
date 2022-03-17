@@ -572,10 +572,10 @@
             }
           },
           {
-            "key": "vacc_birth",
+            "key": "child_vaccinations",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "vacc_birth",
+            "openmrs_entity_id": "child_vaccinations",
             "type": "check_box",
             "label": "Chanjo zipi alipatiwa?",
             "label_text_style": "normal",
