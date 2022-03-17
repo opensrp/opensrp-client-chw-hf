@@ -1,6 +1,6 @@
 {
   "validate_on_submit": true,
-  "show_errors_on_submit": true,
+  "show_errors_on_submit": false,
   "count": "1",
   "encounter_type": "Pregnancy Outcome",
   "entity_id": "",
@@ -171,7 +171,7 @@
       {
         "key": "hiv_status_question",
         "type": "native_radio",
-        "label": "HIV status",
+        "label": "Mother's HIV status",
         "openmrs_entity_id": "hiv_status_question",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
