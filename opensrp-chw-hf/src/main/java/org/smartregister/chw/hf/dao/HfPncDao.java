@@ -40,4 +40,21 @@ public class HfPncDao extends PNCDao {
 
         return res != null && res.size() > 0 && res.get(0) != null;
     }
+
+    public static boolean isMotherEligibleForHivTest(String baseEntityId) {
+        String sql = "SELECT hiv_status FROM ec_pregnancy_outcome WHERE (hiv_status = 'negative' OR hiv_status IS NULL) AND base_entity_id = '" + baseEntityId + "'";
+
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "hiv_status");
+        List<String> res = readData(sql, dataMap);
+
+        return res != null && res.size() > 0 && res.get(0) != null;
+    }
+    public static boolean isMotherEligibleForPmtctRegistration(String baseEntityId) {
+        String sql = "SELECT hiv_status FROM ec_pregnancy_outcome WHERE hiv_status = 'positive' AND base_entity_id NOT IN (SELECT base_entity_id FROM ec_pmtct_registration WHERE is_closed = 0) AND base_entity_id = '" + baseEntityId + "'";
+
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "hiv_status");
+        List<String> res = readData(sql, dataMap);
+
+        return res != null && res.size() > 0 && res.get(0) != null;
+    }
 }
