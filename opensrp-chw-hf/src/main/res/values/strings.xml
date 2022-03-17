@@ -125,5 +125,6 @@
     <string name="record_result">Record Result</string>
     <string name="hiv_test_results">HIV Test Results</string>
     <string name="view_child_hiv_results">View Child\'s HIV Test Results</string>
+    <string name="pnc_visit">PNC Visit</string>
 
 </resources>
