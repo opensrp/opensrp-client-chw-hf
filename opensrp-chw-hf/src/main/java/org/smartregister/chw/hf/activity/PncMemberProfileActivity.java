@@ -6,8 +6,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.vijay.jsonwizard.utils.FormUtils;
 
@@ -43,6 +41,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
+import androidx.recyclerview.widget.RecyclerView;
 import timber.log.Timber;
 
 import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
@@ -125,7 +124,7 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
     @Override
     protected void onCreation() {
         super.onCreation();
-        findViewById(R.id.record_visit_panel).setVisibility(View.GONE);
+        findViewById(R.id.record_visit_panel).setVisibility(View.VISIBLE);
         setCommonPersonObjectClient(getClientDetailsByBaseEntityID(baseEntityID));
     }
 
@@ -182,12 +181,12 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
             menu.findItem(R.id.action_malaria_followup_visit).setVisible(true);
             menu.findItem(R.id.action_malaria_diagnosis).setVisible(false);
         } else {
-            menu.findItem(R.id.action_malaria_diagnosis).setVisible(true);
+            menu.findItem(R.id.action_malaria_diagnosis).setVisible(false);
         }
         if (FpDao.isRegisteredForFp(baseEntityID)) {
             menu.findItem(R.id.action_fp_change).setVisible(true);
         } else {
-            menu.findItem(R.id.action_fp_initiation_pnc).setVisible(true);
+            menu.findItem(R.id.action_fp_initiation_pnc).setVisible(false);
         }
         return true;
     }
@@ -223,6 +222,8 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
     @Override
     public void setupViews() {
         super.setupViews();
+        textview_record_anc_visit.setVisibility(View.VISIBLE);
+        textview_record_anc_visit.setOnClickListener(this);
     }
 
     @Override
@@ -241,6 +242,14 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
         return new PncMemberProfileInteractor();
     }
 
+    @Override
+    public void onClick(View v) {
+        super.onClick(v);
+        int id = v.getId();
+        if (id == R.id.textview_record_visit) {
+            PncFacilityVisitActivity.startMe(this, baseEntityID, false);
+        }
+    }
 
     @Override
     protected void removePncMember() {

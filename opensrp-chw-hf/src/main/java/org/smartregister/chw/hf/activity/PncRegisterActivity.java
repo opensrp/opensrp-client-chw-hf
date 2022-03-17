@@ -3,6 +3,7 @@ package org.smartregister.chw.hf.activity;
 import android.app.Activity;
 import android.content.Intent;
 
+import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 import com.vijay.jsonwizard.constants.JsonFormConstants;
 import com.vijay.jsonwizard.domain.Form;
 
@@ -19,18 +20,19 @@ import org.smartregister.chw.core.activity.CoreFamilyRegisterActivity;
 import org.smartregister.chw.core.activity.CorePncRegisterActivity;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.FormUtils;
+import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.fragment.PncRegisterFragment;
 import org.smartregister.chw.hf.interactor.AncRegisterInteractor;
 import org.smartregister.family.util.Utils;
+import org.smartregister.helper.BottomNavigationHelper;
 import org.smartregister.job.SyncServiceJob;
+import org.smartregister.listener.BottomNavigationListener;
 import org.smartregister.view.fragment.BaseRegisterFragment;
-
-import timber.log.Timber;
-
-import static org.smartregister.util.JsonFormUtils.getFieldJSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import timber.log.Timber;
 
 public class PncRegisterActivity extends CorePncRegisterActivity {
     protected static boolean motherHivStatus;
@@ -92,7 +94,20 @@ public class PncRegisterActivity extends CorePncRegisterActivity {
     @Override
     protected void registerBottomNavigation() {
         super.registerBottomNavigation();
-        FamilyRegisterActivity.registerBottomNavigation(bottomNavigationHelper, bottomNavigationView, this);
+        bottomNavigationHelper = new BottomNavigationHelper();
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+        if (bottomNavigationView != null) {
+            bottomNavigationView.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
+            bottomNavigationView.getMenu().removeItem(org.smartregister.R.id.action_clients);
+            bottomNavigationView.getMenu().removeItem(org.smartregister.chw.tb.R.id.action_register);
+            bottomNavigationView.getMenu().removeItem(org.smartregister.R.id.action_search);
+            bottomNavigationView.getMenu().removeItem(org.smartregister.R.id.action_library);
+            bottomNavigationView.getMenu().removeItem(org.smartregister.family.R.id.action_job_aids);
+
+            BottomNavigationListener pncBottomNavigationListener = getBottomNavigation(this);
+            bottomNavigationView.setOnNavigationItemSelectedListener(pncBottomNavigationListener);
+        }
     }
 
     @Override
