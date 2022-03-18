@@ -139,5 +139,9 @@
     <string name="hiv_testing_not_done">HIV Testing Not Done</string>
     <string name="hiv_testing_done">HIV Testing Done</string>
     <string name="pnc_hiv_testing">HIV Testing</string>
+    <string name="record">Record</string>
+    <string name="child_followup">%s\'s Followup</string>
+    <string name="record_child_followup">Record The Child\'s followup</string>
+    <string name="saved_child_followup">Child\'s followup details saved successfully</string>
 
 </resources>
