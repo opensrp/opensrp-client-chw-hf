@@ -125,5 +125,9 @@
     <string name="record_result">Record Result</string>
     <string name="hiv_test_results">HIV Test Results</string>
     <string name="view_child_hiv_results">View Child\'s HIV Test Results</string>
+    <string name="view_reports_for_anc_women">View Reports for ANC Women</string>
+    <string name="anc_reports_title">ANC REPORTS</string>
+    <string name="pmtct_reports_subtitle"><![CDATA[View Reports for PMTCT COHORTS (Women & Children)]]></string>
+    <string name="pmtct_reports_title">PMTCT COHORT REPORTS</string>
 
 </resources>
