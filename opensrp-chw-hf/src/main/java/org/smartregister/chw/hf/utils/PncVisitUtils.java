@@ -7,6 +7,7 @@ import org.smartregister.chw.anc.AncLibrary;
 import org.smartregister.chw.anc.domain.Visit;
 import org.smartregister.chw.anc.repository.VisitDetailsRepository;
 import org.smartregister.chw.anc.repository.VisitRepository;
+import org.smartregister.chw.hf.dao.HfPncDao;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -31,7 +32,31 @@ public class PncVisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
         for (Visit v : visits) {
             if (v.getVisitType().equalsIgnoreCase(Constants.Events.PNC_VISIT)) {
                 try {
-                    pncVisitsCompleted.add(v);
+                    JSONObject jsonObject = new JSONObject(v.getJson());
+                    JSONArray obs = jsonObject.getJSONArray("obs");
+                    String baseEntityId = jsonObject.getString("baseEntityId");
+
+                    List<Boolean> checks = new ArrayList<Boolean>();
+
+                    boolean isMotherGeneralExaminationDone = computeCompletionStatus(obs, "systolic");
+                    boolean isFamilyPlanningServicesDone = computeCompletionStatus(obs, "education_counselling_given");
+                    boolean isImmunizationDone = computeCompletionStatus(obs, "tetanus_vaccination") ||computeCompletionStatus(obs, "hepatitis_b_vaccination") ;
+                    boolean isHivTestingDone = computeCompletionStatus(obs, "hiv_test_result");
+                    boolean isNutritionSupplementsDone = computeCompletionStatus(obs, "iron_and_folic_acid");
+
+                    if(HfPncDao.isMotherEligibleForHivTest(baseEntityId)){
+                        checks.add(isHivTestingDone);
+                    }
+                    if(HfPncDao.isMotherEligibleForTetanus(baseEntityId) || HfPncDao.isMotherEligibleForHepB(baseEntityId)){
+                        checks.add(isImmunizationDone);
+                    }
+
+                    checks.add(isMotherGeneralExaminationDone);
+                    checks.add(isFamilyPlanningServicesDone);
+                    checks.add(isNutritionSupplementsDone);
+                    if (!checks.contains(false)) {
+                        pncVisitsCompleted.add(v);
+                    }
                 } catch (Exception e) {
                     Timber.e(e);
                 }
