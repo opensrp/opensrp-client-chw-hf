@@ -13,6 +13,7 @@ import com.vijay.jsonwizard.utils.FormUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.smartregister.chw.anc.domain.Visit;
 import org.smartregister.chw.anc.util.Constants;
 import org.smartregister.chw.core.activity.CoreFamilyProfileActivity;
 import org.smartregister.chw.core.activity.CorePncMemberProfileActivity;
@@ -31,6 +32,7 @@ import org.smartregister.chw.hf.dao.HfPncDao;
 import org.smartregister.chw.hf.interactor.PncMemberProfileInteractor;
 import org.smartregister.chw.hf.model.FamilyProfileModel;
 import org.smartregister.chw.hf.presenter.PncMemberProfilePresenter;
+import org.smartregister.chw.hf.utils.PncVisitUtils;
 import org.smartregister.chw.malaria.dao.MalariaDao;
 import org.smartregister.chw.pmtct.util.NCUtils;
 import org.smartregister.clientandeventmodel.Event;
@@ -181,6 +183,7 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
     @Override
     protected void onResume() {
         super.onResume();
+        setupViews();
         ((PncMemberProfileContract.Presenter) presenter()).fetchReferralTasks();
         if (notificationAndReferralRecyclerView != null && notificationAndReferralRecyclerView.getAdapter() != null) {
             notificationAndReferralRecyclerView.getAdapter().notifyDataSetChanged();
@@ -259,6 +262,11 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
     @Override
     public void setupViews() {
         super.setupViews();
+        try {
+            PncVisitUtils.processVisits();
+        } catch (Exception e) {
+            Timber.e(e);
+        }
         textview_record_anc_visit.setVisibility(View.VISIBLE);
         textview_record_anc_visit.setOnClickListener(this);
 
@@ -273,7 +281,25 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
             tvEdit.setOnClickListener(v -> startPmtctRegistration());
             imageViewCross.setImageResource(org.smartregister.chw.core.R.drawable.activityrow_notvisited);
         }
+
+        Visit latestVisit = getVisit(org.smartregister.chw.hf.utils.Constants.Events.PNC_VISIT);
+        if(latestVisit!= null && !latestVisit.getProcessed()){
+            showVisitInProgress();
+        }
+
         showChildFollowupViews();
+    }
+
+    private void showVisitInProgress() {
+        textview_record_anc_visit.setVisibility(View.GONE);
+        layoutNotRecordView.setVisibility(View.VISIBLE);
+        textViewUndo.setVisibility(View.GONE);
+        textViewNotVisitMonth.setText(R.string.pnc_visit_in_progress);
+        tvEdit.setVisibility(View.VISIBLE);
+        tvEdit.setOnClickListener(v ->{
+            PncFacilityVisitActivity.startMe(this, baseEntityID,true);
+        });
+        imageViewCross.setImageResource(org.smartregister.chw.core.R.drawable.activityrow_notvisited);
     }
 
     @Override
