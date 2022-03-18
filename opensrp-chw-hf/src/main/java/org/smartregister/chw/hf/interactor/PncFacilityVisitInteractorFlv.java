@@ -2,6 +2,8 @@ package org.smartregister.chw.hf.interactor;
 
 import android.content.Context;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.smartregister.chw.anc.AncLibrary;
 import org.smartregister.chw.anc.contract.BaseAncHomeVisitContract;
 import org.smartregister.chw.anc.domain.MemberObject;
@@ -9,13 +11,14 @@ import org.smartregister.chw.anc.domain.Visit;
 import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
 import org.smartregister.chw.anc.util.VisitUtils;
+import org.smartregister.chw.core.utils.FormUtils;
 import org.smartregister.chw.hf.R;
-import org.smartregister.chw.hf.actionhelper.PncChildGeneralExamination;
 import org.smartregister.chw.hf.actionhelper.PncFamilyPlanningServicesAction;
 import org.smartregister.chw.hf.actionhelper.PncHivTestingAction;
 import org.smartregister.chw.hf.actionhelper.PncImmunizationAction;
 import org.smartregister.chw.hf.actionhelper.PncMotherGeneralExaminationAction;
 import org.smartregister.chw.hf.actionhelper.PncNutrionSupplementAction;
+import org.smartregister.chw.hf.dao.HfPncDao;
 import org.smartregister.chw.hf.utils.Constants;
 
 import java.util.LinkedHashMap;
@@ -54,14 +57,6 @@ public class PncFacilityVisitInteractorFlv implements AncFirstFacilityVisitInter
                 .build();
         actionList.put(context.getString(R.string.mother_general_examination), motherGeneralExamination);
 
-        BaseAncHomeVisitAction childGeneralExamination = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.child_general_examination))
-                .withOptional(true)
-                .withDetails(details)
-                .withFormName(Constants.JsonForm.getPncChildGeneralExamination())
-                .withHelper(new PncChildGeneralExamination(memberObject))
-                .build();
-        actionList.put(context.getString(R.string.child_general_examination), childGeneralExamination);
-
         BaseAncHomeVisitAction familyPlanningServices = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.family_planning_services_title))
                 .withOptional(true)
                 .withDetails(details)
@@ -70,21 +65,36 @@ public class PncFacilityVisitInteractorFlv implements AncFirstFacilityVisitInter
                 .build();
         actionList.put(context.getString(R.string.family_planning_services_title), familyPlanningServices);
 
-        BaseAncHomeVisitAction immunization = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.immunization_title))
-                .withOptional(true)
-                .withDetails(details)
-                .withFormName(Constants.JsonForm.getPncImmunization())
-                .withHelper(new PncImmunizationAction(memberObject))
-                .build();
-        actionList.put(context.getString(R.string.immunization_title), immunization);
+        if (HfPncDao.isMotherEligibleForTetanus(memberObject.getBaseEntityId()) || HfPncDao.isMotherEligibleForHepB(memberObject.getBaseEntityId())) {
+            JSONObject motherPncImmunization = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.getPncImmunization());
+            JSONObject global = null;
+            try {
+                global = motherPncImmunization.getJSONObject("global");
+                global.put("is_eligible_for_tetanus", HfPncDao.isMotherEligibleForTetanus(memberObject.getBaseEntityId()));
+                global.put("is_eligible_for_hepatitis_b", HfPncDao.isMotherEligibleForHepB(memberObject.getBaseEntityId()));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
-        BaseAncHomeVisitAction hivTesting = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.pnc_hiv_testing))
-                .withOptional(true)
-                .withDetails(details)
-                .withFormName(Constants.JsonForm.getPncHivTestResults())
-                .withHelper(new PncHivTestingAction(memberObject))
-                .build();
-        actionList.put(context.getString(R.string.pnc_hiv_testing), hivTesting);
+            BaseAncHomeVisitAction immunization = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.immunization_title))
+                    .withOptional(true)
+                    .withDetails(details)
+                    .withFormName(Constants.JsonForm.getPncImmunization())
+                    .withJsonPayload(motherPncImmunization.toString())
+                    .withHelper(new PncImmunizationAction(memberObject))
+                    .build();
+            actionList.put(context.getString(R.string.immunization_title), immunization);
+        }
+
+        if (HfPncDao.isMotherEligibleForHivTest(memberObject.getBaseEntityId())) {
+            BaseAncHomeVisitAction hivTesting = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.pnc_hiv_testing))
+                    .withOptional(true)
+                    .withDetails(details)
+                    .withFormName(Constants.JsonForm.getPncHivTestResults())
+                    .withHelper(new PncHivTestingAction(memberObject))
+                    .build();
+            actionList.put(context.getString(R.string.pnc_hiv_testing), hivTesting);
+        }
 
         BaseAncHomeVisitAction nutritionSupplements = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.nutritional_supplements_title))
                 .withOptional(true)

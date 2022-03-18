@@ -29,7 +29,7 @@ public class HfPncDao extends PNCDao {
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "hepatitis_b_vaccination");
         List<String> res = readData(sql, dataMap);
 
-        return res != null && res.size() > 0 && res.get(0) != null;
+        return res == null || res.size() == 0 || res.get(0) == null;
     }
 
     public static boolean isMotherEligibleForTetanus(String baseEntityId) {
@@ -38,11 +38,11 @@ public class HfPncDao extends PNCDao {
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "tetanus_vaccination");
         List<String> res = readData(sql, dataMap);
 
-        return res != null && res.size() > 0 && res.get(0) != null;
+        return res == null || res.size() == 0 || res.get(0) == null;
     }
 
     public static boolean isMotherEligibleForHivTest(String baseEntityId) {
-        String sql = "SELECT hiv_status FROM ec_pregnancy_outcome WHERE (hiv_status = 'negative' OR hiv_status IS NULL) AND base_entity_id = '" + baseEntityId + "'";
+        String sql = "SELECT hiv_status FROM ec_pregnancy_outcome WHERE (hiv_status = 'test_not_conducted' OR hiv_status IS NULL) AND base_entity_id = '" + baseEntityId + "'";
 
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "hiv_status");
         List<String> res = readData(sql, dataMap);
