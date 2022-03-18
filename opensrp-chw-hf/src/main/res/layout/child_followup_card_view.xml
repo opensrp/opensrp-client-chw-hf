@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+<RelativeLayout
+    android:id="@+id/rlChildFollowup"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/view_partner_row"
+    android:background="@drawable/list_item_background_selctor"
+    android:clickable="true"
+    android:paddingVertical="20dp"
+    android:paddingStart="26dp"
+    android:paddingEnd="0dp"
+    android:focusable="true">
+
+    <ImageView
+        android:id="@+id/child_followup_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="10dp"
+        android:src="@mipmap/sidemenu_children"
+        android:contentDescription="child image" />
+
+    <com.rey.material.widget.Button
+        android:id="@+id/record_followup_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/record_btn_selector"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="5dp"
+        android:text="@string/record"
+        android:textColor="@color/bottom_nav_bar_background"
+        android:textSize="13dp" />
+
+    <org.smartregister.view.customcontrols.CustomFontTextView
+        android:id="@+id/child_followup_title"
+        style="@style/CustomFontTextViewStyle.ListView.Normal.MultipleLines"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_toRightOf="@+id/child_followup_image"
+        android:gravity="center_horizontal"
+        tools:text="@string/child_followup"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@android:color/black" />
+
+    <org.smartregister.view.customcontrols.CustomFontTextView
+        android:id="@+id/child_followup_details"
+        style="@style/CustomFontTextViewStyle.ListView.Normal.MultipleLines"
+        android:layout_width="match_parent"
+        android:maxLines="1"
+        android:singleLine="false"
+        android:layout_toLeftOf="@id/record_followup_btn"
+        android:ellipsize="none"
+        android:scrollHorizontally="false"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/child_followup_title"
+        android:layout_toStartOf="@id/record_followup_btn"
+        android:layout_toEndOf="@id/child_followup_image"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="5dp"
+        android:textSize="12sp"
+        android:text="@string/record_child_followup"
+        android:layout_toRightOf="@+id/child_followup_image"
+        android:textColor="@color/light_grey_text"
+        android:visibility="visible" />
+
+</RelativeLayout>
+    <View
+    android:id="@+id/view_child_followup_row"
+    android:layout_width="match_parent"
+    android:layout_height="1.5px"
+    android:layout_marginTop="6dp"
+    android:layout_below="@id/rlChildFollowup"
+    android:background="@color/light_grey"
+    android:visibility="visible" />
+</RelativeLayout>

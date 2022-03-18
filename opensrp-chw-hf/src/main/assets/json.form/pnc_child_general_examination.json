@@ -1,7 +1,8 @@
 {
   "count": "1",
-  "encounter_type": "PNC Child General Examination",
+  "encounter_type": "PNC Child Followup",
   "entity_id": "",
+  "global": {},
   "metadata": {
     "start": {
       "openmrs_entity_parent": "",
