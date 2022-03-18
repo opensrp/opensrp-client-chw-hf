@@ -95,9 +95,9 @@
         "hint": "Reason as to why the HIV test was not conducted",
         "values": [
           "Test kits out of stock",
-          "A client was in an emergency situation",
+          "The client was in an emergency situation",
           "Client refused to be tested",
-          "We are still counselling a client",
+          "We are still counselling the client",
           "Other (Specify)"
         ],
         "keys": [
@@ -166,10 +166,25 @@
         }
       },
       {
-        "key": "prompt_to_refer_to_ctc",
+        "key": "register_pmtct",
         "type": "toaster_notes",
-        "text": "Please refer the infant to CTC",
-        "openmrs_entity_id": "",
+        "text": "Register the client for PMTCT care and follow up",
+        "openmrs_entity_id": "register_pmtct",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:hiv_test_result": {
+            "type": "string",
+            "ex": "equalTo(.,\"positive\")"
+          }
+        }
+      },
+      {
+        "key": "prescribe_arv",
+        "type": "toaster_notes",
+        "text": "Prescribe ARVs to the client according to standard guidelines",
+        "openmrs_entity_id": "prescribe_arv",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "toaster_type": "problem",

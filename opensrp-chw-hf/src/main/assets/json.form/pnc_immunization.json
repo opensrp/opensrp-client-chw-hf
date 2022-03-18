@@ -51,11 +51,11 @@
     "title": "Immunization",
     "fields": [
       {
-        "key": "tetanus_vaccinations",
+        "key": "tetanus_vaccination",
         "type": "native_radio",
-        "label": "Was Diphteria/Tetanus vaccine given?",
+        "label": "Was Diphtheria/Tetanus vaccine given?",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "tetanus_vaccinations",
+        "openmrs_entity_id": "tetanus_vaccination",
         "openmrs_entity_parent": "",
         "options": [
           {
@@ -77,11 +77,11 @@
         }
       },
       {
-        "key": "hepatitis_b_vaccinations",
+        "key": "hepatitis_b_vaccination",
         "type": "native_radio",
         "label": "Was Hepatitis B given?",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "hepatitis_b_vaccinations",
+        "openmrs_entity_id": "hepatitis_b_vaccination",
         "openmrs_entity_parent": "",
         "options": [
           {
