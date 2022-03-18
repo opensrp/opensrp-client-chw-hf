@@ -74,6 +74,13 @@
         "v_required": {
           "value": "true",
           "err": "Please answer this question"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pnc_immunization_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -100,6 +107,13 @@
         "v_required": {
           "value": "true",
           "err": "Please answer this question"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pnc_immunization_relevance.yml"
+            }
+          }
         }
       }
     ]

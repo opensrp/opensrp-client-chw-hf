@@ -106,60 +106,56 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "method_provided",
-        "type": "check_box",
+        "type": "native_radio",
         "label": "Method Provided",
         "options": [
           {
             "key": "chk_condom",
             "text": "Condom",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_condom",
-            "value": "false"
+            "openmrs_entity_id": "chk_condom"
           },
           {
             "key": "chk_pills",
             "text": "Pills",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_pills",
-            "value": "false"
+            "openmrs_entity_id": "chk_pills"
           },
           {
             "key": "chk_injections",
             "text": "Injections",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_injections",
-            "value": "false"
+            "openmrs_entity_id": "chk_injections"
           },
           {
             "key": "chk_jadelle",
             "text": "Jadelle",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_jadelle",
-            "value": "false"
-          }, {
-            "key": "chk_implanon",
-            "text": "Implanon",
+            "openmrs_entity_id": "chk_jadelle"
+          },
+          {
+            "key": "chk_implants",
+            "text": "Implants",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_implanon",
-            "value": "false"
-          }, {
+            "openmrs_entity_id": "chk_implants"
+          },
+          {
             "key": "chk_iucd",
             "text": "IUCD",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_iucd",
-            "value": "false"
-          }, {
+            "openmrs_entity_id": "chk_iucd"
+          },
+          {
             "key": "chk_tubal_ligation",
             "text": "Bilateral Tubal Ligation",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_tubal_ligation",
-            "value": "false"
-          }, {
+            "openmrs_entity_id": "chk_tubal_ligation"
+          },
+          {
             "key": "chk_referred_fp_services",
             "text": "Referred for other FP services",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_referred_fp_services",
-            "value": "false"
+            "openmrs_entity_id": "chk_referred_fp_services"
           }
         ],
         "v_required": {
