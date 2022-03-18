@@ -815,15 +815,12 @@
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "chk_breastfeeding",
                 "value": "false"
-              },
-              {
-                "key": "chk_immunization",
-                "text": "Immunization",
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "chk_immunization",
-                "value": "false"
               }
-            ]
+            ],
+            "v_required": {
+              "value": "true",
+              "err": "Please select an option(s)"
+            }
           },
           {
             "key": "surname",

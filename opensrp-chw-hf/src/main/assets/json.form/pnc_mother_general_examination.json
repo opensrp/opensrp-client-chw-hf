@@ -370,14 +370,13 @@
         }
       },
       {
-        "key": "breast_exam_label",
-        "type": "label",
+        "key": "prompt_for_breast_exam",
+        "type": "toaster_notes",
         "text": "Breast Examination",
-        "text_size": "7sp",
-        "text_color": "#000000",
-        "openmrs_entity_parent": "",
+        "openmrs_entity_id": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": ""
+        "openmrs_entity_parent": "",
+        "toaster_type": "info"
       },
       {
         "key": "breast_milk_flow",
@@ -583,14 +582,13 @@
         }
       },
       {
-        "key": "mental_health_examination_label",
-        "type": "label",
+        "key": "prompt_for_mental_health_examination",
+        "type": "toaster_notes",
         "text": "Mental Health Examination",
-        "text_size": "7sp",
-        "text_color": "#000000",
-        "openmrs_entity_parent": "",
+        "openmrs_entity_id": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": ""
+        "openmrs_entity_parent": "",
+        "toaster_type": "info"
       },
       {
         "key": "puerperal_psychosis",
