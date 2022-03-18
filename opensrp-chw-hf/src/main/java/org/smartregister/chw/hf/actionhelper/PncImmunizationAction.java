@@ -20,8 +20,8 @@ public class PncImmunizationAction implements BaseAncHomeVisitAction.AncHomeVisi
     protected MemberObject memberObject;
     private String jsonPayload;
 
-    private String tetanus_vaccinations;
-    private String hepatitis_b_vaccinations;
+    private String tetanus_vaccination;
+    private String hepatitis_b_vaccination;
     private BaseAncHomeVisitAction.ScheduleStatus scheduleStatus;
     private String subTitle;
     private Context context;
@@ -52,8 +52,8 @@ public class PncImmunizationAction implements BaseAncHomeVisitAction.AncHomeVisi
     public void onPayloadReceived(String jsonPayload) {
         try {
             JSONObject jsonObject = new JSONObject(jsonPayload);
-            tetanus_vaccinations = CoreJsonFormUtils.getValue(jsonObject, "tetanus_vaccinations");
-            hepatitis_b_vaccinations = CoreJsonFormUtils.getValue(jsonObject, "hepatitis_b_vaccinations");
+            tetanus_vaccination = CoreJsonFormUtils.getValue(jsonObject, "tetanus_vaccination");
+            hepatitis_b_vaccination = CoreJsonFormUtils.getValue(jsonObject, "hepatitis_b_vaccination");
         } catch (JSONException e) {
             Timber.e(e);
         }
@@ -76,7 +76,7 @@ public class PncImmunizationAction implements BaseAncHomeVisitAction.AncHomeVisi
 
     @Override
     public String evaluateSubTitle() {
-        if (StringUtils.isBlank(tetanus_vaccinations) && StringUtils.isBlank(hepatitis_b_vaccinations))
+        if (StringUtils.isBlank(tetanus_vaccination) && StringUtils.isBlank(hepatitis_b_vaccination))
             return null;
 
         StringBuilder stringBuilder = new StringBuilder();
@@ -87,7 +87,7 @@ public class PncImmunizationAction implements BaseAncHomeVisitAction.AncHomeVisi
 
     @Override
     public BaseAncHomeVisitAction.Status evaluateStatusOnPayload() {
-        if (StringUtils.isBlank(tetanus_vaccinations) && StringUtils.isBlank(hepatitis_b_vaccinations))
+        if (StringUtils.isBlank(tetanus_vaccination) && StringUtils.isBlank(hepatitis_b_vaccination))
             return BaseAncHomeVisitAction.Status.PENDING;
         else {
             return BaseAncHomeVisitAction.Status.COMPLETED;
