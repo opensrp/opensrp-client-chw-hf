@@ -76,6 +76,7 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        setupViews();
         ((PmtctProfilePresenter) profilePresenter).updateFollowupFeedback(baseEntityId);
         if (notificationAndReferralRecyclerView != null && notificationAndReferralRecyclerView.getAdapter() != null) {
             notificationAndReferralRecyclerView.getAdapter().notifyDataSetChanged();
