@@ -528,13 +528,6 @@
             "field": "eventType",
             "field_value": "PNC VISIT",
             "creates_case": [
-              "ec_pregnancy_outcome"
-            ]
-          },
-          {
-            "field": "eventType",
-            "field_value": "PNC VISIT",
-            "creates_case": [
               "ec_pregnancy_outcome",
               "ec_pnc_followup"
             ]
