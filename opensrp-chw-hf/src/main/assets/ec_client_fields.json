@@ -1085,6 +1085,22 @@
           "json_mapping": {
             "field": "attributes.Health_Insurance_Number"
           }
+        },
+        {
+          "column_name": "child_bcg_vaccination",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "child_bcg_vaccination"
+          }
+        },
+        {
+          "column_name": "child_opv0_vaccination",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "child_opv0_vaccination"
+          }
         }
       ]
     },
@@ -1963,22 +1979,6 @@
           "json_mapping": {
             "field": "obs.fieldCode",
             "concept": "hiv_status"
-          }
-        },
-        {
-          "column_name": "child_bcg_vaccination",
-          "type": "Event",
-          "json_mapping": {
-            "field": "obs.fieldCode",
-            "concept": "child_bcg_vaccination"
-          }
-        },
-        {
-          "column_name": "child_opv0_vaccination",
-          "type": "Event",
-          "json_mapping": {
-            "field": "obs.fieldCode",
-            "concept": "child_opv0_vaccination"
           }
         },
         {

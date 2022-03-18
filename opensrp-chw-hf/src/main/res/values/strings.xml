@@ -129,7 +129,7 @@
     <string name="mother_general_examination_complete">Mother\'s General Examination Complete</string>
     <string name="mother_general_examination">Mother\'s General Examination</string>
     <string name="child_general_examination_complete">Child\'s General Examination Complete</string>
-    <string name="child_general_examination">Child\'s General Examination</string>
+    <string name="child_general_examination">Baby %s\'s General Examination</string>
     <string name="immunization_complete">Immunization Complete</string>
     <string name="immunization_title">Immunization</string>
     <string name="nutritional_supplements_complete">Nutritional Supplements Complete</string>

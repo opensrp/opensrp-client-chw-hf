@@ -6,7 +6,7 @@ import java.util.List;
 
 public class HfPncDao extends PNCDao {
     public static boolean isChildEligibleForBcg(String baseEntityId) {
-        String sql = "SELECT child_bcg_vaccination FROM ec_pregnancy_outcome WHERE child_bcg_vaccination = 'yes' AND base_entity_id = '" + baseEntityId + "'";
+        String sql = "SELECT child_bcg_vaccination FROM ec_child WHERE child_bcg_vaccination = 'yes' AND base_entity_id = '" + baseEntityId + "'";
 
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "child_bcg_vaccination");
         List<String> res = readData(sql, dataMap);
@@ -15,7 +15,7 @@ public class HfPncDao extends PNCDao {
     }
 
     public static boolean isChildEligibleForOpv0(String baseEntityId) {
-        String sql = "SELECT child_opv0_vaccination FROM ec_pregnancy_outcome WHERE child_opv0_vaccination = 'yes' AND base_entity_id = '" + baseEntityId + "'";
+        String sql = "SELECT child_opv0_vaccination FROM ec_child WHERE child_opv0_vaccination = 'yes' AND base_entity_id = '" + baseEntityId + "'";
 
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "child_opv0_vaccination");
         List<String> res = readData(sql, dataMap);
