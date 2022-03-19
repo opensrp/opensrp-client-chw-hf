@@ -113,7 +113,6 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
         super.onCreation();
         setCommonPersonObjectClient(getClientDetailsByBaseEntityID(getHivMemberObject().getBaseEntityId()));
 
-
         TextView tvRecordCtcNumber = findViewById(R.id.textview_record_index_contact_visit);
         if (getHivMemberObject().getCtcNumber() == null || getHivMemberObject().getCtcNumber().equals("") && getHivMemberObject().getClientHivStatusAfterTesting().equalsIgnoreCase("positive")) {
             getRecordIndexContactLayout().setVisibility(View.VISIBLE);
@@ -127,6 +126,9 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
             });
         } else if (!getHivMemberObject().getCtcNumber().isEmpty()) {
             getRecordIndexContactLayout().setVisibility(View.VISIBLE);
+        }else{
+            getRecordIndexContactLayout().setVisibility(View.VISIBLE);
+            tvRecordCtcNumber.setText(getString(R.string.hiv_testing_outcome));
         }
     }
 
@@ -257,13 +259,19 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
         int id = view.getId();
         if (id == R.id.record_hiv_followup_visit) {
             openFollowUpVisitForm(false);
-        } else if (id == R.id.textview_record_index_contact_visit && getHivMemberObject().getCtcNumber().isEmpty()) {
+        } else if (id == R.id.textview_record_index_contact_visit && getHivMemberObject().getCtcNumber().isEmpty() && getHivMemberObject().getClientHivStatusAfterTesting().equalsIgnoreCase("positive")) {
             try {
                 startUpdateCtcNumber(HivProfileActivity.this, getHivMemberObject().getBaseEntityId());
             } catch (JSONException e) {
                 Timber.e(e);
             }
-        } else {
+        } else if(id == R.id.textview_record_index_contact_visit && getHivMemberObject().getCtcNumber().isEmpty() && StringUtils.isBlank(getHivMemberObject().getClientHivStatusAfterTesting())){
+            try {
+                HivRegisterActivity.startHIVFormActivity(this, getHivMemberObject().getBaseEntityId(), CoreConstants.JSON_FORM.getHivOutcome(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getHivOutcome()).toString());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }else {
             super.onClick(view);
         }
     }
