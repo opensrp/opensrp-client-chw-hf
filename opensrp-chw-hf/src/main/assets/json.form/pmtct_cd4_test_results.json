@@ -68,7 +68,7 @@
       {
         "key": "prompt_to_start_ctx",
         "type": "toaster_notes",
-        "text": "Advise the client to start CTX",
+        "text": "The client should start CTX",
         "openmrs_entity_id": "",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",

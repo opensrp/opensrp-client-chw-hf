@@ -91,6 +91,7 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
     protected void onResume() {
         super.onResume();
         setupViews();
+        org.smartregister.util.Utils.startAsyncTask(new UpdateVisitDueTask(), null);
         ((PmtctProfilePresenter) profilePresenter).updateFollowupFeedback(baseEntityId);
         if (notificationAndReferralRecyclerView != null && notificationAndReferralRecyclerView.getAdapter() != null) {
             notificationAndReferralRecyclerView.getAdapter().notifyDataSetChanged();
