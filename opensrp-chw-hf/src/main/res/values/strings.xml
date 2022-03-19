@@ -143,5 +143,6 @@
     <string name="child_followup">%s\'s Followup</string>
     <string name="record_child_followup">Record The Child\'s followup</string>
     <string name="saved_child_followup">Child\'s followup details saved successfully</string>
+    <string name="pnc_visit_in_progress">PNC Visit In Progress</string>
 
 </resources>

@@ -1,0 +1,14 @@
+---
+name: step1_child_bcg_vaccination
+description: child_bcg_vaccination relevance
+priority: 1
+condition: "!global_is_eligible_for_bcg"
+actions:
+  - "isRelevant = true"
+---
+name: step1_child_opv0_vaccination
+description: child_opv0_vaccination relevance
+priority: 1
+condition: "!global_is_eligible_for_opv0"
+actions:
+  - "isRelevant = true"

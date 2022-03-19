@@ -281,6 +281,13 @@
         "v_required": {
           "value": "true",
           "err": "Please select one"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pnc_child_examination_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -309,6 +316,13 @@
         "v_required": {
           "value": "true",
           "err": "Please select one"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pnc_child_examination_relevance.yml"
+            }
+          }
         }
       }
     ]
