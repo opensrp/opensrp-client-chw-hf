@@ -1,8 +1,5 @@
 package org.smartregister.chw.hf.activity;
 
-import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
-import static org.smartregister.chw.hiv.util.Constants.ActivityPayload.HIV_MEMBER_OBJECT;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -13,8 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.vijay.jsonwizard.utils.FormUtils;
 
@@ -52,7 +47,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
+import androidx.recyclerview.widget.RecyclerView;
 import timber.log.Timber;
+
+import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
+import static org.smartregister.chw.hiv.util.Constants.ActivityPayload.HIV_MEMBER_OBJECT;
 
 public class HivProfileActivity extends CoreHivProfileActivity implements HivProfileContract.View {
 
@@ -114,10 +113,9 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
         super.onCreation();
         setCommonPersonObjectClient(getClientDetailsByBaseEntityID(getHivMemberObject().getBaseEntityId()));
 
-        getRecordIndexContactLayout().setVisibility(View.VISIBLE);
 
         TextView tvRecordCtcNumber = findViewById(R.id.textview_record_index_contact_visit);
-        if (getHivMemberObject().getCtcNumber() == null || getHivMemberObject().getCtcNumber().equals("")) {
+        if (getHivMemberObject().getCtcNumber() == null || getHivMemberObject().getCtcNumber().equals("") && getHivMemberObject().getClientHivStatusAfterTesting().equalsIgnoreCase("positive")) {
             getRecordIndexContactLayout().setVisibility(View.VISIBLE);
             tvRecordCtcNumber.setText(R.string.record_ctc_number);
             tvRecordCtcNumber.setOnClickListener(v -> {
@@ -127,6 +125,8 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
                     Timber.e(e);
                 }
             });
+        } else if (!getHivMemberObject().getCtcNumber().isEmpty()) {
+            getRecordIndexContactLayout().setVisibility(View.VISIBLE);
         }
     }
 
@@ -363,6 +363,21 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
         }
     }
 
+    protected void startPregnancyConfirmation(HivMemberObject hivMemberObject) {
+
+        AncRegisterActivity.startAncRegistrationActivity(HivProfileActivity.this, hivMemberObject.getBaseEntityId(), hivMemberObject.getPhoneNumber(),
+                org.smartregister.chw.hf.utils.Constants.JsonForm.getAncPregnancyConfirmation(), null, hivMemberObject.getFamilyBaseEntityId(), hivMemberObject.getFamilyName());
+    }
+
+    private boolean isOfReproductiveAge(CommonPersonObjectClient commonPersonObject, String gender) {
+        if (gender.equalsIgnoreCase("Female")) {
+            return Utils.isMemberOfReproductiveAge(commonPersonObject, 10, 49);
+        } else if (gender.equalsIgnoreCase("Male")) {
+            return Utils.isMemberOfReproductiveAge(commonPersonObject, 15, 49);
+        } else {
+            return false;
+        }
+    }
 
     private class SetIndexClientsTask extends AsyncTask<Void, Void, Integer> {
         private HivMemberObject hivMemberObject;
@@ -383,22 +398,6 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
         @Override
         protected void onPostExecute(Integer param) {
             setIndexClientsStatus(param > 0);
-        }
-    }
-
-    protected void startPregnancyConfirmation(HivMemberObject hivMemberObject) {
-
-        AncRegisterActivity.startAncRegistrationActivity(HivProfileActivity.this, hivMemberObject.getBaseEntityId(), hivMemberObject.getPhoneNumber(),
-                org.smartregister.chw.hf.utils.Constants.JsonForm.getAncPregnancyConfirmation(), null, hivMemberObject.getFamilyBaseEntityId(), hivMemberObject.getFamilyName());
-    }
-
-    private boolean isOfReproductiveAge(CommonPersonObjectClient commonPersonObject, String gender) {
-        if (gender.equalsIgnoreCase("Female")) {
-            return Utils.isMemberOfReproductiveAge(commonPersonObject, 10, 49);
-        } else if (gender.equalsIgnoreCase("Male")) {
-            return Utils.isMemberOfReproductiveAge(commonPersonObject, 15, 49);
-        } else {
-            return false;
         }
     }
 }
