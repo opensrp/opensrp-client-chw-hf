@@ -5,3 +5,31 @@ priority: 1
 condition: "(step1_investigate_for_tb.contains('negative') || step1_tb_symptoms_screening.contains('chk_none'))"
 actions:
   - "isRelevant = true"
+---
+name: step1_has_been_provided_with_tpt_before
+description: has_been_provided_with_tpt_before relevance
+priority: 1
+condition: "(step1_investigate_for_tb.contains('negative') || step1_tb_symptoms_screening.contains('chk_none')) && !global_is_provided_with_tpt_before"
+actions:
+  - "isRelevant = true"
+---
+name: step1_prompt_for_tpt_eligibility
+description: prompt_for_tpt_eligibility relevance
+priority: 1
+condition: "!step1_has_been_provided_with_tpt_before.contains('yes') && !step1_has_been_provided_with_tpt_before.isEmpty()"
+actions:
+  - "isRelevant = true"
+---
+name: step1_prompt_for_tpt_ineligibility
+description: prompt_for_tpt_ineligibility relevance
+priority: 1
+condition: "step1_has_been_provided_with_tpt_before.contains('yes') && !step1_has_been_provided_with_tpt_before.isEmpty()"
+actions:
+  - "isRelevant = true"
+---
+name: step1_is_client_provided_with_tpt
+description: is_client_provided_with_tpt relevance
+priority: 1
+condition: "step1_has_been_provided_with_tpt_before.contains('no') && !step1_has_been_provided_with_tpt_before.isEmpty() && !global_is_provided_with_tpt_before"
+actions:
+  - "isRelevant = true"

@@ -2,6 +2,7 @@
   "count": "1",
   "encounter_type": "PMTCT tb screening",
   "entity_id": "",
+  "global": {},
   "metadata": {
     "start": {
       "openmrs_entity_parent": "",
@@ -213,12 +214,12 @@
         }
       },
       {
-        "key": "eligibility_for_tpt",
+        "key": "has_been_provided_with_tpt_before",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "eligibility_for_tpt",
+        "openmrs_entity_id": "has_been_provided_with_tpt_before",
         "type": "native_radio",
-        "label": "Is the client eligible for TPT?",
+        "label": "Has the client been provided with TPT before?",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [
@@ -242,6 +243,22 @@
           "err": "Please select an option"
         },
         "relevance": {
+        "rules-engine": {
+          "ex-rules": {
+            "rules-file": "pmtct_tb_screening_relevance.yml"
+          }
+        }
+      }
+      },
+      {
+        "key": "prompt_for_tpt_eligibility",
+        "type": "toaster_notes",
+        "text": "The client is eligible for TPT",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "info",
+        "relevance": {
           "rules-engine": {
             "ex-rules": {
               "rules-file": "pmtct_tb_screening_relevance.yml"
@@ -249,6 +266,23 @@
           }
         }
       },
+      {
+        "key": "prompt_for_tpt_ineligibility",
+        "type": "toaster_notes",
+        "text": "The client is not eligible for TPT",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_tb_screening_relevance.yml"
+            }
+          }
+        }
+      },
+
       {
         "key": "is_client_provided_with_tpt",
         "openmrs_entity_parent": "",
@@ -279,9 +313,10 @@
           "err": "Please select an option"
         },
         "relevance": {
-          "step1:eligibility_for_tpt": {
-            "type": "string",
-            "ex": "equalTo(., \"yes\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_tb_screening_relevance.yml"
+            }
           }
         }
       },
