@@ -207,7 +207,7 @@ public class HfPmtctDao extends CorePmtctDao {
         startDateCal.set(Calendar.DAY_OF_MONTH, 1);
 
 
-        LocalDate startLocalDate = new LocalDate(startDateCal.get(Calendar.YEAR), startDateCal.get(Calendar.MONTH)+1, startDateCal.get(Calendar.DAY_OF_MONTH));
+        LocalDate startLocalDate = new LocalDate(startDateCal.get(Calendar.YEAR), startDateCal.get(Calendar.MONTH) + 1, startDateCal.get(Calendar.DAY_OF_MONTH));
 
 
         LocalDate now = new LocalDate();
@@ -307,5 +307,24 @@ public class HfPmtctDao extends CorePmtctDao {
         List<String> res = readData(sql, dataMap);
 
         return res != null && res.size() > 0 && res.get(0) != null;
+    }
+
+    public static boolean hasTheClientBeenProvidedWithTpt(String baseEntityID) {
+        String sql = "SELECT has_been_provided_with_tpt_before, is_client_provided_with_tpt FROM ec_pmtct_followup  WHERE (has_been_provided_with_tpt_before IS NOT NULL OR is_client_provided_with_tpt IS NOT NULL)  AND entity_id = '" + baseEntityID + "' ORDER BY visit_number DESC LIMIT 1";
+
+        DataMap<String> hasBeenProvidedWithTptBeforeDataMap = cursor -> getCursorValue(cursor, "has_been_provided_with_tpt_before");
+        List<String> hasBeenProvidedWithTptBeforeRes = readData(sql, hasBeenProvidedWithTptBeforeDataMap);
+
+        DataMap<String> isClientProvidedWithTptDataMap = cursor -> getCursorValue(cursor, "is_client_provided_with_tpt");
+        List<String> isClientProvidedWithTptRes = readData(sql, isClientProvidedWithTptDataMap);
+
+        if (isClientProvidedWithTptRes != null && isClientProvidedWithTptRes.size() > 0 && isClientProvidedWithTptRes.get(0) != null) {
+            return isClientProvidedWithTptRes.get(0).equals("yes");
+        } else if (hasBeenProvidedWithTptBeforeRes != null && hasBeenProvidedWithTptBeforeRes.size() > 0 && hasBeenProvidedWithTptBeforeRes.get(0) != null) {
+            return hasBeenProvidedWithTptBeforeRes.get(0).equals("yes");
+        } else {
+            return false;
+        }
+
     }
 }

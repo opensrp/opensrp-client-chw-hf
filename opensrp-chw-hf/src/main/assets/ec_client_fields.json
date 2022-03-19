@@ -150,6 +150,22 @@
           }
         },
         {
+          "column_name": "has_been_provided_with_tpt_before",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "has_been_provided_with_tpt_before"
+          }
+        },
+        {
+          "column_name": "is_client_provided_with_tpt",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "is_client_provided_with_tpt"
+          }
+        },
+        {
           "column_name": "visit_number",
           "type": "Event",
           "json_mapping": {
