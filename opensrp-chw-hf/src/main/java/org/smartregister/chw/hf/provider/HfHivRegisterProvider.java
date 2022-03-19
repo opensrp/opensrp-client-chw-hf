@@ -63,7 +63,7 @@ public class HfHivRegisterProvider extends CoreHivProvider {
 
     private void showLatestHivReferralDay(CommonPersonObjectClient client, HfHivRegisterProvider.HfRegisterViewHolder viewHolder) {
         HivMemberObject hivMemberObject = HivDao.getMember(client.entityId());
-        if (hivMemberObject != null && (hivMemberObject.getCtcNumber() == null || hivMemberObject.getCtcNumber().equals(""))) {
+        if (hivMemberObject != null && (hivMemberObject.getCtcNumber() == null || hivMemberObject.getCtcNumber().equals("")) && hivMemberObject.getClientHivStatusAfterTesting().equalsIgnoreCase("positive")) {
             viewHolder.textViewReferralDay.setVisibility(View.VISIBLE);
             String pendingCtcRegistration = context.getString(R.string.pending_ctc_registration);
             viewHolder.textViewReferralDay.setText(pendingCtcRegistration);
