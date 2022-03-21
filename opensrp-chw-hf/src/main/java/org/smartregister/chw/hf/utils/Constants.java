@@ -44,6 +44,7 @@ public class Constants extends CoreConstants {
         public static final String HEI_NEGATIVE_INFANT = "HEI Negative Infant";
         public static final String PMTCT_CLOSE_VISITS = "PMTCT Close Visits";
         public static final String PNC_VISIT = "PNC VISIT";
+        public static final String CLOSE_PNC_VISITS = "Close PNC Visits";
         public static final String PNC_CHILD_FOLLOWUP = "PNC Child Followup";
         public static final String MOTHER_CHAMPION_COMMUNITY_SERVICES_REFERRAL = "Mother Champion Community Services Referral";
     }
