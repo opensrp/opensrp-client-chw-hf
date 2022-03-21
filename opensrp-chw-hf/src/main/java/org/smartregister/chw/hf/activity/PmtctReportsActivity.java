@@ -94,13 +94,13 @@ public class PmtctReportsActivity extends SecuredActivity  implements View.OnCli
         int id = v.getId();
         switch (id) {
             case R.id.three_months_report:
-                PmtctReportsViewActivity.startMe(this,"test_report",R.string.three_months_report);
+                PmtctReportsViewActivity.startMe(this,"taarifa-ya-miezi-3",R.string.three_months_report);
                 break;
             case R.id.twelve_months_report:
-                Toast.makeText(this, "twelve months", Toast.LENGTH_SHORT).show();
+                PmtctReportsViewActivity.startMe(this,"taarifa-ya-miezi-12",R.string.twelve_months_report);
                 break;
             case R.id.twenty_four_months_report:
-                Toast.makeText(this, "twenty four months", Toast.LENGTH_SHORT).show();
+                PmtctReportsViewActivity.startMe(this,"taarifa-ya-miezi-24",R.string.twenty_four_months_report);
                 break;
             case R.id.cross_sectional_report:
                 Toast.makeText(this, "cross-sectional months", Toast.LENGTH_SHORT).show();
