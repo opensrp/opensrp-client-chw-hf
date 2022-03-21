@@ -50,6 +50,22 @@
     "title": "PMTCT Community Followup Referral",
     "fields": [
       {
+        "key": "last_client_visit_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "last_client_visit_date",
+        "type": "date_picker",
+        "hint": "Client's last facility visit date",
+        "expanded": false,
+        "max_date": "today",
+        "editable": false,
+        "read_only": true,
+        "v_required": {
+          "value": "true",
+          "err": "Please specify the client's last facility visit date"
+        }
+      },
+      {
         "key": "reasons_for_issuing_community_referral",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -74,56 +90,16 @@
             "openmrs_entity_id": "lost_to_followup"
           },
           {
-            "key": "Other",
-            "text": "Other",
+            "key": "mother_champion_services",
+            "text": "Mother Champion Community Services",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "Other"
+            "openmrs_entity_id": "mother_champion_services"
           }
         ],
         "v_required": {
           "value": "true",
           "err": "Please select reason for issuing the referral"
-        }
-      },
-      {
-        "key": "reason_for_issuing_community_referral_other",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "reason_for_issuing_community_referral_other",
-        "type": "edit_text",
-        "hint": "Other Reasons",
-        "edit_type": "name",
-        "v_required": {
-          "value": "true",
-          "err": "Please specify other reasons"
-        },
-        "relevance": {
-          "step1:reasons_for_issuing_community_referral": {
-            "type": "string",
-            "ex": "equalTo(., \"Other\")"
-          }
-        }
-      },
-      {
-        "key": "last_client_visit_date",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "last_client_visit_date",
-        "type": "date_picker",
-        "hint": "Client's last facility visit date",
-        "expanded": false,
-        "max_date": "today",
-        "v_required": {
-          "value": "true",
-          "err": "Please specify the client's last facility visit date"
-        },
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "pmtct_community_followup_referral_relevance.yml"
-            }
-          }
         }
       },
       {

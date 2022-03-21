@@ -1,0 +1,14 @@
+---
+name: step1_tetanus_vaccination
+description: tetanus_vaccination relevance
+priority: 1
+condition: "global_is_eligible_for_tetanus"
+actions:
+  - "isRelevant = true"
+---
+name: step1_hepatitis_b_vaccination
+description: hepatitis_b_vaccination relevance
+priority: 1
+condition: "global_is_eligible_for_hepatitis_b"
+actions:
+  - "isRelevant = true"

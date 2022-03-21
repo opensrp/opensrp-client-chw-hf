@@ -27,6 +27,7 @@ import org.smartregister.chw.hf.activity.MalariaProfileActivity;
 import org.smartregister.chw.hf.activity.PncMemberProfileActivity;
 import org.smartregister.chw.hf.activity.TbProfileActivity;
 import org.smartregister.chw.hf.dao.FamilyDao;
+import org.smartregister.chw.hf.dao.HfHtsDao;
 import org.smartregister.chw.hf.model.FamilyDetailsModel;
 import org.smartregister.chw.hiv.dao.HivDao;
 import org.smartregister.chw.pmtct.dao.PmtctDao;
@@ -223,6 +224,9 @@ public class AllClientsUtils {
         HivProfileActivity.startHivProfileActivity(activity,HivDao.getMember(hivClient.getCaseId()));
     }
 
+    public static void goToHTsProfile(FragmentActivity activity, CommonPersonObjectClient hivClient) {
+        HivProfileActivity.startHivProfileActivity(activity, HfHtsDao.getMember(hivClient.getCaseId()));
+    }
     public static void goToTbProfile(FragmentActivity activity, CommonPersonObjectClient tbClient) {
         TbProfileActivity.startTbProfileActivity(activity,TbDao.getMember(tbClient.getCaseId()));
     }

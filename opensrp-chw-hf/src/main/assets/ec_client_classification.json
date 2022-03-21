@@ -95,6 +95,13 @@
           },
           {
             "field": "eventType",
+            "field_value": "PNC Child Followup",
+            "creates_case": [
+              "ec_child"
+            ]
+          },
+          {
+            "field": "eventType",
             "field_value": "Visit not done",
             "creates_case": [
               "ec_child",
@@ -522,6 +529,21 @@
             "field_value": "HEI Negative Infant",
             "closes_case": [
               "ec_hei"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "PNC VISIT",
+            "creates_case": [
+              "ec_pregnancy_outcome",
+              "ec_pnc_followup"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "Close PNC Visits",
+            "closes_case": [
+              "ec_pregnancy_outcome"
             ]
           }
         ]

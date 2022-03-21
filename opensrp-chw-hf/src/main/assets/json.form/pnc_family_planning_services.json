@@ -1,0 +1,168 @@
+{
+  "count": "1",
+  "encounter_type": "PNC Family Planning Services",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "step1": {
+    "title": "Family Planning Services",
+    "fields": [
+      {
+        "key": "education_counselling_given",
+        "type": "native_radio",
+        "label": "Was Education/counselling given?",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "education_counselling_given",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
+      },
+      {
+        "key": "iec_given",
+        "type": "native_radio",
+        "label": "IEC given",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "iec_given",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
+      },
+      {
+        "key": "method_provided",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "method_provided",
+        "type": "native_radio",
+        "label": "Method Provided",
+        "options": [
+          {
+            "key": "chk_condom",
+            "text": "Condom",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_condom"
+          },
+          {
+            "key": "chk_pills",
+            "text": "Pills",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_pills"
+          },
+          {
+            "key": "chk_injections",
+            "text": "Injections",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_injections"
+          },
+          {
+            "key": "chk_jadelle",
+            "text": "Jadelle",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_jadelle"
+          },
+          {
+            "key": "chk_implants",
+            "text": "Implants",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_implants"
+          },
+          {
+            "key": "chk_iucd",
+            "text": "IUCD",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_iucd"
+          },
+          {
+            "key": "chk_tubal_ligation",
+            "text": "Bilateral Tubal Ligation",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_tubal_ligation"
+          },
+          {
+            "key": "chk_referred_fp_services",
+            "text": "Referred for other FP services",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_referred_fp_services"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
+      }
+    ]
+  }
+}

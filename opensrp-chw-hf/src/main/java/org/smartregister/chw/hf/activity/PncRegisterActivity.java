@@ -3,6 +3,7 @@ package org.smartregister.chw.hf.activity;
 import android.app.Activity;
 import android.content.Intent;
 
+import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 import com.vijay.jsonwizard.constants.JsonFormConstants;
 import com.vijay.jsonwizard.domain.Form;
 
@@ -18,15 +19,20 @@ import org.smartregister.chw.anc.util.JsonFormUtils;
 import org.smartregister.chw.core.activity.CoreFamilyRegisterActivity;
 import org.smartregister.chw.core.activity.CorePncRegisterActivity;
 import org.smartregister.chw.core.utils.CoreConstants;
+import org.smartregister.chw.core.utils.FormUtils;
+import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.fragment.PncRegisterFragment;
 import org.smartregister.chw.hf.interactor.AncRegisterInteractor;
 import org.smartregister.family.util.Utils;
+import org.smartregister.helper.BottomNavigationHelper;
 import org.smartregister.job.SyncServiceJob;
+import org.smartregister.listener.BottomNavigationListener;
 import org.smartregister.view.fragment.BaseRegisterFragment;
 
-import timber.log.Timber;
+import java.util.HashMap;
+import java.util.Map;
 
-import static org.smartregister.util.JsonFormUtils.getFieldJSONObject;
+import timber.log.Timber;
 
 public class PncRegisterActivity extends CorePncRegisterActivity {
     protected static boolean motherHivStatus;
@@ -50,12 +56,16 @@ public class PncRegisterActivity extends CorePncRegisterActivity {
     @Override
     public void startFormActivity(JSONObject jsonForm) {
         try {
-            JSONArray fields = org.smartregister.util.JsonFormUtils.fields(jsonForm);
+            JSONObject stepOne = jsonForm.getJSONObject(org.smartregister.family.util.JsonFormUtils.STEP1);
+            JSONArray fields = stepOne.getJSONArray(org.smartregister.family.util.JsonFormUtils.FIELDS);
             JSONObject global = jsonForm.getJSONObject("global");
 
-            JSONObject familyIdObject = getFieldJSONObject(fields, DBConstants.KEY.RELATIONAL_ID);
-            familyIdObject.put(JsonFormUtils.VALUE, familyBaseEntityId);
-
+            Map<String, String> values = new HashMap<>();
+            values.put(DBConstants.KEY.TEMP_UNIQUE_ID, unique_id);
+            values.put(CoreConstants.JsonAssets.FAM_NAME, familyName);
+            values.put(CoreConstants.JsonAssets.FAMILY_MEMBER.PHONE_NUMBER, phone_number);
+            values.put(org.smartregister.family.util.DBConstants.KEY.RELATIONAL_ID, familyBaseEntityId);
+            FormUtils.updateFormField(fields, values);
 
             global.put("hiv_status_mother", motherHivStatus);
             Intent intent = new Intent(this, Utils.metadata().familyMemberFormActivity);
@@ -84,7 +94,20 @@ public class PncRegisterActivity extends CorePncRegisterActivity {
     @Override
     protected void registerBottomNavigation() {
         super.registerBottomNavigation();
-        FamilyRegisterActivity.registerBottomNavigation(bottomNavigationHelper, bottomNavigationView, this);
+        bottomNavigationHelper = new BottomNavigationHelper();
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+        if (bottomNavigationView != null) {
+            bottomNavigationView.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
+            bottomNavigationView.getMenu().removeItem(org.smartregister.R.id.action_clients);
+            bottomNavigationView.getMenu().removeItem(org.smartregister.chw.tb.R.id.action_register);
+            bottomNavigationView.getMenu().removeItem(org.smartregister.R.id.action_search);
+            bottomNavigationView.getMenu().removeItem(org.smartregister.R.id.action_library);
+            bottomNavigationView.getMenu().removeItem(org.smartregister.family.R.id.action_job_aids);
+
+            BottomNavigationListener pncBottomNavigationListener = getBottomNavigation(this);
+            bottomNavigationView.setOnNavigationItemSelectedListener(pncBottomNavigationListener);
+        }
     }
 
     @Override

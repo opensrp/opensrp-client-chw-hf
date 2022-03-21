@@ -50,7 +50,14 @@ actions:
 name: step1_no_children_no
 description: no_children_no relevance
 priority: 1
-condition: "step1_preg_outcome == 'born_alive' || step1_preg_outcome == 'alive_with_problem'"
+condition: "(step1_preg_outcome == 'born_alive' || step1_preg_outcome == 'alive_with_problem') && !(step1_delivery_date == helper.getDateToday() && (step1_delivery_place == 'At a health facility' || step1_delivery_place == 'Birth before Arrival (BBA)'))"
+actions:
+  - "isRelevant = true"
+---
+name: step1_no_immediate_new_born
+description: no_immediate_new_born relevance
+priority: 1
+condition: "(step1_preg_outcome == 'born_alive' || step1_preg_outcome == 'alive_with_problem') && (step1_delivery_date == helper.getDateToday() && (step1_delivery_place == 'At a health facility' || step1_delivery_place == 'Birth before Arrival (BBA)'))"
 actions:
   - "isRelevant = true"
 
@@ -98,3 +105,24 @@ priority: 1
 condition: "step1_preg_outcome == 'born_alive' || step1_preg_outcome == 'alive_with_problem'"
 actions:
   - "isRelevant = true"
+---
+name: step1_apgar_score
+description: hiv status relevance
+priority: 1
+condition: "step1_appearance_score!='' && step1_pulses_score !='' && step1_grimace_score !='' && step1_activities_score !='' && step1_respiration_score !=''"
+actions:
+  - "calculation = step1_appearance_score + step1_pulses_score + step1_grimace_score + step1_activities_score + step1_respiration_score"
+---
+name: step1_prompt_for_normal_apgar_score
+description: prompt_for_normal_apgar_score info
+priority: 1
+condition: "step1_apgar_score != ''"
+actions:
+  - "calculation = ['apgar_score':step1_apgar_score]"
+---
+name: step1_prompt_for_abnormal_apgar_score
+description: prompt_for_abnormal_apgar_score info
+priority: 1
+condition: "step1_apgar_score != ''"
+actions:
+  - "calculation = ['apgar_score':step1_apgar_score]"

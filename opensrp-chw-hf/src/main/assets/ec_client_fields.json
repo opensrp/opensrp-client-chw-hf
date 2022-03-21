@@ -150,6 +150,22 @@
           }
         },
         {
+          "column_name": "has_been_provided_with_tpt_before",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "has_been_provided_with_tpt_before"
+          }
+        },
+        {
+          "column_name": "is_client_provided_with_tpt",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "is_client_provided_with_tpt"
+          }
+        },
+        {
           "column_name": "visit_number",
           "type": "Event",
           "json_mapping": {
@@ -1085,6 +1101,22 @@
           "json_mapping": {
             "field": "attributes.Health_Insurance_Number"
           }
+        },
+        {
+          "column_name": "child_bcg_vaccination",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "child_bcg_vaccination"
+          }
+        },
+        {
+          "column_name": "child_opv0_vaccination",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "child_opv0_vaccination"
+          }
         }
       ]
     },
@@ -1958,10 +1990,69 @@
           }
         },
         {
+          "column_name": "hiv_status",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "hiv_status"
+          }
+        },
+        {
+          "column_name": "hepatitis_b_vaccination",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "hepatitis_b_vaccination"
+          }
+        },
+        {
+          "column_name": "tetanus_vaccination",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "tetanus_vaccination"
+          }
+        },
+        {
           "column_name": "last_interacted_with",
           "type": "Event",
           "json_mapping": {
             "field": "version"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ec_pnc_followup",
+      "columns": [
+        {
+          "column_name": "entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "formSubmissionId"
+          }
+        },
+        {
+          "column_name": "followup_visit_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "followup_visit_date"
+          }
+        },
+        {
+          "column_name": "visit_number",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "visit_number"
           }
         }
       ]

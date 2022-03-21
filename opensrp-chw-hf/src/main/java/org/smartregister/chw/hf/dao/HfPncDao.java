@@ -1,0 +1,79 @@
+package org.smartregister.chw.hf.dao;
+
+import org.smartregister.chw.core.dao.PNCDao;
+import org.smartregister.chw.core.model.ChildModel;
+
+import java.util.List;
+
+public class HfPncDao extends PNCDao {
+    public static boolean isChildEligibleForBcg(String baseEntityId) {
+        String sql = "SELECT child_bcg_vaccination FROM ec_child WHERE child_bcg_vaccination = 'yes' AND base_entity_id = '" + baseEntityId + "'";
+
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "child_bcg_vaccination");
+        List<String> res = readData(sql, dataMap);
+
+        return res != null && res.size() > 0 && res.get(0) != null;
+    }
+
+    public static boolean isChildEligibleForOpv0(String baseEntityId) {
+        String sql = "SELECT child_opv0_vaccination FROM ec_child WHERE child_opv0_vaccination = 'yes' AND base_entity_id = '" + baseEntityId + "'";
+
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "child_opv0_vaccination");
+        List<String> res = readData(sql, dataMap);
+
+        return res != null && res.size() > 0 && res.get(0) != null;
+    }
+
+    public static boolean isMotherEligibleForHepB(String baseEntityId) {
+        String sql = "SELECT hepatitis_b_vaccination FROM ec_pregnancy_outcome WHERE hepatitis_b_vaccination = 'yes' AND base_entity_id = '" + baseEntityId + "'";
+
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "hepatitis_b_vaccination");
+        List<String> res = readData(sql, dataMap);
+
+        return res == null || res.size() == 0 || res.get(0) == null;
+    }
+
+    public static boolean isMotherEligibleForTetanus(String baseEntityId) {
+        String sql = "SELECT tetanus_vaccination FROM ec_pregnancy_outcome WHERE tetanus_vaccination = 'yes' AND base_entity_id = '" + baseEntityId + "'";
+
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "tetanus_vaccination");
+        List<String> res = readData(sql, dataMap);
+
+        return res == null || res.size() == 0 || res.get(0) == null;
+    }
+
+    public static boolean isMotherEligibleForHivTest(String baseEntityId) {
+        String sql = "SELECT hiv_status FROM ec_pregnancy_outcome WHERE (hiv_status = 'test_not_conducted' OR hiv_status IS NULL) AND base_entity_id = '" + baseEntityId + "'";
+
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "hiv_status");
+        List<String> res = readData(sql, dataMap);
+
+        return res != null && res.size() > 0 && res.get(0) != null;
+    }
+
+    public static boolean isMotherEligibleForPmtctRegistration(String baseEntityId) {
+        String sql = "SELECT hiv_status FROM ec_pregnancy_outcome WHERE hiv_status = 'positive' AND base_entity_id NOT IN (SELECT base_entity_id FROM ec_pmtct_registration WHERE is_closed = 0) AND base_entity_id = '" + baseEntityId + "'";
+
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "hiv_status");
+        List<String> res = readData(sql, dataMap);
+
+        return res != null && res.size() > 0 && res.get(0) != null;
+    }
+
+    public static List<ChildModel> childrenForPncWoman(String baseEntityId) {
+        String sql = String.format("select c.first_name || ' ' || c.middle_name || ' ' || c.last_name as child_name, c.dob , c.first_name, c.base_entity_id " +
+                "FROM ec_child c " +
+                "INNER JOIN ec_family_member fm on fm.base_entity_id = c.base_entity_id " +
+                "WHERE c.mother_entity_id = '" + baseEntityId + "' COLLATE NOCASE " +
+                "AND c.entry_point = 'PNC' " +
+                "AND c.is_closed = 0 " +
+                "AND fm.is_closed = 0 " +
+                "AND ( date (c.dob, '+49 days') > date()) " +
+                "ORDER by c.first_name ASC");
+
+        DataMap<ChildModel> dataMap = cursor ->
+                new ChildModel(getCursorValue(cursor, "child_name"), getCursorValue(cursor, "dob"), getCursorValue(cursor, "first_name"), getCursorValue(cursor, "base_entity_id"));
+
+        return readData(sql, dataMap);
+    }
+}

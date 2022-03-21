@@ -92,6 +92,20 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
             Timber.e(e);
         }
 
+        JSONObject tbScreeningForm = null;
+        try {
+            tbScreeningForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.getPmtctTbScreening());
+            JSONObject global = tbScreeningForm.getJSONObject("global");
+
+            global.put("is_provided_with_tpt_before", HfPmtctDao.hasTheClientBeenProvidedWithTpt(memberObject.getBaseEntityId()));
+            //loads details to the form
+            if (details != null && !details.isEmpty()) {
+                JsonFormUtils.populateForm(tbScreeningForm, details);
+            }
+        } catch (JSONException e) {
+            Timber.e(e);
+        }
+
         BasePmtctHomeVisitAction Counselling = new BasePmtctHomeVisitAction.Builder(context, "Counselling")
                 .withOptional(false)
                 .withDetails(details)
@@ -144,6 +158,7 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
                 .withOptional(true)
                 .withDetails(details)
                 .withFormName(Constants.JsonForm.getPmtctTbScreening())
+                .withJsonPayload(tbScreeningForm.toString())
                 .withHelper(new PmtctTbScreeningAction(memberObject))
                 .build();
         actionList.put("TB Screening", TbScreening);

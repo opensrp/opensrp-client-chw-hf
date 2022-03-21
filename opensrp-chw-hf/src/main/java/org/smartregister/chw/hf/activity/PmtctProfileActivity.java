@@ -1,15 +1,25 @@
 package org.smartregister.chw.hf.activity;
 
+import static com.vijay.jsonwizard.constants.JsonFormConstants.VALUE;
+import static org.smartregister.chw.core.utils.CoreConstants.EventType.PMTCT_COMMUNITY_FOLLOWUP;
+import static org.smartregister.client.utils.constants.JsonFormConstants.FIELDS;
+import static org.smartregister.client.utils.constants.JsonFormConstants.STEP1;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.vijay.jsonwizard.utils.FormUtils;
 
@@ -24,6 +34,7 @@ import org.smartregister.chw.core.custom_views.CorePmtctFloatingMenu;
 import org.smartregister.chw.core.listener.OnClickFloatingMenu;
 import org.smartregister.chw.core.rule.PmtctFollowUpRule;
 import org.smartregister.chw.core.utils.CoreConstants;
+import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.core.utils.FpUtil;
 import org.smartregister.chw.core.utils.HomeVisitUtil;
 import org.smartregister.chw.hf.R;
@@ -51,19 +62,22 @@ import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.family.util.Utils;
 import org.smartregister.repository.AllSharedPreferences;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import javax.annotation.Nullable;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 import timber.log.Timber;
-
-import static org.smartregister.chw.core.utils.CoreConstants.EventType.PMTCT_COMMUNITY_FOLLOWUP;
 
 public class PmtctProfileActivity extends CorePmtctProfileActivity {
     private static String baseEntityId;
+    private static String visitStatus;
+    private static Date pmtctRegisterDate;
+    private static Date followUpVisitDate;
+    private SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+
 
     public static void startPmtctActivity(Activity activity, String baseEntityId) {
         PmtctProfileActivity.baseEntityId = baseEntityId;
@@ -76,6 +90,8 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        setupViews();
+        org.smartregister.util.Utils.startAsyncTask(new UpdateVisitDueTask(), null);
         ((PmtctProfilePresenter) profilePresenter).updateFollowupFeedback(baseEntityId);
         if (notificationAndReferralRecyclerView != null && notificationAndReferralRecyclerView.getAdapter() != null) {
             notificationAndReferralRecyclerView.getAdapter().notifyDataSetChanged();
@@ -105,12 +121,37 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         return true;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemId = item.getItemId();
         try {
             if (itemId == R.id.action_issue_pmtct_followup_referral) {
                 JSONObject formJsonObject = (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getPmtctcCommunityFollowupReferral());
+
+                JSONObject reasonsForIssuingCommunityReferral = CoreJsonFormUtils.getJsonField(formJsonObject, STEP1, "reasons_for_issuing_community_referral");
+
+                Date lastVisitDate = null;
+                if (followUpVisitDate != null) {
+                    lastVisitDate = followUpVisitDate;
+                } else {
+                    lastVisitDate = pmtctRegisterDate;
+                }
+                formJsonObject.getJSONObject(STEP1).getJSONArray(FIELDS).getJSONObject(getJsonArrayIndex(formJsonObject.getJSONObject(STEP1).getJSONArray(FIELDS), "last_client_visit_date")).put(VALUE, sdf.format(lastVisitDate));
+
+
+                if (visitStatus.equals(CoreConstants.VISIT_STATE.DUE)) {
+                    reasonsForIssuingCommunityReferral.getJSONArray("options").remove(getJsonArrayIndex(reasonsForIssuingCommunityReferral.getJSONArray("options"), "lost_to_followup"));
+                } else if (visitStatus.equals(CoreConstants.VISIT_STATE.OVERDUE)) {
+                    reasonsForIssuingCommunityReferral.getJSONArray("options").remove(getJsonArrayIndex(reasonsForIssuingCommunityReferral.getJSONArray("options"), "missed_appointment"));
+                } else {
+                    reasonsForIssuingCommunityReferral.getJSONArray("options").remove(getJsonArrayIndex(reasonsForIssuingCommunityReferral.getJSONArray("options"), "missed_appointment"));
+                    reasonsForIssuingCommunityReferral.getJSONArray("options").remove(getJsonArrayIndex(reasonsForIssuingCommunityReferral.getJSONArray("options"), "lost_to_followup"));
+                    reasonsForIssuingCommunityReferral.getJSONArray("options").getJSONObject(getJsonArrayIndex(reasonsForIssuingCommunityReferral.getJSONArray("options"), "mother_champion_services")).put(VALUE, true);
+                }
+                int index = getJsonArrayIndex(formJsonObject.getJSONObject(STEP1).getJSONArray(FIELDS), "reasons_for_issuing_community_referral");
+                formJsonObject.getJSONObject(STEP1).getJSONArray(FIELDS).put(index, reasonsForIssuingCommunityReferral);
+
                 startFormActivity(formJsonObject);
                 return true;
             }
@@ -118,6 +159,20 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
             Timber.e(e);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private int getJsonArrayIndex(JSONArray options, String key) {
+        for (int i = 0; i < options.length(); ++i) {
+            try {
+                if (options.getJSONObject(i).getString("key").equals(key)) {
+                    return i;
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return -1;
+
     }
 
 
@@ -393,25 +448,32 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            Date pmtctRegisterDate = PmtctDao.getPmtctRegisterDate(memberObject.getBaseEntityId());
-            Date followUpVisitDate = PmtctDao.getPmtctFollowUpVisitDate(memberObject.getBaseEntityId());
+            pmtctRegisterDate = PmtctDao.getPmtctRegisterDate(memberObject.getBaseEntityId());
+            followUpVisitDate = PmtctDao.getPmtctFollowUpVisitDate(memberObject.getBaseEntityId());
             pmtctFollowUpRule = HomeVisitUtil.getPmtctVisitStatus(pmtctRegisterDate, followUpVisitDate, baseEntityId);
             return null;
         }
 
         @Override
         protected void onPostExecute(Void param) {
-            profilePresenter.recordPmtctButton(pmtctFollowUpRule.getButtonStatus());
+            String visitStatus = pmtctFollowUpRule.getButtonStatus();
+            PmtctProfileActivity.visitStatus = visitStatus;
+
+            if (pmtctFollowUpRule.getButtonStatus().equals(CoreConstants.VISIT_STATE.NOT_DUE_YET))
+                visitStatus = CoreConstants.VISIT_STATE.DUE;
+
+            profilePresenter.recordPmtctButton(visitStatus);
+
             if (pmtctFollowUpRule.isFirstVisit())
                 textViewRecordPmtct.setText(R.string.record_first_pmtct);
 
             Visit lastFolllowUpVisit = getVisit(Constants.EVENT_TYPE.PMTCT_FOLLOWUP);
 
             if (lastFolllowUpVisit != null && lastFolllowUpVisit.getProcessed()) {
-                profilePresenter.visitRow(pmtctFollowUpRule.getButtonStatus());
+                profilePresenter.visitRow(visitStatus);
             }
 
-            profilePresenter.nextRow(pmtctFollowUpRule.getButtonStatus(), FpUtil.sdf.format(pmtctFollowUpRule.getDueDate()));
+            profilePresenter.nextRow(visitStatus, FpUtil.sdf.format(pmtctFollowUpRule.getDueDate()));
         }
     }
 
