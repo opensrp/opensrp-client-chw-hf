@@ -8,6 +8,7 @@ import org.smartregister.chw.core.custom_views.NavigationMenu;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.activity.HfHIA2ReportsActivity;
 import org.smartregister.chw.hf.activity.ProvidersReportListActivity;
+import org.smartregister.chw.hf.activity.ReportsActivity;
 import org.smartregister.chw.hf.activity.ServiceActivity;
 
 import java.util.Arrays;
@@ -62,5 +63,15 @@ public class HfNavigationMenu implements NavigationMenu.Flavour {
     @Override
     public Intent getHIA2ReportActivityIntent(Activity activity) {
         return new Intent(activity, HfHIA2ReportsActivity.class);
+    }
+
+    @Override
+    public boolean hasInAppReports() {
+        return true;
+    }
+
+    @Override
+    public Intent getInAppReportsActivityIntent(Activity activity) {
+        return new Intent(activity, ReportsActivity.class);
     }
 }

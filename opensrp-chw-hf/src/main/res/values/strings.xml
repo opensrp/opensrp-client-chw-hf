@@ -129,5 +129,6 @@
     <string name="anc_reports_title">ANC REPORTS</string>
     <string name="pmtct_reports_subtitle"><![CDATA[View Reports for PMTCT COHORTS (Women & Children)]]></string>
     <string name="pmtct_reports_title">PMTCT COHORT REPORTS</string>
+    <string name="reports_title">REPORTS</string>
 
 </resources>
