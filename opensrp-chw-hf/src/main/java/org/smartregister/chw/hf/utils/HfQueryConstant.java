@@ -27,7 +27,7 @@ public interface HfQueryConstant {
             "    FROM ec_anc_register where ec_anc_register.is_closed is 0\n" +
             "    UNION ALL\n" +
             "    SELECT ec_pregnancy_outcome.base_entity_id AS base_entity_id\n" +
-            "    FROM ec_pregnancy_outcome where ec_pregnancy_outcome.delivery_date is not null\n" +
+            "    FROM ec_pregnancy_outcome where  (ec_pregnancy_outcome.delivery_date is not null AND ec_pregnancy_outcome.is_closed is 0)\n" +
             "    UNION ALL\n" +
             "    SELECT ec_child.base_entity_id AS base_entity_id\n" +
             "    FROM ec_child\n" +
@@ -47,7 +47,7 @@ public interface HfQueryConstant {
             "    UNION ALL\n" +
             "    SELECT ec_hiv_register.base_entity_id AS base_entity_id\n" +
             "    FROM ec_hiv_register \n" +
-            " UNION ALL\n" +
+            "    UNION ALL\n" +
             "    SELECT ec_hts_register.base_entity_id AS base_entity_id\n" +
             "    FROM ec_hts_register \n"+
             ")" +
@@ -73,7 +73,6 @@ public interface HfQueryConstant {
             "         inner join ec_family on ec_family.base_entity_id = ec_family_member.relational_id\n" +
             "where ec_family_member.date_removed is null\n" +
             "  and ec_hiv_register.is_closed is 0\n" +
-            " AND ec_hiv_register.ctc_number is null \n " +
             " AND (UPPER (ec_hiv_register.client_hiv_status_after_testing) LIKE UPPER('Positive')) \n"+
             "  AND ec_hiv_register.base_entity_id IN (%s)\n" +
             "  AND ec_family_member.base_entity_id NOT IN (\n" +
@@ -81,7 +80,7 @@ public interface HfQueryConstant {
             "    FROM ec_anc_register where ec_anc_register.is_closed is 0\n" +
             "    UNION ALL\n" +
             "    SELECT ec_pregnancy_outcome.base_entity_id AS base_entity_id\n" +
-            "    FROM ec_pregnancy_outcome where ec_pregnancy_outcome.delivery_date is not null\n" +
+            "    FROM ec_pregnancy_outcome where  (ec_pregnancy_outcome.delivery_date is not null AND ec_pregnancy_outcome.is_closed is 0)\n" +
             "    UNION ALL\n" +
             "    SELECT ec_child.base_entity_id AS base_entity_id\n" +
             "    FROM ec_child\n" +
