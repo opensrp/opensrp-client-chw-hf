@@ -130,5 +130,11 @@
     <string name="pmtct_reports_subtitle"><![CDATA[View Reports for PMTCT COHORTS (Women & Children)]]></string>
     <string name="pmtct_reports_title">PMTCT COHORT REPORTS</string>
     <string name="reports_title">REPORTS</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="three_months_report">3 Months Report</string>
+    <string name="twelve_months_report">12 Months Report</string>
+    <string name="twenty_four_months_report">24 Months Report</string>
+    <string name="eid_cross_sectional_report">EID Cross-sectional Report</string>
 
 </resources>

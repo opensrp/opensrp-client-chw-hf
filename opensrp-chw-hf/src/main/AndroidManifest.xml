@@ -14,11 +14,14 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:theme">
         <activity
+            android:name=".activity.PmtctReportsActivity"
+            android:theme="@style/HFTheme.NoActionBar"  />
+        <activity
             android:name=".activity.ReportsActivity"
-            android:theme="@style/HFTheme.NoActionBar"/>
+            android:theme="@style/HFTheme.NoActionBar" />
         <activity
             android:name=".activity.PmtctReportsViewActivity"
-            android:exported="false" />
+            android:theme="@style/HFTheme.NoActionBar"/>
         <activity
             android:name=".activity.LoginActivity"
             android:launchMode="singleTask"

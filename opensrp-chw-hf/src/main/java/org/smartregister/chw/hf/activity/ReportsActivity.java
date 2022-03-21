@@ -1,15 +1,11 @@
 package org.smartregister.chw.hf.activity;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
-import android.graphics.PorterDuff;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.material.appbar.AppBarLayout;
 
@@ -17,9 +13,16 @@ import org.smartregister.chw.hf.R;
 import org.smartregister.view.activity.SecuredActivity;
 import org.smartregister.view.customcontrols.CustomFontTextView;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 public class ReportsActivity extends SecuredActivity implements View.OnClickListener {
     protected CustomFontTextView toolBarTextView;
     protected AppBarLayout appBarLayout;
+    protected ConstraintLayout pmtctReportsLayout;
+    protected ConstraintLayout ancReportsLayout;
+
     @Override
     protected void onCreation() {
         setContentView(R.layout.activity_reports);
@@ -27,11 +30,15 @@ public class ReportsActivity extends SecuredActivity implements View.OnClickList
         setUpViews();
     }
 
-    public void setUpViews(){
+    public void setUpViews() {
+        pmtctReportsLayout = findViewById(R.id.pmtct_reports);
+        ancReportsLayout = findViewById(R.id.anc_reports);
 
+        pmtctReportsLayout.setOnClickListener(this);
+        ancReportsLayout.setOnClickListener(this);
     }
 
-    public void setUpToolbar(){
+    public void setUpToolbar() {
         Toolbar toolbar = findViewById(org.smartregister.chw.core.R.id.back_to_nav_toolbar);
         toolBarTextView = toolbar.findViewById(org.smartregister.chw.core.R.id.toolbar_title);
         setSupportActionBar(toolbar);
@@ -64,6 +71,12 @@ public class ReportsActivity extends SecuredActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-
+        int id = v.getId();
+        if (id == R.id.anc_reports) {
+            //TODO: implement loading ANC reports view
+            Toast.makeText(this, "ANC Reports", Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.pmtct_reports) {
+            startActivity(new Intent(this, PmtctReportsActivity.class));
+        }
     }
 }
