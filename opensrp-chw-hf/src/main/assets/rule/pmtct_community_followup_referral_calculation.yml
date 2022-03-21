@@ -2,6 +2,6 @@
 name: step1_pmtct_community_referral_date
 description: pmtct_community_referral_date calculation
 priority: 1
-condition: yes
+condition: "true"
 actions:
   -"calculation = helper.getDateToday()"
