@@ -8,15 +8,11 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/pmtct_reports"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
         android:background="@drawable/reports_bg_red"
         android:minHeight="150dp"
-        android:paddingVertical="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:paddingVertical="30dp">
 
         <ImageView
             android:id="@+id/iv_pmtct_report"
@@ -31,7 +27,7 @@
 
         <TextView
             android:id="@+id/textViewTitle_pmtct"
-            android:layout_width="0dp"
+            android:layout_width="220dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
             android:text="@string/pmtct_reports_title"
@@ -64,10 +60,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/anc_reports"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:layout_marginTop="20dp"
         android:background="@drawable/reports_bg_blue"
         android:minHeight="150dp"
         android:paddingVertical="22dp"
@@ -89,7 +83,7 @@
 
         <TextView
             android:id="@+id/textViewTitle_anc"
-            android:layout_width="0dp"
+            android:layout_width="220dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
             android:text="@string/anc_reports_title"
@@ -120,4 +114,23 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <androidx.constraintlayout.helper.widget.Flow
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="pmtct_reports,anc_reports"
+        app:flow_horizontalAlign="center"
+        app:flow_horizontalGap="20dp"
+        app:flow_horizontalStyle="packed"
+        app:flow_maxElementsWrap="2"
+        app:flow_verticalAlign="top"
+        app:flow_verticalGap="20dp"
+        app:flow_verticalStyle="packed"
+        android:layout_margin="20dp"
+        app:flow_wrapMode="chain2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
