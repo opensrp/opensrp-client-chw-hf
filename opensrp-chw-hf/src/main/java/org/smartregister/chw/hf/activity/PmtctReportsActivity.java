@@ -103,7 +103,7 @@ public class PmtctReportsActivity extends SecuredActivity  implements View.OnCli
                 PmtctReportsViewActivity.startMe(this,"taarifa-ya-miezi-24",R.string.twenty_four_months_report);
                 break;
             case R.id.cross_sectional_report:
-                Toast.makeText(this, "cross-sectional months", Toast.LENGTH_SHORT).show();
+                PmtctReportsViewActivity.startMe(this,"taarifa-cross-sectional",R.string.eid_cross_sectional_report);
                 break;
             default:
                 Toast.makeText(this, "Action Not Defined", Toast.LENGTH_SHORT).show();

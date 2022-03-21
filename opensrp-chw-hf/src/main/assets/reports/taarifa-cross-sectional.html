@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PMTCT EID CROSS-SECTIONAL MONTHLY REPORT</title>
+    <style>
+        table {
+            background-color: #fff;
+            box-shadow: 3px 1px 0px #f6f6f6;
+            border: none;
+            width: 100%;
+        }
+
+        th {
+            padding: 10px;
+            background: #c4c4c4;
+        }
+
+        td {
+            text-align: initial;
+            padding: 10px 0px;
+            width: 50px;
+            padding-left: 10px;
+        }
+
+        .list-title {
+            text-align: initial !important;
+            padding-left: 10px;
+        }
+
+        tbody tr>td:nth-child(1) {
+            width: 40px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body onload="onLoad()">
+    <table border="1" style="border-collapse: collapse;">
+        <thead>
+            <tr>
+                <th colspan="4">
+                    Kipimo cha kwanza cha VVU
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>A</td>
+                <td>Idadi ya waliopima VVU mara baada ya kuzaliwa</td>
+                <td id="A"></td>
+            </tr>
+            <tr>
+                <td>B</td>
+                <td>Idadi ya waliopima VVU ndani ya umri wa miezi &les; 2 katika hudhurio la kwanza RCH</td>
+                <td id="B"></td>
+            </tr>
+            <tr>
+                <td>C</td>
+                <td>Idadi ya waliopima VVU wakiwa na umri zaidi ya miezi 2, na pungufu au sawa na miezi 12</td>
+                <td id="C"></td>
+            </tr>
+            <tr>
+                <td>D</td>
+                <td>Idadi ya waliopima VVU wakiwa na umri zaidi ya miezi 12</td>
+                <td id="D"></td>
+            </tr>
+            <tr>
+                <td>E</td>
+                <td>Jumla ya watoto waliopima kipimo cha VVU wakiwa na umri wa wiki sita na kuendelea(B+C+D).</td>
+                <td id="E"></td>
+            </tr>
+        </tbody>
+    </table>
+    <br />
+    <table border="1" style="border-collapse: collapse;">
+        <thead>
+            <tr>
+                <th colspan="4">
+                    Watoto waliogundulika kuwa na VVU (Kipimo cha Kwanza) na matumizi ya dawa kinga
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>A1</td>
+                <td>Idadi ya waliogundulika kuwa na VVU mara baada ya kuzaliwa</td>
+                <td id="A1"></td>
+            </tr>
+            <tr>
+                <td>B1</td>
+                <td>Idadi ya walogundulika kuwa na W wakwa na umri wa miezi &les; 2</td>
+                <td id="B1"></td>
+            </tr>
+            <tr>
+                <td>C1</td>
+                <td>Idadi waliogundulika kuwa na VVU wakwa na um zaidi ya miezi > 2, na &les; 12</td>
+                <td id="C1"></td>
+            </tr>
+            <tr>
+                <td>D1</td>
+                <td>Idadi waliogundulika kuwa na VVU walwa na umri zaidi ya miezi > 12</td>
+                <td id="D1"></td>
+            </tr>
+            <tr>
+                <td>E1</td>
+                <td>Idadi ya watoto waliokutwa na maambukizo ya VVU kwa kipimo cha kwanza waliopewa rufaa kwenda CTC
+                    (Waliopata namba ya CTC)</td>
+                <td id="E1"></td>
+            </tr>
+            <tr>
+                <td>F</td>
+                <td>Idadi ya Watoto walopewa dawa kinga za ARVs</td>
+                <td id="F"></td>
+            </tr>
+            <tr>
+                <td>G</td>
+                <td>Idadi ya Watoto waliopewa dawa kinga ya ‘Cotrimaxazole’ (CTX)</td>
+                <td id="G"></td>
+            </tr>
+        </tbody>
+    </table>
+    <br/>
+    <table border="1" style="border-collapse: collapse;">
+        <thead>
+            <tr>
+                <th colspan="4">
+                    Kipimo cha marudio cha VVU kwa Watoto
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    H
+                </td>
+                <td colspan="2" class="list-title">
+                    Idadi ya watoto waliopima kipimo cha marudio cha VVU wakiwa na umri wa miezi 9 hadi 12
+                </td>
+                <td id="H"></td>
+            </tr>
+            <tr>
+                <td>
+                    I
+                </td>
+                <td colspan="2" class="list-title">
+                    Idadi ya watoto waliopima kipimo cha marudio cha VVU wiki 12 baada ya kuacha kunyonya
+                </td>
+                <td id="I"></td>
+            </tr>
+            <tr>
+                <td>
+                    J
+                </td>
+                <td colspan="2" class="list-title">
+                    Idadi ya watoto waliopima kipimo cha uthibitisho cha WV wakiwa na umri wa miezi 18
+                </td>
+                <td id="J"></td>
+            </tr>
+            <th colspan="4">
+                Watoto wallogundulika kuwa na VVU (Kipimo cha Marudio)
+            </th>
+            <tr>
+                <td>
+                    H1
+                </td>
+                <td colspan="2" class="list-title">
+                    Idadi ya watoto waliogundulika kuwa na WV kwa kipimo cha marudio wakiwa na umri wa miezi 9 hadi 12
+                </td>
+                <td id="H1"></td>
+            </tr>
+            <tr>
+                <td>
+                    I1
+                </td>
+                <td colspan="2" class="list-title">
+                    Idadi ya watoto waliogundulika kuwa na VVU kwa kipimo cha marudio cha VVU wiki 12 baada ya kuacha
+                    kunyonya
+                </td>
+                <td id="I1"></td>
+            </tr>
+            <tr>
+                <td>
+                    J1
+                </td>
+                <td colspan="2" class="list-title">
+                    Idadi ya watoto waliogundulika kuwa na VVU kwa kipimo cha uthibitisho cha WV wakiwa na umri wa miezi
+                    18
+                </td>
+                <td id="J1"></td>
+            </tr>
+            <tr>
+                <td>
+                    K
+                </td>
+                <td colspan="2" class="list-title">
+                    Idadi ya watoto waliokutwa na maambukizo ya VVU kwa kipimo cha marudio au uthibitisho waliopewa
+                    rufaa kwenda CTC (Waliopata namba ya CTC)
+                </td>
+                <td id="K"></td>
+            </tr>
+    </table>
+</body>
+<script type="text/javascript">
+    function onLoad() {
+        document.getElementById('B3a').innerHTML = 'hello';
+
+    }
+</script>
+
+</html>
