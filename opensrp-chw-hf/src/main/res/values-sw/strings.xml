@@ -126,5 +126,16 @@
     <string name="hvl_sample_collection">Kuchukua Sampuli ya HVL</string>
     <string name="arv_prescription_title">Kupatiwa Dawa za ARV</string>
     <string name="tb_screening_title">Uchunguzi wa Awali wa Kifua Kikuu</string>
+    <string name="issue_pmtct_community_followup_referral">Tuma Rufaa ya PMTCT Kwenda Ngazi ya Jamii</string>
+    <string name="hvl_results">Majibu ya HVL</string>
+    <string name="view_hvl_results">Angalia Majibu ya Mteja ya HVL</string>
+    <string name="sample_id_title">SAMPULI ID:</string>
+    <string name="collection_date">Tarehe</string>
+    <string name="record_hvl">Jaza HVL</string>
+    <string name="return_to_pmtct_clients">Rudi kwa Wateja wa PMTCT</string>
+    <string name="baseline_investigation_results">Majibu ya Vipimo vya Awali</string>
+    <string name="view_cd4_results">Angalia Majibu ya CD4</string>
+    <string name="Cd4_results">Majibu ya CD4</string>
+    <string name="record_cd4">Jaza CD4</string>
 
 </resources>

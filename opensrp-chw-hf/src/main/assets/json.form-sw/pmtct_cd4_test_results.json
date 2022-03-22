@@ -47,7 +47,7 @@
     "encounter_location": ""
   },
   "step1": {
-    "title": "CD4 Test Results",
+    "title": "Majibu ya CD4",
     "fields": [
       {
         "key": "cd4_result",
