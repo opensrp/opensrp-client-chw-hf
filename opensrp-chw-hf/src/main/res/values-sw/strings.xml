@@ -137,5 +137,16 @@
     <string name="view_cd4_results">Angalia Majibu ya CD4</string>
     <string name="Cd4_results">Majibu ya CD4</string>
     <string name="record_cd4">Jaza CD4</string>
+    <string name="register_partner">Sajili Mwenza</string>
+    <string name="record_partner_details">Ingiza Taarifa za Mwenza</string>
+    <string name="new_client">Mteja Mpya</string>
+    <string name="existing_client">Mteja Aliyepo</string>
+    <string name="all_male_clients">Wateja Wote wa Kiume</string>
+    <string name="register_partner_dialog_title">Sajili huyu Mteja kama Mwenza?</string>
+    <string name="view_partner_prefile">Angalia Wasifu Wa Mwenza</string>
+    <string name="return_to_anc_profile">Rudi kwa Wasifu wa %s</string>
+    <string name="partner_testing">Upimaji wa Mwenza</string>
+    <string name="record_partner_testing_results">Ingiza Majibu</string>
+    <string name="test_partner">Mpime Mwenza</string>
 
 </resources>
