@@ -4,7 +4,7 @@ description: date of pmtct registration
 priority: 1
 condition: "true"
 actions:
-  - "calculation = helper.getDateToday()"
+  - "calculation = step1_is_transfer_in_client.contains('yes') ? step1_pmtct_register_date_from_originating_facility : helper.getDateToday() "
 ---
 name: step1_hiv_registration_date
 description: date of hiv registration
