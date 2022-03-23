@@ -111,9 +111,9 @@ public class HeiRegisterProvider extends PmtctRegisterProvider {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            Date pmtctRegisterDate = HeiDao.getHeiRegisterDate(baseEntityId);
+            Date startRegisterDate = HeiDao.getHeiRegisterDate(baseEntityId);
             Date followUpDate = HeiDao.getHeiFollowUpVisitDate(baseEntityId);
-            heiFollowUpRule = HfHomeVisitUtil.getHeiVisitStatus(pmtctRegisterDate, followUpDate, baseEntityId);
+            heiFollowUpRule = HfHomeVisitUtil.getHeiVisitStatus(startRegisterDate, followUpDate, baseEntityId);
             return null;
         }
 
