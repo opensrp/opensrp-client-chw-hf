@@ -22,8 +22,11 @@ import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.dao.PmtctReportDao;
 import org.smartregister.view.activity.SecuredActivity;
 import org.smartregister.view.customcontrols.CustomFontTextView;
+
+import java.util.Date;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
@@ -147,13 +150,22 @@ public class PmtctReportsViewActivity extends SecuredActivity {
         @JavascriptInterface
         public String getData() {
             JSONObject jsonObject = new JSONObject();
+            Date now = new Date();
             try {
-                jsonObject.put("B3a", 10);
-                jsonObject.put("B3b", 12);
-                jsonObject.put("B3c", 13);
-                jsonObject.put("B3d", 14);
-                jsonObject.put("C3a", 15);
-                jsonObject.put("C3b", 19);
+                jsonObject.put("B3a", PmtctReportDao.getPmtctReportPerIndicatorCode("B3a",now));
+                jsonObject.put("B3b", PmtctReportDao.getPmtctReportPerIndicatorCode("B3b",now));
+                jsonObject.put("B3c", PmtctReportDao.getPmtctReportPerIndicatorCode("B3c",now));
+                jsonObject.put("B3d", PmtctReportDao.getPmtctReportPerIndicatorCode("B3d",now));
+                jsonObject.put("C3a", PmtctReportDao.getPmtctReportPerIndicatorCode("C3a",now));
+                jsonObject.put("C3b", PmtctReportDao.getPmtctReportPerIndicatorCode("C3b",now));
+                jsonObject.put("D3", PmtctReportDao.getPmtctReportPerIndicatorCode("D3",now));
+                jsonObject.put("E3", PmtctReportDao.getPmtctReportPerIndicatorCode("E3",now));
+                jsonObject.put("F3", PmtctReportDao.getPmtctReportPerIndicatorCode("F3",now));
+                jsonObject.put("G3", PmtctReportDao.getPmtctReportPerIndicatorCode("G3",now));
+                jsonObject.put("H3", PmtctReportDao.getPmtctReportPerIndicatorCode("H3",now));
+                jsonObject.put("I3", PmtctReportDao.getPmtctReportPerIndicatorCode("I3",now));
+                jsonObject.put("J3", PmtctReportDao.getPmtctReportPerIndicatorCode("J3",now));
+                jsonObject.put("K3", PmtctReportDao.getPmtctReportPerIndicatorCode("K3",now));
             } catch (JSONException e) {
                 Timber.e(e);
             }

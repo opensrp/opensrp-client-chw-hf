@@ -165,7 +165,7 @@
                 <td colspan="2" class="list-title">
                     Idadi ya kina mama wanaoendelea na huduma (CTN katika M1 au M2 au M3)
                 </td>
-                <td id=" G3"></td>
+                <td id="G3"></td>
             </tr>
             <tr>
                 <td>
@@ -208,9 +208,11 @@
 </body>
 <script type="text/javascript">
     function onLoad() {
-        const dataCell = document.getElementById(' B3a');
-        dataCell.innerHTML = 'hello';
-        console.log('something');
+        const data = JSON.parse(Android.getData());
+        const keys = Object.keys(data.nameValuePairs)
+        keys.forEach(key => {
+            document.getElementById(key).innerHTML = data.nameValuePairs[key]
+        })
     }
 </script>
 
