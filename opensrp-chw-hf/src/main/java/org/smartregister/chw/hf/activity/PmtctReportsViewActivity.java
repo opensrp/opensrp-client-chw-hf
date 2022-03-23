@@ -173,7 +173,7 @@ public class PmtctReportsViewActivity extends SecuredActivity {
 
             float K12 = 0;
             if (D12 - J12 > 0)
-                K12 = (E12 * 1f) / (D12 - J12) *100;
+                K12 = (E12 * 1f) / (D12 - J12) * 100;
 
 
             try {
@@ -196,13 +196,14 @@ public class PmtctReportsViewActivity extends SecuredActivity {
                 jsonObject.put("A12", A12);
                 jsonObject.put("B12", B12);
                 jsonObject.put("C12", C12);
-                jsonObject.put("C12", D12);
+                jsonObject.put("D12", D12);
                 jsonObject.put("E12", E12);
                 jsonObject.put("F12", PmtctReportDao.getPmtctReportPerIndicatorCode("F12", now));
                 jsonObject.put("G12", PmtctReportDao.getPmtctReportPerIndicatorCode("G12", now));
                 jsonObject.put("I12", PmtctReportDao.getPmtctReportPerIndicatorCode("I12", now));
                 jsonObject.put("J12", J12);
                 jsonObject.put("K12", K12);
+                jsonObject.put("L12", PmtctReportDao.getPmtctReportPerIndicatorCode("L12", now));
             } catch (JSONException e) {
                 Timber.e(e);
             }
