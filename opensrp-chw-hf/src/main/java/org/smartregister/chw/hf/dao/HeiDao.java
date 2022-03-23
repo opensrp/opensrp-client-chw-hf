@@ -328,7 +328,7 @@ public class HeiDao extends AbstractDao {
             return null;
         Date date = null;
         try {
-            date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(res.get(0));
+            date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).parse(res.get(0));
         } catch (ParseException e) {
             e.printStackTrace();
         }
