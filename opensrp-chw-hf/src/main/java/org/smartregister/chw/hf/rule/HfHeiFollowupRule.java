@@ -15,11 +15,13 @@ public class HfHeiFollowupRule extends HeiFollowupRule {
 
     @Override
     public void updateDueDates() {
-        super.updateDueDates();
 
-        if (HeiDao.getNextHivTestAge(getBaseEntityId()).equalsIgnoreCase(Constants.HeiHIVTestAtAge.AT_6_WEEKS) && latestFollowupDate != null) {
-            this.dueDate = latestFollowupDate.plusDays(42);
-            this.overDueDate = latestFollowupDate.plusDays(49);
+        if(isFirstVisit()){
+            this.dueDate = startDate.plusDays(0);
+            this.overDueDate = startDate.plusDays(7);
+        }else if (HeiDao.getVisitNumber(getBaseEntityId()) == 1 && !HeiDao.getNextHivTestAge(getBaseEntityId()).equalsIgnoreCase(Constants.HeiHIVTestAtAge.AT_9_MONTHS) && latestFollowupDate != null) {
+            this.dueDate = startDate.plusDays(42);
+            this.overDueDate = startDate.plusDays(49);
         }else if(latestFollowupDate != null){
             this.dueDate = latestFollowupDate.plusDays(30);
             this.overDueDate = latestFollowupDate.plusDays(37);
