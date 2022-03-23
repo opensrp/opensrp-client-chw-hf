@@ -21,6 +21,7 @@ import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.smartregister.chw.core.job.ChwIndicatorGeneratingJob;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.fragment.PmtctReportsFragment;
 import org.smartregister.view.activity.SecuredActivity;
@@ -42,6 +43,7 @@ public class PmtctReportsActivity extends SecuredActivity  implements View.OnCli
 
     @Override
     protected void onCreation() {
+        ChwIndicatorGeneratingJob.scheduleJobImmediately(ChwIndicatorGeneratingJob.TAG);
         setContentView(R.layout.activity_pmtct_reports);
         setUpToolbar();
         setupViews();
