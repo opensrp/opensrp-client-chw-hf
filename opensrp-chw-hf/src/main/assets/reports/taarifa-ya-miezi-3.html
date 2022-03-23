@@ -11,6 +11,7 @@
             background-color: #fff;
             box-shadow: 3px 1px 0px #f6f6f6;
             border: none;
+            width:100%;
         }
 
         th {
@@ -26,8 +27,13 @@
 
         tbody tr>td:nth-child(2),
         tbody tr>td:nth-child(4) {
-            width: 70px;
             text-align: center;
+            min-width:50px;
+        }
+
+       tbody .three-cols>td:nth-child(3){
+            text-align: center;
+            min-width:50px;
         }
 
         .list-title {
@@ -128,7 +134,7 @@
             <th colspan="4">
                 Tafuta jumla ya kundi
             </th>
-            <tr>
+            <tr class="three-cols">
                 <td>
                     D3
                 </td>
@@ -137,7 +143,7 @@
                 </td>
                 <td id="D3"></td>
             </tr>
-            <tr>
+            <tr class="three-cols">
                 <td>
                     E3
                 </td>
@@ -146,7 +152,7 @@
                 </td>
                 <td id="E3"></td>
             </tr>
-            <tr>
+            <tr class="three-cols">
                 <td>
                     F3
                 </td>
@@ -158,7 +164,7 @@
             <th colspan="4">
                 Matokeo ya ufuatiliaji wa mama
             </th>
-            <tr>
+            <tr class="three-cols">
                 <td>
                     G3
                 </td>
@@ -167,7 +173,7 @@
                 </td>
                 <td id="G3"></td>
             </tr>
-            <tr>
+            <tr class="three-cols">
                 <td>
                     H3
                 </td>
@@ -176,7 +182,7 @@
                 </td>
                 <td id="H3"></td>
             </tr>
-            <tr>
+            <tr class="three-cols">
                 <td>
                     I3
                 </td>
@@ -185,7 +191,7 @@
                 </td>
                 <td id="I3"></td>
             </tr>
-            <tr>
+            <tr class="three-cols">
                 <td>
                     J3
                 </td>
@@ -194,7 +200,7 @@
                 </td>
                 <td id="J3"></td>
             </tr>
-            <tr>
+            <tr class="three-cols">
                 <td>
                     K3
                 </td>
