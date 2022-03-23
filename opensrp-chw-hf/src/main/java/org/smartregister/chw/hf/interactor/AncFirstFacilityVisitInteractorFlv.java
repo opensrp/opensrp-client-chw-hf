@@ -390,6 +390,9 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
                         baselineInvestigationFormForKnownPositive = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncFirstVisit.getBaselineInvestigation());
                         baselineInvestigationFormForKnownPositive.getJSONObject("global").put("gestational_age", memberObject.getGestationAge());
                         baselineInvestigationFormForKnownPositive.getJSONObject("global").put("known_positive", true);
+                        JSONArray fields = baselineInvestigationFormForKnownPositive.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+                        JSONObject hivTestNumberField = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "hiv_test_number");
+                        hivTestNumberField.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getNextHivTestNumber(memberObject.getBaseEntityId()));
                         if (details != null && !details.isEmpty()) {
                             JsonFormUtils.populateForm(baselineInvestigationFormForKnownPositive, details);
                         }

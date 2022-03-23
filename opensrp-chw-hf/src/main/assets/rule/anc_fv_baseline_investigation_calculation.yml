@@ -12,3 +12,10 @@ priority: 1
 condition: "true"
 actions:
   - "calculation = global_gestational_age >= 32 ? 'true' : 'false'"
+---
+name: step1_hiv
+description: Calculated field for hiv status
+priority: 1
+condition: "true"
+actions:
+  - "calculation = global_known_positive ? 'positive' : step1_hiv_qn"
