@@ -1422,8 +1422,8 @@ indicators:
                                INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
                       WHERE (is_transfer_in_client IS NULL OR is_transfer_in_client = 'no')
                         AND (date(fm.dob, '+10 years') <= date('now'))
-                        AND (date(fm.dob, '+14 years') >= date('now'))
-                        AND date((substr('%s', 7, 4) || '-' || substr('%s', 4, 2) || '-' || '01'), '-3 months') =
+                        AND (date(fm.dob, '+15 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-3 months') =
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "B3b"
@@ -1433,8 +1433,8 @@ indicators:
                                INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
                       WHERE (is_transfer_in_client IS NULL OR is_transfer_in_client = 'no')
                         AND (date(fm.dob, '+15 years') <= date('now'))
-                        AND (date(fm.dob, '+19 years') >= date('now'))
-                        AND date((substr('%s', 7, 4) || '-' || substr('%s', 4, 2) || '-' || '01'), '-3 months') =
+                        AND (date(fm.dob, '+20 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-3 months') =
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "B3c"
@@ -1444,8 +1444,8 @@ indicators:
                                INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
                       WHERE (is_transfer_in_client IS NULL OR is_transfer_in_client = 'no')
                         AND (date(fm.dob, '+20 years') <= date('now'))
-                        AND (date(fm.dob, '+24 years') >= date('now'))
-                        AND date((substr('%s', 7, 4) || '-' || substr('%s', 4, 2) || '-' || '01'), '-3 months') =
+                        AND (date(fm.dob, '+25 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-3 months') =
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "B3d"
@@ -1455,7 +1455,7 @@ indicators:
                                INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
                       WHERE (is_transfer_in_client IS NULL OR is_transfer_in_client = 'no')
                         AND (date(fm.dob, '+25 years') <= date('now'))
-                        AND date((substr('%s', 7, 4) || '-' || substr('%s', 4, 2) || '-' || '01'), '-3 months') =
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-3 months') =
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "C3a"
@@ -1465,7 +1465,7 @@ indicators:
                                INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
                       WHERE (is_transfer_in_client IS NULL OR is_transfer_in_client = 'no')
                         AND known_on_art = 'no'
-                        AND date((substr('%s', 7, 4) || '-' || substr('%s', 4, 2) || '-' || '01'), '-3 months') =
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-3 months') =
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "C3b"
@@ -1475,7 +1475,7 @@ indicators:
                                INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
                       WHERE (is_transfer_in_client IS NULL OR is_transfer_in_client = 'no')
                         AND known_on_art = 'yes'
-                        AND date((substr('%s', 7, 4) || '-' || substr('%s', 4, 2) || '-' || '01'), '-3 months') =
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-3 months') =
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "D3"
@@ -1485,7 +1485,7 @@ indicators:
                                INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
                       WHERE is_transfer_in_client = 'yes'
                         AND known_on_art = 'yes'
-                        AND date((substr('%s', 7, 4) || '-' || substr('%s', 4, 2) || '-' || '01'), '-3 months') =
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-3 months') =
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "E3"
@@ -1507,7 +1507,7 @@ indicators:
                                                     group by T1.base_entity_id
                                                 ) as t2) as t3 on t3.base_entity_id = epmtc.base_entity_id
                       WHERE t3.followup_status = 'transfer_out'
-                        AND date((substr('%s', 7, 4) || '-' || substr('%s', 4, 2) || '-' || '01'), '-3 months') =
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-3 months') =
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   
@@ -1519,8 +1519,8 @@ indicators:
                       FROM ec_pmtct_registration epmtc
                                INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
                                INNER JOIN ec_pmtct_followup epf on epmtc.base_entity_id = epf.entity_id
-                      WHERE epf.followup_status = 'ctn'
-                        AND date((substr('%s', 7, 4) || '-' || substr('%s', 4, 2) || '-' || '01'), '-3 months') =
+                      WHERE epf.followup_status = 'continuing_with_services'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-3 months') =
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "H3"
@@ -1532,12 +1532,12 @@ indicators:
                                                          FROM ec_pmtct_registration epmtc
                                                                   INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
                                                                   INNER JOIN ec_pmtct_followup epf on epmtc.base_entity_id = epf.entity_id
-                                                         WHERE (epf.followup_status = 'ctn' OR epf.followup_status = 'died' OR epf.followup_status = 'transfer_out')
-                                                           AND date((substr('%s', 7, 4) || '-' || substr('%s', 4, 2) || '-' || '01'),
+                                                         WHERE (epf.followup_status = 'continuing_with_services' OR epf.followup_status = 'deceased' OR epf.followup_status = 'transfer_out')
+                                                           AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'),
                                                                     '-3 months') =
                                                                date(substr(epmtc.pmtct_register_date, 7, 4) || '-' ||
                                                                     substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01'))
-                        AND date((substr('%s', 7, 4) || '-' || substr('%s', 4, 2) || '-' || '01'), '-3 months') =
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-3 months') =
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "I3"
@@ -1546,7 +1546,7 @@ indicators:
                       FROM ec_pmtct_registration epmtc
                                INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
                                INNER JOIN ec_pmtct_followup epf on epmtc.base_entity_id = epf.entity_id
-                      WHERE epf.followup_status = 'died'
+                      WHERE epf.followup_status = 'deceased'
                         AND date((substr('22-03-2022', 7, 4) || '-' || substr('22-03-2022', 4, 2) || '-' || '01'), '-3 months') =
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
@@ -1557,5 +1557,5 @@ indicators:
                       FROM ec_pmtct_registration epmtc
                                INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
                       WHERE epmtc.is_closed = '1'
-                        AND date((substr('%s', 7, 4) || '-' || substr('%s', 4, 2) || '-' || '01'), '-3 months') =
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-3 months') =
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"

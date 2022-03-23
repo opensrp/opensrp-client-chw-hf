@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.google.android.material.appbar.AppBarLayout;
 
+import org.smartregister.chw.core.job.ChwIndicatorGeneratingJob;
 import org.smartregister.chw.hf.R;
 import org.smartregister.view.activity.SecuredActivity;
 import org.smartregister.view.customcontrols.CustomFontTextView;
@@ -25,6 +26,7 @@ public class ReportsActivity extends SecuredActivity implements View.OnClickList
 
     @Override
     protected void onCreation() {
+        ChwIndicatorGeneratingJob.scheduleJobImmediately(ChwIndicatorGeneratingJob.TAG);
         setContentView(R.layout.activity_reports);
         setUpToolbar();
         setUpViews();

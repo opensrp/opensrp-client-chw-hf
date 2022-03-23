@@ -154,9 +154,7 @@ public class PmtctReportsViewActivity extends SecuredActivity {
             int A3 = PmtctReportDao.getPmtctReportPerIndicatorCode("B3a",now) +
                         PmtctReportDao.getPmtctReportPerIndicatorCode("B3b",now) +
                         PmtctReportDao.getPmtctReportPerIndicatorCode("B3c",now) +
-                        PmtctReportDao.getPmtctReportPerIndicatorCode("B3d",now) +
-                        PmtctReportDao.getPmtctReportPerIndicatorCode("C3a",now) +
-                        PmtctReportDao.getPmtctReportPerIndicatorCode("C3b",now);
+                        PmtctReportDao.getPmtctReportPerIndicatorCode("B3d",now);
             int F3 = A3 + PmtctReportDao.getPmtctReportPerIndicatorCode("D3",now) - PmtctReportDao.getPmtctReportPerIndicatorCode("E3",now);
             int K3 = (PmtctReportDao.getPmtctReportPerIndicatorCode("G3",now) / (F3 - PmtctReportDao.getPmtctReportPerIndicatorCode("J3",now) + 1)) * 100;
             try {

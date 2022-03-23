@@ -148,5 +148,10 @@
     <string name="partner_testing">Upimaji wa Mwenza</string>
     <string name="record_partner_testing_results">Ingiza Majibu</string>
     <string name="test_partner">Mpime Mwenza</string>
+    <string name="pmtct_followup_status">Followup Status:</string>
+    <string name="continuing_with_services">Continuing with Services</string>
+    <string name="transfer_out">Transfer Out</string>
+    <string name="deceased">Deceased</string>
+    <string name="pmtct_followup_status_title">Followup Status</string>
 
 </resources>

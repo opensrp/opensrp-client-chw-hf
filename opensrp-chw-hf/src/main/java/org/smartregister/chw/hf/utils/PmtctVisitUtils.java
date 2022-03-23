@@ -34,6 +34,8 @@ public class PmtctVisitUtils extends VisitUtils {
                     JSONArray obs = jsonObject.getJSONArray("obs");
                     List<Boolean> checks = new ArrayList<Boolean>();
 
+                    boolean isFollowupStatusDone = computeCompletionStatus(obs, "followup_status");
+
                     boolean isCounsellingDone = computeCompletionStatus(obs, "is_client_counselled");
                     boolean isClinicalStagingDone = computeCompletionStatus(obs, "clinical_staging_disease");
                     boolean isTbScreeningDone = computeCompletionStatus(obs, "on_tb_treatment");
@@ -43,23 +45,28 @@ public class PmtctVisitUtils extends VisitUtils {
                     boolean isHvlSampleCollectionComplete = computeCompletionStatus(obs, "hvl_sample_id");
                     boolean isCd4SampleCollectionComplete = computeCompletionStatus(obs, "cd4_sample_id");
 
-                    checks.add(isCounsellingDone);
-                    checks.add(isClinicalStagingDone);
-                    checks.add(isTbScreeningDone);
-                    checks.add(isArvPrescriptionDone);
 
+                    checks.add(isFollowupStatusDone);
 
-                    if (HfPmtctDao.isEligibleForHlvTest(baseEntityId)) {
-                        checks.add(isHvlSampleCollectionComplete);
+                    if (isContinuingWithServices(v)) {
+                        checks.add(isCounsellingDone);
+                        checks.add(isClinicalStagingDone);
+                        checks.add(isTbScreeningDone);
+                        checks.add(isArvPrescriptionDone);
+
+                        if (HfPmtctDao.isEligibleForHlvTest(baseEntityId)) {
+                            checks.add(isHvlSampleCollectionComplete);
+                        }
+
+                        if (HfPmtctDao.isEligibleForBaselineInvestigation(baseEntityId) || HfPmtctDao.isEligibleForBaselineInvestigationOnFollowupVisit(baseEntityId)) {
+                            checks.add(isBaselineInvestigationComplete);
+                        }
+
+                        if (HfPmtctDao.isEligibleForCD4Retest(baseEntityId) || HfPmtctDao.isEligibleForCD4Test(baseEntityId)) {
+                            checks.add(isCd4SampleCollectionComplete);
+                        }
                     }
 
-                    if (HfPmtctDao.isEligibleForBaselineInvestigation(baseEntityId) || HfPmtctDao.isEligibleForBaselineInvestigationOnFollowupVisit(baseEntityId)) {
-                        checks.add(isBaselineInvestigationComplete);
-                    }
-
-                    if (HfPmtctDao.isEligibleForCD4Retest(baseEntityId) || HfPmtctDao.isEligibleForCD4Test(baseEntityId)) {
-                        checks.add(isCd4SampleCollectionComplete);
-                    }
 
                     if (!checks.contains(false)) {
                         pmtctFollowupVisits.add(v);
@@ -84,6 +91,28 @@ public class PmtctVisitUtils extends VisitUtils {
             }
         }
         return false;
+    }
+
+    public static boolean isContinuingWithServices(Visit visit) {
+        boolean isContinuingWithServices = false;
+        try {
+            JSONObject jsonObject = new JSONObject(visit.getJson());
+            JSONArray obs = jsonObject.getJSONArray("obs");
+            int size = obs.length();
+            for (int i = 0; i < size; i++) {
+                JSONObject checkObj = obs.getJSONObject(i);
+                if (checkObj.getString("fieldCode").equalsIgnoreCase("followup_status")) {
+                    JSONArray values = checkObj.getJSONArray("values");
+                    if ((values.getString(0).equalsIgnoreCase("continuing_with_services"))) {
+                        isContinuingWithServices = true;
+                        break;
+                    }
+                }
+            }
+        } catch (Exception e) {
+            Timber.e(e);
+        }
+        return isContinuingWithServices;
     }
 
 }
