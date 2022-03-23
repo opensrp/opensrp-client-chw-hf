@@ -46,9 +46,25 @@
     },
     "encounter_location": ""
   },
+  "global": {},
   "step1": {
     "title": "Counselling",
     "fields": [
+      {
+        "key": "followup_status",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "followup_status",
+        "openmrs_entity_parent": "",
+        "value": "continuing_with_services",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_fv_counselling_relevance.yml"
+            }
+          }
+        }
+      },
       {
         "key": "followup_visit_date",
         "type": "edit_text",
