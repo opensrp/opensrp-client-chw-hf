@@ -53,27 +53,27 @@
       {
         "key": "hvl_result",
         "type": "edit_text",
-        "hint": "Ukandamizaji wa HVL",
+        "hint": "Kufubaa kwa Virusi",
         "openmrs_entity_id": "hvl_result",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "v_numeric": {
           "value": "true",
-          "err": "Tafadhali weka thamani halali"
+          "err": "Tafadhari ingiza kiasi kwa usahihi"
         },
         "v_required": {
           "value": true,
-          "err": "Tafadhali weka thamani ya ukandamizaji wa HVL"
+          "err": "Tafadhari Ingiza kiasi cha kufubaa kwa Virusi"
         }
       },
       {
         "key": "notify_continue_regimen",
         "type": "toaster_notes",
-        "text": "Endelea na regimen ya sasa",
+        "text": "Mteja aendelee kutumia dawa zake alizonazo kwa sasa",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
-        "toaster_info_text": "Rudia HVL baada ya miezi 6, 12 na 18",
+        "toaster_info_text": "Rudia kupima wingi wa virusi baada ya mwezi wa 6, 12 na 18",
         "toaster_type": "info",
         "relevance": {
           "rules-engine": {
@@ -86,7 +86,7 @@
       {
         "key": "notify_continue_eac",
         "type": "toaster_notes",
-        "text": "Mteja ataandikishwa EAC",
+        "text": "Mteja ataunganisha katika EAC",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",

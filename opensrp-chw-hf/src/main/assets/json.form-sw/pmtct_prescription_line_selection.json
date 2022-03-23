@@ -1,0 +1,317 @@
+{
+  "count": "1",
+  "encounter_type": "PMTCT prescription line selection",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "step1": {
+    "title": "Kupatiwa Dawa za ARV",
+    "fields": [
+      {
+        "key": "prescribed_regimes",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "prescribed_regimes",
+        "type": "native_radio",
+        "label": "Je, Mteja ameandikiwa na kupewa ARVs?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndiyo",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhari chagua mojawapo:"
+        }
+      },
+      {
+        "key": "arv_line",
+        "type": "spinner",
+        "hint": "Chagua laini ya ARV",
+        "openmrs_entity_id": "arv_line",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "values": [
+          "Mstari wa Kwanza",
+          "Mstari wa wa Pili",
+          "Mstari wa tatu"
+        ],
+        "keys": [
+          "first_line",
+          "second_line",
+          "third_line"
+        ],
+        "openmrs_choice_ids": {
+          "first_line": "first_line",
+          "second_line": "second_line",
+          "third_line": "third_line"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Tafadhari jibu swali hili"
+        },
+        "relevance": {
+          "step1:prescribed_regimes": {
+            "type": "string",
+            "ex": "equalTo(.,\"yes\")"
+          }
+        }
+      },
+      {
+        "key": "first_line",
+        "type": "spinner",
+        "hint": "Dawa za ARVs katika mstari wa kwanza",
+        "openmrs_entity_id": "first_line",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "values": [
+          "1gA",
+          "1pA",
+          "1rA",
+          "1uA",
+          "1hA",
+          "1xA"
+        ],
+        "keys": [
+          "1_gA",
+          "1_pA",
+          "1_rA",
+          "1_uA",
+          "1_hA",
+          "1_xA"
+        ],
+        "openmrs_choice_ids": {
+          "1_gA": "1_gA",
+          "1_pA": "1_pA",
+          "1_rA": "1_rA",
+          "1_uA": "1_uA",
+          "1_hA": "1_hA",
+          "1_xA": "1_xA"
+        },
+        "relevance": {
+          "step1:arv_line": {
+            "type": "string",
+            "ex": "equalTo(.,\"first_line\")"
+          }
+        },
+        "v_required": {
+          "value": true,
+          "err": "Tafadhari swali hili"
+        }
+      },
+      {
+        "key": "second_line",
+        "type": "spinner",
+        "hint": "Dawa za ARVs katika Mstari wa pili",
+        "openmrs_entity_id": "second_line",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "values": [
+          "2fA",
+          "2hA",
+          "2sA",
+          "2GA",
+          "2kA",
+          "2nA",
+          "2uA",
+          "2xA"
+        ],
+        "keys": [
+          "2_fA",
+          "2_hA",
+          "2_sA",
+          "2_GA",
+          "2_kA",
+          "2_nA",
+          "2_uA",
+          "2_xA"
+        ],
+        "openmrs_choice_ids": {
+          "2_fA": "2_fA",
+          "2_hA": "2_hA",
+          "2_sA": "2_sA",
+          "2_GA": "2_GA",
+          "2_kA": "2_kA",
+          "2_nA": "2_nA",
+          "2_uA": "2_uA",
+          "2_xA": "2_xA"
+        },
+        "relevance": {
+          "step1:arv_line": {
+            "type": "string",
+            "ex": "equalTo(.,\"second_line\")"
+          }
+        },
+        "v_required": {
+          "value": true,
+          "err": "Tafadhari jibu swali hili"
+        }
+      },
+      {
+        "key": "third_line",
+        "type": "spinner",
+        "hint": "Dawa za ARVs katika mstari wa tatu",
+        "openmrs_entity_id": "third_line",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "values": [
+          "3yA",
+          "3wA",
+          "3kA",
+          "3tA",
+          "3hA",
+          "3gA",
+          "3zA",
+          "3xA"
+        ],
+        "keys": [
+          "3_yA",
+          "3_wA",
+          "3_kA",
+          "3_tA",
+          "3_hA",
+          "3_gA",
+          "3_zA",
+          "3_xA"
+        ],
+        "openmrs_choice_ids": {
+          "3_wA": "3_wA",
+          "3_kA": "3_kA",
+          "3_tA": "3_tA",
+          "3_hA": "3_hA",
+          "3_gA": "3_gA",
+          "3_zA": "3_zA",
+          "3_xA": "3_xA",
+          "3_yA": "3_yA"
+        },
+        "relevance": {
+          "step1:arv_line": {
+            "type": "string",
+            "ex": "equalTo(.,\"third_line\")"
+          }
+        },
+        "v_required": {
+          "value": true,
+          "err": "Tafadhari jibu swali hili"
+        }
+      },
+      {
+        "key": "reason_for_not_prescribing_arv",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_prescribing_arv",
+        "type": "native_radio",
+        "label": "Sababu za kutokumpa dawa za ARVs ",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "out_of_medicine",
+            "text": "Dawa zimeisha",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "out_of_medicine"
+          },
+          {
+            "key": "client_refused_medication",
+            "text": "Mteja amekataa kuchukua dawa",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "client_refused_medication"
+          },
+          {
+            "key": "other",
+            "text": "Nyingine",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhari chagua mojawapo:"
+        },
+        "relevance": {
+          "step1:prescribed_regimes": {
+            "type": "string",
+            "ex": "equalTo(., \"no\")"
+          }
+        }
+      },
+      {
+        "key": "other_reason_for_not_prescribing_arv",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reason_for_not_prescribing_arv",
+        "type": "edit_text",
+        "hint": "Sababu nyingine",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhari bainisha sababu nyingine za kutokumpa mteja ARVs"
+        },
+        "relevance": {
+          "step1:reason_for_not_prescribing_arv": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,6 +1,8 @@
 {
+  "validate_on_submit": true,
+  "show_errors_on_submit": false,
   "count": "1",
-  "encounter_type": "PMTCT EAC Visit",
+  "encounter_type": "ANC Partner Community Followup Referral",
   "entity_id": "",
   "metadata": {
     "start": {
@@ -46,58 +48,45 @@
     },
     "encounter_location": ""
   },
-  "global": {},
   "step1": {
-    "title": "EAC Visit",
+    "title": "ANC Partner Community Followup",
     "fields": [
       {
-        "key": "eac_visit_notification",
-        "type": "toaster_notes",
-        "text": "Nakiri tarehe na muda wa hudhulio la EAC",
-        "openmrs_entity_id": "notify_retest",
-        "openmrs_entity": "concept",
+        "key": "toast_refer_to_chw",
         "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "toaster_notes",
+        "text": "Mteja atapewa rufaa kwa Mtoa huduma ngazi ya jamii kwa ajili ya ufuatiliaji",
+        "toaster_info_text": "Mteja atapewa rufaa kwenda kwa mtoa huduma ngazi ya jamii aliye kwenye kijiji chake kwa ajili ya ufuatiliaji. Ongeza taarifa zozote ambazo zinahitajika kwa ajili ya rufaa hii.",
         "toaster_type": "info"
       },
       {
-        "key": "eac_visit_date",
-        "type": "date_picker",
-        "hint": "Tarehe ya Udhulio la EAC",
-        "openmrs_entity_id": "eac_visit_date",
-        "openmrs_entity": "concept",
+        "key": "anc_partner_followup_comment",
         "openmrs_entity_parent": "",
-        "min_date": "today-3m",
-        "max_date": "today",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "anc_partner_followup_comment",
+        "type": "edit_text",
+        "hint": "Maoni yako",
         "v_required": {
-          "value": "true",
-          "err": "Tafadhari ingiza Tarehe ya Udhulio la EAC"
+          "value": "false",
+          "err": "Tafadhari jaza maoni yako hapa"
         }
       },
       {
-        "key": "eac_visit_time",
-        "type": "time_picker",
-        "hint": "EAC Visit Time",
-        "openmrs_entity_id": "eac_visit_time",
-        "openmrs_entity": "concept",
+        "key": "anc_partner_community_referral_date",
         "openmrs_entity_parent": "",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter EAC visit time"
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "anc_partner_community_referral_date",
+        "type": "hidden",
+        "is_problem": false,
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_partner_community_followup_calculation.yml"
+            }
+          }
         }
-      },
-      {
-        "key": "eac_visit_type",
-        "type": "hidden",
-        "openmrs_entity_id": "eac_visit_type",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": ""
-      },
-      {
-        "key": "eac",
-        "type": "hidden",
-        "openmrs_entity_id": "eac",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": ""
       }
     ]
   }
