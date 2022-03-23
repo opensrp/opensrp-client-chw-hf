@@ -153,5 +153,10 @@
     <string name="hvl_sample_collection">HVL Sample Collection</string>
     <string name="arv_prescription_title">ARV Prescription</string>
     <string name="tb_screening_title">TB Screening</string>
+    <string name="pmtct_followup_status">Followup Status:</string>
+    <string name="continuing_with_services">Continuing with Services</string>
+    <string name="transfer_out">Transfer Out</string>
+    <string name="deceased">Deceased</string>
+    <string name="pmtct_followup_status_title">Followup Status</string>
 
 </resources>
