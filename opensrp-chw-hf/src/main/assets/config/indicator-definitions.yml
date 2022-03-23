@@ -1422,7 +1422,7 @@ indicators:
                                INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
                       WHERE (is_transfer_in_client IS NULL OR is_transfer_in_client = 'no')
                         AND (date(fm.dob, '+10 years') <= date('now'))
-                        AND (date(fm.dob, '+14 years') >= date('now'))
+                        AND (date(fm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 7, 4) || '-' || substr('%s', 4, 2) || '-' || '01'), '-3 months') =
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
@@ -1433,7 +1433,7 @@ indicators:
                                INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
                       WHERE (is_transfer_in_client IS NULL OR is_transfer_in_client = 'no')
                         AND (date(fm.dob, '+15 years') <= date('now'))
-                        AND (date(fm.dob, '+19 years') >= date('now'))
+                        AND (date(fm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 7, 4) || '-' || substr('%s', 4, 2) || '-' || '01'), '-3 months') =
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
@@ -1444,7 +1444,7 @@ indicators:
                                INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
                       WHERE (is_transfer_in_client IS NULL OR is_transfer_in_client = 'no')
                         AND (date(fm.dob, '+20 years') <= date('now'))
-                        AND (date(fm.dob, '+24 years') >= date('now'))
+                        AND (date(fm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 7, 4) || '-' || substr('%s', 4, 2) || '-' || '01'), '-3 months') =
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
