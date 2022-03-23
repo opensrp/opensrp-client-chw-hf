@@ -1,6 +1,7 @@
 package org.smartregister.chw.hf.activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.vijay.jsonwizard.utils.FormUtils;
 
+import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.anc.domain.Visit;
@@ -18,12 +20,13 @@ import org.smartregister.chw.anc.util.Constants;
 import org.smartregister.chw.core.activity.CoreFamilyProfileActivity;
 import org.smartregister.chw.core.activity.CorePncMemberProfileActivity;
 import org.smartregister.chw.core.activity.CorePncRegisterActivity;
-import org.smartregister.chw.core.dao.PNCDao;
+import org.smartregister.chw.core.dao.ChwNotificationDao;
 import org.smartregister.chw.core.interactor.CorePncMemberProfileInteractor;
 import org.smartregister.chw.core.model.ChildModel;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.fp.dao.FpDao;
 import org.smartregister.chw.fp.util.FamilyPlanningConstants;
+import org.smartregister.chw.hf.BuildConfig;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.adapter.ChildFollowupViewAdapter;
 import org.smartregister.chw.hf.adapter.ReferralCardViewAdapter;
@@ -56,6 +59,7 @@ import timber.log.Timber;
 
 import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
 import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
+import static org.smartregister.util.Utils.getAllSharedPreferences;
 
 public class PncMemberProfileActivity extends CorePncMemberProfileActivity implements PncMemberProfileContract.View {
 
@@ -196,7 +200,7 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.pnc_member_profile_menu, menu);
-        List<ChildModel> childModels = PNCDao.childrenForPncWoman(memberObject.getBaseEntityId());
+        List<ChildModel> childModels = HfPncDao.childrenForPncWoman(memberObject.getBaseEntityId());
         for (int i = 0; i < childModels.size(); i++) {
             menu.add(0, R.id.action_pnc_registration, 100 + i, getString(R.string.edit_child_form_title, childModels.get(i).getFirstName()));
             menuItemEditNames.put(getString(R.string.edit_child_form_title, childModels.get(i).getFirstName()), childModels.get(i).getBaseEntityId());
@@ -270,6 +274,14 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
         textview_record_anc_visit.setVisibility(View.VISIBLE);
         textview_record_anc_visit.setOnClickListener(this);
 
+        int pncDay = Integer.parseInt(getPncMemberProfileInteractor().getPncDay(memberObject.getBaseEntityId()));
+        if (pncDay >= 42) {
+            textViewAncVisitNot.setVisibility(View.VISIBLE);
+        }
+
+        textViewAncVisitNot.setText(R.string.complete_pnc_visits);
+        textViewAncVisitNot.setOnClickListener(v -> confirmRemovePncMember());
+
 
         if (HfPncDao.isMotherEligibleForPmtctRegistration(baseEntityID)) {
             textview_record_anc_visit.setVisibility(View.GONE);
@@ -283,11 +295,26 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
         }
 
         Visit latestVisit = getVisit(org.smartregister.chw.hf.utils.Constants.Events.PNC_VISIT);
-        if(latestVisit!= null && !latestVisit.getProcessed()){
+        if (latestVisit != null && !latestVisit.getProcessed()) {
             showVisitInProgress();
         }
 
         showChildFollowupViews();
+    }
+
+    @Override
+    public void setMemberName(String memberName) {
+        getPncMemberProfileInteractor().getPncMotherNameDetails(memberObject, text_view_anc_member_name, imageView);
+    }
+
+    @Override
+    public void setProfileImage(String baseEntityId, String entityType) {
+        String pncDay = getPncMemberProfileInteractor().getPncDay(memberObject.getBaseEntityId());
+        if (StringUtils.isNotBlank(pncDay) && Integer.parseInt(pncDay) >= 49) {
+            imageRenderHelper.refreshProfileImage(baseEntityId, imageView, org.smartregister.chw.anc.util.NCUtils.getMemberProfileImageResourceIDentifier("pnc"));
+        } else {
+            imageRenderHelper.refreshProfileImage(baseEntityId, imageView, org.smartregister.chw.pnc.R.drawable.pnc_less_twenty_nine_days);
+        }
     }
 
     private void showVisitInProgress() {
@@ -296,8 +323,8 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
         textViewUndo.setVisibility(View.GONE);
         textViewNotVisitMonth.setText(R.string.pnc_visit_in_progress);
         tvEdit.setVisibility(View.VISIBLE);
-        tvEdit.setOnClickListener(v ->{
-            PncFacilityVisitActivity.startMe(this, baseEntityID,true);
+        tvEdit.setOnClickListener(v -> {
+            PncFacilityVisitActivity.startMe(this, baseEntityID, true);
         });
         imageViewCross.setImageResource(org.smartregister.chw.core.R.drawable.activityrow_notvisited);
     }
@@ -327,9 +354,49 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
         }
     }
 
+    private void confirmRemovePncMember() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(getString(R.string.complete_pnc_visits));
+        builder.setMessage(getString(R.string.complete_pnc_message));
+        builder.setCancelable(true);
+
+        builder.setPositiveButton(this.getString(R.string.yes), (dialog, id) -> {
+            try {
+                removePncMember();
+                finish();
+            } catch (Exception e) {
+                Timber.e(e, "PncMemberProfileActivity --> closePncVisitsDialog");
+            }
+        });
+        builder.setNegativeButton(this.getString(R.string.cancel), ((dialog, id) -> dialog.cancel()));
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
     @Override
     protected void removePncMember() {
-        //TODO implement functionality to remove PNC member
+        //creates an event to close pnc visits and removes member from pnc register
+        AllSharedPreferences sharedPreferences = getAllSharedPreferences();
+        Event baseEvent = (Event) new Event()
+                .withBaseEntityId(baseEntityID)
+                .withEventDate(new Date())
+                .withEventType(org.smartregister.chw.hf.utils.Constants.Events.CLOSE_PNC_VISITS)
+                .withFormSubmissionId(org.smartregister.util.JsonFormUtils.generateRandomUUIDString())
+                .withEntityType(CoreConstants.TABLE_NAME.PNC_MEMBER)
+                .withProviderId(sharedPreferences.fetchRegisteredANM())
+                .withLocationId(ChwNotificationDao.getSyncLocationId(baseEntityID))
+                .withTeamId(sharedPreferences.fetchDefaultTeamId(sharedPreferences.fetchRegisteredANM()))
+                .withTeam(sharedPreferences.fetchDefaultTeam(sharedPreferences.fetchRegisteredANM()))
+                .withClientDatabaseVersion(BuildConfig.DATABASE_VERSION)
+                .withClientApplicationVersion(BuildConfig.VERSION_CODE)
+                .withDateCreated(new Date());
+        org.smartregister.chw.hf.utils.JsonFormUtils.tagSyncMetadata(Utils.context().allSharedPreferences(), baseEvent);
+        try {
+            org.smartregister.chw.anc.util.NCUtils.processEvent(baseEvent.getBaseEntityId(), new JSONObject(org.smartregister.chw.anc.util.JsonFormUtils.gson.toJson(baseEvent)));
+        } catch (Exception e) {
+            Timber.e(e);
+        }
     }
 
     @Override
@@ -349,7 +416,7 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
         childFollowupRecyclerView = findViewById(R.id.child_followup_recycler_view);
         childFollowupRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        List<ChildModel> childModels = PNCDao.childrenForPncWoman(memberObject.getBaseEntityId());
+        List<ChildModel> childModels = HfPncDao.childrenForPncWoman(memberObject.getBaseEntityId());
         if (childFollowupRecyclerView != null && childModels.size() > 0) {
             RecyclerView.Adapter mAdapter = new ChildFollowupViewAdapter(childModels, this);
             childFollowupRecyclerView.setAdapter(mAdapter);

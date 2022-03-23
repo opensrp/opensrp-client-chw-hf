@@ -1,6 +1,6 @@
 {
   "count": "1",
-  "encounter_type": "PMTCT EAC Visit",
+  "encounter_type": "PMTCT Followup Status",
   "entity_id": "",
   "metadata": {
     "start": {
@@ -46,58 +46,40 @@
     },
     "encounter_location": ""
   },
-  "global": {},
   "step1": {
-    "title": "EAC Visit",
+    "title": "Followup Status",
     "fields": [
       {
-        "key": "eac_visit_notification",
-        "type": "toaster_notes",
-        "text": "Nakiri tarehe na muda wa hudhulio la EAC",
-        "openmrs_entity_id": "notify_retest",
+        "key": "followup_status",
+        "type": "native_radio",
+        "label": "Followup Status",
         "openmrs_entity": "concept",
+        "openmrs_entity_id": "followup_status",
         "openmrs_entity_parent": "",
-        "toaster_type": "info"
-      },
-      {
-        "key": "eac_visit_date",
-        "type": "date_picker",
-        "hint": "Tarehe ya Udhulio la EAC",
-        "openmrs_entity_id": "eac_visit_date",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "min_date": "today-3m",
-        "max_date": "today",
+        "options": [
+          {
+            "key": "continuing_with_services",
+            "text": "Continuing with Services (CTN)",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "continuing_with_services"
+          },
+          {
+            "key": "transfer_out",
+            "text": "Transfer Out",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "transfer_out"
+          },
+          {
+            "key": "deceased",
+            "text": "Deceased",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "deceased"
+          }
+        ],
         "v_required": {
-          "value": "true",
-          "err": "Tafadhari ingiza Tarehe ya Udhulio la EAC"
+          "value": true,
+          "err": "Please answer this question"
         }
-      },
-      {
-        "key": "eac_visit_time",
-        "type": "time_picker",
-        "hint": "EAC Visit Time",
-        "openmrs_entity_id": "eac_visit_time",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter EAC visit time"
-        }
-      },
-      {
-        "key": "eac_visit_type",
-        "type": "hidden",
-        "openmrs_entity_id": "eac_visit_type",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": ""
-      },
-      {
-        "key": "eac",
-        "type": "hidden",
-        "openmrs_entity_id": "eac",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": ""
       }
     ]
   }

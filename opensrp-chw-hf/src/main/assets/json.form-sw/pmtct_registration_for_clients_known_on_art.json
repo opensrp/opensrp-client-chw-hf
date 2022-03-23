@@ -1,6 +1,6 @@
 {
   "count": "1",
-  "encounter_type": "PMTCT EAC Visit",
+  "encounter_type": "PMTCT Registration",
   "entity_id": "",
   "metadata": {
     "start": {
@@ -46,58 +46,86 @@
     },
     "encounter_location": ""
   },
-  "global": {},
+  "global": {
+  },
   "step1": {
-    "title": "EAC Visit",
+    "title": "Known on ART",
     "fields": [
       {
-        "key": "eac_visit_notification",
+        "key": "pmtct_register_date",
+        "type": "edit_text",
+        "hidden": "true",
+        "openmrs_entity_id": "pmtct_register_date",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_form_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "hiv_registration_date",
+        "type": "edit_text",
+        "hidden": "true",
+        "openmrs_entity_id": "hiv_registration_date",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_form_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "known_on_art",
+        "type": "hidden",
+        "openmrs_entity_id": "known_on_art",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "value": "yes"
+      },
+      {
+        "key": "test_results",
+        "type": "hidden",
+        "openmrs_entity_id": "test_results",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "value": "positive"
+      },
+      {
+        "key": "ctc_number",
+        "type": "hidden",
+        "openmrs_entity_id": "ctc_number",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_registration_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "known_on_art_client",
         "type": "toaster_notes",
-        "text": "Nakiri tarehe na muda wa hudhulio la EAC",
+        "text": "Mteja mwenye CTC Namba {ctc_number} yupo kwenye ART tayari.\n\nTuma fomu hii kwa kumsajili Mteja huyu PMTCT na nakiri hudhurio la awali.",
         "openmrs_entity_id": "notify_retest",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "toaster_type": "info"
-      },
-      {
-        "key": "eac_visit_date",
-        "type": "date_picker",
-        "hint": "Tarehe ya Udhulio la EAC",
-        "openmrs_entity_id": "eac_visit_date",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "min_date": "today-3m",
-        "max_date": "today",
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhari ingiza Tarehe ya Udhulio la EAC"
+        "toaster_type": "info",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_registration_calculation.yml"
+            }
+          }
         }
-      },
-      {
-        "key": "eac_visit_time",
-        "type": "time_picker",
-        "hint": "EAC Visit Time",
-        "openmrs_entity_id": "eac_visit_time",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter EAC visit time"
-        }
-      },
-      {
-        "key": "eac_visit_type",
-        "type": "hidden",
-        "openmrs_entity_id": "eac_visit_type",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": ""
-      },
-      {
-        "key": "eac",
-        "type": "hidden",
-        "openmrs_entity_id": "eac",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": ""
       }
     ]
   }

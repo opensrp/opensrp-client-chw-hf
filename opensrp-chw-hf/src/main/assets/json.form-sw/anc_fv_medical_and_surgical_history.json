@@ -101,7 +101,7 @@
           },
           {
             "key": "known_on_art",
-            "text": "Known On ART",
+            "text": "Mteja yupo kwenye ART tayari",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "known_on_art"
@@ -228,7 +228,7 @@
         "v_max_length": {
           "value": "17",
           "is_fixed_size": "true",
-          "err":"Tafadhali jaza namba ya CTC ya mtejar"
+          "err":"Tafadhali jaza namba ya CTC ya mteja"
         },
         "v_required": {
           "value": true,
@@ -275,14 +275,6 @@
         }
       },
       {
-        "key": "visit_number",
-        "type": "hidden",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "visit_number",
-        "openmrs_entity_parent": "",
-        "value": 1
-      },
-      {
         "key": "known_on_art",
         "type": "hidden",
         "openmrs_entity": "concept",
@@ -306,6 +298,14 @@
             }
           }
         }
+      },
+      {
+        "key": "visit_number",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "visit_number",
+        "openmrs_entity_parent": "",
+        "value": 1
       }
     ]
   }

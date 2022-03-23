@@ -47,28 +47,28 @@
     "encounter_location": ""
   },
   "step1": {
-    "title": "CD4 Test Results",
+    "title": "Majibu ya CD4",
     "fields": [
       {
         "key": "cd4_result",
         "type": "edit_text",
-        "hint": "Fill in the CD4 count",
+        "hint": "Jaza kiasi cha CD4",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "cd4_result",
         "openmrs_entity_parent": "",
         "v_numeric": {
           "value": "true",
-          "err": "Please enter the CD4 count"
+          "err": "Tafadhari jaza Jaza kiasi cha CD4"
         },
         "v_required": {
           "value": "true",
-          "err": "Please enter the CD4 count"
+          "err": "Tafadhari jaza Jaza kiasi cha CD4"
         }
       },
       {
         "key": "prompt_to_start_ctx",
         "type": "toaster_notes",
-        "text": "The client should start CTX",
+        "text": "Mteja huyu mwanzishie CTX",
         "openmrs_entity_id": "",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -86,20 +86,20 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "started_ctx",
         "type": "native_radio",
-        "label": "Has the client started CTX?",
+        "label": "Je Mteja ameshaanza CTX?",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndiyo",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
@@ -107,7 +107,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Please select an option"
+          "err": "Tafadhari chagua mojawapo"
         },
         "relevance": {
           "step1:cd4_result": {
@@ -122,27 +122,27 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "reason_for_not_starting_ctx",
         "type": "native_radio",
-        "label": "Reason for not starting CTX",
+        "label": "Sababu za Mteja kutoanzishiwa CTX",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [
           {
             "key": "out_of_medicine",
-            "text": "Stock out of medicine",
+            "text": "CTX zimekwisha",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "out_of_medicine"
           },
           {
             "key": "client_refused_medication",
-            "text": "The client refused medication",
+            "text": "Mteja amekataa dawa za CTX",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "client_refused_medication"
           },
           {
             "key": "client_allergic_to_ctx",
-            "text": "Client allergic to CTX",
+            "text": "Mteja ana mzio na dawa hizi za CTXja ana ",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "client_allergic_to_ctx"
@@ -157,7 +157,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Please select an option"
+          "err": "Tafadhari chagua mojawapo"
         },
         "relevance": {
           "step1:started_ctx": {

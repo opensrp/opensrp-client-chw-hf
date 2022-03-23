@@ -1,12 +1,9 @@
 package org.smartregister.chw.hf.activity;
 
-import static org.smartregister.chw.core.utils.Utils.getCommonPersonObjectClient;
-import static org.smartregister.chw.core.utils.Utils.getDuration;
-import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Menu;
@@ -16,9 +13,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
+import com.vijay.jsonwizard.utils.FormUtils;
 
 import org.apache.commons.lang3.StringUtils;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.core.custom_views.CorePmtctFloatingMenu;
 import org.smartregister.chw.core.listener.OnClickFloatingMenu;
@@ -41,7 +39,13 @@ import org.smartregister.family.util.Utils;
 
 import java.util.Date;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import timber.log.Timber;
+
+import static org.smartregister.chw.core.utils.Utils.getCommonPersonObjectClient;
+import static org.smartregister.chw.core.utils.Utils.getDuration;
+import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
 
 public class HeiProfileActivity extends BasePmtctProfileActivity {
 
@@ -187,6 +191,7 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
         ((CorePmtctFloatingMenu) basePmtctFloatingMenu).redraw(hasPhoneNumber);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemId = item.getItemId();
@@ -200,6 +205,16 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
         } else if (itemId == org.smartregister.chw.core.R.id.action_remove_member) {
             removeMember();
             return true;
+        } else if (itemId == R.id.action_issue_pmtct_followup_referral) {
+            try {
+                JSONObject form = (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getPmtctcCommunityFollowupReferral());
+                if (form != null) {
+                    startFormActivity(form);
+                }
+            } catch (JSONException e) {
+                Timber.e(e);
+            }
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -207,6 +222,8 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(org.smartregister.chw.core.R.menu.hei_profile_menu, menu);
+        menu.findItem(R.id.action_issue_pmtct_followup_referral).setVisible(true);
+        menu.findItem(R.id.action_issue_pmtct_followup_referral).setTitle("Issue HEI referral");
         return true;
     }
 

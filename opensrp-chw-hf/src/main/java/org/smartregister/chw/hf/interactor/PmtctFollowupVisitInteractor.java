@@ -13,6 +13,7 @@ import timber.log.Timber;
 
 public class PmtctFollowupVisitInteractor extends CorePmtctHomeVisitInteractor {
     private final Flavor flavor;
+
     public PmtctFollowupVisitInteractor() {
         flavor = new PmtctFollowupVisitInteractorFlv();
         setFlavor(new PmtctFollowupVisitInteractorFlv());
@@ -31,7 +32,7 @@ public class PmtctFollowupVisitInteractor extends CorePmtctHomeVisitInteractor {
 
     @Override
     public void calculateActions(BasePmtctHomeVisitContract.View view, org.smartregister.chw.pmtct.domain.MemberObject memberObject, BasePmtctHomeVisitContract.InteractorCallBack callBack) {
-        super.calculateActions(view, memberObject, callBack);
+        //super.calculateActions(view, memberObject, callBack);
         try {
             PmtctVisitUtils.processVisits();
         } catch (Exception e) {

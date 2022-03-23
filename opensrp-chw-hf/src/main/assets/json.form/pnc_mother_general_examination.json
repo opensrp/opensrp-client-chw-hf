@@ -113,6 +113,31 @@
         }
       },
       {
+        "key": "blood_pressure_validator",
+        "type": "edit_text",
+        "read_only": true,
+        "should_validate_read_only": true,
+        "hint": "Blood Pressure",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "blood_pressure_validator",
+        "openmrs_entity_parent": "",
+        "v_regex": {
+          "value": "(?:[1-9][0-9]*|0)\/[1-9][0-9]*",
+          "err": "The systolic value must be greater than the diastolic value"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter the blood pressure"
+        },
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pnc_mother_general_examination_calculation.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "prompt_for_management_of_hypertension",
         "type": "toaster_notes",
         "text": "Manage the hypertension according to standard guidelines",
@@ -519,14 +544,34 @@
       },
       {
         "key": "lochia_assessment",
-        "type": "edit_text",
-        "hint": "Lochia assessment",
+        "type": "native_radio",
+        "label": "Lochia assessment",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "lochia_assessment",
         "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "lochia_rubra",
+            "text": "Lochia Rubra",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "lochia_rubra"
+          },
+          {
+            "key": "lochia_serosa",
+            "text": "Lochia Serosa",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "lochia_serosa"
+          },
+          {
+            "key": "lochia_alba",
+            "text": "Lochia Alba",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "lochia_alba"
+          }
+        ],
         "v_required": {
-          "value": true,
-          "err": "Please provide a description"
+          "value": "true",
+          "err": "Please answer this question"
         }
       },
       {

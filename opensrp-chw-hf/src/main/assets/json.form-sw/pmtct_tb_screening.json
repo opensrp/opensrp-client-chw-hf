@@ -48,7 +48,7 @@
     "encounter_location": ""
   },
   "step1": {
-    "title": "TB Screening",
+    "title": "Uchunguzi wa Awali wa Kifua Kikuu",
     "fields": [
       {
         "key": "on_tb_treatment",
@@ -56,20 +56,20 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "on_tb_treatment",
         "type": "native_radio",
-        "label": "Is the client on TB treatment?",
+        "label": "Je, Mteja huyu yupo katika Matibabu ya TB?",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndiyo",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
@@ -77,13 +77,13 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Please select an option"
+          "err": "Tafadhari chagua mojawapo"
         }
       },
       {
         "key": "tb_symptoms_screening",
         "type": "check_box",
-        "label": "Please select if the client has any of the following TB symptoms",
+        "label": "Tafadhari chagua kama Mteja ana dalili zifuatazo za Kifua Kikuu?",
         "openmrs_entity_id": "tb_symptoms_screening",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -93,49 +93,49 @@
         "options": [
           {
             "key": "chk_cough",
-            "text": "Cough for two or more weeks",
+            "text": "Mteja anakohoa kwa wiki 2 na zaidi",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_cough"
           },
           {
             "key": "chk_sputum",
-            "text": "Coughing up blood-stained sputum (hemoptysis)",
+            "text": "Mteja anakohoa makohozi yaliyochanganyika na damu",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_sputum"
           },
           {
             "key": "chk_fevers",
-            "text": "Fevers for two or more weeks?",
+            "text": "Mteja amekuwa na Homa kwa zaidi ya wiki mbili",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_fevers"
           },
           {
             "key": "chk_weight_loss",
-            "text": "Noticeable weight loss for new patients or 3 kgs",
+            "text": "Mteja anapoteza Uzito",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_weight_loss"
           },
           {
             "key": "chk_weight_loss_subsequent_visit",
-            "text": "Weight loss in a month (subsequent visit)",
+            "text": "Mteja amepungua uzito katika mfululizo mahudhulio",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_weight_loss_subsequent_visit"
           },
           {
             "key": "chk_excessive_sweating",
-            "text": "Excessive sweating at night for two or more weeks",
+            "text": "Mteja amekuwa akitoka na jasho jingi sana usiku kwa wiki mbili au zaidi",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_excessive_sweating"
           },
           {
             "key": "chk_none",
-            "text": "None",
+            "text": "Hakuna",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_none"
@@ -143,7 +143,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Please select the topic(s)"
+          "err": "Tafadhari chagua mada"
         },
         "relevance": {
           "step1:on_tb_treatment": {
@@ -158,20 +158,20 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "investigate_for_tb",
         "type": "native_radio",
-        "label": "Investigate for TB",
+        "label": "Fanya uchunguzi wa TB",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [
           {
             "key": "positive",
-            "text": "Positive",
+            "text": "Chanya",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "positive"
           },
           {
             "key": "negative",
-            "text": "Negative",
+            "text": "Hazi",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "negative"
@@ -179,7 +179,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Please select an option"
+          "err": "Tafadhari chagua mojawapo:"
         },
         "relevance": {
           "step1:tb_symptoms_screening": {
@@ -201,7 +201,7 @@
       {
         "key": "prompt_for_tb_treatment",
         "type": "toaster_notes",
-        "text": "Refer the client for TB treatment",
+        "text": "Mpe rufaa mteja kwa ajili ya Matibabu ya TB",
         "openmrs_entity_id": "",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -219,20 +219,20 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "has_been_provided_with_tpt_before",
         "type": "native_radio",
-        "label": "Has the client been provided with TPT before?",
+        "label": "Je, Mteja amewahi kupewa TPT kabla?",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndio",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
@@ -240,20 +240,20 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Please select an option"
+          "err": "Tafadhari chagua mojawapo"
         },
         "relevance": {
-        "rules-engine": {
-          "ex-rules": {
-            "rules-file": "pmtct_tb_screening_relevance.yml"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_tb_screening_relevance.yml"
+            }
           }
         }
-      }
       },
       {
         "key": "prompt_for_tpt_eligibility",
         "type": "toaster_notes",
-        "text": "The client is eligible for TPT",
+        "text": "Mteja huyu anakidhi vigezo kwa ajili ya kupewa TPT",
         "openmrs_entity_id": "",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -269,7 +269,7 @@
       {
         "key": "prompt_for_tpt_ineligibility",
         "type": "toaster_notes",
-        "text": "The client is not eligible for TPT",
+        "text": "Mteja huyu hakidhi vigezo vya kupewa TPT",
         "openmrs_entity_id": "",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -282,27 +282,26 @@
           }
         }
       },
-
       {
         "key": "is_client_provided_with_tpt",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "is_client_provided_with_tpt",
         "type": "native_radio",
-        "label": "Has the client been provided with TPT?",
+        "label": "Je, Mteja huyu amepewa TPT?",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndiyo",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
@@ -310,7 +309,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Please select an option"
+          "err": "Tafadhari chagua mojawapo"
         },
         "relevance": {
           "rules-engine": {
@@ -326,27 +325,27 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "reason_for_not_providing_tpt",
         "type": "native_radio",
-        "label": "Reason for not providing TPT",
+        "label": "Sababu ya kutompatia Mteja TPT?",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [
           {
             "key": "out_of_medicine",
-            "text": "Stock out of medicine",
+            "text": "Dawa zimeisha",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "out_of_medicine"
           },
           {
             "key": "client_refused_medication",
-            "text": "The client refused medication",
+            "text": "Mteja amekataa kuchukua dawa",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "client_refused_medication"
           },
           {
             "key": "client_allergic_to_tpt",
-            "text": "Client is allergic to TPT",
+            "text": "Mteja huyu ana mzio na dawa za TPT",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "client_allergic_to_tpt"
@@ -354,7 +353,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Please select an option"
+          "err": "Tafadhari chagua mojawapo"
         },
         "relevance": {
           "step1:is_client_provided_with_tpt": {

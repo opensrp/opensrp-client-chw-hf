@@ -1,6 +1,6 @@
 {
   "count": "1",
-  "encounter_type": "PMTCT Follow-up Visit",
+  "encounter_type": "PMTCT CD4 Sample Collection",
   "entity_id": "",
   "metadata": {
     "start": {
@@ -48,12 +48,12 @@
   },
   "global": {},
   "step1": {
-    "title": "Taarifa za Mtoa Huduma",
+    "title": "Clinician Details",
     "fields": [
       {
         "key": "clinician_name",
         "type": "edit_text",
-        "hint": "Jina la Mtoa huduma",
+        "hint": "Jina la Mtoa Huduma",
         "openmrs_entity_id": "clinician_name",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -63,20 +63,20 @@
         },
         "v_required": {
           "value": true,
-          "err": "Tafadhari ingiza jina la mtoa huduma"
+          "err": "Tafadhari ingiza jina la Mtoa huduma"
         }
       },
       {
         "key": "clinician_position",
         "type": "spinner",
-        "hint": "Cheo cha Mtoa huduma",
+        "hint": "Cheo cha Mtoa Huduma",
         "openmrs_entity_id": "clinician_position",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "values": [
           "Afisa Matibabu",
           "Afisa Matibabu msaidizi",
-          "Afisa wa Kliniki ",
+          "Afisa wa Kliniki",
           "Afisa wa Kliniki msaidizi"
         ],
         "keys": [
@@ -93,13 +93,13 @@
         },
         "v_required": {
           "value": true,
-          "err": "Tafadhari"
+          "err": "Tafadhari Ingiza cheo cha Mtoa huduma"
         }
       },
       {
         "key": "clinician_phone_number",
         "type": "edit_text",
-        "hint": "Namba ya simu ya Mtoa huduma",
+        "hint": "Namba ya Simu ya Mtoa Huduma wa Afya",
         "edit_type": "number",
         "openmrs_entity_id": "clinician_phone_number",
         "openmrs_entity": "concept",
@@ -114,46 +114,46 @@
         },
         "v_required": {
           "value": true,
-          "err": "Tafadhari ingiza namba ya simu ya Mtoa huduma"
+          "err": "Namba lazima iwe na tarakimu 10 na lazima ianze na 06 au 07"
         }
       },
       {
-        "key": "hvl_collection_date",
+        "key": "cd4_collection_date",
         "type": "date_picker",
-        "hint": "Tarehe ya kuchukua sampuli ya damu kwa ajili ya kupima wingi wa virusi mwilini",
-        "openmrs_entity_id": "hvl_collection_date",
+        "hint": "Tarehe ya kuchukua sampuli ya CD4",
+        "openmrs_entity_id": "cd4_collection_date",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "min_date": "today-5y",
         "max_date": "today",
         "v_required": {
           "value": true,
-          "err": "Tafadhari ingiza Tarehe ya kuchukua sampuli ya damu kwa ajili ya kupima wingi wa virusi mwilini"
+          "err": "Tafadhari ingiza tarehe ya kuchukua sampuli ya CD4"
         }
       },
       {
-        "key": "hvl_collection_time",
+        "key": "cd4_collection_time",
         "type": "time_picker",
-        "hint": "Muda wakati wa kuchukua sampuli ya damu kwa ajili ya kupima wingi wa virusi mwilini",
-        "openmrs_entity_id": "hvl_collection_time",
+        "hint": "Muda ya kuchukua sampuli ya CD4",
+        "openmrs_entity_id": "cd4_collection_time",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "v_required": {
           "value": true,
-          "err": "Tafadhari ingiza Muda wakati wa kuchukua sampuli ya damu kwa ajili ya kupima wingi wa virusi mwilini"
+          "err": "Tafadhari ingiza muda ya kuchukua sampuli ya CD4"
         }
       },
       {
-        "key": "hvl_sample_id",
+        "key": "cd4_sample_id",
         "type": "edit_text",
-        "hint": "Namba ya Utambulisho ya Sampuli ya HVL",
+        "hint": "Namba ya utambulisho ya sampuli ya CD4",
         "edit_type": "number",
-        "openmrs_entity_id": "hvl_sample_id",
+        "openmrs_entity_id": "cd4_sample_id",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "v_required": {
           "value": true,
-          "err": "Tafadhari ingiza Namba ya Utambulisho ya Sampuli ya HVL"
+          "err": "Tafadhari ingiza namba ya utambulisho ya sampuli ya CD4"
         }
       }
     ]

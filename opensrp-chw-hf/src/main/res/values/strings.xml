@@ -144,5 +144,19 @@
     <string name="record_child_followup">Record The Child\'s followup</string>
     <string name="saved_child_followup">Child\'s followup details saved successfully</string>
     <string name="pnc_visit_in_progress">PNC Visit In Progress</string>
+    <string name="hiv_testing_outcome">HIV Testing Outcome</string>
+    <string name="complete_pnc_visits">Complete PNC Visits</string>
+    <string name="complete_pnc_message">Client has completed PNC visits and can be removed from PNC register</string>
+    <string name="pmtct_counselling_title">Counselling</string>
+    <string name="pmtct_baseline_investigation_title">Baseline Investigation</string>
+    <string name="cd4_sample_collection">CD4 Sample Collection</string>
+    <string name="hvl_sample_collection">HVL Sample Collection</string>
+    <string name="arv_prescription_title">ARV Prescription</string>
+    <string name="tb_screening_title">TB Screening</string>
+    <string name="pmtct_followup_status">Followup Status:</string>
+    <string name="continuing_with_services">Continuing with Services</string>
+    <string name="transfer_out">Transfer Out</string>
+    <string name="deceased">Deceased</string>
+    <string name="pmtct_followup_status_title">Followup Status</string>
 
 </resources>

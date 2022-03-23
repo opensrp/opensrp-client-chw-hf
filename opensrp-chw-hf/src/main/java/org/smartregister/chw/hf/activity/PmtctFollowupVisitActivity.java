@@ -3,6 +3,7 @@ package org.smartregister.chw.hf.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 
 import com.vijay.jsonwizard.constants.JsonFormConstants;
@@ -10,9 +11,11 @@ import com.vijay.jsonwizard.domain.Form;
 
 import org.json.JSONObject;
 import org.smartregister.chw.core.task.RunnableTask;
+import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.interactor.PmtctFollowupVisitInteractor;
 import org.smartregister.chw.hf.schedulers.HfScheduleTaskExecutor;
 import org.smartregister.chw.pmtct.activity.BasePmtctHomeVisitActivity;
+import org.smartregister.chw.pmtct.model.BasePmtctHomeVisitAction;
 import org.smartregister.chw.pmtct.presenter.BasePmtctHomeVisitPresenter;
 import org.smartregister.chw.pmtct.util.Constants;
 import org.smartregister.family.util.JsonFormUtils;
@@ -20,20 +23,22 @@ import org.smartregister.family.util.Utils;
 import org.smartregister.util.LangUtils;
 
 import java.util.Date;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import timber.log.Timber;
 
 public class PmtctFollowupVisitActivity extends BasePmtctHomeVisitActivity {
     public static void startPmtctFollowUpActivity(Activity activity, String baseEntityID, Boolean editMode) {
         Intent intent = new Intent(activity, PmtctFollowupVisitActivity.class);
-        intent.putExtra(Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID,baseEntityID );
+        intent.putExtra(Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID, baseEntityID);
         intent.putExtra(Constants.ACTIVITY_PAYLOAD.EDIT_MODE, editMode);
         activity.startActivity(intent);
     }
 
     @Override
     protected void registerPresenter() {
-        presenter = new BasePmtctHomeVisitPresenter(memberObject,this,new PmtctFollowupVisitInteractor());
+        presenter = new BasePmtctHomeVisitPresenter(memberObject, this, new PmtctFollowupVisitInteractor());
     }
 
     @Override
@@ -76,5 +81,30 @@ public class PmtctFollowupVisitActivity extends BasePmtctHomeVisitActivity {
         } catch (Exception e) {
             Timber.e(e);
         }
+    }
+
+    @Override
+    public void initializeActions(LinkedHashMap<String, BasePmtctHomeVisitAction> map) {
+        actionList.clear();
+
+        //Necessary evil to rearrange the actions according to a specific arrangement
+        if (map.containsKey(getString(R.string.pmtct_followup_status_title))) {
+            BasePmtctHomeVisitAction followupStatusVisitAction = map.get(getString(R.string.pmtct_followup_status_title));
+            actionList.put(getString(R.string.pmtct_followup_status_title), followupStatusVisitAction);
+        }
+        //====================End of Necessary evil ====================================
+
+        for (Map.Entry<String, BasePmtctHomeVisitAction> entry : map.entrySet()) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                actionList.putIfAbsent(entry.getKey(), entry.getValue());
+            } else {
+                actionList.put(entry.getKey(), entry.getValue());
+            }
+        }
+
+        if (mAdapter != null) {
+            mAdapter.notifyDataSetChanged();
+        }
+        displayProgressBar(false);
     }
 }
