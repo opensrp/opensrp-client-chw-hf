@@ -149,6 +149,36 @@
         }
       },
       {
+        "key": "notify_client_has_fever",
+        "type": "toaster_notes",
+        "text": "Conduct relevant laboratory tests to elicit the cause of fever and manage according to standard guidelines ",
+        "openmrs_entity_id": "notify_client_has_fever",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:temperature": {
+            "type": "numeric",
+            "ex": "greaterThanEqualTo(.,\"39\")"
+          }
+        }
+      },
+      {
+        "key": "notify_client_has_hypothermia",
+        "type": "toaster_notes",
+        "text": "Manage the hypothermia according to standard guidelines",
+        "openmrs_entity_id": "notify_client_has_hypothermia",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:temperature": {
+            "type": "numeric",
+            "ex": "lessThan(.,\"37\")"
+          }
+        }
+      },
+      {
         "key": "head_circumference",
         "type": "edit_text",
         "hint": "Head Circumference (CM)",
@@ -189,10 +219,16 @@
         "openmrs_entity_parent": "",
         "options": [
           {
-            "key": "ebf_non_bf",
-            "text": "EBF/Non-BF",
+            "key": "ebf",
+            "text": "EBF",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "ebf_non_bf"
+            "openmrs_entity_id": "ebf"
+          },
+          {
+            "key": "non_bf",
+            "text": "Non-BF",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "non_bf"
           },
           {
             "key": "suckling_reflexes",

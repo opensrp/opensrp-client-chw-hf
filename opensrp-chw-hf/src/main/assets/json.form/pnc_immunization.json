@@ -86,7 +86,7 @@
       {
         "key": "hepatitis_b_vaccination",
         "type": "native_radio",
-        "label": "Was Hepatitis B given?",
+        "label": "Was Hepatitis B vaccination given?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "hepatitis_b_vaccination",
         "openmrs_entity_parent": "",
