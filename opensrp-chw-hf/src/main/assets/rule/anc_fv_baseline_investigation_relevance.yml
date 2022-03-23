@@ -42,7 +42,7 @@ condition: "(step1_hepatitis.contains('positive') && global_gestational_age < 28
 actions:
   - "isRelevant = true"
 ---
-name: step1_hiv
+name: step1_hiv_qn
 description: show the hiv question if the person isn't known positive
 priority: 1
 condition: "!global_known_positive"

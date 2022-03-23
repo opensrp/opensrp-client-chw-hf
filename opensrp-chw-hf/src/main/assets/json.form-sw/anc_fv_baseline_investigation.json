@@ -821,10 +821,24 @@
       },
       {
         "key": "hiv",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hiv",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_baseline_investigation_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "hiv_qn",
         "type": "native_radio",
         "label": "Matokeo ya kipimo cha VVU",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "hiv",
+        "openmrs_entity_id": "hiv_qn",
         "openmrs_entity_parent": "",
         "options": [
           {
@@ -891,7 +905,7 @@
           "err": "Tafadhali chagua sababu"
         },
         "relevance": {
-          "step1:hiv": {
+          "step1:hiv_qn": {
             "type": "string",
             "ex": "equalTo(., \"test_not_conducted\")"
           }
@@ -925,7 +939,7 @@
         "openmrs_entity_parent": "",
         "toaster_type": "problem",
         "relevance": {
-          "step1:hiv": {
+          "step1:hiv_qn": {
             "type": "string",
             "ex": "equalTo(.,\"positive\")"
           }
@@ -940,7 +954,7 @@
         "openmrs_entity_parent": "",
         "toaster_type": "problem",
         "relevance": {
-          "step1:hiv": {
+          "step1:hiv_qn": {
             "type": "string",
             "ex": "equalTo(.,\"positive\")"
           }
@@ -1189,6 +1203,27 @@
           "step1:hiv": {
             "type": "string",
             "ex": "notEqualTo(., \"test_not_conducted\")"
+          }
+        }
+      },
+      {
+        "key": "hiv_test_number",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hiv_test_number",
+        "type": "hidden"
+      },
+      {
+        "key": "hiv_test_at_32",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hiv_test_at_32",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_baseline_investigation_calculation.yml"
+            }
           }
         }
       }
