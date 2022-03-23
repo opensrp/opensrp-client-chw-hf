@@ -15,6 +15,12 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.widget.Toolbar;
+import androidx.webkit.WebViewAssetLoader;
+import androidx.webkit.WebViewClientCompat;
+
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.gson.Gson;
 
@@ -28,11 +34,6 @@ import org.smartregister.view.customcontrols.CustomFontTextView;
 
 import java.util.Date;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.Toolbar;
-import androidx.webkit.WebViewAssetLoader;
-import androidx.webkit.WebViewClientCompat;
 import timber.log.Timber;
 
 public class PmtctReportsViewActivity extends SecuredActivity {
@@ -151,26 +152,32 @@ public class PmtctReportsViewActivity extends SecuredActivity {
         public String getData() {
             JSONObject jsonObject = new JSONObject();
             Date now = new Date();
-            int A3 = PmtctReportDao.getPmtctReportPerIndicatorCode("B3a",now) +
-                        PmtctReportDao.getPmtctReportPerIndicatorCode("B3b",now) +
-                        PmtctReportDao.getPmtctReportPerIndicatorCode("B3c",now) +
-                        PmtctReportDao.getPmtctReportPerIndicatorCode("B3d",now);
-            int F3 = A3 + PmtctReportDao.getPmtctReportPerIndicatorCode("D3",now) - PmtctReportDao.getPmtctReportPerIndicatorCode("E3",now);
-            int K3 = (PmtctReportDao.getPmtctReportPerIndicatorCode("G3",now) / (F3 - PmtctReportDao.getPmtctReportPerIndicatorCode("J3",now) + 1)) * 100;
+            int A3 = PmtctReportDao.getPmtctReportPerIndicatorCode("B3a", now) +
+                    PmtctReportDao.getPmtctReportPerIndicatorCode("B3b", now) +
+                    PmtctReportDao.getPmtctReportPerIndicatorCode("B3c", now) +
+                    PmtctReportDao.getPmtctReportPerIndicatorCode("B3d", now);
+            int F3 = A3 + PmtctReportDao.getPmtctReportPerIndicatorCode("D3", now) - PmtctReportDao.getPmtctReportPerIndicatorCode("E3", now);
+            int J3 = PmtctReportDao.getPmtctReportPerIndicatorCode("J3", now);
+
+            float K3 = 0;
+            if (F3 - J3 > 0)
+                K3 = ((PmtctReportDao.getPmtctReportPerIndicatorCode("G3", now) * 1f) / (F3 - J3)) * 100;
+
+
             try {
-                jsonObject.put("B3a", PmtctReportDao.getPmtctReportPerIndicatorCode("B3a",now));
-                jsonObject.put("B3b", PmtctReportDao.getPmtctReportPerIndicatorCode("B3b",now));
-                jsonObject.put("B3c", PmtctReportDao.getPmtctReportPerIndicatorCode("B3c",now));
-                jsonObject.put("B3d", PmtctReportDao.getPmtctReportPerIndicatorCode("B3d",now));
-                jsonObject.put("C3a", PmtctReportDao.getPmtctReportPerIndicatorCode("C3a",now));
-                jsonObject.put("C3b", PmtctReportDao.getPmtctReportPerIndicatorCode("C3b",now));
-                jsonObject.put("D3", PmtctReportDao.getPmtctReportPerIndicatorCode("D3",now));
-                jsonObject.put("E3", PmtctReportDao.getPmtctReportPerIndicatorCode("E3",now));
+                jsonObject.put("B3a", PmtctReportDao.getPmtctReportPerIndicatorCode("B3a", now));
+                jsonObject.put("B3b", PmtctReportDao.getPmtctReportPerIndicatorCode("B3b", now));
+                jsonObject.put("B3c", PmtctReportDao.getPmtctReportPerIndicatorCode("B3c", now));
+                jsonObject.put("B3d", PmtctReportDao.getPmtctReportPerIndicatorCode("B3d", now));
+                jsonObject.put("C3a", PmtctReportDao.getPmtctReportPerIndicatorCode("C3a", now));
+                jsonObject.put("C3b", PmtctReportDao.getPmtctReportPerIndicatorCode("C3b", now));
+                jsonObject.put("D3", PmtctReportDao.getPmtctReportPerIndicatorCode("D3", now));
+                jsonObject.put("E3", PmtctReportDao.getPmtctReportPerIndicatorCode("E3", now));
                 jsonObject.put("F3", F3);
-                jsonObject.put("G3", PmtctReportDao.getPmtctReportPerIndicatorCode("G3",now));
-                jsonObject.put("H3", PmtctReportDao.getPmtctReportPerIndicatorCode("H3",now));
-                jsonObject.put("I3", PmtctReportDao.getPmtctReportPerIndicatorCode("I3",now));
-                jsonObject.put("J3", PmtctReportDao.getPmtctReportPerIndicatorCode("J3",now));
+                jsonObject.put("G3", PmtctReportDao.getPmtctReportPerIndicatorCode("G3", now));
+                jsonObject.put("H3", PmtctReportDao.getPmtctReportPerIndicatorCode("H3", now));
+                jsonObject.put("I3", PmtctReportDao.getPmtctReportPerIndicatorCode("I3", now));
+                jsonObject.put("J3", PmtctReportDao.getPmtctReportPerIndicatorCode("J3", now));
                 jsonObject.put("K3", K3);
             } catch (JSONException e) {
                 Timber.e(e);
