@@ -78,7 +78,7 @@
       {
         "key": "iec_given",
         "type": "native_radio",
-        "label": "IEC given",
+        "label": "Were IEC materials given?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "iec_given",
         "openmrs_entity_parent": "",
