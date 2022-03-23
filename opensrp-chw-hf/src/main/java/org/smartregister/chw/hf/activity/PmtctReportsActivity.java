@@ -1,38 +1,21 @@
 package org.smartregister.chw.hf.activity;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Build;
 import android.view.Menu;
 import android.view.View;
-import android.webkit.JavascriptInterface;
-import android.webkit.WebResourceRequest;
-import android.webkit.WebResourceResponse;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
 import android.widget.Toast;
 
 import com.google.android.material.appbar.AppBarLayout;
-import com.google.gson.Gson;
 
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.smartregister.chw.core.job.ChwIndicatorGeneratingJob;
 import org.smartregister.chw.hf.R;
-import org.smartregister.chw.hf.fragment.PmtctReportsFragment;
 import org.smartregister.view.activity.SecuredActivity;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.webkit.WebViewAssetLoader;
-import androidx.webkit.WebViewClientCompat;
-import timber.log.Timber;
 
 public class PmtctReportsActivity extends SecuredActivity  implements View.OnClickListener{
     protected ConstraintLayout threeMonthsReport;
