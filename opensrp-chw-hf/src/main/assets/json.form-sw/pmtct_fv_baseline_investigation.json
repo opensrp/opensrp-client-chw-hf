@@ -1,0 +1,447 @@
+{
+  "count": "1",
+  "encounter_type": "PMTCT baseline investigation",
+  "entity_id": "",
+  "global": {},
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "step1": {
+    "title": "Baseline Investigation",
+    "fields": [
+      {
+        "key": "liver_function_test_conducted",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "liver_function_test_conducted",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_fv_baseline_investigation_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "liver_function_test_conducted_question",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "liver_function_test_conducted_question",
+        "type": "native_radio",
+        "label": "Je, Mteja amefanyiwa kipimo cha Ini?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "test_conducted",
+            "text": "Ndio, Amefanyiwa kipimo",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "test_conducted"
+          },
+          {
+            "key": "test_not_conducted",
+            "text": "Hapana",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "test_not_conducted"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhari chagua mojawapo"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_fv_baseline_investigation_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "reason_for_not_conducting_liver_function_test",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_conducting_liver_function_test",
+        "type": "spinner",
+        "hint": "Sababu za kutomfanyia Mteja kipimo cha Ini",
+        "values": [
+          "Vitendanishi vimekwisha",
+          "Mteja alikuwa kwenye hali yenye kuhitaji udharura",
+          "mteja amekaa kufanyiwa kipimo hiki",
+          "Bado tunaendelea kushauri Mteja",
+          "Nyingine (Bainisha)"
+        ],
+        "keys": [
+          "test_kits_out_of_stock",
+          "client_was_in_an_emergency_situation",
+          "client_refused_to_be_tested",
+          "still_counselling_the_client",
+          "other"
+        ],
+        "openmrs_choice_ids": {
+          "test_kits_out_of_stock": "test_kits_out_of_stock",
+          "client_was_in_an_emergency_situation": "client_was_in_an_emergency_situation",
+          "client_refused_to_be_tested": "client_refused_to_be_tested",
+          "still_counselling_the_client": "still_counselling_the_client",
+          "Other": "other"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Chagua sababu"
+        },
+        "relevance": {
+          "step1:liver_function_test_conducted": {
+            "type": "string",
+            "ex": "equalTo(., \"test_not_conducted\")"
+          }
+        }
+      },
+      {
+        "key": "other_reason_for_not_conducting_liver_function_test",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reason_for_not_conducting_liver_function_test",
+        "type": "edit_text",
+        "hint": "Bainisha sababu za kutomfanyia mteja kipimo cha Ini",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhari jaza sababu"
+        },
+        "relevance": {
+          "step1:reason_for_not_conducting_liver_function_test": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
+          }
+        }
+      },
+      {
+        "key": "receive_liver_function_test_results",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "receive_liver_function_test_results",
+        "type": "native_radio",
+        "label": "Je, umepokea majibu ya Mteja ya kipimo cha Ini?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndiyo",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhari chagua mojawapo"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_fv_baseline_investigation_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "liver_function_test_results",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "liver_function_test_results",
+        "type": "native_radio",
+        "label": "Chagua majibu ya kipimo cha Ini ya Mteja",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "elevated_liver_enzymes",
+            "text": "Elevated Liver enzymes",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "elevated_liver_enzymes"
+          },
+          {
+            "key": "normal",
+            "text": "Ini lipo katika hali ya kawaida",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "normal"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhari chagua mojawapo"
+        },
+        "relevance": {
+          "step1:receive_liver_function_test_results": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_liver_function_test",
+        "type": "toaster_notes",
+        "text": "Mpe rufaa kwenda kwa Daktari",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:liver_function_test_results": {
+            "type": "string",
+            "ex": "equalTo(., \"elevated_liver_enzymes\")"
+          }
+        }
+      },
+      {
+        "key": "renal_function_test_conducted",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "renal_function_test_conducted",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_fv_baseline_investigation_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "renal_function_test_conducted_question",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "renal_function_test_conducted_question",
+        "type": "native_radio",
+        "label": "Je, Mteja amefanyiwa kipimo cha Figo?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "test_conducted",
+            "text": "Kipimo cha Figo Kimefanyika",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "test_conducted"
+          },
+          {
+            "key": "test_not_conducted",
+            "text": "Kipimo hakujafanyika",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "test_not_conducted"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhari chagua mojawapo"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_fv_baseline_investigation_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "reason_for_not_conducting_renal_function_test",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_conducting_renal_function_test",
+        "type": "spinner",
+        "hint": "Sababu ya kutomfanyia Mteja kipimo cha Figo",
+        "values": [
+          "Vitendanishi vimeisha",
+          "Mteja alikuwa katika haili ya udharura",
+          "Mteja amekaa kipimo hiki",
+          "Bado tunaendelea kumshauri",
+          "Nyingine (Bainisha)"
+        ],
+        "keys": [
+          "test_kits_out_of_stock",
+          "client_was_in_an_emergency_situation",
+          "client_refused_to_be_tested",
+          "still_counselling_the_client",
+          "other"
+        ],
+        "openmrs_choice_ids": {
+          "test_kits_out_of_stock": "test_kits_out_of_stock",
+          "client_was_in_an_emergency_situation": "client_was_in_an_emergency_situation",
+          "client_refused_to_be_tested": "client_refused_to_be_tested",
+          "still_counselling_the_client": "still_counselling_the_client",
+          "Other": "other"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhari chagua sababu ya kutomfanyia mteja kipimo cha Figo"
+        },
+        "relevance": {
+          "step1:renal_function_test_conducted": {
+            "type": "string",
+            "ex": "equalTo(., \"test_not_conducted\")"
+          }
+        }
+      },
+      {
+        "key": "other_reason_for_not_conducting_renal_function_test",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reason_for_not_conducting_renal_function_test",
+        "type": "edit_text",
+        "hint": "Bainisha sababu nyingine",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhari jaza sababu"
+        },
+        "relevance": {
+          "step1:reason_for_not_conducting_renal_function_test": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
+          }
+        }
+      },
+      {
+        "key": "receive_renal_function_test_results",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "receive_renal_function_test_results",
+        "type": "native_radio",
+        "label": "Je, umepokea majibu ya Mteja ya kipimo cha Figo?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndiyo",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhari chagua mojawapo"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_fv_baseline_investigation_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "renal_function_test_results",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "renal_function_test_results",
+        "type": "native_radio",
+        "label": "Chagua majibu ya kipimo cha Figo",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "elevated_serum_creatinine",
+            "text": "Elevated Serum Creatinine",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "elevated_serum_creatinine"
+          },
+          {
+            "key": "normal",
+            "text": "Figo lipo katika hali ya kawaida",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "normal"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhari chagua mojawapo"
+        },
+        "relevance": {
+          "step1:receive_renal_function_test_results": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_renal_function_test_results",
+        "type": "toaster_notes",
+        "text": "Mpe rufaa kwenda kwa daktari",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:renal_function_test_results": {
+            "type": "string",
+            "ex": "equalTo(., \"elevated_serum_creatinine\")"
+          }
+        }
+      }
+    ]
+  }
+}

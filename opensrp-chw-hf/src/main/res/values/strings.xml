@@ -147,6 +147,12 @@
     <string name="hiv_testing_outcome">HIV Testing Outcome</string>
     <string name="complete_pnc_visits">Complete PNC Visits</string>
     <string name="complete_pnc_message">Client has completed PNC visits and can be removed from PNC register</string>
+    <string name="pmtct_counselling_title">Counselling</string>
+    <string name="pmtct_baseline_investigation_title">Baseline Investigation</string>
+    <string name="cd4_sample_collection">CD4 Sample Collection</string>
+    <string name="hvl_sample_collection">HVL Sample Collection</string>
+    <string name="arv_prescription_title">ARV Prescription</string>
+    <string name="tb_screening_title">TB Screening</string>
     <string name="view_reports_for_anc_women">View Reports for ANC Women</string>
     <string name="anc_reports_title">ANC REPORTS</string>
     <string name="pmtct_reports_subtitle"><![CDATA[View Reports for PMTCT COHORTS (Women & Children)]]></string>

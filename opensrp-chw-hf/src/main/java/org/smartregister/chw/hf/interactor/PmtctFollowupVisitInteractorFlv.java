@@ -106,16 +106,16 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
             Timber.e(e);
         }
 
-        BasePmtctHomeVisitAction Counselling = new BasePmtctHomeVisitAction.Builder(context, "Counselling")
+        BasePmtctHomeVisitAction Counselling = new BasePmtctHomeVisitAction.Builder(context, context.getString(R.string.pmtct_counselling_title))
                 .withOptional(false)
                 .withDetails(details)
                 .withFormName(Constants.JsonForm.getPmtctCounselling())
                 .withJsonPayload(counsellingForm.toString())
                 .withHelper(new PmtctCounsellingAction(memberObject))
                 .build();
-        actionList.put("Counselling", Counselling);
+        actionList.put(context.getString(R.string.pmtct_counselling_title), Counselling);
 
-        BasePmtctHomeVisitAction BaselineInvestigation = new BasePmtctHomeVisitAction.Builder(context, "Baseline Investigation")
+        BasePmtctHomeVisitAction BaselineInvestigation = new BasePmtctHomeVisitAction.Builder(context, context.getString(R.string.pmtct_baseline_investigation_title))
                 .withOptional(true)
                 .withDetails(details)
                 .withFormName(Constants.JsonForm.getPmtctBaselineInvestigation())
@@ -124,9 +124,9 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
                 .build();
 
         if (HfPmtctDao.isEligibleForBaselineInvestigation(memberObject.getBaseEntityId()) || HfPmtctDao.isEligibleForBaselineInvestigationOnFollowupVisit(memberObject.getBaseEntityId()))
-            actionList.put("Baseline Investigation", BaselineInvestigation);
+            actionList.put(context.getString(R.string.pmtct_baseline_investigation_title), BaselineInvestigation);
 
-        BasePmtctHomeVisitAction HvlSampleCollection = new BasePmtctHomeVisitAction.Builder(context, "HVL Sample Collection")
+        BasePmtctHomeVisitAction HvlSampleCollection = new BasePmtctHomeVisitAction.Builder(context, context.getString(R.string.hvl_sample_collection))
                 .withOptional(true)
                 .withDetails(details)
                 .withFormName(Constants.JsonForm.getHvlClinicianDetailsForm())
@@ -134,9 +134,9 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
                 .build();
 
         if (HfPmtctDao.isEligibleForHlvTest(memberObject.getBaseEntityId()))
-            actionList.put("HVL Sample Collection", HvlSampleCollection);
+            actionList.put(context.getString(R.string.hvl_sample_collection), HvlSampleCollection);
 
-        BasePmtctHomeVisitAction Cd4SampleCollection = new BasePmtctHomeVisitAction.Builder(context, "CD4 Sample Collection")
+        BasePmtctHomeVisitAction Cd4SampleCollection = new BasePmtctHomeVisitAction.Builder(context, context.getString(R.string.cd4_sample_collection))
                 .withOptional(true)
                 .withDetails(details)
                 .withFormName(Constants.JsonForm.getPmtctCd4SampleCollection())
@@ -144,7 +144,7 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
                 .build();
 
         if (HfPmtctDao.isEligibleForCD4Retest(memberObject.getBaseEntityId()) || HfPmtctDao.isEligibleForCD4Test(memberObject.getBaseEntityId()))
-            actionList.put("CD4 Sample Collection", Cd4SampleCollection);
+            actionList.put(context.getString(R.string.cd4_sample_collection), Cd4SampleCollection);
 
         BasePmtctHomeVisitAction ClinicalDiseaseStaging = new BasePmtctHomeVisitAction.Builder(context, "Clinical Staging of HIV")
                 .withOptional(true)
@@ -154,22 +154,22 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
                 .build();
         actionList.put("Clinical Staging of HIV", ClinicalDiseaseStaging);
 
-        BasePmtctHomeVisitAction TbScreening = new BasePmtctHomeVisitAction.Builder(context, "TB Screening")
+        BasePmtctHomeVisitAction TbScreening = new BasePmtctHomeVisitAction.Builder(context, context.getString(R.string.tb_screening_title))
                 .withOptional(true)
                 .withDetails(details)
                 .withFormName(Constants.JsonForm.getPmtctTbScreening())
                 .withJsonPayload(tbScreeningForm.toString())
                 .withHelper(new PmtctTbScreeningAction(memberObject))
                 .build();
-        actionList.put("TB Screening", TbScreening);
+        actionList.put(context.getString(R.string.tb_screening_title), TbScreening);
 
-        BasePmtctHomeVisitAction ArvPrescription = new BasePmtctHomeVisitAction.Builder(context, "ARV Prescription")
+        BasePmtctHomeVisitAction ArvPrescription = new BasePmtctHomeVisitAction.Builder(context, context.getString(R.string.arv_prescription_title))
                 .withOptional(true)
                 .withDetails(details)
                 .withFormName(Constants.JsonForm.getPmtctArvLine())
                 .withHelper(new PmtctArvLineAction(memberObject))
                 .build();
-        actionList.put("ARV Prescription", ArvPrescription);
+        actionList.put(context.getString(R.string.arv_prescription_title), ArvPrescription);
     }
 
     private static class HvlSampleCollectionAction extends PmtctVisitAction {
