@@ -296,4 +296,43 @@ public class HeiDao extends AbstractDao {
 
         return (res != null && res.get(0) != null) ? res.get(0) : null;
     }
+
+    public static Date getHeiRegisterDate(String baseEntityID) {
+        //basically returns back the date of birth of the child
+        String sql = "select dob from ec_hei where base_entity_id = '" + baseEntityID + "'";
+
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "dob");
+
+        List<String> res = readData(sql, dataMap);
+        if (res == null || res.size() != 1)
+            return null;
+        Date date = null;
+        try {
+            date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(res.get(0));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return date;
+    }
+
+
+    public static Date getHeiFollowUpVisitDate(String baseEntityID) {
+        //for latest followup visit dates
+        String sql = "SELECT followup_visit_date FROM ec_hei_followup WHERE entity_id = '" + baseEntityID + "'"
+                + "ORDER BY visit_number DESC "
+                + "LIMIT 1";
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "followup_visit_date");
+
+        List<String> res = readData(sql, dataMap);
+        if (res == null || res.size() != 1)
+            return null;
+        Date date = null;
+        try {
+            date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(res.get(0));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return date;
+    }
 }
