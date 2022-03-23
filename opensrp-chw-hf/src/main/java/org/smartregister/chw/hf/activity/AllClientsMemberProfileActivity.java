@@ -61,6 +61,7 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
             menu.findItem(R.id.action_pregnancy_confirmation).setVisible(true);
         }
         menu.findItem(R.id.action_anc_registration).setVisible(false);
+        menu.findItem(R.id.action_pregnancy_out_come).setVisible(false);
         menu.findItem(R.id.action_sick_child_follow_up).setVisible(false);
         menu.findItem(R.id.action_malaria_diagnosis).setVisible(false);
         return true;
@@ -105,6 +106,11 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
     protected void startAncRegister() {
         AncRegisterActivity.startAncRegistrationActivity(AllClientsMemberProfileActivity.this, baseEntityId, PhoneNumber,
                 CoreConstants.JSON_FORM.getAncRegistration(), null, familyBaseEntityId, familyName);
+    }
+
+    @Override
+    protected void startPncRegister() {
+        //TODO implement pnc register
     }
 
     @Override
