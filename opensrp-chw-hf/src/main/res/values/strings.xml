@@ -153,6 +153,11 @@
     <string name="hvl_sample_collection">HVL Sample Collection</string>
     <string name="arv_prescription_title">ARV Prescription</string>
     <string name="tb_screening_title">TB Screening</string>
+    <string name="pmtct_followup_status">Followup Status:</string>
+    <string name="continuing_with_services">Continuing with Services</string>
+    <string name="transfer_out">Transfer Out</string>
+    <string name="deceased">Deceased</string>
+    <string name="pmtct_followup_status_title">Followup Status</string>
     <string name="view_reports_for_anc_women">View Reports for ANC Women</string>
     <string name="anc_reports_title">ANC REPORTS</string>
     <string name="pmtct_reports_subtitle"><![CDATA[View Reports for PMTCT COHORTS (Women & Children)]]></string>
