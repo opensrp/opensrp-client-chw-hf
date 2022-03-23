@@ -1645,7 +1645,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')
                         AND hvl_sample_id IS NOT NULL
                         AND CAST(hvl_result as INT) <= 50
-                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-3 months') =
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-12 months') =
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "I12"
