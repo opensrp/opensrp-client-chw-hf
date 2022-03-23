@@ -234,9 +234,14 @@
 </body>
 <script type="text/javascript">
     function onLoad() {
-        const dataCell = document.getElementById(' B3a');
-        dataCell.innerHTML = 'hello';
-        console.log('something');
+        const data = JSON.parse(Android.getData());
+        const keys = Object.keys(data.nameValuePairs)
+        keys.forEach(key => {
+            const element = document.getElementById(key)
+            if(element !== null && element !== undefined){
+                document.getElementById(key).innerHTML = data.nameValuePairs[key]
+            }
+        })
     }
 </script>
 

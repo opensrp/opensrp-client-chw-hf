@@ -164,6 +164,18 @@ public class PmtctReportsViewActivity extends SecuredActivity {
                 K3 = ((PmtctReportDao.getPmtctReportPerIndicatorCode("G3", now) * 1f) / (F3 - J3)) * 100;
 
 
+            int A12 = PmtctReportDao.getPmtctReportPerIndicatorCode("A12", now);
+            int B12 = PmtctReportDao.getPmtctReportPerIndicatorCode("B12", now);
+            int C12 = PmtctReportDao.getPmtctReportPerIndicatorCode("C12", now);
+            int D12 = A12 + B12 - C12;
+            int E12 = PmtctReportDao.getPmtctReportPerIndicatorCode("E12", now);
+            int J12 = PmtctReportDao.getPmtctReportPerIndicatorCode("J12", now);
+
+            float K12 = 0;
+            if (D12 - J12 > 0)
+                K12 = (E12 * 1f) / (D12 - J12) *100;
+
+
             try {
                 jsonObject.put("B3a", PmtctReportDao.getPmtctReportPerIndicatorCode("B3a", now));
                 jsonObject.put("B3b", PmtctReportDao.getPmtctReportPerIndicatorCode("B3b", now));
@@ -179,6 +191,18 @@ public class PmtctReportsViewActivity extends SecuredActivity {
                 jsonObject.put("I3", PmtctReportDao.getPmtctReportPerIndicatorCode("I3", now));
                 jsonObject.put("J3", PmtctReportDao.getPmtctReportPerIndicatorCode("J3", now));
                 jsonObject.put("K3", K3);
+
+
+                jsonObject.put("A12", A12);
+                jsonObject.put("B12", B12);
+                jsonObject.put("C12", C12);
+                jsonObject.put("C12", D12);
+                jsonObject.put("E12", E12);
+                jsonObject.put("F12", PmtctReportDao.getPmtctReportPerIndicatorCode("F12", now));
+                jsonObject.put("G12", PmtctReportDao.getPmtctReportPerIndicatorCode("G12", now));
+                jsonObject.put("I12", PmtctReportDao.getPmtctReportPerIndicatorCode("I12", now));
+                jsonObject.put("J12", J12);
+                jsonObject.put("K12", K12);
             } catch (JSONException e) {
                 Timber.e(e);
             }
