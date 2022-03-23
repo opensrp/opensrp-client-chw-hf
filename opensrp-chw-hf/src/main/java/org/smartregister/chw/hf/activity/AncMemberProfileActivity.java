@@ -139,7 +139,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        menu.findItem(R.id.anc_danger_signs_outcome).setVisible(true);
+        menu.findItem(R.id.anc_danger_signs_outcome).setVisible(false);
         menu.findItem(R.id.action_anc_registration).setVisible(false);
         menu.findItem(R.id.action_remove_member).setVisible(false);
         menu.findItem(R.id.action_pregnancy_out_come).setVisible(!HfAncDao.isClientClosed(baseEntityID));
