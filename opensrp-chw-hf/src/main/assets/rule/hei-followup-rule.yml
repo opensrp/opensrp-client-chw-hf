@@ -1,0 +1,7 @@
+---
+name: schedule_every_month
+description: gets hei visit status
+priority: 1
+condition: "true"
+actions:
+  - "heiFollowupRule.updateDueDates()"
