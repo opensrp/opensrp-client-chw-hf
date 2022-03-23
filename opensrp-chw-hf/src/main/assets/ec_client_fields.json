@@ -41,6 +41,14 @@
             "field": "obs.fieldCode",
             "concept": "known_on_art"
           }
+        },
+        {
+          "column_name": "is_transfer_in_client",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "is_transfer_in_client"
+          }
         }
       ]
     },
@@ -59,6 +67,14 @@
           "type": "Event",
           "json_mapping": {
             "field": "formSubmissionId"
+          }
+        },
+        {
+          "column_name": "followup_status",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "followup_status"
           }
         },
         {

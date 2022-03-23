@@ -90,6 +90,52 @@
         "value": "yes"
       },
       {
+        "key": "is_transfer_in_client",
+        "type": "native_radio",
+        "label": "Is the client a Transfer-In (TI) Client?",
+        "openmrs_entity_id": "is_transfer_in_client",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_id": "yes",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_id": "no",
+            "openmrs_entity": "concept"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please answer this question"
+        }
+      },
+      {
+        "key": "pmtct_register_date_from_originating_facility",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "pmtct_register_date_from_originating_facility",
+        "type": "date_picker",
+        "hint": "Date of PMTCT Registration at the originating health facility",
+        "expanded": false,
+        "max_date": "today",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the date of PMTCT Registration at the originating health facility"
+        },
+        "relevance": {
+          "step1:is_transfer_in_client": {
+            "type": "string",
+            "ex": "equalTo(.,\"yes\")"
+          }
+        }
+      },
+      {
         "key": "test_results",
         "type": "hidden",
         "openmrs_entity_id": "test_results",
