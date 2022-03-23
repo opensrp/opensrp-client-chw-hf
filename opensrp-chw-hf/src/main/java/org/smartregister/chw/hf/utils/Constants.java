@@ -104,6 +104,7 @@ public class Constants extends CoreConstants {
         private static final String PNC_IMMUNIZATION = "pnc_immunization";
         private static final String PNC_HIV_TEST_RESULTS = "pnc_hiv_test_results";
         private static final String PNC_NUTRITIONAL_SUPPLEMENT = "pnc_nutritional_supplement";
+        private static final String PMTCT_FOLLOWUP_STATUS = "pmtct_followup_status";
 
         public static String getPncChildGeneralExamination() {
             return PNC_CHILD_GENERAL_EXAMINATION;
@@ -224,6 +225,10 @@ public class Constants extends CoreConstants {
 
         public static String getHivRegistration() {
             return Utils.getLocalForm(HIV_REGISTRATION, locale, assetManager);
+        }
+
+        public static String getPmtctFollowupStatus() {
+            return PMTCT_FOLLOWUP_STATUS;
         }
 
         public static String getAncPregnancyConfirmationForm() {
