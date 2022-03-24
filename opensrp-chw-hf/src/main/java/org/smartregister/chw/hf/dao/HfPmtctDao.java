@@ -381,7 +381,7 @@ public class HfPmtctDao extends CorePmtctDao {
         };
 
         List<MemberObject> res = readData(sql, dataMap);
-        if (res == null || res.size() != 1)
+        if (res == null || res.size() == 0)
             return null;
 
         return res;

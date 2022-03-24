@@ -424,6 +424,13 @@
           },
           {
             "field": "eventType",
+            "field_value": "Mark PMTCT Client As LTF",
+            "creates_case": [
+              "ec_pmtct_followup"
+            ]
+          },
+          {
+            "field": "eventType",
             "field_value": "PMTCT HVL Results",
             "creates_case": [
               "ec_pmtct_hvl_results"
@@ -502,6 +509,13 @@
           {
             "field": "eventType",
             "field_value": "HEI Followup",
+            "creates_case": [
+              "ec_hei_followup"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "Mark HEI Client As LTF",
             "creates_case": [
               "ec_hei_followup"
             ]

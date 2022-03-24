@@ -397,7 +397,7 @@ public class HeiDao extends AbstractDao {
         };
 
         List<MemberObject> res = readData(sql, dataMap);
-        if (res == null || res.size() != 1)
+        if (res == null || res.size() == 0)
             return null;
 
         return res;

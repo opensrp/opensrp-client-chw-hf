@@ -56,6 +56,9 @@ public class MarkPmtctAndHeiLtfIntentService extends IntentService {
                 if (!HfPmtctDao.hasTheClientTransferedOut(pmtctMember.getBaseEntityId()) && pmtctMember.getDod() == null) {
                     Date lastVisitDate = HfPmtctDao.getPmtctFollowUpVisitDate(pmtctMember.getBaseEntityId());
                     Calendar ltfCalendar = Calendar.getInstance();
+                    if (lastVisitDate == null)
+                        lastVisitDate = HfPmtctDao.getPmtctRegisterDate(pmtctMember.getBaseEntityId());
+
                     ltfCalendar.setTimeInMillis(lastVisitDate.getTime());
                     ltfCalendar.add(Calendar.DAY_OF_YEAR, 56);
                     checkIfLtf(ltfCalendar, pmtctMember.getBaseEntityId(), ChwNotificationDao.getSyncLocationId(pmtctMember.getBaseEntityId()), HfPmtctDao.getVisitNumber(pmtctMember.getBaseEntityId()), true);
@@ -71,6 +74,10 @@ public class MarkPmtctAndHeiLtfIntentService extends IntentService {
                     int visitNumber = HeiDao.getVisitNumber(heiMember.getBaseEntityId());
                     Date lastVisitDate = HeiDao.getHeiFollowUpVisitDate(heiMember.getBaseEntityId());
                     Calendar ltfCalendar = Calendar.getInstance();
+
+                    if (lastVisitDate == null)
+                        lastVisitDate = HeiDao.getHeiRegisterDate(heiMember.getBaseEntityId());
+
                     ltfCalendar.setTimeInMillis(lastVisitDate.getTime());
 
                     if (visitNumber == 1)
