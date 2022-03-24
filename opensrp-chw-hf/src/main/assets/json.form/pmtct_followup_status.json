@@ -68,12 +68,6 @@
             "text": "Transfer Out",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "transfer_out"
-          },
-          {
-            "key": "deceased",
-            "text": "Deceased",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "deceased"
           }
         ],
         "v_required": {

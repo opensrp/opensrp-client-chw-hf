@@ -46,8 +46,6 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
             return context.getString(R.string.continuing_with_services);
         } else if (followup_status.equals("transfer_out")) {
             return context.getString(R.string.transfer_out);
-        } else if (followup_status.equals("deceased")) {
-            return context.getString(R.string.deceased);
         }
         return "";
     }
