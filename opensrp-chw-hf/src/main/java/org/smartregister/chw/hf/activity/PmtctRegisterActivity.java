@@ -15,6 +15,7 @@ import org.smartregister.chw.core.custom_views.NavigationMenu;
 import org.smartregister.chw.core.utils.FormUtils;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.fragment.PmtctRegisterFragment;
+import org.smartregister.chw.hf.job.MarkPmtctAndHeiLtfServiceJob;
 import org.smartregister.chw.hf.listener.HfFamilyBottomNavListener;
 import org.smartregister.chw.hf.presenter.PmtctRegisterPresenter;
 import org.smartregister.chw.hf.utils.Constants;
@@ -48,6 +49,7 @@ public class PmtctRegisterActivity extends CorePmtctRegisterActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        MarkPmtctAndHeiLtfServiceJob.scheduleJobImmediately(MarkPmtctAndHeiLtfServiceJob.TAG);
         ctcNumber = getIntent().getStringExtra(CTC_NUMBER);
         super.onCreate(savedInstanceState);
         NavigationMenu.getInstance(this, null, null);

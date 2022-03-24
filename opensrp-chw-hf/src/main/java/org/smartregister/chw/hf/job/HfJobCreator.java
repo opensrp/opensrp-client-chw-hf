@@ -62,6 +62,8 @@ public class HfJobCreator implements JobCreator {
                 return new SyncLocationsByLevelAndTagsServiceJob();
             case ChwIndicatorGeneratingJob.TAG:
                 return new ChwIndicatorGeneratingJob();
+            case MarkPmtctAndHeiLtfServiceJob.TAG:
+                return new MarkPmtctAndHeiLtfServiceJob();
             default:
                 Timber.d("Please create job and specify the right job tag");
                 return null;
