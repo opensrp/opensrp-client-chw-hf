@@ -169,6 +169,9 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
             } else if (itemId == R.id.action_pregnancy_confirmation) {
                 startPregnancyConfirmation(Objects.requireNonNull(getHivMemberObject()));
                 return true;
+            }else if(itemId == R.id.action_pregnancy_out_come){
+                startPregnancyOutcome(Objects.requireNonNull(getHivMemberObject()));
+                return true;
             }
         } catch (JSONException e) {
             Timber.e(e);
@@ -190,6 +193,7 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
         String gender = Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.GENDER, false);
         if (isOfReproductiveAge(commonPersonObject, gender) && gender.equalsIgnoreCase("female") && !AncDao.isANCMember(getHivMemberObject().getBaseEntityId())) {
             menu.findItem(R.id.action_pregnancy_confirmation).setVisible(true);
+            menu.findItem(R.id.action_pregnancy_out_come).setVisible(true);
         }
         return true;
     }
@@ -375,6 +379,12 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
 
         AncRegisterActivity.startAncRegistrationActivity(HivProfileActivity.this, hivMemberObject.getBaseEntityId(), hivMemberObject.getPhoneNumber(),
                 org.smartregister.chw.hf.utils.Constants.JsonForm.getAncPregnancyConfirmation(), null, hivMemberObject.getFamilyBaseEntityId(), hivMemberObject.getFamilyName());
+    }
+
+    protected void startPregnancyOutcome(HivMemberObject hivMemberObject) {
+
+        PncRegisterActivity.startPncRegistrationActivity(HivProfileActivity.this, hivMemberObject.getBaseEntityId(), hivMemberObject.getPhoneNumber(),
+                CoreConstants.JSON_FORM.getPregnancyOutcome(), null, hivMemberObject.getFamilyBaseEntityId(), hivMemberObject.getFamilyName(), null, true);
     }
 
     private boolean isOfReproductiveAge(CommonPersonObjectClient commonPersonObject, String gender) {

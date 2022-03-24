@@ -15,6 +15,7 @@ import com.vijay.jsonwizard.utils.FormUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.smartregister.chw.anc.domain.MemberObject;
 import org.smartregister.chw.anc.domain.Visit;
 import org.smartregister.chw.anc.util.Constants;
 import org.smartregister.chw.core.activity.CoreFamilyProfileActivity;
@@ -37,6 +38,7 @@ import org.smartregister.chw.hf.model.FamilyProfileModel;
 import org.smartregister.chw.hf.presenter.PncMemberProfilePresenter;
 import org.smartregister.chw.hf.utils.PncVisitUtils;
 import org.smartregister.chw.malaria.dao.MalariaDao;
+import org.smartregister.chw.pmtct.dao.PmtctDao;
 import org.smartregister.chw.pmtct.util.NCUtils;
 import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
@@ -67,6 +69,13 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
     private PncMemberProfilePresenter pncMemberProfilePresenter;
     private RecyclerView childFollowupRecyclerView;
 
+    public static void startMe(Activity activity, String baseEntityID, MemberObject memberObject) {
+        Intent intent = new Intent(activity, PncMemberProfileActivity.class);
+        intent.putExtra(Constants.ANC_MEMBER_OBJECTS.BASE_ENTITY_ID, baseEntityID);
+        intent.putExtra(Constants.ANC_MEMBER_OBJECTS.MEMBER_PROFILE_OBJECT, memberObject);
+        passToolbarTitle(activity, intent);
+        activity.startActivity(intent);
+    }
     public static void startMe(Activity activity, String baseEntityID) {
         Intent intent = new Intent(activity, PncMemberProfileActivity.class);
         intent.putExtra(Constants.ANC_MEMBER_OBJECTS.BASE_ENTITY_ID, baseEntityID);
@@ -283,7 +292,7 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
         textViewAncVisitNot.setOnClickListener(v -> confirmRemovePncMember());
 
 
-        if (HfPncDao.isMotherEligibleForPmtctRegistration(baseEntityID)) {
+        if (HfPncDao.isMotherEligibleForPmtctRegistration(baseEntityID) && !PmtctDao.isRegisteredForPmtct(baseEntityID)) {
             textview_record_anc_visit.setVisibility(View.GONE);
             layoutNotRecordView.setVisibility(View.VISIBLE);
             textViewUndo.setVisibility(View.GONE);

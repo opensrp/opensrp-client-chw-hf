@@ -1,7 +1,0 @@
----
-name: step1_blood_pressure_validator
-description: blood_pressure_validator calculated
-priority: 1
-condition: "true"
-actions:
-  - "calculation = Integer.parseInt(step1_systolic) <= Integer.parseInt(step1_diastolic) ? 'Invalid Input' : step1_systolic + '/' + step1_diastolic "

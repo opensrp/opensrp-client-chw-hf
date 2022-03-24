@@ -11,17 +11,14 @@ import com.vijay.jsonwizard.constants.JsonFormConstants;
 import com.vijay.jsonwizard.domain.Form;
 
 import org.apache.commons.lang3.StringUtils;
-import org.joda.time.DateTime;
-import org.joda.time.LocalDate;
-import org.joda.time.Months;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.dao.HeiDao;
 import org.smartregister.chw.hf.fragment.HeiHivResultsFragment;
+import org.smartregister.chw.hiv.util.DBConstants;
 import org.smartregister.chw.pmtct.activity.BaseHvlResultsViewActivity;
-import org.smartregister.chw.pmtct.domain.MemberObject;
 import org.smartregister.chw.pmtct.fragment.BaseHvlResultsFragment;
 import org.smartregister.chw.pmtct.util.Constants;
 import org.smartregister.chw.pmtct.util.JsonFormUtils;
@@ -178,6 +175,24 @@ public class HeiHivResultsViewActivity extends BaseHvlResultsViewActivity implem
                         .withFormSubmissionField(org.smartregister.chw.hf.utils.Constants.DBConstants.HIV_REGISTRATION_DATE)
                         .withValue(System.currentTimeMillis())
                         .withFieldCode(org.smartregister.chw.hf.utils.Constants.DBConstants.HIV_REGISTRATION_DATE)
+                        .withFieldType("formsubmissionField")
+                        .withFieldDataType("text")
+                        .withParentCode("")
+                        .withHumanReadableValues(new ArrayList<>()));
+        closeHeiEvent.addObs(
+                (new Obs())
+                        .withFormSubmissionField(DBConstants.Key.CLIENT_HIV_STATUS_DURING_REGISTRATION)
+                        .withValue("positive")
+                        .withFieldCode(DBConstants.Key.CLIENT_HIV_STATUS_DURING_REGISTRATION)
+                        .withFieldType("formsubmissionField")
+                        .withFieldDataType("text")
+                        .withParentCode("")
+                        .withHumanReadableValues(new ArrayList<>()));
+        closeHeiEvent.addObs(
+                (new Obs())
+                        .withFieldCode(DBConstants.Key.CLIENT_HIV_STATUS_AFTER_TESTING)
+                        .withFormSubmissionField(DBConstants.Key.TEST_RESULTS)
+                        .withValue("positive")
                         .withFieldType("formsubmissionField")
                         .withFieldDataType("text")
                         .withParentCode("")
