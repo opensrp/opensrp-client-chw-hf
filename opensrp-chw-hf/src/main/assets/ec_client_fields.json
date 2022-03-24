@@ -474,6 +474,14 @@
           }
         },
         {
+          "column_name": "prescribed_ctx",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "prescribed_ctx"
+          }
+        },
+        {
           "column_name": "visit_number",
           "type": "Event",
           "json_mapping": {
