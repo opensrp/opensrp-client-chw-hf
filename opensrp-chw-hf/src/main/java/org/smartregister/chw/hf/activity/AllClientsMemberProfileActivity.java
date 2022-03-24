@@ -51,7 +51,7 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
         super.onCreateOptionsMenu(menu);
         String gender = Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.GENDER, false);
         menu.findItem(R.id.action_location_info).setVisible(true);
-
+        menu.findItem(R.id.action_pregnancy_out_come).setVisible(false);
         if (BuildConfig.BUILD_FOR_BORESHA_AFYA_SOUTH) {
             AllClientsUtils.updateHivMenuItems(baseEntityId, menu);
             // AllClientsUtils.updateTbMenuItems(baseEntityId, menu);
@@ -62,7 +62,7 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
             menu.findItem(R.id.action_pregnancy_out_come).setVisible(true);
         }
         menu.findItem(R.id.action_anc_registration).setVisible(false);
-        menu.findItem(R.id.action_pregnancy_out_come).setVisible(false);
+
         menu.findItem(R.id.action_sick_child_follow_up).setVisible(false);
         menu.findItem(R.id.action_malaria_diagnosis).setVisible(false);
         return true;
