@@ -11,7 +11,6 @@ public class PmtctRegisterFragmentPresenter extends BasePmtctRegisterFragmentPre
     @Override
     public String getMainCondition() {
         return "" + Constants.TABLES.PMTCT_REGISTRATION + "." + "hiv_status = 'positive' "+
-                " AND ec_family_member.date_removed is null" +
                 " AND " + Constants.TABLES.PMTCT_REGISTRATION + "." + "is_closed is 0";
     }
 }

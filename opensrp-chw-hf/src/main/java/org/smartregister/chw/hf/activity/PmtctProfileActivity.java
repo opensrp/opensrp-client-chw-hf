@@ -1,5 +1,10 @@
 package org.smartregister.chw.hf.activity;
 
+import static com.vijay.jsonwizard.constants.JsonFormConstants.VALUE;
+import static org.smartregister.chw.core.utils.CoreConstants.EventType.PMTCT_COMMUNITY_FOLLOWUP;
+import static org.smartregister.client.utils.constants.JsonFormConstants.FIELDS;
+import static org.smartregister.client.utils.constants.JsonFormConstants.STEP1;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +16,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.vijay.jsonwizard.utils.FormUtils;
 
@@ -44,6 +53,7 @@ import org.smartregister.chw.pmtct.domain.Visit;
 import org.smartregister.chw.pmtct.util.Constants;
 import org.smartregister.chw.referral.util.JsonFormConstants;
 import org.smartregister.clientandeventmodel.Event;
+import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.domain.AlertStatus;
 import org.smartregister.family.contract.FamilyProfileContract;
 import org.smartregister.family.domain.FamilyEventClient;
@@ -51,6 +61,7 @@ import org.smartregister.family.interactor.FamilyProfileInteractor;
 import org.smartregister.family.model.BaseFamilyOtherMemberProfileActivityModel;
 import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.family.util.Utils;
+import org.smartregister.opd.utils.OpdDbConstants;
 import org.smartregister.repository.AllSharedPreferences;
 
 import java.text.SimpleDateFormat;
@@ -60,15 +71,7 @@ import java.util.Locale;
 
 import javax.annotation.Nullable;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.recyclerview.widget.RecyclerView;
 import timber.log.Timber;
-
-import static com.vijay.jsonwizard.constants.JsonFormConstants.VALUE;
-import static org.smartregister.chw.core.utils.CoreConstants.EventType.PMTCT_COMMUNITY_FOLLOWUP;
-import static org.smartregister.client.utils.constants.JsonFormConstants.FIELDS;
-import static org.smartregister.client.utils.constants.JsonFormConstants.STEP1;
 
 public class PmtctProfileActivity extends CorePmtctProfileActivity {
     private static String baseEntityId;
@@ -302,8 +305,13 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
 
     @Override
     protected void removeMember() {
+        CommonPersonObjectClient commonPersonObjectClient = getClientDetailsByBaseEntityID(memberObject.getBaseEntityId());
+        if (commonPersonObjectClient.getColumnmaps().get("entity_type").toString().equals(CoreConstants.TABLE_NAME.INDEPENDENT_CLIENT)) {
+            commonPersonObjectClient.getColumnmaps().put(OpdDbConstants.KEY.REGISTER_TYPE, CoreConstants.REGISTER_TYPE.INDEPENDENT);
+        }
+
         IndividualProfileRemoveActivity.startIndividualProfileActivity(this,
-                getClientDetailsByBaseEntityID(memberObject.getBaseEntityId()),
+                commonPersonObjectClient,
                 memberObject.getFamilyBaseEntityId(), memberObject.getFamilyHead(),
                 memberObject.getPrimaryCareGiver(), FpRegisterActivity.class.getCanonicalName());
     }
