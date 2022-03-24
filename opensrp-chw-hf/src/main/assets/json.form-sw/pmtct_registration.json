@@ -193,6 +193,10 @@
           "is_fixed_size": "true",
           "err": "Tafadhali jaza namba ya CTC ya mteja"
         },
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali jaza namba ya CTC ya mteja"
+        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
