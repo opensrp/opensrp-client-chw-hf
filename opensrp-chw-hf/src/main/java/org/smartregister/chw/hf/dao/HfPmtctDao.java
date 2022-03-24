@@ -4,6 +4,7 @@ import org.joda.time.LocalDate;
 import org.joda.time.Months;
 import org.smartregister.chw.core.dao.CorePmtctDao;
 import org.smartregister.chw.hf.utils.Constants;
+import org.smartregister.chw.pmtct.domain.MemberObject;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -172,7 +173,7 @@ public class HfPmtctDao extends CorePmtctDao {
     }
 
     public static boolean isEligibleForBaselineInvestigationOnFollowupVisit(String baseEntityID) {
-        String sql = "SELECT p.base_entity_id FROM ec_pmtct_registration as p INNER JOIN (SELECT * FROM ec_pmtct_followup WHERE entity_id = '" + baseEntityID + "' ORDER BY visit_number DESC LIMIT 1) as pf on pf.entity_id = p.base_entity_id WHERE (pf.liver_function_test_conducted = 'test_not_conducted' OR pf.receive_liver_function_test_results='no' OR  pf.renal_function_test_conducted = 'test_not_conducted' OR pf.receive_renal_function_test_results='no')";
+        String sql = "SELECT p.base_entity_id FROM ec_pmtct_registration as p INNER JOIN (SELECT * FROM ec_pmtct_followup WHERE followup_status <> 'lost_to_followup' AND entity_id = '" + baseEntityID + "' ORDER BY visit_number DESC LIMIT 1) as pf on pf.entity_id = p.base_entity_id WHERE (pf.liver_function_test_conducted = 'test_not_conducted' OR pf.receive_liver_function_test_results='no' OR  pf.renal_function_test_conducted = 'test_not_conducted' OR pf.receive_renal_function_test_results='no')";
 
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "base_entity_id");
         List<String> res = readData(sql, dataMap);
@@ -265,7 +266,7 @@ public class HfPmtctDao extends CorePmtctDao {
     }
 
     public static boolean isLiverFunctionTestConducted(String baseEntityID) {
-        String sql = "SELECT p.base_entity_id FROM ec_pmtct_registration as p INNER JOIN (SELECT * FROM ec_pmtct_followup ORDER BY visit_number DESC LIMIT 1) as pf on pf.entity_id = p.base_entity_id WHERE (pf.liver_function_test_conducted = 'test_conducted') AND p.base_entity_id = '" + baseEntityID + "'";
+        String sql = "SELECT p.base_entity_id FROM ec_pmtct_registration as p INNER JOIN (SELECT * FROM ec_pmtct_followup WHERE followup_status <> 'lost_to_followup' ORDER BY visit_number DESC LIMIT 1) as pf on pf.entity_id = p.base_entity_id WHERE (pf.liver_function_test_conducted = 'test_conducted') AND p.base_entity_id = '" + baseEntityID + "'";
 
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "base_entity_id");
         List<String> res = readData(sql, dataMap);
@@ -274,7 +275,7 @@ public class HfPmtctDao extends CorePmtctDao {
     }
 
     public static boolean isLiverFunctionTestResultsFilled(String baseEntityID) {
-        String sql = "SELECT p.base_entity_id FROM ec_pmtct_registration as p INNER JOIN (SELECT * FROM ec_pmtct_followup ORDER BY visit_number DESC LIMIT 1) as pf on pf.entity_id = p.base_entity_id WHERE (pf.receive_liver_function_test_results='yes') AND p.base_entity_id = '" + baseEntityID + "'";
+        String sql = "SELECT p.base_entity_id FROM ec_pmtct_registration as p INNER JOIN (SELECT * FROM ec_pmtct_followup WHERE followup_status <> 'lost_to_followup'  ORDER BY visit_number DESC LIMIT 1) as pf on pf.entity_id = p.base_entity_id WHERE (pf.receive_liver_function_test_results='yes') AND p.base_entity_id = '" + baseEntityID + "'";
 
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "base_entity_id");
         List<String> res = readData(sql, dataMap);
@@ -283,7 +284,7 @@ public class HfPmtctDao extends CorePmtctDao {
     }
 
     public static boolean isRenalFunctionTestConducted(String baseEntityID) {
-        String sql = "SELECT p.base_entity_id FROM ec_pmtct_registration as p INNER JOIN (SELECT * FROM ec_pmtct_followup ORDER BY visit_number DESC LIMIT 1) as pf on pf.entity_id = p.base_entity_id WHERE (pf.renal_function_test_conducted = 'test_conducted') AND p.base_entity_id = '" + baseEntityID + "'";
+        String sql = "SELECT p.base_entity_id FROM ec_pmtct_registration as p INNER JOIN (SELECT * FROM ec_pmtct_followup WHERE followup_status <> 'lost_to_followup'  ORDER BY visit_number DESC LIMIT 1) as pf on pf.entity_id = p.base_entity_id WHERE (pf.renal_function_test_conducted = 'test_conducted') AND p.base_entity_id = '" + baseEntityID + "'";
 
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "base_entity_id");
         List<String> res = readData(sql, dataMap);
@@ -292,7 +293,7 @@ public class HfPmtctDao extends CorePmtctDao {
     }
 
     public static boolean isRenalFunctionTestResultsFilled(String baseEntityID) {
-        String sql = "SELECT p.base_entity_id FROM ec_pmtct_registration as p INNER JOIN (SELECT * FROM ec_pmtct_followup ORDER BY visit_number DESC LIMIT 1) as pf on pf.entity_id = p.base_entity_id WHERE (pf.receive_renal_function_test_results='yes') AND p.base_entity_id = '" + baseEntityID + "'";
+        String sql = "SELECT p.base_entity_id FROM ec_pmtct_registration as p INNER JOIN (SELECT * FROM ec_pmtct_followup WHERE followup_status <> 'lost_to_followup'  ORDER BY visit_number DESC LIMIT 1) as pf on pf.entity_id = p.base_entity_id WHERE (pf.receive_renal_function_test_results='yes') AND p.base_entity_id = '" + baseEntityID + "'";
 
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "base_entity_id");
         List<String> res = readData(sql, dataMap);
@@ -300,8 +301,15 @@ public class HfPmtctDao extends CorePmtctDao {
         return res != null && res.size() > 0 && res.get(0) != null;
     }
 
-    public static boolean isMissedAppointmentClient(String baseEntityID) {
-        String sql = "SELECT p.base_entity_id FROM ec_pmtct_registration as p INNER JOIN (SELECT * FROM ec_pmtct_followup ORDER BY visit_number DESC LIMIT 1) as pf on pf.entity_id = p.base_entity_id WHERE (pf.receive_renal_function_test_results='yes') AND p.base_entity_id = '" + baseEntityID + "'";
+    public static boolean hasTheClientTransferedOut(String baseEntityID) {
+        String sql = "SELECT p.base_entity_id\n" +
+                "FROM ec_pmtct_registration as p\n" +
+                "         INNER JOIN (SELECT *\n" +
+                "                     FROM ec_pmtct_followup\n" +
+                "                     ORDER BY visit_number DESC\n" +
+                "                     LIMIT 1) as pf on pf.entity_id = p.base_entity_id\n" +
+                "WHERE (pf.followup_status = 'transfer_out')\n" +
+                "AND p.base_entity_id = '" + baseEntityID + "'";
 
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "base_entity_id");
         List<String> res = readData(sql, dataMap);
@@ -326,5 +334,56 @@ public class HfPmtctDao extends CorePmtctDao {
             return false;
         }
 
+    }
+
+    public static List<MemberObject> getMembers() {
+        String sql = "select m.base_entity_id , m.unique_id , m.relational_id , m.dob , m.first_name , m.middle_name , m.last_name , m.gender , m.phone_number , m.other_phone_number , f.first_name family_name ,f.primary_caregiver , f.family_head , f.village_town ,fh.first_name family_head_first_name , fh.middle_name family_head_middle_name , fh.last_name family_head_last_name, fh.phone_number family_head_phone_number , ancr.is_closed anc_is_closed, pncr.is_closed pnc_is_closed, pcg.first_name pcg_first_name , pcg.last_name pcg_last_name , pcg.middle_name pcg_middle_name , pcg.phone_number  pcg_phone_number , mr.* from ec_family_member m inner join ec_family f on m.relational_id = f.base_entity_id inner join ec_pmtct_registration mr on mr.base_entity_id = m.base_entity_id left join ec_family_member fh on fh.base_entity_id = f.family_head left join ec_family_member pcg on pcg.base_entity_id = f.primary_caregiver left join ec_anc_register ancr on ancr.base_entity_id = m.base_entity_id left join ec_pregnancy_outcome pncr on pncr.base_entity_id = m.base_entity_id where mr.is_closed = 0 ";
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+
+        DataMap<MemberObject> dataMap = cursor -> {
+            MemberObject memberObject = new MemberObject();
+
+            memberObject.setFirstName(getCursorValue(cursor, "first_name", ""));
+            memberObject.setMiddleName(getCursorValue(cursor, "middle_name", ""));
+            memberObject.setLastName(getCursorValue(cursor, "last_name", ""));
+            memberObject.setAddress(getCursorValue(cursor, "village_town"));
+            memberObject.setGender(getCursorValue(cursor, "gender"));
+            memberObject.setUniqueId(getCursorValue(cursor, "unique_id", ""));
+            memberObject.setAge(getCursorValue(cursor, "dob"));
+            memberObject.setDod(getCursorValue(cursor, "dod",null));
+            memberObject.setFamilyBaseEntityId(getCursorValue(cursor, "relational_id", ""));
+            memberObject.setRelationalId(getCursorValue(cursor, "relational_id", ""));
+            memberObject.setPrimaryCareGiver(getCursorValue(cursor, "primary_caregiver"));
+            memberObject.setFamilyName(getCursorValue(cursor, "family_name", ""));
+            memberObject.setPhoneNumber(getCursorValue(cursor, "phone_number", ""));
+            memberObject.setBaseEntityId(getCursorValue(cursor, "base_entity_id", ""));
+            memberObject.setFamilyHead(getCursorValue(cursor, "family_head", ""));
+            memberObject.setFamilyHeadPhoneNumber(getCursorValue(cursor, "pcg_phone_number", ""));
+            memberObject.setFamilyHeadPhoneNumber(getCursorValue(cursor, "family_head_phone_number", ""));
+            memberObject.setAncMember(getCursorValue(cursor, "anc_is_closed", ""));
+            memberObject.setPncMember(getCursorValue(cursor, "pnc_is_closed", ""));
+
+            String familyHeadName = getCursorValue(cursor, "family_head_first_name", "") + " "
+                    + getCursorValue(cursor, "family_head_middle_name", "");
+
+            familyHeadName =
+                    (familyHeadName.trim() + " " + getCursorValue(cursor, "family_head_last_name", "")).trim();
+            memberObject.setFamilyHeadName(familyHeadName);
+
+            String familyPcgName = getCursorValue(cursor, "pcg_first_name", "") + " "
+                    + getCursorValue(cursor, "pcg_middle_name", "");
+
+            familyPcgName =
+                    (familyPcgName.trim() + " " + getCursorValue(cursor, "pcg_last_name", "")).trim();
+            memberObject.setPrimaryCareGiverName(familyPcgName);
+
+            return memberObject;
+        };
+
+        List<MemberObject> res = readData(sql, dataMap);
+        if (res == null || res.size() != 1)
+            return null;
+
+        return res;
     }
 }
