@@ -59,6 +59,7 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
         }
         if (isOfReproductiveAge(commonPersonObject, gender) && gender.equalsIgnoreCase("female") && !AncDao.isANCMember(baseEntityId)) {
             menu.findItem(R.id.action_pregnancy_confirmation).setVisible(true);
+            menu.findItem(R.id.action_pregnancy_out_come).setVisible(true);
         }
         menu.findItem(R.id.action_anc_registration).setVisible(false);
         menu.findItem(R.id.action_pregnancy_out_come).setVisible(false);
@@ -110,7 +111,8 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
 
     @Override
     protected void startPncRegister() {
-        //TODO implement pnc register
+        PncRegisterActivity.startPncRegistrationActivity(AllClientsMemberProfileActivity.this, baseEntityId, PhoneNumber,
+                CoreConstants.JSON_FORM.getPregnancyOutcome(), null, familyBaseEntityId, familyName,null,false);
     }
 
     @Override
