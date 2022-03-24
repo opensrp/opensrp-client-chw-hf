@@ -211,6 +211,14 @@
         "type": "hidden"
       },
       {
+        "key": "followup_status",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "followup_status",
+        "type": "hidden",
+        "value": "continuing_with_services"
+      },
+      {
         "key": "prophylaxis_arv_for_high_risk_given",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",

@@ -410,6 +410,14 @@
           }
         },
         {
+          "column_name": "followup_status",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "followup_status"
+          }
+        },
+        {
           "column_name": "followup_visit_date",
           "type": "Event",
           "json_mapping": {
