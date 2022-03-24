@@ -32,6 +32,7 @@ import org.smartregister.chw.hf.dao.PmtctReportDao;
 import org.smartregister.view.activity.SecuredActivity;
 import org.smartregister.view.customcontrols.CustomFontTextView;
 
+import java.text.DecimalFormat;
 import java.util.Date;
 
 import timber.log.Timber;
@@ -175,6 +176,9 @@ public class PmtctReportsViewActivity extends SecuredActivity {
             if (D12 - J12 > 0)
                 K12 = (E12 * 1f) / (D12 - J12) * 100;
 
+            DecimalFormat df = new DecimalFormat();
+            df.setMaximumFractionDigits(2);
+
 
             try {
                 jsonObject.put("B3a", PmtctReportDao.getPmtctReportPerIndicatorCode("B3a", now));
@@ -190,7 +194,7 @@ public class PmtctReportsViewActivity extends SecuredActivity {
                 jsonObject.put("H3", PmtctReportDao.getPmtctReportPerIndicatorCode("H3", now));
                 jsonObject.put("I3", PmtctReportDao.getPmtctReportPerIndicatorCode("I3", now));
                 jsonObject.put("J3", PmtctReportDao.getPmtctReportPerIndicatorCode("J3", now));
-                jsonObject.put("K3", K3);
+                jsonObject.put("K3", df.format(K3));
 
 
                 jsonObject.put("A12", A12);
@@ -202,8 +206,14 @@ public class PmtctReportsViewActivity extends SecuredActivity {
                 jsonObject.put("G12", PmtctReportDao.getPmtctReportPerIndicatorCode("G12", now));
                 jsonObject.put("I12", PmtctReportDao.getPmtctReportPerIndicatorCode("I12", now));
                 jsonObject.put("J12", J12);
-                jsonObject.put("K12", K12);
+                jsonObject.put("K12", df.format(K12));
                 jsonObject.put("L12", PmtctReportDao.getPmtctReportPerIndicatorCode("L12", now));
+                jsonObject.put("M12", PmtctReportDao.getPmtctReportPerIndicatorCode("M12", now));
+                jsonObject.put("N12", PmtctReportDao.getPmtctReportPerIndicatorCode("N12", now));
+                jsonObject.put("O12", PmtctReportDao.getPmtctReportPerIndicatorCode("O12", now));
+                jsonObject.put("P12", PmtctReportDao.getPmtctReportPerIndicatorCode("P12", now));
+                jsonObject.put("Q12a", PmtctReportDao.getPmtctReportPerIndicatorCode("Q12a", now));
+                jsonObject.put("Q12b", PmtctReportDao.getPmtctReportPerIndicatorCode("Q12b", now));
             } catch (JSONException e) {
                 Timber.e(e);
             }
