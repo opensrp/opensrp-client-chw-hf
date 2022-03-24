@@ -323,7 +323,7 @@ public class HeiDao extends AbstractDao {
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "followup_visit_date");
 
         List<String> res = readData(sql, dataMap);
-        if (res == null || res.size() != 1)
+        if (res == null || res.size() != 1 || res.get(0) == null)
             return null;
         Date date = null;
         try {
