@@ -8,6 +8,7 @@ import org.smartregister.chw.core.utils.Utils;
 
 public class Constants extends CoreConstants {
     public static String pregnancyOutcome = "preg_outcome";
+    public static String LOST_TO_FOLLOWUP = "lost_to_followup";
 
     public enum FamilyRegisterOptionsUtil {Miscarriage, Other}
 
@@ -47,6 +48,8 @@ public class Constants extends CoreConstants {
         public static final String CLOSE_PNC_VISITS = "Close PNC Visits";
         public static final String PNC_CHILD_FOLLOWUP = "PNC Child Followup";
         public static final String MOTHER_CHAMPION_COMMUNITY_SERVICES_REFERRAL = "Mother Champion Community Services Referral";
+        public static final String MARK_PMTCT_CLIENT_AS_LTF = "Mark PMTCT Client As LTF";
+        public static final String MARK_HEI_CLIENT_AS_LTF = "Mark HEI Client As LTF";
     }
 
     public static final class TableName {
@@ -57,6 +60,7 @@ public class Constants extends CoreConstants {
         public static final String HEI_HIV_RESULTS = "ec_hei_hiv_results";
         public static final String HEI_FOLLOWUP = "ec_hei_followup";
         public static final String PNC_FOLLOWUP = "ec_pnc_followup";
+        public static final String PMTCT_FOLLOWUP = "ec_pmtct_followup";
     }
 
     public static final class Visits {
@@ -359,5 +363,13 @@ public class Constants extends CoreConstants {
         public static final String AT_9_MONTHS = "9 Months";
         public static final String AT_15_MONTHS = "15 Months";
         public static final String AT_18_MONTHS = "18 Months";
+    }
+
+    public static final class FormConstants{
+        public interface FormSubmissionFields{
+            String VISIT_NUMBER = "visit_number";
+            String FOLLOWUP_VISIT_DATE = "followup_visit_date";
+            String FOLLOWUP_STATUS = "followup_status";
+        }
     }
 }
