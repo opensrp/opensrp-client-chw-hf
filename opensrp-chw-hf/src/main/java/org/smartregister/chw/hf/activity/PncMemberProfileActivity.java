@@ -38,6 +38,7 @@ import org.smartregister.chw.hf.model.FamilyProfileModel;
 import org.smartregister.chw.hf.presenter.PncMemberProfilePresenter;
 import org.smartregister.chw.hf.utils.PncVisitUtils;
 import org.smartregister.chw.malaria.dao.MalariaDao;
+import org.smartregister.chw.pmtct.dao.PmtctDao;
 import org.smartregister.chw.pmtct.util.NCUtils;
 import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
@@ -291,7 +292,7 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
         textViewAncVisitNot.setOnClickListener(v -> confirmRemovePncMember());
 
 
-        if (HfPncDao.isMotherEligibleForPmtctRegistration(baseEntityID)) {
+        if (HfPncDao.isMotherEligibleForPmtctRegistration(baseEntityID) && !PmtctDao.isRegisteredForPmtct(baseEntityID)) {
             textview_record_anc_visit.setVisibility(View.GONE);
             layoutNotRecordView.setVisibility(View.VISIBLE);
             textViewUndo.setVisibility(View.GONE);
