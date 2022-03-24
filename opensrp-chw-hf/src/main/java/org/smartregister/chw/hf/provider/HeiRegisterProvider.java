@@ -1,8 +1,12 @@
 package org.smartregister.chw.hf.provider;
 
+import static org.smartregister.util.Utils.getName;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +17,7 @@ import org.joda.time.Days;
 import org.smartregister.chw.core.rule.HeiFollowupRule;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.FpUtil;
+import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.dao.HeiDao;
 import org.smartregister.chw.hf.utils.HfHomeVisitUtil;
 import org.smartregister.chw.pmtct.fragment.BasePmtctRegisterFragment;
@@ -27,9 +32,6 @@ import java.util.Date;
 import java.util.Set;
 
 import timber.log.Timber;
-
-import static org.smartregister.chw.core.utils.Utils.getDuration;
-import static org.smartregister.util.Utils.getName;
 
 public class HeiRegisterProvider extends PmtctRegisterProvider {
 
@@ -55,43 +57,54 @@ public class HeiRegisterProvider extends PmtctRegisterProvider {
         }
     }
 
-    private String updateMemberGender(CommonPersonObjectClient commonPersonObjectClient) {
-        if ("0".equals(Utils.getValue(commonPersonObjectClient.getColumnmaps(), DBConstants.KEY.IS_ANC_CLOSED, false))) {
-            return context.getResources().getString(org.smartregister.pmtct.R.string.anc_string);
-        } else if ("0".equals(Utils.getValue(commonPersonObjectClient.getColumnmaps(), DBConstants.KEY.IS_PNC_CLOSED, false))) {
-            return context.getResources().getString(org.smartregister.pmtct.R.string.pnc_string);
-        } else {
-            String gender = Utils.getValue(commonPersonObjectClient.getColumnmaps(), DBConstants.KEY.GENDER, true);
-            return PmtctUtil.getGenderTranslated(context, gender);
-        }
-    }
-
     @SuppressLint("SetTextI18n")
-    private void populatePatientColumn(CommonPersonObjectClient pc, final RegisterViewHolder viewHolder) {
+    @Override
+    protected void populatePatientColumn(CommonPersonObjectClient pc, final RegisterViewHolder viewHolder) {
         try {
 
             String firstName = getName(
                     Utils.getValue(pc.getColumnmaps(), DBConstants.KEY.FIRST_NAME, true),
                     Utils.getValue(pc.getColumnmaps(), DBConstants.KEY.MIDDLE_NAME, true));
 
-            String dobString = org.smartregister.family.util.Utils.getTranslatedDate(getDuration(org.smartregister.family.util.Utils.getValue(pc.getColumnmaps(), org.smartregister.family.util.DBConstants.KEY.DOB, false)), inflater().getContext());
 
+            String dob = org.smartregister.family.util.Utils.getValue(pc.getColumnmaps(), org.smartregister.family.util.DBConstants.KEY.DOB, false);
+            String dobString = org.smartregister.family.util.Utils.getDuration(dob);
+
+            String dod = org.smartregister.family.util.Utils.getValue(pc.getColumnmaps(), org.smartregister.family.util.DBConstants.KEY.DOD, false);
             String patientName = getName(firstName, Utils.getValue(pc.getColumnmaps(), DBConstants.KEY.LAST_NAME, true));
-            viewHolder.patientName.setText(patientName + ", " + dobString);
+
+
+            if (StringUtils.isNotBlank(dod)) {
+                dobString = org.smartregister.family.util.Utils.getDuration(dod, dob);
+                dobString = dobString.contains("y") ? dobString.substring(0, dobString.indexOf("y")) : dobString;
+
+                patientName = patientName + ", " + org.smartregister.family.util.Utils.getTranslatedDate(dobString, context) + " " + context.getString(R.string.deceased_brackets);
+                viewHolder.patientName.setText(patientName);
+                viewHolder.patientName.setTextColor(Color.GRAY);
+                viewHolder.patientName.setTypeface(viewHolder.patientName.getTypeface(), Typeface.ITALIC);
+                viewHolder.dueWrapper.setVisibility(View.GONE);
+            } else {
+                patientName = patientName + ", " + org.smartregister.family.util.Utils.getTranslatedDate(dobString, context);
+                viewHolder.patientName.setText(patientName);
+                viewHolder.patientName.setTextColor(Color.BLACK);
+                viewHolder.patientName.setTypeface(viewHolder.patientName.getTypeface(), Typeface.NORMAL);
+                viewHolder.patientColumn.setOnClickListener(onClickListener);
+                viewHolder.dueButton.setOnClickListener(onClickListener);
+                viewHolder.registerColumns.setOnClickListener(v -> viewHolder.patientColumn.performClick());
+                viewHolder.registerColumns.setOnClickListener(v -> viewHolder.dueButton.performClick());
+            }
+
+
             viewHolder.textViewGender.setText(updateMemberGender(pc));
             viewHolder.textViewVillage.setText(Utils.getValue(pc.getColumnmaps(), DBConstants.KEY.VILLAGE_TOWN, true));
-            viewHolder.patientColumn.setOnClickListener(onClickListener);
+
             viewHolder.patientColumn.setTag(pc);
             viewHolder.patientColumn.setTag(org.smartregister.pmtct.R.id.VIEW_ID, BasePmtctRegisterFragment.CLICK_VIEW_NORMAL);
 
-            viewHolder.dueButton.setOnClickListener(onClickListener);
             viewHolder.dueButton.setTag(pc);
             viewHolder.dueButton.setTag(org.smartregister.pmtct.R.id.VIEW_ID, BasePmtctRegisterFragment.FOLLOW_UP_VISIT);
             viewHolder.registerColumns.setOnClickListener(onClickListener);
 
-
-            viewHolder.registerColumns.setOnClickListener(v -> viewHolder.patientColumn.performClick());
-            viewHolder.registerColumns.setOnClickListener(v -> viewHolder.dueButton.performClick());
 
         } catch (Exception e) {
             Timber.e(e);
