@@ -10,7 +10,6 @@ import org.smartregister.chw.anc.domain.Visit;
 import org.smartregister.chw.anc.repository.VisitDetailsRepository;
 import org.smartregister.chw.anc.repository.VisitRepository;
 import org.smartregister.chw.anc.util.NCUtils;
-import org.smartregister.chw.core.dao.PNCDao;
 import org.smartregister.chw.core.model.ChildModel;
 import org.smartregister.chw.hf.dao.HfPncDao;
 import org.smartregister.clientandeventmodel.Event;
@@ -49,14 +48,14 @@ public class PncVisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
 
                     boolean isMotherGeneralExaminationDone = computeCompletionStatus(obs, "systolic");
                     boolean isFamilyPlanningServicesDone = computeCompletionStatus(obs, "education_counselling_given");
-                    boolean isImmunizationDone = computeCompletionStatus(obs, "tetanus_vaccination") ||computeCompletionStatus(obs, "hepatitis_b_vaccination") ;
+                    boolean isImmunizationDone = computeCompletionStatus(obs, "tetanus_vaccination") || computeCompletionStatus(obs, "hepatitis_b_vaccination");
                     boolean isHivTestingDone = computeCompletionStatus(obs, "hiv_status");
                     boolean isNutritionSupplementsDone = computeCompletionStatus(obs, "iron_and_folic_acid");
 
-                    if(HfPncDao.isMotherEligibleForHivTest(baseEntityId)){
+                    if (HfPncDao.isMotherEligibleForHivTest(baseEntityId)) {
                         checks.add(isHivTestingDone);
                     }
-                    if(HfPncDao.isMotherEligibleForTetanus(baseEntityId) || HfPncDao.isMotherEligibleForHepB(baseEntityId)){
+                    if (HfPncDao.isMotherEligibleForTetanus(baseEntityId) || HfPncDao.isMotherEligibleForHepB(baseEntityId)) {
                         checks.add(isImmunizationDone);
                     }
 
@@ -73,7 +72,7 @@ public class PncVisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
         }
         if (pncVisitsCompleted.size() > 0) {
             processVisits(pncVisitsCompleted, visitRepository, visitDetailsRepository);
-            for(Visit v: pncVisitsCompleted) {
+            for (Visit v : pncVisitsCompleted) {
                 if (isMotherFoundPositive(v)) {
                     createHeiRegistrationEvent(v.getJson());
                 }
@@ -92,19 +91,19 @@ public class PncVisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
         return false;
     }
 
-    private static void createHeiRegistrationEvent(String json)  throws Exception{
+    private static void createHeiRegistrationEvent(String json) throws Exception {
         JSONObject jsonObject = new JSONObject(json);
         String motherBaseEntityId = jsonObject.getString("baseEntityId");
         List<ChildModel> childModels = HfPncDao.childrenForPncWoman(motherBaseEntityId);
-        for(ChildModel childModel : childModels){
+        for (ChildModel childModel : childModels) {
             String jsonForChild = json;
             JSONObject jsonObjectForChild = new JSONObject(jsonForChild);
             jsonObjectForChild.put("baseEntityId", childModel.getBaseEntityId());
-            jsonObjectForChild.put("mother_entity_id",motherBaseEntityId);
-            jsonObjectForChild.put("relational_id",motherBaseEntityId);
-            jsonObjectForChild.put("birthdate",childModel.getDateOfBirth());
+            jsonObjectForChild.put("mother_entity_id", motherBaseEntityId);
+            jsonObjectForChild.put("relational_id", motherBaseEntityId);
+            jsonObjectForChild.put("birthdate", childModel.getDateOfBirth());
 
-            String childBaseEntityId = childModel.getBaseEntityId() ;
+            String childBaseEntityId = childModel.getBaseEntityId();
             Event baseEvent = new Gson().fromJson(jsonForChild, Event.class);
             baseEvent.setFormSubmissionId(UUID.randomUUID().toString());
             baseEvent.setEventType("HEI Registration");
@@ -129,23 +128,23 @@ public class PncVisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
 
     }
 
-    private static boolean isMotherFoundPositive(Visit visit){
+    private static boolean isMotherFoundPositive(Visit visit) {
         boolean isPositive = false;
-        try{
+        try {
             JSONObject jsonObject = new JSONObject(visit.getJson());
             JSONArray obs = jsonObject.getJSONArray("obs");
             int size = obs.length();
-            for(int i = 0; i< size; i++){
+            for (int i = 0; i < size; i++) {
                 JSONObject checkObj = obs.getJSONObject(i);
-                if(checkObj.getString("fieldCode").equalsIgnoreCase("hiv_status")){
+                if (checkObj.getString("fieldCode").equalsIgnoreCase("hiv_status")) {
                     JSONArray values = checkObj.getJSONArray("values");
-                    if(values.getString(0).equalsIgnoreCase("positive")){
+                    if (values.getString(0).equalsIgnoreCase("positive")) {
                         isPositive = true;
                         break;
                     }
                 }
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             Timber.e(e);
         }
         return isPositive;
