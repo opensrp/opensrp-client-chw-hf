@@ -106,9 +106,9 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
         tvHeiResultsSubTitle.setText(R.string.view_child_hiv_results);
 
         rlHvlResults.setOnClickListener(this);
-        if(!HeiDao.hasTheChildTransferedOut(baseEntityId)){
+        if (!HeiDao.hasTheChildTransferedOut(baseEntityId)) {
             showRiskLabel(HeiDao.getRiskLevel(baseEntityId));
-        }else{
+        } else {
             showTransferOutLabel();
         }
 

@@ -1,7 +1,5 @@
 package org.smartregister.chw.hf.provider;
 
-import static org.smartregister.util.Utils.getName;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
@@ -25,6 +23,8 @@ import org.smartregister.util.Utils;
 import java.util.Set;
 
 import timber.log.Timber;
+
+import static org.smartregister.util.Utils.getName;
 
 public class HfPmtctRegisterProvider extends CorePmtctRegisterProvider {
 
@@ -95,7 +95,7 @@ public class HfPmtctRegisterProvider extends CorePmtctRegisterProvider {
 
     @Override
     protected void updateDueColumn(Context context, RegisterViewHolder viewHolder, PmtctFollowUpRule pmtctFollowUpRule) {
-        if(!HfPmtctDao.hasTheClientTransferedOut(pmtctFollowUpRule.getBaseEntityId())) {
+        if (!HfPmtctDao.hasTheClientTransferedOut(pmtctFollowUpRule.getBaseEntityId())) {
             if (pmtctFollowUpRule.getDueDate() != null) {
                 if (pmtctFollowUpRule.getButtonStatus().equalsIgnoreCase(CoreConstants.VISIT_STATE.NOT_DUE_YET)) {
                     setVisitButtonNextDueStatus(context, FpUtil.sdf.format(pmtctFollowUpRule.getDueDate()), viewHolder.dueButton);
@@ -111,7 +111,7 @@ public class HfPmtctRegisterProvider extends CorePmtctRegisterProvider {
                     setVisitDone(context, viewHolder.dueButton);
                 }
             }
-        }else{
+        } else {
             viewHolder.dueButton.setVisibility(View.VISIBLE);
             viewHolder.dueButton.setTextColor(context.getResources().getColor(org.smartregister.pmtct.R.color.medium_risk_text_orange));
             viewHolder.dueButton.setText(R.string.transfer_out);

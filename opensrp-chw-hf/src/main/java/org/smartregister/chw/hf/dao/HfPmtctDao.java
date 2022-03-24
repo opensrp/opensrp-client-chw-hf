@@ -351,7 +351,7 @@ public class HfPmtctDao extends CorePmtctDao {
             memberObject.setGender(getCursorValue(cursor, "gender"));
             memberObject.setUniqueId(getCursorValue(cursor, "unique_id", ""));
             memberObject.setAge(getCursorValue(cursor, "dob"));
-            memberObject.setDod(getCursorValue(cursor, "dod",null));
+            memberObject.setDod(getCursorValue(cursor, "dod", null));
             memberObject.setFamilyBaseEntityId(getCursorValue(cursor, "relational_id", ""));
             memberObject.setRelationalId(getCursorValue(cursor, "relational_id", ""));
             memberObject.setPrimaryCareGiver(getCursorValue(cursor, "primary_caregiver"));
