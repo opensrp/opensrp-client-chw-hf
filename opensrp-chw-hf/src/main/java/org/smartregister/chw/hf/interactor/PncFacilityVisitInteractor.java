@@ -3,6 +3,7 @@ package org.smartregister.chw.hf.interactor;
 import org.smartregister.chw.anc.contract.BaseAncHomeVisitContract;
 import org.smartregister.chw.anc.domain.MemberObject;
 import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
+import org.smartregister.chw.core.dao.PNCDao;
 import org.smartregister.chw.core.interactor.CoreAncHomeVisitInteractor;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hf.utils.PncVisitUtils;
@@ -55,5 +56,10 @@ public class PncFacilityVisitInteractor extends CoreAncHomeVisitInteractor {
         };
 
         appExecutors.diskIO().execute(runnable);
+    }
+
+    @Override
+    public MemberObject getMemberClient(String memberID) {
+        return PNCDao.getMember(memberID);
     }
 }

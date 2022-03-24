@@ -15,6 +15,7 @@ import com.vijay.jsonwizard.utils.FormUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.smartregister.chw.anc.domain.MemberObject;
 import org.smartregister.chw.anc.domain.Visit;
 import org.smartregister.chw.anc.util.Constants;
 import org.smartregister.chw.core.activity.CoreFamilyProfileActivity;
@@ -67,6 +68,13 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
     private PncMemberProfilePresenter pncMemberProfilePresenter;
     private RecyclerView childFollowupRecyclerView;
 
+    public static void startMe(Activity activity, String baseEntityID, MemberObject memberObject) {
+        Intent intent = new Intent(activity, PncMemberProfileActivity.class);
+        intent.putExtra(Constants.ANC_MEMBER_OBJECTS.BASE_ENTITY_ID, baseEntityID);
+        intent.putExtra(Constants.ANC_MEMBER_OBJECTS.MEMBER_PROFILE_OBJECT, memberObject);
+        passToolbarTitle(activity, intent);
+        activity.startActivity(intent);
+    }
     public static void startMe(Activity activity, String baseEntityID) {
         Intent intent = new Intent(activity, PncMemberProfileActivity.class);
         intent.putExtra(Constants.ANC_MEMBER_OBJECTS.BASE_ENTITY_ID, baseEntityID);

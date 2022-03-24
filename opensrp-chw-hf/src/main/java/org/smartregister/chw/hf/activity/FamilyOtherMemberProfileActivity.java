@@ -71,7 +71,8 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
 
     @Override
     protected void startPncRegister() {
-        //TODO implement start pnc register for HF
+        PncRegisterActivity.startPncRegistrationActivity(FamilyOtherMemberProfileActivity.this, baseEntityId, PhoneNumber,
+                CoreConstants.JSON_FORM.getPregnancyOutcome(), null, familyBaseEntityId, familyName,null,false);
     }
 
     @Override
@@ -236,6 +237,7 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
         if (isOfReproductiveAge(commonPersonObject, gender)) {
             if (gender.equalsIgnoreCase("female") && !AncDao.isANCMember(baseEntityId)) {
                 menu.findItem(R.id.action_pregnancy_confirmation).setVisible(true);
+                menu.findItem(R.id.action_pregnancy_out_come).setVisible(true);
             }
             menu.findItem(R.id.action_fp_change).setVisible(false);
             menu.findItem(R.id.action_fp_initiation).setVisible(false);
