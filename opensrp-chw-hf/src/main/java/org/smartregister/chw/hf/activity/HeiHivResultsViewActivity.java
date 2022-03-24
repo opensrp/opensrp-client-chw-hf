@@ -11,9 +11,6 @@ import com.vijay.jsonwizard.constants.JsonFormConstants;
 import com.vijay.jsonwizard.domain.Form;
 
 import org.apache.commons.lang3.StringUtils;
-import org.joda.time.DateTime;
-import org.joda.time.LocalDate;
-import org.joda.time.Months;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,7 +19,6 @@ import org.smartregister.chw.hf.dao.HeiDao;
 import org.smartregister.chw.hf.fragment.HeiHivResultsFragment;
 import org.smartregister.chw.hiv.util.DBConstants;
 import org.smartregister.chw.pmtct.activity.BaseHvlResultsViewActivity;
-import org.smartregister.chw.pmtct.domain.MemberObject;
 import org.smartregister.chw.pmtct.fragment.BaseHvlResultsFragment;
 import org.smartregister.chw.pmtct.util.Constants;
 import org.smartregister.chw.pmtct.util.JsonFormUtils;
