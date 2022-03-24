@@ -1,7 +1,5 @@
 package org.smartregister.chw.hf.provider;
 
-import static org.smartregister.util.Utils.getName;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
@@ -22,7 +20,6 @@ import org.smartregister.chw.hf.dao.HeiDao;
 import org.smartregister.chw.hf.utils.HfHomeVisitUtil;
 import org.smartregister.chw.pmtct.fragment.BasePmtctRegisterFragment;
 import org.smartregister.chw.pmtct.util.DBConstants;
-import org.smartregister.chw.pmtct.util.PmtctUtil;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.provider.PmtctRegisterProvider;
 import org.smartregister.util.Utils;
@@ -32,6 +29,8 @@ import java.util.Date;
 import java.util.Set;
 
 import timber.log.Timber;
+
+import static org.smartregister.util.Utils.getName;
 
 public class HeiRegisterProvider extends PmtctRegisterProvider {
 
@@ -138,19 +137,28 @@ public class HeiRegisterProvider extends PmtctRegisterProvider {
         }
 
         private void updateDueColumn(Context context, RegisterViewHolder viewHolder, HeiFollowupRule heiFollowupRule) {
-            if (heiFollowupRule.getDueDate() != null) {
+            if(!HeiDao.hasTheChildTransferedOut(heiFollowupRule.getBaseEntityId())){
+                if (heiFollowupRule.getDueDate() != null) {
+                    viewHolder.dueButton.setVisibility(View.VISIBLE);
+                    if (heiFollowupRule.getButtonStatus().equalsIgnoreCase(CoreConstants.VISIT_STATE.NOT_DUE_YET)) {
+                        setVisitButtonNextDueStatus(context, FpUtil.sdf.format(heiFollowupRule.getDueDate()), viewHolder.dueButton);
+                    }
+                    if (heiFollowupRule.getButtonStatus().equalsIgnoreCase(CoreConstants.VISIT_STATE.DUE)) {
+                        setVisitButtonDueStatus(context, String.valueOf(Days.daysBetween(new DateTime(heiFollowupRule.getDueDate()), new DateTime()).getDays()), viewHolder.dueButton);
+                    } else if (heiFollowupRule.getButtonStatus().equalsIgnoreCase(CoreConstants.VISIT_STATE.OVERDUE)) {
+                        setVisitButtonOverdueStatus(context, String.valueOf(Days.daysBetween(new DateTime(heiFollowupRule.getOverDueDate()), new DateTime()).getDays()), viewHolder.dueButton);
+                    } else if (heiFollowupRule.getButtonStatus().equalsIgnoreCase(CoreConstants.VISIT_STATE.VISIT_DONE)) {
+                        setVisitDone(context, viewHolder.dueButton);
+                    }
+                }
+            }else{
                 viewHolder.dueButton.setVisibility(View.VISIBLE);
-                if (heiFollowupRule.getButtonStatus().equalsIgnoreCase(CoreConstants.VISIT_STATE.NOT_DUE_YET)) {
-                    setVisitButtonNextDueStatus(context, FpUtil.sdf.format(heiFollowupRule.getDueDate()), viewHolder.dueButton);
-                }
-                if (heiFollowupRule.getButtonStatus().equalsIgnoreCase(CoreConstants.VISIT_STATE.DUE)) {
-                    setVisitButtonDueStatus(context, String.valueOf(Days.daysBetween(new DateTime(heiFollowupRule.getDueDate()), new DateTime()).getDays()), viewHolder.dueButton);
-                } else if (heiFollowupRule.getButtonStatus().equalsIgnoreCase(CoreConstants.VISIT_STATE.OVERDUE)) {
-                    setVisitButtonOverdueStatus(context, String.valueOf(Days.daysBetween(new DateTime(heiFollowupRule.getOverDueDate()), new DateTime()).getDays()), viewHolder.dueButton);
-                } else if (heiFollowupRule.getButtonStatus().equalsIgnoreCase(CoreConstants.VISIT_STATE.VISIT_DONE)) {
-                    setVisitDone(context, viewHolder.dueButton);
-                }
+                viewHolder.dueButton.setTextColor(context.getResources().getColor(org.smartregister.pmtct.R.color.medium_risk_text_orange));
+                viewHolder.dueButton.setText(R.string.transfer_out);
+                viewHolder.dueButton.setBackgroundResource(org.smartregister.chw.core.R.drawable.colorless_btn_selector);
+                viewHolder.dueButton.setOnClickListener(null);
             }
+
         }
 
         private void setVisitButtonNextDueStatus(Context context, String visitDue, Button dueButton) {

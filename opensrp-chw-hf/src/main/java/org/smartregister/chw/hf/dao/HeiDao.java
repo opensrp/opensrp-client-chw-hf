@@ -317,7 +317,7 @@ public class HeiDao extends AbstractDao {
 
     public static Date getHeiFollowUpVisitDate(String baseEntityID) {
         //for latest followup visit dates
-        String sql = "SELECT followup_visit_date FROM ec_hei_followup WHERE followup_status <> 'lost_to_followup' AND entity_id = '" + baseEntityID + "'"
+        String sql = "SELECT followup_visit_date FROM ec_hei_followup WHERE followup_status <> 'lost_to_followup' AND followup_status <> 'transfer_out' AND entity_id = '" + baseEntityID + "'"
                 + "ORDER BY visit_number DESC "
                 + "LIMIT 1";
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "followup_visit_date");
@@ -338,9 +338,10 @@ public class HeiDao extends AbstractDao {
 
     public static boolean hasTheChildTransferedOut(String baseEntityID) {
         String sql = "SELECT p.base_entity_id\n" +
-                "FROM ec_hei_followup as p\n" +
+                "FROM ec_hei as p\n" +
                 "         INNER JOIN (SELECT *\n" +
                 "                     FROM ec_hei_followup\n" +
+                "                     WHERE entity_id ='" + baseEntityID + "'" +
                 "                     ORDER BY visit_number DESC\n" +
                 "                     LIMIT 1) as pf on pf.entity_id = p.base_entity_id\n" +
                 "WHERE (pf.followup_status = 'transfer_out')\n" +

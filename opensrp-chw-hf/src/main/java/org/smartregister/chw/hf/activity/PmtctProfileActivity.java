@@ -1,10 +1,5 @@
 package org.smartregister.chw.hf.activity;
 
-import static com.vijay.jsonwizard.constants.JsonFormConstants.VALUE;
-import static org.smartregister.chw.core.utils.CoreConstants.EventType.PMTCT_COMMUNITY_FOLLOWUP;
-import static org.smartregister.client.utils.constants.JsonFormConstants.FIELDS;
-import static org.smartregister.client.utils.constants.JsonFormConstants.STEP1;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -16,10 +11,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.vijay.jsonwizard.utils.FormUtils;
 
@@ -69,7 +60,15 @@ import java.util.Locale;
 
 import javax.annotation.Nullable;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.recyclerview.widget.RecyclerView;
 import timber.log.Timber;
+
+import static com.vijay.jsonwizard.constants.JsonFormConstants.VALUE;
+import static org.smartregister.chw.core.utils.CoreConstants.EventType.PMTCT_COMMUNITY_FOLLOWUP;
+import static org.smartregister.client.utils.constants.JsonFormConstants.FIELDS;
+import static org.smartregister.client.utils.constants.JsonFormConstants.STEP1;
 
 public class PmtctProfileActivity extends CorePmtctProfileActivity {
     private static String baseEntityId;
@@ -273,6 +272,20 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
             setUpEditButton();
         }
 
+        if (HfPmtctDao.hasTheClientTransferedOut(baseEntityId)) {
+            showTransferOutLabel();
+        }
+
+    }
+
+    private void showTransferOutLabel() {
+        if (riskLabel != null) {
+            riskLabel.setVisibility(View.VISIBLE);
+            riskLabel.setTextSize(14);
+            riskLabel.setText(R.string.transfer_out);
+            riskLabel.setTextColor(context().getColorResource(org.smartregister.pmtct.R.color.medium_risk_text_orange));
+            riskLabel.setBackgroundResource(org.smartregister.pmtct.R.drawable.medium_risk_label);
+        }
     }
 
     @Override

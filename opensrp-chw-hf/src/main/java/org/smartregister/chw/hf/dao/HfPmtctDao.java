@@ -173,7 +173,7 @@ public class HfPmtctDao extends CorePmtctDao {
     }
 
     public static boolean isEligibleForBaselineInvestigationOnFollowupVisit(String baseEntityID) {
-        String sql = "SELECT p.base_entity_id FROM ec_pmtct_registration as p INNER JOIN (SELECT * FROM ec_pmtct_followup WHERE followup_status <> 'lost_to_followup' AND entity_id = '" + baseEntityID + "' ORDER BY visit_number DESC LIMIT 1) as pf on pf.entity_id = p.base_entity_id WHERE (pf.liver_function_test_conducted = 'test_not_conducted' OR pf.receive_liver_function_test_results='no' OR  pf.renal_function_test_conducted = 'test_not_conducted' OR pf.receive_renal_function_test_results='no')";
+        String sql = "SELECT p.base_entity_id FROM ec_pmtct_registration as p INNER JOIN (SELECT * FROM ec_pmtct_followup WHERE followup_status <> 'lost_to_followup' AND followup_status <> 'transfer_out' AND entity_id = '" + baseEntityID + "' ORDER BY visit_number DESC LIMIT 1) as pf on pf.entity_id = p.base_entity_id WHERE (pf.liver_function_test_conducted = 'test_not_conducted' OR pf.receive_liver_function_test_results='no' OR  pf.renal_function_test_conducted = 'test_not_conducted' OR pf.receive_renal_function_test_results='no')";
 
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "base_entity_id");
         List<String> res = readData(sql, dataMap);
@@ -266,7 +266,7 @@ public class HfPmtctDao extends CorePmtctDao {
     }
 
     public static boolean isLiverFunctionTestConducted(String baseEntityID) {
-        String sql = "SELECT p.base_entity_id FROM ec_pmtct_registration as p INNER JOIN (SELECT * FROM ec_pmtct_followup WHERE followup_status <> 'lost_to_followup' ORDER BY visit_number DESC LIMIT 1) as pf on pf.entity_id = p.base_entity_id WHERE (pf.liver_function_test_conducted = 'test_conducted') AND p.base_entity_id = '" + baseEntityID + "'";
+        String sql = "SELECT p.base_entity_id FROM ec_pmtct_registration as p INNER JOIN (SELECT * FROM ec_pmtct_followup WHERE followup_status <> 'lost_to_followup' AND followup_status <> 'transfer_out' ORDER BY visit_number DESC LIMIT 1) as pf on pf.entity_id = p.base_entity_id WHERE (pf.liver_function_test_conducted = 'test_conducted') AND p.base_entity_id = '" + baseEntityID + "'";
 
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "base_entity_id");
         List<String> res = readData(sql, dataMap);
@@ -275,7 +275,7 @@ public class HfPmtctDao extends CorePmtctDao {
     }
 
     public static boolean isLiverFunctionTestResultsFilled(String baseEntityID) {
-        String sql = "SELECT p.base_entity_id FROM ec_pmtct_registration as p INNER JOIN (SELECT * FROM ec_pmtct_followup WHERE followup_status <> 'lost_to_followup'  ORDER BY visit_number DESC LIMIT 1) as pf on pf.entity_id = p.base_entity_id WHERE (pf.receive_liver_function_test_results='yes') AND p.base_entity_id = '" + baseEntityID + "'";
+        String sql = "SELECT p.base_entity_id FROM ec_pmtct_registration as p INNER JOIN (SELECT * FROM ec_pmtct_followup WHERE followup_status <> 'lost_to_followup' AND followup_status <> 'transfer_out'  ORDER BY visit_number DESC LIMIT 1) as pf on pf.entity_id = p.base_entity_id WHERE (pf.receive_liver_function_test_results='yes') AND p.base_entity_id = '" + baseEntityID + "'";
 
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "base_entity_id");
         List<String> res = readData(sql, dataMap);
@@ -284,7 +284,7 @@ public class HfPmtctDao extends CorePmtctDao {
     }
 
     public static boolean isRenalFunctionTestConducted(String baseEntityID) {
-        String sql = "SELECT p.base_entity_id FROM ec_pmtct_registration as p INNER JOIN (SELECT * FROM ec_pmtct_followup WHERE followup_status <> 'lost_to_followup'  ORDER BY visit_number DESC LIMIT 1) as pf on pf.entity_id = p.base_entity_id WHERE (pf.renal_function_test_conducted = 'test_conducted') AND p.base_entity_id = '" + baseEntityID + "'";
+        String sql = "SELECT p.base_entity_id FROM ec_pmtct_registration as p INNER JOIN (SELECT * FROM ec_pmtct_followup WHERE followup_status <> 'lost_to_followup' AND followup_status <> 'transfer_out'  ORDER BY visit_number DESC LIMIT 1) as pf on pf.entity_id = p.base_entity_id WHERE (pf.renal_function_test_conducted = 'test_conducted') AND p.base_entity_id = '" + baseEntityID + "'";
 
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "base_entity_id");
         List<String> res = readData(sql, dataMap);
@@ -293,7 +293,7 @@ public class HfPmtctDao extends CorePmtctDao {
     }
 
     public static boolean isRenalFunctionTestResultsFilled(String baseEntityID) {
-        String sql = "SELECT p.base_entity_id FROM ec_pmtct_registration as p INNER JOIN (SELECT * FROM ec_pmtct_followup WHERE followup_status <> 'lost_to_followup'  ORDER BY visit_number DESC LIMIT 1) as pf on pf.entity_id = p.base_entity_id WHERE (pf.receive_renal_function_test_results='yes') AND p.base_entity_id = '" + baseEntityID + "'";
+        String sql = "SELECT p.base_entity_id FROM ec_pmtct_registration as p INNER JOIN (SELECT * FROM ec_pmtct_followup WHERE followup_status <> 'lost_to_followup' AND followup_status <> 'transfer_out'  ORDER BY visit_number DESC LIMIT 1) as pf on pf.entity_id = p.base_entity_id WHERE (pf.receive_renal_function_test_results='yes') AND p.base_entity_id = '" + baseEntityID + "'";
 
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "base_entity_id");
         List<String> res = readData(sql, dataMap);
@@ -306,6 +306,7 @@ public class HfPmtctDao extends CorePmtctDao {
                 "FROM ec_pmtct_registration as p\n" +
                 "         INNER JOIN (SELECT *\n" +
                 "                     FROM ec_pmtct_followup\n" +
+                "                     WHERE entity_id ='" + baseEntityID + "'" +
                 "                     ORDER BY visit_number DESC\n" +
                 "                     LIMIT 1) as pf on pf.entity_id = p.base_entity_id\n" +
                 "WHERE (pf.followup_status = 'transfer_out')\n" +
@@ -350,7 +351,7 @@ public class HfPmtctDao extends CorePmtctDao {
             memberObject.setGender(getCursorValue(cursor, "gender"));
             memberObject.setUniqueId(getCursorValue(cursor, "unique_id", ""));
             memberObject.setAge(getCursorValue(cursor, "dob"));
-            memberObject.setDod(getCursorValue(cursor, "dod",null));
+            memberObject.setDod(getCursorValue(cursor, "dod", null));
             memberObject.setFamilyBaseEntityId(getCursorValue(cursor, "relational_id", ""));
             memberObject.setRelationalId(getCursorValue(cursor, "relational_id", ""));
             memberObject.setPrimaryCareGiver(getCursorValue(cursor, "primary_caregiver"));

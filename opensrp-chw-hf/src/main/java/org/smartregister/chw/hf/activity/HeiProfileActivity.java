@@ -106,8 +106,11 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
         tvHeiResultsSubTitle.setText(R.string.view_child_hiv_results);
 
         rlHvlResults.setOnClickListener(this);
-
-        showRiskLabel(HeiDao.getRiskLevel(baseEntityId));
+        if (!HeiDao.hasTheChildTransferedOut(baseEntityId)) {
+            showRiskLabel(HeiDao.getRiskLevel(baseEntityId));
+        } else {
+            showTransferOutLabel();
+        }
 
         if (shouldShowRecordFollowupVisitButton()) {
             textViewRecordPmtct.setVisibility(View.VISIBLE);
@@ -140,6 +143,15 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
                 HeiDao.isEligibleForArvPrescriptionForHighAndLowRisk(memberObject.getBaseEntityId());
     }
 
+    private void showTransferOutLabel() {
+        if (riskLabel != null) {
+            riskLabel.setVisibility(View.VISIBLE);
+            riskLabel.setTextSize(14);
+            riskLabel.setText(R.string.transfer_out);
+            riskLabel.setTextColor(context().getColorResource(org.smartregister.pmtct.R.color.medium_risk_text_orange));
+            riskLabel.setBackgroundResource(org.smartregister.pmtct.R.drawable.medium_risk_label);
+        }
+    }
 
     @SuppressLint("DefaultLocale")
     @Override

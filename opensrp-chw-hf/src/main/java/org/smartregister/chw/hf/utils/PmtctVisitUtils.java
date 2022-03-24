@@ -3,17 +3,30 @@ package org.smartregister.chw.hf.utils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.smartregister.chw.anc.util.NCUtils;
+import org.smartregister.chw.core.model.ChildModel;
+import org.smartregister.chw.hf.dao.HeiDao;
 import org.smartregister.chw.hf.dao.HfPmtctDao;
+import org.smartregister.chw.hf.dao.HfPncDao;
 import org.smartregister.chw.pmtct.PmtctLibrary;
 import org.smartregister.chw.pmtct.domain.Visit;
 import org.smartregister.chw.pmtct.repository.VisitDetailsRepository;
 import org.smartregister.chw.pmtct.repository.VisitRepository;
 import org.smartregister.chw.pmtct.util.VisitUtils;
+import org.smartregister.clientandeventmodel.Event;
+import org.smartregister.clientandeventmodel.Obs;
+import org.smartregister.repository.AllSharedPreferences;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.UUID;
 
 import timber.log.Timber;
+
+import static org.smartregister.util.Utils.getAllSharedPreferences;
 
 public class PmtctVisitUtils extends VisitUtils {
     public static void processVisits() throws Exception {
@@ -79,6 +92,11 @@ public class PmtctVisitUtils extends VisitUtils {
 
         if (pmtctFollowupVisits.size() > 0) {
             processVisits(pmtctFollowupVisits, visitRepository, visitDetailsRepository);
+            for (Visit v : pmtctFollowupVisits) {
+                if (isWomanTransferOut(v)) {
+                    createHeiTransferOutUpdate(v.getJson());
+                }
+            }
         }
     }
 
@@ -113,6 +131,81 @@ public class PmtctVisitUtils extends VisitUtils {
             Timber.e(e);
         }
         return isContinuingWithServices;
+    }
+
+    public static boolean isWomanTransferOut(Visit visit) {
+        boolean isWomanTransferOut = false;
+        try {
+            JSONObject jsonObject = new JSONObject(visit.getJson());
+            JSONArray obs = jsonObject.getJSONArray("obs");
+            int size = obs.length();
+            for (int i = 0; i < size; i++) {
+                JSONObject checkObj = obs.getJSONObject(i);
+                if (checkObj.getString("fieldCode").equalsIgnoreCase("followup_status")) {
+                    JSONArray values = checkObj.getJSONArray("values");
+                    if (values.getString(0).equalsIgnoreCase("transfer_out")) {
+                        isWomanTransferOut = true;
+                        break;
+                    }
+                }
+            }
+        } catch (Exception e) {
+            Timber.e(e);
+        }
+        return isWomanTransferOut;
+    }
+
+    private static void createHeiTransferOutUpdate(String json) throws Exception {
+        JSONObject jsonObject = new JSONObject(json);
+        String motherBaseEntityId = jsonObject.getString("baseEntityId");
+        List<ChildModel> childModels = HfPncDao.childrenForPncWoman(motherBaseEntityId);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+        //process if the mother has children
+        if (childModels.size() > 0) {
+            for (ChildModel childModel : childModels) {
+                String childBaseEntityId = childModel.getBaseEntityId();
+                AllSharedPreferences sharedPreferences = getAllSharedPreferences();
+                Event baseEvent = (Event) new Event()
+                        .withBaseEntityId(childBaseEntityId)
+                        .withEventDate(new Date())
+                        .withEventType(Constants.Events.HEI_FOLLOWUP)
+                        .withEntityType(Constants.TableName.HEI_FOLLOWUP)
+                        .withFormSubmissionId(UUID.randomUUID().toString())
+                        .withDateCreated(new Date());
+
+                baseEvent.addObs(
+                        (new Obs())
+                                .withFormSubmissionField("followup_status")
+                                .withValue("transfer_out")
+                                .withFieldCode("followup_status")
+                                .withFieldType("transfer_out")
+                                .withFieldDataType("text")
+                                .withParentCode("")
+                                .withHumanReadableValues(new ArrayList<>()));
+                baseEvent.addObs(
+                        (new Obs())
+                                .withFormSubmissionField("visit_number")
+                                .withFieldCode("visit_number")
+                                .withValue(String.valueOf(HeiDao.getVisitNumber(childBaseEntityId)))
+                                .withFieldType("transfer_out")
+                                .withFieldDataType("text")
+                                .withParentCode("")
+                                .withHumanReadableValues(new ArrayList<>()));
+                baseEvent.addObs(
+                        (new Obs())
+                                .withFormSubmissionField("followup_visit_date")
+                                .withFieldCode("followup_visit_date")
+                                .withValue(sdf.format(new Date()))
+                                .withFieldType("followup_visit_date")
+                                .withFieldDataType("text")
+                                .withParentCode("")
+                                .withHumanReadableValues(new ArrayList<>()));
+                // tag docs
+                org.smartregister.chw.hf.utils.JsonFormUtils.tagSyncMetadata(sharedPreferences, baseEvent);
+                NCUtils.processEvent(baseEvent.getBaseEntityId(), new JSONObject(org.smartregister.chw.anc.util.JsonFormUtils.gson.toJson(baseEvent)));
+            }
+        }
+
     }
 
 }
