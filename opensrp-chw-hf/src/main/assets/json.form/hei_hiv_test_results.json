@@ -111,6 +111,42 @@
         }
       },
       {
+        "key": "ctc_number_available",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "ctc_number_available",
+        "type": "native_radio",
+        "label": "Do you have a CTC number?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an option"
+        },
+        "relevance": {
+          "step1:hiv_test_result": {
+            "type": "string",
+            "ex": "equalTo(.,\"positive\")"
+          }
+        }
+      },
+      {
         "key": "ctc_number",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -130,10 +166,14 @@
           "is_fixed_size": "true",
           "err":"Please enter a valid CTC Number"
         },
+        "v_required": {
+          "value": true,
+          "err": "Please enter a valid CTC Number"
+        },
         "relevance": {
-          "step1:hiv_test_result": {
+          "step1:ctc_number_available": {
             "type": "string",
-            "ex": "equalTo(.,\"positive\")"
+            "ex": "equalTo(.,\"yes\")"
           }
         }
       }
