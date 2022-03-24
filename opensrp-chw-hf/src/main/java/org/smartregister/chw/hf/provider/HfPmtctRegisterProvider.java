@@ -9,8 +9,14 @@ import android.graphics.Typeface;
 import android.view.View;
 
 import org.apache.commons.lang3.StringUtils;
+import org.joda.time.DateTime;
+import org.joda.time.Days;
 import org.smartregister.chw.core.provider.CorePmtctRegisterProvider;
+import org.smartregister.chw.core.rule.PmtctFollowUpRule;
+import org.smartregister.chw.core.utils.CoreConstants;
+import org.smartregister.chw.core.utils.FpUtil;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.dao.HfPmtctDao;
 import org.smartregister.chw.pmtct.fragment.BasePmtctRegisterFragment;
 import org.smartregister.chw.pmtct.util.DBConstants;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
@@ -87,4 +93,30 @@ public class HfPmtctRegisterProvider extends CorePmtctRegisterProvider {
         }
     }
 
+    @Override
+    protected void updateDueColumn(Context context, RegisterViewHolder viewHolder, PmtctFollowUpRule pmtctFollowUpRule) {
+        if(!HfPmtctDao.hasTheClientTransferedOut(pmtctFollowUpRule.getBaseEntityId())) {
+            if (pmtctFollowUpRule.getDueDate() != null) {
+                if (pmtctFollowUpRule.getButtonStatus().equalsIgnoreCase(CoreConstants.VISIT_STATE.NOT_DUE_YET)) {
+                    setVisitButtonNextDueStatus(context, FpUtil.sdf.format(pmtctFollowUpRule.getDueDate()), viewHolder.dueButton);
+                    viewHolder.dueButton.setVisibility(View.GONE);
+                }
+                if (pmtctFollowUpRule.getButtonStatus().equalsIgnoreCase(CoreConstants.VISIT_STATE.DUE)) {
+                    viewHolder.dueButton.setVisibility(View.VISIBLE);
+                    setVisitButtonDueStatus(context, String.valueOf(Days.daysBetween(new DateTime(pmtctFollowUpRule.getDueDate()), new DateTime()).getDays()), viewHolder.dueButton);
+                } else if (pmtctFollowUpRule.getButtonStatus().equalsIgnoreCase(CoreConstants.VISIT_STATE.OVERDUE)) {
+                    viewHolder.dueButton.setVisibility(View.VISIBLE);
+                    setVisitButtonOverdueStatus(context, String.valueOf(Days.daysBetween(new DateTime(pmtctFollowUpRule.getOverDueDate()), new DateTime()).getDays()), viewHolder.dueButton);
+                } else if (pmtctFollowUpRule.getButtonStatus().equalsIgnoreCase(CoreConstants.VISIT_STATE.VISIT_DONE)) {
+                    setVisitDone(context, viewHolder.dueButton);
+                }
+            }
+        }else{
+            viewHolder.dueButton.setVisibility(View.VISIBLE);
+            viewHolder.dueButton.setTextColor(context.getResources().getColor(org.smartregister.pmtct.R.color.medium_risk_text_orange));
+            viewHolder.dueButton.setText(R.string.transfer_out);
+            viewHolder.dueButton.setBackgroundResource(org.smartregister.chw.core.R.drawable.colorless_btn_selector);
+            viewHolder.dueButton.setOnClickListener(null);
+        }
+    }
 }

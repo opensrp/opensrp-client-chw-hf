@@ -270,8 +270,21 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
             setUpEditButton();
         }
 
+        if(HfPmtctDao.hasTheClientTransferedOut(baseEntityId)){
+            showTransferOutLabel();
+        }
+
     }
 
+    private void showTransferOutLabel() {
+        if (riskLabel != null) {
+            riskLabel.setVisibility(View.VISIBLE);
+            riskLabel.setTextSize(14);
+            riskLabel.setText(R.string.transfer_out);
+            riskLabel.setTextColor(context().getColorResource(org.smartregister.pmtct.R.color.medium_risk_text_orange));
+            riskLabel.setBackgroundResource(org.smartregister.pmtct.R.drawable.medium_risk_label);
+        }
+    }
     @Override
     public void refreshFamilyStatus(AlertStatus status) {
         super.refreshFamilyStatus(status);
