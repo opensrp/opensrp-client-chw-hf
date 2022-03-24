@@ -17,6 +17,7 @@ import org.smartregister.chw.anc.util.DBConstants;
 import org.smartregister.chw.anc.util.JsonFormUtils;
 import org.smartregister.chw.anc.util.NCUtils;
 import org.smartregister.chw.core.dao.ChwNotificationDao;
+import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.immunization.ImmunizationLibrary;
 import org.smartregister.repository.AllSharedPreferences;
@@ -107,8 +108,8 @@ public class AncRegisterInteractor extends BaseAncRegisterInteractor {
                 encounterType = form.optString(Constants.JSON_FORM_EXTRA.ENCOUNTER_TYPE);
 
                 if (encounterType.equalsIgnoreCase(Constants.EVENT_TYPE.PREGNANCY_OUTCOME)) {
-
-                    saveRegistration(form.toString(), table);
+                    String tableName = CoreConstants.TABLE_NAME.ANC_PREGNANCY_OUTCOME;
+                    saveRegistration(form.toString(), tableName);
 
                     String motherBaseId = form.optString(Constants.JSON_FORM_EXTRA.ENTITY_TYPE);
 
@@ -199,6 +200,7 @@ public class AncRegisterInteractor extends BaseAncRegisterInteractor {
     private void saveRegistration(final String jsonString, String table) throws Exception {
         AllSharedPreferences allSharedPreferences = AncLibrary.getInstance().context().allSharedPreferences();
         Event baseEvent = JsonFormUtils.processJsonForm(allSharedPreferences, jsonString, table);
+        JsonFormUtils.tagEvent(allSharedPreferences,baseEvent);
         String syncLocationId = ChwNotificationDao.getSyncLocationId(baseEvent.getBaseEntityId());
         if (syncLocationId != null) {
             // Allows setting the ID for sync purposes
