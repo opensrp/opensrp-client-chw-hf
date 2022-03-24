@@ -215,6 +215,9 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
                 Timber.e(e);
             }
             return true;
+        } else if (itemId == R.id.action_mark_as_deceased) {
+            removeMember();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -224,6 +227,7 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
         getMenuInflater().inflate(org.smartregister.chw.core.R.menu.hei_profile_menu, menu);
         menu.findItem(R.id.action_issue_pmtct_followup_referral).setVisible(true);
         menu.findItem(R.id.action_issue_pmtct_followup_referral).setTitle("Issue HEI referral");
+        menu.findItem(R.id.action_remove_member).setVisible(false);
         return true;
     }
 

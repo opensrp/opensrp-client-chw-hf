@@ -154,6 +154,9 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
 
                 startFormActivity(formJsonObject);
                 return true;
+            } else if (itemId == R.id.action_mark_as_deceased) {
+                removeMember();
+                return true;
             }
         } catch (JSONException e) {
             Timber.e(e);

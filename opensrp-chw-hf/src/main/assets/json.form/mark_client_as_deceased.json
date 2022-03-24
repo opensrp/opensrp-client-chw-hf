@@ -52,7 +52,7 @@
     }
   },
   "step1": {
-    "title": "Mark Client As Deseased",
+    "title": "Mark Client As Deceased",
     "fields": [
       {
         "key": "spacer",
