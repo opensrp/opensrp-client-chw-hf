@@ -5,7 +5,6 @@ import org.smartregister.chw.anc.domain.MemberObject;
 import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
 import org.smartregister.chw.core.dao.PNCDao;
 import org.smartregister.chw.core.interactor.CoreAncHomeVisitInteractor;
-import org.smartregister.chw.hf.dao.HeiDao;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hf.utils.PncVisitUtils;
 
