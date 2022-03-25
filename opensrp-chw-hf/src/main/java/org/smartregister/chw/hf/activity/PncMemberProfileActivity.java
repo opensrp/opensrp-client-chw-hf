@@ -77,6 +77,7 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
         passToolbarTitle(activity, intent);
         activity.startActivity(intent);
     }
+
     public static void startMe(Activity activity, String baseEntityID) {
         Intent intent = new Intent(activity, PncMemberProfileActivity.class);
         intent.putExtra(Constants.ANC_MEMBER_OBJECTS.BASE_ENTITY_ID, baseEntityID);
@@ -198,7 +199,7 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
     protected void onResume() {
         super.onResume();
         setupViews();
-        if(!shouldShowChildViews){
+        if (!shouldShowChildViews) {
             RelativeLayout rlChildFollowup = findViewById(R.id.child_followup_row);
             childFollowupRecyclerView.setVisibility(View.GONE);
             rlChildFollowup.setVisibility(View.GONE);
@@ -314,8 +315,6 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
         if (latestVisit != null && !latestVisit.getProcessed()) {
             showVisitInProgress();
         }
-
-        showChildFollowupViews();
     }
 
     @Override
@@ -428,6 +427,7 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
     }
 
     private void showChildFollowupViews() {
+        //shows a recyclerview to record child visits for mother
         RelativeLayout rlChildFollowup = findViewById(R.id.child_followup_row);
         childFollowupRecyclerView = findViewById(R.id.child_followup_recycler_view);
         childFollowupRecyclerView.setLayoutManager(new LinearLayoutManager(this));
