@@ -7,6 +7,7 @@ import org.smartregister.chw.core.job.StockUsageReportJob;
 import org.smartregister.chw.core.job.VaccineRecurringServiceJob;
 import org.smartregister.chw.hf.BuildConfig;
 import org.smartregister.chw.hf.job.MarkPmtctAndHeiLtfServiceJob;
+import org.smartregister.chw.hf.job.ProcessAncAndPncVisitsServiceJob;
 import org.smartregister.immunization.job.VaccineServiceJob;
 import org.smartregister.job.ImageUploadServiceJob;
 import org.smartregister.job.PlanIntentServiceJob;
@@ -50,6 +51,9 @@ public class LoginInteractor extends BaseLoginInteractor implements BaseLoginCon
 
         ChwIndicatorGeneratingJob.scheduleJob(ChwIndicatorGeneratingJob.TAG, TimeUnit.MINUTES.toMinutes(BuildConfig.REPORT_INDICATOR_GENERATION_MINUTES), getFlexValue(BuildConfig.REPORT_INDICATOR_GENERATION_MINUTES));
         MarkPmtctAndHeiLtfServiceJob.scheduleJob(MarkPmtctAndHeiLtfServiceJob.TAG, TimeUnit.MINUTES.toMinutes(BuildConfig.REPORT_INDICATOR_GENERATION_MINUTES), getFlexValue(BuildConfig.REPORT_INDICATOR_GENERATION_MINUTES));
+
+        ProcessAncAndPncVisitsServiceJob.scheduleJob(ProcessAncAndPncVisitsServiceJob.TAG, TimeUnit.MINUTES.toMinutes(
+                BuildConfig.DATA_SYNC_DURATION_MINUTES), getFlexValue(BuildConfig.DATA_SYNC_DURATION_MINUTES));
     }
 
     @Override
@@ -67,5 +71,6 @@ public class LoginInteractor extends BaseLoginInteractor implements BaseLoginCon
         SyncLocationsByLevelAndTagsServiceJob.scheduleJobImmediately(SyncLocationsByLevelAndTagsServiceJob.TAG);
         ChwIndicatorGeneratingJob.scheduleJobImmediately(ChwIndicatorGeneratingJob.TAG);
         MarkPmtctAndHeiLtfServiceJob.scheduleJobImmediately(MarkPmtctAndHeiLtfServiceJob.TAG);
+        ProcessAncAndPncVisitsServiceJob.scheduleJobImmediately(ProcessAncAndPncVisitsServiceJob.TAG);
     }
 }
