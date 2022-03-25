@@ -156,6 +156,12 @@
             "text": "Referred for other FP services",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_referred_fp_services"
+          },
+          {
+            "key": "chk_none",
+            "text": "None",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_none"
           }
         ],
         "v_required": {

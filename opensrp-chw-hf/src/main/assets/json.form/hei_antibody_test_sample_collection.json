@@ -47,28 +47,28 @@
     "encounter_location": ""
   },
   "step1": {
-    "title": "Clinician Details",
+    "title": "Healthcare Provider's Details",
     "fields": [
       {
         "key": "clinician_name",
         "type": "edit_text",
-        "hint": "Clinician Name",
+        "hint": "Healthcare Provider's Name",
         "openmrs_entity_id": "clinician_name",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "v_regex": {
           "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
-          "err": "Please enter the clinician name"
+          "err": "Please enter the healthcare provider's name"
         },
         "v_required": {
           "value": true,
-          "err": "Please enter the clinician name"
+          "err": "Please enter the healthcare provider's name"
         }
       },
       {
         "key": "clinician_position",
         "type": "spinner",
-        "hint": "Clinician Position",
+        "hint": "Healthcare Provider's Position",
         "openmrs_entity_id": "clinician_position",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -76,29 +76,32 @@
           "Medical Officer",
           "Assistant Medical Officer",
           "Clinical Officer",
-          "Assistant Clinical Officer"
+          "Assistant Clinical Officer",
+          "Nurse"
         ],
         "keys": [
           "medical_officer",
           "assistant_medical_officer",
           "clinical_officer",
-          "assistant_clinical_officer"
+          "assistant_clinical_officer",
+          "nurse"
         ],
         "openmrs_choice_ids": {
           "medical_officer": "medical_officer",
           "assistant_medical_officer": "assistant_medical_officer" ,
           "clinical_officer": "clinical_officer" ,
-          "assistant_clinical_officer":  "assistant_clinical_officer"
+          "assistant_clinical_officer":  "assistant_clinical_officer",
+          "nurse": "nurse"
         },
         "v_required": {
           "value": true,
-          "err": "Please enter the clinician position"
+          "err": "Please enter the healthcare provider's position"
         }
       },
       {
         "key": "clinician_phone_number",
         "type": "edit_text",
-        "hint": "Clinician Phone Number",
+        "hint": "Healthcare Provider's Phone Number",
         "edit_type": "number",
         "openmrs_entity_id": "clinician_phone_number",
         "openmrs_entity": "concept",
@@ -113,7 +116,7 @@
         },
         "v_required": {
           "value": true,
-          "err": "Please enter the clinician phone number"
+          "err": "Please enter the healthcare provider's phone number"
         }
       },
       {

@@ -65,6 +65,7 @@ import static org.smartregister.util.Utils.getAllSharedPreferences;
 
 public class PncMemberProfileActivity extends CorePncMemberProfileActivity implements PncMemberProfileContract.View {
 
+    private boolean shouldShowChildViews = true;
     private CommonPersonObjectClient commonPersonObjectClient;
     private PncMemberProfilePresenter pncMemberProfilePresenter;
     private RecyclerView childFollowupRecyclerView;
@@ -197,6 +198,11 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
     protected void onResume() {
         super.onResume();
         setupViews();
+        if(!shouldShowChildViews){
+            RelativeLayout rlChildFollowup = findViewById(R.id.child_followup_row);
+            childFollowupRecyclerView.setVisibility(View.GONE);
+            rlChildFollowup.setVisibility(View.GONE);
+        }
         ((PncMemberProfileContract.Presenter) presenter()).fetchReferralTasks();
         if (notificationAndReferralRecyclerView != null && notificationAndReferralRecyclerView.getAdapter() != null) {
             notificationAndReferralRecyclerView.getAdapter().notifyDataSetChanged();
@@ -262,6 +268,7 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
 
                         NCUtils.processEvent(baseEvent.getBaseEntityId(), new JSONObject(org.smartregister.chw.pmtct.util.JsonFormUtils.gson.toJson(baseEvent)));
                         Toast.makeText(this, getString(R.string.saved_child_followup), Toast.LENGTH_SHORT).show();
+                        shouldShowChildViews = false;
                     } catch (Exception ex) {
                         Timber.e(ex);
                     }
