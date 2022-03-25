@@ -248,7 +248,10 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "umbilical_cord",
         "type": "check_box",
-        "label": "Umbilical Cord",
+        "label": "Umbilical Cord Assessment",
+        "exclusive": [
+          "chk_no_abnormalities"
+        ],
         "options": [
           {
             "key": "chk_smell_bad",
@@ -283,6 +286,13 @@
             "text": "Delayed off",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_delayed_off",
+            "value": "false"
+          },
+          {
+            "key": "chk_no_abnormalities",
+            "text": "No Abnormalities",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_no_abnormalities",
             "value": "false"
           }
         ],

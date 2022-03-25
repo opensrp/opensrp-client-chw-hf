@@ -388,7 +388,7 @@
       {
         "key": "breast_milk_flow",
         "type": "native_radio",
-        "label": "Breast Milk Flow",
+        "label": "Does the Mother have Breast Milk Flow?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "breast_milk_flow",
         "openmrs_entity_parent": "",
@@ -414,7 +414,7 @@
       {
         "key": "bruised_nipples",
         "type": "native_radio",
-        "label": "Bruised Nipples",
+        "label": "Does the Mother have Bruised Nipples?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "bruised_nipples",
         "openmrs_entity_parent": "",
@@ -440,7 +440,7 @@
       {
         "key": "enrgorgement_mastitis",
         "type": "native_radio",
-        "label": "Engorgement or Mastitis",
+        "label": "Does the Mother have Engorgement or Mastitis?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "enrgorgement_mastitis",
         "openmrs_entity_parent": "",
@@ -466,7 +466,7 @@
       {
         "key": "abscess",
         "type": "native_radio",
-        "label": "Abscess",
+        "label": "Does the Mother have Abscess?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "abscess",
         "openmrs_entity_parent": "",
@@ -494,29 +494,26 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "uterus_assessment",
-        "type": "check_box",
+        "type": "native_radio",
         "label": "Uterus Assessment",
         "options": [
           {
             "key": "chk_normal_involution",
             "text": "Normal/involution has taken place",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_normal_involution",
-            "value": "false"
+            "openmrs_entity_id": "chk_normal_involution"
           },
           {
             "key": "chk_pain",
             "text": "Pain",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_pain",
-            "value": "false"
+            "openmrs_entity_id": "chk_pain"
           },
           {
             "key": "chk_distended",
             "text": "Distended",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_distended",
-            "value": "false"
+            "openmrs_entity_id": "chk_distended"
           }
         ],
         "v_required": {
@@ -585,7 +582,7 @@
       {
         "key": "fistula",
         "type": "native_radio",
-        "label": "Fistula",
+        "label": "Does the Mother have Fistula?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "fistula",
         "openmrs_entity_parent": "",
@@ -620,7 +617,7 @@
       {
         "key": "puerperal_psychosis",
         "type": "native_radio",
-        "label": "Puerperal Psychosis",
+        "label": "Does the Mother have Puerperal Psychosis?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "puerperal_psychosis",
         "openmrs_entity_parent": "",
@@ -646,7 +643,7 @@
       {
         "key": "mental_illness_symptom",
         "type": "native_radio",
-        "label": "Any other symptom of Mental Illness",
+        "label": "Any other symptom of Mental Illness?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "mental_illness_symptom",
         "openmrs_entity_parent": "",
