@@ -393,15 +393,19 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
     @Override
     protected void removePncMember() {
         //creates an event to close pnc visits and removes member from pnc register
+        closePncMemberVisits(baseEntityID);
+    }
+
+    public static void closePncMemberVisits(String baseEntityId){
         AllSharedPreferences sharedPreferences = getAllSharedPreferences();
         Event baseEvent = (Event) new Event()
-                .withBaseEntityId(baseEntityID)
+                .withBaseEntityId(baseEntityId)
                 .withEventDate(new Date())
                 .withEventType(org.smartregister.chw.hf.utils.Constants.Events.CLOSE_PNC_VISITS)
                 .withFormSubmissionId(org.smartregister.util.JsonFormUtils.generateRandomUUIDString())
                 .withEntityType(CoreConstants.TABLE_NAME.PNC_MEMBER)
                 .withProviderId(sharedPreferences.fetchRegisteredANM())
-                .withLocationId(ChwNotificationDao.getSyncLocationId(baseEntityID))
+                .withLocationId(ChwNotificationDao.getSyncLocationId(baseEntityId))
                 .withTeamId(sharedPreferences.fetchDefaultTeamId(sharedPreferences.fetchRegisteredANM()))
                 .withTeam(sharedPreferences.fetchDefaultTeam(sharedPreferences.fetchRegisteredANM()))
                 .withClientDatabaseVersion(BuildConfig.DATABASE_VERSION)
