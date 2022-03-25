@@ -7,6 +7,7 @@ import org.smartregister.chw.core.job.StockUsageReportJob;
 import org.smartregister.chw.core.job.VaccineRecurringServiceJob;
 import org.smartregister.chw.hf.BuildConfig;
 import org.smartregister.chw.hf.job.MarkPmtctAndHeiLtfServiceJob;
+import org.smartregister.chw.hf.job.PncCloseDateServiceJob;
 import org.smartregister.chw.hf.job.ProcessAncAndPncVisitsServiceJob;
 import org.smartregister.immunization.job.VaccineServiceJob;
 import org.smartregister.job.ImageUploadServiceJob;
@@ -54,6 +55,8 @@ public class LoginInteractor extends BaseLoginInteractor implements BaseLoginCon
 
         ProcessAncAndPncVisitsServiceJob.scheduleJob(ProcessAncAndPncVisitsServiceJob.TAG, TimeUnit.MINUTES.toMinutes(
                 BuildConfig.DATA_SYNC_DURATION_MINUTES), getFlexValue(BuildConfig.DATA_SYNC_DURATION_MINUTES));
+        PncCloseDateServiceJob.scheduleJob(PncCloseDateServiceJob.TAG, TimeUnit.MINUTES.toMinutes(
+                BuildConfig.STOCK_USAGE_REPORT_MINUTES), getFlexValue(BuildConfig.STOCK_USAGE_REPORT_MINUTES));
     }
 
     @Override
@@ -72,5 +75,6 @@ public class LoginInteractor extends BaseLoginInteractor implements BaseLoginCon
         ChwIndicatorGeneratingJob.scheduleJobImmediately(ChwIndicatorGeneratingJob.TAG);
         MarkPmtctAndHeiLtfServiceJob.scheduleJobImmediately(MarkPmtctAndHeiLtfServiceJob.TAG);
         ProcessAncAndPncVisitsServiceJob.scheduleJobImmediately(ProcessAncAndPncVisitsServiceJob.TAG);
+        PncCloseDateServiceJob.scheduleJobImmediately(PncCloseDateServiceJob.TAG);
     }
 }

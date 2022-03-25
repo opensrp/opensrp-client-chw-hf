@@ -66,6 +66,8 @@ public class HfJobCreator implements JobCreator {
                 return new MarkPmtctAndHeiLtfServiceJob();
             case ProcessAncAndPncVisitsServiceJob.TAG:
                 return new ProcessAncAndPncVisitsServiceJob();
+            case PncCloseDateServiceJob.TAG:
+                return new PncCloseDateServiceJob();
             default:
                 Timber.d("Please create job and specify the right job tag");
                 return null;
