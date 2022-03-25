@@ -48,7 +48,7 @@ public class HfPncDao extends PNCDao {
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "hiv_status");
         List<String> res = readData(sql, dataMap);
 
-        return res != null && res.size() > 0 && res.get(0) != null;
+        return res != null && res.size() > 0;
     }
 
     public static boolean isMotherEligibleForPmtctRegistration(String baseEntityId) {
