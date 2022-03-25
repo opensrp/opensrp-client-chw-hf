@@ -180,6 +180,34 @@ public class PmtctReportsViewActivity extends SecuredActivity {
             df.setMaximumFractionDigits(2);
 
 
+            int A24 = PmtctReportDao.getPmtctReportPerIndicatorCode("A24", now);
+            int B24 = PmtctReportDao.getPmtctReportPerIndicatorCode("B24", now);
+            int C24 = PmtctReportDao.getPmtctReportPerIndicatorCode("C24", now);
+            int D24 = A24 + B24 - C24;
+
+            int H24 = PmtctReportDao.getPmtctReportPerIndicatorCode("H24", now);
+
+            float I24 = 0;
+            if (D24 > 0)
+                I24 = ((H24 * 1f) / D24) * 100;
+
+            int J24 = PmtctReportDao.getPmtctReportPerIndicatorCode("J24", now);
+            int K24 = PmtctReportDao.getPmtctReportPerIndicatorCode("H24", now);
+            int L24 = J24 - K24;
+
+            int M24 = PmtctReportDao.getPmtctReportPerIndicatorCode("M24", now);
+            int N24 = PmtctReportDao.getPmtctReportPerIndicatorCode("N24", now);
+
+            float R24 = 0;
+            if (L24 > 0)
+                I24 = (((M24+N24) * 1f) / L24) * 100;
+
+            int B = PmtctReportDao.getPmtctReportPerIndicatorCode("B", now);
+            int C = PmtctReportDao.getPmtctReportPerIndicatorCode("C", now);
+            int D = PmtctReportDao.getPmtctReportPerIndicatorCode("D", now);
+            int E = B+C+D;
+
+
             try {
                 jsonObject.put("B3a", PmtctReportDao.getPmtctReportPerIndicatorCode("B3a", now));
                 jsonObject.put("B3b", PmtctReportDao.getPmtctReportPerIndicatorCode("B3b", now));
@@ -214,6 +242,37 @@ public class PmtctReportsViewActivity extends SecuredActivity {
                 jsonObject.put("P12", PmtctReportDao.getPmtctReportPerIndicatorCode("P12", now));
                 jsonObject.put("Q12a", PmtctReportDao.getPmtctReportPerIndicatorCode("Q12a", now));
                 jsonObject.put("Q12b", PmtctReportDao.getPmtctReportPerIndicatorCode("Q12b", now));
+
+                jsonObject.put("A24", A24);
+                jsonObject.put("B24", B24);
+                jsonObject.put("C24", C24);
+                jsonObject.put("D24", D24);
+
+                jsonObject.put("E24", PmtctReportDao.getPmtctReportPerIndicatorCode("E24", now));
+                jsonObject.put("F24", PmtctReportDao.getPmtctReportPerIndicatorCode("F24", now));
+                jsonObject.put("G24", PmtctReportDao.getPmtctReportPerIndicatorCode("G24", now));
+                jsonObject.put("H24", H24);
+                jsonObject.put("I24", I24);
+
+                jsonObject.put("J24", J24);
+                jsonObject.put("K24", K24);
+                jsonObject.put("L24", L24);
+
+
+                jsonObject.put("M24", M24);
+                jsonObject.put("N24", N24);
+                jsonObject.put("O24", PmtctReportDao.getPmtctReportPerIndicatorCode("O24", now));
+                jsonObject.put("P24", PmtctReportDao.getPmtctReportPerIndicatorCode("P24", now));
+                jsonObject.put("Q24", PmtctReportDao.getPmtctReportPerIndicatorCode("Q24", now));
+                jsonObject.put("R24", R24);
+
+                jsonObject.put("A", PmtctReportDao.getPmtctReportPerIndicatorCode("A", now));
+
+                jsonObject.put("B", B);
+                jsonObject.put("C", C);
+                jsonObject.put("D", D);
+                jsonObject.put("E", E);
+
             } catch (JSONException e) {
                 Timber.e(e);
             }
