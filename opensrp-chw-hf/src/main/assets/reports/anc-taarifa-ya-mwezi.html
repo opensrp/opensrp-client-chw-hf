@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taarifa ya miezi 12</title>
+    <style>
+        body {
+            margin: 5px;
+        }
+
+        table {
+            background-color: #fff;
+            box-shadow: 3px 1px 0px #f6f6f6;
+            border: none;
+            width: 100%;
+            border-collapse: collapse
+        }
+
+        th {
+            padding: 4px;
+            background: #c4c4c4;
+            font-size: .5rem;
+            font-weight: 300;
+        }
+
+        td {
+            text-align: initial;
+            font-size: .71rem;
+        }
+
+        .list-title {
+            text-align: initial !important;
+            padding: 5px;
+            font-size: 9px
+        }
+
+        tbody tr>td:nth-child(1) {
+            text-align: center;
+        }
+
+        tr>td:nth-child(n+3) {
+            text-align: center;
+            width: 10px !important;
+        }
+
+    </style>
+</head>
+
+<body onload="onLoad()">
+<table border="1">
+    <thead>
+    <tr>
+        <th>Na.</th>
+        <th>Maelezo</th>
+        <th>Umri Miaka 10 -14</th>
+        <th>Umri Miaka 15 - 19</th>
+        <th>Umri Miaka 20 - 24</th>
+        <th>Umri Miaka 25 - 29</th>
+        <th>Umri Miaka 30 - 34</th>
+        <th> Umri Miaka 35 na zaidi</th>
+        <th>Jumla</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>1</td>
+        <td class="list-title">Idadi ya Wajawazito Waliotegemewa</td>
+        <td id="1-10-14"></td>
+        <td id="1-15-19"></td>
+        <td id="1-20-24"></td>
+        <td id="1-25-29"></td>
+        <td id="1-30-34"></td>
+        <td id="1-35+"></td>
+        <td id="1-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>2</td>
+        <td class="list-title">Hudhurio la kwanza</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+
+    <tr>
+        <td>2a</td>
+        <td class="list-title">Umri wa mimba chini ya wiki 12 (&les;12weeks)</td>
+        <td id="2a-10-14"></td>
+        <td id="2a-15-19"></td>
+        <td id="2a-20-24"></td>
+        <td id="2a-25-29"></td>
+        <td id="2a-30-34"></td>
+        <td id="2a-35+"></td>
+        <td id="2a-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>2b</td>
+        <td class="list-title">Umri wa mimba wiki 12 au zaidi (12+ weeks)</td>
+        <td id="2b-10-14"></td>
+        <td id="2b-15-19"></td>
+        <td id="2b-20-24"></td>
+        <td id="2b-25-29"></td>
+        <td id="2b-30-34"></td>
+        <td id="2b-35+"></td>
+        <td id="2b-jumla"></td>
+    </tr>
+
+    <tr>
+        <td></td>
+        <td class="list-title">Jumla ya hudhurio la Kwanza (2a + 2b)</td>
+        <td id="2a+2b-10-14"></td>
+        <td id="2a+2b-15-19"></td>
+        <td id="2a+2b-20-24"></td>
+        <td id="2a+2b-25-29"></td>
+        <td id="2a+2b-30-34"></td>
+        <td id="2a+2b-35+"></td>
+        <td id="2a+2b-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>2c</td>
+        <td class="list-title">Wateja wote wa marudio</td>
+        <td id="2c-10-14"></td>
+        <td id="2c-15-19"></td>
+        <td id="2c-20-24"></td>
+        <td id="2c-25-29"></td>
+        <td id="2c-30-34"></td>
+        <td id="2c-35+"></td>
+        <td id="2c-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>2d</td>
+        <td class="list-title">Hudhrio la nne au zaidi wajawazito wote</td>
+        <td id="2d-10-14"></td>
+        <td id="2d-15-19"></td>
+        <td id="2d-20-24"></td>
+        <td id="2d-25-29"></td>
+        <td id="2d-30-34"></td>
+        <td id="2d-35+"></td>
+        <td id="2d-jumla"></td>
+    </tr>
+
+    <tr>
+        <td></td>
+        <td class="list-title">Jumla ya mahudhurio yote (2a+2b+2c)</td>
+        <td id="2a+2b+2c-10-14"></td>
+        <td id="2a+2b+2c-15-19"></td>
+        <td id="2a+2b+2c-20-24"></td>
+        <td id="2a+2b+2c-25-29"></td>
+        <td id="2a+2b+2c-30-34"></td>
+        <td id="2a+2b+2c-35+"></td>
+        <td id="2a+2b+2c-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>2e</td>
+        <td class="list-title">Idadi ya wajawazito waliopima wingi wa damu hudhurio la kwanza</td>
+        <td id="2e-10-14"></td>
+        <td id="2e-15-19"></td>
+        <td id="2e-20-24"></td>
+        <td id="2e-25-29"></td>
+        <td id="2e-30-34"></td>
+        <td id="2e-35+"></td>
+        <td id="2e-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>3</td>
+        <td class="list-title">Wajawazito waliopewa Chanjo ya TT2+</td>
+        <td id="3-10-14"></td>
+        <td id="3-15-19"></td>
+        <td id="3-20-24"></td>
+        <td id="3-25-29"></td>
+        <td id="3-30-34"></td>
+        <td id="3-35+"></td>
+        <td id="3-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>4</td>
+        <td class="list-title">Vidokezo vya Hatari</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+
+    <tr>
+        <td>4a</td>
+        <td class="list-title">Mimba 4 au zaidi</td>
+        <td id="4a-10-14"></td>
+        <td id="4a-15-19"></td>
+        <td id="4a-20-24"></td>
+        <td id="4a-25-29"></td>
+        <td id="4a-30-34"></td>
+        <td id="4a-35+"></td>
+        <td id="4a-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>4b</td>
+        <td class="list-title">Umri chini ya miaka 20</td>
+        <td id="4b-10-14"></td>
+        <td id="4b-15-19"></td>
+        <td id="4b-20-24"></td>
+        <td id="4b-25-29"></td>
+        <td id="4b-30-34"></td>
+        <td id="4b-35+"></td>
+        <td id="4b-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>4c</td>
+        <td class="list-title">Umri zaidi ya miaka 35 kwa mimba ya kwanza</td>
+        <td id="4c-10-14"></td>
+        <td id="4c-15-19"></td>
+        <td id="4c-20-24"></td>
+        <td id="4c-25-29"></td>
+        <td id="4c-30-34"></td>
+        <td id="4c-35+"></td>
+        <td id="4c-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>4d</td>
+        <td class="list-title">Upungufu mkubwa wa damu &les;8.5g/dl - Anaemia hudhurio la kwanza
+        </td>
+        <td id="4d-10-14"></td>
+        <td id="4d-15-19"></td>
+        <td id="4d-20-24"></td>
+        <td id="4d-25-29"></td>
+        <td id="4d-30-34"></td>
+        <td id="4d-35+"></td>
+        <td id="4d-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>4e</td>
+        <td class="list-title">Shinikizo la damu (BP => 140/90mm/hg)</td>
+        <td id="4e-10-14"></td>
+        <td id="4e-15-19"></td>
+        <td id="4e-20-24"></td>
+        <td id="4e-25-29"></td>
+        <td id="4e-30-34"></td>
+        <td id="4e-35+"></td>
+        <td id="4e-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>4f</td>
+        <td class="list-title">Kifua kikuu</td>
+        <td id="4f-10-14"></td>
+        <td id="4f-15-19"></td>
+        <td id="4f-20-24"></td>
+        <td id="4f-25-29"></td>
+        <td id="4f-30-34"></td>
+        <td id="4f-35+"></td>
+        <td id="4f-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>4g</td>
+        <td class="list-title">Sukari kwenye mkojo</td>
+        <td id="4g-10-14"></td>
+        <td id="4g-15-19"></td>
+        <td id="4g-20-24"></td>
+        <td id="4g-25-29"></td>
+        <td id="4g-30-34"></td>
+        <td id="4g-35+"></td>
+        <td id="4g-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>4h</td>
+        <td class="list-title">Protein kwenye mkojo</td>
+        <td id="4h-10-14"></td>
+        <td id="4h-15-19"></td>
+        <td id="4h-20-24"></td>
+        <td id="4h-25-29"></td>
+        <td id="4h-30-34"></td>
+        <td id="4h-35+"></td>
+        <td id="4h-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>4i</td>
+        <td class="list-title">Wajawazito waliopima Kaswende</td>
+        <td id="4i-10-14"></td>
+        <td id="4i-15-19"></td>
+        <td id="4i-20-24"></td>
+        <td id="4i-25-29"></td>
+        <td id="4i-30-34"></td>
+        <td id="4i-35+"></td>
+        <td id="4i-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>4j</td>
+        <td class="list-title">Waliogundulika na maambukizi ya Kaswende</td>
+        <td id="4j-10-14"></td>
+        <td id="4j-15-19"></td>
+        <td id="4j-20-24"></td>
+        <td id="4j-25-29"></td>
+        <td id="4j-30-34"></td>
+        <td id="4j-35+"></td>
+        <td id="4j-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>4k</td>
+        <td class="list-title">Waliopata matibabu ya Kaswende</td>
+        <td id="4k-10-14"></td>
+        <td id="4k-15-19"></td>
+        <td id="4k-20-24"></td>
+        <td id="4k-25-29"></td>
+        <td id="4k-30-34"></td>
+        <td id="4k-35+"></td>
+        <td id="4k-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>4l</td>
+        <td class="list-title">Wenza/Waume waliopima Kaswende</td>
+        <td id="4l-10-14"></td>
+        <td id="4l-15-19"></td>
+        <td id="4l-20-24"></td>
+        <td id="4l-25-29"></td>
+        <td id="4l-30-34"></td>
+        <td id="4l-35+"></td>
+        <td id="4l-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>4m</td>
+        <td class="list-title">Wenza/Waume Waliogundulika na maambukizi ya Kaswende</td>
+        <td id="4m-10-14"></td>
+        <td id="4m-15-19"></td>
+        <td id="4m-20-24"></td>
+        <td id="4m-25-29"></td>
+        <td id="4m-30-34"></td>
+        <td id="4m-35+"></td>
+        <td id="4m-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>4n</td>
+        <td class="list-title">Wenza/Waume waliopata matibabu ya Kaswende</td>
+        <td id="4n-10-14"></td>
+        <td id="4n-15-19"></td>
+        <td id="4n-20-24"></td>
+        <td id="4n-25-29"></td>
+        <td id="4n-30-34"></td>
+        <td id="4n-35+"></td>
+        <td id="4n-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>4o</td>
+        <td class="list-title">Waliopatikana na magonjwa ya maambukizo ya ngono yasiyo kaswende</td>
+        <td id="4o-10-14"></td>
+        <td id="4o-15-19"></td>
+        <td id="4o-20-24"></td>
+        <td id="4o-25-29"></td>
+        <td id="4o-30-34"></td>
+        <td id="4o-35+"></td>
+        <td id="4o-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>4p</td>
+        <td class="list-title">Waliopata tiba sahihi ya magonjwa ya maambukizo ya ngono yasiyo
+            kaswende
+        </td>
+        <td id="4p-10-14"></td>
+        <td id="4p-15-19"></td>
+        <td id="4p-20-24"></td>
+        <td id="4p-25-29"></td>
+        <td id="4p-30-34"></td>
+        <td id="4p-35+"></td>
+        <td id="4p-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>4q</td>
+        <td class="list-title">Wenza/waume waliopatikana na magonjwa ya maambukizo ya ngono yasiyo
+            kaswende
+        </td>
+        <td id="4q-10-14"></td>
+        <td id="4q-15-19"></td>
+        <td id="4q-20-24"></td>
+        <td id="4q-25-29"></td>
+        <td id="4q-30-34"></td>
+        <td id="4q-35+"></td>
+        <td id="4q-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>4r</td>
+        <td class="list-title">Wenza/waume waliopata tiba sahihi ya magonjwa ya maambukizo ya ngono
+            yasiyo
+            kaswende
+        </td>
+        <td id="4r-10-14"></td>
+        <td id="4r-15-19"></td>
+        <td id="4r-20-24"></td>
+        <td id="4r-25-29"></td>
+        <td id="4r-30-34"></td>
+        <td id="4r-35+"></td>
+        <td id="4r-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>5</td>
+        <td class="list-title">PMTCT</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+
+    <tr>
+        <td>5a</td>
+        <td class="list-title">Tayari wana maambukizi ya VVU kabla ya kuanza kliniki</td>
+        <td id="5a-10-14"></td>
+        <td id="5a-15-19"></td>
+        <td id="5a-20-24"></td>
+        <td id="5a-25-29"></td>
+        <td id="5a-30-34"></td>
+        <td id="5a-35+"></td>
+        <td id="5a-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>5b</td>
+        <td class="list-title">Wajawazito wote waliopata ushauri nasaha kabla ya kupima VVU
+            kliniki
+        </td>
+        <td id="5b-10-14"></td>
+        <td id="5b-15-19"></td>
+        <td id="5b-20-24"></td>
+        <td id="5b-25-29"></td>
+        <td id="5b-30-34"></td>
+        <td id="5b-35+"></td>
+        <td id="5b-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>5c</td>
+        <td class="list-title">Wajawazito Waliopima VVU kipimo cha kwanza kliniki</td>
+        <td id="5c-10-14"></td>
+        <td id="5c-15-19"></td>
+        <td id="5c-20-24"></td>
+        <td id="5c-25-29"></td>
+        <td id="5c-30-34"></td>
+        <td id="5c-35+"></td>
+        <td id="5c-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>5d</td>
+        <td class="list-title">Wajawazito Waliokutwa na VVU (positive) kipimo cha kwanza</td>
+        <td id="5d-10-14"></td>
+        <td id="5d-15-19"></td>
+        <td id="5d-20-24"></td>
+        <td id="5d-25-29"></td>
+        <td id="5d-30-34"></td>
+        <td id="5d-35+"></td>
+        <td id="5d-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>5e</td>
+        <td class="list-title">Wajawazito Waliokutwa na VVU (positive) kipimo cha kwanza walio chini
+            ya umri wa
+            miaka 25
+        </td>
+        <td id="5e-10-14"></td>
+        <td id="5e-15-19"></td>
+        <td id="5e-20-24"></td>
+        <td id="5e-25-29"></td>
+        <td id="5e-30-34"></td>
+        <td id="5e-35+"></td>
+        <td id="5e-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>5f</td>
+        <td class="list-title">Wajawazito waliopata ushauri baada ya kupima</td>
+        <td id="5f-10-14"></td>
+        <td id="5f-15-19"></td>
+        <td id="5f-20-24"></td>
+        <td id="5f-25-29"></td>
+        <td id="5f-30-34"></td>
+        <td id="5f-35+"></td>
+        <td id="5f-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>5g</td>
+        <td class="list-title">Wajawazito waliopimwa VVU na mwenza wao (Couple) kwa pamoja katika
+            kliniki ya
+            wajawazito
+        </td>
+        <td id="5g-10-14"></td>
+        <td id="5g-15-19"></td>
+        <td id="5g-20-24"></td>
+        <td id="5g-25-29"></td>
+        <td id="5g-30-34"></td>
+        <td id="5g-35+"></td>
+        <td id="5g-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>5h</td>
+        <td class="list-title">Wajawazito waliopima VVU kipimo cha pili</td>
+        <td id="5h-10-14"></td>
+        <td id="5h-15-19"></td>
+        <td id="5h-20-24"></td>
+        <td id="5h-25-29"></td>
+        <td id="5h-30-34"></td>
+        <td id="5h-35+"></td>
+        <td id="5h-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>5i</td>
+        <td class="list-title">Wajawazito waliokutwa na maambukizi ya VVU kipimo cha pili</td>
+        <td id="5i-10-14"></td>
+        <td id="5i-15-19"></td>
+        <td id="5i-20-24"></td>
+        <td id="5i-25-29"></td>
+        <td id="5i-30-34"></td>
+        <td id="5i-35+"></td>
+        <td id="5i-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>5j</td>
+        <td class="list-title">Wenza waliopima VVU kipimo cha kwanza Kliniki ya wajawazito</td>
+        <td id="5j-10-14"></td>
+        <td id="5j-15-19"></td>
+        <td id="5j-20-24"></td>
+        <td id="5j-25-29"></td>
+        <td id="5j-30-34"></td>
+        <td id="5j-35+"></td>
+        <td id="5j-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>5k</td>
+        <td class="list-title">Wenza Waliogundulika kuwa na maambukizi ya VVU kipimo cha kwanza
+            katika kliniki
+            wa wajawazito
+        </td>
+        <td id="5k-10-14"></td>
+        <td id="5k-15-19"></td>
+        <td id="5k-20-24"></td>
+        <td id="5k-25-29"></td>
+        <td id="5k-30-34"></td>
+        <td id="5k-35+"></td>
+        <td id="5k-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>5l</td>
+        <td class="list-title">Wenza waliopima VVU kipimo cha pili Kliniki ya wajawazito</td>
+        <td id="5l-10-14"></td>
+        <td id="5l-15-19"></td>
+        <td id="5l-20-24"></td>
+        <td id="5l-25-29"></td>
+        <td id="5l-30-34"></td>
+        <td id="5l-35+"></td>
+        <td id="5l-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>5m</td>
+        <td class="list-title">Wenza waliogundulika kuwa na maambukizi ya VVU kipimo cha pili katika
+            kliniki ya
+            wajawazito
+        </td>
+        <td id="5m-10-14"></td>
+        <td id="5m-15-19"></td>
+        <td id="5m-20-24"></td>
+        <td id="5m-25-29"></td>
+        <td id="5m-30-34"></td>
+        <td id="5m-35+"></td>
+        <td id="5m-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>5n</td>
+        <td class="list-title">Wajawazito na wenza waliopata majibu tofauti (discordant) baada ya
+            kupima VVU
+            kliniki ya wajawazito
+        </td>
+        <td id="5n-10-14"></td>
+        <td id="5n-15-19"></td>
+        <td id="5n-20-24"></td>
+        <td id="5n-25-29"></td>
+        <td id="5n-30-34"></td>
+        <td id="5n-35+"></td>
+        <td id="5n-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>5o</td>
+        <td class="list-title">Waliopata ushauri juu ya ulishaji wa mtoto</td>
+        <td id="5o-10-14"></td>
+        <td id="5o-15-19"></td>
+        <td id="5o-20-24"></td>
+        <td id="5o-25-29"></td>
+        <td id="5o-30-34"></td>
+        <td id="5o-35+"></td>
+        <td id="5o-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>5p</td>
+        <td class="list-title">Wajawazito waliopima VVU kipimo cha kwanza walio chini ya umri wa
+            miaka 25
+        </td>
+        <td id="5p-10-14"></td>
+        <td id="5p-15-19"></td>
+        <td id="5p-20-24"></td>
+        <td id="5p-25-29"></td>
+        <td id="5p-30-34"></td>
+        <td id="5p-35+"></td>
+        <td id="5p-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>6</td>
+        <td class="list-title">Malaria</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+
+    <tr>
+        <td>6a</td>
+        <td class="list-title">Waliopewa LLIN</td>
+        <td id="6a-10-14"></td>
+        <td id="6a-15-19"></td>
+        <td id="6a-20-24"></td>
+        <td id="6a-25-29"></td>
+        <td id="6a-30-34"></td>
+        <td id="6a-35+"></td>
+        <td id="6a-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>6b</td>
+        <td class="list-title">Waliopima Malaria kutumia mRDT/BS</td>
+        <td id="6b-10-14"></td>
+        <td id="6b-15-19"></td>
+        <td id="6b-20-24"></td>
+        <td id="6b-25-29"></td>
+        <td id="6b-30-34"></td>
+        <td id="6b-35+"></td>
+        <td id="6b-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>6c</td>
+        <td class="list-title">Waliopima Malaria positive</td>
+        <td id="6c-10-14"></td>
+        <td id="6c-15-19"></td>
+        <td id="6c-20-24"></td>
+        <td id="6c-25-29"></td>
+        <td id="6c-30-34"></td>
+        <td id="6c-35+"></td>
+        <td id="6c-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>6d</td>
+        <td class="list-title">Waliopewa IPT2</td>
+        <td id="6d-10-14"></td>
+        <td id="6d-15-19"></td>
+        <td id="6d-20-24"></td>
+        <td id="6d-25-29"></td>
+        <td id="6d-30-34"></td>
+        <td id="6d-35+"></td>
+        <td id="6d-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>6e</td>
+        <td class="list-title">Waliopewa IPT3</td>
+        <td id="6e-10-14"></td>
+        <td id="6e-15-19"></td>
+        <td id="6e-20-24"></td>
+        <td id="6e-25-29"></td>
+        <td id="6e-30-34"></td>
+        <td id="6e-35+"></td>
+        <td id="6e-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>6f</td>
+        <td class="list-title">Waliopewa IPT4</td>
+        <td id="6f-10-14"></td>
+        <td id="6f-15-19"></td>
+        <td id="6f-20-24"></td>
+        <td id="6f-25-29"></td>
+        <td id="6f-30-34"></td>
+        <td id="6f-35+"></td>
+        <td id="6f-jumla"></td>
+    </tr>
+
+    <tr>
+        <td></td>
+        <td class="list-title">Huduma Nyingine</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+
+    <tr>
+        <td>7</td>
+        <td class="list-title">Waliopewa Iron/Folic Acid (I,F,IFA) vidonge vya kutosha mpaka
+            hudhurio
+            linalofuata
+        </td>
+        <td id="7-10-14"></td>
+        <td id="7-15-19"></td>
+        <td id="7-20-24"></td>
+        <td id="7-25-29"></td>
+        <td id="7-30-34"></td>
+        <td id="7-35+"></td>
+        <td id="7-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>8</td>
+        <td class="list-title">Waliopewa Dawa za minyoo (Albendazole / Mebendazole)</td>
+        <td id="8-10-14"></td>
+        <td id="8-15-19"></td>
+        <td id="8-20-24"></td>
+        <td id="8-25-29"></td>
+        <td id="8-30-34"></td>
+        <td id="8-35+"></td>
+        <td id="8-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>9</td>
+        <td class="list-title">Waliopewa ushauri wa uzazi wa mpango</td>
+        <td id="9-10-14"></td>
+        <td id="9-15-19"></td>
+        <td id="9-20-24"></td>
+        <td id="9-25-29"></td>
+        <td id="9-30-34"></td>
+        <td id="9-35+"></td>
+        <td id="9-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>10</td>
+        <td class="list-title">Waliopewa rufaa wakati wa ujauzito</td>
+        <td id="10-10-14"></td>
+        <td id="10-15-19"></td>
+        <td id="10-20-24"></td>
+        <td id="10-25-29"></td>
+        <td id="10-30-34"></td>
+        <td id="10-35+"></td>
+        <td id="10-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>11</td>
+        <td class="list-title">Waliopewa rufaa kwenda CTC</td>
+        <td id="11-10-14"></td>
+        <td id="11-15-19"></td>
+        <td id="11-20-24"></td>
+        <td id="11-25-29"></td>
+        <td id="11-30-34"></td>
+        <td id="11-35+"></td>
+        <td id="11-jumla"></td>
+    </tr>
+
+    </tbody>
+</table>
+</body>
+<script type="text/javascript">
+    function onLoad() {
+        const data = JSON.parse(Android.getData("monthly"));
+        const keys = Object.keys(data.nameValuePairs)
+        keys.forEach(key => {
+            const element = document.getElementById(key)
+            if(element !== null && element !== undefined){
+                document.getElementById(key).innerHTML = data.nameValuePairs[key]
+            }
+        })
+    }
+
+</script>
+
+</html>
