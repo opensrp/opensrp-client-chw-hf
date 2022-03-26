@@ -232,7 +232,7 @@
 </body>
 <script type="text/javascript">
     function onLoad() {
-        const data = JSON.parse(Android.getData());
+        const data = JSON.parse(Android.getData("twenty_four_months"));
         const keys = Object.keys(data.nameValuePairs)
         keys.forEach(key => {
             const element = document.getElementById(key)

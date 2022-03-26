@@ -206,7 +206,7 @@
 </body>
 <script type="text/javascript">
     function onLoad() {
-        const data = JSON.parse(Android.getData());
+        const data = JSON.parse(Android.getData("eid_monthly"));
         const keys = Object.keys(data.nameValuePairs)
         keys.forEach(key => {
             const element = document.getElementById(key)
