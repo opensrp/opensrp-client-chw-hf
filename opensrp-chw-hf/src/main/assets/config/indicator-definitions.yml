@@ -1415,6 +1415,7 @@ indicators:
                      AND ('%s' = (substr(e.eventDate, 1,10)))
                      AND ( date(fm.dob, '+10 years') <=  date ('now'))"
   
+#############################  PMTCT REPORTS   #######################################
   - key: "B3a"
     description: "pmtct_pnc_clients_with_age_10-14"
     indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
@@ -2187,3 +2188,123 @@ indicators:
                         AND ehhr.hiv_test_result = 'positive'
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
+
+################################# ANC REPORTS ###############################################
+  - key: "2a-10-14"
+    description: "Gestation age less than 12 weeks for 10 - 14 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                      WHERE gest_age < 12
+                        AND (date(fm.dob, '+10 years') <= date('now'))
+                        AND (date(fm.dob, '+15 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(ear.confirmation_date, 7, 4) || '-' || substr(ear.confirmation_date, 4, 2) || '-' || '01')"
+  - key: "2a-15-19"
+    description: "Gestation age less than 12 weeks for 15 - 19 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                      WHERE gest_age < 12
+                        AND (date(fm.dob, '+15 years') <= date('now'))
+                        AND (date(fm.dob, '+19 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(ear.confirmation_date, 7, 4) || '-' || substr(ear.confirmation_date, 4, 2) || '-' || '01')"
+  - key: "2a-20-24"
+    description: "Gestation age less than 12 weeks for 20 - 24 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                      WHERE gest_age < 12
+                        AND (date(fm.dob, '+20 years') <= date('now'))
+                        AND (date(fm.dob, '+25 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(ear.confirmation_date, 7, 4) || '-' || substr(ear.confirmation_date, 4, 2) || '-' || '01')"
+  - key: "2a-25-29"
+    description: "Gestation age less than 12 weeks for 25 - 29 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                      WHERE gest_age < 12
+                        AND (date(fm.dob, '+25 years') <= date('now'))
+                        AND (date(fm.dob, '+29 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(ear.confirmation_date, 7, 4) || '-' || substr(ear.confirmation_date, 4, 2) || '-' || '01')"
+  - key: "2a-30-34"
+    description: "Gestation age less than 12 weeks for 30 - 34 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                      WHERE gest_age < 12
+                        AND (date(fm.dob, '+30 years') <= date('now'))
+                        AND (date(fm.dob, '+35 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(ear.confirmation_date, 7, 4) || '-' || substr(ear.confirmation_date, 4, 2) || '-' || '01')"
+  - key: "2a-35+"
+    description: "Gestation age less than 12 weeks for 35+ year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                      WHERE gest_age < 12
+                        AND (date(fm.dob, '+35 years') <= date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(ear.confirmation_date, 7, 4) || '-' || substr(ear.confirmation_date, 4, 2) || '-' || '01')"
+- key: "2b-10-14"
+  description: "Gestation age greater than or equals to 12 weeks for 10 - 14 year olds"
+  indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                      WHERE gest_age >= 12
+                        AND (date(fm.dob, '+10 years') <= date('now'))
+                        AND (date(fm.dob, '+15 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(ear.confirmation_date, 7, 4) || '-' || substr(ear.confirmation_date, 4, 2) || '-' || '01')"
+- key: "2b-15-19"
+  description: "Gestation age greater than or equals to 12 weeks for 15 - 19 year olds"
+  indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                      WHERE gest_age >= 12
+                        AND (date(fm.dob, '+15 years') <= date('now'))
+                        AND (date(fm.dob, '+19 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(ear.confirmation_date, 7, 4) || '-' || substr(ear.confirmation_date, 4, 2) || '-' || '01')"
+- key: "2b-20-24"
+  description: "Gestation age greater than or equals to 12 weeks for 20 - 24 year olds"
+  indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                      WHERE gest_age >= 12
+                        AND (date(fm.dob, '+20 years') <= date('now'))
+                        AND (date(fm.dob, '+25 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(ear.confirmation_date, 7, 4) || '-' || substr(ear.confirmation_date, 4, 2) || '-' || '01')"
+- key: "2b-25-29"
+  description: "Gestation age greater than or equals to 12 weeks for 25 - 29 year olds"
+  indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                      WHERE gest_age >= 12
+                        AND (date(fm.dob, '+25 years') <= date('now'))
+                        AND (date(fm.dob, '+29 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(ear.confirmation_date, 7, 4) || '-' || substr(ear.confirmation_date, 4, 2) || '-' || '01')"
+- key: "2b-30-34"
+  description: "Gestation age greater than or equals to 12 weeks for 30 - 34 year olds"
+  indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                      WHERE gest_age >= 12
+                        AND (date(fm.dob, '+30 years') <= date('now'))
+                        AND (date(fm.dob, '+35 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(ear.confirmation_date, 7, 4) || '-' || substr(ear.confirmation_date, 4, 2) || '-' || '01')"
+- key: "2b-35+"
+  description: "Gestation age greater than or equals to 12 weeks for 35+ year olds"
+  indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                      WHERE gest_age >= 12
+                        AND (date(fm.dob, '+35 years') <= date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(ear.confirmation_date, 7, 4) || '-' || substr(ear.confirmation_date, 4, 2) || '-' || '01')"
