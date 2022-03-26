@@ -17,6 +17,7 @@ import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.FpUtil;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.dao.HeiDao;
+import org.smartregister.chw.hf.rule.HfHeiFollowupRule;
 import org.smartregister.chw.hf.utils.HfHomeVisitUtil;
 import org.smartregister.chw.pmtct.fragment.BasePmtctRegisterFragment;
 import org.smartregister.chw.pmtct.util.DBConstants;
@@ -113,7 +114,7 @@ public class HeiRegisterProvider extends PmtctRegisterProvider {
     private class UpdateHeiDueButtonStatusTask extends AsyncTask<Void, Void, Void> {
         private final RegisterViewHolder viewHolder;
         private final String baseEntityId;
-        private HeiFollowupRule heiFollowUpRule;
+        private HfHeiFollowupRule heiFollowUpRule;
 
 
         private UpdateHeiDueButtonStatusTask(RegisterViewHolder viewHolder, String baseEntityId) {

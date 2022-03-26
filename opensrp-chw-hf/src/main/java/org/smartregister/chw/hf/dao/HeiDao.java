@@ -297,6 +297,19 @@ public class HeiDao extends AbstractDao {
         return (res != null && res.get(0) != null) ? res.get(0) : null;
     }
 
+    public static String getLatestTestAtAge(String baseEntityID){
+        String sql = "SELECT test_at_age FROM ec_hei_followup \n" +
+                "       WHERE entity_id='" + baseEntityID + "'" +
+                "           AND test_at_age IS NOT NULL" +
+                "           ORDER BY visit_number DESC " +
+                "           LIMIT 1";
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "test_at_age");
+
+        List<String> res = readData(sql, dataMap);
+        //for low risk will return at birth for test_at_age
+        return (res != null  && res.size() > 0 && res.get(0) != null) ? res.get(0) : Constants.HeiHIVTestAtAge.AT_BIRTH;
+    }
+
     public static Date getHeiRegisterDate(String baseEntityID) {
         //basically returns back the date of birth of the child
         String sql = "select dob from ec_hei where base_entity_id = '" + baseEntityID + "'";
