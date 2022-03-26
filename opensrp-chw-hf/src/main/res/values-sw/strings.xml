@@ -153,5 +153,6 @@
     <string name="transfer_out">Transfer Out</string>
     <string name="deceased">Deceased</string>
     <string name="pmtct_followup_status_title">Followup Status</string>
+    <string name="issue_hei_community_referal">Issue HEI referral</string>
 
 </resources>
