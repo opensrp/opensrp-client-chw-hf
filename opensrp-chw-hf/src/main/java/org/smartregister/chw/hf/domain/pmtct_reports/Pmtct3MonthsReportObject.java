@@ -12,7 +12,6 @@ import java.util.List;
 
 public class Pmtct3MonthsReportObject extends ReportObject {
     DecimalFormat df = new DecimalFormat();
-    ;
     private List<String> indicatorCodes = new ArrayList<>();
     private Date reportDate;
 
