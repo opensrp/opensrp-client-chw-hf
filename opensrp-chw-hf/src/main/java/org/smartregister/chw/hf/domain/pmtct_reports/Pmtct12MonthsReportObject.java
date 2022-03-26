@@ -1,4 +1,4 @@
-package org.smartregister.chw.hf.domain.pmtctReports;
+package org.smartregister.chw.hf.domain.pmtct_reports;
 
 import org.json.JSONException;
 import org.json.JSONObject;

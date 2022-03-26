@@ -19,10 +19,10 @@ import com.google.android.material.appbar.AppBarLayout;
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
 import org.smartregister.chw.hf.R;
-import org.smartregister.chw.hf.domain.pmtctReports.Pmtct12MonthsReportObject;
-import org.smartregister.chw.hf.domain.pmtctReports.Pmtct24MonthsReportObject;
-import org.smartregister.chw.hf.domain.pmtctReports.Pmtct3MonthsReportObject;
-import org.smartregister.chw.hf.domain.pmtctReports.PmtctEIDMonthlyReportObject;
+import org.smartregister.chw.hf.domain.pmtct_reports.Pmtct12MonthsReportObject;
+import org.smartregister.chw.hf.domain.pmtct_reports.Pmtct24MonthsReportObject;
+import org.smartregister.chw.hf.domain.pmtct_reports.Pmtct3MonthsReportObject;
+import org.smartregister.chw.hf.domain.pmtct_reports.PmtctEIDMonthlyReportObject;
 import org.smartregister.view.activity.SecuredActivity;
 import org.smartregister.view.customcontrols.CustomFontTextView;
 
@@ -188,9 +188,9 @@ public class PmtctReportsViewActivity extends SecuredActivity {
                     return computeTwentyFourMonths(now);
                 case "eid_monthly":
                     return computeEIDMonthly(now);
+                default:
+                    return "";
             }
-            return "";
-
         }
     }
 }
