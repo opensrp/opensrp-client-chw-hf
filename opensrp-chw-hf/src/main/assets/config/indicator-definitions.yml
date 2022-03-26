@@ -1867,7 +1867,7 @@ indicators:
                                                           ORDER BY visit_number DESC) as T1
                                                     group by T1.base_entity_id, T1.mother_entity_id
                                                 ) as t2) as t3 on t3.mother_entity_id = epmtc.base_entity_id
-                      WHERE t3.followup_status = 'transfer'
+                      WHERE t3.followup_status = 'transfer_out'
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-24 months') =
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
