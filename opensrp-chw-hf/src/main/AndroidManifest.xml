@@ -14,14 +14,20 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:theme">
         <activity
+            android:name=".activity.AncReportsViewActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.AncReportsActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
             android:name=".activity.PmtctReportsActivity"
-            android:theme="@style/HFTheme.NoActionBar"  />
+            android:theme="@style/HFTheme.NoActionBar" />
         <activity
             android:name=".activity.ReportsActivity"
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
             android:name=".activity.PmtctReportsViewActivity"
-            android:theme="@style/HFTheme.NoActionBar"/>
+            android:theme="@style/HFTheme.NoActionBar" />
         <activity
             android:name=".activity.LoginActivity"
             android:launchMode="singleTask"
@@ -279,6 +285,7 @@
         <activity
             android:name=".activity.PncFacilityVisitActivity"
             android:theme="@style/HFTheme.NoActionBar" />
+
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="3f94f9c3caeff331b3a2bd8c2182b663ad6a955a" />
