@@ -2,7 +2,7 @@ package org.smartregister.chw.hf.domain.pmtct_reports;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.smartregister.chw.hf.dao.PmtctReportDao;
+import org.smartregister.chw.hf.dao.ReportDao;
 import org.smartregister.chw.hf.domain.ReportObject;
 
 import java.text.DecimalFormat;
@@ -47,7 +47,7 @@ public class Pmtct12MonthsReportObject extends ReportObject {
     public JSONObject getIndicatorData() throws JSONException {
         JSONObject indicatorDataObject = new JSONObject();
         for (String indicatorCode : indicatorCodes) {
-            indicatorDataObject.put(indicatorCode, PmtctReportDao.getPmtctReportPerIndicatorCode(indicatorCode, reportDate));
+            indicatorDataObject.put(indicatorCode, ReportDao.getPmtctReportPerIndicatorCode(indicatorCode, reportDate));
         }
         df.setMaximumFractionDigits(2);
 
@@ -59,15 +59,15 @@ public class Pmtct12MonthsReportObject extends ReportObject {
 
     private int getIndicatorD12() {
         //D12 = A12 + B12 - C12
-        return PmtctReportDao.getPmtctReportPerIndicatorCode("A12", reportDate)
-                + PmtctReportDao.getPmtctReportPerIndicatorCode("B12", reportDate)
-                - PmtctReportDao.getPmtctReportPerIndicatorCode("C12", reportDate);
+        return ReportDao.getPmtctReportPerIndicatorCode("A12", reportDate)
+                + ReportDao.getPmtctReportPerIndicatorCode("B12", reportDate)
+                - ReportDao.getPmtctReportPerIndicatorCode("C12", reportDate);
     }
 
     private float getIndicatorK12() {
         // K12 = E12 /(D12-J12) * 100
-        if (PmtctReportDao.getPmtctReportPerIndicatorCode("D12", reportDate) - PmtctReportDao.getPmtctReportPerIndicatorCode("J12", reportDate) > 0) {
-            return ((PmtctReportDao.getPmtctReportPerIndicatorCode("E12", reportDate) * 1f) / (getIndicatorD12() - PmtctReportDao.getPmtctReportPerIndicatorCode("J12", reportDate))) * 100;
+        if (ReportDao.getPmtctReportPerIndicatorCode("D12", reportDate) - ReportDao.getPmtctReportPerIndicatorCode("J12", reportDate) > 0) {
+            return ((ReportDao.getPmtctReportPerIndicatorCode("E12", reportDate) * 1f) / (getIndicatorD12() - ReportDao.getPmtctReportPerIndicatorCode("J12", reportDate))) * 100;
         }
         return 0;
     }
