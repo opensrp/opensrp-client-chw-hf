@@ -26,7 +26,6 @@ public class PmtctReportsActivity extends SecuredActivity  implements View.OnCli
 
     @Override
     protected void onCreation() {
-        ChwIndicatorGeneratingJob.scheduleJobImmediately(ChwIndicatorGeneratingJob.TAG);
         setContentView(R.layout.activity_pmtct_reports);
         setUpToolbar();
         setupViews();
