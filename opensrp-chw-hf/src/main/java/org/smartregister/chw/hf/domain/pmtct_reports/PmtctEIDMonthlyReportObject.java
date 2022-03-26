@@ -50,7 +50,7 @@ public class PmtctEIDMonthlyReportObject extends ReportObject {
             indicatorDataObject.put(indicatorCode, PmtctReportDao.getPmtctReportPerIndicatorCode(indicatorCode, reportDate));
         }
         df.setMaximumFractionDigits(2);
-
+        indicatorDataObject.put("E", df.format(getIndicatorE()));
         return indicatorDataObject;
     }
 
