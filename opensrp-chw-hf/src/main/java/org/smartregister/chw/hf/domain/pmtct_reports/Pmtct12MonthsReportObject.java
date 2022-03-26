@@ -47,7 +47,7 @@ public class Pmtct12MonthsReportObject extends ReportObject {
     public JSONObject getIndicatorData() throws JSONException {
         JSONObject indicatorDataObject = new JSONObject();
         for (String indicatorCode : indicatorCodes) {
-            indicatorDataObject.put(indicatorCode, ReportDao.getPmtctReportPerIndicatorCode(indicatorCode, reportDate));
+            indicatorDataObject.put(indicatorCode, ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate));
         }
         df.setMaximumFractionDigits(2);
 
@@ -59,15 +59,15 @@ public class Pmtct12MonthsReportObject extends ReportObject {
 
     private int getIndicatorD12() {
         //D12 = A12 + B12 - C12
-        return ReportDao.getPmtctReportPerIndicatorCode("A12", reportDate)
-                + ReportDao.getPmtctReportPerIndicatorCode("B12", reportDate)
-                - ReportDao.getPmtctReportPerIndicatorCode("C12", reportDate);
+        return ReportDao.getReportPerIndicatorCode("A12", reportDate)
+                + ReportDao.getReportPerIndicatorCode("B12", reportDate)
+                - ReportDao.getReportPerIndicatorCode("C12", reportDate);
     }
 
     private float getIndicatorK12() {
         // K12 = E12 /(D12-J12) * 100
-        if (ReportDao.getPmtctReportPerIndicatorCode("D12", reportDate) - ReportDao.getPmtctReportPerIndicatorCode("J12", reportDate) > 0) {
-            return ((ReportDao.getPmtctReportPerIndicatorCode("E12", reportDate) * 1f) / (getIndicatorD12() - ReportDao.getPmtctReportPerIndicatorCode("J12", reportDate))) * 100;
+        if (ReportDao.getReportPerIndicatorCode("D12", reportDate) - ReportDao.getReportPerIndicatorCode("J12", reportDate) > 0) {
+            return ((ReportDao.getReportPerIndicatorCode("E12", reportDate) * 1f) / (getIndicatorD12() - ReportDao.getReportPerIndicatorCode("J12", reportDate))) * 100;
         }
         return 0;
     }

@@ -46,7 +46,7 @@ public class Pmtct24MonthsReportObject extends ReportObject {
     public JSONObject getIndicatorData() throws JSONException {
         JSONObject indicatorDataObject = new JSONObject();
         for (String indicatorCode : indicatorCodes) {
-            indicatorDataObject.put(indicatorCode, ReportDao.getPmtctReportPerIndicatorCode(indicatorCode, reportDate));
+            indicatorDataObject.put(indicatorCode, ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate));
         }
         df.setMaximumFractionDigits(2);
 
@@ -60,28 +60,28 @@ public class Pmtct24MonthsReportObject extends ReportObject {
 
     private int getIndicatorD24() {
         //D24 = A24 + B24 - C24
-        return ReportDao.getPmtctReportPerIndicatorCode("A24", reportDate)
-                + ReportDao.getPmtctReportPerIndicatorCode("B24", reportDate)
-                - ReportDao.getPmtctReportPerIndicatorCode("C24", reportDate);
+        return ReportDao.getReportPerIndicatorCode("A24", reportDate)
+                + ReportDao.getReportPerIndicatorCode("B24", reportDate)
+                - ReportDao.getReportPerIndicatorCode("C24", reportDate);
     }
 
     private float getIndicatorI24() {
         //I24 = H24/D24 * 100
         if (getIndicatorD24() > 0) {
-            return ((ReportDao.getPmtctReportPerIndicatorCode("H24", reportDate) * 1f) / getIndicatorD24()) * 100;
+            return ((ReportDao.getReportPerIndicatorCode("H24", reportDate) * 1f) / getIndicatorD24()) * 100;
         }
         return 0;
     }
 
     private int getIndicatorL24() {
         //L24 = J24 - K24
-        return ReportDao.getPmtctReportPerIndicatorCode("J24", reportDate) - ReportDao.getPmtctReportPerIndicatorCode("K24", reportDate);
+        return ReportDao.getReportPerIndicatorCode("J24", reportDate) - ReportDao.getReportPerIndicatorCode("K24", reportDate);
     }
 
     private float getIndicatorR24() {
         //R24 = (M24 + N24)/L24 * 100
         if (getIndicatorL24() > 0) {
-            return ((ReportDao.getPmtctReportPerIndicatorCode("M24", reportDate) + ReportDao.getPmtctReportPerIndicatorCode("N24", reportDate)) * 1f) / getIndicatorL24() * 100;
+            return ((ReportDao.getReportPerIndicatorCode("M24", reportDate) + ReportDao.getReportPerIndicatorCode("N24", reportDate)) * 1f) / getIndicatorL24() * 100;
         }
         return 0;
     }
