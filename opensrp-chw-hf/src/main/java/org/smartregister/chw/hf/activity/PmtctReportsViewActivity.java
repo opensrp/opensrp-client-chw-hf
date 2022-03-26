@@ -13,28 +13,26 @@ import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.widget.Toast;
+
+import com.google.android.material.appbar.AppBarLayout;
+
+import org.apache.commons.lang3.StringUtils;
+import org.json.JSONException;
+import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.domain.pmtct_reports.Pmtct12MonthsReportObject;
+import org.smartregister.chw.hf.domain.pmtct_reports.Pmtct24MonthsReportObject;
+import org.smartregister.chw.hf.domain.pmtct_reports.Pmtct3MonthsReportObject;
+import org.smartregister.chw.hf.domain.pmtct_reports.PmtctEIDMonthlyReportObject;
+import org.smartregister.view.activity.SecuredActivity;
+import org.smartregister.view.customcontrols.CustomFontTextView;
+
+import java.util.Date;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
 import androidx.webkit.WebViewAssetLoader;
 import androidx.webkit.WebViewClientCompat;
-
-import com.google.android.material.appbar.AppBarLayout;
-import com.google.gson.Gson;
-
-import org.apache.commons.lang3.StringUtils;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.smartregister.chw.hf.R;
-import org.smartregister.chw.hf.dao.PmtctReportDao;
-import org.smartregister.view.activity.SecuredActivity;
-import org.smartregister.view.customcontrols.CustomFontTextView;
-
-import java.text.DecimalFormat;
-import java.util.Date;
-
 import timber.log.Timber;
 
 public class PmtctReportsViewActivity extends SecuredActivity {
@@ -107,6 +105,46 @@ public class PmtctReportsViewActivity extends SecuredActivity {
         mWebView.loadUrl("https://appassets.androidplatform.net/assets/reports/" + reportName + ".html");
     }
 
+    private String computeThreeMonths(Date startDate) {
+        Pmtct3MonthsReportObject pmtct3MonthsReportObject = new Pmtct3MonthsReportObject(startDate);
+        try {
+            return pmtct3MonthsReportObject.getIndicatorDataAsGson(pmtct3MonthsReportObject.getIndicatorData());
+        } catch (JSONException e) {
+            Timber.e(e);
+        }
+        return "";
+    }
+
+    private String computeTwelveMonths(Date startDate) {
+        Pmtct12MonthsReportObject pmtct12MonthsReportObject = new Pmtct12MonthsReportObject(startDate);
+        try {
+            return pmtct12MonthsReportObject.getIndicatorDataAsGson(pmtct12MonthsReportObject.getIndicatorData());
+        } catch (JSONException e) {
+            Timber.e(e);
+        }
+        return "";
+    }
+
+    private String computeTwentyFourMonths(Date statDate) {
+        Pmtct24MonthsReportObject pmtct24MonthsReportObject = new Pmtct24MonthsReportObject(statDate);
+        try {
+            return pmtct24MonthsReportObject.getIndicatorDataAsGson(pmtct24MonthsReportObject.getIndicatorData());
+        } catch (JSONException e) {
+            Timber.e(e);
+        }
+        return "";
+    }
+
+    private String computeEIDMonthly(Date statDate) {
+        PmtctEIDMonthlyReportObject pmtctEIDMonthlyReportObject = new PmtctEIDMonthlyReportObject(statDate);
+        try {
+            return pmtctEIDMonthlyReportObject.getIndicatorDataAsGson(pmtctEIDMonthlyReportObject.getIndicatorData());
+        } catch (JSONException e) {
+            Timber.e(e);
+        }
+        return "";
+    }
+
     private static class LocalContentWebViewClient extends WebViewClientCompat {
 
         private final WebViewAssetLoader mAssetLoader;
@@ -134,153 +172,25 @@ public class PmtctReportsViewActivity extends SecuredActivity {
     public class WebAppInterface {
         Context mContext;
 
-        /**
-         * Instantiate the interface and set the context
-         */
         WebAppInterface(Context c) {
             mContext = c;
         }
 
-        /**
-         * Show a toast from the web page
-         */
         @JavascriptInterface
-        public void showToast(String toast) {
-            Toast.makeText(mContext, toast, Toast.LENGTH_SHORT).show();
-        }
-
-        @JavascriptInterface
-        public String getData() {
-            JSONObject jsonObject = new JSONObject();
+        public String getData(String key) {
             Date now = new Date();
-            int A3 = PmtctReportDao.getPmtctReportPerIndicatorCode("B3a", now) +
-                    PmtctReportDao.getPmtctReportPerIndicatorCode("B3b", now) +
-                    PmtctReportDao.getPmtctReportPerIndicatorCode("B3c", now) +
-                    PmtctReportDao.getPmtctReportPerIndicatorCode("B3d", now);
-            int F3 = A3 + PmtctReportDao.getPmtctReportPerIndicatorCode("D3", now) - PmtctReportDao.getPmtctReportPerIndicatorCode("E3", now);
-            int J3 = PmtctReportDao.getPmtctReportPerIndicatorCode("J3", now);
-
-            float K3 = 0;
-            if (F3 - J3 > 0)
-                K3 = ((PmtctReportDao.getPmtctReportPerIndicatorCode("G3", now) * 1f) / (F3 - J3)) * 100;
-
-
-            int A12 = PmtctReportDao.getPmtctReportPerIndicatorCode("A12", now);
-            int B12 = PmtctReportDao.getPmtctReportPerIndicatorCode("B12", now);
-            int C12 = PmtctReportDao.getPmtctReportPerIndicatorCode("C12", now);
-            int D12 = A12 + B12 - C12;
-            int E12 = PmtctReportDao.getPmtctReportPerIndicatorCode("E12", now);
-            int J12 = PmtctReportDao.getPmtctReportPerIndicatorCode("J12", now);
-
-            float K12 = 0;
-            if (D12 - J12 > 0)
-                K12 = (E12 * 1f) / (D12 - J12) * 100;
-
-            DecimalFormat df = new DecimalFormat();
-            df.setMaximumFractionDigits(2);
-
-
-            int A24 = PmtctReportDao.getPmtctReportPerIndicatorCode("A24", now);
-            int B24 = PmtctReportDao.getPmtctReportPerIndicatorCode("B24", now);
-            int C24 = PmtctReportDao.getPmtctReportPerIndicatorCode("C24", now);
-            int D24 = A24 + B24 - C24;
-
-            int H24 = PmtctReportDao.getPmtctReportPerIndicatorCode("H24", now);
-
-            float I24 = 0;
-            if (D24 > 0)
-                I24 = ((H24 * 1f) / D24) * 100;
-
-            int J24 = PmtctReportDao.getPmtctReportPerIndicatorCode("J24", now);
-            int K24 = PmtctReportDao.getPmtctReportPerIndicatorCode("H24", now);
-            int L24 = J24 - K24;
-
-            int M24 = PmtctReportDao.getPmtctReportPerIndicatorCode("M24", now);
-            int N24 = PmtctReportDao.getPmtctReportPerIndicatorCode("N24", now);
-
-            float R24 = 0;
-            if (L24 > 0)
-                I24 = (((M24+N24) * 1f) / L24) * 100;
-
-            int B = PmtctReportDao.getPmtctReportPerIndicatorCode("B", now);
-            int C = PmtctReportDao.getPmtctReportPerIndicatorCode("C", now);
-            int D = PmtctReportDao.getPmtctReportPerIndicatorCode("D", now);
-            int E = B+C+D;
-
-
-            try {
-                jsonObject.put("B3a", PmtctReportDao.getPmtctReportPerIndicatorCode("B3a", now));
-                jsonObject.put("B3b", PmtctReportDao.getPmtctReportPerIndicatorCode("B3b", now));
-                jsonObject.put("B3c", PmtctReportDao.getPmtctReportPerIndicatorCode("B3c", now));
-                jsonObject.put("B3d", PmtctReportDao.getPmtctReportPerIndicatorCode("B3d", now));
-                jsonObject.put("C3a", PmtctReportDao.getPmtctReportPerIndicatorCode("C3a", now));
-                jsonObject.put("C3b", PmtctReportDao.getPmtctReportPerIndicatorCode("C3b", now));
-                jsonObject.put("D3", PmtctReportDao.getPmtctReportPerIndicatorCode("D3", now));
-                jsonObject.put("E3", PmtctReportDao.getPmtctReportPerIndicatorCode("E3", now));
-                jsonObject.put("F3", F3);
-                jsonObject.put("G3", PmtctReportDao.getPmtctReportPerIndicatorCode("G3", now));
-                jsonObject.put("H3", PmtctReportDao.getPmtctReportPerIndicatorCode("H3", now));
-                jsonObject.put("I3", PmtctReportDao.getPmtctReportPerIndicatorCode("I3", now));
-                jsonObject.put("J3", PmtctReportDao.getPmtctReportPerIndicatorCode("J3", now));
-                jsonObject.put("K3", df.format(K3));
-
-
-                jsonObject.put("A12", A12);
-                jsonObject.put("B12", B12);
-                jsonObject.put("C12", C12);
-                jsonObject.put("D12", D12);
-                jsonObject.put("E12", E12);
-                jsonObject.put("F12", PmtctReportDao.getPmtctReportPerIndicatorCode("F12", now));
-                jsonObject.put("G12", PmtctReportDao.getPmtctReportPerIndicatorCode("G12", now));
-                jsonObject.put("I12", PmtctReportDao.getPmtctReportPerIndicatorCode("I12", now));
-                jsonObject.put("J12", J12);
-                jsonObject.put("K12", df.format(K12));
-                jsonObject.put("L12", PmtctReportDao.getPmtctReportPerIndicatorCode("L12", now));
-                jsonObject.put("M12", PmtctReportDao.getPmtctReportPerIndicatorCode("M12", now));
-                jsonObject.put("N12", PmtctReportDao.getPmtctReportPerIndicatorCode("N12", now));
-                jsonObject.put("O12", PmtctReportDao.getPmtctReportPerIndicatorCode("O12", now));
-                jsonObject.put("P12", PmtctReportDao.getPmtctReportPerIndicatorCode("P12", now));
-                jsonObject.put("Q12a", PmtctReportDao.getPmtctReportPerIndicatorCode("Q12a", now));
-                jsonObject.put("Q12b", PmtctReportDao.getPmtctReportPerIndicatorCode("Q12b", now));
-
-                jsonObject.put("A24", A24);
-                jsonObject.put("B24", B24);
-                jsonObject.put("C24", C24);
-                jsonObject.put("D24", D24);
-
-                jsonObject.put("E24", PmtctReportDao.getPmtctReportPerIndicatorCode("E24", now));
-                jsonObject.put("F24", PmtctReportDao.getPmtctReportPerIndicatorCode("F24", now));
-                jsonObject.put("G24", PmtctReportDao.getPmtctReportPerIndicatorCode("G24", now));
-                jsonObject.put("H24", H24);
-                jsonObject.put("I24", I24);
-
-                jsonObject.put("J24", J24);
-                jsonObject.put("K24", K24);
-                jsonObject.put("L24", L24);
-
-
-                jsonObject.put("M24", M24);
-                jsonObject.put("N24", N24);
-                jsonObject.put("O24", PmtctReportDao.getPmtctReportPerIndicatorCode("O24", now));
-                jsonObject.put("P24", PmtctReportDao.getPmtctReportPerIndicatorCode("P24", now));
-                jsonObject.put("Q24", PmtctReportDao.getPmtctReportPerIndicatorCode("Q24", now));
-                jsonObject.put("R24", R24);
-
-                jsonObject.put("A", PmtctReportDao.getPmtctReportPerIndicatorCode("A", now));
-
-                jsonObject.put("B", B);
-                jsonObject.put("C", C);
-                jsonObject.put("D", D);
-                jsonObject.put("E", E);
-
-            } catch (JSONException e) {
-                Timber.e(e);
+            switch (key) {
+                case "three_months":
+                    return computeThreeMonths(now);
+                case "twelve_months":
+                    return computeTwelveMonths(now);
+                case "twenty_four_months":
+                    return computeTwentyFourMonths(now);
+                case "eid_monthly":
+                    return computeEIDMonthly(now);
+                default:
+                    return "";
             }
-            Gson gson = new Gson();
-            gson.toJson(jsonObject);
-            Timber.d(jsonObject.toString());
-            return gson.toJson(jsonObject);
         }
-
     }
 }
