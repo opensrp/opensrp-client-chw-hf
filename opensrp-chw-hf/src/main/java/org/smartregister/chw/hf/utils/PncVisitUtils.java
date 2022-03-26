@@ -35,6 +35,7 @@ public class PncVisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
         List<Visit> visits = visitRepository.getAllUnSynced(calendar.getTime().getTime());
 
         List<Visit> pncVisitsCompleted = new ArrayList<>();
+        List<Visit> childVisitCompleted = new ArrayList<>();
 
 
         for (Visit v : visits) {
@@ -69,15 +70,40 @@ public class PncVisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
                     Timber.e(e);
                 }
             }
-        }
-        if (pncVisitsCompleted.size() > 0) {
-            processVisits(pncVisitsCompleted, visitRepository, visitDetailsRepository);
-            for (Visit v : pncVisitsCompleted) {
-                if (isMotherFoundPositive(v)) {
-                    createHeiRegistrationEvent(v.getJson());
+            if (v.getVisitType().equalsIgnoreCase(Constants.Events.PNC_CHILD_FOLLOWUP)) {
+                try {
+                    JSONObject jsonObject = new JSONObject(v.getJson());
+                    JSONArray obs = jsonObject.getJSONArray("obs");
+
+                    boolean isChildFollowupDone = computeCompletionStatus(obs, "child_activeness");
+                    if (isChildFollowupDone) {
+                        childVisitCompleted.add(v);
+                    }
+                } catch (JSONException e) {
+                    Timber.e(e);
                 }
             }
         }
+        if (pncVisitsCompleted.size() > 0) {
+            for (Visit v : pncVisitsCompleted) {
+                if (childVisitCompleted.size() > 0) {
+                    List<Visit> completedChildVisit = new ArrayList<>();
+                    List<Visit> completedMotherVisit = new ArrayList<>();
+                    for (Visit childVisit : pncVisitsCompleted) {
+                        if (v.getVisitId().equals(childVisit.getParentVisitID())) {
+                            completedChildVisit.add(childVisit);
+                            completedMotherVisit.add(v);
+                        }
+                    }
+                    processVisits(completedMotherVisit, visitRepository, visitDetailsRepository);
+                    processVisits(completedChildVisit, visitRepository, visitDetailsRepository);
+                    if (isMotherFoundPositive(v)) {
+                        createHeiRegistrationEvent(v.getJson());
+                    }
+                }
+            }
+        }
+
     }
 
     public static boolean computeCompletionStatus(JSONArray obs, String checkString) throws JSONException {

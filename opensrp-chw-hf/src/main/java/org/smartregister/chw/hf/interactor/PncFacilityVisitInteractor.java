@@ -1,7 +1,9 @@
 package org.smartregister.chw.hf.interactor;
 
+import org.apache.commons.lang3.StringUtils;
 import org.smartregister.chw.anc.contract.BaseAncHomeVisitContract;
 import org.smartregister.chw.anc.domain.MemberObject;
+import org.smartregister.chw.anc.domain.Visit;
 import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
 import org.smartregister.chw.core.dao.PNCDao;
 import org.smartregister.chw.core.interactor.CoreAncHomeVisitInteractor;
@@ -15,6 +17,7 @@ import timber.log.Timber;
 
 public class PncFacilityVisitInteractor extends CoreAncHomeVisitInteractor {
     private Flavor flavor;
+    private String parentVisitID;
 
     public PncFacilityVisitInteractor() {
         setFlavor(new PncFacilityVisitInteractorFlv());
@@ -61,5 +64,13 @@ public class PncFacilityVisitInteractor extends CoreAncHomeVisitInteractor {
     @Override
     public MemberObject getMemberClient(String memberID) {
         return PNCDao.getMember(memberID);
+    }
+
+    @Override
+    protected String getParentVisitEventID(Visit visit, String parentEventType) {
+        if (StringUtils.isBlank(parentEventType))
+            parentVisitID = visit.getVisitId();
+
+        return visit.getVisitId().equalsIgnoreCase(parentVisitID) ? null : parentVisitID;
     }
 }

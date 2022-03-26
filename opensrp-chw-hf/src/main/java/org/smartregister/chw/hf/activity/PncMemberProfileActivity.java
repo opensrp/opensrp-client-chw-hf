@@ -77,6 +77,7 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
         passToolbarTitle(activity, intent);
         activity.startActivity(intent);
     }
+
     public static void startMe(Activity activity, String baseEntityID) {
         Intent intent = new Intent(activity, PncMemberProfileActivity.class);
         intent.putExtra(Constants.ANC_MEMBER_OBJECTS.BASE_ENTITY_ID, baseEntityID);
@@ -198,7 +199,7 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
     protected void onResume() {
         super.onResume();
         setupViews();
-        if(!shouldShowChildViews){
+        if (!shouldShowChildViews) {
             RelativeLayout rlChildFollowup = findViewById(R.id.child_followup_row);
             childFollowupRecyclerView.setVisibility(View.GONE);
             rlChildFollowup.setVisibility(View.GONE);
@@ -314,8 +315,6 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
         if (latestVisit != null && !latestVisit.getProcessed()) {
             showVisitInProgress();
         }
-
-        showChildFollowupViews();
     }
 
     @Override
@@ -393,15 +392,19 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
     @Override
     protected void removePncMember() {
         //creates an event to close pnc visits and removes member from pnc register
+        closePncMemberVisits(baseEntityID);
+    }
+
+    public static void closePncMemberVisits(String baseEntityId){
         AllSharedPreferences sharedPreferences = getAllSharedPreferences();
         Event baseEvent = (Event) new Event()
-                .withBaseEntityId(baseEntityID)
+                .withBaseEntityId(baseEntityId)
                 .withEventDate(new Date())
                 .withEventType(org.smartregister.chw.hf.utils.Constants.Events.CLOSE_PNC_VISITS)
                 .withFormSubmissionId(org.smartregister.util.JsonFormUtils.generateRandomUUIDString())
                 .withEntityType(CoreConstants.TABLE_NAME.PNC_MEMBER)
                 .withProviderId(sharedPreferences.fetchRegisteredANM())
-                .withLocationId(ChwNotificationDao.getSyncLocationId(baseEntityID))
+                .withLocationId(ChwNotificationDao.getSyncLocationId(baseEntityId))
                 .withTeamId(sharedPreferences.fetchDefaultTeamId(sharedPreferences.fetchRegisteredANM()))
                 .withTeam(sharedPreferences.fetchDefaultTeam(sharedPreferences.fetchRegisteredANM()))
                 .withClientDatabaseVersion(BuildConfig.DATABASE_VERSION)
@@ -428,6 +431,7 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
     }
 
     private void showChildFollowupViews() {
+        //shows a recyclerview to record child visits for mother
         RelativeLayout rlChildFollowup = findViewById(R.id.child_followup_row);
         childFollowupRecyclerView = findViewById(R.id.child_followup_recycler_view);
         childFollowupRecyclerView.setLayoutManager(new LinearLayoutManager(this));

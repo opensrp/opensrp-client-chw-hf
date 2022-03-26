@@ -10,9 +10,12 @@ import org.smartregister.chw.anc.domain.MemberObject;
 import org.smartregister.chw.anc.domain.Visit;
 import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
+import org.smartregister.chw.anc.util.JsonFormUtils;
 import org.smartregister.chw.anc.util.VisitUtils;
+import org.smartregister.chw.core.model.ChildModel;
 import org.smartregister.chw.core.utils.FormUtils;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.actionhelper.PncChildGeneralExamination;
 import org.smartregister.chw.hf.actionhelper.PncFamilyPlanningServicesAction;
 import org.smartregister.chw.hf.actionhelper.PncHivTestingAction;
 import org.smartregister.chw.hf.actionhelper.PncImmunizationAction;
@@ -21,32 +24,37 @@ import org.smartregister.chw.hf.actionhelper.PncNutrionSupplementAction;
 import org.smartregister.chw.hf.dao.HfPncDao;
 import org.smartregister.chw.hf.utils.Constants;
 
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import timber.log.Timber;
+
 public class PncFacilityVisitInteractorFlv implements AncFirstFacilityVisitInteractor.Flavor {
     LinkedHashMap<String, BaseAncHomeVisitAction> actionList = new LinkedHashMap<>();
+    private List<ChildModel> children;
 
     @Override
     public LinkedHashMap<String, BaseAncHomeVisitAction> calculateActions(BaseAncHomeVisitContract.View view, MemberObject memberObject, BaseAncHomeVisitContract.InteractorCallBack callBack) throws BaseAncHomeVisitAction.ValidationException {
 
         Context context = view.getContext();
-
+        Boolean editMode = view.getEditMode();
         Map<String, List<VisitDetail>> details = null;
         // get the preloaded data
-        if (view.getEditMode()) {
+        if (editMode) {
             Visit lastVisit = AncLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), Constants.Events.PNC_VISIT);
             if (lastVisit != null) {
-                details = VisitUtils.getVisitGroups(AncLibrary.getInstance().visitDetailsRepository().getVisits(lastVisit.getVisitId()));
+                details = Collections.unmodifiableMap(VisitUtils.getVisitGroups(AncLibrary.getInstance().visitDetailsRepository().getVisits(lastVisit.getVisitId())));
             }
         }
+        this.children = HfPncDao.childrenForPncWoman(memberObject.getBaseEntityId());
 
-        evaluatePncActions(memberObject, details, context);
+        evaluatePncActions(memberObject, details, context, editMode);
         return actionList;
     }
 
-    private void evaluatePncActions(MemberObject memberObject, Map<String, List<VisitDetail>> details, Context context
+    private void evaluatePncActions(MemberObject memberObject, Map<String, List<VisitDetail>> details, Context context, Boolean editMode
     ) throws BaseAncHomeVisitAction.ValidationException {
 
         BaseAncHomeVisitAction motherGeneralExamination = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.mother_general_examination))
@@ -56,6 +64,36 @@ public class PncFacilityVisitInteractorFlv implements AncFirstFacilityVisitInter
                 .withHelper(new PncMotherGeneralExaminationAction(memberObject))
                 .build();
         actionList.put(context.getString(R.string.mother_general_examination), motherGeneralExamination);
+        for (ChildModel child : children) {
+            JSONObject childGeneralExamForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.getPncChildGeneralExamination());
+            try {
+                childGeneralExamForm.getJSONObject("global").put("baseEntityId", child.getBaseEntityId());
+                childGeneralExamForm.getJSONObject("global").put("is_eligible_for_bcg", HfPncDao.isChildEligibleForBcg(child.getBaseEntityId()));
+                childGeneralExamForm.getJSONObject("global").put("is_eligible_for_opv0", HfPncDao.isChildEligibleForOpv0(child.getBaseEntityId()));
+            } catch (JSONException e) {
+                Timber.e(e);
+            }
+            Map<String, List<VisitDetail>> childDetails = null;
+            if (editMode) {
+                Visit lastVisit = AncLibrary.getInstance().visitRepository().getLatestVisit(child.getBaseEntityId(), Constants.Events.PNC_CHILD_FOLLOWUP);
+                if (lastVisit != null) {
+                    childDetails = VisitUtils.getVisitGroups(AncLibrary.getInstance().visitDetailsRepository().getVisits(lastVisit.getVisitId()));
+                }
+                if (childDetails != null && !childDetails.isEmpty()) {
+                    JsonFormUtils.populateForm(childGeneralExamForm, childDetails);
+                }
+            }
+            BaseAncHomeVisitAction childGeneralExamination = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.child_general_examination, child.getFirstName()))
+                    .withOptional(false)
+                    .withDetails(childDetails)
+                    .withBaseEntityID(child.getBaseEntityId())
+                    .withProcessingMode(BaseAncHomeVisitAction.ProcessingMode.SEPARATE)
+                    .withJsonPayload(childGeneralExamForm.toString())
+                    .withFormName(Constants.JsonForm.getPncChildGeneralExamination())
+                    .withHelper(new PncChildGeneralExamination(memberObject))
+                    .build();
+            actionList.put(context.getString(R.string.child_general_examination, child.getFirstName()), childGeneralExamination);
+        }
 
         BaseAncHomeVisitAction familyPlanningServices = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.family_planning_services_title))
                 .withOptional(true)
