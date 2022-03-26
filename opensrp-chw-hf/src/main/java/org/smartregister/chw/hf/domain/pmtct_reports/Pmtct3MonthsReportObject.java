@@ -2,7 +2,7 @@ package org.smartregister.chw.hf.domain.pmtct_reports;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.smartregister.chw.hf.dao.PmtctReportDao;
+import org.smartregister.chw.hf.dao.ReportDao;
 import org.smartregister.chw.hf.domain.ReportObject;
 
 import java.text.DecimalFormat;
@@ -41,7 +41,7 @@ public class Pmtct3MonthsReportObject extends ReportObject {
     public JSONObject getIndicatorData() throws JSONException {
         JSONObject indicatorDataObject = new JSONObject();
         for (String indicatorCode : indicatorCodes) {
-            indicatorDataObject.put(indicatorCode, PmtctReportDao.getPmtctReportPerIndicatorCode(indicatorCode, reportDate));
+            indicatorDataObject.put(indicatorCode, ReportDao.getPmtctReportPerIndicatorCode(indicatorCode, reportDate));
         }
         df.setMaximumFractionDigits(2);
         //F3 = A3 + D3 - E3
@@ -52,18 +52,18 @@ public class Pmtct3MonthsReportObject extends ReportObject {
 
     private int getIndicatorA3() {
         // A3 = B3a + B3b + B3c + B3d
-        return PmtctReportDao.getPmtctReportPerIndicatorCode("B3a", reportDate)
-                + PmtctReportDao.getPmtctReportPerIndicatorCode("B3b", reportDate)
-                + PmtctReportDao.getPmtctReportPerIndicatorCode("B3c", reportDate)
-                + PmtctReportDao.getPmtctReportPerIndicatorCode("B3d", reportDate);
+        return ReportDao.getPmtctReportPerIndicatorCode("B3a", reportDate)
+                + ReportDao.getPmtctReportPerIndicatorCode("B3b", reportDate)
+                + ReportDao.getPmtctReportPerIndicatorCode("B3c", reportDate)
+                + ReportDao.getPmtctReportPerIndicatorCode("B3d", reportDate);
     }
 
     private int getIndicatorD3() {
-        return PmtctReportDao.getPmtctReportPerIndicatorCode("D3", reportDate);
+        return ReportDao.getPmtctReportPerIndicatorCode("D3", reportDate);
     }
 
     private int getIndicatorE3() {
-        return PmtctReportDao.getPmtctReportPerIndicatorCode("E3", reportDate);
+        return ReportDao.getPmtctReportPerIndicatorCode("E3", reportDate);
     }
 
     private float getIndicatorK3() {
@@ -79,15 +79,15 @@ public class Pmtct3MonthsReportObject extends ReportObject {
     }
 
     private int getIndicatorF3() {
-        return PmtctReportDao.getPmtctReportPerIndicatorCode("F3", reportDate);
+        return ReportDao.getPmtctReportPerIndicatorCode("F3", reportDate);
     }
 
     private int getIndicatorJ3() {
-        return PmtctReportDao.getPmtctReportPerIndicatorCode("J3", reportDate);
+        return ReportDao.getPmtctReportPerIndicatorCode("J3", reportDate);
     }
 
     private int getIndicatorG3() {
-        return PmtctReportDao.getPmtctReportPerIndicatorCode("G3", reportDate);
+        return ReportDao.getPmtctReportPerIndicatorCode("G3", reportDate);
     }
 
 

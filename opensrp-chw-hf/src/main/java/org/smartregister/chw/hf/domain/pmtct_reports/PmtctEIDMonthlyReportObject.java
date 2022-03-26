@@ -2,7 +2,7 @@ package org.smartregister.chw.hf.domain.pmtct_reports;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.smartregister.chw.hf.dao.PmtctReportDao;
+import org.smartregister.chw.hf.dao.ReportDao;
 import org.smartregister.chw.hf.domain.ReportObject;
 
 import java.text.DecimalFormat;
@@ -47,7 +47,7 @@ public class PmtctEIDMonthlyReportObject extends ReportObject {
     public JSONObject getIndicatorData() throws JSONException {
         JSONObject indicatorDataObject = new JSONObject();
         for (String indicatorCode : indicatorCodes) {
-            indicatorDataObject.put(indicatorCode, PmtctReportDao.getPmtctReportPerIndicatorCode(indicatorCode, reportDate));
+            indicatorDataObject.put(indicatorCode, ReportDao.getPmtctReportPerIndicatorCode(indicatorCode, reportDate));
         }
         df.setMaximumFractionDigits(2);
         indicatorDataObject.put("E", df.format(getIndicatorE()));
@@ -56,7 +56,7 @@ public class PmtctEIDMonthlyReportObject extends ReportObject {
 
     private int getIndicatorE() {
         //E = B + C + D
-        return PmtctReportDao.getPmtctReportPerIndicatorCode("B", reportDate) + PmtctReportDao.getPmtctReportPerIndicatorCode("C", reportDate) + PmtctReportDao.getPmtctReportPerIndicatorCode("D", reportDate);
+        return ReportDao.getPmtctReportPerIndicatorCode("B", reportDate) + ReportDao.getPmtctReportPerIndicatorCode("C", reportDate) + ReportDao.getPmtctReportPerIndicatorCode("D", reportDate);
     }
 
 }

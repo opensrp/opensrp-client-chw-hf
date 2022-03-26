@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class PmtctReportDao extends AbstractDao {
+public class ReportDao extends AbstractDao {
     public static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
 
     public static int getPmtctReportPerIndicatorCode(String indicatorCode, Date reportDate) {

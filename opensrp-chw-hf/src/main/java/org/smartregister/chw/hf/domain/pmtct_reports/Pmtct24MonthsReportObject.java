@@ -2,7 +2,7 @@ package org.smartregister.chw.hf.domain.pmtct_reports;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.smartregister.chw.hf.dao.PmtctReportDao;
+import org.smartregister.chw.hf.dao.ReportDao;
 import org.smartregister.chw.hf.domain.ReportObject;
 
 import java.text.DecimalFormat;
@@ -46,7 +46,7 @@ public class Pmtct24MonthsReportObject extends ReportObject {
     public JSONObject getIndicatorData() throws JSONException {
         JSONObject indicatorDataObject = new JSONObject();
         for (String indicatorCode : indicatorCodes) {
-            indicatorDataObject.put(indicatorCode, PmtctReportDao.getPmtctReportPerIndicatorCode(indicatorCode, reportDate));
+            indicatorDataObject.put(indicatorCode, ReportDao.getPmtctReportPerIndicatorCode(indicatorCode, reportDate));
         }
         df.setMaximumFractionDigits(2);
 
@@ -60,28 +60,28 @@ public class Pmtct24MonthsReportObject extends ReportObject {
 
     private int getIndicatorD24() {
         //D24 = A24 + B24 - C24
-        return PmtctReportDao.getPmtctReportPerIndicatorCode("A24", reportDate)
-                + PmtctReportDao.getPmtctReportPerIndicatorCode("B24", reportDate)
-                - PmtctReportDao.getPmtctReportPerIndicatorCode("C24", reportDate);
+        return ReportDao.getPmtctReportPerIndicatorCode("A24", reportDate)
+                + ReportDao.getPmtctReportPerIndicatorCode("B24", reportDate)
+                - ReportDao.getPmtctReportPerIndicatorCode("C24", reportDate);
     }
 
     private float getIndicatorI24() {
         //I24 = H24/D24 * 100
         if (getIndicatorD24() > 0) {
-            return ((PmtctReportDao.getPmtctReportPerIndicatorCode("H24", reportDate) * 1f) / getIndicatorD24()) * 100;
+            return ((ReportDao.getPmtctReportPerIndicatorCode("H24", reportDate) * 1f) / getIndicatorD24()) * 100;
         }
         return 0;
     }
 
     private int getIndicatorL24() {
         //L24 = J24 - K24
-        return PmtctReportDao.getPmtctReportPerIndicatorCode("J24", reportDate) - PmtctReportDao.getPmtctReportPerIndicatorCode("K24", reportDate);
+        return ReportDao.getPmtctReportPerIndicatorCode("J24", reportDate) - ReportDao.getPmtctReportPerIndicatorCode("K24", reportDate);
     }
 
     private float getIndicatorR24() {
         //R24 = (M24 + N24)/L24 * 100
         if (getIndicatorL24() > 0) {
-            return ((PmtctReportDao.getPmtctReportPerIndicatorCode("M24", reportDate) + PmtctReportDao.getPmtctReportPerIndicatorCode("N24", reportDate)) * 1f) / getIndicatorL24() * 100;
+            return ((ReportDao.getPmtctReportPerIndicatorCode("M24", reportDate) + ReportDao.getPmtctReportPerIndicatorCode("N24", reportDate)) * 1f) / getIndicatorL24() * 100;
         }
         return 0;
     }
