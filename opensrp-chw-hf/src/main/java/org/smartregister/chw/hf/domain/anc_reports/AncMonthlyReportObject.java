@@ -36,7 +36,7 @@ public class AncMonthlyReportObject extends ReportObject {
     public JSONObject getIndicatorData() throws JSONException {
         JSONObject jsonObject = new JSONObject();
         for (String indicatorCode : indicatorCodes) {
-            jsonObject.put(indicatorCode, ReportDao.getPmtctReportPerIndicatorCode(indicatorCode,reportDate));
+            jsonObject.put(indicatorCode, ReportDao.getReportPerIndicatorCode(indicatorCode,reportDate));
         }
         return jsonObject;
     }
