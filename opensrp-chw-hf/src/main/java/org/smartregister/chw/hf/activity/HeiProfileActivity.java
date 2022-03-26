@@ -1,5 +1,12 @@
 package org.smartregister.chw.hf.activity;
 
+import static com.vijay.jsonwizard.constants.JsonFormConstants.VALUE;
+import static org.smartregister.chw.core.utils.Utils.getCommonPersonObjectClient;
+import static org.smartregister.chw.core.utils.Utils.getDuration;
+import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
+import static org.smartregister.client.utils.constants.JsonFormConstants.FIELDS;
+import static org.smartregister.client.utils.constants.JsonFormConstants.STEP1;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
@@ -13,9 +20,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+
 import com.vijay.jsonwizard.utils.FormUtils;
 
 import org.apache.commons.lang3.StringUtils;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.core.custom_views.CorePmtctFloatingMenu;
@@ -36,20 +47,18 @@ import org.smartregister.domain.AlertStatus;
 import org.smartregister.family.util.DBConstants;
 import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.family.util.Utils;
+import org.smartregister.repository.AllSharedPreferences;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import timber.log.Timber;
-
-import static org.smartregister.chw.core.utils.Utils.getCommonPersonObjectClient;
-import static org.smartregister.chw.core.utils.Utils.getDuration;
-import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
 
 public class HeiProfileActivity extends BasePmtctProfileActivity {
 
     private static String baseEntityId;
+    private SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
 
     public static void startProfile(Activity activity, String baseEntityId) {
         HeiProfileActivity.baseEntityId = baseEntityId;
@@ -219,10 +228,22 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
             return true;
         } else if (itemId == R.id.action_issue_pmtct_followup_referral) {
             try {
-                JSONObject form = (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getPmtctcCommunityFollowupReferral());
-                if (form != null) {
-                    startFormActivity(form);
+                JSONObject form = (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, org.smartregister.chw.hf.utils.Constants.JsonForm.getHeiCommunityFollowupReferral());
+                Date followUpVisitDate = HeiDao.getHeiFollowUpVisitDate(baseEntityId);
+                Date registerDate = HeiDao.getHeiRegisterDate(baseEntityId);
+
+                Date lastVisitDate;
+                if (followUpVisitDate != null) {
+                    lastVisitDate = followUpVisitDate;
+                } else {
+                    lastVisitDate = registerDate;
                 }
+                form.getJSONObject(STEP1).getJSONArray(FIELDS).getJSONObject(getJsonArrayIndex(form.getJSONObject(STEP1).getJSONArray(FIELDS), "last_client_visit_date")).put(VALUE, sdf.format(lastVisitDate));
+                form.put(org.smartregister.util.JsonFormUtils.ENTITY_ID, HeiDao.getMotherBaseEntityId(baseEntityId));
+                form.getJSONObject(STEP1).getJSONArray(FIELDS).getJSONObject(getJsonArrayIndex(form.getJSONObject(STEP1).getJSONArray(FIELDS), "child_name")).put(VALUE, memberObject.getFirstName() + " " + memberObject.getMiddleName() + " " + memberObject.getLastName());
+
+                startFormActivity(form);
+
             } catch (JSONException e) {
                 Timber.e(e);
             }
@@ -238,14 +259,28 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(org.smartregister.chw.core.R.menu.hei_profile_menu, menu);
         menu.findItem(R.id.action_issue_pmtct_followup_referral).setVisible(true);
-        menu.findItem(R.id.action_issue_pmtct_followup_referral).setTitle("Issue HEI referral");
+        menu.findItem(R.id.action_issue_pmtct_followup_referral).setTitle(R.string.issue_hei_community_referal);
         menu.findItem(R.id.action_remove_member).setVisible(false);
         return true;
     }
 
+    @SuppressLint("MissingSuperCall")
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == Constants.REQUEST_CODE_GET_JSON && resultCode == RESULT_OK) {
+            try {
+                String jsonString = data.getStringExtra(org.smartregister.family.util.Constants.JSON_FORM_EXTRA.JSON);
+                JSONObject form = new JSONObject(jsonString);
+                String encounterType = form.getString(JsonFormUtils.ENCOUNTER_TYPE);
+                if (encounterType.equals(org.smartregister.chw.hf.utils.Constants.Events.HEI_COMMUNITY_FOLLOWUP)) {
+                    AllSharedPreferences allSharedPreferences = org.smartregister.util.Utils.getAllSharedPreferences();
+                    ((HeiProfilePresenter) profilePresenter).createHeiCommunityFollowupReferralEvent(allSharedPreferences, data.getStringExtra(Constants.JSON_FORM_EXTRA.JSON), HeiDao.getMotherBaseEntityId(baseEntityId));
+                }
+            } catch (Exception e) {
+                Timber.e(e, "HeiProfileActivity -- > onActivityResult");
+            }
+        }
     }
 
     protected void removeMember() {
@@ -297,5 +332,19 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
     public void refreshUpComingServicesStatus(String service, AlertStatus status, Date date) {
         super.refreshUpComingServicesStatus(service, status, date);
         rlUpcomingServices.setVisibility(View.GONE);
+    }
+
+    private int getJsonArrayIndex(JSONArray options, String key) {
+        for (int i = 0; i < options.length(); ++i) {
+            try {
+                if (options.getJSONObject(i).getString("key").equals(key)) {
+                    return i;
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return -1;
+
     }
 }
