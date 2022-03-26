@@ -1754,7 +1754,6 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
                       FROM ec_pmtct_registration epmtc
                                INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
-                               INNER JOIN ec_pmtct_followup epf on epmtc.base_entity_id = epf.entity_id
                       WHERE fm.dod IS NOT NULL
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-12 months') =
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
@@ -2024,5 +2023,169 @@ indicators:
                         ehf.test_at_age IS NOT NULL
                         AND date(substr(fm.dob, 1, 4) || '-' || substr(fm.dob, 6, 2) || '-' || substr(fm.dob, 9, 2), '+12 months') <
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || substr(ehf.followup_visit_date, 1, 2))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
+    
+  - key: "A1"
+    description: "children_who_were_tested_for_hiv_at_birth_and_found_positive"
+    indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
+                      FROM ec_hei eh
+                               INNER JOIN ec_hei_followup ehf on eh.base_entity_id = ehf.entity_id
+                               INNER JOIN ec_hei_hiv_results ehhr on ehf.base_entity_id = ehhr.hei_followup_form_submission_id
+                      WHERE eh.risk_category = 'high'
+                        AND ehf.test_at_age = 'At Birth'
+                        AND ehhr.hiv_test_result = 'positive'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
+
+  - key: "B1"
+    description: "children_who_were_tested_for_hiv_at_less_than_2_months_and_found_positive"
+    indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
+                      FROM ec_hei eh
+                               INNER JOIN ec_hei_followup ehf on eh.base_entity_id = ehf.entity_id
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = eh.base_entity_id
+                               INNER JOIN ec_hei_hiv_results ehhr on ehf.base_entity_id = ehhr.hei_followup_form_submission_id
+                      WHERE
+                        ehf.test_at_age IS NOT NULL
+                        AND ehhr.hiv_test_result = 'positive'
+                        AND date(substr(fm.dob, 1, 4) || '-' || substr(fm.dob, 6, 2) || '-' || substr(fm.dob, 9, 2), '+3 months') >
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || substr(ehf.followup_visit_date, 1, 2))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
+
+  - key: "C1"
+    description: "children_who_were_first_tested_for_hiv_at_2_months_to_12_months_and_found_positive"
+    indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
+                      FROM ec_hei eh
+                               INNER JOIN ec_hei_followup ehf on eh.base_entity_id = ehf.entity_id
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = eh.base_entity_id
+                               INNER JOIN ec_hei_hiv_results ehhr on ehf.base_entity_id = ehhr.hei_followup_form_submission_id
+                      WHERE
+                        ehf.test_at_age IS NOT NULL
+                        AND ehhr.hiv_test_result = 'positive'
+                        AND date(substr(fm.dob, 1, 4) || '-' || substr(fm.dob, 6, 2) || '-' || substr(fm.dob, 9, 2), '+3 months') <
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || substr(ehf.followup_visit_date, 1, 2))
+                        AND date(substr(fm.dob, 1, 4) || '-' || substr(fm.dob, 6, 2) || '-' || substr(fm.dob, 9, 2), '+12 months') >=
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || substr(ehf.followup_visit_date, 1, 2))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
+
+  - key: "D1"
+    description: "children_who_were_tested_for_hiv_at_13_months_and_greater_and_found_positive"
+    indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
+                      FROM ec_hei eh
+                               INNER JOIN ec_hei_followup ehf on eh.base_entity_id = ehf.entity_id
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = eh.base_entity_id
+                               INNER JOIN ec_hei_hiv_results ehhr on ehf.base_entity_id = ehhr.hei_followup_form_submission_id
+                      WHERE
+                        ehf.test_at_age IS NOT NULL
+                        AND ehhr.hiv_test_result = 'positive'
+                        AND date(substr(fm.dob, 1, 4) || '-' || substr(fm.dob, 6, 2) || '-' || substr(fm.dob, 9, 2), '+12 months') <
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || substr(ehf.followup_visit_date, 1, 2))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
+
+  - key: "E1"
+    description: "children_who_were_tested_for_hiv_at_13_months_and_greater_and_found_positive"
+    indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
+                      FROM ec_hei eh
+                               INNER JOIN ec_hei_followup ehf on eh.base_entity_id = ehf.entity_id
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = eh.base_entity_id
+                               INNER JOIN ec_hei_hiv_results ehhr on ehf.base_entity_id = ehhr.hei_followup_form_submission_id
+                               LEFT JOIN ec_hiv_register ehr on ehr.base_entity_id = eh.base_entity_id
+                      WHERE ehf.test_at_age IS NOT NULL
+                        AND ehhr.hiv_test_result = 'positive'
+                        AND (ehr.ctc_number IS NOT NULL OR ehr.ctc_number != '' OR ehhr.ctc_number IS NOT NULL OR ehhr.ctc_number != '')
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
+
+  - key: "F"
+    description: "children_who_were_given_proprophylactic_therapy"
+    indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
+                      FROM ec_hei eh
+                               INNER JOIN ec_hei_followup ehf on eh.base_entity_id = ehf.entity_id
+                      WHERE (ehf.prophylaxis_arv_for_high_risk_given IS NOT NULL OR
+                             ehf.prophylaxis_arv_for_high_and_low_risk_given IS NOT NULL)
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
+
+  - key: "H"
+    description: "children_who_were_tested_for_hiv_at_9_months_to_12_months"
+    indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
+                      FROM ec_hei eh
+                               INNER JOIN ec_hei_followup ehf on eh.base_entity_id = ehf.entity_id
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = eh.base_entity_id
+                               INNER JOIN ec_hei_hiv_results ehhr on ehf.base_entity_id = ehhr.hei_followup_form_submission_id
+                      WHERE ehf.test_at_age IS NOT NULL
+                        AND date(substr(fm.dob, 1, 4) || '-' || substr(fm.dob, 6, 2) || '-' || substr(fm.dob, 9, 2), '+9 months') <=
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' ||
+                                 substr(ehf.followup_visit_date, 1, 2))
+                        AND date(substr(fm.dob, 1, 4) || '-' || substr(fm.dob, 6, 2) || '-' || substr(fm.dob, 9, 2), '+13 months') >
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' ||
+                                 substr(ehf.followup_visit_date, 1, 2))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
+
+  - key: "I"
+    description: "children_who_were_tested_for_hiv_at_15_months"
+    indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
+                      FROM ec_hei eh
+                               INNER JOIN ec_hei_followup ehf on eh.base_entity_id = ehf.entity_id
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = eh.base_entity_id
+                               INNER JOIN ec_hei_hiv_results ehhr on ehf.base_entity_id = ehhr.hei_followup_form_submission_id
+                      WHERE ehf.test_at_age = '15 Months'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
+
+  - key: "J"
+    description: "children_who_were_tested_for_hiv_at_18_months"
+    indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
+                      FROM ec_hei eh
+                               INNER JOIN ec_hei_followup ehf on eh.base_entity_id = ehf.entity_id
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = eh.base_entity_id
+                               INNER JOIN ec_hei_hiv_results ehhr on ehf.base_entity_id = ehhr.hei_followup_form_submission_id
+                      WHERE ehf.test_at_age = '18 Months'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
+
+  - key: "H1"
+    description: "children_who_were_tested_for_hiv_at_9_months_to_12_months"
+    indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
+                      FROM ec_hei eh
+                               INNER JOIN ec_hei_followup ehf on eh.base_entity_id = ehf.entity_id
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = eh.base_entity_id
+                               INNER JOIN ec_hei_hiv_results ehhr on ehf.base_entity_id = ehhr.hei_followup_form_submission_id
+                      WHERE ehf.test_at_age IS NOT NULL
+                        AND ehhr.hiv_test_result = 'positive'
+                        AND date(substr(fm.dob, 1, 4) || '-' || substr(fm.dob, 6, 2) || '-' || substr(fm.dob, 9, 2), '+9 months') <=
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' ||
+                                 substr(ehf.followup_visit_date, 1, 2))
+                        AND date(substr(fm.dob, 1, 4) || '-' || substr(fm.dob, 6, 2) || '-' || substr(fm.dob, 9, 2), '+13 months') >
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' ||
+                                 substr(ehf.followup_visit_date, 1, 2))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
+
+  - key: "I1"
+    description: "children_who_were_tested_for_hiv_at_15_months"
+    indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
+                      FROM ec_hei eh
+                               INNER JOIN ec_hei_followup ehf on eh.base_entity_id = ehf.entity_id
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = eh.base_entity_id
+                               INNER JOIN ec_hei_hiv_results ehhr on ehf.base_entity_id = ehhr.hei_followup_form_submission_id
+                      WHERE ehf.test_at_age = '15 Months'
+                        AND ehhr.hiv_test_result = 'positive'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
+
+  - key: "J1"
+    description: "children_who_were_tested_for_hiv_at_18_months"
+    indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
+                      FROM ec_hei eh
+                               INNER JOIN ec_hei_followup ehf on eh.base_entity_id = ehf.entity_id
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = eh.base_entity_id
+                               INNER JOIN ec_hei_hiv_results ehhr on ehf.base_entity_id = ehhr.hei_followup_form_submission_id
+                      WHERE ehf.test_at_age = '18 Months'
+                        AND ehhr.hiv_test_result = 'positive'
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
