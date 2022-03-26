@@ -26,6 +26,8 @@ import androidx.annotation.RequiresApi;
 import com.vijay.jsonwizard.utils.FormUtils;
 
 import org.apache.commons.lang3.StringUtils;
+import org.joda.time.DateTime;
+import org.joda.time.Days;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -38,6 +40,7 @@ import org.smartregister.chw.hf.custom_view.PmtctFloatingMenu;
 import org.smartregister.chw.hf.dao.HeiDao;
 import org.smartregister.chw.hf.interactor.HeiProfileInteractor;
 import org.smartregister.chw.hf.presenter.HeiProfilePresenter;
+import org.smartregister.chw.hf.rule.HfHeiFollowupRule;
 import org.smartregister.chw.hf.utils.HeiVisitUtils;
 import org.smartregister.chw.pmtct.activity.BasePmtctProfileActivity;
 import org.smartregister.chw.pmtct.util.Constants;
@@ -58,7 +61,12 @@ import timber.log.Timber;
 public class HeiProfileActivity extends BasePmtctProfileActivity {
 
     private static String baseEntityId;
-    private SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+    private SimpleDateFormat dayMonthYear = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+    SimpleDateFormat yearMonthDay = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+
+    private Date registerDate = HeiDao.getHeiRegisterDate(baseEntityId);
+    private Date followUpVisitDate = HeiDao.getHeiFollowUpVisitDate(baseEntityId);
+    private HfHeiFollowupRule heiFollowupRule = new HfHeiFollowupRule(registerDate, followUpVisitDate, baseEntityId);
 
     public static void startProfile(Activity activity, String baseEntityId) {
         HeiProfileActivity.baseEntityId = baseEntityId;
@@ -229,8 +237,8 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
         } else if (itemId == R.id.action_issue_pmtct_followup_referral) {
             try {
                 JSONObject form = (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, org.smartregister.chw.hf.utils.Constants.JsonForm.getHeiCommunityFollowupReferral());
-                Date followUpVisitDate = HeiDao.getHeiFollowUpVisitDate(baseEntityId);
-                Date registerDate = HeiDao.getHeiRegisterDate(baseEntityId);
+
+                JSONObject reasonsForIssuingCommunityReferral = CoreJsonFormUtils.getJsonField(form, STEP1, "reasons_for_issuing_community_referral");
 
                 Date lastVisitDate;
                 if (followUpVisitDate != null) {
@@ -238,9 +246,15 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
                 } else {
                     lastVisitDate = registerDate;
                 }
-                form.getJSONObject(STEP1).getJSONArray(FIELDS).getJSONObject(getJsonArrayIndex(form.getJSONObject(STEP1).getJSONArray(FIELDS), "last_client_visit_date")).put(VALUE, sdf.format(lastVisitDate));
+                form.getJSONObject(STEP1).getJSONArray(FIELDS).getJSONObject(getJsonArrayIndex(form.getJSONObject(STEP1).getJSONArray(FIELDS), "last_client_visit_date")).put(VALUE, dayMonthYear.format(lastVisitDate));
                 form.put(org.smartregister.util.JsonFormUtils.ENTITY_ID, HeiDao.getMotherBaseEntityId(baseEntityId));
                 form.getJSONObject(STEP1).getJSONArray(FIELDS).getJSONObject(getJsonArrayIndex(form.getJSONObject(STEP1).getJSONArray(FIELDS), "child_name")).put(VALUE, memberObject.getFirstName() + " " + memberObject.getMiddleName() + " " + memberObject.getLastName());
+                DateTime dueDate  = new DateTime(yearMonthDay.format(heiFollowupRule.getDueDate()));
+
+                if (heiFollowupRule.getDatesDiff() >= 3 && heiFollowupRule.getDatesDiff() < 28)
+                    reasonsForIssuingCommunityReferral.getJSONArray("options").remove(getJsonArrayIndex(reasonsForIssuingCommunityReferral.getJSONArray("options"), "lost_to_followup"));
+                else if (heiFollowupRule.getDatesDiff() >= 28)
+                    reasonsForIssuingCommunityReferral.getJSONArray("options").remove(getJsonArrayIndex(reasonsForIssuingCommunityReferral.getJSONArray("options"), "missed_appointment"));
 
                 startFormActivity(form);
 
@@ -258,8 +272,12 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(org.smartregister.chw.core.R.menu.hei_profile_menu, menu);
-        menu.findItem(R.id.action_issue_pmtct_followup_referral).setVisible(true);
-        menu.findItem(R.id.action_issue_pmtct_followup_referral).setTitle(R.string.issue_hei_community_referal);
+
+        if ((heiFollowupRule.getButtonStatus().equals(CoreConstants.VISIT_STATE.DUE) || heiFollowupRule.getButtonStatus().equals(CoreConstants.VISIT_STATE.OVERDUE)) && heiFollowupRule.getDatesDiff() >= 3 && !HeiDao.hasTheChildTransferedOut(baseEntityId)) {
+            menu.findItem(R.id.action_issue_pmtct_followup_referral).setVisible(true);
+            menu.findItem(R.id.action_issue_pmtct_followup_referral).setTitle(R.string.issue_hei_community_referal);
+        }
+
         menu.findItem(R.id.action_remove_member).setVisible(false);
         return true;
     }
