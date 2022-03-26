@@ -1662,7 +1662,7 @@ indicators:
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "E24"
-    description: "pmtct_clients_continuing_with_services_with_visits_M10_or_M11_or_M12"
+    description: "pmtct_clients_continuing_with_services_with_visits_M24"
     indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
                       FROM ec_pmtct_registration epmtc
                                INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
@@ -1670,8 +1670,6 @@ indicators:
                       WHERE epf.followup_status = 'continuing_with_services'
                         AND (date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
                              date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01'))
-                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-12 months') =
-                            date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-24 months') =
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
