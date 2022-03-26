@@ -1,0 +1,773 @@
+indicators:
+  - key: "B3a"
+    description: "pmtct_pnc_clients_with_age_10-14"
+    indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
+                      FROM ec_pmtct_registration epmtc
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
+                      WHERE (is_transfer_in_client IS NULL OR is_transfer_in_client = 'no')
+                        AND (date(fm.dob, '+10 years') <= date('now'))
+                        AND (date(fm.dob, '+15 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-3 months') =
+                            date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
+  
+  - key: "B3b"
+    description: "pmtct_pnc_clients_with_age_15-19"
+    indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
+                      FROM ec_pmtct_registration epmtc
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
+                      WHERE (is_transfer_in_client IS NULL OR is_transfer_in_client = 'no')
+                        AND (date(fm.dob, '+15 years') <= date('now'))
+                        AND (date(fm.dob, '+20 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-3 months') =
+                            date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
+  
+  - key: "B3c"
+    description: "pmtct_pnc_clients_with_age_20-24"
+    indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
+                      FROM ec_pmtct_registration epmtc
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
+                      WHERE (is_transfer_in_client IS NULL OR is_transfer_in_client = 'no')
+                        AND (date(fm.dob, '+20 years') <= date('now'))
+                        AND (date(fm.dob, '+25 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-3 months') =
+                            date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
+  
+  - key: "B3d"
+    description: "pmtct_pnc_clients_with_age_25+"
+    indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
+                      FROM ec_pmtct_registration epmtc
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
+                      WHERE (is_transfer_in_client IS NULL OR is_transfer_in_client = 'no')
+                        AND (date(fm.dob, '+25 years') <= date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-3 months') =
+                            date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
+  
+  - key: "C3a"
+    description: "pmtct_pnc_clients_who_are_new_on_art"
+    indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
+                      FROM ec_pmtct_registration epmtc
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
+                      WHERE (is_transfer_in_client IS NULL OR is_transfer_in_client = 'no')
+                        AND known_on_art = 'no'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-3 months') =
+                            date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
+  
+  - key: "C3b"
+    description: "pmtct_pnc_clients_who_are_known_on_art"
+    indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
+                      FROM ec_pmtct_registration epmtc
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
+                      WHERE (is_transfer_in_client IS NULL OR is_transfer_in_client = 'no')
+                        AND known_on_art = 'yes'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-3 months') =
+                            date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
+  
+  - key: "D3"
+    description: "pmtct_transfer_in_client_TI"
+    indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
+                      FROM ec_pmtct_registration epmtc
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
+                      WHERE is_transfer_in_client = 'yes'
+                        AND known_on_art = 'yes'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-3 months') =
+                            date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
+  
+  - key: "E3"
+    description: "pmtct_transfer_out_clients_TO"
+    indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
+                      FROM ec_pmtct_registration epmtc
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
+                               INNER JOIN (SELECT t2.base_entity_id,
+                                                  substr(t2.grouped_followp_status, 0,
+                                                         instr(t2.grouped_followp_status, ',')) as followup_status
+                                           from (
+                                                    SELECT T1.base_entity_id,
+                                                           GROUP_CONCAT(T1.followup_status, ',') grouped_followp_status
+                                                    FROM (SELECT ec_pmtct_registration.base_entity_id, followup_status, visit_number
+                                                          FROM ec_pmtct_registration
+                                                                   INNER JOIN ec_pmtct_followup
+                                                                              on ec_pmtct_registration.base_entity_id = ec_pmtct_followup.entity_id
+                                                          ORDER BY visit_number DESC) as T1
+                                                    group by T1.base_entity_id
+                                                ) as t2) as t3 on t3.base_entity_id = epmtc.base_entity_id
+                      WHERE t3.followup_status = 'transfer_out'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-3 months') =
+                            date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
+  
+  
+  - key: "G3"
+    description: "pmtct_clients_continuing_with_services"
+    indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
+                      FROM ec_pmtct_registration epmtc
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
+                               INNER JOIN ec_pmtct_followup epf on epmtc.base_entity_id = epf.entity_id
+                      WHERE epf.followup_status = 'continuing_with_services'
+                        AND epf.visit_number <> '0'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-3 months') =
+                            date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
+  
+  - key: "H3"
+    description: "pmtct_clients_with_three_consecutive_missed_appointments"
+    indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
+                      FROM ec_pmtct_registration epmtc
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
+                      WHERE epmtc.base_entity_id NOT IN (SELECT DISTINCT epmtc.base_entity_id as base_entity_id
+                                                         FROM ec_pmtct_registration epmtc
+                                                                  INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
+                                                                  INNER JOIN ec_pmtct_followup epf on epmtc.base_entity_id = epf.entity_id
+                                                         WHERE (epf.followup_status = 'continuing_with_services' OR
+                                                                epf.followup_status = 'transfer_out')
+                                                           AND epf.visit_number <> '0'
+                                                           AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'),
+                                                                    '-3 months') =
+                                                               date(substr(epmtc.pmtct_register_date, 7, 4) || '-' ||
+                                                                    substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-3 months') =
+                            date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
+  
+  - key: "I3"
+    description: "pmtct_clients_that_died"
+    indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
+                      FROM ec_pmtct_registration epmtc
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
+                               INNER JOIN ec_pmtct_followup epf on epmtc.base_entity_id = epf.entity_id
+                      WHERE fm.dod IS NOT NULL
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-3 months') =
+                            date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
+  
+  
+  - key: "J3"
+    description: "pmtct_clients_that_exited_to_ctc"
+    indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
+                      FROM ec_pmtct_registration epmtc
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
+                      WHERE epmtc.is_closed = '1'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-3 months') =
+                            date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
+  
+  - key: "A12"
+    description: "pmtct_clients_registered_month(0)_12_months_report"
+    indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
+                    FROM ec_pmtct_registration epmtc
+                             INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
+                    WHERE (is_transfer_in_client IS NULL OR is_transfer_in_client = 'no')
+                      AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-12 months') =
+                          date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
+  
+  - key: "A24"
+    description: "pmtct_clients_registered_month(0)_24_months_report"
+    indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
+                    FROM ec_pmtct_registration epmtc
+                             INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
+                    WHERE (is_transfer_in_client IS NULL OR is_transfer_in_client = 'no')
+                      AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-24 months') =
+                          date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
+  
+  - key: "B12"
+    description: "pmtct_transfer_in_client_TI_since_month(0)_12_months_report"
+    indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
+                      FROM ec_pmtct_registration epmtc
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
+                      WHERE is_transfer_in_client = 'yes'
+                        AND known_on_art = 'yes'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-12 months') =
+                            date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
+  
+  - key: "B24"
+    description: "pmtct_transfer_in_client_TI_since_month(0)_24_months_report"
+    indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
+                      FROM ec_pmtct_registration epmtc
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
+                      WHERE is_transfer_in_client = 'yes'
+                        AND known_on_art = 'yes'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-24 months') =
+                            date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
+  
+  - key: "C12"
+    description: "pmtct_transfer_out_clients_since_month(0)_12_months_report"
+    indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
+                      FROM ec_pmtct_registration epmtc
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
+                               INNER JOIN (SELECT t2.base_entity_id,
+                                                  substr(t2.grouped_followp_status, 0,
+                                                         instr(t2.grouped_followp_status, ',')) as followup_status
+                                           from (
+                                                    SELECT T1.base_entity_id,
+                                                           GROUP_CONCAT(T1.followup_status, ',') grouped_followp_status
+                                                    FROM (SELECT ec_pmtct_registration.base_entity_id, followup_status, visit_number
+                                                          FROM ec_pmtct_registration
+                                                                   INNER JOIN ec_pmtct_followup
+                                                                              on ec_pmtct_registration.base_entity_id = ec_pmtct_followup.entity_id
+                                                          ORDER BY visit_number DESC) as T1
+                                                    group by T1.base_entity_id
+                                                ) as t2) as t3 on t3.base_entity_id = epmtc.base_entity_id
+                      WHERE t3.followup_status = 'transfer_out'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-12 months') =
+                            date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
+  
+  - key: "C24"
+    description: "pmtct_transfer_out_clients_since_month(0)_24_months_report"
+    indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
+                      FROM ec_pmtct_registration epmtc
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
+                               INNER JOIN (SELECT t2.base_entity_id,
+                                                  substr(t2.grouped_followp_status, 0,
+                                                         instr(t2.grouped_followp_status, ',')) as followup_status
+                                           from (
+                                                    SELECT T1.base_entity_id,
+                                                           GROUP_CONCAT(T1.followup_status, ',') grouped_followp_status
+                                                    FROM (SELECT ec_pmtct_registration.base_entity_id, followup_status, visit_number
+                                                          FROM ec_pmtct_registration
+                                                                   INNER JOIN ec_pmtct_followup
+                                                                              on ec_pmtct_registration.base_entity_id = ec_pmtct_followup.entity_id
+                                                          ORDER BY visit_number DESC) as T1
+                                                    group by T1.base_entity_id
+                                                ) as t2) as t3 on t3.base_entity_id = epmtc.base_entity_id
+                      WHERE t3.followup_status = 'transfer_out'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-24 months') =
+                            date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
+  
+  - key: "E12"
+    description: "pmtct_clients_continuing_with_services_with_visits_M10_or_M11_or_M12"
+    indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
+                      FROM ec_pmtct_registration epmtc
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
+                               INNER JOIN ec_pmtct_followup epf on epmtc.base_entity_id = epf.entity_id
+                      WHERE epf.followup_status = 'continuing_with_services'
+                        AND (date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01') OR
+                             date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-2 months') =
+                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01') OR
+                             date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-3 months') =
+                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-12 months') =
+                            date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-12 months') =
+                            date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
+  
+  - key: "E24"
+    description: "pmtct_clients_continuing_with_services_with_visits_M24"
+    indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
+                      FROM ec_pmtct_registration epmtc
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
+                               INNER JOIN ec_pmtct_followup epf on epmtc.base_entity_id = epf.entity_id
+                      WHERE epf.followup_status = 'continuing_with_services'
+                        AND (date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-24 months') =
+                            date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
+  
+  - key: "F12"
+    description: "pmtct_clients_with_hvl_test_in_the_last_6_months"
+    indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
+                      FROM ec_pmtct_registration epmtc
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
+                               INNER JOIN ec_pmtct_followup epf on epmtc.base_entity_id = epf.entity_id
+                      WHERE epf.followup_status = 'continuing_with_services'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-6 months') <=
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')
+                        AND hvl_sample_id IS NOT NULL
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-12 months') =
+                            date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
+  
+  - key: "G12"
+    description: "pmtct_clients_with_hvl_test_in_the_last_6_months_with_results_less_than_50_per_ul"
+    indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
+                      FROM ec_pmtct_registration epmtc
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
+                               INNER JOIN ec_pmtct_followup epf on epmtc.base_entity_id = epf.entity_id
+                               INNER JOIN ec_pmtct_hvl_results ephr on epf.base_entity_id = ephr.hvl_pmtct_followup_form_submission_id
+                      WHERE epf.followup_status = 'continuing_with_services'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-6 months') <=
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')
+                        AND hvl_sample_id IS NOT NULL
+                        AND CAST(hvl_result as INT) <= 50
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-12 months') =
+                            date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
+  
+  
+  - key: "H12"
+    description: "pmtct_clients_who_are_ltf"
+    indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
+                      FROM ec_pmtct_registration epmtc
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
+                               INNER JOIN (SELECT t2.base_entity_id,
+                                                  substr(t2.grouped_followp_status, 0,
+                                                         instr(t2.grouped_followp_status, ',')) as followup_status
+                                           from (
+                                                    SELECT T1.base_entity_id,
+                                                           GROUP_CONCAT(T1.followup_status, ',') grouped_followp_status
+                                                    FROM (SELECT ec_pmtct_registration.base_entity_id, followup_status, visit_number
+                                                          FROM ec_pmtct_registration
+                                                                   INNER JOIN ec_pmtct_followup
+                                                                              on ec_pmtct_registration.base_entity_id = ec_pmtct_followup.entity_id
+                                                          ORDER BY visit_number DESC) as T1
+                                                    group by T1.base_entity_id
+                                                ) as t2) as t3 on t3.base_entity_id = epmtc.base_entity_id
+                      WHERE t3.followup_status = 'lost_to_followup'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-12 months') =
+                            date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
+  
+  
+  - key: "F24"
+    description: "pmtct_clients_who_are_ltf_24_months_report"
+    indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
+                      FROM ec_pmtct_registration epmtc
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
+                               INNER JOIN (SELECT t2.base_entity_id,
+                                                  substr(t2.grouped_followp_status, 0,
+                                                         instr(t2.grouped_followp_status, ',')) as followup_status
+                                           from (
+                                                    SELECT T1.base_entity_id,
+                                                           GROUP_CONCAT(T1.followup_status, ',') grouped_followp_status
+                                                    FROM (SELECT ec_pmtct_registration.base_entity_id, followup_status, visit_number
+                                                          FROM ec_pmtct_registration
+                                                                   INNER JOIN ec_pmtct_followup
+                                                                              on ec_pmtct_registration.base_entity_id = ec_pmtct_followup.entity_id
+                                                          ORDER BY visit_number DESC) as T1
+                                                    group by T1.base_entity_id
+                                                ) as t2) as t3 on t3.base_entity_id = epmtc.base_entity_id
+                      WHERE t3.followup_status = 'lost_to_followup'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-24 months') =
+                            date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
+  
+  - key: "I12"
+    description: "pmtct_clients_who_are_diseased_since_month(0)_12_months_report"
+    indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
+                      FROM ec_pmtct_registration epmtc
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
+                      WHERE fm.dod IS NOT NULL
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-12 months') =
+                            date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
+  
+  - key: "G24"
+    description: "pmtct_clients_who_are_diseased_since_month(0)_24_months_report"
+    indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
+                      FROM ec_pmtct_registration epmtc
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
+                               INNER JOIN ec_pmtct_followup epf on epmtc.base_entity_id = epf.entity_id
+                      WHERE fm.dod IS NOT NULL
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-24 months') =
+                            date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
+  
+  - key: "J12"
+    description: "pmtct_clients_that_exited_to_ctc_since_month(0)_12_months_report"
+    indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
+                      FROM ec_pmtct_registration epmtc
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
+                      WHERE epmtc.is_closed = '1'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-12 months') =
+                            date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
+  
+  
+  - key: "H24"
+    description: "pmtct_clients_that_exited_to_ctc_since_month(0)_24_months_report"
+    indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
+                      FROM ec_pmtct_registration epmtc
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
+                      WHERE epmtc.is_closed = '1'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-24 months') =
+                            date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
+  
+  - key: "L12"
+    description: "children_born_by_pmtctc_mothers_since_moonth(0)_12_months_report"
+    indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
+                      FROM ec_pmtct_registration epmtc
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
+                               INNER JOIN ec_hei eh on fm.base_entity_id = eh.mother_entity_id
+                      WHERE date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-12 months') =
+                            date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
+  
+  - key: "J24"
+    description: "children_born_by_pmtctc_mothers_since_moonth(0)_24_months_report"
+    indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
+                      FROM ec_pmtct_registration epmtc
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
+                               INNER JOIN ec_hei eh on fm.base_entity_id = eh.mother_entity_id
+                      WHERE date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-24 months') =
+                            date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
+  
+  - key: "M12"
+    description: "children_who_are_ltfs_since_month(0)_12_months_report"
+    indicatorQuery: " SELECT count(DISTINCT t3.base_entity_id) as count
+                      FROM ec_pmtct_registration epmtc
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
+                               INNER JOIN (SELECT t2.base_entity_id, t2.mother_entity_id,
+                                                  substr(t2.grouped_followp_status, 0,
+                                                         instr(t2.grouped_followp_status, ',')) as followup_status
+                                           from (
+                                                    SELECT T1.base_entity_id, T1.mother_entity_id,
+                                                           GROUP_CONCAT(T1.followup_status, ',') grouped_followp_status
+                                                    FROM (SELECT ec_hei.base_entity_id, followup_status, mother_entity_id
+                                                          FROM ec_hei
+                                                                   INNER JOIN ec_hei_followup
+                                                                              on ec_hei.base_entity_id = ec_hei_followup.entity_id
+                                                          ORDER BY visit_number DESC) as T1
+                                                    group by T1.base_entity_id, T1.mother_entity_id
+                                                ) as t2) as t3 on t3.mother_entity_id = epmtc.base_entity_id
+                      WHERE t3.followup_status = 'lost_to_followup'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-12 months') =
+                            date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
+  
+  - key: "Q24"
+    description: "children_who_are_ltfs_since_month(0)_24_months_report"
+    indicatorQuery: " SELECT count(DISTINCT t3.base_entity_id) as count
+                      FROM ec_pmtct_registration epmtc
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
+                               INNER JOIN (SELECT t2.base_entity_id, t2.mother_entity_id,
+                                                  substr(t2.grouped_followp_status, 0,
+                                                         instr(t2.grouped_followp_status, ',')) as followup_status
+                                           from (
+                                                    SELECT T1.base_entity_id, T1.mother_entity_id,
+                                                           GROUP_CONCAT(T1.followup_status, ',') grouped_followp_status
+                                                    FROM (SELECT ec_hei.base_entity_id, followup_status, mother_entity_id
+                                                          FROM ec_hei
+                                                                   INNER JOIN ec_hei_followup
+                                                                              on ec_hei.base_entity_id = ec_hei_followup.entity_id
+                                                          ORDER BY visit_number DESC) as T1
+                                                    group by T1.base_entity_id, T1.mother_entity_id
+                                                ) as t2) as t3 on t3.mother_entity_id = epmtc.base_entity_id
+                      WHERE t3.followup_status = 'lost_to_followup'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-24 months') =
+                            date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
+  
+  
+  - key: "K24"
+    description: "children_who_transfered_out_since_month(0)_24_months_report"
+    indicatorQuery: " SELECT count(DISTINCT t3.base_entity_id) as count
+                      FROM ec_pmtct_registration epmtc
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = epmtc.base_entity_id
+                               INNER JOIN (SELECT t2.base_entity_id, t2.mother_entity_id,
+                                                  substr(t2.grouped_followp_status, 0,
+                                                         instr(t2.grouped_followp_status, ',')) as followup_status
+                                           from (
+                                                    SELECT T1.base_entity_id, T1.mother_entity_id,
+                                                           GROUP_CONCAT(T1.followup_status, ',') grouped_followp_status
+                                                    FROM (SELECT ec_hei.base_entity_id, followup_status, mother_entity_id
+                                                          FROM ec_hei
+                                                                   INNER JOIN ec_hei_followup
+                                                                              on ec_hei.base_entity_id = ec_hei_followup.entity_id
+                                                          ORDER BY visit_number DESC) as T1
+                                                    group by T1.base_entity_id, T1.mother_entity_id
+                                                ) as t2) as t3 on t3.mother_entity_id = epmtc.base_entity_id
+                      WHERE t3.followup_status = 'transfer_out'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-24 months') =
+                            date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
+  
+  - key: "N12"
+    description: "children_who_are_ltfs_since_month(0)_12_months_report"
+    indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
+                      FROM ec_pmtct_registration epmtc
+                               INNER JOIN ec_hei eh on epmtc.base_entity_id = eh.mother_entity_id
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = eh.base_entity_id
+                      WHERE
+                            fm.dod IS NOT NULL AND
+                            date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-12 months') =
+                            date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
+  
+  - key: "P24"
+    description: "children_who_are_ltfs_since_month(0)_24_months_report"
+    indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
+                      FROM ec_pmtct_registration epmtc
+                               INNER JOIN ec_hei eh on epmtc.base_entity_id = eh.mother_entity_id
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = eh.base_entity_id
+                      WHERE
+                            fm.dod IS NOT NULL AND
+                            date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-24 months') =
+                            date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
+  
+  - key: "O12"
+    description: "children_who_started_prophylaxis"
+    indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
+                      FROM ec_pmtct_registration epmtc
+                               INNER JOIN ec_hei eh on epmtc.base_entity_id = eh.mother_entity_id
+                               INNER JOIN ec_hei_followup ehf on ehf.entity_id = eh.base_entity_id
+                      WHERE (ehf.prophylaxis_arv_for_high_and_low_risk_given IS NOT NULL OR
+                             ehf.prophylaxis_arv_for_high_risk_given IS NOT NULL)
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-12 months') =
+                            date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
+  
+  - key: "P12"
+    description: "children_who_started_ctx_within_2_months"
+    indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
+                      FROM ec_pmtct_registration epmtc
+                               INNER JOIN ec_hei eh on epmtc.base_entity_id = eh.mother_entity_id
+                               INNER JOIN ec_hei_followup ehf on ehf.entity_id = eh.base_entity_id
+                      WHERE ehf.prescribed_ctx = 'yes'
+                        AND date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01',
+                                 '+2 months') >=
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-12 months') =
+                            date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
+  
+  - key: "Q12a"
+    description: "children_who_were_tested_for_hiv_within_2_months"
+    indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
+                      FROM ec_pmtct_registration epmtc
+                               INNER JOIN ec_hei eh on epmtc.base_entity_id = eh.mother_entity_id
+                               INNER JOIN ec_hei_followup ehf on ehf.entity_id = eh.base_entity_id
+                      WHERE ehf.sample_id IS NOT NULL
+                        AND date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01',
+                                 '+2 months') >=
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-12 months') =
+                            date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
+  
+  - key: "Q12b"
+    description: "children_who_were_tested_for_hiv_and_found_positive_within_2_months"
+    indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
+                      FROM ec_pmtct_registration epmtc
+                               INNER JOIN ec_hei eh on epmtc.base_entity_id = eh.mother_entity_id
+                               INNER JOIN ec_hei_followup ehf on ehf.entity_id = eh.base_entity_id
+                               INNER JOIN ec_hei_hiv_results ehhr on ehhr.hei_followup_form_submission_id = ehf.base_entity_id
+                      WHERE ehf.sample_id IS NOT NULL
+                        AND date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01',
+                                 '+2 months') >=
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')
+                        AND ehhr.hiv_test_result = 'positive'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-12 months') =
+                            date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
+  
+  - key: "M24"
+    description: "children_who_tested_negative_after_confimation_test_24_months_report"
+    indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
+                      FROM ec_pmtct_registration epmtc
+                               INNER JOIN ec_hei eh on epmtc.base_entity_id = eh.mother_entity_id
+                      WHERE eh.hiv_status = 'negative'
+                        AND eh.is_closed = '1'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-24 months') =
+                            date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
+  
+  - key: "N24"
+    description: "children_who_tested_negative_but_have_not_completed_hei_24_months_report"
+    indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
+                      FROM ec_pmtct_registration epmtc
+                               INNER JOIN ec_hei eh on epmtc.base_entity_id = eh.mother_entity_id
+                      WHERE eh.hiv_status = 'negative'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-24 months') =
+                            date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
+  
+  - key: "O24"
+    description: "children_who_were_found_positive_24_months_report"
+    indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
+                      FROM ec_pmtct_registration epmtc
+                               INNER JOIN ec_hei eh on epmtc.base_entity_id = eh.mother_entity_id
+                      WHERE eh.hiv_status = 'positive'
+                        AND eh.is_closed = '1'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-24 months') =
+                            date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
+  
+  - key: "A"
+    description: "children_who_were_tested_for_hiv_at_birth"
+    indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
+                      FROM ec_hei eh
+                               INNER JOIN ec_hei_followup ehf on eh.base_entity_id = ehf.entity_id
+                      WHERE eh.risk_category = 'high'
+                        AND ehf.test_at_age = 'At Birth'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
+  
+  - key: "B"
+    description: "children_who_were_tested_for_hiv_at_less_than_2_months"
+    indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
+                      FROM ec_hei eh
+                               INNER JOIN ec_hei_followup ehf on eh.base_entity_id = ehf.entity_id
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = eh.base_entity_id
+                      WHERE
+                        ehf.test_at_age IS NOT NULL
+                        AND date(substr(fm.dob, 1, 4) || '-' || substr(fm.dob, 6, 2) || '-' || substr(fm.dob, 9, 2), '+3 months') >
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || substr(ehf.followup_visit_date, 1, 2))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
+  
+  - key: "C"
+    description: "children_who_were_tested_for_hiv_at_2_months_to_12_months"
+    indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
+                      FROM ec_hei eh
+                               INNER JOIN ec_hei_followup ehf on eh.base_entity_id = ehf.entity_id
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = eh.base_entity_id
+                      WHERE
+                        ehf.test_at_age IS NOT NULL
+                        AND date(substr(fm.dob, 1, 4) || '-' || substr(fm.dob, 6, 2) || '-' || substr(fm.dob, 9, 2), '+3 months') <
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || substr(ehf.followup_visit_date, 1, 2))
+                        AND date(substr(fm.dob, 1, 4) || '-' || substr(fm.dob, 6, 2) || '-' || substr(fm.dob, 9, 2), '+12 months') >=
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || substr(ehf.followup_visit_date, 1, 2))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
+  
+  - key: "D"
+    description: "children_who_were_tested_for_hiv_at_13_months_and_greater"
+    indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
+                      FROM ec_hei eh
+                               INNER JOIN ec_hei_followup ehf on eh.base_entity_id = ehf.entity_id
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = eh.base_entity_id
+                      WHERE
+                        ehf.test_at_age IS NOT NULL
+                        AND date(substr(fm.dob, 1, 4) || '-' || substr(fm.dob, 6, 2) || '-' || substr(fm.dob, 9, 2), '+12 months') <
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || substr(ehf.followup_visit_date, 1, 2))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
+  
+  - key: "A1"
+    description: "children_who_were_tested_for_hiv_at_birth_and_found_positive"
+    indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
+                      FROM ec_hei eh
+                               INNER JOIN ec_hei_followup ehf on eh.base_entity_id = ehf.entity_id
+                               INNER JOIN ec_hei_hiv_results ehhr on ehf.base_entity_id = ehhr.hei_followup_form_submission_id
+                      WHERE eh.risk_category = 'high'
+                        AND ehf.test_at_age = 'At Birth'
+                        AND ehhr.hiv_test_result = 'positive'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
+  
+  - key: "B1"
+    description: "children_who_were_tested_for_hiv_at_less_than_2_months_and_found_positive"
+    indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
+                      FROM ec_hei eh
+                               INNER JOIN ec_hei_followup ehf on eh.base_entity_id = ehf.entity_id
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = eh.base_entity_id
+                               INNER JOIN ec_hei_hiv_results ehhr on ehf.base_entity_id = ehhr.hei_followup_form_submission_id
+                      WHERE
+                        ehf.test_at_age IS NOT NULL
+                        AND ehhr.hiv_test_result = 'positive'
+                        AND date(substr(fm.dob, 1, 4) || '-' || substr(fm.dob, 6, 2) || '-' || substr(fm.dob, 9, 2), '+3 months') >
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || substr(ehf.followup_visit_date, 1, 2))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
+  
+  - key: "C1"
+    description: "children_who_were_first_tested_for_hiv_at_2_months_to_12_months_and_found_positive"
+    indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
+                      FROM ec_hei eh
+                               INNER JOIN ec_hei_followup ehf on eh.base_entity_id = ehf.entity_id
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = eh.base_entity_id
+                               INNER JOIN ec_hei_hiv_results ehhr on ehf.base_entity_id = ehhr.hei_followup_form_submission_id
+                      WHERE
+                        ehf.test_at_age IS NOT NULL
+                        AND ehhr.hiv_test_result = 'positive'
+                        AND date(substr(fm.dob, 1, 4) || '-' || substr(fm.dob, 6, 2) || '-' || substr(fm.dob, 9, 2), '+3 months') <
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || substr(ehf.followup_visit_date, 1, 2))
+                        AND date(substr(fm.dob, 1, 4) || '-' || substr(fm.dob, 6, 2) || '-' || substr(fm.dob, 9, 2), '+12 months') >=
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || substr(ehf.followup_visit_date, 1, 2))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
+  
+  - key: "D1"
+    description: "children_who_were_tested_for_hiv_at_13_months_and_greater_and_found_positive"
+    indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
+                      FROM ec_hei eh
+                               INNER JOIN ec_hei_followup ehf on eh.base_entity_id = ehf.entity_id
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = eh.base_entity_id
+                               INNER JOIN ec_hei_hiv_results ehhr on ehf.base_entity_id = ehhr.hei_followup_form_submission_id
+                      WHERE
+                        ehf.test_at_age IS NOT NULL
+                        AND ehhr.hiv_test_result = 'positive'
+                        AND date(substr(fm.dob, 1, 4) || '-' || substr(fm.dob, 6, 2) || '-' || substr(fm.dob, 9, 2), '+12 months') <
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || substr(ehf.followup_visit_date, 1, 2))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
+  
+  - key: "E1"
+    description: "children_who_were_tested_for_hiv_at_13_months_and_greater_and_found_positive"
+    indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
+                      FROM ec_hei eh
+                               INNER JOIN ec_hei_followup ehf on eh.base_entity_id = ehf.entity_id
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = eh.base_entity_id
+                               INNER JOIN ec_hei_hiv_results ehhr on ehf.base_entity_id = ehhr.hei_followup_form_submission_id
+                               LEFT JOIN ec_hiv_register ehr on ehr.base_entity_id = eh.base_entity_id
+                      WHERE ehf.test_at_age IS NOT NULL
+                        AND ehhr.hiv_test_result = 'positive'
+                        AND (ehr.ctc_number IS NOT NULL OR ehr.ctc_number != '' OR ehhr.ctc_number IS NOT NULL OR ehhr.ctc_number != '')
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
+  
+  - key: "F"
+    description: "children_who_were_given_proprophylactic_therapy"
+    indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
+                      FROM ec_hei eh
+                               INNER JOIN ec_hei_followup ehf on eh.base_entity_id = ehf.entity_id
+                      WHERE (ehf.prophylaxis_arv_for_high_risk_given IS NOT NULL OR
+                             ehf.prophylaxis_arv_for_high_and_low_risk_given IS NOT NULL)
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
+  
+  - key: "H"
+    description: "children_who_were_tested_for_hiv_at_9_months_to_12_months"
+    indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
+                      FROM ec_hei eh
+                               INNER JOIN ec_hei_followup ehf on eh.base_entity_id = ehf.entity_id
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = eh.base_entity_id
+                               INNER JOIN ec_hei_hiv_results ehhr on ehf.base_entity_id = ehhr.hei_followup_form_submission_id
+                      WHERE ehf.test_at_age IS NOT NULL
+                        AND date(substr(fm.dob, 1, 4) || '-' || substr(fm.dob, 6, 2) || '-' || substr(fm.dob, 9, 2), '+9 months') <=
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' ||
+                                 substr(ehf.followup_visit_date, 1, 2))
+                        AND date(substr(fm.dob, 1, 4) || '-' || substr(fm.dob, 6, 2) || '-' || substr(fm.dob, 9, 2), '+13 months') >
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' ||
+                                 substr(ehf.followup_visit_date, 1, 2))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
+  
+  - key: "I"
+    description: "children_who_were_tested_for_hiv_at_15_months"
+    indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
+                      FROM ec_hei eh
+                               INNER JOIN ec_hei_followup ehf on eh.base_entity_id = ehf.entity_id
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = eh.base_entity_id
+                               INNER JOIN ec_hei_hiv_results ehhr on ehf.base_entity_id = ehhr.hei_followup_form_submission_id
+                      WHERE ehf.test_at_age = '15 Months'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
+  
+  - key: "J"
+    description: "children_who_were_tested_for_hiv_at_18_months"
+    indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
+                      FROM ec_hei eh
+                               INNER JOIN ec_hei_followup ehf on eh.base_entity_id = ehf.entity_id
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = eh.base_entity_id
+                               INNER JOIN ec_hei_hiv_results ehhr on ehf.base_entity_id = ehhr.hei_followup_form_submission_id
+                      WHERE ehf.test_at_age = '18 Months'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
+  
+  - key: "H1"
+    description: "children_who_were_tested_for_hiv_at_9_months_to_12_months"
+    indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
+                      FROM ec_hei eh
+                               INNER JOIN ec_hei_followup ehf on eh.base_entity_id = ehf.entity_id
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = eh.base_entity_id
+                               INNER JOIN ec_hei_hiv_results ehhr on ehf.base_entity_id = ehhr.hei_followup_form_submission_id
+                      WHERE ehf.test_at_age IS NOT NULL
+                        AND ehhr.hiv_test_result = 'positive'
+                        AND date(substr(fm.dob, 1, 4) || '-' || substr(fm.dob, 6, 2) || '-' || substr(fm.dob, 9, 2), '+9 months') <=
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' ||
+                                 substr(ehf.followup_visit_date, 1, 2))
+                        AND date(substr(fm.dob, 1, 4) || '-' || substr(fm.dob, 6, 2) || '-' || substr(fm.dob, 9, 2), '+13 months') >
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' ||
+                                 substr(ehf.followup_visit_date, 1, 2))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
+  
+  - key: "I1"
+    description: "children_who_were_tested_for_hiv_at_15_months"
+    indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
+                      FROM ec_hei eh
+                               INNER JOIN ec_hei_followup ehf on eh.base_entity_id = ehf.entity_id
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = eh.base_entity_id
+                               INNER JOIN ec_hei_hiv_results ehhr on ehf.base_entity_id = ehhr.hei_followup_form_submission_id
+                      WHERE ehf.test_at_age = '15 Months'
+                        AND ehhr.hiv_test_result = 'positive'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
+  
+  - key: "J1"
+    description: "children_who_were_tested_for_hiv_at_18_months"
+    indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
+                      FROM ec_hei eh
+                               INNER JOIN ec_hei_followup ehf on eh.base_entity_id = ehf.entity_id
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = eh.base_entity_id
+                               INNER JOIN ec_hei_hiv_results ehhr on ehf.base_entity_id = ehhr.hei_followup_form_submission_id
+                      WHERE ehf.test_at_age = '18 Months'
+                        AND ehhr.hiv_test_result = 'positive'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"

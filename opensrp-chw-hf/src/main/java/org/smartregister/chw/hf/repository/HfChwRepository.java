@@ -26,6 +26,7 @@ import org.smartregister.util.DatabaseMigrationUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
@@ -169,14 +170,23 @@ public class HfChwRepository extends CoreChwRepository {
 
     private static void upgradeToVersion7(SQLiteDatabase db) {
         try {
-            String indicatorsConfigFile = "config/indicator-definitions.yml";
-            String indicatorDataInitialisedPref = "INDICATOR_DATA_INITIALISED";
             ReportingLibrary reportingLibraryInstance = ReportingLibrary.getInstance();
+            String indicatorDataInitialisedPref = "INDICATOR_DATA_INITIALISED";
 
             boolean indicatorDataInitialised = Boolean.parseBoolean(reportingLibraryInstance.getContext().allSharedPreferences().getPreference(indicatorDataInitialisedPref));
             boolean isUpdated = checkIfAppUpdated();
             if (!indicatorDataInitialised || isUpdated) {
-                reportingLibraryInstance.readConfigFile(indicatorsConfigFile, db);
+
+                String indicatorsConfigFile = "config/indicator-definitions.yml";
+                String ancIndicatorConfigFile = "config/anc-reporting-indicator-definitions.yml";
+                String pmtctIndicatorConfigFile = "config/pmtct-reporting-indicator-definitions.yml";
+                String pncIndicatorConfigFile = "config/pnc-reporting-indicator-definitions.yml";
+
+                for (String configFile : Collections.unmodifiableList(
+                        Arrays.asList(indicatorsConfigFile, ancIndicatorConfigFile, pmtctIndicatorConfigFile, pncIndicatorConfigFile))) {
+                    reportingLibraryInstance.readConfigFile(configFile, db);
+                }
+
                 reportingLibraryInstance.initIndicatorData(indicatorsConfigFile, db); // This will persist the data in the DB
                 reportingLibraryInstance.getContext().allSharedPreferences().savePreference(indicatorDataInitialisedPref, "true");
                 reportingLibraryInstance.getContext().allSharedPreferences().savePreference(appVersionCodePref, String.valueOf(org.smartregister.chw.core.BuildConfig.VERSION_CODE));
@@ -241,7 +251,7 @@ public class HfChwRepository extends CoreChwRepository {
     private static void upgradeToVersion12(SQLiteDatabase db) {
         try {
             db.execSQL(VisitRepository.ADD_VISIT_GROUP_COLUMN);
-        }catch (Exception e) {
+        } catch (Exception e) {
             Timber.e(e, "upgradeToVersion12");
         }
     }
