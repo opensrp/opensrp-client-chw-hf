@@ -77,6 +77,21 @@
         }
       },
       {
+        "key": "prompt_for_child_activeness",
+        "type": "toaster_notes",
+        "text": "Certify if it is an early neonatal death",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:child_activeness": {
+            "type": "string",
+            "ex": "equalTo(.,\"not_active\")"
+          }
+        }
+      },
+      {
         "key": "height",
         "type": "edit_text",
         "hint": "Height (CM)",
@@ -149,32 +164,32 @@
         }
       },
       {
-        "key": "notify_client_has_fever",
+        "key": "notify_client_has_high_temperature",
         "type": "toaster_notes",
-        "text": "Conduct relevant laboratory tests to elicit the cause of fever and manage according to standard guidelines ",
+        "text": "The child has a possible bacterial infection, provide antibiotics and antipyretics according to guidelines, provide umbilical care and other essential neonatal care services",
         "openmrs_entity_id": "notify_client_has_fever",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "toaster_type": "warning",
+        "toaster_type": "problem",
         "relevance": {
           "step1:temperature": {
             "type": "numeric",
-            "ex": "greaterThanEqualTo(.,\"39\")"
+            "ex": "greaterThan(.,\"38.5\")"
           }
         }
       },
       {
-        "key": "notify_client_has_hypothermia",
+        "key": "notify_client_has_low_temperature",
         "type": "toaster_notes",
-        "text": "Manage the hypothermia according to standard guidelines",
+        "text": "Provide warmth to the child and other essential newborn care services as per guidelines",
         "openmrs_entity_id": "notify_client_has_hypothermia",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "toaster_type": "warning",
+        "toaster_type": "problem",
         "relevance": {
           "step1:temperature": {
             "type": "numeric",
-            "ex": "lessThan(.,\"37\")"
+            "ex": "lessThan(.,\"36.5\")"
           }
         }
       },
@@ -192,6 +207,36 @@
         "v_required": {
           "value": true,
           "err": "Please enter the height"
+        }
+      },
+      {
+        "key": "prompt_for_large_head_circumference",
+        "type": "toaster_notes",
+        "text": "Assess features of hydrocephalus and refer for neurosurgical intervention",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:head_circumference": {
+            "type": "numeric",
+            "ex": "greaterThan(.,\"50\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_small_head_circumference",
+        "type": "toaster_notes",
+        "text": "Check for signs of Down's Syndrome or other neurological malformations leading to microcephaly, refer for advanced management",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:head_circumference": {
+            "type": "numeric",
+            "ex": "lessThan(.,\"30\")"
+          }
         }
       },
       {
@@ -299,6 +344,66 @@
         "v_required": {
           "value": "true",
           "err": "Please answer this question"
+        }
+      },
+      {
+        "key": "prompt_for_umbilical_cord_smelling_bad",
+        "type": "toaster_notes",
+        "text": "Manage the umbilical cord sepsis using strong antibiotics, care the cord using the recommended antiseptics, assess if the child has jaundice and manage according to standard guidelines",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:umbilical_cord": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "chk_smell_bad"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "prompt_for_umbilical_cord_infection",
+        "type": "toaster_notes",
+        "text": "Manage the umbilical cord sepsis using strong antibiotics, care the cord using the recommended antiseptics, assess if the child has jaundice and manage according to standard guidelines",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:umbilical_cord": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "chk_infection"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "prompt_for_umbilical_cord_abnormality",
+        "type": "toaster_notes",
+        "text": "Manage the observed abnormality according to standard guidelines",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:umbilical_cord": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "chk_abnormality"
+                ]
+              }
+            ]
+          }
         }
       },
       {
