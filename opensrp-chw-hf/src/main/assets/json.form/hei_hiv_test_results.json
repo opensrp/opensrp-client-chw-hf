@@ -81,6 +81,21 @@
         }
       },
       {
+        "key": "prompt_for_hiv_test_results",
+        "type": "toaster_notes",
+        "text": "The Child is HIV-infected, refer to HIV Care and Treatment services",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:hiv_test_result": {
+            "type": "string",
+            "ex": "equalTo(., \"positive\")"
+          }
+        }
+      },
+      {
         "key": "hiv_test_result_date",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -93,21 +108,6 @@
         "v_required": {
           "value": "true",
           "err": "Please select the date of receiving the results"
-        }
-      },
-      {
-        "key": "prompt_to_refer_to_ctc",
-        "type": "toaster_notes",
-        "text": "Please refer the infant to CTC",
-        "openmrs_entity_id": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "toaster_type": "problem",
-        "relevance": {
-          "step1:hiv_test_result": {
-            "type": "string",
-            "ex": "equalTo(.,\"positive\")"
-          }
         }
       },
       {
