@@ -303,7 +303,7 @@
         "type": "toaster_notes",
         "text": "Conduct birth HIV testing, provide triple ARV prophylaxis for 6-weeks followed by monoprophylaxis for the next 6-weeks, care and monitor the newborn as per guidelines until the end of exposure.",
         "openmrs_entity_id": "",
-        "openmrs_entity": "concept",
+        "openmrs_entity": "",
         "openmrs_entity_parent": "",
         "toaster_type": "problem",
         "relevance": {
@@ -1151,7 +1151,7 @@
             "type": "toaster_notes",
             "text": "Provide BCG vaccination to the infant at the first Postnatal care visit or as soon as the BCG vaccine will be available. BCG should not be provided beyond 12-months of infant age",
             "openmrs_entity_id": "",
-            "openmrs_entity": "concept",
+            "openmrs_entity": "",
             "openmrs_entity_parent": "",
             "toaster_type": "problem",
             "relevance": {
@@ -1194,7 +1194,7 @@
             "type": "toaster_notes",
             "text": "Missed opportunity for OPV-0, provide OPV-1 at first postnatal care visit",
             "openmrs_entity_id": "",
-            "openmrs_entity": "concept",
+            "openmrs_entity": "",
             "openmrs_entity_parent": "",
             "toaster_type": "problem",
             "relevance": {
@@ -1501,7 +1501,7 @@
             "type": "toaster_notes",
             "text": "Provide BCG vaccination to the infant at the first Postnatal care visit or as soon as the BCG vaccine will be available. BCG should not be provided beyond 12-months of infant age",
             "openmrs_entity_id": "",
-            "openmrs_entity": "concept",
+            "openmrs_entity": "",
             "openmrs_entity_parent": "",
             "toaster_type": "problem",
             "relevance": {
@@ -1544,7 +1544,7 @@
             "type": "toaster_notes",
             "text": "Missed opportunity for OPV-0, provide OPV-1 at first postnatal care visit",
             "openmrs_entity_id": "",
-            "openmrs_entity": "concept",
+            "openmrs_entity": "",
             "openmrs_entity_parent": "",
             "toaster_type": "problem",
             "relevance": {

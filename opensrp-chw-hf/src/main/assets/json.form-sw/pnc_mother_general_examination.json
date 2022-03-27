@@ -138,7 +138,7 @@
       {
         "key": "prompt_for_management_of_hypotension",
         "type": "toaster_notes",
-        "text": "Tafuta sababu za Hypotension na toa huduma kulingana na Mwongozo wa Wizara ya Afya",
+        "text": "Give IV fluids, identify the cause of hypotension and manage according to standard guidelines",
         "openmrs_entity_id": "prompt_for_management_of_hypotension",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -412,6 +412,21 @@
         }
       },
       {
+        "key": "prompt_for_no_breast_milk_flow",
+        "type": "toaster_notes",
+        "text": "Counsel and support the mother on attachment of the newborn to the nipple and positioning of the newborn during breastfeeding. Milk flow will begin as the newborn continues to suck",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:breast_milk_flow": {
+            "type": "string",
+            "ex": "equalTo(.,\"no\")"
+          }
+        }
+      },
+      {
         "key": "bruised_nipples",
         "type": "native_radio",
         "label": "Je, Mama ana Chuchu Iliyochubuka?",
@@ -438,11 +453,26 @@
         }
       },
       {
-        "key": "enrgorgement_mastitis",
+        "key": "prompt_for_bruised_nipples",
+        "type": "toaster_notes",
+        "text": "Provide antibiotics to the mother, breastfeed the newborn on the other breast",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:bruised_nipples": {
+            "type": "string",
+            "ex": "equalTo(.,\"yes\")"
+          }
+        }
+      },
+      {
+        "key": "engorgement_mastitis",
         "type": "native_radio",
         "label": "Je, Mama ana Engorgement au Mastitis?",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "enrgorgement_mastitis",
+        "openmrs_entity_id": "engorgement_mastitis",
         "openmrs_entity_parent": "",
         "options": [
           {
@@ -461,6 +491,21 @@
         "v_required": {
           "value": "true",
           "err": "Tafadhari jibu swali hili"
+        }
+      },
+      {
+        "key": "prompt_for_engorgement_mastitis",
+        "type": "toaster_notes",
+        "text": "Provide antibiotics and analgesics to the mother, breastfeed the newborn on the other breast",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:engorgement_mastitis": {
+            "type": "string",
+            "ex": "equalTo(.,\"yes\")"
+          }
         }
       },
       {
@@ -487,6 +532,21 @@
         "v_required": {
           "value": "true",
           "err": "Tafadhari jibu swali hili"
+        }
+      },
+      {
+        "key": "prompt_for_abscess",
+        "type": "toaster_notes",
+        "text": "Incise and Drain the abscess, Provide antibiotics and analgesics to the mother",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:abscess": {
+            "type": "string",
+            "ex": "equalTo(.,\"yes\")"
+          }
         }
       },
       {

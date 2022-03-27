@@ -85,7 +85,7 @@
         "type": "toaster_notes",
         "text": "The Child is HIV-infected, refer to HIV Care and Treatment services",
         "openmrs_entity_id": "",
-        "openmrs_entity": "concept",
+        "openmrs_entity": "",
         "openmrs_entity_parent": "",
         "toaster_type": "problem",
         "relevance": {
