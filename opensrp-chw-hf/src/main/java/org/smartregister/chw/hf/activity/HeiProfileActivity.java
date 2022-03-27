@@ -27,7 +27,6 @@ import com.vijay.jsonwizard.utils.FormUtils;
 
 import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
-import org.joda.time.Days;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -62,8 +61,6 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
 
     private static String baseEntityId;
     private SimpleDateFormat dayMonthYear = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
-    SimpleDateFormat yearMonthDay = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-
     private Date registerDate = HeiDao.getHeiRegisterDate(baseEntityId);
     private Date followUpVisitDate = HeiDao.getHeiFollowUpVisitDate(baseEntityId);
     private HfHeiFollowupRule heiFollowupRule = new HfHeiFollowupRule(registerDate, followUpVisitDate, baseEntityId);
@@ -249,7 +246,6 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
                 form.getJSONObject(STEP1).getJSONArray(FIELDS).getJSONObject(getJsonArrayIndex(form.getJSONObject(STEP1).getJSONArray(FIELDS), "last_client_visit_date")).put(VALUE, dayMonthYear.format(lastVisitDate));
                 form.put(org.smartregister.util.JsonFormUtils.ENTITY_ID, HeiDao.getMotherBaseEntityId(baseEntityId));
                 form.getJSONObject(STEP1).getJSONArray(FIELDS).getJSONObject(getJsonArrayIndex(form.getJSONObject(STEP1).getJSONArray(FIELDS), "child_name")).put(VALUE, memberObject.getFirstName() + " " + memberObject.getMiddleName() + " " + memberObject.getLastName());
-                DateTime dueDate  = new DateTime(yearMonthDay.format(heiFollowupRule.getDueDate()));
 
                 if (heiFollowupRule.getDatesDiff() >= 3 && heiFollowupRule.getDatesDiff() < 28)
                     reasonsForIssuingCommunityReferral.getJSONArray("options").remove(getJsonArrayIndex(reasonsForIssuingCommunityReferral.getJSONArray("options"), "lost_to_followup"));
