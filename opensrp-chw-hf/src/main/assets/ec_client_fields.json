@@ -1578,6 +1578,80 @@
       ]
     },
     {
+      "name": "ec_anc_followup",
+      "columns": [
+        {
+          "column_name": "entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "formSubmissionId"
+          }
+        },
+        {
+          "column_name": "visit_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "version"
+          }
+        },
+        {
+          "column_name": "malaria_preventive_therapy",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "malaria_preventive_therapy"
+          }
+        },
+        {
+          "column_name": "malaria_preventive_therapy_ipt1",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "malaria_preventive_therapy_ipt1"
+          }
+        },
+        {
+          "column_name": "malaria_preventive_therapy_ipt2",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "malaria_preventive_therapy_ipt2"
+          }
+        },
+        {
+          "column_name": "malaria_preventive_therapy_ipt3",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "malaria_preventive_therapy_ipt3"
+          }
+        },
+        {
+          "column_name": "malaria_preventive_therapy_ipt4",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "malaria_preventive_therapy_ipt4"
+          }
+        },
+        {
+          "column_name": "visit_number",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "visit_number"
+          }
+        }
+      ]
+    },
+    {
       "name": "ec_anc_log",
       "columns": [
         {

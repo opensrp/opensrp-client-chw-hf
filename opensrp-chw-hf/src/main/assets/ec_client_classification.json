@@ -142,7 +142,8 @@
             "field": "eventType",
             "field_value": "ANC First Facility Visit",
             "creates_case": [
-              "ec_anc_register"
+              "ec_anc_register",
+              "ec_anc_followup"
             ]
           },
           {
@@ -156,7 +157,8 @@
             "field": "eventType",
             "field_value": "ANC Recurring Facility Visit",
             "creates_case": [
-              "ec_anc_register"
+              "ec_anc_register",
+              "ec_anc_followup"
             ]
           },
           {
