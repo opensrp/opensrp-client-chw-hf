@@ -169,6 +169,7 @@
     <string name="eid_cross_sectional_report">EID Cross-sectional Report</string>
     <string name="confirm_remove_text">Are you sure you sure about this action affecting %s\'s record? This action cannot be undone</string>
     <string name="remove">CONFIRM</string>
+    <string name="issue_hei_community_referal">Issue HEI community followup referral</string>
     <string name="anc_monthly_report">Monthly Report</string>
 
 </resources>

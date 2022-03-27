@@ -50,6 +50,7 @@ public class Constants extends CoreConstants {
         public static final String MOTHER_CHAMPION_COMMUNITY_SERVICES_REFERRAL = "Mother Champion Community Services Referral";
         public static final String MARK_PMTCT_CLIENT_AS_LTF = "Mark PMTCT Client As LTF";
         public static final String MARK_HEI_CLIENT_AS_LTF = "Mark HEI Client As LTF";
+        public static final String HEI_COMMUNITY_FOLLOWUP = "HEI Community Followup";
     }
 
     public static final class TableName {
@@ -111,6 +112,11 @@ public class Constants extends CoreConstants {
         private static final String PMTCT_FOLLOWUP_STATUS = "pmtct_followup_status";
         public static final String MARK_CLIENT_AS_DECEASED = "mark_client_as_deceased";
         public static final String MARK_CHILD_AS_DECEASED = "mark_child_as_deceased";
+        public static final String HEI_COMMUNITY_FOLLOWUP_REFERRAL = "hei_community_followup_referral";
+
+        public static String getHeiCommunityFollowupReferral() {
+            return HEI_COMMUNITY_FOLLOWUP_REFERRAL;
+        }
 
         public static String getPncChildGeneralExamination() {
             return PNC_CHILD_GENERAL_EXAMINATION;

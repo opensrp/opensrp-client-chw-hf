@@ -1,0 +1,129 @@
+{
+  "count": "1",
+  "encounter_type": "HEI Community Followup",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "step1": {
+    "title": "HEI Community Followup Referral",
+    "fields": [
+      {
+        "key": "last_client_visit_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "last_client_visit_date",
+        "type": "date_picker",
+        "hint": "Client's last facility visit date",
+        "expanded": false,
+        "max_date": "today",
+        "editable": false,
+        "read_only": true,
+        "v_required": {
+          "value": "true",
+          "err": "Please specify the client's last facility visit date"
+        }
+      },
+      {
+        "key": "reasons_for_issuing_community_referral",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reasons_for_issuing_community_referral",
+        "type": "native_radio",
+        "label": "Reasons for issuing community followup referral",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "missed_appointment",
+            "text": "Missed Appointment",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "missed_appointment"
+          },
+          {
+            "key": "lost_to_followup",
+            "text": "Lost to followup client",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "lost_to_followup"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select reason for issuing the referral"
+        }
+      },
+      {
+        "key": "comment_pmtct_community_followup",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "comment_pmtct_community_followup",
+        "type": "edit_text",
+        "hint": "Remarks/Comments"
+      },
+      {
+        "key": "pmtct_community_referral_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "pmtct_community_referral_date",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_community_followup_referral_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "child_name",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "child_name",
+        "type": "hidden"
+      }
+    ]
+  }
+}
