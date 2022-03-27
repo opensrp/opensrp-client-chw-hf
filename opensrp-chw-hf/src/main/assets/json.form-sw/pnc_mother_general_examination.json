@@ -582,6 +582,36 @@
         }
       },
       {
+        "key": "prompt_for_uterus_pain",
+        "type": "toaster_notes",
+        "text": "Conduct a thorough vaginal examination for any signs of puerperial sepsis or retained products of conception, manage the client based on standard guidelines, provide antibiotics and analgesics according to standard guidelines",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:uterus_assessment": {
+            "type": "string",
+            "ex": "equalTo(.,\"chk_pain\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_uterus_distended",
+        "type": "toaster_notes",
+        "text": "Assess abdominal tenderness and uterine involution, manage the client according to standard guidelines",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:uterus_assessment": {
+            "type": "string",
+            "ex": "equalTo(.,\"chk_distended\")"
+          }
+        }
+      },
+      {
         "key": "lochia_assessment",
         "type": "native_radio",
         "label": "Tathmini ya Lochia",
@@ -640,6 +670,36 @@
         }
       },
       {
+        "key": "prompt_for_tear_vaginal_assessment",
+        "type": "toaster_notes",
+        "text": "If the client is actively bleeding provide emergency care of the postpartum haemorrhage, repair the tear, and provide antibiotics and analgesics",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:vaginal_assessment": {
+            "type": "string",
+            "ex": "equalTo(.,\"tear\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_episiotomy_vaginal_assessment",
+        "type": "toaster_notes",
+        "text": "Check the wound for any active bleeding and infection, manage according to standard guidelines",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:vaginal_assessment": {
+            "type": "string",
+            "ex": "equalTo(.,\"episiotomy\")"
+          }
+        }
+      },
+      {
         "key": "fistula",
         "type": "native_radio",
         "label": "Je Mama huyu ana Fistula?",
@@ -663,6 +723,21 @@
         "v_required": {
           "value": "true",
           "err": "Tafadhari jibu swali hili"
+        }
+      },
+      {
+        "key": "prompt_for_fistula",
+        "type": "toaster_notes",
+        "text": "Refer for surgical repair of the fistula",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:fistula": {
+            "type": "string",
+            "ex": "equalTo(.,\"yes\")"
+          }
         }
       },
       {
@@ -701,6 +776,21 @@
         }
       },
       {
+        "key": "prompt_for_puerperal_psychosis",
+        "type": "toaster_notes",
+        "text": "Refer to psychiatrist",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:puerperal_psychosis": {
+            "type": "string",
+            "ex": "equalTo(.,\"yes\")"
+          }
+        }
+      },
+      {
         "key": "mental_illness_symptom",
         "type": "native_radio",
         "label": "Dalili nyingine yoyote ya Ugonjwa wa Akili",
@@ -724,6 +814,21 @@
         "v_required": {
           "value": "true",
           "err": "Tafadhari jibu swali hili"
+        }
+      },
+      {
+        "key": "prompt_for_mental_illness_symptom",
+        "type": "toaster_notes",
+        "text": "Refer to psychiatrist",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:mental_illness_symptom": {
+            "type": "string",
+            "ex": "equalTo(.,\"yes\")"
+          }
         }
       },
       {
