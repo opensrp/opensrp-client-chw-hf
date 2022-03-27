@@ -73,43 +73,43 @@
         "openmrs_entity": "concept",
         "v_numeric": {
           "value": "true",
-          "err": "Please enter the systolic value"
+          "err": "Tafadhari ingiza namba ya Systolic (Blood Pressure)"
         },
         "v_min": {
           "value": "0",
-          "err": "Systolic value must be equal or greater than 0"
+          "err": "namba ya Tafadhari ingiza namba ya Systolic lazime iwe sawa au kubwa kuliko 0"
         },
         "v_max": {
           "value": "320",
-          "err": "Systolic value must be equal or less than 320"
+          "err": "Tafadhari ingiza namba ya Systolic lazima iwe sawa au chini ya 320"
         },
         "v_required": {
           "value": true,
-          "err": "Please enter the systolic value"
+          "err": "Tafadhari ingiza namba ya Systolic (Blood Pressure)"
         }
       },
       {
         "key": "diastolic",
         "type": "edit_text",
-        "hint": "Diastolic (Blood Pressure)",
+        "hint": "Diastolic",
         "openmrs_entity_id": "diastolic",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "v_numeric": {
           "value": "true",
-          "err": "Please enter the diastolic value"
+          "err": "Tafadhari ingiza Diastolic"
         },
         "v_min": {
           "value": "0",
-          "err": "Diastolic value must be equal or greater than 0"
+          "err": " Diastolic lazima iwe sawa au kubwa na 0"
         },
         "v_max": {
           "value": "200",
-          "err": "Diastolic value must be equal or less than 200"
+          "err": " Diastolic lazima iwe sawa au ndogo ya 200"
         },
         "v_required": {
           "value": true,
-          "err": "Please enter the diastolic value"
+          "err": "Tafadhari ingiza Diastolic"
         },
         "constraints": [
           {
@@ -122,7 +122,7 @@
       {
         "key": "prompt_for_management_of_hypertension",
         "type": "toaster_notes",
-        "text": "Manage the hypertension according to standard guidelines",
+        "text": "Mtibu Mteja Hypertension kulingana na mwongozo wa Wizara ya Afya",
         "openmrs_entity_id": "prompt_for_management_of_hypertension",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -154,21 +154,21 @@
       {
         "key": "hb_level_test",
         "type": "native_radio",
-        "label": "HB Level Test",
+        "label": "HB level Test",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "hb_level_test",
         "openmrs_entity_parent": "",
         "options": [
           {
             "key": "test_conducted",
-            "text": "HB Level Test conducted",
+            "text": "Kipimo cha HB kimefanyika",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "test_conducted",
             "openmrs_entity_parent": ""
           },
           {
             "key": "test_not_conducted",
-            "text": "HB Level Test not conducted",
+            "text": "Kipimo cha HB hakujafanyika",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "test_not_conducted"
@@ -176,7 +176,7 @@
         ],
         "v_required": {
           "value": true,
-          "err": "Please answer this question"
+          "err": "Tafadhari jibu swali hili"
         }
       },
       {
@@ -188,19 +188,19 @@
         "openmrs_entity_parent": "",
         "v_numeric": {
           "value": "true",
-          "err": "Please enter the HB level"
+          "err": "Ingiza kiasi cha HB"
         },
         "v_min": {
           "value": "0",
-          "err": "HB level must be equal or greater than 0 (g/dl)"
+          "err": "Kiasi cha HB lazima kiwe sawa au zaidi ya 0"
         },
         "v_max": {
           "value": "20",
-          "err": "HB level must be equal or less than 20 (g/dl)"
+          "err": "Kiasi cha HB lazima kiwe sawa au chini ya 20 (g/dl)"
         },
         "v_required": {
           "value": true,
-          "err": "Please provide a value"
+          "err": "Ingiza kiasi cha HB"
         },
         "relevance": {
           "step1:hb_level_test": {
@@ -212,7 +212,7 @@
       {
         "key": "prompt_for_severe_anaemia_treatment",
         "type": "toaster_notes",
-        "text": "Manage the severe anaemia according to standard guidelines",
+        "text": "Dhibiti anaemia kali kulingana na miongozo wa Wizara ya Afya",
         "openmrs_entity_id": "prompt_for_severe_anaemia_treatment",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -227,7 +227,7 @@
       {
         "key": "prompt_for_moderate_anaemia_management",
         "type": "toaster_notes",
-        "text": "Manage the mild anaemia according to standard guidelines",
+        "text": "Dhibiti anemia kidogo kulingana na mwongozo wa Wizara ya Afya",
         "openmrs_entity_id": "prompt_for_moderate_anaemia_management",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -246,13 +246,13 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "reason_for_not_conducting_hb_test",
         "type": "spinner",
-        "hint": "Reason as to why the HB Level test was not conducted",
+        "hint": "Sababu za kutokufanya kipimo cha HB",
         "values": [
-          "Test kits are out of stock",
-          "The client was in an emergency situation",
-          "The client refused to be tested",
-          "We are still counselling the client",
-          "Other"
+          "Vitendanishi vimeisha",
+          "Mteja yupo katika hali ya udharura",
+          "Mteja amekataa kupimwa",
+          "Bado tuna mshauri mteja",
+          "Nyingine"
         ],
         "keys": [
           "test_kits_are_out_of_stock",
@@ -270,7 +270,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Please select a reason"
+          "err": "Tafadhari chagua sababu"
         },
         "relevance": {
           "step1:hb_level_test": {
@@ -285,11 +285,11 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "other_reason_hb_test_not_conducted",
         "type": "edit_text",
-        "hint": "Other reason for why the HB Level test was not conducted",
+        "hint": "Sababu nyingine kwa kutofanyika kwa kipimo cha HB",
         "edit_type": "name",
         "v_required": {
           "value": "true",
-          "err": "Please enter the reason"
+          "err": "Jaza sababu"
         },
         "relevance": {
           "step1:reason_for_not_conducting_hb_test": {
@@ -301,31 +301,31 @@
       {
         "key": "temperature",
         "type": "edit_text",
-        "hint": "Temperature (C)",
+        "hint": "Joto (C)",
         "openmrs_entity_id": "temperature",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "v_numeric": {
           "value": "true",
-          "err": "Please enter the temperature"
+          "err": "Ingiza kiasi cha Joto (C)"
         },
         "v_min": {
           "value": "10",
-          "err": "Temperature must be equal or greater than 10"
+          "err": "Kiasi cha joto lazima kiwe sawa au kubwa kuliko 10 C"
         },
         "v_max": {
           "value": "50",
-          "err": "Temperature must be equal or less than 50"
+          "err": "Kiasi cha joto lazima kiwe sawa au chini kuliko 50 C"
         },
         "v_required": {
           "value": true,
-          "err": "Please enter the temperature"
+          "err": "Ingiza kiasi cha Joto (C)"
         }
       },
       {
         "key": "notify_client_has_fever",
         "type": "toaster_notes",
-        "text": "Conduct relevant laboratory tests to elicit the cause of fever and manage according to standard guidelines ",
+        "text": "Fanya vipimo vya maabara vinavyofaa ili kupata sababu ya homa na udhibiti kulingana na mwongozo wa Wizara ya Afya",
         "openmrs_entity_id": "notify_client_has_fever",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -340,7 +340,7 @@
       {
         "key": "notify_client_has_hypothermia",
         "type": "toaster_notes",
-        "text": "Manage the hypothermia according to standard guidelines",
+        "text": "Dhibiti hypothermia kulingana na miongozo wa Wizara ya Afya",
         "openmrs_entity_id": "notify_client_has_hypothermia",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -355,31 +355,31 @@
       {
         "key": "weight",
         "type": "edit_text",
-        "hint": "Weight (KG)",
+        "hint": "Uzito (Kg)",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "weight",
         "openmrs_entity_parent": "",
         "v_numeric": {
           "value": "true",
-          "err": "Please enter the weight"
+          "err": "Tafadhari ingiza Uzito wa Mteja"
         },
         "v_min": {
           "value": "20",
-          "err": "The weight must be equal or greater than 20 (KG)"
+          "err": "Uzito lazima uwe sawa au zaidi ya 20kg"
         },
         "v_max": {
           "value": "300",
-          "err": "The weight must be equal or less than 300 (KG)"
+          "err": "Uzito lazima uwe sawa au chini ya 300kg"
         },
         "v_required": {
           "value": true,
-          "err": "Please enter the weight"
+          "err": "Tafadhari ingiza Uzito wa Mteja"
         }
       },
       {
         "key": "prompt_for_breast_exam",
         "type": "toaster_notes",
-        "text": "Breast Examination",
+        "text": "Uchunguzi wa Matiti",
         "openmrs_entity_id": "",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -388,27 +388,27 @@
       {
         "key": "breast_milk_flow",
         "type": "native_radio",
-        "label": "Does the Mother have Breast Milk Flow?",
+        "label": "Je Matiti ya mama yanatoa maziwa?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "breast_milk_flow",
         "openmrs_entity_parent": "",
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndiyo",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Please answer this question"
+          "err": "Tafadhari jibu swali hili"
         }
       },
       {
@@ -429,27 +429,27 @@
       {
         "key": "bruised_nipples",
         "type": "native_radio",
-        "label": "Does the Mother have Bruised Nipples?",
+        "label": "Je, Mama ana Chuchu Iliyochubuka?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "bruised_nipples",
         "openmrs_entity_parent": "",
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndiyo",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Please answer this question"
+          "err": "Tafadhari jibu swali hili"
         }
       },
       {
@@ -470,27 +470,27 @@
       {
         "key": "engorgement_mastitis",
         "type": "native_radio",
-        "label": "Does the Mother have Engorgement or Mastitis?",
+        "label": "Je, Mama ana Engorgement au Mastitis?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "engorgement_mastitis",
         "openmrs_entity_parent": "",
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndiyo",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Please answer this question"
+          "err": "Tafadhari jibu swali hili"
         }
       },
       {
@@ -511,27 +511,27 @@
       {
         "key": "abscess",
         "type": "native_radio",
-        "label": "Does the Mother have Abscess?",
+        "label": "Je, Mama ana Jipu?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "abscess",
         "openmrs_entity_parent": "",
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndiyo",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Please answer this question"
+          "err": "Tafadhari jibu swali hili"
         }
       },
       {
@@ -555,17 +555,17 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "uterus_assessment",
         "type": "native_radio",
-        "label": "Uterus Assessment",
+        "label": "Tathmini ya Uterasi",
         "options": [
           {
             "key": "chk_normal_involution",
-            "text": "Normal/involution has taken place",
+            "text": "Ipo kawaida",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_normal_involution"
           },
           {
             "key": "chk_pain",
-            "text": "Pain",
+            "text": "Kuna maumivu",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_pain"
           },
@@ -578,7 +578,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Please answer this question"
+          "err": "Tafadhari jibu swali hili"
         }
       },
       {
@@ -614,7 +614,7 @@
       {
         "key": "lochia_assessment",
         "type": "native_radio",
-        "label": "Lochia assessment",
+        "label": "Tathmini ya Lochia",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "lochia_assessment",
         "openmrs_entity_parent": "",
@@ -640,13 +640,13 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Please answer this question"
+          "err": "Tafadhari jibu swali hili"
         }
       },
       {
         "key": "vaginal_assessment",
         "type": "native_radio",
-        "label": "Vaginal Assessment",
+        "label": "Tathimini ya ukeni",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "vaginal_assessment",
         "openmrs_entity_parent": "",
@@ -666,7 +666,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Please answer this question"
+          "err": "Tafadhari jibu swali hili"
         }
       },
       {
@@ -702,27 +702,27 @@
       {
         "key": "fistula",
         "type": "native_radio",
-        "label": "Does the Mother have Fistula?",
+        "label": "Je Mama huyu ana Fistula?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "fistula",
         "openmrs_entity_parent": "",
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndiyo",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Please answer this question"
+          "err": "Tafadhari jibu swali hili"
         }
       },
       {
@@ -743,7 +743,7 @@
       {
         "key": "prompt_for_mental_health_examination",
         "type": "toaster_notes",
-        "text": "Mental Health Examination",
+        "text": "Uchunguzi wa Afya ya Akili",
         "openmrs_entity_id": "",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -752,27 +752,27 @@
       {
         "key": "puerperal_psychosis",
         "type": "native_radio",
-        "label": "Does the Mother have Puerperal Psychosis?",
+        "label": "Je, Mama ana Puerperal Psychosis?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "puerperal_psychosis",
         "openmrs_entity_parent": "",
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndiyo",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Please answer this question"
+          "err": "Tafadhari jibu swali hili"
         }
       },
       {
@@ -793,27 +793,27 @@
       {
         "key": "mental_illness_symptom",
         "type": "native_radio",
-        "label": "Any other symptom of Mental Illness?",
+        "label": "Dalili nyingine yoyote ya Ugonjwa wa Akili",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "mental_illness_symptom",
         "openmrs_entity_parent": "",
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndiyo",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Please answer this question"
+          "err": "Tafadhari jibu swali hili"
         }
       },
       {
