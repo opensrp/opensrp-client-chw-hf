@@ -7,10 +7,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class PmtctReportDao extends AbstractDao {
+public class ReportDao extends AbstractDao {
     public static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
 
-    public static int getPmtctReportPerIndicatorCode(String indicatorCode, Date reportDate) {
+    public static int getReportPerIndicatorCode(String indicatorCode, Date reportDate) {
         String reportDateString = simpleDateFormat.format(reportDate);
         String sql = "SELECT indicator_value\n" +
                 "FROM indicator_daily_tally\n" +

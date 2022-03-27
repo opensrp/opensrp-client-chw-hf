@@ -16,23 +16,28 @@
 
         th {
             padding: 10px;
+
             background: #c4c4c4;
+            font-size: .82rem;
         }
 
         td {
             text-align: initial;
-            padding: 10px 0px;
             width: 50px;
-            padding-left: 10px;
+            font-size: .71rem;
         }
 
         .list-title {
             text-align: initial !important;
-            padding-left: 10px;
+            padding: 10px;
         }
 
         tbody tr>td:nth-child(1) {
             width: 40px;
+            text-align: center;
+        }
+
+        td:nth-child(3) {
             text-align: center;
         }
     </style>
@@ -232,7 +237,7 @@
 </body>
 <script type="text/javascript">
     function onLoad() {
-        const data = JSON.parse(Android.getData());
+        const data = JSON.parse(Android.getData("twenty_four_months"));
         const keys = Object.keys(data.nameValuePairs)
         keys.forEach(key => {
             const element = document.getElementById(key)

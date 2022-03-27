@@ -214,7 +214,7 @@
 </body>
 <script type="text/javascript">
     function onLoad() {
-        const data = JSON.parse(Android.getData());
+        const data = JSON.parse(Android.getData("three_months"));
         const keys = Object.keys(data.nameValuePairs)
         keys.forEach(key => {
             document.getElementById(key).innerHTML = data.nameValuePairs[key]

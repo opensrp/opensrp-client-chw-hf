@@ -170,5 +170,6 @@
     <string name="confirm_remove_text">Are you sure you sure about this action affecting %s\'s record? This action cannot be undone</string>
     <string name="remove">CONFIRM</string>
     <string name="issue_hei_community_referal">Issue HEI community followup referral</string>
+    <string name="anc_monthly_report">Monthly Report</string>
 
 </resources>

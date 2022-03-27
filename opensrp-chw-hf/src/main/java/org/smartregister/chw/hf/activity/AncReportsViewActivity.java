@@ -17,12 +17,8 @@ import android.webkit.WebView;
 import com.google.android.material.appbar.AppBarLayout;
 
 import org.apache.commons.lang3.StringUtils;
-import org.json.JSONException;
 import org.smartregister.chw.hf.R;
-import org.smartregister.chw.hf.domain.pmtct_reports.Pmtct12MonthsReportObject;
-import org.smartregister.chw.hf.domain.pmtct_reports.Pmtct24MonthsReportObject;
-import org.smartregister.chw.hf.domain.pmtct_reports.Pmtct3MonthsReportObject;
-import org.smartregister.chw.hf.domain.pmtct_reports.PmtctEIDMonthlyReportObject;
+import org.smartregister.chw.hf.domain.anc_reports.AncMonthlyReportObject;
 import org.smartregister.view.activity.SecuredActivity;
 import org.smartregister.view.customcontrols.CustomFontTextView;
 
@@ -35,22 +31,22 @@ import androidx.webkit.WebViewAssetLoader;
 import androidx.webkit.WebViewClientCompat;
 import timber.log.Timber;
 
-public class PmtctReportsViewActivity extends SecuredActivity {
+public class AncReportsViewActivity extends SecuredActivity {
+
     private static final String ARG_REPORT_NAME = "ARG_REPORT_NAME";
     private static final String ARG_REPORT_TITLE = "ARG_REPORT_TITLE";
     protected CustomFontTextView toolBarTextView;
     protected AppBarLayout appBarLayout;
 
-    public static void startMe(Activity activity, String reportName, int reportTitle) {
-        Intent intent = new Intent(activity, PmtctReportsViewActivity.class);
+    public static void startMe(Activity activity, String reportName) {
+        Intent intent = new Intent(activity, AncReportsViewActivity.class);
         intent.putExtra(ARG_REPORT_NAME, reportName);
-        intent.putExtra(ARG_REPORT_TITLE, reportTitle);
         activity.startActivity(intent);
     }
 
     @Override
     protected void onCreation() {
-        setContentView(R.layout.activity_pmtct_reports_view);
+        setContentView(R.layout.activity_anc_reports_view);
         String reportName = getIntent().getStringExtra(ARG_REPORT_NAME);
         int reportTitle = getIntent().getIntExtra(ARG_REPORT_TITLE, 0);
         setUpToolbar(reportTitle);
@@ -70,11 +66,9 @@ public class PmtctReportsViewActivity extends SecuredActivity {
             actionBar.setElevation(0);
         }
         toolbar.setNavigationOnClickListener(v -> finish());
-        if (StringUtils.isNotBlank(getString(reportTitle))) {
-            toolBarTextView.setText(getString(reportTitle));
-        } else {
-            toolBarTextView.setText(R.string.pmtct_reports_title);
-        }
+
+        toolBarTextView.setText(R.string.anc_reports_title);
+
         toolBarTextView.setOnClickListener(v -> finish());
         appBarLayout = findViewById(org.smartregister.chw.core.R.id.app_bar);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -105,44 +99,15 @@ public class PmtctReportsViewActivity extends SecuredActivity {
         mWebView.loadUrl("https://appassets.androidplatform.net/assets/reports/" + reportName + ".html");
     }
 
-    private String computeThreeMonths(Date startDate) {
-        Pmtct3MonthsReportObject pmtct3MonthsReportObject = new Pmtct3MonthsReportObject(startDate);
+    private String computeAncReport(Date now) {
+        String report = "";
+        AncMonthlyReportObject ancMonthlyReportObject = new AncMonthlyReportObject(now);
         try {
-            return pmtct3MonthsReportObject.getIndicatorDataAsGson(pmtct3MonthsReportObject.getIndicatorData());
-        } catch (JSONException e) {
+            report = ancMonthlyReportObject.getIndicatorDataAsGson(ancMonthlyReportObject.getIndicatorData());
+        } catch (Exception e) {
             Timber.e(e);
         }
-        return "";
-    }
-
-    private String computeTwelveMonths(Date startDate) {
-        Pmtct12MonthsReportObject pmtct12MonthsReportObject = new Pmtct12MonthsReportObject(startDate);
-        try {
-            return pmtct12MonthsReportObject.getIndicatorDataAsGson(pmtct12MonthsReportObject.getIndicatorData());
-        } catch (JSONException e) {
-            Timber.e(e);
-        }
-        return "";
-    }
-
-    private String computeTwentyFourMonths(Date statDate) {
-        Pmtct24MonthsReportObject pmtct24MonthsReportObject = new Pmtct24MonthsReportObject(statDate);
-        try {
-            return pmtct24MonthsReportObject.getIndicatorDataAsGson(pmtct24MonthsReportObject.getIndicatorData());
-        } catch (JSONException e) {
-            Timber.e(e);
-        }
-        return "";
-    }
-
-    private String computeEIDMonthly(Date statDate) {
-        PmtctEIDMonthlyReportObject pmtctEIDMonthlyReportObject = new PmtctEIDMonthlyReportObject(statDate);
-        try {
-            return pmtctEIDMonthlyReportObject.getIndicatorDataAsGson(pmtctEIDMonthlyReportObject.getIndicatorData());
-        } catch (JSONException e) {
-            Timber.e(e);
-        }
-        return "";
+        return report;
     }
 
     private static class LocalContentWebViewClient extends WebViewClientCompat {
@@ -179,18 +144,10 @@ public class PmtctReportsViewActivity extends SecuredActivity {
         @JavascriptInterface
         public String getData(String key) {
             Date now = new Date();
-            switch (key) {
-                case "three_months":
-                    return computeThreeMonths(now);
-                case "twelve_months":
-                    return computeTwelveMonths(now);
-                case "twenty_four_months":
-                    return computeTwentyFourMonths(now);
-                case "eid_monthly":
-                    return computeEIDMonthly(now);
-                default:
-                    return "";
+            if (key.equals("monthly")) {
+                return computeAncReport(now);
             }
+            return "";
         }
     }
 }
