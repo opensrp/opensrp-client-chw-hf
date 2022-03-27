@@ -9,6 +9,29 @@ indicators:
                         AND (date(fm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
                             date(substr(ear.confirmation_date, 7, 4) || '-' || substr(ear.confirmation_date, 4, 2) || '-' || '01')"
+  - key: "2c-10-14"
+    description: "Followup visits for 10 - 14 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                      WHERE visit_number > 1
+                        AND (date(fm.dob, '+10 years') <= date('now'))
+                        AND (date(fm.dob, '+15 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(ear.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(ear.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+  - key: "2a-15-19"
+    description: "Gestation age less than 12 weeks for 15 - 19 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                      WHERE gest_age < 12
+                        AND (date(fm.dob, '+15 years') <= date('now'))
+                        AND (date(fm.dob, '+19 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(ear.confirmation_date, 7, 4) || '-' || substr(ear.confirmation_date, 4, 2) || '-' || '01')"
   - key: "2a-15-19"
     description: "Gestation age less than 12 weeks for 15 - 19 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
