@@ -47,7 +47,7 @@
     "encounter_location": ""
   },
   "step1": {
-    "title": "Mother's General Examination",
+    "title": "Uchunguzi wa Afya ya Mama",
     "fields": [
       {
         "key": "followup_visit_date",

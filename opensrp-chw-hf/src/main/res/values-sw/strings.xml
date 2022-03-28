@@ -107,16 +107,16 @@
     <string name="ctx_given">CTX Given</string>
     <string name="dna_pcr_sample_collected">DNA-PCR Sample Collected</string>
     <string name="ctx_not_given">CTX Not Given</string>
-    <string name="mother_general_examination_complete">Mother\'s General Examination Complete</string>
-    <string name="mother_general_examination">Mother\'s General Examination</string>
-    <string name="child_general_examination_complete">Infant\'s General Examination Complete</string>
-    <string name="child_general_examination">Baby %s\'s General Examination</string>
-    <string name="immunization_complete">Immunization Complete</string>
-    <string name="immunization_title">Immunization</string>
-    <string name="nutritional_supplements_complete">Nutritional Supplements Complete</string>
-    <string name="nutritional_supplements_title">Nutritional Supplements</string>
-    <string name="family_planning_services_complete">Family Planning Services Complete</string>
-    <string name="family_planning_services_title">Family Planning Services</string>
+    <string name="mother_general_examination_complete">Uchunguzi wa Afya ya Mama Umekamilika</string>
+    <string name="mother_general_examination">Uchunguzi wa Afya ya Mama</string>
+    <string name="child_general_examination_complete">Uchunguzi wa Afya ya Mtoto %s Umekamilika</string>
+    <string name="child_general_examination">Uchunguzi wa Afya ya Mtoto %s</string>
+    <string name="immunization_complete">Chanjo zimekamilika</string>
+    <string name="immunization_title">Chanjo</string>
+    <string name="nutritional_supplements_complete">Virutubisho vya Lishe Umekamilika</string>
+    <string name="nutritional_supplements_title">Virutubisho vya Lishe</string>
+    <string name="family_planning_services_complete">Huduma za Uzazi wa Mpango Umekamilika</string>
+    <string name="family_planning_services_title">Huduma za Uzazi wa Mpango</string>
     <string name="hiv_testing_done">HIV Testing Done</string>
     <string name="hiv_testing_not_done">HIV Testing Not Done</string>
     <string name="pnc_hiv_testing">HIV Testing</string>
@@ -156,5 +156,8 @@
     <string name="issue_hei_community_referal">Issue HEI referral</string>
     <string name="pregnancy_outcome_title">Matokeo ya Ujauzito</string>
     <string name="anc_pregnancy_out_come">Matokeo ya ujauzito</string>
+    <string name="complete_pnc_visits">Kamilisha Mahudhurio ya PNC</string>
+    <string name="record_pnc_visit">Jaza mahudhurio ya PNC</string>
+
 
 </resources>
