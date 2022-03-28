@@ -7,12 +7,19 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
+import android.print.PrintAttributes;
+import android.print.PrintDocumentAdapter;
+import android.print.PrintJob;
+import android.print.PrintManager;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.widget.Toast;
 
 import com.google.android.material.appbar.AppBarLayout;
 
@@ -23,23 +30,27 @@ import org.smartregister.chw.hf.domain.pmtct_reports.Pmtct12MonthsReportObject;
 import org.smartregister.chw.hf.domain.pmtct_reports.Pmtct24MonthsReportObject;
 import org.smartregister.chw.hf.domain.pmtct_reports.Pmtct3MonthsReportObject;
 import org.smartregister.chw.hf.domain.pmtct_reports.PmtctEIDMonthlyReportObject;
-import org.smartregister.view.activity.SecuredActivity;
 import org.smartregister.view.customcontrols.CustomFontTextView;
 
 import java.util.Date;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.webkit.WebViewAssetLoader;
 import androidx.webkit.WebViewClientCompat;
 import timber.log.Timber;
 
-public class PmtctReportsViewActivity extends SecuredActivity {
+public class PmtctReportsViewActivity extends AppCompatActivity {
     private static final String ARG_REPORT_NAME = "ARG_REPORT_NAME";
     private static final String ARG_REPORT_TITLE = "ARG_REPORT_TITLE";
+    public static WebView printWebView;
     protected CustomFontTextView toolBarTextView;
     protected AppBarLayout appBarLayout;
+    PrintJob printJob;
+    boolean printBtnPressed = false;
+    String printJobName;
 
     public static void startMe(Activity activity, String reportName, int reportTitle) {
         Intent intent = new Intent(activity, PmtctReportsViewActivity.class);
@@ -49,7 +60,8 @@ public class PmtctReportsViewActivity extends SecuredActivity {
     }
 
     @Override
-    protected void onCreation() {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pmtct_reports_view);
         String reportName = getIntent().getStringExtra(ARG_REPORT_NAME);
         int reportTitle = getIntent().getIntExtra(ARG_REPORT_TITLE, 0);
@@ -83,13 +95,27 @@ public class PmtctReportsViewActivity extends SecuredActivity {
     }
 
     @Override
-    protected void onResumption() {
-        //overridden
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.reports_menu, menu);
+        return true;
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        return false;
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int itemId = item.getItemId();
+        if (itemId == R.id.action_print) {
+            if (printWebView != null) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    PrintTheWebPage(printWebView);
+                } else {
+                    Toast.makeText(this, "Not available for device below Android LOLLIPOP", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                Toast.makeText(this, "WebPage not fully loaded", Toast.LENGTH_SHORT).show();
+            }
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -108,6 +134,7 @@ public class PmtctReportsViewActivity extends SecuredActivity {
     private String computeThreeMonths(Date startDate) {
         Pmtct3MonthsReportObject pmtct3MonthsReportObject = new Pmtct3MonthsReportObject(startDate);
         try {
+            printJobName = "report_ya_miezi_mitatu-" + startDate.toString() + ".pdf";
             return pmtct3MonthsReportObject.getIndicatorDataAsGson(pmtct3MonthsReportObject.getIndicatorData());
         } catch (JSONException e) {
             Timber.e(e);
@@ -118,6 +145,7 @@ public class PmtctReportsViewActivity extends SecuredActivity {
     private String computeTwelveMonths(Date startDate) {
         Pmtct12MonthsReportObject pmtct12MonthsReportObject = new Pmtct12MonthsReportObject(startDate);
         try {
+            printJobName = "report_ya_miezi_kumi_na_mbili-" + startDate.toString() + ".pdf";
             return pmtct12MonthsReportObject.getIndicatorDataAsGson(pmtct12MonthsReportObject.getIndicatorData());
         } catch (JSONException e) {
             Timber.e(e);
@@ -125,9 +153,10 @@ public class PmtctReportsViewActivity extends SecuredActivity {
         return "";
     }
 
-    private String computeTwentyFourMonths(Date statDate) {
-        Pmtct24MonthsReportObject pmtct24MonthsReportObject = new Pmtct24MonthsReportObject(statDate);
+    private String computeTwentyFourMonths(Date startDate) {
+        Pmtct24MonthsReportObject pmtct24MonthsReportObject = new Pmtct24MonthsReportObject(startDate);
         try {
+            printJobName = "report_ya_miaka_miwili-" + startDate.toString() + ".pdf";
             return pmtct24MonthsReportObject.getIndicatorDataAsGson(pmtct24MonthsReportObject.getIndicatorData());
         } catch (JSONException e) {
             Timber.e(e);
@@ -135,14 +164,37 @@ public class PmtctReportsViewActivity extends SecuredActivity {
         return "";
     }
 
-    private String computeEIDMonthly(Date statDate) {
-        PmtctEIDMonthlyReportObject pmtctEIDMonthlyReportObject = new PmtctEIDMonthlyReportObject(statDate);
+    private String computeEIDMonthly(Date startDate) {
+        PmtctEIDMonthlyReportObject pmtctEIDMonthlyReportObject = new PmtctEIDMonthlyReportObject(startDate);
         try {
+            printJobName = "report_ya_mwezi-" + startDate.toString() + ".pdf";
             return pmtctEIDMonthlyReportObject.getIndicatorDataAsGson(pmtctEIDMonthlyReportObject.getIndicatorData());
         } catch (JSONException e) {
             Timber.e(e);
         }
         return "";
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    private void PrintTheWebPage(WebView webView) {
+
+        // set printBtnPressed true
+        printBtnPressed = true;
+
+        // Creating  PrintManager instance
+        PrintManager printManager = (PrintManager) PmtctReportsViewActivity.this
+                .getSystemService(Context.PRINT_SERVICE);
+
+        // setting the name of job
+        String jobName = printJobName;
+
+        // Creating  PrintDocumentAdapter instance
+        PrintDocumentAdapter printAdapter = webView.createPrintDocumentAdapter(jobName);
+
+        // Create a print job with name and adapter instance
+        assert printManager != null;
+        printJob = printManager.print(jobName, printAdapter,
+                new PrintAttributes.Builder().build());
     }
 
     private static class LocalContentWebViewClient extends WebViewClientCompat {
@@ -167,6 +219,11 @@ public class PmtctReportsViewActivity extends SecuredActivity {
             return mAssetLoader.shouldInterceptRequest(Uri.parse(url));
         }
 
+        @Override
+        public void onPageFinished(WebView view, String url) {
+            super.onPageFinished(view, url);
+            printWebView = view;
+        }
     }
 
     public class WebAppInterface {
