@@ -38,7 +38,7 @@
         android:id="@+id/action_pregnancy_out_come"
         android:enabled="true"
         android:visible="false"
-        android:title="@string/anc_pregnancy_out_come"
+        android:title="@string/pnc_registration"
         app:showAsAction="never" />
 
 </menu>
