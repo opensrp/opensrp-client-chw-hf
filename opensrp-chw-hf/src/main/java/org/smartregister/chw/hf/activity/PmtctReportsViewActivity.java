@@ -106,7 +106,7 @@ public class PmtctReportsViewActivity extends AppCompatActivity {
         if (itemId == R.id.action_print) {
             if (printWebView != null) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    PrintTheWebPage(printWebView);
+                    printTheWebPage(printWebView);
                 } else {
                     Toast.makeText(this, "Not available for device below Android LOLLIPOP", Toast.LENGTH_SHORT).show();
                 }
@@ -176,7 +176,7 @@ public class PmtctReportsViewActivity extends AppCompatActivity {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    private void PrintTheWebPage(WebView webView) {
+    private void printTheWebPage(WebView webView) {
 
         // set printBtnPressed true
         printBtnPressed = true;
