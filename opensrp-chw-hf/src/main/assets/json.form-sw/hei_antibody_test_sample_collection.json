@@ -47,12 +47,12 @@
     "encounter_location": ""
   },
   "step1": {
-    "title": "Healthcare Provider's Details",
+    "title": "Taarifa za Mtoa Huduma wa Afya",
     "fields": [
       {
         "key": "clinician_name",
         "type": "edit_text",
-        "hint": "Jina la Mtoa huduma  wa Afya",
+        "hint": "Jina la Mtoa huduma wa Afya",
         "openmrs_entity_id": "clinician_name",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -68,15 +68,15 @@
       {
         "key": "clinician_position",
         "type": "spinner",
-        "hint": "Ingiza Cheo cha Mtoa huduma wa Afya",
+        "hint": "Cheo cha Mtoa huduma wa Afya",
         "openmrs_entity_id": "clinician_position",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "values": [
           "Afisa wa Matibabu",
           "Msaidizi wa Afisa Matibabu",
-          "Clinical Officer",
-          "Assistant Clinical Officer",
+          "Afisa wa Kliniki",
+          "Afisa wa Kliniki msaidizi",
           "Nesi"
         ],
         "keys": [

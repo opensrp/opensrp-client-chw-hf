@@ -48,12 +48,12 @@
   },
   "global": {},
   "step1": {
-    "title": "Clinician Details",
+    "title": "Taarifa za Mtoa Huduma wa Afya",
     "fields": [
       {
         "key": "clinician_name",
         "type": "edit_text",
-        "hint": "Jina la Mtoa Huduma",
+        "hint": "Jina la Mtoa huduma wa Afya",
         "openmrs_entity_id": "clinician_name",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -69,7 +69,7 @@
       {
         "key": "clinician_position",
         "type": "spinner",
-        "hint": "Cheo cha Mtoa Huduma",
+        "hint": "Cheo cha Mtoa huduma wa Afya",
         "openmrs_entity_id": "clinician_position",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -77,23 +77,26 @@
           "Afisa Matibabu",
           "Afisa Matibabu msaidizi",
           "Afisa wa Kliniki",
-          "Afisa wa Kliniki msaidizi"
+          "Afisa wa Kliniki msaidizi",
+          "Nesi"
         ],
         "keys": [
           "medical_officer",
           "assistant_medical_officer",
           "clinical_officer",
-          "assistant_clinical_officer"
+          "assistant_clinical_officer",
+          "nurse"
         ],
         "openmrs_choice_ids": {
           "medical_officer": "medical_officer",
           "assistant_medical_officer": "assistant_medical_officer",
           "clinical_officer": "clinical_officer",
-          "assistant_clinical_officer": "assistant_clinical_officer"
+          "assistant_clinical_officer": "assistant_clinical_officer",
+          "nurse": "nurse"
         },
         "v_required": {
           "value": true,
-          "err": "Tafadhari Ingiza cheo cha Mtoa huduma"
+          "err": "Tafadhari Ingiza cheo cha Mtoa huduma wa Afya"
         }
       },
       {
