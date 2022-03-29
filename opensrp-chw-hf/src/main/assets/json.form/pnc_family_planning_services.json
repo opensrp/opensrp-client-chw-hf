@@ -107,7 +107,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "method_provided",
         "type": "native_radio",
-        "label": "Method Provided",
+        "label": "Family Planning Method Provided",
         "options": [
           {
             "key": "chk_condom",

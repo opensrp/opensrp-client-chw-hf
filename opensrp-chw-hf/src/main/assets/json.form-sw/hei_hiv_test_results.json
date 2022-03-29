@@ -48,7 +48,7 @@
     "encounter_location": ""
   },
   "step1": {
-    "title": "HIV Test Results",
+    "title": "Majibu ya kipimo cha VVU",
     "fields": [
       {
         "key": "hiv_test_result",

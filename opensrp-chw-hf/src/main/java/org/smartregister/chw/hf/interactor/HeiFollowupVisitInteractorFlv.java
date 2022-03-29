@@ -6,6 +6,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.core.utils.FormUtils;
+import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.actionhelper.HeiAntibodyTestAction;
 import org.smartregister.chw.hf.actionhelper.HeiArvPrescriptionHighOrLowRiskInfantAction;
 import org.smartregister.chw.hf.actionhelper.HeiArvPrescrptionHighRiskInfantAction;
@@ -151,7 +152,7 @@ public class HeiFollowupVisitInteractorFlv implements PmtctFollowupVisitInteract
             Timber.e(e);
         }
 
-        BasePmtctHomeVisitAction DNAPCRTest = new BasePmtctHomeVisitAction.Builder(context, "DNA-PCR Sample Collection")
+        BasePmtctHomeVisitAction DNAPCRTest = new BasePmtctHomeVisitAction.Builder(context, context.getString(R.string.dna_pcr_sample_collection))
                 .withOptional(false)
                 .withDetails(details)
                 .withFormName(Constants.JsonForm.getHeiDnaPcrSampleCollection())
@@ -159,9 +160,9 @@ public class HeiFollowupVisitInteractorFlv implements PmtctFollowupVisitInteract
                 .withHelper(new HeiDnaPcrTestAction(memberObject))
                 .build();
         if (HeiDao.isEligibleForDnaCprHivTest(memberObject.getBaseEntityId()))
-            actionList.put("DNA-PCR Sample Collection", DNAPCRTest);
+            actionList.put(context.getString(R.string.dna_pcr_sample_collection), DNAPCRTest);
 
-        BasePmtctHomeVisitAction AntibodyTest = new BasePmtctHomeVisitAction.Builder(context, "Antibody Test Sample Collection")
+        BasePmtctHomeVisitAction AntibodyTest = new BasePmtctHomeVisitAction.Builder(context, context.getString(R.string.antibody_test_sample_collection))
                 .withOptional(false)
                 .withDetails(details)
                 .withFormName(Constants.JsonForm.getHeiAntibodyTestSampleCollection())
@@ -169,9 +170,9 @@ public class HeiFollowupVisitInteractorFlv implements PmtctFollowupVisitInteract
                 .withHelper(new HeiAntibodyTestAction(memberObject))
                 .build();
         if (HeiDao.isEligibleForAntiBodiesHivTest(memberObject.getBaseEntityId()))
-            actionList.put("Antibody Test Sample Collection", AntibodyTest);
+            actionList.put(context.getString(R.string.antibody_test_sample_collection), AntibodyTest);
 
-        BasePmtctHomeVisitAction CtxPrescription = new BasePmtctHomeVisitAction.Builder(context, "CTX Prescription")
+        BasePmtctHomeVisitAction CtxPrescription = new BasePmtctHomeVisitAction.Builder(context, context.getString(R.string.ctx_prescription_title))
                 .withOptional(false)
                 .withDetails(details)
                 .withFormName(Constants.JsonForm.getHeiCtxPrescription())
@@ -179,7 +180,7 @@ public class HeiFollowupVisitInteractorFlv implements PmtctFollowupVisitInteract
                 .withHelper(new HeiCtxAction(memberObject))
                 .build();
         if (HeiDao.isEligibleForCtx(memberObject.getBaseEntityId()))
-            actionList.put("CTX Prescription", CtxPrescription);
+            actionList.put(context.getString(R.string.ctx_prescription_title), CtxPrescription);
 
         BasePmtctHomeVisitAction ARVPrescriptionHighRisk = new BasePmtctHomeVisitAction.Builder(context, "ARV Prescription (AZT + 3C and NVP)")
                 .withOptional(false)

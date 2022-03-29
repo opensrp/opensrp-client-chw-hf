@@ -65,7 +65,7 @@ public class HeiHivResultsViewActivity extends BaseHvlResultsViewActivity implem
             backImageView.setOnClickListener(this);
 
             TextView titleView = findViewById(R.id.textview_title);
-            titleView.setText("HIV Results");
+            titleView.setText(R.string.hiv_results_title);
         } else {
             try {
                 JSONObject form = new JSONObject(jsonString);
@@ -90,7 +90,7 @@ public class HeiHivResultsViewActivity extends BaseHvlResultsViewActivity implem
         intent.putExtra(Constants.JSON_FORM_EXTRA.JSON, jsonObject.toString());
 
         Form form = new Form();
-        form.setName("HIV Test Results");
+        form.setName(getString(R.string.hiv_test_results_title));
         form.setActionBarBackground(org.smartregister.chw.core.R.color.family_actionbar);
         form.setNavigationBackground(org.smartregister.chw.core.R.color.family_navigation);
         form.setHomeAsUpIndicator(org.smartregister.chw.core.R.mipmap.ic_cross_white);
