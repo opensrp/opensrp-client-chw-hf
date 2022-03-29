@@ -32,10 +32,8 @@ import org.smartregister.chw.hf.domain.pmtct_reports.Pmtct3MonthsReportObject;
 import org.smartregister.chw.hf.domain.pmtct_reports.PmtctEIDMonthlyReportObject;
 import org.smartregister.view.customcontrols.CustomFontTextView;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -110,7 +108,7 @@ public class PmtctReportsViewActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.reports_menu, menu);
+        getMenuInflater().inflate(R.menu.reports_view_menu, menu);
         return true;
     }
 

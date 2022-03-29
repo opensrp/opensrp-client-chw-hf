@@ -172,5 +172,6 @@
     <string name="issue_hei_community_referal">Issue HEI community followup referral</string>
     <string name="anc_monthly_report">Monthly Report</string>
     <string name="print_report">Print</string>
+    <string name="month">Month</string>
 
 </resources>
