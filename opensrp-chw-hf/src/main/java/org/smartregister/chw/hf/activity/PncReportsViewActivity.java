@@ -18,7 +18,6 @@ import android.webkit.WebView;
 import com.google.android.material.appbar.AppBarLayout;
 
 import org.smartregister.chw.hf.R;
-import org.smartregister.chw.hf.domain.anc_reports.AncMonthlyReportObject;
 import org.smartregister.chw.hf.domain.pnc_reports.PncMonthlyReportObject;
 import org.smartregister.view.customcontrols.CustomFontTextView;
 
@@ -35,7 +34,6 @@ import timber.log.Timber;
 public class PncReportsViewActivity extends AppCompatActivity {
 
     private static final String ARG_REPORT_NAME = "ARG_REPORT_NAME";
-    private static final String ARG_REPORT_TITLE = "ARG_REPORT_TITLE";
     protected CustomFontTextView toolBarTextView;
     protected AppBarLayout appBarLayout;
 
