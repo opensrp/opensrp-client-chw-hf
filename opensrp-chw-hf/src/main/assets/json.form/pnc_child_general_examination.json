@@ -294,6 +294,7 @@
         "openmrs_entity_id": "umbilical_cord",
         "type": "check_box",
         "label": "Umbilical Cord Assessment",
+        "combine_checkbox_option_values": "true",
         "exclusive": [
           "chk_no_abnormalities"
         ],
