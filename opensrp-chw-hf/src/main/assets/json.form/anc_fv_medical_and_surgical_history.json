@@ -61,7 +61,6 @@
         "combine_checkbox_option_values": "true",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
-        "combine_checkbox_option_values": "true",
         "exclusive": [
           "none"
         ],
