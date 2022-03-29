@@ -1368,6 +1368,14 @@
           }
         },
         {
+          "column_name": "medical_surgical_history",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "medical_surgical_history"
+          }
+        },
+        {
           "column_name": "partner_base_entity_id",
           "type": "Event",
           "json_mapping": {
@@ -1608,7 +1616,55 @@
             "field": "obs.fieldCode",
             "concept": "hb_level"
           }
-        }, 
+        },
+        {
+          "column_name": "systolic",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "systolic"
+          }
+        },
+        {
+          "column_name": "diastolic",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "diastolic"
+          }
+        },
+        {
+          "column_name": "protein_in_urine",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "protein_in_urine"
+          }
+        },
+        {
+          "column_name": "glucose_in_urine",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "glucose_in_urine"
+          }
+        },
+        {
+          "column_name": "syphilis",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "syphilis"
+          }
+        },
+        {
+          "column_name": "partner_syphilis",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "partner_syphilis"
+          }
+        },
         {
           "column_name": "malaria_preventive_therapy",
           "type": "Event",

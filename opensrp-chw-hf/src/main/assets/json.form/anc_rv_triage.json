@@ -88,6 +88,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "rapid_examination",
         "openmrs_entity_parent": "",
+        "combine_checkbox_option_values": "true",
         "exclusive": [
           "none"
         ],
@@ -207,6 +208,7 @@
         "openmrs_entity_id": "danger_signs",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
+        "combine_checkbox_option_values": "true",
         "exclusive": [
           "none"
         ],
