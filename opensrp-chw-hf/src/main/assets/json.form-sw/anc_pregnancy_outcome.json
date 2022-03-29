@@ -884,7 +884,7 @@
             "hint": "Jina la ukoo",
             "edit_type": "name",
             "v_regex": {
-              "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-]*",
+              "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
               "err": "Tafadhali weka jina la ukoo"
             },
             "v_required": {

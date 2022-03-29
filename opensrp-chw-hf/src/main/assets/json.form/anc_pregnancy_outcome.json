@@ -884,7 +884,7 @@
             "hint": "Surname",
             "edit_type": "name",
             "v_regex": {
-              "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-]*",
+              "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
               "err": "Please enter a valid name"
             },
             "v_required": {
@@ -928,7 +928,7 @@
               "err": "Please enter the first name"
             },
             "v_regex": {
-              "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-]*",
+              "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
               "err": "Please enter a valid name"
             }
           },
@@ -941,7 +941,7 @@
             "hint": "Middle name",
             "edit_type": "name",
             "v_regex": {
-              "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-]*",
+              "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
               "err": "Please enter a valid name"
             },
             "v_required": {
@@ -1235,7 +1235,7 @@
             "hint": "Surname",
             "edit_type": "name",
             "v_regex": {
-              "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-]*",
+              "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
               "err": "Please enter a valid name"
             },
             "v_required": {
@@ -1279,7 +1279,7 @@
               "err": "Please enter the first name"
             },
             "v_regex": {
-              "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-]*",
+              "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
               "err": "Please enter a valid name"
             }
           },
@@ -1292,7 +1292,7 @@
             "hint": "Middle name",
             "edit_type": "name",
             "v_regex": {
-              "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-]*",
+              "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
               "err": "Please enter a valid name"
             },
             "v_required": {
