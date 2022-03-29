@@ -1666,6 +1666,14 @@
           }
         },
         {
+          "column_name": "hiv",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "hiv"
+          }
+        },
+        {
           "column_name": "malaria_preventive_therapy",
           "type": "Event",
           "json_mapping": {

@@ -201,23 +201,69 @@ indicators:
                                  '-' ||
                                  substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
                                  '-' || '01')"
+  - key: "5a-10-14"
+    description: "Known on ART Clients for 10 - 14 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.visit_number = 1
+                        AND medical_surgical_history LIKE '%known_on_art%'
+                        AND (date(fm.dob, '+10 years') <= date('now'))
+                        AND (date(fm.dob, '+15 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
     
+  - key: "5c-10-14"
+    description: "Clients Tested for HIV on first visit for 10 - 14 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.visit_number = 1
+                        AND eaf.hiv <> 'test_not_conducted'
+                        AND (date(fm.dob, '+10 years') <= date('now'))
+                        AND (date(fm.dob, '+15 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
     
+  - key: "5d-10-14"
+    description: "Clients Tested for HIV on first visit and found positive for 10 - 14 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.visit_number = 1
+                        AND eaf.hiv = 'positive'
+                        AND (date(fm.dob, '+10 years') <= date('now'))
+                        AND (date(fm.dob, '+15 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+  - key: "5e-10-14"
+    description: "Clients Tested for HIV on first visit and found positive for 10 - 14 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.visit_number = 1
+                        AND eaf.hiv = 'positive'
+                        AND (date(fm.dob, '+10 years') <= date('now'))
+                        AND (date(fm.dob, '+15 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
     
     
     
@@ -288,6 +334,23 @@ indicators:
                                  '-' ||
                                  substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
                                  '-' || '01')"
+    
+
+  - key: "4a-15-19"
+    description: "Pregnant Clients with four or more pregnancies 15 - 19 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.visit_number = 1
+                        AND medical_surgical_history LIKE '%pregnant_more_than_four%'
+                        AND (date(fm.dob, '+15 years') <= date('now'))
+                        AND (date(fm.dob, '+20 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
   
   - key: "4b-15-19"
     description: "Pregnant Clients 15 - 19 year olds"
@@ -332,6 +395,157 @@ indicators:
                         AND eaf.visit_number = 1
                         AND (date(fm.dob, '+15 years') <= date('now'))
                         AND (date(fm.dob, '+20 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+  - key: "4g-15-19"
+    description: "Clients with glucose in urine for 10 - 19 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.glucose_in_urine = 'positive'
+                        AND (date(fm.dob, '+15 years') <= date('now'))
+                        AND (date(fm.dob, '+20 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+  - key: "4h-15-19"
+    description: "Clients with protein in urine for 15 - 19 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.protein_in_urine = 'positive'
+                        AND (date(fm.dob, '+15 years') <= date('now'))
+                        AND (date(fm.dob, '+20 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
+  - key: "4i-15-19"
+    description: "Clients tested syphilis for 15 - 19 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.syphilis <> 'test_not_conducted'
+                        AND (date(fm.dob, '+15 years') <= date('now'))
+                        AND (date(fm.dob, '+20 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
+  - key: "4j-15-19"
+    description: "Clients tested syphilis for 15 - 19 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.syphilis = 'positive'
+                        AND (date(fm.dob, '+15 years') <= date('now'))
+                        AND (date(fm.dob, '+20 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
+  - key: "4l-15-19"
+    description: "Partners tested syphilis for 15 - 19 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.partner_base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.partner_syphilis <> 'test_not_conducted'
+                        AND (date(fm.dob, '+15 years') <= date('now'))
+                        AND (date(fm.dob, '+20 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
+  - key: "4j-15-19"
+    description: "Partners tested syphilis for 15 - 19 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.partner_base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.partner_syphilis = 'positive'
+                        AND (date(fm.dob, '+15 years') <= date('now'))
+                        AND (date(fm.dob, '+20 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+  - key: "5a-15-19"
+    description: "Known on ART Clients for 15 - 19 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.visit_number = 1
+                        AND medical_surgical_history LIKE '%known_on_art%'
+                        AND (date(fm.dob, '+15 years') <= date('now'))
+                        AND (date(fm.dob, '+20 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
+  - key: "5c-15-19"
+    description: "Clients Tested for HIV on first visit for 15 - 19 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.visit_number = 1
+                        AND eaf.hiv <> 'test_not_conducted'
+                        AND (date(fm.dob, '+15 years') <= date('now'))
+                        AND (date(fm.dob, '+20 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
+  - key: "5d-15-19"
+    description: "Clients Tested for HIV on first visit and found positive for 15 - 19 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.visit_number = 1
+                        AND eaf.hiv = 'positive'
+                        AND (date(fm.dob, '+15 years') <= date('now'))
+                        AND (date(fm.dob, '+20 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
+  - key: "5e-15-19"
+    description: "Clients Tested for HIV on first visit and found positive for 15 - 19 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.visit_number = 1
+                        AND eaf.hiv = 'positive'
+                        AND (date(fm.dob, '+15 years') <= date('now'))
+                        AND (date(fm.dob, '+19 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
                             date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
                                  '-' ||
@@ -408,6 +622,22 @@ indicators:
                                  substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
                                  '-' || '01')"
 
+  - key: "4a-20-24"
+    description: "Pregnant Clients with four or more pregnancies 20 - 24 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.visit_number = 1
+                        AND medical_surgical_history LIKE '%pregnant_more_than_four%'
+                        AND (date(fm.dob, '+20 years') <= date('now'))
+                        AND (date(fm.dob, '+25 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
 
   - key: "4d-20-24"
     description: "Clients with HB Level less than 8.5 for 20 - 24 year olds"
@@ -434,6 +664,158 @@ indicators:
                       WHERE CAST(eaf.systolic AS INTEGER) > 140
                         AND CAST(eaf.diastolic AS INTEGER) > 90
                         AND eaf.visit_number = 1
+                        AND (date(fm.dob, '+20 years') <= date('now'))
+                        AND (date(fm.dob, '+25 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
+  - key: "4g-20-24"
+    description: "Clients with glucose in urine for 20 - 24 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.glucose_in_urine = 'positive'
+                        AND (date(fm.dob, '+20 years') <= date('now'))
+                        AND (date(fm.dob, '+25 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+  - key: "4h-20-24"
+    description: "Clients with protein in urine for 20 - 24 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.protein_in_urine = 'positive'
+                        AND (date(fm.dob, '+20 years') <= date('now'))
+                        AND (date(fm.dob, '+25 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
+  - key: "4i-20-24"
+    description: "Clients tested syphilis for 20 - 24 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.syphilis <> 'test_not_conducted'
+                        AND (date(fm.dob, '+20 years') <= date('now'))
+                        AND (date(fm.dob, '+25 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
+  - key: "4j-20-24"
+    description: "Clients tested syphilis for 20 - 24 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.syphilis = 'positive'
+                        AND (date(fm.dob, '+20 years') <= date('now'))
+                        AND (date(fm.dob, '+25 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
+  - key: "4l-20-24"
+    description: "Partners tested syphilis for 20 - 24 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.partner_base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.partner_syphilis <> 'test_not_conducted'
+                        AND (date(fm.dob, '+20 years') <= date('now'))
+                        AND (date(fm.dob, '+25 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
+  - key: "4j-20-24"
+    description: "Partners tested syphilis for 20 - 24 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.partner_base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.partner_syphilis = 'positive'
+                        AND (date(fm.dob, '+20 years') <= date('now'))
+                        AND (date(fm.dob, '+25 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+  - key: "5a-20-24"
+    description: "Known on ART Clients for 20 - 24 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.visit_number = 1
+                        AND medical_surgical_history LIKE '%known_on_art%'
+                        AND (date(fm.dob, '+20 years') <= date('now'))
+                        AND (date(fm.dob, '+25 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
+  - key: "5c-20-24"
+    description: "Clients Tested for HIV on first visit for 20 - 24 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.visit_number = 1
+                        AND eaf.hiv <> 'test_not_conducted'
+                        AND (date(fm.dob, '+20 years') <= date('now'))
+                        AND (date(fm.dob, '+25 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
+  - key: "5d-20-24"
+    description: "Clients Tested for HIV on first visit and found positive for 20 - 24 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.visit_number = 1
+                        AND eaf.hiv = 'positive'
+                        AND (date(fm.dob, '+20 years') <= date('now'))
+                        AND (date(fm.dob, '+25 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
+  - key: "5e-20-24"
+    description: "Clients Tested for HIV on first visit and found positive for 20 - 24 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.visit_number = 1
+                        AND eaf.hiv = 'positive'
                         AND (date(fm.dob, '+20 years') <= date('now'))
                         AND (date(fm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
@@ -513,6 +895,22 @@ indicators:
                                  substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
                                  '-' || '01')"
 
+  - key: "4a-25-29"
+    description: "Pregnant Clients with four or more pregnancies 25 - 29 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.visit_number = 1
+                        AND medical_surgical_history LIKE '%pregnant_more_than_four%'
+                        AND (date(fm.dob, '+25 years') <= date('now'))
+                        AND (date(fm.dob, '+30 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
 
   - key: "4d-25-29"
     description: "Clients with HB Level less than 8.5 for 25 - 29 year olds"
@@ -539,6 +937,158 @@ indicators:
                       WHERE CAST(eaf.systolic AS INTEGER) > 140
                         AND CAST(eaf.diastolic AS INTEGER) > 90
                         AND eaf.visit_number = 1
+                        AND (date(fm.dob, '+25 years') <= date('now'))
+                        AND (date(fm.dob, '+30 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
+  - key: "4g-25-29"
+    description: "Clients with glucose in urine for 25 - 29 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.glucose_in_urine = 'positive'
+                        AND (date(fm.dob, '+25 years') <= date('now'))
+                        AND (date(fm.dob, '+30 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+  - key: "4h-25-29"
+    description: "Clients with protein in urine for 25 - 29 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.protein_in_urine = 'positive'
+                        AND (date(fm.dob, '+25 years') <= date('now'))
+                        AND (date(fm.dob, '+30 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
+  - key: "4i-25-29"
+    description: "Clients tested syphilis for 25 - 29 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.syphilis <> 'test_not_conducted'
+                        AND (date(fm.dob, '+25 years') <= date('now'))
+                        AND (date(fm.dob, '+30 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
+  - key: "4j-25-29"
+    description: "Clients tested syphilis for 25 - 29 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.syphilis = 'positive'
+                        AND (date(fm.dob, '+25 years') <= date('now'))
+                        AND (date(fm.dob, '+30 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
+  - key: "4l-25-29"
+    description: "Partners tested syphilis for 25 - 29 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.partner_base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.partner_syphilis <> 'test_not_conducted'
+                        AND (date(fm.dob, '+25 years') <= date('now'))
+                        AND (date(fm.dob, '+30 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
+  - key: "4j-25-29"
+    description: "Partners tested syphilis for 25 - 29 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.partner_base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.partner_syphilis = 'positive'
+                        AND (date(fm.dob, '+25 years') <= date('now'))
+                        AND (date(fm.dob, '+30 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+  - key: "5a-25-29"
+    description: "Known on ART Clients for 25 - 29 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.visit_number = 1
+                        AND medical_surgical_history LIKE '%known_on_art%'
+                        AND (date(fm.dob, '+25 years') <= date('now'))
+                        AND (date(fm.dob, '+30 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
+  - key: "5c-25-29"
+    description: "Clients Tested for HIV on first visit for 25 - 29 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.visit_number = 1
+                        AND eaf.hiv <> 'test_not_conducted'
+                        AND (date(fm.dob, '+25 years') <= date('now'))
+                        AND (date(fm.dob, '+30 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
+  - key: "5d-25-29"
+    description: "Clients Tested for HIV on first visit and found positive for 25 - 29 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.visit_number = 1
+                        AND eaf.hiv = 'positive'
+                        AND (date(fm.dob, '+25 years') <= date('now'))
+                        AND (date(fm.dob, '+30 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
+  - key: "5e-25-29"
+    description: "Clients Tested for HIV on first visit and found positive for 25 - 29 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.visit_number = 1
+                        AND eaf.hiv = 'positive'
                         AND (date(fm.dob, '+25 years') <= date('now'))
                         AND (date(fm.dob, '+30 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
@@ -615,6 +1165,22 @@ indicators:
                                  substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
                                  '-' || '01')"
 
+  - key: "4a-30-34"
+    description: "Pregnant Clients with four or more pregnancies 30 - 34 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.visit_number = 1
+                        AND medical_surgical_history LIKE '%pregnant_more_than_four%'
+                        AND (date(fm.dob, '+30 years') <= date('now'))
+                        AND (date(fm.dob, '+35 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
   - key: "4d-30-34"
     description: "Clients with HB Level less than 8.5 for 30 - 34 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
@@ -640,6 +1206,158 @@ indicators:
                       WHERE CAST(eaf.systolic AS INTEGER) > 140
                         AND CAST(eaf.diastolic AS INTEGER) > 90
                         AND eaf.visit_number = 1
+                        AND (date(fm.dob, '+30 years') <= date('now'))
+                        AND (date(fm.dob, '+35 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
+  - key: "4g-30-34"
+    description: "Clients with glucose in urine for 30 - 34 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.glucose_in_urine = 'positive'
+                        AND (date(fm.dob, '+30 years') <= date('now'))
+                        AND (date(fm.dob, '+35 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+  - key: "4h-30-34"
+    description: "Clients with protein in urine for 30 - 34 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.protein_in_urine = 'positive'
+                        AND (date(fm.dob, '+30 years') <= date('now'))
+                        AND (date(fm.dob, '+35 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
+  - key: "4i-30-34"
+    description: "Clients tested syphilis for 30 - 34 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.syphilis <> 'test_not_conducted'
+                        AND (date(fm.dob, '+30 years') <= date('now'))
+                        AND (date(fm.dob, '+35 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
+  - key: "4j-30-34"
+    description: "Clients tested syphilis for 30 - 34 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.syphilis = 'positive'
+                        AND (date(fm.dob, '+30 years') <= date('now'))
+                        AND (date(fm.dob, '+35 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
+  - key: "4l-30-34"
+    description: "Partners tested syphilis for 30 - 34 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.partner_base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.partner_syphilis <> 'test_not_conducted'
+                        AND (date(fm.dob, '+30 years') <= date('now'))
+                        AND (date(fm.dob, '+35 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
+  - key: "4j-30-34"
+    description: "Partners tested syphilis for 30 - 34 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.partner_base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.partner_syphilis = 'positive'
+                        AND (date(fm.dob, '+30 years') <= date('now'))
+                        AND (date(fm.dob, '+35 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+  - key: "5a-30-34"
+    description: "Known on ART Clients for 30 - 34 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.visit_number = 1
+                        AND medical_surgical_history LIKE '%known_on_art%'
+                        AND (date(fm.dob, '+30 years') <= date('now'))
+                        AND (date(fm.dob, '+35 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
+  - key: "5c-30-34"
+    description: "Clients Tested for HIV on first visit for 30 - 34 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.visit_number = 1
+                        AND eaf.hiv <> 'test_not_conducted'
+                        AND (date(fm.dob, '+30 years') <= date('now'))
+                        AND (date(fm.dob, '+35 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
+  - key: "5d-30-34"
+    description: "Clients Tested for HIV on first visit and found positive for 30 - 34 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.visit_number = 1
+                        AND eaf.hiv = 'positive'
+                        AND (date(fm.dob, '+30 years') <= date('now'))
+                        AND (date(fm.dob, '+35 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
+  - key: "5e-30-34"
+    description: "Clients Tested for HIV on first visit and found positive for 30 - 34 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.visit_number = 1
+                        AND eaf.hiv = 'positive'
                         AND (date(fm.dob, '+30 years') <= date('now'))
                         AND (date(fm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
@@ -711,6 +1429,21 @@ indicators:
                                  '-' ||
                                  substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
                                  '-' || '01')"
+    
+  - key: "4a-35+"
+    description: "Pregnant Clients with four or more pregnancies 35+ year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.visit_number = 1
+                        AND medical_surgical_history LIKE '%pregnant_more_than_four%'
+                        AND (date(fm.dob, '+35 years') <= date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
 
   - key: "4c-35+"
     description: "Pregnant Clients 35+ year olds"
@@ -718,6 +1451,7 @@ indicators:
                       FROM ec_anc_register ear
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
                       WHERE eaf.visit_number = 1
+                        AND medical_surgical_history LIKE '%first_pregnancy_at_or_above_thirty_five%'
                         AND (date(fm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
                             date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
@@ -749,6 +1483,148 @@ indicators:
                       WHERE CAST(eaf.systolic AS INTEGER) > 140
                         AND CAST(eaf.diastolic AS INTEGER) > 90
                         AND eaf.visit_number = 1
+                        AND (date(fm.dob, '+35 years') <= date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
+  - key: "4g-35+"
+    description: "Clients with glucose in urine for 35+ year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.glucose_in_urine = 'positive'
+                        AND (date(fm.dob, '+35 years') <= date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+  - key: "4h-35+"
+    description: "Clients with protein in urine for 35+ year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.protein_in_urine = 'positive'
+                        AND (date(fm.dob, '+35 years') <= date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
+  - key: "4i-35+"
+    description: "Clients tested syphilis for 35+ year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.syphilis <> 'test_not_conducted'
+                        AND (date(fm.dob, '+35 years') <= date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
+  - key: "4j-35+"
+    description: "Clients tested syphilis for 35+ year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.syphilis = 'positive'
+                        AND (date(fm.dob, '+35 years') <= date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
+  - key: "4l-35+"
+    description: "Partners tested syphilis for 35+ year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.partner_base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.partner_syphilis <> 'test_not_conducted'
+                        AND (date(fm.dob, '+35 years') <= date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
+  - key: "4j-35+"
+    description: "Partners tested syphilis for 35+ year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.partner_base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.partner_syphilis = 'positive'
+                        AND (date(fm.dob, '+35 years') <= date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+  - key: "5a-35+"
+    description: "Known on ART Clients for 35+ year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.visit_number = 1
+                        AND medical_surgical_history LIKE '%known_on_art%'
+                        AND (date(fm.dob, '+35 years') <= date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
+  - key: "5c-35+"
+    description: "Clients Tested for HIV on first visit for 35+ year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.visit_number = 1
+                        AND eaf.hiv <> 'test_not_conducted'
+                        AND (date(fm.dob, '+35 years') <= date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
+  - key: "5d-35+"
+    description: "Clients Tested for HIV on first visit and found positive for 35+ year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.visit_number = 1
+                        AND eaf.hiv = 'positive'
+                        AND (date(fm.dob, '+35 years') <= date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
+  - key: "5e-35+"
+    description: "Clients Tested for HIV on first visit and found positive for 35+ year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.visit_number = 1
+                        AND eaf.hiv = 'positive'
                         AND (date(fm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
                             date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
