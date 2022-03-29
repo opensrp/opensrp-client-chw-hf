@@ -1,0 +1,218 @@
+{
+  "count": "1",
+  "encounter_type": "PNC Nutritional Supplement",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "step1": {
+    "title": "Virutubisho vya Lishe",
+    "fields": [
+      {
+        "key": "iron_and_folic_acid",
+        "type": "native_radio",
+        "label": "Je, Mama amepewa Iron na Folic acid?",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "iron_and_folic_acid",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndiyo",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhari jibu swali hili"
+        }
+      },
+      {
+        "key": "reason_for_not_giving_iron_and_folic_acid",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_giving_iron_and_folic_acid",
+        "type": "spinner",
+        "hint": "Sababu kwanini Iron na Folic acid hazikutolewa",
+        "values": [
+          "Zimeisha",
+          "Mteja amekaa kuchukua",
+          "Mteja ana mzio na Iron Folic acid",
+          "Nyingine"
+        ],
+        "keys": [
+          "out_of_stock",
+          "client_did_not_agree_medication",
+          "client_is_allergic_to_medication",
+          "other"
+        ],
+        "openmrs_choice_ids": {
+          "out_of_stock": "out_of_stock",
+          "client_did_not_agree_medication": "client_did_not_agree_medication",
+          "the_client_refused_to_be_tested": "the_client_refused_to_be_tested",
+          "client_is_allergic_to_medication": "client_is_allergic_to_medication",
+          "other": "other"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhari chagua sababu"
+        },
+        "relevance": {
+          "step1:iron_and_folic_acid": {
+            "type": "string",
+            "ex": "equalTo(.,\"no\")"
+          }
+        }
+      },
+      {
+        "key": "other_reason_for_not_giving_iron_and_folic_acid",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reason_for_not_giving_iron_and_folic_acid",
+        "type": "edit_text",
+        "hint": "Bainisha sababu kwa kutokutoa Iron na Folic acid",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhari jaza sababu"
+        },
+        "relevance": {
+          "step1:reason_for_not_giving_iron_and_folic_acid": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
+          }
+        }
+      },
+      {
+        "key": "vitamin_a",
+        "type": "native_radio",
+        "label": "Je Mama amepatiwa Vitamin A?",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "vitamin_a",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndiyo",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhari jibu swali hili"
+        }
+      },
+      {
+        "key": "reason_for_not_giving_vitamin_a",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_giving_vitamin_a",
+        "type": "spinner",
+        "hint": "Sababu za kutokutoa Vitamin A",
+        "values": [
+          "Vitamin A zimeisha",
+          "Mteja amekaa kuchukua Vitamin A",
+          "Mteja ana mzio na Vitamin A",
+          "Nyingine (Bainisha)"
+        ],
+        "keys": [
+          "out_of_stock",
+          "client_did_not_agree_medication",
+          "client_is_allergic_to_medication",
+          "other"
+        ],
+        "openmrs_choice_ids": {
+          "out_of_stock": "out_of_stock",
+          "client_did_not_agree_medication": "client_did_not_agree_medication",
+          "the_client_refused_to_be_tested": "the_client_refused_to_be_tested",
+          "client_is_allergic_to_medication": "client_is_allergic_to_medication",
+          "other": "other"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhari chagua mojawapo"
+        },
+        "relevance": {
+          "step1:vitamin_a": {
+            "type": "string",
+            "ex": "equalTo(.,\"no\")"
+          }
+        }
+      },
+      {
+        "key": "other_reason_for_not_giving_vitamin_a",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reason_for_not_giving_vitamin_a",
+        "type": "edit_text",
+        "hint": "Bainisha sababu nyingine ya kutokutoa Vitamin A",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhari jaza sababu"
+        },
+        "relevance": {
+          "step1:reason_for_not_giving_vitamin_a": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
+          }
+        }
+      }
+    ]
+  }
+}

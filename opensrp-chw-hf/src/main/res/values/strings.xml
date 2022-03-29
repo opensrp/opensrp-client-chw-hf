@@ -169,6 +169,14 @@
     <string name="eid_cross_sectional_report">EID Cross-sectional Report</string>
     <string name="confirm_remove_text">Are you sure you sure about this action affecting %s\'s record? This action cannot be undone</string>
     <string name="remove">CONFIRM</string>
+    <string name="issue_hei_community_referal">Issue HEI community followup referral</string>
     <string name="anc_monthly_report">Monthly Report</string>
+    <string name="pregnancy_outcome_title">Pregnancy Outcome</string>
+    <string name="dna_pcr_sample_collection">DNA-PCR Sample Collection</string>
+    <string name="ctx_prescription_title">CTX Prescription</string>
+    <string name="hiv_results_title">HIV Results</string>
+    <string name="antibody_test_sample_collection">Antibody Test Sample Collection</string>
+    <string name="hiv_test_results_title">HIV Test Results</string>
+    <string name="print_report">Print</string>
 
 </resources>

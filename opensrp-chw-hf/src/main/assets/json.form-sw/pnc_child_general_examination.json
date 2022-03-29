@@ -48,32 +48,32 @@
     "encounter_location": ""
   },
   "step1": {
-    "title": "Child's General Examination",
+    "title": "Uchunguzi wa Afya ya Mtoto",
     "fields": [
       {
         "key": "child_activeness",
         "type": "native_radio",
-        "label": "Child's activeness",
+        "label": "Uchangamfu wa Mtoto",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "child_activeness",
         "openmrs_entity_parent": "",
         "options": [
           {
             "key": "active",
-            "text": "Active",
+            "text": "Mchangamfu",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "active"
           },
           {
             "key": "not_active",
-            "text": "Not Active",
+            "text": "Sio Machangamfu",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "not_active"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Please answer this question"
+          "err": "Tafadhari jibu swali hili"
         }
       },
       {
@@ -94,37 +94,37 @@
       {
         "key": "height",
         "type": "edit_text",
-        "hint": "Height (CM)",
+        "hint": "Urefu (cm)",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "height",
         "openmrs_entity_parent": "",
         "v_numeric": {
           "value": "true",
-          "err": "Please enter the height"
+          "err": "Tafadhari ingiza Urefu"
         },
         "v_min": {
           "value": "10",
-          "err": "The height must be equal or greater than 10 (CM)"
+          "err": "Urefu lazima uwe sawa au mkubwa kuliko 10 (cm)"
         },
         "v_max": {
           "value": "80",
-          "err": "The height must be equal or less than 80 (CM)"
+          "err": "Urefu lazima uwe sawa au mkubwa kuliko 80 (cm)"
         },
         "v_required": {
           "value": true,
-          "err": "Please enter the height"
+          "err": "Tafadhari ingiza Urefu"
         }
       },
       {
         "key": "weight",
         "type": "edit_text",
-        "hint": "Weight (KG)",
+        "hint": "Uzito (Kg)",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "weight",
         "openmrs_entity_parent": "",
         "v_numeric": {
           "value": "true",
-          "err": "Please enter the weight"
+          "err": "Tafadhari ingiza Uzito"
         },
         "v_min": {
           "value": "0",
@@ -136,31 +136,31 @@
         },
         "v_required": {
           "value": true,
-          "err": "Please enter the weight"
+          "err": "Tafadhari ingiza Uzito"
         }
       },
       {
         "key": "temperature",
         "type": "edit_text",
-        "hint": "Temperature (C)",
+        "hint": "Joto (C)",
         "openmrs_entity_id": "temperature",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "v_numeric": {
           "value": "true",
-          "err": "Please enter the temperature"
+          "err": "Tafadhari ingiza Joto (C)"
         },
         "v_min": {
           "value": "10",
-          "err": "Temperature must be equal or greater than 10"
+          "err": "Joto lazima iwe sawa au kubwa kuliko 10 (C)"
         },
         "v_max": {
           "value": "50",
-          "err": "Temperature must be equal or less than 50"
+          "err": "Joto lazima iwe sawa au kubwa kuliko 50 (C)"
         },
         "v_required": {
           "value": true,
-          "err": "Please enter the temperature"
+          "err": "Tafadhari ingiza Joto (C)"
         }
       },
       {
@@ -196,17 +196,17 @@
       {
         "key": "head_circumference",
         "type": "edit_text",
-        "hint": "Head Circumference (CM)",
+        "hint": "Mzunguko wa kichwa cha Mtoto (cm)",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "head_circumference",
         "openmrs_entity_parent": "",
         "v_numeric": {
           "value": "true",
-          "err": "Please enter the head circumference"
+          "err": "Tafadhari ingiza mzunguko wa kichwa (cm)"
         },
         "v_required": {
           "value": true,
-          "err": "Please enter the height"
+          "err": "Tafadhari ingiza Urefu"
         }
       },
       {
@@ -242,36 +242,36 @@
       {
         "key": "upper_arm_circumference",
         "type": "edit_text",
-        "hint": "Upper Arm Circumference (CM)",
+        "hint": "Mzunguko wa juu wa  mkono (cm)",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "upper_arm_circumference",
         "openmrs_entity_parent": "",
         "v_numeric": {
           "value": "true",
-          "err": "Please enter the upper arm circumference"
+          "err": "Ingiza Mzunguko wa juu wa  mkono (cm)"
         },
         "v_required": {
           "value": true,
-          "err": "Please enter the height"
+          "err": "Ingiza Urefu"
         }
       },
       {
         "key": "feeding_options",
         "type": "native_radio",
-        "label": "Feeding options",
+        "label": "Chaguzi za kulisha",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "feeding_options",
         "openmrs_entity_parent": "",
         "options": [
           {
             "key": "ebf",
-            "text": "EBF",
+            "text": "Kumnyonyesha maziwa ya mama pekee kwa kipindi cha Miezi 6 ya Mwanzo",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "ebf"
           },
           {
             "key": "non_bf",
-            "text": "Non-BF",
+            "text": "Hanyonyi",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "non_bf"
           },
@@ -284,7 +284,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Please answer this question"
+          "err": "Tafadhari jibu swali hili"
         }
       },
       {
@@ -293,49 +293,49 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "umbilical_cord",
         "type": "check_box",
-        "label": "Umbilical Cord Assessment",
+        "label": "Tathimini ya Kitovu",
         "exclusive": [
           "chk_no_abnormalities"
         ],
         "options": [
           {
             "key": "chk_smell_bad",
-            "text": "Smell bad",
+            "text": "Kina harufu mbaya",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_smell_bad",
             "value": "false"
           },
           {
             "key": "chk_infection",
-            "text": "Infection",
+            "text": "Kina maambukizi",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_infection",
             "value": "false"
           },
           {
             "key": "chk_abnormality",
-            "text": "Any Abnormality",
+            "text": "Kipo katika hali isiyo ya kawaida",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_abnormality",
             "value": "false"
           },
           {
             "key": "chk_descended",
-            "text": "Descended",
+            "text": "Kimeshuka",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_descended",
             "value": "false"
           },
           {
             "key": "chk_delayed_off",
-            "text": "Delayed off",
+            "text": "Kimechelewa kukatika",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_delayed_off",
             "value": "false"
           },
           {
             "key": "chk_no_abnormalities",
-            "text": "No Abnormalities",
+            "text": "Hakina hali yoyote isiyo ya kawaida",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_no_abnormalities",
             "value": "false"
@@ -343,7 +343,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Please answer this question"
+          "err": "Tafadhari jibu swali hili"
         }
       },
       {
@@ -412,26 +412,61 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "child_bcg_vaccination",
         "type": "native_radio",
-        "label": "Was BCG vaccination given?",
+        "label": "Je mtoto amechanjwa BCG?",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndiyo",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Please select one"
+          "err": "Chagua mojawapo"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pnc_child_examination_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "child_opv0_vaccination",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "child_opv0_vaccination",
+        "type": "native_radio",
+        "label": "Je mtoto amechanjwa OPV 0?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndiyo",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhari mojawapo"
         },
         "relevance": {
           "rules-engine": {

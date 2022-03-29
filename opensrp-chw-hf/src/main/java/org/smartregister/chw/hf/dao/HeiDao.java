@@ -70,7 +70,8 @@ public class HeiDao extends AbstractDao {
 
     public static boolean isEligibleForDnaCprHivTest(String baseEntityID) {
         String sql = "SELECT * FROM ec_hei hei\n" +
-                "         LEFT JOIN (SELECT * FROM ec_hei_followup WHERE sample_id IS NOT NULL ORDER BY visit_number DESC LIMIT 1) heif\n" +
+                "         LEFT JOIN (SELECT * FROM ec_hei_followup WHERE sample_id IS NOT NULL AND ec_hei_followup.entity_id ='" + baseEntityID + "'" +
+                "           ORDER BY visit_number DESC LIMIT 1) heif\n" +
                 "                   on hei.base_entity_id = heif.entity_id\n" +
                 "WHERE hei.base_entity_id='" + baseEntityID + "'";
 
@@ -87,10 +88,11 @@ public class HeiDao extends AbstractDao {
 
         int weeks = getElapsedTimeInWeeks(simpleDateFormat.format(dob));
         int months = getElapsedTimeInMonths(simpleDateFormat.format(dob));
-
-        if (months >= 9 && getNextHivTestAge(baseEntityID).equals(Constants.HeiHIVTestAtAge.AT_9_MONTHS) && sampleIdRes != null && sampleIdRes.size() > 0 && sampleIdRes.get(0) != null) {
+        String nextTestAge = getNextHivTestAge(baseEntityID);
+        String latestTestAge = getLatestTestAtAge(baseEntityID);
+        if (months >= 9 && (!nextTestAge.equals(latestTestAge))) {
             return true;
-        } else if (weeks >= 6 && getNextHivTestAge(baseEntityID).equals(Constants.HeiHIVTestAtAge.AT_6_WEEKS) && sampleIdRes != null && sampleIdRes.size() > 0 && sampleIdRes.get(0) != null) {
+        } else if (weeks >= 6 && (!nextTestAge.equals(latestTestAge))) {
             return true;
         } else
             return riskCategoryRes.get(0).equals("high") && getNextHivTestAge(baseEntityID).equals(Constants.HeiHIVTestAtAge.AT_BIRTH) && (sampleIdRes == null || sampleIdRes.size() == 0 || sampleIdRes.get(0) == null);
@@ -98,7 +100,8 @@ public class HeiDao extends AbstractDao {
 
     public static boolean isEligibleForArvPrescriptionForHighRisk(String baseEntityID) {
         String sql = "SELECT * FROM ec_hei hei\n" +
-                "         LEFT JOIN (SELECT * FROM ec_hei_followup WHERE prophylaxis_arv_for_high_risk_given IS NOT NULL ORDER BY visit_number DESC LIMIT 1) heif\n" +
+                "         LEFT JOIN (SELECT * FROM ec_hei_followup WHERE prophylaxis_arv_for_high_risk_given IS NOT NULL AND ec_hei_followup.entity_id ='" + baseEntityID + "'" +
+                "           ORDER BY visit_number DESC LIMIT 1) heif\n" +
                 "                   on hei.base_entity_id = heif.entity_id\n" +
                 "WHERE hei.base_entity_id='" + baseEntityID + "'";
 
@@ -122,7 +125,8 @@ public class HeiDao extends AbstractDao {
 
     public static boolean isEligibleForArvPrescriptionForHighAndLowRisk(String baseEntityID) {
         String sql = "SELECT * FROM ec_hei hei\n" +
-                "         LEFT JOIN (SELECT * FROM ec_hei_followup WHERE prophylaxis_arv_for_high_and_low_risk_given IS NOT NULL ORDER BY visit_number DESC LIMIT 1) heif\n" +
+                "         LEFT JOIN (SELECT * FROM ec_hei_followup WHERE prophylaxis_arv_for_high_and_low_risk_given IS NOT NULL AND ec_hei_followup.entity_id ='" + baseEntityID + "'" +
+                "           ORDER BY visit_number DESC LIMIT 1) heif\n" +
                 "                   on hei.base_entity_id = heif.entity_id\n" +
                 "WHERE hei.base_entity_id='" + baseEntityID + "'";
 
@@ -148,7 +152,8 @@ public class HeiDao extends AbstractDao {
 
     public static boolean isEligibleForAntiBodiesHivTest(String baseEntityID) {
         String sql = "SELECT * FROM ec_hei hei\n" +
-                "         LEFT JOIN (SELECT * FROM ec_hei_followup WHERE sample_id IS NOT NULL ORDER BY visit_number DESC LIMIT 1) heif\n" +
+                "         LEFT JOIN (SELECT * FROM ec_hei_followup WHERE sample_id IS NOT NULL AND ec_hei_followup.entity_id ='" + baseEntityID + "'" +
+                "ORDER BY visit_number DESC LIMIT 1) heif\n" +
                 "                   on hei.base_entity_id = heif.entity_id\n" +
                 "WHERE hei.base_entity_id='" + baseEntityID + "'";
 
@@ -297,6 +302,19 @@ public class HeiDao extends AbstractDao {
         return (res != null && res.get(0) != null) ? res.get(0) : null;
     }
 
+    public static String getLatestTestAtAge(String baseEntityID) {
+        String sql = "SELECT test_at_age FROM ec_hei_followup \n" +
+                "       WHERE entity_id='" + baseEntityID + "'" +
+                "           AND test_at_age IS NOT NULL" +
+                "           ORDER BY visit_number DESC " +
+                "           LIMIT 1";
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "test_at_age");
+
+        List<String> res = readData(sql, dataMap);
+        //for low risk will return at birth for test_at_age
+        return (res != null && res.size() > 0 && res.get(0) != null) ? res.get(0) : Constants.HeiHIVTestAtAge.AT_BIRTH;
+    }
+
     public static Date getHeiRegisterDate(String baseEntityID) {
         //basically returns back the date of birth of the child
         String sql = "select dob from ec_hei where base_entity_id = '" + baseEntityID + "'";
@@ -341,7 +359,7 @@ public class HeiDao extends AbstractDao {
                 "FROM ec_hei as p\n" +
                 "         INNER JOIN (SELECT *\n" +
                 "                     FROM ec_hei_followup\n" +
-                "                     WHERE entity_id ='" + baseEntityID + "'" +
+                "                     WHERE ec_hei_followup.entity_id ='" + baseEntityID + "'" +
                 "                     ORDER BY visit_number DESC\n" +
                 "                     LIMIT 1) as pf on pf.entity_id = p.base_entity_id\n" +
                 "WHERE (pf.followup_status = 'transfer_out')\n" +

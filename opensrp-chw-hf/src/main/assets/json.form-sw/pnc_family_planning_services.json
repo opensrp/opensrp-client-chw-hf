@@ -47,32 +47,32 @@
     "encounter_location": ""
   },
   "step1": {
-    "title": "Family Planning Services",
+    "title": "Huduma za Uzazi wa Mpango",
     "fields": [
       {
         "key": "education_counselling_given",
         "type": "native_radio",
-        "label": "Was Education/counselling given?",
+        "label": "Je, Mteja alipewa Elimu/Ushauri?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "education_counselling_given",
         "openmrs_entity_parent": "",
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndio",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Please answer this question"
+          "err": "Tafadhari jibu swali hili"
         }
       },
       {
@@ -85,20 +85,20 @@
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndio",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Please answer this question"
+          "err": "Tafadhari jibu swali hili"
         }
       },
       {
@@ -107,23 +107,23 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "method_provided",
         "type": "native_radio",
-        "label": "Family Planning Method Provided",
+        "label": "Njia za Uzazi wa Mpango uliyotolewa",
         "options": [
           {
             "key": "chk_condom",
-            "text": "Condom",
+            "text": "Kondomu",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_condom"
           },
           {
             "key": "chk_pills",
-            "text": "Pills",
+            "text": "Vidonge",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_pills"
           },
           {
             "key": "chk_injections",
-            "text": "Injections",
+            "text": "Sindano",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_injections"
           },
@@ -135,7 +135,7 @@
           },
           {
             "key": "chk_implants",
-            "text": "Implants",
+            "text": "Vipandikizi",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_implants"
           },
@@ -153,20 +153,20 @@
           },
           {
             "key": "chk_referred_fp_services",
-            "text": "Referred for other FP services",
+            "text": "Amepewa Rufaa ya huduma nyingine za Uzazi wa Mpango",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_referred_fp_services"
           },
           {
             "key": "chk_none",
-            "text": "None",
+            "text": "Hakuna",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_none"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Please answer this question"
+          "err": "Tafadhari jibu swali hili"
         }
       }
     ]

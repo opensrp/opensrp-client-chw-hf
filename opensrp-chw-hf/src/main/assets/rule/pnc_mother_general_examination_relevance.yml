@@ -9,7 +9,7 @@ actions:
 name: step1_prompt_for_management_of_hypertension
 description: prompt_for_management_of_hypertension
 priority: 1
-condition: "step1_systolic >= 140 && step1_diastolic >= 90"
+condition: "step1_systolic > 140 && step1_diastolic > 90"
 actions:
   - "isRelevant = true"
 ---

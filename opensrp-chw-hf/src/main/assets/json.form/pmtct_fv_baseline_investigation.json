@@ -234,9 +234,9 @@
       {
         "key": "prompt_for_liver_function_test",
         "type": "toaster_notes",
-        "text": "Refer to Physician",
+        "text": "Refer the client for management of liver disease",
         "openmrs_entity_id": "",
-        "openmrs_entity": "concept",
+        "openmrs_entity": "",
         "openmrs_entity_parent": "",
         "toaster_type": "problem",
         "relevance": {
@@ -430,9 +430,9 @@
       {
         "key": "prompt_for_renal_function_test_results",
         "type": "toaster_notes",
-        "text": "Refer to Physician",
+        "text": "STOP use of Tenofovir based regimen, refer the client for management of renal failure",
         "openmrs_entity_id": "",
-        "openmrs_entity": "concept",
+        "openmrs_entity": "",
         "openmrs_entity_parent": "",
         "toaster_type": "problem",
         "relevance": {

@@ -48,7 +48,7 @@
     "encounter_location": ""
   },
   "step1": {
-    "title": "HIV Test Results",
+    "title": "Majibu ya kipimo cha VVU",
     "fields": [
       {
         "key": "hiv_test_result",
@@ -56,20 +56,20 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "hiv_status",
         "type": "native_radio",
-        "label": "Select the test result",
+        "label": "Chagua majibu ya kipimo",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [
           {
             "key": "positive",
-            "text": "Positive",
+            "text": "Chanya",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "positive"
           },
           {
             "key": "negative",
-            "text": "Negative",
+            "text": "Hasi",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "negative"
@@ -77,7 +77,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Please select an option"
+          "err": "Tafadhari chagua mojawapo"
         }
       },
       {
@@ -101,13 +101,13 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "hiv_test_result_date",
         "type": "date_picker",
-        "hint": "Date of receiving results",
+        "hint": "Tarehe ya kupokea majibu",
         "expanded": false,
         "min_date": "today-3y",
         "max_date": "today",
         "v_required": {
           "value": "true",
-          "err": "Please select the date of receiving the results"
+          "err": "Tafadhari chagua Tarehe ya kupokea majibu"
         }
       },
       {
@@ -116,20 +116,20 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "ctc_number_available",
         "type": "native_radio",
-        "label": "Do you have a CTC number?",
+        "label": "Je Mteja ana namba ya CTC?",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndiyo",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
@@ -137,7 +137,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Please select an option"
+          "err": "Tafadhari chagua mojawapo"
         },
         "relevance": {
           "step1:hiv_test_result": {
@@ -155,20 +155,20 @@
         "mask": "##-##-####-######",
         "mask_hint": "12345678912345",
         "allowed_chars": "0123456789",
-        "hint": "CTC Number",
+        "hint": "Namba ya CTC",
         "edit_type": "number",
         "v_regex": {
           "value": "(\\d{2}-\\d{2}-\\d{4}-\\d{6})?",
-          "err": "CTC number should be of the format (XX-XX-XXXX-XXXXXX)"
+          "err": "CTC Namba inafuata utaratibu huu"
         },
         "v_max_length": {
           "value": "17",
           "is_fixed_size": "true",
-          "err":"Please enter a valid CTC Number"
+          "err": "Please enter a valid CTC Number"
         },
         "v_required": {
           "value": true,
-          "err": "Please enter a valid CTC Number"
+          "err": "Tafadhri ingiza Namba sahihi ya CTC"
         },
         "relevance": {
           "step1:ctc_number_available": {

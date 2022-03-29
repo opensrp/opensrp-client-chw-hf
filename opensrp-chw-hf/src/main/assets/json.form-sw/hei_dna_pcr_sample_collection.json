@@ -1,6 +1,6 @@
 {
   "count": "1",
-  "encounter_type": "PMTCT CD4 Sample Collection",
+  "encounter_type": "HEI DNA PCR Sample Collection",
   "entity_id": "",
   "metadata": {
     "start": {
@@ -46,24 +46,23 @@
     },
     "encounter_location": ""
   },
-  "global": {},
   "step1": {
     "title": "Taarifa za Mtoa Huduma wa Afya",
     "fields": [
       {
         "key": "clinician_name",
         "type": "edit_text",
-        "hint": "Jina la Mtoa huduma wa Afya",
+        "hint": "Jina la mtoa huduma wa Afya",
         "openmrs_entity_id": "clinician_name",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "v_regex": {
           "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
-          "err": "Tafadhari ingiza jina la Mtoa huduma"
+          "err": "Tafadhari ingiza Jina la mtoa huduma wa Afya"
         },
         "v_required": {
           "value": true,
-          "err": "Tafadhari ingiza jina la Mtoa huduma"
+          "err": "Tafadhari ingiza Jina la mtoa huduma wa Afya"
         }
       },
       {
@@ -75,7 +74,7 @@
         "openmrs_entity_parent": "",
         "values": [
           "Afisa Matibabu",
-          "Afisa Matibabu msaidizi",
+          "Msaidizi wa Afisa Matibabu",
           "Afisa wa Kliniki",
           "Afisa wa Kliniki msaidizi",
           "Nesi"
@@ -96,13 +95,13 @@
         },
         "v_required": {
           "value": true,
-          "err": "Tafadhari Ingiza cheo cha Mtoa huduma wa Afya"
+          "err": "Tafadhari ingiza cheo cha mtoa huduma wa Afya"
         }
       },
       {
         "key": "clinician_phone_number",
         "type": "edit_text",
-        "hint": "Namba ya Simu ya Mtoa Huduma wa Afya",
+        "hint": "Namba ya simu ya Mtoa huduma wa Afya",
         "edit_type": "number",
         "openmrs_entity_id": "clinician_phone_number",
         "openmrs_entity": "concept",
@@ -117,47 +116,69 @@
         },
         "v_required": {
           "value": true,
-          "err": "Namba lazima iwe na tarakimu 10 na lazima ianze na 06 au 07"
+          "err": "Tafadhari ingiza Namba ya simu ya Mtoa huduma wa Afya"
         }
       },
       {
-        "key": "cd4_collection_date",
+        "key": "sample_collection_date",
         "type": "date_picker",
-        "hint": "Tarehe ya kuchukua sampuli ya CD4",
-        "openmrs_entity_id": "cd4_collection_date",
+        "hint": "Tarehe ya kuchukua sampuli ya kipimo cha DNA-PCR",
+        "openmrs_entity_id": "sample_collection_date",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "min_date": "today-5y",
         "max_date": "today",
         "v_required": {
           "value": true,
-          "err": "Tafadhari ingiza tarehe ya kuchukua sampuli ya CD4"
+          "err": "Please enter the collection date"
         }
       },
       {
-        "key": "cd4_collection_time",
+        "key": "dna_pcr_collection_time",
         "type": "time_picker",
-        "hint": "Muda ya kuchukua sampuli ya CD4",
-        "openmrs_entity_id": "cd4_collection_time",
+        "hint": "Muda wa kuchukua sampuli ya kipimo cha DNA-PCR",
+        "openmrs_entity_id": "dna_pcr_collection_time",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "v_required": {
           "value": true,
-          "err": "Tafadhari ingiza muda ya kuchukua sampuli ya CD4"
+          "err": "Tafadhari ingiza Muda wa kuchukua sampuli ya kipimo cha DNA-PCR"
         }
       },
       {
-        "key": "cd4_sample_id",
+        "key": "sample_id",
         "type": "edit_text",
-        "hint": "Namba ya utambulisho ya sampuli ya CD4",
+        "hint": "ID ya Sampuli kwa ajili kipimo cha DNA-PCR",
         "edit_type": "number",
-        "openmrs_entity_id": "cd4_sample_id",
+        "openmrs_entity_id": "sample_id",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "v_required": {
           "value": true,
-          "err": "Tafadhari ingiza namba ya utambulisho ya sampuli ya CD4"
+          "err": "Tafadhari ingiza ID ya Sampuli kwa ajili kipimo cha DNA-PCR"
         }
+      },
+      {
+        "key": "type_of_hiv_test",
+        "type": "hidden",
+        "openmrs_entity_id": "type_of_hiv_test",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "value": "DNA PCR"
+      },
+      {
+        "key": "test_at_age",
+        "type": "hidden",
+        "openmrs_entity_id": "test_at_age",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": ""
+      },
+      {
+        "key": "actual_age",
+        "type": "hidden",
+        "openmrs_entity_id": "actual_age",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": ""
       }
     ]
   }
