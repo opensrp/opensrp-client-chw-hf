@@ -32,7 +32,12 @@ import org.smartregister.chw.hf.domain.pmtct_reports.Pmtct3MonthsReportObject;
 import org.smartregister.chw.hf.domain.pmtct_reports.PmtctEIDMonthlyReportObject;
 import org.smartregister.view.customcontrols.CustomFontTextView;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
@@ -45,17 +50,21 @@ import timber.log.Timber;
 public class PmtctReportsViewActivity extends AppCompatActivity {
     private static final String ARG_REPORT_NAME = "ARG_REPORT_NAME";
     private static final String ARG_REPORT_TITLE = "ARG_REPORT_TITLE";
+    private static final String ARG_REPORT_DATE = "ARG_REPORT_DATE";
     public static WebView printWebView;
     protected CustomFontTextView toolBarTextView;
     protected AppBarLayout appBarLayout;
     PrintJob printJob;
     boolean printBtnPressed = false;
     String printJobName;
+    private static Date reportDate;
 
-    public static void startMe(Activity activity, String reportName, int reportTitle) {
+    public static void startMe(Activity activity, String reportName, int reportTitle, String reportDate) {
         Intent intent = new Intent(activity, PmtctReportsViewActivity.class);
         intent.putExtra(ARG_REPORT_NAME, reportName);
         intent.putExtra(ARG_REPORT_TITLE, reportTitle);
+
+        intent.putExtra(ARG_REPORT_DATE, reportDate.toString());
         activity.startActivity(intent);
     }
 
@@ -65,6 +74,11 @@ public class PmtctReportsViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pmtct_reports_view);
         String reportName = getIntent().getStringExtra(ARG_REPORT_NAME);
         int reportTitle = getIntent().getIntExtra(ARG_REPORT_TITLE, 0);
+        try {
+            reportDate = new SimpleDateFormat("MM-yyyy", Locale.getDefault()).parse(getIntent().getStringExtra(ARG_REPORT_DATE));
+        } catch (ParseException e) {
+           Timber.e(e);
+        }
         setUpToolbar(reportTitle);
         loadReportView(reportName);
     }
@@ -168,6 +182,7 @@ public class PmtctReportsViewActivity extends AppCompatActivity {
         PmtctEIDMonthlyReportObject pmtctEIDMonthlyReportObject = new PmtctEIDMonthlyReportObject(startDate);
         try {
             printJobName = "report_ya_mwezi-" + startDate.toString() + ".pdf";
+            Toast.makeText(this, "Generating report for " + startDate, Toast.LENGTH_SHORT).show();
             return pmtctEIDMonthlyReportObject.getIndicatorDataAsGson(pmtctEIDMonthlyReportObject.getIndicatorData());
         } catch (JSONException e) {
             Timber.e(e);
@@ -235,16 +250,15 @@ public class PmtctReportsViewActivity extends AppCompatActivity {
 
         @JavascriptInterface
         public String getData(String key) {
-            Date now = new Date();
             switch (key) {
                 case "three_months":
-                    return computeThreeMonths(now);
+                    return computeThreeMonths(reportDate);
                 case "twelve_months":
-                    return computeTwelveMonths(now);
+                    return computeTwelveMonths(reportDate);
                 case "twenty_four_months":
-                    return computeTwentyFourMonths(now);
+                    return computeTwentyFourMonths(reportDate);
                 case "eid_monthly":
-                    return computeEIDMonthly(now);
+                    return computeEIDMonthly(reportDate);
                 default:
                     return "";
             }

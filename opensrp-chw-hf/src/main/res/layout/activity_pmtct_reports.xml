@@ -42,7 +42,42 @@ tools:context=".activity.PmtctReportsViewActivity">
             android:textSize="17sp" />
     </androidx.appcompat.widget.Toolbar>
 </com.google.android.material.appbar.AppBarLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        app:layout_constraintBottom_toTopOf="@id/three_months_report"
+        app:layout_constraintHorizontal_bias="0"
+        android:id="@+id/month_picker"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/app_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content">
 
+        <TextView
+            android:id="@+id/selected_period"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/month_selector"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="20sp"
+            tools:text="REPORT MONTH: May 2022"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:textAppearance="style/TextAppearance.AppCompat.Medium"
+            app:layout_constraintTop_toTopOf="parent" />
+        <Button
+            android:id="@+id/month_selector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_report_button_bg"
+            android:paddingHorizontal="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:text="Select Period"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/selected_period"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/three_months_report"
     android:layout_width="0dp"
@@ -55,7 +90,7 @@ tools:context=".activity.PmtctReportsViewActivity">
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/app_bar"
+    app:layout_constraintTop_toBottomOf="@id/month_picker"
     app:layout_constraintVertical_bias="0">
 
     <ImageView
