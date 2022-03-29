@@ -84,6 +84,7 @@
         "key": "tb_symptoms_screening",
         "type": "check_box",
         "label": "Please select if the client has any of the following TB symptoms",
+        "combine_checkbox_option_values": "true",
         "openmrs_entity_id": "tb_symptoms_screening",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",

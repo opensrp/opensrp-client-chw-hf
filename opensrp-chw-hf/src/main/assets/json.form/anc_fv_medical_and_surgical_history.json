@@ -58,6 +58,7 @@
         "label_info_image_src": "img/chw.png",
         "label_info_has_image": true,
         "label": "Any Medical and surgical History of the Patient?",
+        "combine_checkbox_option_values": "true",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "combine_checkbox_option_values": "true",

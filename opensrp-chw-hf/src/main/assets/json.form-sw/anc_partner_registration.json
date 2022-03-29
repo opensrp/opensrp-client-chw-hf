@@ -172,6 +172,7 @@
         "openmrs_entity_id": "partner_work",
         "type": "check_box",
         "label": "Kazi ya mwenza",
+        "combine_checkbox_option_values": "true",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "exclusive": [
