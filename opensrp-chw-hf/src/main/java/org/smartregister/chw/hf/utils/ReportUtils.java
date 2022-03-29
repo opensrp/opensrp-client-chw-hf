@@ -8,7 +8,11 @@ public class ReportUtils {
     public static String[] monthNames = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"};
 
     public static String getDefaultReportPeriod() {
-        return month + "-" + year;
+        String monthString = String.valueOf(month);
+        if (month < 10) {
+            monthString = "0" + monthString;
+        }
+        return monthString + "-" + year;
     }
 
     public static int getMonth() {

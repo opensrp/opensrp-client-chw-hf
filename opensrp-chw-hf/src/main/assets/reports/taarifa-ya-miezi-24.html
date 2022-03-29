@@ -5,8 +5,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taarifa ya miezi 12</title>
+    <title>Taarifa ya miezi 24</title>
     <style>
+        .show-on-print {
+            display: none;
+        }
+
+        body,
+        h1,
+        h2,
+        td,
+        th {
+            font-family: 'Times New Roman', serif;
+        }
+
+        h1,
+        h2 {
+            font-size: .8rem;
+            text-align: center;
+            font-weight: 200;
+        }
+
         table {
             background-color: #fff;
             box-shadow: 3px 1px 0px #f6f6f6;
@@ -24,12 +43,13 @@
         td {
             text-align: initial;
             width: 50px;
-            font-size: .71rem;
+            font-size: .8rem;
         }
 
         .list-title {
             text-align: initial !important;
             padding: 10px;
+            font-size: .8rem;
         }
 
         tbody tr>td:nth-child(1) {
@@ -40,200 +60,214 @@
         td:nth-child(3) {
             text-align: center;
         }
+
+        @media print {
+            .show-on-print {
+                display: block !important;
+            }
+        }
+
+
     </style>
 </head>
 
 <body onload="onLoad()">
-    <table border="1" style="border-collapse: collapse;">
-        <thead>
-            <tr>
-                <th colspan="4">
-                    Tafuta jumla ya kundi (MAMA)
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    A24
-                </td>
-                <td colspan="2" class="list-title">
-                    Idadi ya wajawazito a wanaonyonyeshawalioandikishwa katika kundi katika mwezi husika (Month 0)
-                </td>
-                <td id="A24"></td>
-            </tr>
-            <tr>
-                <td>
-                    B24
-                </td>
-                <td colspan="2" class="list-title">
-                    Jumla waliohamia kliniki hi ya PMTCT (TI) tangu Month 0
-                </td>
-                <td id="B24"></td>
-            </tr>
-            <tr>
-                <td>
-                    C24
-                </td>
-                <td colspan="2" class="list-title">
-                    Jumla waliohama kutoka kliniki/kundi (TO+TP) tangu Month 0
-                </td>
-                <td id="C24"></td>
-            </tr>
-            <tr>
-                <td>
-                    D24
-                </td>
-                <td colspan="2" class="list-title">
-                    Jumla ya kundi= Net current cohort (A12+B12-C12)
-                </td>
-                <td id="D24"></td>
-            </tr>
-            <th colspan="4">
-                Matokeo ya ufuatiliaji wa mama
-            </th>
-            <tr>
-                <td>
-                    E24
-                </td>
-                <td colspan="2" class="list-title">
-                    Idadi ya kina mama wanaoendelea na huduma (CTN katika M24)
-                </td>
-                <td id="E24"></td>
-            </tr>
-            <tr>
-                <td>
-                    F24
-                </td>
-                <td colspan="2" class="list-title">
-                    Wateja waliopotea (LTF)
-                </td>
-                <td id="F24"></td>
-            </tr>
-            <tr>
-                <td>
-                    G24
-                </td>
-                <td colspan="2" class="list-title">
-                    Waliofariki (DIED)
-                </td>
-                <td id="G24"></td>
-            </tr>
-            <tr>
-                <td>
-                    H24
-                </td>
-                <td colspan="2" class="list-title">
-                    Waliomaliza ufuatiliaji na kwenda CTC (EXIT)
-                </td>
-                <td id="H24"></td>
-            </tr>
-            <tr>
-                <td>
-                    I24
-                </td>
-                <td colspan="2" class="list-title">
-                    % ya mama waliomaliza ufuatiliaji [H24/D24 * 100%)
-                </td>
-                <td id="I24"></td>
-            </tr>
-        </tbody>
-    </table>
-    <br />
-    <table border="1" style="border-collapse: collapse;">
-        <thead>
-            <tr>
-                <th colspan="4">
-                    Tafuta jumla ya kundi (Watoto)
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    J24
-                </td>
-                <td colspan="2" class="list-title">
-                    Idadi ya watoto waliozaliwa na kina mama katika kundi la mwezi husika
-                </td>
-                <td id="J24"></td>
-            </tr>
-            <tr>
-                <td>
-                    K24
-                </td>
-                <td colspan="2" class="list-title">
-                    Watoto waliohama kliniki (TO)
-                </td>
-                <td id="K24"></td>
-            </tr>
-            <tr>
-                <td>
-                    L24
-                </td>
-                <td colspan="2" class="list-title">
-                    Jumla ya Kundi la watoto (J24-K24)
-                </td>
-                <td id="L24"></td>
-            </tr>
-            <th colspan="4">
-                Matokeo ya ufuatiliaji wa mtoto
-            </th>
-            <tr>
-                <td>
-                    M24
-                </td>
-                <td colspan="2" class="list-title">
-                    Watoto wasio na uambukizo, na wamemaliza ufuatiliaji
-                </td>
-                <td id="M24"></td>
-            </tr>
-            <tr>
-                <td>
-                    N24
-                </td>
-                <td colspan="2" class="list-title">
-                    Watoto wasio na uambukizo, lakini bado wananyonya
-                </td>
-                <td id="N24"></td>
-            </tr>
-            <tr>
-                <td>
-                    O24
-                </td>
-                <td colspan="2" class="list-title">
-                    Watoto wote wenye uambukizo wa VVU
-                </td>
-                <td id="O24"></td>
-            </tr>
-            <tr>
-                <td>
-                    P24
-                </td>
-                <td colspan="2" class="list-title">
-                    Waliofariki
-                </td>
-                <td id="P24"></td>
-            </tr>
-            <tr>
-                <td>
-                    Q24
-                </td>
-                <td colspan="2" class="list-title">
-                    Waliopotea
-                </td>
-                <td id="Q24"></td>
-            </tr>
-            <tr>
-                <td>
-                    R24
-                </td>
-                <td colspan="2" class="list-title">
-                    % ya watoto hai wasio na uambukizo wa VVU baada ya ufuatiliaji [(M24+N24)/ L24 * 100]%
-                </td>
-                <td id="R24"></td>
-            </tr>
-    </table>
+<div class="show-on-print">
+    <h1>TAARIFA YA KUNDI MIEZI 12</h1>
+    <h2>COHORT YA MAMA [MWEZI/MWAKA]: <span id="report_period"></span></h2>
+    <h2>KITUO: <span id="reporting_facility"></span></h2>
+</div>
+<table border="1" style="border-collapse: collapse;">
+    <thead>
+    <tr>
+        <th colspan="4">
+            Tafuta jumla ya kundi (MAMA)
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>
+            A24
+        </td>
+        <td colspan="2" class="list-title">
+            Idadi ya wajawazito a wanaonyonyeshawalioandikishwa katika kundi katika mwezi husika
+            (Month 0)
+        </td>
+        <td id="A24"></td>
+    </tr>
+    <tr>
+        <td>
+            B24
+        </td>
+        <td colspan="2" class="list-title">
+            Jumla waliohamia kliniki hi ya PMTCT (TI) tangu Month 0
+        </td>
+        <td id="B24"></td>
+    </tr>
+    <tr>
+        <td>
+            C24
+        </td>
+        <td colspan="2" class="list-title">
+            Jumla waliohama kutoka kliniki/kundi (TO+TP) tangu Month 0
+        </td>
+        <td id="C24"></td>
+    </tr>
+    <tr>
+        <td>
+            D24
+        </td>
+        <td colspan="2" class="list-title">
+            Jumla ya kundi= Net current cohort (A12+B12-C12)
+        </td>
+        <td id="D24"></td>
+    </tr>
+    <th colspan="4">
+        Matokeo ya ufuatiliaji wa mama
+    </th>
+    <tr>
+        <td>
+            E24
+        </td>
+        <td colspan="2" class="list-title">
+            Idadi ya kina mama wanaoendelea na huduma (CTN katika M24)
+        </td>
+        <td id="E24"></td>
+    </tr>
+    <tr>
+        <td>
+            F24
+        </td>
+        <td colspan="2" class="list-title">
+            Wateja waliopotea (LTF)
+        </td>
+        <td id="F24"></td>
+    </tr>
+    <tr>
+        <td>
+            G24
+        </td>
+        <td colspan="2" class="list-title">
+            Waliofariki (DIED)
+        </td>
+        <td id="G24"></td>
+    </tr>
+    <tr>
+        <td>
+            H24
+        </td>
+        <td colspan="2" class="list-title">
+            Waliomaliza ufuatiliaji na kwenda CTC (EXIT)
+        </td>
+        <td id="H24"></td>
+    </tr>
+    <tr>
+        <td>
+            I24
+        </td>
+        <td colspan="2" class="list-title">
+            % ya mama waliomaliza ufuatiliaji [H24/D24 * 100%)
+        </td>
+        <td id="I24"></td>
+    </tr>
+    </tbody>
+</table>
+<br/>
+<table border="1" style="border-collapse: collapse;">
+    <thead>
+    <tr>
+        <th colspan="4">
+            Tafuta jumla ya kundi (Watoto)
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>
+            J24
+        </td>
+        <td colspan="2" class="list-title">
+            Idadi ya watoto waliozaliwa na kina mama katika kundi la mwezi husika
+        </td>
+        <td id="J24"></td>
+    </tr>
+    <tr>
+        <td>
+            K24
+        </td>
+        <td colspan="2" class="list-title">
+            Watoto waliohama kliniki (TO)
+        </td>
+        <td id="K24"></td>
+    </tr>
+    <tr>
+        <td>
+            L24
+        </td>
+        <td colspan="2" class="list-title">
+            Jumla ya Kundi la watoto (J24-K24)
+        </td>
+        <td id="L24"></td>
+    </tr>
+    <th colspan="4">
+        Matokeo ya ufuatiliaji wa mtoto
+    </th>
+    <tr>
+        <td>
+            M24
+        </td>
+        <td colspan="2" class="list-title">
+            Watoto wasio na uambukizo, na wamemaliza ufuatiliaji
+        </td>
+        <td id="M24"></td>
+    </tr>
+    <tr>
+        <td>
+            N24
+        </td>
+        <td colspan="2" class="list-title">
+            Watoto wasio na uambukizo, lakini bado wananyonya
+        </td>
+        <td id="N24"></td>
+    </tr>
+    <tr>
+        <td>
+            O24
+        </td>
+        <td colspan="2" class="list-title">
+            Watoto wote wenye uambukizo wa VVU
+        </td>
+        <td id="O24"></td>
+    </tr>
+    <tr>
+        <td>
+            P24
+        </td>
+        <td colspan="2" class="list-title">
+            Waliofariki
+        </td>
+        <td id="P24"></td>
+    </tr>
+    <tr>
+        <td>
+            Q24
+        </td>
+        <td colspan="2" class="list-title">
+            Waliopotea
+        </td>
+        <td id="Q24"></td>
+    </tr>
+    <tr>
+        <td>
+            R24
+        </td>
+        <td colspan="2" class="list-title">
+            % ya watoto hai wasio na uambukizo wa VVU baada ya ufuatiliaji [(M24+N24)/ L24 * 100]%
+        </td>
+        <td id="R24"></td>
+    </tr>
+</table>
 </body>
 <script type="text/javascript">
     function onLoad() {
@@ -241,11 +275,15 @@
         const keys = Object.keys(data.nameValuePairs)
         keys.forEach(key => {
             const element = document.getElementById(key)
-            if(element !== null && element !== undefined){
+            if (element !== null && element !== undefined) {
                 document.getElementById(key).innerHTML = data.nameValuePairs[key]
             }
         })
+        document.getElementById("report_period").innerHTML = Android.getDataPeriod();
+        document.getElementById("reporting_facility").innerHTML = Android.getReportingFacility();
     }
+
+
 </script>
 
 </html>

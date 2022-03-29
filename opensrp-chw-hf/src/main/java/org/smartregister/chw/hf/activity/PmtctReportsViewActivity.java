@@ -45,23 +45,27 @@ import androidx.webkit.WebViewAssetLoader;
 import androidx.webkit.WebViewClientCompat;
 import timber.log.Timber;
 
+import static org.smartregister.util.Utils.getAllSharedPreferences;
+
 public class PmtctReportsViewActivity extends AppCompatActivity {
     private static final String ARG_REPORT_NAME = "ARG_REPORT_NAME";
     private static final String ARG_REPORT_TITLE = "ARG_REPORT_TITLE";
     private static final String ARG_REPORT_DATE = "ARG_REPORT_DATE";
     public static WebView printWebView;
+    private static Date reportDate;
+    private static String reportPeriod;
     protected CustomFontTextView toolBarTextView;
     protected AppBarLayout appBarLayout;
     PrintJob printJob;
     boolean printBtnPressed = false;
     String printJobName;
-    private static Date reportDate;
 
     public static void startMe(Activity activity, String reportName, int reportTitle, String reportDate) {
         Intent intent = new Intent(activity, PmtctReportsViewActivity.class);
         intent.putExtra(ARG_REPORT_NAME, reportName);
         intent.putExtra(ARG_REPORT_TITLE, reportTitle);
 
+        reportPeriod = reportDate;
         intent.putExtra(ARG_REPORT_DATE, reportDate.toString());
         activity.startActivity(intent);
     }
@@ -75,7 +79,7 @@ public class PmtctReportsViewActivity extends AppCompatActivity {
         try {
             reportDate = new SimpleDateFormat("MM-yyyy", Locale.getDefault()).parse(getIntent().getStringExtra(ARG_REPORT_DATE));
         } catch (ParseException e) {
-           Timber.e(e);
+            Timber.e(e);
         }
         setUpToolbar(reportTitle);
         loadReportView(reportName);
@@ -146,7 +150,7 @@ public class PmtctReportsViewActivity extends AppCompatActivity {
     private String computeThreeMonths(Date startDate) {
         Pmtct3MonthsReportObject pmtct3MonthsReportObject = new Pmtct3MonthsReportObject(startDate);
         try {
-            printJobName = "report_ya_miezi_mitatu-" + startDate.toString() + ".pdf";
+            printJobName = "report_ya_miezi_mitatu-" + reportPeriod + ".pdf";
             return pmtct3MonthsReportObject.getIndicatorDataAsGson(pmtct3MonthsReportObject.getIndicatorData());
         } catch (JSONException e) {
             Timber.e(e);
@@ -157,7 +161,7 @@ public class PmtctReportsViewActivity extends AppCompatActivity {
     private String computeTwelveMonths(Date startDate) {
         Pmtct12MonthsReportObject pmtct12MonthsReportObject = new Pmtct12MonthsReportObject(startDate);
         try {
-            printJobName = "report_ya_miezi_kumi_na_mbili-" + startDate.toString() + ".pdf";
+            printJobName = "report_ya_miezi_kumi_na_mbili-" + reportPeriod + ".pdf";
             return pmtct12MonthsReportObject.getIndicatorDataAsGson(pmtct12MonthsReportObject.getIndicatorData());
         } catch (JSONException e) {
             Timber.e(e);
@@ -168,7 +172,7 @@ public class PmtctReportsViewActivity extends AppCompatActivity {
     private String computeTwentyFourMonths(Date startDate) {
         Pmtct24MonthsReportObject pmtct24MonthsReportObject = new Pmtct24MonthsReportObject(startDate);
         try {
-            printJobName = "report_ya_miaka_miwili-" + startDate.toString() + ".pdf";
+            printJobName = "report_ya_miaka_miwili-" + reportPeriod + ".pdf";
             return pmtct24MonthsReportObject.getIndicatorDataAsGson(pmtct24MonthsReportObject.getIndicatorData());
         } catch (JSONException e) {
             Timber.e(e);
@@ -179,8 +183,7 @@ public class PmtctReportsViewActivity extends AppCompatActivity {
     private String computeEIDMonthly(Date startDate) {
         PmtctEIDMonthlyReportObject pmtctEIDMonthlyReportObject = new PmtctEIDMonthlyReportObject(startDate);
         try {
-            printJobName = "report_ya_mwezi-" + startDate.toString() + ".pdf";
-            Toast.makeText(this, "Generating report for " + startDate, Toast.LENGTH_SHORT).show();
+            printJobName = "report_ya_mwezi-" + reportPeriod + ".pdf";
             return pmtctEIDMonthlyReportObject.getIndicatorDataAsGson(pmtctEIDMonthlyReportObject.getIndicatorData());
         } catch (JSONException e) {
             Timber.e(e);
@@ -235,7 +238,7 @@ public class PmtctReportsViewActivity extends AppCompatActivity {
         @Override
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
-            printWebView = view;
+            PmtctReportsViewActivity.printWebView = view;
         }
     }
 
@@ -260,6 +263,16 @@ public class PmtctReportsViewActivity extends AppCompatActivity {
                 default:
                     return "";
             }
+        }
+
+        @JavascriptInterface
+        public String getDataPeriod() {
+            return reportPeriod;
+        }
+
+        @JavascriptInterface
+        public String getReportingFacility() {
+            return getAllSharedPreferences().fetchCurrentLocality();
         }
     }
 }

@@ -7,6 +7,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Taarifa ya miezi 12</title>
     <style>
+        .show-on-print {
+            display: none;
+        }
+
+        body,
+        h1,
+        h2,
+        td,
+        th {
+            font-family: 'Times New Roman', serif;
+        }
+
+        h1,
+        h2 {
+            font-size: .8rem;
+            text-align: center;
+            font-weight: 200;
+        }
+
         table {
             background-color: #fff;
             box-shadow: 3px 1px 0px #f6f6f6;
@@ -23,12 +42,13 @@
         td {
             text-align: initial;
             width: 50px;
-            font-size: .71rem;
+            font-size: .8rem;
         }
 
         .list-title {
             text-align: initial !important;
             padding: 10px;
+            font-size: .8rem;
         }
 
         tbody tr>td:nth-child(1) {
@@ -39,214 +59,233 @@
         td:nth-child(3) {
             text-align: center;
         }
+
+        @media print {
+            .show-on-print {
+                display: block !important;
+            }
+        }
+
+
     </style>
 </head>
 
 <body onload="onLoad()">
-    <table border="1" style="border-collapse: collapse;">
-        <thead>
-            <tr>
-                <th colspan="4">
-                    Tafuta jumla ya kundi (MAMA)
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    A12
-                </td>
-                <td colspan="2" class="list-title">
-                    Idadi ya wajawazito na wanaonyonyesha walioandikishwa katika kundi katika mwezi husika (Month 0)
-                </td>
-                <td id="A12"></td>
-            </tr>
-            <tr>
-                <td>
-                    B12
-                </td>
-                <td colspan="2" class="list-title">
-                    Jumla waliohamia kliniki hi ya PMTCT (TI) tangu Month 0
-                </td>
-                <td id="B12"></td>
-            </tr>
-            <tr>
-                <td>
-                    C12
-                </td>
-                <td colspan="2" class="list-title">
-                    Jumla waliohama kutoka kliniki/kundi (TO+TP) tangu Month 0
-                </td>
-                <td id="C12"></td>
-            </tr>
-            <tr>
-                <td>
-                    D12
-                </td>
-                <td colspan="2" class="list-title">
-                    D12 Jumla ya kundi= Net current cohort (A12+B12-C12)
-                </td>
-                <td id="D12"></td>
-            </tr>
-            <th colspan="4">
-                Matokeo ya ufuatiliaji wa mama
-            </th>
-            <tr>
-                <td>
-                    E12
-                </td>
-                <td colspan="2" class="list-title">
-                    Idadi ya kina mama wanaoendelea na huduma (CTN katika M10 au M11 au M12)
-                </td>
-                <td id="E12"></td>
-            </tr>
-            <tr>
-                <td>
-                    F12
-                </td>
-                <td colspan="2" class="list-title">
-                    Idadi ya kina mama waliopima kiwango cha W katika darnu ndani ya miezi 6 ya mwisho katika ufuatiiaji
-                    wa miezi 12
-                </td>
-                <td id="F12"></td>
-            </tr>
-            <tr>
-                <td>
-                    G12
-                </td>
-                <td colspan="2" class="list-title">
-                    Kina mama wallo na kiwango cha VU katika damu chini ya nakala 50/ul miezi 6 ya mwisho katika
-                    ufuatiiaji wa miezi 12
-                </td>
-                <td id="G12"></td>
-            </tr>
-            <tr>
-                <td>
-                    H12
-                </td>
-                <td colspan="2" class="list-title">
-                    Wateja waliopotea (LTF)
-                </td>
-                <td id="H12"></td>
-            </tr>
-            <tr>
-                <td>
-                    I12
-                </td>
-                <td colspan="2" class="list-title">
-                    Waliofariki (DIED)
-                </td>
-                <td id="I12"></td>
-            </tr>
-            <tr>
-                <td>
-                    J12
-                </td>
-                <td colspan="2" class="list-title">
-                    Waliomaliza ufuatiliaji na kwonda CTC (EXIT)
-                </td>
-                <td id="J12"></td>
-            </tr>
-            <tr>
-                <td>
-                    K12
-                </td>
-                <td colspan="2" class="list-title">
-                    % walio hal na wanatimia huduma za PMTCT [E12/(D12-J12) * 100]%
-                </td>
-                <td id="K12"></td>
-            </tr>
-        </tbody>
-    </table>
-    <br />
-    <table border="1" style="border-collapse: collapse;">
-        <thead>
-            <tr>
-                <th colspan="4">
-                    Tafuta jumla ya kundi (Watoto)
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    L12
-                </td>
-                <td colspan="2" class="list-title">
-                    Idadi ya watoto waliozaliwa na kina mama katika kundi la mwezi husika
-                </td>
-                <td id="L12"></td>
-            </tr>
-            <th colspan="4">
-                Matokeo ya ufuatiliaji wa mtoto
-            </th>
-            <tr>
-                <td>
-                    M12
-                </td>
-                <td colspan="2" class="list-title">
-                    Idadi ya watoto waliopotea
-                </td>
-                <td id="M12"></td>
-            </tr>
-            <tr>
-                <td>
-                    N12
-                </td>
-                <td colspan="2" class="list-title">
-                    Idadi ya watoto waliofariki
-                </td>
-                <td id="N12"></td>
-            </tr>
-            <tr>
-                <td>
-                    O12
-                </td>
-                <td colspan="2" class="list-title">
-                    Idadi ya watoto walioanza kinga ya ARV (Prophylaxis)
-                </td>
-                <td id="O12"></td>
-            </tr>
-            <tr>
-                <td>
-                    P12
-                </td>
-                <td colspan="2" class="list-title">
-                    Idadi ya watoto walionzishiwa tibakinga ya Cotrimoxazole ndani ya umri wa miezi 2
-                </td>
-                <td id="P12"></td>
-            </tr>
-            <tr>
-                <td>
-                    Q12a
-                </td>
-                <td colspan="2" class="list-title">
-                    Idadi watoto waliopata kipimo cha kwanza cha VVUndani ya umri wa miezi 2
-                </td>
-                <td id="Q12a"></td>
-            </tr>
-            <tr>
-                <td>
-                    Q12b
-                </td>
-                <td colspan="2" class="list-title">
-                    Walio gundulika na maambukizo ya VVUndani ya umri wa miezi 2
-                </td>
-                <td id="Q12b"></td>
-            </tr>
-    </table>
+<div class="show-on-print">
+    <h1>TAARIFA YA KUNDI MIEZI 12</h1>
+    <h2>COHORT YA MAMA [MWEZI/MWAKA]: <span id="report_period"></span></h2>
+    <h2>KITUO: <span id="reporting_facility"></span></h2>
+</div>
+<table border="1" style="border-collapse: collapse;">
+    <thead>
+    <tr>
+        <th colspan="4">
+            Tafuta jumla ya kundi (MAMA)
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>
+            A12
+        </td>
+        <td colspan="2" class="list-title">
+            Idadi ya wajawazito na wanaonyonyesha walioandikishwa katika kundi katika mwezi husika
+            (Month 0)
+        </td>
+        <td id="A12"></td>
+    </tr>
+    <tr>
+        <td>
+            B12
+        </td>
+        <td colspan="2" class="list-title">
+            Jumla waliohamia kliniki hi ya PMTCT (TI) tangu Month 0
+        </td>
+        <td id="B12"></td>
+    </tr>
+    <tr>
+        <td>
+            C12
+        </td>
+        <td colspan="2" class="list-title">
+            Jumla waliohama kutoka kliniki/kundi (TO+TP) tangu Month 0
+        </td>
+        <td id="C12"></td>
+    </tr>
+    <tr>
+        <td>
+            D12
+        </td>
+        <td colspan="2" class="list-title">
+            D12 Jumla ya kundi= Net current cohort (A12+B12-C12)
+        </td>
+        <td id="D12"></td>
+    </tr>
+    <th colspan="4">
+        Matokeo ya ufuatiliaji wa mama
+    </th>
+    <tr>
+        <td>
+            E12
+        </td>
+        <td colspan="2" class="list-title">
+            Idadi ya kina mama wanaoendelea na huduma (CTN katika M10 au M11 au M12)
+        </td>
+        <td id="E12"></td>
+    </tr>
+    <tr>
+        <td>
+            F12
+        </td>
+        <td colspan="2" class="list-title">
+            Idadi ya kina mama waliopima kiwango cha W katika darnu ndani ya miezi 6 ya mwisho
+            katika ufuatiiaji
+            wa miezi 12
+        </td>
+        <td id="F12"></td>
+    </tr>
+    <tr>
+        <td>
+            G12
+        </td>
+        <td colspan="2" class="list-title">
+            Kina mama wallo na kiwango cha VU katika damu chini ya nakala 50/ul miezi 6 ya mwisho
+            katika
+            ufuatiiaji wa miezi 12
+        </td>
+        <td id="G12"></td>
+    </tr>
+    <tr>
+        <td>
+            H12
+        </td>
+        <td colspan="2" class="list-title">
+            Wateja waliopotea (LTF)
+        </td>
+        <td id="H12"></td>
+    </tr>
+    <tr>
+        <td>
+            I12
+        </td>
+        <td colspan="2" class="list-title">
+            Waliofariki (DIED)
+        </td>
+        <td id="I12"></td>
+    </tr>
+    <tr>
+        <td>
+            J12
+        </td>
+        <td colspan="2" class="list-title">
+            Waliomaliza ufuatiliaji na kwonda CTC (EXIT)
+        </td>
+        <td id="J12"></td>
+    </tr>
+    <tr>
+        <td>
+            K12
+        </td>
+        <td colspan="2" class="list-title">
+            % walio hal na wanatimia huduma za PMTCT [E12/(D12-J12) * 100]%
+        </td>
+        <td id="K12"></td>
+    </tr>
+    </tbody>
+</table>
+<br/>
+<table border="1" style="border-collapse: collapse;">
+    <thead>
+    <tr>
+        <th colspan="4">
+            Tafuta jumla ya kundi (Watoto)
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>
+            L12
+        </td>
+        <td colspan="2" class="list-title">
+            Idadi ya watoto waliozaliwa na kina mama katika kundi la mwezi husika
+        </td>
+        <td id="L12"></td>
+    </tr>
+    <th colspan="4">
+        Matokeo ya ufuatiliaji wa mtoto
+    </th>
+    <tr>
+        <td>
+            M12
+        </td>
+        <td colspan="2" class="list-title">
+            Idadi ya watoto waliopotea
+        </td>
+        <td id="M12"></td>
+    </tr>
+    <tr>
+        <td>
+            N12
+        </td>
+        <td colspan="2" class="list-title">
+            Idadi ya watoto waliofariki
+        </td>
+        <td id="N12"></td>
+    </tr>
+    <tr>
+        <td>
+            O12
+        </td>
+        <td colspan="2" class="list-title">
+            Idadi ya watoto walioanza kinga ya ARV (Prophylaxis)
+        </td>
+        <td id="O12"></td>
+    </tr>
+    <tr>
+        <td>
+            P12
+        </td>
+        <td colspan="2" class="list-title">
+            Idadi ya watoto walionzishiwa tibakinga ya Cotrimoxazole ndani ya umri wa miezi 2
+        </td>
+        <td id="P12"></td>
+    </tr>
+    <tr>
+        <td>
+            Q12a
+        </td>
+        <td colspan="2" class="list-title">
+            Idadi watoto waliopata kipimo cha kwanza cha VVUndani ya umri wa miezi 2
+        </td>
+        <td id="Q12a"></td>
+    </tr>
+    <tr>
+        <td>
+            Q12b
+        </td>
+        <td colspan="2" class="list-title">
+            Walio gundulika na maambukizo ya VVUndani ya umri wa miezi 2
+        </td>
+        <td id="Q12b"></td>
+    </tr>
+</table>
 </body>
 <script type="text/javascript">
     function onLoad() {
         const data = JSON.parse(Android.getData("twelve_months"));
         const keys = Object.keys(data.nameValuePairs)
         keys.forEach(key => {
-            const element = document.getElementById(key)
-            if(element !== null && element !== undefined){
-                document.getElementById(key).innerHTML = data.nameValuePairs[key]
-            }
+            document.getElementById(key).innerHTML = data.nameValuePairs[key]
         })
+
+        document.getElementById("report_period").innerHTML = Android.getDataPeriod();
+        document.getElementById("reporting_facility").innerHTML = Android.getReportingFacility();
+
     }
+
+
 </script>
 
 </html>
