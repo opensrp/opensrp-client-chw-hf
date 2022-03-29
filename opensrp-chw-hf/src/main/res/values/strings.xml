@@ -178,5 +178,6 @@
     <string name="antibody_test_sample_collection">Antibody Test Sample Collection</string>
     <string name="hiv_test_results_title">HIV Test Results</string>
     <string name="print_report">Print</string>
+    <string name="pnc_reports">PNC Reports</string>
 
 </resources>

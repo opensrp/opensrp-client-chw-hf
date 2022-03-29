@@ -23,6 +23,7 @@ public class ReportsActivity extends SecuredActivity implements View.OnClickList
     protected AppBarLayout appBarLayout;
     protected ConstraintLayout pmtctReportsLayout;
     protected ConstraintLayout ancReportsLayout;
+    protected ConstraintLayout pncReportsLayout;
 
     @Override
     protected void onCreation() {
@@ -35,9 +36,11 @@ public class ReportsActivity extends SecuredActivity implements View.OnClickList
     public void setUpViews() {
         pmtctReportsLayout = findViewById(R.id.pmtct_reports);
         ancReportsLayout = findViewById(R.id.anc_reports);
+        pncReportsLayout = findViewById(R.id.pnc_reports);
 
         pmtctReportsLayout.setOnClickListener(this);
         ancReportsLayout.setOnClickListener(this);
+        pncReportsLayout.setOnClickListener(this);
     }
 
     public void setUpToolbar() {
@@ -78,6 +81,8 @@ public class ReportsActivity extends SecuredActivity implements View.OnClickList
             startActivity(new Intent(this, AncReportsActivity.class));
         } else if (id == R.id.pmtct_reports) {
             startActivity(new Intent(this, PmtctReportsActivity.class));
+        }else if (id == R.id.pnc_reports) {
+            startActivity(new Intent(this, PncReportsActivity.class));
         }
     }
 }
