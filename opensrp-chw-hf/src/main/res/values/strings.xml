@@ -177,5 +177,6 @@
     <string name="hiv_results_title">HIV Results</string>
     <string name="antibody_test_sample_collection">Antibody Test Sample Collection</string>
     <string name="hiv_test_results_title">HIV Test Results</string>
+    <string name="print_report">Print</string>
 
 </resources>
