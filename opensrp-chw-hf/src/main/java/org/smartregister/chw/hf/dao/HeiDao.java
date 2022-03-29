@@ -88,10 +88,11 @@ public class HeiDao extends AbstractDao {
 
         int weeks = getElapsedTimeInWeeks(simpleDateFormat.format(dob));
         int months = getElapsedTimeInMonths(simpleDateFormat.format(dob));
-
-        if (months >= 9 && getNextHivTestAge(baseEntityID).equals(Constants.HeiHIVTestAtAge.AT_9_MONTHS) && sampleIdRes != null && sampleIdRes.size() > 0 && sampleIdRes.get(0) != null) {
+        String nextTestAge = getNextHivTestAge(baseEntityID);
+        String latestTestAge = getLatestTestAtAge(baseEntityID);
+        if (months >= 9 && (!nextTestAge.equals(latestTestAge))) {
             return true;
-        } else if (weeks >= 6 && getNextHivTestAge(baseEntityID).equals(Constants.HeiHIVTestAtAge.AT_6_WEEKS) && sampleIdRes != null && sampleIdRes.size() > 0 && sampleIdRes.get(0) != null) {
+        } else if (weeks >= 6 && (!nextTestAge.equals(latestTestAge))) {
             return true;
         } else
             return riskCategoryRes.get(0).equals("high") && getNextHivTestAge(baseEntityID).equals(Constants.HeiHIVTestAtAge.AT_BIRTH) && (sampleIdRes == null || sampleIdRes.size() == 0 || sampleIdRes.get(0) == null);
