@@ -83,19 +83,20 @@
         "key": "stage_1_symptoms",
         "type": "check_box",
         "label": "Chagua dalili zinazoendana na Mteja",
+        "combine_checkbox_option_values": "true",
         "openmrs_entity_id": "stage_1_symptoms",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "options": [
           {
             "key": "chk_asymptomatic",
-            "text": "Hankksadksjdkadjkssddkkas",
+            "text": "Asymptomatic",
             "openmrs_entity_id": "chk_asymptomatic",
             "openmrs_entity": "concept"
           },
           {
             "key": "chk_pgl",
-            "text": "ksdksadsak",
+            "text": "Persistent generalized lymphadenopathy (PGL) Unexplained, asymptomatic hepatosplenomegaly",
             "openmrs_entity_id": "chk_pgl",
             "openmrs_entity": "concept"
           }
@@ -115,6 +116,7 @@
         "key": "stage_2_symptoms",
         "type": "check_box",
         "label": "Tafadhari chagua dalili zinaendana na Mteja",
+        "combine_checkbox_option_values": "true",
         "openmrs_entity_id": "stage_2_symptoms",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -201,6 +203,7 @@
         "key": "stage_3_symptoms",
         "type": "check_box",
         "label": "Chagua dalili zinazoendana na Mteja",
+        "combine_checkbox_option_values": "true",
         "openmrs_entity_id": "stage_3_symptoms",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -281,6 +284,7 @@
         "key": "stage_4_symptoms",
         "type": "check_box",
         "label": "Tafadhari chagua dalili zinazoendana na Mteja",
+        "combine_checkbox_option_values": "true",
         "openmrs_entity_id": "stage_4_symptoms",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",

@@ -55,6 +55,7 @@
         "key": "examination_findings",
         "type": "check_box",
         "label": "Examination Findings on current visit",
+        "combine_checkbox_option_values": "true",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "examination_findings",
         "openmrs_entity_parent": "",

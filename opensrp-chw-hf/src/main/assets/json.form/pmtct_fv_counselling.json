@@ -84,6 +84,7 @@
         "key": "counselling_topics_provided",
         "type": "check_box",
         "label": "Please select the topics that the client has been counselled on",
+        "combine_checkbox_option_values": "true",
         "openmrs_entity_id": "counselling_topics_provided",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
