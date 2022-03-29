@@ -301,7 +301,7 @@
       {
         "key": "prompt_for_high_risk_results",
         "type": "toaster_notes",
-        "text": "Conduct birth HIV testing, provide triple ARV prophylaxis for 6-weeks followed by monoprophylaxis for the next 6-weeks, care and monitor the newborn as per guidelines until the end of exposure.",
+        "text": "Mfanyie Mtoto kipimo cha VVU mara baada ya kuzaliwa. Mpe mtoto ARV prophylaxis kwa wiki 6, ikifuatiwa na monoprophylaxis kwa kipindi cha wiki 6 nyingine, endelea kumfuatilia mtoto kulinganga na mwongozo wa Wizara ya Afya.",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -1149,7 +1149,7 @@
           {
             "key": "prompt_for_bcg_vacc_not_provided",
             "type": "toaster_notes",
-            "text": "Provide BCG vaccination to the infant at the first Postnatal care visit or as soon as the BCG vaccine will be available. BCG should not be provided beyond 12-months of infant age",
+            "text": "Mpatie Mtoto chanjo ya BCG wakati wa udhulio la kwanza la PNC, au mara tuu chanjo ya BCG ikiwepo. BCG haiwezi kutolewa kwa Mtoto ambaye amezidi miezi 12",
             "openmrs_entity_id": "",
             "openmrs_entity": "",
             "openmrs_entity_parent": "",
@@ -1192,7 +1192,7 @@
           {
             "key": "prompt_for_opv0_vacc_not_provided",
             "type": "toaster_notes",
-            "text": "Missed opportunity for OPV-0, provide OPV-1 at first postnatal care visit",
+            "text": "Mtoto amepoteza nafasi ya kupata OPV-0, Mpatie OPV-1 katika udhulio la kwanza la PNC",
             "openmrs_entity_id": "",
             "openmrs_entity": "",
             "openmrs_entity_parent": "",
@@ -1499,7 +1499,7 @@
           {
             "key": "prompt_for_bcg_vacc_not_provided",
             "type": "toaster_notes",
-            "text": "Provide BCG vaccination to the infant at the first Postnatal care visit or as soon as the BCG vaccine will be available. BCG should not be provided beyond 12-months of infant age",
+            "text": "Mpatie Mtoto chanjo ya BCG wakati wa udhulio la kwanza la PNC, au mara tuu chanjo ya BCG ikiwepo. BCG haiwezi kutolewa kwa Mtoto ambaye amezidi miezi 12",
             "openmrs_entity_id": "",
             "openmrs_entity": "",
             "openmrs_entity_parent": "",
@@ -1542,7 +1542,7 @@
           {
             "key": "prompt_for_opv0_vacc_not_provided",
             "type": "toaster_notes",
-            "text": "Missed opportunity for OPV-0, provide OPV-1 at first postnatal care visit",
+            "text": "Mtoto amepoteza nafasi ya kupata OPV-0, Mpatie OPV-1 katika udhulio la kwanza la PNC",
             "openmrs_entity_id": "",
             "openmrs_entity": "",
             "openmrs_entity_parent": "",
