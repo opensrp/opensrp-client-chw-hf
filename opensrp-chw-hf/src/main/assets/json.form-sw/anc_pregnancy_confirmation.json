@@ -483,8 +483,8 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "",
         "type": "toaster_notes",
-        "text": "The client is not pregnant. \nPlease refer the client to Family Plannning Services",
-        "toaster_info_text": "The client is not pregnant. Please refer the client to Family Planning Services",
+        "text": "Mteja sio mjamzito. \nTafadhali muunganishe kwenye huduma za Uzazi wa Mpango",
+        "toaster_info_text": "Mteja sio mjamzito. Tafadhali muunganishe kwenye huduma za Uzazi wa Mpango",
         "toaster_type": "info",
         "relevance": {
           "rules-engine": {
