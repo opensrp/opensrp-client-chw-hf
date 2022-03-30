@@ -48,7 +48,7 @@
     "encounter_location": ""
   },
   "step1": {
-    "title": "HIV Test Results",
+    "title": "Majibu ya kipimo cha VVU",
     "fields": [
       {
         "key": "hiv_test_result",
@@ -83,7 +83,7 @@
       {
         "key": "prompt_for_hiv_test_results",
         "type": "toaster_notes",
-        "text": "The Child is HIV-infected, refer to HIV Care and Treatment services",
+        "text": "Mtoto ana maambukizi ya VVU, Mpe rufaa aende kwenye Kliniki ya tiba na matunzo",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",

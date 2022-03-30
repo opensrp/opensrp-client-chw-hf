@@ -84,6 +84,7 @@
         "key": "tb_symptoms_screening",
         "type": "check_box",
         "label": "Tafadhari chagua kama Mteja ana dalili zifuatazo za Kifua Kikuu?",
+        "combine_checkbox_option_values": "true",
         "openmrs_entity_id": "tb_symptoms_screening",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",

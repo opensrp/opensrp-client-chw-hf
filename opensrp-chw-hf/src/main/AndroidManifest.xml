@@ -14,6 +14,12 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:theme, android:icon">
         <activity
+            android:name=".activity.PncReportsActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.PncReportsViewActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
             android:name=".activity.AncReportsViewActivity"
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
@@ -324,9 +330,11 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
     </application>
+
     <uses-feature android:name="android.hardware.camera" />
 
     <uses-feature android:name="android.hardware.camera.autofocus" />
+
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />

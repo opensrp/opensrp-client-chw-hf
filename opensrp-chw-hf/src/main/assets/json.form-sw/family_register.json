@@ -442,6 +442,7 @@
         "openmrs_entity_id": "id_avail",
         "type": "check_box",
         "label": "Je una kitambulisho kimojawapo kati ya hivi?",
+        "combine_checkbox_option_values": "true",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "exclusive": [
@@ -772,6 +773,7 @@
         "openmrs_entity_id": "type_of_disability",
         "type": "check_box",
         "label": "Aina ya Ulemavu",
+        "combine_checkbox_option_values": "true",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [
@@ -914,6 +916,7 @@
         "openmrs_entity_id": "Community_Leader",
         "type": "check_box",
         "label": "Je ana uongozi wowote katika Jamii?",
+        "combine_checkbox_option_values": "true",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "exclusive": [

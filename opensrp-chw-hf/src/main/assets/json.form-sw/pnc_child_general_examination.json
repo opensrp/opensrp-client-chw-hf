@@ -48,7 +48,7 @@
     "encounter_location": ""
   },
   "step1": {
-    "title": "Child's General Examination",
+    "title": "Uchunguzi wa Afya ya Mtoto",
     "fields": [
       {
         "key": "child_activeness",
@@ -79,7 +79,7 @@
       {
         "key": "prompt_for_child_activeness",
         "type": "toaster_notes",
-        "text": "Certify if it is an early neonatal death",
+        "text": "Thibitisha ikiwa ni kifo cha mapema cha Mtoto mchanga",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -166,7 +166,7 @@
       {
         "key": "notify_client_has_high_temperature",
         "type": "toaster_notes",
-        "text": "The child has a possible bacterial infection, provide antibiotics and antipyretics according to guidelines, provide umbilical care and other essential neonatal care services",
+        "text": "Mtoto huyu anauwezekano wa kuwa na maambukizi ya Bakteria. Mpatie mtoto huyu antibiotics and antipyretics kulingana na Mwongozo wa Wizara ya Afya",
         "openmrs_entity_id": "notify_client_has_fever",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -181,7 +181,7 @@
       {
         "key": "notify_client_has_low_temperature",
         "type": "toaster_notes",
-        "text": "Provide warmth to the child and other essential newborn care services as per guidelines",
+        "text": "Mpatie mtoto joto kwa mtoto na huduma zingine muhimu za utunzaji wa watoto wachanga kulingana na mwongozo wa Wizara ya Afya",
         "openmrs_entity_id": "notify_client_has_hypothermia",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -212,7 +212,7 @@
       {
         "key": "prompt_for_large_head_circumference",
         "type": "toaster_notes",
-        "text": "Assess features of hydrocephalus and refer for neurosurgical intervention",
+        "text": "Tathmini vipengele vya hydrocephalus na mpatie rufaa kwa ajili ya uwezekano wa  wa upasuaji wa neva",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -227,7 +227,7 @@
       {
         "key": "prompt_for_small_head_circumference",
         "type": "toaster_notes",
-        "text": "Check for signs of Down's Syndrome or other neurological malformations leading to microcephaly, refer for advanced management",
+        "text": "Angalia dalili za Down's Syndrome au kasoro zingine za neva zinazopelekea kwenye Microcephaly. Mpatie rufaa mtoto matibabu ya hali ya juu",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -293,6 +293,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "umbilical_cord",
         "type": "check_box",
+        "combine_checkbox_option_values": "true",
         "label": "Tathimini ya Kitovu",
         "exclusive": [
           "chk_no_abnormalities"
@@ -349,7 +350,7 @@
       {
         "key": "prompt_for_umbilical_cord_smelling_bad",
         "type": "toaster_notes",
-        "text": "Manage the umbilical cord sepsis using strong antibiotics, care the cord using the recommended antiseptics, assess if the child has jaundice and manage according to standard guidelines",
+        "text": "Dhibiti hali ya Sepsis ya kitovu kwa kutumia Antibiotics yenye nguvu, tunza Kitovu kwa kutumia dawa zinazopendekezwa, tathmini ikiwa mtoto ana homa ya manjano na udhibiti kulingana na mwongozo wa Wizara ya Afya",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -369,7 +370,7 @@
       {
         "key": "prompt_for_umbilical_cord_infection",
         "type": "toaster_notes",
-        "text": "Manage the umbilical cord sepsis using strong antibiotics, care the cord using the recommended antiseptics, assess if the child has jaundice and manage according to standard guidelines",
+        "text": "Dhibiti Sepsis ya kitovu kwa kutumia Antibiotics yenye nguvu, tunza Kitovu cha mtoto kwa kutumia dawa zinazopendekezwa, tathmini ikiwa mtoto ana homa ya manjano na udhibiti hali hii  kulingana mwongozo",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -389,7 +390,7 @@
       {
         "key": "prompt_for_umbilical_cord_abnormality",
         "type": "toaster_notes",
-        "text": "Manage the observed abnormality according to standard guidelines",
+        "text": "Dhibiti hali isiyo ya kawaida inayozingatiwa kulingana na mwongozo wa Wizara ya Afya",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",

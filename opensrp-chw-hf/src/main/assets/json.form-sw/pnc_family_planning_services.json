@@ -1,8 +1,7 @@
 {
   "count": "1",
-  "encounter_type": "PNC Immunization",
+  "encounter_type": "PNC Family Planning Services",
   "entity_id": "",
-  "global": {},
   "metadata": {
     "start": {
       "openmrs_entity_parent": "",
@@ -48,19 +47,19 @@
     "encounter_location": ""
   },
   "step1": {
-    "title": "Chanjo",
+    "title": "Huduma za Uzazi wa Mpango",
     "fields": [
       {
-        "key": "tetanus_vaccination",
+        "key": "education_counselling_given",
         "type": "native_radio",
-        "label": "Je chanjo ya Diphtheria/ Tetanus imetolewa?",
+        "label": "Je, Mteja alipewa Elimu/Ushauri?",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "tetanus_vaccination",
+        "openmrs_entity_id": "education_counselling_given",
         "openmrs_entity_parent": "",
         "options": [
           {
             "key": "yes",
-            "text": "Ndiyo",
+            "text": "Ndio",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
@@ -74,26 +73,19 @@
         "v_required": {
           "value": "true",
           "err": "Tafadhari jibu swali hili"
-        },
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "pnc_immunization_relevance.yml"
-            }
-          }
         }
       },
       {
-        "key": "hepatitis_b_vaccination",
+        "key": "iec_given",
         "type": "native_radio",
-        "label": "Je Mteja huyu amechanjwa Hepatitis B?",
+        "label": "Were IEC materials given?",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "hepatitis_b_vaccination",
+        "openmrs_entity_id": "iec_given",
         "openmrs_entity_parent": "",
         "options": [
           {
             "key": "yes",
-            "text": "Ndiyo",
+            "text": "Ndio",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
@@ -107,13 +99,74 @@
         "v_required": {
           "value": "true",
           "err": "Tafadhari jibu swali hili"
-        },
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "pnc_immunization_relevance.yml"
-            }
+        }
+      },
+      {
+        "key": "method_provided",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "method_provided",
+        "type": "native_radio",
+        "label": "Njia za Uzazi wa Mpango uliyotolewa",
+        "options": [
+          {
+            "key": "chk_condom",
+            "text": "Kondomu",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_condom"
+          },
+          {
+            "key": "chk_pills",
+            "text": "Vidonge",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_pills"
+          },
+          {
+            "key": "chk_injections",
+            "text": "Sindano",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_injections"
+          },
+          {
+            "key": "chk_jadelle",
+            "text": "Jadelle",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_jadelle"
+          },
+          {
+            "key": "chk_implants",
+            "text": "Vipandikizi",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_implants"
+          },
+          {
+            "key": "chk_iucd",
+            "text": "IUCD",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_iucd"
+          },
+          {
+            "key": "chk_tubal_ligation",
+            "text": "Bilateral Tubal Ligation",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_tubal_ligation"
+          },
+          {
+            "key": "chk_referred_fp_services",
+            "text": "Amepewa Rufaa ya huduma nyingine za Uzazi wa Mpango",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_referred_fp_services"
+          },
+          {
+            "key": "chk_none",
+            "text": "Hakuna",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_none"
           }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhari jibu swali hili"
         }
       }
     ]

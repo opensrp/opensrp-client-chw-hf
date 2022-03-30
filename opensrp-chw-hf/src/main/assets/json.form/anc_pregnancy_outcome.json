@@ -838,6 +838,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "baby_behavior",
             "type": "check_box",
+            "combine_checkbox_option_values": "true",
             "label": "Continue monitoring of baby after drying to oversee actions/baby's behavior",
             "options": [
               {
@@ -883,7 +884,7 @@
             "hint": "Surname",
             "edit_type": "name",
             "v_regex": {
-              "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-]*",
+              "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
               "err": "Please enter a valid name"
             },
             "v_required": {
@@ -927,7 +928,7 @@
               "err": "Please enter the first name"
             },
             "v_regex": {
-              "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-]*",
+              "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
               "err": "Please enter a valid name"
             }
           },
@@ -940,7 +941,7 @@
             "hint": "Middle name",
             "edit_type": "name",
             "v_regex": {
-              "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-]*",
+              "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
               "err": "Please enter a valid name"
             },
             "v_required": {
@@ -1029,6 +1030,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "type_of_disability",
             "type": "check_box",
+            "combine_checkbox_option_values": "true",
             "label": "Type of disability",
             "label_text_style": "normal",
             "text_color": "#C0C0C0",
@@ -1233,7 +1235,7 @@
             "hint": "Surname",
             "edit_type": "name",
             "v_regex": {
-              "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-]*",
+              "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
               "err": "Please enter a valid name"
             },
             "v_required": {
@@ -1277,7 +1279,7 @@
               "err": "Please enter the first name"
             },
             "v_regex": {
-              "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-]*",
+              "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
               "err": "Please enter a valid name"
             }
           },
@@ -1290,7 +1292,7 @@
             "hint": "Middle name",
             "edit_type": "name",
             "v_regex": {
-              "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-]*",
+              "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
               "err": "Please enter a valid name"
             },
             "v_required": {
@@ -1380,6 +1382,7 @@
             "openmrs_entity_id": "type_of_disability",
             "type": "check_box",
             "label": "Type of disability",
+            "combine_checkbox_option_values": "true",
             "label_text_style": "normal",
             "text_color": "#C0C0C0",
             "options": [

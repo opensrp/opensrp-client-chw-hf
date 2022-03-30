@@ -1368,6 +1368,14 @@
           }
         },
         {
+          "column_name": "medical_surgical_history",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "medical_surgical_history"
+          }
+        },
+        {
           "column_name": "partner_base_entity_id",
           "type": "Event",
           "json_mapping": {
@@ -1573,6 +1581,136 @@
           "json_mapping": {
             "field": "obs.fieldCode",
             "concept": "anc_visit_date"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ec_anc_followup",
+      "columns": [
+        {
+          "column_name": "entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "formSubmissionId"
+          }
+        },
+        {
+          "column_name": "visit_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "version"
+          }
+        },
+        {
+          "column_name": "hb_level",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "hb_level"
+          }
+        },
+        {
+          "column_name": "systolic",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "systolic"
+          }
+        },
+        {
+          "column_name": "diastolic",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "diastolic"
+          }
+        },
+        {
+          "column_name": "protein_in_urine",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "protein_in_urine"
+          }
+        },
+        {
+          "column_name": "glucose_in_urine",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "glucose_in_urine"
+          }
+        },
+        {
+          "column_name": "syphilis",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "syphilis"
+          }
+        },
+        {
+          "column_name": "partner_syphilis",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "partner_syphilis"
+          }
+        },
+        {
+          "column_name": "malaria_preventive_therapy",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "malaria_preventive_therapy"
+          }
+        },
+        {
+          "column_name": "malaria_preventive_therapy_ipt1",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "malaria_preventive_therapy_ipt1"
+          }
+        },
+        {
+          "column_name": "malaria_preventive_therapy_ipt2",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "malaria_preventive_therapy_ipt2"
+          }
+        },
+        {
+          "column_name": "malaria_preventive_therapy_ipt3",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "malaria_preventive_therapy_ipt3"
+          }
+        },
+        {
+          "column_name": "malaria_preventive_therapy_ipt4",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "malaria_preventive_therapy_ipt4"
+          }
+        },
+        {
+          "column_name": "visit_number",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "visit_number"
           }
         }
       ]

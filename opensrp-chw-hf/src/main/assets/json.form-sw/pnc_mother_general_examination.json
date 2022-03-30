@@ -47,7 +47,7 @@
     "encounter_location": ""
   },
   "step1": {
-    "title": "Mother's General Examination",
+    "title": "Uchunguzi wa Afya ya Mama",
     "fields": [
       {
         "key": "followup_visit_date",
@@ -138,7 +138,7 @@
       {
         "key": "prompt_for_management_of_hypotension",
         "type": "toaster_notes",
-        "text": "Give IV fluids, identify the cause of hypotension and manage according to standard guidelines",
+        "text": "Mpatie IV Fluids, pia bainisha chanzo cha Hypertension na dhibiti hali hii kulingana na mwongozo wa Wizara ya Afya",
         "openmrs_entity_id": "prompt_for_management_of_hypotension",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -414,7 +414,7 @@
       {
         "key": "prompt_for_no_breast_milk_flow",
         "type": "toaster_notes",
-        "text": "Counsel and support the mother on attachment of the newborn to the nipple and positioning of the newborn during breastfeeding. Milk flow will begin as the newborn continues to suck",
+        "text": "Mshauri na msaidie Mama kumweka Mtoto katika ziwa wakati wa kunyonyesha mtoto. Maziwa ya mama yataendelea kutoka kwa wingi jinsi mtoto ananyoendelea kunyonya",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -455,7 +455,7 @@
       {
         "key": "prompt_for_bruised_nipples",
         "type": "toaster_notes",
-        "text": "Provide antibiotics to the mother, breastfeed the newborn on the other breast",
+        "text": "Mpatie Mama Antibiotic na mshauri amnyonyeshe mtoto kwenye titi lisilo na michubuko",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -496,7 +496,7 @@
       {
         "key": "prompt_for_engorgement_mastitis",
         "type": "toaster_notes",
-        "text": "Provide antibiotics and analgesics to the mother, breastfeed the newborn on the other breast",
+        "text": "Mpatie Mama Antibiotic na analgesics, mshauri amnyonyeshe mtoto kwenye titi lisilo na michubuko",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -537,7 +537,7 @@
       {
         "key": "prompt_for_abscess",
         "type": "toaster_notes",
-        "text": "Incise and Drain the abscess, Provide antibiotics and analgesics to the mother",
+        "text": "Minya, toboa na kamua Jibu la Mama. Mpatie Mama antibiotics na dawa za kutuliza maumivu",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -584,7 +584,7 @@
       {
         "key": "prompt_for_uterus_pain",
         "type": "toaster_notes",
-        "text": "Conduct a thorough vaginal examination for any signs of puerperial sepsis or retained products of conception, manage the client based on standard guidelines, provide antibiotics and analgesics according to standard guidelines",
+        "text": "Fanya uchunguzi wa uke kuangalia kama kuna dalili zozote za puerperial sepsis au mabaki yoyote ya uchafu baada ya kujifungua. Dhibiti hali hii  na mpatie Antibiotics na Analgesics kulingana na mwongozo",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -599,7 +599,7 @@
       {
         "key": "prompt_for_uterus_distended",
         "type": "toaster_notes",
-        "text": "Assess abdominal tenderness and uterine involution, manage the client according to standard guidelines",
+        "text": "Tathmini usikivu wa tumbo na mabadiliko ya uterasi, dhibiti mteja kulingana na miongozo ya Wizara ya Afya",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -672,7 +672,7 @@
       {
         "key": "prompt_for_tear_vaginal_assessment",
         "type": "toaster_notes",
-        "text": "If the client is actively bleeding provide emergency care of the postpartum haemorrhage, repair the tear, and provide antibiotics and analgesics",
+        "text": "Ikiwa Mteja anavuja damu sana, toa huduma ya dharura ya kuzuia uvujaji dawa mara baada ya kujifungua, rekebisha machozi, na mpe Antibiotics na dawa za kutuliza maumivu",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -687,7 +687,7 @@
       {
         "key": "prompt_for_episiotomy_vaginal_assessment",
         "type": "toaster_notes",
-        "text": "Check the wound for any active bleeding and infection, manage according to standard guidelines",
+        "text": "Angalia jeraha kama linatokwa na damu na maambukizi yoyote, udhibiti hali hii kulingana na mwongozo wa Wizara ya Afya",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -702,7 +702,7 @@
       {
         "key": "fistula",
         "type": "native_radio",
-        "label": "Je Mama huyu ana Fistula?",
+        "label": "Je, Mama huyu ana Fistula?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "fistula",
         "openmrs_entity_parent": "",
@@ -728,7 +728,7 @@
       {
         "key": "prompt_for_fistula",
         "type": "toaster_notes",
-        "text": "Refer for surgical repair of the fistula",
+        "text": "Mpatie rufaa ya upasuaji wa kwa ajili Fistula",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -778,7 +778,7 @@
       {
         "key": "prompt_for_puerperal_psychosis",
         "type": "toaster_notes",
-        "text": "Refer to psychiatrist",
+        "text": "Mpatie rufaa kwenda kumuona Daktari wa Magonjwa ya Akili",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -819,7 +819,7 @@
       {
         "key": "prompt_for_mental_illness_symptom",
         "type": "toaster_notes",
-        "text": "Refer to psychiatrist",
+        "text": "Mpatie rufaa kwenda kumuona Daktari wa Magonjwa ya Akili",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",

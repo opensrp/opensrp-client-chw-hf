@@ -54,7 +54,8 @@
       {
         "key": "danger_signs",
         "type": "check_box",
-        "label": "HCW hufanya uchambuzi/uchunguzi wa haraka ili kubaini wateja walio na dalili za hatari",
+        "label": "Mtoa huduma wa Afya atafanya uchunguzi ili kubaini wateja wenye dalili za hatari",
+        "combine_checkbox_option_values": "true",
         "openmrs_entity_id": "danger_signs",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -64,28 +65,28 @@
         "options": [
           {
             "key": "bleeding_vag",
-            "text": "Kutokwa damu ukeni",
+            "text": "Kutokwa na damu ukeni",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "bleeding_vag"
           },
           {
             "key": "headache_visual_disturbance",
-            "text": "Maumivu ya kichwa na uoni wa ksuasua",
+            "text": "Kichwa kuuma",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "headache_visual_disturbance"
           },
           {
             "key": "severely_pale",
-            "text": "Kupauka kupita kiasi",
+            "text": "Severely Pale",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "severely_pale"
           },
           {
             "key": "severe_vomiting",
-            "text": "Kutapika kupita kiasi",
+            "text": "Kutapika sana",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "severe_vomiting"
@@ -99,7 +100,7 @@
           },
           {
             "key": "looking_very_ill",
-            "text": "Anaonekana kuumwa sana",
+            "text": "Kuwa mdhoofu",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "looking_very_ill"
@@ -113,7 +114,7 @@
           },
           {
             "key": "unconscious",
-            "text": "Kupotea kwa fahamu",
+            "text": "Kupoteza fahamu",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "unconscious"
@@ -127,21 +128,21 @@
           },
           {
             "key": "severe_breathing_difficulty",
-            "text": "Kupumua kwa shida sana",
+            "text": "Kupumua kwa shida",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "severe_breathing_difficulty"
           },
           {
             "key": "in_labour",
-            "text": "Katika hali ya uchungu",
+            "text": "In Labour",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "in_labour"
           },
           {
             "key": "imminent_labour",
-            "text": "Kujifungua hivi karibuni",
+            "text": "Imminent Labour",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "imminent_labour"
@@ -156,7 +157,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhali chagua dalili hatarishi"
+          "err": "Tafadhari Chagua dalili za hatari"
         }
       },
       {
@@ -178,20 +179,21 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "type_of_pregnancy_test",
         "type": "check_box",
-        "label": "Select the type of test conducted",
+        "combine_checkbox_option_values": "true",
+        "label": "Chagua aina ya kipimo cha Ujauzito kilichofanyika",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [
           {
             "key": "upt",
-            "text": "UPT",
+            "text": "Kipimo cha Mkojo",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "upt"
           },
           {
             "key": "uss",
-            "text": "USS",
+            "text": "Ultrasound",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "uss"
@@ -206,7 +208,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Please select the type of pregnancy conducted"
+          "err": "Tafadhari chagua aina ya kipimo cha Ujauzito kilichofanyika"
         }
       },
       {
@@ -215,17 +217,17 @@
         "openmrs_entity_id": "upt",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
-        "label": "Please select UPT Results",
+        "label": "Tafadhari chagua majibu ya kipimo cha mkojo",
         "options": [
           {
-            "text": "Positive",
+            "text": "Chanya",
             "key": "positive",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "positive"
           },
           {
-            "text": "Negative",
+            "text": "Hasi",
             "key": "negative",
             "value": false,
             "openmrs_entity": "concept",
@@ -241,7 +243,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Please select the UPT test results"
+          "err": "Tafadhari chagua majibu ya kipimo cha mkojo"
         }
       },
       {
@@ -250,18 +252,18 @@
         "openmrs_entity_id": "uss",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
-        "label": "Please select USS results",
+        "label": "Tafadhari Chagua majibu ya Ultrasound",
         "options": [
           {
             "key": "present_gestation_sac",
-            "text": "Present Gestation Sac",
+            "text": "Kuwepo kwa Present Gestation Sac",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "present_gestation_sac"
           },
           {
             "key": "absent_gestation_sac",
-            "text": "Absent Gestation Sac",
+            "text": "Kutokuwepo kwa Present Gestation Sac",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "absent_gestation_sac"
@@ -276,7 +278,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Please select the USS test results"
+          "err": "Tafadhari Chagua majibu ya Ultrasound"
         }
       }
     ]
@@ -290,7 +292,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "known_last_menstrual_period",
         "type": "date_picker",
-        "hint": "Last Normal Menstrual Period (LNMP)",
+        "hint": "Mara ya Mwisho kuona hedhi yako",
         "label_info_title": "LNMP",
         "label_info_text": "LNMP = first day of Last Normal Menstrual Period. If the exact date is unknown, but the period of the month is known, use day 5 for beginning of the month, day 15 for middle of the month and day 25 for end of the month.",
         "expanded": false,
@@ -298,7 +300,7 @@
         "min_date": "today-50w",
         "v_required": {
           "value": "true",
-          "err": "LNMP required"
+          "err": "LNMP inahitajika kujazwa"
         },
         "calculation": {
           "rules-engine": {
@@ -325,7 +327,7 @@
         "options": [
           {
             "key": "lmp_unknown",
-            "text": "LNMP unknown?",
+            "text": "LNMP haijulikani",
             "text_size": "18px",
             "value": "false",
             "openmrs_entity": "concept",
@@ -346,7 +348,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "fundal_height",
         "type": "edit_text",
-        "hint": "Fundal Height (CM)",
+        "hint": "Kimo cha tumbo (cm)",
         "calculation": {
           "rules-engine": {
             "ex-rules": {
@@ -363,19 +365,19 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Inahitajika"
         },
         "v_numeric": {
           "value": "true",
-          "err": "Has to be a number"
+          "err": "Lazima iwe tarakimu"
         },
         "v_min": {
           "value": "12",
-          "err": "Fundal height must be equal or more than 12 CM"
+          "err": "Kimo cha mimba lazima kiwe sawa au zaidi ya 12cm"
         },
         "v_max": {
           "value": "36",
-          "err": "Fundal height must be equal or less than 36 CM"
+          "err": "Kimo cha Mimba lazima kiwe sawa au chini ya kuliko 36cm"
         }
       },
       {
@@ -385,7 +387,7 @@
         "openmrs_entity_id": "estimated_last_menstrual_period",
         "type": "edit_text",
         "read_only": true,
-        "hint": "Estimated Last Normal Menstrual Period (LNMP)",
+        "hint": "Makadirio ya hedhi ya mwisho ilionekana lini",
         "calculation": {
           "rules-engine": {
             "ex-rules": {
@@ -421,7 +423,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "",
         "type": "edit_text",
-        "hint": "Gestational Age (GA)",
+        "hint": "Umri wa Ujauzito",
         "read_only": true,
         "calculation": {
           "rules-engine": {
@@ -444,7 +446,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "edd",
         "type": "edit_text",
-        "hint": "Expected Date of Delivery (EDD)",
+        "hint": "Makadirio ya muda wa kujifungua",
         "read_only": true,
         "calculation": {
           "rules-engine": {
@@ -481,8 +483,8 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "",
         "type": "toaster_notes",
-        "text": "The client is not pregnant. \nPlease refer the client to Family Plannning Services",
-        "toaster_info_text": "The client is not pregnant. Please refer the client to Family Planning Services",
+        "text": "Mteja sio mjamzito. \nTafadhali muunganishe kwenye huduma za Uzazi wa Mpango",
+        "toaster_info_text": "Mteja sio mjamzito. Tafadhali muunganishe kwenye huduma za Uzazi wa Mpango",
         "toaster_type": "info",
         "relevance": {
           "rules-engine": {
@@ -498,7 +500,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "",
         "type": "toaster_notes",
-        "text": "Danger sign! \nRefer immediately to Emergency Ward.",
+        "text": "Dalili ya Hatari! Mpatie rufaa aende katika wadi ya dharura",
         "text_color": "#CF0800",
         "toaster_type": "problem",
         "relevance": {
@@ -530,7 +532,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "",
         "type": "toaster_notes",
-        "text": "Mpeleke Mama aweze kufanyiwa tathmini na uchunguzi wa kizazi",
+        "text": "Mpatie rufaa aende kufanyiwa uchunguzi wa Uzazi",
         "toaster_type": "warning",
         "relevance": {
           "rules-engine": {
