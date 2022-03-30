@@ -59,9 +59,11 @@ public class MarkPmtctAndHeiLtfIntentService extends IntentService {
                     if (lastVisitDate == null)
                         lastVisitDate = HfPmtctDao.getPmtctRegisterDate(pmtctMember.getBaseEntityId());
 
-                    ltfCalendar.setTimeInMillis(lastVisitDate.getTime());
-                    ltfCalendar.add(Calendar.DAY_OF_YEAR, 56);
-                    checkIfLtf(ltfCalendar, pmtctMember.getBaseEntityId(), ChwNotificationDao.getSyncLocationId(pmtctMember.getBaseEntityId()), HfPmtctDao.getVisitNumber(pmtctMember.getBaseEntityId()), true);
+                    if (lastVisitDate != null) {
+                        ltfCalendar.setTimeInMillis(lastVisitDate.getTime());
+                        ltfCalendar.add(Calendar.DAY_OF_YEAR, 56);
+                        checkIfLtf(ltfCalendar, pmtctMember.getBaseEntityId(), ChwNotificationDao.getSyncLocationId(pmtctMember.getBaseEntityId()), HfPmtctDao.getVisitNumber(pmtctMember.getBaseEntityId()), true);
+                    }
                 }
             }
         }
@@ -78,14 +80,16 @@ public class MarkPmtctAndHeiLtfIntentService extends IntentService {
                     if (lastVisitDate == null)
                         lastVisitDate = HeiDao.getHeiRegisterDate(heiMember.getBaseEntityId());
 
-                    ltfCalendar.setTimeInMillis(lastVisitDate.getTime());
+                    if (lastVisitDate != null) {
+                        ltfCalendar.setTimeInMillis(lastVisitDate.getTime());
 
-                    if (visitNumber == 1)
-                        ltfCalendar.add(Calendar.DAY_OF_YEAR, 56);
-                    else
-                        ltfCalendar.add(Calendar.DAY_OF_YEAR, 70);
+                        if (visitNumber == 1)
+                            ltfCalendar.add(Calendar.DAY_OF_YEAR, 56);
+                        else
+                            ltfCalendar.add(Calendar.DAY_OF_YEAR, 70);
 
-                    checkIfLtf(ltfCalendar, heiMember.getBaseEntityId(), ChwNotificationDao.getSyncLocationId(heiMember.getBaseEntityId()), visitNumber, false);
+                        checkIfLtf(ltfCalendar, heiMember.getBaseEntityId(), ChwNotificationDao.getSyncLocationId(heiMember.getBaseEntityId()), visitNumber, false);
+                    }
                 }
             }
         }
