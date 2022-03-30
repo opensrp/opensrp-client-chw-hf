@@ -66,7 +66,7 @@ public class PmtctReportsViewActivity extends AppCompatActivity {
         intent.putExtra(ARG_REPORT_TITLE, reportTitle);
 
         reportPeriod = reportDate;
-        intent.putExtra(ARG_REPORT_DATE, reportDate.toString());
+        intent.putExtra(ARG_REPORT_DATE, reportDate);
         activity.startActivity(intent);
     }
 
