@@ -265,6 +265,21 @@ indicators:
                                  substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
                                  '-' || '01')"
     
+  - key: "5g-10-14"
+    description: "Couple testing for clients who are 10 - 14 year olds"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.couple_testing = 'yes'
+                        AND (date(fm.dob, '+10 years') <= date('now'))
+                        AND (date(fm.dob, '+15 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+    
     
     
   - key: "2a-15-19"

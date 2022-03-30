@@ -1674,6 +1674,54 @@
           }
         },
         {
+          "column_name": "hiv_test_number",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "hiv_test_number"
+          }
+        },
+        {
+          "column_name": "hiv_test_at_32",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "hiv_test_at_32"
+          }
+        },
+        {
+          "column_name": "couple_testing",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "couple_testing"
+          }
+        },
+        {
+          "column_name": "partner_hiv",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "partner_hiv"
+          }
+        },
+        {
+          "column_name": "partner_hiv_test_at_32",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "partner_hiv_test_at_32"
+          }
+        },
+        {
+          "column_name": "partner_hiv_test_number",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "partner_hiv_test_number"
+          }
+        },
+        {
           "column_name": "malaria_preventive_therapy",
           "type": "Event",
           "json_mapping": {
