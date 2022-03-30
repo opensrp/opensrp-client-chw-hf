@@ -6,10 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Taarifa ya miezi mitatu</title>
-    <link rel="stylesheet" href="./report-styles.css">
+    <link rel="stylesheet" href="../report-styles.css">
+    <script src="../report-script.js"></script>
 </head>
 
-<body onload="onLoad()">
+<body onload="loadData('three_months')">
 <div class="show-on-print">
     <h1>TAARIFA YA KUNDI MIEZI MITATU</h1>
     <h2>COHORT YA MAMA [MWEZI/MWAKA]: <span id="report_period"></span></h2>
@@ -175,19 +176,4 @@
     </tbody>
 </table>
 </body>
-<script type="text/javascript">
-    function onLoad() {
-        const data = JSON.parse(Android.getData("three_months"));
-        const keys = Object.keys(data.nameValuePairs)
-        keys.forEach(key => {
-            document.getElementById(key).innerHTML = data.nameValuePairs[key]
-        })
-
-        document.getElementById("report_period").innerHTML = Android.getDataPeriod();
-        document.getElementById("reporting_facility").innerHTML = Android.getReportingFacility();
-
-    }
-
-</script>
-
 </html>

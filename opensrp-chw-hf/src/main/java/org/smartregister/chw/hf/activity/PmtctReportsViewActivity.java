@@ -144,7 +144,7 @@ public class PmtctReportsViewActivity extends AppCompatActivity {
                 .build();
         mWebView.setWebViewClient(new LocalContentWebViewClient(assetLoader));
         mWebView.addJavascriptInterface(new WebAppInterface(this), "Android");
-        mWebView.loadUrl("https://appassets.androidplatform.net/assets/reports/" + reportName + ".html");
+        mWebView.loadUrl("https://appassets.androidplatform.net/assets/reports/pmtct-reports/" + reportName + ".html");
     }
 
     private String computeThreeMonths(Date startDate) {
