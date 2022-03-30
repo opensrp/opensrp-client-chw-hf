@@ -89,7 +89,7 @@ public class PncVisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
                 if (childVisitCompleted.size() > 0) {
                     List<Visit> completedChildVisit = new ArrayList<>();
                     List<Visit> completedMotherVisit = new ArrayList<>();
-                    for (Visit childVisit : pncVisitsCompleted) {
+                    for (Visit childVisit : childVisitCompleted) {
                         if (v.getVisitId().equals(childVisit.getParentVisitID())) {
                             completedChildVisit.add(childVisit);
                             completedMotherVisit.add(v);
