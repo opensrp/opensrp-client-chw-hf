@@ -441,41 +441,6 @@
             }
           }
         }
-      },
-      {
-        "key": "child_opv0_vaccination",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "child_opv0_vaccination",
-        "type": "native_radio",
-        "label": "Je mtoto amechanjwa OPV 0?",
-        "label_text_style": "normal",
-        "text_color": "#C0C0C0",
-        "options": [
-          {
-            "key": "yes",
-            "text": "Ndiyo",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "yes"
-          },
-          {
-            "key": "no",
-            "text": "Hapana",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "no"
-          }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhari mojawapo"
-        },
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "pnc_child_examination_relevance.yml"
-            }
-          }
-        }
       }
     ]
   }
