@@ -179,5 +179,6 @@
     <string name="hiv_test_results_title">HIV Test Results</string>
     <string name="print_report">Print</string>
     <string name="pnc_reports">PNC Reports</string>
+    <string name="month">Month</string>
 
 </resources>

@@ -3,8 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_select_month"
+        android:id="@+id/action_print"
         android:enabled="true"
-        android:title="@string/month"
+        android:orderInCategory="100"
+        android:title="@string/print_report"
+        android:icon="@drawable/ic_baseline_save_alt_24"
         app:showAsAction="ifRoom" />
 </menu>

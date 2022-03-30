@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/HFTheme"
         android:usesCleartextTraffic="true"
-        tools:replace="android:theme">
+        tools:replace="android:theme, android:icon">
         <activity
             android:name=".activity.PncReportsActivity"
             android:theme="@style/HFTheme.NoActionBar" />

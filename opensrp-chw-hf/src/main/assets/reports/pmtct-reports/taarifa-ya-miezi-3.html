@@ -5,44 +5,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Report one</title>
-    <style>
-        table {
-            background-color: #fff;
-            box-shadow: 3px 1px 0px #f6f6f6;
-            border: none;
-        }
-
-        th {
-            padding: 10px;
-            background: #c4c4c4;
-        }
-
-        td {
-            text-align: initial;
-            padding: 10px 0px;
-            padding-left: 10px;
-        }
-
-        tbody tr>td:nth-child(2),
-        tbody tr>td:nth-child(4) {
-            width: 70px;
-            text-align: center;
-        }
-
-        .list-title {
-            text-align: initial !important;
-            padding-left: 10px;
-        }
-
-        tbody tr>td:nth-child(1) {
-            width: 40px;
-            text-align: center;
-        }
-    </style>
+    <title>Taarifa ya miezi mitatu</title>
+    <link rel="stylesheet" href="../report-styles.css">
+    <script src="../report-script.js"></script>
 </head>
 
-<body onload="onLoad()">
+<body onload="loadData('three_months')">
+<div class="show-on-print">
+    <h1>TAARIFA YA KUNDI MIEZI MITATU</h1>
+    <h2>COHORT YA MAMA [MWEZI/MWAKA]: <span id="report_period"></span></h2>
+    <h2>KITUO: <span id="reporting_facility"></span></h2>
+</div>
 <table border="1" style="border-collapse: collapse;">
     <thead>
     <tr>
@@ -52,14 +25,11 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
+    <tr class="four-cols">
         <td>A3</td>
-        <td colspan="3" class="list-title">Idadi ya wajawazito na wanaonyonyesha walioandikishwa katika kundi
-            katika mwezi husika
-            (Month 0)
-        </td>
+        <td colspan="3" class="list-title">Idadi ya wajawazito na wanaonyonyesha walioandikishwa katika kundi katika mwezi husika (Month 0)</td>
     </tr>
-    <tr>
+    <tr class="four-cols">
         <td>
         </td>
         <td>
@@ -70,7 +40,7 @@
         </td>
         <td id="B3a"></td>
     </tr>
-    <tr>
+    <tr class="four-cols">
         <td>
         </td>
         <td>
@@ -81,7 +51,7 @@
         </td>
         <td id="B3b"></td>
     </tr>
-    <tr>
+    <tr class="four-cols">
         <td>
         </td>
         <td>
@@ -92,7 +62,7 @@
         </td>
         <td id="B3c"></td>
     </tr>
-    <tr>
+    <tr class="four-cols">
         <td>
         </td>
         <td>
@@ -103,7 +73,7 @@
         </td>
         <td id="B3d"></td>
     </tr>
-    <tr>
+    <tr class="four-cols">
         <td>
         </td>
         <td>
@@ -114,7 +84,7 @@
         </td>
         <td id="C3a"></td>
     </tr>
-    <tr>
+    <tr class="four-cols">
         <td>
         </td>
         <td>
@@ -128,7 +98,7 @@
     <th colspan="4">
         Tafuta jumla ya kundi
     </th>
-    <tr>
+    <tr class="three-cols">
         <td>
             D3
         </td>
@@ -137,7 +107,7 @@
         </td>
         <td id="D3"></td>
     </tr>
-    <tr>
+    <tr class="three-cols">
         <td>
             E3
         </td>
@@ -146,7 +116,7 @@
         </td>
         <td id="E3"></td>
     </tr>
-    <tr>
+    <tr class="three-cols">
         <td>
             F3
         </td>
@@ -158,16 +128,16 @@
     <th colspan="4">
         Matokeo ya ufuatiliaji wa mama
     </th>
-    <tr>
+    <tr class="three-cols">
         <td>
             G3
         </td>
         <td colspan="2" class="list-title">
             Idadi ya kina mama wanaoendelea na huduma (CTN katika M1 au M2 au M3)
         </td>
-        <td id=" G3"></td>
+        <td id="G3"></td>
     </tr>
-    <tr>
+    <tr class="three-cols">
         <td>
             H3
         </td>
@@ -176,7 +146,7 @@
         </td>
         <td id="H3"></td>
     </tr>
-    <tr>
+    <tr class="three-cols">
         <td>
             I3
         </td>
@@ -185,7 +155,7 @@
         </td>
         <td id="I3"></td>
     </tr>
-    <tr>
+    <tr class="three-cols">
         <td>
             J3
         </td>
@@ -194,7 +164,7 @@
         </td>
         <td id="J3"></td>
     </tr>
-    <tr>
+    <tr class="three-cols">
         <td>
             K3
         </td>
@@ -206,15 +176,4 @@
     </tbody>
 </table>
 </body>
-<script type="text/javascript">
-    function onLoad() {
-        const data = JSON.parse(Android.getData());
-        const keys = Object.keys(data.nameValuePairs)
-        keys.forEach(key => {
-            document.getElementById(key).innerHTML = data.nameValuePairs[key]
-        })
-
-    }
-</script>
-
 </html>
