@@ -90,6 +90,52 @@
         "value": "yes"
       },
       {
+        "key": "is_transfer_in_client",
+        "type": "native_radio",
+        "label": "Je, Mteja amehamia kutoka Kituo kingine?",
+        "openmrs_entity_id": "is_transfer_in_client",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndio",
+            "openmrs_entity_id": "yes",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "openmrs_entity_id": "no",
+            "openmrs_entity": "concept"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali jibu swali hili"
+        }
+      },
+      {
+        "key": "pmtct_register_date_from_originating_facility",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "pmtct_register_date_from_originating_facility",
+        "type": "date_picker",
+        "hint": "Tarehe ya usajili katika huduma za PMTCT katika Kituo cha Afya alichotokea",
+        "expanded": false,
+        "max_date": "today",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali ingiza tarehe ya usajili katika huduma za PMTCT katika Kituo cha Afya alichotokea"
+        },
+        "relevance": {
+          "step1:is_transfer_in_client": {
+            "type": "string",
+            "ex": "equalTo(.,\"yes\")"
+          }
+        }
+      },
+      {
         "key": "test_results",
         "type": "hidden",
         "openmrs_entity_id": "test_results",
