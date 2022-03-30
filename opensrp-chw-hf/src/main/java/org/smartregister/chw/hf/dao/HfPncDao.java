@@ -143,4 +143,17 @@ public class HfPncDao extends PNCDao {
 
         return res;
     }
+
+
+    public static int getVisitNumber(String baseEntityID) {
+        String sql = "SELECT visit_number  FROM ec_pnc_followup WHERE entity_id='" + baseEntityID + "' ORDER BY visit_number DESC LIMIT 1";
+        DataMap<Integer> map = cursor -> getCursorIntValue(cursor, "visit_number");
+        List<Integer> res = readData(sql, map);
+
+        if (res != null && res.size() > 0 && res.get(0) != null) {
+            return res.get(0) + 1;
+        } else
+            return 0;
+
+    }
 }

@@ -2,6 +2,7 @@ package org.smartregister.chw.hf.interactor;
 
 import android.content.Context;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.anc.AncLibrary;
@@ -12,6 +13,7 @@ import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
 import org.smartregister.chw.anc.util.JsonFormUtils;
 import org.smartregister.chw.anc.util.VisitUtils;
+import org.smartregister.chw.core.dao.PNCDao;
 import org.smartregister.chw.core.model.ChildModel;
 import org.smartregister.chw.core.utils.FormUtils;
 import org.smartregister.chw.hf.R;
@@ -21,8 +23,10 @@ import org.smartregister.chw.hf.actionhelper.PncHivTestingAction;
 import org.smartregister.chw.hf.actionhelper.PncImmunizationAction;
 import org.smartregister.chw.hf.actionhelper.PncMotherGeneralExaminationAction;
 import org.smartregister.chw.hf.actionhelper.PncNutrionSupplementAction;
+import org.smartregister.chw.hf.dao.HeiDao;
 import org.smartregister.chw.hf.dao.HfPncDao;
 import org.smartregister.chw.hf.utils.Constants;
+import org.smartregister.chw.referral.util.JsonFormConstants;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -57,10 +61,28 @@ public class PncFacilityVisitInteractorFlv implements AncFirstFacilityVisitInter
     private void evaluatePncActions(MemberObject memberObject, Map<String, List<VisitDetail>> details, Context context, Boolean editMode
     ) throws BaseAncHomeVisitAction.ValidationException {
 
+        JSONObject motherGeneralExaminationForm = null;
+        try {
+            motherGeneralExaminationForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.getPncMotherGeneralExamination());
+
+            JSONArray fields = motherGeneralExaminationForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+            //update visit number
+            JSONObject visitNumber = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "visit_number");
+            visitNumber.put(org.smartregister.chw.pmtct.util.JsonFormUtils.VALUE, HfPncDao.getVisitNumber(memberObject.getBaseEntityId()));
+
+            //loads details to the form
+            if (details != null && !details.isEmpty()) {
+                org.smartregister.chw.anc.util.JsonFormUtils.populateForm(motherGeneralExaminationForm, details);
+            }
+        } catch (JSONException e) {
+            Timber.e(e);
+        }
+
         BaseAncHomeVisitAction motherGeneralExamination = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.mother_general_examination))
                 .withOptional(false)
                 .withDetails(details)
                 .withFormName(Constants.JsonForm.getPncMotherGeneralExamination())
+                .withJsonPayload(motherGeneralExaminationForm.toString())
                 .withHelper(new PncMotherGeneralExaminationAction(memberObject))
                 .build();
         actionList.put(context.getString(R.string.mother_general_examination), motherGeneralExamination);
