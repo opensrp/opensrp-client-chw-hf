@@ -379,14 +379,16 @@
             "field": "eventType",
             "field_value": "Hiv Index Contact Registration",
             "creates_case": [
-              "ec_hiv_index_hf"
+              "ec_hiv_index_hf",
+              "ec_hiv_index"
             ]
           },
           {
             "field": "eventType",
             "field_value": "HIV Index Contact Testing Followup",
             "creates_case": [
-              "ec_hiv_index_hf"
+              "ec_hiv_index_hf",
+              "ec_hiv_index"
             ]
           },
           {
@@ -400,7 +402,8 @@
             "field": "eventType",
             "field_value": "HIV Index Contact Community Followup Referral",
             "creates_case": [
-              "ec_hiv_index_hf"
+              "ec_hiv_index_hf",
+              "ec_hiv_index"
             ]
           },
           {
@@ -485,7 +488,8 @@
             "field": "eventType",
             "field_value": "Update HIV Index Contact Testing Followup",
             "creates_case": [
-              "ec_hiv_index_hf"
+              "ec_hiv_index_hf",
+              "ec_hiv_index"
             ]
           },
           {
