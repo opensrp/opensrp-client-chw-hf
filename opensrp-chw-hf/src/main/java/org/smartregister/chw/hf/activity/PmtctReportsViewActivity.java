@@ -5,18 +5,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.print.PrintAttributes;
-import android.print.PrintDocumentAdapter;
-import android.print.PrintJob;
-import android.print.PrintManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.JavascriptInterface;
-import android.webkit.WebResourceRequest;
-import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Toast;
@@ -30,6 +23,9 @@ import org.smartregister.chw.hf.domain.pmtct_reports.Pmtct12MonthsReportObject;
 import org.smartregister.chw.hf.domain.pmtct_reports.Pmtct24MonthsReportObject;
 import org.smartregister.chw.hf.domain.pmtct_reports.Pmtct3MonthsReportObject;
 import org.smartregister.chw.hf.domain.pmtct_reports.PmtctEIDMonthlyReportObject;
+import org.smartregister.chw.hf.utils.HfWebAppInterface;
+import org.smartregister.chw.hf.utils.LocalContentWebViewClient;
+import org.smartregister.chw.hf.utils.ReportUtils;
 import org.smartregister.view.customcontrols.CustomFontTextView;
 
 import java.text.ParseException;
@@ -37,15 +33,16 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.webkit.WebViewAssetLoader;
-import androidx.webkit.WebViewClientCompat;
 import timber.log.Timber;
 
-import static org.smartregister.util.Utils.getAllSharedPreferences;
+import static org.smartregister.chw.hf.utils.Constants.ReportConstants.PMTCTReportKeys.EID_MONTHLY;
+import static org.smartregister.chw.hf.utils.Constants.ReportConstants.PMTCTReportKeys.THREE_MONTHS;
+import static org.smartregister.chw.hf.utils.Constants.ReportConstants.PMTCTReportKeys.TWELVE_MONTHS;
+import static org.smartregister.chw.hf.utils.Constants.ReportConstants.PMTCTReportKeys.TWENTY_FOUR_MONTHS;
 
 public class PmtctReportsViewActivity extends AppCompatActivity {
     private static final String ARG_REPORT_NAME = "ARG_REPORT_NAME";
@@ -56,8 +53,6 @@ public class PmtctReportsViewActivity extends AppCompatActivity {
     private static String reportPeriod;
     protected CustomFontTextView toolBarTextView;
     protected AppBarLayout appBarLayout;
-    PrintJob printJob;
-    boolean printBtnPressed = false;
     String printJobName;
 
     public static void startMe(Activity activity, String reportName, int reportTitle, String reportDate) {
@@ -122,7 +117,7 @@ public class PmtctReportsViewActivity extends AppCompatActivity {
         if (itemId == R.id.action_print) {
             if (printWebView != null) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    printTheWebPage(printWebView);
+                    ReportUtils.printTheWebPage(printWebView, PmtctReportsViewActivity.this, printJobName);
                 } else {
                     Toast.makeText(this, "Not available for device below Android LOLLIPOP", Toast.LENGTH_SHORT).show();
                 }
@@ -143,7 +138,7 @@ public class PmtctReportsViewActivity extends AppCompatActivity {
                 .addPathHandler("/assets/", new WebViewAssetLoader.AssetsPathHandler(this))
                 .build();
         mWebView.setWebViewClient(new LocalContentWebViewClient(assetLoader));
-        mWebView.addJavascriptInterface(new WebAppInterface(this), "Android");
+        mWebView.addJavascriptInterface(new PmtctReportWebInterface(this), "Android");
         mWebView.loadUrl("https://appassets.androidplatform.net/assets/reports/pmtct-reports/" + reportName + ".html");
     }
 
@@ -191,74 +186,24 @@ public class PmtctReportsViewActivity extends AppCompatActivity {
         return "";
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    private void printTheWebPage(WebView webView) {
 
-        // set printBtnPressed true
-        printBtnPressed = true;
+    public class PmtctReportWebInterface extends HfWebAppInterface {
 
-        // Creating  PrintManager instance
-        PrintManager printManager = (PrintManager) PmtctReportsViewActivity.this
-                .getSystemService(Context.PRINT_SERVICE);
-
-        // setting the name of job
-        String jobName = printJobName;
-
-        // Creating  PrintDocumentAdapter instance
-        PrintDocumentAdapter printAdapter = webView.createPrintDocumentAdapter(jobName);
-
-        // Create a print job with name and adapter instance
-        assert printManager != null;
-        printJob = printManager.print(jobName, printAdapter,
-                new PrintAttributes.Builder().build());
-    }
-
-    private static class LocalContentWebViewClient extends WebViewClientCompat {
-
-        private final WebViewAssetLoader mAssetLoader;
-
-        LocalContentWebViewClient(WebViewAssetLoader assetLoader) {
-            mAssetLoader = assetLoader;
-        }
-
-        @Override
-        @RequiresApi(21)
-        public WebResourceResponse shouldInterceptRequest(WebView view,
-                                                          WebResourceRequest request) {
-            return mAssetLoader.shouldInterceptRequest(request.getUrl());
-        }
-
-        @Override
-        @SuppressWarnings("deprecation") // to support API < 21
-        public WebResourceResponse shouldInterceptRequest(WebView view,
-                                                          String url) {
-            return mAssetLoader.shouldInterceptRequest(Uri.parse(url));
-        }
-
-        @Override
-        public void onPageFinished(WebView view, String url) {
-            super.onPageFinished(view, url);
-            PmtctReportsViewActivity.printWebView = view;
-        }
-    }
-
-    public class WebAppInterface {
-        Context mContext;
-
-        WebAppInterface(Context c) {
-            mContext = c;
+        public PmtctReportWebInterface(Context context) {
+            super(context);
         }
 
         @JavascriptInterface
+        @Override
         public String getData(String key) {
             switch (key) {
-                case "three_months":
+                case THREE_MONTHS:
                     return computeThreeMonths(reportDate);
-                case "twelve_months":
+                case TWELVE_MONTHS:
                     return computeTwelveMonths(reportDate);
-                case "twenty_four_months":
+                case TWENTY_FOUR_MONTHS:
                     return computeTwentyFourMonths(reportDate);
-                case "eid_monthly":
+                case EID_MONTHLY:
                     return computeEIDMonthly(reportDate);
                 default:
                     return "";
@@ -266,13 +211,9 @@ public class PmtctReportsViewActivity extends AppCompatActivity {
         }
 
         @JavascriptInterface
+        @Override
         public String getDataPeriod() {
             return reportPeriod;
-        }
-
-        @JavascriptInterface
-        public String getReportingFacility() {
-            return getAllSharedPreferences().fetchCurrentLocality();
         }
     }
 }

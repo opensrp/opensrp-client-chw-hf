@@ -1,6 +1,15 @@
 package org.smartregister.chw.hf.utils;
 
+import android.content.Context;
+import android.os.Build;
+import android.print.PrintAttributes;
+import android.print.PrintDocumentAdapter;
+import android.print.PrintManager;
+import android.webkit.WebView;
+
 import java.util.Calendar;
+
+import androidx.annotation.RequiresApi;
 
 public class ReportUtils {
     private static final int year = Calendar.getInstance().get(Calendar.YEAR);
@@ -29,6 +38,19 @@ public class ReportUtils {
 
     public static String displayMonthAndYear() {
         return monthNames[getMonth() - 1] + ", " + getYear();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public static void printTheWebPage(WebView webView, Context context, String printJobName) {
+
+        // Creating  PrintManager instance
+        PrintManager printManager = (PrintManager) context.getSystemService(Context.PRINT_SERVICE);
+        PrintDocumentAdapter printAdapter = webView.createPrintDocumentAdapter(printJobName);
+
+        // Create a print job with name and adapter instance
+        assert printManager != null;
+        printManager.print(printJobName, printAdapter,
+                new PrintAttributes.Builder().build());
     }
 
 

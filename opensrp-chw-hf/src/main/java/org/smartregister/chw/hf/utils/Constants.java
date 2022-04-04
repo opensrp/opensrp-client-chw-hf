@@ -388,4 +388,13 @@ public class Constants extends CoreConstants {
             String FOLLOWUP_STATUS = "followup_status";
         }
     }
+
+    public static final class ReportConstants{
+        public interface PMTCTReportKeys{
+            String THREE_MONTHS = "three_months";
+            String TWELVE_MONTHS = "twelve_months";
+            String TWENTY_FOUR_MONTHS = "twenty_four_months";
+            String EID_MONTHLY = "eid_monthly";
+        }
+    }
 }
