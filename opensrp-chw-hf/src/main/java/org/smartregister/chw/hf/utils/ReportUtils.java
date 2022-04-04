@@ -99,7 +99,7 @@ public class ReportUtils {
     }
 
     @SuppressLint("SetJavaScriptEnabled")
-    public static void loadReportView(String reportName, WebView mWebView, Context context) {
+    public static void loadReportView(String reportPath, WebView mWebView, Context context) {
 
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
@@ -108,7 +108,7 @@ public class ReportUtils {
                 .build();
         mWebView.setWebViewClient(new LocalContentWebViewClient(assetLoader));
         mWebView.addJavascriptInterface(new HfWebAppInterface(context, Constants.ReportConstants.ReportTypes.PMTCT_REPORT), "Android");
-        mWebView.loadUrl("https://appassets.androidplatform.net/assets/reports/pmtct-reports/" + reportName + ".html");
+        mWebView.loadUrl("https://appassets.androidplatform.net/assets/reports/" + reportPath + ".html");
     }
 
     public static class PMTCTReports {

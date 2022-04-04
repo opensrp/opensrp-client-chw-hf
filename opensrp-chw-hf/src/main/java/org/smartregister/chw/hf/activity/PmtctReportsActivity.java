@@ -102,16 +102,16 @@ public class PmtctReportsActivity extends SecuredActivity implements View.OnClic
         int id = v.getId();
         switch (id) {
             case R.id.three_months_report:
-                PmtctReportsViewActivity.startMe(this, "taarifa-ya-miezi-3", R.string.three_months_report, reportPeriod);
+                PmtctReportsViewActivity.startMe(this, "pmtct-reports/taarifa-ya-miezi-3", R.string.three_months_report, reportPeriod);
                 break;
             case R.id.twelve_months_report:
-                PmtctReportsViewActivity.startMe(this, "taarifa-ya-miezi-12", R.string.twelve_months_report, reportPeriod);
+                PmtctReportsViewActivity.startMe(this, "pmtct-reports/taarifa-ya-miezi-12", R.string.twelve_months_report, reportPeriod);
                 break;
             case R.id.twenty_four_months_report:
-                PmtctReportsViewActivity.startMe(this, "taarifa-ya-miezi-24", R.string.twenty_four_months_report, reportPeriod);
+                PmtctReportsViewActivity.startMe(this, "pmtct-reports/taarifa-ya-miezi-24", R.string.twenty_four_months_report, reportPeriod);
                 break;
             case R.id.cross_sectional_report:
-                PmtctReportsViewActivity.startMe(this, "taarifa-cross-sectional", R.string.eid_cross_sectional_report, reportPeriod);
+                PmtctReportsViewActivity.startMe(this, "pmtct-reports/taarifa-cross-sectional", R.string.eid_cross_sectional_report, reportPeriod);
                 break;
             default:
                 Toast.makeText(this, "Action Not Defined", Toast.LENGTH_SHORT).show();

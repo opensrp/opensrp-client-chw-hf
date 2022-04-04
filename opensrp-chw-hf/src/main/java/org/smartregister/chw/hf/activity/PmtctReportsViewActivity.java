@@ -22,16 +22,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 public class PmtctReportsViewActivity extends AppCompatActivity {
-    private static final String ARG_REPORT_NAME = "ARG_REPORT_NAME";
+    private static final String ARG_REPORT_PATH = "ARG_REPORT_PATH";
     private static final String ARG_REPORT_TITLE = "ARG_REPORT_TITLE";
     private static final String ARG_REPORT_DATE = "ARG_REPORT_DATE";
     public static WebView printWebView;
     protected CustomFontTextView toolBarTextView;
     protected AppBarLayout appBarLayout;
 
-    public static void startMe(Activity activity, String reportName, int reportTitle, String reportDate) {
+    public static void startMe(Activity activity, String reportPath, int reportTitle, String reportDate) {
         Intent intent = new Intent(activity, PmtctReportsViewActivity.class);
-        intent.putExtra(ARG_REPORT_NAME, reportName);
+        intent.putExtra(ARG_REPORT_PATH, reportPath);
         intent.putExtra(ARG_REPORT_TITLE, reportTitle);
         intent.putExtra(ARG_REPORT_DATE, reportDate);
         activity.startActivity(intent);
@@ -41,12 +41,12 @@ public class PmtctReportsViewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pmtct_reports_view);
-        String reportName = getIntent().getStringExtra(ARG_REPORT_NAME);
+        String reportPath = getIntent().getStringExtra(ARG_REPORT_PATH);
         int reportTitle = getIntent().getIntExtra(ARG_REPORT_TITLE, 0);
         setUpToolbar(reportTitle);
         WebView webView = findViewById(R.id.webview);
         ReportUtils.setReportPeriod(getIntent().getStringExtra(ARG_REPORT_DATE));
-        ReportUtils.loadReportView(reportName, webView, this);
+        ReportUtils.loadReportView(reportPath, webView, this);
     }
 
     public void setUpToolbar(int reportTitle) {
