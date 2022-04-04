@@ -6,7 +6,6 @@ import android.os.Build;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.whiteelephant.monthpicker.MonthPickerDialog;
@@ -15,11 +14,16 @@ import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.utils.ReportUtils;
 import org.smartregister.view.activity.SecuredActivity;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import timber.log.Timber;
 
 public class AncReportsActivity extends SecuredActivity implements View.OnClickListener {
 
@@ -35,10 +39,11 @@ public class AncReportsActivity extends SecuredActivity implements View.OnClickL
         setupViews();
     }
 
-    public void setupViews(){
+    public void setupViews() {
         monthlyReport = findViewById(R.id.anc_monthly_report);
         monthlyReport.setOnClickListener(this);
     }
+
     @Override
     protected void onResumption() {
         setUpToolbar();
@@ -84,8 +89,8 @@ public class AncReportsActivity extends SecuredActivity implements View.OnClickL
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        if(id == R.id.anc_monthly_report){
-            AncReportsViewActivity.startMe(this,"anc-taarifa-ya-mwezi",reportPeriod);
+        if (id == R.id.anc_monthly_report) {
+            AncReportsViewActivity.startMe(this, "anc-taarifa-ya-mwezi", reportPeriod);
         }
     }
 
@@ -102,13 +107,21 @@ public class AncReportsActivity extends SecuredActivity implements View.OnClickL
             menu.findItem(R.id.action_select_month).setTitle(ReportUtils.displayMonthAndYear(selectedMonth, selectedYear));
 
         }, Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH));
-        builder.setActivatedMonth(Calendar.getInstance().get(Calendar.MONTH));
-        builder.setMinYear(2021);
-        builder.setActivatedYear(Calendar.getInstance().get(Calendar.YEAR));
-        builder.setMaxYear(Calendar.getInstance().get(Calendar.YEAR));
-        builder.setMinMonth(Calendar.JANUARY);
-        builder.setMaxMonth(Calendar.DECEMBER);
-        builder.setTitle("Select Month");
-        builder.build().show();
+        try {
+            Date reportDate = new SimpleDateFormat("MM-yyyy", Locale.getDefault()).parse(reportPeriod);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(reportDate);
+            builder.setActivatedMonth(calendar.get(Calendar.MONTH));
+            builder.setMinYear(2021);
+            builder.setActivatedYear(calendar.get(Calendar.YEAR));
+            builder.setMaxYear(Calendar.getInstance().get(Calendar.YEAR));
+            builder.setMinMonth(Calendar.JANUARY);
+            builder.setMaxMonth(Calendar.DECEMBER);
+            builder.setTitle("Select Reporting Month");
+            builder.build().show();
+        } catch (ParseException e) {
+            Timber.e(e);
+        }
+
     }
 }

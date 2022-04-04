@@ -16,11 +16,16 @@ import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.utils.ReportUtils;
 import org.smartregister.view.activity.SecuredActivity;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import timber.log.Timber;
 
 public class PmtctReportsActivity extends SecuredActivity implements View.OnClickListener {
     protected ConstraintLayout threeMonthsReport;
@@ -127,14 +132,21 @@ public class PmtctReportsActivity extends SecuredActivity implements View.OnClic
             menu.findItem(R.id.action_select_month).setTitle(ReportUtils.displayMonthAndYear(selectedMonth, selectedYear));
 
         }, Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH));
-        builder.setActivatedMonth(Calendar.getInstance().get(Calendar.MONTH));
-        builder.setMinYear(2021);
-        builder.setActivatedYear(Calendar.getInstance().get(Calendar.YEAR));
-        builder.setMaxYear(Calendar.getInstance().get(Calendar.YEAR));
-        builder.setMinMonth(Calendar.JANUARY);
-        builder.setMaxMonth(Calendar.DECEMBER);
-        builder.setTitle("Select Month");
-        builder.build().show();
+        try {
+            Date reportDate = new SimpleDateFormat("MM-yyyy", Locale.getDefault()).parse(reportPeriod);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(reportDate);
+            builder.setActivatedMonth(calendar.get(Calendar.MONTH));
+            builder.setMinYear(2021);
+            builder.setActivatedYear(calendar.get(Calendar.YEAR));
+            builder.setMaxYear(Calendar.getInstance().get(Calendar.YEAR));
+            builder.setMinMonth(Calendar.JANUARY);
+            builder.setMaxMonth(Calendar.DECEMBER);
+            builder.setTitle("Select Month 0");
+            builder.build().show();
+        } catch (ParseException e) {
+            Timber.e(e);
+        }
     }
 
 }
