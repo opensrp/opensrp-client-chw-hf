@@ -396,5 +396,10 @@ public class Constants extends CoreConstants {
             String TWENTY_FOUR_MONTHS = "twenty_four_months";
             String EID_MONTHLY = "eid_monthly";
         }
+        public interface ReportTypes{
+            String PMTCT_REPORT = "pmtct_report";
+            String ANC_REPORT = "anc_report";
+            String PNC_REPORT = "pnc_report";
+        }
     }
 }
