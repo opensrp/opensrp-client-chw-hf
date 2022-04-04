@@ -16,13 +16,15 @@ import android.webkit.WebView;
 
 import com.google.android.material.appbar.AppBarLayout;
 
-import org.apache.commons.lang3.StringUtils;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.domain.anc_reports.AncMonthlyReportObject;
 import org.smartregister.view.activity.SecuredActivity;
 import org.smartregister.view.customcontrols.CustomFontTextView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
@@ -31,16 +33,21 @@ import androidx.webkit.WebViewAssetLoader;
 import androidx.webkit.WebViewClientCompat;
 import timber.log.Timber;
 
+import static org.smartregister.util.Utils.getAllSharedPreferences;
+
 public class AncReportsViewActivity extends SecuredActivity {
 
     private static final String ARG_REPORT_NAME = "ARG_REPORT_NAME";
-    private static final String ARG_REPORT_TITLE = "ARG_REPORT_TITLE";
+    private static final String ARG_REPORT_DATE = "ARG_REPORT_DATE";
+    private static Date reportDate;
+    private static String reportPeriod;
     protected CustomFontTextView toolBarTextView;
     protected AppBarLayout appBarLayout;
 
-    public static void startMe(Activity activity, String reportName) {
+    public static void startMe(Activity activity, String reportName, String reportDate) {
         Intent intent = new Intent(activity, AncReportsViewActivity.class);
         intent.putExtra(ARG_REPORT_NAME, reportName);
+        intent.putExtra(ARG_REPORT_DATE, reportDate);
         activity.startActivity(intent);
     }
 
@@ -48,12 +55,16 @@ public class AncReportsViewActivity extends SecuredActivity {
     protected void onCreation() {
         setContentView(R.layout.activity_anc_reports_view);
         String reportName = getIntent().getStringExtra(ARG_REPORT_NAME);
-        int reportTitle = getIntent().getIntExtra(ARG_REPORT_TITLE, 0);
-        setUpToolbar(reportTitle);
+        try {
+            reportDate = new SimpleDateFormat("MM-yyyy", Locale.getDefault()).parse(getIntent().getStringExtra(ARG_REPORT_DATE));
+        } catch (ParseException e) {
+            Timber.e(e);
+        }
+        setUpToolbar();
         loadReportView(reportName);
     }
 
-    public void setUpToolbar(int reportTitle) {
+    public void setUpToolbar() {
         Toolbar toolbar = findViewById(org.smartregister.chw.core.R.id.back_to_nav_toolbar);
         toolBarTextView = toolbar.findViewById(org.smartregister.chw.core.R.id.toolbar_title);
         setSupportActionBar(toolbar);
@@ -143,11 +154,21 @@ public class AncReportsViewActivity extends SecuredActivity {
 
         @JavascriptInterface
         public String getData(String key) {
-            Date now = new Date();
+
             if (key.equals("monthly")) {
-                return computeAncReport(now);
+                return computeAncReport(reportDate);
             }
             return "";
+        }
+
+        @JavascriptInterface
+        public String getDataPeriod() {
+            return reportPeriod;
+        }
+
+        @JavascriptInterface
+        public String getReportingFacility() {
+            return getAllSharedPreferences().fetchCurrentLocality();
         }
     }
 }

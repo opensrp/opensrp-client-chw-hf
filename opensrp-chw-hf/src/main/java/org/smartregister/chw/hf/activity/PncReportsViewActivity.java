@@ -21,7 +21,10 @@ import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.domain.pnc_reports.PncMonthlyReportObject;
 import org.smartregister.view.customcontrols.CustomFontTextView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
@@ -31,15 +34,23 @@ import androidx.webkit.WebViewAssetLoader;
 import androidx.webkit.WebViewClientCompat;
 import timber.log.Timber;
 
+import static org.smartregister.util.Utils.getAllSharedPreferences;
+
 public class PncReportsViewActivity extends AppCompatActivity {
 
     private static final String ARG_REPORT_NAME = "ARG_REPORT_NAME";
+    private static final String ARG_REPORT_DATE = "ARG_REPORT_DATE";
+    private static Date reportDate;
+    private static String reportPeriod;
     protected CustomFontTextView toolBarTextView;
     protected AppBarLayout appBarLayout;
 
-    public static void startMe(Activity activity, String reportName) {
+    public static void startMe(Activity activity, String reportName, String reportDate) {
         Intent intent = new Intent(activity, PncReportsViewActivity.class);
         intent.putExtra(ARG_REPORT_NAME, reportName);
+        intent.putExtra(ARG_REPORT_DATE, reportDate);
+        reportPeriod = reportDate;
+
         activity.startActivity(intent);
     }
 
@@ -48,6 +59,11 @@ public class PncReportsViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pnc_reports_view);
         String reportName = getIntent().getStringExtra(ARG_REPORT_NAME);
+        try {
+            reportDate = new SimpleDateFormat("MM-yyyy", Locale.getDefault()).parse(getIntent().getStringExtra(ARG_REPORT_DATE));
+        } catch (ParseException e) {
+            Timber.e(e);
+        }
         setUpToolbar();
         loadReportView(reportName);
     }
@@ -138,11 +154,20 @@ public class PncReportsViewActivity extends AppCompatActivity {
 
         @JavascriptInterface
         public String getData(String key) {
-            Date now = new Date();
             if (key.equals("monthly")) {
-                return computePncReport(now);
+                return computePncReport(reportDate);
             }
             return "";
+        }
+
+        @JavascriptInterface
+        public String getDataPeriod() {
+            return reportPeriod;
+        }
+
+        @JavascriptInterface
+        public String getReportingFacility() {
+            return getAllSharedPreferences().fetchCurrentLocality();
         }
     }
 
