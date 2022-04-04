@@ -14,9 +14,6 @@ public class HfWebAppInterface {
 
     String reportType;
 
-    public HfWebAppInterface(Context c) {
-        mContext = c;
-    }
 
     public HfWebAppInterface(Context c, String reportType) {
         mContext = c;
@@ -43,6 +40,15 @@ public class HfWebAppInterface {
                     return "";
             }
         }
+        if (reportType.equalsIgnoreCase(Constants.ReportConstants.ReportTypes.PNC_REPORT)) {
+            ReportUtils.setPrintJobName("pnc_report_ya_mwezi-" + ReportUtils.getReportPeriod() + ".pdf");
+            return ReportUtils.PNCReports.computePncReport(ReportUtils.getReportDate());
+        }
+        if (reportType.equalsIgnoreCase(Constants.ReportConstants.ReportTypes.ANC_REPORT)) {
+            ReportUtils.setPrintJobName("anc_report_ya_mwezi-" + ReportUtils.getReportPeriod() + ".pdf");
+            return ReportUtils.ANCReports.computeAncReport(ReportUtils.getReportDate());
+        }
+
         return "";
     }
 

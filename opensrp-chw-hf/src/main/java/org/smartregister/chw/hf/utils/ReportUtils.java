@@ -11,10 +11,12 @@ import android.webkit.WebView;
 
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
+import org.smartregister.chw.hf.domain.anc_reports.AncMonthlyReportObject;
 import org.smartregister.chw.hf.domain.pmtct_reports.Pmtct12MonthsReportObject;
 import org.smartregister.chw.hf.domain.pmtct_reports.Pmtct24MonthsReportObject;
 import org.smartregister.chw.hf.domain.pmtct_reports.Pmtct3MonthsReportObject;
 import org.smartregister.chw.hf.domain.pmtct_reports.PmtctEIDMonthlyReportObject;
+import org.smartregister.chw.hf.domain.pnc_reports.PncMonthlyReportObject;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -90,16 +92,16 @@ public class ReportUtils {
 
         // Creating  PrintManager instance
         PrintManager printManager = (PrintManager) context.getSystemService(Context.PRINT_SERVICE);
-        PrintDocumentAdapter printAdapter = webView.createPrintDocumentAdapter(printJobName);
+        PrintDocumentAdapter printAdapter = webView.createPrintDocumentAdapter(getPrintJobName());
 
         // Create a print job with name and adapter instance
         assert printManager != null;
-        printManager.print(printJobName, printAdapter,
+        printManager.print(getPrintJobName(), printAdapter,
                 new PrintAttributes.Builder().build());
     }
 
     @SuppressLint("SetJavaScriptEnabled")
-    public static void loadReportView(String reportPath, WebView mWebView, Context context) {
+    public static void loadReportView(String reportPath, WebView mWebView, Context context, String reportType) {
 
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
@@ -107,7 +109,7 @@ public class ReportUtils {
                 .addPathHandler("/assets/", new WebViewAssetLoader.AssetsPathHandler(context))
                 .build();
         mWebView.setWebViewClient(new LocalContentWebViewClient(assetLoader));
-        mWebView.addJavascriptInterface(new HfWebAppInterface(context, Constants.ReportConstants.ReportTypes.PMTCT_REPORT), "Android");
+        mWebView.addJavascriptInterface(new HfWebAppInterface(context, reportType), "Android");
         mWebView.loadUrl("https://appassets.androidplatform.net/assets/reports/" + reportPath + ".html");
     }
 
@@ -150,6 +152,32 @@ public class ReportUtils {
                 Timber.e(e);
             }
             return "";
+        }
+    }
+
+    public static class PNCReports{
+        public static String computePncReport(Date now) {
+            String report = "";
+            PncMonthlyReportObject pncMonthlyReportObject = new PncMonthlyReportObject(now);
+            try {
+                report = pncMonthlyReportObject.getIndicatorDataAsGson(pncMonthlyReportObject.getIndicatorData());
+            } catch (Exception e) {
+                Timber.e(e);
+            }
+            return report;
+        }
+    }
+
+    public static class ANCReports{
+        public static String computeAncReport(Date now) {
+            String report = "";
+            AncMonthlyReportObject ancMonthlyReportObject = new AncMonthlyReportObject(now);
+            try {
+                report = ancMonthlyReportObject.getIndicatorDataAsGson(ancMonthlyReportObject.getIndicatorData());
+            } catch (Exception e) {
+                Timber.e(e);
+            }
+            return report;
         }
     }
 
