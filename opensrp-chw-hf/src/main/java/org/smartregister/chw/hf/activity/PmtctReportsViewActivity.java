@@ -186,8 +186,7 @@ public class PmtctReportsViewActivity extends AppCompatActivity {
         return "";
     }
 
-
-    public class PmtctReportWebInterface extends HfWebAppInterface {
+    class PmtctReportWebInterface extends HfWebAppInterface {
 
         public PmtctReportWebInterface(Context context) {
             super(context);
