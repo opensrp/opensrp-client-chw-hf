@@ -145,19 +145,14 @@ public class HfPncDao extends PNCDao {
     }
 
     public static boolean isChildEligibleForKangaroo(String baseEntityId, String motherBaseEntityId) {
-        //child is eligible for kangaroo if weight at birth is less than 2.5kg and if the mother's delivery place is not At Facility and if its first visit
-        String getChildWeightQuery = "SELECT weight FROM ec_child WHERE base_entity_id = '" + baseEntityId + "'";
+        //child is eligible for kangaroo if weight at birth is less than 2.5kg and if its first visit
+        String query = "SELECT weight FROM ec_child WHERE base_entity_id = '" + baseEntityId + "'";
 
-        String getMotherDeliveryPlaceQuery = "SELECT delivery_place FROM ec_pregnancy_outcome WHERE base_entity_id = '" + motherBaseEntityId + "'";
+        DataMap<Double> dataMap = cursor -> Double.parseDouble(getCursorValue(cursor, "weight", "0"));
+        List<Double> res = readData(query, dataMap);
 
-        DataMap<Double> childWeightDataMap = cursor -> Double.parseDouble(getCursorValue(cursor, "weight", "0"));
-        DataMap<String> motherDeliveryPlaceDataMap = cursor -> getCursorValue(cursor, "delivery_place", "");
-
-        List<Double> childWeightRes = readData(getChildWeightQuery, childWeightDataMap);
-        List<String> motherDeliveryPlaceRes = readData(getMotherDeliveryPlaceQuery, motherDeliveryPlaceDataMap);
-
-        if ((childWeightRes != null && childWeightRes.size() != 0) && (motherDeliveryPlaceRes != null && motherDeliveryPlaceRes.size() != 0)) {
-            return (childWeightRes.get(0) < 2.5 && !motherDeliveryPlaceRes.get(0).equalsIgnoreCase("At Facility") && getVisitNumber(motherBaseEntityId) == 0);
+        if ((res != null && res.size() != 0)) {
+            return (res.get(0) < 2.5 && getVisitNumber(motherBaseEntityId) == 0);
         }
         return false;
     }
