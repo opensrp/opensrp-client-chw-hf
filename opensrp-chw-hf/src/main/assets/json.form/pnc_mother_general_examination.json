@@ -550,6 +550,32 @@
         }
       },
       {
+        "key": "perineum_infection",
+        "type": "native_radio",
+        "label": "Does the Mother have Perineum Infection?",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "perineum_infection",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
+      },
+      {
         "key": "uterus_assessment",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",

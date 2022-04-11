@@ -140,6 +140,153 @@
         }
       },
       {
+        "key": "hb_level_test",
+        "type": "native_radio",
+        "label": "HB Level Test",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hb_level_test",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "test_conducted",
+            "text": "HB Level Test conducted",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "test_conducted",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "test_not_conducted",
+            "text": "HB Level Test not conducted",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "test_not_conducted"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please answer this question"
+        }
+      },
+      {
+        "key": "hb_level",
+        "type": "edit_text",
+        "hint": "HB Level (g/dl)",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hb_level",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the HB level"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "HB level must be equal or greater than 0 (g/dl)"
+        },
+        "v_max": {
+          "value": "20",
+          "err": "HB level must be equal or less than 20 (g/dl)"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please provide a value"
+        },
+        "relevance": {
+          "step1:hb_level_test": {
+            "type": "string",
+            "ex": "equalTo(., \"test_conducted\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_severe_anaemia_treatment",
+        "type": "toaster_notes",
+        "text": "Manage the severe anaemia according to standard guidelines",
+        "openmrs_entity_id": "prompt_for_severe_anaemia_treatment",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:hb_level": {
+            "type": "numeric",
+            "ex": "lessThanEqualTo(.,\"8.5\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_moderate_anaemia_management",
+        "type": "toaster_notes",
+        "text": "Manage the mild anaemia according to standard guidelines",
+        "openmrs_entity_id": "prompt_for_moderate_anaemia_management",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pnc_mother_general_examination_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "reason_for_not_conducting_hb_test",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_conducting_hb_test",
+        "type": "spinner",
+        "hint": "Reason as to why the HB Level test was not conducted",
+        "values": [
+          "Test kits are out of stock",
+          "The client was in an emergency situation",
+          "The client refused to be tested",
+          "We are still counselling the client",
+          "Other"
+        ],
+        "keys": [
+          "test_kits_are_out_of_stock",
+          "the_client_was_in_an_emergency_situation",
+          "the_client_refused_to_be_tested",
+          "we_are_still_counselling_the_client",
+          "other"
+        ],
+        "openmrs_choice_ids": {
+          "test_kits_are_out_of_stock": "test_kits_are_out_of_stock",
+          "the_client_was_in_an_emergency_situation": "the_client_was_in_an_emergency_situation",
+          "the_client_refused_to_be_tested": "the_client_refused_to_be_tested",
+          "we_are_still_counselling_the_client": "we_are_still_counselling_the_client",
+          "other": "other"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select a reason"
+        },
+        "relevance": {
+          "step1:hb_level_test": {
+            "type": "string",
+            "ex": "equalTo(., \"test_not_conducted\")"
+          }
+        }
+      },
+      {
+        "key": "other_reason_hb_test_not_conducted",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reason_hb_test_not_conducted",
+        "type": "edit_text",
+        "hint": "Other reason for why the HB Level test was not conducted",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the reason"
+        },
+        "relevance": {
+          "step1:reason_for_not_conducting_hb_test": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
+          }
+        }
+      },
+      {
         "key": "temperature",
         "type": "edit_text",
         "hint": "Temperature (C)",
@@ -265,19 +412,19 @@
         "options": [
           {
             "key": "ebf",
-            "text": "EBF",
+            "text": "Exclusive Breastfeeding(EBF)",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "ebf"
           },
           {
-            "key": "non_bf",
-            "text": "Non-BF",
+            "key": "rf",
+            "text": "Replacement Feeding(RF)",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "non_bf"
           },
           {
-            "key": "suckling_reflexes",
-            "text": "Suckling reflexes",
+            "key": "mf",
+            "text": "Mixed Feeding(MF)",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "suckling_reflexes"
           }
@@ -285,6 +432,39 @@
         "v_required": {
           "value": "true",
           "err": "Please answer this question"
+        }
+      },
+      {
+        "key": "septicaemia",
+        "type": "native_radio",
+        "label": "Child has high risk of infection (Septicaemia)",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "septicaemia",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "no",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pnc_child_examination_relevance.yml"
+            }
+          }
         }
       },
       {

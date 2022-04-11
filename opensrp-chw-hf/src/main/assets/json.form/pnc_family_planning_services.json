@@ -117,7 +117,7 @@
           },
           {
             "key": "chk_pills",
-            "text": "Pills",
+            "text": "Pills (Progestogen-only pill)",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_pills"
           },
@@ -147,7 +147,7 @@
           },
           {
             "key": "chk_tubal_ligation",
-            "text": "Bilateral Tubal Ligation",
+            "text": "Bilateral Tubal Ligation (BTL)",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_tubal_ligation"
           },
