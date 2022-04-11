@@ -13,7 +13,6 @@ import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
 import org.smartregister.chw.anc.util.JsonFormUtils;
 import org.smartregister.chw.anc.util.VisitUtils;
-import org.smartregister.chw.core.dao.PNCDao;
 import org.smartregister.chw.core.model.ChildModel;
 import org.smartregister.chw.core.utils.FormUtils;
 import org.smartregister.chw.hf.R;
@@ -23,7 +22,6 @@ import org.smartregister.chw.hf.actionhelper.PncHivTestingAction;
 import org.smartregister.chw.hf.actionhelper.PncImmunizationAction;
 import org.smartregister.chw.hf.actionhelper.PncMotherGeneralExaminationAction;
 import org.smartregister.chw.hf.actionhelper.PncNutrionSupplementAction;
-import org.smartregister.chw.hf.dao.HeiDao;
 import org.smartregister.chw.hf.dao.HfPncDao;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.referral.util.JsonFormConstants;
@@ -92,6 +90,7 @@ public class PncFacilityVisitInteractorFlv implements AncFirstFacilityVisitInter
                 childGeneralExamForm.getJSONObject("global").put("baseEntityId", child.getBaseEntityId());
                 childGeneralExamForm.getJSONObject("global").put("is_eligible_for_bcg", HfPncDao.isChildEligibleForBcg(child.getBaseEntityId()));
                 childGeneralExamForm.getJSONObject("global").put("is_eligible_for_opv0", HfPncDao.isChildEligibleForOpv0(child.getBaseEntityId()));
+                childGeneralExamForm.getJSONObject("global").put("is_eligible_for_kangaroo", HfPncDao.isChildEligibleForKangaroo(child.getBaseEntityId(), memberObject.getBaseEntityId()));
             } catch (JSONException e) {
                 Timber.e(e);
             }

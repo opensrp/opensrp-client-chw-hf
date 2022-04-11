@@ -408,6 +408,39 @@
         }
       },
       {
+        "key": "kangaroo_enrollment",
+        "type": "native_radio",
+        "label": "Was the child enrolled to Kangaroo Care",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "kangaroo_enrollment",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "no",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pnc_child_examination_relevance.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "child_bcg_vaccination",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
