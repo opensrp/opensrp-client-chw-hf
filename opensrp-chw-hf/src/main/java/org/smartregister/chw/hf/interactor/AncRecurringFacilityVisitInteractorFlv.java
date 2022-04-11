@@ -31,6 +31,7 @@ import org.smartregister.chw.hf.dao.HfAncDao;
 import org.smartregister.chw.hf.repository.HfLocationRepository;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hf.utils.ContactUtil;
+import org.smartregister.chw.hf.utils.HfAncJsonFormUtils;
 import org.smartregister.chw.referral.util.JsonFormConstants;
 import org.smartregister.domain.Location;
 import org.smartregister.domain.LocationTag;
@@ -208,7 +209,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
             triageForm.getJSONObject("global").put("last_menstrual_period", memberObject.getLastMenstrualPeriod());
             triageForm.getJSONObject("global").put("current_visit_number", HfAncDao.getVisitNumber(baseEntityId));
             if (details != null && !details.isEmpty()) {
-                JsonFormUtils.populateForm(triageForm, details);
+                HfAncJsonFormUtils.populateForm(triageForm, details);
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -285,7 +286,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                     String height = HfAncDao.getClientHeight(memberObject.getBaseEntityId());
                     consultationForm.getJSONObject("global").put("client_height", height);
                     if (details != null && !details.isEmpty()) {
-                        JsonFormUtils.populateForm(consultationForm, details);
+                        HfAncJsonFormUtils.populateForm(consultationForm, details);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -300,7 +301,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                     pharmacyForm.getJSONObject("global").put("malaria_preventive_therapy_ipt3", HfAncDao.malariaDosageIpt3(baseEntityId));
                     pharmacyForm.getJSONObject("global").put("malaria_preventive_therapy_ipt4", HfAncDao.malariaDosageIpt4(baseEntityId));
                     if (details != null && !details.isEmpty()) {
-                        JsonFormUtils.populateForm(pharmacyForm, details);
+                        HfAncJsonFormUtils.populateForm(pharmacyForm, details);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -324,7 +325,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                         renameSecondHivAt32.put("label", context.getString(R.string.second_hiv_test_results_woman));
                     }
                     if (details != null && !details.isEmpty()) {
-                        JsonFormUtils.populateForm(labTestForm, details);
+                        HfAncJsonFormUtils.populateForm(labTestForm, details);
                     }
                 } catch (JSONException e) {
                     Timber.e(e);

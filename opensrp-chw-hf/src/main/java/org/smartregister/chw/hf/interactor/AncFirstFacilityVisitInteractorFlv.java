@@ -31,6 +31,7 @@ import org.smartregister.chw.hf.dao.HfAncDao;
 import org.smartregister.chw.hf.repository.HfLocationRepository;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hf.utils.ContactUtil;
+import org.smartregister.chw.hf.utils.HfAncJsonFormUtils;
 import org.smartregister.chw.hiv.dao.HivDao;
 import org.smartregister.chw.referral.util.JsonFormConstants;
 import org.smartregister.domain.Location;
@@ -236,7 +237,7 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
             obstetricForm = setMinFundalHeight(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncFirstVisit.OBSTETRIC_EXAMINATION), memberObject.getBaseEntityId());
             obstetricForm.getJSONObject("global").put("last_menstrual_period", memberObject.getLastMenstrualPeriod());
             if (details != null && !details.isEmpty()) {
-                JsonFormUtils.populateForm(obstetricForm, details);
+              HfAncJsonFormUtils.populateForm(obstetricForm, details);
             }
         } catch (JSONException e) {
             Timber.e(e);
@@ -260,7 +261,7 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
             }
 
             if (details != null && !details.isEmpty()) {
-                JsonFormUtils.populateForm(medicalSurgicalHistoryForm, details);
+                HfAncJsonFormUtils.populateForm(medicalSurgicalHistoryForm, details);
             }
         } catch (JSONException e) {
             Timber.e(e);
@@ -276,7 +277,7 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
             hivTestNumberField.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getNextHivTestNumber(memberObject.getBaseEntityId()));
 
             if (details != null && !details.isEmpty()) {
-                JsonFormUtils.populateForm(baselineInvestigationForm, details);
+                HfAncJsonFormUtils.populateForm(baselineInvestigationForm, details);
             }
         } catch (JSONException e) {
             Timber.e(e);
@@ -394,7 +395,7 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
                         JSONObject hivTestNumberField = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "hiv_test_number");
                         hivTestNumberField.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getNextHivTestNumber(memberObject.getBaseEntityId()));
                         if (details != null && !details.isEmpty()) {
-                            JsonFormUtils.populateForm(baselineInvestigationFormForKnownPositive, details);
+                            HfAncJsonFormUtils.populateForm(baselineInvestigationFormForKnownPositive, details);
                         }
                     } catch (JSONException e) {
                         Timber.e(e);
