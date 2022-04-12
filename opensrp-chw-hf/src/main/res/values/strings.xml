@@ -180,5 +180,6 @@
     <string name="print_report">Print</string>
     <string name="pnc_reports">PNC Reports</string>
     <string name="month">Month</string>
+    <string name="head_circumference_min_err">Head Circumference must be equal or greater than %s CM</string>
 
 </resources>

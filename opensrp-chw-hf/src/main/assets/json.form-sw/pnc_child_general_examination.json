@@ -140,6 +140,153 @@
         }
       },
       {
+        "key": "hb_level_test",
+        "type": "native_radio",
+        "label": "Kipimo wa Kiwango cha damu (HB)",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hb_level_test",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "test_conducted",
+            "text": "Kipimo cha kiwango cha damu (HB) kimefanyika",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "test_conducted",
+            "openmrs_entity_parent": ""
+          },
+          {
+            "key": "test_not_conducted",
+            "text": "Kipimo cha kiwango cha damu (HB) hakijafanyika",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "test_not_conducted"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali jibu swali hili"
+        }
+      },
+      {
+        "key": "hb_level",
+        "type": "edit_text",
+        "hint": "Kiwango cha damu (HB) (g/dl)",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hb_level",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Tafadhali ingiza kiwango cha damu (HB)"
+        },
+        "v_min": {
+          "value": "0",
+          "err":"Kiwango cha damu (HB) lazima kiwe sawasawa au zaidi ya 0 (g/dl)"
+        },
+        "v_max": {
+          "value": "20",
+          "err": "Kiwango cha damu (HB) lazima kiwe sawasawa au chini ya20 (g/dl)"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali weka thamani"
+        },
+        "relevance": {
+          "step1:hb_level_test": {
+            "type": "string",
+            "ex": "equalTo(., \"test_conducted\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_severe_anaemia_treatment",
+        "type": "toaster_notes",
+        "text": "Dhibiti hali hii ya upungufu mkubwa wa damu kulingana na muongozo wa Wizara ya Afya",
+        "openmrs_entity_id": "prompt_for_severe_anaemia_treatment",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:hb_level": {
+            "type": "numeric",
+            "ex": "lessThanEqualTo(.,\"8.5\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_moderate_anaemia_management",
+        "type": "toaster_notes",
+        "text": "Dhibiti hali hii ya ukosefu wa damu kulingana na muongozo wa Wizara ya Afya",
+        "openmrs_entity_id": "prompt_for_moderate_anaemia_management",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_lab_test_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "reason_for_not_conducting_hb_test",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_conducting_hb_test",
+        "type": "spinner",
+        "hint": "Sababu ya kutofanya kipimo cha kiwango cha damu (HB)",
+        "values": [
+          "Vifaa vya kupima vimeisha",
+          "Mteja alikuwa katika hali ya dharura",
+          "Mteja alikataa kupimwa",
+          "Tunaendelea kumshauri mteja",
+          "Nyingine"
+        ],
+        "keys": [
+          "test_kits_are_out_of_stock",
+          "the_client_was_in_an_emergency_situation",
+          "the_client_refused_to_be_tested",
+          "we_are_still_counselling_the_client",
+          "other"
+        ],
+        "openmrs_choice_ids": {
+          "test_kits_are_out_of_stock": "test_kits_are_out_of_stock",
+          "the_client_was_in_an_emergency_situation": "the_client_was_in_an_emergency_situation",
+          "the_client_refused_to_be_tested": "the_client_refused_to_be_tested",
+          "we_are_still_counselling_the_client": "we_are_still_counselling_the_client",
+          "other": "other"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua sababu"
+        },
+        "relevance": {
+          "step1:hb_level_test": {
+            "type": "string",
+            "ex": "equalTo(., \"test_not_conducted\")"
+          }
+        }
+      },
+      {
+        "key": "other_reason_hb_test_not_conducted",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reason_hb_test_not_conducted",
+        "type": "edit_text",
+        "hint": "Sababu nyingine ya kutofanya kipimo cha kiwango cha damu (HB)",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali ingiza sababu"
+        },
+        "relevance": {
+          "step1:reason_for_not_conducting_hb_test": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
+          }
+        }
+      },
+      {
         "key": "temperature",
         "type": "edit_text",
         "hint": "Joto (C)",
@@ -196,17 +343,18 @@
       {
         "key": "head_circumference",
         "type": "edit_text",
-        "hint": "Mzunguko wa kichwa cha Mtoto (cm)",
+        "hint": "Mzunguko wa kichwa cha Mtoto (CM)",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "head_circumference",
         "openmrs_entity_parent": "",
         "v_numeric": {
           "value": "true",
-          "err": "Tafadhari ingiza mzunguko wa kichwa (cm)"
+          "err": "Tafadhari ingiza mzunguko wa kichwa (CM)"
         },
+        "v_min": {},
         "v_required": {
           "value": true,
-          "err": "Tafadhari ingiza Urefu"
+          "err": "Tafadhari ingiza mzunguko wa kichwa (CM)"
         }
       },
       {
@@ -242,17 +390,17 @@
       {
         "key": "upper_arm_circumference",
         "type": "edit_text",
-        "hint": "Mzunguko wa juu wa  mkono (cm)",
+        "hint": "Mzunguko wa juu wa  mkono (CM)",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "upper_arm_circumference",
         "openmrs_entity_parent": "",
         "v_numeric": {
           "value": "true",
-          "err": "Ingiza Mzunguko wa juu wa  mkono (cm)"
+          "err": "Ingiza Mzunguko wa juu wa  mkono (CM)"
         },
         "v_required": {
           "value": true,
-          "err": "Ingiza Urefu"
+          "err": "Ingiza mzunguko wa juu wa  mkono (CM)"
         }
       },
       {
@@ -265,21 +413,47 @@
         "options": [
           {
             "key": "ebf",
-            "text": "Kumnyonyesha maziwa ya mama pekee kwa kipindi cha Miezi 6 ya Mwanzo",
+            "text": "Kumnyonyesha maziwa ya mama pekee kwa kipindi cha Miezi 6 ya Mwanzo (EBF)",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "ebf"
           },
           {
-            "key": "non_bf",
-            "text": "Hanyonyi",
+            "key": "rf",
+            "text": "Kumnyonyesha maziwa mbadala (RF)",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "non_bf"
+            "openmrs_entity_id": "rf"
           },
           {
-            "key": "suckling_reflexes",
-            "text": "Suckling reflexes",
+            "key": "mf",
+            "text": "Ananyonyeshwa maziwa ya mama na kupatiwa chakula kingine (MF)",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "suckling_reflexes"
+            "openmrs_entity_id": "mf"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhari jibu swali hili"
+        }
+      },
+      {
+        "key": "septicaemia",
+        "type": "native_radio",
+        "label": "Mtoto ana uambukizo mkali (Septicaemia)",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "septicaemia",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndio",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
           }
         ],
         "v_required": {
@@ -404,6 +578,39 @@
                 ]
               }
             ]
+          }
+        }
+      },
+      {
+        "key": "kangaroo_enrollment",
+        "type": "native_radio",
+        "label": "Je, mtoto ameanzishiwa huduma ya kangaroo (KMC)?",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "kangaroo_enrollment",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndio",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhari jibu swali hili"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pnc_child_examination_relevance.yml"
+            }
           }
         }
       },

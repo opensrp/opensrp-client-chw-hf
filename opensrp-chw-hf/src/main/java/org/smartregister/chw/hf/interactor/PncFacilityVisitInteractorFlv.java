@@ -37,6 +37,24 @@ public class PncFacilityVisitInteractorFlv implements AncFirstFacilityVisitInter
     LinkedHashMap<String, BaseAncHomeVisitAction> actionList = new LinkedHashMap<>();
     private List<ChildModel> children;
 
+    private static JSONObject setMinChildHeadCircumference(JSONObject form, String baseEntityId, Context context) {
+        double currentMinHeadCircumference = HfPncDao.getChildMinHeadCircumference(baseEntityId);
+        try {
+            JSONArray fields = form.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+            //update head_circumference minimum
+            JSONObject head_circumference = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "head_circumference");
+
+            if (head_circumference != null) {
+                JSONObject v_min = head_circumference.getJSONObject("v_min");
+                v_min.put("value", currentMinHeadCircumference);
+                v_min.put("err", context.getString(R.string.head_circumference_min_err, String.valueOf(currentMinHeadCircumference)) );
+            }
+        } catch (JSONException e) {
+            Timber.e(e);
+        }
+        return form;
+    }
+
     @Override
     public LinkedHashMap<String, BaseAncHomeVisitAction> calculateActions(BaseAncHomeVisitContract.View view, MemberObject memberObject, BaseAncHomeVisitContract.InteractorCallBack callBack) throws BaseAncHomeVisitAction.ValidationException {
 
@@ -85,7 +103,7 @@ public class PncFacilityVisitInteractorFlv implements AncFirstFacilityVisitInter
                 .build();
         actionList.put(context.getString(R.string.mother_general_examination), motherGeneralExamination);
         for (ChildModel child : children) {
-            JSONObject childGeneralExamForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.getPncChildGeneralExamination());
+            JSONObject childGeneralExamForm = setMinChildHeadCircumference(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.getPncChildGeneralExamination()), child.getBaseEntityId(), context);
             try {
                 childGeneralExamForm.getJSONObject("global").put("baseEntityId", child.getBaseEntityId());
                 childGeneralExamForm.getJSONObject("global").put("is_eligible_for_bcg", HfPncDao.isChildEligibleForBcg(child.getBaseEntityId()));

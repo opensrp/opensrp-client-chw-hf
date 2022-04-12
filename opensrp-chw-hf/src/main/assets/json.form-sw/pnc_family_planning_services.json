@@ -78,7 +78,7 @@
       {
         "key": "iec_given",
         "type": "native_radio",
-        "label": "Were IEC materials given?",
+        "label": "Je, alipewa vijarida vya IEC?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "iec_given",
         "openmrs_entity_parent": "",
@@ -117,7 +117,7 @@
           },
           {
             "key": "chk_pills",
-            "text": "Vidonge",
+            "text": "Vidonge (Progestogen-only pill)",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_pills"
           },
@@ -129,25 +129,25 @@
           },
           {
             "key": "chk_jadelle",
-            "text": "Jadelle",
+            "text": "Vipandikizi (Jadelle)",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_jadelle"
           },
           {
             "key": "chk_implants",
-            "text": "Vipandikizi",
+            "text": "Vipandikizi (Implants)",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_implants"
           },
           {
             "key": "chk_iucd",
-            "text": "IUCD",
+            "text": "Kitanzi (IUCD)",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_iucd"
           },
           {
             "key": "chk_tubal_ligation",
-            "text": "Bilateral Tubal Ligation",
+            "text": "Bilateral Tubal Ligation (BTL)",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_tubal_ligation"
           },

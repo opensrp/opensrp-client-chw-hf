@@ -349,11 +349,12 @@
         "openmrs_entity_parent": "",
         "v_numeric": {
           "value": "true",
-          "err": "Please enter the head circumference"
+          "err": "Please enter the head circumference (CM)"
         },
+        "v_min": {},
         "v_required": {
           "value": true,
-          "err": "Please enter the height"
+          "err": "Please enter the head circumference (CM)"
         }
       },
       {
@@ -395,11 +396,11 @@
         "openmrs_entity_parent": "",
         "v_numeric": {
           "value": "true",
-          "err": "Please enter the upper arm circumference"
+          "err": "Please enter the upper arm circumference (CM)"
         },
         "v_required": {
           "value": true,
-          "err": "Please enter the height"
+          "err": "Please enter the upper arm circumference (CM)"
         }
       },
       {
@@ -412,19 +413,19 @@
         "options": [
           {
             "key": "ebf",
-            "text": "Exclusive Breastfeeding(EBF)",
+            "text": "Exclusive Breastfeeding (EBF)",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "ebf"
           },
           {
             "key": "rf",
-            "text": "Replacement Feeding(RF)",
+            "text": "Replacement Feeding (RF)",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "non_bf"
           },
           {
             "key": "mf",
-            "text": "Mixed Feeding(MF)",
+            "text": "Mixed Feeding (MF)",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "suckling_reflexes"
           }
@@ -458,13 +459,6 @@
         "v_required": {
           "value": "true",
           "err": "Please answer this question"
-        },
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "pnc_child_examination_relevance.yml"
-            }
-          }
         }
       },
       {
@@ -590,7 +584,7 @@
       {
         "key": "kangaroo_enrollment",
         "type": "native_radio",
-        "label": "Was the child enrolled to Kangaroo Care",
+        "label": "Was the child enrolled to Kangaroo Care (KMC)?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "kangaroo_enrollment",
         "openmrs_entity_parent": "",
