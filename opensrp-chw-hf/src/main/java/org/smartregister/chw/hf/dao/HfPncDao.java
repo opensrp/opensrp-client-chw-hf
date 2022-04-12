@@ -157,6 +157,19 @@ public class HfPncDao extends PNCDao {
         return false;
     }
 
+    public static double getChildMinHeadCircumference(String baseEntityId) {
+        //query from child table the head_circumference and return the value
+        String query = "SELECT head_circumference FROM ec_child WHERE base_entity_id = '" + baseEntityId + "'";
+
+        DataMap<Double> dataMap = cursor -> Double.parseDouble(getCursorValue(cursor, "head_circumference", "0"));
+        List<Double> res = readData(query, dataMap);
+
+        if ((res != null && res.size() != 0)) {
+            return res.get(0);
+        }
+        return 0;
+    }
+
 
     public static int getVisitNumber(String baseEntityID) {
         String sql = "SELECT visit_number  FROM ec_pnc_followup WHERE entity_id='" + baseEntityID + "' ORDER BY visit_number DESC LIMIT 1";

@@ -351,6 +351,7 @@
           "value": "true",
           "err": "Please enter the head circumference (CM)"
         },
+        "v_min": {},
         "v_required": {
           "value": true,
           "err": "Please enter the head circumference (CM)"

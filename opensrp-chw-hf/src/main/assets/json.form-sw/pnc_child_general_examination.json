@@ -351,6 +351,7 @@
           "value": "true",
           "err": "Tafadhari ingiza mzunguko wa kichwa (CM)"
         },
+        "v_min": {},
         "v_required": {
           "value": true,
           "err": "Tafadhari ingiza mzunguko wa kichwa (CM)"
