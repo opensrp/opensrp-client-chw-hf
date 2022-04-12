@@ -144,6 +144,19 @@ public class HfPncDao extends PNCDao {
         return res;
     }
 
+    public static boolean isChildEligibleForKangaroo(String baseEntityId, String motherBaseEntityId) {
+        //child is eligible for kangaroo if weight at birth is less than 2.5kg and if its first visit
+        String query = "SELECT weight FROM ec_child WHERE base_entity_id = '" + baseEntityId + "'";
+
+        DataMap<Double> dataMap = cursor -> Double.parseDouble(getCursorValue(cursor, "weight", "0"));
+        List<Double> res = readData(query, dataMap);
+
+        if ((res != null && res.size() != 0)) {
+            return (res.get(0) < 2.5 && getVisitNumber(motherBaseEntityId) == 0);
+        }
+        return false;
+    }
+
 
     public static int getVisitNumber(String baseEntityID) {
         String sql = "SELECT visit_number  FROM ec_pnc_followup WHERE entity_id='" + baseEntityID + "' ORDER BY visit_number DESC LIMIT 1";

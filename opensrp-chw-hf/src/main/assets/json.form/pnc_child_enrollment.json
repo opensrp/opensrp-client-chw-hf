@@ -379,6 +379,30 @@
           "value": "true",
           "err": "Please select one"
         }
+      },
+      {
+        "key": "weight",
+        "type": "edit_text",
+        "hint": "Weight (KG)",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "weight",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the weight"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "The weight must be equal or greater than 0 (KG)"
+        },
+        "v_max": {
+          "value": "30",
+          "err": "The weight must be equal or less than 30 (KG)"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter the weight"
+        }
       }
     ]
   }

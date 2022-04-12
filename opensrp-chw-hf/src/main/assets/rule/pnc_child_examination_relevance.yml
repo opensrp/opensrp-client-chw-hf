@@ -12,3 +12,10 @@ priority: 1
 condition: "!global_is_eligible_for_opv0"
 actions:
   - "isRelevant = true"
+---
+name: step1_kangaroo_enrollment
+description: kangaroo_enrollment relevance
+priority: 1
+condition: "global_is_eligible_for_kangaroo"
+actions:
+  - "isRelevant = true"
