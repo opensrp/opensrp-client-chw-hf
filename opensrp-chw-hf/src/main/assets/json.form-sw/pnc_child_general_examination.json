@@ -582,6 +582,58 @@
         }
       },
       {
+        "key": "jaundice",
+        "type": "native_radio",
+        "label": "Does the child have jaundice?",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "jaundice",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndio",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jibu swali hili"
+        }
+      },
+      {
+        "key": "skin_infection",
+        "type": "native_radio",
+        "label": "Does the child have skin infection?",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "skin_infection",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndio",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jibu swali hili"
+        }
+      },
+      {
         "key": "kangaroo_enrollment",
         "type": "native_radio",
         "label": "Je, mtoto ameanzishiwa huduma ya kangaroo (KMC)?",
