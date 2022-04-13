@@ -2304,6 +2304,78 @@
             "field": "obs.fieldCode",
             "concept": "visit_number"
           }
+        },
+        {
+          "column_name": "hb_level",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "hb_level"
+          }
+        },
+        {
+          "column_name": "puerperal_psychosis",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "puerperal_psychosis"
+          }
+        },
+        {
+          "column_name": "mental_illness_symptom",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "mental_illness_symptom"
+          }
+        },
+        {
+          "column_name": "iron_and_folic_acid",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "iron_and_folic_acid"
+          }
+        },
+        {
+          "column_name": "vitamin_a",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "vitamin_a"
+          }
+        },
+        {
+          "column_name": "perineum_infection",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "perineum_infection"
+          }
+        },
+        {
+          "column_name": "fistula",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "fistula"
+          }
+        },
+        {
+          "column_name": "education_counselling_given",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "education_counselling_given"
+          }
+        },
+        {
+          "column_name": "method_provided",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "method_provided"
+          }
         }
       ]
     },

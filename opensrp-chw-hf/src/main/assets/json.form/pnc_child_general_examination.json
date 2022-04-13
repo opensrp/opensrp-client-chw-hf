@@ -168,7 +168,7 @@
         }
       },
       {
-        "key": "hb_level",
+        "key": "child_hb_level",
         "type": "edit_text",
         "hint": "HB Level (g/dl)",
         "openmrs_entity": "concept",
@@ -206,7 +206,7 @@
         "openmrs_entity_parent": "",
         "toaster_type": "problem",
         "relevance": {
-          "step1:hb_level": {
+          "step1:child_hb_level": {
             "type": "numeric",
             "ex": "lessThanEqualTo(.,\"8.5\")"
           }
