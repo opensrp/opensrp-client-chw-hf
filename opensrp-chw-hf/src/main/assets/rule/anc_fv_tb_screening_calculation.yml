@@ -1,0 +1,7 @@
+---
+name: step1_tb_status
+description: tb_status calculated
+priority: 1
+condition: "true"
+actions:
+  - "calculation = step1_on_tb_treatment.contains('yes') ? 'positive': (step1_tb_symptoms_screening.contains('chk_none') ? 'negative' : step1_investigate_for_tb )"

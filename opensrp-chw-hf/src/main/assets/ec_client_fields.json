@@ -1400,6 +1400,29 @@
           }
         },
         {
+          "column_name": "tb_status",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "tb_status"
+          }
+        },{
+          "column_name": "tt1_vaccination",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "tt1_vaccination"
+          }
+        },
+        {
+          "column_name": "tt2_vaccination",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "tt2_vaccination"
+          }
+        },
+        {
           "column_name": "partner_base_entity_id",
           "type": "Event",
           "json_mapping": {

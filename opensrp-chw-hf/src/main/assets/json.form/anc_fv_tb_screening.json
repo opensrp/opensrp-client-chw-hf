@@ -1,0 +1,233 @@
+{
+  "count": "1",
+  "encounter_type": "ANC TB Screening",
+  "entity_id": "",
+  "global": {},
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "step1": {
+    "title": "TB Screening",
+    "fields": [
+      {
+        "key": "on_tb_treatment",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "on_tb_treatment",
+        "type": "native_radio",
+        "label": "Is the client on TB treatment?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an option"
+        }
+      },
+      {
+        "key": "tb_symptoms_screening",
+        "type": "check_box",
+        "label": "Please select if the client has any of the following TB symptoms",
+        "combine_checkbox_option_values": "true",
+        "openmrs_entity_id": "tb_symptoms_screening",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "exclusive": [
+          "chk_none"
+        ],
+        "options": [
+          {
+            "key": "chk_cough",
+            "text": "Cough for two or more weeks",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_cough"
+          },
+          {
+            "key": "chk_sputum",
+            "text": "Coughing up blood-stained sputum (hemoptysis)",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_sputum"
+          },
+          {
+            "key": "chk_fevers",
+            "text": "Fevers for two or more weeks?",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_fevers"
+          },
+          {
+            "key": "chk_weight_loss",
+            "text": "Noticeable weight loss for new patients or 3 kgs",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_weight_loss"
+          },
+          {
+            "key": "chk_weight_loss_subsequent_visit",
+            "text": "Weight loss in a month (subsequent visit)",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_weight_loss_subsequent_visit"
+          },
+          {
+            "key": "chk_excessive_sweating",
+            "text": "Excessive sweating at night for two or more weeks",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_excessive_sweating"
+          },
+          {
+            "key": "chk_none",
+            "text": "None",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_none"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select the topic(s)"
+        },
+        "relevance": {
+          "step1:on_tb_treatment": {
+            "type": "string",
+            "ex": "equalTo(., \"no\")"
+          }
+        }
+      },
+      {
+        "key": "investigate_for_tb",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "investigate_for_tb",
+        "type": "native_radio",
+        "label": "Investigate for TB",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "positive",
+            "text": "Positive",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "positive"
+          },
+          {
+            "key": "negative",
+            "text": "Negative",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "negative"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an option"
+        },
+        "relevance": {
+          "step1:tb_symptoms_screening": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "chk_cough",
+                  "chk_sputum",
+                  "chk_fevers",
+                  "chk_weight_loss",
+                  "chk_weight_loss_subsequent_visit",
+                  "chk_excessive_sweating"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "prompt_for_tb_treatment",
+        "type": "toaster_notes",
+        "text": "Refer the client for TB treatment",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:investigate_for_tb": {
+            "type": "string",
+            "ex": "equalTo(., \"positive\")"
+          }
+        }
+      },
+      {
+        "key": "tb_status",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "tb_status",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_tb_screening_calculation.yml"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

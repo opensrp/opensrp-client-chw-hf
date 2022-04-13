@@ -16,7 +16,6 @@ import org.smartregister.chw.anc.domain.Visit;
 import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
 import org.smartregister.chw.anc.util.AppExecutors;
-import org.smartregister.chw.anc.util.JsonFormUtils;
 import org.smartregister.chw.anc.util.VisitUtils;
 import org.smartregister.chw.core.utils.FormUtils;
 import org.smartregister.chw.hf.BuildConfig;
@@ -27,6 +26,7 @@ import org.smartregister.chw.hf.actionhelper.AncCounsellingAction;
 import org.smartregister.chw.hf.actionhelper.AncLabTestAction;
 import org.smartregister.chw.hf.actionhelper.AncPharmacyAction;
 import org.smartregister.chw.hf.actionhelper.AncTriageAction;
+import org.smartregister.chw.hf.actionhelper.AncTtVaccinationAction;
 import org.smartregister.chw.hf.dao.HfAncDao;
 import org.smartregister.chw.hf.repository.HfLocationRepository;
 import org.smartregister.chw.hf.utils.Constants;
@@ -331,6 +331,17 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                     Timber.e(e);
                 }
 
+                JSONObject ttVaccinationForm = null;
+                try {
+                    ttVaccinationForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncFirstVisit.TT_VACCINATION);
+                    ttVaccinationForm.getJSONObject("global").put("tt1_vaccination_given", HfAncDao.isTT1Given(baseEntityId));
+                    if (details != null && !details.isEmpty()) {
+                        HfAncJsonFormUtils.populateForm(ttVaccinationForm, details);
+                    }
+                } catch (JSONException e) {
+                    Timber.e(e);
+                }
+
                 if (pregnancy_status != null) {
                     try {
                         BaseAncHomeVisitAction consultation = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_cunsultation))
@@ -344,7 +355,6 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                     } catch (BaseAncHomeVisitAction.ValidationException e) {
                         e.printStackTrace();
                     }
-
                     try {
                         BaseAncHomeVisitAction labTests = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_lab_tests))
                                 .withOptional(true)
@@ -356,6 +366,20 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                         actionList.put(context.getString(R.string.anc_recuring_visit_lab_tests), labTests);
                     } catch (BaseAncHomeVisitAction.ValidationException e) {
                         e.printStackTrace();
+                    }
+                    if (!HfAncDao.isTT2Given(baseEntityId)) {
+                        try {
+                            BaseAncHomeVisitAction vaccinationAction = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_first_visit_tt_vaccination))
+                                    .withOptional(true)
+                                    .withDetails(details)
+                                    .withFormName(Constants.JsonForm.AncFirstVisit.getTtVaccination())
+                                    .withJsonPayload(ttVaccinationForm.toString())
+                                    .withHelper(new AncTtVaccinationAction(memberObject))
+                                    .build();
+                            actionList.put(context.getString(R.string.anc_first_visit_tt_vaccination), vaccinationAction);
+                        } catch (BaseAncHomeVisitAction.ValidationException e) {
+                            e.printStackTrace();
+                        }
                     }
 
                     try {
@@ -405,6 +429,9 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                 actionList.remove(context.getString(R.string.anc_recuring_visit_pharmacy));
                 actionList.remove(context.getString(R.string.anc_first_and_recurring_visit_counselling));
                 actionList.remove(context.getString(R.string.anc_recuring_visit_review_birth_and_emergency_plan));
+                if (!HfAncDao.isTT2Given(baseEntityId)) {
+                    actionList.remove(context.getString(R.string.anc_first_visit_tt_vaccination));
+                }
             }
             new AppExecutors().mainThread().execute(() -> callBack.preloadActions(actionList));
             return super.postProcess(s);
