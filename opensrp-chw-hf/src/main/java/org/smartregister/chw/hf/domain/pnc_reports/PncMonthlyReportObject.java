@@ -127,6 +127,36 @@ public class PncMonthlyReportObject extends ReportObject {
         indicatorCodes.add("pnc-9f-25-29");
         indicatorCodes.add("pnc-9f-30-34");
         indicatorCodes.add("pnc-9f-35+");
+        indicatorCodes.add("pnc-10a-10-14");
+        indicatorCodes.add("pnc-10a-15-19");
+        indicatorCodes.add("pnc-10a-20-24");
+        indicatorCodes.add("pnc-10a-25-29");
+        indicatorCodes.add("pnc-10a-30-34");
+        indicatorCodes.add("pnc-10a-35+");
+        indicatorCodes.add("pnc-10b-10-14");
+        indicatorCodes.add("pnc-10b-15-19");
+        indicatorCodes.add("pnc-10b-20-24");
+        indicatorCodes.add("pnc-10b-25-29");
+        indicatorCodes.add("pnc-10b-30-34");
+        indicatorCodes.add("pnc-10b-35+");
+        indicatorCodes.add("pnc-10c-10-14");
+        indicatorCodes.add("pnc-10c-15-19");
+        indicatorCodes.add("pnc-10c-20-24");
+        indicatorCodes.add("pnc-10c-25-29");
+        indicatorCodes.add("pnc-10c-30-34");
+        indicatorCodes.add("pnc-10c-35+");
+        indicatorCodes.add("pnc-10d-10-14");
+        indicatorCodes.add("pnc-10d-15-19");
+        indicatorCodes.add("pnc-10d-20-24");
+        indicatorCodes.add("pnc-10d-25-29");
+        indicatorCodes.add("pnc-10d-30-34");
+        indicatorCodes.add("pnc-10d-35+");
+        indicatorCodes.add("pnc-10e-10-14");
+        indicatorCodes.add("pnc-10e-15-19");
+        indicatorCodes.add("pnc-10e-20-24");
+        indicatorCodes.add("pnc-10e-25-29");
+        indicatorCodes.add("pnc-10e-30-34");
+        indicatorCodes.add("pnc-10e-35+");
     }
     @Override
     public JSONObject getIndicatorData() throws JSONException {

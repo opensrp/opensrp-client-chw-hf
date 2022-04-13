@@ -562,6 +562,13 @@
           },
           {
             "field": "eventType",
+            "field_value": "PNC Child Followup",
+            "creates_case": [
+              "ec_pnc_child_followup"
+            ]
+          },
+          {
+            "field": "eventType",
             "field_value": "Close PNC Visits",
             "closes_case": [
               "ec_pregnancy_outcome"

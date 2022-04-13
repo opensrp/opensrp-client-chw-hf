@@ -168,7 +168,7 @@
         }
       },
       {
-        "key": "child_hb_level",
+        "key": "hb_level",
         "type": "edit_text",
         "hint": "HB Level (g/dl)",
         "openmrs_entity": "concept",
@@ -206,7 +206,7 @@
         "openmrs_entity_parent": "",
         "toaster_type": "problem",
         "relevance": {
-          "step1:child_hb_level": {
+          "step1:hb_level": {
             "type": "numeric",
             "ex": "lessThanEqualTo(.,\"8.5\")"
           }
@@ -421,13 +421,13 @@
             "key": "rf",
             "text": "Replacement Feeding (RF)",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "non_bf"
+            "openmrs_entity_id": "rf"
           },
           {
             "key": "mf",
             "text": "Mixed Feeding (MF)",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "suckling_reflexes"
+            "openmrs_entity_id": "mf"
           }
         ],
         "v_required": {
@@ -645,6 +645,21 @@
           "rules-engine": {
             "ex-rules": {
               "rules-file": "pnc_child_examination_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "followup_visit_date",
+        "type": "edit_text",
+        "hidden": "true",
+        "openmrs_entity_id": "followup_visit_date",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pnc_followup_calculation.yml"
             }
           }
         }
