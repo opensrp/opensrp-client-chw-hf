@@ -212,7 +212,7 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
                 actionList.remove(context.getString(R.string.pmtct_baseline_investigation_title));
                 actionList.remove(context.getString(R.string.hvl_sample_collection));
                 actionList.remove(context.getString(R.string.cd4_sample_collection));
-                actionList.remove("Clinical Staging of HIV");
+                actionList.remove(context.getString(R.string.clinical_staging_of_hiv));
                 actionList.remove(context.getString(R.string.tb_screening_title));
                 actionList.remove(context.getString(R.string.arv_prescription_title));
             }
@@ -302,13 +302,13 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
 
 
         try {
-            BasePmtctHomeVisitAction ClinicalDiseaseStaging = new BasePmtctHomeVisitAction.Builder(context, "Clinical Staging of HIV")
+            BasePmtctHomeVisitAction ClinicalDiseaseStaging = new BasePmtctHomeVisitAction.Builder(context, context.getString(R.string.clinical_staging_of_hiv))
                     .withOptional(true)
                     .withDetails(details)
                     .withFormName(Constants.JsonForm.getPmtctClinicalStagingOfDisease())
                     .withHelper(new PmtctDiseaseStagingAction(memberObject))
                     .build();
-            actionList.put("Clinical Staging of HIV", ClinicalDiseaseStaging);
+            actionList.put(context.getString(R.string.clinical_staging_of_hiv), ClinicalDiseaseStaging);
         } catch (BasePmtctHomeVisitAction.ValidationException e) {
             e.printStackTrace();
         }

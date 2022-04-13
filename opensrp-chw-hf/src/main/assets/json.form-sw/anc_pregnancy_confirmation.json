@@ -79,7 +79,7 @@
           },
           {
             "key": "severely_pale",
-            "text": "Severely Pale",
+            "text": "Kupauka sana",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "severely_pale"
@@ -135,14 +135,14 @@
           },
           {
             "key": "in_labour",
-            "text": "In Labour",
+            "text": "Katika hali ya uchungu",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "in_labour"
           },
           {
             "key": "imminent_labour",
-            "text": "Imminent Labour",
+            "text": "Hali ya Uchungu inayokaribu",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "imminent_labour"
@@ -256,14 +256,14 @@
         "options": [
           {
             "key": "present_gestation_sac",
-            "text": "Kuwepo kwa Present Gestation Sac",
+            "text": "Mfuko wa uzazi upo",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "present_gestation_sac"
           },
           {
             "key": "absent_gestation_sac",
-            "text": "Kutokuwepo kwa Present Gestation Sac",
+            "text": "Mfuko wa uzazi haupo",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "absent_gestation_sac"
