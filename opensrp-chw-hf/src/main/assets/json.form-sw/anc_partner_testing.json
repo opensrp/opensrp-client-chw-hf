@@ -559,7 +559,6 @@
         "openmrs_entity_id": "partner_other_reason_for_not_giving_arv_medication_for_other_stds",
         "type": "edit_text",
         "hint": "Bainisha sababu zingine za kutokutoa ARV",
-        "edit_type": "name",
         "v_required": {
           "value": "true",
           "err": "Tafadhali jaza sababu"
