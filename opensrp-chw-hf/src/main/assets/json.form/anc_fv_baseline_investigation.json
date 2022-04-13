@@ -1387,7 +1387,6 @@
         "openmrs_entity_id": "other_reason_for_not_giving_arv_medication_for_other_stds",
         "type": "edit_text",
         "hint": "Specify other reasons for not giving ARV",
-        "edit_type": "name",
         "v_required": {
           "value": "true",
           "err": "Please enter the reason"
