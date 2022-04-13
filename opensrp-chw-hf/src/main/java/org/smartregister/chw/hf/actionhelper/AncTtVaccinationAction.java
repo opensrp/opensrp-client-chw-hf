@@ -10,6 +10,7 @@ import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.dao.HfAncDao;
 
 import java.util.List;
 import java.util.Map;
@@ -20,7 +21,7 @@ public class AncTtVaccinationAction implements BaseAncHomeVisitAction.AncHomeVis
     protected MemberObject memberObject;
     private String jsonPayload;
 
-    protected String has_tt_card;
+    protected String tt1_vaccination;
     private BaseAncHomeVisitAction.ScheduleStatus scheduleStatus;
     private String subTitle;
     private Context context;
@@ -51,7 +52,9 @@ public class AncTtVaccinationAction implements BaseAncHomeVisitAction.AncHomeVis
     public void onPayloadReceived(String jsonPayload) {
         try {
             JSONObject jsonObject = new JSONObject(jsonPayload);
-            has_tt_card = CoreJsonFormUtils.getValue(jsonObject, "has_tt_card");
+            String checkString = HfAncDao.isTT1Given(memberObject.getBaseEntityId()) ? "tt2_vaccination" : "tt1_vaccination";
+
+            tt1_vaccination = CoreJsonFormUtils.getValue(jsonObject, checkString);
         } catch (JSONException e) {
             Timber.e(e);
         }
@@ -74,12 +77,11 @@ public class AncTtVaccinationAction implements BaseAncHomeVisitAction.AncHomeVis
 
     @Override
     public String evaluateSubTitle() {
-        if (StringUtils.isBlank(has_tt_card))
+        if (StringUtils.isBlank(tt1_vaccination))
             return null;
 
         StringBuilder stringBuilder = new StringBuilder();
 
-        //TODO ilakoze extract to string recources
         stringBuilder.append(context.getString(R.string.tt_vaccination_filled));
 
         return stringBuilder.toString();
@@ -87,7 +89,7 @@ public class AncTtVaccinationAction implements BaseAncHomeVisitAction.AncHomeVis
 
     @Override
     public BaseAncHomeVisitAction.Status evaluateStatusOnPayload() {
-        if (StringUtils.isBlank(has_tt_card))
+        if (StringUtils.isBlank(tt1_vaccination))
             return BaseAncHomeVisitAction.Status.PENDING;
         else {
             return BaseAncHomeVisitAction.Status.COMPLETED;

@@ -11,6 +11,7 @@ import org.smartregister.chw.anc.repository.VisitDetailsRepository;
 import org.smartregister.chw.anc.repository.VisitRepository;
 import org.smartregister.chw.anc.util.NCUtils;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
+import org.smartregister.chw.hf.dao.HfAncDao;
 import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.repository.AllSharedPreferences;
 
@@ -45,7 +46,7 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
                    boolean isMedicalAndSurgicalHistoryDone = computeCompletionStatus(obs, "medical_surgical_history");
                    boolean isObstetricExaminationDone = computeCompletionStatus(obs, "abdominal_scars");
                    boolean isBaselineInvestigationDone = computeCompletionStatus(obs, "glucose_in_urine");
-                   boolean isTTVaccinationDone = computeCompletionStatus(obs, "tt_card");
+                   boolean isTTVaccinationDone = computeCompletionStatus(obs, "tt1_vaccination");
                    boolean isCounsellingDone = computeCompletionStatus(obs, "given_counselling");
                    if(isMedicalAndSurgicalHistoryDone &&
                       isObstetricExaminationDone &&
@@ -65,14 +66,23 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
                     boolean isTriageDone = computeCompletionStatus(obs, "rapid_examination");
                     boolean isPregnancyStatusDone = computeCompletionStatus(obs,"pregnancy_status");
 
+                    String ttCheckString = !HfAncDao.isTT1Given(v.getBaseEntityId()) ? "tt1_vaccination" : "tt2_vaccination";
+
                     if(isTriageDone && isPregnancyStatusDone){
                         if(checkIfStatusIsViable(obs)){
                             boolean isConsultationDone = computeCompletionStatus(obs, "examination_findings");
                             boolean isLabTestsDone = computeCompletionStatus(obs, "hb_level_test");
                             boolean isPharmacyDone = computeCompletionStatus(obs, "iron_folate_supplements");
                             boolean isCounsellingDone = computeCompletionStatus(obs, "given_counselling");
-                            if(isConsultationDone && isLabTestsDone && isPharmacyDone && isCounsellingDone){
-                                ancFollowupVisitsCompleted.add(v);
+                            boolean isTTVaccinationDone = computeCompletionStatus(obs, ttCheckString);
+                            if(!HfAncDao.isTT2Given(v.getBaseEntityId())){
+                                if(isConsultationDone && isLabTestsDone && isPharmacyDone && isCounsellingDone && isTTVaccinationDone){
+                                    ancFollowupVisitsCompleted.add(v);
+                                }
+                            }else{
+                                if(isConsultationDone && isLabTestsDone && isPharmacyDone && isCounsellingDone){
+                                    ancFollowupVisitsCompleted.add(v);
+                                }
                             }
                         }
                         else{

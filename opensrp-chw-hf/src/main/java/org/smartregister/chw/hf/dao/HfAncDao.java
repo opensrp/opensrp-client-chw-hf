@@ -442,4 +442,37 @@ public class HfAncDao extends AbstractDao {
         }
         return new ArrayList<>();
     }
+
+    public static boolean isTT1Given(String baseEntityId) {
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "tt1_vaccination");
+
+        String sql = String.format(
+                "SELECT tt1_vaccination FROM %s WHERE base_entity_id = '%s' AND tt1_vaccination IS NOT NULL " +
+                        "AND is_closed = 0",
+                "ec_anc_register",
+                baseEntityId
+        );
+
+        List<String> res = readData(sql, dataMap);
+        if (res.size() > 0 && res.get(0) != null) {
+            return res.get(0).equalsIgnoreCase("yes");
+        }
+        return false;
+    }
+    public static boolean isTT2Given(String baseEntityId) {
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "tt2_vaccination");
+
+        String sql = String.format(
+                "SELECT tt2_vaccination FROM %s WHERE base_entity_id = '%s' AND tt2_vaccination IS NOT NULL " +
+                        "AND is_closed = 0",
+                "ec_anc_register",
+                baseEntityId
+        );
+
+        List<String> res = readData(sql, dataMap);
+        if (res.size() > 0 && res.get(0) != null) {
+            return res.get(0).equalsIgnoreCase("yes");
+        }
+        return false;
+    }
 }
