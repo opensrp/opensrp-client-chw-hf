@@ -81,6 +81,7 @@ public class AncMemberProfilePresenter extends CoreAncMemberProfilePresenter {
             partnerTestingForm.getJSONObject("global").put("hepatitis_testing_done", HfAncDao.isPartnerTestedForHepatitis(memberObject.getBaseEntityId()));
             partnerTestingForm.getJSONObject("global").put("partner_hiv_test_at_32_done", HfAncDao.isPartnerHivTestConductedAtWk32(memberObject.getBaseEntityId()));
             partnerTestingForm.getJSONObject("global").put("partner_hiv_status", HfAncDao.getPartnerHivStatus(memberObject.getBaseEntityId()));
+            partnerTestingForm.getJSONObject("global").put("partner_other_stds", HfAncDao.getPartnerOtherStdsStatus(memberObject.getBaseEntityId()));
 
             JSONArray fields = partnerTestingForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
             JSONObject renamePartnerSecondHivAt32 = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "partner_hiv");

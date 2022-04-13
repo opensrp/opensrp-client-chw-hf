@@ -836,6 +836,72 @@
         }
       },
       {
+        "key": "hiv_counselling_before_testing",
+        "type": "native_radio",
+        "label": "Was the client provided with counselling before HIV testing?",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hiv_counselling_before_testing",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_lab_test_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "hiv_counselling_after_testing",
+        "type": "native_radio",
+        "label": "Was the client provided with counselling after HIV testing?",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hiv_counselling_after_testing",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_lab_test_relevance.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "syphilis",
         "type": "native_radio",
         "label": "Syphilis Test Results",
@@ -882,6 +948,38 @@
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "toaster_type": "problem",
+        "relevance": {
+          "step1:syphilis": {
+            "type": "string",
+            "ex": "equalTo(.,\"positive\")"
+          }
+        }
+      },
+      {
+        "key": "syphilis_treatment",
+        "type": "native_radio",
+        "label": "Was syphilis treatment provided?",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "syphilis_treatment",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        },
         "relevance": {
           "step1:syphilis": {
             "type": "string",
