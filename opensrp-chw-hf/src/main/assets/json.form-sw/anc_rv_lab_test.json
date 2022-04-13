@@ -836,6 +836,72 @@
         }
       },
       {
+        "key": "hiv_counselling_before_testing",
+        "type": "native_radio",
+        "label": "Je, Mteja alipewa ushauri nasaha kabla ya kupima VVU?",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hiv_counselling_before_testing",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndio",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jibu swali hili"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_lab_test_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "hiv_counselling_after_testing",
+        "type": "native_radio",
+        "label": "Je, Mteja alipewa ushauri nasaha baada ya kupima VVU?",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hiv_counselling_after_testing",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndio",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jibu swali hili"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_lab_test_relevance.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "syphilis",
         "type": "native_radio",
         "label": "Matokeo ya kipimo cha kaswende",
@@ -882,6 +948,38 @@
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "toaster_type": "problem",
+        "relevance": {
+          "step1:syphilis": {
+            "type": "string",
+            "ex": "equalTo(.,\"positive\")"
+          }
+        }
+      },
+      {
+        "key": "syphilis_treatment",
+        "type": "native_radio",
+        "label": "Je, matibabu ya Kaswende yalitolewa?",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "syphilis_treatment",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndio",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jibu swali hili"
+        },
         "relevance": {
           "step1:syphilis": {
             "type": "string",
@@ -995,9 +1093,10 @@
         "openmrs_entity_parent": "",
         "toaster_type": "problem",
         "relevance": {
-          "step1:hepatitis": {
-            "type": "string",
-            "ex": "equalTo(.,\"positive\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_lab_test_relevance.yml"
+            }
           }
         }
       },
@@ -1081,14 +1180,20 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "hiv_test_at_32",
         "openmrs_entity_parent": "",
-        "value": "true",
-        "relevance": {
+        "calculation": {
           "rules-engine": {
             "ex-rules": {
-              "rules-file": "anc_rv_lab_test_relevance.yml"
+              "rules-file": "anc_fv_baseline_investigation_calculation.yml"
             }
           }
         }
+      },
+      {
+        "key": "hiv_test_number",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hiv_test_number",
+        "type": "hidden"
       },
       {
         "key": "date_anc_hiv_test",
