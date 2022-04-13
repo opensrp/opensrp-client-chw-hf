@@ -276,6 +276,7 @@ public class Constants extends CoreConstants {
             private static final String MEDICAL_AND_SURGICAL_HISTORY = "anc_fv_medical_and_surgical_history";
             private static final String BASELINE_INVESTIGATION = "anc_fv_baseline_investigation";
             public static final String TT_VACCINATION = "anc_fv_tt_vaccination";
+            private static final String TB_SCREENING = "anc_fv_tb_screening";
 
             public static String getMedicalAndSurgicalHistory() {
                 return Utils.getLocalForm(MEDICAL_AND_SURGICAL_HISTORY, locale, assetManager);
@@ -291,6 +292,10 @@ public class Constants extends CoreConstants {
 
             public static String getTtVaccination() {
                 return Utils.getLocalForm(TT_VACCINATION, locale, assetManager);
+            }
+
+            public static String getTbScreening() {
+                return Utils.getLocalForm(TB_SCREENING, locale, assetManager);
             }
 
 

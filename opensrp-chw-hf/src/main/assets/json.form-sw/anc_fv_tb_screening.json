@@ -1,0 +1,233 @@
+{
+  "count": "1",
+  "encounter_type": "ANC TB Screening",
+  "entity_id": "",
+  "global": {},
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "step1": {
+    "title": "Uchunguzi wa Awali wa Kifua Kikuu",
+    "fields": [
+      {
+        "key": "on_tb_treatment",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "on_tb_treatment",
+        "type": "native_radio",
+        "label": "Je, Mteja huyu yupo katika Matibabu ya TB?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndiyo",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhari chagua mojawapo"
+        }
+      },
+      {
+        "key": "tb_symptoms_screening",
+        "type": "check_box",
+        "label": "Tafadhari chagua kama Mteja ana dalili zifuatazo za Kifua Kikuu?",
+        "combine_checkbox_option_values": "true",
+        "openmrs_entity_id": "tb_symptoms_screening",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "exclusive": [
+          "chk_none"
+        ],
+        "options": [
+          {
+            "key": "chk_cough",
+            "text": "Mteja anakohoa kwa wiki 2 na zaidi",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_cough"
+          },
+          {
+            "key": "chk_sputum",
+            "text": "Mteja anakohoa makohozi yaliyochanganyika na damu",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_sputum"
+          },
+          {
+            "key": "chk_fevers",
+            "text": "Mteja amekuwa na Homa kwa zaidi ya wiki mbili",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_fevers"
+          },
+          {
+            "key": "chk_weight_loss",
+            "text": "Mteja anapoteza Uzito",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_weight_loss"
+          },
+          {
+            "key": "chk_weight_loss_subsequent_visit",
+            "text": "Mteja amepungua uzito katika mfululizo mahudhulio",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_weight_loss_subsequent_visit"
+          },
+          {
+            "key": "chk_excessive_sweating",
+            "text": "Mteja amekuwa akitoka na jasho jingi sana usiku kwa wiki mbili au zaidi",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_excessive_sweating"
+          },
+          {
+            "key": "chk_none",
+            "text": "Hakuna",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_none"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhari chagua mada"
+        },
+        "relevance": {
+          "step1:on_tb_treatment": {
+            "type": "string",
+            "ex": "equalTo(., \"no\")"
+          }
+        }
+      },
+      {
+        "key": "investigate_for_tb",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "investigate_for_tb",
+        "type": "native_radio",
+        "label": "Fanya uchunguzi wa TB",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "positive",
+            "text": "Chanya",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "positive"
+          },
+          {
+            "key": "negative",
+            "text": "Hazi",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "negative"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhari chagua mojawapo:"
+        },
+        "relevance": {
+          "step1:tb_symptoms_screening": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "chk_cough",
+                  "chk_sputum",
+                  "chk_fevers",
+                  "chk_weight_loss",
+                  "chk_weight_loss_subsequent_visit",
+                  "chk_excessive_sweating"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "prompt_for_tb_treatment",
+        "type": "toaster_notes",
+        "text": "Mpe rufaa mteja kwa ajili ya Matibabu ya TB",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:investigate_for_tb": {
+            "type": "string",
+            "ex": "equalTo(., \"positive\")"
+          }
+        }
+      },
+      {
+        "key": "tb_status",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "tb_status",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_tb_screening_calculation.yml"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

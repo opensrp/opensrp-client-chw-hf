@@ -26,6 +26,7 @@ import org.smartregister.chw.hf.actionhelper.AncBaselineInvestigationAction;
 import org.smartregister.chw.hf.actionhelper.AncBirthReviewAction;
 import org.smartregister.chw.hf.actionhelper.AncCounsellingAction;
 import org.smartregister.chw.hf.actionhelper.AncObstetricExaminationAction;
+import org.smartregister.chw.hf.actionhelper.AncTbScreeningAction;
 import org.smartregister.chw.hf.actionhelper.AncTtVaccinationAction;
 import org.smartregister.chw.hf.dao.HfAncDao;
 import org.smartregister.chw.hf.repository.HfLocationRepository;
@@ -237,7 +238,7 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
             obstetricForm = setMinFundalHeight(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncFirstVisit.OBSTETRIC_EXAMINATION), memberObject.getBaseEntityId());
             obstetricForm.getJSONObject("global").put("last_menstrual_period", memberObject.getLastMenstrualPeriod());
             if (details != null && !details.isEmpty()) {
-              HfAncJsonFormUtils.populateForm(obstetricForm, details);
+                HfAncJsonFormUtils.populateForm(obstetricForm, details);
             }
         } catch (JSONException e) {
             Timber.e(e);
@@ -247,17 +248,17 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
         try {
             medicalSurgicalHistoryForm = firstPregnancyAboveThirtyFive(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncFirstVisit.getMedicalAndSurgicalHistory()), memberObject, context);
 
-            if(HivDao.isRegisteredForHiv(memberObject.getBaseEntityId())){
+            if (HivDao.isRegisteredForHiv(memberObject.getBaseEntityId())) {
                 JSONArray fields = medicalSurgicalHistoryForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
 
                 JSONObject questionField = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "medical_surgical_history");
-                JSONArray options = org.smartregister.util.JsonFormUtils.getJSONArray(questionField,"options");
-                JSONObject knownOnArtOption = org.smartregister.util.JsonFormUtils.getFieldJSONObject(options,"known_on_art");
-                knownOnArtOption.put(JsonFormUtils.VALUE,true);
+                JSONArray options = org.smartregister.util.JsonFormUtils.getJSONArray(questionField, "options");
+                JSONObject knownOnArtOption = org.smartregister.util.JsonFormUtils.getFieldJSONObject(options, "known_on_art");
+                knownOnArtOption.put(JsonFormUtils.VALUE, true);
 
                 JSONObject ctcNumber = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "ctc_number");
-                ctcNumber.put(JsonFormUtils.VALUE,HivDao.getMember(memberObject.getBaseEntityId()).getCtcNumber());
-                ctcNumber.put("read_only",true);
+                ctcNumber.put(JsonFormUtils.VALUE, HivDao.getMember(memberObject.getBaseEntityId()).getCtcNumber());
+                ctcNumber.put("read_only", true);
             }
 
             if (details != null && !details.isEmpty()) {
@@ -310,6 +311,18 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
                 .withHelper(new AncBaselineInvestigationAction(memberObject))
                 .build();
         actionList.put(context.getString(R.string.anc_first_visit_baseline_investigation), baselineInvestigationAction);
+        try {
+            BaseAncHomeVisitAction TbScreening = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.tb_screening_title))
+                    .withOptional(true)
+                    .withDetails(details)
+                    .withFormName(Constants.JsonForm.AncFirstVisit.getTbScreening())
+                    .withHelper(new AncTbScreeningAction(memberObject))
+                    .build();
+            actionList.put(context.getString(R.string.tb_screening_title), TbScreening);
+
+        } catch (BaseAncHomeVisitAction.ValidationException e) {
+            e.printStackTrace();
+        }
 
         BaseAncHomeVisitAction vaccinationAction = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_first_visit_tt_vaccination))
                 .withOptional(true)

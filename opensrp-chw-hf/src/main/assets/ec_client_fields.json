@@ -1400,6 +1400,13 @@
           }
         },
         {
+          "column_name": "tb_status",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "tb_status"
+          }
+        },{
           "column_name": "tt1_vaccination",
           "type": "Event",
           "json_mapping": {
