@@ -1167,6 +1167,14 @@
           }
         },
         {
+          "column_name": "head_circumference",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "head_circumference"
+          }
+        },
+        {
           "column_name": "kangaroo_enrollment",
           "type": "Event",
           "json_mapping": {
