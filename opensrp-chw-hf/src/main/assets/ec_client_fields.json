@@ -1448,6 +1448,14 @@
           }
         },
         {
+          "column_name": "partner_other_stds",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "partner_other_stds"
+          }
+        },
+        {
           "column_name": "last_home_visit",
           "type": "Event",
           "json_mapping": {

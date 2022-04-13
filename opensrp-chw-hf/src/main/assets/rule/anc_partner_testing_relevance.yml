@@ -26,3 +26,10 @@ priority: 1
 condition: "((global_gestational_age >= 32  && global_partner_hiv_status.contains('negative')) && !global_partner_hiv_test_at_32_done)"
 actions:
   - "isRelevant = true"
+---
+name: step1_partner_other_stds
+description: To only show up once
+priority: 1
+condition: "global_partner_other_stds == 'null'"
+actions:
+  - "isRelevant = true"

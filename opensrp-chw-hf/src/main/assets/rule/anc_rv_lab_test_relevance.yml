@@ -82,3 +82,17 @@ priority: 1
 condition: "(step1_hepatitis.contains('positive') && global_gestational_age < 28)"
 actions:
   - "isRelevant = true"
+---
+name: step1_hiv_counselling_before_testing
+description:  Showing of HIV counselling question
+priority: 1
+condition: "!global_hiv_test_complete && (step1_hiv.contains('positive') || step1_hiv.contains('negative')) || ((global_gestational_age >= 32  && global_hiv_status.contains('negative')) && !global_hiv_test_at_32_complete && (step1_hiv.contains('positive') || step1_hiv.contains('negative')))"
+actions:
+  - "isRelevant = true"
+---
+name: step1_hiv_counselling_after_testing
+description: show the hiv counselling question after getting the test results
+priority: 1
+condition: "step1_hiv.contains('positive') || step1_hiv.contains('negative')"
+actions:
+  - "isRelevant = true"
