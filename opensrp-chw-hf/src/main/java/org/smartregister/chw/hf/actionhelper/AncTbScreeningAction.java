@@ -10,23 +10,21 @@ import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.hf.R;
-import org.smartregister.chw.hf.dao.HfAncDao;
 
 import java.util.List;
 import java.util.Map;
 
 import timber.log.Timber;
 
-public class AncTtVaccinationAction implements BaseAncHomeVisitAction.AncHomeVisitActionHelper {
+public class AncTbScreeningAction implements BaseAncHomeVisitAction.AncHomeVisitActionHelper {
     protected MemberObject memberObject;
     private String jsonPayload;
-
-    protected String tt1_vaccination;
-    private BaseAncHomeVisitAction.ScheduleStatus scheduleStatus;
-    private String subTitle;
+    private String on_tb_treatment;
     private Context context;
+    private String subTitle;
+    private BaseAncHomeVisitAction.ScheduleStatus scheduleStatus;
 
-    public AncTtVaccinationAction(MemberObject memberObject) {
+    public AncTbScreeningAction(MemberObject memberObject) {
         this.memberObject = memberObject;
     }
 
@@ -38,7 +36,6 @@ public class AncTtVaccinationAction implements BaseAncHomeVisitAction.AncHomeVis
 
     @Override
     public String getPreProcessed() {
-
         try {
             JSONObject jsonObject = new JSONObject(jsonPayload);
             return jsonObject.toString();
@@ -52,9 +49,7 @@ public class AncTtVaccinationAction implements BaseAncHomeVisitAction.AncHomeVis
     public void onPayloadReceived(String jsonPayload) {
         try {
             JSONObject jsonObject = new JSONObject(jsonPayload);
-            String checkString = HfAncDao.isTT1Given(memberObject.getBaseEntityId()) ? "tt2_vaccination" : "tt1_vaccination";
-
-            tt1_vaccination = CoreJsonFormUtils.getValue(jsonObject, checkString);
+            on_tb_treatment = CoreJsonFormUtils.getValue(jsonObject, "on_tb_treatment");
         } catch (JSONException e) {
             Timber.e(e);
         }
@@ -77,19 +72,18 @@ public class AncTtVaccinationAction implements BaseAncHomeVisitAction.AncHomeVis
 
     @Override
     public String evaluateSubTitle() {
-        if (StringUtils.isBlank(tt1_vaccination))
+        if (StringUtils.isBlank(on_tb_treatment))
             return null;
 
         StringBuilder stringBuilder = new StringBuilder();
-
-        stringBuilder.append(context.getString(R.string.tt_vaccination_filled));
+        stringBuilder.append(context.getString(R.string.pmtct_tb_screening));
 
         return stringBuilder.toString();
     }
 
     @Override
     public BaseAncHomeVisitAction.Status evaluateStatusOnPayload() {
-        if (StringUtils.isBlank(tt1_vaccination))
+        if (StringUtils.isBlank(on_tb_treatment))
             return BaseAncHomeVisitAction.Status.PENDING;
         else {
             return BaseAncHomeVisitAction.Status.COMPLETED;
@@ -97,7 +91,7 @@ public class AncTtVaccinationAction implements BaseAncHomeVisitAction.AncHomeVis
     }
 
     @Override
-    public void onPayloadReceived(BaseAncHomeVisitAction baseAncHomeVisitAction) {
+    public void onPayloadReceived(BaseAncHomeVisitAction basePmtctHomeVisitAction) {
         Timber.d("onPayloadReceived");
     }
 }

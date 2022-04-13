@@ -46,76 +46,102 @@
     },
     "encounter_location": ""
   },
+  "global": {
+    "tt1_vaccination_given": false
+  },
   "step1": {
     "title": "Chanjo ya Pepopunda (Tetenasi)",
     "fields": [
       {
-        "key": "has_tt_card",
-        "type": "native_radio",
-        "label": "Je, mteja ana kadi ya chanjo ya Tetenasi?",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "tt_card",
-        "openmrs_entity_parent": "",
-        "options": [
-          {
-            "text": "Ndiyo",
-            "key": "yes",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "yes"
-          },
-          {
-            "key": "no",
-            "text": "Hapana",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "no"
-          }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhali chagua moja"
-        }
-      },
-      {
-        "key": "if_vaccinated_per_schedule",
-        "type": "native_radio",
-        "label": "Angalia kadi kama amechanjwa kulingana na ratiba",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "if_vaccinated_per_schedule",
-        "openmrs_entity_parent": "",
-        "options": [
-          {
-            "text": "Ndiyo",
-            "key": "yes",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "yes"
-          },
-          {
-            "key": "no",
-            "text": "Hapana",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "no"
-          }
-        ],
-        "relevance": {
-          "step1:has_tt_card": {
-            "type": "string",
-            "ex": "equalTo(.,\"yes\")"
-          }
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhali chagua moja"
-        }
-      },
-      {
-        "key": "give_tt_vaccination",
+        "key": "give_tt1_vaccination",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "",
         "type": "toaster_notes",
-        "text": "Mpatie mama Chanjo ya pepopunda (TT1) na afuatulie utaratibu na ratiba ya chango kutoka na mwongozo wa chanjo",
-        "text_color": "#CF0800",
-        "toaster_type": "problem",
+        "text": "Mpatie Mama Chanjo ya Pepopunda (TT1) na afuatulie utaratibu na ratiba ya chango kutoka na mwongozo wa chanjo",
+        "toaster_type": "info",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_tt_vaccination_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "tt1_vaccination",
+        "type": "native_radio",
+        "label": "Mama amepatiwa chancho TT1?",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "tt1_vaccination",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "text": "Ndio",
+            "key": "yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select one"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_tt_vaccination_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "give_tt2_vaccination",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "toaster_notes",
+        "text": "Mpatie Mama Chanjo ya Pepopunda (TT2)",
+        "toaster_type": "info",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_tt_vaccination_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "tt2_vaccination",
+        "type": "native_radio",
+        "label": "Mama amepatiwa chancho TT2?",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "tt2_vaccination",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "text": "Ndio",
+            "key": "yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select one"
+        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {

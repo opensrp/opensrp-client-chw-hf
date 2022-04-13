@@ -181,6 +181,23 @@ public class HfAncDao extends AbstractDao {
         return false;
     }
 
+    public static String getPartnerOtherStdsStatus(String baseEntityId) {
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "partner_other_stds");
+
+        String sql = String.format(
+                "SELECT partner_other_stds FROM %s WHERE base_entity_id = '%s' " +
+                        "AND is_closed = 0",
+                "ec_anc_register",
+                baseEntityId
+        );
+
+        List<String> res = readData(sql, dataMap);
+        if (res.get(0) != null) {
+            return res.get(0);
+        }
+        return "null";
+    }
+
     public static boolean isClientClosed(String baseEntityId) {
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "is_closed");
 
@@ -441,5 +458,38 @@ public class HfAncDao extends AbstractDao {
             return res.get(0);
         }
         return new ArrayList<>();
+    }
+
+    public static boolean isTT1Given(String baseEntityId) {
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "tt1_vaccination");
+
+        String sql = String.format(
+                "SELECT tt1_vaccination FROM %s WHERE base_entity_id = '%s' AND tt1_vaccination IS NOT NULL " +
+                        "AND is_closed = 0",
+                "ec_anc_register",
+                baseEntityId
+        );
+
+        List<String> res = readData(sql, dataMap);
+        if (res.size() > 0 && res.get(0) != null) {
+            return res.get(0).equalsIgnoreCase("yes");
+        }
+        return false;
+    }
+    public static boolean isTT2Given(String baseEntityId) {
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "tt2_vaccination");
+
+        String sql = String.format(
+                "SELECT tt2_vaccination FROM %s WHERE base_entity_id = '%s' AND tt2_vaccination IS NOT NULL " +
+                        "AND is_closed = 0",
+                "ec_anc_register",
+                baseEntityId
+        );
+
+        List<String> res = readData(sql, dataMap);
+        if (res.size() > 0 && res.get(0) != null) {
+            return res.get(0).equalsIgnoreCase("yes");
+        }
+        return false;
     }
 }

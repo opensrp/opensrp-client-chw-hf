@@ -307,6 +307,38 @@
         }
       },
       {
+        "key": "partner_syphilis_treatment",
+        "type": "native_radio",
+        "label": "Je, matibabu ya Kaswende yalitolewa?",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "partner_syphilis_treatment",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndio",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jibu swali hili"
+        },
+        "relevance": {
+          "step1:partner_syphilis": {
+            "type": "string",
+            "ex": "equalTo(.,\"positive\")"
+          }
+        }
+      },
+      {
         "key": "partner_hepatitis",
         "type": "native_radio",
         "label": "Matokeo ya kipimo cha homa ya Ini",
@@ -419,18 +451,131 @@
         }
       },
       {
-        "key": "partner_hiv_test_at_32",
-        "type": "hidden",
+        "key": "partner_other_stds",
+        "type": "native_radio",
+        "label": "Je, Mteja anajulikana kuwa na magonjwa mengine za ngono?",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "partner_hiv_test_at_32",
+        "openmrs_entity_id": "partner_other_stds",
         "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndio",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jibu swali hili"
+        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
               "rules-file": "anc_partner_testing_relevance.yml"
             }
           }
+        }
+      },
+      {
+        "key": "partner_other_stds_treatment",
+        "type": "native_radio",
+        "label": "Je, ARV zilitolewa kwa magonjwa mengine za ngono?",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "partner_other_stds_treatment",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndio",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jibu swali hili"
         },
+        "relevance": {
+          "step1:partner_other_stds": {
+            "type": "string",
+            "ex": "equalTo(.,\"yes\")"
+          }
+        }
+      },
+      {
+        "key": "partner_reason_for_not_giving_arv_medication_for_other_stds",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "partner_reason_for_not_giving_arv_medication_for_other_stds",
+        "type": "spinner",
+        "hint": "Sababu kwa nini ARV haikutolewa",
+        "values": [
+          "Bidhaa zimeisha",
+          "Mteja amekataa kuchukua dawa",
+          "Anamzio na dawa (Allegy)",
+          "Nyingine"
+        ],
+        "keys": [
+          "out_of_stock",
+          "client_did_not_agree_medication",
+          "client_is_allergic_to_medication",
+          "other"
+        ],
+        "openmrs_choice_ids": {
+          "out_of_stock":  "out_of_stock",
+          "client_did_not_agree_medication": "client_did_not_agree_medication",
+          "the_client_refused_to_be_tested": "the_client_refused_to_be_tested",
+          "client_is_allergic_to_medication": "client_is_allergic_to_medication",
+          "other": "other"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua sababu"
+        },
+        "relevance": {
+          "step1:partner_other_stds_treatment": {
+            "type": "string",
+            "ex": "equalTo(.,\"no\")"
+          }
+        }
+      },
+      {
+        "key": "partner_other_reason_for_not_giving_arv_medication_for_other_stds",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "partner_other_reason_for_not_giving_arv_medication_for_other_stds",
+        "type": "edit_text",
+        "hint": "Bainisha sababu zingine za kutokutoa ARV",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jaza sababu"
+        },
+        "relevance": {
+          "step1:partner_reason_for_not_giving_arv_medication_for_other_stds": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
+          }
+        }
+      },
+      {
+        "key": "partner_hiv_test_at_32",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "partner_hiv_test_at_32",
+        "openmrs_entity_parent": "",
         "calculation": {
           "rules-engine": {
             "ex-rules": {

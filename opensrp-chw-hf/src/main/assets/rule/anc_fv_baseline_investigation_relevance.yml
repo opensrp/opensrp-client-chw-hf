@@ -55,3 +55,17 @@ priority: 1
 condition: "!step1_blood_group.contains('test_not_conducted')"
 actions:
   - "isRelevant = true"
+---
+name: step1_hiv_counselling_before_testing
+description: show the hiv counselling question if the person isn't known positive
+priority: 1
+condition: "!global_known_positive && (step1_hiv_qn.contains('positive') || step1_hiv_qn.contains('negative'))"
+actions:
+  - "isRelevant = true"
+---
+name: step1_hiv_counselling_after_testing
+description: show the hiv counselling question after getting the test results
+priority: 1
+condition: "step1_hiv_qn.contains('positive') || step1_hiv_qn.contains('negative')"
+actions:
+  - "isRelevant = true"
