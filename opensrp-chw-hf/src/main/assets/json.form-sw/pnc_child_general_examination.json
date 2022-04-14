@@ -584,7 +584,7 @@
       {
         "key": "jaundice",
         "type": "native_radio",
-        "label": "Does the child have jaundice?",
+        "label": "Je, Mtoto ana homa ya manjano?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "jaundice",
         "openmrs_entity_parent": "",
@@ -610,7 +610,7 @@
       {
         "key": "skin_infection",
         "type": "native_radio",
-        "label": "Does the child have skin infection?",
+        "label": "Je, Mtoto ana maambukizi ya ngozi?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "skin_infection",
         "openmrs_entity_parent": "",
