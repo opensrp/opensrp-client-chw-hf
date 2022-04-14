@@ -175,6 +175,20 @@ public class PncMonthlyReportObject extends ReportObject {
         indicatorCodes.add("pnc-12e-KE");
         indicatorCodes.add("pnc-12f-ME");
         indicatorCodes.add("pnc-12f-KE");
+        indicatorCodes.add("pnc-13a-ME");
+        indicatorCodes.add("pnc-13a-KE");
+        indicatorCodes.add("pnc-13b-ME");
+        indicatorCodes.add("pnc-13b-KE");
+        indicatorCodes.add("pnc-14-ME");
+        indicatorCodes.add("pnc-14-KE");
+        indicatorCodes.add("pnc-15-ME");
+        indicatorCodes.add("pnc-15-KE");
+        indicatorCodes.add("pnc-16a-ME");
+        indicatorCodes.add("pnc-16a-KE");
+        indicatorCodes.add("pnc-16b-ME");
+        indicatorCodes.add("pnc-16b-KE");
+        indicatorCodes.add("pnc-16c-ME");
+        indicatorCodes.add("pnc-16c-KE");
     }
     @Override
     public JSONObject getIndicatorData() throws JSONException {

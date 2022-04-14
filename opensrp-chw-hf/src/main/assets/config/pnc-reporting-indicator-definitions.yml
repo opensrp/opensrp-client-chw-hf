@@ -2466,57 +2466,233 @@ indicators:
                         AND efm.gender = 'Female'
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
-    - key: "pnc-12e-ME"
-      description: "Idadi ya watoto waliozaliwa nyumbani walioanzishiwa huduma ya kangaroo (KMC)"
-      indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
-                        FROM ec_child ec
-                                 INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
-                                 INNER JOIN ec_family_member efm ON efm.base_entity_id = ec.base_entity_id
-                                 INNER JOIN ec_pnc_followup epf on epf.entity_id = ec.mother_entity_id
-                                 INNER JOIN ec_pregnancy_outcome epo on epo.base_entity_id = epf.entity_id
-                        WHERE CAST(epcf.weight AS FLOAT) < 2.5
-                          AND epo.delivery_place = 'At home'
-                          AND epcf.kangaroo_enrollment = 'yes'
-                          AND efm.gender = 'Male'
-                          AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                              date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
-    - key: "pnc-12e-KE"
-      description: "Idadi ya watoto waliozaliwa nyumbani walioanzishiwa huduma ya kangaroo (KMC)"
-      indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
-                        FROM ec_child ec
-                                 INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
-                                 INNER JOIN ec_family_member efm ON efm.base_entity_id = ec.base_entity_id
-                                 INNER JOIN ec_pnc_followup epf on epf.entity_id = ec.mother_entity_id
-                                 INNER JOIN ec_pregnancy_outcome epo on epo.base_entity_id = epf.entity_id
-                        WHERE CAST(epcf.weight AS FLOAT) < 2.5
-                          AND epo.delivery_place = 'At home'
-                          AND epcf.kangaroo_enrollment = 'yes'
-                          AND efm.gender = 'Female'
-                          AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                              date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
-        
-    - key: "pnc-12f-ME"
-      description: "Wenye upungufu mkubwa wa damu (Hb < 10 g/dl au viganja vyeupe sana)"
-      indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
-                        FROM ec_child ec
-                                 INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
-                                 INNER JOIN ec_family_member efm ON efm.base_entity_id = ec.base_entity_id
-                                 INNER JOIN ec_pnc_followup epf on epf.entity_id = ec.mother_entity_id
-                                 INNER JOIN ec_pregnancy_outcome epo on epo.base_entity_id = epf.entity_id
-                        WHERE CAST(epcf.hb_level AS FLOAT) < 10
-                          AND efm.gender = 'Male'
-                          AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                              date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
-        
-    - key: "pnc-12f-KE"
-      description: "Wenye upungufu mkubwa wa damu (Hb < 10 g/dl au viganja vyeupe sana)"
-      indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
-                        FROM ec_child ec
-                                 INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
-                                 INNER JOIN ec_family_member efm ON efm.base_entity_id = ec.base_entity_id
-                                 INNER JOIN ec_pnc_followup epf on epf.entity_id = ec.mother_entity_id
-                                 INNER JOIN ec_pregnancy_outcome epo on epo.base_entity_id = epf.entity_id
-                        WHERE CAST(epcf.hb_level AS FLOAT) < 10
-                          AND efm.gender = 'Female'
-                          AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                              date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
+  - key: "pnc-12e-ME"
+    description: "Idadi ya watoto waliozaliwa nyumbani walioanzishiwa huduma ya kangaroo (KMC)"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_child ec
+                               INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = ec.base_entity_id
+                               INNER JOIN ec_pnc_followup epf on epf.entity_id = ec.mother_entity_id
+                               INNER JOIN ec_pregnancy_outcome epo on epo.base_entity_id = epf.entity_id
+                      WHERE CAST(epcf.weight AS FLOAT) < 2.5
+                        AND epo.delivery_place = 'At home'
+                        AND epcf.kangaroo_enrollment = 'yes'
+                        AND efm.gender = 'Male'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
+  - key: "pnc-12e-KE"
+    description: "Idadi ya watoto waliozaliwa nyumbani walioanzishiwa huduma ya kangaroo (KMC)"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_child ec
+                               INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = ec.base_entity_id
+                               INNER JOIN ec_pnc_followup epf on epf.entity_id = ec.mother_entity_id
+                               INNER JOIN ec_pregnancy_outcome epo on epo.base_entity_id = epf.entity_id
+                      WHERE CAST(epcf.weight AS FLOAT) < 2.5
+                        AND epo.delivery_place = 'At home'
+                        AND epcf.kangaroo_enrollment = 'yes'
+                        AND efm.gender = 'Female'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
+      
+  - key: "pnc-12f-ME"
+    description: "Wenye upungufu mkubwa wa damu (Hb < 10 g/dl au viganja vyeupe sana)"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_child ec
+                               INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = ec.base_entity_id
+                               INNER JOIN ec_pnc_followup epf on epf.entity_id = ec.mother_entity_id
+                               INNER JOIN ec_pregnancy_outcome epo on epo.base_entity_id = epf.entity_id
+                      WHERE CAST(epcf.hb_level AS FLOAT) < 10
+                        AND efm.gender = 'Male'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
+      
+  - key: "pnc-12f-KE"
+    description: "Wenye upungufu mkubwa wa damu (Hb < 10 g/dl au viganja vyeupe sana)"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_child ec
+                               INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = ec.base_entity_id
+                               INNER JOIN ec_pnc_followup epf on epf.entity_id = ec.mother_entity_id
+                               INNER JOIN ec_pregnancy_outcome epo on epo.base_entity_id = epf.entity_id
+                      WHERE CAST(epcf.hb_level AS FLOAT) < 10
+                        AND efm.gender = 'Female'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
+      
+  - key: "pnc-13a-ME"
+    description: "Watoto wenye uambukizo mkali (septicaemia)"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_child ec
+                               INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = ec.base_entity_id
+                               INNER JOIN ec_pnc_followup epf on epf.entity_id = ec.mother_entity_id
+                               INNER JOIN ec_pregnancy_outcome epo on epo.base_entity_id = epf.entity_id
+                      WHERE epcf.septicaemia = 'yes'
+                        AND efm.gender = 'Male'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
+      
+  - key: "pnc-13a-KE"
+    description: "Watoto wenye uambukizo mkali (septicaemia)"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_child ec
+                               INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = ec.base_entity_id
+                               INNER JOIN ec_pnc_followup epf on epf.entity_id = ec.mother_entity_id
+                               INNER JOIN ec_pregnancy_outcome epo on epo.base_entity_id = epf.entity_id
+                      WHERE epcf.septicaemia = 'yes'
+                        AND efm.gender = 'Female'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
+      
+  - key: "pnc-13b-ME"
+    description: "Watoto wenye uambukizo kwenye kitovu"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_child ec
+                               INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = ec.base_entity_id
+                               INNER JOIN ec_pnc_followup epf on epf.entity_id = ec.mother_entity_id
+                               INNER JOIN ec_pregnancy_outcome epo on epo.base_entity_id = epf.entity_id
+                      WHERE epcf.umbilical_cord LIKE '%chk_infection%'
+                        AND efm.gender = 'Male'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
+      
+  - key: "pnc-13b-KE"
+    description: "Watoto wenye uambukizo kwenye kitovu"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_child ec
+                               INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = ec.base_entity_id
+                               INNER JOIN ec_pnc_followup epf on epf.entity_id = ec.mother_entity_id
+                               INNER JOIN ec_pregnancy_outcome epo on epo.base_entity_id = epf.entity_id
+                      WHERE epcf.umbilical_cord LIKE '%chk_infection%'
+                        AND efm.gender = 'Female'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
+      
+  - key: "pnc-14-ME"
+    description: "Vifo vya watoto wachanga waliozaliwa nyumbani (perinatal); neonatal"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_child ec
+                               INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = ec.base_entity_id
+                               INNER JOIN ec_pnc_followup epf on epf.entity_id = ec.mother_entity_id
+                               INNER JOIN ec_pregnancy_outcome epo on epo.base_entity_id = epf.entity_id
+                      WHERE epo.delivery_place = 'At home'
+                        AND (preg_outcome = 'still_born' OR preg_outcome = 'born_alive_died')
+                        AND efm.gender = 'Male'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+      
+  - key: "pnc-14-KE"
+    description: "Vifo vya watoto wachanga waliozaliwa nyumbani (perinatal); neonatal"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_child ec
+                               INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = ec.base_entity_id
+                               INNER JOIN ec_pnc_followup epf on epf.entity_id = ec.mother_entity_id
+                               INNER JOIN ec_pregnancy_outcome epo on epo.base_entity_id = epf.entity_id
+                      WHERE epo.delivery_place = 'At home'
+                        AND (preg_outcome = 'still_born' OR preg_outcome = 'born_alive_died')
+                        AND efm.gender = 'Male'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+      
+  - key: "pnc-15-ME"
+    description: "Waliopewa dawa ya ARV"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_child ec
+                               INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = ec.base_entity_id
+                               INNER JOIN ec_pnc_followup epf on epf.entity_id = ec.mother_entity_id
+                               INNER JOIN ec_hei_followup ehf on ehf.entity_id = ec.base_entity_id
+                      WHERE (ehf.prophylaxis_arv_for_high_and_low_risk_given = 'true' OR ehf.prophylaxis_arv_for_high_risk_given = 'true')
+                        AND efm.gender = 'Male'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
+      
+  - key: "pnc-15-KE"
+    description: "Waliopewa dawa ya ARV"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_child ec
+                               INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = ec.base_entity_id
+                               INNER JOIN ec_pnc_followup epf on epf.entity_id = ec.mother_entity_id
+                               INNER JOIN ec_hei_followup ehf on ehf.entity_id = ec.base_entity_id
+                      WHERE (ehf.prophylaxis_arv_for_high_and_low_risk_given = 'true' OR ehf.prophylaxis_arv_for_high_risk_given = 'true')
+                        AND efm.gender = 'Female'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
+      
+  - key: "pnc-16a-ME"
+    description: "Watoto wachanga wanaonyonya maziwa ya mama pekee (EBF)"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_child ec
+                               INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = ec.base_entity_id
+                               INNER JOIN ec_pnc_followup epf on epf.entity_id = ec.mother_entity_id
+                      WHERE epcf.feeding_options = 'ebf'
+                        AND efm.gender = 'Male'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
+  - key: "pnc-16a-KE"
+    description: "Watoto wachanga wanaonyonya maziwa ya mama pekee (EBF)"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_child ec
+                               INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = ec.base_entity_id
+                               INNER JOIN ec_pnc_followup epf on epf.entity_id = ec.mother_entity_id
+                      WHERE epcf.feeding_options = 'ebf'
+                        AND efm.gender = 'Female'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
+      
+  - key: "pnc-16b-ME"
+    description: "Watoto wachanga wanaonyweshwa maziwa mbadala (RF)"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_child ec
+                               INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = ec.base_entity_id
+                               INNER JOIN ec_pnc_followup epf on epf.entity_id = ec.mother_entity_id
+                      WHERE epcf.feeding_options = 'rf'
+                        AND efm.gender = 'Male'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
+  - key: "pnc-16b-KE"
+    description: "Watoto wachanga wanaonyweshwa maziwa mbadala (RF)"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_child ec
+                               INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = ec.base_entity_id
+                               INNER JOIN ec_pnc_followup epf on epf.entity_id = ec.mother_entity_id
+                      WHERE epcf.feeding_options = 'rf'
+                        AND efm.gender = 'Female'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
+      
+  - key: "pnc-16c-ME"
+    description: "Watoto wachanga wanaonyweshwa maziwa ya mama na kupatiwa chakula kingine (MF)"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_child ec
+                               INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = ec.base_entity_id
+                               INNER JOIN ec_pnc_followup epf on epf.entity_id = ec.mother_entity_id
+                      WHERE epcf.feeding_options = 'mf'
+                        AND efm.gender = 'Male'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
+    
+  - key: "pnc-16c-KE"
+    description: "Watoto wachanga wanaonyweshwa maziwa ya mama na kupatiwa chakula kingine (MF)"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_child ec
+                               INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = ec.base_entity_id
+                               INNER JOIN ec_pnc_followup epf on epf.entity_id = ec.mother_entity_id
+                      WHERE epcf.feeding_options = 'mf'
+                        AND efm.gender = 'Female'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
