@@ -179,6 +179,10 @@ public class PncMonthlyReportObject extends ReportObject {
         indicatorCodes.add("pnc-13a-KE");
         indicatorCodes.add("pnc-13b-ME");
         indicatorCodes.add("pnc-13b-KE");
+        indicatorCodes.add("pnc-13c-ME");
+        indicatorCodes.add("pnc-13c-KE");
+        indicatorCodes.add("pnc-13d-ME");
+        indicatorCodes.add("pnc-13d-KE");
         indicatorCodes.add("pnc-14-ME");
         indicatorCodes.add("pnc-14-KE");
         indicatorCodes.add("pnc-15-ME");

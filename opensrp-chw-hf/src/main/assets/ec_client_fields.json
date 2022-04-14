@@ -2514,6 +2514,22 @@
             "field": "obs.fieldCode",
             "concept": "weight"
           }
+        },
+        {
+          "column_name": "jaundice",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "jaundice"
+          }
+        },
+        {
+          "column_name": "skin_infection",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "skin_infection"
+          }
         }
       ]
     },
