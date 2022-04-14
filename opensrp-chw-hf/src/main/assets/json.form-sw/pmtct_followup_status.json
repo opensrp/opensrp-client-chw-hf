@@ -65,7 +65,7 @@
           },
           {
             "key": "transfer_out",
-            "text": "Transfer Out",
+            "text": "Amehama",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "transfer_out"
           }

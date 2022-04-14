@@ -182,5 +182,7 @@
     <string name="month">Month</string>
     <string name="head_circumference_min_err">Head Circumference must be equal or greater than %s CM</string>
     <string name="clinical_staging_of_hiv">Clinical Staging of HIV</string>
+    <string name="arv_prescription_azt_and_nvp">ARV Prescription (AZT + 3C and NVP)</string>
+    <string name="arv_prescription_nvp">ARV Prescription (NVP)</string>
 
 </resources>
