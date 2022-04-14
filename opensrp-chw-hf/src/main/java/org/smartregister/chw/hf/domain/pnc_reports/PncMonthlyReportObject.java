@@ -12,11 +12,13 @@ import java.util.List;
 public class PncMonthlyReportObject extends ReportObject {
     private final Date reportDate;
     private final List<String> indicatorCodes = new ArrayList<>();
+
     public PncMonthlyReportObject(Date reportDate) {
         super(reportDate);
         this.reportDate = reportDate;
         setIndicatorCodes(indicatorCodes);
     }
+
     public void setIndicatorCodes(List<String> indicatorCodes) {
         indicatorCodes.add("pnc-1a-10-14");
         indicatorCodes.add("pnc-1a-15-19");
@@ -29,7 +31,6 @@ public class PncMonthlyReportObject extends ReportObject {
         indicatorCodes.add("pnc-1b-20-24");
         indicatorCodes.add("pnc-1b-25-29");
         indicatorCodes.add("pnc-1b-30-34");
-        indicatorCodes.add("pnc-1b-35+");
         indicatorCodes.add("pnc-1b-35+");
         indicatorCodes.add("pnc-2a-10-14");
         indicatorCodes.add("pnc-2a-15-19");
@@ -194,12 +195,541 @@ public class PncMonthlyReportObject extends ReportObject {
         indicatorCodes.add("pnc-16c-ME");
         indicatorCodes.add("pnc-16c-KE");
     }
+
     @Override
     public JSONObject getIndicatorData() throws JSONException {
-        JSONObject jsonObject = new JSONObject();
+        JSONObject indicatorObject = new JSONObject();
         for (String indicatorCode : indicatorCodes) {
-            jsonObject.put(indicatorCode, ReportDao.getReportPerIndicatorCode(indicatorCode,reportDate));
+            indicatorObject.put(indicatorCode, ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate));
         }
-        return jsonObject;
+
+        indicatorObject.put("pnc-1a+1b-10-14", get1a_1b_10_14());
+        indicatorObject.put("pnc-1a+1b-15-19", get1a_1b_15_19());
+        indicatorObject.put("pnc-1a+1b-20-24", get1a_1b_20_24());
+        indicatorObject.put("pnc-1a+1b-25-29", get1a_1b_25_29());
+        indicatorObject.put("pnc-1a+1b-30-34", get1a_1b_30_34());
+        indicatorObject.put("pnc-1a+1b-35+", get1a_1b_35_plus());
+
+        indicatorObject.put("pnc-1a+1b-jumla", get1a_1b_Total());
+
+        indicatorObject.put("pnc-11a+11b-ME", get11a_11b_ME());
+        indicatorObject.put("pnc-11a+11b-KE", get11a_11b_KE());
+
+        indicatorObject.put("pnc-11a+11b-jumla", get11a_11b_Total());
+
+
+
+        indicatorObject.put("pnc-1a-jumla", get1aTotal());
+        indicatorObject.put("pnc-1b-jumla", get1bTotal());
+        indicatorObject.put("pnc-2a-jumla", get2aTotal());
+        indicatorObject.put("pnc-3-jumla", get3Total());
+        indicatorObject.put("pnc-4-jumla", get4Total());
+        indicatorObject.put("pnc-5-jumla", get5Total());
+        indicatorObject.put("pnc-6-jumla", get6Total());
+        indicatorObject.put("pnc-7-jumla", get7Total());
+        indicatorObject.put("pnc-8a-jumla", get8aTotal());
+        indicatorObject.put("pnc-8b-jumla", get8bTotal());
+        indicatorObject.put("pnc-8c-jumla", get8cTotal());
+
+        indicatorObject.put("pnc-9a-jumla", get9aTotal());
+        indicatorObject.put("pnc-9b-jumla", get9bTotal());
+        indicatorObject.put("pnc-9c-jumla", get9cTotal());
+        indicatorObject.put("pnc-9d1-jumla", get9d1Total());
+        indicatorObject.put("pnc-9d2-jumla", get9d2Total());
+        indicatorObject.put("pnc-9e-jumla", get9eTotal());
+        indicatorObject.put("pnc-9f-jumla", get9fTotal());
+
+        indicatorObject.put("pnc-10a-jumla", get10aTotal());
+        indicatorObject.put("pnc-10b-jumla", get10bTotal());
+        indicatorObject.put("pnc-10c-jumla", get10cTotal());
+        indicatorObject.put("pnc-10d-jumla", get10dTotal());
+        indicatorObject.put("pnc-10e-jumla", get10eTotal());
+        indicatorObject.put("pnc-11a-jumla", get11aTotal());
+        indicatorObject.put("pnc-11b-jumla", get11bTotal());
+        indicatorObject.put("pnc-11c-jumla", get11cTotal());
+        indicatorObject.put("pnc-12a-jumla", get12aTotal());
+        indicatorObject.put("pnc-12b-jumla", get12bTotal());
+        indicatorObject.put("pnc-12c-jumla", get12cTotal());
+        indicatorObject.put("pnc-12d-jumla", get12dTotal());
+        indicatorObject.put("pnc-12e-jumla", get12eTotal());
+        indicatorObject.put("pnc-12f-jumla", get12fTotal());
+        indicatorObject.put("pnc-13a-jumla", get13aTotal());
+        indicatorObject.put("pnc-13b-jumla", get13bTotal());
+        indicatorObject.put("pnc-13c-jumla", get13cTotal());
+        indicatorObject.put("pnc-13d-jumla", get13dTotal());
+        indicatorObject.put("pnc-14-jumla", get14Total());
+        indicatorObject.put("pnc-15-jumla", get15Total());
+        indicatorObject.put("pnc-16a-jumla", get16aTotal());
+        indicatorObject.put("pnc-16b-jumla", get16bTotal());
+        indicatorObject.put("pnc-16c-jumla", get16cTotal());
+
+
+        return indicatorObject;
     }
+
+    //get horizontal totals
+    //get 1a + 1b indicators
+    private int get1a_1b_10_14() {
+        int pnc_1a_10_14 = ReportDao.getReportPerIndicatorCode("pnc-1a-10-14", reportDate);
+        int pnc_1b_10_14 = ReportDao.getReportPerIndicatorCode("pnc-1b-10-14", reportDate);
+        return pnc_1b_10_14 + pnc_1a_10_14;
+    }
+    private int get1a_1b_15_19() {
+        int pnc_1a_15_19 = ReportDao.getReportPerIndicatorCode("pnc-1a-15-19", reportDate);
+        int pnc_1b_15_19 = ReportDao.getReportPerIndicatorCode("pnc-1b-15-19", reportDate);
+        return pnc_1b_15_19 + pnc_1a_15_19;
+    }
+    private int get1a_1b_20_24() {
+        int pnc_1a_20_24 = ReportDao.getReportPerIndicatorCode("pnc-1a-20-24", reportDate);
+        int pnc_1b_20_24 = ReportDao.getReportPerIndicatorCode("pnc-1b-20-24", reportDate);
+        return pnc_1b_20_24 + pnc_1a_20_24;
+    }
+    private int get1a_1b_25_29() {
+        int pnc_1a_25_29 = ReportDao.getReportPerIndicatorCode("pnc-1a-25-29", reportDate);
+        int pnc_1b_25_29 = ReportDao.getReportPerIndicatorCode("pnc-1b-25-29", reportDate);
+        return pnc_1b_25_29 + pnc_1a_25_29;
+    }
+    private int get1a_1b_30_34() {
+        int pnc_1a_30_34 = ReportDao.getReportPerIndicatorCode("pnc-1a-30-34", reportDate);
+        int pnc_1b_30_34 = ReportDao.getReportPerIndicatorCode("pnc-1b-30-34", reportDate);
+        return pnc_1b_30_34 + pnc_1a_30_34;
+    }
+    private int get1a_1b_35_plus(){
+        int pnc_1a_35_plus = ReportDao.getReportPerIndicatorCode("pnc-1a-35+", reportDate);
+        int pnc_1b_35_plus = ReportDao.getReportPerIndicatorCode("pnc-1b-35+", reportDate);
+        return pnc_1b_35_plus + pnc_1a_35_plus;
+    }
+
+    //get 11a + 11b indicators
+    private int get11a_11b_ME() {
+        int pnc_11a_ME = ReportDao.getReportPerIndicatorCode("pnc-11a-ME", reportDate);
+        int pnc_11b_ME = ReportDao.getReportPerIndicatorCode("pnc-11b-ME", reportDate);
+        return pnc_11b_ME + pnc_11a_ME;
+    }
+
+    private int get11a_11b_KE() {
+        int pnc_11a_KE = ReportDao.getReportPerIndicatorCode("pnc-11a-KE", reportDate);
+        int pnc_11b_KE = ReportDao.getReportPerIndicatorCode("pnc-11b-KE", reportDate);
+        return pnc_11b_KE + pnc_11a_KE;
+    }
+
+
+    //get vertical totals
+    private int get1aTotal() {
+        int total = 0;
+        for (String indicatorCode : indicatorCodes) {
+            if (indicatorCode.startsWith("pnc-1a")) {
+                total += ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate);
+            }
+        }
+        return total;
+    }
+
+    private int get1bTotal() {
+        int total = 0;
+        for (String indicatorCode : indicatorCodes) {
+            if (indicatorCode.startsWith("pnc-1b")) {
+                total += ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate);
+            }
+        }
+        return total;
+    }
+
+    private int get1a_1b_Total(){
+        return get1aTotal() + get1bTotal();
+    }
+    private int get2aTotal() {
+        int total = 0;
+        for (String indicatorCode : indicatorCodes) {
+            if (indicatorCode.startsWith("pnc-2a")) {
+                total += ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate);
+            }
+        }
+        return total;
+    }
+
+    private int get3Total() {
+        int total = 0;
+        for (String indicatorCode : indicatorCodes) {
+            if (indicatorCode.startsWith("pnc-3")) {
+                total += ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate);
+            }
+        }
+        return total;
+    }
+
+    private int get4Total() {
+        int total = 0;
+        for (String indicatorCode : indicatorCodes) {
+            if (indicatorCode.startsWith("pnc-4")) {
+                total += ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate);
+            }
+        }
+        return total;
+    }
+
+    private int get5Total() {
+        int total = 0;
+        for (String indicatorCode : indicatorCodes) {
+            if (indicatorCode.startsWith("pnc-5")) {
+                total += ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate);
+            }
+        }
+        return total;
+    }
+
+    private int get6Total() {
+        int total = 0;
+        for (String indicatorCode : indicatorCodes) {
+            if (indicatorCode.startsWith("pnc-6")) {
+                total += ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate);
+            }
+        }
+        return total;
+    }
+
+    private int get7Total() {
+        int total = 0;
+        for (String indicatorCode : indicatorCodes) {
+            if (indicatorCode.startsWith("pnc-7")) {
+                total += ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate);
+            }
+        }
+        return total;
+    }
+
+    private int get8aTotal() {
+        int total = 0;
+        for (String indicatorCode : indicatorCodes) {
+            if (indicatorCode.startsWith("pnc-8a")) {
+                total += ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate);
+            }
+        }
+        return total;
+    }
+
+    private int get8bTotal() {
+        int total = 0;
+        for (String indicatorCode : indicatorCodes) {
+            if (indicatorCode.startsWith("pnc-8b")) {
+                total += ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate);
+            }
+        }
+        return total;
+    }
+
+    private int get8cTotal() {
+        int total = 0;
+        for (String indicatorCode : indicatorCodes) {
+            if (indicatorCode.startsWith("pnc-8c")) {
+                total += ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate);
+            }
+        }
+        return total;
+    }
+
+    private int get9aTotal() {
+        int total = 0;
+        for (String indicatorCode : indicatorCodes) {
+            if (indicatorCode.startsWith("pnc-9a")) {
+                total += ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate);
+            }
+        }
+        return total;
+    }
+
+    private int get9bTotal() {
+        int total = 0;
+        for (String indicatorCode : indicatorCodes) {
+            if (indicatorCode.startsWith("pnc-9b")) {
+                total += ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate);
+            }
+        }
+        return total;
+    }
+
+    private int get9cTotal() {
+        int total = 0;
+        for (String indicatorCode : indicatorCodes) {
+            if (indicatorCode.startsWith("pnc-9c")) {
+                total += ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate);
+            }
+        }
+        return total;
+    }
+
+    private int get9d1Total() {
+        int total = 0;
+        for (String indicatorCode : indicatorCodes) {
+            if (indicatorCode.startsWith("pnc-9d1")) {
+                total += ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate);
+            }
+        }
+        return total;
+    }
+
+    private int get9d2Total() {
+        int total = 0;
+        for (String indicatorCode : indicatorCodes) {
+            if (indicatorCode.startsWith("pnc-9d2")) {
+                total += ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate);
+            }
+        }
+        return total;
+    }
+
+    private int get9eTotal() {
+        int total = 0;
+        for (String indicatorCode : indicatorCodes) {
+            if (indicatorCode.startsWith("pnc-9e")) {
+                total += ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate);
+            }
+        }
+        return total;
+    }
+
+    private int get9fTotal() {
+        int total = 0;
+        for (String indicatorCode : indicatorCodes) {
+            if (indicatorCode.startsWith("pnc-9f")) {
+                total += ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate);
+            }
+        }
+        return total;
+    }
+
+    private int get10aTotal() {
+        int total = 0;
+        for (String indicatorCode : indicatorCodes) {
+            if (indicatorCode.startsWith("pnc-10a")) {
+                total += ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate);
+            }
+        }
+        return total;
+    }
+
+    private int get10bTotal() {
+        int total = 0;
+        for (String indicatorCode : indicatorCodes) {
+            if (indicatorCode.startsWith("pnc-10b")) {
+                total += ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate);
+            }
+        }
+        return total;
+    }
+
+    private int get10cTotal() {
+        int total = 0;
+        for (String indicatorCode : indicatorCodes) {
+            if (indicatorCode.startsWith("pnc-10c")) {
+                total += ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate);
+            }
+        }
+        return total;
+    }
+
+    private int get10dTotal() {
+        int total = 0;
+        for (String indicatorCode : indicatorCodes) {
+            if (indicatorCode.startsWith("pnc-10d")) {
+                total += ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate);
+            }
+        }
+        return total;
+    }
+
+    private int get10eTotal() {
+        int total = 0;
+        for (String indicatorCode : indicatorCodes) {
+            if (indicatorCode.startsWith("pnc-10e")) {
+                total += ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate);
+            }
+        }
+        return total;
+    }
+
+    private int get11aTotal() {
+        int total = 0;
+        for (String indicatorCode : indicatorCodes) {
+            if (indicatorCode.startsWith("pnc-11a")) {
+                total += ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate);
+            }
+        }
+        return total;
+    }
+
+    private int get11bTotal() {
+        int total = 0;
+        for (String indicatorCode : indicatorCodes) {
+            if (indicatorCode.startsWith("pnc-11b")) {
+                total += ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate);
+            }
+        }
+        return total;
+    }
+
+    private int get11a_11b_Total(){
+        return get11aTotal() + get11bTotal();
+    }
+
+    private int get11cTotal() {
+        int total = 0;
+        for (String indicatorCode : indicatorCodes) {
+            if (indicatorCode.startsWith("pnc-11c")) {
+                total += ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate);
+            }
+        }
+        return total;
+    }
+
+    private int get12aTotal() {
+        int total = 0;
+        for (String indicatorCode : indicatorCodes) {
+            if (indicatorCode.startsWith("pnc-12a")) {
+                total += ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate);
+            }
+        }
+        return total;
+    }
+
+    private int get12bTotal() {
+        int total = 0;
+        for (String indicatorCode : indicatorCodes) {
+            if (indicatorCode.startsWith("pnc-12b")) {
+                total += ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate);
+            }
+        }
+        return total;
+    }
+
+    private int get12cTotal() {
+        int total = 0;
+        for (String indicatorCode : indicatorCodes) {
+            if (indicatorCode.startsWith("pnc-12c")) {
+                total += ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate);
+            }
+        }
+        return total;
+    }
+
+    private int get12dTotal() {
+        int total = 0;
+        for (String indicatorCode : indicatorCodes) {
+            if (indicatorCode.startsWith("pnc-12d")) {
+                total += ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate);
+            }
+        }
+        return total;
+    }
+
+    private int get12eTotal() {
+        int total = 0;
+        for (String indicatorCode : indicatorCodes) {
+            if (indicatorCode.startsWith("pnc-12e")) {
+                total += ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate);
+            }
+        }
+        return total;
+    }
+
+    private int get12fTotal() {
+        int total = 0;
+        for (String indicatorCode : indicatorCodes) {
+            if (indicatorCode.startsWith("pnc-12f")) {
+                total += ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate);
+            }
+        }
+        return total;
+    }
+
+    private int get13aTotal() {
+        int total = 0;
+        for (String indicatorCode : indicatorCodes) {
+            if (indicatorCode.startsWith("pnc-13a")) {
+                total += ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate);
+            }
+        }
+        return total;
+    }
+
+    private int get13bTotal() {
+        int total = 0;
+        for (String indicatorCode : indicatorCodes) {
+            if (indicatorCode.startsWith("pnc-13b")) {
+                total += ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate);
+            }
+        }
+        return total;
+    }
+
+    private int get13cTotal() {
+        int total = 0;
+        for (String indicatorCode : indicatorCodes) {
+            if (indicatorCode.startsWith("pnc-13c")) {
+                total += ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate);
+            }
+        }
+        return total;
+    }
+
+    private int get13dTotal() {
+        int total = 0;
+        for (String indicatorCode : indicatorCodes) {
+            if (indicatorCode.startsWith("pnc-13d")) {
+                total += ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate);
+            }
+        }
+        return total;
+    }
+
+    private int get14Total() {
+        int total = 0;
+        for (String indicatorCode : indicatorCodes) {
+            if (indicatorCode.startsWith("pnc-14")) {
+                total += ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate);
+            }
+        }
+        return total;
+    }
+
+    private int get15Total() {
+        int total = 0;
+        for (String indicatorCode : indicatorCodes) {
+            if (indicatorCode.startsWith("pnc-15")) {
+                total += ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate);
+            }
+        }
+        return total;
+    }
+
+    private int get16aTotal() {
+        int total = 0;
+        for (String indicatorCode : indicatorCodes) {
+            if (indicatorCode.startsWith("pnc-16a")) {
+                total += ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate);
+            }
+        }
+        return total;
+    }
+
+    private int get16bTotal() {
+        int total = 0;
+        for (String indicatorCode : indicatorCodes) {
+            if (indicatorCode.startsWith("pnc-16b")) {
+                total += ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate);
+            }
+        }
+        return total;
+    }
+
+    private int get16cTotal() {
+        int total = 0;
+        for (String indicatorCode : indicatorCodes) {
+            if (indicatorCode.startsWith("pnc-16c")) {
+                total += ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate);
+            }
+        }
+        return total;
+    }
+
 }
