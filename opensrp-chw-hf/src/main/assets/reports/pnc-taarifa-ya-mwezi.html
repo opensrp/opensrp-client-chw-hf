@@ -6,57 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Taarifa ya mwezi PNC</title>
-    <style>
-        body {
-            margin: 5px;
-        }
-
-        table {
-            background-color: #fff;
-            box-shadow: 3px 1px 0px #f6f6f6;
-            border: none;
-            width: 100%;
-            margin: 0;
-            border-collapse: collapse
-        }
-
-        th {
-            padding: 4px;
-            background: #c4c4c4;
-            font-size: .74rem;
-            font-weight: 300;
-        }
-
-        td {
-            text-align: initial;
-            font-size: .71rem;
-        }
-
-        td:nth-child(1) {
-            width: 5%;
-            text-align: center;
-        }
-
-        .list-title {
-            text-align: initial !important;
-            padding: 5px;
-            font-size: .74rem;
-            width: 30%;
-        }
-
-        tr>td:nth-child(n+3) {
-            text-align: center;
-        }
-        td:nth-child(9){
-            width:10%;
-        }
-
-
-    </style>
+    <link rel="stylesheet" href="./report-styles.css">
+    <script src="./report-script.js"></script>
 </head>
 
-<body onload="onLoad()">
-<table border="1">
+<body onload="loadData('monthly', 'pnc')">
+<div class="show-on-print">
+    <h1>TAARIFA YA MWEZI BAADA YA KUJIFUNGUA (POSTNATAL)</h1>
+    <h2>TAARIFA YA [MWEZI/MWAKA]: <span id="report_period"></span></h2>
+    <h2>KITUO: <span id="reporting_facility"></span></h2>
+</div>
+<table border="1" class='pnc-anc-table'>
     <thead>
     <tr>
         <th>Na.</th>
@@ -371,7 +331,8 @@
     </tbody>
 </table>
 <br/>
-<table border="1">
+<table border="1" class='pnc-anc-table child-table'>
+    <thead>
     <tr>
         <th>11</th>
         <th class="list-title">MTOTO</th>
@@ -379,6 +340,7 @@
         <th class="list-title">KE</th>
         <th class="list-title">Jumla</th>
     </tr>
+    </thead>
     <tr>
         <td>11a</td>
         <td class="list-title">Waliohudhuria Ndani ya saa 48</td>
@@ -409,13 +371,17 @@
         <td id="11c-KE"></td>
         <td id="11c-jumla"></td>
     </tr>
-    <tr>
-        <th>12</th>
-        <th class="list-title">HUDUMA KWA MTOTO</th>
-        <th class="list-title">ME</th>
-        <th class="list-title">KE</th>
-        <th class="list-title">Jumla</th>
-    </tr>
+</table>
+<table border="1" class='pnc-anc-table child-table'>
+    <thead>
+        <tr>
+            <th>12</th>
+            <th class="list-title">HUDUMA KWA MTOTO</th>
+            <th class="list-title">ME</th>
+            <th class="list-title">KE</th>
+            <th class="list-title">Jumla</th>
+        </tr>
+    </thead>
     <tr>
         <td>12a</td>
         <td class="list-title">Idadi ya watoto waliopewa BCG</td>
@@ -467,13 +433,17 @@
         <td id="12f-KE"></td>
         <td id="12f-jumla"></td>
     </tr>
-    <tr>
-        <th>13</th>
-        <th class="list-title">UAMBUKIZO WA MTOTO</th>
-        <th class="list-title">ME</th>
-        <th class="list-title">KE</th>
-        <th class="list-title">Jumla</th>
-    </tr>
+</table>
+<table border="1" class='pnc-anc-table child-table'>
+    <thead>
+        <tr>
+            <th>13</th>
+            <th class="list-title">UAMBUKIZO WA MTOTO</th>
+            <th class="list-title">ME</th>
+            <th class="list-title">KE</th>
+            <th class="list-title">Jumla</th>
+        </tr>
+    </thead>
     <tr>
         <td>13a</td>
         <td class="list-title">Watoto wenye uambukizo mkali (septicaemia)</td>
@@ -517,13 +487,17 @@
         <td id="15-KE"></td>
         <td id="15-jumla"></td>
     </tr>
-    <tr>
-        <th>16</th>
-        <th class="list-title">ULISHAJI WA MTOTO</th>
-        <th class="list-title">ME</th>
-        <th class="list-title">KE</th>
-        <th class="list-title">Jumla</th>
-    </tr>
+</table>
+<table border="1" class='pnc-anc-table child-table'>
+    <thead>
+        <tr>
+            <th>16</th>
+            <th class="list-title">ULISHAJI WA MTOTO</th>
+            <th class="list-title">ME</th>
+            <th class="list-title">KE</th>
+            <th class="list-title">Jumla</th>
+        </tr>
+    </thead>
     <tr>
         <td>16a</td>
         <td class="list-title">Watoto wachanga wanaonyonya maziwa ya mama pekee (EBF)</td>
@@ -548,22 +522,5 @@
         <td id="16c-jumla"></td>
     </tr>
 </table>
-
 </body>
-<script type="text/javascript">
-    function onLoad() {
-        const data = JSON.parse(Android.getData("monthly"));
-        const keys = Object.keys(data.nameValuePairs)
-        keys.forEach(key => {
-            const element = document.getElementById(key.replace('pnc-',''))
-            if (element !== null && element !== undefined) {
-                element.innerHTML = data.nameValuePairs[key]
-            }
-        })
-    }
-
-
-
-</script>
-
 </html>
