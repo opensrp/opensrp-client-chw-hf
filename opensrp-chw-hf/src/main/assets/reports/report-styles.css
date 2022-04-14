@@ -68,9 +68,11 @@ td:nth-child(3) {
   text-align: center;
   width: 15%;
 }
+
 .pnc-anc-table td:nth-child(3) {
   width: initial;
 }
+
 .pnc-table .list-title {
   width: 30%;
 }
@@ -85,6 +87,7 @@ tbody tr > td:nth-child(1) {
   min-width: 40px;
   text-align: center;
 }
+
 .pnc-anc-table td:nth-child(9) {
   width: 10%;
 }
