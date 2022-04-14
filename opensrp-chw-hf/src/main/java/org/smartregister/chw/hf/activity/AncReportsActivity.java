@@ -46,8 +46,7 @@ public class AncReportsActivity extends SecuredActivity implements View.OnClickL
 
     @Override
     protected void onResumption() {
-        setUpToolbar();
-        setupViews();
+        // Do nothing
     }
 
     @Override
