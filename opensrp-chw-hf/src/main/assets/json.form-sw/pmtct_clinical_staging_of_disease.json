@@ -47,7 +47,7 @@
     "encounter_location": ""
   },
   "step1": {
-    "title": "Clinical Staging of Disease",
+    "title": "Hatua ya Ugonjwa",
     "fields": [
       {
         "key": "clinical_staging_disease",

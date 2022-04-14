@@ -96,7 +96,7 @@
     <string name="recorded_partner_testing_results">Recorded Partner Testing Results</string>
     <string name="pmtct_counselling">Counselling given</string>
     <string name="pmtct_tb_screening">TB Screening Complete</string>
-    <string name="pmtct_clinical_disease_staging">Clinical Staging of Disease Complete</string>
+    <string name="pmtct_clinical_disease_staging">Clinical Staging of Disease is Complete</string>
     <string name="given_arv_prescription">ARV Prescription Given</string>
     <string name="not_given_arv_prescription">ARV Prescription Not Given</string>
     <string name="cd4_sample_collected">CD4 Sample Collected</string>
@@ -181,5 +181,8 @@
     <string name="pnc_reports">PNC Reports</string>
     <string name="month">Month</string>
     <string name="head_circumference_min_err">Head Circumference must be equal or greater than %s CM</string>
+    <string name="clinical_staging_of_hiv">Clinical Staging of HIV</string>
+    <string name="arv_prescription_azt_and_nvp">ARV Prescription (AZT + 3C and NVP)</string>
+    <string name="arv_prescription_nvp">ARV Prescription (NVP)</string>
 
 </resources>

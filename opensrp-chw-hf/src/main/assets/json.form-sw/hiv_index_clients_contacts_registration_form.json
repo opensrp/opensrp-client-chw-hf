@@ -54,7 +54,7 @@
     }
   },
   "step1": {
-    "title": "Taarifa za mteja",
+    "title": "Taarifa za Mteja",
     "next": "step2",
     "fields": [
       {
@@ -175,7 +175,7 @@
     ]
   },
   "step2": {
-    "title": "Client details",
+    "title": "Taarifa za Mteja",
     "fields": [
       {
         "key": "unique_id",

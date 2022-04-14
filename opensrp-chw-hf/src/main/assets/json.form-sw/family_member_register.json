@@ -404,7 +404,7 @@
         "openmrs_entity_id": "National_ID",
         "type": "edit_text",
         "hint": "Namba ya kitambulisho cha taifa k.m 12345678-91234-56789-12",
-        "edit_type": "name",
+        "edit_type": "number",
         "v_max_length": {
           "value": "23",
           "is_fixed_size": "true",
@@ -433,7 +433,7 @@
         "openmrs_entity_id": "Voter_Registration_Number",
         "type": "edit_text",
         "hint": "Namba ya kitambulisho cha mpiga kura k.m T-1234-5678-912-3",
-        "edit_type": "name",
+        "edit_type": "number",
         "v_max_length": {
           "value": "17",
           "is_fixed_size": "true",
@@ -462,7 +462,7 @@
         "openmrs_entity_id": "Driver_License_Number",
         "type": "edit_text",
         "hint": "Namba ya leseni ya udereva k.m 1234567891",
-        "edit_type": "name",
+        "edit_type": "number",
         "v_max_length": {
           "value": "10",
           "is_fixed_size": "true",

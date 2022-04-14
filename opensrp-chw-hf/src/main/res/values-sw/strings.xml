@@ -41,7 +41,7 @@
     <string name="anc_pregnacy_status_viable">Bado ana ujauzito</string>
     <string name="anc_pregnacy_status_fetal_death">Mtoto amefia tumboni</string>
     <string name="anc_pregnacy_status_spontaneous_abortion">Mimba imeharibika</string>
-    <string name="any_changes_you_make">Any Changes You Make Will Be Discarded</string>
+    <string name="any_changes_you_make">Una uhakika unataka kurudi nyuma? Taarifa zote ulizoingiza kwenye fomu zitafutika</string>
     <string name="gestation_age">Umri wa Mimba: Wiki {0}</string>
     <string name="malaria">Malaria: {0}</string>
     <string name="anc_first_visit_medical_and_surgical_history">Historia ya Matibabu na Upasuaji</string>
@@ -90,7 +90,7 @@
     <string name="second_hiv_test_results_partner">Matokeo ya Kipimo ya Pili cha VVU</string>
     <string name="pmtct_counselling">Ameshauriwa</string>
     <string name="pmtct_tb_screening">Uchunguzi wa Kifua Kikuu Umekamilika</string>
-    <string name="pmtct_clinical_disease_staging">Clinical Staging of Disease Complete</string>
+    <string name="pmtct_clinical_disease_staging">Hatua ya Ugonjwa Umekamilika</string>
     <string name="given_arv_prescription">Dawa za ARV alizopewa</string>
     <string name="not_given_arv_prescription">Hakupewa Dawa za ARV</string>
     <string name="cd4_sample_collected">Sampuli ya CD4 Imechukuliwa</string>
@@ -100,10 +100,10 @@
     <string name="eac_first_visit">EAC First Visit</string>
     <string name="eac_second_visit">EAC second Visit</string>
     <string name="antibody_test_sample_collected">Sampuli ya Kipimo cha Antibody Kimechukuliwa</string>
-    <string name="hei_arv_prescription_given">ARV Prescription Given</string>
-    <string name="hei_arv_prescription_not_given">ARV Prescription Not Given</string>
-    <string name="other_combination_given">Other Combinations Given</string>
-    <string name="arv_pres_other_combinations_not_given">ARV Prescription and Other Combinations Not Given</string>
+    <string name="hei_arv_prescription_given">Dawa za ARV zimetolewa</string>
+    <string name="hei_arv_prescription_not_given">Dawa za ARV haijatolewa</string>
+    <string name="other_combination_given">Mchanganyiko mwingine ulitolewa</string>
+    <string name="arv_pres_other_combinations_not_given">Dawa za ARV na michanganyiko mingine hazijatolewa</string>
     <string name="ctx_given">CTX Given</string>
     <string name="dna_pcr_sample_collected">Sampuli kwa ajili ya kipimo cha DNA-PCR imechukuliwa</string>
     <string name="ctx_not_given">CTX Not Given</string>
@@ -148,12 +148,12 @@
     <string name="partner_testing">Upimaji wa Mwenza</string>
     <string name="record_partner_testing_results">Ingiza Majibu</string>
     <string name="test_partner">Mpime Mwenza</string>
-    <string name="pmtct_followup_status">Followup Status:</string>
-    <string name="continuing_with_services">Continuing with Services</string>
+    <string name="pmtct_followup_status">Hali ya Ufuatiliaji:</string>
+    <string name="continuing_with_services">Anaendelea na Huduma</string>
     <string name="transfer_out">Transfer Out</string>
     <string name="deceased">Deceased</string>
-    <string name="pmtct_followup_status_title">Followup Status</string>
-    <string name="issue_hei_community_referal">Issue HEI referral</string>
+    <string name="pmtct_followup_status_title">Hali ya Ufuatiliaji</string>
+    <string name="issue_hei_community_referal">Tuma rufaa kwaajili ya HEI</string>
     <string name="pregnancy_outcome_title">Matokeo ya Ujauzito</string>
     <string name="anc_pregnancy_out_come">Matokeo ya ujauzito</string>
     <string name="complete_pnc_visits">Kamilisha Mahudhurio ya PNC</string>
@@ -171,6 +171,11 @@
     <string name="antibody_test_sample_collection">Kuchukua Sampuli ya Kipimo cha Antibody</string>
     <string name="hiv_test_results_title">Majibu ya kipimo cha VVU</string>
     <string name="register">Sajili</string>
+    <string name="register_button_text">SAJILI</string>
+    <string name="less_than_twenty_four">chini ya masaa 24</string>
+    <string name="clinical_staging_of_hiv">Hatua ya VVU</string>
+    <string name="arv_prescription_azt_and_nvp">Maagizo ya dawa za ARV (AZT + 3C and NVP)</string>
+    <string name="arv_prescription_nvp">Maagizo ya dawa za ARV (NVP)</string>
 
 
 </resources>

@@ -182,7 +182,7 @@ public class HeiFollowupVisitInteractorFlv implements PmtctFollowupVisitInteract
         if (HeiDao.isEligibleForCtx(memberObject.getBaseEntityId()))
             actionList.put(context.getString(R.string.ctx_prescription_title), CtxPrescription);
 
-        BasePmtctHomeVisitAction ARVPrescriptionHighRisk = new BasePmtctHomeVisitAction.Builder(context, "ARV Prescription (AZT + 3C and NVP)")
+        BasePmtctHomeVisitAction ARVPrescriptionHighRisk = new BasePmtctHomeVisitAction.Builder(context, context.getString(R.string.arv_prescription_azt_and_nvp))
                 .withOptional(false)
                 .withDetails(details)
                 .withFormName(Constants.JsonForm.getHeiArvPrescriptionHighRiskInfant())
@@ -190,9 +190,9 @@ public class HeiFollowupVisitInteractorFlv implements PmtctFollowupVisitInteract
                 .withHelper(new HeiArvPrescrptionHighRiskInfantAction(memberObject))
                 .build();
         if (HeiDao.isEligibleForArvPrescriptionForHighRisk(memberObject.getBaseEntityId()))
-            actionList.put("ARV Prescription (AZT + 3C and NVP)", ARVPrescriptionHighRisk);
+            actionList.put(context.getString(R.string.arv_prescription_azt_and_nvp), ARVPrescriptionHighRisk);
 
-        BasePmtctHomeVisitAction ARVPrescriptionHighAndLowRisk = new BasePmtctHomeVisitAction.Builder(context, "ARV Prescription (NVP)")
+        BasePmtctHomeVisitAction ARVPrescriptionHighAndLowRisk = new BasePmtctHomeVisitAction.Builder(context, context.getString(R.string.arv_prescription_nvp))
                 .withOptional(false)
                 .withDetails(details)
                 .withFormName(Constants.JsonForm.getHeiArvPrescriptionHighOrLowRiskInfant())
@@ -200,7 +200,7 @@ public class HeiFollowupVisitInteractorFlv implements PmtctFollowupVisitInteract
                 .withHelper(new HeiArvPrescriptionHighOrLowRiskInfantAction(memberObject))
                 .build();
         if (HeiDao.isEligibleForArvPrescriptionForHighAndLowRisk(memberObject.getBaseEntityId()))
-            actionList.put("ARV Prescription (NVP)", ARVPrescriptionHighAndLowRisk);
+            actionList.put(context.getString(R.string.arv_prescription_nvp), ARVPrescriptionHighAndLowRisk);
     }
 
 
