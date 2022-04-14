@@ -802,21 +802,6 @@
         }
       },
       {
-        "key": "prompt_for_puerperal_psychosis",
-        "type": "toaster_notes",
-        "text": "Mpatie rufaa kwenda kumuona Daktari wa Magonjwa ya Akili",
-        "openmrs_entity_id": "",
-        "openmrs_entity": "",
-        "openmrs_entity_parent": "",
-        "toaster_type": "problem",
-        "relevance": {
-          "step1:puerperal_psychosis": {
-            "type": "string",
-            "ex": "equalTo(.,\"yes\")"
-          }
-        }
-      },
-      {
         "key": "mental_illness_symptom",
         "type": "native_radio",
         "label": "Dalili nyingine yoyote ya Ugonjwa wa Akili",
@@ -840,10 +825,16 @@
         "v_required": {
           "value": "true",
           "err": "Tafadhari jibu swali hili"
+        },
+        "relevance": {
+          "step1:puerperal_psychosis": {
+            "type": "string",
+            "ex": "equalTo(.,\"no\")"
+          }
         }
       },
       {
-        "key": "prompt_for_mental_illness_symptom",
+        "key": "prompt_for_mental_illness",
         "type": "toaster_notes",
         "text": "Mpatie rufaa kwenda kumuona Daktari wa Magonjwa ya Akili",
         "openmrs_entity_id": "",
@@ -851,9 +842,10 @@
         "openmrs_entity_parent": "",
         "toaster_type": "problem",
         "relevance": {
-          "step1:mental_illness_symptom": {
-            "type": "string",
-            "ex": "equalTo(.,\"yes\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pnc_mother_general_examination_relevance.yml"
+            }
           }
         }
       },

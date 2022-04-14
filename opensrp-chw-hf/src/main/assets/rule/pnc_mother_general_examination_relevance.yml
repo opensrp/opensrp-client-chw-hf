@@ -19,3 +19,10 @@ priority: 1
 condition: "step1_systolic < 90 && step1_diastolic < 60"
 actions:
   - "isRelevant = true"
+---
+name: step1_prompt_for_mental_illness
+description: prompt_for_mental_illness
+priority: 1
+condition: "step1_puerperal_psychosis.contains('yes') || step1_mental_illness_symptom.contains('yes')"
+actions:
+  - "isRelevant = true"
