@@ -4,9 +4,6 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import androidx.loader.content.CursorLoader;
-import androidx.loader.content.Loader;
-
 import org.apache.commons.lang3.StringUtils;
 import org.smartregister.chw.core.fragment.CoreAncRegisterFragment;
 import org.smartregister.chw.core.utils.CoreConstants;
@@ -31,6 +28,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import androidx.loader.content.CursorLoader;
+import androidx.loader.content.Loader;
 import timber.log.Timber;
 
 public class AncReferralListRegisterFragment extends CoreAncRegisterFragment {
@@ -60,7 +59,9 @@ public class AncReferralListRegisterFragment extends CoreAncRegisterFragment {
 
     @Override
     protected void openProfile(CommonPersonObjectClient client) {
-        PregnancyConfirmationViewActivity.startPregnancyConfirmationViewActivity(getActivity(), client, getTask(Utils.getValue(client.getColumnmaps(), "_id", false)), CoreConstants.REGISTERED_ACTIVITIES.REFERRALS_REGISTER_ACTIVITY);
+        Map<String, String> details = fetchCareGiverDetails(Utils.getValue(client.getColumnmaps(), "primary_caregiver", false));
+        String taskId = Utils.getValue(client.getColumnmaps(), "_id", false);
+        PregnancyConfirmationViewActivity.startPregnancyConfirmationViewActivity(getActivity(), client, getTask(taskId), CoreConstants.REGISTERED_ACTIVITIES.REFERRALS_REGISTER_ACTIVITY, details);
     }
 
     private Task getTask(String taskId) {
@@ -141,8 +142,8 @@ public class AncReferralListRegisterFragment extends CoreAncRegisterFragment {
 
             String query = "select count(*) from " + presenter().getMainTable() +
                     " INNER JOIN " + CoreConstants.TABLE_NAME.TASK + " ON  " + presenter().getMainTable() + "." + org.smartregister.family.util.DBConstants.KEY.BASE_ENTITY_ID + " = " + CoreConstants.TABLE_NAME.TASK + "." + CoreConstants.DB_CONSTANTS.FOR + " COLLATE NOCASE " +
-                    " INNER JOIN " + CoreConstants.TABLE_NAME.FAMILY + " ON  " + CoreConstants.TABLE_NAME.FAMILY_MEMBER + "." + org.smartregister.family.util.DBConstants.KEY.RELATIONAL_ID + " = " + CoreConstants.TABLE_NAME.FAMILY + "." + org.smartregister.family.util.DBConstants.KEY.BASE_ENTITY_ID + " COLLATE NOCASE "+
-                    " LEFT JOIN " + CoreConstants.TABLE_NAME.ANC_MEMBER + " ON " + CoreConstants.TABLE_NAME.TASK + "." + CoreConstants.DB_CONSTANTS.FOR + " = " + CoreConstants.TABLE_NAME.ANC_MEMBER + "." + DBConstants.KEY.BASE_ENTITY_ID + " COLLATE NOCASE "+
+                    " INNER JOIN " + CoreConstants.TABLE_NAME.FAMILY + " ON  " + CoreConstants.TABLE_NAME.FAMILY_MEMBER + "." + org.smartregister.family.util.DBConstants.KEY.RELATIONAL_ID + " = " + CoreConstants.TABLE_NAME.FAMILY + "." + org.smartregister.family.util.DBConstants.KEY.BASE_ENTITY_ID + " COLLATE NOCASE " +
+                    " LEFT JOIN " + CoreConstants.TABLE_NAME.ANC_MEMBER + " ON " + CoreConstants.TABLE_NAME.TASK + "." + CoreConstants.DB_CONSTANTS.FOR + " = " + CoreConstants.TABLE_NAME.ANC_MEMBER + "." + DBConstants.KEY.BASE_ENTITY_ID + " COLLATE NOCASE " +
                     " where " + presenter().getMainCondition();
 
             if (StringUtils.isNotBlank(filters))

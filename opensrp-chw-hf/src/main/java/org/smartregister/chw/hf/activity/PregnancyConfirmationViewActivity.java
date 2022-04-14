@@ -14,15 +14,19 @@ import org.smartregister.domain.Task;
 import org.smartregister.opd.utils.OpdDbConstants;
 import org.smartregister.view.customcontrols.CustomFontTextView;
 
+import java.util.Map;
+
 import androidx.annotation.NonNull;
 
 import static android.view.View.GONE;
 import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
 
 public class PregnancyConfirmationViewActivity extends ReferralTaskViewActivity implements View.OnClickListener {
+    private static String CLIENT_PHONE_NUMBER;
 
-    public static void startPregnancyConfirmationViewActivity(Activity activity, CommonPersonObjectClient personObjectClient, Task task, String startingActivity) {
+    public static void startPregnancyConfirmationViewActivity(Activity activity, CommonPersonObjectClient personObjectClient, Task task, String startingActivity, Map<String, String> details) {
         PregnancyConfirmationViewActivity.personObjectClient = personObjectClient;
+        CLIENT_PHONE_NUMBER = details.get("family_member_phone_number");
         Intent intent = new Intent(activity, PregnancyConfirmationViewActivity.class);
         intent.putExtra(CoreConstants.INTENT_KEY.USERS_TASKS, task);
         intent.putExtra(CoreConstants.INTENT_KEY.CHILD_COMMON_PERSON, personObjectClient);
@@ -91,6 +95,12 @@ public class PregnancyConfirmationViewActivity extends ReferralTaskViewActivity 
 
     public String getBaseEntityId() {
         return task.getForEntity();
+    }
+
+    @Override
+    protected void getReferralDetails() {
+        super.getReferralDetails();
+        careGiverPhone.setText(CLIENT_PHONE_NUMBER.isEmpty() ? getString(org.smartregister.chw.core.R.string.phone_not_provided) : CLIENT_PHONE_NUMBER);
     }
 
     @Override
