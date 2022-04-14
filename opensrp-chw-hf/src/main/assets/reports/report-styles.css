@@ -40,15 +40,15 @@ th {
   text-transform: uppercase;
 }
 
-.pnc-anc-table th{
+.pnc-anc-table th {
   padding: 4px;
-  font-size: .74rem;
+  font-size: 0.74rem;
   text-transform: initial;
 }
 
-.pnc-anc-table td{
-  font-size: .71rem;
-  padding:5px;
+.pnc-anc-table td {
+  font-size: 0.71rem;
+  padding: 5px;
 }
 
 td {
@@ -60,7 +60,7 @@ td {
 
 .pnc-anc-table td:nth-child(1) {
   width: 5%;
-  min-width:initial;
+  min-width: initial;
   text-align: center;
 }
 
@@ -68,11 +68,11 @@ td:nth-child(3) {
   text-align: center;
   width: 15%;
 }
-.pnc-anc-table td:nth-child(3){
+.pnc-anc-table td:nth-child(3) {
   width: initial;
 }
-.pnc-table .list-title{
-  width:30%;
+.pnc-table .list-title {
+  width: 30%;
 }
 
 tbody tr > td:nth-child(2),
@@ -85,6 +85,9 @@ tbody tr > td:nth-child(1) {
   min-width: 40px;
   text-align: center;
 }
+.pnc-anc-table td:nth-child(9) {
+  width: 10%;
+}
 
 tbody .four-cols > td:nth-child(3) {
   width: 50%;
@@ -96,12 +99,8 @@ tbody .three-cols > td:nth-child(3) {
   min-width: 50px;
 }
 
-.pnc-anc-table tr>td:nth-child(n+3) {
+.pnc-anc-table tr > td:nth-child(n + 3) {
   text-align: center;
-}
-
-.pnc-anc-table td:nth-child(9){
-  width:10%;
 }
 
 .list-title {
@@ -109,7 +108,7 @@ tbody .three-cols > td:nth-child(3) {
   font-size: 0.8rem;
 }
 
-.pnc-anc-table .child-table{
+.pnc-anc-table .child-table {
   width: 50%;
 }
 
