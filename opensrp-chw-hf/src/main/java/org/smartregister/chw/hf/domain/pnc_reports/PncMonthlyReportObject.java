@@ -210,12 +210,12 @@ public class PncMonthlyReportObject extends ReportObject {
         indicatorObject.put("pnc-1a+1b-30-34", getSumOfIndicator1aAnd1b30to34());
         indicatorObject.put("pnc-1a+1b-35+", getSumOfIndicator1aAnd1b35above());
 
-        indicatorObject.put("pnc-1a+1b-jumla", get1a_1b_Total());
+        indicatorObject.put("pnc-1a+1b-jumla", getIndicator1aPlus1bTotal());
 
         indicatorObject.put("pnc-11a+11b-ME", getSumOfIndicator11aAnd11bMale());
         indicatorObject.put("pnc-11a+11b-KE", getSumOfIndicator11aAnd11bFemale());
 
-        indicatorObject.put("pnc-11a+11b-jumla", get11a_11b_Total());
+        indicatorObject.put("pnc-11a+11b-jumla", getIndicator11aPlus11bTotal());
 
 
 
@@ -335,7 +335,7 @@ public class PncMonthlyReportObject extends ReportObject {
         return total;
     }
 
-    private int get1a_1b_Total(){
+    private int getIndicator1aPlus1bTotal(){
         return get1aTotal() + get1bTotal();
     }
     private int get2aTotal() {
@@ -568,7 +568,7 @@ public class PncMonthlyReportObject extends ReportObject {
         return total;
     }
 
-    private int get11a_11b_Total(){
+    private int getIndicator11aPlus11bTotal(){
         return get11aTotal() + get11bTotal();
     }
 
