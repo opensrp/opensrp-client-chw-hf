@@ -6,58 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Taarifa ya mwezi ANC</title>
-    <style>
-        body {
-            margin: 5px;
-        }
-
-        table {
-            background-color: #fff;
-            box-shadow: 3px 1px 0px #f6f6f6;
-            border: none;
-            width: 100%;
-            border-collapse: collapse
-        }
-
-        th {
-            padding: 4px;
-            background: #c4c4c4;
-            font-size: .5rem;
-            font-weight: 300;
-        }
-
-        td {
-            text-align: initial;
-            font-size: .71rem;
-        }
-
-        td:nth-child(1) {
-            width:5%;
-        }
-
-        .list-title {
-            text-align: initial !important;
-            padding: 5px;
-            font-size: 9px;
-            width:20%;
-        }
-
-        tbody tr>td:nth-child(1) {
-            text-align: center;
-        }
-
-        tr>td:nth-child(n+3) {
-            text-align: center;
-        }
-        td:nth-child(9){
-            width:10%;
-        }
-
-    </style>
+    <link rel='stylesheet' href='./report-styles.css'/>
+    <script src="./report-script.js"></script>
 </head>
 
-<body onload="onLoad()">
-<table border="1">
+<body onload="loadData('monthly', 'anc')">
+<div class="show-on-print">
+    <h1>Taarifa ya Mwezi Toka Kliniki (ANC)</h1>
+    <h2>TAARIFA YA [MWEZI/MWAKA]: <span id="report_period"></span></h2>
+    <h2>KITUO: <span id="reporting_facility"></span></h2>
+</div>
+<table border="1" class='pnc-anc-table'>
     <thead>
     <tr>
         <th>Na.</th>
@@ -813,18 +772,4 @@
     </tbody>
 </table>
 </body>
-<script type="text/javascript">
-    function onLoad() {
-        const data = JSON.parse(Android.getData("monthly"));
-        const keys = Object.keys(data.nameValuePairs)
-        keys.forEach(key => {
-            const element = document.getElementById(key)
-            if(element !== null && element !== undefined){
-                document.getElementById(key).innerHTML = data.nameValuePairs[key]
-            }
-        })
-    }
-
-</script>
-
 </html>

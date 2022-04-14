@@ -45,8 +45,7 @@ public class PncReportsActivity extends SecuredActivity implements View.OnClickL
 
     @Override
     protected void onResumption() {
-        setUpToolbar();
-        setupViews();
+        //do nothing
     }
 
     @Override
