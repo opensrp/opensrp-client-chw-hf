@@ -203,17 +203,17 @@ public class PncMonthlyReportObject extends ReportObject {
             indicatorObject.put(indicatorCode, ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate));
         }
 
-        indicatorObject.put("pnc-1a+1b-10-14", get1a_1b_10_14());
-        indicatorObject.put("pnc-1a+1b-15-19", get1a_1b_15_19());
-        indicatorObject.put("pnc-1a+1b-20-24", get1a_1b_20_24());
-        indicatorObject.put("pnc-1a+1b-25-29", get1a_1b_25_29());
-        indicatorObject.put("pnc-1a+1b-30-34", get1a_1b_30_34());
-        indicatorObject.put("pnc-1a+1b-35+", get1a_1b_35_plus());
+        indicatorObject.put("pnc-1a+1b-10-14", getSumOfIndicator1aAnd1b10to14());
+        indicatorObject.put("pnc-1a+1b-15-19", getSumOfIndicator1aAnd1b15to19());
+        indicatorObject.put("pnc-1a+1b-20-24", getSumOfIndicator1aAnd1b20to24());
+        indicatorObject.put("pnc-1a+1b-25-29", getSumOfIndicator1aAnd1b250to29());
+        indicatorObject.put("pnc-1a+1b-30-34", getSumOfIndicator1aAnd1b30to34());
+        indicatorObject.put("pnc-1a+1b-35+", getSumOfIndicator1aAnd1b35above());
 
         indicatorObject.put("pnc-1a+1b-jumla", get1a_1b_Total());
 
-        indicatorObject.put("pnc-11a+11b-ME", get11a_11b_ME());
-        indicatorObject.put("pnc-11a+11b-KE", get11a_11b_KE());
+        indicatorObject.put("pnc-11a+11b-ME", getSumOfIndicator11aAnd11bMale());
+        indicatorObject.put("pnc-11a+11b-KE", getSumOfIndicator11aAnd11bFemale());
 
         indicatorObject.put("pnc-11a+11b-jumla", get11a_11b_Total());
 
@@ -269,45 +269,45 @@ public class PncMonthlyReportObject extends ReportObject {
 
     //get horizontal totals
     //get 1a + 1b indicators
-    private int get1a_1b_10_14() {
+    private int getSumOfIndicator1aAnd1b10to14() {
         int pnc_1a_10_14 = ReportDao.getReportPerIndicatorCode("pnc-1a-10-14", reportDate);
         int pnc_1b_10_14 = ReportDao.getReportPerIndicatorCode("pnc-1b-10-14", reportDate);
         return pnc_1b_10_14 + pnc_1a_10_14;
     }
-    private int get1a_1b_15_19() {
+    private int getSumOfIndicator1aAnd1b15to19() {
         int pnc_1a_15_19 = ReportDao.getReportPerIndicatorCode("pnc-1a-15-19", reportDate);
         int pnc_1b_15_19 = ReportDao.getReportPerIndicatorCode("pnc-1b-15-19", reportDate);
         return pnc_1b_15_19 + pnc_1a_15_19;
     }
-    private int get1a_1b_20_24() {
+    private int getSumOfIndicator1aAnd1b20to24() {
         int pnc_1a_20_24 = ReportDao.getReportPerIndicatorCode("pnc-1a-20-24", reportDate);
         int pnc_1b_20_24 = ReportDao.getReportPerIndicatorCode("pnc-1b-20-24", reportDate);
         return pnc_1b_20_24 + pnc_1a_20_24;
     }
-    private int get1a_1b_25_29() {
+    private int getSumOfIndicator1aAnd1b250to29() {
         int pnc_1a_25_29 = ReportDao.getReportPerIndicatorCode("pnc-1a-25-29", reportDate);
         int pnc_1b_25_29 = ReportDao.getReportPerIndicatorCode("pnc-1b-25-29", reportDate);
         return pnc_1b_25_29 + pnc_1a_25_29;
     }
-    private int get1a_1b_30_34() {
+    private int getSumOfIndicator1aAnd1b30to34() {
         int pnc_1a_30_34 = ReportDao.getReportPerIndicatorCode("pnc-1a-30-34", reportDate);
         int pnc_1b_30_34 = ReportDao.getReportPerIndicatorCode("pnc-1b-30-34", reportDate);
         return pnc_1b_30_34 + pnc_1a_30_34;
     }
-    private int get1a_1b_35_plus(){
+    private int getSumOfIndicator1aAnd1b35above(){
         int pnc_1a_35_plus = ReportDao.getReportPerIndicatorCode("pnc-1a-35+", reportDate);
         int pnc_1b_35_plus = ReportDao.getReportPerIndicatorCode("pnc-1b-35+", reportDate);
         return pnc_1b_35_plus + pnc_1a_35_plus;
     }
 
     //get 11a + 11b indicators
-    private int get11a_11b_ME() {
+    private int getSumOfIndicator11aAnd11bMale() {
         int pnc_11a_ME = ReportDao.getReportPerIndicatorCode("pnc-11a-ME", reportDate);
         int pnc_11b_ME = ReportDao.getReportPerIndicatorCode("pnc-11b-ME", reportDate);
         return pnc_11b_ME + pnc_11a_ME;
     }
 
-    private int get11a_11b_KE() {
+    private int getSumOfIndicator11aAnd11bFemale() {
         int pnc_11a_KE = ReportDao.getReportPerIndicatorCode("pnc-11a-KE", reportDate);
         int pnc_11b_KE = ReportDao.getReportPerIndicatorCode("pnc-11b-KE", reportDate);
         return pnc_11b_KE + pnc_11a_KE;
