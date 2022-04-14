@@ -6,7 +6,7 @@ function loadData(reportKey, reportType) {
   keys.forEach((key) => {
     let element;
     if(reportType!== null && reportType === "pnc"){
-      element = document.getElementById(key.replace('pnc-',''))
+      element = document.getElementById(key.replace("pnc-",""));
     }else{
       element = document.getElementById(key);
     }
