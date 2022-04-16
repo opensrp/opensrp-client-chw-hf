@@ -18,7 +18,6 @@ import org.smartregister.view.customcontrols.CustomFontTextView;
 import java.util.Map;
 
 import androidx.annotation.NonNull;
-import androidx.room.util.StringUtil;
 
 import static android.view.View.GONE;
 import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
