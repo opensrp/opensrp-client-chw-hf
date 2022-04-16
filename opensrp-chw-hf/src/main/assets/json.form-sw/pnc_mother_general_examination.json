@@ -154,7 +154,7 @@
       {
         "key": "hb_level_test",
         "type": "native_radio",
-        "label": "HB level Test",
+        "label": "Kipimo cha kiwango cha damu (Hb)",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "hb_level_test",
         "openmrs_entity_parent": "",
@@ -470,7 +470,7 @@
       {
         "key": "engorgement_mastitis",
         "type": "native_radio",
-        "label": "Je, Mama ana Engorgement au Mastitis?",
+        "label": "Je, Mama ana matiti yaliyovimba au Mastitis?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "engorgement_mastitis",
         "openmrs_entity_parent": "",
@@ -581,11 +581,11 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "uterus_assessment",
         "type": "native_radio",
-        "label": "Tathmini ya Uterasi",
+        "label": "Tathmini ya mfuko wa uzazi",
         "options": [
           {
             "key": "chk_normal_involution",
-            "text": "Ipo kawaida",
+            "text": "Upo kawaida",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_normal_involution"
           },
@@ -597,7 +597,7 @@
           },
           {
             "key": "chk_distended",
-            "text": "Distended",
+            "text": "Umetokeza nje",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_distended"
           }
@@ -672,14 +672,14 @@
       {
         "key": "vaginal_assessment",
         "type": "native_radio",
-        "label": "Tathimini ya ukeni",
+        "label": "Tathmini ya uke",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "vaginal_assessment",
         "openmrs_entity_parent": "",
         "options": [
           {
             "key": "tear",
-            "text": "Tear",
+            "text": "Umechanika",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "tear"
           },

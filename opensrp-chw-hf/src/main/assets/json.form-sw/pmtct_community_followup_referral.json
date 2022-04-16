@@ -47,7 +47,7 @@
     "encounter_location": ""
   },
   "step1": {
-    "title": "PMTCT Community Followup Referral",
+    "title": "Rufaa ya Ufuatiliaji wa PMTCT katika Ngazi ya Jamii",
     "fields": [
       {
         "key": "last_client_visit_date",
@@ -91,7 +91,7 @@
           },
           {
             "key": "mother_champion_services",
-            "text": "Mother Champion Community Services",
+            "text": "Huduma za Mama Kinara katika Ngazi ya Jamii",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "mother_champion_services"
