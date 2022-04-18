@@ -212,12 +212,12 @@ public class AncMonthlyReportObject extends ReportObject {
         indicatorCodes.add("5i-25-29");
         indicatorCodes.add("5i-30-34");
         indicatorCodes.add("5i-35+");
-        indicatorCodes.add("5l-10-14");
-        indicatorCodes.add("5l-15-19");
-        indicatorCodes.add("5l-20-24");
-        indicatorCodes.add("5l-25-29");
-        indicatorCodes.add("5l-30-34");
-        indicatorCodes.add("5l-35+");
+        indicatorCodes.add("5j-10-14");
+        indicatorCodes.add("5j-15-19");
+        indicatorCodes.add("5j-20-24");
+        indicatorCodes.add("5j-25-29");
+        indicatorCodes.add("5j-30-34");
+        indicatorCodes.add("5j-35+");
         indicatorCodes.add("5k-10-14");
         indicatorCodes.add("5k-15-19");
         indicatorCodes.add("5k-20-24");
