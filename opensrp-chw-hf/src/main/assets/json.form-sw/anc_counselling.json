@@ -141,6 +141,13 @@
             "openmrs_entity_id": "chk_counsel_llin"
           },
           {
+            "key": "chk_child_feeding",
+            "text": "Ulishaji wa mtoto",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_child_feeding"
+          },
+          {
             "key": "chk_none",
             "text": "Hakuna",
             "value": false,

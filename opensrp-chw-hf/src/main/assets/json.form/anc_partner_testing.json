@@ -453,7 +453,7 @@
       {
         "key": "partner_other_stds",
         "type": "native_radio",
-        "label": "Is the client known positive on other STDs?",
+        "label": "Has the client tested positive for other STDs?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "partner_other_stds",
         "openmrs_entity_parent": "",

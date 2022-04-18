@@ -1406,7 +1406,8 @@
             "field": "obs.fieldCode",
             "concept": "tb_status"
           }
-        },{
+        },
+        {
           "column_name": "tt1_vaccination",
           "type": "Event",
           "json_mapping": {
@@ -1463,6 +1464,14 @@
           }
         },
         {
+          "column_name": "partner_syphilis_treatment",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "partner_syphilis_treatment"
+          }
+        },
+        {
           "column_name": "partner_hepatitis",
           "type": "Event",
           "json_mapping": {
@@ -1476,6 +1485,14 @@
           "json_mapping": {
             "field": "obs.fieldCode",
             "concept": "partner_other_stds"
+          }
+        },
+        {
+          "column_name": "partner_other_stds_treatment",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "partner_other_stds_treatment"
           }
         },
         {
@@ -1511,14 +1528,6 @@
           }
         },
         {
-          "column_name": "mRDT_for_malaria",
-          "type": "Event",
-          "json_mapping": {
-            "field": "obs.fieldCode",
-            "concept": "mRDT_for_malaria"
-          }
-        },
-        {
           "column_name": "hiv",
           "type": "Event",
           "json_mapping": {
@@ -1532,6 +1541,14 @@
           "json_mapping": {
             "field": "obs.fieldCode",
             "concept": "syphilis"
+          }
+        },
+        {
+          "column_name": "syphilis_treatment",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "syphilis_treatment"
           }
         },
         {
@@ -1623,6 +1640,46 @@
           }
         },
         {
+          "column_name": "tt1_vaccination",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "tt1_vaccination"
+          }
+        },
+        {
+          "column_name": "tt2_vaccination",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "tt2_vaccination"
+          }
+        },
+        {
+          "column_name": "investigate_for_tb",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "investigate_for_tb"
+          }
+        },
+        {
+          "column_name": "other_stds",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "other_stds"
+          }
+        },
+        {
+          "column_name": "other_stds_treatment",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "other_stds_treatment"
+          }
+        },
+        {
           "column_name": "visit_number",
           "type": "Event",
           "json_mapping": {
@@ -1705,22 +1762,6 @@
           }
         },
         {
-          "column_name": "syphilis",
-          "type": "Event",
-          "json_mapping": {
-            "field": "obs.fieldCode",
-            "concept": "syphilis"
-          }
-        },
-        {
-          "column_name": "partner_syphilis",
-          "type": "Event",
-          "json_mapping": {
-            "field": "obs.fieldCode",
-            "concept": "partner_syphilis"
-          }
-        },
-        {
           "column_name": "hiv",
           "type": "Event",
           "json_mapping": {
@@ -1745,14 +1786,6 @@
           }
         },
         {
-          "column_name": "couple_testing",
-          "type": "Event",
-          "json_mapping": {
-            "field": "obs.fieldCode",
-            "concept": "couple_testing"
-          }
-        },
-        {
           "column_name": "partner_hiv",
           "type": "Event",
           "json_mapping": {
@@ -1774,6 +1807,38 @@
           "json_mapping": {
             "field": "obs.fieldCode",
             "concept": "partner_hiv_test_number"
+          }
+        },
+        {
+          "column_name": "hiv_counselling_before_testing",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "hiv_counselling_before_testing"
+          }
+        },
+        {
+          "column_name": "hiv_counselling_after_testing",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "hiv_counselling_after_testing"
+          }
+        },
+        {
+          "column_name": "couple_testing",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "couple_testing"
+          }
+        },
+        {
+          "column_name": "mRDT_for_malaria",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "mRDT_for_malaria"
           }
         },
         {
@@ -1814,6 +1879,30 @@
           "json_mapping": {
             "field": "obs.fieldCode",
             "concept": "malaria_preventive_therapy_ipt4"
+          }
+        },
+        {
+          "column_name": "iron_folate_supplements",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "iron_folate_supplements"
+          }
+        },
+        {
+          "column_name": "deworming",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "deworming"
+          }
+        },
+        {
+          "column_name": "given_counselling",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "given_counselling"
           }
         },
         {

@@ -141,6 +141,13 @@
             "openmrs_entity_id": "chk_counsel_llin"
           },
           {
+            "key": "chk_child_feeding",
+            "text": "12. Child Feeding",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_child_feeding"
+          },
+          {
             "key": "chk_none",
             "text": "None",
             "value": false,

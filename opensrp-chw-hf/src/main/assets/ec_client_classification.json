@@ -480,8 +480,7 @@
             "field": "eventType",
             "field_value": "Partner Testing",
             "creates_case": [
-              "ec_anc_register",
-              "ec_anc_followup"
+              "ec_anc_register"
             ]
           },
           {
