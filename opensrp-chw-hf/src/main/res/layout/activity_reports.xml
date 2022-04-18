@@ -201,7 +201,7 @@
     <androidx.constraintlayout.helper.widget.Flow
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:constraint_referenced_ids="pmtct_reports,pnc_reports,anc_reports"
+        app:constraint_referenced_ids="anc_reports,pnc_reports,pmtct_reports"
         app:flow_horizontalAlign="center"
         app:flow_horizontalGap="20dp"
         app:flow_horizontalStyle="packed"
