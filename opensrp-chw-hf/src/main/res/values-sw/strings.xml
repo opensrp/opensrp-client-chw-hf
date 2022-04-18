@@ -36,7 +36,7 @@
     <string name="chw_agreed_to_be_tested">Amekubali kupimwa</string>
     <string name="chw_test_location">Atapimwa wapi</string>
     <string name="optional"></string>
-    <string name="action_pregnancy_confirmation_referrals">Pregnancy Confirmation</string>
+    <string name="action_pregnancy_confirmation_referrals">Kuthibitisha Ujauzito</string>
     <string name="anc_pregnacy_status">Hali ya ujauzito: "</string>
     <string name="anc_pregnacy_status_viable">Bado ana ujauzito</string>
     <string name="anc_pregnacy_status_fetal_death">Mtoto amefia tumboni</string>
