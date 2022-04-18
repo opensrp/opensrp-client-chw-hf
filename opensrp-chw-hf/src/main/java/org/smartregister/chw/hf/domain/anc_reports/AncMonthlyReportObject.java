@@ -51,6 +51,36 @@ public class AncMonthlyReportObject extends ReportObject {
         for (String indicatorCode : indicatorCodes) {
             jsonObject.put(indicatorCode, ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate));
         }
+        for(String indicator : indicatorCodesArray){
+            jsonObject.put(indicator+"-jumla", getIndicatorTotal(indicator));
+        }
+
+        jsonObject.put("2a+2b-10-14", getIndicatorTotal("2a-10-14") + getIndicatorTotal("2b-10-14"));
+        jsonObject.put("2a+2b-15-19", getIndicatorTotal("2a-15-19") + getIndicatorTotal("2b-15-19"));
+        jsonObject.put("2a+2b-20-24", getIndicatorTotal("2a-20-24") + getIndicatorTotal("2b-20-24"));
+        jsonObject.put("2a+2b-25-29", getIndicatorTotal("2a-25-29") + getIndicatorTotal("2b-25-29"));
+        jsonObject.put("2a+2b-30-34", getIndicatorTotal("2a-30-34") + getIndicatorTotal("2b-30-34"));
+        jsonObject.put("2a+2b-35+", getIndicatorTotal("2a-35+") + getIndicatorTotal("2b-35+"));
+        jsonObject.put("2a+2b-jumla", getIndicatorTotal("2a") + getIndicatorTotal("2b"));
+
+        jsonObject.put("2a+2b+2c-10-14", getIndicatorTotal("2a-10-14") + getIndicatorTotal("2b-10-14") + getIndicatorTotal("2c-10-14"));
+        jsonObject.put("2a+2b+2c-15-19", getIndicatorTotal("2a-15-19") + getIndicatorTotal("2b-15-19") + getIndicatorTotal("2c-15-19"));
+        jsonObject.put("2a+2b+2c-20-24", getIndicatorTotal("2a-20-24") + getIndicatorTotal("2b-20-24") + getIndicatorTotal("2c-20-24"));
+        jsonObject.put("2a+2b+2c-25-29", getIndicatorTotal("2a-25-29") + getIndicatorTotal("2b-25-29") + getIndicatorTotal("2c-25-29"));
+        jsonObject.put("2a+2b+2c-30-34", getIndicatorTotal("2a-30-34") + getIndicatorTotal("2b-30-34") + getIndicatorTotal("2c-30-34"));
+        jsonObject.put("2a+2b+2c-35+", getIndicatorTotal("2a-35+") + getIndicatorTotal("2b-35+") + getIndicatorTotal("2c-35+"));
+        jsonObject.put("2a+2b+2c-jumla", getIndicatorTotal("2a") + getIndicatorTotal("2b") + getIndicatorTotal("2c"));
         return jsonObject;
     }
+
+    private int getIndicatorTotal(String indicator) {
+        int total = 0;
+        for (String indicatorCode : indicatorCodes) {
+            if (indicatorCode.startsWith(indicator)) {
+                total += ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate);
+            }
+        }
+        return total;
+    }
+
 }
