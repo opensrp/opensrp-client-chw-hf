@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import org.apache.commons.lang3.StringUtils;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.utils.AllClientsUtils;
@@ -100,7 +101,7 @@ public class PregnancyConfirmationViewActivity extends ReferralTaskViewActivity 
     @Override
     protected void getReferralDetails() {
         super.getReferralDetails();
-        careGiverPhone.setText(CLIENT_PHONE_NUMBER.isEmpty() ? getString(org.smartregister.chw.core.R.string.phone_not_provided) : CLIENT_PHONE_NUMBER);
+        careGiverPhone.setText(StringUtils.isBlank(CLIENT_PHONE_NUMBER) ? getString(org.smartregister.chw.core.R.string.phone_not_provided) : CLIENT_PHONE_NUMBER);
     }
 
     @Override
