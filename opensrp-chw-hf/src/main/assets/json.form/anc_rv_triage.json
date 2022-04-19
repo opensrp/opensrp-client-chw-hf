@@ -95,7 +95,7 @@
         "options": [
           {
             "key": "facial_expression",
-            "text": "Facial Expression (normal, pain expression)",
+            "text": "Facial Expression (pain expression)",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "facial_expression"
           },
@@ -172,16 +172,16 @@
         },
         "options": [
           {
-            "text": "Sick/Concerned",
-            "key": "sick_concerned",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "sick_concerned"
-          },
-          {
             "text": "Routine Scheduled Visit",
             "key": "routine_visit",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "routine_visit"
+          },
+          {
+            "text": "Sick/Concerned",
+            "key": "sick_concerned",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "sick_concerned"
           }
         ]
       },

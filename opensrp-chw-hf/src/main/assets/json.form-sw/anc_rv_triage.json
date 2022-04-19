@@ -94,7 +94,7 @@
         "options": [
           {
             "key": "facial_expression",
-            "text": "Usemi wa usoni (kawaida, usemi wa maumivu)",
+            "text": "Muonekano wa sura (muonekano wa maumivu)",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "facial_expression"
           },
@@ -171,16 +171,16 @@
         },
         "options": [
           {
-            "text": "Mgonjwa/Wasiwasi",
-            "key": "sick_concerned",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "sick_concerned"
-          },
-          {
             "text": "Nimezingatia ratiba ya mahudhurio",
             "key": "routine_visit",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "routine_visit"
+          },
+          {
+            "text": "Mgonjwa/Wasiwasi",
+            "key": "sick_concerned",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "sick_concerned"
           }
         ]
       },
