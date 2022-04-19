@@ -516,12 +516,12 @@
         }
       },
       {
-        "key": "partner_reason_for_not_giving_arv_medication_for_other_stds",
+        "key": "partner_reason_for_not_giving_medication_for_other_stds",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "partner_reason_for_not_giving_arv_medication_for_other_stds",
+        "openmrs_entity_id": "partner_reason_for_not_giving_medication_for_other_stds",
         "type": "spinner",
-        "hint": "Sababu kwa nini ARV haikutolewa",
+        "hint": "Sababu kwa nini matibabu hayakutolewa",
         "values": [
           "Bidhaa zimeisha",
           "Mteja amekataa kuchukua dawa",
@@ -553,18 +553,18 @@
         }
       },
       {
-        "key": "partner_other_reason_for_not_giving_arv_medication_for_other_stds",
+        "key": "partner_other_reason_for_not_giving_medication_for_other_stds",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "partner_other_reason_for_not_giving_arv_medication_for_other_stds",
+        "openmrs_entity_id": "partner_other_reason_for_not_giving_medication_for_other_stds",
         "type": "edit_text",
-        "hint": "Bainisha sababu zingine za kutokutoa ARV",
+        "hint": "Bainisha sababu zingine za kutokutoa matibabu",
         "v_required": {
           "value": "true",
           "err": "Tafadhali jaza sababu"
         },
         "relevance": {
-          "step1:partner_reason_for_not_giving_arv_medication_for_other_stds": {
+          "step1:partner_reason_for_not_giving_medication_for_other_stds": {
             "type": "string",
             "ex": "equalTo(., \"other\")"
           }

@@ -453,7 +453,7 @@
       {
         "key": "partner_other_stds",
         "type": "native_radio",
-        "label": "Has the client tested positive for other STDs?",
+        "label": "Has the client tested positive for other STIs?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "partner_other_stds",
         "openmrs_entity_parent": "",
@@ -486,7 +486,7 @@
       {
         "key": "partner_other_stds_treatment",
         "type": "native_radio",
-        "label": "Was ARV provided for other STDs?",
+        "label": "Was treatment provided for other STIs?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "partner_other_stds_treatment",
         "openmrs_entity_parent": "",
@@ -516,12 +516,12 @@
         }
       },
       {
-        "key": "partner_reason_for_not_giving_arv_medication_for_other_stds",
+        "key": "partner_reason_for_not_giving_medication_for_other_stds",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "partner_reason_for_not_giving_arv_medication_for_other_stds",
+        "openmrs_entity_id": "partner_reason_for_not_giving_medication_for_other_stds",
         "type": "spinner",
-        "hint": "Reason as to why ARV was not given",
+        "hint": "Reason as to why treatment was not given",
         "values": [
           "Out of stock",
           "The client was did not agree to take the medication",
@@ -553,18 +553,18 @@
         }
       },
       {
-        "key": "partner_other_reason_for_not_giving_arv_medication_for_other_stds",
+        "key": "partner_other_reason_for_not_giving_medication_for_other_stds",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "partner_other_reason_for_not_giving_arv_medication_for_other_stds",
+        "openmrs_entity_id": "partner_other_reason_for_not_giving_medication_for_other_stds",
         "type": "edit_text",
-        "hint": "Specify other reasons for not giving ARV",
+        "hint": "Specify other reasons for not giving treatment",
         "v_required": {
           "value": "true",
           "err": "Please enter the reason"
         },
         "relevance": {
-          "step1:partner_reason_for_not_giving_arv_medication_for_other_stds": {
+          "step1:partner_reason_for_not_giving_medication_for_other_stds": {
             "type": "string",
             "ex": "equalTo(., \"other\")"
           }
