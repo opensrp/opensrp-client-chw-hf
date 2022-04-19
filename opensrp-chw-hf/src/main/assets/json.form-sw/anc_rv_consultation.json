@@ -328,7 +328,7 @@
       {
         "key": "prompt_for_fetal_distress",
         "type": "toaster_notes",
-        "text": "Tafadhali mpigie simu/ muite Dakatari kwa ajili ya kumfanyie Mama upasuaji wakati wa kujifungua",
+        "text": "Toa Rufaa kwa Mtabibu",
         "openmrs_entity_id": "prompt_for_fetal_distress",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -336,7 +336,7 @@
         "relevance": {
           "step1:fetal_heart_rate": {
             "type": "numeric",
-            "ex": "greaterThan(.,\"120\")"
+            "ex": "greaterThan(.,\"160\")"
           }
         }
       },
