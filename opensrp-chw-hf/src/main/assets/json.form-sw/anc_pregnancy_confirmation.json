@@ -85,6 +85,13 @@
             "openmrs_entity_id": "severely_pale"
           },
           {
+            "key": "dizziness",
+            "text": "Kizunguzungu",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "dizziness"
+          },
+          {
             "key": "severe_vomiting",
             "text": "Kutapika sana",
             "value": false,
