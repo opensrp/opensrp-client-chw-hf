@@ -1898,6 +1898,14 @@
           }
         },
         {
+          "column_name": "partner_syphilis",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "partner_syphilis"
+          }
+        },
+        {
           "column_name": "deworming",
           "type": "Event",
           "json_mapping": {
