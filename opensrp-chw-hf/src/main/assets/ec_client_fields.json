@@ -1898,6 +1898,14 @@
           }
         },
         {
+          "column_name": "syphilis",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "syphilis"
+          }
+        },
+        {
           "column_name": "partner_syphilis",
           "type": "Event",
           "json_mapping": {
