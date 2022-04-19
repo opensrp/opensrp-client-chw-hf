@@ -133,6 +133,7 @@
           "Mteja alikuwa katika hali ya dharura",
           "Mteja alikataa kupimwa",
           "Tunaendelea kumshauri mteja",
+          "Mteja yupo kwenye ART tayari",
           "Nyingine (Bainisha)"
         ],
         "keys": [
@@ -140,6 +141,7 @@
           "client_was_in_an_emergency_situation",
           "client_refused_to_be_tested",
           "still_counselling_the_client",
+          "known_on_art",
           "other"
         ],
         "openmrs_choice_ids": {

@@ -133,6 +133,7 @@
           "A client was in an emergency situation",
           "Client refused to be tested",
           "We are still counselling a client",
+          "Known on ART",
           "Other (Specify)"
         ],
         "keys": [
@@ -140,6 +141,7 @@
           "client_was_in_an_emergency_situation",
           "client_refused_to_be_tested",
           "still_counselling_the_client",
+          "known_on_art",
           "other"
         ],
         "openmrs_choice_ids": {
