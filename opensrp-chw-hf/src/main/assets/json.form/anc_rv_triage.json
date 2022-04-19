@@ -302,6 +302,13 @@
             "openmrs_entity_id": "imminent_labour"
           },
           {
+            "key": "reduced_fetal_movement",
+            "text": "Reduced fetal movement",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "reduced_fetal_movement"
+          },
+          {
             "key": "none",
             "text": "None",
             "value": false,
