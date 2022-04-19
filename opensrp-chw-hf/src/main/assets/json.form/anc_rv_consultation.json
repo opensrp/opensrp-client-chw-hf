@@ -632,7 +632,7 @@
         "relevance": {
           "step1:temperature": {
             "type": "numeric",
-            "ex": "greaterThanEqualTo(.,\"39\")"
+            "ex": "greaterThan(.,\"37.8\")"
           }
         }
       },
@@ -647,7 +647,7 @@
         "relevance": {
           "step1:temperature": {
             "type": "numeric",
-            "ex": "lessThan(.,\"37\")"
+            "ex": "lessThan(.,\"36.5\")"
           }
         }
       },
