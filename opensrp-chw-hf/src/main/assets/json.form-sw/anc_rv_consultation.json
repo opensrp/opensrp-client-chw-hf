@@ -328,7 +328,7 @@
       {
         "key": "prompt_for_fetal_distress",
         "type": "toaster_notes",
-        "text": "Toa Rufaa kwa Mtabibu",
+        "text": "Toa Rufaa kwa huduma/matibabu zaidi",
         "openmrs_entity_id": "prompt_for_fetal_distress",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -679,7 +679,7 @@
       {
         "key": "prompt_for_breasts",
         "type": "toaster_notes",
-        "text": "Mfanyie Mama uchunguzi wa matiti ilikuweza kugundua kama ana 'Mastitis' au 'Breast lump'. Mpatie Antibiotic kama ana 'Mastitis' na dhibiti hali hii kulingana na mwongozo wa Wizara ya Afya. Mpe rufaa kwa ajili ya kipimo cha  Biopsy kama na 'Breast lump'",
+        "text": "Mfanyie Mama uchunguzi wa matiti ilikuweza kugundua kama ana 'Mastitis' au 'Breast lump'. Mpatie Antibiotic kama ana 'Mastitis' na dhibiti hali hii kulingana na mwongozo wa Wizara ya Afya. Mpe rufaa kwa huduma/matibabu zaidi kama ana 'Breast lump'",
         "openmrs_entity_id": "prompt_for_breasts",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -720,7 +720,7 @@
       {
         "key": "prompt_for_lymph_under_the_arm",
         "type": "toaster_notes",
-        "text": "Tafadhali mpe rufaa mteja kwa ajili ya kipimo cha biopsy",
+        "text": "Tafadhali mpe rufaa mteja kwa huduma/matibabu zaidi",
         "openmrs_entity_id": "prompt_for_lymph_under_the_arm",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -761,7 +761,7 @@
       {
         "key": "prompt_for_lymph_cervical",
         "type": "toaster_notes",
-        "text": "Tafadhali mpe rufaa mteja kwa ajili ya kipimo cha biopsy",
+        "text": "Tafadhali mpe rufaa mteja kwa huduma/matibabu zaidi",
         "openmrs_entity_id": "prompt_for_lymph_cervical",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",

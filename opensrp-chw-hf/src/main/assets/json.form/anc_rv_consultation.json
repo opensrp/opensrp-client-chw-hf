@@ -329,7 +329,7 @@
       {
         "key": "prompt_for_fetal_distress",
         "type": "toaster_notes",
-        "text": "Refer to Clinician",
+        "text": "Refer for further management",
         "openmrs_entity_id": "prompt_for_fetal_distress",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -680,7 +680,7 @@
       {
         "key": "prompt_for_breasts",
         "type": "toaster_notes",
-        "text": "Palpate the breast to elicit mastitis or breast lump.\nProvide antibiotics for mastitis and manage according to standard guidelines.\nRefer the client for biopsy if she has a breast lump",
+        "text": "Palpate the breast to elicit mastitis or breast lump.\nProvide antibiotics for mastitis and manage according to standard guidelines.\nRefer for further management if she has a breast lump",
         "openmrs_entity_id": "prompt_for_breasts",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -721,7 +721,7 @@
       {
         "key": "prompt_for_lymph_under_the_arm",
         "type": "toaster_notes",
-        "text": "Refer the client for biopsy",
+        "text": "Refer for further management",
         "openmrs_entity_id": "prompt_for_lymph_under_the_arm",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -762,7 +762,7 @@
       {
         "key": "prompt_for_lymph_cervical",
         "type": "toaster_notes",
-        "text": "Refer the client for biopsy",
+        "text": "Refer for further management",
         "openmrs_entity_id": "prompt_for_lymph_cervical",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",

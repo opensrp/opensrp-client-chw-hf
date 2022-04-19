@@ -653,7 +653,7 @@
       {
         "key": "prompt_for_fetal_distress",
         "type": "toaster_notes",
-        "text": "Toa Rufaa kwa Mtabibu",
+        "text": "Toa Rufaa kwa huduma/matibabu zaidi",
         "openmrs_entity_id": "prompt_for_fetal_distress",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
