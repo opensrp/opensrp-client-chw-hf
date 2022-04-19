@@ -1544,6 +1544,14 @@
           }
         },
         {
+          "column_name": "mRDT_for_malaria",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "mRDT_for_malaria"
+          }
+        },
+        {
           "column_name": "syphilis_treatment",
           "type": "Event",
           "json_mapping": {
