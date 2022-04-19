@@ -22,6 +22,7 @@ public interface HfQueryForMaleClients {
             "where ec_family_member.date_removed is null\n" +
             "  AND ec_family.entity_type = 'ec_independent_client'\n" +
             "  AND ec_family_member.gender = 'Male' " +
+            "  AND (date(ec_family_member.dob, '+15 years') <= date('now')) \n" +
             "  AND ec_family_member.base_entity_id IN (%s)\n" +
             "ORDER BY last_interacted_with DESC;";
 }
