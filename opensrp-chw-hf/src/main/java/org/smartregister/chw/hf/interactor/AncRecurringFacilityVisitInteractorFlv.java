@@ -208,6 +208,11 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
             triageForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.TRIAGE);
             triageForm.getJSONObject("global").put("last_menstrual_period", memberObject.getLastMenstrualPeriod());
             triageForm.getJSONObject("global").put("current_visit_number", HfAncDao.getVisitNumber(baseEntityId));
+            JSONArray fields = triageForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+            JSONObject gest_age = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "gest_age");
+            if (gest_age != null) {
+                gest_age.put("value", memberObject.getGestationAge());
+            }
             if (details != null && !details.isEmpty()) {
                 HfAncJsonFormUtils.populateForm(triageForm, details);
             }
