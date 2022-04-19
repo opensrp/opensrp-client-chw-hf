@@ -453,7 +453,7 @@
       {
         "key": "partner_other_stds",
         "type": "native_radio",
-        "label": "Je, Mteja anajulikana kuwa na magonjwa mengine za ngono?",
+        "label": "Je, Mteja anajulikana kuwa na magonjwa mengine ya ngono?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "partner_other_stds",
         "openmrs_entity_parent": "",
@@ -486,7 +486,7 @@
       {
         "key": "partner_other_stds_treatment",
         "type": "native_radio",
-        "label": "Je, ARV zilitolewa kwa magonjwa mengine za ngono?",
+        "label": "Je, ARV zilitolewa kwa magonjwa mengine ya ngono?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "partner_other_stds_treatment",
         "openmrs_entity_parent": "",

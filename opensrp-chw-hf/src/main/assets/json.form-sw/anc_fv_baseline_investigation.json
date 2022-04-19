@@ -1288,7 +1288,7 @@
       {
         "key": "other_stds",
         "type": "native_radio",
-        "label": "Je, Mteja anajulikana kuwa na magonjwa mengine za ngono?",
+        "label": "Je, Mteja anajulikana kuwa na magonjwa mengine ya ngono?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "other_stds",
         "openmrs_entity_parent": "",
