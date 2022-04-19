@@ -123,4 +123,7 @@ tbody .three-cols > td:nth-child(3) {
   .show-on-print {
     display: block;
   }
+  .child-table {
+    width: 50%;
+  }
 }
