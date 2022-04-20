@@ -91,11 +91,12 @@
         }
       },
       {
-        "key": "tt_vaccination_type_qn",
-        "type": "native_radio",
+        "key": "tt_vaccination_type",
+        "type": "check_box",
         "label": "What TT Vaccination was given",
+        "combine_checkbox_option_values": "true",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "tt_vaccination_type_qn",
+        "openmrs_entity_id": "tt_vaccination_type",
         "openmrs_entity_parent": "",
         "options": [
           {
@@ -115,6 +116,18 @@
             "text": "TT3",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "tt3"
+          },
+          {
+            "key": "tt4",
+            "text": "TT4",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "tt4"
+          },
+          {
+            "key": "tt5",
+            "text": "TT5",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "tt5"
           }
         ],
         "v_required": {
@@ -125,20 +138,6 @@
           "step1:tt_vaccination": {
             "type": "string",
             "ex": "equalTo(., \"yes\")"
-          }
-        }
-      },
-      {
-        "key": "tt_vaccination_type",
-        "type": "edit_text",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "tt_vaccination_type",
-        "openmrs_entity_parent": "",
-        "calculation": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "anc_fv_tt_vaccination_calculation.yml"
-            }
           }
         }
       }

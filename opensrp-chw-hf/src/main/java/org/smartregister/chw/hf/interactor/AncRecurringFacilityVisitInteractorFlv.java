@@ -338,12 +338,11 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
 
                 JSONObject ttVaccinationForm = null;
                 try {
-                    ttVaccinationForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.TT_VACCINATION);
-                    ttVaccinationForm.getJSONObject("global").put("tt_vaccination_type", HfAncDao.getTTVaccinationType(baseEntityId));
+                    ttVaccinationForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncFirstVisit.TT_VACCINATION);
                     if (details != null && !details.isEmpty()) {
                         HfAncJsonFormUtils.populateForm(ttVaccinationForm, details);
                     }
-                } catch (JSONException e) {
+                } catch (Exception e) {
                     Timber.e(e);
                 }
 
@@ -372,20 +371,19 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                     } catch (BaseAncHomeVisitAction.ValidationException e) {
                         e.printStackTrace();
                     }
-                    if (HfAncDao.getTTVaccinationType(baseEntityId) != null && !HfAncDao.getTTVaccinationType(baseEntityId).equalsIgnoreCase("tt3")) {
-                        try {
-                            BaseAncHomeVisitAction vaccinationAction = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_first_visit_tt_vaccination))
-                                    .withOptional(true)
-                                    .withDetails(details)
-                                    .withFormName(Constants.JsonForm.AncRecurringVisit.getTtVaccination())
-                                    .withJsonPayload(ttVaccinationForm.toString())
-                                    .withHelper(new AncTtVaccinationAction(memberObject))
-                                    .build();
-                            actionList.put(context.getString(R.string.anc_first_visit_tt_vaccination), vaccinationAction);
-                        } catch (BaseAncHomeVisitAction.ValidationException e) {
-                            e.printStackTrace();
-                        }
+                    try {
+                        BaseAncHomeVisitAction vaccinationAction = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_first_visit_tt_vaccination))
+                                .withOptional(true)
+                                .withDetails(details)
+                                .withFormName(Constants.JsonForm.AncFirstVisit.getTtVaccination())
+                                .withJsonPayload(ttVaccinationForm.toString())
+                                .withHelper(new AncTtVaccinationAction(memberObject))
+                                .build();
+                        actionList.put(context.getString(R.string.anc_first_visit_tt_vaccination), vaccinationAction);
+                    } catch (BaseAncHomeVisitAction.ValidationException e) {
+                        e.printStackTrace();
                     }
+
 
                     try {
                         BaseAncHomeVisitAction pharmacy = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_pharmacy))

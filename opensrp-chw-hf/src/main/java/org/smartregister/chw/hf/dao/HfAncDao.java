@@ -460,20 +460,4 @@ public class HfAncDao extends AbstractDao {
         return new ArrayList<>();
     }
 
-    public static String getTTVaccinationType(String baseEntityId) {
-        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "tt_vaccination_type");
-
-        String sql = String.format(
-                "SELECT tt_vaccination_type FROM %s WHERE base_entity_id = '%s' " +
-                        "AND is_closed = 0",
-                "ec_anc_register",
-                baseEntityId
-        );
-
-        List<String> res = readData(sql, dataMap);
-        if (res.size() > 0 && res.get(0) != null) {
-            return res.get(0);
-        }
-        return "null";
-    }
 }

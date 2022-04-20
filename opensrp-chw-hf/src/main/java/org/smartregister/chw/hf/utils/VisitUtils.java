@@ -11,7 +11,6 @@ import org.smartregister.chw.anc.domain.Visit;
 import org.smartregister.chw.anc.repository.VisitDetailsRepository;
 import org.smartregister.chw.anc.repository.VisitRepository;
 import org.smartregister.chw.anc.util.NCUtils;
-import org.smartregister.chw.hf.dao.HfAncDao;
 import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.repository.AllSharedPreferences;
 
@@ -68,7 +67,7 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
                         boolean isTriageDone = computeCompletionStatus(obs, "rapid_examination");
                         boolean isPregnancyStatusDone = computeCompletionStatus(obs, "pregnancy_status");
 
-                        String ttCheckString = getCheckString(v.getBaseEntityId());
+                        String ttCheckString = "tt_vaccination";
 
                         if (isTriageDone && isPregnancyStatusDone) {
                             if (checkIfStatusIsViable(obs)) {
@@ -77,15 +76,11 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
                                 boolean isPharmacyDone = computeCompletionStatus(obs, "iron_folate_supplements");
                                 boolean isCounsellingDone = computeCompletionStatus(obs, "given_counselling");
                                 boolean isTTVaccinationDone = computeCompletionStatus(obs, ttCheckString);
-                                if (!HfAncDao.getTTVaccinationType(v.getBaseEntityId()).equalsIgnoreCase("tt3")) {
-                                    if (isConsultationDone && isLabTestsDone && isPharmacyDone && isCounsellingDone && isTTVaccinationDone) {
-                                        ancFollowupVisitsCompleted.add(v);
-                                    }
-                                } else {
-                                    if (isConsultationDone && isLabTestsDone && isPharmacyDone && isCounsellingDone) {
-                                        ancFollowupVisitsCompleted.add(v);
-                                    }
+
+                                if (isConsultationDone && isLabTestsDone && isPharmacyDone && isCounsellingDone && isTTVaccinationDone) {
+                                    ancFollowupVisitsCompleted.add(v);
                                 }
+
                             } else {
                                 ancFollowupVisitsCompleted.add(v);
                             }
@@ -166,14 +161,4 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
         return isCancelled;
     }
 
-    private static String getCheckString(String baseEntityId) {
-        if (HfAncDao.getTTVaccinationType(baseEntityId).equalsIgnoreCase("none")) {
-            return "tt1_vaccination";
-        } else if (HfAncDao.getTTVaccinationType(baseEntityId).equalsIgnoreCase("tt1")) {
-            return "tt2_vaccination";
-        } else if (HfAncDao.getTTVaccinationType(baseEntityId).equalsIgnoreCase("tt2")) {
-            return "tt3_vaccination";
-        }
-        return "tt_vaccination";
-    }
 }

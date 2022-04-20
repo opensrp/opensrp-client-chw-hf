@@ -10,7 +10,6 @@ import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.hf.R;
-import org.smartregister.chw.hf.dao.HfAncDao;
 
 import java.util.List;
 import java.util.Map;
@@ -51,7 +50,7 @@ public class AncTtVaccinationAction implements BaseAncHomeVisitAction.AncHomeVis
     public void onPayloadReceived(String jsonPayload) {
         try {
             JSONObject jsonObject = new JSONObject(jsonPayload);
-            String checkString = getCheckString(memberObject.getBaseEntityId());
+            String checkString = "tt_vaccination";
 
             tt1_vaccination = CoreJsonFormUtils.getValue(jsonObject, checkString);
         } catch (JSONException e) {
@@ -100,14 +99,4 @@ public class AncTtVaccinationAction implements BaseAncHomeVisitAction.AncHomeVis
         Timber.d("onPayloadReceived");
     }
 
-    private String getCheckString(String baseEntityId) {
-        if (HfAncDao.getTTVaccinationType(baseEntityId).equalsIgnoreCase("none")) {
-            return "tt1_vaccination";
-        } else if (HfAncDao.getTTVaccinationType(baseEntityId).equalsIgnoreCase("tt1")) {
-            return "tt2_vaccination";
-        } else if (HfAncDao.getTTVaccinationType(baseEntityId).equalsIgnoreCase("tt2")) {
-            return "tt3_vaccination";
-        }
-        return "tt_vaccination";
-    }
 }

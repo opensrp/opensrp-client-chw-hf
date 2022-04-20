@@ -308,7 +308,6 @@ public class Constants extends CoreConstants {
             public static final String BIRTH_REVIEW_AND_EMERGENCY_PLAN = "anc_rv_birth_review_and_emergency_plan";
             public static final String PARTNER_TESTING = "anc_partner_testing";
             private static final String PHARMACY = "anc_rv_pharmacy";
-            public static final String TT_VACCINATION = "anc_rv_tt_vaccination";
             private static final String PREGNANCY_STATUS = "anc_rv_pregnancy_status";
 
             public static String getTriage() {
@@ -321,10 +320,6 @@ public class Constants extends CoreConstants {
 
             public static String getLabTests() {
                 return Utils.getLocalForm(LAB_TESTS, locale, assetManager);
-            }
-
-            public static String getTtVaccination() {
-                return Utils.getLocalForm(TT_VACCINATION, locale, assetManager);
             }
 
             public static String getPharmacy() {
