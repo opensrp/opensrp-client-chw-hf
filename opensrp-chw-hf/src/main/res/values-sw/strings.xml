@@ -177,6 +177,8 @@
     <string name="arv_prescription_azt_and_nvp">Maagizo ya dawa za ARV (AZT + 3C and NVP)</string>
     <string name="arv_prescription_nvp">Maagizo ya dawa za ARV (NVP)</string>
     <string name="update_client_registration">Hariri taarifa za mteja</string>
+    <string name="feedback_due_only">Maoni</string>
+    <string name="action_received_hiv_followup_referrals">Ufuatiliaji</string>
 
 
 </resources>
