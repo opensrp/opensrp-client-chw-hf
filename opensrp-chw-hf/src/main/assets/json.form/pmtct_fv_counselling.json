@@ -48,7 +48,7 @@
   },
   "global": {},
   "step1": {
-    "title": "Counselling",
+    "title": "Continuous Health Education",
     "fields": [
       {
         "key": "is_client_counselled",
