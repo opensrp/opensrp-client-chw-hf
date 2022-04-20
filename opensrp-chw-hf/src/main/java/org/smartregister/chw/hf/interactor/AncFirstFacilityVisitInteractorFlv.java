@@ -397,7 +397,6 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
         @Override
         public String postProcess(String s) {
             if (!StringUtils.isBlank(medical_and_surgical_history_present)) {
-                //TODO: implement this in swahili as well
                 if (medical_and_surgical_history_present.contains("On ART") || medical_and_surgical_history_present.contains("Mteja yupo kwenye ART tayari")) {
                     JSONObject baselineInvestigationFormForKnownPositive = null;
                     try {
