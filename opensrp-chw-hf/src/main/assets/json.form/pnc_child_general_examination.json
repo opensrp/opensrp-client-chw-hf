@@ -462,6 +462,21 @@
         }
       },
       {
+        "key": "prompt_for_septicaemia",
+        "type": "toaster_notes",
+        "text": "Refer for further management",
+        "openmrs_entity_id": "prompt_for_septicaemia",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:septicaemia": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
         "key": "umbilical_cord",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
