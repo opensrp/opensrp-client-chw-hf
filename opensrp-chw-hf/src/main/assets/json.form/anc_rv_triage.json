@@ -56,6 +56,16 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "gest_age",
+        "hint": "Gestational Age (GA)",
+        "type": "edit_text",
+        "editable": true,
+        "read_only": true
+      },
+      {
+        "key": "edd",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "edd",
         "type": "hidden",
         "calculation": {
           "rules-engine": {
@@ -66,13 +76,11 @@
         }
       },
       {
-        "key": "gest_age_note",
+        "key": "last_menstrual_period",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "gest_age_note",
-        "type": "edit_text",
-        "hint": "Gestational Age (GA)",
-        "read_only": true,
+        "openmrs_entity_id": "last_menstrual_period",
+        "type": "hidden",
         "calculation": {
           "rules-engine": {
             "ex-rules": {
