@@ -19,9 +19,8 @@ import timber.log.Timber;
 
 public class AncTtVaccinationAction implements BaseAncHomeVisitAction.AncHomeVisitActionHelper {
     protected MemberObject memberObject;
-    private String jsonPayload;
-
     protected String tt1_vaccination;
+    private String jsonPayload;
     private BaseAncHomeVisitAction.ScheduleStatus scheduleStatus;
     private String subTitle;
     private Context context;
@@ -52,7 +51,7 @@ public class AncTtVaccinationAction implements BaseAncHomeVisitAction.AncHomeVis
     public void onPayloadReceived(String jsonPayload) {
         try {
             JSONObject jsonObject = new JSONObject(jsonPayload);
-            String checkString = HfAncDao.isTT1Given(memberObject.getBaseEntityId()) ? "tt2_vaccination" : "tt1_vaccination";
+            String checkString = getCheckString(memberObject.getBaseEntityId());
 
             tt1_vaccination = CoreJsonFormUtils.getValue(jsonObject, checkString);
         } catch (JSONException e) {
@@ -99,5 +98,16 @@ public class AncTtVaccinationAction implements BaseAncHomeVisitAction.AncHomeVis
     @Override
     public void onPayloadReceived(BaseAncHomeVisitAction baseAncHomeVisitAction) {
         Timber.d("onPayloadReceived");
+    }
+
+    private String getCheckString(String baseEntityId) {
+        if (HfAncDao.getTTVaccinationType(baseEntityId).equalsIgnoreCase("none")) {
+            return "tt1_vaccination";
+        } else if (HfAncDao.getTTVaccinationType(baseEntityId).equalsIgnoreCase("tt1")) {
+            return "tt2_vaccination";
+        } else if (HfAncDao.getTTVaccinationType(baseEntityId).equalsIgnoreCase("tt2")) {
+            return "tt3_vaccination";
+        }
+        return "tt_vaccination";
     }
 }

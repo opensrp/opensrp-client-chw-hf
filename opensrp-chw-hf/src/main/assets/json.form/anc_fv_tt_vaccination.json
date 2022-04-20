@@ -46,32 +46,13 @@
     },
     "encounter_location": ""
   },
-  "global": {
-    "tt1_vaccination_given": false
-  },
   "step1": {
     "title": "TT Vaccination",
     "fields": [
       {
-        "key": "give_tt1_vaccination",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "",
-        "type": "toaster_notes",
-        "text": "Provide TT1 vaccination dose and follow-up immunization doses to the client according to immunization schedule",
-        "toaster_type": "info",
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "anc_fv_tt_vaccination_relevance.yml"
-            }
-          }
-        }
-      },
-      {
-        "key": "tt1_vaccination",
+        "key": "tt_vaccination",
         "type": "native_radio",
-        "label": "Was the client vaccinated for TT1?",
+        "label": "Has the client been vaccinated for TT?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "tt1_vaccination",
         "openmrs_entity_parent": "",
@@ -92,50 +73,48 @@
         "v_required": {
           "value": "true",
           "err": "Please select one"
-        },
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "anc_fv_tt_vaccination_relevance.yml"
-            }
-          }
         }
       },
       {
-        "key": "give_tt2_vaccination",
+        "key": "tt1_vaccination_prompt",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "",
         "type": "toaster_notes",
-        "text": "Provide TT2 vaccination dose",
-        "toaster_type": "info",
+        "text": "Provide TT1 vaccination dose and follow-up immunization doses to the client according to immunization schedule",
+        "toaster_type": "warning",
         "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "anc_fv_tt_vaccination_relevance.yml"
-            }
+          "step1:tt_vaccination": {
+            "type": "string",
+            "ex": "equalTo(., \"no\")"
           }
         }
       },
       {
-        "key": "tt2_vaccination",
+        "key": "tt_vaccination_type_qn",
         "type": "native_radio",
-        "label": "Was the client vaccinated for TT2?",
+        "label": "What TT Vaccination was given",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "tt2_vaccination",
+        "openmrs_entity_id": "tt_vaccination_type_qn",
         "openmrs_entity_parent": "",
         "options": [
           {
-            "text": "Yes",
-            "key": "yes",
+            "text": "TT1",
+            "key": "tt1",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "yes"
+            "openmrs_entity_id": "tt1"
           },
           {
-            "key": "no",
-            "text": "No",
+            "key": "tt2",
+            "text": "TT2",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "no"
+            "openmrs_entity_id": "tt2"
+          },
+          {
+            "key": "tt3",
+            "text": "TT3",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "tt3"
           }
         ],
         "v_required": {
@@ -143,9 +122,22 @@
           "err": "Please select one"
         },
         "relevance": {
+          "step1:tt_vaccination": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
+        "key": "tt_vaccination_type",
+        "type": "edit_text",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "tt_vaccination_type",
+        "openmrs_entity_parent": "",
+        "calculation": {
           "rules-engine": {
             "ex-rules": {
-              "rules-file": "anc_fv_tt_vaccination_relevance.yml"
+              "rules-file": "anc_fv_tt_vaccination_calculation.yml"
             }
           }
         }

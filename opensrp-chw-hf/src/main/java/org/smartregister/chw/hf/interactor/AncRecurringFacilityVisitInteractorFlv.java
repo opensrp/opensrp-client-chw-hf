@@ -333,8 +333,8 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
 
                 JSONObject ttVaccinationForm = null;
                 try {
-                    ttVaccinationForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncFirstVisit.TT_VACCINATION);
-                    ttVaccinationForm.getJSONObject("global").put("tt1_vaccination_given", HfAncDao.isTT1Given(baseEntityId));
+                    ttVaccinationForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.TT_VACCINATION);
+                    ttVaccinationForm.getJSONObject("global").put("tt_vaccination_type", HfAncDao.getTTVaccinationType(baseEntityId));
                     if (details != null && !details.isEmpty()) {
                         HfAncJsonFormUtils.populateForm(ttVaccinationForm, details);
                     }
@@ -367,12 +367,12 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                     } catch (BaseAncHomeVisitAction.ValidationException e) {
                         e.printStackTrace();
                     }
-                    if (!HfAncDao.isTT2Given(baseEntityId)) {
+                    if (HfAncDao.getTTVaccinationType(baseEntityId) != null && !HfAncDao.getTTVaccinationType(baseEntityId).equalsIgnoreCase("tt3")) {
                         try {
                             BaseAncHomeVisitAction vaccinationAction = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_first_visit_tt_vaccination))
                                     .withOptional(true)
                                     .withDetails(details)
-                                    .withFormName(Constants.JsonForm.AncFirstVisit.getTtVaccination())
+                                    .withFormName(Constants.JsonForm.AncRecurringVisit.getTtVaccination())
                                     .withJsonPayload(ttVaccinationForm.toString())
                                     .withHelper(new AncTtVaccinationAction(memberObject))
                                     .build();
@@ -429,9 +429,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                 actionList.remove(context.getString(R.string.anc_recuring_visit_pharmacy));
                 actionList.remove(context.getString(R.string.anc_first_and_recurring_visit_counselling));
                 actionList.remove(context.getString(R.string.anc_recuring_visit_review_birth_and_emergency_plan));
-                if (!HfAncDao.isTT2Given(baseEntityId)) {
-                    actionList.remove(context.getString(R.string.anc_first_visit_tt_vaccination));
-                }
+                actionList.remove(context.getString(R.string.anc_first_visit_tt_vaccination));
             }
             new AppExecutors().mainThread().execute(() -> callBack.preloadActions(actionList));
             return super.postProcess(s);

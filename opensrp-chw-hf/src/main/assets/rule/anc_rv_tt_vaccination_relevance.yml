@@ -1,0 +1,21 @@
+---
+name: step1_tt1_vaccination
+description: tt1_vaccination relevance
+priority: 1
+condition: "global_tt_vaccination_type == 'none'"
+actions:
+  - "isRelevant = true"
+---
+name: step1_tt2_vaccination
+description: tt2_vaccination relevance
+priority: 1
+condition: "global_tt_vaccination_type == 'tt1'"
+actions:
+  - "isRelevant = true"
+---
+name: step1_tt3_vaccination
+description: tt3_vaccination relevance
+priority: 1
+condition: "global_tt_vaccination_type == 'tt2'"
+actions:
+  - "isRelevant = true"
