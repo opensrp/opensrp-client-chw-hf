@@ -2,6 +2,7 @@ package org.smartregister.chw.hf.utils;
 
 import com.google.gson.Gson;
 
+import org.apache.commons.lang3.time.DateUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,6 +19,7 @@ import org.smartregister.repository.AllSharedPreferences;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -30,7 +32,6 @@ public class PncVisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
 
     public static void processVisits(VisitRepository visitRepository, VisitDetailsRepository visitDetailsRepository) throws Exception {
         Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.HOUR_OF_DAY, -24);
 
         List<Visit> visits = visitRepository.getAllUnSynced(calendar.getTime().getTime());
 
@@ -39,48 +40,52 @@ public class PncVisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
 
 
         for (Visit v : visits) {
-            if (v.getVisitType().equalsIgnoreCase(Constants.Events.PNC_VISIT)) {
-                try {
-                    JSONObject jsonObject = new JSONObject(v.getJson());
-                    JSONArray obs = jsonObject.getJSONArray("obs");
-                    String baseEntityId = jsonObject.getString("baseEntityId");
+            Date truncatedUpdatedDate = DateUtils.truncate(v.getUpdatedAt(), Calendar.DATE);
+            Date today = DateUtils.truncate(new Date(), Calendar.DATE);
+            if (truncatedUpdatedDate.before(today)) {
+                if (v.getVisitType().equalsIgnoreCase(Constants.Events.PNC_VISIT)) {
+                    try {
+                        JSONObject jsonObject = new JSONObject(v.getJson());
+                        JSONArray obs = jsonObject.getJSONArray("obs");
+                        String baseEntityId = jsonObject.getString("baseEntityId");
 
-                    List<Boolean> checks = new ArrayList<Boolean>();
+                        List<Boolean> checks = new ArrayList<Boolean>();
 
-                    boolean isMotherGeneralExaminationDone = computeCompletionStatus(obs, "systolic");
-                    boolean isFamilyPlanningServicesDone = computeCompletionStatus(obs, "education_counselling_given");
-                    boolean isImmunizationDone = computeCompletionStatus(obs, "tetanus_vaccination") || computeCompletionStatus(obs, "hepatitis_b_vaccination");
-                    boolean isHivTestingDone = computeCompletionStatus(obs, "hiv_status");
-                    boolean isNutritionSupplementsDone = computeCompletionStatus(obs, "iron_and_folic_acid");
+                        boolean isMotherGeneralExaminationDone = computeCompletionStatus(obs, "systolic");
+                        boolean isFamilyPlanningServicesDone = computeCompletionStatus(obs, "education_counselling_given");
+                        boolean isImmunizationDone = computeCompletionStatus(obs, "tetanus_vaccination") || computeCompletionStatus(obs, "hepatitis_b_vaccination");
+                        boolean isHivTestingDone = computeCompletionStatus(obs, "hiv_status");
+                        boolean isNutritionSupplementsDone = computeCompletionStatus(obs, "iron_and_folic_acid");
 
-                    if (HfPncDao.isMotherEligibleForHivTest(baseEntityId)) {
-                        checks.add(isHivTestingDone);
+                        if (HfPncDao.isMotherEligibleForHivTest(baseEntityId)) {
+                            checks.add(isHivTestingDone);
+                        }
+                        if (HfPncDao.isMotherEligibleForTetanus(baseEntityId) || HfPncDao.isMotherEligibleForHepB(baseEntityId)) {
+                            checks.add(isImmunizationDone);
+                        }
+
+                        checks.add(isMotherGeneralExaminationDone);
+                        checks.add(isFamilyPlanningServicesDone);
+                        checks.add(isNutritionSupplementsDone);
+                        if (!checks.contains(false)) {
+                            pncVisitsCompleted.add(v);
+                        }
+                    } catch (Exception e) {
+                        Timber.e(e);
                     }
-                    if (HfPncDao.isMotherEligibleForTetanus(baseEntityId) || HfPncDao.isMotherEligibleForHepB(baseEntityId)) {
-                        checks.add(isImmunizationDone);
-                    }
-
-                    checks.add(isMotherGeneralExaminationDone);
-                    checks.add(isFamilyPlanningServicesDone);
-                    checks.add(isNutritionSupplementsDone);
-                    if (!checks.contains(false)) {
-                        pncVisitsCompleted.add(v);
-                    }
-                } catch (Exception e) {
-                    Timber.e(e);
                 }
-            }
-            if (v.getVisitType().equalsIgnoreCase(Constants.Events.PNC_CHILD_FOLLOWUP)) {
-                try {
-                    JSONObject jsonObject = new JSONObject(v.getJson());
-                    JSONArray obs = jsonObject.getJSONArray("obs");
+                if (v.getVisitType().equalsIgnoreCase(Constants.Events.PNC_CHILD_FOLLOWUP)) {
+                    try {
+                        JSONObject jsonObject = new JSONObject(v.getJson());
+                        JSONArray obs = jsonObject.getJSONArray("obs");
 
-                    boolean isChildFollowupDone = computeCompletionStatus(obs, "child_activeness");
-                    if (isChildFollowupDone) {
-                        childVisitCompleted.add(v);
+                        boolean isChildFollowupDone = computeCompletionStatus(obs, "child_activeness");
+                        if (isChildFollowupDone) {
+                            childVisitCompleted.add(v);
+                        }
+                    } catch (JSONException e) {
+                        Timber.e(e);
                     }
-                } catch (JSONException e) {
-                    Timber.e(e);
                 }
             }
         }
