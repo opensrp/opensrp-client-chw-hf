@@ -283,7 +283,6 @@
           }
         }
       },
-
       {
         "key": "is_client_provided_with_tpt",
         "openmrs_entity_parent": "",
@@ -363,6 +362,34 @@
             "ex": "equalTo(., \"no\")"
           }
         }
+      },
+      {
+        "key": "number_of_tpt_days_dispensed",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "number_of_tpt_days_dispensed",
+        "type": "edit_text",
+        "edit_type": "number",
+        "hint": "Number of days dispensed",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter number of days dispensed"
+        },
+        "v_numeric_integer": {
+          "value": "true",
+          "err": "Please enter a valid number"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Number of dispensed days should be greater than 0"
+        },
+        "relevance": {
+          "step1:is_client_provided_with_tpt": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+
       }
     ]
   }

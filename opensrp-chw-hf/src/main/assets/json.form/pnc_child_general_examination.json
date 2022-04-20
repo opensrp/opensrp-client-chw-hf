@@ -94,7 +94,7 @@
       {
         "key": "height",
         "type": "edit_text",
-        "hint": "Height (CM)",
+        "hint": "Lenght (CM)",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "height",
         "openmrs_entity_parent": "",
@@ -459,6 +459,21 @@
         "v_required": {
           "value": "true",
           "err": "Please answer this question"
+        }
+      },
+      {
+        "key": "prompt_for_septicaemia",
+        "type": "toaster_notes",
+        "text": "Refer for further management",
+        "openmrs_entity_id": "prompt_for_septicaemia",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:septicaemia": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
         }
       },
       {
