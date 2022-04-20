@@ -180,7 +180,7 @@
         },
         "v_min": {
           "value": "0",
-          "err":"Kiwango cha damu (HB) lazima kiwe sawasawa au zaidi ya 0 (g/dl)"
+          "err": "Kiwango cha damu (HB) lazima kiwe sawasawa au zaidi ya 0 (g/dl)"
         },
         "v_max": {
           "value": "20",
@@ -459,6 +459,21 @@
         "v_required": {
           "value": "true",
           "err": "Tafadhari jibu swali hili"
+        }
+      },
+      {
+        "key": "prompt_for_septicaemia",
+        "type": "toaster_notes",
+        "text": "Toa Rufaa kwa huduma/matibabu zaidi",
+        "openmrs_entity_id": "prompt_for_septicaemia",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:septicaemia": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
         }
       },
       {

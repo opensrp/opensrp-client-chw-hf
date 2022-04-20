@@ -50,9 +50,9 @@ import java.util.Set;
 import timber.log.Timber;
 
 public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisitInteractor.Flavor {
-
     LinkedHashMap<String, BaseAncHomeVisitAction> actionList = new LinkedHashMap<>();
     JSONObject baselineInvestigationForm = null;
+    private boolean shouldShowBaselineInvestigationForOnART = false;
 
     private static JSONObject initializeHealthFacilitiesList(JSONObject form) {
         HfLocationRepository locationRepository = new HfLocationRepository();
@@ -268,23 +268,6 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
             Timber.e(e);
         }
 
-
-        try {
-            baselineInvestigationForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncFirstVisit.getBaselineInvestigation());
-            baselineInvestigationForm.getJSONObject("global").put("gestational_age", memberObject.getGestationAge());
-            baselineInvestigationForm.getJSONObject("global").put("known_positive", false);
-            JSONArray fields = baselineInvestigationForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
-            JSONObject hivTestNumberField = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "hiv_test_number");
-            hivTestNumberField.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getNextHivTestNumber(memberObject.getBaseEntityId()));
-
-            if (details != null && !details.isEmpty()) {
-                HfAncJsonFormUtils.populateForm(baselineInvestigationForm, details);
-            }
-        } catch (JSONException e) {
-            Timber.e(e);
-        }
-
-
         BaseAncHomeVisitAction medicalAndSurgicalHistory = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_first_visit_medical_and_surgical_history))
                 .withOptional(false)
                 .withDetails(details)
@@ -303,6 +286,32 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
                 .build();
         actionList.put(context.getString(R.string.anc_first_visit_obstetric_examination), obstetricExaminationAction);
 
+
+        try {
+            baselineInvestigationForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncFirstVisit.getBaselineInvestigation());
+            baselineInvestigationForm.getJSONObject("global").put("gestational_age", memberObject.getGestationAge());
+            baselineInvestigationForm.getJSONObject("global").put("known_positive", !shouldShowBaselineInvestigationForOnART);
+            JSONArray fields = baselineInvestigationForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+            JSONObject hivTestNumberField = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "hiv_test_number");
+            hivTestNumberField.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getNextHivTestNumber(memberObject.getBaseEntityId()));
+
+            if (details != null && !details.isEmpty()) {
+                HfAncJsonFormUtils.populateForm(baselineInvestigationForm, details);
+            }
+        } catch (JSONException e) {
+            Timber.e(e);
+        }
+        JSONObject counsellingForm = null;
+        try {
+            counsellingForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.getCounselling());
+
+            if (details != null && !details.isEmpty()) {
+                HfAncJsonFormUtils.populateForm(counsellingForm, details);
+            }
+        } catch (Exception e) {
+            Timber.e(e);
+        }
+
         BaseAncHomeVisitAction baselineInvestigationAction = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_first_visit_baseline_investigation))
                 .withOptional(true)
                 .withDetails(details)
@@ -320,7 +329,8 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
                     .build();
             actionList.put(context.getString(R.string.tb_screening_title), TbScreening);
 
-        } catch (BaseAncHomeVisitAction.ValidationException e) {
+        } catch (
+                BaseAncHomeVisitAction.ValidationException e) {
             e.printStackTrace();
         }
 
@@ -336,6 +346,7 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
                 .withOptional(true)
                 .withDetails(details)
                 .withFormName(Constants.JsonForm.getCounselling())
+                .withJsonPayload(counsellingForm.toString())
                 .withHelper(new AncCounsellingAction(memberObject))
                 .build();
         actionList.put(context.getString(R.string.anc_first_and_recurring_visit_counselling), counsellingAction);
@@ -356,6 +367,7 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
         private final Map<String, List<VisitDetail>> details;
         BaseAncHomeVisitContract.InteractorCallBack callBack;
         private String medical_and_surgical_history_present;
+        private String visitNumber;
         private Context context;
 
         public AncMedicalAndSurgicalHistoryAction(MemberObject memberObject, Map<String, List<VisitDetail>> details, BaseAncHomeVisitContract.InteractorCallBack callBack) {
@@ -379,6 +391,7 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
             try {
                 JSONObject jsonObject = new JSONObject(jsonPayload);
                 medical_and_surgical_history_present = CoreJsonFormUtils.getCheckBoxValue(jsonObject, "medical_surgical_history");
+                visitNumber = CoreJsonFormUtils.getValue(jsonObject, "visit_number");
             } catch (JSONException e) {
                 Timber.e(e);
             }
@@ -396,28 +409,34 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
 
         @Override
         public String postProcess(String s) {
-            if (!StringUtils.isBlank(medical_and_surgical_history_present)) {
-                //TODO: implement this in swahili as well
-                if (medical_and_surgical_history_present.contains("Known On ART")) {
-                    JSONObject baselineInvestigationFormForKnownPositive = null;
-                    try {
+            try {
+                if (!StringUtils.isBlank(medical_and_surgical_history_present)) {
+
+                    if (medical_and_surgical_history_present.contains("On ART") || medical_and_surgical_history_present.contains("Mteja yupo kwenye ART tayari")) {
+                        JSONObject baselineInvestigationFormForKnownPositive = null;
+
                         baselineInvestigationFormForKnownPositive = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncFirstVisit.getBaselineInvestigation());
                         baselineInvestigationFormForKnownPositive.getJSONObject("global").put("gestational_age", memberObject.getGestationAge());
                         baselineInvestigationFormForKnownPositive.getJSONObject("global").put("known_positive", true);
                         JSONArray fields = baselineInvestigationFormForKnownPositive.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
                         JSONObject hivTestNumberField = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "hiv_test_number");
                         hivTestNumberField.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getNextHivTestNumber(memberObject.getBaseEntityId()));
+
                         if (details != null && !details.isEmpty()) {
                             HfAncJsonFormUtils.populateForm(baselineInvestigationFormForKnownPositive, details);
                         }
-                    } catch (JSONException e) {
-                        Timber.e(e);
+                        shouldShowBaselineInvestigationForOnART = true;
+                        if (actionList.containsKey(R.string.anc_first_visit_baseline_investigation)) {
+                            Objects.requireNonNull(actionList.get(context.getString(R.string.anc_first_visit_baseline_investigation))).setJsonPayload(baselineInvestigationFormForKnownPositive.toString());
+                        }
+                    } else {
+                        if (actionList.containsKey(R.string.anc_first_visit_baseline_investigation))
+                            Objects.requireNonNull(actionList.get(context.getString(R.string.anc_first_visit_baseline_investigation))).setJsonPayload(baselineInvestigationForm.toString());
                     }
-                    Objects.requireNonNull(actionList.get(context.getString(R.string.anc_first_visit_baseline_investigation))).setJsonPayload(baselineInvestigationFormForKnownPositive.toString());
-                } else {
-                    Objects.requireNonNull(actionList.get(context.getString(R.string.anc_first_visit_baseline_investigation))).setJsonPayload(baselineInvestigationForm.toString());
+                    new AppExecutors().mainThread().execute(() -> callBack.preloadActions(actionList));
                 }
-                new AppExecutors().mainThread().execute(() -> callBack.preloadActions(actionList));
+            } catch (JSONException e) {
+                Timber.e(e);
             }
             return super.postProcess(s);
         }

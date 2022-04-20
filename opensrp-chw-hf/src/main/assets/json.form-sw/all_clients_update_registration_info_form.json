@@ -63,7 +63,7 @@
         "openmrs_entity_id": "opensrp_id",
         "type": "edit_text",
         "read_only": true,
-        "hint": "Kitambulisho cha WAJA",
+        "hint": "Kitambulisho cha Kituoni",
         "v_numeric": {
           "value": "true",
           "err": "Tafadhari Ingiza Kitambulisho"

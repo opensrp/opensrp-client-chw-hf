@@ -2,6 +2,7 @@ package org.smartregister.chw.hf.utils;
 
 import com.google.gson.Gson;
 
+import org.apache.commons.lang3.time.DateUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -16,6 +17,7 @@ import org.smartregister.repository.AllSharedPreferences;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -28,7 +30,6 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
 
     public static void processVisits(VisitRepository visitRepository, VisitDetailsRepository visitDetailsRepository) throws Exception {
         Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.HOUR_OF_DAY, -24);
 
         List<Visit> visits = visitRepository.getAllUnSynced(calendar.getTime().getTime());
 
@@ -37,57 +38,61 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
 
 
         for (Visit v : visits) {
-            if (v.getVisitType().equalsIgnoreCase(Constants.Events.ANC_FIRST_FACILITY_VISIT)) {
-                try {
-                    JSONObject jsonObject = new JSONObject(v.getJson());
-                    JSONArray obs = jsonObject.getJSONArray("obs");
+            Date truncatedUpdatedDate = DateUtils.truncate(v.getUpdatedAt(), Calendar.DATE);
+            Date today = DateUtils.truncate(new Date(), Calendar.DATE);
+            if (truncatedUpdatedDate.before(today)) {
+                if (v.getVisitType().equalsIgnoreCase(Constants.Events.ANC_FIRST_FACILITY_VISIT)) {
+                    try {
+                        JSONObject jsonObject = new JSONObject(v.getJson());
+                        JSONArray obs = jsonObject.getJSONArray("obs");
 
-                    boolean isMedicalAndSurgicalHistoryDone = computeCompletionStatus(obs, "medical_surgical_history");
-                    boolean isObstetricExaminationDone = computeCompletionStatus(obs, "abdominal_scars");
-                    boolean isBaselineInvestigationDone = computeCompletionStatus(obs, "glucose_in_urine");
-                    boolean isTTVaccinationDone = computeCompletionStatus(obs, "tt1_vaccination");
-                    boolean isCounsellingDone = computeCompletionStatus(obs, "given_counselling");
-                    if (isMedicalAndSurgicalHistoryDone &&
-                            isObstetricExaminationDone &&
-                            isBaselineInvestigationDone &&
-                            isTTVaccinationDone && isCounsellingDone) {
-                        ancFirstVisitsCompleted.add(v);
+                        boolean isMedicalAndSurgicalHistoryDone = computeCompletionStatus(obs, "medical_surgical_history");
+                        boolean isObstetricExaminationDone = computeCompletionStatus(obs, "abdominal_scars");
+                        boolean isBaselineInvestigationDone = computeCompletionStatus(obs, "glucose_in_urine");
+                        boolean isTTVaccinationDone = computeCompletionStatus(obs, "tt1_vaccination");
+                        boolean isCounsellingDone = computeCompletionStatus(obs, "given_counselling");
+                        if (isMedicalAndSurgicalHistoryDone &&
+                                isObstetricExaminationDone &&
+                                isBaselineInvestigationDone &&
+                                isTTVaccinationDone && isCounsellingDone) {
+                            ancFirstVisitsCompleted.add(v);
+                        }
+                    } catch (Exception e) {
+                        Timber.e(e);
                     }
-                } catch (Exception e) {
-                    Timber.e(e);
-                }
-            } else if (v.getVisitType().equalsIgnoreCase(Constants.Events.ANC_RECURRING_FACILITY_VISIT)) {
-                try {
-                    JSONObject jsonObject = new JSONObject(v.getJson());
-                    JSONArray obs = jsonObject.getJSONArray("obs");
+                } else if (v.getVisitType().equalsIgnoreCase(Constants.Events.ANC_RECURRING_FACILITY_VISIT)) {
+                    try {
+                        JSONObject jsonObject = new JSONObject(v.getJson());
+                        JSONArray obs = jsonObject.getJSONArray("obs");
 
-                    boolean isTriageDone = computeCompletionStatus(obs, "rapid_examination");
-                    boolean isPregnancyStatusDone = computeCompletionStatus(obs, "pregnancy_status");
+                        boolean isTriageDone = computeCompletionStatus(obs, "rapid_examination");
+                        boolean isPregnancyStatusDone = computeCompletionStatus(obs, "pregnancy_status");
 
-                    String ttCheckString = getCheckString(v.getBaseEntityId());
+                        String ttCheckString = getCheckString(v.getBaseEntityId());
 
-                    if (isTriageDone && isPregnancyStatusDone) {
-                        if (checkIfStatusIsViable(obs)) {
-                            boolean isConsultationDone = computeCompletionStatus(obs, "examination_findings");
-                            boolean isLabTestsDone = computeCompletionStatus(obs, "hb_level_test");
-                            boolean isPharmacyDone = computeCompletionStatus(obs, "iron_folate_supplements");
-                            boolean isCounsellingDone = computeCompletionStatus(obs, "given_counselling");
-                            boolean isTTVaccinationDone = computeCompletionStatus(obs, ttCheckString);
-                            if (!HfAncDao.getTTVaccinationType(v.getBaseEntityId()).equalsIgnoreCase("tt3")) {
-                                if (isConsultationDone && isLabTestsDone && isPharmacyDone && isCounsellingDone && isTTVaccinationDone) {
-                                    ancFollowupVisitsCompleted.add(v);
+                        if (isTriageDone && isPregnancyStatusDone) {
+                            if (checkIfStatusIsViable(obs)) {
+                                boolean isConsultationDone = computeCompletionStatus(obs, "examination_findings");
+                                boolean isLabTestsDone = computeCompletionStatus(obs, "hb_level_test");
+                                boolean isPharmacyDone = computeCompletionStatus(obs, "iron_folate_supplements");
+                                boolean isCounsellingDone = computeCompletionStatus(obs, "given_counselling");
+                                boolean isTTVaccinationDone = computeCompletionStatus(obs, ttCheckString);
+                                if (!HfAncDao.getTTVaccinationType(v.getBaseEntityId()).equalsIgnoreCase("tt3")) {
+                                    if (isConsultationDone && isLabTestsDone && isPharmacyDone && isCounsellingDone && isTTVaccinationDone) {
+                                        ancFollowupVisitsCompleted.add(v);
+                                    }
+                                } else {
+                                    if (isConsultationDone && isLabTestsDone && isPharmacyDone && isCounsellingDone) {
+                                        ancFollowupVisitsCompleted.add(v);
+                                    }
                                 }
                             } else {
-                                if (isConsultationDone && isLabTestsDone && isPharmacyDone && isCounsellingDone) {
-                                    ancFollowupVisitsCompleted.add(v);
-                                }
+                                ancFollowupVisitsCompleted.add(v);
                             }
-                        } else {
-                            ancFollowupVisitsCompleted.add(v);
                         }
+                    } catch (Exception e) {
+                        Timber.e(e);
                     }
-                } catch (Exception e) {
-                    Timber.e(e);
                 }
             }
         }
