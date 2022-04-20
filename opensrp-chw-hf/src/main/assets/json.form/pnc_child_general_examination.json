@@ -94,7 +94,7 @@
       {
         "key": "height",
         "type": "edit_text",
-        "hint": "Lenght (CM)",
+        "hint": "Length (CM)",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "height",
         "openmrs_entity_parent": "",
