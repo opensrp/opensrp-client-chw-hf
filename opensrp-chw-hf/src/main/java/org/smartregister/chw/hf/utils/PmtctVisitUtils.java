@@ -67,17 +67,17 @@ public class PmtctVisitUtils extends VisitUtils {
                         checks.add(isTbScreeningDone);
                         checks.add(isArvPrescriptionDone);
 
-                        if (HfPmtctDao.isEligibleForHlvTest(baseEntityId)) {
-                            checks.add(isHvlSampleCollectionComplete);
-                        }
+//                        if (HfPmtctDao.isEligibleForHlvTest(baseEntityId)) {
+//                            checks.add(isHvlSampleCollectionComplete);
+//                        }
 
                         if (HfPmtctDao.isEligibleForBaselineInvestigation(baseEntityId) || HfPmtctDao.isEligibleForBaselineInvestigationOnFollowupVisit(baseEntityId)) {
                             checks.add(isBaselineInvestigationComplete);
                         }
 
-                        if (HfPmtctDao.isEligibleForCD4Retest(baseEntityId) || HfPmtctDao.isEligibleForCD4Test(baseEntityId)) {
-                            checks.add(isCd4SampleCollectionComplete);
-                        }
+//                        if (HfPmtctDao.isEligibleForCD4Retest(baseEntityId) || HfPmtctDao.isEligibleForCD4Test(baseEntityId)) {
+//                            checks.add(isCd4SampleCollectionComplete);
+//                        }
                     }
 
 
