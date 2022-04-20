@@ -184,7 +184,7 @@
         "openmrs_entity_id": "opensrp_id",
         "type": "edit_text",
         "read_only": true,
-        "hint": "Kituoni ID",
+        "hint": "Kitambulisho cha Kituoni",
         "v_numeric": {
           "value": "true",
           "err": "Tafadhali weka kitambulisho halali"

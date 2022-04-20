@@ -49,7 +49,7 @@
   "global": {
   },
   "step1": {
-    "title": "Known on ART",
+    "title": "On ART",
     "fields": [
       {
         "key": "pmtct_register_date",
@@ -160,7 +160,7 @@
       {
         "key": "known_on_art_client",
         "type": "toaster_notes",
-        "text": "The Client with CTC Number {ctc_number} is known on ART.\n\nSave the form to register the client in PMTCT and record PMTCT Visit 0.",
+        "text": "The Client with CTC Number {ctc_number} is on ART.\n\nSave the form to register the client in PMTCT and record PMTCT Visit 0.",
         "openmrs_entity_id": "notify_retest",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
