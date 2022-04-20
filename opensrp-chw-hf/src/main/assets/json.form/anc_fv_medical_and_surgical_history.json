@@ -102,7 +102,7 @@
           },
           {
             "key": "known_on_art",
-            "text": "Known On ART",
+            "text": "On ART",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "known_on_art"
