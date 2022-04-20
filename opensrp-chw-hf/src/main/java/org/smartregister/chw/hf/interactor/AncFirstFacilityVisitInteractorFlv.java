@@ -301,7 +301,16 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
         } catch (JSONException e) {
             Timber.e(e);
         }
+        JSONObject counsellingForm = null;
+        try {
+            counsellingForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.getCounselling());
 
+            if (details != null && !details.isEmpty()) {
+                HfAncJsonFormUtils.populateForm(counsellingForm, details);
+            }
+        } catch (Exception e) {
+            Timber.e(e);
+        }
 
         BaseAncHomeVisitAction baselineInvestigationAction = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_first_visit_baseline_investigation))
                 .withOptional(true)
@@ -337,6 +346,7 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
                 .withOptional(true)
                 .withDetails(details)
                 .withFormName(Constants.JsonForm.getCounselling())
+                .withJsonPayload(counsellingForm.toString())
                 .withHelper(new AncCounsellingAction(memberObject))
                 .build();
         actionList.put(context.getString(R.string.anc_first_and_recurring_visit_counselling), counsellingAction);
@@ -415,8 +425,8 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
                         if (details != null && !details.isEmpty()) {
                             HfAncJsonFormUtils.populateForm(baselineInvestigationFormForKnownPositive, details);
                         }
+                        shouldShowBaselineInvestigationForOnART = true;
                         if (actionList.containsKey(R.string.anc_first_visit_baseline_investigation)) {
-                            shouldShowBaselineInvestigationForOnART = true;
                             Objects.requireNonNull(actionList.get(context.getString(R.string.anc_first_visit_baseline_investigation))).setJsonPayload(baselineInvestigationFormForKnownPositive.toString());
                         }
                     } else {
