@@ -106,13 +106,6 @@ condition: "step1_preg_outcome == 'born_alive' || step1_preg_outcome == 'alive_w
 actions:
   - "isRelevant = true"
 ---
-name: step1_apgar_score
-description: hiv status relevance
-priority: 1
-condition: "step1_appearance_score!='' && step1_pulses_score !='' && step1_grimace_score !='' && step1_activities_score !='' && step1_respiration_score !=''"
-actions:
-  - "calculation = step1_appearance_score + step1_pulses_score + step1_grimace_score + step1_activities_score + step1_respiration_score"
----
 name: step1_prompt_for_normal_apgar_score
 description: prompt_for_normal_apgar_score info
 priority: 1

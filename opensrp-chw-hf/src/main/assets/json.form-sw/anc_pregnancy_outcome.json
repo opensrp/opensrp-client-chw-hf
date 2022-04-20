@@ -542,13 +542,13 @@
             "spacer_height": "15dp"
           },
           {
-            "key": "appearance_score_label",
+            "key": "apgar_score_label",
             "type": "label",
-            "text": "Alama ya muonekano wa Mtoto",
+            "text": "Alama ya APGAR ya Ujumla",
             "text_size": "7sp",
             "text_color": "#000000",
-            "label_info_title": "Alama ya muonekano wa Mtoto",
-            "label_info_text": "0: Pale or blue body and face \n1: Pink body, blue arms and legs \n2: Completely pink body and face",
+            "label_info_title": "Alama ya APGAR ya Ujumlae",
+            "label_info_text": "0 - 6: Sio ya Kawaida \n7 - 10: Kawaida",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
@@ -560,224 +560,22 @@
             "openmrs_entity_id": "",
             "type": "spacer",
             "spacer_height": "8dp"
-          },
-          {
-            "key": "appearance_score",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "appearance_score",
-            "type": "numbers_selector",
-            "number_of_selectors": "3",
-            "start_number": "0",
-            "max_value": "2",
-            "text_size": "18px",
-            "text_color": "#000000",
-            "selected_text_color": "#ffffff",
-            "v_required": {
-              "value": true,
-              "err": "Tafadhari ingiza alama ya muonekano wa Mtoto"
-            }
-          },
-          {
-            "key": "spacer",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "type": "spacer",
-            "spacer_height": "15dp"
-          },
-          {
-            "key": "pulses_score_label",
-            "type": "label",
-            "text": "Alama ya Mapigo ya moyo ya Mtoto",
-            "text_size": "7sp",
-            "label_info_title": "Alama ya Mapigo ya moyo ya Mtoto",
-            "label_info_text": "0: No heart beat \n1: 100 beats per minute or less, weak heart beat \n2: More than 100 beats per minute, strong heart rates",
-            "text_color": "#000000",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "spacer",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "type": "spacer",
-            "spacer_height": "8dp"
-          },
-          {
-            "key": "pulses_score",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "pulses_score",
-            "type": "numbers_selector",
-            "number_of_selectors": "3",
-            "start_number": "0",
-            "max_value": "2",
-            "text_size": "18px",
-            "text_color": "#000000",
-            "selected_text_color": "#ffffff",
-            "v_required": {
-              "value": true,
-              "err": "Tafadhari ingiza alama ya mapigo ya moyo ya Mtoto"
-            }
-          },
-          {
-            "key": "spacer",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "type": "spacer",
-            "spacer_height": "15dp"
-          },
-          {
-            "key": "grimace_score_label",
-            "type": "label",
-            "text": "Alama ya Grimace ya Mtoto (reflex to stimulation)",
-            "label_info_title": "Alama ya Grimace ya Mtoto (reflex to stimulation)",
-            "label_info_text": "0: No response \n1: Puckering of face \n2: Crying, coughing or sneezing",
-            "text_size": "7sp",
-            "text_color": "#000000",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "spacer",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "type": "spacer",
-            "spacer_height": "5dp"
-          },
-          {
-            "key": "grimace_score",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "grimace_score",
-            "type": "numbers_selector",
-            "number_of_selectors": "3",
-            "start_number": "0",
-            "max_value": "2",
-            "text_size": "18px",
-            "text_color": "#000000",
-            "selected_text_color": "#ffffff",
-            "v_required": {
-              "value": true,
-              "err": "Tafadhari ingiza alama ya grimace ya Mtoto"
-            }
-          },
-          {
-            "key": "spacer",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "type": "spacer",
-            "spacer_height": "15dp"
-          },
-          {
-            "key": "activities_score_label",
-            "type": "label",
-            "text": "Alama ya ufanyaji kazi ya Misuli ya Mtoto",
-            "label_info_title": "Alama ya ufanyaji kazi ya Misuli ya Mtoto",
-            "label_info_text": "0: Limp arms and legs, no flexion, no movement \n1: Some movement, some flexion \n2: Active movement, waving arms and legs, flexion",
-            "text_size": "7sp",
-            "text_color": "#000000",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "spacer",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "type": "spacer",
-            "spacer_height": "5dp"
-          },
-          {
-            "key": "activities_score",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "activities_score",
-            "type": "numbers_selector",
-            "number_of_selectors": "3",
-            "start_number": "0",
-            "max_value": "2",
-            "text_size": "18px",
-            "text_color": "#000000",
-            "selected_text_color": "#ffffff",
-            "v_required": {
-              "value": true,
-              "err": "Tafadhari ingiza alama ya ufanyaji kazi ya Misuli ya Mtoto"
-            }
-          },
-          {
-            "key": "spacer",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "type": "spacer",
-            "spacer_height": "15dp"
-          },
-          {
-            "key": "respiration_score_label",
-            "type": "label",
-            "text": "Alama ya Upumuaji ya Mtoto",
-            "label_info_title": "Alama ya Upumuaji ya Mtoto",
-            "label_info_text": "0: No beating, no cry \n1: Slow, irregular breathing; retracting of chest wall; grunting or weak \n2: Strong cry, regular breathing",
-            "text_size": "7sp",
-            "text_color": "#000000",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "spacer",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "type": "spacer",
-            "spacer_height": "5dp"
-          },
-          {
-            "key": "respiration_score",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "respiration_score",
-            "type": "numbers_selector",
-            "number_of_selectors": "3",
-            "start_number": "0",
-            "max_value": "2",
-            "text_size": "18px",
-            "text_color": "#000000",
-            "selected_text_color": "#ffffff",
-            "v_required": {
-              "value": true,
-              "err": "Tafadhari ingiza alama ya upumuaji ya Mtoto"
-            }
-          },
-          {
-            "key": "spacer",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "type": "spacer",
-            "spacer_height": "15dp"
           },
           {
             "key": "apgar_score",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "apgar_score",
-            "type": "hidden",
-            "calculation": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "anc_pregnancy_outcome_relevance.yml"
-                }
-              }
+            "type": "numbers_selector",
+            "number_of_selectors": "11",
+            "start_number": "0",
+            "max_value": "2",
+            "text_size": "18px",
+            "text_color": "#000000",
+            "selected_text_color": "#ffffff",
+            "v_required": {
+              "value": true,
+              "err": "Please enter the agpar score"
             }
           },
           {
@@ -831,49 +629,6 @@
             "openmrs_entity_id": "",
             "type": "spacer",
             "spacer_height": "15dp"
-          },
-          {
-            "key": "baby_behavior",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "baby_behavior",
-            "type": "check_box",
-            "combine_checkbox_option_values": "true",
-            "label": "Endelea kufuatilia maendeleo ya Mtoto ",
-            "options": [
-              {
-                "key": "chk_temperature",
-                "text": "Angalia joto la Mtoto",
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "chk_temperature",
-                "value": "false"
-              },
-              {
-                "key": "chk_breathing",
-                "text": "Angalia upumuaji wake",
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "chk_breathing",
-                "value": "false"
-              },
-              {
-                "key": "chk_eye_care",
-                "text": "Mwangalie macho yake",
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "chk_eye_care",
-                "value": "false"
-              },
-              {
-                "key": "chk_breastfeeding",
-                "text": "Angalia unyonyaji wa Mtoto kwenye ziwa la Mama",
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "chk_breastfeeding",
-                "value": "false"
-              }
-            ],
-            "v_required": {
-              "value": "true",
-              "err": "Tafadhari chagua jibu/majibu"
-            }
           },
           {
             "key": "surname",
