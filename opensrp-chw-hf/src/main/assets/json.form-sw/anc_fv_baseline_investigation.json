@@ -385,6 +385,21 @@
         }
       },
       {
+        "key": "prompt_for_rh_factor",
+        "type": "toaster_notes",
+        "text": "Mpe Mteja rufaa ya kwenda kiliniki kwa usimamizi zaidi",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:rh_factor": {
+            "type": "string",
+            "ex": "equalTo(., \"negative\")"
+          }
+        }
+      },
+      {
         "key": "hb_level_test",
         "type": "native_radio",
         "label": "Kipimo cha kiwango cha damu (Hb)",
