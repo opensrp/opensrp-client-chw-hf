@@ -26,6 +26,7 @@ import org.smartregister.chw.hf.actionhelper.AncBaselineInvestigationAction;
 import org.smartregister.chw.hf.actionhelper.AncBirthReviewAction;
 import org.smartregister.chw.hf.actionhelper.AncCounsellingAction;
 import org.smartregister.chw.hf.actionhelper.AncObstetricExaminationAction;
+import org.smartregister.chw.hf.actionhelper.AncPharmacyAction;
 import org.smartregister.chw.hf.actionhelper.AncTbScreeningAction;
 import org.smartregister.chw.hf.actionhelper.AncTtVaccinationAction;
 import org.smartregister.chw.hf.dao.HfAncDao;
@@ -333,6 +334,35 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
                 BaseAncHomeVisitAction.ValidationException e) {
             e.printStackTrace();
         }
+
+        JSONObject pharmacyForm = null;
+        try {
+            pharmacyForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.getPharmacy());
+            pharmacyForm.getJSONObject("global").put("gestational_age", memberObject.getGestationAge());
+            pharmacyForm.getJSONObject("global").put("malaria_preventive_therapy_ipt1", HfAncDao.malariaDosageIpt1(memberObject.getBaseEntityId()));
+            pharmacyForm.getJSONObject("global").put("malaria_preventive_therapy_ipt2", HfAncDao.malariaDosageIpt2(memberObject.getBaseEntityId()));
+            pharmacyForm.getJSONObject("global").put("malaria_preventive_therapy_ipt3", HfAncDao.malariaDosageIpt3(memberObject.getBaseEntityId()));
+            pharmacyForm.getJSONObject("global").put("malaria_preventive_therapy_ipt4", HfAncDao.malariaDosageIpt4(memberObject.getBaseEntityId()));
+            if (details != null && !details.isEmpty()) {
+                HfAncJsonFormUtils.populateForm(pharmacyForm, details);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            BaseAncHomeVisitAction pharmacy = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_pharmacy))
+                    .withOptional(true)
+                    .withDetails(details)
+                    .withJsonPayload(pharmacyForm.toString())
+                    .withFormName(Constants.JsonForm.AncRecurringVisit.getPharmacy())
+                    .withHelper(new AncPharmacyAction(memberObject))
+                    .build();
+            actionList.put(context.getString(R.string.anc_recuring_visit_pharmacy), pharmacy);
+        } catch (BaseAncHomeVisitAction.ValidationException e) {
+            e.printStackTrace();
+        }
+
 
         BaseAncHomeVisitAction vaccinationAction = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_first_visit_tt_vaccination))
                 .withOptional(true)
