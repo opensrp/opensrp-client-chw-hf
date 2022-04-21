@@ -10,7 +10,6 @@ import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.hf.R;
-import org.smartregister.chw.hf.dao.HfAncDao;
 
 import java.util.List;
 import java.util.Map;
@@ -19,9 +18,8 @@ import timber.log.Timber;
 
 public class AncTtVaccinationAction implements BaseAncHomeVisitAction.AncHomeVisitActionHelper {
     protected MemberObject memberObject;
-    private String jsonPayload;
-
     protected String tt1_vaccination;
+    private String jsonPayload;
     private BaseAncHomeVisitAction.ScheduleStatus scheduleStatus;
     private String subTitle;
     private Context context;
@@ -52,7 +50,7 @@ public class AncTtVaccinationAction implements BaseAncHomeVisitAction.AncHomeVis
     public void onPayloadReceived(String jsonPayload) {
         try {
             JSONObject jsonObject = new JSONObject(jsonPayload);
-            String checkString = HfAncDao.isTT1Given(memberObject.getBaseEntityId()) ? "tt2_vaccination" : "tt1_vaccination";
+            String checkString = "tt_vaccination";
 
             tt1_vaccination = CoreJsonFormUtils.getValue(jsonObject, checkString);
         } catch (JSONException e) {
@@ -100,4 +98,5 @@ public class AncTtVaccinationAction implements BaseAncHomeVisitAction.AncHomeVis
     public void onPayloadReceived(BaseAncHomeVisitAction baseAncHomeVisitAction) {
         Timber.d("onPayloadReceived");
     }
+
 }
