@@ -182,6 +182,14 @@
           }
         },
         {
+          "column_name": "completed_tpt",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "completed_tpt"
+          }
+        },
+        {
           "column_name": "visit_number",
           "type": "Event",
           "json_mapping": {

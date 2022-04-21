@@ -13,6 +13,13 @@ condition: "(step1_investigate_for_tb.contains('negative') || step1_tb_symptoms_
 actions:
   - "isRelevant = true"
 ---
+name: step1_completed_tpt
+description: completed_tpt relevance
+priority: 1
+condition: "(step1_investigate_for_tb.contains('negative') || step1_tb_symptoms_screening.contains('chk_none')) && global_is_provided_with_tpt_before && !global_has_the_client_completed_tpt"
+actions:
+  - "isRelevant = true"
+---
 name: step1_prompt_for_tpt_eligibility
 description: prompt_for_tpt_eligibility relevance
 priority: 1

@@ -56,7 +56,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "is_client_counselled",
         "type": "native_radio",
-        "label": "Has the client been counselled?",
+        "label": "Has the client been provided continuous health education?",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [
@@ -83,7 +83,7 @@
       {
         "key": "counselling_topics_provided",
         "type": "check_box",
-        "label": "Please select the topics that the client has been counselled on",
+        "label": "Please select the topics that the client has been educated on",
         "combine_checkbox_option_values": "true",
         "openmrs_entity_id": "counselling_topics_provided",
         "openmrs_entity": "concept",

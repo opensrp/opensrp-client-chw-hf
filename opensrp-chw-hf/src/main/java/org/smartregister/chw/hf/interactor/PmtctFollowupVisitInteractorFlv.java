@@ -246,6 +246,7 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
             JSONObject global = tbScreeningForm.getJSONObject("global");
 
             global.put("is_provided_with_tpt_before", HfPmtctDao.hasTheClientBeenProvidedWithTpt(memberObject.getBaseEntityId()));
+            global.put("has_the_client_completed_tpt", HfPmtctDao.hasTheClientCompletedTpt(memberObject.getBaseEntityId()));
             //loads details to the form
             if (details != null && !details.isEmpty()) {
                 JsonFormUtils.populateForm(tbScreeningForm, details);

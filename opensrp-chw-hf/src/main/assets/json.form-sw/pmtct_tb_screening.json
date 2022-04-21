@@ -364,6 +364,43 @@
         }
       },
       {
+        "key": "completed_tpt",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "completed_tpt",
+        "type": "native_radio",
+        "label": "Je mteja amemaliza dose ya TPT?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndio",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jibu sahihi"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_tb_screening_relevance.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "number_of_tpt_days_dispensed",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
