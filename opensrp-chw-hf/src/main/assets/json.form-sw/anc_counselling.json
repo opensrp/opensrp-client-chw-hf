@@ -56,7 +56,7 @@
         "openmrs_entity_id": "given_counselling",
         "type": "check_box",
         "combine_checkbox_option_values": "true",
-        "label": "Ushauri uliyotolewa kwa mteja",
+        "label": "Chagua Ushauri uliyotolewa kwa mteja kwenye tembeleo hili",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "exclusive": [

@@ -55,7 +55,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "given_counselling",
         "type": "check_box",
-        "label": "Counselling provided to the client",
+        "label": "Select the topics counseled on this visit",
         "combine_checkbox_option_values": "true",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
