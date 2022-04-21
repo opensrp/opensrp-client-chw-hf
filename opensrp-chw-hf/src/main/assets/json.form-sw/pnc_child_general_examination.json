@@ -623,6 +623,21 @@
         }
       },
       {
+        "key": "prompt_for_jaundice",
+        "type": "toaster_notes",
+        "text": "Toa Rufaa kwa huduma/matibabu zaidi",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:jaundice": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
         "key": "skin_infection",
         "type": "native_radio",
         "label": "Je, Mtoto ana maambukizi ya ngozi?",
@@ -646,6 +661,21 @@
         "v_required": {
           "value": "true",
           "err": "Tafadhali jibu swali hili"
+        }
+      },
+      {
+        "key": "prompt_for_skin_infection",
+        "type": "toaster_notes",
+        "text": "Toa Rufaa kwa huduma/matibabu zaidi",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:skin_infection": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
         }
       },
       {
@@ -712,6 +742,21 @@
           "rules-engine": {
             "ex-rules": {
               "rules-file": "pnc_child_examination_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "followup_visit_date",
+        "type": "edit_text",
+        "hidden": "true",
+        "openmrs_entity_id": "followup_visit_date",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pnc_followup_calculation.yml"
             }
           }
         }

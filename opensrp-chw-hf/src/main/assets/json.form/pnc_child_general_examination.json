@@ -623,6 +623,21 @@
         }
       },
       {
+        "key": "prompt_for_jaundice",
+        "type": "toaster_notes",
+        "text": "Refer for further management",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:jaundice": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
         "key": "skin_infection",
         "type": "native_radio",
         "label": "Does the child have skin infection?",
@@ -646,6 +661,21 @@
         "v_required": {
           "value": "true",
           "err": "Please answer this question"
+        }
+      },
+      {
+        "key": "prompt_for_skin_infection",
+        "type": "toaster_notes",
+        "text": "Refer for further management",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:skin_infection": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
         }
       },
       {
