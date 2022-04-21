@@ -33,3 +33,10 @@ priority: 1
 condition: "global_partner_other_stds == 'null'"
 actions:
   - "isRelevant = true"
+---
+name: step1_couple_testing
+description: couple_testing relevance
+priority: 1
+condition: "!step1_partner_hiv.equals('') && !step1_partner_hiv.contains('test_not_conducted')"
+actions:
+  - "isRelevant = true"

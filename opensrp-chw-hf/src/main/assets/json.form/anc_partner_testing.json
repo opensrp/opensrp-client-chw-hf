@@ -57,32 +57,6 @@
     "title": "Partner Testing",
     "fields": [
       {
-        "key": "couple_testing",
-        "type": "native_radio",
-        "label": "Did the partner test together with the mother? (Couple testing)",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "couple_testing",
-        "openmrs_entity_parent": "",
-        "options": [
-          {
-            "key": "yes",
-            "text": "Yes",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "yes"
-          },
-          {
-            "key": "no",
-            "text": "No",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "no"
-          }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Please answer this question"
-        }
-      },
-      {
         "key": "partner_hiv",
         "type": "native_radio",
         "label": "HIV Test Results",
@@ -133,7 +107,7 @@
           "A client was in an emergency situation",
           "Client refused to be tested",
           "We are still counselling a client",
-          "On ART",
+          "Partner On ART",
           "Other (Specify)"
         ],
         "keys": [
@@ -193,6 +167,39 @@
           "step1:partner_hiv": {
             "type": "string",
             "ex": "equalTo(.,\"positive\")"
+          }
+        }
+      },
+      {
+        "key": "couple_testing",
+        "type": "native_radio",
+        "label": "Did the partner test together with the mother? (Couple testing)",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "couple_testing",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_partner_testing_relevance.yml"
+            }
           }
         }
       },
@@ -537,7 +544,7 @@
           "other"
         ],
         "openmrs_choice_ids": {
-          "out_of_stock":  "out_of_stock",
+          "out_of_stock": "out_of_stock",
           "client_did_not_agree_medication": "client_did_not_agree_medication",
           "the_client_refused_to_be_tested": "the_client_refused_to_be_tested",
           "client_is_allergic_to_medication": "client_is_allergic_to_medication",

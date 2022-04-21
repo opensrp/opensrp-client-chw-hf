@@ -57,32 +57,6 @@
     "title": "Upimaji kwa Mwenza",
     "fields": [
       {
-        "key": "couple_testing",
-        "type": "native_radio",
-        "label": "Je mwenza alipima pamjoa na mama? (Couple testing)",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "couple_testing",
-        "openmrs_entity_parent": "",
-        "options": [
-          {
-            "key": "yes",
-            "text": "Ndio",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "yes"
-          },
-          {
-            "key": "no",
-            "text": "Hapana",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "no"
-          }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Please answer this question"
-        }
-      },
-      {
         "key": "partner_hiv",
         "type": "native_radio",
         "label": "Matokeo ya Kipimo cha VVU",
@@ -193,6 +167,39 @@
           "step1:partner_hiv": {
             "type": "string",
             "ex": "equalTo(.,\"positive\")"
+          }
+        }
+      },
+      {
+        "key": "couple_testing",
+        "type": "native_radio",
+        "label": "Je mwenza alipima pamjoa na mama? (Couple testing)",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "couple_testing",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndio",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_partner_testing_relevance.yml"
+            }
           }
         }
       },
