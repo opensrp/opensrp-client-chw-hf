@@ -453,7 +453,7 @@
       {
         "key": "prompt_for_abdominal_movement_with_respiration",
         "type": "toaster_notes",
-        "text": "Refer the client to clinician for further management",
+        "text": "Refer the client for further management",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
