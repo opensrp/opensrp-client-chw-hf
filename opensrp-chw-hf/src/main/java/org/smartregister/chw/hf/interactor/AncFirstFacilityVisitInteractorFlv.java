@@ -291,7 +291,7 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
         try {
             baselineInvestigationForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncFirstVisit.getBaselineInvestigation());
             baselineInvestigationForm.getJSONObject("global").put("gestational_age", memberObject.getGestationAge());
-            baselineInvestigationForm.getJSONObject("global").put("known_positive", !shouldShowBaselineInvestigationForOnART);
+            baselineInvestigationForm.getJSONObject("global").put("known_positive", shouldShowBaselineInvestigationForOnART);
             JSONArray fields = baselineInvestigationForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
             JSONObject hivTestNumberField = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "hiv_test_number");
             hivTestNumberField.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getNextHivTestNumber(memberObject.getBaseEntityId()));
@@ -456,11 +456,11 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
                             HfAncJsonFormUtils.populateForm(baselineInvestigationFormForKnownPositive, details);
                         }
                         shouldShowBaselineInvestigationForOnART = true;
-                        if (actionList.containsKey(R.string.anc_first_visit_baseline_investigation)) {
+                        if (actionList.containsKey(context.getString(R.string.anc_first_visit_baseline_investigation))) {
                             Objects.requireNonNull(actionList.get(context.getString(R.string.anc_first_visit_baseline_investigation))).setJsonPayload(baselineInvestigationFormForKnownPositive.toString());
                         }
                     } else {
-                        if (actionList.containsKey(R.string.anc_first_visit_baseline_investigation))
+                        if (actionList.containsKey(context.getString(R.string.anc_first_visit_baseline_investigation)))
                             Objects.requireNonNull(actionList.get(context.getString(R.string.anc_first_visit_baseline_investigation))).setJsonPayload(baselineInvestigationForm.toString());
                     }
                     new AppExecutors().mainThread().execute(() -> callBack.preloadActions(actionList));
