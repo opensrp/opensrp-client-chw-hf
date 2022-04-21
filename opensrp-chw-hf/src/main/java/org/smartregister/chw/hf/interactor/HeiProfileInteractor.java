@@ -33,6 +33,22 @@ public class HeiProfileInteractor extends BasePmtctProfileInteractor {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
+
+    public void createHeiNumberRegistrationEvent(AllSharedPreferences allSharedPreferences, String jsonString, String entityID) {
+        Event baseEvent = JsonFormUtils.processJsonForm(allSharedPreferences, CoreReferralUtils.setEntityId(jsonString, entityID), CoreConstants.TABLE_NAME.HEI);
+        JsonFormUtils.tagEvent(allSharedPreferences, baseEvent);
+        String syncLocationId = ChwNotificationDao.getSyncLocationId(baseEvent.getBaseEntityId());
+        if (syncLocationId != null) {
+            // Allows setting the ID for sync purposes
+            baseEvent.setLocationId(syncLocationId);
+        }
+
+        try {
+            NCUtils.processEvent(baseEvent.getBaseEntityId(), new JSONObject(JsonFormUtils.gson.toJson(baseEvent)));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

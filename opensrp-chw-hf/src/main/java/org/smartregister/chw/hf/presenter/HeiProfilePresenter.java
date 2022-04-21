@@ -7,15 +7,19 @@ import org.smartregister.chw.pmtct.presenter.BasePmtctProfilePresenter;
 import org.smartregister.repository.AllSharedPreferences;
 
 public class HeiProfilePresenter extends BasePmtctProfilePresenter {
-    private HeiProfileInteractor createHeiFollowupReferralEvent;
+    private HeiProfileInteractor heiProfileInteractor;
 
     public HeiProfilePresenter(PmtctProfileContract.View view, PmtctProfileContract.Interactor interactor, MemberObject memberObject) {
         super(view, interactor, memberObject);
-        this.createHeiFollowupReferralEvent = (HeiProfileInteractor) interactor;
+        this.heiProfileInteractor = (HeiProfileInteractor) interactor;
     }
 
     public void createHeiCommunityFollowupReferralEvent(AllSharedPreferences allSharedPreferences, String jsonString, String entityID) throws Exception {
-        createHeiFollowupReferralEvent.createHeiCommunityFollowupReferralEvent(allSharedPreferences, jsonString, entityID);
+        heiProfileInteractor.createHeiCommunityFollowupReferralEvent(allSharedPreferences, jsonString, entityID);
+    }
+
+    public void createHeiNumberRegistrationEvent(AllSharedPreferences allSharedPreferences, String jsonString, String entityID) throws Exception {
+        heiProfileInteractor.createHeiNumberRegistrationEvent(allSharedPreferences, jsonString, entityID);
     }
 
 }
