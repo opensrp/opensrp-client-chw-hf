@@ -1,0 +1,7 @@
+---
+name: step1_tt_vaccination_type
+description: tt_vaccination_type calculated
+priority: 1
+condition: "true"
+actions:
+  - "calculation = step1_tt_vaccination_type_qn != '' && step1_tt_vaccination == 'yes' ? step1_tt_vaccination_type_qn :'none' "

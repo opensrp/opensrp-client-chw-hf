@@ -322,7 +322,6 @@ public class Constants extends CoreConstants {
                 return Utils.getLocalForm(LAB_TESTS, locale, assetManager);
             }
 
-
             public static String getPharmacy() {
                 return Utils.getLocalForm(PHARMACY, locale, assetManager);
             }

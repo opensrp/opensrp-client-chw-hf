@@ -1416,19 +1416,11 @@
           }
         },
         {
-          "column_name": "tt1_vaccination",
+          "column_name": "tt_vaccination_type",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "tt1_vaccination"
-          }
-        },
-        {
-          "column_name": "tt2_vaccination",
-          "type": "Event",
-          "json_mapping": {
-            "field": "obs.fieldCode",
-            "concept": "tt2_vaccination"
+            "concept": "tt_vaccination_type"
           }
         },
         {
@@ -1653,22 +1645,6 @@
           "json_mapping": {
             "field": "obs.fieldCode",
             "concept": "confirmed_visits"
-          }
-        },
-        {
-          "column_name": "tt1_vaccination",
-          "type": "Event",
-          "json_mapping": {
-            "field": "obs.fieldCode",
-            "concept": "tt1_vaccination"
-          }
-        },
-        {
-          "column_name": "tt2_vaccination",
-          "type": "Event",
-          "json_mapping": {
-            "field": "obs.fieldCode",
-            "concept": "tt2_vaccination"
           }
         },
         {
@@ -1903,6 +1879,14 @@
           "json_mapping": {
             "field": "obs.fieldCode",
             "concept": "iron_folate_supplements"
+          }
+        },
+        {
+          "column_name": "tt_vaccination_type",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "tt_vaccination_type"
           }
         },
         {
