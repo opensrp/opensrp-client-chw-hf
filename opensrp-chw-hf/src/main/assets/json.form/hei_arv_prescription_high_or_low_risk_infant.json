@@ -47,7 +47,7 @@
     "encounter_location": ""
   },
   "step1": {
-    "title": "ARV prescription",
+    "title": "ARV prophylaxis",
     "fields": [
       {
         "key": "prompt_for_nvp_syrup",
