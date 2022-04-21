@@ -63,7 +63,7 @@
         "openmrs_entity_id": "opensrp_id",
         "type": "edit_text",
         "read_only": true,
-        "hint": "WAJA ID",
+        "hint": "Kituoni ID",
         "v_numeric": {
           "value": "true",
           "err": "Please enter a valid ID"

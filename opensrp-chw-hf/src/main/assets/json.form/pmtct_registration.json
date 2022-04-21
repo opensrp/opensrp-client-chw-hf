@@ -83,7 +83,7 @@
       {
         "key": "known_on_art",
         "type": "native_radio",
-        "label": "Is the client known on ART?",
+        "label": "Is the client on ART?",
         "openmrs_entity_id": "known_on_art",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
