@@ -397,6 +397,14 @@
             "field": "obs.fieldCode",
             "concept": "hiv_status"
           }
+        },
+        {
+          "column_name": "hei_number",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "hei_number"
+          }
         }
       ]
     },

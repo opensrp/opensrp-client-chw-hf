@@ -1,10 +1,10 @@
 package org.smartregister.chw.hf.utils;
 
-import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.assetManager;
-import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.locale;
-
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.Utils;
+
+import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.assetManager;
+import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.locale;
 
 public class Constants extends CoreConstants {
     public static String pregnancyOutcome = "preg_outcome";
@@ -51,6 +51,7 @@ public class Constants extends CoreConstants {
         public static final String MARK_PMTCT_CLIENT_AS_LTF = "Mark PMTCT Client As LTF";
         public static final String MARK_HEI_CLIENT_AS_LTF = "Mark HEI Client As LTF";
         public static final String HEI_COMMUNITY_FOLLOWUP = "HEI Community Followup";
+        public static final String HEI_NUMBER_REGISTRATION = "HEI Number Registration";
     }
 
     public static final class TableName {
@@ -84,6 +85,9 @@ public class Constants extends CoreConstants {
         public static final String HVL_SUPPRESSION_FORM_AFTER_EAC_1 = "pmtct_hvl_suppression_after_eac_1";
         public static final String HVL_SUPPRESSION_FORM_AFTER_EAC_2 = "pmtct_hvl_suppression_after_eac_2";
         public static final String HVL_CLINICIAN_DETAILS_FORM = "pmtct_hvl_sample_collection";
+        public static final String MARK_CLIENT_AS_DECEASED = "mark_client_as_deceased";
+        public static final String MARK_CHILD_AS_DECEASED = "mark_child_as_deceased";
+        public static final String HEI_COMMUNITY_FOLLOWUP_REFERRAL = "hei_community_followup_referral";
         private static final String ANC_PREGANCY_CONFIRMATION = "anc_pregnancy_confirmation";
         private static final String PMTCT_REGISTRATION = "pmtct_registration";
         private static final String PMTCT_REGISTRATION_FOR_CLIENTS_KNOWN_ON_ART_FORM = "pmtct_registration_for_clients_known_on_art";
@@ -102,6 +106,7 @@ public class Constants extends CoreConstants {
         private static final String HEI_ARV_PRESCRIPTION_HIGH_OR_LOW_RISK_INFANT = "hei_arv_prescription_high_or_low_risk_infant";
         private static final String HEI_CTX_PRESCRIPTION = "hei_rv_ctx";
         private static final String HEI_HIV_TEST_RESULTS = "hei_hiv_test_results";
+        private static final String HEI_NUMBER_REGISTRATION = "hei_number_registration";
         private static final String HIV_CLIENT_UPDATE_CTC_NUMBER = "hiv_client_update_ctc_number";
         private static final String PNC_MOTHER_GENERAL_EXAMINATION = "pnc_mother_general_examination";
         private static final String PNC_CHILD_GENERAL_EXAMINATION = "pnc_child_general_examination";
@@ -110,12 +115,13 @@ public class Constants extends CoreConstants {
         private static final String PNC_HIV_TEST_RESULTS = "pnc_hiv_test_results";
         private static final String PNC_NUTRITIONAL_SUPPLEMENT = "pnc_nutritional_supplement";
         private static final String PMTCT_FOLLOWUP_STATUS = "pmtct_followup_status";
-        public static final String MARK_CLIENT_AS_DECEASED = "mark_client_as_deceased";
-        public static final String MARK_CHILD_AS_DECEASED = "mark_child_as_deceased";
-        public static final String HEI_COMMUNITY_FOLLOWUP_REFERRAL = "hei_community_followup_referral";
 
         public static String getHeiCommunityFollowupReferral() {
             return HEI_COMMUNITY_FOLLOWUP_REFERRAL;
+        }
+
+        public static String getHeiNumberRegistration() {
+            return HEI_NUMBER_REGISTRATION;
         }
 
         public static String getPncChildGeneralExamination() {
@@ -273,9 +279,9 @@ public class Constants extends CoreConstants {
 
         public static class AncFirstVisit {
             public static final String OBSTETRIC_EXAMINATION = "anc_fv_obstetric_examination";
+            public static final String TT_VACCINATION = "anc_fv_tt_vaccination";
             private static final String MEDICAL_AND_SURGICAL_HISTORY = "anc_fv_medical_and_surgical_history";
             private static final String BASELINE_INVESTIGATION = "anc_fv_baseline_investigation";
-            public static final String TT_VACCINATION = "anc_fv_tt_vaccination";
             private static final String TB_SCREENING = "anc_fv_tb_screening";
 
             public static String getMedicalAndSurgicalHistory() {
@@ -355,7 +361,7 @@ public class Constants extends CoreConstants {
         public static final String TASK_ID = "task_id";
         public static final String HEI_FOLLOWUP_FORM_SUBMISSION_ID = "hei_followup_form_submission_id";
         public static final String HEI_HIV_SAMPLE_ID = "sample_id";
-        public static final String HEI_HIV_TEST_RESULT ="hiv_test_result";
+        public static final String HEI_HIV_TEST_RESULT = "hiv_test_result";
         public static final String HEI_HIV_SAMPLE_COLLECTION_DATE = "sample_collection_date";
         public static final String HEI_HIV_RESULT_DATE = "hiv_test_result_date";
         public static final String HEI_HIV_TYPE_OF_TEST = "type_of_hiv_test";
@@ -385,22 +391,23 @@ public class Constants extends CoreConstants {
         public static final String AT_18_MONTHS = "18 Months";
     }
 
-    public static final class FormConstants{
-        public interface FormSubmissionFields{
+    public static final class FormConstants {
+        public interface FormSubmissionFields {
             String VISIT_NUMBER = "visit_number";
             String FOLLOWUP_VISIT_DATE = "followup_visit_date";
             String FOLLOWUP_STATUS = "followup_status";
         }
     }
 
-    public static final class ReportConstants{
-        public interface PMTCTReportKeys{
+    public static final class ReportConstants {
+        public interface PMTCTReportKeys {
             String THREE_MONTHS = "three_months";
             String TWELVE_MONTHS = "twelve_months";
             String TWENTY_FOUR_MONTHS = "twenty_four_months";
             String EID_MONTHLY = "eid_monthly";
         }
-        public interface ReportTypes{
+
+        public interface ReportTypes {
             String PMTCT_REPORT = "pmtct_report";
             String ANC_REPORT = "anc_report";
             String PNC_REPORT = "pnc_report";

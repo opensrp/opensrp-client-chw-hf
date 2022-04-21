@@ -514,6 +514,13 @@
           },
           {
             "field": "eventType",
+            "field_value": "HEI Number Registration",
+            "creates_case": [
+              "ec_hei"
+            ]
+          },
+          {
+            "field": "eventType",
             "field_value": "HEI Followup",
             "creates_case": [
               "ec_hei_followup"
