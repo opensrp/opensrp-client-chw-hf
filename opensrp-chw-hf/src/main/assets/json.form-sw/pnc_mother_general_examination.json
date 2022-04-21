@@ -576,6 +576,21 @@
         }
       },
       {
+        "key": "prompt_for_perineum_infection",
+        "type": "toaster_notes",
+        "text": "Toa Rufaa kwa huduma/matibabu zaidi",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:perineum_infection": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
         "key": "uterus_assessment",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
