@@ -234,7 +234,7 @@
       {
         "key": "prompt_for_liver_function_test",
         "type": "toaster_notes",
-        "text": "Mpe rufaa Mteja kwa ajili ya Matibabu ya Ini",
+        "text": "Rufaa kwa huduma zaidi",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -430,7 +430,7 @@
       {
         "key": "prompt_for_renal_function_test_results",
         "type": "toaster_notes",
-        "text": "Mteja asimamishwe kutumia dawa za Tenofovir. Mpe rufaa Mteja kwa ajili ya Matibabu ya kushindwa kufanya kazi kwa Figo",
+        "text": "Rufaa kwa huduma zaidi",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
