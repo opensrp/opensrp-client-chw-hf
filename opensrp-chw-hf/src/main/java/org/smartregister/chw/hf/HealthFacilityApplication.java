@@ -16,7 +16,6 @@ import org.smartregister.P2POptions;
 import org.smartregister.chw.anc.AncLibrary;
 import org.smartregister.chw.core.application.CoreChwApplication;
 import org.smartregister.chw.core.contract.CoreApplication;
-import org.smartregister.chw.core.custom_views.NavigationMenu;
 import org.smartregister.chw.core.loggers.CrashlyticsTree;
 import org.smartregister.chw.core.service.CoreAuthorizationService;
 import org.smartregister.chw.core.utils.ChildDBConstants;
@@ -41,6 +40,7 @@ import org.smartregister.chw.hf.activity.PncRegisterActivity;
 import org.smartregister.chw.hf.activity.ReferralRegisterActivity;
 import org.smartregister.chw.hf.activity.ReportsActivity;
 import org.smartregister.chw.hf.configs.AllClientsRegisterRowOptions;
+import org.smartregister.chw.hf.custom_view.FacilityMenu;
 import org.smartregister.chw.hf.custom_view.HfNavigationMenu;
 import org.smartregister.chw.hf.job.HfJobCreator;
 import org.smartregister.chw.hf.model.NavigationModel;
@@ -194,7 +194,7 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
                 HealthFacilityApplication.getInstance().getApplicationContext().getAssets());
 
         //Setup Navigation menu. Done only once when app is created
-        NavigationMenu.setupNavigationMenu(this, new HfNavigationMenu(), new NavigationModel(),
+        FacilityMenu.setupNavigationMenu(this, new HfNavigationMenu(), new NavigationModel(),
                 getRegisteredActivities(), false);
 
         if (BuildConfig.DEBUG) {

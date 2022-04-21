@@ -4,9 +4,9 @@ import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 
-import org.smartregister.chw.core.custom_views.NavigationMenu;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.custom_view.FacilityMenu;
 import org.smartregister.chw.hf.fragment.HeiRegisterFragment;
 import org.smartregister.chw.hf.listener.HfFamilyBottomNavListener;
 import org.smartregister.chw.hf.presenter.HeiRegisterPresenter;
@@ -21,7 +21,7 @@ public class HeiRegisterActivity extends BasePmtctRegisterActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        NavigationMenu.getInstance(this, null, null);
+        FacilityMenu.getInstance(this, null, null);
     }
 
     @Override
@@ -59,7 +59,7 @@ public class HeiRegisterActivity extends BasePmtctRegisterActivity {
     @Override
     protected void onResumption() {
         super.onResumption();
-        NavigationMenu menu = NavigationMenu.getInstance(this, null, null);
+        FacilityMenu menu = (FacilityMenu) FacilityMenu.getInstance(this, null, null);
         if (menu != null) {
             menu.getNavigationAdapter().setSelectedView(CoreConstants.DrawerMenu.HEI);
         }

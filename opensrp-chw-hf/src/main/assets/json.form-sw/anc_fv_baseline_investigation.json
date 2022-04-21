@@ -496,21 +496,24 @@
         "type": "spinner",
         "hint": "Sababu ya kutofanya kipimo cha kiwango cha HB  ",
         "values": [
-          "Vifaa vya kupima vimeisha",
+          "Cuvette Cartridges Hazipo Kituoni",
+          "Mashine ta 'Haemoque' haifanyi kazi",
           "Mteja alikuwa katika hali ya dharura",
           "Mteja amekataa kupimwa",
           "Tunaendelea kumshauri mteja",
           "Nyingine (Bainisha)"
         ],
         "keys": [
-          "test_kits_are_out_of_stock",
+          "stock_out_of_cuvettes_cartridges",
+          "haemoque_machine_out_of_order",
           "the_client_was_in_an_emergency_situation",
           "the_client_refused_to_be_tested",
           "we_are_still_counselling_the_client",
           "other"
         ],
         "openmrs_choice_ids": {
-          "test_kits_are_out_of_stock": "test_kits_are_out_of_stock",
+          "stock_out_of_cuvettes_cartridges": "stock_out_of_cuvettes_cartridges",
+          "haemoque_machine_out_of_order": "haemoque_machine_out_of_order",
           "the_client_was_in_an_emergency_situation": "the_client_was_in_an_emergency_situation",
           "the_client_refused_to_be_tested": "the_client_refused_to_be_tested",
           "we_are_still_counselling_the_client": "we_are_still_counselling_the_client",

@@ -8,12 +8,12 @@ import android.widget.LinearLayout;
 
 import org.apache.commons.lang3.StringUtils;
 import org.smartregister.chw.anc.util.DBConstants;
-import org.smartregister.chw.core.custom_views.NavigationMenu;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.QueryBuilder;
 import org.smartregister.chw.core.utils.Utils;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.activity.HeiProfileActivity;
+import org.smartregister.chw.hf.custom_view.FacilityMenu;
 import org.smartregister.chw.hf.model.HeiRegisterFragmentModel;
 import org.smartregister.chw.hf.presenter.HeiRegisterFragmentPresenter;
 import org.smartregister.chw.hf.provider.HeiRegisterProvider;
@@ -56,7 +56,7 @@ public class HeiRegisterFragment extends BasePmtctRegisterFragment {
         toolbar.setContentInsetStartWithNavigation(0);
 
         try {
-            NavigationMenu.getInstance(getActivity(), null, toolbar);
+            FacilityMenu.getInstance(getActivity(), null, toolbar);
         } catch (NullPointerException e) {
             Timber.e(e);
         }
@@ -120,7 +120,7 @@ public class HeiRegisterFragment extends BasePmtctRegisterFragment {
         toolbar.setContentInsetsAbsolute(0, 0);
         toolbar.setContentInsetsRelative(0, 0);
         toolbar.setContentInsetStartWithNavigation(0);
-        NavigationMenu.getInstance(getActivity(), null, toolbar);
+        FacilityMenu.getInstance(getActivity(), null, toolbar);
     }
 
     private String defaultFilterAndSortQuery() {
