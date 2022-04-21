@@ -127,7 +127,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "couselling_HIV_STI",
         "openmrs_entity_parent": "",
-        "label": "Was she counselled on HIV and STI prevention?",
+        "label": "Was she counselled on HIV and STI/RTI prevention?",
         "options": [
           {
             "key": "yes",

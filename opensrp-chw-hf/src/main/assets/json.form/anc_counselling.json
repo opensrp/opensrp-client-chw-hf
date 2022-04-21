@@ -86,7 +86,7 @@
           },
           {
             "key": "chk_discussion_std_hiv",
-            "text": "4. Discussion on STD/HIV",
+            "text": "4. Discussion on STI/RTI/HIV",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_discussion_std_hiv"
