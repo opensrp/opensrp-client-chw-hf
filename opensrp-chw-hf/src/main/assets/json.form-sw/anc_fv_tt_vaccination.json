@@ -96,7 +96,7 @@
       {
         "key": "tt_vaccination_type",
         "type": "check_box",
-        "label": "Mama amepatiwa chanjo ipi ya TT?",
+        "label": "Number of TT vaccines the client has already received",
         "combine_checkbox_option_values": "true",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "tt_vaccination_type",

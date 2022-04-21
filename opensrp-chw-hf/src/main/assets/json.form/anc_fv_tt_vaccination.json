@@ -93,7 +93,7 @@
       {
         "key": "tt_vaccination_type",
         "type": "check_box",
-        "label": "What TT Vaccination was given",
+        "label": "What TT Vaccinations was given",
         "combine_checkbox_option_values": "true",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "tt_vaccination_type",
