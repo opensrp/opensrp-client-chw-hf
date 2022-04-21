@@ -47,4 +47,11 @@ priority: 1
 condition: "step1_systolic < 90 && step1_diastolic < 60"
 actions:
   - "isRelevant = true"
+---
+name: step1_prompt_for_lie
+description: prompt_for_lie
+priority: 1
+condition: "step1_lie.contains('transverse') || step1_lie.contains('oblique')"
+actions:
+  - "isRelevant = true"
 

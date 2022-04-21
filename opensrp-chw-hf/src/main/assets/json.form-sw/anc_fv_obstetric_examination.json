@@ -557,6 +557,22 @@
         }
       },
       {
+        "key": "prompt_for_lie",
+        "type": "toaster_notes",
+        "text": "Rufaa kwa huduma zaidi",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_obstetric_examination_relevance.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "lie_other",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
