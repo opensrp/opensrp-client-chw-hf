@@ -7,12 +7,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 
 import org.smartregister.chw.core.activity.CoreFamilyRegisterActivity;
-import org.smartregister.chw.core.custom_views.NavigationMenu;
 import org.smartregister.chw.core.listener.CoreBottomNavigationListener;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.BuildConfig;
 import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.custom_view.FacilityMenu;
 import org.smartregister.chw.hf.fragment.FamilyRegisterFragment;
 import org.smartregister.chw.hf.listener.HfFamilyBottomNavListener;
 import org.smartregister.chw.hf.model.FamilyRegisterModel;
@@ -57,7 +57,7 @@ public class FamilyRegisterActivity extends CoreFamilyRegisterActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        NavigationMenu.getInstance(this, null, null);
+        FacilityMenu.getInstance(this, null, null);
         HealthFacilityApplication.getInstance().notifyAppContextChange(); // initialize the language (bug in translation)
 
         action = getIntent().getStringExtra(CoreConstants.ACTIVITY_PAYLOAD.ACTION);

@@ -11,9 +11,9 @@ import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 
 import org.json.JSONObject;
 import org.smartregister.chw.core.activity.CorePmtctRegisterActivity;
-import org.smartregister.chw.core.custom_views.NavigationMenu;
 import org.smartregister.chw.core.utils.FormUtils;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.custom_view.FacilityMenu;
 import org.smartregister.chw.hf.fragment.PmtctRegisterFragment;
 import org.smartregister.chw.hf.job.MarkPmtctAndHeiLtfServiceJob;
 import org.smartregister.chw.hf.listener.HfFamilyBottomNavListener;
@@ -52,7 +52,7 @@ public class PmtctRegisterActivity extends CorePmtctRegisterActivity {
         MarkPmtctAndHeiLtfServiceJob.scheduleJobImmediately(MarkPmtctAndHeiLtfServiceJob.TAG);
         ctcNumber = getIntent().getStringExtra(CTC_NUMBER);
         super.onCreate(savedInstanceState);
-        NavigationMenu.getInstance(this, null, null);
+        FacilityMenu.getInstance(this, null, null);
     }
 
     @Override

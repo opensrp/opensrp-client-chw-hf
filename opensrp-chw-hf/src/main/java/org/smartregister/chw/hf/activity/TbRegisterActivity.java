@@ -8,7 +8,7 @@ import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 
 import org.jetbrains.annotations.NotNull;
 import org.smartregister.chw.core.activity.CoreTbRegisterActivity;
-import org.smartregister.chw.core.custom_views.NavigationMenu;
+import org.smartregister.chw.hf.custom_view.FacilityMenu;
 import org.smartregister.chw.hf.fragment.TbFollowupFragment;
 import org.smartregister.chw.hf.fragment.TbRegisterFragment;
 import org.smartregister.chw.tb.fragment.BaseTbCommunityFollowupRegisterFragment;
@@ -35,7 +35,7 @@ public class TbRegisterActivity extends CoreTbRegisterActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        NavigationMenu.getInstance(this, null, null);
+        FacilityMenu.getInstance(this, null, null);
     }
 
     @NotNull
