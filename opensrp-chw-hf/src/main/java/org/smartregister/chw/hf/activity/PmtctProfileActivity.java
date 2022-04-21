@@ -277,16 +277,18 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         }
 
         if (HfPmtctDao.hasTheClientTransferedOut(baseEntityId)) {
-            showTransferOutLabel();
+            showStatusLabel(R.string.transfer_out);
+        }else if (HfPmtctDao.hasTheClientTransferedOut(baseEntityId)) {
+            showStatusLabel(R.string.lost_to_followup);
         }
 
     }
 
-    private void showTransferOutLabel() {
+    private void showStatusLabel(int stringResource) {
         if (riskLabel != null) {
             riskLabel.setVisibility(View.VISIBLE);
             riskLabel.setTextSize(14);
-            riskLabel.setText(R.string.transfer_out);
+            riskLabel.setText(stringResource);
             riskLabel.setTextColor(context().getColorResource(org.smartregister.pmtct.R.color.medium_risk_text_orange));
             riskLabel.setBackgroundResource(org.smartregister.pmtct.R.drawable.medium_risk_label);
         }

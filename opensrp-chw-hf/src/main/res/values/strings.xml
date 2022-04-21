@@ -156,6 +156,7 @@
     <string name="pmtct_followup_status">Followup Status:</string>
     <string name="continuing_with_services">Continuing with Services</string>
     <string name="transfer_out">Transfer Out</string>
+    <string name="lost_to_followup">Lost to followup</string>
     <string name="deceased">Deceased</string>
     <string name="pmtct_followup_status_title">Followup Status</string>
     <string name="view_reports_for_anc_women">View Reports for ANC Women</string>

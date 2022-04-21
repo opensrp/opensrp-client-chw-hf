@@ -53,7 +53,7 @@ public class MarkPmtctAndHeiLtfIntentService extends IntentService {
         List<MemberObject> pmtctMembers = HfPmtctDao.getMembers();
         if (pmtctMembers != null) {
             for (MemberObject pmtctMember : pmtctMembers) {
-                if (!HfPmtctDao.hasTheClientTransferedOut(pmtctMember.getBaseEntityId()) && pmtctMember.getDod() == null) {
+                if (!HfPmtctDao.hasTheClientTransferedOut(pmtctMember.getBaseEntityId()) && !HfPmtctDao.isTheClientLostToFollowup(pmtctMember.getBaseEntityId()) && pmtctMember.getDod() == null) {
                     Date lastVisitDate = HfPmtctDao.getPmtctFollowUpVisitDate(pmtctMember.getBaseEntityId());
                     Calendar ltfCalendar = Calendar.getInstance();
                     if (lastVisitDate == null)

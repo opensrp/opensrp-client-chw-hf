@@ -1,5 +1,7 @@
 package org.smartregister.chw.hf.provider;
 
+import static org.smartregister.util.Utils.getName;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
@@ -23,8 +25,6 @@ import org.smartregister.util.Utils;
 import java.util.Set;
 
 import timber.log.Timber;
-
-import static org.smartregister.util.Utils.getName;
 
 public class HfPmtctRegisterProvider extends CorePmtctRegisterProvider {
 
@@ -95,7 +95,7 @@ public class HfPmtctRegisterProvider extends CorePmtctRegisterProvider {
 
     @Override
     protected void updateDueColumn(Context context, RegisterViewHolder viewHolder, PmtctFollowUpRule pmtctFollowUpRule) {
-        if (!HfPmtctDao.hasTheClientTransferedOut(pmtctFollowUpRule.getBaseEntityId())) {
+        if (!HfPmtctDao.hasTheClientTransferedOut(pmtctFollowUpRule.getBaseEntityId()) && !HfPmtctDao.isTheClientLostToFollowup(pmtctFollowUpRule.getBaseEntityId())) {
             if (pmtctFollowUpRule.getDueDate() != null) {
                 if (pmtctFollowUpRule.getButtonStatus().equalsIgnoreCase(CoreConstants.VISIT_STATE.NOT_DUE_YET)) {
                     setVisitButtonNextDueStatus(context, FpUtil.sdf.format(pmtctFollowUpRule.getDueDate()), viewHolder.dueButton);
@@ -112,9 +112,15 @@ public class HfPmtctRegisterProvider extends CorePmtctRegisterProvider {
                 }
             }
         } else {
+            int followupStatus;
+            if (HfPmtctDao.hasTheClientTransferedOut(pmtctFollowUpRule.getBaseEntityId()))
+                followupStatus = R.string.transfer_out;
+            else
+                followupStatus = R.string.lost_to_followup;
+
             viewHolder.dueButton.setVisibility(View.VISIBLE);
             viewHolder.dueButton.setTextColor(context.getResources().getColor(org.smartregister.pmtct.R.color.medium_risk_text_orange));
-            viewHolder.dueButton.setText(R.string.transfer_out);
+            viewHolder.dueButton.setText(followupStatus);
             viewHolder.dueButton.setBackgroundResource(org.smartregister.chw.core.R.drawable.colorless_btn_selector);
             viewHolder.dueButton.setOnClickListener(null);
         }

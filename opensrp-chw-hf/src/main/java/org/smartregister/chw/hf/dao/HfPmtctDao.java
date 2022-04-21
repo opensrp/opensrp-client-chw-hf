@@ -318,6 +318,23 @@ public class HfPmtctDao extends CorePmtctDao {
         return res != null && res.size() > 0 && res.get(0) != null;
     }
 
+    public static boolean isTheClientLostToFollowup(String baseEntityID) {
+        String sql = "SELECT p.base_entity_id\n" +
+                "FROM ec_pmtct_registration as p\n" +
+                "         INNER JOIN (SELECT *\n" +
+                "                     FROM ec_pmtct_followup\n" +
+                "                     WHERE entity_id ='" + baseEntityID + "'" +
+                "                     ORDER BY visit_number DESC\n" +
+                "                     LIMIT 1) as pf on pf.entity_id = p.base_entity_id\n" +
+                "WHERE (pf.followup_status = 'lost_to_followup')\n" +
+                "AND p.base_entity_id = '" + baseEntityID + "'";
+
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "base_entity_id");
+        List<String> res = readData(sql, dataMap);
+
+        return res != null && res.size() > 0 && res.get(0) != null;
+    }
+
     public static boolean hasTheClientBeenProvidedWithTpt(String baseEntityID) {
         String sql = "SELECT has_been_provided_with_tpt_before, is_client_provided_with_tpt FROM ec_pmtct_followup  WHERE (has_been_provided_with_tpt_before IS NOT NULL OR is_client_provided_with_tpt IS NOT NULL)  AND entity_id = '" + baseEntityID + "' ORDER BY visit_number DESC LIMIT 1";
 
