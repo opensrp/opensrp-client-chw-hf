@@ -55,6 +55,16 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "gest_age",
+        "hint": "Umri wa Ujauzito kwa Wiki",
+        "type": "edit_text",
+        "editable": true,
+        "read_only": true
+      },
+      {
+        "key": "edd",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "edd",
         "type": "hidden",
         "calculation": {
           "rules-engine": {
@@ -65,13 +75,11 @@
         }
       },
       {
-        "key": "gest_age_note",
+        "key": "last_menstrual_period",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "gest_age_note",
-        "type": "edit_text",
-        "hint": "Umri wa ujauzito",
-        "read_only": true,
+        "openmrs_entity_id": "last_menstrual_period",
+        "type": "hidden",
         "calculation": {
           "rules-engine": {
             "ex-rules": {
@@ -308,6 +316,13 @@
             "openmrs_entity_id": "reduced_fetal_movement"
           },
           {
+            "key": "other",
+            "text": "Nyingine (Bainisha)",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other"
+          },
+          {
             "key": "none",
             "text": "Hakuna",
             "value": false,
@@ -342,6 +357,29 @@
                   "severe_pain",
                   "in_labour",
                   "imminent_labour"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "other_danger_signs",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_danger_signs",
+        "type": "edit_text",
+        "hint": "Dalili za hatari nyingine",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali bainisha dalili za hatari nyingine"
+        },
+        "relevance": {
+          "step1:danger_signs": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "other"
                 ]
               }
             ]

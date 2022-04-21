@@ -46,8 +46,7 @@
     },
     "encounter_location": ""
   },
-  "global": {
-  },
+  "global": {},
   "step1": {
     "title": "Triage",
     "fields": [
@@ -56,7 +55,7 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "gest_age",
-        "hint": "Gestational Age (GA)",
+        "hint": "Gestational Age (GA) in Weeks",
         "type": "edit_text",
         "editable": true,
         "read_only": true
@@ -317,6 +316,13 @@
             "openmrs_entity_id": "reduced_fetal_movement"
           },
           {
+            "key": "other",
+            "text": "Other (Specify)",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other"
+          },
+          {
             "key": "none",
             "text": "None",
             "value": false,
@@ -351,6 +357,29 @@
                   "severe_pain",
                   "in_labour",
                   "imminent_labour"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "other_danger_signs",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_danger_signs",
+        "type": "edit_text",
+        "hint": "Other danger sign(s)",
+        "v_required": {
+          "value": "true",
+          "err": "Please specify the other danger sign(s)"
+        },
+        "relevance": {
+          "step1:danger_signs": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "other"
                 ]
               }
             ]
