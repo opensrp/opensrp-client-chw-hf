@@ -464,7 +464,7 @@
       {
         "key": "prompt_for_septicaemia",
         "type": "toaster_notes",
-        "text": "Toa Rufaa kwa huduma/matibabu zaidi",
+        "text": "Rufaa kwa huduma zaidi",
         "openmrs_entity_id": "prompt_for_septicaemia",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -625,7 +625,7 @@
       {
         "key": "prompt_for_jaundice",
         "type": "toaster_notes",
-        "text": "Toa Rufaa kwa huduma/matibabu zaidi",
+        "text": "Rufaa kwa huduma zaidi",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -666,7 +666,7 @@
       {
         "key": "prompt_for_skin_infection",
         "type": "toaster_notes",
-        "text": "Toa Rufaa kwa huduma/matibabu zaidi",
+        "text": "Rufaa kwa huduma zaidi",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
