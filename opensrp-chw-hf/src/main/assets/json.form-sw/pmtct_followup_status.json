@@ -68,6 +68,12 @@
             "text": "Amehama",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "transfer_out"
+          },
+          {
+            "key": "lost_to_followup",
+            "text": "Mteja aliyepotes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "lost_to_followup"
           }
         ],
         "v_required": {

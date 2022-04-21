@@ -68,6 +68,12 @@
             "text": "Transfer Out",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "transfer_out"
+          },
+          {
+            "key": "lost_to_followup",
+            "text": "Lost to Followup",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "lost_to_followup"
           }
         ],
         "v_required": {

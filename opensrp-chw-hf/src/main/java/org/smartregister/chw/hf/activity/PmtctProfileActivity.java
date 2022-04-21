@@ -64,6 +64,7 @@ import org.smartregister.family.util.Utils;
 import org.smartregister.opd.utils.OpdDbConstants;
 import org.smartregister.repository.AllSharedPreferences;
 
+import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -497,7 +498,11 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
                 profilePresenter.visitRow(visitStatus);
             }
 
-            profilePresenter.nextRow(visitStatus, FpUtil.sdf.format(pmtctFollowUpRule.getDueDate()));
+            try {
+                profilePresenter.nextRow(visitStatus, FpUtil.sdf.format(pmtctFollowUpRule.getDueDate()));
+            }catch (Exception e) {
+                Timber.e(e);
+            }
         }
     }
 
