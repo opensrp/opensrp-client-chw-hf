@@ -119,8 +119,8 @@
         "openmrs_entity_parent": "",
         "options": [
           {
-            "text": "Fedha za dharura kwa ajili ya kujifungulia",
             "key": "emergency_birth_funds",
+            "text": "Andaa hela kwa ajili ya kujifungua na mahitaji mengine",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "emergency_birth_funds"
           }
@@ -138,6 +138,21 @@
             "key": "household_caregiver_support_prepared",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "household_caregiver_support_prepared"
+          }
+        ]
+      },
+      {
+        "key": "blood_donor",
+        "type": "check_box",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "blood_donor",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "blood_donor_for_transfusion",
+            "text": "Tayarisha mtu wa kutoa damu",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "blood_donor_for_transfusion"
           }
         ]
       }
