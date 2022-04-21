@@ -5,7 +5,7 @@ import org.smartregister.chw.core.interactor.NavigationInteractor;
 import org.smartregister.chw.core.utils.CoreConstants;
 
 public class HfNavigationInteractor extends NavigationInteractor {
-    private HfNavigationInteractor() {
+    protected HfNavigationInteractor() {
         super();
     }
 
