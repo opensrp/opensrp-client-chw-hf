@@ -451,6 +451,21 @@
         }
       },
       {
+        "key": "prompt_for_abdominal_movement_with_respiration",
+        "type": "toaster_notes",
+        "text": "Mpe Mteja rufaa ya kwenda kiliniki kwa usimamizi zaidi",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:abdominal_movement_with_respiration": {
+            "type": "string",
+            "ex": "equalTo(., \"no\")"
+          }
+        }
+      },
+      {
         "key": "abdominal_contour",
         "type": "spinner",
         "hint": "Umbo la tumbo",

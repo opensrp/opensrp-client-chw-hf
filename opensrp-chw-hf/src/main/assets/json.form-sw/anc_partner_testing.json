@@ -107,7 +107,7 @@
           "Mteja alikuwa katika hali ya dharura",
           "Mteja alikataa kupimwa",
           "Tunaendelea kumshauri mteja",
-          "Mteja yupo kwenye ART tayari",
+          "Anajulikana ana maambukizi",
           "Nyingine (Bainisha)"
         ],
         "keys": [
@@ -123,6 +123,7 @@
           "client_was_in_an_emergency_situation": "client_was_in_an_emergency_situation",
           "client_refused_to_be_tested": "client_refused_to_be_tested",
           "still_counselling_the_client": "still_counselling_the_client",
+          "known_on_art": "known_on_art",
           "Other": "other"
         },
         "v_required": {
@@ -163,6 +164,37 @@
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
         "toaster_type": "problem",
+        "relevance": {
+          "step1:partner_hiv": {
+            "type": "string",
+            "ex": "equalTo(.,\"positive\")"
+          }
+        }
+      },
+      {
+        "key": "ctc_number",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "ctc_number",
+        "type": "mask_edit_text",
+        "mask": "##-##-####-######",
+        "mask_hint": "12345678912345",
+        "allowed_chars": "0123456789",
+        "hint": "Namba ya CTC",
+        "edit_type": "number",
+        "v_regex": {
+          "value": "(\\d{2}-\\d{2}-\\d{4}-\\d{6})?",
+          "err": "Namba ya CTC inatakiwa kuwa (XX-XX-XXXX-XXXXXX)"
+        },
+        "v_max_length": {
+          "value": "17",
+          "is_fixed_size": "true",
+          "err":"Tafadhali jaza namba ya CTC ya mteja"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali jaza namba ya CTC ya mteja"
+        },
         "relevance": {
           "step1:partner_hiv": {
             "type": "string",
