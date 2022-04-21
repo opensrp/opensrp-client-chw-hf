@@ -46,8 +46,7 @@
     },
     "encounter_location": ""
   },
-  "global": {
-  },
+  "global": {},
   "step1": {
     "title": "Consultation (ANC assessment and Update Maternal Handbook)",
     "fields": [
@@ -376,6 +375,22 @@
         "v_required": {
           "value": "true",
           "err": "Please select an option for lie"
+        }
+      },
+      {
+        "key": "prompt_for_lie",
+        "type": "toaster_notes",
+        "text": "Refer for further management",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_consultation_relevance.yml"
+            }
+          }
         }
       },
       {
