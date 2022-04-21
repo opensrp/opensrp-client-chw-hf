@@ -113,13 +113,17 @@ public class HfPmtctRegisterProvider extends CorePmtctRegisterProvider {
             }
         } else {
             int followupStatus;
-            if (HfPmtctDao.hasTheClientTransferedOut(pmtctFollowUpRule.getBaseEntityId()))
+            int followupStatusColor;
+            if (HfPmtctDao.hasTheClientTransferedOut(pmtctFollowUpRule.getBaseEntityId())) {
                 followupStatus = R.string.transfer_out;
-            else
+                followupStatusColor = context.getResources().getColor(org.smartregister.pmtct.R.color.medium_risk_text_orange);
+            } else {
                 followupStatus = R.string.lost_to_followup;
+                followupStatusColor = context.getResources().getColor(org.smartregister.pmtct.R.color.alert_urgent_red);
+            }
 
             viewHolder.dueButton.setVisibility(View.VISIBLE);
-            viewHolder.dueButton.setTextColor(context.getResources().getColor(org.smartregister.pmtct.R.color.medium_risk_text_orange));
+            viewHolder.dueButton.setTextColor(followupStatusColor);
             viewHolder.dueButton.setText(followupStatus);
             viewHolder.dueButton.setBackgroundResource(org.smartregister.chw.core.R.drawable.colorless_btn_selector);
             viewHolder.dueButton.setOnClickListener(null);

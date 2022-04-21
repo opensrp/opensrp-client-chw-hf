@@ -64,7 +64,6 @@ import org.smartregister.family.util.Utils;
 import org.smartregister.opd.utils.OpdDbConstants;
 import org.smartregister.repository.AllSharedPreferences;
 
-import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -277,20 +276,20 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         }
 
         if (HfPmtctDao.hasTheClientTransferedOut(baseEntityId)) {
-            showStatusLabel(R.string.transfer_out);
-        }else if (HfPmtctDao.hasTheClientTransferedOut(baseEntityId)) {
-            showStatusLabel(R.string.lost_to_followup);
+            showStatusLabel(R.string.transfer_out, org.smartregister.pmtct.R.drawable.medium_risk_label, org.smartregister.pmtct.R.color.medium_risk_text_orange);
+        } else if (HfPmtctDao.isTheClientLostToFollowup(baseEntityId)) {
+            showStatusLabel(R.string.lost_to_followup, org.smartregister.pmtct.R.drawable.high_risk_label, org.smartregister.pmtct.R.color.high_risk_text_red);
         }
 
     }
 
-    private void showStatusLabel(int stringResource) {
+    private void showStatusLabel(int stringResource, int backgroundResource, int textColorResource) {
         if (riskLabel != null) {
             riskLabel.setVisibility(View.VISIBLE);
             riskLabel.setTextSize(14);
             riskLabel.setText(stringResource);
-            riskLabel.setTextColor(context().getColorResource(org.smartregister.pmtct.R.color.medium_risk_text_orange));
-            riskLabel.setBackgroundResource(org.smartregister.pmtct.R.drawable.medium_risk_label);
+            riskLabel.setBackgroundResource(backgroundResource);
+            riskLabel.setTextColor(context().getColorResource(textColorResource));
         }
     }
 
@@ -502,7 +501,7 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
 
             try {
                 profilePresenter.nextRow(visitStatus, FpUtil.sdf.format(pmtctFollowUpRule.getDueDate()));
-            }catch (Exception e) {
+            } catch (Exception e) {
                 Timber.e(e);
             }
         }

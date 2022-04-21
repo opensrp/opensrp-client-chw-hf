@@ -1,5 +1,13 @@
 package org.smartregister.chw.hf.activity;
 
+import static com.vijay.jsonwizard.constants.JsonFormConstants.VALUE;
+import static org.smartregister.chw.core.utils.Utils.getCommonPersonObjectClient;
+import static org.smartregister.chw.core.utils.Utils.getDuration;
+import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
+import static org.smartregister.chw.hf.utils.Constants.JsonForm.getHeiNumberRegistration;
+import static org.smartregister.client.utils.constants.JsonFormConstants.FIELDS;
+import static org.smartregister.client.utils.constants.JsonFormConstants.STEP1;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
@@ -11,6 +19,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 
 import com.vijay.jsonwizard.utils.FormUtils;
 
@@ -43,17 +54,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import timber.log.Timber;
-
-import static com.vijay.jsonwizard.constants.JsonFormConstants.VALUE;
-import static org.smartregister.chw.core.utils.Utils.getCommonPersonObjectClient;
-import static org.smartregister.chw.core.utils.Utils.getDuration;
-import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
-import static org.smartregister.chw.hf.utils.Constants.JsonForm.getHeiNumberRegistration;
-import static org.smartregister.client.utils.constants.JsonFormConstants.FIELDS;
-import static org.smartregister.client.utils.constants.JsonFormConstants.STEP1;
 
 public class HeiProfileActivity extends BasePmtctProfileActivity {
 
@@ -128,8 +129,10 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
         rlHvlResults.setOnClickListener(this);
         if (!HeiDao.hasTheChildTransferedOut(baseEntityId)) {
             showRiskLabel(HeiDao.getRiskLevel(baseEntityId));
-        } else {
-            showTransferOutLabel();
+        } else if (HeiDao.hasTheChildTransferedOut(baseEntityId)) {
+            showStatusLabel(R.string.transfer_out, org.smartregister.pmtct.R.drawable.medium_risk_label, org.smartregister.pmtct.R.color.medium_risk_text_orange);
+        } else if (HeiDao.isTheChildLostToFollowup(baseEntityId)) {
+            showStatusLabel(R.string.lost_to_followup, org.smartregister.pmtct.R.drawable.high_risk_label, org.smartregister.pmtct.R.color.high_risk_text_red);
         }
 
         if (shouldShowRecordFollowupVisitButton()) {
@@ -177,13 +180,13 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
                 HeiDao.isEligibleForArvPrescriptionForHighAndLowRisk(memberObject.getBaseEntityId());
     }
 
-    private void showTransferOutLabel() {
+    private void showStatusLabel(int stringResource, int backgroundResource, int textColorResource) {
         if (riskLabel != null) {
             riskLabel.setVisibility(View.VISIBLE);
             riskLabel.setTextSize(14);
-            riskLabel.setText(R.string.transfer_out);
-            riskLabel.setTextColor(context().getColorResource(org.smartregister.pmtct.R.color.medium_risk_text_orange));
-            riskLabel.setBackgroundResource(org.smartregister.pmtct.R.drawable.medium_risk_label);
+            riskLabel.setText(stringResource);
+            riskLabel.setBackgroundResource(backgroundResource);
+            riskLabel.setTextColor(context().getColorResource(textColorResource));
         }
     }
 

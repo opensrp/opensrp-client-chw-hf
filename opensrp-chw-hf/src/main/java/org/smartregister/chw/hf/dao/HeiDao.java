@@ -371,7 +371,25 @@ public class HeiDao extends AbstractDao {
         return res != null && res.size() > 0 && res.get(0) != null;
     }
 
-    public static boolean hasHeiNumber(String baseEntityId){
+
+    public static boolean isTheChildLostToFollowup(String baseEntityID) {
+        String sql = "SELECT p.base_entity_id\n" +
+                "FROM ec_hei as p\n" +
+                "         INNER JOIN (SELECT *\n" +
+                "                     FROM ec_hei_followup\n" +
+                "                     WHERE ec_hei_followup.entity_id ='" + baseEntityID + "'" +
+                "                     ORDER BY visit_number DESC\n" +
+                "                     LIMIT 1) as pf on pf.entity_id = p.base_entity_id\n" +
+                "WHERE (pf.followup_status = 'lost_to_followup')\n" +
+                "AND p.base_entity_id = '" + baseEntityID + "'";
+
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "base_entity_id");
+        List<String> res = readData(sql, dataMap);
+
+        return res != null && res.size() > 0 && res.get(0) != null;
+    }
+
+    public static boolean hasHeiNumber(String baseEntityId) {
         String sql = "SELECT hei_number FROM ec_hei WHERE base_entity_id = '" + baseEntityId + "'";
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "hei_number");
         List<String> res = readData(sql, dataMap);

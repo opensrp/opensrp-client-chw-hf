@@ -1,5 +1,7 @@
 package org.smartregister.chw.hf.provider;
 
+import static org.smartregister.util.Utils.getName;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
@@ -30,8 +32,6 @@ import java.util.Date;
 import java.util.Set;
 
 import timber.log.Timber;
-
-import static org.smartregister.util.Utils.getName;
 
 public class HeiRegisterProvider extends PmtctRegisterProvider {
 
@@ -138,7 +138,7 @@ public class HeiRegisterProvider extends PmtctRegisterProvider {
         }
 
         private void updateDueColumn(Context context, RegisterViewHolder viewHolder, HeiFollowupRule heiFollowupRule) {
-            if(!HeiDao.hasTheChildTransferedOut(heiFollowupRule.getBaseEntityId())){
+            if (!HeiDao.hasTheChildTransferedOut(heiFollowupRule.getBaseEntityId()) && !HeiDao.isTheChildLostToFollowup(heiFollowupRule.getBaseEntityId())) {
                 if (heiFollowupRule.getDueDate() != null) {
                     viewHolder.dueButton.setVisibility(View.VISIBLE);
                     if (heiFollowupRule.getButtonStatus().equalsIgnoreCase(CoreConstants.VISIT_STATE.NOT_DUE_YET)) {
@@ -152,10 +152,20 @@ public class HeiRegisterProvider extends PmtctRegisterProvider {
                         setVisitDone(context, viewHolder.dueButton);
                     }
                 }
-            }else{
+            } else {
+                int followupStatus;
+                int followupStatusColor;
+                if (HeiDao.hasTheChildTransferedOut(heiFollowupRule.getBaseEntityId())) {
+                    followupStatus = R.string.transfer_out;
+                    followupStatusColor = context.getResources().getColor(org.smartregister.pmtct.R.color.medium_risk_text_orange);
+                } else {
+                    followupStatus = R.string.lost_to_followup;
+                    followupStatusColor = context.getResources().getColor(org.smartregister.pmtct.R.color.alert_urgent_red);
+                }
+
                 viewHolder.dueButton.setVisibility(View.VISIBLE);
-                viewHolder.dueButton.setTextColor(context.getResources().getColor(org.smartregister.pmtct.R.color.medium_risk_text_orange));
-                viewHolder.dueButton.setText(R.string.transfer_out);
+                viewHolder.dueButton.setTextColor(followupStatusColor);
+                viewHolder.dueButton.setText(followupStatus);
                 viewHolder.dueButton.setBackgroundResource(org.smartregister.chw.core.R.drawable.colorless_btn_selector);
                 viewHolder.dueButton.setOnClickListener(null);
             }
