@@ -31,15 +31,15 @@ public class HeiVisitUtils extends VisitUtils {
         for (Visit v : visits) {
             Date truncatedUpdatedDate = DateUtils.truncate(v.getUpdatedAt(), Calendar.DATE);
             Date today = DateUtils.truncate(new Date(), Calendar.DATE);
-            if (truncatedUpdatedDate.before(today)) {
-                if (v.getVisitType().equalsIgnoreCase(Constants.Events.HEI_FOLLOWUP)) {
-                    try {
-                        heiFollowupVisits.add(v);
-                    } catch (Exception e) {
-                        Timber.e(e);
-                    }
+
+            if (truncatedUpdatedDate.before(today) && v.getVisitType().equalsIgnoreCase(Constants.Events.HEI_FOLLOWUP)) {
+                try {
+                    heiFollowupVisits.add(v);
+                } catch (Exception e) {
+                    Timber.e(e);
                 }
             }
+
         }
 
         if (heiFollowupVisits.size() > 0) {
