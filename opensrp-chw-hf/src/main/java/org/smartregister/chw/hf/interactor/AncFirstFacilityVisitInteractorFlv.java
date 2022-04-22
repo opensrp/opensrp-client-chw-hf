@@ -74,7 +74,7 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
                     }
                 }
                 JSONArray tree = referralHealthFacilities.getJSONArray("tree");
-                String parentTagName = "Zone";
+                String parentTagName = "Region";
                 for (Location location : locations) {
                     Set<LocationTag> locationTags = location.getLocationTags();
                     if (locationTags.iterator().next().getName().equalsIgnoreCase(parentTagName)) {
