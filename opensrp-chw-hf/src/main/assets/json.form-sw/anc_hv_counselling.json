@@ -58,9 +58,6 @@
         "label": "Ushauri nasaa uliotolewa kwa mama na wanafamilia",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
-        "exclusive": [
-          "chk_none"
-        ],
         "options": [
           {
             "key": "chk_attended_anc_contacts",
@@ -173,13 +170,6 @@
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_infection_prevention"
-          },
-          {
-            "key": "chk_none",
-            "text": "Hajatoa ushauri",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_none"
           }
         ],
         "v_required": {
