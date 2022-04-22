@@ -425,7 +425,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         } else if (id == R.id.rlPartnerView || id == R.id.register_partner_btn) {
             if (StringUtils.isNotBlank(partnerBaseEntityId)) {
                 FamilyDetailsModel familyDetailsModel = FamilyDao.getFamilyDetail(partnerBaseEntityId);
-                Intent intent = new Intent(this, AllClientsMemberProfileActivity.class);
+                Intent intent = new Intent(this, FamilyOtherMemberProfileActivity.class);
                 intent.putExtras(new Bundle());
                 intent.putExtra(org.smartregister.family.util.Constants.INTENT_KEY.BASE_ENTITY_ID, partnerBaseEntityId);
                 intent.putExtra(CoreConstants.INTENT_KEY.CHILD_COMMON_PERSON, org.smartregister.chw.core.utils.Utils.getCommonPersonObjectClient(partnerBaseEntityId));
