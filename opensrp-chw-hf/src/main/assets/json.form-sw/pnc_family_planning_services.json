@@ -102,6 +102,32 @@
         }
       },
       {
+        "key": "using_family_planning_method",
+        "type": "native_radio",
+        "label": "Je, Mteja anatumia Njia ya Uzazi wa Mpango?",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "using_family_planning_method",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndio",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jibu swali hili"
+        }
+      },
+      {
         "key": "method_provided",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -122,10 +148,10 @@
             "openmrs_entity_id": "chk_pills"
           },
           {
-            "key": "chk_injections",
-            "text": "Sindano",
+            "key": "chk_injectable",
+            "text": "Injectable (Baada ya siku 42)",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_injections"
+            "openmrs_entity_id": "chk_injectable"
           },
           {
             "key": "chk_jadelle",
@@ -135,13 +161,13 @@
           },
           {
             "key": "chk_implants",
-            "text": "Vipandikizi (Implants)",
+            "text": "Vipandikizi (Implanon/NXT)",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_implants"
           },
           {
             "key": "chk_iucd",
-            "text": "Kitanzi (IUCD)",
+            "text": "PPIUCD (Ndani ya masaa 48 baada ya kujifungua au baada ya siku 42 za PNC)",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_iucd"
           },
@@ -167,6 +193,12 @@
         "v_required": {
           "value": "true",
           "err": "Tafadhari jibu swali hili"
+        },
+        "relevance": {
+          "step1:using_family_planning_method": {
+            "type": "string",
+            "ex": "equalTo(.,\"no\")"
+          }
         }
       }
     ]
