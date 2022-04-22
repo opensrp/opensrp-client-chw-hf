@@ -328,7 +328,7 @@
       {
         "key": "prompt_for_fetal_distress",
         "type": "toaster_notes",
-        "text": "Toa Rufaa kwa huduma/matibabu zaidi",
+        "text": "Toa rufaa kwa huduma zaidi",
         "openmrs_entity_id": "prompt_for_fetal_distress",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
