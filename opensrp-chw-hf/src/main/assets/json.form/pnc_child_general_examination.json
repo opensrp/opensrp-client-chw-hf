@@ -514,7 +514,7 @@
           },
           {
             "key": "chk_descended",
-            "text": "Descended",
+            "text": "Destended",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_descended",
             "value": "false"

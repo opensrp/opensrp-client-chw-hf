@@ -78,6 +78,12 @@
             "openmrs_entity_id": "FeFo"
           },
           {
+            "text": "folic",
+            "key": "Folic Acid",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "folic"
+          },
+          {
             "text": "Hajapewa dawa ya vidonge vya madini ya chuma",
             "key": "medication_not_given",
             "openmrs_entity": "concept",
@@ -87,6 +93,60 @@
         "v_required": {
           "value": "true",
           "err": "Tafadhali jibu swali hili"
+        }
+      },
+      {
+        "key": "reason_for_giving_folic_acid",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_giving_folic_acid",
+        "type": "spinner",
+        "hint": "Sababu ya kutopewa vidonge vya Folic Acid badala ya FEFO",
+        "values": [
+          "Out of stock",
+          "Other (Specify)"
+        ],
+        "keys": [
+          "out_of_stock",
+          "other"
+        ],
+        "openmrs_choice_ids": {
+          "out_of_stock": "out_of_stock",
+          "other": "other"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select a reason"
+        },
+        "relevance": {
+          "step1:iron_folate_supplements": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "folic"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "other_reason_for_giving_folic_acid",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reason_for_giving_folic_acid",
+        "type": "edit_text",
+        "hint": "Sababu nyingine ya kutopewa vidonge vya Folic Acid badala ya FEFO",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the reason"
+        },
+        "relevance": {
+          "step1:reason_for_giving_folic_acid": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
+          }
         }
       },
       {
@@ -109,7 +169,7 @@
           "other"
         ],
         "openmrs_choice_ids": {
-          "out_of_stock":  "out_of_stock",
+          "out_of_stock": "out_of_stock",
           "client_did_not_agree_medication": "client_did_not_agree_medication",
           "the_client_refused_to_be_tested": "the_client_refused_to_be_tested",
           "client_is_allergic_to_medication": "client_is_allergic_to_medication",
@@ -324,7 +384,7 @@
           "other"
         ],
         "openmrs_choice_ids": {
-          "out_of_stock":  "out_of_stock",
+          "out_of_stock": "out_of_stock",
           "client_did_not_agree_medication": "client_did_not_agree_medication",
           "the_client_refused_to_be_tested": "the_client_refused_to_be_tested",
           "client_is_allergic_to_medication": "client_is_allergic_to_medication",
@@ -396,6 +456,13 @@
         "v_required": {
           "value": "true",
           "err": "Tadhali chagua chaguo moja"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_pharmacy_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -418,7 +485,7 @@
           "other"
         ],
         "openmrs_choice_ids": {
-          "out_of_stock":  "out_of_stock",
+          "out_of_stock": "out_of_stock",
           "client_did_not_agree_medication": "client_did_not_agree_medication",
           "the_client_refused_to_be_tested": "the_client_refused_to_be_tested",
           "client_is_allergic_to_medication": "client_is_allergic_to_medication",
