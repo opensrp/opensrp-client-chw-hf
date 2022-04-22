@@ -1,5 +1,6 @@
 package org.smartregister.chw.hf.utils;
 
+import org.apache.commons.lang3.time.DateUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -10,6 +11,8 @@ import org.smartregister.chw.pmtct.repository.VisitRepository;
 import org.smartregister.chw.pmtct.util.VisitUtils;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import timber.log.Timber;
@@ -26,11 +29,15 @@ public class HeiVisitUtils extends VisitUtils {
 
 
         for (Visit v : visits) {
-            if (v.getVisitType().equalsIgnoreCase(Constants.Events.HEI_FOLLOWUP)) {
-                try {
-                    heiFollowupVisits.add(v);
-                } catch (Exception e) {
-                    Timber.e(e);
+            Date truncatedUpdatedDate = DateUtils.truncate(v.getUpdatedAt(), Calendar.DATE);
+            Date today = DateUtils.truncate(new Date(), Calendar.DATE);
+            if (truncatedUpdatedDate.before(today)) {
+                if (v.getVisitType().equalsIgnoreCase(Constants.Events.HEI_FOLLOWUP)) {
+                    try {
+                        heiFollowupVisits.add(v);
+                    } catch (Exception e) {
+                        Timber.e(e);
+                    }
                 }
             }
         }
