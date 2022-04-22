@@ -54,4 +54,11 @@ priority: 1
 condition: "step1_lie.contains('transverse') || step1_lie.contains('oblique')"
 actions:
   - "isRelevant = true"
+---
+name: step1_prompt_for_presentation
+description: prompt_for_presentation
+priority: 1
+condition: "step1_presentation.contains('breech')"
+actions:
+  - "isRelevant = true"
 

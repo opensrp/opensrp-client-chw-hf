@@ -596,25 +596,16 @@
         "openmrs_entity_parent": "",
         "hint": "Presentation",
         "values": [
-          "Occipital Posterior Presentation",
-          "Eye Brow Presentation",
           "Breech Presentation",
-          "Chin Presentation",
-          "Other"
+          "Cephalic Presentation"
         ],
         "keys": [
-          "occipital_posterior",
-          "eye_brow",
           "breech",
-          "chin",
-          "other"
+          "cephalic"
         ],
         "openmrs_choice_ids": {
-          "occipital_posterior": "occipital_posterior",
-          "eye_brow": "eye_brow",
           "breech": "breech",
-          "chin": "chin",
-          "other": "other"
+          "cephalic": "cephalic"
         },
         "relevance": {
           "rules-engine": {
@@ -644,6 +635,22 @@
           "step1:presentation": {
             "type": "string",
             "ex": "equalTo(., \"other\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_presentation",
+        "type": "toaster_notes",
+        "text": "Refer for further management",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_obstetric_examination_relevance.yml"
+            }
           }
         }
       },

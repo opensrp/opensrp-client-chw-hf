@@ -378,7 +378,7 @@
       {
         "key": "prompt_for_lie",
         "type": "toaster_notes",
-        "text": "Rufaa kwa huduma zaidi",
+        "text": "Toa rufaa kwa huduma zaidi",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -418,25 +418,16 @@
         "openmrs_entity_parent": "",
         "hint": "Mkao wa mtoto",
         "values": [
-          "Kichwa chini, annagalia chini",
-          "Kichwa chini, anaangalia mbele",
           "Miguu chini",
-          "Kichwa chini, kidevu kimetangulia mbele",
-          "Nyingine"
+          "Kichwa chini"
         ],
         "keys": [
-          "occipital_posterior",
-          "eye_brow",
           "breech",
-          "chin",
-          "other"
+          "cephalic"
         ],
         "openmrs_choice_ids": {
-          "occipital_posterior": "occipital_posterior",
-          "eye_brow": "eye_brow",
           "breech": "breech",
-          "chin": "chin",
-          "other": "other"
+          "cephalic": "cephalic"
         },
         "relevance": {
           "rules-engine": {
@@ -466,6 +457,21 @@
           "step1:presentation": {
             "type": "string",
             "ex": "equalTo(., \"other\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_presentation",
+        "type": "toaster_notes",
+        "text": "Toa rufaa kwa huduma zaidi",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:presentation": {
+            "type": "string",
+            "ex": "equalTo(., \"breech\")"
           }
         }
       },
