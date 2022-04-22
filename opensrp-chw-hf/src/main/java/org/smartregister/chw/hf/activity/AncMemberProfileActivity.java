@@ -1,11 +1,5 @@
 package org.smartregister.chw.hf.activity;
 
-import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
-import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
-import static org.smartregister.chw.hf.utils.Constants.Events.ANC_FIRST_FACILITY_VISIT;
-import static org.smartregister.chw.hf.utils.Constants.Events.ANC_RECURRING_FACILITY_VISIT;
-import static org.smartregister.chw.hf.utils.Constants.PartnerRegistrationConstants.INTENT_BASE_ENTITY_ID;
-
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
@@ -16,8 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.rey.material.widget.Button;
@@ -69,7 +61,14 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Set;
 
+import androidx.recyclerview.widget.RecyclerView;
 import timber.log.Timber;
+
+import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
+import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
+import static org.smartregister.chw.hf.utils.Constants.Events.ANC_FIRST_FACILITY_VISIT;
+import static org.smartregister.chw.hf.utils.Constants.Events.ANC_RECURRING_FACILITY_VISIT;
+import static org.smartregister.chw.hf.utils.Constants.PartnerRegistrationConstants.INTENT_BASE_ENTITY_ID;
 
 public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     private CommonPersonObjectClient commonPersonObjectClient;
@@ -289,13 +288,17 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         testingBtn.setOnClickListener(this);
         partnerBaseEntityId = HfAncDao.getPartnerBaseEntityId(memberObject.getBaseEntityId());
         if (StringUtils.isNotBlank(partnerBaseEntityId)) {
-            tvPartnerProfileView.setText(R.string.view_partner_prefile);
-            tvPartnerDetails.setVisibility(View.VISIBLE);
-            registerBtn.setVisibility(View.GONE);
-            goToProfileBtn.setVisibility(View.VISIBLE);
-            CommonPersonObjectClient partnerClient = getClientDetailsByBaseEntityID(partnerBaseEntityId);
-            HashMap<String, String> clientDetails = (HashMap<String, String>) partnerClient.getColumnmaps();
-            tvPartnerDetails.setText(MessageFormat.format("{0} {1} {2}", clientDetails.get("first_name"), clientDetails.get("middle_name"), clientDetails.get("last_name") != null ? clientDetails.get("last_name") : ""));
+            try {
+                CommonPersonObjectClient partnerClient = getClientDetailsByBaseEntityID(partnerBaseEntityId);
+                HashMap<String, String> clientDetails = (HashMap<String, String>) partnerClient.getColumnmaps();
+                tvPartnerProfileView.setText(R.string.view_partner_prefile);
+                tvPartnerDetails.setVisibility(View.VISIBLE);
+                registerBtn.setVisibility(View.GONE);
+                goToProfileBtn.setVisibility(View.VISIBLE);
+                tvPartnerDetails.setText(MessageFormat.format("{0} {1} {2}", clientDetails.get("first_name"), clientDetails.get("middle_name"), clientDetails.get("last_name") != null ? clientDetails.get("last_name") : ""));
+            } catch (Exception e) {
+                Timber.e(e);
+            }
         }
         boolean retestPartnerAt32 = ((memberObject.getGestationAge() >= 32 && HfAncDao.getPartnerHivStatus(memberObject.getBaseEntityId()).equalsIgnoreCase("negative")) && !HfAncDao.isPartnerHivTestConductedAtWk32(memberObject.getBaseEntityId()));
         boolean partnerTestedAll = (HfAncDao.isPartnerTestedForHiv(memberObject.getBaseEntityId()) && HfAncDao.isPartnerTestedForSyphilis(memberObject.getBaseEntityId()) && HfAncDao.isPartnerTestedForHepatitis(memberObject.getBaseEntityId()));
@@ -422,7 +425,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         } else if (id == R.id.rlPartnerView || id == R.id.register_partner_btn) {
             if (StringUtils.isNotBlank(partnerBaseEntityId)) {
                 FamilyDetailsModel familyDetailsModel = FamilyDao.getFamilyDetail(partnerBaseEntityId);
-                Intent intent = new Intent(this, AllClientsMemberProfileActivity.class);
+                Intent intent = new Intent(this, FamilyOtherMemberProfileActivity.class);
                 intent.putExtras(new Bundle());
                 intent.putExtra(org.smartregister.family.util.Constants.INTENT_KEY.BASE_ENTITY_ID, partnerBaseEntityId);
                 intent.putExtra(CoreConstants.INTENT_KEY.CHILD_COMMON_PERSON, org.smartregister.chw.core.utils.Utils.getCommonPersonObjectClient(partnerBaseEntityId));

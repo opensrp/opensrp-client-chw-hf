@@ -5,9 +5,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.vijay.jsonwizard.utils.FormUtils;
 
+import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.core.activity.CoreFamilyOtherMemberProfileActivity;
@@ -54,7 +56,13 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
         dob = Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.DOB, false);
         gender = Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.GENDER, false);
         setIndependentClient(false);
-        updateToolbarTitle(this, R.id.toolbar_title, familyName);
+        String passedTitle = getIntent().getStringExtra(CoreConstants.INTENT_KEY.TOOLBAR_TITLE);
+        if (!StringUtils.isBlank(passedTitle)) {
+            TextView toolbarTitle = findViewById(R.id.toolbar_title);
+            toolbarTitle.setText(passedTitle);
+        } else {
+            updateToolbarTitle(this, R.id.toolbar_title, familyName);
+        }
     }
 
     @Override
@@ -72,7 +80,7 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
     @Override
     protected void startPncRegister() {
         PncRegisterActivity.startPncRegistrationActivity(FamilyOtherMemberProfileActivity.this, baseEntityId, PhoneNumber,
-                CoreConstants.JSON_FORM.getPregnancyOutcome(), null, familyBaseEntityId, familyName,null,false);
+                CoreConstants.JSON_FORM.getPregnancyOutcome(), null, familyBaseEntityId, familyName, null, false);
     }
 
     @Override
