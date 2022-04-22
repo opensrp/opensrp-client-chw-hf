@@ -780,6 +780,21 @@
             }
           },
           {
+            "key": "prompt_for_disabilities",
+            "type": "toaster_notes",
+            "text": "Toa rufaa kwa huduma zaidi",
+            "openmrs_entity_id": "",
+            "openmrs_entity": "",
+            "openmrs_entity_parent": "",
+            "toaster_type": "problem",
+            "relevance": {
+              "step1:disabilities": {
+                "type": "string",
+                "ex": "equalTo(.,\"Yes\")"
+              }
+            }
+          },
+          {
             "key": "type_of_disability",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
@@ -1188,6 +1203,21 @@
             "v_required": {
               "value": "true",
               "err": "Tafadhali chagua moja"
+            }
+          },
+          {
+            "key": "prompt_for_disabilities",
+            "type": "toaster_notes",
+            "text": "Toa rufaa kwa huduma zaidi",
+            "openmrs_entity_id": "",
+            "openmrs_entity": "",
+            "openmrs_entity_parent": "",
+            "toaster_type": "problem",
+            "relevance": {
+              "step1:disabilities": {
+                "type": "string",
+                "ex": "equalTo(.,\"Yes\")"
+              }
             }
           },
           {
