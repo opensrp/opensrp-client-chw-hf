@@ -104,14 +104,17 @@
         "hint": "Sababu ya kutopewa vidonge vya Folic Acid badala ya FEFO",
         "values": [
           "Out of stock",
-          "Other (Specify)"
+          "Selimundu",
+          "Nyingine (Taja)"
         ],
         "keys": [
           "out_of_stock",
+          "sickle_cell",
           "other"
         ],
         "openmrs_choice_ids": {
           "out_of_stock": "out_of_stock",
+          "sickle_cell": "sickle_cell",
           "other": "other"
         },
         "v_required": {

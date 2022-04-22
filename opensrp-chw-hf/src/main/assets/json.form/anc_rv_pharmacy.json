@@ -102,14 +102,17 @@
         "hint": "Reason as to why Folic Acid was given instead of FEFO",
         "values": [
           "Out of stock",
+          "Sickle Cell",
           "Other (Specify)"
         ],
         "keys": [
           "out_of_stock",
+          "sickle_cell",
           "other"
         ],
         "openmrs_choice_ids": {
           "out_of_stock": "out_of_stock",
+          "sickle_cell": "sickle_cell",
           "other": "other"
         },
         "v_required": {
@@ -118,13 +121,8 @@
         },
         "relevance": {
           "step1:iron_folate_supplements": {
-            "ex-checkbox": [
-              {
-                "or": [
-                  "folic"
-                ]
-              }
-            ]
+            "type": "string",
+            "ex": "equalTo(., \"folic\")"
           }
         }
       },
@@ -179,13 +177,8 @@
         },
         "relevance": {
           "step1:iron_folate_supplements": {
-            "ex-checkbox": [
-              {
-                "or": [
-                  "medication_not_given"
-                ]
-              }
-            ]
+            "type": "string",
+            "ex": "equalTo(., \"medication_not_given\")"
           }
         }
       },
