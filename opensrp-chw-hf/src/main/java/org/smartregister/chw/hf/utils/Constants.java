@@ -70,6 +70,7 @@ public class Constants extends CoreConstants {
         public static final String FIRST_EAC = "First Eac";
         public static final String SECOND_EAC = "Second Eac";
         public static final String PMTCT_VISIT = "Pmtct";
+        public static final String HEI_VISIT = "HEI";
     }
 
     public static final class ActionList {

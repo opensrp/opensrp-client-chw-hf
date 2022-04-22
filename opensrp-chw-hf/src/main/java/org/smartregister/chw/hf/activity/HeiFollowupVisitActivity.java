@@ -39,11 +39,6 @@ public class HeiFollowupVisitActivity extends BasePmtctHomeVisitActivity {
         activity.startActivity(intent);
     }
 
-    public void returnToRegister() {
-        Intent intent = new Intent(this, HeiRegisterActivity.class);
-        startActivity(intent);
-    }
-
     @Override
     protected void registerPresenter() {
         presenter = new BasePmtctHomeVisitPresenter(memberObject, this, new HeiFollowupVisitInteractor());
@@ -54,7 +49,6 @@ public class HeiFollowupVisitActivity extends BasePmtctHomeVisitActivity {
         Runnable runnable = () -> HfScheduleTaskExecutor.getInstance().execute(memberObject.getBaseEntityId(), org.smartregister.chw.hf.utils.Constants.Events.HEI_FOLLOWUP, new Date());
         Utils.startAsyncTask(new RunnableTask(runnable), null);
         super.submittedAndClose();
-        returnToRegister();
     }
 
     @Override

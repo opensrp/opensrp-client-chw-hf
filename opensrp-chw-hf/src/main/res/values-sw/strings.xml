@@ -180,6 +180,8 @@
     <string name="update_client_registration">Hariri taarifa za mteja</string>
     <string name="feedback_due_only">Maoni</string>
     <string name="action_received_hiv_followup_referrals">Ufuatiliaji</string>
+    <string name="hei_number">Namba ya HEI: %s</string>
+    <string name="record_hei_number">Rekodi Namba ya Hei</string>
 
 
 </resources>

@@ -1,5 +1,6 @@
 package org.smartregister.chw.hf.utils;
 
+import org.apache.commons.lang3.time.DateUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -19,6 +20,7 @@ import org.smartregister.repository.AllSharedPreferences;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -40,7 +42,9 @@ public class PmtctVisitUtils extends VisitUtils {
 
 
         for (Visit v : visits) {
-            if (v.getVisitType().equalsIgnoreCase(org.smartregister.chw.pmtct.util.Constants.EVENT_TYPE.PMTCT_FOLLOWUP)) {
+            Date truncatedUpdatedDate = DateUtils.truncate(v.getUpdatedAt(), Calendar.DATE);
+            Date today = DateUtils.truncate(new Date(), Calendar.DATE);
+            if (truncatedUpdatedDate.before(today) && v.getVisitType().equalsIgnoreCase(org.smartregister.chw.pmtct.util.Constants.EVENT_TYPE.PMTCT_FOLLOWUP)) {
                 try {
                     JSONObject jsonObject = new JSONObject(v.getJson());
                     String baseEntityId = jsonObject.getString("baseEntityId");
@@ -87,6 +91,7 @@ public class PmtctVisitUtils extends VisitUtils {
                 } catch (Exception e) {
                     Timber.e(e);
                 }
+
             }
         }
 
