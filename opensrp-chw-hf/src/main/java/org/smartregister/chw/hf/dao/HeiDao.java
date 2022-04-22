@@ -69,33 +69,7 @@ public class HeiDao extends AbstractDao {
     }
 
     public static boolean isEligibleForDnaCprHivTest(String baseEntityID) {
-        String sql = "SELECT * FROM ec_hei hei\n" +
-                "         LEFT JOIN (SELECT * FROM ec_hei_followup WHERE sample_id IS NOT NULL AND ec_hei_followup.entity_id ='" + baseEntityID + "'" +
-                "           ORDER BY visit_number DESC LIMIT 1) heif\n" +
-                "                   on hei.base_entity_id = heif.entity_id\n" +
-                "WHERE hei.base_entity_id='" + baseEntityID + "'";
-
-        DataMap<String> dobMap = cursor -> getCursorValue(cursor, "dob");
-        DataMap<String> riskCategoryMap = cursor -> getCursorValue(cursor, "risk_category");
-        DataMap<String> sampleIdMap = cursor -> getCursorValue(cursor, "sample_id");
-
-        List<String> dobRes = readData(sql, dobMap);
-        List<String> riskCategoryRes = readData(sql, riskCategoryMap);
-        List<String> sampleIdRes = readData(sql, sampleIdMap);
-
-        DateTime dobDateTime = new DateTime(dobRes.get(0));
-        Date dob = dobDateTime.toDate();
-
-        int weeks = getElapsedTimeInWeeks(simpleDateFormat.format(dob));
-        int months = getElapsedTimeInMonths(simpleDateFormat.format(dob));
-        String nextTestAge = getNextHivTestAge(baseEntityID);
-        String latestTestAge = getLatestTestAtAge(baseEntityID);
-        if (months >= 9 && (!nextTestAge.equals(latestTestAge))) {
-            return true;
-        } else if (weeks >= 6 && (!nextTestAge.equals(latestTestAge))) {
-            return true;
-        } else
-            return riskCategoryRes.get(0).equals("high") && getNextHivTestAge(baseEntityID).equals(Constants.HeiHIVTestAtAge.AT_BIRTH) && (sampleIdRes == null || sampleIdRes.size() == 0 || sampleIdRes.get(0) == null);
+        return !isEligibleForAntiBodiesHivTest(baseEntityID);
     }
 
     public static boolean isEligibleForArvPrescriptionForHighRisk(String baseEntityID) {
@@ -164,10 +138,7 @@ public class HeiDao extends AbstractDao {
         Date dob = dobDateTime.toDate();
 
         int months = getElapsedTimeInMonths(simpleDateFormat.format(dob));
-        if (months >= 15 && getNextHivTestAge(baseEntityID).equals(Constants.HeiHIVTestAtAge.AT_15_MONTHS)) {
-            return true;
-        } else
-            return months >= 18 && getNextHivTestAge(baseEntityID).equals(Constants.HeiHIVTestAtAge.AT_18_MONTHS);
+        return months >= 15;
     }
 
     public static boolean isEligibleForCtx(String baseEntityID) {
