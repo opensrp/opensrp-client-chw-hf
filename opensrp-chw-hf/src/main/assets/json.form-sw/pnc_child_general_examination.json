@@ -79,7 +79,7 @@
       {
         "key": "prompt_for_child_activeness",
         "type": "toaster_notes",
-        "text": "Thibitisha ikiwa ni kifo cha mapema cha Mtoto mchanga",
+        "text": "Toa rufaa kwa huduma zaidi",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -131,8 +131,8 @@
           "err": "The weight must be equal or greater than 0 (KG)"
         },
         "v_max": {
-          "value": "30",
-          "err": "The weight must be equal or less than 30 (KG)"
+          "value": "7",
+          "err": "The weight must be equal or less than 7 (KG)"
         },
         "v_required": {
           "value": true,
@@ -467,7 +467,7 @@
       {
         "key": "prompt_for_septicaemia",
         "type": "toaster_notes",
-        "text": "Toa Rufaa kwa huduma zaidi",
+        "text": "Toa rufaa kwa huduma zaidi",
         "openmrs_entity_id": "prompt_for_septicaemia",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -506,13 +506,6 @@
             "value": "false"
           },
           {
-            "key": "chk_abnormality",
-            "text": "Kipo katika hali isiyo ya kawaida",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_abnormality",
-            "value": "false"
-          },
-          {
             "key": "chk_descended",
             "text": "Kimeshuka",
             "openmrs_entity": "concept",
@@ -532,6 +525,13 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_no_abnormalities",
             "value": "false"
+          },
+          {
+            "key": "chk_other",
+            "text": "Nyingine (Bainisha)",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_other",
+            "value": "false"
           }
         ],
         "v_required": {
@@ -542,7 +542,7 @@
       {
         "key": "prompt_for_umbilical_cord_smelling_bad",
         "type": "toaster_notes",
-        "text": "Dhibiti hali ya Sepsis ya kitovu kwa kutumia Antibiotics yenye nguvu, tunza Kitovu kwa kutumia dawa zinazopendekezwa, tathmini ikiwa mtoto ana homa ya manjano na udhibiti kulingana na mwongozo wa Wizara ya Afya",
+        "text": "Dhibiti kulingana na mwongozo wa Wizara ya Afya/Toa rufaa kwa huduma zaidi",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -552,26 +552,7 @@
             "ex-checkbox": [
               {
                 "or": [
-                  "chk_smell_bad"
-                ]
-              }
-            ]
-          }
-        }
-      },
-      {
-        "key": "prompt_for_umbilical_cord_infection",
-        "type": "toaster_notes",
-        "text": "Dhibiti Sepsis ya kitovu kwa kutumia Antibiotics yenye nguvu, tunza Kitovu cha mtoto kwa kutumia dawa zinazopendekezwa, tathmini ikiwa mtoto ana homa ya manjano na udhibiti hali hii  kulingana mwongozo",
-        "openmrs_entity_id": "",
-        "openmrs_entity": "",
-        "openmrs_entity_parent": "",
-        "toaster_type": "problem",
-        "relevance": {
-          "step1:umbilical_cord": {
-            "ex-checkbox": [
-              {
-                "or": [
+                  "chk_smell_bad",
                   "chk_infection"
                 ]
               }
@@ -580,19 +561,22 @@
         }
       },
       {
-        "key": "prompt_for_umbilical_cord_abnormality",
-        "type": "toaster_notes",
-        "text": "Dhibiti hali isiyo ya kawaida inayozingatiwa kulingana na mwongozo wa Wizara ya Afya",
-        "openmrs_entity_id": "",
-        "openmrs_entity": "",
+        "key": "umbilical_cord_other_assessment",
         "openmrs_entity_parent": "",
-        "toaster_type": "problem",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "umbilical_cord_other_assessment",
+        "type": "edit_text",
+        "hint": "Bainisha Tathimini ya Kitovu Nyingine",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali bainisha tathimini ya kitovu nyingine"
+        },
         "relevance": {
           "step1:umbilical_cord": {
             "ex-checkbox": [
               {
                 "or": [
-                  "chk_abnormality"
+                  "chk_other"
                 ]
               }
             ]
@@ -628,7 +612,7 @@
       {
         "key": "prompt_for_jaundice",
         "type": "toaster_notes",
-        "text": "Toa Rufaa kwa huduma zaidi",
+        "text": "Toa rufaa kwa huduma zaidi",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -669,7 +653,7 @@
       {
         "key": "prompt_for_skin_infection",
         "type": "toaster_notes",
-        "text": "Toa Rufaa kwa huduma zaidi",
+        "text": "Toa rufaa kwa huduma zaidi",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
