@@ -1,13 +1,5 @@
 package org.smartregister.chw.hf.activity;
 
-import static com.vijay.jsonwizard.constants.JsonFormConstants.VALUE;
-import static org.smartregister.chw.core.utils.Utils.getCommonPersonObjectClient;
-import static org.smartregister.chw.core.utils.Utils.getDuration;
-import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
-import static org.smartregister.chw.hf.utils.Constants.JsonForm.getHeiNumberRegistration;
-import static org.smartregister.client.utils.constants.JsonFormConstants.FIELDS;
-import static org.smartregister.client.utils.constants.JsonFormConstants.STEP1;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
@@ -19,9 +11,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 
 import com.vijay.jsonwizard.utils.FormUtils;
 
@@ -40,7 +29,9 @@ import org.smartregister.chw.hf.interactor.HeiProfileInteractor;
 import org.smartregister.chw.hf.presenter.HeiProfilePresenter;
 import org.smartregister.chw.hf.rule.HfHeiFollowupRule;
 import org.smartregister.chw.hf.utils.HeiVisitUtils;
+import org.smartregister.chw.pmtct.PmtctLibrary;
 import org.smartregister.chw.pmtct.activity.BasePmtctProfileActivity;
+import org.smartregister.chw.pmtct.domain.Visit;
 import org.smartregister.chw.pmtct.util.Constants;
 import org.smartregister.chw.pmtct.util.PmtctUtil;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
@@ -54,7 +45,19 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.annotation.Nullable;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import timber.log.Timber;
+
+import static com.vijay.jsonwizard.constants.JsonFormConstants.VALUE;
+import static org.smartregister.chw.core.utils.Utils.getCommonPersonObjectClient;
+import static org.smartregister.chw.core.utils.Utils.getDuration;
+import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
+import static org.smartregister.chw.hf.utils.Constants.JsonForm.getHeiNumberRegistration;
+import static org.smartregister.client.utils.constants.JsonFormConstants.FIELDS;
+import static org.smartregister.client.utils.constants.JsonFormConstants.STEP1;
 
 public class HeiProfileActivity extends BasePmtctProfileActivity {
 
@@ -86,6 +89,7 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
     protected void onResumption() {
         super.onResumption();
         setupViews();
+        showHeiNumberOrRegistration(baseEntityId);
     }
 
     @Override
@@ -112,7 +116,7 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
         TextView toolbarTitle = findViewById(R.id.toolbar_title);
         toolbarTitle.setText(R.string.hei_toolbar_title);
 
-        showHeiNumberRegistration(baseEntityId);
+        showHeiNumberOrRegistration(baseEntityId);
 
         textViewRecordPmtct.setText(R.string.record_followup);
         textViewRecordPmtct.setOnClickListener(this);
@@ -142,14 +146,27 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
             textViewRecordPmtct.setVisibility(View.GONE);
             visitDone.setVisibility(View.VISIBLE);
         }
+
+        Visit lastFollowupVisit = getVisit(org.smartregister.chw.hf.utils.Constants.Events.HEI_FOLLOWUP);
+        if (lastFollowupVisit != null && !lastFollowupVisit.getProcessed()) {
+            showVisitInProgress();
+            setUpEditButton();
+        }
     }
 
-    private void showHeiNumberRegistration(String baseEntityId) {
+    private void showHeiNumberOrRegistration(String baseEntityId) {
+        textViewRecordHeiNumber = findViewById(R.id.textview_record_eac);
         if (!HeiDao.hasHeiNumber(baseEntityId)) {
-            textViewRecordHeiNumber = findViewById(R.id.textview_record_eac);
             textViewRecordHeiNumber.setVisibility(View.VISIBLE);
-            textViewRecordHeiNumber.setText("Record Hei Number");
+            textViewRecordHeiNumber.setText(getString(R.string.record_hei_number));
             textViewRecordHeiNumber.setOnClickListener(this);
+        }else{
+            String heiNumber = HeiDao.getHeiNumber(baseEntityId);
+            textViewRecordHeiNumber.setVisibility(View.GONE);
+           if(heiNumber!= null){
+               textViewClientRegNumber.setVisibility(View.VISIBLE);
+               textViewClientRegNumber.setText(this.getString(R.string.hei_number,heiNumber));
+           }
         }
 
     }
@@ -172,6 +189,11 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
         }
     }
 
+    public @Nullable
+    Visit getVisit(String eventType) {
+        return PmtctLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), eventType);
+    }
+
     private boolean shouldShowRecordFollowupVisitButton() {
         return HeiDao.isEligibleForDnaCprHivTest(memberObject.getBaseEntityId()) ||
                 HeiDao.isEligibleForAntiBodiesHivTest(memberObject.getBaseEntityId()) ||
@@ -188,6 +210,22 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
             riskLabel.setBackgroundResource(backgroundResource);
             riskLabel.setTextColor(context().getColorResource(textColorResource));
         }
+    }
+
+    private void showVisitInProgress() {
+        recordVisits.setVisibility(View.GONE);
+        textViewRecordPmtct.setVisibility(View.GONE);
+        textViewVisitDoneEdit.setVisibility(View.VISIBLE);
+        visitDone.setVisibility(View.VISIBLE);
+        textViewVisitDone.setText(this.getString(R.string.visit_in_progress, org.smartregister.chw.hf.utils.Constants.Visits.HEI_VISIT));
+        textViewVisitDone.setTextColor(getResources().getColor(R.color.black_text_color));
+        imageViewCross.setImageResource(org.smartregister.chw.core.R.drawable.activityrow_notvisited);
+    }
+
+    private void setUpEditButton() {
+        textViewVisitDoneEdit.setOnClickListener(v -> {
+            HeiFollowupVisitActivity.startHeiFollowUpActivity(this, baseEntityId, true);
+        });
     }
 
     @SuppressLint("DefaultLocale")

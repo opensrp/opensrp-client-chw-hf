@@ -185,5 +185,7 @@
     <string name="clinical_staging_of_hiv">Clinical Staging of HIV</string>
     <string name="arv_prescription_azt_and_nvp">ARV Prescription (AZT + 3C and NVP)</string>
     <string name="arv_prescription_nvp">ARV Prescription (NVP)</string>
+    <string name="hei_number">Hei Number: %s</string>
+    <string name="record_hei_number">Record Hei Number</string>
 
 </resources>
