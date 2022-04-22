@@ -305,6 +305,9 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
             partnerTestingBottomView.setVisibility(View.VISIBLE);
         }
 
+        this.findViewById(R.id.family_anc_head).setVisibility(View.GONE);
+        this.findViewById(R.id.primary_anc_caregiver).setVisibility(View.GONE);
+
     }
 
     private void setHivPositive(Visit firstVisit, Visit lastVisit) throws JSONException {
