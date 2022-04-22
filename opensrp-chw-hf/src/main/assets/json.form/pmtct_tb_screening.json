@@ -274,7 +274,7 @@
         "openmrs_entity_id": "",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "toaster_type": "problem",
+        "toaster_type": "info",
         "relevance": {
           "rules-engine": {
             "ex-rules": {

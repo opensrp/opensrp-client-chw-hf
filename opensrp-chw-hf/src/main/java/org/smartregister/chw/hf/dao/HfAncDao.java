@@ -228,6 +228,19 @@ public class HfAncDao extends AbstractDao {
         return res.get(0).equalsIgnoreCase("positive") || res.get(0).equalsIgnoreCase("negative");
     }
 
+    public static boolean isDewormingGiven(String baseEntityId) {
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "deworming");
+        String sql = String.format(
+                "SELECT deworming FROM %s WHERE entity_id = '%s' " +
+                        "AND is_closed = 0 AND deworming is not null",
+                "ec_anc_followup",
+                baseEntityId
+        );
+
+        List<String> res = readData(sql, dataMap);
+        return res != null && res.size() > 0 && res.get(0) != null;
+    }
+
     public static String malariaDosageIpt1(String baseEntityId) {
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "malaria_preventive_therapy_ipt1");
 

@@ -54,7 +54,7 @@
       {
         "key": "pharmacy",
         "type": "label",
-        "text": "Provider prescribe and issue supplements and prophylactic medications",
+        "text": "Prescribe and issue supplements and prophylactic medications",
         "text_color": "#000000",
         "openmrs_entity": "",
         "openmrs_entity_id": "",
@@ -62,15 +62,12 @@
       },
       {
         "key": "iron_folate_supplements",
-        "type": "check_box",
+        "type": "native_radio",
         "label": "Iron and Folate Supplement",
         "combine_checkbox_option_values": "true",
         "openmrs_entity_id": "iron_folate_supplements",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "exclusive": [
-          "FeFo"
-        ],
         "options": [
           {
             "text": "FeFo",
@@ -79,7 +76,13 @@
             "openmrs_entity_id": "FeFo"
           },
           {
-            "text": "FeFo medication not given",
+            "text": "Folic Acid",
+            "key": "folic",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "folic"
+          },
+          {
+            "text": "Medication not given",
             "key": "medication_not_given",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "medication_not_given"
@@ -91,12 +94,64 @@
         }
       },
       {
-        "key": "reason_for_not_giving_fefo_medication",
+        "key": "reason_for_giving_folic_acid",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "reason_for_not_giving_fefo_medication",
+        "openmrs_entity_id": "reason_for_giving_folic_acid",
         "type": "spinner",
-        "hint": "Reason as to why FeFo medication was not given",
+        "hint": "Reason as to why Folic Acid was given instead of FEFO",
+        "values": [
+          "Out of stock",
+          "Sickle Cell",
+          "Other (Specify)"
+        ],
+        "keys": [
+          "out_of_stock",
+          "sickle_cell",
+          "other"
+        ],
+        "openmrs_choice_ids": {
+          "out_of_stock": "out_of_stock",
+          "sickle_cell": "sickle_cell",
+          "other": "other"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select a reason"
+        },
+        "relevance": {
+          "step1:iron_folate_supplements": {
+            "type": "string",
+            "ex": "equalTo(., \"folic\")"
+          }
+        }
+      },
+      {
+        "key": "other_reason_for_giving_folic_acid",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reason_for_giving_folic_acid",
+        "type": "edit_text",
+        "hint": "Specify other reasons for giving Folic Acid medication",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the reason"
+        },
+        "relevance": {
+          "step1:reason_for_giving_folic_acid": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
+          }
+        }
+      },
+      {
+        "key": "reason_for_not_giving_iron_folate_supplements",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_giving_iron_folate_supplements",
+        "type": "spinner",
+        "hint": "Reason as to why Iron and Folate Supplement was not given",
         "values": [
           "Out of stock",
           "The client was did not agree to take the medication",
@@ -110,7 +165,7 @@
           "other"
         ],
         "openmrs_choice_ids": {
-          "out_of_stock":  "out_of_stock",
+          "out_of_stock": "out_of_stock",
           "client_did_not_agree_medication": "client_did_not_agree_medication",
           "the_client_refused_to_be_tested": "the_client_refused_to_be_tested",
           "client_is_allergic_to_medication": "client_is_allergic_to_medication",
@@ -122,13 +177,8 @@
         },
         "relevance": {
           "step1:iron_folate_supplements": {
-            "ex-checkbox": [
-              {
-                "or": [
-                  "medication_not_given"
-                ]
-              }
-            ]
+            "type": "string",
+            "ex": "equalTo(., \"medication_not_given\")"
           }
         }
       },
@@ -145,7 +195,7 @@
           "err": "Please enter the reason"
         },
         "relevance": {
-          "step1:reason_for_not_giving_fefo_medication": {
+          "step1:reason_for_not_giving_iron_folate_supplements": {
             "type": "string",
             "ex": "equalTo(., \"other\")"
           }
@@ -325,7 +375,7 @@
           "other"
         ],
         "openmrs_choice_ids": {
-          "out_of_stock":  "out_of_stock",
+          "out_of_stock": "out_of_stock",
           "client_did_not_agree_medication": "client_did_not_agree_medication",
           "the_client_refused_to_be_tested": "the_client_refused_to_be_tested",
           "client_is_allergic_to_medication": "client_is_allergic_to_medication",
@@ -398,6 +448,13 @@
         "v_required": {
           "value": "true",
           "err": "Please select one option"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_pharmacy_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -420,7 +477,7 @@
           "other"
         ],
         "openmrs_choice_ids": {
-          "out_of_stock":  "out_of_stock",
+          "out_of_stock": "out_of_stock",
           "client_did_not_agree_medication": "client_did_not_agree_medication",
           "the_client_refused_to_be_tested": "the_client_refused_to_be_tested",
           "client_is_allergic_to_medication": "client_is_allergic_to_medication",
