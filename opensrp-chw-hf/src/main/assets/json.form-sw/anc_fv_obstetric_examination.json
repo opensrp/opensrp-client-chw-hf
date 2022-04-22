@@ -596,25 +596,16 @@
         "openmrs_entity_parent": "",
         "hint": "Mkao wa mtoto tumboni",
         "values": [
-          "Kichwa chini, anaangalia chini",
-          "Kichwa chini, anaangalia mbele ",
           "Miguu chini",
-          "Kichwa chini, kidevu kinatangulia mbele",
-          "Nyingine"
+          "Kichwa chini"
         ],
         "keys": [
-          "occipital_posterior",
-          "eye_brow",
           "breech",
-          "chin",
-          "other"
+          "cephalic"
         ],
         "openmrs_choice_ids": {
-          "occipital_posterior": "occipital_posterior",
-          "eye_brow": "eye_brow",
           "breech": "breech",
-          "chin": "chin",
-          "other": "other"
+          "cephalic": "cephalic"
         },
         "relevance": {
           "rules-engine": {
