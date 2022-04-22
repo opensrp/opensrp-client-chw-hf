@@ -55,13 +55,6 @@ condition: "(step2_dob != '' && helper.formatDate(step2_dob,'y') >= 14) || (step
 actions:
   - "isRelevant = true"
 ---
-name: step2_preg_1yr
-description: pregnance 1yr relevance
-priority: 1
-condition: "step2_wra == 1"
-actions:
-  - "isRelevant = true"
----
 name: step2_insurance_provider_other
 description: insurance_provider_other relevance
 priority: 1
@@ -80,26 +73,5 @@ name: step2_type_of_disability
 description: type_of_disability relevance
 priority: 1
 condition: "step2_disabilities.equals('Yes')"
-actions:
-  - "isRelevant = true"
----
-name: step2_preg_1yr
-description: pregnance 1yr relevance
-priority: 1
-condition: "step2_wra == 1"
-actions:
-  - "isRelevant = true"
----
-name: step2_reasons_for_registration_male_15
-description: Show up if client is male and age 15 above
-priority: 1
-condition: "((step2_dob != '' && helper.formatDate(step2_dob,'y') >= 15) || (step2_age != '' && step2_age >= 15)) && step2_sex.equals('Male') "
-actions:
-  - "isRelevant = true"
----
-name: step2_reasons_for_registration_under_15
-description: Show up if client is below 15
-priority: 1
-condition: "((step2_dob != '' && helper.formatDate(step2_dob,'y') < 15) || (step2_age != '' && step2_age < 15))"
 actions:
   - "isRelevant = true"
