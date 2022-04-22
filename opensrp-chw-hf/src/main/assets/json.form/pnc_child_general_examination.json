@@ -79,7 +79,7 @@
       {
         "key": "prompt_for_child_activeness",
         "type": "toaster_notes",
-        "text": "Certify if it is an early neonatal death",
+        "text": "Refer for further management",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -131,8 +131,8 @@
           "err": "The weight must be equal or greater than 0 (KG)"
         },
         "v_max": {
-          "value": "30",
-          "err": "The weight must be equal or less than 30 (KG)"
+          "value": "7",
+          "err": "The weight must be equal or less than 7 (KG)"
         },
         "v_required": {
           "value": true,
@@ -506,13 +506,6 @@
             "value": "false"
           },
           {
-            "key": "chk_abnormality",
-            "text": "Any Abnormality",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_abnormality",
-            "value": "false"
-          },
-          {
             "key": "chk_descended",
             "text": "Destended",
             "openmrs_entity": "concept",
@@ -532,6 +525,13 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_no_abnormalities",
             "value": "false"
+          },
+          {
+            "key": "chk_other",
+            "text": "Others (Specify)",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_other",
+            "value": "false"
           }
         ],
         "v_required": {
@@ -542,7 +542,7 @@
       {
         "key": "prompt_for_umbilical_cord_smelling_bad",
         "type": "toaster_notes",
-        "text": "Manage the umbilical cord sepsis using strong antibiotics, care the cord using the recommended antiseptics, assess if the child has jaundice and manage according to standard guidelines",
+        "text": "Manage according to standard guideline/Refer for further management",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -552,26 +552,7 @@
             "ex-checkbox": [
               {
                 "or": [
-                  "chk_smell_bad"
-                ]
-              }
-            ]
-          }
-        }
-      },
-      {
-        "key": "prompt_for_umbilical_cord_infection",
-        "type": "toaster_notes",
-        "text": "Manage the umbilical cord sepsis using strong antibiotics, care the cord using the recommended antiseptics, assess if the child has jaundice and manage according to standard guidelines",
-        "openmrs_entity_id": "",
-        "openmrs_entity": "",
-        "openmrs_entity_parent": "",
-        "toaster_type": "problem",
-        "relevance": {
-          "step1:umbilical_cord": {
-            "ex-checkbox": [
-              {
-                "or": [
+                  "chk_smell_bad",
                   "chk_infection"
                 ]
               }
@@ -580,19 +561,22 @@
         }
       },
       {
-        "key": "prompt_for_umbilical_cord_abnormality",
-        "type": "toaster_notes",
-        "text": "Manage the observed abnormality according to standard guidelines",
-        "openmrs_entity_id": "",
-        "openmrs_entity": "",
+        "key": "umbilical_cord_other_assessment",
         "openmrs_entity_parent": "",
-        "toaster_type": "problem",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "umbilical_cord_other_assessment",
+        "type": "edit_text",
+        "hint": "Other Assessment for Umbilical Cord",
+        "v_required": {
+          "value": "true",
+          "err": "Please specify the other assessment for umbilical cord"
+        },
         "relevance": {
           "step1:umbilical_cord": {
             "ex-checkbox": [
               {
                 "or": [
-                  "chk_abnormality"
+                  "chk_other"
                 ]
               }
             ]
