@@ -919,6 +919,36 @@
             }
           },
           {
+            "key": "reason_for_not_providing_bcg_vacc",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "reason_for_not_providing_bcg_vacc",
+            "type": "spinner",
+            "hint": "Reason as to why the BCG vaccination was not given",
+            "values": [
+              "Out of stock vaccine",
+              "Home delivery"
+            ],
+            "keys": [
+              "out_of_stock_vaccine",
+              "home_delivery"
+            ],
+            "openmrs_choice_ids": {
+              "out_of_stock_vaccine": "out_of_stock_vaccine",
+              "home_delivery": "home_delivery"
+            },
+            "v_required": {
+              "value": "true",
+              "err": "Please select a reason"
+            },
+            "relevance": {
+              "step1:child_bcg_vaccination": {
+                "type": "string",
+                "ex": "equalTo(., \"no\")"
+              }
+            }
+          },
+          {
             "key": "child_opv0_vaccination",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
@@ -1262,6 +1292,36 @@
             "openmrs_entity": "",
             "openmrs_entity_parent": "",
             "toaster_type": "problem",
+            "relevance": {
+              "step1:child_bcg_vaccination": {
+                "type": "string",
+                "ex": "equalTo(., \"no\")"
+              }
+            }
+          },
+          {
+            "key": "reason_for_not_providing_bcg_vacc",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "reason_for_not_providing_bcg_vacc",
+            "type": "spinner",
+            "hint": "Reason as to why the BCG vaccination was not given",
+            "values": [
+              "Out of stock vaccine",
+              "Home delivery"
+            ],
+            "keys": [
+              "out_of_stock_vaccine",
+              "home_delivery"
+            ],
+            "openmrs_choice_ids": {
+              "out_of_stock_vaccine": "out_of_stock_vaccine",
+              "home_delivery": "home_delivery"
+            },
+            "v_required": {
+              "value": "true",
+              "err": "Please select a reason"
+            },
             "relevance": {
               "step1:child_bcg_vaccination": {
                 "type": "string",
