@@ -53,7 +53,7 @@
       {
         "key": "hvl_result",
         "type": "edit_text",
-        "hint": "HVL Suppression",
+        "hint": "HVL Results",
         "openmrs_entity_id": "hvl_result",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -64,6 +64,24 @@
         "v_required": {
           "value": true,
           "err": "Please enter the HVL suppression value"
+        }
+      },
+      {
+        "key": "hvl_results_comment",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hvl_results_comment",
+        "type": "edit_text",
+        "hint": "Remarks/Comments",
+        "v_required": {
+          "value": "false",
+          "err": "Please enter the your remarks/comments"
+        },
+        "relevance": {
+          "step1:hvl_result": {
+            "type": "string",
+            "ex": "equalTo(., \"11\")"
+          }
         }
       },
       {

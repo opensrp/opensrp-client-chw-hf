@@ -48,12 +48,12 @@
   },
   "global": {},
   "step1": {
-    "title": "HVL Suppression",
+    "title": "HVL Results",
     "fields": [
       {
         "key": "hvl_result",
         "type": "edit_text",
-        "hint": "Kufubaa kwa Virusi",
+        "hint": "Majibu ya HVL",
         "openmrs_entity_id": "hvl_result",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -64,6 +64,24 @@
         "v_required": {
           "value": true,
           "err": "Tafadhari Ingiza kiasi cha kufubaa kwa Virusi"
+        }
+      },
+      {
+        "key": "hvl_results_comment",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hvl_results_comment",
+        "type": "edit_text",
+        "hint": "Remarks/Comments",
+        "v_required": {
+          "value": "false",
+          "err": "Please enter the your remarks/comments"
+        },
+        "relevance": {
+          "step1:hvl_result": {
+            "type": "string",
+            "ex": "equalTo(., \"11\")"
+          }
         }
       },
       {
