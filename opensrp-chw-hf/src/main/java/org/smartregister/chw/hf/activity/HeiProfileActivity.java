@@ -89,6 +89,7 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
     protected void onResumption() {
         super.onResumption();
         setupViews();
+        showHeiNumberOrRegistration(baseEntityId);
     }
 
     @Override
@@ -115,7 +116,7 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
         TextView toolbarTitle = findViewById(R.id.toolbar_title);
         toolbarTitle.setText(R.string.hei_toolbar_title);
 
-        showHeiNumberRegistration(baseEntityId);
+        showHeiNumberOrRegistration(baseEntityId);
 
         textViewRecordPmtct.setText(R.string.record_followup);
         textViewRecordPmtct.setOnClickListener(this);
@@ -153,12 +154,19 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
         }
     }
 
-    private void showHeiNumberRegistration(String baseEntityId) {
+    private void showHeiNumberOrRegistration(String baseEntityId) {
+        textViewRecordHeiNumber = findViewById(R.id.textview_record_eac);
         if (!HeiDao.hasHeiNumber(baseEntityId)) {
-            textViewRecordHeiNumber = findViewById(R.id.textview_record_eac);
             textViewRecordHeiNumber.setVisibility(View.VISIBLE);
-            textViewRecordHeiNumber.setText("Record Hei Number");
+            textViewRecordHeiNumber.setText(getString(R.string.record_hei_number));
             textViewRecordHeiNumber.setOnClickListener(this);
+        }else{
+            String heiNumber = HeiDao.getHeiNumber(baseEntityId);
+            textViewRecordHeiNumber.setVisibility(View.GONE);
+           if(heiNumber!= null){
+               textViewClientRegNumber.setVisibility(View.VISIBLE);
+               textViewClientRegNumber.setText(this.getString(R.string.hei_number,heiNumber));
+           }
         }
 
     }
