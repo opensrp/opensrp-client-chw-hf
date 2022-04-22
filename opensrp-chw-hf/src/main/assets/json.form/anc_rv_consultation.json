@@ -350,20 +350,17 @@
         "values": [
           "Transverse",
           "Oblique",
-          "Longitudinal",
-          "Other"
+          "Longitudinal"
         ],
         "keys": [
           "transverse",
           "oblique",
-          "longitudinal",
-          "other"
+          "longitudinal"
         ],
         "openmrs_choice_ids": {
           "transverse": "transverse",
           "oblique": "oblique",
-          "longitudinal": "longitudinal",
-          "other": "other"
+          "longitudinal": "longitudinal"
         },
         "relevance": {
           "rules-engine": {

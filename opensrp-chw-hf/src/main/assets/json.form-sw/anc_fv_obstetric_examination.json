@@ -529,20 +529,17 @@
         "values": [
           "Mlalo wa usawa",
           "mlalo wa kiupande",
-          "Mlalo wa wima",
-          "Nyingine"
+          "Mlalo wa wima"
         ],
         "keys": [
           "transverse",
           "oblique",
-          "longitudinal",
-          "other"
+          "longitudinal"
         ],
         "openmrs_choice_ids": {
           "transverse": "transverse",
           "oblique": "oblique",
-          "longitudinal": "longitudinal",
-          "other": "other"
+          "longitudinal": "longitudinal"
         },
         "relevance": {
           "rules-engine": {
