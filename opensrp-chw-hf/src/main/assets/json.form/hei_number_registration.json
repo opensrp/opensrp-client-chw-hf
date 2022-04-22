@@ -55,17 +55,17 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "hei_number",
         "type": "mask_edit_text",
-        "mask": "##-##-####-######",
+        "mask": "##-##-####-######-C##",
         "mask_hint": "12345678912345",
         "allowed_chars": "0123456789",
         "hint": "HEI Number",
         "edit_type": "number",
         "v_regex": {
-          "value": "(\\d{2}-\\d{2}-\\d{4}-\\d{6})?",
-          "err": "HEI number should be of the format (XX-XX-XXXX-XXXXXX)"
+          "value": "(\\d{2}-\\d{2}-\\d{4}-\\d{6}-C\\d{2})?",
+          "err": "HEI number should be of the format (XX-XX-XXXX-XXXXXX-CXX)"
         },
         "v_max_length": {
-          "value": "17",
+          "value": "21",
           "is_fixed_size": "true",
           "err":"Please enter a valid HEI Number"
         },

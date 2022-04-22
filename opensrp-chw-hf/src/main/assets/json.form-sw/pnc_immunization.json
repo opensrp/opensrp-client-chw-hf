@@ -84,6 +84,21 @@
         }
       },
       {
+        "key": "prompt_for_tetanus_vaccination",
+        "type": "toaster_notes",
+        "text": "Mpatie kulingana na ratiba",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:tetanus_vaccination": {
+            "type": "string",
+            "ex": "equalTo(., \"no\")"
+          }
+        }
+      },
+      {
         "key": "hepatitis_b_vaccination",
         "type": "native_radio",
         "label": "Je Mteja huyu amechanjwa Hepatitis B?",
@@ -113,6 +128,21 @@
             "ex-rules": {
               "rules-file": "pnc_immunization_relevance.yml"
             }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_hepatitis_b_vaccination",
+        "type": "toaster_notes",
+        "text": "Mteja atapaswa kupewa chanjo ya Hepatitis B",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:hepatitis_b_vaccination": {
+            "type": "string",
+            "ex": "equalTo(., \"no\")"
           }
         }
       }
