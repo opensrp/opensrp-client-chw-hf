@@ -154,7 +154,7 @@
         "hint": "Reason as to why Iron and Folate Supplement was not given",
         "values": [
           "Out of stock",
-          "The client was did not agree to take the medication",
+          "The client did not agree to take the medication",
           "The client is allergic to medication",
           "Other (Specify)"
         ],
@@ -364,7 +364,7 @@
         "hint": "Reason as to why the Malaria medication was not given",
         "values": [
           "Out of stock",
-          "The client was did not agree to take the medication",
+          "The client did not agree to take the medication",
           "The client is allergic to medication",
           "Other (Specify)"
         ],
@@ -466,7 +466,7 @@
         "hint": "Reason as to why the Deworming medication was not given",
         "values": [
           "Out of stock",
-          "The client was did not agree to take the medication",
+          "The client did not agree to take the medication",
           "The client is allergic to medication",
           "Other (Specify)"
         ],

@@ -84,7 +84,7 @@
         "hint": "Reason as to why Iron and Folic acid was not given",
         "values": [
           "Out of stock",
-          "The client was did not agree to take the medication",
+          "The client did not agree to take the medication",
           "The client is allergic to medication",
           "Other (Specify)"
         ],
@@ -166,7 +166,7 @@
         "hint": "Reason as to why Vitamin A was not given",
         "values": [
           "Out of stock",
-          "The client was did not agree to take the medication",
+          "The client did not agree to take the medication",
           "The client is allergic to medication",
           "Other (Specify)"
         ],
