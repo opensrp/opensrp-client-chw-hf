@@ -172,7 +172,7 @@
           },
           {
             "key": "negative",
-            "text": "Hazi",
+            "text": "Hasi",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "negative"
