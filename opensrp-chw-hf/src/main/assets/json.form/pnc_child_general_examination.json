@@ -79,7 +79,7 @@
       {
         "key": "prompt_for_child_activeness",
         "type": "toaster_notes",
-        "text": "Certify if it is an early neonatal death",
+        "text": "Refer for further management",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -131,8 +131,8 @@
           "err": "The weight must be equal or greater than 0 (KG)"
         },
         "v_max": {
-          "value": "30",
-          "err": "The weight must be equal or less than 30 (KG)"
+          "value": "7",
+          "err": "The weight must be equal or less than 7 (KG)"
         },
         "v_required": {
           "value": true,
