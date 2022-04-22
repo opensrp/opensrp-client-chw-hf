@@ -221,6 +221,13 @@
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "test_not_conducted"
+          },
+          {
+            "key": "fbg",
+            "text": "Fasting Blood Glucose Test",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "fbg"
           }
         ],
         "v_required": {

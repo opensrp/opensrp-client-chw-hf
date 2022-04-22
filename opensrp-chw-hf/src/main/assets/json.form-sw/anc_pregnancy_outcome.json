@@ -876,6 +876,36 @@
             }
           },
           {
+            "key": "reason_for_not_breast_feeding_within_one_hour",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "reason_for_not_breast_feeding_within_one_hour",
+            "type": "spinner",
+            "hint": "Sababu za kwa nini mtoto hakunyonyeshwa mapema (Saa 1)",
+            "values": [
+              "Mama alifariki",
+              "Nyingine (Taja)"
+            ],
+            "keys": [
+              "mother_died",
+              "other"
+            ],
+            "openmrs_choice_ids": {
+              "mother_died": "mother_died",
+              "Other": "other"
+            },
+            "v_required": {
+              "value": "true",
+              "err": "Tafadhali chagua sababu"
+            },
+            "relevance": {
+              "step1:early_bf_1hr": {
+                "type": "string",
+                "ex": "equalTo(., \"no\")"
+              }
+            }
+          },
+          {
             "key": "child_bcg_vaccination",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",

@@ -598,6 +598,13 @@
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "gtt"
+          },
+          {
+            "key": "fbg",
+            "text": "Fasting Blood Glucose Test",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "fbg"
           }
         ],
         "v_required": {
