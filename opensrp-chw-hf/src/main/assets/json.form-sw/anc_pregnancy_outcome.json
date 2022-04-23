@@ -882,12 +882,12 @@
               "Hapana"
             ],
             "keys": [
-              "Yes",
-              "No"
+              "yes",
+              "no"
             ],
             "openmrs_choice_ids": {
-              "Yes": "Yes",
-              "No": "No"
+              "Yes": "yes",
+              "No": "no"
             }
           },
           {
@@ -925,7 +925,8 @@
                 "ex": "equalTo(., \"no\")"
               }
             }
-          },{
+          },
+          {
             "key": "other_reason_for_not_breast_feeding_within_one_hour",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
@@ -1332,12 +1333,67 @@
               "Hapana"
             ],
             "keys": [
-              "Yes",
-              "No"
+              "yes",
+              "no"
             ],
             "openmrs_choice_ids": {
-              "Yes": "Yes",
-              "No": "No"
+              "Yes": "yes",
+              "No": "no"
+            }
+          },
+          {
+            "key": "reason_for_not_breast_feeding_within_one_hour",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "reason_for_not_breast_feeding_within_one_hour",
+            "type": "spinner",
+            "hint": "Sababu za kwa nini mtoto hakunyonyeshwa mapema (Saa 1)",
+            "values": [
+              "Mama alifariki",
+              "Mama hakuwa anatoa maziwa",
+              "Mama alichagua kunywesha maziwa mbadala (RF)",
+              "Nyingine (Taja)"
+            ],
+            "keys": [
+              "mother_died",
+              "no_milk_flow",
+              "replacement_feeding",
+              "other"
+            ],
+            "openmrs_choice_ids": {
+              "mother_died": "mother_died",
+              "no_milk_flow": "no_milk_flow",
+              "replacement_feeding": "replacement_feeding",
+              "Other": "other"
+            },
+            "v_required": {
+              "value": "true",
+              "err": "Tafadhali chagua sababu"
+            },
+            "relevance": {
+              "step1:early_bf_1hr": {
+                "type": "string",
+                "ex": "equalTo(., \"no\")"
+              }
+            }
+          },
+          {
+            "key": "other_reason_for_not_breast_feeding_within_one_hour",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other_reason_for_not_breast_feeding_within_one_hour",
+            "type": "edit_text",
+            "hint": "Sababu nyingine za kutokumnyonyesha mtoto",
+            "edit_type": "name",
+            "v_required": {
+              "value": "true",
+              "err": "Tafadhali taja sababu"
+            },
+            "relevance": {
+              "step1:reason_for_not_breast_feeding_within_one_hour": {
+                "type": "string",
+                "ex": "equalTo(., \"other\")"
+              }
             }
           },
           {
