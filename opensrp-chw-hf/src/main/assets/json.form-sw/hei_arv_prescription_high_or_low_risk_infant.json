@@ -113,6 +113,13 @@
             "openmrs_entity_id": "medication_expired"
           },
           {
+            "key": "home_delivery",
+            "text": "Amejifungua akiwa nyumbani",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "home_delivery"
+          },
+          {
             "key": "other",
             "text": "Nyingine (Bainisha)",
             "value": false,
