@@ -33,6 +33,7 @@ public class HfAllClientsMemberPresenter extends CoreAllClientsMemberPresenter {
 
             AllClientsMemberProfileActivity currentView = (AllClientsMemberProfileActivity) getView();
             currentView.setProfileName(MessageFormat.format("{0}, {1}", getName(getName(firstName, middleName), lastName), age));
+            currentView.setFamilyName(lastName);
             String gestationAge = CoreChwApplication.ancRegisterRepository().getGaIfAncWoman(client.getCaseId());
             if (gestationAge != null) {
                 currentView.setProfileDetailOne(NCUtils.gestationAgeString(gestationAge, currentView.getContext(), true));
