@@ -365,13 +365,15 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
         }
 
 
-        BaseAncHomeVisitAction vaccinationAction = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_first_visit_tt_vaccination))
-                .withOptional(true)
-                .withDetails(details)
-                .withFormName(Constants.JsonForm.AncFirstVisit.getTtVaccination())
-                .withHelper(new AncTtVaccinationAction(memberObject))
-                .build();
-        actionList.put(context.getString(R.string.anc_first_visit_tt_vaccination), vaccinationAction);
+        if(HfAncDao.isEligibleForTtVaccination(memberObject.getBaseEntityId())) {
+            BaseAncHomeVisitAction vaccinationAction = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_first_visit_tt_vaccination))
+                    .withOptional(true)
+                    .withDetails(details)
+                    .withFormName(Constants.JsonForm.AncFirstVisit.getTtVaccination())
+                    .withHelper(new AncTtVaccinationAction(memberObject))
+                    .build();
+            actionList.put(context.getString(R.string.anc_first_visit_tt_vaccination), vaccinationAction);
+        }
 
         BaseAncHomeVisitAction counsellingAction = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_first_and_recurring_visit_counselling))
                 .withOptional(true)
