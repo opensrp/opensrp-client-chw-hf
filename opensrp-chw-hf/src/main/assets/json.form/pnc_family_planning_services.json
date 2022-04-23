@@ -102,6 +102,32 @@
         }
       },
       {
+        "key": "using_family_planning_method",
+        "type": "native_radio",
+        "label": "Is the client using Family Planning Method??",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "using_family_planning_method",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
+      },
+      {
         "key": "method_provided",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -122,10 +148,10 @@
             "openmrs_entity_id": "chk_pills"
           },
           {
-            "key": "chk_injections",
-            "text": "Injections",
+            "key": "chk_injectable",
+            "text": "Injectable (After 42 days)",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_injections"
+            "openmrs_entity_id": "chk_injectable"
           },
           {
             "key": "chk_jadelle",
@@ -135,13 +161,13 @@
           },
           {
             "key": "chk_implants",
-            "text": "Implants",
+            "text": "Implanon/NXT",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_implants"
           },
           {
             "key": "chk_iucd",
-            "text": "IUCD",
+            "text": "PPIUCD (Within 48 hours after delivery or after 42 days of PNC)",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_iucd"
           },
@@ -167,6 +193,12 @@
         "v_required": {
           "value": "true",
           "err": "Please answer this question"
+        },
+        "relevance": {
+          "step1:using_family_planning_method": {
+            "type": "string",
+            "ex": "equalTo(.,\"no\")"
+          }
         }
       }
     ]

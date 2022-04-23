@@ -409,14 +409,14 @@
         "options": [
           {
             "key": "test_conducted",
-            "text": "Kipimo cha kiwango cha dam (Hb) kimefanyika",
+            "text": "Kipimo cha kiwango cha damu (Hb) kimefanyika",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "test_conducted",
             "openmrs_entity_parent": ""
           },
           {
             "key": "test_not_conducted",
-            "text": "Kipimo cha kiwango cha dam (Hb) hakijafanyika",
+            "text": "Kipimo cha kiwango cha damu (Hb) hakijafanyika",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "test_not_conducted"
@@ -1376,7 +1376,7 @@
         "type": "spinner",
         "hint": "Sababu kwa nini matibabu hayakutolewa",
         "values": [
-          "Bidhaa zimeisha",
+          "Dawa zimeisha",
           "Mteja amekataa kuchukua dawa",
           "Anamzio na dawa (Allegy)",
           "Nyingine"
