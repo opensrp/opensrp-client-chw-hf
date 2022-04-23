@@ -334,9 +334,10 @@
         "openmrs_entity_parent": "",
         "toaster_type": "problem",
         "relevance": {
-          "step1:fetal_heart_rate": {
-            "type": "numeric",
-            "ex": "greaterThan(.,\"160\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_obstetric_examination_relevance.yml"
+            }
           }
         }
       },
