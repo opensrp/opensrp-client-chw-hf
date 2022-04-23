@@ -25,6 +25,7 @@ import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.actionhelper.AncBaselineInvestigationAction;
 import org.smartregister.chw.hf.actionhelper.AncBirthReviewAction;
 import org.smartregister.chw.hf.actionhelper.AncCounsellingAction;
+import org.smartregister.chw.hf.actionhelper.AncMalariaInvestigationAction;
 import org.smartregister.chw.hf.actionhelper.AncObstetricExaminationAction;
 import org.smartregister.chw.hf.actionhelper.AncPharmacyAction;
 import org.smartregister.chw.hf.actionhelper.AncTbScreeningAction;
@@ -338,7 +339,6 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
         try {
             malariaInvestigationForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncFirstVisit.getMalariaInvestigation());
             malariaInvestigationForm.getJSONObject("global").put("gestational_age", memberObject.getGestationAge());
-            malariaInvestigationForm.getJSONObject("global").put("llin_provided", false);
             malariaInvestigationForm.getJSONObject("global").put("malaria_preventive_therapy_ipt1", HfAncDao.malariaDosageIpt1(memberObject.getBaseEntityId()));
             malariaInvestigationForm.getJSONObject("global").put("malaria_preventive_therapy_ipt2", HfAncDao.malariaDosageIpt2(memberObject.getBaseEntityId()));
             malariaInvestigationForm.getJSONObject("global").put("malaria_preventive_therapy_ipt3", HfAncDao.malariaDosageIpt3(memberObject.getBaseEntityId()));
@@ -356,7 +356,7 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
                     .withDetails(details)
                     .withJsonPayload(malariaInvestigationForm.toString())
                     .withFormName(Constants.JsonForm.AncFirstVisit.getMalariaInvestigation())
-                    .withHelper(new AncPharmacyAction(memberObject))
+                    .withHelper(new AncMalariaInvestigationAction(memberObject))
                     .build();
             actionList.put(context.getString(R.string.anc_visit_malaria_investigation), malariaInvestigation);
         } catch (BaseAncHomeVisitAction.ValidationException e) {

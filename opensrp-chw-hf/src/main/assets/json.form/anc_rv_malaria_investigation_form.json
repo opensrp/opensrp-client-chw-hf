@@ -211,7 +211,7 @@
           }
         ],
         "relevance": {
-          "step1:malaria_symptom_screening": {
+          "step1:malaria_symptoms_screening": {
             "ex-checkbox": [
               {
                 "or": [
@@ -247,6 +247,21 @@
           "step1:mRDT_for_malaria": {
             "type": "string",
             "ex": "equalTo(., \"positive\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_further_management",
+        "type": "toaster_notes",
+        "text": "Refer  for further management",
+        "openmrs_entity_id": "prompt_for_mRDT",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:mRDT_for_malaria": {
+            "type": "string",
+            "ex": "equalTo(., \"negative\")"
           }
         }
       },
@@ -545,6 +560,13 @@
         "v_required": {
           "value": "true",
           "err": "Please select if the client was provided with LLINs"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_malaria_investigation_relevance.yml"
+            }
+          }
         }
       },
       {

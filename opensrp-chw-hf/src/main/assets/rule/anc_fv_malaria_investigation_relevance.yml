@@ -33,3 +33,10 @@ priority: 1
 condition: "step1_malaria_preventive_therapy_ipt1.contains('medication_not_given') || step1_malaria_preventive_therapy_ipt2.contains('medication_not_given') || step1_malaria_preventive_therapy_ipt3.contains('medication_not_given') || step1_malaria_preventive_therapy_ipt4.contains('medication_not_given')"
 actions:
   - "isRelevant = true"
+---
+name: step1_llin_provision
+description: llin provision relevance
+priority: 1
+condition: "!global_llin_provided"
+actions:
+  - "isRelevant = true"
