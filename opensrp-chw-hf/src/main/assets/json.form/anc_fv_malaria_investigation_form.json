@@ -1,0 +1,483 @@
+{
+  "count": "1",
+  "encounter_type": "Malaria Investigation",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "global": {
+  },
+  "step1": {
+    "title": "Malaria Investigation",
+    "fields": [
+      {
+        "key": "client_on_malaria_medication",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "client_on_malaria_medication",
+        "type": "native_radio",
+        "label": "Is the client on malaria medication",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_id": "yes",
+            "openmrs_entity": "concept",
+            "value": false
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_id": "no",
+            "openmrs_entity": "concept",
+            "value": false
+          }
+        ]
+      },
+      {
+        "key": "mRDT_for_malaria",
+        "type": "native_radio",
+        "label": "mRDT for Malaria Results",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "mRDT_for_malaria",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "positive",
+            "text": "Positive",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "positive"
+          },
+          {
+            "key": "negative",
+            "text": "Negative",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "negative"
+          },
+          {
+            "key": "test_not_conducted",
+            "text": "Malaria Test not conducted",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "test_not_conducted"
+          }
+        ],
+        "relevance": {
+          "step1:client_on_malaria_medication": {
+            "type": "string",
+            "ex": "equalTo(., \"no\")"
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
+      },
+      {
+        "key": "prompt_for_mRDT",
+        "type": "toaster_notes",
+        "text": "Provide anti-malaria medication and manage according to standard guidelines",
+        "openmrs_entity_id": "prompt_for_mRDT",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:mRDT_for_malaria": {
+            "type": "string",
+            "ex": "equalTo(., \"positive\")"
+          }
+        }
+      },
+      {
+        "key": "reason_for_not_conducting_malaria_test",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_conducting_malaria_test",
+        "type": "spinner",
+        "hint": "Reason as to why the Malaria test was not conducted",
+        "values": [
+          "Test kits are out of stock",
+          "The client was in an emergency situation",
+          "The client refused to be tested",
+          "We are still counselling the client",
+          "Other (Specify)"
+        ],
+        "keys": [
+          "test_kits_out_of_stock",
+          "client_was_in_an_emergency_situation",
+          "client_refused_to_be_tested",
+          "still_counselling_the_client",
+          "other"
+        ],
+        "openmrs_choice_ids": {
+          "test_kits_out_of_stock": "test_kits_out_of_stock",
+          "client_was_in_an_emergency_situation": "client_was_in_an_emergency_situation",
+          "client_refused_to_be_tested": "client_refused_to_be_tested",
+          "still_counselling_the_client": "still_counselling_the_client",
+          "Other": "other"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select a reason"
+        },
+        "relevance": {
+          "step1:mRDT_for_malaria": {
+            "type": "string",
+            "ex": "equalTo(., \"test_not_conducted\")"
+          }
+        }
+      },
+      {
+        "key": "other_reason_for_not_conducting_malaria_test",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reason_for_not_conducting_malaria_test",
+        "type": "edit_text",
+        "hint": "Specify other reasons for not conducting Malaria test",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the reason"
+        },
+        "relevance": {
+          "step1:reason_for_not_conducting_malaria_test": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
+          }
+        }
+      },
+      {
+        "key": "malaria_preventive_therapy",
+        "type": "hidden",
+        "openmrs_entity_id": "malaria_preventive_therapy",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_malaria_investigation_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "malaria_preventive_therapy_ipt1",
+        "type": "native_radio",
+        "openmrs_entity_id": "malaria_preventive_therapy_ipt1",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "label": "Malaria Preventive Therapy",
+        "options": [
+          {
+            "key": "ipt1",
+            "text": "IPT1",
+            "openmrs_entity_id": "ipt1",
+            "openmrs_entity": "concept",
+            "value": false
+          },
+          {
+            "key": "medication_not_given",
+            "text": "Malaria medication not given",
+            "openmrs_entity_id": "medication_not_given",
+            "openmrs_entity": "concept",
+            "value": false
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select the medication for Malaria Preventive Therapy"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_malaria_investigation_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "malaria_preventive_therapy_ipt2",
+        "type": "native_radio",
+        "openmrs_entity_id": "malaria_preventive_therapy_ipt2",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "label": "Malaria Preventive Therapy",
+        "options": [
+          {
+            "key": "ipt2",
+            "text": "IPT2",
+            "openmrs_entity_id": "ipt2",
+            "openmrs_entity": "concept",
+            "value": false
+          },
+          {
+            "key": "medication_not_given",
+            "text": "Malaria medication not given",
+            "openmrs_entity_id": "medication_not_given",
+            "openmrs_entity": "concept",
+            "value": false
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select the medication for Malaria Preventive Therapy"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_malaria_investigation_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "malaria_preventive_therapy_ipt3",
+        "type": "native_radio",
+        "openmrs_entity_id": "malaria_preventive_therapy_ipt3",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "label": "Malaria Preventive Therapy",
+        "options": [
+          {
+            "key": "ipt3",
+            "text": "IPT3",
+            "openmrs_entity_id": "ipt3",
+            "openmrs_entity": "concept",
+            "value": false
+          },
+          {
+            "key": "medication_not_given",
+            "text": "Malaria medication not given",
+            "openmrs_entity_id": "medication_not_given",
+            "openmrs_entity": "concept",
+            "value": false
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select the medication for Malaria Preventive Therapy"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_malaria_investigation_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "malaria_preventive_therapy_ipt4",
+        "type": "native_radio",
+        "openmrs_entity_id": "malaria_preventive_therapy_ipt4",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "label": "Malaria Preventive Therapy",
+        "options": [
+          {
+            "key": "ipt4",
+            "text": "IPT4",
+            "openmrs_entity_id": "ipt4",
+            "openmrs_entity": "concept",
+            "value": false
+          },
+          {
+            "key": "medication_not_given",
+            "text": "Malaria medication not given",
+            "openmrs_entity_id": "medication_not_given",
+            "openmrs_entity": "concept",
+            "value": false
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select the medication for Malaria Preventive Therapy"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_malaria_investigation_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "reason_for_not_giving_malaria_medication",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_giving_malaria_medication",
+        "type": "spinner",
+        "hint": "Reason as to why the Malaria medication was not given",
+        "values": [
+          "Out of stock",
+          "The client did not agree to take the medication",
+          "The client is allergic to medication",
+          "Other (Specify)"
+        ],
+        "keys": [
+          "out_of_stock",
+          "client_did_not_agree_medication",
+          "client_is_allergic_to_medication",
+          "other"
+        ],
+        "openmrs_choice_ids": {
+          "out_of_stock": "out_of_stock",
+          "client_did_not_agree_medication": "client_did_not_agree_medication",
+          "the_client_refused_to_be_tested": "the_client_refused_to_be_tested",
+          "client_is_allergic_to_medication": "client_is_allergic_to_medication",
+          "other": "other"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select a reason"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_malaria_investigation_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "other_reason_malaria_medication_not_given",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reason_malaria_medication_not_given",
+        "type": "edit_text",
+        "hint": "Specify other reasons for not giving the Malaria medication",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the reason"
+        },
+        "relevance": {
+          "step1:reason_for_not_giving_malaria_medication": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
+          }
+        }
+      },
+      {
+        "key": "llin_provision",
+        "type": "native_radio",
+        "openmrs_entity_id": "llin_provision",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "label": "Was the client provided with LLINs(Long lasting insecticidal nets)?",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_id": "yes",
+            "openmrs_entity": "concept",
+            "value": false
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_id": "no",
+            "openmrs_entity": "concept",
+            "value": false
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select if the client was provided with LLINs"
+        }
+      },
+      {
+        "key": "reason_for_not_providing_llin",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_providing_llin",
+        "type": "spinner",
+        "hint": "Reason as to why the client was not provided with LLINs",
+
+        "values": [
+          "Out of stock",
+          "The client refused",
+          "Other (Specify)"
+        ],
+        "keys": [
+          "out_of_stock",
+          "the_client_refused",
+          "other"
+        ],
+        "openmrs_choice_ids": {
+          "out_of_stock": "out_of_stock",
+          "the_client_refused": "the_client_refused",
+          "other": "other"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select a reason"
+        },
+        "relevance": {
+          "step1:llin_provision": {
+            "type": "string",
+            "ex": "equalTo(., \"no\")"
+          }
+        }
+      },
+      {
+        "key": "other_reason_llin_not_given",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reason_llin_not_given",
+        "type": "edit_text",
+        "hint": "Specify other reasons for not providing the LLINs",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the reason"
+        },
+        "relevance": {
+          "step1:reason_for_not_providing_llin": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
+          }
+        }
+      }
+    ]
+  }
+}
