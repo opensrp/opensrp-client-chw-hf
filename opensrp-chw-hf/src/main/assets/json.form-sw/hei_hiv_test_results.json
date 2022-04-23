@@ -111,18 +111,18 @@
         }
       },
       {
-        "key": "ctc_number_available",
+        "key": "linkage_to_ctc",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "ctc_number_available",
+        "openmrs_entity_id": "linkage_to_ctc",
         "type": "native_radio",
-        "label": "Je Mteja ana namba ya CTC?",
+        "label": "Je, Mtoto ameunganishwa na huduma za CTC?",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [
           {
             "key": "yes",
-            "text": "Ndiyo",
+            "text": "Ndio",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
@@ -171,9 +171,24 @@
           "err": "Tafadhri ingiza Namba sahihi ya CTC"
         },
         "relevance": {
-          "step1:ctc_number_available": {
+          "step1:linkage_to_ctc": {
             "type": "string",
             "ex": "equalTo(.,\"yes\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_linkage_to_ctc",
+        "type": "toaster_notes",
+        "text": "Muunganishe mtoto kwenye huduma za CTC na toa namba ya CTC",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:linkage_to_ctc": {
+            "type": "string",
+            "ex": "equalTo(.,\"no\")"
           }
         }
       }

@@ -13,6 +13,13 @@ condition: "step1_gest_age >= 20"
 actions:
   - "isRelevant = true"
 ---
+name: step1_prompt_for_fetal_distress
+description: prompt for fetal distress
+priority: 1
+condition: "step1_fetal_heart_rate > 160 || step1_fetal_heart_rate < 120"
+actions:
+  - "isRelevant = true"
+---
 name: step1_lie
 description: lie should be recorded if gestational age is greater than 36
 priority: 1

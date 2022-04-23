@@ -226,6 +226,10 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
         return viewPager;
     }
 
+    public void setFamilyName(String familyName){
+        this.familyName = familyName;
+    }
+
     @Override
     protected BaseFamilyOtherMemberProfileFragment getFamilyOtherMemberProfileFragment() {
         return FamilyOtherMemberProfileFragment.newInstance(getIntent().getExtras());

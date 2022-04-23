@@ -68,7 +68,7 @@
       {
         "key": "clinician_position",
         "type": "spinner",
-        "hint": "Healthcare Provider's Position",
+        "hint": "Healthcare Provider's Title",
         "openmrs_entity_id": "clinician_position",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -95,7 +95,7 @@
         },
         "v_required": {
           "value": true,
-          "err": "Please enter the healthcare provider's position"
+          "err": "Please enter the healthcare provider's title"
         }
       },
       {

@@ -11,6 +11,7 @@ import org.smartregister.chw.anc.domain.Visit;
 import org.smartregister.chw.anc.repository.VisitDetailsRepository;
 import org.smartregister.chw.anc.repository.VisitRepository;
 import org.smartregister.chw.anc.util.NCUtils;
+import org.smartregister.chw.hf.dao.HfAncDao;
 import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.repository.AllSharedPreferences;
 
@@ -77,8 +78,14 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
                                 boolean isCounsellingDone = computeCompletionStatus(obs, "given_counselling");
                                 boolean isTTVaccinationDone = computeCompletionStatus(obs, ttCheckString);
 
-                                if (isConsultationDone && isLabTestsDone && isPharmacyDone && isCounsellingDone && isTTVaccinationDone) {
-                                    ancFollowupVisitsCompleted.add(v);
+                                if(HfAncDao.isEligibleForTtVaccination(v.getBaseEntityId())) {
+                                    if (isConsultationDone && isLabTestsDone && isPharmacyDone && isCounsellingDone && isTTVaccinationDone) {
+                                        ancFollowupVisitsCompleted.add(v);
+                                    }
+                                }else{
+                                    if (isConsultationDone && isLabTestsDone && isPharmacyDone && isCounsellingDone) {
+                                        ancFollowupVisitsCompleted.add(v);
+                                    }
                                 }
 
                             } else {

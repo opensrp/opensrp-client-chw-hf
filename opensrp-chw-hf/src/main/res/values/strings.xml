@@ -28,7 +28,7 @@
     <string name="error_opening_profile">Error opening client\'s profile</string>
     <string name="family">%s Family</string>
     <string name="created">Created: %s</string>
-    <string name="submit">SAVE</string>
+    <string name="submit">SUBMIT</string>
     <string name="hts_clients">HTS Clients</string>
     <string name="hiv_registration">HIV Registration</string>
     <string name="chw_client_found">Has the contact client been found</string>
@@ -97,8 +97,8 @@
     <string name="pmtct_counselling">Counselling given</string>
     <string name="pmtct_tb_screening">TB Screening Complete</string>
     <string name="pmtct_clinical_disease_staging">Clinical Staging of Disease is Complete</string>
-    <string name="given_arv_prescription">ARV Prescription Given</string>
-    <string name="not_given_arv_prescription">ARV Prescription Not Given</string>
+    <string name="given_arv_prescription">ARV prophylaxis Given</string>
+    <string name="not_given_arv_prescription">ARV prophylaxis Not Given</string>
     <string name="cd4_sample_collected">CD4 Sample Collected</string>
     <string name="pmtct_counselling_not_given">Counselling Not Given</string>
     <string name="pmtct_baseline_investigation_complete">Baseline Investigation Complete</string>
@@ -113,10 +113,10 @@
     <string name="record_followup">Record HEI Followup</string>
     <string name="hei_visit">HEI Visit</string>
     <string name="antibody_test_sample_collected">Antibody Test Sample Collected</string>
-    <string name="hei_arv_prescription_given">ARV Prescription Given</string>
-    <string name="hei_arv_prescription_not_given">ARV Prescription Not Given</string>
+    <string name="hei_arv_prescription_given">ARV prophylaxis Given</string>
+    <string name="hei_arv_prescription_not_given">ARV prophylaxis Not Given</string>
     <string name="other_combination_given">Other Combinations Given</string>
-    <string name="arv_pres_other_combinations_not_given">ARV Prescription and Other Combinations Not Given</string>
+    <string name="arv_pres_other_combinations_not_given">ARV prophylaxis and Other Combinations Not Given</string>
     <string name="ctx_given">CTX Given</string>
     <string name="dna_pcr_sample_collected">DNA-PCR Sample Collected</string>
     <string name="ctx_not_given">CTX Not Given</string>
@@ -151,7 +151,7 @@
     <string name="pmtct_baseline_investigation_title">Baseline Investigation</string>
     <string name="cd4_sample_collection">CD4 Sample Collection</string>
     <string name="hvl_sample_collection">HVL Sample Collection</string>
-    <string name="arv_prescription_title">ARV Prescription</string>
+    <string name="arv_prescription_title">ARV prophylaxis</string>
     <string name="tb_screening_title">TB Screening</string>
     <string name="pmtct_followup_status">Followup Status:</string>
     <string name="continuing_with_services">Continuing with Services</string>
@@ -183,8 +183,8 @@
     <string name="month">Month</string>
     <string name="head_circumference_min_err">Head Circumference must be equal or greater than %s CM</string>
     <string name="clinical_staging_of_hiv">Clinical Staging of HIV</string>
-    <string name="arv_prescription_azt_and_nvp">ARV Prescription (AZT + 3C and NVP)</string>
-    <string name="arv_prescription_nvp">ARV Prescription (NVP)</string>
+    <string name="arv_prescription_azt_and_nvp">ARV prophylaxis (AZT + 3C and NVP)</string>
+    <string name="arv_prescription_nvp">ARV prophylaxis (NVP)</string>
     <string name="hei_number">Hei Number: %s</string>
     <string name="record_hei_number">Record Hei Number</string>
     <string name="anc_visit_malaria_investigation">Malaria Investigation</string>

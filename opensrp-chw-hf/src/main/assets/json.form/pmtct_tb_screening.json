@@ -420,6 +420,10 @@
           "value": "0",
           "err": "Number of dispensed days should be greater than 0"
         },
+        "v_max": {
+          "value": "180",
+          "err": "Number of dispensed days should be less than or equal to 180"
+        },
         "relevance": {
           "step1:is_client_provided_with_tpt": {
             "type": "string",

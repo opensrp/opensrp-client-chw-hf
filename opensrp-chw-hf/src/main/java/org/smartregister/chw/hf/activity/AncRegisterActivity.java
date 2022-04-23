@@ -138,12 +138,14 @@ public class AncRegisterActivity extends CoreAncRegisterActivity {
                 form.setName(this.getString(R.string.anc_partner_followup_referral));
                 form.setNextLabel(this.getResources().getString(org.smartregister.chw.core.R.string.next));
                 form.setPreviousLabel(this.getResources().getString(org.smartregister.chw.core.R.string.back));
+                form.setSaveLabel(this.getResources().getString(org.smartregister.chw.core.R.string.save));
             } else if (isMultiPartForm(jsonForm)) {
                 form.setWizard(true);
                 form.setNavigationBackground(org.smartregister.chw.core.R.color.family_navigation);
                 form.setName(this.getString(R.string.pregnancy_confirmation));
                 form.setNextLabel(this.getResources().getString(org.smartregister.chw.core.R.string.next));
                 form.setPreviousLabel(this.getResources().getString(org.smartregister.chw.core.R.string.back));
+                form.setSaveLabel(this.getResources().getString(org.smartregister.chw.core.R.string.save));
             }
 
             startActivityForResult(intent, JsonFormUtils.REQUEST_CODE_GET_JSON);

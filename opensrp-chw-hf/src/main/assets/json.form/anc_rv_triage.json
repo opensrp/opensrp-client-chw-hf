@@ -316,6 +316,13 @@
             "openmrs_entity_id": "reduced_fetal_movement"
           },
           {
+            "key": "sacrum_oedema",
+            "text": "Oedema of the face and sacrum",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "sacrum_oedema"
+          },
+          {
             "key": "other",
             "text": "Other (Specify)",
             "value": false,
@@ -356,7 +363,9 @@
                   "unconscious",
                   "severe_pain",
                   "in_labour",
-                  "imminent_labour"
+                  "imminent_labour",
+                  "reduced_fetal_movement",
+                  "sacrum_oedema"
                 ]
               }
             ]

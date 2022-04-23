@@ -373,14 +373,16 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                         e.printStackTrace();
                     }
                     try {
-                        BaseAncHomeVisitAction vaccinationAction = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_first_visit_tt_vaccination))
-                                .withOptional(true)
-                                .withDetails(details)
-                                .withFormName(Constants.JsonForm.AncFirstVisit.getTtVaccination())
-                                .withJsonPayload(ttVaccinationForm.toString())
-                                .withHelper(new AncTtVaccinationAction(memberObject))
-                                .build();
-                        actionList.put(context.getString(R.string.anc_first_visit_tt_vaccination), vaccinationAction);
+                        if (HfAncDao.isEligibleForTtVaccination(memberObject.getBaseEntityId())) {
+                            BaseAncHomeVisitAction vaccinationAction = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_first_visit_tt_vaccination))
+                                    .withOptional(true)
+                                    .withDetails(details)
+                                    .withFormName(Constants.JsonForm.AncFirstVisit.getTtVaccination())
+                                    .withJsonPayload(ttVaccinationForm.toString())
+                                    .withHelper(new AncTtVaccinationAction(memberObject))
+                                    .build();
+                            actionList.put(context.getString(R.string.anc_first_visit_tt_vaccination), vaccinationAction);
+                        }
                     } catch (BaseAncHomeVisitAction.ValidationException e) {
                         e.printStackTrace();
                     }
