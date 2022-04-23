@@ -47,7 +47,7 @@
     "encounter_location": ""
   },
   "step1": {
-    "title": "ARV Prescription",
+    "title": "ARV prophylaxis",
     "fields": [
       {
         "key": "prescribed_regimes",
