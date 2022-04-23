@@ -168,6 +168,39 @@
         }
       },
       {
+        "key": "danger_signs_present_toaster",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "toaster_notes",
+        "text": "Danger sign! \nRefer immediately to Emergency Ward.",
+        "text_color": "#CF0800",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:danger_signs": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "bleeding_vag",
+                  "headache_visual_disturbance",
+                  "severely_pale",
+                  "severe_vomiting",
+                  "severe_breathing_difficulty",
+                  "convulsion",
+                  "looking_very_ill",
+                  "fever",
+                  "unconscious",
+                  "severe_pain",
+                  "in_labour",
+                  "imminent_labour",
+                  "dizziness"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
         "key": "task_id",
         "type": "hidden",
         "openmrs_entity_id": "task_id",
@@ -206,13 +239,6 @@
             "openmrs_entity_id": "uss"
           }
         ],
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "anc_pregnancy_confirmation_relevance.yml"
-            }
-          }
-        },
         "v_required": {
           "value": "true",
           "err": "Please select the type of pregnancy conducted"
@@ -498,39 +524,6 @@
             "ex-rules": {
               "rules-file": "anc_pregnancy_confirmation_relevance.yml"
             }
-          }
-        }
-      },
-      {
-        "key": "danger_signs_present_toaster",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "",
-        "type": "toaster_notes",
-        "text": "Danger sign! \nRefer immediately to Emergency Ward.",
-        "text_color": "#CF0800",
-        "toaster_type": "problem",
-        "relevance": {
-          "step1:danger_signs": {
-            "ex-checkbox": [
-              {
-                "or": [
-                  "bleeding_vag",
-                  "headache_visual_disturbance",
-                  "severely_pale",
-                  "severe_vomiting",
-                  "severe_breathing_difficulty",
-                  "convulsion",
-                  "looking_very_ill",
-                  "fever",
-                  "unconscious",
-                  "severe_pain",
-                  "in_labour",
-                  "imminent_labour",
-                  "dizziness"
-                ]
-              }
-            ]
           }
         }
       },
