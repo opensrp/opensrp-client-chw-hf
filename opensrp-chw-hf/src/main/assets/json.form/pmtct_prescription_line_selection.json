@@ -122,8 +122,6 @@
         "values": [
           "1g-A (TDF+3TC+EFV)",
           "1b-A (AZT+3TC+NVP)",
-          "ABC+3TC+LPV/r",
-          "AZT+3TC+LPV/r",
           "1c-A (AZT+3TC+EFV)",
           "1k-A (ABC+3TC+EFV)",
           "1p-A (ABC+3TC+DTG)",
@@ -135,8 +133,6 @@
         "keys": [
           "1_gA",
           "1_bA",
-          "abc_3tc_lpv",
-          "azt_3tc_lpv",
           "1_cA",
           "1_kA",
           "1_pA",
@@ -148,8 +144,6 @@
         "openmrs_choice_ids": {
           "1_gA": "1_gA",
           "1_bA": "1_bA",
-          "abc_3tc_lpv": "abc_3tc_lpv",
-          "azt_3tc_lpv": "azt_3tc_lpv",
           "1_cA": "1_cA",
           "1_kA": "1_kA",
           "1_pA": "1_pA",
@@ -183,7 +177,6 @@
           "2g-A (ABC+3TC+LPV/r)",
           "2k-A (ABC+3TC+ATV/r)",
           "2n-A (AZT+3TC+LPV/r)",
-          "ABC+3TC+DTG",
           "2x-A (Other 2nd line)"
         ],
         "keys": [
@@ -193,7 +186,6 @@
           "2_gA",
           "2_kA",
           "2_nA",
-          "abc_3tc_dtg",
           "2_xA"
         ],
         "openmrs_choice_ids": {
@@ -203,7 +195,6 @@
           "2_gA": "2_gA",
           "2_kA": "2_kA",
           "2_nA": "2_nA",
-          "abc_3tc_dtg": "abc_3tc_dtg",
           "2_xA": "2_xA"
         },
         "relevance": {
