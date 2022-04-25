@@ -1680,6 +1680,14 @@
           }
         },
         {
+          "column_name": "is_transfer_in",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "is_transfer_in"
+          }
+        },
+        {
           "column_name": "visit_number",
           "type": "Event",
           "json_mapping": {

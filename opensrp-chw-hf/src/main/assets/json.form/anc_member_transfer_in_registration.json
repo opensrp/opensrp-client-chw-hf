@@ -52,6 +52,14 @@
     "next": "step2",
     "fields": [
       {
+        "key": "is_transfer_in",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "is_transfer_in",
+        "type": "hidden",
+        "value": "true"
+      },
+      {
         "key": "pregnancy_confirmation_status",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
