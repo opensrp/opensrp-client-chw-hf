@@ -473,6 +473,23 @@ public class HfAncDao extends AbstractDao {
         return new ArrayList<>();
     }
 
+    public static boolean isLLINProvided(String baseEntityId){
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "llin_provision");
+
+        String sql = String.format(
+                "SELECT llin_provision FROM %s WHERE base_entity_id = '%s' " +
+                        "AND is_closed = 0",
+                "ec_anc_register",
+                baseEntityId
+        );
+
+        List<String> res = readData(sql, dataMap);
+        if (res.get(0) != null) {
+            return res.get(0).equalsIgnoreCase("yes");
+        }
+        return false;
+    }
+
     public static boolean isEligibleForTtVaccination(String baseEntityId) {
         DataMap<List<String>> dataMap = cursor -> Collections.singletonList(getCursorValue(cursor, "tt_vaccination_type"));
 

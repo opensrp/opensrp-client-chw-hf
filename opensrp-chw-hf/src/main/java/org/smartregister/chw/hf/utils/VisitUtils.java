@@ -49,7 +49,7 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
                         boolean isMedicalAndSurgicalHistoryDone = computeCompletionStatus(obs, "medical_surgical_history");
                         boolean isObstetricExaminationDone = computeCompletionStatus(obs, "abdominal_scars");
                         boolean isBaselineInvestigationDone = computeCompletionStatus(obs, "glucose_in_urine");
-                        boolean isTTVaccinationDone = computeCompletionStatus(obs, "tt1_vaccination");
+                        boolean isTTVaccinationDone = computeCompletionStatus(obs, "tt_vaccination");
                         boolean isCounsellingDone = computeCompletionStatus(obs, "given_counselling");
                         if (isMedicalAndSurgicalHistoryDone &&
                                 isObstetricExaminationDone &&

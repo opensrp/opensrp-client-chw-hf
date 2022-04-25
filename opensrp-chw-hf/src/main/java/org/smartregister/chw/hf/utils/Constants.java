@@ -284,6 +284,7 @@ public class Constants extends CoreConstants {
             private static final String MEDICAL_AND_SURGICAL_HISTORY = "anc_fv_medical_and_surgical_history";
             private static final String BASELINE_INVESTIGATION = "anc_fv_baseline_investigation";
             private static final String TB_SCREENING = "anc_fv_tb_screening";
+            private static final String MALARIA_INVESTIGATION = "anc_fv_malaria_investigation_form";
 
             public static String getMedicalAndSurgicalHistory() {
                 return Utils.getLocalForm(MEDICAL_AND_SURGICAL_HISTORY, locale, assetManager);
@@ -297,12 +298,17 @@ public class Constants extends CoreConstants {
                 return Utils.getLocalForm(OBSTETRIC_EXAMINATION, locale, assetManager);
             }
 
+
             public static String getTtVaccination() {
                 return Utils.getLocalForm(TT_VACCINATION, locale, assetManager);
             }
 
             public static String getTbScreening() {
                 return Utils.getLocalForm(TB_SCREENING, locale, assetManager);
+            }
+
+            public static String getMalariaInvestigation() {
+                return Utils.getLocalForm(MALARIA_INVESTIGATION, locale, assetManager);
             }
 
 
@@ -316,6 +322,7 @@ public class Constants extends CoreConstants {
             public static final String PARTNER_TESTING = "anc_partner_testing";
             private static final String PHARMACY = "anc_rv_pharmacy";
             private static final String PREGNANCY_STATUS = "anc_rv_pregnancy_status";
+            private static final String MALARIA_INVESTIGATION = "anc_rv_malaria_investigation_form";
 
             public static String getTriage() {
                 return Utils.getLocalForm(TRIAGE, locale, assetManager);
@@ -343,6 +350,9 @@ public class Constants extends CoreConstants {
 
             public static String getPartnerTesting() {
                 return Utils.getLocalForm(PARTNER_TESTING, locale, assetManager);
+            }
+            public static String getMalariaInvestigation() {
+                return Utils.getLocalForm(MALARIA_INVESTIGATION, locale, assetManager);
             }
         }
 

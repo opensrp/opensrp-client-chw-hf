@@ -187,5 +187,7 @@
     <string name="arv_prescription_nvp">ARV prophylaxis (NVP)</string>
     <string name="hei_number">Hei Number: %s</string>
     <string name="record_hei_number">Record Hei Number</string>
+    <string name="anc_visit_malaria_investigation">Malaria Investigation</string>
+    <string name="malaria_investigation_complete">Malaria Investigation Complete</string>
 
 </resources>
