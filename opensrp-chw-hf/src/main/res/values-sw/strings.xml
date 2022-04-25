@@ -182,6 +182,7 @@
     <string name="action_received_hiv_followup_referrals">Ufuatiliaji</string>
     <string name="hei_number">Namba ya HEI: %s</string>
     <string name="record_hei_number">Rekodi Namba ya Hei</string>
+    <string name="anc_followup_client_registration">ANC Followup Client Registration</string>
 
 
 </resources>

@@ -52,6 +52,7 @@ public class Constants extends CoreConstants {
         public static final String MARK_HEI_CLIENT_AS_LTF = "Mark HEI Client As LTF";
         public static final String HEI_COMMUNITY_FOLLOWUP = "HEI Community Followup";
         public static final String HEI_NUMBER_REGISTRATION = "HEI Number Registration";
+        public static final String ANC_FOLLOWUP_CLIENT_FOLLOWUP = "ANC Followup Client Registration";
     }
 
     public static final class TableName {
@@ -116,6 +117,7 @@ public class Constants extends CoreConstants {
         private static final String PNC_HIV_TEST_RESULTS = "pnc_hiv_test_results";
         private static final String PNC_NUTRITIONAL_SUPPLEMENT = "pnc_nutritional_supplement";
         private static final String PMTCT_FOLLOWUP_STATUS = "pmtct_followup_status";
+        private static final String ANC_TRANSFER_IN_REGISTRATION = "anc_member_transfer_in_registration";
 
         public static String getHeiCommunityFollowupReferral() {
             return HEI_COMMUNITY_FOLLOWUP_REFERRAL;
@@ -187,6 +189,14 @@ public class Constants extends CoreConstants {
 
         public static String getPmtctClinicalStagingOfDisease() {
             return PMTCT_CLINICAL_STAGING_OF_DISEASE;
+        }
+
+        public static String getAncTransferInRegistration() {
+            return ANC_TRANSFER_IN_REGISTRATION;
+        }
+
+        public static String getAncTransferInRegistrationForm() {
+            return Utils.getLocalForm(ANC_TRANSFER_IN_REGISTRATION, locale, assetManager);
         }
 
         public static String getEacVisitsForm() {

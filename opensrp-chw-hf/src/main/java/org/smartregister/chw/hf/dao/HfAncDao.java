@@ -225,7 +225,9 @@ public class HfAncDao extends AbstractDao {
         );
 
         List<String> res = readData(sql, dataMap);
-        return res.get(0).equalsIgnoreCase("positive") || res.get(0).equalsIgnoreCase("negative");
+        if (res != null && res.size() > 0 && res.get(0) != null)
+            return res.get(0).equalsIgnoreCase("positive") || res.get(0).equalsIgnoreCase("negative");
+        return false;
     }
 
     public static boolean isDewormingGiven(String baseEntityId) {

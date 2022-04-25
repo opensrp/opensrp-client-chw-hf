@@ -1,7 +1,5 @@
 package org.smartregister.chw.hf.activity;
 
-import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.isMultiPartForm;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.widget.Toast;
@@ -139,10 +137,14 @@ public class AncRegisterActivity extends CoreAncRegisterActivity {
                 form.setNextLabel(this.getResources().getString(org.smartregister.chw.core.R.string.next));
                 form.setPreviousLabel(this.getResources().getString(org.smartregister.chw.core.R.string.back));
                 form.setSaveLabel(this.getResources().getString(org.smartregister.chw.core.R.string.save));
-            } else if (isMultiPartForm(jsonForm)) {
+            } else {
                 form.setWizard(true);
                 form.setNavigationBackground(org.smartregister.chw.core.R.color.family_navigation);
-                form.setName(this.getString(R.string.pregnancy_confirmation));
+                if (jsonForm.getString("encounter_type").equals("Pregnancy Confirmation")) {
+                    form.setName(this.getString(R.string.pregnancy_confirmation));
+                } else if (jsonForm.getString("encounter_type").equals("ANC Followup Client Registration")) {
+                    form.setName(this.getString(R.string.anc_followup_client_registration));
+                }
                 form.setNextLabel(this.getResources().getString(org.smartregister.chw.core.R.string.next));
                 form.setPreviousLabel(this.getResources().getString(org.smartregister.chw.core.R.string.back));
                 form.setSaveLabel(this.getResources().getString(org.smartregister.chw.core.R.string.save));
@@ -244,14 +246,23 @@ public class AncRegisterActivity extends CoreAncRegisterActivity {
                 String encounter_type = form.optString(Constants.JSON_FORM_EXTRA.ENCOUNTER_TYPE);
                 String pregnancyConfirmationStatus = CoreJsonFormUtils.getValue(form, "pregnancy_confirmation_status");
                 String table = data.getStringExtra(Constants.ACTIVITY_PAYLOAD.TABLE_NAME);
-                boolean isPregnancyConfirmed = pregnancyConfirmationStatus.equalsIgnoreCase("confirmed");
+                boolean isPregnancyConfirmed;
+                if (encounter_type.equals("ANC Followup Client Registration")) {
+                    isPregnancyConfirmed = true;
+                } else {
+                    isPregnancyConfirmed = pregnancyConfirmationStatus.equalsIgnoreCase("confirmed");
+                }
 
-                if (encounter_type.equalsIgnoreCase(getRegisterEventType())) {
+                if (encounter_type.equalsIgnoreCase(getRegisterEventType()) || encounter_type.equals("ANC Followup Client Registration")) {
                     saveFormForPregnancyConfirmation(jsonString, table);
                     if (!isPregnancyConfirmed) {
                         closeForUnconfirmed(jsonString, table);
                     }
                 } else if (encounter_type.equalsIgnoreCase(Constants.EVENT_TYPE.PREGNANCY_OUTCOME)) {
+
+                    presenter().saveForm(jsonString, false, table);
+
+                } else if (encounter_type.equalsIgnoreCase(org.smartregister.chw.hf.utils.Constants.Events.ANC_FOLLOWUP_CLIENT_FOLLOWUP)) {
 
                     presenter().saveForm(jsonString, false, table);
 

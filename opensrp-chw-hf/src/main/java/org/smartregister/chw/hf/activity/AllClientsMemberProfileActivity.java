@@ -1,9 +1,14 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
+import static org.smartregister.chw.hf.utils.JsonFormUtils.getAutoPopulatedJsonEditFormString;
+
 import android.content.Context;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+
+import androidx.viewpager.widget.ViewPager;
 
 import com.vijay.jsonwizard.utils.FormUtils;
 
@@ -35,11 +40,7 @@ import org.smartregister.family.model.BaseFamilyOtherMemberProfileActivityModel;
 import org.smartregister.family.util.DBConstants;
 import org.smartregister.view.contract.BaseProfileContract;
 
-import androidx.viewpager.widget.ViewPager;
 import timber.log.Timber;
-
-import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
-import static org.smartregister.chw.hf.utils.JsonFormUtils.getAutoPopulatedJsonEditFormString;
 
 public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfileActivity {
 
@@ -59,9 +60,10 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
         }
         if (isOfReproductiveAge(commonPersonObject, gender) && gender.equalsIgnoreCase("female") && !AncDao.isANCMember(baseEntityId)) {
             menu.findItem(R.id.action_pregnancy_confirmation).setVisible(true);
+            menu.findItem(R.id.action_anc_registration).setVisible(true);
             menu.findItem(R.id.action_pregnancy_out_come).setVisible(true);
-        }
-        menu.findItem(R.id.action_anc_registration).setVisible(false);
+        } else
+            menu.findItem(R.id.action_anc_registration).setVisible(false);
 
         menu.findItem(R.id.action_sick_child_follow_up).setVisible(false);
         menu.findItem(R.id.action_malaria_diagnosis).setVisible(false);
@@ -85,6 +87,10 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
         int itemId = item.getItemId();
         if (itemId == org.smartregister.chw.core.R.id.action_pregnancy_confirmation) {
             startPregnancyConfirmation();
+            return true;
+        }
+        if (itemId == org.smartregister.chw.core.R.id.action_anc_registration) {
+            startAncTransferInRegistration();
             return true;
         }
         if (itemId == org.smartregister.chw.core.R.id.action_location_info) {
@@ -112,7 +118,7 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
     @Override
     protected void startPncRegister() {
         PncRegisterActivity.startPncRegistrationActivity(AllClientsMemberProfileActivity.this, baseEntityId, PhoneNumber,
-                CoreConstants.JSON_FORM.getPregnancyOutcome(), null, familyBaseEntityId, familyName,null,false);
+                CoreConstants.JSON_FORM.getPregnancyOutcome(), null, familyBaseEntityId, familyName, null, false);
     }
 
     @Override
@@ -226,7 +232,7 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
         return viewPager;
     }
 
-    public void setFamilyName(String familyName){
+    public void setFamilyName(String familyName) {
         this.familyName = familyName;
     }
 
@@ -280,6 +286,11 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
     protected void startPregnancyConfirmation() {
         AncRegisterActivity.startAncRegistrationActivity(AllClientsMemberProfileActivity.this, baseEntityId, PhoneNumber,
                 Constants.JsonForm.getAncPregnancyConfirmation(), null, familyBaseEntityId, familyName);
+    }
+
+    protected void startAncTransferInRegistration() {
+        AncRegisterActivity.startAncRegistrationActivity(AllClientsMemberProfileActivity.this, baseEntityId, PhoneNumber,
+                Constants.JsonForm.getAncTransferInRegistrationForm(), null, familyBaseEntityId, familyName);
     }
 
 }

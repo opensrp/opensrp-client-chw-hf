@@ -1,0 +1,710 @@
+{
+  "count": "2",
+  "skip_blank_steps": true,
+  "encounter_type": "ANC Followup Client Registration",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "step1": {
+    "title": "Medical and Surgical History",
+    "next": "step2",
+    "fields": [
+      {
+        "key": "pregnancy_confirmation_status",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "pregnancy_confirmation_status",
+        "type": "hidden",
+        "value": "Confirmed"
+      },
+      {
+        "key": "pregnancy_confirmation_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "pregnancy_confirmation_date",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_member_transfer_in_registration_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "medical_surgical_history",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "medical_surgical_history",
+        "type": "check_box",
+        "label_info_image_src": "img/chw.png",
+        "label_info_has_image": true,
+        "label": "Any Medical and surgical History of the Client?",
+        "combine_checkbox_option_values": "true",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "exclusive": [
+          "none"
+        ],
+        "options": [
+          {
+            "key": "diabetes_mellitus",
+            "text": "Diabetes Mellitus",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "diabetes_mellitus"
+          },
+          {
+            "key": "sickle_cell_disease",
+            "text": "Sickle Cell Disease",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "sickle_cell_disease"
+          },
+          {
+            "key": "heart_diseases",
+            "text": "Heart Diseases",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "heart_diseases"
+          },
+          {
+            "key": "thyroid_diseases",
+            "text": "Thyroid Diseases",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "thyroid_diseases"
+          },
+          {
+            "key": "anaemia_blood_transfusion",
+            "text": "Anaemia/blood transfusion",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "anaemia_blood_transfusion"
+          },
+          {
+            "key": "epilepsy",
+            "text": "Epilepsy",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "epilepsy"
+          },
+          {
+            "key": "previous_c_s",
+            "text": "Previous C/S",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "previous_c_s"
+          },
+          {
+            "key": "myomectomy",
+            "text": "Myomectomy",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "myomectomy"
+          },
+          {
+            "key": "third_degree_tear",
+            "text": "Third Degree Tear",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "third_degree_tear"
+          },
+          {
+            "key": "repaired_fistula",
+            "text": "Repaired Fistula",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "repaired_fistula"
+          },
+          {
+            "key": "female_genital_mutilation",
+            "text": "Female Genital Mutilation",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "female_genital_mutilation"
+          },
+          {
+            "key": "parity",
+            "text": "Parity",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "parity"
+          },
+          {
+            "key": "closely_spaced_pregnancy",
+            "text": "Closely spaced pregnancy (within 2 years)",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "closely_spaced_pregnancy"
+          },
+          {
+            "key": "pregnant_more_than_four",
+            "text": "Pregnant four or more times",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "pregnant_more_than_four"
+          },
+          {
+            "key": "hx_hemorrhage",
+            "text": "History of Hemorrhage",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "hx_hemorrhage"
+          },
+          {
+            "key": "history_of_high_blood_pressure",
+            "text": "History of high blood pressure",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "history_of_high_blood_pressure"
+          },
+          {
+            "key": "anaemia",
+            "text": "Anaemia",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "anaemia"
+          },
+          {
+            "key": "difficult_delivery",
+            "text": "Difficult delivery (Vacuum, episiotomy)",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "difficult_delivery"
+          },
+          {
+            "key": "hx_abortions",
+            "text": "History of Abortions",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "hx_abortions"
+          },
+          {
+            "key": "none",
+            "text": "None",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "none"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please pick at least one"
+        }
+      },
+      {
+        "key": "parity_value",
+        "type": "edit_text",
+        "hint": "Parity",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "parity_value",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter parity number"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter the parity number"
+        },
+        "relevance": {
+          "step1:medical_surgical_history": {
+            "type": "string",
+            "ex-checkbox": [
+              {
+                "or": [
+                  "parity"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "visit_number",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "visit_number",
+        "openmrs_entity_parent": "",
+        "value": 1
+      }
+    ]
+  },
+  "step2": {
+    "title": "ANC Followup Client Registration",
+    "fields": [
+      {
+        "key": "edd",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "edd",
+        "type": "date_picker",
+        "hint": "Expected Date of Delivery (EDD)",
+        "label_info_title": "EDD",
+        "expanded": false,
+        "max_date": "today+50w",
+        "min_date": "today+1d",
+        "v_required": {
+          "value": "true",
+          "err": "EDD required"
+        }
+      },
+      {
+        "key": "last_menstrual_period",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "last_menstrual_period",
+        "type": "edit_text",
+        "hint": "Last Normal Menstrual Period (LNMP)",
+        "read_only": true,
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_member_transfer_in_registration_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "gest_age_note",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "edit_text",
+        "hint": "Gestational Age (GA)",
+        "read_only": true,
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_member_transfer_in_registration_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "gest_age",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "gest_age",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_member_transfer_in_registration_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "height",
+        "type": "edit_text",
+        "hint": "Height (CM)",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "height",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the height"
+        },
+        "v_min": {
+          "value": "60",
+          "err": "The height must be equal or greater than 60 (CM)"
+        },
+        "v_max": {
+          "value": "200",
+          "err": "The height must be equal or less than 200 (CM)"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter the height"
+        }
+      },
+      {
+        "key": "prompt_for_short_stature",
+        "type": "toaster_notes",
+        "text": "Counsel the client on her risk of obstructed labour and advise her to deliver at a health care facility",
+        "openmrs_entity_id": "prompt_for_short_stature",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step2:height": {
+            "type": "numeric",
+            "ex": "lessThan(.,\"145\")"
+          }
+        }
+      },
+      {
+        "key": "hiv",
+        "type": "native_radio",
+        "label": "HIV Test Results",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hiv",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "positive",
+            "text": "Positive",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "positive"
+          },
+          {
+            "key": "negative",
+            "text": "Negative",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "negative"
+          },
+          {
+            "key": "test_not_conducted",
+            "text": "The client has not yet been tested for HIV",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "test_not_conducted"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
+      },
+      {
+        "key": "is_test_at_32",
+        "type": "native_radio",
+        "label": "Was this the second HIV test?",
+        "openmrs_entity_id": "is_test_at_32",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_id": "yes",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_id": "no",
+            "openmrs_entity": "concept"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        },
+        "relevance": {
+          "step2:gest_age": {
+            "type": "numeric",
+            "ex": "greaterThanEqualTo(.,\"32\")"
+          }
+        }
+      },
+      {
+        "key": "ctc_number",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "ctc_number",
+        "type": "mask_edit_text",
+        "mask": "##-##-####-######",
+        "mask_hint": "12345678912345",
+        "allowed_chars": "0123456789",
+        "hint": "CTC ID",
+        "edit_type": "number",
+        "v_regex": {
+          "value": "(\\d{2}-\\d{2}-\\d{4}-\\d{6})?",
+          "err": "CTC ID should be of the format (XX-XX-XXXX-XXXXXX)"
+        },
+        "v_max_length": {
+          "value": "17",
+          "is_fixed_size": "true",
+          "err": "Please enter a valid CTC ID"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter a valid CTC ID"
+        },
+        "relevance": {
+          "step2:hiv": {
+            "type": "string",
+            "ex": "equalTo(.,\"positive\")"
+          }
+        }
+      },
+      {
+        "key": "hiv_test_number",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hiv_test_number",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_member_transfer_in_registration_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "hiv_test_at_32",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hiv_test_at_32",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_member_transfer_in_registration_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "abdominal_scars",
+        "type": "native_radio",
+        "label": "Are there any lower abdominal caesarian scars?",
+        "openmrs_entity_id": "abdominal_scars",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_id": "yes",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_id": "no",
+            "openmrs_entity": "concept"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
+      },
+      {
+        "key": "prompt_for_abdominal_scars",
+        "type": "toaster_notes",
+        "text": "Counsel the client on her risk of uterine rupture during labour and advise her to deliver at a health care facility",
+        "openmrs_entity_id": "prompt_for_abdominal_scars",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step2:abdominal_scars": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
+        "key": "abdominal_movement_with_respiration",
+        "type": "native_radio",
+        "label": "Does the Abdomen Move with respiration",
+        "openmrs_entity_id": "abdominal_movement_with_respiration",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_id": "yes",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_id": "no",
+            "openmrs_entity": "concept"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
+      },
+      {
+        "key": "prompt_for_abdominal_movement_with_respiration",
+        "type": "toaster_notes",
+        "text": "Refer the client for further management",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step2:abdominal_movement_with_respiration": {
+            "type": "string",
+            "ex": "equalTo(., \"no\")"
+          }
+        }
+      },
+      {
+        "key": "abnormal_vaginal_discharge",
+        "type": "native_radio",
+        "label": "Abnormal Vaginal Discharge",
+        "openmrs_entity_id": "abnormal_vaginal_discharge",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_id": "yes",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_id": "no",
+            "openmrs_entity": "concept"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
+      },
+      {
+        "key": "prompt_for_vaginal_discharge",
+        "type": "toaster_notes",
+        "text": "Identify the cause of vaginal discharge and manage according to standard guidelines",
+        "openmrs_entity_id": "prompt_for_vaginal_discharge",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:abnormal_vaginal_discharge": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
+        "key": "vaginal_sores",
+        "type": "native_radio",
+        "label": "Vaginal Sores",
+        "openmrs_entity_id": "vaginal_sores",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_id": "yes",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_id": "no",
+            "openmrs_entity": "concept"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
+      },
+      {
+        "key": "prompt_for_vaginal_sores",
+        "type": "toaster_notes",
+        "text": "Identify the cause of vaginal sores and manage according to standard guidelines",
+        "openmrs_entity_id": "prompt_for_vaginal_sores",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step2:vaginal_sores": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
+        "key": "vaginal_swelling",
+        "type": "native_radio",
+        "label": "Vaginal Swelling",
+        "openmrs_entity_id": "vaginal_swelling",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_id": "yes",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_id": "no",
+            "openmrs_entity": "concept"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
+      },
+      {
+        "key": "prompt_for_vaginal_swelling",
+        "type": "toaster_notes",
+        "text": "Identify the cause of vaginal swelling and manage according to standard guidelines",
+        "openmrs_entity_id": "prompt_for_vaginal_swelling",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step2:vaginal_swelling": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      }
+    ]
+  }
+}
