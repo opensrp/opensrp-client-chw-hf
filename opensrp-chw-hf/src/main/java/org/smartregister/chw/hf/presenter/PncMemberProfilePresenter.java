@@ -1,17 +1,21 @@
 package org.smartregister.chw.hf.presenter;
 
 
+import org.apache.commons.lang3.tuple.Triple;
 import org.smartregister.chw.anc.domain.MemberObject;
 import org.smartregister.chw.core.contract.CorePncMemberProfileContract;
 import org.smartregister.chw.core.presenter.CorePncMemberProfilePresenter;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.contract.PncMemberProfileContract;
+import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.domain.Task;
+import org.smartregister.family.contract.FamilyProfileContract;
+import org.smartregister.family.domain.FamilyEventClient;
 
 import java.util.Set;
 
 public class PncMemberProfilePresenter extends CorePncMemberProfilePresenter implements
-        PncMemberProfileContract.Presenter, PncMemberProfileContract.InteractorCallback {
+        PncMemberProfileContract.Presenter, PncMemberProfileContract.InteractorCallback, FamilyProfileContract.InteractorCallBack {
 
     private PncMemberProfileContract.Interactor interactor;
     private String entityId;
@@ -39,6 +43,31 @@ public class PncMemberProfilePresenter extends CorePncMemberProfilePresenter imp
 
     private void setEntityId(String entityId) {
         this.entityId = entityId;
+    }
+
+    @Override
+    public void startFormForEdit(CommonPersonObjectClient commonPersonObjectClient) {
+        //override
+    }
+
+    @Override
+    public void refreshProfileTopSection(CommonPersonObjectClient commonPersonObjectClient) {
+        //override
+    }
+
+    @Override
+    public void onUniqueIdFetched(Triple<String, String, String> triple, String s) {
+        //override
+    }
+
+    @Override
+    public void onNoUniqueId() {
+        //override
+    }
+
+    @Override
+    public void onRegistrationSaved(boolean b, boolean b1, FamilyEventClient familyEventClient) {
+        //override
     }
 }
 
