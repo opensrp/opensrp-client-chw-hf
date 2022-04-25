@@ -32,6 +32,7 @@ import org.smartregister.chw.hf.utils.HeiVisitUtils;
 import org.smartregister.chw.pmtct.PmtctLibrary;
 import org.smartregister.chw.pmtct.activity.BasePmtctProfileActivity;
 import org.smartregister.chw.pmtct.dao.PmtctDao;
+import org.smartregister.chw.pmtct.domain.MemberObject;
 import org.smartregister.chw.pmtct.domain.Visit;
 import org.smartregister.chw.pmtct.util.Constants;
 import org.smartregister.chw.pmtct.util.PmtctUtil;
@@ -250,8 +251,15 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
 
     @Override
     public void initializeFloatingMenu() {
-        basePmtctFloatingMenu = new PmtctFloatingMenu(this,  PmtctDao.getMember(HeiDao.getMotherBaseEntityId(baseEntityId)));
-        checkPhoneNumberProvided(StringUtils.isNotBlank(PmtctDao.getMember(HeiDao.getMotherBaseEntityId(baseEntityId)).getPhoneNumber()));
+        MemberObject motherMemberObject = PmtctDao.getMember(HeiDao.getMotherBaseEntityId(baseEntityId));
+        if(motherMemberObject != null){
+            basePmtctFloatingMenu = new PmtctFloatingMenu(this, motherMemberObject );
+            checkPhoneNumberProvided(StringUtils.isNotBlank(motherMemberObject.getPhoneNumber()));
+        }else{
+            basePmtctFloatingMenu = new PmtctFloatingMenu(this, memberObject );
+            checkPhoneNumberProvided(StringUtils.isNotBlank(memberObject.getPhoneNumber()));
+        }
+
         OnClickFloatingMenu onClickFloatingMenu = viewId -> {
             switch (viewId) {
                 case R.id.pmtct_fab:
