@@ -1560,6 +1560,14 @@
           }
         },
         {
+          "column_name": "llin_provision",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "llin_provision"
+          }
+        },
+        {
           "column_name": "syphilis_treatment",
           "type": "Event",
           "json_mapping": {

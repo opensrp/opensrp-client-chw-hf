@@ -57,6 +57,7 @@
     <string name="anc_recuring_visit_cunsultation">Mashauriano ya ANC</string>
     <string name="anc_recuring_visit_lab_tests">Vipimo Vya Maabara</string>
     <string name="anc_recuring_visit_pharmacy">Duka la Dawa</string>
+    <string name="anc_visit_malaria_investigation">Uchunguzi wa Malaria</string>
     <string name="first_pregnancy_option">Mimba ya kwanza</string>
     <string name="none_option_for_medical_surgical_history">Hakuna</string>
     <string name="record_ctc_number">Rekodi namba ya CTC</string>
@@ -183,6 +184,8 @@
     <string name="hei_number">Namba ya HEI: %s</string>
     <string name="record_hei_number">Rekodi Namba ya Hei</string>
     <string name="anc_followup_client_registration">ANC Followup Client Registration</string>
+    <string name="malaria_investigation_complete">Uchunguzi wa malaria umekamilika</string>
+
 
 
 </resources>

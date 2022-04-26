@@ -111,6 +111,57 @@
         }
       },
       {
+        "key": "results_provided_to_parents",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "results_provided_to_parents",
+        "type": "native_radio",
+        "label": "Je, wazazi wamepewa majibu ya kipimo?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndio",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua jibu"
+        },
+        "relevance": {
+          "step1:hiv_test_result": {
+            "type": "string",
+            "ex": "equalTo(.,\"positive\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_linkage_to_ctc",
+        "type": "toaster_notes",
+        "text": "Wapatie wazazi majibu ya kipimo",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:results_provided_to_parents": {
+            "type": "string",
+            "ex": "equalTo(.,\"no\")"
+          }
+        }
+      },
+      {
         "key": "linkage_to_ctc",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",

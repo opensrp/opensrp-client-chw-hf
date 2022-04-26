@@ -24,6 +24,7 @@ import org.smartregister.chw.hf.actionhelper.AncBirthReviewAction;
 import org.smartregister.chw.hf.actionhelper.AncConsultationAction;
 import org.smartregister.chw.hf.actionhelper.AncCounsellingAction;
 import org.smartregister.chw.hf.actionhelper.AncLabTestAction;
+import org.smartregister.chw.hf.actionhelper.AncMalariaInvestigationAction;
 import org.smartregister.chw.hf.actionhelper.AncPharmacyAction;
 import org.smartregister.chw.hf.actionhelper.AncTriageAction;
 import org.smartregister.chw.hf.actionhelper.AncTtVaccinationAction;
@@ -313,6 +314,22 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                     e.printStackTrace();
                 }
 
+                JSONObject malariaInvestigationForm = null;
+                try {
+                    malariaInvestigationForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.getMalariaInvestigation());
+                    malariaInvestigationForm.getJSONObject("global").put("gestational_age", memberObject.getGestationAge());
+                    malariaInvestigationForm.getJSONObject("global").put("llin_provided", HfAncDao.isLLINProvided(baseEntityId));
+                    malariaInvestigationForm.getJSONObject("global").put("malaria_preventive_therapy_ipt1", HfAncDao.malariaDosageIpt1(memberObject.getBaseEntityId()));
+                    malariaInvestigationForm.getJSONObject("global").put("malaria_preventive_therapy_ipt2", HfAncDao.malariaDosageIpt2(memberObject.getBaseEntityId()));
+                    malariaInvestigationForm.getJSONObject("global").put("malaria_preventive_therapy_ipt3", HfAncDao.malariaDosageIpt3(memberObject.getBaseEntityId()));
+                    malariaInvestigationForm.getJSONObject("global").put("malaria_preventive_therapy_ipt4", HfAncDao.malariaDosageIpt4(memberObject.getBaseEntityId()));
+                    if (details != null && !details.isEmpty()) {
+                        HfAncJsonFormUtils.populateForm(malariaInvestigationForm, details);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
                 JSONObject labTestForm = null;
                 try {
                     labTestForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.LAB_TESTS);
@@ -337,6 +354,17 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                     Timber.e(e);
                 }
 
+                JSONObject counsellingForm = null;
+                try {
+                    counsellingForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.getCounselling());
+
+                    if (details != null && !details.isEmpty()) {
+                        HfAncJsonFormUtils.populateForm(counsellingForm, details);
+                    }
+                } catch (Exception e) {
+                    Timber.e(e);
+                }
+
                 JSONObject ttVaccinationForm = null;
                 try {
                     ttVaccinationForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncFirstVisit.TT_VACCINATION);
@@ -357,6 +385,18 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                                 .withHelper(new AncConsultationAction(memberObject))
                                 .build();
                         actionList.put(context.getString(R.string.anc_recuring_visit_cunsultation), consultation);
+                    } catch (BaseAncHomeVisitAction.ValidationException e) {
+                        e.printStackTrace();
+                    }
+                    try {
+                        BaseAncHomeVisitAction malariaInvestigation = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_visit_malaria_investigation))
+                                .withOptional(true)
+                                .withDetails(details)
+                                .withJsonPayload(malariaInvestigationForm.toString())
+                                .withFormName(Constants.JsonForm.AncRecurringVisit.getMalariaInvestigation())
+                                .withHelper(new AncMalariaInvestigationAction(memberObject))
+                                .build();
+                        actionList.put(context.getString(R.string.anc_visit_malaria_investigation), malariaInvestigation);
                     } catch (BaseAncHomeVisitAction.ValidationException e) {
                         e.printStackTrace();
                     }
@@ -406,6 +446,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                                 .withOptional(true)
                                 .withDetails(details)
                                 .withFormName(Constants.JsonForm.getCounselling())
+                                .withJsonPayload(counsellingForm.toString())
                                 .withHelper(new AncCounsellingAction(memberObject))
                                 .build();
                         actionList.put(context.getString(R.string.anc_first_and_recurring_visit_counselling), counselling);
@@ -434,6 +475,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                 actionList.remove(context.getString(R.string.anc_recuring_visit_lab_tests));
                 actionList.remove(context.getString(R.string.anc_recuring_visit_pharmacy));
                 actionList.remove(context.getString(R.string.anc_first_and_recurring_visit_counselling));
+                actionList.remove(context.getString(R.string.anc_visit_malaria_investigation));
                 actionList.remove(context.getString(R.string.anc_recuring_visit_review_birth_and_emergency_plan));
                 actionList.remove(context.getString(R.string.anc_first_visit_tt_vaccination));
             }
