@@ -490,8 +490,11 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
 
             profilePresenter.recordPmtctButton(visitStatus);
 
-            if (pmtctFollowUpRule.isFirstVisit())
+            if (HfPmtctDao.isTransferInClient(baseEntityId)) {
+                textViewRecordPmtct.setText(R.string.record_pmtct);
+            } else {
                 textViewRecordPmtct.setText(R.string.record_first_pmtct);
+            }
 
             Visit lastFolllowUpVisit = getVisit(Constants.EVENT_TYPE.PMTCT_FOLLOWUP);
 

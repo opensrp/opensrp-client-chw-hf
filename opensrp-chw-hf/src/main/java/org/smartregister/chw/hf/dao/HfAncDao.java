@@ -484,4 +484,12 @@ public class HfAncDao extends AbstractDao {
         return res == null || res.size() <= 0;
     }
 
+    public static boolean isTransferInClient(String baseEntityId) {
+        DataMap<List<String>> dataMap = cursor -> Collections.singletonList(getCursorValue(cursor, "is_transfer_in"));
+
+        String sql = "SELECT is_transfer_in FROM ec_anc_register WHERE base_entity_id = '" + baseEntityId + "' AND is_transfer_in = true";
+
+        List<List<String>> res = readData(sql, dataMap);
+        return res == null || res.size() <= 0;
+    }
 }

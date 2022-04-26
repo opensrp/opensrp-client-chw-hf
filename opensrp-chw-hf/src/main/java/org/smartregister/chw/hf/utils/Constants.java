@@ -1,10 +1,10 @@
 package org.smartregister.chw.hf.utils;
 
-import org.smartregister.chw.core.utils.CoreConstants;
-import org.smartregister.chw.core.utils.Utils;
-
 import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.assetManager;
 import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.locale;
+
+import org.smartregister.chw.core.utils.CoreConstants;
+import org.smartregister.chw.core.utils.Utils;
 
 public class Constants extends CoreConstants {
     public static String pregnancyOutcome = "preg_outcome";
@@ -93,6 +93,7 @@ public class Constants extends CoreConstants {
         private static final String ANC_PREGANCY_CONFIRMATION = "anc_pregnancy_confirmation";
         private static final String PMTCT_REGISTRATION = "pmtct_registration";
         private static final String PMTCT_REGISTRATION_FOR_CLIENTS_KNOWN_ON_ART_FORM = "pmtct_registration_for_clients_known_on_art";
+        private static final String PMTCT_REGISTRATION_FOR_TI_CLIENTS_FORM = "pmtct_ti_registration";
         private static final String COUNSELLING = "anc_counselling";
         private static final String HIV_INDEX_CONTACT_CTC_ENROLLMENT = "hiv_index_contact_ctc_enrollment";
         private static final String PARTNER_REGISTRATION_FORM = "male_partner_registration_form";
@@ -223,9 +224,12 @@ public class Constants extends CoreConstants {
             return PMTCT_REGISTRATION;
         }
 
-        public static String
-        getPmtctRegistrationForClientsKnownOnArtForm() {
+        public static String getPmtctRegistrationForClientsKnownOnArtForm() {
             return PMTCT_REGISTRATION_FOR_CLIENTS_KNOWN_ON_ART_FORM;
+        }
+
+        public static String getPmtctRegistrationForTiClientsForm() {
+            return PMTCT_REGISTRATION_FOR_TI_CLIENTS_FORM;
         }
 
         public static String getHvlTestResultsForm() {

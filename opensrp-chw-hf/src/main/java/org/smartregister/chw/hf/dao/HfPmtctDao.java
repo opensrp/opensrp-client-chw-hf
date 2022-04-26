@@ -9,6 +9,7 @@ import org.smartregister.chw.pmtct.domain.MemberObject;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -417,5 +418,14 @@ public class HfPmtctDao extends CorePmtctDao {
             return null;
 
         return res;
+    }
+
+    public static boolean isTransferInClient(String baseEntityId) {
+        DataMap<List<String>> dataMap = cursor -> Collections.singletonList(getCursorValue(cursor, "is_transfer_in"));
+
+        String sql = "SELECT is_transfer_in FROM ec_pmtct_registration WHERE base_entity_id = '" + baseEntityId + "' AND is_transfer_in = true";
+
+        List<List<String>> res = readData(sql, dataMap);
+        return res == null || res.size() <= 0;
     }
 }

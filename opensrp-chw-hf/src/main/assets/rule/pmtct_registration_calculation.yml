@@ -12,3 +12,17 @@ priority: 1
 condition: "true"
 actions:
   - "calculation = global_ctc_number"
+---
+name: step1_followup_visit_date
+description: followup_visit_date calculation
+priority: 1
+condition: "true"
+actions:
+  - "calculation = helper.getDateToday()"
+---
+name: step1_arv_regimen
+description: arv_regimen calculation
+priority: 1
+condition: "true"
+actions:
+  - "calculation = !step1_first_line.equals('') ? step1_first_line : (!step1_second_line.equals('') ? step1_second_line : (!step1_third_line.equals('') ? step1_third_line : ''))"
