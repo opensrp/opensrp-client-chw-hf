@@ -1,0 +1,7 @@
+---
+name: step1_number_of_azt_nvp_days_dispensed
+description: number_of_azt_nvp_days_dispensed
+priority: 1
+condition: "step1_provided_azt_nvp_syrup.equals('yes') || step1_provided_other_combinations.equals('yes')"
+actions:
+  - "isRelevant = true"

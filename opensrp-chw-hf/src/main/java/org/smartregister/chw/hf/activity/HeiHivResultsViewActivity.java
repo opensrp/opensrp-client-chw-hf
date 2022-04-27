@@ -134,14 +134,15 @@ public class HeiHivResultsViewActivity extends BaseHvlResultsViewActivity implem
                 JSONArray fields = jsonForm.getJSONObject(org.smartregister.chw.hf.utils.Constants.JsonFormConstants.STEP1).getJSONArray(org.smartregister.chw.referral.util.JsonFormConstants.FIELDS);
 
                 JSONObject hivTestResultObj = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "hiv_test_result");
+                JSONObject confirmatoryTestResultObj = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "confirmation_hiv_test_result");
                 String hivTestResult = hivTestResultObj.optString(JsonFormUtils.VALUE);
-
+                String confirmatoryTestResult = confirmatoryTestResultObj.optString(JsonFormUtils.VALUE);
                 Event closePmtctEvent = JsonFormUtils.processJsonForm(allSharedPreferences, jsonString, Constants.TABLES.PMTCT_REGISTRATION);
                 JsonFormUtils.tagEvent(allSharedPreferences, closePmtctEvent);
                 closePmtctEvent.setEventType(org.smartregister.chw.hf.utils.Constants.Events.PMTCT_CLOSE_VISITS);
                 closePmtctEvent.setBaseEntityId(HeiDao.getMotherBaseEntityId(baseEntityId));
 
-                if (hivTestResult.equalsIgnoreCase("positive")) {
+                if (hivTestResult.equalsIgnoreCase("positive") && confirmatoryTestResult.equalsIgnoreCase("yes")) {
                     Event closeHeiEvent = getCloseEventForPositive(allSharedPreferences, jsonString);
                     //process the events
                     NCUtils.processEvent(closePmtctEvent.getBaseEntityId(), new JSONObject(org.smartregister.chw.pmtct.util.JsonFormUtils.gson.toJson(closePmtctEvent)));

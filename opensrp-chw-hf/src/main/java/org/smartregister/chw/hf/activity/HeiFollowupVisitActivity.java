@@ -15,6 +15,7 @@ import org.smartregister.chw.hf.interactor.HeiFollowupVisitInteractor;
 import org.smartregister.chw.hf.schedulers.HfScheduleTaskExecutor;
 import org.smartregister.chw.pmtct.activity.BasePmtctHomeVisitActivity;
 import org.smartregister.chw.pmtct.domain.MemberObject;
+import org.smartregister.chw.pmtct.model.BasePmtctHomeVisitAction;
 import org.smartregister.chw.pmtct.presenter.BasePmtctHomeVisitPresenter;
 import org.smartregister.chw.pmtct.util.Constants;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
@@ -25,6 +26,7 @@ import org.smartregister.util.LangUtils;
 
 import java.text.MessageFormat;
 import java.util.Date;
+import java.util.LinkedHashMap;
 
 import timber.log.Timber;
 
@@ -83,6 +85,12 @@ public class HeiFollowupVisitActivity extends BasePmtctHomeVisitActivity {
         String age = Utils.getTranslatedDate(getDuration(Utils.getValue(client.getColumnmaps(), DBConstants.KEY.DOB, false)), this);
 
         tvTitle.setText(MessageFormat.format("{0}, {1} \u00B7 {2}", memberObject.getFullName(), age, getString(R.string.hei_visit)));
+    }
+
+    @Override
+    public void initializeActions(LinkedHashMap<String, BasePmtctHomeVisitAction> map) {
+        actionList.clear();
+        super.initializeActions(map);
     }
 
     @Override

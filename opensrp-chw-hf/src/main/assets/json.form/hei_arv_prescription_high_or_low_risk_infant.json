@@ -89,6 +89,37 @@
         }
       },
       {
+        "key": "number_of_nvp_days_dispensed",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "number_of_nvp_days_dispensed",
+        "type": "edit_text",
+        "edit_type": "number",
+        "hint": "Number of days dispensed",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter number of days dispensed"
+        },
+        "v_numeric_integer": {
+          "value": "true",
+          "err": "Please enter a valid number"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Number of dispensed days should be greater than 0"
+        },
+        "v_max": {
+          "value": "180",
+          "err": "Number of dispensed days should be less than or equal to 180"
+        },
+        "relevance": {
+          "step1:provided_nvp_syrup": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
         "key": "reason_for_not_providing_nvp_syrup",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -162,14 +193,6 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "visit_number",
         "type": "hidden"
-      },
-      {
-        "key": "followup_status",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "followup_status",
-        "type": "hidden",
-        "value": "continuing_with_services"
       },
       {
         "key": "prophylaxis_arv_for_high_and_low_risk_given",
