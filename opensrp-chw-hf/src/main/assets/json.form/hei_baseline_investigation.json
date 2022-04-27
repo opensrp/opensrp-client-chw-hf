@@ -77,12 +77,13 @@
         }
       },
       {
-        "key": "transferred_clinic",
-        "openmrs_entity_id": "transferred_clinic",
+        "key": "name_of_hf",
+        "openmrs_entity_id": "name_of_hf",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "hint": "Transferred Clinic Name",
-        "type": "edit_text",
+        "type": "tree",
+        "tree": [],
         "relevance": {
           "step1:visit_type": {
             "type": "string",

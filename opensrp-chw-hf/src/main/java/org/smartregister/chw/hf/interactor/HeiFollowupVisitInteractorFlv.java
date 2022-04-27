@@ -2,10 +2,12 @@ package org.smartregister.chw.hf.interactor;
 
 import android.content.Context;
 
+import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.core.utils.FormUtils;
+import org.smartregister.chw.hf.BuildConfig;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.actionhelper.HeiAntibodyTestAction;
 import org.smartregister.chw.hf.actionhelper.HeiArvPrescriptionHighOrLowRiskInfantAction;
@@ -15,6 +17,7 @@ import org.smartregister.chw.hf.actionhelper.HeiCtxAction;
 import org.smartregister.chw.hf.actionhelper.HeiDnaPcrTestAction;
 import org.smartregister.chw.hf.actionhelper.NextFollowupVisitAction;
 import org.smartregister.chw.hf.dao.HeiDao;
+import org.smartregister.chw.hf.repository.HfLocationRepository;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.pmtct.PmtctLibrary;
 import org.smartregister.chw.pmtct.contract.BasePmtctHomeVisitContract;
@@ -26,10 +29,16 @@ import org.smartregister.chw.pmtct.util.JsonFormUtils;
 import org.smartregister.chw.pmtct.util.VisitUtils;
 import org.smartregister.chw.referral.util.JsonFormConstants;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
+import org.smartregister.domain.Location;
+import org.smartregister.domain.LocationTag;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import timber.log.Timber;
 
@@ -37,7 +46,75 @@ import static org.smartregister.chw.core.utils.Utils.getCommonPersonObjectClient
 import static org.smartregister.chw.core.utils.Utils.getDuration;
 
 public class HeiFollowupVisitInteractorFlv implements PmtctFollowupVisitInteractor.Flavor {
+    private static JSONObject initializeHealthFacilitiesList(JSONObject form) {
+        HfLocationRepository locationRepository = new HfLocationRepository();
+        List<Location> locations = locationRepository.getAllLocationsWithTags();
+        if (locations != null && form != null) {
 
+            Collections.sort(locations, (location1, location2) -> StringUtils.capitalize(location1.getProperties().getName()).compareTo(StringUtils.capitalize(location2.getProperties().getName())));
+            try {
+                JSONArray fields = form.getJSONObject(Constants.JsonFormConstants.STEP1)
+                        .getJSONArray(JsonFormConstants.FIELDS);
+                JSONObject referralHealthFacilities = null;
+                for (int i = 0; i < fields.length(); i++) {
+                    if (fields.getJSONObject(i)
+                            .getString(JsonFormConstants.KEY).equals(Constants.JsonFormConstants.NAME_OF_HF)
+                    ) {
+                        referralHealthFacilities = fields.getJSONObject(i);
+                        break;
+                    }
+                }
+                JSONArray tree = referralHealthFacilities.getJSONArray("tree");
+                String parentTagName = "Region";
+                for (Location location : locations) {
+                    Set<LocationTag> locationTags = location.getLocationTags();
+                    if (locationTags.iterator().next().getName().equalsIgnoreCase(parentTagName)) {
+                        JSONObject treeNode = new JSONObject();
+                        treeNode.put("name", StringUtils.capitalize(location.getProperties().getName()));
+                        treeNode.put("key", StringUtils.capitalize(location.getProperties().getName()));
+
+                        JSONArray childNodes = setChildNodes(locations, location.getId(), parentTagName);
+                        if (childNodes != null)
+                            treeNode.put("nodes", childNodes);
+
+                        tree.put(treeNode);
+                    }
+                }
+            } catch (JSONException e) {
+                Timber.e(e);
+            }
+        }
+        return form;
+    }
+
+    private static JSONArray setChildNodes(List<Location> locations, String parentLocationId, String parentTagName) {
+        JSONArray nodes = new JSONArray();
+        ArrayList<String> locationHierarchyTags = new ArrayList<>(Arrays.asList(BuildConfig.LOCATION_HIERACHY));
+
+        for (Location location : locations) {
+            Set<LocationTag> locationTags = location.getLocationTags();
+            String childTagName = locationHierarchyTags.get(locationHierarchyTags.indexOf(parentTagName) + 1);
+            if (locationTags.iterator().next().getName().equalsIgnoreCase(childTagName) && location.getProperties().getParentId().equals(parentLocationId)) {
+                JSONObject childNode = new JSONObject();
+                try {
+                    childNode.put("name", StringUtils.capitalize(location.getProperties().getName()));
+                    childNode.put("key", StringUtils.capitalize(location.getProperties().getName()));
+
+                    JSONArray childNodes = setChildNodes(locations, location.getId(), childTagName);
+                    if (childNodes != null)
+                        childNode.put("nodes", childNodes);
+
+                    nodes.put(childNode);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        if (nodes.length() > 0) {
+            return nodes;
+        } else return null;
+
+    }
 
     @Override
     public LinkedHashMap<String, BasePmtctHomeVisitAction> calculateActions(BasePmtctHomeVisitContract.View view, MemberObject memberObject, BasePmtctHomeVisitContract.InteractorCallBack interactorCallBack) throws BasePmtctHomeVisitAction.ValidationException {
@@ -153,11 +230,13 @@ public class HeiFollowupVisitInteractorFlv implements PmtctFollowupVisitInteract
         } catch (JSONException e) {
             Timber.e(e);
         }
+        JSONObject baselineInvestigationForm = initializeHealthFacilitiesList(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.getHeiBaselineInvestigation()));
 
         BasePmtctHomeVisitAction BaselineInvestigation = new BasePmtctHomeVisitAction.Builder(context, context.getString(R.string.anc_first_visit_baseline_investigation))
                 .withOptional(false)
                 .withDetails(details)
                 .withFormName(Constants.JsonForm.getHeiBaselineInvestigation())
+                .withJsonPayload(baselineInvestigationForm.toString())
                 .withHelper(new HeiBaselineInvestigationAction(memberObject))
                 .build();
         actionList.put(context.getString(R.string.anc_first_visit_baseline_investigation),BaselineInvestigation);
