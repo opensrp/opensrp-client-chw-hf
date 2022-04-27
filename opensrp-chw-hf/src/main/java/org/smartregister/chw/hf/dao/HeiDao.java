@@ -69,7 +69,7 @@ public class HeiDao extends AbstractDao {
     }
 
     public static boolean isEligibleForDnaCprHivTest(String baseEntityID) {
-        return !isEligibleForAntiBodiesHivTest(baseEntityID);
+        return true;
     }
 
     public static boolean isEligibleForArvPrescriptionForHighRisk(String baseEntityID) {
