@@ -306,10 +306,10 @@ public class HeiDao extends AbstractDao {
 
     public static Date getHeiFollowUpVisitDate(String baseEntityID) {
         //for latest followup visit dates
-        String sql = "SELECT followup_visit_date FROM ec_hei_followup WHERE followup_status <> 'lost_to_followup' AND followup_status <> 'transfer_out' AND entity_id = '" + baseEntityID + "'"
+        String sql = "SELECT next_visit_date FROM ec_hei_followup WHERE followup_status <> 'lost_to_followup' AND followup_status <> 'transfer_out' AND entity_id = '" + baseEntityID + "'"
                 + "ORDER BY visit_number DESC "
                 + "LIMIT 1";
-        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "followup_visit_date");
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "next_visit_date");
 
         List<String> res = readData(sql, dataMap);
         if (res == null || res.size() != 1 || res.get(0) == null)

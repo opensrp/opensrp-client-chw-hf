@@ -163,7 +163,7 @@ public class HeiFollowupVisitInteractorFlv implements PmtctFollowupVisitInteract
         actionList.put(context.getString(R.string.anc_first_visit_baseline_investigation),BaselineInvestigation);
 
         BasePmtctHomeVisitAction DNAPCRTest = new BasePmtctHomeVisitAction.Builder(context, context.getString(R.string.dna_pcr_sample_collection))
-                .withOptional(false)
+                .withOptional(true)
                 .withDetails(details)
                 .withFormName(Constants.JsonForm.getHeiDnaPcrSampleCollection())
                 .withJsonPayload(dnaPcrForm.toString())
