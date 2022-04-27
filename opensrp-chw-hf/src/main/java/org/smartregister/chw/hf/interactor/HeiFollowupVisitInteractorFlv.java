@@ -10,6 +10,7 @@ import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.actionhelper.HeiAntibodyTestAction;
 import org.smartregister.chw.hf.actionhelper.HeiArvPrescriptionHighOrLowRiskInfantAction;
 import org.smartregister.chw.hf.actionhelper.HeiArvPrescrptionHighRiskInfantAction;
+import org.smartregister.chw.hf.actionhelper.HeiBaselineInvestigationAction;
 import org.smartregister.chw.hf.actionhelper.HeiCtxAction;
 import org.smartregister.chw.hf.actionhelper.HeiDnaPcrTestAction;
 import org.smartregister.chw.hf.dao.HeiDao;
@@ -151,6 +152,14 @@ public class HeiFollowupVisitInteractorFlv implements PmtctFollowupVisitInteract
         } catch (JSONException e) {
             Timber.e(e);
         }
+
+        BasePmtctHomeVisitAction BaselineInvestigation = new BasePmtctHomeVisitAction.Builder(context, context.getString(R.string.anc_first_visit_baseline_investigation))
+                .withOptional(false)
+                .withDetails(details)
+                .withFormName(Constants.JsonForm.getHeiBaselineInvestigation())
+                .withHelper(new HeiBaselineInvestigationAction(memberObject))
+                .build();
+        actionList.put(context.getString(R.string.anc_first_visit_baseline_investigation),BaselineInvestigation);
 
         BasePmtctHomeVisitAction DNAPCRTest = new BasePmtctHomeVisitAction.Builder(context, context.getString(R.string.dna_pcr_sample_collection))
                 .withOptional(false)
