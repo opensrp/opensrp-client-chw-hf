@@ -87,7 +87,7 @@
         "relevance": {
           "step1:visit_type": {
             "type": "string",
-            "ex": "equalTo(., \"transit\")"
+            "ex": "equalTo(., \"transfer_out\")"
           }
         },
         "v_required": {
