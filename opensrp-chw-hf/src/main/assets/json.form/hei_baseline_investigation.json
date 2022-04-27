@@ -85,9 +85,10 @@
         "type": "tree",
         "tree": [],
         "relevance": {
-          "step1:visit_type": {
-            "type": "string",
-            "ex": "equalTo(., \"transfer_out\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "hei_baseline_investigation_relevance.yml"
+            }
           }
         },
         "v_required": {
@@ -147,6 +148,13 @@
         "v_required": {
           "value": true,
           "err": "Please select one"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "hei_baseline_investigation_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -183,6 +191,13 @@
         "v_required": {
           "value": true,
           "err": "Please select one"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "hei_baseline_investigation_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -212,6 +227,13 @@
         "v_required": {
           "value": true,
           "err": "Please enter the weight"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "hei_baseline_investigation_relevance.yml"
+            }
+          }
         }
       }
     ]
