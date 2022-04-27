@@ -80,6 +80,7 @@ public class Constants extends CoreConstants {
 
     public static final class JsonForm {
         //TODO: cleanup
+        private static final String NEXT_FACILITY_VISIT_FORM = "next_facility_visit_date_form";
         public static final String HIV_REGISTRATION = "hiv_registration";
         public static final String HVL_TEST_RESULTS = "pmtct_hvl_test_results";
         public static final String CD4_TEST_RESULTS = "pmtct_cd4_test_results";
@@ -120,6 +121,10 @@ public class Constants extends CoreConstants {
         private static final String PNC_NUTRITIONAL_SUPPLEMENT = "pnc_nutritional_supplement";
         private static final String PMTCT_FOLLOWUP_STATUS = "pmtct_followup_status";
         private static final String ANC_TRANSFER_IN_REGISTRATION = "anc_member_transfer_in_registration";
+
+        public static String getNextFacilityVisitForm() {
+            return NEXT_FACILITY_VISIT_FORM;
+        }
 
         public static String getHeiCommunityFollowupReferral() {
             return HEI_COMMUNITY_FOLLOWUP_REFERRAL;

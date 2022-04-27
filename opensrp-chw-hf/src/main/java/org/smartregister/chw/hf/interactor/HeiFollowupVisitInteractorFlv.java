@@ -13,6 +13,7 @@ import org.smartregister.chw.hf.actionhelper.HeiArvPrescrptionHighRiskInfantActi
 import org.smartregister.chw.hf.actionhelper.HeiBaselineInvestigationAction;
 import org.smartregister.chw.hf.actionhelper.HeiCtxAction;
 import org.smartregister.chw.hf.actionhelper.HeiDnaPcrTestAction;
+import org.smartregister.chw.hf.actionhelper.NextFollowupVisitAction;
 import org.smartregister.chw.hf.dao.HeiDao;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.pmtct.PmtctLibrary;
@@ -210,6 +211,14 @@ public class HeiFollowupVisitInteractorFlv implements PmtctFollowupVisitInteract
                 .build();
         if (HeiDao.isEligibleForArvPrescriptionForHighAndLowRisk(memberObject.getBaseEntityId()))
             actionList.put(context.getString(R.string.arv_prescription_nvp), ARVPrescriptionHighAndLowRisk);
+
+        BasePmtctHomeVisitAction NextFollowupVisitDate = new BasePmtctHomeVisitAction.Builder(context, "Next Visit")
+                .withOptional(false)
+                .withDetails(details)
+                .withFormName(Constants.JsonForm.getNextFacilityVisitForm())
+                .withHelper(new NextFollowupVisitAction())
+                .build();
+        actionList.put("Next Visit", NextFollowupVisitDate);
     }
 
 
