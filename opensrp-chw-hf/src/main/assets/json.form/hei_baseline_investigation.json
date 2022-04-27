@@ -50,8 +50,8 @@
     "title": "HEI Baseline Investigation",
     "fields": [
       {
-        "key": "visit_type",
-        "openmrs_entity_id": "visit_type",
+        "key": "followup_status",
+        "openmrs_entity_id": "followup_status",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "hint": "Visit Type",
@@ -64,12 +64,12 @@
         "keys": [
           "infant_and_mother",
           "infant_with_other_caregiver",
-          "transit"
+          "transfer_out"
         ],
         "openmrs_choice_ids": {
           "infant_and_mother": "infant_and_mother",
           "infant_with_other_caregiver": "infant_with_other_caregiver",
-          "transit": "transit"
+          "transfer_out": "transfer_out"
         },
         "v_required": {
           "value": true,
