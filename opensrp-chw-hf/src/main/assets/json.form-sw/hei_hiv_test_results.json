@@ -147,6 +147,27 @@
         }
       },
       {
+        "key": "hiv_test_result_to_parent_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hiv_test_result_to_parent_date",
+        "type": "date_picker",
+        "hint": "Tarehe ya majibu kupewa mzazi",
+        "expanded": false,
+        "min_date": "today-3y",
+        "max_date": "today",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhari chagua Tarehe ya majibu kupewa mzazi"
+        },
+        "relevance": {
+          "step1:results_provided_to_parents": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
         "key": "prompt_for_linkage_to_ctc",
         "type": "toaster_notes",
         "text": "Wapatie wazazi majibu ya kipimo",
