@@ -421,9 +421,9 @@ public class HfPmtctDao extends CorePmtctDao {
     }
 
     public static boolean isTransferInClient(String baseEntityId) {
-        DataMap<List<String>> dataMap = cursor -> Collections.singletonList(getCursorValue(cursor, "is_transfer_in"));
+        DataMap<List<String>> dataMap = cursor -> Collections.singletonList(getCursorValue(cursor, "is_transfer_in_client"));
 
-        String sql = "SELECT is_transfer_in FROM ec_pmtct_registration WHERE base_entity_id = '" + baseEntityId + "' AND is_transfer_in = true";
+        String sql = "SELECT is_transfer_in_client FROM ec_pmtct_registration WHERE base_entity_id = '" + baseEntityId + "' AND is_transfer_in_client = true";
 
         List<List<String>> res = readData(sql, dataMap);
         return res == null || res.size() <= 0;
