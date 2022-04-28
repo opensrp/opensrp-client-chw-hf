@@ -404,6 +404,14 @@
         "v_required": {
           "value": true,
           "err": "Please enter the upper arm circumference (CM)"
+        },
+        "v_min": {
+          "value": "7.5",
+          "err": "Upper arm circumference can not be less than 7.5 CM"
+        },
+        "v_max": {
+          "value": "13",
+          "err": "Upper arm circumference can not be greater than than 13  CM"
         }
       },
       {

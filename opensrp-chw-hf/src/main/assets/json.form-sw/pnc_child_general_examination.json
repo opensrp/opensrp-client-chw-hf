@@ -397,6 +397,14 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "upper_arm_circumference",
         "openmrs_entity_parent": "",
+        "v_min": {
+          "value": "7.5",
+          "err": "Mzunguko wa juu wa mkono hauwezi kuwa chini ya 7.5"
+        },
+        "v_max": {
+          "value": "13",
+          "err": "Mzunguko wa juu wa mkono hauwezi kuzidi 13"
+        },
         "v_numeric": {
           "value": "true",
           "err": "Ingiza Mzunguko wa juu wa  mkono (CM)"
