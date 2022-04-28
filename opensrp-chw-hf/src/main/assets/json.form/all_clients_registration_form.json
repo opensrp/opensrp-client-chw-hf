@@ -976,13 +976,6 @@
         "v_required": {
           "value": "true",
           "err": "Please pick at least one"
-        },
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "all_clients_member_relevance.yml"
-            }
-          }
         }
       },
       {
@@ -1045,13 +1038,6 @@
         "v_required": {
           "value": "true",
           "err": "Please pick at least one"
-        },
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "all_clients_member_relevance.yml"
-            }
-          }
         }
       },
       {
