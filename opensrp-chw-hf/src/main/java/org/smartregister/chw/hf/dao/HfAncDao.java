@@ -507,6 +507,6 @@ public class HfAncDao extends AbstractDao {
         String sql = "SELECT is_transfer_in FROM ec_anc_register WHERE base_entity_id = '" + baseEntityId + "' AND is_transfer_in = true";
 
         List<List<String>> res = readData(sql, dataMap);
-        return res == null || res.size() <= 0;
+        return res != null && res.size() > 0;
     }
 }
