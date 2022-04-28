@@ -347,6 +347,22 @@
         }
       },
       {
+        "key": "other_phone_number",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_phone_number",
+        "type": "edit_text",
+        "hint": "Namba nyingine ya simu",
+        "v_numeric": {
+          "value": "true",
+          "err": "Namba lazima iwe jumla ya tarakimu 10 kwa urefu"
+        },
+        "v_regex": {
+          "value": "(0[0-9]{9})|\\s*",
+          "err": "Namba lazima iwe na tarakimu 10 na lazima ianze na 06 au 07."
+        }
+      },
+      {
         "key": "id_avail",
         "openmrs_entity_parent": "",
         "openmrs_entity": "person_attribute",
@@ -756,22 +772,6 @@
         "v_required": {
           "value": "true",
           "err": "Tafadhali chagua moja"
-        }
-      },
-      {
-        "key": "other_phone_number",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "other_phone_number",
-        "type": "edit_text",
-        "hint": "Namba nyingine ya simu",
-        "v_numeric": {
-          "value": "true",
-          "err": "Namba lazima iwe jumla ya tarakimu 10 kwa urefu"
-        },
-        "v_regex": {
-          "value": "(0[0-9]{9})|\\s*",
-          "err": "Namba lazima iwe na tarakimu 10 na lazima ianze na 06 au 07."
         }
       },
       {
