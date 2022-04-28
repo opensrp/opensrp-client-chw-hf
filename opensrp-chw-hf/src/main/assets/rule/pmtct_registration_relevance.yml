@@ -5,3 +5,17 @@ priority: 1
 condition: "step1_known_on_art.contains('yes') || step2_hiv_status.contains('positive')"
 actions:
   - "isRelevant = true"
+---
+name: step2_hiv
+description: hiv relevance
+priority: 1
+condition: "!step1_medical_surgical_history.contains('known_on_art')"
+actions:
+  - "isRelevant = true"
+---
+name: step2_is_test_at_32
+description: is_test_at_32 relevance
+priority: 1
+condition: "step2_gest_age >= 32 && step2_hiv.contains('negative')"
+actions:
+  - "isRelevant = true"

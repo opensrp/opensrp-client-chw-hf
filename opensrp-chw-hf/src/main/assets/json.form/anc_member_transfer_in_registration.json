@@ -98,6 +98,13 @@
         ],
         "options": [
           {
+            "key": "known_on_art",
+            "text": "On ART before this pregnancy",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "known_on_art"
+          },
+          {
             "key": "diabetes_mellitus",
             "text": "Diabetes Mellitus",
             "value": false,
@@ -244,6 +251,80 @@
         }
       },
       {
+        "key": "ctc_number",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "ctc_number",
+        "type": "mask_edit_text",
+        "mask": "##-##-####-######",
+        "mask_hint": "12345678912345",
+        "allowed_chars": "0123456789",
+        "hint": "CTC ID",
+        "edit_type": "number",
+        "v_regex": {
+          "value": "(\\d{2}-\\d{2}-\\d{4}-\\d{6})?",
+          "err": "CTC ID should be of the format (XX-XX-XXXX-XXXXXX)"
+        },
+        "v_max_length": {
+          "value": "17",
+          "is_fixed_size": "true",
+          "err": "Please enter a valid CTC ID"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter a valid CTC ID"
+        },
+        "relevance": {
+          "step1:medical_surgical_history": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "known_on_art"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "hiv",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hiv",
+        "value" : "positive",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "step1:medical_surgical_history": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "known_on_art"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "known_on_art",
+        "type": "hidden",
+        "openmrs_entity_id": "known_on_art",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "value": "yes",
+        "relevance": {
+          "step1:medical_surgical_history": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "known_on_art"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
         "key": "parity_value",
         "type": "edit_text",
         "hint": "Parity",
@@ -285,19 +366,20 @@
     "title": "ANC Followup Client Registration",
     "fields": [
       {
-        "key": "edd",
+        "key": "known_last_menstrual_period",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "edd",
+        "openmrs_entity_id": "known_last_menstrual_period",
         "type": "date_picker",
-        "hint": "Expected Date of Delivery (EDD)",
-        "label_info_title": "EDD",
+        "hint": "Last Normal Menstrual Period (LNMP)",
+        "label_info_title": "LNMP",
+        "label_info_text": "LNMP = first day of Last Normal Menstrual Period. If the exact date is unknown, but the period of the month is known, use day 5 for beginning of the month, day 15 for middle of the month and day 25 for end of the month.",
         "expanded": false,
-        "max_date": "today+50w",
-        "min_date": "today+1d",
+        "max_date": "today",
+        "min_date": "today-50w",
         "v_required": {
           "value": "true",
-          "err": "EDD required"
+          "err": "LNMP required"
         }
       },
       {
@@ -305,9 +387,7 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "last_menstrual_period",
-        "type": "edit_text",
-        "hint": "Last Normal Menstrual Period (LNMP)",
-        "read_only": true,
+        "type": "hidden",
         "calculation": {
           "rules-engine": {
             "ex-rules": {
@@ -323,6 +403,22 @@
         "openmrs_entity_id": "",
         "type": "edit_text",
         "hint": "Gestational Age (GA)",
+        "read_only": true,
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_member_transfer_in_registration_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "edd",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "edd",
+        "type": "edit_text",
+        "hint": "Expected Date of Delivery (EDD)",
         "read_only": true,
         "calculation": {
           "rules-engine": {
@@ -415,6 +511,13 @@
         "v_required": {
           "value": "true",
           "err": "Please answer this question"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_registration_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -443,9 +546,10 @@
           "err": "Please answer this question"
         },
         "relevance": {
-          "step2:gest_age": {
-            "type": "numeric",
-            "ex": "greaterThanEqualTo(.,\"32\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_registration_relevance.yml"
+            }
           }
         }
       },
