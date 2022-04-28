@@ -54,7 +54,7 @@
         "type": "native_radio",
         "label": "Has the client been vaccinated for TT?",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "tt1_vaccination",
+        "openmrs_entity_id": "tt_vaccination",
         "openmrs_entity_parent": "",
         "options": [
           {
