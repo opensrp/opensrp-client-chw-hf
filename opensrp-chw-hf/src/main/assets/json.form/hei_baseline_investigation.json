@@ -1,0 +1,241 @@
+{
+  "count": "1",
+  "encounter_type": "HEI Baseline Investigation",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "step1": {
+    "title": "HEI Baseline Investigation",
+    "fields": [
+      {
+        "key": "followup_status",
+        "openmrs_entity_id": "followup_status",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "hint": "Visit Type",
+        "type": "spinner",
+        "values": [
+          "Infant and Mother (IM)",
+          "Infant with other caregiver (IC)",
+          "Transit (O)"
+        ],
+        "keys": [
+          "infant_and_mother",
+          "infant_with_other_caregiver",
+          "transfer_out"
+        ],
+        "openmrs_choice_ids": {
+          "infant_and_mother": "infant_and_mother",
+          "infant_with_other_caregiver": "infant_with_other_caregiver",
+          "transfer_out": "transfer_out"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please select one"
+        }
+      },
+      {
+        "key": "name_of_hf",
+        "openmrs_entity_id": "name_of_hf",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "hint": "Transferred Clinic Name",
+        "type": "tree",
+        "tree": [],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "hei_baseline_investigation_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please specify the transferred clinic"
+        }
+      },
+      {
+        "key": "health_status",
+        "openmrs_entity_id": "health_status",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "hint": "Health Status",
+        "type": "spinner",
+        "values": [
+          "Diarrhoea",
+          "DEAR Draining Ears",
+          "Fever",
+          "KS Kaposi Sarcoma",
+          "MAL Malnutrition",
+          "OC Oesophageal Candidiasis",
+          "Pneumonia",
+          "SD Skin Disease",
+          "Thrush (Oral Candidiasis)",
+          "TB Tuberculosis",
+          "Well",
+          "LN Lymphadenopathy"
+        ],
+        "keys": [
+          "diarrhoea",
+          "draining_ears",
+          "fever",
+          "kaposi_sarcoma",
+          "malnutrition",
+          "oesophageal_candidiasis",
+          "pneumonia",
+          "skin_disease",
+          "thrush",
+          "tuberculosis",
+          "well",
+          "lymphadenopathy"
+        ],
+        "openmrs_choice_ids": {
+          "diarrhoea": "diarrhoea",
+          "draining_ears": "draining_ears",
+          "fever": "fever",
+          "kaposi_sarcoma": "kaposi_sarcoma",
+          "malnutrition": "malnutrition",
+          "oesophageal_candidiasis": "oesophageal_candidiasis",
+          "pneumonia": "pneumonia",
+          "skin_disease": "skin_disease",
+          "thrush": "thrush",
+          "tuberculosis": "tuberculosis",
+          "well": "well",
+          "lymphadenopathy": "lymphadenopathy"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please select one"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "hei_baseline_investigation_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "infant_feeding_practice",
+        "openmrs_entity_id": "infant_feeding_practice",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "hint": "Infant Feeding Practice",
+        "type": "spinner",
+        "values": [
+          "EBF: Infant fed by only breast milk",
+          "RF: Infant fed only by formula milk",
+          "MF: Infant fed by breast milk and formula milk",
+          "BF + additional food: Infant fed by breast milk as well as other complementary food",
+          "RF + additional food: Infant fed by formula milk and complementary food",
+          "SBF: Child has stopped breast milk completely"
+        ],
+        "keys": [
+          "ebf",
+          "rf",
+          "mf",
+          "bf+",
+          "rf+",
+          "sbf"
+        ],
+        "openmrs_choice_ids": {
+          "ebf": "ebf",
+          "rf": "rf",
+          "mf": "mf",
+          "bf+": "bf+",
+          "rf+": "rf+",
+          "sbf": "sbf"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please select one"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "hei_baseline_investigation_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "weight",
+        "type": "edit_text",
+        "hint": "Weight (KG)",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "weight",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the weight"
+        },
+        "v_min": {
+          "value": "2.5",
+          "err": "The weight must be equal or greater than 2.5 (KG)"
+        },
+        "v_max": {
+          "value": "20",
+          "err": "The weight must be equal or less than 20 (KG)"
+        },
+        "v_max_length": {
+          "value": "5",
+          "is_fixed_size": "true",
+          "err": "Please enter a valid weight."
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter the weight"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "hei_baseline_investigation_relevance.yml"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

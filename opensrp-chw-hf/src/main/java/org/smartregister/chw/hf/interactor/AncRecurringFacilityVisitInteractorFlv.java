@@ -85,7 +85,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                     }
                 }
                 JSONArray tree = referralHealthFacilities.getJSONArray("tree");
-                String parentTagName = "Zone";
+                String parentTagName = "Region";
                 for (Location location : locations) {
                     Set<LocationTag> locationTags = location.getLocationTags();
                     if (locationTags.iterator().next().getName().equalsIgnoreCase(parentTagName)) {
