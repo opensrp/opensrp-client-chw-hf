@@ -832,13 +832,6 @@
         "v_required": {
           "value": "true",
           "err": "Tafadhari chagua mojawapo"
-        },
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "all_clients_member_update_relevance.yml"
-            }
-          }
         }
       },
       {
@@ -848,7 +841,7 @@
         "openmrs_entity_id": "Community_Leader",
         "type": "check_box",
         "combine_checkbox_option_values": "true",
-        "label": "Je ana uongozi wowote kwenye jamii?",
+        "label": "Je, ana uongozi wowote kwenye jamii?",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "exclusive": [
@@ -901,13 +894,6 @@
         "v_required": {
           "value": "true",
           "err": "Tafadhari chagua mojawapo"
-        },
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "all_clients_member_update_relevance.yml"
-            }
-          }
         }
       },
       {

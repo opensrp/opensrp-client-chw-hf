@@ -815,14 +815,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhali chagua angalau moja"
-        },
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "family_member_relevance.yml"
-            }
-          }
+          "err": "Tafadhali chagua moja"
         }
       },
       {
@@ -885,13 +878,6 @@
         "v_required": {
           "value": "true",
           "err": "Tafadhali chagua angalau moja"
-        },
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "family_member_relevance.yml"
-            }
-          }
         }
       },
       {
