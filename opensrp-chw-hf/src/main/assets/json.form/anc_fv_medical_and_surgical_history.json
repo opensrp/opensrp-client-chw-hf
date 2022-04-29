@@ -94,11 +94,11 @@
             "openmrs_entity_id": "thyroid_diseases"
           },
           {
-            "key": "anaemia_blood_transfusion",
-            "text": "Anaemia/blood transfusion",
+            "key": "blood_transfusion",
+            "text": "Blood transfusion",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "anaemia_blood_transfusion"
+            "openmrs_entity_id": "blood_transfusion"
           },
           {
             "key": "known_on_art",

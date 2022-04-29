@@ -74,7 +74,7 @@
           },
           {
             "key": "sickle_cell_disease",
-            "text": "Ugonjwa wa seli mundu",
+            "text": "Ugonjwa wa Seli mundu",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "sickle_cell_disease"
@@ -94,11 +94,11 @@
             "openmrs_entity_id": "thyroid_diseases"
           },
           {
-            "key": "anaemia_blood_transfusion",
-            "text": "Kupungua damu",
+            "key": "blood_transfusion",
+            "text": "Kuongezewa damu",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "anaemia_blood_transfusion"
+            "openmrs_entity_id": "blood_transfusion"
           },
           {
             "key": "known_on_art",
@@ -130,7 +130,7 @@
           },
           {
             "key": "third_degree_tear",
-            "text": "Kuchanika msamba",
+            "text": "Kuchanika msamba hatua ya tatu",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "third_degree_tear"
@@ -144,7 +144,7 @@
           },
           {
             "key": "female_genital_mutilation",
-            "text": "Ukeketaji",
+            "text": "Tohara kwa wanawake",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "female_genital_mutilation"
@@ -158,7 +158,7 @@
           },
           {
             "key": "closely_spaced_pregnancy",
-            "text": "Mimba zilizopishana kwa muda kidogo sana (miaka 2)",
+            "text": "Mimba zilizokaribiana (chini ya miaka miwili)",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "closely_spaced_pregnancy"
@@ -172,7 +172,7 @@
           },
           {
             "key": "hx_hemorrhage",
-            "text": "Historia ya kupoteza damu",
+            "text": "Historia ya kutokwa damu nyingi baada ya kujifungua",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "hx_hemorrhage"
@@ -186,21 +186,21 @@
           },
           {
             "key": "anaemia",
-            "text": "Upungufu wa damu",
+            "text": "Ugonjwa wa upungufu wa damu",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "anaemia"
           },
           {
             "key": "difficult_delivery",
-            "text": "Kujifungua kwa shida (Vacuum, episiotomy)",
+            "text": "Kuzalishwa kwa kuvutwa na kifaa au kuongezewa njia (Vacuum, episiotomy)",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "difficult_delivery"
           },
           {
             "key": "hx_abortions",
-            "text": "Historia ya utoaji mimba",
+            "text": "Historia ya kuharibika kwa mimba",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "hx_abortions"
@@ -229,7 +229,7 @@
         "v_max_length": {
           "value": "17",
           "is_fixed_size": "true",
-          "err":"Tafadhali jaza namba ya CTC ya mteja"
+          "err": "Tafadhali jaza namba ya CTC ya mteja"
         },
         "v_required": {
           "value": true,
