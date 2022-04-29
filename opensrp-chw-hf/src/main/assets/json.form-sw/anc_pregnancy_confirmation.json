@@ -210,7 +210,7 @@
     ]
   },
   "step2": {
-    "title": "Pregnancy Confirmation",
+    "title": "Kuhakikisha ujauzito",
     "next": "step3",
     "fields": [
       {
@@ -233,7 +233,7 @@
           },
           {
             "key": "uss",
-            "text": "Ultrasound",
+            "text": "Kumulika kwa Mashine",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "uss"
@@ -285,7 +285,7 @@
         "openmrs_entity_id": "uss",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
-        "label": "Tafadhari Chagua majibu ya Ultrasound",
+        "label": "Tafadhari Chagua majibu ya Kumulika kwa mashine",
         "options": [
           {
             "key": "present_gestation_sac",
@@ -311,7 +311,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Tafadhari Chagua majibu ya Ultrasound"
+          "err": "Tafadhari Chagua majibu ya Kumulika kwa mashine"
         }
       }
     ]
