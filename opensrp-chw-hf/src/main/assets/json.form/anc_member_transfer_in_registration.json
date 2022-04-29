@@ -484,7 +484,7 @@
       {
         "key": "hiv",
         "type": "native_radio",
-        "label": "HIV Test Results",
+        "label": "Client HIV Test Results from the previous clinic",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "hiv",
         "openmrs_entity_parent": "",
@@ -503,7 +503,7 @@
           },
           {
             "key": "test_not_conducted",
-            "text": "The client has not yet been tested for HIV",
+            "text": "The client had not yet been tested for HIV in the previous Clinic",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "test_not_conducted"
           }
