@@ -48,7 +48,7 @@
     "encounter_location": ""
   },
   "step1": {
-    "title": "Triage",
+    "title": "Uchambuzi wa wagonjwa au majeruhi",
     "next": "step2",
     "fields": [
       {
