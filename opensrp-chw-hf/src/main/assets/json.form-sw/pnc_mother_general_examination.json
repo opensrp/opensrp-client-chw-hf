@@ -122,7 +122,7 @@
       {
         "key": "prompt_for_management_of_hypertension",
         "type": "toaster_notes",
-        "text": "Mtibu Mteja Hypertension kulingana na mwongozo wa Wizara ya Afya",
+        "text": "Mtibu Mteja Shinikizo la damu ya juu kulingana na mwongozo wa Wizara ya Afya",
         "openmrs_entity_id": "prompt_for_management_of_hypertension",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -138,7 +138,7 @@
       {
         "key": "prompt_for_management_of_hypotension",
         "type": "toaster_notes",
-        "text": "Mpatie IV Fluids, pia bainisha chanzo cha Hypertension na dhibiti hali hii kulingana na mwongozo wa Wizara ya Afya",
+        "text": "Mpatie IV Fluids, pia bainisha chanzo cha Shinikizo la damu ya chini na dhibiti hali hii kulingana na mwongozo wa Wizara ya Afya",
         "openmrs_entity_id": "prompt_for_management_of_hypotension",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -499,7 +499,7 @@
       {
         "key": "prompt_for_engorgement_mastitis",
         "type": "toaster_notes",
-        "text": "Mpatie Mama Antibiotic na analgesics, mshauri amnyonyeshe mtoto kwenye titi lisilo na michubuko",
+        "text": "Mpatie Mama Antibiotiki (kiuavijasumu) na dawa za kutuliza maumivu, mshauri amnyonyeshe mtoto kwenye titi lisilo na michubuko",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -665,19 +665,19 @@
         "options": [
           {
             "key": "lochia_rubra",
-            "text": "Lochia Rubra",
+            "text": "Ute mwekundu ukeni (lokia)",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "lochia_rubra"
           },
           {
             "key": "lochia_serosa",
-            "text": "Lochia Serosa",
+            "text": "Ute wa pinki au kahawia ukeni (lokia)",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "lochia_serosa"
           },
           {
             "key": "lochia_alba",
-            "text": "Lochia Alba",
+            "text": "Ute mweupe ukeni",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "lochia_alba"
           }
@@ -802,7 +802,7 @@
       {
         "key": "puerperal_psychosis",
         "type": "native_radio",
-        "label": "Je, Mama ana Puerperal Psychosis?",
+        "label": "Je, Mama amepata Kichaa wakati wa mimba?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "puerperal_psychosis",
         "openmrs_entity_parent": "",

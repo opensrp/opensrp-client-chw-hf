@@ -49,7 +49,7 @@
   "global": {
   },
   "step1": {
-    "title": "Malaria Investigation",
+    "title": "Uchunguzi wa Malaria",
     "fields": [
       {
         "key": "client_on_malaria_medication",
@@ -57,18 +57,18 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "client_on_malaria_medication",
         "type": "native_radio",
-        "label": "Is the client on malaria medication?",
+        "label": "Je, Mteja anatumia dawa za Malaria?",
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndio",
             "openmrs_entity_id": "yes",
             "openmrs_entity": "concept",
             "value": false
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "openmrs_entity_id": "no",
             "openmrs_entity": "concept",
             "value": false
@@ -78,26 +78,26 @@
       {
         "key": "mRDT_for_malaria",
         "type": "native_radio",
-        "label": "mRDT for Malaria Results",
+        "label": "Majibu ya kipimo cha Malaria",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "mRDT_for_malaria",
         "openmrs_entity_parent": "",
         "options": [
           {
             "key": "positive",
-            "text": "Positive",
+            "text": "Chanya",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "positive"
           },
           {
             "key": "negative",
-            "text": "Negative",
+            "text": "Hasi",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "negative"
           },
           {
             "key": "test_not_conducted",
-            "text": "Malaria Test not conducted",
+            "text": "Kipimo cha Malaria hakijafanyika",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "test_not_conducted"
           }
@@ -110,7 +110,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Please answer this question"
+          "err": "Tafadhali jibu swali hili"
         }
       },
       {
@@ -134,13 +134,13 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "reason_for_not_conducting_malaria_test",
         "type": "spinner",
-        "hint": "Reason as to why the Malaria test was not conducted",
+        "hint": "Sababu ya kipimo cha malaria kutokufanyika",
         "values": [
-          "Test kits are out of stock",
-          "The client was in an emergency situation",
-          "The client refused to be tested",
-          "We are still counselling the client",
-          "Other (Specify)"
+          "Vifaa vya kupima vimeisha",
+          "Mteja alikuwa katika hali ya dharura",
+          "Mteja alikataa kupimwa",
+          "Tunaendelea kumshauri mteja",
+          "Nyingine (Bainisha)"
         ],
         "keys": [
           "test_kits_out_of_stock",
@@ -158,7 +158,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Please select a reason"
+          "err": "Tafadhali chagua sababu"
         },
         "relevance": {
           "step1:mRDT_for_malaria": {
@@ -177,7 +177,7 @@
         "edit_type": "name",
         "v_required": {
           "value": "true",
-          "err": "Please enter the reason"
+          "err": "Tafadhali jaza sababu"
         },
         "relevance": {
           "step1:reason_for_not_conducting_malaria_test": {
@@ -206,7 +206,7 @@
         "openmrs_entity_id": "malaria_preventive_therapy_ipt1",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "label": "Malaria Preventive Therapy",
+        "label": "Dawa za kinga za malaria",
         "options": [
           {
             "key": "ipt1",
@@ -217,7 +217,7 @@
           },
           {
             "key": "medication_not_given",
-            "text": "Malaria medication not given",
+            "text": "Hajapewa dawa za Malaria",
             "openmrs_entity_id": "medication_not_given",
             "openmrs_entity": "concept",
             "value": false
@@ -241,12 +241,12 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "reason_for_not_giving_malaria_medication",
         "type": "spinner",
-        "hint": "Reason as to why the Malaria medication was not given",
+        "hint": "Sababu ya kutokupewa dawa za Malaria",
         "values": [
-          "Out of stock",
-          "The client did not agree to take the medication",
-          "The client is allergic to medication",
-          "Other (Specify)"
+          "Bidhaa zimeisha",
+          "Mteja amekataa kuchukua dawa",
+          "Anamzio na dawa (Allegy)",
+          "Nyingine (Bainisha)"
         ],
         "keys": [
           "out_of_stock",
@@ -263,7 +263,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Please select a reason"
+          "err": "Tafadhali chagua sababu"
         },
         "relevance": {
           "rules-engine": {
@@ -279,11 +279,11 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "other_reason_malaria_medication_not_given",
         "type": "edit_text",
-        "hint": "Specify other reasons for not giving the Malaria medication",
+        "hint": "Elezea sababu ya mteja kutokupewa dawa za kujikinga na Malaria",
         "edit_type": "name",
         "v_required": {
           "value": "true",
-          "err": "Please enter the reason"
+          "err": "Tafadhali jaza sababu"
         },
         "relevance": {
           "step1:reason_for_not_giving_malaria_medication": {
@@ -298,18 +298,18 @@
         "openmrs_entity_id": "llin_provision",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "label": "Was the client provided with LLINs (Long lasting insecticidal nets)?",
+        "label": "Je, Mteja alipewa LLINs (vyandarua vya muda mrefu)?",
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndio",
             "openmrs_entity_id": "yes",
             "openmrs_entity": "concept",
             "value": false
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "openmrs_entity_id": "no",
             "openmrs_entity": "concept",
             "value": false
@@ -317,7 +317,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Please select if the client was provided with LLINs"
+          "err": "Tafadhali chagua kama Mteja amepewa chandarua cha muda mrefu"
         }
       },
       {
@@ -326,12 +326,12 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "reason_for_not_providing_llin",
         "type": "spinner",
-        "hint": "Reason as to why the client was not provided with LLINs",
+        "hint": "Sababu ya mteja kutokupewa chandarua cha muda mrefu (LLINs)",
 
         "values": [
-          "Out of stock",
-          "The client refused",
-          "Other (Specify)"
+          "Bidhaa zimeisha",
+          "Mteja alikataa",
+          "Nyingine (Bainisha)"
         ],
         "keys": [
           "out_of_stock",
@@ -345,7 +345,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Please select a reason"
+          "err": "Tafadhali chagua sababu"
         },
         "relevance": {
           "step1:llin_provision": {
@@ -360,11 +360,11 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "other_reason_llin_not_given",
         "type": "edit_text",
-        "hint": "Specify other reasons for not providing the LLINs",
+        "hint": "Elezea sababu ya mteja kutokupewa chandarua cha muda mrefu (LLINs)",
         "edit_type": "name",
         "v_required": {
           "value": "true",
-          "err": "Please enter the reason"
+          "err": "Tafadhali jaza sababu"
         },
         "relevance": {
           "step1:reason_for_not_providing_llin": {
