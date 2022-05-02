@@ -48,7 +48,7 @@
     "encounter_location": ""
   },
   "step1": {
-    "title": "Medical and Surgical History",
+    "title": "Historia ya Matibabu na Upasuaji",
     "next": "step2",
     "fields": [
       {
@@ -89,7 +89,7 @@
         "type": "check_box",
         "label_info_image_src": "img/chw.png",
         "label_info_has_image": true,
-        "label": "Any Medical and surgical History of the Client?",
+        "label": "Historia yoyote ya Matibabu na upasuaji ya Mgonjwa?",
         "combine_checkbox_option_values": "true",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
@@ -106,49 +106,49 @@
           },
           {
             "key": "diabetes_mellitus",
-            "text": "Diabetes Mellitus",
+            "text": "Kisukari",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "diabetes_mellitus"
           },
           {
             "key": "sickle_cell_disease",
-            "text": "Sickle Cell Disease",
+            "text": "Ugonjwa wa Seli mundu",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "sickle_cell_disease"
           },
           {
             "key": "heart_diseases",
-            "text": "Heart Diseases",
+            "text": "Magonjwa ya moyo",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "heart_diseases"
           },
           {
             "key": "thyroid_diseases",
-            "text": "Thyroid Diseases",
+            "text": "Magonjwa ya tezi",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "thyroid_diseases"
           },
           {
             "key": "blood_transfusion",
-            "text": "Blood transfusion",
+            "text": "Kuongezewa damu",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "blood_transfusion"
           },
           {
             "key": "epilepsy",
-            "text": "Epilepsy",
+            "text": "Kifafa",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "epilepsy"
           },
           {
             "key": "previous_c_s",
-            "text": "Previous C/S",
+            "text": "Kujifungua kwa upasuaji",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "previous_c_s"
@@ -162,84 +162,84 @@
           },
           {
             "key": "third_degree_tear",
-            "text": "Third Degree Tear",
+            "text": "Kuchanika msamba hatua ya tatu",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "third_degree_tear"
           },
           {
             "key": "repaired_fistula",
-            "text": "Repaired Fistula",
+            "text": "Fistula iliyotibiwa",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "repaired_fistula"
           },
           {
             "key": "female_genital_mutilation",
-            "text": "Female Genital Mutilation",
+            "text": "Tohara kwa wanawake",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "female_genital_mutilation"
           },
           {
             "key": "parity",
-            "text": "Parity",
+            "text": "Idadi ya mimba zilizofikia wiki 24 au zaidi",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "parity"
           },
           {
             "key": "closely_spaced_pregnancy",
-            "text": "Closely spaced pregnancy (within 2 years)",
+            "text": "Mimba zilizokaribiana (chini ya miaka miwili)",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "closely_spaced_pregnancy"
           },
           {
             "key": "pregnant_more_than_four",
-            "text": "Pregnant four or more times",
+            "text": "Kuwa mjamzito mara nne au zaidi",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "pregnant_more_than_four"
           },
           {
             "key": "hx_hemorrhage",
-            "text": "History of Hemorrhage",
+            "text": "Historia ya kutokwa damu nyingi baada ya kujifungua",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "hx_hemorrhage"
           },
           {
             "key": "history_of_high_blood_pressure",
-            "text": "History of high blood pressure",
+            "text": "Historia ya shinikizo la damu",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "history_of_high_blood_pressure"
           },
           {
             "key": "anaemia",
-            "text": "Anaemia",
+            "text": "Ugonjwa wa upungufu wa damu",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "anaemia"
           },
           {
             "key": "difficult_delivery",
-            "text": "Difficult delivery (Vacuum, episiotomy)",
+            "text": "Kuzalishwa kwa kuvutwa na kifaa au kuongezewa njia (Vacuum, episiotomy)",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "difficult_delivery"
           },
           {
             "key": "hx_abortions",
-            "text": "History of Abortions",
+            "text": "Historia ya kuharibika kwa mimba",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "hx_abortions"
           },
           {
             "key": "none",
-            "text": "None",
+            "text": "Hakuna",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "none"
@@ -247,7 +247,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Please pick at least one"
+          "err": "Tafadhali chagua angalau moja"
         }
       },
       {
@@ -259,20 +259,20 @@
         "mask": "##-##-####-######",
         "mask_hint": "12345678912345",
         "allowed_chars": "0123456789",
-        "hint": "CTC ID",
+        "hint": "Namba ya Utambulisho CTC",
         "edit_type": "number",
         "v_regex": {
           "value": "(\\d{2}-\\d{2}-\\d{4}-\\d{6})?",
-          "err": "CTC ID should be of the format (XX-XX-XXXX-XXXXXX)"
+          "err": "Namba ya CTC inatakiwa kuwa (XX-XX-XXXX-XXXXXX)"
         },
         "v_max_length": {
           "value": "17",
           "is_fixed_size": "true",
-          "err": "Please enter a valid CTC ID"
+          "err": "Tafadhali jaza namba ya CTC ya mteja"
         },
         "v_required": {
           "value": true,
-          "err": "Please enter a valid CTC ID"
+          "err": "Tafadhali jaza namba ya CTC ya mteja"
         },
         "relevance": {
           "step1:medical_surgical_history": {
@@ -327,17 +327,17 @@
       {
         "key": "parity_value",
         "type": "edit_text",
-        "hint": "Parity",
+        "hint": "Idadi ya mimba zilizofikia wiki 24 au zaidi",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "parity_value",
         "openmrs_entity_parent": "",
         "v_numeric": {
           "value": "true",
-          "err": "Please enter parity number"
+          "err": "Tafadhali jaza namba halali"
         },
         "v_required": {
           "value": true,
-          "err": "Please enter the parity number"
+          "err": "Tafadhali jaza namba halali"
         },
         "relevance": {
           "step1:medical_surgical_history": {
@@ -363,7 +363,7 @@
     ]
   },
   "step2": {
-    "title": "ANC Followup Client Registration",
+    "title": "Usajili wa mahudhurio ya kliniki ya uzazi",
     "fields": [
       {
         "key": "known_last_menstrual_period",
@@ -371,15 +371,15 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "known_last_menstrual_period",
         "type": "date_picker",
-        "hint": "Last Normal Menstrual Period (LNMP)",
-        "label_info_title": "LNMP",
-        "label_info_text": "LNMP = first day of Last Normal Menstrual Period. If the exact date is unknown, but the period of the month is known, use day 5 for beginning of the month, day 15 for middle of the month and day 25 for end of the month.",
+        "hint": "Tarehe  ya mwisho ya hedhi iliyopita (LNMP)",
+        "label_info_title": "Tarehe  ya mwisho ya hedhi iliyopita (LNMP)",
+        "label_info_text": "Tarehe  ya mwisho ya hedhi iliyopita = siku ya kwanza ya kipindi cha mwisho cha hedhi. Ikiwa tarehe halisi haijulikani, lakini kipindi cha mwezi kinajulikana, tumia siku ya 5 kwa mwanzo wa mwezi, siku ya 15 katikati ya mwezi na siku ya 25 kwa mwisho wa mwezi.",
         "expanded": false,
         "max_date": "today",
         "min_date": "today-50w",
         "v_required": {
           "value": "true",
-          "err": "LNMP required"
+          "err": "Tarehe ya mwisho ya hedhi iliyopita inahitajika kujazwa"
         }
       },
       {
@@ -402,7 +402,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "",
         "type": "edit_text",
-        "hint": "Gestational Age (GA)",
+        "hint": "Umri wa Ujauzito",
         "read_only": true,
         "calculation": {
           "rules-engine": {
@@ -418,7 +418,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "edd",
         "type": "edit_text",
-        "hint": "Expected Date of Delivery (EDD)",
+        "hint": "Makadirio ya muda wa kujifungua",
         "read_only": true,
         "calculation": {
           "rules-engine": {
@@ -445,31 +445,31 @@
       {
         "key": "height",
         "type": "edit_text",
-        "hint": "Height (CM)",
+        "hint": "Urefu (CM)",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "height",
         "openmrs_entity_parent": "",
         "v_numeric": {
           "value": "true",
-          "err": "Please enter the height"
+          "err": "Tafadhali jaza urefu"
         },
         "v_min": {
           "value": "60",
-          "err": "The height must be equal or greater than 60 (CM)"
+          "err": "Urefu lazima uwe sawasawa au zaidi ya 60 (CM)"
         },
         "v_max": {
           "value": "200",
-          "err": "The height must be equal or less than 200 (CM)"
+          "err": "Urefu lazima uwe sawasawa au chini ya 200 (CM)"
         },
         "v_required": {
           "value": true,
-          "err": "Please enter the height"
+          "err": "Tafadhali jaza urefu"
         }
       },
       {
         "key": "prompt_for_short_stature",
         "type": "toaster_notes",
-        "text": "Counsel the client on her risk of obstructed labour and advise her to deliver at a health care facility",
+        "text": "Mshauri Mama kuhusiana na hatari ya kuchelewa kujifungua na mshauri akajifungulie kwenye Kituo cha Afya",
         "openmrs_entity_id": "prompt_for_short_stature",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -491,13 +491,13 @@
         "options": [
           {
             "key": "positive",
-            "text": "Positive",
+            "text": "Chanya",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "positive"
           },
           {
             "key": "negative",
-            "text": "Negative",
+            "text": "Hasi",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "negative"
           },
@@ -510,7 +510,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Please answer this question"
+          "err": "Tafadhali jibu swali hili"
         },
         "relevance": {
           "rules-engine": {
@@ -523,7 +523,7 @@
       {
         "key": "is_test_at_32",
         "type": "native_radio",
-        "label": "Was this the second HIV test?",
+        "label": "Je, hichi ni kipimo cha pili cha maambukizi ya virusi vya ukimwi?",
         "openmrs_entity_id": "is_test_at_32",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -543,7 +543,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Please answer this question"
+          "err": "Tafadhali jibu swali hili"
         },
         "relevance": {
           "rules-engine": {
@@ -562,20 +562,20 @@
         "mask": "##-##-####-######",
         "mask_hint": "12345678912345",
         "allowed_chars": "0123456789",
-        "hint": "CTC ID",
+        "hint": "Namba ya Utambulisho CTC",
         "edit_type": "number",
         "v_regex": {
           "value": "(\\d{2}-\\d{2}-\\d{4}-\\d{6})?",
-          "err": "CTC ID should be of the format (XX-XX-XXXX-XXXXXX)"
+          "err": "Namba ya CTC inatakiwa kuwa (XX-XX-XXXX-XXXXXX)"
         },
         "v_max_length": {
           "value": "17",
           "is_fixed_size": "true",
-          "err": "Please enter a valid CTC ID"
+          "err": "Tafadhali jaza namba ya CTC ya mteja"
         },
         "v_required": {
           "value": true,
-          "err": "Please enter a valid CTC ID"
+          "err": "Tafadhali jaza namba ya CTC ya mteja"
         },
         "relevance": {
           "step2:hiv": {
@@ -682,7 +682,7 @@
       {
         "key": "prompt_for_abdominal_movement_with_respiration",
         "type": "toaster_notes",
-        "text": "Refer the client for further management",
+        "text": "Toa rufaa kwa huduma zaidi",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",

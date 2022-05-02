@@ -238,14 +238,14 @@
         "options": [
           {
             "key": "rbg",
-            "text": "Kipimo cha nasibu cha sukari kwenye damu bila mpangilio (rbg)",
+            "text": "Kipimo cha wingi wa sukari mwilini (rbg)",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "rbg",
             "openmrs_entity_parent": ""
           },
           {
             "key": "gtt",
-            "text": "Kipimo cha ustahimivu wa sukari (GTT))",
+            "text": "Kipimo cha kugundua jinsi sukari mwilini inavyoratibiwa (GTT)",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "gtt"

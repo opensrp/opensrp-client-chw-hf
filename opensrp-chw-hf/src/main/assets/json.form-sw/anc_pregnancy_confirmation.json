@@ -48,7 +48,7 @@
     "encounter_location": ""
   },
   "step1": {
-    "title": "Triage",
+    "title": "Uchambuzi wa wagonjwa au majeruhi",
     "next": "step2",
     "fields": [
       {
@@ -210,7 +210,7 @@
     ]
   },
   "step2": {
-    "title": "Pregnancy Confirmation",
+    "title": "Kuhakikisha ujauzito",
     "next": "step3",
     "fields": [
       {
@@ -233,7 +233,7 @@
           },
           {
             "key": "uss",
-            "text": "Ultrasound",
+            "text": "Kumulika kwa Mashine",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "uss"
@@ -285,7 +285,7 @@
         "openmrs_entity_id": "uss",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
-        "label": "Tafadhari Chagua majibu ya Ultrasound",
+        "label": "Tafadhari Chagua majibu ya Kumulika kwa mashine",
         "options": [
           {
             "key": "present_gestation_sac",
@@ -311,13 +311,13 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Tafadhari Chagua majibu ya Ultrasound"
+          "err": "Tafadhari Chagua majibu ya Kumulika kwa mashine"
         }
       }
     ]
   },
   "step3": {
-    "title": "End",
+    "title": "Mwisho",
     "fields": [
       {
         "key": "known_last_menstrual_period",
@@ -325,15 +325,15 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "known_last_menstrual_period",
         "type": "date_picker",
-        "hint": "Mara ya Mwisho kuona hedhi yako",
-        "label_info_title": "LNMP",
-        "label_info_text": "LNMP = first day of Last Normal Menstrual Period. If the exact date is unknown, but the period of the month is known, use day 5 for beginning of the month, day 15 for middle of the month and day 25 for end of the month.",
+        "hint": "Tarehe  ya mwisho ya hedhi iliyopita (LNMP)",
+        "label_info_title": "Tarehe  ya mwisho ya hedhi iliyopita (LNMP)",
+        "label_info_text": "Tarehe  ya mwisho ya hedhi iliyopita = siku ya kwanza ya kipindi cha mwisho cha hedhi. Ikiwa tarehe halisi haijulikani, lakini kipindi cha mwezi kinajulikana, tumia siku ya 5 kwa mwanzo wa mwezi, siku ya 15 katikati ya mwezi na siku ya 25 kwa mwisho wa mwezi.",
         "expanded": false,
         "max_date": "today",
         "min_date": "today-50w",
         "v_required": {
           "value": "true",
-          "err": "LNMP inahitajika kujazwa"
+          "err": "Tarehe ya mwisho ya hedhi iliyopita inahitajika kujazwa"
         },
         "calculation": {
           "rules-engine": {
@@ -360,7 +360,7 @@
         "options": [
           {
             "key": "lmp_unknown",
-            "text": "LNMP haijulikani",
+            "text": "Tarehe ya mwisho ya hedhi iliyopita haijulikani",
             "text_size": "18px",
             "value": "false",
             "openmrs_entity": "concept",
@@ -381,7 +381,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "fundal_height",
         "type": "edit_text",
-        "hint": "Kimo cha tumbo (cm)",
+        "hint": "Kimo cha tumbo (CM)",
         "calculation": {
           "rules-engine": {
             "ex-rules": {
@@ -406,11 +406,11 @@
         },
         "v_min": {
           "value": "12",
-          "err": "Kimo cha mimba lazima kiwe sawa au zaidi ya 12cm"
+          "err": "Kimo cha mimba lazima kiwe sawa au zaidi ya 12 CM"
         },
         "v_max": {
           "value": "36",
-          "err": "Kimo cha Mimba lazima kiwe sawa au chini ya kuliko 36cm"
+          "err": "Kimo cha Mimba lazima kiwe sawa au chini ya kuliko 36 CM"
         }
       },
       {
