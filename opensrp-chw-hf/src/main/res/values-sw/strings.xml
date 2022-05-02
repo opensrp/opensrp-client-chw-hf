@@ -36,7 +36,7 @@
     <string name="chw_agreed_to_be_tested">Amekubali kupimwa</string>
     <string name="chw_test_location">Atapimwa wapi</string>
     <string name="optional"></string>
-    <string name="action_pregnancy_confirmation_referrals">Kuthibitisha Ujauzito</string>
+    <string name="action_pregnancy_confirmation_referrals">Kuhakikisha Ujauzito</string>
     <string name="anc_pregnacy_status">Hali ya ujauzito: "</string>
     <string name="anc_pregnacy_status_viable">Bado ana ujauzito</string>
     <string name="anc_pregnacy_status_fetal_death">Mtoto amefia tumboni</string>
@@ -52,7 +52,7 @@
     <string name="partner_registration_action_title">Usajili wa Mwenza</string>
     <string name="partner_testing_action_title">Upimaji kwa Mwenza</string>
     <string name="anc_recuring_visit_review_birth_and_emergency_plan">Mpango binafsi wa kujifungua na kukabiliana na dharura</string>
-    <string name="anc_recuring_visit_triage">Tathmini ya Awali ya Mteja</string>
+    <string name="anc_recuring_visit_triage">Uchambuzi wa wagonjwa au majeruhi</string>
     <string name="anc_recuring_visit_pregnancy_status">Hali ya Ujauzito</string>
     <string name="anc_recuring_visit_cunsultation">Mashauriano ya ANC</string>
     <string name="anc_recuring_visit_lab_tests">Vipimo Vya Maabara</string>
@@ -82,7 +82,7 @@
     <string name="partner_registered">Mwenza Amesajiliwa</string>
     <string name="partner_tested">Mwenza Amepimwa</string>
     <string name="review_birth_emergency_plan">Kupitia na Kuhakiki Mpango wa Kujifungua na Dharura Umekamilika</string>
-    <string name="triage_complete">Tathmini ya Awali ya Mteja Imekamilika</string>
+    <string name="triage_complete">Uchambuzi wa wagonjwa au majeruhi Umekamilika</string>
     <string name="anc_consultation_done">Tathmini ya ANC na kusasisha kijitabu cha wajawazito umekamilika</string>
     <string name="lab_tests_complete">Vipimo Vya Maabara Vimefanyika</string>
     <string name="med_and_supp_issued">Dawa na Virutubisho Vimetolewa</string>

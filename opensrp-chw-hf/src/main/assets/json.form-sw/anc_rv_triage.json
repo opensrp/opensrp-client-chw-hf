@@ -48,7 +48,7 @@
   },
   "global": {},
   "step1": {
-    "title": "Tathmini ya Awali ya Mteja",
+    "title": "Uchambuzi wa wagonjwa au majeruhi",
     "fields": [
       {
         "key": "gest_age",
@@ -346,7 +346,7 @@
         "openmrs_entity_parent": "",
         "text": "Toa huduma ya dharura kwa Mteja",
         "toaster_type": "warning",
-        "toaster_info": "The client exhibits one or more of the emergency signs and needs emergency care",
+        "toaster_info": "Mteja anaonyesha ishara moja au zaidi ya dharura na anahitaji huduma ya dharura",
         "relevance": {
           "step1:danger_signs": {
             "ex-checkbox": [

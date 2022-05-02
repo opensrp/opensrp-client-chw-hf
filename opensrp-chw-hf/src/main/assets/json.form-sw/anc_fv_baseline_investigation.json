@@ -587,14 +587,14 @@
         "options": [
           {
             "key": "rbg",
-            "text": "Random Blood Glucose Test (rbg)",
+            "text": "Kipimo cha wingi wa sukari mwilini (rbg)",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "rbg",
             "openmrs_entity_parent": ""
           },
           {
             "key": "gtt",
-            "text": "Glucose Tolerance test (GTT)",
+            "text": "Kipimo cha kugundua jinsi sukari mwilini inavyoratibiwa (GTT)",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "gtt"
