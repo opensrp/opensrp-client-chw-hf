@@ -1,0 +1,1517 @@
+{
+  "count": "6",
+  "encounter_type": "Labour and Delivery Triage",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "step1": {
+    "next": "step2",
+    "title": "Triage",
+    "fields": [
+      {
+        "key": "systolic",
+        "type": "edit_text",
+        "hint": "Systolic (Blood Pressure)",
+        "openmrs_entity_id": "systolic",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the systolic value"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Systolic value must be equal or greater than 0"
+        },
+        "v_max": {
+          "value": "320",
+          "err": "Systolic value must be equal or less than 320"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter the systolic value"
+        }
+      },
+      {
+        "key": "diastolic",
+        "type": "edit_text",
+        "hint": "Diastolic (Blood Pressure)",
+        "openmrs_entity_id": "diastolic",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the diastolic value"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Diastolic value must be equal or greater than 0"
+        },
+        "v_max": {
+          "value": "200",
+          "err": "Diastolic value must be equal or less than 200"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter the diastolic value"
+        },
+        "constraints": [
+          {
+            "type": "numeric",
+            "ex": "lessThan(., step1:systolic)",
+            "err": "The diastolic value must be less than the systolic value"
+          }
+        ]
+      },
+      {
+        "key": "prompt_for_management_of_hypertension",
+        "type": "toaster_notes",
+        "text": "Manage the hypertension according to standard guidelines",
+        "openmrs_entity_id": "prompt_for_management_of_hypertension",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_triage_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_management_of_hypotension",
+        "type": "toaster_notes",
+        "text": "Elicit the cause of hypotension and manage according to standard guidelines",
+        "openmrs_entity_id": "prompt_for_management_of_hypotension",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_triage_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "pulse_rate",
+        "type": "edit_text",
+        "hint": "Pulse Rate (Beats per minute)",
+        "openmrs_entity_id": "pulse_rate",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the pulse rate"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "The pulse rate must be equal or greater than 0 (bpm)"
+        },
+        "v_max": {
+          "value": "200",
+          "err": "The pulse rate must be equal or less than 200 (bpm)"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter the pulse rate"
+        }
+      },
+      {
+        "key": "prompt_for_Bradycardia",
+        "type": "toaster_notes",
+        "text": "Elicit the cause of bradycardia and manage according to standard guidelines",
+        "openmrs_entity_id": "prompt_for_Bradycardia",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:pulse_rate": {
+            "type": "numeric",
+            "ex": "lessThan(.,\"70\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_Tachycardia",
+        "type": "toaster_notes",
+        "text": "Elicit the cause of tachycardia and manage according to standard guidelines",
+        "openmrs_entity_id": "prompt_for_Tachycardia",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:pulse_rate": {
+            "type": "numeric",
+            "ex": "greaterThan(.,\"140\")"
+          }
+        }
+      },
+      {
+        "key": "respiratory_rate",
+        "type": "edit_text",
+        "hint": "Respiratory Rate (Breaths per minute)",
+        "openmrs_entity_id": "respiratory_rate",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the respiratory rate"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "The pulse rate must be equal or greater than 0 (Breaths per minute)"
+        },
+        "v_max": {
+          "value": "100",
+          "err": "The pulse rate must be equal or less than 100 (Breaths per minute)"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter the pulse rate"
+        }
+      },
+      {
+        "key": "fetal_heart_rate",
+        "type": "edit_text",
+        "hint": "Count Fetal Heart Rate (bpm)",
+        "openmrs_entity_id": "fetal_heart_rate",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the fetal heart rate"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Fetal heart rate must be equal or greater than 0"
+        },
+        "v_max": {
+          "value": "300",
+          "err": "Fetal heart rate must be equal or less than 300"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the fetal heart rate"
+        }
+      },
+      {
+        "key": "prompt_for_fetal_distress",
+        "type": "toaster_notes",
+        "text": "Refer for further management",
+        "openmrs_entity_id": "prompt_for_fetal_distress",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_triage_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "temperature",
+        "type": "edit_text",
+        "hint": "Temperature (C)",
+        "openmrs_entity_id": "temperature",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the temperature"
+        },
+        "v_min": {
+          "value": "10",
+          "err": "Temperature must be equal or greater than 10"
+        },
+        "v_max": {
+          "value": "50",
+          "err": "Temperature must be equal or less than 50"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter the temperature"
+        }
+      },
+      {
+        "key": "notify_client_has_fever",
+        "type": "toaster_notes",
+        "text": "Conduct relevant laboratory tests to elicit the cause of fever and manage according to standard guidelines ",
+        "openmrs_entity_id": "notify_client_has_fever",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:temperature": {
+            "type": "numeric",
+            "ex": "greaterThan(.,\"37.8\")"
+          }
+        }
+      },
+      {
+        "key": "notify_client_has_hypothermia",
+        "type": "toaster_notes",
+        "text": "Manage the hypothermia according to standard guidelines",
+        "openmrs_entity_id": "notify_client_has_hypothermia",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:temperature": {
+            "type": "numeric",
+            "ex": "lessThan(.,\"36.5\")"
+          }
+        }
+      },
+      {
+        "key": "weight",
+        "type": "edit_text",
+        "hint": "Weight (KG)",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "weight",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the weight"
+        },
+        "v_min": {
+          "value": "20",
+          "err": "The weight must be equal or greater than 20 (KG)"
+        },
+        "v_max": {
+          "value": "300",
+          "err": "The weight must be equal or less than 300 (KG)"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter the weight"
+        }
+      },
+      {
+        "key": "height",
+        "type": "edit_text",
+        "hint": "Height (CM)",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "height",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the height"
+        },
+        "v_min": {
+          "value": "60",
+          "err": "The height must be equal or greater than 60 (CM)"
+        },
+        "v_max": {
+          "value": "200",
+          "err": "The height must be equal or less than 200 (CM)"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter the height"
+        }
+      },
+      {
+        "key": "prompt_for_short_stature",
+        "type": "toaster_notes",
+        "text": "Counsel the client on her risk of obstructed labour and advise her to deliver at a health care facility",
+        "openmrs_entity_id": "prompt_for_short_stature",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:height": {
+            "type": "numeric",
+            "ex": "lessThan(.,\"145\")"
+          }
+        }
+      },
+      {
+        "key": "bmi",
+        "type": "edit_text",
+        "hint": "Body Mass Index (BMI)",
+        "read_only": "true",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "bmi",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the height"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter the height"
+        },
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_triage_calculation.yml"
+            }
+          }
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_triage_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_underweight",
+        "type": "toaster_notes",
+        "text": "Manage the undernourished client using standard guidelines",
+        "openmrs_entity_id": "prompt_for_underweight",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:bmi": {
+            "type": "numeric",
+            "ex": "lessThan(.,\"18.5\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_overweight",
+        "type": "toaster_notes",
+        "text": "Manage the overweight client using standard guidelines",
+        "openmrs_entity_id": "prompt_for_overweight",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:bmi": {
+            "type": "numeric",
+            "ex": "greaterThanEqualTo(.,\"29\")"
+          }
+        }
+      },
+      {
+        "key": "danger_signs",
+        "type": "check_box",
+        "label": "Danger signs present",
+        "combine_checkbox_option_values": "true",
+        "openmrs_entity_id": "danger_signs",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "exclusive": [
+          "none"
+        ],
+        "options": [
+          {
+            "key": "bleeding_vag",
+            "text": "Bleeding Vaginally",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "bleeding_vag"
+          },
+          {
+            "key": "severe_headache",
+            "text": "Severe Headache",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "severe_headache"
+          },
+          {
+            "key": "severe_abdominal_pain",
+            "text": "Severe Abdominal Pain",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "severely_abdominal_pain"
+          },
+          {
+            "key": "convulsion",
+            "text": "Convulsion",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "convulsion"
+          },
+          {
+            "key": "blurred_vision",
+            "text": "Blurred Vision",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "blurred_vision"
+          },
+          {
+            "key": "severe_breathing_difficulty",
+            "text": "Severe Breathing Difficulty",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "severe_breathing_difficulty"
+          },
+          {
+            "key": "unconscious",
+            "text": "Unconscious",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "unconscious"
+          },
+          {
+            "key": "reduced_fetal_movement",
+            "text": "Reduced Fetal Movement",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "reduced_fetal_movement"
+          },
+          {
+            "key": "dizziness",
+            "text": "Dizziness",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "dizziness"
+          },
+          {
+            "key": "none",
+            "text": "None",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "none"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select the danger sings"
+        }
+      }
+    ]
+  },
+  "step2": {
+    "next": "step3",
+    "title": "True Labour",
+    "fields": [
+      {
+        "key": "true_labour",
+        "type": "check_box",
+        "label": "True labour?",
+        "combine_checkbox_option_values": "true",
+        "openmrs_entity_id": "true_labour",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "exclusive": [
+          "none"
+        ],
+        "options": [
+          {
+            "key": "painful_uterine_contraction",
+            "text": "Painful, regular uterine contractions",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "painful_uterine_contraction"
+          },
+          {
+            "key": "bloody_vaginal_discharge",
+            "text": "Show (Bloody mucoid vaginal discharge)",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "bloody_vaginal_discharge"
+          },
+          {
+            "key": "effacement_and_dilatation",
+            "text": "Effacement and dilatation of cervix",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "effacement_and_dilatation"
+          },
+          {
+            "key": "progressive_descent",
+            "text": "Progressive descent of the presenting part",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "progressive_descent"
+          },
+          {
+            "key": "none",
+            "text": "None",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "none"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select at least one"
+        }
+      }
+    ]
+  },
+  "step3": {
+    "next": "step4",
+    "title": "Admission Information",
+    "fields": [
+      {
+        "key": "admission_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "admission_date",
+        "type": "date_picker",
+        "hint": "Admission Date",
+        "expanded": false,
+        "min_date": "today-2y",
+        "max_date": "today",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the admission date"
+        }
+      },
+      {
+        "key": "admission_time",
+        "type": "time_picker",
+        "hint": "Admission Time",
+        "openmrs_entity_id": "admission_time",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": true,
+          "err": "Please enter the admission time"
+        }
+      },
+      {
+        "key": "admitting_person_name",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "admitting_person_name",
+        "type": "edit_text",
+        "input_type": "name",
+        "hint": "Admitting Nurse/Doctor Name",
+        "v_regex": {
+          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
+          "err": "Please enter the admitting nurse/doctor's name"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the admitting nurse/doctor's name"
+        }
+      },
+      {
+        "key": "admission_place",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "admission_place",
+        "type": "edit_text",
+        "hint": "Admitted From",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the admission place"
+        }
+      },
+      {
+        "key": "admission_reason",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "admission_reason",
+        "type": "edit_text",
+        "hint": "Reason for Admission",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the admission reason"
+        }
+      },
+      {
+        "key": "reason_for_referral",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_referral",
+        "type": "edit_text",
+        "hint": "Reason for Referral/Management Received",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the referral/management reason"
+        }
+      },
+      {
+        "key": "danger_signs",
+        "type": "check_box",
+        "label": "Danger signs present",
+        "combine_checkbox_option_values": "true",
+        "openmrs_entity_id": "danger_signs",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "exclusive": [
+          "none"
+        ],
+        "options": [
+          {
+            "key": "bleeding_vag",
+            "text": "Bleeding Vaginally",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "bleeding_vag"
+          },
+          {
+            "key": "severe_headache",
+            "text": "Severe Headache",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "severe_headache"
+          },
+          {
+            "key": "severe_abdominal_pain",
+            "text": "Severe Abdominal Pain",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "severely_abdominal_pain"
+          },
+          {
+            "key": "convulsion",
+            "text": "Convulsion",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "convulsion"
+          },
+          {
+            "key": "blurred_vision",
+            "text": "Blurred Vision",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "blurred_vision"
+          },
+          {
+            "key": "severe_breathing_difficulty",
+            "text": "Severe Breathing Difficulty",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "severe_breathing_difficulty"
+          },
+          {
+            "key": "unconscious",
+            "text": "Unconscious",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "unconscious"
+          },
+          {
+            "key": "reduced_fetal_movement",
+            "text": "Reduced Fetal Movement",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "reduced_fetal_movement"
+          },
+          {
+            "key": "dizziness",
+            "text": "Dizziness",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "dizziness"
+          },
+          {
+            "key": "none",
+            "text": "None",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "none"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select the danger sings"
+        }
+      },
+      {
+        "key": "danger_signs_present_toaster",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "",
+        "type": "toaster_notes",
+        "text": "Manage the condition according to standard guideline",
+        "toaster_type": "problem",
+        "relevance": {
+          "step3:danger_signs": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "bleeding_vag",
+                  "severe_headache",
+                  "unconscious",
+                  "reduced_fetal_movement",
+                  "dizziness",
+                  "blurred_vision",
+                  "severe_abdominal_pain",
+                  "severe_breathing_difficulty",
+                  "convulsion"
+                ]
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "step4": {
+    "next": "step5",
+    "title": "Obstetric History",
+    "fields": [
+      {
+        "key": "gravida",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "gravida",
+        "type": "edit_text",
+        "edit_type": "number",
+        "hint": "Gravida",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the gravida number"
+        }
+      },
+      {
+        "key": "para",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "para",
+        "type": "edit_text",
+        "edit_type": "number",
+        "hint": "Para",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the para number"
+        }
+      },
+      {
+        "key": "children_alive",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "children_alive",
+        "type": "edit_text",
+        "edit_type": "number",
+        "hint": "Number of children alive",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the number of children alive"
+        }
+      },
+      {
+        "key": "number_of_abortion",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "number_of_abortion",
+        "type": "edit_text",
+        "edit_type": "number",
+        "hint": "Number of abortions",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the number of abortions"
+        }
+      },
+      {
+        "key": "last_menstrual_period",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "last_menstrual_period",
+        "type": "date_picker",
+        "hint": "Last Normal Menstrual Period (LNMP)",
+        "label_info_title": "LNMP",
+        "label_info_text": "LNMP = first day of Last Normal Menstrual Period. If the exact date is unknown, but the period of the month is known, use day 5 for beginning of the month, day 15 for middle of the month and day 25 for end of the month.",
+        "expanded": false,
+        "max_date": "today",
+        "min_date": "today-50w",
+        "v_required": {
+          "value": "true",
+          "err": "LMP required"
+        }
+      },
+      {
+        "key": "edd",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "edd",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_triage_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "gest_age_note",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "edit_text",
+        "hint": "Gestational Age (GA) in Weeks",
+        "read_only": true,
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_triage_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "edd_note",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "",
+        "type": "edit_text",
+        "hint": "Expected Date of Delivery (EDD)",
+        "read_only": true,
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_triage_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "gest_age",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "gest_age",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_triage_calculation.yml"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "step5": {
+    "next": "step6",
+    "title": "ANC Clinic Findings",
+    "fields": [
+      {
+        "key": "visit_number",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "visit_number",
+        "type": "edit_text",
+        "edit_type": "number",
+        "hint": "Number of Visits",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the visit number"
+        }
+      },
+      {
+        "key": "ipt_doses",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "ipt_doses",
+        "type": "edit_text",
+        "hint": "IPT Doses",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the ipt dose number"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "IPT dose must be equal or greater than 0"
+        },
+        "v_max": {
+          "value": "4",
+          "err": "IPT dose must be equal or less than 4"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the ipt dose number"
+        }
+      },
+      {
+        "key": "tt_doses",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "tt_doses",
+        "type": "edit_text",
+        "hint": "TT Doses",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the TT dose number"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "TT dose must be equal or greater than 0"
+        },
+        "v_max": {
+          "value": "5",
+          "err": "TT dose must be equal or less than 5"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the TT dose number"
+        }
+      },
+      {
+        "key": "itn_llin_used",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "itn_llin_used",
+        "type": "spinner",
+        "hint": "Was ITN/LLIN used?",
+        "values": [
+          "Yes",
+          "No"
+        ],
+        "keys": [
+          "Yes",
+          "No"
+        ],
+        "openmrs_choice_ids": {
+          "Yes": "Yes",
+          "No": "No"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select one"
+        }
+      },
+      {
+        "key": "hb_level",
+        "type": "edit_text",
+        "hint": "Last Measured HB Level (g/dl)",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hb_level",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the HB level"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "HB level must be equal or greater than 0 (g/dl)"
+        },
+        "v_max": {
+          "value": "20",
+          "err": "HB level must be equal or less than 20 (g/dl)"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please provide a value"
+        }
+      },
+      {
+        "key": "management_provided_for_hb_level",
+        "type": "native_radio",
+        "label": "Was management provided for abnormal HB Level?",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "management_provided_for_hb_level",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        },
+        "relevance": {
+          "step5:hb_level": {
+            "type": "numeric",
+            "ex": "lessThanEqualTo(.,\"8.5\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_moderate_anaemia_management",
+        "type": "toaster_notes",
+        "text": "Manage the mild anaemia according to standard guidelines",
+        "openmrs_entity_id": "prompt_for_moderate_anaemia_management",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_triage_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "hb_test_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hb_test_date",
+        "type": "date_picker",
+        "hint": "Last Measured HB Date",
+        "expanded": false,
+        "min_date": "today-2y",
+        "max_date": "today",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the HB test date"
+        }
+      },
+      {
+        "key": "pmtct",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "pmtct",
+        "type": "native_radio",
+        "label": "PMTCT",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "chk_one",
+            "text": "1",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_one"
+          },
+          {
+            "key": "chk_two",
+            "text": "2",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_two"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select one"
+        }
+      },
+      {
+        "key": "management_provided_for_pmtct",
+        "type": "native_radio",
+        "label": "Was management provided for PMTCT?",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "management_provided_for_pmtct",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        },
+        "relevance": {
+          "step5:pmtct": {
+            "type": "string",
+            "ex": "equalTo(., \"chk_one\")"
+          }
+        }
+      },
+      {
+        "key": "pmtct_test_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "pmtct_test_date",
+        "type": "date_picker",
+        "hint": "Last PMTCT test Date",
+        "expanded": false,
+        "min_date": "today-2y",
+        "max_date": "today",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the last PMTCT test date"
+        }
+      },
+      {
+        "key": "art_prescription",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "art_prescription",
+        "type": "native_radio",
+        "label": "ART/Prescription",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
+      },
+      {
+        "key": "syphilis",
+        "type": "native_radio",
+        "label": "VDRL (Syphilis)",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "syphilis",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "positive",
+            "text": "Positive",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "positive"
+          },
+          {
+            "key": "negative",
+            "text": "Negative",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "negative"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
+      },
+      {
+        "key": "management_provided_for_syphilis",
+        "type": "native_radio",
+        "label": "Was management provided for syphilis?",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "management_provided_for_syphilis",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        },
+        "relevance": {
+          "step5:syphilis": {
+            "type": "string",
+            "ex": "equalTo(., \"positive\")"
+          }
+        }
+      },
+      {
+        "key": "blood_group",
+        "type": "spinner",
+        "hint": "Blood Group",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "blood_group",
+        "openmrs_entity_parent": "",
+        "values": [
+          "A",
+          "B",
+          "AB",
+          "O"
+        ],
+        "keys": [
+          "A",
+          "B",
+          "AB",
+          "O"
+        ],
+        "openmrs_choice_ids": {
+          "A": "A",
+          "B": "B",
+          "AB": "AB",
+          "O": "O"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please choose a blood group"
+        }
+      },
+      {
+        "key": "rh_factor",
+        "type": "native_radio",
+        "label": "Rh",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "rh_factor",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "positive",
+            "text": "Positive",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "positive"
+          },
+          {
+            "key": "negative",
+            "text": "Negative",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "negative"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
+      },
+      {
+        "key": "management_provided_for_rh",
+        "type": "native_radio",
+        "label": "Was management provided for negative RH?",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "management_provided_for_rh",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        },
+        "relevance": {
+          "step5:rh_factor": {
+            "type": "string",
+            "ex": "equalTo(., \"negative\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_rh_negative",
+        "type": "toaster_notes",
+        "text": "Provide management according to standard guideline",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step5:management_provided_for_rh": {
+            "type": "string",
+            "ex": "equalTo(., \"no\")"
+          }
+        }
+      }
+    ]
+  },
+  "step6": {
+    "title": "Current Labour",
+    "fields": [
+      {
+        "key": "labour_onset_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "labour_onset_date",
+        "type": "date_picker",
+        "hint": "Labour onset Date",
+        "expanded": false,
+        "min_date": "today-2y",
+        "max_date": "today",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the labour onset date"
+        }
+      },
+      {
+        "key": "labour_onset_time",
+        "type": "time_picker",
+        "hint": "Labour onset Time",
+        "openmrs_entity_id": "labour_onset_time",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": true,
+          "err": "Please enter the labour onset time"
+        }
+      },
+      {
+        "key": "ruptured_membrane",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "ruptured_membrane",
+        "type": "spinner",
+        "hint": "Membrane ruptured?",
+        "values": [
+          "Yes",
+          "No"
+        ],
+        "keys": [
+          "Yes",
+          "No"
+        ],
+        "openmrs_choice_ids": {
+          "Yes": "Yes",
+          "No": "No"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select one"
+        }
+      },
+      {
+        "key": "prompt_for_ruptured_membrane",
+        "type": "toaster_notes",
+        "text": "Provide management according to standard guideline",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step6:ruptured_membrane": {
+            "type": "string",
+            "ex": "equalTo(., \"Yes\")"
+          }
+        }
+      },
+      {
+        "key": "membrane_ruptured_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "membrane_ruptured_date",
+        "type": "date_picker",
+        "hint": "Membrane rupture Date",
+        "expanded": false,
+        "min_date": "today-2y",
+        "max_date": "today",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the membrane rupture date"
+        },
+        "relevance": {
+          "step6:ruptured_membrane": {
+            "type": "string",
+            "ex": "equalTo(., \"Yes\")"
+          }
+        }
+      },
+      {
+        "key": "membrane_ruptured_time",
+        "type": "time_picker",
+        "hint": "Membrane rupture Time",
+        "openmrs_entity_id": "membrane_ruptured_time",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": true,
+          "err": "Please enter the membrane rupture time"
+        },
+        "relevance": {
+          "step6:ruptured_membrane": {
+            "type": "string",
+            "ex": "equalTo(., \"Yes\")"
+          }
+        }
+      },
+      {
+        "key": "fetal_movement",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "fetal_movement",
+        "type": "spinner",
+        "hint": "Fetal movement",
+        "values": [
+          "Present",
+          "Absent"
+        ],
+        "keys": [
+          "present",
+          "absent"
+        ],
+        "openmrs_choice_ids": {
+          "present": "present",
+          "absent": "absent"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select one"
+        }
+      },
+      {
+        "key": "prompt_for_fetal_movement",
+        "type": "toaster_notes",
+        "text": "Provide management according to standard guideline",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step6:fetal_movement": {
+            "type": "string",
+            "ex": "equalTo(., \"absent\")"
+          }
+        }
+      }
+    ]
+  }
+}
