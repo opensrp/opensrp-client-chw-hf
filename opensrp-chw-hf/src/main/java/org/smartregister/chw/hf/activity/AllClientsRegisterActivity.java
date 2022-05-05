@@ -9,15 +9,22 @@ import org.smartregister.AllConstants;
 import org.smartregister.chw.core.activity.CoreAllClientsRegisterActivity;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.fragment.AdvancedSearchFragment;
 import org.smartregister.chw.hf.fragment.AllClientsRegisterFragment;
 import org.smartregister.chw.hf.model.HfAllClientsRegisterModel;
 import org.smartregister.chw.hf.presenter.HfAllClientRegisterPresenter;
+import org.smartregister.family.util.Utils;
 import org.smartregister.helper.BottomNavigationHelper;
 import org.smartregister.opd.contract.OpdRegisterActivityContract;
 import org.smartregister.opd.presenter.BaseOpdRegisterActivityPresenter;
 import org.smartregister.view.fragment.BaseRegisterFragment;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+
+import java.util.Arrays;
+import java.util.List;
+
 import timber.log.Timber;
 
 public class AllClientsRegisterActivity extends CoreAllClientsRegisterActivity {
@@ -25,6 +32,18 @@ public class AllClientsRegisterActivity extends CoreAllClientsRegisterActivity {
     @Override
     protected BaseRegisterFragment getRegisterFragment() {
         return new AllClientsRegisterFragment();
+    }
+
+    @Override
+    protected Fragment[] getOtherFragments() {
+        Fragment[] fragments = new Fragment[1];
+        fragments[0] = new AdvancedSearchFragment(false);
+        return fragments;
+    }
+
+    @Override
+    public List<String> getViewIdentifiers() {
+        return Arrays.asList(Utils.metadata().familyRegister.config);
     }
 
     @Override
@@ -76,7 +95,8 @@ public class AllClientsRegisterActivity extends CoreAllClientsRegisterActivity {
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.action_scan_qr:
-                startQrCodeScanner();
+                switchToFragment(1);
+//                startQrCodeScanner();
                 return true;
             case R.id.action_family:
                 switchToBaseFragment();

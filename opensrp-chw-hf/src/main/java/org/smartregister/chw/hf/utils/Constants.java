@@ -448,4 +448,9 @@ public class Constants extends CoreConstants {
             String PNC_REPORT = "pnc_report";
         }
     }
+
+    public static final class DB {
+        public static final String FIRST_NAME = "firstName";
+        public static final String LAST_NAME = "lastName";
+    }
 }
