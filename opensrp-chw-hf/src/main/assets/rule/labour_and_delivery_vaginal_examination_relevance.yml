@@ -1,0 +1,14 @@
+---
+name: step1_prompt_for_presenting_part
+description: prompt_for_presenting_part
+priority: 1
+condition: "step1_presenting_part.contains('breech') || step1_presenting_part.contains('brow') || step1_presenting_part.contains('shoulder') || step1_presenting_part.contains('face') || step1_presenting_part.contains('cord')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_prompt_for_amniotic_fluid
+description: prompt_for_amniotic_fluid
+priority: 1
+condition: "!step1_amniotic_fluid.isEmpty() && !step1_amniotic_fluid.contains('membrane_intact')"
+actions:
+  - "isRelevant = true"

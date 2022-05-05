@@ -1,0 +1,471 @@
+{
+  "validate_on_submit": true,
+  "show_errors_on_submit": false,
+  "count": "1",
+  "encounter_type": "General Examination",
+  "entity_id": "",
+  "relational_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "step1": {
+    "title": "Vaginal Examination",
+    "fields": [
+      {
+        "key": "vaginal_exam_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "vaginal_exam_date",
+        "type": "date_picker",
+        "hint": "Vaginal examination Date",
+        "expanded": false,
+        "min_date": "today-2y",
+        "max_date": "today",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the vaginal examination date"
+        }
+      },
+      {
+        "key": "vaginal_exam_time",
+        "type": "time_picker",
+        "hint": "Vaginal examination Time",
+        "openmrs_entity_id": "vaginal_exam_time",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter vaginal examination time"
+        }
+      },
+      {
+        "key": "cervix_state",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "cervix_state",
+        "label": "Cervix (State)",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "soft_thin",
+            "text": "Soft and thin",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "soft_thin"
+          },
+          {
+            "key": "hard",
+            "text": "Hard",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "hard"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please select the cervix (state) option"
+        }
+      },
+      {
+        "key": "cervix_dilation_label",
+        "type": "label",
+        "text": "Cervix (Dilation)",
+        "text_size": "7sp",
+        "text_color": "#000000",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": ""
+      },
+      {
+        "key": "spacer",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "spacer",
+        "spacer_height": "8dp"
+      },
+      {
+        "key": "cervix_dilation",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "cervix_dilation",
+        "type": "numbers_selector",
+        "number_of_selectors": "8",
+        "start_number": "3",
+        "max_value": "10",
+        "text_size": "18px",
+        "text_color": "#000000",
+        "selected_text_color": "#ffffff",
+        "v_required": {
+          "value": true,
+          "err": "Please enter the cervix dilation number"
+        }
+      },
+      {
+        "key": "presenting_part",
+        "type": "spinner",
+        "openmrs_entity_id": "presenting_part",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "hint": "Presenting part",
+        "values": [
+          "Vertex",
+          "Breech",
+          "Brow",
+          "Shoulder",
+          "Face",
+          "Cord"
+        ],
+        "keys": [
+          "vertex",
+          "breech",
+          "brow",
+          "shoulder",
+          "face",
+          "cord"
+        ],
+        "openmrs_choice_ids": {
+          "vertex": "vertex",
+          "breech": "breech",
+          "brow": "brow",
+          "shoulder": "shoulder",
+          "face": "face",
+          "cord": "cord"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select an option"
+        }
+      },
+      {
+        "key": "prompt_for_presenting_part",
+        "type": "toaster_notes",
+        "text": "Take action or refer for further management",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_vaginal_examination_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "occiput_position",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "occiput_position",
+        "label": "Position of Occiput",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "roa",
+            "text": "ROA (Right Occiput Anterior)",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "roa"
+          },
+          {
+            "key": "loa",
+            "text": "LOA (Left Occiput Anterior)",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "loa"
+          },
+          {
+            "key": "opp",
+            "text": "OPP (Occipito-Posterior Occiput Position)",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "opp"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please select the cervix (state) option"
+        }
+      },
+      {
+        "key": "prompt_for_occiput_position",
+        "type": "toaster_notes",
+        "text": "Take action or refer for further management",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:occiput_position": {
+            "type": "string",
+            "ex": "equalTo(., \"opp\")"
+          }
+        }
+      },
+      {
+        "key": "moulding",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "moulding",
+        "label": "Moulding",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please select an option"
+        }
+      },
+      {
+        "key": "moulding_options",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "moulding_options",
+        "label": "Moulding",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "sutures_apposed",
+            "text": "Sutures apposed (+)",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "sutures_apposed"
+          },
+          {
+            "key": "sutures_overlapped_reducible",
+            "text": "Sutures overlapped but reducible (++)",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "sutures_overlapped_reducible"
+          },
+          {
+            "key": "sutures_overlapped_not_reducible",
+            "text": "Sutures overlapped not reducible (+++)",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "sutures_overlapped_not_reducible"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please select an option"
+        },
+        "relevance": {
+          "step1:moulding": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
+        "key": "station",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "station",
+        "label": "Station",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "minus_three",
+            "text": "-3",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "minus_three"
+          },
+          {
+            "key": "minus_two",
+            "text": "-2",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "minus_two"
+          },
+          {
+            "key": "minus_one",
+            "text": "-1",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "minus_one"
+          },
+          {
+            "key": "zero",
+            "text": "0",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "zero"
+          },
+          {
+            "key": "plus_one",
+            "text": "+1",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "plus_one"
+          },
+          {
+            "key": "plus_two",
+            "text": "+2",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "plus_two"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please select an option"
+        }
+      },
+      {
+        "key": "amniotic_fluid",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "amniotic_fluid",
+        "label": "Amniotic fluid",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "membrane_intact",
+            "text": "Membrane Intact (I)",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "membrane_intact"
+          },
+          {
+            "key": "membrane_ruptured",
+            "text": "Membrane ruptured liquor clear (c)",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "membrane_ruptured"
+          },
+          {
+            "key": "meconium_stained_liquor",
+            "text": "Meconium Stained Liquor (M)",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "meconium_stained_liquor"
+          },
+          {
+            "key": "blood_stained_liquor",
+            "text": "Blood-Stained Liquor (B)",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "blood_stained_liquor"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please select an option"
+        }
+      },
+      {
+        "key": "prompt_for_amniotic_fluid",
+        "type": "toaster_notes",
+        "text": "Take action per National guideline",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_vaginal_examination_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "decision",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "decision",
+        "label": "Decision",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "monitor_progress",
+            "text": "Monitor progress of labour",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "monitor_progress"
+          },
+          {
+            "key": "emergency",
+            "text": "Emergency",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "emergency"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please select an option"
+        }
+      }
+    ]
+  }
+}

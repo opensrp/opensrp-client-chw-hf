@@ -566,13 +566,6 @@
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "progressive_descent"
-          },
-          {
-            "key": "none",
-            "text": "None",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "none"
           }
         ],
         "v_required": {
