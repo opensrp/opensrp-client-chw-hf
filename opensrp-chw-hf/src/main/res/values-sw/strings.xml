@@ -186,6 +186,21 @@
     <string name="anc_followup_client_registration">Usajili wa mahudhurio ya kliniki ya uzazi</string>
     <string name="malaria_investigation_complete">Uchunguzi wa malaria umekamilika</string>
 
+    <!-- Advanced search screen-->
+    <string name="search">Tafuta</string>
+    <string name="matching_results">%1$s matokeo yanawiana.</string>
+    <string name="search_name_hint">Andika jina la kwanza/mwisho</string>
+    <string name="search_name">Andika jina la kwanza/mwisho</string>
+    <string name="search_results">Matokeo ya utafutaji</string>
+    <string name="global_search">Utafutaji wa jumla</string>
+    <string name="search_results_return">Rudi kwenye matokeo ya utafutaji</string>
+    <string name="first_name_hint">Jina la kwanza</string>
+    <string name="first_name">Jina la kwanza</string>
+    <string name="last_name">Jina la pili</string>
+    <string name="last_name_hint">Jina la pili</string>
+
+    <!-- Labour and Delivery String Resources-->
+    <string name="menu_ld">L&amp;D</string>
 
 
 </resources>
