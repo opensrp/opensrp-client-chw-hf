@@ -319,11 +319,6 @@ public class AdvancedSearchFragment extends BaseRegisterFragment implements Adva
                 titleLabelView.setText(getString(R.string.search_results));
             }
 
-            // hide result count , should be dynamic
-            if (matchingResults != null) {
-                //matchingResults.setVisibility(View.GONE);
-            }
-
             hideProgressView();
             listMode = true;
         } else {

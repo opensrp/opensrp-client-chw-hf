@@ -6,10 +6,6 @@ import androidx.annotation.VisibleForTesting;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
 
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
@@ -25,10 +21,8 @@ import org.smartregister.family.util.AppExecutors;
 import org.smartregister.service.HTTPAgent;
 
 import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Type;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -56,11 +50,10 @@ public class AdvancedSearchInteractor implements AdvancedSearchContract.Interact
             public void run() {
                 final List<Entity> response;
 
-                if(isLocal) {
+                if (isLocal) {
                     String searchText = editMap.get(Constants.DB.FIRST_NAME);
                     response = localSearch(searchText);
-                }
-                else {
+                } else {
                     response = globalSearch(editMap);
                 }
 
@@ -75,6 +68,7 @@ public class AdvancedSearchInteractor implements AdvancedSearchContract.Interact
 
         appExecutors.networkIO().execute(runnable);
     }
+
     private List<Entity> localSearch(String searchText) {
         return FamilyDao.search(searchText);
     }

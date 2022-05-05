@@ -43,7 +43,7 @@ public class AdvancedSearchFragmentPresenter implements Presenter, AdvancedSearc
         if (!StringUtils.isBlank(this.viewConfigurationIdentifier)) {
             ViewConfiguration viewConfiguration = this.model.getViewConfiguration(this.viewConfigurationIdentifier);
             if (viewConfiguration != null) {
-                this.config = (RegisterConfiguration)viewConfiguration.getMetadata();
+                this.config = (RegisterConfiguration) viewConfiguration.getMetadata();
                 this.setVisibleColumns(this.model.getRegisterActiveColumns(this.viewConfigurationIdentifier));
             }
 
@@ -79,7 +79,7 @@ public class AdvancedSearchFragmentPresenter implements Presenter, AdvancedSearc
     }
 
     protected AdvancedSearchContract.View getView() {
-        return this.viewReference != null ? (AdvancedSearchContract.View)this.viewReference.get() : null;
+        return this.viewReference != null ? (AdvancedSearchContract.View) this.viewReference.get() : null;
     }
 
     private void setVisibleColumns(Set<View> visibleColumns) {
@@ -105,7 +105,7 @@ public class AdvancedSearchFragmentPresenter implements Presenter, AdvancedSearc
     }
 
     public void search(Map<String, String> searchMap, boolean isLocal) {
-        Log.d("Search", "searching in presenter: "  + searchMap.toString());
+        Log.d("Search", "searching in presenter: " + searchMap.toString());
         interactor.search(searchMap, isLocal, this);
     }
 

@@ -1,7 +1,5 @@
 package org.smartregister.chw.hf.utils;
 
-import static org.smartregister.chw.anc.util.NCUtils.getClientProcessorForJava;
-
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -93,7 +91,7 @@ public class PullEventClientRecordUtil {
             Client client = eventClientRepository.convert(jsonObject.getJSONArray("clients").get(0).toString(), Client.class);
 
             eventType = event.getEventType();
-            if (!eventType.equalsIgnoreCase(CoreConstants.EventType.FAMILY_REGISTRATION) &&  client.getRelationships().get("family") != null) {
+            if (!eventType.equalsIgnoreCase(CoreConstants.EventType.FAMILY_REGISTRATION) && client.getRelationships().get("family") != null) {
                 familyId = client.getRelationships().get("family").get(0);
             }
 

@@ -16,7 +16,6 @@ import org.smartregister.chw.core.custom_views.NavigationMenu;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.QueryBuilder;
 import org.smartregister.chw.core.utils.Utils;
-import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.activity.LDProfileActivity;
 import org.smartregister.chw.hf.model.LDRegisterFragmentModel;
 import org.smartregister.chw.hf.presenter.LDRegisterFragmentPresenter;
