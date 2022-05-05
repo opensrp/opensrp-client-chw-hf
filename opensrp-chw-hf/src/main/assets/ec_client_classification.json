@@ -596,6 +596,13 @@
             "closes_case": [
               "ec_pregnancy_outcome"
             ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "Pregnancy Confirmation",
+            "creates_case": [
+              "ec_ld_confirmation"
+            ]
           }
         ]
       }

@@ -204,4 +204,8 @@
     <string name="last_name">Last Name</string>
     <string name="last_name_hint">Last Name</string>
 
+
+    <!-- Labour and Delivery String Resources-->
+    <string name="menu_ld">L&amp;D</string>
+
 </resources>

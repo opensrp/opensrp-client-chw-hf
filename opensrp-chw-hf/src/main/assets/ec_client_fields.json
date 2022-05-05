@@ -4826,6 +4826,44 @@
           }
         }
       ]
+    },
+    {
+      "name": "ec_ld_confirmation",
+      "columns": [
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "last_interacted_with",
+          "type": "Event",
+          "json_mapping": {
+            "field": "version"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ec_ld_follow_up_visit",
+      "columns": [
+        {
+          "column_name": "entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "formSubmissionId"
+          }
+        }
+      ]
     }
   ]
 }

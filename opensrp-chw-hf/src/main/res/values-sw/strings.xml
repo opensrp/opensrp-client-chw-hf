@@ -199,6 +199,8 @@
     <string name="last_name">Jina la pili</string>
     <string name="last_name_hint">Jina la pili</string>
 
+    <!-- Labour and Delivery String Resources-->
+    <string name="menu_ld">L&amp;D</string>
 
 
 </resources>
