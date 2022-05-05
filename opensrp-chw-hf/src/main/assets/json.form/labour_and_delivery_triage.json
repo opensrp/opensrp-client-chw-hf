@@ -237,13 +237,6 @@
         "v_required": {
           "value": "true",
           "err": "Please enter the fetal heart rate"
-        },
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "labour_and_delivery_triage_relevance.yml"
-            }
-          }
         }
       },
       {
