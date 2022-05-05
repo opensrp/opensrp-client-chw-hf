@@ -33,6 +33,7 @@ import org.smartregister.chw.hf.presenter.FamilyOtherMemberActivityPresenter;
 import org.smartregister.chw.hf.presenter.HfAllClientsMemberPresenter;
 import org.smartregister.chw.hf.utils.AllClientsUtils;
 import org.smartregister.chw.hf.utils.Constants;
+import org.smartregister.chw.ld.dao.LDDao;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.family.adapter.ViewPagerAdapter;
 import org.smartregister.family.fragment.BaseFamilyOtherMemberProfileFragment;
@@ -65,6 +66,11 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
         } else
             menu.findItem(R.id.action_anc_registration).setVisible(false);
 
+        if (isOfReproductiveAge(commonPersonObject, gender) && gender.equalsIgnoreCase("female") && !LDDao.isRegisteredForLD(baseEntityId)) {
+            menu.findItem(R.id.action_ld_registration).setVisible(true);
+        } else {
+            menu.findItem(R.id.action_ld_registration).setVisible(false);
+        }
         menu.findItem(R.id.action_sick_child_follow_up).setVisible(false);
         menu.findItem(R.id.action_malaria_diagnosis).setVisible(false);
         return true;
@@ -254,6 +260,15 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
     @Override
     protected void startPmtctRegisration() {
         //Do nothing - not required here
+    }
+
+    @Override
+    protected void startLDRegistration() {
+        try {
+            LDRegisterActivity.startLDRegistrationActivity(AllClientsMemberProfileActivity.this, baseEntityId);
+        } catch (Exception e) {
+            Timber.e(e);
+        }
     }
 
     @Override

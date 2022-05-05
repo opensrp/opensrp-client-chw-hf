@@ -121,6 +121,7 @@ public class Constants extends CoreConstants {
         private static final String PNC_NUTRITIONAL_SUPPLEMENT = "pnc_nutritional_supplement";
         private static final String PMTCT_FOLLOWUP_STATUS = "pmtct_followup_status";
         private static final String ANC_TRANSFER_IN_REGISTRATION = "anc_member_transfer_in_registration";
+        private static final String LD_REGISTRATION = "labour_and_delivery_registration";
 
         public static String getNextFacilityVisitForm() {
             return NEXT_FACILITY_VISIT_FORM;
@@ -292,6 +293,10 @@ public class Constants extends CoreConstants {
 
         public static String getHivClientUpdateCtcNumber() {
             return HIV_CLIENT_UPDATE_CTC_NUMBER;
+        }
+
+        public static String getLdRegistration() {
+            return LD_REGISTRATION;
         }
 
         public static class EacVisits {
