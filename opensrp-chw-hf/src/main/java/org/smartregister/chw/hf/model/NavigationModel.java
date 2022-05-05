@@ -30,11 +30,12 @@ public class NavigationModel implements org.smartregister.chw.core.model.Navigat
             NavigationOption op12 = new NavigationOption(R.mipmap.sidemenu_referrals, R.mipmap.sidemenu_referrals_active, R.string.menu_referrals, CoreConstants.DrawerMenu.REFERRALS, 0);
             NavigationOption op13 = new NavigationOption(R.drawable.sidemenu_pmtct, R.drawable.sidemenu_pmtct_active, R.string.menu_pmtct, CoreConstants.DrawerMenu.PMTCT, 0);
             NavigationOption op14 = new NavigationOption(R.drawable.ic_sidemenu_hei, R.drawable.ic_sidemenu_hei_active, R.string.menu_hei, CoreConstants.DrawerMenu.HEI, 0);
+            NavigationOption op15 = new NavigationOption(R.drawable.ic_sidemenu_labour_and_delivery, R.drawable.ic_sidemenu_labour_and_delivery_active, R.string.menu_ld, CoreConstants.DrawerMenu.LD, 0);
             if (BuildConfig.BUILD_FOR_BORESHA_AFYA_SOUTH) {
                 if (BuildConfig.BUILD_FOR_PMTCT_CASE_BASED_MANAGEMENT) {
-                    navigationOptions.addAll(Arrays.asList(op1, op3, op4, op13, op14, op12));
+                    navigationOptions.addAll(Arrays.asList(op1, op3, op4, op13, op14, op15, op12));
                 } else {
-                    navigationOptions.addAll(Arrays.asList(op1, op8, op9, op10, op3, op4, op5, op13, op14, op12, op6, op7, op11));
+                    navigationOptions.addAll(Arrays.asList(op1, op8, op9, op10, op3, op4, op5, op13, op14, op15, op12, op6, op7, op11));
                 }
             } else {
                 navigationOptions.addAll(Arrays.asList(op1, op2, op3, op4, op5, op6, op7, op12));
