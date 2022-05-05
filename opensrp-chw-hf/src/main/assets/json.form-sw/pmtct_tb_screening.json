@@ -56,7 +56,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "on_tb_treatment",
         "type": "native_radio",
-        "label": "Je, Mteja huyu yupo katika Matibabu ya TB?",
+        "label": "Je, Mteja huyu yupo katika Matibabu ya Kifua kikuu?",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [
@@ -159,7 +159,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "investigate_for_tb",
         "type": "native_radio",
-        "label": "Fanya uchunguzi wa TB",
+        "label": "Fanya uchunguzi wa Kifua kikuu",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [
@@ -202,7 +202,7 @@
       {
         "key": "prompt_for_tb_treatment",
         "type": "toaster_notes",
-        "text": "Mpe rufaa mteja kwa ajili ya Matibabu ya TB",
+        "text": "Mpe rufaa mteja kwa ajili ya Matibabu ya Kifua kikuu",
         "openmrs_entity_id": "",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
