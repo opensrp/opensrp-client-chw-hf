@@ -71,7 +71,7 @@ public class AllClientsRegisterActivity extends CoreAllClientsRegisterActivity {
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
         bottomNavigationView.getMenu().clear();
-        bottomNavigationView.inflateMenu(R.menu.bottom_nav_menu);
+        bottomNavigationView.inflateMenu(R.menu.bottom_nav_all_clients_menu);
         bottomNavigationHelper.disableShiftMode(bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
         bottomNavigationView.getMenu().removeItem(org.smartregister.family.R.id.action_job_aids);
@@ -94,9 +94,8 @@ public class AllClientsRegisterActivity extends CoreAllClientsRegisterActivity {
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
-            case R.id.action_scan_qr:
+            case R.id.action_search:
                 switchToFragment(1);
-//                startQrCodeScanner();
                 return true;
             case R.id.action_family:
                 switchToBaseFragment();

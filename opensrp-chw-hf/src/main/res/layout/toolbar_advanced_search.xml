@@ -15,7 +15,7 @@
             android:id="@+id/register_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimary"
+            android:background="@color/hf_primary"
             app:contentInsetLeft="10dp"
             app:contentInsetStart="10dp"
             app:popupTheme="@style/AppTheme.PopupOverlay">
@@ -24,7 +24,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="?android:attr/actionBarSize"
-                android:background="@color/colorPrimary"
+                android:background="@color/hf_primary"
                 android:orientation="horizontal">
 
                 <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
