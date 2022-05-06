@@ -371,15 +371,15 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "known_last_menstrual_period",
         "type": "date_picker",
-        "hint": "Tarehe  ya mwisho ya hedhi iliyopita (LNMP)",
-        "label_info_title": "Tarehe  ya mwisho ya hedhi iliyopita (LNMP)",
-        "label_info_text": "Tarehe  ya mwisho ya hedhi iliyopita = siku ya kwanza ya kipindi cha mwisho cha hedhi. Ikiwa tarehe halisi haijulikani, lakini kipindi cha mwezi kinajulikana, tumia siku ya 5 kwa mwanzo wa mwezi, siku ya 15 katikati ya mwezi na siku ya 25 kwa mwisho wa mwezi.",
+        "hint": "Tarehe ya kwanza ya hedhi ya mara ya mwisho (LNMP)",
+        "label_info_title": "Tarehe ya kwanza ya hedhi ya mara ya mwisho (LNMP)",
+        "label_info_text": "Tarehe ya kwanza ya hedhi ya mara ya mwisho = siku ya kwanza ya kipindi cha mwisho cha hedhi. Ikiwa tarehe halisi haijulikani, lakini kipindi cha mwezi kinajulikana, tumia siku ya 5 kwa mwanzo wa mwezi, siku ya 15 katikati ya mwezi na siku ya 25 kwa mwisho wa mwezi.",
         "expanded": false,
         "max_date": "today",
         "min_date": "today-50w",
         "v_required": {
           "value": "true",
-          "err": "Tarehe ya mwisho ya hedhi iliyopita inahitajika kujazwa"
+          "err": "Tarehe ya kwanza ya hedhi ya mara ya mwisho inahitajika kujazwa"
         }
       },
       {
@@ -402,7 +402,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "",
         "type": "edit_text",
-        "hint": "Umri wa Ujauzito",
+        "hint": "Umri wa Mimba kwa Wiki",
         "read_only": true,
         "calculation": {
           "rules-engine": {
@@ -418,7 +418,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "edd",
         "type": "edit_text",
-        "hint": "Makadirio ya muda wa kujifungua",
+        "hint": "Tarehe anayotazamia Kujifungua",
         "read_only": true,
         "calculation": {
           "rules-engine": {
