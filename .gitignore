@@ -20,3 +20,8 @@ project.properties
 build/
 jacoco.exec
 opensrp-chw-hf/nacp/
+caches
+daemon
+native
+wrapper
+github.properties

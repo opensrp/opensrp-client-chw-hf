@@ -123,7 +123,7 @@
           },
           {
             "key": "myomectomy",
-            "text": "Nyomectomy",
+            "text": "Myomectomy",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "myomectomy"
