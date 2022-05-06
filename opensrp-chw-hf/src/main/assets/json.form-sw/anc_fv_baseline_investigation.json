@@ -601,7 +601,7 @@
           },
           {
             "key": "fbg",
-            "text": "Fasting Blood Glucose Test",
+            "text": "Kipimo cha sukari (asubuhi) kabla ya kula chochote",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "fbg"
@@ -981,7 +981,7 @@
       {
         "key": "prescribe_anti_sy",
         "type": "toaster_notes",
-        "text": "Muagizie mteja daawa za antibiotics",
+        "text": "Muagizie mteja dawa za antibiotiki (Kiuavijasumu)",
         "openmrs_entity_id": "prescribe_anti_sy",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
