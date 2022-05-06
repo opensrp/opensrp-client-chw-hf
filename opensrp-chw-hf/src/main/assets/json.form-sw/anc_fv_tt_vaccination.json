@@ -46,9 +46,6 @@
     },
     "encounter_location": ""
   },
-  "global": {
-    "tt1_vaccination_given": false
-  },
   "step1": {
     "title": "Chanjo ya Pepopunda (Tetenasi)",
     "fields": [
@@ -84,7 +81,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "",
         "type": "toaster_notes",
-        "text": "Mpatie Mama Chanjo ya Pepopunda (TT1) na afuatulie utaratibu na ratiba ya chango kutoka na mwongozo wa chanjo",
+        "text": "Mpatie Mama Chanjo ya Pepopunda (TT1) na afuatilie utaratibu na ratiba ya chanjo kutokana na muongozo wa chanjo",
         "toaster_type": "warning",
         "relevance": {
           "step1:tt_vaccination": {
@@ -96,7 +93,7 @@
       {
         "key": "tt_vaccination_type",
         "type": "check_box",
-        "label": "Number of TT vaccines the client has already received",
+        "label": "What TT Vaccinations was given",
         "combine_checkbox_option_values": "true",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "tt_vaccination_type",

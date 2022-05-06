@@ -99,7 +99,7 @@
         "options": [
           {
             "key": "known_on_art",
-            "text": "On ART before this pregnancy",
+            "text": "Mtumiaji wa dawa za kufubaza maambukizi ya virusi vya Ukimwi (ART) kabla ya mimba hii",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "known_on_art"

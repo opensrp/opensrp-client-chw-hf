@@ -116,7 +116,7 @@
       {
         "key": "prompt_for_mRDT",
         "type": "toaster_notes",
-        "text": "Provide anti-malaria medication and manage according to standard guidelines",
+        "text": "Mpatie dawa za malaria na tibu kulingana na muongozo",
         "openmrs_entity_id": "prompt_for_mRDT",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
