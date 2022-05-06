@@ -86,11 +86,11 @@ public class LDRegistrationTriageAction implements BaseLDVisitAction.LDVisitActi
     @Override
     public BaseLDVisitAction.Status evaluateStatusOnPayload() {
         if (isAllFieldsCompleted())
-            return BaseLDVisitAction.Status.PENDING;
+            return BaseLDVisitAction.Status.COMPLETED;
         else if (isAnyFieldCompleted())
             return BaseLDVisitAction.Status.PARTIALLY_COMPLETED;
         else
-            return BaseLDVisitAction.Status.COMPLETED;
+            return BaseLDVisitAction.Status.PENDING;
     }
 
     @Override
