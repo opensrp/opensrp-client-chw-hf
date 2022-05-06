@@ -1,0 +1,101 @@
+{
+  "count": "1",
+  "skip_blank_steps": true,
+  "encounter_type": "Labour and Delivery Registration True Labour",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "step1": {
+    "title": "True Labour",
+    "fields": [
+      {
+        "key": "true_labour",
+        "type": "check_box",
+        "label": "True labour?",
+        "combine_checkbox_option_values": "true",
+        "openmrs_entity_id": "true_labour",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "exclusive": [
+          "none"
+        ],
+        "options": [
+          {
+            "key": "painful_uterine_contraction",
+            "text": "Painful, regular uterine contractions",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "painful_uterine_contraction"
+          },
+          {
+            "key": "bloody_vaginal_discharge",
+            "text": "Show (Bloody mucoid vaginal discharge)",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "bloody_vaginal_discharge"
+          },
+          {
+            "key": "effacement_and_dilatation",
+            "text": "Effacement and dilatation of cervix",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "effacement_and_dilatation"
+          },
+          {
+            "key": "progressive_descent",
+            "text": "Progressive descent of the presenting part",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "progressive_descent"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select at least one"
+        }
+      }
+    ]
+  }
+}

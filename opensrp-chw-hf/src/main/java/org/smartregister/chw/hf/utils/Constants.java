@@ -53,6 +53,7 @@ public class Constants extends CoreConstants {
         public static final String HEI_COMMUNITY_FOLLOWUP = "HEI Community Followup";
         public static final String HEI_NUMBER_REGISTRATION = "HEI Number Registration";
         public static final String ANC_FOLLOWUP_CLIENT_FOLLOWUP = "ANC Followup Client Registration";
+        public static final String LD_REGISTRATION = "LD Registration";
     }
 
     public static final class TableName {
@@ -382,6 +383,14 @@ public class Constants extends CoreConstants {
             }
             public static String getMalariaInvestigation() {
                 return Utils.getLocalForm(MALARIA_INVESTIGATION, locale, assetManager);
+            }
+        }
+
+        public static class LabourAndDeliveryRegistration {
+            public static final String LABOUR_AND_DELIVERY_REGISTRATION_TRIAGE = "labour_and_delivery_registration_triage";
+
+            public static String getLabourAndDeliveryRegistrationTriage() {
+                return Utils.getLocalForm(LABOUR_AND_DELIVERY_REGISTRATION_TRIAGE, locale, assetManager);
             }
         }
 

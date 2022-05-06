@@ -1,0 +1,495 @@
+{
+  "count": "1",
+  "skip_blank_steps": true,
+  "encounter_type": "Labour and Delivery Registration ANC Clinic Findings",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "step1": {
+    "title": "ANC Clinic Findings",
+    "fields": [
+      {
+        "key": "visit_number",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "visit_number",
+        "type": "edit_text",
+        "edit_type": "number",
+        "hint": "Number of Visits",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the visit number"
+        }
+      },
+      {
+        "key": "ipt_doses",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "ipt_doses",
+        "type": "edit_text",
+        "hint": "IPT Doses",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the ipt dose number"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "IPT dose must be equal or greater than 0"
+        },
+        "v_max": {
+          "value": "4",
+          "err": "IPT dose must be equal or less than 4"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the ipt dose number"
+        }
+      },
+      {
+        "key": "tt_doses",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "tt_doses",
+        "type": "edit_text",
+        "hint": "TT Doses",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the TT dose number"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "TT dose must be equal or greater than 0"
+        },
+        "v_max": {
+          "value": "5",
+          "err": "TT dose must be equal or less than 5"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the TT dose number"
+        }
+      },
+      {
+        "key": "itn_llin_used",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "itn_llin_used",
+        "type": "spinner",
+        "hint": "Was ITN/LLIN used?",
+        "values": [
+          "Yes",
+          "No"
+        ],
+        "keys": [
+          "Yes",
+          "No"
+        ],
+        "openmrs_choice_ids": {
+          "Yes": "Yes",
+          "No": "No"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select one"
+        }
+      },
+      {
+        "key": "hb_level",
+        "type": "edit_text",
+        "hint": "Last Measured HB Level (g/dl)",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hb_level",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the HB level"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "HB level must be equal or greater than 0 (g/dl)"
+        },
+        "v_max": {
+          "value": "20",
+          "err": "HB level must be equal or less than 20 (g/dl)"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please provide a value"
+        }
+      },
+      {
+        "key": "management_provided_for_hb_level",
+        "type": "native_radio",
+        "label": "Was management provided for abnormal HB Level?",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "management_provided_for_hb_level",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        },
+        "relevance": {
+          "step5:hb_level": {
+            "type": "numeric",
+            "ex": "lessThanEqualTo(.,\"8.5\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_moderate_anaemia_management",
+        "type": "toaster_notes",
+        "text": "Manage the mild anaemia according to standard guidelines",
+        "openmrs_entity_id": "prompt_for_moderate_anaemia_management",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_triage_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "hb_test_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hb_test_date",
+        "type": "date_picker",
+        "hint": "Last Measured HB Date",
+        "expanded": false,
+        "min_date": "today-2y",
+        "max_date": "today",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the HB test date"
+        }
+      },
+      {
+        "key": "pmtct",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "pmtct",
+        "type": "native_radio",
+        "label": "PMTCT",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "chk_one",
+            "text": "1",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_one"
+          },
+          {
+            "key": "chk_two",
+            "text": "2",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_two"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select one"
+        }
+      },
+      {
+        "key": "management_provided_for_pmtct",
+        "type": "native_radio",
+        "label": "Was management provided for PMTCT?",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "management_provided_for_pmtct",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        },
+        "relevance": {
+          "step5:pmtct": {
+            "type": "string",
+            "ex": "equalTo(., \"chk_one\")"
+          }
+        }
+      },
+      {
+        "key": "pmtct_test_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "pmtct_test_date",
+        "type": "date_picker",
+        "hint": "Last PMTCT test Date",
+        "expanded": false,
+        "min_date": "today-2y",
+        "max_date": "today",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the last PMTCT test date"
+        }
+      },
+      {
+        "key": "art_prescription",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "art_prescription",
+        "type": "native_radio",
+        "label": "ART/Prescription",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
+      },
+      {
+        "key": "syphilis",
+        "type": "native_radio",
+        "label": "VDRL (Syphilis)",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "syphilis",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "positive",
+            "text": "Positive",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "positive"
+          },
+          {
+            "key": "negative",
+            "text": "Negative",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "negative"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
+      },
+      {
+        "key": "management_provided_for_syphilis",
+        "type": "native_radio",
+        "label": "Was management provided for syphilis?",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "management_provided_for_syphilis",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        },
+        "relevance": {
+          "step5:syphilis": {
+            "type": "string",
+            "ex": "equalTo(., \"positive\")"
+          }
+        }
+      },
+      {
+        "key": "blood_group",
+        "type": "spinner",
+        "hint": "Blood Group",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "blood_group",
+        "openmrs_entity_parent": "",
+        "values": [
+          "A",
+          "B",
+          "AB",
+          "O"
+        ],
+        "keys": [
+          "A",
+          "B",
+          "AB",
+          "O"
+        ],
+        "openmrs_choice_ids": {
+          "A": "A",
+          "B": "B",
+          "AB": "AB",
+          "O": "O"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please choose a blood group"
+        }
+      },
+      {
+        "key": "rh_factor",
+        "type": "native_radio",
+        "label": "Rh",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "rh_factor",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "positive",
+            "text": "Positive",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "positive"
+          },
+          {
+            "key": "negative",
+            "text": "Negative",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "negative"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
+      },
+      {
+        "key": "management_provided_for_rh",
+        "type": "native_radio",
+        "label": "Was management provided for negative RH?",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "management_provided_for_rh",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        },
+        "relevance": {
+          "step5:rh_factor": {
+            "type": "string",
+            "ex": "equalTo(., \"negative\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_rh_negative",
+        "type": "toaster_notes",
+        "text": "Provide management according to standard guideline",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step5:management_provided_for_rh": {
+            "type": "string",
+            "ex": "equalTo(., \"no\")"
+          }
+        }
+      }
+    ]
+  }
+}
