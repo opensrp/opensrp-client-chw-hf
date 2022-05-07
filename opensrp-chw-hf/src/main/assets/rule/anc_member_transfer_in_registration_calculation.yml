@@ -28,7 +28,7 @@ description: Gestational age calculated
 priority: 1
 condition: "true"
 actions:
-  - "calculation = step2_gest_age + ' weeks'"
+  - "calculation = step2_gest_age"
 
 ---
 name: step2_last_menstrual_period

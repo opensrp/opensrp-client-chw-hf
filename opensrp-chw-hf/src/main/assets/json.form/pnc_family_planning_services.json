@@ -76,6 +76,21 @@
         }
       },
       {
+        "key": "prompt_provide_education_counselling",
+        "type": "toaster_notes",
+        "text": "Please provide education/counselling",
+        "openmrs_entity_id": "prompt_provide_education_counselling",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:education_counselling_given": {
+            "type": "string",
+            "ex": "equalTo(.,\"no\")"
+          }
+        }
+      },
+      {
         "key": "iec_given",
         "type": "native_radio",
         "label": "Were IEC materials given?",
@@ -199,6 +214,24 @@
             "type": "string",
             "ex": "equalTo(.,\"no\")"
           }
+        }
+      },
+      {
+        "key": "reason_for_not_providing_fp_method",
+        "type": "edit_text",
+        "hint": "Specify reason for not providing FP method",
+        "openmrs_entity_id": "reason_for_not_providing_fp_method",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "step1:method_provided": {
+            "type": "string",
+            "ex": "equalTo(.,\"chk_none\")"
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please specify"
         }
       }
     ]
