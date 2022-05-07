@@ -219,4 +219,6 @@
     <string name="ld_partograph_mother_well_being"> L&amp;D Partograph : Mother Well-being </string>
     <string name="ld_partograph_labor_progress"> L&amp;D Partograph : Fetal Progress of Labor </string>
 
+    <string name="record_ld_event">Record %s</string>
+
 </resources>
