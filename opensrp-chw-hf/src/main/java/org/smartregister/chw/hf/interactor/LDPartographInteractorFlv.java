@@ -2,6 +2,9 @@ package org.smartregister.chw.hf.interactor;
 
 import android.content.Context;
 
+import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.actionhelper.LDPartographFetalWellBeingActionHelper;
+import org.smartregister.chw.hf.actionhelper.LDRegistrationTriageAction;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.ld.LDLibrary;
 import org.smartregister.chw.ld.contract.BaseLDVisitContract;
@@ -57,6 +60,16 @@ public class LDPartographInteractorFlv implements LDPartographInteractor.Flavor 
                                         final Context context,
                                         BaseLDVisitContract.InteractorCallBack callBack
     ) throws BaseLDVisitAction.ValidationException {
+
+
+        BaseLDVisitAction fetalWellBeingAction = new BaseLDVisitAction.Builder(context, context.getString(R.string.ld_registration_triage_title))
+                .withOptional(false)
+                .withDetails(details)
+                .withFormName(Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryRegistrationTriage())
+                .withHelper(new LDPartographFetalWellBeingActionHelper(memberObject))
+                .build();
+
+        actionList.put(context.getString(R.string.ld_registration_triage_title), fetalWellBeingAction);
 
     }
 
