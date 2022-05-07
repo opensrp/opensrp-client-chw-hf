@@ -2,12 +2,16 @@ package org.smartregister.chw.hf.interactor;
 
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hf.utils.VisitUtils;
+import org.smartregister.chw.ld.LDLibrary;
 import org.smartregister.chw.ld.contract.BaseLDVisitContract;
 import org.smartregister.chw.ld.domain.MemberObject;
+import org.smartregister.chw.ld.domain.Visit;
 import org.smartregister.chw.ld.interactor.BaseLDVisitInteractor;
 import org.smartregister.chw.ld.model.BaseLDVisitAction;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import timber.log.Timber;
@@ -74,5 +78,14 @@ public class LDRegistrationInteractor extends BaseLDVisitInteractor {
         MemberObject memberObject = new MemberObject();
         memberObject.setBaseEntityId(memberID);
         return memberObject;
+    }
+
+    @Override
+    protected void processExternalVisits(Visit visit, Map<String, BaseLDVisitAction> externalVisits, String memberID) throws Exception {
+        super.processExternalVisits(visit, externalVisits, memberID);
+
+        List<Visit> visits = new ArrayList<>(1);
+        visits.add(visit);
+        org.smartregister.chw.ld.util.VisitUtils.processVisits(visits, LDLibrary.getInstance().visitRepository(), LDLibrary.getInstance().visitDetailsRepository());
     }
 }

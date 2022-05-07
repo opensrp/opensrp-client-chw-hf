@@ -3,6 +3,7 @@ package org.smartregister.chw.hf.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 
 import com.vijay.jsonwizard.constants.JsonFormConstants;
 import com.vijay.jsonwizard.domain.Form;
@@ -15,6 +16,7 @@ import org.smartregister.chw.hf.schedulers.HfScheduleTaskExecutor;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.ld.activity.BaseLDVisitActivity;
 import org.smartregister.chw.ld.domain.MemberObject;
+import org.smartregister.chw.ld.model.BaseLDVisitAction;
 import org.smartregister.chw.ld.presenter.BaseLDVisitPresenter;
 import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.family.util.Utils;
@@ -22,6 +24,8 @@ import org.smartregister.util.LangUtils;
 
 import java.text.MessageFormat;
 import java.util.Date;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import timber.log.Timber;
 
@@ -86,4 +90,47 @@ public class LDRegistrationFormActivity extends BaseLDVisitActivity {
             Timber.e(e);
         }
     }
+
+    @Override
+    public void initializeActions(LinkedHashMap<String, BaseLDVisitAction> map) {
+        //Clearing the action List before recreation
+        actionList.clear();
+
+        for (Map.Entry<String, BaseLDVisitAction> entry : map.entrySet()) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                actionList.putIfAbsent(entry.getKey(), entry.getValue());
+            } else {
+                actionList.put(entry.getKey(), entry.getValue());
+            }
+        }
+
+        if (mAdapter != null) {
+            mAdapter.notifyDataSetChanged();
+        }
+        displayProgressBar(false);
+    }
+
+    @Override
+    public void redrawVisitUI() {
+        boolean valid = actionList.size() > 0;
+        for (Map.Entry<String, BaseLDVisitAction> entry : actionList.entrySet()) {
+            BaseLDVisitAction action = entry.getValue();
+            if (
+                //Updated the condition to only allow submission if the action is not completed in the L&D Registration
+                    (!action.isOptional() && (action.getActionStatus() != BaseLDVisitAction.Status.COMPLETED && action.isValid()))
+                            || !action.isEnabled()
+            ) {
+                valid = false;
+                break;
+            }
+        }
+
+        int res_color = valid ? org.smartregister.ld.R.color.white : org.smartregister.ld.R.color.light_grey;
+        tvSubmit.setTextColor(getResources().getColor(res_color));
+        tvSubmit.setOnClickListener(valid ? this : null);
+
+        mAdapter.notifyDataSetChanged();
+    }
+
+
 }

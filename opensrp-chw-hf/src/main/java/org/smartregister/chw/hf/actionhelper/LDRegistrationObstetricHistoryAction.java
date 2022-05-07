@@ -20,13 +20,16 @@ import timber.log.Timber;
  * @author ilakozejumanne@gmail.com
  * 06/05/2022
  */
-public class LDRegistrationTrueLabourConfirmationAction implements BaseLDVisitAction.LDVisitActionHelper {
+public class LDRegistrationObstetricHistoryAction implements BaseLDVisitAction.LDVisitActionHelper {
     protected MemberObject memberObject;
-    private String trueLabour;
-    protected String labourConfirmation;
+    private String gravida;
+    private String para;
+    private String childrenAlive;
+    private String numberOfAbortion;
+    private String lastMenstrualPeriod;
     private Context context;
 
-    public LDRegistrationTrueLabourConfirmationAction(MemberObject memberObject) {
+    public LDRegistrationObstetricHistoryAction(MemberObject memberObject) {
         this.memberObject = memberObject;
     }
 
@@ -44,8 +47,11 @@ public class LDRegistrationTrueLabourConfirmationAction implements BaseLDVisitAc
     public void onPayloadReceived(String jsonPayload) {
         try {
             JSONObject jsonObject = new JSONObject(jsonPayload);
-            trueLabour = CoreJsonFormUtils.getValue(jsonObject, "true_labour");
-            labourConfirmation = CoreJsonFormUtils.getValue(jsonObject, "labour_confirmation");
+            gravida = CoreJsonFormUtils.getValue(jsonObject, "gravida");
+            para = CoreJsonFormUtils.getValue(jsonObject, "para");
+            childrenAlive = CoreJsonFormUtils.getValue(jsonObject, "children_alive");
+            numberOfAbortion = CoreJsonFormUtils.getValue(jsonObject, "number_of_abortion");
+            lastMenstrualPeriod = CoreJsonFormUtils.getValue(jsonObject, "last_menstrual_period");
         } catch (JSONException e) {
             Timber.e(e);
         }
@@ -75,24 +81,41 @@ public class LDRegistrationTrueLabourConfirmationAction implements BaseLDVisitAc
     public BaseLDVisitAction.Status evaluateStatusOnPayload() {
         if (isAllFieldsCompleted())
             return BaseLDVisitAction.Status.COMPLETED;
+        else if (isAnyFieldCompleted())
+            return BaseLDVisitAction.Status.PARTIALLY_COMPLETED;
         else
             return BaseLDVisitAction.Status.PENDING;
     }
 
     @Override
     public String evaluateSubTitle() {
-        if (isAllFieldsCompleted() && labourConfirmation.equalsIgnoreCase("true"))
-            return context.getString(R.string.ld_registration_true_labour_complete);
-        else if (isAllFieldsCompleted() && labourConfirmation.equalsIgnoreCase("false"))
-            return context.getString(R.string.ld_registration_false_labour_complete);
+        if (isAllFieldsCompleted())
+            return context.getString(R.string.ld_registration_obstetric_history_complete);
+        else if (isAnyFieldCompleted())
+            return context.getString(R.string.ld_registration_obstetric_history_pending);
         return "";
     }
 
     /**
      * evaluate if all fields are completed
      **/
-    public boolean isAllFieldsCompleted() {
-        return !StringUtils.isBlank(trueLabour);
+    private boolean isAllFieldsCompleted() {
+        return !StringUtils.isBlank(gravida) &&
+                !StringUtils.isBlank(para) &&
+                !StringUtils.isBlank(childrenAlive) &&
+                !StringUtils.isBlank(numberOfAbortion) &&
+                !StringUtils.isBlank(lastMenstrualPeriod);
+    }
+
+    /**
+     * evaluate if any field has been completed
+     **/
+    private boolean isAnyFieldCompleted() {
+        return !StringUtils.isBlank(gravida) ||
+                !StringUtils.isBlank(para) ||
+                !StringUtils.isBlank(childrenAlive) ||
+                !StringUtils.isBlank(numberOfAbortion) ||
+                !StringUtils.isBlank(lastMenstrualPeriod);
     }
 
 }

@@ -3,11 +3,6 @@ package org.smartregister.chw.hf.utils;
 import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.assetManager;
 import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.locale;
 
-import android.content.Context;
-
-import com.vijay.jsonwizard.utils.FormUtils;
-
-import org.json.JSONException;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.Utils;
 
@@ -396,6 +391,10 @@ public class Constants extends CoreConstants {
         public static class LabourAndDeliveryRegistration {
             public static final String LABOUR_AND_DELIVERY_REGISTRATION_TRIAGE = "labour_and_delivery_registration_triage";
             public static final String LABOUR_AND_DELIVERY_REGISTRATION_TRUE_LABOUR_CONFIRMATION = "labour_and_delivery_registration_true_labour_confirmation";
+            public static final String LABOUR_AND_DELIVERY_ADMISSION_INFORMATION = "labour_and_delivery_registration_admission_information";
+            public static final String LABOUR_AND_DELIVERY_OBSTETRIC_HISTORY = "labour_and_delivery_registration_obstetric_history";
+            public static final String LABOUR_AND_DELIVERY_ANC_CLINIC_FINDINGS = "labour_and_delivery_registration_anc_clinic_findings";
+            public static final String LABOUR_AND_DELIVERY_CURRENT_LABOUR = "labour_and_delivery_registration_current_labour";
 
             public static String getLabourAndDeliveryRegistrationTriage() {
                 return LABOUR_AND_DELIVERY_REGISTRATION_TRIAGE;
@@ -403,6 +402,22 @@ public class Constants extends CoreConstants {
 
             public static String getLabourAndDeliveryRegistrationTrueLabourConfirmation() {
                 return LABOUR_AND_DELIVERY_REGISTRATION_TRUE_LABOUR_CONFIRMATION;
+            }
+
+            public static String getLabourAndDeliveryAdmissionInformation() {
+                return LABOUR_AND_DELIVERY_ADMISSION_INFORMATION;
+            }
+
+            public static String getLabourAndDeliveryObstetricHistory() {
+                return LABOUR_AND_DELIVERY_OBSTETRIC_HISTORY;
+            }
+
+            public static String getLabourAndDeliveryAncClinicFindings() {
+                return LABOUR_AND_DELIVERY_ANC_CLINIC_FINDINGS;
+            }
+
+            public static String getLabourAndDeliveryCurrentLabour() {
+                return LABOUR_AND_DELIVERY_CURRENT_LABOUR;
             }
         }
 

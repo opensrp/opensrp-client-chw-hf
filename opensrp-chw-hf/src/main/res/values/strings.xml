@@ -207,13 +207,28 @@
 
     <!-- Labour and Delivery String Resources-->
     <string name="menu_ld">L&amp;D</string>
+    <string name="ld_registration">L&amp;D Registration</string>
     <string name="ld_registration_triage_title">Triage</string>
     <string name="ld_registration_true_labour_title">True Labour Confirmation</string>
-    <string name="ld_registration_triage_action_subtitle_pending">Triage is Pending</string>
-    <string name="ld_registration_triage_action_subtitle_complete">Triage has been conducted</string>
+    <string name="ld_registration_admission_information_title">Admission Information</string>
+    <string name="ld_registration_obstetric_history_title">Obstetric History</string>
+    <string name="ld_registration_anc_clinic_findings_title">ANC Clinic Findings</string>
+    <string name="ld_registration_current_labour_title">Current Labour</string>
+
+    <string name="ld_registration_triage_action_subtitle_complete">Triage is complete</string>
+    <string name="ld_registration_admission_information_complete">Recording admission information is complete</string>
+    <string name="ld_registration_obstetric_history_complete">Recording Obstetric History information is complete</string>
+    <string name="ld_registration_anc_clinic_findings_complete">Recording ANC Clinic findings is complete</string>
+    <string name="ld_registration_current_labour_complete">Recording Current Labour is complete</string>
     <string name="ld_registration_true_labour_complete">The client has True labour</string>
     <string name="ld_registration_false_labour_complete">The client has False labour</string>
-    <string name="ld_registration">L&amp;D Registration</string>
+
+    <string name="ld_registration_triage_action_subtitle_pending">Triage is Pending</string>
+    <string name="ld_registration_admission_information_pending">Recording admission information is pending</string>
+    <string name="ld_registration_obstetric_history_pending">Recording Obstetric History information is pending</string>
+    <string name="ld_registration_anc_clinic_findings_pending">Recording ANC Clinic findings is pending</string>
+    <string name="ld_registration_current_labour_pending">Recording Current Labour is pending</string>
+
 
     <string name="ld_partograph">L&amp;D Partograph</string>
     <string name="ld_partograph_fetal_well_being"> Partograph : Fetal Well-being </string>

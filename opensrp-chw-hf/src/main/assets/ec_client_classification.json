@@ -599,7 +599,7 @@
           },
           {
             "field": "eventType",
-            "field_value": "Pregnancy Confirmation",
+            "field_value": "LD Registration",
             "creates_case": [
               "ec_ld_confirmation"
             ]
