@@ -2,7 +2,7 @@
   "validate_on_submit": true,
   "show_errors_on_submit": false,
   "count": "1",
-  "encounter_type": "General Examination",
+  "encounter_type": "Mother Wellbeing",
   "entity_id": "",
   "relational_id": "",
   "metadata": {
@@ -54,59 +54,8 @@
     }
   },
   "step1": {
-    "title": "General Examination",
+    "title": "Well-being of Mother",
     "fields": [
-      {
-        "key": "general_condition",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "general_condition",
-        "label": "General Condition",
-        "text_color": "#000000",
-        "type": "native_radio",
-        "options": [
-          {
-            "key": "good",
-            "text": "Good",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "good"
-          },
-          {
-            "key": "fair",
-            "text": "Fair",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "fair"
-          },
-          {
-            "key": "bad",
-            "text": "Bad",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "bad"
-          }
-        ],
-        "v_required": {
-          "value": true,
-          "err": "General condition is a required field"
-        }
-      },
-      {
-        "key": "prompt_for_general_condition",
-        "type": "toaster_notes",
-        "text": "Take action according to standard guideline",
-        "openmrs_entity_id": "",
-        "openmrs_entity": "",
-        "openmrs_entity_parent": "",
-        "toaster_type": "problem",
-        "relevance": {
-          "step1:general_condition": {
-            "type": "string",
-            "ex": "equalTo(., \"bad\")"
-          }
-        }
-      },
       {
         "key": "pulse_rate",
         "type": "edit_text",
@@ -305,7 +254,7 @@
         "relevance": {
           "rules-engine": {
             "ex-rules": {
-              "rules-file": "labour_and_delivery_general_examination_relevance.yml"
+              "rules-file": "labour_and_delivery_mother_wellbeing_relevance.yml"
             }
           }
         }
@@ -321,7 +270,7 @@
         "relevance": {
           "rules-engine": {
             "ex-rules": {
-              "rules-file": "labour_and_delivery_general_examination_relevance.yml"
+              "rules-file": "labour_and_delivery_mother_wellbeing_relevance.yml"
             }
           }
         }
@@ -373,219 +322,7 @@
         "relevance": {
           "rules-engine": {
             "ex-rules": {
-              "rules-file": "labour_and_delivery_general_examination_relevance.yml"
-            }
-          }
-        }
-      },
-      {
-        "key": "fundal_height",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "fundal_height",
-        "type": "edit_text",
-        "hint": "Fundal Height (CM)",
-        "v_required": {
-          "value": "true",
-          "err": "Required"
-        },
-        "v_numeric": {
-          "value": "true",
-          "err": "Has to be a number"
-        },
-        "v_min": {
-          "value": "12",
-          "err": "Fundal height must be equal or more than 12 CM"
-        },
-        "v_max": {
-          "value": "36",
-          "err": "Fundal height must be equal or less than 36 CM"
-        }
-      },
-      {
-        "key": "presentation",
-        "type": "spinner",
-        "openmrs_entity_id": "presentation",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "hint": "Presentation",
-        "values": [
-          "Breech Presentation",
-          "Cephalic Presentation"
-        ],
-        "keys": [
-          "breech",
-          "cephalic"
-        ],
-        "openmrs_choice_ids": {
-          "breech": "breech",
-          "cephalic": "cephalic"
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Please select an option for presentation"
-        }
-      },
-      {
-        "key": "lie",
-        "type": "spinner",
-        "openmrs_entity_id": "lie",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "hint": "Lie",
-        "values": [
-          "Transverse",
-          "Oblique",
-          "Longitudinal"
-        ],
-        "keys": [
-          "transverse",
-          "oblique",
-          "longitudinal"
-        ],
-        "openmrs_choice_ids": {
-          "transverse": "transverse",
-          "oblique": "oblique",
-          "longitudinal": "longitudinal"
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Please select an option for lie"
-        }
-      },
-      {
-        "key": "prompt_for_lie",
-        "type": "toaster_notes",
-        "text": "Refer for further consultation",
-        "openmrs_entity_id": "",
-        "openmrs_entity": "",
-        "openmrs_entity_parent": "",
-        "toaster_type": "problem",
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "labour_and_delivery_general_examination_relevance.yml"
-            }
-          }
-        }
-      },
-      {
-        "key": "contraction_in_ten_minutes",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "contraction_in_ten_minutes",
-        "label": "Contraction in ten minutes",
-        "text_color": "#000000",
-        "type": "native_radio",
-        "options": [
-          {
-            "key": "less_than_20_secs ",
-            "text": "<20 secs",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "less_than_20_secs"
-          },
-          {
-            "key": "over_20_less_40_secs",
-            "text": "20-40 secs",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "over_20_less_40_secs"
-          },
-          {
-            "key": "over_40_secs",
-            "text": ">40 secs",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "over_40_secs"
-          }
-        ],
-        "v_required": {
-          "value": true,
-          "err": "Please select an option"
-        }
-      },
-      {
-        "key": "prompt_for_contraction_less_than_20_secs",
-        "type": "toaster_notes",
-        "text": "Slight contraction",
-        "openmrs_entity_id": "",
-        "openmrs_entity": "",
-        "openmrs_entity_parent": "",
-        "toaster_type": "info",
-        "relevance": {
-          "step1:contraction_in_ten_minutes": {
-            "type": "string",
-            "ex": "equalTo(., \"less_than_20_secs\")"
-          }
-        }
-      },
-      {
-        "key": "prompt_for_contraction_over_10_less_40_secs",
-        "type": "toaster_notes",
-        "text": "Moderate contraction",
-        "openmrs_entity_id": "",
-        "openmrs_entity": "",
-        "openmrs_entity_parent": "",
-        "toaster_type": "info",
-        "relevance": {
-          "step1:contraction_in_ten_minutes": {
-            "type": "string",
-            "ex": "equalTo(., \"over_20_less_40_secs\")"
-          }
-        }
-      },
-      {
-        "key": "prompt_for_contraction_over_40_secs",
-        "type": "toaster_notes",
-        "text": "Strong contraction",
-        "openmrs_entity_id": "",
-        "openmrs_entity": "",
-        "openmrs_entity_parent": "",
-        "toaster_type": "info",
-        "relevance": {
-          "step1:contraction_in_ten_minutes": {
-            "type": "string",
-            "ex": "equalTo(., \"over_40_secs\")"
-          }
-        }
-      },
-      {
-        "key": "fetal_heart_rate",
-        "type": "edit_text",
-        "hint": "Count Fetal Heart Rate (bpm)",
-        "openmrs_entity_id": "fetal_heart_rate",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "v_numeric": {
-          "value": "true",
-          "err": "Please enter the fetal heart rate"
-        },
-        "v_min": {
-          "value": "0",
-          "err": "Fetal heart rate must be equal or greater than 0"
-        },
-        "v_max": {
-          "value": "300",
-          "err": "Fetal heart rate must be equal or less than 300"
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the fetal heart rate"
-        }
-      },
-      {
-        "key": "prompt_for_fetal_distress",
-        "type": "toaster_notes",
-        "text": "Take action or refer for further management",
-        "openmrs_entity_id": "prompt_for_fetal_distress",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "toaster_type": "problem",
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "labour_and_delivery_general_examination_relevance.yml"
+              "rules-file": "labour_and_delivery_mother_wellbeing_relevance.yml"
             }
           }
         }
