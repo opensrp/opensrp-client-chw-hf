@@ -87,7 +87,7 @@
         "relevance": {
           "rules-engine": {
             "ex-rules": {
-              "rules-file": "labour_and_delivery_foetal_wellbeing_relevance.yml"
+              "rules-file": "labour_and_delivery_fetal_wellbeing_relevance.yml"
             }
           }
         }
@@ -237,7 +237,7 @@
         "relevance": {
           "rules-engine": {
             "ex-rules": {
-              "rules-file": "labour_and_delivery_foetal_wellbeing_relevance.yml"
+              "rules-file": "labour_and_delivery_fetal_wellbeing_relevance.yml"
             }
           }
         }
