@@ -406,6 +406,30 @@ public class Constants extends CoreConstants {
             }
         }
 
+        public static class LabourAndDeliveryPartograph {
+            public static final String PARTOGRAPH_FETAL_WELLBEING = "";
+            public static final String PARTOGRAPH_MOTHER_WELLBEING = "";
+            public static final String PARTOGRAPH_PROGRESS_OF_LABOUR = "";
+            public static final String PARTOGRAPH_TREATMENT_DURING_LABOUR = "";
+
+            public static String getFetalWellBingForm(){
+                return PARTOGRAPH_FETAL_WELLBEING;
+            }
+
+            public static String getMotherWellBeingForm(){
+                return PARTOGRAPH_MOTHER_WELLBEING;
+            }
+
+            public static String getProgressOfLabourForm(){
+                return PARTOGRAPH_PROGRESS_OF_LABOUR;
+            }
+
+            public static String getTreatmentDuringLabourForm(){
+                return PARTOGRAPH_TREATMENT_DURING_LABOUR;
+            }
+
+        }
+
     }
 
     public static final class JsonFormConstants {
