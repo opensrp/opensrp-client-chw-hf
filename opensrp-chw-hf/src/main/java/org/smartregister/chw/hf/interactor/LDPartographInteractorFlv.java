@@ -4,7 +4,7 @@ import android.content.Context;
 
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.actionhelper.LDPartographFetalWellBeingActionHelper;
-import org.smartregister.chw.hf.actionhelper.LDRegistrationTriageAction;
+import org.smartregister.chw.hf.actionhelper.LDPartographMotherWellBeingActionHelper;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.ld.LDLibrary;
 import org.smartregister.chw.ld.contract.BaseLDVisitContract;
@@ -47,7 +47,7 @@ public class LDPartographInteractorFlv implements LDPartographInteractor.Flavor 
         }
 
         evaluateFetalWellbeing(actionList, details, memberObject, context, callBack);
-        evaluateMotherWellbeing(actionList, details, memberObject, context, callBack);
+        evaluateMotherWellBeing(actionList, details, memberObject, context, callBack);
         evaluateProgressOfLabour(actionList, details, memberObject, context, callBack);
         evaluateTreatmentDuringLabor(actionList, details, memberObject, context, callBack);
 
@@ -73,12 +73,21 @@ public class LDPartographInteractorFlv implements LDPartographInteractor.Flavor 
 
     }
 
-    private void evaluateMotherWellbeing(LinkedHashMap<String, BaseLDVisitAction> actionList,
-                                        Map<String, List<VisitDetail>> details,
-                                        final MemberObject memberObject,
-                                        final Context context,
-                                        BaseLDVisitContract.InteractorCallBack callBack
+    private void evaluateMotherWellBeing(LinkedHashMap<String, BaseLDVisitAction> actionList,
+                                         Map<String, List<VisitDetail>> details,
+                                         final MemberObject memberObject,
+                                         final Context context,
+                                         BaseLDVisitContract.InteractorCallBack callBack
     ) throws BaseLDVisitAction.ValidationException {
+
+        BaseLDVisitAction motherWellBeing = new BaseLDVisitAction.Builder(context, context.getString(R.string.ld_partograph_mother_well_being))
+                .withOptional(false)
+                .withDetails(details)
+                .withFormName(Constants.JsonForm.LabourAndDeliveryPartograph.getMotherWellBeingForm())
+                .withHelper(new LDPartographMotherWellBeingActionHelper(memberObject))
+                .build();
+
+        actionList.put(context.getString(R.string.ld_partograph_fetal_well_being), motherWellBeing);
 
     }
 
