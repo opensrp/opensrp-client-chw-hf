@@ -62,14 +62,14 @@ public class LDPartographInteractorFlv implements LDPartographInteractor.Flavor 
     ) throws BaseLDVisitAction.ValidationException {
 
 
-        BaseLDVisitAction fetalWellBeingAction = new BaseLDVisitAction.Builder(context, context.getString(R.string.ld_registration_triage_title))
+        BaseLDVisitAction fetalWellBeingAction = new BaseLDVisitAction.Builder(context, context.getString(R.string.ld_partograph_fetal_well_being))
                 .withOptional(false)
                 .withDetails(details)
                 .withFormName(Constants.JsonForm.LabourAndDeliveryPartograph.getFetalWellBingForm())
                 .withHelper(new LDPartographFetalWellBeingActionHelper(memberObject))
                 .build();
 
-        actionList.put(context.getString(R.string.ld_registration_triage_title), fetalWellBeingAction);
+        actionList.put(context.getString(R.string.ld_partograph_fetal_well_being), fetalWellBeingAction);
 
     }
 
