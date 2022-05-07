@@ -486,11 +486,11 @@
             "openmrs_entity_id": "less_than_20_secs"
           },
           {
-            "key": "over_10_less_40_secs",
+            "key": "over_20_less_40_secs",
             "text": "20-40 secs",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "over_10_less_40_secs"
+            "openmrs_entity_id": "over_20_less_40_secs"
           },
           {
             "key": "over_40_secs",
@@ -502,7 +502,7 @@
         ],
         "v_required": {
           "value": true,
-          "err": "Lie is a required field"
+          "err": "Please select an option"
         }
       },
       {
@@ -531,7 +531,7 @@
         "relevance": {
           "step1:contraction_in_ten_minutes": {
             "type": "string",
-            "ex": "equalTo(., \"over_10_less_40_secs\")"
+            "ex": "equalTo(., \"over_20_less_40_secs\")"
           }
         }
       },
