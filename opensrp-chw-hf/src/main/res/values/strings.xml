@@ -223,6 +223,8 @@
     <string name="ld_partograph_fetal_wellbeing_pending"> Fetal Well-being is pending </string>
     <string name="ld_partograph_mother_wellbeing_completed"> Mother Well-being has been conducted </string>
     <string name="ld_partograph_mother_wellbeing_pending"> Mother Well-being is pending </string>
+    <string name="ld_partograph_labor_progress_completed"> Progress of labor has been conducted </string>
+    <string name="ld_partograph_labor_progress_pending"> Progress of labor is pending </string>
 
     <string name="record_ld_event">Record %s</string>
 
