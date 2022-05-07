@@ -230,6 +230,15 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     }
 
     @Override
+    protected void startLDRegistration() {
+        try {
+            LDRegisterActivity.startLDRegistrationActivity(AncMemberProfileActivity.this, memberObject.getBaseEntityId());
+        } catch (Exception e) {
+            Timber.e(e);
+        }
+    }
+
+    @Override
     public void setupViews() {
         super.setupViews();
         updateToolbarTitle(this, org.smartregister.chw.core.R.id.toolbar_title, memberObject.getFamilyName());

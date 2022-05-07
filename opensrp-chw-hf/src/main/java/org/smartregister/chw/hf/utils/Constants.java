@@ -53,6 +53,7 @@ public class Constants extends CoreConstants {
         public static final String HEI_COMMUNITY_FOLLOWUP = "HEI Community Followup";
         public static final String HEI_NUMBER_REGISTRATION = "HEI Number Registration";
         public static final String ANC_FOLLOWUP_CLIENT_FOLLOWUP = "ANC Followup Client Registration";
+        public static final String LD_REGISTRATION = "LD Registration";
     }
 
     public static final class TableName {
@@ -121,6 +122,7 @@ public class Constants extends CoreConstants {
         private static final String PNC_NUTRITIONAL_SUPPLEMENT = "pnc_nutritional_supplement";
         private static final String PMTCT_FOLLOWUP_STATUS = "pmtct_followup_status";
         private static final String ANC_TRANSFER_IN_REGISTRATION = "anc_member_transfer_in_registration";
+        private static final String LD_REGISTRATION = "labour_and_delivery_registration";
 
         public static String getNextFacilityVisitForm() {
             return NEXT_FACILITY_VISIT_FORM;
@@ -182,7 +184,7 @@ public class Constants extends CoreConstants {
             return HEI_ARV_PRESCRIPTION_HIGH_RISK_INFANT;
         }
 
-        public static String getHeiBaselineInvestigation(){
+        public static String getHeiBaselineInvestigation() {
             return HEI_BASLINE_INVESTIGATION;
         }
 
@@ -294,6 +296,10 @@ public class Constants extends CoreConstants {
             return HIV_CLIENT_UPDATE_CTC_NUMBER;
         }
 
+        public static String getLdRegistration() {
+            return LD_REGISTRATION;
+        }
+
         public static class EacVisits {
             public static final String PMTCT_EAC_VISIT = "pmtct_eac_visits";
 
@@ -375,8 +381,42 @@ public class Constants extends CoreConstants {
             public static String getPartnerTesting() {
                 return Utils.getLocalForm(PARTNER_TESTING, locale, assetManager);
             }
+
             public static String getMalariaInvestigation() {
                 return Utils.getLocalForm(MALARIA_INVESTIGATION, locale, assetManager);
+            }
+        }
+
+        public static class LabourAndDeliveryRegistration {
+            public static final String LABOUR_AND_DELIVERY_REGISTRATION_TRIAGE = "labour_and_delivery_registration_triage";
+            public static final String LABOUR_AND_DELIVERY_REGISTRATION_TRUE_LABOUR_CONFIRMATION = "labour_and_delivery_registration_true_labour_confirmation";
+            public static final String LABOUR_AND_DELIVERY_ADMISSION_INFORMATION = "labour_and_delivery_registration_admission_information";
+            public static final String LABOUR_AND_DELIVERY_OBSTETRIC_HISTORY = "labour_and_delivery_registration_obstetric_history";
+            public static final String LABOUR_AND_DELIVERY_ANC_CLINIC_FINDINGS = "labour_and_delivery_registration_anc_clinic_findings";
+            public static final String LABOUR_AND_DELIVERY_CURRENT_LABOUR = "labour_and_delivery_registration_current_labour";
+
+            public static String getLabourAndDeliveryRegistrationTriage() {
+                return LABOUR_AND_DELIVERY_REGISTRATION_TRIAGE;
+            }
+
+            public static String getLabourAndDeliveryRegistrationTrueLabourConfirmation() {
+                return LABOUR_AND_DELIVERY_REGISTRATION_TRUE_LABOUR_CONFIRMATION;
+            }
+
+            public static String getLabourAndDeliveryAdmissionInformation() {
+                return LABOUR_AND_DELIVERY_ADMISSION_INFORMATION;
+            }
+
+            public static String getLabourAndDeliveryObstetricHistory() {
+                return LABOUR_AND_DELIVERY_OBSTETRIC_HISTORY;
+            }
+
+            public static String getLabourAndDeliveryAncClinicFindings() {
+                return LABOUR_AND_DELIVERY_ANC_CLINIC_FINDINGS;
+            }
+
+            public static String getLabourAndDeliveryCurrentLabour() {
+                return LABOUR_AND_DELIVERY_CURRENT_LABOUR;
             }
         }
 

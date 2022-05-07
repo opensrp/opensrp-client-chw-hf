@@ -2,6 +2,7 @@ package org.smartregister.chw.hf.activity;
 
 import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
 import static org.smartregister.chw.hf.utils.JsonFormUtils.getAutoPopulatedJsonEditFormString;
+import static org.smartregister.util.Utils.getName;
 
 import android.content.Context;
 import android.view.Menu;
@@ -33,6 +34,7 @@ import org.smartregister.chw.hf.presenter.FamilyOtherMemberActivityPresenter;
 import org.smartregister.chw.hf.presenter.HfAllClientsMemberPresenter;
 import org.smartregister.chw.hf.utils.AllClientsUtils;
 import org.smartregister.chw.hf.utils.Constants;
+import org.smartregister.chw.ld.dao.LDDao;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.family.adapter.ViewPagerAdapter;
 import org.smartregister.family.fragment.BaseFamilyOtherMemberProfileFragment;
@@ -65,6 +67,11 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
         } else
             menu.findItem(R.id.action_anc_registration).setVisible(false);
 
+        if (isOfReproductiveAge(commonPersonObject, gender) && gender.equalsIgnoreCase("female") && !LDDao.isRegisteredForLD(baseEntityId)) {
+            menu.findItem(R.id.action_ld_registration).setVisible(true);
+        } else {
+            menu.findItem(R.id.action_ld_registration).setVisible(false);
+        }
         menu.findItem(R.id.action_sick_child_follow_up).setVisible(false);
         menu.findItem(R.id.action_malaria_diagnosis).setVisible(false);
         return true;
@@ -254,6 +261,22 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
     @Override
     protected void startPmtctRegisration() {
         //Do nothing - not required here
+    }
+
+    @Override
+    protected void startLDRegistration() {
+        String firstName = org.smartregister.family.util.Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.FIRST_NAME, true);
+        String middleName = org.smartregister.family.util.Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.MIDDLE_NAME, true);
+        String lastName = org.smartregister.family.util.Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.LAST_NAME, true);
+
+        String dob = org.smartregister.family.util.Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.DOB, true);
+        int age = StringUtils.isNotBlank(dob) ? org.smartregister.family.util.Utils.getAgeFromDate(dob) : 0;
+
+        try {
+            LDRegistrationFormActivity.startMe(this, baseEntityId, false, getName(getName(firstName, middleName), lastName), String.valueOf(age));
+        } catch (Exception e) {
+            Timber.e(e);
+        }
     }
 
     @Override

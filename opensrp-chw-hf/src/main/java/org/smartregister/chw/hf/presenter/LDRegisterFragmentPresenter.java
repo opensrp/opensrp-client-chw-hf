@@ -11,6 +11,7 @@ public class LDRegisterFragmentPresenter extends BaseLDRegisterFragmentPresenter
 
     @Override
     public String getMainCondition() {
-        return "" + Constants.TABLES.LD_CONFIRMATION + "." + "is_closed is 0";
+        return "" + Constants.TABLES.LD_CONFIRMATION + "." + "labour_confirmation = 'true' AND "
+                + Constants.TABLES.LD_CONFIRMATION + "." + "is_closed is 0";
     }
 }

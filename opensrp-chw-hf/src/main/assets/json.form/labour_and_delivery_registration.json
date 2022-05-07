@@ -1,6 +1,7 @@
 {
   "count": "6",
-  "encounter_type": "Labour and Delivery Triage",
+  "skip_blank_steps": true,
+  "encounter_type": "Labour and Delivery Registration",
   "entity_id": "",
   "metadata": {
     "start": {

@@ -1,0 +1,24 @@
+---
+name: step1_labour_confirmation
+description: Labour Confirmation calculation
+priority: 1
+condition: "true"
+actions:
+  - 'def getLabourConfirmation(trueLabour) {
+           import java.util.*;
+           int value = 0;
+           if (trueLabour.contains("painful_uterine_contraction"))
+               value =+1;
+
+           if (trueLabour.contains("bloody_vaginal_discharge"))
+               value =+1;
+
+           if (trueLabour.contains("effacement_and_dilatation"))
+               value =+1;
+
+           if (trueLabour.contains("progressive_descent"))
+               value =+1;
+
+          return value >= 2;
+       }'
+  - "calculation = getLabourConfirmation(step1_true_labour)"

@@ -1,5 +1,10 @@
 package org.smartregister.chw.hf.utils;
 
+import static org.smartregister.chw.core.utils.CoreConstants.INTENT_KEY.CLIENT;
+import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
+import static org.smartregister.opd.utils.OpdDbConstants.KEY.REGISTER_TYPE;
+import static org.smartregister.util.Utils.showShortToast;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,6 +28,7 @@ import org.smartregister.chw.hf.activity.ChildProfileActivity;
 import org.smartregister.chw.hf.activity.FamilyOtherMemberProfileActivity;
 import org.smartregister.chw.hf.activity.FamilyPlanningMemberProfileActivity;
 import org.smartregister.chw.hf.activity.HivProfileActivity;
+import org.smartregister.chw.hf.activity.LDProfileActivity;
 import org.smartregister.chw.hf.activity.MalariaProfileActivity;
 import org.smartregister.chw.hf.activity.PncMemberProfileActivity;
 import org.smartregister.chw.hf.activity.TbProfileActivity;
@@ -43,11 +49,6 @@ import org.smartregister.opd.utils.OpdDbConstants;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.smartregister.chw.core.utils.CoreConstants.INTENT_KEY.CLIENT;
-import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
-import static org.smartregister.opd.utils.OpdDbConstants.KEY.REGISTER_TYPE;
-import static org.smartregister.util.Utils.showShortToast;
 
 public class AllClientsUtils {
 
@@ -81,6 +82,9 @@ public class AllClientsUtils {
                     break;
                 case CoreConstants.REGISTER_TYPE.FAMILY_PLANNING:
                     AllClientsUtils.goToFamilyPlanningProfile(activity, commonPersonObjectClient);
+                    break;
+                case CoreConstants.REGISTER_TYPE.LD:
+                    AllClientsUtils.goToLDProfile(activity, commonPersonObjectClient);
                     break;
                 default:
                     AllClientsUtils.goToOtherMemberProfile(activity, commonPersonObjectClient, bundle,
@@ -119,7 +123,7 @@ public class AllClientsUtils {
     }
 
     private static void goToAncProfile(Activity activity, CommonPersonObjectClient patient) {
-        AncMemberProfileActivity.startMe(activity,patient.getCaseId());
+        AncMemberProfileActivity.startMe(activity, patient.getCaseId());
     }
 
     private static void gotToMalariaProfile(Activity activity, CommonPersonObjectClient patient) {
@@ -128,6 +132,10 @@ public class AllClientsUtils {
 
     private static void goToFamilyPlanningProfile(Activity activity, CommonPersonObjectClient patient) {
         FamilyPlanningMemberProfileActivity.startFpMemberProfileActivity(activity, FpDao.getMember(patient.getCaseId()));
+    }
+
+    private static void goToLDProfile(Activity activity, CommonPersonObjectClient patient) {
+        LDProfileActivity.startProfileActivity(activity, patient.entityId());
     }
 
     private static Intent initProfileActivityIntent(Activity activity, CommonPersonObjectClient patient, Bundle bundle, Class clazz) {
@@ -221,16 +229,18 @@ public class AllClientsUtils {
     }
 
     public static void goToHivProfile(FragmentActivity activity, CommonPersonObjectClient hivClient) {
-        HivProfileActivity.startHivProfileActivity(activity,HivDao.getMember(hivClient.getCaseId()));
+        HivProfileActivity.startHivProfileActivity(activity, HivDao.getMember(hivClient.getCaseId()));
     }
 
     public static void goToHTsProfile(FragmentActivity activity, CommonPersonObjectClient hivClient) {
         HivProfileActivity.startHivProfileActivity(activity, HfHtsDao.getMember(hivClient.getCaseId()));
     }
+
     public static void goToTbProfile(FragmentActivity activity, CommonPersonObjectClient tbClient) {
-        TbProfileActivity.startTbProfileActivity(activity,TbDao.getMember(tbClient.getCaseId()));
+        TbProfileActivity.startTbProfileActivity(activity, TbDao.getMember(tbClient.getCaseId()));
     }
-    public static void updatePmtctMenuItems(String baseEntityId, Menu menu){
+
+    public static void updatePmtctMenuItems(String baseEntityId, Menu menu) {
         menu.findItem(R.id.action_pmtct_register).setVisible(!PmtctDao.isRegisteredForPmtct(baseEntityId));
     }
 }

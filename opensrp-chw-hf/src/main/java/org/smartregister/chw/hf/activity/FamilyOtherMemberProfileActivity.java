@@ -1,5 +1,8 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
+import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
+
 import android.content.Context;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -38,9 +41,6 @@ import org.smartregister.family.util.DBConstants;
 import org.smartregister.view.contract.BaseProfileContract;
 
 import timber.log.Timber;
-
-import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
-import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
 
 public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfileActivity {
     private FamilyMemberFloatingMenu familyFloatingMenu;
@@ -129,6 +129,15 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
     @Override
     protected void startPmtctRegisration() {
         //Do nothing - not required here
+    }
+
+    @Override
+    protected void startLDRegistration() {
+        try {
+            LDRegisterActivity.startLDRegistrationActivity(FamilyOtherMemberProfileActivity.this, baseEntityId);
+        } catch (Exception e) {
+            Timber.e(e);
+        }
     }
 
     @Override
