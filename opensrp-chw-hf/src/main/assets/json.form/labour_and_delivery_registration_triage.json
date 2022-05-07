@@ -1,0 +1,457 @@
+{
+  "count": "1",
+  "skip_blank_steps": true,
+  "encounter_type": "Labour and Delivery Registration Triage",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "step1": {
+    "title": "Triage",
+    "fields": [
+      {
+        "key": "systolic",
+        "type": "edit_text",
+        "hint": "Systolic (Blood Pressure)",
+        "openmrs_entity_id": "systolic",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the systolic value"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Systolic value must be equal or greater than 0"
+        },
+        "v_max": {
+          "value": "320",
+          "err": "Systolic value must be equal or less than 320"
+        }
+      },
+      {
+        "key": "diastolic",
+        "type": "edit_text",
+        "hint": "Diastolic (Blood Pressure)",
+        "openmrs_entity_id": "diastolic",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the diastolic value"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Diastolic value must be equal or greater than 0"
+        },
+        "v_max": {
+          "value": "200",
+          "err": "Diastolic value must be equal or less than 200"
+        },
+        "constraints": [
+          {
+            "type": "numeric",
+            "ex": "lessThan(., step1:systolic)",
+            "err": "The diastolic value must be less than the systolic value"
+          }
+        ]
+      },
+      {
+        "key": "prompt_for_management_of_hypertension",
+        "type": "toaster_notes",
+        "text": "Manage the hypertension according to standard guidelines",
+        "openmrs_entity_id": "prompt_for_management_of_hypertension",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_triage_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_management_of_hypotension",
+        "type": "toaster_notes",
+        "text": "Elicit the cause of hypotension and manage according to standard guidelines",
+        "openmrs_entity_id": "prompt_for_management_of_hypotension",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_triage_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "pulse_rate",
+        "type": "edit_text",
+        "hint": "Pulse Rate (Beats per minute)",
+        "openmrs_entity_id": "pulse_rate",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the pulse rate"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "The pulse rate must be equal or greater than 0 (bpm)"
+        },
+        "v_max": {
+          "value": "200",
+          "err": "The pulse rate must be equal or less than 200 (bpm)"
+        }
+      },
+      {
+        "key": "prompt_for_Bradycardia",
+        "type": "toaster_notes",
+        "text": "Elicit the cause of bradycardia and manage according to standard guidelines",
+        "openmrs_entity_id": "prompt_for_Bradycardia",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:pulse_rate": {
+            "type": "numeric",
+            "ex": "lessThan(.,\"70\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_Tachycardia",
+        "type": "toaster_notes",
+        "text": "Elicit the cause of tachycardia and manage according to standard guidelines",
+        "openmrs_entity_id": "prompt_for_Tachycardia",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:pulse_rate": {
+            "type": "numeric",
+            "ex": "greaterThan(.,\"140\")"
+          }
+        }
+      },
+      {
+        "key": "respiratory_rate",
+        "type": "edit_text",
+        "hint": "Respiratory Rate (Breaths per minute)",
+        "openmrs_entity_id": "respiratory_rate",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the respiratory rate"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "The pulse rate must be equal or greater than 0 (Breaths per minute)"
+        },
+        "v_max": {
+          "value": "100",
+          "err": "The pulse rate must be equal or less than 100 (Breaths per minute)"
+        }
+      },
+      {
+        "key": "fetal_heart_rate",
+        "type": "edit_text",
+        "hint": "Count Fetal Heart Rate (bpm)",
+        "openmrs_entity_id": "fetal_heart_rate",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the fetal heart rate"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Fetal heart rate must be equal or greater than 0"
+        },
+        "v_max": {
+          "value": "300",
+          "err": "Fetal heart rate must be equal or less than 300"
+        }
+      },
+      {
+        "key": "prompt_for_fetal_distress",
+        "type": "toaster_notes",
+        "text": "Refer for further management",
+        "openmrs_entity_id": "prompt_for_fetal_distress",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_triage_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "temperature",
+        "type": "edit_text",
+        "hint": "Temperature (C)",
+        "openmrs_entity_id": "temperature",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the temperature"
+        },
+        "v_min": {
+          "value": "10",
+          "err": "Temperature must be equal or greater than 10"
+        },
+        "v_max": {
+          "value": "50",
+          "err": "Temperature must be equal or less than 50"
+        }
+      },
+      {
+        "key": "notify_client_has_fever",
+        "type": "toaster_notes",
+        "text": "Conduct relevant laboratory tests to elicit the cause of fever and manage according to standard guidelines ",
+        "openmrs_entity_id": "notify_client_has_fever",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:temperature": {
+            "type": "numeric",
+            "ex": "greaterThan(.,\"37.8\")"
+          }
+        }
+      },
+      {
+        "key": "notify_client_has_hypothermia",
+        "type": "toaster_notes",
+        "text": "Manage the hypothermia according to standard guidelines",
+        "openmrs_entity_id": "notify_client_has_hypothermia",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:temperature": {
+            "type": "numeric",
+            "ex": "lessThan(.,\"36.5\")"
+          }
+        }
+      },
+      {
+        "key": "weight",
+        "type": "edit_text",
+        "hint": "Weight (KG)",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "weight",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the weight"
+        },
+        "v_min": {
+          "value": "20",
+          "err": "The weight must be equal or greater than 20 (KG)"
+        },
+        "v_max": {
+          "value": "300",
+          "err": "The weight must be equal or less than 300 (KG)"
+        }
+      },
+      {
+        "key": "height",
+        "type": "edit_text",
+        "hint": "Height (CM)",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "height",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the height"
+        },
+        "v_min": {
+          "value": "60",
+          "err": "The height must be equal or greater than 60 (CM)"
+        },
+        "v_max": {
+          "value": "200",
+          "err": "The height must be equal or less than 200 (CM)"
+        }
+      },
+      {
+        "key": "prompt_for_short_stature",
+        "type": "toaster_notes",
+        "text": "Counsel the client on her risk of obstructed labour and advise her to deliver at a health care facility",
+        "openmrs_entity_id": "prompt_for_short_stature",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:height": {
+            "type": "numeric",
+            "ex": "lessThan(.,\"145\")"
+          }
+        }
+      },
+      {
+        "key": "danger_signs",
+        "type": "check_box",
+        "label": "Danger signs present",
+        "combine_checkbox_option_values": "true",
+        "openmrs_entity_id": "danger_signs",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "exclusive": [
+          "none"
+        ],
+        "options": [
+          {
+            "key": "bleeding_vag",
+            "text": "Bleeding Vaginally",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "bleeding_vag"
+          },
+          {
+            "key": "severe_headache",
+            "text": "Severe Headache",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "severe_headache"
+          },
+          {
+            "key": "severe_abdominal_pain",
+            "text": "Severe Abdominal Pain",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "severely_abdominal_pain"
+          },
+          {
+            "key": "convulsion",
+            "text": "Convulsion",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "convulsion"
+          },
+          {
+            "key": "blurred_vision",
+            "text": "Blurred Vision",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "blurred_vision"
+          },
+          {
+            "key": "severe_breathing_difficulty",
+            "text": "Severe Breathing Difficulty",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "severe_breathing_difficulty"
+          },
+          {
+            "key": "unconscious",
+            "text": "Unconscious",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "unconscious"
+          },
+          {
+            "key": "reduced_fetal_movement",
+            "text": "Reduced Fetal Movement",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "reduced_fetal_movement"
+          },
+          {
+            "key": "dizziness",
+            "text": "Dizziness",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "dizziness"
+          },
+          {
+            "key": "none",
+            "text": "None",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "none"
+          }
+        ]
+      },
+      {
+        "key": "danger_signs_present_toaster",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "",
+        "type": "toaster_notes",
+        "text": "Manage the condition according to standard guideline",
+        "toaster_type": "problem",
+        "relevance": {
+          "step111:danger_signs": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "bleeding_vag",
+                  "severe_headache",
+                  "unconscious",
+                  "reduced_fetal_movement",
+                  "dizziness",
+                  "blurred_vision",
+                  "severe_abdominal_pain",
+                  "severe_breathing_difficulty",
+                  "convulsion"
+                ]
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}
