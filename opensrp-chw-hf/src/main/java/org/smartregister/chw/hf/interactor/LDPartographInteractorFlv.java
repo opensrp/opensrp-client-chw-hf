@@ -65,7 +65,7 @@ public class LDPartographInteractorFlv implements LDPartographInteractor.Flavor 
         BaseLDVisitAction fetalWellBeingAction = new BaseLDVisitAction.Builder(context, context.getString(R.string.ld_registration_triage_title))
                 .withOptional(false)
                 .withDetails(details)
-                .withFormName(Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryRegistrationTriage())
+                .withFormName(Constants.JsonForm.LabourAndDeliveryPartograph.getFetalWellBingForm())
                 .withHelper(new LDPartographFetalWellBeingActionHelper(memberObject))
                 .build();
 
