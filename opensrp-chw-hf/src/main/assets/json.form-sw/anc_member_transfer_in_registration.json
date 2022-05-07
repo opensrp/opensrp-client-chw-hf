@@ -615,33 +615,33 @@
       {
         "key": "abdominal_scars",
         "type": "native_radio",
-        "label": "Are there any lower abdominal caesarian scars?",
+        "label": "Je, kuna kovu la upasuaji kwenye tumbo?",
         "openmrs_entity_id": "abdominal_scars",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndio",
             "openmrs_entity_id": "yes",
             "openmrs_entity": "concept"
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "openmrs_entity_id": "no",
             "openmrs_entity": "concept"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Please answer this question"
+          "err": "Tafadhali jbu swali hili"
         }
       },
       {
         "key": "prompt_for_abdominal_scars",
         "type": "toaster_notes",
-        "text": "Counsel the client on her risk of uterine rupture during labour and advise her to deliver at a health care facility",
+        "text": "Mteja ashauriwe kujifungua Kituo cha Afya kwa sababu ya hatari ya kupasuka kwa mfuko wa uzazi",
         "openmrs_entity_id": "prompt_for_abdominal_scars",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -656,27 +656,27 @@
       {
         "key": "abdominal_movement_with_respiration",
         "type": "native_radio",
-        "label": "Does the Abdomen Move with respiration",
+        "label": "Je, tumbo linasogea wakati wa kupumua?",
         "openmrs_entity_id": "abdominal_movement_with_respiration",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndio",
             "openmrs_entity_id": "yes",
             "openmrs_entity": "concept"
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "openmrs_entity_id": "no",
             "openmrs_entity": "concept"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Please answer this question"
+          "err": "Tafadhali jibu swali hili"
         }
       },
       {
@@ -697,27 +697,27 @@
       {
         "key": "abnormal_vaginal_discharge",
         "type": "native_radio",
-        "label": "Abnormal Vaginal Discharge",
+        "label": "Kutokwa na uchafu usio wa kawaida ukeni",
         "openmrs_entity_id": "abnormal_vaginal_discharge",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndio",
             "openmrs_entity_id": "yes",
             "openmrs_entity": "concept"
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "openmrs_entity_id": "no",
             "openmrs_entity": "concept"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Please answer this question"
+          "err": "Tafadhali jibu swali hili"
         }
       },
       {
@@ -738,33 +738,33 @@
       {
         "key": "vaginal_sores",
         "type": "native_radio",
-        "label": "Vaginal Sores",
+        "label": "Vidonda sehemu ya ukeni",
         "openmrs_entity_id": "vaginal_sores",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndio",
             "openmrs_entity_id": "yes",
             "openmrs_entity": "concept"
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "openmrs_entity_id": "no",
             "openmrs_entity": "concept"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Please answer this question"
+          "err": "Tafadhali jibu swali hili"
         }
       },
       {
         "key": "prompt_for_vaginal_sores",
         "type": "toaster_notes",
-        "text": "Identify the cause of vaginal sores and manage according to standard guidelines",
+        "text": "Chunguza sababu ya vidonda ukeni na tibu kulingana na muongozo",
         "openmrs_entity_id": "prompt_for_vaginal_sores",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -779,33 +779,33 @@
       {
         "key": "vaginal_swelling",
         "type": "native_radio",
-        "label": "Vaginal Swelling",
+        "label": "Kuvimba  sehemu ya ukeni",
         "openmrs_entity_id": "vaginal_swelling",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndio",
             "openmrs_entity_id": "yes",
             "openmrs_entity": "concept"
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "openmrs_entity_id": "no",
             "openmrs_entity": "concept"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Please answer this question"
+          "err": "Tafadhali jibu swali hili"
         }
       },
       {
         "key": "prompt_for_vaginal_swelling",
         "type": "toaster_notes",
-        "text": "Identify the cause of vaginal swelling and manage according to standard guidelines",
+        "text": "Chunguza sababu ya uvimbe ukeni na tibu kulingana na muongozo",
         "openmrs_entity_id": "prompt_for_vaginal_swelling",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
