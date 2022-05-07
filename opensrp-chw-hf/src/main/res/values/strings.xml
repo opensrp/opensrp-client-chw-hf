@@ -208,8 +208,11 @@
     <!-- Labour and Delivery String Resources-->
     <string name="menu_ld">L&amp;D</string>
     <string name="ld_registration_triage_title">Triage</string>
+    <string name="ld_registration_true_labour_title">True Labour Confirmation</string>
     <string name="ld_registration_triage_action_subtitle_pending">Triage is Pending</string>
     <string name="ld_registration_triage_action_subtitle_complete">Triage has been conducted</string>
+    <string name="ld_registration_true_labour_complete">The client has True labour</string>
+    <string name="ld_registration_false_labour_complete">The client has False labour</string>
     <string name="ld_registration">L&amp;D Registration</string>
 
 </resources>

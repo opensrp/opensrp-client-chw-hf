@@ -3,6 +3,11 @@ package org.smartregister.chw.hf.utils;
 import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.assetManager;
 import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.locale;
 
+import android.content.Context;
+
+import com.vijay.jsonwizard.utils.FormUtils;
+
+import org.json.JSONException;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.Utils;
 
@@ -184,7 +189,7 @@ public class Constants extends CoreConstants {
             return HEI_ARV_PRESCRIPTION_HIGH_RISK_INFANT;
         }
 
-        public static String getHeiBaselineInvestigation(){
+        public static String getHeiBaselineInvestigation() {
             return HEI_BASLINE_INVESTIGATION;
         }
 
@@ -381,6 +386,7 @@ public class Constants extends CoreConstants {
             public static String getPartnerTesting() {
                 return Utils.getLocalForm(PARTNER_TESTING, locale, assetManager);
             }
+
             public static String getMalariaInvestigation() {
                 return Utils.getLocalForm(MALARIA_INVESTIGATION, locale, assetManager);
             }
@@ -388,9 +394,14 @@ public class Constants extends CoreConstants {
 
         public static class LabourAndDeliveryRegistration {
             public static final String LABOUR_AND_DELIVERY_REGISTRATION_TRIAGE = "labour_and_delivery_registration_triage";
+            public static final String LABOUR_AND_DELIVERY_REGISTRATION_TRUE_LABOUR_CONFIRMATION = "labour_and_delivery_registration_true_labour_confirmation";
 
             public static String getLabourAndDeliveryRegistrationTriage() {
-                return Utils.getLocalForm(LABOUR_AND_DELIVERY_REGISTRATION_TRIAGE, locale, assetManager);
+                return LABOUR_AND_DELIVERY_REGISTRATION_TRIAGE;
+            }
+
+            public static String getLabourAndDeliveryRegistrationTrueLabourConfirmation() {
+                return LABOUR_AND_DELIVERY_REGISTRATION_TRUE_LABOUR_CONFIRMATION;
             }
         }
 

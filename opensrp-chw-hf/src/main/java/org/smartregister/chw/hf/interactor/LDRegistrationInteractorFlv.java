@@ -4,6 +4,7 @@ import android.content.Context;
 
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.actionhelper.LDRegistrationTriageAction;
+import org.smartregister.chw.hf.actionhelper.LDRegistrationTrueLabourConfirmationAction;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.ld.LDLibrary;
 import org.smartregister.chw.ld.contract.BaseLDVisitContract;
@@ -61,6 +62,14 @@ public class LDRegistrationInteractorFlv implements LDRegistrationInteractor.Fla
                 .withHelper(new LDRegistrationTriageAction(memberObject))
                 .build();
         actionList.put(context.getString(R.string.ld_registration_triage_title), ldRegistrationTriage);
+
+        BaseLDVisitAction ldRegistrationTrueLabourConfirmation = new BaseLDVisitAction.Builder(context, context.getString(R.string.ld_registration_true_labour_title))
+                .withOptional(false)
+                .withDetails(details)
+                .withFormName(Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryRegistrationTrueLabourConfirmation())
+                .withHelper(new LDRegistrationTrueLabourConfirmationAction(memberObject))
+                .build();
+        actionList.put(context.getString(R.string.ld_registration_true_labour_title), ldRegistrationTrueLabourConfirmation);
 
     }
 

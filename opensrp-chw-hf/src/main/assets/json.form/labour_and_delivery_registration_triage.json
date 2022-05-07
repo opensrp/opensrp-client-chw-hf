@@ -68,10 +68,6 @@
         "v_max": {
           "value": "320",
           "err": "Systolic value must be equal or less than 320"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Please enter the systolic value"
         }
       },
       {
@@ -92,10 +88,6 @@
         "v_max": {
           "value": "200",
           "err": "Diastolic value must be equal or less than 200"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Please enter the diastolic value"
         },
         "constraints": [
           {
@@ -155,10 +147,6 @@
         "v_max": {
           "value": "200",
           "err": "The pulse rate must be equal or less than 200 (bpm)"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Please enter the pulse rate"
         }
       },
       {
@@ -209,10 +197,6 @@
         "v_max": {
           "value": "100",
           "err": "The pulse rate must be equal or less than 100 (Breaths per minute)"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Please enter the pulse rate"
         }
       },
       {
@@ -233,10 +217,6 @@
         "v_max": {
           "value": "300",
           "err": "Fetal heart rate must be equal or less than 300"
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the fetal heart rate"
         }
       },
       {
@@ -273,10 +253,6 @@
         "v_max": {
           "value": "50",
           "err": "Temperature must be equal or less than 50"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Please enter the temperature"
         }
       },
       {
@@ -327,10 +303,6 @@
         "v_max": {
           "value": "300",
           "err": "The weight must be equal or less than 300 (KG)"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Please enter the weight"
         }
       },
       {
@@ -351,10 +323,6 @@
         "v_max": {
           "value": "200",
           "err": "The height must be equal or less than 200 (CM)"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Please enter the height"
         }
       },
       {
@@ -369,67 +337,6 @@
           "step1:height": {
             "type": "numeric",
             "ex": "lessThan(.,\"145\")"
-          }
-        }
-      },
-      {
-        "key": "bmi",
-        "type": "edit_text",
-        "hint": "Body Mass Index (BMI)",
-        "read_only": "true",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "bmi",
-        "openmrs_entity_parent": "",
-        "v_numeric": {
-          "value": "true",
-          "err": "Please enter the height"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Please enter the height"
-        },
-        "calculation": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "labour_and_delivery_triage_calculation.yml"
-            }
-          }
-        },
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "labour_and_delivery_triage_relevance.yml"
-            }
-          }
-        }
-      },
-      {
-        "key": "prompt_for_underweight",
-        "type": "toaster_notes",
-        "text": "Manage the undernourished client using standard guidelines",
-        "openmrs_entity_id": "prompt_for_underweight",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "toaster_type": "warning",
-        "relevance": {
-          "step1:bmi": {
-            "type": "numeric",
-            "ex": "lessThan(.,\"18.5\")"
-          }
-        }
-      },
-      {
-        "key": "prompt_for_overweight",
-        "type": "toaster_notes",
-        "text": "Manage the overweight client using standard guidelines",
-        "openmrs_entity_id": "prompt_for_overweight",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "toaster_type": "problem",
-        "relevance": {
-          "step1:bmi": {
-            "type": "numeric",
-            "ex": "greaterThanEqualTo(.,\"29\")"
           }
         }
       },
@@ -515,11 +422,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "none"
           }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Please select the danger sings"
-        }
+        ]
       }
     ]
   }

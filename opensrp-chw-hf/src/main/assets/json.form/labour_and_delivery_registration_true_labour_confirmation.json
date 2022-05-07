@@ -89,11 +89,32 @@
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "progressive_descent"
+          },
+          {
+            "key": "none",
+            "openmrs_entity": "concept",
+            "openmrs_choice_id": "none",
+            "text": "None",
+            "value": false
           }
         ],
         "v_required": {
           "value": "true",
           "err": "Please select at least one"
+        }
+      },
+      {
+        "key": "labour_confirmation",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "labour_confirmation",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_true_labour_confirmation_calculation.yml"
+            }
+          }
         }
       }
     ]
