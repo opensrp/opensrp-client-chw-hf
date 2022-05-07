@@ -20,13 +20,15 @@ import timber.log.Timber;
  * @author ilakozejumanne@gmail.com
  * 06/05/2022
  */
-public class LDRegistrationTrueLabourConfirmationAction implements BaseLDVisitAction.LDVisitActionHelper {
+public class LDRegistrationCurrentLabourAction implements BaseLDVisitAction.LDVisitActionHelper {
     protected MemberObject memberObject;
-    private String trueLabour;
-    protected String labourConfirmation;
+    private String labourOnsetDate;
+    private String labourOnsetTime;
+    private String rupturedMembrane;
+    private String fetalMovement;
     private Context context;
 
-    public LDRegistrationTrueLabourConfirmationAction(MemberObject memberObject) {
+    public LDRegistrationCurrentLabourAction(MemberObject memberObject) {
         this.memberObject = memberObject;
     }
 
@@ -44,8 +46,10 @@ public class LDRegistrationTrueLabourConfirmationAction implements BaseLDVisitAc
     public void onPayloadReceived(String jsonPayload) {
         try {
             JSONObject jsonObject = new JSONObject(jsonPayload);
-            trueLabour = CoreJsonFormUtils.getValue(jsonObject, "true_labour");
-            labourConfirmation = CoreJsonFormUtils.getValue(jsonObject, "labour_confirmation");
+            labourOnsetDate = CoreJsonFormUtils.getValue(jsonObject, "labour_onset_date");
+            labourOnsetTime = CoreJsonFormUtils.getValue(jsonObject, "labour_onset_time");
+            rupturedMembrane = CoreJsonFormUtils.getValue(jsonObject, "ruptured_membrane");
+            fetalMovement = CoreJsonFormUtils.getValue(jsonObject, "fetal_movement");
         } catch (JSONException e) {
             Timber.e(e);
         }
@@ -75,24 +79,34 @@ public class LDRegistrationTrueLabourConfirmationAction implements BaseLDVisitAc
     public BaseLDVisitAction.Status evaluateStatusOnPayload() {
         if (isAllFieldsCompleted())
             return BaseLDVisitAction.Status.COMPLETED;
+        else if (isAnyFieldCompleted())
+            return BaseLDVisitAction.Status.PARTIALLY_COMPLETED;
         else
             return BaseLDVisitAction.Status.PENDING;
     }
 
     @Override
     public String evaluateSubTitle() {
-        if (isAllFieldsCompleted() && labourConfirmation.equalsIgnoreCase("true"))
-            return context.getString(R.string.ld_registration_true_labour_complete);
-        else if (isAllFieldsCompleted() && labourConfirmation.equalsIgnoreCase("false"))
-            return context.getString(R.string.ld_registration_false_labour_complete);
+        if (isAllFieldsCompleted())
+            return context.getString(R.string.ld_registration_current_labour_complete);
+        else if (isAnyFieldCompleted())
+            return context.getString(R.string.ld_registration_current_labour_pending);
         return "";
     }
 
     /**
      * evaluate if all fields are completed
      **/
-    public boolean isAllFieldsCompleted() {
-        return !StringUtils.isBlank(trueLabour);
+    private boolean isAllFieldsCompleted() {
+        return !StringUtils.isBlank(labourOnsetDate) && !StringUtils.isBlank(labourOnsetTime) && !StringUtils.isBlank(rupturedMembrane) && !StringUtils.isBlank(fetalMovement);
+    }
+
+    /**
+     * evaluate if any field has been completed
+     **/
+    private boolean isAnyFieldCompleted() {
+        return !StringUtils.isBlank(labourOnsetDate) || !StringUtils.isBlank(labourOnsetTime) || !StringUtils.isBlank(rupturedMembrane) || !StringUtils.isBlank(fetalMovement);
+
     }
 
 }

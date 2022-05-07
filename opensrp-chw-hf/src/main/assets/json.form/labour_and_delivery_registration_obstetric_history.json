@@ -57,11 +57,7 @@
         "openmrs_entity_id": "gravida",
         "type": "edit_text",
         "edit_type": "number",
-        "hint": "Gravida",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the gravida number"
-        }
+        "hint": "Gravida"
       },
       {
         "key": "para",
@@ -70,11 +66,7 @@
         "openmrs_entity_id": "para",
         "type": "edit_text",
         "edit_type": "number",
-        "hint": "Para",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the para number"
-        }
+        "hint": "Para"
       },
       {
         "key": "children_alive",
@@ -83,11 +75,7 @@
         "openmrs_entity_id": "children_alive",
         "type": "edit_text",
         "edit_type": "number",
-        "hint": "Number of children alive",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the number of children alive"
-        }
+        "hint": "Number of children alive"
       },
       {
         "key": "number_of_abortion",
@@ -96,11 +84,7 @@
         "openmrs_entity_id": "number_of_abortion",
         "type": "edit_text",
         "edit_type": "number",
-        "hint": "Number of abortions",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the number of abortions"
-        }
+        "hint": "Number of abortions"
       },
       {
         "key": "last_menstrual_period",
@@ -113,11 +97,7 @@
         "label_info_text": "LNMP = first day of Last Normal Menstrual Period. If the exact date is unknown, but the period of the month is known, use day 5 for beginning of the month, day 15 for middle of the month and day 25 for end of the month.",
         "expanded": false,
         "max_date": "today",
-        "min_date": "today-50w",
-        "v_required": {
-          "value": "true",
-          "err": "LMP required"
-        }
+        "min_date": "today-50w"
       },
       {
         "key": "edd",
@@ -128,7 +108,7 @@
         "calculation": {
           "rules-engine": {
             "ex-rules": {
-              "rules-file": "labour_and_delivery_triage_calculation.yml"
+              "rules-file": "labour_and_delivery_registration_obstetric_history_calculation.yml"
             }
           }
         }
@@ -144,7 +124,7 @@
         "calculation": {
           "rules-engine": {
             "ex-rules": {
-              "rules-file": "labour_and_delivery_triage_calculation.yml"
+              "rules-file": "labour_and_delivery_registration_obstetric_history_calculation.yml"
             }
           }
         }
@@ -160,7 +140,7 @@
         "calculation": {
           "rules-engine": {
             "ex-rules": {
-              "rules-file": "labour_and_delivery_triage_calculation.yml"
+              "rules-file": "labour_and_delivery_registration_obstetric_history_calculation.yml"
             }
           }
         }
@@ -174,7 +154,7 @@
         "calculation": {
           "rules-engine": {
             "ex-rules": {
-              "rules-file": "labour_and_delivery_triage_calculation.yml"
+              "rules-file": "labour_and_delivery_registration_obstetric_history_calculation.yml"
             }
           }
         }

@@ -59,11 +59,7 @@
         "hint": "Labour onset Date",
         "expanded": false,
         "min_date": "today-2y",
-        "max_date": "today",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the labour onset date"
-        }
+        "max_date": "today"
       },
       {
         "key": "labour_onset_time",
@@ -71,11 +67,7 @@
         "hint": "Labour onset Time",
         "openmrs_entity_id": "labour_onset_time",
         "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "v_required": {
-          "value": true,
-          "err": "Please enter the labour onset time"
-        }
+        "openmrs_entity_parent": ""
       },
       {
         "key": "ruptured_membrane",
@@ -173,10 +165,6 @@
         "openmrs_choice_ids": {
           "present": "present",
           "absent": "absent"
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Please select one"
         }
       },
       {
