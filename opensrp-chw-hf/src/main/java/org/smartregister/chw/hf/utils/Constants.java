@@ -407,9 +407,9 @@ public class Constants extends CoreConstants {
         }
 
         public static class LabourAndDeliveryPartograph {
-            public static final String PARTOGRAPH_FETAL_WELLBEING = "";
-            public static final String PARTOGRAPH_MOTHER_WELLBEING = "";
-            public static final String PARTOGRAPH_PROGRESS_OF_LABOUR = "";
+            public static final String PARTOGRAPH_FETAL_WELLBEING = "labour_and_delivery_fetal_well_being";
+            public static final String PARTOGRAPH_MOTHER_WELLBEING = "labour_and_delivery_mother_well_being";
+            public static final String PARTOGRAPH_PROGRESS_OF_LABOUR = "labour_and_delivery_labour_progress";
             public static final String PARTOGRAPH_TREATMENT_DURING_LABOUR = "";
 
             public static String getFetalWellBingForm(){
