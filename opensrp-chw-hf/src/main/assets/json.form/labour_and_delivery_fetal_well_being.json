@@ -2,7 +2,7 @@
   "validate_on_submit": true,
   "show_errors_on_submit": false,
   "count": "1",
-  "encounter_type": "Foetal Wellbeing",
+  "encounter_type": "LD Partograph - Fetal Well Being",
   "entity_id": "",
   "relational_id": "",
   "metadata": {
