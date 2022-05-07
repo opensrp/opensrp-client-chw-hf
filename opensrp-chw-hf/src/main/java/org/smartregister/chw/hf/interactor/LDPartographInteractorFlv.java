@@ -4,6 +4,7 @@ import android.content.Context;
 
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.actionhelper.LDPartographFetalWellBeingActionHelper;
+import org.smartregister.chw.hf.actionhelper.LDPartographLabourProgressActionHelper;
 import org.smartregister.chw.hf.actionhelper.LDPartographMotherWellBeingActionHelper;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.ld.LDLibrary;
@@ -80,14 +81,14 @@ public class LDPartographInteractorFlv implements LDPartographInteractor.Flavor 
                                          BaseLDVisitContract.InteractorCallBack callBack
     ) throws BaseLDVisitAction.ValidationException {
 
-        BaseLDVisitAction motherWellBeing = new BaseLDVisitAction.Builder(context, context.getString(R.string.ld_partograph_mother_well_being))
+        BaseLDVisitAction motherWellBeingAction = new BaseLDVisitAction.Builder(context, context.getString(R.string.ld_partograph_mother_well_being))
                 .withOptional(false)
                 .withDetails(details)
                 .withFormName(Constants.JsonForm.LabourAndDeliveryPartograph.getMotherWellBeingForm())
                 .withHelper(new LDPartographMotherWellBeingActionHelper(memberObject))
                 .build();
 
-        actionList.put(context.getString(R.string.ld_partograph_fetal_well_being), motherWellBeing);
+        actionList.put(context.getString(R.string.ld_partograph_mother_well_being), motherWellBeingAction);
 
     }
 
@@ -97,6 +98,15 @@ public class LDPartographInteractorFlv implements LDPartographInteractor.Flavor 
                                         final Context context,
                                         BaseLDVisitContract.InteractorCallBack callBack
     ) throws BaseLDVisitAction.ValidationException {
+
+        BaseLDVisitAction progressOfLaborAction = new BaseLDVisitAction.Builder(context, context.getString(R.string.ld_partograph_labor_progress))
+                .withOptional(false)
+                .withDetails(details)
+                .withFormName(Constants.JsonForm.LabourAndDeliveryPartograph.getProgressOfLabourForm())
+                .withHelper(new LDPartographLabourProgressActionHelper(memberObject))
+                .build();
+
+        actionList.put(context.getString(R.string.ld_partograph_labor_progress), progressOfLaborAction);
 
     }
 
