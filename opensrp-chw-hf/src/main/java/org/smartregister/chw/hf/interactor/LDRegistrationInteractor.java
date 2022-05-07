@@ -1,6 +1,5 @@
 package org.smartregister.chw.hf.interactor;
 
-import org.apache.commons.lang3.StringUtils;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hf.utils.VisitUtils;
 import org.smartregister.chw.ld.LDLibrary;
@@ -11,7 +10,6 @@ import org.smartregister.chw.ld.interactor.BaseLDVisitInteractor;
 import org.smartregister.chw.ld.model.BaseLDVisitAction;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;

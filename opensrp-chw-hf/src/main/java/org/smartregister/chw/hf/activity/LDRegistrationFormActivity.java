@@ -113,8 +113,8 @@ public class LDRegistrationFormActivity extends BaseLDVisitActivity {
     @Override
     public void redrawVisitUI() {
         boolean valid = actionList.size() > 0;
-        for (Map.Entry<String, org.smartregister.chw.ld.model.BaseLDVisitAction> entry : actionList.entrySet()) {
-            org.smartregister.chw.ld.model.BaseLDVisitAction action = entry.getValue();
+        for (Map.Entry<String, BaseLDVisitAction> entry : actionList.entrySet()) {
+            BaseLDVisitAction action = entry.getValue();
             if (
                 //Updated the condition to only allow submission if the action is not completed in the L&D Registration
                     (!action.isOptional() && (action.getActionStatus() != BaseLDVisitAction.Status.COMPLETED && action.isValid()))

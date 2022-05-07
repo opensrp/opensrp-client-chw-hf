@@ -30,11 +30,9 @@ import timber.log.Timber;
  * 06/05/2022
  */
 public class LDRegistrationInteractorFlv implements LDRegistrationInteractor.Flavor {
-    private String baseEntityId;
     LinkedHashMap<String, BaseLDVisitAction> actionList = new LinkedHashMap<>();
 
     public LDRegistrationInteractorFlv(String baseEntityId) {
-        this.baseEntityId = baseEntityId;
     }
 
     @Override
@@ -80,10 +78,10 @@ public class LDRegistrationInteractorFlv implements LDRegistrationInteractor.Fla
     }
 
     private static class TrueLabourConfirmationAction extends LDRegistrationTrueLabourConfirmationAction {
-        private LinkedHashMap<String, BaseLDVisitAction> actionList;
-        private Context context;
-        private Map<String, List<VisitDetail>> details;
-        private BaseLDVisitContract.InteractorCallBack callBack;
+        private final LinkedHashMap<String, BaseLDVisitAction> actionList;
+        private final Context context;
+        private final Map<String, List<VisitDetail>> details;
+        private final BaseLDVisitContract.InteractorCallBack callBack;
 
         public TrueLabourConfirmationAction(MemberObject memberObject, LinkedHashMap<String, BaseLDVisitAction> actionList, Map<String, List<VisitDetail>> details, BaseLDVisitContract.InteractorCallBack callBack, Context context) {
             super(memberObject);

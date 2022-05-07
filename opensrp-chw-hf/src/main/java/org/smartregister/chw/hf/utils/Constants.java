@@ -3,11 +3,6 @@ package org.smartregister.chw.hf.utils;
 import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.assetManager;
 import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.locale;
 
-import android.content.Context;
-
-import com.vijay.jsonwizard.utils.FormUtils;
-
-import org.json.JSONException;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.Utils;
 
