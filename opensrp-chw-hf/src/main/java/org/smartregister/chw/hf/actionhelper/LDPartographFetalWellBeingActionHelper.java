@@ -6,6 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
+import org.smartregister.chw.hf.R;
 import org.smartregister.chw.ld.domain.MemberObject;
 import org.smartregister.chw.ld.domain.VisitDetail;
 import org.smartregister.chw.ld.model.BaseLDVisitAction;
@@ -69,7 +70,11 @@ public class LDPartographFetalWellBeingActionHelper implements BaseLDVisitAction
 
     @Override
     public String evaluateSubTitle() {
-        return null;
+        if (allFieldsCompleted())
+            return context.getString(R.string.ld_partograph_fetal_wellbeing_completed);
+        else if (anyFieldCompleted())
+            return context.getString(R.string.ld_partograph_fetal_wellbeing_pending);
+        return "";
     }
 
     @Override
