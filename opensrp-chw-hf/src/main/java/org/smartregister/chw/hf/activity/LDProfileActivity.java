@@ -2,7 +2,11 @@ package org.smartregister.chw.hf.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
+import org.smartregister.chw.hf.R;
 import org.smartregister.chw.ld.activity.BaseLDProfileActivity;
 import org.smartregister.chw.ld.util.Constants;
 
@@ -12,4 +16,33 @@ public class LDProfileActivity extends BaseLDProfileActivity {
         intent.putExtra(Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID, baseEntityId);
         activity.startActivity(intent);
     }
+
+    @Override
+    protected void setupViews() {
+        super.setupViews();
+        textViewRecordLD.setText("Examination/Consultation");
+    }
+
+    @Override
+    public void onClick(View view) {
+        super.onClick(view);
+        int id = view.getId();
+
+        if (id == R.id.textview_record_ld) {
+            openExaminationConsultation();
+        }
+
+    }
+
+    private void openExaminationConsultation() {
+        String baseEntityId = null;
+        Bundle extras = getIntent().getExtras();
+
+        if (extras != null) {
+            baseEntityId = extras.getString(Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID);
+        }
+
+        LDVisitActivity.startLDVisitActivity(this, baseEntityId, false);
+    }
+
 }
