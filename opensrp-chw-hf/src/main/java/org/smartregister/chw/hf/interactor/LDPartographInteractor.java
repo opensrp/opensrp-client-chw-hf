@@ -20,8 +20,8 @@ public class LDPartographInteractor extends BaseLDVisitInteractor {
     private Flavor flavor;
 
     public LDPartographInteractor(String baseEntityId){
-        setFlavor(new LDPartographInteractorFlv(baseEntityId));
-        flavor = new LDPartographInteractorFlv(baseEntityId);
+        setFlavor(new LDPartographInteractorFlv());
+        flavor = new LDPartographInteractorFlv();
     }
 
     @Override

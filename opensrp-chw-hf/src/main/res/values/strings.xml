@@ -243,5 +243,7 @@
     <string name="ld_partograph_labor_progress_pending"> Progress of labor is pending </string>
 
     <string name="record_ld_event">Record %s</string>
+    <string name="labour_and_delivery_partograph_button_title">Partograph</string>
+    <string name="labour_and_delivery_examination_and_consultation_button_tittle">Examination/Consultation</string>
 
 </resources>

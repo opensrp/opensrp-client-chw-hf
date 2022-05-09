@@ -27,22 +27,13 @@ public class LDProfileActivity extends BaseLDProfileActivity {
     @Override
     protected void onCreation() {
         super.onCreation();
-
-        if (LDDao.getLabourStage(memberObject.getBaseEntityId()) == null)
-            textViewRecordLD.setText(R.string.labour_and_delivery_labour_stage_title);
-        else if (LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("1")) {
-            textViewRecordLD.setText(getString(R.string.record_ld_event, "Examination/Consultation"));
-        } else if (LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("2")) {
-            textViewRecordLD.setText(getString(R.string.record_ld_event, "Partograph"));
-        }
+        setTextViewRecordLDText();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        memberObject = LDDao.getMember(memberObject.getBaseEntityId());
-        if (LDDao.getLabourStage(memberObject.getBaseEntityId()) == null)
-            textViewRecordLD.setText(R.string.labour_and_delivery_labour_stage_title);
+        setTextViewRecordLDText();
 
     }
 
@@ -52,9 +43,9 @@ public class LDProfileActivity extends BaseLDProfileActivity {
         if (id == R.id.textview_record_ld) {
             if (((TextView) view).getText().equals(getString(R.string.labour_and_delivery_labour_stage_title))) {
                 startLDForm(this, memberObject.getBaseEntityId(), getLabourAndDeliveryLabourStage());
-            } else if (((TextView) view).getText().equals("Examination/Consultation")) {
+            } else if (((TextView) view).getText().equals(getString(R.string.labour_and_delivery_examination_and_consultation_button_tittle))) {
                 //TODO implement start examination form
-            } else if (((TextView) view).getText().equals("Partograph")) {
+            } else if (((TextView) view).getText().equals(getString(R.string.labour_and_delivery_partograph_button_title))) {
                 LDPartographActivity.startMe(this, memberObject.getBaseEntityId(), false,
                         getName(memberObject), String.valueOf(new Period(new DateTime(this.memberObject.getAge()), new DateTime()).getYears()));
             }
@@ -77,6 +68,16 @@ public class LDProfileActivity extends BaseLDProfileActivity {
 
     private String getName(String nameOne, String nameTwo) {
         return nameOne + " " + nameTwo;
+    }
+
+    private void setTextViewRecordLDText() {
+        if (LDDao.getLabourStage(memberObject.getBaseEntityId()) == null)
+            textViewRecordLD.setText(R.string.labour_and_delivery_labour_stage_title);
+        else if (LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("1")) {
+            textViewRecordLD.setText(R.string.labour_and_delivery_examination_and_consultation_button_tittle);
+        } else if (LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("2")) {
+            textViewRecordLD.setText(R.string.labour_and_delivery_partograph_button_title);
+        }
     }
 
 }
