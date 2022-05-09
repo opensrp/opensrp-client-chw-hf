@@ -90,7 +90,7 @@
         "options": [
           {
             "key": "chk_asymptomatic",
-            "text": "Asymptomatic",
+            "text": "Hakuna dalili yeyote ya tatizo",
             "openmrs_entity_id": "chk_asymptomatic",
             "openmrs_entity": "concept"
           },
@@ -135,7 +135,7 @@
           },
           {
             "key": "chk_fung_infection",
-            "text": "Fungal nail infections",
+            "text": "Rangi ya kucha kubadilika kuwa nyeusi au kahawa inayo sababishwa na maradhi sugu ya fangasi",
             "openmrs_entity_id": "chk_fung_infection",
             "openmrs_entity": "concept"
           },
@@ -183,7 +183,7 @@
           },
           {
             "key": "chk_rec_uri",
-            "text": " Recurrent or chronic upper respiratory infection (URI): otitis media, otorrhoea, sinusitis (>2 episodes/6 months)",
+            "text": "Recurrent or chronic upper respiratory infection (URI): otitis media, otorrhoea, sinusitis (>2 episodes/6 months)",
             "openmrs_entity_id": "chk_rec_uri",
             "openmrs_entity": "concept"
           }

@@ -1,7 +1,8 @@
 {
   "count": "1",
-  "encounter_type": "PMTCT EAC Visit",
+  "encounter_type": "Next Facility Visit Date",
   "entity_id": "",
+  "global": {},
   "metadata": {
     "start": {
       "openmrs_entity_parent": "",
@@ -46,58 +47,22 @@
     },
     "encounter_location": ""
   },
-  "global": {},
   "step1": {
-    "title": "Ziara ya EAC",
+    "title": "Tarehe ya Uthurio Lijalo",
     "fields": [
       {
-        "key": "eac_visit_notification",
-        "type": "toaster_notes",
-        "text": "Nakiri tarehe na muda wa hudhulio la EAC",
-        "openmrs_entity_id": "notify_retest",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "toaster_type": "info"
-      },
-      {
-        "key": "eac_visit_date",
+        "key": "next_facility_visit_date",
         "type": "date_picker",
-        "hint": "Tarehe ya Udhulio la EAC",
-        "openmrs_entity_id": "eac_visit_date",
+        "hint": "Tarehe ya Uthurio Lijalo Kituoni",
+        "openmrs_entity_id": "next_facility_visit_date",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "min_date": "today-3m",
-        "max_date": "today",
+        "min_date": "today+1d",
+        "max_date": "today+6m",
         "v_required": {
-          "value": "true",
-          "err": "Tafadhari ingiza Tarehe ya Udhulio la EAC"
+          "value": true,
+          "err": "Tafadhali jaza tarehe"
         }
-      },
-      {
-        "key": "eac_visit_time",
-        "type": "time_picker",
-        "hint": "Wakati wa kutembelea EAC",
-        "openmrs_entity_id": "eac_visit_time",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter EAC visit time"
-        }
-      },
-      {
-        "key": "eac_visit_type",
-        "type": "hidden",
-        "openmrs_entity_id": "eac_visit_type",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": ""
-      },
-      {
-        "key": "eac",
-        "type": "hidden",
-        "openmrs_entity_id": "eac",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": ""
       }
     ]
   }

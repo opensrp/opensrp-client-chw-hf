@@ -185,6 +185,17 @@
     <string name="record_hei_number">Rekodi Namba ya Hei</string>
     <string name="anc_followup_client_registration">Usajili wa mahudhurio ya kliniki ya uzazi</string>
     <string name="malaria_investigation_complete">Uchunguzi wa malaria umekamilika</string>
+    <string name="next_visit">Uthurio lijalo</string>
+    <string name="anc_reports_title">Ripoti za ANC</string>
+    <string name="view_reports_for_anc_women">Tazama Ripoti za Wanawake wa ANC</string>
+    <string name="pmtct_reports_subtitle"><![CDATA[Tazama Ripoti za Vikundi vya PMTCT (Wanawake na Watoto)]]></string>
+    <string name="pnc_reports">Ripoti za PNC</string>
+    <string name="view_reports_for_women_in_pnc">Tazama Ripoti za Wanawake katika PNC</string>
+    <string name="pmtct_reports_title">TAARIFA ZA KUNDI LA PMTCT</string>
+    <string name="anc_monthly_report">Ripoti ya kila Mwezi</string>
+    <string name="select_reporting_month_anc">Chagua Mwezi wa Kuripoti</string>
+    <string name="select_reporting_month_pnc">Chagua Mwezi wa Kuripoti</string>
+    <string name="reports_title">RIPOTI</string>
 
     <!-- Advanced search screen-->
     <string name="search">Tafuta</string>

@@ -278,7 +278,7 @@
         "hint": "Tarehe ya kuzaliwa (DOB)",
         "expanded": false,
         "duration": {
-          "label": "Age"
+          "label": "Umri"
         },
         "min_date": "today-120y",
         "max_date": "today",

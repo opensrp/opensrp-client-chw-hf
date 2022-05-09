@@ -183,7 +183,7 @@
           },
           {
             "key": "chk_rec_uri",
-            "text": " Recurrent or chronic upper respiratory infection (URI): otitis media, otorrhoea, sinusitis (>2 episodes/6 months)",
+            "text": "Recurrent or chronic upper respiratory infection (URI): otitis media, otorrhoea, sinusitis (>2 episodes/6 months)",
             "openmrs_entity_id": "chk_rec_uri",
             "openmrs_entity": "concept"
           }
