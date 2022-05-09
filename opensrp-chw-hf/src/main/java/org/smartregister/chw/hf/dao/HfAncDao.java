@@ -594,5 +594,79 @@ public class HfAncDao extends AbstractDao {
         return "";
     }
 
+    public static String getBloodGroup(String baseEntityId) {
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "blood_group");
+        String sql = String.format(
+                "SELECT blood_group FROM %s WHERE base_entity_id = '%s' " +
+                        "AND is_closed = 0 " +
+                        "AND blood_group IS NOT NULL ",
+                "ec_anc_register",
+                baseEntityId);
+        List<String> res = readData(sql, dataMap);
+        if (res != null && res.size() > 0) {
+            return res.get(0);
+        }
+        return "";
+    }
+
+    public static String getRhFactor(String baseEntityId) {
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "rh_factor");
+        String sql = String.format(
+                "SELECT rh_factor FROM %s WHERE base_entity_id = '%s' " +
+                        "AND is_closed = 0 " +
+                        "AND rh_factor IS NOT NULL ",
+                "ec_anc_register",
+                baseEntityId);
+        List<String> res = readData(sql, dataMap);
+        if (res != null && res.size() > 0) {
+            return res.get(0);
+        }
+        return "";
+    }
+
+    public static String getHivTestDate(String baseEntityId) {
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "date_anc_hiv_test");
+        String sql = String.format(
+                "SELECT date_anc_hiv_test FROM %s WHERE base_entity_id = '%s' " +
+                        "AND is_closed = 0 " +
+                        "AND date_anc_hiv_test IS NOT NULL ",
+                "ec_anc_register",
+                baseEntityId);
+        List<String> res = readData(sql, dataMap);
+        if (res != null && res.size() > 0) {
+            return res.get(0);
+        }
+        return "";
+    }
+
+    public static String getParity(String baseEntityId) {
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "parity");
+        String sql = String.format(
+                "SELECT parity FROM %s WHERE base_entity_id = '%s' " +
+                        "AND is_closed = 0 " +
+                        "AND parity IS NOT NULL ",
+                "ec_anc_register",
+                baseEntityId);
+        List<String> res = readData(sql, dataMap);
+        if (res != null && res.size() > 0) {
+            return res.get(0);
+        }
+        return "";
+    }
+
+    public static String getNumberOfSurvivingChildren(String baseEntityId) {
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "number_of_surv_children");
+        String sql = String.format(
+                "SELECT number_of_surv_children FROM %s WHERE base_entity_id = '%s' " +
+                        "AND is_closed = 0 " +
+                        "AND number_of_surv_children IS NOT NULL ",
+                "ec_anc_register",
+                baseEntityId);
+        List<String> res = readData(sql, dataMap);
+        if (res != null && res.size() > 0) {
+            return res.get(0);
+        }
+        return "";
+    }
 
 }
