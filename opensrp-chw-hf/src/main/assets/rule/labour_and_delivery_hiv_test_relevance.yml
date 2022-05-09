@@ -1,0 +1,21 @@
+---
+name: step1_hiv
+description: hiv relevance
+priority: 1
+condition: "!global_known_positive && step1_hiv_status.contains('unknown')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_hiv_counselling_before_testing
+description: show the hiv counselling question if the person isn't known positive
+priority: 1
+condition: "step1_hiv.contains('positive') || step1_hiv.contains('negative')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_hiv_counselling_after_testing
+description: show the hiv counselling question after getting the test results
+priority: 1
+condition: "step1_hiv.contains('positive') || step1_hiv.contains('negative')"
+actions:
+  - "isRelevant = true"
