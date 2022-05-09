@@ -10,9 +10,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.smartregister.chw.anc.AncLibrary;
-import org.smartregister.chw.anc.util.DBConstants;
-import org.smartregister.chw.core.utils.CoreConstants;
+import org.smartregister.chw.anc.util.NCUtils;
+import org.smartregister.chw.core.utils.CoreReferralUtils;
 import org.smartregister.chw.core.utils.FormUtils;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.utils.AllClientsUtils;
@@ -29,19 +28,19 @@ import org.smartregister.opd.utils.OpdUtils;
 import org.smartregister.repository.AllSharedPreferences;
 import org.smartregister.repository.EventClientRepository;
 import org.smartregister.repository.UniqueIdRepository;
+import org.smartregister.util.JsonFormUtils;
 import org.smartregister.view.activity.SecuredActivity;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import androidx.annotation.NonNull;
 import timber.log.Timber;
 
 import static com.vijay.jsonwizard.utils.FormUtils.fields;
 import static com.vijay.jsonwizard.utils.FormUtils.getFieldJSONObject;
+import static org.smartregister.chw.hf.utils.Constants.Events.PNC_NO_MOTHER_REGISTRATION;
 import static org.smartregister.chw.pmtct.util.NCUtils.getClientProcessorForJava;
 import static org.smartregister.chw.pmtct.util.NCUtils.getSyncHelper;
 import static org.smartregister.family.util.JsonFormUtils.STEP2;
@@ -187,7 +186,8 @@ public class PncNoMotherRegisterActivity extends SecuredActivity {
                     addEvent(params, currentFormSubmissionIds, baseEvent);
                     updateOpenSRPId(jsonString, params, baseClient);
                     addImageLocation(jsonString, baseClient, baseEvent);
-                    //savePartnerDetails(baseEvent.getBaseEntityId(), clientBaseEntityId);
+                    if (baseEvent.getEventType().equalsIgnoreCase("Family Member Registration"))
+                        createPncRegistrationEvent(baseEvent.getBaseEntityId(), jsonString);
                 } catch (Exception e) {
                     Timber.e(e, "ChwAllClientRegisterInteractor --> saveRegistration");
                 }
@@ -252,6 +252,23 @@ public class PncNoMotherRegisterActivity extends SecuredActivity {
             JSONObject eventJson = new JSONObject(OpdJsonFormUtils.gson.toJson(baseEvent));
             getSyncHelper().addEvent(baseEvent.getBaseEntityId(), eventJson, params.getStatus());
             currentFormSubmissionIds.add(eventJson.getString(EventClientRepository.event_column.formSubmissionId.toString()));
+        }
+    }
+
+    private void createPncRegistrationEvent(String baseEntityId, String jsonString) {
+        AllSharedPreferences sharedPreferences = getAllSharedPreferences();
+        Event baseEvent = org.smartregister.chw.anc.util.JsonFormUtils.processJsonForm(sharedPreferences, CoreReferralUtils.setEntityId(jsonString, baseEntityId), org.smartregister.chw.hf.utils.Constants.TableName.NO_MOTHER_PNC);
+
+        baseEvent.setEventType(PNC_NO_MOTHER_REGISTRATION);
+        baseEvent.setFormSubmissionId(JsonFormUtils.generateRandomUUIDString());
+        baseEvent.setEntityType(org.smartregister.chw.hf.utils.Constants.TableName.NO_MOTHER_PNC);
+
+        // tag docs
+        org.smartregister.chw.hf.utils.JsonFormUtils.tagSyncMetadata(Utils.context().allSharedPreferences(), baseEvent);
+        try {
+            NCUtils.processEvent(baseEvent.getBaseEntityId(), new JSONObject(org.smartregister.chw.anc.util.JsonFormUtils.gson.toJson(baseEvent)));
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
