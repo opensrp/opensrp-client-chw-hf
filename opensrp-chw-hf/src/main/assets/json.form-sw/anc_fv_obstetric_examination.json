@@ -468,9 +468,9 @@
       {
         "key": "abdominal_contour",
         "type": "spinner",
-        "hint": "Umbo la tumbo",
+        "hint": "Abdominal Contour",
         "label_info_title": "Abdominal Contour",
-        "label_info_text": "Observe the shape of the abdomen",
+        "label_info_text": "Chunguza umbo la tumbo",
         "openmrs_entity_id": "abdominal_contour",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
