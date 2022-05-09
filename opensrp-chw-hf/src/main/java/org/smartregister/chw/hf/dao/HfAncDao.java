@@ -513,16 +513,16 @@ public class HfAncDao extends AbstractDao {
     public static String getIptDoses(String baseEntityId) {
         int iptDoses = 0;
 
-        if (malariaDosageIpt1(baseEntityId) != null) {
+        if (malariaDosageIpt1(baseEntityId).equalsIgnoreCase("ipt1")) {
             iptDoses += 1;
         }
-        if (malariaDosageIpt2(baseEntityId) != null) {
+        if (malariaDosageIpt2(baseEntityId).equalsIgnoreCase("ipt2")) {
             iptDoses += 1;
         }
-        if (malariaDosageIpt3(baseEntityId) != null) {
+        if (malariaDosageIpt3(baseEntityId).equalsIgnoreCase("ipt3")) {
             iptDoses += 1;
         }
-        if (malariaDosageIpt4(baseEntityId) != null) {
+        if (malariaDosageIpt4(baseEntityId).equalsIgnoreCase("ipt4")) {
             iptDoses += 1;
         }
 
