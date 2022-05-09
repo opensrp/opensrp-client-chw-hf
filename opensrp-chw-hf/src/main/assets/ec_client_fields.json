@@ -1376,6 +1376,14 @@
           }
         },
         {
+          "column_name": "parity",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "parity"
+          }
+        },
+        {
           "column_name": "gravida",
           "type": "Event",
           "json_mapping": {
@@ -1423,6 +1431,23 @@
             "concept": "medical_surgical_history"
           }
         },
+        {
+          "column_name": "blood_group",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "blood_group"
+          }
+        },
+        {
+          "column_name": "rh_factor",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "rh_factor"
+          }
+        },
+
         {
           "column_name": "tb_status",
           "type": "Event",
