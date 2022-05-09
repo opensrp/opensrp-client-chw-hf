@@ -78,7 +78,7 @@
       {
         "key": "malaria_symptoms_screening",
         "type": "check_box",
-        "label": "Please select if the client has any of the following Malaria symptoms",
+        "label": "Tafadhali chagua kama mteja ana mojawapo ya dalili zifuatazo za Malaria",
         "combine_checkbox_option_values": "true",
         "openmrs_entity_id": "malaria_symptoms_screening",
         "openmrs_entity": "concept",
@@ -89,7 +89,7 @@
         "options": [
           {
             "key": "fever_and_chills",
-            "text": "Fever and chills",
+            "text": "Homa na baridi",
             "openmrs_entity_id": "fever",
             "openmrs_entity": "concept",
             "openmrs_entity_parent": "",
@@ -97,7 +97,7 @@
           },
           {
             "key": "headache",
-            "text": "Headache",
+            "text": "Maumivu ya kichwa",
             "openmrs_entity_id": "headache",
             "openmrs_entity": "concept",
             "openmrs_entity_parent": "",
@@ -113,7 +113,7 @@
           },
           {
             "key": "diarrhea",
-            "text": "Diarrhea",
+            "text": "Kuhara",
             "openmrs_entity_id": "diarrhea",
             "openmrs_entity": "concept",
             "openmrs_entity_parent": "",
@@ -121,7 +121,7 @@
           },
           {
             "key": "nausea_and_vomiting",
-            "text": "Nausea And Vomiting",
+            "text": "Kichefuchefu na Kutapika",
             "openmrs_entity_id": "nausea_and_vomiting",
             "openmrs_entity": "concept",
             "openmrs_entity_parent": "",
@@ -129,7 +129,7 @@
           },
           {
             "key": "joint_pains",
-            "text": "Joint Pains",
+            "text": "Maumivu ya Viungo",
             "openmrs_entity_id": "joint_pains",
             "openmrs_entity": "concept",
             "openmrs_entity_parent": "",
@@ -137,7 +137,7 @@
           },
           {
             "key": "body_ache",
-            "text": "Body Ache",
+            "text": "Maumivu ya Mwili",
             "openmrs_entity_id": "body_ache",
             "openmrs_entity": "concept",
             "openmrs_entity_parent": "",
@@ -145,7 +145,7 @@
           },
           {
             "key": "poor_appetite",
-            "text": "Poor Appetite",
+            "text": "Hamu ya kula hafifu",
             "openmrs_entity_id": "poor_appetite",
             "openmrs_entity": "concept",
             "openmrs_entity_parent": "",
@@ -153,7 +153,7 @@
           },
           {
             "key": "body_weakness",
-            "text": "Body Weakness",
+            "text": "Udhaifu wa Mwili",
             "openmrs_entity_id": "body_weakness",
             "openmrs_entity": "concept",
             "openmrs_entity_parent": "",
@@ -161,7 +161,7 @@
           },
           {
             "key": "enlarged_spleen",
-            "text": "Enlarged Spleen",
+            "text": "Wengu Uliopanuliwa",
             "openmrs_entity_id": "enlarged_spleen",
             "openmrs_entity": "concept",
             "openmrs_entity_parent": "",
@@ -169,7 +169,7 @@
           },
           {
             "key": "none",
-            "text": "None of the above",
+            "text": "Hakuna kati ya zilizo hapo juu",
             "openmrs_entity_id": "none",
             "openmrs_entity": "concept",
             "openmrs_entity_parent": "",
