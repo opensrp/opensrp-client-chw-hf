@@ -5,6 +5,7 @@ import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
 import static org.smartregister.chw.hf.utils.Constants.Events.ANC_FIRST_FACILITY_VISIT;
 import static org.smartregister.chw.hf.utils.Constants.Events.ANC_RECURRING_FACILITY_VISIT;
 import static org.smartregister.chw.hf.utils.Constants.PartnerRegistrationConstants.INTENT_BASE_ENTITY_ID;
+import static org.smartregister.util.Utils.getName;
 
 import android.app.Activity;
 import android.content.ContentValues;
@@ -48,6 +49,7 @@ import org.smartregister.chw.hf.model.FamilyProfileModel;
 import org.smartregister.chw.hf.presenter.AncMemberProfilePresenter;
 import org.smartregister.chw.hf.utils.VisitUtils;
 import org.smartregister.chw.hiv.dao.HivDao;
+import org.smartregister.chw.ld.dao.LDDao;
 import org.smartregister.chw.pmtct.dao.PmtctDao;
 import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.commonregistry.AllCommonsRepository;
@@ -145,7 +147,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         menu.findItem(R.id.action_pregnancy_out_come).setVisible(!HfAncDao.isClientClosed(baseEntityID));
         menu.findItem(R.id.action_malaria_diagnosis).setVisible(false);
 
-
+        menu.findItem(R.id.action_ld_registration).setVisible(!LDDao.isRegisteredForLD(baseEntityID));
         partnerBaseEntityId = HfAncDao.getPartnerBaseEntityId(memberObject.getBaseEntityId());
         if (StringUtils.isBlank(partnerBaseEntityId)) {
             menu.findItem(R.id.action_anc_partner_followup_referral).setVisible(true);
@@ -232,7 +234,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     @Override
     protected void startLDRegistration() {
         try {
-            LDRegisterActivity.startLDRegistrationActivity(AncMemberProfileActivity.this, memberObject.getBaseEntityId());
+            LDRegistrationFormActivity.startMe(this, baseEntityID, true, memberObject.getFullName(), String.valueOf(memberObject.getAge()));
         } catch (Exception e) {
             Timber.e(e);
         }
@@ -596,6 +598,9 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
             return true;
         } else if (itemId == R.id.action_anc_partner_followup_referral) {
             ((AncMemberProfilePresenter) presenter()).startPartnerFollowupReferralForm(memberObject);
+            return true;
+        }else if(itemId == R.id.action_ld_registration){
+            startLDRegistration();
             return true;
         }
 

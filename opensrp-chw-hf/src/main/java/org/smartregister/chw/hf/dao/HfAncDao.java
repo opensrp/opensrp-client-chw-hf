@@ -509,4 +509,90 @@ public class HfAncDao extends AbstractDao {
         List<List<String>> res = readData(sql, dataMap);
         return res != null && res.size() > 0;
     }
+
+    public static String getIptDoses(String baseEntityId) {
+        int iptDoses = 0;
+
+        if (malariaDosageIpt1(baseEntityId) != null) {
+            iptDoses += 1;
+        }
+        if (malariaDosageIpt2(baseEntityId) != null) {
+            iptDoses += 1;
+        }
+        if (malariaDosageIpt3(baseEntityId) != null) {
+            iptDoses += 1;
+        }
+        if (malariaDosageIpt4(baseEntityId) != null) {
+            iptDoses += 1;
+        }
+
+        return String.valueOf(iptDoses);
+    }
+
+    public static String getTTDoses(String baseEntityId) {
+        DataMap<List<String>> dataMap = cursor -> Collections.singletonList(getCursorValue(cursor, "tt_vaccination_type"));
+
+        String sql = "SELECT tt_vaccination_type FROM ec_anc_register WHERE base_entity_id = '" + baseEntityId + "'";
+
+        List<List<String>> res = readData(sql, dataMap);
+        if (res != null && res.size() > 0) {
+            return String.valueOf(res.get(0).toString().split(",").length);
+        }
+        return "";
+    }
+
+    public static String getLastMeasuredHB(String baseEntityId) {
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "hb_level");
+
+        String sql = String.format(
+                "SELECT hb_level FROM %s WHERE entity_id = '%s' " +
+                        "AND is_closed = 0 " +
+                        "AND hb_level IS NOT NULL " +
+                        "ORDER BY visit_date DESC LIMIT 1 ",
+                "ec_anc_followup",
+                baseEntityId
+        );
+
+        List<String> res = readData(sql, dataMap);
+        if (res != null && res.size() > 0) {
+            return res.get(0);
+        }
+        return "";
+    }
+
+    public static String getLastMeasuredHBDate(String baseEntityId) {
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "measured_date");
+
+        String sql = "SELECT strftime('%d-%m-%Y', datetime(visit_date / 1000, 'unixepoch')) measured_date " +
+                " FROM ec_anc_followup " +
+                " WHERE entity_id = '" + baseEntityId + "' " +
+                "  AND hb_level IS NOT NULL" +
+                "  AND is_closed = 0" +
+                " ORDER BY visit_date desc" +
+                " LIMIT 1";
+
+        List<String> res = readData(sql, dataMap);
+        if (res != null && res.size() > 0) {
+            return res.get(0);
+        }
+        return "";
+    }
+
+    public static String getSyphilisTestResult(String baseEntityId) {
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "syphilis");
+
+        String sql = String.format(
+                "SELECT syphilis FROM %s WHERE base_entity_id = '%s' " +
+                        "AND is_closed = 0 " +
+                        "AND syphilis IS NOT NULL ",
+                "ec_anc_register",
+                baseEntityId);
+        List<String> res = readData(sql, dataMap);
+        if (res != null && res.size() > 0) {
+            return res.get(0);
+        }
+        return "";
+    }
+
+
 }
