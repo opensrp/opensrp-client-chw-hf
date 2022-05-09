@@ -228,6 +228,7 @@
     <string name="ld_registration_obstetric_history_pending">Recording Obstetric History information is pending</string>
     <string name="ld_registration_anc_clinic_findings_pending">Recording ANC Clinic findings is pending</string>
     <string name="ld_registration_current_labour_pending">Recording Current Labour is pending</string>
+    <string name="labour_and_delivery_labour_stage_title">Select Labour Stage</string>
 
 
 </resources>

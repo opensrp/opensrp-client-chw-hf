@@ -4846,6 +4846,14 @@
           }
         },
         {
+          "column_name": "labour_stage",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "labour_stage"
+          }
+        },
+        {
           "column_name": "last_interacted_with",
           "type": "Event",
           "json_mapping": {
