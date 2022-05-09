@@ -191,6 +191,9 @@
     <string name="malaria_investigation_complete">Malaria Investigation Complete</string>
     <string name="anc_followup_client_registration">ANC Followup Client Registration</string>
     <string name="next_visit">Next Visit</string>
+    <string name="view_reports_for_women_in_pnc">View Reports for Women in PNC</string>
+    <string name="select_reporting_month_anc">Select Reporting Month</string>
+    <string name="select_reporting_month_pnc">Select Reporting Month</string>
 
     <string name="search">Search</string>
     <string name="global_search">Global Search</string>
