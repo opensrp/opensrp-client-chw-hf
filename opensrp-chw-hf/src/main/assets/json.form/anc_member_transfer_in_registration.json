@@ -729,7 +729,7 @@
         "openmrs_entity_parent": "",
         "toaster_type": "problem",
         "relevance": {
-          "step1:abnormal_vaginal_discharge": {
+          "step2:abnormal_vaginal_discharge": {
             "type": "string",
             "ex": "equalTo(., \"yes\")"
           }

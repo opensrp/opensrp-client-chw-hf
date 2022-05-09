@@ -76,6 +76,114 @@
         ]
       },
       {
+        "key": "malaria_symptoms_screening",
+        "type": "check_box",
+        "label": "Please select if the client has any of the following Malaria symptoms",
+        "combine_checkbox_option_values": "true",
+        "openmrs_entity_id": "malaria_symptoms_screening",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "exclusive": [
+          "none"
+        ],
+        "options": [
+          {
+            "key": "fever_and_chills",
+            "text": "Fever and chills",
+            "openmrs_entity_id": "fever",
+            "openmrs_entity": "concept",
+            "openmrs_entity_parent": "",
+            "value": false
+          },
+          {
+            "key": "headache",
+            "text": "Headache",
+            "openmrs_entity_id": "headache",
+            "openmrs_entity": "concept",
+            "openmrs_entity_parent": "",
+            "value": false
+          },
+          {
+            "key": "pallor",
+            "text": "Pallor",
+            "opemrs_entity_id": "pallor",
+            "openmrs_entity": "concept",
+            "openmrs_entity_parent": "",
+            "value": false
+          },
+          {
+            "key": "diarrhea",
+            "text": "Diarrhea",
+            "openmrs_entity_id": "diarrhea",
+            "openmrs_entity": "concept",
+            "openmrs_entity_parent": "",
+            "value": false
+          },
+          {
+            "key": "nausea_and_vomiting",
+            "text": "Nausea And Vomiting",
+            "openmrs_entity_id": "nausea_and_vomiting",
+            "openmrs_entity": "concept",
+            "openmrs_entity_parent": "",
+            "value": false
+          },
+          {
+            "key": "joint_pains",
+            "text": "Joint Pains",
+            "openmrs_entity_id": "joint_pains",
+            "openmrs_entity": "concept",
+            "openmrs_entity_parent": "",
+            "value": false
+          },
+          {
+            "key": "body_ache",
+            "text": "Body Ache",
+            "openmrs_entity_id": "body_ache",
+            "openmrs_entity": "concept",
+            "openmrs_entity_parent": "",
+            "value": false
+          },
+          {
+            "key": "poor_appetite",
+            "text": "Poor Appetite",
+            "openmrs_entity_id": "poor_appetite",
+            "openmrs_entity": "concept",
+            "openmrs_entity_parent": "",
+            "value": false
+          },
+          {
+            "key": "body_weakness",
+            "text": "Body Weakness",
+            "openmrs_entity_id": "body_weakness",
+            "openmrs_entity": "concept",
+            "openmrs_entity_parent": "",
+            "value": false
+          },
+          {
+            "key": "enlarged_spleen",
+            "text": "Enlarged Spleen",
+            "openmrs_entity_id": "enlarged_spleen",
+            "openmrs_entity": "concept",
+            "openmrs_entity_parent": "",
+            "value": false
+          },
+          {
+            "key": "none",
+            "text": "None of the above",
+            "openmrs_entity_id": "none",
+            "openmrs_entity": "concept",
+            "openmrs_entity_parent": "",
+            "value": false
+          }
+        ],
+        "relevance": {
+          "step1:client_on_malaria_medication": {
+            "type": "string",
+            "ex": "equalTo(., \"no\")"
+          }
+        }
+      },
+      {
         "key": "mRDT_for_malaria",
         "type": "native_radio",
         "label": "Majibu ya kipimo cha Malaria",
@@ -103,9 +211,23 @@
           }
         ],
         "relevance": {
-          "step1:client_on_malaria_medication": {
-            "type": "string",
-            "ex": "equalTo(., \"no\")"
+          "step1:malaria_symptoms_screening": {
+            "ex-checkbox": [
+              {
+                "or": [
+                    "fever_and_chills",
+                    "headache",
+                    "pallor",
+                    "diarrhea",
+                    "nausea_and_vomiting",
+                    "joint_pains",
+                    "body_ache",
+                    "poor_appetite",
+                    "body_weakness",
+                    "enlarged_spleen"
+                ]
+              }
+            ]
           }
         },
         "v_required": {
@@ -125,6 +247,21 @@
           "step1:mRDT_for_malaria": {
             "type": "string",
             "ex": "equalTo(., \"positive\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_further_management",
+        "type": "toaster_notes",
+        "text": "Toa rufaa kwa huduma zaidi",
+        "openmrs_entity_id": "prompt_for_mRDT",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:mRDT_for_malaria": {
+            "type": "string",
+            "ex": "equalTo(., \"negative\")"
           }
         }
       },
@@ -158,7 +295,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Tafadhali chagua sababu"
+          "err": "Please select a reason"
         },
         "relevance": {
           "step1:mRDT_for_malaria": {
@@ -236,6 +373,111 @@
         }
       },
       {
+        "key": "malaria_preventive_therapy_ipt2",
+        "type": "native_radio",
+        "openmrs_entity_id": "malaria_preventive_therapy_ipt2",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "label": "Dawa za kinga za malaria",
+        "options": [
+          {
+            "key": "ipt2",
+            "text": "IPT2",
+            "openmrs_entity_id": "ipt2",
+            "openmrs_entity": "concept",
+            "value": false
+          },
+          {
+            "key": "medication_not_given",
+            "text": "Hajapewa dawa za Malaria",
+            "openmrs_entity_id": "medication_not_given",
+            "openmrs_entity": "concept",
+            "value": false
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select the medication for Malaria Preventive Therapy"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_malaria_investigation_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "malaria_preventive_therapy_ipt3",
+        "type": "native_radio",
+        "openmrs_entity_id": "malaria_preventive_therapy_ipt3",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "label": "Dawa za kinga za malaria",
+        "options": [
+          {
+            "key": "ipt3",
+            "text": "IPT3",
+            "openmrs_entity_id": "ipt3",
+            "openmrs_entity": "concept",
+            "value": false
+          },
+          {
+            "key": "medication_not_given",
+            "text": "Hajapewa dawa za Malaria",
+            "openmrs_entity_id": "medication_not_given",
+            "openmrs_entity": "concept",
+            "value": false
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select the medication for Malaria Preventive Therapy"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_malaria_investigation_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "malaria_preventive_therapy_ipt4",
+        "type": "native_radio",
+        "openmrs_entity_id": "malaria_preventive_therapy_ipt4",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "label": "Dawa za kinga za malaria",
+        "options": [
+          {
+            "key": "ipt4",
+            "text": "IPT4",
+            "openmrs_entity_id": "ipt4",
+            "openmrs_entity": "concept",
+            "value": false
+          },
+          {
+            "key": "medication_not_given",
+            "text": "Hajapewa dawa za Malaria",
+            "openmrs_entity_id": "medication_not_given",
+            "openmrs_entity": "concept",
+            "value": false
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select the medication for Malaria Preventive Therapy"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_malaria_investigation_relevance.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "reason_for_not_giving_malaria_medication",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -263,7 +505,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Tafadhali chagua sababu"
+          "err": "Please select a reason"
         },
         "relevance": {
           "rules-engine": {
@@ -318,6 +560,13 @@
         "v_required": {
           "value": "true",
           "err": "Tafadhali chagua kama Mteja amepewa chandarua cha muda mrefu"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_malaria_investigation_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -345,7 +594,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Tafadhali chagua sababu"
+          "err": "Please select a reason"
         },
         "relevance": {
           "step1:llin_provision": {

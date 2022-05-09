@@ -386,7 +386,7 @@
       {
         "key": "abdominal_scars",
         "type": "native_radio",
-        "label": "Je, kuna makovu eneo la tumbo?",
+        "label": "Je, kuna kovu la upasuaji kwenye tumbo?",
         "openmrs_entity_id": "abdominal_scars",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -412,7 +412,7 @@
       {
         "key": "prompt_for_abdominal_scars",
         "type": "toaster_notes",
-        "text": "Muelimishe Mama kuhusiana na hatari ya kuchanika wakati wa kujifungua na mshauri aende kujifungulia kwenye Kituo cha Afya",
+        "text": "Mteja ashauriwe kujifungua Kituo cha Afya kwa sababu ya hatari ya kupasuka kwa mfuko wa uzazi",
         "openmrs_entity_id": "prompt_for_abdominal_scars",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -434,7 +434,7 @@
         "options": [
           {
             "key": "yes",
-            "text": "Ndiyo",
+            "text": "Ndio",
             "openmrs_entity_id": "yes",
             "openmrs_entity": "concept"
           },
@@ -704,14 +704,14 @@
       {
         "key": "abnormal_vaginal_discharge",
         "type": "native_radio",
-        "label": "Kutokwa na majimaji yasiyo ya kawaida kutoka ukeni",
+        "label": "Kutokwa na uchafu usio wa kawaida ukeni",
         "openmrs_entity_id": "abnormal_vaginal_discharge",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "options": [
           {
             "key": "yes",
-            "text": "Ndiyo",
+            "text": "Ndio",
             "openmrs_entity_id": "yes",
             "openmrs_entity": "concept"
           },
@@ -745,14 +745,14 @@
       {
         "key": "vaginal_sores",
         "type": "native_radio",
-        "label": "Vidonda ukeni",
+        "label": "Vidonda sehemu ya ukeni",
         "openmrs_entity_id": "vaginal_sores",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "options": [
           {
             "key": "yes",
-            "text": "Ndiyo ",
+            "text": "Ndio",
             "openmrs_entity_id": "yes",
             "openmrs_entity": "concept"
           },
@@ -771,7 +771,7 @@
       {
         "key": "prompt_for_vaginal_sores",
         "type": "toaster_notes",
-        "text": "Bainisha sababu za kuwa na vidonda ukeni na dhibiti hali hii kulingana na Mouongozo wa Wizara ya Afya.",
+        "text": "Chunguza sababu ya vidonda ukeni na tibu kulingana na muongozo",
         "openmrs_entity_id": "prompt_for_vaginal_sores",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -786,14 +786,14 @@
       {
         "key": "vaginal_swelling",
         "type": "native_radio",
-        "label": "Kuvimba kwa uke",
+        "label": "Kuvimba  sehemu ya ukeni",
         "openmrs_entity_id": "vaginal_swelling",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "options": [
           {
             "key": "yes",
-            "text": "Ndiyo",
+            "text": "Ndio",
             "openmrs_entity_id": "yes",
             "openmrs_entity": "concept"
           },
@@ -812,7 +812,7 @@
       {
         "key": "prompt_for_vaginal_swelling",
         "type": "toaster_notes",
-        "text": "Bainisha sababu za kuwa kuvimba ukeni na dhibiti hali hii kulingana na Mouongozo wa Wizara ya Afya.",
+        "text": "Chunguza sababu ya uvimbe ukeni na tibu kulingana na muongozo",
         "openmrs_entity_id": "prompt_for_vaginal_swelling",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",

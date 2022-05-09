@@ -81,7 +81,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "",
         "type": "toaster_notes",
-        "text": "Mpatie Mama Chanjo ya Pepopunda (TT1) na afuatilie utaratibu na ratiba ya chanjo kutokana na muongozo wa chanjo",
+        "text": "Toa dozi ya kwanza ya pepopunda (TT1) na mpatie mteja tarehe ya marudio ya chanjo kulingana na muongozo wa chanjo",
         "toaster_type": "warning",
         "relevance": {
           "step1:tt_vaccination": {

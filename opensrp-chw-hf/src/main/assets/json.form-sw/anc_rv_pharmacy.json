@@ -79,7 +79,7 @@
           },
           {
             "text": "folic",
-            "key": "Folic Acid",
+            "key": "Foliki Asidi",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "folic"
           },
@@ -101,7 +101,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "reason_for_giving_folic_acid",
         "type": "spinner",
-        "hint": "Sababu ya kutopewa vidonge vya Folic Acid badala ya FEFO",
+        "hint": "Sababu ya kutopewa vidonge vya Foliki Asidi badala ya FEFO",
         "values": [
           "Out of stock",
           "Selimundu",
@@ -139,7 +139,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "other_reason_for_giving_folic_acid",
         "type": "edit_text",
-        "hint": "Sababu nyingine ya kutopewa vidonge vya Folic Acid badala ya FEFO",
+        "hint": "Sababu nyingine ya kutopewa vidonge vya Foliki Asidi badala ya FEFO",
         "edit_type": "name",
         "v_required": {
           "value": "true",
