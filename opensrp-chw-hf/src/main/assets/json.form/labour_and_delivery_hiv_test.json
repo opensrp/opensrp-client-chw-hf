@@ -84,30 +84,24 @@
         }
       },
       {
-        "key": "hiv",
+        "key": "hiv_test_conducted",
         "type": "native_radio",
-        "label": "HIV Test Results",
+        "label": "Has the client been tested for HIV?",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "hiv_qn",
+        "openmrs_entity_id": "hiv_test_conducted",
         "openmrs_entity_parent": "",
         "options": [
           {
-            "key": "positive",
-            "text": "Positive",
+            "key": "yes",
+            "text": "Yes",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "positive"
+            "openmrs_entity_id": "yes"
           },
           {
-            "key": "negative",
-            "text": "Negative",
+            "key": "no",
+            "text": "No",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "negative"
-          },
-          {
-            "key": "test_not_conducted",
-            "text": "HIV Test not conducted",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "test_not_conducted"
+            "openmrs_entity_id": "no"
           }
         ],
         "v_required": {
@@ -141,6 +135,45 @@
             "text": "No",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_hiv_test_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "hiv",
+        "type": "native_radio",
+        "label": "HIV Test Results",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hiv",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "positive",
+            "text": "Positive",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "positive"
+          },
+          {
+            "key": "negative",
+            "text": "Negative",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "negative"
+          },
+          {
+            "key": "test_not_conducted",
+            "text": "HIV Test not conducted",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "test_not_conducted"
           }
         ],
         "v_required": {
