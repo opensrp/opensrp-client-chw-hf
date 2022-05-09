@@ -512,18 +512,11 @@ public class HfAncDao extends AbstractDao {
 
     public static String getIptDoses(String baseEntityId) {
         int iptDoses = 0;
-
-        if (malariaDosageIpt1(baseEntityId).equalsIgnoreCase("ipt1")) {
-            iptDoses += 1;
-        }
-        if (malariaDosageIpt2(baseEntityId).equalsIgnoreCase("ipt2")) {
-            iptDoses += 1;
-        }
-        if (malariaDosageIpt3(baseEntityId).equalsIgnoreCase("ipt3")) {
-            iptDoses += 1;
-        }
-        if (malariaDosageIpt4(baseEntityId).equalsIgnoreCase("ipt4")) {
-            iptDoses += 1;
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "malaria_preventive_therapy");
+        String sql = "SELECT malaria_preventive_therapy FROM ec_anc_register WHERE base_entity_id = '" + baseEntityId + "' AND malaria_preventive_therapy IS NOT NULL";
+        List<String> res = readData(sql, dataMap);
+        if (res != null && res.size() > 0) {
+            return res.get(0).split("ipt")[1];
         }
 
         return String.valueOf(iptDoses);
