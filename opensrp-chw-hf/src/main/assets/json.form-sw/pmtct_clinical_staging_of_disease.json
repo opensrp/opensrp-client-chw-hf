@@ -183,7 +183,7 @@
           },
           {
             "key": "chk_rec_uri",
-            "text": " Recurrent or chronic upper respiratory infection (URI): otitis media, otorrhoea, sinusitis (>2 episodes/6 months)",
+            "text": "Recurrent or chronic upper respiratory infection (URI): otitis media, otorrhoea, sinusitis (>2 episodes/6 months)",
             "openmrs_entity_id": "chk_rec_uri",
             "openmrs_entity": "concept"
           }
@@ -252,19 +252,19 @@
           },
           {
             "key": "chk_acute_gingivitis",
-            "text": "Papo hapo necrotizing ulcerative gingivitis/periodontitis",
+            "text": "Acute necrotizing ulcerative gingivitis/periodontitis",
             "openmrs_entity_id": "chk_acute_gingivitis",
             "openmrs_entity": "concept"
           },
           {
             "key": "chk_lym_pneumonitis",
-            "text": "Homa ya mapafu ya limfu (LIP)",
+            "text": "Lymphoid interstitial pneumonitis (LIP)",
             "openmrs_entity_id": "chk_lym_pneumonitis",
             "openmrs_entity": "concept"
           },
           {
             "key": "chk_unexp_anaemia",
-            "text": "anemia isiyoelezeka (<8g/dL), neutropenia (<1000/mm3), au thrombocytopenia (<30,000/mm3) kwa > 1mo.",
+            "text": "Unexplained anaemia (<8g/dL), neutropenia (<1000/mm3), or thrombocytopenia (<30,000/mm3) for >1 mo.",
             "openmrs_entity_id": "chk_unexp_anaemia",
             "openmrs_entity": "concept"
           }
@@ -291,7 +291,7 @@
         "options": [
           {
             "key": "chk_sev_wasting",
-            "text": "Upotevu mkubwa usioelezeka au utapiamlo mkali (-3SD au alama Z) kutojibu matibabu ya kawaida",
+            "text": "Unexplained severe wasting or severe malnutrition (-3 SD or Z score) not responding to standard therapy",
             "openmrs_entity_id": "chk_sev_wasting",
             "openmrs_entity": "concept"
           },
@@ -303,25 +303,25 @@
           },
           {
             "key": "chk_recurrent_bacinf",
-            "text": "Maambukizo makali ya bakteria ya mara kwa mara (> episodes 2/miezi 12, ukiondoa nimonia)",
+            "text": "Recurrent severe bacterial infections (>2 episodes/12 months, excluding pneumonia)",
             "openmrs_entity_id": "chk_recurrent_bacinf",
             "openmrs_entity": "concept"
           },
           {
             "key": "chk_orol_hsv",
-            "text": "HSV sugu ya orolabial au ngozi (inayodumu zaidi ya mwezi 1)",
+            "text": "Chronic orolabial or cutaneous HSV (lasting > 1 mo)",
             "openmrs_entity_id": "chk_orol_hsv",
             "openmrs_entity": "concept"
           },
           {
             "key": "chk_extra_tuber",
-            "text": "Kifua kikuu cha ziada cha mapafu",
+            "text": "Extra-pulmonary tuberculosis",
             "openmrs_entity_id": "chk_extra_tuber",
             "openmrs_entity": "concept"
           },
           {
             "key": "chk_kap_sarcoma",
-            "text": "Sarcoma ya Kaposi",
+            "text": "Kaposi’s sarcoma",
             "openmrs_entity_id": "chk_kap_sarcoma",
             "openmrs_entity": "concept"
           },
@@ -345,19 +345,19 @@
           },
           {
             "key": "chk_ende_mycosis",
-            "text": "Mycosis yoyote iliyosambazwa",
+            "text": "Any disseminated endemic mycosis",
             "openmrs_entity_id": "chk_ende_mycosis",
             "openmrs_entity": "concept"
           },
           {
             "key": "chk_cryp_isos",
-            "text": "Cryptosporidiosis or Isosporiasis (pamoja na kuhara zaidi ya mwezi 1)",
+            "text": "Cryptosporidiosis or Isosporiasis (with diarrhoea > 1 month)",
             "openmrs_entity_id": "chk_cryp_isos",
             "openmrs_entity": "concept"
           },
           {
             "key": "chk_cmv_organ",
-            "text": "Maambukizi ya CMV isipokuwa ini, wengu, nodi za limfu (na umri wa mwanzo zaidi ya mwezi 1)",
+            "text": "CMV infection of organ other than liver, spleen, lymph nodes (and onset age >1 month)",
             "openmrs_entity_id": "chk_cmv_organ",
             "openmrs_entity": "concept"
           },
