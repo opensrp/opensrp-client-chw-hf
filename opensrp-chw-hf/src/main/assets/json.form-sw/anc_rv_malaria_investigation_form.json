@@ -362,7 +362,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Please select the medication for Malaria Preventive Therapy"
+          "err": "Chagua dawa kwa ajili ya kinga ya malaria"
         },
         "relevance": {
           "rules-engine": {
@@ -397,7 +397,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Please select the medication for Malaria Preventive Therapy"
+          "err": "Chagua dawa kwa ajili ya kinga ya malaria"
         },
         "relevance": {
           "rules-engine": {
@@ -432,7 +432,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Please select the medication for Malaria Preventive Therapy"
+          "err": "Chagua dawa kwa ajili ya kinga ya malaria"
         },
         "relevance": {
           "rules-engine": {
@@ -467,7 +467,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Please select the medication for Malaria Preventive Therapy"
+          "err": "Chagua dawa kwa ajili ya kinga ya malaria"
         },
         "relevance": {
           "rules-engine": {

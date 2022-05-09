@@ -484,7 +484,7 @@
       {
         "key": "hiv",
         "type": "native_radio",
-        "label": "Client HIV Test Results from the previous clinic",
+        "label": "Majibu ya Virusi vya Ukimwi ya mteja kutoka katika kituo alichotoka",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "hiv",
         "openmrs_entity_parent": "",
@@ -503,7 +503,7 @@
           },
           {
             "key": "test_not_conducted",
-            "text": "The client had not yet been tested for HIV in the previous Clinic",
+            "text": "Mteja hajapimwa maambukizi ya Virusi vya Ukimwi katika kituo alichotoka",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "test_not_conducted"
           }
