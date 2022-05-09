@@ -86,11 +86,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "bad"
           }
-        ],
-        "v_required": {
-          "value": true,
-          "err": "General condition is a required field"
-        }
+        ]
       },
       {
         "key": "prompt_for_general_condition",
@@ -125,10 +121,6 @@
         "v_max": {
           "value": "200",
           "err": "The pulse rate must be equal or less than 200 (bpm)"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Please enter the pulse rate"
         }
       },
       {
@@ -179,10 +171,6 @@
         "v_max": {
           "value": "100",
           "err": "The pulse rate must be equal or less than 100 (Breaths per minute)"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Please enter the pulse rate"
         }
       },
       {
@@ -203,10 +191,6 @@
         "v_max": {
           "value": "50",
           "err": "Temperature must be equal or less than 50"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Please enter the temperature"
         }
       },
       {
@@ -257,10 +241,6 @@
         "v_max": {
           "value": "320",
           "err": "Systolic value must be equal or less than 320"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Please enter the systolic value"
         }
       },
       {
@@ -281,10 +261,6 @@
         "v_max": {
           "value": "200",
           "err": "Diastolic value must be equal or less than 200"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Please enter the diastolic value"
         },
         "constraints": [
           {
@@ -356,11 +332,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "three_plus"
           }
-        ],
-        "v_required": {
-          "value": true,
-          "err": "Urine protein acetone is a required field"
-        }
+        ]
       },
       {
         "key": "prompt_for_urine",
@@ -385,10 +357,6 @@
         "openmrs_entity_id": "fundal_height",
         "type": "edit_text",
         "hint": "Fundal Height (CM)",
-        "v_required": {
-          "value": "true",
-          "err": "Required"
-        },
         "v_numeric": {
           "value": "true",
           "err": "Has to be a number"
@@ -420,10 +388,6 @@
         "openmrs_choice_ids": {
           "breech": "breech",
           "cephalic": "cephalic"
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Please select an option for presentation"
         }
       },
       {
@@ -447,10 +411,6 @@
           "transverse": "transverse",
           "oblique": "oblique",
           "longitudinal": "longitudinal"
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Please select an option for lie"
         }
       },
       {
@@ -499,11 +459,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "over_40_secs"
           }
-        ],
-        "v_required": {
-          "value": true,
-          "err": "Lie is a required field"
-        }
+        ]
       },
       {
         "key": "prompt_for_contraction_less_than_20_secs",
@@ -568,10 +524,6 @@
         "v_max": {
           "value": "300",
           "err": "Fetal heart rate must be equal or less than 300"
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the fetal heart rate"
         }
       },
       {
