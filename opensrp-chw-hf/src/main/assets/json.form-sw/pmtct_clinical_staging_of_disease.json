@@ -291,7 +291,7 @@
         "options": [
           {
             "key": "chk_sev_wasting",
-            "text": "Unexplained severe wasting or severe malnutrition (-3 SD or Z score) not responding to standard therapy",
+            "text": "Upotevu mkubwa usioelezeka au utapiamlo mkali (-3SD au alama Z) kutojibu matibabu ya kawaida",
             "openmrs_entity_id": "chk_sev_wasting",
             "openmrs_entity": "concept"
           },
