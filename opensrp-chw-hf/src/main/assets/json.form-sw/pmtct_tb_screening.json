@@ -407,22 +407,22 @@
         "openmrs_entity_id": "number_of_tpt_days_dispensed",
         "type": "edit_text",
         "edit_type": "number",
-        "hint": "Number of days dispensed",
+        "hint": "Idadi ya Siku Iliyotolewa",
         "v_required": {
           "value": "true",
-          "err": "Please enter number of days dispensed"
+          "err": "Tafadhali jaza idadi ya siku iliyotolewa"
         },
         "v_numeric_integer": {
           "value": "true",
-          "err": "Please enter a valid number"
+          "err": "Tafadhali ingiza namba halali"
         },
         "v_min": {
           "value": "0",
-          "err": "Number of dispensed days should be greater than 0"
+          "err": "Idadi ya siku iliyotolewa inatakiwa iwe zaidi ya 0"
         },
         "v_max": {
           "value": "180",
-          "err": "Number of dispensed days should be less than or equal to 180"
+          "err": "Idadi ya siku iliyotolewa inatakiwa iwe sawa na au chini ya 180"
         },
         "relevance": {
           "step1:is_client_provided_with_tpt": {
