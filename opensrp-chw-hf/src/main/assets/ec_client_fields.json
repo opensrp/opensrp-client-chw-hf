@@ -4880,6 +4880,160 @@
           }
         }
       ]
+    },
+    {
+      "name": "ec_ld_general_examination_consultation",
+      "columns": [
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "form_submission_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "formSubmissionId"
+          }
+        },
+        {
+          "column_name": "event_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "eventId"
+          }
+        },
+        {
+          "column_name": "event_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "eventDate"
+          }
+        },
+        {
+          "column_name": "pulse_rate",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "pulse_rate"
+          }
+        },
+
+        {
+          "column_name": "temperature",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "temperature"
+          }
+        },
+        {
+          "column_name": "systolic",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "systolic"
+          }
+        },
+        {
+          "column_name": "diastolic",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "diastolic"
+          }
+        },
+        {
+          "column_name": "urine",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "urine"
+          }
+        },
+        {
+          "column_name": "fundal_height",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "fundal_height"
+          }
+        },
+        {
+          "column_name": "presentation",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "presentation"
+          }
+        },
+        {
+          "column_name": "contraction_in_ten_minutes",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "contraction_in_ten_minutes"
+          }
+        },
+        {
+          "column_name": "fetal_heart_rate",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "fetal_heart_rate"
+          }
+        },
+        {
+          "column_name": "vaginal_exam_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "vaginal_exam_date"
+          }
+        },
+        {
+          "column_name": "vaginal_exam_time",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "vaginal_exam_time"
+          }
+        },
+        {
+          "column_name": "cervix_state",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "cervix_state"
+          }
+        },
+        {
+          "column_name": "cervix_dilation",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "cervix_dilation"
+          }
+        },
+        {
+          "column_name": "occiput_position",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "occiput_position"
+          }
+        },
+        {
+          "column_name": "amniotic_fluid",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "amniotic_fluid"
+          }
+        }
+      ]
     }
   ]
 }

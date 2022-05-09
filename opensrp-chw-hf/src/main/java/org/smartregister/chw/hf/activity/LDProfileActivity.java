@@ -12,9 +12,11 @@ import android.widget.TextView;
 import org.joda.time.DateTime;
 import org.joda.time.Period;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.ld.LDLibrary;
 import org.smartregister.chw.ld.activity.BaseLDProfileActivity;
 import org.smartregister.chw.ld.dao.LDDao;
 import org.smartregister.chw.ld.domain.MemberObject;
+import org.smartregister.chw.ld.domain.Visit;
 import org.smartregister.chw.ld.util.Constants;
 
 public class LDProfileActivity extends BaseLDProfileActivity {
@@ -36,7 +38,13 @@ public class LDProfileActivity extends BaseLDProfileActivity {
     protected void onResume() {
         super.onResume();
         setTextViewRecordLDText();
+    }
 
+    protected void setupViews() {
+        super.setupViews();
+        textViewRecordLD.setText("Examination/Consultation");
+
+        Visit lastLDVisit = LDLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), "Visit Type");
     }
 
     @Override
