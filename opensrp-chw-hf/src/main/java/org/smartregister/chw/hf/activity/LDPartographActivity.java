@@ -11,7 +11,6 @@ import org.json.JSONObject;
 import org.smartregister.chw.core.task.RunnableTask;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.interactor.LDPartographInteractor;
-import org.smartregister.chw.hf.interactor.LDRegistrationInteractor;
 import org.smartregister.chw.hf.schedulers.HfScheduleTaskExecutor;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.ld.activity.BaseLDVisitActivity;

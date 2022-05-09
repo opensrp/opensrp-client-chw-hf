@@ -24,14 +24,7 @@ import java.util.Map;
  */
 public class LDPartographInteractorFlv implements LDPartographInteractor.Flavor {
 
-    private String baseEntityId;
-
     LinkedHashMap<String, BaseLDVisitAction> actionList = new LinkedHashMap<>();
-
-    public LDPartographInteractorFlv(String baseEntityId){
-        this.baseEntityId = baseEntityId;
-    }
-
 
     @Override
     public LinkedHashMap<String, BaseLDVisitAction> calculateActions(BaseLDVisitContract.View view, MemberObject memberObject, BaseLDVisitContract.InteractorCallBack callBack) throws BaseLDVisitAction.ValidationException {
@@ -47,10 +40,9 @@ public class LDPartographInteractorFlv implements LDPartographInteractor.Flavor 
             }
         }
 
-        evaluateFetalWellbeing(actionList, details, memberObject, context, callBack);
-        evaluateMotherWellBeing(actionList, details, memberObject, context, callBack);
-        evaluateProgressOfLabour(actionList, details, memberObject, context, callBack);
-        evaluateTreatmentDuringLabor(actionList, details, memberObject, context, callBack);
+        evaluateFetalWellbeing(actionList, details, memberObject, context);
+        evaluateMotherWellBeing(actionList, details, memberObject, context);
+        evaluateProgressOfLabour(actionList, details, memberObject, context);
 
         return actionList;
     }
@@ -58,8 +50,7 @@ public class LDPartographInteractorFlv implements LDPartographInteractor.Flavor 
     private void evaluateFetalWellbeing(LinkedHashMap<String, BaseLDVisitAction> actionList,
                                         Map<String, List<VisitDetail>> details,
                                         final MemberObject memberObject,
-                                        final Context context,
-                                        BaseLDVisitContract.InteractorCallBack callBack
+                                        final Context context
     ) throws BaseLDVisitAction.ValidationException {
 
 
@@ -77,8 +68,7 @@ public class LDPartographInteractorFlv implements LDPartographInteractor.Flavor 
     private void evaluateMotherWellBeing(LinkedHashMap<String, BaseLDVisitAction> actionList,
                                          Map<String, List<VisitDetail>> details,
                                          final MemberObject memberObject,
-                                         final Context context,
-                                         BaseLDVisitContract.InteractorCallBack callBack
+                                         final Context context
     ) throws BaseLDVisitAction.ValidationException {
 
         BaseLDVisitAction motherWellBeingAction = new BaseLDVisitAction.Builder(context, context.getString(R.string.ld_partograph_mother_well_being))
@@ -95,8 +85,7 @@ public class LDPartographInteractorFlv implements LDPartographInteractor.Flavor 
     private void evaluateProgressOfLabour(LinkedHashMap<String, BaseLDVisitAction> actionList,
                                         Map<String, List<VisitDetail>> details,
                                         final MemberObject memberObject,
-                                        final Context context,
-                                        BaseLDVisitContract.InteractorCallBack callBack
+                                        final Context context
     ) throws BaseLDVisitAction.ValidationException {
 
         BaseLDVisitAction progressOfLaborAction = new BaseLDVisitAction.Builder(context, context.getString(R.string.ld_partograph_labor_progress))
@@ -107,15 +96,6 @@ public class LDPartographInteractorFlv implements LDPartographInteractor.Flavor 
                 .build();
 
         actionList.put(context.getString(R.string.ld_partograph_labor_progress), progressOfLaborAction);
-
-    }
-
-    private void evaluateTreatmentDuringLabor(LinkedHashMap<String, BaseLDVisitAction> actionList,
-                                        Map<String, List<VisitDetail>> details,
-                                        final MemberObject memberObject,
-                                        final Context context,
-                                        BaseLDVisitContract.InteractorCallBack callBack
-    ) throws BaseLDVisitAction.ValidationException {
 
     }
 

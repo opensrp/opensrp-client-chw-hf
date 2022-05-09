@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 
-import com.vijay.jsonwizard.views.CustomTextView;
-
 import org.joda.time.DateTime;
 import org.joda.time.Period;
 import org.smartregister.chw.hf.R;
