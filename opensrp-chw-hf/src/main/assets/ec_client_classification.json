@@ -603,6 +603,27 @@
             "creates_case": [
               "ec_ld_confirmation"
             ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "Labour Stage  Assessment",
+            "creates_case": [
+              "ec_ld_confirmation"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "LD General Examination",
+            "creates_case": [
+              "ec_ld_general_examination_consultation"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "Cervix Dilation Monitoring",
+            "creates_case": [
+              "ec_ld_general_examination_consultation"
+            ]
           }
         ]
       }
