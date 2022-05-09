@@ -1,5 +1,6 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.hf.utils.Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryCervixDilationMonitoring;
 import static org.smartregister.chw.hf.utils.Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryLabourStage;
 
 import android.app.Activity;
@@ -17,7 +18,7 @@ import org.smartregister.chw.ld.domain.MemberObject;
 import org.smartregister.chw.ld.util.Constants;
 
 public class LDProfileActivity extends BaseLDProfileActivity {
-    public static final String LABOUR_STAGE = "LABOUR_STAGE";
+    public static final String LD_PROFILE_ACTION = "LD_PROFILE_ACTION";
 
     public static void startProfileActivity(Activity activity, String baseEntityId) {
         Intent intent = new Intent(activity, LDProfileActivity.class);
@@ -46,6 +47,8 @@ public class LDProfileActivity extends BaseLDProfileActivity {
                 startLDForm(this, memberObject.getBaseEntityId(), getLabourAndDeliveryLabourStage());
             } else if (((TextView) view).getText().equals(getString(R.string.labour_and_delivery_examination_and_consultation_button_tittle))) {
                 openExaminationConsultation();
+            } else if (((TextView) view).getText().equals(getString(R.string.labour_and_delivery_cervix_dilation_monitoring_button_tittle))) {
+                startLDForm(this, memberObject.getBaseEntityId(), getLabourAndDeliveryCervixDilationMonitoring());
             } else if (((TextView) view).getText().equals(getString(R.string.labour_and_delivery_partograph_button_title))) {
                 LDPartographActivity.startMe(this, memberObject.getBaseEntityId(), false,
                         getName(memberObject), String.valueOf(new Period(new DateTime(this.memberObject.getAge()), new DateTime()).getYears()));
@@ -67,9 +70,13 @@ public class LDProfileActivity extends BaseLDProfileActivity {
         if (LDDao.getLabourStage(memberObject.getBaseEntityId()) == null)
             textViewRecordLD.setText(R.string.labour_and_delivery_labour_stage_title);
         else if (LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("1")) {
-            textViewRecordLD.setText(R.string.labour_and_delivery_examination_and_consultation_button_tittle);
-        } else if (LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("2")) {
-            textViewRecordLD.setText(R.string.labour_and_delivery_partograph_button_title);
+            if (LDDao.getCervixDilation(memberObject.getBaseEntityId()) == null) {
+                textViewRecordLD.setText(R.string.labour_and_delivery_examination_and_consultation_button_tittle);
+            } else if (Integer.parseInt(LDDao.getCervixDilation(memberObject.getBaseEntityId())) < 3) {
+                textViewRecordLD.setText(R.string.labour_and_delivery_cervix_dilation_monitoring_button_tittle);
+            } else {
+                textViewRecordLD.setText(R.string.labour_and_delivery_partograph_button_title);
+            }
         }
     }
 
@@ -77,7 +84,7 @@ public class LDProfileActivity extends BaseLDProfileActivity {
         Intent intent = new Intent(activity, LDRegisterActivity.class);
         intent.putExtra(org.smartregister.chw.ld.util.Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID, baseEntityID);
         intent.putExtra(Constants.ACTIVITY_PAYLOAD.LD_FORM_NAME, formName);
-        intent.putExtra(org.smartregister.chw.ld.util.Constants.ACTIVITY_PAYLOAD.ACTION, LABOUR_STAGE);
+        intent.putExtra(org.smartregister.chw.ld.util.Constants.ACTIVITY_PAYLOAD.ACTION, LD_PROFILE_ACTION);
         activity.startActivity(intent);
     }
 

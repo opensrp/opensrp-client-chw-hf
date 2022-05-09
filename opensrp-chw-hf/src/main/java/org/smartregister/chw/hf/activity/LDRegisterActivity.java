@@ -28,7 +28,7 @@ public class LDRegisterActivity extends CoreLDRegisterActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         //Closing the register activity to return to profile activity if the launched form was Labour and Delivery Labour Stage Form
-        if (ACTION.equals(LDProfileActivity.LABOUR_STAGE))
+        if (ACTION.equals(LDProfileActivity.LD_PROFILE_ACTION))
             finish();
     }
 }
