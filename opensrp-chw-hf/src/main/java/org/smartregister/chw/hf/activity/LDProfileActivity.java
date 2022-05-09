@@ -4,6 +4,7 @@ import static org.smartregister.chw.hf.utils.Constants.JsonForm.LabourAndDeliver
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
@@ -44,7 +45,7 @@ public class LDProfileActivity extends BaseLDProfileActivity {
             if (((TextView) view).getText().equals(getString(R.string.labour_and_delivery_labour_stage_title))) {
                 startLDForm(this, memberObject.getBaseEntityId(), getLabourAndDeliveryLabourStage());
             } else if (((TextView) view).getText().equals(getString(R.string.labour_and_delivery_examination_and_consultation_button_tittle))) {
-                //TODO implement start examination form
+                openExaminationConsultation();
             } else if (((TextView) view).getText().equals(getString(R.string.labour_and_delivery_partograph_button_title))) {
                 LDPartographActivity.startMe(this, memberObject.getBaseEntityId(), false,
                         getName(memberObject), String.valueOf(new Period(new DateTime(this.memberObject.getAge()), new DateTime()).getYears()));
@@ -52,14 +53,6 @@ public class LDProfileActivity extends BaseLDProfileActivity {
         } else {
             super.onClick(view);
         }
-    }
-
-    public static void startLDForm(Activity activity, String baseEntityID, String formName) {
-        Intent intent = new Intent(activity, LDRegisterActivity.class);
-        intent.putExtra(org.smartregister.chw.ld.util.Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID, baseEntityID);
-        intent.putExtra(Constants.ACTIVITY_PAYLOAD.LD_FORM_NAME, formName);
-        intent.putExtra(org.smartregister.chw.ld.util.Constants.ACTIVITY_PAYLOAD.ACTION, LABOUR_STAGE);
-        activity.startActivity(intent);
     }
 
     private String getName(MemberObject memberObject) {
@@ -78,6 +71,25 @@ public class LDProfileActivity extends BaseLDProfileActivity {
         } else if (LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("2")) {
             textViewRecordLD.setText(R.string.labour_and_delivery_partograph_button_title);
         }
+    }
+
+    public static void startLDForm(Activity activity, String baseEntityID, String formName) {
+        Intent intent = new Intent(activity, LDRegisterActivity.class);
+        intent.putExtra(org.smartregister.chw.ld.util.Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID, baseEntityID);
+        intent.putExtra(Constants.ACTIVITY_PAYLOAD.LD_FORM_NAME, formName);
+        intent.putExtra(org.smartregister.chw.ld.util.Constants.ACTIVITY_PAYLOAD.ACTION, LABOUR_STAGE);
+        activity.startActivity(intent);
+    }
+
+    private void openExaminationConsultation() {
+        String baseEntityId = null;
+        Bundle extras = getIntent().getExtras();
+
+        if (extras != null) {
+            baseEntityId = extras.getString(Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID);
+        }
+
+        LDVisitActivity.startLDVisitActivity(this, baseEntityId, false);
     }
 
 }
