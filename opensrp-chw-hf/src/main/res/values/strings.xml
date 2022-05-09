@@ -207,5 +207,7 @@
 
     <!-- Labour and Delivery String Resources-->
     <string name="menu_ld">L&amp;D</string>
+    <string name="lb_fully_completed_action">Fully Completed</string>
+    <string name="lb_partially_completed_action">Partially Completed</string>
 
 </resources>

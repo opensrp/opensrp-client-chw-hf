@@ -7,7 +7,9 @@ import android.view.View;
 import android.widget.Toast;
 
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.ld.LDLibrary;
 import org.smartregister.chw.ld.activity.BaseLDProfileActivity;
+import org.smartregister.chw.ld.domain.Visit;
 import org.smartregister.chw.ld.util.Constants;
 
 public class LDProfileActivity extends BaseLDProfileActivity {
@@ -21,6 +23,8 @@ public class LDProfileActivity extends BaseLDProfileActivity {
     protected void setupViews() {
         super.setupViews();
         textViewRecordLD.setText("Examination/Consultation");
+
+        Visit lastLDVisit = LDLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), "Visit Type");
     }
 
     @Override
