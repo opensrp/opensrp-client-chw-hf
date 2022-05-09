@@ -90,7 +90,7 @@
         "options": [
           {
             "key": "chk_asymptomatic",
-            "text": "Asymptomatic",
+            "text": "Hakuna dalili yeyote ya tatizo",
             "openmrs_entity_id": "chk_asymptomatic",
             "openmrs_entity": "concept"
           },
@@ -252,19 +252,19 @@
           },
           {
             "key": "chk_acute_gingivitis",
-            "text": "Acute necrotizing ulcerative gingivitis/periodontitis",
+            "text": "Papo hapo necrotizing ulcerative gingivitis/periodontitis",
             "openmrs_entity_id": "chk_acute_gingivitis",
             "openmrs_entity": "concept"
           },
           {
             "key": "chk_lym_pneumonitis",
-            "text": "Lymphoid interstitial pneumonitis (LIP)",
+            "text": "Homa ya mapafu ya limfu (LIP)",
             "openmrs_entity_id": "chk_lym_pneumonitis",
             "openmrs_entity": "concept"
           },
           {
             "key": "chk_unexp_anaemia",
-            "text": "Unexplained anaemia (<8g/dL), neutropenia (<1000/mm3), or thrombocytopenia (<30,000/mm3) for >1 mo.",
+            "text": "anemia isiyoelezeka (<8g/dL), neutropenia (<1000/mm3), au thrombocytopenia (<30,000/mm3) kwa > 1mo.",
             "openmrs_entity_id": "chk_unexp_anaemia",
             "openmrs_entity": "concept"
           }
@@ -303,25 +303,25 @@
           },
           {
             "key": "chk_recurrent_bacinf",
-            "text": "Recurrent severe bacterial infections (>2 episodes/12 months, excluding pneumonia)",
+            "text": "Maambukizo makali ya bakteria ya mara kwa mara (> episodes 2/miezi 12, ukiondoa nimonia)",
             "openmrs_entity_id": "chk_recurrent_bacinf",
             "openmrs_entity": "concept"
           },
           {
             "key": "chk_orol_hsv",
-            "text": "Chronic orolabial or cutaneous HSV (lasting > 1 mo)",
+            "text": "HSV sugu ya orolabial au ngozi (inayodumu zaidi ya mwezi 1)",
             "openmrs_entity_id": "chk_orol_hsv",
             "openmrs_entity": "concept"
           },
           {
             "key": "chk_extra_tuber",
-            "text": "Extra-pulmonary tuberculosis",
+            "text": "Kifua kikuu cha ziada cha mapafu",
             "openmrs_entity_id": "chk_extra_tuber",
             "openmrs_entity": "concept"
           },
           {
             "key": "chk_kap_sarcoma",
-            "text": "Kaposi’s sarcoma",
+            "text": "Sarcoma ya Kaposi",
             "openmrs_entity_id": "chk_kap_sarcoma",
             "openmrs_entity": "concept"
           },
@@ -345,19 +345,19 @@
           },
           {
             "key": "chk_ende_mycosis",
-            "text": "Any disseminated endemic mycosis",
+            "text": "Mycosis yoyote iliyosambazwa",
             "openmrs_entity_id": "chk_ende_mycosis",
             "openmrs_entity": "concept"
           },
           {
             "key": "chk_cryp_isos",
-            "text": "Cryptosporidiosis or Isosporiasis (with diarrhoea > 1 month)",
+            "text": "Cryptosporidiosis or Isosporiasis (pamoja na kuhara zaidi ya mwezi 1)",
             "openmrs_entity_id": "chk_cryp_isos",
             "openmrs_entity": "concept"
           },
           {
             "key": "chk_cmv_organ",
-            "text": "CMV infection of organ other than liver, spleen, lymph nodes (and onset age >1 month)",
+            "text": "Maambukizi ya CMV isipokuwa ini, wengu, nodi za limfu (na umri wa mwanzo zaidi ya mwezi 1)",
             "openmrs_entity_id": "chk_cmv_organ",
             "openmrs_entity": "concept"
           },

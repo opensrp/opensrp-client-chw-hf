@@ -62,7 +62,7 @@
         "options": [
           {
             "key": "yes",
-            "text": "Ndiyo",
+            "text": "Ndio",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
