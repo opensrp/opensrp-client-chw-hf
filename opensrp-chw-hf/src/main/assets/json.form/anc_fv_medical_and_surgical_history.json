@@ -150,11 +150,11 @@
             "openmrs_entity_id": "female_genital_mutilation"
           },
           {
-            "key": "parity",
+            "key": "parity_chk",
             "text": "Parity",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "parity"
+            "openmrs_entity_id": "parity_chk"
           },
           {
             "key": "closely_spaced_pregnancy",
@@ -248,11 +248,11 @@
         }
       },
       {
-        "key": "parity_value",
+        "key": "parity",
         "type": "edit_text",
         "hint": "Parity",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "parity_value",
+        "openmrs_entity_id": "parity",
         "openmrs_entity_parent": "",
         "v_numeric": {
           "value": "true",
@@ -268,7 +268,7 @@
             "ex-checkbox": [
               {
                 "or": [
-                  "parity"
+                  "parity_chk"
                 ]
               }
             ]

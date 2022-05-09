@@ -115,7 +115,7 @@
           {
             "type": "numeric",
             "ex": "lessThan(., step1:systolic)",
-            "err": "The diastolic value must be less than the systolic value"
+            "err": "Thamani ya diastolic lazima iwe chini ya thamani ya systolic"
           }
         ]
       },
@@ -154,7 +154,7 @@
       {
         "key": "hb_level_test",
         "type": "native_radio",
-        "label": "Kipimo cha kiwango cha damu (Hb)",
+        "label": "Kipimo cha kiwango cha damu (HB)",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "hb_level_test",
         "openmrs_entity_parent": "",
@@ -182,7 +182,7 @@
       {
         "key": "hb_level",
         "type": "edit_text",
-        "hint": "HB Level (g/dl)",
+        "hint": "Kiwango cha damu (HB) (g/dl)",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "hb_level",
         "openmrs_entity_parent": "",
@@ -249,7 +249,7 @@
         "hint": "Sababu ya kutofanya kipimo cha kiwango cha HB  ",
         "values": [
           "Cuvette Cartridges Hazipo Kituoni",
-          "Mashine ta 'Haemoque' haifanyi kazi",
+          "Mashine ya Kupimwa wingi wa damu (Haemoque) haifanyi kazi",
           "Mteja alikuwa katika hali ya dharura",
           "Mteja amekataa kupimwa",
           "Tunaendelea kumshauri mteja",
@@ -473,14 +473,14 @@
       {
         "key": "engorgement_mastitis",
         "type": "native_radio",
-        "label": "Je, Mama ana matiti yaliyovimba au Mastitis?",
+        "label": "Je, matiti ya Mama yamejaa au yamevimba?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "engorgement_mastitis",
         "openmrs_entity_parent": "",
         "options": [
           {
             "key": "yes",
-            "text": "Ndiyo",
+            "text": "Ndio",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
@@ -628,7 +628,7 @@
       {
         "key": "prompt_for_uterus_pain",
         "type": "toaster_notes",
-        "text": "Fanya uchunguzi wa uke kuangalia kama kuna dalili zozote za puerperial sepsis au mabaki yoyote ya uchafu baada ya kujifungua. Dhibiti hali hii  na mpatie Antibiotics na Analgesics kulingana na mwongozo",
+        "text": "Fanya uchunguzi wa uke kuangalia kama kuna dalili zozote za puerperial sepsis au mabaki yoyote ya uchafu baada ya kujifungua. Dhibiti hali hii kulingana na muongozo na mpatie Antibiotiki (Kiuavijasumu) na Dawa za kutuliza maumivu kulingana na muongozo",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -703,7 +703,7 @@
           },
           {
             "key": "episiotomy",
-            "text": "Episiotomy",
+            "text": "Kuongezewa njia wakati wa kujifungua",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "episiotomy"
           },
@@ -802,14 +802,14 @@
       {
         "key": "puerperal_psychosis",
         "type": "native_radio",
-        "label": "Je, Mama amepata Kichaa wakati wa mimba?",
+        "label": "Je, Mama amepata Kichaa cha mimba?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "puerperal_psychosis",
         "openmrs_entity_parent": "",
         "options": [
           {
             "key": "yes",
-            "text": "Ndiyo",
+            "text": "Ndio",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },

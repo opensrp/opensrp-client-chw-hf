@@ -1,7 +1,10 @@
 {
+  "validate_on_submit": true,
+  "show_errors_on_submit": false,
   "count": "1",
-  "encounter_type": "PMTCT EAC Visit",
+  "encounter_type": "Labour Stage  Assessment",
   "entity_id": "",
+  "relational_id": "",
   "metadata": {
     "start": {
       "openmrs_entity_parent": "",
@@ -44,60 +47,57 @@
       "openmrs_data_type": "phonenumber",
       "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
     },
-    "encounter_location": ""
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
   },
-  "global": {},
   "step1": {
-    "title": "Ziara ya EAC",
+    "title": "Labour Stage",
     "fields": [
       {
-        "key": "eac_visit_notification",
-        "type": "toaster_notes",
-        "text": "Nakiri tarehe na muda wa hudhulio la EAC",
-        "openmrs_entity_id": "notify_retest",
-        "openmrs_entity": "concept",
+        "key": "labour_stage",
         "openmrs_entity_parent": "",
-        "toaster_type": "info"
-      },
-      {
-        "key": "eac_visit_date",
-        "type": "date_picker",
-        "hint": "Tarehe ya Udhulio la EAC",
-        "openmrs_entity_id": "eac_visit_date",
         "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "min_date": "today-3m",
-        "max_date": "today",
+        "openmrs_entity_id": "labour_stage",
+        "label": "What is the client Labour Stage?",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "1",
+            "text": "Stage 1",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "1"
+          },
+          {
+            "key": "2",
+            "text": "Stage 2",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "2"
+          },
+          {
+            "key": "3",
+            "text": "Stage 3",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "3"
+          },
+          {
+            "key": "4",
+            "text": "Stage 4",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "4"
+          }
+        ],
         "v_required": {
-          "value": "true",
-          "err": "Tafadhari ingiza Tarehe ya Udhulio la EAC"
+          "value": true,
+          "err": "Please select an option"
         }
-      },
-      {
-        "key": "eac_visit_time",
-        "type": "time_picker",
-        "hint": "Wakati wa kutembelea EAC",
-        "openmrs_entity_id": "eac_visit_time",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter EAC visit time"
-        }
-      },
-      {
-        "key": "eac_visit_type",
-        "type": "hidden",
-        "openmrs_entity_id": "eac_visit_type",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": ""
-      },
-      {
-        "key": "eac",
-        "type": "hidden",
-        "openmrs_entity_id": "eac",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": ""
       }
     ]
   }

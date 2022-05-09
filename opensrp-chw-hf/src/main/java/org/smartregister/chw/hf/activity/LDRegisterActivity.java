@@ -23,4 +23,12 @@ public class LDRegisterActivity extends CoreLDRegisterActivity {
         intent.putExtra(org.smartregister.chw.ld.util.Constants.ACTIVITY_PAYLOAD.ACTION, org.smartregister.chw.ld.util.Constants.ACTIVITY_PAYLOAD_TYPE.REGISTRATION);
         activity.startActivity(intent);
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //Closing the register activity to return to profile activity if the launched form was Labour and Delivery Labour Stage Form
+        if (ACTION.equals(LDProfileActivity.LD_PROFILE_ACTION))
+            finish();
+    }
 }
