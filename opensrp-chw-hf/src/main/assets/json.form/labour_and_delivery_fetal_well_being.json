@@ -2,7 +2,7 @@
   "validate_on_submit": true,
   "show_errors_on_submit": false,
   "count": "1",
-  "encounter_type": "Foetal Wellbeing",
+  "encounter_type": "LD Partograph - Fetal Well-being",
   "entity_id": "",
   "relational_id": "",
   "metadata": {
@@ -54,7 +54,7 @@
     }
   },
   "step1": {
-    "title": "Well-being of foetal",
+    "title": "Well-being of a fetal",
     "fields": [
       {
         "key": "fetal_heart_rate",
@@ -74,10 +74,6 @@
         "v_max": {
           "value": "300",
           "err": "Fetal heart rate must be equal or less than 300"
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the fetal heart rate"
         }
       },
       {
@@ -91,7 +87,7 @@
         "relevance": {
           "rules-engine": {
             "ex-rules": {
-              "rules-file": "labour_and_delivery_foetal_wellbeing_relevance.yml"
+              "rules-file": "labour_and_delivery_fetal_wellbeing_relevance.yml"
             }
           }
         }
@@ -119,11 +115,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
-        ],
-        "v_required": {
-          "value": true,
-          "err": "Please select an option"
-        }
+        ]
       },
       {
         "key": "moulding_options",
@@ -190,11 +182,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "ruptured"
           }
-        ],
-        "v_required": {
-          "value": true,
-          "err": "Please select an option"
-        }
+        ]
       },
       {
         "key": "amniotic_fluid",
@@ -249,7 +237,7 @@
         "relevance": {
           "rules-engine": {
             "ex-rules": {
-              "rules-file": "labour_and_delivery_foetal_wellbeing_relevance.yml"
+              "rules-file": "labour_and_delivery_fetal_wellbeing_relevance.yml"
             }
           }
         }

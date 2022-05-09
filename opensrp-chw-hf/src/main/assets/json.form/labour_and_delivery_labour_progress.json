@@ -2,7 +2,7 @@
   "validate_on_submit": true,
   "show_errors_on_submit": false,
   "count": "1",
-  "encounter_type": "Labour Progress",
+  "encounter_type": "LD Partograph : Labour Progress",
   "entity_id": "",
   "relational_id": "",
   "metadata": {
@@ -66,10 +66,6 @@
         "v_numeric": {
           "value": "true",
           "err": "Please enter cervical dilation"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Please enter cervical dilation"
         }
       },
       {
@@ -123,11 +119,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "zero"
           }
-        ],
-        "v_required": {
-          "value": true,
-          "err": "Please select an option"
-        }
+        ]
       },
       {
         "key": "contraction_every_half_hour_label",
@@ -184,11 +176,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "five"
           }
-        ],
-        "v_required": {
-          "value": true,
-          "err": "Please select an option"
-        }
+        ]
       },
       {
         "key": "contraction_every_half_hour_time",

@@ -54,6 +54,7 @@ public class Constants extends CoreConstants {
         public static final String HEI_NUMBER_REGISTRATION = "HEI Number Registration";
         public static final String ANC_FOLLOWUP_CLIENT_FOLLOWUP = "ANC Followup Client Registration";
         public static final String LD_REGISTRATION = "LD Registration";
+        public static final String LD_PARTOGRAPHY = "LD Partograph";
     }
 
     public static final class TableName {
@@ -418,6 +419,30 @@ public class Constants extends CoreConstants {
             public static String getLabourAndDeliveryCurrentLabour() {
                 return LABOUR_AND_DELIVERY_CURRENT_LABOUR;
             }
+        }
+
+        public static class LabourAndDeliveryPartograph {
+            public static final String PARTOGRAPH_FETAL_WELLBEING = "labour_and_delivery_fetal_well_being";
+            public static final String PARTOGRAPH_MOTHER_WELLBEING = "labour_and_delivery_mother_well_being";
+            public static final String PARTOGRAPH_PROGRESS_OF_LABOUR = "labour_and_delivery_labour_progress";
+            public static final String PARTOGRAPH_TREATMENT_DURING_LABOUR = "";
+
+            public static String getFetalWellBingForm(){
+                return PARTOGRAPH_FETAL_WELLBEING;
+            }
+
+            public static String getMotherWellBeingForm(){
+                return PARTOGRAPH_MOTHER_WELLBEING;
+            }
+
+            public static String getProgressOfLabourForm(){
+                return PARTOGRAPH_PROGRESS_OF_LABOUR;
+            }
+
+            public static String getTreatmentDuringLabourForm(){
+                return PARTOGRAPH_TREATMENT_DURING_LABOUR;
+            }
+
         }
 
     }

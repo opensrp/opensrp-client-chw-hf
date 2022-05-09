@@ -230,4 +230,17 @@
     <string name="ld_registration_current_labour_pending">Recording Current Labour is pending</string>
 
 
+    <string name="ld_partograph">L&amp;D Partograph</string>
+    <string name="ld_partograph_fetal_well_being"> Partograph : Fetal Well-being </string>
+    <string name="ld_partograph_mother_well_being"> Partograph : Mother Well-being </string>
+    <string name="ld_partograph_labor_progress"> Partograph : Fetal Progress of Labor </string>
+    <string name="ld_partograph_fetal_wellbeing_completed"> Fetal Well-being has been conducted </string>
+    <string name="ld_partograph_fetal_wellbeing_pending"> Fetal Well-being is pending </string>
+    <string name="ld_partograph_mother_wellbeing_completed"> Mother Well-being has been conducted </string>
+    <string name="ld_partograph_mother_wellbeing_pending"> Mother Well-being is pending </string>
+    <string name="ld_partograph_labor_progress_completed"> Progress of labor has been conducted </string>
+    <string name="ld_partograph_labor_progress_pending"> Progress of labor is pending </string>
+
+    <string name="record_ld_event">Record %s</string>
+
 </resources>
