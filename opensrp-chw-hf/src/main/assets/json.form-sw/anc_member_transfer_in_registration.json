@@ -469,7 +469,7 @@
       {
         "key": "prompt_for_short_stature",
         "type": "toaster_notes",
-        "text": "Mshauri Mama kuhusiana na hatari ya kuchelewa kujifungua na mshauri akajifungulie kwenye Kituo cha Afya",
+        "text": "Mshauri mteja kujifungua kwenye Kituo cha Afya kutokana na hatari kubwa ya kupata uchungu pingamizi",
         "openmrs_entity_id": "prompt_for_short_stature",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
