@@ -53,7 +53,7 @@
       {
         "key": "tetanus_vaccination",
         "type": "native_radio",
-        "label": "Je chanjo ya Diphtheria/ Tetanus imetolewa?",
+        "label": "Je chanjo ya Diphtheria/Pepopunda imetolewa?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "tetanus_vaccination",
         "openmrs_entity_parent": "",
@@ -101,7 +101,7 @@
       {
         "key": "hepatitis_b_vaccination",
         "type": "native_radio",
-        "label": "Je Mteja huyu amechanjwa Hepatitis B?",
+        "label": "Je, Mteja huyu amechanjwa chanjo ya homa ya ini?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "hepatitis_b_vaccination",
         "openmrs_entity_parent": "",
