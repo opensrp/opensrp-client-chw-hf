@@ -45,6 +45,6 @@ public class PncNoMotherRegisterFragment extends PncRegisterFragment {
     @Override
     protected void openPncMemberProfile(CommonPersonObjectClient client) {
         MemberObject memberObject = new MemberObject(client);
-        PncNoMotherProfileActivity.startMe(getActivity(), memberObject.getBaseEntityId(), memberObject);
+        PncNoMotherProfileActivity.startMe(getActivity(), memberObject.getBaseEntityId(), memberObject, client);
     }
 }
