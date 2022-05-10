@@ -47,3 +47,10 @@ priority: 1
 condition: "true"
 actions:
   - "calculation = step1_dob"
+---
+name: step2_delivery_date
+description: set delivery date
+priority: 1
+condition: "true"
+actions:
+  - "calculation = step1_dob"

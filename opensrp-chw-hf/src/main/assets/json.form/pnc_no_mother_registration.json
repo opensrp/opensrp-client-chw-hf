@@ -407,6 +407,20 @@
         }
       },
       {
+        "key": "delivery_date",
+        "type": "hidden",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "delivery_date",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pnc_no_mother_registration_calculation.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "caregiver_name",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
