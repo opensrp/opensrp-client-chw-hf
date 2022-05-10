@@ -257,7 +257,9 @@ public class PartnerRegistrationActivity extends SecuredActivity implements View
                     addEvent(params, currentFormSubmissionIds, baseEvent);
                     updateOpenSRPId(jsonString, params, baseClient);
                     addImageLocation(jsonString, baseClient, baseEvent);
-                    savePartnerDetails(baseEvent.getBaseEntityId(), clientBaseEntityId);
+                    if (baseEvent.getEventType().equalsIgnoreCase("Family Member Registration")) {
+                        savePartnerDetails(baseEvent.getBaseEntityId(), clientBaseEntityId);
+                    }
                 } catch (Exception e) {
                     Timber.e(e, "ChwAllClientRegisterInteractor --> saveRegistration");
                 }
