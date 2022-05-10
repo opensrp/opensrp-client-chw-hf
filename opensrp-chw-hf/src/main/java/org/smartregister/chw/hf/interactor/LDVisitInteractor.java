@@ -3,6 +3,7 @@ package org.smartregister.chw.hf.interactor;
 import android.content.Context;
 
 import org.smartregister.chw.anc.util.VisitUtils;
+import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.actionhelper.LDGeneralExaminationActionHelper;
 import org.smartregister.chw.hf.actionhelper.LDVaginalExaminationActionHelper;
 import org.smartregister.chw.hf.utils.Constants;
@@ -59,26 +60,26 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
     private void evaluateVaginalExamination() throws BaseLDVisitAction.ValidationException {
 
         LDVaginalExaminationActionHelper actionHelper = new LDVaginalExaminationActionHelper(context);
-        BaseLDVisitAction action = getBuilder("Vaginal examination")
+        BaseLDVisitAction action = getBuilder(context.getString(R.string.lb_visit_vaginal_examination))
                 .withOptional(false)
                 .withHelper(actionHelper)
                 .withFormName(Constants.JsonForm.LDVisit.getLdVaginalExamination())
                 .build();
 
-        actionList.put("Vaginal examination", action);
+        actionList.put(context.getString(R.string.lb_visit_vaginal_examination), action);
 
     }
 
     private void evaluateGenExamination() throws BaseLDVisitAction.ValidationException {
 
         LDGeneralExaminationActionHelper actionHelper = new LDGeneralExaminationActionHelper(context);
-        BaseLDVisitAction action = getBuilder("General examination")
+        BaseLDVisitAction action = getBuilder(context.getString(R.string.lb_visit_general_examination))
                 .withOptional(false)
                 .withHelper(actionHelper)
                 .withFormName(Constants.JsonForm.LDVisit.getLdGeneralExamination())
                 .build();
 
-        actionList.put("General examination", action);
+        actionList.put(context.getString(R.string.lb_visit_general_examination), action);
     }
 
     @Override
