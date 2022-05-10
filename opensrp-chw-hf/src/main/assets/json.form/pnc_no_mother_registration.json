@@ -156,8 +156,8 @@
           "err": "The weight must be equal or greater than 0 (KG)"
         },
         "v_max": {
-          "value": "30",
-          "err": "The weight must be equal or less than 30 (KG)"
+          "value": "6",
+          "err": "The weight must be equal or less than 6 (KG)"
         },
         "v_required": {
           "value": true,
@@ -407,6 +407,14 @@
         }
       },
       {
+        "key": "risk_category",
+        "type": "hidden",
+        "openmrs_entity_id": "risk_category",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "value": "high"
+      },
+      {
         "key": "delivery_date",
         "type": "hidden",
         "openmrs_entity_parent": "",
@@ -431,6 +439,10 @@
         "v_required": {
           "value": "true",
           "err": "Please enter caregiver's name"
+        },
+        "v_regex": {
+          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
+          "err": "Please enter the caregiver's name"
         }
       },
       {
