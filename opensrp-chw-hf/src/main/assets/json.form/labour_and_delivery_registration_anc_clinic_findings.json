@@ -165,7 +165,7 @@
           "err": "Please answer this question"
         },
         "relevance": {
-          "step5:hb_level": {
+          "step1:hb_level": {
             "type": "numeric",
             "ex": "lessThanEqualTo(.,\"8.5\")"
           }
@@ -258,7 +258,7 @@
           "err": "Please answer this question"
         },
         "relevance": {
-          "step5:pmtct": {
+          "step1:pmtct": {
             "type": "string",
             "ex": "equalTo(., \"chk_one\")"
           }
@@ -307,6 +307,12 @@
         "v_required": {
           "value": "true",
           "err": "Please answer this question"
+        },
+        "relevance": {
+          "step1:pmtct": {
+            "type": "string",
+            "ex": "equalTo(., \"chk_one\")"
+          }
         }
       },
       {
@@ -357,7 +363,7 @@
           "err": "Please answer this question"
         },
         "relevance": {
-          "step5:syphilis": {
+          "step1:syphilis": {
             "type": "string",
             "ex": "equalTo(., \"positive\")"
           }
@@ -445,7 +451,7 @@
           "err": "Please answer this question"
         },
         "relevance": {
-          "step5:rh_factor": {
+          "step1:rh_factor": {
             "type": "string",
             "ex": "equalTo(., \"negative\")"
           }
@@ -460,7 +466,7 @@
         "openmrs_entity_parent": "",
         "toaster_type": "problem",
         "relevance": {
-          "step5:management_provided_for_rh": {
+          "step1:management_provided_for_rh": {
             "type": "string",
             "ex": "equalTo(., \"no\")"
           }
