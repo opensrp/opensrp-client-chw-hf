@@ -23,6 +23,7 @@ import org.smartregister.chw.core.activity.CorePncRegisterActivity;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.FormUtils;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.fragment.PncNoMotherRegisterFragment;
 import org.smartregister.chw.hf.fragment.PncRegisterFragment;
 import org.smartregister.chw.hf.interactor.AncRegisterInteractor;
 import org.smartregister.family.util.Utils;
@@ -35,6 +36,7 @@ import java.util.Map;
 
 import androidx.annotation.MenuRes;
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import timber.log.Timber;
 
 public class PncRegisterActivity extends CorePncRegisterActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
@@ -116,6 +118,12 @@ public class PncRegisterActivity extends CorePncRegisterActivity implements Bott
     }
 
     @Override
+    protected Fragment[] getOtherFragments() {
+        return new PncNoMotherRegisterFragment[]{
+                new PncNoMotherRegisterFragment()};
+    }
+
+    @Override
     protected Class<? extends CoreFamilyRegisterActivity> getFamilyRegisterActivity() {
         return FamilyRegisterActivity.class;
     }
@@ -172,6 +180,9 @@ public class PncRegisterActivity extends CorePncRegisterActivity implements Bott
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         if (menuItem.getItemId() == R.id.action_pnc) {
             switchToFragment(0);
+            return true;
+        } else if (menuItem.getItemId() == R.id.action_no_mother) {
+            switchToFragment(1);
             return true;
         } else if (menuItem.getItemId() == R.id.action_register_child) {
             PncNoMotherRegisterActivity.startPncNoMotherRegistrationActivity(this, "pnc_no_mother_registration");

@@ -8,10 +8,10 @@
         android:title="@string/home"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/action_view_pregnancy_confirmation_referrals"
+        android:id="@+id/action_no_mother"
         android:enabled="true"
-        android:icon="@drawable/ic_trending_down_black_24dp"
-        android:title="@string/action_pregnancy_confirmation_referrals"
+        android:icon="@mipmap/sidemenu_children"
+        android:title="No Mother Children"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_register_child"
