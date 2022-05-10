@@ -4,6 +4,7 @@ import android.content.Context;
 
 import org.smartregister.chw.anc.util.VisitUtils;
 import org.smartregister.chw.hf.actionhelper.LDGeneralExaminationActionHelper;
+import org.smartregister.chw.hf.actionhelper.LDVaginalExaminationActionHelper;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hf.utils.LDDao;
 import org.smartregister.chw.ld.LDLibrary;
@@ -57,8 +58,10 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
 
     private void evaluateVaginalExamination() throws BaseLDVisitAction.ValidationException {
 
+        LDVaginalExaminationActionHelper actionHelper = new LDVaginalExaminationActionHelper(context);
         BaseLDVisitAction action = getBuilder("Vaginal examination")
                 .withOptional(false)
+                .withHelper(actionHelper)
                 .withFormName(Constants.JsonForm.LDVisit.getLdVaginalExamination())
                 .build();
 

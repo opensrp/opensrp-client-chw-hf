@@ -3,6 +3,7 @@ package org.smartregister.chw.hf.actionhelper;
 import android.content.Context;
 
 import org.apache.commons.lang3.StringUtils;
+import org.smartregister.chw.hf.R;
 import org.smartregister.chw.ld.domain.VisitDetail;
 import org.smartregister.chw.ld.model.BaseLDVisitAction;
 import org.smartregister.util.JsonFormUtils;
@@ -15,6 +16,8 @@ import java.util.Map;
  */
 public class LDVaginalExaminationActionHelper implements BaseLDVisitAction.LDVisitActionHelper {
 
+    private final Context context;
+
     private String vaginal_exam_date;
     private String vaginal_exam_time;
     private String cervix_state;
@@ -26,6 +29,10 @@ public class LDVaginalExaminationActionHelper implements BaseLDVisitAction.LDVis
     private String station;
     private String amniotic_fluid;
     private String decision;
+
+    public LDVaginalExaminationActionHelper(Context context) {
+        this.context = context;
+    }
 
     @Override
     public void onJsonFormLoaded(String jsonString, Context context, Map<String, List<VisitDetail>> details) {
@@ -69,6 +76,11 @@ public class LDVaginalExaminationActionHelper implements BaseLDVisitAction.LDVis
 
     @Override
     public String evaluateSubTitle() {
+        if (isFullyCompleted()) {
+            return context.getString(R.string.lb_fully_completed_action);
+        } else if (isPartiallyCompleted()) {
+            return context.getString(R.string.lb_partially_completed_action);
+        }
         return null;
     }
 
