@@ -197,6 +197,7 @@
     <string name="select_reporting_month_pnc">Chagua Mwezi wa Kuripoti</string>
     <string name="reports_title">RIPOTI</string>
     <string name="pnc_registration">Usajili baada ya Kujifungua</string>
+    <string name="high_risk">Hatari Kubwa</string>
 
     <!-- Advanced search screen-->
     <string name="search">Tafuta</string>
