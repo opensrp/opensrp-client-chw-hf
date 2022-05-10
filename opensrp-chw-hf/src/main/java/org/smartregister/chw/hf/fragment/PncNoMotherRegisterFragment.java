@@ -3,6 +3,7 @@ package org.smartregister.chw.hf.fragment;
 import org.smartregister.chw.anc.domain.MemberObject;
 import org.smartregister.chw.core.provider.ChwPncRegisterProvider;
 import org.smartregister.chw.hf.activity.PncMemberProfileActivity;
+import org.smartregister.chw.hf.activity.PncNoMotherProfileActivity;
 import org.smartregister.chw.hf.model.PncNoMotherRegisterFragmentModel;
 import org.smartregister.chw.hf.presenter.PncNoMotherRegisterFragmentPresenter;
 import org.smartregister.chw.hf.provider.HfPncNoMotherRegisterProvider;
@@ -44,6 +45,6 @@ public class PncNoMotherRegisterFragment extends PncRegisterFragment {
     @Override
     protected void openPncMemberProfile(CommonPersonObjectClient client) {
         MemberObject memberObject = new MemberObject(client);
-        PncMemberProfileActivity.startMe(getActivity(), memberObject.getBaseEntityId(), memberObject);
+        PncNoMotherProfileActivity.startMe(getActivity(), memberObject.getBaseEntityId(), memberObject);
     }
 }
