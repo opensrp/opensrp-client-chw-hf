@@ -13,11 +13,11 @@ import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.smartregister.chw.anc.custom_views.BaseAncFloatingMenu;
 import org.smartregister.chw.anc.domain.MemberObject;
 import org.smartregister.chw.anc.util.Constants;
 import org.smartregister.chw.anc.util.DBConstants;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.custom_view.PncNoMotherFloatingMenu;
 import org.smartregister.chw.hf.dao.HfPncDao;
 import org.smartregister.chw.hf.utils.PncVisitUtils;
 import org.smartregister.chw.pnc.PncLibrary;
@@ -118,8 +118,7 @@ public class PncNoMotherProfileActivity extends PncMemberProfileActivity {
 
     @Override
     public void initializeFloatingMenu() {
-        //TODO: Fix this, to call the child caregiver
-        baseAncFloatingMenu = new BaseAncFloatingMenu(this, caregiverName, caregiverPhoneNumber, memberObject.getFamilyHeadName(), memberObject.getFamilyHeadPhoneNumber(), getProfileType());
+        baseAncFloatingMenu = new PncNoMotherFloatingMenu(this, caregiverName, caregiverPhoneNumber);
         baseAncFloatingMenu.setGravity(Gravity.BOTTOM | Gravity.RIGHT);
         LinearLayout.LayoutParams linearLayoutParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,

@@ -253,5 +253,6 @@
     <string name="lb_fully_completed_action">Fully Completed</string>
     <string name="lb_partially_completed_action">Partially Completed</string>
     <string name="caregiver_name">CG: %s</string>
+    <string name="call_child_caregiver">CALL CHILD\'s CAREGIVER</string>
 
 </resources>
