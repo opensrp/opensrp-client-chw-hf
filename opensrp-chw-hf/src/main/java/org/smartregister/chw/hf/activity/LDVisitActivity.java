@@ -1,6 +1,7 @@
 package org.smartregister.chw.hf.activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 
 import com.vijay.jsonwizard.constants.JsonFormConstants;
@@ -13,6 +14,7 @@ import org.smartregister.chw.ld.presenter.BaseLDVisitPresenter;
 import org.smartregister.chw.pmtct.util.Constants;
 import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.family.util.Utils;
+import org.smartregister.util.LangUtils;
 
 /**
  * Created by Kassim Sheghembe on 2022-05-06
@@ -45,5 +47,11 @@ public class LDVisitActivity extends BaseLDVisitActivity {
         intent.putExtra(org.smartregister.family.util.Constants.WizardFormActivity.EnableOnCloseDialog, false);
         intent.putExtra(JsonFormConstants.JSON_FORM_KEY.FORM, form);
         startActivityForResult(intent, JsonFormUtils.REQUEST_CODE_GET_JSON);
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        String lang = LangUtils.getLanguage(base.getApplicationContext());
+        super.attachBaseContext(LangUtils.setAppLocale(base, lang));
     }
 }

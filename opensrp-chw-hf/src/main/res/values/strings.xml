@@ -195,6 +195,8 @@
     <string name="select_reporting_month_anc">Select Reporting Month</string>
     <string name="select_reporting_month_pnc">Select Reporting Month</string>
     <string name="return_to_all_pnc_women">Return to all PNC Clients</string>
+    <string name="caregiver_name">CG: %s</string>
+    <string name="call_child_caregiver">CALL CHILD\'s CAREGIVER</string>
 
     <string name="search">Search</string>
     <string name="global_search">Global Search</string>
@@ -252,7 +254,7 @@
     <string name="labour_and_delivery_cervix_dilation_monitoring_button_tittle">Cervix Dilation Monitoring</string>
     <string name="lb_fully_completed_action">Fully Completed</string>
     <string name="lb_partially_completed_action">Partially Completed</string>
-    <string name="caregiver_name">CG: %s</string>
-    <string name="call_child_caregiver">CALL CHILD\'s CAREGIVER</string>
+    <string name="lb_visit_vaginal_examination">Vaginal examination</string>
+    <string name="lb_visit_general_examination">General examination</string>
 
 </resources>

@@ -4936,6 +4936,30 @@
           }
         },
         {
+          "column_name": "membrane",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "membrane"
+          }
+        },
+        {
+          "column_name": "labour_onset_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "labour_onset_date"
+          }
+        },
+        {
+          "column_name": "labour_onset_time",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "labour_onset_time"
+          }
+        },
+        {
           "column_name": "labour_stage",
           "type": "Event",
           "json_mapping": {
