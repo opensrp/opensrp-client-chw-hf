@@ -3,6 +3,7 @@ package org.smartregister.chw.hf.actionhelper;
 import android.content.Context;
 
 import org.apache.commons.lang3.StringUtils;
+import org.smartregister.chw.hf.R;
 import org.smartregister.chw.ld.domain.VisitDetail;
 import org.smartregister.chw.ld.model.BaseLDVisitAction;
 import org.smartregister.util.JsonFormUtils;
@@ -15,6 +16,8 @@ import java.util.Map;
  */
 public class LDVaginalExaminationActionHelper implements BaseLDVisitAction.LDVisitActionHelper {
 
+    private final Context context;
+
     private String vaginal_exam_date;
     private String vaginal_exam_time;
     private String cervix_state;
@@ -26,6 +29,10 @@ public class LDVaginalExaminationActionHelper implements BaseLDVisitAction.LDVis
     private String station;
     private String amniotic_fluid;
     private String decision;
+
+    public LDVaginalExaminationActionHelper(Context context) {
+        this.context = context;
+    }
 
     @Override
     public void onJsonFormLoaded(String jsonString, Context context, Map<String, List<VisitDetail>> details) {
@@ -69,7 +76,13 @@ public class LDVaginalExaminationActionHelper implements BaseLDVisitAction.LDVis
 
     @Override
     public String evaluateSubTitle() {
-        return null;
+        if (isFullyCompleted()) {
+            return context.getString(R.string.lb_fully_completed_action);
+        } else if (isPartiallyCompleted()) {
+            return context.getString(R.string.lb_partially_completed_action);
+        } else {
+            return "";
+        }
     }
 
     @Override
@@ -78,8 +91,9 @@ public class LDVaginalExaminationActionHelper implements BaseLDVisitAction.LDVis
             return BaseLDVisitAction.Status.COMPLETED;
         } else if (isPartiallyCompleted()) {
             return BaseLDVisitAction.Status.PARTIALLY_COMPLETED;
+        } else {
+            return BaseLDVisitAction.Status.PENDING;
         }
-        return null;
     }
 
     @Override
@@ -92,7 +106,7 @@ public class LDVaginalExaminationActionHelper implements BaseLDVisitAction.LDVis
                 StringUtils.isNotBlank(vaginal_exam_time) &&
                 StringUtils.isNotBlank(cervix_state) &&
                 StringUtils.isNotBlank(cervix_dilation) &&
-                StringUtils.isNotBlank(presenting_part) &&
+                (StringUtils.isNotBlank(presenting_part) && !presenting_part.equalsIgnoreCase("Presenting part")) &&
                 StringUtils.isNotBlank(occiput_position) &&
                 StringUtils.isNotBlank(moulding) &&
                 StringUtils.isNotBlank(moulding_options) &&
@@ -103,17 +117,17 @@ public class LDVaginalExaminationActionHelper implements BaseLDVisitAction.LDVis
     }
 
     private boolean isPartiallyCompleted() {
-        return (StringUtils.isBlank(vaginal_exam_date) ||
-                StringUtils.isBlank(vaginal_exam_time) ||
-                StringUtils.isBlank(cervix_state) ||
-                StringUtils.isBlank(cervix_dilation) ||
-                StringUtils.isBlank(presenting_part) ||
-                StringUtils.isBlank(occiput_position) ||
-                StringUtils.isBlank(moulding) ||
-                StringUtils.isBlank(moulding_options) ||
-                StringUtils.isBlank(station) ||
-                StringUtils.isBlank(amniotic_fluid) ||
-                StringUtils.isBlank(decision)
+        return (StringUtils.isNotBlank(vaginal_exam_date) ||
+                StringUtils.isNotBlank(vaginal_exam_time) ||
+                StringUtils.isNotBlank(cervix_state) ||
+                StringUtils.isNotBlank(cervix_dilation) ||
+                (StringUtils.isNotBlank(presenting_part) && !presenting_part.equalsIgnoreCase("Presenting part")) ||
+                StringUtils.isNotBlank(occiput_position) ||
+                StringUtils.isNotBlank(moulding) ||
+                StringUtils.isNotBlank(moulding_options) ||
+                StringUtils.isNotBlank(station) ||
+                StringUtils.isNotBlank(amniotic_fluid) ||
+                StringUtils.isNotBlank(decision)
                 );
     }
 }

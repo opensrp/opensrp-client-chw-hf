@@ -251,5 +251,7 @@
     <string name="labour_and_delivery_cervix_dilation_monitoring_button_tittle">Cervix Dilation Monitoring</string>
     <string name="lb_fully_completed_action">Fully Completed</string>
     <string name="lb_partially_completed_action">Partially Completed</string>
+    <string name="lb_visit_vaginal_examination">Vaginal examination</string>
+    <string name="lb_visit_general_examination">General examination</string>
 
 </resources>

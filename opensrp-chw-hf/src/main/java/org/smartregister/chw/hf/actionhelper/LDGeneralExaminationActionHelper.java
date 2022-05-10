@@ -82,8 +82,9 @@ public class LDGeneralExaminationActionHelper implements BaseLDVisitAction.LDVis
             return context.getString(R.string.lb_fully_completed_action);
         } else if (isPartiallyCompleted()) {
             return context.getString(R.string.lb_partially_completed_action);
+        } else {
+            return "";
         }
-        return null;
     }
 
     @Override
@@ -93,7 +94,7 @@ public class LDGeneralExaminationActionHelper implements BaseLDVisitAction.LDVis
         } else if (isPartiallyCompleted()) {
             return BaseLDVisitAction.Status.PARTIALLY_COMPLETED;
         } else {
-            return BaseLDVisitAction.Status.COMPLETED;
+            return BaseLDVisitAction.Status.PENDING;
         }
     }
 
@@ -111,24 +112,24 @@ public class LDGeneralExaminationActionHelper implements BaseLDVisitAction.LDVis
                 StringUtils.isNotBlank(diastolic) &&
                 StringUtils.isNotBlank(urine) &&
                 StringUtils.isNotBlank(fundal_height) &&
-                StringUtils.isNotBlank(presentation) &&
+                (StringUtils.isNotBlank(presentation) && !presentation.equalsIgnoreCase("Presentation")) &&
                 StringUtils.isNotBlank(contraction_in_ten_minutes) &&
                 StringUtils.isNotBlank(fetal_heart_rate)
                 );
     }
 
     private boolean isPartiallyCompleted() {
-        return (StringUtils.isBlank(general_condition) ||
-                StringUtils.isBlank(pulse_rate) ||
-                StringUtils.isBlank(respiratory_rate) ||
-                StringUtils.isBlank(temperature) ||
-                StringUtils.isBlank(systolic) ||
-                StringUtils.isBlank(diastolic) ||
-                StringUtils.isBlank(urine) ||
-                StringUtils.isBlank(fundal_height) ||
-                StringUtils.isBlank(presentation) ||
-                StringUtils.isBlank(contraction_in_ten_minutes) ||
-                StringUtils.isBlank(fetal_heart_rate)
+        return (StringUtils.isNotBlank(general_condition) ||
+                StringUtils.isNotBlank(pulse_rate) ||
+                StringUtils.isNotBlank(respiratory_rate) ||
+                StringUtils.isNotBlank(temperature) ||
+                StringUtils.isNotBlank(systolic) ||
+                StringUtils.isNotBlank(diastolic) ||
+                StringUtils.isNotBlank(urine) ||
+                StringUtils.isNotBlank(fundal_height) ||
+                (StringUtils.isNotBlank(presentation) && !presentation.equalsIgnoreCase("Presentation")) ||
+                StringUtils.isNotBlank(contraction_in_ten_minutes) ||
+                StringUtils.isNotBlank(fetal_heart_rate)
                 );
     }
 }
