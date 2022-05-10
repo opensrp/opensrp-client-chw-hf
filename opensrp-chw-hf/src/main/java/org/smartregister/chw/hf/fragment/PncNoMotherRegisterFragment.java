@@ -5,6 +5,7 @@ import org.smartregister.chw.core.provider.ChwPncRegisterProvider;
 import org.smartregister.chw.hf.activity.PncMemberProfileActivity;
 import org.smartregister.chw.hf.model.PncNoMotherRegisterFragmentModel;
 import org.smartregister.chw.hf.presenter.PncNoMotherRegisterFragmentPresenter;
+import org.smartregister.chw.hf.provider.HfPncNoMotherRegisterProvider;
 import org.smartregister.chw.hf.provider.HfPncRegisterProvider;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.configurableviews.model.View;
@@ -26,7 +27,7 @@ public class PncNoMotherRegisterFragment extends PncRegisterFragment {
 
     @Override
     public void initializeAdapter(Set<View> visibleColumns) {
-        ChwPncRegisterProvider provider = new HfPncRegisterProvider(getActivity(), commonRepository(), visibleColumns, registerActionHandler, paginationViewHandler);
+        ChwPncRegisterProvider provider = new HfPncNoMotherRegisterProvider(getActivity(), commonRepository(), visibleColumns, registerActionHandler, paginationViewHandler);
         clientAdapter = new RecyclerViewPaginatedAdapter(null, provider, context().commonrepository(this.tablename));
         clientAdapter.setCurrentlimit(20);
         clientsView.setAdapter(clientAdapter);

@@ -493,6 +493,8 @@ public class Constants extends CoreConstants {
         public static final String HEI_HIV_RESULT_DATE = "hiv_test_result_date";
         public static final String HEI_HIV_TYPE_OF_TEST = "type_of_hiv_test";
         public static final String HIV_REGISTRATION_DATE = "hiv_registration_date";
+        public static final String CAREGIVER_NAME = "caregiver_name";
+        public static final String CAREGIVER_PHONE_NUMBER = "caregiver_phone_number";
     }
 
     public static final class EacVisitTypes {
