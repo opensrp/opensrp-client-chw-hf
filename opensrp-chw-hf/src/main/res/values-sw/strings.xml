@@ -198,6 +198,7 @@
     <string name="reports_title">RIPOTI</string>
     <string name="pnc_registration">Usajili baada ya Kujifungua</string>
     <string name="high_risk">Hatari Kubwa</string>
+    <string name="reports_activity">Ripoti</string>
 
     <!-- Advanced search screen-->
     <string name="search">Tafuta</string>
