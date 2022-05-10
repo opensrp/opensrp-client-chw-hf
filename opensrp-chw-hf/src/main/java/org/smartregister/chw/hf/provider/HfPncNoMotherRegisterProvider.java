@@ -114,19 +114,9 @@ public class HfPncNoMotherRegisterProvider extends ChwPncRegisterProvider {
         viewHolder.dueButton.setTag(org.smartregister.chw.opensrp_chw_anc.R.id.VIEW_ID, BaseAncRegisterFragment.CLICK_VIEW_DOSAGE_STATUS);
 
 
-        viewHolder.registerColumns.setOnClickListener(new android.view.View.OnClickListener() {
-            @Override
-            public void onClick(android.view.View v) {
-                viewHolder.patientColumn.performClick();
-            }
-        });
+        viewHolder.registerColumns.setOnClickListener(v -> viewHolder.patientColumn.performClick());
 
-        viewHolder.dueWrapper.setOnClickListener(new android.view.View.OnClickListener() {
-            @Override
-            public void onClick(android.view.View v) {
-                viewHolder.dueButton.performClick();
-            }
-        });
+        viewHolder.dueWrapper.setOnClickListener(v -> viewHolder.dueButton.performClick());
     }
 
     public class HfPncRegisterViewHolder extends RegisterViewHolder {

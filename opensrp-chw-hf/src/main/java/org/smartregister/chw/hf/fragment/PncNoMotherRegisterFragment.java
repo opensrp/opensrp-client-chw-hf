@@ -2,12 +2,10 @@ package org.smartregister.chw.hf.fragment;
 
 import org.smartregister.chw.anc.domain.MemberObject;
 import org.smartregister.chw.core.provider.ChwPncRegisterProvider;
-import org.smartregister.chw.hf.activity.PncMemberProfileActivity;
 import org.smartregister.chw.hf.activity.PncNoMotherProfileActivity;
 import org.smartregister.chw.hf.model.PncNoMotherRegisterFragmentModel;
 import org.smartregister.chw.hf.presenter.PncNoMotherRegisterFragmentPresenter;
 import org.smartregister.chw.hf.provider.HfPncNoMotherRegisterProvider;
-import org.smartregister.chw.hf.provider.HfPncRegisterProvider;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.configurableviews.model.View;
 import org.smartregister.cursoradapter.RecyclerViewPaginatedAdapter;

@@ -19,7 +19,8 @@ import static org.smartregister.util.Utils.getName;
 
 public class PncNoMotherCallDialogFragment extends BaseAncWomanCallDialogFragment {
 
-    private static String pncCaregiverName, pncCaregiverNumber;
+    private static String pncCaregiverNumber;
+    private static String pncCaregiverName;
     private View.OnClickListener listener = null;
 
     public static PncNoMotherCallDialogFragment launchDialog(Activity activity, String caregiverName, String caregiverPhone) {

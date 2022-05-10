@@ -11,8 +11,8 @@ import org.smartregister.chw.anc.custom_views.BaseAncFloatingMenu;
 import org.smartregister.chw.hf.fragment.PncNoMotherCallDialogFragment;
 
 public class PncNoMotherFloatingMenu extends BaseAncFloatingMenu {
-    private FloatingActionButton fab;
-    private String phoneNumber, caregiverName;
+    private String caregiverName;
+    private String phoneNumber;
 
     public PncNoMotherFloatingMenu(Context context, String ancWomanName, String ancWomanPhone) {
         super(context, ancWomanName, ancWomanPhone, null, null, null);
@@ -27,7 +27,7 @@ public class PncNoMotherFloatingMenu extends BaseAncFloatingMenu {
     @Override
     protected void initUi() {
         inflate(getContext(), org.smartregister.chw.opensrp_chw_anc.R.layout.view_anc_call_woma_floating_menu, this);
-        fab = findViewById(org.smartregister.chw.opensrp_chw_anc.R.id.anc_fab);
+        FloatingActionButton fab = findViewById(org.smartregister.chw.opensrp_chw_anc.R.id.anc_fab);
         fab.setOnClickListener(this);
         fab.setImageResource(org.smartregister.chw.opensrp_chw_anc.R.drawable.floating_call);
     }

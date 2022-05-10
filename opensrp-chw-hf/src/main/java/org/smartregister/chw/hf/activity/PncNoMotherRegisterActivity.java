@@ -7,7 +7,6 @@ import com.vijay.jsonwizard.constants.JsonFormConstants;
 import com.vijay.jsonwizard.domain.Form;
 
 import org.apache.commons.lang3.StringUtils;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.anc.util.NCUtils;
@@ -72,9 +71,6 @@ public class PncNoMotherRegisterActivity extends SecuredActivity {
 
     public void startFormActivity(JSONObject jsonForm) {
         try {
-            JSONObject stepOne = jsonForm.getJSONObject(org.smartregister.family.util.JsonFormUtils.STEP1);
-            JSONArray fields = stepOne.getJSONArray(org.smartregister.family.util.JsonFormUtils.FIELDS);
-
             String entityId = getUniqueIdRepository().getNextUniqueId().getOpenmrsId();
             String newEntityId = entityId;
             if (StringUtils.isNotBlank(entityId)) {
@@ -124,19 +120,13 @@ public class PncNoMotherRegisterActivity extends SecuredActivity {
             String jsonString = data.getStringExtra(OpdConstants.JSON_FORM_EXTRA.JSON);
             Timber.d("JSONResult : %s", jsonString);
 
-            JSONObject form;
             try {
-                form = new JSONObject(jsonString);
-
-
                 RegisterParams registerParam = new RegisterParams();
                 registerParam.setEditMode(false);
                 registerParam.setFormTag(OpdJsonFormUtils.formTag(OpdUtils.context().allSharedPreferences()));
                 saveForm(jsonString, registerParam);
                 startActivity(new Intent(this, PncRegisterActivity.class));
-
-
-            } catch (JSONException e) {
+            } catch (Exception e) {
                 Timber.e(e);
             }
         }
