@@ -98,7 +98,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "reason_for_giving_folic_acid",
         "type": "spinner",
-        "hint": "Sababu ya kutopewa vidonge vya Foliki Asidi badala ya FEFO",
+        "hint": "Sababu kwanini amepewa Foliki Asidi badala ya FEFO",
         "values": [
           "Bidhaa zimeisha",
           "Selimundu",
@@ -131,7 +131,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "other_reason_for_giving_folic_acid",
         "type": "edit_text",
-        "hint": "Sababu nyingine ya kutopewa vidonge vya Foliki Asidi badala ya FEFO",
+        "hint": "Elezea sababu nyingine ya kupewa dawa za Foliki Asidi ",
         "edit_type": "name",
         "v_required": {
           "value": "true",
@@ -187,7 +187,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "other_reason_fefo_medication_not_given",
         "type": "edit_text",
-        "hint": "Sababu nyingine",
+        "hint": "Elezea sababu nyingine yakutokupewa dawa ya FEFO",
         "edit_type": "name",
         "v_required": {
           "value": "true",

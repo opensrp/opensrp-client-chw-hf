@@ -198,8 +198,25 @@
     <string name="reports_title">RIPOTI</string>
     <string name="pnc_registration">Usajili baada ya Kujifungua</string>
     <string name="high_risk">Hatari Kubwa</string>
+    <string name="low_risk">Hatari Ndogo</string>
     <string name="reports_activity">Ripoti</string>
     <string name="pnc_reports_title">RIPOTI za PNC</string>
+    <string name="three_months_report">Ripoti ya Miezi 3</string>
+    <string name="twelve_months_report">Ripoti ya Miezi 12</string>
+    <string name="twenty_four_months_report">Ripoti ya Miezi 24</string>
+    <string name="eid_cross_sectional_report">EID Cross-sectional Report</string>
+    <string name="confirm_remove_text">Una uhakika unataka kuondoa taarifa za %s? Hii haiwezekani kurekebisha</string>
+    <string name="remove">THIBITISHA</string>
+    <string name="month">Mwezi</string>
+    <string name="print_report">Chapa</string>
+    <string name="record">Rekodi</string>
+    <string name="child_followup">Fuatilio la %s</string>
+    <string name="record_child_followup">Rekodi fuatilio la Mtoto</string>
+    <string name="saved_child_followup">Child\'s followup details saved successfully</string>
+    <string name="pnc_visit_in_progress">Udhurio la Baada ya Kujifungua  linaendela</string>
+    <string name="hiv_testing_outcome">Matokeo ya Kipimo cha VVU</string>
+    <string name="complete_pnc_message">Mteja Kamaliza</string>
+    <string name="head_circumference_min_err">Mzunguko wa kichwa unatakiwa kuwa sawa au zaidi ya % CM</string>
 
     <!-- Advanced search screen-->
     <string name="search">Tafuta</string>

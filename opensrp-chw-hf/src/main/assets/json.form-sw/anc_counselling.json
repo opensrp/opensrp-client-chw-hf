@@ -125,7 +125,7 @@
           },
           {
             "key": "chk_use_folic_acid",
-            "text": "Matumizi ya Iron Folic Acid kwa kila siku",
+            "text": "Matumizi ya Madini Chuma (Iron) Foliki Asidi kila siku",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_use_folic_acid"
