@@ -7,6 +7,9 @@ import android.content.Intent;
 
 import org.smartregister.chw.core.activity.CoreLDRegisterActivity;
 import org.smartregister.chw.hf.fragment.LDRegisterFragment;
+import org.smartregister.chw.hf.presenter.LDRegisterPresenter;
+import org.smartregister.chw.ld.interactor.BaseLDRegisterInteractor;
+import org.smartregister.chw.ld.model.BaseLDRegisterModel;
 import org.smartregister.chw.ld.util.Constants;
 import org.smartregister.view.fragment.BaseRegisterFragment;
 
@@ -30,5 +33,10 @@ public class LDRegisterActivity extends CoreLDRegisterActivity {
         //Closing the register activity to return to profile activity if the launched form was Labour and Delivery Labour Stage Form
         if (ACTION.equals(LDProfileActivity.LD_PROFILE_ACTION))
             finish();
+    }
+
+    @Override
+    protected void initializePresenter() {
+        presenter = new LDRegisterPresenter(this, new BaseLDRegisterModel(), new BaseLDRegisterInteractor());
     }
 }

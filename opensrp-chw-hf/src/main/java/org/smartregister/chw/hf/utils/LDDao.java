@@ -11,7 +11,7 @@ import java.util.Locale;
 /**
  * Created by Kassim Sheghembe on 2022-05-08
  */
-public class LDDao extends AbstractDao {
+public class LDDao extends org.smartregister.chw.ld.dao.LDDao {
 
     // This can be refactored to the LD Library, more DB definition needed to create a Member Object that reflects LD
     public static org.smartregister.chw.ld.domain.MemberObject getLDMember(String baseEntityId) {
