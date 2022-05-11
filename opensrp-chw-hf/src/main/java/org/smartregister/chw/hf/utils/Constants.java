@@ -45,6 +45,7 @@ public class Constants extends CoreConstants {
         public static final String HEI_NEGATIVE_INFANT = "HEI Negative Infant";
         public static final String PMTCT_CLOSE_VISITS = "PMTCT Close Visits";
         public static final String PNC_VISIT = "PNC VISIT";
+        public static final String PNC_NO_MOTHER_REGISTRATION = "PNC No Mother Registration";
         public static final String CLOSE_PNC_VISITS = "Close PNC Visits";
         public static final String PNC_CHILD_FOLLOWUP = "PNC Child Followup";
         public static final String MOTHER_CHAMPION_COMMUNITY_SERVICES_REFERRAL = "Mother Champion Community Services Referral";
@@ -66,6 +67,7 @@ public class Constants extends CoreConstants {
         public static final String HEI_FOLLOWUP = "ec_hei_followup";
         public static final String PNC_FOLLOWUP = "ec_pnc_followup";
         public static final String PMTCT_FOLLOWUP = "ec_pmtct_followup";
+        public static final String NO_MOTHER_PNC = "ec_no_mother_pnc";
     }
 
     public static final class Visits {
@@ -491,6 +493,8 @@ public class Constants extends CoreConstants {
         public static final String HEI_HIV_RESULT_DATE = "hiv_test_result_date";
         public static final String HEI_HIV_TYPE_OF_TEST = "type_of_hiv_test";
         public static final String HIV_REGISTRATION_DATE = "hiv_registration_date";
+        public static final String CAREGIVER_NAME = "caregiver_name";
+        public static final String CAREGIVER_PHONE_NUMBER = "caregiver_phone_number";
     }
 
     public static final class EacVisitTypes {

@@ -232,7 +232,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     @Override
     protected void startLDRegistration() {
         try {
-            LDRegistrationFormActivity.startMe(this, baseEntityID, true, memberObject.getFullName(), String.valueOf(memberObject.getAge()));
+            LDRegistrationFormActivity.startMe(this, baseEntityID, false, memberObject.getFullName(), String.valueOf(memberObject.getAge()));
         } catch (Exception e) {
             Timber.e(e);
         }

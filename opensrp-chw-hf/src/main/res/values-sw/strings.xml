@@ -73,7 +73,7 @@
     <string name="record_first_pmtct">Rekodi Hudhurio la Awali la PMTCT</string>
     <string name="pmtct_pending_registration">Usajili wa PMTCT haujakamilika</string>
     <string name="menu_independent">Huru</string>
-    <string name="client_registration" >Usajili wa Mteja</string>
+    <string name="client_registration">Usajili wa Mteja</string>
     <string name="medical_and_surgical_filled">Historia ya Matibabu na Upasuaji Umekamilika</string>
     <string name="obstetric_exam_complete">Uchunguzi wa Uzazi Umefanyika</string>
     <string name="baseline_investigation_conducted">Uchunguzi wa Vipimo vya Awali Umekamilika</string>
@@ -217,6 +217,7 @@
     <string name="hiv_testing_outcome">Matokeo ya Kipimo cha VVU</string>
     <string name="complete_pnc_message">Mteja kamaliza udhurio la kliniki Baada ya Kujifungua (PNC) na anaweza ondolewa kwenye orodha ya Baada ya Kujifungua (PNC)</string>
     <string name="head_circumference_min_err">Mzunguko wa kichwa unatakiwa kuwa sawa au zaidi ya % CM</string>
+    <string name="return_to_all_pnc_women">Rudi kwa wateja wa PNC</string>
 
     <!-- Advanced search screen-->
     <string name="search">Tafuta</string>
@@ -235,5 +236,7 @@
     <string name="menu_ld">L&amp;D</string>
     <string name="lb_fully_completed_action">Imemalizika kabisa</string>
     <string name="lb_partially_completed_action">Haijamalizika</string>
+    <string name="lb_visit_vaginal_examination">Vaginal examination</string>
+    <string name="lb_visit_general_examination">General examination</string>
 
 </resources>
