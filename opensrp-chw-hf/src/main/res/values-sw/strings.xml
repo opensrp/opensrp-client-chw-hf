@@ -73,7 +73,7 @@
     <string name="record_first_pmtct">Rekodi Hudhurio la Awali la PMTCT</string>
     <string name="pmtct_pending_registration">Usajili wa PMTCT haujakamilika</string>
     <string name="menu_independent">Huru</string>
-    <string name="client_registration" >Usajili wa Mteja</string>
+    <string name="client_registration">Usajili wa Mteja</string>
     <string name="medical_and_surgical_filled">Historia ya Matibabu na Upasuaji Umekamilika</string>
     <string name="obstetric_exam_complete">Uchunguzi wa Uzazi Umefanyika</string>
     <string name="baseline_investigation_conducted">Uchunguzi wa Vipimo vya Awali Umekamilika</string>
@@ -196,6 +196,7 @@
     <string name="select_reporting_month_anc">Chagua Mwezi wa Kuripoti</string>
     <string name="select_reporting_month_pnc">Chagua Mwezi wa Kuripoti</string>
     <string name="reports_title">RIPOTI</string>
+    <string name="return_to_all_pnc_women">Rudi kwa wateja wa PNC</string>
 
     <!-- Advanced search screen-->
     <string name="search">Tafuta</string>

@@ -162,13 +162,13 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
             textViewRecordHeiNumber.setVisibility(View.VISIBLE);
             textViewRecordHeiNumber.setText(getString(R.string.record_hei_number));
             textViewRecordHeiNumber.setOnClickListener(this);
-        }else{
+        } else {
             String heiNumber = HeiDao.getHeiNumber(baseEntityId);
             textViewRecordHeiNumber.setVisibility(View.GONE);
-           if(heiNumber!= null){
-               textViewClientRegNumber.setVisibility(View.VISIBLE);
-               textViewClientRegNumber.setText(this.getString(R.string.hei_number,heiNumber));
-           }
+            if (heiNumber != null) {
+                textViewClientRegNumber.setVisibility(View.VISIBLE);
+                textViewClientRegNumber.setText(this.getString(R.string.hei_number, heiNumber));
+            }
         }
 
     }
@@ -252,11 +252,11 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
     @Override
     public void initializeFloatingMenu() {
         MemberObject motherMemberObject = PmtctDao.getMember(HeiDao.getMotherBaseEntityId(baseEntityId));
-        if(motherMemberObject != null){
-            basePmtctFloatingMenu = new PmtctFloatingMenu(this, motherMemberObject );
+        if (motherMemberObject != null) {
+            basePmtctFloatingMenu = new PmtctFloatingMenu(this, motherMemberObject);
             checkPhoneNumberProvided(StringUtils.isNotBlank(motherMemberObject.getPhoneNumber()));
-        }else{
-            basePmtctFloatingMenu = new PmtctFloatingMenu(this, memberObject );
+        } else {
+            basePmtctFloatingMenu = new PmtctFloatingMenu(this, memberObject);
             checkPhoneNumberProvided(StringUtils.isNotBlank(memberObject.getPhoneNumber()));
         }
 
@@ -339,7 +339,7 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(org.smartregister.chw.core.R.menu.hei_profile_menu, menu);
 
-        if ((heiFollowupRule.getButtonStatus().equals(CoreConstants.VISIT_STATE.DUE) || heiFollowupRule.getButtonStatus().equals(CoreConstants.VISIT_STATE.OVERDUE)) && heiFollowupRule.getDatesDiff() >= 3 && !HeiDao.hasTheChildTransferedOut(baseEntityId)) {
+        if (StringUtils.isNotBlank(HeiDao.getMotherBaseEntityId(baseEntityId)) && (heiFollowupRule.getButtonStatus().equals(CoreConstants.VISIT_STATE.DUE) || heiFollowupRule.getButtonStatus().equals(CoreConstants.VISIT_STATE.OVERDUE)) && heiFollowupRule.getDatesDiff() >= 3 && !HeiDao.hasTheChildTransferedOut(baseEntityId)) {
             menu.findItem(R.id.action_issue_pmtct_followup_referral).setVisible(true);
             menu.findItem(R.id.action_issue_pmtct_followup_referral).setTitle(R.string.issue_hei_community_referal);
         }

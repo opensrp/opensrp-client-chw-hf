@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_pnc"
+        android:enabled="true"
+        android:icon="@mipmap/ic_home"
+        android:title="@string/home"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_no_mother"
+        android:enabled="true"
+        android:icon="@mipmap/sidemenu_children"
+        android:title="No Mother Children"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_register_child"
+        android:enabled="true"
+        android:icon="@drawable/ic_input_add"
+        android:title="Register Child"
+        app:showAsAction="ifRoom" />
+
+</menu>
