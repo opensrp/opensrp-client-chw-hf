@@ -2,10 +2,15 @@ package org.smartregister.chw.hf.interactor;
 
 import android.content.Context;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.smartregister.chw.anc.util.VisitUtils;
+import org.smartregister.chw.core.utils.FormUtils;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.actionhelper.LDGeneralExaminationActionHelper;
 import org.smartregister.chw.hf.actionhelper.LDVaginalExaminationActionHelper;
+import org.smartregister.chw.hf.dao.HfAncDao;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hf.utils.LDDao;
 import org.smartregister.chw.ld.LDLibrary;
@@ -14,6 +19,7 @@ import org.smartregister.chw.ld.domain.MemberObject;
 import org.smartregister.chw.ld.domain.Visit;
 import org.smartregister.chw.ld.interactor.BaseLDVisitInteractor;
 import org.smartregister.chw.ld.model.BaseLDVisitAction;
+import org.smartregister.chw.referral.util.JsonFormConstants;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -28,11 +34,13 @@ import timber.log.Timber;
 public class LDVisitInteractor extends BaseLDVisitInteractor {
     protected Context context;
     final LinkedHashMap<String, BaseLDVisitAction> actionList = new LinkedHashMap<>();
+    private MemberObject memberObject;
 
     @Override
     public void calculateActions(BaseLDVisitContract.View view, MemberObject memberObject, BaseLDVisitContract.InteractorCallBack callBack) {
 
         context = view.getContext();
+        this.memberObject = memberObject;
 
         final Runnable runnable = () -> {
             // update the local database incase of manual date adjustment
@@ -58,11 +66,21 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
     }
 
     private void evaluateVaginalExamination() throws BaseLDVisitAction.ValidationException {
+        JSONObject vaginalExaminationForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.LDVisit.getLdVaginalExamination());
+        if (vaginalExaminationForm != null) {
+            try {
+                JSONArray fields = vaginalExaminationForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+                populateVaginalExaminationForm(fields, memberObject.getBaseEntityId());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
 
         LDVaginalExaminationActionHelper actionHelper = new LDVaginalExaminationActionHelper(context);
         BaseLDVisitAction action = getBuilder(context.getString(R.string.lb_visit_vaginal_examination))
                 .withOptional(false)
                 .withHelper(actionHelper)
+                .withJsonPayload(vaginalExaminationForm.toString())
                 .withFormName(Constants.JsonForm.LDVisit.getLdVaginalExamination())
                 .build();
 
@@ -110,4 +128,13 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
         visits.add(visit);
         org.smartregister.chw.ld.util.VisitUtils.processVisits(visits, LDLibrary.getInstance().visitRepository(), LDLibrary.getInstance().visitDetailsRepository());
     }
+
+    private void populateVaginalExaminationForm(JSONArray fields, String baseEntityId) throws JSONException {
+        JSONObject vaginalExamDate = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "vaginal_exam_date");
+
+        if (LDDao.getLabourOnsetDate(baseEntityId) != null) {
+            vaginalExamDate.put("min_date", LDDao.getLabourOnsetDate(baseEntityId));
+        }
+    }
+
 }
