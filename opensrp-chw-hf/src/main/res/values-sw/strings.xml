@@ -217,5 +217,8 @@
     <string name="lb_partially_completed_action">Haijamalizika</string>
     <string name="lb_visit_vaginal_examination">Vaginal examination</string>
     <string name="lb_visit_general_examination">General examination</string>
+    <string name="height_in_cm">Urefu: {0} cm</string>
+    <string name="fundal_height">Kimo cha mimba: {0} cm</string>
+    <string name="hiv_status">Kipimo cha VVU: {0}</string>
 
 </resources>
