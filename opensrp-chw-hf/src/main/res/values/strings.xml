@@ -194,6 +194,7 @@
     <string name="view_reports_for_women_in_pnc">View Reports for Women in PNC</string>
     <string name="select_reporting_month_anc">Select Reporting Month</string>
     <string name="select_reporting_month_pnc">Select Reporting Month</string>
+    <string name="pnc_reports_title">PNC REPORTS</string>
 
     <string name="search">Search</string>
     <string name="global_search">Global Search</string>
