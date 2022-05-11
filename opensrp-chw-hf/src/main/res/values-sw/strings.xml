@@ -212,10 +212,10 @@
     <string name="record">Rekodi</string>
     <string name="child_followup">Fuatilio la %s</string>
     <string name="record_child_followup">Rekodi fuatilio la Mtoto</string>
-    <string name="saved_child_followup">Child\'s followup details saved successfully</string>
+    <string name="saved_child_followup">Umefanikiwa kuhifadhi taarifa za udhurio la Mtoto</string>
     <string name="pnc_visit_in_progress">Udhurio la Baada ya Kujifungua  linaendela</string>
     <string name="hiv_testing_outcome">Matokeo ya Kipimo cha VVU</string>
-    <string name="complete_pnc_message">Mteja Kamaliza</string>
+    <string name="complete_pnc_message">Mteja kamaliza udhurio la kliniki Baada ya Kujifungua (PNC) na anaweza ondolewa kwenye orodha ya Baada ya Kujifungua (PNC)</string>
     <string name="head_circumference_min_err">Mzunguko wa kichwa unatakiwa kuwa sawa au zaidi ya % CM</string>
 
     <!-- Advanced search screen-->
