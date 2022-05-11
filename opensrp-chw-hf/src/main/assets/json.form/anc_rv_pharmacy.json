@@ -46,8 +46,7 @@
     },
     "encounter_location": ""
   },
-  "global": {
-  },
+  "global": {},
   "step1": {
     "title": "Medication and Supplements",
     "fields": [
@@ -188,7 +187,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "other_reason_fefo_medication_not_given",
         "type": "edit_text",
-        "hint": "Specify other reasons for not giving FeFo medication",
+        "hint": "Specify other reasons for not giving FEFO medication",
         "edit_type": "name",
         "v_required": {
           "value": "true",

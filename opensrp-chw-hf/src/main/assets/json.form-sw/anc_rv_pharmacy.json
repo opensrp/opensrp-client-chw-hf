@@ -67,9 +67,6 @@
         "openmrs_entity_id": "iron_folate_supplements",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "exclusive": [
-          "FeFo"
-        ],
         "options": [
           {
             "text": "FeFo",
@@ -103,7 +100,7 @@
         "type": "spinner",
         "hint": "Sababu ya kutopewa vidonge vya Foliki Asidi badala ya FEFO",
         "values": [
-          "Out of stock",
+          "Bidhaa zimeisha",
           "Selimundu",
           "Nyingine (Taja)"
         ],
@@ -123,13 +120,8 @@
         },
         "relevance": {
           "step1:iron_folate_supplements": {
-            "ex-checkbox": [
-              {
-                "or": [
-                  "folic"
-                ]
-              }
-            ]
+            "type": "string",
+            "ex": "equalTo(., \"folic\")"
           }
         }
       },
@@ -143,7 +135,7 @@
         "edit_type": "name",
         "v_required": {
           "value": "true",
-          "err": "Please enter the reason"
+          "err": "Tafadhali jaza sababu"
         },
         "relevance": {
           "step1:reason_for_giving_folic_acid": {
@@ -153,10 +145,10 @@
         }
       },
       {
-        "key": "reason_for_not_giving_fefo_medication",
+        "key": "reason_for_not_giving_iron_folate_supplements",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "reason_for_not_giving_fefo_medication",
+        "openmrs_entity_id": "reason_for_not_giving_iron_folate_supplements",
         "type": "spinner",
         "hint": "Sababu ya kutopewa vidonge vya madini ya chuma",
         "values": [
@@ -184,13 +176,8 @@
         },
         "relevance": {
           "step1:iron_folate_supplements": {
-            "ex-checkbox": [
-              {
-                "or": [
-                  "medication_not_given"
-                ]
-              }
-            ]
+            "type": "string",
+            "ex": "equalTo(., \"medication_not_given\")"
           }
         }
       },
