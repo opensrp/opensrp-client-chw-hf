@@ -93,7 +93,7 @@
       {
         "key": "iec_given",
         "type": "native_radio",
-        "label": "Je, alipewa vijarida vya IEC?",
+        "label": "Je, alipewa vijarida vya Habari, Elimu na Mawasiliano (IEC)?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "iec_given",
         "openmrs_entity_parent": "",
@@ -164,7 +164,7 @@
           },
           {
             "key": "chk_injectable",
-            "text": "Injectable (Baada ya siku 42)",
+            "text": "Sindano (Baada ya siku 42)",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_injectable"
           },
@@ -182,7 +182,7 @@
           },
           {
             "key": "chk_iucd",
-            "text": "PPIUCD (Ndani ya masaa 48 baada ya kujifungua au baada ya siku 42 za PNC)",
+            "text": "Kitanzi (PPIUCD) (Ndani ya masaa 48 baada ya kujifungua au baada ya siku 42 za PNC)",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_iucd"
           },

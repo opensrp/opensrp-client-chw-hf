@@ -45,6 +45,7 @@ public class Constants extends CoreConstants {
         public static final String HEI_NEGATIVE_INFANT = "HEI Negative Infant";
         public static final String PMTCT_CLOSE_VISITS = "PMTCT Close Visits";
         public static final String PNC_VISIT = "PNC VISIT";
+        public static final String PNC_NO_MOTHER_REGISTRATION = "PNC No Mother Registration";
         public static final String CLOSE_PNC_VISITS = "Close PNC Visits";
         public static final String PNC_CHILD_FOLLOWUP = "PNC Child Followup";
         public static final String MOTHER_CHAMPION_COMMUNITY_SERVICES_REFERRAL = "Mother Champion Community Services Referral";
@@ -66,6 +67,7 @@ public class Constants extends CoreConstants {
         public static final String HEI_FOLLOWUP = "ec_hei_followup";
         public static final String PNC_FOLLOWUP = "ec_pnc_followup";
         public static final String PMTCT_FOLLOWUP = "ec_pmtct_followup";
+        public static final String NO_MOTHER_PNC = "ec_no_mother_pnc";
     }
 
     public static final class Visits {
@@ -395,6 +397,8 @@ public class Constants extends CoreConstants {
             public static final String LABOUR_AND_DELIVERY_OBSTETRIC_HISTORY = "labour_and_delivery_registration_obstetric_history";
             public static final String LABOUR_AND_DELIVERY_ANC_CLINIC_FINDINGS = "labour_and_delivery_registration_anc_clinic_findings";
             public static final String LABOUR_AND_DELIVERY_CURRENT_LABOUR = "labour_and_delivery_registration_current_labour";
+            public static final String LABOUR_AND_DELIVERY_LABOUR_STAGE = "labour_and_delivery_labour_stage";
+            public static final String LABOUR_AND_DELIVERY_CERVIX_DILATION_MONITORING = "labour_and_delivery_cervix_dilation_monitoring";
 
             public static String getLabourAndDeliveryRegistrationTriage() {
                 return LABOUR_AND_DELIVERY_REGISTRATION_TRIAGE;
@@ -418,6 +422,14 @@ public class Constants extends CoreConstants {
 
             public static String getLabourAndDeliveryCurrentLabour() {
                 return LABOUR_AND_DELIVERY_CURRENT_LABOUR;
+            }
+
+            public static String getLabourAndDeliveryLabourStage() {
+                return LABOUR_AND_DELIVERY_LABOUR_STAGE;
+            }
+
+            public static String getLabourAndDeliveryCervixDilationMonitoring() {
+                return LABOUR_AND_DELIVERY_CERVIX_DILATION_MONITORING;
             }
         }
 
@@ -445,6 +457,21 @@ public class Constants extends CoreConstants {
 
         }
 
+        public static class LDVisit {
+
+            public static final String  LD_GENERAL_EXAMINATION = "labour_and_delivery_general_examination";
+            public static final String LD_VAGINAL_EXAMINATION = "labour_and_delivery_vaginal_examination";
+
+            public static String getLdGeneralExamination() {
+                return Utils.getLocalForm(LD_GENERAL_EXAMINATION);
+            }
+
+            public static String getLdVaginalExamination() {
+                return Utils.getLocalForm(LD_VAGINAL_EXAMINATION);
+            }
+
+        }
+
     }
 
     public static final class JsonFormConstants {
@@ -466,6 +493,8 @@ public class Constants extends CoreConstants {
         public static final String HEI_HIV_RESULT_DATE = "hiv_test_result_date";
         public static final String HEI_HIV_TYPE_OF_TEST = "type_of_hiv_test";
         public static final String HIV_REGISTRATION_DATE = "hiv_registration_date";
+        public static final String CAREGIVER_NAME = "caregiver_name";
+        public static final String CAREGIVER_PHONE_NUMBER = "caregiver_phone_number";
     }
 
     public static final class EacVisitTypes {

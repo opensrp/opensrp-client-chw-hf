@@ -53,7 +53,10 @@ public class LDRegistrationFormActivity extends BaseLDVisitActivity {
     public void submittedAndClose() {
         Runnable runnable = () -> HfScheduleTaskExecutor.getInstance().execute(memberObject.getBaseEntityId(), Constants.Events.LD_REGISTRATION, new Date());
         Utils.startAsyncTask(new RunnableTask(runnable), null);
-        super.submittedAndClose();
+
+        Intent intent = new Intent(this,LDRegisterActivity.class);
+        this.startActivity(intent);
+        finish();
     }
 
     @Override

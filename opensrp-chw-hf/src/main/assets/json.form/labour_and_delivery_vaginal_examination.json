@@ -65,11 +65,7 @@
         "hint": "Vaginal examination Date",
         "expanded": false,
         "min_date": "today-2y",
-        "max_date": "today",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the vaginal examination date"
-        }
+        "max_date": "today"
       },
       {
         "key": "vaginal_exam_time",
@@ -77,11 +73,7 @@
         "hint": "Vaginal examination Time",
         "openmrs_entity_id": "vaginal_exam_time",
         "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter vaginal examination time"
-        }
+        "openmrs_entity_parent": ""
       },
       {
         "key": "cervix_state",
@@ -106,11 +98,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "hard"
           }
-        ],
-        "v_required": {
-          "value": true,
-          "err": "Please select the cervix (state) option"
-        }
+        ]
       },
       {
         "key": "cervix_dilation_label",
@@ -137,15 +125,11 @@
         "openmrs_entity_id": "cervix_dilation",
         "type": "numbers_selector",
         "number_of_selectors": "8",
-        "start_number": "3",
+        "start_number": "1",
         "max_value": "10",
         "text_size": "18px",
         "text_color": "#000000",
-        "selected_text_color": "#ffffff",
-        "v_required": {
-          "value": true,
-          "err": "Please enter the cervix dilation number"
-        }
+        "selected_text_color": "#ffffff"
       },
       {
         "key": "presenting_part",
@@ -177,10 +161,6 @@
           "shoulder": "shoulder",
           "face": "face",
           "cord": "cord"
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Please select an option"
         }
       },
       {
@@ -229,11 +209,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "opp"
           }
-        ],
-        "v_required": {
-          "value": true,
-          "err": "Please select the cervix (state) option"
-        }
+        ]
       },
       {
         "key": "prompt_for_occiput_position",
@@ -273,11 +249,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
-        ],
-        "v_required": {
-          "value": true,
-          "err": "Please select an option"
-        }
+        ]
       },
       {
         "key": "moulding_options",
@@ -310,10 +282,6 @@
             "openmrs_entity_id": "sutures_overlapped_not_reducible"
           }
         ],
-        "v_required": {
-          "value": true,
-          "err": "Please select an option"
-        },
         "relevance": {
           "step1:moulding": {
             "type": "string",
@@ -372,11 +340,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "plus_two"
           }
-        ],
-        "v_required": {
-          "value": true,
-          "err": "Please select an option"
-        }
+        ]
       },
       {
         "key": "amniotic_fluid",
@@ -415,11 +379,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "blood_stained_liquor"
           }
-        ],
-        "v_required": {
-          "value": true,
-          "err": "Please select an option"
-        }
+        ]
       },
       {
         "key": "prompt_for_amniotic_fluid",
@@ -460,11 +420,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "emergency"
           }
-        ],
-        "v_required": {
-          "value": true,
-          "err": "Please select an option"
-        }
+        ]
       }
     ]
   }

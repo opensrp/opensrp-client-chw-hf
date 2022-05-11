@@ -115,7 +115,7 @@ public class PncReportsActivity extends SecuredActivity implements View.OnClickL
             builder.setMaxYear(Calendar.getInstance().get(Calendar.YEAR));
             builder.setMinMonth(Calendar.JANUARY);
             builder.setMaxMonth(Calendar.DECEMBER);
-            builder.setTitle("Select Reporting Month");
+            builder.setTitle(getString(R.string.select_reporting_month_pnc));
             builder.build().show();
         } catch (ParseException e) {
             Timber.e(e);

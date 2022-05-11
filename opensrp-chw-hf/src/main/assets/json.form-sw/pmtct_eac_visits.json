@@ -48,7 +48,7 @@
   },
   "global": {},
   "step1": {
-    "title": "EAC Visit",
+    "title": "Ziara ya EAC",
     "fields": [
       {
         "key": "eac_visit_notification",
@@ -76,7 +76,7 @@
       {
         "key": "eac_visit_time",
         "type": "time_picker",
-        "hint": "EAC Visit Time",
+        "hint": "Wakati wa kutembelea EAC",
         "openmrs_entity_id": "eac_visit_time",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",

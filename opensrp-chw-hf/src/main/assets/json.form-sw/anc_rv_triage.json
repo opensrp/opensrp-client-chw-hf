@@ -317,7 +317,7 @@
           },
           {
             "key": "sacrum_oedema",
-            "text": "Oedema of the face and sacrum",
+            "text": "Edema ya uso na sacrum",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "sacrum_oedema"

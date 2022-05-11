@@ -237,7 +237,7 @@
         "hint": "Sababu ya kutofanya kipimo cha kiwango cha HB  ",
         "values": [
           "Cuvette Cartridges Hazipo Kituoni",
-          "Mashine ta 'Haemoque' haifanyi kazi",
+          "Mashine ya Kupimwa wingi wa damu (Haemoque) haifanyi kazi",
           "Mteja alikuwa katika hali ya dharura",
           "Mteja amekataa kupimwa",
           "Tunaendelea kumshauri mteja",
@@ -363,7 +363,7 @@
       {
         "key": "prompt_for_large_head_circumference",
         "type": "toaster_notes",
-        "text": "Tathmini vipengele vya hydrocephalus na mpatie rufaa kwa ajili ya uwezekano wa  wa upasuaji wa neva",
+        "text": "Tathmini vipengele vya vichwa vikubwa (Hydrocephalus) na mpatie rufaa kwa ajili ya uwezekano wa upasuaji wa neva",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -378,7 +378,7 @@
       {
         "key": "prompt_for_small_head_circumference",
         "type": "toaster_notes",
-        "text": "Angalia dalili za Down's Syndrome au kasoro zingine za neva zinazopelekea kwenye Microcephaly. Mpatie rufaa mtoto matibabu ya hali ya juu",
+        "text": "Angalia dalili za ugonjwa unaozuia watoto wasiweze kujifunza (Down's Syndrome) au kasoro zingine za neva zinazopelekea kwenye vichwa vidogo (Microcephaly). Mpatie rufaa mtoto matibabu ya hali ya juu",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
