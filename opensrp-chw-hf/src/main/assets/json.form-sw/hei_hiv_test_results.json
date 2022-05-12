@@ -84,7 +84,7 @@
         "key": "confirmation_hiv_test_result",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "hiv_status",
+        "openmrs_entity_id": "confirmation_hiv_test_result",
         "type": "native_radio",
         "label": "Is this a confirmation test result?",
         "label_text_style": "normal",
