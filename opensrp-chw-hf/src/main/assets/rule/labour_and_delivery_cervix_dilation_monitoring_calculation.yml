@@ -1,0 +1,7 @@
+---
+name: step1_last_vaginal_exam_time
+description: last_vaginal_exam_time calculated
+priority: 1
+condition: "true"
+actions:
+  - "calculation = step1_vaginal_exam_date == global_last_vaginal_exam_date? global_last_vaginal_exam_time : '00:00'"
