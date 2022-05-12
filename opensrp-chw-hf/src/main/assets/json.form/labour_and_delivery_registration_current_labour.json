@@ -74,20 +74,24 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "membrane",
-        "type": "spinner",
+        "type": "native_radio",
         "hint": "Membrane ruptured?",
-        "values": [
-          "Yes",
-          "No"
+        "options": [
+          {
+            "key": "ruptured",
+            "text": "Yes",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "ruptured",
+            "openmrs_entity_id": "1"
+          },
+          {
+            "key": "intact",
+            "text": "No",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "intact"
+          }
         ],
-        "keys": [
-          "ruptured",
-          "intact"
-        ],
-        "openmrs_choice_ids": {
-          "ruptured": "ruptured",
-          "intact": "intact"
-        },
         "v_required": {
           "value": "true",
           "err": "Please select one"

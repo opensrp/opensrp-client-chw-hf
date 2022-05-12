@@ -27,7 +27,6 @@ public class LDVaginalExaminationActionHelper implements BaseLDVisitAction.LDVis
     private String moulding;
     private String moulding_options;
     private String station;
-    private String amniotic_fluid;
     private String decision;
 
     public LDVaginalExaminationActionHelper(Context context) {
@@ -55,7 +54,6 @@ public class LDVaginalExaminationActionHelper implements BaseLDVisitAction.LDVis
         moulding = JsonFormUtils.getFieldValue(jsonPayload, "moulding");
         moulding_options = JsonFormUtils.getFieldValue(jsonPayload, "moulding_options");
         station = JsonFormUtils.getFieldValue(jsonPayload, "station");
-        amniotic_fluid = JsonFormUtils.getFieldValue(jsonPayload, "amniotic_fluid");
         decision = JsonFormUtils.getFieldValue(jsonPayload, "decision");
     }
 
@@ -111,7 +109,6 @@ public class LDVaginalExaminationActionHelper implements BaseLDVisitAction.LDVis
                 StringUtils.isNotBlank(moulding) &&
                 StringUtils.isNotBlank(moulding_options) &&
                 StringUtils.isNotBlank(station) &&
-                StringUtils.isNotBlank(amniotic_fluid) &&
                 StringUtils.isNotBlank(decision)
                 );
     }
@@ -126,7 +123,6 @@ public class LDVaginalExaminationActionHelper implements BaseLDVisitAction.LDVis
                 StringUtils.isNotBlank(moulding) ||
                 StringUtils.isNotBlank(moulding_options) ||
                 StringUtils.isNotBlank(station) ||
-                StringUtils.isNotBlank(amniotic_fluid) ||
                 StringUtils.isNotBlank(decision)
                 );
     }

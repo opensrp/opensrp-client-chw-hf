@@ -76,6 +76,13 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
             }
         }
 
+        if (LDDao.getMembraneStateDuringAdmissionToLabour(memberObject.getBaseEntityId()) != null) {
+            try {
+                vaginalExaminationForm.getJSONObject("global").put("membrane_status", LDDao.getMembraneStateDuringAdmissionToLabour(memberObject.getBaseEntityId()));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
         LDVaginalExaminationActionHelper actionHelper = new LDVaginalExaminationActionHelper(context);
         BaseLDVisitAction action = getBuilder(context.getString(R.string.lb_visit_vaginal_examination))
                 .withOptional(false)
