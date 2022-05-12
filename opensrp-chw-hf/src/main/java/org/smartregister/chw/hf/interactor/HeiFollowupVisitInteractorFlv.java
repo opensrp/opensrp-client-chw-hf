@@ -169,14 +169,14 @@ public class HeiFollowupVisitInteractorFlv implements PmtctFollowupVisitInteract
     }
 
     private void evaluateAntibodyTest(LinkedHashMap<String, BasePmtctHomeVisitAction> actionList, Map<String, List<VisitDetail>> details, MemberObject memberObject, Context context) throws BasePmtctHomeVisitAction.ValidationException {
-        BasePmtctHomeVisitAction AntibodyTest = new BasePmtctHomeVisitAction.Builder(context, context.getString(R.string.antibody_test_sample_collection))
+        BasePmtctHomeVisitAction AntibodyTest = new BasePmtctHomeVisitAction.Builder(context, context.getString(R.string.antibody_test_result))
                 .withOptional(false)
                 .withDetails(details)
                 .withFormName(Constants.JsonForm.getHeiHivTestResults())
                 .withHelper(new HeiAntibodyTestAction(memberObject))
                 .build();
         if (HeiDao.isEligibleForAntiBodiesHivTest(memberObject.getBaseEntityId()))
-            actionList.put(context.getString(R.string.antibody_test_sample_collection), AntibodyTest);
+            actionList.put(context.getString(R.string.antibody_test_result), AntibodyTest);
     }
 
     private void evaluateCtxPrescription(LinkedHashMap<String, BasePmtctHomeVisitAction> actionList, Map<String, List<VisitDetail>> details, MemberObject memberObject, Context context, JSONObject ctxPrescriptionForm) throws BasePmtctHomeVisitAction.ValidationException {
@@ -299,7 +299,6 @@ public class HeiFollowupVisitInteractorFlv implements PmtctFollowupVisitInteract
                 }
 
 
-
                 JSONObject arvPrescriptionForHighAndLowRiskForm = null;
                 try {
                     arvPrescriptionForHighAndLowRiskForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.getHeiArvPrescriptionHighOrLowRiskInfant());
@@ -362,7 +361,7 @@ public class HeiFollowupVisitInteractorFlv implements PmtctFollowupVisitInteract
                 }
             } else {
                 actionList.remove(context.getString(R.string.dna_pcr_sample_collection));
-                actionList.remove(context.getString(R.string.antibody_test_sample_collection));
+                actionList.remove(context.getString(R.string.antibody_test_result));
                 actionList.remove(context.getString(R.string.ctx_prescription_title));
                 actionList.remove(context.getString(R.string.arv_prescription_azt_and_nvp));
                 actionList.remove(context.getString(R.string.arv_prescription_nvp));
