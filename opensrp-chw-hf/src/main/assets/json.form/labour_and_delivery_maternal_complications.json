@@ -1,0 +1,186 @@
+{
+  "validate_on_submit": true,
+  "show_errors_on_submit": false,
+  "count": "1",
+  "encounter_type": "Mother Observation",
+  "entity_id": "",
+  "relational_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "step1": {
+    "title": "Maternal Complications During Labour",
+    "fields": [
+      {
+        "key": "maternal_complications_during_labour",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "maternal_complications_during_labour",
+        "type": "check_box",
+        "label": "Maternal complications during labour",
+        "combine_checkbox_option_values": "true",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "exclusive": [
+          "chk_none"
+        ],
+        "options": [
+          {
+            "key": "chk_pph",
+            "text": "PPH",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_pph"
+          },
+          {
+            "key": "chk_pre_eclampsia",
+            "text": "Pre-eclampsia",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_pre_eclampsia"
+          },
+          {
+            "key": "chk_eclampsia",
+            "text": "Eclampsia",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_eclampsia"
+          },
+          {
+            "key": "chk_obstructed_labour",
+            "text": "Obstructed labour",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_obstructed_labour"
+          },
+          {
+            "key": "chk_3_degree_tear",
+            "text": "3-degree tear",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_3_degree_tear"
+          },
+          {
+            "key": "chk_retained_placenta",
+            "text": "Retained placenta",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_retained_placenta"
+          },
+          {
+            "key": "chk_chest_pain",
+            "text": "Chest pain",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_chest_pain"
+          },
+          {
+            "key": "chk_fatigue",
+            "text": "Fatigue",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_fatigue"
+          },
+          {
+            "key": "chk_disseminated_intravascular_coagulopathy",
+            "text": "Disseminated intravascular coagulopathy (DIC)",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_disseminated_intravascular_coagulopathy"
+          },
+          {
+            "key": "chk_prom",
+            "text": "PROM",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_prom"
+          },
+          {
+            "key": "chk_malaria",
+            "text": "Malaria",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_malaria"
+          },
+          {
+            "key": "chk_anaemia",
+            "text": "Anaemia",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_anaemia"
+          },
+          {
+            "key": "chk_fgm",
+            "text": "FGM",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_fgm"
+          },
+          {
+            "key": "chk_aph",
+            "text": "APH",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_aph"
+          },
+          {
+            "key": "chk_none",
+            "text": "None",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_none"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please pick at least one"
+        }
+      }
+    ]
+  }
+}
