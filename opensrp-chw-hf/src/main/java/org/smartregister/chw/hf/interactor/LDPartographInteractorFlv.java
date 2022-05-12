@@ -62,7 +62,7 @@ public class LDPartographInteractorFlv implements LDPartographInteractor.Flavor 
                 .withHelper(new LDPartographTimeActionHelper(memberObject))
                 .build();
 
-        actionList.put(context.getString(R.string.ld_partograph_fetal_well_being), partographTime);
+        actionList.put(context.getString(R.string.ld_partograph_time), partographTime);
     }
 
     private void evaluateFetalWellbeing(LinkedHashMap<String, BaseLDVisitAction> actionList,
