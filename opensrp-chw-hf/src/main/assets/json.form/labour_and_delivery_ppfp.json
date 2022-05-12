@@ -79,7 +79,11 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
-        ]
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please select an option"
+        }
       },
       {
         "key": "ppfp_method",
@@ -126,6 +130,10 @@
             "openmrs_entity_id": "condom"
           }
         ],
+        "v_required": {
+          "value": true,
+          "err": "Please select an option"
+        },
         "relevance": {
           "step1:ppfp": {
             "type": "string",
