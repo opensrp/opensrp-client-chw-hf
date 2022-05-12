@@ -8,9 +8,9 @@ import android.widget.TextView;
 
 import org.apache.commons.lang3.StringUtils;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.dao.HeiDao;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.pmtct.fragment.BaseHvlResultsFragment;
-
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.provider.HvlResultsViewProvider;
 import org.smartregister.util.Utils;
@@ -42,6 +42,7 @@ public class HeiHivResultsViewProvider extends HvlResultsViewProvider {
             String collectionDate = Utils.getValue(pc.getColumnmaps(), Constants.DBConstants.HEI_HIV_SAMPLE_COLLECTION_DATE, false);
             String hvlResult = Utils.getValue(pc.getColumnmaps(), Constants.DBConstants.HEI_HIV_TEST_RESULT, false);
             String typeOfTest = Utils.getValue(pc.getColumnmaps(), Constants.DBConstants.HEI_HIV_TYPE_OF_TEST, false);
+            String testAtAge = HeiDao.getTestAtAgeForFollowupVisit(pc.getCaseId());
 
             if (StringUtils.isBlank(hvlResult)) {
                 viewHolder.hvlWrapper.setVisibility(View.GONE);
@@ -50,6 +51,13 @@ public class HeiHivResultsViewProvider extends HvlResultsViewProvider {
                 viewHolder.hvlResult.setText(hvlResult);
                 viewHolder.hvlWrapper.setVisibility(View.VISIBLE);
                 viewHolder.dueWrapper.setVisibility(View.GONE);
+            }
+
+
+            TextView tvTestAtAge = viewHolder.itemView.findViewById(R.id.testAtAge);
+            if (testAtAge != null && testAtAge.equalsIgnoreCase(Constants.HeiHIVTestAtAge.AT_18_MONTHS)) {
+                tvTestAtAge.setText(testAtAge);
+                tvTestAtAge.setVisibility(View.VISIBLE);
             }
 
             viewHolder.sampleId.setText(sampleId);
