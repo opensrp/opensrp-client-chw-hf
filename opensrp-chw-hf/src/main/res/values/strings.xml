@@ -66,6 +66,9 @@
     <string name="any_changes_you_make">Any Changes You Made Will Be Discarded</string>
     <string name="gestation_age">Gestation Age: {0} Weeks</string>
     <string name="malaria">mRDT for Malaria: {0}</string>
+    <string name="height_in_cm">Height: {0} cm</string>
+    <string name="fundal_height">Fundal Height: {0} cm</string>
+    <string name="hiv_status">HIV Status: {0}</string>
     <string name="partner_registration_action_title">Partner Registration</string>
     <string name="partner_testing_action_title">Partner Testing</string>
     <string name="first_pregnancy_option">First pregnancy</string>
