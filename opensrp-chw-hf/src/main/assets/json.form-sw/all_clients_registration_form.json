@@ -284,7 +284,7 @@
         "max_date": "today",
         "v_required": {
           "value": "true",
-          "err": "Tarehe ya kuzaliwa (DOB)"
+          "err": "Tafadhali ingiza tarehe ya kuzaliwa (DOB)"
         },
         "relevance": {
           "rules-engine": {
@@ -388,7 +388,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhali ingiza jinsia"
+          "err": "Tafadhali ingiza jinsi"
         }
       },
       {
