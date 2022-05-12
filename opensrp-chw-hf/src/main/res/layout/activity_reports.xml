@@ -170,7 +170,7 @@
             android:layout_width="220dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
-            android:text="PNC REPORTS"
+            android:text="@string/pnc_reports_title"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="22sp"

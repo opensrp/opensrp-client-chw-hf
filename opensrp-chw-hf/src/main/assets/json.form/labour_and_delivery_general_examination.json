@@ -372,46 +372,58 @@
       },
       {
         "key": "presentation",
-        "type": "spinner",
+        "type": "native_radio",
         "openmrs_entity_id": "presentation",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "hint": "Presentation",
-        "values": [
-          "Breech Presentation",
-          "Cephalic Presentation"
-        ],
-        "keys": [
-          "breech",
-          "cephalic"
-        ],
-        "openmrs_choice_ids": {
-          "breech": "breech",
-          "cephalic": "cephalic"
-        }
+        "label": "Presentation",
+        "options": [
+          {
+            "key": "breech",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "",
+            "openmrs_entity_parent": "",
+            "text": "Breech Presentation"
+          },
+          {
+            "key": "cephalic",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "",
+            "openmrs_entity_parent": "",
+            "text": "Cephalic Presentation"
+          }
+        ]
       },
       {
         "key": "lie",
-        "type": "spinner",
+        "type": "native_radio",
         "openmrs_entity_id": "lie",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "hint": "Lie",
-        "values": [
-          "Transverse",
-          "Oblique",
-          "Longitudinal"
-        ],
-        "keys": [
-          "transverse",
-          "oblique",
-          "longitudinal"
-        ],
-        "openmrs_choice_ids": {
-          "transverse": "transverse",
-          "oblique": "oblique",
-          "longitudinal": "longitudinal"
-        }
+        "label": "Lie",
+        "options": [
+          {
+            "key": "transverse",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "transverse",
+            "openmrs_entity_parent": "",
+            "text": "Transverse"
+          },
+          {
+            "key": "oblique",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "oblique",
+            "openmrs_entity_parent": "",
+            "text": "Oblique"
+          },
+          {
+            "key": "longitudinal",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "longitudinal",
+            "openmrs_entity_parent": "",
+            "text": "Longitudinal"
+          }
+        ]
       },
       {
         "key": "prompt_for_lie",
