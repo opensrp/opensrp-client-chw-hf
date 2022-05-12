@@ -147,14 +147,14 @@ public class HeiVisitUtils extends VisitUtils {
     protected static Event getCloseEventForPositive(String jsonString, String baseEntityId) {
         Event closeHeiEvent = new Gson().fromJson(jsonString, Event.class);
 
-        closeHeiEvent.setEntityType(org.smartregister.chw.hf.utils.Constants.TableName.HEI_HIV_RESULTS);
-        closeHeiEvent.setEventType(org.smartregister.chw.hf.utils.Constants.Events.HEI_POSITIVE_INFANT);
+        closeHeiEvent.setEntityType(Constants.TableName.HEI_HIV_RESULTS);
+        closeHeiEvent.setEventType(Constants.Events.HEI_POSITIVE_INFANT);
         closeHeiEvent.setBaseEntityId(baseEntityId);
         closeHeiEvent.addObs(
                 (new Obs())
-                        .withFormSubmissionField(org.smartregister.chw.hf.utils.Constants.DBConstants.HIV_REGISTRATION_DATE)
+                        .withFormSubmissionField(Constants.DBConstants.HIV_REGISTRATION_DATE)
                         .withValue(System.currentTimeMillis())
-                        .withFieldCode(org.smartregister.chw.hf.utils.Constants.DBConstants.HIV_REGISTRATION_DATE)
+                        .withFieldCode(Constants.DBConstants.HIV_REGISTRATION_DATE)
                         .withFieldType("formsubmissionField")
                         .withFieldDataType("text")
                         .withParentCode("")
@@ -184,8 +184,8 @@ public class HeiVisitUtils extends VisitUtils {
     protected static Event getCloseEventForNegative(String jsonString, String baseEntityId) {
         Event closeHeiEvent = new Gson().fromJson(jsonString, Event.class);
 
-        closeHeiEvent.setEntityType(org.smartregister.chw.hf.utils.Constants.TableName.HEI_HIV_RESULTS);
-        closeHeiEvent.setEventType(org.smartregister.chw.hf.utils.Constants.Events.HEI_NEGATIVE_INFANT);
+        closeHeiEvent.setEntityType(Constants.TableName.HEI_HIV_RESULTS);
+        closeHeiEvent.setEventType(Constants.Events.HEI_NEGATIVE_INFANT);
         closeHeiEvent.setBaseEntityId(baseEntityId);
 
         return closeHeiEvent;
@@ -195,7 +195,7 @@ public class HeiVisitUtils extends VisitUtils {
         Event closePmtctEvent = new Gson().fromJson(jsonString, Event.class);
 
         closePmtctEvent.setEntityType(org.smartregister.chw.pmtct.util.Constants.TABLES.PMTCT_REGISTRATION);
-        closePmtctEvent.setEventType(org.smartregister.chw.hf.utils.Constants.Events.PMTCT_CLOSE_VISITS);
+        closePmtctEvent.setEventType(Constants.Events.PMTCT_CLOSE_VISITS);
         closePmtctEvent.setBaseEntityId(HeiDao.getMotherBaseEntityId(baseEntityId));
         return closePmtctEvent;
     }
