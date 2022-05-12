@@ -238,6 +238,8 @@
 
 
     <string name="ld_partograph">L&amp;D Partograph</string>
+    <string name="ld_partograph_time"> Partograph Time </string>
+    <string name="partograph_time">Partograph for %s</string>
     <string name="ld_partograph_fetal_well_being"> Partograph : Fetal Well-being </string>
     <string name="ld_partograph_mother_well_being"> Partograph : Mother Well-being </string>
     <string name="ld_partograph_labor_progress"> Partograph : Fetal Progress of Labor </string>
