@@ -100,7 +100,7 @@
     <string name="hvl_sample_collected">Sampuli ya HVL Imechukuliwa</string>
     <string name="eac_first_visit">EAC First Visit</string>
     <string name="eac_second_visit">EAC second Visit</string>
-    <string name="antibody_test_sample_collected">Sampuli ya Kipimo cha Antibody Kimechukuliwa</string>
+    <string name="antibody_test_results_filled">Majibu ya Kipimo cha Antibody Yamejazwa</string>
     <string name="hei_arv_prescription_given">Dawa za ARV zimetolewa</string>
     <string name="hei_arv_prescription_not_given">Dawa za ARV haijatolewa</string>
     <string name="other_combination_given">Mchanganyiko mwingine ulitolewa</string>
