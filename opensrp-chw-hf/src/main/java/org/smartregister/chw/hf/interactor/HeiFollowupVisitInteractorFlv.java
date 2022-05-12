@@ -168,12 +168,11 @@ public class HeiFollowupVisitInteractorFlv implements PmtctFollowupVisitInteract
             actionList.put(context.getString(R.string.dna_pcr_sample_collection), DNAPCRTest);
     }
 
-    private void evaluateAntibodyTest(LinkedHashMap<String, BasePmtctHomeVisitAction> actionList, Map<String, List<VisitDetail>> details, MemberObject memberObject, Context context, JSONObject antibodyTestForm) throws BasePmtctHomeVisitAction.ValidationException {
+    private void evaluateAntibodyTest(LinkedHashMap<String, BasePmtctHomeVisitAction> actionList, Map<String, List<VisitDetail>> details, MemberObject memberObject, Context context) throws BasePmtctHomeVisitAction.ValidationException {
         BasePmtctHomeVisitAction AntibodyTest = new BasePmtctHomeVisitAction.Builder(context, context.getString(R.string.antibody_test_sample_collection))
                 .withOptional(false)
                 .withDetails(details)
-                .withFormName(Constants.JsonForm.getHeiAntibodyTestSampleCollection())
-                .withJsonPayload(antibodyTestForm.toString())
+                .withFormName(Constants.JsonForm.getHeiHivTestResults())
                 .withHelper(new HeiAntibodyTestAction(memberObject))
                 .build();
         if (HeiDao.isEligibleForAntiBodiesHivTest(memberObject.getBaseEntityId()))
@@ -299,26 +298,7 @@ public class HeiFollowupVisitInteractorFlv implements PmtctFollowupVisitInteract
                     Timber.e(e);
                 }
 
-                JSONObject antibodyTestForm = null;
-                try {
-                    antibodyTestForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.getHeiAntibodyTestSampleCollection());
 
-                    JSONArray fields = antibodyTestForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
-                    //update fields
-                    JSONObject testAtAge = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "test_at_age");
-                    testAtAge.put(JsonFormUtils.VALUE, HeiDao.getNextHivTestAge(memberObject.getBaseEntityId()));
-
-                    JSONObject actualAge = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "actual_age");
-                    CommonPersonObjectClient client = getCommonPersonObjectClient(memberObject.getBaseEntityId());
-                    actualAge.put(JsonFormUtils.VALUE, getDuration(org.smartregister.family.util.Utils.getValue(client.getColumnmaps(), org.smartregister.family.util.DBConstants.KEY.DOB, false)));
-
-                    //loads details to the form
-                    if (details != null && !details.isEmpty()) {
-                        JsonFormUtils.populateForm(antibodyTestForm, details);
-                    }
-                } catch (JSONException e) {
-                    Timber.e(e);
-                }
 
                 JSONObject arvPrescriptionForHighAndLowRiskForm = null;
                 try {
@@ -372,7 +352,7 @@ public class HeiFollowupVisitInteractorFlv implements PmtctFollowupVisitInteract
                 }
                 try {
                     evaluateDnaPcrAction(actionList, details, memberObject, context, dnaPcrForm);
-                    evaluateAntibodyTest(actionList, details, memberObject, context, antibodyTestForm);
+                    evaluateAntibodyTest(actionList, details, memberObject, context);
                     evaluateCtxPrescription(actionList, details, memberObject, context, ctxPrescriptionForm);
                     evaluateArvPrescriptionHighRisk(actionList, details, memberObject, context, arvPrescriptionForHighRiskForm);
                     evaluateArvPrescription(actionList, details, memberObject, context, arvPrescriptionForHighAndLowRiskForm);
