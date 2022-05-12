@@ -1447,7 +1447,6 @@
             "concept": "rh_factor"
           }
         },
-
         {
           "column_name": "tb_status",
           "type": "Event",
@@ -2462,6 +2461,72 @@
           "json_mapping": {
             "field": "obs.fieldCode",
             "concept": "tetanus_vaccination"
+          }
+        },
+        {
+          "column_name": "last_interacted_with",
+          "type": "Event",
+          "json_mapping": {
+            "field": "version"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ec_no_mother_pnc",
+      "columns": [
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "relational_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "relational_id"
+          }
+        },
+        {
+          "column_name": "caregiver_name",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "caregiver_name"
+          }
+        },
+        {
+          "column_name": "caregiver_phone_number",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "caregiver_phone_number"
+          }
+        },
+        {
+          "column_name": "caregiver_location",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "caregiver_location"
+          }
+        },
+        {
+          "column_name": "dob",
+          "type": "Client",
+          "json_mapping": {
+            "field": "birthdate"
+          }
+        },
+        {
+          "column_name": "delivery_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "delivery_date"
           }
         },
         {
@@ -4871,6 +4936,30 @@
           }
         },
         {
+          "column_name": "membrane",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "membrane"
+          }
+        },
+        {
+          "column_name": "labour_onset_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "labour_onset_date"
+          }
+        },
+        {
+          "column_name": "labour_onset_time",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "labour_onset_time"
+          }
+        },
+        {
           "column_name": "labour_stage",
           "type": "Event",
           "json_mapping": {
@@ -4945,7 +5034,6 @@
             "formSubmissionField": "pulse_rate"
           }
         },
-
         {
           "column_name": "temperature",
           "type": "Event",

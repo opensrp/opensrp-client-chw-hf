@@ -76,7 +76,8 @@ public class LDRegistrationInteractorFlv implements LDRegistrationInteractor.Fla
         syphilis.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getSyphilisTestResult(memberObject.getBaseEntityId()));
         bloodGroup.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getBloodGroup(memberObject.getBaseEntityId()));
         rhFactor.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getRhFactor(memberObject.getBaseEntityId()));
-        pmtct.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getHivStatus(memberObject.getBaseEntityId()).equalsIgnoreCase("positive") ? "chk_one" : "chk_two");
+        if (!HfAncDao.getHivStatus(memberObject.getBaseEntityId()).equalsIgnoreCase("null"))
+            pmtct.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getHivStatus(memberObject.getBaseEntityId()).equalsIgnoreCase("positive") ? "chk_one" : "chk_two");
         pmtctTestDate.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getHivTestDate(memberObject.getBaseEntityId()));
         artPrescription.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.isClientKnownOnArt(memberObject.getBaseEntityId()) ? "yes" : "no");
     }
@@ -90,7 +91,7 @@ public class LDRegistrationInteractorFlv implements LDRegistrationInteractor.Fla
 
         Map<String, List<VisitDetail>> details = null;
         // get the preloaded data
-        if (view.getEditMode()) {
+        if (AncDao.isANCMember(memberObject.getBaseEntityId())) {
             if (obstetricForm != null) {
                 try {
                     JSONArray fields = obstetricForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);

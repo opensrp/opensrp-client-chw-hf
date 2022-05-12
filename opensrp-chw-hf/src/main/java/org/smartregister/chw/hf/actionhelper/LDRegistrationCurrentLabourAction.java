@@ -48,7 +48,7 @@ public class LDRegistrationCurrentLabourAction implements BaseLDVisitAction.LDVi
             JSONObject jsonObject = new JSONObject(jsonPayload);
             labourOnsetDate = CoreJsonFormUtils.getValue(jsonObject, "labour_onset_date");
             labourOnsetTime = CoreJsonFormUtils.getValue(jsonObject, "labour_onset_time");
-            rupturedMembrane = CoreJsonFormUtils.getValue(jsonObject, "ruptured_membrane");
+            rupturedMembrane = CoreJsonFormUtils.getValue(jsonObject, "membrane");
             fetalMovement = CoreJsonFormUtils.getValue(jsonObject, "fetal_movement");
         } catch (JSONException e) {
             Timber.e(e);

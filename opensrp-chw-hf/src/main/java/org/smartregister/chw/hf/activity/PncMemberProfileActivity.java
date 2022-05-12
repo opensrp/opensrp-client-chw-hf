@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -29,7 +28,6 @@ import org.smartregister.chw.fp.dao.FpDao;
 import org.smartregister.chw.fp.util.FamilyPlanningConstants;
 import org.smartregister.chw.hf.BuildConfig;
 import org.smartregister.chw.hf.R;
-import org.smartregister.chw.hf.adapter.ChildFollowupViewAdapter;
 import org.smartregister.chw.hf.adapter.ReferralCardViewAdapter;
 import org.smartregister.chw.hf.contract.PncMemberProfileContract;
 import org.smartregister.chw.hf.dao.HfPncDao;
@@ -55,7 +53,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import timber.log.Timber;
 
@@ -65,10 +62,8 @@ import static org.smartregister.util.Utils.getAllSharedPreferences;
 
 public class PncMemberProfileActivity extends CorePncMemberProfileActivity implements PncMemberProfileContract.View {
 
-    private boolean shouldShowChildViews = true;
     private CommonPersonObjectClient commonPersonObjectClient;
     private PncMemberProfilePresenter pncMemberProfilePresenter;
-    private RecyclerView childFollowupRecyclerView;
 
     public static void startMe(Activity activity, String baseEntityID, MemberObject memberObject) {
         Intent intent = new Intent(activity, PncMemberProfileActivity.class);
@@ -85,14 +80,25 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
         activity.startActivity(intent);
     }
 
-    public static void startChildForm(Activity activity, String childBaseEntityId) {
-        JSONObject jsonForm = org.smartregister.chw.core.utils.FormUtils.getFormUtils().getFormJson(org.smartregister.chw.hf.utils.Constants.JsonForm.getPncChildGeneralExamination());
+    public static void closePncMemberVisits(String baseEntityId) {
+        AllSharedPreferences sharedPreferences = getAllSharedPreferences();
+        Event baseEvent = (Event) new Event()
+                .withBaseEntityId(baseEntityId)
+                .withEventDate(new Date())
+                .withEventType(org.smartregister.chw.hf.utils.Constants.Events.CLOSE_PNC_VISITS)
+                .withFormSubmissionId(org.smartregister.util.JsonFormUtils.generateRandomUUIDString())
+                .withEntityType(CoreConstants.TABLE_NAME.PNC_MEMBER)
+                .withProviderId(sharedPreferences.fetchRegisteredANM())
+                .withLocationId(ChwNotificationDao.getSyncLocationId(baseEntityId))
+                .withTeamId(sharedPreferences.fetchDefaultTeamId(sharedPreferences.fetchRegisteredANM()))
+                .withTeam(sharedPreferences.fetchDefaultTeam(sharedPreferences.fetchRegisteredANM()))
+                .withClientDatabaseVersion(BuildConfig.DATABASE_VERSION)
+                .withClientApplicationVersion(BuildConfig.VERSION_CODE)
+                .withDateCreated(new Date());
+        org.smartregister.chw.hf.utils.JsonFormUtils.tagSyncMetadata(Utils.context().allSharedPreferences(), baseEvent);
         try {
-            jsonForm.getJSONObject("global").put("baseEntityId", childBaseEntityId);
-            jsonForm.getJSONObject("global").put("is_eligible_for_bcg", HfPncDao.isChildEligibleForBcg(childBaseEntityId));
-            jsonForm.getJSONObject("global").put("is_eligible_for_opv0", HfPncDao.isChildEligibleForOpv0(childBaseEntityId));
-            activity.startActivityForResult(org.smartregister.chw.core.utils.FormUtils.getStartFormActivity(jsonForm, activity.getString(R.string.record_child_followup), activity), JsonFormUtils.REQUEST_CODE_GET_JSON);
-        } catch (JSONException e) {
+            org.smartregister.chw.anc.util.NCUtils.processEvent(baseEvent.getBaseEntityId(), new JSONObject(org.smartregister.chw.anc.util.JsonFormUtils.gson.toJson(baseEvent)));
+        } catch (Exception e) {
             Timber.e(e);
         }
     }
@@ -199,18 +205,11 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
     protected void onResume() {
         super.onResume();
         setupViews();
-        if (!shouldShowChildViews) {
-            RelativeLayout rlChildFollowup = findViewById(R.id.child_followup_row);
-            childFollowupRecyclerView.setVisibility(View.GONE);
-            rlChildFollowup.setVisibility(View.GONE);
-        }
         ((PncMemberProfileContract.Presenter) presenter()).fetchReferralTasks();
         if (notificationAndReferralRecyclerView != null && notificationAndReferralRecyclerView.getAdapter() != null) {
             notificationAndReferralRecyclerView.getAdapter().notifyDataSetChanged();
         }
-        if (childFollowupRecyclerView != null && childFollowupRecyclerView.getAdapter() != null) {
-            childFollowupRecyclerView.getAdapter().notifyDataSetChanged();
-        }
+
     }
 
     @Override
@@ -269,7 +268,6 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
 
                         NCUtils.processEvent(baseEvent.getBaseEntityId(), new JSONObject(org.smartregister.chw.pmtct.util.JsonFormUtils.gson.toJson(baseEvent)));
                         Toast.makeText(this, getString(R.string.saved_child_followup), Toast.LENGTH_SHORT).show();
-                        shouldShowChildViews = false;
                     } catch (Exception ex) {
                         Timber.e(ex);
                     }
@@ -291,8 +289,7 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
         textview_record_anc_visit.setVisibility(View.VISIBLE);
         textview_record_anc_visit.setOnClickListener(this);
 
-        int pncDay = Integer.parseInt(getPncMemberProfileInteractor().getPncDay(memberObject.getBaseEntityId()));
-        if (pncDay >= 42) {
+        if (getPncDay() >= 42) {
             textViewAncVisitNot.setVisibility(View.VISIBLE);
         }
 
@@ -317,6 +314,10 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
         }
     }
 
+    protected int getPncDay() {
+        return Integer.parseInt(getPncMemberProfileInteractor().getPncDay(memberObject.getBaseEntityId()));
+    }
+
     @Override
     public void setMemberName(String memberName) {
         getPncMemberProfileInteractor().getPncMotherNameDetails(memberObject, text_view_anc_member_name, imageView);
@@ -332,7 +333,7 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
         }
     }
 
-    private void showVisitInProgress() {
+    protected void showVisitInProgress() {
         textview_record_anc_visit.setVisibility(View.GONE);
         layoutNotRecordView.setVisibility(View.VISIBLE);
         textViewUndo.setVisibility(View.GONE);
@@ -369,7 +370,7 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
         }
     }
 
-    private void confirmRemovePncMember() {
+    protected void confirmRemovePncMember() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(getString(R.string.complete_pnc_visits));
         builder.setMessage(getString(R.string.complete_pnc_message));
@@ -395,29 +396,6 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
         closePncMemberVisits(baseEntityID);
     }
 
-    public static void closePncMemberVisits(String baseEntityId){
-        AllSharedPreferences sharedPreferences = getAllSharedPreferences();
-        Event baseEvent = (Event) new Event()
-                .withBaseEntityId(baseEntityId)
-                .withEventDate(new Date())
-                .withEventType(org.smartregister.chw.hf.utils.Constants.Events.CLOSE_PNC_VISITS)
-                .withFormSubmissionId(org.smartregister.util.JsonFormUtils.generateRandomUUIDString())
-                .withEntityType(CoreConstants.TABLE_NAME.PNC_MEMBER)
-                .withProviderId(sharedPreferences.fetchRegisteredANM())
-                .withLocationId(ChwNotificationDao.getSyncLocationId(baseEntityId))
-                .withTeamId(sharedPreferences.fetchDefaultTeamId(sharedPreferences.fetchRegisteredANM()))
-                .withTeam(sharedPreferences.fetchDefaultTeam(sharedPreferences.fetchRegisteredANM()))
-                .withClientDatabaseVersion(BuildConfig.DATABASE_VERSION)
-                .withClientApplicationVersion(BuildConfig.VERSION_CODE)
-                .withDateCreated(new Date());
-        org.smartregister.chw.hf.utils.JsonFormUtils.tagSyncMetadata(Utils.context().allSharedPreferences(), baseEvent);
-        try {
-            org.smartregister.chw.anc.util.NCUtils.processEvent(baseEvent.getBaseEntityId(), new JSONObject(org.smartregister.chw.anc.util.JsonFormUtils.gson.toJson(baseEvent)));
-        } catch (Exception e) {
-            Timber.e(e);
-        }
-    }
-
     @Override
     protected Class<? extends CorePncRegisterActivity> getPncRegisterActivityClass() {
         return PncRegisterActivity.class;
@@ -428,20 +406,6 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
             pncMemberProfilePresenter = new PncMemberProfilePresenter(this, new PncMemberProfileInteractor(), memberObject);
         }
         return pncMemberProfilePresenter;
-    }
-
-    private void showChildFollowupViews() {
-        //shows a recyclerview to record child visits for mother
-        RelativeLayout rlChildFollowup = findViewById(R.id.child_followup_row);
-        childFollowupRecyclerView = findViewById(R.id.child_followup_recycler_view);
-        childFollowupRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        List<ChildModel> childModels = HfPncDao.childrenForPncWoman(memberObject.getBaseEntityId());
-        if (childFollowupRecyclerView != null && childModels.size() > 0) {
-            RecyclerView.Adapter mAdapter = new ChildFollowupViewAdapter(childModels, this);
-            childFollowupRecyclerView.setAdapter(mAdapter);
-            rlChildFollowup.setVisibility(View.VISIBLE);
-        }
     }
 
     protected void startPmtctRegistration() {

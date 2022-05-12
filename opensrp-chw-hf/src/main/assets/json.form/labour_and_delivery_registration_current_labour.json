@@ -70,10 +70,10 @@
         "openmrs_entity_parent": ""
       },
       {
-        "key": "ruptured_membrane",
+        "key": "membrane",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "ruptured_membrane",
+        "openmrs_entity_id": "membrane",
         "type": "spinner",
         "hint": "Membrane ruptured?",
         "values": [
@@ -81,12 +81,12 @@
           "No"
         ],
         "keys": [
-          "Yes",
-          "No"
+          "ruptured",
+          "intact"
         ],
         "openmrs_choice_ids": {
-          "Yes": "Yes",
-          "No": "No"
+          "ruptured": "ruptured",
+          "intact": "intact"
         },
         "v_required": {
           "value": "true",
@@ -102,9 +102,9 @@
         "openmrs_entity_parent": "",
         "toaster_type": "problem",
         "relevance": {
-          "step6:ruptured_membrane": {
+          "step1:membrane": {
             "type": "string",
-            "ex": "equalTo(., \"Yes\")"
+            "ex": "equalTo(., \"ruptured\")"
           }
         }
       },
@@ -123,9 +123,9 @@
           "err": "Please enter the membrane rupture date"
         },
         "relevance": {
-          "step6:ruptured_membrane": {
+          "step1:membrane": {
             "type": "string",
-            "ex": "equalTo(., \"Yes\")"
+            "ex": "equalTo(., \"ruptured\")"
           }
         }
       },
@@ -141,9 +141,9 @@
           "err": "Please enter the membrane rupture time"
         },
         "relevance": {
-          "step6:ruptured_membrane": {
+          "step1:membrane": {
             "type": "string",
-            "ex": "equalTo(., \"Yes\")"
+            "ex": "equalTo(., \"ruptured\")"
           }
         }
       },
@@ -176,7 +176,7 @@
         "openmrs_entity_parent": "",
         "toaster_type": "problem",
         "relevance": {
-          "step6:fetal_movement": {
+          "step1:fetal_movement": {
             "type": "string",
             "ex": "equalTo(., \"absent\")"
           }
