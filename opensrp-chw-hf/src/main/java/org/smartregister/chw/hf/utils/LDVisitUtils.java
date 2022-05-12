@@ -57,7 +57,6 @@ public class LDVisitUtils extends VisitUtils {
                 boolean isPresentingPartDone = computeCompletionStatus(obs, "presenting_part");
                 boolean isOcciputPositionDone = computeCompletionStatus(obs, "occiput_position");
                 boolean isMouldingDone = computeCompletionStatus(obs, "moulding");
-                boolean isMouldingOptionsDone = computeCompletionStatus(obs, "moulding_options");
                 boolean isStationDone = computeCompletionStatus(obs, "station");
                 boolean isAmnioticFluidDone = computeCompletionStatus(obs, "amniotic_fluid");
                 boolean isDecisionDone = computeCompletionStatus(obs, "decision");
@@ -80,7 +79,6 @@ public class LDVisitUtils extends VisitUtils {
                         isPresentingPartDone &&
                         isOcciputPositionDone &&
                         isMouldingDone &&
-                        isMouldingOptionsDone &&
                         isStationDone &&
                         isAmnioticFluidDone &&
                         isDecisionDone) {

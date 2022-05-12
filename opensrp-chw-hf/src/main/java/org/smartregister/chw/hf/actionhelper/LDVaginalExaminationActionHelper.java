@@ -25,7 +25,6 @@ public class LDVaginalExaminationActionHelper implements BaseLDVisitAction.LDVis
     private String presenting_part;
     private String occiput_position;
     private String moulding;
-    private String moulding_options;
     private String station;
     private String amniotic_fluid;
     private String decision;
@@ -53,7 +52,6 @@ public class LDVaginalExaminationActionHelper implements BaseLDVisitAction.LDVis
         presenting_part = JsonFormUtils.getFieldValue(jsonPayload, "presenting_part");
         occiput_position = JsonFormUtils.getFieldValue(jsonPayload, "occiput_position");
         moulding = JsonFormUtils.getFieldValue(jsonPayload, "moulding");
-        moulding_options = JsonFormUtils.getFieldValue(jsonPayload, "moulding_options");
         station = JsonFormUtils.getFieldValue(jsonPayload, "station");
         amniotic_fluid = JsonFormUtils.getFieldValue(jsonPayload, "amniotic_fluid");
         decision = JsonFormUtils.getFieldValue(jsonPayload, "decision");
@@ -109,7 +107,6 @@ public class LDVaginalExaminationActionHelper implements BaseLDVisitAction.LDVis
                 (StringUtils.isNotBlank(presenting_part) && !presenting_part.equalsIgnoreCase("Presenting part")) &&
                 StringUtils.isNotBlank(occiput_position) &&
                 StringUtils.isNotBlank(moulding) &&
-                StringUtils.isNotBlank(moulding_options) &&
                 StringUtils.isNotBlank(station) &&
                 StringUtils.isNotBlank(amniotic_fluid) &&
                 StringUtils.isNotBlank(decision)
@@ -124,7 +121,6 @@ public class LDVaginalExaminationActionHelper implements BaseLDVisitAction.LDVis
                 (StringUtils.isNotBlank(presenting_part) && !presenting_part.equalsIgnoreCase("Presenting part")) ||
                 StringUtils.isNotBlank(occiput_position) ||
                 StringUtils.isNotBlank(moulding) ||
-                StringUtils.isNotBlank(moulding_options) ||
                 StringUtils.isNotBlank(station) ||
                 StringUtils.isNotBlank(amniotic_fluid) ||
                 StringUtils.isNotBlank(decision)
