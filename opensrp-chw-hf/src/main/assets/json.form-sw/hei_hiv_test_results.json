@@ -138,7 +138,7 @@
         "relevance": {
           "step1:confirmation_hiv_test_result": {
             "type": "string",
-            "ex": "equalTo(., \"positive\")"
+            "ex": "equalTo(., \"yes\")"
           }
         }
       },
@@ -187,9 +187,9 @@
           "err": "Tafadhali chagua jibu"
         },
         "relevance": {
-          "step1:hiv_test_result": {
+          "step1:confirmation_hiv_test_result": {
             "type": "string",
-            "ex": "equalTo(.,\"positive\")"
+            "ex": "equalTo(.,\"yes\")"
           }
         }
       },
@@ -215,7 +215,7 @@
         }
       },
       {
-        "key": "prompt_for_linkage_to_ctc",
+        "key": "prompt_provide_results_to_parents",
         "type": "toaster_notes",
         "text": "Wapatie wazazi majibu ya kipimo",
         "openmrs_entity_id": "",
@@ -223,9 +223,9 @@
         "openmrs_entity_parent": "",
         "toaster_type": "warning",
         "relevance": {
-          "step1:results_provided_to_parents": {
+          "step1:confirmation_hiv_test_result": {
             "type": "string",
-            "ex": "equalTo(.,\"no\")"
+            "ex": "equalTo(.,\"yes\")"
           }
         }
       },
@@ -259,9 +259,9 @@
           "err": "Tafadhari chagua mojawapo"
         },
         "relevance": {
-          "step1:hiv_test_result": {
+          "step1:confirmation_hiv_test_result": {
             "type": "string",
-            "ex": "equalTo(.,\"positive\")"
+            "ex": "equalTo(.,\"yes\")"
           }
         }
       },
