@@ -7,15 +7,17 @@ import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.actionhelper.LDGeneralExaminationActionHelper;
 import org.smartregister.chw.hf.actionhelper.LDVaginalExaminationActionHelper;
 import org.smartregister.chw.hf.utils.Constants;
-import org.smartregister.chw.hf.utils.LDDao;
+import org.smartregister.chw.hf.utils.LDVisitUtils;
 import org.smartregister.chw.ld.LDLibrary;
 import org.smartregister.chw.ld.contract.BaseLDVisitContract;
+import org.smartregister.chw.ld.dao.LDDao;
 import org.smartregister.chw.ld.domain.MemberObject;
 import org.smartregister.chw.ld.domain.Visit;
 import org.smartregister.chw.ld.interactor.BaseLDVisitInteractor;
 import org.smartregister.chw.ld.model.BaseLDVisitAction;
+import org.smartregister.chw.ld.domain.VisitDetail;
+import org.smartregister.clientandeventmodel.Event;
 
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,11 +30,20 @@ import timber.log.Timber;
 public class LDVisitInteractor extends BaseLDVisitInteractor {
     protected Context context;
     final LinkedHashMap<String, BaseLDVisitAction> actionList = new LinkedHashMap<>();
+    Map<String, List<VisitDetail>> details = null;
 
     @Override
     public void calculateActions(BaseLDVisitContract.View view, MemberObject memberObject, BaseLDVisitContract.InteractorCallBack callBack) {
 
         context = view.getContext();
+
+        if (view.getEditMode()) {
+            Visit lastVisit = LDLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), org.smartregister.chw.ld.util.Constants.EVENT_TYPE.LD_GENERAL_EXAMINATION);
+
+            if (lastVisit != null) {
+                details = org.smartregister.chw.ld.util.VisitUtils.getVisitGroups(LDLibrary.getInstance().visitDetailsRepository().getVisits(lastVisit.getVisitId()));
+            }
+        }
 
         final Runnable runnable = () -> {
             // update the local database incase of manual date adjustment
@@ -44,8 +55,8 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
 
             try {
 
-                evaluateGenExamination();
-                evaluateVaginalExamination();
+                evaluateGenExamination(details);
+                evaluateVaginalExamination(details);
 
             } catch (BaseLDVisitAction.ValidationException e) {
                 Timber.e(e);
@@ -57,11 +68,12 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
         appExecutors.diskIO().execute(runnable);
     }
 
-    private void evaluateVaginalExamination() throws BaseLDVisitAction.ValidationException {
+    private void evaluateVaginalExamination(Map<String, List<VisitDetail>> details) throws BaseLDVisitAction.ValidationException {
 
         LDVaginalExaminationActionHelper actionHelper = new LDVaginalExaminationActionHelper(context);
         BaseLDVisitAction action = getBuilder(context.getString(R.string.lb_visit_vaginal_examination))
                 .withOptional(false)
+                .withDetails(details)
                 .withHelper(actionHelper)
                 .withFormName(Constants.JsonForm.LDVisit.getLdVaginalExamination())
                 .build();
@@ -70,11 +82,12 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
 
     }
 
-    private void evaluateGenExamination() throws BaseLDVisitAction.ValidationException {
+    private void evaluateGenExamination(Map<String, List<VisitDetail>> details) throws BaseLDVisitAction.ValidationException {
 
         LDGeneralExaminationActionHelper actionHelper = new LDGeneralExaminationActionHelper(context);
         BaseLDVisitAction action = getBuilder(context.getString(R.string.lb_visit_general_examination))
                 .withOptional(false)
+                .withDetails(details)
                 .withHelper(actionHelper)
                 .withFormName(Constants.JsonForm.LDVisit.getLdGeneralExamination())
                 .build();
@@ -85,7 +98,7 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
     @Override
     public MemberObject getMemberClient(String memberID) {
 
-        return LDDao.getLDMember(memberID);
+        return LDDao.getMember(memberID);
     }
 
     public BaseLDVisitAction.Builder getBuilder(String title) {
@@ -106,8 +119,20 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
     protected void processExternalVisits(Visit visit, Map<String, BaseLDVisitAction> externalVisits, String memberID) throws Exception {
         super.processExternalVisits(visit, externalVisits, memberID);
 
-        List<Visit> visits = new ArrayList<>(1);
+        /*List<Visit> visits = new ArrayList<>(1);
         visits.add(visit);
-        org.smartregister.chw.ld.util.VisitUtils.processVisits(visits, LDLibrary.getInstance().visitRepository(), LDLibrary.getInstance().visitDetailsRepository());
+        org.smartregister.chw.ld.util.VisitUtils.processVisits(visits, LDLibrary.getInstance().visitRepository(), LDLibrary.getInstance().visitDetailsRepository());*/
+        try {
+
+            LDVisitUtils.processVisits(memberID);
+        } catch (Exception e) {
+            Timber.e(e);
+        }
+
+    }
+
+    @Override
+    protected void prepareEvent(Event baseEvent) {
+        super.prepareEvent(baseEvent);
     }
 }
