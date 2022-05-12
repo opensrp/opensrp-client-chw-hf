@@ -7,7 +7,7 @@ import org.smartregister.chw.core.job.StockUsageReportJob;
 import org.smartregister.chw.core.job.VaccineRecurringServiceJob;
 import org.smartregister.chw.hf.BuildConfig;
 import org.smartregister.chw.hf.job.PncCloseDateServiceJob;
-import org.smartregister.chw.hf.job.ProcessAncAndPncVisitsServiceJob;
+import org.smartregister.chw.hf.job.ProcessVisitsServiceJob;
 import org.smartregister.immunization.job.VaccineServiceJob;
 import org.smartregister.job.ImageUploadServiceJob;
 import org.smartregister.job.PlanIntentServiceJob;
@@ -51,7 +51,7 @@ public class LoginInteractor extends BaseLoginInteractor implements BaseLoginCon
 
         ChwIndicatorGeneratingJob.scheduleJob(ChwIndicatorGeneratingJob.TAG, TimeUnit.MINUTES.toMinutes(BuildConfig.REPORT_INDICATOR_GENERATION_MINUTES), getFlexValue(BuildConfig.REPORT_INDICATOR_GENERATION_MINUTES));
 
-        ProcessAncAndPncVisitsServiceJob.scheduleJob(ProcessAncAndPncVisitsServiceJob.TAG, TimeUnit.MINUTES.toMinutes(
+        ProcessVisitsServiceJob.scheduleJob(ProcessVisitsServiceJob.TAG, TimeUnit.MINUTES.toMinutes(
                 BuildConfig.DATA_SYNC_DURATION_MINUTES), getFlexValue(BuildConfig.DATA_SYNC_DURATION_MINUTES));
         PncCloseDateServiceJob.scheduleJob(PncCloseDateServiceJob.TAG, TimeUnit.MINUTES.toMinutes(
                 BuildConfig.STOCK_USAGE_REPORT_MINUTES), getFlexValue(BuildConfig.STOCK_USAGE_REPORT_MINUTES));
@@ -71,7 +71,7 @@ public class LoginInteractor extends BaseLoginInteractor implements BaseLoginCon
         SyncLocationsByTeamIdsJob.scheduleJobImmediately(SyncLocationsByTeamIdsJob.TAG);
         SyncLocationsByLevelAndTagsServiceJob.scheduleJobImmediately(SyncLocationsByLevelAndTagsServiceJob.TAG);
         ChwIndicatorGeneratingJob.scheduleJobImmediately(ChwIndicatorGeneratingJob.TAG);
-        ProcessAncAndPncVisitsServiceJob.scheduleJobImmediately(ProcessAncAndPncVisitsServiceJob.TAG);
+        ProcessVisitsServiceJob.scheduleJobImmediately(ProcessVisitsServiceJob.TAG);
         PncCloseDateServiceJob.scheduleJobImmediately(PncCloseDateServiceJob.TAG);
     }
 }
