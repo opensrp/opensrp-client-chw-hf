@@ -30,6 +30,15 @@ public class LDRegisterPresenter extends BaseLDRegisterPresenter {
             try {
                 JSONArray fields = form.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
                 populateCervixDilationMonitoringForm(fields, entityId);
+
+                if (LDDao.getVaginalExaminationDate(entityId) != null) {
+                    form.getJSONObject("global").put("last_vaginal_exam_date", LDDao.getVaginalExaminationDate(entityId));
+                }
+
+                if (LDDao.getVaginalExaminationTime(entityId) != null) {
+                    form.getJSONObject("global").put("last_vaginal_exam_time", LDDao.getVaginalExaminationTime(entityId));
+                }
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -42,8 +51,8 @@ public class LDRegisterPresenter extends BaseLDRegisterPresenter {
         JSONObject vaginalExamDate = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "vaginal_exam_date");
         JSONObject cervixDilation = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "cervix_dilation");
 
-        if (LDDao.getLabourOnsetDate(baseEntityId) != null) {
-            vaginalExamDate.put("min_date", LDDao.getLabourOnsetDate(baseEntityId));
+        if (LDDao.getVaginalExaminationDate(baseEntityId) != null) {
+            vaginalExamDate.put("min_date", LDDao.getVaginalExaminationDate(baseEntityId));
         }
 
         if (LDDao.getCervixDilation(baseEntityId) != null) {

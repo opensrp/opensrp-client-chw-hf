@@ -53,6 +53,7 @@
       "value": ""
     }
   },
+  "global": {},
   "step1": {
     "title": "Vaginal Examination",
     "fields": [
@@ -367,6 +368,80 @@
         ]
       },
       {
+        "key": "membrane",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "membrane",
+        "type": "native_radio",
+        "label": "Membrane ruptured?",
+        "options": [
+          {
+            "key": "ruptured",
+            "text": "Yes",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "ruptured"
+          },
+          {
+            "key": "intact",
+            "text": "No",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "intact"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select one"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_vaginal_examination_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "membrane_ruptured_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "membrane_ruptured_date",
+        "type": "date_picker",
+        "hint": "Membrane rupture Date",
+        "expanded": false,
+        "min_date": "today-2y",
+        "max_date": "today",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the membrane rupture date"
+        },
+        "relevance": {
+          "step1:membrane": {
+            "type": "string",
+            "ex": "equalTo(., \"ruptured\")"
+          }
+        }
+      },
+      {
+        "key": "membrane_ruptured_time",
+        "type": "time_picker",
+        "hint": "Membrane rupture Time",
+        "openmrs_entity_id": "membrane_ruptured_time",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": true,
+          "err": "Please enter the membrane rupture time"
+        },
+        "relevance": {
+          "step1:membrane": {
+            "type": "string",
+            "ex": "equalTo(., \"ruptured\")"
+          }
+        }
+      },
+      {
         "key": "amniotic_fluid",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -376,18 +451,11 @@
         "type": "native_radio",
         "options": [
           {
-            "key": "membrane_intact",
-            "text": "Membrane Intact (I)",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "membrane_intact"
-          },
-          {
-            "key": "membrane_ruptured",
+            "key": "membrane_ruptured_clear",
             "text": "Membrane ruptured liquor clear (C)",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "membrane_ruptured"
+            "openmrs_entity_id": "membrane_ruptured_clear"
           },
           {
             "key": "meconium_stained_liquor",
@@ -403,7 +471,14 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "blood_stained_liquor"
           }
-        ]
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_vaginal_examination_relevance.yml"
+            }
+          }
+        }
       },
       {
         "key": "prompt_for_amniotic_fluid",
