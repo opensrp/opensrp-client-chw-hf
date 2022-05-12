@@ -72,10 +72,10 @@ public interface HfQueryConstant {
             "       'HIV'                                     AS register_type,\n" +
             "       ec_family_member.relational_id            as relationalid,\n" +
             "       ec_family.village_town                    as home_address,\n" +
-            "       ec_hiv_register.last_interacted_with      AS last_interacted_with,\n" +
             "       NULL                                      AS mother_first_name,\n" +
             "       NULL                                      AS mother_last_name,\n" +
-            "       NULL                                      AS mother_middle_name\n" +
+            "       NULL                                      AS mother_middle_name,\n" +
+            "       ec_hiv_register.last_interacted_with      AS last_interacted_with\n" +
             "FROM ec_hiv_register\n" +
             "         inner join ec_family_member on ec_family_member.base_entity_id = ec_hiv_register.base_entity_id\n" +
             "         inner join ec_family on ec_family.base_entity_id = ec_family_member.relational_id\n" +
@@ -111,10 +111,10 @@ public interface HfQueryConstant {
             "       'HTS'                                     AS register_type,\n" +
             "       ec_family_member.relational_id            as relationalid,\n" +
             "       ec_family.village_town                    as home_address,\n" +
-            "       ec_hts_register.last_interacted_with      AS last_interacted_with,\n" +
             "       NULL                                      AS mother_first_name,\n" +
             "       NULL                                      AS mother_last_name,\n" +
-            "       NULL                                      AS mother_middle_name\n" +
+            "       NULL                                      AS mother_middle_name,\n" +
+            "       ec_hts_register.last_interacted_with      AS last_interacted_with\n" +
             "FROM ec_hts_register\n" +
             "         inner join ec_family_member on ec_family_member.base_entity_id = ec_hts_register.base_entity_id\n" +
             "         inner join ec_family on ec_family.base_entity_id = ec_family_member.relational_id\n" +
@@ -198,10 +198,10 @@ public interface HfQueryConstant {
             "       'ANC'                                AS register_type,\n" +
             "       ec_family_member.relational_id       as relationalid,\n" +
             "       ec_family.village_town               as home_address,\n" +
-            "       ec_anc_register.last_interacted_with AS last_interacted_with,\n" +
             "       NULL                                 AS mother_first_name,\n" +
             "       NULL                                 AS mother_last_name,\n" +
-            "       NULL                                 AS mother_middle_name\n" +
+            "       NULL                                 AS mother_middle_name,\n" +
+            "       ec_anc_register.last_interacted_with AS last_interacted_with\n" +
             "FROM ec_anc_register\n" +
             "         inner join ec_family_member on ec_family_member.base_entity_id = ec_anc_register.base_entity_id\n" +
             "         inner join ec_family on ec_family.base_entity_id = ec_family_member.relational_id\n" +
@@ -224,10 +224,10 @@ public interface HfQueryConstant {
             "       'PNC'                                     AS register_type,\n" +
             "       ec_family_member.relational_id            as relationalid,\n" +
             "       ec_family.village_town                    as home_address,\n" +
-            "       ec_pregnancy_outcome.last_interacted_with AS last_interacted_with,\n" +
             "       NULL                                      AS mother_first_name,\n" +
             "       NULL                                      AS mother_last_name,\n" +
-            "       NULL                                      AS mother_middle_name\n" +
+            "       NULL                                      AS mother_middle_name,\n" +
+            "       ec_pregnancy_outcome.last_interacted_with AS last_interacted_with\n" +
             "FROM ec_pregnancy_outcome\n" +
             "         inner join ec_family_member on ec_family_member.base_entity_id = ec_pregnancy_outcome.base_entity_id\n" +
             "         inner join ec_family on ec_family.base_entity_id = ec_family_member.relational_id\n" +
@@ -251,10 +251,10 @@ public interface HfQueryConstant {
             "       'Child'                         AS register_type,\n" +
             "       ec_family_member.relational_id  as relationalid,\n" +
             "       ec_family.village_town          as home_address,\n" +
-            "       ec_child.last_interacted_with   AS last_interacted_with,\n" +
             "       ec_child.mother_first_name      AS mother_first_name,\n" +
             "       ec_child.mother_middle_name     AS mother_middle_name,\n" +
-            "       ec_child.mother_last_name       AS mother_last_name\n" +
+            "       ec_child.mother_last_name       AS mother_last_name,\n" +
+            "       ec_child.last_interacted_with   AS last_interacted_with\n" +
             "FROM (SELECT ec_child.*,\n" +
             "             mother.first_name  AS mother_first_name,\n" +
             "             mother.last_name   AS mother_last_name,\n" +
