@@ -53,6 +53,9 @@
       "value": ""
     }
   },
+  "global": {
+    "last_vaginal_exam_time": "12:00"
+  },
   "step1": {
     "title": "Cervix Dilation Monitoring",
     "fields": [
@@ -72,12 +75,33 @@
         }
       },
       {
+        "key": "last_vaginal_exam_time",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "last_vaginal_exam_time",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_cervix_dilation_monitoring_calculation.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "vaginal_exam_time",
         "type": "time_picker",
         "hint": "Vaginal examination Time",
         "openmrs_entity_id": "vaginal_exam_time",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
+        "constraints": [
+          {
+            "type": "time",
+            "ex": "greaterThan(., step1:last_vaginal_exam_time)",
+            "err": "The vaginal examination time cannot be less than the previous vaginal examination time"
+          }
+        ],
         "v_required": {
           "value": "true",
           "err": "Please enter vaginal examination time"

@@ -186,16 +186,37 @@
     <string name="anc_followup_client_registration">Usajili wa mahudhurio ya kliniki ya uzazi</string>
     <string name="malaria_investigation_complete">Uchunguzi wa malaria umekamilika</string>
     <string name="next_visit">Uthurio lijalo</string>
-    <string name="anc_reports_title">Ripoti za ANC</string>
+    <string name="anc_reports_title">RIPOTI za ANC</string>
     <string name="view_reports_for_anc_women">Tazama Ripoti za Wanawake wa ANC</string>
     <string name="pmtct_reports_subtitle"><![CDATA[Tazama Ripoti za Vikundi vya PMTCT (Wanawake na Watoto)]]></string>
-    <string name="pnc_reports">Ripoti za PNC</string>
+    <string name="pnc_reports">RIPOTI za PNC</string>
     <string name="view_reports_for_women_in_pnc">Tazama Ripoti za Wanawake katika PNC</string>
     <string name="pmtct_reports_title">TAARIFA ZA KUNDI LA PMTCT</string>
     <string name="anc_monthly_report">Ripoti ya kila Mwezi</string>
     <string name="select_reporting_month_anc">Chagua Mwezi wa Kuripoti</string>
     <string name="select_reporting_month_pnc">Chagua Mwezi wa Kuripoti</string>
     <string name="reports_title">RIPOTI</string>
+    <string name="pnc_registration">Usajili baada ya Kujifungua</string>
+    <string name="high_risk">Hatari Kubwa</string>
+    <string name="low_risk">Hatari Ndogo</string>
+    <string name="reports_activity">Ripoti</string>
+    <string name="pnc_reports_title">RIPOTI za PNC</string>
+    <string name="three_months_report">Ripoti ya Miezi 3</string>
+    <string name="twelve_months_report">Ripoti ya Miezi 12</string>
+    <string name="twenty_four_months_report">Ripoti ya Miezi 24</string>
+    <string name="eid_cross_sectional_report">EID Cross-sectional Report</string>
+    <string name="confirm_remove_text">Una uhakika unataka kuondoa taarifa za %s? Hii haiwezekani kurekebisha</string>
+    <string name="remove">THIBITISHA</string>
+    <string name="month">Mwezi</string>
+    <string name="print_report">Chapa</string>
+    <string name="record">Rekodi</string>
+    <string name="child_followup">Fuatilio la %s</string>
+    <string name="record_child_followup">Rekodi fuatilio la Mtoto</string>
+    <string name="saved_child_followup">Umefanikiwa kuhifadhi taarifa za udhurio la Mtoto</string>
+    <string name="pnc_visit_in_progress">Udhurio la Baada ya Kujifungua  linaendela</string>
+    <string name="hiv_testing_outcome">Matokeo ya Kipimo cha VVU</string>
+    <string name="complete_pnc_message">Mteja kamaliza udhurio la kliniki Baada ya Kujifungua (PNC) na anaweza ondolewa kwenye orodha ya Baada ya Kujifungua (PNC)</string>
+    <string name="head_circumference_min_err">Mzunguko wa kichwa unatakiwa kuwa sawa au zaidi ya % CM</string>
     <string name="return_to_all_pnc_women">Rudi kwa wateja wa PNC</string>
 
     <!-- Advanced search screen-->
@@ -217,5 +238,8 @@
     <string name="lb_partially_completed_action">Haijamalizika</string>
     <string name="lb_visit_vaginal_examination">Vaginal examination</string>
     <string name="lb_visit_general_examination">General examination</string>
+    <string name="height_in_cm">Urefu: {0} cm</string>
+    <string name="fundal_height">Kimo cha mimba: {0} cm</string>
+    <string name="hiv_status">Kipimo cha VVU: {0}</string>
 
 </resources>
