@@ -64,7 +64,7 @@ public class AncMemberProfilePresenter extends CoreAncMemberProfilePresenter {
 
     public void startPartnerFollowupReferralForm(MemberObject memberObject) {
         try {
-            JSONObject formJsonObject = (new FormUtils()).getFormJsonFromRepositoryOrAssets((Context) getView(), "labour_and_delivery_ppfp");
+            JSONObject formJsonObject = (new FormUtils()).getFormJsonFromRepositoryOrAssets((Context) getView(), CoreConstants.JSON_FORM.getAncPartnerCommunityFollowupReferral());
             getView().startFormActivity(formJsonObject);
         } catch (Exception e) {
             Timber.e(e);
