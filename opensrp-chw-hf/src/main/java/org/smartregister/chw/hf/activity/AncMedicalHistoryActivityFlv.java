@@ -35,7 +35,7 @@ public class AncMedicalHistoryActivityFlv extends DefaultAncMedicalHistoryActivi
 
             int x = 1;
             for (Map<String, String> vals : hf_visits) {
-                View view = inflater.inflate(R.layout.medial_history_anc_visit, null);
+                View view = inflater.inflate(R.layout.medical_history_anc_visit, null);
 
                 TextView tvTitle = view.findViewById(R.id.title);
                 TextView tvTests = view.findViewById(R.id.tests);
@@ -83,7 +83,7 @@ public class AncMedicalHistoryActivityFlv extends DefaultAncMedicalHistoryActivi
                 }
 
 
-                String[] hf_params = {"weight", "height", "systolic", "diastolic", "glucose_in_urine", "hiv", "temperature", "pulse_rate", "hb_level", "mRDT_for_malaria", "anc_visit_date", "gest_age"};
+                String[] hf_params = {"weight", "height", "systolic", "fundal_height", "diastolic", "hb_level", "mRDT_for_malaria", "hiv", "anc_visit_date", "gest_age"};
                 extractHFVisit(visits, hf_params, hf_visits, x, context);
 
                 x++;
@@ -127,26 +127,64 @@ public class AncMedicalHistoryActivityFlv extends DefaultAncMedicalHistoryActivi
 
             int x = 0;
             for (Map<String, String> vals : hf_visits) {
-                View view = inflater.inflate(org.smartregister.chw.core.R.layout.medial_history_anc_visit, null);
+                View view = inflater.inflate(R.layout.medical_history_anc_visit, null);
 
-                TextView tvTitle = view.findViewById(org.smartregister.chw.core.R.id.title);
-                TextView tvWeight = view.findViewById(org.smartregister.chw.core.R.id.weight);
-                TextView tvBP = view.findViewById(org.smartregister.chw.core.R.id.bp);
-                TextView tvHB = view.findViewById(org.smartregister.chw.core.R.id.hb);
-                TextView tvIfa = view.findViewById(org.smartregister.chw.core.R.id.ifa_received);
-                TextView tvTests = view.findViewById(org.smartregister.chw.core.R.id.tests);
+                TextView tvTitle = view.findViewById(R.id.title);
+                TextView tvGA = view.findViewById(R.id.gest_age);
+                TextView tvFundalHeight = view.findViewById(R.id.fundal_height);
+                TextView tvHeight = view.findViewById(R.id.height);
+                TextView tvWeight = view.findViewById(R.id.weight);
+                TextView tvBP = view.findViewById(R.id.bp);
+                TextView tvHB = view.findViewById(R.id.hb);
+                TextView tvMrdtMalaria = view.findViewById(R.id.mrdt_malaria);
+                TextView tvHivStatus = view.findViewById(R.id.hiv_status);
+
 
                 tvTitle.setText(MessageFormat.format(context.getString(org.smartregister.chw.core.R.string.anc_visit_date), x + 1, getMapValue(vals, "anc_visit_date")));
 
-                tvWeight.setText(MessageFormat.format(context.getString(org.smartregister.chw.core.R.string.weight_in_kgs), getMapValue(vals, "weight")));
+                if (StringUtils.isBlank(getMapValue(vals, "fundal_height"))) {
+                    tvFundalHeight.setVisibility(View.GONE);
+                } else {
+                    tvFundalHeight.setText(MessageFormat.format(context.getString(R.string.fundal_height), getMapValue(vals, "fundal_height")));
+                }
 
-                tvBP.setText(MessageFormat.format(context.getString(org.smartregister.chw.core.R.string.bp_in_mmhg), getMapValue(vals, "systolic"), getMapValue(vals, "diastolic")));
+                tvGA.setText(MessageFormat.format(context.getString(R.string.gestation_age), getMapValue(vals, "gest_age")));
+                if (StringUtils.isBlank(getMapValue(vals, "weight"))) {
+                    tvWeight.setVisibility(View.GONE);
+                } else {
+                    tvWeight.setText(MessageFormat.format(context.getString(org.smartregister.chw.core.R.string.weight_in_kgs), getMapValue(vals, "weight")));
+                }
 
-                tvHB.setText(context.getString(org.smartregister.chw.core.R.string.hb_level_in_g_dl, getMapValue(vals, "hb_level")));
+                if (StringUtils.isBlank(getMapValue(vals, "height"))) {
+                    tvHeight.setVisibility(View.GONE);
+                } else {
+                    tvHeight.setText(MessageFormat.format(context.getString(R.string.height_in_cm), getMapValue(vals, "height")));
+                }
 
-                tvIfa.setText(MessageFormat.format(context.getString(R.string.malaria), getMapValue(vals, "mRDT_for_malaria")));
+                if (StringUtils.isBlank(getMapValue(vals, "systolic"))) {
+                    tvBP.setVisibility(View.GONE);
+                } else {
+                    tvBP.setText(MessageFormat.format(context.getString(org.smartregister.chw.core.R.string.bp_in_mmhg), getMapValue(vals, "systolic"), getMapValue(vals, "diastolic")));
+                }
 
-                tvTests.setText(MessageFormat.format(context.getString(R.string.gestation_age), getMapValue(vals, "gest_age")));
+                if (StringUtils.isBlank(getMapValue(vals, "hb_level"))) {
+                    tvHB.setVisibility(View.GONE);
+                } else {
+                    tvHB.setText(context.getString(org.smartregister.chw.core.R.string.hb_level_in_g_dl, getMapValue(vals, "hb_level")));
+                }
+
+                if (StringUtils.isBlank(getMapValue(vals, "mRDT_for_malaria"))) {
+                    tvMrdtMalaria.setVisibility(View.GONE);
+                } else {
+                    tvMrdtMalaria.setText(MessageFormat.format(context.getString(R.string.malaria), getMapValue(vals, "mRDT_for_malaria")));
+                }
+
+                if (StringUtils.isBlank(getMapValue(vals, "hiv"))) {
+                    tvHivStatus.setVisibility(View.GONE);
+                } else {
+                    tvHivStatus.setText(MessageFormat.format(context.getString(R.string.hiv_status), getMapValue(vals, "hiv")));
+                }
+
 
                 linearLayoutHealthFacilityVisitDetails.addView(view, 0);
 
@@ -157,6 +195,9 @@ public class AncMedicalHistoryActivityFlv extends DefaultAncMedicalHistoryActivi
 
     private String getMapValue(Map<String, String> map, String key) {
         if (map.containsKey(key)) {
+            if (map.get(key) != null && map.get(key).length() > 1) {
+                return map.get(key).split(",")[0];
+            }
             return map.get(key);
         }
         return "";

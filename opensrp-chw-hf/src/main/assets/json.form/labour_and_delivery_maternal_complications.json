@@ -1,7 +1,10 @@
 {
+  "validate_on_submit": true,
+  "show_errors_on_submit": false,
   "count": "1",
-  "encounter_type": "ANC Counselling",
+  "encounter_type": "Mother Observation",
   "entity_id": "",
+  "relational_id": "",
   "metadata": {
     "start": {
       "openmrs_entity_parent": "",
@@ -44,110 +47,138 @@
       "openmrs_data_type": "phonenumber",
       "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
     },
-    "encounter_location": ""
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
   },
   "step1": {
-    "title": "Ushauri",
+    "title": "Maternal Complications During Labour",
     "fields": [
       {
-        "key": "given_counselling",
+        "key": "maternal_complications_during_labour",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "given_counselling",
+        "openmrs_entity_id": "maternal_complications_during_labour",
         "type": "check_box",
+        "label": "Maternal complications during labour",
         "combine_checkbox_option_values": "true",
-        "label": "Chagua Ushauri uliyotolewa kwa mteja kwenye tembeleo hili",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
+        "exclusive": [
+          "chk_none"
+        ],
         "options": [
           {
-            "key": "chk_sexual_relationship",
-            "text": "Uhusiano wa kimapenzi",
+            "key": "chk_pph",
+            "text": "PPH",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_sexual_relationship"
+            "openmrs_entity_id": "chk_pph"
           },
           {
-            "key": "chk_birth_emergency_plan",
-            "text": "Mpango wa kujifungua na wa dharura",
+            "key": "chk_pre_eclampsia",
+            "text": "Pre-eclampsia",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_birth_emergency_plan"
+            "openmrs_entity_id": "chk_pre_eclampsia"
           },
           {
-            "key": "chk_danger_signs",
-            "text": "Dalili hatarishi",
+            "key": "chk_eclampsia",
+            "text": "Eclampsia",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_danger_signs"
+            "openmrs_entity_id": "chk_eclampsia"
           },
           {
-            "key": "chk_discussion_std_hiv",
-            "text": "Majadiliano juu ya STI/RTI/VVU",
+            "key": "chk_obstructed_labour",
+            "text": "Obstructed labour",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_discussion_std_hiv"
+            "openmrs_entity_id": "chk_obstructed_labour"
           },
           {
-            "key": "chk_condom_use",
-            "text": "Maumizi ya kondomu",
+            "key": "chk_3_degree_tear",
+            "text": "3-degree tear",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_condom_use"
+            "openmrs_entity_id": "chk_3_degree_tear"
           },
           {
-            "key": "chk_advice_gravid",
-            "text": "Ushauri juu ya usumbufu unaojitokeza wakati wa ujauzito",
+            "key": "chk_retained_placenta",
+            "text": "Retained placenta",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_advice_gravid"
+            "openmrs_entity_id": "chk_retained_placenta"
           },
           {
-            "key": "chk_self_care",
-            "text": "Kujijali",
+            "key": "chk_chest_pain",
+            "text": "Chest pain",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_self_care"
+            "openmrs_entity_id": "chk_chest_pain"
           },
           {
-            "key": "chk_healthy_eating",
-            "text": "Lishe bora",
+            "key": "chk_fatigue",
+            "text": "Fatigue",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_healthy_eating"
+            "openmrs_entity_id": "chk_fatigue"
           },
           {
-            "key": "chk_physical_activity",
-            "text": "Shuguli za kimwili",
+            "key": "chk_disseminated_intravascular_coagulopathy",
+            "text": "Disseminated intravascular coagulopathy (DIC)",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_physical_activity"
+            "openmrs_entity_id": "chk_disseminated_intravascular_coagulopathy"
           },
           {
-            "key": "chk_use_folic_acid",
-            "text": "Matumizi ya Madini Chuma (Iron) Foliki Asidi kila siku",
+            "key": "chk_prom",
+            "text": "PROM",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_use_folic_acid"
+            "openmrs_entity_id": "chk_prom"
           },
           {
-            "key": "chk_counsel_llin",
-            "text": "Utoaji na ushauri juu ya  matumizi ya chandarua (LLIN)",
+            "key": "chk_malaria",
+            "text": "Malaria",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_counsel_llin"
+            "openmrs_entity_id": "chk_malaria"
           },
           {
-            "key": "chk_child_feeding",
-            "text": "Ulishaji wa mtoto",
+            "key": "chk_anaemia",
+            "text": "Anaemia",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_child_feeding"
+            "openmrs_entity_id": "chk_anaemia"
+          },
+          {
+            "key": "chk_fgm",
+            "text": "FGM",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_fgm"
+          },
+          {
+            "key": "chk_aph",
+            "text": "APH",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_aph"
+          },
+          {
+            "key": "chk_none",
+            "text": "None",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_none"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhali chagua angalau moja"
+          "err": "Please pick at least one"
         }
       }
     ]

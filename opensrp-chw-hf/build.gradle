@@ -252,7 +252,7 @@ flavors.each { productFlavorName ->
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation('org.smartregister:opensrp-client-chw-core:1.5.31.4-NACP-SNAPSHOT@aar') {
+    implementation('org.smartregister:opensrp-client-chw-core:1.5.31.5-NACP-SNAPSHOT@aar') {
 //    implementation(project(":opensrp-chw-core")) {
         transitive = true
         exclude group: 'com.android.support', module: 'appcompat-v7'
@@ -260,9 +260,10 @@ dependencies {
         exclude group: 'androidx.appcompat', module: 'appcompat'
         exclude group: 'androidx.constraintlayout', module: 'constraintlayout'
         exclude group: 'com.google.guava', module: 'guava'
-        exclude group: 'com.rengwuxian.materialedittext', module: 'library'
+        exclude group: 'org.smartregister', module: 'opensrp-client-materialedittext'
     }
     //Do not upgrade to 1.1.0 due to compatibility issues
+    implementation 'com.github.rey5137:material:1.2.5'
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'

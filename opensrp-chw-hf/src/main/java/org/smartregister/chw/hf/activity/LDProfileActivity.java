@@ -12,6 +12,7 @@ import android.widget.TextView;
 import org.joda.time.DateTime;
 import org.joda.time.Period;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.utils.LDVisitUtils;
 import org.smartregister.chw.ld.LDLibrary;
 import org.smartregister.chw.ld.activity.BaseLDProfileActivity;
 import org.smartregister.chw.ld.dao.LDDao;
@@ -37,14 +38,48 @@ public class LDProfileActivity extends BaseLDProfileActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        setupViews();
         setTextViewRecordLDText();
     }
 
     protected void setupViews() {
         super.setupViews();
-        textViewRecordLD.setText("Examination/Consultation");
 
-        Visit lastLDVisit = LDLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), "Visit Type");
+        try {
+            LDVisitUtils.processVisits(memberObject.getBaseEntityId());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        Visit lastLDVisit = getLastVisit();
+        if (lastLDVisit != null && !lastLDVisit.getProcessed()) {
+            showVisitInProgress();
+            setUpEditButton();
+        } else {
+            textViewRecordLD.setVisibility(View.VISIBLE);
+            textViewVisitDoneEdit.setVisibility(View.GONE);
+            visitDone.setVisibility(View.GONE);
+        }
+
+    }
+
+    private void showVisitInProgress() {
+        textViewRecordLD.setVisibility(View.GONE);
+        textViewVisitDoneEdit.setVisibility(View.VISIBLE);
+        visitDone.setVisibility(View.VISIBLE);
+        textViewVisitDone.setText(this.getString(R.string.visit_in_progress, org.smartregister.chw.hf.utils.Constants.Visits.LD_GENERAL_VISIT));
+        textViewVisitDone.setTextColor(getResources().getColor(R.color.black_text_color));
+        imageViewCross.setImageResource(R.drawable.activityrow_visit_in_progress);
+    }
+
+    private Visit getLastVisit() {
+        return LDLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), Constants.EVENT_TYPE.LD_GENERAL_EXAMINATION);
+    }
+
+    private void setUpEditButton() {
+        textViewVisitDoneEdit.setOnClickListener(v -> {
+            LDVisitActivity.startLDVisitActivity(this, memberObject.getBaseEntityId(), true);
+        });
     }
 
     @Override

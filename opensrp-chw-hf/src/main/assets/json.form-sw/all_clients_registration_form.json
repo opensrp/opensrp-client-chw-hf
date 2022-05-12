@@ -284,7 +284,7 @@
         "max_date": "today",
         "v_required": {
           "value": "true",
-          "err": "Tarehe ya kuzaliwa (DOB)"
+          "err": "Tafadhali ingiza tarehe ya kuzaliwa (DOB)"
         },
         "relevance": {
           "rules-engine": {
@@ -388,7 +388,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhali ingiza jinsia"
+          "err": "Tafadhali ingiza jinsi"
         }
       },
       {
@@ -618,10 +618,10 @@
           "Mfuko wa Taifa wa Hifadhi ya Jamii - Manufaa ya Bima ya Afya ya Jamii (SHIB)",
           "Mfuko wa Taifa wa Bima ya Afya (NHIF)",
           "Tiba Kwa Kadi (TIKA)",
-          "AAR Healthcare",
-          "Bima ya Strategies",
+          "AAR Huduma ya Afya",
+          "Bima ya afya ya Strategies",
           "Milvik Tanzania Ltd (BIMA Mkononi)",
-          "Bima ya afya ya Britam",
+          "Bima ya afya ya Britam Tanzania",
           "Bima ya afya ya Jubilee",
           "Bima ya afya ya resolution",
           "Bima ya afya ya reliance",

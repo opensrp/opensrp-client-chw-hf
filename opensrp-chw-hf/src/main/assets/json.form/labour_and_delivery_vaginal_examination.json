@@ -134,35 +134,55 @@
       },
       {
         "key": "presenting_part",
-        "type": "spinner",
+        "type": "native_radio",
         "openmrs_entity_id": "presenting_part",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "hint": "Presenting part",
-        "values": [
-          "Vertex",
-          "Breech",
-          "Brow",
-          "Shoulder",
-          "Face",
-          "Cord"
-        ],
-        "keys": [
-          "vertex",
-          "breech",
-          "brow",
-          "shoulder",
-          "face",
-          "cord"
-        ],
-        "openmrs_choice_ids": {
-          "vertex": "vertex",
-          "breech": "breech",
-          "brow": "brow",
-          "shoulder": "shoulder",
-          "face": "face",
-          "cord": "cord"
-        }
+        "label": "Presenting part",
+        "options": [
+          {
+            "key": "vertex",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "vertex",
+            "openmrs_entity_parent": "",
+            "text": "Vertex"
+          },
+          {
+            "key": "breech",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "breech",
+            "openmrs_entity_parent": "",
+            "text": "Breech"
+          },
+          {
+            "key": "brow",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "brow",
+            "openmrs_entity_parent": "",
+            "text": "Brow"
+          },
+          {
+            "key": "shoulder",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "shoulder",
+            "openmrs_entity_parent": "",
+            "text": "Shoulder"
+          },
+          {
+            "key": "face",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "face",
+            "openmrs_entity_parent": "",
+            "text": "Face"
+          },
+          {
+            "key": "cord",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "cord",
+            "openmrs_entity_parent": "",
+            "text": "Cord"
+          }
+        ]
       },
       {
         "key": "prompt_for_presenting_part",
@@ -288,6 +308,10 @@
             "type": "string",
             "ex": "equalTo(., \"yes\")"
           }
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please select an option"
         }
       },
       {
