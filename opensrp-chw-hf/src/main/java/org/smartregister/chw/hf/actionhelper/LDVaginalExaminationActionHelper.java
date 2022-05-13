@@ -3,9 +3,16 @@ package org.smartregister.chw.hf.actionhelper;
 import android.content.Context;
 
 import org.apache.commons.lang3.StringUtils;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.smartregister.chw.core.utils.FormUtils;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.utils.Constants;
+import org.smartregister.chw.ld.dao.LDDao;
 import org.smartregister.chw.ld.domain.VisitDetail;
 import org.smartregister.chw.ld.model.BaseLDVisitAction;
+import org.smartregister.chw.referral.util.JsonFormConstants;
 import org.smartregister.util.JsonFormUtils;
 
 import java.util.List;
@@ -27,9 +34,11 @@ public class LDVaginalExaminationActionHelper implements BaseLDVisitAction.LDVis
     private String moulding;
     private String station;
     private String decision;
+    private final String baseEntityId;
 
-    public LDVaginalExaminationActionHelper(Context context) {
+    public LDVaginalExaminationActionHelper(Context context, String baseEntityId) {
         this.context = context;
+        this.baseEntityId = baseEntityId;
     }
 
     @Override
@@ -39,7 +48,24 @@ public class LDVaginalExaminationActionHelper implements BaseLDVisitAction.LDVis
 
     @Override
     public String getPreProcessed() {
-        return null;
+        JSONObject vaginalExaminationForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.LDVisit.getLdVaginalExamination());
+        if (vaginalExaminationForm != null) {
+            try {
+                JSONArray fields = vaginalExaminationForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+                populateVaginalExaminationForm(fields, baseEntityId);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if (LDDao.getMembraneStateDuringAdmissionToLabour(baseEntityId) != null) {
+            try {
+                vaginalExaminationForm.getJSONObject("global").put("membrane_status", LDDao.getMembraneStateDuringAdmissionToLabour(baseEntityId));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return vaginalExaminationForm.toString();
     }
 
     @Override
@@ -107,7 +133,7 @@ public class LDVaginalExaminationActionHelper implements BaseLDVisitAction.LDVis
                 StringUtils.isNotBlank(moulding) &&
                 StringUtils.isNotBlank(station) &&
                 StringUtils.isNotBlank(decision)
-                );
+        );
     }
 
     private boolean isPartiallyCompleted() {
@@ -120,6 +146,14 @@ public class LDVaginalExaminationActionHelper implements BaseLDVisitAction.LDVis
                 StringUtils.isNotBlank(moulding) ||
                 StringUtils.isNotBlank(station) ||
                 StringUtils.isNotBlank(decision)
-                );
+        );
+    }
+
+    private void populateVaginalExaminationForm(JSONArray fields, String baseEntityId) throws JSONException {
+        JSONObject vaginalExamDate = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "vaginal_exam_date");
+
+        if (LDDao.getLabourOnsetDate(baseEntityId) != null) {
+            vaginalExamDate.put("min_date", LDDao.getLabourOnsetDate(baseEntityId));
+        }
     }
 }
