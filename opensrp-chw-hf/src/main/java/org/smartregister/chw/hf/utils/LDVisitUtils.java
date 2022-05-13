@@ -58,7 +58,6 @@ public class LDVisitUtils extends VisitUtils {
                 boolean isOcciputPositionDone = computeCompletionStatus(obs, "occiput_position");
                 boolean isMouldingDone = computeCompletionStatus(obs, "moulding");
                 boolean isStationDone = computeCompletionStatus(obs, "station");
-                boolean isAmnioticFluidDone = computeCompletionStatus(obs, "amniotic_fluid");
                 boolean isDecisionDone = computeCompletionStatus(obs, "decision");
 
                 if (isGeneralConditionDone &&
@@ -80,7 +79,6 @@ public class LDVisitUtils extends VisitUtils {
                         isOcciputPositionDone &&
                         isMouldingDone &&
                         isStationDone &&
-                        isAmnioticFluidDone &&
                         isDecisionDone) {
                     ldVisits.add(visit);
                 }

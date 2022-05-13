@@ -59,7 +59,7 @@ public class LDPartographInteractorFlv implements LDPartographInteractor.Flavor 
                 .withOptional(false)
                 .withDetails(details)
                 .withFormName(Constants.JsonForm.LabourAndDeliveryPartograph.getPartographTimeForm())
-                .withHelper(new LDPartographTimeActionHelper(memberObject))
+                .withHelper(new LDPartographTimeActionHelper(memberObject, memberObject.getBaseEntityId()))
                 .build();
 
         actionList.put(context.getString(R.string.ld_partograph_time), partographTime);

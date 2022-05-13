@@ -5163,6 +5163,13 @@
           "column_name": "base_entity_id",
           "type": "Event",
           "json_mapping": {
+            "field": "form_submission_id"
+          }
+        },
+        {
+          "column_name": "entity_id",
+          "type": "Event",
+          "json_mapping": {
             "field": "baseEntityId"
           }
         },
@@ -5198,11 +5205,19 @@
           }
         },
         {
+          "column_name": "moulding",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "moulding"
+          }
+        },
+        {
           "column_name": "moulding_options",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "formSubmissionField": "fetal_heart_rate"
+            "formSubmissionField": "moulding_options"
           }
         },
         {
@@ -5291,6 +5306,13 @@
           "json_mapping": {
             "field": "obs.fieldCode",
             "formSubmissionField": "diastolic"
+          }
+        },
+        {
+          "column_name": "last_interacted_with",
+          "type": "Event",
+          "json_mapping": {
+            "field": "version"
           }
         }
       ]
