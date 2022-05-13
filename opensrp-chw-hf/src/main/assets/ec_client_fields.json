@@ -4968,6 +4968,14 @@
           }
         },
         {
+          "column_name": "mode_of_delivery",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "mode_of_delivery"
+          }
+        },
+        {
           "column_name": "last_interacted_with",
           "type": "Event",
           "json_mapping": {
