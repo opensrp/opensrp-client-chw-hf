@@ -53,6 +53,7 @@
       "value": ""
     }
   },
+  "global": {},
   "step1": {
     "title": "Partograph Time",
     "fields": [
@@ -60,7 +61,7 @@
         "key": "partograph_date",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "labour_onset_date",
+        "openmrs_entity_id": "partograph_date",
         "type": "date_picker",
         "hint": "Partograph Date",
         "expanded": false,
@@ -68,12 +69,33 @@
         "max_date": "today"
       },
       {
+        "key": "last_partograph_monitoring_time",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "last_partograph_monitoring_time",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_partograph_monitoring_time_calculation.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "partograph_time",
         "type": "time_picker",
         "hint": "Partograph Time",
-        "openmrs_entity_id": "labour_onset_time",
+        "openmrs_entity_id": "partograph_time",
         "openmrs_entity": "concept",
-        "openmrs_entity_parent": ""
+        "openmrs_entity_parent": "",
+        "constraints": [
+          {
+            "type": "time",
+            "ex": "greaterThan(., step1:last_partograph_monitoring_time)",
+            "err": "The partograph monitoring time cannot be before the previously captured partograph monitoring time"
+          }
+        ]
       }
     ]
   }

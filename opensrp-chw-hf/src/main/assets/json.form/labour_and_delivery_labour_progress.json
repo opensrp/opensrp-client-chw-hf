@@ -58,14 +58,19 @@
     "fields": [
       {
         "key": "cervix_dilation",
-        "type": "edit_text",
-        "hint": "Cervix (Cervical Dilation)",
-        "openmrs_entity_id": "cervix_dilation",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "v_numeric": {
-          "value": "true",
-          "err": "Please enter cervical dilation"
+        "openmrs_entity_id": "cervix_dilation",
+        "type": "numbers_selector",
+        "number_of_selectors": "10",
+        "start_number": "1",
+        "max_value": "10",
+        "text_size": "18px",
+        "text_color": "#000000",
+        "selected_text_color": "#ffffff",
+        "v_required": {
+          "value": true,
+          "err": "Please enter the cervix dilation number"
         }
       },
       {

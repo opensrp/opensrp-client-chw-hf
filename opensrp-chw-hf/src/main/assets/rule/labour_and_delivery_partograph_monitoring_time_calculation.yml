@@ -1,0 +1,7 @@
+---
+name: step1_last_partograph_monitoring_time
+description: last_partograph_monitoring_time calculated
+priority: 1
+condition: "true"
+actions:
+  - "calculation = step1_partograph_date == global_partograph_monitoring_date? global_partograph_monitoring_time : '00:00'"
