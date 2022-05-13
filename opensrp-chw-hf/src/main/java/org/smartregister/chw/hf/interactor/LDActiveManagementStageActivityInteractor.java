@@ -134,10 +134,11 @@ public class LDActiveManagementStageActivityInteractor extends BaseLDVisitIntera
     private static class ExpulsionOfPlacentaHelper implements BaseLDVisitAction.LDVisitActionHelper {
 
         private String placenta_and_membrane_expulsion;
+        private Context context;
 
         @Override
         public void onJsonFormLoaded(String jsonString, Context context, Map<String, List<VisitDetail>> details) {
-
+            this.context = context;
         }
 
         @Override
@@ -169,7 +170,7 @@ public class LDActiveManagementStageActivityInteractor extends BaseLDVisitIntera
         public String evaluateSubTitle() {
             if (StringUtils.isNotBlank(placenta_and_membrane_expulsion)) {
                 if (placenta_and_membrane_expulsion.equalsIgnoreCase("retained_placenta")) {
-                    return "Placenta Retained";
+                    return context.getString(R.string.ld_placent_retained_message);
                 }
             }
             return null;
@@ -197,10 +198,11 @@ public class LDActiveManagementStageActivityInteractor extends BaseLDVisitIntera
     private static class MassageUterusAfterDeliveryActionHelper implements BaseLDVisitAction.LDVisitActionHelper {
 
         private String uterus_massage_after_delivery;
+        private Context context;
 
         @Override
         public void onJsonFormLoaded(String jsonString, Context context, Map<String, List<VisitDetail>> details) {
-
+            this.context = context;
         }
 
         @Override
@@ -232,7 +234,7 @@ public class LDActiveManagementStageActivityInteractor extends BaseLDVisitIntera
         public String evaluateSubTitle() {
             if (StringUtils.isNotBlank(uterus_massage_after_delivery)) {
                 if (uterus_massage_after_delivery.equalsIgnoreCase("no")) {
-                    return "The woman did not receive uterus massage";
+                    return context.getString(R.string.ld_no_uterus_massage);
                 }
             }
             return null;

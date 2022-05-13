@@ -261,5 +261,11 @@
     <string name="lb_visit_vaginal_examination">Vaginal examination</string>
     <string name="lb_visit_general_examination">General examination</string>
     <string name="lb_mode_of_delivery">Mode of Delivery</string>
+    <string name="ld_active_management_3rd_stage">Active Management of 3rd Stage</string>
+    <string name="uterotonic">Uterotonic</string>
+    <string name="ld_massage_uterus_after_delivery">Massage the uterus after delivery</string>
+    <string name="ld_expulsion_of_placenta">Expulsion of the placenta and membranes</string>
+    <string name="ld_placent_retained_message">Placenta Retained</string>
+    <string name="ld_no_uterus_massage">The woman did not receive uterus massage</string>
 
 </resources>
