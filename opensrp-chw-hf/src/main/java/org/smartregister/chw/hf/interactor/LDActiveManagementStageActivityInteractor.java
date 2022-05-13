@@ -3,9 +3,7 @@ package org.smartregister.chw.hf.interactor;
 import android.content.Context;
 
 import org.apache.commons.lang3.StringUtils;
-import org.hl7.fhir.r4.model.Base;
 import org.smartregister.chw.anc.util.VisitUtils;
-import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hf.utils.LDVisitUtils;
@@ -191,7 +189,7 @@ public class LDActiveManagementStageActivityInteractor extends BaseLDVisitIntera
 
         @Override
         public void onPayloadReceived(BaseLDVisitAction ldVisitAction) {
-
+            //Todo: Implement here
         }
     }
 
@@ -262,10 +260,11 @@ public class LDActiveManagementStageActivityInteractor extends BaseLDVisitIntera
     private static class UterotonicActionHelper implements BaseLDVisitAction.LDVisitActionHelper {
 
         private String uterotonic;
+        private Context context;
 
         @Override
         public void onJsonFormLoaded(String jsonString, Context context, Map<String, List<VisitDetail>> details) {
-
+            this.context = context;
         }
 
         @Override
