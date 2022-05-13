@@ -253,7 +253,7 @@ public class LDActiveManagementStageActivityInteractor extends BaseLDVisitIntera
 
         @Override
         public void onPayloadReceived(BaseLDVisitAction ldVisitAction) {
-
+            //Todo: Implement here
         }
     }
 
@@ -308,7 +308,7 @@ public class LDActiveManagementStageActivityInteractor extends BaseLDVisitIntera
 
         @Override
         public void onPayloadReceived(BaseLDVisitAction ldVisitAction) {
-
+            //Todo: Implement here
         }
     }
 }
