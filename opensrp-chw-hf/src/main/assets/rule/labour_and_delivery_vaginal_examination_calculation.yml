@@ -1,0 +1,7 @@
+---
+name: step1_labour_onset_time
+description: labour_onset_time calculated
+priority: 1
+condition: "true"
+actions:
+  - "calculation = step1_vaginal_exam_date == global_labour_onset_date? global_labour_onset_time : '00:00'"

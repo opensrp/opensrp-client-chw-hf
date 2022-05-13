@@ -53,7 +53,9 @@
       "value": ""
     }
   },
-  "global": {},
+  "global": {
+    "labour_onset_time": "00:00"
+  },
   "step1": {
     "title": "Vaginal Examination",
     "fields": [
@@ -69,12 +71,33 @@
         "max_date": "today"
       },
       {
+        "key": "labour_onset_time",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "labour_onset_time",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_vaginal_examination_calculation.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "vaginal_exam_time",
         "type": "time_picker",
         "hint": "Vaginal examination Time",
         "openmrs_entity_id": "vaginal_exam_time",
         "openmrs_entity": "concept",
-        "openmrs_entity_parent": ""
+        "openmrs_entity_parent": "",
+        "constraints": [
+          {
+            "type": "time",
+            "ex": "greaterThan(., step1:labour_onset_time)",
+            "err": "The vaginal examination time cannot be before labour onset time"
+          }
+        ]
       },
       {
         "key": "cervix_state",
