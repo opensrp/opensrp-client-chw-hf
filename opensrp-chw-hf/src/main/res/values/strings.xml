@@ -260,5 +260,6 @@
     <string name="lb_partially_completed_action">Partially Completed</string>
     <string name="lb_visit_vaginal_examination">Vaginal examination</string>
     <string name="lb_visit_general_examination">General examination</string>
+    <string name="lb_mode_of_delivery">Mode of Delivery</string>
 
 </resources>
