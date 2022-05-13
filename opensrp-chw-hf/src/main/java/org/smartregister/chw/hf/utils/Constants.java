@@ -77,6 +77,7 @@ public class Constants extends CoreConstants {
         public static final String PMTCT_VISIT = "Pmtct";
         public static final String HEI_VISIT = "HEI";
         public static final String LD_GENERAL_VISIT = "L&D Examination";
+        public static final String LD_PARTOGRAPH_VISIT = "L&D Partograph";
     }
 
     public static final class ActionList {
