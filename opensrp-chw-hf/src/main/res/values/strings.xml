@@ -202,6 +202,10 @@
     <string name="call_child_caregiver">CALL CHILD\'s CAREGIVER</string>
     <string name="pnc_reports_title">PNC REPORTS</string>
 
+    <string name="all_hei_clients">All</string>
+    <string name="tomorrow_hei_clients">Tomorrow Visits</string>
+    <string name="missed_hei_clients">Missed</string>
+
     <string name="search">Search</string>
     <string name="global_search">Global Search</string>
     <string name="matching_results">%1$s matching results found.</string>

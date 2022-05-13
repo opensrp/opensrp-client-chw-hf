@@ -215,11 +215,12 @@ public class HeiFollowupVisitInteractorFlv implements PmtctFollowupVisitInteract
             actionList.put(context.getString(R.string.arv_prescription_nvp), ARVPrescriptionHighAndLowRisk);
     }
 
-    private void evaluateNextVisitAction(LinkedHashMap<String, BasePmtctHomeVisitAction> actionList, Map<String, List<VisitDetail>> details, Context context) throws BasePmtctHomeVisitAction.ValidationException {
+    private void evaluateNextVisitAction(LinkedHashMap<String, BasePmtctHomeVisitAction> actionList, Map<String, List<VisitDetail>> details, Context context, JSONObject nextVisitForm) throws BasePmtctHomeVisitAction.ValidationException {
         BasePmtctHomeVisitAction NextFollowupVisitDate = new BasePmtctHomeVisitAction.Builder(context, context.getString(R.string.next_visit))
                 .withOptional(false)
                 .withDetails(details)
                 .withFormName(Constants.JsonForm.getNextFacilityVisitForm())
+                .withJsonPayload(nextVisitForm.toString())
                 .withHelper(new NextFollowupVisitAction())
                 .build();
         actionList.put(context.getString(R.string.next_visit), NextFollowupVisitDate);
@@ -349,13 +350,30 @@ public class HeiFollowupVisitInteractorFlv implements PmtctFollowupVisitInteract
                 } catch (JSONException e) {
                     Timber.e(e);
                 }
+
+                JSONObject nextVisitForm = null;
+                try {
+                    nextVisitForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.getNextFacilityVisitForm());
+
+                    JSONArray fields = nextVisitForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+                    //update visit number
+                    JSONObject visitNumber = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "visit_number");
+                    visitNumber.put(JsonFormUtils.VALUE, HeiDao.getVisitNumber(memberObject.getBaseEntityId()));
+
+                    //loads details to the form
+                    if (details != null && !details.isEmpty()) {
+                        JsonFormUtils.populateForm(nextVisitForm, details);
+                    }
+                } catch (JSONException e) {
+                    Timber.e(e);
+                }
                 try {
                     evaluateDnaPcrAction(actionList, details, memberObject, context, dnaPcrForm);
                     evaluateAntibodyTest(actionList, details, memberObject, context);
                     evaluateCtxPrescription(actionList, details, memberObject, context, ctxPrescriptionForm);
                     evaluateArvPrescriptionHighRisk(actionList, details, memberObject, context, arvPrescriptionForHighRiskForm);
                     evaluateArvPrescription(actionList, details, memberObject, context, arvPrescriptionForHighAndLowRiskForm);
-                    evaluateNextVisitAction(actionList, details, context);
+                    evaluateNextVisitAction(actionList, details, context, nextVisitForm);
                 } catch (Exception e) {
                     Timber.e(e);
                 }

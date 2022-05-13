@@ -241,5 +241,8 @@
     <string name="height_in_cm">Urefu: {0} cm</string>
     <string name="fundal_height">Kimo cha mimba: {0} cm</string>
     <string name="hiv_status">Kipimo cha VVU: {0}</string>
+    <string name="all_hei_clients">Watoto wote</string>
+    <string name="tomorrow_hei_clients">Hudhurio la Kesho</string>
+    <string name="missed_hei_clients">Waliokosa</string>
 
 </resources>
