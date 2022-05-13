@@ -1,0 +1,1145 @@
+{
+  "validate_on_submit": true,
+  "show_errors_on_submit": false,
+  "count": "1",
+  "encounter_type": "LND Newborn",
+  "entity_id": "",
+  "relational_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "step1": {
+    "title": "Stage 4 - Newborn",
+    "fields": [
+      {
+        "key": "newborn_status",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "newborn_status",
+        "label": "Status",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "alive",
+            "text": "Alive",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "alive"
+          },
+          {
+            "key": "still_birth",
+            "text": "Still birth",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "still_birth"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please select an option"
+        }
+      },
+      {
+        "key": "still_birth_choice",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "still_birth_choice",
+        "label": "Still Birth",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "fsb",
+            "text": "FSB",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "fsb"
+          },
+          {
+            "key": "msb",
+            "text": "MSB",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "msb"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please select an option"
+        },
+        "relevance": {
+          "step1:newborn_status": {
+            "type": "string",
+            "ex": "equalTo(.,\"still_birth\")"
+          }
+        }
+      },
+      {
+        "key": "no_immediate_new_born",
+        "type": "repeating_group",
+        "reference_edit_text_hint": "Number of children born",
+        "repeating_group_label": "Baby Details #",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "",
+        "repeating_group_max": "4",
+        "expand_on_text_change": "true",
+        "relevance": {
+          "step1:newborn_status": {
+            "type": "string",
+            "ex": "equalTo(.,\"alive\")"
+          }
+        },
+        "value": [
+          {
+            "key": "sex",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "sex",
+            "type": "spinner",
+            "hint": "Sex",
+            "values": [
+              "Male",
+              "Female"
+            ],
+            "keys": [
+              "Male",
+              "Female"
+            ],
+            "v_required": {
+              "value": "true",
+              "err": "Please select the sex"
+            }
+          },
+          {
+            "key": "prompt_for_apgar_1_minute",
+            "type": "toaster_notes",
+            "text": "APGAR (At 1-minute)",
+            "openmrs_entity_id": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_parent": "",
+            "toaster_type": "info"
+          },
+          {
+            "key": "spacer",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "",
+            "type": "spacer",
+            "spacer_height": "8dp"
+          },
+          {
+            "key": "apgar_color_score_label",
+            "type": "label",
+            "text": "Colour",
+            "text_size": "7sp",
+            "text_color": "#000000",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": ""
+          },
+          {
+            "key": "spacer",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "",
+            "type": "spacer",
+            "spacer_height": "8dp"
+          },
+          {
+            "key": "apgar_color_score_1_minute",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "apgar_color_score_1_minute",
+            "type": "numbers_selector",
+            "number_of_selectors": "3",
+            "start_number": "0",
+            "max_value": "2",
+            "text_size": "18px",
+            "text_color": "#000000",
+            "selected_text_color": "#ffffff",
+            "v_required": {
+              "value": true,
+              "err": "Please enter the agpar colour score"
+            }
+          },
+          {
+            "key": "spacer",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "",
+            "type": "spacer",
+            "spacer_height": "8dp"
+          },
+          {
+            "key": "apgar_breath_score_label",
+            "type": "label",
+            "text": "Breath",
+            "text_size": "7sp",
+            "text_color": "#000000",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": ""
+          },
+          {
+            "key": "spacer",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "",
+            "type": "spacer",
+            "spacer_height": "8dp"
+          },
+          {
+            "key": "apgar_breath_score_1_minute",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "apgar_breath_score_1_minute",
+            "type": "numbers_selector",
+            "number_of_selectors": "3",
+            "start_number": "0",
+            "max_value": "2",
+            "text_size": "18px",
+            "text_color": "#000000",
+            "selected_text_color": "#ffffff",
+            "v_required": {
+              "value": true,
+              "err": "Please enter the agpar breath score"
+            }
+          },
+          {
+            "key": "spacer",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "",
+            "type": "spacer",
+            "spacer_height": "8dp"
+          },
+          {
+            "key": "apgar_color_heart_label",
+            "type": "label",
+            "text": "Heart",
+            "text_size": "7sp",
+            "text_color": "#000000",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": ""
+          },
+          {
+            "key": "spacer",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "",
+            "type": "spacer",
+            "spacer_height": "8dp"
+          },
+          {
+            "key": "apgar_heart_score_1_minute",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "apgar_heart_score_1_minute",
+            "type": "numbers_selector",
+            "number_of_selectors": "3",
+            "start_number": "0",
+            "max_value": "2",
+            "text_size": "18px",
+            "text_color": "#000000",
+            "selected_text_color": "#ffffff",
+            "v_required": {
+              "value": true,
+              "err": "Please enter the agpar heart score"
+            }
+          },
+          {
+            "key": "spacer",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "",
+            "type": "spacer",
+            "spacer_height": "8dp"
+          },
+          {
+            "key": "apgar_tone_score_label",
+            "type": "label",
+            "text": "Tone",
+            "text_size": "7sp",
+            "text_color": "#000000",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": ""
+          },
+          {
+            "key": "spacer",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "",
+            "type": "spacer",
+            "spacer_height": "8dp"
+          },
+          {
+            "key": "apgar_tone_score_1_minute",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "apgar_tone_score_1_minute",
+            "type": "numbers_selector",
+            "number_of_selectors": "3",
+            "start_number": "0",
+            "max_value": "2",
+            "text_size": "18px",
+            "text_color": "#000000",
+            "selected_text_color": "#ffffff",
+            "v_required": {
+              "value": true,
+              "err": "Please enter the agpar tone score"
+            }
+          },
+          {
+            "key": "spacer",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "",
+            "type": "spacer",
+            "spacer_height": "8dp"
+          },
+          {
+            "key": "apgar_color_reflex_label",
+            "type": "label",
+            "text": "Reflex",
+            "text_size": "7sp",
+            "text_color": "#000000",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": ""
+          },
+          {
+            "key": "spacer",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "",
+            "type": "spacer",
+            "spacer_height": "8dp"
+          },
+          {
+            "key": "apgar_reflex_score_1_minute",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "apgar_reflex_score_1_minute",
+            "type": "numbers_selector",
+            "number_of_selectors": "3",
+            "start_number": "0",
+            "max_value": "2",
+            "text_size": "18px",
+            "text_color": "#000000",
+            "selected_text_color": "#ffffff",
+            "v_required": {
+              "value": true,
+              "err": "Please enter the agpar reflex score"
+            }
+          },
+          {
+            "key": "spacer",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "",
+            "type": "spacer",
+            "spacer_height": "15dp"
+          },
+          {
+            "key": "apgar_score_at_1_minute",
+            "type": "edit_text",
+            "hint": "Total APGAR Score (At 1 Minute)",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "apgar_score_at_1_minute",
+            "openmrs_entity_parent": "",
+            "read_only": true,
+            "calculation": {
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_calculation.yml"
+                }
+              }
+            }
+          },
+          {
+            "key": "prompt_for_apgar_5_minutes",
+            "type": "toaster_notes",
+            "text": "APGAR (At 5-minutes)",
+            "openmrs_entity_id": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_parent": "",
+            "toaster_type": "info"
+          },
+          {
+            "key": "spacer",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "",
+            "type": "spacer",
+            "spacer_height": "8dp"
+          },
+          {
+            "key": "apgar_color_score_label",
+            "type": "label",
+            "text": "Colour",
+            "text_size": "7sp",
+            "text_color": "#000000",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": ""
+          },
+          {
+            "key": "spacer",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "",
+            "type": "spacer",
+            "spacer_height": "8dp"
+          },
+          {
+            "key": "apgar_color_score_5_minutes",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "apgar_color_score_5_minutes",
+            "type": "numbers_selector",
+            "number_of_selectors": "3",
+            "start_number": "0",
+            "max_value": "2",
+            "text_size": "18px",
+            "text_color": "#000000",
+            "selected_text_color": "#ffffff",
+            "v_required": {
+              "value": true,
+              "err": "Please enter the agpar colour score"
+            }
+          },
+          {
+            "key": "spacer",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "",
+            "type": "spacer",
+            "spacer_height": "8dp"
+          },
+          {
+            "key": "apgar_breath_score_label",
+            "type": "label",
+            "text": "Breath",
+            "text_size": "7sp",
+            "text_color": "#000000",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": ""
+          },
+          {
+            "key": "spacer",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "",
+            "type": "spacer",
+            "spacer_height": "8dp"
+          },
+          {
+            "key": "apgar_breath_score_5_minutes",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "apgar_breath_score_5_minutes",
+            "type": "numbers_selector",
+            "number_of_selectors": "3",
+            "start_number": "0",
+            "max_value": "2",
+            "text_size": "18px",
+            "text_color": "#000000",
+            "selected_text_color": "#ffffff",
+            "v_required": {
+              "value": true,
+              "err": "Please enter the agpar breath score"
+            }
+          },
+          {
+            "key": "spacer",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "",
+            "type": "spacer",
+            "spacer_height": "8dp"
+          },
+          {
+            "key": "apgar_color_heart_label",
+            "type": "label",
+            "text": "Heart",
+            "text_size": "7sp",
+            "text_color": "#000000",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": ""
+          },
+          {
+            "key": "spacer",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "",
+            "type": "spacer",
+            "spacer_height": "8dp"
+          },
+          {
+            "key": "apgar_heart_score_5_minutes",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "apgar_heart_score_5_minutes",
+            "type": "numbers_selector",
+            "number_of_selectors": "3",
+            "start_number": "0",
+            "max_value": "2",
+            "text_size": "18px",
+            "text_color": "#000000",
+            "selected_text_color": "#ffffff",
+            "v_required": {
+              "value": true,
+              "err": "Please enter the agpar heart score"
+            }
+          },
+          {
+            "key": "spacer",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "",
+            "type": "spacer",
+            "spacer_height": "8dp"
+          },
+          {
+            "key": "apgar_tone_score_label",
+            "type": "label",
+            "text": "Tone",
+            "text_size": "7sp",
+            "text_color": "#000000",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": ""
+          },
+          {
+            "key": "spacer",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "",
+            "type": "spacer",
+            "spacer_height": "8dp"
+          },
+          {
+            "key": "apgar_tone_score_5_minutes",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "apgar_tone_score_5_minutes",
+            "type": "numbers_selector",
+            "number_of_selectors": "3",
+            "start_number": "0",
+            "max_value": "2",
+            "text_size": "18px",
+            "text_color": "#000000",
+            "selected_text_color": "#ffffff",
+            "v_required": {
+              "value": true,
+              "err": "Please enter the agpar tone score"
+            }
+          },
+          {
+            "key": "spacer",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "",
+            "type": "spacer",
+            "spacer_height": "8dp"
+          },
+          {
+            "key": "apgar_color_reflex_label",
+            "type": "label",
+            "text": "Reflex",
+            "text_size": "7sp",
+            "text_color": "#000000",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": ""
+          },
+          {
+            "key": "spacer",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "",
+            "type": "spacer",
+            "spacer_height": "8dp"
+          },
+          {
+            "key": "apgar_reflex_score_5_minutes",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "apgar_reflex_score_5_minutes",
+            "type": "numbers_selector",
+            "number_of_selectors": "3",
+            "start_number": "0",
+            "max_value": "2",
+            "text_size": "18px",
+            "text_color": "#000000",
+            "selected_text_color": "#ffffff",
+            "v_required": {
+              "value": true,
+              "err": "Please enter the agpar reflex score"
+            }
+          },
+          {
+            "key": "spacer",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "",
+            "type": "spacer",
+            "spacer_height": "15dp"
+          },
+          {
+            "key": "apgar_score_at_5_minutes",
+            "type": "edit_text",
+            "hint": "Total APGAR Score (At 5 Minutes)",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "apgar_score_at_5_minutes",
+            "openmrs_entity_parent": "",
+            "read_only": true,
+            "calculation": {
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_calculation.yml"
+                }
+              }
+            }
+          },
+          {
+            "key": "resuscitation",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "resuscitation",
+            "label": "Resuscitation",
+            "text_color": "#000000",
+            "type": "native_radio",
+            "options": [
+              {
+                "key": "no_resuscitation",
+                "text": "No Resuscitation",
+                "openmrs_entity_parent": "",
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "no_resuscitation"
+              },
+              {
+                "key": "suction_only",
+                "text": "Suction Only",
+                "openmrs_entity_parent": "",
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "suction_only"
+              },
+              {
+                "key": "suction_and_bag_mask",
+                "text": "Suction and Bag Mask",
+                "openmrs_entity_parent": "",
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "suction_and_bag_mask"
+              },
+              {
+                "key": "stimulation",
+                "text": "Stimulation",
+                "openmrs_entity_parent": "",
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "stimulation"
+              }
+            ],
+            "v_required": {
+              "value": true,
+              "err": "Please select an option"
+            }
+          },
+          {
+            "key": "temperature",
+            "type": "edit_text",
+            "hint": "Temperature (C)",
+            "openmrs_entity_id": "temperature",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "v_numeric": {
+              "value": "true",
+              "err": "Please enter the temperature"
+            },
+            "v_min": {
+              "value": "10",
+              "err": "Temperature must be equal or greater than 10"
+            },
+            "v_max": {
+              "value": "50",
+              "err": "Temperature must be equal or less than 50"
+            },
+            "v_required": {
+              "value": true,
+              "err": "Please enter the temperature"
+            }
+          },
+          {
+            "key": "weight",
+            "type": "edit_text",
+            "hint": "Weight (KG)",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "weight",
+            "openmrs_entity_parent": "",
+            "v_numeric": {
+              "value": "true",
+              "err": "Please enter the weight"
+            },
+            "v_min": {
+              "value": "0",
+              "err": "The weight must be equal or greater than 0 (KG)"
+            },
+            "v_max": {
+              "value": "7",
+              "err": "The weight must be equal or less than 7 (KG)"
+            },
+            "v_required": {
+              "value": true,
+              "err": "Please enter the weight"
+            }
+          },
+          {
+            "key": "prompt_for_underweight",
+            "type": "toaster_notes",
+            "text": "Manage according to National guideline",
+            "openmrs_entity_id": "",
+            "openmrs_entity": "",
+            "openmrs_entity_parent": "",
+            "toaster_type": "problem",
+            "relevance": {
+              "step1:weight": {
+                "type": "numeric",
+                "ex": "lessThan(.,\"1.5\")"
+              }
+            }
+          },
+          {
+            "key": "heart_rate",
+            "type": "edit_text",
+            "hint": "Heart Rate (bpm)",
+            "openmrs_entity_id": "heart_rate",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "v_numeric": {
+              "value": "true",
+              "err": "Please enter the heart rate"
+            },
+            "v_min": {
+              "value": "0",
+              "err": "The heart rate must be equal or greater than 0 (bpm)"
+            },
+            "v_max": {
+              "value": "200",
+              "err": "The heart rate must be equal or less than 200 (bpm)"
+            }
+          },
+          {
+            "key": "keep_warm",
+            "type": "native_radio",
+            "label": "Keep Warm (skin to skin)",
+            "openmrs_entity_id": "keep_warm",
+            "openmrs_entity": "concept",
+            "openmrs_entity_parent": "",
+            "options": [
+              {
+                "key": "yes",
+                "text": "Yes",
+                "openmrs_entity_id": "yes",
+                "openmrs_entity": "concept"
+              },
+              {
+                "key": "no",
+                "text": "No",
+                "openmrs_entity_id": "no",
+                "openmrs_entity": "concept"
+              }
+            ],
+            "v_required": {
+              "value": true,
+              "err": "Please answer this question"
+            }
+          },
+          {
+            "key": "breathing_rate",
+            "type": "edit_text",
+            "hint": "Breathing Rate (bpm)",
+            "openmrs_entity_id": "breathing_rate",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "v_numeric": {
+              "value": "true",
+              "err": "Please enter the breathing rate"
+            },
+            "v_min": {
+              "value": "0",
+              "err": "The breathing rate must be equal or greater than 0 (bpm)"
+            },
+            "v_max": {
+              "value": "100",
+              "err": "The breathing rate must be equal or less than 200 (bpm)"
+            }
+          },
+          {
+            "key": "cord_bleeding",
+            "type": "native_radio",
+            "label": "Cord Bleeding",
+            "openmrs_entity_id": "cord_bleeding",
+            "openmrs_entity": "concept",
+            "openmrs_entity_parent": "",
+            "options": [
+              {
+                "key": "yes",
+                "text": "Yes",
+                "openmrs_entity_id": "yes",
+                "openmrs_entity": "concept"
+              },
+              {
+                "key": "no",
+                "text": "No",
+                "openmrs_entity_id": "no",
+                "openmrs_entity": "concept"
+              }
+            ],
+            "v_required": {
+              "value": true,
+              "err": "Please answer this question"
+            }
+          },
+          {
+            "key": "prompt_for_cord_bleeding",
+            "type": "toaster_notes",
+            "text": "Manage according to National guideline",
+            "openmrs_entity_id": "",
+            "openmrs_entity": "",
+            "openmrs_entity_parent": "",
+            "toaster_type": "problem",
+            "relevance": {
+              "step1:cord_bleeding": {
+                "type": "string",
+                "ex": "equalTo(.,\"yes\")"
+              }
+            }
+          },
+          {
+            "key": "breast_feeding",
+            "type": "native_radio",
+            "label": "Breast Feeding",
+            "openmrs_entity_id": "breast_feeding",
+            "openmrs_entity": "concept",
+            "openmrs_entity_parent": "",
+            "options": [
+              {
+                "key": "yes",
+                "text": "Yes",
+                "openmrs_entity_id": "yes",
+                "openmrs_entity": "concept"
+              },
+              {
+                "key": "no",
+                "text": "No",
+                "openmrs_entity_id": "no",
+                "openmrs_entity": "concept"
+              }
+            ],
+            "v_required": {
+              "value": true,
+              "err": "Please answer this question"
+            }
+          },
+          {
+            "key": "prompt_for_breast_feeding",
+            "type": "toaster_notes",
+            "text": "Manage according to National guideline",
+            "openmrs_entity_id": "",
+            "openmrs_entity": "",
+            "openmrs_entity_parent": "",
+            "toaster_type": "problem",
+            "relevance": {
+              "step1:breast_feeding": {
+                "type": "string",
+                "ex": "equalTo(.,\"no\")"
+              }
+            }
+          },
+          {
+            "key": "eye_care",
+            "type": "native_radio",
+            "label": "Eye Care",
+            "openmrs_entity_id": "eye_care",
+            "openmrs_entity": "concept",
+            "openmrs_entity_parent": "",
+            "options": [
+              {
+                "key": "yes",
+                "text": "Yes",
+                "openmrs_entity_id": "yes",
+                "openmrs_entity": "concept"
+              },
+              {
+                "key": "no",
+                "text": "No",
+                "openmrs_entity_id": "no",
+                "openmrs_entity": "concept"
+              }
+            ],
+            "v_required": {
+              "value": true,
+              "err": "Please answer this question"
+            }
+          },
+          {
+            "key": "reason_for_not_giving_eye_care",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "reason_for_not_giving_eye_care",
+            "type": "spinner",
+            "hint": "Reason as to why eye care was not given",
+            "values": [
+              "Out of stock",
+              "Other (Specify)"
+            ],
+            "keys": [
+              "out_of_stock",
+              "other"
+            ],
+            "openmrs_choice_ids": {
+              "out_of_stock":  "out_of_stock",
+              "other": "other"
+            },
+            "v_required": {
+              "value": "true",
+              "err": "Please select a reason"
+            },
+            "relevance": {
+              "step1:eye_care": {
+                "type": "string",
+                "ex": "equalTo(.,\"no\")"
+              }
+            }
+          },
+          {
+            "key": "other_reason_for_not_giving_eye_care",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other_reason_for_not_giving_eye_care",
+            "type": "edit_text",
+            "hint": "Specify reason(s) for not giving eye care",
+            "v_required": {
+              "value": "true",
+              "err": "Please enter the reason"
+            },
+            "relevance": {
+              "step1:reason_for_not_giving_eye_care": {
+                "type": "string",
+                "ex": "equalTo(., \"other\")"
+              }
+            }
+          },
+          {
+            "key": "risk_category",
+            "type": "native_radio",
+            "label": "HEI",
+            "openmrs_entity_id": "risk_category",
+            "openmrs_entity": "concept",
+            "openmrs_entity_parent": "",
+            "options": [
+              {
+                "key": "high",
+                "text": "High Risk",
+                "openmrs_entity_id": "high",
+                "openmrs_entity": "concept"
+              },
+              {
+                "key": "low",
+                "text": "Low Risk",
+                "openmrs_entity_id": "low",
+                "openmrs_entity": "concept"
+              }
+            ],
+            "v_required": {
+              "value": true,
+              "err": "Please answer this question"
+            }
+          },
+          {
+            "key": "prompt_for_high_risk",
+            "type": "toaster_notes",
+            "text": "Manage according to National guideline",
+            "openmrs_entity_id": "",
+            "openmrs_entity": "",
+            "openmrs_entity_parent": "",
+            "toaster_type": "problem",
+            "relevance": {
+              "step1:risk_category": {
+                "type": "string",
+                "ex": "equalTo(., \"high\")"
+              }
+            }
+          },
+          {
+            "key": "prompt_for_low_risk",
+            "type": "toaster_notes",
+            "text": "Manage according to National guideline",
+            "openmrs_entity_id": "",
+            "openmrs_entity": "",
+            "openmrs_entity_parent": "",
+            "toaster_type": "problem",
+            "relevance": {
+              "step1:risk_category": {
+                "type": "string",
+                "ex": "equalTo(., \"low\")"
+              }
+            }
+          },
+          {
+            "key": "prophylaxis_provided",
+            "type": "native_radio",
+            "label": "Prophylaxis provided",
+            "openmrs_entity_id": "prophylaxis_provided",
+            "openmrs_entity": "concept",
+            "openmrs_entity_parent": "",
+            "options": [
+              {
+                "key": "azt_3tc_nvp",
+                "text": "AZT+3TC+NVP",
+                "openmrs_entity_id": "azt_3tc_nvp",
+                "openmrs_entity": "concept"
+              },
+              {
+                "key": "nvp",
+                "text": "NVP",
+                "openmrs_entity_id": "nvp",
+                "openmrs_entity": "concept"
+              },
+              {
+                "key": "not_given",
+                "text": "Not given (Specify reason)",
+                "openmrs_entity_id": "not_given",
+                "openmrs_entity": "concept"
+              }
+            ],
+            "v_required": {
+              "value": true,
+              "err": "Please answer this question"
+            }
+          },
+          {
+            "key": "reason_prophylaxis_not_provided",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "reason_prophylaxis_not_provided",
+            "type": "edit_text",
+            "hint": "Specify reason(s) for not providing prophylaxis",
+            "edit_type": "name",
+            "v_required": {
+              "value": "true",
+              "err": "Please enter the reason"
+            },
+            "relevance": {
+              "step1:prophylaxis_provided": {
+                "type": "string",
+                "ex": "equalTo(., \"not_given\")"
+              }
+            }
+          },
+          {
+            "key": "collect_dbs",
+            "type": "native_radio",
+            "label": "Collect DBS",
+            "openmrs_entity_id": "collect_dbs",
+            "openmrs_entity": "concept",
+            "openmrs_entity_parent": "",
+            "options": [
+              {
+                "key": "yes",
+                "text": "Yes",
+                "openmrs_entity_id": "yes",
+                "openmrs_entity": "concept"
+              },
+              {
+                "key": "no",
+                "text": "No (Specify reason)",
+                "openmrs_entity_id": "no",
+                "openmrs_entity": "concept"
+              }
+            ],
+            "v_required": {
+              "value": true,
+              "err": "Please answer this question"
+            },
+            "relevance": {
+              "step1:risk_category": {
+                "type": "string",
+                "ex": "equalTo(., \"high\")"
+              }
+            }
+          },
+          {
+            "key": "reason_not_collecting_dbs",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "reason_not_collecting_dbs",
+            "type": "edit_text",
+            "hint": "Specify reason(s) for not collecting DBS",
+            "v_required": {
+              "value": "true",
+              "err": "Please enter the reason"
+            },
+            "relevance": {
+              "step1:collect_dbs": {
+                "type": "string",
+                "ex": "equalTo(., \"no\")"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
