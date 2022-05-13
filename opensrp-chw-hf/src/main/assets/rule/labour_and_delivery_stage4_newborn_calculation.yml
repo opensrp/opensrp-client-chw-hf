@@ -1,0 +1,14 @@
+---
+name: step1_apgar_score_at_1_minute
+description: apgar_score_at_1_minute calculation
+priority: 1
+condition: "step1_apgar_color_score_1_minute != '' && step1_apgar_breath_score_1_minute != '' && step1_apgar_heart_score_1_minute != '' && step1_apgar_tone_score_1_minute != '' && step1_apgar_reflex_score_1_minute != ''"
+actions:
+  - "calculation = step1_apgar_color_score_1_minute + step1_apgar_breath_score_1_minute + step1_apgar_heart_score_1_minute + step1_apgar_tone_score_1_minute + step1_apgar_reflex_score_1_minute"
+---
+name: step1_apgar_score_at_5_minutes
+description: apgar_score_at_5_minutes calculation
+priority: 1
+condition: "step1_apgar_color_score_5_minutes != '' && step1_apgar_breath_score_5_minutes != '' && step1_apgar_heart_score_5_minutes != '' && step1_apgar_tone_score_5_minutes != '' && step1_apgar_reflex_score_5_minutes != ''"
+actions:
+  - "calculation = step1_apgar_color_score_5_minutes + step1_apgar_breath_score_5_minutes + step1_apgar_heart_score_5_minutes + step1_apgar_tone_score_5_minutes + step1_apgar_reflex_score_5_minutes"
