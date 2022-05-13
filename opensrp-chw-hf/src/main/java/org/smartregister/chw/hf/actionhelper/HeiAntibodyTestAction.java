@@ -19,7 +19,7 @@ import timber.log.Timber;
 public class HeiAntibodyTestAction implements BasePmtctHomeVisitAction.PmtctHomeVisitActionHelper {
     protected MemberObject memberObject;
     private String jsonPayload;
-    private String sample_id;
+    private String test_result;
     private Context context;
     private String subTitle;
     private BasePmtctHomeVisitAction.ScheduleStatus scheduleStatus;
@@ -49,7 +49,7 @@ public class HeiAntibodyTestAction implements BasePmtctHomeVisitAction.PmtctHome
     public void onPayloadReceived(String jsonPayload) {
         try {
             JSONObject jsonObject = new JSONObject(jsonPayload);
-            sample_id = CoreJsonFormUtils.getValue(jsonObject, "sample_id");
+            test_result = CoreJsonFormUtils.getValue(jsonObject, "hiv_test_result");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -72,18 +72,18 @@ public class HeiAntibodyTestAction implements BasePmtctHomeVisitAction.PmtctHome
 
     @Override
     public String evaluateSubTitle() {
-        if (StringUtils.isBlank(sample_id))
+        if (StringUtils.isBlank(test_result))
             return null;
 
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(context.getString(R.string.antibody_test_sample_collected));
+        stringBuilder.append(context.getString(R.string.antibody_test_results_filled));
 
         return stringBuilder.toString();
     }
 
     @Override
     public BasePmtctHomeVisitAction.Status evaluateStatusOnPayload() {
-        if (StringUtils.isBlank(sample_id))
+        if (StringUtils.isBlank(test_result))
             return BasePmtctHomeVisitAction.Status.PENDING;
         else {
             return BasePmtctHomeVisitAction.Status.COMPLETED;
