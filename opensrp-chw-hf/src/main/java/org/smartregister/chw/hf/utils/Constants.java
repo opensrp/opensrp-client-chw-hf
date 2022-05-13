@@ -400,6 +400,7 @@ public class Constants extends CoreConstants {
             public static final String LABOUR_AND_DELIVERY_CURRENT_LABOUR = "labour_and_delivery_registration_current_labour";
             public static final String LABOUR_AND_DELIVERY_LABOUR_STAGE = "labour_and_delivery_labour_stage";
             public static final String LABOUR_AND_DELIVERY_CERVIX_DILATION_MONITORING = "labour_and_delivery_cervix_dilation_monitoring";
+            public static final String LABOUR_AND_DELIVERY_MODE_OF_DELIVERY = "labour_and_delivery_mode_of_delivery";
 
             public static String getLabourAndDeliveryRegistrationTriage() {
                 return LABOUR_AND_DELIVERY_REGISTRATION_TRIAGE;
@@ -431,6 +432,10 @@ public class Constants extends CoreConstants {
 
             public static String getLabourAndDeliveryCervixDilationMonitoring() {
                 return LABOUR_AND_DELIVERY_CERVIX_DILATION_MONITORING;
+            }
+
+            public static String getLabourAndDeliveryModeOfDelivery() {
+                return LABOUR_AND_DELIVERY_MODE_OF_DELIVERY;
             }
         }
 
