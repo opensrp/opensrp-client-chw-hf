@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
+
+import com.google.android.material.tabs.TabLayout;
 
 import org.apache.commons.lang3.StringUtils;
 import org.smartregister.chw.anc.util.DBConstants;
@@ -17,6 +20,7 @@ import org.smartregister.chw.hf.custom_view.FacilityMenu;
 import org.smartregister.chw.hf.model.HeiRegisterFragmentModel;
 import org.smartregister.chw.hf.presenter.HeiRegisterFragmentPresenter;
 import org.smartregister.chw.hf.provider.HeiRegisterProvider;
+import org.smartregister.chw.pmtct.contract.PmtctRegisterFragmentContract;
 import org.smartregister.chw.pmtct.fragment.BasePmtctRegisterFragment;
 import org.smartregister.commonregistry.CommonRepository;
 import org.smartregister.cursoradapter.RecyclerViewPaginatedAdapter;
@@ -95,6 +99,8 @@ public class HeiRegisterFragment extends BasePmtctRegisterFragment {
             getSearchView().setCompoundDrawablesWithIntrinsicBounds(org.smartregister.family.R.drawable.ic_action_search, 0, 0, 0);
             getSearchView().setTextColor(getResources().getColor(org.smartregister.chw.core.R.color.text_black));
         }
+
+        setUpTabLayout(view, true);
     }
 
     @Override
@@ -157,6 +163,10 @@ public class HeiRegisterFragment extends BasePmtctRegisterFragment {
         return query;
     }
 
+    @Override
+    public PmtctRegisterFragmentContract.Presenter presenter() {
+        return new HeiRegisterFragmentPresenter(this, new HeiRegisterFragmentModel(), null);
+    }
 
     @Override
     public void countExecute() {
@@ -213,4 +223,55 @@ public class HeiRegisterFragment extends BasePmtctRegisterFragment {
     protected void openProfile(String baseEntityId) {
         HeiProfileActivity.startProfile(requireActivity(), baseEntityId);
     }
+
+    @Override
+    protected int getLayout() {
+        return R.layout.fragment_hei_register;
+    }
+
+    protected void setUpTabLayout(View view, boolean enabled){
+        TabLayout  tabLayout = view.findViewById(R.id.tab_layout);
+        if(enabled){
+            tabLayout.setVisibility(View.VISIBLE);
+            tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+                @Override
+                public void onTabSelected(TabLayout.Tab tab) {
+                    switch (tab.getPosition()) {
+                        case 0:
+                            getAllClients();
+                            Toast.makeText(getContext(), "All", Toast.LENGTH_SHORT).show();
+                            break;
+                        case 1:
+                           getTomorrowClients();
+                            Toast.makeText(getContext(), "Tomorrow", Toast.LENGTH_SHORT).show();
+                            break;
+                        case 2:
+                            getMissedClients();
+                            break;
+                    }
+                }
+
+                @Override
+                public void onTabUnselected(TabLayout.Tab tab) {
+                    //do something
+                }
+
+                @Override
+                public void onTabReselected(TabLayout.Tab tab) {
+                    //do something
+                }
+            });
+        }
+
+    }
+    public void getAllClients(){
+        filter("", "", "",false);
+    }
+    public void getMissedClients(){
+        filter(getMainCondition(), "", "",false);
+    }
+    public void getTomorrowClients(){
+        filter(getMainCondition(), "", "",false);
+    }
+
 }
