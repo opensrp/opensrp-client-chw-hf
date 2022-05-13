@@ -405,6 +405,14 @@
             "field": "obs.fieldCode",
             "concept": "hei_number"
           }
+        },
+        {
+          "column_name": "next_visit_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "next_facility_visit_date"
+          }
         }
       ]
     },

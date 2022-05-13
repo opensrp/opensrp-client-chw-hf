@@ -540,7 +540,8 @@
             "field": "eventType",
             "field_value": "HEI Followup",
             "creates_case": [
-              "ec_hei_followup"
+              "ec_hei_followup",
+              "ec_hei"
             ]
           },
           {
