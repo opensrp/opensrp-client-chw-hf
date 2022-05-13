@@ -5,14 +5,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 
 import org.apache.commons.lang3.StringUtils;
 import org.smartregister.chw.anc.util.DBConstants;
 import org.smartregister.chw.core.utils.CoreConstants;
-import org.smartregister.chw.core.utils.QueryBuilder;
 import org.smartregister.chw.core.utils.Utils;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.activity.HeiProfileActivity;
@@ -20,16 +18,13 @@ import org.smartregister.chw.hf.custom_view.FacilityMenu;
 import org.smartregister.chw.hf.model.HeiRegisterFragmentModel;
 import org.smartregister.chw.hf.presenter.HeiRegisterFragmentPresenter;
 import org.smartregister.chw.hf.provider.HeiRegisterProvider;
-import org.smartregister.chw.pmtct.contract.PmtctRegisterFragmentContract;
 import org.smartregister.chw.pmtct.fragment.BasePmtctRegisterFragment;
-import org.smartregister.commonregistry.CommonRepository;
 import org.smartregister.cursoradapter.RecyclerViewPaginatedAdapter;
 import org.smartregister.cursoradapter.SmartRegisterQueryBuilder;
 import org.smartregister.view.activity.BaseRegisterActivity;
 import org.smartregister.view.customcontrols.CustomFontTextView;
 
 import java.text.MessageFormat;
-import java.util.List;
 import java.util.Set;
 
 import androidx.appcompat.widget.Toolbar;
@@ -135,36 +130,20 @@ public class HeiRegisterFragment extends BasePmtctRegisterFragment {
         String query = "";
         StringBuilder customFilter = new StringBuilder();
         if (StringUtils.isNotBlank(filters)) {
-            customFilter.append(MessageFormat.format(" and ( {0}.{1} like ''%{2}%'' ", CoreConstants.TABLE_NAME.FAMILY_MEMBER, DBConstants.KEY.FIRST_NAME, filters));
-            customFilter.append(MessageFormat.format(" or {0}.{1} like ''%{2}%'' ", CoreConstants.TABLE_NAME.FAMILY_MEMBER, DBConstants.KEY.LAST_NAME, filters));
-            customFilter.append(MessageFormat.format(" or {0}.{1} like ''%{2}%'' ", CoreConstants.TABLE_NAME.FAMILY_MEMBER, DBConstants.KEY.MIDDLE_NAME, filters));
-            customFilter.append(MessageFormat.format(" or {0}.{1} like ''%{2}%'' ) ", CoreConstants.TABLE_NAME.FAMILY_MEMBER, DBConstants.KEY.UNIQUE_ID, filters));
-
+            customFilter.append(MessageFormat.format((" and ( {0} ) "), filters));
         }
-
         try {
-            if (isValidFilterForFts(commonRepository())) {
-
-                String myquery = QueryBuilder.getQuery(joinTables, mainCondition, tablename, customFilter.toString(), clientAdapter, Sortqueries);
-                List<String> ids = commonRepository().findSearchIds(myquery);
-                query = sqb.toStringFts(ids, tablename, CommonRepository.ID_COLUMN,
-                        Sortqueries);
-                query = sqb.Endquery(query);
-            } else {
-                sqb.addCondition(customFilter.toString());
-                query = sqb.orderbyCondition(Sortqueries);
-                query = sqb.Endquery(sqb.addlimitandOffset(query, clientAdapter.getCurrentlimit(), clientAdapter.getCurrentoffset()));
-
-            }
+            sqb.addCondition(customFilter.toString());
+            query = sqb.orderbyCondition(Sortqueries);
+            query = sqb.Endquery(sqb.addlimitandOffset(query, clientAdapter.getCurrentlimit(), clientAdapter.getCurrentoffset()));
         } catch (Exception e) {
             Log.e(getClass().getName(), e.toString(), e);
         }
-
         return query;
     }
 
     @Override
-    public PmtctRegisterFragmentContract.Presenter presenter() {
+    public HeiRegisterFragmentPresenter presenter() {
         return new HeiRegisterFragmentPresenter(this, new HeiRegisterFragmentModel(), null);
     }
 
@@ -229,24 +208,22 @@ public class HeiRegisterFragment extends BasePmtctRegisterFragment {
         return R.layout.fragment_hei_register;
     }
 
-    protected void setUpTabLayout(View view, boolean enabled){
-        TabLayout  tabLayout = view.findViewById(R.id.tab_layout);
-        if(enabled){
+    protected void setUpTabLayout(View view, boolean enabled) {
+        TabLayout tabLayout = view.findViewById(R.id.tab_layout);
+        if (enabled) {
             tabLayout.setVisibility(View.VISIBLE);
             tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
                 @Override
                 public void onTabSelected(TabLayout.Tab tab) {
                     switch (tab.getPosition()) {
                         case 0:
-                            getAllClients();
-                            Toast.makeText(getContext(), "All", Toast.LENGTH_SHORT).show();
+                            filter("", "", "", false);
                             break;
                         case 1:
-                           getTomorrowClients();
-                            Toast.makeText(getContext(), "Tomorrow", Toast.LENGTH_SHORT).show();
+                            filter(getDueTomorrow(), "", getMainCondition(), false);
                             break;
                         case 2:
-                            getMissedClients();
+                            filter(getMissed(), "", getMainCondition(), false);
                             break;
                     }
                 }
@@ -264,14 +241,27 @@ public class HeiRegisterFragment extends BasePmtctRegisterFragment {
         }
 
     }
-    public void getAllClients(){
-        filter("", "", "",false);
-    }
-    public void getMissedClients(){
-        filter(getMainCondition(), "", "",false);
-    }
-    public void getTomorrowClients(){
-        filter(getMainCondition(), "", "",false);
+
+    protected String getDueTomorrow() {
+        return "CASE\n" +
+                "    WHEN next_visit_date is not null\n" +
+                "        THEN date(substr(next_visit_date, 7, 4) || '-' || substr(next_visit_date, 4, 2) || '-' || substr(next_visit_date, 1, 2)) = date('now', '+1 day')\n" +
+                "    ELSE\n" +
+                "        date(ec_hei.dob) = date('now', '+1 day')\n" +
+                "    END";
     }
 
+    protected String getMissed() {
+        return "CASE\n" +
+                " WHEN next_visit_date is not null\n" +
+                "       THEN date(substr(next_visit_date, 7, 4) || '-' || substr(next_visit_date, 4, 2) || '-' || substr(next_visit_date, 1, 2)) < date('now')\n" +
+                "   ELSE\n" +
+                "       date(ec_hei.dob) < date('now')\n" +
+                "   END";
+    }
+
+    @Override
+    protected String getDefaultSortQuery() {
+        return "(coalesce(next_visit_date, ec_hei.dob))";
+    }
 }
