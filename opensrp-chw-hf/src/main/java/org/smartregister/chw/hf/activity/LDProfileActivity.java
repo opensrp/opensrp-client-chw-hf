@@ -21,10 +21,12 @@ import org.smartregister.chw.ld.domain.MemberObject;
 import org.smartregister.chw.ld.domain.Visit;
 import org.smartregister.chw.ld.util.Constants;
 
+import timber.log.Timber;
+
 public class LDProfileActivity extends BaseLDProfileActivity {
 
     public static final String LD_PROFILE_ACTION = "LD_PROFILE_ACTION";
-    private String partographVisit;
+    private String partographVisitTitle;
     private String currentVisitItemTitle = "";
 
     private TextView processPartograph;
@@ -38,7 +40,7 @@ public class LDProfileActivity extends BaseLDProfileActivity {
     @Override
     protected void onCreation() {
         super.onCreation();
-        partographVisit  = getString(R.string.labour_and_delivery_partograph_button_title);
+        partographVisitTitle = getString(R.string.labour_and_delivery_partograph_button_title);
         setTextViewRecordLDText();
     }
 
@@ -53,11 +55,8 @@ public class LDProfileActivity extends BaseLDProfileActivity {
         super.setupViews();
         processPartograph = findViewById(R.id.textview_process_partograph);
         processPartograph.setOnClickListener(this);
-        try {
-            LDVisitUtils.processVisits(memberObject.getBaseEntityId());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
+        processVisits(false);
 
         Visit lastLDVisit = getLastVisit();
         if (lastLDVisit != null && !lastLDVisit.getProcessed()) {
@@ -72,6 +71,14 @@ public class LDProfileActivity extends BaseLDProfileActivity {
 
     }
 
+    private void processVisits(boolean partograph){
+        try {
+            LDVisitUtils.processVisits(memberObject.getBaseEntityId(), partograph);
+        }catch (Exception e){
+            Timber.e(e);
+        }
+    }
+
     private void showVisitInProgress() {
         textViewRecordLD.setVisibility(View.GONE);
         textViewVisitDoneEdit.setVisibility(View.VISIBLE);
@@ -79,7 +86,7 @@ public class LDProfileActivity extends BaseLDProfileActivity {
         processPartograph.setVisibility(View.VISIBLE);
         textViewVisitDone.setTextColor(getResources().getColor(R.color.black_text_color));
         imageViewCross.setImageResource(R.drawable.activityrow_visit_in_progress);
-        if (currentVisitItemTitle.equalsIgnoreCase(partographVisit)){
+        if (currentVisitItemTitle.equalsIgnoreCase(partographVisitTitle)){
             textViewVisitDone.setText(this.getString(R.string.visit_in_progress, org.smartregister.chw.hf.utils.Constants.Visits.LD_PARTOGRAPH_VISIT));
         }else{
             textViewVisitDone.setText(this.getString(R.string.visit_in_progress, org.smartregister.chw.hf.utils.Constants.Visits.LD_GENERAL_VISIT));
@@ -87,7 +94,7 @@ public class LDProfileActivity extends BaseLDProfileActivity {
     }
 
     private Visit getLastVisit() {
-        if (currentVisitItemTitle.equalsIgnoreCase(partographVisit))
+        if (currentVisitItemTitle.equalsIgnoreCase(partographVisitTitle))
             return LDLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), "LD Partograph");
         else
             return LDLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), Constants.EVENT_TYPE.LD_GENERAL_EXAMINATION);
@@ -95,7 +102,7 @@ public class LDProfileActivity extends BaseLDProfileActivity {
 
     private void setUpEditButton() {
         textViewVisitDoneEdit.setOnClickListener(v -> {
-            if (currentVisitItemTitle.equalsIgnoreCase(partographVisit)){
+            if (currentVisitItemTitle.equalsIgnoreCase(partographVisitTitle)){
                 LDPartographActivity.startMe(this, memberObject.getBaseEntityId(), true,
                         getName(memberObject), String.valueOf(new Period(new DateTime(this.memberObject.getAge()), new DateTime()).getYears()));
             }else{
@@ -129,7 +136,8 @@ public class LDProfileActivity extends BaseLDProfileActivity {
     }
 
     private void processPartographEvent(){
-
+        processVisits(true);
+        onResume();
     }
 
     private String getName(MemberObject memberObject) {
