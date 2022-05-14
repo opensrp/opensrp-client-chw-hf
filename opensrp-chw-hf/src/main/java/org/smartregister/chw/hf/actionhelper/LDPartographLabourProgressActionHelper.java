@@ -130,8 +130,8 @@ public class LDPartographLabourProgressActionHelper implements BaseLDVisitAction
             cervixDilation.put("start_number", LDDao.getCervixDilation(baseEntityId));
         }
 
-        if (true) {
-            int descent = 2;
+        if (LDDao.getDescent(baseEntityId) != null && descentPresentingPart != null) {
+            int descent = 5;
             try {
                 descent = Integer.parseInt(LDDao.getDescent(baseEntityId));
             } catch (NumberFormatException e) {
