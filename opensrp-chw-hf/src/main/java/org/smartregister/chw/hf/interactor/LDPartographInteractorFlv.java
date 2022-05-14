@@ -73,7 +73,7 @@ public class LDPartographInteractorFlv implements LDPartographInteractor.Flavor 
 
 
         BaseLDVisitAction fetalWellBeingAction = new BaseLDVisitAction.Builder(context, context.getString(R.string.ld_partograph_fetal_well_being))
-                .withOptional(false)
+                .withOptional(true)
                 .withDetails(details)
                 .withFormName(Constants.JsonForm.LabourAndDeliveryPartograph.getFetalWellBingForm())
                 .withHelper(new LDPartographFetalWellBeingActionHelper(memberObject))
@@ -90,7 +90,7 @@ public class LDPartographInteractorFlv implements LDPartographInteractor.Flavor 
     ) throws BaseLDVisitAction.ValidationException {
 
         BaseLDVisitAction motherWellBeingAction = new BaseLDVisitAction.Builder(context, context.getString(R.string.ld_partograph_mother_well_being))
-                .withOptional(false)
+                .withOptional(true)
                 .withDetails(details)
                 .withFormName(Constants.JsonForm.LabourAndDeliveryPartograph.getMotherWellBeingForm())
                 .withHelper(new LDPartographMotherWellBeingActionHelper(memberObject))
@@ -107,7 +107,7 @@ public class LDPartographInteractorFlv implements LDPartographInteractor.Flavor 
     ) throws BaseLDVisitAction.ValidationException {
 
         BaseLDVisitAction progressOfLaborAction = new BaseLDVisitAction.Builder(context, context.getString(R.string.ld_partograph_labor_progress))
-                .withOptional(false)
+                .withOptional(true)
                 .withDetails(details)
                 .withFormName(Constants.JsonForm.LabourAndDeliveryPartograph.getProgressOfLabourForm())
                 .withHelper(new LDPartographLabourProgressActionHelper(memberObject))
