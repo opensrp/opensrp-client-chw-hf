@@ -4960,6 +4960,30 @@
           }
         },
         {
+          "column_name": "moulding",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "moulding"
+          }
+        },
+        {
+          "column_name": "cervix_dilation",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "cervix_dilation"
+          }
+        },
+        {
+          "column_name": "descent_presenting_part",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "descent_presenting_part"
+          }
+        },
+        {
           "column_name": "labour_stage",
           "type": "Event",
           "json_mapping": {

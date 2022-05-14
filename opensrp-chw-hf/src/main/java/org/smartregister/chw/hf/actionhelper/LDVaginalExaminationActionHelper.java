@@ -66,12 +66,10 @@ public class LDVaginalExaminationActionHelper implements BaseLDVisitAction.LDVis
             }
         }
 
-        if (LDDao.getMembraneStateDuringAdmissionToLabour(baseEntityId) != null) {
-            try {
-                vaginalExaminationForm.getJSONObject("global").put("membrane_status", LDDao.getMembraneStateDuringAdmissionToLabour(baseEntityId));
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+        try {
+            vaginalExaminationForm.getJSONObject("global").put("moulding", LDDao.getMoulding(baseEntityId) == null? "" : LDDao.getMoulding(baseEntityId));
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
         return vaginalExaminationForm.toString();
     }

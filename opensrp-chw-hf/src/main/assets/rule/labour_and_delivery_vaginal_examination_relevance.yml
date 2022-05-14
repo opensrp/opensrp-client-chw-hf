@@ -13,16 +13,16 @@ condition: "!step1_amniotic_fluid.isEmpty() && !step1_amniotic_fluid.contains('m
 actions:
   - "isRelevant = true"
 ---
-name: step1_membrane
-description: membrane
+name: step1_moulding
+description: moulding relevance
 priority: 1
-condition: "global_membrane_status.contains('intact')"
+condition: "!global_moulding.contains('yes')"
 actions:
   - "isRelevant = true"
 ---
-name: step1_amniotic_fluid
-description: amniotic_fluid
+name: step1_moulding_options
+description: moulding_options relevance
 priority: 1
-condition: "global_membrane_status.contains('ruptured') || step1_membrane.contains('ruptured')"
+condition: "step1_moulding.contains('yes') || global_moulding.contains('yes')"
 actions:
   - "isRelevant = true"
