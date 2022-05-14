@@ -76,7 +76,7 @@ public class LDPartographInteractorFlv implements LDPartographInteractor.Flavor 
                 .withOptional(false)
                 .withDetails(details)
                 .withFormName(Constants.JsonForm.LabourAndDeliveryPartograph.getFetalWellBingForm())
-                .withHelper(new LDPartographFetalWellBeingActionHelper(memberObject))
+                .withHelper(new LDPartographFetalWellBeingActionHelper(memberObject,memberObject.getBaseEntityId()))
                 .build();
 
         actionList.put(context.getString(R.string.ld_partograph_fetal_well_being), fetalWellBeingAction);
