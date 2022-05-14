@@ -418,7 +418,12 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
 
     @Override
     public void refreshMedicalHistory(boolean hasHistory) {
-        rlLastVisit.setVisibility(View.VISIBLE);
+        Visit lastFollowupVisit = getVisit(org.smartregister.chw.hf.utils.Constants.Events.HEI_FOLLOWUP);
+        if(lastFollowupVisit !=null){
+            rlLastVisit.setVisibility(View.VISIBLE);
+        }else{
+            rlLastVisit.setVisibility(View.GONE);
+        }
     }
 
     @Override
