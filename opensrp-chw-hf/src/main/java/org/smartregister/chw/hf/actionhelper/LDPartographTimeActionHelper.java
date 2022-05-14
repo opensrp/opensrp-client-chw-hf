@@ -29,6 +29,7 @@ public class LDPartographTimeActionHelper implements BaseLDVisitAction.LDVisitAc
     private MemberObject memberObject;
     private Context context;
     private String time;
+    private String date;
     private final String baseEntityId;
 
     public LDPartographTimeActionHelper(MemberObject memberObject, String baseEntityId) {
@@ -89,6 +90,7 @@ public class LDPartographTimeActionHelper implements BaseLDVisitAction.LDVisitAc
         try {
             JSONObject jsonObject = new JSONObject(jsonPayload);
             time = CoreJsonFormUtils.getValue(jsonObject, "partograph_time");
+            date = CoreJsonFormUtils.getValue(jsonObject, "partograph_date");
         } catch (JSONException e) {
             Timber.e(e);
         }
@@ -116,7 +118,7 @@ public class LDPartographTimeActionHelper implements BaseLDVisitAction.LDVisitAc
 
     @Override
     public BaseLDVisitAction.Status evaluateStatusOnPayload() {
-        if (StringUtils.isBlank(time))
+        if (StringUtils.isBlank(time) || StringUtils.isBlank(date))
             return BaseLDVisitAction.Status.PENDING;
         else
             return BaseLDVisitAction.Status.COMPLETED;
