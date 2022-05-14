@@ -2,7 +2,7 @@
 name: step1_prompt_for_fetal_distress
 description: prompt for fetal distress
 priority: 1
-condition: "step1_fetal_heart_rate > 160 || step1_fetal_heart_rate < 120"
+condition: "!step1_fetal_heart_rate.isEmpty() && (step1_fetal_heart_rate > 160 || step1_fetal_heart_rate < 120)"
 actions:
   - "isRelevant = true"
 ---

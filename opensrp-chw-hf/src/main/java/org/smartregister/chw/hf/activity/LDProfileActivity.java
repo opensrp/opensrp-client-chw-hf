@@ -3,6 +3,7 @@ package org.smartregister.chw.hf.activity;
 import static org.smartregister.chw.hf.utils.Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryCervixDilationMonitoring;
 import static org.smartregister.chw.hf.utils.Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryLabourStage;
 import static org.smartregister.chw.hf.utils.Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryModeOfDelivery;
+import static org.smartregister.chw.hf.utils.LDVisitUtils.shouldProcessPartographVisit;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -30,6 +31,7 @@ public class LDProfileActivity extends BaseLDProfileActivity {
     private String currentVisitItemTitle = "";
 
     private TextView processPartograph;
+    private Visit lastLDVisit;
 
     public static void startProfileActivity(Activity activity, String baseEntityId) {
         Intent intent = new Intent(activity, LDProfileActivity.class);
@@ -58,7 +60,7 @@ public class LDProfileActivity extends BaseLDProfileActivity {
 
         processVisits(false);
 
-        Visit lastLDVisit = getLastVisit();
+        lastLDVisit = getLastVisit();
         if (lastLDVisit != null && !lastLDVisit.getProcessed()) {
             showVisitInProgress();
             setUpEditButton();
@@ -71,10 +73,10 @@ public class LDProfileActivity extends BaseLDProfileActivity {
 
     }
 
-    private void processVisits(boolean partograph){
+    private void processVisits(boolean partograph) {
         try {
             LDVisitUtils.processVisits(memberObject.getBaseEntityId(), partograph);
-        }catch (Exception e){
+        } catch (Exception e) {
             Timber.e(e);
         }
     }
@@ -83,12 +85,17 @@ public class LDProfileActivity extends BaseLDProfileActivity {
         textViewRecordLD.setVisibility(View.GONE);
         textViewVisitDoneEdit.setVisibility(View.VISIBLE);
         visitDone.setVisibility(View.VISIBLE);
-        processPartograph.setVisibility(View.VISIBLE);
         textViewVisitDone.setTextColor(getResources().getColor(R.color.black_text_color));
         imageViewCross.setImageResource(R.drawable.activityrow_visit_in_progress);
-        if (currentVisitItemTitle.equalsIgnoreCase(partographVisitTitle)){
+        if (currentVisitItemTitle.equalsIgnoreCase(partographVisitTitle)) {
             textViewVisitDone.setText(this.getString(R.string.visit_in_progress, org.smartregister.chw.hf.utils.Constants.Visits.LD_PARTOGRAPH_VISIT));
-        }else{
+            try {
+                if (shouldProcessPartographVisit(lastLDVisit))
+                    processPartograph.setVisibility(View.VISIBLE);
+            } catch (Exception e) {
+                Timber.e(e);
+            }
+        } else {
             textViewVisitDone.setText(this.getString(R.string.visit_in_progress, org.smartregister.chw.hf.utils.Constants.Visits.LD_GENERAL_VISIT));
         }
     }
@@ -102,10 +109,10 @@ public class LDProfileActivity extends BaseLDProfileActivity {
 
     private void setUpEditButton() {
         textViewVisitDoneEdit.setOnClickListener(v -> {
-            if (currentVisitItemTitle.equalsIgnoreCase(partographVisitTitle)){
+            if (currentVisitItemTitle.equalsIgnoreCase(partographVisitTitle)) {
                 LDPartographActivity.startMe(this, memberObject.getBaseEntityId(), true,
                         getName(memberObject), String.valueOf(new Period(new DateTime(this.memberObject.getAge()), new DateTime()).getYears()));
-            }else{
+            } else {
                 LDVisitActivity.startLDVisitActivity(this, memberObject.getBaseEntityId(), true);
             }
         });
@@ -127,15 +134,14 @@ public class LDProfileActivity extends BaseLDProfileActivity {
             } else if (((TextView) view).getText().equals(getString(R.string.lb_mode_of_delivery))) {
                 startLDForm(this, memberObject.getBaseEntityId(), getLabourAndDeliveryModeOfDelivery());
             }
-        } else if (id == R.id.textview_process_partograph){
+        } else if (id == R.id.textview_process_partograph) {
             processPartographEvent();
-        }
-        else {
+        } else {
             super.onClick(view);
         }
     }
 
-    private void processPartographEvent(){
+    private void processPartographEvent() {
         processVisits(true);
         onResume();
     }
@@ -149,11 +155,10 @@ public class LDProfileActivity extends BaseLDProfileActivity {
     }
 
     private void setTextViewRecordLDText() {
-        if (LDDao.getLabourStage(memberObject.getBaseEntityId()) == null){
+        if (LDDao.getLabourStage(memberObject.getBaseEntityId()) == null) {
             currentVisitItemTitle = getString(R.string.labour_and_delivery_labour_stage_title);
             textViewRecordLD.setText(R.string.labour_and_delivery_labour_stage_title);
-        }
-        else if (LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("1")) {
+        } else if (LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("1")) {
             if (LDDao.getCervixDilation(memberObject.getBaseEntityId()) == null) {
                 textViewRecordLD.setText(R.string.labour_and_delivery_examination_and_consultation_button_tittle);
                 currentVisitItemTitle = getString(R.string.labour_and_delivery_examination_and_consultation_button_tittle);

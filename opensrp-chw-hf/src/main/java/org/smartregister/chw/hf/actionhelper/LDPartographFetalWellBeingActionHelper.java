@@ -26,7 +26,7 @@ public class LDPartographFetalWellBeingActionHelper implements BaseLDVisitAction
 
     protected MemberObject memberObject;
     private String fetalHeartRate;
-    private String membrane;
+    private String amnioticFluid;
     private String moulding;
     private Context context;
     private String baseEntityId;
@@ -61,7 +61,7 @@ public class LDPartographFetalWellBeingActionHelper implements BaseLDVisitAction
             JSONObject jsonObject = new JSONObject(jsonPayload);
             fetalHeartRate = CoreJsonFormUtils.getValue(jsonObject, "fetal_heart_rate");
             moulding = CoreJsonFormUtils.getValue(jsonObject, "moulding");
-            membrane = CoreJsonFormUtils.getValue(jsonObject, "moulding");
+            amnioticFluid = CoreJsonFormUtils.getValue(jsonObject, "amniotic_fluid");
         } catch (JSONException e) {
             Timber.e(e);
         }
@@ -109,12 +109,12 @@ public class LDPartographFetalWellBeingActionHelper implements BaseLDVisitAction
     private boolean allFieldsCompleted() {
         return StringUtils.isNotBlank(fetalHeartRate) &&
                 StringUtils.isNotBlank(moulding) &&
-                StringUtils.isNotBlank(membrane);
+                StringUtils.isNotBlank(amnioticFluid);
     }
 
     private boolean anyFieldCompleted() {
         return StringUtils.isNotBlank(fetalHeartRate) ||
                 StringUtils.isNotBlank(moulding) ||
-                StringUtils.isNotBlank(membrane);
+                StringUtils.isNotBlank(amnioticFluid);
     }
 }

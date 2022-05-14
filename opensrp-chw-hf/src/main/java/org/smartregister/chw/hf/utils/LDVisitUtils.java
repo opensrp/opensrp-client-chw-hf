@@ -33,7 +33,7 @@ public class LDVisitUtils extends VisitUtils {
 
         List<Visit> ldVisits = new ArrayList<>();
 
-        for (Visit visit: visits) {
+        for (Visit visit : visits) {
             if (visit.getVisitType().equalsIgnoreCase(Constants.EVENT_TYPE.LD_GENERAL_EXAMINATION)) {
                 JSONObject visitJson = new JSONObject(visit.getJson());
                 JSONArray obs = visitJson.getJSONArray("obs");
@@ -82,30 +82,10 @@ public class LDVisitUtils extends VisitUtils {
                         isDecisionDone) {
                     ldVisits.add(visit);
                 }
-            } else if (visit.getVisitType().equalsIgnoreCase(org.smartregister.chw.hf.utils.Constants.Events.LD_PARTOGRAPHY) && isPartograph){
-                JSONObject visitJson = new JSONObject(visit.getJson());
-                JSONArray obs = visitJson.getJSONArray("obs");
-
-                boolean hasPartographDate = computeCompletionStatus(obs, "partograph_date");
-                boolean hasPartographTime = computeCompletionStatus(obs, "partograph_time");
-
-                boolean hasRespiratoryRate = computeCompletionStatus(obs, "respiratory_rate");
-                boolean hasPulseRate = computeCompletionStatus(obs, "pulse_rate");
-                boolean hasMembrane = computeCompletionStatus(obs, "membrane");
-                boolean has = computeCompletionStatus(obs, "moulding");
-                boolean hasFetalHeartRate = computeCompletionStatus(obs, "fetal_heart_rate");
-                boolean hasTemperature = computeCompletionStatus(obs, "temperature");
-                boolean hasSystolic = computeCompletionStatus(obs, "systolic");
-                boolean hasDiastolic = computeCompletionStatus(obs, "diastolic");
-                boolean hasUrine = computeCompletionStatus(obs, "urine");
-                boolean hasCervixDilation = computeCompletionStatus(obs, "cervix_dilation");
-                boolean hasDescentPresentingPart = computeCompletionStatus(obs, "descent_presenting_part");
-                boolean hasContractionEveryHalfHourFrequency = computeCompletionStatus(obs, "contraction_every_half_hour_frequency");
-                boolean hasContractionEveryHalfAnHour = computeCompletionStatus(obs, "contraction_every_half_hour_time");
-                boolean hasVisitDate = computeCompletionStatus(obs, "ld_visit_date");
-
-                if (hasPartographDate && hasPartographTime) ldVisits.add(visit);
-
+            } else if (visit.getVisitType().equalsIgnoreCase(org.smartregister.chw.hf.utils.Constants.Events.LD_PARTOGRAPHY) && isPartograph) {
+                if(shouldProcessPartographVisit(visit)) {
+                    ldVisits.add(visit);
+                }
             }
         }
 
@@ -121,6 +101,32 @@ public class LDVisitUtils extends VisitUtils {
             if (jsonObject.getString("fieldCode").equalsIgnoreCase(checkString)) {
                 return true;
             }
+        }
+        return false;
+    }
+
+    public static boolean shouldProcessPartographVisit(Visit visit) throws JSONException {
+        JSONObject visitJson = new JSONObject(visit.getJson());
+        JSONArray obs = visitJson.getJSONArray("obs");
+
+        boolean hasPartographDate = computeCompletionStatus(obs, "partograph_date");
+        boolean hasPartographTime = computeCompletionStatus(obs, "partograph_time");
+
+        boolean hasRespiratoryRate = computeCompletionStatus(obs, "respiratory_rate");
+        boolean hasPulseRate = computeCompletionStatus(obs, "pulse_rate");
+        boolean hasAmnioticFluid = computeCompletionStatus(obs, "amnioticFluid");
+        boolean hasMolding = computeCompletionStatus(obs, "moulding");
+        boolean hasFetalHeartRate = computeCompletionStatus(obs, "fetal_heart_rate");
+        boolean hasTemperature = computeCompletionStatus(obs, "temperature");
+        boolean hasSystolic = computeCompletionStatus(obs, "systolic");
+        boolean hasDiastolic = computeCompletionStatus(obs, "diastolic");
+        boolean hasUrine = computeCompletionStatus(obs, "urine");
+        boolean hasCervixDilation = computeCompletionStatus(obs, "cervix_dilation");
+        boolean hasDescentPresentingPart = computeCompletionStatus(obs, "descent_presenting_part");
+        boolean hasContractionEveryHalfHourFrequency = computeCompletionStatus(obs, "contraction_every_half_hour_frequency");
+        boolean hasContractionEveryHalfAnHour = computeCompletionStatus(obs, "contraction_every_half_hour_time");
+        if (hasPartographDate && hasPartographTime && (hasRespiratoryRate || hasPulseRate || hasAmnioticFluid || hasFetalHeartRate || hasTemperature || hasSystolic || hasDiastolic || hasUrine || hasCervixDilation || hasDescentPresentingPart || hasContractionEveryHalfHourFrequency || hasContractionEveryHalfAnHour || hasMolding)) {
+            return true;
         }
         return false;
     }
