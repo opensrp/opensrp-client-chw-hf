@@ -73,6 +73,16 @@
         android:text="@string/dna_pcr_sample"
         android:textColor="@color/medical_sub_text_inner"
         android:textSize="14sp" />
+    <org.smartregister.view.customcontrols.CustomFontTextView
+        android:id="@+id/next_facility_visit_date"
+        style="@style/CustomFontTextViewStyle.ClientList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:text="@string/next_facility_visit_date"
+        android:textColor="@color/black"
+        android:textSize="15sp" />
+
 
 
     <View

@@ -219,6 +219,7 @@
     <string name="feeding_practice_rf_plus">RF</string>
     <string name="feeding_practice_sbf">SBF</string>
     <string name="dna_pcr_sample">DNA PCR SAMPLE ID : {0}</string>
+    <string name="next_facility_visit_date">Next Facility Visit Date: {0}</string>
 
 
     <string name="search">Search</string>
@@ -280,6 +281,7 @@
     <string name="lb_visit_vaginal_examination">Vaginal examination</string>
     <string name="lb_visit_general_examination">General examination</string>
     <string name="lb_mode_of_delivery">Mode of Delivery</string>
+
 
 
 </resources>

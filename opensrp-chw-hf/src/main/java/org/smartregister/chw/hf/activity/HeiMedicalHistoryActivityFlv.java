@@ -47,7 +47,7 @@ public class HeiMedicalHistoryActivityFlv extends DefaultAncMedicalHistoryActivi
                 }
 
 
-                String[] hf_params = {"pmtct_visit_date", "actual_age", "followup_status", "weight", "number_of_ctx_days_dispensed", "number_of_nvp_days_dispensed", "infant_feeding_practice", "sample_id"};
+                String[] hf_params = {"pmtct_visit_date", "actual_age", "followup_status", "weight", "number_of_ctx_days_dispensed", "number_of_nvp_days_dispensed", "infant_feeding_practice", "sample_id", "next_facility_visit_date"};
                 extractHFVisit(visits, hf_params, hf_visits, x, context);
 
                 x++;
@@ -163,6 +163,12 @@ public class HeiMedicalHistoryActivityFlv extends DefaultAncMedicalHistoryActivi
                     tvDnaPcr.setVisibility(View.GONE);
                 } else {
                     tvDnaPcr.setText(MessageFormat.format(context.getString(R.string.dna_pcr_sample), getMapValue(vals, "sample_id")));
+                }
+
+                if(StringUtils.isBlank(getMapValue(vals,"next_facility_visit_date"))) {
+                    view.findViewById(R.id.next_facility_visit_date).setVisibility(View.GONE);
+                } else {
+                    ((TextView) view.findViewById(R.id.next_facility_visit_date)).setText(MessageFormat.format(context.getString(R.string.next_facility_visit_date), getMapValue(vals, "next_facility_visit_date")));
                 }
                 linearLayoutHealthFacilityVisitDetails.addView(view, 0);
 
