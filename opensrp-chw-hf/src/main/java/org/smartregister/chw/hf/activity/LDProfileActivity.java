@@ -24,7 +24,7 @@ import org.smartregister.chw.ld.util.Constants;
 public class LDProfileActivity extends BaseLDProfileActivity {
 
     public static final String LD_PROFILE_ACTION = "LD_PROFILE_ACTION";
-    final String partographVisit = getString(R.string.labour_and_delivery_partograph_button_title);
+    private String partographVisit;
     private String currentVisitItemTitle = "";
 
     private TextView processPartograph;
@@ -38,6 +38,7 @@ public class LDProfileActivity extends BaseLDProfileActivity {
     @Override
     protected void onCreation() {
         super.onCreation();
+        partographVisit  = getString(R.string.labour_and_delivery_partograph_button_title);
         setTextViewRecordLDText();
     }
 
