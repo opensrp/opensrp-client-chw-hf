@@ -58,6 +58,8 @@ public class HfClientProcessor extends CoreClientProcessor {
                 processVisitEvent(eventClient);
                 processEvent(eventClient.getEvent(), eventClient.getClient(), clientClassification);
                 break;
+            default:
+                break;
         }
 
     }
