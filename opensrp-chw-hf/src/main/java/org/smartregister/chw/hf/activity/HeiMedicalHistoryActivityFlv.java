@@ -35,9 +35,7 @@ public class HeiMedicalHistoryActivityFlv extends DefaultAncMedicalHistoryActivi
     public void processViewData(List<Visit> visits, Context context) {
 
         if (visits.size() > 0) {
-
             int days = 0;
-            String has_card = "No";
             List<Map<String, String>> hf_visits = new ArrayList<>();
 
             int x = 0;
@@ -48,23 +46,14 @@ public class HeiMedicalHistoryActivityFlv extends DefaultAncMedicalHistoryActivi
                     days = Days.daysBetween(new DateTime(visits.get(visits.size() - 1).getDate()), new DateTime()).getDays();
                 }
 
-                // anc card
-                if (has_card.equalsIgnoreCase("No")) {
-                    List<VisitDetail> details = visits.get(x).getVisitDetails().get("anc_card");
-                    if (details != null && StringUtils.isNotBlank(details.get(0).getHumanReadable())) {
-                        has_card = details.get(0).getHumanReadable();
-                    }
 
-                }
-
-                String[] hf_params = {"weight", "height", "followup_status", "health_status", "infant_feeding_practice", "anc_visit_date"};
+                String[] hf_params = {"pmtct_visit_date", "actual_age", "followup_status", "weight", "number_of_ctx_days_dispensed", "number_of_nvp_days_dispensed", "infant_feeding_practice", "sample_id"};
                 extractHFVisit(visits, hf_params, hf_visits, x, context);
 
                 x++;
             }
 
             processLastVisit(days, context);
-            processAncCard(has_card, context);
             processFacilityVisit(hf_visits, context);
         }
     }
@@ -101,54 +90,80 @@ public class HeiMedicalHistoryActivityFlv extends DefaultAncMedicalHistoryActivi
 
             int x = 0;
             for (Map<String, String> vals : hf_visits) {
-                View view = inflater.inflate(R.layout.medical_history_anc_visit, null);
+                View view = inflater.inflate(R.layout.medical_history_hei_visit, null);
 
                 TextView tvTitle = view.findViewById(R.id.title);
-                TextView tvGA = view.findViewById(R.id.gest_age);
-                TextView tvFundalHeight = view.findViewById(R.id.fundal_height);
-                TextView tvHeight = view.findViewById(R.id.height);
+                TextView tvTypeOfVisit = view.findViewById(R.id.type_of_visit);
                 TextView tvWeight = view.findViewById(R.id.weight);
-                TextView tvBP = view.findViewById(R.id.bp);
-                TextView tvHB = view.findViewById(R.id.hb);
-                TextView tvMrdtMalaria = view.findViewById(R.id.mrdt_malaria);
-                TextView tvHivStatus = view.findViewById(R.id.hiv_status);
+                TextView tvCtx = view.findViewById(R.id.ctx);
+                TextView tvNvp = view.findViewById(R.id.nvp);
+                TextView tvFeedingPractice = view.findViewById(R.id.feeding_practice);
+                TextView tvDnaPcr = view.findViewById(R.id.dna_pcr);
 
 
-                tvTitle.setText(MessageFormat.format(context.getString(org.smartregister.chw.core.R.string.anc_visit_date), x + 1, getMapValue(vals, "health_status")));
+                tvTitle.setText(MessageFormat.format(context.getString(R.string.hei_visit_title), x + 1, getMapValue(vals, "pmtct_visit_date"), getMapValue(vals, "actual_age")));
 
+                if (StringUtils.isNotBlank(getMapValue(vals, "followup_status"))) {
+                    String followupStatus = getMapValue(vals, "followup_status");
+                    switch (followupStatus) {
+                        case "infant_and_mother":
+                            tvTypeOfVisit.setText(MessageFormat.format(context.getString(R.string.hei_type_of_visit), "IM"));
+                            break;
+                        case "infant_with_other_caregiver":
+                            tvTypeOfVisit.setText(MessageFormat.format(context.getString(R.string.hei_type_of_visit), "IC"));
+                            break;
+                        case "transfer_out":
+                            tvTypeOfVisit.setText(MessageFormat.format(context.getString(R.string.hei_type_of_visit), "TO"));
+                            break;
+                        default:
+                            tvTypeOfVisit.setText(MessageFormat.format(context.getString(R.string.hei_type_of_visit), followupStatus));
+                            break;
+                    }
+                }
+                tvWeight.setText(MessageFormat.format(context.getString(R.string.weight_in_kgs), getMapValue(vals, "weight")));
+                if (StringUtils.isBlank(getMapValue(vals, "number_of_ctx_days_dispensed"))) {
+                    tvCtx.setVisibility(View.GONE);
+                } else {
+                    tvCtx.setText(MessageFormat.format(context.getString(R.string.ctx_days_dispensed), getMapValue(vals, "number_of_ctx_days_dispensed")));
+                }
+                if (StringUtils.isBlank(getMapValue(vals, "number_of_nvp_days_dispensed"))) {
+                    tvNvp.setVisibility(View.GONE);
+                } else {
+                    tvNvp.setText(MessageFormat.format(context.getString(R.string.nvp_days_dispensed), getMapValue(vals, "number_of_nvp_days_dispensed")));
+                }
                 if (StringUtils.isBlank(getMapValue(vals, "infant_feeding_practice"))) {
-                    tvFundalHeight.setVisibility(View.GONE);
+                    tvFeedingPractice.setVisibility(View.GONE);
                 } else {
-                    tvFundalHeight.setText(MessageFormat.format(context.getString(R.string.fundal_height), getMapValue(vals, "infant_feeding_practice")));
+                    String feedingPractice = getMapValue(vals, "infant_feeding_practice");
+                    switch (feedingPractice) {
+                        case "ebf":
+                            tvFeedingPractice.setText(MessageFormat.format(context.getString(R.string.infant_feeding_practice), context.getString(R.string.feeding_practice_ebf)));
+                            break;
+                        case "rf":
+                            tvFeedingPractice.setText(MessageFormat.format(context.getString(R.string.infant_feeding_practice), context.getString(R.string.feeding_practice_rf)));
+                            break;
+                        case "mf":
+                            tvFeedingPractice.setText(MessageFormat.format(context.getString(R.string.infant_feeding_practice), context.getString(R.string.feeding_practice_mf)));
+                            break;
+                        case "bf+":
+                            tvFeedingPractice.setText(MessageFormat.format(context.getString(R.string.infant_feeding_practice), context.getString(R.string.feeding_practice_bf_plus)));
+                            break;
+                        case "rf+":
+                            tvFeedingPractice.setText(MessageFormat.format(context.getString(R.string.infant_feeding_practice), context.getString(R.string.feeding_practice_rf_plus)));
+                            break;
+                        case "sbf":
+                            tvFeedingPractice.setText(MessageFormat.format(context.getString(R.string.infant_feeding_practice), context.getString(R.string.feeding_practice_sbf)));
+                            break;
+                        default:
+                            tvFeedingPractice.setText(MessageFormat.format(context.getString(R.string.infant_feeding_practice), feedingPractice));
+                            break;
+                    }
                 }
-
-                tvGA.setText(MessageFormat.format(context.getString(R.string.gestation_age), getMapValue(vals, "followup_status")));
-                if (StringUtils.isBlank(getMapValue(vals, "weight"))) {
-                    tvWeight.setVisibility(View.GONE);
+                if (StringUtils.isBlank(getMapValue(vals, "sample_id"))) {
+                    tvDnaPcr.setVisibility(View.GONE);
                 } else {
-                    tvWeight.setText(MessageFormat.format(context.getString(org.smartregister.chw.core.R.string.weight_in_kgs), getMapValue(vals, "weight")));
+                    tvDnaPcr.setText(MessageFormat.format(context.getString(R.string.dna_pcr_sample), getMapValue(vals, "sample_id")));
                 }
-
-                if (StringUtils.isBlank(getMapValue(vals, "height"))) {
-                    tvHeight.setVisibility(View.GONE);
-                } else {
-                    tvHeight.setText(MessageFormat.format(context.getString(R.string.height_in_cm), getMapValue(vals, "height")));
-                }
-
-
-                if (StringUtils.isBlank(getMapValue(vals, "mRDT_for_malaria"))) {
-                    tvMrdtMalaria.setVisibility(View.GONE);
-                } else {
-                    tvMrdtMalaria.setText(MessageFormat.format(context.getString(R.string.malaria), getMapValue(vals, "mRDT_for_malaria")));
-                }
-
-                if (StringUtils.isBlank(getMapValue(vals, "health_status"))) {
-                    tvHivStatus.setVisibility(View.GONE);
-                } else {
-                    tvHivStatus.setText(MessageFormat.format(context.getString(R.string.hiv_status), getMapValue(vals, "health_status")));
-                }
-
-
                 linearLayoutHealthFacilityVisitDetails.addView(view, 0);
 
                 x++;
