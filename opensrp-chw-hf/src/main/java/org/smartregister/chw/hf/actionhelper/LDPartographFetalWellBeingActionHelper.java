@@ -29,7 +29,7 @@ public class LDPartographFetalWellBeingActionHelper implements BaseLDVisitAction
     private String amnioticFluid;
     private String moulding;
     private Context context;
-    private String baseEntityId;
+    final private String baseEntityId;
 
     public LDPartographFetalWellBeingActionHelper(MemberObject memberObject, String baseEntityId) {
         this.memberObject = memberObject;
