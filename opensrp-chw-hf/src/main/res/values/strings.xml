@@ -262,6 +262,8 @@
 
 
     <string name="ld_partograph">L&amp;D Partograph</string>
+    <string name="ld_partograph_time"> Partograph Time </string>
+    <string name="partograph_time">Partograph for %s</string>
     <string name="ld_partograph_fetal_well_being"> Partograph : Fetal Well-being </string>
     <string name="ld_partograph_mother_well_being"> Partograph : Mother Well-being </string>
     <string name="ld_partograph_labor_progress"> Partograph : Fetal Progress of Labor </string>
@@ -273,6 +275,8 @@
     <string name="ld_partograph_labor_progress_pending"> Progress of labor is pending </string>
 
     <string name="record_ld_event">Record %s</string>
+    <string name="edit_partograph_event">Edit Partograph</string>
+    <string name="process_partograph_event">Process partograph</string>
     <string name="labour_and_delivery_partograph_button_title">Partograph</string>
     <string name="labour_and_delivery_examination_and_consultation_button_tittle">Examination/Consultation</string>
     <string name="labour_and_delivery_cervix_dilation_monitoring_button_tittle">Cervix Dilation Monitoring</string>

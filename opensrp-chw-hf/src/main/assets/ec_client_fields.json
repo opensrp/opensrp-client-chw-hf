@@ -4968,6 +4968,30 @@
           }
         },
         {
+          "column_name": "moulding",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "moulding"
+          }
+        },
+        {
+          "column_name": "cervix_dilation",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "cervix_dilation"
+          }
+        },
+        {
+          "column_name": "descent_presenting_part",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "descent_presenting_part"
+          }
+        },
+        {
           "column_name": "labour_stage",
           "type": "Event",
           "json_mapping": {
@@ -5160,6 +5184,167 @@
           "json_mapping": {
             "field": "obs.fieldCode",
             "formSubmissionField": "amniotic_fluid"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ec_ld_partograph",
+      "column": [
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "form_submission_id"
+          }
+        },
+        {
+          "column_name": "entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "form_submission_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "formSubmissionId"
+          }
+        },
+        {
+          "column_name": "partograph_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "partograph_date"
+          }
+        },
+        {
+          "column_name": "partograph_time",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "partograph_time"
+          }
+        },
+        {
+          "column_name": "fetal_heart_rate",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "fetal_heart_rate"
+          }
+        },
+        {
+          "column_name": "moulding",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "moulding"
+          }
+        },
+        {
+          "column_name": "moulding_options",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "moulding_options"
+          }
+        },
+        {
+          "column_name": "membrane",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "membrane"
+          }
+        },
+        {
+          "column_name": "amniotic_fluid",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "amniotic_fluid"
+          }
+        },
+        {
+          "column_name": "cervix_dilation",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "cervix_dilation"
+          }
+        },
+        {
+          "column_name": "descent_presenting_part",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "descent_presenting_part"
+          }
+        },
+        {
+          "column_name": "contraction_every_half_hour_frequency",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "contraction_every_half_hour_frequency"
+          }
+        },
+        {
+          "column_name": "contraction_every_half_hour_time",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "contraction_every_half_hour_time"
+          }
+        },
+        {
+          "column_name": "pulse_rate",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "pulse_rate"
+          }
+        },
+        {
+          "column_name": "temperature",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "temperature"
+          }
+        },
+        {
+          "column_name": "urine",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "urine"
+          }
+        },
+        {
+          "column_name": "systolic",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "systolic"
+          }
+        },
+        {
+          "column_name": "diastolic",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "diastolic"
+          }
+        },
+        {
+          "column_name": "last_interacted_with",
+          "type": "Event",
+          "json_mapping": {
+            "field": "version"
           }
         }
       ]

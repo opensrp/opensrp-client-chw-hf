@@ -6,7 +6,10 @@ import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
+import org.smartregister.chw.core.utils.FormUtils;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.utils.Constants;
+import org.smartregister.chw.hf.utils.LDDao;
 import org.smartregister.chw.ld.domain.MemberObject;
 import org.smartregister.chw.ld.domain.VisitDetail;
 import org.smartregister.chw.ld.model.BaseLDVisitAction;
@@ -23,12 +26,14 @@ public class LDPartographFetalWellBeingActionHelper implements BaseLDVisitAction
 
     protected MemberObject memberObject;
     private String fetalHeartRate;
-    private String membrane;
+    private String amnioticFluid;
     private String moulding;
     private Context context;
+    private String baseEntityId;
 
-    public LDPartographFetalWellBeingActionHelper(MemberObject memberObject){
+    public LDPartographFetalWellBeingActionHelper(MemberObject memberObject, String baseEntityId) {
         this.memberObject = memberObject;
+        this.baseEntityId = baseEntityId;
     }
 
     @Override
@@ -38,7 +43,16 @@ public class LDPartographFetalWellBeingActionHelper implements BaseLDVisitAction
 
     @Override
     public String getPreProcessed() {
-        return null;
+        JSONObject fetalWellBeingForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.LabourAndDeliveryPartograph.getFetalWellBingForm());
+        if (fetalWellBeingForm != null) {
+            try {
+                fetalWellBeingForm.getJSONObject("global").put("moulding", LDDao.getMoulding(baseEntityId) == null ? "" : LDDao.getMoulding(baseEntityId));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return fetalWellBeingForm.toString();
     }
 
     @Override
@@ -47,8 +61,8 @@ public class LDPartographFetalWellBeingActionHelper implements BaseLDVisitAction
             JSONObject jsonObject = new JSONObject(jsonPayload);
             fetalHeartRate = CoreJsonFormUtils.getValue(jsonObject, "fetal_heart_rate");
             moulding = CoreJsonFormUtils.getValue(jsonObject, "moulding");
-            membrane = CoreJsonFormUtils.getValue(jsonObject, "moulding");
-        }catch (JSONException e){
+            amnioticFluid = CoreJsonFormUtils.getValue(jsonObject, "amniotic_fluid");
+        } catch (JSONException e) {
             Timber.e(e);
         }
     }
@@ -92,15 +106,15 @@ public class LDPartographFetalWellBeingActionHelper implements BaseLDVisitAction
         Timber.v("onPayloadReceived");
     }
 
-    private boolean allFieldsCompleted(){
+    private boolean allFieldsCompleted() {
         return StringUtils.isNotBlank(fetalHeartRate) &&
                 StringUtils.isNotBlank(moulding) &&
-                StringUtils.isNotBlank(membrane);
+                StringUtils.isNotBlank(amnioticFluid);
     }
 
-    private boolean anyFieldCompleted(){
+    private boolean anyFieldCompleted() {
         return StringUtils.isNotBlank(fetalHeartRate) ||
                 StringUtils.isNotBlank(moulding) ||
-                StringUtils.isNotBlank(membrane);
+                StringUtils.isNotBlank(amnioticFluid);
     }
 }

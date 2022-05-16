@@ -6,6 +6,7 @@ import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.actionhelper.LDPartographFetalWellBeingActionHelper;
 import org.smartregister.chw.hf.actionhelper.LDPartographLabourProgressActionHelper;
 import org.smartregister.chw.hf.actionhelper.LDPartographMotherWellBeingActionHelper;
+import org.smartregister.chw.hf.actionhelper.LDPartographTimeActionHelper;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.ld.LDLibrary;
 import org.smartregister.chw.ld.contract.BaseLDVisitContract;
@@ -40,11 +41,28 @@ public class LDPartographInteractorFlv implements LDPartographInteractor.Flavor 
             }
         }
 
+        evaluatePartographTime(actionList, details, memberObject, context);
         evaluateFetalWellbeing(actionList, details, memberObject, context);
         evaluateMotherWellBeing(actionList, details, memberObject, context);
         evaluateProgressOfLabour(actionList, details, memberObject, context);
 
         return actionList;
+    }
+
+
+    private void evaluatePartographTime(LinkedHashMap<String, BaseLDVisitAction> actionList,
+                                        Map<String, List<VisitDetail>> details,
+                                        final MemberObject memberObject,
+                                        final Context context) throws BaseLDVisitAction.ValidationException {
+
+        BaseLDVisitAction partographTime = new BaseLDVisitAction.Builder(context, context.getString(R.string.ld_partograph_time))
+                .withOptional(false)
+                .withDetails(details)
+                .withFormName(Constants.JsonForm.LabourAndDeliveryPartograph.getPartographTimeForm())
+                .withHelper(new LDPartographTimeActionHelper(memberObject))
+                .build();
+
+        actionList.put(context.getString(R.string.ld_partograph_time), partographTime);
     }
 
     private void evaluateFetalWellbeing(LinkedHashMap<String, BaseLDVisitAction> actionList,
@@ -55,10 +73,10 @@ public class LDPartographInteractorFlv implements LDPartographInteractor.Flavor 
 
 
         BaseLDVisitAction fetalWellBeingAction = new BaseLDVisitAction.Builder(context, context.getString(R.string.ld_partograph_fetal_well_being))
-                .withOptional(false)
+                .withOptional(true)
                 .withDetails(details)
                 .withFormName(Constants.JsonForm.LabourAndDeliveryPartograph.getFetalWellBingForm())
-                .withHelper(new LDPartographFetalWellBeingActionHelper(memberObject))
+                .withHelper(new LDPartographFetalWellBeingActionHelper(memberObject,memberObject.getBaseEntityId()))
                 .build();
 
         actionList.put(context.getString(R.string.ld_partograph_fetal_well_being), fetalWellBeingAction);
@@ -72,7 +90,7 @@ public class LDPartographInteractorFlv implements LDPartographInteractor.Flavor 
     ) throws BaseLDVisitAction.ValidationException {
 
         BaseLDVisitAction motherWellBeingAction = new BaseLDVisitAction.Builder(context, context.getString(R.string.ld_partograph_mother_well_being))
-                .withOptional(false)
+                .withOptional(true)
                 .withDetails(details)
                 .withFormName(Constants.JsonForm.LabourAndDeliveryPartograph.getMotherWellBeingForm())
                 .withHelper(new LDPartographMotherWellBeingActionHelper(memberObject))
@@ -89,7 +107,7 @@ public class LDPartographInteractorFlv implements LDPartographInteractor.Flavor 
     ) throws BaseLDVisitAction.ValidationException {
 
         BaseLDVisitAction progressOfLaborAction = new BaseLDVisitAction.Builder(context, context.getString(R.string.ld_partograph_labor_progress))
-                .withOptional(false)
+                .withOptional(true)
                 .withDetails(details)
                 .withFormName(Constants.JsonForm.LabourAndDeliveryPartograph.getProgressOfLabourForm())
                 .withHelper(new LDPartographLabourProgressActionHelper(memberObject))

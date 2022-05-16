@@ -77,6 +77,7 @@ public class Constants extends CoreConstants {
         public static final String PMTCT_VISIT = "Pmtct";
         public static final String HEI_VISIT = "HEI";
         public static final String LD_GENERAL_VISIT = "L&D Examination";
+        public static final String LD_PARTOGRAPH_VISIT = "L&D Partograph";
     }
 
     public static final class ActionList {
@@ -444,6 +445,7 @@ public class Constants extends CoreConstants {
             public static final String PARTOGRAPH_MOTHER_WELLBEING = "labour_and_delivery_mother_well_being";
             public static final String PARTOGRAPH_PROGRESS_OF_LABOUR = "labour_and_delivery_labour_progress";
             public static final String PARTOGRAPH_TREATMENT_DURING_LABOUR = "";
+            public static final String PARTOGRAPH_TIME = "labour_and_delivery_partograph_time";
 
             public static String getFetalWellBingForm(){
                 return PARTOGRAPH_FETAL_WELLBEING;
@@ -459,6 +461,10 @@ public class Constants extends CoreConstants {
 
             public static String getTreatmentDuringLabourForm(){
                 return PARTOGRAPH_TREATMENT_DURING_LABOUR;
+            }
+
+            public static String getPartographTimeForm(){
+                return PARTOGRAPH_TIME;
             }
 
         }

@@ -10,6 +10,7 @@ import org.smartregister.chw.ld.repository.VisitDetailsRepository;
 import org.smartregister.chw.ld.repository.VisitRepository;
 import org.smartregister.chw.ld.util.Constants;
 import org.smartregister.chw.ld.util.VisitUtils;
+import org.smartregister.chw.hf.utils.Constants.Events;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -20,11 +21,11 @@ import java.util.List;
  */
 public class LDVisitUtils extends VisitUtils {
 
-    public static void processVisits(String baseEntityId) throws Exception {
-        processVisits(LDLibrary.getInstance().visitRepository(), LDLibrary.getInstance().visitDetailsRepository(), baseEntityId);
+    public static void processVisits(String baseEntityId, boolean isPartograph) throws Exception {
+        processVisits(LDLibrary.getInstance().visitRepository(), LDLibrary.getInstance().visitDetailsRepository(), baseEntityId, isPartograph);
     }
 
-    public static void processVisits(VisitRepository visitRepository, VisitDetailsRepository visitDetailsRepository, String baseEntityId) throws Exception {
+    public static void processVisits(VisitRepository visitRepository, VisitDetailsRepository visitDetailsRepository, String baseEntityId, boolean isPartograph) throws Exception {
         Calendar calendar = Calendar.getInstance();
 
         List<Visit> visits = StringUtils.isNotBlank(baseEntityId) ?
@@ -33,7 +34,7 @@ public class LDVisitUtils extends VisitUtils {
 
         List<Visit> ldVisits = new ArrayList<>();
 
-        for (Visit visit: visits) {
+        for (Visit visit : visits) {
             if (visit.getVisitType().equalsIgnoreCase(Constants.EVENT_TYPE.LD_GENERAL_EXAMINATION)) {
                 JSONObject visitJson = new JSONObject(visit.getJson());
                 JSONArray obs = visitJson.getJSONArray("obs");
@@ -58,7 +59,6 @@ public class LDVisitUtils extends VisitUtils {
                 boolean isOcciputPositionDone = computeCompletionStatus(obs, "occiput_position");
                 boolean isMouldingDone = computeCompletionStatus(obs, "moulding");
                 boolean isStationDone = computeCompletionStatus(obs, "station");
-                boolean isAmnioticFluidDone = computeCompletionStatus(obs, "amniotic_fluid");
                 boolean isDecisionDone = computeCompletionStatus(obs, "decision");
 
                 if (isGeneralConditionDone &&
@@ -80,8 +80,11 @@ public class LDVisitUtils extends VisitUtils {
                         isOcciputPositionDone &&
                         isMouldingDone &&
                         isStationDone &&
-                        isAmnioticFluidDone &&
                         isDecisionDone) {
+                    ldVisits.add(visit);
+                }
+            } else if (visit.getVisitType().equalsIgnoreCase(Events.LD_PARTOGRAPHY) && isPartograph) {
+                if(shouldProcessPartographVisit(visit)) {
                     ldVisits.add(visit);
                 }
             } else {
@@ -97,12 +100,36 @@ public class LDVisitUtils extends VisitUtils {
     public static boolean computeCompletionStatus(JSONArray obs, String checkString) throws JSONException {
         int size = obs.length();
         for (int i = 0; i < size; i++) {
-            JSONObject checkObj = obs.getJSONObject(i);
-            if (checkObj.getString("fieldCode").equalsIgnoreCase(checkString)) {
+            JSONObject jsonObject = obs.getJSONObject(i);
+            if (jsonObject.getString("fieldCode").equalsIgnoreCase(checkString)) {
                 return true;
             }
         }
         return false;
+    }
+
+    public static boolean shouldProcessPartographVisit(Visit visit) throws JSONException {
+        JSONObject visitJson = new JSONObject(visit.getJson());
+        JSONArray obs = visitJson.getJSONArray("obs");
+
+        boolean hasPartographDate = computeCompletionStatus(obs, "partograph_date");
+        boolean hasPartographTime = computeCompletionStatus(obs, "partograph_time");
+
+        boolean hasRespiratoryRate = computeCompletionStatus(obs, "respiratory_rate");
+        boolean hasPulseRate = computeCompletionStatus(obs, "pulse_rate");
+        boolean hasAmnioticFluid = computeCompletionStatus(obs, "amnioticFluid");
+        boolean hasMolding = computeCompletionStatus(obs, "moulding");
+        boolean hasFetalHeartRate = computeCompletionStatus(obs, "fetal_heart_rate");
+        boolean hasTemperature = computeCompletionStatus(obs, "temperature");
+        boolean hasSystolic = computeCompletionStatus(obs, "systolic");
+        boolean hasDiastolic = computeCompletionStatus(obs, "diastolic");
+        boolean hasUrine = computeCompletionStatus(obs, "urine");
+        boolean hasCervixDilation = computeCompletionStatus(obs, "cervix_dilation");
+        boolean hasDescentPresentingPart = computeCompletionStatus(obs, "descent_presenting_part");
+        boolean hasContractionEveryHalfHourFrequency = computeCompletionStatus(obs, "contraction_every_half_hour_frequency");
+        boolean hasContractionEveryHalfAnHour = computeCompletionStatus(obs, "contraction_every_half_hour_time");
+
+        return hasPartographDate && hasPartographTime && (hasRespiratoryRate || hasPulseRate || hasAmnioticFluid || hasFetalHeartRate || hasTemperature || hasSystolic || hasDiastolic || hasUrine || hasCervixDilation || hasDescentPresentingPart || hasContractionEveryHalfHourFrequency || hasContractionEveryHalfAnHour || hasMolding);
     }
 
 }

@@ -2,7 +2,7 @@
   "validate_on_submit": true,
   "show_errors_on_submit": false,
   "count": "1",
-  "encounter_type": "Placenta and Membrane",
+  "encounter_type": "Partograph Period",
   "entity_id": "",
   "relational_id": "",
   "metadata": {
@@ -48,60 +48,49 @@
       "value": ""
     }
   },
+  "global": {},
   "step1": {
-    "title": "Active Management of 3rd Stage Labour (AMSTL)",
+    "title": "Partograph Time",
     "fields": [
       {
-        "key": "placenta_and_membrane_expulsion",
+        "key": "partograph_date",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "placenta_and_membrane_expulsion",
-        "label": "Expulsion of the Placenta and Membranes",
-        "text_color": "#000000",
-        "type": "native_radio",
-        "options": [
-          {
-            "key": "complete_placenta",
-            "text": "Complete placenta",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "complete_placenta"
-          },
-          {
-            "key": "retained_placenta",
-            "text": "Retained placenta",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "retained_placenta"
-          }
-        ],
-        "v_required": {
-          "value": true,
-          "err": "Please select an option"
-        }
+        "openmrs_entity_id": "partograph_date",
+        "type": "date_picker",
+        "hint": "Partograph Date",
+        "expanded": false,
+        "min_date": "today-2y",
+        "max_date": "today"
       },
       {
-        "key": "prompt_for_placenta_and_membrane_expulsion",
-        "type": "toaster_notes",
-        "text": "Take action per National guideline",
-        "openmrs_entity_id": "",
-        "openmrs_entity": "",
-        "openmrs_entity_parent": "",
-        "toaster_type": "problem",
-        "relevance": {
-          "step1:placenta_and_membrane_expulsion": {
-            "type": "string",
-            "ex": "equalTo(., \"retained_placenta\")"
-          }
-        }
-      },
-      {
-        "key": "labour_stage",
+        "key": "last_partograph_monitoring_time",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "labour_stage",
+        "openmrs_entity_id": "last_partograph_monitoring_time",
         "type": "hidden",
-        "value": 4
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_partograph_monitoring_time_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "partograph_time",
+        "type": "time_picker",
+        "hint": "Partograph Time",
+        "openmrs_entity_id": "partograph_time",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "constraints": [
+          {
+            "type": "time",
+            "ex": "greaterThan(., step1:last_partograph_monitoring_time)",
+            "err": "The partograph monitoring time cannot be before the previously captured partograph monitoring time"
+          }
+        ]
       }
     ]
   }

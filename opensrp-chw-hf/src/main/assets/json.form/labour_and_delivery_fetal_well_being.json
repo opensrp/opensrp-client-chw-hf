@@ -5,6 +5,7 @@
   "encounter_type": "LD Partograph - Fetal Well-being",
   "entity_id": "",
   "relational_id": "",
+  "global": {},
   "metadata": {
     "start": {
       "openmrs_entity_parent": "",
@@ -17,11 +18,6 @@
       "openmrs_entity": "concept",
       "openmrs_data_type": "end",
       "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-    },
-    "today": {
-      "openmrs_entity_parent": "",
-      "openmrs_entity": "encounter",
-      "openmrs_entity_id": "encounter_date"
     },
     "deviceid": {
       "openmrs_entity_parent": "",
@@ -115,7 +111,14 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
-        ]
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_fetal_wellbeing_relevance.yml"
+            }
+          }
+        }
       },
       {
         "key": "moulding_options",
@@ -153,36 +156,12 @@
           "err": "Please select an option"
         },
         "relevance": {
-          "step1:moulding": {
-            "type": "string",
-            "ex": "equalTo(., \"yes\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_fetal_wellbeing_relevance.yml"
+            }
           }
         }
-      },
-      {
-        "key": "membrane",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "membrane",
-        "label": "Membrane",
-        "text_color": "#000000",
-        "type": "native_radio",
-        "options": [
-          {
-            "key": "intact",
-            "text": "Intact",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "intact"
-          },
-          {
-            "key": "ruptured",
-            "text": "Ruptured",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "ruptured"
-          }
-        ]
       },
       {
         "key": "amniotic_fluid",
@@ -194,11 +173,18 @@
         "type": "native_radio",
         "options": [
           {
-            "key": "membrane_ruptured",
+            "key": "membrane_intact",
+            "text": "Membrane Intact (I)",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "membrane_intact"
+          },
+          {
+            "key": "membrane_ruptured_liquor_clear",
             "text": "Membrane ruptured liquor clear (C)",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "membrane_ruptured"
+            "openmrs_entity_id": "membrane_ruptured_liquor_clear"
           },
           {
             "key": "meconium_stained_liquor",
@@ -218,12 +204,6 @@
         "v_required": {
           "value": true,
           "err": "Please select an option"
-        },
-        "relevance": {
-          "step1:membrane": {
-            "type": "string",
-            "ex": "equalTo(., \"ruptured\")"
-          }
         }
       },
       {

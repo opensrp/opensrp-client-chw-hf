@@ -53,17 +53,23 @@ public class LDVaginalExaminationActionHelper implements BaseLDVisitAction.LDVis
             try {
                 JSONArray fields = vaginalExaminationForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
                 populateVaginalExaminationForm(fields, baseEntityId);
+
+                if (LDDao.getLabourOnsetDate(baseEntityId) != null) {
+                    vaginalExaminationForm.getJSONObject("global").put("labour_onset_date", LDDao.getLabourOnsetDate(baseEntityId));
+                }
+
+                if (LDDao.getLabourOnsetTime(baseEntityId) != null) {
+                    vaginalExaminationForm.getJSONObject("global").put("labour_onset_time", LDDao.getLabourOnsetTime(baseEntityId));
+                }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
 
-        if (LDDao.getMembraneStateDuringAdmissionToLabour(baseEntityId) != null) {
-            try {
-                vaginalExaminationForm.getJSONObject("global").put("membrane_status", LDDao.getMembraneStateDuringAdmissionToLabour(baseEntityId));
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+        try {
+            vaginalExaminationForm.getJSONObject("global").put("moulding", LDDao.getMoulding(baseEntityId) == null? "" : LDDao.getMoulding(baseEntityId));
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
         return vaginalExaminationForm.toString();
     }
@@ -152,7 +158,9 @@ public class LDVaginalExaminationActionHelper implements BaseLDVisitAction.LDVis
     private void populateVaginalExaminationForm(JSONArray fields, String baseEntityId) throws JSONException {
         JSONObject vaginalExamDate = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "vaginal_exam_date");
 
-        if (LDDao.getLabourOnsetDate(baseEntityId) != null) {
+        if (LDDao.getVaginalExaminationDate(baseEntityId) != null) {
+            vaginalExamDate.put("min_date", LDDao.getVaginalExaminationDate(baseEntityId));
+        }else if (LDDao.getLabourOnsetDate(baseEntityId) != null) {
             vaginalExamDate.put("min_date", LDDao.getLabourOnsetDate(baseEntityId));
         }
     }
