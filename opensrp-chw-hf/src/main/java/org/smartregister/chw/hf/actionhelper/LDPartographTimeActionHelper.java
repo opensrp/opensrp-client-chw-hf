@@ -26,15 +26,13 @@ import timber.log.Timber;
  */
 public class LDPartographTimeActionHelper implements BaseLDVisitAction.LDVisitActionHelper {
 
-    private MemberObject memberObject;
     private Context context;
     private String time;
     private String date;
-    private final String baseEntityId;
+    private final MemberObject memberObject;
 
-    public LDPartographTimeActionHelper(MemberObject memberObject, String baseEntityId) {
+    public LDPartographTimeActionHelper(MemberObject memberObject) {
         this.memberObject = memberObject;
-        this.baseEntityId = baseEntityId;
     }
 
     @Override
@@ -47,6 +45,9 @@ public class LDPartographTimeActionHelper implements BaseLDVisitAction.LDVisitAc
         JSONObject partographTimeForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.LabourAndDeliveryPartograph.getPartographTimeForm());
         if (partographTimeForm != null) {
             try {
+
+                String baseEntityId = memberObject.getBaseEntityId();
+
                 JSONArray fields = partographTimeForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
                 populatePartograhDateTimeForm(fields, baseEntityId);
 
@@ -129,7 +130,9 @@ public class LDPartographTimeActionHelper implements BaseLDVisitAction.LDVisitAc
 
     @Override
     public void onPayloadReceived(BaseLDVisitAction baseLDVisitAction) {
-
+        /*
+         * TODO: Capture values after form was filled by the user
+         */
     }
 
     private void populatePartograhDateTimeForm(JSONArray fields, String baseEntityId) throws JSONException {

@@ -10,6 +10,7 @@ import org.smartregister.chw.ld.repository.VisitDetailsRepository;
 import org.smartregister.chw.ld.repository.VisitRepository;
 import org.smartregister.chw.ld.util.Constants;
 import org.smartregister.chw.ld.util.VisitUtils;
+import org.smartregister.chw.hf.utils.Constants.Events;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -82,7 +83,7 @@ public class LDVisitUtils extends VisitUtils {
                         isDecisionDone) {
                     ldVisits.add(visit);
                 }
-            } else if (visit.getVisitType().equalsIgnoreCase(org.smartregister.chw.hf.utils.Constants.Events.LD_PARTOGRAPHY) && isPartograph) {
+            } else if (visit.getVisitType().equalsIgnoreCase(Events.LD_PARTOGRAPHY) && isPartograph) {
                 if(shouldProcessPartographVisit(visit)) {
                     ldVisits.add(visit);
                 }
@@ -127,10 +128,8 @@ public class LDVisitUtils extends VisitUtils {
         boolean hasDescentPresentingPart = computeCompletionStatus(obs, "descent_presenting_part");
         boolean hasContractionEveryHalfHourFrequency = computeCompletionStatus(obs, "contraction_every_half_hour_frequency");
         boolean hasContractionEveryHalfAnHour = computeCompletionStatus(obs, "contraction_every_half_hour_time");
-        if (hasPartographDate && hasPartographTime && (hasRespiratoryRate || hasPulseRate || hasAmnioticFluid || hasFetalHeartRate || hasTemperature || hasSystolic || hasDiastolic || hasUrine || hasCervixDilation || hasDescentPresentingPart || hasContractionEveryHalfHourFrequency || hasContractionEveryHalfAnHour || hasMolding)) {
-            return true;
-        }
-        return false;
+
+        return hasPartographDate && hasPartographTime && (hasRespiratoryRate || hasPulseRate || hasAmnioticFluid || hasFetalHeartRate || hasTemperature || hasSystolic || hasDiastolic || hasUrine || hasCervixDilation || hasDescentPresentingPart || hasContractionEveryHalfHourFrequency || hasContractionEveryHalfAnHour || hasMolding);
     }
 
 }
