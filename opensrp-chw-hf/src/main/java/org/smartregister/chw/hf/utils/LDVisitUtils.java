@@ -84,6 +84,8 @@ public class LDVisitUtils extends VisitUtils {
                         isDecisionDone) {
                     ldVisits.add(visit);
                 }
+            } else {
+                ldVisits.add(visit);
             }
         }
 

@@ -648,6 +648,13 @@
             "creates_case": [
               "ec_ld_confirmation"
             ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "LD Active Management of Labour",
+            "creates_case": [
+              "ec_ld_confirmation"
+            ]
           }
         ]
       }

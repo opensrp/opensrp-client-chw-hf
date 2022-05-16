@@ -98,6 +98,8 @@ public class LDProfileActivity extends BaseLDProfileActivity {
                         getName(memberObject), String.valueOf(new Period(new DateTime(this.memberObject.getAge()), new DateTime()).getYears()));
             } else if (((TextView) view).getText().equals(getString(R.string.lb_mode_of_delivery))) {
                 startLDForm(this, memberObject.getBaseEntityId(), getLabourAndDeliveryModeOfDelivery());
+            } else if (((TextView) view).getText().equals(getString(R.string.ld_active_management_3rd_stage))) {
+                openActiveManagementStage();
             }
         } else {
             super.onClick(view);
@@ -125,6 +127,8 @@ public class LDProfileActivity extends BaseLDProfileActivity {
             }
         } else if (LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("2")) {
             textViewRecordLD.setText(R.string.lb_mode_of_delivery);
+        } else if (LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("3")) {
+            textViewRecordLD.setText(R.string.ld_active_management_3rd_stage);
         }
     }
 
@@ -145,6 +149,11 @@ public class LDProfileActivity extends BaseLDProfileActivity {
         }
 
         LDVisitActivity.startLDVisitActivity(this, baseEntityId, false);
+    }
+
+
+    private void openActiveManagementStage() {
+        LDActiveManagementStageActivity.startActiveManagementActivity(this, memberObject.getBaseEntityId(), false);
     }
 
 }
