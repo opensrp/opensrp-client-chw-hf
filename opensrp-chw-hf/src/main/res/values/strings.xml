@@ -271,5 +271,9 @@
     <string name="ld_expulsion_of_placenta">Expulsion of the placenta and membranes</string>
     <string name="ld_placent_retained_message">Placenta Retained</string>
     <string name="ld_no_uterus_massage">The woman did not receive uterus massage</string>
+    <string name="ld_mother_post_delivery_management">Mother Post Delivery Management</string>
+    <string name="ld_maternal_complication_action_title">Maternal complications during labour</string>
+    <string name="ld_post_delivery_observation_action_title">Post Delivery Observation</string>
+    <string name="ld_mother_status_action_title">Mother\'s Status</string>
 
 </resources>
