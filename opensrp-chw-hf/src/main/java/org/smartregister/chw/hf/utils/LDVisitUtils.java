@@ -4,13 +4,13 @@ import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.smartregister.chw.hf.utils.Constants.Events;
 import org.smartregister.chw.ld.LDLibrary;
 import org.smartregister.chw.ld.domain.Visit;
 import org.smartregister.chw.ld.repository.VisitDetailsRepository;
 import org.smartregister.chw.ld.repository.VisitRepository;
 import org.smartregister.chw.ld.util.Constants;
 import org.smartregister.chw.ld.util.VisitUtils;
-import org.smartregister.chw.hf.utils.Constants.Events;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -83,8 +83,8 @@ public class LDVisitUtils extends VisitUtils {
                         isDecisionDone) {
                     ldVisits.add(visit);
                 }
-            } else if (visit.getVisitType().equalsIgnoreCase(Events.LD_PARTOGRAPHY) && isPartograph) {
-                if(shouldProcessPartographVisit(visit)) {
+            } else if (visit.getVisitType().equalsIgnoreCase(Events.LD_PARTOGRAPHY)) {
+                if (isPartograph && shouldProcessPartographVisit(visit)) {
                     ldVisits.add(visit);
                 }
             } else {
