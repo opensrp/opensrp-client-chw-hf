@@ -5190,7 +5190,7 @@
     },
     {
       "name": "ec_ld_partograph",
-      "column": [
+      "columns": [
         {
           "column_name": "base_entity_id",
           "type": "Event",
