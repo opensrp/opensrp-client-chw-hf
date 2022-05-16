@@ -100,6 +100,8 @@ public class LDProfileActivity extends BaseLDProfileActivity {
                 startLDForm(this, memberObject.getBaseEntityId(), getLabourAndDeliveryModeOfDelivery());
             } else if (((TextView) view).getText().equals(getString(R.string.ld_active_management_3rd_stage))) {
                 openActiveManagementStage();
+            } else if (((TextView) view).getText().equals(getString(R.string.ld_mother_post_delivery_management))) {
+                openPostDeliveryManagementMother();
             }
         } else {
             super.onClick(view);
@@ -129,8 +131,10 @@ public class LDProfileActivity extends BaseLDProfileActivity {
             textViewRecordLD.setText(R.string.lb_mode_of_delivery);
         } else if (LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("3")) {
             textViewRecordLD.setText(R.string.ld_active_management_3rd_stage);
+        } else if (LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("4")) {
+            textViewRecordLD.setText(R.string.ld_mother_post_delivery_management);
         }
-    }
+     }
 
     public static void startLDForm(Activity activity, String baseEntityID, String formName) {
         Intent intent = new Intent(activity, LDRegisterActivity.class);
@@ -154,6 +158,11 @@ public class LDProfileActivity extends BaseLDProfileActivity {
 
     private void openActiveManagementStage() {
         LDActiveManagementStageActivity.startActiveManagementActivity(this, memberObject.getBaseEntityId(), false);
+    }
+
+
+    private void openPostDeliveryManagementMother() {
+        LDPostDeliveryManagementMotherActivity.startPostDeliveryMotherManagementActivity(this, memberObject.getBaseEntityId(), false);
     }
 
 }
