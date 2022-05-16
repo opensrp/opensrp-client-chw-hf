@@ -113,7 +113,10 @@ public class LDPartographTimeActionHelper implements BaseLDVisitAction.LDVisitAc
 
     @Override
     public String evaluateSubTitle() {
-        return context.getString(R.string.partograph_time, time);
+        if (StringUtils.isNotBlank(time))
+            return context.getString(R.string.partograph_time, time);
+        else
+            return "";
     }
 
     @Override
