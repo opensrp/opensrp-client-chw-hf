@@ -38,6 +38,8 @@
         <activity
             android:name=".activity.PmtctReportsViewActivity"
             android:theme="@style/HFTheme.NoActionBar" />
+        <activity android:name=".activity.HeiMedicalHistoryActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
         <activity
             android:name=".activity.LoginActivity"
             android:launchMode="singleTask"

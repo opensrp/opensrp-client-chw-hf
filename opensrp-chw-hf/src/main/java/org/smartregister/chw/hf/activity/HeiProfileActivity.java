@@ -348,6 +348,12 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
         return true;
     }
 
+    @Override
+    public void openMedicalHistory() {
+        HeiMedicalHistoryActivity.startMe(this, memberObject);
+    }
+
+
     @SuppressLint("MissingSuperCall")
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -412,8 +418,12 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
 
     @Override
     public void refreshMedicalHistory(boolean hasHistory) {
-        super.refreshMedicalHistory(hasHistory);
-        rlLastVisit.setVisibility(View.GONE);
+        Visit lastFollowupVisit = getVisit(org.smartregister.chw.hf.utils.Constants.Events.HEI_FOLLOWUP);
+        if(lastFollowupVisit !=null){
+            rlLastVisit.setVisibility(View.VISIBLE);
+        }else{
+            rlLastVisit.setVisibility(View.GONE);
+        }
     }
 
     @Override

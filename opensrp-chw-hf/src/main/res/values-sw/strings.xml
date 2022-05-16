@@ -219,6 +219,21 @@
     <string name="head_circumference_min_err">Mzunguko wa kichwa unatakiwa kuwa sawa au zaidi ya % CM</string>
     <string name="return_to_all_pnc_women">Rudi kwa wateja wa PNC</string>
 
+    <!-- HEI Medical History -->
+    <string name="hei_visit_title">Hudhurio la HEI {0}: {1}, Umri {2}</string>
+    <string name="hei_type_of_visit">Aina ya Hudhurio: {0}</string>
+    <string name="ctx_days_dispensed">CTX Idadi ya Siku: Siku {0}</string>
+    <string name="nvp_days_dispensed">NVP Idadi ya Siku: Siku {0}</string>
+    <string name="infant_feeding_practice">Lishe ya Mtoto: {0}</string>
+    <string name="feeding_practice_ebf">EBF</string>
+    <string name="feeding_practice_rf">RF</string>
+    <string name="feeding_practice_mf">MF</string>
+    <string name="feeding_practice_bf_plus">BF</string>
+    <string name="feeding_practice_rf_plus">RF</string>
+    <string name="feeding_practice_sbf">SBF</string>
+    <string name="next_facility_visit_date">Tarehe ya Uthurio Lijalo: {0}</string>
+
+
     <!-- Advanced search screen-->
     <string name="search">Tafuta</string>
     <string name="matching_results">%1$s matokeo yanawiana.</string>

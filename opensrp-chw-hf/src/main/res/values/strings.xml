@@ -206,6 +206,22 @@
     <string name="tomorrow_hei_clients">Tomorrow Visits</string>
     <string name="missed_hei_clients">Missed</string>
 
+    <!-- HEI Medical History -->
+    <string name="hei_visit_title">HEI Visit {0}: {1}, Age {2}</string>
+    <string name="hei_type_of_visit">Type of visit: {0}</string>
+    <string name="ctx_days_dispensed">CTX Days Dispensed: {0} Days</string>
+    <string name="nvp_days_dispensed">NVP days dispensed: {0} Days</string>
+    <string name="infant_feeding_practice">Infant Feeding Practice: {0}</string>
+    <string name="feeding_practice_ebf">EBF</string>
+    <string name="feeding_practice_rf">RF</string>
+    <string name="feeding_practice_mf">MF</string>
+    <string name="feeding_practice_bf_plus">BF</string>
+    <string name="feeding_practice_rf_plus">RF</string>
+    <string name="feeding_practice_sbf">SBF</string>
+    <string name="dna_pcr_sample">DNA PCR SAMPLE ID : {0}</string>
+    <string name="next_facility_visit_date">Next Facility Visit Date: {0}</string>
+
+
     <string name="search">Search</string>
     <string name="global_search">Global Search</string>
     <string name="matching_results">%1$s matching results found.</string>
@@ -271,5 +287,7 @@
     <string name="ld_expulsion_of_placenta">Expulsion of the placenta and membranes</string>
     <string name="ld_placent_retained_message">Placenta Retained</string>
     <string name="ld_no_uterus_massage">The woman did not receive uterus massage</string>
+
+
 
 </resources>
