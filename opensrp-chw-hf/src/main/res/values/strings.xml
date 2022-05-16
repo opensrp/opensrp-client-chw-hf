@@ -115,7 +115,7 @@
     <string name="hei_toolbar_title">Return To All HEI Clients</string>
     <string name="record_followup">Record HEI Followup</string>
     <string name="hei_visit">HEI Visit</string>
-    <string name="antibody_test_sample_collected">Antibody Test Sample Collected</string>
+    <string name="antibody_test_results_filled">Antibody Test Results Filled</string>
     <string name="hei_arv_prescription_given">ARV prophylaxis Given</string>
     <string name="hei_arv_prescription_not_given">ARV prophylaxis Not Given</string>
     <string name="other_combination_given">Other Combinations Given</string>
@@ -179,7 +179,7 @@
     <string name="dna_pcr_sample_collection">DNA-PCR Sample Collection</string>
     <string name="ctx_prescription_title">CTX Prescription</string>
     <string name="hiv_results_title">HIV Results</string>
-    <string name="antibody_test_sample_collection">Antibody Test Sample Collection</string>
+    <string name="antibody_test_result">Antibody Test Result</string>
     <string name="hiv_test_results_title">HIV Test Results</string>
     <string name="print_report">Print</string>
     <string name="pnc_reports">PNC Reports</string>
@@ -201,6 +201,10 @@
     <string name="caregiver_name">CG: %s</string>
     <string name="call_child_caregiver">CALL CHILD\'s CAREGIVER</string>
     <string name="pnc_reports_title">PNC REPORTS</string>
+
+    <string name="all_hei_clients">All</string>
+    <string name="tomorrow_hei_clients">Tomorrow Visits</string>
+    <string name="missed_hei_clients">Missed</string>
 
     <string name="search">Search</string>
     <string name="global_search">Global Search</string>
@@ -265,5 +269,11 @@
     <string name="lb_visit_vaginal_examination">Vaginal examination</string>
     <string name="lb_visit_general_examination">General examination</string>
     <string name="lb_mode_of_delivery">Mode of Delivery</string>
+    <string name="ld_active_management_3rd_stage">Active Management of 3rd Stage</string>
+    <string name="uterotonic">Uterotonic</string>
+    <string name="ld_massage_uterus_after_delivery">Massage the uterus after delivery</string>
+    <string name="ld_expulsion_of_placenta">Expulsion of the placenta and membranes</string>
+    <string name="ld_placent_retained_message">Placenta Retained</string>
+    <string name="ld_no_uterus_massage">The woman did not receive uterus massage</string>
 
 </resources>

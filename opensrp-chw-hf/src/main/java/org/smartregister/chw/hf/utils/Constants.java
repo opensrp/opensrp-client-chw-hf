@@ -484,6 +484,25 @@ public class Constants extends CoreConstants {
 
         }
 
+        public static class LDActiveManagement {
+            public static final String LD_ACTIVE_MANAGEMENT_UTERONICS = "labour_and_delivery_uterotonic";
+            public static final String LD_ACTIVE_MANAGEMENT_EXPULSION_PLACENTA = "labour_and_delivery_placenta_and_membrane";
+            public static final String LD_ACTIVE_MANAGEMENT_MASSAGE_UTERUS = "labour_and_delivery_uterus";
+
+            public static String getLDActiveManagementUteronics() {
+                return Utils.getLocalForm(LD_ACTIVE_MANAGEMENT_UTERONICS);
+            }
+
+            public static String getLdActiveManagementExpulsionPlacenta() {
+                return Utils.getLocalForm(LD_ACTIVE_MANAGEMENT_EXPULSION_PLACENTA);
+            }
+
+            public static String getLdActiveManagementMassageUterus() {
+                return Utils.getLocalForm(LD_ACTIVE_MANAGEMENT_MASSAGE_UTERUS);
+            }
+
+        }
+
     }
 
     public static final class JsonFormConstants {

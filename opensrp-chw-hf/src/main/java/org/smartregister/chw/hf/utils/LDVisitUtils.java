@@ -86,6 +86,8 @@ public class LDVisitUtils extends VisitUtils {
                 if(shouldProcessPartographVisit(visit)) {
                     ldVisits.add(visit);
                 }
+            } else {
+                ldVisits.add(visit);
             }
         }
 

@@ -84,7 +84,7 @@
         "key": "confirmation_hiv_test_result",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "hiv_status",
+        "openmrs_entity_id": "confirmation_hiv_test_result",
         "type": "native_radio",
         "label": "Is this a confirmation test result?",
         "label_text_style": "normal",
@@ -187,9 +187,9 @@
           "err": "Please select an option"
         },
         "relevance": {
-          "step1:hiv_test_result": {
+          "step1:confirmation_hiv_test_result": {
             "type": "string",
-            "ex": "equalTo(.,\"positive\")"
+            "ex": "equalTo(.,\"yes\")"
           }
         }
       },
@@ -215,7 +215,7 @@
         }
       },
       {
-        "key": "prompt_for_linkage_to_ctc",
+        "key": "prompt_provide_results_to_parents",
         "type": "toaster_notes",
         "text": "Provide the results to the parents",
         "openmrs_entity_id": "",
@@ -259,9 +259,9 @@
           "err": "Please select an option"
         },
         "relevance": {
-          "step1:hiv_test_result": {
+          "step1:confirmation_hiv_test_result": {
             "type": "string",
-            "ex": "equalTo(.,\"positive\")"
+            "ex": "equalTo(.,\"yes\")"
           }
         }
       },

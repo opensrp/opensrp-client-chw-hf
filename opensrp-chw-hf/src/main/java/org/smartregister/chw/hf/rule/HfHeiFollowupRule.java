@@ -21,12 +21,12 @@ public class HfHeiFollowupRule extends HeiFollowupRule {
         if (isFirstVisit()) {
             this.dueDate = startDate.plusDays(0);
             this.overDueDate = startDate.plusDays(7);
-        } else if (HeiDao.getLatestTestAtAge(getBaseEntityId()).equalsIgnoreCase(Constants.HeiHIVTestAtAge.AT_BIRTH) && !HeiDao.getNextHivTestAge(getBaseEntityId()).equalsIgnoreCase(Constants.HeiHIVTestAtAge.AT_9_MONTHS) && latestFollowupDate != null) {
-            this.dueDate = startDate.plusDays(42);
-            this.overDueDate = startDate.plusDays(49);
-        } else if (latestFollowupDate != null) {
-            this.dueDate = latestFollowupDate.plusDays(30);
-            this.overDueDate = latestFollowupDate.plusDays(37);
+        }  else if (latestFollowupDate != null) {
+            this.dueDate = latestFollowupDate.plusDays(0);
+            this.overDueDate = latestFollowupDate.plusDays(7);
+        }   else {
+            this.dueDate = startDate.plusDays(30);
+            this.overDueDate = startDate.plusDays(37);
         }
     }
 

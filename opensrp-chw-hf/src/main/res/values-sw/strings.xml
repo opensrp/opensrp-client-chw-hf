@@ -100,7 +100,7 @@
     <string name="hvl_sample_collected">Sampuli ya HVL Imechukuliwa</string>
     <string name="eac_first_visit">EAC First Visit</string>
     <string name="eac_second_visit">EAC second Visit</string>
-    <string name="antibody_test_sample_collected">Sampuli ya Kipimo cha Antibody Kimechukuliwa</string>
+    <string name="antibody_test_results_filled">Majibu ya Kipimo cha Antibody Yamejazwa</string>
     <string name="hei_arv_prescription_given">Dawa za ARV zimetolewa</string>
     <string name="hei_arv_prescription_not_given">Dawa za ARV haijatolewa</string>
     <string name="other_combination_given">Mchanganyiko mwingine ulitolewa</string>
@@ -170,7 +170,7 @@
     <string name="type_of_test">Aina ya Kipimo</string>
     <string name="record_result">Jaza Majibu</string>
     <string name="hei_toolbar_title">Rudi kwa Wateja Wote wa HEI</string>
-    <string name="antibody_test_sample_collection">Kuchukua Sampuli ya Kipimo cha Antibody</string>
+    <string name="antibody_test_result">Majibu ya Kipimo cha Antibody</string>
     <string name="hiv_test_results_title">Majibu ya kipimo cha VVU</string>
     <string name="register">Sajili</string>
     <string name="register_button_text">SAJILI</string>
@@ -241,5 +241,8 @@
     <string name="height_in_cm">Urefu: {0} cm</string>
     <string name="fundal_height">Kimo cha mimba: {0} cm</string>
     <string name="hiv_status">Kipimo cha VVU: {0}</string>
+    <string name="all_hei_clients">Watoto wote</string>
+    <string name="tomorrow_hei_clients">Hudhurio la Kesho</string>
+    <string name="missed_hei_clients">Waliokosa</string>
 
 </resources>

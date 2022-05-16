@@ -321,6 +321,11 @@
             android:name=".activity.LDVisitActivity"
             android:theme="@style/HFTheme.NoActionBar" />
 
+        <activity
+            android:name=".activity.LDActiveManagementStageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/HFTheme.NoActionBar" />
+
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="3f94f9c3caeff331b3a2bd8c2182b663ad6a955a" />
@@ -352,7 +357,7 @@
         <service android:name="org.smartregister.sync.intent.SyncLocationsByLevelAndTagsIntentService" />
         <service android:name="org.smartregister.reporting.service.IndicatorGeneratorIntentService" />
         <service android:name=".sync.intent.MarkPmtctAndHeiLtfIntentService" />
-        <service android:name=".sync.intent.ProcessAncAndPncVisitsIntentService" />
+        <service android:name=".sync.intent.ProcessVisitsIntentService" />
         <service android:name=".sync.intent.PncCloseDateIntentService" />
 
         <uses-library

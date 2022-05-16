@@ -168,16 +168,15 @@ public class HeiFollowupVisitInteractorFlv implements PmtctFollowupVisitInteract
             actionList.put(context.getString(R.string.dna_pcr_sample_collection), DNAPCRTest);
     }
 
-    private void evaluateAntibodyTest(LinkedHashMap<String, BasePmtctHomeVisitAction> actionList, Map<String, List<VisitDetail>> details, MemberObject memberObject, Context context, JSONObject antibodyTestForm) throws BasePmtctHomeVisitAction.ValidationException {
-        BasePmtctHomeVisitAction AntibodyTest = new BasePmtctHomeVisitAction.Builder(context, context.getString(R.string.antibody_test_sample_collection))
+    private void evaluateAntibodyTest(LinkedHashMap<String, BasePmtctHomeVisitAction> actionList, Map<String, List<VisitDetail>> details, MemberObject memberObject, Context context) throws BasePmtctHomeVisitAction.ValidationException {
+        BasePmtctHomeVisitAction AntibodyTest = new BasePmtctHomeVisitAction.Builder(context, context.getString(R.string.antibody_test_result))
                 .withOptional(false)
                 .withDetails(details)
-                .withFormName(Constants.JsonForm.getHeiAntibodyTestSampleCollection())
-                .withJsonPayload(antibodyTestForm.toString())
+                .withFormName(Constants.JsonForm.getHeiHivTestResults())
                 .withHelper(new HeiAntibodyTestAction(memberObject))
                 .build();
         if (HeiDao.isEligibleForAntiBodiesHivTest(memberObject.getBaseEntityId()))
-            actionList.put(context.getString(R.string.antibody_test_sample_collection), AntibodyTest);
+            actionList.put(context.getString(R.string.antibody_test_result), AntibodyTest);
     }
 
     private void evaluateCtxPrescription(LinkedHashMap<String, BasePmtctHomeVisitAction> actionList, Map<String, List<VisitDetail>> details, MemberObject memberObject, Context context, JSONObject ctxPrescriptionForm) throws BasePmtctHomeVisitAction.ValidationException {
@@ -216,11 +215,12 @@ public class HeiFollowupVisitInteractorFlv implements PmtctFollowupVisitInteract
             actionList.put(context.getString(R.string.arv_prescription_nvp), ARVPrescriptionHighAndLowRisk);
     }
 
-    private void evaluateNextVisitAction(LinkedHashMap<String, BasePmtctHomeVisitAction> actionList, Map<String, List<VisitDetail>> details, Context context) throws BasePmtctHomeVisitAction.ValidationException {
+    private void evaluateNextVisitAction(LinkedHashMap<String, BasePmtctHomeVisitAction> actionList, Map<String, List<VisitDetail>> details, Context context, JSONObject nextVisitForm) throws BasePmtctHomeVisitAction.ValidationException {
         BasePmtctHomeVisitAction NextFollowupVisitDate = new BasePmtctHomeVisitAction.Builder(context, context.getString(R.string.next_visit))
                 .withOptional(false)
                 .withDetails(details)
                 .withFormName(Constants.JsonForm.getNextFacilityVisitForm())
+                .withJsonPayload(nextVisitForm.toString())
                 .withHelper(new NextFollowupVisitAction())
                 .build();
         actionList.put(context.getString(R.string.next_visit), NextFollowupVisitDate);
@@ -299,26 +299,6 @@ public class HeiFollowupVisitInteractorFlv implements PmtctFollowupVisitInteract
                     Timber.e(e);
                 }
 
-                JSONObject antibodyTestForm = null;
-                try {
-                    antibodyTestForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.getHeiAntibodyTestSampleCollection());
-
-                    JSONArray fields = antibodyTestForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
-                    //update fields
-                    JSONObject testAtAge = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "test_at_age");
-                    testAtAge.put(JsonFormUtils.VALUE, HeiDao.getNextHivTestAge(memberObject.getBaseEntityId()));
-
-                    JSONObject actualAge = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "actual_age");
-                    CommonPersonObjectClient client = getCommonPersonObjectClient(memberObject.getBaseEntityId());
-                    actualAge.put(JsonFormUtils.VALUE, getDuration(org.smartregister.family.util.Utils.getValue(client.getColumnmaps(), org.smartregister.family.util.DBConstants.KEY.DOB, false)));
-
-                    //loads details to the form
-                    if (details != null && !details.isEmpty()) {
-                        JsonFormUtils.populateForm(antibodyTestForm, details);
-                    }
-                } catch (JSONException e) {
-                    Timber.e(e);
-                }
 
                 JSONObject arvPrescriptionForHighAndLowRiskForm = null;
                 try {
@@ -370,19 +350,36 @@ public class HeiFollowupVisitInteractorFlv implements PmtctFollowupVisitInteract
                 } catch (JSONException e) {
                     Timber.e(e);
                 }
+
+                JSONObject nextVisitForm = null;
+                try {
+                    nextVisitForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.getNextFacilityVisitForm());
+
+                    JSONArray fields = nextVisitForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+                    //update visit number
+                    JSONObject visitNumber = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "visit_number");
+                    visitNumber.put(JsonFormUtils.VALUE, HeiDao.getVisitNumber(memberObject.getBaseEntityId()));
+
+                    //loads details to the form
+                    if (details != null && !details.isEmpty()) {
+                        JsonFormUtils.populateForm(nextVisitForm, details);
+                    }
+                } catch (JSONException e) {
+                    Timber.e(e);
+                }
                 try {
                     evaluateDnaPcrAction(actionList, details, memberObject, context, dnaPcrForm);
-                    evaluateAntibodyTest(actionList, details, memberObject, context, antibodyTestForm);
+                    evaluateAntibodyTest(actionList, details, memberObject, context);
                     evaluateCtxPrescription(actionList, details, memberObject, context, ctxPrescriptionForm);
                     evaluateArvPrescriptionHighRisk(actionList, details, memberObject, context, arvPrescriptionForHighRiskForm);
                     evaluateArvPrescription(actionList, details, memberObject, context, arvPrescriptionForHighAndLowRiskForm);
-                    evaluateNextVisitAction(actionList, details, context);
+                    evaluateNextVisitAction(actionList, details, context, nextVisitForm);
                 } catch (Exception e) {
                     Timber.e(e);
                 }
             } else {
                 actionList.remove(context.getString(R.string.dna_pcr_sample_collection));
-                actionList.remove(context.getString(R.string.antibody_test_sample_collection));
+                actionList.remove(context.getString(R.string.antibody_test_result));
                 actionList.remove(context.getString(R.string.ctx_prescription_title));
                 actionList.remove(context.getString(R.string.arv_prescription_azt_and_nvp));
                 actionList.remove(context.getString(R.string.arv_prescription_nvp));

@@ -540,7 +540,8 @@
             "field": "eventType",
             "field_value": "HEI Followup",
             "creates_case": [
-              "ec_hei_followup"
+              "ec_hei_followup",
+              "ec_hei"
             ]
           },
           {
@@ -654,6 +655,13 @@
           {
             "field": "eventType",
             "field_value": "Mode of Delivery",
+            "creates_case": [
+              "ec_ld_confirmation"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "LD Active Management of Labour",
             "creates_case": [
               "ec_ld_confirmation"
             ]

@@ -64,8 +64,8 @@ public class HfJobCreator implements JobCreator {
                 return new ChwIndicatorGeneratingJob();
             case MarkPmtctAndHeiLtfServiceJob.TAG:
                 return new MarkPmtctAndHeiLtfServiceJob();
-            case ProcessAncAndPncVisitsServiceJob.TAG:
-                return new ProcessAncAndPncVisitsServiceJob();
+            case ProcessVisitsServiceJob.TAG:
+                return new ProcessVisitsServiceJob();
             case PncCloseDateServiceJob.TAG:
                 return new PncCloseDateServiceJob();
             default:
