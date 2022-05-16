@@ -27,8 +27,8 @@ import timber.log.Timber;
 public class LDPartographTimeActionHelper implements BaseLDVisitAction.LDVisitActionHelper {
 
     private Context context;
-    private String time;
-    private String date;
+    protected String time;
+    protected String date;
     private final MemberObject memberObject;
 
     public LDPartographTimeActionHelper(MemberObject memberObject) {
