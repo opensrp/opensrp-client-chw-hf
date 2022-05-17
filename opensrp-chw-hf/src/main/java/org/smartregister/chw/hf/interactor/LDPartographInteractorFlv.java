@@ -110,7 +110,7 @@ public class LDPartographInteractorFlv implements LDPartographInteractor.Flavor 
                             .withOptional(true)
                             .withDetails(details)
                             .withFormName(Constants.JsonForm.LabourAndDeliveryPartograph.getProgressOfLabourForm())
-                            .withHelper(new LDPartographLabourProgressActionHelper(memberObject))
+                            .withHelper(new LDPartographLabourProgressActionHelper(memberObject, date, time))
                             .build();
 
                     actionList.put(context.getString(R.string.ld_partograph_labor_progress), progressOfLaborAction);
