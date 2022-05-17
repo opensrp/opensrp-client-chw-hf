@@ -4970,7 +4970,7 @@
         {
           "column_name": "moulding",
           "type": "Event",
-          "json_mapping": {
+          "concept": {
             "field": "obs.fieldCode",
             "formSubmissionField": "moulding"
           }
@@ -4980,7 +4980,7 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "formSubmissionField": "cervix_dilation"
+            "concept": "cervix_dilation"
           }
         },
         {
@@ -4988,7 +4988,7 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "formSubmissionField": "descent_presenting_part"
+            "concept": "descent_presenting_part"
           }
         },
         {
@@ -5195,7 +5195,7 @@
           "column_name": "base_entity_id",
           "type": "Event",
           "json_mapping": {
-            "field": "form_submission_id"
+            "field": "formSubmissionId"
           }
         },
         {
@@ -5203,13 +5203,6 @@
           "type": "Event",
           "json_mapping": {
             "field": "baseEntityId"
-          }
-        },
-        {
-          "column_name": "form_submission_id",
-          "type": "Event",
-          "json_mapping": {
-            "field": "formSubmissionId"
           }
         },
         {
