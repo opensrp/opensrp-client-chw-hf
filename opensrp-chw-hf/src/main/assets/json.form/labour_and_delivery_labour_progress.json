@@ -80,7 +80,7 @@
       {
         "key": "notify_cervix_dilation_alert",
         "type": "toaster_notes",
-        "text": "ALERT: Cervix dilation alert message!",
+        "text": "ALERT: Closer monitoring is required for this client",
         "openmrs_entity_id": "notify_alert",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -96,7 +96,7 @@
       {
         "key": "notify_cervix_dilation_action",
         "type": "toaster_notes",
-        "text": "ACTION: Action required!",
+        "text": "ACTION: An immediate action needs to be taken for this client!",
         "openmrs_entity_id": "notify_action_required",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
