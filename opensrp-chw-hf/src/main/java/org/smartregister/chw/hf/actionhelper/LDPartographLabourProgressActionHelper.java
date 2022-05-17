@@ -79,6 +79,9 @@ public class LDPartographLabourProgressActionHelper implements BaseLDVisitAction
         String concatPartographTimeAndDate = currentPartographDate + " " + currentPartographTime;
         Long firstPartographTime = LDDao.getPartographStartTime(memberObject.getBaseEntityId());
 
+        if (firstPartographTime == null)
+            return;
+
         long currentPartographTimestamp;
 
         try {
