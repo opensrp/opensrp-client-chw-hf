@@ -21,6 +21,9 @@ import org.smartregister.chw.ld.dao.LDDao;
 import org.smartregister.chw.ld.domain.MemberObject;
 import org.smartregister.chw.ld.domain.Visit;
 import org.smartregister.chw.ld.util.Constants;
+import org.smartregister.domain.AlertStatus;
+
+import java.util.Date;
 
 import timber.log.Timber;
 
@@ -69,6 +72,10 @@ public class LDProfileActivity extends BaseLDProfileActivity {
             visitDone.setVisibility(View.GONE);
             processPartograph.setVisibility(View.GONE);
         }
+
+        showLabourProgress(LDDao.getPartographStartTime(memberObject.getBaseEntityId()) != null);
+        findViewById(org.smartregister.ld.R.id.primary_ld_caregiver).setVisibility(View.GONE);
+        findViewById(org.smartregister.ld.R.id.family_ld_head).setVisibility(View.GONE);
 
     }
 
@@ -202,4 +209,21 @@ public class LDProfileActivity extends BaseLDProfileActivity {
         LDActiveManagementStageActivity.startActiveManagementActivity(this, memberObject.getBaseEntityId(), false);
     }
 
+    @Override
+    public void refreshMedicalHistory(boolean hasHistory) {
+        showProgressBar(false);
+        rlLastVisit.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void refreshUpComingServicesStatus(String service, AlertStatus status, Date date) {
+        showProgressBar(false);
+        rlUpcomingServices.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void refreshFamilyStatus(AlertStatus status) {
+        showProgressBar(false);
+        view_family_row.setVisibility(View.GONE);
+    }
 }
