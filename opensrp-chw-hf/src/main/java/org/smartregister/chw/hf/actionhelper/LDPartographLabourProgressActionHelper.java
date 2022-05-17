@@ -25,6 +25,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import timber.log.Timber;
 
@@ -92,10 +93,10 @@ public class LDPartographLabourProgressActionHelper implements BaseLDVisitAction
             // Calucalte time difference
             // in milliseconds
             long timeDifference = currentPartographTimestamp - firstPartographTime;
-            int daysDifference = (int) ((timeDifference / (1000 * 60 * 60 * 24))% 365);
+            int hoursDifference = (int) TimeUnit.MILLISECONDS.toHours(timeDifference);
 
-            int alertLimit = daysDifference + 3; // 3 is the cervix dilation value when partograph begins
-            int actionLimit = daysDifference >= 1 ? alertLimit - 4 : 0;
+            int alertLimit = hoursDifference + 3; // 3 is the cervix dilation value when partograph begins
+            int actionLimit = hoursDifference >= 1 ? alertLimit - 4 : 0;
 
             cervixDilationAlertLimit = String.valueOf(alertLimit);
             cervixDilationActionLimit = String.valueOf(actionLimit);
