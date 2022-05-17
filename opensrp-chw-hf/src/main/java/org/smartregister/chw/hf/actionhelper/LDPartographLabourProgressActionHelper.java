@@ -19,7 +19,11 @@ import org.smartregister.chw.ld.domain.VisitDetail;
 import org.smartregister.chw.ld.model.BaseLDVisitAction;
 import org.smartregister.chw.referral.util.JsonFormConstants;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import timber.log.Timber;
@@ -35,8 +39,13 @@ public class LDPartographLabourProgressActionHelper implements BaseLDVisitAction
     private String contractionFrequency;
     private Context context;
 
-    public LDPartographLabourProgressActionHelper(MemberObject memberObject) {
+    final private String currentPartographDate;
+    final private String currentPartographTime;
+
+    public LDPartographLabourProgressActionHelper(MemberObject memberObject, String currentPartographDate, String currentPartographTime) {
         this.memberObject = memberObject;
+        this.currentPartographDate = currentPartographDate;
+        this.currentPartographTime = currentPartographTime;
     }
 
     @Override
@@ -50,6 +59,9 @@ public class LDPartographLabourProgressActionHelper implements BaseLDVisitAction
 
         JSONObject progressOfLabourForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.LabourAndDeliveryPartograph.getProgressOfLabourForm());
         try {
+
+            setPatographAlerts(progressOfLabourForm);
+
             JSONArray fields = progressOfLabourForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
             populateLabourProgressForm(fields, memberObject.getBaseEntityId());
         } catch (JSONException e) {
@@ -57,6 +69,44 @@ public class LDPartographLabourProgressActionHelper implements BaseLDVisitAction
         }
 
         return progressOfLabourForm.toString();
+    }
+
+    private void setPatographAlerts(JSONObject form){
+
+        String cervixDilationAlertLimit = "";
+        String cervixDilationActionLimit = "";
+
+        String concatPartographTimeAndDate = currentPartographDate + " " + currentPartographTime;
+        Long firstPartographTime = LDDao.getPartographStartTime(memberObject.getBaseEntityId());
+
+        long currentPartographTimestamp;
+
+        try {
+
+            Date parseDate = (new SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault())).parse(concatPartographTimeAndDate);
+            currentPartographTimestamp = parseDate.getTime();
+
+            // Calucalte time difference
+            // in milliseconds
+            long timeDifference = currentPartographTimestamp - firstPartographTime;
+            int daysDifference = (int) ((timeDifference / (1000 * 60 * 60 * 24))% 365);
+
+            int alertLimit = daysDifference + 3; // 3 is the cervix dilation value when partograph begins
+            int actionLimit = daysDifference >= 1 ? alertLimit - 4 : 0;
+
+            cervixDilationAlertLimit = String.valueOf(alertLimit);
+            cervixDilationActionLimit = String.valueOf(actionLimit);
+
+        }catch (ParseException e){
+            Timber.e(e);
+        }
+
+        try {
+            form.getJSONObject("global").put("cervix_dilation_alert_limit", cervixDilationAlertLimit);
+            form.getJSONObject("global").put("cervix_dilation_action_limit", cervixDilationActionLimit);
+        }catch (Exception e){
+            Timber.e(e);
+        }
     }
 
     @Override
