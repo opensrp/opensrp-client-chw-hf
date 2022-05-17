@@ -502,6 +502,7 @@ public class Constants extends CoreConstants {
             public static final String LD_POST_DELIVERY_MANAGEMENT_MOTHER_STATUS = "labour_and_delivery_mother_status";
             public static final String LD_POST_DELIVERY_MOTHER_OBSERVATION = "labour_and_delivery_mother_observation";
             public static final String LD_POST_DELIVERY_MATERNAL_COMPLICATIONS = "labour_and_delivery_maternal_complications";
+            public static final String LD_NEW_BORN_STATUS = "labour_and_delivery_stage4_newborn";
 
             public static String getLdPostDeliveryManagementMotherStatus() {
                 return Utils.getLocalForm(LD_POST_DELIVERY_MANAGEMENT_MOTHER_STATUS);
@@ -513,6 +514,10 @@ public class Constants extends CoreConstants {
 
             public static String getLdPostDeliveryMaternalComplications() {
                 return Utils.getLocalForm(LD_POST_DELIVERY_MOTHER_OBSERVATION);
+            }
+
+            public static String getLdNewBornStatus() {
+                return Utils.getLocalForm(LD_NEW_BORN_STATUS);
             }
 
         }

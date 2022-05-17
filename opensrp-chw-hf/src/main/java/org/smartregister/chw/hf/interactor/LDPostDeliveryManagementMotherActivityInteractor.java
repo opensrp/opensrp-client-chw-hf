@@ -53,6 +53,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                 evaluateMotherStatus();
                 evaluatePostDeliveryObservation();
                 evaluateMaternalComplicationLabour();
+                evaluateNewBornStatus();
 
             } catch (BaseLDVisitAction.ValidationException e) {
                 Timber.e(e);
@@ -100,6 +101,19 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                 .withHelper(actionHelper)
                 .withBaseEntityID(memberObject.getBaseEntityId())
                 .withFormName(Constants.JsonForm.LDPostDeliveryMotherManagement.getLdPostDeliveryMaternalComplications())
+                .build();
+
+        actionList.put(title, action);
+    }
+
+    private void evaluateNewBornStatus() throws BaseLDVisitAction.ValidationException {
+        String title = context.getString(R.string.ld_new_born_status_action_title);
+        NewBornActionHelper actionHelper = new NewBornActionHelper();
+        BaseLDVisitAction action = getBuilder(title)
+                .withOptional(false)
+                .withHelper(actionHelper)
+                .withBaseEntityID(memberObject.getBaseEntityId())
+                .withFormName(Constants.JsonForm.LDPostDeliveryMotherManagement.getLdNewBornStatus())
                 .build();
 
         actionList.put(title, action);
@@ -290,6 +304,61 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
     private BaseLDVisitAction.Builder getBuilder(String title) {
         return new BaseLDVisitAction.Builder(context, title);
+    }
+
+    private static class NewBornActionHelper implements BaseLDVisitAction.LDVisitActionHelper {
+
+        private String newbornStatus;
+        private Context context;
+
+        @Override
+        public void onJsonFormLoaded(String jsonString, Context context, Map<String, List<VisitDetail>> details) {
+            this.context = context;
+        }
+
+        @Override
+        public String getPreProcessed() {
+            return null;
+        }
+
+        @Override
+        public void onPayloadReceived(String jsonPayload) {
+            newbornStatus = JsonFormUtils.getFieldValue(jsonPayload, "newborn_status");
+        }
+
+        @Override
+        public BaseLDVisitAction.ScheduleStatus getPreProcessedStatus() {
+            return null;
+        }
+
+        @Override
+        public String getPreProcessedSubTitle() {
+            return null;
+        }
+
+        @Override
+        public String postProcess(String jsonPayload) {
+            return null;
+        }
+
+        @Override
+        public String evaluateSubTitle() {
+            return null;
+        }
+
+        @Override
+        public BaseLDVisitAction.Status evaluateStatusOnPayload() {
+            if (StringUtils.isNotBlank(newbornStatus)) {
+                return BaseLDVisitAction.Status.COMPLETED;
+            } else {
+                return BaseLDVisitAction.Status.PENDING;
+            }
+        }
+
+        @Override
+        public void onPayloadReceived(BaseLDVisitAction ldVisitAction) {
+            //implement
+        }
     }
 
 }
