@@ -76,7 +76,7 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
 
         String title = context.getString(R.string.lb_visit_hiv_test_status_action_title);
 
-        HIVTestActionHelper actionHelper = new HIVTestActionHelper(context, memberObject.getBaseEntityId());
+        HIVTestActionHelper actionHelper = new HIVTestActionHelper(context);
         BaseLDVisitAction action = getBuilder(title)
                 .withOptional(false)
                 .withHelper(actionHelper)

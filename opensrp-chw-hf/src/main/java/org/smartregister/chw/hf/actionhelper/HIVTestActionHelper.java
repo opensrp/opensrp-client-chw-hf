@@ -17,16 +17,14 @@ import java.util.Map;
 public class HIVTestActionHelper implements BaseLDVisitAction.LDVisitActionHelper {
 
     private final Context context;
-    private final String baseEntityId;
     private String hiv_status;
     private String hiv_test_conducted;
     private String hiv_counselling_before_testing;
     private String hiv;
     private String hiv_counselling_after_testing;
 
-    public HIVTestActionHelper(Context context, String baseEntityId) {
+    public HIVTestActionHelper(Context context) {
         this.context = context;
-        this.baseEntityId = baseEntityId;
     }
 
     @Override
