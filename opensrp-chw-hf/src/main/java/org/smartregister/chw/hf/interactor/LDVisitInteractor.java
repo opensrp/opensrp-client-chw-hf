@@ -4,6 +4,7 @@ import android.content.Context;
 
 import org.smartregister.chw.anc.util.VisitUtils;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.actionhelper.HIVTestActionHelper;
 import org.smartregister.chw.hf.actionhelper.LDGeneralExaminationActionHelper;
 import org.smartregister.chw.hf.actionhelper.LDVaginalExaminationActionHelper;
 import org.smartregister.chw.hf.utils.Constants;
@@ -59,6 +60,7 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
 
                 evaluateGenExamination(details);
                 evaluateVaginalExamination(details);
+                evaluateHIVStatus(details);
 
             } catch (BaseLDVisitAction.ValidationException e) {
                 Timber.e(e);
@@ -68,6 +70,21 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
         };
 
         appExecutors.diskIO().execute(runnable);
+    }
+
+    private void evaluateHIVStatus(Map<String, List<VisitDetail>> details) throws BaseLDVisitAction.ValidationException {
+
+        String title = context.getString(R.string.lb_visit_hiv_test_status_action_title);
+
+        HIVTestActionHelper actionHelper = new HIVTestActionHelper(context);
+        BaseLDVisitAction action = getBuilder(title)
+                .withOptional(false)
+                .withHelper(actionHelper)
+                .withDetails(details)
+                .withFormName(Constants.JsonForm.LDVisit.getLdHivTest())
+                .build();
+
+        actionList.put(title, action);
     }
 
     private void evaluateVaginalExamination(Map<String, List<VisitDetail>> details) throws BaseLDVisitAction.ValidationException {
