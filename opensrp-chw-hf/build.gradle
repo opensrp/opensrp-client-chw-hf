@@ -263,7 +263,7 @@ dependencies {
         exclude group: 'org.smartregister', module: 'opensrp-client-materialedittext'
         exclude group: 'org.smartregister', module: 'opensrp-client-chw-ld'
     }
-    api('org.smartregister:opensrp-client-chw-ld:1.0.11-NACP-SNAPSHOT@aar') {
+    implementation('org.smartregister:opensrp-client-chw-ld:1.0.11-NACP-SNAPSHOT@aar') {
         transitive = true
         exclude group: 'org.smartregister', module: 'opensrp-client-core'
         exclude group: 'org.smartregister', module: 'opensrp-client-native-form'
