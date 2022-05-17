@@ -47,7 +47,25 @@ public class LDPartographDetailsActivityFlv extends DefaultAncMedicalHistoryActi
                 }
 
 
-                String[] hf_params = {"pmtct_visit_date", "actual_age", "followup_status", "weight", "number_of_ctx_days_dispensed", "number_of_nvp_days_dispensed", "infant_feeding_practice", "sample_id", "next_facility_visit_date"};
+                String[] hf_params = {
+                        "partograph_date",
+                        "partograph_time",
+                        "fetal_heart_rate",
+                        "moulding",
+                        "moulding_options",
+                        "amniotic_fluid",
+                        "pulse_rate",
+                        "respiratory_rate",
+                        "temperature",
+                        "systolic",
+                        "diastolic",
+                        "urine",
+                        "cervix_dilation",
+                        "descent_presenting_part",
+                        "contraction_every_half_hour_frequency",
+                        "contraction_every_half_hour_time"
+                };
+
                 extractHFVisit(visits, hf_params, hf_visits, x, context);
 
                 x++;
@@ -90,22 +108,34 @@ public class LDPartographDetailsActivityFlv extends DefaultAncMedicalHistoryActi
 
             int x = 0;
             for (Map<String, String> vals : hf_visits) {
-                View view = inflater.inflate(R.layout.medical_history_hei_visit, null);
-                TextView tvTitle = view.findViewById(R.id.title);
-                TextView tvTypeOfVisit = view.findViewById(R.id.type_of_visit);
-                TextView tvWeight = view.findViewById(R.id.weight);
-                TextView tvCtx = view.findViewById(R.id.ctx);
-                TextView tvNvp = view.findViewById(R.id.nvp);
-                TextView tvFeedingPractice = view.findViewById(R.id.feeding_practice);
-                TextView tvDnaPcr = view.findViewById(R.id.dna_pcr);
-                evaluateTitle(context, x, vals, tvTitle);
-                evaluateFollowupStatus(context, vals, tvTypeOfVisit);
-                evaluateWeight(context, vals, tvWeight);
-                evaluateCtxDaysDispensed(context, vals, tvCtx);
-                evaluateNvpNumberOfDays(context, vals, tvNvp);
-                evaluateFeedingPractice(context, vals, tvFeedingPractice);
-                evaluateDnaPcr(context, vals, tvDnaPcr);
-                evaluateNextVisitDate(context, vals, view);
+                View view = inflater.inflate(R.layout.ld_patograph_details, null);
+                TextView tvPartographDateTime = view.findViewById(R.id.partograph_date_time);
+                TextView tvFetalHeartRate = view.findViewById(R.id.fetal_heart_rate);
+                TextView tvFetalMoulding = view.findViewById(R.id.fetal_moulding);
+                TextView tvAmnioticFluid = view.findViewById(R.id.amniotic_fluid);
+                TextView tvPulseRate = view.findViewById(R.id.pulse_rate);
+                TextView tvRespiratoryRate = view.findViewById(R.id.respiratory_rate);
+                TextView tvTemperature = view.findViewById(R.id.temperature);
+                TextView tvBloodPressure = view.findViewById(R.id.blood_pressure);
+                TextView tvProteinAcetone = view.findViewById(R.id.protein_acetone);
+                TextView tvCervixDilation = view.findViewById(R.id.cervix_dilation);
+                TextView tvDescentPresentingPart = view.findViewById(R.id.descent_presenting_part);
+                TextView tvContraction = view.findViewById(R.id.contraction);
+
+                evaluatePartographDateTime(context, vals, tvPartographDateTime);
+                evaluateFetalHeartRate(context, vals, tvFetalHeartRate);
+                evaluateFetalMoulding(context, vals, tvFetalMoulding);
+                evaluateAmnioticFluid(context, vals, tvAmnioticFluid);
+                evaluatePulseRate(context, vals, tvPulseRate);
+                evaluateRespiratoryRate(context, vals, tvRespiratoryRate);
+                evaluateTemperature(context, vals, tvTemperature);
+                evaluateBloodPressure(context, vals, tvBloodPressure);
+                evaluateProteinAcetone(context, vals, tvProteinAcetone);
+                evaluateCervixDilation(context, vals, tvCervixDilation);
+                evaluateDescentPresentingPart(context, vals, tvDescentPresentingPart);
+                evaluateContraction(context, vals, tvContraction);
+
+
                 linearLayoutHealthFacilityVisitDetails.addView(view, 0);
 
                 x++;
@@ -113,104 +143,104 @@ public class LDPartographDetailsActivityFlv extends DefaultAncMedicalHistoryActi
         }
     }
 
-    private void evaluateNextVisitDate(Context context, Map<String, String> vals, View view) {
-        if (StringUtils.isBlank(getMapValue(vals, "next_facility_visit_date"))) {
-            view.findViewById(R.id.next_facility_visit_date).setVisibility(View.GONE);
+
+    private void evaluatePartographDateTime(Context context, Map<String, String> vals, TextView tvPartographDateTime) {
+        if (StringUtils.isBlank(vals.get("partograph_date"))) {
+            tvPartographDateTime.setVisibility(View.GONE);
         } else {
-            ((TextView) view.findViewById(R.id.next_facility_visit_date)).setText(MessageFormat.format(context.getString(R.string.next_facility_visit_date), getMapValue(vals, "next_facility_visit_date")));
+            tvPartographDateTime.setText(MessageFormat.format(context.getString(R.string.partograph_date_time), getMapValue(vals, "partograph_date"), getMapValue(vals, "partograph_time")));
+        }
+    }
+    
+
+    private void evaluateFetalHeartRate(Context context, Map<String, String> vals, TextView tvFetalHeartRate) {
+        if (StringUtils.isBlank(vals.get("fetal_heart_rate"))) {
+            tvFetalHeartRate.setVisibility(View.GONE);
+        } else {
+            tvFetalHeartRate.setText(MessageFormat.format(context.getString(R.string.fetal_heart_rate), getMapValue(vals, "fetal_heart_rate")));
         }
     }
 
-    private void evaluateTitle(Context context, int x, Map<String, String> vals, TextView tvTitle) {
-        if (StringUtils.isBlank(vals.get("pmtct_visit_date"))) {
-            tvTitle.setVisibility(View.GONE);
+    private void evaluateFetalMoulding(Context context, Map<String, String> vals, TextView tvFetalMoulding) {
+        if (StringUtils.isBlank(vals.get("moulding"))) {
+            tvFetalMoulding.setVisibility(View.GONE);
         } else {
-            tvTitle.setText(MessageFormat.format(context.getString(R.string.hei_visit_title), x + 1, getMapValue(vals, "pmtct_visit_date"), getMapValue(vals, "actual_age")));
+            tvFetalMoulding.setText(MessageFormat.format(context.getString(R.string.fetal_moulding), getMapValue(vals, "moulding")));
         }
     }
 
-    private void evaluateFollowupStatus(Context context, Map<String, String> vals, TextView tvTypeOfVisit) {
-        if (StringUtils.isNotBlank(getMapValue(vals, "followup_status"))) {
-            String followupStatus = getMapValue(vals, "followup_status");
-            switch (followupStatus) {
-                case "infant_and_mother":
-                    tvTypeOfVisit.setText(MessageFormat.format(context.getString(R.string.hei_type_of_visit), "IM"));
-                    break;
-                case "infant_with_other_caregiver":
-                    tvTypeOfVisit.setText(MessageFormat.format(context.getString(R.string.hei_type_of_visit), "IC"));
-                    break;
-                case "transfer_out":
-                    tvTypeOfVisit.setText(MessageFormat.format(context.getString(R.string.hei_type_of_visit), "TO"));
-                    break;
-                default:
-                    tvTypeOfVisit.setText(MessageFormat.format(context.getString(R.string.hei_type_of_visit), followupStatus));
-                    break;
-            }
+    private void evaluateAmnioticFluid(Context context, Map<String, String> vals, TextView tvAmnioticFluid) {
+        if (StringUtils.isBlank(vals.get("amniotic_fluid"))) {
+            tvAmnioticFluid.setVisibility(View.GONE);
+        } else {
+            tvAmnioticFluid.setText(MessageFormat.format(context.getString(R.string.amniotic_fluid), getMapValue(vals, "amniotic_fluid")));
         }
     }
 
-    private void evaluateWeight(Context context, Map<String, String> vals, TextView tvWeight) {
-        if (StringUtils.isNotBlank(getMapValue(vals, "weight"))) {
-            tvWeight.setText(MessageFormat.format(context.getString(R.string.weight_in_kgs), getMapValue(vals, "weight")));
+    private void evaluatePulseRate(Context context, Map<String, String> vals, TextView tvPulseRate) {
+        if (StringUtils.isBlank(vals.get("pulse_rate"))) {
+            tvPulseRate.setVisibility(View.GONE);
         } else {
-            tvWeight.setVisibility(View.GONE);
+            tvPulseRate.setText(MessageFormat.format(context.getString(R.string.pulse_rate), getMapValue(vals, "pulse_rate")));
         }
     }
 
-    private void evaluateCtxDaysDispensed(Context context, Map<String, String> vals, TextView tvCtx) {
-        if (StringUtils.isBlank(getMapValue(vals, "number_of_ctx_days_dispensed"))) {
-            tvCtx.setVisibility(View.GONE);
+    private void evaluateRespiratoryRate(Context context, Map<String, String> vals, TextView tvRespiratoryRate) {
+        if (StringUtils.isBlank(vals.get("respiratory_rate"))) {
+            tvRespiratoryRate.setVisibility(View.GONE);
         } else {
-            tvCtx.setText(MessageFormat.format(context.getString(R.string.ctx_days_dispensed), getMapValue(vals, "number_of_ctx_days_dispensed")));
+            tvRespiratoryRate.setText(MessageFormat.format(context.getString(R.string.respiratory_rate), getMapValue(vals, "respiratory_rate")));
         }
     }
 
-    private void evaluateNvpNumberOfDays(Context context, Map<String, String> vals, TextView tvNvp) {
-        if (StringUtils.isBlank(getMapValue(vals, "number_of_nvp_days_dispensed"))) {
-            tvNvp.setVisibility(View.GONE);
+    private void evaluateTemperature(Context context, Map<String, String> vals, TextView tvTemperature) {
+        if (StringUtils.isBlank(vals.get("temperature"))) {
+            tvTemperature.setVisibility(View.GONE);
         } else {
-            tvNvp.setText(MessageFormat.format(context.getString(R.string.nvp_days_dispensed), getMapValue(vals, "number_of_nvp_days_dispensed")));
+            tvTemperature.setText(MessageFormat.format(context.getString(R.string.temperature), getMapValue(vals, "temperature")));
         }
     }
 
-    private void evaluateDnaPcr(Context context, Map<String, String> vals, TextView tvDnaPcr) {
-        if (StringUtils.isBlank(getMapValue(vals, "sample_id"))) {
-            tvDnaPcr.setVisibility(View.GONE);
+    private void evaluateBloodPressure(Context context, Map<String, String> vals, TextView tvBloodPressure) {
+        if (StringUtils.isBlank(vals.get("systolic"))) {
+            tvBloodPressure.setVisibility(View.GONE);
         } else {
-            tvDnaPcr.setText(MessageFormat.format(context.getString(R.string.dna_pcr_sample), getMapValue(vals, "sample_id")));
+            tvBloodPressure.setText(MessageFormat.format(context.getString(R.string.blood_pressure), getMapValue(vals, "systolic"), getMapValue(vals, "diastolic")));
         }
     }
 
-    private void evaluateFeedingPractice(Context context, Map<String, String> vals, TextView tvFeedingPractice) {
-        if (StringUtils.isBlank(getMapValue(vals, "infant_feeding_practice"))) {
-            tvFeedingPractice.setVisibility(View.GONE);
+    private void evaluateProteinAcetone(Context context, Map<String, String> vals, TextView tvProteinAcetone) {
+        if (StringUtils.isBlank(vals.get("urine"))) {
+            tvProteinAcetone.setVisibility(View.GONE);
         } else {
-            String feedingPractice = getMapValue(vals, "infant_feeding_practice");
-            switch (feedingPractice) {
-                case "ebf":
-                    tvFeedingPractice.setText(MessageFormat.format(context.getString(R.string.infant_feeding_practice), context.getString(R.string.feeding_practice_ebf)));
-                    break;
-                case "rf":
-                    tvFeedingPractice.setText(MessageFormat.format(context.getString(R.string.infant_feeding_practice), context.getString(R.string.feeding_practice_rf)));
-                    break;
-                case "mf":
-                    tvFeedingPractice.setText(MessageFormat.format(context.getString(R.string.infant_feeding_practice), context.getString(R.string.feeding_practice_mf)));
-                    break;
-                case "bf+":
-                    tvFeedingPractice.setText(MessageFormat.format(context.getString(R.string.infant_feeding_practice), context.getString(R.string.feeding_practice_bf_plus)));
-                    break;
-                case "rf+":
-                    tvFeedingPractice.setText(MessageFormat.format(context.getString(R.string.infant_feeding_practice), context.getString(R.string.feeding_practice_rf_plus)));
-                    break;
-                case "sbf":
-                    tvFeedingPractice.setText(MessageFormat.format(context.getString(R.string.infant_feeding_practice), context.getString(R.string.feeding_practice_sbf)));
-                    break;
-                default:
-                    tvFeedingPractice.setText(MessageFormat.format(context.getString(R.string.infant_feeding_practice), feedingPractice));
-                    break;
-            }
+            tvProteinAcetone.setText(MessageFormat.format(context.getString(R.string.protein_acetone), getMapValue(vals, "urine")));
         }
     }
+
+    private void evaluateCervixDilation(Context context, Map<String, String> vals, TextView tvCervixDilation) {
+        if (StringUtils.isBlank(vals.get("cervix_dilation"))) {
+            tvCervixDilation.setVisibility(View.GONE);
+        } else {
+            tvCervixDilation.setText(MessageFormat.format(context.getString(R.string.cervix_dilation), getMapValue(vals, "cervix_dilation")));
+        }
+    }
+
+    private void evaluateDescentPresentingPart(Context context, Map<String, String> vals, TextView tvDescentPresentingPart) {
+        if (StringUtils.isBlank(vals.get("descent_presenting_part"))) {
+            tvDescentPresentingPart.setVisibility(View.GONE);
+        } else {
+            tvDescentPresentingPart.setText(MessageFormat.format(context.getString(R.string.descent_presenting_part), getMapValue(vals, "descent_presenting_part")));
+        }
+    }
+
+    private void evaluateContraction(Context context, Map<String, String> vals, TextView tvContraction) {
+        if (StringUtils.isBlank(vals.get("contraction_every_half_hour_frequency"))) {
+            tvContraction.setVisibility(View.GONE);
+        } else {
+            tvContraction.setText(MessageFormat.format(context.getString(R.string.contraction), getMapValue(vals, "contraction_every_half_hour_frequency"), getMapValue(vals, "contraction_every_half_hour_time")));
+        }
+    }
+
 
     private String getMapValue(Map<String, String> map, String key) {
         if (map.containsKey(key)) {
