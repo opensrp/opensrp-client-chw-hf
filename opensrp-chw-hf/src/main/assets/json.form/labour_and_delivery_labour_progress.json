@@ -5,6 +5,9 @@
   "encounter_type": "LD Partograph : Labour Progress",
   "entity_id": "",
   "relational_id": "",
+  "global": {
+
+  },
   "metadata": {
     "start": {
       "openmrs_entity_parent": "",
@@ -72,6 +75,38 @@
         "text_size": "18px",
         "text_color": "#000000",
         "selected_text_color": "#ffffff"
+      },
+      {
+        "key": "notify_cervix_dilation_alert",
+        "type": "toaster_notes",
+        "text": "ALERT: Closer monitoring is required for this client",
+        "openmrs_entity_id": "notify_alert",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_labour_progress_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "notify_cervix_dilation_action",
+        "type": "toaster_notes",
+        "text": "ACTION: An immediate action needs to be taken for this client!",
+        "openmrs_entity_id": "notify_action_required",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_labour_progress_relevance.yml"
+            }
+          }
+        }
       },
       {
         "key": "descent_presenting_part",
