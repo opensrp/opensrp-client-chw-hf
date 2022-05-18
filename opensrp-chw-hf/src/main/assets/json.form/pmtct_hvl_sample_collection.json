@@ -48,7 +48,7 @@
   },
   "global": {},
   "step1": {
-    "title": "Healthcare Provider's Details",
+    "title": "HVL Sample Collection",
     "fields": [
       {
         "key": "clinician_name",

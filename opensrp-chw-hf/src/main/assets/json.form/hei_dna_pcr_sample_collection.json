@@ -47,7 +47,7 @@
     "encounter_location": ""
   },
   "step1": {
-    "title": "Healthcare Provider's Details",
+    "title": "DNA-PCR Sample Collection",
     "fields": [
       {
         "key": "clinician_name",
