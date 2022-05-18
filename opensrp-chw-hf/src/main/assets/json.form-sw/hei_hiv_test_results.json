@@ -86,20 +86,20 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "confirmation_hiv_test_result",
         "type": "native_radio",
-        "label": "Is this a confirmation test result?",
+        "label": "Je, haya ni majibu ya kuhakiki?",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndio",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"

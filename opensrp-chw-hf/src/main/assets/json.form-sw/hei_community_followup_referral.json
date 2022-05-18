@@ -71,7 +71,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "reasons_for_issuing_community_referral",
         "type": "native_radio",
-        "label": "Reasons for issuing community followup referral",
+        "label": "Sababu ya kutuma rufaa ya Ufuatiliaji Ngazi ya Jamii",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [
