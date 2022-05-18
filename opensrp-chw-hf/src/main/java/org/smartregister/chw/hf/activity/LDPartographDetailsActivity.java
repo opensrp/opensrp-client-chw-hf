@@ -9,6 +9,7 @@ import android.widget.TextView;
 import org.smartregister.chw.anc.domain.Visit;
 import org.smartregister.chw.anc.presenter.BaseAncMedicalHistoryPresenter;
 import org.smartregister.chw.core.activity.CoreAncMedicalHistoryActivity;
+import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.interactor.LDPartographDetailsInteractor;
 import org.smartregister.chw.ld.domain.MemberObject;
 
@@ -36,9 +37,11 @@ public class LDPartographDetailsActivity extends CoreAncMedicalHistoryActivity {
         progressBar = findViewById(org.smartregister.chw.opensrp_chw_anc.R.id.progressBarMedicalHistory);
 
 
-
         TextView tvTitle = findViewById(org.smartregister.chw.opensrp_chw_anc.R.id.tvTitle);
         tvTitle.setText(getString(org.smartregister.chw.opensrp_chw_anc.R.string.back_to, ldMemberObject.getFullName()));
+
+        TextView medicalHistory = findViewById(org.smartregister.chw.opensrp_chw_anc.R.id.medical_history);
+        medicalHistory.setVisibility(View.GONE);
     }
 
     @Override
@@ -48,6 +51,8 @@ public class LDPartographDetailsActivity extends CoreAncMedicalHistoryActivity {
         displayLoadingState(true);
         flavor.processViewData(visits, this);
         displayLoadingState(false);
+        TextView ldPartographDetailsTitle = view.findViewById(org.smartregister.chw.core.R.id.customFontTextViewHealthFacilityVisitTitle);
+        ldPartographDetailsTitle.setText(getString(R.string.partograph_details_title));
         return view;
     }
 

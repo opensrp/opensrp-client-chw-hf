@@ -307,6 +307,7 @@
     <string name="cervix_dilation">Cervix Dilation: {0}</string>
     <string name="descent_presenting_part">Descent Presenting Part: {0}</string>
     <string name="contraction">Contraction frequency: {0}, Contraction duration: {1}</string>
+    <string name="partograph_details_title">Partograph Details</string>
 
 
 </resources>

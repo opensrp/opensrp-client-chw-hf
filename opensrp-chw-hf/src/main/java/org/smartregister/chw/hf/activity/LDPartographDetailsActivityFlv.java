@@ -93,12 +93,7 @@ public class LDPartographDetailsActivityFlv extends DefaultAncMedicalHistoryActi
 
 
     private void processLastVisit(int days, Context context) {
-        linearLayoutLastVisit.setVisibility(View.VISIBLE);
-        if (days < 1) {
-            customFontTextViewLastVisit.setText(org.smartregister.chw.core.R.string.less_than_twenty_four);
-        } else {
-            customFontTextViewLastVisit.setText(StringUtils.capitalize(MessageFormat.format(context.getString(org.smartregister.chw.core.R.string.days_ago), String.valueOf(days))));
-        }
+        linearLayoutLastVisit.setVisibility(View.GONE);
     }
 
 
@@ -151,7 +146,7 @@ public class LDPartographDetailsActivityFlv extends DefaultAncMedicalHistoryActi
             tvPartographDateTime.setText(MessageFormat.format(context.getString(R.string.partograph_date_time), getMapValue(vals, "partograph_date"), getMapValue(vals, "partograph_time")));
         }
     }
-    
+
 
     private void evaluateFetalHeartRate(Context context, Map<String, String> vals, TextView tvFetalHeartRate) {
         if (StringUtils.isBlank(vals.get("fetal_heart_rate"))) {
