@@ -293,6 +293,6 @@
     <string name="ld_placent_retained_message">Placenta Retained</string>
     <string name="ld_no_uterus_massage">The woman did not receive uterus massage</string>
 
-
+    <string name="ld_mode_of_delivery">Conduct Delivery</string>
 
 </resources>

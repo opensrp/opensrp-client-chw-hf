@@ -8,6 +8,8 @@ import static org.smartregister.chw.hf.utils.LDVisitUtils.shouldProcessPartograp
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -225,5 +227,25 @@ public class LDProfileActivity extends BaseLDProfileActivity {
     public void refreshFamilyStatus(AlertStatus status) {
         showProgressBar(false);
         view_family_row.setVisibility(View.GONE);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.ld_member_profile_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int itemId = item.getItemId();
+        try {
+            if (itemId == R.id.action_mode_of_delivery) {
+                startLDForm(this, memberObject.getBaseEntityId(), getLabourAndDeliveryModeOfDelivery());
+                return true;
+            }
+        } catch (Exception e) {
+            Timber.e(e);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
