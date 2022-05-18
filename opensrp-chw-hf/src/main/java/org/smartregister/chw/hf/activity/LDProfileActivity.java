@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.joda.time.DateTime;
@@ -217,6 +218,9 @@ public class LDProfileActivity extends BaseLDProfileActivity {
 
         if (lastVisit != null) {
             rlLastVisit.setVisibility(View.VISIBLE);
+            TextView ivViewHistoryArrow = findViewById(R.id.ivViewHistoryArrow);
+            ivViewHistoryArrow.setText(R.string.partograph_details_title);
+            ivViewHistoryArrow.setTextColor(getResources().getColor(R.color.black));
         } else {
             rlLastVisit.setVisibility(View.GONE);
         }
