@@ -74,7 +74,7 @@ public class LDVisitUtils extends VisitUtils {
                         if (hivStatus != null && hivStatus.equalsIgnoreCase("known")) {
                             hivActionDone = true;
                         } else {
-                            if (StringUtils.isNotBlank(hivTestConducted) && hivTestConducted.equalsIgnoreCase("no")) {
+                            if (StringUtils.isNotBlank(hivTestConducted) && hivTestConducted.equalsIgnoreCase("yes")) {
                                 hivActionDone = true;
                             }
                         }
