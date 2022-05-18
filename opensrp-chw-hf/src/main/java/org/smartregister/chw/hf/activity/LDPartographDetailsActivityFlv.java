@@ -35,7 +35,6 @@ public class LDPartographDetailsActivityFlv extends DefaultAncMedicalHistoryActi
     public void processViewData(List<Visit> visits, Context context) {
 
         if (visits.size() > 0) {
-            int days = 0;
             List<Map<String, String>> hf_visits = new ArrayList<>();
 
             int x = 0;
