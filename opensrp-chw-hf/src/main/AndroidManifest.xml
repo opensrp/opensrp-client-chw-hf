@@ -25,9 +25,11 @@
         <activity
             android:name=".activity.AncReportsActivity"
             android:theme="@style/HFTheme.NoActionBar" />
-        <activity android:name=".activity.PncNoMotherRegisterActivity"
+        <activity
+            android:name=".activity.PncNoMotherRegisterActivity"
             android:theme="@style/HFTheme.NoActionBar" />
-        <activity android:name=".activity.PncNoMotherProfileActivity"
+        <activity
+            android:name=".activity.PncNoMotherProfileActivity"
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
             android:name=".activity.PmtctReportsActivity"
@@ -38,7 +40,8 @@
         <activity
             android:name=".activity.PmtctReportsViewActivity"
             android:theme="@style/HFTheme.NoActionBar" />
-        <activity android:name=".activity.HeiMedicalHistoryActivity"
+        <activity
+            android:name=".activity.HeiMedicalHistoryActivity"
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
             android:name=".activity.LoginActivity"
@@ -317,6 +320,9 @@
         <activity
             android:name=".activity.LDPartographActivity"
             android:screenOrientation="portrait"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.LDPartographDetailsActivity"
             android:theme="@style/HFTheme.NoActionBar" />
 
         <activity

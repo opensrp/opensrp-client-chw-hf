@@ -10,25 +10,25 @@ import org.smartregister.chw.anc.domain.Visit;
 import org.smartregister.chw.anc.presenter.BaseAncMedicalHistoryPresenter;
 import org.smartregister.chw.core.activity.CoreAncMedicalHistoryActivity;
 import org.smartregister.chw.hf.R;
-import org.smartregister.chw.hf.interactor.HeiMedicalHistoryInteractor;
-import org.smartregister.chw.pmtct.domain.MemberObject;
+import org.smartregister.chw.hf.interactor.LDPartographDetailsInteractor;
+import org.smartregister.chw.ld.domain.MemberObject;
 
 import java.util.List;
 
-public class HeiMedicalHistoryActivity extends CoreAncMedicalHistoryActivity {
-    private static MemberObject heiMemberObject;
-    private Flavor flavor = new HeiMedicalHistoryActivityFlv();
+public class LDPartographDetailsActivity extends CoreAncMedicalHistoryActivity {
+    private static MemberObject ldMemberObject;
+    private Flavor flavor = new LDPartographDetailsActivityFlv();
     private ProgressBar progressBar;
 
     public static void startMe(Activity activity, MemberObject memberObject) {
-        Intent intent = new Intent(activity, HeiMedicalHistoryActivity.class);
-        heiMemberObject = memberObject;
+        Intent intent = new Intent(activity, LDPartographDetailsActivity.class);
+        ldMemberObject = memberObject;
         activity.startActivity(intent);
     }
 
     @Override
     public void initializePresenter() {
-        presenter = new BaseAncMedicalHistoryPresenter(new HeiMedicalHistoryInteractor(), this, heiMemberObject.getBaseEntityId());
+        presenter = new BaseAncMedicalHistoryPresenter(new LDPartographDetailsInteractor(), this, ldMemberObject.getBaseEntityId());
     }
 
     @Override
@@ -36,8 +36,12 @@ public class HeiMedicalHistoryActivity extends CoreAncMedicalHistoryActivity {
         linearLayout = findViewById(org.smartregister.chw.opensrp_chw_anc.R.id.linearLayoutMedicalHistory);
         progressBar = findViewById(org.smartregister.chw.opensrp_chw_anc.R.id.progressBarMedicalHistory);
 
+
         TextView tvTitle = findViewById(org.smartregister.chw.opensrp_chw_anc.R.id.tvTitle);
-        tvTitle.setText(getString(org.smartregister.chw.opensrp_chw_anc.R.string.back_to, heiMemberObject.getFullName()));
+        tvTitle.setText(getString(org.smartregister.chw.opensrp_chw_anc.R.string.back_to, ldMemberObject.getFullName()));
+
+        TextView medicalHistory = findViewById(org.smartregister.chw.opensrp_chw_anc.R.id.medical_history);
+        medicalHistory.setVisibility(View.GONE);
     }
 
     @Override
@@ -47,8 +51,8 @@ public class HeiMedicalHistoryActivity extends CoreAncMedicalHistoryActivity {
         displayLoadingState(true);
         flavor.processViewData(visits, this);
         displayLoadingState(false);
-        TextView heiVisitTitle = view.findViewById(org.smartregister.chw.core.R.id.customFontTextViewHealthFacilityVisitTitle);
-        heiVisitTitle.setText(R.string.hei_visit);
+        TextView ldPartographDetailsTitle = view.findViewById(org.smartregister.chw.core.R.id.customFontTextViewHealthFacilityVisitTitle);
+        ldPartographDetailsTitle.setText(getString(R.string.partograph_details_title));
         return view;
     }
 

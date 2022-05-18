@@ -1,10 +1,5 @@
 package org.smartregister.chw.hf.activity;
 
-import static org.smartregister.chw.hf.utils.Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryCervixDilationMonitoring;
-import static org.smartregister.chw.hf.utils.Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryLabourStage;
-import static org.smartregister.chw.hf.utils.Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryModeOfDelivery;
-import static org.smartregister.chw.hf.utils.LDVisitUtils.shouldProcessPartographVisit;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -29,6 +24,11 @@ import java.util.Date;
 
 import timber.log.Timber;
 
+import static org.smartregister.chw.hf.utils.Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryCervixDilationMonitoring;
+import static org.smartregister.chw.hf.utils.Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryLabourStage;
+import static org.smartregister.chw.hf.utils.Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryModeOfDelivery;
+import static org.smartregister.chw.hf.utils.LDVisitUtils.shouldProcessPartographVisit;
+
 public class LDProfileActivity extends BaseLDProfileActivity {
     public static final String LD_PROFILE_ACTION = "LD_PROFILE_ACTION";
     private String partographVisitTitle;
@@ -40,6 +40,14 @@ public class LDProfileActivity extends BaseLDProfileActivity {
     public static void startProfileActivity(Activity activity, String baseEntityId) {
         Intent intent = new Intent(activity, LDProfileActivity.class);
         intent.putExtra(Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID, baseEntityId);
+        activity.startActivity(intent);
+    }
+
+    public static void startLDForm(Activity activity, String baseEntityID, String formName) {
+        Intent intent = new Intent(activity, LDRegisterActivity.class);
+        intent.putExtra(org.smartregister.chw.ld.util.Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID, baseEntityID);
+        intent.putExtra(Constants.ACTIVITY_PAYLOAD.LD_FORM_NAME, formName);
+        intent.putExtra(org.smartregister.chw.ld.util.Constants.ACTIVITY_PAYLOAD.ACTION, LD_PROFILE_ACTION);
         activity.startActivity(intent);
     }
 
@@ -55,6 +63,7 @@ public class LDProfileActivity extends BaseLDProfileActivity {
         super.onResume();
         setupViews();
         setTextViewRecordLDText();
+        refreshMedicalHistory(true);
     }
 
     protected void setupViews() {
@@ -187,14 +196,6 @@ public class LDProfileActivity extends BaseLDProfileActivity {
         }
     }
 
-    public static void startLDForm(Activity activity, String baseEntityID, String formName) {
-        Intent intent = new Intent(activity, LDRegisterActivity.class);
-        intent.putExtra(org.smartregister.chw.ld.util.Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID, baseEntityID);
-        intent.putExtra(Constants.ACTIVITY_PAYLOAD.LD_FORM_NAME, formName);
-        intent.putExtra(org.smartregister.chw.ld.util.Constants.ACTIVITY_PAYLOAD.ACTION, LD_PROFILE_ACTION);
-        activity.startActivity(intent);
-    }
-
     private void openExaminationConsultation() {
         String baseEntityId = null;
         Bundle extras = getIntent().getExtras();
@@ -214,7 +215,21 @@ public class LDProfileActivity extends BaseLDProfileActivity {
     @Override
     public void refreshMedicalHistory(boolean hasHistory) {
         showProgressBar(false);
-        rlLastVisit.setVisibility(View.GONE);
+        Visit lastVisit = LDLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), org.smartregister.chw.hf.utils.Constants.Events.LD_PARTOGRAPHY);
+
+        if (lastVisit != null) {
+            rlLastVisit.setVisibility(View.VISIBLE);
+            TextView ivViewHistoryArrow = findViewById(R.id.ivViewHistoryArrow);
+            ivViewHistoryArrow.setText(R.string.partograph_details_title);
+            ivViewHistoryArrow.setTextColor(getResources().getColor(R.color.black));
+        } else {
+            rlLastVisit.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
+    public void openMedicalHistory() {
+        LDPartographDetailsActivity.startMe(this, memberObject);
     }
 
     @Override

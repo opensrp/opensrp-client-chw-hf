@@ -292,6 +292,23 @@
     <string name="ld_expulsion_of_placenta">Expulsion of the placenta and membranes</string>
     <string name="ld_placent_retained_message">Placenta Retained</string>
     <string name="ld_no_uterus_massage">The woman did not receive uterus massage</string>
+    <string name="partograph_date_time">Partograph Details recorded at {0}, {1}</string>
+    <string name="fetal_well_being">Fetal Well Being</string>
+    <string name="fetal_heart_rate">Fetal Heart Rate: {0} bpm</string>
+    <string name="fetal_moulding">Moulding: {0}</string>
+    <string name="amniotic_fluid">Amniotic Fluid: {0}</string>
+    <string name="mother_well_being">Mother Well Being</string>
+    <string name="pulse_rate">Pulse Rate: {0} bpm</string>
+    <string name="respiratory_rate">Respiratory Rate: {0}</string>
+    <string name="temperature">Temperature: {0} °C</string>
+    <string name="blood_pressure">Blood Pressure: {0}/{1} mmHg</string>
+    <string name="protein_acetone">Protein Acetone: {0}</string>
+    <string name="fetal_progress_of_labour">Fetal Progress of Labour</string>
+    <string name="cervix_dilation">Cervix Dilation: {0}</string>
+    <string name="descent_presenting_part">Descent Presenting Part: {0}</string>
+    <string name="contraction">Contraction frequency: {0}, Contraction duration: {1}</string>
+    <string name="partograph_details_title">Partograph Details</string>
+
 
     <string name="ld_mode_of_delivery">Conduct Delivery</string>
 
