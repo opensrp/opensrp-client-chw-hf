@@ -5,8 +5,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import org.apache.commons.lang3.StringUtils;
-import org.joda.time.DateTime;
-import org.joda.time.Days;
 import org.smartregister.chw.anc.domain.Visit;
 import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.core.activity.DefaultAncMedicalHistoryActivityFlv;
@@ -41,9 +39,6 @@ public class LDPartographDetailsActivityFlv extends DefaultAncMedicalHistoryActi
             while (x < visits.size()) {
 
                 // the first object in this list is the days difference
-                if (x == 0) {
-                    days = Days.daysBetween(new DateTime(visits.get(visits.size() - 1).getDate()), new DateTime()).getDays();
-                }
 
 
                 String[] hf_params = {
