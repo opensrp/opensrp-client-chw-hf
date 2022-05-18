@@ -513,7 +513,7 @@ public class Constants extends CoreConstants {
             }
 
             public static String getLdPostDeliveryMaternalComplications() {
-                return Utils.getLocalForm(LD_POST_DELIVERY_MOTHER_OBSERVATION);
+                return Utils.getLocalForm(LD_POST_DELIVERY_MATERNAL_COMPLICATIONS);
             }
 
             public static String getLdNewBornStatus() {
