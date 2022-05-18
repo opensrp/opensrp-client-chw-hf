@@ -421,6 +421,8 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
         Visit lastFollowupVisit = getVisit(org.smartregister.chw.hf.utils.Constants.Events.HEI_FOLLOWUP);
         if(lastFollowupVisit !=null){
             rlLastVisit.setVisibility(View.VISIBLE);
+            TextView medicalHistoryTitle = findViewById(R.id.ivViewHistoryArrow);
+            medicalHistoryTitle.setTextColor(getResources().getColor(R.color.black));
         }else{
             rlLastVisit.setVisibility(View.GONE);
         }
