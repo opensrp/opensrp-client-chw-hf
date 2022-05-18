@@ -71,7 +71,7 @@ public class LDPartographDetailsActivityFlv extends DefaultAncMedicalHistoryActi
                 x++;
             }
 
-            processLastVisit(days, context);
+            processLastVisit();
             processFacilityVisit(hf_visits, context);
         }
     }
@@ -92,7 +92,7 @@ public class LDPartographDetailsActivityFlv extends DefaultAncMedicalHistoryActi
     }
 
 
-    private void processLastVisit(int days, Context context) {
+    private void processLastVisit() {
         linearLayoutLastVisit.setVisibility(View.GONE);
     }
 
@@ -101,7 +101,6 @@ public class LDPartographDetailsActivityFlv extends DefaultAncMedicalHistoryActi
         if (hf_visits != null && hf_visits.size() > 0) {
             linearLayoutHealthFacilityVisit.setVisibility(View.VISIBLE);
 
-            int x = 0;
             for (Map<String, String> vals : hf_visits) {
                 View view = inflater.inflate(R.layout.ld_patograph_details, null);
                 TextView tvPartographDateTime = view.findViewById(R.id.partograph_date_time);
@@ -133,7 +132,6 @@ public class LDPartographDetailsActivityFlv extends DefaultAncMedicalHistoryActi
 
                 linearLayoutHealthFacilityVisitDetails.addView(view, 0);
 
-                x++;
             }
         }
     }
