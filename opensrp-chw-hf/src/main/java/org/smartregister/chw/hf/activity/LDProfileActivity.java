@@ -1,5 +1,10 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.hf.utils.Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryCervixDilationMonitoring;
+import static org.smartregister.chw.hf.utils.Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryLabourStage;
+import static org.smartregister.chw.hf.utils.Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryModeOfDelivery;
+import static org.smartregister.chw.hf.utils.LDVisitUtils.shouldProcessPartographVisit;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,11 +28,6 @@ import org.smartregister.domain.AlertStatus;
 import java.util.Date;
 
 import timber.log.Timber;
-
-import static org.smartregister.chw.hf.utils.Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryCervixDilationMonitoring;
-import static org.smartregister.chw.hf.utils.Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryLabourStage;
-import static org.smartregister.chw.hf.utils.Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryModeOfDelivery;
-import static org.smartregister.chw.hf.utils.LDVisitUtils.shouldProcessPartographVisit;
 
 public class LDProfileActivity extends BaseLDProfileActivity {
     public static final String LD_PROFILE_ACTION = "LD_PROFILE_ACTION";
@@ -191,7 +191,7 @@ public class LDProfileActivity extends BaseLDProfileActivity {
         } else if (LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("2")) {
             textViewRecordLD.setText(R.string.lb_mode_of_delivery);
             currentVisitItemTitle = getString(R.string.lb_mode_of_delivery);
-        } else if (LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("3")) {
+        } else if (LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("3") && LDDao.getLabourStage(memberObject.getBaseEntityId()) != null && !LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("cesarean")) {
             textViewRecordLD.setText(R.string.ld_active_management_3rd_stage);
         }
     }
@@ -247,6 +247,7 @@ public class LDProfileActivity extends BaseLDProfileActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.ld_member_profile_menu, menu);
+        menu.findItem(R.id.action_mode_of_delivery).setVisible(LDDao.getLabourStage(memberObject.getBaseEntityId()) == null);
         return true;
     }
 
