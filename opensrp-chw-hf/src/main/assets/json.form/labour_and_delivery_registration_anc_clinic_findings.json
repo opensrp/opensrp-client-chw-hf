@@ -198,28 +198,28 @@
         }
       },
       {
-        "key": "pmtct",
+        "key": "hiv",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "pmtct",
+        "openmrs_entity_id": "hiv",
         "type": "native_radio",
         "label": "PMTCT",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [
           {
-            "key": "chk_one",
+            "key": "positive",
             "text": "1",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_one"
+            "openmrs_entity_id": "positive"
           },
           {
-            "key": "chk_two",
+            "key": "negative",
             "text": "2",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_two"
+            "openmrs_entity_id": "negative"
           }
         ],
         "v_required": {
@@ -253,9 +253,9 @@
           "err": "Please answer this question"
         },
         "relevance": {
-          "step1:pmtct": {
+          "step1:hiv": {
             "type": "string",
-            "ex": "equalTo(., \"chk_one\")"
+            "ex": "equalTo(., \"positive\")"
           }
         }
       },
@@ -304,9 +304,9 @@
           "err": "Please answer this question"
         },
         "relevance": {
-          "step1:pmtct": {
+          "step1:hiv": {
             "type": "string",
-            "ex": "equalTo(., \"chk_one\")"
+            "ex": "equalTo(., \"positive\")"
           }
         }
       },
