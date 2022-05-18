@@ -6,6 +6,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.hf.utils.Constants.Events;
 import org.smartregister.chw.ld.LDLibrary;
+import org.smartregister.chw.ld.dao.LDDao;
 import org.smartregister.chw.ld.domain.Visit;
 import org.smartregister.chw.ld.repository.VisitDetailsRepository;
 import org.smartregister.chw.ld.repository.VisitRepository;
@@ -15,6 +16,7 @@ import org.smartregister.chw.ld.util.VisitUtils;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by Kassim Sheghembe on 2022-05-10
@@ -61,6 +63,26 @@ public class LDVisitUtils extends VisitUtils {
                 boolean isStationDone = computeCompletionStatus(obs, "station");
                 boolean isDecisionDone = computeCompletionStatus(obs, "decision");
 
+                boolean hivActionDone = false;
+
+                if (LDDao.getHivStatus(baseEntityId) == null || !Objects.equals(LDDao.getHivStatus(baseEntityId), org.smartregister.chw.hf.utils.Constants.HIV_STATUS.POSITIVE)) {
+                    boolean isHivStatusDone = computeCompletionStatus(obs, "hiv_status");
+                    String hivStatus = getFieldValue(obs, "hiv_status");
+                    String hivTestConducted = getFieldValue(obs, "hiv_test_conducted");
+                    if (isHivStatusDone) {
+
+                        if (hivStatus != null && hivStatus.equalsIgnoreCase("known")) {
+                            hivActionDone = true;
+                        } else {
+                            if (StringUtils.isNotBlank(hivTestConducted) && hivTestConducted.equalsIgnoreCase("yes")) {
+                                hivActionDone = true;
+                            }
+                        }
+                    }
+                } else {
+                    hivActionDone = true;
+                }
+
                 if (isGeneralConditionDone &&
                         isPulseRateDone &&
                         isRespiratoryRateDone &&
@@ -80,7 +102,8 @@ public class LDVisitUtils extends VisitUtils {
                         isOcciputPositionDone &&
                         isMouldingDone &&
                         isStationDone &&
-                        isDecisionDone) {
+                        isDecisionDone &&
+                        hivActionDone) {
                     ldVisits.add(visit);
                 }
             } else if (visit.getVisitType().equalsIgnoreCase(Events.LD_PARTOGRAPHY)) {
@@ -106,6 +129,18 @@ public class LDVisitUtils extends VisitUtils {
             }
         }
         return false;
+    }
+
+    public static String getFieldValue(JSONArray obs, String checkString) throws JSONException {
+        int size = obs.length();
+        for (int i = 0; i < size; i++) {
+            JSONObject jsonObject = obs.getJSONObject(i);
+            if (jsonObject.getString("fieldCode").equalsIgnoreCase(checkString)) {
+                JSONArray values = jsonObject.getJSONArray("values");
+                return values.getString(0);
+            }
+        }
+        return null;
     }
 
     public static boolean shouldProcessPartographVisit(Visit visit) throws JSONException {

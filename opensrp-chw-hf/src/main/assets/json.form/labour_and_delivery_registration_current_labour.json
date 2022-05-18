@@ -70,7 +70,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "membrane",
         "type": "native_radio",
-        "hint": "Membrane ruptured?",
+        "label": "Membrane ruptured?",
         "options": [
           {
             "key": "ruptured",

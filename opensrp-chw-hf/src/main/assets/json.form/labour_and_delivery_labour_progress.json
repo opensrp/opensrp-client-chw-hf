@@ -236,7 +236,7 @@
         "type": "native_radio",
         "options": [
           {
-            "key": "less_than_20_secs ",
+            "key": "less_than_20_secs",
             "text": "<20 secs",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",

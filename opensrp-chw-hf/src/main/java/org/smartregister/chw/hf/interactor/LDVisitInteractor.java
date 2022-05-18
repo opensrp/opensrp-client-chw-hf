@@ -22,6 +22,7 @@ import org.smartregister.clientandeventmodel.Event;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import timber.log.Timber;
 
@@ -60,7 +61,10 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
 
                 evaluateGenExamination(details);
                 evaluateVaginalExamination(details);
-                evaluateHIVStatus(details);
+
+                if (LDDao.getHivStatus(memberObject.getBaseEntityId()) == null || !Objects.equals(LDDao.getHivStatus(memberObject.getBaseEntityId()), Constants.HIV_STATUS.POSITIVE)) {
+                    evaluateHIVStatus(details);
+                }
 
             } catch (BaseLDVisitAction.ValidationException e) {
                 Timber.e(e);

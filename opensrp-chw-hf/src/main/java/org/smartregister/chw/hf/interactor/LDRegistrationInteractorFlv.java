@@ -63,7 +63,7 @@ public class LDRegistrationInteractorFlv implements LDRegistrationInteractor.Fla
         JSONObject syphilis = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "syphilis");
         JSONObject bloodGroup = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "blood_group");
         JSONObject rhFactor = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "rh_factor");
-        JSONObject pmtct = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "pmtct");
+        JSONObject pmtct = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "hiv");
         JSONObject pmtctTestDate = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "pmtct_test_date");
         JSONObject artPrescription = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "art_prescription");
 
@@ -77,7 +77,7 @@ public class LDRegistrationInteractorFlv implements LDRegistrationInteractor.Fla
         bloodGroup.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getBloodGroup(memberObject.getBaseEntityId()));
         rhFactor.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getRhFactor(memberObject.getBaseEntityId()));
         if (!HfAncDao.getHivStatus(memberObject.getBaseEntityId()).equalsIgnoreCase("null"))
-            pmtct.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getHivStatus(memberObject.getBaseEntityId()).equalsIgnoreCase("positive") ? "chk_one" : "chk_two");
+            pmtct.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getHivStatus(memberObject.getBaseEntityId()).equalsIgnoreCase("positive") ? "positive" : "negative");
         pmtctTestDate.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getHivTestDate(memberObject.getBaseEntityId()));
         artPrescription.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.isClientKnownOnArt(memberObject.getBaseEntityId()) ? "yes" : "no");
     }
