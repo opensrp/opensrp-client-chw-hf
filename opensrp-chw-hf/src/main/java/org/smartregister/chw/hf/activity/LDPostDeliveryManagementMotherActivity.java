@@ -44,4 +44,12 @@ public class LDPostDeliveryManagementMotherActivity extends BaseLDVisitActivity 
         intent.putExtra(JsonFormConstants.JSON_FORM_KEY.FORM, form);
         startActivityForResult(intent, JsonFormUtils.REQUEST_CODE_GET_JSON);
     }
+
+    @Override
+    public void submittedAndClose() {
+        Intent intent = new Intent(this, LDRegisterActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
+    }
 }
