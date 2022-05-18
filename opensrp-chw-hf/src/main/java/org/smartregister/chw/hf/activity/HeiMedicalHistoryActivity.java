@@ -9,6 +9,7 @@ import android.widget.TextView;
 import org.smartregister.chw.anc.domain.Visit;
 import org.smartregister.chw.anc.presenter.BaseAncMedicalHistoryPresenter;
 import org.smartregister.chw.core.activity.CoreAncMedicalHistoryActivity;
+import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.interactor.HeiMedicalHistoryInteractor;
 import org.smartregister.chw.pmtct.domain.MemberObject;
 
@@ -46,6 +47,8 @@ public class HeiMedicalHistoryActivity extends CoreAncMedicalHistoryActivity {
         displayLoadingState(true);
         flavor.processViewData(visits, this);
         displayLoadingState(false);
+        TextView heiVisitTitle = view.findViewById(org.smartregister.chw.core.R.id.customFontTextViewHealthFacilityVisitTitle);
+        heiVisitTitle.setText(R.string.hei_visit);
         return view;
     }
 
