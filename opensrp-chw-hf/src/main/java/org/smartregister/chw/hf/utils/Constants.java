@@ -446,7 +446,7 @@ public class Constants extends CoreConstants {
             public static final String PARTOGRAPH_FETAL_WELLBEING = "labour_and_delivery_fetal_well_being";
             public static final String PARTOGRAPH_MOTHER_WELLBEING = "labour_and_delivery_mother_well_being";
             public static final String PARTOGRAPH_PROGRESS_OF_LABOUR = "labour_and_delivery_labour_progress";
-            public static final String PARTOGRAPH_TREATMENT_DURING_LABOUR = "";
+            public static final String PARTOGRAPH_TREATMENT_DURING_LABOUR = "labour_and_delivery_treatment_during_labour";
             public static final String PARTOGRAPH_TIME = "labour_and_delivery_partograph_time";
 
             public static String getFetalWellBingForm(){

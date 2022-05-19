@@ -9,6 +9,7 @@ import org.smartregister.chw.hf.actionhelper.LDPartographFetalWellBeingActionHel
 import org.smartregister.chw.hf.actionhelper.LDPartographLabourProgressActionHelper;
 import org.smartregister.chw.hf.actionhelper.LDPartographMotherWellBeingActionHelper;
 import org.smartregister.chw.hf.actionhelper.LDPartographTimeActionHelper;
+import org.smartregister.chw.hf.actionhelper.LDPartographTreatmentDuringLabourActionHelper;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.ld.LDLibrary;
 import org.smartregister.chw.ld.contract.BaseLDVisitContract;
@@ -115,6 +116,15 @@ public class LDPartographInteractorFlv implements LDPartographInteractor.Flavor 
 
                     actionList.put(context.getString(R.string.ld_partograph_labor_progress), progressOfLaborAction);
 
+                    BaseLDVisitAction treatmentDuringLabour = new BaseLDVisitAction.Builder(context, context.getString(R.string.ld_partograph_treatment_during_labor))
+                            .withOptional(true)
+                            .withDetails(details)
+                            .withFormName(Constants.JsonForm.LabourAndDeliveryPartograph.getTreatmentDuringLabourForm())
+                            .withHelper(new LDPartographTreatmentDuringLabourActionHelper(memberObject))
+                            .build();
+
+                    actionList.put(context.getString(R.string.ld_partograph_treatment_during_labor), treatmentDuringLabour);
+
                 }catch (Exception e){
                     Timber.e(e);
                 }
@@ -127,6 +137,9 @@ public class LDPartographInteractorFlv implements LDPartographInteractor.Flavor 
 
                 if (actionList.containsKey(context.getString(R.string.ld_partograph_labor_progress)))
                     actionList.remove(context.getString(R.string.ld_partograph_labor_progress));
+
+                if (actionList.containsKey(context.getString(R.string.ld_partograph_treatment_during_labor)))
+                    actionList.remove(context.getString(R.string.ld_partograph_treatment_during_labor));
             }
             //Calling the callback method to preload the actions in the actionns list.
             new AppExecutors().mainThread().execute(() -> callBack.preloadActions(actionList));
