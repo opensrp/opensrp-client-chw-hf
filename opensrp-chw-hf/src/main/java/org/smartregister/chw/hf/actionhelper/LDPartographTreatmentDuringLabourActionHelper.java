@@ -5,6 +5,7 @@ import android.content.Context;
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONObject;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
+import org.smartregister.chw.hf.R;
 import org.smartregister.chw.ld.domain.MemberObject;
 import org.smartregister.chw.ld.domain.VisitDetail;
 import org.smartregister.chw.ld.model.BaseLDVisitAction;
@@ -23,6 +24,8 @@ public class LDPartographTreatmentDuringLabourActionHelper implements BaseLDVisi
     Context context;
 
     private String drugsAdministered;
+    private String drugs;
+    private String ivFluid;
 
     public LDPartographTreatmentDuringLabourActionHelper(MemberObject memberObject){
         this.memberObject = memberObject;
@@ -42,7 +45,7 @@ public class LDPartographTreatmentDuringLabourActionHelper implements BaseLDVisi
     public void onPayloadReceived(String jsonPayload) {
         try {
             JSONObject jsonObject = new JSONObject(jsonPayload);
-            drugsAdministered = CoreJsonFormUtils.getCheckBoxValue(jsonObject, "drugs_administered");
+            drugsAdministered = CoreJsonFormUtils.getValue(jsonObject, "drugs_administered");
         }catch (Exception e){
             Timber.e(e);
         }
@@ -65,7 +68,19 @@ public class LDPartographTreatmentDuringLabourActionHelper implements BaseLDVisi
 
     @Override
     public String evaluateSubTitle() {
-        return StringUtils.isNotBlank(drugsAdministered) ? "Drugs administered : "+drugsAdministered : "";
+        String subtitle = ""+ context.getString(R.string.partograph_treatment_during_labour_drugs_administered);
+
+        if (drugsAdministered.contains("oxytocin"))
+            subtitle += "Oxytocin (drops/min)";
+
+        if (drugsAdministered.contains("drugs"))
+            subtitle += ", "+ context.getString(R.string.partograph_treatment_during_labour_drugs)+" : "+drugs;
+
+        if (drugsAdministered.contains("iv_fluid"))
+            subtitle += ", "+ context.getString(R.string.partograph_treatment_during_labour_iv_fluid)+" : "+ivFluid;
+
+        return StringUtils.isNotBlank(drugsAdministered) ?
+                subtitle : "";
     }
 
     @Override
