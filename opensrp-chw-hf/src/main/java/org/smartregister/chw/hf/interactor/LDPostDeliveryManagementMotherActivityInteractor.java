@@ -1,8 +1,19 @@
 package org.smartregister.chw.hf.interactor;
 
+import static org.smartregister.chw.anc.util.Constants.TABLES.EC_CHILD;
+import static org.smartregister.chw.hf.interactor.AncRegisterInteractor.populatePNCForm;
+import static org.smartregister.chw.hf.utils.Constants.Events.HEI_REGISTRATION;
+import static org.smartregister.chw.hf.utils.Constants.HIV_STATUS.POSITIVE;
+import static org.smartregister.chw.hf.utils.Constants.TableName.HEI;
+import static org.smartregister.chw.hf.utils.JsonFormUtils.ENCOUNTER_TYPE;
+import static org.smartregister.util.JsonFormUtils.KEY;
+
 import android.content.ContentValues;
 import android.content.Context;
+import android.os.Build;
 import android.util.Pair;
+
+import androidx.annotation.RequiresApi;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.Triple;
@@ -26,6 +37,7 @@ import org.smartregister.chw.ld.domain.Visit;
 import org.smartregister.chw.ld.domain.VisitDetail;
 import org.smartregister.chw.ld.interactor.BaseLDVisitInteractor;
 import org.smartregister.chw.ld.model.BaseLDVisitAction;
+import org.smartregister.chw.referral.util.JsonFormConstants;
 import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.commonregistry.AllCommonsRepository;
 import org.smartregister.domain.Client;
@@ -140,7 +152,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
     private void evaluateNewBornStatus() throws BaseLDVisitAction.ValidationException {
         String title = context.getString(R.string.ld_new_born_status_action_title);
-        NewBornActionHelper actionHelper = new NewBornActionHelper();
+        NewBornActionHelper actionHelper = new NewBornActionHelper(memberObject.getBaseEntityId());
         BaseLDVisitAction action = getBuilder(title)
                 .withOptional(false)
                 .withHelper(actionHelper)
@@ -341,16 +353,53 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
     private static class NewBornActionHelper implements BaseLDVisitAction.LDVisitActionHelper {
 
         private String newbornStatus;
+        private String baseEntityId;
         private Context context;
+
+        public NewBornActionHelper(String baseEntityId) {
+            this.baseEntityId = baseEntityId;
+        }
 
         @Override
         public void onJsonFormLoaded(String jsonString, Context context, Map<String, List<VisitDetail>> details) {
             this.context = context;
         }
 
+        @RequiresApi(api = Build.VERSION_CODES.KITKAT)
         @Override
         public String getPreProcessed() {
-            return null;
+            JSONObject newBornForm = org.smartregister.chw.core.utils.FormUtils.getFormUtils().getFormJson(Constants.JsonForm.LDPostDeliveryMotherManagement.getLdNewBornStatus());
+            String hivStatus = LDDao.getHivStatus(baseEntityId);
+            if (newBornForm != null && hivStatus != null && !hivStatus.equalsIgnoreCase(POSITIVE)) {
+                try {
+                    JSONArray fields = newBornForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+
+                    JSONObject noImmediateNewBorn = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "no_immediate_new_born");
+
+                    JSONArray values = noImmediateNewBorn.getJSONArray("value");
+                    for (int x = 0; x < values.length(); x++) {
+                        if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("risk_category"))
+                            values.remove(x);
+                        if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("prompt_for_high_risk"))
+                            values.remove(x);
+                        if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("prompt_for_low_risk"))
+                            values.remove(x);
+                        if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("prophylaxis_provided"))
+                            values.remove(x);
+                        if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("reason_prophylaxis_not_provided"))
+                            values.remove(x);
+                        if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("collect_dbs"))
+                            values.remove(x);
+                        if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("reason_not_collecting_dbs"))
+                            values.remove(x);
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            return newBornForm.toString();
         }
 
         @Override
@@ -411,7 +460,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
             JSONObject removeFamilyMemberForm = new JSONObject();
             if (isDeceased(obs)) {
-                 removeFamilyMemberForm = getFormAsJson(
+                removeFamilyMemberForm = getFormAsJson(
                         CoreConstants.JSON_FORM.getFamilyDetailsRemoveMember(), memberID, getLocationID()
                 );
                 if (removeFamilyMemberForm != null) {
@@ -428,29 +477,104 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                 }
             }
             if (isChildAlive(obs)) {
-                String childBaseId = org.smartregister.family.util.JsonFormUtils.generateRandomUUIDString();
-                String familyId = memberObject.getFamilyBaseEntityId();
-                JSONObject childRegistrationForm = getFormAsJson(CoreConstants.JSON_FORM.getChildRegister(), childBaseId, getLocationID());
 
-                String uniqueChildID = AncLibrary.getInstance().getUniqueIdRepository().getNextUniqueId().getOpenmrsId();
+                Map<String, List<JSONObject>> jsonObjectMap = getChildFieldMaps(obs);
 
-                childRegistrationForm = populateChildRegistrationForm(childRegistrationForm, obs, memberID, familyId);
-
-                if (childRegistrationForm != null) {
-                    JSONObject stepOne = childRegistrationForm.getJSONObject(JsonFormUtils.STEP1);
-                    JSONArray fields = stepOne.getJSONArray(JsonFormUtils.FIELDS);
-                    processChild(fields, allSharedPreferences, childBaseId, familyId, memberID, uniqueChildID, memberObject.getLastName(), deliveryDate);
-                    saveChildRegistration(childRegistrationForm.toString(), CoreConstants.TABLE_NAME.CHILD);
-                }
+                generateAndSaveFormsForEachChild(
+                        jsonObjectMap,
+                        memberID,
+                        LDDao.getHivStatus(memberID),
+                        getRiskStatus(obs), memberObject.getFamilyBaseEntityId(),
+                        getDeliveryDateString(obs), memberObject.getFamilyName(), obs);
             }
 
-            LDVisitUtils.processVisits(memberID);
+            LDVisitUtils.processVisits(memberID, false);
         } catch (Exception e) {
             Timber.e(e);
         }
 
-        //closeLDForClient(memberID);
+    }
 
+    private Map<String, List<JSONObject>> getChildFieldMaps(JSONArray fields) {
+        Map<String, List<JSONObject>> jsonObjectMap = new HashMap();
+
+        for (int i = 0; i < fields.length(); i++) {
+            try {
+                JSONObject jsonObject = fields.getJSONObject(i);
+                String key = jsonObject.getString("formSubmissionField");
+                String keySplit = key.substring(key.lastIndexOf("_"));
+                if (keySplit.matches(".*\\d.*")) {
+
+                    String formattedKey = keySplit.replaceAll("[^\\d.]", "");
+                    if (formattedKey.length() < 10)
+                        continue;
+                    List<JSONObject> jsonObjectList = jsonObjectMap.get(formattedKey);
+
+                    if (jsonObjectList == null)
+                        jsonObjectList = new ArrayList<>();
+
+                    jsonObjectList.add(jsonObject);
+                    jsonObjectMap.put(formattedKey, jsonObjectList);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return jsonObjectMap;
+    }
+
+    protected void generateAndSaveFormsForEachChild(Map<String, List<JSONObject>> jsonObjectMap, String motherBaseId, String motherHivStatus, String childRiskCategory, String familyBaseEntityId, String dob, String familyName, JSONArray obs) {
+
+        AllSharedPreferences allSharedPreferences = ImmunizationLibrary.getInstance().context().allSharedPreferences();
+
+        JSONArray childFields;
+        for (Map.Entry<String, List<JSONObject>> entry : jsonObjectMap.entrySet()) {
+            if (entry.getValue().size() > 1) {
+                childFields = new JSONArray();
+                for (JSONObject jsonObject : entry.getValue()) {
+                    try {
+                        String replaceString = jsonObject.getString("formSubmissionField");
+
+                        JSONObject childField = new JSONObject(jsonObject.toString().replaceAll(replaceString, replaceString.substring(0, replaceString.lastIndexOf("_"))));
+
+                        childFields.put(childField);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                saveChild(childFields, motherBaseId, motherHivStatus, childRiskCategory, allSharedPreferences, familyBaseEntityId, dob, familyName, obs);
+            }
+        }
+    }
+
+    private void saveChild(JSONArray childFields, String motherBaseId, String motherHivStatus, String childRiskCategory, AllSharedPreferences
+            allSharedPreferences, String familyBaseEntityId, String dob, String familyName, JSONArray obs) {
+        String uniqueChildID = AncLibrary.getInstance().getUniqueIdRepository().getNextUniqueId().getOpenmrsId();
+
+        if (StringUtils.isNotBlank(uniqueChildID)) {
+            String childBaseEntityId = org.smartregister.chw.anc.util.JsonFormUtils.generateRandomUUIDString();
+            try {
+                String lastName = memberObject.getLastName();
+                JSONObject pncForm = getFormAsJson(
+                        org.smartregister.chw.anc.util.Constants.FORMS.PNC_CHILD_REGISTRATION,
+                        childBaseEntityId,
+                        getLocationID()
+                );
+                pncForm = populatePNCForm(pncForm, childFields, familyBaseEntityId, motherBaseId, childRiskCategory, uniqueChildID, dob, lastName);
+                pncForm = populateChildRegistrationForm(pncForm, obs, motherBaseId, familyBaseEntityId);
+                processChild(pncForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS), allSharedPreferences, childBaseEntityId, familyBaseEntityId, motherBaseId, uniqueChildID, lastName, dob);
+                if (pncForm != null) {
+                    saveChildRegistration(pncForm.toString(), EC_CHILD);
+                }
+                if (motherHivStatus.equals(POSITIVE) && pncForm != null) {
+                    pncForm.put(ENCOUNTER_TYPE, HEI_REGISTRATION);
+                    saveChildRegistration(pncForm.toString(), HEI);
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private JSONObject populateChildRegistrationForm(JSONObject form, JSONArray obs, String motherId, String familyId) {
@@ -460,7 +584,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
             JSONObject stepOne = form.getJSONObject(JsonFormUtils.STEP1);
             JSONArray fields = stepOne.getJSONArray(JsonFormUtils.FIELDS);
 
-            String babyFirstName = context.getString(R.string.ld_baby_of_text) + memberObject.getFirstName();
+            String babyFirstName = context.getString(R.string.ld_baby_of_text) + " " + memberObject.getFirstName();
             String dob = getDeliveryDateString(obs);
             String gender = getChildGender(obs);
 
@@ -623,6 +747,20 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
             }
         }
         return false;
+    }
+
+    private String getRiskStatus(JSONArray obs) throws JSONException {
+        int size = obs.length();
+        for (int i = 0; i < size; i++) {
+            JSONObject checkObj = obs.getJSONObject(i);
+            if (checkObj.getString("fieldCode").equalsIgnoreCase("risk_category")) {
+                JSONArray values = checkObj.getJSONArray("values");
+                if (values != null) {
+                    return values.getString(0);
+                }
+            }
+        }
+        return null;
     }
 
     private String getDeliveryDateString(JSONArray obs) throws JSONException {
