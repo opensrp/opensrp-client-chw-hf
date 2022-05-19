@@ -267,6 +267,7 @@
     <string name="ld_partograph_fetal_well_being"> Partograph : Fetal Well-being </string>
     <string name="ld_partograph_mother_well_being"> Partograph : Mother Well-being </string>
     <string name="ld_partograph_labor_progress"> Partograph : Fetal Progress of Labor </string>
+    <string name="ld_partograph_treatment_during_labor"> Partograph : Treatment during labor </string>
     <string name="ld_partograph_fetal_wellbeing_completed"> Fetal Well-being has been conducted </string>
     <string name="ld_partograph_fetal_wellbeing_pending"> Fetal Well-being is pending </string>
     <string name="ld_partograph_mother_wellbeing_completed"> Mother Well-being has been conducted </string>
