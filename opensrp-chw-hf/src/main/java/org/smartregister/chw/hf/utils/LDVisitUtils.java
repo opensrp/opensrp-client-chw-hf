@@ -47,7 +47,8 @@ public class LDVisitUtils extends VisitUtils {
                 boolean isTemperatureDone = computeCompletionStatus(obs, "temperature");
                 boolean isSystolicDone = computeCompletionStatus(obs, "systolic");
                 boolean isDiastolicDone = computeCompletionStatus(obs, "diastolic");
-                boolean isUrineDone = computeCompletionStatus(obs, "urine");
+                boolean isUrineProteinDone = computeCompletionStatus(obs, "urine_protein");
+                boolean isUrineAcetoneDone = computeCompletionStatus(obs, "urine_acetone");
                 boolean isFundalHeightDone = computeCompletionStatus(obs, "fundal_height");
                 boolean isPresentationDone = computeCompletionStatus(obs, "presentation");
                 boolean isContractionInTenMinutesDone = computeCompletionStatus(obs, "contraction_in_ten_minutes");
@@ -89,7 +90,8 @@ public class LDVisitUtils extends VisitUtils {
                         isTemperatureDone &&
                         isSystolicDone &&
                         isDiastolicDone &&
-                        isUrineDone &&
+                        isUrineProteinDone &&
+                        isUrineAcetoneDone &&
                         isFundalHeightDone &&
                         isPresentationDone &&
                         isContractionInTenMinutesDone &&
@@ -158,13 +160,15 @@ public class LDVisitUtils extends VisitUtils {
         boolean hasTemperature = computeCompletionStatus(obs, "temperature");
         boolean hasSystolic = computeCompletionStatus(obs, "systolic");
         boolean hasDiastolic = computeCompletionStatus(obs, "diastolic");
-        boolean hasUrine = computeCompletionStatus(obs, "urine");
+        boolean hasUrineProtein = computeCompletionStatus(obs, "urine_protein");
+        boolean hasUrineAcetone = computeCompletionStatus(obs, "urine_acetone");
+        boolean hasUrineVolume = computeCompletionStatus(obs, "urine_volume");
         boolean hasCervixDilation = computeCompletionStatus(obs, "cervix_dilation");
         boolean hasDescentPresentingPart = computeCompletionStatus(obs, "descent_presenting_part");
         boolean hasContractionEveryHalfHourFrequency = computeCompletionStatus(obs, "contraction_every_half_hour_frequency");
         boolean hasContractionEveryHalfAnHour = computeCompletionStatus(obs, "contraction_every_half_hour_time");
 
-        return hasPartographDate && hasPartographTime && (hasRespiratoryRate || hasPulseRate || hasAmnioticFluid || hasFetalHeartRate || hasTemperature || hasSystolic || hasDiastolic || hasUrine || hasCervixDilation || hasDescentPresentingPart || hasContractionEveryHalfHourFrequency || hasContractionEveryHalfAnHour || hasMolding);
+        return hasPartographDate && hasPartographTime && (hasRespiratoryRate || hasPulseRate || hasAmnioticFluid || hasFetalHeartRate || hasTemperature || hasSystolic || hasDiastolic || hasUrineProtein || hasUrineAcetone || hasUrineVolume || hasCervixDilation || hasDescentPresentingPart || hasContractionEveryHalfHourFrequency || hasContractionEveryHalfAnHour || hasMolding);
     }
 
 }
