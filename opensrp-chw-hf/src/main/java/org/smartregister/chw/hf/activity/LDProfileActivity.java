@@ -206,7 +206,7 @@ public class LDProfileActivity extends BaseLDProfileActivity {
             currentVisitItemTitle = getString(R.string.lb_mode_of_delivery);
         } else if (LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("3") && (LDDao.getModeOfDelivery(memberObject.getBaseEntityId()) == null || (LDDao.getModeOfDelivery(memberObject.getBaseEntityId()) != null && !LDDao.getModeOfDelivery(memberObject.getBaseEntityId()).equals("cesarean")))) {
             textViewRecordLD.setText(R.string.ld_active_management_3rd_stage);
-        } else if (LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("4")) {
+        } else if (LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("4") || (LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("3") && (LDDao.getModeOfDelivery(memberObject.getBaseEntityId()) != null && LDDao.getModeOfDelivery(memberObject.getBaseEntityId()).equals("cesarean")))) {
             textViewRecordLD.setText(R.string.ld_mother_post_delivery_management);
         }
      }
