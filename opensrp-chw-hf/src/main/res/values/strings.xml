@@ -276,5 +276,6 @@
     <string name="ld_new_born_status_action_title">New born\'s status</string>
     <string name="ld_post_delivery_observation_action_title">Post Delivery Observation</string>
     <string name="ld_mother_status_action_title">Mother\'s Status</string>
+    <string name="ld_baby_of_text">\"Baby of \"</string>
 
 </resources>
