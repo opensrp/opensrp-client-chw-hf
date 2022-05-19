@@ -10,12 +10,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.AllConstants;
+import org.smartregister.chw.anc.AncLibrary;
+import org.smartregister.chw.anc.util.NCUtils;
 import org.smartregister.chw.anc.util.VisitUtils;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.utils.Constants;
+import org.smartregister.chw.hf.utils.LDVisitUtils;
 import org.smartregister.chw.ld.contract.BaseLDVisitContract;
 import org.smartregister.chw.ld.dao.LDDao;
 import org.smartregister.chw.ld.domain.MemberObject;
@@ -30,6 +33,7 @@ import org.smartregister.domain.db.EventClient;
 import org.smartregister.family.FamilyLibrary;
 import org.smartregister.family.util.DBConstants;
 import org.smartregister.family.util.Utils;
+import org.smartregister.immunization.ImmunizationLibrary;
 import org.smartregister.repository.AllSharedPreferences;
 import org.smartregister.repository.BaseRepository;
 import org.smartregister.sync.ClientProcessorForJava;
@@ -40,6 +44,7 @@ import org.smartregister.util.JsonFormUtils;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -398,8 +403,11 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         super.processExternalVisits(visit, externalVisits, memberID);
         try {
 
+            AllSharedPreferences allSharedPreferences = ImmunizationLibrary.getInstance().context().allSharedPreferences();
+
             JSONObject visitJson = new JSONObject(visit.getJson());
             JSONArray obs = visitJson.getJSONArray("obs");
+            String deliveryDate = getDeliveryDateString(obs);
 
             JSONObject removeFamilyMemberForm = new JSONObject();
             if (isDeceased(obs)) {
@@ -413,19 +421,96 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                     org.smartregister.chw.anc.util.JsonFormUtils.updateFormField(jsonArray, "remove_reason", "Death");
 
                     // Need to get the date of delivery from the mother status format dd-MM-YYYY
-                    org.smartregister.chw.anc.util.JsonFormUtils.updateFormField(jsonArray, "date_died", getDeliveryDateString(obs));
+                    org.smartregister.chw.anc.util.JsonFormUtils.updateFormField(jsonArray, "date_died", deliveryDate);
                     org.smartregister.chw.anc.util.JsonFormUtils.updateFormField(jsonArray, "age_at_death", memberObject.getAge());
 
                     removeUser(null, removeFamilyMemberForm, getProviderID());
                 }
             }
+            if (isChildAlive(obs)) {
+                String childBaseId = org.smartregister.family.util.JsonFormUtils.generateRandomUUIDString();
+                String familyId = memberObject.getFamilyBaseEntityId();
+                JSONObject childRegistrationForm = getFormAsJson(CoreConstants.JSON_FORM.getChildRegister(), childBaseId, getLocationID());
+
+                String uniqueChildID = AncLibrary.getInstance().getUniqueIdRepository().getNextUniqueId().getOpenmrsId();
+
+                childRegistrationForm = populateChildRegistrationForm(childRegistrationForm, obs, memberID, familyId);
+
+                if (childRegistrationForm != null) {
+                    JSONObject stepOne = childRegistrationForm.getJSONObject(JsonFormUtils.STEP1);
+                    JSONArray fields = stepOne.getJSONArray(JsonFormUtils.FIELDS);
+                    processChild(fields, allSharedPreferences, childBaseId, familyId, memberID, uniqueChildID, memberObject.getLastName(), deliveryDate);
+                    saveChildRegistration(childRegistrationForm.toString(), CoreConstants.TABLE_NAME.CHILD);
+                }
+            }
+
+            LDVisitUtils.processVisits(memberID);
+        } catch (Exception e) {
+            Timber.e(e);
+        }
+
+        //closeLDForClient(memberID);
+
+    }
+
+    private JSONObject populateChildRegistrationForm(JSONObject form, JSONArray obs, String motherId, String familyId) {
+        try {
+            form.put(DBConstants.KEY.RELATIONAL_ID, familyId);
+            form.put("mother_entity_id", motherId);
+            JSONObject stepOne = form.getJSONObject(JsonFormUtils.STEP1);
+            JSONArray fields = stepOne.getJSONArray(JsonFormUtils.FIELDS);
+
+            String babyFirstName = context.getString(R.string.ld_baby_of_text) + memberObject.getFirstName();
+            String dob = getDeliveryDateString(obs);
+            String gender = getChildGender(obs);
+
+            org.smartregister.chw.anc.util.JsonFormUtils.updateFormField(fields, "mother_entity_id", motherId);
+            org.smartregister.chw.anc.util.JsonFormUtils.updateFormField(fields, "first_name", babyFirstName);
+            org.smartregister.chw.anc.util.JsonFormUtils.updateFormField(fields, "last_name", memberObject.getLastName());
+            org.smartregister.chw.anc.util.JsonFormUtils.updateFormField(fields, "middle_name", memberObject.getMiddleName());
+            org.smartregister.chw.anc.util.JsonFormUtils.updateFormField(fields, "dob", dob);
+            org.smartregister.chw.anc.util.JsonFormUtils.updateFormField(fields, "gender", gender);
+            org.smartregister.chw.anc.util.JsonFormUtils.updateFormField(fields, "surname", memberObject.getLastName());
+
+            return form;
+        } catch (Exception e) {
+            Timber.e(e);
+        }
+
+        return null;
+    }
+
+    private void processChild(JSONArray fields, AllSharedPreferences allSharedPreferences, String entityId, String familyBaseEntityId, String motherBaseId, String uniqueChildID, String lastName, String dob) {
+
+        try {
+            org.smartregister.clientandeventmodel.Client pncChild = org.smartregister.util.JsonFormUtils.createBaseClient(fields, org.smartregister.chw.anc.util.JsonFormUtils.formTag(allSharedPreferences), entityId);
+            Map<String, String> identifiers = new HashMap<>();
+            identifiers.put(org.smartregister.chw.anc.util.Constants.JSON_FORM_EXTRA.OPENSPR_ID, uniqueChildID.replace("-", ""));
+            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+            Date date = formatter.parse(dob);
+            pncChild.setLastName(lastName);
+            pncChild.setBirthdate(date);
+            pncChild.setIdentifiers(identifiers);
+            pncChild.addRelationship(org.smartregister.chw.anc.util.Constants.RELATIONSHIP.FAMILY, familyBaseEntityId);
+            pncChild.addRelationship(org.smartregister.chw.anc.util.Constants.RELATIONSHIP.MOTHER, motherBaseId);
+
+            JSONObject eventJson = new JSONObject(org.smartregister.chw.anc.util.JsonFormUtils.gson.toJson(pncChild));
+            AncLibrary.getInstance().getUniqueIdRepository().close(pncChild.getIdentifier(org.smartregister.chw.anc.util.Constants.JSON_FORM_EXTRA.OPENSPR_ID));
+
+            NCUtils.getSyncHelper().addClient(pncChild.getBaseEntityId(), eventJson);
 
         } catch (Exception e) {
             Timber.e(e);
         }
 
-        closeLDForClient(memberID);
+    }
 
+    private void saveChildRegistration(final String jsonString, String table) throws Exception {
+        AllSharedPreferences allSharedPreferences = AncLibrary.getInstance().context().allSharedPreferences();
+        Event baseEvent = org.smartregister.chw.anc.util.JsonFormUtils.processJsonForm(allSharedPreferences, jsonString, table);
+
+        NCUtils.addEvent(allSharedPreferences, baseEvent);
+        NCUtils.startClientProcessing();
     }
 
     private void closeLDForClient(String memberID) {
@@ -568,5 +653,45 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
             }
         }
         return deliveryDateString;
+    }
+
+    private boolean isChildAlive(JSONArray obs) throws JSONException {
+        int size = obs.length();
+        for (int i = 0; i < size; i++) {
+            JSONObject checkObj = obs.getJSONObject(i);
+            if (checkObj.getString("fieldCode").equalsIgnoreCase("newborn_status")) {
+                JSONArray values = checkObj.getJSONArray("values");
+                if (values != null) {
+                    return values.get(0).equals("alive");
+                }
+            }
+        }
+        return false;
+    }
+
+    private String getChildGender(JSONArray obs) throws JSONException {
+        String gender = null;
+        if (obs.length() > 0) {
+
+            for (int i = 0; i < obs.length(); i++) {
+
+                JSONObject jsonObject = obs.getJSONObject(i);
+
+                if (jsonObject.getString("fieldCode").equalsIgnoreCase("sex")) {
+                    JSONArray values = jsonObject.getJSONArray("values");
+                    if (values != null) {
+                        if (!values.getString(0).equalsIgnoreCase("null")) {
+                            gender = values.getString(0);
+                        } else {
+                            gender = jsonObject.getJSONArray("humanReadableValues").getString(0);
+                        }
+                    }
+                }
+
+            }
+
+        }
+
+        return gender;
     }
 }
