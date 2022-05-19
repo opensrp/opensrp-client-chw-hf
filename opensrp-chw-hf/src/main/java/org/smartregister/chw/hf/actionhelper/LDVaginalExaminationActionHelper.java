@@ -1,6 +1,9 @@
 package org.smartregister.chw.hf.actionhelper;
 
 import android.content.Context;
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
 
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
@@ -46,6 +49,7 @@ public class LDVaginalExaminationActionHelper implements BaseLDVisitAction.LDVis
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public String getPreProcessed() {
         JSONObject vaginalExaminationForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.LDVisit.getLdVaginalExamination());
@@ -68,6 +72,13 @@ public class LDVaginalExaminationActionHelper implements BaseLDVisitAction.LDVis
 
         try {
             vaginalExaminationForm.getJSONObject("global").put("moulding", LDDao.getMoulding(baseEntityId) == null? "" : LDDao.getMoulding(baseEntityId));
+            JSONArray fields = vaginalExaminationForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+
+            JSONObject amnioticFluid = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "amniotic_fluid");
+
+            if (org.smartregister.chw.hf.utils.LDDao.getMembraneState(baseEntityId) != null && org.smartregister.chw.hf.utils.LDDao.getMembraneState(baseEntityId).equalsIgnoreCase("ruptured")) {
+                amnioticFluid.getJSONArray("options").remove(0);
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
