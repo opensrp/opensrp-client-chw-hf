@@ -27,10 +27,12 @@ public class LDPartographMotherWellBeingActionHelper implements BaseLDVisitActio
     private String temperature;
     private String systolic;
     private String diastolic;
-    private String urine;
+    private String urineProtein;
+    private String urineAcetone;
+    private String urineVolume;
     private Context context;
 
-    public LDPartographMotherWellBeingActionHelper(MemberObject memberObject){
+    public LDPartographMotherWellBeingActionHelper(MemberObject memberObject) {
         this.memberObject = memberObject;
     }
 
@@ -53,8 +55,10 @@ public class LDPartographMotherWellBeingActionHelper implements BaseLDVisitActio
             temperature = CoreJsonFormUtils.getValue(jsonObject, "temperature");
             systolic = CoreJsonFormUtils.getValue(jsonObject, "systolic");
             diastolic = CoreJsonFormUtils.getValue(jsonObject, "diastolic");
-            urine = CoreJsonFormUtils.getValue(jsonObject, "urine");
-        }catch (JSONException e){
+            urineProtein = CoreJsonFormUtils.getValue(jsonObject, "urine_protein");
+            urineAcetone = CoreJsonFormUtils.getValue(jsonObject, "urine_acetone");
+            urineVolume = CoreJsonFormUtils.getValue(jsonObject, "urine_volume");
+        } catch (JSONException e) {
             Timber.e(e);
         }
     }
@@ -98,21 +102,25 @@ public class LDPartographMotherWellBeingActionHelper implements BaseLDVisitActio
         Timber.v("onPayloadReceived");
     }
 
-    private boolean allFieldsCompleted(){
+    private boolean allFieldsCompleted() {
         return StringUtils.isNotBlank(pulseRate) &&
                 StringUtils.isNotBlank(respiratoryRate) &&
                 StringUtils.isNotBlank(temperature) &&
                 StringUtils.isNotBlank(systolic) &&
                 StringUtils.isNotBlank(diastolic) &&
-                StringUtils.isNotBlank(urine);
+                StringUtils.isNotBlank(urineProtein) &&
+                StringUtils.isNotBlank(urineAcetone) &&
+                StringUtils.isNotBlank(urineVolume);
     }
 
-    private boolean anyFieldCompleted(){
+    private boolean anyFieldCompleted() {
         return StringUtils.isNotBlank(pulseRate) ||
                 StringUtils.isNotBlank(respiratoryRate) ||
                 StringUtils.isNotBlank(temperature) ||
                 StringUtils.isNotBlank(systolic) ||
                 StringUtils.isNotBlank(diastolic) ||
-                StringUtils.isNotBlank(urine);
+                StringUtils.isNotBlank(urineProtein) ||
+                StringUtils.isNotBlank(urineAcetone) ||
+                StringUtils.isNotBlank(urineVolume);
     }
 }
