@@ -374,7 +374,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                 try {
                     JSONArray fields = newBornForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
 
-                    JSONObject noImmediateNewBorn = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "no_immediate_new_born");
+                    JSONObject noImmediateNewBorn = JsonFormUtils.getFieldJSONObject(fields, "no_immediate_new_born");
 
                     JSONArray values = noImmediateNewBorn.getJSONArray("value");
                     for (int x = 0; x < values.length(); x++) {
@@ -485,7 +485,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                         memberID,
                         LDDao.getHivStatus(memberID),
                         getRiskStatus(obs), memberObject.getFamilyBaseEntityId(),
-                        getDeliveryDateString(obs), memberObject.getFamilyName(), obs);
+                        getDeliveryDateString(obs), obs);
             }
 
             LDVisitUtils.processVisits(memberID, false);
@@ -523,7 +523,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         return jsonObjectMap;
     }
 
-    protected void generateAndSaveFormsForEachChild(Map<String, List<JSONObject>> jsonObjectMap, String motherBaseId, String motherHivStatus, String childRiskCategory, String familyBaseEntityId, String dob, String familyName, JSONArray obs) {
+    protected void generateAndSaveFormsForEachChild(Map<String, List<JSONObject>> jsonObjectMap, String motherBaseId, String motherHivStatus, String childRiskCategory, String familyBaseEntityId, String dob, JSONArray obs) {
 
         AllSharedPreferences allSharedPreferences = ImmunizationLibrary.getInstance().context().allSharedPreferences();
 
@@ -542,13 +542,13 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                         e.printStackTrace();
                     }
                 }
-                saveChild(childFields, motherBaseId, motherHivStatus, childRiskCategory, allSharedPreferences, familyBaseEntityId, dob, familyName, obs);
+                saveChild(childFields, motherBaseId, motherHivStatus, childRiskCategory, allSharedPreferences, familyBaseEntityId, dob, obs);
             }
         }
     }
 
     private void saveChild(JSONArray childFields, String motherBaseId, String motherHivStatus, String childRiskCategory, AllSharedPreferences
-            allSharedPreferences, String familyBaseEntityId, String dob, String familyName, JSONArray obs) {
+            allSharedPreferences, String familyBaseEntityId, String dob, JSONArray obs) {
         String uniqueChildID = AncLibrary.getInstance().getUniqueIdRepository().getNextUniqueId().getOpenmrsId();
 
         if (StringUtils.isNotBlank(uniqueChildID)) {
