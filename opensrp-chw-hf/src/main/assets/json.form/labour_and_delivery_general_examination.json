@@ -298,11 +298,43 @@
         }
       },
       {
-        "key": "urine",
+        "key": "urine_protein",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "urine",
-        "label": "Urine",
+        "openmrs_entity_id": "urine_protein",
+        "label": "Urine Protein",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "+",
+            "text": "+",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "+"
+          },
+          {
+            "key": "++",
+            "text": "++",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "++"
+          },
+          {
+            "key": "+++",
+            "text": "+++",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "+++"
+          }
+        ]
+      },
+      {
+        "key": "urine_acetone",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "urine_acetone",
+        "label": "Urine Acetone",
         "text_color": "#000000",
         "type": "native_radio",
         "options": [
