@@ -665,6 +665,13 @@
             "creates_case": [
               "ec_ld_confirmation"
             ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "Post Delivery Mother Management",
+            "closes_case": [
+              "ec_ld_confirmation"
+            ]
           }
         ]
       }

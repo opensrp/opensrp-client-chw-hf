@@ -160,6 +160,8 @@ public class LDProfileActivity extends BaseLDProfileActivity {
                 startLDForm(this, memberObject.getBaseEntityId(), getLabourAndDeliveryModeOfDelivery());
             } else if (((TextView) view).getText().equals(getString(R.string.ld_active_management_3rd_stage))) {
                 openActiveManagementStage();
+            } else if (((TextView) view).getText().equals(getString(R.string.ld_mother_post_delivery_management))) {
+                openPostDeliveryManagementMother();
             }
         } else if (id == R.id.textview_process_partograph) {
             processPartographEvent();
@@ -204,8 +206,10 @@ public class LDProfileActivity extends BaseLDProfileActivity {
             currentVisitItemTitle = getString(R.string.lb_mode_of_delivery);
         } else if (LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("3") && (LDDao.getModeOfDelivery(memberObject.getBaseEntityId()) == null || (LDDao.getModeOfDelivery(memberObject.getBaseEntityId()) != null && !LDDao.getModeOfDelivery(memberObject.getBaseEntityId()).equals("cesarean")))) {
             textViewRecordLD.setText(R.string.ld_active_management_3rd_stage);
+        } else if (LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("4")) {
+            textViewRecordLD.setText(R.string.ld_mother_post_delivery_management);
         }
-    }
+     }
 
     private void openExaminationConsultation() {
         String baseEntityId = null;
@@ -221,6 +225,11 @@ public class LDProfileActivity extends BaseLDProfileActivity {
 
     private void openActiveManagementStage() {
         LDActiveManagementStageActivity.startActiveManagementActivity(this, memberObject.getBaseEntityId(), false);
+    }
+
+
+    private void openPostDeliveryManagementMother() {
+        LDPostDeliveryManagementMotherActivity.startPostDeliveryMotherManagementActivity(this, memberObject.getBaseEntityId(), false);
     }
 
     @Override
@@ -283,4 +292,5 @@ public class LDProfileActivity extends BaseLDProfileActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }
