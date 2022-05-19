@@ -822,7 +822,7 @@
             },
             "v_max": {
               "value": "100",
-              "err": "The breathing rate must be equal or less than 200 (bpm)"
+              "err": "The breathing rate must be equal or less than 100 (bpm)"
             }
           },
           {

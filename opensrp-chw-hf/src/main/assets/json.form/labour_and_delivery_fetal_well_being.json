@@ -202,11 +202,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "blood_stained_liquor"
           }
-        ],
-        "v_required": {
-          "value": true,
-          "err": "Please select an option"
-        }
+        ]
       },
       {
         "key": "prompt_for_amniotic_fluid",
