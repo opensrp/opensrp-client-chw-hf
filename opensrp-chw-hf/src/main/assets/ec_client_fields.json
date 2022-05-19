@@ -4952,6 +4952,14 @@
           }
         },
         {
+          "column_name": "amniotic_fluid",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "amniotic_fluid"
+          }
+        },
+        {
           "column_name": "hiv",
           "type": "Event",
           "json_mapping": {
@@ -4978,9 +4986,17 @@
         {
           "column_name": "moulding",
           "type": "Event",
-          "concept": {
+          "json_mapping": {
             "field": "obs.fieldCode",
             "formSubmissionField": "moulding"
+          }
+        },
+        {
+          "column_name": "moulding_options",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "moulding_options"
           }
         },
         {
