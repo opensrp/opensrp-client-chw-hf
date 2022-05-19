@@ -42,7 +42,7 @@ public class LDPartographTreatmentDuringLabourActionHelper implements BaseLDVisi
     public void onPayloadReceived(String jsonPayload) {
         try {
             JSONObject jsonObject = new JSONObject(jsonPayload);
-            drugsAdministered = CoreJsonFormUtils.getValue(jsonObject, "drugs_administered");
+            drugsAdministered = CoreJsonFormUtils.getCheckBoxValue(jsonObject, "drugs_administered");
         }catch (Exception e){
             Timber.e(e);
         }
