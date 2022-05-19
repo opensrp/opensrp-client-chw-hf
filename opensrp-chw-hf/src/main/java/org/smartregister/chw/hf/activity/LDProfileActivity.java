@@ -136,7 +136,7 @@ public class LDProfileActivity extends BaseLDProfileActivity {
                 LDPartographActivity.startMe(this, memberObject.getBaseEntityId(), true,
                         getName(memberObject), String.valueOf(new Period(new DateTime(this.memberObject.getAge()), new DateTime()).getYears()));
             } else if (currentVisitItemTitle.equalsIgnoreCase(getString(R.string.labour_and_delivery_examination_and_consultation_button_tittle))) {
-                LDVisitActivity.startLDVisitActivity(this, memberObject.getBaseEntityId(), true);
+                LDGeneralExaminationVisitActivity.startLDGeneralExaminationVisitActivity(this, memberObject.getBaseEntityId(), true);
             } else {
                 LDActiveManagementStageActivity.startActiveManagementActivity(this, memberObject.getBaseEntityId(), true);
             }
@@ -215,7 +215,7 @@ public class LDProfileActivity extends BaseLDProfileActivity {
             baseEntityId = extras.getString(Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID);
         }
 
-        LDVisitActivity.startLDVisitActivity(this, baseEntityId, false);
+        LDGeneralExaminationVisitActivity.startLDGeneralExaminationVisitActivity(this, baseEntityId, false);
     }
 
 

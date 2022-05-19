@@ -4,7 +4,7 @@ import android.content.Context;
 
 import org.smartregister.chw.anc.util.VisitUtils;
 import org.smartregister.chw.hf.R;
-import org.smartregister.chw.hf.actionhelper.HIVTestActionHelper;
+import org.smartregister.chw.hf.actionhelper.LDHIVTestActionHelper;
 import org.smartregister.chw.hf.actionhelper.LDGeneralExaminationActionHelper;
 import org.smartregister.chw.hf.actionhelper.LDVaginalExaminationActionHelper;
 import org.smartregister.chw.hf.utils.Constants;
@@ -80,7 +80,7 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
 
         String title = context.getString(R.string.lb_visit_hiv_test_status_action_title);
 
-        HIVTestActionHelper actionHelper = new HIVTestActionHelper(context);
+        LDHIVTestActionHelper actionHelper = new LDHIVTestActionHelper(context);
         BaseLDVisitAction action = getBuilder(title)
                 .withOptional(false)
                 .withHelper(actionHelper)
