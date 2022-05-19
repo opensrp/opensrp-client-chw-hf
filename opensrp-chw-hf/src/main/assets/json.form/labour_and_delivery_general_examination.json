@@ -307,25 +307,25 @@
         "type": "native_radio",
         "options": [
           {
-            "key": "one_plus",
+            "key": "+",
             "text": "+",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "one_plus"
+            "openmrs_entity_id": "+"
           },
           {
-            "key": "two_plus",
+            "key": "++",
             "text": "++",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "two_plus"
+            "openmrs_entity_id": "++"
           },
           {
-            "key": "three_plus",
+            "key": "+++",
             "text": "+++",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "three_plus"
+            "openmrs_entity_id": "+++"
           }
         ]
       },

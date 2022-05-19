@@ -190,39 +190,39 @@
         "type": "native_radio",
         "options": [
           {
-            "key": "one",
+            "key": "1",
             "text": "1",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "one"
+            "openmrs_entity_id": "1"
           },
           {
-            "key": "two",
+            "key": "2",
             "text": "2",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "two"
+            "openmrs_entity_id": "2"
           },
           {
-            "key": "three",
+            "key": "3",
             "text": "3",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "three"
+            "openmrs_entity_id": "3"
           },
           {
-            "key": "four",
+            "key": "4",
             "text": "4",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "four"
+            "openmrs_entity_id": "4"
           },
           {
-            "key": "five",
+            "key": "5",
             "text": "5",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "five"
+            "openmrs_entity_id": "5"
           }
         ]
       },
