@@ -256,11 +256,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "over_40_secs"
           }
-        ],
-        "v_required": {
-          "value": true,
-          "err": "Please select an option"
-        }
+        ]
       }
     ]
   }
