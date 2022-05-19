@@ -334,4 +334,8 @@
     <string name="contraction_every_half_hour_time_over_20_less_40_secs">20–40 secs</string>
     <string name="contraction_every_half_hour_time_over_40_secs">&gt; 40 secs</string>
 
+    <string name="partograph_treatment_during_labour_drugs"> Drugs  </string>
+    <string name="partograph_treatment_during_labour_iv_fluid"> IV Fluid  </string>
+    <string name="partograph_treatment_during_labour_drugs_administered"> Drugs administered  </string>
+
 </resources>
