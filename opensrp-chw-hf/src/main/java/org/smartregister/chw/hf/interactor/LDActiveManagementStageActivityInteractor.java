@@ -1,5 +1,7 @@
 package org.smartregister.chw.hf.interactor;
 
+import static org.smartregister.chw.hf.utils.Constants.Events.LD_ACTIVE_MANAGEMENT_OF_3RD_STAGE_OF_LABOUR;
+
 import android.content.Context;
 
 import org.apache.commons.lang3.StringUtils;
@@ -7,6 +9,7 @@ import org.smartregister.chw.anc.util.VisitUtils;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hf.utils.LDVisitUtils;
+import org.smartregister.chw.ld.LDLibrary;
 import org.smartregister.chw.ld.contract.BaseLDVisitContract;
 import org.smartregister.chw.ld.dao.LDDao;
 import org.smartregister.chw.ld.domain.MemberObject;
@@ -30,6 +33,7 @@ public class LDActiveManagementStageActivityInteractor extends BaseLDVisitIntera
     protected Context context;
     final LinkedHashMap<String, BaseLDVisitAction> actionList = new LinkedHashMap<>();
     private MemberObject memberObject;
+    Map<String, List<VisitDetail>> details = null;
 
     @Override
     public MemberObject getMemberClient(String memberID) {
@@ -42,6 +46,14 @@ public class LDActiveManagementStageActivityInteractor extends BaseLDVisitIntera
         context = view.getContext();
         this.memberObject = memberObject;
 
+        if (view.getEditMode()) {
+            Visit lastVisit = LDLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), LD_ACTIVE_MANAGEMENT_OF_3RD_STAGE_OF_LABOUR);
+
+            if (lastVisit != null) {
+                details = org.smartregister.chw.ld.util.VisitUtils.getVisitGroups(LDLibrary.getInstance().visitDetailsRepository().getVisits(lastVisit.getVisitId()));
+            }
+        }
+
         final Runnable runnable = () -> {
             // update the local database incase of manual date adjustment
             try {
@@ -52,9 +64,9 @@ public class LDActiveManagementStageActivityInteractor extends BaseLDVisitIntera
 
             try {
 
-                evaluateUterotonic();
-                evaluateExpulsionOfPlacenta();
-                evaluateMassageUterusAfterDelivery();
+                evaluateUterotonic(details);
+                evaluateExpulsionOfPlacenta(details);
+                evaluateMassageUterusAfterDelivery(details);
 
             } catch (BaseLDVisitAction.ValidationException e) {
                 Timber.e(e);
@@ -69,7 +81,7 @@ public class LDActiveManagementStageActivityInteractor extends BaseLDVisitIntera
 
     @Override
     protected String getEncounterType() {
-        return "LD Active Management of Labour";
+        return LD_ACTIVE_MANAGEMENT_OF_3RD_STAGE_OF_LABOUR;
     }
 
     @Override
@@ -82,12 +94,13 @@ public class LDActiveManagementStageActivityInteractor extends BaseLDVisitIntera
         }
     }
 
-    private void evaluateUterotonic() throws BaseLDVisitAction.ValidationException {
+    private void evaluateUterotonic(Map<String, List<VisitDetail>> details) throws BaseLDVisitAction.ValidationException {
 
         String title = context.getString(R.string.uterotonic);
         UterotonicActionHelper actionHelper = new UterotonicActionHelper();
         BaseLDVisitAction action = getBuilder(title)
-                .withOptional(false)
+                .withOptional(true)
+                .withDetails(details)
                 .withHelper(actionHelper)
                 .withBaseEntityID(memberObject.getBaseEntityId())
                 .withFormName(Constants.JsonForm.LDActiveManagement.getLDActiveManagementUteronics())
@@ -95,12 +108,13 @@ public class LDActiveManagementStageActivityInteractor extends BaseLDVisitIntera
         actionList.put(title, action);
     }
 
-    private void evaluateExpulsionOfPlacenta() throws BaseLDVisitAction.ValidationException {
+    private void evaluateExpulsionOfPlacenta(Map<String, List<VisitDetail>> details) throws BaseLDVisitAction.ValidationException {
 
         String title = context.getString(R.string.ld_expulsion_of_placenta);
         ExpulsionOfPlacentaHelper actionHelper = new ExpulsionOfPlacentaHelper();
         BaseLDVisitAction action = getBuilder(title)
-                .withOptional(false)
+                .withOptional(true)
+                .withDetails(details)
                 .withHelper(actionHelper)
                 .withBaseEntityID(memberObject.getBaseEntityId())
                 .withFormName(Constants.JsonForm.LDActiveManagement.getLdActiveManagementExpulsionPlacenta())
@@ -110,12 +124,13 @@ public class LDActiveManagementStageActivityInteractor extends BaseLDVisitIntera
 
     }
 
-    private void evaluateMassageUterusAfterDelivery() throws BaseLDVisitAction.ValidationException {
+    private void evaluateMassageUterusAfterDelivery(Map<String, List<VisitDetail>> details) throws BaseLDVisitAction.ValidationException {
         String title = context.getString(R.string.ld_massage_uterus_after_delivery);
 
         MassageUterusAfterDeliveryActionHelper actionHelper = new MassageUterusAfterDeliveryActionHelper();
         BaseLDVisitAction action = getBuilder(title)
-                .withOptional(false)
+                .withOptional(true)
+                .withDetails(details)
                 .withHelper(actionHelper)
                 .withBaseEntityID(memberObject.getBaseEntityId())
                 .withFormName(Constants.JsonForm.LDActiveManagement.getLdActiveManagementMassageUterus())

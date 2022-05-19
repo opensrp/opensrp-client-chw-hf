@@ -56,6 +56,7 @@ public class Constants extends CoreConstants {
         public static final String ANC_FOLLOWUP_CLIENT_FOLLOWUP = "ANC Followup Client Registration";
         public static final String LD_REGISTRATION = "LD Registration";
         public static final String LD_PARTOGRAPHY = "LD Partograph";
+        public static final String LD_ACTIVE_MANAGEMENT_OF_3RD_STAGE_OF_LABOUR = "LD Active Management of 3rd Stage Of Labour";
     }
 
     public static final class TableName {
@@ -78,6 +79,7 @@ public class Constants extends CoreConstants {
         public static final String HEI_VISIT = "HEI";
         public static final String LD_GENERAL_VISIT = "L&D Examination";
         public static final String LD_PARTOGRAPH_VISIT = "L&D Partograph";
+        public static final String LD_MANAGEMENT_OF_3rd_STAGE_OF_LABOUR_VISIT = "L&D Management of 3rd Stage Of Labour";
     }
 
     public static final class ActionList {
