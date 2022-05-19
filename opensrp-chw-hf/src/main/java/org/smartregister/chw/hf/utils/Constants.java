@@ -56,6 +56,7 @@ public class Constants extends CoreConstants {
         public static final String ANC_FOLLOWUP_CLIENT_FOLLOWUP = "ANC Followup Client Registration";
         public static final String LD_REGISTRATION = "LD Registration";
         public static final String LD_PARTOGRAPHY = "LD Partograph";
+        public static final String LD_ACTIVE_MANAGEMENT_OF_3RD_STAGE_OF_LABOUR = "LD Active Management of 3rd Stage Of Labour";
     }
 
     public static final class TableName {
@@ -77,6 +78,8 @@ public class Constants extends CoreConstants {
         public static final String PMTCT_VISIT = "Pmtct";
         public static final String HEI_VISIT = "HEI";
         public static final String LD_GENERAL_VISIT = "L&D Examination";
+        public static final String LD_PARTOGRAPH_VISIT = "L&D Partograph";
+        public static final String LD_MANAGEMENT_OF_3rd_STAGE_OF_LABOUR_VISIT = "L&D Management of 3rd Stage Of Labour";
     }
 
     public static final class ActionList {
@@ -444,6 +447,7 @@ public class Constants extends CoreConstants {
             public static final String PARTOGRAPH_MOTHER_WELLBEING = "labour_and_delivery_mother_well_being";
             public static final String PARTOGRAPH_PROGRESS_OF_LABOUR = "labour_and_delivery_labour_progress";
             public static final String PARTOGRAPH_TREATMENT_DURING_LABOUR = "";
+            public static final String PARTOGRAPH_TIME = "labour_and_delivery_partograph_time";
 
             public static String getFetalWellBingForm(){
                 return PARTOGRAPH_FETAL_WELLBEING;
@@ -461,12 +465,17 @@ public class Constants extends CoreConstants {
                 return PARTOGRAPH_TREATMENT_DURING_LABOUR;
             }
 
+            public static String getPartographTimeForm(){
+                return PARTOGRAPH_TIME;
+            }
+
         }
 
         public static class LDVisit {
 
             public static final String  LD_GENERAL_EXAMINATION = "labour_and_delivery_general_examination";
             public static final String LD_VAGINAL_EXAMINATION = "labour_and_delivery_vaginal_examination";
+            public static final String LD_HIV_TEST = "labour_and_delivery_hiv_test";
 
             public static String getLdGeneralExamination() {
                 return Utils.getLocalForm(LD_GENERAL_EXAMINATION);
@@ -474,6 +483,10 @@ public class Constants extends CoreConstants {
 
             public static String getLdVaginalExamination() {
                 return Utils.getLocalForm(LD_VAGINAL_EXAMINATION);
+            }
+
+            public static String getLdHivTest() {
+                return Utils.getLocalForm(LD_HIV_TEST);
             }
 
         }

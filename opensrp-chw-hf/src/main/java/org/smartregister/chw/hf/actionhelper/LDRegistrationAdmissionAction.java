@@ -26,7 +26,6 @@ public class LDRegistrationAdmissionAction implements BaseLDVisitAction.LDVisitA
     private String admissionTime;
     private String admittingPersonName;
     private String admissionFrom;
-    private String admissionReason;
     private String reasonForReferral;
     private Context context;
 
@@ -52,7 +51,6 @@ public class LDRegistrationAdmissionAction implements BaseLDVisitAction.LDVisitA
             admissionTime = CoreJsonFormUtils.getValue(jsonObject, "admission_time");
             admittingPersonName = CoreJsonFormUtils.getValue(jsonObject, "admitting_person_name");
             admissionFrom = CoreJsonFormUtils.getValue(jsonObject, "admission_from");
-            admissionReason = CoreJsonFormUtils.getValue(jsonObject, "admission_reason");
             reasonForReferral = CoreJsonFormUtils.getValue(jsonObject, "reason_for_referral");
         } catch (JSONException e) {
             Timber.e(e);
@@ -107,7 +105,6 @@ public class LDRegistrationAdmissionAction implements BaseLDVisitAction.LDVisitA
                 !StringUtils.isBlank(admissionTime) &&
                 !StringUtils.isBlank(admittingPersonName) &&
                 !StringUtils.isBlank(admissionFrom) &&
-                !StringUtils.isBlank(admissionReason) &&
                 !StringUtils.isBlank(reasonForReferral);
     }
 
@@ -119,7 +116,6 @@ public class LDRegistrationAdmissionAction implements BaseLDVisitAction.LDVisitA
                 !StringUtils.isBlank(admissionTime) ||
                 !StringUtils.isBlank(admittingPersonName) ||
                 !StringUtils.isBlank(admissionFrom) ||
-                !StringUtils.isBlank(admissionReason) ||
                 !StringUtils.isBlank(reasonForReferral);
     }
 

@@ -126,7 +126,7 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
 
     }
 
-    private static JSONObject setMinFundalHeight(JSONObject form, String baseEntityId) {
+    private static JSONObject setMinFundalHeight(JSONObject form, String baseEntityId, Context context) {
         String fundalHeight = HfAncDao.getFundalHeight(baseEntityId);
         try {
             JSONArray fields = form.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
@@ -141,7 +141,7 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
             assert fundalHeightQnObj != null;
             JSONObject v_min = fundalHeightQnObj.getJSONObject("v_min");
             v_min.put("value", fundalHeight);
-            v_min.put("err", "Fundal height must be equal or greater than " + fundalHeight + " CM");
+            v_min.put("err", context.getString(R.string.anc_fundal_height_min_err) + " " + fundalHeight + " CM");
 
 
         } catch (JSONException e) {
@@ -237,7 +237,7 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
     ) throws BaseAncHomeVisitAction.ValidationException {
         JSONObject obstetricForm = null;
         try {
-            obstetricForm = setMinFundalHeight(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncFirstVisit.OBSTETRIC_EXAMINATION), memberObject.getBaseEntityId());
+            obstetricForm = setMinFundalHeight(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncFirstVisit.OBSTETRIC_EXAMINATION), memberObject.getBaseEntityId(), context);
             obstetricForm.getJSONObject("global").put("last_menstrual_period", memberObject.getLastMenstrualPeriod());
             if (details != null && !details.isEmpty()) {
                 HfAncJsonFormUtils.populateForm(obstetricForm, details);

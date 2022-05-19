@@ -3,8 +3,6 @@ package org.smartregister.chw.hf.actionhelper;
 import android.content.Context;
 
 import org.apache.commons.lang3.StringUtils;
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.ld.domain.VisitDetail;
 import org.smartregister.chw.ld.model.BaseLDVisitAction;
@@ -12,8 +10,6 @@ import org.smartregister.util.JsonFormUtils;
 
 import java.util.List;
 import java.util.Map;
-
-import timber.log.Timber;
 
 /**
  * Created by Kassim Sheghembe on 2022-05-09
@@ -26,7 +22,8 @@ public class LDGeneralExaminationActionHelper implements BaseLDVisitAction.LDVis
     private String temperature;
     private String systolic;
     private String diastolic;
-    private String urine;
+    private String urineProtein;
+    private String urineAcetone;
     private String fundal_height;
     private String presentation;
     private String contraction_in_ten_minutes;
@@ -50,15 +47,16 @@ public class LDGeneralExaminationActionHelper implements BaseLDVisitAction.LDVis
     public void onPayloadReceived(String jsonPayload) {
         general_condition = JsonFormUtils.getFieldValue(jsonPayload, "general_condition");
         pulse_rate = JsonFormUtils.getFieldValue(jsonPayload, "pulse_rate");
-        respiratory_rate =JsonFormUtils.getFieldValue(jsonPayload, "respiratory_rate");
-        temperature=JsonFormUtils.getFieldValue(jsonPayload, "temperature");
-        systolic=JsonFormUtils.getFieldValue(jsonPayload, "systolic");
-        diastolic=JsonFormUtils.getFieldValue(jsonPayload, "diastolic");
-        urine=JsonFormUtils.getFieldValue(jsonPayload, "urine");
-        fundal_height=JsonFormUtils.getFieldValue(jsonPayload, "fundal_height");
-        presentation=JsonFormUtils.getFieldValue(jsonPayload, "presentation");
-        contraction_in_ten_minutes=JsonFormUtils.getFieldValue(jsonPayload, "contraction_in_ten_minutes");
-        fetal_heart_rate=JsonFormUtils.getFieldValue(jsonPayload, "fetal_heart_rate");
+        respiratory_rate = JsonFormUtils.getFieldValue(jsonPayload, "respiratory_rate");
+        temperature = JsonFormUtils.getFieldValue(jsonPayload, "temperature");
+        systolic = JsonFormUtils.getFieldValue(jsonPayload, "systolic");
+        diastolic = JsonFormUtils.getFieldValue(jsonPayload, "diastolic");
+        urineProtein = JsonFormUtils.getFieldValue(jsonPayload, "urine_protein");
+        urineAcetone = JsonFormUtils.getFieldValue(jsonPayload, "urine_acetone");
+        fundal_height = JsonFormUtils.getFieldValue(jsonPayload, "fundal_height");
+        presentation = JsonFormUtils.getFieldValue(jsonPayload, "presentation");
+        contraction_in_ten_minutes = JsonFormUtils.getFieldValue(jsonPayload, "contraction_in_ten_minutes");
+        fetal_heart_rate = JsonFormUtils.getFieldValue(jsonPayload, "fetal_heart_rate");
     }
 
     @Override
@@ -110,12 +108,13 @@ public class LDGeneralExaminationActionHelper implements BaseLDVisitAction.LDVis
                 StringUtils.isNotBlank(temperature) &&
                 StringUtils.isNotBlank(systolic) &&
                 StringUtils.isNotBlank(diastolic) &&
-                StringUtils.isNotBlank(urine) &&
+                StringUtils.isNotBlank(urineAcetone) &&
+                StringUtils.isNotBlank(urineProtein) &&
                 StringUtils.isNotBlank(fundal_height) &&
                 (StringUtils.isNotBlank(presentation) && !presentation.equalsIgnoreCase("Presentation")) &&
                 StringUtils.isNotBlank(contraction_in_ten_minutes) &&
                 StringUtils.isNotBlank(fetal_heart_rate)
-                );
+        );
     }
 
     private boolean isPartiallyCompleted() {
@@ -125,11 +124,12 @@ public class LDGeneralExaminationActionHelper implements BaseLDVisitAction.LDVis
                 StringUtils.isNotBlank(temperature) ||
                 StringUtils.isNotBlank(systolic) ||
                 StringUtils.isNotBlank(diastolic) ||
-                StringUtils.isNotBlank(urine) ||
+                StringUtils.isNotBlank(urineAcetone) ||
+                StringUtils.isNotBlank(urineProtein) ||
                 StringUtils.isNotBlank(fundal_height) ||
                 (StringUtils.isNotBlank(presentation) && !presentation.equalsIgnoreCase("Presentation")) ||
                 StringUtils.isNotBlank(contraction_in_ten_minutes) ||
                 StringUtils.isNotBlank(fetal_heart_rate)
-                );
+        );
     }
 }

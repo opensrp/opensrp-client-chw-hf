@@ -1,0 +1,14 @@
+---
+name: step1_notify_cervix_dilation_alert
+description: Cervix dilation is not empty
+condition: "step1_cervix_dilation != 0 && step1_cervix_dilation <= global_cervix_dilation_alert_limit && step1_cervix_dilation > global_cervix_dilation_action_limit"
+priority: 1
+actions:
+  - "isRelevant = true"
+---
+name: step1_notify_cervix_dilation_action
+description: Cervix dilation is not empty
+condition: "step1_cervix_dilation != 0 && step1_cervix_dilation <= global_cervix_dilation_action_limit"
+priority: 1
+actions:
+  - "isRelevant = true"

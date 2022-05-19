@@ -16,11 +16,6 @@
       "openmrs_data_type": "end",
       "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
     },
-    "today": {
-      "openmrs_entity_parent": "",
-      "openmrs_entity": "encounter",
-      "openmrs_entity_id": "encounter_date"
-    },
     "deviceid": {
       "openmrs_entity_parent": "",
       "openmrs_entity": "concept",
@@ -433,7 +428,7 @@
         "text": "Manage the condition according to standard guideline",
         "toaster_type": "problem",
         "relevance": {
-          "step111:danger_signs": {
+          "step1:danger_signs": {
             "ex-checkbox": [
               {
                 "or": [

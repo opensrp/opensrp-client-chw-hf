@@ -2,10 +2,13 @@ package org.smartregister.chw.hf.interactor;
 
 import android.content.Context;
 
+import org.apache.commons.lang3.StringUtils;
+import org.smartregister.chw.anc.util.AppExecutors;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.actionhelper.LDPartographFetalWellBeingActionHelper;
 import org.smartregister.chw.hf.actionhelper.LDPartographLabourProgressActionHelper;
 import org.smartregister.chw.hf.actionhelper.LDPartographMotherWellBeingActionHelper;
+import org.smartregister.chw.hf.actionhelper.LDPartographTimeActionHelper;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.ld.LDLibrary;
 import org.smartregister.chw.ld.contract.BaseLDVisitContract;
@@ -18,6 +21,8 @@ import org.smartregister.chw.ld.util.VisitUtils;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+
+import timber.log.Timber;
 
 /**
  * @author issyzac 5/7/22
@@ -40,63 +45,93 @@ public class LDPartographInteractorFlv implements LDPartographInteractor.Flavor 
             }
         }
 
-        evaluateFetalWellbeing(actionList, details, memberObject, context);
-        evaluateMotherWellBeing(actionList, details, memberObject, context);
-        evaluateProgressOfLabour(actionList, details, memberObject, context);
+        evaluatePartographTime(actionList, details, memberObject, context, callBack);
 
         return actionList;
     }
 
-    private void evaluateFetalWellbeing(LinkedHashMap<String, BaseLDVisitAction> actionList,
+
+    private void evaluatePartographTime(LinkedHashMap<String, BaseLDVisitAction> actionList,
                                         Map<String, List<VisitDetail>> details,
                                         final MemberObject memberObject,
-                                        final Context context
-    ) throws BaseLDVisitAction.ValidationException {
+                                        final Context context, BaseLDVisitContract.InteractorCallBack callBack) throws BaseLDVisitAction.ValidationException {
 
-
-        BaseLDVisitAction fetalWellBeingAction = new BaseLDVisitAction.Builder(context, context.getString(R.string.ld_partograph_fetal_well_being))
+        BaseLDVisitAction partographTime = new BaseLDVisitAction.Builder(context, context.getString(R.string.ld_partograph_time))
                 .withOptional(false)
                 .withDetails(details)
-                .withFormName(Constants.JsonForm.LabourAndDeliveryPartograph.getFetalWellBingForm())
-                .withHelper(new LDPartographFetalWellBeingActionHelper(memberObject))
+                .withFormName(Constants.JsonForm.LabourAndDeliveryPartograph.getPartographTimeForm())
+                .withHelper(new PartographProcessActionHelper(memberObject, actionList, context, details, callBack))
                 .build();
 
-        actionList.put(context.getString(R.string.ld_partograph_fetal_well_being), fetalWellBeingAction);
-
+        actionList.put(context.getString(R.string.ld_partograph_time), partographTime);
     }
 
-    private void evaluateMotherWellBeing(LinkedHashMap<String, BaseLDVisitAction> actionList,
-                                         Map<String, List<VisitDetail>> details,
-                                         final MemberObject memberObject,
-                                         final Context context
-    ) throws BaseLDVisitAction.ValidationException {
+    public static class PartographProcessActionHelper extends LDPartographTimeActionHelper {
 
-        BaseLDVisitAction motherWellBeingAction = new BaseLDVisitAction.Builder(context, context.getString(R.string.ld_partograph_mother_well_being))
-                .withOptional(false)
-                .withDetails(details)
-                .withFormName(Constants.JsonForm.LabourAndDeliveryPartograph.getMotherWellBeingForm())
-                .withHelper(new LDPartographMotherWellBeingActionHelper(memberObject))
-                .build();
+        private final LinkedHashMap<String, BaseLDVisitAction> actionList;
+        private final Context context;
+        private final Map<String, List<VisitDetail>> details;
+        private final BaseLDVisitContract.InteractorCallBack callBack;
+        private final MemberObject memberObject;
 
-        actionList.put(context.getString(R.string.ld_partograph_mother_well_being), motherWellBeingAction);
+        public PartographProcessActionHelper(MemberObject memberObject, LinkedHashMap<String, BaseLDVisitAction> actionList, Context context,
+                                             Map<String, List<VisitDetail>> details, BaseLDVisitContract.InteractorCallBack callBack){
+            super(memberObject);
+            this.actionList = actionList;
+            this.context = context;
+            this.details = details;
+            this.callBack = callBack;
+            this.memberObject = memberObject;
+        }
 
-    }
+        @Override
+        public String postProcess(String s) {
+            if (StringUtils.isNotBlank(time) && StringUtils.isNotBlank(date)){
+                try {
+                    BaseLDVisitAction fetalWellBeingAction = new BaseLDVisitAction.Builder(context, context.getString(R.string.ld_partograph_fetal_well_being))
+                            .withOptional(true)
+                            .withDetails(details)
+                            .withFormName(Constants.JsonForm.LabourAndDeliveryPartograph.getFetalWellBingForm())
+                            .withHelper(new LDPartographFetalWellBeingActionHelper(memberObject,memberObject.getBaseEntityId()))
+                            .build();
 
-    private void evaluateProgressOfLabour(LinkedHashMap<String, BaseLDVisitAction> actionList,
-                                        Map<String, List<VisitDetail>> details,
-                                        final MemberObject memberObject,
-                                        final Context context
-    ) throws BaseLDVisitAction.ValidationException {
+                    actionList.put(context.getString(R.string.ld_partograph_fetal_well_being), fetalWellBeingAction);
 
-        BaseLDVisitAction progressOfLaborAction = new BaseLDVisitAction.Builder(context, context.getString(R.string.ld_partograph_labor_progress))
-                .withOptional(false)
-                .withDetails(details)
-                .withFormName(Constants.JsonForm.LabourAndDeliveryPartograph.getProgressOfLabourForm())
-                .withHelper(new LDPartographLabourProgressActionHelper(memberObject))
-                .build();
+                    BaseLDVisitAction motherWellBeingAction = new BaseLDVisitAction.Builder(context, context.getString(R.string.ld_partograph_mother_well_being))
+                            .withOptional(true)
+                            .withDetails(details)
+                            .withFormName(Constants.JsonForm.LabourAndDeliveryPartograph.getMotherWellBeingForm())
+                            .withHelper(new LDPartographMotherWellBeingActionHelper(memberObject))
+                            .build();
 
-        actionList.put(context.getString(R.string.ld_partograph_labor_progress), progressOfLaborAction);
+                    actionList.put(context.getString(R.string.ld_partograph_mother_well_being), motherWellBeingAction);
 
+                    BaseLDVisitAction progressOfLaborAction = new BaseLDVisitAction.Builder(context, context.getString(R.string.ld_partograph_labor_progress))
+                            .withOptional(true)
+                            .withDetails(details)
+                            .withFormName(Constants.JsonForm.LabourAndDeliveryPartograph.getProgressOfLabourForm())
+                            .withHelper(new LDPartographLabourProgressActionHelper(memberObject, date, time))
+                            .build();
+
+                    actionList.put(context.getString(R.string.ld_partograph_labor_progress), progressOfLaborAction);
+
+                }catch (Exception e){
+                    Timber.e(e);
+                }
+            }else{
+                if (actionList.containsKey(context.getString(R.string.ld_partograph_fetal_well_being)))
+                    actionList.remove(context.getString(R.string.ld_partograph_fetal_well_being));
+
+                if (actionList.containsKey(context.getString(R.string.ld_partograph_mother_well_being)))
+                    actionList.remove(context.getString(R.string.ld_partograph_mother_well_being));
+
+                if (actionList.containsKey(context.getString(R.string.ld_partograph_labor_progress)))
+                    actionList.remove(context.getString(R.string.ld_partograph_labor_progress));
+            }
+            //Calling the callback method to preload the actions in the actionns list.
+            new AppExecutors().mainThread().execute(() -> callBack.preloadActions(actionList));
+            return super.postProcess(s);
+        }
     }
 
 }

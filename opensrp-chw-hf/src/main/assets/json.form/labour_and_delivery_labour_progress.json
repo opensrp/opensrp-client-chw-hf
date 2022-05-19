@@ -5,6 +5,9 @@
   "encounter_type": "LD Partograph : Labour Progress",
   "entity_id": "",
   "relational_id": "",
+  "global": {
+
+  },
   "metadata": {
     "start": {
       "openmrs_entity_parent": "",
@@ -17,11 +20,6 @@
       "openmrs_entity": "concept",
       "openmrs_data_type": "end",
       "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-    },
-    "today": {
-      "openmrs_entity_parent": "",
-      "openmrs_entity": "encounter",
-      "openmrs_entity_id": "encounter_date"
     },
     "deviceid": {
       "openmrs_entity_parent": "",
@@ -57,16 +55,66 @@
     "title": "Progress of Labour",
     "fields": [
       {
-        "key": "cervix_dilation",
-        "type": "edit_text",
-        "hint": "Cervix (Cervical Dilation)",
-        "openmrs_entity_id": "cervix_dilation",
+        "key": "cervix_dilation_label",
+        "type": "label",
+        "text": "Cervix (Dilation)",
+        "text_size": "10sp",
+        "text_color": "#000000",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "v_numeric": {
-          "value": "true",
-          "err": "Please enter cervical dilation"
+        "openmrs_entity_id": ""
+      },
+      {
+        "key": "cervix_dilation",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "cervix_dilation",
+        "type": "numbers_selector",
+        "start_number": "1",
+        "max_value": "10",
+        "text_size": "18px",
+        "text_color": "#000000",
+        "selected_text_color": "#ffffff"
+      },
+      {
+        "key": "notify_cervix_dilation_alert",
+        "type": "toaster_notes",
+        "text": "ALERT:\n\nCloser monitoring is required for this client",
+        "openmrs_entity_id": "notify_alert",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_labour_progress_relevance.yml"
+            }
+          }
         }
+      },
+      {
+        "key": "notify_cervix_dilation_action",
+        "type": "toaster_notes",
+        "text": "ACTION REQUIRED:\n\nAn immediate action needs to be taken for this client!",
+        "openmrs_entity_id": "notify_action_required",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_labour_progress_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "spacer",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "spacer",
+        "spacer_height": "20dp"
       },
       {
         "key": "descent_presenting_part",
@@ -78,46 +126,46 @@
         "type": "native_radio",
         "options": [
           {
-            "key": "five",
+            "key": "5",
             "text": "5",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "five"
+            "openmrs_entity_id": "5"
           },
           {
-            "key": "four",
+            "key": "4",
             "text": "4",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "four"
+            "openmrs_entity_id": "4"
           },
           {
-            "key": "three",
+            "key": "3",
             "text": "3",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "three"
+            "openmrs_entity_id": "3"
           },
           {
-            "key": "two",
+            "key": "2",
             "text": "2",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "two"
+            "openmrs_entity_id": "2"
           },
           {
-            "key": "one",
+            "key": "1",
             "text": "1",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "one"
+            "openmrs_entity_id": "1"
           },
           {
-            "key": "zero",
+            "key": "0",
             "text": "0",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "zero"
+            "openmrs_entity_id": "0"
           }
         ]
       },
@@ -142,39 +190,39 @@
         "type": "native_radio",
         "options": [
           {
-            "key": "one",
+            "key": "1",
             "text": "1",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "one"
+            "openmrs_entity_id": "1"
           },
           {
-            "key": "two",
+            "key": "2",
             "text": "2",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "two"
+            "openmrs_entity_id": "2"
           },
           {
-            "key": "three",
+            "key": "3",
             "text": "3",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "three"
+            "openmrs_entity_id": "3"
           },
           {
-            "key": "four",
+            "key": "4",
             "text": "4",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "four"
+            "openmrs_entity_id": "4"
           },
           {
-            "key": "five",
+            "key": "5",
             "text": "5",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "five"
+            "openmrs_entity_id": "5"
           }
         ]
       },
@@ -188,7 +236,7 @@
         "type": "native_radio",
         "options": [
           {
-            "key": "less_than_20_secs ",
+            "key": "less_than_20_secs",
             "text": "<20 secs",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",

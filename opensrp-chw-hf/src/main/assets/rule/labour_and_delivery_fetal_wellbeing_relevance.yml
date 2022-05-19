@@ -2,13 +2,27 @@
 name: step1_prompt_for_fetal_distress
 description: prompt for fetal distress
 priority: 1
-condition: "step1_fetal_heart_rate > 160 || step1_fetal_heart_rate < 120"
+condition: "!step1_fetal_heart_rate.isEmpty() && (step1_fetal_heart_rate > 160 || step1_fetal_heart_rate < 120)"
 actions:
   - "isRelevant = true"
 ---
 name: step1_prompt_for_amniotic_fluid
 description: prompt_for_amniotic_fluid
 priority: 1
-condition: "step1_amniotic_fluid.contains('membrane_ruptured') || step1_amniotic_fluid.contains('meconium_stained_liquor') || step1_amniotic_fluid.contains('blood_stained_liquor')"
+condition: "!step1_amniotic_fluid.isEmpty() && !step1_amniotic_fluid.contains('membrane_intact')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_moulding
+description: moulding relevance
+priority: 1
+condition: "!global_moulding.contains('yes')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_moulding_options
+description: moulding_options relevance
+priority: 1
+condition: "step1_moulding.contains('yes') || global_moulding.contains('yes')"
 actions:
   - "isRelevant = true"

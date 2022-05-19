@@ -4,6 +4,7 @@ import android.content.Context;
 
 import org.smartregister.chw.anc.util.VisitUtils;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.actionhelper.LDHIVTestActionHelper;
 import org.smartregister.chw.hf.actionhelper.LDGeneralExaminationActionHelper;
 import org.smartregister.chw.hf.actionhelper.LDVaginalExaminationActionHelper;
 import org.smartregister.chw.hf.utils.Constants;
@@ -21,6 +22,7 @@ import org.smartregister.clientandeventmodel.Event;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import timber.log.Timber;
 
@@ -60,6 +62,10 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
                 evaluateGenExamination(details);
                 evaluateVaginalExamination(details);
 
+                if (LDDao.getHivStatus(memberObject.getBaseEntityId()) == null || !Objects.equals(LDDao.getHivStatus(memberObject.getBaseEntityId()), Constants.HIV_STATUS.POSITIVE)) {
+                    evaluateHIVStatus(details);
+                }
+
             } catch (BaseLDVisitAction.ValidationException e) {
                 Timber.e(e);
             }
@@ -68,6 +74,21 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
         };
 
         appExecutors.diskIO().execute(runnable);
+    }
+
+    private void evaluateHIVStatus(Map<String, List<VisitDetail>> details) throws BaseLDVisitAction.ValidationException {
+
+        String title = context.getString(R.string.lb_visit_hiv_test_status_action_title);
+
+        LDHIVTestActionHelper actionHelper = new LDHIVTestActionHelper(context);
+        BaseLDVisitAction action = getBuilder(title)
+                .withOptional(false)
+                .withHelper(actionHelper)
+                .withDetails(details)
+                .withFormName(Constants.JsonForm.LDVisit.getLdHivTest())
+                .build();
+
+        actionList.put(title, action);
     }
 
     private void evaluateVaginalExamination(Map<String, List<VisitDetail>> details) throws BaseLDVisitAction.ValidationException {

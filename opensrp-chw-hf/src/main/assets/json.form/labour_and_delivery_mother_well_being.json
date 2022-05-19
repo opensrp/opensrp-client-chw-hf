@@ -18,11 +18,6 @@
       "openmrs_data_type": "end",
       "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
     },
-    "today": {
-      "openmrs_entity_parent": "",
-      "openmrs_entity": "encounter",
-      "openmrs_entity_id": "encounter_date"
-    },
     "deviceid": {
       "openmrs_entity_parent": "",
       "openmrs_entity": "concept",
@@ -256,34 +251,98 @@
         }
       },
       {
-        "key": "urine",
+        "key": "urine_protein",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "urine",
-        "label": "Urine test for Protein Acetone",
+        "openmrs_entity_id": "urine_protein",
+        "label": "Urine Protein",
         "text_color": "#000000",
         "type": "native_radio",
         "options": [
           {
-            "key": "one_plus",
+            "key": "+",
             "text": "+",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "one_plus"
+            "openmrs_entity_id": "+"
           },
           {
-            "key": "two_plus",
+            "key": "++",
             "text": "++",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "two_plus"
+            "openmrs_entity_id": "++"
           },
           {
-            "key": "three_plus",
+            "key": "+++",
             "text": "+++",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "three_plus"
+            "openmrs_entity_id": "+++"
+          }
+        ]
+      },
+      {
+        "key": "urine_acetone",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "urine_acetone",
+        "label": "Urine Acetone",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "+",
+            "text": "+",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "+"
+          },
+          {
+            "key": "++",
+            "text": "++",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "++"
+          },
+          {
+            "key": "+++",
+            "text": "+++",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "+++"
+          }
+        ]
+      },
+      {
+        "key": "urine_volume",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "urine_volume",
+        "label": "Urine Volume(Output)",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "+",
+            "text": "+",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "+"
+          },
+          {
+            "key": "++",
+            "text": "++",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "++"
+          },
+          {
+            "key": "+++",
+            "text": "+++",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "+++"
           }
         ]
       },

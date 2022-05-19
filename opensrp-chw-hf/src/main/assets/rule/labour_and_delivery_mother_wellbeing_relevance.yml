@@ -16,6 +16,6 @@ actions:
 name: step1_prompt_for_urine
 description: prompt_for_urine
 priority: 1
-condition: "step1_urine.contains('two_plus') || step1_urine.contains('three_plus')"
+condition: "step1_urine_protein.contains('++') || step1_urine_protein.contains('+++') || step1_urine_acetone.contains('++') || step1_urine_acetone.contains('+++')|| step1_urine_volume.contains('++') || step1_urine_volume.contains('+++')"
 actions:
   - "isRelevant = true"
