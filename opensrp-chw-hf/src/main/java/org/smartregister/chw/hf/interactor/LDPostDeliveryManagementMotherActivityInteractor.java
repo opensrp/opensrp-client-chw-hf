@@ -483,7 +483,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
     private void processChild(JSONArray fields, AllSharedPreferences allSharedPreferences, String entityId, String familyBaseEntityId, String motherBaseId, String uniqueChildID, String lastName, String dob) {
 
         try {
-            org.smartregister.clientandeventmodel.Client pncChild = org.smartregister.util.JsonFormUtils.createBaseClient(fields, org.smartregister.chw.anc.util.JsonFormUtils.formTag(allSharedPreferences), entityId);
+            org.smartregister.clientandeventmodel.Client pncChild = JsonFormUtils.createBaseClient(fields, org.smartregister.chw.anc.util.JsonFormUtils.formTag(allSharedPreferences), entityId);
             Map<String, String> identifiers = new HashMap<>();
             identifiers.put(org.smartregister.chw.anc.util.Constants.JSON_FORM_EXTRA.OPENSPR_ID, uniqueChildID.replace("-", ""));
             SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
@@ -511,20 +511,6 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
         NCUtils.addEvent(allSharedPreferences, baseEvent);
         NCUtils.startClientProcessing();
-    }
-
-    private void closeLDForClient(String memberID) {
-
-        AllCommonsRepository commonsRepository = HealthFacilityApplication.getInstance().getAllCommonsRepository(org.smartregister.chw.ld.util.Constants.TABLES.LD_CONFIRMATION);
-        if (commonsRepository != null) {
-
-            ContentValues values = new ContentValues();
-            values.put("is_closed", 1);
-
-            HealthFacilityApplication.getInstance().getRepository().getWritableDatabase().update(
-                    org.smartregister.chw.ld.util.Constants.TABLES.LD_CONFIRMATION, values, DBConstants.KEY.BASE_ENTITY_ID + " = ?  ", new String[]{memberID});
-        }
-
     }
 
     private String removeUser(String familyID, JSONObject closeFormJsonString, String providerId) throws Exception {
