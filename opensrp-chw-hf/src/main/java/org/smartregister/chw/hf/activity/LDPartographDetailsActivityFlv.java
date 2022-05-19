@@ -129,6 +129,27 @@ public class LDPartographDetailsActivityFlv extends DefaultAncMedicalHistoryActi
                 evaluateDescentPresentingPart(context, vals, tvDescentPresentingPart);
                 evaluateContraction(context, vals, tvContraction);
 
+                if (tvFetalHeartRate.getVisibility() == View.GONE &&
+                        tvFetalMoulding.getVisibility() == View.GONE &&
+                        tvAmnioticFluid.getVisibility() == View.GONE) {
+                    view.findViewById(R.id.fetal_well_being).setVisibility(View.GONE);
+                }
+
+                if (tvPulseRate.getVisibility() == View.GONE &&
+                        tvRespiratoryRate.getVisibility() == View.GONE &&
+                        tvTemperature.getVisibility() == View.GONE &&
+                        tvBloodPressure.getVisibility() == View.GONE &&
+                        tvUrineProtein.getVisibility() == View.GONE &&
+                        tvUrineAcetone.getVisibility() == View.GONE &&
+                        tvUrineVolume.getVisibility() == View.GONE) {
+                    view.findViewById(R.id.mother_well_being).setVisibility(View.GONE);
+                }
+
+                if (tvCervixDilation.getVisibility() == View.GONE &&
+                        tvDescentPresentingPart.getVisibility() == View.GONE &&
+                        tvContraction.getVisibility() == View.GONE) {
+                    view.findViewById(R.id.fetal_progress_of_labour).setVisibility(View.GONE);
+                }
 
                 linearLayoutHealthFacilityVisitDetails.addView(view, 0);
 

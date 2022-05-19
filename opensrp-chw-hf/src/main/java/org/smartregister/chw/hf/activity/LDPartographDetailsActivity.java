@@ -2,6 +2,9 @@ package org.smartregister.chw.hf.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
+import android.view.Menu;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -33,12 +36,19 @@ public class LDPartographDetailsActivity extends CoreAncMedicalHistoryActivity {
 
     @Override
     public void setUpView() {
+        findViewById(R.id.collapsing_toolbar).setBackgroundColor(getResources().getColor(R.color.primary));
+
+        Drawable upArrow = this.getResources().getDrawable(R.drawable.ic_arrow_back_white_24dp);
+        upArrow.setColorFilter(this.getResources().getColor(android.R.color.white), PorterDuff.Mode.SRC_ATOP);
+        getSupportActionBar().setHomeAsUpIndicator(upArrow);
+
         linearLayout = findViewById(org.smartregister.chw.opensrp_chw_anc.R.id.linearLayoutMedicalHistory);
         progressBar = findViewById(org.smartregister.chw.opensrp_chw_anc.R.id.progressBarMedicalHistory);
 
 
         TextView tvTitle = findViewById(org.smartregister.chw.opensrp_chw_anc.R.id.tvTitle);
         tvTitle.setText(getString(org.smartregister.chw.opensrp_chw_anc.R.string.back_to, ldMemberObject.getFullName()));
+        tvTitle.setTextColor(getResources().getColor(org.smartregister.ld.R.color.white));
 
         TextView medicalHistory = findViewById(org.smartregister.chw.opensrp_chw_anc.R.id.medical_history);
         medicalHistory.setVisibility(View.GONE);
@@ -59,5 +69,10 @@ public class LDPartographDetailsActivity extends CoreAncMedicalHistoryActivity {
     @Override
     public void displayLoadingState(boolean state) {
         progressBar.setVisibility(state ? View.VISIBLE : View.GONE);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
     }
 }
