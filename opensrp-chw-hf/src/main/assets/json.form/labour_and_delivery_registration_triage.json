@@ -428,7 +428,7 @@
         "text": "Manage the condition according to standard guideline",
         "toaster_type": "problem",
         "relevance": {
-          "step111:danger_signs": {
+          "step1:danger_signs": {
             "ex-checkbox": [
               {
                 "or": [

@@ -61,7 +61,14 @@
         "openmrs_entity_id": "para",
         "type": "edit_text",
         "edit_type": "number",
-        "hint": "Para"
+        "hint": "Para",
+        "constraints": [
+          {
+            "type": "numeric",
+            "ex": "lessThanEqualTo(., step1:gravida)",
+            "err": "Parity must be equal to or less than gravida"
+          }
+        ]
       },
       {
         "key": "children_alive",
@@ -91,7 +98,7 @@
         "label_info_title": "LNMP",
         "label_info_text": "LNMP = first day of Last Normal Menstrual Period. If the exact date is unknown, but the period of the month is known, use day 5 for beginning of the month, day 15 for middle of the month and day 25 for end of the month.",
         "expanded": false,
-        "max_date": "today",
+        "max_date": "today-23w",
         "min_date": "today-50w"
       },
       {

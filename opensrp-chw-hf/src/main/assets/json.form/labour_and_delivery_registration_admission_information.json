@@ -82,16 +82,53 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "admission_from",
-        "type": "edit_text",
-        "hint": "Admitted From"
+        "type": "native_radio",
+        "label": "Admitted From",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "home",
+            "text": "HOME",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "home"
+          },
+          {
+            "key": "antenatal_ward",
+            "text": "ANTENATAL WARD",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "antenatal_ward"
+          },
+          {
+            "key": "referral",
+            "text": "REFERRAL",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "referral"
+          }
+        ]
       },
       {
-        "key": "admission_reason",
+        "key": "name_of_hf",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "admission_reason",
-        "type": "edit_text",
-        "hint": "Reason for Admission"
+        "openmrs_entity_id": "name_of_hf",
+        "openmrs_data_type": "text",
+        "type": "tree",
+        "hint": "Referred From",
+        "tree": [],
+        "v_required": {
+          "value": true,
+          "err": "Please select the health facility"
+        },
+        "relevance": {
+          "step1:admission_from": {
+            "type": "string",
+            "ex": "equalTo(., \"referral\")"
+          }
+        }
       },
       {
         "key": "reason_for_referral",
