@@ -70,16 +70,16 @@ public class LDPartographTreatmentDuringLabourActionHelper implements BaseLDVisi
 
     @Override
     public String evaluateSubTitle() {
-        String subtitle = ""+ context.getString(R.string.partograph_treatment_during_labour_drugs_administered);
+        String subtitle = ""+ context.getString(R.string.partograph_treatment_during_labour_drugs_administered)+"";
 
         if (drugsAdministered.contains("oxytocin"))
-            subtitle += "Oxytocin (drops/min)";
+            subtitle += "\n\nOxytocin (drops/min)";
 
         if (drugsAdministered.contains("drugs"))
-            subtitle += ", "+ context.getString(R.string.partograph_treatment_during_labour_drugs)+" : "+drugs;
+            subtitle += "\n"+ context.getString(R.string.partograph_treatment_during_labour_drugs)+" : "+drugs;
 
         if (drugsAdministered.contains("iv_fluid"))
-            subtitle += ", "+ context.getString(R.string.partograph_treatment_during_labour_iv_fluid)+" : "+ivFluid;
+            subtitle += "\n"+ context.getString(R.string.partograph_treatment_during_labour_iv_fluid)+" : "+ivFluid;
 
         return StringUtils.isNotBlank(drugsAdministered) ?
                 subtitle : "";
