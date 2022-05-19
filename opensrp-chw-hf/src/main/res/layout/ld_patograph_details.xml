@@ -122,13 +122,35 @@
 
 
     <org.smartregister.view.customcontrols.CustomFontTextView
-        android:id="@+id/protein_acetone"
+        android:id="@+id/urine_protein"
         style="@style/CustomFontTextViewStyle.ClientList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
-        android:text="@string/protein_acetone"
+        android:text="@string/urine_protein"
+        android:textColor="@color/medical_sub_text_inner"
+        android:textSize="14sp" />
+
+    <org.smartregister.view.customcontrols.CustomFontTextView
+        android:id="@+id/urine_acetone"
+        style="@style/CustomFontTextViewStyle.ClientList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="@string/urine_acetone"
+        android:textColor="@color/medical_sub_text_inner"
+        android:textSize="14sp" />
+
+    <org.smartregister.view.customcontrols.CustomFontTextView
+        android:id="@+id/urine_volume"
+        style="@style/CustomFontTextViewStyle.ClientList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="@string/urine_volume"
         android:textColor="@color/medical_sub_text_inner"
         android:textSize="14sp" />
 

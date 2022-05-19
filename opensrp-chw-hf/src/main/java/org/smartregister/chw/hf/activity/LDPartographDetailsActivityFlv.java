@@ -53,7 +53,9 @@ public class LDPartographDetailsActivityFlv extends DefaultAncMedicalHistoryActi
                         "temperature",
                         "systolic",
                         "diastolic",
-                        "urine",
+                        "urine_protein",
+                        "urine_acetone",
+                        "urine_volume",
                         "cervix_dilation",
                         "descent_presenting_part",
                         "contraction_every_half_hour_frequency",
@@ -105,7 +107,9 @@ public class LDPartographDetailsActivityFlv extends DefaultAncMedicalHistoryActi
                 TextView tvRespiratoryRate = view.findViewById(R.id.respiratory_rate);
                 TextView tvTemperature = view.findViewById(R.id.temperature);
                 TextView tvBloodPressure = view.findViewById(R.id.blood_pressure);
-                TextView tvProteinAcetone = view.findViewById(R.id.protein_acetone);
+                TextView tvUrineProtein = view.findViewById(R.id.urine_protein);
+                TextView tvUrineAcetone = view.findViewById(R.id.urine_acetone);
+                TextView tvUrineVolume = view.findViewById(R.id.urine_volume);
                 TextView tvCervixDilation = view.findViewById(R.id.cervix_dilation);
                 TextView tvDescentPresentingPart = view.findViewById(R.id.descent_presenting_part);
                 TextView tvContraction = view.findViewById(R.id.contraction);
@@ -118,7 +122,9 @@ public class LDPartographDetailsActivityFlv extends DefaultAncMedicalHistoryActi
                 evaluateRespiratoryRate(context, vals, tvRespiratoryRate);
                 evaluateTemperature(context, vals, tvTemperature);
                 evaluateBloodPressure(context, vals, tvBloodPressure);
-                evaluateProteinAcetone(context, vals, tvProteinAcetone);
+                evaluateUrineProtein(context, vals, tvUrineProtein);
+                evaluateUrineAcetone(context, vals, tvUrineAcetone);
+                evaluateUrineVolume(context, vals, tvUrineVolume);
                 evaluateCervixDilation(context, vals, tvCervixDilation);
                 evaluateDescentPresentingPart(context, vals, tvDescentPresentingPart);
                 evaluateContraction(context, vals, tvContraction);
@@ -160,7 +166,12 @@ public class LDPartographDetailsActivityFlv extends DefaultAncMedicalHistoryActi
         if (StringUtils.isBlank(vals.get("amniotic_fluid"))) {
             tvAmnioticFluid.setVisibility(View.GONE);
         } else {
-            tvAmnioticFluid.setText(MessageFormat.format(context.getString(R.string.amniotic_fluid), getMapValue(vals, "amniotic_fluid")));
+
+            String value = getMapValue(vals, "amniotic_fluid");
+            int resourceId = context.getResources().
+                    getIdentifier("amniotic_fluid_" + value, "string", context.getPackageName());
+
+            tvAmnioticFluid.setText(MessageFormat.format(context.getString(R.string.amniotic_fluid), context.getString(resourceId)));
         }
     }
 
@@ -196,11 +207,27 @@ public class LDPartographDetailsActivityFlv extends DefaultAncMedicalHistoryActi
         }
     }
 
-    private void evaluateProteinAcetone(Context context, Map<String, String> vals, TextView tvProteinAcetone) {
-        if (StringUtils.isBlank(vals.get("urine"))) {
-            tvProteinAcetone.setVisibility(View.GONE);
+    private void evaluateUrineProtein(Context context, Map<String, String> vals, TextView tvUrineProtein) {
+        if (StringUtils.isBlank(vals.get("urine_protein"))) {
+            tvUrineProtein.setVisibility(View.GONE);
         } else {
-            tvProteinAcetone.setText(MessageFormat.format(context.getString(R.string.protein_acetone), getMapValue(vals, "urine")));
+            tvUrineProtein.setText(MessageFormat.format(context.getString(R.string.urine_protein), getMapValue(vals, "urine_protein")));
+        }
+    }
+
+    private void evaluateUrineAcetone(Context context, Map<String, String> vals, TextView tvUrineAcetone) {
+        if (StringUtils.isBlank(vals.get("urine_acetone"))) {
+            tvUrineAcetone.setVisibility(View.GONE);
+        } else {
+            tvUrineAcetone.setText(MessageFormat.format(context.getString(R.string.urine_acetone), getMapValue(vals, "urine_acetone")));
+        }
+    }
+
+    private void evaluateUrineVolume(Context context, Map<String, String> vals, TextView tvUrineVolume) {
+        if (StringUtils.isBlank(vals.get("urine_volume"))) {
+            tvUrineVolume.setVisibility(View.GONE);
+        } else {
+            tvUrineVolume.setText(MessageFormat.format(context.getString(R.string.urine_volume), getMapValue(vals, "urine_volume")));
         }
     }
 
@@ -224,7 +251,10 @@ public class LDPartographDetailsActivityFlv extends DefaultAncMedicalHistoryActi
         if (StringUtils.isBlank(vals.get("contraction_every_half_hour_frequency"))) {
             tvContraction.setVisibility(View.GONE);
         } else {
-            tvContraction.setText(MessageFormat.format(context.getString(R.string.contraction), getMapValue(vals, "contraction_every_half_hour_frequency"), getMapValue(vals, "contraction_every_half_hour_time")));
+            String contractionsTimeValue = getMapValue(vals, "contraction_every_half_hour_time");
+            int resourceId = context.getResources().
+                    getIdentifier("contraction_every_half_hour_time_" + contractionsTimeValue, "string", context.getPackageName());
+            tvContraction.setText(MessageFormat.format(context.getString(R.string.contraction), getMapValue(vals, "contraction_every_half_hour_frequency"), context.getString(resourceId)));
         }
     }
 

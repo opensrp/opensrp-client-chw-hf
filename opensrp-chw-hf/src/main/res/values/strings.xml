@@ -284,7 +284,7 @@
     <string name="lb_partially_completed_action">Partially Completed</string>
     <string name="lb_visit_vaginal_examination">Vaginal examination</string>
     <string name="lb_visit_general_examination">General examination</string>
-    <string name="lb_visit_hiv_test_status_action_title">HIV Test</string>
+    <string name="lb_visit_hiv_test_status_action_title">HIV Counselling and Testing</string>
     <string name="lb_mode_of_delivery">Mode of Delivery</string>
     <string name="ld_active_management_3rd_stage">Active Management of 3rd Stage</string>
     <string name="uterotonic">Uterotonic</string>
@@ -302,7 +302,9 @@
     <string name="respiratory_rate">Respiratory Rate: {0}</string>
     <string name="temperature">Temperature: {0} °C</string>
     <string name="blood_pressure">Blood Pressure: {0}/{1} mmHg</string>
-    <string name="protein_acetone">Protein Acetone: {0}</string>
+    <string name="urine_protein">Urine Protein : {0}</string>
+    <string name="urine_acetone">Urine Acetone: {0}</string>
+    <string name="urine_volume">Urine Volume: {0}</string>
     <string name="fetal_progress_of_labour">Fetal Progress of Labour</string>
     <string name="cervix_dilation">Cervix Dilation: {0}</string>
     <string name="descent_presenting_part">Descent Presenting Part: {0}</string>
@@ -312,5 +314,17 @@
 
 
     <string name="ld_mode_of_delivery">Delivery</string>
+
+
+    <!--  String resources for Amniotic Fluid State Values Referenced programmatically in  LDPartographDetailsActivityFlv -> evaluateAmnioticFluid()  -->
+    <string name="amniotic_fluid_membrane_intact">Membrane Intact (I)</string>
+    <string name="amniotic_fluid_membrane_ruptured_liquor_clear">Membrane ruptured liquor clear (C)</string>
+    <string name="amniotic_fluid_meconium_stained_liquor">Meconium Stained Liquor (M)</string>
+    <string name="amniotic_fluid_blood_stained_liquor">Blood-Stained Liquor (B)</string>
+
+    <!--  String resources for Amniotic Fluid State Values Referenced programmatically in  LDPartographDetailsActivityFlv -> evaluateContraction()  -->
+    <string name="contraction_every_half_hour_time_less_than_20_secs">&lt; 20 secs</string>
+    <string name="contraction_every_half_hour_time_over_20_less_40_secs">20–40 secs</string>
+    <string name="contraction_every_half_hour_time_over_40_secs">&gt; 40 secs</string>
 
 </resources>
