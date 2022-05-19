@@ -661,8 +661,15 @@
           },
           {
             "field": "eventType",
-            "field_value": "LD Active Management of Labour",
+            "field_value": "LD Active Management of 3rd Stage Of Labour",
             "creates_case": [
+              "ec_ld_confirmation"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "Post Delivery Mother Management",
+            "closes_case": [
               "ec_ld_confirmation"
             ]
           }

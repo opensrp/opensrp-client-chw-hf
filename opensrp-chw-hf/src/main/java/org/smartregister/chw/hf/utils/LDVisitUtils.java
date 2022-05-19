@@ -112,6 +112,17 @@ public class LDVisitUtils extends VisitUtils {
                 if (isPartograph && shouldProcessPartographVisit(visit)) {
                     ldVisits.add(visit);
                 }
+            } else if (visit.getVisitType().equalsIgnoreCase(Events.LD_ACTIVE_MANAGEMENT_OF_3RD_STAGE_OF_LABOUR)) {
+                JSONObject visitJson = new JSONObject(visit.getJson());
+                JSONArray obs = visitJson.getJSONArray("obs");
+
+                boolean hasPlacentaAndMembraneExpelled = computeCompletionStatus(obs, "placenta_and_membrane_expulsion");
+                boolean isUterotonicDone = computeCompletionStatus(obs, "uterotonic");
+                boolean isMassageOfUterusAfterDeliveryDone = computeCompletionStatus(obs, "uterus_massage_after_delivery");
+
+                if (hasPlacentaAndMembraneExpelled && isUterotonicDone && isMassageOfUterusAfterDeliveryDone) {
+                    ldVisits.add(visit);
+                }
             } else {
                 ldVisits.add(visit);
             }

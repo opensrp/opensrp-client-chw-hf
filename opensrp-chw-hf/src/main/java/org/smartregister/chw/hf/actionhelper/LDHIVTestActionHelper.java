@@ -14,7 +14,7 @@ import java.util.Map;
 /**
  * Created by Kassim Sheghembe on 2022-05-17
  */
-public class HIVTestActionHelper implements BaseLDVisitAction.LDVisitActionHelper {
+public class LDHIVTestActionHelper implements BaseLDVisitAction.LDVisitActionHelper {
 
     private final Context context;
     private String hiv_status;
@@ -23,7 +23,7 @@ public class HIVTestActionHelper implements BaseLDVisitAction.LDVisitActionHelpe
     private String hiv;
     private String hiv_counselling_after_testing;
 
-    public HIVTestActionHelper(Context context) {
+    public LDHIVTestActionHelper(Context context) {
         this.context = context;
     }
 

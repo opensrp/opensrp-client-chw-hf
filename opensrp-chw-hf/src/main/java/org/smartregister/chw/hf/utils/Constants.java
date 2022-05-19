@@ -56,6 +56,7 @@ public class Constants extends CoreConstants {
         public static final String ANC_FOLLOWUP_CLIENT_FOLLOWUP = "ANC Followup Client Registration";
         public static final String LD_REGISTRATION = "LD Registration";
         public static final String LD_PARTOGRAPHY = "LD Partograph";
+        public static final String LD_ACTIVE_MANAGEMENT_OF_3RD_STAGE_OF_LABOUR = "LD Active Management of 3rd Stage Of Labour";
     }
 
     public static final class TableName {
@@ -78,6 +79,7 @@ public class Constants extends CoreConstants {
         public static final String HEI_VISIT = "HEI";
         public static final String LD_GENERAL_VISIT = "L&D Examination";
         public static final String LD_PARTOGRAPH_VISIT = "L&D Partograph";
+        public static final String LD_MANAGEMENT_OF_3rd_STAGE_OF_LABOUR_VISIT = "L&D Management of 3rd Stage Of Labour";
     }
 
     public static final class ActionList {
@@ -504,6 +506,31 @@ public class Constants extends CoreConstants {
 
             public static String getLdActiveManagementMassageUterus() {
                 return Utils.getLocalForm(LD_ACTIVE_MANAGEMENT_MASSAGE_UTERUS);
+            }
+
+        }
+
+        public static class LDPostDeliveryMotherManagement {
+
+            public static final String LD_POST_DELIVERY_MANAGEMENT_MOTHER_STATUS = "labour_and_delivery_mother_status";
+            public static final String LD_POST_DELIVERY_MOTHER_OBSERVATION = "labour_and_delivery_mother_observation";
+            public static final String LD_POST_DELIVERY_MATERNAL_COMPLICATIONS = "labour_and_delivery_maternal_complications";
+            public static final String LD_NEW_BORN_STATUS = "labour_and_delivery_stage4_newborn";
+
+            public static String getLdPostDeliveryManagementMotherStatus() {
+                return Utils.getLocalForm(LD_POST_DELIVERY_MANAGEMENT_MOTHER_STATUS);
+            }
+
+            public static String getLdPostDeliveryMotherObservation() {
+                return Utils.getLocalForm(LD_POST_DELIVERY_MOTHER_OBSERVATION);
+            }
+
+            public static String getLdPostDeliveryMaternalComplications() {
+                return Utils.getLocalForm(LD_POST_DELIVERY_MATERNAL_COMPLICATIONS);
+            }
+
+            public static String getLdNewBornStatus() {
+                return Utils.getLocalForm(LD_NEW_BORN_STATUS);
             }
 
         }

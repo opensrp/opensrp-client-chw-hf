@@ -19,11 +19,11 @@ import org.smartregister.util.LangUtils;
 /**
  * Created by Kassim Sheghembe on 2022-05-06
  */
-public class LDVisitActivity extends BaseLDVisitActivity {
+public class LDGeneralExaminationVisitActivity extends BaseLDVisitActivity {
 
-    public static void startLDVisitActivity(Activity activity, String baseEntityID, Boolean editMode) {
+    public static void startLDGeneralExaminationVisitActivity(Activity activity, String baseEntityID, Boolean editMode) {
 
-        Intent intent = new Intent(activity, LDVisitActivity.class);
+        Intent intent = new Intent(activity, LDGeneralExaminationVisitActivity.class);
         intent.putExtra(Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID, baseEntityID);
         intent.putExtra(Constants.ACTIVITY_PAYLOAD.EDIT_MODE, editMode);
 
