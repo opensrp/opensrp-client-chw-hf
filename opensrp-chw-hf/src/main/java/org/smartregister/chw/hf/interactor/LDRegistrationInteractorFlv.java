@@ -45,6 +45,7 @@ import timber.log.Timber;
 public class LDRegistrationInteractorFlv implements LDRegistrationInteractor.Flavor {
     static JSONObject obstetricForm = null;
     static JSONObject ancClinicForm = null;
+    static JSONObject ancTriageForm = null;
     LinkedHashMap<String, BaseLDVisitAction> actionList = new LinkedHashMap<>();
 
     private static JSONObject initializeHealthFacilitiesList(JSONObject form) {
@@ -161,12 +162,21 @@ public class LDRegistrationInteractorFlv implements LDRegistrationInteractor.Fla
         artPrescription.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.isClientKnownOnArt(memberObject.getBaseEntityId()) ? "yes" : "no");
     }
 
+
+    private void populateTriageForm(JSONArray fields, org.smartregister.chw.anc.domain.MemberObject memberObject) throws JSONException {
+        JSONObject heightJsonObject = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "height");
+        String height = HfAncDao.getClientHeight(memberObject.getBaseEntityId());
+        if (!height.equalsIgnoreCase("null"))
+            heightJsonObject.put(org.smartregister.family.util.JsonFormUtils.VALUE, height);
+    }
+
     @Override
     public LinkedHashMap<String, BaseLDVisitAction> calculateActions(BaseLDVisitContract.View view, MemberObject memberObject, BaseLDVisitContract.InteractorCallBack callBack) throws BaseLDVisitAction.ValidationException {
 
         Context context = view.getContext();
         obstetricForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryObstetricHistory());
         ancClinicForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryAncClinicFindings());
+        ancTriageForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryRegistrationTriage());
 
         Map<String, List<VisitDetail>> details = null;
         // get the preloaded data
@@ -187,6 +197,14 @@ public class LDRegistrationInteractorFlv implements LDRegistrationInteractor.Fla
                     e.printStackTrace();
                 }
             }
+            if (ancTriageForm != null) {
+                try {
+                    JSONArray fields = ancTriageForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+                    populateTriageForm(fields, AncDao.getMember(memberObject.getBaseEntityId()));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
         }
 
         evaluateLDRegistration(actionList, details, memberObject, context, callBack);
@@ -203,6 +221,7 @@ public class LDRegistrationInteractorFlv implements LDRegistrationInteractor.Fla
         BaseLDVisitAction ldRegistrationTriage = new BaseLDVisitAction.Builder(context, context.getString(R.string.ld_registration_triage_title))
                 .withOptional(false)
                 .withDetails(details)
+                .withJsonPayload(ancTriageForm.toString())
                 .withFormName(Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryRegistrationTriage())
                 .withHelper(new LDRegistrationTriageAction(memberObject))
                 .build();
