@@ -83,7 +83,7 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
                                         ancFollowupVisitsCompleted.add(v);
                                     }
                                 }else{
-                                    if (true) {
+                                    if (isConsultationDone && isLabTestsDone && isPharmacyDone && isCounsellingDone) {
                                         ancFollowupVisitsCompleted.add(v);
                                     }
                                 }
