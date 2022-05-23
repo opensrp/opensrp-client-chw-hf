@@ -662,4 +662,15 @@ public class HfAncDao extends AbstractDao {
         return "";
     }
 
+    public static boolean hasNoFollowups(String baseEntityId){
+        DataMap<Integer> dataMap = cursor -> getCursorIntValue(cursor, "count");
+        String sql = String.format(
+                "SELECT count(*) as count FROM %s WHERE entity_id = '%s' " +
+                        "AND is_closed = 0 ",
+                "ec_anc_followup",
+                baseEntityId);
+        List<Integer> res = readData(sql, dataMap);
+        return res != null && res.size() > 0;
+    }
+
 }
