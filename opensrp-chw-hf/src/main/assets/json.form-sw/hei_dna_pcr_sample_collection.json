@@ -130,7 +130,7 @@
         "max_date": "today",
         "v_required": {
           "value": true,
-          "err": "Please enter the collection date"
+          "err": "Tafadhari ingiza tarehe ya kuchukua sampuli ya kipimo cha DNA-PCR"
         }
       },
       {
