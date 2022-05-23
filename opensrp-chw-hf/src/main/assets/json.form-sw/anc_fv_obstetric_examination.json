@@ -577,8 +577,8 @@
         "openmrs_entity_parent": "",
         "hint": "Kitangulizi cha mtoto",
         "values": [
-          "Miguu chini",
-          "Kichwa chini/makalio chini"
+          "Makalio",
+          "Kichwa"
         ],
         "keys": [
           "breech",

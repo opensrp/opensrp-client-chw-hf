@@ -744,7 +744,7 @@
       {
         "key": "prompt_for_bcg_vaccination",
         "type": "toaster_notes",
-        "text": "The client should be given BCG vaccine",
+        "text": "Mteja apewe chanjo ya BCG",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
