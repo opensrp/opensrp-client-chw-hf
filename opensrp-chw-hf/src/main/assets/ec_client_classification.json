@@ -127,7 +127,8 @@
             "field_value": "Pregnancy Confirmation",
             "creates_case": [
               "ec_anc_register",
-              "ec_anc_log"
+              "ec_anc_log",
+              "ec_anc_pregnancy_lookup"
             ]
           },
           {
@@ -136,7 +137,8 @@
             "creates_case": [
               "ec_anc_register",
               "ec_anc_log",
-              "ec_anc_followup"
+              "ec_anc_followup",
+              "ec_anc_pregnancy_lookup"
             ]
           },
           {
@@ -144,6 +146,7 @@
             "field_value": "ANC Registration",
             "creates_case": [
               "ec_anc_register",
+              "ec_anc_pregnancy_lookup",
               "ec_anc_log"
             ]
           },
