@@ -570,25 +570,6 @@
         }
       },
       {
-        "key": "lie_other",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "lie_other",
-        "type": "edit_text",
-        "edit_type": "name",
-        "hint": "Lie Other",
-        "v_required": {
-          "value": "true",
-          "err": "Please specify the lie"
-        },
-        "relevance": {
-          "step1:lie": {
-            "type": "string",
-            "ex": "equalTo(., \"other\")"
-          }
-        }
-      },
-      {
         "key": "presentation",
         "type": "spinner",
         "openmrs_entity_id": "presentation",
@@ -617,25 +598,6 @@
         "v_required": {
           "value": "true",
           "err": "Please select an option for presentation"
-        }
-      },
-      {
-        "key": "presentation_other",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "presentation_other",
-        "type": "edit_text",
-        "edit_type": "name",
-        "hint": "Presentation Other",
-        "v_required": {
-          "value": "true",
-          "err": "Please specify the presentation"
-        },
-        "relevance": {
-          "step1:presentation": {
-            "type": "string",
-            "ex": "equalTo(., \"other\")"
-          }
         }
       },
       {

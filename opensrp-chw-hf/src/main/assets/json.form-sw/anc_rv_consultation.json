@@ -392,34 +392,15 @@
         }
       },
       {
-        "key": "lie_other",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "lie_other",
-        "type": "edit_text",
-        "edit_type": "name",
-        "hint": "Mlalo mwingine",
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhali bainisha mlalo wa mtoto"
-        },
-        "relevance": {
-          "step1:lie": {
-            "type": "string",
-            "ex": "equalTo(., \"other\")"
-          }
-        }
-      },
-      {
         "key": "presentation",
         "type": "spinner",
         "openmrs_entity_id": "presentation",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "hint": "Mkao wa mtoto",
+        "hint": "Kitangulizi cha mtoto",
         "values": [
           "Miguu chini",
-          "Kichwa chini"
+          "Kichwa chini/makalio chini"
         ],
         "keys": [
           "breech",
@@ -438,26 +419,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Tafadhali chagua chaguo kwa ajili ya mlalo wa mtoto"
-        }
-      },
-      {
-        "key": "presentation_other",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "presentation_other",
-        "type": "edit_text",
-        "edit_type": "name",
-        "hint": "Mlalo mwingine",
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhali bainisha mlalo wa mtoto"
-        },
-        "relevance": {
-          "step1:presentation": {
-            "type": "string",
-            "ex": "equalTo(., \"other\")"
-          }
+          "err": "Tafadhali chagua chaguo kwa ajili ya kitangulizi cha mtoto"
         }
       },
       {
