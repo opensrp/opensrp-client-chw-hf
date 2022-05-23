@@ -723,7 +723,7 @@
       {
         "key": "prompt_for_vaginal_discharge",
         "type": "toaster_notes",
-        "text": "Identify the cause of vaginal discharge and manage according to standard guidelines",
+        "text": "Bainisha sababu za kutokwa na uchafu ukeni na dhibiti hali hii kulingana na Mouongozo wa Wizara ya Afya",
         "openmrs_entity_id": "prompt_for_vaginal_discharge",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
