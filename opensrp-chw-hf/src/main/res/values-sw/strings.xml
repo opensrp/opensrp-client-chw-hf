@@ -216,7 +216,7 @@
     <string name="pnc_visit_in_progress">Udhurio la Baada ya Kujifungua  linaendela</string>
     <string name="hiv_testing_outcome">Matokeo ya Kipimo cha VVU</string>
     <string name="complete_pnc_message">Mteja kamaliza udhurio la kliniki Baada ya Kujifungua (PNC) na anaweza ondolewa kwenye orodha ya Baada ya Kujifungua (PNC)</string>
-    <string name="head_circumference_min_err">Mzunguko wa kichwa unatakiwa kuwa sawa au zaidi ya % CM</string>
+    <string name="head_circumference_min_err">Mzunguko wa kichwa unatakiwa kuwa sawa au zaidi ya %s CM</string>
     <string name="return_to_all_pnc_women">Rudi kwa wateja wa PNC</string>
 
     <!-- HEI Medical History -->
