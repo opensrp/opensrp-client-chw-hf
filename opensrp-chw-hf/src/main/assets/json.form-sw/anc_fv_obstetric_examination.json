@@ -507,16 +507,16 @@
         },
         "v_numeric": {
           "value": "true",
-          "err": "Tafadhali ingiza kiwango cha kimo cha mimba"
+          "err": "Tafadhali ingiza kimo cha mimba"
         },
         "v_min": {},
         "v_max": {
           "value": "36",
-          "err": "Kiwango cha kimo cha mimba lazima kiwe sawa au chini ya 36 CM"
+          "err": "Kimo cha mimba lazima kiwe sawa au chini ya 36 CM"
         },
         "v_required": {
           "value": "true",
-          "err": "Tafadhali ingiza kiwango cha kimo cha mimba"
+          "err": "Tafadhali ingiza kimo cha mimba"
         }
       },
       {
