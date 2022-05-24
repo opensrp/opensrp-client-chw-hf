@@ -271,6 +271,14 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
                     } catch (Exception ex) {
                         Timber.e(ex);
                     }
+                } else if (encounterType.equalsIgnoreCase(CoreConstants.EventType.UPDATE_CHILD_REGISTRATION)) {
+                    String childBaseEntityId = form.getString(JsonFormUtils.ENTITY_ID);
+                    if (childBaseEntityId != null) {
+                        FamilyEventClient familyEventClient =
+                                new FamilyProfileModel(memberObject.getFamilyName()).processUpdateMemberRegistration(jsonString, childBaseEntityId);
+                        familyEventClient.getEvent().setEventType(CoreConstants.EventType.UPDATE_CHILD_REGISTRATION);
+                        new FamilyProfileInteractor().saveRegistration(familyEventClient, jsonString, true, (FamilyProfileContract.InteractorCallBack) pncMemberProfilePresenter());
+                    }
                 }
             } catch (JSONException jsonException) {
                 Timber.e(jsonException);
