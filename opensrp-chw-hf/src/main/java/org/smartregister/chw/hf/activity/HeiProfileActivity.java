@@ -29,6 +29,7 @@ import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.custom_view.PmtctFloatingMenu;
 import org.smartregister.chw.hf.dao.HeiDao;
 import org.smartregister.chw.hf.interactor.HeiProfileInteractor;
+import org.smartregister.chw.hf.model.FamilyProfileModel;
 import org.smartregister.chw.hf.presenter.HeiProfilePresenter;
 import org.smartregister.chw.hf.rule.HfHeiFollowupRule;
 import org.smartregister.chw.hf.utils.HeiVisitUtils;
@@ -43,6 +44,9 @@ import org.smartregister.chw.pnc.PncLibrary;
 import org.smartregister.chw.pnc.repository.ProfileRepository;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.domain.AlertStatus;
+import org.smartregister.family.contract.FamilyProfileContract;
+import org.smartregister.family.domain.FamilyEventClient;
+import org.smartregister.family.interactor.FamilyProfileInteractor;
 import org.smartregister.family.util.DBConstants;
 import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.family.util.Utils;
@@ -408,6 +412,14 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
                     AllSharedPreferences allSharedPreferences = org.smartregister.util.Utils.getAllSharedPreferences();
                     ((HeiProfilePresenter) profilePresenter).createHeiNumberRegistrationEvent(allSharedPreferences, data.getStringExtra(Constants.JSON_FORM_EXTRA.JSON), baseEntityId);
                 }
+                if (encounterType.equalsIgnoreCase(CoreConstants.EventType.UPDATE_CHILD_REGISTRATION)) {
+                    String childBaseEntityId = memberObject.getBaseEntityId();
+                    FamilyEventClient familyEventClient =
+                            new FamilyProfileModel(memberObject.getFamilyName()).processUpdateMemberRegistration(jsonString, childBaseEntityId);
+                    familyEventClient.getEvent().setEventType(CoreConstants.EventType.UPDATE_CHILD_REGISTRATION);
+                    new FamilyProfileInteractor().saveRegistration(familyEventClient, jsonString, true, (FamilyProfileContract.InteractorCallBack) profilePresenter);
+
+                }
             } catch (Exception e) {
                 Timber.e(e, "HeiProfileActivity -- > onActivityResult");
             }
@@ -426,7 +438,7 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
         JSONObject childEnrollmentForm = null;
         CommonPersonObjectClient client = getChildClientByBaseEntityId(memberObject.getBaseEntityId());
 
-        if(client == null){
+        if (client == null) {
             return;
         }
         if (formName.equals(CoreConstants.JSON_FORM.getChildRegister())) {
