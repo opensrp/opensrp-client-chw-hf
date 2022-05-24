@@ -256,7 +256,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            if (firstVisit == null && HfAncDao.getVisitNumber(baseEntityID) == 0) {
+            if ((firstVisit == null || HfAncDao.hasNoFollowups(baseEntityID)) && HfAncDao.getVisitNumber(baseEntityID) == 0) {
                 textview_record_anc_visit.setText(R.string.record_anc_first_visit);
             } else {
                 textview_record_anc_visit.setText(R.string.record_anc_followup_visit);
@@ -421,7 +421,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         int id = view.getId();
         if (id == R.id.textview_record_visit || id == R.id.textview_record_reccuring_visit) {
             Visit firstVisit = getVisit(ANC_FIRST_FACILITY_VISIT);
-            if (firstVisit == null && HfAncDao.getVisitNumber(baseEntityID) == 0) {
+            if ((firstVisit == null || HfAncDao.hasNoFollowups(baseEntityID)) && HfAncDao.getVisitNumber(baseEntityID) == 0) {
                 AncFirstFacilityVisitActivity.startMe(this, memberObject.getBaseEntityId(), false);
             } else {
                 AncRecurringFacilityVisitActivity.startMe(this, memberObject.getBaseEntityId(), false);
