@@ -11,7 +11,7 @@
         android:id="@+id/action_no_mother"
         android:enabled="true"
         android:icon="@mipmap/sidemenu_children"
-        android:title="No Mother Children"
+        android:title="@string/no_mother_children"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_register_child"
