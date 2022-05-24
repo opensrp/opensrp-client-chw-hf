@@ -1,18 +1,25 @@
 package org.smartregister.chw.hf.utils;
 
+import net.sqlcipher.database.SQLiteDatabase;
+
 import org.json.JSONObject;
 import org.smartregister.chw.core.utils.CoreChildUtils;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.hf.HealthFacilityApplication;
+import org.smartregister.chw.pnc.PncLibrary;
+import org.smartregister.chw.pnc.repository.ProfileRepository;
 import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.clientandeventmodel.Obs;
+import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.family.FamilyLibrary;
+import org.smartregister.family.util.DBConstants;
 import org.smartregister.repository.BaseRepository;
 import org.smartregister.sync.helper.ECSyncHelper;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 import timber.log.Timber;
@@ -76,5 +83,36 @@ public class HfChildUtils extends CoreChildUtils {
         } catch (Exception e) {
             Timber.e(e);
         }
+    }
+
+    public static CommonPersonObjectClient getChildClientByBaseEntityId(String baseEntityId) {
+        CommonPersonObjectClient child = null;
+        ProfileRepository profileRepository = PncLibrary.getInstance().profileRepository();
+        SQLiteDatabase database = profileRepository.getReadableDatabase();
+        net.sqlcipher.Cursor cursor;
+
+        try {
+            if (database == null) {
+                return null;
+            }
+            cursor = database.rawQuery("SELECT * FROM " + CoreConstants.TABLE_NAME.CHILD + " WHERE base_entity_id = ? AND is_closed = 0 ", new String[]{baseEntityId});
+            if (cursor != null && cursor.getCount() > 0 && cursor.moveToFirst()) {
+                String[] columnNames = cursor.getColumnNames();
+                Map<String, String> details = new HashMap<>();
+
+                for (String columnName : columnNames) {
+                    details.put(columnName, cursor.getString(cursor.getColumnIndex(columnName)));
+                }
+
+                CommonPersonObjectClient commonPersonObject = new CommonPersonObjectClient("", details, "");
+                commonPersonObject.setColumnmaps(details);
+                commonPersonObject.setCaseId(cursor.getString(cursor.getColumnIndex(DBConstants.KEY.BASE_ENTITY_ID)));
+                child = commonPersonObject;
+            }
+        } catch (Exception e) {
+            Timber.e(e);
+        }
+
+        return child;
     }
 }

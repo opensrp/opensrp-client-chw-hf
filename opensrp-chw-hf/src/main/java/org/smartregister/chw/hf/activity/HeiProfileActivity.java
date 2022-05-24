@@ -33,6 +33,7 @@ import org.smartregister.chw.hf.model.FamilyProfileModel;
 import org.smartregister.chw.hf.presenter.HeiProfilePresenter;
 import org.smartregister.chw.hf.rule.HfHeiFollowupRule;
 import org.smartregister.chw.hf.utils.HeiVisitUtils;
+import org.smartregister.chw.hf.utils.HfChildUtils;
 import org.smartregister.chw.pmtct.PmtctLibrary;
 import org.smartregister.chw.pmtct.activity.BasePmtctProfileActivity;
 import org.smartregister.chw.pmtct.dao.PmtctDao;
@@ -92,36 +93,7 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
         return getCommonPersonObjectClient(baseEntityId);
     }
 
-    private static CommonPersonObjectClient getChildClientByBaseEntityId(String baseEntityId) {
-        CommonPersonObjectClient child = null;
-        ProfileRepository profileRepository = PncLibrary.getInstance().profileRepository();
-        SQLiteDatabase database = profileRepository.getReadableDatabase();
-        net.sqlcipher.Cursor cursor;
 
-        try {
-            if (database == null) {
-                return null;
-            }
-            cursor = database.rawQuery("SELECT * FROM " + CoreConstants.TABLE_NAME.CHILD + " WHERE base_entity_id = ? AND is_closed = 0 ", new String[]{baseEntityId});
-            if (cursor != null && cursor.getCount() > 0 && cursor.moveToFirst()) {
-                String[] columnNames = cursor.getColumnNames();
-                Map<String, String> details = new HashMap<>();
-
-                for (String columnName : columnNames) {
-                    details.put(columnName, cursor.getString(cursor.getColumnIndex(columnName)));
-                }
-
-                CommonPersonObjectClient commonPersonObject = new CommonPersonObjectClient("", details, "");
-                commonPersonObject.setColumnmaps(details);
-                commonPersonObject.setCaseId(cursor.getString(cursor.getColumnIndex(DBConstants.KEY.BASE_ENTITY_ID)));
-                child = commonPersonObject;
-            }
-        } catch (Exception e) {
-            Timber.e(e);
-        }
-
-        return child;
-    }
 
     @Override
     protected void onCreation() {
@@ -436,7 +408,7 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
     public void startFormForEdit(Integer title_resource, String formName) {
 
         JSONObject childEnrollmentForm = null;
-        CommonPersonObjectClient client = getChildClientByBaseEntityId(memberObject.getBaseEntityId());
+        CommonPersonObjectClient client = HfChildUtils.getChildClientByBaseEntityId(memberObject.getBaseEntityId());
 
         if (client == null) {
             return;
