@@ -335,7 +335,7 @@
         "openmrs_entity_id": "urine_volume",
         "text_color": "#000000",
         "type": "edit_text",
-        "hint": "Urine Volume(Output) in ml",
+        "hint": "Urine Volume(Output) in Ml",
         "v_numeric": {
           "value": "true",
           "err": "Please enter the urine volume"
