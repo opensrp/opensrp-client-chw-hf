@@ -14,8 +14,6 @@ import android.widget.TextView;
 
 import com.vijay.jsonwizard.utils.FormUtils;
 
-import net.sqlcipher.database.SQLiteDatabase;
-
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -41,8 +39,6 @@ import org.smartregister.chw.pmtct.domain.MemberObject;
 import org.smartregister.chw.pmtct.domain.Visit;
 import org.smartregister.chw.pmtct.util.Constants;
 import org.smartregister.chw.pmtct.util.PmtctUtil;
-import org.smartregister.chw.pnc.PncLibrary;
-import org.smartregister.chw.pnc.repository.ProfileRepository;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.domain.AlertStatus;
 import org.smartregister.family.contract.FamilyProfileContract;
@@ -55,9 +51,7 @@ import org.smartregister.repository.AllSharedPreferences;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Locale;
-import java.util.Map;
 
 import javax.annotation.Nullable;
 
@@ -92,7 +86,6 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
     protected static CommonPersonObjectClient getClientDetailsByBaseEntityID(@NonNull String baseEntityId) {
         return getCommonPersonObjectClient(baseEntityId);
     }
-
 
 
     @Override
