@@ -48,7 +48,15 @@ public class HeiHivResultsViewProvider extends HvlResultsViewProvider {
                 viewHolder.hvlWrapper.setVisibility(View.GONE);
                 viewHolder.dueWrapper.setVisibility(View.VISIBLE);
             } else {
-                viewHolder.hvlResult.setText(hvlResult);
+
+                if (hvlResult.equalsIgnoreCase("positive")) {
+                    viewHolder.hvlResult.setText(context.getString(R.string.hvl_result_positive));
+                } else if (hvlResult.equalsIgnoreCase("negative")) {
+                    viewHolder.hvlResult.setText(context.getString(R.string.hvl_result_negative));
+                } else {
+                    viewHolder.hvlResult.setText(hvlResult);
+                }
+
                 viewHolder.hvlWrapper.setVisibility(View.VISIBLE);
                 viewHolder.dueWrapper.setVisibility(View.GONE);
             }

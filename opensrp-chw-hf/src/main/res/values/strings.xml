@@ -205,6 +205,8 @@
     <string name="all_hei_clients">All</string>
     <string name="tomorrow_hei_clients">Tomorrow Visits</string>
     <string name="missed_hei_clients">Missed</string>
+    <string name="hvl_result_positive">positive</string>
+    <string name="hvl_result_negative">negative</string>
 
     <!-- HEI Medical History -->
     <string name="hei_visit_title">HEI Visit {0}: {1}, Age {2}</string>
