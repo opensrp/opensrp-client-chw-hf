@@ -81,7 +81,7 @@
         "openmrs_entity_id": "name_of_hf",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "hint": "Transferred Clinic Name",
+        "hint": "Jina la Kliniki Aliyohamishwa",
         "type": "tree",
         "tree": [],
         "relevance": {
@@ -93,7 +93,7 @@
         },
         "v_required": {
           "value": true,
-          "err": "Please specify the transferred clinic"
+          "err": "Tafadhali bainisha kliniki aliyohamishwa"
         }
       },
       {
