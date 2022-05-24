@@ -14,11 +14,14 @@ import android.widget.TextView;
 
 import com.vijay.jsonwizard.utils.FormUtils;
 
+import net.sqlcipher.database.SQLiteDatabase;
+
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.core.custom_views.CorePmtctFloatingMenu;
+import org.smartregister.chw.core.interactor.CoreChildProfileInteractor;
 import org.smartregister.chw.core.listener.OnClickFloatingMenu;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
@@ -36,6 +39,8 @@ import org.smartregister.chw.pmtct.domain.MemberObject;
 import org.smartregister.chw.pmtct.domain.Visit;
 import org.smartregister.chw.pmtct.util.Constants;
 import org.smartregister.chw.pmtct.util.PmtctUtil;
+import org.smartregister.chw.pnc.PncLibrary;
+import org.smartregister.chw.pnc.repository.ProfileRepository;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.domain.AlertStatus;
 import org.smartregister.family.util.DBConstants;
@@ -45,7 +50,9 @@ import org.smartregister.repository.AllSharedPreferences;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.annotation.Nullable;
 
@@ -79,6 +86,37 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
 
     protected static CommonPersonObjectClient getClientDetailsByBaseEntityID(@NonNull String baseEntityId) {
         return getCommonPersonObjectClient(baseEntityId);
+    }
+
+    private static CommonPersonObjectClient getChildClientByBaseEntityId(String baseEntityId) {
+        CommonPersonObjectClient child = null;
+        ProfileRepository profileRepository = PncLibrary.getInstance().profileRepository();
+        SQLiteDatabase database = profileRepository.getReadableDatabase();
+        net.sqlcipher.Cursor cursor;
+
+        try {
+            if (database == null) {
+                return null;
+            }
+            cursor = database.rawQuery("SELECT * FROM " + CoreConstants.TABLE_NAME.CHILD + " WHERE base_entity_id = ? AND is_closed = 0 ", new String[]{baseEntityId});
+            if (cursor != null && cursor.getCount() > 0 && cursor.moveToFirst()) {
+                String[] columnNames = cursor.getColumnNames();
+                Map<String, String> details = new HashMap<>();
+
+                for (String columnName : columnNames) {
+                    details.put(columnName, cursor.getString(cursor.getColumnIndex(columnName)));
+                }
+
+                CommonPersonObjectClient commonPersonObject = new CommonPersonObjectClient("", details, "");
+                commonPersonObject.setColumnmaps(details);
+                commonPersonObject.setCaseId(cursor.getString(cursor.getColumnIndex(DBConstants.KEY.BASE_ENTITY_ID)));
+                child = commonPersonObject;
+            }
+        } catch (Exception e) {
+            Timber.e(e);
+        }
+
+        return child;
     }
 
     @Override
@@ -353,7 +391,6 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
         HeiMedicalHistoryActivity.startMe(this, memberObject);
     }
 
-
     @SuppressLint("MissingSuperCall")
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -386,19 +423,19 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
 
     public void startFormForEdit(Integer title_resource, String formName) {
 
-        JSONObject form = null;
-        CommonPersonObjectClient client = org.smartregister.chw.core.utils.Utils.clientForEdit(memberObject.getBaseEntityId());
+        JSONObject childEnrollmentForm = null;
+        CommonPersonObjectClient client = getChildClientByBaseEntityId(memberObject.getBaseEntityId());
 
+        if(client == null){
+            return;
+        }
         if (formName.equals(CoreConstants.JSON_FORM.getChildRegister())) {
-            form = CoreJsonFormUtils.getAutoPopulatedJsonEditMemberFormString(
-                    (title_resource != null) ? getResources().getString(title_resource) : null,
-                    CoreConstants.JSON_FORM.getChildRegister(),
-                    this, client,
-                    CoreConstants.EventType.UPDATE_CHILD_REGISTRATION, memberObject.getLastName(), false);
+            CoreChildProfileInteractor childProfileInteractor = new CoreChildProfileInteractor();
+            childEnrollmentForm = childProfileInteractor.getAutoPopulatedJsonEditFormString(CoreConstants.JSON_FORM.getChildRegister(), (title_resource != null) ? getResources().getString(title_resource) : null, this, client);
         }
         try {
-            assert form != null;
-            startFormActivity(form);
+            assert childEnrollmentForm != null;
+            startFormActivity(childEnrollmentForm);
         } catch (Exception e) {
             Timber.e(e);
         }
@@ -409,7 +446,6 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
         startActivityForResult(intent, JsonFormUtils.REQUEST_CODE_GET_JSON);
     }
 
-
     @Override
     public void refreshFamilyStatus(AlertStatus status) {
         super.refreshFamilyStatus(status);
@@ -419,11 +455,11 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
     @Override
     public void refreshMedicalHistory(boolean hasHistory) {
         Visit lastFollowupVisit = getVisit(org.smartregister.chw.hf.utils.Constants.Events.HEI_FOLLOWUP);
-        if(lastFollowupVisit !=null){
+        if (lastFollowupVisit != null) {
             rlLastVisit.setVisibility(View.VISIBLE);
             TextView medicalHistoryTitle = findViewById(R.id.ivViewHistoryArrow);
             medicalHistoryTitle.setTextColor(getResources().getColor(R.color.black));
-        }else{
+        } else {
             rlLastVisit.setVisibility(View.GONE);
         }
     }
