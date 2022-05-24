@@ -73,7 +73,7 @@
         },
         "v_required": {
           "value": true,
-          "err": "Please select one"
+          "err": "Tafadhali chagua aina ya hudhurio"
         }
       },
       {
@@ -147,7 +147,7 @@
         },
         "v_required": {
           "value": true,
-          "err": "Please select one"
+          "err": "Tafadhali chagua hali ya afya"
         },
         "relevance": {
           "rules-engine": {
@@ -190,7 +190,7 @@
         },
         "v_required": {
           "value": true,
-          "err": "Please select one"
+          "err": "Tafadhali chagua lishe ya afya"
         },
         "relevance": {
           "rules-engine": {

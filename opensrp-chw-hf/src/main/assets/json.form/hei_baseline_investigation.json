@@ -73,7 +73,7 @@
         },
         "v_required": {
           "value": true,
-          "err": "Please select one"
+          "err": "Please select the visit type"
         }
       },
       {
@@ -147,7 +147,7 @@
         },
         "v_required": {
           "value": true,
-          "err": "Please select one"
+          "err": "Please select the health status"
         },
         "relevance": {
           "rules-engine": {
@@ -190,7 +190,7 @@
         },
         "v_required": {
           "value": true,
-          "err": "Please select one"
+          "err": "Please select the infant feeding practice"
         },
         "relevance": {
           "rules-engine": {
