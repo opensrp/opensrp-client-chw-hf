@@ -3,6 +3,8 @@ package org.smartregister.chw.hf.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -16,9 +18,12 @@ import org.json.JSONObject;
 import org.smartregister.chw.anc.domain.MemberObject;
 import org.smartregister.chw.anc.util.Constants;
 import org.smartregister.chw.anc.util.DBConstants;
+import org.smartregister.chw.core.interactor.CoreChildProfileInteractor;
+import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.custom_view.PncNoMotherFloatingMenu;
 import org.smartregister.chw.hf.dao.HfPncDao;
+import org.smartregister.chw.hf.utils.HfChildUtils;
 import org.smartregister.chw.hf.utils.PncVisitUtils;
 import org.smartregister.chw.pnc.PncLibrary;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
@@ -93,9 +98,45 @@ public class PncNoMotherProfileActivity extends PncMemberProfileActivity {
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int itemId = item.getItemId();
+        if (itemId == R.id.action_pnc_member_registration) {
+            startFormForEdit(org.smartregister.chw.core.R.string.registration_info,
+                    CoreConstants.JSON_FORM.getChildRegister());
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
     protected int getPncDay() {
         DateTimeFormatter formatter = DateTimeFormat.forPattern("dd-MM-yyyy");
         return Days.daysBetween(new DateTime(formatter.parseDateTime(dayPnc)), new DateTime()).getDays();
+    }
+
+    public void startFormForEdit(Integer title_resource, String formName) {
+
+        JSONObject childEnrollmentForm = null;
+        CommonPersonObjectClient client = HfChildUtils.getChildClientByBaseEntityId(memberObject.getBaseEntityId());
+
+        if (client == null) {
+            return;
+        }
+        if (formName.equals(CoreConstants.JSON_FORM.getChildRegister())) {
+            CoreChildProfileInteractor childProfileInteractor = new CoreChildProfileInteractor();
+            childEnrollmentForm = childProfileInteractor.getAutoPopulatedJsonEditFormString(CoreConstants.JSON_FORM.getChildRegister(), (title_resource != null) ? getResources().getString(title_resource) : null, this, client);
+        }
+        try {
+            assert childEnrollmentForm != null;
+            startFormActivity(childEnrollmentForm);
+        } catch (Exception e) {
+            Timber.e(e);
+        }
     }
 
     @Override
