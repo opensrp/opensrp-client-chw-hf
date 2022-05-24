@@ -158,6 +158,22 @@
         }
       },
       {
+        "key": "prompt_for_health_status",
+        "type": "toaster_notes",
+        "text": "Refer the client for further management",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "hei_baseline_investigation_relevance.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "infant_feeding_practice",
         "openmrs_entity_id": "infant_feeding_practice",
         "openmrs_entity": "concept",
