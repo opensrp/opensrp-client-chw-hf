@@ -22,10 +22,12 @@ import timber.log.Timber;
 
 public class HeiHivResultsViewProvider extends HvlResultsViewProvider {
     private Set<org.smartregister.configurableviews.model.View> visibleColumns;
+    private Context context;
 
     public HeiHivResultsViewProvider(Context context, View.OnClickListener paginationClickListener, View.OnClickListener onClickListener, Set visibleColumns) {
         super(context, paginationClickListener, onClickListener, visibleColumns);
         this.visibleColumns = visibleColumns;
+        this.context = context;
     }
 
     public void getView(Cursor cursor, SmartRegisterClient smartRegisterClient, RegisterViewHolder registerViewHolder) {
