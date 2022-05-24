@@ -16,7 +16,10 @@ import org.smartregister.chw.ld.domain.VisitDetail;
 import org.smartregister.chw.ld.model.BaseLDVisitAction;
 import org.smartregister.chw.referral.util.JsonFormConstants;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import timber.log.Timber;
@@ -145,5 +148,6 @@ public class LDPartographTimeActionHelper implements BaseLDVisitAction.LDVisitAc
         } else if (LDDao.getLabourOnsetDate(baseEntityId) != null) {
             partographDate.put("min_date", LDDao.getLabourOnsetDate(baseEntityId));
         }
+        partographDate.put("value", new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(Calendar.getInstance().getTime()));
     }
 }
