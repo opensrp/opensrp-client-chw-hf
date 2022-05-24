@@ -131,7 +131,7 @@ public class PncFacilityVisitInteractorFlv implements AncFirstFacilityVisitInter
                     .withFormName(Constants.JsonForm.getPncChildGeneralExamination())
                     .withHelper(new PncChildGeneralExamination(memberObject))
                     .build();
-            actionList.put(context.getString(R.string.child_general_examination, child.getFirstName()), childGeneralExamination);
+            actionList.put(child.getBaseEntityId(), childGeneralExamination);
         }
 
         BaseAncHomeVisitAction familyPlanningServices = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.family_planning_services_title))
