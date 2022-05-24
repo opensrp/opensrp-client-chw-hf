@@ -114,7 +114,7 @@
           "Ugonjwa wa ngozi",
           "Kandidiasis ya mdomo",
           "Kifua kikuu",
-          "Nuzri",
+          "Nzuri",
           "LN Lymphadenopathy"
         ],
         "keys": [
@@ -212,8 +212,8 @@
           "err": "Tafadhali ingiza uzito"
         },
         "v_min": {
-          "value": "2.5",
-          "err": "Uzito lazima uwe sawasawa au zaidi ya 2.5 (KG)"
+          "value": "0",
+          "err": "Uzito lazima uwe sawasawa au zaidi ya 0 (KG)"
         },
         "v_max": {
           "value": "20",

@@ -30,7 +30,7 @@ actions:
 name: step1_presentation
 description: presentation should be recorded if gestational age is greater than 36
 priority: 1
-condition: "step1_gest_age >= 36"
+condition: "step1_gest_age >= 36 && step1_lie.contains('longitudinal')"
 actions:
   - "isRelevant = true"
 ---

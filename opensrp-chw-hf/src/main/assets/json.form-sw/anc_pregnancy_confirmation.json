@@ -180,7 +180,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "",
         "type": "toaster_notes",
-        "text": "Dalili ya Hatari! Mpatie rufaa aende katika wadi ya dharura",
+        "text": "Dalili ya Hatari! Mpatie rufaa aende katika wodi ya dharura",
         "text_color": "#CF0800",
         "toaster_type": "problem",
         "relevance": {
@@ -381,7 +381,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "fundal_height",
         "type": "edit_text",
-        "hint": "Kimo cha tumbo (CM)",
+        "hint": "Kimo cha mimba (CM)",
         "calculation": {
           "rules-engine": {
             "ex-rules": {
@@ -398,11 +398,11 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Inahitajika"
+          "err": "Tafadhali ingiza kimo cha mimba"
         },
         "v_numeric": {
           "value": "true",
-          "err": "Lazima iwe tarakimu"
+          "err": "Tafadhali ingiza kimo cha mimba"
         },
         "v_min": {
           "value": "12",
@@ -410,7 +410,7 @@
         },
         "v_max": {
           "value": "36",
-          "err": "Kimo cha Mimba lazima kiwe sawa au chini ya kuliko 36 CM"
+          "err": "Kimo cha mimba lazima kiwe sawa au chini ya 36 CM"
         }
       },
       {

@@ -497,7 +497,7 @@
         "openmrs_entity_id": "fundal_height",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "hint": "Kimo cha mimba",
+        "hint": "Kimo cha mimba (CM)",
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -507,16 +507,16 @@
         },
         "v_numeric": {
           "value": "true",
-          "err": "Tafadhali ingiza kiwango cha kimo cha mimba"
+          "err": "Tafadhali ingiza kimo cha mimba"
         },
         "v_min": {},
         "v_max": {
           "value": "36",
-          "err": "Kiwango cha kimo cha mimba lazima kiwe sawasawa au chini ya 36 CM"
+          "err": "Kimo cha mimba lazima kiwe sawa au chini ya 36 CM"
         },
         "v_required": {
           "value": "true",
-          "err": "Tafadhali ingiza kiwango cha kimo cha mimba"
+          "err": "Tafadhali ingiza kimo cha mimba"
         }
       },
       {
@@ -570,34 +570,15 @@
         }
       },
       {
-        "key": "lie_other",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "lie_other",
-        "type": "edit_text",
-        "edit_type": "name",
-        "hint": "Mlalo mwingine",
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhali bainisha mlalo"
-        },
-        "relevance": {
-          "step1:lie": {
-            "type": "string",
-            "ex": "equalTo(., \"other\")"
-          }
-        }
-      },
-      {
         "key": "presentation",
         "type": "spinner",
         "openmrs_entity_id": "presentation",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "hint": "Mkao wa mtoto tumboni",
+        "hint": "Kitangulizi cha mtoto",
         "values": [
-          "Miguu chini",
-          "Kichwa chini"
+          "Makalio",
+          "Kichwa"
         ],
         "keys": [
           "breech",
@@ -616,26 +597,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Tafadhali chagua chaguo kwa ajili ya mkao wa mtoto tumboni"
-        }
-      },
-      {
-        "key": "presentation_other",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "presentation_other",
-        "type": "edit_text",
-        "edit_type": "name",
-        "hint": "Mkao mwingine",
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhali bainisha mkao "
-        },
-        "relevance": {
-          "step1:presentation": {
-            "type": "string",
-            "ex": "equalTo(., \"other\")"
-          }
+          "err": "Tafadhali chagua chaguo kwa ajili ya kitangulizi cha mtoto"
         }
       },
       {
@@ -657,7 +619,7 @@
       {
         "key": "fetal_heart_rate",
         "type": "edit_text",
-        "hint": "Hesabu mapigo ya moyo ya mtoto",
+        "hint": "Hesabu kiwango cha mapigo ya moyo wa mtoto (bpm)",
         "openmrs_entity_id": "fetal_heart_rate",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -667,11 +629,11 @@
         },
         "v_min": {
           "value": "0",
-          "err":  "Mapigo ya moyo ya mtoto lazima yawe sawasawa au zaidi ya 0"
+          "err": "Kiwango cha mapigo ya moyo wa mtoto lazima kiwe sawasawa au zaidi ya 0"
         },
         "v_max": {
           "value": "300",
-          "err": "Mapigo ya moyo ya mtoto lazima yawe sawasawa au chini ya 300"
+          "err": "Kiwango cha mapigo ya moyo wa mtoto lazima kiwe sawasawa au chini ya 300"
         },
         "v_required": {
           "value": "true",
@@ -730,7 +692,7 @@
       {
         "key": "prompt_for_vaginal_discharge",
         "type": "toaster_notes",
-        "text": "Bainisha sababu za kutokwa na usaha ukeni na dhibiti hali hii kulingana na Mouongozo wa Wizara ya Afya.",
+        "text": "Bainisha sababu za kutokwa na uchafu ukeni na dhibiti hali hii kulingana na Mouongozo wa Wizara ya Afya",
         "openmrs_entity_id": "prompt_for_vaginal_discharge",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",

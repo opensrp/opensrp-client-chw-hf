@@ -115,7 +115,7 @@
       {
         "key": "prompt_for_confirm_hiv_results",
         "type": "toaster_notes",
-        "text": "Conduct another DNA PCR test on the child to confirm the HIV status",
+        "text": "Fanya kipimo kingine cha DNA PCR kwa mtoto ili kudhibitisha hali ya maambukizi ya VVU",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",

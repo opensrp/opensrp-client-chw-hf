@@ -272,7 +272,7 @@
         "openmrs_entity_id": "fundal_height",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "hint": "Ukubwa wa mimba (CM)",
+        "hint": "Kimo cha mimba (CM)",
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -282,22 +282,22 @@
         },
         "v_numeric": {
           "value": "true",
-          "err": "Tafadhali ingiza ukubwa wa mimba"
+          "err": "Tafadhali ingiza kimo cha mimba"
         },
         "v_min": {},
         "v_max": {
           "value": "36",
-          "err": "Ukubwa wa mimba lazima uwe sawasawa au chini ya 36 CM"
+          "err": "Kimo cha mimba lazima kiwe sawa au chini ya 36 CM"
         },
         "v_required": {
           "value": "true",
-          "err": "Tafadhali ingiza ukubwa wa mimba"
+          "err": "Tafadhali ingiza kimo cha mimba"
         }
       },
       {
         "key": "fetal_heart_rate",
         "type": "edit_text",
-        "hint": "Hesabu Kiwango cha Moyo wa mtoto (bpm)",
+        "hint": "Hesabu kiwango cha mapigo ya moyo wa mtoto (bpm)",
         "openmrs_entity_id": "fetal_heart_rate",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -392,34 +392,15 @@
         }
       },
       {
-        "key": "lie_other",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "lie_other",
-        "type": "edit_text",
-        "edit_type": "name",
-        "hint": "Mlalo mwingine",
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhali bainisha mlalo wa mtoto"
-        },
-        "relevance": {
-          "step1:lie": {
-            "type": "string",
-            "ex": "equalTo(., \"other\")"
-          }
-        }
-      },
-      {
         "key": "presentation",
         "type": "spinner",
         "openmrs_entity_id": "presentation",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "hint": "Mkao wa mtoto",
+        "hint": "Kitangulizi cha mtoto",
         "values": [
-          "Miguu chini",
-          "Kichwa chini"
+          "Makalio",
+          "Kichwa"
         ],
         "keys": [
           "breech",
@@ -438,26 +419,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Tafadhali chagua chaguo kwa ajili ya mlalo wa mtoto"
-        }
-      },
-      {
-        "key": "presentation_other",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "presentation_other",
-        "type": "edit_text",
-        "edit_type": "name",
-        "hint": "Mlalo mwingine",
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhali bainisha mlalo wa mtoto"
-        },
-        "relevance": {
-          "step1:presentation": {
-            "type": "string",
-            "ex": "equalTo(., \"other\")"
-          }
+          "err": "Tafadhali chagua chaguo kwa ajili ya kitangulizi cha mtoto"
         }
       },
       {
