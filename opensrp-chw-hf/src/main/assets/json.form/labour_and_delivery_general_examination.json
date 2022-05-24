@@ -307,6 +307,13 @@
         "type": "native_radio",
         "options": [
           {
+            "key": "-",
+            "text": "-",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "-"
+          },
+          {
             "key": "+",
             "text": "+",
             "openmrs_entity_parent": "",
@@ -339,6 +346,12 @@
         "type": "native_radio",
         "options": [
           {
+            "key": "-",
+            "text": "-",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "-"
+          },{
             "key": "+",
             "text": "+",
             "openmrs_entity_parent": "",

@@ -260,6 +260,13 @@
         "type": "native_radio",
         "options": [
           {
+            "key": "-",
+            "text": "-",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "-"
+          },
+          {
             "key": "+",
             "text": "+",
             "openmrs_entity_parent": "",
@@ -292,6 +299,13 @@
         "type": "native_radio",
         "options": [
           {
+            "key": "-",
+            "text": "-",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "-"
+          },
+          {
             "key": "+",
             "text": "+",
             "openmrs_entity_parent": "",
@@ -319,47 +333,12 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "urine_volume",
-        "label": "Urine Volume(Output)",
         "text_color": "#000000",
-        "type": "native_radio",
-        "options": [
-          {
-            "key": "+",
-            "text": "+",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "+"
-          },
-          {
-            "key": "++",
-            "text": "++",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "++"
-          },
-          {
-            "key": "+++",
-            "text": "+++",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "+++"
-          }
-        ]
-      },
-      {
-        "key": "prompt_for_urine",
-        "type": "toaster_notes",
-        "text": "Manage or refer for further management",
-        "openmrs_entity_id": "",
-        "openmrs_entity": "",
-        "openmrs_entity_parent": "",
-        "toaster_type": "problem",
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "labour_and_delivery_mother_wellbeing_relevance.yml"
-            }
-          }
+        "type": "edit_text",
+        "hint": "Urine Volume(Output) in ml",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the urine volume"
         }
       }
     ]
