@@ -231,7 +231,8 @@
     <string name="feeding_practice_bf_plus">BF</string>
     <string name="feeding_practice_rf_plus">RF</string>
     <string name="feeding_practice_sbf">SBF</string>
-    <string name="next_facility_visit_date">Tarehe ya Uthurio Lijalo: {0}</string>
+    <string name="next_facility_visit_date">Tarehe ya Hudhurio Lijalo: {0}</string>
+    <string name="next_visit_date">Hudhurio Lijalo: {0}</string>
 
 
     <!-- Advanced search screen-->

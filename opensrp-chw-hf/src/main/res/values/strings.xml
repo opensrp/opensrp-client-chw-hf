@@ -220,6 +220,7 @@
     <string name="feeding_practice_sbf">SBF</string>
     <string name="dna_pcr_sample">DNA PCR SAMPLE ID : {0}</string>
     <string name="next_facility_visit_date">Next Facility Visit Date: {0}</string>
+    <string name="next_visit_date">Next Visit: {0}</string>
 
 
     <string name="search">Search</string>
