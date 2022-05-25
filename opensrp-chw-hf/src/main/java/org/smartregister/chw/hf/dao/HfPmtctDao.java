@@ -5,6 +5,7 @@ import org.joda.time.Months;
 import org.smartregister.chw.core.dao.CorePmtctDao;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.pmtct.domain.MemberObject;
+import org.smartregister.clientandeventmodel.DateUtil;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -427,5 +428,25 @@ public class HfPmtctDao extends CorePmtctDao {
 
         List<List<String>> res = readData(sql, dataMap);
         return res == null || res.size() <= 0;
+    }
+
+    public static Date getNextFacilityVisitDate(String baseEntityID) {
+        //get next followup visit date
+        String sql = "SELECT next_facility_visit_date FROM ec_pmtct_followup WHERE followup_status <> 'lost_to_followup' AND followup_status <> 'transfer_out' AND entity_id = '" + baseEntityID + "'"
+                + " ORDER BY visit_number DESC "
+                + "LIMIT 1";
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "next_facility_visit_date");
+
+        List<String> res = readData(sql, dataMap);
+        if (res == null || res.size() != 1 || res.get(0) == null)
+            return null;
+        Date date = null;
+        try {
+            date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).parse(res.get(0));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return date;
     }
 }
