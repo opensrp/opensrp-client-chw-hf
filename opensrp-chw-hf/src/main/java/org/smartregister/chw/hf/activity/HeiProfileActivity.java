@@ -414,21 +414,19 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
             String motherBaseEntityId = HeiDao.getMotherBaseEntityId(baseEntityId);
             if (StringUtils.isNotBlank(motherBaseEntityId)) {
                 CommonPersonObjectClient mother = getCommonPersonObjectClient(HeiDao.getMotherBaseEntityId(baseEntityId));
-                if (mother.getColumnmaps() != null) {
-                    try {
-                        Map<String, String> details = mother.getColumnmaps();
-                        String famName = details.get(DBConstants.KEY.LAST_NAME);
-                        JSONObject stepOne = childEnrollmentForm.getJSONObject(JsonFormUtils.STEP1);
-                        JSONArray jsonArray = stepOne.getJSONArray(JsonFormUtils.FIELDS);
+                try {
+                    Map<String, String> details = mother.getColumnmaps();
+                    String famName = details.get(DBConstants.KEY.LAST_NAME);
+                    JSONObject stepOne = childEnrollmentForm.getJSONObject(JsonFormUtils.STEP1);
+                    JSONArray jsonArray = stepOne.getJSONArray(JsonFormUtils.FIELDS);
 
-                        Map<String, String> values = new HashMap<>();
+                    Map<String, String> values = new HashMap<>();
 
-                        assert famName != null;
-                        values.put(CoreConstants.JsonAssets.FAM_NAME, famName);
-                        org.smartregister.chw.core.utils.FormUtils.updateFormField(jsonArray, values);
-                    } catch (Exception e) {
-                        Timber.e(e);
-                    }
+                    assert famName != null;
+                    values.put(CoreConstants.JsonAssets.FAM_NAME, famName);
+                    org.smartregister.chw.core.utils.FormUtils.updateFormField(jsonArray, values);
+                } catch (Exception e) {
+                    Timber.e(e);
                 }
             } else {
                 try {
