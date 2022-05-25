@@ -4,4 +4,4 @@ description: monthly
 priority: 1
 condition: "true"
 actions:
-  - "pmtctFollowUpRule.isValid(32,56,365)"
+  - "pmtctFollowUpRule.updateDueDates()"
