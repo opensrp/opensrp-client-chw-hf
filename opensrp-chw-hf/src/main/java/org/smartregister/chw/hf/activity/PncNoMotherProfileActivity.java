@@ -13,6 +13,7 @@ import org.joda.time.DateTime;
 import org.joda.time.Days;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.anc.domain.MemberObject;
@@ -130,6 +131,14 @@ public class PncNoMotherProfileActivity extends PncMemberProfileActivity {
         if (formName.equals(CoreConstants.JSON_FORM.getChildRegister())) {
             CoreChildProfileInteractor childProfileInteractor = new CoreChildProfileInteractor();
             childEnrollmentForm = childProfileInteractor.getAutoPopulatedJsonEditFormString(CoreConstants.JSON_FORM.getChildRegister(), (title_resource != null) ? getResources().getString(title_resource) : null, this, client);
+            try {
+                JSONObject stepOne = childEnrollmentForm.getJSONObject(JsonFormUtils.STEP1);
+                JSONArray fields = stepOne.getJSONArray(JsonFormUtils.FIELDS);
+                JSONObject sameAsFamName = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "same_as_fam_name");
+                sameAsFamName.put("type", "hidden");
+            } catch (Exception e) {
+                Timber.e(e);
+            }
         }
         try {
             assert childEnrollmentForm != null;
