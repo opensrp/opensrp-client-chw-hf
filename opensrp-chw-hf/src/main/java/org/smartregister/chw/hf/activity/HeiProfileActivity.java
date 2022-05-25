@@ -51,7 +51,9 @@ import org.smartregister.repository.AllSharedPreferences;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.annotation.Nullable;
 
@@ -409,6 +411,23 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
         if (formName.equals(CoreConstants.JSON_FORM.getChildRegister())) {
             CoreChildProfileInteractor childProfileInteractor = new CoreChildProfileInteractor();
             childEnrollmentForm = childProfileInteractor.getAutoPopulatedJsonEditFormString(CoreConstants.JSON_FORM.getChildRegister(), (title_resource != null) ? getResources().getString(title_resource) : null, this, client);
+            CommonPersonObjectClient mother = getCommonPersonObjectClient(HeiDao.getMotherBaseEntityId(baseEntityId));
+            if (mother.getColumnmaps() != null) {
+                try {
+                    Map<String, String> details = mother.getColumnmaps();
+                    String famName = details.get(DBConstants.KEY.LAST_NAME);
+                    JSONObject stepOne = childEnrollmentForm.getJSONObject(JsonFormUtils.STEP1);
+                    JSONArray jsonArray = stepOne.getJSONArray(JsonFormUtils.FIELDS);
+
+                    Map<String, String> values = new HashMap<>();
+
+                    assert famName != null;
+                    values.put(CoreConstants.JsonAssets.FAM_NAME, famName);
+                    org.smartregister.chw.core.utils.FormUtils.updateFormField(jsonArray, values);
+                } catch (Exception e) {
+                    Timber.e(e);
+                }
+            }
         }
         try {
             assert childEnrollmentForm != null;
