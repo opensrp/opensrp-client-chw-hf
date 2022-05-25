@@ -49,6 +49,14 @@
             "field": "obs.fieldCode",
             "concept": "is_transfer_in_client"
           }
+        },
+        {
+          "column_name": "next_facility_visit_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "next_facility_visit_date"
+          }
         }
       ]
     },

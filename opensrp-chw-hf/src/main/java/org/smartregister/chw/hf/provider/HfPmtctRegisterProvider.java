@@ -131,7 +131,7 @@ public class HfPmtctRegisterProvider extends CorePmtctRegisterProvider {
         @Override
         protected Void doInBackground(Void... voids) {
             Date startRegisterDate = HfPmtctDao.getPmtctRegisterDate(baseEntityId);
-            Date followUpDate = HfPmtctDao.getNextFacilityVisitDate(baseEntityId) != null ? HfPmtctDao.getNextFacilityVisitDate(baseEntityId) : HfPmtctDao.getPmtctFollowUpVisitDate(baseEntityId);
+            Date followUpDate = HfPmtctDao.getNextFacilityVisitDate(baseEntityId);
             pmtctFollowUpRule = HfHomeVisitUtil.getPmtctVisitStatus(startRegisterDate, followUpDate, baseEntityId);
             return null;
         }
