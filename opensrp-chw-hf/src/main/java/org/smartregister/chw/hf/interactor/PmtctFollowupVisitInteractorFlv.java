@@ -9,6 +9,7 @@ import org.json.JSONObject;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.core.utils.FormUtils;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.actionhelper.NextFollowupVisitAction;
 import org.smartregister.chw.hf.actionhelper.PmtctArvLineAction;
 import org.smartregister.chw.hf.actionhelper.PmtctBaselineInvestigationAction;
 import org.smartregister.chw.hf.actionhelper.PmtctCd4SampleCollection;
@@ -135,92 +136,6 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
 
     }
 
-    private class PmtctFollowupStatusAction extends org.smartregister.chw.hf.actionhelper.PmtctFollowupStatusAction {
-        Map<String, List<VisitDetail>> details;
-        BasePmtctHomeVisitContract.View view;
-        MemberObject memberObject;
-        BasePmtctHomeVisitContract.InteractorCallBack callBack;
-
-        public PmtctFollowupStatusAction(BasePmtctHomeVisitContract.View view, MemberObject memberObject, BasePmtctHomeVisitContract.InteractorCallBack callBack, Map<String, List<VisitDetail>> details) {
-            super(memberObject);
-            this.details = details;
-            this.view = view;
-            this.memberObject = memberObject;
-            this.callBack = callBack;
-        }
-
-        @Override
-        public String evaluateSubTitle() {
-            if (StringUtils.isBlank(followup_status))
-                return null;
-
-            StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.append(view.getContext().getString(R.string.pmtct_followup_status));
-            stringBuilder.append(" ");
-            stringBuilder.append(getFollowupStatusString(followup_status, view.getContext()));
-
-            return stringBuilder.toString();
-        }
-
-        @Override
-        public BasePmtctHomeVisitAction.Status evaluateStatusOnPayload() {
-            if (StringUtils.isBlank(followup_status))
-                return BasePmtctHomeVisitAction.Status.PENDING;
-            else if (followup_status.equals("continuing_with_services")) {
-                return BasePmtctHomeVisitAction.Status.COMPLETED;
-            } else {
-                return BasePmtctHomeVisitAction.Status.PARTIALLY_COMPLETED;
-            }
-        }
-
-        @Override
-        public String postProcess(String s) {
-            Context context = view.getContext();
-            if (followup_status.equals("continuing_with_services")) {
-
-                JSONObject counsellingForm = null;
-                try {
-                    counsellingForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.getPmtctCounselling());
-
-                    JSONArray fields = counsellingForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
-                    //update visit number
-                    JSONObject visitNumber = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "visit_number");
-                    visitNumber.put(JsonFormUtils.VALUE, HfPmtctDao.getVisitNumber(memberObject.getBaseEntityId()));
-
-                    //loads details to the form
-                    if (details != null && !details.isEmpty()) {
-                        JsonFormUtils.populateForm(counsellingForm, details);
-                    }
-                    BasePmtctHomeVisitAction Counselling = new BasePmtctHomeVisitAction.Builder(context, context.getString(R.string.pmtct_counselling_title))
-                            .withOptional(true)
-                            .withDetails(details)
-                            .withFormName(Constants.JsonForm.getPmtctCounselling())
-                            .withJsonPayload(counsellingForm.toString())
-                            .withHelper(new PmtctCounsellingAction(memberObject))
-                            .build();
-                    actionList.put(context.getString(R.string.pmtct_counselling_title), Counselling);
-
-                } catch (JSONException e) {
-                    Timber.e(e);
-                } catch (BasePmtctHomeVisitAction.ValidationException e) {
-                    e.printStackTrace();
-                }
-                addActions(details, memberObject, context);
-
-            } else {
-                actionList.remove(context.getString(R.string.pmtct_counselling_title));
-                actionList.remove(context.getString(R.string.pmtct_baseline_investigation_title));
-                actionList.remove(context.getString(R.string.hvl_sample_collection));
-                actionList.remove(context.getString(R.string.cd4_sample_collection));
-                actionList.remove(context.getString(R.string.clinical_staging_of_hiv));
-                actionList.remove(context.getString(R.string.tb_screening_title));
-                actionList.remove(context.getString(R.string.arv_prescription_title));
-            }
-            new AppExecutors().mainThread().execute(() -> callBack.preloadActions(actionList));
-            return super.postProcess(s);
-        }
-    }
-
     private void addActions(Map<String, List<VisitDetail>> details, MemberObject memberObject, Context context) {
 
         JSONObject baselineInvestigationForm = null;
@@ -250,6 +165,23 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
             //loads details to the form
             if (details != null && !details.isEmpty()) {
                 JsonFormUtils.populateForm(tbScreeningForm, details);
+            }
+        } catch (JSONException e) {
+            Timber.e(e);
+        }
+
+        JSONObject nextVisitForm = null;
+        try {
+            nextVisitForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.getNextFacilityVisitForm());
+
+            JSONArray fields = nextVisitForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+            //update visit number
+            JSONObject visitNumber = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "visit_number");
+            visitNumber.put(JsonFormUtils.VALUE, HfPmtctDao.getVisitNumber(memberObject.getBaseEntityId()));
+
+            //loads details to the form
+            if (details != null && !details.isEmpty()) {
+                JsonFormUtils.populateForm(nextVisitForm, details);
             }
         } catch (JSONException e) {
             Timber.e(e);
@@ -339,6 +271,19 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
         } catch (BasePmtctHomeVisitAction.ValidationException e) {
             e.printStackTrace();
         }
+
+        try {
+            BasePmtctHomeVisitAction NextFollowupVisitDate = new BasePmtctHomeVisitAction.Builder(context, context.getString(R.string.next_visit))
+                    .withOptional(true)
+                    .withDetails(details)
+                    .withFormName(Constants.JsonForm.getNextFacilityVisitForm())
+                    .withJsonPayload(nextVisitForm.toString())
+                    .withHelper(new NextFollowupVisitAction())
+                    .build();
+            actionList.put(context.getString(R.string.next_visit), NextFollowupVisitDate);
+        } catch (BasePmtctHomeVisitAction.ValidationException e) {
+            Timber.e(e);
+        }
     }
 
     private static class HvlSampleCollectionAction extends PmtctVisitAction {
@@ -420,6 +365,92 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
         @Override
         public void onPayloadReceived(BasePmtctHomeVisitAction basePmtctHomeVisitAction) {
             Timber.d("onPayloadReceived");
+        }
+    }
+
+    private class PmtctFollowupStatusAction extends org.smartregister.chw.hf.actionhelper.PmtctFollowupStatusAction {
+        Map<String, List<VisitDetail>> details;
+        BasePmtctHomeVisitContract.View view;
+        MemberObject memberObject;
+        BasePmtctHomeVisitContract.InteractorCallBack callBack;
+
+        public PmtctFollowupStatusAction(BasePmtctHomeVisitContract.View view, MemberObject memberObject, BasePmtctHomeVisitContract.InteractorCallBack callBack, Map<String, List<VisitDetail>> details) {
+            super(memberObject);
+            this.details = details;
+            this.view = view;
+            this.memberObject = memberObject;
+            this.callBack = callBack;
+        }
+
+        @Override
+        public String evaluateSubTitle() {
+            if (StringUtils.isBlank(followup_status))
+                return null;
+
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append(view.getContext().getString(R.string.pmtct_followup_status));
+            stringBuilder.append(" ");
+            stringBuilder.append(getFollowupStatusString(followup_status, view.getContext()));
+
+            return stringBuilder.toString();
+        }
+
+        @Override
+        public BasePmtctHomeVisitAction.Status evaluateStatusOnPayload() {
+            if (StringUtils.isBlank(followup_status))
+                return BasePmtctHomeVisitAction.Status.PENDING;
+            else if (followup_status.equals("continuing_with_services")) {
+                return BasePmtctHomeVisitAction.Status.COMPLETED;
+            } else {
+                return BasePmtctHomeVisitAction.Status.PARTIALLY_COMPLETED;
+            }
+        }
+
+        @Override
+        public String postProcess(String s) {
+            Context context = view.getContext();
+            if (followup_status.equals("continuing_with_services")) {
+
+                JSONObject counsellingForm = null;
+                try {
+                    counsellingForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.getPmtctCounselling());
+
+                    JSONArray fields = counsellingForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+                    //update visit number
+                    JSONObject visitNumber = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "visit_number");
+                    visitNumber.put(JsonFormUtils.VALUE, HfPmtctDao.getVisitNumber(memberObject.getBaseEntityId()));
+
+                    //loads details to the form
+                    if (details != null && !details.isEmpty()) {
+                        JsonFormUtils.populateForm(counsellingForm, details);
+                    }
+                    BasePmtctHomeVisitAction Counselling = new BasePmtctHomeVisitAction.Builder(context, context.getString(R.string.pmtct_counselling_title))
+                            .withOptional(true)
+                            .withDetails(details)
+                            .withFormName(Constants.JsonForm.getPmtctCounselling())
+                            .withJsonPayload(counsellingForm.toString())
+                            .withHelper(new PmtctCounsellingAction(memberObject))
+                            .build();
+                    actionList.put(context.getString(R.string.pmtct_counselling_title), Counselling);
+
+                } catch (JSONException e) {
+                    Timber.e(e);
+                } catch (BasePmtctHomeVisitAction.ValidationException e) {
+                    e.printStackTrace();
+                }
+                addActions(details, memberObject, context);
+
+            } else {
+                actionList.remove(context.getString(R.string.pmtct_counselling_title));
+                actionList.remove(context.getString(R.string.pmtct_baseline_investigation_title));
+                actionList.remove(context.getString(R.string.hvl_sample_collection));
+                actionList.remove(context.getString(R.string.cd4_sample_collection));
+                actionList.remove(context.getString(R.string.clinical_staging_of_hiv));
+                actionList.remove(context.getString(R.string.tb_screening_title));
+                actionList.remove(context.getString(R.string.arv_prescription_title));
+            }
+            new AppExecutors().mainThread().execute(() -> callBack.preloadActions(actionList));
+            return super.postProcess(s);
         }
     }
 

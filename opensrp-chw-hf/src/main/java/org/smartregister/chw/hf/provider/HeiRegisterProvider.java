@@ -28,6 +28,7 @@ import org.smartregister.provider.PmtctRegisterProvider;
 import org.smartregister.util.Utils;
 import org.smartregister.view.contract.SmartRegisterClient;
 
+import java.text.MessageFormat;
 import java.util.Date;
 import java.util.Set;
 
@@ -174,7 +175,7 @@ public class HeiRegisterProvider extends PmtctRegisterProvider {
 
         private void setVisitButtonNextDueStatus(Context context, String visitDue, Button dueButton) {
             dueButton.setTextColor(context.getResources().getColor(org.smartregister.chw.core.R.color.light_grey_text));
-            dueButton.setText(context.getString(org.smartregister.chw.core.R.string.hiv_visit_day_next_due, visitDue));
+            dueButton.setText(MessageFormat.format(context.getString(R.string.next_visit_date), visitDue));
             dueButton.setBackgroundResource(org.smartregister.chw.core.R.drawable.colorless_btn_selector);
             dueButton.setOnClickListener(null);
         }

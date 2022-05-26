@@ -57,6 +57,7 @@ public class PmtctVisitUtils extends VisitUtils {
                     boolean isClinicalStagingDone = computeCompletionStatus(obs, "clinical_staging_disease");
                     boolean isTbScreeningDone = computeCompletionStatus(obs, "on_tb_treatment");
                     boolean isArvPrescriptionDone = computeCompletionStatus(obs, "prescribed_regimes");
+                    boolean isNextVisitSet = computeCompletionStatus(obs, "next_facility_visit_date");
 
                     boolean isBaselineInvestigationComplete = computeCompletionStatus(obs, "liver_function_test_conducted") && computeCompletionStatus(obs, "renal_function_test_conducted");
                     boolean isHvlSampleCollectionComplete = computeCompletionStatus(obs, "hvl_sample_id");
@@ -70,6 +71,7 @@ public class PmtctVisitUtils extends VisitUtils {
                         checks.add(isClinicalStagingDone);
                         checks.add(isTbScreeningDone);
                         checks.add(isArvPrescriptionDone);
+                        checks.add(isNextVisitSet);
 
 //                        if (HfPmtctDao.isEligibleForHlvTest(baseEntityId)) {
 //                            checks.add(isHvlSampleCollectionComplete);
