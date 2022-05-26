@@ -208,6 +208,9 @@
     <string name="hvl_result_positive">positive</string>
     <string name="hvl_result_negative">negative</string>
 
+    <string name="no_mother_children">No Mother Children</string>
+    <string name="no_mother_child_reg">No Mother Child Registration</string>
+
     <!-- HEI Medical History -->
     <string name="hei_visit_title">HEI Visit {0}: {1}, Age {2}</string>
     <string name="hei_type_of_visit">Type of visit: {0}</string>

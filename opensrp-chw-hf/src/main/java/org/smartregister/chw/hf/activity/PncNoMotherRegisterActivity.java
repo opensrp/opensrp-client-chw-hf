@@ -98,7 +98,7 @@ public class PncNoMotherRegisterActivity extends SecuredActivity {
 
             form.setWizard(true);
             form.setNavigationBackground(org.smartregister.chw.core.R.color.family_navigation);
-            form.setName(getString(R.string.pregnancy_outcome_title));
+            form.setName(getString(R.string.no_mother_child_reg));
             form.setNextLabel(this.getResources().getString(org.smartregister.chw.core.R.string.next));
             form.setPreviousLabel(this.getResources().getString(org.smartregister.chw.core.R.string.back));
 

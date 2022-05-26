@@ -12,6 +12,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.vijay.jsonwizard.utils.FormUtils;
 
 import org.apache.commons.lang3.StringUtils;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.anc.domain.MemberObject;
@@ -21,6 +22,7 @@ import org.smartregister.chw.core.activity.CoreFamilyProfileActivity;
 import org.smartregister.chw.core.activity.CorePncMemberProfileActivity;
 import org.smartregister.chw.core.activity.CorePncRegisterActivity;
 import org.smartregister.chw.core.dao.ChwNotificationDao;
+import org.smartregister.chw.core.interactor.CoreChildProfileInteractor;
 import org.smartregister.chw.core.interactor.CorePncMemberProfileInteractor;
 import org.smartregister.chw.core.model.ChildModel;
 import org.smartregister.chw.core.utils.CoreConstants;
@@ -50,7 +52,9 @@ import org.smartregister.family.util.Utils;
 import org.smartregister.repository.AllSharedPreferences;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -238,6 +242,44 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int itemId = item.getItemId();
+        if (itemId == org.smartregister.chw.core.R.id.action_pnc_registration) {
+            getEditMenuItem(item);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void getEditMenuItem(MenuItem item) {
+        if (getChildren(memberObject).size() > 0) {
+            for (CommonPersonObjectClient child : getChildren(memberObject)) {
+                for (Map.Entry<String, String> entry : menuItemEditNames.entrySet()) {
+                    if (entry.getKey().equalsIgnoreCase(item.getTitle().toString()) && entry.getValue().equalsIgnoreCase(child.entityId())) {
+                        CoreChildProfileInteractor childProfileInteractor = new CoreChildProfileInteractor();
+                        JSONObject childEnrollmentForm = childProfileInteractor.getAutoPopulatedJsonEditFormString(CoreConstants.JSON_FORM.getChildRegister(), entry.getKey(), this, child);
+                        try {
+                            String famName = memberObject.getLastName();
+                            JSONObject stepOne = childEnrollmentForm.getJSONObject(JsonFormUtils.STEP1);
+                            JSONArray jsonArray = stepOne.getJSONArray(JsonFormUtils.FIELDS);
+
+                            Map<String, String> values = new HashMap<>();
+
+                            assert famName != null;
+                            values.put(CoreConstants.JsonAssets.FAM_NAME, famName);
+                            org.smartregister.chw.core.utils.FormUtils.updateFormField(jsonArray, values);
+                        } catch (Exception e) {
+                            Timber.e(e);
+                        }
+                        startFormForEdit(org.smartregister.chw.anc.util.JsonFormUtils.setRequiredFieldsToFalseForPncChild(childEnrollmentForm, memberObject.getFamilyBaseEntityId(),
+                                memberObject.getBaseEntityId()));
+                    }
+                }
+            }
+        }
+    }
+
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode != RESULT_OK)
@@ -270,6 +312,14 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
                         Toast.makeText(this, getString(R.string.saved_child_followup), Toast.LENGTH_SHORT).show();
                     } catch (Exception ex) {
                         Timber.e(ex);
+                    }
+                } else if (encounterType.equalsIgnoreCase(CoreConstants.EventType.UPDATE_CHILD_REGISTRATION)) {
+                    String childBaseEntityId = form.getString(JsonFormUtils.ENTITY_ID);
+                    if (childBaseEntityId != null) {
+                        FamilyEventClient familyEventClient =
+                                new FamilyProfileModel(memberObject.getFamilyName()).processUpdateMemberRegistration(jsonString, childBaseEntityId);
+                        familyEventClient.getEvent().setEventType(CoreConstants.EventType.UPDATE_CHILD_REGISTRATION);
+                        new FamilyProfileInteractor().saveRegistration(familyEventClient, jsonString, true, (FamilyProfileContract.InteractorCallBack) pncMemberProfilePresenter());
                     }
                 }
             } catch (JSONException jsonException) {
