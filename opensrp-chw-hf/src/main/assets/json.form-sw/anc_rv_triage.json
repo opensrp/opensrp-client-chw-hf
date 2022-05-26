@@ -310,7 +310,7 @@
           },
           {
             "key": "reduced_fetal_movement",
-            "text": "Kupungua mtoto kucheza",
+            "text": "Kupungua au kutosikia mtoto akicheza",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "reduced_fetal_movement"
