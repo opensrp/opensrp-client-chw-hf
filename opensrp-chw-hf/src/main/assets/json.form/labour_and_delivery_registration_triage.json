@@ -195,6 +195,22 @@
         }
       },
       {
+        "key": "prompt_for_respiratory_rate",
+        "type": "toaster_notes",
+        "text": "Manage according to National guideline",
+        "openmrs_entity_id": "prompt_for_respiratory_rate",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_triage_relevance.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "fetal_heart_rate",
         "type": "edit_text",
         "hint": "Count Fetal Heart Rate (bpm)",
