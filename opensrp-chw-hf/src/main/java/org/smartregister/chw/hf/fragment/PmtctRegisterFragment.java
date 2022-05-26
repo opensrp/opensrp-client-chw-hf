@@ -8,6 +8,7 @@ import com.google.android.material.tabs.TabLayout;
 
 import org.apache.commons.lang3.StringUtils;
 import org.smartregister.chw.core.fragment.CorePmtctRegisterFragment;
+import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.activity.PmtctProfileActivity;
 import org.smartregister.chw.hf.activity.PmtctRegisterActivity;
@@ -17,6 +18,7 @@ import org.smartregister.chw.hf.provider.HfPmtctRegisterProvider;
 import org.smartregister.configurableviews.model.View;
 import org.smartregister.cursoradapter.RecyclerViewPaginatedAdapter;
 import org.smartregister.cursoradapter.SmartRegisterQueryBuilder;
+import org.smartregister.family.util.DBConstants;
 
 import java.text.MessageFormat;
 import java.util.Set;
@@ -26,6 +28,8 @@ import androidx.loader.content.Loader;
 import timber.log.Timber;
 
 public class PmtctRegisterFragment extends CorePmtctRegisterFragment {
+
+    String customGroupFilter;
 
     @Override
     public void initializeAdapter(Set<View> visibleColumns) {
@@ -50,6 +54,7 @@ public class PmtctRegisterFragment extends CorePmtctRegisterFragment {
         presenter = new PmtctRegisterFragmentPresenter(this, new PmtctRegisterFragmentModel(), viewConfigurationIdentifier);
 
     }
+
     @Override
     public Loader<Cursor> onCreateLoader(int id, final Bundle args) {
         if (id == LOADER_ID) {
@@ -75,7 +80,15 @@ public class PmtctRegisterFragment extends CorePmtctRegisterFragment {
         String query = "";
         StringBuilder customFilter = new StringBuilder();
         if (StringUtils.isNotBlank(filters)) {
-            customFilter.append(MessageFormat.format((" and ( {0} ) "), filters));
+            customFilter.append(MessageFormat.format(" and ( {0}.{1} like ''%{2}%'' ", CoreConstants.TABLE_NAME.FAMILY_MEMBER, DBConstants.KEY.FIRST_NAME, filters));
+            customFilter.append(MessageFormat.format(" or {0}.{1} like ''%{2}%'' ", CoreConstants.TABLE_NAME.FAMILY_MEMBER, DBConstants.KEY.LAST_NAME, filters));
+            customFilter.append(MessageFormat.format(" or {0}.{1} like ''%{2}%'' ", CoreConstants.TABLE_NAME.FAMILY_MEMBER, DBConstants.KEY.MIDDLE_NAME, filters));
+            customFilter.append(MessageFormat.format(" or {0}.{1} like ''%{2}%'' ) ", CoreConstants.TABLE_NAME.FAMILY_MEMBER, DBConstants.KEY.UNIQUE_ID, filters));
+        }
+
+
+        if (StringUtils.isNotBlank(customGroupFilter)) {
+            customFilter.append(MessageFormat.format((" and ( {0} ) "), customGroupFilter));
         }
         try {
             sqb.addCondition(customFilter.toString());
@@ -85,6 +98,47 @@ public class PmtctRegisterFragment extends CorePmtctRegisterFragment {
             Log.e(getClass().getName(), e.toString(), e);
         }
         return query;
+    }
+
+    @Override
+    public void countExecute() {
+        Cursor c = null;
+        try {
+
+            String query = "select count(*) from " + presenter().getMainTable() + " inner join " + CoreConstants.TABLE_NAME.FAMILY_MEMBER +
+                    " on " + presenter().getMainTable() + "." + org.smartregister.chw.anc.util.DBConstants.KEY.BASE_ENTITY_ID + " = " +
+                    CoreConstants.TABLE_NAME.FAMILY_MEMBER + "." + org.smartregister.chw.anc.util.DBConstants.KEY.BASE_ENTITY_ID +
+                    " where " + presenter().getMainCondition();
+
+            if (StringUtils.isNotBlank(filters)) {
+                query = query + " and ( " + CoreConstants.TABLE_NAME.FAMILY_MEMBER + "." + DBConstants.KEY.FIRST_NAME + "like ''%" + filters + "%'' ";
+                query = query + " or " + CoreConstants.TABLE_NAME.FAMILY_MEMBER + "." + DBConstants.KEY.LAST_NAME + "like ''%" + filters + "%'' ";
+                query = query + " or " + CoreConstants.TABLE_NAME.FAMILY_MEMBER + "." + DBConstants.KEY.MIDDLE_NAME + "like ''%" + filters + "%'' ";
+                query = query + " 0r " + CoreConstants.TABLE_NAME.FAMILY_MEMBER + "." + DBConstants.KEY.UNIQUE_ID + "like ''%" + filters + "%'' )";
+
+            }
+
+
+            if (StringUtils.isNotBlank(customGroupFilter)) {
+                query = query + " and ( " + customGroupFilter + " ) ";
+            }
+
+
+            c = commonRepository().rawCustomQueryForAdapter(query);
+            c.moveToFirst();
+            clientAdapter.setTotalcount(c.getInt(0));
+            Timber.v("total count here %s", clientAdapter.getTotalcount());
+
+            clientAdapter.setCurrentlimit(20);
+            clientAdapter.setCurrentoffset(0);
+
+        } catch (Exception e) {
+            Timber.e(e);
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+        }
     }
 
     @Override
@@ -112,13 +166,16 @@ public class PmtctRegisterFragment extends CorePmtctRegisterFragment {
                 public void onTabSelected(TabLayout.Tab tab) {
                     switch (tab.getPosition()) {
                         case 0:
-                            filter("", "", "", false);
+                            customGroupFilter = "";
+                            filterandSortExecute();
                             break;
                         case 1:
-                            filter(getDueTomorrow(), "", getMainCondition(), false);
+                            customGroupFilter = getDueTomorrow();
+                            filterandSortExecute();
                             break;
                         case 2:
-                            filter(getMissed(), "", getMainCondition(), false);
+                            customGroupFilter = getMissed();
+                            filterandSortExecute();
                             break;
                     }
                 }
@@ -136,6 +193,7 @@ public class PmtctRegisterFragment extends CorePmtctRegisterFragment {
         }
 
     }
+
     @Override
     protected int getLayout() {
         return R.layout.fragment_hei_register;
