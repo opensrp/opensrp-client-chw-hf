@@ -5,7 +5,6 @@ import org.joda.time.Months;
 import org.smartregister.chw.core.dao.CorePmtctDao;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.pmtct.domain.MemberObject;
-import org.smartregister.clientandeventmodel.DateUtil;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
