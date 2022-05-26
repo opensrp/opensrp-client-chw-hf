@@ -244,6 +244,8 @@ public class HeiRegisterFragment extends BasePmtctRegisterFragment {
                             customGroupFilter = getMissed();
                             filterandSortExecute();
                             break;
+                        default:
+                            break;
                     }
                 }
 

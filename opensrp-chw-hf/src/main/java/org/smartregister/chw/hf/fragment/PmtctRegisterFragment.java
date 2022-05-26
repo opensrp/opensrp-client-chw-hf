@@ -177,6 +177,8 @@ public class PmtctRegisterFragment extends CorePmtctRegisterFragment {
                             customGroupFilter = getMissed();
                             filterandSortExecute();
                             break;
+                        default:
+                            break;
                     }
                 }
 
