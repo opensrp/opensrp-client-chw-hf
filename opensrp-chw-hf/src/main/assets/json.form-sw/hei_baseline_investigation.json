@@ -73,7 +73,7 @@
         },
         "v_required": {
           "value": true,
-          "err": "Please select one"
+          "err": "Tafadhali chagua aina ya hudhurio"
         }
       },
       {
@@ -81,7 +81,7 @@
         "openmrs_entity_id": "name_of_hf",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "hint": "Transferred Clinic Name",
+        "hint": "Jina la Kliniki Aliyohamishwa",
         "type": "tree",
         "tree": [],
         "relevance": {
@@ -93,7 +93,7 @@
         },
         "v_required": {
           "value": true,
-          "err": "Please specify the transferred clinic"
+          "err": "Tafadhali bainisha kliniki aliyohamishwa"
         }
       },
       {
@@ -147,8 +147,24 @@
         },
         "v_required": {
           "value": true,
-          "err": "Please select one"
+          "err": "Tafadhali chagua hali ya afya"
         },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "hei_baseline_investigation_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_health_status",
+        "type": "toaster_notes",
+        "text": "Toa rufaa kwa huduma zaidi",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -190,7 +206,7 @@
         },
         "v_required": {
           "value": true,
-          "err": "Please select one"
+          "err": "Tafadhali chagua lishe ya afya"
         },
         "relevance": {
           "rules-engine": {

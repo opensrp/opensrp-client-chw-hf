@@ -310,7 +310,7 @@
           },
           {
             "key": "reduced_fetal_movement",
-            "text": "Reduced fetal movement",
+            "text": "Reduced or no fetal movement",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "reduced_fetal_movement"

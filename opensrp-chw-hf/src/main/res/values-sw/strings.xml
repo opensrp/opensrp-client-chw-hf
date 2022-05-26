@@ -218,6 +218,10 @@
     <string name="complete_pnc_message">Mteja kamaliza udhurio la kliniki Baada ya Kujifungua (PNC) na anaweza ondolewa kwenye orodha ya Baada ya Kujifungua (PNC)</string>
     <string name="head_circumference_min_err">Mzunguko wa kichwa unatakiwa kuwa sawa au zaidi ya %s CM</string>
     <string name="return_to_all_pnc_women">Rudi kwa wateja wa PNC</string>
+    <string name="pmtct_visit">Hudhurio la PMTCT</string>
+    <string name="result">Majibu</string>
+    <string name="hvl_result_positive">chanya</string>
+    <string name="hvl_result_negative">hasi</string>
 
     <!-- HEI Medical History -->
     <string name="hei_visit_title">Hudhurio la HEI {0}: {1}, Umri {2}</string>

@@ -63,7 +63,6 @@
         "key": "iron_folate_supplements",
         "type": "native_radio",
         "label": "Iron and Folate Supplement",
-        "combine_checkbox_option_values": "true",
         "openmrs_entity_id": "iron_folate_supplements",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",

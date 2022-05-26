@@ -26,3 +26,10 @@ priority: 1
 condition: "step1_followup_status != '' && step1_followup_status.equals('transfer_out')"
 actions:
   - "isRelevant = true"
+---
+name: step1_prompt_for_health_status
+description: prompt_for_health_status relevance
+priority: 1
+condition: "step1_health_status.equals('diarrhoea') || step1_health_status.equals('draining_ears') || step1_health_status.equals('fever') || step1_health_status.equals('kaposi_sarcoma') || step1_health_status.equals('malnutrition') || step1_health_status.equals('oesophageal_candidiasis') || step1_health_status.equals('pneumonia') || step1_health_status.equals('skin_disease') || step1_health_status.equals('thrush') || step1_health_status.equals('tuberculosis') || step1_health_status.equals('lymphadenopathy')"
+actions:
+  - "isRelevant = true"

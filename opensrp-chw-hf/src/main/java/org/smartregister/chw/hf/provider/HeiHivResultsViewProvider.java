@@ -22,10 +22,12 @@ import timber.log.Timber;
 
 public class HeiHivResultsViewProvider extends HvlResultsViewProvider {
     private Set<org.smartregister.configurableviews.model.View> visibleColumns;
+    private Context context;
 
     public HeiHivResultsViewProvider(Context context, View.OnClickListener paginationClickListener, View.OnClickListener onClickListener, Set visibleColumns) {
         super(context, paginationClickListener, onClickListener, visibleColumns);
         this.visibleColumns = visibleColumns;
+        this.context = context;
     }
 
     public void getView(Cursor cursor, SmartRegisterClient smartRegisterClient, RegisterViewHolder registerViewHolder) {
@@ -48,7 +50,15 @@ public class HeiHivResultsViewProvider extends HvlResultsViewProvider {
                 viewHolder.hvlWrapper.setVisibility(View.GONE);
                 viewHolder.dueWrapper.setVisibility(View.VISIBLE);
             } else {
-                viewHolder.hvlResult.setText(hvlResult);
+
+                if (hvlResult.equalsIgnoreCase("positive")) {
+                    viewHolder.hvlResult.setText(context.getString(R.string.hvl_result_positive));
+                } else if (hvlResult.equalsIgnoreCase("negative")) {
+                    viewHolder.hvlResult.setText(context.getString(R.string.hvl_result_negative));
+                } else {
+                    viewHolder.hvlResult.setText(hvlResult);
+                }
+
                 viewHolder.hvlWrapper.setVisibility(View.VISIBLE);
                 viewHolder.dueWrapper.setVisibility(View.GONE);
             }

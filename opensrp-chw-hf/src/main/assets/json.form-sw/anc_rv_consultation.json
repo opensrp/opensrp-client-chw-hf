@@ -717,7 +717,7 @@
       {
         "key": "lymph_node_cervical",
         "type": "native_radio",
-        "label": "Nodi ya limfu (Kizazi)",
+        "label": "Nodi ya limfu (Kwenye Shingo)",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "lymph_node_cervical",
         "openmrs_entity_parent": "",
