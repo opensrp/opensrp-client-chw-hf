@@ -37,6 +37,6 @@ actions:
 name: step1_prompt_for_respiratory_rate
 description:  prompt for respiratory rate management
 priority: 1
-condition: "step1_respiratory_rate > 16 || step1_respiratory_rate < 24"
+condition: "step1_respiratory_rate < 16 || step1_respiratory_rate > 24"
 actions:
   - "isRelevant = true"
