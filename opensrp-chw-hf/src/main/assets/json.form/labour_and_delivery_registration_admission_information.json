@@ -136,7 +136,92 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "reason_for_referral",
         "type": "edit_text",
-        "hint": "Reason for Referral/Management Received"
+        "hint": "Reason for Referral/Management Received",
+        "relevance": {
+          "step1:admission_from": {
+            "type": "string",
+            "ex": "equalTo(., \"referral\")"
+          }
+        }
+      },
+      {
+        "key": "reasons_for_admission",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reasons_for_admission",
+        "type": "native_radio",
+        "label": "Please select the reason for Admission",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "labour_pain",
+            "text": "Labor Pain",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "labour_pain"
+          },
+          {
+            "key": "observation",
+            "text": "Observation",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "observation"
+          },
+          {
+            "key": "prom",
+            "text": "PROM",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "prom"
+          },
+          {
+            "key": "elective_cesarean_section",
+            "text": "Elective C/S",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "elective_cesarean_section"
+          },
+          {
+            "key": "induction",
+            "text": "Induction",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "induction"
+          },
+          {
+            "key": "other",
+            "text": "Other",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other"
+          }
+        ],
+        "relevance": {
+          "step1:admission_from": {
+            "type": "string",
+            "ex": "notEqualTo(., \"referral\")"
+          }
+        }
+      },
+      {
+        "key": "other_reason_for_admission",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reason_for_admission",
+        "type": "edit_text",
+        "hint": "Specify other reasons for admission",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the reason"
+        },
+        "relevance": {
+          "step1:reasons_for_admission": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
+          }
+        }
       }
     ]
   }
