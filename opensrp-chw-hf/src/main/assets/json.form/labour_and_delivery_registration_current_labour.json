@@ -43,7 +43,7 @@
     "encounter_location": ""
   },
   "step1": {
-    "title": "Current Labour",
+    "title": "Current Labour History",
     "fields": [
       {
         "key": "labour_onset_date",
