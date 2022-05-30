@@ -179,28 +179,28 @@
             "text": "Ø",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "nil"
+            "openmrs_entity_id": "Ø"
           },
           {
             "key": "+",
             "text": "+",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "plus_one"
+            "openmrs_entity_id": "+"
           },
           {
             "key": "++",
             "text": "++",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "plus_two"
+            "openmrs_entity_id": "++"
           },
           {
             "key": "+++",
             "text": "+++",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "plus_three"
+            "openmrs_entity_id": "+++"
           }
         ],
         "v_required": {
