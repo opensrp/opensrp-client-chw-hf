@@ -97,6 +97,30 @@
         }
       },
       {
+        "key": "oxytocin_dose",
+        "type": "edit_text",
+        "hint": "Oxytocin Dose",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "oxytocin_dose",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": true,
+          "err": "Please specify the drugs provided"
+        },
+        "relevance": {
+          "step1:drugs_administered": {
+            "type": "string",
+            "ex-checkbox": [
+              {
+                "or": [
+                  "oxytocin"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
         "key": "drugs_provided",
         "type": "edit_text",
         "hint": "Drugs (Specify)",
