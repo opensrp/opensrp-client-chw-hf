@@ -166,6 +166,49 @@
         }
       },
       {
+        "key": "caput",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "caput",
+        "label": "Caput",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "nil",
+            "text": "(Ø)",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "nil"
+          },
+          {
+            "key": "plus_one",
+            "text": "(+)",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "plus_one"
+          },
+          {
+            "key": "plus_two",
+            "text": "(++)",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "plus_two"
+          },
+          {
+            "key": "plus_three",
+            "text": "(+++)",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "plus_three"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please select an option"
+        }
+      },
+      {
         "key": "amniotic_fluid",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
