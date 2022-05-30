@@ -356,6 +356,19 @@
           "value": "true",
           "err": "Please enter the urine volume"
         }
+      },
+      {
+        "key": "oral_intake",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "oral_intake",
+        "text_color": "#000000",
+        "type": "edit_text",
+        "hint": "Oral Intake",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the oral intake"
+        }
       }
     ]
   }
