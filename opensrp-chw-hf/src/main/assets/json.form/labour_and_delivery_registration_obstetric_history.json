@@ -167,6 +167,20 @@
             }
           }
         }
+      },
+      {
+        "key": "past_medical_surgical_history",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "past_medical_surgical_history",
+        "type": "edit_text",
+        "hint": "Past Medical/Surgical History",
+        "relevance": {
+          "step1:para": {
+            "type": "numeric",
+            "ex": "greaterThan(.,\"0\")"
+          }
+        }
       }
     ]
   }

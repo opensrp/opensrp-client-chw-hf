@@ -15,6 +15,7 @@ import org.smartregister.chw.hf.actionhelper.LDRegistrationAdmissionAction;
 import org.smartregister.chw.hf.actionhelper.LDRegistrationAncClinicFindingsAction;
 import org.smartregister.chw.hf.actionhelper.LDRegistrationCurrentLabourAction;
 import org.smartregister.chw.hf.actionhelper.LDRegistrationObstetricHistoryAction;
+import org.smartregister.chw.hf.actionhelper.LDRegistrationPastObstetricHistoryAction;
 import org.smartregister.chw.hf.actionhelper.LDRegistrationTriageAction;
 import org.smartregister.chw.hf.actionhelper.LDRegistrationTrueLabourConfirmationAction;
 import org.smartregister.chw.hf.dao.HfAncDao;
@@ -275,7 +276,7 @@ public class LDRegistrationInteractorFlv implements LDRegistrationInteractor.Fla
                             .withDetails(details)
                             .withFormName(Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryObstetricHistory())
                             .withJsonPayload(obstetricForm.toString())
-                            .withHelper(new LDRegistrationObstetricHistoryAction(memberObject))
+                            .withHelper(new ObstetricHistoryAction(memberObject, actionList, details, callBack, context))
                             .build();
 
                     actionList.put(context.getString(R.string.ld_registration_obstetric_history_title), ldRegistrationObstetricHistory);
@@ -336,6 +337,46 @@ public class LDRegistrationInteractorFlv implements LDRegistrationInteractor.Fla
         }
     }
 
+    private static class ObstetricHistoryAction extends LDRegistrationObstetricHistoryAction {
+        private final LinkedHashMap<String, BaseLDVisitAction> actionList;
+        private final Context context;
+        private final Map<String, List<VisitDetail>> details;
+        private final BaseLDVisitContract.InteractorCallBack callBack;
 
+        public ObstetricHistoryAction(MemberObject memberObject, LinkedHashMap<String, BaseLDVisitAction> actionList, Map<String, List<VisitDetail>> details, BaseLDVisitContract.InteractorCallBack callBack, Context context) {
+            super(memberObject);
+            this.actionList = actionList;
+            this.details = details;
+            this.callBack = callBack;
+            this.context = context;
+        }
+
+        @Override
+        public String postProcess(String s) {
+            if (!StringUtils.isBlank(para)) {
+                //Adding the actions for capturing previous para obstetric  history when para is greater than 0 .
+                try {
+                    BaseLDVisitAction labourAndDeliveryPastObstetricHistory = new BaseLDVisitAction.Builder(context, context.getString(R.string.ld_registration_past_obstetric_history_title))
+                            .withOptional(false)
+                            .withDetails(details)
+                            .withFormName(Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryPastObstetricHistory())
+                            .withHelper(new LDRegistrationPastObstetricHistoryAction(memberObject, Integer.parseInt(para)))
+                            .build();
+
+                    actionList.put(context.getString(R.string.ld_registration_past_obstetric_history_title), labourAndDeliveryPastObstetricHistory);
+                } catch (Exception e) {
+                    Timber.e(e);
+                }
+            } else if (actionList.containsKey(context.getString(R.string.ld_registration_past_obstetric_history_title))) {
+                actionList.remove(context.getString(R.string.ld_registration_past_obstetric_history_title));
+            }
+
+
+            //Calling the callback method to preload the actions in the actionns list.
+            new AppExecutors().mainThread().execute(() -> callBack.preloadActions(actionList));
+
+            return super.postProcess(s);
+        }
+    }
 }
 

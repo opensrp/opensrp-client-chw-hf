@@ -23,7 +23,7 @@ import timber.log.Timber;
 public class LDRegistrationObstetricHistoryAction implements BaseLDVisitAction.LDVisitActionHelper {
     protected MemberObject memberObject;
     private String gravida;
-    private String para;
+    protected String para;
     private String childrenAlive;
     private String numberOfAbortion;
     private String lastMenstrualPeriod;

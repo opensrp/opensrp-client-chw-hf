@@ -1,0 +1,66 @@
+{
+  "validate_on_submit": true,
+  "count": "1",
+  "encounter_type": "Past Obstetric History",
+  "entity_id": "",
+  "relational_id": "",
+  "form_version": "0.0.1",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "step1": {
+    "title": "Past Obstetric History",
+    "fields": [
+      {
+        "key": "para_1_obstetric_history",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "para_1_obstetric_history",
+        "text": "Para 1: Obstetric History",
+        "type": "expansion_panel",
+        "content_form": "labour_and_delivery_registration_past_obstetric_history_sub_form",
+        "container": "anc_test"
+      }
+    ]
+  }
+}
