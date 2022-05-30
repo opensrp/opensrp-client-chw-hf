@@ -208,6 +208,13 @@
         "text_color": "#C0C0C0",
         "options": [
           {
+            "key": "unknown",
+            "text": "0",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "unknown"
+          },
+          {
             "key": "positive",
             "text": "1",
             "value": false,
