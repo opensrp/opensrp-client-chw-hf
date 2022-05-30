@@ -167,6 +167,32 @@
         }
       },
       {
+        "key": "movement_status",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "movement_status",
+        "type": "spinner",
+        "hint": "Movement status",
+        "values": [
+          "Active",
+          "Reduced"
+        ],
+        "keys": [
+          "active",
+          "reduced"
+        ],
+        "openmrs_choice_ids": {
+          "present": "active",
+          "absent": "reduced"
+        },
+        "relevance": {
+          "step1:fetal_movement": {
+            "type": "string",
+            "ex": "equalTo(., \"present\")"
+          }
+        }
+      },
+      {
         "key": "prompt_for_fetal_movement",
         "type": "toaster_notes",
         "text": "Provide management according to standard guideline",
