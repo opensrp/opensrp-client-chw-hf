@@ -279,6 +279,13 @@
         "v_required": {
           "value": "true",
           "err": "Please enter the last PMTCT test date"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_triage_relevance.yml"
+            }
+          }
         }
       },
       {

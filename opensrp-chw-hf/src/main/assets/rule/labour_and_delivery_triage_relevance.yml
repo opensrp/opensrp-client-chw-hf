@@ -40,3 +40,10 @@ priority: 1
 condition: "step1_respiratory_rate < 16 || step1_respiratory_rate > 24"
 actions:
   - "isRelevant = true"
+---
+name: step1_pmtct_test_date
+description:  pmtct_test_date management
+priority: 1
+condition: "!step1_hiv.equals('unknown') && !step1_hiv.equals('')"
+actions:
+  - "isRelevant = true"
