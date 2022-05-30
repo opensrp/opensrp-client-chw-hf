@@ -86,7 +86,14 @@
         "openmrs_entity_id": "number_of_abortion",
         "type": "edit_text",
         "edit_type": "number",
-        "hint": "Number of abortions"
+        "hint": "Number of abortions",
+        "constraints": [
+          {
+            "type": "numeric",
+            "ex": "lessThanEqualTo(., step1:gravida)",
+            "err": "Parity must be equal to or less than gravida"
+          }
+        ]
       },
       {
         "key": "last_menstrual_period",
