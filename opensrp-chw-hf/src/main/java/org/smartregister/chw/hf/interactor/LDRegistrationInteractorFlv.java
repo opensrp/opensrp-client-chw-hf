@@ -353,7 +353,7 @@ public class LDRegistrationInteractorFlv implements LDRegistrationInteractor.Fla
 
         @Override
         public String postProcess(String s) {
-            if (!StringUtils.isBlank(para)) {
+            if (!StringUtils.isBlank(para) && Integer.parseInt(para) > 0) {
                 //Adding the actions for capturing previous para obstetric  history when para is greater than 0 .
                 try {
                     BaseLDVisitAction labourAndDeliveryPastObstetricHistory = new BaseLDVisitAction.Builder(context, context.getString(R.string.ld_registration_past_obstetric_history_title))
