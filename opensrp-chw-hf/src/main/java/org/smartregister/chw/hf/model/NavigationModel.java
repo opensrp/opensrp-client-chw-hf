@@ -33,9 +33,9 @@ public class NavigationModel implements org.smartregister.chw.core.model.Navigat
             NavigationOption op15 = new NavigationOption(R.drawable.ic_sidemenu_labour_and_delivery, R.drawable.ic_sidemenu_labour_and_delivery_active, R.string.menu_ld, CoreConstants.DrawerMenu.LD, 0);
             if (BuildConfig.BUILD_FOR_BORESHA_AFYA_SOUTH) {
                 if (BuildConfig.BUILD_FOR_PMTCT_CASE_BASED_MANAGEMENT) {
-                    navigationOptions.addAll(Arrays.asList(op1, op3, op4, op13, op14, op15, op12));
+                    navigationOptions.addAll(Arrays.asList(op1, op3, op15, op4, op13, op14, op12));
                 } else {
-                    navigationOptions.addAll(Arrays.asList(op1, op8, op9, op10, op3, op4, op5, op13, op14, op15, op12));
+                    navigationOptions.addAll(Arrays.asList(op1, op8, op9, op10, op3,op15, op4, op5, op13, op14, op12));
                 }
             } else {
                 navigationOptions.addAll(Arrays.asList(op1, op2, op3, op4, op5, op6, op7, op12));
