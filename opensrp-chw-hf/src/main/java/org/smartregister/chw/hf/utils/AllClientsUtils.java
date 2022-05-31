@@ -33,6 +33,7 @@ import org.smartregister.chw.hf.activity.MalariaProfileActivity;
 import org.smartregister.chw.hf.activity.PncMemberProfileActivity;
 import org.smartregister.chw.hf.activity.TbProfileActivity;
 import org.smartregister.chw.hf.dao.FamilyDao;
+import org.smartregister.chw.hf.dao.HfHivDao;
 import org.smartregister.chw.hf.dao.HfHtsDao;
 import org.smartregister.chw.hf.model.FamilyDetailsModel;
 import org.smartregister.chw.hiv.dao.HivDao;
@@ -213,7 +214,7 @@ public class AllClientsUtils {
     }
 
     public static void updateHivMenuItems(String baseEntityId, Menu menu) {
-        if (HivDao.isRegisteredForHiv(baseEntityId)) {
+        if (HfHivDao.isHivMember(baseEntityId)) {
             menu.findItem(R.id.action_hiv_registration).setVisible(false);
         } else {
             menu.findItem(R.id.action_hiv_registration).setVisible(true);

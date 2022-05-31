@@ -28,6 +28,7 @@ import org.smartregister.chw.hf.BuildConfig;
 import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.custom_view.FamilyMemberFloatingMenu;
+import org.smartregister.chw.hf.dao.HfHivDao;
 import org.smartregister.chw.hf.fragment.FamilyOtherMemberProfileFragment;
 import org.smartregister.chw.hf.presenter.FamilyOtherMemberActivityPresenter;
 import org.smartregister.chw.hf.utils.Constants;
@@ -262,7 +263,7 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
 
 
         if (BuildConfig.BUILD_FOR_BORESHA_AFYA_SOUTH) {
-            menu.findItem(R.id.action_hiv_registration).setVisible(!(HivDao.isRegisteredForHiv(baseEntityId) || HivIndexDao.isRegisteredIndex(baseEntityId)));
+            menu.findItem(R.id.action_hiv_registration).setVisible(!(HfHivDao.isHivMember(baseEntityId) || HivIndexDao.isRegisteredIndex(baseEntityId)));
         }
     }
 
