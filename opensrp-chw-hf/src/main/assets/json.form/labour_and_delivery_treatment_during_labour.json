@@ -61,6 +61,9 @@
         "combine_checkbox_option_values": "true",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
+        "exclusive": [
+          "none"
+        ],
         "options": [
           {
             "key": "oxytocin",
@@ -82,11 +85,43 @@
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "iv_fluid"
+          },
+          {
+            "key": "none",
+            "text": "None",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "none"
           }
         ],
         "v_required": {
           "value": true,
           "err": "Please select at least one option"
+        }
+      },
+      {
+        "key": "oxytocin_dose",
+        "type": "edit_text",
+        "edit_type": "number",
+        "hint": "Oxytocin Dose",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "oxytocin_dose",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": true,
+          "err": "Please specify the drugs provided"
+        },
+        "relevance": {
+          "step1:drugs_administered": {
+            "type": "string",
+            "ex-checkbox": [
+              {
+                "or": [
+                  "oxytocin"
+                ]
+              }
+            ]
+          }
         }
       },
       {
