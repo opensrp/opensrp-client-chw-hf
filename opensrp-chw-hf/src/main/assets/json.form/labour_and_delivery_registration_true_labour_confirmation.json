@@ -48,7 +48,7 @@
       {
         "key": "true_labour",
         "type": "check_box",
-        "label": "True labour?",
+        "label": "Asses if the mother has any of the following",
         "combine_checkbox_option_values": "true",
         "openmrs_entity_id": "true_labour",
         "openmrs_entity": "concept",
@@ -96,6 +96,38 @@
         "v_required": {
           "value": "true",
           "err": "Please select at least one"
+        }
+      },
+      {
+        "key": "prompt_for_true_labor",
+        "type": "toaster_notes",
+        "text": "True labor! Register to Labor & Delivery ",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labor_and_delivery_registration_current_labor_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_false_labor",
+        "type": "toaster_notes",
+        "text": "False labor! Continue monitoring the mother according to guidelines",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "info",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labor_and_delivery_registration_current_labor_relevance.yml"
+            }
+          }
         }
       },
       {

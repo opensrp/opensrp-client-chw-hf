@@ -427,6 +427,13 @@
             "openmrs_entity_id": "dizziness"
           },
           {
+            "key": "pale_anaemic",
+            "text": "Pale/Anaemic",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "pale_anaemic"
+          },
+          {
             "key": "none",
             "text": "None",
             "value": false,
