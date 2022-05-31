@@ -125,9 +125,10 @@
               "err": "Please select an option"
             },
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"still_birth\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -151,9 +152,10 @@
               "err": "Please select the sex"
             },
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -166,9 +168,10 @@
             "openmrs_entity_parent": "",
             "toaster_type": "info",
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -180,9 +183,10 @@
             "type": "spacer",
             "spacer_height": "8dp",
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -198,9 +202,10 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "",
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -212,9 +217,10 @@
             "type": "spacer",
             "spacer_height": "8dp",
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -235,9 +241,10 @@
               "err": "Please enter the agpar activity score"
             },
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -249,9 +256,10 @@
             "type": "spacer",
             "spacer_height": "8dp",
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -267,9 +275,10 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "",
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -281,9 +290,10 @@
             "type": "spacer",
             "spacer_height": "8dp",
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -304,9 +314,10 @@
               "err": "Please enter the agpar pulse score"
             },
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -318,9 +329,10 @@
             "type": "spacer",
             "spacer_height": "8dp",
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -336,9 +348,10 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "",
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -350,9 +363,10 @@
             "type": "spacer",
             "spacer_height": "8dp",
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -373,9 +387,10 @@
               "err": "Please enter the agpar grimace on stimulation score"
             },
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -387,9 +402,10 @@
             "type": "spacer",
             "spacer_height": "8dp",
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -405,9 +421,10 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "",
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -419,9 +436,10 @@
             "type": "spacer",
             "spacer_height": "8dp",
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -442,9 +460,10 @@
               "err": "Please enter the agpar appearance score"
             },
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -456,9 +475,10 @@
             "type": "spacer",
             "spacer_height": "8dp",
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -474,9 +494,10 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "",
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -488,9 +509,10 @@
             "type": "spacer",
             "spacer_height": "8dp",
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -511,9 +533,10 @@
               "err": "Please enter the agpar respiration score"
             },
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -527,22 +550,7 @@
             "calculation": {
               "rules-engine": {
                 "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_calculation.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "apgar_score_at_1_minute_test",
-            "type": "hidden",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "openmrs_entity_parent": "",
-            "read_only": true,
-            "calculation": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_calculation.yml"
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
                 }
               }
             }
@@ -553,26 +561,28 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "",
             "type": "spacer",
-            "spacer_height": "15dp"
+            "spacer_height": "15dp",
+            "relevance": {
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
+              }
+            }
           },
+
           {
             "key": "prompt_for_normal_apgar_score_at_1_minute",
             "type": "toaster_notes",
-            "text": "APGAR score at 1 min, Normal: {apgar_score}",
+            "text": "APGAR score at 1 min, Normal",
             "openmrs_entity_id": "",
             "openmrs_entity": "concept",
             "openmrs_entity_parent": "",
             "toaster_type": "positive",
             "relevance": {
-              "step1:apgar_score_at_1_minute": {
-                "type": "numeric",
-                "ex": "greaterThanEqualTo(.,\"7\")"
-              }
-            },
-            "calculation": {
               "rules-engine": {
                 "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_calculation.yml"
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
                 }
               }
             }
@@ -580,25 +590,20 @@
           {
             "key": "prompt_for_abnormal_apgar_score_at_1_minute",
             "type": "toaster_notes",
-            "text": "APGAR score at 1 min, Abnormal: {apgar_score}. \nGo to emergency",
+            "text": "APGAR score at 1 min, Abnormal. \nGo to emergency",
             "openmrs_entity_id": "",
             "openmrs_entity": "concept",
             "openmrs_entity_parent": "",
             "toaster_type": "problem",
             "relevance": {
-              "step1:apgar_score_at_1_minute_test": {
-                "type": "string",
-                "ex": "equalTo(.,\"true\")"
-              }
-            },
-            "calculation": {
               "rules-engine": {
                 "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_calculation.yml"
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
                 }
               }
             }
           },
+
           {
             "key": "prompt_for_apgar_at_5_minute",
             "type": "toaster_notes",
@@ -608,9 +613,10 @@
             "openmrs_entity_parent": "",
             "toaster_type": "info",
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -622,9 +628,10 @@
             "type": "spacer",
             "spacer_height": "8dp",
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -640,9 +647,10 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "",
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -654,9 +662,10 @@
             "type": "spacer",
             "spacer_height": "8dp",
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -677,9 +686,10 @@
               "err": "Please enter the agpar activity score"
             },
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -691,9 +701,10 @@
             "type": "spacer",
             "spacer_height": "8dp",
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -709,9 +720,10 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "",
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -723,9 +735,10 @@
             "type": "spacer",
             "spacer_height": "8dp",
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -746,9 +759,10 @@
               "err": "Please enter the agpar pulse score"
             },
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -760,9 +774,10 @@
             "type": "spacer",
             "spacer_height": "8dp",
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -778,9 +793,10 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "",
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -792,9 +808,10 @@
             "type": "spacer",
             "spacer_height": "8dp",
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -815,9 +832,10 @@
               "err": "Please enter the agpar grimace on stimulation score"
             },
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -829,9 +847,10 @@
             "type": "spacer",
             "spacer_height": "8dp",
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -847,9 +866,10 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "",
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -861,9 +881,10 @@
             "type": "spacer",
             "spacer_height": "8dp",
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -884,9 +905,10 @@
               "err": "Please enter the agpar appearance score"
             },
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -898,9 +920,10 @@
             "type": "spacer",
             "spacer_height": "8dp",
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -916,9 +939,10 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "",
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -930,9 +954,10 @@
             "type": "spacer",
             "spacer_height": "8dp",
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -953,9 +978,10 @@
               "err": "Please enter the agpar respiration score"
             },
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -968,22 +994,7 @@
             "calculation": {
               "rules-engine": {
                 "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_calculation.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "apgar_score_at_5_minutes_test",
-            "type": "hidden",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "openmrs_entity_parent": "",
-            "read_only": true,
-            "calculation": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_calculation.yml"
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
                 }
               }
             }
@@ -996,30 +1007,26 @@
             "type": "spacer",
             "spacer_height": "15dp",
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
+
           {
             "key": "prompt_for_normal_apgar_score_at_5_minutes",
             "type": "toaster_notes",
-            "text": "APGAR score at 5 mins, Normal: {apgar_score}",
+            "text": "APGAR score at 5 mins, Normal",
             "openmrs_entity_id": "",
             "openmrs_entity": "concept",
             "openmrs_entity_parent": "",
             "toaster_type": "positive",
             "relevance": {
-              "step1:apgar_score_at_5_minutes": {
-                "type": "numeric",
-                "ex": "greaterThanEqualTo(.,\"7\")"
-              }
-            },
-            "calculation": {
               "rules-engine": {
                 "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_calculation.yml"
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
                 }
               }
             }
@@ -1027,25 +1034,20 @@
           {
             "key": "prompt_for_abnormal_apgar_score_at_5_minutes",
             "type": "toaster_notes",
-            "text": "APGAR score at 5 mins, Abnormal: {apgar_score}. \nGo to emergency",
+            "text": "APGAR score at 5 mins, Abnormal. \nGo to emergency",
             "openmrs_entity_id": "",
             "openmrs_entity": "concept",
             "openmrs_entity_parent": "",
             "toaster_type": "problem",
             "relevance": {
-              "step1:apgar_score_at_5_minutes_test": {
-                "type": "string",
-                "ex": "equalTo(.,\"true\")"
-              }
-            },
-            "calculation": {
               "rules-engine": {
                 "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_calculation.yml"
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
                 }
               }
             }
           },
+
           {
             "key": "resuscitation",
             "openmrs_entity_parent": "",
@@ -1089,9 +1091,10 @@
               "err": "Please select an option"
             },
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -1119,9 +1122,10 @@
               "err": "Please enter the temperature"
             },
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -1149,9 +1153,10 @@
               "err": "Please enter the weight"
             },
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -1164,9 +1169,10 @@
             "openmrs_entity_parent": "",
             "toaster_type": "problem",
             "relevance": {
-              "step1:weight": {
-                "type": "numeric",
-                "ex": "lessThan(.,\"1.5\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -1190,9 +1196,10 @@
               "err": "The heart rate must be equal or less than 200 (bpm)"
             },
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -1222,9 +1229,10 @@
               "err": "Please answer this question"
             },
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -1248,9 +1256,10 @@
               "err": "The breathing rate must be equal or less than 100 (bpm)"
             },
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -1280,9 +1289,10 @@
               "err": "Please answer this question"
             },
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -1295,9 +1305,10 @@
             "openmrs_entity_parent": "",
             "toaster_type": "problem",
             "relevance": {
-              "step1:cord_bleeding": {
-                "type": "string",
-                "ex": "equalTo(.,\"yes\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -1327,9 +1338,10 @@
               "err": "Please answer this question"
             },
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -1363,9 +1375,10 @@
               "err": "Please select a reason"
             },
             "relevance": {
-              "step1:early_bf_1hr": {
-                "type": "string",
-                "ex": "equalTo(., \"no\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -1382,9 +1395,10 @@
               "err": "Please enter the reason"
             },
             "relevance": {
-              "step1:reason_for_not_breast_feeding_within_one_hour": {
-                "type": "string",
-                "ex": "equalTo(., \"other\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -1414,9 +1428,10 @@
               "err": "Please answer this question"
             },
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -1444,9 +1459,10 @@
               "err": "Please select a reason"
             },
             "relevance": {
-              "step1:eye_care": {
-                "type": "string",
-                "ex": "equalTo(.,\"no\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -1462,9 +1478,10 @@
               "err": "Please enter the reason"
             },
             "relevance": {
-              "step1:reason_for_not_giving_eye_care": {
-                "type": "string",
-                "ex": "equalTo(., \"other\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -1494,9 +1511,10 @@
               "err": "Please answer this question"
             },
             "relevance": {
-              "step1:newborn_status": {
-                "type": "string",
-                "ex": "equalTo(.,\"alive\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -1509,9 +1527,10 @@
             "openmrs_entity_parent": "",
             "toaster_type": "problem",
             "relevance": {
-              "step1:risk_category": {
-                "type": "string",
-                "ex": "equalTo(., \"high\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -1524,12 +1543,15 @@
             "openmrs_entity_parent": "",
             "toaster_type": "problem",
             "relevance": {
-              "step1:risk_category": {
-                "type": "string",
-                "ex": "equalTo(., \"low\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
+
+
           {
             "key": "provided_azt_nvp_syrup",
             "openmrs_entity_parent": "",
@@ -1560,9 +1582,10 @@
               "err": "Please select an option"
             },
             "relevance": {
-              "step1:risk_category": {
-                "type": "string",
-                "ex": "equalTo(., \"high\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -1596,9 +1619,10 @@
               "err": "Please select an option"
             },
             "relevance": {
-              "step1:provided_azt_nvp_syrup": {
-                "type": "string",
-                "ex": "equalTo(., \"no\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -1614,23 +1638,9 @@
               "err": "Please specify the combinations"
             },
             "relevance": {
-              "step1:provided_other_combinations": {
-                "type": "string",
-                "ex": "equalTo(., \"yes\")"
-              }
-            }
-          },
-          {
-            "key": "arv_dispensed_calculation",
-            "type": "hidden",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "openmrs_entity_parent": "",
-            "read_only": true,
-            "calculation": {
               "rules-engine": {
                 "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_calculation.yml"
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
                 }
               }
             }
@@ -1660,9 +1670,10 @@
               "err": "Number of dispensed days should be less than or equal to 180"
             },
             "relevance": {
-              "step1:arv_dispensed_calculation": {
-                "type": "string",
-                "ex": "equalTo(., \"yes\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -1703,9 +1714,10 @@
               "err": "Please select an option"
             },
             "relevance": {
-              "step1:provided_other_combinations": {
-                "type": "string",
-                "ex": "equalTo(., \"no\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -1721,9 +1733,10 @@
               "err": "Please specify the other reason(s)"
             },
             "relevance": {
-              "step1:reason_for_not_providing_other_combination": {
-                "type": "string",
-                "ex": "equalTo(., \"other\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -1753,9 +1766,10 @@
               "err": "Please answer this question"
             },
             "relevance": {
-              "step1:risk_category": {
-                "type": "string",
-                "ex": "equalTo(., \"high\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -1771,9 +1785,10 @@
               "err": "Please enter the reason"
             },
             "relevance": {
-              "step1:collect_dbs": {
-                "type": "string",
-                "ex": "equalTo(., \"no\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -1790,9 +1805,10 @@
               "err": "Please enter the sample ID"
             },
             "relevance": {
-              "step1:collect_dbs": {
-                "type": "string",
-                "ex": "equalTo(., \"yes\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -1826,9 +1842,10 @@
               "err": "Please select an option"
             },
             "relevance": {
-              "step1:risk_category": {
-                "type": "string",
-                "ex": "equalTo(., \"low\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -1857,9 +1874,10 @@
               "err": "Number of dispensed days should be less than or equal to 180"
             },
             "relevance": {
-              "step1:provided_nvp_syrup": {
-                "type": "string",
-                "ex": "equalTo(., \"yes\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -1907,9 +1925,10 @@
               "err": "Please select an option"
             },
             "relevance": {
-              "step1:provided_nvp_syrup": {
-                "type": "string",
-                "ex": "equalTo(., \"no\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -1925,9 +1944,24 @@
               "err": "Please specify the other reason(s)"
             },
             "relevance": {
-              "step1:reason_for_not_providing_nvp_syrup": {
-                "type": "string",
-                "ex": "equalTo(., \"other\")"
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
+              }
+            }
+          },
+          {
+            "key": "type_of_hiv_test",
+            "type": "hidden",
+            "openmrs_entity_id": "type_of_hiv_test",
+            "openmrs_entity": "concept",
+            "openmrs_entity_parent": "",
+            "calculation": {
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
               }
             }
           },
@@ -1937,30 +1971,10 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "prophylaxis_arv_for_high_risk_given",
             "type": "hidden",
-            "relevance": {
-              "step1:risk_category": {
-                "type": "string",
-                "ex": "equalTo(., \"high\")"
-              }
-            },
             "calculation": {
               "rules-engine": {
                 "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_calculation.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "visit_number",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "visit_number",
-            "type": "hidden",
-            "calculation": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_calculation.yml"
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
                 }
               }
             }
@@ -1974,7 +1988,21 @@
             "calculation": {
               "rules-engine": {
                 "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_calculation.yml"
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
+                }
+              }
+            }
+          },
+          {
+            "key": "visit_number",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "visit_number",
+            "type": "hidden",
+            "calculation": {
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
                 }
               }
             }
@@ -1988,7 +2016,7 @@
             "calculation": {
               "rules-engine": {
                 "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_calculation.yml"
+                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
                 }
               }
             }
