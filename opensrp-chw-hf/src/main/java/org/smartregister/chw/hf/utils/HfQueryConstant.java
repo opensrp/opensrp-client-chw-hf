@@ -46,7 +46,7 @@ public interface HfQueryConstant {
             "    FROM ec_hiv_index_hf\n" +
             "    UNION ALL\n" +
             "    SELECT ec_hiv_register.base_entity_id AS base_entity_id\n" +
-            "    FROM ec_hiv_register \n" +
+            "    FROM ec_hiv_register WHERE (UPPER (ec_hiv_register.client_hiv_status_after_testing) LIKE UPPER('Positive')) \n" +
             "    UNION ALL\n" +
             "    SELECT ec_hts_register.base_entity_id AS base_entity_id\n" +
             "    FROM ec_hts_register \n"+
