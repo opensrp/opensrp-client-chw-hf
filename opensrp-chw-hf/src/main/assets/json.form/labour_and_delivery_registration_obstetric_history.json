@@ -86,7 +86,14 @@
         "openmrs_entity_id": "number_of_abortion",
         "type": "edit_text",
         "edit_type": "number",
-        "hint": "Number of abortions"
+        "hint": "Number of abortions",
+        "constraints": [
+          {
+            "type": "numeric",
+            "ex": "lessThanEqualTo(., step1:gravida)",
+            "err": "Parity must be equal to or less than gravida"
+          }
+        ]
       },
       {
         "key": "last_menstrual_period",
@@ -98,7 +105,7 @@
         "label_info_title": "LNMP",
         "label_info_text": "LNMP = first day of Last Normal Menstrual Period. If the exact date is unknown, but the period of the month is known, use day 5 for beginning of the month, day 15 for middle of the month and day 25 for end of the month.",
         "expanded": false,
-        "max_date": "today-23w",
+        "max_date": "today-28w",
         "min_date": "today-50w"
       },
       {
@@ -158,6 +165,20 @@
             "ex-rules": {
               "rules-file": "labour_and_delivery_registration_obstetric_history_calculation.yml"
             }
+          }
+        }
+      },
+      {
+        "key": "past_medical_surgical_history",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "past_medical_surgical_history",
+        "type": "edit_text",
+        "hint": "Past Medical/Surgical History",
+        "relevance": {
+          "step1:para": {
+            "type": "numeric",
+            "ex": "greaterThan(.,\"0\")"
           }
         }
       }

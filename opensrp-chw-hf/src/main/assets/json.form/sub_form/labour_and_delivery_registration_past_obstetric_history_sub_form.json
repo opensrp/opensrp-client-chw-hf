@@ -1,0 +1,209 @@
+{
+  "content_form": [
+    {
+      "key": "year",
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_entity_id": "year",
+      "type": "edit_text",
+      "edit_type": "number",
+      "hint": "Year",
+      "v_regex": {
+        "value": "(19[789]\\d|20[012]\\d)",
+        "err": "Please enter a valid Year"
+      },
+      "v_required": {
+        "value": true,
+        "err": "Please enter the year"
+      }
+    },
+    {
+      "key": "maternal_complications_during_labour",
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_entity_id": "maternal_complications_during_labour",
+      "type": "check_box",
+      "label": "complications",
+      "combine_checkbox_option_values": "true",
+      "label_text_style": "normal",
+      "text_color": "#C0C0C0",
+      "exclusive": [
+        "chk_none"
+      ],
+      "options": [
+        {
+          "key": "chk_pph",
+          "text": "PPH",
+          "value": false,
+          "openmrs_entity": "concept",
+          "openmrs_entity_id": "chk_pph"
+        },
+        {
+          "key": "chk_pre_eclampsia",
+          "text": "Pre-eclampsia",
+          "value": false,
+          "openmrs_entity": "concept",
+          "openmrs_entity_id": "chk_pre_eclampsia"
+        },
+        {
+          "key": "chk_eclampsia",
+          "text": "Eclampsia",
+          "value": false,
+          "openmrs_entity": "concept",
+          "openmrs_entity_id": "chk_eclampsia"
+        },
+        {
+          "key": "chk_obstructed_labour",
+          "text": "Obstructed labour",
+          "value": false,
+          "openmrs_entity": "concept",
+          "openmrs_entity_id": "chk_obstructed_labour"
+        },
+        {
+          "key": "chk_3_degree_tear",
+          "text": "3-degree tear",
+          "value": false,
+          "openmrs_entity": "concept",
+          "openmrs_entity_id": "chk_3_degree_tear"
+        },
+        {
+          "key": "chk_retained_placenta",
+          "text": "Retained placenta",
+          "value": false,
+          "openmrs_entity": "concept",
+          "openmrs_entity_id": "chk_retained_placenta"
+        },
+        {
+          "key": "chk_chest_pain",
+          "text": "Chest pain",
+          "value": false,
+          "openmrs_entity": "concept",
+          "openmrs_entity_id": "chk_chest_pain"
+        },
+        {
+          "key": "chk_fatigue",
+          "text": "Fatigue",
+          "value": false,
+          "openmrs_entity": "concept",
+          "openmrs_entity_id": "chk_fatigue"
+        },
+        {
+          "key": "chk_disseminated_intravascular_coagulopathy",
+          "text": "Disseminated intravascular coagulopathy (DIC)",
+          "value": false,
+          "openmrs_entity": "concept",
+          "openmrs_entity_id": "chk_disseminated_intravascular_coagulopathy"
+        },
+        {
+          "key": "chk_prom",
+          "text": "PROM",
+          "value": false,
+          "openmrs_entity": "concept",
+          "openmrs_entity_id": "chk_prom"
+        },
+        {
+          "key": "chk_malaria",
+          "text": "Malaria",
+          "value": false,
+          "openmrs_entity": "concept",
+          "openmrs_entity_id": "chk_malaria"
+        },
+        {
+          "key": "chk_anaemia",
+          "text": "Anaemia",
+          "value": false,
+          "openmrs_entity": "concept",
+          "openmrs_entity_id": "chk_anaemia"
+        },
+        {
+          "key": "chk_fgm",
+          "text": "FGM",
+          "value": false,
+          "openmrs_entity": "concept",
+          "openmrs_entity_id": "chk_fgm"
+        },
+        {
+          "key": "chk_aph",
+          "text": "APH",
+          "value": false,
+          "openmrs_entity": "concept",
+          "openmrs_entity_id": "chk_aph"
+        },
+        {
+          "key": "chk_none",
+          "text": "None",
+          "value": false,
+          "openmrs_entity": "concept",
+          "openmrs_entity_id": "chk_none"
+        }
+      ],
+      "v_required": {
+        "value": "true",
+        "err": "Please pick at least one"
+      }
+    },
+    {
+      "key": "historic_mode_of_delivery",
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_entity_id": "historic_mode_of_delivery",
+      "label": "Method of delivery",
+      "text_color": "#000000",
+      "type": "native_radio",
+      "options": [
+        {
+          "key": "spontaneous_vaginal_delivery",
+          "text": "Spontaneous vaginal delivery",
+          "openmrs_entity_parent": "",
+          "openmrs_entity": "concept",
+          "openmrs_entity_id": "spontaneous_vaginal_delivery"
+        },
+        {
+          "key": "cesarean",
+          "text": "Cesarean",
+          "openmrs_entity_parent": "",
+          "openmrs_entity": "concept",
+          "openmrs_entity_id": "cesarean"
+        },
+        {
+          "key": "instrumental_delivery",
+          "text": "Instrumental delivery",
+          "openmrs_entity_parent": "",
+          "openmrs_entity": "concept",
+          "openmrs_entity_id": "instrumental_delivery"
+        }
+      ],
+      "v_required": {
+        "value": true,
+        "err": "Please select an option"
+      }
+    },
+    {
+      "key": "alive",
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_entity_id": "alive",
+      "label": "Was the child/children born alive?",
+      "text_color": "#000000",
+      "type": "native_radio",
+      "options": [
+        {
+          "key": "yes",
+          "text": "Yes",
+          "openmrs_entity": "concept",
+          "openmrs_entity_id": "yes"
+        },
+        {
+          "key": "no",
+          "text": "No",
+          "openmrs_entity": "concept",
+          "openmrs_entity_id": "no"
+        }
+      ],
+      "v_required": {
+        "value": "true",
+        "err": "Please select if the child was born alive"
+      }
+    }
+  ]
+}

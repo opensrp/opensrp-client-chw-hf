@@ -54,7 +54,7 @@ public class LDRegistrationFormActivity extends BaseLDVisitActivity {
         Runnable runnable = () -> HfScheduleTaskExecutor.getInstance().execute(memberObject.getBaseEntityId(), Constants.Events.LD_REGISTRATION, new Date());
         Utils.startAsyncTask(new RunnableTask(runnable), null);
 
-        Intent intent = new Intent(this,LDRegisterActivity.class);
+        Intent intent = new Intent(this, LDRegisterActivity.class);
         this.startActivity(intent);
         finish();
     }
@@ -98,6 +98,34 @@ public class LDRegistrationFormActivity extends BaseLDVisitActivity {
     public void initializeActions(LinkedHashMap<String, BaseLDVisitAction> map) {
         //Clearing the action List before recreation
         actionList.clear();
+
+        //Necessary evil to rearrange the actions according to a specific arrangement
+        if (map.containsKey(getString(org.smartregister.chw.hf.R.string.ld_registration_triage_title))) {
+            BaseLDVisitAction triageAction = map.get(getString(org.smartregister.chw.hf.R.string.ld_registration_triage_title));
+            actionList.put(getString(org.smartregister.chw.hf.R.string.ld_registration_triage_title), triageAction);
+        }
+        if (map.containsKey(getString(org.smartregister.chw.hf.R.string.ld_registration_true_labour_title))) {
+            BaseLDVisitAction ldRegistrationTrueLabourConfirmation = map.get(getString(org.smartregister.chw.hf.R.string.ld_registration_true_labour_title));
+            actionList.put(getString(org.smartregister.chw.hf.R.string.ld_registration_true_labour_title), ldRegistrationTrueLabourConfirmation);
+        }
+        if (map.containsKey(getString(org.smartregister.chw.hf.R.string.ld_registration_true_labour_title))) {
+            BaseLDVisitAction ldRegistrationTrueLabourConfirmation = map.get(getString(org.smartregister.chw.hf.R.string.ld_registration_true_labour_title));
+            actionList.put(getString(org.smartregister.chw.hf.R.string.ld_registration_true_labour_title), ldRegistrationTrueLabourConfirmation);
+        }
+        if (map.containsKey(getString(org.smartregister.chw.hf.R.string.ld_registration_admission_information_title))) {
+            BaseLDVisitAction ldRegistrationAdmissionInformation = map.get(getString(org.smartregister.chw.hf.R.string.ld_registration_admission_information_title));
+            actionList.put(getString(org.smartregister.chw.hf.R.string.ld_registration_admission_information_title), ldRegistrationAdmissionInformation);
+        }
+        if (map.containsKey(getString(org.smartregister.chw.hf.R.string.ld_registration_obstetric_history_title))) {
+            BaseLDVisitAction ldRegistrationObstetricHistory = map.get(getString(org.smartregister.chw.hf.R.string.ld_registration_obstetric_history_title));
+            actionList.put(getString(org.smartregister.chw.hf.R.string.ld_registration_obstetric_history_title), ldRegistrationObstetricHistory);
+        }
+        if (map.containsKey(getString(org.smartregister.chw.hf.R.string.ld_registration_past_obstetric_history_title))) {
+            BaseLDVisitAction labourAndDeliveryPastObstetricHistory = map.get(getString(org.smartregister.chw.hf.R.string.ld_registration_past_obstetric_history_title));
+            actionList.put(getString(org.smartregister.chw.hf.R.string.ld_registration_past_obstetric_history_title), labourAndDeliveryPastObstetricHistory);
+        }
+        //====================End of Necessary evil ====================================
+
 
         for (Map.Entry<String, BaseLDVisitAction> entry : map.entrySet()) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
