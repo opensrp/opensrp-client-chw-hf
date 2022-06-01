@@ -26,3 +26,31 @@ priority: 1
 condition: "step1_moulding.contains('yes') || global_moulding.contains('yes')"
 actions:
   - "isRelevant = true"
+---
+name: step1_occiput_position
+description: occiput position relevance
+priority: 1
+condition: "step1_presenting_part == 'vertex'"
+actions:
+  - "isRelevant = true"
+---
+name: step1_mento_position
+description: mento position relevance
+priority: 1
+condition: "step1_presenting_part == 'face'"
+actions:
+  - "isRelevant = true"
+---
+name: step1_sacro_position
+description: sacro position relevance
+priority: 1
+condition: "step1_presenting_part == 'breech'"
+actions:
+  - "isRelevant = true"
+---
+name: step1_dorso_position
+description: Dorso position relevance
+priority: 1
+condition: "step1_presenting_part == 'shoulder'"
+actions:
+  - "isRelevant = true"
