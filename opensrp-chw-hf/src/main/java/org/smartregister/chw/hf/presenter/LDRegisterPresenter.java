@@ -1,6 +1,10 @@
 package org.smartregister.chw.hf.presenter;
 
 import static org.smartregister.chw.hf.utils.Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryCervixDilationMonitoring;
+import static org.smartregister.chw.hf.utils.Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryModeOfDelivery;
+import static org.smartregister.family.util.Constants.JSON_FORM_KEY.OPTIONS;
+
+import android.os.Build;
 
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
@@ -11,6 +15,7 @@ import org.smartregister.chw.hf.utils.LDDao;
 import org.smartregister.chw.ld.contract.LDRegisterContract;
 import org.smartregister.chw.ld.presenter.BaseLDRegisterPresenter;
 import org.smartregister.chw.referral.util.JsonFormConstants;
+import org.smartregister.util.JsonFormUtils;
 
 public class LDRegisterPresenter extends BaseLDRegisterPresenter {
     public LDRegisterPresenter(LDRegisterContract.View view, LDRegisterContract.Model model, LDRegisterContract.Interactor interactor) {
@@ -39,6 +44,19 @@ public class LDRegisterPresenter extends BaseLDRegisterPresenter {
                     form.getJSONObject("global").put("last_vaginal_exam_time", LDDao.getVaginalExaminationTime(entityId));
                 }
 
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if (form != null && formName.contains(getLabourAndDeliveryModeOfDelivery()) && (org.smartregister.chw.ld.dao.LDDao.getReasonsForAdmission(entityId) != null && org.smartregister.chw.ld.dao.LDDao.getReasonsForAdmission(entityId).equalsIgnoreCase("elective_cesarean_section"))) {
+            try {
+                JSONArray fields = form.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+                JSONObject modeOfDelivery = JsonFormUtils.getFieldJSONObject(fields, "mode_of_delivery");
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT && modeOfDelivery != null) {
+                    modeOfDelivery.getJSONArray(OPTIONS).remove(2);
+                    modeOfDelivery.getJSONArray(OPTIONS).remove(0);
+                }
             } catch (JSONException e) {
                 e.printStackTrace();
             }

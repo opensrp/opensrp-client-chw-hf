@@ -276,11 +276,11 @@
         "type": "native_radio",
         "options": [
           {
-            "key": "-",
-            "text": "-",
+            "key": "nil",
+            "text": "Nil",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "-"
+            "openmrs_entity_id": "nil"
           },
           {
             "key": "+",
@@ -315,11 +315,11 @@
         "type": "native_radio",
         "options": [
           {
-            "key": "-",
-            "text": "-",
+            "key": "nil",
+            "text": "Nil",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "-"
+            "openmrs_entity_id": "nil"
           },
           {
             "key": "+",
@@ -351,7 +351,7 @@
         "openmrs_entity_id": "urine_volume",
         "text_color": "#000000",
         "type": "edit_text",
-        "hint": "Urine Volume(Output) in Ml",
+        "hint": "Urine Volume(Output) in mls",
         "v_numeric": {
           "value": "true",
           "err": "Please enter the urine volume"

@@ -323,11 +323,11 @@
         "type": "native_radio",
         "options": [
           {
-            "key": "-",
-            "text": "-",
+            "key": "nil",
+            "text": "Nil",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "-"
+            "openmrs_entity_id": "nil"
           },
           {
             "key": "+",
@@ -362,11 +362,11 @@
         "type": "native_radio",
         "options": [
           {
-            "key": "-",
-            "text": "-",
+            "key": "nil",
+            "text": "Nil",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "-"
+            "openmrs_entity_id": "nil"
           },{
             "key": "+",
             "text": "+",
@@ -422,8 +422,8 @@
           "err": "Fundal height must be equal or more than 12 CM"
         },
         "v_max": {
-          "value": "36",
-          "err": "Fundal height must be equal or less than 36 CM"
+          "value": "50",
+          "err": "Fundal height must be equal or less than 50 CM"
         }
       },
       {

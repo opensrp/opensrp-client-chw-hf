@@ -184,16 +184,16 @@ public class LDProfileActivity extends BaseLDProfileActivity {
     }
 
     private void setTextViewRecordLDText() {
-        if (LDDao.getLabourStage(memberObject.getBaseEntityId()) == null) {
+        if (LDDao.getLabourStage(memberObject.getBaseEntityId()) == null && (LDDao.getReasonsForAdmission(memberObject.getBaseEntityId()) == null || !LDDao.getReasonsForAdmission(memberObject.getBaseEntityId()).equalsIgnoreCase("elective_cesarean_section"))) {
             currentVisitItemTitle = getString(R.string.labour_and_delivery_labour_stage_title);
             textViewRecordLD.setText(R.string.labour_and_delivery_labour_stage_title);
-        } else if (LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("1")) {
-            if (LDDao.getCervixDilation(memberObject.getBaseEntityId()) == null) {
+        } else if ((LDDao.getReasonsForAdmission(memberObject.getBaseEntityId()) != null && LDDao.getReasonsForAdmission(memberObject.getBaseEntityId()).equalsIgnoreCase("elective_cesarean_section"))) {
+            textViewRecordLD.setText(R.string.lb_mode_of_delivery);
+            currentVisitItemTitle = getString(R.string.lb_mode_of_delivery);
+        } else if (LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("1") || LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("2")) {
+            if (LDDao.getCervixDilation(memberObject.getBaseEntityId()) == null || Integer.parseInt(LDDao.getCervixDilation(memberObject.getBaseEntityId())) < 3) {
                 textViewRecordLD.setText(R.string.labour_and_delivery_examination_and_consultation_button_tittle);
                 currentVisitItemTitle = getString(R.string.labour_and_delivery_examination_and_consultation_button_tittle);
-            } else if (Integer.parseInt(LDDao.getCervixDilation(memberObject.getBaseEntityId())) < 3) {
-                textViewRecordLD.setText(R.string.labour_and_delivery_cervix_dilation_monitoring_button_tittle);
-                currentVisitItemTitle = getString(R.string.labour_and_delivery_cervix_dilation_monitoring_button_tittle);
             } else if (Integer.parseInt(LDDao.getCervixDilation(memberObject.getBaseEntityId())) >= 3 && Integer.parseInt(LDDao.getCervixDilation(memberObject.getBaseEntityId())) < 10) {
                 textViewRecordLD.setText(R.string.labour_and_delivery_partograph_button_title);
                 currentVisitItemTitle = getString(R.string.labour_and_delivery_partograph_button_title);
@@ -201,15 +201,12 @@ public class LDProfileActivity extends BaseLDProfileActivity {
                 textViewRecordLD.setText(R.string.lb_mode_of_delivery);
                 currentVisitItemTitle = getString(R.string.lb_mode_of_delivery);
             }
-        } else if (LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("2")) {
-            textViewRecordLD.setText(R.string.lb_mode_of_delivery);
-            currentVisitItemTitle = getString(R.string.lb_mode_of_delivery);
         } else if (LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("3") && (LDDao.getModeOfDelivery(memberObject.getBaseEntityId()) == null || (LDDao.getModeOfDelivery(memberObject.getBaseEntityId()) != null && !LDDao.getModeOfDelivery(memberObject.getBaseEntityId()).equals("cesarean")))) {
             textViewRecordLD.setText(R.string.ld_active_management_3rd_stage);
         } else if (LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("4") || (LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("3") && (LDDao.getModeOfDelivery(memberObject.getBaseEntityId()) != null && LDDao.getModeOfDelivery(memberObject.getBaseEntityId()).equals("cesarean")))) {
             textViewRecordLD.setText(R.string.ld_mother_post_delivery_management);
         }
-     }
+    }
 
     private void openExaminationConsultation() {
         String baseEntityId = null;

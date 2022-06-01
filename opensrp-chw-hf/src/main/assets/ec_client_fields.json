@@ -4979,6 +4979,14 @@
           }
         },
         {
+          "column_name": "reasons_for_admission",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "reasons_for_admission"
+          }
+        },
+        {
           "column_name": "membrane",
           "type": "Event",
           "json_mapping": {

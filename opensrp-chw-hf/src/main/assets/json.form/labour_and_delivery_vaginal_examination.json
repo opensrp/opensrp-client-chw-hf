@@ -458,11 +458,11 @@
         "type": "native_radio",
         "options": [
           {
-            "key": "monitor_progress",
-            "text": "Monitor progress of labour",
+            "key": "spontaneous_vaginal_delivery",
+            "text": "Spontaneous vaginal delivery",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "monitor_progress"
+            "openmrs_entity_id": "spontaneous_vaginal_delivery"
           },
           {
             "key": "emergency",
@@ -472,6 +472,24 @@
             "openmrs_entity_id": "emergency"
           }
         ]
+      },
+      {
+        "key": "forecasted_svd_time",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "forecasted_svd_time",
+        "type": "time_picker",
+        "hint": "Specify Forecasted SVD Time",
+        "v_required": {
+          "value": "true",
+          "err": "Please specify the forecasted time"
+        },
+        "relevance": {
+          "step1:decision": {
+            "type": "string",
+            "ex": "equalTo(., \"spontaneous_vaginal_delivery\")"
+          }
+        }
       }
     ]
   }
