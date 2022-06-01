@@ -577,6 +577,33 @@
             "ex": "equalTo(.,\"no\")"
           }
         }
+      },
+      {
+        "key": "observation_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "observation_date",
+        "type": "date_picker",
+        "hint": "Observation Date",
+        "expanded": false,
+        "min_date": "today-2y",
+        "max_date": "today",
+        "v_required": {
+          "value": true,
+          "err": "Observation date is required"
+        }
+      },
+      {
+        "key": "observation_time",
+        "type": "time_picker",
+        "hint": "Observation Time",
+        "openmrs_entity_id": "observation_time",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": true,
+          "err": "Observation time is required"
+        }
       }
     ]
   }
