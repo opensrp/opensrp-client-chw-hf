@@ -68,11 +68,11 @@
             "openmrs_entity_id": "alive"
           },
           {
-            "key": "deceased",
-            "text": "Deceased",
+            "key": "died",
+            "text": "Died",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "deceased"
+            "openmrs_entity_id": "died"
           }
         ],
         "v_required": {
@@ -94,7 +94,7 @@
         "relevance": {
           "step1:status": {
             "type": "string",
-            "ex": "equalTo(., \"deceased\")"
+            "ex": "equalTo(., \"died\")"
           }
         }
       },
@@ -112,7 +112,7 @@
         "relevance": {
           "step1:status": {
             "type": "string",
-            "ex": "equalTo(., \"deceased\")"
+            "ex": "equalTo(., \"died\")"
           }
         }
       },
@@ -145,6 +145,55 @@
         "v_required": {
           "value": "true",
           "err": "Please select one option"
+        }
+      },
+      {
+        "key": "delivered_by_occupation",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "delivered_by_occupation",
+        "openmrs_data_type": "select one",
+        "type": "spinner",
+        "hint": "Delivered by",
+        "values": [
+          "A doctor",
+          "A nurse"
+        ],
+        "keys": [
+          "doctor",
+          "nurse"
+        ],
+        "openmrs_choice_ids": {
+          "doctor": "A Doctor",
+          "nurse": "A Nurse"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select one option"
+        },
+        "relevance": {
+          "step1:delivery_place": {
+            "type": "string",
+            "ex": "equalTo(., \"At a health facility\")"
+          }
+        }
+      },
+      {
+        "key": "name_of_delivery_person",
+        "type": "edit_text",
+        "hint": "Name of delivery doctor/nurse",
+        "openmrs_entity_id": "name_of_delivery_person",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": true,
+          "err": "Please specify the name of the delivery doctor/nurse"
+        },
+        "relevance": {
+          "step1:delivery_place": {
+            "type": "string",
+            "ex": "equalTo(., \"At a health facility\")"
+          }
         }
       },
       {
