@@ -94,6 +94,44 @@
         "openmrs_entity_id": "labour_stage",
         "type": "hidden",
         "value": 3
+      },
+      {
+        "key": "cesarean_reasons",
+        "type": "edit_text",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "openmrs_entity_id": "cesarean_reason",
+        "hint": "Specify reason for cesarean delivery",
+        "v_required": {
+          "value": true,
+          "err": "Value is required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_mode_of_delivery_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "instrumental_delivery_reasons",
+        "type": "edit_text",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "openmrs_entity_id": "instrumental_delivery_reasons",
+        "hint": "Specify reason for instrumental delivery",
+        "v_required": {
+          "value": true,
+          "err": "Value is required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_mode_of_delivery_relevance.yml"
+            }
+          }
+        }
       }
     ]
   }
