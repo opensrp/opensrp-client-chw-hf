@@ -632,13 +632,6 @@
             "openmrs_entity_id": "normal"
           },
           {
-            "key": "5",
-            "text": "5/5",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "normal"
-          },
-          {
             "key": "4",
             "text": "4/5",
             "openmrs_entity_parent": "",
