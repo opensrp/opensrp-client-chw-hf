@@ -91,38 +91,6 @@
         }
       },
       {
-        "key": "moulding",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "moulding",
-        "label": "Moulding",
-        "text_color": "#000000",
-        "type": "native_radio",
-        "options": [
-          {
-            "key": "yes",
-            "text": "Yes",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "yes"
-          },
-          {
-            "key": "no",
-            "text": "No",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "no"
-          }
-        ],
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "labour_and_delivery_fetal_wellbeing_relevance.yml"
-            }
-          }
-        }
-      },
-      {
         "key": "moulding_options",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -132,37 +100,37 @@
         "type": "native_radio",
         "options": [
           {
-            "key": "sutures_apposed",
-            "text": "Sutures apposed (+)",
+            "key": "Ø",
+            "text": "Ø",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "sutures_apposed"
+            "openmrs_entity_id": "Ø"
           },
           {
-            "key": "sutures_overlapped_reducible",
-            "text": "Sutures overlapped but reducible (++)",
+            "key": "+",
+            "text": "+",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "sutures_overlapped_reducible"
+            "openmrs_entity_id": "+"
           },
           {
-            "key": "sutures_overlapped_not_reducible",
-            "text": "Sutures overlapped not reducible (+++)",
+            "key": "++",
+            "text": "++",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "sutures_overlapped_not_reducible"
+            "openmrs_entity_id": "++"
+          },
+          {
+            "key": "+++",
+            "text": "+++",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "+++"
           }
         ],
         "v_required": {
           "value": true,
           "err": "Please select an option"
-        },
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "labour_and_delivery_fetal_wellbeing_relevance.yml"
-            }
-          }
         }
       },
       {

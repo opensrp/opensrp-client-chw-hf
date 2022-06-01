@@ -32,7 +32,7 @@ public class LDPartographFetalWellBeingActionHelper implements BaseLDVisitAction
     protected MemberObject memberObject;
     private String fetalHeartRate;
     private String amnioticFluid;
-    private String moulding;
+    private String caput;
     private String mouldingOptions;
     private Context context;
     final private String baseEntityId;
@@ -56,6 +56,12 @@ public class LDPartographFetalWellBeingActionHelper implements BaseLDVisitAction
                 fetalWellBeingForm.getJSONObject("global").put("moulding", LDDao.getMoulding(baseEntityId) == null ? "" : LDDao.getMoulding(baseEntityId));
                 JSONArray fields = fetalWellBeingForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
 
+                JSONObject mouldingOptions = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "moulding_options");
+
+                if (LDDao.getMoulding(baseEntityId) != null && LDDao.getMoulding(baseEntityId).equalsIgnoreCase("yes")) {
+                    mouldingOptions.getJSONArray("options").remove(0);
+                }
+
                 JSONObject amnioticFluid = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "amniotic_fluid");
 
                 if (LDDao.getAmnioticFluidState(baseEntityId) != null && !LDDao.getAmnioticFluidState(baseEntityId).equalsIgnoreCase("membrane_intact")) {
@@ -74,7 +80,7 @@ public class LDPartographFetalWellBeingActionHelper implements BaseLDVisitAction
         try {
             JSONObject jsonObject = new JSONObject(jsonPayload);
             fetalHeartRate = CoreJsonFormUtils.getValue(jsonObject, "fetal_heart_rate");
-            moulding = CoreJsonFormUtils.getValue(jsonObject, "moulding");
+            caput = CoreJsonFormUtils.getValue(jsonObject, "caput");
             mouldingOptions = CoreJsonFormUtils.getValue(jsonObject, "moulding_options");
             amnioticFluid = CoreJsonFormUtils.getValue(jsonObject, "amniotic_fluid");
         } catch (JSONException e) {
@@ -123,13 +129,14 @@ public class LDPartographFetalWellBeingActionHelper implements BaseLDVisitAction
 
     private boolean allFieldsCompleted() {
         return StringUtils.isNotBlank(fetalHeartRate) &&
-                (StringUtils.isNotBlank(moulding) || StringUtils.isNotBlank(mouldingOptions)) &&
+                StringUtils.isNotBlank(caput) &&
+                StringUtils.isNotBlank(mouldingOptions) &&
                 StringUtils.isNotBlank(amnioticFluid);
     }
 
     private boolean anyFieldCompleted() {
         return StringUtils.isNotBlank(fetalHeartRate) ||
-                StringUtils.isNotBlank(moulding) ||
+                StringUtils.isNotBlank(caput) ||
                 StringUtils.isNotBlank(mouldingOptions) ||
                 StringUtils.isNotBlank(amnioticFluid);
     }
