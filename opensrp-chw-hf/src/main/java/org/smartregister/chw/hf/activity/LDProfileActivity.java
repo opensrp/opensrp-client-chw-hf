@@ -188,12 +188,9 @@ public class LDProfileActivity extends BaseLDProfileActivity {
             currentVisitItemTitle = getString(R.string.labour_and_delivery_labour_stage_title);
             textViewRecordLD.setText(R.string.labour_and_delivery_labour_stage_title);
         } else if (LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("1")) {
-            if (LDDao.getCervixDilation(memberObject.getBaseEntityId()) == null) {
+            if (LDDao.getCervixDilation(memberObject.getBaseEntityId()) == null || Integer.parseInt(LDDao.getCervixDilation(memberObject.getBaseEntityId())) < 3) {
                 textViewRecordLD.setText(R.string.labour_and_delivery_examination_and_consultation_button_tittle);
                 currentVisitItemTitle = getString(R.string.labour_and_delivery_examination_and_consultation_button_tittle);
-            } else if (Integer.parseInt(LDDao.getCervixDilation(memberObject.getBaseEntityId())) < 3) {
-                textViewRecordLD.setText(R.string.labour_and_delivery_cervix_dilation_monitoring_button_tittle);
-                currentVisitItemTitle = getString(R.string.labour_and_delivery_cervix_dilation_monitoring_button_tittle);
             } else if (Integer.parseInt(LDDao.getCervixDilation(memberObject.getBaseEntityId())) >= 3 && Integer.parseInt(LDDao.getCervixDilation(memberObject.getBaseEntityId())) < 10) {
                 textViewRecordLD.setText(R.string.labour_and_delivery_partograph_button_title);
                 currentVisitItemTitle = getString(R.string.labour_and_delivery_partograph_button_title);
@@ -209,7 +206,7 @@ public class LDProfileActivity extends BaseLDProfileActivity {
         } else if (LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("4") || (LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("3") && (LDDao.getModeOfDelivery(memberObject.getBaseEntityId()) != null && LDDao.getModeOfDelivery(memberObject.getBaseEntityId()).equals("cesarean")))) {
             textViewRecordLD.setText(R.string.ld_mother_post_delivery_management);
         }
-     }
+    }
 
     private void openExaminationConsultation() {
         String baseEntityId = null;
