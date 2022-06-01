@@ -384,13 +384,39 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                             values.remove(x);
                         if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("prompt_for_low_risk"))
                             values.remove(x);
-                        if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("prophylaxis_provided"))
+                        if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("provided_azt_nvp_syrup"))
                             values.remove(x);
-                        if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("reason_prophylaxis_not_provided"))
+                        if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("provided_other_combinations"))
+                            values.remove(x);
+                        if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("specify_the_combinations"))
+                            values.remove(x);
+                        if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("number_of_azt_nvp_days_dispensed"))
+                            values.remove(x);
+                        if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("reason_for_not_providing_other_combination"))
+                            values.remove(x);
+                        if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("other_reason_for_not_providing_other_combination"))
                             values.remove(x);
                         if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("collect_dbs"))
                             values.remove(x);
                         if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("reason_not_collecting_dbs"))
+                            values.remove(x);
+                        if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("sample_id"))
+                            values.remove(x);
+                        if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("provided_nvp_syrup"))
+                            values.remove(x);
+                        if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("number_of_nvp_days_dispensed"))
+                            values.remove(x);
+                        if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("reason_for_not_providing_nvp_syrup"))
+                            values.remove(x);
+                        if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("other_reason_for_not_providing_nvp_syrup"))
+                            values.remove(x);
+                        if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("prophylaxis_arv_for_high_risk_given"))
+                            values.remove(x);
+                        if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("prophylaxis_arv_for_high_and_low_risk_given"))
+                            values.remove(x);
+                        if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("visit_number"))
+                            values.remove(x);
+                        if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("followup_visit_date"))
                             values.remove(x);
                     }
 

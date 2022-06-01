@@ -1,0 +1,687 @@
+---
+name: step1_apgar_score_at_1_minute
+description: apgar_score_at_1_minute calculation
+priority: 1
+condition: "step1_apgar_activity_score_at_1_minute != '' && step1_apgar_pulse_score_at_1_minute != '' && step1_apgar_grimace_on_stimulation_score_at_1_minute != '' && step1_apgar_appearance_score_at_1_minute != '' && step1_apgar_respiration_score_at_1_minute != ''"
+actions:
+  - "calculation = step1_apgar_activity_score_at_1_minute + step1_apgar_pulse_score_at_1_minute + step1_apgar_grimace_on_stimulation_score_at_1_minute + step1_apgar_appearance_score_at_1_minute + step1_apgar_respiration_score_at_1_minute"
+---
+name: step1_prompt_for_normal_apgar_score_at_1_minute
+description: prompt_for_normal_apgar_score info
+priority: 2
+condition: "step1_apgar_score_at_1_minute != ''"
+actions:
+  - "calculation = ['apgar_score':step1_apgar_score_at_1_minute]"
+---
+name: step1_prompt_for_abnormal_apgar_score_at_1_minute
+description: prompt_for_abnormal_apgar_score info
+priority: 2
+condition: "step1_apgar_score_at_1_minute != ''"
+actions:
+  - "calculation = ['apgar_score':step1_apgar_score_at_1_minute]"
+---
+name: step1_apgar_score_at_5_minutes
+description: apgar_score_at_5_minutes calculation
+priority: 1
+condition: "step1_apgar_activity_score_at_5_minutes != '' && step1_apgar_pulse_score_at_5_minutes != '' && step1_apgar_grimace_on_stimulation_score_at_5_minutes != '' && step1_apgar_appearance_score_at_5_minutes != '' && step1_apgar_respiration_score_at_5_minutes != ''"
+actions:
+  - "calculation = step1_apgar_activity_score_at_5_minutes + step1_apgar_pulse_score_at_5_minutes + step1_apgar_grimace_on_stimulation_score_at_5_minutes + step1_apgar_appearance_score_at_5_minutes + step1_apgar_respiration_score_at_5_minutes"
+---
+name: step1_apgar_score_at_5_minutes_test
+description: apgar_score_at_1_minute calculation
+priority: 1
+condition: "true"
+actions:
+  - "calculation = step1_apgar_score_at_5_minutes > 0 && step1_apgar_score_at_5_minutes < 7 ? 'true':'false'"
+---
+name: step1_prompt_for_normal_apgar_score_at_5_minutes
+description: prompt_for_normal_apgar_score info
+priority: 2
+condition: "step1_apgar_score_at_5_minutes != ''"
+actions:
+  - "calculation = ['apgar_score':step1_apgar_score_at_5_minutes]"
+---
+name: step1_prompt_for_abnormal_apgar_score_at_5_minutes
+description: prompt_for_abnormal_apgar_score info
+priority: 2
+condition: "step1_apgar_score_at_5_minutes != ''"
+actions:
+  - "calculation = ['apgar_score':step1_apgar_score_at_5_minutes]"
+---
+name: step1_followup_visit_date
+description: hei follow-up visit date
+priority: 1
+condition: "step1_risk_category != ''"
+actions:
+  - "calculation = helper.getDateToday()"
+---
+name: step1_prophylaxis_arv_for_high_risk_given
+description: prophylaxis_arv_for_high_risk_given
+priority: 1
+condition: "step1_risk_category.equals('high')"
+actions:
+  - "calculation = 'true'"
+---
+name: step1_visit_number
+description: visit_number
+priority: 1
+condition: "step1_risk_category != ''"
+actions:
+  - "calculation = 1"
+---
+name: step1_prophylaxis_arv_for_high_and_low_risk_given
+description: prophylaxis_arv_for_high_and_low_risk_given
+priority: 1
+condition: "step1_risk_category.equals('low')"
+actions:
+  - "calculation = 'true'"
+---
+name: step1_type_of_hiv_test
+description: type_of_hiv_test
+priority: 1
+condition: "step1_risk_category == 'high' "
+actions:
+  - "calculation = 'DNA PCR'"
+---
+name: step1_sex
+description: sex
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_still_birth_choice
+description: still_birth_choice
+priority: 1
+condition: "step1_newborn_status.contains('still_birth')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_prompt_for_apgar_at_1_minute
+description: prompt_for_apgar_at_1_minute
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_spacer1
+description: spacer1
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_apgar_score_activity_label
+description: apgar_score_activity_label
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_spacer2
+description: spacer2
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_apgar_activity_score_at_1_minute
+description: apgar_activity_score_at_1_minute
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_spacer3
+description: spacer3
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_apgar_pulse_score_label
+description: apgar_pulse_score_label
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_spacer4
+description: spacer4
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_apgar_pulse_score_at_1_minute
+description: apgar_pulse_score_at_1_minute
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_spacer5
+description: spacer5
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_apgar_grimace_on_stimulation_score_label
+description: apgar_grimace_on_stimulation_score_label
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_spacer6
+description: spacer6
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_apgar_grimace_on_stimulation_score_at_1_minute
+description: apgar_grimace_on_stimulation_score_at_1_minute
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_spacer7
+description: spacer7
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_apgar_appearance_score_label
+description: apgar_appearance_score_label
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_spacer8
+description: spacer8
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_apgar_appearance_score_at_1_minute
+description: apgar_appearance_score_at_1_minute
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_spacer9
+description: spacer9
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_apgar_respiration_score_label
+description: apgar_respiration_score_label
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_spacer10
+description: spacer10
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_spacer11
+description: spacer11
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_apgar_respiration_score_at_1_minute
+description: apgar_respiration_score_at_1_minute
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_apgar_score_at_1_minute
+description: apgar_score_at_1_minute
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_spacer11
+description: spacer11
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_prompt_for_apgar_at_5_minute
+description: prompt_for_apgar_at_5_minute calculation
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_spacer12
+description: spacer12 calculation
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_apgar_score_activity_label_at_5_mins
+description: apgar_score_activity_label_at_5_mins calculation
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_spacer13
+description: spacer13 calculation
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_apgar_activity_score_at_5_minutes
+description: apgar_activity_score_at_5_minutes calculation
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_spacer14
+description: spacer14 calculation
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_apgar_pulse_score_label_at_5_mins
+description: apgar_pulse_score_label_at_5_mins calculation
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_spacer15
+description: spacer15 calculation
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_apgar_pulse_score_at_5_minutes
+description: apgar_pulse_score_at_5_minutes calculation
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_spacer16
+description: spacer16 calculation
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_apgar_grimace_on_stimulation_score_label_at_5_mins
+description: apgar_grimace_on_stimulation_score_label_at_5_mins calculation
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_spacer17
+description: spacer17 calculation
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_apgar_grimace_on_stimulation_score_at_5_minutes
+description: apgar_grimace_on_stimulation_score_at_5_minutes calculation
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_spacer18
+description: spacer18 calculation
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_apgar_appearance_score_label_at_5_mins
+description: apgar_appearance_score_label_at_5_mins calculation
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_spacer19
+description: spacer19 calculation
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_apgar_appearance_score_at_5_minutes
+description: apgar_appearance_score_at_5_minutes calculation
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_spacer20
+description: spacer20 calculation
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_apgar_respiration_score_label_at_5_mins
+description: apgar_respiration_score_label_at_5_mins calculation
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_spacer21
+description: spacer21 calculation
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_apgar_respiration_score_at_5_minutes
+description: apgar_respiration_score_at_5_minutes calculation
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_apgar_score_at_5_minutes
+description: apgar_score_at_5_minutes calculation
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_spacer22
+description: spacer22 calculation
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_prompt_for_normal_apgar_score_at_5_minutes
+description: prompt_for_normal_apgar_score_at_5_minutes calculation
+priority: 1
+condition: "step1_newborn_status == 'alive' && step1_apgar_score_at_5_minutes != '' && step1_apgar_score_at_5_minutes >= 7 "
+actions:
+  - "isRelevant = true"
+---
+name: step1_prompt_for_abnormal_apgar_score_at_5_minutes
+description: prompt_for_abnormal_apgar_score_at_5_minutes calculation
+priority: 1
+condition: "step1_newborn_status == 'alive' && step1_apgar_score_at_5_minutes != '' && step1_apgar_score_at_5_minutes > 0  && step1_apgar_score_at_5_minutes < 7 "
+actions:
+  - "isRelevant = true"
+---
+name: step1_prompt_for_normal_apgar_score_at_1_minute
+description: prompt_for_normal_apgar_score_at_1_minute calculation
+priority: 1
+condition: "step1_newborn_status == 'alive' && step1_apgar_score_at_1_minute >= 7 "
+actions:
+  - "isRelevant = true"
+---
+name: step1_prompt_for_abnormal_apgar_score_at_1_minute
+description: prompt_for_abnormal_apgar_score_at_1_minute calculation
+priority: 1
+condition: "step1_newborn_status == 'alive' && step1_apgar_score_at_1_minute > 0  && step1_apgar_score_at_1_minute < 7 "
+actions:
+  - "isRelevant = true"
+---
+name: step1_resuscitation
+description: resuscitation calculation
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_temperature
+description: temperature calculation
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_weight
+description: weight calculation
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_prompt_for_underweight
+description: prompt_for_underweight calculation
+priority: 1
+condition: "step1_weight != '' && step1_weight < 1.5"
+actions:
+  - "isRelevant = true"
+---
+name: step1_heart_rate
+description: heart_rate calculation
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_keep_warm
+description: keep_warm calculation
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_breathing_rate
+description: breathing_rate calculation
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_cord_bleeding
+description: cord_bleeding calculation
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_prompt_for_cord_bleeding
+description: prompt_for_cord_bleeding calculation
+priority: 1
+condition: "step1_cord_bleeding.contains('yes')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_early_bf_1hr
+description: early_bf_1hr calculation
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_reason_for_not_breast_feeding_within_one_hour
+description: reason_for_not_breast_feeding_within_one_hour calculation
+priority: 1
+condition: "step1_early_bf_1hr.contains('no')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_other_reason_for_not_breast_feeding_within_one_hour
+description: other_reason_for_not_breast_feeding_within_one_hour calculation
+priority: 1
+condition: "step1_reason_for_not_breast_feeding_within_one_hour.contains('other')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_eye_care
+description: eye_care calculation
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_reason_for_not_giving_eye_care
+description: eye_care calculation
+priority: 1
+condition: "step1_eye_care.contains('no')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_other_reason_for_not_giving_eye_care
+description: other_reason_for_not_giving_eye_care calculation
+priority: 1
+condition: "step1_reason_for_not_giving_eye_care.contains('other')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_risk_category
+description: risk_category calculation
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_prompt_for_high_risk
+description: prompt_for_high_risk calculation
+priority: 1
+condition: "step1_risk_category.contains('high')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_prompt_for_low_risk
+description: prompt_for_low_risk calculation
+priority: 1
+condition: "step1_risk_category.contains('low')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_provided_azt_nvp_syrup
+description: provided_azt_nvp_syrup calculation
+priority: 1
+condition: "step1_risk_category.contains('high')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_provided_other_combinations
+description: provided_other_combinations calculation
+priority: 1
+condition: "step1_provided_azt_nvp_syrup.contains('no')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_specify_the_combinations
+description: specify_the_combinations calculation
+priority: 1
+condition: "step1_provided_other_combinations.contains('yes')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_number_of_azt_nvp_days_dispensed
+description: number_of_azt_nvp_days_dispensed calculation
+priority: 1
+condition: "step1_provided_azt_nvp_syrup.equals('yes') || step1_provided_other_combinations.equals('yes')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_reason_for_not_providing_other_combination
+description: reason_for_not_providing_other_combination calculation
+priority: 1
+condition: "step1_provided_other_combinations.equals('no')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_other_reason_for_not_providing_other_combination
+description: other_reason_for_not_providing_other_combination calculation
+priority: 1
+condition: "step1_reason_for_not_providing_other_combination.equals('other')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_collect_dbs
+description: collect_dbs calculation
+priority: 1
+condition: "step1_risk_category.equals('high')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_reason_not_collecting_dbs
+description: reason_not_collecting_dbs calculation
+priority: 1
+condition: "step1_collect_dbs.equals('no')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_sample_id
+description: sample_id calculation
+priority: 1
+condition: "step1_collect_dbs.equals('yes')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_provided_nvp_syrup
+description: provided_nvp_syrup calculation
+priority: 1
+condition: "step1_risk_category.equals('low')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_number_of_nvp_days_dispensed
+description: number_of_nvp_days_dispensed calculation
+priority: 1
+condition: "step1_provided_nvp_syrup.equals('yes')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_reason_for_not_providing_nvp_syrup
+description: reason_for_not_providing_nvp_syrup calculation
+priority: 1
+condition: "step1_provided_nvp_syrup.equals('no')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_other_reason_for_not_providing_nvp_syrup
+description: other_reason_for_not_providing_nvp_syrup calculation
+priority: 1
+condition: "step1_reason_for_not_providing_nvp_syrup.equals('other')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_visit_number
+description: visit_number calculation
+priority: 1
+condition: "step1_risk_category != ''"
+actions:
+  - "calculation = 1"
+---
+name: step1_visit_number
+description: visit_number calculation
+priority: 1
+condition: "step1_collect_dbs.equals('yes')"
+actions:
+  - "calculation = 'DNA PCR'"
+
