@@ -222,6 +222,125 @@
             "ex": "equalTo(., \"other\")"
           }
         }
+      },
+      {
+        "key": "danger_signs",
+        "type": "check_box",
+        "label": "Danger signs & Risk factors",
+        "combine_checkbox_option_values": "true",
+        "openmrs_entity_id": "danger_signs",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "exclusive": [
+          "none"
+        ],
+        "options": [
+          {
+            "key": "bleeding_vag",
+            "text": "Bleeding Vaginally",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "bleeding_vag"
+          },
+          {
+            "key": "severe_headache",
+            "text": "Severe Headache",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "severe_headache"
+          },
+          {
+            "key": "severe_abdominal_pain",
+            "text": "Severe Abdominal Pain",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "severely_abdominal_pain"
+          },
+          {
+            "key": "convulsion",
+            "text": "Convulsion",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "convulsion"
+          },
+          {
+            "key": "blurred_vision",
+            "text": "Blurred Vision",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "blurred_vision"
+          },
+          {
+            "key": "severe_breathing_difficulty",
+            "text": "Severe Breathing Difficulty",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "severe_breathing_difficulty"
+          },
+          {
+            "key": "unconscious",
+            "text": "Unconscious",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "unconscious"
+          },
+          {
+            "key": "reduced_fetal_movement",
+            "text": "Reduced Fetal Movement",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "reduced_fetal_movement"
+          },
+          {
+            "key": "dizziness",
+            "text": "Dizziness",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "dizziness"
+          },
+          {
+            "key": "pale_anaemic",
+            "text": "Pale/Anaemic",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "pale_anaemic"
+          },
+          {
+            "key": "none",
+            "text": "None",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "none"
+          }
+        ]
+      },
+      {
+        "key": "danger_signs_present_toaster",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "",
+        "type": "toaster_notes",
+        "text": "Manage the condition according to standard guideline",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:danger_signs": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "bleeding_vag",
+                  "severe_headache",
+                  "unconscious",
+                  "reduced_fetal_movement",
+                  "dizziness",
+                  "blurred_vision",
+                  "severe_abdominal_pain",
+                  "severe_breathing_difficulty",
+                  "convulsion"
+                ]
+              }
+            ]
+          }
+        }
       }
     ]
   }
