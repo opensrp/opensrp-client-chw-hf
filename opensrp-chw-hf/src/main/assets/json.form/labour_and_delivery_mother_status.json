@@ -197,18 +197,6 @@
         }
       },
       {
-        "key": "delivery_doctor_nurse_name",
-        "type": "edit_text",
-        "hint": "Name of delivery doctor/nurse",
-        "openmrs_entity_id": "delivery_doctor_nurse_name",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "v_required": {
-          "value": true,
-          "err": "Please specify the name of the delivery doctor/nurse"
-        }
-      },
-      {
         "key": "delivery_date",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
