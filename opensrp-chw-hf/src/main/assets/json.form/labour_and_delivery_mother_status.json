@@ -193,10 +193,6 @@
           "step1:delivery_place": {
             "type": "string",
             "ex": "equalTo(., \"At a health facility\")"
-          },
-          "step1:delivered_by_occupation": {
-            "type": "string",
-            "ex": "equalTo(., \"doctor\")"
           }
         }
       },

@@ -203,6 +203,55 @@
         }
       },
       {
+        "key": "perineum_repair_occupation",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "perineum_repair_occupation",
+        "openmrs_data_type": "select one",
+        "type": "spinner",
+        "hint": "Perineum repaired by",
+        "values": [
+          "A doctor",
+          "A nurse"
+        ],
+        "keys": [
+          "doctor",
+          "nurse"
+        ],
+        "openmrs_choice_ids": {
+          "doctor": "A Doctor",
+          "nurse": "A Nurse"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select one option"
+        },
+        "relevance": {
+          "step1:perineum_observation": {
+            "type": "string",
+            "ex": "equalTo(., \"tear\")"
+          }
+        }
+      },
+      {
+        "key": "perineum_repair_person_name",
+        "type": "edit_text",
+        "hint": "Name of doctor/nurse who repaired the perineum",
+        "openmrs_entity_id": "perineum_repair_person_name",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": true,
+          "err": "Please specify the name of doctor/nurse who repaired the perineum"
+        },
+        "relevance": {
+          "step1:perineum_observation": {
+            "type": "string",
+            "ex": "equalTo(., \"tear\")"
+          }
+        }
+      },
+      {
         "key": "degree_of_perineum_tear",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
