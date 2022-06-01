@@ -1,14 +1,7 @@
 ---
-name: step1_cesarean_reasons
+name: step1_delivery_mode_reason
 description: Reason for cesarean delivery
 priority: 1
-condition: "step1_mode_of_delivery == 'cesarean'"
-actions:
-  - "isRelevant = true"
----
-name: step1_instrumental_delivery_reasons
-description: Reason for instrumental delivery
-priority: 1
-condition: "step1_mode_of_delivery == 'instrumental_delivery'"
+condition: "step1_mode_of_delivery == 'cesarean' || step1_mode_of_delivery == 'instrumental_delivery'"
 actions:
   - "isRelevant = true"
