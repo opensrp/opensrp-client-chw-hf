@@ -894,6 +894,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "Primary_Caregiver_Name",
         "type": "edit_text",
+        "edit_type": "name",
         "hint": "Jina la mlezi",
         "v_regex": {
           "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
@@ -1089,50 +1090,15 @@
         "text_color": "#C0C0C0",
         "options": [
           {
-            "key": "hiv_aids_transmission",
-            "text": "Maambukizi ya VVU/UKIMWI",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "sickle_cell_disease",
-            "text": "Ugonjwa wa seli mundu",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "heart_disease",
-            "text": "Magonjwa ya moyo",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "diabetes",
-            "text": "Kisukari",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "cerebral_palsy",
-            "text": "Ugonjwa wa kupooza kwa ubongo",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "cancer",
-            "text": "Saratani",
+            "key": "hiv_aids",
+            "text": "Maambukizi ya VVU",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
           },
           {
             "key": "tuberculosis",
-            "text": "Kifua kikuu",
+            "text": "Kifua Kikuu",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
@@ -1146,7 +1112,7 @@
           },
           {
             "key": "gender_violence",
-            "text": "Ukatili wa kijinsia",
+            "text": "Unyanyasaji wa Kijinsia",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
@@ -1182,43 +1148,8 @@
         "text_color": "#C0C0C0",
         "options": [
           {
-            "key": "hiv_aids_transmission",
-            "text": "maambukizi ya VVU/UKIMWI",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "sickle_cell_disease",
-            "text": "Ugonjwa wa seli mundu",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "heart_disease",
-            "text": "Magonjwa ya moyo",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "diabetes",
-            "text": "Kisukari",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "cerebral_palsy",
-            "text": "Ugonjwa wa kupooza kwa ubongo",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "cancer",
-            "text": "Saratani",
+            "key": "hiv_aids",
+            "text": "Maambukizi ya VVU",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
@@ -1289,43 +1220,8 @@
         "text_color": "#C0C0C0",
         "options": [
           {
-            "key": "hiv_aids_transmission",
-            "text": "maambukizi ya VVU/UKIMWI",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "sickle_cell_disease",
-            "text": "Ugonjwa wa seli mundu",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "heart_disease",
-            "text": "Magonjwa ya moyo",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "diabetes",
-            "text": "Kisukari",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "cerebral_palsy",
-            "text": "Ugonjwa wa kupooza kwa ubongo",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "cancer",
-            "text": "saratani",
+            "key": "hiv_aids",
+            "text": "Maambukizi ya VVU",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
@@ -1339,28 +1235,14 @@
           },
           {
             "key": "hiv_infected_child",
-            "text": "Mtoto aliyezaliwa na mama mwenye VVU/UKIMWI",
+            "text": "Mtoto aliyezaliwa na mama mwenye VVU",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
           },
           {
             "key": "untested_hiv_infected_child",
-            "text": "Mtoto ambaye hajapimwa VVU/UKIMWI",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "weight_stagnation_child",
-            "text": "Mtoto mwenye vilio vya uzito",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "child_with_fever",
-            "text": "Mtoto mwenye homa za mara kwa mara",
+            "text": "Mtoto ambaye hajapimwa VVU",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
@@ -1374,7 +1256,7 @@
           },
           {
             "key": "gender_violence",
-            "text": "Ukatili wa kijinsia",
+            "text": "Unyanyasaji wa kijinsia",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
@@ -1382,13 +1264,6 @@
           {
             "key": "drug_abuse",
             "text": "Matumizi mabaya ya dawa za kulevya",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "child_in_risky_environment",
-            "text": "Mtoto anayeishi katika mazingira hatarishi",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
@@ -1417,43 +1292,8 @@
         "text_color": "#C0C0C0",
         "options": [
           {
-            "key": "hiv_aids_transmission",
-            "text": "maambukizi ya VVU/UKIMWI",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "sickle_cell_disease",
-            "text": "Ugonjwa wa seli mundu",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "heart_disease",
-            "text": "Magonjwa ya moyo",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "diabetes",
-            "text": "Kisukari",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "cerebral_palsy",
-            "text": "Ugonjwa wa kupooza kwa ubongo",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "cancer",
-            "text": "saratani",
+            "key": "hiv_aids",
+            "text": "Maambukizi ya VVU",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
@@ -1467,28 +1307,14 @@
           },
           {
             "key": "hiv_infected_child",
-            "text": "Mtoto aliyezaliwa na mama mwenye VVU/UKIMWI",
+            "text": "Mtoto aliyezaliwa na mama mwenye VVU",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
           },
           {
             "key": "untested_hiv_infected_child",
-            "text": "Mtoto ambaye hajapimwa VVU/UKIMWI",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "weight_stagnation_child",
-            "text": "Mtoto mwenye vilio vya uzito",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "child_with_fever",
-            "text": "Mtoto mwenye homa za mara kwa mara",
+            "text": "Mtoto ambaye hajapimwa VVU",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
@@ -1510,13 +1336,6 @@
           {
             "key": "drug_abuse",
             "text": "Matumizi mabaya ya dawa za kulevya",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "child_in_risky_environment",
-            "text": "Mtoto anayeishi katika mazingira hatarishi",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
@@ -1545,43 +1364,8 @@
         "text_color": "#C0C0C0",
         "options": [
           {
-            "key": "hiv_aids_transmission",
-            "text": "maambukizi ya VVU/UKIMWI",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "sickle_cell_disease",
-            "text": "Ugonjwa wa seli mundu",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "heart_disease",
-            "text": "Magonjwa ya moyo",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "diabetes",
-            "text": "Kisukari",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "cerebral_palsy",
-            "text": "Ugonjwa wa kupooza kwa ubongo",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "cancer",
-            "text": "saratani",
+            "key": "hiv_aids",
+            "text": "Maambukizi ya VVU",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
@@ -1595,28 +1379,14 @@
           },
           {
             "key": "hiv_infected_child",
-            "text": "Mtoto aliyezaliwa na mama mwenye VVU/UKIMWI",
+            "text": "Mtoto aliyezaliwa na mama mwenye VVU",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
           },
           {
             "key": "untested_hiv_infected_child",
-            "text": "Mtoto ambaye hajapimwa VVU/UKIMWI",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "weight_stagnation_child",
-            "text": "Mtoto mwenye vilio vya uzito",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "child_with_fever",
-            "text": "Mtoto mwenye homa za mara kwa mara",
+            "text": "Mtoto ambaye hajapimwa VVU",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
@@ -1643,13 +1413,6 @@
             "openmrs_entity_id": ""
           },
           {
-            "key": "child_in_risky_environment",
-            "text": "Mtoto anayeishi katika mazingira hatarishi",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
             "key": "pregnant_mother",
             "text": "Mama mjamzito",
             "value": false,
@@ -1663,7 +1426,6 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
           }
-
         ],
         "v_required": {
           "value": "true",
