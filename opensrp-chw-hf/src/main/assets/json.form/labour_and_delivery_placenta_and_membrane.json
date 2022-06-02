@@ -96,6 +96,267 @@
         }
       },
       {
+        "key": "complete_oxytocin_egometrin_misoprstol",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "complete_oxytocin_egometrin_misoprstol",
+        "label": "Given Oxytocin or Egometrin or Misoprostol",
+        "text_color": "#000000",
+        "type": "check_box",
+        "options": [
+          {
+            "key": "oxytocin",
+            "text": "Oxytocin (O)",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "oxytocin"
+          },
+          {
+            "key": "egometrin",
+            "text": "Egometrin (E)",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "egometrin"
+          },
+          {
+            "key": "misoprstol",
+            "text": "Misoprostol (M)",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "misoprstol"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please select an option"
+        },
+        "relevance": {
+          "step1:placenta_and_membrane_expulsion": {
+            "type": "string",
+            "ex": "equalTo(., \"complete_placenta\")"
+          }
+        }
+      },
+      {
+        "key": "removal_of_placenta_pulling",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "removal_of_placenta_pulling",
+        "label": "Removal of placenta by pulling slowly",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please select an option"
+        },
+        "relevance": {
+          "step1:placenta_and_membrane_expulsion": {
+            "type": "string",
+            "ex": "equalTo(., \"complete_placenta\")"
+          }
+        }
+      },
+      {
+        "key": "massage_of_placenta",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "massage_of_placenta",
+        "label": "Massaged",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please select an option"
+        },
+        "relevance": {
+          "step1:placenta_and_membrane_expulsion": {
+            "type": "string",
+            "ex": "equalTo(., \"complete_placenta\")"
+          }
+        }
+      },
+      {
+        "key": "retained_oxytocin_egometrin_misoprostol",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "retained_oxytocin_egometrin_misoprostol",
+        "label": "Oxytocin/Egometrin/Misoprostol",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please select an option"
+        },
+        "relevance": {
+          "step1:placenta_and_membrane_expulsion": {
+            "type": "string",
+            "ex": "equalTo(., \"retained_placenta\")"
+          }
+        }
+      },
+      {
+        "key": "placenta_removed_by_hand",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "placenta_removed_by_hand",
+        "label": "Was the placenta removed by hand?",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please select an option"
+        },
+        "relevance": {
+          "step1:placenta_and_membrane_expulsion": {
+            "type": "string",
+            "ex": "equalTo(., \"retained_placenta\")"
+          }
+        }
+      },
+      {
+        "key": "conducted_mva",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "conducted_mva",
+        "label": "MVA.D&C was conducted?",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please select an option"
+        },
+        "relevance": {
+          "step1:placenta_and_membrane_expulsion": {
+            "type": "string",
+            "ex": "equalTo(., \"retained_placenta\")"
+          }
+        }
+      },
+      {
+        "key": "removal_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "removal_date",
+        "type": "date_picker",
+        "hint": "Removal Date",
+        "expanded": false,
+        "min_date": "today-2y",
+        "max_date": "today",
+        "v_required": {
+          "value": true,
+          "err": "Removal date is required"
+        }
+      },
+      {
+        "key": "removal_duration",
+        "type": "edit_text",
+        "hint": "How lond did it take to remove the placenta? (HH:MM)",
+        "openmrs_entity_id": "removal_duration",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": true,
+          "err": "Removal duration is required"
+        }
+      },
+      {
+        "key": "estimated_blood_loss",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "estimated_blood_loss",
+        "hint": "Estimated blood loss (mls)",
+        "text_color": "#000000",
+        "type": "edit_text",
+        "v_numeric": {
+          "value": true,
+          "err": "Please enter a valid number"
+        },
+        "v_min": {
+          "value": 0,
+          "err": "Please enter a valid number"
+        }
+      },
+      {
         "key": "labour_stage",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
