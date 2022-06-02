@@ -111,11 +111,11 @@
             "openmrs_entity_id": "soft_thin"
           },
           {
-            "key": "hard",
-            "text": "Hard",
+            "key": "thick",
+            "text": "Thick",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "hard"
+            "openmrs_entity_id": "thick"
           }
         ]
       },
@@ -229,26 +229,68 @@
         "options": [
           {
             "key": "roa",
-            "text": "ROA (Right Occiput Anterior)",
+            "text": "Right occipito anterior(ROA)",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "roa"
           },
           {
             "key": "loa",
-            "text": "LOA (Left Occiput Anterior)",
+            "text": "Left Occipito anterior(LOA)",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "loa"
           },
           {
-            "key": "opp",
-            "text": "OPP (Occipito-Posterior Occiput Position)",
+            "key": "rol",
+            "text": "Right Occipito Lateral(ROL)",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "opp"
+            "openmrs_entity_id": "rol"
+          },
+          {
+            "key": "lol",
+            "text": "Left Occipito Lateral (LOL)",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "lol"
+          },
+          {
+            "key": "rop",
+            "text": "Right Occipito Posterior (ROP)",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "rop"
+          },
+          {
+            "key": "lop",
+            "text": "Left Occipito Posterior (LOP)",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "lop"
+          },
+          {
+            "key": "doa",
+            "text": "Direct Occipito Anterior (DOA)",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "roa"
+          },
+          {
+            "key": "dop",
+            "text": "Direct Occipito Posterior (DOP)",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "dop"
           }
-        ]
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_vaginal_examination_relevance.yml"
+            }
+          }
+        }
       },
       {
         "key": "prompt_for_occiput_position",
@@ -262,6 +304,158 @@
           "step1:occiput_position": {
             "type": "string",
             "ex": "equalTo(., \"opp\")"
+          }
+        }
+      },
+      {
+        "key": "mento_position",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "mento_position",
+        "label": "Position of mento",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "rmp",
+            "text": "Right mentoposterior(RMP)",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "rmp"
+          },
+          {
+            "key": "lmp",
+            "text": "Left mentoposterior(RMP)",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "lmp"
+          },
+          {
+            "key": "rml",
+            "text": "Right mentolateral(RML)",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "rml"
+          },
+          {
+            "key": "lml",
+            "text": "Left mentolateral(LML)",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "lml"
+          },
+          {
+            "key": "rma",
+            "text": "Right mentoanterior(RMA)",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "rma"
+          },
+          {
+            "key": "lma",
+            "text": "Left mentoanterior(RMA)",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "lma"
+          }
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_vaginal_examination_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "sacro_position",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "sacro_position",
+        "label": "Position of sacro",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "rsp",
+            "text": "Right Sacroposterior(RSP)",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "rsp"
+          },
+          {
+            "key": "lsp",
+            "text": "Left Sacroposterior(LSP)",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "lsp"
+          },
+          {
+            "key": "rsl",
+            "text": "Right sacrolateral(RSL)",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "rsl"
+          },
+          {
+            "key": "lsl",
+            "text": "Left sacrolateral(LSL)",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "lsl"
+          },
+          {
+            "key": "rsa",
+            "text": "Right sacroanterior(RSA)",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "rsa"
+          },
+          {
+            "key": "lsa",
+            "text": "Left sacroanterior(LSA)",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "lsa"
+          }
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_vaginal_examination_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "dorso_position",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "dorso_position",
+        "label": "Position of dorso",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "dorso_anterior",
+            "text": "Dorso Anterior",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "dorso_anterior"
+          },
+          {
+            "key": "dorso_posterior",
+            "text": "Dorso Posterior",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "dorso_posterior"
+          }
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_vaginal_examination_relevance.yml"
+            }
           }
         }
       },
