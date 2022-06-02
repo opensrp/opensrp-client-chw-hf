@@ -427,30 +427,6 @@
         }
       },
       {
-        "key": "presentation",
-        "type": "native_radio",
-        "openmrs_entity_id": "presentation",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "label": "Presentation",
-        "options": [
-          {
-            "key": "breech",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "openmrs_entity_parent": "",
-            "text": "Breech Presentation"
-          },
-          {
-            "key": "cephalic",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "openmrs_entity_parent": "",
-            "text": "Cephalic Presentation"
-          }
-        ]
-      },
-      {
         "key": "lie",
         "type": "native_radio",
         "openmrs_entity_id": "lie",
@@ -480,6 +456,37 @@
             "text": "Longitudinal"
           }
         ]
+      },
+      {
+        "key": "presentation",
+        "type": "native_radio",
+        "openmrs_entity_id": "presentation",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "label": "Presentation",
+        "options": [
+          {
+            "key": "breech",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "",
+            "openmrs_entity_parent": "",
+            "text": "Breech Presentation"
+          },
+          {
+            "key": "cephalic",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "",
+            "openmrs_entity_parent": "",
+            "text": "Cephalic Presentation"
+          }
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_general_examination_relevance.yml"
+            }
+          }
+        }
       },
       {
         "key": "prompt_for_lie",
@@ -608,6 +615,51 @@
             }
           }
         }
+      },
+      {
+        "key": "level",
+        "type": "native_radio",
+        "label": "Level",
+        "openmrs_entity_id": "level",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "5",
+            "text": "5/5",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "normal"
+          },
+          {
+            "key": "4",
+            "text": "4/5",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "4"
+          },
+          {
+            "key": "3",
+            "text": "3/5",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "3"
+          },
+          {
+            "key": "2",
+            "text": "2/5",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "2"
+          },
+          {
+            "key": "1",
+            "text": "1/5",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "1"
+          }
+        ]
       }
     ]
   }
