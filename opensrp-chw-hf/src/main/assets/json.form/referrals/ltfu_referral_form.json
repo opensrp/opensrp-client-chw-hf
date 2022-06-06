@@ -53,13 +53,46 @@
   },
   "steps": [
     {
-      "title": "HIV Testing Services Referral Form",
+      "title": "Lost To FollowUp Referral Form",
       "fields": [
+        {
+          "name": "on_art",
+          "type": "radio_group",
+          "properties": {
+            "text": "Is the client on ARV?"
+          },
+          "options": [
+            {
+              "name": "yes",
+              "text": "Yes",
+              "meta_data": {
+                "openmrs_entity": "",
+                "openmrs_entity_id": "yes",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "no",
+              "text": "No",
+              "meta_data": {
+                "openmrs_entity": "",
+                "openmrs_entity_id": "no",
+                "openmrs_entity_parent": ""
+              }
+            }
+          ],
+          "meta_data": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "on_art"
+          },
+          "required_status": "yes:Please specify"
+        },
         {
           "name": "problem",
           "type": "multi_choice_checkbox",
           "properties": {
-            "text": "Reasons for Referral"
+            "text": "Lost to Followup Clinic"
           },
           "meta_data": {
             "openmrs_entity_parent": "",
@@ -67,44 +100,7 @@
             "openmrs_entity_id": "problem"
           },
           "options": [
-            {
-              "name": "high_risk_client",
-              "text": "High Risk client",
-              "meta_data": {
-                "openmrs_entity": "",
-                "openmrs_entity_id": "high_risk_client",
-                "openmrs_entity_parent": ""
-              }
-            },
-            {
-              "name": "optimistic_infections",
-              "text": "Optimistic infections",
-              "meta_data": {
-                "openmrs_entity": "",
-                "openmrs_entity_id": "optimistic_infections",
-                "openmrs_entity_parent": ""
-              }
-            },
-            {
-              "name": "confirmation_self_test",
-              "text": "Confirmation for self test",
-              "meta_data": {
-                "openmrs_entity": "",
-                "openmrs_entity_id": "confirmation_self_test",
-                "openmrs_entity_parent": ""
-              }
-            },
-            {
-              "name": "index_contact_testing",
-              "text": "Index contact testing",
-              "meta_data": {
-                "openmrs_entity": "",
-                "openmrs_entity_id": "index_contact_testing",
-                "openmrs_entity_parent": ""
-              }
-            }
-          ],
-          "required_status": "yes:Please specify reasons for referral"
+          ]
         },
         {
           "name": "chw_referral_hf",
@@ -118,23 +114,23 @@
             "text": "CHW Location"
           },
           "options": [],
-          "required_status": "yes:Please specify referral facility"
+          "required_status": "yes:Please specify"
         },
         {
-          "name": "referral_appointment_date",
+          "name": "last_appointment_date",
           "type": "datetime_picker",
           "properties": {
-            "hint": "Please select the appointment date",
+            "hint": "Please select the Last appointment date",
             "type": "date_picker",
             "display_format": "dd/MM/yyyy",
-            "min_date": "today"
+            "max_date": "today"
           },
           "meta_data": {
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "referral_appointment_date",
+            "openmrs_entity_id": "last_appointment_date",
             "openmrs_entity_parent": ""
           },
-          "required_status": "true:Please specify the appointment date"
+          "required_status": "true:Please specify the Last appointment date"
         }
       ]
     }
