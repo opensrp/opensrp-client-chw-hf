@@ -1090,43 +1090,8 @@
         "text_color": "#C0C0C0",
         "options": [
           {
-            "key": "hiv_aids_transmission",
-            "text": "HIV/AIDs transmission",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "sickle_cell_disease",
-            "text": "Sickle cell disease",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "heart_disease",
-            "text": "Heart diseases",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "diabetes",
-            "text": "Diabetes",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "cerebral_palsy",
-            "text": "Cerebral palsy",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "cancer",
-            "text": "Cancer",
+            "key": "hiv_aids",
+            "text": "HIV/AIDs",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
@@ -1183,43 +1148,8 @@
         "text_color": "#C0C0C0",
         "options": [
           {
-            "key": "hiv_aids_transmission",
-            "text": "HIV/AIDs transmission",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "sickle_cell_disease",
-            "text": "Sickle cell disease",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "heart_disease",
-            "text": "Heart diseases",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "diabetes",
-            "text": "Diabetes",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "cerebral_palsy",
-            "text": "Cerebral palsy",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "cancer",
-            "text": "Cancer",
+            "key": "hiv_aids",
+            "text": "HIV/AIDs",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
@@ -1290,43 +1220,8 @@
         "text_color": "#C0C0C0",
         "options": [
           {
-            "key": "hiv_aids_transmission",
-            "text": "HIV/AIDs transmission",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "sickle_cell_disease",
-            "text": "Sickle cell disease",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "heart_disease",
-            "text": "Heart diseases",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "diabetes",
-            "text": "Diabetes",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "cerebral_palsy",
-            "text": "Cerebral palsy",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "cancer",
-            "text": "Cancer",
+            "key": "hiv_aids",
+            "text": "HIV/AIDs",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
@@ -1353,20 +1248,6 @@
             "openmrs_entity_id": ""
           },
           {
-            "key": "weight_stagnation_child",
-            "text": "A child with stagnation in weight",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "child_with_fever",
-            "text": "A child with frequent fevers",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
             "key": "abused_child",
             "text": "Abused child",
             "value": false,
@@ -1383,13 +1264,6 @@
           {
             "key": "drug_abuse",
             "text": "Drug abuse",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "child_in_risky_environment",
-            "text": "Child living in a risky environment",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
@@ -1418,43 +1292,8 @@
         "text_color": "#C0C0C0",
         "options": [
           {
-            "key": "hiv_aids_transmission",
-            "text": "HIV/AIDs transmission",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "sickle_cell_disease",
-            "text": "Sickle cell disease",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "heart_disease",
-            "text": "Heart diseases",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "diabetes",
-            "text": "Diabetes",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "cerebral_palsy",
-            "text": "Cerebral palsy",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "cancer",
-            "text": "Cancer",
+            "key": "hiv_aids",
+            "text": "HIV/AIDs",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
@@ -1481,20 +1320,6 @@
             "openmrs_entity_id": ""
           },
           {
-            "key": "weight_stagnation_child",
-            "text": "A child with stagnation in weight",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "child_with_fever",
-            "text": "A child with frequent fevers",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
             "key": "abused_child",
             "text": "Abused child",
             "value": false,
@@ -1511,13 +1336,6 @@
           {
             "key": "drug_abuse",
             "text": "Drug abuse",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "child_in_risky_environment",
-            "text": "Child living in a risky environment",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
@@ -1546,43 +1364,8 @@
         "text_color": "#C0C0C0",
         "options": [
           {
-            "key": "hiv_aids_transmission",
-            "text": "HIV/AIDs transmission",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "sickle_cell_disease",
-            "text": "Sickle cell disease",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "heart_disease",
-            "text": "Heart diseases",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "diabetes",
-            "text": "Diabetes",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "cerebral_palsy",
-            "text": "Cerebral palsy",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "cancer",
-            "text": "Cancer",
+            "key": "hiv_aids",
+            "text": "HIV/AIDs",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
@@ -1609,20 +1392,6 @@
             "openmrs_entity_id": ""
           },
           {
-            "key": "weight_stagnation_child",
-            "text": "A child with stagnation in weight",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
-            "key": "child_with_fever",
-            "text": "A child with frequent fevers",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
             "key": "abused_child",
             "text": "Abused child",
             "value": false,
@@ -1644,13 +1413,6 @@
             "openmrs_entity_id": ""
           },
           {
-            "key": "child_in_risky_environment",
-            "text": "Child living in a risky environment",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": ""
-          },
-          {
             "key": "pregnant_mother",
             "text": "Pregnant mother",
             "value": false,
@@ -1664,7 +1426,6 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": ""
           }
-
         ],
         "v_required": {
           "value": "true",
