@@ -267,5 +267,6 @@
     <string name="tomorrow_hei_clients">Hudhurio la Kesho</string>
     <string name="missed_hei_clients">Waliokosa</string>
     <string name="anc_fundal_height_min_err">Kimo cha mimba lazima kiwe sawa au zaidi ya</string>
+    <string name="received_referrals">Rufaa Zilizopokelewa</string>
 
 </resources>

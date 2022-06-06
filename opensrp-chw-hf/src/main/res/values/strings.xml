@@ -353,5 +353,6 @@
 
     <string name="obstetric_history_title">Obstetric History</string>
     <string name="para_obstretric_history">Para {0}: Obstetric History</string>
+    <string name="received_referrals">Received Referrals</string>
 
 </resources>
