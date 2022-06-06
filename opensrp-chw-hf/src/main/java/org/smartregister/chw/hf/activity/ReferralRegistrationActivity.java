@@ -6,8 +6,11 @@ import android.os.Bundle;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.core.custom_views.NavigationMenu;
+import org.smartregister.chw.core.dao.ChwNotificationDao;
 import org.smartregister.chw.hf.presenter.IssueReferralActivityPresenter;
 import org.smartregister.chw.referral.activity.BaseIssueReferralActivity;
 import org.smartregister.chw.referral.contract.BaseIssueReferralContract;
@@ -15,7 +18,11 @@ import org.smartregister.chw.referral.interactor.BaseIssueReferralInteractor;
 import org.smartregister.chw.referral.model.BaseIssueReferralModel;
 import org.smartregister.chw.referral.presenter.BaseIssueReferralPresenter;
 import org.smartregister.chw.referral.util.Constants;
+import org.smartregister.domain.Location;
 import org.smartregister.family.util.JsonFormUtils;
+import org.smartregister.repository.LocationRepository;
+
+import timber.log.Timber;
 
 public class ReferralRegistrationActivity extends BaseIssueReferralActivity {
     private static String BASE_ENTITY_ID;
@@ -34,6 +41,36 @@ public class ReferralRegistrationActivity extends BaseIssueReferralActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         NavigationMenu.getInstance(this, null, null);
+    }
+
+    @Override
+    public void initializeHealthFacilitiesList(JSONObject form) {
+        //overrides and sets the chw location as the selected location
+        JSONArray steps = null;
+        LocationRepository locationRepository = new LocationRepository();
+        Location location = locationRepository.getLocationById(ChwNotificationDao.getSyncLocationId(BASE_ENTITY_ID));
+        try {
+            JSONObject option = new JSONObject();
+            option.put("name", location.getProperties().getName());
+            option.put("text", location.getProperties().getName());
+            JSONObject metaData = new JSONObject();
+            metaData.put("openmrs_entity", "location_uuid");
+            metaData.put("openmrs_entity_id", location.getProperties().getUid());
+            option.put("meta_data", metaData);
+
+            steps = form.getJSONArray("steps");
+            JSONObject step = steps.getJSONObject(0);
+            JSONArray fields = step.getJSONArray("fields");
+            for (int i = 0; i < fields.length(); i++) {
+                JSONObject field = fields.getJSONObject(i);
+                if (field.getString("name").equals("chw_referral_hf")) {
+                    field.getJSONArray("options").put(option);
+                    field.getJSONObject("properties").put("selection", "0");
+                }
+            }
+        } catch (JSONException e) {
+            Timber.e(e);
+        }
     }
 
     @NotNull

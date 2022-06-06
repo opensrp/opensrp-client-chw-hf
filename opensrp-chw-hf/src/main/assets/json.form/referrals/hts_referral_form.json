@@ -104,13 +104,7 @@
               }
             }
           ],
-          "required_status": "yes:Please specify reasons for referral",
-          "dependent_calculations": [
-            "referral_date",
-            "referral_time",
-            "referral_type",
-            "referral_status"
-          ]
+          "required_status": "yes:Please specify reasons for referral"
         },
         {
           "name": "chw_referral_hf",
@@ -121,8 +115,7 @@
             "openmrs_entity_parent": ""
           },
           "properties": {
-            "text": "Choose referral facility",
-            "searchable": "Choose referral facility"
+            "text": "CHW Location"
           },
           "options": [],
           "required_status": "yes:Please specify referral facility"
