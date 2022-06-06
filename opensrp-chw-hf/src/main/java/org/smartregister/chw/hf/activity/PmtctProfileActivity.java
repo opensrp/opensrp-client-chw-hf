@@ -129,32 +129,35 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         int itemId = item.getItemId();
         try {
             if (itemId == R.id.action_issue_pmtct_followup_referral) {
-                JSONObject formJsonObject = (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getPmtctcCommunityFollowupReferral());
+                //JSONObject formJsonObject = (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getPmtctcCommunityFollowupReferral());
+                JSONObject formJsonObject = (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, "referrals/hts_referral_form");
 
-                JSONObject reasonsForIssuingCommunityReferral = CoreJsonFormUtils.getJsonField(formJsonObject, STEP1, "reasons_for_issuing_community_referral");
+                ReferralRegistrationActivity.startGeneralReferralFormActivityForResults(this, memberObject.getBaseEntityId(), formJsonObject, false);
 
-                Date lastVisitDate = null;
-                if (followUpVisitDate != null) {
-                    lastVisitDate = followUpVisitDate;
-                } else {
-                    lastVisitDate = pmtctRegisterDate;
-                }
-                formJsonObject.getJSONObject(STEP1).getJSONArray(FIELDS).getJSONObject(getJsonArrayIndex(formJsonObject.getJSONObject(STEP1).getJSONArray(FIELDS), "last_client_visit_date")).put(VALUE, sdf.format(lastVisitDate));
-
-
-                if (visitStatus.equals(CoreConstants.VISIT_STATE.DUE)) {
-                    reasonsForIssuingCommunityReferral.getJSONArray("options").remove(getJsonArrayIndex(reasonsForIssuingCommunityReferral.getJSONArray("options"), "lost_to_followup"));
-                } else if (visitStatus.equals(CoreConstants.VISIT_STATE.OVERDUE)) {
-                    reasonsForIssuingCommunityReferral.getJSONArray("options").remove(getJsonArrayIndex(reasonsForIssuingCommunityReferral.getJSONArray("options"), "missed_appointment"));
-                } else {
-                    reasonsForIssuingCommunityReferral.getJSONArray("options").remove(getJsonArrayIndex(reasonsForIssuingCommunityReferral.getJSONArray("options"), "missed_appointment"));
-                    reasonsForIssuingCommunityReferral.getJSONArray("options").remove(getJsonArrayIndex(reasonsForIssuingCommunityReferral.getJSONArray("options"), "lost_to_followup"));
-                    reasonsForIssuingCommunityReferral.getJSONArray("options").getJSONObject(getJsonArrayIndex(reasonsForIssuingCommunityReferral.getJSONArray("options"), "mother_champion_services")).put(VALUE, true);
-                }
-                int index = getJsonArrayIndex(formJsonObject.getJSONObject(STEP1).getJSONArray(FIELDS), "reasons_for_issuing_community_referral");
-                formJsonObject.getJSONObject(STEP1).getJSONArray(FIELDS).put(index, reasonsForIssuingCommunityReferral);
-
-                startFormActivity(formJsonObject);
+//                JSONObject reasonsForIssuingCommunityReferral = CoreJsonFormUtils.getJsonField(formJsonObject, STEP1, "reasons_for_issuing_community_referral");
+//
+//                Date lastVisitDate = null;
+//                if (followUpVisitDate != null) {
+//                    lastVisitDate = followUpVisitDate;
+//                } else {
+//                    lastVisitDate = pmtctRegisterDate;
+//                }
+//                formJsonObject.getJSONObject(STEP1).getJSONArray(FIELDS).getJSONObject(getJsonArrayIndex(formJsonObject.getJSONObject(STEP1).getJSONArray(FIELDS), "last_client_visit_date")).put(VALUE, sdf.format(lastVisitDate));
+//
+//
+//                if (visitStatus.equals(CoreConstants.VISIT_STATE.DUE)) {
+//                    reasonsForIssuingCommunityReferral.getJSONArray("options").remove(getJsonArrayIndex(reasonsForIssuingCommunityReferral.getJSONArray("options"), "lost_to_followup"));
+//                } else if (visitStatus.equals(CoreConstants.VISIT_STATE.OVERDUE)) {
+//                    reasonsForIssuingCommunityReferral.getJSONArray("options").remove(getJsonArrayIndex(reasonsForIssuingCommunityReferral.getJSONArray("options"), "missed_appointment"));
+//                } else {
+//                    reasonsForIssuingCommunityReferral.getJSONArray("options").remove(getJsonArrayIndex(reasonsForIssuingCommunityReferral.getJSONArray("options"), "missed_appointment"));
+//                    reasonsForIssuingCommunityReferral.getJSONArray("options").remove(getJsonArrayIndex(reasonsForIssuingCommunityReferral.getJSONArray("options"), "lost_to_followup"));
+//                    reasonsForIssuingCommunityReferral.getJSONArray("options").getJSONObject(getJsonArrayIndex(reasonsForIssuingCommunityReferral.getJSONArray("options"), "mother_champion_services")).put(VALUE, true);
+//                }
+//                int index = getJsonArrayIndex(formJsonObject.getJSONObject(STEP1).getJSONArray(FIELDS), "reasons_for_issuing_community_referral");
+//                formJsonObject.getJSONObject(STEP1).getJSONArray(FIELDS).put(index, reasonsForIssuingCommunityReferral);
+//
+//                startFormActivity(formJsonObject);
                 return true;
             } else if (itemId == R.id.action_mark_as_deceased) {
                 removeMember();

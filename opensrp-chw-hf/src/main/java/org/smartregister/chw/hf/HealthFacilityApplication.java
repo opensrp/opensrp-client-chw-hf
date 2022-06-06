@@ -55,6 +55,7 @@ import org.smartregister.chw.ld.LDLibrary;
 import org.smartregister.chw.malaria.MalariaLibrary;
 import org.smartregister.chw.pmtct.PmtctLibrary;
 import org.smartregister.chw.pnc.PncLibrary;
+import org.smartregister.chw.referral.ReferralLibrary;
 import org.smartregister.chw.tb.TbLibrary;
 import org.smartregister.commonregistry.CommonFtsObject;
 import org.smartregister.configurableviews.ConfigurableViewsLibrary;
@@ -227,6 +228,11 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
         PncLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
         MalariaLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
         FpLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
+
+        //setup referral library
+        ReferralLibrary.init(this);
+        ReferralLibrary.getInstance().setAppVersion(BuildConfig.VERSION_CODE);
+        ReferralLibrary.getInstance().setDatabaseVersion(BuildConfig.DATABASE_VERSION);
 
         //Setup hiv library
         HivLibrary.init(this);
