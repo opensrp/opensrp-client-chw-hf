@@ -12,6 +12,7 @@ import android.webkit.WebView;
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
 import org.smartregister.chw.hf.domain.anc_reports.AncMonthlyReportObject;
+import org.smartregister.chw.hf.domain.cbhs_reports.CbhsMonthlyReportObject;
 import org.smartregister.chw.hf.domain.pmtct_reports.Pmtct12MonthsReportObject;
 import org.smartregister.chw.hf.domain.pmtct_reports.Pmtct24MonthsReportObject;
 import org.smartregister.chw.hf.domain.pmtct_reports.Pmtct3MonthsReportObject;
@@ -174,6 +175,19 @@ public class ReportUtils {
             AncMonthlyReportObject ancMonthlyReportObject = new AncMonthlyReportObject(now);
             try {
                 report = ancMonthlyReportObject.getIndicatorDataAsGson(ancMonthlyReportObject.getIndicatorData());
+            } catch (Exception e) {
+                Timber.e(e);
+            }
+            return report;
+        }
+    }
+
+    public static class CBHSReports {
+        public static String computeCbhsReport(Date now) {
+            String report = "";
+            CbhsMonthlyReportObject cbhsMonthlyReportObject = new CbhsMonthlyReportObject(now);
+            try {
+                report = cbhsMonthlyReportObject.getIndicatorDataAsGson(cbhsMonthlyReportObject.getIndicatorData());
             } catch (Exception e) {
                 Timber.e(e);
             }
