@@ -18,6 +18,7 @@ import org.smartregister.chw.referral.util.Constants;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.view.customcontrols.CustomFontTextView;
 
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -107,7 +108,7 @@ public class IssuedReferralsDetailsViewActivity extends ReferralDetailsViewActiv
         SimpleDateFormat dateFormatter = new SimpleDateFormat("dd MMM yyyy", Locale.getDefault());
 
         Calendar referralDateCalendar = Calendar.getInstance();
-        //referralDateCalendar.setTimeInMillis(new BigDecimal(memberObject.getChwReferralDate()).longValue());
+        referralDateCalendar.setTimeInMillis(new BigDecimal(memberObject.getChwReferralDate()).longValue());
 
         referralDate.setText(dateFormatter.format(referralDateCalendar.getTime()));
         referralFacility.setText(memberObject.getChwReferralHf());
