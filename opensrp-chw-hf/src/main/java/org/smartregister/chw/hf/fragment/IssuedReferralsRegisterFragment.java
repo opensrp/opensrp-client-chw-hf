@@ -10,10 +10,14 @@ import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.activity.ReferralTaskViewActivity;
 import org.smartregister.chw.hf.presenter.ReferralFragmentPresenter;
+import org.smartregister.chw.hf.provider.IssuedReferralsRegisterProvider;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
+import org.smartregister.cursoradapter.RecyclerViewPaginatedAdapter;
 import org.smartregister.domain.Task;
 import org.smartregister.family.util.DBConstants;
 import org.smartregister.repository.AllSharedPreferences;
+
+import java.util.Set;
 
 public class IssuedReferralsRegisterFragment extends BaseReferralRegisterFragment {
 
@@ -30,8 +34,16 @@ public class IssuedReferralsRegisterFragment extends BaseReferralRegisterFragmen
     protected String getMainCondition() {
         AllSharedPreferences allSharedPreferences = Utils.getAllSharedPreferences();
         String anm = allSharedPreferences.fetchRegisteredANM();
-        String currentLoaction =  allSharedPreferences.fetchUserLocalityId(anm);
+        String currentLoaction = allSharedPreferences.fetchUserLocalityId(anm);
         return " ec_family_member_search.date_removed is null and task.location = '" + currentLoaction + "' ";
+    }
+
+    @Override
+    public void initializeAdapter(Set<org.smartregister.configurableviews.model.View> visibleColumns, String tableName) {
+        IssuedReferralsRegisterProvider referralRegisterProvider = new IssuedReferralsRegisterProvider(getActivity(), registerActionHandler, paginationViewHandler);
+        clientAdapter = new RecyclerViewPaginatedAdapter(null, referralRegisterProvider, context().commonrepository(this.tablename));
+        clientAdapter.setCurrentlimit(20);
+        clientsView.setAdapter(clientAdapter);
     }
 
     @Override

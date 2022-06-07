@@ -1,25 +1,19 @@
 package org.smartregister.chw.hf.fragment;
 
 import android.os.Handler;
-import android.view.MenuItem;
 import android.view.View;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.smartregister.chw.core.fragment.BaseReferralRegisterFragment;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.Utils;
 import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
-import org.smartregister.chw.hf.activity.PncNoMotherRegisterActivity;
 import org.smartregister.chw.hf.activity.ReferralTaskViewActivity;
 import org.smartregister.chw.hf.presenter.ReferralFragmentPresenter;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.domain.Task;
 import org.smartregister.family.util.DBConstants;
 import org.smartregister.repository.AllSharedPreferences;
-
-import androidx.annotation.NonNull;
 
 public class ReferralRegisterFragment extends BaseReferralRegisterFragment {
 
@@ -36,7 +30,7 @@ public class ReferralRegisterFragment extends BaseReferralRegisterFragment {
     protected String getMainCondition() {
         AllSharedPreferences allSharedPreferences = Utils.getAllSharedPreferences();
         String anm = allSharedPreferences.fetchRegisteredANM();
-        String currentLoaction =  allSharedPreferences.fetchUserLocalityId(anm);
+        String currentLoaction = allSharedPreferences.fetchUserLocalityId(anm);
         return "task.business_status = '" + CoreConstants.BUSINESS_STATUS.REFERRED + "' and  ec_family_member_search.date_removed is null and task.location <> '" + currentLoaction + "' ";
     }
 
