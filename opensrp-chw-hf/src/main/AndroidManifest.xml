@@ -16,6 +16,10 @@
         <activity
             android:name=".activity.PncReportsActivity"
             android:theme="@style/HFTheme.NoActionBar" />
+        <activity android:name=".activity.CbhsReportsActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity android:name=".activity.CbhsReportsViewActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
         <activity
             android:name=".activity.PncReportsViewActivity"
             android:theme="@style/HFTheme.NoActionBar" />

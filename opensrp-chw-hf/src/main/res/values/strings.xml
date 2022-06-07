@@ -183,6 +183,8 @@
     <string name="hiv_test_results_title">HIV Test Results</string>
     <string name="print_report">Print</string>
     <string name="pnc_reports">PNC Reports</string>
+    <string name="cbhs_reports_title">CBHS Reports</string>
+    <string name="view_reports_for_cbhs">View Monthly Reports for CBHS</string>
     <string name="month">Month</string>
     <string name="head_circumference_min_err">Head Circumference must be equal or greater than %s CM</string>
     <string name="clinical_staging_of_hiv">Clinical Staging of HIV</string>
@@ -353,5 +355,6 @@
 
     <string name="obstetric_history_title">Obstetric History</string>
     <string name="para_obstretric_history">Para {0}: Obstetric History</string>
+
 
 </resources>
