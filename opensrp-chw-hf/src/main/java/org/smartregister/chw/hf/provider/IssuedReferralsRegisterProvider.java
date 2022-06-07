@@ -44,6 +44,7 @@ public class IssuedReferralsRegisterProvider extends BaseReferralRegisterProvide
         issuedReferralViewHolder.textViewService.setText(Utils.getValue(pc.getColumnmaps(), CoreConstants.DB_CONSTANTS.FOCUS, true));
         issuedReferralViewHolder.textViewReferralClinic.setText(Utils.getValue(pc.getColumnmaps(), org.smartregister.chw.referral.util.DBConstants.Key.PROBLEM, true));
         issuedReferralViewHolder.textViewReferralClinic.setVisibility(View.VISIBLE);
+        attachPatientOnclickListener(viewHolder.itemView, pc);
     }
 
     @Override
