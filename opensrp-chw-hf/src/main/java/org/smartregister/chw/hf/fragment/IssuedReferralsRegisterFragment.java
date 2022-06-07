@@ -4,13 +4,13 @@ import android.os.Handler;
 import android.view.View;
 
 import org.smartregister.chw.core.fragment.BaseReferralRegisterFragment;
-import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.Utils;
 import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
-import org.smartregister.chw.hf.activity.ReferralTaskViewActivity;
+import org.smartregister.chw.hf.activity.IssuedReferralsDetailsViewActivity;
 import org.smartregister.chw.hf.presenter.ReferralFragmentPresenter;
 import org.smartregister.chw.hf.provider.IssuedReferralsRegisterProvider;
+import org.smartregister.chw.referral.domain.MemberObject;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.cursoradapter.RecyclerViewPaginatedAdapter;
 import org.smartregister.domain.Task;
@@ -85,7 +85,7 @@ public class IssuedReferralsRegisterFragment extends BaseReferralRegisterFragmen
     }
 
     private void goToReferralsDetails(CommonPersonObjectClient client) {
-        handler.postDelayed(() -> ReferralTaskViewActivity.startReferralTaskViewActivity(getActivity(), getCommonPersonObjectClient(), getTask(Utils.getValue(client.getColumnmaps(), "_id", false)), CoreConstants.REGISTERED_ACTIVITIES.REFERRALS_REGISTER_ACTIVITY), 100);
+        handler.postDelayed(() -> IssuedReferralsDetailsViewActivity.startIssuedReferralsDetailsViewActivity(getActivity(), new MemberObject(client), client), 100);
     }
 
 }

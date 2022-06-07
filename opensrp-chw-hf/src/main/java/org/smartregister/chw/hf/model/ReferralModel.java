@@ -3,6 +3,7 @@ package org.smartregister.chw.hf.model;
 import org.smartregister.chw.core.model.BaseReferralModel;
 import org.smartregister.chw.core.utils.ChwDBConstants;
 import org.smartregister.chw.core.utils.CoreConstants;
+import org.smartregister.chw.referral.util.Constants;
 import org.smartregister.cursoradapter.SmartRegisterQueryBuilder;
 import org.smartregister.family.util.DBConstants;
 
@@ -41,6 +42,11 @@ public class ReferralModel extends BaseReferralModel {
         columns.add(table + "." + DBConstants.KEY.DOB);
         columns.add(table + "." + DBConstants.KEY.GENDER);
         columns.add(CoreConstants.TABLE_NAME.FAMILY + "." + DBConstants.KEY.FAMILY_HEAD);
+        columns.add(CoreConstants.TABLE_NAME.FAMILY_MEMBER + "." + DBConstants.KEY.UNIQUE_ID);
+        columns.add(CoreConstants.TABLE_NAME.FAMILY_MEMBER + "." + DBConstants.KEY.RELATIONAL_ID);
+        columns.add(CoreConstants.TABLE_NAME.FAMILY_MEMBER + "." + DBConstants.KEY.PHONE_NUMBER);
+        columns.add(CoreConstants.TABLE_NAME.FAMILY_MEMBER + "." + DBConstants.KEY.OTHER_PHONE_NUMBER);
+        columns.add(CoreConstants.TABLE_NAME.FAMILY + "." + DBConstants.KEY.VILLAGE_TOWN);
 
     }
 
@@ -51,6 +57,9 @@ public class ReferralModel extends BaseReferralModel {
         columns.add(CoreConstants.TABLE_NAME.TASK + "." + CoreConstants.DB_CONSTANTS.START);
         columns.add(CoreConstants.TABLE_NAME.REFERRAL + "." + org.smartregister.chw.referral.util.DBConstants.Key.REFERRAL_HF);
         columns.add(CoreConstants.TABLE_NAME.REFERRAL + "." + org.smartregister.chw.referral.util.DBConstants.Key.PROBLEM);
+        columns.add(CoreConstants.TABLE_NAME.REFERRAL + "." + org.smartregister.chw.referral.util.DBConstants.Key.REFERRAL_SERVICE);
+        columns.add(CoreConstants.TABLE_NAME.REFERRAL + "." + org.smartregister.chw.referral.util.DBConstants.Key.REFERRAL_DATE);
+        columns.add(CoreConstants.TABLE_NAME.TASK + "." + CoreConstants.DB_CONSTANTS.FOCUS + " AS " + org.smartregister.chw.referral.util.DBConstants.Key.REFERRAL_TYPE);
 
     }
 }
