@@ -16,7 +16,7 @@ import org.smartregister.view.fragment.BaseRegisterFragment;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-public class ReferralRegisterActivity extends BaseReferralRegister implements BottomNavigationView.OnNavigationItemSelectedListener {
+public class ReferralRegisterActivity extends BaseReferralRegister {
 
     @Override
     protected void onDestroy() {
@@ -34,38 +34,12 @@ public class ReferralRegisterActivity extends BaseReferralRegister implements Bo
     }
 
     @Override
-    protected Fragment[] getOtherFragments() {
-        return new Fragment[]{
-                new IssuedReferralsRegisterFragment()
-        };
-    }
-
-    @Override
-    public void switchToBaseFragment() {
-        Intent intent = new Intent(this, FamilyRegisterActivity.class);
-        startActivity(intent);
-        finish();
-    }
-
-    @Override
     protected void registerBottomNavigation() {
         bottomNavigationHelper = new BottomNavigationHelper();
-        bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.getMenu().clear();
-
-        bottomNavigationView.inflateMenu(R.menu.bottom_nav_referral_menu);
-        bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        bottomNavigationView = findViewById(org.smartregister.R.id.bottom_navigation);
+        FamilyRegisterActivity.registerBottomNavigation(bottomNavigationHelper, bottomNavigationView, this);
+        bottomNavigationView.getMenu().removeItem(org.smartregister.family.R.id.action_register);
 
     }
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        if (menuItem.getItemId() == R.id.action_home) {
-            switchToFragment(0);
-            return true;
-        } else if (menuItem.getItemId() == R.id.action_sent_referrals) {
-            switchToFragment(1);
-            return true;
-        }
-        return false;
-    }
+
 }
