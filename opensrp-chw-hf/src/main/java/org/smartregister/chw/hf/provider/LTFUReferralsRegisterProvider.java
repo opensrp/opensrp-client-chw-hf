@@ -18,10 +18,10 @@ import org.smartregister.family.util.Utils;
 
 import java.util.Locale;
 
-public class IssuedReferralsRegisterProvider extends BaseReferralRegisterProvider {
+public class LTFUReferralsRegisterProvider extends BaseReferralRegisterProvider {
     private final Context context;
 
-    public IssuedReferralsRegisterProvider(Context context, View.OnClickListener onClickListener, View.OnClickListener paginationClickListener) {
+    public LTFUReferralsRegisterProvider(Context context, View.OnClickListener onClickListener, View.OnClickListener paginationClickListener) {
         super(context, onClickListener, paginationClickListener);
         this.context = context;
     }

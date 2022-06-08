@@ -17,7 +17,7 @@
             android:theme="@style/HFTheme.NoActionBar"/>
         <activity android:name=".activity.LTFURegisterActivity"
             android:theme="@style/HFTheme.NoActionBar"/>
-        <activity android:name=".activity.IssuedReferralsDetailsViewActivity"
+        <activity android:name=".activity.LTFUReferralsDetailsViewActivity"
             android:theme="@style/HFTheme.NoActionBar"/>
         <activity
             android:name=".activity.PncReportsActivity"

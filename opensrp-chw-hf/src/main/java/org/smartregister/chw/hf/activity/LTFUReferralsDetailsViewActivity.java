@@ -26,7 +26,7 @@ import java.util.Locale;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
 
-public class IssuedReferralsDetailsViewActivity extends ReferralDetailsViewActivity {
+public class LTFUReferralsDetailsViewActivity extends ReferralDetailsViewActivity {
     private static CommonPersonObjectClient client;
     private CustomFontTextView clientName;
     private CustomFontTextView careGiverName;
@@ -39,10 +39,10 @@ public class IssuedReferralsDetailsViewActivity extends ReferralDetailsViewActiv
     private ViewGroup problemLayout;
     private ViewGroup preManagementServicesServices;
 
-    public static void startIssuedReferralsDetailsViewActivity(Activity activity, MemberObject memberObject, CommonPersonObjectClient client) {
-        Intent intent = new Intent(activity, IssuedReferralsDetailsViewActivity.class);
+    public static void startLTFUReferralsDetailsViewActivity(Activity activity, MemberObject memberObject, CommonPersonObjectClient client) {
+        Intent intent = new Intent(activity, LTFUReferralsDetailsViewActivity.class);
         intent.putExtra(Constants.ReferralMemberObject.MEMBER_OBJECT, memberObject);
-        IssuedReferralsDetailsViewActivity.client = client;
+        LTFUReferralsDetailsViewActivity.client = client;
         activity.startActivity(intent);
     }
 

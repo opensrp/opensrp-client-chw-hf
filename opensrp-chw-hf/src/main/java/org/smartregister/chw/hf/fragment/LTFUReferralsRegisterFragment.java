@@ -7,9 +7,9 @@ import org.smartregister.chw.core.fragment.BaseReferralRegisterFragment;
 import org.smartregister.chw.core.utils.Utils;
 import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
-import org.smartregister.chw.hf.activity.IssuedReferralsDetailsViewActivity;
+import org.smartregister.chw.hf.activity.LTFUReferralsDetailsViewActivity;
 import org.smartregister.chw.hf.presenter.ReferralFragmentPresenter;
-import org.smartregister.chw.hf.provider.IssuedReferralsRegisterProvider;
+import org.smartregister.chw.hf.provider.LTFUReferralsRegisterProvider;
 import org.smartregister.chw.referral.domain.MemberObject;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.cursoradapter.RecyclerViewPaginatedAdapter;
@@ -19,7 +19,7 @@ import org.smartregister.repository.AllSharedPreferences;
 
 import java.util.Set;
 
-public class IssuedReferralsRegisterFragment extends BaseReferralRegisterFragment {
+public class LTFUReferralsRegisterFragment extends BaseReferralRegisterFragment {
 
     public Handler handler = new Handler();
     private ReferralFragmentPresenter referralFragmentPresenter;
@@ -40,7 +40,7 @@ public class IssuedReferralsRegisterFragment extends BaseReferralRegisterFragmen
 
     @Override
     public void initializeAdapter(Set<org.smartregister.configurableviews.model.View> visibleColumns, String tableName) {
-        IssuedReferralsRegisterProvider referralRegisterProvider = new IssuedReferralsRegisterProvider(getActivity(), registerActionHandler, paginationViewHandler);
+        LTFUReferralsRegisterProvider referralRegisterProvider = new LTFUReferralsRegisterProvider(getActivity(), registerActionHandler, paginationViewHandler);
         clientAdapter = new RecyclerViewPaginatedAdapter(null, referralRegisterProvider, context().commonrepository(this.tablename));
         clientAdapter.setCurrentlimit(20);
         clientsView.setAdapter(clientAdapter);
@@ -85,7 +85,7 @@ public class IssuedReferralsRegisterFragment extends BaseReferralRegisterFragmen
     }
 
     private void goToReferralsDetails(CommonPersonObjectClient client) {
-        handler.postDelayed(() -> IssuedReferralsDetailsViewActivity.startIssuedReferralsDetailsViewActivity(getActivity(), new MemberObject(client), client), 100);
+        handler.postDelayed(() -> LTFUReferralsDetailsViewActivity.startLTFUReferralsDetailsViewActivity(getActivity(), new MemberObject(client), client), 100);
     }
 
 }

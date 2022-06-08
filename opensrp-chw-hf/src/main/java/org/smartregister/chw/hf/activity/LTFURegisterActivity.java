@@ -2,7 +2,7 @@ package org.smartregister.chw.hf.activity;
 
 import org.smartregister.chw.core.activity.BaseReferralRegister;
 import org.smartregister.chw.core.presenter.BaseReferralPresenter;
-import org.smartregister.chw.hf.fragment.IssuedReferralsRegisterFragment;
+import org.smartregister.chw.hf.fragment.LTFUReferralsRegisterFragment;
 import org.smartregister.helper.BottomNavigationHelper;
 import org.smartregister.view.fragment.BaseRegisterFragment;
 
@@ -16,7 +16,7 @@ public class LTFURegisterActivity extends BaseReferralRegister {
 
     @Override
     protected BaseRegisterFragment getRegisterFragment() {
-        return new IssuedReferralsRegisterFragment();
+        return new LTFUReferralsRegisterFragment();
     }
 
 
