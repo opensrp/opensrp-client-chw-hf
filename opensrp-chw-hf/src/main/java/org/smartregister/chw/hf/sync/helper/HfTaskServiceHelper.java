@@ -11,6 +11,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
+import androidx.annotation.NonNull;
+
 public class HfTaskServiceHelper extends TaskServiceHelper {
 
     protected static HfTaskServiceHelper instance;
@@ -29,6 +31,11 @@ public class HfTaskServiceHelper extends TaskServiceHelper {
     @Override
     protected List<String> getLocationIds() {
         LocationHelper locationHelper = LocationHelper.getInstance();
+        return getLocationsInHierarchy(locationHelper);
+    }
+
+    @NonNull
+    private ArrayList<String> getLocationsInHierarchy(LocationHelper locationHelper) {
         ArrayList<String> locations = new ArrayList<>();
         if (locationHelper != null) {
             //This would return the location and its sub-levels based off the allowed locations i.e Council, Ward, Facility, Village
