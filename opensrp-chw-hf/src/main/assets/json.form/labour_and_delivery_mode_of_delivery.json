@@ -79,7 +79,7 @@
             "text": "Vacuum Extraction",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "instrumental_delivery"
+            "openmrs_entity_id": "vacuum_extraction"
           },
           {
             "key": "breech_delivery",
