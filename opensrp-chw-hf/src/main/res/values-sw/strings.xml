@@ -111,6 +111,7 @@
     <string name="mother_general_examination">Uchunguzi wa Afya ya Mama</string>
     <string name="child_general_examination_complete">Uchunguzi wa Afya ya Mtoto %s Umekamilika</string>
     <string name="child_general_examination">Uchunguzi wa Afya ya Mtoto %s</string>
+    <string name="children_general_examination">Uchunguzi wa Afya ya Mtoto %s - %d</string>
     <string name="immunization_complete">Chanjo zimekamilika</string>
     <string name="immunization_title">Chanjo</string>
     <string name="nutritional_supplements_complete">Virutubisho vya Lishe Umekamilika</string>
