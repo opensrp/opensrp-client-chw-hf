@@ -16,6 +16,8 @@ import org.smartregister.chw.referral.activity.ReferralDetailsViewActivity;
 import org.smartregister.chw.referral.domain.MemberObject;
 import org.smartregister.chw.referral.util.Constants;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
+import org.smartregister.domain.Location;
+import org.smartregister.repository.LocationRepository;
 import org.smartregister.view.customcontrols.CustomFontTextView;
 
 import java.math.BigDecimal;
@@ -111,7 +113,9 @@ public class LTFUReferralsDetailsViewActivity extends ReferralDetailsViewActivit
         referralDateCalendar.setTimeInMillis(new BigDecimal(memberObject.getChwReferralDate()).longValue());
 
         referralDate.setText(dateFormatter.format(referralDateCalendar.getTime()));
-        referralFacility.setText(memberObject.getChwReferralHf());
+
+        setReferralFacility(memberObject);
+
         referralType.setText(memberObject.getReferralType());
 
         if (!StringUtils.isNotBlank(memberObject.getPrimaryCareGiver()) && clientAge < 5) {
@@ -126,6 +130,17 @@ public class LTFUReferralsDetailsViewActivity extends ReferralDetailsViewActivit
             careGiverPhone.setText(getContacts(memberObject));
         }
 
+    }
+
+    private void setReferralFacility(MemberObject memberObject) {
+        String locationId = memberObject.getChwReferralHf();
+        LocationRepository locationRepository = new LocationRepository();
+        Location location = locationRepository.getLocationById(locationId);
+        if (location != null) {
+            referralFacility.setText(location.getProperties().getName());
+        } else {
+            referralFacility.setText(locationId);
+        }
     }
 
     private String getContacts(MemberObject memberObject) {

@@ -15,8 +15,10 @@ import org.smartregister.chw.hf.holder.IssuedReferralViewHolder;
 import org.smartregister.chw.referral.util.Constants;
 import org.smartregister.chw.referral.util.ReferralUtil;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
+import org.smartregister.domain.Location;
 import org.smartregister.family.util.DBConstants;
 import org.smartregister.family.util.Utils;
+import org.smartregister.repository.LocationRepository;
 
 import java.util.Locale;
 
@@ -49,6 +51,7 @@ public class LTFUReferralsRegisterProvider extends BaseReferralRegisterProvider 
         issuedReferralViewHolder.textViewReferralClinic.setText(Utils.getValue(pc.getColumnmaps(), org.smartregister.chw.referral.util.DBConstants.Key.PROBLEM, true));
         issuedReferralViewHolder.textViewReferralClinic.setVisibility(View.VISIBLE);
         setReferralStatusColor(context, issuedReferralViewHolder.textReferralStatus, Utils.getValue(pc.getColumnmaps(), org.smartregister.chw.referral.util.DBConstants.Key.REFERRAL_STATUS, true));
+        setVillageNameName(pc, issuedReferralViewHolder.textViewVillage);
         attachPatientOnclickListener(viewHolder.itemView, pc);
     }
 
@@ -78,6 +81,18 @@ public class LTFUReferralsRegisterProvider extends BaseReferralRegisterProvider 
                 );
                 textViewStatus.setText(context.getString(R.string.referral_status_pending));
                 break;
+        }
+    }
+
+    private void setVillageNameName(CommonPersonObjectClient pc, TextView textViewVillage) {
+        String locationId = Utils.getValue(pc.getColumnmaps(), org.smartregister.chw.referral.util.DBConstants.Key.REFERRAL_HF, true);
+        LocationRepository locationRepository = new LocationRepository();
+        Location location = locationRepository.getLocationById(locationId);
+
+        if (location != null) {
+            textViewVillage.setText(location.getProperties().getName());
+        } else {
+            textViewVillage.setText(locationId);
         }
     }
 
