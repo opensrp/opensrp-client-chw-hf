@@ -8,6 +8,7 @@ import org.smartregister.chw.core.utils.Utils;
 import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.activity.LTFUReferralsDetailsViewActivity;
+import org.smartregister.chw.hf.model.LTFUModel;
 import org.smartregister.chw.hf.presenter.ReferralFragmentPresenter;
 import org.smartregister.chw.hf.provider.LTFUReferralsRegisterProvider;
 import org.smartregister.chw.referral.domain.MemberObject;
@@ -63,7 +64,7 @@ public class SuccessfulReferralsRegisterFragment extends BaseReferralRegisterFra
 
     @Override
     protected void initializePresenter() {
-        referralFragmentPresenter = new ReferralFragmentPresenter(this);
+        referralFragmentPresenter = new ReferralFragmentPresenter(this, new LTFUModel());
         presenter = referralFragmentPresenter;
 
     }

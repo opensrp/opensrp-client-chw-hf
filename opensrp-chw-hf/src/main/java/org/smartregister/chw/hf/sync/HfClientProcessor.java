@@ -1,12 +1,5 @@
 package org.smartregister.chw.hf.sync;
 
-import static org.smartregister.chw.hf.utils.Constants.Events.ANC_FIRST_FACILITY_VISIT;
-import static org.smartregister.chw.hf.utils.Constants.Events.ANC_RECURRING_FACILITY_VISIT;
-import static org.smartregister.chw.hf.utils.Constants.Events.HEI_FOLLOWUP;
-import static org.smartregister.chw.hf.utils.Constants.Events.LD_PARTOGRAPHY;
-import static org.smartregister.chw.hf.utils.Constants.Events.PNC_VISIT;
-import static org.smartregister.chw.hf.utils.Constants.JsonForm.LDVisit.LD_GENERAL_EXAMINATION;
-
 import android.content.Context;
 
 import org.smartregister.chw.anc.util.NCUtils;
@@ -19,6 +12,13 @@ import org.smartregister.domain.jsonmapping.Table;
 import org.smartregister.sync.ClientProcessorForJava;
 
 import timber.log.Timber;
+
+import static org.smartregister.chw.hf.utils.Constants.Events.ANC_FIRST_FACILITY_VISIT;
+import static org.smartregister.chw.hf.utils.Constants.Events.ANC_RECURRING_FACILITY_VISIT;
+import static org.smartregister.chw.hf.utils.Constants.Events.HEI_FOLLOWUP;
+import static org.smartregister.chw.hf.utils.Constants.Events.LD_PARTOGRAPHY;
+import static org.smartregister.chw.hf.utils.Constants.Events.PNC_VISIT;
+import static org.smartregister.chw.hf.utils.Constants.JsonForm.LDVisit.LD_GENERAL_EXAMINATION;
 
 public class HfClientProcessor extends CoreClientProcessor {
 

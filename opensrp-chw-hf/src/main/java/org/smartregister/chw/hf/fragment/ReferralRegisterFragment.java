@@ -9,6 +9,7 @@ import org.smartregister.chw.core.utils.Utils;
 import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.activity.ReferralTaskViewActivity;
+import org.smartregister.chw.hf.model.ReferralModel;
 import org.smartregister.chw.hf.presenter.ReferralFragmentPresenter;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.domain.Task;
@@ -31,7 +32,7 @@ public class ReferralRegisterFragment extends BaseReferralRegisterFragment {
         AllSharedPreferences allSharedPreferences = Utils.getAllSharedPreferences();
         String anm = allSharedPreferences.fetchRegisteredANM();
         String currentLoaction = allSharedPreferences.fetchUserLocalityId(anm);
-        return "task.business_status = '" + CoreConstants.BUSINESS_STATUS.REFERRED + "' and  ec_family_member_search.date_removed is null and task.location <> '" + currentLoaction + "' ";
+        return "task.business_status = '" + CoreConstants.BUSINESS_STATUS.REFERRED + "' and  ec_family_member_search.date_removed is null and task.location <> '" + currentLoaction + "' AND task.focus <> 'LTFU' ";
     }
 
     @Override
@@ -51,7 +52,7 @@ public class ReferralRegisterFragment extends BaseReferralRegisterFragment {
 
     @Override
     protected void initializePresenter() {
-        referralFragmentPresenter = new ReferralFragmentPresenter(this);
+        referralFragmentPresenter = new ReferralFragmentPresenter(this, new ReferralModel());
         presenter = referralFragmentPresenter;
 
     }
