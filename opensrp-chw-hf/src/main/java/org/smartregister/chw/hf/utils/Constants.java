@@ -9,6 +9,7 @@ import org.smartregister.chw.core.utils.Utils;
 public class Constants extends CoreConstants {
     public static String pregnancyOutcome = "preg_outcome";
     public static String LOST_TO_FOLLOWUP = "lost_to_followup";
+    public static String REFERRAL_TASK_FOCUS = "referral_task_focus";
 
     public enum FamilyRegisterOptionsUtil {Miscarriage, Other}
 
@@ -25,6 +26,10 @@ public class Constants extends CoreConstants {
         int NEW_PARTNER_REQUEST_CODE = 12345;
         String INTENT_BASE_ENTITY_ID = "BASE_ENTITY_ID";
         String PARTNER_BASE_ENTITY_ID = "partner_base_entity_id";
+    }
+
+    public static final class FOCUS {
+        public static final String LOST_TO_FOLLOWUP_FOCUS = "LTFU";
     }
 
     public static final class Events {
@@ -130,6 +135,7 @@ public class Constants extends CoreConstants {
         private static final String PMTCT_FOLLOWUP_STATUS = "pmtct_followup_status";
         private static final String ANC_TRANSFER_IN_REGISTRATION = "anc_member_transfer_in_registration";
         private static final String LD_REGISTRATION = "labour_and_delivery_registration";
+        private static final String LTFU_REFERRAL_FORM = "referrals/ltfu_referral_form";
 
         public static String getNextFacilityVisitForm() {
             return NEXT_FACILITY_VISIT_FORM;
@@ -137,6 +143,10 @@ public class Constants extends CoreConstants {
 
         public static String getHeiCommunityFollowupReferral() {
             return HEI_COMMUNITY_FOLLOWUP_REFERRAL;
+        }
+
+        public static String getLtfuReferralForm() {
+            return LTFU_REFERRAL_FORM;
         }
 
         public static String getHeiNumberRegistration() {

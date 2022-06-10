@@ -3302,6 +3302,81 @@
       ]
     },
     {
+      "name": "ec_ltfu_feedback",
+      "columns": [
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "formSubmissionId"
+          }
+        },
+        {
+          "column_name": "entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "referral_task_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "referral_task"
+          }
+        },
+        {
+          "column_name": "followup_status",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "followup_status"
+          }
+        },
+        {
+          "column_name": "reasons_for_missed_appointment",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "reasons_for_missed_appointment"
+          }
+        },
+        {
+          "column_name": "referral_appointment_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "referral_appointment_date"
+          }
+        },
+        {
+          "column_name": "date_of_death",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "date_of_death"
+          }
+        },
+        {
+          "column_name": "reason_client_not_found",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "reason_client_not_found"
+          }
+        },
+        {
+          "column_name": "feedback_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "referral_date"
+          }
+        }
+      ]
+    },
+    {
       "name": "ec_referral_service_indicator",
       "columns": [
         {

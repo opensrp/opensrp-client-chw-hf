@@ -245,6 +245,10 @@
 
     <!-- String updates: New CBHS workflow   -->
     <string name="client_registration">Client\'s General Registration</string>
+    <string name="received_referrals">Received Referrals</string>
+    <string name="referral_village">Referral Village</string>
+    <string name="referral_clinic">Referral Clinic</string>
+    <string name="successful_referrals">Successful Referrals</string>
 
 
     <!-- Labour and Delivery String Resources-->
@@ -356,6 +360,13 @@
 
     <string name="obstetric_history_title">Obstetric History</string>
     <string name="para_obstretric_history">Para {0}: Obstetric History</string>
+    <string name="promised_return_date">Promised Return Date</string>
+    <string name="date_of_death">Date of Death</string>
+    <string name="reasons">Reasons</string>
+    <string name="followup_status">Followup Status</string>
+    <string name="feedback_date">Feedback Date</string>
+    <string name="feedback_details">Feedback Details</string>
+
 
 
 </resources>
