@@ -3,7 +3,6 @@ package org.smartregister.chw.hf.model;
 import org.smartregister.chw.core.model.BaseReferralModel;
 import org.smartregister.chw.core.utils.ChwDBConstants;
 import org.smartregister.chw.core.utils.CoreConstants;
-import org.smartregister.chw.referral.util.Constants;
 import org.smartregister.cursoradapter.SmartRegisterQueryBuilder;
 import org.smartregister.family.util.DBConstants;
 
@@ -17,7 +16,7 @@ public class ReferralModel extends BaseReferralModel {
     public String mainSelect(String tableName, String entityTable, String mainCondition) {
         SmartRegisterQueryBuilder queryBuilder = new SmartRegisterQueryBuilder();
         queryBuilder.selectInitiateMainTable(tableName, mainColumns(tableName, entityTable), CoreConstants.DB_CONSTANTS.ID);
-        queryBuilder.customJoin(String.format("INNER JOIN %s  ON  %s.%s = %s.%s AND task.business_status = 'Referred'  COLLATE NOCASE ",
+        queryBuilder.customJoin(String.format("INNER JOIN %s  ON  %s.%s = %s.%s AND task.focus = 'LTFU'  COLLATE NOCASE ",
                 entityTable, entityTable, DBConstants.KEY.BASE_ENTITY_ID, tableName, CoreConstants.DB_CONSTANTS.FOR));
         queryBuilder.customJoin(String.format("INNER JOIN %s  ON  %s.%s = %s.%s COLLATE NOCASE ", CoreConstants.TABLE_NAME.REFERRAL,
                 CoreConstants.TABLE_NAME.REFERRAL, DBConstants.KEY.BASE_ENTITY_ID, tableName, ChwDBConstants.TaskTable.REASON_REFERENCE));
@@ -55,6 +54,7 @@ public class ReferralModel extends BaseReferralModel {
         columns.add(CoreConstants.TABLE_NAME.TASK + "." + CoreConstants.DB_CONSTANTS.OWNER);
         columns.add(CoreConstants.TABLE_NAME.TASK + "." + CoreConstants.DB_CONSTANTS.REQUESTER);
         columns.add(CoreConstants.TABLE_NAME.TASK + "." + CoreConstants.DB_CONSTANTS.START);
+        columns.add(CoreConstants.TABLE_NAME.TASK + "." + CoreConstants.DB_CONSTANTS.BUSINESS_STATUS + " AS " + org.smartregister.chw.referral.util.DBConstants.Key.REFERRAL_STATUS);
         columns.add(CoreConstants.TABLE_NAME.REFERRAL + "." + org.smartregister.chw.referral.util.DBConstants.Key.REFERRAL_HF);
         columns.add(CoreConstants.TABLE_NAME.REFERRAL + "." + org.smartregister.chw.referral.util.DBConstants.Key.PROBLEM);
         columns.add(CoreConstants.TABLE_NAME.REFERRAL + "." + org.smartregister.chw.referral.util.DBConstants.Key.REFERRAL_SERVICE);

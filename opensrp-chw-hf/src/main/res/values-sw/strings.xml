@@ -253,6 +253,8 @@
 
     <!-- String updates: New CBHS workflow   -->
     <string name="client_registration">Usajili wa Mwanzo wa Mteja</string>
+    <string name="received_referrals">Rufaa Zilizopokelewa</string>
+    <string name="successful_referrals">Rufaa Zilizofanikiwa</string>
 
     <!-- Labour and Delivery String Resources-->
     <string name="menu_ld">L&amp;D</string>
@@ -267,6 +269,6 @@
     <string name="tomorrow_hei_clients">Hudhurio la Kesho</string>
     <string name="missed_hei_clients">Waliokosa</string>
     <string name="anc_fundal_height_min_err">Kimo cha mimba lazima kiwe sawa au zaidi ya</string>
-    <string name="received_referrals">Rufaa Zilizopokelewa</string>
+
 
 </resources>

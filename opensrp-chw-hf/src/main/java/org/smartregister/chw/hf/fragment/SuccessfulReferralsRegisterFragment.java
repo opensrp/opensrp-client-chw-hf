@@ -19,7 +19,7 @@ import org.smartregister.repository.AllSharedPreferences;
 
 import java.util.Set;
 
-public class LTFUReferralsRegisterFragment extends BaseReferralRegisterFragment {
+public class SuccessfulReferralsRegisterFragment extends BaseReferralRegisterFragment {
 
     public Handler handler = new Handler();
     private ReferralFragmentPresenter referralFragmentPresenter;
@@ -35,7 +35,7 @@ public class LTFUReferralsRegisterFragment extends BaseReferralRegisterFragment 
         AllSharedPreferences allSharedPreferences = Utils.getAllSharedPreferences();
         String anm = allSharedPreferences.fetchRegisteredANM();
         String currentLoaction = allSharedPreferences.fetchUserLocalityId(anm);
-        return " ec_family_member_search.date_removed is null and task.location = '" + currentLoaction + "' and task.business_status <> 'Complete' COLLATE NOCASE  ";
+        return " ec_family_member_search.date_removed is null and task.location = '" + currentLoaction + "' and task.business_status = 'Complete' COLLATE NOCASE  ";
     }
 
     @Override
