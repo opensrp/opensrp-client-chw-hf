@@ -25,6 +25,7 @@ public class SuccessfulReferralsRegisterFragment extends BaseReferralRegisterFra
     public Handler handler = new Handler();
     private ReferralFragmentPresenter referralFragmentPresenter;
     private CommonPersonObjectClient commonPersonObjectClient;
+    private String taskId;
 
     @Override
     public void setClient(CommonPersonObjectClient commonPersonObjectClient) {
@@ -76,6 +77,7 @@ public class SuccessfulReferralsRegisterFragment extends BaseReferralRegisterFra
         referralFragmentPresenter.fetchClient();
 
         Task task = getTask(Utils.getValue(client.getColumnmaps(), "_id", false));
+        taskId = task.getIdentifier();
         referralFragmentPresenter.setTasksFocus(task.getFocus());
         goToReferralsDetails(client);
 
@@ -86,7 +88,7 @@ public class SuccessfulReferralsRegisterFragment extends BaseReferralRegisterFra
     }
 
     private void goToReferralsDetails(CommonPersonObjectClient client) {
-        handler.postDelayed(() -> LTFUReferralsDetailsViewActivity.startLTFUReferralsDetailsViewActivity(getActivity(), new MemberObject(client), client), 100);
+        handler.postDelayed(() -> LTFUReferralsDetailsViewActivity.startLTFUSuccessfulReferralDetailsViewActivity(getActivity(), new MemberObject(client), client, getTask(taskId)), 100);
     }
 
 }

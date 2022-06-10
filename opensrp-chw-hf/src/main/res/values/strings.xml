@@ -357,6 +357,12 @@
 
     <string name="obstetric_history_title">Obstetric History</string>
     <string name="para_obstretric_history">Para {0}: Obstetric History</string>
+    <string name="promised_return_date">Promised Return Date</string>
+    <string name="date_of_death">Date of Death</string>
+    <string name="reasons">Reasons</string>
+    <string name="followup_status">Followup Status</string>
+    <string name="feedback_date">Feedback Date</string>
+    <string name="feedback_details">Feedback Details</string>
 
 
 </resources>
