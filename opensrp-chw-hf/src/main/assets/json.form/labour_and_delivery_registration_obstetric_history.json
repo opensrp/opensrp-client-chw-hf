@@ -80,6 +80,20 @@
         "hint": "Number of children alive"
       },
       {
+        "key": "gravida_minus_para",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "gravida_minus_para",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_registration_obstetric_history_calculation.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "number_of_abortion",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -90,8 +104,8 @@
         "constraints": [
           {
             "type": "numeric",
-            "ex": "lessThanEqualTo(., step1:gravida)",
-            "err": "Parity must be equal to or less than gravida"
+            "ex": "lessThanEqualTo(., step1:gravida_minus_para)",
+            "err": "Sum of Para and Abortions should not exceed the Gravida"
           }
         ]
       },
