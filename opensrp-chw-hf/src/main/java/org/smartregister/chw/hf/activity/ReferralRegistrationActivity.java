@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONArray;
@@ -18,9 +19,8 @@ import org.smartregister.chw.referral.interactor.BaseIssueReferralInteractor;
 import org.smartregister.chw.referral.model.BaseIssueReferralModel;
 import org.smartregister.chw.referral.presenter.BaseIssueReferralPresenter;
 import org.smartregister.chw.referral.util.Constants;
-import org.smartregister.domain.Location;
 import org.smartregister.family.util.JsonFormUtils;
-import org.smartregister.repository.LocationRepository;
+import org.smartregister.location.helper.LocationHelper;
 
 import timber.log.Timber;
 
@@ -47,15 +47,17 @@ public class ReferralRegistrationActivity extends BaseIssueReferralActivity {
     public void initializeHealthFacilitiesList(JSONObject form) {
         //overrides and sets the chw location as the selected location
         JSONArray steps = null;
-        LocationRepository locationRepository = new LocationRepository();
-        Location location = locationRepository.getLocationById(ChwNotificationDao.getSyncLocationId(BASE_ENTITY_ID));
+        LocationHelper locationHelper = LocationHelper.getInstance();
+        String locationId = ChwNotificationDao.getSyncLocationId(BASE_ENTITY_ID);
+        String locationName = locationHelper.getOpenMrsLocationName(locationId);
+        //TODO: need a fix for the locations for clients out of allowed level brought by global search
         try {
             JSONObject option = new JSONObject();
-            option.put("name", location.getProperties().getName());
-            option.put("text", location.getProperties().getName());
+            option.put("name", StringUtils.capitalize(locationName));
+            option.put("text", StringUtils.capitalize(locationName));
             JSONObject metaData = new JSONObject();
             metaData.put("openmrs_entity", "location_uuid");
-            metaData.put("openmrs_entity_id", location.getProperties().getUid());
+            metaData.put("openmrs_entity_id", locationId);
             option.put("meta_data", metaData);
 
             steps = form.getJSONArray("steps");
