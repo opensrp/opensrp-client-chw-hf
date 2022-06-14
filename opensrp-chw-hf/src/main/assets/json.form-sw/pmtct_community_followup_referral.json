@@ -83,13 +83,6 @@
             "openmrs_entity_id": "missed_appointment"
           },
           {
-            "key": "lost_to_followup",
-            "text": "Mteja amepotea katika Ufuatiliaji",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "lost_to_followup"
-          },
-          {
             "key": "mother_champion_services",
             "text": "Huduma za Mama Kinara katika Ngazi ya Jamii",
             "value": false,
