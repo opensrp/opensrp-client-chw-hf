@@ -5461,11 +5461,51 @@
           }
         },
         {
-          "column_name": "urine",
+          "column_name": "urine_protein",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "formSubmissionField": "urine"
+            "formSubmissionField": "urine_protein"
+          }
+        },
+        {
+          "column_name": "urine_acetone",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "urine_acetone"
+          }
+        },
+        {
+          "column_name": "urine_volume",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "urine_volume"
+          }
+        },
+        {
+          "column_name": "moulding_options",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "moulding_options"
+          }
+        },
+        {
+          "column_name": "caput",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "caput"
+          }
+        },
+        {
+          "column_name": "amniotic_fluid",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "amniotic_fluid"
           }
         },
         {
