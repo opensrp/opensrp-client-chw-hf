@@ -30,6 +30,7 @@ import org.smartregister.chw.hf.custom_view.HivFloatingMenu;
 import org.smartregister.chw.hf.interactor.HfHivProfileInteractor;
 import org.smartregister.chw.hf.model.HivTbReferralTasksAndFollowupFeedbackModel;
 import org.smartregister.chw.hf.presenter.HivProfilePresenter;
+import org.smartregister.chw.hf.utils.LFTUFormUtils;
 import org.smartregister.chw.hiv.activity.BaseHivFormsActivity;
 import org.smartregister.chw.hiv.dao.HivIndexDao;
 import org.smartregister.chw.hiv.domain.HivIndexContactObject;
@@ -164,7 +165,10 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
                 HivRegisterActivity.startHIVFormActivity(this, getHivMemberObject().getBaseEntityId(), CoreConstants.JSON_FORM.getHivOutcome(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getHivOutcome()).toString());
                 return true;
             } else if (itemId == R.id.action_issue_hiv_community_followup_referral) {
-                HivRegisterActivity.startHIVFormActivity(this, getHivMemberObject().getBaseEntityId(), CoreConstants.JSON_FORM.getHivCommunityFollowupReferral(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getHivCommunityFollowupReferral()).toString());
+                JSONObject formJsonObject = (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, org.smartregister.chw.hf.utils.Constants.JsonForm.getLtfuReferralForm());
+                formJsonObject.put(org.smartregister.chw.hf.utils.Constants.REFERRAL_TASK_FOCUS, org.smartregister.chw.hf.utils.Constants.FOCUS.LOST_TO_FOLLOWUP_FOCUS);
+                LFTUFormUtils.setLFTUClinic(formJsonObject, "ctc", "CTC");
+                ReferralRegistrationActivity.startGeneralReferralFormActivityForResults(this, getHivMemberObject().getBaseEntityId(), formJsonObject, false);
                 return true;
             } else if (itemId == R.id.action_pregnancy_confirmation) {
                 startPregnancyConfirmation(Objects.requireNonNull(getHivMemberObject()));

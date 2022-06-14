@@ -13,8 +13,18 @@
         android:theme="@style/HFTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:theme, android:icon">
+        <activity android:name=".activity.ReferralRegistrationActivity"
+            android:theme="@style/HFTheme.NoActionBar"/>
+        <activity android:name=".activity.LTFURegisterActivity"
+            android:theme="@style/HFTheme.NoActionBar"/>
+        <activity android:name=".activity.LTFUReferralsDetailsViewActivity"
+            android:theme="@style/HFTheme.NoActionBar"/>
         <activity
             android:name=".activity.PncReportsActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity android:name=".activity.CbhsReportsActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity android:name=".activity.CbhsReportsViewActivity"
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
             android:name=".activity.PncReportsViewActivity"

@@ -102,6 +102,7 @@ public class PncFacilityVisitInteractorFlv implements AncFirstFacilityVisitInter
                 .withHelper(new PncMotherGeneralExaminationAction(memberObject))
                 .build();
         actionList.put(context.getString(R.string.mother_general_examination), motherGeneralExamination);
+        int index = 1;
         for (ChildModel child : children) {
             JSONObject childGeneralExamForm = setMinChildHeadCircumference(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.getPncChildGeneralExamination()), child.getBaseEntityId(), context);
             try {
@@ -122,16 +123,31 @@ public class PncFacilityVisitInteractorFlv implements AncFirstFacilityVisitInter
                     JsonFormUtils.populateForm(childGeneralExamForm, childDetails);
                 }
             }
-            BaseAncHomeVisitAction childGeneralExamination = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.child_general_examination, child.getFirstName()))
-                    .withOptional(false)
-                    .withDetails(childDetails)
-                    .withBaseEntityID(child.getBaseEntityId())
-                    .withProcessingMode(BaseAncHomeVisitAction.ProcessingMode.SEPARATE)
-                    .withJsonPayload(childGeneralExamForm.toString())
-                    .withFormName(Constants.JsonForm.getPncChildGeneralExamination())
-                    .withHelper(new PncChildGeneralExamination(memberObject))
-                    .build();
-            actionList.put(child.getBaseEntityId(), childGeneralExamination);
+            if(children.size() == 1){
+                BaseAncHomeVisitAction childGeneralExamination = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.child_general_examination, child.getFirstName()))
+                        .withOptional(false)
+                        .withDetails(childDetails)
+                        .withBaseEntityID(child.getBaseEntityId())
+                        .withProcessingMode(BaseAncHomeVisitAction.ProcessingMode.SEPARATE)
+                        .withJsonPayload(childGeneralExamForm.toString())
+                        .withFormName(Constants.JsonForm.getPncChildGeneralExamination())
+                        .withHelper(new PncChildGeneralExamination(memberObject))
+                        .build();
+                actionList.put(context.getString(R.string.child_general_examination, child.getFirstName()), childGeneralExamination);
+            }
+            else {
+                BaseAncHomeVisitAction childGeneralExamination = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.children_general_examination, child.getFirstName(), index))
+                        .withOptional(false)
+                        .withDetails(childDetails)
+                        .withBaseEntityID(child.getBaseEntityId())
+                        .withProcessingMode(BaseAncHomeVisitAction.ProcessingMode.SEPARATE)
+                        .withJsonPayload(childGeneralExamForm.toString())
+                        .withFormName(Constants.JsonForm.getPncChildGeneralExamination())
+                        .withHelper(new PncChildGeneralExamination(memberObject))
+                        .build();
+                actionList.put(context.getString(R.string.children_general_examination, child.getFirstName(), index), childGeneralExamination);
+            }
+            index++;
         }
 
         BaseAncHomeVisitAction familyPlanningServices = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.family_planning_services_title))

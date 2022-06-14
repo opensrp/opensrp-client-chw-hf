@@ -11,9 +11,9 @@ import java.util.HashSet;
 public class ReferralFragmentPresenter extends BaseReferralFragmentPresenter {
     protected BaseReferralRegisterFragmentContract.View view;
 
-    public ReferralFragmentPresenter(BaseReferralRegisterFragmentContract.View view) {
+    public ReferralFragmentPresenter(BaseReferralRegisterFragmentContract.View view, BaseReferralRegisterFragmentContract.Model model) {
         super(view);
-        this.model = new ReferralModel();
+        this.model = model;
         this.view = view;
     }
 

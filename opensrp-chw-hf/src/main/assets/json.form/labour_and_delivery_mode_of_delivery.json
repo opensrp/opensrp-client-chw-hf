@@ -75,11 +75,18 @@
             "openmrs_entity_id": "cesarean"
           },
           {
-            "key": "instrumental_delivery",
-            "text": "Instrumental delivery",
+            "key": "vacuum_extraction",
+            "text": "Vacuum Extraction",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "instrumental_delivery"
+            "openmrs_entity_id": "vacuum_extraction"
+          },
+          {
+            "key": "breech_delivery",
+            "text": "Breech Delivery",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "breech_delivery"
           }
         ],
         "v_required": {

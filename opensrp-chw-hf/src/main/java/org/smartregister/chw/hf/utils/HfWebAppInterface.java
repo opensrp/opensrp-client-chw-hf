@@ -48,6 +48,10 @@ public class HfWebAppInterface {
             ReportUtils.setPrintJobName("anc_report_ya_mwezi-" + ReportUtils.getReportPeriod() + ".pdf");
             return ReportUtils.ANCReports.computeAncReport(ReportUtils.getReportDate());
         }
+        if( reportType.equalsIgnoreCase(Constants.ReportConstants.ReportTypes.CBHS_REPORT)){
+            ReportUtils.setPrintJobName("cbhs_report_ya_mwezi-" + ReportUtils.getReportPeriod() + ".pdf");
+            return ReportUtils.CBHSReports.computeCbhsReport(ReportUtils.getReportDate());
+        }
 
         return "";
     }

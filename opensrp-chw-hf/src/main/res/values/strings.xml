@@ -133,6 +133,7 @@
     <string name="mother_general_examination">Mother\'s General Examination</string>
     <string name="child_general_examination_complete">Child\'s General Examination Complete</string>
     <string name="child_general_examination">Baby %s\'s General Examination</string>
+    <string name="children_general_examination">Baby %s\'s General Examination - %d</string>
     <string name="immunization_complete">Immunization Complete</string>
     <string name="immunization_title">Immunization</string>
     <string name="nutritional_supplements_complete">Nutritional Supplements Complete</string>
@@ -183,6 +184,8 @@
     <string name="hiv_test_results_title">HIV Test Results</string>
     <string name="print_report">Print</string>
     <string name="pnc_reports">PNC Reports</string>
+    <string name="cbhs_reports_title">CBHS Reports</string>
+    <string name="view_reports_for_cbhs">View Monthly Reports for CBHS</string>
     <string name="month">Month</string>
     <string name="head_circumference_min_err">Head Circumference must be equal or greater than %s CM</string>
     <string name="clinical_staging_of_hiv">Clinical Staging of HIV</string>
@@ -239,6 +242,13 @@
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
     <string name="last_name_hint">Last Name</string>
+
+    <!-- String updates: New CBHS workflow   -->
+    <string name="client_registration">Client\'s General Registration</string>
+    <string name="received_referrals">Received Referrals</string>
+    <string name="referral_village">Referral Village</string>
+    <string name="referral_clinic">Referral Clinic</string>
+    <string name="successful_referrals">Successful Referrals</string>
 
 
     <!-- Labour and Delivery String Resources-->
@@ -350,5 +360,13 @@
 
     <string name="obstetric_history_title">Obstetric History</string>
     <string name="para_obstretric_history">Para {0}: Obstetric History</string>
+    <string name="promised_return_date">Promised Return Date</string>
+    <string name="date_of_death">Date of Death</string>
+    <string name="reasons">Reasons</string>
+    <string name="followup_status">Followup Status</string>
+    <string name="feedback_date">Feedback Date</string>
+    <string name="feedback_details">Feedback Details</string>
+    <string name="lost_to_followup_referral">LTFU Referral</string>
+
 
 </resources>

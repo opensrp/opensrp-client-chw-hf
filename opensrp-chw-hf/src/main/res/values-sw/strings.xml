@@ -73,7 +73,6 @@
     <string name="record_first_pmtct">Rekodi Hudhurio la Awali la PMTCT</string>
     <string name="pmtct_pending_registration">Usajili wa PMTCT haujakamilika</string>
     <string name="menu_independent">Huru</string>
-    <string name="client_registration">Usajili wa Mteja</string>
     <string name="medical_and_surgical_filled">Historia ya Matibabu na Upasuaji Umekamilika</string>
     <string name="obstetric_exam_complete">Uchunguzi wa Uzazi Umefanyika</string>
     <string name="baseline_investigation_conducted">Uchunguzi wa Vipimo vya Awali Umekamilika</string>
@@ -112,6 +111,7 @@
     <string name="mother_general_examination">Uchunguzi wa Afya ya Mama</string>
     <string name="child_general_examination_complete">Uchunguzi wa Afya ya Mtoto %s Umekamilika</string>
     <string name="child_general_examination">Uchunguzi wa Afya ya Mtoto %s</string>
+    <string name="children_general_examination">Uchunguzi wa Afya ya Mtoto %s - %d</string>
     <string name="immunization_complete">Chanjo zimekamilika</string>
     <string name="immunization_title">Chanjo</string>
     <string name="nutritional_supplements_complete">Virutubisho vya Lishe Umekamilika</string>
@@ -252,6 +252,12 @@
     <string name="last_name">Jina la pili</string>
     <string name="last_name_hint">Jina la pili</string>
 
+    <!-- String updates: New CBHS workflow   -->
+    <string name="client_registration">Usajili wa Mwanzo wa Mteja</string>
+    <string name="received_referrals">Rufaa Zilizopokelewa</string>
+    <string name="successful_referrals">Rufaa Zilizofanikiwa</string>
+    <string name="lost_to_followup_referral">Rufaa za mteja aliepotea</string>
+
     <!-- Labour and Delivery String Resources-->
     <string name="menu_ld">L&amp;D</string>
     <string name="lb_fully_completed_action">Imemalizika kabisa</string>
@@ -265,5 +271,6 @@
     <string name="tomorrow_hei_clients">Hudhurio la Kesho</string>
     <string name="missed_hei_clients">Waliokosa</string>
     <string name="anc_fundal_height_min_err">Kimo cha mimba lazima kiwe sawa au zaidi ya</string>
+
 
 </resources>

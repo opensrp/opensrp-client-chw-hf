@@ -1,10 +1,5 @@
 package org.smartregister.chw.hf.activity;
 
-import static com.vijay.jsonwizard.constants.JsonFormConstants.VALUE;
-import static org.smartregister.chw.core.utils.CoreConstants.EventType.PMTCT_COMMUNITY_FOLLOWUP;
-import static org.smartregister.client.utils.constants.JsonFormConstants.FIELDS;
-import static org.smartregister.client.utils.constants.JsonFormConstants.STEP1;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -16,10 +11,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.vijay.jsonwizard.utils.FormUtils;
 
@@ -34,7 +25,6 @@ import org.smartregister.chw.core.custom_views.CorePmtctFloatingMenu;
 import org.smartregister.chw.core.listener.OnClickFloatingMenu;
 import org.smartregister.chw.core.rule.PmtctFollowUpRule;
 import org.smartregister.chw.core.utils.CoreConstants;
-import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.core.utils.FpUtil;
 import org.smartregister.chw.core.utils.HomeVisitUtil;
 import org.smartregister.chw.hf.R;
@@ -46,6 +36,7 @@ import org.smartregister.chw.hf.model.FamilyProfileModel;
 import org.smartregister.chw.hf.model.PmtctFollowupFeedbackModel;
 import org.smartregister.chw.hf.presenter.FamilyOtherMemberActivityPresenter;
 import org.smartregister.chw.hf.presenter.PmtctProfilePresenter;
+import org.smartregister.chw.hf.utils.LFTUFormUtils;
 import org.smartregister.chw.hf.utils.PmtctVisitUtils;
 import org.smartregister.chw.pmtct.PmtctLibrary;
 import org.smartregister.chw.pmtct.dao.PmtctDao;
@@ -71,7 +62,12 @@ import java.util.Locale;
 
 import javax.annotation.Nullable;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.recyclerview.widget.RecyclerView;
 import timber.log.Timber;
+
+import static org.smartregister.chw.core.utils.CoreConstants.EventType.PMTCT_COMMUNITY_FOLLOWUP;
 
 public class PmtctProfileActivity extends CorePmtctProfileActivity {
     private static String baseEntityId;
@@ -128,56 +124,24 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemId = item.getItemId();
         try {
-            if (itemId == R.id.action_issue_pmtct_followup_referral) {
-                JSONObject formJsonObject = (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getPmtctcCommunityFollowupReferral());
-
-                JSONObject reasonsForIssuingCommunityReferral = CoreJsonFormUtils.getJsonField(formJsonObject, STEP1, "reasons_for_issuing_community_referral");
-
-                Date lastVisitDate = null;
-                if (followUpVisitDate != null) {
-                    lastVisitDate = followUpVisitDate;
-                } else {
-                    lastVisitDate = pmtctRegisterDate;
-                }
-                formJsonObject.getJSONObject(STEP1).getJSONArray(FIELDS).getJSONObject(getJsonArrayIndex(formJsonObject.getJSONObject(STEP1).getJSONArray(FIELDS), "last_client_visit_date")).put(VALUE, sdf.format(lastVisitDate));
-
-
-                if (visitStatus.equals(CoreConstants.VISIT_STATE.DUE)) {
-                    reasonsForIssuingCommunityReferral.getJSONArray("options").remove(getJsonArrayIndex(reasonsForIssuingCommunityReferral.getJSONArray("options"), "lost_to_followup"));
-                } else if (visitStatus.equals(CoreConstants.VISIT_STATE.OVERDUE)) {
-                    reasonsForIssuingCommunityReferral.getJSONArray("options").remove(getJsonArrayIndex(reasonsForIssuingCommunityReferral.getJSONArray("options"), "missed_appointment"));
-                } else {
-                    reasonsForIssuingCommunityReferral.getJSONArray("options").remove(getJsonArrayIndex(reasonsForIssuingCommunityReferral.getJSONArray("options"), "missed_appointment"));
-                    reasonsForIssuingCommunityReferral.getJSONArray("options").remove(getJsonArrayIndex(reasonsForIssuingCommunityReferral.getJSONArray("options"), "lost_to_followup"));
-                    reasonsForIssuingCommunityReferral.getJSONArray("options").getJSONObject(getJsonArrayIndex(reasonsForIssuingCommunityReferral.getJSONArray("options"), "mother_champion_services")).put(VALUE, true);
-                }
-                int index = getJsonArrayIndex(formJsonObject.getJSONObject(STEP1).getJSONArray(FIELDS), "reasons_for_issuing_community_referral");
-                formJsonObject.getJSONObject(STEP1).getJSONArray(FIELDS).put(index, reasonsForIssuingCommunityReferral);
-
-                startFormActivity(formJsonObject);
+            if (itemId == R.id.action_issue_pmtct_ltfu_referral) {
+                JSONObject formJsonObject = (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, org.smartregister.chw.hf.utils.Constants.JsonForm.getLtfuReferralForm());
+                formJsonObject.put(org.smartregister.chw.hf.utils.Constants.REFERRAL_TASK_FOCUS, org.smartregister.chw.hf.utils.Constants.FOCUS.LOST_TO_FOLLOWUP_FOCUS);
+                LFTUFormUtils.setLFTUClinic(formJsonObject, "pmtct_clinic", "PMTCT Clinic");
+                ReferralRegistrationActivity.startGeneralReferralFormActivityForResults(this, memberObject.getBaseEntityId(), formJsonObject, false);
                 return true;
             } else if (itemId == R.id.action_mark_as_deceased) {
                 removeMember();
+                return true;
+            } else if (itemId == R.id.action_issue_pmtct_followup_referral) {
+                JSONObject formJsonObject = (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getPmtctcCommunityFollowupReferral());
+                startFormActivity(formJsonObject);
                 return true;
             }
         } catch (JSONException e) {
             Timber.e(e);
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    private int getJsonArrayIndex(JSONArray options, String key) {
-        for (int i = 0; i < options.length(); ++i) {
-            try {
-                if (options.getJSONObject(i).getString("key").equals(key)) {
-                    return i;
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-        return -1;
-
     }
 
 

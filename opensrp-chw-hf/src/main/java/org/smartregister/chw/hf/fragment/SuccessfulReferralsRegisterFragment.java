@@ -4,23 +4,28 @@ import android.os.Handler;
 import android.view.View;
 
 import org.smartregister.chw.core.fragment.BaseReferralRegisterFragment;
-import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.Utils;
 import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
-import org.smartregister.chw.hf.activity.ReferralTaskViewActivity;
-import org.smartregister.chw.hf.model.ReferralModel;
+import org.smartregister.chw.hf.activity.LTFUReferralsDetailsViewActivity;
+import org.smartregister.chw.hf.model.LTFUSuccessfulModel;
 import org.smartregister.chw.hf.presenter.ReferralFragmentPresenter;
+import org.smartregister.chw.hf.provider.LTFUReferralsRegisterProvider;
+import org.smartregister.chw.referral.domain.MemberObject;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
+import org.smartregister.cursoradapter.RecyclerViewPaginatedAdapter;
 import org.smartregister.domain.Task;
 import org.smartregister.family.util.DBConstants;
 import org.smartregister.repository.AllSharedPreferences;
 
-public class ReferralRegisterFragment extends BaseReferralRegisterFragment {
+import java.util.Set;
+
+public class SuccessfulReferralsRegisterFragment extends BaseReferralRegisterFragment {
 
     public Handler handler = new Handler();
     private ReferralFragmentPresenter referralFragmentPresenter;
     private CommonPersonObjectClient commonPersonObjectClient;
+    private String taskId;
 
     @Override
     public void setClient(CommonPersonObjectClient commonPersonObjectClient) {
@@ -32,12 +37,20 @@ public class ReferralRegisterFragment extends BaseReferralRegisterFragment {
         AllSharedPreferences allSharedPreferences = Utils.getAllSharedPreferences();
         String anm = allSharedPreferences.fetchRegisteredANM();
         String currentLoaction = allSharedPreferences.fetchUserLocalityId(anm);
-        return "task.business_status = '" + CoreConstants.BUSINESS_STATUS.REFERRED + "' and  ec_family_member_search.date_removed is null and task.location <> '" + currentLoaction + "' AND task.focus <> 'LTFU' ";
+        return " ec_family_member_search.date_removed is null and task.location = '" + currentLoaction + "' and task.business_status = 'Complete' COLLATE NOCASE  ";
+    }
+
+    @Override
+    public void initializeAdapter(Set<org.smartregister.configurableviews.model.View> visibleColumns, String tableName) {
+        LTFUReferralsRegisterProvider referralRegisterProvider = new LTFUReferralsRegisterProvider(getActivity(), registerActionHandler, paginationViewHandler);
+        clientAdapter = new RecyclerViewPaginatedAdapter(null, referralRegisterProvider, context().commonrepository(this.tablename));
+        clientAdapter.setCurrentlimit(20);
+        clientsView.setAdapter(clientAdapter);
     }
 
     @Override
     protected int getToolBarTitle() {
-        return R.string.received_referrals;
+        return R.string.issued_referrals;
     }
 
     @Override
@@ -52,7 +65,7 @@ public class ReferralRegisterFragment extends BaseReferralRegisterFragment {
 
     @Override
     protected void initializePresenter() {
-        referralFragmentPresenter = new ReferralFragmentPresenter(this, new ReferralModel());
+        referralFragmentPresenter = new ReferralFragmentPresenter(this, new LTFUSuccessfulModel());
         presenter = referralFragmentPresenter;
 
     }
@@ -64,6 +77,7 @@ public class ReferralRegisterFragment extends BaseReferralRegisterFragment {
         referralFragmentPresenter.fetchClient();
 
         Task task = getTask(Utils.getValue(client.getColumnmaps(), "_id", false));
+        taskId = task.getIdentifier();
         referralFragmentPresenter.setTasksFocus(task.getFocus());
         goToReferralsDetails(client);
 
@@ -74,7 +88,7 @@ public class ReferralRegisterFragment extends BaseReferralRegisterFragment {
     }
 
     private void goToReferralsDetails(CommonPersonObjectClient client) {
-        handler.postDelayed(() -> ReferralTaskViewActivity.startReferralTaskViewActivity(getActivity(), getCommonPersonObjectClient(), getTask(Utils.getValue(client.getColumnmaps(), "_id", false)), CoreConstants.REGISTERED_ACTIVITIES.REFERRALS_REGISTER_ACTIVITY), 100);
+        handler.postDelayed(() -> LTFUReferralsDetailsViewActivity.startLTFUSuccessfulReferralDetailsViewActivity(getActivity(), new MemberObject(client), client, getTask(taskId)), 100);
     }
 
 }

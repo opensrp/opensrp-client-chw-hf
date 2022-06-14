@@ -683,6 +683,13 @@
             "creates_case": [
               "ec_pregnancy_outcome"
             ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "LTFU Feedback",
+            "creates_case": [
+              "ec_ltfu_feedback"
+            ]
           }
         ]
       }

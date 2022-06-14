@@ -1,7 +1,5 @@
 package org.smartregister.chw.hf.activity;
 
-import android.content.Intent;
-
 import org.smartregister.chw.core.activity.BaseReferralRegister;
 import org.smartregister.chw.core.presenter.BaseReferralPresenter;
 import org.smartregister.chw.hf.fragment.ReferralRegisterFragment;
@@ -26,13 +24,6 @@ public class ReferralRegisterActivity extends BaseReferralRegister {
     }
 
     @Override
-    public void switchToBaseFragment() {
-        Intent intent = new Intent(this, FamilyRegisterActivity.class);
-        startActivity(intent);
-        finish();
-    }
-
-    @Override
     protected void registerBottomNavigation() {
         bottomNavigationHelper = new BottomNavigationHelper();
         bottomNavigationView = findViewById(org.smartregister.R.id.bottom_navigation);
@@ -40,4 +31,5 @@ public class ReferralRegisterActivity extends BaseReferralRegister {
         bottomNavigationView.getMenu().removeItem(org.smartregister.family.R.id.action_register);
 
     }
+
 }

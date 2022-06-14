@@ -2,16 +2,16 @@ package org.smartregister.chw.hf.sync.helper;
 
 import org.smartregister.CoreLibrary;
 import org.smartregister.chw.core.utils.CoreConstants;
-import org.smartregister.chw.hf.BuildConfig;
 import org.smartregister.location.helper.LocationHelper;
 import org.smartregister.repository.TaskRepository;
 import org.smartregister.sync.helper.TaskServiceHelper;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
+
+import androidx.annotation.NonNull;
 
 public class HfTaskServiceHelper extends TaskServiceHelper {
 
@@ -31,15 +31,18 @@ public class HfTaskServiceHelper extends TaskServiceHelper {
     @Override
     protected List<String> getLocationIds() {
         LocationHelper locationHelper = LocationHelper.getInstance();
-        ArrayList<String> allowedLevels = new ArrayList<>(Arrays.asList(BuildConfig.FACILITY_LEVEL));
-        List<String> locations = new ArrayList<>();
+        return getLocationsInHierarchy(locationHelper);
+    }
+
+    @NonNull
+    private ArrayList<String> getLocationsInHierarchy(LocationHelper locationHelper) {
+        ArrayList<String> locations = new ArrayList<>();
         if (locationHelper != null) {
-            List<String> locationIds = locationHelper.generateDefaultLocationHierarchy(allowedLevels);
-            if (locationIds != null) {
-                for (String locationName : locationIds) {
-                    locations.add(locationHelper.getOpenMrsLocationId(locationName));
-                }
-            }
+            //This would return the location and its sub-levels based off the allowed locations i.e Council, Ward, Facility, Village
+            //If a referral exists in any of the location hierarchy as group id it would be synced.
+            String defaultLocation = locationHelper.getDefaultLocation();
+            List<String> locationsFromHierarchy = locationHelper.locationsFromHierarchy(true, defaultLocation);
+            locations.addAll(locationsFromHierarchy);
         }
         return locations;
     }
