@@ -46,7 +46,6 @@ public class LTFUReferralsRegisterProvider extends BaseReferralRegisterProvider 
         IssuedReferralViewHolder issuedReferralViewHolder = (IssuedReferralViewHolder) viewHolder;
         issuedReferralViewHolder.patientName.setText(String.format(Locale.getDefault(), "%s, %d", patientName, age));
         issuedReferralViewHolder.textViewGender.setText(ReferralUtil.getTranslatedGenderString(context, Utils.getValue(pc.getColumnmaps(), DBConstants.KEY.GENDER, false)));
-        issuedReferralViewHolder.textViewVillage.setText(Utils.getValue(pc.getColumnmaps(), org.smartregister.chw.referral.util.DBConstants.Key.REFERRAL_HF, true));
         issuedReferralViewHolder.textViewService.setText(Utils.getValue(pc.getColumnmaps(), CoreConstants.DB_CONSTANTS.FOCUS, true));
         issuedReferralViewHolder.textViewReferralClinic.setText(Utils.getValue(pc.getColumnmaps(), org.smartregister.chw.referral.util.DBConstants.Key.PROBLEM, true));
         issuedReferralViewHolder.textViewReferralClinic.setVisibility(View.VISIBLE);
@@ -85,7 +84,7 @@ public class LTFUReferralsRegisterProvider extends BaseReferralRegisterProvider 
     }
 
     private void setVillageNameName(CommonPersonObjectClient pc, TextView textViewVillage) {
-        String locationId = Utils.getValue(pc.getColumnmaps(), org.smartregister.chw.referral.util.DBConstants.Key.REFERRAL_HF, true);
+        String locationId = Utils.getValue(pc.getColumnmaps(), org.smartregister.chw.referral.util.DBConstants.Key.REFERRAL_HF, false);
         LocationRepository locationRepository = new LocationRepository();
         Location location = locationRepository.getLocationById(locationId);
 
