@@ -19,12 +19,9 @@ import org.smartregister.chw.referral.interactor.BaseIssueReferralInteractor;
 import org.smartregister.chw.referral.model.BaseIssueReferralModel;
 import org.smartregister.chw.referral.presenter.BaseIssueReferralPresenter;
 import org.smartregister.chw.referral.util.Constants;
-import org.smartregister.domain.Location;
 import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.location.helper.LocationHelper;
-import org.smartregister.repository.LocationRepository;
 
-import androidx.room.util.StringUtil;
 import timber.log.Timber;
 
 public class ReferralRegistrationActivity extends BaseIssueReferralActivity {
