@@ -124,13 +124,7 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemId = item.getItemId();
         try {
-            if (itemId == R.id.action_issue_pmtct_ltfu_referral) {
-                JSONObject formJsonObject = (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, org.smartregister.chw.hf.utils.Constants.JsonForm.getLtfuReferralForm());
-                formJsonObject.put(org.smartregister.chw.hf.utils.Constants.REFERRAL_TASK_FOCUS, org.smartregister.chw.hf.utils.Constants.FOCUS.LOST_TO_FOLLOWUP_FOCUS);
-                LFTUFormUtils.setLFTUClinic(formJsonObject, "pmtct_clinic", "PMTCT Clinic");
-                ReferralRegistrationActivity.startGeneralReferralFormActivityForResults(this, memberObject.getBaseEntityId(), formJsonObject, false);
-                return true;
-            } else if (itemId == R.id.action_mark_as_deceased) {
+            if (itemId == R.id.action_mark_as_deceased) {
                 removeMember();
                 return true;
             } else if (itemId == R.id.action_issue_pmtct_followup_referral) {
@@ -186,12 +180,15 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         checkPhoneNumberProvided(StringUtils.isNotBlank(memberObject.getPhoneNumber()));
         OnClickFloatingMenu onClickFloatingMenu = viewId -> {
             switch (viewId) {
-                case R.id.pmtct_fab:
+                case R.id.hiv_fab:
                     ((CorePmtctFloatingMenu) basePmtctFloatingMenu).animateFAB();
                     break;
                 case R.id.call_layout:
                     ((CorePmtctFloatingMenu) basePmtctFloatingMenu).launchCallWidget();
                     ((CorePmtctFloatingMenu) basePmtctFloatingMenu).animateFAB();
+                    break;
+                case R.id.refer_to_facility_layout:
+                    LFTUFormUtils.startLTFUReferral(this, memberObject.getBaseEntityId());
                     break;
                 default:
                     Timber.d("Unknown fab action");

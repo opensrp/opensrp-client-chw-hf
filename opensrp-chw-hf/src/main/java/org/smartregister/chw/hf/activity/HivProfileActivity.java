@@ -127,7 +127,7 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
             });
         } else if (!getHivMemberObject().getCtcNumber().isEmpty()) {
             getRecordIndexContactLayout().setVisibility(View.VISIBLE);
-        }else{
+        } else {
             getRecordIndexContactLayout().setVisibility(View.VISIBLE);
             tvRecordCtcNumber.setText(getString(R.string.hiv_testing_outcome));
         }
@@ -164,16 +164,10 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
             if (itemId == R.id.action_hiv_outcome) {
                 HivRegisterActivity.startHIVFormActivity(this, getHivMemberObject().getBaseEntityId(), CoreConstants.JSON_FORM.getHivOutcome(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getHivOutcome()).toString());
                 return true;
-            } else if (itemId == R.id.action_issue_hiv_community_followup_referral) {
-                JSONObject formJsonObject = (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, org.smartregister.chw.hf.utils.Constants.JsonForm.getLtfuReferralForm());
-                formJsonObject.put(org.smartregister.chw.hf.utils.Constants.REFERRAL_TASK_FOCUS, org.smartregister.chw.hf.utils.Constants.FOCUS.LOST_TO_FOLLOWUP_FOCUS);
-                LFTUFormUtils.setLFTUClinic(formJsonObject, "ctc", "CTC");
-                ReferralRegistrationActivity.startGeneralReferralFormActivityForResults(this, getHivMemberObject().getBaseEntityId(), formJsonObject, false);
-                return true;
             } else if (itemId == R.id.action_pregnancy_confirmation) {
                 startPregnancyConfirmation(Objects.requireNonNull(getHivMemberObject()));
                 return true;
-            }else if(itemId == R.id.action_pregnancy_out_come){
+            } else if (itemId == R.id.action_pregnancy_out_come) {
                 startPregnancyOutcome(Objects.requireNonNull(getHivMemberObject()));
                 return true;
             }
@@ -190,8 +184,6 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
         //Only showing the hiv outcome menu for positive HIV clients
         if (getHivMemberObject().getCtcNumber().isEmpty()) {
             menu.findItem(R.id.action_hiv_outcome).setVisible(true);
-        } else {
-            menu.findItem(R.id.action_issue_hiv_community_followup_referral).setVisible(true);
         }
         CommonPersonObjectClient commonPersonObject = getCommonPersonObjectClient();
         String gender = Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.GENDER, false);
@@ -273,13 +265,13 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
             } catch (JSONException e) {
                 Timber.e(e);
             }
-        } else if(id == R.id.textview_record_index_contact_visit && getHivMemberObject().getCtcNumber().isEmpty() && StringUtils.isBlank(getHivMemberObject().getClientHivStatusAfterTesting())){
+        } else if (id == R.id.textview_record_index_contact_visit && getHivMemberObject().getCtcNumber().isEmpty() && StringUtils.isBlank(getHivMemberObject().getClientHivStatusAfterTesting())) {
             try {
                 HivRegisterActivity.startHIVFormActivity(this, getHivMemberObject().getBaseEntityId(), CoreConstants.JSON_FORM.getHivOutcome(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getHivOutcome()).toString());
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-        }else {
+        } else {
             super.onClick(view);
         }
     }
@@ -297,6 +289,9 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
                 case R.id.call_layout:
                     ((HivFloatingMenu) getHivFloatingMenu()).launchCallWidget();
                     ((HivFloatingMenu) getHivFloatingMenu()).animateFAB();
+                    break;
+                case R.id.refer_to_facility_layout:
+                    LFTUFormUtils.startLTFUReferral(this, getHivMemberObject().getBaseEntityId());
                     break;
                 default:
                     Timber.d("Unknown fab action");

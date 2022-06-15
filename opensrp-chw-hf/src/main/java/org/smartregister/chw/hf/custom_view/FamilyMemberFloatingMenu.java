@@ -1,6 +1,8 @@
 package org.smartregister.chw.hf.custom_view;
 
 import android.content.Context;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import org.smartregister.chw.core.custom_views.CoreFamilyMemberFloatingMenu;
 import org.smartregister.chw.hf.R;
@@ -16,7 +18,11 @@ public class FamilyMemberFloatingMenu extends CoreFamilyMemberFloatingMenu {
     public void initUi() {
         super.initUi();
         fab.setOnClickListener(v -> animateFAB());
-        findViewById(R.id.refer_to_facility_layout).setVisibility(GONE);
+        fab.setImageResource(org.smartregister.chw.core.R.drawable.ic_edit_white);
+        RelativeLayout referToFacilityLayout = findViewById(R.id.refer_to_facility_layout);
+        referToFacilityLayout.setVisibility(VISIBLE);
+        TextView referToFacilityLabel = (TextView) referToFacilityLayout.getChildAt(0);
+        referToFacilityLabel.setText(R.string.lost_to_followup_referral);
     }
 
     @Override
@@ -34,7 +40,7 @@ public class FamilyMemberFloatingMenu extends CoreFamilyMemberFloatingMenu {
             activityMain.setBackgroundResource(org.smartregister.chw.core.R.color.transparent);
 
             fab.startAnimation(rotateBack);
-            fab.setImageResource(org.smartregister.chw.core.R.drawable.ic_call_black_24dp);
+            fab.setImageResource(org.smartregister.chw.core.R.drawable.ic_edit_white);
 
             callLayout.startAnimation(fabClose);
             referLayout.startAnimation(fabClose);

@@ -91,7 +91,7 @@
         },
         {
           "name": "problem",
-          "type": "multi_choice_checkbox",
+          "type": "spinner",
           "properties": {
             "text": "Lost to Followup Clinic"
           },
@@ -101,6 +101,51 @@
             "openmrs_entity_id": "problem"
           },
           "options": [
+            {
+              "name": "CTC",
+              "text": "CTC",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "CTC",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "Prep",
+              "text": "Prep",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "Prep",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "PMTCT",
+              "text": "PMTCT",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "PMTCT",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "TB",
+              "text": "TB",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "TB",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "PWID",
+              "text": "PWID",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "PWID",
+                "openmrs_entity_parent": ""
+              }
+            }
           ],
           "required_status": "yes:Please specify",
           "dependent_calculations": [

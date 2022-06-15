@@ -1,15 +1,9 @@
 package org.smartregister.chw.hf.activity;
 
-import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
-import static org.smartregister.chw.hf.utils.JsonFormUtils.getAutoPopulatedJsonEditFormString;
-import static org.smartregister.util.Utils.getName;
-
 import android.content.Context;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
-
-import androidx.viewpager.widget.ViewPager;
 
 import com.vijay.jsonwizard.utils.FormUtils;
 
@@ -34,6 +28,7 @@ import org.smartregister.chw.hf.presenter.FamilyOtherMemberActivityPresenter;
 import org.smartregister.chw.hf.presenter.HfAllClientsMemberPresenter;
 import org.smartregister.chw.hf.utils.AllClientsUtils;
 import org.smartregister.chw.hf.utils.Constants;
+import org.smartregister.chw.hf.utils.LFTUFormUtils;
 import org.smartregister.chw.ld.dao.LDDao;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.family.adapter.ViewPagerAdapter;
@@ -42,7 +37,12 @@ import org.smartregister.family.model.BaseFamilyOtherMemberProfileActivityModel;
 import org.smartregister.family.util.DBConstants;
 import org.smartregister.view.contract.BaseProfileContract;
 
+import androidx.viewpager.widget.ViewPager;
 import timber.log.Timber;
+
+import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
+import static org.smartregister.chw.hf.utils.JsonFormUtils.getAutoPopulatedJsonEditFormString;
+import static org.smartregister.util.Utils.getName;
 
 public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfileActivity {
 
@@ -288,6 +288,9 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
     public void onClickMenu(int viewId) {
         if (viewId == R.id.call_layout) {
             FamilyCallDialogFragment.launchDialog(this, familyBaseEntityId);
+        }
+        if (viewId == R.id.refer_to_facility_layout) {
+            LFTUFormUtils.startLTFUReferral(this, baseEntityId);
         }
     }
 
