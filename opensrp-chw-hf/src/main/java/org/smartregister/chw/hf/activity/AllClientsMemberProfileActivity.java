@@ -1,15 +1,9 @@
 package org.smartregister.chw.hf.activity;
 
-import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
-import static org.smartregister.chw.hf.utils.JsonFormUtils.getAutoPopulatedJsonEditFormString;
-import static org.smartregister.util.Utils.getName;
-
 import android.content.Context;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
-
-import androidx.viewpager.widget.ViewPager;
 
 import com.vijay.jsonwizard.utils.FormUtils;
 
@@ -42,7 +36,12 @@ import org.smartregister.family.model.BaseFamilyOtherMemberProfileActivityModel;
 import org.smartregister.family.util.DBConstants;
 import org.smartregister.view.contract.BaseProfileContract;
 
+import androidx.viewpager.widget.ViewPager;
 import timber.log.Timber;
+
+import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
+import static org.smartregister.chw.hf.utils.JsonFormUtils.getAutoPopulatedJsonEditFormString;
+import static org.smartregister.util.Utils.getName;
 
 public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfileActivity {
 
@@ -288,6 +287,18 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
     public void onClickMenu(int viewId) {
         if (viewId == R.id.call_layout) {
             FamilyCallDialogFragment.launchDialog(this, familyBaseEntityId);
+        }
+        if (viewId == R.id.refer_to_facility_layout) {
+            JSONObject formJsonObject;
+            try {
+                formJsonObject = (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, Constants.JsonForm.getLtfuReferralForm());
+                if (formJsonObject != null) {
+                    formJsonObject.put(Constants.REFERRAL_TASK_FOCUS, Constants.FOCUS.LOST_TO_FOLLOWUP_FOCUS);
+                    ReferralRegistrationActivity.startGeneralReferralFormActivityForResults(this, baseEntityId, formJsonObject, false);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
     }
 
