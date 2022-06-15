@@ -11,7 +11,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.core.custom_views.NavigationMenu;
-import org.smartregister.chw.core.dao.ChwNotificationDao;
 import org.smartregister.chw.hf.presenter.IssueReferralActivityPresenter;
 import org.smartregister.chw.referral.activity.BaseIssueReferralActivity;
 import org.smartregister.chw.referral.contract.BaseIssueReferralContract;
@@ -19,10 +18,16 @@ import org.smartregister.chw.referral.interactor.BaseIssueReferralInteractor;
 import org.smartregister.chw.referral.model.BaseIssueReferralModel;
 import org.smartregister.chw.referral.presenter.BaseIssueReferralPresenter;
 import org.smartregister.chw.referral.util.Constants;
+import org.smartregister.dao.LocationsDao;
+import org.smartregister.domain.Location;
 import org.smartregister.family.util.JsonFormUtils;
-import org.smartregister.location.helper.LocationHelper;
+
+import java.util.Collections;
+import java.util.List;
 
 import timber.log.Timber;
+
+import static org.smartregister.AllConstants.LocationConstants.SPECIAL_TAG_FOR_OPENMRS_TEAM_MEMBERS;
 
 public class ReferralRegistrationActivity extends BaseIssueReferralActivity {
     private static String BASE_ENTITY_ID;
@@ -45,30 +50,41 @@ public class ReferralRegistrationActivity extends BaseIssueReferralActivity {
 
     @Override
     public void initializeHealthFacilitiesList(JSONObject form) {
-        //overrides and sets the chw location as the selected location
-        JSONArray steps = null;
-        LocationHelper locationHelper = LocationHelper.getInstance();
-        String locationId = ChwNotificationDao.getSyncLocationId(BASE_ENTITY_ID);
-        String locationName = locationHelper.getOpenMrsLocationName(locationId);
-        //TODO: need a fix for the locations for clients out of allowed level brought by global search
+        //overrides and loads the list of chw under that facility
+        JSONArray steps;
+        List<Location> locationList = LocationsDao.getLocationsByTags(Collections.singleton(SPECIAL_TAG_FOR_OPENMRS_TEAM_MEMBERS));
         try {
-            JSONObject option = new JSONObject();
-            option.put("name", StringUtils.capitalize(locationName));
-            option.put("text", StringUtils.capitalize(locationName));
-            JSONObject metaData = new JSONObject();
-            metaData.put("openmrs_entity", "location_uuid");
-            metaData.put("openmrs_entity_id", locationId);
-            option.put("meta_data", metaData);
+            JSONArray options = new JSONArray();
+            for (Location location : locationList) {
+                JSONObject option = new JSONObject();
+                option.put("name", StringUtils.capitalize(location.getProperties().getName()));
+                option.put("text", StringUtils.capitalize(location.getProperties().getName()));
+                JSONObject metaData = new JSONObject();
+                metaData.put("openmrs_entity", "location_uuid");
+                metaData.put("openmrs_entity_id", location.getProperties().getUid());
+                option.put("meta_data", metaData);
+
+                options.put(option);
+            }
 
             steps = form.getJSONArray("steps");
             JSONObject step = steps.getJSONObject(0);
             JSONArray fields = step.getJSONArray("fields");
-            for (int i = 0; i < fields.length(); i++) {
+            int i = 0;
+            int j = 0;
+            int fieldCount = fields.length();
+            int optionCount = options.length();
+            while (i < fieldCount) {
                 JSONObject field = fields.getJSONObject(i);
                 if (field.getString("name").equals("chw_referral_hf")) {
-                    field.getJSONArray("options").put(option);
-                    field.getJSONObject("properties").put("selection", "0");
+                    JSONArray optionsArr = field.getJSONArray("options");
+                    while (j < optionCount) {
+                        optionsArr.put(options.get(j));
+                        j++;
+                    }
+                    break;
                 }
+                i++;
             }
         } catch (JSONException e) {
             Timber.e(e);
