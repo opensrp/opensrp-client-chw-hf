@@ -186,12 +186,15 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         checkPhoneNumberProvided(StringUtils.isNotBlank(memberObject.getPhoneNumber()));
         OnClickFloatingMenu onClickFloatingMenu = viewId -> {
             switch (viewId) {
-                case R.id.pmtct_fab:
+                case R.id.hiv_fab:
                     ((CorePmtctFloatingMenu) basePmtctFloatingMenu).animateFAB();
                     break;
                 case R.id.call_layout:
                     ((CorePmtctFloatingMenu) basePmtctFloatingMenu).launchCallWidget();
                     ((CorePmtctFloatingMenu) basePmtctFloatingMenu).animateFAB();
+                    break;
+                case R.id.refer_to_facility_layout:
+                    LFTUFormUtils.startLTFUReferral(this, memberObject.getBaseEntityId());
                     break;
                 default:
                     Timber.d("Unknown fab action");
