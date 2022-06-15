@@ -124,13 +124,7 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemId = item.getItemId();
         try {
-            if (itemId == R.id.action_issue_pmtct_ltfu_referral) {
-                JSONObject formJsonObject = (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, org.smartregister.chw.hf.utils.Constants.JsonForm.getLtfuReferralForm());
-                formJsonObject.put(org.smartregister.chw.hf.utils.Constants.REFERRAL_TASK_FOCUS, org.smartregister.chw.hf.utils.Constants.FOCUS.LOST_TO_FOLLOWUP_FOCUS);
-                LFTUFormUtils.setLFTUClinic(formJsonObject, "pmtct_clinic", "PMTCT Clinic");
-                ReferralRegistrationActivity.startGeneralReferralFormActivityForResults(this, memberObject.getBaseEntityId(), formJsonObject, false);
-                return true;
-            } else if (itemId == R.id.action_mark_as_deceased) {
+            if (itemId == R.id.action_mark_as_deceased) {
                 removeMember();
                 return true;
             } else if (itemId == R.id.action_issue_pmtct_followup_referral) {

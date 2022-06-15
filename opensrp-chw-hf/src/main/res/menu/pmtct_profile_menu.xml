@@ -18,7 +18,8 @@
         android:id="@+id/action_issue_pmtct_ltfu_referral"
         android:enabled="true"
         android:title="@string/lost_to_followup_referral"
-        app:showAsAction="never" />
+        app:showAsAction="never"
+        android:visible="false"/>
 
     <item
         android:id="@+id/action_remove_member"
