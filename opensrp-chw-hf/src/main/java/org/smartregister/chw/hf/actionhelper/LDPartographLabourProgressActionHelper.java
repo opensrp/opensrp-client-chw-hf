@@ -76,6 +76,7 @@ public class LDPartographLabourProgressActionHelper implements BaseLDVisitAction
 
         String cervixDilationAlertLimit = "";
         String cervixDilationActionLimit = "";
+        String partographDuration = "";
 
         String concatPartographTimeAndDate = currentPartographDate + " " + currentPartographTime;
         Long firstPartographTime = LDDao.getPartographStartTime(memberObject.getBaseEntityId());
@@ -95,6 +96,8 @@ public class LDPartographLabourProgressActionHelper implements BaseLDVisitAction
             long timeDifference = currentPartographTimestamp - firstPartographTime;
             int hoursDifference = (int) TimeUnit.MILLISECONDS.toHours(timeDifference);
 
+            partographDuration = String.valueOf(hoursDifference);
+
             int alertLimit = hoursDifference + 3; // 3 is the cervix dilation value when partograph begins
             int actionLimit = hoursDifference >= 1 ? alertLimit - 4 : 0;
 
@@ -108,6 +111,7 @@ public class LDPartographLabourProgressActionHelper implements BaseLDVisitAction
         try {
             form.getJSONObject("global").put("cervix_dilation_alert_limit", cervixDilationAlertLimit);
             form.getJSONObject("global").put("cervix_dilation_action_limit", cervixDilationActionLimit);
+            form.getJSONObject("global").put("partograph_duration", partographDuration);
         }catch (Exception e){
             Timber.e(e);
         }

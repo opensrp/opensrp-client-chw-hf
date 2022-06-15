@@ -171,6 +171,22 @@
         ]
       },
       {
+        "key": "head_descent_alert",
+        "type": "toaster_notes",
+        "text": "ALERT:\n\nManage according to guideline",
+        "openmrs_entity_id": "notify_alert",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_labour_progress_relevance.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "contraction_every_half_hour_label",
         "type": "label",
         "text": "Contraction (Every half an hour)",
