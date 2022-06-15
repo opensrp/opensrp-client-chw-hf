@@ -71,6 +71,7 @@
         "openmrs_entity_id": "cervix_dilation",
         "type": "numbers_selector",
         "start_number": "1",
+        "number_of_selectors": "10",
         "max_value": "10",
         "text_size": "18px",
         "text_color": "#000000",
