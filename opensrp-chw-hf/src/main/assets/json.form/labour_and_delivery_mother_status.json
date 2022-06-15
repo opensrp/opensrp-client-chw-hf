@@ -87,10 +87,6 @@
         "openmrs_entity_id": "cause_of_death",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "v_required": {
-          "value": true,
-          "err": "Please specify the cause of death"
-        },
         "relevance": {
           "step1:status": {
             "type": "string",
@@ -105,10 +101,6 @@
         "openmrs_entity_id": "time_of_death",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "v_required": {
-          "value": true,
-          "err": "Please specify the time of death"
-        },
         "relevance": {
           "step1:status": {
             "type": "string",
@@ -141,10 +133,6 @@
           "Birth before Arrival (BBA)": "Birth before Arrival (BBA)",
           "At home": "At home",
           "Traditional birth attendant": "Traditional birth attendant"
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Please select one option"
         }
       },
       {
@@ -167,10 +155,6 @@
           "doctor": "A Doctor",
           "nurse": "A Nurse"
         },
-        "v_required": {
-          "value": "true",
-          "err": "Please select one option"
-        },
         "relevance": {
           "step1:delivery_place": {
             "type": "string",
@@ -185,10 +169,6 @@
         "openmrs_entity_id": "name_of_delivery_person",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "v_required": {
-          "value": true,
-          "err": "Please specify the name of the delivery doctor/nurse"
-        },
         "relevance": {
           "step1:delivery_place": {
             "type": "string",
@@ -205,11 +185,7 @@
         "hint": "Delivery Date",
         "expanded": false,
         "min_date": "today-2y",
-        "max_date": "today",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the delivery date"
-        }
+        "max_date": "today"
       },
       {
         "key": "labour_information",
@@ -234,11 +210,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "after_12_hours"
           }
-        ],
-        "v_required": {
-          "value": true,
-          "err": "Please select an option"
-        }
+        ]
       }
     ]
   }
