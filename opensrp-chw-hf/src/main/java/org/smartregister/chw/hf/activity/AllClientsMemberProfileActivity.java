@@ -28,6 +28,7 @@ import org.smartregister.chw.hf.presenter.FamilyOtherMemberActivityPresenter;
 import org.smartregister.chw.hf.presenter.HfAllClientsMemberPresenter;
 import org.smartregister.chw.hf.utils.AllClientsUtils;
 import org.smartregister.chw.hf.utils.Constants;
+import org.smartregister.chw.hf.utils.LFTUFormUtils;
 import org.smartregister.chw.ld.dao.LDDao;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.family.adapter.ViewPagerAdapter;
@@ -289,16 +290,7 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
             FamilyCallDialogFragment.launchDialog(this, familyBaseEntityId);
         }
         if (viewId == R.id.refer_to_facility_layout) {
-            JSONObject formJsonObject;
-            try {
-                formJsonObject = (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, Constants.JsonForm.getLtfuReferralForm());
-                if (formJsonObject != null) {
-                    formJsonObject.put(Constants.REFERRAL_TASK_FOCUS, Constants.FOCUS.LOST_TO_FOLLOWUP_FOCUS);
-                    ReferralRegistrationActivity.startGeneralReferralFormActivityForResults(this, baseEntityId, formJsonObject, false);
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+            LFTUFormUtils.startLTFUReferral(this, baseEntityId);
         }
     }
 
