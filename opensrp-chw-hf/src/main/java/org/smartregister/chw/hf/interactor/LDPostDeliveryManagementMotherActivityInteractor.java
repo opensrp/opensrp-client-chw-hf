@@ -22,6 +22,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.AllConstants;
 import org.smartregister.chw.anc.AncLibrary;
+import org.smartregister.chw.anc.util.AppExecutors;
 import org.smartregister.chw.anc.util.NCUtils;
 import org.smartregister.chw.anc.util.VisitUtils;
 import org.smartregister.chw.core.utils.CoreConstants;
@@ -53,6 +54,7 @@ import org.smartregister.sync.helper.ECSyncHelper;
 import org.smartregister.util.FormUtils;
 import org.smartregister.util.JsonFormUtils;
 
+import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -94,10 +96,9 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
             try {
 
-                evaluateMotherStatus();
+                evaluateMotherStatus(callBack);
                 evaluatePostDeliveryObservation();
                 evaluateMaternalComplicationLabour();
-                evaluateNewBornStatus();
 
             } catch (BaseLDVisitAction.ValidationException e) {
                 Timber.e(e);
@@ -109,10 +110,10 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         appExecutors.diskIO().execute(runnable);
     }
 
-    private void evaluateMotherStatus() throws BaseLDVisitAction.ValidationException {
+    private void evaluateMotherStatus(BaseLDVisitContract.InteractorCallBack callBack) throws BaseLDVisitAction.ValidationException {
 
         String title = context.getString(R.string.ld_mother_status_action_title);
-        MotherStatusActionHelper actionHelper = new MotherStatusActionHelper();
+        MotherStatusActionHelper actionHelper = new MotherStatusActionHelper(context, memberObject.getBaseEntityId(), actionList, callBack);
         BaseLDVisitAction action = getBuilder(title)
                 .withOptional(false)
                 .withHelper(actionHelper)
@@ -150,26 +151,25 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         actionList.put(title, action);
     }
 
-    private void evaluateNewBornStatus() throws BaseLDVisitAction.ValidationException {
-        String title = context.getString(R.string.ld_new_born_status_action_title);
-        NewBornActionHelper actionHelper = new NewBornActionHelper(memberObject.getBaseEntityId());
-        BaseLDVisitAction action = getBuilder(title)
-                .withOptional(false)
-                .withHelper(actionHelper)
-                .withBaseEntityID(memberObject.getBaseEntityId())
-                .withFormName(Constants.JsonForm.LDPostDeliveryMotherManagement.getLdNewBornStatus())
-                .build();
-
-        actionList.put(title, action);
-    }
 
     private static class MotherStatusActionHelper implements BaseLDVisitAction.LDVisitActionHelper {
 
         private String status;
+        private int numberOfChildrenBorn = 0;
         private String delivery_place;
         String delivery_date;
         String labour_information;
         private Context context;
+        private String baseEntityId;
+        private LinkedHashMap<String, BaseLDVisitAction> actionList;
+        private final BaseLDVisitContract.InteractorCallBack callBack;
+
+        public MotherStatusActionHelper(Context context, String baseEntityId, LinkedHashMap<String, BaseLDVisitAction> actionList, BaseLDVisitContract.InteractorCallBack callBack) {
+            this.context = context;
+            this.baseEntityId = baseEntityId;
+            this.actionList = actionList;
+            this.callBack = callBack;
+        }
 
         @Override
         public void onJsonFormLoaded(String jsonString, Context context, Map<String, List<VisitDetail>> details) {
@@ -187,6 +187,11 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
             delivery_place = JsonFormUtils.getFieldValue(jsonPayload, "delivery_place");
             delivery_date = JsonFormUtils.getFieldValue(jsonPayload, "delivery_date");
             labour_information = JsonFormUtils.getFieldValue(jsonPayload, "labour_information");
+            try {
+                numberOfChildrenBorn = Integer.parseInt(JsonFormUtils.getFieldValue(jsonPayload, "number_of_children_born"));
+            } catch (Exception e) {
+                Timber.e(e);
+            }
         }
 
         @Override
@@ -201,6 +206,39 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
         @Override
         public String postProcess(String jsonPayload) {
+            for (Map.Entry<String, BaseLDVisitAction> entry : actionList.entrySet()) {
+                if (entry.getKey().contains(MessageFormat.format(context.getString(R.string.ld_new_born_status_action_title), "")))
+                    actionList.remove(entry.getKey());
+            }
+
+            if (numberOfChildrenBorn > 0) {
+                for (int i = 0; i < numberOfChildrenBorn; i++) {
+                    String title;
+                    if (numberOfChildrenBorn == 1) {
+                        title = MessageFormat.format(context.getString(R.string.ld_new_born_status_action_title), "");
+                    } else {
+                        title = MessageFormat.format(context.getString(R.string.ld_new_born_status_action_title), "of " + ordinal(i + 1) + " baby");
+                    }
+                    NewBornActionHelper actionHelper = new NewBornActionHelper(baseEntityId);
+                    BaseLDVisitAction action = null;
+                    try {
+                        action = new BaseLDVisitAction.Builder(context, title)
+                                .withOptional(false)
+                                .withHelper(actionHelper)
+                                .withBaseEntityID(baseEntityId)
+                                .withProcessingMode(BaseLDVisitAction.ProcessingMode.SEPARATE)
+                                .withFormName(Constants.JsonForm.LDPostDeliveryMotherManagement.getLdNewBornStatus())
+                                .build();
+
+                        actionList.put(title, action);
+                    } catch (BaseLDVisitAction.ValidationException e) {
+                        Timber.e(e);
+                    }
+                }
+
+                //Calling the callback method to preload the actions in the actionns list.
+                new AppExecutors().mainThread().execute(() -> callBack.preloadActions(actionList));
+            }
             return null;
         }
 
@@ -843,5 +881,18 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         }
 
         return gender;
+    }
+
+    public static String ordinal(int i) {
+        String[] suffixes = new String[]{"th", "st", "nd", "rd", "th", "th", "th", "th", "th", "th"};
+        switch (i % 100) {
+            case 11:
+            case 12:
+            case 13:
+                return i + "th";
+            default:
+                return i + suffixes[i % 10];
+
+        }
     }
 }
