@@ -166,9 +166,14 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
     private static class MotherStatusActionHelper implements BaseLDVisitAction.LDVisitActionHelper {
 
         private String status;
+        private String cause_of_death;
+        private String time_of_death;
         private String delivery_place;
-        String delivery_date;
-        String labour_information;
+        private String delivered_by_occupation;
+        private String name_of_delivery_person;
+        private String delivery_date;
+        private String labour_information;
+
         private Context context;
 
         @Override
@@ -184,7 +189,11 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         @Override
         public void onPayloadReceived(String jsonPayload) {
             status = JsonFormUtils.getFieldValue(jsonPayload, "status");
+            cause_of_death = JsonFormUtils.getFieldValue(jsonPayload, "cause_of_death");
+            time_of_death = JsonFormUtils.getFieldValue(jsonPayload, "time_of_death");
             delivery_place = JsonFormUtils.getFieldValue(jsonPayload, "delivery_place");
+            delivered_by_occupation = JsonFormUtils.getFieldValue(jsonPayload, "delivered_by_occupation");
+            name_of_delivery_person = JsonFormUtils.getFieldValue(jsonPayload, "name_of_delivery_person");
             delivery_date = JsonFormUtils.getFieldValue(jsonPayload, "delivery_date");
             labour_information = JsonFormUtils.getFieldValue(jsonPayload, "labour_information");
         }
@@ -206,16 +215,20 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
         @Override
         public String evaluateSubTitle() {
+            if (isFullyCompleted()) {
+                return context.getString(R.string.lb_fully_completed_action);
+            } else if (isPartiallyCompleted()) {
+                return context.getString(R.string.lb_partially_completed_action);
+            }
             return null;
         }
 
         @Override
         public BaseLDVisitAction.Status evaluateStatusOnPayload() {
-            if (StringUtils.isNotBlank(status) &&
-                    StringUtils.isNotBlank(delivery_place) &&
-                    StringUtils.isNotBlank(delivery_date) &&
-                    StringUtils.isNotBlank(labour_information)) {
+            if (isFullyCompleted()) {
                 return BaseLDVisitAction.Status.COMPLETED;
+            } else if (isPartiallyCompleted()) {
+                return BaseLDVisitAction.Status.PARTIALLY_COMPLETED;
             } else {
                 return BaseLDVisitAction.Status.PENDING;
             }
@@ -224,6 +237,50 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         @Override
         public void onPayloadReceived(BaseLDVisitAction ldVisitAction) {
             //Todo: Implement here
+        }
+
+        private boolean isFullyCompleted() {
+            boolean completed = false;
+            if (StringUtils.isNotBlank(status)) {
+                if (status.equalsIgnoreCase("alive")) {
+                    if ((StringUtils.isNotBlank(delivery_place) && !delivery_place.equalsIgnoreCase("Place of delivery")) &&
+                            StringUtils.isNotBlank(delivery_date) && StringUtils.isNotBlank(labour_information)) {
+                        completed = !delivery_place.equalsIgnoreCase("At a health facility") || (StringUtils.isNotBlank(delivered_by_occupation) &&
+                                StringUtils.isNotBlank(name_of_delivery_person));
+                    }
+                } else {
+                    if ((StringUtils.isNotBlank(delivery_place) && !delivery_place.equalsIgnoreCase("Place of delivery")) &&
+                            StringUtils.isNotBlank(cause_of_death) && StringUtils.isNotBlank(time_of_death) && StringUtils.isNotBlank(delivery_date) &&
+                            StringUtils.isNotBlank(labour_information)) {
+                        completed = !delivery_place.equalsIgnoreCase("At a health facility") || (StringUtils.isNotBlank(delivered_by_occupation) &&
+                                StringUtils.isNotBlank(name_of_delivery_person));
+                    }
+                }
+            }
+            return completed;
+        }
+
+        private boolean isPartiallyCompleted() {
+            boolean partialCompletion = false;
+            if (StringUtils.isNotBlank(status)) {
+                if (status.equalsIgnoreCase("alive")) {
+                    // Because of spinner delivery place is never blank it is the value of the hint
+                    if (delivery_place.equalsIgnoreCase("Place of delivery") || StringUtils.isBlank(delivery_date) || StringUtils.isBlank(labour_information)) {
+                        partialCompletion = true;
+                    } else if (delivery_place.equalsIgnoreCase("At a health facility")) {
+                        partialCompletion = StringUtils.isBlank(delivered_by_occupation) || StringUtils.isBlank(name_of_delivery_person);
+                    }
+                } else {
+                    if (delivery_place.equalsIgnoreCase("Place of delivery") || StringUtils.isBlank(delivery_date) ||
+                            StringUtils.isBlank(labour_information) || StringUtils.isBlank(cause_of_death) ||
+                            StringUtils.isBlank(time_of_death)) {
+                        partialCompletion = true;
+                    } else if (delivery_place.equalsIgnoreCase("At a health facility")) {
+                        partialCompletion = StringUtils.isBlank(delivered_by_occupation) || StringUtils.isBlank(name_of_delivery_person);
+                    }
+                }
+            }
+            return partialCompletion;
         }
     }
 
