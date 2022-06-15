@@ -48,7 +48,7 @@ public class ReferralRegistrationActivity extends BaseIssueReferralActivity {
         NavigationMenu.getInstance(this, null, null);
     }
 
-    @Override
+//    @Override
     public void initializeHealthFacilitiesList(JSONObject form) {
         //overrides and loads the list of chw under that facility
         JSONArray steps;

@@ -52,6 +52,17 @@
     "title": "Well-being of Mother",
     "fields": [
       {
+        "key": "contraction_every_half_hour_label",
+        "type": "label",
+        "text": "Pulse rate (Every half an hour)",
+        "text_size": "7sp",
+        "text_color": "#000000",
+        "label_text_style": "bold",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": ""
+      },
+      {
         "key": "pulse_rate",
         "type": "edit_text",
         "hint": "Pulse Rate (Beats per minute)",

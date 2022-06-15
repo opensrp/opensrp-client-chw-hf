@@ -12,3 +12,10 @@ condition: "step1_cervix_dilation != 0 && step1_cervix_dilation <= global_cervix
 priority: 1
 actions:
   - "isRelevant = true"
+---
+name: step1_head_descent_alert
+description: Cervix dilation is not empty
+condition: "(step1_descent_presenting_part == 5 && global_partograph_duration >= 4) || (step1_descent_presenting_part == 4 && global_partograph_duration >= 8) || (step1_descent_presenting_part == 3 && global_partograph_duration >= 12) || (step1_descent_presenting_part == 2 && global_partograph_duration >= 16) || (step1_descent_presenting_part == 1 && global_partograph_duration >= 20)"
+priority: 1
+actions:
+  - "isRelevant = true"
