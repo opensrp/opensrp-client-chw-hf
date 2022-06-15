@@ -25,6 +25,7 @@ public class ReportsActivity extends SecuredActivity implements View.OnClickList
     protected ConstraintLayout ancReportsLayout;
     protected ConstraintLayout pncReportsLayout;
     protected ConstraintLayout cbhsReportsLayout;
+    protected ConstraintLayout ltfuSummaryLayout;
 
     @Override
     protected void onCreation() {
@@ -39,11 +40,14 @@ public class ReportsActivity extends SecuredActivity implements View.OnClickList
         ancReportsLayout = findViewById(R.id.anc_reports);
         pncReportsLayout = findViewById(R.id.pnc_reports);
         cbhsReportsLayout = findViewById(R.id.cbhs_reports);
+        ltfuSummaryLayout = findViewById(R.id.ltfu_summary);
+
 
         pmtctReportsLayout.setOnClickListener(this);
         ancReportsLayout.setOnClickListener(this);
         pncReportsLayout.setOnClickListener(this);
         cbhsReportsLayout.setOnClickListener(this);
+        ltfuSummaryLayout.setOnClickListener(this);
     }
 
     public void setUpToolbar() {
@@ -88,6 +92,8 @@ public class ReportsActivity extends SecuredActivity implements View.OnClickList
             startActivity(new Intent(this, PncReportsActivity.class));
         }else if(id == R.id.cbhs_reports){
             startActivity(new Intent(this, CbhsReportsActivity.class));
+        }else if (id == R.id.ltfu_summary) {
+            startActivity(new Intent(this, LtfuSummaryActivity.class));
         }
     }
 }

@@ -619,6 +619,7 @@ public class Constants extends CoreConstants {
             String ANC_REPORT = "anc_report";
             String PNC_REPORT = "pnc_report";
             String CBHS_REPORT = "cbhs_report";
+            String LTFU_SUMMARY = "ltfu_report";
         }
     }
 

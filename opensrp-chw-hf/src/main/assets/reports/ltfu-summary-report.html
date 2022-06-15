@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community LTFU Summary</title>
+    <style>
+        body {
+            margin: 5px;
+        }
+
+        table {
+            border-collapse: collapse
+        }
+
+        .rotate {
+            writing-mode: vertical-rl;
+            text-orientation: sideways-right;
+            transform: rotate(180deg);
+            max-height: 400px;
+        }
+
+        th {
+            width: .34%;
+        }
+
+        .list-title {
+            padding: 1.9em .9em;
+            width: .65%;
+        }
+
+        .align-text-center {
+            text-align: center;
+        }
+
+        td {
+            text-align: center;
+        }
+
+        .light-grey-bg {
+            background-color: #f5f5f5;
+        }
+
+        .dark-grey-bg {
+            background-color: #bababa;
+        }
+
+    </style>
+</head>
+
+<body onload="onLoad()">
+    <table border="1">
+        <thead>
+            <tr>
+                <th rowspan="3" colspan="1">Umri</th>
+                <th rowspan="3" colspan="1">Jinsi</th>
+                <th colspan="27">Weka Idadi Panapohusika</th>
+            </tr>
+            <tr>
+                <th colspan="4">Kitengo anachohudumiwa mteja</th>
+                <th colspan="2">Mteja anatumia ARVs</th>
+                <td colspan="1" class="dark-grey-bg"></td>
+                <th colspan="8">Matokeo ya ufuatiliaji</th>
+                <td colspan="1" class="dark-grey-bg"></td>
+                <th colspan="11">Sababu za kutokufika Kliniki</th>
+            </tr>
+            <tr>
+                <th class="rotate">CTC</th>
+                <th class="rotate">PMTCT</th>
+                <th class="rotate">TB</th>
+                <th class="rotate">Kliniki ta wajidunga</th>
+                <th class="rotate">N = Ndio</th>
+                <th class="rotate">H = Hapana</th>
+                <th class="rotate dark-grey-bg">Jumla ya wateja waliofuatiliwa (CTC+PMTCT+TB+KLINIKI YA WAJIDUNGA)</th>
+                <th class="rotate" id="a1">A) Mteja anahudhuria kliniki</th>
+                <th class="rotate" id="b1">B) Amepatikana na yuko tayari kurudi kliniki </th>
+                <th class="rotate" id="c1">C) Amepatikana na amerudi kliniki kuendelea na huduma</th>
+                <th class="rotate" id="d1">D) Amehamia kituo kingine bila taarifa</th>
+                <th class="rotate" id="e1">E) Amehama makazi</th>
+                <th class="rotate" id="f1">F) Amepatikana laknini hayuko tayari kurudi kliniki</th>
+                <th class="rotate" id="g1">G) Amefariki</th>
+                <th class="rotate" id="h1">H) Hajapatikana</th>
+                <th class="rotate dark-grey-bg">Jumla ya wateja waliopatikana (A + B + D + E + F + G)</th>
+                <th class="rotate" id="a2">Alisahau</th>
+                <th class="rotate" id="b2">Alikuwa mgonjwa sana</th>
+                <th class="rotate" id="c2">Ameshindwa kujiweka wazi</th>
+                <th class="rotate" id="d2">Amekosa nauli</th>
+                <th class="rotate" id="e2">Umbali/Usafiri Mgumu</th>
+                <th class="rotate" id="f2">Amepata Nafuu</th>
+                <th class="rotate" id="g2">Hakupata Ruhusa Kazini</th>
+                <th class="rotate" id="h2">Alisafiri</th>
+                <th class="rotate" id="i2">Anatumia Tiba Mbadala</th>
+                <th class="rotate" id="j2">Huduma haziridhisha</th>
+                <th class="rotate" id="k2">Nyinginezo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <span class="chini-ya-miaka-2 items">
+                <tr>
+                    <td rowspan="3" class="list-title align-text-center">Chini ya Miaka 2</td>
+                </tr>
+                <tr>
+                    <td>ME</td>
+                    <td id="less-2-me-ctc"></td>
+                    <td id="less-2-me-pmtct"></td>
+                    <td id="less-2-me-tb"></td>
+                    <td id="less-2-me-wajidunga"></td>
+                    <td id="less-2-me-arv-yes"></td>
+                    <td id="less-2-me-arv-no"></td>
+                    <td id="less-2-me-jumla-wateja" class="dark-grey-bg"></td>
+                    <td id="less-2-me-a1"></td>
+                    <td id="less-2-me-b1"></td>
+                    <td id="less-2-me-c1"></td>
+                    <td id="less-2-me-d1"></td>
+                    <td id="less-2-me-e1"></td>
+                    <td id="less-2-me-f1"></td>
+                    <td id="less-2-me-g1"></td>
+                    <td id="less-2-me-h1"></td>
+                    <td id="less-2-me-jumla-waliopatikana" class="dark-grey-bg"></td>
+                    <td id="less-2-me-a2"></td>
+                    <td id="less-2-me-b2"></td>
+                    <td id="less-2-me-c2"></td>
+                    <td id="less-2-me-d2"></td>
+                    <td id="less-2-me-e2"></td>
+                    <td id="less-2-me-f2"></td>
+                    <td id="less-2-me-g2"></td>
+                    <td id="less-2-me-h2"></td>
+                    <td id="less-2-me-i2"></td>
+                    <td id="less-2-me-j2"></td>
+                    <td id="less-2-me-k2"></td>
+                </tr>
+                <tr class="light-grey-bg">
+                    <td>KE</td>
+                    <td id="less-2-ke-ctc"></td>
+                    <td id="less-2-ke-pmtct"></td>
+                    <td id="less-2-ke-tb"></td>
+                    <td id="less-2-ke-wajidunga"></td>
+                    <td id="less-2-ke-arv-yes"></td>
+                    <td id="less-2-ke-arv-no"></td>
+                    <td id="less-2-ke-jumla-wateja" class="dark-grey-bg"></td>
+                    <td id="less-2-ke-a1"></td>
+                    <td id="less-2-ke-b1"></td>
+                    <td id="less-2-ke-c1"></td>
+                    <td id="less-2-ke-d1"></td>
+                    <td id="less-2-ke-e1"></td>
+                    <td id="less-2-ke-f1"></td>
+                    <td id="less-2-ke-g1"></td>
+                    <td id="less-2-ke-h1"></td>
+                    <td id="less-2-ke-jumla-waliopatikana" class="dark-grey-bg"></td>
+                    <td id="less-2-ke-a2"></td>
+                    <td id="less-2-ke-b2"></td>
+                    <td id="less-2-ke-c2"></td>
+                    <td id="less-2-ke-d2"></td>
+                    <td id="less-2-ke-e2"></td>
+                    <td id="less-2-ke-f2"></td>
+                    <td id="less-2-ke-g2"></td>
+                    <td id="less-2-ke-h2"></td>
+                    <td id="less-2-ke-i2"></td>
+                    <td id="less-2-ke-j2"></td>
+                    <td id="less-2-ke-k2"></td>
+                </tr>
+            </span>
+            <span class="miaka-2-14">
+                <tr>
+                    <td rowspan="3" class="list-title align-text-center">Miaka 2-14</td>
+                </tr>
+                <tr>
+                    <td>ME</td>
+                    <td id="2-14-me-ctc"></td>
+                    <td id="2-14-me-pmtct"></td>
+                    <td id="2-14-me-tb"></td>
+                    <td id="2-14-me-wajidunga"></td>
+                    <td id="2-14-me-arv-yes"></td>
+                    <td id="2-14-me-arv-no"></td>
+                    <td id="2-14-me-jumla-wateja" class="dark-grey-bg"></td>
+                    <td id="2-14-me-a1"></td>
+                    <td id="2-14-me-b1"></td>
+                    <td id="2-14-me-c1"></td>
+                    <td id="2-14-me-d1"></td>
+                    <td id="2-14-me-e1"></td>
+                    <td id="2-14-me-f1"></td>
+                    <td id="2-14-me-g1"></td>
+                    <td id="2-14-me-h1"></td>
+                    <td id="2-14-me-jumla-waliopatikana" class="dark-grey-bg"></td>
+                    <td id="2-14-me-a2"></td>
+                    <td id="2-14-me-b2"></td>
+                    <td id="2-14-me-c2"></td>
+                    <td id="2-14-me-d2"></td>
+                    <td id="2-14-me-e2"></td>
+                    <td id="2-14-me-f2"></td>
+                    <td id="2-14-me-g2"></td>
+                    <td id="2-14-me-h2"></td>
+                    <td id="2-14-me-i2"></td>
+                    <td id="2-14-me-j2"></td>
+                    <td id="2-14-me-k2"></td>
+                </tr>
+                <tr class="light-grey-bg">
+                    <td>KE</td>
+                    <td id="2-14-ke-ctc"></td>
+                    <td id="2-14-ke-pmtct"></td>
+                    <td id="2-14-ke-tb"></td>
+                    <td id="2-14-ke-wajidunga"></td>
+                    <td id="2-14-ke-arv-yes"></td>
+                    <td id="2-14-ke-arv-no"></td>
+                    <td id="2-14-ke-jumla-wateja" class="dark-grey-bg"></td>
+                    <td id="2-14-ke-a1"></td>
+                    <td id="2-14-ke-b1"></td>
+                    <td id="2-14-ke-c1"></td>
+                    <td id="2-14-ke-d1"></td>
+                    <td id="2-14-ke-e1"></td>
+                    <td id="2-14-ke-f1"></td>
+                    <td id="2-14-ke-g1"></td>
+                    <td id="2-14-ke-h1"></td>
+                    <td id="2-14-ke-jumla-waliopatikana" class="dark-grey-bg"></td>
+                    <td id="2-14-ke-a2"></td>
+                    <td id="2-14-ke-b2"></td>
+                    <td id="2-14-ke-c2"></td>
+                    <td id="2-14-ke-d2"></td>
+                    <td id="2-14-ke-e2"></td>
+                    <td id="2-14-ke-f2"></td>
+                    <td id="2-14-ke-g2"></td>
+                    <td id="2-14-ke-h2"></td>
+                    <td id="2-14-ke-i2"></td>
+                    <td id="2-14-ke-j2"></td>
+                    <td id="2-14-ke-k2"></td>
+                </tr>
+            </span>
+            <span class="miaka-15-24">
+                <tr>
+                    <td rowspan="3" class="list-title align-text-center">Miaka 15-24</td>
+                </tr>
+                <tr>
+                    <td>ME</td>
+                    <td id="15-24-me-ctc"></td>
+                    <td id="15-24-me-pmtct"></td>
+                    <td id="15-24-me-tb"></td>
+                    <td id="15-24-me-wajidunga"></td>
+                    <td id="15-24-me-arv-yes"></td>
+                    <td id="15-24-me-arv-no"></td>
+                    <td id="15-24-me-jumla-wateja" class="dark-grey-bg"></td>
+                    <td id="15-24-me-a1"></td>
+                    <td id="15-24-me-b1"></td>
+                    <td id="15-24-me-c1"></td>
+                    <td id="15-24-me-d1"></td>
+                    <td id="15-24-me-e1"></td>
+                    <td id="15-24-me-f1"></td>
+                    <td id="15-24-me-g1"></td>
+                    <td id="15-24-me-h1"></td>
+                    <td id="15-24-me-jumla-waliopatikana" class="dark-grey-bg"></td>
+                    <td id="15-24-me-a2"></td>
+                    <td id="15-24-me-b2"></td>
+                    <td id="15-24-me-c2"></td>
+                    <td id="15-24-me-d2"></td>
+                    <td id="15-24-me-e2"></td>
+                    <td id="15-24-me-f2"></td>
+                    <td id="15-24-me-g2"></td>
+                    <td id="15-24-me-h2"></td>
+                    <td id="15-24-me-i2"></td>
+                    <td id="15-24-me-j2"></td>
+                    <td id="15-24-me-k2"></td>
+                </tr>
+                <tr class="light-grey-bg">
+                    <td>KE</td>
+                    <td id="15-24-ke-ctc"></td>
+                    <td id="15-24-ke-pmtct"></td>
+                    <td id="15-24-ke-tb"></td>
+                    <td id="15-24-ke-wajidunga"></td>
+                    <td id="15-24-ke-arv-yes"></td>
+                    <td id="15-24-ke-arv-no"></td>
+                    <td id="15-24-ke-jumla-wateja" class="dark-grey-bg"></td>
+                    <td id="15-24-ke-a1"></td>
+                    <td id="15-24-ke-b1"></td>
+                    <td id="15-24-ke-c1"></td>
+                    <td id="15-24-ke-d1"></td>
+                    <td id="15-24-ke-e1"></td>
+                    <td id="15-24-ke-f1"></td>
+                    <td id="15-24-ke-g1"></td>
+                    <td id="15-24-ke-h1"></td>
+                    <td id="15-24-ke-jumla-waliopatikana" class="dark-grey-bg"></td>
+                    <td id="15-24-ke-a2"></td>
+                    <td id="15-24-ke-b2"></td>
+                    <td id="15-24-ke-c2"></td>
+                    <td id="15-24-ke-d2"></td>
+                    <td id="15-24-ke-e2"></td>
+                    <td id="15-24-ke-f2"></td>
+                    <td id="15-24-ke-g2"></td>
+                    <td id="15-24-ke-h2"></td>
+                    <td id="15-24-ke-i2"></td>
+                    <td id="15-24-ke-j2"></td>
+                    <td id="15-24-ke-k2"></td>
+                </tr>
+            </span>
+            <span class="miaka-25-49">
+                <tr>
+                    <td rowspan="3" class="list-title align-text-center">Miaka 25-49</td>
+                </tr>
+                <tr>
+                    <td>ME</td>
+                    <td id="25-49-me-ctc"></td>
+                    <td id="25-49-me-pmtct"></td>
+                    <td id="25-49-me-tb"></td>
+                    <td id="25-49-me-wajidunga"></td>
+                    <td id="25-49-me-arv-yes"></td>
+                    <td id="25-49-me-arv-no"></td>
+                    <td id="25-49-me-jumla-wateja" class="dark-grey-bg"></td>
+                    <td id="25-49-me-a1"></td>
+                    <td id="25-49-me-b1"></td>
+                    <td id="25-49-me-c1"></td>
+                    <td id="25-49-me-d1"></td>
+                    <td id="25-49-me-e1"></td>
+                    <td id="25-49-me-f1"></td>
+                    <td id="25-49-me-g1"></td>
+                    <td id="25-49-me-h1"></td>
+                    <td id="25-49-me-jumla-waliopatikana" class="dark-grey-bg"></td>
+                    <td id="25-49-me-a2"></td>
+                    <td id="25-49-me-b2"></td>
+                    <td id="25-49-me-c2"></td>
+                    <td id="25-49-me-d2"></td>
+                    <td id="25-49-me-e2"></td>
+                    <td id="25-49-me-f2"></td>
+                    <td id="25-49-me-g2"></td>
+                    <td id="25-49-me-h2"></td>
+                    <td id="25-49-me-i2"></td>
+                    <td id="25-49-me-j2"></td>
+                    <td id="25-49-me-k2"></td>
+                </tr>
+                <tr class="light-grey-bg">
+                    <td>KE</td>
+                    <td id="25-49-ke-ctc"></td>
+                    <td id="25-49-ke-pmtct"></td>
+                    <td id="25-49-ke-tb"></td>
+                    <td id="25-49-ke-wajidunga"></td>
+                    <td id="25-49-ke-arv-yes"></td>
+                    <td id="25-49-ke-arv-no"></td>
+                    <td id="25-49-ke-jumla-wateja" class="dark-grey-bg"></td>
+                    <td id="25-49-ke-a1"></td>
+                    <td id="25-49-ke-b1"></td>
+                    <td id="25-49-ke-c1"></td>
+                    <td id="25-49-ke-d1"></td>
+                    <td id="25-49-ke-e1"></td>
+                    <td id="25-49-ke-f1"></td>
+                    <td id="25-49-ke-g1"></td>
+                    <td id="25-49-ke-h1"></td>
+                    <td id="25-49-ke-jumla-waliopatikana" class="dark-grey-bg"></td>
+                    <td id="25-49-ke-a2"></td>
+                    <td id="25-49-ke-b2"></td>
+                    <td id="25-49-ke-c2"></td>
+                    <td id="25-49-ke-d2"></td>
+                    <td id="25-49-ke-e2"></td>
+                    <td id="25-49-ke-f2"></td>
+                    <td id="25-49-ke-g2"></td>
+                    <td id="25-49-ke-h2"></td>
+                    <td id="25-49-ke-i2"></td>
+                    <td id="25-49-ke-j2"></td>
+                    <td id="25-49-ke-k2"></td>
+                </tr>
+            </span>
+            <span class="miaka-60+">
+                <tr>
+                    <td rowspan="3" class="list-title align-text-center">Miaka 60+</td>
+                </tr>
+                <tr>
+                    <td>ME</td>
+                    <td id="60-me-ctc"></td>
+                    <td id="60-me-pmtct"></td>
+                    <td id="60-me-tb"></td>
+                    <td id="60-me-wajidunga"></td>
+                    <td id="60-me-arv-yes"></td>
+                    <td id="60-me-arv-no"></td>
+                    <td id="60-me-jumla-wateja" class="dark-grey-bg"></td>
+                    <td id="60-me-a1"></td>
+                    <td id="60-me-b1"></td>
+                    <td id="60-me-c1"></td>
+                    <td id="60-me-d1"></td>
+                    <td id="60-me-e1"></td>
+                    <td id="60-me-f1"></td>
+                    <td id="60-me-g1"></td>
+                    <td id="60-me-h1"></td>
+                    <td id="60-me-jumla-waliopatikana" class="dark-grey-bg"></td>
+                    <td id="60-me-a2"></td>
+                    <td id="60-me-b2"></td>
+                    <td id="60-me-c2"></td>
+                    <td id="60-me-d2"></td>
+                    <td id="60-me-e2"></td>
+                    <td id="60-me-f2"></td>
+                    <td id="60-me-g2"></td>
+                    <td id="60-me-h2"></td>
+                    <td id="60-me-i2"></td>
+                    <td id="60-me-j2"></td>
+                    <td id="60-me-k2"></td>
+                </tr>
+                <tr class="light-grey-bg">
+                    <td>KE</td>
+                    <td id="60-ke-ctc"></td>
+                    <td id="60-ke-pmtct"></td>
+                    <td id="60-ke-tb"></td>
+                    <td id="60-ke-wajidunga"></td>
+                    <td id="60-ke-arv-yes"></td>
+                    <td id="60-ke-arv-no"></td>
+                    <td id="60-ke-jumla-wateja" class="dark-grey-bg"></td>
+                    <td id="60-ke-a1"></td>
+                    <td id="60-ke-b1"></td>
+                    <td id="60-ke-c1"></td>
+                    <td id="60-ke-d1"></td>
+                    <td id="60-ke-e1"></td>
+                    <td id="60-ke-f1"></td>
+                    <td id="60-ke-g1"></td>
+                    <td id="60-ke-h1"></td>
+                    <td id="60-ke-jumla-waliopatikana" class="dark-grey-bg"></td>
+                    <td id="60-ke-a2"></td>
+                    <td id="60-ke-b2"></td>
+                    <td id="60-ke-c2"></td>
+                    <td id="60-ke-d2"></td>
+                    <td id="60-ke-e2"></td>
+                    <td id="60-ke-f2"></td>
+                    <td id="60-ke-g2"></td>
+                    <td id="60-ke-h2"></td>
+                    <td id="60-ke-i2"></td>
+                    <td id="60-ke-j2"></td>
+                    <td id="60-ke-k2"></td>
+                </tr>
+            </span>
+            <span>
+                <tr>
+                    <td colspan="2" class="list-title align-text-center">Jumla</td>
+                    <td id="jumla-ctc"></td>
+                    <td id="jumla-pmtct"></td>
+                    <td id="jumla-tb"></td>
+                    <td id="jumla-wajidunga"></td>
+                    <td id="jumla-arv-yes"></td>
+                    <td id="jumla-arv-no"></td>
+                    <td id="jumla-jumla-wateja" class="dark-grey-bg"></td>
+                    <td id="jumla-a1"></td>
+                    <td id="jumla-b1"></td>
+                    <td id="jumla-c1"></td>
+                    <td id="jumla-d1"></td>
+                    <td id="jumla-e1"></td>
+                    <td id="jumla-f1"></td>
+                    <td id="jumla-g1"></td>
+                    <td id="jumla-h1"></td>
+                    <td id="jumla-jumla-waliopatikana" class="dark-grey-bg"></td>
+                    <td id="jumla-a2"></td>
+                    <td id="jumla-b2"></td>
+                    <td id="jumla-c2"></td>
+                    <td id="jumla-d2"></td>
+                    <td id="jumla-e2"></td>
+                    <td id="jumla-f2"></td>
+                    <td id="jumla-g2"></td>
+                    <td id="jumla-h2"></td>
+                    <td id="jumla-i2"></td>
+                    <td id="jumla-j2"></td>
+                    <td id="jumla-k2"></td>
+                </tr>
+            </span>
+        </tbody>
+    </table>
+</body>
+<script type="text/javascript">
+    function onLoad() {
+        const data = JSON.parse(Android.getData("monthly"));
+        const keys = Object.keys(data.nameValuePairs)
+        keys.forEach(key => {
+            const element = document.getElementById(key)
+            if (element !== null && element !== undefined) {
+                document.getElementById(key).innerHTML = data.nameValuePairs[key]
+            }
+        })
+    }
+
+</script>
+
+</html>

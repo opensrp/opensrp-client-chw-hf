@@ -367,6 +367,8 @@
     <string name="feedback_date">Feedback Date</string>
     <string name="feedback_details">Feedback Details</string>
     <string name="lost_to_followup_referral">LTFU Referral</string>
+    <string name="community_ltfu_summary">Community LTFU Summary</string>
+    <string name="community_ltfu_summary_subtitle">View Report Summary for LTFU</string>
 
 
 </resources>
