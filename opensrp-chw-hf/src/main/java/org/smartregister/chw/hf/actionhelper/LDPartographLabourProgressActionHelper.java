@@ -182,6 +182,11 @@ public class LDPartographLabourProgressActionHelper implements BaseLDVisitAction
         JSONObject descentPresentingPart = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "descent_presenting_part");
         if (LDDao.getCervixDilation(baseEntityId) != null) {
             cervixDilation.put("start_number", LDDao.getCervixDilation(baseEntityId));
+
+            //Limit number of selectors
+            int cervixDilationValue = Integer.parseInt(LDDao.getCervixDilation(baseEntityId));
+            int numberOfSelectors = 10-cervixDilationValue;
+            cervixDilation.put("number_of_selectors", numberOfSelectors);
         }
 
         if (LDDao.getDescent(baseEntityId) != null && descentPresentingPart != null) {
