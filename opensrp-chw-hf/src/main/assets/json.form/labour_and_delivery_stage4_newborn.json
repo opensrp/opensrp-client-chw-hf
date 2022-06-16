@@ -54,1974 +54,2029 @@
     }
   },
   "step1": {
-    "title": "Stage 4 - Newborn",
+    "title": "Immediate Newborn Care",
     "fields": [
       {
-        "key": "no_immediate_new_born",
-        "type": "repeating_group",
-        "reference_edit_text_hint": "Number of children born",
-        "repeating_group_label": "Baby Details #",
+        "key": "delivery_date",
         "openmrs_entity_parent": "",
-        "openmrs_entity": "",
-        "openmrs_entity_id": "",
-        "repeating_group_max": "4",
-        "expand_on_text_change": "true",
-        "value": [
-          {
-            "key": "newborn_status",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "newborn_status",
-            "label": "Status",
-            "text_color": "#000000",
-            "type": "native_radio",
-            "options": [
-              {
-                "key": "alive",
-                "text": "Alive",
-                "openmrs_entity_parent": "",
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "alive"
-              },
-              {
-                "key": "still_birth",
-                "text": "Still birth",
-                "openmrs_entity_parent": "",
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "still_birth"
-              }
-            ],
-            "v_required": {
-              "value": true,
-              "err": "Please select an option"
-            }
-          },
-          {
-            "key": "still_birth_choice",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "still_birth_choice",
-            "label": "Still Birth",
-            "text_color": "#000000",
-            "type": "native_radio",
-            "options": [
-              {
-                "key": "fsb",
-                "text": "FSB",
-                "openmrs_entity_parent": "",
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "fsb"
-              },
-              {
-                "key": "msb",
-                "text": "MSB",
-                "openmrs_entity_parent": "",
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "msb"
-              }
-            ],
-            "v_required": {
-              "value": true,
-              "err": "Please select an option"
-            },
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "sex",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "sex",
-            "type": "spinner",
-            "hint": "Sex",
-            "values": [
-              "Male",
-              "Female"
-            ],
-            "keys": [
-              "Male",
-              "Female"
-            ],
-            "v_required": {
-              "value": "true",
-              "err": "Please select the sex"
-            },
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "prompt_for_apgar_at_1_minute",
-            "type": "toaster_notes",
-            "text": "APGAR (At 1-minute)",
-            "openmrs_entity_id": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_parent": "",
-            "toaster_type": "info",
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "spacer1",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "type": "spacer",
-            "spacer_height": "8dp",
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "apgar_score_activity_label",
-            "type": "label",
-            "text": "Activity",
-            "label_info_title": "Activity",
-            "label_info_text": "0: Absent \n1: Arm/legs flexed \n2: Active",
-            "text_size": "7sp",
-            "text_color": "#000000",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "spacer2",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "type": "spacer",
-            "spacer_height": "8dp",
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "apgar_activity_score_at_1_minute",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "apgar_activity_score_at_1_minute",
-            "type": "numbers_selector",
-            "number_of_selectors": "3",
-            "start_number": "0",
-            "max_value": "2",
-            "text_size": "18px",
-            "text_color": "#000000",
-            "selected_text_color": "#ffffff",
-            "v_required": {
-              "value": true,
-              "err": "Please enter the agpar activity score"
-            },
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "spacer3",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "type": "spacer",
-            "spacer_height": "8dp",
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "apgar_pulse_score_label",
-            "type": "label",
-            "text": "Pulse",
-            "label_info_title": "Pulse",
-            "label_info_text": "0: Absent \n1: <100  \n2: > 100",
-            "text_size": "7sp",
-            "text_color": "#000000",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "spacer4",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "type": "spacer",
-            "spacer_height": "8dp",
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "apgar_pulse_score_at_1_minute",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "apgar_pulse_score_at_1_minute",
-            "type": "numbers_selector",
-            "number_of_selectors": "3",
-            "start_number": "0",
-            "max_value": "2",
-            "text_size": "18px",
-            "text_color": "#000000",
-            "selected_text_color": "#ffffff",
-            "v_required": {
-              "value": true,
-              "err": "Please enter the agpar pulse score"
-            },
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "spacer5",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "type": "spacer",
-            "spacer_height": "8dp",
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "apgar_grimace_on_stimulation_score_label",
-            "type": "label",
-            "text": "Grimace of stimulation",
-            "label_info_title": "Grimace of stimulation",
-            "label_info_text": "0: No response \n1: Grimaces \n2: Sneezes coughs/pulls away",
-            "text_size": "7sp",
-            "text_color": "#000000",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "spacer6",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "type": "spacer",
-            "spacer_height": "8dp",
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "apgar_grimace_on_stimulation_score_at_1_minute",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "apgar_grimace_on_stimulation_score_at_1_minute",
-            "type": "numbers_selector",
-            "number_of_selectors": "3",
-            "start_number": "0",
-            "max_value": "2",
-            "text_size": "18px",
-            "text_color": "#000000",
-            "selected_text_color": "#ffffff",
-            "v_required": {
-              "value": true,
-              "err": "Please enter the agpar grimace on stimulation score"
-            },
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "spacer7",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "type": "spacer",
-            "spacer_height": "8dp",
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "apgar_appearance_score_label",
-            "type": "label",
-            "text": "Appearance",
-            "text_size": "7sp",
-            "text_color": "#000000",
-            "label_info_title": "Appearance",
-            "label_info_text": "0: Blue/Pale all over \n1: Blue/Pale extremities \n2: Normal all over",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "spacer8",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "type": "spacer",
-            "spacer_height": "8dp",
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "apgar_appearance_score_at_1_minute",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "apgar_appearance_score_at_1_minute",
-            "type": "numbers_selector",
-            "number_of_selectors": "3",
-            "start_number": "0",
-            "max_value": "2",
-            "text_size": "18px",
-            "text_color": "#000000",
-            "selected_text_color": "#ffffff",
-            "v_required": {
-              "value": true,
-              "err": "Please enter the agpar appearance score"
-            },
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "spacer9",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "type": "spacer",
-            "spacer_height": "8dp",
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "apgar_respiration_score_label",
-            "type": "label",
-            "text": "Respiration",
-            "label_info_title": "Breath",
-            "label_info_text": "0: Absent \n1: Weak/Slow irregular breathing \n2: Good cry / RR40",
-            "text_size": "7sp",
-            "text_color": "#000000",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "spacer10",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "type": "spacer",
-            "spacer_height": "8dp",
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "apgar_respiration_score_at_1_minute",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "apgar_respiration_score_at_1_minute",
-            "type": "numbers_selector",
-            "number_of_selectors": "3",
-            "start_number": "0",
-            "max_value": "2",
-            "text_size": "18px",
-            "text_color": "#000000",
-            "selected_text_color": "#ffffff",
-            "v_required": {
-              "value": true,
-              "err": "Please enter the agpar respiration score"
-            },
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "apgar_score_at_1_minute",
-            "type": "hidden",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "openmrs_entity_parent": "",
-            "read_only": true,
-            "calculation": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "spacer11",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "type": "spacer",
-            "spacer_height": "15dp",
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-
-          {
-            "key": "prompt_for_normal_apgar_score_at_1_minute",
-            "type": "toaster_notes",
-            "text": "APGAR score at 1 min, Normal",
-            "openmrs_entity_id": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_parent": "",
-            "toaster_type": "positive",
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "prompt_for_abnormal_apgar_score_at_1_minute",
-            "type": "toaster_notes",
-            "text": "APGAR score at 1 min, Abnormal. \nGo to emergency",
-            "openmrs_entity_id": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_parent": "",
-            "toaster_type": "problem",
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-
-          {
-            "key": "prompt_for_apgar_at_5_minute",
-            "type": "toaster_notes",
-            "text": "APGAR (At 5-minutes)",
-            "openmrs_entity_id": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_parent": "",
-            "toaster_type": "info",
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "spacer12",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "type": "spacer",
-            "spacer_height": "8dp",
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "apgar_score_activity_label_at_5_mins",
-            "type": "label",
-            "text": "Activity",
-            "label_info_title": "Activity",
-            "label_info_text": "0: Absent \n1: Arm/legs flexed \n2: Active",
-            "text_size": "7sp",
-            "text_color": "#000000",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "spacer13",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "type": "spacer",
-            "spacer_height": "8dp",
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "apgar_activity_score_at_5_minutes",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "apgar_activity_score_at_5_minutes",
-            "type": "numbers_selector",
-            "number_of_selectors": "3",
-            "start_number": "0",
-            "max_value": "2",
-            "text_size": "18px",
-            "text_color": "#000000",
-            "selected_text_color": "#ffffff",
-            "v_required": {
-              "value": true,
-              "err": "Please enter the agpar activity score"
-            },
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "spacer14",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "type": "spacer",
-            "spacer_height": "8dp",
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "apgar_pulse_score_label_at_5_mins",
-            "type": "label",
-            "text": "Heart",
-            "label_info_title": "Pulse",
-            "label_info_text": "0: Absent \n1: <100  \n2: > 100",
-            "text_size": "7sp",
-            "text_color": "#000000",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "spacer15",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "type": "spacer",
-            "spacer_height": "8dp",
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "apgar_pulse_score_at_5_minutes",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "apgar_pulse_score_at_5_minutes",
-            "type": "numbers_selector",
-            "number_of_selectors": "3",
-            "start_number": "0",
-            "max_value": "2",
-            "text_size": "18px",
-            "text_color": "#000000",
-            "selected_text_color": "#ffffff",
-            "v_required": {
-              "value": true,
-              "err": "Please enter the agpar pulse score"
-            },
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "spacer16",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "type": "spacer",
-            "spacer_height": "8dp",
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "apgar_grimace_on_stimulation_score_label_at_5_mins",
-            "type": "label",
-            "text": "Grimace of stimulation",
-            "label_info_title": "Grimace of stimulation",
-            "label_info_text": "0: No response \n1: Grimaces \n2: Sneezes coughs/pulls away",
-            "text_size": "7sp",
-            "text_color": "#000000",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "spacer17",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "type": "spacer",
-            "spacer_height": "8dp",
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "apgar_grimace_on_stimulation_score_at_5_minutes",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "apgar_grimace_on_stimulation_score_at_5_minutes",
-            "type": "numbers_selector",
-            "number_of_selectors": "3",
-            "start_number": "0",
-            "max_value": "2",
-            "text_size": "18px",
-            "text_color": "#000000",
-            "selected_text_color": "#ffffff",
-            "v_required": {
-              "value": true,
-              "err": "Please enter the agpar grimace on stimulation score"
-            },
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "spacer18",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "type": "spacer",
-            "spacer_height": "8dp",
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "apgar_appearance_score_label_at_5_mins",
-            "type": "label",
-            "text": "Appearance",
-            "text_size": "7sp",
-            "text_color": "#000000",
-            "label_info_title": "Appearance",
-            "label_info_text": "0: Blue/Pale all over \n1: Blue/Pale extremities \n2: Normal all over",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "spacer19",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "type": "spacer",
-            "spacer_height": "8dp",
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "apgar_appearance_score_at_5_minutes",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "apgar_appearance_score_at_5_minutes",
-            "type": "numbers_selector",
-            "number_of_selectors": "3",
-            "start_number": "0",
-            "max_value": "2",
-            "text_size": "18px",
-            "text_color": "#000000",
-            "selected_text_color": "#ffffff",
-            "v_required": {
-              "value": true,
-              "err": "Please enter the agpar appearance score"
-            },
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "spacer20",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "type": "spacer",
-            "spacer_height": "8dp",
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "apgar_respiration_score_label_at_5_mins",
-            "type": "label",
-            "text": "Respiration",
-            "label_info_title": "Breath",
-            "label_info_text": "0: Absent \n1: Weak/Slow irregular breathing \n2: Good cry / RR40",
-            "text_size": "7sp",
-            "text_color": "#000000",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "spacer21",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "type": "spacer",
-            "spacer_height": "8dp",
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "apgar_respiration_score_at_5_minutes",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "apgar_respiration_score_at_5_minutes",
-            "type": "numbers_selector",
-            "number_of_selectors": "3",
-            "start_number": "0",
-            "max_value": "2",
-            "text_size": "18px",
-            "text_color": "#000000",
-            "selected_text_color": "#ffffff",
-            "v_required": {
-              "value": true,
-              "err": "Please enter the agpar respiration score"
-            },
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "apgar_score_at_5_minutes",
-            "type": "hidden",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "openmrs_entity_parent": "",
-            "calculation": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "spacer22",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "type": "spacer",
-            "spacer_height": "15dp",
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-
-          {
-            "key": "prompt_for_normal_apgar_score_at_5_minutes",
-            "type": "toaster_notes",
-            "text": "APGAR score at 5 mins, Normal",
-            "openmrs_entity_id": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_parent": "",
-            "toaster_type": "positive",
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "prompt_for_abnormal_apgar_score_at_5_minutes",
-            "type": "toaster_notes",
-            "text": "APGAR score at 5 mins, Abnormal. \nGo to emergency",
-            "openmrs_entity_id": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_parent": "",
-            "toaster_type": "problem",
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-
-          {
-            "key": "resuscitation",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "resuscitation",
-            "label": "Resuscitation",
-            "text_color": "#000000",
-            "type": "native_radio",
-            "options": [
-              {
-                "key": "no_resuscitation",
-                "text": "No Resuscitation",
-                "openmrs_entity_parent": "",
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "no_resuscitation"
-              },
-              {
-                "key": "suction_only",
-                "text": "Suction Only",
-                "openmrs_entity_parent": "",
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "suction_only"
-              },
-              {
-                "key": "suction_and_bag_mask",
-                "text": "Suction and Bag Mask",
-                "openmrs_entity_parent": "",
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "suction_and_bag_mask"
-              },
-              {
-                "key": "stimulation",
-                "text": "Stimulation",
-                "openmrs_entity_parent": "",
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "stimulation"
-              }
-            ],
-            "v_required": {
-              "value": true,
-              "err": "Please select an option"
-            },
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "temperature",
-            "type": "edit_text",
-            "hint": "Temperature (C)",
-            "openmrs_entity_id": "temperature",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "v_numeric": {
-              "value": "true",
-              "err": "Please enter the temperature"
-            },
-            "v_min": {
-              "value": "10",
-              "err": "Temperature must be equal or greater than 10"
-            },
-            "v_max": {
-              "value": "50",
-              "err": "Temperature must be equal or less than 50"
-            },
-            "v_required": {
-              "value": true,
-              "err": "Please enter the temperature"
-            },
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "weight",
-            "type": "edit_text",
-            "hint": "Weight (KG)",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "weight",
-            "openmrs_entity_parent": "",
-            "v_numeric": {
-              "value": "true",
-              "err": "Please enter the weight"
-            },
-            "v_min": {
-              "value": "0",
-              "err": "The weight must be equal or greater than 0 (KG)"
-            },
-            "v_max": {
-              "value": "7",
-              "err": "The weight must be equal or less than 7 (KG)"
-            },
-            "v_required": {
-              "value": true,
-              "err": "Please enter the weight"
-            },
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "prompt_for_underweight",
-            "type": "toaster_notes",
-            "text": "Manage according to National guideline",
-            "openmrs_entity_id": "",
-            "openmrs_entity": "",
-            "openmrs_entity_parent": "",
-            "toaster_type": "problem",
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "heart_rate",
-            "type": "edit_text",
-            "hint": "Heart Rate (bpm)",
-            "openmrs_entity_id": "heart_rate",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "v_numeric": {
-              "value": "true",
-              "err": "Please enter the heart rate"
-            },
-            "v_min": {
-              "value": "0",
-              "err": "The heart rate must be equal or greater than 0 (bpm)"
-            },
-            "v_max": {
-              "value": "200",
-              "err": "The heart rate must be equal or less than 200 (bpm)"
-            },
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "keep_warm",
-            "type": "native_radio",
-            "label": "Keep Warm (skin to skin)",
-            "openmrs_entity_id": "keep_warm",
-            "openmrs_entity": "concept",
-            "openmrs_entity_parent": "",
-            "options": [
-              {
-                "key": "yes",
-                "text": "Yes",
-                "openmrs_entity_id": "yes",
-                "openmrs_entity": "concept"
-              },
-              {
-                "key": "no",
-                "text": "No",
-                "openmrs_entity_id": "no",
-                "openmrs_entity": "concept"
-              }
-            ],
-            "v_required": {
-              "value": true,
-              "err": "Please answer this question"
-            },
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "breathing_rate",
-            "type": "edit_text",
-            "hint": "Breathing Rate (bpm)",
-            "openmrs_entity_id": "breathing_rate",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "v_numeric": {
-              "value": "true",
-              "err": "Please enter the breathing rate"
-            },
-            "v_min": {
-              "value": "0",
-              "err": "The breathing rate must be equal or greater than 0 (bpm)"
-            },
-            "v_max": {
-              "value": "100",
-              "err": "The breathing rate must be equal or less than 100 (bpm)"
-            },
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "cord_bleeding",
-            "type": "native_radio",
-            "label": "Cord Bleeding",
-            "openmrs_entity_id": "cord_bleeding",
-            "openmrs_entity": "concept",
-            "openmrs_entity_parent": "",
-            "options": [
-              {
-                "key": "yes",
-                "text": "Yes",
-                "openmrs_entity_id": "yes",
-                "openmrs_entity": "concept"
-              },
-              {
-                "key": "no",
-                "text": "No",
-                "openmrs_entity_id": "no",
-                "openmrs_entity": "concept"
-              }
-            ],
-            "v_required": {
-              "value": true,
-              "err": "Please answer this question"
-            },
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "prompt_for_cord_bleeding",
-            "type": "toaster_notes",
-            "text": "Manage according to National guideline",
-            "openmrs_entity_id": "",
-            "openmrs_entity": "",
-            "openmrs_entity_parent": "",
-            "toaster_type": "problem",
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "early_bf_1hr",
-            "type": "native_radio",
-            "label": "Breast Feeding",
-            "openmrs_entity_id": "early_bf_1hr",
-            "openmrs_entity": "concept",
-            "openmrs_entity_parent": "",
-            "options": [
-              {
-                "key": "yes",
-                "text": "Yes",
-                "openmrs_entity_id": "yes",
-                "openmrs_entity": "concept"
-              },
-              {
-                "key": "no",
-                "text": "No",
-                "openmrs_entity_id": "no",
-                "openmrs_entity": "concept"
-              }
-            ],
-            "v_required": {
-              "value": true,
-              "err": "Please answer this question"
-            },
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "reason_for_not_breast_feeding_within_one_hour",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "reason_for_not_breast_feeding_within_one_hour",
-            "type": "spinner",
-            "hint": "Reason why the child was not breast fed within one hour",
-            "values": [
-              "Mother Died",
-              "There was no milk flow",
-              "Replacement Feeding",
-              "Other (Specify)"
-            ],
-            "keys": [
-              "mother_died",
-              "no_milk_flow",
-              "replacement_feeding",
-              "other"
-            ],
-            "openmrs_choice_ids": {
-              "mother_died": "mother_died",
-              "no_milk_flow": "no_milk_flow",
-              "replacement_feeding": "replacement_feeding",
-              "Other": "other"
-            },
-            "v_required": {
-              "value": "true",
-              "err": "Please select a reason"
-            },
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "other_reason_for_not_breast_feeding_within_one_hour",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "other_reason_for_not_breast_feeding_within_one_hour",
-            "type": "edit_text",
-            "hint": "Specify other reasons for not breast feeding the child",
-            "edit_type": "name",
-            "v_required": {
-              "value": "true",
-              "err": "Please enter the reason"
-            },
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "eye_care",
-            "type": "native_radio",
-            "label": "Eye Care",
-            "openmrs_entity_id": "eye_care",
-            "openmrs_entity": "concept",
-            "openmrs_entity_parent": "",
-            "options": [
-              {
-                "key": "yes",
-                "text": "Yes",
-                "openmrs_entity_id": "yes",
-                "openmrs_entity": "concept"
-              },
-              {
-                "key": "no",
-                "text": "No",
-                "openmrs_entity_id": "no",
-                "openmrs_entity": "concept"
-              }
-            ],
-            "v_required": {
-              "value": true,
-              "err": "Please answer this question"
-            },
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "reason_for_not_giving_eye_care",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "reason_for_not_giving_eye_care",
-            "type": "spinner",
-            "hint": "Reason as to why eye care was not given",
-            "values": [
-              "Out of stock",
-              "Other (Specify)"
-            ],
-            "keys": [
-              "out_of_stock",
-              "other"
-            ],
-            "openmrs_choice_ids": {
-              "out_of_stock": "out_of_stock",
-              "other": "other"
-            },
-            "v_required": {
-              "value": "true",
-              "err": "Please select a reason"
-            },
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "other_reason_for_not_giving_eye_care",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "other_reason_for_not_giving_eye_care",
-            "type": "edit_text",
-            "hint": "Specify reason(s) for not giving eye care",
-            "v_required": {
-              "value": "true",
-              "err": "Please enter the reason"
-            },
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "risk_category",
-            "type": "native_radio",
-            "label": "HEI",
-            "openmrs_entity_id": "risk_category",
-            "openmrs_entity": "concept",
-            "openmrs_entity_parent": "",
-            "options": [
-              {
-                "key": "high",
-                "text": "High Risk",
-                "openmrs_entity_id": "high",
-                "openmrs_entity": "concept"
-              },
-              {
-                "key": "low",
-                "text": "Low Risk",
-                "openmrs_entity_id": "low",
-                "openmrs_entity": "concept"
-              }
-            ],
-            "v_required": {
-              "value": true,
-              "err": "Please answer this question"
-            },
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "prompt_for_high_risk",
-            "type": "toaster_notes",
-            "text": "Please provide AZT + 3TC and NVP Syrup",
-            "openmrs_entity_id": "",
-            "openmrs_entity": "",
-            "openmrs_entity_parent": "",
-            "toaster_type": "problem",
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "prompt_for_low_risk",
-            "type": "toaster_notes",
-            "text": "Manage according to National guideline",
-            "openmrs_entity_id": "",
-            "openmrs_entity": "",
-            "openmrs_entity_parent": "",
-            "toaster_type": "problem",
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-
-
-          {
-            "key": "provided_azt_nvp_syrup",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "provided_azt_nvp_syrup",
-            "type": "native_radio",
-            "label": "Has the infant been provided AZT + 3TC and NVP Syrup?",
-            "label_text_style": "normal",
-            "text_color": "#C0C0C0",
-            "options": [
-              {
-                "key": "yes",
-                "text": "Yes",
-                "value": false,
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "yes"
-              },
-              {
-                "key": "no",
-                "text": "No",
-                "value": false,
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "no"
-              }
-            ],
-            "v_required": {
-              "value": "true",
-              "err": "Please select an option"
-            },
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "provided_other_combinations",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "provided_other_combinations",
-            "type": "native_radio",
-            "label": "Has the infant been provided other combinations?",
-            "label_text_style": "normal",
-            "text_color": "#C0C0C0",
-            "options": [
-              {
-                "key": "yes",
-                "text": "Yes",
-                "value": false,
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "yes"
-              },
-              {
-                "key": "no",
-                "text": "No",
-                "value": false,
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "no"
-              }
-            ],
-            "v_required": {
-              "value": "true",
-              "err": "Please select an option"
-            },
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "specify_the_combinations",
-            "type": "edit_text",
-            "hint": "Please specify the combinations",
-            "openmrs_entity_id": "specify_the_combinations",
-            "openmrs_entity": "concept",
-            "openmrs_entity_parent": "",
-            "v_required": {
-              "value": true,
-              "err": "Please specify the combinations"
-            },
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "number_of_azt_nvp_days_dispensed",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "number_of_azt_nvp_days_dispensed",
-            "type": "edit_text",
-            "edit_type": "number",
-            "hint": "Number of days dispensed",
-            "v_required": {
-              "value": "true",
-              "err": "Please enter number of days dispensed"
-            },
-            "v_numeric_integer": {
-              "value": "true",
-              "err": "Please enter a valid number"
-            },
-            "v_min": {
-              "value": "0",
-              "err": "Number of dispensed days should be greater than 0"
-            },
-            "v_max": {
-              "value": "180",
-              "err": "Number of dispensed days should be less than or equal to 180"
-            },
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "reason_for_not_providing_other_combination",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "reason_for_not_providing_other_combination",
-            "type": "native_radio",
-            "label": "Please specify the reasons",
-            "label_text_style": "normal",
-            "text_color": "#C0C0C0",
-            "options": [
-              {
-                "key": "out_of_stock",
-                "text": "Out of stock",
-                "value": false,
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "out_of_stock"
-              },
-              {
-                "key": "medication_expired",
-                "text": "Medication expired",
-                "value": false,
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "medication_expired"
-              },
-              {
-                "key": "other",
-                "text": "Other (Specify)",
-                "value": false,
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "other"
-              }
-            ],
-            "v_required": {
-              "value": "true",
-              "err": "Please select an option"
-            },
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "other_reason_for_not_providing_other_combination",
-            "type": "edit_text",
-            "hint": "Please specify the other reason(s)",
-            "openmrs_entity_id": "other_reason_for_not_providing_other_combination",
-            "openmrs_entity": "concept",
-            "openmrs_entity_parent": "",
-            "v_required": {
-              "value": true,
-              "err": "Please specify the other reason(s)"
-            },
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "collect_dbs",
-            "type": "native_radio",
-            "label": "Collect DBS",
-            "openmrs_entity_id": "collect_dbs",
-            "openmrs_entity": "concept",
-            "openmrs_entity_parent": "",
-            "options": [
-              {
-                "key": "yes",
-                "text": "Yes",
-                "openmrs_entity_id": "yes",
-                "openmrs_entity": "concept"
-              },
-              {
-                "key": "no",
-                "text": "No (Specify reason)",
-                "openmrs_entity_id": "no",
-                "openmrs_entity": "concept"
-              }
-            ],
-            "v_required": {
-              "value": true,
-              "err": "Please answer this question"
-            },
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "reason_not_collecting_dbs",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "reason_not_collecting_dbs",
-            "type": "edit_text",
-            "hint": "Specify reason(s) for not collecting DBS",
-            "v_required": {
-              "value": "true",
-              "err": "Please enter the reason"
-            },
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "sample_id",
-            "type": "edit_text",
-            "hint": "DNA-PCR Sample ID",
-            "edit_type": "number",
-            "openmrs_entity_id": "sample_id",
-            "openmrs_entity": "concept",
-            "openmrs_entity_parent": "",
-            "v_required": {
-              "value": true,
-              "err": "Please enter the sample ID"
-            },
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "provided_nvp_syrup",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "provided_nvp_syrup",
-            "type": "native_radio",
-            "label": "Has the infant been provided NVP Syrup?",
-            "label_text_style": "normal",
-            "text_color": "#C0C0C0",
-            "options": [
-              {
-                "key": "yes",
-                "text": "Yes",
-                "value": false,
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "yes"
-              },
-              {
-                "key": "no",
-                "text": "No",
-                "value": false,
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "no"
-              }
-            ],
-            "v_required": {
-              "value": "true",
-              "err": "Please select an option"
-            },
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "number_of_nvp_days_dispensed",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "number_of_nvp_days_dispensed",
-            "type": "edit_text",
-            "edit_type": "number",
-            "hint": "Number of days dispensed",
-            "v_required": {
-              "value": "true",
-              "err": "Please enter number of days dispensed"
-            },
-            "v_numeric_integer": {
-              "value": "true",
-              "err": "Please enter a valid number"
-            },
-            "v_min": {
-              "value": "0",
-              "err": "Number of dispensed days should be greater than 0"
-            },
-            "v_max": {
-              "value": "180",
-              "err": "Number of dispensed days should be less than or equal to 180"
-            },
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "reason_for_not_providing_nvp_syrup",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "reason_for_not_providing_nvp_syrup",
-            "type": "native_radio",
-            "label": "Please specify the reasons",
-            "label_text_style": "normal",
-            "text_color": "#C0C0C0",
-            "options": [
-              {
-                "key": "out_of_stock",
-                "text": "Out of stock",
-                "value": false,
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "out_of_stock"
-              },
-              {
-                "key": "medication_expired",
-                "text": "Medication expired",
-                "value": false,
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "medication_expired"
-              },
-              {
-                "key": "home_delivery",
-                "text": "Home delivery",
-                "value": false,
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "home_delivery"
-              },
-              {
-                "key": "other",
-                "text": "Other (Specify)",
-                "value": false,
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "other"
-              }
-            ],
-            "v_required": {
-              "value": "true",
-              "err": "Please select an option"
-            },
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "other_reason_for_not_providing_nvp_syrup",
-            "type": "edit_text",
-            "hint": "Please specify the other reason(s)",
-            "openmrs_entity_id": "other_reason_for_not_providing_nvp_syrup",
-            "openmrs_entity": "concept",
-            "openmrs_entity_parent": "",
-            "v_required": {
-              "value": true,
-              "err": "Please specify the other reason(s)"
-            },
-            "relevance": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "type_of_hiv_test",
-            "type": "hidden",
-            "openmrs_entity_id": "type_of_hiv_test",
-            "openmrs_entity": "concept",
-            "openmrs_entity_parent": "",
-            "calculation": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "prophylaxis_arv_for_high_risk_given",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "prophylaxis_arv_for_high_risk_given",
-            "type": "hidden",
-            "calculation": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "prophylaxis_arv_for_high_and_low_risk_given",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "prophylaxis_arv_for_high_and_low_risk_given",
-            "type": "hidden",
-            "calculation": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "visit_number",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "visit_number",
-            "type": "hidden",
-            "calculation": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
-            }
-          },
-          {
-            "key": "followup_visit_date",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "followup_visit_date",
-            "type": "hidden",
-            "calculation": {
-              "rules-engine": {
-                "ex-rules": {
-                  "rules-dynamic": "labour_and_delivery_stage4_newborn_rules.yml"
-                }
-              }
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "delivery_date",
+        "type": "hidden"
+      },
+      {
+        "key": "newborn_status",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "newborn_status",
+        "label": "Status",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "alive",
+            "text": "Alive",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "alive"
+          },
+          {
+            "key": "still_birth",
+            "text": "Still birth",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "still_birth"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please select an option"
+        }
+      },
+      {
+        "key": "still_birth_choice",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "still_birth_choice",
+        "label": "Still Birth",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "fsb",
+            "text": "FSB",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "fsb"
+          },
+          {
+            "key": "msb",
+            "text": "MSB",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "msb"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please select an option"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
             }
           }
-        ]
+        }
+      },
+      {
+        "key": "sex",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "sex",
+        "type": "spinner",
+        "hint": "Sex",
+        "values": [
+          "Male",
+          "Female"
+        ],
+        "keys": [
+          "Male",
+          "Female"
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select the sex"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_apgar_at_1_minute",
+        "type": "toaster_notes",
+        "text": "APGAR (At 1-minute)",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "info",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "spacer1",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "spacer",
+        "spacer_height": "8dp",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "apgar_score_activity_label",
+        "type": "label",
+        "text": "Activity",
+        "label_info_title": "Activity",
+        "label_info_text": "0: Absent \n1: Arm/legs flexed \n2: Active",
+        "text_size": "7sp",
+        "text_color": "#000000",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "spacer2",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "spacer",
+        "spacer_height": "8dp",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "apgar_activity_score_at_1_minute",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "apgar_activity_score_at_1_minute",
+        "type": "numbers_selector",
+        "number_of_selectors": "3",
+        "start_number": "0",
+        "max_value": "2",
+        "text_size": "18px",
+        "text_color": "#000000",
+        "selected_text_color": "#ffffff",
+        "v_required": {
+          "value": true,
+          "err": "Please enter the agpar activity score"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "spacer3",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "spacer",
+        "spacer_height": "8dp",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "apgar_pulse_score_label",
+        "type": "label",
+        "text": "Pulse",
+        "label_info_title": "Pulse",
+        "label_info_text": "0: Absent \n1: <100  \n2: > 100",
+        "text_size": "7sp",
+        "text_color": "#000000",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "spacer4",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "spacer",
+        "spacer_height": "8dp",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "apgar_pulse_score_at_1_minute",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "apgar_pulse_score_at_1_minute",
+        "type": "numbers_selector",
+        "number_of_selectors": "3",
+        "start_number": "0",
+        "max_value": "2",
+        "text_size": "18px",
+        "text_color": "#000000",
+        "selected_text_color": "#ffffff",
+        "v_required": {
+          "value": true,
+          "err": "Please enter the agpar pulse score"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "spacer5",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "spacer",
+        "spacer_height": "8dp",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "apgar_grimace_on_stimulation_score_label",
+        "type": "label",
+        "text": "Grimace of stimulation",
+        "label_info_title": "Grimace of stimulation",
+        "label_info_text": "0: No response \n1: Grimaces \n2: Sneezes coughs/pulls away",
+        "text_size": "7sp",
+        "text_color": "#000000",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "spacer6",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "spacer",
+        "spacer_height": "8dp",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "apgar_grimace_on_stimulation_score_at_1_minute",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "apgar_grimace_on_stimulation_score_at_1_minute",
+        "type": "numbers_selector",
+        "number_of_selectors": "3",
+        "start_number": "0",
+        "max_value": "2",
+        "text_size": "18px",
+        "text_color": "#000000",
+        "selected_text_color": "#ffffff",
+        "v_required": {
+          "value": true,
+          "err": "Please enter the agpar grimace on stimulation score"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "spacer7",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "spacer",
+        "spacer_height": "8dp",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "apgar_appearance_score_label",
+        "type": "label",
+        "text": "Appearance",
+        "text_size": "7sp",
+        "text_color": "#000000",
+        "label_info_title": "Appearance",
+        "label_info_text": "0: Blue/Pale all over \n1: Blue/Pale extremities \n2: Normal all over",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "spacer8",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "spacer",
+        "spacer_height": "8dp",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "apgar_appearance_score_at_1_minute",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "apgar_appearance_score_at_1_minute",
+        "type": "numbers_selector",
+        "number_of_selectors": "3",
+        "start_number": "0",
+        "max_value": "2",
+        "text_size": "18px",
+        "text_color": "#000000",
+        "selected_text_color": "#ffffff",
+        "v_required": {
+          "value": true,
+          "err": "Please enter the agpar appearance score"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "spacer9",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "spacer",
+        "spacer_height": "8dp",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "apgar_respiration_score_label",
+        "type": "label",
+        "text": "Respiration",
+        "label_info_title": "Breath",
+        "label_info_text": "0: Absent \n1: Weak/Slow irregular breathing \n2: Good cry / RR40",
+        "text_size": "7sp",
+        "text_color": "#000000",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "spacer10",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "spacer",
+        "spacer_height": "8dp",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "apgar_respiration_score_at_1_minute",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "apgar_respiration_score_at_1_minute",
+        "type": "numbers_selector",
+        "number_of_selectors": "3",
+        "start_number": "0",
+        "max_value": "2",
+        "text_size": "18px",
+        "text_color": "#000000",
+        "selected_text_color": "#ffffff",
+        "v_required": {
+          "value": true,
+          "err": "Please enter the agpar respiration score"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "apgar_score_at_1_minute",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "openmrs_entity_parent": "",
+        "read_only": true,
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "spacer11",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "spacer",
+        "spacer_height": "15dp",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_normal_apgar_score_at_1_minute",
+        "type": "toaster_notes",
+        "text": "APGAR score at 1 min, Normal: {apgar_score}",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "positive",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        },
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_abnormal_apgar_score_at_1_minute",
+        "type": "toaster_notes",
+        "text": "APGAR score at 1 min, Abnormal: {apgar_score}. \nGo to emergency",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        },
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_apgar_at_5_minute",
+        "type": "toaster_notes",
+        "text": "APGAR (At 5-minutes)",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "info",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "spacer12",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "spacer",
+        "spacer_height": "8dp",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "apgar_score_activity_label_at_5_mins",
+        "type": "label",
+        "text": "Activity",
+        "label_info_title": "Activity",
+        "label_info_text": "0: Absent \n1: Arm/legs flexed \n2: Active",
+        "text_size": "7sp",
+        "text_color": "#000000",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "spacer13",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "spacer",
+        "spacer_height": "8dp",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "apgar_activity_score_at_5_minutes",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "apgar_activity_score_at_5_minutes",
+        "type": "numbers_selector",
+        "number_of_selectors": "3",
+        "start_number": "0",
+        "max_value": "2",
+        "text_size": "18px",
+        "text_color": "#000000",
+        "selected_text_color": "#ffffff",
+        "v_required": {
+          "value": true,
+          "err": "Please enter the agpar activity score"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "spacer14",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "spacer",
+        "spacer_height": "8dp",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "apgar_pulse_score_label_at_5_mins",
+        "type": "label",
+        "text": "Heart",
+        "label_info_title": "Pulse",
+        "label_info_text": "0: Absent \n1: <100  \n2: > 100",
+        "text_size": "7sp",
+        "text_color": "#000000",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "spacer15",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "spacer",
+        "spacer_height": "8dp",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "apgar_pulse_score_at_5_minutes",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "apgar_pulse_score_at_5_minutes",
+        "type": "numbers_selector",
+        "number_of_selectors": "3",
+        "start_number": "0",
+        "max_value": "2",
+        "text_size": "18px",
+        "text_color": "#000000",
+        "selected_text_color": "#ffffff",
+        "v_required": {
+          "value": true,
+          "err": "Please enter the agpar pulse score"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "spacer16",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "spacer",
+        "spacer_height": "8dp",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "apgar_grimace_on_stimulation_score_label_at_5_mins",
+        "type": "label",
+        "text": "Grimace of stimulation",
+        "label_info_title": "Grimace of stimulation",
+        "label_info_text": "0: No response \n1: Grimaces \n2: Sneezes coughs/pulls away",
+        "text_size": "7sp",
+        "text_color": "#000000",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "spacer17",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "spacer",
+        "spacer_height": "8dp",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "apgar_grimace_on_stimulation_score_at_5_minutes",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "apgar_grimace_on_stimulation_score_at_5_minutes",
+        "type": "numbers_selector",
+        "number_of_selectors": "3",
+        "start_number": "0",
+        "max_value": "2",
+        "text_size": "18px",
+        "text_color": "#000000",
+        "selected_text_color": "#ffffff",
+        "v_required": {
+          "value": true,
+          "err": "Please enter the agpar grimace on stimulation score"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "spacer18",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "spacer",
+        "spacer_height": "8dp",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "apgar_appearance_score_label_at_5_mins",
+        "type": "label",
+        "text": "Appearance",
+        "text_size": "7sp",
+        "text_color": "#000000",
+        "label_info_title": "Appearance",
+        "label_info_text": "0: Blue/Pale all over \n1: Blue/Pale extremities \n2: Normal all over",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "spacer19",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "spacer",
+        "spacer_height": "8dp",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "apgar_appearance_score_at_5_minutes",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "apgar_appearance_score_at_5_minutes",
+        "type": "numbers_selector",
+        "number_of_selectors": "3",
+        "start_number": "0",
+        "max_value": "2",
+        "text_size": "18px",
+        "text_color": "#000000",
+        "selected_text_color": "#ffffff",
+        "v_required": {
+          "value": true,
+          "err": "Please enter the agpar appearance score"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "spacer20",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "spacer",
+        "spacer_height": "8dp",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "apgar_respiration_score_label_at_5_mins",
+        "type": "label",
+        "text": "Respiration",
+        "label_info_title": "Breath",
+        "label_info_text": "0: Absent \n1: Weak/Slow irregular breathing \n2: Good cry / RR40",
+        "text_size": "7sp",
+        "text_color": "#000000",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "spacer21",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "spacer",
+        "spacer_height": "8dp",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "apgar_respiration_score_at_5_minutes",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "apgar_respiration_score_at_5_minutes",
+        "type": "numbers_selector",
+        "number_of_selectors": "3",
+        "start_number": "0",
+        "max_value": "2",
+        "text_size": "18px",
+        "text_color": "#000000",
+        "selected_text_color": "#ffffff",
+        "v_required": {
+          "value": true,
+          "err": "Please enter the agpar respiration score"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "apgar_score_at_5_minutes",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "spacer22",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "spacer",
+        "spacer_height": "15dp",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_normal_apgar_score_at_5_minutes",
+        "type": "toaster_notes",
+        "text": "APGAR score at 5 mins, Normal: {apgar_score}",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "positive",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        },
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_abnormal_apgar_score_at_5_minutes",
+        "type": "toaster_notes",
+        "text": "APGAR score at 5 mins, Abnormal: {apgar_score}. \nGo to emergency",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        },
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "resuscitation",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "resuscitation",
+        "label": "Resuscitation",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "no_resuscitation",
+            "text": "No Resuscitation",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no_resuscitation"
+          },
+          {
+            "key": "suction_only",
+            "text": "Suction Only",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "suction_only"
+          },
+          {
+            "key": "suction_and_bag_mask",
+            "text": "Suction and Bag Mask",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "suction_and_bag_mask"
+          },
+          {
+            "key": "stimulation",
+            "text": "Stimulation",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "stimulation"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please select an option"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "temperature",
+        "type": "edit_text",
+        "hint": "Temperature (C)",
+        "openmrs_entity_id": "temperature",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the temperature"
+        },
+        "v_min": {
+          "value": "10",
+          "err": "Temperature must be equal or greater than 10"
+        },
+        "v_max": {
+          "value": "50",
+          "err": "Temperature must be equal or less than 50"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter the temperature"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "weight",
+        "type": "edit_text",
+        "hint": "Weight (KG)",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "weight",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the weight"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "The weight must be equal or greater than 0 (KG)"
+        },
+        "v_max": {
+          "value": "7",
+          "err": "The weight must be equal or less than 7 (KG)"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter the weight"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_underweight",
+        "type": "toaster_notes",
+        "text": "Manage according to National guideline",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "heart_rate",
+        "type": "edit_text",
+        "hint": "Heart Rate (bpm)",
+        "openmrs_entity_id": "heart_rate",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the heart rate"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "The heart rate must be equal or greater than 0 (bpm)"
+        },
+        "v_max": {
+          "value": "200",
+          "err": "The heart rate must be equal or less than 200 (bpm)"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "keep_warm",
+        "type": "native_radio",
+        "label": "Keep Warm (skin to skin)",
+        "openmrs_entity_id": "keep_warm",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_id": "yes",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_id": "no",
+            "openmrs_entity": "concept"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please answer this question"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "breathing_rate",
+        "type": "edit_text",
+        "hint": "Breathing Rate (bpm)",
+        "openmrs_entity_id": "breathing_rate",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the breathing rate"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "The breathing rate must be equal or greater than 0 (bpm)"
+        },
+        "v_max": {
+          "value": "100",
+          "err": "The breathing rate must be equal or less than 100 (bpm)"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "cord_bleeding",
+        "type": "native_radio",
+        "label": "Cord Bleeding",
+        "openmrs_entity_id": "cord_bleeding",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_id": "yes",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_id": "no",
+            "openmrs_entity": "concept"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please answer this question"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_cord_bleeding",
+        "type": "toaster_notes",
+        "text": "Manage according to National guideline",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "early_bf_1hr",
+        "type": "native_radio",
+        "label": "Breast Feeding",
+        "openmrs_entity_id": "early_bf_1hr",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_id": "yes",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_id": "no",
+            "openmrs_entity": "concept"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please answer this question"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "reason_for_not_breast_feeding_within_one_hour",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_breast_feeding_within_one_hour",
+        "type": "spinner",
+        "hint": "Reason why the child was not breast fed within one hour",
+        "values": [
+          "Mother Died",
+          "There was no milk flow",
+          "Replacement Feeding",
+          "Other (Specify)"
+        ],
+        "keys": [
+          "mother_died",
+          "no_milk_flow",
+          "replacement_feeding",
+          "other"
+        ],
+        "openmrs_choice_ids": {
+          "mother_died": "mother_died",
+          "no_milk_flow": "no_milk_flow",
+          "replacement_feeding": "replacement_feeding",
+          "Other": "other"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select a reason"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "other_reason_for_not_breast_feeding_within_one_hour",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reason_for_not_breast_feeding_within_one_hour",
+        "type": "edit_text",
+        "hint": "Specify other reasons for not breast feeding the child",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the reason"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "eye_care",
+        "type": "native_radio",
+        "label": "Eye Care",
+        "openmrs_entity_id": "eye_care",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_id": "yes",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_id": "no",
+            "openmrs_entity": "concept"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please answer this question"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "reason_for_not_giving_eye_care",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_giving_eye_care",
+        "type": "spinner",
+        "hint": "Reason as to why eye care was not given",
+        "values": [
+          "Out of stock",
+          "Other (Specify)"
+        ],
+        "keys": [
+          "out_of_stock",
+          "other"
+        ],
+        "openmrs_choice_ids": {
+          "out_of_stock": "out_of_stock",
+          "other": "other"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select a reason"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "other_reason_for_not_giving_eye_care",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reason_for_not_giving_eye_care",
+        "type": "edit_text",
+        "hint": "Specify reason(s) for not giving eye care",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the reason"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "risk_category",
+        "type": "native_radio",
+        "label": "HEI",
+        "openmrs_entity_id": "risk_category",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "high",
+            "text": "High Risk",
+            "openmrs_entity_id": "high",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "low",
+            "text": "Low Risk",
+            "openmrs_entity_id": "low",
+            "openmrs_entity": "concept"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please answer this question"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_high_risk",
+        "type": "toaster_notes",
+        "text": "Please provide AZT + 3TC and NVP Syrup",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_low_risk",
+        "type": "toaster_notes",
+        "text": "Manage according to National guideline",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "provided_azt_nvp_syrup",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "provided_azt_nvp_syrup",
+        "type": "native_radio",
+        "label": "Has the infant been provided AZT + 3TC and NVP Syrup?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an option"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "provided_other_combinations",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "provided_other_combinations",
+        "type": "native_radio",
+        "label": "Has the infant been provided other combinations?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an option"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "specify_the_combinations",
+        "type": "edit_text",
+        "hint": "Please specify the combinations",
+        "openmrs_entity_id": "specify_the_combinations",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": true,
+          "err": "Please specify the combinations"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "number_of_azt_nvp_days_dispensed",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "number_of_azt_nvp_days_dispensed",
+        "type": "edit_text",
+        "edit_type": "number",
+        "hint": "Number of days dispensed",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter number of days dispensed"
+        },
+        "v_numeric_integer": {
+          "value": "true",
+          "err": "Please enter a valid number"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Number of dispensed days should be greater than 0"
+        },
+        "v_max": {
+          "value": "180",
+          "err": "Number of dispensed days should be less than or equal to 180"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "reason_for_not_providing_other_combination",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_providing_other_combination",
+        "type": "native_radio",
+        "label": "Please specify the reasons",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "out_of_stock",
+            "text": "Out of stock",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "out_of_stock"
+          },
+          {
+            "key": "medication_expired",
+            "text": "Medication expired",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "medication_expired"
+          },
+          {
+            "key": "other",
+            "text": "Other (Specify)",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an option"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "other_reason_for_not_providing_other_combination",
+        "type": "edit_text",
+        "hint": "Please specify the other reason(s)",
+        "openmrs_entity_id": "other_reason_for_not_providing_other_combination",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": true,
+          "err": "Please specify the other reason(s)"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "collect_dbs",
+        "type": "native_radio",
+        "label": "Collect DBS",
+        "openmrs_entity_id": "collect_dbs",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_id": "yes",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "no",
+            "text": "No (Specify reason)",
+            "openmrs_entity_id": "no",
+            "openmrs_entity": "concept"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please answer this question"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "reason_not_collecting_dbs",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_not_collecting_dbs",
+        "type": "edit_text",
+        "hint": "Specify reason(s) for not collecting DBS",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the reason"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "sample_collection_date",
+        "type": "date_picker",
+        "hint": "DNA-PCR Sample Collection Date",
+        "openmrs_entity_id": "sample_collection_date",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "max_date": "today",
+        "v_required": {
+          "value": true,
+          "err": "Please enter the collection date"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "dna_pcr_collection_time",
+        "type": "time_picker",
+        "hint": "DNA-PCR Sample Collection Time",
+        "openmrs_entity_id": "dna_pcr_collection_time",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": true,
+          "err": "Please enter the collection time"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "sample_id",
+        "type": "edit_text",
+        "hint": "DNA-PCR Sample ID",
+        "edit_type": "number",
+        "openmrs_entity_id": "sample_id",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": true,
+          "err": "Please enter the sample ID"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "provided_nvp_syrup",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "provided_nvp_syrup",
+        "type": "native_radio",
+        "label": "Has the infant been provided NVP Syrup?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an option"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "number_of_nvp_days_dispensed",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "number_of_nvp_days_dispensed",
+        "type": "edit_text",
+        "edit_type": "number",
+        "hint": "Number of days dispensed",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter number of days dispensed"
+        },
+        "v_numeric_integer": {
+          "value": "true",
+          "err": "Please enter a valid number"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Number of dispensed days should be greater than 0"
+        },
+        "v_max": {
+          "value": "180",
+          "err": "Number of dispensed days should be less than or equal to 180"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "reason_for_not_providing_nvp_syrup",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_providing_nvp_syrup",
+        "type": "native_radio",
+        "label": "Please specify the reasons",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "out_of_stock",
+            "text": "Out of stock",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "out_of_stock"
+          },
+          {
+            "key": "medication_expired",
+            "text": "Medication expired",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "medication_expired"
+          },
+          {
+            "key": "home_delivery",
+            "text": "Home delivery",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "home_delivery"
+          },
+          {
+            "key": "other",
+            "text": "Other (Specify)",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an option"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "other_reason_for_not_providing_nvp_syrup",
+        "type": "edit_text",
+        "hint": "Please specify the other reason(s)",
+        "openmrs_entity_id": "other_reason_for_not_providing_nvp_syrup",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": true,
+          "err": "Please specify the other reason(s)"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "type_of_hiv_test",
+        "type": "hidden",
+        "openmrs_entity_id": "type_of_hiv_test",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prophylaxis_arv_for_high_risk_given",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "prophylaxis_arv_for_high_risk_given",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prophylaxis_arv_for_high_and_low_risk_given",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "prophylaxis_arv_for_high_and_low_risk_given",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "visit_number",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "visit_number",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "followup_visit_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "followup_visit_date",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_calculation.yml"
+            }
+          }
+        }
       }
     ]
   }

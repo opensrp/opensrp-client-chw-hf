@@ -135,6 +135,8 @@ public class Constants extends CoreConstants {
         private static final String PMTCT_FOLLOWUP_STATUS = "pmtct_followup_status";
         private static final String ANC_TRANSFER_IN_REGISTRATION = "anc_member_transfer_in_registration";
         private static final String LD_REGISTRATION = "labour_and_delivery_registration";
+        private static final String LD_CHILD_REGISTRATION = "ld_child_registration";
+        private static final String LD_HEI_FIRST_VISIT = "ld_hei_first_visit";
         private static final String LTFU_REFERRAL_FORM = "referrals/ltfu_referral_form";
 
         public static String getNextFacilityVisitForm() {
@@ -317,6 +319,14 @@ public class Constants extends CoreConstants {
             return LD_REGISTRATION;
         }
 
+        public static String getLdChildRegistration() {
+            return LD_CHILD_REGISTRATION;
+        }
+
+        public static String getLdHeiFirstVisit() {
+            return LD_HEI_FIRST_VISIT;
+        }
+
         public static class EacVisits {
             public static final String PMTCT_EAC_VISIT = "pmtct_eac_visits";
 
@@ -464,23 +474,23 @@ public class Constants extends CoreConstants {
             public static final String PARTOGRAPH_TREATMENT_DURING_LABOUR = "labour_and_delivery_treatment_during_labour";
             public static final String PARTOGRAPH_TIME = "labour_and_delivery_partograph_time";
 
-            public static String getFetalWellBingForm(){
+            public static String getFetalWellBingForm() {
                 return PARTOGRAPH_FETAL_WELLBEING;
             }
 
-            public static String getMotherWellBeingForm(){
+            public static String getMotherWellBeingForm() {
                 return PARTOGRAPH_MOTHER_WELLBEING;
             }
 
-            public static String getProgressOfLabourForm(){
+            public static String getProgressOfLabourForm() {
                 return PARTOGRAPH_PROGRESS_OF_LABOUR;
             }
 
-            public static String getTreatmentDuringLabourForm(){
+            public static String getTreatmentDuringLabourForm() {
                 return PARTOGRAPH_TREATMENT_DURING_LABOUR;
             }
 
-            public static String getPartographTimeForm(){
+            public static String getPartographTimeForm() {
                 return PARTOGRAPH_TIME;
             }
 
@@ -488,7 +498,7 @@ public class Constants extends CoreConstants {
 
         public static class LDVisit {
 
-            public static final String  LD_GENERAL_EXAMINATION = "labour_and_delivery_general_examination";
+            public static final String LD_GENERAL_EXAMINATION = "labour_and_delivery_general_examination";
             public static final String LD_VAGINAL_EXAMINATION = "labour_and_delivery_vaginal_examination";
             public static final String LD_HIV_TEST = "labour_and_delivery_hiv_test";
 

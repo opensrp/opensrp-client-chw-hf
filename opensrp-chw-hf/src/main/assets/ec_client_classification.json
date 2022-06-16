@@ -690,6 +690,14 @@
             "creates_case": [
               "ec_ltfu_feedback"
             ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "LD Child Registration",
+            "creates_case": [
+              "ec_child",
+              "ec_family_member"
+            ]
           }
         ]
       }

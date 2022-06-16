@@ -1,12 +1,17 @@
 package org.smartregister.chw.hf.interactor;
 
 import static org.smartregister.chw.anc.util.Constants.TABLES.EC_CHILD;
+import static org.smartregister.chw.anc.util.DBConstants.KEY.RELATIONAL_ID;
+import static org.smartregister.chw.anc.util.JsonFormUtils.updateFormField;
 import static org.smartregister.chw.hf.interactor.AncRegisterInteractor.populatePNCForm;
 import static org.smartregister.chw.hf.utils.Constants.Events.HEI_REGISTRATION;
 import static org.smartregister.chw.hf.utils.Constants.HIV_STATUS.POSITIVE;
+import static org.smartregister.chw.hf.utils.Constants.HeiHIVTestAtAge.AT_BIRTH;
 import static org.smartregister.chw.hf.utils.Constants.TableName.HEI;
+import static org.smartregister.chw.hf.utils.Constants.TableName.HEI_FOLLOWUP;
 import static org.smartregister.chw.hf.utils.JsonFormUtils.ENCOUNTER_TYPE;
 import static org.smartregister.util.JsonFormUtils.KEY;
+import static org.smartregister.util.JsonFormUtils.VALUE;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -22,6 +27,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.AllConstants;
 import org.smartregister.chw.anc.AncLibrary;
+import org.smartregister.chw.anc.util.AppExecutors;
 import org.smartregister.chw.anc.util.NCUtils;
 import org.smartregister.chw.anc.util.VisitUtils;
 import org.smartregister.chw.core.utils.CoreConstants;
@@ -53,6 +59,7 @@ import org.smartregister.sync.helper.ECSyncHelper;
 import org.smartregister.util.FormUtils;
 import org.smartregister.util.JsonFormUtils;
 
+import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -94,10 +101,9 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
             try {
 
-                evaluateMotherStatus();
+                evaluateMotherStatus(callBack);
                 evaluatePostDeliveryObservation();
                 evaluateMaternalComplicationLabour();
-                evaluateNewBornStatus();
 
             } catch (BaseLDVisitAction.ValidationException e) {
                 Timber.e(e);
@@ -109,10 +115,10 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         appExecutors.diskIO().execute(runnable);
     }
 
-    private void evaluateMotherStatus() throws BaseLDVisitAction.ValidationException {
+    private void evaluateMotherStatus(BaseLDVisitContract.InteractorCallBack callBack) throws BaseLDVisitAction.ValidationException {
 
         String title = context.getString(R.string.ld_mother_status_action_title);
-        MotherStatusActionHelper actionHelper = new MotherStatusActionHelper();
+        MotherStatusActionHelper actionHelper = new MotherStatusActionHelper(context, memberObject.getBaseEntityId(), actionList, callBack);
         BaseLDVisitAction action = getBuilder(title)
                 .withOptional(false)
                 .withHelper(actionHelper)
@@ -150,26 +156,25 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         actionList.put(title, action);
     }
 
-    private void evaluateNewBornStatus() throws BaseLDVisitAction.ValidationException {
-        String title = context.getString(R.string.ld_new_born_status_action_title);
-        NewBornActionHelper actionHelper = new NewBornActionHelper(memberObject.getBaseEntityId());
-        BaseLDVisitAction action = getBuilder(title)
-                .withOptional(false)
-                .withHelper(actionHelper)
-                .withBaseEntityID(memberObject.getBaseEntityId())
-                .withFormName(Constants.JsonForm.LDPostDeliveryMotherManagement.getLdNewBornStatus())
-                .build();
-
-        actionList.put(title, action);
-    }
 
     private static class MotherStatusActionHelper implements BaseLDVisitAction.LDVisitActionHelper {
 
         private String status;
+        private int numberOfChildrenBorn = 0;
         private String delivery_place;
         String delivery_date;
         String labour_information;
         private Context context;
+        private String baseEntityId;
+        private LinkedHashMap<String, BaseLDVisitAction> actionList;
+        private final BaseLDVisitContract.InteractorCallBack callBack;
+
+        public MotherStatusActionHelper(Context context, String baseEntityId, LinkedHashMap<String, BaseLDVisitAction> actionList, BaseLDVisitContract.InteractorCallBack callBack) {
+            this.context = context;
+            this.baseEntityId = baseEntityId;
+            this.actionList = actionList;
+            this.callBack = callBack;
+        }
 
         @Override
         public void onJsonFormLoaded(String jsonString, Context context, Map<String, List<VisitDetail>> details) {
@@ -187,6 +192,11 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
             delivery_place = JsonFormUtils.getFieldValue(jsonPayload, "delivery_place");
             delivery_date = JsonFormUtils.getFieldValue(jsonPayload, "delivery_date");
             labour_information = JsonFormUtils.getFieldValue(jsonPayload, "labour_information");
+            try {
+                numberOfChildrenBorn = Integer.parseInt(JsonFormUtils.getFieldValue(jsonPayload, "number_of_children_born"));
+            } catch (Exception e) {
+                Timber.e(e);
+            }
         }
 
         @Override
@@ -201,6 +211,39 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
         @Override
         public String postProcess(String jsonPayload) {
+            for (Map.Entry<String, BaseLDVisitAction> entry : actionList.entrySet()) {
+                if (entry.getKey().contains(MessageFormat.format(context.getString(R.string.ld_new_born_status_action_title), "")))
+                    actionList.remove(entry.getKey());
+            }
+
+            if (numberOfChildrenBorn > 0) {
+                for (int i = 0; i < numberOfChildrenBorn; i++) {
+                    String title;
+                    if (numberOfChildrenBorn == 1) {
+                        title = MessageFormat.format(context.getString(R.string.ld_new_born_status_action_title), "");
+                    } else {
+                        title = MessageFormat.format(context.getString(R.string.ld_new_born_status_action_title), "of " + ordinal(i + 1) + " baby");
+                    }
+                    NewBornActionHelper actionHelper = new NewBornActionHelper(baseEntityId, delivery_date);
+                    BaseLDVisitAction action = null;
+                    try {
+                        action = new BaseLDVisitAction.Builder(context, title)
+                                .withOptional(false)
+                                .withHelper(actionHelper)
+                                .withBaseEntityID(baseEntityId)
+                                .withProcessingMode(BaseLDVisitAction.ProcessingMode.SEPARATE)
+                                .withFormName(Constants.JsonForm.LDPostDeliveryMotherManagement.getLdNewBornStatus())
+                                .build();
+
+                        actionList.put(title, action);
+                    } catch (BaseLDVisitAction.ValidationException e) {
+                        Timber.e(e);
+                    }
+                }
+
+                //Calling the callback method to preload the actions in the actionns list.
+                new AppExecutors().mainThread().execute(() -> callBack.preloadActions(actionList));
+            }
             return null;
         }
 
@@ -355,9 +398,11 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         private String newbornStatus;
         private String baseEntityId;
         private Context context;
+        private String deliveryDate;
 
-        public NewBornActionHelper(String baseEntityId) {
+        public NewBornActionHelper(String baseEntityId, String deliveryDate) {
             this.baseEntityId = baseEntityId;
+            this.deliveryDate = deliveryDate;
         }
 
         @Override
@@ -370,54 +415,71 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         public String getPreProcessed() {
             JSONObject newBornForm = org.smartregister.chw.core.utils.FormUtils.getFormUtils().getFormJson(Constants.JsonForm.LDPostDeliveryMotherManagement.getLdNewBornStatus());
             String hivStatus = LDDao.getHivStatus(baseEntityId);
-            if (newBornForm != null && hivStatus != null && !hivStatus.equalsIgnoreCase(POSITIVE)) {
+            JSONArray fields = null;
+            try {
+                fields = newBornForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+                fields.getJSONObject(0).put(VALUE, deliveryDate);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            if (fields != null && hivStatus != null && !hivStatus.equalsIgnoreCase(POSITIVE)) {
                 try {
-                    JSONArray fields = newBornForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+                    for (int x = 0; x < fields.length(); x++) {
+                        if (fields.getJSONObject(x).getString(KEY).equalsIgnoreCase("risk_category"))
+                            fields.remove(x);
+                        if (fields.getJSONObject(x).getString(KEY).equalsIgnoreCase("prompt_for_high_risk"))
+                            fields.remove(x);
+                        if (fields.getJSONObject(x).getString(KEY).equalsIgnoreCase("prompt_for_low_risk"))
+                            fields.remove(x);
+                        if (fields.getJSONObject(x).getString(KEY).equalsIgnoreCase("provided_azt_nvp_syrup"))
+                            fields.remove(x);
+                        if (fields.getJSONObject(x).getString(KEY).equalsIgnoreCase("provided_other_combinations"))
+                            fields.remove(x);
+                        if (fields.getJSONObject(x).getString(KEY).equalsIgnoreCase("specify_the_combinations"))
+                            fields.remove(x);
+                        if (fields.getJSONObject(x).getString(KEY).equalsIgnoreCase("number_of_azt_nvp_days_dispensed"))
+                            fields.remove(x);
+                        if (fields.getJSONObject(x).getString(KEY).equalsIgnoreCase("reason_for_not_providing_other_combination"))
+                            fields.remove(x);
+                        if (fields.getJSONObject(x).getString(KEY).equalsIgnoreCase("other_reason_for_not_providing_other_combination"))
+                            fields.remove(x);
+                        if (fields.getJSONObject(x).getString(KEY).equalsIgnoreCase("collect_dbs"))
+                            fields.remove(x);
+                        if (fields.getJSONObject(x).getString(KEY).equalsIgnoreCase("reason_not_collecting_dbs"))
+                            fields.remove(x);
+                        if (fields.getJSONObject(x).getString(KEY).equalsIgnoreCase("sample_id"))
+                            fields.remove(x);
+                        if (fields.getJSONObject(x).getString(KEY).equalsIgnoreCase("sample_collection_date"))
+                            fields.remove(x);
+                        if (fields.getJSONObject(x).getString(KEY).equalsIgnoreCase("dna_pcr_collection_time"))
+                            fields.remove(x);
+                        if (fields.getJSONObject(x).getString(KEY).equalsIgnoreCase("provided_nvp_syrup"))
+                            fields.remove(x);
+                        if (fields.getJSONObject(x).getString(KEY).equalsIgnoreCase("number_of_nvp_days_dispensed"))
+                            fields.remove(x);
+                        if (fields.getJSONObject(x).getString(KEY).equalsIgnoreCase("reason_for_not_providing_nvp_syrup"))
+                            fields.remove(x);
+                        if (fields.getJSONObject(x).getString(KEY).equalsIgnoreCase("other_reason_for_not_providing_nvp_syrup"))
+                            fields.remove(x);
+                        if (fields.getJSONObject(x).getString(KEY).equalsIgnoreCase("prophylaxis_arv_for_high_risk_given"))
+                            fields.remove(x);
+                        if (fields.getJSONObject(x).getString(KEY).equalsIgnoreCase("prophylaxis_arv_for_high_and_low_risk_given"))
+                            fields.remove(x);
+                        if (fields.getJSONObject(x).getString(KEY).equalsIgnoreCase("visit_number"))
+                            fields.remove(x);
+                        if (fields.getJSONObject(x).getString(KEY).equalsIgnoreCase("followup_visit_date"))
+                            fields.remove(x);
+                    }
 
-                    JSONObject noImmediateNewBorn = JsonFormUtils.getFieldJSONObject(fields, "no_immediate_new_born");
-
-                    JSONArray values = noImmediateNewBorn.getJSONArray("value");
-                    for (int x = 0; x < values.length(); x++) {
-                        if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("risk_category"))
-                            values.remove(x);
-                        if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("prompt_for_high_risk"))
-                            values.remove(x);
-                        if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("prompt_for_low_risk"))
-                            values.remove(x);
-                        if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("provided_azt_nvp_syrup"))
-                            values.remove(x);
-                        if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("provided_other_combinations"))
-                            values.remove(x);
-                        if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("specify_the_combinations"))
-                            values.remove(x);
-                        if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("number_of_azt_nvp_days_dispensed"))
-                            values.remove(x);
-                        if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("reason_for_not_providing_other_combination"))
-                            values.remove(x);
-                        if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("other_reason_for_not_providing_other_combination"))
-                            values.remove(x);
-                        if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("collect_dbs"))
-                            values.remove(x);
-                        if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("reason_not_collecting_dbs"))
-                            values.remove(x);
-                        if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("sample_id"))
-                            values.remove(x);
-                        if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("provided_nvp_syrup"))
-                            values.remove(x);
-                        if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("number_of_nvp_days_dispensed"))
-                            values.remove(x);
-                        if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("reason_for_not_providing_nvp_syrup"))
-                            values.remove(x);
-                        if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("other_reason_for_not_providing_nvp_syrup"))
-                            values.remove(x);
-                        if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("prophylaxis_arv_for_high_risk_given"))
-                            values.remove(x);
-                        if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("prophylaxis_arv_for_high_and_low_risk_given"))
-                            values.remove(x);
-                        if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("visit_number"))
-                            values.remove(x);
-                        if (values.getJSONObject(x).getString(KEY).equalsIgnoreCase("followup_visit_date"))
-                            values.remove(x);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            } else if (fields != null && hivStatus != null && hivStatus.equalsIgnoreCase(POSITIVE)) {
+                try {
+                    for (int x = 0; x < fields.length(); x++) {
+                        if (fields.getJSONObject(x).getString(KEY).equalsIgnoreCase("sample_collection_date"))
+                            fields.getJSONObject(x).put("min_date", deliveryDate);
                     }
 
                 } catch (JSONException e) {
@@ -503,15 +565,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                 }
             }
             if (isChildAlive(obs)) {
-
-                Map<String, List<JSONObject>> jsonObjectMap = getChildFieldMaps(obs);
-
-                generateAndSaveFormsForEachChild(
-                        jsonObjectMap,
-                        memberID,
-                        LDDao.getHivStatus(memberID),
-                        getRiskStatus(obs), memberObject.getFamilyBaseEntityId(),
-                        getDeliveryDateString(obs), obs);
+                saveChild(memberID, LDDao.getHivStatus(memberID), getRiskStatus(obs), allSharedPreferences, memberObject.getFamilyBaseEntityId(), getDeliveryDateString(obs), obs);
             }
 
             LDVisitUtils.processVisits(memberID, false);
@@ -521,59 +575,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
     }
 
-    private Map<String, List<JSONObject>> getChildFieldMaps(JSONArray fields) {
-        Map<String, List<JSONObject>> jsonObjectMap = new HashMap();
-
-        for (int i = 0; i < fields.length(); i++) {
-            try {
-                JSONObject jsonObject = fields.getJSONObject(i);
-                String key = jsonObject.getString("formSubmissionField");
-                String keySplit = key.substring(key.lastIndexOf("_"));
-                if (keySplit.matches(".*\\d.*")) {
-
-                    String formattedKey = keySplit.replaceAll("[^\\d.]", "");
-                    if (formattedKey.length() < 10)
-                        continue;
-                    List<JSONObject> jsonObjectList = jsonObjectMap.get(formattedKey);
-
-                    if (jsonObjectList == null)
-                        jsonObjectList = new ArrayList<>();
-
-                    jsonObjectList.add(jsonObject);
-                    jsonObjectMap.put(formattedKey, jsonObjectList);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        return jsonObjectMap;
-    }
-
-    protected void generateAndSaveFormsForEachChild(Map<String, List<JSONObject>> jsonObjectMap, String motherBaseId, String motherHivStatus, String childRiskCategory, String familyBaseEntityId, String dob, JSONArray obs) {
-
-        AllSharedPreferences allSharedPreferences = ImmunizationLibrary.getInstance().context().allSharedPreferences();
-
-        JSONArray childFields;
-        for (Map.Entry<String, List<JSONObject>> entry : jsonObjectMap.entrySet()) {
-            if (entry.getValue().size() > 1) {
-                childFields = new JSONArray();
-                for (JSONObject jsonObject : entry.getValue()) {
-                    try {
-                        String replaceString = jsonObject.getString("formSubmissionField");
-
-                        JSONObject childField = new JSONObject(jsonObject.toString().replaceAll(replaceString, replaceString.substring(0, replaceString.lastIndexOf("_"))));
-
-                        childFields.put(childField);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-                saveChild(childFields, motherBaseId, motherHivStatus, childRiskCategory, allSharedPreferences, familyBaseEntityId, dob, obs);
-            }
-        }
-    }
-
-    private void saveChild(JSONArray childFields, String motherBaseId, String motherHivStatus, String childRiskCategory, AllSharedPreferences
+    private void saveChild(String motherBaseId, String motherHivStatus, String childRiskCategory, AllSharedPreferences
             allSharedPreferences, String familyBaseEntityId, String dob, JSONArray obs) {
         String uniqueChildID = AncLibrary.getInstance().getUniqueIdRepository().getNextUniqueId().getOpenmrsId();
 
@@ -582,11 +584,11 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
             try {
                 String lastName = memberObject.getLastName();
                 JSONObject pncForm = getFormAsJson(
-                        org.smartregister.chw.anc.util.Constants.FORMS.PNC_CHILD_REGISTRATION,
+                        Constants.JsonForm.getLdChildRegistration(),
                         childBaseEntityId,
                         getLocationID()
                 );
-                pncForm = populatePNCForm(pncForm, childFields, familyBaseEntityId, motherBaseId, childRiskCategory, uniqueChildID, dob, lastName);
+                pncForm = populatePNCForm(pncForm, obs, familyBaseEntityId, motherBaseId, childRiskCategory, uniqueChildID, dob, lastName);
                 pncForm = populateChildRegistrationForm(pncForm, obs, motherBaseId, familyBaseEntityId);
                 processChild(pncForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS), allSharedPreferences, childBaseEntityId, familyBaseEntityId, motherBaseId, uniqueChildID, lastName, dob);
                 if (pncForm != null) {
@@ -595,12 +597,55 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                 if (motherHivStatus.equals(POSITIVE) && pncForm != null) {
                     pncForm.put(ENCOUNTER_TYPE, HEI_REGISTRATION);
                     saveChildRegistration(pncForm.toString(), HEI);
+
+                    JSONObject heiFollowupForm = getFormAsJson(
+                            Constants.JsonForm.getLdHeiFirstVisit(),
+                            childBaseEntityId,
+                            getLocationID()
+                    );
+
+                    heiFollowupForm = populateHeiFollowupForm(heiFollowupForm, obs, familyBaseEntityId);
+                    saveChildRegistration(heiFollowupForm.toString(), HEI_FOLLOWUP);
+
+
                 }
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+    }
+
+    public static JSONObject populateHeiFollowupForm(JSONObject form, JSONArray fields, String familyBaseEntityId) {
+        try {
+            if (form != null) {
+                form.put(RELATIONAL_ID, familyBaseEntityId);
+
+                JSONObject stepOne = form.getJSONObject(org.smartregister.chw.anc.util.JsonFormUtils.STEP1);
+                JSONArray jsonArray = stepOne.getJSONArray(org.smartregister.chw.anc.util.JsonFormUtils.FIELDS);
+
+                if (getRiskStatus(fields).equalsIgnoreCase("high")) {
+                    updateFormField(jsonArray, "test_at_age", AT_BIRTH);
+                    updateFormField(jsonArray, "actual_age", "0d");
+                    updateFormField(jsonArray, "type_of_hiv_test", "DNA PCR");
+                }
+
+                JSONObject jsonObject;
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    jsonObject = jsonArray.getJSONObject(i);
+                    String value = getObValue(fields, jsonObject.optString(KEY));
+                    if (value != null) {
+                        jsonObject.put(VALUE, value);
+                    }
+                }
+
+                return form;
+            }
+        } catch (Exception e) {
+            Timber.e(e);
+        }
+
+        return null;
     }
 
     private JSONObject populateChildRegistrationForm(JSONObject form, JSONArray obs, String motherId, String familyId) {
@@ -775,7 +820,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         return false;
     }
 
-    private String getRiskStatus(JSONArray obs) throws JSONException {
+    private static String getRiskStatus(JSONArray obs) throws JSONException {
         int size = obs.length();
         for (int i = 0; i < size; i++) {
             JSONObject checkObj = obs.getJSONObject(i);
@@ -803,6 +848,22 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
             }
         }
         return deliveryDateString;
+    }
+
+    private static String getObValue(JSONArray obs, String key) throws JSONException {
+        String valueString = null;
+        if (obs.length() > 0) {
+            for (int i = 0; i < obs.length(); i++) {
+                JSONObject jsonObject = obs.getJSONObject(i);
+                if (jsonObject.getString("fieldCode").equalsIgnoreCase(key)) {
+                    JSONArray values = jsonObject.getJSONArray("values");
+                    if (values != null) {
+                        valueString = values.getString(0);
+                    }
+                }
+            }
+        }
+        return valueString;
     }
 
     private boolean isChildAlive(JSONArray obs) throws JSONException {
@@ -843,5 +904,18 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         }
 
         return gender;
+    }
+
+    public static String ordinal(int i) {
+        String[] suffixes = new String[]{"th", "st", "nd", "rd", "th", "th", "th", "th", "th", "th"};
+        switch (i % 100) {
+            case 11:
+            case 12:
+            case 13:
+                return i + "th";
+            default:
+                return i + suffixes[i % 10];
+
+        }
     }
 }
