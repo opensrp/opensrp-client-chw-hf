@@ -633,9 +633,9 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                 JSONObject jsonObject;
                 for (int i = 0; i < jsonArray.length(); i++) {
                     jsonObject = jsonArray.getJSONObject(i);
-                    String value = getObValue(fields, jsonObject.optString(org.smartregister.chw.anc.util.JsonFormUtils.KEY));
+                    String value = getObValue(fields, jsonObject.optString(JsonFormUtils.KEY));
                     if (value != null) {
-                        jsonObject.put(org.smartregister.chw.anc.util.JsonFormUtils.VALUE, value);
+                        jsonObject.put(JsonFormUtils.VALUE, value);
                     }
                 }
 
