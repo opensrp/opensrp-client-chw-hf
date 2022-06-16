@@ -721,11 +721,13 @@
             "hint": "Jinsi",
             "values": [
               "Me",
-              "Ke"
+              "Ke",
+              "Jinsia Tata"
             ],
             "keys": [
               "Male",
-              "Female"
+              "Female",
+              "Ambiguous"
             ],
             "v_required": {
               "value": "true",
@@ -1172,11 +1174,13 @@
             "hint": "Jinsi",
             "values": [
               "Me",
-              "Ke"
+              "Ke",
+              "Jinsia Tata"
             ],
             "keys": [
               "Male",
-              "Female"
+              "Female",
+              "Ambiguous"
             ],
             "v_required": {
               "value": "true",

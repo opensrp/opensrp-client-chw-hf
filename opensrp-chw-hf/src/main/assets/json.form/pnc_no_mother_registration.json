@@ -321,11 +321,13 @@
         "hint": "Sex",
         "values": [
           "Male",
-          "Female"
+          "Female",
+          "Ambiguous"
         ],
         "keys": [
           "Male",
-          "Female"
+          "Female",
+          "Ambiguous"
         ],
         "v_required": {
           "value": "true",
