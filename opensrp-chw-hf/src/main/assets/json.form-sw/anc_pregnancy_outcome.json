@@ -92,6 +92,45 @@
         }
       },
       {
+        "key": "date_of_death",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "date_of_death",
+        "type": "date_picker",
+        "hint": "Tarehe mama kufariki ",
+        "expanded": false,
+        "max_date": "today",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jaza tarehe ambayo mama kafariki"
+        },
+        "relevance": {
+          "step1:mothers_condition": {
+            "type": "string",
+            "ex": "equalTo(., \"deceased\")"
+          }
+        }
+      },
+      {
+        "key": "time_of_death",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "time_of_death",
+        "type": "time_picker",
+        "hint": "Muda mama kufariki ",
+        "expanded": false,
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jaza saa ambayo mama kafariki"
+        },
+        "relevance": {
+          "step1:mothers_condition": {
+            "type": "string",
+            "ex": "equalTo(., \"deceased\")"
+          }
+        }
+      },
+      {
         "key": "preg_outcome",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",

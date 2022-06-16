@@ -92,6 +92,45 @@
         }
       },
       {
+        "key": "date_of_death",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "date_of_death",
+        "type": "date_picker",
+        "hint": "Date Mother Died",
+        "expanded": false,
+        "max_date": "today",
+        "v_required": {
+          "value": "true",
+          "err": "Please provide the date the mother died"
+        },
+        "relevance": {
+          "step1:mothers_condition": {
+            "type": "string",
+            "ex": "equalTo(., \"deceased\")"
+          }
+        }
+      },
+      {
+        "key": "time_of_death",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "time_of_death",
+        "type": "time_picker",
+        "hint": "Time mother died",
+        "expanded": false,
+        "v_required": {
+          "value": "true",
+          "err": "Please provide the time the mother died"
+        },
+        "relevance": {
+          "step1:mothers_condition": {
+            "type": "string",
+            "ex": "equalTo(., \"deceased\")"
+          }
+        }
+      },
+      {
         "key": "preg_outcome",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
