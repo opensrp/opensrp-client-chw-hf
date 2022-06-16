@@ -88,7 +88,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari chagua kipengele cha hali ya Mama"
+          "err": "Tafadhali chagua kipengele cha hali ya Mama"
         }
       },
       {
@@ -144,7 +144,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari chagua matokeo ya ujauzito"
+          "err": "Tafadhali chagua matokeo ya ujauzito"
         }
       },
       {
@@ -158,7 +158,7 @@
         "max_date": "today",
         "v_required": {
           "value": "true",
-          "err": "Tafadhari jaza tarehe ambayo Mimba ya Mama iliharibika/ilitoka"
+          "err": "Tafadhali jaza tarehe ambayo Mimba ya Mama iliharibika/ilitoka"
         },
         "relevance": {
           "rules-engine": {
@@ -197,7 +197,7 @@
         ],
         "v_required": {
           "value": true,
-          "err": "Tafadhari jibu swali hili"
+          "err": "Tafadhali jibu swali hili"
         },
         "relevance": {
           "rules-engine": {
@@ -237,7 +237,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Tafadhari chagua sababu"
+          "err": "Tafadhali chagua sababu"
         },
         "relevance": {
           "step1:hiv_status_question": {
@@ -288,7 +288,7 @@
         ],
         "v_required": {
           "value": true,
-          "err": "Tafadhari jibu swali hili"
+          "err": "Tafadhali jibu swali hili"
         },
         "relevance": {
           "rules-engine": {
@@ -325,7 +325,7 @@
         "max_date": "today",
         "v_required": {
           "value": "true",
-          "err": "Tafadhari ingiza tarehe ya kujifungua ya Mama"
+          "err": "Tafadhali ingiza tarehe ya kujifungua ya Mama"
         },
         "relevance": {
           "rules-engine": {

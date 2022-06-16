@@ -72,7 +72,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari jibu swali hili"
+          "err": "Tafadhali jibu swali hili"
         }
       },
       {
@@ -113,7 +113,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari jibu swali hili"
+          "err": "Tafadhali jibu swali hili"
         }
       },
       {
@@ -207,7 +207,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari jibu swali hili"
+          "err": "Tafadhali jibu swali hili"
         },
         "relevance": {
           "step1:using_family_planning_method": {

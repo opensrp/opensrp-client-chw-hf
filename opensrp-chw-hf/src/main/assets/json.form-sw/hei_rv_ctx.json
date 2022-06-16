@@ -76,7 +76,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari chagua mojawapo"
+          "err": "Tafadhali chagua mojawapo"
         }
       },
       {
@@ -144,7 +144,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari chagua mojawapo"
+          "err": "Tafadhali chagua mojawapo"
         },
         "relevance": {
           "step1:prescribed_ctx": {
@@ -156,13 +156,13 @@
       {
         "key": "other_reason_for_not_prescribing_ctx",
         "type": "edit_text",
-        "hint": "Tafadhari bainisha sababu nyingine",
+        "hint": "Tafadhali bainisha sababu nyingine",
         "openmrs_entity_id": "other_reason_for_not_prescribing_ctx",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "v_required": {
           "value": true,
-          "err": "Tafadhari bainisha sababu nyingine"
+          "err": "Tafadhali bainisha sababu nyingine"
         },
         "relevance": {
           "step1:reason_for_not_prescribing_ctx": {

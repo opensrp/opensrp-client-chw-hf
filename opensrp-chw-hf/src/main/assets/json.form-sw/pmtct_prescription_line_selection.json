@@ -76,7 +76,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari chagua mojawapo:"
+          "err": "Tafadhali chagua mojawapo:"
         }
       },
       {
@@ -103,7 +103,7 @@
         },
         "v_required": {
           "value": true,
-          "err": "Tafadhari jibu swali hili"
+          "err": "Tafadhali jibu swali hili"
         },
         "relevance": {
           "step1:prescribed_regimes": {
@@ -160,7 +160,7 @@
         },
         "v_required": {
           "value": true,
-          "err": "Tafadhari swali hili"
+          "err": "Tafadhali swali hili"
         }
       },
       {
@@ -205,7 +205,7 @@
         },
         "v_required": {
           "value": true,
-          "err": "Tafadhari jibu swali hili"
+          "err": "Tafadhali jibu swali hili"
         }
       },
       {
@@ -253,7 +253,7 @@
         },
         "v_required": {
           "value": true,
-          "err": "Tafadhari jibu swali hili"
+          "err": "Tafadhali jibu swali hili"
         }
       },
       {
@@ -290,7 +290,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari chagua mojawapo:"
+          "err": "Tafadhali chagua mojawapo:"
         },
         "relevance": {
           "step1:prescribed_regimes": {
@@ -309,7 +309,7 @@
         "edit_type": "name",
         "v_required": {
           "value": "true",
-          "err": "Tafadhari bainisha sababu nyingine za kutokumpa mteja ARVs"
+          "err": "Tafadhali bainisha sababu nyingine za kutokumpa mteja ARVs"
         },
         "relevance": {
           "step1:reason_for_not_prescribing_arv": {

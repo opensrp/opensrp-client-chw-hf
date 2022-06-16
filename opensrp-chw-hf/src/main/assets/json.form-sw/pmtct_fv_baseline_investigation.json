@@ -91,7 +91,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari chagua mojawapo"
+          "err": "Tafadhali chagua mojawapo"
         },
         "relevance": {
           "rules-engine": {
@@ -149,7 +149,7 @@
         "hint": "Bainisha sababu za kutomfanyia mteja kipimo cha Ini",
         "v_required": {
           "value": "true",
-          "err": "Tafadhari jaza sababu"
+          "err": "Tafadhali jaza sababu"
         },
         "relevance": {
           "step1:reason_for_not_conducting_liver_function_test": {
@@ -185,7 +185,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari chagua mojawapo"
+          "err": "Tafadhali chagua mojawapo"
         },
         "relevance": {
           "rules-engine": {
@@ -222,7 +222,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari chagua mojawapo"
+          "err": "Tafadhali chagua mojawapo"
         },
         "relevance": {
           "step1:receive_liver_function_test_results": {
@@ -287,7 +287,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari chagua mojawapo"
+          "err": "Tafadhali chagua mojawapo"
         },
         "relevance": {
           "rules-engine": {
@@ -327,7 +327,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Tafadhari chagua sababu ya kutomfanyia mteja kipimo cha Figo"
+          "err": "Tafadhali chagua sababu ya kutomfanyia mteja kipimo cha Figo"
         },
         "relevance": {
           "step1:renal_function_test_conducted": {
@@ -345,7 +345,7 @@
         "hint": "Bainisha sababu nyingine",
         "v_required": {
           "value": "true",
-          "err": "Tafadhari jaza sababu"
+          "err": "Tafadhali jaza sababu"
         },
         "relevance": {
           "step1:reason_for_not_conducting_renal_function_test": {
@@ -381,7 +381,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari chagua mojawapo"
+          "err": "Tafadhali chagua mojawapo"
         },
         "relevance": {
           "rules-engine": {
@@ -418,7 +418,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari chagua mojawapo"
+          "err": "Tafadhali chagua mojawapo"
         },
         "relevance": {
           "step1:receive_renal_function_test_results": {

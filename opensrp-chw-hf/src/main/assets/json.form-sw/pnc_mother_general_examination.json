@@ -73,19 +73,19 @@
         "openmrs_entity": "concept",
         "v_numeric": {
           "value": "true",
-          "err": "Tafadhari ingiza namba ya Systolic (Blood Pressure)"
+          "err": "Tafadhali ingiza namba ya Systolic (Blood Pressure)"
         },
         "v_min": {
           "value": "0",
-          "err": "namba ya Tafadhari ingiza namba ya Systolic lazime iwe sawa au kubwa kuliko 0"
+          "err": "namba ya Tafadhali ingiza namba ya Systolic lazime iwe sawa au kubwa kuliko 0"
         },
         "v_max": {
           "value": "320",
-          "err": "Tafadhari ingiza namba ya Systolic lazima iwe sawa au chini ya 320"
+          "err": "Tafadhali ingiza namba ya Systolic lazima iwe sawa au chini ya 320"
         },
         "v_required": {
           "value": true,
-          "err": "Tafadhari ingiza namba ya Systolic (Blood Pressure)"
+          "err": "Tafadhali ingiza namba ya Systolic (Blood Pressure)"
         }
       },
       {
@@ -97,7 +97,7 @@
         "openmrs_entity": "concept",
         "v_numeric": {
           "value": "true",
-          "err": "Tafadhari ingiza Diastolic"
+          "err": "Tafadhali ingiza Diastolic"
         },
         "v_min": {
           "value": "0",
@@ -109,7 +109,7 @@
         },
         "v_required": {
           "value": true,
-          "err": "Tafadhari ingiza Diastolic"
+          "err": "Tafadhali ingiza Diastolic"
         },
         "constraints": [
           {
@@ -176,7 +176,7 @@
         ],
         "v_required": {
           "value": true,
-          "err": "Tafadhari jibu swali hili"
+          "err": "Tafadhali jibu swali hili"
         }
       },
       {
@@ -364,7 +364,7 @@
         "openmrs_entity_parent": "",
         "v_numeric": {
           "value": "true",
-          "err": "Tafadhari ingiza Uzito wa Mteja"
+          "err": "Tafadhali ingiza Uzito wa Mteja"
         },
         "v_min": {
           "value": "20",
@@ -376,7 +376,7 @@
         },
         "v_required": {
           "value": true,
-          "err": "Tafadhari ingiza Uzito wa Mteja"
+          "err": "Tafadhali ingiza Uzito wa Mteja"
         }
       },
       {
@@ -411,7 +411,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari jibu swali hili"
+          "err": "Tafadhali jibu swali hili"
         }
       },
       {
@@ -452,7 +452,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari jibu swali hili"
+          "err": "Tafadhali jibu swali hili"
         }
       },
       {
@@ -493,7 +493,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari jibu swali hili"
+          "err": "Tafadhali jibu swali hili"
         }
       },
       {
@@ -534,7 +534,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari jibu swali hili"
+          "err": "Tafadhali jibu swali hili"
         }
       },
       {
@@ -575,7 +575,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari jibu swali hili"
+          "err": "Tafadhali jibu swali hili"
         }
       },
       {
@@ -622,7 +622,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari jibu swali hili"
+          "err": "Tafadhali jibu swali hili"
         }
       },
       {
@@ -684,7 +684,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari jibu swali hili"
+          "err": "Tafadhali jibu swali hili"
         }
       },
       {
@@ -716,7 +716,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari jibu swali hili"
+          "err": "Tafadhali jibu swali hili"
         }
       },
       {
@@ -772,7 +772,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari jibu swali hili"
+          "err": "Tafadhali jibu swali hili"
         }
       },
       {
@@ -822,7 +822,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari jibu swali hili"
+          "err": "Tafadhali jibu swali hili"
         }
       },
       {
@@ -848,7 +848,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari jibu swali hili"
+          "err": "Tafadhali jibu swali hili"
         },
         "relevance": {
           "step1:puerperal_psychosis": {

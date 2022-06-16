@@ -58,11 +58,11 @@
         "openmrs_entity_parent": "",
         "v_regex": {
           "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
-          "err": "Tafadhari ingiza jina la Mtoa wa huduma wa Afya"
+          "err": "Tafadhali ingiza jina la Mtoa wa huduma wa Afya"
         },
         "v_required": {
           "value": true,
-          "err": "Tafadhari ingiza jina la Mtoa wa huduma wa Afya"
+          "err": "Tafadhali ingiza jina la Mtoa wa huduma wa Afya"
         }
       },
       {
@@ -95,7 +95,7 @@
         },
         "v_required": {
           "value": true,
-          "err": "Tafadhari Ingiza Cheo cha Mtoa huduma wa Afya"
+          "err": "Tafadhali Ingiza Cheo cha Mtoa huduma wa Afya"
         }
       },
       {
@@ -116,7 +116,7 @@
         },
         "v_required": {
           "value": true,
-          "err": "Tafadhari ingiza Namba ya simu ya Mtoa huduma wa Afya"
+          "err": "Tafadhali ingiza Namba ya simu ya Mtoa huduma wa Afya"
         }
       },
       {
@@ -130,7 +130,7 @@
         "max_date": "today",
         "v_required": {
           "value": true,
-          "err": "Tafadhari ingiza Tarehe kwa ajili ya kuchukua sampuli ya kipimo cha Antibody"
+          "err": "Tafadhali ingiza Tarehe kwa ajili ya kuchukua sampuli ya kipimo cha Antibody"
         }
       },
       {
@@ -142,7 +142,7 @@
         "openmrs_entity_parent": "",
         "v_required": {
           "value": true,
-          "err": "Tafadhari ingiza Muda wa kuchukua sampuli kwa ajili ya kipimo cha Antibody"
+          "err": "Tafadhali ingiza Muda wa kuchukua sampuli kwa ajili ya kipimo cha Antibody"
         }
       },
       {
@@ -155,7 +155,7 @@
         "openmrs_entity_parent": "",
         "v_required": {
           "value": true,
-          "err": "Tafadhari ingiza ID kwa ajili ya Sampuli ya kipimo cha Antibody"
+          "err": "Tafadhali ingiza ID kwa ajili ya Sampuli ya kipimo cha Antibody"
         }
       },
       {

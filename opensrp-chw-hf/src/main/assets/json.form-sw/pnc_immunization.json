@@ -73,7 +73,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari jibu swali hili"
+          "err": "Tafadhali jibu swali hili"
         },
         "relevance": {
           "rules-engine": {
@@ -121,7 +121,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari jibu swali hili"
+          "err": "Tafadhali jibu swali hili"
         },
         "relevance": {
           "rules-engine": {

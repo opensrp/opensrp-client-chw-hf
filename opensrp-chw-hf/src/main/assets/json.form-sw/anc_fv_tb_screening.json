@@ -77,13 +77,13 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari chagua mojawapo"
+          "err": "Tafadhali chagua mojawapo"
         }
       },
       {
         "key": "tb_symptoms_screening",
         "type": "check_box",
-        "label": "Tafadhari chagua kama Mteja ana dalili zifuatazo za Kifua Kikuu?",
+        "label": "Tafadhali chagua kama Mteja ana dalili zifuatazo za Kifua Kikuu?",
         "combine_checkbox_option_values": "true",
         "openmrs_entity_id": "tb_symptoms_screening",
         "openmrs_entity": "concept",
@@ -144,7 +144,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari chagua mada"
+          "err": "Tafadhali chagua mada"
         },
         "relevance": {
           "step1:on_tb_treatment": {
@@ -180,7 +180,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari chagua mojawapo:"
+          "err": "Tafadhali chagua mojawapo:"
         },
         "relevance": {
           "step1:tb_symptoms_screening": {

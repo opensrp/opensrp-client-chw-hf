@@ -103,7 +103,7 @@
         ],
         "v_required": {
           "value": true,
-          "err": "Tafadhari jibu swali hili"
+          "err": "Tafadhali jibu swali hili"
         }
       },
       {
@@ -166,7 +166,7 @@
       {
         "key": "notify_retest",
         "type": "toaster_notes",
-        "text": "Tafadhari fanya kipimo cha HIV cha uhakiki kwa Mteja",
+        "text": "Tafadhali fanya kipimo cha HIV cha uhakiki kwa Mteja",
         "openmrs_entity_id": "notify_retest",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -222,7 +222,7 @@
         },
         "v_required": {
           "value": true,
-          "err": "Tafadhari jibu swali hili"
+          "err": "Tafadhali jibu swali hili"
         }
       },
       {
