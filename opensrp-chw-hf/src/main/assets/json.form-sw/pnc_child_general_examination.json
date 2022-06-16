@@ -142,7 +142,7 @@
       {
         "key": "hb_level_test",
         "type": "native_radio",
-        "label": "Kipimo wa Kiwango cha damu (HB)",
+        "label": "Kipimo cha Kiwango cha damu (HB)",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "hb_level_test",
         "openmrs_entity_parent": "",
@@ -234,7 +234,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "reason_for_not_conducting_hb_test",
         "type": "spinner",
-        "hint": "Sababu ya kutofanya kipimo cha kiwango cha HB  ",
+        "hint": "Sababu ya kutofanya kipimo cha HB",
         "values": [
           "Cuvette Cartridges Hazipo Kituoni",
           "Mashine ya Kupimwa wingi wa damu (Haemoque) haifanyi kazi",
@@ -316,7 +316,7 @@
       {
         "key": "notify_client_has_high_temperature",
         "type": "toaster_notes",
-        "text": "Mtoto huyu anauwezekano wa kuwa na maambukizi ya Bakteria. Mpatie mtoto huyu antibiotics and antipyretics kulingana na Mwongozo wa Wizara ya Afya",
+        "text": "Fanya vipimo vya maabara vinavyofaa ili kupata sababu ya homa na udhibiti kulingana na mwongozo wa Wizara ya Afya",
         "openmrs_entity_id": "notify_client_has_fever",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -331,7 +331,7 @@
       {
         "key": "notify_client_has_low_temperature",
         "type": "toaster_notes",
-        "text": "Mpatie mtoto joto kwa mtoto na huduma zingine muhimu za utunzaji wa watoto wachanga kulingana na mwongozo wa Wizara ya Afya",
+        "text": "Mpatie mtoto joto na huduma zingine muhimu za utunzaji wa watoto wachanga kulingana na mwongozo wa Wizara ya Afya",
         "openmrs_entity_id": "notify_client_has_hypothermia",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -363,7 +363,7 @@
       {
         "key": "prompt_for_large_head_circumference",
         "type": "toaster_notes",
-        "text": "Tathmini vipengele vya vichwa vikubwa (Hydrocephalus) na mpatie rufaa kwa ajili ya uwezekano wa upasuaji wa neva",
+        "text": "Tathmini vipengele vya vichwa vikubwa (hydrocephalus) na mpatie rufaa kwa ajili ya uwezekano wa kupatiwa upasuaji kichwa",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -378,7 +378,7 @@
       {
         "key": "prompt_for_small_head_circumference",
         "type": "toaster_notes",
-        "text": "Angalia dalili za ugonjwa unaozuia watoto wasiweze kujifunza (Down's Syndrome) au kasoro zingine za neva zinazopelekea kwenye vichwa vidogo (Microcephaly). Mpatie rufaa mtoto matibabu ya hali ya juu",
+        "text": "Angalia dalili za ugonjwa unaozuia mttoto asiweze kujifunza (down's syndrome) au kasoro zingine za neva zinazopelekea kuwa na kichwa kidogo (microcephaly). Mpatie rufaa mtoto kwa ajili ya matibabu ya hali ya juu",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -515,7 +515,7 @@
           },
           {
             "key": "chk_descended",
-            "text": "Kimeshuka",
+            "text": "Kimevimba/kimetanuka",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_descended",
             "value": "false"
