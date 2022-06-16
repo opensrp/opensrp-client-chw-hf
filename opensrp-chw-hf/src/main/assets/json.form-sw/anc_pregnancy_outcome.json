@@ -576,7 +576,7 @@
             "selected_text_color": "#ffffff",
             "v_required": {
               "value": true,
-              "err": "Please enter the agpar score"
+              "err": "Tafadhali weka agpar score"
             }
           },
           {
@@ -877,7 +877,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "early_bf_1hr",
             "type": "spinner",
-            "hint": "Kuanza kunyonya/kunyonyeshwa mapema (Saa 1)?",
+            "hint": "Amenyonyeshwa ndani ya saa 1?",
             "values": [
               "Ndio",
               "Hapana"
@@ -897,7 +897,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "reason_for_not_breast_feeding_within_one_hour",
             "type": "spinner",
-            "hint": "Sababu za kwa nini mtoto hakunyonyeshwa mapema (Saa 1)",
+            "hint": "Sababu za kwanini mtoto hakunyonyeshwa ndani ya saa 1",
             "values": [
               "Mama alifariki",
               "Mama hakuwa anatoa maziwa",
@@ -971,7 +971,7 @@
             ],
             "v_required": {
               "value": "true",
-              "err": "Tafadhari chagua mojawapo"
+              "err": "Tafadhali chagua moja"
             }
           },
           {
@@ -1031,7 +1031,7 @@
             "options": [
               {
                 "key": "yes",
-                "text": "Ndio",
+                "text": "Ndiyo",
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "yes"
               },
@@ -1044,7 +1044,7 @@
             ],
             "v_required": {
               "value": "true",
-              "err": "Tafadhari chagua mojwapo"
+              "err": "Tafadhali chagua moja"
             }
           },
           {
@@ -1328,7 +1328,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "early_bf_1hr",
             "type": "spinner",
-            "hint": "Kuanza kunyonya/kunyonyeshwa mapema (Saa 1)?",
+            "hint": "Amenyonyeshwa ndani ya saa 1?",
             "values": [
               "Ndio",
               "Hapana"
@@ -1348,7 +1348,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "reason_for_not_breast_feeding_within_one_hour",
             "type": "spinner",
-            "hint": "Sababu za kwa nini mtoto hakunyonyeshwa mapema (Saa 1)",
+            "hint": "Sababu za kwanini mtoto hakunyonyeshwa ndani ya saa 1",
             "values": [
               "Mama alifariki",
               "Mama hakuwa anatoa maziwa",
@@ -1409,7 +1409,7 @@
             "options": [
               {
                 "key": "yes",
-                "text": "Ndio",
+                "text": "Ndiyo",
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "yes"
               },
@@ -1422,7 +1422,7 @@
             ],
             "v_required": {
               "value": "true",
-              "err": "Please select one"
+              "err": "Tafadhali chagua moja"
             }
           },
           {
@@ -1482,20 +1482,20 @@
             "options": [
               {
                 "key": "yes",
-                "text": "Yes",
+                "text": "Ndiyo",
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "yes"
               },
               {
                 "key": "no",
-                "text": "No",
+                "text": "Hapana",
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "no"
               }
             ],
             "v_required": {
               "value": "true",
-              "err": "Please select one"
+              "err": "Tafadhali chagua moja"
             }
           },
           {
