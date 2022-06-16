@@ -148,6 +148,42 @@
         }
       },
       {
+        "key": "reason_child_died",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_child_died",
+        "type": "spinner",
+        "hint": "Sababu Zilizopelekea Mtoto Kufariki",
+        "values": [
+          "Birth Asphyxia",
+          "Neonatal Respiratory Distress",
+          "Prematurity",
+          "Early Neonatal Sepsis"
+        ],
+        "keys": [
+          "birth_asphyxia",
+          "neonatal_respiratory_distress",
+          "prematurity",
+          "early_neonatal_sepsis"
+        ],
+        "openmrs_choice_ids": {
+          "birth_asphyxia": "birth_asphyxia",
+          "neonatal_respiratory_distress":  "neonatal_respiratory_distress",
+          "prematurity":  "prematurity",
+          "early_neonatal_sepsis": "early_neonatal_sepsis"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select a reason"
+        },
+        "relevance": {
+          "step1:preg_outcome": {
+            "type": "string",
+            "ex": "equalTo(., \"born_alive_died\")"
+          }
+        }
+      },
+      {
         "key": "miscarriage_date",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -213,7 +249,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "reason_for_not_conducting_hiv_test",
         "type": "spinner",
-        "hint": "Reason as to why the HIV test was not conducted",
+        "hint": "Sababu za kutofanyika kwa kipimo cha VVU",
         "values": [
           "Vifaa vya kupima vimeisha",
           "Mteja alikuwa katika hali ya dharura",
