@@ -1,0 +1,312 @@
+{
+  "count": "1",
+  "encounter_type": "LD Child Registration",
+  "entity_id": "",
+  "mother_entity_id": "",
+  "relational_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "step1": {
+    "fields": [
+      {
+        "key": "mother_entity_id",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "mother_entity_id",
+        "type": "hidden"
+      },
+      {
+        "key": "risk_category",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "risk_category",
+        "type": "hidden"
+      },
+      {
+        "key": "entry_point",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "entry_point",
+        "type": "edit_text",
+        "value": "LD"
+      },
+      {
+        "key": "unique_id",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "person_identifier",
+        "openmrs_entity_id": "opensrp_id",
+        "type": "barcode",
+        "barcode_type": "qrcode",
+        "hint": "Boresha Afya ID",
+        "scanButtonText": "Scan QR Code",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter a valid ID"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the UNIQUE ID"
+        }
+      },
+      {
+        "key": "surname",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "edit_text",
+        "hint": "Surname",
+        "edit_type": "name",
+        "v_regex": {
+          "value": "[A-Za-z\\s\\.\\-]*",
+          "err": "Please enter a valid name"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the surname"
+        }
+      },
+      {
+        "key": "same_as_fam_name",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "openmrs_data_type": "text",
+        "type": "check_box",
+        "label": "",
+        "exclusive": [
+          "none"
+        ],
+        "options": [
+          {
+            "key": "same_as_fam_name",
+            "text": "Surname same as family name",
+            "text_size": "18px",
+            "value": "false"
+          }
+        ]
+      },
+      {
+        "key": "last_name",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "person",
+        "openmrs_entity_id": "last_name",
+        "type": "hidden",
+        "hint": "Surname as Family name"
+      },
+      {
+        "key": "first_name",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "person",
+        "openmrs_entity_id": "first_name",
+        "openmrs_data_type": "text",
+        "type": "edit_text",
+        "hint": "First name",
+        "expanded": false,
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Please Enter first name"
+        },
+        "v_regex": {
+          "value": "[A-Za-z\\s\\-]*",
+          "err": "Please Enter a Valid Name"
+        }
+      },
+      {
+        "key": "middle_name",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "person",
+        "openmrs_entity_id": "middle_name",
+        "openmrs_data_type": "text",
+        "type": "edit_text",
+        "hint": "Middle name",
+        "expanded": false,
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Please Enter middle name"
+        },
+        "v_regex": {
+          "value": "[A-Za-z\\s\\.\\-]*",
+          "err": "Please Enter a Valid Name"
+        }
+      },
+      {
+        "key": "dob",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "person",
+        "openmrs_entity_id": "birthdate",
+        "type": "date_picker",
+        "hint": "Date of birth (DOB)",
+        "expanded": false,
+        "duration": {
+          "label": "Age"
+        },
+        "min_date": "today-5y",
+        "max_date": "today",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the date of birth"
+        }
+      },
+      {
+        "key": "gender",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "person",
+        "openmrs_entity_id": "gender",
+        "type": "edit_text",
+        "hint": "Sex"
+      },
+      {
+        "key": "early_bf_1hr",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "early_bf_1hr",
+        "type": "spinner",
+        "hint": "Early initiation of breastfeeding (1 hr)?",
+        "values": [
+          "Yes",
+          "No"
+        ],
+        "keys": [
+          "yes",
+          "no"
+        ],
+        "openmrs_choice_ids": {
+          "yes": "yes",
+          "no": "no"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter Early initiation of breastfeeding"
+        }
+      },
+      {
+        "key": "child_bcg_vaccination",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "child_bcg_vaccination",
+        "type": "native_radio",
+        "label": "Was BCG vaccination given?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select one"
+        }
+      },
+      {
+        "key": "child_opv0_vaccination",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "child_opv0_vaccination",
+        "type": "native_radio",
+        "label": "Was OPV 0 vaccination given?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select one"
+        }
+      },
+      {
+        "key": "weight",
+        "type": "edit_text",
+        "hint": "Weight (KG)",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "weight",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the weight"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "The weight must be equal or greater than 0 (KG)"
+        },
+        "v_max": {
+          "value": "30",
+          "err": "The weight must be equal or less than 30 (KG)"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter the weight"
+        }
+      }
+    ]
+  }
+}

@@ -559,6 +559,20 @@ condition: "step1_collect_dbs.equals('yes')"
 actions:
   - "isRelevant = true"
 ---
+name: step1_sample_collection_date
+description: sample_collection_date calculation
+priority: 1
+condition: "step1_collect_dbs.equals('yes')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_dna_pcr_collection_time
+description: dna_pcr_collection_time calculation
+priority: 1
+condition: "step1_collect_dbs.equals('yes')"
+actions:
+  - "isRelevant = true"
+---
 name: step1_provided_nvp_syrup
 description: provided_nvp_syrup calculation
 priority: 1

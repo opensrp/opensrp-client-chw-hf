@@ -57,6 +57,13 @@
     "title": "Immediate Newborn Care",
     "fields": [
       {
+        "key": "delivery_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "delivery_date",
+        "type": "hidden"
+      },
+      {
         "key": "newborn_status",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -1794,6 +1801,45 @@
         "v_required": {
           "value": "true",
           "err": "Please enter the reason"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "sample_collection_date",
+        "type": "date_picker",
+        "hint": "DNA-PCR Sample Collection Date",
+        "openmrs_entity_id": "sample_collection_date",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "max_date": "today",
+        "v_required": {
+          "value": true,
+          "err": "Please enter the collection date"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "dna_pcr_collection_time",
+        "type": "time_picker",
+        "hint": "DNA-PCR Sample Collection Time",
+        "openmrs_entity_id": "dna_pcr_collection_time",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": true,
+          "err": "Please enter the collection time"
         },
         "relevance": {
           "rules-engine": {
