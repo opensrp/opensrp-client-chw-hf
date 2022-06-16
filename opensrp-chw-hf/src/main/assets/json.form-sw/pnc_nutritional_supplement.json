@@ -84,7 +84,7 @@
         "hint": "Sababu kwanini Madini Chuma (Iron) na Foliki Asidi hazikutolewa",
         "values": [
           "Zimeisha",
-          "Mteja amekaa kuchukua",
+          "Mteja amekataa kuchukua",
           "Mteja ana mzio na Iron Folic acid",
           "Nyingine"
         ],
@@ -118,7 +118,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "other_reason_for_not_giving_iron_and_folic_acid",
         "type": "edit_text",
-        "hint": "Bainisha sababu kwa kutokutoa Iron na Folic acid",
+        "hint": "Bainisha sababu nyingine ya kutotoa madini chuma (iron) na folic acid",
         "edit_type": "name",
         "v_required": {
           "value": "true",
@@ -166,7 +166,7 @@
         "hint": "Sababu za kutokutoa Vitamin A",
         "values": [
           "Vitamin A zimeisha",
-          "Mteja amekaa kuchukua Vitamin A",
+          "Mteja amekataa kuchukua",
           "Mteja ana mzio na Vitamin A",
           "Nyingine (Bainisha)"
         ],
