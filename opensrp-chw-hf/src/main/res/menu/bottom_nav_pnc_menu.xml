@@ -17,7 +17,7 @@
         android:id="@+id/action_register_child"
         android:enabled="true"
         android:icon="@drawable/ic_input_add"
-        android:title="Register Child"
+        android:title="@string/register_child"
         app:showAsAction="ifRoom" />
 
 </menu>
