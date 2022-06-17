@@ -67,11 +67,11 @@
         "edit_type": "name",
         "v_required": {
           "value": "true",
-          "err": "Tafadhari ingiza jina la ukoo"
+          "err": "Tafadhali ingiza jina la ukoo"
         },
         "v_regex": {
           "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
-          "err": "Tafadhari ingiza jina sahihi"
+          "err": "Tafadhali ingiza jina sahihi"
         }
       },
       {
@@ -84,11 +84,11 @@
         "edit_type": "name",
         "v_required": {
           "value": "true",
-          "err": "Tafadhari ingiza jina la Kwanza"
+          "err": "Tafadhali ingiza jina la Kwanza"
         },
         "v_regex": {
           "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
-          "err": "Tafadhari ingiza jina kwa usahihi"
+          "err": "Tafadhali ingiza jina kwa usahihi"
         }
       },
       {
@@ -105,7 +105,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Tafadhari ingiza jina la kati la mkuu wa kaya"
+          "err": "Tafadhali ingiza jina la kati la mkuu wa kaya"
         }
       },
       {
@@ -120,7 +120,7 @@
         "scanButtonText": "Scan QR Code",
         "v_numeric": {
           "value": "true",
-          "err": "Tafadhari Ingiza namba ya kitambulisho"
+          "err": "Tafadhali Ingiza namba ya kitambulisho"
         }
       },
       {
@@ -133,11 +133,11 @@
         "hint": "Jina la Eneo",
         "v_required": {
           "value": "true",
-          "err": "Tafadhari ingiza jina la eneo"
+          "err": "Tafadhali ingiza jina la eneo"
         },
         "v_regex": {
           "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-]*",
-          "err": "Tafadhari ingiza jina sahihi la eneo"
+          "err": "Tafadhali ingiza jina sahihi la eneo"
         }
       },
       {
@@ -149,7 +149,7 @@
         "hint": "Maelezo ya eneo la makazi",
         "v_required": {
           "value": true,
-          "err": "Tafadhari ingiza jina eneo la makazi"
+          "err": "Tafadhali ingiza jina eneo la makazi"
         }
       },
       {
@@ -192,7 +192,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Tafadhari ingiza namba ya kitambulisho"
+          "err": "Tafadhali ingiza namba ya kitambulisho"
         }
       },
       {
@@ -205,7 +205,7 @@
         "edit_type": "name",
         "v_required": {
           "value": "true",
-          "err": "Tafadhari ingiza jina la kwanza"
+          "err": "Tafadhali ingiza jina la kwanza"
         },
         "v_regex": {
           "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
@@ -230,11 +230,11 @@
         "edit_type": "name",
         "v_required": {
           "value": "true",
-          "err": "Tafadhari ingiza jina la kati"
+          "err": "Tafadhali ingiza jina la kati"
         },
         "v_regex": {
           "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
-          "err": "Tafadhari ingiza jina sahihi"
+          "err": "Tafadhali ingiza jina sahihi"
         },
         "read_only": true,
         "calculation": {
@@ -256,7 +256,7 @@
         "read_only": "true",
         "v_regex": {
           "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
-          "err": "Tafadhari ingiza jina sahihi"
+          "err": "Tafadhali ingiza jina sahihi"
         },
         "calculation": {
           "rules-engine": {
@@ -281,7 +281,7 @@
         "max_date": "today-15y",
         "v_required": {
           "value": "true",
-          "err": "Tafadhari ingiza tarehe ya kuzaliwa"
+          "err": "Tafadhali ingiza tarehe ya kuzaliwa"
         },
         "relevance": {
           "rules-engine": {
@@ -356,7 +356,7 @@
         },
         "v_required": {
           "value": true,
-          "err": "Tafadhari ingiza Umri"
+          "err": "Tafadhali ingiza Umri"
         }
       },
       {
@@ -376,7 +376,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari ingiza jinsi ya mteja"
+          "err": "Tafadhali ingiza jinsi ya mteja"
         }
       },
       {
@@ -648,7 +648,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Tafadhari ingiza mtoa huduma wa Bima ya Afya"
+          "err": "Tafadhali ingiza mtoa huduma wa Bima ya Afya"
         }
       },
       {
@@ -660,7 +660,7 @@
         "hint": "Bima ya Afya nyingine",
         "v_required": {
           "value": "true",
-          "err": "Tafadhari bainisha Bima ya Afya nyingine"
+          "err": "Tafadhali bainisha Bima ya Afya nyingine"
         },
         "relevance": {
           "rules-engine": {
@@ -679,7 +679,7 @@
         "hint": "Namba ya Bima ya Afya",
         "v_required": {
           "value": "true",
-          "err": "Tafadhari ingiza namba ya Bima ya Afya"
+          "err": "Tafadhali ingiza namba ya Bima ya Afya"
         },
         "relevance": {
           "rules-engine": {
@@ -763,7 +763,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Tafadhari chagua moja"
+          "err": "Tafadhali chagua moja"
         }
       },
       {
@@ -899,7 +899,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari chagua angalau moja"
+          "err": "Tafadhali chagua angalau moja"
         },
         "relevance": {
           "rules-engine": {
@@ -968,7 +968,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari chagua angalau moja"
+          "err": "Tafadhali chagua angalau moja"
         },
         "relevance": {
           "rules-engine": {
@@ -988,7 +988,7 @@
         "edit_type": "name",
         "v_required": {
           "value": "true",
-          "err": "Tafadhari bainisha uongozi alionao"
+          "err": "Tafadhali bainisha uongozi alionao"
         },
         "relevance": {
           "step2:leader": {

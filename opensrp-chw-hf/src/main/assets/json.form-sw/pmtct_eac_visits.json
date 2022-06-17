@@ -70,7 +70,7 @@
         "max_date": "today",
         "v_required": {
           "value": "true",
-          "err": "Tafadhari ingiza Tarehe ya Udhulio la EAC"
+          "err": "Tafadhali ingiza Tarehe ya Udhulio la EAC"
         }
       },
       {

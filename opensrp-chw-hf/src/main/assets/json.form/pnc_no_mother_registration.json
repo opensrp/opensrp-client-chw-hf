@@ -165,6 +165,22 @@
         }
       },
       {
+        "key": "prompt_for_underweight",
+        "type": "toaster_notes",
+        "text": "Refer for Further Management",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pnc_no_mother_registration_relevance.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "disabilities",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -305,11 +321,13 @@
         "hint": "Sex",
         "values": [
           "Male",
-          "Female"
+          "Female",
+          "Ambiguous"
         ],
         "keys": [
           "Male",
-          "Female"
+          "Female",
+          "Ambiguous"
         ],
         "v_required": {
           "value": "true",

@@ -59,11 +59,11 @@
         "openmrs_entity_parent": "",
         "v_regex": {
           "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
-          "err": "Tafadhari ingiza jina la Mtoa huduma"
+          "err": "Tafadhali ingiza jina la Mtoa huduma"
         },
         "v_required": {
           "value": true,
-          "err": "Tafadhari ingiza jina la Mtoa huduma"
+          "err": "Tafadhali ingiza jina la Mtoa huduma"
         }
       },
       {
@@ -96,7 +96,7 @@
         },
         "v_required": {
           "value": true,
-          "err": "Tafadhari Ingiza cheo cha Mtoa huduma wa Afya"
+          "err": "Tafadhali Ingiza cheo cha Mtoa huduma wa Afya"
         }
       },
       {
@@ -131,7 +131,7 @@
         "max_date": "today",
         "v_required": {
           "value": true,
-          "err": "Tafadhari ingiza tarehe ya kuchukua sampuli ya CD4"
+          "err": "Tafadhali ingiza tarehe ya kuchukua sampuli ya CD4"
         }
       },
       {
@@ -143,7 +143,7 @@
         "openmrs_entity_parent": "",
         "v_required": {
           "value": true,
-          "err": "Tafadhari ingiza muda ya kuchukua sampuli ya CD4"
+          "err": "Tafadhali ingiza muda ya kuchukua sampuli ya CD4"
         }
       },
       {
@@ -156,7 +156,7 @@
         "openmrs_entity_parent": "",
         "v_required": {
           "value": true,
-          "err": "Tafadhari ingiza namba ya utambulisho ya sampuli ya CD4"
+          "err": "Tafadhali ingiza namba ya utambulisho ya sampuli ya CD4"
         }
       }
     ]

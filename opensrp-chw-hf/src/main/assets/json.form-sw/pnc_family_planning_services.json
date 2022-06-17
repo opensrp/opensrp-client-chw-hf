@@ -72,7 +72,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari jibu swali hili"
+          "err": "Tafadhali jibu swali hili"
         }
       },
       {
@@ -113,7 +113,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari jibu swali hili"
+          "err": "Tafadhali jibu swali hili"
         }
       },
       {
@@ -148,7 +148,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "method_provided",
         "type": "native_radio",
-        "label": "Njia za Uzazi wa Mpango uliyotolewa",
+        "label": "Njia ya uzazi wa mpango iliyotolewa",
         "options": [
           {
             "key": "chk_condom",
@@ -207,7 +207,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari jibu swali hili"
+          "err": "Tafadhali jibu swali hili"
         },
         "relevance": {
           "step1:using_family_planning_method": {
