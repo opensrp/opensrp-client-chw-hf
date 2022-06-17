@@ -135,7 +135,7 @@
       {
         "key": "prompt_for_respiratory_rate",
         "type": "toaster_notes",
-        "text": "Manage according to National guideline",
+        "text": "Manage according to SOP and National guideline",
         "openmrs_entity_id": "prompt_for_respiratory_rate",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",

@@ -241,6 +241,18 @@
         }
       },
       {
+        "key": "delivery_time",
+        "type": "time_picker",
+        "hint": "Delivery Time",
+        "openmrs_entity_id": "delivery_time",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": true,
+          "err": "Please select the delivery time"
+        }
+      },
+      {
         "key": "labour_information",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",

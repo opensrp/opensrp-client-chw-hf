@@ -182,422 +182,492 @@ actions:
   - "isRelevant = true"
 ---
 name: step1_prompt_for_apgar_at_5_minute
-description: prompt_for_apgar_at_5_minute calculation
+description: prompt_for_apgar_at_5_minute relevance
 priority: 1
 condition: "step1_newborn_status.contains('alive')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_spacer12
-description: spacer12 calculation
+description: spacer12 relevance
 priority: 1
 condition: "step1_newborn_status.contains('alive')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_apgar_score_activity_label_at_5_mins
-description: apgar_score_activity_label_at_5_mins calculation
+description: apgar_score_activity_label_at_5_mins relevance
 priority: 1
 condition: "step1_newborn_status.contains('alive')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_spacer13
-description: spacer13 calculation
+description: spacer13 relevance
 priority: 1
 condition: "step1_newborn_status.contains('alive')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_apgar_activity_score_at_5_minutes
-description: apgar_activity_score_at_5_minutes calculation
+description: apgar_activity_score_at_5_minutes relevance
 priority: 1
 condition: "step1_newborn_status.contains('alive')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_spacer14
-description: spacer14 calculation
+description: spacer14 relevance
 priority: 1
 condition: "step1_newborn_status.contains('alive')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_apgar_pulse_score_label_at_5_mins
-description: apgar_pulse_score_label_at_5_mins calculation
+description: apgar_pulse_score_label_at_5_mins relevance
 priority: 1
 condition: "step1_newborn_status.contains('alive')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_spacer15
-description: spacer15 calculation
+description: spacer15 relevance
 priority: 1
 condition: "step1_newborn_status.contains('alive')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_apgar_pulse_score_at_5_minutes
-description: apgar_pulse_score_at_5_minutes calculation
+description: apgar_pulse_score_at_5_minutes relevance
 priority: 1
 condition: "step1_newborn_status.contains('alive')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_spacer16
-description: spacer16 calculation
+description: spacer16 relevance
 priority: 1
 condition: "step1_newborn_status.contains('alive')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_apgar_grimace_on_stimulation_score_label_at_5_mins
-description: apgar_grimace_on_stimulation_score_label_at_5_mins calculation
+description: apgar_grimace_on_stimulation_score_label_at_5_mins relevance
 priority: 1
 condition: "step1_newborn_status.contains('alive')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_spacer17
-description: spacer17 calculation
+description: spacer17 relevance
 priority: 1
 condition: "step1_newborn_status.contains('alive')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_apgar_grimace_on_stimulation_score_at_5_minutes
-description: apgar_grimace_on_stimulation_score_at_5_minutes calculation
+description: apgar_grimace_on_stimulation_score_at_5_minutes relevance
 priority: 1
 condition: "step1_newborn_status.contains('alive')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_spacer18
-description: spacer18 calculation
+description: spacer18 relevance
 priority: 1
 condition: "step1_newborn_status.contains('alive')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_apgar_appearance_score_label_at_5_mins
-description: apgar_appearance_score_label_at_5_mins calculation
+description: apgar_appearance_score_label_at_5_mins relevance
 priority: 1
 condition: "step1_newborn_status.contains('alive')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_spacer19
-description: spacer19 calculation
+description: spacer19 relevance
 priority: 1
 condition: "step1_newborn_status.contains('alive')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_apgar_appearance_score_at_5_minutes
-description: apgar_appearance_score_at_5_minutes calculation
+description: apgar_appearance_score_at_5_minutes relevance
 priority: 1
 condition: "step1_newborn_status.contains('alive')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_spacer20
-description: spacer20 calculation
+description: spacer20 relevance
 priority: 1
 condition: "step1_newborn_status.contains('alive')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_apgar_respiration_score_label_at_5_mins
-description: apgar_respiration_score_label_at_5_mins calculation
+description: apgar_respiration_score_label_at_5_mins relevance
 priority: 1
 condition: "step1_newborn_status.contains('alive')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_spacer21
-description: spacer21 calculation
+description: spacer21 relevance
 priority: 1
 condition: "step1_newborn_status.contains('alive')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_apgar_respiration_score_at_5_minutes
-description: apgar_respiration_score_at_5_minutes calculation
+description: apgar_respiration_score_at_5_minutes relevance
 priority: 1
 condition: "step1_newborn_status.contains('alive')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_apgar_score_at_5_minutes
-description: apgar_score_at_5_minutes calculation
+description: apgar_score_at_5_minutes relevance
 priority: 1
 condition: "step1_newborn_status.contains('alive')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_spacer22
-description: spacer22 calculation
+description: spacer22 relevance
 priority: 1
 condition: "step1_newborn_status.contains('alive')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_prompt_for_normal_apgar_score_at_5_minutes
-description: prompt_for_normal_apgar_score_at_5_minutes calculation
+description: prompt_for_normal_apgar_score_at_5_minutes relevance
 priority: 1
 condition: "step1_newborn_status == 'alive' && step1_apgar_score_at_5_minutes != '' && step1_apgar_score_at_5_minutes >= 7 "
 actions:
   - "isRelevant = true"
 ---
 name: step1_prompt_for_abnormal_apgar_score_at_5_minutes
-description: prompt_for_abnormal_apgar_score_at_5_minutes calculation
+description: prompt_for_abnormal_apgar_score_at_5_minutes relevance
 priority: 1
 condition: "step1_newborn_status == 'alive' && step1_apgar_score_at_5_minutes != '' && step1_apgar_score_at_5_minutes > 0  && step1_apgar_score_at_5_minutes < 7 "
 actions:
   - "isRelevant = true"
 ---
 name: step1_prompt_for_normal_apgar_score_at_1_minute
-description: prompt_for_normal_apgar_score_at_1_minute calculation
+description: prompt_for_normal_apgar_score_at_1_minute relevance
 priority: 1
 condition: "step1_newborn_status == 'alive' && step1_apgar_score_at_1_minute >= 7 "
 actions:
   - "isRelevant = true"
 ---
 name: step1_prompt_for_abnormal_apgar_score_at_1_minute
-description: prompt_for_abnormal_apgar_score_at_1_minute calculation
+description: prompt_for_abnormal_apgar_score_at_1_minute relevance
 priority: 1
 condition: "step1_newborn_status == 'alive' && step1_apgar_score_at_1_minute > 0  && step1_apgar_score_at_1_minute < 7 "
 actions:
   - "isRelevant = true"
 ---
 name: step1_resuscitation
-description: resuscitation calculation
+description: resuscitation relevance
 priority: 1
 condition: "step1_newborn_status.contains('alive')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_temperature
-description: temperature calculation
+description: temperature relevance
 priority: 1
 condition: "step1_newborn_status.contains('alive')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_weight
-description: weight calculation
+description: weight relevance
 priority: 1
 condition: "step1_newborn_status.contains('alive')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_prompt_for_underweight
-description: prompt_for_underweight calculation
+description: prompt_for_underweight relevance
 priority: 1
-condition: "step1_weight != '' && step1_weight < 1.5"
+condition: "step1_weight != '' && step1_weight < 2.5"
+actions:
+  - "isRelevant = true"
+---
+name: step1_prompt_for_overweight
+description: prompt_for_overweight relevance
+priority: 1
+condition: "step1_weight != '' && step1_weight > 3.8"
 actions:
   - "isRelevant = true"
 ---
 name: step1_heart_rate
-description: heart_rate calculation
+description: heart_rate relevance
 priority: 1
 condition: "step1_newborn_status.contains('alive')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_keep_warm
-description: keep_warm calculation
+description: keep_warm relevance
 priority: 1
 condition: "step1_newborn_status.contains('alive')"
 actions:
   - "isRelevant = true"
 ---
-name: step1_breathing_rate
-description: breathing_rate calculation
+name: step1_respiratory_rate
+description: respiratory_rate relevance
 priority: 1
 condition: "step1_newborn_status.contains('alive')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_cord_bleeding
-description: cord_bleeding calculation
+description: cord_bleeding relevance
 priority: 1
 condition: "step1_newborn_status.contains('alive')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_prompt_for_cord_bleeding
-description: prompt_for_cord_bleeding calculation
+description: prompt_for_cord_bleeding relevance
 priority: 1
 condition: "step1_cord_bleeding.contains('yes')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_early_bf_1hr
-description: early_bf_1hr calculation
+description: early_bf_1hr relevance
 priority: 1
 condition: "step1_newborn_status.contains('alive')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_reason_for_not_breast_feeding_within_one_hour
-description: reason_for_not_breast_feeding_within_one_hour calculation
+description: reason_for_not_breast_feeding_within_one_hour relevance
 priority: 1
 condition: "step1_early_bf_1hr.contains('no')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_other_reason_for_not_breast_feeding_within_one_hour
-description: other_reason_for_not_breast_feeding_within_one_hour calculation
+description: other_reason_for_not_breast_feeding_within_one_hour relevance
 priority: 1
 condition: "step1_reason_for_not_breast_feeding_within_one_hour.contains('other')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_eye_care
-description: eye_care calculation
+description: eye_care relevance
 priority: 1
 condition: "step1_newborn_status.contains('alive')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_reason_for_not_giving_eye_care
-description: eye_care calculation
+description: eye_care relevance
 priority: 1
 condition: "step1_eye_care.contains('no')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_other_reason_for_not_giving_eye_care
-description: other_reason_for_not_giving_eye_care calculation
+description: other_reason_for_not_giving_eye_care relevance
 priority: 1
 condition: "step1_reason_for_not_giving_eye_care.contains('other')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_risk_category
-description: risk_category calculation
+description: risk_category relevance
 priority: 1
 condition: "step1_newborn_status.contains('alive')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_prompt_for_high_risk
-description: prompt_for_high_risk calculation
+description: prompt_for_high_risk relevance
 priority: 1
 condition: "step1_risk_category.contains('high')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_prompt_for_low_risk
-description: prompt_for_low_risk calculation
+description: prompt_for_low_risk relevance
 priority: 1
 condition: "step1_risk_category.contains('low')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_provided_azt_nvp_syrup
-description: provided_azt_nvp_syrup calculation
+description: provided_azt_nvp_syrup relevance
 priority: 1
 condition: "step1_risk_category.contains('high')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_provided_other_combinations
-description: provided_other_combinations calculation
+description: provided_other_combinations relevance
 priority: 1
 condition: "step1_provided_azt_nvp_syrup.contains('no')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_specify_the_combinations
-description: specify_the_combinations calculation
+description: specify_the_combinations relevance
 priority: 1
 condition: "step1_provided_other_combinations.contains('yes')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_number_of_azt_nvp_days_dispensed
-description: number_of_azt_nvp_days_dispensed calculation
+description: number_of_azt_nvp_days_dispensed relevance
 priority: 1
 condition: "step1_provided_azt_nvp_syrup.equals('yes') || step1_provided_other_combinations.equals('yes')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_reason_for_not_providing_other_combination
-description: reason_for_not_providing_other_combination calculation
+description: reason_for_not_providing_other_combination relevance
 priority: 1
 condition: "step1_provided_other_combinations.equals('no')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_other_reason_for_not_providing_other_combination
-description: other_reason_for_not_providing_other_combination calculation
+description: other_reason_for_not_providing_other_combination relevance
 priority: 1
 condition: "step1_reason_for_not_providing_other_combination.equals('other')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_collect_dbs
-description: collect_dbs calculation
+description: collect_dbs relevance
 priority: 1
 condition: "step1_risk_category.equals('high')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_reason_not_collecting_dbs
-description: reason_not_collecting_dbs calculation
+description: reason_not_collecting_dbs relevance
 priority: 1
 condition: "step1_collect_dbs.equals('no')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_sample_id
-description: sample_id calculation
+description: sample_id relevance
 priority: 1
 condition: "step1_collect_dbs.equals('yes')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_sample_collection_date
-description: sample_collection_date calculation
+description: sample_collection_date relevance
 priority: 1
 condition: "step1_collect_dbs.equals('yes')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_dna_pcr_collection_time
-description: dna_pcr_collection_time calculation
+description: dna_pcr_collection_time relevance
 priority: 1
 condition: "step1_collect_dbs.equals('yes')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_provided_nvp_syrup
-description: provided_nvp_syrup calculation
+description: provided_nvp_syrup relevance
 priority: 1
 condition: "step1_risk_category.equals('low')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_number_of_nvp_days_dispensed
-description: number_of_nvp_days_dispensed calculation
+description: number_of_nvp_days_dispensed relevance
 priority: 1
 condition: "step1_provided_nvp_syrup.equals('yes')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_reason_for_not_providing_nvp_syrup
-description: reason_for_not_providing_nvp_syrup calculation
+description: reason_for_not_providing_nvp_syrup relevance
 priority: 1
 condition: "step1_provided_nvp_syrup.equals('no')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_other_reason_for_not_providing_nvp_syrup
-description: other_reason_for_not_providing_nvp_syrup calculation
+description: other_reason_for_not_providing_nvp_syrup relevance
 priority: 1
 condition: "step1_reason_for_not_providing_nvp_syrup.equals('other')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_child_bcg_vaccination
+description: child_bcg_vaccination relevance
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_child_opv0_vaccination
+description: child_opv0_vaccination relevance
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_prompt_for_respiratory_rate
+description:  prompt for respiratory rate management
+priority: 1
+condition: "step1_respiratory_rate < 40 || step1_respiratory_rate > 60"
+actions:
+  - "isRelevant = true"
+---
+name: step1_prompt_for_fetal_distress
+description: prompt for fetal distress
+priority: 1
+condition: "!step1_heart_rate.isEmpty() && (step1_heart_rate > 160 || step1_heart_rate < 120)"
+actions:
+  - "isRelevant = true"
+---
+name: step1_reasons_for_not_keeping_the_baby_warm_skin_to_skin_for_low_apgar_score
+description: step1_reasons_for_not_keeping_the_baby_warm_skin_to_skin_for_low_apgar_score relevance
+priority: 1
+condition: "step1_keep_warm.contains('no') && step1_apgar_score_at_5_minutes < 7"
+actions:
+  - "isRelevant = true"
+---
+name: step1_reasons_for_not_keeping_the_baby_warm_skin_to_skin_for_normal_apgar_score
+description: reasons_for_not_keeping_the_baby_warm_skin_to_skin_for_normal_apgar_score relevance
+priority: 1
+condition: "step1_keep_warm.contains('no') && step1_apgar_score_at_5_minutes >= 7"
+actions:
+  - "isRelevant = true"
+---
+name: step1_other_reason_for_not_keeping_the_baby_warm_skin_to_skin
+description: other_reason_for_not_keeping_the_baby_warm_skin_to_skin relevance
+priority: 1
+condition: "step1_reasons_for_not_keeping_the_baby_warm_skin_to_skin_for_normal_apgar_score.equals('other') || step1_reasons_for_not_keeping_the_baby_warm_skin_to_skin_for_low_apgar_score.equals('other')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_child_delivery_date
+description: child_delivery_date relevance
+priority: 1
+condition: "global_number_of_children_born > 1 && step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_child_delivery_time
+description: child_delivery_time relevance
+priority: 1
+condition: "global_number_of_children_born > 1 && step1_newborn_status.contains('alive')"
 actions:
   - "isRelevant = true"
 
