@@ -1,4 +1,11 @@
 ---
+name: step1_blood_group
+description: Blood group test should be conducted if it wasn't conducted in the prior visit
+priority: 1
+condition: "!global_blood_group_complete"
+actions:
+  - "isRelevant = true"
+---
 name: step1_hiv
 description:  HIV Test Results should be recorded when gest_age is greater than 32
 priority: 1
