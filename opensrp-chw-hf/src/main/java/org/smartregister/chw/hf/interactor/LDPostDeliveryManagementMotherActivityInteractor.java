@@ -163,6 +163,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         private int numberOfChildrenBorn = 0;
         private String delivery_place;
         String delivery_date;
+        String delivery_time;
         String labour_information;
         private Context context;
         private String baseEntityId;
@@ -191,6 +192,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
             status = JsonFormUtils.getFieldValue(jsonPayload, "status");
             delivery_place = JsonFormUtils.getFieldValue(jsonPayload, "delivery_place");
             delivery_date = JsonFormUtils.getFieldValue(jsonPayload, "delivery_date");
+            delivery_time = JsonFormUtils.getFieldValue(jsonPayload, "delivery_time");
             labour_information = JsonFormUtils.getFieldValue(jsonPayload, "labour_information");
             try {
                 numberOfChildrenBorn = Integer.parseInt(JsonFormUtils.getFieldValue(jsonPayload, "number_of_children_born"));
@@ -224,7 +226,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                     } else {
                         title = MessageFormat.format(context.getString(R.string.ld_new_born_status_action_title), "of " + ordinal(i + 1) + " baby");
                     }
-                    NewBornActionHelper actionHelper = new NewBornActionHelper(baseEntityId, delivery_date);
+                    NewBornActionHelper actionHelper = new NewBornActionHelper(baseEntityId, delivery_date, delivery_time, numberOfChildrenBorn, status);
                     BaseLDVisitAction action = null;
                     try {
                         action = new BaseLDVisitAction.Builder(context, title)
@@ -399,10 +401,16 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         private String baseEntityId;
         private Context context;
         private String deliveryDate;
+        private String deliveryTime;
+        private int numberOfChildrenBorn;
+        private String status;
 
-        public NewBornActionHelper(String baseEntityId, String deliveryDate) {
+        public NewBornActionHelper(String baseEntityId, String deliveryDate, String deliveryTime, int numberOfChildrenBorn, String status) {
             this.baseEntityId = baseEntityId;
             this.deliveryDate = deliveryDate;
+            this.deliveryTime = deliveryTime;
+            this.numberOfChildrenBorn = numberOfChildrenBorn;
+            this.status = status;
         }
 
         @Override
@@ -415,13 +423,16 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         public String getPreProcessed() {
             JSONObject newBornForm = org.smartregister.chw.core.utils.FormUtils.getFormUtils().getFormJson(Constants.JsonForm.LDPostDeliveryMotherManagement.getLdNewBornStatus());
             String hivStatus = LDDao.getHivStatus(baseEntityId);
-            JSONArray fields = null;
+
             try {
-                fields = newBornForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
-                fields.getJSONObject(0).put(VALUE, deliveryDate);
-            } catch (JSONException e) {
-                e.printStackTrace();
+                newBornForm.getJSONObject("global").put("delivery_date", deliveryDate);
+                newBornForm.getJSONObject("global").put("delivery_time", deliveryTime);
+                newBornForm.getJSONObject("global").put("number_of_children_born", numberOfChildrenBorn);
+            } catch (Exception e) {
+                Timber.e(e);
             }
+
+            JSONArray fields = null;
 
             if (fields != null && hivStatus != null && !hivStatus.equalsIgnoreCase(POSITIVE)) {
                 try {
@@ -470,6 +481,15 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                             fields.remove(x);
                         if (fields.getJSONObject(x).getString(KEY).equalsIgnoreCase("followup_visit_date"))
                             fields.remove(x);
+                        if (fields.getJSONObject(x).getString(KEY).equalsIgnoreCase("reason_for_not_breast_feeding_within_one_hour") && status.equals("died")) {
+                            fields.getJSONObject(x).getJSONArray("options").remove(0);
+                        }
+                        if (fields.getJSONObject(x).getString(KEY).equalsIgnoreCase("reasons_for_not_keeping_the_baby_warm_skin_to_skin_for_normal_apgar_score") && status.equals("died")) {
+                            fields.getJSONObject(x).getJSONArray("options").remove(0);
+                        }
+                        if (fields.getJSONObject(x).getString(KEY).equalsIgnoreCase("reasons_for_not_keeping_the_baby_warm_skin_to_skin_for_low_apgar_score") && status.equals("died")) {
+                            fields.getJSONObject(x).getJSONArray("options").remove(0);
+                        }
                     }
 
                 } catch (JSONException e) {
@@ -480,6 +500,15 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                     for (int x = 0; x < fields.length(); x++) {
                         if (fields.getJSONObject(x).getString(KEY).equalsIgnoreCase("sample_collection_date"))
                             fields.getJSONObject(x).put("min_date", deliveryDate);
+                        if (fields.getJSONObject(x).getString(KEY).equalsIgnoreCase("reason_for_not_breast_feeding_within_one_hour") && status.equals("died")) {
+                            fields.getJSONObject(x).getJSONArray("options").remove(0);
+                        }
+                        if (fields.getJSONObject(x).getString(KEY).equalsIgnoreCase("reasons_for_not_keeping_the_baby_warm_skin_to_skin_for_normal_apgar_score") && status.equals("died")) {
+                            fields.getJSONObject(x).getJSONArray("options").remove(0);
+                        }
+                        if (fields.getJSONObject(x).getString(KEY).equalsIgnoreCase("reasons_for_not_keeping_the_baby_warm_skin_to_skin_for_low_apgar_score") && status.equals("died")) {
+                            fields.getJSONObject(x).getJSONArray("options").remove(0);
+                        }
                     }
 
                 } catch (JSONException e) {

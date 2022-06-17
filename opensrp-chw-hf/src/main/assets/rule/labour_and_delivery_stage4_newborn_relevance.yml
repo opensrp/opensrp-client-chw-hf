@@ -394,7 +394,14 @@ actions:
 name: step1_prompt_for_underweight
 description: prompt_for_underweight relevance
 priority: 1
-condition: "step1_weight != '' && step1_weight < 1.5"
+condition: "step1_weight != '' && step1_weight < 2.5"
+actions:
+  - "isRelevant = true"
+---
+name: step1_prompt_for_overweight
+description: prompt_for_overweight relevance
+priority: 1
+condition: "step1_weight != '' && step1_weight > 3.8"
 actions:
   - "isRelevant = true"
 ---
@@ -412,8 +419,8 @@ condition: "step1_newborn_status.contains('alive')"
 actions:
   - "isRelevant = true"
 ---
-name: step1_breathing_rate
-description: breathing_rate relevance
+name: step1_respiratory_rate
+description: respiratory_rate relevance
 priority: 1
 condition: "step1_newborn_status.contains('alive')"
 actions:
@@ -612,6 +619,55 @@ name: step1_child_opv0_vaccination
 description: child_opv0_vaccination relevance
 priority: 1
 condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_prompt_for_respiratory_rate
+description:  prompt for respiratory rate management
+priority: 1
+condition: "step1_respiratory_rate < 40 || step1_respiratory_rate > 60"
+actions:
+  - "isRelevant = true"
+---
+name: step1_prompt_for_fetal_distress
+description: prompt for fetal distress
+priority: 1
+condition: "!step1_heart_rate.isEmpty() && (step1_heart_rate > 160 || step1_heart_rate < 120)"
+actions:
+  - "isRelevant = true"
+---
+name: step1_reasons_for_not_keeping_the_baby_warm_skin_to_skin_for_low_apgar_score
+description: step1_reasons_for_not_keeping_the_baby_warm_skin_to_skin_for_low_apgar_score relevance
+priority: 1
+condition: "step1_keep_warm.contains('no') && step1_apgar_score_at_5_minutes < 7"
+actions:
+  - "isRelevant = true"
+---
+name: step1_reasons_for_not_keeping_the_baby_warm_skin_to_skin_for_normal_apgar_score
+description: reasons_for_not_keeping_the_baby_warm_skin_to_skin_for_normal_apgar_score relevance
+priority: 1
+condition: "step1_keep_warm.contains('no') && step1_apgar_score_at_5_minutes >= 7"
+actions:
+  - "isRelevant = true"
+---
+name: step1_other_reason_for_not_keeping_the_baby_warm_skin_to_skin
+description: other_reason_for_not_keeping_the_baby_warm_skin_to_skin relevance
+priority: 1
+condition: "step1_reasons_for_not_keeping_the_baby_warm_skin_to_skin_for_normal_apgar_score.equals('other') || step1_reasons_for_not_keeping_the_baby_warm_skin_to_skin_for_low_apgar_score.equals('other')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_child_delivery_date
+description: child_delivery_date relevance
+priority: 1
+condition: "global_number_of_children_born > 1 && step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_child_delivery_time
+description: child_delivery_time relevance
+priority: 1
+condition: "global_number_of_children_born > 1 && step1_newborn_status.contains('alive')"
 actions:
   - "isRelevant = true"
 

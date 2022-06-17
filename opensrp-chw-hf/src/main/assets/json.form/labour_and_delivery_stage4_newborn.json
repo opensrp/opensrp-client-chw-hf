@@ -53,6 +53,7 @@
       "value": ""
     }
   },
+  "global": {},
   "step1": {
     "title": "Immediate Newborn Care",
     "fields": [
@@ -61,7 +62,28 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "delivery_date",
-        "type": "hidden"
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "delivery_time",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "delivery_time",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_calculation.yml"
+            }
+          }
+        }
       },
       {
         "key": "newborn_status",
@@ -129,6 +151,47 @@
         }
       },
       {
+        "key": "child_delivery_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "child_delivery_date",
+        "type": "date_picker",
+        "hint": "Delivery Date",
+        "expanded": false,
+        "min_date": "today-2y",
+        "max_date": "today",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the delivery date"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "child_delivery_time",
+        "type": "time_picker",
+        "hint": "Delivery Time",
+        "openmrs_entity_id": "child_delivery_time",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": true,
+          "err": "Please select the delivery time"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "sex",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -137,11 +200,13 @@
         "hint": "Sex",
         "values": [
           "Male",
-          "Female"
+          "Female",
+          "Ambiguous"
         ],
         "keys": [
           "Male",
-          "Female"
+          "Female",
+          "Ambiguous"
         ],
         "v_required": {
           "value": "true",
@@ -569,7 +634,7 @@
       {
         "key": "prompt_for_normal_apgar_score_at_1_minute",
         "type": "toaster_notes",
-        "text": "APGAR score at 1 min, Normal: {apgar_score}",
+        "text": "APGAR score at 1 min, Normal: {apgar_score}/10",
         "openmrs_entity_id": "",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -592,7 +657,7 @@
       {
         "key": "prompt_for_abnormal_apgar_score_at_1_minute",
         "type": "toaster_notes",
-        "text": "APGAR score at 1 min, Abnormal: {apgar_score}. \nGo to emergency",
+        "text": "APGAR score at 1 min, Abnormal: {apgar_score}/10. \nGo to emergency",
         "openmrs_entity_id": "",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -1025,7 +1090,7 @@
       {
         "key": "prompt_for_normal_apgar_score_at_5_minutes",
         "type": "toaster_notes",
-        "text": "APGAR score at 5 mins, Normal: {apgar_score}",
+        "text": "APGAR score at 5 mins, Normal: {apgar_score}/10",
         "openmrs_entity_id": "",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -1048,7 +1113,7 @@
       {
         "key": "prompt_for_abnormal_apgar_score_at_5_minutes",
         "type": "toaster_notes",
-        "text": "APGAR score at 5 mins, Abnormal: {apgar_score}. \nGo to emergency",
+        "text": "APGAR score at 5 mins, Abnormal: {apgar_score}/10. \nGo to emergency",
         "openmrs_entity_id": "",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -1150,6 +1215,36 @@
         }
       },
       {
+        "key": "notify_client_has_fever",
+        "type": "toaster_notes",
+        "text": "Conduct relevant laboratory tests to elicit the cause of fever and manage according to standard guidelines ",
+        "openmrs_entity_id": "notify_client_has_fever",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:temperature": {
+            "type": "numeric",
+            "ex": "greaterThan(.,\"37.8\")"
+          }
+        }
+      },
+      {
+        "key": "notify_client_has_hypothermia",
+        "type": "toaster_notes",
+        "text": "Manage the hypothermia according to standard guidelines",
+        "openmrs_entity_id": "notify_client_has_hypothermia",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:temperature": {
+            "type": "numeric",
+            "ex": "lessThan(.,\"36.5\")"
+          }
+        }
+      },
+      {
         "key": "weight",
         "type": "edit_text",
         "hint": "Weight (KG)",
@@ -1183,7 +1278,23 @@
       {
         "key": "prompt_for_underweight",
         "type": "toaster_notes",
-        "text": "Manage according to National guideline",
+        "text": "Manage according to SOP and National guideline",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_overweight",
+        "type": "toaster_notes",
+        "text": "Manage according to SOP and National guideline",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -1215,6 +1326,22 @@
           "value": "200",
           "err": "The heart rate must be equal or less than 200 (bpm)"
         },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_fetal_distress",
+        "type": "toaster_notes",
+        "text": "Manage according to SOP and National guideline",
+        "openmrs_entity_id": "prompt_for_fetal_distress",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -1257,10 +1384,129 @@
         }
       },
       {
-        "key": "breathing_rate",
+        "key": "reasons_for_not_keeping_the_baby_warm_skin_to_skin_for_low_apgar_score",
+        "type": "native_radio",
+        "label": "Reasons for not Keeping the baby warm (skin to skin)",
+        "openmrs_entity_id": "reasons_for_not_keeping_the_baby_warm_skin_to_skin_for_low_apgar_score",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "mother_died",
+            "text": "Mother Died",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "mother_died"
+          },
+          {
+            "key": "mother_has_complications",
+            "text": "Mother has complications",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "mother_has_complications"
+          },
+          {
+            "key": "baby_has_low_apgar_score",
+            "text": "Baby has low ApGar score",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "baby_has_low_apgar_score"
+          },
+          {
+            "key": "other",
+            "text": "Other (Specify)",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please answer this question"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "reasons_for_not_keeping_the_baby_warm_skin_to_skin_for_normal_apgar_score",
+        "type": "native_radio",
+        "label": "Reasons for not Keeping the baby warm (skin to skin)",
+        "openmrs_entity_id": "reasons_for_not_keeping_the_baby_warm_skin_to_skin_for_normal_apgar_score",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "mother_died",
+            "text": "Mother Died",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "mother_died"
+          },
+          {
+            "key": "mother_has_complications",
+            "text": "Mother has complications",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "mother_has_complications"
+          },
+          {
+            "key": "other",
+            "text": "Other (Specify)",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please answer this question"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "reasons_for_not_keeping_the_baby_warm_skin_to_skin",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reasons_for_not_keeping_the_baby_warm_skin_to_skin",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_calculation.yml"
+            }
+          }
+        }
+      },
+
+      {
+        "key": "other_reason_for_not_keeping_the_baby_warm_skin_to_skin",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reason_for_not_keeping_the_baby_warm_skin_to_skin",
+        "type": "edit_text",
+        "hint": "Specify other reasons for not keeping the baby warm (skin to skin)",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the reason"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "respiratory_rate",
         "type": "edit_text",
         "hint": "Breathing Rate (bpm)",
-        "openmrs_entity_id": "breathing_rate",
+        "openmrs_entity_id": "respiratory_rate",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "v_numeric": {
@@ -1272,9 +1518,25 @@
           "err": "The breathing rate must be equal or greater than 0 (bpm)"
         },
         "v_max": {
-          "value": "100",
-          "err": "The breathing rate must be equal or less than 100 (bpm)"
+          "value": "80",
+          "err": "The breathing rate must be equal or less than 80 (bpm)"
         },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_respiratory_rate",
+        "type": "toaster_notes",
+        "text": "Manage according to SOP and National guideline",
+        "openmrs_entity_id": "prompt_for_respiratory_rate",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -1319,7 +1581,7 @@
       {
         "key": "prompt_for_cord_bleeding",
         "type": "toaster_notes",
-        "text": "Manage according to National guideline",
+        "text": "Manage according to SOP and National guideline",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -1335,7 +1597,7 @@
       {
         "key": "early_bf_1hr",
         "type": "native_radio",
-        "label": "Breast Feeding",
+        "label": "Breast Fed within one hour",
         "openmrs_entity_id": "early_bf_1hr",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -1370,26 +1632,35 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "reason_for_not_breast_feeding_within_one_hour",
-        "type": "spinner",
+        "type": "check_box",
+        "combine_checkbox_option_values": "true",
         "hint": "Reason why the child was not breast fed within one hour",
-        "values": [
-          "Mother Died",
-          "There was no milk flow",
-          "Replacement Feeding",
-          "Other (Specify)"
+        "options": [
+          {
+            "key": "mother_died",
+            "text": "Mother Died",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "mother_died"
+          },
+          {
+            "key": "no_milk_flow",
+            "text": "There was no milk flow",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no_milk_flow"
+          },
+          {
+            "key": "replacement_feeding",
+            "text": "Replacement Feeding",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "replacement_feeding"
+          },
+          {
+            "key": "other",
+            "text": "Other (Specify)",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other"
+          }
         ],
-        "keys": [
-          "mother_died",
-          "no_milk_flow",
-          "replacement_feeding",
-          "other"
-        ],
-        "openmrs_choice_ids": {
-          "mother_died": "mother_died",
-          "no_milk_flow": "no_milk_flow",
-          "replacement_feeding": "replacement_feeding",
-          "Other": "other"
-        },
         "v_required": {
           "value": "true",
           "err": "Please select a reason"
@@ -1687,7 +1958,7 @@
       {
         "key": "prompt_for_low_risk",
         "type": "toaster_notes",
-        "text": "Manage according to National guideline",
+        "text": "Please provide NVP Syrup",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
