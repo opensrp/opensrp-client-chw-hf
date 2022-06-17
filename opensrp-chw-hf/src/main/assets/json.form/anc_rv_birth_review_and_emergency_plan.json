@@ -46,7 +46,14 @@
     },
     "encounter_location": ""
   },
-  "global": {},
+  "global": {
+    "delivery_place_identified": false,
+    "transport_identified": false,
+    "birth_companion_identified": false,
+    "emergency_funds_identified": false,
+    "household_support_identified": false,
+    "blood_donor_identified": false
+  },
   "step1": {
     "title": "Review birth and emergency plan",
     "fields": [
@@ -76,6 +83,13 @@
         "v_required": {
           "value": "true",
           "err": "Please select one"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_emergency_plan_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -124,6 +138,13 @@
         "v_required": {
           "value": "true",
           "err": "Please select one"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_emergency_plan_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -152,6 +173,13 @@
         "v_required": {
           "value": "true",
           "err": "Please select one"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_emergency_plan_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -180,6 +208,13 @@
         "v_required": {
           "value": "true",
           "err": "Please select one"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_emergency_plan_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -208,6 +243,13 @@
         "v_required": {
           "value": "true",
           "err": "Please select one"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_emergency_plan_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -236,6 +278,13 @@
         "v_required": {
           "value": "true",
           "err": "Please select one"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_emergency_plan_relevance.yml"
+            }
+          }
         }
       }
     ]

@@ -28,6 +28,7 @@ import org.smartregister.chw.hf.actionhelper.AncMalariaInvestigationAction;
 import org.smartregister.chw.hf.actionhelper.AncPharmacyAction;
 import org.smartregister.chw.hf.actionhelper.AncTriageAction;
 import org.smartregister.chw.hf.actionhelper.AncTtVaccinationAction;
+import org.smartregister.chw.hf.dao.HfAncBirthEmergencyPlanDao;
 import org.smartregister.chw.hf.dao.HfAncDao;
 import org.smartregister.chw.hf.repository.HfLocationRepository;
 import org.smartregister.chw.hf.utils.Constants;
@@ -455,8 +456,18 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                         e.printStackTrace();
                     }
 
-                    if (!HfAncDao.isReviewFormFilled(baseEntityId)) {
+                    if (!HfAncBirthEmergencyPlanDao.isAllFilled(baseEntityId)) {
                         JSONObject birthReviewForm = initializeHealthFacilitiesList(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.BIRTH_REVIEW_AND_EMERGENCY_PLAN));
+                        try {
+                            birthReviewForm.getJSONObject("global").put("delivery_place_identified", HfAncBirthEmergencyPlanDao.isDeliveryPlaceIdentified(baseEntityId));
+                            birthReviewForm.getJSONObject("global").put("transport_identified", HfAncBirthEmergencyPlanDao.isTransportMethodIdentified(baseEntityId));
+                            birthReviewForm.getJSONObject("global").put("birth_companion_identified", HfAncBirthEmergencyPlanDao.isBirthCompanionIdentified(baseEntityId));
+                            birthReviewForm.getJSONObject("global").put("emergency_funds_identified", HfAncBirthEmergencyPlanDao.areEmergencyFundsPrepared(baseEntityId));
+                            birthReviewForm.getJSONObject("global").put("household_support_identified", HfAncBirthEmergencyPlanDao.isHouseholdSupportIdentified(baseEntityId));
+                            birthReviewForm.getJSONObject("global").put("blood_donor_identified", HfAncBirthEmergencyPlanDao.isBloodDonorIdentified(baseEntityId));
+                        } catch (JSONException e) {
+                           Timber.e(e);
+                        }
                         try {
                             BaseAncHomeVisitAction birthReview = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_review_birth_and_emergency_plan))
                                     .withOptional(true)

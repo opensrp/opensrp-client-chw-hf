@@ -1,0 +1,42 @@
+---
+name: step1_delivery_place
+description: if filled once no need to fill again
+priority: 1
+condition: "!global_delivery_place_identified"
+actions:
+  - "isRelevant = true"
+---
+name: step1_transport
+description: if filled once no need to fill again
+priority: 1
+condition: "!global_transport_identified"
+actions:
+  - "isRelevant = true"
+---
+name: step1_birth_companion
+description: if filled once no need to fill again
+priority: 1
+condition: "!global_birth_companion_identified"
+actions:
+  - "isRelevant = true"
+---
+name: step1_emergency_funds
+description: if filled once no need to fill again
+priority: 1
+condition: "!global_emergency_funds_identified"
+actions:
+  - "isRelevant = true"
+---
+name: step1_household_support
+description: if filled once no need to fill again
+priority: 1
+condition: "!global_household_support_identified"
+actions:
+  - "isRelevant = true"
+---
+name: step1_blood_donor
+description: if filled once no need to fill again
+priority: 1
+condition: "!global_blood_donor_identified"
+actions:
+  - "isRelevant = true"
