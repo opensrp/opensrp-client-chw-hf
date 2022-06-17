@@ -46,9 +46,52 @@
     },
     "encounter_location": ""
   },
+  "global": {
+    "delivery_place_identified": false,
+    "transport_identified": false,
+    "birth_companion_identified": false,
+    "emergency_funds_identified": false,
+    "household_support_identified": false,
+    "blood_donor_identified": false
+  },
   "step1": {
     "title": "Pitia na Hakiki Mpango wa Kujifungua na Dharura",
     "fields": [
+      {
+        "key": "delivery_place",
+        "type": "native_radio",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "delivery_place",
+        "openmrs_entity_parent": "",
+        "label": "Kituo cha Afya cha Kujifungulia Kimetambulika?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "text": "Kimetambulika na Kuandaliwa",
+            "key": "prepared",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "prepared"
+          },
+          {
+            "text": "Bado Hakijatabmulika",
+            "key": "not_prepared",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "not_prepared"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua moja"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_emergency_plan_relevance.yml"
+            }
+          }
+        }
+      },
       {
         "key": "name_of_hf",
         "openmrs_entity_parent": "",
@@ -61,100 +104,188 @@
         "v_required": {
           "value": true,
           "err": "Tafadhali chagua kituo cha afya"
-        }
-      },
-      {
-        "key": "name_of_hf_other",
-        "type": "edit_text",
-        "hint": "Jina la kituo cha afya",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "name_of_hf_other",
-        "openmrs_entity_parent": "",
-        "v_required": {
-          "value": true,
-          "err": "Tafadhali ingiza jina la kituo cha afya"
         },
         "relevance": {
-          "step1:name_of_hf": {
+          "step1:delivery_place": {
             "type": "string",
-            "ex": "equalTo(., \"Other\")"
+            "ex": "equalTo(., \"prepared\")"
           }
         }
       },
       {
         "key": "transport",
-        "type": "check_box",
+        "type": "native_radio",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "transport",
         "openmrs_entity_parent": "",
+        "label": "Andaa Njia ya Usafiri",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
         "options": [
           {
             "text": "Njia ya Usafiri Imetambuliwa",
-            "key": "method_of_transport_identified",
+            "key": "prepared",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "method_of_transport_identified"
+            "openmrs_entity_id": "prepared"
+          },
+          {
+            "text": "Njia ya Usafiri Haijatambuliwa",
+            "key": "not_prepared",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "not_prepared"
           }
-        ]
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua moja"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_emergency_plan_relevance.yml"
+            }
+          }
+        }
       },
       {
         "key": "birth_companion",
-        "type": "check_box",
+        "type": "native_radio",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "birth_companion",
         "openmrs_entity_parent": "",
+        "label": "Andaa Mwenzi wa kujifungua na kuarifiwa",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
         "options": [
           {
             "text": "Mwenzi wa kujifungua ametambulika na kuarifiwa",
-            "key": "birth_companion_identified",
+            "key": "prepared",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "birth_companion_identified"
+            "openmrs_entity_id": "prepared"
+          },
+          {
+            "text": "Hajatambulika na kuarifiwa",
+            "key": "not_prepared",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "not_prepared"
           }
-        ]
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua moja"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_emergency_plan_relevance.yml"
+            }
+          }
+        }
       },
       {
         "key": "emergency_funds",
-        "type": "check_box",
+        "type": "native_radio",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "emergency_funds",
         "openmrs_entity_parent": "",
+        "label": "Andaa hela kwa ajili ya kujifungua na mahitaji mengine",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
         "options": [
           {
-            "key": "emergency_birth_funds",
-            "text": "Andaa hela kwa ajili ya kujifungua na mahitaji mengine",
+            "key": "prepared",
+            "text": "Zimeandaliwa",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "emergency_birth_funds"
+            "openmrs_entity_id": "prepared"
+          },
+          {
+            "key": "not_prepared",
+            "text": "Bado Hazijaandaliwa",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "not_prepared"
           }
-        ]
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua moja"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_emergency_plan_relevance.yml"
+            }
+          }
+        }
       },
       {
         "key": "household_support",
-        "type": "check_box",
+        "type": "native_radio",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "household_support",
         "openmrs_entity_parent": "",
+        "label": "Andaa Msaada wa Mlezi wa Kaya",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
         "options": [
           {
-            "text": "Msaada wa Mlezi wa Kaya umeandaliwa",
-            "key": "household_caregiver_support_prepared",
+            "text": "Ameandaliwa",
+            "key": "prepared",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "household_caregiver_support_prepared"
+            "openmrs_entity_id": "prepared"
+          },
+          {
+            "text": "Bado hajaandaliwa",
+            "key": "not_prepared",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "not_prepared"
           }
-        ]
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua moja"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_emergency_plan_relevance.yml"
+            }
+          }
+        }
       },
       {
         "key": "blood_donor",
-        "type": "check_box",
+        "type": "native_radio",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "blood_donor",
         "openmrs_entity_parent": "",
+        "label": "Tayarisha mtu wa kutoa damu",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
         "options": [
           {
-            "key": "blood_donor_for_transfusion",
-            "text": "Tayarisha mtu wa kutoa damu",
+            "key": "prepared",
+            "text": "Ametayarishwa",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "blood_donor_for_transfusion"
+            "openmrs_entity_id": "prepared"
+          },
+          {
+            "key": "not_prepared",
+            "text": "Bado Hajatayarishwa",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "not_prepared"
           }
-        ]
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua moja"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_emergency_plan_relevance.yml"
+            }
+          }
+        }
       }
     ]
   }

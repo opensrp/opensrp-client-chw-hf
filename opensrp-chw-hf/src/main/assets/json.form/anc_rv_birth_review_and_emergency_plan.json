@@ -46,9 +46,52 @@
     },
     "encounter_location": ""
   },
+  "global": {
+    "delivery_place_identified": false,
+    "transport_identified": false,
+    "birth_companion_identified": false,
+    "emergency_funds_identified": false,
+    "household_support_identified": false,
+    "blood_donor_identified": false
+  },
   "step1": {
     "title": "Review birth and emergency plan",
     "fields": [
+      {
+        "key": "delivery_place",
+        "type": "native_radio",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "delivery_place",
+        "openmrs_entity_parent": "",
+        "label": "Delivery Place Identified?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "text": "Identified and Prepared",
+            "key": "prepared",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "prepared"
+          },
+          {
+            "text": "Not Prepared",
+            "key": "not_prepared",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "not_prepared"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select one"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_emergency_plan_relevance.yml"
+            }
+          }
+        }
+      },
       {
         "key": "name_of_hf",
         "openmrs_entity_parent": "",
@@ -61,100 +104,188 @@
         "v_required": {
           "value": true,
           "err": "Please select the health facility"
-        }
-      },
-      {
-        "key": "name_of_hf_other",
-        "type": "edit_text",
-        "hint": "Name of Health Facility",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "name_of_hf_other",
-        "openmrs_entity_parent": "",
-        "v_required": {
-          "value": true,
-          "err": "Please enter the name of health facility facility"
         },
         "relevance": {
-          "step1:name_of_hf": {
+          "step1:delivery_place": {
             "type": "string",
-            "ex": "equalTo(., \"Other\")"
+            "ex": "equalTo(., \"prepared\")"
           }
         }
       },
       {
         "key": "transport",
-        "type": "check_box",
+        "type": "native_radio",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "transport",
         "openmrs_entity_parent": "",
+        "label": "Prepare and Identify Method Of Transport",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
         "options": [
           {
-            "text": "Method of Transport Identified",
-            "key": "method_of_transport_identified",
+            "text": "Identified and Prepared",
+            "key": "prepared",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "method_of_transport_identified"
+            "openmrs_entity_id": "prepared"
+          },
+          {
+            "text": "Not Prepared",
+            "key": "not_prepared",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "not_prepared"
           }
-        ]
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select one"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_emergency_plan_relevance.yml"
+            }
+          }
+        }
       },
       {
         "key": "birth_companion",
-        "type": "check_box",
+        "type": "native_radio",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "birth_companion",
         "openmrs_entity_parent": "",
+        "label": "Prepare a Birth Companion and Notify",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
         "options": [
           {
             "text": "Birth Companion Identified and notified",
-            "key": "birth_companion_identified",
+            "key": "prepared",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "birth_companion_identified"
+            "openmrs_entity_id": "prepared"
+          },
+          {
+            "text": "Birth Companion Not Identified",
+            "key": "not_prepared",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "not_prepared"
           }
-        ]
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select one"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_emergency_plan_relevance.yml"
+            }
+          }
+        }
       },
       {
         "key": "emergency_funds",
-        "type": "check_box",
+        "type": "native_radio",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "emergency_funds",
         "openmrs_entity_parent": "",
+        "label": "Prepare money for delivery and other delivery needs",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
         "options": [
           {
-            "key": "emergency_birth_funds",
-            "text": "Prepare money for delivery and other delivery needs",
+            "key": "prepared",
+            "text": "Prepared",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "emergency_birth_funds"
+            "openmrs_entity_id": "prepared"
+          },
+          {
+            "key": "not_prepared",
+            "text": "Not Prepared",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "not_prepared"
           }
-        ]
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select one"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_emergency_plan_relevance.yml"
+            }
+          }
+        }
       },
       {
         "key": "household_support",
-        "type": "check_box",
+        "type": "native_radio",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "household_support",
         "openmrs_entity_parent": "",
+        "label": "Prepare A Household Caregiver For Support",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
         "options": [
           {
-            "text": "Household Caregiver support prepared",
-            "key": "household_caregiver_support_prepared",
+            "text": "Prepared",
+            "key": "prepared",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "household_caregiver_support_prepared"
+            "openmrs_entity_id": "prepared"
+          },
+          {
+            "text": "Not Prepared",
+            "key": "not_prepared",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "not_prepared"
           }
-        ]
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select one"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_emergency_plan_relevance.yml"
+            }
+          }
+        }
       },
       {
         "key": "blood_donor",
-        "type": "check_box",
+        "type": "native_radio",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "blood_donor",
         "openmrs_entity_parent": "",
+        "label": "Prepare Blood donor standby for blood transfusion",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
         "options": [
           {
-            "key": "blood_donor_for_transfusion",
-            "text": "Prepare blood donor stand by for blood transfusion",
+            "key": "prepared",
+            "text": "Prepared",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "blood_donor_for_transfusion"
+            "openmrs_entity_id": "prepared"
+          },
+          {
+            "key": "not_prepared",
+            "text": "Not Prepared",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "not_prepared"
           }
-        ]
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select one"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_emergency_plan_relevance.yml"
+            }
+          }
+        }
       }
     ]
   }
