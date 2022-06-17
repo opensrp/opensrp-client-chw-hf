@@ -17,14 +17,13 @@ public class HfAncBirthEmergencyPlanDao extends AbstractDao {
     }
 
     public static boolean isDeliveryPlaceIdentified(String baseEntityId) {
-        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "delivery_place");
+        //adding a check for name_of_hf because question for delivery place didn't exist prior
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "name_of_hf");
         String sql = String.format(
-                "SELECT delivery_place FROM %s WHERE entity_id = '%s' " +
-                        "AND is_closed = 0 AND delivery_place is not null AND delivery_place <> 'not_prepared'",
-                TABLE_NAME,
-                baseEntityId
-        );
-        List<String> res = readData(sql, dataMap);
+                "SELECT name_of_hf FROM %s WHERE entity_id = '%s'" +
+                        " AND is_closed = 0 AND name_of_hf IS NOT NULL",
+                TABLE_NAME, baseEntityId);
+        List<String> res =readData(sql, dataMap);
         return res != null && res.size() > 0 && res.get(0) != null;
     }
 
