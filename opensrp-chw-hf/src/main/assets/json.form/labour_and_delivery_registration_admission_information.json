@@ -149,7 +149,8 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "reasons_for_admission",
-        "type": "native_radio",
+        "type": "check_box",
+        "combine_checkbox_option_values": "true",
         "label": "Please select the reason for Admission",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
@@ -184,7 +185,7 @@
           },
           {
             "key": "induction",
-            "text": "Induction",
+            "text": "Induction of labor",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "induction"
@@ -218,8 +219,13 @@
         },
         "relevance": {
           "step1:reasons_for_admission": {
-            "type": "string",
-            "ex": "equalTo(., \"other\")"
+            "ex-checkbox": [
+              {
+                "or": [
+                  "other"
+                ]
+              }
+            ]
           }
         }
       },
