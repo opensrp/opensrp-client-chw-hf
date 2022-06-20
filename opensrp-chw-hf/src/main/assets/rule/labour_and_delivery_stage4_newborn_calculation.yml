@@ -88,7 +88,14 @@ description: visit_number calculation
 priority: 1
 condition: "step1_risk_category != ''"
 actions:
-  - "calculation = 1"
+  - "calculation = 0"
+---
+name: step1_next_facility_visit_date
+description: next_facility_visit_date calculation
+priority: 1
+condition: "step1_delivery_date != ''"
+actions:
+  - "calculation = helper.addDuration(step1_delivery_date, '6w')"
 ---
 name: step1_visit_number
 description: visit_number calculation

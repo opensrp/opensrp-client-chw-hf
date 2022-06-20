@@ -479,6 +479,8 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                             fields.remove(x);
                         if (fields.getJSONObject(x).getString(KEY).equalsIgnoreCase("visit_number"))
                             fields.remove(x);
+                        if (fields.getJSONObject(x).getString(KEY).equalsIgnoreCase("next_facility_visit_date"))
+                            fields.remove(x);
                         if (fields.getJSONObject(x).getString(KEY).equalsIgnoreCase("followup_visit_date"))
                             fields.remove(x);
                         if (fields.getJSONObject(x).getString(KEY).equalsIgnoreCase("reason_for_not_breast_feeding_within_one_hour") && status.equals("died")) {
