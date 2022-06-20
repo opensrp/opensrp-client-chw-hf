@@ -379,6 +379,13 @@
         "type": "hidden"
       },
       {
+        "key": "next_facility_visit_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "next_facility_visit_date",
+        "type": "hidden"
+      },
+      {
         "key": "sample_collection_date",
         "type": "date_picker",
         "hint": "DNA-PCR Sample Collection Date",
