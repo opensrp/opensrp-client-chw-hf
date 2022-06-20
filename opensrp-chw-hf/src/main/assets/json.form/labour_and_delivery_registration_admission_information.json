@@ -212,7 +212,6 @@
         "openmrs_entity_id": "other_reason_for_admission",
         "type": "edit_text",
         "hint": "Specify other reasons for admission",
-        "edit_type": "name",
         "v_required": {
           "value": "true",
           "err": "Please enter the reason"
@@ -312,6 +311,13 @@
             "openmrs_entity_id": "pale_anaemic"
           },
           {
+            "key": "other",
+            "text": "Other (Specify)",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other"
+          },
+          {
             "key": "none",
             "text": "None",
             "value": false,
@@ -319,6 +325,29 @@
             "openmrs_entity_id": "none"
           }
         ]
+      },
+      {
+        "key": "other_danger_signs",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_danger_signs",
+        "type": "edit_text",
+        "hint": "Specify other danger signs and risk factors",
+        "v_required": {
+          "value": "true",
+          "err": "Please specify the danger signs and risk factors"
+        },
+        "relevance": {
+          "step1:danger_signs": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "other"
+                ]
+              }
+            ]
+          }
+        }
       },
       {
         "key": "danger_signs_present_toaster",
