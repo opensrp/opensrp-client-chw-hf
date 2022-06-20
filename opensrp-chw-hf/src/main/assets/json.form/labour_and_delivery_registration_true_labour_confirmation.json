@@ -117,11 +117,44 @@
       {
         "key": "prompt_for_false_labor",
         "type": "toaster_notes",
-        "text": "False labor! Continue monitoring the mother according to guidelines",
+        "text": "Continue monitoring the mother according to guidelines",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
         "toaster_type": "info",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labor_and_delivery_registration_current_labor_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "admit_client",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "admit_client",
+        "type": "native_radio",
+        "label": "Do you want to admit the client?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
         "relevance": {
           "rules-engine": {
             "ex-rules": {

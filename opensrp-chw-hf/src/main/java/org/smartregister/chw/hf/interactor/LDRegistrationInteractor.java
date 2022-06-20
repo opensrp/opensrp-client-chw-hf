@@ -8,6 +8,7 @@ import org.smartregister.chw.ld.domain.MemberObject;
 import org.smartregister.chw.ld.domain.Visit;
 import org.smartregister.chw.ld.interactor.BaseLDVisitInteractor;
 import org.smartregister.chw.ld.model.BaseLDVisitAction;
+import org.smartregister.chw.ld.util.JsonFormUtils;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -22,15 +23,19 @@ import timber.log.Timber;
  */
 public class LDRegistrationInteractor extends BaseLDVisitInteractor {
     private Flavor flavor;
-
+    private String encounterType = Constants.Events.LD_REGISTRATION;
     public LDRegistrationInteractor(String baseEntityId) {
         setFlavor(new LDRegistrationInteractorFlv(baseEntityId));
         flavor = new LDRegistrationInteractorFlv(baseEntityId);
     }
 
+    public void setFalseLabourEncounterType() {
+        encounterType = "False Labour Report";
+    }
+
     @Override
     protected String getEncounterType() {
-        return Constants.Events.LD_REGISTRATION;
+        return encounterType;
     }
 
     @Override
@@ -87,5 +92,22 @@ public class LDRegistrationInteractor extends BaseLDVisitInteractor {
         List<Visit> visits = new ArrayList<>(1);
         visits.add(visit);
         org.smartregister.chw.ld.util.VisitUtils.processVisits(visits, LDLibrary.getInstance().visitRepository(), LDLibrary.getInstance().visitDetailsRepository());
+    }
+
+    @Override
+    public void submitVisit(boolean editMode, String memberID, Map<String, BaseLDVisitAction> map, BaseLDVisitContract.InteractorCallBack callBack) {
+        if (map != null) {
+            BaseLDVisitAction labourConfirmationAction = map.get("True Labour Confirmation");
+            if (labourConfirmationAction != null) {
+                boolean isTrueLabour = Boolean.parseBoolean(
+                        JsonFormUtils.getFieldValue(labourConfirmationAction.getJsonPayload(),
+                                "labour_confirmation"));
+
+                if (!isTrueLabour) {
+                    setFalseLabourEncounterType();
+                }
+            }
+        }
+        super.submitVisit(editMode, memberID, map, callBack);
     }
 }

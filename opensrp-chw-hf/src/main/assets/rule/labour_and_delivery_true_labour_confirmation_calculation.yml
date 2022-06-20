@@ -4,7 +4,7 @@ description: Labour Confirmation calculation
 priority: 1
 condition: "true"
 actions:
-  - 'def getLabourConfirmation(trueLabour) {
+  - 'def getLabourConfirmation(trueLabour, admitClient) {
            import java.util.*;
            int value = 0;
            if (trueLabour.contains("painful_uterine_contraction"))
@@ -19,6 +19,6 @@ actions:
            if (trueLabour.contains("progressive_descent"))
                value =+1;
 
-          return value >= 2;
+          return value >= 2 || admitClient == "yes";
        }'
-  - "calculation = getLabourConfirmation(step1_true_labour)"
+  - "calculation = getLabourConfirmation(step1_true_labour, step1_admit_client)"
