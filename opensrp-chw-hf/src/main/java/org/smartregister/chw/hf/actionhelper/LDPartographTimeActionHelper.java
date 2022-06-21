@@ -1,6 +1,5 @@
 package org.smartregister.chw.hf.actionhelper;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 
 import org.apache.commons.lang3.StringUtils;
@@ -18,7 +17,6 @@ import org.smartregister.chw.ld.domain.VisitDetail;
 import org.smartregister.chw.ld.model.BaseLDVisitAction;
 import org.smartregister.chw.referral.util.JsonFormConstants;
 
-import java.sql.Time;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -40,7 +38,6 @@ public class LDPartographTimeActionHelper implements BaseLDVisitAction.LDVisitAc
     protected String date;
     private final MemberObject memberObject;
     private final DateFormat hourFormat = new SimpleDateFormat("HH:mm");
-    private final DateFormat dateOnlyFormat = new SimpleDateFormat("dd-MM-yyyy");
     private final DateFormat completeDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
 
     public LDPartographTimeActionHelper(MemberObject memberObject) {
