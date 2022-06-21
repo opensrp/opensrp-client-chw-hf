@@ -78,6 +78,20 @@
         }
       },
       {
+        "key": "thirty_minutes_ago",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "thirty_minutes_ago",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_partograph_monitoring_time_calculation.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "partograph_time",
         "type": "time_picker",
         "hint": "Partograph Time",
@@ -88,7 +102,12 @@
           {
             "type": "time",
             "ex": "greaterThan(., step1:last_partograph_monitoring_time)",
-            "err": "The partograph monitoring time cannot be before the previously captured partograph monitoring time"
+            "err": "The partograph monitoring time cannot be before the last partograph time"
+          },
+          {
+            "type": "time",
+            "ex": "greaterThan(., step1:thirty_minutes_ago)",
+            "err": "The partograph monitoring time cannot be before thirty minutes ago"
           }
         ]
       }

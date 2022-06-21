@@ -1,8 +1,10 @@
 package org.smartregister.chw.hf.actionhelper;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.time.DateUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -16,11 +18,15 @@ import org.smartregister.chw.ld.domain.VisitDetail;
 import org.smartregister.chw.ld.model.BaseLDVisitAction;
 import org.smartregister.chw.referral.util.JsonFormConstants;
 
+import java.sql.Time;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import timber.log.Timber;
 
@@ -33,6 +39,9 @@ public class LDPartographTimeActionHelper implements BaseLDVisitAction.LDVisitAc
     protected String time;
     protected String date;
     private final MemberObject memberObject;
+    private final DateFormat hourFormat = new SimpleDateFormat("HH:mm");
+    private final DateFormat dateOnlyFormat = new SimpleDateFormat("dd-MM-yyyy");
+    private final DateFormat completeDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
 
     public LDPartographTimeActionHelper(MemberObject memberObject) {
         this.memberObject = memberObject;
@@ -54,7 +63,6 @@ public class LDPartographTimeActionHelper implements BaseLDVisitAction.LDVisitAc
                 JSONArray fields = partographTimeForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
                 populatePartograhDateTimeForm(fields, baseEntityId);
 
-
                 String partographDate = null;
                 String partographTime = null;
                 if (LDDao.getPartographDate(baseEntityId) != null) {
@@ -75,6 +83,27 @@ public class LDPartographTimeActionHelper implements BaseLDVisitAction.LDVisitAc
                     partographTime = LDDao.getVaginalExaminationTime(baseEntityId);
                 } else if (LDDao.getLabourOnsetTime(baseEntityId) != null) {
                     partographTime = LDDao.getLabourOnsetTime(baseEntityId);
+                }
+
+                Date now = new Date();
+                String partographLimit = "";
+
+                try {
+
+                    String completePartographDateString = partographDate+" "+partographTime;
+                    Date partoDate = completeDateFormat.parse(completePartographDateString);
+
+                    long lastPartographDiff = TimeUnit.MILLISECONDS.toMinutes(now.getTime() - partoDate.getTime());
+
+                    if (lastPartographDiff > 30){
+                        Date thirtyMinutesAgo = new Date(); //now
+                        thirtyMinutesAgo = DateUtils.addMinutes(thirtyMinutesAgo, -30);
+                        partographLimit = hourFormat.format(thirtyMinutesAgo);
+                        partographTimeForm.getJSONObject("global").put("partograph_limit", partographLimit);
+                    }
+
+                }catch (Exception e){
+                    Timber.e(e);
                 }
 
                 if (partographTime != null) {
