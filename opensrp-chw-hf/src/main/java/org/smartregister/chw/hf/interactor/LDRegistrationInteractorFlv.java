@@ -8,6 +8,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.anc.util.AppExecutors;
 import org.smartregister.chw.core.dao.AncDao;
+import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.core.utils.FormUtils;
 import org.smartregister.chw.hf.BuildConfig;
 import org.smartregister.chw.hf.R;
@@ -262,7 +263,7 @@ public class LDRegistrationInteractorFlv implements LDRegistrationInteractor.Fla
                             .withDetails(details)
                             .withJsonPayload(admissionInformationForm.toString())
                             .withFormName(Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryAdmissionInformation())
-                            .withHelper(new LDRegistrationAdmissionAction(memberObject))
+                            .withHelper(new RegistrationAdmissionAction(memberObject, actionList, context))
                             .build();
 
                     actionList.put(context.getString(R.string.ld_registration_admission_information_title), ldRegistrationAdmissionInformation);
@@ -376,6 +377,31 @@ public class LDRegistrationInteractorFlv implements LDRegistrationInteractor.Fla
             new AppExecutors().mainThread().execute(() -> callBack.preloadActions(actionList));
 
             return super.postProcess(s);
+        }
+    }
+
+    private static class RegistrationAdmissionAction extends LDRegistrationAdmissionAction {
+        private final LinkedHashMap<String, BaseLDVisitAction> actionList;
+        private Context context;
+
+        public RegistrationAdmissionAction(MemberObject memberObject, LinkedHashMap<String, BaseLDVisitAction> actionList, Context context) {
+            super(memberObject);
+            this.actionList = actionList;
+            this.context = context;
+        }
+
+        @Override
+        public void onPayloadReceived(String jsonPayload) {
+            super.onPayloadReceived(jsonPayload);
+            String reasonForAdmission = null;
+            try {
+                JSONObject jsonObject = new JSONObject(jsonPayload);
+                reasonForAdmission = CoreJsonFormUtils.getValue(jsonObject, "reasons_for_admission");
+            } catch (Exception e) {
+                Timber.e(e);
+            }
+            BaseLDVisitAction ldRegistrationCurrentLabour = actionList.get(context.getString(R.string.ld_registration_current_labour_title));
+            ((LDRegistrationCurrentLabourAction) ldRegistrationCurrentLabour.getLDVisitActionHelper()).setReasonsForAdmission(reasonForAdmission);
         }
     }
 }
