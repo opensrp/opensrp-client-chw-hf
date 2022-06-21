@@ -310,10 +310,11 @@
     <string name="lb_mode_of_delivery">Mode of Delivery</string>
     <string name="ld_active_management_3rd_stage">Active Management of 3rd Stage</string>
     <string name="uterotonic">Uterotonic</string>
-    <string name="ld_massage_uterus_after_delivery">Massage the uterus after delivery</string>
+    <string name="ld_massage_uterus_after_delivery">Massage the uterus after delivery of placenta</string>
     <string name="ld_expulsion_of_placenta">Expulsion of the placenta and membranes</string>
     <string name="ld_placent_retained_message">Placenta Retained</string>
     <string name="ld_no_uterus_massage">The woman did not receive uterus massage</string>
+    <string name="ld_yes_uterus_massage">The woman received uterus massage</string>
     <string name="ld_mother_post_delivery_management">Mother Post Delivery Management</string>
     <string name="ld_maternal_complication_action_title">Maternal complications during labour</string>
     <string name="ld_new_born_status_action_title">Immediate New Born Care {0}</string>
