@@ -4,15 +4,17 @@ import android.view.View;
 import android.widget.TextView;
 
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hf.utils.ReportUtils;
 
 public class LtfuSummaryActivity extends PncReportsActivity {
     private String reportPeriod = ReportUtils.getDefaultReportPeriod();
+
     @Override
     public void onClick(View v) {
         int id = v.getId();
         if (id == R.id.pnc_monthly_report) {
-            LtfuSummaryViewActivity.startMe(this, "ltfu-summary-report", reportPeriod);
+            LtfuSummaryViewActivity.startMe(this, Constants.ReportConstants.ReportPaths.LTFU_REPORT_PATH, reportPeriod);
         }
     }
 

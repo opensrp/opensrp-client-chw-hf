@@ -1,10 +1,10 @@
 package org.smartregister.chw.hf.utils;
 
-import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.assetManager;
-import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.locale;
-
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.Utils;
+
+import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.assetManager;
+import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.locale;
 
 public class Constants extends CoreConstants {
     public static String pregnancyOutcome = "preg_outcome";
@@ -92,8 +92,6 @@ public class Constants extends CoreConstants {
     }
 
     public static final class JsonForm {
-        //TODO: cleanup
-        private static final String NEXT_FACILITY_VISIT_FORM = "next_facility_visit_date_form";
         public static final String HIV_REGISTRATION = "hiv_registration";
         public static final String HVL_TEST_RESULTS = "pmtct_hvl_test_results";
         public static final String CD4_TEST_RESULTS = "pmtct_cd4_test_results";
@@ -104,6 +102,8 @@ public class Constants extends CoreConstants {
         public static final String MARK_CLIENT_AS_DECEASED = "mark_client_as_deceased";
         public static final String MARK_CHILD_AS_DECEASED = "mark_child_as_deceased";
         public static final String HEI_COMMUNITY_FOLLOWUP_REFERRAL = "hei_community_followup_referral";
+        //TODO: cleanup
+        private static final String NEXT_FACILITY_VISIT_FORM = "next_facility_visit_date_form";
         private static final String ANC_PREGANCY_CONFIRMATION = "anc_pregnancy_confirmation";
         private static final String PMTCT_REGISTRATION = "pmtct_registration";
         private static final String PMTCT_REGISTRATION_FOR_CLIENTS_KNOWN_ON_ART_FORM = "pmtct_registration_for_clients_known_on_art";
@@ -631,6 +631,18 @@ public class Constants extends CoreConstants {
             String CBHS_REPORT = "cbhs_report";
             String LTFU_SUMMARY = "ltfu_report";
             String LD_REPORT = "ld_report";
+        }
+
+        public interface ReportPaths {
+            String ANC_REPORT_PATH = "anc-taarifa-ya-mwezi";
+            String PMTCT_3_MONTHS_REPORT_PATH = "pmtct-reports/taarifa-ya-miezi-3";
+            String PMTCT_12_MONTHS_REPORT_PATH = "pmtct-reports/taarifa-ya-miezi-12";
+            String PMTCT_24_MONTHS_REPORT_PATH = "pmtct-reports/taarifa-ya-miezi-24";
+            String PMTCT_EID_MONTHLY_REPORT_PATH = "pmtct-reports/taarifa-cross-sectional";
+            String PNC_REPORT_PATH = "pnc-taarifa-ya-mwezi";
+            String CBHS_REPORT_PATH = "cbhs-taarifa-ya-mwezi";
+            String LTFU_REPORT_PATH = "ltfu-summary-report";
+            String LD_REPORT_PATH = "labour-delivery-taarifa-ya-mwezi";
         }
     }
 
