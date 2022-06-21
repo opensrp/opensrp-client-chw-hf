@@ -349,6 +349,13 @@
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "+++"
+          },
+          {
+            "key": "not_tested",
+            "text": "Not Tested",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "not_tested"
           }
         ]
       },
@@ -388,6 +395,13 @@
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "+++"
+          },
+          {
+            "key": "not_tested",
+            "text": "Not Tested",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "not_tested"
           }
         ]
       },
