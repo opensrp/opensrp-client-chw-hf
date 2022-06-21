@@ -53,10 +53,12 @@ public class HfHivProfileInteractor extends CoreHivProfileInteractor implements 
         Set<Task> taskList = ((ChwTaskRepository) taskRepository).getReferralTasksForClientByStatus(planId, baseEntityId, CoreConstants.BUSINESS_STATUS.REFERRED);
 
         for (Task task : taskList) {
-            HivTbReferralTasksAndFollowupFeedbackModel tasksAndFollowupFeedbackModel = new HivTbReferralTasksAndFollowupFeedbackModel();
-            tasksAndFollowupFeedbackModel.setTask(task);
-            tasksAndFollowupFeedbackModel.setType("TASK");
-            tasksAndFollowupFeedbackModels.add(tasksAndFollowupFeedbackModel);
+            if(!task.getFocus().equalsIgnoreCase("LTFU")){
+                HivTbReferralTasksAndFollowupFeedbackModel tasksAndFollowupFeedbackModel = new HivTbReferralTasksAndFollowupFeedbackModel();
+                tasksAndFollowupFeedbackModel.setTask(task);
+                tasksAndFollowupFeedbackModel.setType("TASK");
+                tasksAndFollowupFeedbackModels.add(tasksAndFollowupFeedbackModel);
+            }
         }
 
         List<ChwFollowupFeedbackDetailsModel> followupFeedbackList = HfFollowupFeedbackDao.getHivFollowupFeedback(baseEntityId);
