@@ -5,7 +5,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.view.Menu;
 import android.view.View;
-import android.widget.Toast;
 
 import com.google.android.material.appbar.AppBarLayout;
 
@@ -91,14 +90,14 @@ public class ReportsActivity extends SecuredActivity implements View.OnClickList
             startActivity(new Intent(this, AncReportsActivity.class));
         } else if (id == R.id.pmtct_reports) {
             startActivity(new Intent(this, PmtctReportsActivity.class));
-        }else if (id == R.id.pnc_reports) {
+        } else if (id == R.id.pnc_reports) {
             startActivity(new Intent(this, PncReportsActivity.class));
-        }else if(id == R.id.cbhs_reports){
+        } else if (id == R.id.cbhs_reports) {
             startActivity(new Intent(this, CbhsReportsActivity.class));
-        }else if (id == R.id.ltfu_summary) {
+        } else if (id == R.id.ltfu_summary) {
             startActivity(new Intent(this, LtfuSummaryActivity.class));
-        }else if (id == R.id.ld_reports) {
-            //startActivity(new Intent(this, LdReportsActivity.class));
+        } else if (id == R.id.ld_reports) {
+            startActivity(new Intent(this, LdReportsActivity.class));
         }
     }
 }

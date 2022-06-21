@@ -23,6 +23,10 @@
             android:theme="@style/HFTheme.NoActionBar"/>
         <activity android:name=".activity.LtfuSummaryViewActivity"
             android:theme="@style/HFTheme.NoActionBar"/>
+        <activity android:name=".activity.LdReportsActivity"
+            android:theme="@style/HFTheme.NoActionBar"/>
+        <activity android:name=".activity.LdReportsViewActivity"
+            android:theme="@style/HFTheme.NoActionBar"/>
         <activity
             android:name=".activity.PncReportsActivity"
             android:theme="@style/HFTheme.NoActionBar" />
