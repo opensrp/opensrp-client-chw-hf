@@ -3,6 +3,7 @@ package org.smartregister.chw.hf.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 
 import com.vijay.jsonwizard.constants.JsonFormConstants;
 import com.vijay.jsonwizard.domain.Form;
@@ -15,6 +16,7 @@ import org.smartregister.chw.hf.schedulers.HfScheduleTaskExecutor;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.ld.activity.BaseLDVisitActivity;
 import org.smartregister.chw.ld.domain.MemberObject;
+import org.smartregister.chw.ld.model.BaseLDVisitAction;
 import org.smartregister.chw.ld.presenter.BaseLDVisitPresenter;
 import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.family.util.Utils;
@@ -22,6 +24,8 @@ import org.smartregister.util.LangUtils;
 
 import java.text.MessageFormat;
 import java.util.Date;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import timber.log.Timber;
 
@@ -87,5 +91,31 @@ public class LDPartographActivity extends BaseLDVisitActivity {
         }
     }
 
+    @Override
+    public void initializeActions(LinkedHashMap<String, BaseLDVisitAction> map) {
 
+        //Clearing action list before recreating
+        actionList.clear();
+
+        if (map.containsKey(getString(R.string.ld_partograph_time))){
+            BaseLDVisitAction partographTimeAction = map.get(getString(R.string.ld_partograph_time));
+            assert partographTimeAction != null;
+            actionList.put(getString(R.string.ld_partograph_time), partographTimeAction);
+        }
+
+        for (Map.Entry<String, BaseLDVisitAction> entry : map.entrySet()) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                actionList.putIfAbsent(entry.getKey(), entry.getValue());
+            } else {
+                actionList.put(entry.getKey(), entry.getValue());
+            }
+        }
+
+        if (mAdapter != null) {
+            mAdapter.notifyDataSetChanged();
+        }
+
+        displayProgressBar(false);
+
+    }
 }
