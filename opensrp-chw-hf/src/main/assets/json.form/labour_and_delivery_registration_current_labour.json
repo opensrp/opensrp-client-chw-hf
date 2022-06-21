@@ -93,21 +93,6 @@
         }
       },
       {
-        "key": "prompt_for_ruptured_membrane",
-        "type": "toaster_notes",
-        "text": "Provide management according to standard guideline",
-        "openmrs_entity_id": "",
-        "openmrs_entity": "",
-        "openmrs_entity_parent": "",
-        "toaster_type": "problem",
-        "relevance": {
-          "step1:membrane": {
-            "type": "string",
-            "ex": "equalTo(., \"ruptured\")"
-          }
-        }
-      },
-      {
         "key": "membrane_ruptured_date",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -139,6 +124,21 @@
           "value": true,
           "err": "Please enter the membrane rupture time"
         },
+        "relevance": {
+          "step1:membrane": {
+            "type": "string",
+            "ex": "equalTo(., \"ruptured\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_ruptured_membrane",
+        "type": "toaster_notes",
+        "text": "Provide management according to SOP and Standard Guideline",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
         "relevance": {
           "step1:membrane": {
             "type": "string",
@@ -195,7 +195,7 @@
       {
         "key": "prompt_for_fetal_movement",
         "type": "toaster_notes",
-        "text": "Provide management according to standard guideline",
+        "text": "Provide management according to SOP and Standard Guideline",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -204,6 +204,21 @@
           "step1:fetal_movement": {
             "type": "string",
             "ex": "equalTo(., \"absent\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_reduced_fetal_movement",
+        "type": "toaster_notes",
+        "text": "Provide management according to SOP and Standard Guideline",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:movement_status": {
+            "type": "string",
+            "ex": "equalTo(., \"reduced\")"
           }
         }
       }

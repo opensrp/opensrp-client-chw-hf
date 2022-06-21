@@ -7,6 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.ld.dao.LDDao;
 import org.smartregister.chw.ld.domain.MemberObject;
 import org.smartregister.chw.ld.domain.VisitDetail;
 import org.smartregister.chw.ld.model.BaseLDVisitAction;
@@ -46,8 +47,14 @@ public class LDRegistrationCurrentLabourAction implements BaseLDVisitAction.LDVi
     public void onPayloadReceived(String jsonPayload) {
         try {
             JSONObject jsonObject = new JSONObject(jsonPayload);
-            labourOnsetDate = CoreJsonFormUtils.getValue(jsonObject, "labour_onset_date");
-            labourOnsetTime = CoreJsonFormUtils.getValue(jsonObject, "labour_onset_time");
+
+            if (LDDao.getReasonsForAdmission(memberObject.getBaseEntityId()) != null && (LDDao.getReasonsForAdmission(memberObject.getBaseEntityId()).equalsIgnoreCase("elective_cesarean_section") || LDDao.getReasonsForAdmission(memberObject.getBaseEntityId()).equalsIgnoreCase("induction"))) {
+                labourOnsetDate = "none";
+                labourOnsetTime = "none";
+            } else {
+                labourOnsetDate = CoreJsonFormUtils.getValue(jsonObject, "labour_onset_date");
+                labourOnsetTime = CoreJsonFormUtils.getValue(jsonObject, "labour_onset_time");
+            }
             rupturedMembrane = CoreJsonFormUtils.getValue(jsonObject, "membrane");
             fetalMovement = CoreJsonFormUtils.getValue(jsonObject, "fetal_movement");
         } catch (JSONException e) {
