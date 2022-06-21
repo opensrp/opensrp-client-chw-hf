@@ -116,10 +116,6 @@
             "openmrs_entity_id": "abnormal"
           }
         ],
-        "v_required": {
-          "value": true,
-          "err": "Please select an option"
-        },
         "relevance": {
           "step1:vagina_observation": {
             "ex-checkbox": [
@@ -196,11 +192,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "bruised_laceration"
           }
-        ],
-        "v_required": {
-          "value": true,
-          "err": "Please select an option"
-        }
+        ]
       },
       {
         "key": "degree_of_perineum_tear",
@@ -240,10 +232,6 @@
             "openmrs_entity_id": "fourth_degree"
           }
         ],
-        "v_required": {
-          "value": true,
-          "err": "Please select an option"
-        },
         "relevance": {
           "step1:perineum_observation": {
             "type": "string",
@@ -271,10 +259,6 @@
           "doctor": "A Doctor",
           "nurse": "A Nurse"
         },
-        "v_required": {
-          "value": "true",
-          "err": "Please select one option"
-        },
         "relevance": {
           "step1:perineum_observation": {
             "type": "string",
@@ -289,10 +273,6 @@
         "openmrs_entity_id": "perineum_repair_person_name",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "v_required": {
-          "value": true,
-          "err": "Please specify the name of doctor/nurse who repaired the perineum"
-        },
         "relevance": {
           "step1:perineum_observation": {
             "type": "string",
@@ -338,11 +318,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "intact"
           }
-        ],
-        "v_required": {
-          "value": true,
-          "err": "Please select an option"
-        }
+        ]
       },
       {
         "key": "systolic",
@@ -362,10 +338,6 @@
         "v_max": {
           "value": "320",
           "err": "Systolic value must be equal or less than 320"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Please enter the systolic value"
         }
       },
       {
@@ -386,10 +358,6 @@
         "v_max": {
           "value": "200",
           "err": "Diastolic value must be equal or less than 200"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Please enter the diastolic value"
         },
         "constraints": [
           {
@@ -449,10 +417,6 @@
         "v_max": {
           "value": "200",
           "err": "The pulse rate must be equal or less than 200 (bpm)"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Please enter the pulse rate"
         }
       },
       {
@@ -503,10 +467,6 @@
         "v_max": {
           "value": "50",
           "err": "Temperature must be equal or less than 50"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Please enter the temperature"
         }
       },
       {
@@ -562,11 +522,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
-        ],
-        "v_required": {
-          "value": true,
-          "err": "Please select an option"
-        }
+        ]
       },
       {
         "key": "prompt_for_uterus_contraction",
@@ -606,11 +562,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
-        ],
-        "v_required": {
-          "value": true,
-          "err": "Please select an option"
-        }
+        ]
       },
       {
         "key": "prompt_for_urination",
@@ -636,11 +588,7 @@
         "hint": "Observation Date",
         "expanded": false,
         "min_date": "today-2y",
-        "max_date": "today",
-        "v_required": {
-          "value": true,
-          "err": "Observation date is required"
-        }
+        "max_date": "today"
       },
       {
         "key": "observation_time",
@@ -648,11 +596,7 @@
         "hint": "Observation Time",
         "openmrs_entity_id": "observation_time",
         "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "v_required": {
-          "value": true,
-          "err": "Observation time is required"
-        }
+        "openmrs_entity_parent": ""
       }
     ]
   }
