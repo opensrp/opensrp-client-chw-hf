@@ -33,7 +33,6 @@ public class LDVaginalExaminationActionHelper implements BaseLDVisitAction.LDVis
     private String cervix_state;
     private String cervix_dilation;
     private String presenting_part;
-    private String occiput_position;
     private String moulding;
     private String station;
     private String decision;
@@ -71,7 +70,7 @@ public class LDVaginalExaminationActionHelper implements BaseLDVisitAction.LDVis
         }
 
         try {
-            vaginalExaminationForm.getJSONObject("global").put("moulding", LDDao.getMoulding(baseEntityId) == null? "" : LDDao.getMoulding(baseEntityId));
+            vaginalExaminationForm.getJSONObject("global").put("moulding", LDDao.getMoulding(baseEntityId) == null ? "" : LDDao.getMoulding(baseEntityId));
             JSONArray fields = vaginalExaminationForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
 
             JSONObject amnioticFluid = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "amniotic_fluid");
@@ -92,8 +91,11 @@ public class LDVaginalExaminationActionHelper implements BaseLDVisitAction.LDVis
         cervix_state = JsonFormUtils.getFieldValue(jsonPayload, "cervix_state");
         cervix_dilation = JsonFormUtils.getFieldValue(jsonPayload, "cervix_dilation");
         presenting_part = JsonFormUtils.getFieldValue(jsonPayload, "presenting_part");
-        occiput_position = JsonFormUtils.getFieldValue(jsonPayload, "occiput_position");
-        moulding = JsonFormUtils.getFieldValue(jsonPayload, "moulding");
+
+        if (LDDao.getMoulding(baseEntityId) != null && !LDDao.getMoulding(baseEntityId).equalsIgnoreCase("yes"))
+            moulding = JsonFormUtils.getFieldValue(jsonPayload, "moulding");
+        else
+            moulding = "no";
         station = JsonFormUtils.getFieldValue(jsonPayload, "station");
         decision = JsonFormUtils.getFieldValue(jsonPayload, "decision");
     }
@@ -146,8 +148,7 @@ public class LDVaginalExaminationActionHelper implements BaseLDVisitAction.LDVis
                 StringUtils.isNotBlank(cervix_state) &&
                 StringUtils.isNotBlank(cervix_dilation) &&
                 (StringUtils.isNotBlank(presenting_part) && !presenting_part.equalsIgnoreCase("Presenting part")) &&
-                StringUtils.isNotBlank(occiput_position) &&
-                StringUtils.isNotBlank(moulding) &&
+                (StringUtils.isNotBlank(moulding)) &&
                 StringUtils.isNotBlank(station) &&
                 StringUtils.isNotBlank(decision)
         );
@@ -159,7 +160,6 @@ public class LDVaginalExaminationActionHelper implements BaseLDVisitAction.LDVis
                 StringUtils.isNotBlank(cervix_state) ||
                 StringUtils.isNotBlank(cervix_dilation) ||
                 (StringUtils.isNotBlank(presenting_part) && !presenting_part.equalsIgnoreCase("Presenting part")) ||
-                StringUtils.isNotBlank(occiput_position) ||
                 StringUtils.isNotBlank(moulding) ||
                 StringUtils.isNotBlank(station) ||
                 StringUtils.isNotBlank(decision)
@@ -171,7 +171,7 @@ public class LDVaginalExaminationActionHelper implements BaseLDVisitAction.LDVis
 
         if (LDDao.getVaginalExaminationDate(baseEntityId) != null) {
             vaginalExamDate.put("min_date", LDDao.getVaginalExaminationDate(baseEntityId));
-        }else if (LDDao.getLabourOnsetDate(baseEntityId) != null) {
+        } else if (LDDao.getLabourOnsetDate(baseEntityId) != null) {
             vaginalExamDate.put("min_date", LDDao.getLabourOnsetDate(baseEntityId));
         }
     }
