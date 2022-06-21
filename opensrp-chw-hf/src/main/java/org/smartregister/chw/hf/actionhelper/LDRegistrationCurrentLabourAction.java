@@ -27,6 +27,11 @@ public class LDRegistrationCurrentLabourAction implements BaseLDVisitAction.LDVi
     private String rupturedMembrane;
     private String fetalMovement;
     private Context context;
+    private String reasonsForAdmission;
+
+    public void setReasonsForAdmission(String reasonsForAdmission) {
+        this.reasonsForAdmission = reasonsForAdmission;
+    }
 
     public LDRegistrationCurrentLabourAction(MemberObject memberObject) {
         this.memberObject = memberObject;
@@ -46,8 +51,14 @@ public class LDRegistrationCurrentLabourAction implements BaseLDVisitAction.LDVi
     public void onPayloadReceived(String jsonPayload) {
         try {
             JSONObject jsonObject = new JSONObject(jsonPayload);
-            labourOnsetDate = CoreJsonFormUtils.getValue(jsonObject, "labour_onset_date");
-            labourOnsetTime = CoreJsonFormUtils.getValue(jsonObject, "labour_onset_time");
+
+            if (reasonsForAdmission != null && (reasonsForAdmission.equalsIgnoreCase("elective_cesarean_section") || reasonsForAdmission.equalsIgnoreCase("induction"))) {
+                labourOnsetDate = "none";
+                labourOnsetTime = "none";
+            } else {
+                labourOnsetDate = CoreJsonFormUtils.getValue(jsonObject, "labour_onset_date");
+                labourOnsetTime = CoreJsonFormUtils.getValue(jsonObject, "labour_onset_time");
+            }
             rupturedMembrane = CoreJsonFormUtils.getValue(jsonObject, "membrane");
             fetalMovement = CoreJsonFormUtils.getValue(jsonObject, "fetal_movement");
         } catch (JSONException e) {
