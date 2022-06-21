@@ -427,6 +427,21 @@
         }
       },
       {
+        "key": "prompt_for_fundal_height",
+        "type": "toaster_notes",
+        "text": "Abnormal fundal height",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:fundal_height": {
+            "type": "numeric",
+            "ex": "greaterThan(.,\"36\")"
+          }
+        }
+      },
+      {
         "key": "lie",
         "type": "native_radio",
         "openmrs_entity_id": "lie",
