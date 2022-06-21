@@ -313,8 +313,31 @@
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "+++"
+          },
+          {
+            "key": "not_tested",
+            "text": "Not Tested",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "not_tested"
           }
         ]
+      },
+      {
+        "key": "prompt_for_protein",
+        "type": "toaster_notes",
+        "text": "Provide management according to SOP and Standard Guideline",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_mother_wellbeing_relevance.yml"
+            }
+          }
+        }
       },
       {
         "key": "urine_acetone",
@@ -352,8 +375,31 @@
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "+++"
+          },
+          {
+            "key": "not_tested",
+            "text": "Not Tested",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "not_tested"
           }
         ]
+      },
+      {
+        "key": "prompt_for_acetone",
+        "type": "toaster_notes",
+        "text": "Provide management according to SOP and Standard Guideline",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_mother_wellbeing_relevance.yml"
+            }
+          }
+        }
       },
       {
         "key": "urine_volume",
@@ -375,7 +421,7 @@
         "openmrs_entity_id": "oral_intake",
         "text_color": "#000000",
         "type": "edit_text",
-        "hint": "Oral Intake",
+        "hint": "Oral Intake (mls)",
         "v_numeric": {
           "value": "true",
           "err": "Please enter the oral intake"
