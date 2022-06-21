@@ -536,6 +536,52 @@
         }
       },
       {
+        "key": "contraction_frequency",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "contraction_frequency",
+        "label": "Contraction Frequency",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "1",
+            "text": "1",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "1"
+          },
+          {
+            "key": "2",
+            "text": "2",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "2"
+          },
+          {
+            "key": "3",
+            "text": "3",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "3"
+          },
+          {
+            "key": "4",
+            "text": "4",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "4"
+          },
+          {
+            "key": "5",
+            "text": "5",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "5"
+          }
+        ]
+      },
+      {
         "key": "contraction_in_ten_minutes",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
