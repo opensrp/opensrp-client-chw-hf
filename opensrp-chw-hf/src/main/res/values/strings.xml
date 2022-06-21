@@ -372,6 +372,8 @@
     <string name="lost_to_followup_referral">LTFU Referral</string>
     <string name="community_ltfu_summary">Community LTFU Summary</string>
     <string name="community_ltfu_summary_subtitle">View Report Summary for LTFU</string>
+    <string name="ld_reports_subtitle">View Labour Delivery Reports</string>
+    <string name="ld_report_title">Labour And Delivery Reports</string>
 
 
 </resources>
