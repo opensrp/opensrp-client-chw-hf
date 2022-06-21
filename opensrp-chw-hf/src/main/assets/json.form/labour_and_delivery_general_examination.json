@@ -367,7 +367,8 @@
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "nil"
-          },{
+          },
+          {
             "key": "+",
             "text": "+",
             "openmrs_entity_parent": "",
@@ -473,6 +474,22 @@
         ]
       },
       {
+        "key": "prompt_for_lie",
+        "type": "toaster_notes",
+        "text": "Refer for further consultation",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_general_examination_relevance.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "presentation",
         "type": "native_radio",
         "openmrs_entity_id": "presentation",
@@ -483,14 +500,14 @@
           {
             "key": "breech",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
+            "openmrs_entity_id": "breech",
             "openmrs_entity_parent": "",
             "text": "Breech Presentation"
           },
           {
             "key": "cephalic",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
+            "openmrs_entity_id": "cephalic",
             "openmrs_entity_parent": "",
             "text": "Cephalic Presentation"
           }
@@ -504,18 +521,17 @@
         }
       },
       {
-        "key": "prompt_for_lie",
+        "key": "prompt_for_presentation",
         "type": "toaster_notes",
-        "text": "Refer for further consultation",
+        "text": "Manage according to standard guideline",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
         "toaster_type": "problem",
         "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "labour_and_delivery_general_examination_relevance.yml"
-            }
+          "step1:presentation": {
+            "type": "string",
+            "ex": "equalTo(.,\"breech\")"
           }
         }
       },
