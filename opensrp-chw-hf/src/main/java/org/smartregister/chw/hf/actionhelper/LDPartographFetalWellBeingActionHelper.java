@@ -129,8 +129,6 @@ public class LDPartographFetalWellBeingActionHelper implements BaseLDVisitAction
 
     private boolean allFieldsCompleted() {
         return StringUtils.isNotBlank(fetalHeartRate) &&
-                StringUtils.isNotBlank(caput) &&
-                StringUtils.isNotBlank(mouldingOptions) &&
                 StringUtils.isNotBlank(amnioticFluid);
     }
 

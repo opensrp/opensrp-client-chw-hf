@@ -9,6 +9,20 @@ actions:
 name: step1_prompt_for_amniotic_fluid
 description: prompt_for_amniotic_fluid
 priority: 1
-condition: "!step1_amniotic_fluid.isEmpty() && !step1_amniotic_fluid.contains('membrane_intact')"
+condition: "!step1_amniotic_fluid.isEmpty() && !step1_amniotic_fluid.contains('membrane_intact', 'membrane_ruptured_liquor_clear')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_prompt_for_moulding
+description: prompt for moulding ++ and +++
+priority: 1
+condition: "step1_moulding_options.contains('++', '+++')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_prompt_for_caput
+description: prompt for caput ++ and +++
+priority: 1
+condition: "step1_caput.contains('++', '+++')"
 actions:
   - "isRelevant = true"
