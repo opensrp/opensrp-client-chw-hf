@@ -72,12 +72,16 @@
         "v_max": {
           "value": "300",
           "err": "Fetal heart rate must be equal or less than 300"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please input the fetal heart rate"
         }
       },
       {
         "key": "prompt_for_fetal_distress",
         "type": "toaster_notes",
-        "text": "Take action or refer for further management",
+        "text": "Provide management according to SOP and Standard Guideline",
         "openmrs_entity_id": "prompt_for_fetal_distress",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -127,10 +131,22 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "+++"
           }
-        ],
-        "v_required": {
-          "value": true,
-          "err": "Please select an option"
+        ]
+      },
+      {
+        "key": "prompt_for_moulding",
+        "type": "toaster_notes",
+        "text": "Provide management according to SOP and Standard Guideline",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_fetal_wellbeing_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -170,10 +186,22 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "+++"
           }
-        ],
-        "v_required": {
-          "value": true,
-          "err": "Please select an option"
+        ]
+      },
+      {
+        "key": "prompt_for_caput",
+        "type": "toaster_notes",
+        "text": "Provide management according to SOP and Standard Guideline",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_fetal_wellbeing_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -218,7 +246,7 @@
       {
         "key": "prompt_for_amniotic_fluid",
         "type": "toaster_notes",
-        "text": "Take action per National guideline",
+        "text": "Provide management according to SOP and Standard Guideline",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",

@@ -26,3 +26,17 @@ priority: 1
 condition: "step1_respiratory_rate < 16 || step1_respiratory_rate > 24"
 actions:
   - "isRelevant = true"
+---
+name: step1_prompt_for_acetone
+description: prompt for acetone
+priority: 1
+condition: "step1_urine_acetone=='++' || step1_urine_acetone == '+++'"
+actions:
+  - "isRelevant = true"
+---
+name: step1_prompt_for_protein
+description: prompt for protein
+priority: 1
+condition: "step1_urine_protein=='++' || step1_urine_protein == '+++'"
+actions:
+  - "isRelevant = true"
