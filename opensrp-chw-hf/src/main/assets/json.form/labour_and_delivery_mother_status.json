@@ -253,33 +253,12 @@
         }
       },
       {
-        "key": "labour_information",
+        "key": "labour_duration",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "labour_information",
+        "openmrs_entity_id": "labour_duration",
         "label": "Labour information/conditions",
-        "text_color": "#000000",
-        "type": "native_radio",
-        "options": [
-          {
-            "key": "within_12_hours",
-            "text": "Within 12 hours",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "within_12_hours"
-          },
-          {
-            "key": "after_12_hours",
-            "text": "After 12 hours",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "after_12_hours"
-          }
-        ],
-        "v_required": {
-          "value": true,
-          "err": "Please select an option"
-        }
+        "type": "hidden"
       }
     ]
   }
