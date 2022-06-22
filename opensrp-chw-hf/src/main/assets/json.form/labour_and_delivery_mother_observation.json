@@ -597,6 +597,14 @@
         "openmrs_entity_id": "observation_time",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": ""
+      },
+      {
+        "key": "mother_observation_module_status",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "mother_observation_module_status",
+        "type": "hidden",
+        "value": "PENDING"
       }
     ]
   }

@@ -170,11 +170,15 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_none"
           }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Please pick at least one"
-        }
+        ]
+      },
+      {
+        "key": "maternal_complications_module_status",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "mother_observation_module_status",
+        "type": "hidden",
+        "value": "PENDING"
       }
     ]
   }

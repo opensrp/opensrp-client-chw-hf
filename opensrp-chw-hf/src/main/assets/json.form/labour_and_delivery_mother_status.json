@@ -211,6 +211,14 @@
             "openmrs_entity_id": "after_12_hours"
           }
         ]
+      },
+      {
+        "key": "mother_status_module_status",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "mother_status_module_status",
+        "type": "hidden",
+        "value": "PENDING"
       }
     ]
   }
