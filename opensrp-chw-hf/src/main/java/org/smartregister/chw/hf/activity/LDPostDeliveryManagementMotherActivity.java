@@ -9,10 +9,13 @@ import com.vijay.jsonwizard.domain.Form;
 import org.json.JSONObject;
 import org.smartregister.chw.hf.interactor.LDPostDeliveryManagementMotherActivityInteractor;
 import org.smartregister.chw.ld.activity.BaseLDVisitActivity;
+import org.smartregister.chw.ld.model.BaseLDVisitAction;
 import org.smartregister.chw.ld.presenter.BaseLDVisitPresenter;
 import org.smartregister.chw.ld.util.Constants;
 import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.family.util.Utils;
+
+import java.util.Map;
 
 /**
  * Created by Kassim Sheghembe on 2022-05-16
@@ -47,9 +50,24 @@ public class LDPostDeliveryManagementMotherActivity extends BaseLDVisitActivity 
 
     @Override
     public void submittedAndClose() {
-        Intent intent = new Intent(this, LDRegisterActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
-        finish();
+        boolean completionStatus = true;
+
+        for (Map.Entry<String, BaseLDVisitAction> entry : this.actionList.entrySet()) {
+            String actionStatus = entry.getValue().getActionStatus().toString();
+            if (actionStatus.equalsIgnoreCase("PARTIALLY_COMPLETED")) {
+                completionStatus = false;
+            }
+        }
+
+        if (completionStatus) {
+
+            Intent intent = new Intent(this, LDRegisterActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            finish();
+
+        }
+
+        super.submittedAndClose();
     }
 }
