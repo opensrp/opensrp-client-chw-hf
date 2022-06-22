@@ -85,6 +85,7 @@ public class Constants extends CoreConstants {
         public static final String LD_GENERAL_VISIT = "L&D Examination";
         public static final String LD_PARTOGRAPH_VISIT = "L&D Partograph";
         public static final String LD_MANAGEMENT_OF_3rd_STAGE_OF_LABOUR_VISIT = "L&D Management of 3rd Stage Of Labour";
+        public static final String LD_IMMEDIATE_POSTPARTUM_CARE = "L&D Immediate Postpartum Care";
     }
 
     public static final class ActionList {
