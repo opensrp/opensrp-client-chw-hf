@@ -66,6 +66,13 @@
         ],
         "options": [
           {
+            "key": "chk_intact",
+            "text": "Intact",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_intact"
+          },
+          {
             "key": "chk_bleeding",
             "text": "Bleeding",
             "value": false,
@@ -78,18 +85,31 @@
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_tear"
-          },
-          {
-            "key": "chk_intact",
-            "text": "Intact",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_intact"
           }
         ],
         "v_required": {
           "value": "true",
           "err": "Please answer this question"
+        }
+      },
+      {
+        "key": "prompt_for_vagina_observation",
+        "type": "toaster_notes",
+        "text": "Action to be taken per National guideline",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:vagina_observation": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "chk_tear"
+                ]
+              }
+            ]
+          }
         }
       },
       {
@@ -125,27 +145,6 @@
             "ex-checkbox": [
               {
                 "or": ["chk_bleeding"]
-              }
-            ]
-          }
-        }
-      },
-      {
-        "key": "prompt_for_vagina_observation",
-        "type": "toaster_notes",
-        "text": "Action to be taken per National guideline",
-        "openmrs_entity_id": "",
-        "openmrs_entity": "",
-        "openmrs_entity_parent": "",
-        "toaster_type": "problem",
-        "relevance": {
-          "step1:vagina_observation": {
-            "ex-checkbox": [
-              {
-                "or": [
-                  "chk_bleeding",
-                  "chk_tear"
-                ]
               }
             ]
           }
