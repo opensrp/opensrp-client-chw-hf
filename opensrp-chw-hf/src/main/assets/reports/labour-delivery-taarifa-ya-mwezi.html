@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Taarifa ya mwezi Wodi ya wazazi</title>
+    <link rel="stylesheet" href="./report-styles.css"/>
+    <script src="./report-script.js"></script>
+</head>
+
+<body onload="loadData('monthly', 'anc')">
+<div class="show-on-print">
+    <h1>Taarifa ya Mwezi Kutoka wodi ya wazazi</h1>
+    <h2>TAARIFA YA [MWEZI/MWAKA]: <span id="report_period"></span></h2>
+    <h2>KITUO: <span id="reporting_facility"></span></h2>
+</div>
+<table border="1" class="pnc-anc-table">
+    <thead>
+    <tr>
+        <th>Na.</th>
+        <th>Maelezo</th>
+        <th>Miaka 10 -14</th>
+        <th>Miaka 15 - 19</th>
+        <th>Miaka 20 - 24</th>
+        <th>Miaka 25 - 29</th>
+        <th>Miaka 30 - 34</th>
+        <th>Miaka 35 na zaidi</th>
+        <th>Jumla</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>1</td>
+        <td class="list-title">
+            Waliotarajiwa kujifungua katika eneo la huduma
+        </td>
+        <td id="1-10-14"></td>
+        <td id="1-15-19"></td>
+        <td id="1-20-24"></td>
+        <td id="1-25-29"></td>
+        <td id="1-30-34"></td>
+        <td id="1-35+"></td>
+        <td id="1-jumla"></td>
+    </tr>
+
+    <tr>
+        <th>2</th>
+        <th class="list-title" colspan="8">Taarifa ya Wanaojifungua</th>
+    </tr>
+
+    <tr>
+        <td>2a</td>
+        <td class="list-title">
+            Waliojifungua katika kituo cha kutolea huduma za afya
+        </td>
+        <td id="2a-10-14"></td>
+        <td id="2a-15-19"></td>
+        <td id="2a-20-24"></td>
+        <td id="2a-25-29"></td>
+        <td id="2a-30-34"></td>
+        <td id="2a-35+"></td>
+        <td id="2a-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>2b</td>
+        <td class="list-title">Waliojifungua kabla ya kufika kituoni(BBA)</td>
+        <td id="2b-10-14"></td>
+        <td id="2b-15-19"></td>
+        <td id="2b-20-24"></td>
+        <td id="2b-25-29"></td>
+        <td id="2b-30-34"></td>
+        <td id="2b-35+"></td>
+        <td id="2b-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>2c</td>
+        <td class="list-title">Waliozalishwa na wakunga wa jadi(TBA)</td>
+        <td id="2c-10-14"></td>
+        <td id="2c-15-19"></td>
+        <td id="2c-20-24"></td>
+        <td id="2c-25-29"></td>
+        <td id="2c-30-34"></td>
+        <td id="2c-35+"></td>
+        <td id="2c-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>2d</td>
+        <td class="list-title">
+            Waliojifungua nyumbani (H) bila msaada wa TBA
+        </td>
+        <td id="2d-10-14"></td>
+        <td id="2d-15-19"></td>
+        <td id="2d-20-24"></td>
+        <td id="2d-25-29"></td>
+        <td id="2d-30-34"></td>
+        <td id="2d-35+"></td>
+        <td id="2d-jumla"></td>
+    </tr>
+
+    <tr>
+        <td></td>
+        <td class="list-title">Jumla ya waliojifungua(2a+2b+2c+2d)</td>
+        <td id="2a+2b+2c+2d-10-14"></td>
+        <td id="2a+2b+2c+2d-15-19"></td>
+        <td id="2a+2b+2c+2d-20-24"></td>
+        <td id="2a+2b+2c+2d-25-29"></td>
+        <td id="2a+2b+2c+2d-30-34"></td>
+        <td id="2a+2b+2c+2d-35+"></td>
+        <td id="2a+2b+2c+2d-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>2e</td>
+        <td class="list-title">Waliozalishwa na watoa huduma wenye ujuzi</td>
+        <td id="2e-10-14"></td>
+        <td id="2e-15-19"></td>
+        <td id="2e-20-24"></td>
+        <td id="2e-25-29"></td>
+        <td id="2e-30-34"></td>
+        <td id="2e-35+"></td>
+        <td id="2e-jumla"></td>
+    </tr>
+
+    <tr>
+        <td></td>
+        <td class="list-title">
+            Asilimia ya waliojifungulia katika vituo vya kutolea huduma za afya
+            (2a/1)x100
+        </td>
+        <td id="2a/1-10-14"></td>
+        <td id="2a/1-15-19"></td>
+        <td id="2a/1-20-24"></td>
+        <td id="2a/1c-25-29"></td>
+        <td id="2a/1-30-34"></td>
+        <td id="2a/1-35+"></td>
+        <td id="2a/1-jumla"></td>
+    </tr>
+
+    <tr>
+        <th>3</th>
+        <th class="list-title" colspan="8">Taarifa kuhusu uchungu</th>
+    </tr>
+
+    <tr>
+        <td>3a</td>
+        <td class="list-title">
+            Waliojifungua baada ya saa 12 toka uchungu kuanza
+        </td>
+        <td id="3a-10-14"></td>
+        <td id="3a-15-19"></td>
+        <td id="3a-20-24"></td>
+        <td id="3a-25-29"></td>
+        <td id="3a-30-34"></td>
+        <td id="3a-35+"></td>
+        <td id="3a-jumla"></td>
+    </tr>
+
+    <tr>
+        <th>4</th>
+        <th class="list-title" colspan="8">Taarifa ya njia za kujifungua</th>
+    </tr>
+
+    <tr>
+        <td>4a</td>
+        <td class="list-title">Kawaida (SVD)</td>
+        <td id="4a-10-14"></td>
+        <td id="4a-15-19"></td>
+        <td id="4a-20-24"></td>
+        <td id="4a-25-29"></td>
+        <td id="4a-30-34"></td>
+        <td id="4a-35+"></td>
+        <td id="4a-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>4b</td>
+        <td class="list-title">Vacuum (VM)</td>
+        <td id="4b-10-14"></td>
+        <td id="4b-15-19"></td>
+        <td id="4b-20-24"></td>
+        <td id="4b-25-29"></td>
+        <td id="4b-30-34"></td>
+        <td id="4b-35+"></td>
+        <td id="4b-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>4c</td>
+        <td class="list-title">Breech delivery (BR)</td>
+        <td id="4c-10-14"></td>
+        <td id="4c-15-19"></td>
+        <td id="4c-20-24"></td>
+        <td id="4c-25-29"></td>
+        <td id="4c-30-34"></td>
+        <td id="4c-35+"></td>
+        <td id="4c-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>4d</td>
+        <td class="list-title">Caesarian Section (CS)</td>
+        <td id="4d-10-14"></td>
+        <td id="4d-15-19"></td>
+        <td id="4d-20-24"></td>
+        <td id="4d-25-29"></td>
+        <td id="4d-30-34"></td>
+        <td id="4d-35+"></td>
+        <td id="4d-jumla"></td>
+    </tr>
+
+    <tr>
+        <td></td>
+        <td class="list-title">Jumla (4a+4b+4c+4d)</td>
+        <td id="4a+4b+4c+4d-10-14"></td>
+        <td id="4a+4b+4c+4d-15-19"></td>
+        <td id="4a+4b+4c+4d-20-24"></td>
+        <td id="4a+4b+4c+4d-25-29"></td>
+        <td id="4a+4b+4c+4d-30-34"></td>
+        <td id="4a+4b+4c+4d-35+"></td>
+        <td id="4a+4b+4c+4d-jumla"></td>
+    </tr>
+
+    <tr>
+        <th>5</th>
+        <th class="list-title" colspan="8">Matatizo kabla ya kujifungua</th>
+    </tr>
+
+    <tr>
+        <td>5a</td>
+        <td class="list-title">APH</td>
+        <td id="5a-10-14"></td>
+        <td id="5a-15-19"></td>
+        <td id="5a-20-24"></td>
+        <td id="5a-25-29"></td>
+        <td id="5a-30-34"></td>
+        <td id="5a-35+"></td>
+        <td id="5a-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>5b</td>
+        <td class="list-title">Pre-mature Rupture of Membrane (PROM)</td>
+        <td id="5b-10-14"></td>
+        <td id="5b-15-19"></td>
+        <td id="5b-20-24"></td>
+        <td id="5b-25-29"></td>
+        <td id="5b-30-34"></td>
+        <td id="5b-35+"></td>
+        <td id="5b-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>5c</td>
+        <td class="list-title">High BP</td>
+        <td id="5c-10-14"></td>
+        <td id="5c-15-19"></td>
+        <td id="5c-20-24"></td>
+        <td id="5c-25-29"></td>
+        <td id="5c-30-34"></td>
+        <td id="5c-35+"></td>
+        <td id="5c-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>5d</td>
+        <td class="list-title">Pre-eclampsia</td>
+        <td id="5d-10-14"></td>
+        <td id="5d-15-19"></td>
+        <td id="5d-20-24"></td>
+        <td id="5d-25-29"></td>
+        <td id="5d-30-34"></td>
+        <td id="5d-35+"></td>
+        <td id="5d-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>5e</td>
+        <td class="list-title">Eclampsia</td>
+        <td id="5e-10-14"></td>
+        <td id="5e-15-19"></td>
+        <td id="5e-20-24"></td>
+        <td id="5e-25-29"></td>
+        <td id="5e-30-34"></td>
+        <td id="5e-35+"></td>
+        <td id="5e-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>5f</td>
+        <td class="list-title">Anaemia</td>
+        <td id="5f-10-14"></td>
+        <td id="5f-15-19"></td>
+        <td id="5f-20-24"></td>
+        <td id="5f-25-29"></td>
+        <td id="5f-30-34"></td>
+        <td id="5f-35+"></td>
+        <td id="5f-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>5g</td>
+        <td class="list-title">Malaria</td>
+        <td id="5g-10-14"></td>
+        <td id="5g-15-19"></td>
+        <td id="5g-20-24"></td>
+        <td id="5g-25-29"></td>
+        <td id="5g-30-34"></td>
+        <td id="5g-35+"></td>
+        <td id="5g-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>5h</td>
+        <td class="list-title">HIV + Stage III au IV</td>
+        <td id="5h-10-14"></td>
+        <td id="5h-15-19"></td>
+        <td id="5h-20-24"></td>
+        <td id="5h-25-29"></td>
+        <td id="5h-30-34"></td>
+        <td id="5h-35+"></td>
+        <td id="5h-jumla"></td>
+    </tr>
+
+    <tr>
+        <td></td>
+        <td class="list-title">
+            Jumla wenye matatizo kabla ya kujifungua (5a+5b+5c+5d+5e+5f+5g+5h)
+        </td>
+        <td id="5a+5b+5c+5d+5e+5f+5g+5h-10-14"></td>
+        <td id="5a+5b+5c+5d+5e+5f+5g+5h-15-19"></td>
+        <td id="5a+5b+5c+5d+5e+5f+5g+5h-20-24"></td>
+        <td id="5a+5b+5c+5d+5e+5f+5g+5h-25-29"></td>
+        <td id="5a+5b+5c+5d+5e+5f+5g+5h-30-34"></td>
+        <td id="5a+5b+5c+5d+5e+5f+5g+5h-35+"></td>
+        <td id="5a+5b+5c+5d+5e+5f+5g+5h-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>5i</td>
+        <td class="list-title">Waliokekektwa (FGM)</td>
+        <td id="5i-10-14"></td>
+        <td id="5i-15-19"></td>
+        <td id="5i-20-24"></td>
+        <td id="5i-25-29"></td>
+        <td id="5i-30-34"></td>
+        <td id="5i-35+"></td>
+        <td id="5i-jumla"></td>
+    </tr>
+
+    <tr>
+        <th>6</th>
+        <th class="list-title" colspan="8">
+            Matatizo wakati na baada ya kujifungua
+        </th>
+    </tr>
+
+    <tr>
+        <td>6a</td>
+        <td class="list-title">PPH</td>
+        <td id="6a-10-14"></td>
+        <td id="6a-15-19"></td>
+        <td id="6a-20-24"></td>
+        <td id="6a-25-29"></td>
+        <td id="6a-30-34"></td>
+        <td id="6a-35+"></td>
+        <td id="6a-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>6b</td>
+        <td class="list-title">Pre eclampsia</td>
+        <td id="6b-10-14"></td>
+        <td id="6b-15-19"></td>
+        <td id="6b-20-24"></td>
+        <td id="6b-25-29"></td>
+        <td id="6b-30-34"></td>
+        <td id="6b-35+"></td>
+        <td id="6b-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>6c</td>
+        <td class="list-title">Eclampsia</td>
+        <td id="6c-10-14"></td>
+        <td id="6c-15-19"></td>
+        <td id="6c-20-24"></td>
+        <td id="6c-25-29"></td>
+        <td id="6c-30-34"></td>
+        <td id="6c-35+"></td>
+        <td id="6c-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>6d</td>
+        <td class="list-title">Obstructed Labour</td>
+        <td id="6d-10-14"></td>
+        <td id="6d-15-19"></td>
+        <td id="6d-20-24"></td>
+        <td id="6d-25-29"></td>
+        <td id="6d-30-34"></td>
+        <td id="6d-35+"></td>
+        <td id="6d-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>6e</td>
+        <td class="list-title">Retained Placenta</td>
+        <td id="6e-10-14"></td>
+        <td id="6e-15-19"></td>
+        <td id="6e-20-24"></td>
+        <td id="6e-25-29"></td>
+        <td id="6e-30-34"></td>
+        <td id="6e-35+"></td>
+        <td id="6e-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>6f</td>
+        <td class="list-title">Third degree tear</td>
+        <td id="6f-10-14"></td>
+        <td id="6f-15-19"></td>
+        <td id="6f-20-24"></td>
+        <td id="6f-25-29"></td>
+        <td id="6f-30-34"></td>
+        <td id="6f-35+"></td>
+        <td id="6f-jumla"></td>
+    </tr>
+    <tr>
+        <td>6g</td>
+        <td class="list-title">Ruptured uterus</td>
+        <td id="6g-10-14"></td>
+        <td id="6g-15-19"></td>
+        <td id="6g-20-24"></td>
+        <td id="6g-25-29"></td>
+        <td id="6g-30-34"></td>
+        <td id="6g-35+"></td>
+        <td id="6g-jumla"></td>
+    </tr>
+    <tr>
+        <td>6h</td>
+        <td class="list-title">Uambukizo/Sepsis</td>
+        <td id="6h-10-14"></td>
+        <td id="6h-15-19"></td>
+        <td id="6h-20-24"></td>
+        <td id="6h-25-29"></td>
+        <td id="6h-30-34"></td>
+        <td id="6h-35+"></td>
+        <td id="6h-jumla"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td class="list-title">
+            Jumla wenye matatizo baada ya kujifungua (6a+6b+6c+6d+6e+6f+6g+6h)
+        </td>
+        <td id="6a+6b+6c+6d+6e+6f+6g+6h-10-14"></td>
+        <td id="6a+6b+6c+6d+6e+6f+6g+6h-15-19"></td>
+        <td id="6a+6b+6c+6d+6e+6f+6g+6h-20-24"></td>
+        <td id="6a+6b+6c+6d+6e+6f+6g+6h-25-29"></td>
+        <td id="6a+6b+6c+6d+6e+6f+6g+6h-30-34"></td>
+        <td id="6a+6b+6c+6d+6e+6f+6g+6h-35+"></td>
+        <td id="6a+6b+6c+6d+6e+6f+6g+6h-jumla"></td>
+    </tr>
+
+    <tr>
+        <th>7</th>
+        <th class="list-title" colspan="8">EmOC</th>
+    </tr>
+    <tr>
+        <td>7a</td>
+        <td class="list-title">Amepewa Antibiotic</td>
+        <td id="7a-10-14"></td>
+        <td id="7a-15-19"></td>
+        <td id="7a-20-24"></td>
+        <td id="7a-25-29"></td>
+        <td id="7a-30-34"></td>
+        <td id="7a-35+"></td>
+        <td id="7a-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>7b</td>
+        <td class="list-title">Amepewa Uterotonic</td>
+        <td id="7b-10-14"></td>
+        <td id="7b-15-19"></td>
+        <td id="7b-20-24"></td>
+        <td id="7b-25-29"></td>
+        <td id="7b-30-34"></td>
+        <td id="7b-35+"></td>
+        <td id="7b-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>7c</td>
+        <td class="list-title">Amepewa Magnesium Sulphate</td>
+        <td id="7c-10-14"></td>
+        <td id="7c-15-19"></td>
+        <td id="7c-20-24"></td>
+        <td id="7c-25-29"></td>
+        <td id="7c-30-34"></td>
+        <td id="7c-35+"></td>
+        <td id="7c-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>7d</td>
+        <td class="list-title">Ameondolewa kwa mkono kondo la nyuma</td>
+        <td id="7d-10-14"></td>
+        <td id="7d-15-19"></td>
+        <td id="7d-20-24"></td>
+        <td id="7d-25-29"></td>
+        <td id="7d-30-34"></td>
+        <td id="7d-35+"></td>
+        <td id="7d-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>7e</td>
+        <td class="list-title">Amefanyiwa MVA/D&C</td>
+        <td id="7e-10-14"></td>
+        <td id="7e-15-19"></td>
+        <td id="7e-20-24"></td>
+        <td id="7e-25-29"></td>
+        <td id="7e-30-34"></td>
+        <td id="7e-35+"></td>
+        <td id="7e-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>7f</td>
+        <td class="list-title">Ameongezewa damu</td>
+        <td id="7f-10-14"></td>
+        <td id="7f-15-19"></td>
+        <td id="7f-20-24"></td>
+        <td id="7f-25-29"></td>
+        <td id="7f-30-34"></td>
+        <td id="7f-35+"></td>
+        <td id="7f-jumla"></td>
+    </tr>
+
+    <tr>
+        <th>8</th>
+        <th class="list-title" colspan="8">AMSTL</th>
+    </tr>
+    <tr>
+        <td>8a</td>
+        <td class="list-title">
+            Wanawake waliosaidiwa kutoiewa kondo la nyuma kwa kuvutwa kitovu
+            pole pole
+        </td>
+        <td id="8a-10-14"></td>
+        <td id="8a-15-19"></td>
+        <td id="8a-20-24"></td>
+        <td id="8a-25-29"></td>
+        <td id="8a-30-34"></td>
+        <td id="8a-35+"></td>
+        <td id="8a-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>8b</td>
+        <td class="list-title">
+            Wanawake waliosaidiwa kwa kukandwa kandwa nyumba ya uzazi.
+        </td>
+        <td id="8b-10-14"></td>
+        <td id="8b-15-19"></td>
+        <td id="8b-20-24"></td>
+        <td id="8b-25-29"></td>
+        <td id="8b-30-34"></td>
+        <td id="8b-35+"></td>
+        <td id="8b-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>8c</td>
+        <td class="list-title">
+            Wanawake waliopata Oxytocin baada ya kujifungua (10 IU)
+        </td>
+        <td id="8c-10-14"></td>
+        <td id="8c-15-19"></td>
+        <td id="8c-20-24"></td>
+        <td id="8c-25-29"></td>
+        <td id="8c-30-34"></td>
+        <td id="8c-35+"></td>
+        <td id="8c-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>8d</td>
+        <td class="list-title">
+            Wanawake waliopata Egometrine baada ya kujifungua (0.5mg)
+        </td>
+        <td id="8d-10-14"></td>
+        <td id="8d-15-19"></td>
+        <td id="8d-20-24"></td>
+        <td id="8d-25-29"></td>
+        <td id="8d-30-34"></td>
+        <td id="8d-35+"></td>
+        <td id="8d-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>8e</td>
+        <td class="list-title">
+            Wanawake waliopata Misoprostol baada ya kujifungua
+        </td>
+        <td id="8e-10-14"></td>
+        <td id="8e-15-19"></td>
+        <td id="8e-20-24"></td>
+        <td id="8e-25-29"></td>
+        <td id="8e-30-34"></td>
+        <td id="8e-35+"></td>
+        <td id="8e-jumla"></td>
+    </tr>
+
+    <tr>
+        <th>9</th>
+        <th class="list-title" colspan="8">PMTCT</th>
+    </tr>
+    <tr>
+        <td>9a</td>
+        <td class="list-title">Jumla waliopimwa VVU ANC</td>
+        <td id="9a-10-14"></td>
+        <td id="9a-15-19"></td>
+        <td id="9a-20-24"></td>
+        <td id="9a-25-29"></td>
+        <td id="9a-30-34"></td>
+        <td id="9a-35+"></td>
+        <td id="9a-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>9b</td>
+        <td class="list-title">Waliogundulika Positive kutoka ANC</td>
+        <td id="9b-10-14"></td>
+        <td id="9b-15-19"></td>
+        <td id="9b-20-24"></td>
+        <td id="9b-25-29"></td>
+        <td id="9b-30-34"></td>
+        <td id="9b-35+"></td>
+        <td id="9b-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>9c</td>
+        <td class="list-title">
+            Jumla waliopimwa VVU wakati na baada ya kujifungua
+        </td>
+        <td id="9c-10-14"></td>
+        <td id="9c-15-19"></td>
+        <td id="9c-20-24"></td>
+        <td id="9c-25-29"></td>
+        <td id="9c-30-34"></td>
+        <td id="9c-35+"></td>
+        <td id="9c-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>9d</td>
+        <td class="list-title">
+            Waliogundulika Positive wakati na baada ya kujifungua
+        </td>
+        <td id="9d-10-14"></td>
+        <td id="9d-15-19"></td>
+        <td id="9d-20-24"></td>
+        <td id="9d-25-29"></td>
+        <td id="9d-30-34"></td>
+        <td id="9d-35+"></td>
+        <td id="9d-jumla"></td>
+    </tr>
+
+    <tr>
+        <td></td>
+        <td class="list-title">Jumla walio na VVU (9b+9d)</td>
+        <td id="9b+9d-10-14"></td>
+        <td id="9b+9d-15-19"></td>
+        <td id="9b+9d-20-24"></td>
+        <td id="9b+9d-25-29"></td>
+        <td id="9b+9d-30-34"></td>
+        <td id="9b+9d-35+"></td>
+        <td id="9b+9d-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>9e</td>
+        <td class="list-title">
+            Waliochagua kunyonyesha maziwa ya mama pekee (EBF)
+        </td>
+        <td id="9e-10-14"></td>
+        <td id="9e-15-19"></td>
+        <td id="9e-20-24"></td>
+        <td id="9e-25-29"></td>
+        <td id="9e-30-34"></td>
+        <td id="9e-35+"></td>
+        <td id="9e-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>9f</td>
+        <td class="list-title">
+            Waliochagua ulishaji wa maziwa mbadala (RF)
+        </td>
+        <td id="9f-10-14"></td>
+        <td id="9f-15-19"></td>
+        <td id="9f-20-24"></td>
+        <td id="9f-25-29"></td>
+        <td id="9f-30-34"></td>
+        <td id="9f-35+"></td>
+        <td id="9f-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>9g</td>
+        <td class="list-title">
+            Waliopewa ARV Prophylaxis (tail) wakati wa kuruhusiwa
+        </td>
+        <td id="9g-10-14"></td>
+        <td id="9g-15-19"></td>
+        <td id="9g-20-24"></td>
+        <td id="9g-25-29"></td>
+        <td id="9g-30-34"></td>
+        <td id="9g-35+"></td>
+        <td id="9g-jumla"></td>
+    </tr>
+    <tr>
+        <td>9h</td>
+        <td class="list-title">
+            Waliopata rufaa kwenda kliniki ya huduma na matibabu
+        </td>
+        <td id="9h-10-14"></td>
+        <td id="9h-15-19"></td>
+        <td id="9h-20-24"></td>
+        <td id="9h-25-29"></td>
+        <td id="9h-30-34"></td>
+        <td id="9h-35+"></td>
+        <td id="9h-jumla"></td>
+    </tr>
+
+    <tr>
+        <th>10</th>
+        <th class="list-title" colspan="8">Watoto Waliozaliwa mmoja</th>
+    </tr>
+    <tr>
+        <td>10a</td>
+        <td class="list-title">Jumla ya watoto waliozaliwa hai</td>
+        <td id="10a-10-14"></td>
+        <td id="10a-15-19"></td>
+        <td id="10a-20-24"></td>
+        <td id="10a-25-29"></td>
+        <td id="10a-30-34"></td>
+        <td id="10a-35+"></td>
+        <td id="10a-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>10b</td>
+        <td class="list-title">Waliozaliwa hai Uzito < 2.5kg</td>
+        <td id="10b-10-14"></td>
+        <td id="10b-15-19"></td>
+        <td id="10b-20-24"></td>
+        <td id="10b-25-29"></td>
+        <td id="10b-30-34"></td>
+        <td id="10b-35+"></td>
+        <td id="10b-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>10c</td>
+        <td class="list-title">Waliozaliwa hai Uzito =>2.5kg</td>
+        <td id="10c-10-14"></td>
+        <td id="10c-15-19"></td>
+        <td id="10c-20-24"></td>
+        <td id="10c-25-29"></td>
+        <td id="10c-30-34"></td>
+        <td id="10c-35+"></td>
+        <td id="10c-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>10d</td>
+        <td class="list-title">Waliozaliwa wafu Macerated (MSB)</td>
+        <td id="10d-10-14"></td>
+        <td id="10d-15-19"></td>
+        <td id="10d-20-24"></td>
+        <td id="10d-25-29"></td>
+        <td id="10d-30-34"></td>
+        <td id="10d-35+"></td>
+        <td id="10d-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>10e</td>
+        <td class="list-title">Waliozaliwa wafu Fresh (FSB)</td>
+        <td id="10e-10-14"></td>
+        <td id="10e-15-19"></td>
+        <td id="10e-20-24"></td>
+        <td id="10e-25-29"></td>
+        <td id="10e-30-34"></td>
+        <td id="10e-35+"></td>
+        <td id="10e-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>10f</td>
+        <td class="list-title">Waliozaliwa na mama wenye VVU</td>
+        <td id="10f-10-14"></td>
+        <td id="10f-15-19"></td>
+        <td id="10f-20-24"></td>
+        <td id="10f-25-29"></td>
+        <td id="10f-30-34"></td>
+        <td id="10f-35+"></td>
+        <td id="10f-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>10g</td>
+        <td class="list-title">Waliopewa dawa za ARV</td>
+        <td id="10g-10-14"></td>
+        <td id="10g-15-19"></td>
+        <td id="10g-20-24"></td>
+        <td id="10g-25-29"></td>
+        <td id="10g-30-34"></td>
+        <td id="10g-35+"></td>
+        <td id="10g-jumla"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td class="list-title">
+            Jumla ya watoto waliozaliwa (hai na wafu) (10a+10d+10e)
+        </td>
+        <td id="10a+10d+10e-10-14"></td>
+        <td id="10a+10d+10e-15-19"></td>
+        <td id="10a+10d+10e-20-24"></td>
+        <td id="10a+10d+10e-25-29"></td>
+        <td id="10a+10d+10e-30-34"></td>
+        <td id="10a+10d+10e-35+"></td>
+        <td id="10a+10d+10e-jumla"></td>
+    </tr>
+    <tr>
+        <td>10h</td>
+        <td class="list-title">
+            Watoto wenye APGAR Score chini ya 7 katika dakika 5
+        </td>
+        <td id="10h-10-14"></td>
+        <td id="10h-15-19"></td>
+        <td id="10h-20-24"></td>
+        <td id="10h-25-29"></td>
+        <td id="10h-30-34"></td>
+        <td id="10h-35+"></td>
+        <td id="10h-jumla"></td>
+    </tr>
+    <tr>
+        <th>11</th>
+        <th class="list-title" colspan="8">Watoto Waliozaliwa mapacha</th>
+    </tr>
+    <tr>
+        <td>11a</td>
+        <td class="list-title">Jumla ya watoto waliozaliwa hai</td>
+        <td id="11a-10-14"></td>
+        <td id="11a-15-19"></td>
+        <td id="11a-20-24"></td>
+        <td id="11a-25-29"></td>
+        <td id="11a-30-34"></td>
+        <td id="11a-35+"></td>
+        <td id="11a-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>11b</td>
+        <td class="list-title">Waliozaliwa hai Uzito < 2.5kg</td>
+        <td id="11b-10-14"></td>
+        <td id="11b-15-19"></td>
+        <td id="11b-20-24"></td>
+        <td id="11b-25-29"></td>
+        <td id="11b-30-34"></td>
+        <td id="11b-35+"></td>
+        <td id="11b-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>11c</td>
+        <td class="list-title">Waliozaliwa hai Uzito =>2.5kg</td>
+        <td id="11c-10-14"></td>
+        <td id="11c-15-19"></td>
+        <td id="11c-20-24"></td>
+        <td id="11c-25-29"></td>
+        <td id="11c-30-34"></td>
+        <td id="11c-35+"></td>
+        <td id="11c-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>11d</td>
+        <td class="list-title">Waliozaliwa wafu Macerated (MSB)</td>
+        <td id="11d-10-14"></td>
+        <td id="11d-15-19"></td>
+        <td id="11d-20-24"></td>
+        <td id="11d-25-29"></td>
+        <td id="11d-30-34"></td>
+        <td id="11d-35+"></td>
+        <td id="11d-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>11e</td>
+        <td class="list-title">Waliozaliwa wafu Fresh (FSB)</td>
+        <td id="11e-10-14"></td>
+        <td id="11e-15-19"></td>
+        <td id="11e-20-24"></td>
+        <td id="11e-25-29"></td>
+        <td id="11e-30-34"></td>
+        <td id="11e-35+"></td>
+        <td id="11e-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>11f</td>
+        <td class="list-title">Waliozaliwa na mama wenye VVU</td>
+        <td id="11f-10-14"></td>
+        <td id="11f-15-19"></td>
+        <td id="11f-20-24"></td>
+        <td id="11f-25-29"></td>
+        <td id="11f-30-34"></td>
+        <td id="11f-35+"></td>
+        <td id="11f-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>11g</td>
+        <td class="list-title">Waliopewa dawa za ARV</td>
+        <td id="11g-10-14"></td>
+        <td id="11g-15-19"></td>
+        <td id="11g-20-24"></td>
+        <td id="11g-25-29"></td>
+        <td id="11g-30-34"></td>
+        <td id="11g-35+"></td>
+        <td id="11g-jumla"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td class="list-title">
+            Jumla ya watoto waliozaliwa (hai na wafu) (11a+11d+11e)
+        </td>
+        <td id="11a+11d+11e-10-14"></td>
+        <td id="11a+11d+11e-15-19"></td>
+        <td id="11a+11d+11e-20-24"></td>
+        <td id="11a+11d+11e-25-29"></td>
+        <td id="11a+11d+11e-30-34"></td>
+        <td id="11a+11d+11e-35+"></td>
+        <td id="11a+11d+11e-jumla"></td>
+    </tr>
+    <tr>
+        <td>11h</td>
+        <td class="list-title">
+            Watoto wenye APGAR Score chini ya 7 katika dakika 5
+        </td>
+        <td id="11h-10-14"></td>
+        <td id="11h-15-19"></td>
+        <td id="11h-20-24"></td>
+        <td id="11h-25-29"></td>
+        <td id="11h-30-34"></td>
+        <td id="11h-35+"></td>
+        <td id="11h-jumla"></td>
+    </tr>
+    <tr>
+        <th>12</th>
+        <th class="list-title" colspan="8">Watoto waliosaidiwa kupumua</th>
+    </tr>
+    <tr>
+        <td>12a</td>
+        <td class="list-title">
+            Idadi ya watoto Waliosaidiwa kupumua - Suction
+        </td>
+        <td id="12a-10-14"></td>
+        <td id="12a-15-19"></td>
+        <td id="12a-20-24"></td>
+        <td id="12a-25-29"></td>
+        <td id="12a-30-34"></td>
+        <td id="12a-35+"></td>
+        <td id="12a-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>12b</td>
+        <td class="list-title">
+            Idadi ya watoto waliosaidiwa kupumua- stimulation
+        </td>
+        <td id="12b-10-14"></td>
+        <td id="12b-15-19"></td>
+        <td id="12b-20-24"></td>
+        <td id="12b-25-29"></td>
+        <td id="12b-30-34"></td>
+        <td id="12b-35+"></td>
+        <td id="12b-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>12c</td>
+        <td class="list-title">
+            Idadi ya watoto waliosaidiwa kupumua- bag and mask
+        </td>
+        <td id="12c-10-14"></td>
+        <td id="12c-15-19"></td>
+        <td id="12c-20-24"></td>
+        <td id="12c-25-29"></td>
+        <td id="12c-30-34"></td>
+        <td id="12c-35+"></td>
+        <td id="12c-jumla"></td>
+    </tr>
+    <tr>
+        <th>13</th>
+        <th class="list-title" colspan="8">Huduma nyinginezo</th>
+    </tr>
+    <tr>
+        <td>13a</td>
+        <td class="list-title">
+            Idadi ya watoto walionyonyeshwa ndani ya saa moja baada ya kuzaliwa
+        </td>
+        <td id="13a-10-14"></td>
+        <td id="13a-15-19"></td>
+        <td id="13a-20-24"></td>
+        <td id="13a-25-29"></td>
+        <td id="13a-30-34"></td>
+        <td id="13a-35+"></td>
+        <td id="13a-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>13b</td>
+        <td class="list-title">Idadi ya Wamama waliopewa rufaa</td>
+        <td id="13b-10-14"></td>
+        <td id="13b-15-19"></td>
+        <td id="13b-20-24"></td>
+        <td id="13b-25-29"></td>
+        <td id="13b-30-34"></td>
+        <td id="13b-35+"></td>
+        <td id="13b-jumla"></td>
+    </tr>
+
+    <tr>
+        <td>13c</td>
+        <td class="list-title">Idadi ya Watoto waliopewa rufaa</td>
+        <td id="13c-10-14"></td>
+        <td id="13c-15-19"></td>
+        <td id="13c-20-24"></td>
+        <td id="13c-25-29"></td>
+        <td id="13c-30-34"></td>
+        <td id="13c-35+"></td>
+        <td id="13c-jumla"></td>
+    </tr>
+
+    <tr>
+        <th>14</th>
+        <th class="list-title" colspan="8">Vifo vya Wazazi</th>
+    </tr>
+    <tr>
+        <td>14a</td>
+        <td class="list-title">Wazazi waliofariki</td>
+        <td id="14a-10-14"></td>
+        <td id="14a-15-19"></td>
+        <td id="14a-20-24"></td>
+        <td id="14a-25-29"></td>
+        <td id="14a-30-34"></td>
+        <td id="14a-35+"></td>
+        <td id="14a-jumla"></td>
+    </tr>
+
+    <tr>
+        <th>15</th>
+        <th class="list-title">Uzazi wa Mpango</th>
+        <th class="list-title" colspan="7">Wateja Wapya</th>
+    </tr>
+    <tr>
+        <td>15a</td>
+        <td class="list-title">Waliopewa ushauri wa uzazi wa mpango</td>
+        <td id="15a-10-14"></td>
+        <td id="15a-15-19"></td>
+        <td id="15a-20-24"></td>
+        <td id="15a-25-29"></td>
+        <td id="15a-30-34"></td>
+        <td id="15a-35+"></td>
+        <td id="15a-jumla"></td>
+    </tr>
+    <tr>
+        <td>15b</td>
+        <td class="list-title">Wateja waliofunga kizazi</td>
+        <td id="15b-10-14"></td>
+        <td id="15b-15-19"></td>
+        <td id="15b-20-24"></td>
+        <td id="15b-25-29"></td>
+        <td id="15b-30-34"></td>
+        <td id="15b-35+"></td>
+        <td id="15b-jumla"></td>
+    </tr>
+    <tr>
+        <td>15c</td>
+        <td class="list-title">Wateja waliowekewa kitanzi</td>
+        <td id="15c-10-14"></td>
+        <td id="15c-15-19"></td>
+        <td id="15c-20-24"></td>
+        <td id="15c-25-29"></td>
+        <td id="15c-30-34"></td>
+        <td id="15c-35+"></td>
+        <td id="15c-jumla"></td>
+    </tr>
+    <tr>
+        <td>15d</td>
+        <td class="list-title">Wateja waliowekewa vipandikizi</td>
+        <td id="15d-10-14"></td>
+        <td id="15d-15-19"></td>
+        <td id="15d-20-24"></td>
+        <td id="15d-25-29"></td>
+        <td id="15d-30-34"></td>
+        <td id="15d-35+"></td>
+        <td id="15d-jumla"></td>
+    </tr>
+    <tr>
+        <td>15e</td>
+        <td class="list-title">Wateja waliopewa vidonge (POP)</td>
+        <td id="15e-10-14"></td>
+        <td id="15e-15-19"></td>
+        <td id="15e-20-24"></td>
+        <td id="15e-25-29"></td>
+        <td id="15e-30-34"></td>
+        <td id="15e-35+"></td>
+        <td id="15e-jumla"></td>
+    </tr>
+    </tbody>
+</table>
+<table border="1" class="pnc-anc-table">
+    <thead>
+    <tr>
+        <th>Na.</th>
+        <th>Maelezo</th>
+        <th colspan="2">Miaka 10 -14</th>
+        <th colspan="2">Miaka 15 - 19</th>
+        <th colspan="2">Miaka 20 - 24</th>
+        <th colspan="2">Miaka 25 - 29</th>
+        <th colspan="2">Miaka 30 - 34</th>
+        <th colspan="2">Miaka 35 na zaidi</th>
+        <th colspan="2">Jumla</th>
+    </tr>
+    <tr>
+        <th>16</th>
+        <th class="list-title" colspan="16">Vifo vya Watoto Wachanga</th>
+    </tr>
+    <tr>
+        <th colspan="2"></th>
+        <th>ME</th>
+        <th>KE</th>
+        <th>ME</th>
+        <th>KE</th>
+        <th>ME</th>
+        <th>KE</th>
+        <th>ME</th>
+        <th>KE</th>
+        <th>ME</th>
+        <th>KE</th>
+        <th>ME</th>
+        <th>KE</th>
+        <th>ME</th>
+        <th>KE</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>16a</td>
+        <td class="list-title">Watoto Wachanga waliofariki</td>
+        <td id="16a-10-14-ME"></td>
+        <td id="16a-10-14-KE"></td>
+        <td id="16a-15-19-ME"></td>
+        <td id="16a-15-19-KE"></td>
+        <td id="16a-20-24-ME"></td>
+        <td id="16a-20-24-KE"></td>
+        <td id="16a-25-29-ME"></td>
+        <td id="16a-25-29-KE"></td>
+        <td id="16a-30-34-ME"></td>
+        <td id="16a-30-34-KE"></td>
+        <td id="16a-35+-ME"></td>
+        <td id="16a-35+-KE"></td>
+        <td id="16a-jumla-ME"></td>
+        <td id="16a-jumla-KE"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
