@@ -161,7 +161,7 @@
         "relevance": {
           "step1:vaginal_bleeding_observation": {
             "type": "string",
-            "ex": "equalTo(\"abnormal\")"
+            "ex": "equalTo(.,\"abnormal\")"
           }
         }
       },
