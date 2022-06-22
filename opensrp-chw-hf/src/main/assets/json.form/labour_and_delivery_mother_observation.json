@@ -324,23 +324,38 @@
         "type": "native_radio",
         "options": [
           {
+            "key": "normal",
+            "text": "Normal",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "normal"
+          },
+          {
             "key": "tear",
             "text": "Tear",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "tear"
-          },
-          {
-            "key": "intact",
-            "text": "Intact",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "intact"
           }
         ],
         "v_required": {
           "value": true,
           "err": "Please select an option"
+        }
+      },
+      {
+        "key": "prompt_for_cervix_observation",
+        "type": "toaster_notes",
+        "text": "Manage according to standard guidelines",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:cervix_observation": {
+            "type": "string",
+            "ex": "equalTo(.,\"tear\")"
+          }
         }
       },
       {
@@ -570,7 +585,7 @@
       {
         "key": "prompt_for_uterus_contraction",
         "type": "toaster_notes",
-        "text": "Action to be taken per National guideline",
+        "text": "Manage according to national guidelines",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
