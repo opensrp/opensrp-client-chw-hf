@@ -58,7 +58,6 @@
         "openmrs_entity_id": "maternal_complications_during_labour",
         "type": "check_box",
         "label": "Maternal complications during labour",
-        "combine_checkbox_option_values": "true",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "exclusive": [
@@ -176,7 +175,7 @@
         "key": "maternal_complications_module_status",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "mother_observation_module_status",
+        "openmrs_entity_id": "maternal_complications_module_status",
         "type": "hidden",
         "value": "PENDING"
       }

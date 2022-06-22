@@ -57,7 +57,6 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "vagina_observation",
         "type": "check_box",
-        "combine_checkbox_option_values": "true",
         "label": "Vagina",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
