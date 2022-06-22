@@ -103,7 +103,7 @@
         "key": "oxytocin_dose",
         "type": "edit_text",
         "edit_type": "number",
-        "hint": "Oxytocin Dose",
+        "hint": "Oxytocin Dose (drops/min) given",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "oxytocin_dose",
         "openmrs_entity_parent": "",

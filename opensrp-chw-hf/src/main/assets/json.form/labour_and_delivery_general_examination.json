@@ -349,6 +349,13 @@
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "+++"
+          },
+          {
+            "key": "not_tested",
+            "text": "Not Tested",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "not_tested"
           }
         ]
       },
@@ -367,7 +374,8 @@
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "nil"
-          },{
+          },
+          {
             "key": "+",
             "text": "+",
             "openmrs_entity_parent": "",
@@ -387,6 +395,13 @@
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "+++"
+          },
+          {
+            "key": "not_tested",
+            "text": "Not Tested",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "not_tested"
           }
         ]
       },
@@ -427,6 +442,21 @@
         }
       },
       {
+        "key": "prompt_for_fundal_height",
+        "type": "toaster_notes",
+        "text": "Abnormal fundal height",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:fundal_height": {
+            "type": "numeric",
+            "ex": "greaterThan(.,\"36\")"
+          }
+        }
+      },
+      {
         "key": "lie",
         "type": "native_radio",
         "openmrs_entity_id": "lie",
@@ -458,37 +488,6 @@
         ]
       },
       {
-        "key": "presentation",
-        "type": "native_radio",
-        "openmrs_entity_id": "presentation",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "label": "Presentation",
-        "options": [
-          {
-            "key": "breech",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "openmrs_entity_parent": "",
-            "text": "Breech Presentation"
-          },
-          {
-            "key": "cephalic",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "",
-            "openmrs_entity_parent": "",
-            "text": "Cephalic Presentation"
-          }
-        ],
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "labour_and_delivery_general_examination_relevance.yml"
-            }
-          }
-        }
-      },
-      {
         "key": "prompt_for_lie",
         "type": "toaster_notes",
         "text": "Refer for further consultation",
@@ -503,6 +502,98 @@
             }
           }
         }
+      },
+      {
+        "key": "presentation",
+        "type": "native_radio",
+        "openmrs_entity_id": "presentation",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "label": "Presentation",
+        "options": [
+          {
+            "key": "breech",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "breech",
+            "openmrs_entity_parent": "",
+            "text": "Breech Presentation"
+          },
+          {
+            "key": "cephalic",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "cephalic",
+            "openmrs_entity_parent": "",
+            "text": "Cephalic Presentation"
+          }
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_general_examination_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_presentation",
+        "type": "toaster_notes",
+        "text": "Manage according to standard guideline",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:presentation": {
+            "type": "string",
+            "ex": "equalTo(.,\"breech\")"
+          }
+        }
+      },
+      {
+        "key": "contraction_frequency",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "contraction_frequency",
+        "label": "Contraction Frequency",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "1",
+            "text": "1",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "1"
+          },
+          {
+            "key": "2",
+            "text": "2",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "2"
+          },
+          {
+            "key": "3",
+            "text": "3",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "3"
+          },
+          {
+            "key": "4",
+            "text": "4",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "4"
+          },
+          {
+            "key": "5",
+            "text": "5",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "5"
+          }
+        ]
       },
       {
         "key": "contraction_in_ten_minutes",
