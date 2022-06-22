@@ -10,7 +10,9 @@ import static org.smartregister.chw.hf.utils.Constants.HeiHIVTestAtAge.AT_BIRTH;
 import static org.smartregister.chw.hf.utils.Constants.TableName.HEI;
 import static org.smartregister.chw.hf.utils.Constants.TableName.HEI_FOLLOWUP;
 import static org.smartregister.chw.hf.utils.JsonFormUtils.ENCOUNTER_TYPE;
+import static org.smartregister.util.JsonFormUtils.FIELDS;
 import static org.smartregister.util.JsonFormUtils.KEY;
+import static org.smartregister.util.JsonFormUtils.STEP1;
 import static org.smartregister.util.JsonFormUtils.VALUE;
 
 import android.content.ContentValues;
@@ -35,9 +37,9 @@ import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.utils.Constants;
+import org.smartregister.chw.hf.utils.LDDao;
 import org.smartregister.chw.hf.utils.LDVisitUtils;
 import org.smartregister.chw.ld.contract.BaseLDVisitContract;
-import org.smartregister.chw.ld.dao.LDDao;
 import org.smartregister.chw.ld.domain.MemberObject;
 import org.smartregister.chw.ld.domain.Visit;
 import org.smartregister.chw.ld.domain.VisitDetail;
@@ -66,6 +68,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import timber.log.Timber;
@@ -164,7 +167,6 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         private String delivery_place;
         String delivery_date;
         String delivery_time;
-        String labour_information;
         private Context context;
         private String baseEntityId;
         private LinkedHashMap<String, BaseLDVisitAction> actionList;
@@ -193,7 +195,6 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
             delivery_place = JsonFormUtils.getFieldValue(jsonPayload, "delivery_place");
             delivery_date = JsonFormUtils.getFieldValue(jsonPayload, "delivery_date");
             delivery_time = JsonFormUtils.getFieldValue(jsonPayload, "delivery_time");
-            labour_information = JsonFormUtils.getFieldValue(jsonPayload, "labour_information");
             try {
                 numberOfChildrenBorn = Integer.parseInt(JsonFormUtils.getFieldValue(jsonPayload, "number_of_children_born"));
             } catch (Exception e) {
@@ -213,6 +214,43 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
         @Override
         public String postProcess(String jsonPayload) {
+            JSONObject jsonObject = null;
+            try {
+                jsonObject = new JSONObject(jsonPayload);
+                String deliveryDate = JsonFormUtils.getFieldValue(jsonPayload, "delivery_date");
+                String deliveryTime = JsonFormUtils.getFieldValue(jsonPayload, "delivery_time");
+                String labourOnsetDate;
+                String labourOnsetTime;
+                if (LDDao.getLabourOnsetDate(baseEntityId) != null && LDDao.getLabourOnsetTime(baseEntityId) != null) {
+                    labourOnsetDate = LDDao.getLabourOnsetDate(baseEntityId);
+                    labourOnsetTime = LDDao.getLabourOnsetTime(baseEntityId);
+                } else {
+                    labourOnsetDate = LDDao.getAdmissionDate(baseEntityId);
+                    labourOnsetTime = LDDao.getAdmissionTime(baseEntityId);
+                }
+
+                String labourOnsetDateTime = labourOnsetDate + " " + labourOnsetTime;
+                String deliveryDateTime = deliveryDate + " " + deliveryTime;
+
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault());
+
+                Date date1 = simpleDateFormat.parse(labourOnsetDateTime);
+                Date date2 = simpleDateFormat.parse(deliveryDateTime);
+
+                long msDiff = date2.getTime() - date1.getTime();
+                JSONArray fields = jsonObject.getJSONObject(STEP1).getJSONArray(FIELDS);
+
+                for (int i = 0; i < fields.length(); i++) {
+                    if (fields.getJSONObject(i).getString(KEY).equalsIgnoreCase("labour_duration")) {
+                        fields.getJSONObject(i).put(VALUE, msDiff);
+                    }
+                }
+
+
+            } catch (Exception e) {
+                Timber.e(e);
+            }
+
             for (Map.Entry<String, BaseLDVisitAction> entry : actionList.entrySet()) {
                 if (entry.getKey().contains(MessageFormat.format(context.getString(R.string.ld_new_born_status_action_title), "")))
                     actionList.remove(entry.getKey());
@@ -246,7 +284,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                 //Calling the callback method to preload the actions in the actionns list.
                 new AppExecutors().mainThread().execute(() -> callBack.preloadActions(actionList));
             }
-            return null;
+            return jsonObject.toString();
         }
 
         @Override
@@ -258,8 +296,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         public BaseLDVisitAction.Status evaluateStatusOnPayload() {
             if (StringUtils.isNotBlank(status) &&
                     StringUtils.isNotBlank(delivery_place) &&
-                    StringUtils.isNotBlank(delivery_date) &&
-                    StringUtils.isNotBlank(labour_information)) {
+                    StringUtils.isNotBlank(delivery_date)) {
                 return BaseLDVisitAction.Status.COMPLETED;
             } else {
                 return BaseLDVisitAction.Status.PENDING;
@@ -584,7 +621,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                 );
                 if (removeFamilyMemberForm != null) {
                     JSONObject stepOne = removeFamilyMemberForm.getJSONObject(org.smartregister.chw.anc.util.JsonFormUtils.STEP1);
-                    JSONArray jsonArray = stepOne.getJSONArray(org.smartregister.chw.anc.util.JsonFormUtils.FIELDS);
+                    JSONArray jsonArray = stepOne.getJSONArray(FIELDS);
 
                     org.smartregister.chw.anc.util.JsonFormUtils.updateFormField(jsonArray, "remove_reason", "Death");
 
@@ -653,7 +690,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                 form.put(RELATIONAL_ID, familyBaseEntityId);
 
                 JSONObject stepOne = form.getJSONObject(org.smartregister.chw.anc.util.JsonFormUtils.STEP1);
-                JSONArray jsonArray = stepOne.getJSONArray(org.smartregister.chw.anc.util.JsonFormUtils.FIELDS);
+                JSONArray jsonArray = stepOne.getJSONArray(FIELDS);
 
                 if (getRiskStatus(fields).equalsIgnoreCase("high")) {
                     updateFormField(jsonArray, "test_at_age", AT_BIRTH);
@@ -684,7 +721,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
             form.put(DBConstants.KEY.RELATIONAL_ID, familyId);
             form.put("mother_entity_id", motherId);
             JSONObject stepOne = form.getJSONObject(JsonFormUtils.STEP1);
-            JSONArray fields = stepOne.getJSONArray(JsonFormUtils.FIELDS);
+            JSONArray fields = stepOne.getJSONArray(FIELDS);
 
             String babyFirstName = context.getString(R.string.ld_baby_of_text) + " " + memberObject.getFirstName();
             String dob = getDeliveryDateString(obs);
