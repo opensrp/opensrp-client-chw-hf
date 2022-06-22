@@ -66,6 +66,13 @@
         ],
         "options": [
           {
+            "key": "chk_intact",
+            "text": "Intact",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_intact"
+          },
+          {
             "key": "chk_bleeding",
             "text": "Bleeding",
             "value": false,
@@ -78,18 +85,31 @@
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_tear"
-          },
-          {
-            "key": "chk_intact",
-            "text": "Intact",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_intact"
           }
         ],
         "v_required": {
           "value": "true",
           "err": "Please answer this question"
+        }
+      },
+      {
+        "key": "prompt_for_vagina_observation",
+        "type": "toaster_notes",
+        "text": "Action to be taken per National guideline",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:vagina_observation": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "chk_tear"
+                ]
+              }
+            ]
+          }
         }
       },
       {
@@ -131,27 +151,6 @@
         }
       },
       {
-        "key": "prompt_for_vagina_observation",
-        "type": "toaster_notes",
-        "text": "Action to be taken per National guideline",
-        "openmrs_entity_id": "",
-        "openmrs_entity": "",
-        "openmrs_entity_parent": "",
-        "toaster_type": "problem",
-        "relevance": {
-          "step1:vagina_observation": {
-            "ex-checkbox": [
-              {
-                "or": [
-                  "chk_bleeding",
-                  "chk_tear"
-                ]
-              }
-            ]
-          }
-        }
-      },
-      {
         "key": "prompt_for_abnormal_bleeding",
         "type": "toaster_notes",
         "text": "Abnormal bleeding, take action per National guideline",
@@ -162,7 +161,7 @@
         "relevance": {
           "step1:vaginal_bleeding_observation": {
             "type": "string",
-            "ex": "equalTo(\"abnormal\")"
+            "ex": "equalTo(.,\"abnormal\")"
           }
         }
       },
@@ -176,13 +175,6 @@
         "type": "native_radio",
         "options": [
           {
-            "key": "tear",
-            "text": "Tear",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "tear"
-          },
-          {
             "key": "intact",
             "text": "Intact",
             "openmrs_entity_parent": "",
@@ -195,6 +187,13 @@
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "bruised_laceration"
+          },
+          {
+            "key": "tear",
+            "text": "Tear",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "tear"
           }
         ],
         "v_required": {
@@ -252,6 +251,24 @@
         }
       },
       {
+        "key": "perineum_repair_person_name",
+        "type": "edit_text",
+        "hint": "Name of doctor/nurse who repaired the perineum",
+        "openmrs_entity_id": "perineum_repair_person_name",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": true,
+          "err": "Please specify the name of doctor/nurse who repaired the perineum"
+        },
+        "relevance": {
+          "step1:perineum_observation": {
+            "type": "string",
+            "ex": "equalTo(., \"tear\")"
+          }
+        }
+      },
+      {
         "key": "perineum_repair_occupation",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -274,24 +291,6 @@
         "v_required": {
           "value": "true",
           "err": "Please select one option"
-        },
-        "relevance": {
-          "step1:perineum_observation": {
-            "type": "string",
-            "ex": "equalTo(., \"tear\")"
-          }
-        }
-      },
-      {
-        "key": "perineum_repair_person_name",
-        "type": "edit_text",
-        "hint": "Name of doctor/nurse who repaired the perineum",
-        "openmrs_entity_id": "perineum_repair_person_name",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "v_required": {
-          "value": true,
-          "err": "Please specify the name of doctor/nurse who repaired the perineum"
         },
         "relevance": {
           "step1:perineum_observation": {
@@ -325,23 +324,38 @@
         "type": "native_radio",
         "options": [
           {
+            "key": "normal",
+            "text": "Normal",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "normal"
+          },
+          {
             "key": "tear",
             "text": "Tear",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "tear"
-          },
-          {
-            "key": "intact",
-            "text": "Intact",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "intact"
           }
         ],
         "v_required": {
           "value": true,
           "err": "Please select an option"
+        }
+      },
+      {
+        "key": "prompt_for_cervix_observation",
+        "type": "toaster_notes",
+        "text": "Manage according to standard guidelines",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:cervix_observation": {
+            "type": "string",
+            "ex": "equalTo(.,\"tear\")"
+          }
         }
       },
       {
@@ -571,7 +585,7 @@
       {
         "key": "prompt_for_uterus_contraction",
         "type": "toaster_notes",
-        "text": "Action to be taken per National guideline",
+        "text": "Manage according to national guidelines",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
