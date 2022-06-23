@@ -183,10 +183,6 @@
         "openmrs_entity_id": "number_of_children_born",
         "type": "edit_text",
         "hint": "Number of Children Born",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the number of children born"
-        },
         "v_numeric_integer": {
           "value": "true",
           "err": "Please enter a valid number"
@@ -198,11 +194,6 @@
         "v_min": {
           "value": "1",
           "err": "The number of children born should greater than 0"
-        },
-        "v_max_length": {
-          "value": 1,
-          "err": "length not more than 1",
-          "is_fixed_size": true
         }
       },
       {
