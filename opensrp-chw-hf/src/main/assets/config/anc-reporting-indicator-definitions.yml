@@ -3423,8 +3423,8 @@ indicators:
     description: "Wajawazito waliopima VVU kipimo cha kwanza walio chini ya umri wa miaka 25"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                           FROM ec_anc_register ear
+                                   INNER JOIN ec_anc_followup eaf on ear.base_entity_id = eaf.entity_id
                                    INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
-                                   INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
                           WHERE eaf.hiv_test_number = 1
                             AND eaf.hiv <> 'test_not_conducted'
                             AND (date(fm.dob, '+10 years') <= date('now'))
@@ -3439,8 +3439,8 @@ indicators:
     description: "Wajawazito waliopima VVU kipimo cha kwanza walio chini ya umri wa miaka 25"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                           FROM ec_anc_register ear
+                                   INNER JOIN ec_anc_followup eaf on ear.base_entity_id = eaf.entity_id
                                    INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
-                                   INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
                           WHERE eaf.hiv_test_number = 1
                             AND eaf.hiv <> 'test_not_conducted'
                             AND (date(fm.dob, '+15 years') <= date('now'))
@@ -3455,8 +3455,8 @@ indicators:
     description: "Wajawazito waliopima VVU kipimo cha kwanza walio chini ya umri wa miaka 25"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                           FROM ec_anc_register ear
+                                   INNER JOIN ec_anc_followup eaf on ear.base_entity_id = eaf.entity_id
                                    INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
-                                   INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
                           WHERE eaf.hiv_test_number = 1
                             AND eaf.hiv <> 'test_not_conducted'
                             AND (date(fm.dob, '+20 years') <= date('now'))
