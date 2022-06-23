@@ -167,6 +167,14 @@
         }
       },
       {
+        "key": "spacer",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "spacer",
+        "spacer_height": "8dp"
+      },
+      {
         "key": "presenting_part",
         "type": "native_radio",
         "openmrs_entity_id": "presenting_part",
