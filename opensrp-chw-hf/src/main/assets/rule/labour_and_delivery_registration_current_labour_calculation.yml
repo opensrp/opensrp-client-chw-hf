@@ -1,0 +1,37 @@
+---
+name: step1_labour_onset_timestamp
+description: labour_onset_timestamp
+priority: 1
+condition: "true"
+actions:
+  - "def checkRelevance(labourOnsetDateString, labourOnsetTimeString) {
+        import java.util.*;
+        import java.text.SimpleDateFormat;
+        
+        
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat('dd-MM-yyyy HH:mm');
+        String dateString = labourOnsetDateString+' '+labourOnsetTimeString;
+        
+         Date date = simpleDateFormat.parse(dateString);
+         return date.getTime();
+    }"
+  - "calculation = step1_labour_onset_date != '' && step1_labour_onset_time != '' ? checkRelevance(step1_labour_onset_date, step1_labour_onset_time) : 0"
+---
+name: step1_membrane_raptured_date_timestamp
+description: membrane_raptured_date_timestamp
+priority: 1
+condition: "true"
+actions:
+  - "def checkRelevance(membraneRupturedDateString, membraneRupturedTimeString) {
+        import java.util.*;
+        import java.text.SimpleDateFormat;
+        
+        
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat('dd-MM-yyyy HH:mm');
+        String dateString = membraneRupturedDateString+' '+membraneRupturedTimeString;
+        
+         Date date = simpleDateFormat.parse(dateString);
+         return date.getTime();
+    }"
+  - "calculation = step1_membrane_ruptured_date != '' && step1_membrane_ruptured_time != '' ? checkRelevance(step1_membrane_ruptured_date, step1_membrane_ruptured_time) : 0"
+
