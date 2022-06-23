@@ -87,10 +87,6 @@
         "openmrs_entity_id": "cause_of_death",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "v_required": {
-          "value": true,
-          "err": "Please specify the cause of death"
-        },
         "relevance": {
           "step1:status": {
             "type": "string",
@@ -105,10 +101,6 @@
         "openmrs_entity_id": "time_of_death",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "v_required": {
-          "value": true,
-          "err": "Please specify the time of death"
-        },
         "relevance": {
           "step1:status": {
             "type": "string",
@@ -141,10 +133,6 @@
           "Birth before Arrival (BBA)": "Birth before Arrival (BBA)",
           "At home": "At home",
           "Traditional birth attendant": "Traditional birth attendant"
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Please select one option"
         }
       },
       {
@@ -167,10 +155,6 @@
           "doctor": "A Doctor",
           "nurse": "A Nurse"
         },
-        "v_required": {
-          "value": "true",
-          "err": "Please select one option"
-        },
         "relevance": {
           "step1:delivery_place": {
             "type": "string",
@@ -185,10 +169,6 @@
         "openmrs_entity_id": "name_of_delivery_person",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "v_required": {
-          "value": true,
-          "err": "Please specify the name of the delivery doctor/nurse"
-        },
         "relevance": {
           "step1:delivery_place": {
             "type": "string",
@@ -203,10 +183,6 @@
         "openmrs_entity_id": "number_of_children_born",
         "type": "edit_text",
         "hint": "Number of Children Born",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the number of children born"
-        },
         "v_numeric_integer": {
           "value": "true",
           "err": "Please enter a valid number"
@@ -218,11 +194,6 @@
         "v_min": {
           "value": "1",
           "err": "The number of children born should greater than 0"
-        },
-        "v_max_length": {
-          "value": 1,
-          "err": "length not more than 1",
-          "is_fixed_size": true
         }
       },
       {
@@ -234,11 +205,7 @@
         "hint": "Delivery Date",
         "expanded": false,
         "min_date": "today-2y",
-        "max_date": "today",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the delivery date"
-        }
+        "max_date": "today"
       },
       {
         "key": "delivery_time",
@@ -246,11 +213,15 @@
         "hint": "Delivery Time",
         "openmrs_entity_id": "delivery_time",
         "openmrs_entity": "concept",
+        "openmrs_entity_parent": ""
+      },
+      {
+        "key": "mother_status_module_status",
         "openmrs_entity_parent": "",
-        "v_required": {
-          "value": true,
-          "err": "Please select the delivery time"
-        }
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "mother_status_module_status",
+        "type": "hidden",
+        "value": "PENDING"
       },
       {
         "key": "labour_duration",

@@ -39,6 +39,7 @@ import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hf.utils.LDDao;
 import org.smartregister.chw.hf.utils.LDVisitUtils;
+import org.smartregister.chw.ld.LDLibrary;
 import org.smartregister.chw.ld.contract.BaseLDVisitContract;
 import org.smartregister.chw.ld.domain.MemberObject;
 import org.smartregister.chw.ld.domain.Visit;
@@ -82,6 +83,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
     final LinkedHashMap<String, BaseLDVisitAction> actionList = new LinkedHashMap<>();
     private MemberObject memberObject;
     public static final String EVENT_TYPE = "Post Delivery Mother Management";
+    Map<String, List<VisitDetail>> details = null;
 
     @Override
     public MemberObject getMemberClient(String memberID) {
@@ -93,6 +95,14 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
     public void calculateActions(BaseLDVisitContract.View view, MemberObject memberObject, BaseLDVisitContract.InteractorCallBack callBack) {
         context = view.getContext();
         this.memberObject = memberObject;
+
+        if (view.getEditMode()) {
+            Visit lastVisit = LDLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), EVENT_TYPE);
+
+            if (lastVisit != null) {
+                details = org.smartregister.chw.ld.util.VisitUtils.getVisitGroups(LDLibrary.getInstance().visitDetailsRepository().getVisits(lastVisit.getVisitId()));
+            }
+        }
 
         final Runnable runnable = () -> {
             // update the local database incase of manual date adjustment
@@ -125,6 +135,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         BaseLDVisitAction action = getBuilder(title)
                 .withOptional(false)
                 .withHelper(actionHelper)
+                .withDetails(details)
                 .withBaseEntityID(memberObject.getBaseEntityId())
                 .withFormName(Constants.JsonForm.LDPostDeliveryMotherManagement.getLdPostDeliveryManagementMotherStatus())
                 .build();
@@ -138,6 +149,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         BaseLDVisitAction action = getBuilder(title)
                 .withOptional(false)
                 .withHelper(actionHelper)
+                .withDetails(details)
                 .withBaseEntityID(memberObject.getBaseEntityId())
                 .withFormName(Constants.JsonForm.LDPostDeliveryMotherManagement.getLdPostDeliveryMotherObservation())
                 .build();
@@ -152,6 +164,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         BaseLDVisitAction action = getBuilder(title)
                 .withOptional(false)
                 .withHelper(actionHelper)
+                .withDetails(details)
                 .withBaseEntityID(memberObject.getBaseEntityId())
                 .withFormName(Constants.JsonForm.LDPostDeliveryMotherManagement.getLdPostDeliveryMaternalComplications())
                 .build();
@@ -159,18 +172,23 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         actionList.put(title, action);
     }
 
-
     private static class MotherStatusActionHelper implements BaseLDVisitAction.LDVisitActionHelper {
 
         private String status;
-        private int numberOfChildrenBorn = 0;
+        private String cause_of_death;
+        private String time_of_death;
         private String delivery_place;
-        String delivery_date;
-        String delivery_time;
+        private String delivered_by_occupation;
+        private String name_of_delivery_person;
+        private String delivery_date;
+        private String completionStatus;
+        private int numberOfChildrenBorn = 0;
+        private String delivery_time;
         private Context context;
         private String baseEntityId;
         private LinkedHashMap<String, BaseLDVisitAction> actionList;
         private final BaseLDVisitContract.InteractorCallBack callBack;
+        private Map<String, List<VisitDetail>> details;
 
         public MotherStatusActionHelper(Context context, String baseEntityId, LinkedHashMap<String, BaseLDVisitAction> actionList, BaseLDVisitContract.InteractorCallBack callBack) {
             this.context = context;
@@ -182,6 +200,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         @Override
         public void onJsonFormLoaded(String jsonString, Context context, Map<String, List<VisitDetail>> details) {
             this.context = context;
+            this.details = details;
         }
 
         @Override
@@ -192,11 +211,18 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         @Override
         public void onPayloadReceived(String jsonPayload) {
             status = JsonFormUtils.getFieldValue(jsonPayload, "status");
+            cause_of_death = JsonFormUtils.getFieldValue(jsonPayload, "cause_of_death");
+            time_of_death = JsonFormUtils.getFieldValue(jsonPayload, "time_of_death");
             delivery_place = JsonFormUtils.getFieldValue(jsonPayload, "delivery_place");
+            delivered_by_occupation = JsonFormUtils.getFieldValue(jsonPayload, "delivered_by_occupation");
+            name_of_delivery_person = JsonFormUtils.getFieldValue(jsonPayload, "name_of_delivery_person");
             delivery_date = JsonFormUtils.getFieldValue(jsonPayload, "delivery_date");
             delivery_time = JsonFormUtils.getFieldValue(jsonPayload, "delivery_time");
             try {
-                numberOfChildrenBorn = Integer.parseInt(JsonFormUtils.getFieldValue(jsonPayload, "number_of_children_born"));
+                String number_children_string = JsonFormUtils.getFieldValue(jsonPayload, "number_of_children_born");
+                if (StringUtils.isNotBlank(number_children_string)) {
+                    numberOfChildrenBorn = Integer.parseInt(number_children_string);
+                }
             } catch (Exception e) {
                 Timber.e(e);
             }
@@ -214,9 +240,17 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
         @Override
         public String postProcess(String jsonPayload) {
+
             JSONObject jsonObject = null;
             try {
                 jsonObject = new JSONObject(jsonPayload);
+                JSONArray fields = JsonFormUtils.fields(jsonObject);
+
+                JSONObject mother_status_module_status = JsonFormUtils.getFieldJSONObject(fields, "mother_status_module_status");
+                assert mother_status_module_status != null;
+                mother_status_module_status.remove(com.vijay.jsonwizard.constants.JsonFormConstants.VALUE);
+                mother_status_module_status.put(com.vijay.jsonwizard.constants.JsonFormConstants.VALUE, completionStatus);
+
                 String deliveryDate = JsonFormUtils.getFieldValue(jsonPayload, "delivery_date");
                 String deliveryTime = JsonFormUtils.getFieldValue(jsonPayload, "delivery_time");
                 String labourOnsetDate;
@@ -229,23 +263,25 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                     labourOnsetTime = LDDao.getAdmissionTime(baseEntityId);
                 }
 
-                String labourOnsetDateTime = labourOnsetDate + " " + labourOnsetTime;
-                String deliveryDateTime = deliveryDate + " " + deliveryTime;
+                // Add a check here if delivery date is not yet filled
+                if (StringUtils.isNotBlank(deliveryDate) && StringUtils.isNotBlank(deliveryTime)) {
 
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault());
+                    String labourOnsetDateTime = labourOnsetDate + " " + labourOnsetTime;
+                    String deliveryDateTime = deliveryDate + " " + deliveryTime;
 
-                Date date1 = simpleDateFormat.parse(labourOnsetDateTime);
-                Date date2 = simpleDateFormat.parse(deliveryDateTime);
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault());
 
-                long msDiff = date2.getTime() - date1.getTime();
-                JSONArray fields = jsonObject.getJSONObject(STEP1).getJSONArray(FIELDS);
+                    Date date1 = simpleDateFormat.parse(labourOnsetDateTime);
+                    Date date2 = simpleDateFormat.parse(deliveryDateTime);
 
-                for (int i = 0; i < fields.length(); i++) {
-                    if (fields.getJSONObject(i).getString(KEY).equalsIgnoreCase("labour_duration")) {
-                        fields.getJSONObject(i).put(VALUE, msDiff);
+                    long msDiff = date2.getTime() - date1.getTime();
+
+                    for (int i = 0; i < fields.length(); i++) {
+                        if (fields.getJSONObject(i).getString(KEY).equalsIgnoreCase("labour_duration")) {
+                            fields.getJSONObject(i).put(VALUE, msDiff);
+                        }
                     }
                 }
-
 
             } catch (Exception e) {
                 Timber.e(e);
@@ -285,19 +321,25 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                 new AppExecutors().mainThread().execute(() -> callBack.preloadActions(actionList));
             }
             return jsonObject.toString();
+
         }
 
         @Override
         public String evaluateSubTitle() {
-            return null;
+            if (isFullyCompleted()) {
+                completionStatus = context.getString(R.string.lb_fully_completed_action);
+            } else if (isPartiallyCompleted()) {
+                completionStatus = context.getString(R.string.lb_partially_completed_action);
+            }
+            return completionStatus;
         }
 
         @Override
         public BaseLDVisitAction.Status evaluateStatusOnPayload() {
-            if (StringUtils.isNotBlank(status) &&
-                    StringUtils.isNotBlank(delivery_place) &&
-                    StringUtils.isNotBlank(delivery_date)) {
+            if (isFullyCompleted()) {
                 return BaseLDVisitAction.Status.COMPLETED;
+            } else if (isPartiallyCompleted()) {
+                return BaseLDVisitAction.Status.PARTIALLY_COMPLETED;
             } else {
                 return BaseLDVisitAction.Status.PENDING;
             }
@@ -307,15 +349,71 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         public void onPayloadReceived(BaseLDVisitAction ldVisitAction) {
             //Todo: Implement here
         }
+
+        private boolean isFullyCompleted() {
+            boolean completed = false;
+            if (StringUtils.isNotBlank(status)) {
+                if (status.equalsIgnoreCase("alive")) {
+                    if ((StringUtils.isNotBlank(delivery_place) && !delivery_place.equalsIgnoreCase("Place of delivery")) &&
+                            StringUtils.isNotBlank(delivery_date)) {
+                        completed = !delivery_place.equalsIgnoreCase("At a health facility") || (StringUtils.isNotBlank(delivered_by_occupation) &&
+                                StringUtils.isNotBlank(name_of_delivery_person));
+                    }
+                } else {
+                    if ((StringUtils.isNotBlank(delivery_place) && !delivery_place.equalsIgnoreCase("Place of delivery")) &&
+                            StringUtils.isNotBlank(cause_of_death) && StringUtils.isNotBlank(time_of_death) && StringUtils.isNotBlank(delivery_date)) {
+                        completed = !delivery_place.equalsIgnoreCase("At a health facility") || (StringUtils.isNotBlank(delivered_by_occupation) &&
+                                StringUtils.isNotBlank(name_of_delivery_person));
+                    }
+                }
+            }
+            return completed;
+        }
+
+        private boolean isPartiallyCompleted() {
+            boolean partialCompletion = false;
+            if (StringUtils.isNotBlank(status)) {
+                if (status.equalsIgnoreCase("alive")) {
+                    // Because of spinner delivery place is never blank it is the value of the hint
+                    if (delivery_place.equalsIgnoreCase("Place of delivery") || StringUtils.isBlank(delivery_date)) {
+                        partialCompletion = true;
+                    } else if (delivery_place.equalsIgnoreCase("At a health facility")) {
+                        partialCompletion = StringUtils.isBlank(delivered_by_occupation) || StringUtils.isBlank(name_of_delivery_person);
+                    }
+                } else {
+                    if (delivery_place.equalsIgnoreCase("Place of delivery") || StringUtils.isBlank(delivery_date) || StringUtils.isBlank(cause_of_death) ||
+                            StringUtils.isBlank(time_of_death)) {
+                        partialCompletion = true;
+                    } else if (delivery_place.equalsIgnoreCase("At a health facility")) {
+                        partialCompletion = StringUtils.isBlank(delivered_by_occupation) || StringUtils.isBlank(name_of_delivery_person);
+                    }
+                }
+            }
+            return partialCompletion;
+        }
     }
 
     private static class PostDeliveryObservationActionHelper implements BaseLDVisitAction.LDVisitActionHelper {
 
         private String vagina_observation;
+        private String vaginal_bleeding_observation;
         private String perineum_observation;
+        private String degree_of_perineum_tear;
+        private String perineum_repair_occupation;
+        private String perineum_repair_person_name;
+        private String cervix_observation;
         private String systolic;
         private String diastolic;
+        private String pulse_rate;
+        private String temperature;
+        private String uterus_contraction;
+        private String urination;
+        private String observation_date;
+        private String observation_time;
+        private String completionStatus;
         private Context context;
+        private Map<String, List<VisitDetail>> details;
+        private String jsonString;
 
         @Override
         public void onJsonFormLoaded(String jsonString, Context context, Map<String, List<VisitDetail>> details) {
@@ -330,9 +428,20 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         @Override
         public void onPayloadReceived(String jsonPayload) {
             vagina_observation = JsonFormUtils.getFieldValue(jsonPayload, "vagina_observation");
+            vaginal_bleeding_observation = JsonFormUtils.getFieldValue(jsonPayload, "vaginal_bleeding_observation");
             perineum_observation = JsonFormUtils.getFieldValue(jsonPayload, "perineum_observation");
+            degree_of_perineum_tear = JsonFormUtils.getFieldValue(jsonPayload, "degree_of_perineum_tear");
+            perineum_repair_occupation = JsonFormUtils.getFieldValue(jsonPayload, "perineum_repair_occupation");
+            perineum_repair_person_name = JsonFormUtils.getFieldValue(jsonPayload, "perineum_repair_person_name");
+            cervix_observation = JsonFormUtils.getFieldValue(jsonPayload, "cervix_observation");
             systolic = JsonFormUtils.getFieldValue(jsonPayload, "systolic");
             diastolic = JsonFormUtils.getFieldValue(jsonPayload, "diastolic");
+            pulse_rate = JsonFormUtils.getFieldValue(jsonPayload, "pulse_rate");
+            temperature = JsonFormUtils.getFieldValue(jsonPayload, "temperature");
+            uterus_contraction = JsonFormUtils.getFieldValue(jsonPayload, "uterus_contraction");
+            urination = JsonFormUtils.getFieldValue(jsonPayload, "urination");
+            observation_date = JsonFormUtils.getFieldValue(jsonPayload, "observation_date");
+            observation_time = JsonFormUtils.getFieldValue(jsonPayload, "observation_time");
         }
 
         @Override
@@ -347,21 +456,40 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
         @Override
         public String postProcess(String jsonPayload) {
+            try {
+
+                JSONObject jsonObject = new JSONObject(jsonPayload);
+                JSONArray fields = JsonFormUtils.fields(jsonObject);
+
+                JSONObject mother_observation_module_status = JsonFormUtils.getFieldJSONObject(fields, "mother_observation_module_status");
+                assert mother_observation_module_status != null;
+                mother_observation_module_status.remove(com.vijay.jsonwizard.constants.JsonFormConstants.VALUE);
+                mother_observation_module_status.put(com.vijay.jsonwizard.constants.JsonFormConstants.VALUE, completionStatus);
+
+                return jsonObject.toString();
+
+            } catch (Exception e) {
+                Timber.e(e);
+            }
             return null;
         }
 
         @Override
         public String evaluateSubTitle() {
-            return null;
+            if (isFullyCompleted()) {
+                completionStatus = context.getString(R.string.lb_fully_completed_action);
+            } else if (isPartiallyCompleted()) {
+                completionStatus = context.getString(R.string.lb_partially_completed_action);
+            }
+            return completionStatus;
         }
 
         @Override
         public BaseLDVisitAction.Status evaluateStatusOnPayload() {
-            if (StringUtils.isNotBlank(vagina_observation) &&
-                    StringUtils.isNotBlank(perineum_observation) &&
-                    StringUtils.isNotBlank(systolic) &&
-                    StringUtils.isNotBlank(diastolic)) {
+            if (isFullyCompleted()) {
                 return BaseLDVisitAction.Status.COMPLETED;
+            } else if (isPartiallyCompleted()) {
+                return BaseLDVisitAction.Status.PARTIALLY_COMPLETED;
             } else {
                 return BaseLDVisitAction.Status.PENDING;
             }
@@ -371,16 +499,66 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         public void onPayloadReceived(BaseLDVisitAction ldVisitAction) {
             //Todo: Implement here
         }
+
+        private boolean isFullyCompleted() {
+            boolean complete = false;
+            if (StringUtils.isNotBlank(vagina_observation) && StringUtils.isNotBlank(perineum_observation) &&
+                    StringUtils.isNotBlank(cervix_observation) && StringUtils.isNotBlank(systolic) &&
+                    StringUtils.isNotBlank(diastolic) && StringUtils.isNotBlank(pulse_rate) &&
+                    StringUtils.isNotBlank(temperature) && StringUtils.isNotBlank(uterus_contraction) &&
+                    StringUtils.isNotBlank(urination) && StringUtils.isNotBlank(observation_date) && StringUtils.isNotBlank(observation_time)) {
+                complete = true;
+                if (vagina_observation.contains("chk_bleeding") && perineum_observation.contains("tear")) {
+                    complete = StringUtils.isNotBlank(vaginal_bleeding_observation) && StringUtils.isNotBlank(degree_of_perineum_tear) &&
+                            (StringUtils.isNotBlank(perineum_repair_occupation) && !perineum_repair_occupation.contains("Perineum repaired by")) && StringUtils.isNotBlank(perineum_repair_person_name);
+                } else if (vagina_observation.contains("chk_bleeding")) {
+                    complete = StringUtils.isNotBlank(vaginal_bleeding_observation);
+                } else if (perineum_observation.contains("tear")) {
+                    complete = StringUtils.isNotBlank(degree_of_perineum_tear) && StringUtils.isNotBlank(perineum_repair_occupation) &&
+                            StringUtils.isNotBlank(perineum_repair_person_name);
+                }
+            }
+
+            return complete;
+        }
+
+        private boolean isPartiallyCompleted() {
+            boolean partialCompletion = false;
+            if (StringUtils.isNotBlank(vagina_observation)) {
+                if (StringUtils.isBlank(perineum_observation) ||
+                        StringUtils.isBlank(cervix_observation) || StringUtils.isBlank(systolic) ||
+                        StringUtils.isBlank(diastolic) || StringUtils.isBlank(pulse_rate) ||
+                        StringUtils.isBlank(temperature) || StringUtils.isBlank(uterus_contraction) ||
+                        StringUtils.isBlank(urination) || StringUtils.isBlank(observation_date) || StringUtils.isBlank(observation_time)) {
+                    partialCompletion = true;
+                } else {
+                    if (vagina_observation.contains("chk_bleeding") && perineum_observation.contains("tear")) {
+                        partialCompletion = StringUtils.isBlank(vaginal_bleeding_observation) || StringUtils.isBlank(degree_of_perineum_tear) ||
+                                (StringUtils.isNotBlank(perineum_repair_occupation) && perineum_repair_occupation.contains("Perineum repaired by")) ||
+                                StringUtils.isBlank(perineum_repair_person_name);
+                    } else if (vagina_observation.contains("chk_bleeding")) {
+                        partialCompletion = StringUtils.isBlank(vaginal_bleeding_observation);
+                    } else if (perineum_observation.contains("tear")) {
+                        partialCompletion = StringUtils.isBlank(degree_of_perineum_tear) || (StringUtils.isNotBlank(perineum_repair_occupation) &&
+                                perineum_repair_occupation.contains("Perineum repaired by")) || StringUtils.isBlank(perineum_repair_person_name);
+                    }
+                }
+            }
+            return partialCompletion;
+        }
     }
 
     private static class MaternalComplicationLabourActionHelper implements BaseLDVisitAction.LDVisitActionHelper {
 
-        private String maternal_complications_during_labour;
+        private JSONArray maternal_complication_values;
+        private String completionStatus;
+        private String jsonString;
         private Context context;
 
         @Override
         public void onJsonFormLoaded(String jsonString, Context context, Map<String, List<VisitDetail>> details) {
             this.context = context;
+            this.jsonString = jsonString;
         }
 
         @Override
@@ -390,7 +568,12 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
         @Override
         public void onPayloadReceived(String jsonPayload) {
-            maternal_complications_during_labour = JsonFormUtils.getFieldValue(jsonPayload, "maternal_complications_during_labour");
+            String maternal_complications_during_labour = JsonFormUtils.getFieldValue(jsonPayload, "maternal_complications_during_labour");
+            try {
+                maternal_complication_values = new JSONArray(maternal_complications_during_labour);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
 
         @Override
@@ -405,20 +588,40 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
         @Override
         public String postProcess(String jsonPayload) {
+            try {
+
+                JSONObject jsonObject = new JSONObject(jsonPayload);
+                JSONArray fields = JsonFormUtils.fields(jsonObject);
+
+                JSONObject maternal_complications_module_status = JsonFormUtils.getFieldJSONObject(fields, "maternal_complications_module_status");
+                assert maternal_complications_module_status != null;
+                maternal_complications_module_status.remove(com.vijay.jsonwizard.constants.JsonFormConstants.VALUE);
+                maternal_complications_module_status.put(com.vijay.jsonwizard.constants.JsonFormConstants.VALUE, completionStatus);
+
+                return jsonObject.toString();
+
+            } catch (Exception e) {
+                Timber.e(e);
+            }
             return null;
         }
 
         @Override
         public String evaluateSubTitle() {
-            return null;
+            if (maternal_complication_values.length() > 0) {
+                completionStatus = context.getString(R.string.lb_fully_completed_action);
+            } else {
+                completionStatus = context.getString(R.string.lb_partially_completed_action);
+            }
+            return completionStatus;
         }
 
         @Override
         public BaseLDVisitAction.Status evaluateStatusOnPayload() {
-            if (StringUtils.isNotBlank(maternal_complications_during_labour)) {
+            if (maternal_complication_values.length() > 0) {
                 return BaseLDVisitAction.Status.COMPLETED;
             } else {
-                return BaseLDVisitAction.Status.PENDING;
+                return BaseLDVisitAction.Status.PARTIALLY_COMPLETED;
             }
         }
 
@@ -636,7 +839,18 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                 saveChild(memberID, LDDao.getHivStatus(memberID), getRiskStatus(obs), allSharedPreferences, memberObject.getFamilyBaseEntityId(), getDeliveryDateString(obs), obs);
             }
 
-            LDVisitUtils.processVisits(memberID, false);
+            boolean visitCompleted = true;
+            for (Map.Entry<String, BaseLDVisitAction> entry : actionList.entrySet()) {
+                String actionStatus = entry.getValue().getActionStatus().toString();
+                if (actionStatus.equalsIgnoreCase("PARTIALLY_COMPLETED")) {
+                    visitCompleted = false;
+
+                }
+            }
+
+            if (visitCompleted) {
+                LDVisitUtils.processVisits(memberID, false);
+            }
         } catch (Exception e) {
             Timber.e(e);
         }

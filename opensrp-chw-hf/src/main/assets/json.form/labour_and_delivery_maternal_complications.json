@@ -57,8 +57,8 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "maternal_complications_during_labour",
         "type": "check_box",
-        "label": "Maternal complications during labour",
         "combine_checkbox_option_values": "true",
+        "label": "Maternal complications",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "exclusive": [
@@ -129,20 +129,6 @@
             "openmrs_entity_id": "chk_disseminated_intravascular_coagulopathy"
           },
           {
-            "key": "chk_prom",
-            "text": "PROM",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_prom"
-          },
-          {
-            "key": "chk_malaria",
-            "text": "Malaria",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_malaria"
-          },
-          {
             "key": "chk_anaemia",
             "text": "Anaemia",
             "value": false,
@@ -164,17 +150,45 @@
             "openmrs_entity_id": "chk_aph"
           },
           {
+            "key": "chk_other",
+            "text": "Other",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_other"
+          },
+          {
             "key": "chk_none",
             "text": "None",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_none"
           }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Please pick at least one"
+        ]
+      },
+      {
+        "key": "maternal_complications_other",
+        "type": "edit_text",
+        "hint": "Specify other complications",
+        "openmrs_entity_id": "maternal_complications_other",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "step1:maternal_complications_during_labour": {
+            "ex-checkbox": [
+              {
+                "or": ["chk_other"]
+              }
+            ]
+          }
         }
+      },
+      {
+        "key": "maternal_complications_module_status",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "maternal_complications_module_status",
+        "type": "hidden",
+        "value": "PENDING"
       }
     ]
   }
