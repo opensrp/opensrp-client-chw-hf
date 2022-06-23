@@ -138,11 +138,56 @@
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_registration_current_labour_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_prom",
+        "type": "toaster_notes",
+        "text": "The client has Pre-mature Rupture of Membrane (PROM).\nProvide Management according to SOP and National Guideline",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
         "toaster_type": "problem",
         "relevance": {
-          "step1:membrane": {
-            "type": "string",
-            "ex": "equalTo(., \"ruptured\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_registration_current_labour_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "labour_onset_timestamp",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "labour_onset_timestamp",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_registration_current_labour_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "membrane_raptured_date_timestamp",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "membrane_raptured_date_timestamp",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_registration_current_labour_calculation.yml"
+            }
           }
         }
       },
