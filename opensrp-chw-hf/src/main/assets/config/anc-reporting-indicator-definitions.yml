@@ -181,8 +181,8 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ear.partner_base_entity_id
-                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
-                      WHERE ear.partner_syphilis <> 'test_not_conducted'
+                               INNER JOIN ec_anc_followup eaf on ear.base_entity_id = eaf.entity_id
+                      WHERE eaf.partner_syphilis <> 'test_not_conducted'
                         AND (date(fm.dob, '+10 years') <= date('now'))
                         AND (date(fm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -468,8 +468,8 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ear.partner_base_entity_id
-                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
-                      WHERE ear.partner_syphilis <> 'test_not_conducted'
+                               INNER JOIN ec_anc_followup eaf on ear.base_entity_id = eaf.entity_id
+                      WHERE eaf.partner_syphilis <> 'test_not_conducted'
                         AND (date(fm.dob, '+15 years') <= date('now'))
                         AND (date(fm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -726,8 +726,8 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ear.partner_base_entity_id
-                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
-                      WHERE ear.partner_syphilis <> 'test_not_conducted'
+                               INNER JOIN ec_anc_followup eaf on ear.base_entity_id = eaf.entity_id
+                      WHERE eaf.partner_syphilis <> 'test_not_conducted'
                         AND (date(fm.dob, '+20 years') <= date('now'))
                         AND (date(fm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -985,8 +985,8 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ear.partner_base_entity_id
-                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
-                      WHERE ear.partner_syphilis <> 'test_not_conducted'
+                               INNER JOIN ec_anc_followup eaf on ear.base_entity_id = eaf.entity_id
+                      WHERE eaf.partner_syphilis <> 'test_not_conducted'
                         AND (date(fm.dob, '+25 years') <= date('now'))
                         AND (date(fm.dob, '+30 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -1224,8 +1224,8 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ear.partner_base_entity_id
-                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
-                      WHERE ear.partner_syphilis <> 'test_not_conducted'
+                               INNER JOIN ec_anc_followup eaf on ear.base_entity_id = eaf.entity_id
+                      WHERE eaf.partner_syphilis <> 'test_not_conducted'
                         AND (date(fm.dob, '+30 years') <= date('now'))
                         AND (date(fm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -1467,8 +1467,8 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ear.partner_base_entity_id
-                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
-                      WHERE ear.partner_syphilis <> 'test_not_conducted'
+                               INNER JOIN ec_anc_followup eaf on ear.base_entity_id = eaf.entity_id
+                      WHERE eaf.partner_syphilis <> 'test_not_conducted'
                         AND (date(fm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
@@ -1708,8 +1708,8 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
-                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
-                      WHERE ear.syphilis_treatment = 'yes'
+                               INNER JOIN ec_anc_followup eaf on ear.base_entity_id = eaf.entity_id
+                      WHERE eaf.syphilis_treatment = 'yes'
                         AND (date(fm.dob, '+10 years') <= date('now'))
                         AND (date(fm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -1723,8 +1723,8 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
-                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
-                      WHERE ear.syphilis_treatment = 'yes'
+                               INNER JOIN ec_anc_followup eaf on ear.base_entity_id = eaf.entity_id
+                      WHERE eaf.syphilis_treatment = 'yes'
                         AND (date(fm.dob, '+15 years') <= date('now'))
                         AND (date(fm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -1738,8 +1738,8 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
-                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
-                      WHERE ear.syphilis_treatment = 'yes'
+                               INNER JOIN ec_anc_followup eaf on ear.base_entity_id = eaf.entity_id
+                      WHERE eaf.syphilis_treatment = 'yes'
                         AND (date(fm.dob, '+20 years') <= date('now'))
                         AND (date(fm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -1753,8 +1753,8 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
-                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
-                      WHERE ear.syphilis_treatment = 'yes'
+                               INNER JOIN ec_anc_followup eaf on ear.base_entity_id = eaf.entity_id
+                      WHERE eaf.syphilis_treatment = 'yes'
                         AND (date(fm.dob, '+25 years') <= date('now'))
                         AND (date(fm.dob, '+30 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -1768,8 +1768,8 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
-                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
-                      WHERE ear.syphilis_treatment = 'yes'
+                               INNER JOIN ec_anc_followup eaf on ear.base_entity_id = eaf.entity_id
+                      WHERE eaf.syphilis_treatment = 'yes'
                         AND (date(fm.dob, '+30 years') <= date('now'))
                         AND (date(fm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -1783,8 +1783,8 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
-                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
-                      WHERE ear.syphilis_treatment = 'yes'
+                               INNER JOIN ec_anc_followup eaf on ear.base_entity_id = eaf.entity_id
+                      WHERE eaf.syphilis_treatment = 'yes'
                         AND (date(fm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
@@ -1798,8 +1798,8 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ear.partner_base_entity_id
-                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
-                      WHERE ear.partner_syphilis = 'positive'
+                               INNER JOIN ec_anc_followup eaf on ear.base_entity_id = eaf.entity_id
+                      WHERE eaf.partner_syphilis = 'positive'
                         AND (date(fm.dob, '+10 years') <= date('now'))
                         AND (date(fm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -1814,8 +1814,8 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ear.partner_base_entity_id
-                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
-                      WHERE ear.partner_syphilis = 'positive'
+                               INNER JOIN ec_anc_followup eaf on ear.base_entity_id = eaf.entity_id
+                      WHERE eaf.partner_syphilis = 'positive'
                         AND (date(fm.dob, '+15 years') <= date('now'))
                         AND (date(fm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -1830,8 +1830,8 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ear.partner_base_entity_id
-                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
-                      WHERE ear.partner_syphilis = 'positive'
+                               INNER JOIN ec_anc_followup eaf on ear.base_entity_id = eaf.entity_id
+                      WHERE eaf.partner_syphilis = 'positive'
                         AND (date(fm.dob, '+20 years') <= date('now'))
                         AND (date(fm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -1846,8 +1846,8 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ear.partner_base_entity_id
-                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
-                      WHERE ear.partner_syphilis = 'positive'
+                               INNER JOIN ec_anc_followup eaf on ear.base_entity_id = eaf.entity_id
+                      WHERE eaf.partner_syphilis = 'positive'
                         AND (date(fm.dob, '+25 years') <= date('now'))
                         AND (date(fm.dob, '+30 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -1862,8 +1862,8 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ear.partner_base_entity_id
-                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
-                      WHERE ear.partner_syphilis = 'positive'
+                               INNER JOIN ec_anc_followup eaf on ear.base_entity_id = eaf.entity_id
+                      WHERE eaf.partner_syphilis = 'positive'
                         AND (date(fm.dob, '+30 years') <= date('now'))
                         AND (date(fm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -1878,8 +1878,8 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ear.partner_base_entity_id
-                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
-                      WHERE ear.partner_syphilis = 'positive'
+                               INNER JOIN ec_anc_followup eaf on ear.base_entity_id = eaf.entity_id
+                      WHERE eaf.partner_syphilis = 'positive'
                         AND (date(fm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
