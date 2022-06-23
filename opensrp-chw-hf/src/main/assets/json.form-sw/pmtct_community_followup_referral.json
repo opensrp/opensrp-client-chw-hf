@@ -47,7 +47,7 @@
     "encounter_location": ""
   },
   "step1": {
-    "title": "Rufaa ya Ufuatiliaji wa PMTCT katika Ngazi ya Jamii",
+    "title": "Rufaa Kwa Mama Kinara",
     "fields": [
       {
         "key": "last_client_visit_date",
@@ -58,8 +58,6 @@
         "hint": "Tarehe ya mwisho mteja kuhudhulia Kituoni",
         "expanded": false,
         "max_date": "today",
-        "editable": false,
-        "read_only": true,
         "v_required": {
           "value": "true",
           "err": "Tafadhali bainisha Tarehe ya mwisho mteja kuhudhulia Kituoni"
@@ -93,6 +91,18 @@
         "v_required": {
           "value": "true",
           "err": "Tafadhali chagua sababu za kumpa rufaa Mteja"
+        }
+      },
+      {
+        "key": "mother_champion_location",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "mother_champion_location",
+        "type": "spinner",
+        "hint": "Chagua Eneo la Mama Kinara",
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali chagua eneo alipo mama kinara"
         }
       },
       {

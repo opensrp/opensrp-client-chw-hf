@@ -374,6 +374,7 @@
     <string name="community_ltfu_summary_subtitle">View Report Summary for LTFU</string>
     <string name="ld_reports_subtitle">View Labour Delivery Reports</string>
     <string name="ld_report_title">Labour And Delivery Reports</string>
+    <string name="mother_champion_referral">Mother Champion Referral</string>
 
 
 </resources>
