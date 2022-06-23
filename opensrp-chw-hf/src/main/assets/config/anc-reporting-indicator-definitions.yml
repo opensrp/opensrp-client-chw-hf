@@ -3422,50 +3422,50 @@ indicators:
   - key: "5p-10-14"
     description: "Wajawazito waliopima VVU kipimo cha kwanza walio chini ya umri wa miaka 25"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
-                      FROM ec_anc_register ear
-                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
-                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
-                      WHERE eaf.hiv_test_number = 1
-                        AND eaf.hiv <> 'test_not_conducted'
-                        AND (date(fm.dob, '+10 years') <= date('now'))
-                        AND (date(fm.dob, '+15 years') > date('now'))
-                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                 '-' ||
-                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                 '-' || '01')"
+                          FROM ec_anc_register ear
+                                   INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                                   INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                          WHERE eaf.hiv_test_number = 1
+                            AND eaf.hiv <> 'test_not_conducted'
+                            AND (date(fm.dob, '+10 years') <= date('now'))
+                            AND (date(fm.dob, '+15 years') > date('now'))
+                            AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                                date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                     '-' ||
+                                     substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                     '-' || '01')"
   
   - key: "5p-15-19"
     description: "Wajawazito waliopima VVU kipimo cha kwanza walio chini ya umri wa miaka 25"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
-                      FROM ec_anc_register ear
-                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
-                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
-                      WHERE eaf.hiv_test_number = 1
-                        AND eaf.hiv <> 'test_not_conducted'
-                        AND (date(fm.dob, '+15 years') <= date('now'))
-                        AND (date(fm.dob, '+20 years') > date('now'))
-                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                 '-' ||
-                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                 '-' || '01')"
+                          FROM ec_anc_register ear
+                                   INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                                   INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                          WHERE eaf.hiv_test_number = 1
+                            AND eaf.hiv <> 'test_not_conducted'
+                            AND (date(fm.dob, '+15 years') <= date('now'))
+                            AND (date(fm.dob, '+20 years') > date('now'))
+                            AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                                date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                     '-' ||
+                                     substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                     '-' || '01')"
   
   - key: "5p-20-24"
     description: "Wajawazito waliopima VVU kipimo cha kwanza walio chini ya umri wa miaka 25"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
-                      FROM ec_anc_register ear
-                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
-                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
-                      WHERE eaf.hiv_test_number = 1
-                        AND eaf.hiv <> 'test_not_conducted'
-                        AND (date(fm.dob, '+20 years') <= date('now'))
-                        AND (date(fm.dob, '+25 years') > date('now'))
-                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                 '-' ||
-                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                 '-' || '01')"
+                          FROM ec_anc_register ear
+                                   INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                                   INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                          WHERE eaf.hiv_test_number = 1
+                            AND eaf.hiv <> 'test_not_conducted'
+                            AND (date(fm.dob, '+20 years') <= date('now'))
+                            AND (date(fm.dob, '+25 years') > date('now'))
+                            AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                                date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                     '-' ||
+                                     substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                     '-' || '01')"
   
   - key: "6b-10-14"
     description: "Waliopimwa Malaria kutumia mRDT/BS"
