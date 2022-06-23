@@ -94,13 +94,6 @@
             "openmrs_entity_id": "chk_obstructed_labour"
           },
           {
-            "key": "chk_3_degree_tear",
-            "text": "3-degree tear",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_3_degree_tear"
-          },
-          {
             "key": "chk_retained_placenta",
             "text": "Retained placenta",
             "value": false,
@@ -108,46 +101,25 @@
             "openmrs_entity_id": "chk_retained_placenta"
           },
           {
-            "key": "chk_chest_pain",
-            "text": "Chest pain",
+            "key": "chk_3_degree_tear",
+            "text": "Third degree tear",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_chest_pain"
+            "openmrs_entity_id": "chk_3_degree_tear"
           },
           {
-            "key": "chk_fatigue",
-            "text": "Fatigue",
+            "key": "chk_ruptured_uterus",
+            "text": "Ruptured uterus",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_fatigue"
+            "openmrs_entity_id": "chk_ruptured_uterus"
           },
           {
-            "key": "chk_disseminated_intravascular_coagulopathy",
-            "text": "Disseminated intravascular coagulopathy (DIC)",
+            "key": "chk_sepsis",
+            "text": "Sepsis",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_disseminated_intravascular_coagulopathy"
-          },
-          {
-            "key": "chk_anaemia",
-            "text": "Anaemia",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_anaemia"
-          },
-          {
-            "key": "chk_fgm",
-            "text": "FGM",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_fgm"
-          },
-          {
-            "key": "chk_aph",
-            "text": "APH",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_aph"
+            "openmrs_entity_id": "chk_sepsis"
           },
           {
             "key": "chk_other",
