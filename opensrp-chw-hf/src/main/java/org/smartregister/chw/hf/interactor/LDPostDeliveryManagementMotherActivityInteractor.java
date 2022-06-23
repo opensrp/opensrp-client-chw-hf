@@ -181,7 +181,6 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         private String delivered_by_occupation;
         private String name_of_delivery_person;
         private String delivery_date;
-        private String labour_information;
         private String completionStatus;
         private int numberOfChildrenBorn = 0;
         private String delivery_time;
@@ -356,14 +355,13 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
             if (StringUtils.isNotBlank(status)) {
                 if (status.equalsIgnoreCase("alive")) {
                     if ((StringUtils.isNotBlank(delivery_place) && !delivery_place.equalsIgnoreCase("Place of delivery")) &&
-                            StringUtils.isNotBlank(delivery_date) && StringUtils.isNotBlank(labour_information)) {
+                            StringUtils.isNotBlank(delivery_date)) {
                         completed = !delivery_place.equalsIgnoreCase("At a health facility") || (StringUtils.isNotBlank(delivered_by_occupation) &&
                                 StringUtils.isNotBlank(name_of_delivery_person));
                     }
                 } else {
                     if ((StringUtils.isNotBlank(delivery_place) && !delivery_place.equalsIgnoreCase("Place of delivery")) &&
-                            StringUtils.isNotBlank(cause_of_death) && StringUtils.isNotBlank(time_of_death) && StringUtils.isNotBlank(delivery_date) &&
-                            StringUtils.isNotBlank(labour_information)) {
+                            StringUtils.isNotBlank(cause_of_death) && StringUtils.isNotBlank(time_of_death) && StringUtils.isNotBlank(delivery_date)) {
                         completed = !delivery_place.equalsIgnoreCase("At a health facility") || (StringUtils.isNotBlank(delivered_by_occupation) &&
                                 StringUtils.isNotBlank(name_of_delivery_person));
                     }
@@ -377,14 +375,13 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
             if (StringUtils.isNotBlank(status)) {
                 if (status.equalsIgnoreCase("alive")) {
                     // Because of spinner delivery place is never blank it is the value of the hint
-                    if (delivery_place.equalsIgnoreCase("Place of delivery") || StringUtils.isBlank(delivery_date) || StringUtils.isBlank(labour_information)) {
+                    if (delivery_place.equalsIgnoreCase("Place of delivery") || StringUtils.isBlank(delivery_date)) {
                         partialCompletion = true;
                     } else if (delivery_place.equalsIgnoreCase("At a health facility")) {
                         partialCompletion = StringUtils.isBlank(delivered_by_occupation) || StringUtils.isBlank(name_of_delivery_person);
                     }
                 } else {
-                    if (delivery_place.equalsIgnoreCase("Place of delivery") || StringUtils.isBlank(delivery_date) ||
-                            StringUtils.isBlank(labour_information) || StringUtils.isBlank(cause_of_death) ||
+                    if (delivery_place.equalsIgnoreCase("Place of delivery") || StringUtils.isBlank(delivery_date) || StringUtils.isBlank(cause_of_death) ||
                             StringUtils.isBlank(time_of_death)) {
                         partialCompletion = true;
                     } else if (delivery_place.equalsIgnoreCase("At a health facility")) {
