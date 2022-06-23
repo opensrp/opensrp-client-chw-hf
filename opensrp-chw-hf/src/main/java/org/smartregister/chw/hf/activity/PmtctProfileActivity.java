@@ -74,10 +74,6 @@ import timber.log.Timber;
 import static org.smartregister.AllConstants.LocationConstants.SPECIAL_TAG_FOR_OPENMRS_TEAM_MEMBERS;
 import static org.smartregister.chw.core.utils.CoreConstants.EventType.PMTCT_COMMUNITY_FOLLOWUP;
 import static org.smartregister.chw.hf.utils.Constants.JsonFormConstants.STEP1;
-import static org.smartregister.chw.hf.utils.JsonFormUtils.METADATA;
-import static org.smartregister.chw.hf.utils.JsonFormUtils.SYNC_LOCATION_ID;
-import static org.smartregister.util.JsonFormUtils.ENCOUNTER_LOCATION;
-import static org.smartregister.util.JsonFormUtils.FIELDS;
 import static org.smartregister.util.JsonFormUtils.VALUE;
 
 public class PmtctProfileActivity extends CorePmtctProfileActivity {
