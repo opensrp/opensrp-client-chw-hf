@@ -151,6 +151,22 @@
         "selected_text_color": "#ffffff"
       },
       {
+        "key": "prompt_for_cervix_dilation",
+        "type": "toaster_notes",
+        "text": "Continue with routine examination for the client",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_vaginal_examination_relevance.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "presenting_part",
         "type": "native_radio",
         "openmrs_entity_id": "presenting_part",
