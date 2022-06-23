@@ -1720,11 +1720,11 @@
           }
         },
         {
-          "column_name": "investigate_for_tb",
+          "column_name": "tb_status",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "investigate_for_tb"
+            "concept": "tb_status"
           }
         },
         {
@@ -1978,11 +1978,27 @@
           }
         },
         {
+          "column_name": "syphilis_treatment",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "syphilis_treatment"
+          }
+        },
+        {
           "column_name": "partner_syphilis",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
             "concept": "partner_syphilis"
+          }
+        },
+        {
+          "column_name": "partner_syphilis_treatment",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "partner_syphilis_treatment"
           }
         },
         {
