@@ -58,8 +58,6 @@
         "hint": "Tarehe ya mwisho mteja kuhudhulia Kituoni",
         "expanded": false,
         "max_date": "today",
-        "editable": false,
-        "read_only": true,
         "v_required": {
           "value": "true",
           "err": "Tafadhali bainisha Tarehe ya mwisho mteja kuhudhulia Kituoni"

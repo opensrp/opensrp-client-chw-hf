@@ -58,8 +58,6 @@
         "hint": "Client's last facility visit date",
         "expanded": false,
         "max_date": "today",
-        "editable": false,
-        "read_only": true,
         "v_required": {
           "value": "true",
           "err": "Please specify the client's last facility visit date"
