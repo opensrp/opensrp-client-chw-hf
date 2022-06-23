@@ -1581,7 +1581,7 @@ indicators:
                     FROM ec_anc_register ear
                              INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
                              INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
-                    WHERE ear.tt2_vaccination = 'yes'
+                    WHERE (ear.tt_vaccination_type LIKE '%tt2%' OR ear.tt_vaccination_type LIKE '%tt3%' OR ear.tt_vaccination_type LIKE '%tt4%' OR ear.tt_vaccination_type LIKE '%tt5%')
                       AND (date(fm.dob, '+10 years') <= date('now'))
                       AND (date(fm.dob, '+15 years') > date('now'))
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -1596,7 +1596,7 @@ indicators:
                     FROM ec_anc_register ear
                              INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
                              INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
-                    WHERE ear.tt2_vaccination = 'yes'
+                    WHERE (ear.tt_vaccination_type LIKE '%tt2%' OR ear.tt_vaccination_type LIKE '%tt3%' OR ear.tt_vaccination_type LIKE '%tt4%' OR ear.tt_vaccination_type LIKE '%tt5%')
                       AND medical_surgical_history LIKE '%pregnant_more_than_four%'
                       AND (date(fm.dob, '+15 years') <= date('now'))
                       AND (date(fm.dob, '+20 years') > date('now'))
@@ -1612,7 +1612,7 @@ indicators:
                     FROM ec_anc_register ear
                              INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
                              INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
-                    WHERE ear.tt2_vaccination = 'yes'
+                    WHERE (ear.tt_vaccination_type LIKE '%tt2%' OR ear.tt_vaccination_type LIKE '%tt3%' OR ear.tt_vaccination_type LIKE '%tt4%' OR ear.tt_vaccination_type LIKE '%tt5%')
                       AND medical_surgical_history LIKE '%pregnant_more_than_four%'
                       AND (date(fm.dob, '+20 years') <= date('now'))
                       AND (date(fm.dob, '+25 years') > date('now'))
@@ -1628,7 +1628,7 @@ indicators:
                     FROM ec_anc_register ear
                              INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
                              INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
-                    WHERE ear.tt2_vaccination = 'yes'
+                    WHERE (ear.tt_vaccination_type LIKE '%tt2%' OR ear.tt_vaccination_type LIKE '%tt3%' OR ear.tt_vaccination_type LIKE '%tt4%' OR ear.tt_vaccination_type LIKE '%tt5%')
                       AND medical_surgical_history LIKE '%pregnant_more_than_four%'
                       AND (date(fm.dob, '+25 years') <= date('now'))
                       AND (date(fm.dob, '+30 years') > date('now'))
@@ -1644,7 +1644,7 @@ indicators:
                     FROM ec_anc_register ear
                              INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
                              INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
-                    WHERE ear.tt2_vaccination = 'yes'
+                    WHERE (ear.tt_vaccination_type LIKE '%tt2%' OR ear.tt_vaccination_type LIKE '%tt3%' OR ear.tt_vaccination_type LIKE '%tt4%' OR ear.tt_vaccination_type LIKE '%tt5%')
                       AND medical_surgical_history LIKE '%pregnant_more_than_four%'
                       AND (date(fm.dob, '+30 years') <= date('now'))
                       AND (date(fm.dob, '+35 years') > date('now'))
@@ -1660,7 +1660,7 @@ indicators:
                     FROM ec_anc_register ear
                              INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
                              INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
-                    WHERE ear.tt2_vaccination = 'yes'
+                    WHERE (ear.tt_vaccination_type LIKE '%tt2%' OR ear.tt_vaccination_type LIKE '%tt3%' OR ear.tt_vaccination_type LIKE '%tt4%' OR ear.tt_vaccination_type LIKE '%tt5%')
                       AND medical_surgical_history LIKE '%pregnant_more_than_four%'
                       AND (date(fm.dob, '+35 years') <= date('now'))
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
