@@ -47,7 +47,7 @@
     "encounter_location": ""
   },
   "step1": {
-    "title": "PMTCT Community Followup Referral",
+    "title": "Mother Champion Referral",
     "fields": [
       {
         "key": "last_client_visit_date",
