@@ -47,6 +47,7 @@ import org.smartregister.chw.pmtct.util.Constants;
 import org.smartregister.chw.referral.util.JsonFormConstants;
 import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
+import org.smartregister.dao.LocationsDao;
 import org.smartregister.domain.AlertStatus;
 import org.smartregister.family.contract.FamilyProfileContract;
 import org.smartregister.family.domain.FamilyEventClient;
@@ -58,6 +59,7 @@ import org.smartregister.opd.utils.OpdDbConstants;
 import org.smartregister.repository.AllSharedPreferences;
 
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -69,8 +71,12 @@ import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 import timber.log.Timber;
 
+import static org.smartregister.AllConstants.LocationConstants.SPECIAL_TAG_FOR_OPENMRS_TEAM_MEMBERS;
 import static org.smartregister.chw.core.utils.CoreConstants.EventType.PMTCT_COMMUNITY_FOLLOWUP;
 import static org.smartregister.chw.hf.utils.Constants.JsonFormConstants.STEP1;
+import static org.smartregister.chw.hf.utils.JsonFormUtils.METADATA;
+import static org.smartregister.chw.hf.utils.JsonFormUtils.SYNC_LOCATION_ID;
+import static org.smartregister.util.JsonFormUtils.ENCOUNTER_LOCATION;
 import static org.smartregister.util.JsonFormUtils.FIELDS;
 import static org.smartregister.util.JsonFormUtils.VALUE;
 
@@ -134,6 +140,10 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
                 return true;
             } else if (itemId == R.id.action_issue_pmtct_followup_referral) {
                 JSONObject formJsonObject = (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getPmtctcCommunityFollowupReferral());
+                //adds the chw locations under the current facility
+                JSONObject motherChampionLocationField = CoreJsonFormUtils.getJsonField(formJsonObject, org.smartregister.util.JsonFormUtils.STEP1, "mother_champion_location");
+                CoreJsonFormUtils.addLocationsToDropdownField(LocationsDao.getLocationsByTags(
+                        Collections.singleton(SPECIAL_TAG_FOR_OPENMRS_TEAM_MEMBERS)), motherChampionLocationField);
 
                 Date lastVisitDate;
                 if (followUpVisitDate != null) {
