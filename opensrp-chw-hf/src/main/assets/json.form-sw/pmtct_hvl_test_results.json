@@ -59,11 +59,11 @@
         "openmrs_entity_parent": "",
         "v_numeric": {
           "value": "true",
-          "err": "Tafadhari ingiza kiasi kwa usahihi"
+          "err": "Tafadhali ingiza kiasi kwa usahihi"
         },
         "v_required": {
           "value": true,
-          "err": "Tafadhari Ingiza kiasi cha kufubaa kwa Virusi"
+          "err": "Tafadhali Ingiza kiasi cha kufubaa kwa Virusi"
         }
       },
       {

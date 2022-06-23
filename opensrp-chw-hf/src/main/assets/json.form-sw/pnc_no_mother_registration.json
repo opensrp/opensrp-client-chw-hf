@@ -165,6 +165,22 @@
         }
       },
       {
+        "key": "prompt_for_underweight",
+        "type": "toaster_notes",
+        "text": "Toa rufaa kwa huduma zaidi",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pnc_no_mother_registration_relevance.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "disabilities",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -209,7 +225,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "type_of_disability",
         "type": "check_box",
-        "label": "Type of disability",
+        "label": "Aina ya Ulemavu",
         "combine_checkbox_option_values": "true",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
@@ -305,11 +321,13 @@
         "hint": "Jinsi",
         "values": [
           "Me",
-          "Ke"
+          "Ke",
+          "Jinsia Tata"
         ],
         "keys": [
           "Male",
-          "Female"
+          "Female",
+          "Ambiguous"
         ],
         "v_required": {
           "value": "true",
@@ -327,7 +345,7 @@
     ]
   },
   "step2": {
-    "title": "Caregiver details",
+    "title": "Taarifa za Mlezi",
     "fields": [
       {
         "key": "unique_id",

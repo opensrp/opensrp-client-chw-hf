@@ -92,6 +92,45 @@
         }
       },
       {
+        "key": "date_of_death",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "date_of_death",
+        "type": "date_picker",
+        "hint": "Date Mother Died",
+        "expanded": false,
+        "max_date": "today",
+        "v_required": {
+          "value": "true",
+          "err": "Please provide the date the mother died"
+        },
+        "relevance": {
+          "step1:mothers_condition": {
+            "type": "string",
+            "ex": "equalTo(., \"deceased\")"
+          }
+        }
+      },
+      {
+        "key": "time_of_death",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "time_of_death",
+        "type": "time_picker",
+        "hint": "Time mother died",
+        "expanded": false,
+        "v_required": {
+          "value": "true",
+          "err": "Please provide the time the mother died"
+        },
+        "relevance": {
+          "step1:mothers_condition": {
+            "type": "string",
+            "ex": "equalTo(., \"deceased\")"
+          }
+        }
+      },
+      {
         "key": "preg_outcome",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -145,6 +184,42 @@
         "v_required": {
           "value": "true",
           "err": "Please select pregnancy outcome"
+        }
+      },
+      {
+        "key": "reason_child_died",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_child_died",
+        "type": "spinner",
+        "hint": "Reason as to why the child died",
+        "values": [
+          "Birth Asphyxia",
+          "Neonatal Respiratory Distress",
+          "Prematurity",
+          "Early Neonatal Sepsis"
+        ],
+        "keys": [
+          "birth_asphyxia",
+          "neonatal_respiratory_distress",
+          "prematurity",
+          "early_neonatal_sepsis"
+        ],
+        "openmrs_choice_ids": {
+          "birth_asphyxia": "birth_asphyxia",
+          "neonatal_respiratory_distress":  "neonatal_respiratory_distress",
+          "prematurity":  "prematurity",
+          "early_neonatal_sepsis": "early_neonatal_sepsis"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select a reason"
+        },
+        "relevance": {
+          "step1:preg_outcome": {
+            "type": "string",
+            "ex": "equalTo(., \"born_alive_died\")"
+          }
         }
       },
       {
@@ -721,11 +796,13 @@
             "hint": "Sex",
             "values": [
               "Male",
-              "Female"
+              "Female",
+              "Ambiguous"
             ],
             "keys": [
               "Male",
-              "Female"
+              "Female",
+              "Ambiguous"
             ],
             "v_required": {
               "value": "true",
@@ -1172,11 +1249,13 @@
             "hint": "Sex",
             "values": [
               "Male",
-              "Female"
+              "Female",
+              "Ambiguous"
             ],
             "keys": [
               "Male",
-              "Female"
+              "Female",
+              "Ambiguous"
             ],
             "v_required": {
               "value": "true",

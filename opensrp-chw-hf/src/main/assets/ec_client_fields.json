@@ -2012,6 +2012,96 @@
       ]
     },
     {
+      "name": "ec_anc_birth_emergency_plan",
+      "columns": [
+        {
+          "column_name": "entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "formSubmissionId"
+          }
+        },
+        {
+          "column_name": "visit_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "version"
+          }
+        },
+        {
+          "column_name": "visit_number",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "visit_number"
+          }
+        },
+        {
+          "column_name": "delivery_place",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "delivery_place"
+          }
+        },
+        {
+          "column_name": "name_of_hf",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "name_of_hf"
+          }
+        },
+        {
+          "column_name": "transport",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "transport"
+          }
+        },
+        {
+          "column_name": "birth_companion",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "birth_companion"
+          }
+        },
+        {
+          "column_name": "emergency_funds",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "emergency_funds"
+          }
+        },
+        {
+          "column_name": "household_support",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "household_support"
+          }
+        },
+        {
+          "column_name": "blood_donor",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "blood_donor"
+          }
+        }
+      ]
+    },
+    {
       "name": "ec_anc_pregnancy_lookup",
       "columns": [
         {
@@ -5086,6 +5176,22 @@
           }
         },
         {
+          "column_name": "admission_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "admission_date"
+          }
+        },
+        {
+          "column_name": "admission_time",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "admission_time"
+          }
+        },
+        {
           "column_name": "labour_onset_date",
           "type": "Event",
           "json_mapping": {
@@ -5157,7 +5263,6 @@
             "concept": "delivery_mode_reason"
           }
         },
-
         {
           "column_name": "last_interacted_with",
           "type": "Event",

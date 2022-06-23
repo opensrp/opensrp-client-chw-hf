@@ -77,13 +77,13 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari chagua mojawapo"
+          "err": "Tafadhali chagua mojawapo"
         }
       },
       {
         "key": "counselling_topics_provided",
         "type": "check_box",
-        "label": "Tafadhari chagua mada ambayo mtoa huduma amemshauri Mteja",
+        "label": "Tafadhali chagua mada ambayo mtoa huduma amemshauri Mteja",
         "combine_checkbox_option_values": "true",
         "openmrs_entity_id": "counselling_topics_provided",
         "openmrs_entity": "concept",
@@ -197,7 +197,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari chagua mada"
+          "err": "Tafadhali chagua mada"
         },
         "relevance": {
           "step1:is_client_counselled": {

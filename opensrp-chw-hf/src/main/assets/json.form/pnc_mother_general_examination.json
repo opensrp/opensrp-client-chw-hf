@@ -708,10 +708,10 @@
             "openmrs_entity_id": "episiotomy"
           },
           {
-            "key": "none",
-            "text": "None",
+            "key": "intact",
+            "text": "Intact",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "none"
+            "openmrs_entity_id": "intact"
           }
         ],
         "v_required": {

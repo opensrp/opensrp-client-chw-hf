@@ -58,11 +58,11 @@
         "openmrs_entity_parent": "",
         "v_regex": {
           "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
-          "err": "Tafadhari ingiza Jina la mtoa huduma wa Afya"
+          "err": "Tafadhali ingiza Jina la mtoa huduma wa Afya"
         },
         "v_required": {
           "value": true,
-          "err": "Tafadhari ingiza Jina la mtoa huduma wa Afya"
+          "err": "Tafadhali ingiza Jina la mtoa huduma wa Afya"
         }
       },
       {
@@ -95,7 +95,7 @@
         },
         "v_required": {
           "value": true,
-          "err": "Tafadhari ingiza cheo cha mtoa huduma wa Afya"
+          "err": "Tafadhali ingiza cheo cha mtoa huduma wa Afya"
         }
       },
       {
@@ -116,7 +116,7 @@
         },
         "v_required": {
           "value": true,
-          "err": "Tafadhari ingiza Namba ya simu ya Mtoa huduma wa Afya"
+          "err": "Tafadhali ingiza Namba ya simu ya Mtoa huduma wa Afya"
         }
       },
       {
@@ -130,7 +130,7 @@
         "max_date": "today",
         "v_required": {
           "value": true,
-          "err": "Tafadhari ingiza tarehe ya kuchukua sampuli ya kipimo cha DNA-PCR"
+          "err": "Tafadhali ingiza tarehe ya kuchukua sampuli ya kipimo cha DNA-PCR"
         }
       },
       {
@@ -142,7 +142,7 @@
         "openmrs_entity_parent": "",
         "v_required": {
           "value": true,
-          "err": "Tafadhari ingiza Muda wa kuchukua sampuli ya kipimo cha DNA-PCR"
+          "err": "Tafadhali ingiza Muda wa kuchukua sampuli ya kipimo cha DNA-PCR"
         }
       },
       {
@@ -155,7 +155,7 @@
         "openmrs_entity_parent": "",
         "v_required": {
           "value": true,
-          "err": "Tafadhari ingiza ID ya Sampuli kwa ajili kipimo cha DNA-PCR"
+          "err": "Tafadhali ingiza ID ya Sampuli kwa ajili kipimo cha DNA-PCR"
         }
       },
       {

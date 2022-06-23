@@ -185,7 +185,7 @@
         "hint": "Tarehe ya kuzaliwa",
         "expanded": false,
         "duration": {
-          "label": "Age"
+          "label": "Umri"
         },
         "min_date": "today-5y",
         "max_date": "today",
@@ -268,13 +268,13 @@
           "Mfuko wa Taifa wa Hifadhi ya Jamii - Manufaa ya Bima ya Afya ya Jamii (SHIB)",
           "Mfuko wa Taifa wa Bima ya Afya (NHIF)",
           "Tiba Kwa Kadi (TIKA)",
-          "AAR Healthcare",
-          "Strategies Insurance",
+          "Huduma ya afya AAR",
+          "Bima ya Strategies",
           "Milvik Tanzania Ltd (BIMA Mkononi)",
           "Bima ya afya ya Britam",
           "Bima ya afya ya Jubilee",
           "Bima ya afya ya Resolutions",
-          "Bima ya afya ya Resolutions",
+          "Bima ya afya ya Reliance",
           "Nyingine",
           "Hakuna"
         ],
@@ -283,8 +283,8 @@
           "National Social Security Fund - Social Health Insurance Benefit (SHIB)",
           "National Health Insurance Fund (NHIF)",
           "Tiba Kwa Kadi (TIKA)",
-          "AAR Healthcare",
-          "Strategies Insurance",
+          "Huduma ya afya AAR",
+          "Bima ya Strategies",
           "Milvik Tanzania Ltd (BIMA Mkononi)",
           "Britam Insurance Tanzania",
           "Jubilee Insurance",
@@ -298,8 +298,8 @@
           "National Social Security Fund - Social Health Insurance Benefit (SHIB)": "National_Social_Security_Fund",
           "National Health Insurance Fund (NHIF)": "National_Health_Insurance_Fund",
           "Tiba Kwa Kadi (TIKA)": "Tiba_kwa_Kadi",
-          "AAR Healthcare": "AAR_Healthcare",
-          "AAR Strategies Insurance": "Strategies_Insurance",
+          "Huduma ya afya AAR": "Huduma_ya_afya_AAR",
+          "Bima ya Strategies": "Bima_ya_Strategies",
           "Milvik Tanzania Ltd (BIMA Mkononi)": "BIMA_Mkononi",
           "Britam Insurance Tanzania": "Britam_Insurance_Tanzania",
           "Jubilee Insurance": "Jubilee_Insurance",
@@ -377,7 +377,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "disabilities",
         "type": "spinner",
-        "hint": "Uklemavu wa kimwili",
+        "hint": "Ulemavu wa kimwili",
         "values": [
           "Ndiyo",
           "Hapana"
@@ -401,7 +401,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "type_of_disability",
         "type": "check_box",
-        "label": "Aina ya ulemavvu wa kimwili",
+        "label": "Aina ya Ulemavu",
         "combine_checkbox_option_values": "true",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
@@ -436,7 +436,7 @@
           },
           {
             "key": "hearing_disability",
-            "text": "Ulemavu wa Kuskia ",
+            "text": "Ulemavu wa Kusikia ",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "hearing_disability"

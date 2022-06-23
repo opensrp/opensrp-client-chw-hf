@@ -62,7 +62,7 @@
         "read_only": true,
         "v_required": {
           "value": "true",
-          "err": "Tafadhari bainisha Tarehe ya mwisho mteja kuhudhulia Kituoni"
+          "err": "Tafadhali bainisha Tarehe ya mwisho mteja kuhudhulia Kituoni"
         }
       },
       {
@@ -92,7 +92,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari chagua sababu za kumpa rufaa Mteja"
+          "err": "Tafadhali chagua sababu za kumpa rufaa Mteja"
         }
       },
       {

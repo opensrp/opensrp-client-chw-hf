@@ -213,6 +213,7 @@
 
     <string name="no_mother_children">No Mother Children</string>
     <string name="no_mother_child_reg">No Mother Child Registration</string>
+    <string name="register_child">Register Child</string>
 
     <!-- HEI Medical History -->
     <string name="hei_visit_title">HEI Visit {0}: {1}, Age {2}</string>
@@ -270,6 +271,7 @@
     <string name="ld_registration_current_labour_complete">Recording Current Labour History is complete</string>
     <string name="ld_registration_true_labour_complete">The client has True labour</string>
     <string name="ld_registration_false_labour_complete">The client has False labour</string>
+    <string name="ld_registration_true_labour_client_admitted">The client is been admitted to labour ward</string>
 
     <string name="ld_registration_triage_action_subtitle_pending">Triage is Pending</string>
     <string name="ld_registration_admission_information_pending">Recording admission information is pending</string>
@@ -308,13 +310,14 @@
     <string name="lb_mode_of_delivery">Mode of Delivery</string>
     <string name="ld_active_management_3rd_stage">Active Management of 3rd Stage</string>
     <string name="uterotonic">Uterotonic</string>
-    <string name="ld_massage_uterus_after_delivery">Massage the uterus after delivery</string>
+    <string name="ld_massage_uterus_after_delivery">Massage the uterus after delivery of placenta</string>
     <string name="ld_expulsion_of_placenta">Expulsion of the placenta and membranes</string>
     <string name="ld_placent_retained_message">Placenta Retained</string>
     <string name="ld_no_uterus_massage">The woman did not receive uterus massage</string>
     <string name="ld_mother_post_delivery_management">Immediate Postpartum Care</string>
+    <string name="ld_yes_uterus_massage">The woman received uterus massage</string>
     <string name="ld_maternal_complication_action_title">Maternal complications during labour</string>
-    <string name="ld_new_born_status_action_title">New born\'s status</string>
+    <string name="ld_new_born_status_action_title">Immediate New Born Care {0}</string>
     <string name="ld_post_delivery_observation_action_title">Post Delivery Observation</string>
     <string name="ld_mother_status_action_title">Mother\'s Status</string>
     <string name="ld_baby_of_text">Baby of</string>
@@ -369,6 +372,8 @@
     <string name="lost_to_followup_referral">LTFU Referral</string>
     <string name="community_ltfu_summary">Community LTFU Summary</string>
     <string name="community_ltfu_summary_subtitle">View Report Summary for LTFU</string>
+    <string name="ld_reports_subtitle">View Labour Delivery Reports</string>
+    <string name="ld_report_title">Labour And Delivery Reports</string>
 
 
 </resources>

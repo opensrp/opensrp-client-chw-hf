@@ -28,6 +28,7 @@ import org.smartregister.chw.hf.actionhelper.AncMalariaInvestigationAction;
 import org.smartregister.chw.hf.actionhelper.AncPharmacyAction;
 import org.smartregister.chw.hf.actionhelper.AncTriageAction;
 import org.smartregister.chw.hf.actionhelper.AncTtVaccinationAction;
+import org.smartregister.chw.hf.dao.HfAncBirthEmergencyPlanDao;
 import org.smartregister.chw.hf.dao.HfAncDao;
 import org.smartregister.chw.hf.repository.HfLocationRepository;
 import org.smartregister.chw.hf.utils.Constants;
@@ -339,6 +340,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                     labTestForm.getJSONObject("global").put("syphilis_test_complete", HfAncDao.isTestConducted(Constants.DBConstants.ANC_SYPHILIS, baseEntityId));
                     labTestForm.getJSONObject("global").put("hiv_test_complete", HfAncDao.isTestConducted(Constants.DBConstants.ANC_HIV, baseEntityId));
                     labTestForm.getJSONObject("global").put("hiv_test_at_32_complete", HfAncDao.isHivTestConductedAtWk32(baseEntityId));
+                    labTestForm.getJSONObject("global").put("blood_group_complete", HfAncDao.isBloodGroupTestConducted(baseEntityId));
                     labTestForm.getJSONObject("global").put("hiv_status", HfAncDao.getHivStatus(baseEntityId));
                     JSONArray fields = labTestForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
                     JSONObject hivTestNumberField = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "hiv_test_number");
@@ -454,8 +456,18 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                         e.printStackTrace();
                     }
 
-                    if (!HfAncDao.isReviewFormFilled(baseEntityId)) {
+                    if (!HfAncBirthEmergencyPlanDao.isAllFilled(baseEntityId)) {
                         JSONObject birthReviewForm = initializeHealthFacilitiesList(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.BIRTH_REVIEW_AND_EMERGENCY_PLAN));
+                        try {
+                            birthReviewForm.getJSONObject("global").put("delivery_place_identified", HfAncBirthEmergencyPlanDao.isDeliveryPlaceIdentified(baseEntityId));
+                            birthReviewForm.getJSONObject("global").put("transport_identified", HfAncBirthEmergencyPlanDao.isTransportMethodIdentified(baseEntityId));
+                            birthReviewForm.getJSONObject("global").put("birth_companion_identified", HfAncBirthEmergencyPlanDao.isBirthCompanionIdentified(baseEntityId));
+                            birthReviewForm.getJSONObject("global").put("emergency_funds_identified", HfAncBirthEmergencyPlanDao.areEmergencyFundsPrepared(baseEntityId));
+                            birthReviewForm.getJSONObject("global").put("household_support_identified", HfAncBirthEmergencyPlanDao.isHouseholdSupportIdentified(baseEntityId));
+                            birthReviewForm.getJSONObject("global").put("blood_donor_identified", HfAncBirthEmergencyPlanDao.isBloodDonorIdentified(baseEntityId));
+                        } catch (JSONException e) {
+                           Timber.e(e);
+                        }
                         try {
                             BaseAncHomeVisitAction birthReview = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_review_birth_and_emergency_plan))
                                     .withOptional(true)

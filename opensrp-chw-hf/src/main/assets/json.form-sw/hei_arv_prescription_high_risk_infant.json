@@ -52,7 +52,7 @@
       {
         "key": "prompt_for_azt_nvp_syrup",
         "type": "toaster_notes",
-        "text": "Tafadhari mpatie Mtoto AZT+3TC+NVP Syrup",
+        "text": "Tafadhali mpatie Mtoto AZT+3TC+NVP Syrup",
         "openmrs_entity_id": "",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -85,7 +85,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari chagua mojawapo"
+          "err": "Tafadhali chagua mojawapo"
         }
       },
       {
@@ -115,7 +115,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari chagua mojawapo"
+          "err": "Tafadhali chagua mojawapo"
         },
         "relevance": {
           "step1:provided_azt_nvp_syrup": {
@@ -127,7 +127,7 @@
       {
         "key": "specify_the_combinations",
         "type": "edit_text",
-        "hint": "Tafadhari bainisha mchanganyiko mwingine wa dawa",
+        "hint": "Tafadhali bainisha mchanganyiko mwingine wa dawa",
         "openmrs_entity_id": "specify_the_combinations",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -180,7 +180,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "reason_for_not_providing_other_combination",
         "type": "native_radio",
-        "label": "Tafadhari bainisha sababu",
+        "label": "Tafadhali bainisha sababu",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [
@@ -208,7 +208,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari chagua mojawapo"
+          "err": "Tafadhali chagua mojawapo"
         },
         "relevance": {
           "step1:provided_other_combinations": {
@@ -220,13 +220,13 @@
       {
         "key": "other_reason_for_not_providing_other_combination",
         "type": "edit_text",
-        "hint": "Tafadhari bainisha sababu nyingine",
+        "hint": "Tafadhali bainisha sababu nyingine",
         "openmrs_entity_id": "other_reason_for_not_providing_other_combination",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "v_required": {
           "value": true,
-          "err": "Tafadhari bainisha sababu nyingine"
+          "err": "Tafadhali bainisha sababu nyingine"
         },
         "relevance": {
           "step1:reason_for_not_providing_other_combination": {

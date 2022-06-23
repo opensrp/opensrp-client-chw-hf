@@ -49,8 +49,37 @@
     }
   },
   "step1": {
-    "title": "Active Management of 3rd Stage Labour (AMSTL)",
+    "title": "Expulsion of the placenta and membranes",
     "fields": [
+      {
+        "key": "method_used_to_remove_the_placenta",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "method_used_to_remove_the_placenta",
+        "label": "The method used to remove/deliver the placenta",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "control_cord_traction",
+            "text": "Control Cord Traction",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "control_cord_traction"
+          },
+          {
+            "key": "manual",
+            "text": "Manual",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "manual"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please select an option"
+        }
+      },
       {
         "key": "placenta_and_membrane_expulsion",
         "openmrs_entity_parent": "",
@@ -68,8 +97,37 @@
             "openmrs_entity_id": "complete_placenta"
           },
           {
+            "key": "incomplete_placenta",
+            "text": "Incomplete placenta",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "incomplete_placenta"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please select an option"
+        }
+      },
+      {
+        "key": "type_of_incomplete_placenta",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "type_of_incomplete_placenta",
+        "label": "Type of incomplete placenta",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "retained_product",
+            "text": "Retained Product",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "retained_product"
+          },
+          {
             "key": "retained_placenta",
-            "text": "Retained placenta",
+            "text": "Retained Placenta",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "retained_placenta"
@@ -78,167 +136,11 @@
         "v_required": {
           "value": true,
           "err": "Please select an option"
-        }
-      },
-      {
-        "key": "prompt_for_placenta_and_membrane_expulsion",
-        "type": "toaster_notes",
-        "text": "Take action per National guideline",
-        "openmrs_entity_id": "",
-        "openmrs_entity": "",
-        "openmrs_entity_parent": "",
-        "toaster_type": "problem",
-        "relevance": {
-          "step1:placenta_and_membrane_expulsion": {
-            "type": "string",
-            "ex": "equalTo(., \"retained_placenta\")"
-          }
-        }
-      },
-      {
-        "key": "complete_oxytocin_egometrin_misoprstol",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "complete_oxytocin_egometrin_misoprstol",
-        "label": "Given Oxytocin or Egometrin or Misoprostol",
-        "text_color": "#000000",
-        "type": "check_box",
-        "options": [
-          {
-            "key": "oxytocin",
-            "text": "Oxytocin (O)",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "oxytocin"
-          },
-          {
-            "key": "egometrin",
-            "text": "Egometrin (E)",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "egometrin"
-          },
-          {
-            "key": "misoprstol",
-            "text": "Misoprostol (M)",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "misoprstol"
-          }
-        ],
-        "v_required": {
-          "value": true,
-          "err": "Please select an option"
         },
         "relevance": {
           "step1:placenta_and_membrane_expulsion": {
             "type": "string",
-            "ex": "equalTo(., \"complete_placenta\")"
-          }
-        }
-      },
-      {
-        "key": "removal_of_placenta_pulling",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "removal_of_placenta_pulling",
-        "label": "Removal of placenta by pulling slowly",
-        "text_color": "#000000",
-        "type": "native_radio",
-        "options": [
-          {
-            "key": "yes",
-            "text": "Yes",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "yes"
-          },
-          {
-            "key": "no",
-            "text": "No",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "no"
-          }
-        ],
-        "v_required": {
-          "value": true,
-          "err": "Please select an option"
-        },
-        "relevance": {
-          "step1:placenta_and_membrane_expulsion": {
-            "type": "string",
-            "ex": "equalTo(., \"complete_placenta\")"
-          }
-        }
-      },
-      {
-        "key": "massage_of_placenta",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "massage_of_placenta",
-        "label": "Massaged",
-        "text_color": "#000000",
-        "type": "native_radio",
-        "options": [
-          {
-            "key": "yes",
-            "text": "Yes",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "yes"
-          },
-          {
-            "key": "no",
-            "text": "No",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "no"
-          }
-        ],
-        "v_required": {
-          "value": true,
-          "err": "Please select an option"
-        },
-        "relevance": {
-          "step1:placenta_and_membrane_expulsion": {
-            "type": "string",
-            "ex": "equalTo(., \"complete_placenta\")"
-          }
-        }
-      },
-      {
-        "key": "retained_oxytocin_egometrin_misoprostol",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "retained_oxytocin_egometrin_misoprostol",
-        "label": "Oxytocin/Egometrin/Misoprostol",
-        "text_color": "#000000",
-        "type": "native_radio",
-        "options": [
-          {
-            "key": "yes",
-            "text": "Yes",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "yes"
-          },
-          {
-            "key": "no",
-            "text": "No",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "no"
-          }
-        ],
-        "v_required": {
-          "value": true,
-          "err": "Please select an option"
-        },
-        "relevance": {
-          "step1:placenta_and_membrane_expulsion": {
-            "type": "string",
-            "ex": "equalTo(., \"retained_placenta\")"
+            "ex": "equalTo(., \"incomplete_placenta\")"
           }
         }
       },
@@ -271,9 +173,24 @@
           "err": "Please select an option"
         },
         "relevance": {
-          "step1:placenta_and_membrane_expulsion": {
+          "step1:type_of_incomplete_placenta": {
             "type": "string",
             "ex": "equalTo(., \"retained_placenta\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_placenta_and_membrane_expulsion",
+        "type": "toaster_notes",
+        "text": "Manage according to SOP and National guideline",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:placenta_removed_by_hand": {
+            "type": "string",
+            "ex": "equalTo(., \"no\")"
           }
         }
       },
@@ -306,7 +223,77 @@
           "err": "Please select an option"
         },
         "relevance": {
-          "step1:placenta_and_membrane_expulsion": {
+          "step1:type_of_incomplete_placenta": {
+            "type": "string",
+            "ex": "equalTo(., \"retained_placenta\")"
+          }
+        }
+      },
+      {
+        "key": "administered_antibiotics",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "administered_antibiotics",
+        "label": "Was the client administered antibiotics ?",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please select an option"
+        },
+        "relevance": {
+          "step1:type_of_incomplete_placenta": {
+            "type": "string",
+            "ex": "equalTo(., \"retained_placenta\")"
+          }
+        }
+      },
+      {
+        "key": "administered_magnesium_sulphate",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "administered_magnesium_sulphate",
+        "label": "Was the client administered Magnesium Sulphate?",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please select an option"
+        },
+        "relevance": {
+          "step1:type_of_incomplete_placenta": {
             "type": "string",
             "ex": "equalTo(., \"retained_placenta\")"
           }
@@ -330,10 +317,11 @@
       {
         "key": "removal_duration",
         "type": "edit_text",
-        "hint": "How lond did it take to remove the placenta? (HH:MM)",
+        "hint": "How lond did it take to remove the placenta? (In minutes)",
         "openmrs_entity_id": "removal_duration",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
+        "edit_type": "number",
         "v_required": {
           "value": true,
           "err": "Removal duration is required"
@@ -354,6 +342,68 @@
         "v_min": {
           "value": 0,
           "err": "Please enter a valid number"
+        }
+      },
+      {
+        "key": "prompt_for_excessive_blood_loss",
+        "type": "toaster_notes",
+        "text": "Manage according to SOP and National guideline",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:estimated_blood_loss": {
+            "type": "numeric",
+            "ex": "greaterThan(.,\"500\")"
+          }
+        }
+      },
+      {
+        "key": "provided_blood_transfusion",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "provided_blood_transfusion",
+        "label": "Provided blood transfusion?",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please select an option"
+        },
+        "relevance": {
+          "step1:type_of_incomplete_placenta": {
+            "type": "string",
+            "ex": "equalTo(., \"retained_placenta\")"
+          }
+        }
+      },
+      {
+        "key": "name_of_the_provider_who_removed_the_placenta",
+        "type": "edit_text",
+        "hint": "Name of the Provider who removed the placenta",
+        "openmrs_entity_id": "name_of_the_provider_who_removed_the_placenta",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": true,
+          "err": "Please specify the name of the provider"
         }
       },
       {

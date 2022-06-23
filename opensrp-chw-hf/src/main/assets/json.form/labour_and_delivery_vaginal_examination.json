@@ -290,6 +290,10 @@
               "rules-file": "labour_and_delivery_vaginal_examination_relevance.yml"
             }
           }
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please select the position of  Occiput"
         }
       },
       {

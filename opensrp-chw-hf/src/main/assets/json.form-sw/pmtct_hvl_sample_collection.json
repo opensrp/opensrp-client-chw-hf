@@ -59,11 +59,11 @@
         "openmrs_entity_parent": "",
         "v_regex": {
           "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
-          "err": "Tafadhari ingiza jina la Mtoa huduma"
+          "err": "Tafadhali ingiza jina la Mtoa huduma"
         },
         "v_required": {
           "value": true,
-          "err": "Tafadhari ingiza jina la mtoa huduma"
+          "err": "Tafadhali ingiza jina la mtoa huduma"
         }
       },
       {
@@ -93,7 +93,7 @@
         },
         "v_required": {
           "value": true,
-          "err": "Tafadhari"
+          "err": "Tafadhali"
         }
       },
       {
@@ -114,7 +114,7 @@
         },
         "v_required": {
           "value": true,
-          "err": "Tafadhari ingiza namba ya simu ya Mtoa huduma"
+          "err": "Tafadhali ingiza namba ya simu ya Mtoa huduma"
         }
       },
       {
@@ -128,7 +128,7 @@
         "max_date": "today",
         "v_required": {
           "value": true,
-          "err": "Tafadhari ingiza Tarehe ya kuchukua sampuli ya damu kwa ajili ya kupima wingi wa virusi mwilini"
+          "err": "Tafadhali ingiza Tarehe ya kuchukua sampuli ya damu kwa ajili ya kupima wingi wa virusi mwilini"
         }
       },
       {
@@ -140,7 +140,7 @@
         "openmrs_entity_parent": "",
         "v_required": {
           "value": true,
-          "err": "Tafadhari ingiza Muda wakati wa kuchukua sampuli ya damu kwa ajili ya kupima wingi wa virusi mwilini"
+          "err": "Tafadhali ingiza Muda wakati wa kuchukua sampuli ya damu kwa ajili ya kupima wingi wa virusi mwilini"
         }
       },
       {
@@ -153,7 +153,7 @@
         "openmrs_entity_parent": "",
         "v_required": {
           "value": true,
-          "err": "Tafadhari ingiza Namba ya Utambulisho ya Sampuli ya HVL"
+          "err": "Tafadhali ingiza Namba ya Utambulisho ya Sampuli ya HVL"
         }
       }
     ]

@@ -91,7 +91,7 @@
         },
         {
           "name": "problem",
-          "type": "spinner",
+          "type": "radio_group",
           "properties": {
             "text": "Lost to Followup Clinic"
           },

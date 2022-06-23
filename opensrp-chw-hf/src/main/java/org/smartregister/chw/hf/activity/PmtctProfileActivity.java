@@ -1,5 +1,6 @@
 package org.smartregister.chw.hf.activity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -139,6 +140,7 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
     }
 
 
+    @SuppressLint("MissingSuperCall")
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == Constants.REQUEST_CODE_GET_JSON && resultCode == RESULT_OK) {
@@ -163,6 +165,7 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
                     } catch (Exception e) {
                         Timber.e(e);
                     }
+                    Toast.makeText(this, "EAC Visit saved", Toast.LENGTH_SHORT).show();
                 } else {
                     profilePresenter.saveForm(data.getStringExtra(Constants.JSON_FORM_EXTRA.JSON));
                     finish();

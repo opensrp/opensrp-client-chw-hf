@@ -73,19 +73,19 @@
         "openmrs_entity": "concept",
         "v_numeric": {
           "value": "true",
-          "err": "Tafadhari ingiza namba ya Systolic (Blood Pressure)"
+          "err": "Tafadhali ingiza namba ya Systolic (Blood Pressure)"
         },
         "v_min": {
           "value": "0",
-          "err": "namba ya Tafadhari ingiza namba ya Systolic lazime iwe sawa au kubwa kuliko 0"
+          "err": "namba ya Tafadhali ingiza namba ya Systolic lazime iwe sawa au kubwa kuliko 0"
         },
         "v_max": {
           "value": "320",
-          "err": "Tafadhari ingiza namba ya Systolic lazima iwe sawa au chini ya 320"
+          "err": "Tafadhali ingiza namba ya Systolic lazima iwe sawa au chini ya 320"
         },
         "v_required": {
           "value": true,
-          "err": "Tafadhari ingiza namba ya Systolic (Blood Pressure)"
+          "err": "Tafadhali ingiza namba ya Systolic (Blood Pressure)"
         }
       },
       {
@@ -97,7 +97,7 @@
         "openmrs_entity": "concept",
         "v_numeric": {
           "value": "true",
-          "err": "Tafadhari ingiza Diastolic"
+          "err": "Tafadhali ingiza Diastolic"
         },
         "v_min": {
           "value": "0",
@@ -109,7 +109,7 @@
         },
         "v_required": {
           "value": true,
-          "err": "Tafadhari ingiza Diastolic"
+          "err": "Tafadhali ingiza Diastolic"
         },
         "constraints": [
           {
@@ -176,7 +176,7 @@
         ],
         "v_required": {
           "value": true,
-          "err": "Tafadhari jibu swali hili"
+          "err": "Tafadhali jibu swali hili"
         }
       },
       {
@@ -246,7 +246,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "reason_for_not_conducting_hb_test",
         "type": "spinner",
-        "hint": "Sababu ya kutofanya kipimo cha kiwango cha HB  ",
+        "hint": "Sababu ya kutofanya kipimo cha HB",
         "values": [
           "Cuvette Cartridges Hazipo Kituoni",
           "Mashine ya Kupimwa wingi wa damu (Haemoque) haifanyi kazi",
@@ -364,7 +364,7 @@
         "openmrs_entity_parent": "",
         "v_numeric": {
           "value": "true",
-          "err": "Tafadhari ingiza Uzito wa Mteja"
+          "err": "Tafadhali ingiza Uzito wa Mteja"
         },
         "v_min": {
           "value": "20",
@@ -376,7 +376,7 @@
         },
         "v_required": {
           "value": true,
-          "err": "Tafadhari ingiza Uzito wa Mteja"
+          "err": "Tafadhali ingiza Uzito wa Mteja"
         }
       },
       {
@@ -411,7 +411,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari jibu swali hili"
+          "err": "Tafadhali jibu swali hili"
         }
       },
       {
@@ -452,7 +452,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari jibu swali hili"
+          "err": "Tafadhali jibu swali hili"
         }
       },
       {
@@ -493,13 +493,13 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari jibu swali hili"
+          "err": "Tafadhali jibu swali hili"
         }
       },
       {
         "key": "prompt_for_engorgement_mastitis",
         "type": "toaster_notes",
-        "text": "Mpatie Mama Antibiotiki (kiuavijasumu) na dawa za kutuliza maumivu, mshauri amnyonyeshe mtoto kwenye titi lisilo na michubuko",
+        "text": "Mpatie mama antibiotiki (kiuavijsimu) na dawa za kutuliza maumivu",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -534,13 +534,13 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari jibu swali hili"
+          "err": "Tafadhali jibu swali hili"
         }
       },
       {
         "key": "prompt_for_abscess",
         "type": "toaster_notes",
-        "text": "Minya, toboa na kamua Jibu la Mama. Mpatie Mama antibiotics na dawa za kutuliza maumivu",
+        "text": "Minya, toboa na kamua Jipu la Mama. Mpatie Mama antibiotics na dawa za kutuliza maumivu",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -555,7 +555,7 @@
       {
         "key": "perineum_infection",
         "type": "native_radio",
-        "label": "Je, Mama ana msamba ulioambukizwa/ulioachia?",
+        "label": "Je, Mama ana msamba au kidonda cha upasuaji ulioambikwizwa/ulioachia?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "perineum_infection",
         "openmrs_entity_parent": "",
@@ -575,7 +575,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari jibu swali hili"
+          "err": "Tafadhali jibu swali hili"
         }
       },
       {
@@ -615,14 +615,14 @@
           },
           {
             "key": "chk_distended",
-            "text": "Umetokeza nje",
+            "text": "Haujanywea",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_distended"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari jibu swali hili"
+          "err": "Tafadhali jibu swali hili"
         }
       },
       {
@@ -643,7 +643,7 @@
       {
         "key": "prompt_for_uterus_distended",
         "type": "toaster_notes",
-        "text": "Tathmini usikivu wa tumbo na mabadiliko ya uterasi, dhibiti mteja kulingana na miongozo ya Wizara ya Afya",
+        "text": "Tathmini usikivu wa tumbo na mabadiliko ya uterasi, dhibiti hali ya mteja kulingana na mwongozo wa Wizara ya Afya",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -658,7 +658,7 @@
       {
         "key": "lochia_assessment",
         "type": "native_radio",
-        "label": "Tathmini ya Lochia",
+        "label": "Tathmini ya Lokia",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "lochia_assessment",
         "openmrs_entity_parent": "",
@@ -684,7 +684,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari jibu swali hili"
+          "err": "Tafadhali jibu swali hili"
         }
       },
       {
@@ -708,21 +708,21 @@
             "openmrs_entity_id": "episiotomy"
           },
           {
-            "key": "none",
-            "text": "Hakuna",
+            "key": "intact",
+            "text": "Haujacahnika",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "none"
+            "openmrs_entity_id": "intact"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari jibu swali hili"
+          "err": "Tafadhali jibu swali hili"
         }
       },
       {
         "key": "prompt_for_tear_vaginal_assessment",
         "type": "toaster_notes",
-        "text": "Ikiwa Mteja anavuja damu sana, toa huduma ya dharura ya kuzuia uvujaji dawa mara baada ya kujifungua, rekebisha machozi, na mpe Antibiotics na dawa za kutuliza maumivu",
+        "text": "Ikiwa mteja anavuja damu sana, toa huduma ya dharura ya kuzuia uvujaji damu baada ya kujifungua, rekebisha jeraha na mpe Antibiotics na dawa za kutuliza maumivu",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -772,13 +772,13 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari jibu swali hili"
+          "err": "Tafadhali jibu swali hili"
         }
       },
       {
         "key": "prompt_for_fistula",
         "type": "toaster_notes",
-        "text": "Mpatie rufaa ya upasuaji wa kwa ajili Fistula",
+        "text": "Mpatie rufaa ya upasuaji kwa ajili kurekebisha fistula",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -822,7 +822,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari jibu swali hili"
+          "err": "Tafadhali jibu swali hili"
         }
       },
       {
@@ -848,7 +848,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari jibu swali hili"
+          "err": "Tafadhali jibu swali hili"
         },
         "relevance": {
           "step1:puerperal_psychosis": {

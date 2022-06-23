@@ -246,7 +246,9 @@ public class LDActiveManagementStageActivityInteractor extends BaseLDVisitIntera
         @Override
         public String evaluateSubTitle() {
             if (StringUtils.isNotBlank(uterus_massage_after_delivery)) {
-                if (uterus_massage_after_delivery.equalsIgnoreCase("no")) {
+                if (uterus_massage_after_delivery.equalsIgnoreCase("yes")) {
+                    return (context.getString(R.string.ld_yes_uterus_massage));
+                } else if (uterus_massage_after_delivery.equalsIgnoreCase("no")) {
                     return context.getString(R.string.ld_no_uterus_massage);
                 }
             }

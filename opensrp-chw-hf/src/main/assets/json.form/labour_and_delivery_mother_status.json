@@ -177,6 +177,35 @@
         }
       },
       {
+        "key": "number_of_children_born",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "number_of_children_born",
+        "type": "edit_text",
+        "hint": "Number of Children Born",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the number of children born"
+        },
+        "v_numeric_integer": {
+          "value": "true",
+          "err": "Please enter a valid number"
+        },
+        "v_max": {
+          "value": "5",
+          "err": "The number of children born should be equal or less than 5"
+        },
+        "v_min": {
+          "value": "1",
+          "err": "The number of children born should greater than 0"
+        },
+        "v_max_length": {
+          "value": 1,
+          "err": "length not more than 1",
+          "is_fixed_size": true
+        }
+      },
+      {
         "key": "delivery_date",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -188,29 +217,12 @@
         "max_date": "today"
       },
       {
-        "key": "labour_information",
-        "openmrs_entity_parent": "",
+        "key": "delivery_time",
+        "type": "time_picker",
+        "hint": "Delivery Time",
+        "openmrs_entity_id": "delivery_time",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "labour_information",
-        "label": "Labour information/conditions",
-        "text_color": "#000000",
-        "type": "native_radio",
-        "options": [
-          {
-            "key": "within_12_hours",
-            "text": "Within 12 hours",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "within_12_hours"
-          },
-          {
-            "key": "after_12_hours",
-            "text": "After 12 hours",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "after_12_hours"
-          }
-        ]
+        "openmrs_entity_parent": ""
       },
       {
         "key": "mother_status_module_status",
@@ -219,6 +231,14 @@
         "openmrs_entity_id": "mother_status_module_status",
         "type": "hidden",
         "value": "PENDING"
+      },
+      {
+        "key": "labour_duration",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "labour_duration",
+        "label": "Labour information/conditions",
+        "type": "hidden"
       }
     ]
   }

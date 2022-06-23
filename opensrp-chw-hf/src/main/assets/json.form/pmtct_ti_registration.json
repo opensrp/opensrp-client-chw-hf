@@ -276,7 +276,7 @@
         "max_date": "today",
         "v_required": {
           "value": true,
-          "err": "Tafadhari ingiza Tarehe ya kuchukua sampuli ya damu kwa ajili ya kupima wingi wa virusi mwilini"
+          "err": "Tafadhali ingiza Tarehe ya kuchukua sampuli ya damu kwa ajili ya kupima wingi wa virusi mwilini"
         },
         "relevance": {
           "step1:was_the_hvl_test_conducted": {

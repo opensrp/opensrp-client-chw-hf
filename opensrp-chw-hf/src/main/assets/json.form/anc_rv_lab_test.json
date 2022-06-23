@@ -607,6 +607,152 @@
         }
       },
       {
+        "key": "blood_group",
+        "type": "spinner",
+        "hint": "Blood Group",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "blood_group",
+        "openmrs_entity_parent": "",
+        "values": [
+          "A",
+          "B",
+          "AB",
+          "O",
+          "Blood Type Test Not Conducted"
+        ],
+        "keys": [
+          "A",
+          "B",
+          "AB",
+          "O",
+          "test_not_conducted"
+        ],
+        "openmrs_choice_ids": {
+          "A": "A",
+          "B": "B",
+          "AB": "AB",
+          "O": "O",
+          "test_not_conducted": "test_not_conducted"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please choose a blood group"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_lab_test_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "reason_for_not_conducting_blood_group_test",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_conducting_blood_group_test",
+        "type": "spinner",
+        "hint": "Reason as to why the Blood Type Test was not conducted",
+        "values": [
+          "Test kits are out of stock",
+          "The client was in an emergency situation",
+          "The client refused to be tested",
+          "We are still counselling the client",
+          "Other (Specify)"
+        ],
+        "keys": [
+          "test_kits_out_of_stock",
+          "client_was_in_an_emergency_situation",
+          "client_refused_to_be_tested",
+          "still_counselling_the_client",
+          "other"
+        ],
+        "openmrs_choice_ids": {
+          "test_kits_out_of_stock": "test_kits_out_of_stock",
+          "client_was_in_an_emergency_situation": "client_was_in_an_emergency_situation",
+          "client_refused_to_be_tested": "client_refused_to_be_tested",
+          "still_counselling_the_client": "still_counselling_the_client",
+          "Other": "other"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select a reason"
+        },
+        "relevance": {
+          "step1:blood_group": {
+            "type": "string",
+            "ex": "equalTo(., \"test_not_conducted\")"
+          }
+        }
+      },
+      {
+        "key": "other_reason_for_not_conducting_blood_group_test",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reason_for_not_conducting_blood_group_test",
+        "type": "edit_text",
+        "hint": "Specify other reasons for not conducting the Blood Type Test",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the reason"
+        },
+        "relevance": {
+          "step1:reason_for_not_conducting_blood_group_test": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
+          }
+        }
+      },
+      {
+        "key": "rh_factor",
+        "type": "native_radio",
+        "label": "Rh",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "rh_factor",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "positive",
+            "text": "Positive",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "positive"
+          },
+          {
+            "key": "negative",
+            "text": "Negative",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "negative"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_baseline_investigation_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_rh_factor",
+        "type": "toaster_notes",
+        "text": "Refer the client for further management",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:rh_factor": {
+            "type": "string",
+            "ex": "equalTo(., \"negative\")"
+          }
+        }
+      },
+      {
         "key": "hiv",
         "type": "native_radio",
         "label": "HIV Test Results",

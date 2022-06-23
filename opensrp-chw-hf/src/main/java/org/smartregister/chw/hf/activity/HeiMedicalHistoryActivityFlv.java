@@ -47,7 +47,7 @@ public class HeiMedicalHistoryActivityFlv extends DefaultAncMedicalHistoryActivi
                 }
 
 
-                String[] hf_params = {"pmtct_visit_date", "actual_age", "followup_status", "weight", "number_of_ctx_days_dispensed", "number_of_nvp_days_dispensed", "infant_feeding_practice", "sample_id", "next_facility_visit_date"};
+                String[] hf_params = {"pmtct_visit_date", "actual_age", "followup_status", "weight", "number_of_ctx_days_dispensed", "number_of_nvp_days_dispensed","number_of_azt_nvp_days_dispensed", "infant_feeding_practice", "sample_id", "next_facility_visit_date"};
                 extractHFVisit(visits, hf_params, hf_visits, x, context);
 
                 x++;
@@ -166,10 +166,12 @@ public class HeiMedicalHistoryActivityFlv extends DefaultAncMedicalHistoryActivi
     }
 
     private void evaluateNvpNumberOfDays(Context context, Map<String, String> vals, TextView tvNvp) {
-        if (StringUtils.isBlank(getMapValue(vals, "number_of_nvp_days_dispensed"))) {
+        if (StringUtils.isBlank(getMapValue(vals, "number_of_nvp_days_dispensed")) && StringUtils.isBlank(getMapValue(vals, "number_of_azt_nvp_days_dispensed"))) {
             tvNvp.setVisibility(View.GONE);
         } else {
-            tvNvp.setText(MessageFormat.format(context.getString(R.string.nvp_days_dispensed), getMapValue(vals, "number_of_nvp_days_dispensed")));
+            String message =  StringUtils.isBlank(getMapValue(vals, "number_of_azt_nvp_days_dispensed")) ?
+                    MessageFormat.format(context.getString(R.string.nvp_days_dispensed), getMapValue(vals, "number_of_nvp_days_dispensed")) : MessageFormat.format(context.getString(R.string.nvp_days_dispensed), getMapValue(vals, "number_of_azt_nvp_days_dispensed"));
+            tvNvp.setText(message);
         }
     }
 
