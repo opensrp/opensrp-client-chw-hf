@@ -52,7 +52,7 @@
       {
         "key": "prompt_for_nvp_syrup",
         "type": "toaster_notes",
-        "text": "Tafadhari mpatie Mtoto NVP Syrup",
+        "text": "Tafadhali mpatie Mtoto NVP Syrup",
         "openmrs_entity_id": "",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -85,7 +85,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari chagua mojawapo"
+          "err": "Tafadhali chagua mojawapo"
         }
       },
       {
@@ -125,7 +125,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "reason_for_not_providing_nvp_syrup",
         "type": "native_radio",
-        "label": "Tafadhari bainisha sababu",
+        "label": "Tafadhali bainisha sababu",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [
@@ -160,7 +160,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari chagua mojawapo"
+          "err": "Tafadhali chagua mojawapo"
         },
         "relevance": {
           "step1:provided_nvp_syrup": {

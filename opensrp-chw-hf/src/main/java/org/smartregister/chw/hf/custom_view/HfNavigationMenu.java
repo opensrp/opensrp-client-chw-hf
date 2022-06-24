@@ -26,7 +26,7 @@ public class HfNavigationMenu implements NavigationMenu.Flavour {
     @Override
     public HashMap<String, String> getTableMapValues() {
         HashMap<String, String> tableMap = new HashMap<>();
-        tableMap.put(CoreConstants.DrawerMenu.REFERRALS, CoreConstants.TABLE_NAME.TASK);
+        tableMap.put(CoreConstants.DrawerMenu.REFERRALS, CoreConstants.TABLE_NAME.REFERRAL);
         return tableMap;
     }
 

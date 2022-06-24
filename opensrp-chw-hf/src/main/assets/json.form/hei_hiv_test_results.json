@@ -205,7 +205,7 @@
         "max_date": "today",
         "v_required": {
           "value": "true",
-          "err": "Tafadhari chagua Tarehe ya majibu kupewa mzazi"
+          "err": "Tafadhali chagua Tarehe ya majibu kupewa mzazi"
         },
         "relevance": {
           "step1:results_provided_to_parents": {

@@ -544,7 +544,7 @@
         "options": [
           {
             "key": "painful_uterine_contraction",
-            "text": "Painful, regular uterine contractions",
+            "text": "Painful, increasing frequency and duration",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "painful_uterine_contraction"
@@ -1347,7 +1347,7 @@
       {
         "key": "prompt_for_rh_negative",
         "type": "toaster_notes",
-        "text": "Provide management according to standard guideline",
+        "text": "Provide management according to SOP and Standard Guideline",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -1418,7 +1418,7 @@
       {
         "key": "prompt_for_ruptured_membrane",
         "type": "toaster_notes",
-        "text": "Provide management according to standard guideline",
+        "text": "Provide management according to SOP and Standard Guideline",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -1496,7 +1496,7 @@
       {
         "key": "prompt_for_fetal_movement",
         "type": "toaster_notes",
-        "text": "Provide management according to standard guideline",
+        "text": "Provide management according to SOP and Standard Guideline",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",

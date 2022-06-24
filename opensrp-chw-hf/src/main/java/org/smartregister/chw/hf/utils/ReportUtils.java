@@ -13,6 +13,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
 import org.smartregister.chw.hf.domain.anc_reports.AncMonthlyReportObject;
 import org.smartregister.chw.hf.domain.cbhs_reports.CbhsMonthlyReportObject;
+import org.smartregister.chw.hf.domain.ld_reports.LdMonthlyReportObject;
+import org.smartregister.chw.hf.domain.ltfu_summary.LTFUSummaryObject;
 import org.smartregister.chw.hf.domain.pmtct_reports.Pmtct12MonthsReportObject;
 import org.smartregister.chw.hf.domain.pmtct_reports.Pmtct24MonthsReportObject;
 import org.smartregister.chw.hf.domain.pmtct_reports.Pmtct3MonthsReportObject;
@@ -188,6 +190,32 @@ public class ReportUtils {
             CbhsMonthlyReportObject cbhsMonthlyReportObject = new CbhsMonthlyReportObject(now);
             try {
                 report = cbhsMonthlyReportObject.getIndicatorDataAsGson(cbhsMonthlyReportObject.getIndicatorData());
+            } catch (Exception e) {
+                Timber.e(e);
+            }
+            return report;
+        }
+    }
+
+    public static class LDReports {
+        public static String computeLdReport(Date now){
+            String report = "";
+            LdMonthlyReportObject ldMonthlyReportObject = new LdMonthlyReportObject(now);
+            try {
+                report = ldMonthlyReportObject.getIndicatorDataAsGson(ldMonthlyReportObject.getIndicatorData());
+            } catch (Exception e) {
+                Timber.e(e);
+            }
+            return report;
+        }
+    }
+
+    public static class LTFUReports {
+        public static String computeLTFUReport(Date now) {
+            String report = "";
+            LTFUSummaryObject ltfuSummaryObject = new LTFUSummaryObject(now);
+            try {
+                report = ltfuSummaryObject.getIndicatorDataAsGson(ltfuSummaryObject.getIndicatorData());
             } catch (Exception e) {
                 Timber.e(e);
             }

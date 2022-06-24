@@ -1,0 +1,191 @@
+{
+  "form": "Referral form",
+  "encounter_type": "Referral Registration",
+  "entity_id": "",
+  "relational_id": "",
+  "rules_file": "rule/general_neat_referral_form_rules.yml",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "steps": [
+    {
+      "title": "Lost To FollowUp Referral Form",
+      "fields": [
+        {
+          "name": "on_art",
+          "type": "radio_group",
+          "properties": {
+            "text": "Is the client on ARV?"
+          },
+          "options": [
+            {
+              "name": "yes",
+              "text": "Yes",
+              "meta_data": {
+                "openmrs_entity": "",
+                "openmrs_entity_id": "yes",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "no",
+              "text": "No",
+              "meta_data": {
+                "openmrs_entity": "",
+                "openmrs_entity_id": "no",
+                "openmrs_entity_parent": ""
+              }
+            }
+          ],
+          "meta_data": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "on_art"
+          },
+          "required_status": "yes:Please specify"
+        },
+        {
+          "name": "problem",
+          "type": "radio_group",
+          "properties": {
+            "text": "Lost to Followup Clinic"
+          },
+          "meta_data": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "problem"
+          },
+          "options": [
+            {
+              "name": "CTC",
+              "text": "CTC",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "CTC",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "Prep",
+              "text": "Prep",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "Prep",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "PMTCT",
+              "text": "PMTCT",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "PMTCT",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "TB",
+              "text": "TB",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "TB",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "PWID",
+              "text": "PWID",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "PWID",
+                "openmrs_entity_parent": ""
+              }
+            }
+          ],
+          "required_status": "yes:Please specify",
+          "dependent_calculations": [
+            "referral_date",
+            "referral_time",
+            "referral_type",
+            "referral_status"
+          ]
+        },
+        {
+          "name": "chw_referral_hf",
+          "type": "spinner",
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chw_referral_hf",
+            "openmrs_entity_parent": ""
+          },
+          "properties": {
+            "text": "CHW Location"
+          },
+          "options": [],
+          "required_status": "yes:Please specify"
+        },
+        {
+          "name": "last_appointment_date",
+          "type": "datetime_picker",
+          "properties": {
+            "hint": "Please select the Last appointment date",
+            "type": "date_picker",
+            "display_format": "dd/MM/yyyy",
+            "max_date": "today"
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "last_appointment_date",
+            "openmrs_entity_parent": ""
+          },
+          "required_status": "true:Please specify the Last appointment date"
+        }
+      ]
+    }
+  ]
+}

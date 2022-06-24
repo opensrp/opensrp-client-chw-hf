@@ -4,6 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.smartregister.chw.hf.interactor.LDPostDeliveryManagementMotherActivityInteractor;
 import org.smartregister.chw.hf.utils.Constants.Events;
 import org.smartregister.chw.ld.LDLibrary;
 import org.smartregister.chw.ld.dao.LDDao;
@@ -123,6 +124,21 @@ public class LDVisitUtils extends VisitUtils {
                 if (hasPlacentaAndMembraneExpelled && isUterotonicDone && isMassageOfUterusAfterDeliveryDone) {
                     ldVisits.add(visit);
                 }
+            } else if (visit.getVisitType().equalsIgnoreCase(LDPostDeliveryManagementMotherActivityInteractor.EVENT_TYPE)) {
+                JSONObject visitJson = new JSONObject(visit.getJson());
+                JSONArray obs = visitJson.getJSONArray("obs");
+                String motherStatusCompletionStatus = getFieldValue(obs, "mother_status_module_status");
+                String motherObservationModuleStatus = getFieldValue(obs, "mother_observation_module_status");
+                String maternalComplicationsModuleStatus = getFieldValue(obs, "maternal_complications_module_status");
+
+                if (motherObservationModuleStatus != null && motherStatusCompletionStatus != null && maternalComplicationsModuleStatus != null) {
+                    if (motherStatusCompletionStatus.equalsIgnoreCase("Fully Completed") &&
+                            motherObservationModuleStatus.equalsIgnoreCase("Fully Completed") &&
+                            maternalComplicationsModuleStatus.equalsIgnoreCase("Fully Completed")) {
+                        ldVisits.add(visit);
+                    }
+                }
+
             } else {
                 ldVisits.add(visit);
             }

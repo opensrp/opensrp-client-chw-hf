@@ -57,8 +57,8 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "maternal_complications_during_labour",
         "type": "check_box",
-        "label": "Maternal complications during labour",
         "combine_checkbox_option_values": "true",
+        "label": "Maternal complications",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "exclusive": [
@@ -94,13 +94,6 @@
             "openmrs_entity_id": "chk_obstructed_labour"
           },
           {
-            "key": "chk_3_degree_tear",
-            "text": "3-degree tear",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_3_degree_tear"
-          },
-          {
             "key": "chk_retained_placenta",
             "text": "Retained placenta",
             "value": false,
@@ -108,60 +101,32 @@
             "openmrs_entity_id": "chk_retained_placenta"
           },
           {
-            "key": "chk_chest_pain",
-            "text": "Chest pain",
+            "key": "chk_3_degree_tear",
+            "text": "Third degree tear",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_chest_pain"
+            "openmrs_entity_id": "chk_3_degree_tear"
           },
           {
-            "key": "chk_fatigue",
-            "text": "Fatigue",
+            "key": "chk_ruptured_uterus",
+            "text": "Ruptured uterus",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_fatigue"
+            "openmrs_entity_id": "chk_ruptured_uterus"
           },
           {
-            "key": "chk_disseminated_intravascular_coagulopathy",
-            "text": "Disseminated intravascular coagulopathy (DIC)",
+            "key": "chk_sepsis",
+            "text": "Sepsis",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_disseminated_intravascular_coagulopathy"
+            "openmrs_entity_id": "chk_sepsis"
           },
           {
-            "key": "chk_prom",
-            "text": "PROM",
+            "key": "chk_other",
+            "text": "Other",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_prom"
-          },
-          {
-            "key": "chk_malaria",
-            "text": "Malaria",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_malaria"
-          },
-          {
-            "key": "chk_anaemia",
-            "text": "Anaemia",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_anaemia"
-          },
-          {
-            "key": "chk_fgm",
-            "text": "FGM",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_fgm"
-          },
-          {
-            "key": "chk_aph",
-            "text": "APH",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_aph"
+            "openmrs_entity_id": "chk_other"
           },
           {
             "key": "chk_none",
@@ -170,11 +135,32 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_none"
           }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Please pick at least one"
+        ]
+      },
+      {
+        "key": "maternal_complications_other",
+        "type": "edit_text",
+        "hint": "Specify other complications",
+        "openmrs_entity_id": "maternal_complications_other",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "step1:maternal_complications_during_labour": {
+            "ex-checkbox": [
+              {
+                "or": ["chk_other"]
+              }
+            ]
+          }
         }
+      },
+      {
+        "key": "maternal_complications_module_status",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "maternal_complications_module_status",
+        "type": "hidden",
+        "value": "PENDING"
       }
     ]
   }

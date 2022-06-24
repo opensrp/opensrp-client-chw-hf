@@ -52,6 +52,14 @@ public class HfWebAppInterface {
             ReportUtils.setPrintJobName("cbhs_report_ya_mwezi-" + ReportUtils.getReportPeriod() + ".pdf");
             return ReportUtils.CBHSReports.computeCbhsReport(ReportUtils.getReportDate());
         }
+        if(reportType.equalsIgnoreCase(Constants.ReportConstants.ReportTypes.LTFU_SUMMARY)){
+            ReportUtils.setPrintJobName("ltfu_summary_ya_mwezi-" + ReportUtils.getReportPeriod() + ".pdf");
+            return ReportUtils.LTFUReports.computeLTFUReport(ReportUtils.getReportDate());
+        }
+        if(reportType.equalsIgnoreCase(Constants.ReportConstants.ReportTypes.LD_REPORT)){
+            ReportUtils.setPrintJobName("wodi_ya_wazazi_report_ya_mwezi-" + ReportUtils.getReportPeriod() + ".pdf");
+            return ReportUtils.LDReports.computeLdReport(ReportUtils.getReportDate());
+        }
 
         return "";
     }

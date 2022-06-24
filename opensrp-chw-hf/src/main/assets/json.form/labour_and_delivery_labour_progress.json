@@ -71,6 +71,7 @@
         "openmrs_entity_id": "cervix_dilation",
         "type": "numbers_selector",
         "start_number": "1",
+        "number_of_selectors": "10",
         "max_value": "10",
         "text_size": "18px",
         "text_color": "#000000",
@@ -168,6 +169,22 @@
             "openmrs_entity_id": "0"
           }
         ]
+      },
+      {
+        "key": "head_descent_alert",
+        "type": "toaster_notes",
+        "text": "ALERT:\n\nManage according to guideline",
+        "openmrs_entity_id": "notify_alert",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_labour_progress_relevance.yml"
+            }
+          }
+        }
       },
       {
         "key": "contraction_every_half_hour_label",

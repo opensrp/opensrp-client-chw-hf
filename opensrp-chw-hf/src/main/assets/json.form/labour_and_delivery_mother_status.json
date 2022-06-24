@@ -87,10 +87,6 @@
         "openmrs_entity_id": "cause_of_death",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "v_required": {
-          "value": true,
-          "err": "Please specify the cause of death"
-        },
         "relevance": {
           "step1:status": {
             "type": "string",
@@ -105,10 +101,6 @@
         "openmrs_entity_id": "time_of_death",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "v_required": {
-          "value": true,
-          "err": "Please specify the time of death"
-        },
         "relevance": {
           "step1:status": {
             "type": "string",
@@ -141,10 +133,6 @@
           "Birth before Arrival (BBA)": "Birth before Arrival (BBA)",
           "At home": "At home",
           "Traditional birth attendant": "Traditional birth attendant"
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Please select one option"
         }
       },
       {
@@ -167,10 +155,6 @@
           "doctor": "A Doctor",
           "nurse": "A Nurse"
         },
-        "v_required": {
-          "value": "true",
-          "err": "Please select one option"
-        },
         "relevance": {
           "step1:delivery_place": {
             "type": "string",
@@ -185,15 +169,31 @@
         "openmrs_entity_id": "name_of_delivery_person",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "v_required": {
-          "value": true,
-          "err": "Please specify the name of the delivery doctor/nurse"
-        },
         "relevance": {
           "step1:delivery_place": {
             "type": "string",
             "ex": "equalTo(., \"At a health facility\")"
           }
+        }
+      },
+      {
+        "key": "number_of_children_born",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "number_of_children_born",
+        "type": "edit_text",
+        "hint": "Number of Children Born",
+        "v_numeric_integer": {
+          "value": "true",
+          "err": "Please enter a valid number"
+        },
+        "v_max": {
+          "value": "5",
+          "err": "The number of children born should be equal or less than 5"
+        },
+        "v_min": {
+          "value": "1",
+          "err": "The number of children born should greater than 0"
         }
       },
       {
@@ -205,40 +205,31 @@
         "hint": "Delivery Date",
         "expanded": false,
         "min_date": "today-2y",
-        "max_date": "today",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the delivery date"
-        }
+        "max_date": "today"
       },
       {
-        "key": "labour_information",
+        "key": "delivery_time",
+        "type": "time_picker",
+        "hint": "Delivery Time",
+        "openmrs_entity_id": "delivery_time",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": ""
+      },
+      {
+        "key": "mother_status_module_status",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "labour_information",
+        "openmrs_entity_id": "mother_status_module_status",
+        "type": "hidden",
+        "value": "PENDING"
+      },
+      {
+        "key": "labour_duration",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "labour_duration",
         "label": "Labour information/conditions",
-        "text_color": "#000000",
-        "type": "native_radio",
-        "options": [
-          {
-            "key": "within_12_hours",
-            "text": "Within 12 hours",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "within_12_hours"
-          },
-          {
-            "key": "after_12_hours",
-            "text": "After 12 hours",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "after_12_hours"
-          }
-        ],
-        "v_required": {
-          "value": true,
-          "err": "Please select an option"
-        }
+        "type": "hidden"
       }
     ]
   }

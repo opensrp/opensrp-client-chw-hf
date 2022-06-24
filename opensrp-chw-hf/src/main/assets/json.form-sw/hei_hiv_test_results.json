@@ -77,7 +77,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari chagua mojawapo"
+          "err": "Tafadhali chagua mojawapo"
         }
       },
       {
@@ -154,7 +154,7 @@
         "max_date": "today",
         "v_required": {
           "value": "true",
-          "err": "Tafadhari chagua Tarehe ya kupokea majibu"
+          "err": "Tafadhali chagua Tarehe ya kupokea majibu"
         }
       },
       {
@@ -205,7 +205,7 @@
         "max_date": "today",
         "v_required": {
           "value": "true",
-          "err": "Tafadhari chagua Tarehe ya majibu kupewa mzazi"
+          "err": "Tafadhali chagua Tarehe ya majibu kupewa mzazi"
         },
         "relevance": {
           "step1:results_provided_to_parents": {
@@ -256,7 +256,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari chagua mojawapo"
+          "err": "Tafadhali chagua mojawapo"
         },
         "relevance": {
           "step1:confirmation_hiv_test_result": {

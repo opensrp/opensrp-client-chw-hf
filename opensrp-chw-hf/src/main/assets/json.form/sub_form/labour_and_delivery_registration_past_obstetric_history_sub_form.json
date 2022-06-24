@@ -32,11 +32,25 @@
       ],
       "options": [
         {
-          "key": "chk_pph",
-          "text": "PPH",
+          "key": "chk_aph",
+          "text": "APH",
           "value": false,
           "openmrs_entity": "concept",
-          "openmrs_entity_id": "chk_pph"
+          "openmrs_entity_id": "chk_aph"
+        },
+        {
+          "key": "chk_prom",
+          "text": "Pre-mature Rupture of Membrane (PROM)",
+          "value": false,
+          "openmrs_entity": "concept",
+          "openmrs_entity_id": "chk_prom"
+        },
+        {
+          "key": "chk_high_bp",
+          "text": "High BP",
+          "value": false,
+          "openmrs_entity": "concept",
+          "openmrs_entity_id": "chk_high_bp"
         },
         {
           "key": "chk_pre_eclampsia",
@@ -53,53 +67,11 @@
           "openmrs_entity_id": "chk_eclampsia"
         },
         {
-          "key": "chk_obstructed_labour",
-          "text": "Obstructed labour",
+          "key": "chk_anaemia",
+          "text": "Anaemia",
           "value": false,
           "openmrs_entity": "concept",
-          "openmrs_entity_id": "chk_obstructed_labour"
-        },
-        {
-          "key": "chk_3_degree_tear",
-          "text": "3-degree tear",
-          "value": false,
-          "openmrs_entity": "concept",
-          "openmrs_entity_id": "chk_3_degree_tear"
-        },
-        {
-          "key": "chk_retained_placenta",
-          "text": "Retained placenta",
-          "value": false,
-          "openmrs_entity": "concept",
-          "openmrs_entity_id": "chk_retained_placenta"
-        },
-        {
-          "key": "chk_chest_pain",
-          "text": "Chest pain",
-          "value": false,
-          "openmrs_entity": "concept",
-          "openmrs_entity_id": "chk_chest_pain"
-        },
-        {
-          "key": "chk_fatigue",
-          "text": "Fatigue",
-          "value": false,
-          "openmrs_entity": "concept",
-          "openmrs_entity_id": "chk_fatigue"
-        },
-        {
-          "key": "chk_disseminated_intravascular_coagulopathy",
-          "text": "Disseminated intravascular coagulopathy (DIC)",
-          "value": false,
-          "openmrs_entity": "concept",
-          "openmrs_entity_id": "chk_disseminated_intravascular_coagulopathy"
-        },
-        {
-          "key": "chk_prom",
-          "text": "PROM",
-          "value": false,
-          "openmrs_entity": "concept",
-          "openmrs_entity_id": "chk_prom"
+          "openmrs_entity_id": "chk_anaemia"
         },
         {
           "key": "chk_malaria",
@@ -109,11 +81,11 @@
           "openmrs_entity_id": "chk_malaria"
         },
         {
-          "key": "chk_anaemia",
-          "text": "Anaemia",
+          "key": "chk_hiv_stage_3_or_4",
+          "text": "HIV + Stage III or IV",
           "value": false,
           "openmrs_entity": "concept",
-          "openmrs_entity_id": "chk_anaemia"
+          "openmrs_entity_id": "chk_hiv_stage_3_or_4"
         },
         {
           "key": "chk_fgm",
@@ -123,11 +95,25 @@
           "openmrs_entity_id": "chk_fgm"
         },
         {
-          "key": "chk_aph",
-          "text": "APH",
+          "key": "chk_abortion",
+          "text": "Abortion",
           "value": false,
           "openmrs_entity": "concept",
-          "openmrs_entity_id": "chk_aph"
+          "openmrs_entity_id": "chk_abortion"
+        },
+        {
+          "key": "chk_iufd",
+          "text": "IUFD",
+          "value": false,
+          "openmrs_entity": "concept",
+          "openmrs_entity_id": "chk_iufd"
+        },
+        {
+          "key": "chk_others",
+          "text": "Other (Specify)",
+          "value": false,
+          "openmrs_entity": "concept",
+          "openmrs_entity_id": "chk_others"
         },
         {
           "key": "chk_none",
@@ -140,6 +126,29 @@
       "v_required": {
         "value": "true",
         "err": "Please pick at least one"
+      }
+    },
+    {
+      "key": "other_maternal_complications_during_labour",
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_entity_id": "other_maternal_complications_during_labour",
+      "type": "edit_text",
+      "hint": "Other complications",
+      "v_required": {
+        "value": true,
+        "err": "Please specify other complications"
+      },
+      "relevance": {
+        "step1:maternal_complications_during_labour": {
+          "ex-checkbox": [
+            {
+              "or": [
+                "chk_others"
+              ]
+            }
+          ]
+        }
       }
     },
     {
@@ -166,16 +175,34 @@
           "openmrs_entity_id": "cesarean"
         },
         {
-          "key": "instrumental_delivery",
-          "text": "Instrumental delivery",
+          "key": "vacuum_extraction",
+          "text": "Vacuum Extraction",
           "openmrs_entity_parent": "",
           "openmrs_entity": "concept",
-          "openmrs_entity_id": "instrumental_delivery"
+          "openmrs_entity_id": "vacuum_extraction"
+        },
+        {
+          "key": "breech_delivery",
+          "text": "Breech Delivery",
+          "openmrs_entity_parent": "",
+          "openmrs_entity": "concept",
+          "openmrs_entity_id": "breech_delivery"
         }
       ],
       "v_required": {
         "value": true,
         "err": "Please select an option"
+      },
+      "relevance": {
+        "step1:maternal_complications_during_labour": {
+          "ex-checkbox": [
+            {
+              "not": [
+                "chk_abortion"
+              ]
+            }
+          ]
+        }
       }
     },
     {
@@ -203,6 +230,35 @@
       "v_required": {
         "value": "true",
         "err": "Please select if the child was born alive"
+      },
+      "relevance": {
+        "step1:maternal_complications_during_labour": {
+          "ex-checkbox": [
+            {
+              "not": [
+                "chk_abortion"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "key": "reason_for_child_not_born_alive",
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_entity_id": "reason_for_child_not_born_alive",
+      "type": "edit_text",
+      "hint": "Reason why the child/children were not born alive",
+      "v_required": {
+        "value": true,
+        "err": "Please specify the reason"
+      },
+      "relevance": {
+        "step1:alive": {
+          "type": "string",
+          "ex": "equalTo(., \"no\")"
+        }
       }
     }
   ]

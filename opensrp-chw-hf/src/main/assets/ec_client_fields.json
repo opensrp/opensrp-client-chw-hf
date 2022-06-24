@@ -1720,11 +1720,11 @@
           }
         },
         {
-          "column_name": "investigate_for_tb",
+          "column_name": "tb_status",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "investigate_for_tb"
+            "concept": "tb_status"
           }
         },
         {
@@ -1978,11 +1978,27 @@
           }
         },
         {
+          "column_name": "syphilis_treatment",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "syphilis_treatment"
+          }
+        },
+        {
           "column_name": "partner_syphilis",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
             "concept": "partner_syphilis"
+          }
+        },
+        {
+          "column_name": "partner_syphilis_treatment",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "partner_syphilis_treatment"
           }
         },
         {
@@ -2007,6 +2023,96 @@
           "json_mapping": {
             "field": "obs.fieldCode",
             "concept": "visit_number"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ec_anc_birth_emergency_plan",
+      "columns": [
+        {
+          "column_name": "entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "formSubmissionId"
+          }
+        },
+        {
+          "column_name": "visit_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "version"
+          }
+        },
+        {
+          "column_name": "visit_number",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "visit_number"
+          }
+        },
+        {
+          "column_name": "delivery_place",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "delivery_place"
+          }
+        },
+        {
+          "column_name": "name_of_hf",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "name_of_hf"
+          }
+        },
+        {
+          "column_name": "transport",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "transport"
+          }
+        },
+        {
+          "column_name": "birth_companion",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "birth_companion"
+          }
+        },
+        {
+          "column_name": "emergency_funds",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "emergency_funds"
+          }
+        },
+        {
+          "column_name": "household_support",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "household_support"
+          }
+        },
+        {
+          "column_name": "blood_donor",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "blood_donor"
           }
         }
       ]
@@ -3297,6 +3403,81 @@
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ec_ltfu_feedback",
+      "columns": [
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "formSubmissionId"
+          }
+        },
+        {
+          "column_name": "entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "referral_task_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "referral_task"
+          }
+        },
+        {
+          "column_name": "followup_status",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "followup_status"
+          }
+        },
+        {
+          "column_name": "reasons_for_missed_appointment",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "reasons_for_missed_appointment"
+          }
+        },
+        {
+          "column_name": "referral_appointment_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "referral_appointment_date"
+          }
+        },
+        {
+          "column_name": "date_of_death",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "date_of_death"
+          }
+        },
+        {
+          "column_name": "reason_client_not_found",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "reason_client_not_found"
+          }
+        },
+        {
+          "column_name": "feedback_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "referral_date"
           }
         }
       ]
@@ -5011,6 +5192,22 @@
           }
         },
         {
+          "column_name": "admission_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "admission_date"
+          }
+        },
+        {
+          "column_name": "admission_time",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "admission_time"
+          }
+        },
+        {
           "column_name": "labour_onset_date",
           "type": "Event",
           "json_mapping": {
@@ -5082,7 +5279,6 @@
             "concept": "delivery_mode_reason"
           }
         },
-
         {
           "column_name": "last_interacted_with",
           "type": "Event",
@@ -5386,11 +5582,51 @@
           }
         },
         {
-          "column_name": "urine",
+          "column_name": "urine_protein",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "formSubmissionField": "urine"
+            "formSubmissionField": "urine_protein"
+          }
+        },
+        {
+          "column_name": "urine_acetone",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "urine_acetone"
+          }
+        },
+        {
+          "column_name": "urine_volume",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "urine_volume"
+          }
+        },
+        {
+          "column_name": "moulding_options",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "moulding_options"
+          }
+        },
+        {
+          "column_name": "caput",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "caput"
+          }
+        },
+        {
+          "column_name": "amniotic_fluid",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "amniotic_fluid"
           }
         },
         {

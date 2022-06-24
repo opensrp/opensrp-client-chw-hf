@@ -1,14 +1,15 @@
 package org.smartregister.chw.hf.utils;
 
-import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.assetManager;
-import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.locale;
-
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.Utils;
+
+import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.assetManager;
+import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.locale;
 
 public class Constants extends CoreConstants {
     public static String pregnancyOutcome = "preg_outcome";
     public static String LOST_TO_FOLLOWUP = "lost_to_followup";
+    public static String REFERRAL_TASK_FOCUS = "referral_task_focus";
 
     public enum FamilyRegisterOptionsUtil {Miscarriage, Other}
 
@@ -25,6 +26,10 @@ public class Constants extends CoreConstants {
         int NEW_PARTNER_REQUEST_CODE = 12345;
         String INTENT_BASE_ENTITY_ID = "BASE_ENTITY_ID";
         String PARTNER_BASE_ENTITY_ID = "partner_base_entity_id";
+    }
+
+    public static final class FOCUS {
+        public static final String LOST_TO_FOLLOWUP_FOCUS = "LTFU";
     }
 
     public static final class Events {
@@ -80,6 +85,7 @@ public class Constants extends CoreConstants {
         public static final String LD_GENERAL_VISIT = "L&D Examination";
         public static final String LD_PARTOGRAPH_VISIT = "L&D Partograph";
         public static final String LD_MANAGEMENT_OF_3rd_STAGE_OF_LABOUR_VISIT = "L&D Management of 3rd Stage Of Labour";
+        public static final String LD_IMMEDIATE_POSTPARTUM_CARE = "L&D Immediate Postpartum Care";
     }
 
     public static final class ActionList {
@@ -87,8 +93,6 @@ public class Constants extends CoreConstants {
     }
 
     public static final class JsonForm {
-        //TODO: cleanup
-        private static final String NEXT_FACILITY_VISIT_FORM = "next_facility_visit_date_form";
         public static final String HIV_REGISTRATION = "hiv_registration";
         public static final String HVL_TEST_RESULTS = "pmtct_hvl_test_results";
         public static final String CD4_TEST_RESULTS = "pmtct_cd4_test_results";
@@ -99,6 +103,8 @@ public class Constants extends CoreConstants {
         public static final String MARK_CLIENT_AS_DECEASED = "mark_client_as_deceased";
         public static final String MARK_CHILD_AS_DECEASED = "mark_child_as_deceased";
         public static final String HEI_COMMUNITY_FOLLOWUP_REFERRAL = "hei_community_followup_referral";
+        //TODO: cleanup
+        private static final String NEXT_FACILITY_VISIT_FORM = "next_facility_visit_date_form";
         private static final String ANC_PREGANCY_CONFIRMATION = "anc_pregnancy_confirmation";
         private static final String PMTCT_REGISTRATION = "pmtct_registration";
         private static final String PMTCT_REGISTRATION_FOR_CLIENTS_KNOWN_ON_ART_FORM = "pmtct_registration_for_clients_known_on_art";
@@ -130,6 +136,9 @@ public class Constants extends CoreConstants {
         private static final String PMTCT_FOLLOWUP_STATUS = "pmtct_followup_status";
         private static final String ANC_TRANSFER_IN_REGISTRATION = "anc_member_transfer_in_registration";
         private static final String LD_REGISTRATION = "labour_and_delivery_registration";
+        private static final String LD_CHILD_REGISTRATION = "ld_child_registration";
+        private static final String LD_HEI_FIRST_VISIT = "ld_hei_first_visit";
+        private static final String LTFU_REFERRAL_FORM = "referrals/ltfu_referral_form";
 
         public static String getNextFacilityVisitForm() {
             return NEXT_FACILITY_VISIT_FORM;
@@ -137,6 +146,10 @@ public class Constants extends CoreConstants {
 
         public static String getHeiCommunityFollowupReferral() {
             return HEI_COMMUNITY_FOLLOWUP_REFERRAL;
+        }
+
+        public static String getLtfuReferralForm() {
+            return LTFU_REFERRAL_FORM;
         }
 
         public static String getHeiNumberRegistration() {
@@ -307,6 +320,14 @@ public class Constants extends CoreConstants {
             return LD_REGISTRATION;
         }
 
+        public static String getLdChildRegistration() {
+            return LD_CHILD_REGISTRATION;
+        }
+
+        public static String getLdHeiFirstVisit() {
+            return LD_HEI_FIRST_VISIT;
+        }
+
         public static class EacVisits {
             public static final String PMTCT_EAC_VISIT = "pmtct_eac_visits";
 
@@ -454,23 +475,23 @@ public class Constants extends CoreConstants {
             public static final String PARTOGRAPH_TREATMENT_DURING_LABOUR = "labour_and_delivery_treatment_during_labour";
             public static final String PARTOGRAPH_TIME = "labour_and_delivery_partograph_time";
 
-            public static String getFetalWellBingForm(){
+            public static String getFetalWellBingForm() {
                 return PARTOGRAPH_FETAL_WELLBEING;
             }
 
-            public static String getMotherWellBeingForm(){
+            public static String getMotherWellBeingForm() {
                 return PARTOGRAPH_MOTHER_WELLBEING;
             }
 
-            public static String getProgressOfLabourForm(){
+            public static String getProgressOfLabourForm() {
                 return PARTOGRAPH_PROGRESS_OF_LABOUR;
             }
 
-            public static String getTreatmentDuringLabourForm(){
+            public static String getTreatmentDuringLabourForm() {
                 return PARTOGRAPH_TREATMENT_DURING_LABOUR;
             }
 
-            public static String getPartographTimeForm(){
+            public static String getPartographTimeForm() {
                 return PARTOGRAPH_TIME;
             }
 
@@ -478,7 +499,7 @@ public class Constants extends CoreConstants {
 
         public static class LDVisit {
 
-            public static final String  LD_GENERAL_EXAMINATION = "labour_and_delivery_general_examination";
+            public static final String LD_GENERAL_EXAMINATION = "labour_and_delivery_general_examination";
             public static final String LD_VAGINAL_EXAMINATION = "labour_and_delivery_vaginal_examination";
             public static final String LD_HIV_TEST = "labour_and_delivery_hiv_test";
 
@@ -609,6 +630,20 @@ public class Constants extends CoreConstants {
             String ANC_REPORT = "anc_report";
             String PNC_REPORT = "pnc_report";
             String CBHS_REPORT = "cbhs_report";
+            String LTFU_SUMMARY = "ltfu_report";
+            String LD_REPORT = "ld_report";
+        }
+
+        public interface ReportPaths {
+            String ANC_REPORT_PATH = "anc-taarifa-ya-mwezi";
+            String PMTCT_3_MONTHS_REPORT_PATH = "pmtct-reports/taarifa-ya-miezi-3";
+            String PMTCT_12_MONTHS_REPORT_PATH = "pmtct-reports/taarifa-ya-miezi-12";
+            String PMTCT_24_MONTHS_REPORT_PATH = "pmtct-reports/taarifa-ya-miezi-24";
+            String PMTCT_EID_MONTHLY_REPORT_PATH = "pmtct-reports/taarifa-cross-sectional";
+            String PNC_REPORT_PATH = "pnc-taarifa-ya-mwezi";
+            String CBHS_REPORT_PATH = "cbhs-taarifa-ya-mwezi";
+            String LTFU_REPORT_PATH = "ltfu-summary-report";
+            String LD_REPORT_PATH = "labour-delivery-taarifa-ya-mwezi";
         }
     }
 

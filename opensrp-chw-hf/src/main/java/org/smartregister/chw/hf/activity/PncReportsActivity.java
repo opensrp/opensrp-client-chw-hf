@@ -11,6 +11,7 @@ import com.google.android.material.appbar.AppBarLayout;
 import com.whiteelephant.monthpicker.MonthPickerDialog;
 
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hf.utils.ReportUtils;
 import org.smartregister.view.activity.SecuredActivity;
 
@@ -88,7 +89,7 @@ public class PncReportsActivity extends SecuredActivity implements View.OnClickL
     public void onClick(View v) {
         int id = v.getId();
         if (id == R.id.pnc_monthly_report) {
-            PncReportsViewActivity.startMe(this, "pnc-taarifa-ya-mwezi", reportPeriod);
+            PncReportsViewActivity.startMe(this, Constants.ReportConstants.ReportPaths.PNC_REPORT_PATH, reportPeriod);
         }
     }
 

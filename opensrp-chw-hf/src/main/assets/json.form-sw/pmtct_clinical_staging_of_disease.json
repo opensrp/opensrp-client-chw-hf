@@ -76,7 +76,7 @@
         },
         "v_required": {
           "value": true,
-          "err": "Tafadhari jibu swali hili"
+          "err": "Tafadhali jibu swali hili"
         }
       },
       {
@@ -109,13 +109,13 @@
         },
         "v_required": {
           "value": true,
-          "err": "Tafadhari chagua dalili"
+          "err": "Tafadhali chagua dalili"
         }
       },
       {
         "key": "stage_2_symptoms",
         "type": "check_box",
-        "label": "Tafadhari chagua dalili zinaendana na Mteja",
+        "label": "Tafadhali chagua dalili zinaendana na Mteja",
         "combine_checkbox_option_values": "true",
         "openmrs_entity_id": "stage_2_symptoms",
         "openmrs_entity": "concept",
@@ -196,7 +196,7 @@
         },
         "v_required": {
           "value": true,
-          "err": "Tafadhari chagua dalili"
+          "err": "Tafadhali chagua dalili"
         }
       },
       {
@@ -277,13 +277,13 @@
         },
         "v_required": {
           "value": true,
-          "err": "Tafadhari chagua dalili"
+          "err": "Tafadhali chagua dalili"
         }
       },
       {
         "key": "stage_4_symptoms",
         "type": "check_box",
-        "label": "Tafadhari chagua dalili zinazoendana na Mteja",
+        "label": "Tafadhali chagua dalili zinazoendana na Mteja",
         "combine_checkbox_option_values": "true",
         "openmrs_entity_id": "stage_4_symptoms",
         "openmrs_entity": "concept",
@@ -376,7 +376,7 @@
         },
         "v_required": {
           "value": true,
-          "err": "Tafadhari chagua dalili"
+          "err": "Tafadhali chagua dalili"
         }
       }
     ]

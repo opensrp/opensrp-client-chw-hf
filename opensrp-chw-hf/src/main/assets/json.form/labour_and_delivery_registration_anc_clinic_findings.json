@@ -469,7 +469,7 @@
       {
         "key": "prompt_for_rh_negative",
         "type": "toaster_notes",
-        "text": "Provide management according to standard guideline",
+        "text": "Provide management according to SOP and Standard Guideline",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",

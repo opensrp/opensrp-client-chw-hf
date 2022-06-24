@@ -88,7 +88,46 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari chagua kipengele cha hali ya Mama"
+          "err": "Tafadhali chagua kipengele cha hali ya Mama"
+        }
+      },
+      {
+        "key": "date_of_death",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "date_of_death",
+        "type": "date_picker",
+        "hint": "Tarehe mama kufariki ",
+        "expanded": false,
+        "max_date": "today",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jaza tarehe ambayo mama kafariki"
+        },
+        "relevance": {
+          "step1:mothers_condition": {
+            "type": "string",
+            "ex": "equalTo(., \"deceased\")"
+          }
+        }
+      },
+      {
+        "key": "time_of_death",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "time_of_death",
+        "type": "time_picker",
+        "hint": "Muda mama kufariki ",
+        "expanded": false,
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jaza saa ambayo mama kafariki"
+        },
+        "relevance": {
+          "step1:mothers_condition": {
+            "type": "string",
+            "ex": "equalTo(., \"deceased\")"
+          }
         }
       },
       {
@@ -144,7 +183,43 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari chagua matokeo ya ujauzito"
+          "err": "Tafadhali chagua matokeo ya ujauzito"
+        }
+      },
+      {
+        "key": "reason_child_died",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_child_died",
+        "type": "spinner",
+        "hint": "Sababu Zilizopelekea Mtoto Kufariki",
+        "values": [
+          "Birth Asphyxia",
+          "Neonatal Respiratory Distress",
+          "Prematurity",
+          "Early Neonatal Sepsis"
+        ],
+        "keys": [
+          "birth_asphyxia",
+          "neonatal_respiratory_distress",
+          "prematurity",
+          "early_neonatal_sepsis"
+        ],
+        "openmrs_choice_ids": {
+          "birth_asphyxia": "birth_asphyxia",
+          "neonatal_respiratory_distress":  "neonatal_respiratory_distress",
+          "prematurity":  "prematurity",
+          "early_neonatal_sepsis": "early_neonatal_sepsis"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select a reason"
+        },
+        "relevance": {
+          "step1:preg_outcome": {
+            "type": "string",
+            "ex": "equalTo(., \"born_alive_died\")"
+          }
         }
       },
       {
@@ -158,7 +233,7 @@
         "max_date": "today",
         "v_required": {
           "value": "true",
-          "err": "Tafadhari jaza tarehe ambayo Mimba ya Mama iliharibika/ilitoka"
+          "err": "Tafadhali jaza tarehe ambayo Mimba ya Mama iliharibika/ilitoka"
         },
         "relevance": {
           "rules-engine": {
@@ -197,7 +272,7 @@
         ],
         "v_required": {
           "value": true,
-          "err": "Tafadhari jibu swali hili"
+          "err": "Tafadhali jibu swali hili"
         },
         "relevance": {
           "rules-engine": {
@@ -213,7 +288,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "reason_for_not_conducting_hiv_test",
         "type": "spinner",
-        "hint": "Reason as to why the HIV test was not conducted",
+        "hint": "Sababu za kutofanyika kwa kipimo cha VVU",
         "values": [
           "Vifaa vya kupima vimeisha",
           "Mteja alikuwa katika hali ya dharura",
@@ -237,7 +312,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Tafadhari chagua sababu"
+          "err": "Tafadhali chagua sababu"
         },
         "relevance": {
           "step1:hiv_status_question": {
@@ -288,7 +363,7 @@
         ],
         "v_required": {
           "value": true,
-          "err": "Tafadhari jibu swali hili"
+          "err": "Tafadhali jibu swali hili"
         },
         "relevance": {
           "rules-engine": {
@@ -325,7 +400,7 @@
         "max_date": "today",
         "v_required": {
           "value": "true",
-          "err": "Tafadhari ingiza tarehe ya kujifungua ya Mama"
+          "err": "Tafadhali ingiza tarehe ya kujifungua ya Mama"
         },
         "relevance": {
           "rules-engine": {
@@ -576,7 +651,7 @@
             "selected_text_color": "#ffffff",
             "v_required": {
               "value": true,
-              "err": "Please enter the agpar score"
+              "err": "Tafadhali weka agpar score"
             }
           },
           {
@@ -721,11 +796,13 @@
             "hint": "Jinsi",
             "values": [
               "Me",
-              "Ke"
+              "Ke",
+              "Jinsia Tata"
             ],
             "keys": [
               "Male",
-              "Female"
+              "Female",
+              "Ambiguous"
             ],
             "v_required": {
               "value": "true",
@@ -877,7 +954,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "early_bf_1hr",
             "type": "spinner",
-            "hint": "Kuanza kunyonya/kunyonyeshwa mapema (Saa 1)?",
+            "hint": "Amenyonyeshwa ndani ya saa 1?",
             "values": [
               "Ndio",
               "Hapana"
@@ -897,7 +974,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "reason_for_not_breast_feeding_within_one_hour",
             "type": "spinner",
-            "hint": "Sababu za kwa nini mtoto hakunyonyeshwa mapema (Saa 1)",
+            "hint": "Sababu za kwanini mtoto hakunyonyeshwa ndani ya saa 1",
             "values": [
               "Mama alifariki",
               "Mama hakuwa anatoa maziwa",
@@ -971,7 +1048,7 @@
             ],
             "v_required": {
               "value": "true",
-              "err": "Tafadhari chagua mojawapo"
+              "err": "Tafadhali chagua moja"
             }
           },
           {
@@ -1031,7 +1108,7 @@
             "options": [
               {
                 "key": "yes",
-                "text": "Ndio",
+                "text": "Ndiyo",
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "yes"
               },
@@ -1044,7 +1121,7 @@
             ],
             "v_required": {
               "value": "true",
-              "err": "Tafadhari chagua mojwapo"
+              "err": "Tafadhali chagua moja"
             }
           },
           {
@@ -1172,11 +1249,13 @@
             "hint": "Jinsi",
             "values": [
               "Me",
-              "Ke"
+              "Ke",
+              "Jinsia Tata"
             ],
             "keys": [
               "Male",
-              "Female"
+              "Female",
+              "Ambiguous"
             ],
             "v_required": {
               "value": "true",
@@ -1328,7 +1407,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "early_bf_1hr",
             "type": "spinner",
-            "hint": "Kuanza kunyonya/kunyonyeshwa mapema (Saa 1)?",
+            "hint": "Amenyonyeshwa ndani ya saa 1?",
             "values": [
               "Ndio",
               "Hapana"
@@ -1348,7 +1427,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "reason_for_not_breast_feeding_within_one_hour",
             "type": "spinner",
-            "hint": "Sababu za kwa nini mtoto hakunyonyeshwa mapema (Saa 1)",
+            "hint": "Sababu za kwanini mtoto hakunyonyeshwa ndani ya saa 1",
             "values": [
               "Mama alifariki",
               "Mama hakuwa anatoa maziwa",
@@ -1409,7 +1488,7 @@
             "options": [
               {
                 "key": "yes",
-                "text": "Ndio",
+                "text": "Ndiyo",
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "yes"
               },
@@ -1422,7 +1501,7 @@
             ],
             "v_required": {
               "value": "true",
-              "err": "Please select one"
+              "err": "Tafadhali chagua moja"
             }
           },
           {
@@ -1482,20 +1561,20 @@
             "options": [
               {
                 "key": "yes",
-                "text": "Yes",
+                "text": "Ndiyo",
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "yes"
               },
               {
                 "key": "no",
-                "text": "No",
+                "text": "Hapana",
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "no"
               }
             ],
             "v_required": {
               "value": "true",
-              "err": "Please select one"
+              "err": "Tafadhali chagua moja"
             }
           },
           {

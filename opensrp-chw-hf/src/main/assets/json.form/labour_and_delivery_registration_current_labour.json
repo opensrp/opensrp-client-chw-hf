@@ -93,21 +93,6 @@
         }
       },
       {
-        "key": "prompt_for_ruptured_membrane",
-        "type": "toaster_notes",
-        "text": "Provide management according to standard guideline",
-        "openmrs_entity_id": "",
-        "openmrs_entity": "",
-        "openmrs_entity_parent": "",
-        "toaster_type": "problem",
-        "relevance": {
-          "step1:membrane": {
-            "type": "string",
-            "ex": "equalTo(., \"ruptured\")"
-          }
-        }
-      },
-      {
         "key": "membrane_ruptured_date",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -143,6 +128,66 @@
           "step1:membrane": {
             "type": "string",
             "ex": "equalTo(., \"ruptured\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_ruptured_membrane",
+        "type": "toaster_notes",
+        "text": "Provide management according to SOP and Standard Guideline",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_registration_current_labour_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_prom",
+        "type": "toaster_notes",
+        "text": "The client has Pre-mature Rupture of Membrane (PROM).\nProvide Management according to SOP and National Guideline",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_registration_current_labour_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "labour_onset_timestamp",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "labour_onset_timestamp",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_registration_current_labour_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "membrane_raptured_date_timestamp",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "membrane_raptured_date_timestamp",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_registration_current_labour_calculation.yml"
+            }
           }
         }
       },
@@ -195,7 +240,7 @@
       {
         "key": "prompt_for_fetal_movement",
         "type": "toaster_notes",
-        "text": "Provide management according to standard guideline",
+        "text": "Provide management according to SOP and Standard Guideline",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -204,6 +249,21 @@
           "step1:fetal_movement": {
             "type": "string",
             "ex": "equalTo(., \"absent\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_reduced_fetal_movement",
+        "type": "toaster_notes",
+        "text": "Provide management according to SOP and Standard Guideline",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:movement_status": {
+            "type": "string",
+            "ex": "equalTo(., \"reduced\")"
           }
         }
       }

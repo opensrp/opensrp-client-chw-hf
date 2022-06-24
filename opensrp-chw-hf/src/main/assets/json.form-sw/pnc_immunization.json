@@ -73,7 +73,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari jibu swali hili"
+          "err": "Tafadhali jibu swali hili"
         },
         "relevance": {
           "rules-engine": {
@@ -101,7 +101,7 @@
       {
         "key": "hepatitis_b_vaccination",
         "type": "native_radio",
-        "label": "Je, Mteja huyu amechanjwa homa ya ini?",
+        "label": "Je mteja huyu amechanjwa chanjo ya homa ya ini?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "hepatitis_b_vaccination",
         "openmrs_entity_parent": "",
@@ -121,7 +121,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari jibu swali hili"
+          "err": "Tafadhali jibu swali hili"
         },
         "relevance": {
           "rules-engine": {
@@ -134,7 +134,7 @@
       {
         "key": "prompt_for_hepatitis_b_vaccination",
         "type": "toaster_notes",
-        "text": "Mteja atapaswa kupewa chanjo ya Hepatitis B",
+        "text": "Mteja atapaswa kupewa chanjo ya homa ya ini",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",

@@ -271,7 +271,7 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
 
         OnClickFloatingMenu onClickFloatingMenu = viewId -> {
             switch (viewId) {
-                case R.id.pmtct_fab:
+                case R.id.hiv_fab:
                     ((CorePmtctFloatingMenu) basePmtctFloatingMenu).animateFAB();
                     break;
                 case R.id.call_layout:

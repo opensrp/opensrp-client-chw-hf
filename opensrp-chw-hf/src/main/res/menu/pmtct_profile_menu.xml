@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_registration"
+        android:enabled="true"
+        android:title="@string/registration_info"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_issue_pmtct_followup_referral"
+        android:enabled="true"
+        android:title="@string/mother_champion_referral"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_issue_pmtct_ltfu_referral"
+        android:enabled="true"
+        android:title="@string/lost_to_followup_referral"
+        app:showAsAction="never"
+        android:visible="false"/>
+
+    <item
+        android:id="@+id/action_remove_member"
+        android:enabled="true"
+        android:title="@string/remove_this_person"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_mark_as_deceased"
+        android:enabled="true"
+        android:title="@string/mark_as_deceased"
+        app:showAsAction="never" />
+
+
+</menu>

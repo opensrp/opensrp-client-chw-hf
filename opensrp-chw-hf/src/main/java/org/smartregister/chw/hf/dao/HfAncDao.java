@@ -234,7 +234,7 @@ public class HfAncDao extends AbstractDao {
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "deworming");
         String sql = String.format(
                 "SELECT deworming FROM %s WHERE entity_id = '%s' " +
-                        "AND is_closed = 0 AND deworming is not null",
+                        "AND is_closed = 0 AND deworming is not null AND deworming <> 'medication_not_given'",
                 "ec_anc_followup",
                 baseEntityId
         );
@@ -673,4 +673,18 @@ public class HfAncDao extends AbstractDao {
         return res != null && res.size() > 0;
     }
 
+    public static boolean isBloodGroupTestConducted(String baseEntityId) {
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "blood_group");
+        String sql = String.format(
+                "SELECT blood_group FROM %s WHERE base_entity_id = '%s' " +
+                        "AND is_closed = 0 " +
+                        "AND blood_group IS NOT NULL ",
+                "ec_anc_register",
+                baseEntityId);
+        List<String> res = readData(sql, dataMap);
+        if (res != null && res.size() > 0) {
+            return !res.get(0).equalsIgnoreCase("test_not_conducted");
+        }
+        return false;
+    }
 }

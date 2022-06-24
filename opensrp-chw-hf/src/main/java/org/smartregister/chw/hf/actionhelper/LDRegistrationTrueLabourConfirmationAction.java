@@ -24,6 +24,7 @@ public class LDRegistrationTrueLabourConfirmationAction implements BaseLDVisitAc
     protected MemberObject memberObject;
     private String trueLabour;
     protected String labourConfirmation;
+    protected String clientAdmitted;
     private Context context;
 
     public LDRegistrationTrueLabourConfirmationAction(MemberObject memberObject) {
@@ -46,6 +47,7 @@ public class LDRegistrationTrueLabourConfirmationAction implements BaseLDVisitAc
             JSONObject jsonObject = new JSONObject(jsonPayload);
             trueLabour = CoreJsonFormUtils.getValue(jsonObject, "true_labour");
             labourConfirmation = CoreJsonFormUtils.getValue(jsonObject, "labour_confirmation");
+            clientAdmitted = CoreJsonFormUtils.getValue(jsonObject, "admit_client");
         } catch (JSONException e) {
             Timber.e(e);
         }
@@ -81,10 +83,14 @@ public class LDRegistrationTrueLabourConfirmationAction implements BaseLDVisitAc
 
     @Override
     public String evaluateSubTitle() {
-        if (isAllFieldsCompleted() && labourConfirmation.equalsIgnoreCase("true"))
+        if (isAllFieldsCompleted() && (labourConfirmation.equalsIgnoreCase("true") || clientAdmitted.equalsIgnoreCase("yes"))) {
+            if (clientAdmitted.equalsIgnoreCase("yes")) {
+                return context.getString(R.string.ld_registration_true_labour_client_admitted);
+            }
             return context.getString(R.string.ld_registration_true_labour_complete);
-        else if (isAllFieldsCompleted() && labourConfirmation.equalsIgnoreCase("false"))
+        } else if (isAllFieldsCompleted() && labourConfirmation.equalsIgnoreCase("false")) {
             return context.getString(R.string.ld_registration_false_labour_complete);
+        }
         return "";
     }
 

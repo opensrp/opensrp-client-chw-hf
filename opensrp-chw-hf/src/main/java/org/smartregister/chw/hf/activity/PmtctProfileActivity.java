@@ -1,10 +1,6 @@
 package org.smartregister.chw.hf.activity;
 
-import static com.vijay.jsonwizard.constants.JsonFormConstants.VALUE;
-import static org.smartregister.chw.core.utils.CoreConstants.EventType.PMTCT_COMMUNITY_FOLLOWUP;
-import static org.smartregister.client.utils.constants.JsonFormConstants.FIELDS;
-import static org.smartregister.client.utils.constants.JsonFormConstants.STEP1;
-
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -16,10 +12,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.vijay.jsonwizard.utils.FormUtils;
 
@@ -46,6 +38,7 @@ import org.smartregister.chw.hf.model.FamilyProfileModel;
 import org.smartregister.chw.hf.model.PmtctFollowupFeedbackModel;
 import org.smartregister.chw.hf.presenter.FamilyOtherMemberActivityPresenter;
 import org.smartregister.chw.hf.presenter.PmtctProfilePresenter;
+import org.smartregister.chw.hf.utils.LFTUFormUtils;
 import org.smartregister.chw.hf.utils.PmtctVisitUtils;
 import org.smartregister.chw.pmtct.PmtctLibrary;
 import org.smartregister.chw.pmtct.dao.PmtctDao;
@@ -54,6 +47,7 @@ import org.smartregister.chw.pmtct.util.Constants;
 import org.smartregister.chw.referral.util.JsonFormConstants;
 import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
+import org.smartregister.dao.LocationsDao;
 import org.smartregister.domain.AlertStatus;
 import org.smartregister.family.contract.FamilyProfileContract;
 import org.smartregister.family.domain.FamilyEventClient;
@@ -65,13 +59,22 @@ import org.smartregister.opd.utils.OpdDbConstants;
 import org.smartregister.repository.AllSharedPreferences;
 
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
 import javax.annotation.Nullable;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.recyclerview.widget.RecyclerView;
 import timber.log.Timber;
+
+import static org.smartregister.AllConstants.LocationConstants.SPECIAL_TAG_FOR_OPENMRS_TEAM_MEMBERS;
+import static org.smartregister.chw.core.utils.CoreConstants.EventType.PMTCT_COMMUNITY_FOLLOWUP;
+import static org.smartregister.chw.hf.utils.Constants.JsonFormConstants.STEP1;
+import static org.smartregister.util.JsonFormUtils.VALUE;
 
 public class PmtctProfileActivity extends CorePmtctProfileActivity {
     private static String baseEntityId;
@@ -128,36 +131,25 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemId = item.getItemId();
         try {
-            if (itemId == R.id.action_issue_pmtct_followup_referral) {
+            if (itemId == R.id.action_mark_as_deceased) {
+                removeMember();
+                return true;
+            } else if (itemId == R.id.action_issue_pmtct_followup_referral) {
                 JSONObject formJsonObject = (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getPmtctcCommunityFollowupReferral());
+                //adds the chw locations under the current facility
+                JSONObject motherChampionLocationField = CoreJsonFormUtils.getJsonField(formJsonObject, org.smartregister.util.JsonFormUtils.STEP1, "mother_champion_location");
+                CoreJsonFormUtils.addLocationsToDropdownField(LocationsDao.getLocationsByTags(
+                        Collections.singleton(SPECIAL_TAG_FOR_OPENMRS_TEAM_MEMBERS)), motherChampionLocationField);
 
-                JSONObject reasonsForIssuingCommunityReferral = CoreJsonFormUtils.getJsonField(formJsonObject, STEP1, "reasons_for_issuing_community_referral");
-
-                Date lastVisitDate = null;
+                Date lastVisitDate;
                 if (followUpVisitDate != null) {
                     lastVisitDate = followUpVisitDate;
                 } else {
                     lastVisitDate = pmtctRegisterDate;
                 }
-                formJsonObject.getJSONObject(STEP1).getJSONArray(FIELDS).getJSONObject(getJsonArrayIndex(formJsonObject.getJSONObject(STEP1).getJSONArray(FIELDS), "last_client_visit_date")).put(VALUE, sdf.format(lastVisitDate));
-
-
-                if (visitStatus.equals(CoreConstants.VISIT_STATE.DUE)) {
-                    reasonsForIssuingCommunityReferral.getJSONArray("options").remove(getJsonArrayIndex(reasonsForIssuingCommunityReferral.getJSONArray("options"), "lost_to_followup"));
-                } else if (visitStatus.equals(CoreConstants.VISIT_STATE.OVERDUE)) {
-                    reasonsForIssuingCommunityReferral.getJSONArray("options").remove(getJsonArrayIndex(reasonsForIssuingCommunityReferral.getJSONArray("options"), "missed_appointment"));
-                } else {
-                    reasonsForIssuingCommunityReferral.getJSONArray("options").remove(getJsonArrayIndex(reasonsForIssuingCommunityReferral.getJSONArray("options"), "missed_appointment"));
-                    reasonsForIssuingCommunityReferral.getJSONArray("options").remove(getJsonArrayIndex(reasonsForIssuingCommunityReferral.getJSONArray("options"), "lost_to_followup"));
-                    reasonsForIssuingCommunityReferral.getJSONArray("options").getJSONObject(getJsonArrayIndex(reasonsForIssuingCommunityReferral.getJSONArray("options"), "mother_champion_services")).put(VALUE, true);
-                }
-                int index = getJsonArrayIndex(formJsonObject.getJSONObject(STEP1).getJSONArray(FIELDS), "reasons_for_issuing_community_referral");
-                formJsonObject.getJSONObject(STEP1).getJSONArray(FIELDS).put(index, reasonsForIssuingCommunityReferral);
+                CoreJsonFormUtils.getJsonField(formJsonObject, STEP1, "last_client_visit_date").put(VALUE, sdf.format(lastVisitDate));
 
                 startFormActivity(formJsonObject);
-                return true;
-            } else if (itemId == R.id.action_mark_as_deceased) {
-                removeMember();
                 return true;
             }
         } catch (JSONException e) {
@@ -166,21 +158,8 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private int getJsonArrayIndex(JSONArray options, String key) {
-        for (int i = 0; i < options.length(); ++i) {
-            try {
-                if (options.getJSONObject(i).getString("key").equals(key)) {
-                    return i;
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-        return -1;
 
-    }
-
-
+    @SuppressLint("MissingSuperCall")
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == Constants.REQUEST_CODE_GET_JSON && resultCode == RESULT_OK) {
@@ -205,6 +184,7 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
                     } catch (Exception e) {
                         Timber.e(e);
                     }
+                    Toast.makeText(this, "EAC Visit saved", Toast.LENGTH_SHORT).show();
                 } else {
                     profilePresenter.saveForm(data.getStringExtra(Constants.JSON_FORM_EXTRA.JSON));
                     finish();
@@ -222,12 +202,15 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         checkPhoneNumberProvided(StringUtils.isNotBlank(memberObject.getPhoneNumber()));
         OnClickFloatingMenu onClickFloatingMenu = viewId -> {
             switch (viewId) {
-                case R.id.pmtct_fab:
+                case R.id.hiv_fab:
                     ((CorePmtctFloatingMenu) basePmtctFloatingMenu).animateFAB();
                     break;
                 case R.id.call_layout:
                     ((CorePmtctFloatingMenu) basePmtctFloatingMenu).launchCallWidget();
                     ((CorePmtctFloatingMenu) basePmtctFloatingMenu).animateFAB();
+                    break;
+                case R.id.refer_to_facility_layout:
+                    LFTUFormUtils.startLTFUReferral(this, memberObject.getBaseEntityId());
                     break;
                 default:
                     Timber.d("Unknown fab action");
@@ -335,11 +318,11 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
             try {
                 formJsonObject = (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, org.smartregister.chw.hf.utils.Constants.JsonForm.getEacVisitsForm());
                 if (formJsonObject != null) {
-                    JSONArray fields = formJsonObject.getJSONObject(org.smartregister.chw.hf.utils.Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+                    JSONArray fields = formJsonObject.getJSONObject(STEP1).getJSONArray(JsonFormConstants.FIELDS);
                     JSONObject visit_type = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "eac_visit_type");
 
                     assert visit_type != null;
-                    visit_type.put(JsonFormUtils.VALUE, HfPmtctDao.getEacVisitType(baseEntityId));
+                    visit_type.put(VALUE, HfPmtctDao.getEacVisitType(baseEntityId));
 
                     startFormActivity(formJsonObject);
                 }

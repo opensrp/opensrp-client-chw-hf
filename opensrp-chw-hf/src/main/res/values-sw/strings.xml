@@ -111,6 +111,7 @@
     <string name="mother_general_examination">Uchunguzi wa Afya ya Mama</string>
     <string name="child_general_examination_complete">Uchunguzi wa Afya ya Mtoto %s Umekamilika</string>
     <string name="child_general_examination">Uchunguzi wa Afya ya Mtoto %s</string>
+    <string name="children_general_examination">Uchunguzi wa Afya ya Mtoto %s - %d</string>
     <string name="immunization_complete">Chanjo zimekamilika</string>
     <string name="immunization_title">Chanjo</string>
     <string name="nutritional_supplements_complete">Virutubisho vya Lishe Umekamilika</string>
@@ -221,6 +222,10 @@
     <string name="result">Majibu</string>
     <string name="hvl_result_positive">chanya</string>
     <string name="hvl_result_negative">hasi</string>
+    <string name="no_mother_children">Watoto wasio na mama</string>
+    <string name="no_mother_child_reg">Usajili wa mtoto asiye na mama</string>
+    <string name="register_child">Sajili Mtoto</string>
+    <string name="mother_champion_referral">Rufaa kwa Mama Kinara </string>
 
     <!-- HEI Medical History -->
     <string name="hei_visit_title">Hudhurio la HEI {0}: {1}, Umri {2}</string>
@@ -253,6 +258,9 @@
 
     <!-- String updates: New CBHS workflow   -->
     <string name="client_registration">Usajili wa Mwanzo wa Mteja</string>
+    <string name="received_referrals">Rufaa Zilizopokelewa</string>
+    <string name="successful_referrals">Rufaa Zilizofanikiwa</string>
+    <string name="lost_to_followup_referral">Rufaa za mteja aliepotea</string>
 
     <!-- Labour and Delivery String Resources-->
     <string name="menu_ld">L&amp;D</string>
@@ -267,5 +275,6 @@
     <string name="tomorrow_hei_clients">Hudhurio la Kesho</string>
     <string name="missed_hei_clients">Waliokosa</string>
     <string name="anc_fundal_height_min_err">Kimo cha mimba lazima kiwe sawa au zaidi ya</string>
+
 
 </resources>

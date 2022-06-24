@@ -164,7 +164,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari Chagua dalili za hatari"
+          "err": "Tafadhali Chagua dalili za hatari"
         }
       },
       {
@@ -241,7 +241,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari chagua aina ya kipimo cha Ujauzito kilichofanyika"
+          "err": "Tafadhali chagua aina ya kipimo cha Ujauzito kilichofanyika"
         }
       },
       {
@@ -250,7 +250,7 @@
         "openmrs_entity_id": "upt",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
-        "label": "Tafadhari chagua majibu ya kipimo cha mkojo",
+        "label": "Tafadhali chagua majibu ya kipimo cha mkojo",
         "options": [
           {
             "text": "Chanya",
@@ -276,7 +276,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Tafadhari chagua majibu ya kipimo cha mkojo"
+          "err": "Tafadhali chagua majibu ya kipimo cha mkojo"
         }
       },
       {
@@ -285,7 +285,7 @@
         "openmrs_entity_id": "uss",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
-        "label": "Tafadhari Chagua majibu ya Kumulika kwa mashine",
+        "label": "Tafadhali Chagua majibu ya Kumulika kwa mashine",
         "options": [
           {
             "key": "present_gestation_sac",
@@ -311,7 +311,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Tafadhari Chagua majibu ya Kumulika kwa mashine"
+          "err": "Tafadhali Chagua majibu ya Kumulika kwa mashine"
         }
       }
     ]

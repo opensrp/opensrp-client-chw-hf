@@ -13,6 +13,7 @@ import com.google.android.material.appbar.AppBarLayout;
 import com.whiteelephant.monthpicker.MonthPickerDialog;
 
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hf.utils.ReportUtils;
 import org.smartregister.view.activity.SecuredActivity;
 
@@ -102,16 +103,16 @@ public class PmtctReportsActivity extends SecuredActivity implements View.OnClic
         int id = v.getId();
         switch (id) {
             case R.id.three_months_report:
-                PmtctReportsViewActivity.startMe(this, "pmtct-reports/taarifa-ya-miezi-3", R.string.three_months_report, reportPeriod);
+                PmtctReportsViewActivity.startMe(this, Constants.ReportConstants.ReportPaths.PMTCT_3_MONTHS_REPORT_PATH, R.string.three_months_report, reportPeriod);
                 break;
             case R.id.twelve_months_report:
-                PmtctReportsViewActivity.startMe(this, "pmtct-reports/taarifa-ya-miezi-12", R.string.twelve_months_report, reportPeriod);
+                PmtctReportsViewActivity.startMe(this, Constants.ReportConstants.ReportPaths.PMTCT_12_MONTHS_REPORT_PATH, R.string.twelve_months_report, reportPeriod);
                 break;
             case R.id.twenty_four_months_report:
-                PmtctReportsViewActivity.startMe(this, "pmtct-reports/taarifa-ya-miezi-24", R.string.twenty_four_months_report, reportPeriod);
+                PmtctReportsViewActivity.startMe(this, Constants.ReportConstants.ReportPaths.PMTCT_24_MONTHS_REPORT_PATH, R.string.twenty_four_months_report, reportPeriod);
                 break;
             case R.id.cross_sectional_report:
-                PmtctReportsViewActivity.startMe(this, "pmtct-reports/taarifa-cross-sectional", R.string.eid_cross_sectional_report, reportPeriod);
+                PmtctReportsViewActivity.startMe(this, Constants.ReportConstants.ReportPaths.PMTCT_EID_MONTHLY_REPORT_PATH, R.string.eid_cross_sectional_report, reportPeriod);
                 break;
             default:
                 Toast.makeText(this, "Action Not Defined", Toast.LENGTH_SHORT).show();

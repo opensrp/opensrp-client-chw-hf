@@ -47,7 +47,7 @@
     "encounter_location": ""
   },
   "step1": {
-    "title": "PMTCT Community Followup Referral",
+    "title": "Mother Champion Referral",
     "fields": [
       {
         "key": "last_client_visit_date",
@@ -58,8 +58,6 @@
         "hint": "Client's last facility visit date",
         "expanded": false,
         "max_date": "today",
-        "editable": false,
-        "read_only": true,
         "v_required": {
           "value": "true",
           "err": "Please specify the client's last facility visit date"
@@ -71,7 +69,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "reasons_for_issuing_community_referral",
         "type": "native_radio",
-        "label": "Sababu za kumpa Mteja rufaa kwa ajili ya ufuatiliaji ngazi ya jamii",
+        "label": "Reasons for issuing community followup referral",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [
@@ -81,13 +79,6 @@
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "missed_appointment"
-          },
-          {
-            "key": "lost_to_followup",
-            "text": "Lost to followup client",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "lost_to_followup"
           },
           {
             "key": "mother_champion_services",
@@ -100,6 +91,18 @@
         "v_required": {
           "value": "true",
           "err": "Please select reason for issuing the referral"
+        }
+      },
+      {
+        "key": "mother_champion_location",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "mother_champion_location",
+        "type": "spinner",
+        "hint": "Mother Champion Location",
+        "v_required": {
+          "value": true,
+          "err": "Please enter the Mother Champion Location"
         }
       },
       {

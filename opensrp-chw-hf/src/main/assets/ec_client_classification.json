@@ -138,6 +138,7 @@
               "ec_anc_register",
               "ec_anc_log",
               "ec_anc_followup",
+              "ec_anc_birth_emergency_plan",
               "ec_anc_pregnancy_lookup"
             ]
           },
@@ -155,7 +156,8 @@
             "field_value": "ANC First Facility Visit",
             "creates_case": [
               "ec_anc_register",
-              "ec_anc_followup"
+              "ec_anc_followup",
+              "ec_anc_birth_emergency_plan"
             ]
           },
           {
@@ -170,7 +172,8 @@
             "field_value": "ANC Recurring Facility Visit",
             "creates_case": [
               "ec_anc_register",
-              "ec_anc_followup"
+              "ec_anc_followup",
+              "ec_anc_birth_emergency_plan"
             ]
           },
           {
@@ -501,7 +504,8 @@
             "field": "eventType",
             "field_value": "Partner Testing",
             "creates_case": [
-              "ec_anc_register"
+              "ec_anc_register",
+              "ec_anc_followup"
             ]
           },
           {
@@ -682,6 +686,21 @@
             "field_value": "Post Delivery Mother Management",
             "creates_case": [
               "ec_pregnancy_outcome"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "LTFU Feedback",
+            "creates_case": [
+              "ec_ltfu_feedback"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "LD Child Registration",
+            "creates_case": [
+              "ec_child",
+              "ec_family_member"
             ]
           },
           {

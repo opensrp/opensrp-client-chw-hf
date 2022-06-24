@@ -58,11 +58,11 @@
         "openmrs_entity_parent": "",
         "v_numeric": {
           "value": "true",
-          "err": "Tafadhari jaza Jaza kiasi cha CD4"
+          "err": "Tafadhali jaza Jaza kiasi cha CD4"
         },
         "v_required": {
           "value": "true",
-          "err": "Tafadhari jaza Jaza kiasi cha CD4"
+          "err": "Tafadhali jaza Jaza kiasi cha CD4"
         }
       },
       {
@@ -107,7 +107,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari chagua mojawapo"
+          "err": "Tafadhali chagua mojawapo"
         },
         "relevance": {
           "step1:cd4_result": {
@@ -157,7 +157,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhari chagua mojawapo"
+          "err": "Tafadhali chagua mojawapo"
         },
         "relevance": {
           "step1:started_ctx": {

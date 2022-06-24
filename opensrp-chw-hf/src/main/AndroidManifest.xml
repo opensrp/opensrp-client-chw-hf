@@ -13,6 +13,20 @@
         android:theme="@style/HFTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:theme, android:icon">
+        <activity android:name=".activity.ReferralRegistrationActivity"
+            android:theme="@style/HFTheme.NoActionBar"/>
+        <activity android:name=".activity.LTFURegisterActivity"
+            android:theme="@style/HFTheme.NoActionBar"/>
+        <activity android:name=".activity.LTFUReferralsDetailsViewActivity"
+            android:theme="@style/HFTheme.NoActionBar"/>
+        <activity android:name=".activity.LtfuSummaryActivity"
+            android:theme="@style/HFTheme.NoActionBar"/>
+        <activity android:name=".activity.LtfuSummaryViewActivity"
+            android:theme="@style/HFTheme.NoActionBar"/>
+        <activity android:name=".activity.LdReportsActivity"
+            android:theme="@style/HFTheme.NoActionBar"/>
+        <activity android:name=".activity.LdReportsViewActivity"
+            android:theme="@style/HFTheme.NoActionBar"/>
         <activity
             android:name=".activity.PncReportsActivity"
             android:theme="@style/HFTheme.NoActionBar" />

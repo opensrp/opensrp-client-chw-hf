@@ -1,0 +1,479 @@
+{
+  "count": "1",
+  "encounter_type": "HEI Followup",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "step1": {
+    "title": "HEI Followup",
+    "fields": [
+      {
+        "key": "provided_azt_nvp_syrup",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "provided_azt_nvp_syrup",
+        "type": "native_radio",
+        "label": "Has the infant been provided AZT + 3TC and NVP Syrup?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an option"
+        }
+      },
+      {
+        "key": "provided_other_combinations",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "provided_other_combinations",
+        "type": "native_radio",
+        "label": "Has the infant been provided other combinations?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an option"
+        },
+        "relevance": {
+          "step1:provided_azt_nvp_syrup": {
+            "type": "string",
+            "ex": "equalTo(., \"no\")"
+          }
+        }
+      },
+      {
+        "key": "specify_the_combinations",
+        "type": "edit_text",
+        "hint": "Please specify the combinations",
+        "openmrs_entity_id": "specify_the_combinations",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": true,
+          "err": "Please specify the combinations"
+        },
+        "relevance": {
+          "step1:provided_other_combinations": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
+        "key": "number_of_azt_nvp_days_dispensed",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "number_of_azt_nvp_days_dispensed",
+        "type": "edit_text",
+        "edit_type": "number",
+        "hint": "Number of days dispensed",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter number of days dispensed"
+        },
+        "v_numeric_integer": {
+          "value": "true",
+          "err": "Please enter a valid number"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Number of dispensed days should be greater than 0"
+        },
+        "v_max": {
+          "value": "180",
+          "err": "Number of dispensed days should be less than or equal to 180"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "hei_arv_prescription_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "reason_for_not_providing_other_combination",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_providing_other_combination",
+        "type": "native_radio",
+        "label": "Please specify the reasons",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "out_of_stock",
+            "text": "Out of stock",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "out_of_stock"
+          },
+          {
+            "key": "medication_expired",
+            "text": "Medication expired",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "medication_expired"
+          },
+          {
+            "key": "other",
+            "text": "Other (Specify)",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an option"
+        },
+        "relevance": {
+          "step1:provided_other_combinations": {
+            "type": "string",
+            "ex": "equalTo(., \"no\")"
+          }
+        }
+      },
+      {
+        "key": "other_reason_for_not_providing_other_combination",
+        "type": "edit_text",
+        "hint": "Please specify the other reason(s)",
+        "openmrs_entity_id": "other_reason_for_not_providing_other_combination",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": true,
+          "err": "Please specify the other reason(s)"
+        },
+        "relevance": {
+          "step1:reason_for_not_providing_other_combination": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
+          }
+        }
+      },
+      {
+        "key": "prophylaxis_arv_for_high_risk_given",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "prophylaxis_arv_for_high_risk_given",
+        "type": "hidden",
+        "value": "true"
+      },
+      {
+        "key": "provided_nvp_syrup",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "provided_nvp_syrup",
+        "type": "native_radio",
+        "label": "Has the infant been provided NVP Syrup?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an option"
+        }
+      },
+      {
+        "key": "number_of_nvp_days_dispensed",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "number_of_nvp_days_dispensed",
+        "type": "edit_text",
+        "edit_type": "number",
+        "hint": "Number of days dispensed",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter number of days dispensed"
+        },
+        "v_numeric_integer": {
+          "value": "true",
+          "err": "Please enter a valid number"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Number of dispensed days should be greater than 0"
+        },
+        "v_max": {
+          "value": "180",
+          "err": "Number of dispensed days should be less than or equal to 180"
+        },
+        "relevance": {
+          "step1:provided_nvp_syrup": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
+        "key": "reason_for_not_providing_nvp_syrup",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_providing_nvp_syrup",
+        "type": "native_radio",
+        "label": "Please specify the reasons",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "out_of_stock",
+            "text": "Out of stock",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "out_of_stock"
+          },
+          {
+            "key": "medication_expired",
+            "text": "Medication expired",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "medication_expired"
+          },
+          {
+            "key": "home_delivery",
+            "text": "Home delivery",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "home_delivery"
+          },
+          {
+            "key": "other",
+            "text": "Other (Specify)",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an option"
+        },
+        "relevance": {
+          "step1:provided_nvp_syrup": {
+            "type": "string",
+            "ex": "equalTo(., \"no\")"
+          }
+        }
+      },
+      {
+        "key": "other_reason_for_not_providing_nvp_syrup",
+        "type": "edit_text",
+        "hint": "Please specify the other reason(s)",
+        "openmrs_entity_id": "other_reason_for_not_providing_nvp_syrup",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": true,
+          "err": "Please specify the other reason(s)"
+        },
+        "relevance": {
+          "step1:reason_for_not_providing_nvp_syrup": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
+          }
+        }
+      },
+      {
+        "key": "prophylaxis_arv_for_high_and_low_risk_given",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "prophylaxis_arv_for_high_and_low_risk_given",
+        "type": "hidden",
+        "value": "true"
+      },
+      {
+        "key": "visit_number",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "visit_number",
+        "type": "hidden"
+      },
+      {
+        "key": "next_facility_visit_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "next_facility_visit_date",
+        "type": "hidden"
+      },
+      {
+        "key": "sample_collection_date",
+        "type": "date_picker",
+        "hint": "DNA-PCR Sample Collection Date",
+        "openmrs_entity_id": "sample_collection_date",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "min_date": "today-5y",
+        "max_date": "today",
+        "v_required": {
+          "value": true,
+          "err": "Please enter the collection date"
+        }
+      },
+      {
+        "key": "dna_pcr_collection_time",
+        "type": "time_picker",
+        "hint": "DNA-PCR Sample Collection Time",
+        "openmrs_entity_id": "dna_pcr_collection_time",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": true,
+          "err": "Please enter the collection time"
+        }
+      },
+      {
+        "key": "sample_id",
+        "type": "edit_text",
+        "hint": "DNA-PCR Sample ID",
+        "edit_type": "number",
+        "openmrs_entity_id": "sample_id",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": true,
+          "err": "Please enter the sample ID"
+        }
+      },
+      {
+        "key": "followup_status",
+        "type": "hidden",
+        "openmrs_entity_id": "followup_status",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "value": "infant_and_mother"
+      },
+      {
+        "key": "weight",
+        "type": "hidden",
+        "openmrs_entity_id": "weight",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": ""
+      },
+      {
+        "key": "next_facility_visit_date",
+        "type": "hidden",
+        "openmrs_entity_id": "next_facility_visit_date",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": ""
+      },
+      {
+        "key": "type_of_hiv_test",
+        "type": "hidden",
+        "openmrs_entity_id": "type_of_hiv_test",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": ""
+      },
+      {
+        "key": "test_at_age",
+        "type": "hidden",
+        "openmrs_entity_id": "test_at_age",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": ""
+      },
+      {
+        "key": "actual_age",
+        "type": "hidden",
+        "openmrs_entity_id": "actual_age",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": ""
+      },
+      {
+        "key": "followup_visit_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "followup_visit_date",
+        "type": "hidden"
+      }
+    ]
+  }
+}
