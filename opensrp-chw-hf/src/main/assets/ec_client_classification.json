@@ -702,6 +702,27 @@
               "ec_child",
               "ec_family_member"
             ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "CBHS Registration",
+            "creates_case": [
+              "ec_cbhs_register"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "Update CBHS Registration",
+            "creates_case": [
+              "ec_cbhs_register"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "CBHS Followup",
+            "creates_case": [
+              "ec_cbhs_register"
+            ]
           }
         ]
       }
