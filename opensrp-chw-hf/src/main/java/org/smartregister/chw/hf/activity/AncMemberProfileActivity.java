@@ -196,7 +196,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
                     displayToast(R.string.recorded_partner_testing_results);
                     setupViews();
                 } else if (form.getString(JsonFormUtils.ENCOUNTER_TYPE).equals(org.smartregister.chw.core.utils.Utils.metadata().familyRegister.updateEventType)) {
-                    FamilyEventClient familyEventClient = new CoreAllClientsMemberModel().processJsonForm(jsonString,getFamilyBaseEntityId());
+                    FamilyEventClient familyEventClient = new CoreAllClientsMemberModel().processJsonForm(jsonString,UpdateDetailsUtil.getFamilyBaseEntityId(getCommonPersonObjectClient()));
                     JSONObject syncLocationField = CoreJsonFormUtils.getJsonField(new JSONObject(jsonString), STEP1, SYNC_LOCATION_ID);
                     familyEventClient.getEvent().setLocationId(CoreJsonFormUtils.getSyncLocationUUIDFromDropdown(syncLocationField));
                     familyEventClient.getEvent().setEntityType(CoreConstants.TABLE_NAME.INDEPENDENT_CLIENT);
@@ -617,7 +617,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
 
             JSONObject preFilledForm = getAutoPopulatedJsonEditFormString(
                     CoreConstants.JSON_FORM.getFamilyDetailsRegister(), this,
-                    UpdateDetailsUtil.getFamilyRegistrationDetails(getFamilyBaseEntityId()), Utils.metadata().familyRegister.updateEventType);
+                    UpdateDetailsUtil.getFamilyRegistrationDetails(UpdateDetailsUtil.getFamilyBaseEntityId(getCommonPersonObjectClient())), Utils.metadata().familyRegister.updateEventType);
             if (preFilledForm != null)
                 UpdateDetailsUtil.startUpdateClientDetailsActivity(preFilledForm, this);
             return true;
