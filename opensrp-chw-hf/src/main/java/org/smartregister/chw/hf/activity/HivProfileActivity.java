@@ -198,7 +198,7 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(org.smartregister.chw.core.R.menu.hiv_profile_menu, menu);
-
+        menu.findItem(org.smartregister.chw.core.R.id.action_location_info).setVisible(UpdateDetailsUtil.isIndependentClient(getHivMemberObject().getBaseEntityId()));
         //Only showing the hiv outcome menu for positive HIV clients
         if (getHivMemberObject().getCtcNumber().isEmpty()) {
             menu.findItem(R.id.action_hiv_outcome).setVisible(true);

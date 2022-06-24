@@ -156,6 +156,7 @@ public class HivIndexContactProfileActivity extends CoreHivIndexContactProfileAc
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(org.smartregister.chw.core.R.menu.hiv_profile_menu, menu);
         menu.findItem(R.id.action_issue_hiv_community_followup_referral).setVisible(true);
+        menu.findItem(org.smartregister.chw.core.R.id.action_location_info).setVisible(UpdateDetailsUtil.isIndependentClient(getHivIndexContactObject().getBaseEntityId()));
         return true;
     }
 

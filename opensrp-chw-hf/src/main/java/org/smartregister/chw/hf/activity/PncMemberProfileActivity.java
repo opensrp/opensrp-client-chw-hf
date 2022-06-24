@@ -225,6 +225,7 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.pnc_member_profile_menu, menu);
+        menu.findItem(org.smartregister.chw.core.R.id.action_location_info).setVisible(UpdateDetailsUtil.isIndependentClient(memberObject.getBaseEntityId()));
         List<ChildModel> childModels = HfPncDao.childrenForPncWoman(memberObject.getBaseEntityId());
         for (int i = 0; i < childModels.size(); i++) {
             menu.add(0, R.id.action_pnc_registration, 100 + i, getString(R.string.edit_child_form_title, childModels.get(i).getFirstName()));
