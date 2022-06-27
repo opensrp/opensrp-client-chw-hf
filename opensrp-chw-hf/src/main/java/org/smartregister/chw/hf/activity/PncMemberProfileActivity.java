@@ -255,7 +255,13 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
             getEditMenuItem(item);
             return true;
         } else if (itemId == org.smartregister.chw.core.R.id.action_pnc_member_registration) {
-            startFormForEdit(org.smartregister.chw.core.R.string.edit_member_form_title, CoreConstants.JSON_FORM.getAllClientUpdateRegistrationInfoForm());
+            if (UpdateDetailsUtil.isIndependentClient(baseEntityID)) {
+                startFormForEdit(org.smartregister.chw.core.R.string.registration_info,
+                        CoreConstants.JSON_FORM.getAllClientUpdateRegistrationInfoForm());
+            } else {
+                startFormForEdit(org.smartregister.chw.core.R.string.edit_member_form_title,
+                        CoreConstants.JSON_FORM.getFamilyMemberRegister());
+            }
             return true;
         } else if(itemId == org.smartregister.chw.core.R.id.action_location_info){
 
