@@ -23,7 +23,7 @@ actions:
 name: step1_prompt_for_moulding
 description: prompt for moulding
 priority: 1
-condition: "step1_moulding_options == '++' ||  step1_moulding_options == '+++'"
+condition: "step1_moulding_options == 'sutures_overlapped_reducible' ||  step1_moulding_options == 'sutures_overlapped_not_reducible'"
 actions:
   - "isRelevant = true"
 ---
@@ -66,5 +66,19 @@ name: step1_dorso_position
 description: Dorso position relevance
 priority: 1
 condition: "step1_presenting_part == 'shoulder'"
+actions:
+  - "isRelevant = true"
+---
+name: step1_moulding_yes_no_na
+description: relevance for moulding options yes, no and na
+priority: 1
+condition: "step1_presenting_part == 'breech' && step1_presenting_part != ''"
+actions:
+  - "isRelevant = true"
+---
+name: step1_moulding_yes_no
+description: relevance for moulding options yes, no and na
+priority: 1
+condition: "step1_presenting_part != 'breech' && step1_presenting_part != ''"
 actions:
   - "isRelevant = true"
