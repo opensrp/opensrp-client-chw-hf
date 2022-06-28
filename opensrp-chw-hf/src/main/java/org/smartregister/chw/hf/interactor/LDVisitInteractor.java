@@ -93,14 +93,14 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
 
     private void evaluateVaginalExamination(Map<String, List<VisitDetail>> details) throws BaseLDVisitAction.ValidationException {
         LDVaginalExaminationActionHelper actionHelper = new LDVaginalExaminationActionHelper(context, memberObject.getBaseEntityId());
-        BaseLDVisitAction action = getBuilder(context.getString(R.string.lb_visit_vaginal_examination))
+        BaseLDVisitAction action = getBuilder(context.getString(R.string.lb_visit_vaginal_assessment))
                 .withOptional(false)
                 .withDetails(details)
                 .withHelper(actionHelper)
                 .withFormName(Constants.JsonForm.LDVisit.getLdVaginalExamination())
                 .build();
 
-        actionList.put(context.getString(R.string.lb_visit_vaginal_examination), action);
+        actionList.put(context.getString(R.string.lb_visit_vaginal_assessment), action);
 
     }
 
