@@ -563,6 +563,22 @@
         }
       },
       {
+        "key": "prompt_for_moulding",
+        "type": "toaster_notes",
+        "text": "Provide management according to SOP and Standard Guideline",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_vaginal_examination_relevance.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "station",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
