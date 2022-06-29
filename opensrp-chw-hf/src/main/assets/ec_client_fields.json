@@ -1922,6 +1922,14 @@
           }
         },
         {
+          "column_name": "llin_provision",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "llin_provision"
+          }
+        },
+        {
           "column_name": "malaria_preventive_therapy",
           "type": "Event",
           "json_mapping": {
