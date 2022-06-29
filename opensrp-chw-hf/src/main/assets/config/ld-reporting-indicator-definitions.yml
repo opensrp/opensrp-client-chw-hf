@@ -1,0 +1,16 @@
+indicators:
+  - key: "pnc-1a-10-14"
+    description: "Waliohudhuria Ndani ya saa 48"
+    indicatorQuery: "SELECT count(DISTINCT epo.base_entity_id) as count
+                      FROM ec_pregnancy_outcome epo
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
+                               INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
+                      WHERE epf.visit_number = 0
+                        AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
+                                 substr(epo.delivery_date, 1, 2), '+48 hours') >=
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                 substr(epf.followup_visit_date, 1, 2))
+                        AND (date(efm.dob, '+10 years') <= date('now'))
+                        AND (date(efm.dob, '+15 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
