@@ -55,23 +55,6 @@
     "title": "Family Details",
     "fields": [
       {
-        "key": "fam_name",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "person",
-        "openmrs_entity_id": "first_name",
-        "type": "edit_text",
-        "hint": "Surname",
-        "edit_type": "name",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the surname"
-        },
-        "v_regex": {
-          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
-          "err": "Please enter a valid name"
-        }
-      },
-      {
         "key": "unique_id",
         "openmrs_entity_parent": "",
         "openmrs_entity": "person_identifier",
