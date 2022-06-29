@@ -80,8 +80,9 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
     protected Context context;
     final LinkedHashMap<String, BaseLDVisitAction> actionList = new LinkedHashMap<>();
-    private MemberObject memberObject;
+    private static MemberObject memberObject;
     public static final String EVENT_TYPE = "Post Delivery Mother Management";
+    private static boolean isEdit = false;
     Map<String, List<VisitDetail>> details = null;
 
     @Override
@@ -93,9 +94,10 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
     @Override
     public void calculateActions(BaseLDVisitContract.View view, MemberObject memberObject, BaseLDVisitContract.InteractorCallBack callBack) {
         context = view.getContext();
-        this.memberObject = memberObject;
+        LDPostDeliveryManagementMotherActivityInteractor.memberObject = memberObject;
 
         if (view.getEditMode()) {
+            isEdit = true;
             Visit lastVisit = LDLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), EVENT_TYPE);
 
             if (lastVisit != null) {
@@ -290,25 +292,41 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                 Timber.e(e);
             }
 
-            for (Map.Entry<String, BaseLDVisitAction> entry : actionList.entrySet()) {
-                if (entry.getKey().contains(MessageFormat.format(context.getString(R.string.ld_new_born_status_action_title), "")))
-                    actionList.remove(entry.getKey());
+            try {
+                for (Map.Entry<String, BaseLDVisitAction> entry : actionList.entrySet()) {
+                    if (entry.getKey().contains(MessageFormat.format(context.getString(R.string.ld_new_born_status_action_title), "")))
+                        actionList.remove(entry.getKey());
+                }
+            } catch (Exception e) {
+                Timber.e(e);
             }
 
+
             if (numberOfChildrenBorn > 0) {
+
                 for (int i = 0; i < numberOfChildrenBorn; i++) {
+                    // Get visit details for each individual child
+                    if (isEdit) {
+                        Visit lastVisit = LDLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), "LND " + ordinal(i+1) + " Newborn");
+
+                        if (lastVisit != null) {
+                            details = org.smartregister.chw.ld.util.VisitUtils.getVisitGroups(LDLibrary.getInstance().visitDetailsRepository().getVisits(lastVisit.getVisitId()));
+                        }
+                    }
+
                     String title;
                     if (numberOfChildrenBorn == 1) {
                         title = MessageFormat.format(context.getString(R.string.ld_new_born_status_action_title), "");
                     } else {
                         title = MessageFormat.format(context.getString(R.string.ld_new_born_status_action_title), "of " + ordinal(i + 1) + " baby");
                     }
-                    NewBornActionHelper actionHelper = new NewBornActionHelper(baseEntityId, delivery_date, delivery_time, numberOfChildrenBorn, status);
+                    NewBornActionHelper actionHelper = new NewBornActionHelper(baseEntityId, delivery_date, delivery_time, numberOfChildrenBorn, status, ordinal(i+1));
                     BaseLDVisitAction action = null;
                     try {
                         action = new BaseLDVisitAction.Builder(context, title)
                                 .withOptional(false)
                                 .withHelper(actionHelper)
+                                .withDetails(details)
                                 .withBaseEntityID(baseEntityId)
                                 .withProcessingMode(BaseLDVisitAction.ProcessingMode.SEPARATE)
                                 .withFormName(Constants.JsonForm.LDPostDeliveryMotherManagement.getLdNewBornStatus())
@@ -650,13 +668,15 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         private String deliveryTime;
         private int numberOfChildrenBorn;
         private String status;
+        private String childNumber;
 
-        public NewBornActionHelper(String baseEntityId, String deliveryDate, String deliveryTime, int numberOfChildrenBorn, String status) {
+        public NewBornActionHelper(String baseEntityId, String deliveryDate, String deliveryTime, int numberOfChildrenBorn, String status, String childNumber) {
             this.baseEntityId = baseEntityId;
             this.deliveryDate = deliveryDate;
             this.deliveryTime = deliveryTime;
             this.numberOfChildrenBorn = numberOfChildrenBorn;
             this.status = status;
+            this.childNumber = childNumber;
         }
 
         @Override
@@ -784,6 +804,16 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
         @Override
         public String postProcess(String jsonPayload) {
+
+            try {
+                JSONObject jsonObject = new JSONObject(jsonPayload);
+                jsonObject.remove(ENCOUNTER_TYPE);
+                jsonObject.putOpt(ENCOUNTER_TYPE, "LND " + childNumber +" Newborn");
+
+                return jsonObject.toString();
+            } catch (JSONException e) {
+                Timber.e(e);
+            }
             return null;
         }
 
@@ -814,7 +844,19 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
     @Override
     protected void processExternalVisits(Visit visit, Map<String, BaseLDVisitAction> externalVisits, String memberID) throws Exception {
-        super.processExternalVisits(visit, externalVisits, memberID);
+        //super.processExternalVisits(visit, externalVisits, memberID);
+        if (visit != null && !externalVisits.isEmpty()) {
+            for (Map.Entry<String, BaseLDVisitAction> entry : externalVisits.entrySet()) {
+                Map<String, BaseLDVisitAction> subEvent = new HashMap<>();
+                subEvent.put(entry.getKey(), entry.getValue());
+
+                String subMemberID = entry.getValue().getBaseEntityID();
+                if (StringUtils.isBlank(subMemberID))
+                    subMemberID = memberID;
+
+                submitVisit(false, subMemberID, subEvent, visit.getVisitType());
+            }
+        }
         try {
 
             AllSharedPreferences allSharedPreferences = ImmunizationLibrary.getInstance().context().allSharedPreferences();
