@@ -553,7 +553,8 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
     private static class MaternalComplicationLabourActionHelper implements BaseLDVisitAction.LDVisitActionHelper {
 
-        private JSONArray maternal_complication_values;
+        private String maternal_complications_before_delivery;
+        private String maternal_complications_during_and_after_delivery;
         private String completionStatus;
         private String jsonString;
         private Context context;
@@ -571,9 +572,10 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
         @Override
         public void onPayloadReceived(String jsonPayload) {
-            String maternal_complications_during_labour = JsonFormUtils.getFieldValue(jsonPayload, "maternal_complications_during_labour");
             try {
-                maternal_complication_values = new JSONArray(maternal_complications_during_labour);
+                JSONObject jsonObject = new JSONObject(jsonPayload);
+                maternal_complications_before_delivery = CoreJsonFormUtils.getCheckBoxValue(jsonObject, "maternal_complications_before_delivery");
+                maternal_complications_during_and_after_delivery = CoreJsonFormUtils.getCheckBoxValue(jsonObject, "maternal_complications_during_and_after_delivery");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -611,9 +613,9 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
         @Override
         public String evaluateSubTitle() {
-            if (maternal_complication_values.length() > 0) {
+            if (StringUtils.isNotBlank(maternal_complications_before_delivery) && StringUtils.isNotBlank(maternal_complications_during_and_after_delivery)) {
                 completionStatus = context.getString(R.string.lb_fully_completed_action);
-            } else {
+            } else if (StringUtils.isNotBlank(maternal_complications_before_delivery) || StringUtils.isNotBlank(maternal_complications_during_and_after_delivery)) {
                 completionStatus = context.getString(R.string.lb_partially_completed_action);
             }
             return completionStatus;
@@ -621,11 +623,12 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
         @Override
         public BaseLDVisitAction.Status evaluateStatusOnPayload() {
-            if (maternal_complication_values.length() > 0) {
+            if (StringUtils.isNotBlank(maternal_complications_before_delivery) && StringUtils.isNotBlank(maternal_complications_during_and_after_delivery))
                 return BaseLDVisitAction.Status.COMPLETED;
-            } else {
+            else if (StringUtils.isNotBlank(maternal_complications_before_delivery) || StringUtils.isNotBlank(maternal_complications_during_and_after_delivery))
                 return BaseLDVisitAction.Status.PARTIALLY_COMPLETED;
-            }
+            else
+                return BaseLDVisitAction.Status.PENDING;
         }
 
         @Override
