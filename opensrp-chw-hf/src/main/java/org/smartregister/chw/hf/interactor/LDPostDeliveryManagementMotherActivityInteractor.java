@@ -66,6 +66,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
@@ -97,7 +98,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         LDPostDeliveryManagementMotherActivityInteractor.memberObject = memberObject;
 
         if (view.getEditMode()) {
-            isEdit = true;
+            isEdit = view.getEditMode();
             Visit lastVisit = LDLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), EVENT_TYPE);
 
             if (lastVisit != null) {
@@ -293,10 +294,20 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
             }
 
             try {
-                for (Map.Entry<String, BaseLDVisitAction> entry : actionList.entrySet()) {
+                // ConcurrentModificationException Fix
+                /*for (Map.Entry<String, BaseLDVisitAction> entry : actionList.entrySet()) {
                     if (entry.getKey().contains(MessageFormat.format(context.getString(R.string.ld_new_born_status_action_title), "")))
                         actionList.remove(entry.getKey());
+                }*/
+
+                Iterator<Map.Entry<String, BaseLDVisitAction>> itr = actionList.entrySet().iterator();
+                while (itr.hasNext()) {
+                    Map.Entry<String, BaseLDVisitAction> entry = itr.next();
+                    if (entry.getKey().contains(MessageFormat.format(context.getString(R.string.ld_new_born_status_action_title), ""))) {
+                        itr.remove();
+                    }
                 }
+
             } catch (Exception e) {
                 Timber.e(e);
             }

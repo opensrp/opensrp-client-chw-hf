@@ -15,6 +15,7 @@ import org.smartregister.chw.ld.util.Constants;
 import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.family.util.Utils;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -69,5 +70,11 @@ public class LDPostDeliveryManagementMotherActivity extends BaseLDVisitActivity 
         }
 
         super.submittedAndClose();
+    }
+
+    @Override
+    public void initializeActions(LinkedHashMap<String, BaseLDVisitAction> map) {
+        actionList.clear();
+        super.initializeActions(map);
     }
 }
