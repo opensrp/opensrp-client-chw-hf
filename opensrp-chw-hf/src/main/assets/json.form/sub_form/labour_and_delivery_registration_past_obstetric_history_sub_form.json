@@ -95,18 +95,53 @@
           "openmrs_entity_id": "chk_fgm"
         },
         {
-          "key": "chk_abortion",
-          "text": "Abortion",
-          "value": false,
-          "openmrs_entity": "concept",
-          "openmrs_entity_id": "chk_abortion"
-        },
-        {
           "key": "chk_iufd",
           "text": "IUFD",
           "value": false,
           "openmrs_entity": "concept",
           "openmrs_entity_id": "chk_iufd"
+        },
+        {
+          "key": "chk_pph",
+          "text": "PPH",
+          "value": false,
+          "openmrs_entity": "concept",
+          "openmrs_entity_id": "chk_pph"
+        },
+        {
+          "key": "chk_obstructed_labour",
+          "text": "Obstructed labour",
+          "value": false,
+          "openmrs_entity": "concept",
+          "openmrs_entity_id": "chk_obstructed_labour"
+        },
+        {
+          "key": "chk_retained_placenta",
+          "text": "Retained placenta",
+          "value": false,
+          "openmrs_entity": "concept",
+          "openmrs_entity_id": "chk_retained_placenta"
+        },
+        {
+          "key": "chk_3_degree_tear",
+          "text": "Third degree tear",
+          "value": false,
+          "openmrs_entity": "concept",
+          "openmrs_entity_id": "chk_3_degree_tear"
+        },
+        {
+          "key": "chk_ruptured_uterus",
+          "text": "Ruptured uterus",
+          "value": false,
+          "openmrs_entity": "concept",
+          "openmrs_entity_id": "chk_ruptured_uterus"
+        },
+        {
+          "key": "chk_sepsis",
+          "text": "Sepsis",
+          "value": false,
+          "openmrs_entity": "concept",
+          "openmrs_entity_id": "chk_sepsis"
         },
         {
           "key": "chk_others",
@@ -210,7 +245,7 @@
       "openmrs_entity_parent": "",
       "openmrs_entity": "concept",
       "openmrs_entity_id": "alive",
-      "label": "Was the child/children born alive?",
+      "label": "Was the child born alive?",
       "text_color": "#000000",
       "type": "native_radio",
       "options": [
@@ -230,17 +265,6 @@
       "v_required": {
         "value": "true",
         "err": "Please select if the child was born alive"
-      },
-      "relevance": {
-        "step1:maternal_complications_during_labour": {
-          "ex-checkbox": [
-            {
-              "not": [
-                "chk_abortion"
-              ]
-            }
-          ]
-        }
       }
     },
     {
@@ -249,16 +273,10 @@
       "openmrs_entity": "concept",
       "openmrs_entity_id": "reason_for_child_not_born_alive",
       "type": "edit_text",
-      "hint": "Reason why the child/children were not born alive",
+      "hint": "Reason as to why the child was not born alive",
       "v_required": {
         "value": true,
         "err": "Please specify the reason"
-      },
-      "relevance": {
-        "step1:alive": {
-          "type": "string",
-          "ex": "equalTo(., \"no\")"
-        }
       }
     }
   ]

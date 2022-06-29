@@ -316,7 +316,7 @@
     <string name="ld_no_uterus_massage">The woman did not receive uterus massage</string>
     <string name="ld_mother_post_delivery_management">Immediate Postpartum Care</string>
     <string name="ld_yes_uterus_massage">The woman received uterus massage</string>
-    <string name="ld_maternal_complication_action_title">Maternal complications during labour</string>
+    <string name="ld_maternal_complication_action_title">Maternal complications</string>
     <string name="ld_new_born_status_action_title">Immediate New Born Care {0}</string>
     <string name="ld_post_delivery_observation_action_title">Post Delivery Observation</string>
     <string name="ld_mother_status_action_title">Mother\'s Status</string>
