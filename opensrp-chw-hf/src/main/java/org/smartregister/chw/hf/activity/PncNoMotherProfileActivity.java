@@ -111,7 +111,9 @@ public class PncNoMotherProfileActivity extends PncMemberProfileActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        return super.onCreateOptionsMenu(menu);
+        super.onCreateOptionsMenu(menu);
+        menu.findItem(R.id.action_location_info).setVisible(false);
+        return true;
     }
 
     @Override
@@ -120,6 +122,7 @@ public class PncNoMotherProfileActivity extends PncMemberProfileActivity {
         return Days.daysBetween(new DateTime(formatter.parseDateTime(dayPnc)), new DateTime()).getDays();
     }
 
+    @Override
     public void startFormForEdit(Integer title_resource, String formName) {
 
         JSONObject childEnrollmentForm = null;
