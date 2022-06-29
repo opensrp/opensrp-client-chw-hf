@@ -162,10 +162,10 @@
         }
       },
       {
-        "key": "maternal_complications_during_labour",
+        "key": "maternal_complications_during_and_after_delivery",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "maternal_complications_during_labour",
+        "openmrs_entity_id": "maternal_complications_during_and_after_delivery",
         "type": "check_box",
         "combine_checkbox_option_values": "true",
         "label": "Complications during and after delivery",
@@ -255,7 +255,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "relevance": {
-          "step1:maternal_complications_during_labour": {
+          "step1:maternal_complications_during_and_after_delivery": {
             "ex-checkbox": [
               {
                 "or": ["chk_other"]
