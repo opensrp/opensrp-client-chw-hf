@@ -12,7 +12,6 @@ import static org.smartregister.chw.hf.utils.Constants.TableName.HEI_FOLLOWUP;
 import static org.smartregister.chw.hf.utils.JsonFormUtils.ENCOUNTER_TYPE;
 import static org.smartregister.util.JsonFormUtils.FIELDS;
 import static org.smartregister.util.JsonFormUtils.KEY;
-import static org.smartregister.util.JsonFormUtils.STEP1;
 import static org.smartregister.util.JsonFormUtils.VALUE;
 
 import android.content.ContentValues;
@@ -178,8 +177,10 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         private String cause_of_death;
         private String time_of_death;
         private String delivery_place;
-        private String delivered_by_occupation;
+        private String designation_of_delivery_personnel;
         private String name_of_delivery_person;
+        private String supervised_by_occupation;
+        private String name_of_supervising_person;
         private String delivery_date;
         private String completionStatus;
         private int numberOfChildrenBorn = 0;
@@ -214,7 +215,9 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
             cause_of_death = JsonFormUtils.getFieldValue(jsonPayload, "cause_of_death");
             time_of_death = JsonFormUtils.getFieldValue(jsonPayload, "time_of_death");
             delivery_place = JsonFormUtils.getFieldValue(jsonPayload, "delivery_place");
-            delivered_by_occupation = JsonFormUtils.getFieldValue(jsonPayload, "delivered_by_occupation");
+            designation_of_delivery_personnel = JsonFormUtils.getFieldValue(jsonPayload, "designation_of_delivery_personnel");
+            supervised_by_occupation = JsonFormUtils.getFieldValue(jsonPayload, "supervised_by_occupation");
+            name_of_supervising_person = JsonFormUtils.getFieldValue(jsonPayload, "name_of_supervising_person");
             name_of_delivery_person = JsonFormUtils.getFieldValue(jsonPayload, "name_of_delivery_person");
             delivery_date = JsonFormUtils.getFieldValue(jsonPayload, "delivery_date");
             delivery_time = JsonFormUtils.getFieldValue(jsonPayload, "delivery_time");
@@ -356,14 +359,14 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                 if (status.equalsIgnoreCase("alive")) {
                     if ((StringUtils.isNotBlank(delivery_place) && !delivery_place.equalsIgnoreCase("Place of delivery")) &&
                             StringUtils.isNotBlank(delivery_date)) {
-                        completed = !delivery_place.equalsIgnoreCase("At a health facility") || (StringUtils.isNotBlank(delivered_by_occupation) &&
-                                StringUtils.isNotBlank(name_of_delivery_person));
+                        completed = !delivery_place.equalsIgnoreCase("At a health facility") || (StringUtils.isNotBlank(designation_of_delivery_personnel) &&
+                                StringUtils.isNotBlank(name_of_delivery_person) && StringUtils.isNotBlank(supervised_by_occupation) && StringUtils.isNotBlank(name_of_supervising_person));
                     }
                 } else {
                     if ((StringUtils.isNotBlank(delivery_place) && !delivery_place.equalsIgnoreCase("Place of delivery")) &&
                             StringUtils.isNotBlank(cause_of_death) && StringUtils.isNotBlank(time_of_death) && StringUtils.isNotBlank(delivery_date)) {
-                        completed = !delivery_place.equalsIgnoreCase("At a health facility") || (StringUtils.isNotBlank(delivered_by_occupation) &&
-                                StringUtils.isNotBlank(name_of_delivery_person));
+                        completed = !delivery_place.equalsIgnoreCase("At a health facility") || (StringUtils.isNotBlank(designation_of_delivery_personnel) &&
+                                StringUtils.isNotBlank(name_of_delivery_person) && StringUtils.isNotBlank(supervised_by_occupation) && StringUtils.isNotBlank(name_of_supervising_person));
                     }
                 }
             }
@@ -378,14 +381,14 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                     if (delivery_place.equalsIgnoreCase("Place of delivery") || StringUtils.isBlank(delivery_date)) {
                         partialCompletion = true;
                     } else if (delivery_place.equalsIgnoreCase("At a health facility")) {
-                        partialCompletion = StringUtils.isBlank(delivered_by_occupation) || StringUtils.isBlank(name_of_delivery_person);
+                        partialCompletion = StringUtils.isBlank(designation_of_delivery_personnel) || StringUtils.isBlank(name_of_delivery_person) || StringUtils.isBlank(supervised_by_occupation) || StringUtils.isBlank(name_of_supervising_person);
                     }
                 } else {
                     if (delivery_place.equalsIgnoreCase("Place of delivery") || StringUtils.isBlank(delivery_date) || StringUtils.isBlank(cause_of_death) ||
                             StringUtils.isBlank(time_of_death)) {
                         partialCompletion = true;
                     } else if (delivery_place.equalsIgnoreCase("At a health facility")) {
-                        partialCompletion = StringUtils.isBlank(delivered_by_occupation) || StringUtils.isBlank(name_of_delivery_person);
+                        partialCompletion = StringUtils.isBlank(designation_of_delivery_personnel) || StringUtils.isBlank(name_of_delivery_person) || StringUtils.isBlank(supervised_by_occupation) || StringUtils.isBlank(name_of_supervising_person);
                     }
                 }
             }

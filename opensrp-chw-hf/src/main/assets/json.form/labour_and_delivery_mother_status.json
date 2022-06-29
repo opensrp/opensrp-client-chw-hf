@@ -136,24 +136,39 @@
         }
       },
       {
-        "key": "delivered_by_occupation",
+        "key": "designation_of_delivery_personnel",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "delivered_by_occupation",
+        "openmrs_entity_id": "designation_of_delivery_personnel",
         "openmrs_data_type": "select one",
         "type": "spinner",
-        "hint": "Delivered by",
+        "hint": "Designation",
         "values": [
-          "A doctor",
-          "A nurse"
+          "Medical doctor",
+          "Obstetrician",
+          "Assistant midwife officer",
+          "Clinical officer",
+          "Midwife officer",
+          "Gynecologist",
+          "Nurse"
         ],
         "keys": [
-          "doctor",
+          "medical_doctor",
+          "obstetrician",
+          "assistant_midwife_officer",
+          "clinical_officer",
+          "midwife_officer",
+          "gynecologist",
           "nurse"
         ],
         "openmrs_choice_ids": {
-          "doctor": "A Doctor",
-          "nurse": "A Nurse"
+          "medical_doctor": "medical_doctor",
+          "obstetrician": "obstetrician",
+          "assistant_midwife_officer": "assistant_midwife_officer",
+          "clinical_officer": "clinical_officer",
+          "midwife_officer": "midwife_officer",
+          "gynecologist": "gynecologist",
+          "nurse": "nurse"
         },
         "relevance": {
           "step1:delivery_place": {
@@ -165,8 +180,64 @@
       {
         "key": "name_of_delivery_person",
         "type": "edit_text",
-        "hint": "Name of delivery doctor/nurse",
+        "hint": "Name of delivery personnel",
         "openmrs_entity_id": "name_of_delivery_person",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "step1:delivery_place": {
+            "type": "string",
+            "ex": "equalTo(., \"At a health facility\")"
+          }
+        }
+      },
+      {
+        "key": "supervised_by_occupation",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "supervised_by_occupation",
+        "openmrs_data_type": "select one",
+        "type": "spinner",
+        "hint": "Supervision by",
+        "values": [
+          "Medical doctor",
+          "Obstetrician",
+          "Assistant midwife officer",
+          "Clinical officer",
+          "Midwife officer",
+          "Gynecologist",
+          "Nurse"
+        ],
+        "keys": [
+          "medical_doctor",
+          "obstetrician",
+          "assistant_midwife_officer",
+          "clinical_officer",
+          "midwife_officer",
+          "gynecologist",
+          "nurse"
+        ],
+        "openmrs_choice_ids": {
+          "medical_doctor": "medical_doctor",
+          "obstetrician": "obstetrician",
+          "assistant_midwife_officer": "assistant_midwife_officer",
+          "clinical_officer": "clinical_officer",
+          "midwife_officer": "midwife_officer",
+          "gynecologist": "gynecologist",
+          "nurse": "nurse"
+        },
+        "relevance": {
+          "step1:delivery_place": {
+            "type": "string",
+            "ex": "equalTo(., \"At a health facility\")"
+          }
+        }
+      },
+      {
+        "key": "name_of_supervising_person",
+        "type": "edit_text",
+        "hint": "Name of supervisor",
+        "openmrs_entity_id": "name_of_supervising_person",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "relevance": {
