@@ -151,6 +151,10 @@
         "openmrs_entity_id": "maternal_complications_before_delivery_other",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        },
         "relevance": {
           "step1:maternal_complications_before_delivery": {
             "ex-checkbox": [
@@ -254,6 +258,10 @@
         "openmrs_entity_id": "maternal_complications_during_and_after_delivery_other",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        },
         "relevance": {
           "step1:maternal_complications_during_and_after_delivery": {
             "ex-checkbox": [
