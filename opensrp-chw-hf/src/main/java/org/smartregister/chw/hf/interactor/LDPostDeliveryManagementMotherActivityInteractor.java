@@ -12,7 +12,6 @@ import static org.smartregister.chw.hf.utils.Constants.TableName.HEI_FOLLOWUP;
 import static org.smartregister.chw.hf.utils.JsonFormUtils.ENCOUNTER_TYPE;
 import static org.smartregister.util.JsonFormUtils.FIELDS;
 import static org.smartregister.util.JsonFormUtils.KEY;
-import static org.smartregister.util.JsonFormUtils.STEP1;
 import static org.smartregister.util.JsonFormUtils.VALUE;
 
 import android.content.ContentValues;
@@ -178,7 +177,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         private String cause_of_death;
         private String time_of_death;
         private String delivery_place;
-        private String delivered_by_occupation;
+        private String designation_of_delivery_personnel;
         private String name_of_delivery_person;
         private String delivery_date;
         private String completionStatus;
@@ -214,7 +213,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
             cause_of_death = JsonFormUtils.getFieldValue(jsonPayload, "cause_of_death");
             time_of_death = JsonFormUtils.getFieldValue(jsonPayload, "time_of_death");
             delivery_place = JsonFormUtils.getFieldValue(jsonPayload, "delivery_place");
-            delivered_by_occupation = JsonFormUtils.getFieldValue(jsonPayload, "delivered_by_occupation");
+            designation_of_delivery_personnel = JsonFormUtils.getFieldValue(jsonPayload, "designation_of_delivery_personnel");
             name_of_delivery_person = JsonFormUtils.getFieldValue(jsonPayload, "name_of_delivery_person");
             delivery_date = JsonFormUtils.getFieldValue(jsonPayload, "delivery_date");
             delivery_time = JsonFormUtils.getFieldValue(jsonPayload, "delivery_time");
@@ -356,13 +355,13 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                 if (status.equalsIgnoreCase("alive")) {
                     if ((StringUtils.isNotBlank(delivery_place) && !delivery_place.equalsIgnoreCase("Place of delivery")) &&
                             StringUtils.isNotBlank(delivery_date)) {
-                        completed = !delivery_place.equalsIgnoreCase("At a health facility") || (StringUtils.isNotBlank(delivered_by_occupation) &&
+                        completed = !delivery_place.equalsIgnoreCase("At a health facility") || (StringUtils.isNotBlank(designation_of_delivery_personnel) &&
                                 StringUtils.isNotBlank(name_of_delivery_person));
                     }
                 } else {
                     if ((StringUtils.isNotBlank(delivery_place) && !delivery_place.equalsIgnoreCase("Place of delivery")) &&
                             StringUtils.isNotBlank(cause_of_death) && StringUtils.isNotBlank(time_of_death) && StringUtils.isNotBlank(delivery_date)) {
-                        completed = !delivery_place.equalsIgnoreCase("At a health facility") || (StringUtils.isNotBlank(delivered_by_occupation) &&
+                        completed = !delivery_place.equalsIgnoreCase("At a health facility") || (StringUtils.isNotBlank(designation_of_delivery_personnel) &&
                                 StringUtils.isNotBlank(name_of_delivery_person));
                     }
                 }
@@ -378,14 +377,14 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                     if (delivery_place.equalsIgnoreCase("Place of delivery") || StringUtils.isBlank(delivery_date)) {
                         partialCompletion = true;
                     } else if (delivery_place.equalsIgnoreCase("At a health facility")) {
-                        partialCompletion = StringUtils.isBlank(delivered_by_occupation) || StringUtils.isBlank(name_of_delivery_person);
+                        partialCompletion = StringUtils.isBlank(designation_of_delivery_personnel) || StringUtils.isBlank(name_of_delivery_person);
                     }
                 } else {
                     if (delivery_place.equalsIgnoreCase("Place of delivery") || StringUtils.isBlank(delivery_date) || StringUtils.isBlank(cause_of_death) ||
                             StringUtils.isBlank(time_of_death)) {
                         partialCompletion = true;
                     } else if (delivery_place.equalsIgnoreCase("At a health facility")) {
-                        partialCompletion = StringUtils.isBlank(delivered_by_occupation) || StringUtils.isBlank(name_of_delivery_person);
+                        partialCompletion = StringUtils.isBlank(designation_of_delivery_personnel) || StringUtils.isBlank(name_of_delivery_person);
                     }
                 }
             }
@@ -550,7 +549,8 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
     private static class MaternalComplicationLabourActionHelper implements BaseLDVisitAction.LDVisitActionHelper {
 
-        private JSONArray maternal_complication_values;
+        private String maternal_complications_before_delivery;
+        private String maternal_complications_during_and_after_delivery;
         private String completionStatus;
         private String jsonString;
         private Context context;
@@ -568,9 +568,10 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
         @Override
         public void onPayloadReceived(String jsonPayload) {
-            String maternal_complications_during_labour = JsonFormUtils.getFieldValue(jsonPayload, "maternal_complications_during_labour");
             try {
-                maternal_complication_values = new JSONArray(maternal_complications_during_labour);
+                JSONObject jsonObject = new JSONObject(jsonPayload);
+                maternal_complications_before_delivery = CoreJsonFormUtils.getCheckBoxValue(jsonObject, "maternal_complications_before_delivery");
+                maternal_complications_during_and_after_delivery = CoreJsonFormUtils.getCheckBoxValue(jsonObject, "maternal_complications_during_and_after_delivery");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -608,9 +609,9 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
         @Override
         public String evaluateSubTitle() {
-            if (maternal_complication_values.length() > 0) {
+            if (StringUtils.isNotBlank(maternal_complications_before_delivery) && StringUtils.isNotBlank(maternal_complications_during_and_after_delivery)) {
                 completionStatus = context.getString(R.string.lb_fully_completed_action);
-            } else {
+            } else if (StringUtils.isNotBlank(maternal_complications_before_delivery) || StringUtils.isNotBlank(maternal_complications_during_and_after_delivery)) {
                 completionStatus = context.getString(R.string.lb_partially_completed_action);
             }
             return completionStatus;
@@ -618,11 +619,12 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
         @Override
         public BaseLDVisitAction.Status evaluateStatusOnPayload() {
-            if (maternal_complication_values.length() > 0) {
+            if (StringUtils.isNotBlank(maternal_complications_before_delivery) && StringUtils.isNotBlank(maternal_complications_during_and_after_delivery))
                 return BaseLDVisitAction.Status.COMPLETED;
-            } else {
+            else if (StringUtils.isNotBlank(maternal_complications_before_delivery) || StringUtils.isNotBlank(maternal_complications_during_and_after_delivery))
                 return BaseLDVisitAction.Status.PARTIALLY_COMPLETED;
-            }
+            else
+                return BaseLDVisitAction.Status.PENDING;
         }
 
         @Override

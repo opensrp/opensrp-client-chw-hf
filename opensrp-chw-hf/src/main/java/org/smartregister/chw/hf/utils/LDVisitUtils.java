@@ -60,7 +60,6 @@ public class LDVisitUtils extends VisitUtils {
                 boolean isCervixStateDone = computeCompletionStatus(obs, "cervix_state");
                 boolean isCervixDilationDone = computeCompletionStatus(obs, "cervix_dilation");
                 boolean isPresentingPartDone = computeCompletionStatus(obs, "presenting_part");
-                boolean isOcciputPositionDone = computeCompletionStatus(obs, "occiput_position");
                 boolean isMouldingDone = computeCompletionStatus(obs, "moulding");
                 boolean isStationDone = computeCompletionStatus(obs, "station");
                 boolean isDecisionDone = computeCompletionStatus(obs, "decision");
@@ -102,7 +101,6 @@ public class LDVisitUtils extends VisitUtils {
                         isCervixStateDone &&
                         isCervixDilationDone &&
                         isPresentingPartDone &&
-                        isOcciputPositionDone &&
                         isMouldingDone &&
                         isStationDone &&
                         isDecisionDone &&

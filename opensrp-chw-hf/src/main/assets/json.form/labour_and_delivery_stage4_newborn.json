@@ -1634,7 +1634,7 @@
         "openmrs_entity_id": "reason_for_not_breast_feeding_within_one_hour",
         "type": "check_box",
         "combine_checkbox_option_values": "true",
-        "hint": "Reason why the child was not breast fed within one hour",
+        "label": "Reason why the child was not breast fed within one hour",
         "options": [
           {
             "key": "mother_died",

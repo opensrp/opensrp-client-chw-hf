@@ -1,4 +1,11 @@
 ---
+name: step1_prompt_for_cervix_dilation
+description: prompt for Cervix dilation
+priority: 1
+condition: "step1_cervix_dilation < 3 && step1_cervix_dilation != 0"
+actions:
+  - "isRelevant = true"
+---
 name: step1_prompt_for_presenting_part
 description: prompt_for_presenting_part
 priority: 1
@@ -10,6 +17,13 @@ name: step1_prompt_for_amniotic_fluid
 description: prompt_for_amniotic_fluid
 priority: 1
 condition: "!step1_amniotic_fluid.isEmpty() && !step1_amniotic_fluid.contains('membrane_intact')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_prompt_for_moulding
+description: prompt for moulding
+priority: 1
+condition: "step1_moulding_options == 'sutures_overlapped_reducible' ||  step1_moulding_options == 'sutures_overlapped_not_reducible'"
 actions:
   - "isRelevant = true"
 ---
@@ -52,5 +66,19 @@ name: step1_dorso_position
 description: Dorso position relevance
 priority: 1
 condition: "step1_presenting_part == 'shoulder'"
+actions:
+  - "isRelevant = true"
+---
+name: step1_moulding_yes_no_na
+description: relevance for moulding options yes, no and na
+priority: 1
+condition: "step1_presenting_part == 'breech' && step1_presenting_part != ''"
+actions:
+  - "isRelevant = true"
+---
+name: step1_moulding_yes_no
+description: relevance for moulding options yes, no and na
+priority: 1
+condition: "step1_presenting_part != 'breech' && step1_presenting_part != ''"
 actions:
   - "isRelevant = true"

@@ -52,13 +52,127 @@
     "title": "Maternal Complications During Labour",
     "fields": [
       {
-        "key": "maternal_complications_during_labour",
+        "key": "maternal_complications_before_delivery",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "maternal_complications_during_labour",
+        "openmrs_entity_id": "maternal_complications_before_delivery",
         "type": "check_box",
         "combine_checkbox_option_values": "true",
-        "label": "Maternal complications",
+        "label": "Complications before delivery",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "exclusive": [
+          "chk_none"
+        ],
+        "options": [
+          {
+            "key": "chk_aph",
+            "text": "APH",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_aph"
+          },
+          {
+            "key": "chk_prom",
+            "text": "Pre-mature Rupture of Membrane (PROM)",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_prom"
+          },
+          {
+            "key": "chk_high_bp",
+            "text": "High BP",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_high_bp"
+          },
+          {
+            "key": "chk_pre_eclampsia",
+            "text": "Pre-eclampsia",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_pre_eclampsia"
+          },
+          {
+            "key": "chk_eclampsia",
+            "text": "Eclampsia",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_eclampsia"
+          },
+          {
+            "key": "chk_anaemia",
+            "text": "Anaemia",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_anaemia"
+          },
+          {
+            "key": "chk_malaria",
+            "text": "Malaria",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_malaria"
+          },
+          {
+            "key": "chk_hiv_stage_3_or_4",
+            "text": "HIV + Stage III or IV",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_hiv_stage_3_or_4"
+          },
+          {
+            "key": "chk_fgm",
+            "text": "FGM",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_fgm"
+          },
+          {
+            "key": "chk_other",
+            "text": "Other",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_other"
+          },
+          {
+            "key": "chk_none",
+            "text": "None",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_none"
+          }
+        ]
+      },
+      {
+        "key": "maternal_complications_before_delivery_other",
+        "type": "edit_text",
+        "hint": "Other complications before delivery",
+        "openmrs_entity_id": "maternal_complications_before_delivery_other",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        },
+        "relevance": {
+          "step1:maternal_complications_before_delivery": {
+            "ex-checkbox": [
+              {
+                "or": ["chk_other"]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "maternal_complications_during_and_after_delivery",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "maternal_complications_during_and_after_delivery",
+        "type": "check_box",
+        "combine_checkbox_option_values": "true",
+        "label": "Complications during and after delivery",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "exclusive": [
@@ -138,14 +252,18 @@
         ]
       },
       {
-        "key": "maternal_complications_other",
+        "key": "maternal_complications_during_and_after_delivery_other",
         "type": "edit_text",
-        "hint": "Specify other complications",
-        "openmrs_entity_id": "maternal_complications_other",
+        "hint": "Other complications during and after delivery",
+        "openmrs_entity_id": "maternal_complications_during_and_after_delivery_other",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        },
         "relevance": {
-          "step1:maternal_complications_during_labour": {
+          "step1:maternal_complications_during_and_after_delivery": {
             "ex-checkbox": [
               {
                 "or": ["chk_other"]

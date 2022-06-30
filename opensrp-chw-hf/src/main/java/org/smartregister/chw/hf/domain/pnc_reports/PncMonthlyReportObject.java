@@ -12,7 +12,7 @@ import java.util.List;
 public class PncMonthlyReportObject extends ReportObject {
     private final Date reportDate;
     private final List<String> indicatorCodes = new ArrayList<>();
-    private final String[] indicatorCodesArrayForMother = new String[]{"pnc-1a", "pnc-1b", "pnc-2a", "pnc-3", "pnc-4", "pnc-5", "pnc-6", "pnc-7", "pnc-8a", "pnc-8b", "pnc-8c", "pnc-9a", "pnc-9b", "pnc-9c", "pnc-9d1", "pnc-9d2", "pnc-9e", "pnc-9f", "pnc-10a", "pnc-10b", "pnc-10c", "pnc-10d", "pnc-10e"};
+    private final String[] indicatorCodesArrayForMother = new String[]{"pnc-1a", "pnc-1b", "pnc-2a", "pnc-3", "pnc-4", "pnc-5", "pnc-6", "pnc-7", "pnc-8a", "pnc-8b", "pnc-8c", "pnc-9a", "pnc-9b", "pnc-9c", "pnc-9d1", "pnc-9d2", "pnc-9e", "pnc-9f","pnc-9g", "pnc-10a", "pnc-10b", "pnc-10c", "pnc-10d", "pnc-10e"};
     private final String[] indicatorAgeGroupsArray = new String[]{"10-14", "15-19", "20-24", "25-29", "30-34", "35+"};
     private final String[] indicatorCodesArrayForChild = new String[]{"pnc-11a", "pnc-11b", "pnc-11c", "pnc-12a", "pnc-12b", "pnc-12c", "pnc-12d", "pnc-12e", "pnc-12f", "pnc-13a", "pnc-13b", "pnc-13c", "pnc-13d", "pnc-14", "pnc-15", "pnc-16a", "pnc-16b", "pnc-16c"};
     private final String[] indicatorSexCodeArray = new String[]{"ME", "KE"};
