@@ -23,7 +23,7 @@
       "openmrs_entity": "concept",
       "openmrs_entity_id": "maternal_complications_during_labour",
       "type": "check_box",
-      "label": "complications",
+      "label": "Complications",
       "combine_checkbox_option_values": "true",
       "label_text_style": "normal",
       "text_color": "#C0C0C0",
@@ -227,17 +227,6 @@
       "v_required": {
         "value": true,
         "err": "Please select an option"
-      },
-      "relevance": {
-        "step1:maternal_complications_during_labour": {
-          "ex-checkbox": [
-            {
-              "not": [
-                "chk_abortion"
-              ]
-            }
-          ]
-        }
       }
     },
     {
@@ -277,6 +266,12 @@
       "v_required": {
         "value": true,
         "err": "Please specify the reason"
+      },
+      "relevance": {
+        "step1:alive": {
+          "type": "string",
+          "ex": "equalTo(., \"no\")"
+        }
       }
     }
   ]

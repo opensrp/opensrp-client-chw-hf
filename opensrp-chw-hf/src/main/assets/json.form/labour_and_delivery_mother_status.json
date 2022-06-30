@@ -142,7 +142,7 @@
         "openmrs_entity_id": "designation_of_delivery_personnel",
         "openmrs_data_type": "select one",
         "type": "spinner",
-        "hint": "Designation",
+        "hint": "Designation of Delivery Person",
         "values": [
           "Medical doctor",
           "Obstetrician",
@@ -150,7 +150,8 @@
           "Clinical officer",
           "Midwife officer",
           "Gynecologist",
-          "Nurse"
+          "Nurse",
+          "Student"
         ],
         "keys": [
           "medical_doctor",
@@ -159,7 +160,8 @@
           "clinical_officer",
           "midwife_officer",
           "gynecologist",
-          "nurse"
+          "nurse",
+          "student"
         ],
         "openmrs_choice_ids": {
           "medical_doctor": "medical_doctor",
@@ -168,7 +170,8 @@
           "clinical_officer": "clinical_officer",
           "midwife_officer": "midwife_officer",
           "gynecologist": "gynecologist",
-          "nurse": "nurse"
+          "nurse": "nurse",
+          "student": "student"
         },
         "relevance": {
           "step1:delivery_place": {
@@ -227,9 +230,10 @@
           "nurse": "nurse"
         },
         "relevance": {
-          "step1:delivery_place": {
-            "type": "string",
-            "ex": "equalTo(., \"At a health facility\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_mother_status_relevance.yml"
+            }
           }
         }
       },
@@ -241,9 +245,10 @@
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "relevance": {
-          "step1:delivery_place": {
-            "type": "string",
-            "ex": "equalTo(., \"At a health facility\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_mother_status_relevance.yml"
+            }
           }
         }
       },

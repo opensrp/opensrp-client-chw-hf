@@ -522,7 +522,7 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "uterus_contraction",
-        "label": "Uterus Contraction",
+        "label": "Has Uterus Contracted?",
         "text_color": "#000000",
         "type": "native_radio",
         "options": [
