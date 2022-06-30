@@ -1573,10 +1573,6 @@
             "openmrs_entity_id": "other"
           }
         ],
-        "v_required": {
-          "value": "true",
-          "err": "Please select a reason"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -2328,6 +2324,14 @@
             }
           }
         }
+      },
+      {
+        "key": "newborn_stage_four_module_status",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "newborn_stage_four_module_status",
+        "type": "hidden",
+        "value": "PENDING"
       }
     ]
   }
