@@ -151,6 +151,30 @@
         "selected_text_color": "#ffffff"
       },
       {
+        "key": "prompt_for_cervix_dilation",
+        "type": "toaster_notes",
+        "text": "Continue with routine examination for the client",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_vaginal_examination_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "spacer",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "",
+        "type": "spacer",
+        "spacer_height": "8dp"
+      },
+      {
         "key": "presenting_part",
         "type": "native_radio",
         "openmrs_entity_id": "presenting_part",
@@ -470,6 +494,22 @@
         "openmrs_entity_id": "moulding",
         "label": "Moulding",
         "text_color": "#000000",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_vaginal_examination_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "moulding_yes_no",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "moulding",
+        "label": "Moulding",
+        "text_color": "#000000",
         "type": "native_radio",
         "options": [
           {
@@ -485,6 +525,45 @@
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
+          }
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_vaginal_examination_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "moulding_yes_no_na",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "moulding",
+        "label": "Moulding",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          },
+          {
+            "key": "na",
+            "text": "NA",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "na"
           }
         ],
         "relevance": {
@@ -536,6 +615,22 @@
         "v_required": {
           "value": true,
           "err": "Please select an option"
+        }
+      },
+      {
+        "key": "prompt_for_moulding",
+        "type": "toaster_notes",
+        "text": "Provide management according to SOP and Standard Guideline",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_vaginal_examination_relevance.yml"
+            }
+          }
         }
       },
       {
