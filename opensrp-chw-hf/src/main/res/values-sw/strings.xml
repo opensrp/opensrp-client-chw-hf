@@ -266,7 +266,7 @@
     <string name="menu_ld">L&amp;D</string>
     <string name="lb_fully_completed_action">Imemalizika kabisa</string>
     <string name="lb_partially_completed_action">Haijamalizika</string>
-    <string name="lb_visit_vaginal_examination">Vaginal examination</string>
+    <string name="lb_visit_vaginal_assessment">Vaginal examination</string>
     <string name="lb_visit_general_examination">General examination</string>
     <string name="height_in_cm">Urefu: {0} cm</string>
     <string name="fundal_height">Kimo cha mimba: {0} cm</string>
