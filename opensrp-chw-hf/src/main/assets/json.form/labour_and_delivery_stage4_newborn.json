@@ -138,10 +138,6 @@
             "openmrs_entity_id": "msb"
           }
         ],
-        "v_required": {
-          "value": true,
-          "err": "Please select an option"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -160,10 +156,6 @@
         "expanded": false,
         "min_date": "today-2y",
         "max_date": "today",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the delivery date"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -179,10 +171,6 @@
         "openmrs_entity_id": "child_delivery_time",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "v_required": {
-          "value": true,
-          "err": "Please select the delivery time"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -208,10 +196,6 @@
           "Female",
           "Ambiguous"
         ],
-        "v_required": {
-          "value": "true",
-          "err": "Please select the sex"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -297,10 +281,6 @@
         "text_size": "18px",
         "text_color": "#000000",
         "selected_text_color": "#ffffff",
-        "v_required": {
-          "value": true,
-          "err": "Please enter the agpar activity score"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -370,10 +350,6 @@
         "text_size": "18px",
         "text_color": "#000000",
         "selected_text_color": "#ffffff",
-        "v_required": {
-          "value": true,
-          "err": "Please enter the agpar pulse score"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -443,10 +419,6 @@
         "text_size": "18px",
         "text_color": "#000000",
         "selected_text_color": "#ffffff",
-        "v_required": {
-          "value": true,
-          "err": "Please enter the agpar grimace on stimulation score"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -516,10 +488,6 @@
         "text_size": "18px",
         "text_color": "#000000",
         "selected_text_color": "#ffffff",
-        "v_required": {
-          "value": true,
-          "err": "Please enter the agpar appearance score"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -589,10 +557,6 @@
         "text_size": "18px",
         "text_color": "#000000",
         "selected_text_color": "#ffffff",
-        "v_required": {
-          "value": true,
-          "err": "Please enter the agpar respiration score"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -754,10 +718,6 @@
         "text_size": "18px",
         "text_color": "#000000",
         "selected_text_color": "#ffffff",
-        "v_required": {
-          "value": true,
-          "err": "Please enter the agpar activity score"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -827,10 +787,6 @@
         "text_size": "18px",
         "text_color": "#000000",
         "selected_text_color": "#ffffff",
-        "v_required": {
-          "value": true,
-          "err": "Please enter the agpar pulse score"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -900,10 +856,6 @@
         "text_size": "18px",
         "text_color": "#000000",
         "selected_text_color": "#ffffff",
-        "v_required": {
-          "value": true,
-          "err": "Please enter the agpar grimace on stimulation score"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -973,10 +925,6 @@
         "text_size": "18px",
         "text_color": "#000000",
         "selected_text_color": "#ffffff",
-        "v_required": {
-          "value": true,
-          "err": "Please enter the agpar appearance score"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -1046,10 +994,6 @@
         "text_size": "18px",
         "text_color": "#000000",
         "selected_text_color": "#ffffff",
-        "v_required": {
-          "value": true,
-          "err": "Please enter the agpar respiration score"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -1171,10 +1115,6 @@
             "openmrs_entity_id": "stimulation"
           }
         ],
-        "v_required": {
-          "value": true,
-          "err": "Please select an option"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -1201,10 +1141,6 @@
         "v_max": {
           "value": "50",
           "err": "Temperature must be equal or less than 50"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Please enter the temperature"
         },
         "relevance": {
           "rules-engine": {
@@ -1262,10 +1198,6 @@
         "v_max": {
           "value": "7",
           "err": "The weight must be equal or less than 7 (KG)"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Please enter the weight"
         },
         "relevance": {
           "rules-engine": {
@@ -1371,10 +1303,6 @@
             "openmrs_entity": "concept"
           }
         ],
-        "v_required": {
-          "value": true,
-          "err": "Please answer this question"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -1416,10 +1344,6 @@
             "openmrs_entity_id": "other"
           }
         ],
-        "v_required": {
-          "value": true,
-          "err": "Please answer this question"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -1455,10 +1379,6 @@
             "openmrs_entity_id": "other"
           }
         ],
-        "v_required": {
-          "value": true,
-          "err": "Please answer this question"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -1566,10 +1486,6 @@
             "openmrs_entity": "concept"
           }
         ],
-        "v_required": {
-          "value": true,
-          "err": "Please answer this question"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -1615,10 +1531,6 @@
             "openmrs_entity": "concept"
           }
         ],
-        "v_required": {
-          "value": true,
-          "err": "Please answer this question"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -1661,10 +1573,6 @@
             "openmrs_entity_id": "other"
           }
         ],
-        "v_required": {
-          "value": "true",
-          "err": "Please select a reason"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -1714,10 +1622,6 @@
             "openmrs_entity": "concept"
           }
         ],
-        "v_required": {
-          "value": true,
-          "err": "Please answer this question"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -1799,10 +1703,6 @@
             "openmrs_entity_id": "no"
           }
         ],
-        "v_required": {
-          "value": "true",
-          "err": "Please select one"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -1879,10 +1779,6 @@
             "openmrs_entity_id": "no"
           }
         ],
-        "v_required": {
-          "value": "true",
-          "err": "Please select one"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -1927,10 +1823,6 @@
             "openmrs_entity": "concept"
           }
         ],
-        "v_required": {
-          "value": true,
-          "err": "Please answer this question"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -1996,10 +1888,6 @@
             "openmrs_entity_id": "no"
           }
         ],
-        "v_required": {
-          "value": "true",
-          "err": "Please select an option"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -2033,10 +1921,6 @@
             "openmrs_entity_id": "no"
           }
         ],
-        "v_required": {
-          "value": "true",
-          "err": "Please select an option"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -2052,10 +1936,6 @@
         "openmrs_entity_id": "specify_the_combinations",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "v_required": {
-          "value": true,
-          "err": "Please specify the combinations"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -2072,10 +1952,6 @@
         "type": "edit_text",
         "edit_type": "number",
         "hint": "Number of days dispensed",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter number of days dispensed"
-        },
         "v_numeric_integer": {
           "value": "true",
           "err": "Please enter a valid number"
@@ -2128,10 +2004,6 @@
             "openmrs_entity_id": "other"
           }
         ],
-        "v_required": {
-          "value": "true",
-          "err": "Please select an option"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -2147,10 +2019,6 @@
         "openmrs_entity_id": "other_reason_for_not_providing_other_combination",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "v_required": {
-          "value": true,
-          "err": "Please specify the other reason(s)"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -2180,10 +2048,6 @@
             "openmrs_entity": "concept"
           }
         ],
-        "v_required": {
-          "value": true,
-          "err": "Please answer this question"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -2199,10 +2063,6 @@
         "openmrs_entity_id": "reason_not_collecting_dbs",
         "type": "edit_text",
         "hint": "Specify reason(s) for not collecting DBS",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the reason"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -2219,10 +2079,6 @@
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "max_date": "today",
-        "v_required": {
-          "value": true,
-          "err": "Please enter the collection date"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -2238,10 +2094,6 @@
         "openmrs_entity_id": "dna_pcr_collection_time",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "v_required": {
-          "value": true,
-          "err": "Please enter the collection time"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -2258,10 +2110,6 @@
         "openmrs_entity_id": "sample_id",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "v_required": {
-          "value": true,
-          "err": "Please enter the sample ID"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -2295,10 +2143,6 @@
             "openmrs_entity_id": "no"
           }
         ],
-        "v_required": {
-          "value": "true",
-          "err": "Please select an option"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -2315,10 +2159,6 @@
         "type": "edit_text",
         "edit_type": "number",
         "hint": "Number of days dispensed",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter number of days dispensed"
-        },
         "v_numeric_integer": {
           "value": "true",
           "err": "Please enter a valid number"
@@ -2378,10 +2218,6 @@
             "openmrs_entity_id": "other"
           }
         ],
-        "v_required": {
-          "value": "true",
-          "err": "Please select an option"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -2397,10 +2233,6 @@
         "openmrs_entity_id": "other_reason_for_not_providing_nvp_syrup",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "v_required": {
-          "value": true,
-          "err": "Please specify the other reason(s)"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -2492,6 +2324,14 @@
             }
           }
         }
+      },
+      {
+        "key": "newborn_stage_four_module_status",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "newborn_stage_four_module_status",
+        "type": "hidden",
+        "value": "PENDING"
       }
     ]
   }
