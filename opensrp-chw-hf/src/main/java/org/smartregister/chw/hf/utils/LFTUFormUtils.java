@@ -57,7 +57,6 @@ public class LFTUFormUtils {
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static void startLTFUReferral(Activity context, String baseEntityId) {
         JSONObject formJsonObject;
         try {
