@@ -36,7 +36,7 @@ import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.utils.Constants;
-import org.smartregister.chw.hf.utils.LDDao;
+import org.smartregister.chw.hf.dao.LDDao;
 import org.smartregister.chw.hf.utils.LDVisitUtils;
 import org.smartregister.chw.ld.LDLibrary;
 import org.smartregister.chw.ld.contract.BaseLDVisitContract;

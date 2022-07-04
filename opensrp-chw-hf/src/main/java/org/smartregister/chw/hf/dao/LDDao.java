@@ -1,4 +1,4 @@
-package org.smartregister.chw.hf.utils;
+package org.smartregister.chw.hf.dao;
 
 import org.smartregister.chw.ld.domain.MemberObject;
 import org.smartregister.chw.ld.util.Constants;
