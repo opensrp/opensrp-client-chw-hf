@@ -27,8 +27,8 @@ condition: "!step1_weight.equals('') && !step1_height.equals('')"
 actions:
   - "isRelevant = true"
 ---
-name: step1_prompt_for_moderate_anaemia_management
-description:  prompt for moderate anaemia management
+name: step1_management_provided_for_mild_anaemia
+description:  management_provided_for_mild_anaemia question relevance
 priority: 1
 condition: "Float.parseFloat(step1_hb_level) > 8.5 && Float.parseFloat(step1_hb_level) <= 11"
 actions:
