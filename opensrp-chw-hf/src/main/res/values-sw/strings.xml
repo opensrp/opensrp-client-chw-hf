@@ -225,6 +225,7 @@
     <string name="no_mother_children">Watoto wasio na mama</string>
     <string name="no_mother_child_reg">Usajili wa mtoto asiye na mama</string>
     <string name="register_child">Sajili Mtoto</string>
+    <string name="mother_champion_referral">Rufaa kwa Mama Kinara </string>
 
     <!-- HEI Medical History -->
     <string name="hei_visit_title">Hudhurio la HEI {0}: {1}, Umri {2}</string>

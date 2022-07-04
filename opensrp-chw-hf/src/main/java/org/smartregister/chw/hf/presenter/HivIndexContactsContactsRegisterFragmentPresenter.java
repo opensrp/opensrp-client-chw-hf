@@ -19,8 +19,8 @@ public class HivIndexContactsContactsRegisterFragmentPresenter extends BaseHivIn
         return " " +
                 Tables.HIV_INDEX_HF + "." + DBConstants.Key.CTC_NUMBER + " IS NULL AND (" +
                 Tables.HIV_INDEX_HF + "." + DBConstants.Key.TEST_RESULTS + " IS NULL OR " +
-                Tables.HIV_INDEX_HF + "." + DBConstants.Key.TEST_RESULTS + " <> 'Negative')  AND " +
-                Tables.HIV_INDEX_HF + "." + DBConstants.Key.HOW_TO_NOTIFY_CONTACT_CLIENT + " <> 'na'";
+                Tables.HIV_INDEX_HF + "." + DBConstants.Key.TEST_RESULTS + " <> 'Negative' COLLATE NOCASE)  AND " +
+                Tables.HIV_INDEX_HF + "." + DBConstants.Key.HOW_TO_NOTIFY_CONTACT_CLIENT + " <> 'na' COLLATE NOCASE";
 
     }
 

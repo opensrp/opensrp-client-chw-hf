@@ -21,7 +21,10 @@ import org.smartregister.chw.core.activity.CoreHivProfileActivity;
 import org.smartregister.chw.core.activity.CoreHivUpcomingServicesActivity;
 import org.smartregister.chw.core.dao.AncDao;
 import org.smartregister.chw.core.listener.OnClickFloatingMenu;
+import org.smartregister.chw.core.model.CoreAllClientsMemberModel;
 import org.smartregister.chw.core.utils.CoreConstants;
+import org.smartregister.chw.core.utils.CoreJsonFormUtils;
+import org.smartregister.chw.core.utils.UpdateDetailsUtil;
 import org.smartregister.chw.core.utils.Utils;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.adapter.HivAndTbReferralCardViewAdapter;
@@ -38,7 +41,11 @@ import org.smartregister.chw.hiv.domain.HivMemberObject;
 import org.smartregister.chw.hiv.util.HivUtil;
 import org.smartregister.chw.tb.util.Constants;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
+import org.smartregister.family.contract.FamilyProfileContract;
+import org.smartregister.family.domain.FamilyEventClient;
+import org.smartregister.family.interactor.FamilyProfileInteractor;
 import org.smartregister.family.util.DBConstants;
+import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.opd.pojo.RegisterParams;
 import org.smartregister.opd.utils.OpdConstants;
 import org.smartregister.opd.utils.OpdJsonFormUtils;
@@ -52,7 +59,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import timber.log.Timber;
 
 import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
+import static org.smartregister.chw.hf.utils.JsonFormUtils.SYNC_LOCATION_ID;
+import static org.smartregister.chw.hf.utils.JsonFormUtils.getAutoPopulatedJsonEditFormString;
 import static org.smartregister.chw.hiv.util.Constants.ActivityPayload.HIV_MEMBER_OBJECT;
+import static org.smartregister.util.JsonFormUtils.STEP1;
 
 public class HivProfileActivity extends CoreHivProfileActivity implements HivProfileContract.View {
 
@@ -170,6 +180,14 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
             } else if (itemId == R.id.action_pregnancy_out_come) {
                 startPregnancyOutcome(Objects.requireNonNull(getHivMemberObject()));
                 return true;
+            } else if (itemId == R.id.action_location_info) {
+                //use this method in hf to get the chw_location instead of encounter_location for chw
+                JSONObject preFilledForm = getAutoPopulatedJsonEditFormString(
+                        CoreConstants.JSON_FORM.getFamilyDetailsRegister(), this,
+                        UpdateDetailsUtil.getFamilyRegistrationDetails(getHivMemberObject().getFamilyBaseEntityId()), Utils.metadata().familyRegister.updateEventType);
+                if (preFilledForm != null)
+                    UpdateDetailsUtil.startUpdateClientDetailsActivity(preFilledForm, this);
+                return true;
             }
         } catch (JSONException e) {
             Timber.e(e);
@@ -180,7 +198,7 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(org.smartregister.chw.core.R.menu.hiv_profile_menu, menu);
-
+        menu.findItem(org.smartregister.chw.core.R.id.action_location_info).setVisible(UpdateDetailsUtil.isIndependentClient(getHivMemberObject().getBaseEntityId()));
         //Only showing the hiv outcome menu for positive HIV clients
         if (getHivMemberObject().getCtcNumber().isEmpty()) {
             menu.findItem(R.id.action_hiv_outcome).setVisible(true);
@@ -368,6 +386,13 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
                 registerParam.setFormTag(OpdJsonFormUtils.formTag(OpdUtils.context().allSharedPreferences()));
                 showProgressDialog(org.smartregister.chw.core.R.string.saving_dialog_title);
                 ((HivProfilePresenter) getHivProfilePresenter()).saveForm(jsonString, registerParam);
+            }
+            if (form.getString(JsonFormUtils.ENCOUNTER_TYPE).equals(Utils.metadata().familyRegister.updateEventType)) {
+                FamilyEventClient familyEventClient = new CoreAllClientsMemberModel().processJsonForm(jsonString, getHivMemberObject().getFamilyBaseEntityId());
+                JSONObject syncLocationField = CoreJsonFormUtils.getJsonField(new JSONObject(jsonString), STEP1, SYNC_LOCATION_ID);
+                familyEventClient.getEvent().setLocationId(CoreJsonFormUtils.getSyncLocationUUIDFromDropdown(syncLocationField));
+                familyEventClient.getEvent().setEntityType(CoreConstants.TABLE_NAME.INDEPENDENT_CLIENT);
+                new FamilyProfileInteractor().saveRegistration(familyEventClient, jsonString, true, (FamilyProfileContract.InteractorCallBack) getHivProfilePresenter());
             }
         } catch (Exception e) {
             Timber.e(e);

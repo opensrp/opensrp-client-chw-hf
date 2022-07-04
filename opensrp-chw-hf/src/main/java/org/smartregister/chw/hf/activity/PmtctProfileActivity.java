@@ -24,10 +24,13 @@ import org.smartregister.chw.core.activity.CoreFamilyProfileActivity;
 import org.smartregister.chw.core.activity.CorePmtctProfileActivity;
 import org.smartregister.chw.core.custom_views.CorePmtctFloatingMenu;
 import org.smartregister.chw.core.listener.OnClickFloatingMenu;
+import org.smartregister.chw.core.model.CoreAllClientsMemberModel;
 import org.smartregister.chw.core.rule.PmtctFollowUpRule;
 import org.smartregister.chw.core.utils.CoreConstants;
+import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.core.utils.FpUtil;
 import org.smartregister.chw.core.utils.HomeVisitUtil;
+import org.smartregister.chw.core.utils.UpdateDetailsUtil;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.adapter.PmtctReferralCardViewAdapter;
 import org.smartregister.chw.hf.custom_view.PmtctFloatingMenu;
@@ -46,6 +49,7 @@ import org.smartregister.chw.pmtct.util.Constants;
 import org.smartregister.chw.referral.util.JsonFormConstants;
 import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
+import org.smartregister.dao.LocationsDao;
 import org.smartregister.domain.AlertStatus;
 import org.smartregister.family.contract.FamilyProfileContract;
 import org.smartregister.family.domain.FamilyEventClient;
@@ -57,6 +61,7 @@ import org.smartregister.opd.utils.OpdDbConstants;
 import org.smartregister.repository.AllSharedPreferences;
 
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -68,7 +73,12 @@ import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 import timber.log.Timber;
 
+import static org.smartregister.AllConstants.LocationConstants.SPECIAL_TAG_FOR_OPENMRS_TEAM_MEMBERS;
 import static org.smartregister.chw.core.utils.CoreConstants.EventType.PMTCT_COMMUNITY_FOLLOWUP;
+import static org.smartregister.chw.hf.utils.Constants.JsonFormConstants.STEP1;
+import static org.smartregister.chw.hf.utils.JsonFormUtils.SYNC_LOCATION_ID;
+import static org.smartregister.chw.hf.utils.JsonFormUtils.getAutoPopulatedJsonEditFormString;
+import static org.smartregister.util.JsonFormUtils.VALUE;
 
 public class PmtctProfileActivity extends CorePmtctProfileActivity {
     private static String baseEntityId;
@@ -130,7 +140,27 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
                 return true;
             } else if (itemId == R.id.action_issue_pmtct_followup_referral) {
                 JSONObject formJsonObject = (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getPmtctcCommunityFollowupReferral());
+                //adds the chw locations under the current facility
+                JSONObject motherChampionLocationField = CoreJsonFormUtils.getJsonField(formJsonObject, org.smartregister.util.JsonFormUtils.STEP1, "mother_champion_location");
+                CoreJsonFormUtils.addLocationsToDropdownField(LocationsDao.getLocationsByTags(
+                        Collections.singleton(SPECIAL_TAG_FOR_OPENMRS_TEAM_MEMBERS)), motherChampionLocationField);
+
+                Date lastVisitDate;
+                if (followUpVisitDate != null) {
+                    lastVisitDate = followUpVisitDate;
+                } else {
+                    lastVisitDate = pmtctRegisterDate;
+                }
+                CoreJsonFormUtils.getJsonField(formJsonObject, STEP1, "last_client_visit_date").put(VALUE, sdf.format(lastVisitDate));
+
                 startFormActivity(formJsonObject);
+                return true;
+            } else if (itemId == org.smartregister.chw.core.R.id.action_location_info) {
+                JSONObject preFilledForm = getAutoPopulatedJsonEditFormString(
+                        CoreConstants.JSON_FORM.getFamilyDetailsRegister(), this,
+                        UpdateDetailsUtil.getFamilyRegistrationDetails(memberObject.getFamilyBaseEntityId()), Utils.metadata().familyRegister.updateEventType);
+                if (preFilledForm != null)
+                    UpdateDetailsUtil.startUpdateClientDetailsActivity(preFilledForm, this);
                 return true;
             }
         } catch (JSONException e) {
@@ -166,6 +196,12 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
                         Timber.e(e);
                     }
                     Toast.makeText(this, "EAC Visit saved", Toast.LENGTH_SHORT).show();
+                } else if (form.getString(JsonFormUtils.ENCOUNTER_TYPE).equals(org.smartregister.chw.core.utils.Utils.metadata().familyRegister.updateEventType)) {
+                    FamilyEventClient familyEventClient = new CoreAllClientsMemberModel().processJsonForm(jsonString, memberObject.getFamilyBaseEntityId());
+                    JSONObject syncLocationField = CoreJsonFormUtils.getJsonField(new JSONObject(jsonString), org.smartregister.util.JsonFormUtils.STEP1, SYNC_LOCATION_ID);
+                    familyEventClient.getEvent().setLocationId(CoreJsonFormUtils.getSyncLocationUUIDFromDropdown(syncLocationField));
+                    familyEventClient.getEvent().setEntityType(CoreConstants.TABLE_NAME.INDEPENDENT_CLIENT);
+                    new FamilyProfileInteractor().saveRegistration(familyEventClient, jsonString, true, (FamilyProfileContract.InteractorCallBack) presenter());
                 } else {
                     profilePresenter.saveForm(data.getStringExtra(Constants.JSON_FORM_EXTRA.JSON));
                     finish();
@@ -299,11 +335,11 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
             try {
                 formJsonObject = (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, org.smartregister.chw.hf.utils.Constants.JsonForm.getEacVisitsForm());
                 if (formJsonObject != null) {
-                    JSONArray fields = formJsonObject.getJSONObject(org.smartregister.chw.hf.utils.Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+                    JSONArray fields = formJsonObject.getJSONObject(STEP1).getJSONArray(JsonFormConstants.FIELDS);
                     JSONObject visit_type = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "eac_visit_type");
 
                     assert visit_type != null;
-                    visit_type.put(JsonFormUtils.VALUE, HfPmtctDao.getEacVisitType(baseEntityId));
+                    visit_type.put(VALUE, HfPmtctDao.getEacVisitType(baseEntityId));
 
                     startFormActivity(formJsonObject);
                 }

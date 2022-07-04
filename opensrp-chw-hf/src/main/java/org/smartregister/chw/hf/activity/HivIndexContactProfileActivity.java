@@ -18,7 +18,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.core.activity.CoreHivIndexContactProfileActivity;
 import org.smartregister.chw.core.listener.OnClickFloatingMenu;
+import org.smartregister.chw.core.model.CoreAllClientsMemberModel;
 import org.smartregister.chw.core.utils.CoreConstants;
+import org.smartregister.chw.core.utils.CoreJsonFormUtils;
+import org.smartregister.chw.core.utils.UpdateDetailsUtil;
+import org.smartregister.chw.core.utils.Utils;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.adapter.HivIndexFollowupCardViewAdapter;
 import org.smartregister.chw.hf.contract.HivIndexContactProfileContract;
@@ -32,6 +36,12 @@ import org.smartregister.chw.hiv.domain.HivIndexContactObject;
 import org.smartregister.chw.hiv.util.DBConstants;
 import org.smartregister.chw.tb.util.Constants;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
+import org.smartregister.family.contract.FamilyProfileContract;
+import org.smartregister.family.domain.FamilyEventClient;
+import org.smartregister.family.interactor.FamilyProfileInteractor;
+import org.smartregister.family.util.JsonFormUtils;
+import org.smartregister.opd.utils.OpdConstants;
+
 
 import java.util.List;
 import java.util.Objects;
@@ -39,7 +49,10 @@ import java.util.Objects;
 import androidx.recyclerview.widget.RecyclerView;
 import timber.log.Timber;
 
+import static org.smartregister.chw.hf.utils.JsonFormUtils.SYNC_LOCATION_ID;
+import static org.smartregister.chw.hf.utils.JsonFormUtils.getAutoPopulatedJsonEditFormString;
 import static org.smartregister.chw.hiv.util.Constants.ActivityPayload.HIV_MEMBER_OBJECT;
+import static org.smartregister.util.JsonFormUtils.STEP1;
 
 public class HivIndexContactProfileActivity extends CoreHivIndexContactProfileActivity implements HivIndexContactProfileContract.View {
 
@@ -124,6 +137,14 @@ public class HivIndexContactProfileActivity extends CoreHivIndexContactProfileAc
             if (itemId == R.id.action_issue_hiv_community_followup_referral) {
                 HivRegisterActivity.startHIVFormActivity(this, getHivIndexContactObject().getBaseEntityId(), CoreConstants.JSON_FORM.getHivIndexContactCommunityFollowupReferral(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getHivIndexContactCommunityFollowupReferral()).toString());
                 return true;
+            } else if (itemId == R.id.action_location_info) {
+                //use this method in hf to get the chw_location instead of encounter_location for chw
+                JSONObject preFilledForm = getAutoPopulatedJsonEditFormString(
+                        CoreConstants.JSON_FORM.getFamilyDetailsRegister(), this,
+                        UpdateDetailsUtil.getFamilyRegistrationDetails(getHivIndexContactObject().getFamilyBaseEntityId()), Utils.metadata().familyRegister.updateEventType);
+                if (preFilledForm != null)
+                    UpdateDetailsUtil.startUpdateClientDetailsActivity(preFilledForm, this);
+                return true;
             }
         } catch (JSONException e) {
             Timber.e(e);
@@ -135,6 +156,7 @@ public class HivIndexContactProfileActivity extends CoreHivIndexContactProfileAc
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(org.smartregister.chw.core.R.menu.hiv_profile_menu, menu);
         menu.findItem(R.id.action_issue_hiv_community_followup_referral).setVisible(true);
+        menu.findItem(org.smartregister.chw.core.R.id.action_location_info).setVisible(UpdateDetailsUtil.isIndependentClient(getHivIndexContactObject().getBaseEntityId()));
         return true;
     }
 
@@ -215,14 +237,28 @@ public class HivIndexContactProfileActivity extends CoreHivIndexContactProfileAc
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode != Activity.RESULT_OK) return;
         try {
-            boolean savedToHivRegistry = data.getBooleanExtra(REGISTERED_TO_HIV_REGISTRY, false);
-            if (savedToHivRegistry) {
-                HivProfileActivity.startHivProfileActivity(this, Objects.requireNonNull(HivDao.getMember(getHivIndexContactObject().getBaseEntityId())));
+            String jsonString = data.getStringExtra(OpdConstants.JSON_FORM_EXTRA.JSON);
+            Timber.d("JSONResult : %s", jsonString);
+
+            if (jsonString == null)
                 finish();
+            JSONObject form = new JSONObject(jsonString);
+            if (form.getString(JsonFormUtils.ENCOUNTER_TYPE).equals(Utils.metadata().familyRegister.updateEventType)) {
+                FamilyEventClient familyEventClient = new CoreAllClientsMemberModel().processJsonForm(jsonString, getHivIndexContactObject().getFamilyBaseEntityId());
+                JSONObject syncLocationField = CoreJsonFormUtils.getJsonField(new JSONObject(jsonString), STEP1, SYNC_LOCATION_ID);
+                familyEventClient.getEvent().setLocationId(CoreJsonFormUtils.getSyncLocationUUIDFromDropdown(syncLocationField));
+                familyEventClient.getEvent().setEntityType(CoreConstants.TABLE_NAME.INDEPENDENT_CLIENT);
+                new FamilyProfileInteractor().saveRegistration(familyEventClient, jsonString, true, (FamilyProfileContract.InteractorCallBack) getHivContactProfilePresenter());
             } else {
-                setHivIndexContactObject(HivIndexDao.getMember(getHivIndexContactObject().getBaseEntityId()));
-                initializePresenter();
-                fetchProfileData();
+                boolean savedToHivRegistry = data.getBooleanExtra(REGISTERED_TO_HIV_REGISTRY, false);
+                if (savedToHivRegistry) {
+                    HivProfileActivity.startHivProfileActivity(this, Objects.requireNonNull(HivDao.getMember(getHivIndexContactObject().getBaseEntityId())));
+                    finish();
+                } else {
+                    setHivIndexContactObject(HivIndexDao.getMember(getHivIndexContactObject().getBaseEntityId()));
+                    initializePresenter();
+                    fetchProfileData();
+                }
             }
         } catch (Exception e) {
             Timber.e(e);

@@ -87,19 +87,20 @@ public class LDPartographTimeActionHelper implements BaseLDVisitAction.LDVisitAc
 
                 try {
 
-                    String completePartographDateString = partographDate+" "+partographTime;
+                    String completePartographDateString = partographDate + " " + partographTime;
                     Date partoDate = completeDateFormat.parse(completePartographDateString);
 
                     long lastPartographDiff = TimeUnit.MILLISECONDS.toMinutes(now.getTime() - partoDate.getTime());
 
-                    if (lastPartographDiff > 30){
+                    if (lastPartographDiff > 30) {
                         Date thirtyMinutesAgo = new Date(); //now
-                        thirtyMinutesAgo = DateUtils.addMinutes(thirtyMinutesAgo, -30);
+                        int thirtyMinutesLimit = -30;
+                        thirtyMinutesAgo = DateUtils.addMinutes(thirtyMinutesAgo, thirtyMinutesLimit);
                         partographLimit = hourFormat.format(thirtyMinutesAgo);
                         partographTimeForm.getJSONObject("global").put("partograph_limit", partographLimit);
                     }
 
-                }catch (Exception e){
+                } catch (Exception e) {
                     Timber.e(e);
                 }
 
