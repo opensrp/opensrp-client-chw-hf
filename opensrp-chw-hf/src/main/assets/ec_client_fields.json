@@ -5481,6 +5481,14 @@
             "field": "obs.fieldCode",
             "formSubmissionField": "amniotic_fluid"
           }
+        },
+        {
+          "column_name": "forecasted_svd_time",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "forecasted_svd_time"
+          }
         }
       ]
     },
