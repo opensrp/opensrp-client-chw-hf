@@ -650,4 +650,20 @@ public class Constants extends CoreConstants {
         public static final String FIRST_NAME = "firstName";
         public static final String LAST_NAME = "lastName";
     }
+
+    public static final class LDFormFields {
+        public interface GeneralExamination {
+
+        }
+        public interface VaginalExamination {
+            String VAGINAL_EXAMINATION_DATE = "vaginal_exam_date";
+            String VAGINAL_EXAMINATION_TIME = "vaginal_exam_time";
+            String PRESENTING_PART = "presenting_part";
+            String OCCIPUT_POSITION = "occiput_position";
+            String MENTO_POSITION = "mento_position";
+            String SACRO_POSITION = "sacro_position";
+            String DORSO_POSITION = "dorso_position";
+        }
+    }
+
 }

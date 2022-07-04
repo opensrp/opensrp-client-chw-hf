@@ -57,6 +57,24 @@ public class LDVaginalExaminationActionHelper implements BaseLDVisitAction.LDVis
                 JSONArray fields = vaginalExaminationForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
                 populateVaginalExaminationForm(fields, baseEntityId);
 
+                //Check if presenting part field has been filled out, if true do not show it again
+                if (LDDao.getPresentingPart(baseEntityId) != null) {
+                    JSONObject presentingPartField = org.smartregister.chw.hf.utils.JsonFormUtils.getFieldJSONObject(fields, Constants.LDFormFields.VaginalExamination.PRESENTING_PART);
+                    if (presentingPartField != null) presentingPartField.put("hidden", true);
+
+                    JSONObject occiputPosition = org.smartregister.chw.hf.utils.JsonFormUtils.getFieldJSONObject(fields, Constants.LDFormFields.VaginalExamination.OCCIPUT_POSITION);
+                    if (occiputPosition != null) occiputPosition.put("hidden", true);
+
+                    JSONObject mentoPosition = org.smartregister.chw.hf.utils.JsonFormUtils.getFieldJSONObject(fields, Constants.LDFormFields.VaginalExamination.MENTO_POSITION);
+                    if (mentoPosition != null) mentoPosition.put("hidden", true);
+
+                    JSONObject sacroPosition = org.smartregister.chw.hf.utils.JsonFormUtils.getFieldJSONObject(fields, Constants.LDFormFields.VaginalExamination.SACRO_POSITION);
+                    if (sacroPosition != null) sacroPosition.put("hidden", true);
+
+                    JSONObject dorsoPosition = org.smartregister.chw.hf.utils.JsonFormUtils.getFieldJSONObject(fields, Constants.LDFormFields.VaginalExamination.DORSO_POSITION);
+                    if (dorsoPosition != null) dorsoPosition.put("hidden", true);
+                }
+
                 if (LDDao.getLabourOnsetDate(baseEntityId) != null) {
                     vaginalExaminationForm.getJSONObject("global").put("labour_onset_date", LDDao.getLabourOnsetDate(baseEntityId));
                 }

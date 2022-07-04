@@ -5427,6 +5427,14 @@
           }
         },
         {
+          "column_name": "presenting_part",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "presenting_part"
+          }
+        },
+        {
           "column_name": "occiput_position",
           "type": "Event",
           "json_mapping": {
