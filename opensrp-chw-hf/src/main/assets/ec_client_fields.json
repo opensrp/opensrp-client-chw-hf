@@ -5459,6 +5459,14 @@
           }
         },
         {
+          "column_name": "presenting_part",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "presenting_part"
+          }
+        },
+        {
           "column_name": "occiput_position",
           "type": "Event",
           "json_mapping": {
@@ -5472,6 +5480,14 @@
           "json_mapping": {
             "field": "obs.fieldCode",
             "formSubmissionField": "amniotic_fluid"
+          }
+        },
+        {
+          "column_name": "forecasted_svd_time",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "forecasted_svd_time"
           }
         }
       ]
