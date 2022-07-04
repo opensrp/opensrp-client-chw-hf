@@ -1,6 +1,7 @@
 package org.smartregister.chw.hf.activity;
 
 import android.content.Context;
+import android.os.Build;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -37,6 +38,7 @@ import org.smartregister.family.model.BaseFamilyOtherMemberProfileActivityModel;
 import org.smartregister.family.util.DBConstants;
 import org.smartregister.view.contract.BaseProfileContract;
 
+import androidx.annotation.RequiresApi;
 import androidx.viewpager.widget.ViewPager;
 import timber.log.Timber;
 
@@ -284,13 +286,15 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
         super.isIndependent = isIndependentClient;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void onClickMenu(int viewId) {
         if (viewId == R.id.call_layout) {
             FamilyCallDialogFragment.launchDialog(this, familyBaseEntityId);
         }
-        if (viewId == R.id.refer_to_facility_layout) {
-            LFTUFormUtils.startLTFUReferral(this, baseEntityId);
+        if (viewId == R.id.refer_to_facility_layout){
+            String gender = Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.GENDER, false);
+            LFTUFormUtils.startLTFUReferral(this, baseEntityId,gender);
         }
     }
 
