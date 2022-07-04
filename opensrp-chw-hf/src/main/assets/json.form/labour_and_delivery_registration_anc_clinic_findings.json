@@ -135,11 +135,11 @@
         }
       },
       {
-        "key": "management_provided_for_hb_level",
+        "key": "management_provided_for_severe_anaemia",
         "type": "native_radio",
-        "label": "Was management provided for abnormal HB Level?",
+        "label": "Was management provided for severe anaemia?",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "management_provided_for_hb_level",
+        "openmrs_entity_id": "management_provided_for_severe_anaemia",
         "openmrs_entity_parent": "",
         "options": [
           {
@@ -167,13 +167,30 @@
         }
       },
       {
-        "key": "prompt_for_moderate_anaemia_management",
-        "type": "toaster_notes",
-        "text": "Manage the mild anaemia according to standard guidelines",
-        "openmrs_entity_id": "prompt_for_moderate_anaemia_management",
+        "key": "management_provided_for_mild_anaemia",
+        "type": "native_radio",
+        "label": "Was management provided for mild anaemia?",
         "openmrs_entity": "concept",
+        "openmrs_entity_id": "management_provided_for_mild_anaemia",
         "openmrs_entity_parent": "",
-        "toaster_type": "warning",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
