@@ -320,6 +320,7 @@
     <string name="ld_new_born_status_action_title">Immediate New Born Care {0}</string>
     <string name="ld_post_delivery_observation_action_title">Post Delivery Observation</string>
     <string name="ld_mother_status_action_title">Mother\'s Status</string>
+    <string name="ld_post_delivery_family_planning">Family Planning</string>
     <string name="ld_baby_of_text">Baby of</string>
     <string name="partograph_date_time">Partograph Details recorded at {0}, {1}</string>
     <string name="fetal_well_being">Fetal Well Being</string>

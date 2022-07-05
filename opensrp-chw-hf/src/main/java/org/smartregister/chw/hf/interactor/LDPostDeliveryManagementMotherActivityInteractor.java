@@ -35,6 +35,7 @@ import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.actionhelper.PostDeliveryFamilyPlanningActionHelper;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hf.utils.LDDao;
 import org.smartregister.chw.hf.utils.LDVisitUtils;
@@ -119,6 +120,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                 evaluateMotherStatus(callBack);
                 evaluatePostDeliveryObservation();
                 evaluateMaternalComplicationLabour();
+                evaluateFamilyPlanning();
 
             } catch (BaseLDVisitAction.ValidationException e) {
                 Timber.e(e);
@@ -169,6 +171,22 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                 .withDetails(details)
                 .withBaseEntityID(memberObject.getBaseEntityId())
                 .withFormName(Constants.JsonForm.LDPostDeliveryMotherManagement.getLdPostDeliveryMaternalComplications())
+                .build();
+
+        actionList.put(title, action);
+    }
+
+    private void evaluateFamilyPlanning() throws BaseLDVisitAction.ValidationException {
+        String title = context.getString(R.string.ld_post_delivery_family_planning);
+
+        PostDeliveryFamilyPlanningActionHelper actionHelper = new PostDeliveryFamilyPlanningActionHelper();
+
+        BaseLDVisitAction action = getBuilder(title)
+                .withOptional(false)
+                .withHelper(actionHelper)
+                .withDetails(details)
+                .withBaseEntityID(memberObject.getBaseEntityId())
+                .withFormName(Constants.JsonForm.LDPostDeliveryMotherManagement.getLdPostDeliveryFamilyPlanning())
                 .build();
 
         actionList.put(title, action);
@@ -490,10 +508,10 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                 JSONArray fields = JsonFormUtils.fields(jsonObject);
 
                 JSONObject mother_observation_module_status = JsonFormUtils.getFieldJSONObject(fields, "mother_observation_module_status");
-                assert mother_observation_module_status != null;
-                mother_observation_module_status.remove(com.vijay.jsonwizard.constants.JsonFormConstants.VALUE);
-                mother_observation_module_status.put(com.vijay.jsonwizard.constants.JsonFormConstants.VALUE, completionStatus);
-
+                if (mother_observation_module_status != null) {
+                    mother_observation_module_status.remove(com.vijay.jsonwizard.constants.JsonFormConstants.VALUE);
+                    mother_observation_module_status.put(com.vijay.jsonwizard.constants.JsonFormConstants.VALUE, completionStatus);
+                }
                 return jsonObject.toString();
 
             } catch (Exception e) {
