@@ -6119,6 +6119,22 @@
           }
         },
         {
+          "column_name": "family_planning_counselling_after_delivery",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "family_planning_counselling_after_delivery"
+          }
+        },
+        {
+          "column_name": "family_planning_methods_selected",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "family_planning_methods_selected"
+          }
+        },
+        {
           "column_name": "visit_date",
           "type": "Event",
           "json_mapping": {
