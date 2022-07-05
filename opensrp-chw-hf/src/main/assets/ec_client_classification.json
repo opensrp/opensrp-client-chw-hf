@@ -671,7 +671,8 @@
             "field": "eventType",
             "field_value": "LD Active Management of 3rd Stage Of Labour",
             "creates_case": [
-              "ec_ld_confirmation"
+              "ec_ld_confirmation",
+              "ec_ld_placenta_and_membrane"
             ]
           },
           {
@@ -686,6 +687,20 @@
             "field_value": "Post Delivery Mother Management",
             "creates_case": [
               "ec_pregnancy_outcome"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "Post Delivery Mother Management",
+            "creates_case": [
+              "ec_ld_postpartum_care"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "LND Newborn",
+            "creates_case": [
+              "ec_ld_immediate_new_born_care"
             ]
           },
           {

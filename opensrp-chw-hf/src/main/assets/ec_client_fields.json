@@ -5671,6 +5671,447 @@
       ]
     },
     {
+      "name": "ec_ld_placenta_and_membrane",
+      "columns": [
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "uterotonic",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "uterotonic"
+          }
+        },
+        {
+          "column_name": "method_used_to_remove_the_placenta",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "method_used_to_remove_the_placenta"
+          }
+        },
+        {
+          "column_name": "placenta_and_membrane_expulsion",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "placenta_and_membrane_expulsion"
+          }
+        },
+        {
+          "column_name": "type_of_incomplete_placenta",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "type_of_incomplete_placenta"
+          }
+        },
+        {
+          "column_name": "placenta_removed_by_hand",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "placenta_removed_by_hand"
+          }
+        },
+        {
+          "column_name": "prompt_for_placenta_and_membrane_expulsion",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "prompt_for_placenta_and_membrane_expulsion"
+          }
+        },
+        {
+          "column_name": "conducted_mva",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "conducted_mva"
+          }
+        },
+        {
+          "column_name": "administered_antibiotics",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "administered_antibiotics"
+          }
+        },
+        {
+          "column_name": "administered_magnesium_sulphate",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "administered_magnesium_sulphate"
+          }
+        },
+        {
+          "column_name": "removal_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "removal_date"
+          }
+        },
+        {
+          "column_name": "removal_duration",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "removal_duration"
+          }
+        },
+        {
+          "column_name": "estimated_blood_loss",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "estimated_blood_loss"
+          }
+        },
+        {
+          "column_name": "prompt_for_excessive_blood_loss",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "prompt_for_excessive_blood_loss"
+          }
+        },
+        {
+          "column_name": "provided_blood_transfusion",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "provided_blood_transfusion"
+          }
+        },
+        {
+          "column_name": "name_of_the_provider_who_removed_the_placenta",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "name_of_the_provider_who_removed_the_placenta"
+          }
+        },
+        {
+          "column_name": "uterus_massage_after_delivery",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "uterus_massage_after_delivery"
+          }
+        },
+        {
+          "column_name": "reason_for_not_massaging_uterus_after_delivery",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "reason_for_not_massaging_uterus_after_delivery"
+          }
+        },
+        {
+          "column_name": "visit_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "version"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ec_ld_immediate_new_born_care",
+      "columns": [
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "delivery_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "delivery_date"
+          }
+        },
+        {
+          "column_name": "delivery_time",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "delivery_time"
+          }
+        },
+        {
+          "column_name": "newborn_status",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "newborn_status"
+          }
+        },
+        {
+          "column_name": "still_birth_choice",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "still_birth_choice"
+          }
+        },
+        {
+          "column_name": "sex",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "sex"
+          }
+        },
+        {
+          "column_name": "apgar_score_at_1_minute",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "apgar_score_at_1_minute"
+          }
+        },
+        {
+          "column_name": "apgar_score_at_5_minutes",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "apgar_score_at_5_minutes"
+          }
+        },
+        {
+          "column_name": "resuscitation",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "resuscitation"
+          }
+        },
+        {
+          "column_name": "weight",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "weight"
+          }
+        },
+        {
+          "column_name": "keep_warm",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "keep_warm"
+          }
+        },
+        {
+          "column_name": "early_bf_1hr",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "early_bf_1hr"
+          }
+        },
+        {
+          "column_name": "risk_category",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "risk_category"
+          }
+        },
+        {
+          "column_name": "provided_azt_nvp_syrup",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "provided_azt_nvp_syrup"
+          }
+        },
+        {
+          "column_name": "provided_other_combinations",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "provided_other_combinations"
+          }
+        },
+        {
+          "column_name": "provided_nvp_syrup",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "provided_nvp_syrup"
+          }
+        },
+        {
+          "column_name": "collect_dbs",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "collect_dbs"
+          }
+        },
+        {
+          "column_name": "prophylaxis_arv_for_high_risk_given",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "prophylaxis_arv_for_high_risk_given"
+          }
+        },
+        {
+          "column_name": "name_of_the_provider_who_removed_the_placenta",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "name_of_the_provider_who_removed_the_placenta"
+          }
+        },
+        {
+          "column_name": "uterus_massage_after_delivery",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "uterus_massage_after_delivery"
+          }
+        },
+        {
+          "column_name": "reason_for_not_massaging_uterus_after_delivery",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "reason_for_not_massaging_uterus_after_delivery"
+          }
+        },
+        {
+          "column_name": "visit_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "version"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ec_ld_postpartum_care",
+      "columns": [
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "status",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "status"
+          }
+        },
+        {
+          "column_name": "cause_of_death",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "cause_of_death"
+          }
+        },
+        {
+          "column_name": "time_of_death",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "time_of_death"
+          }
+        },
+        {
+          "column_name": "delivery_place",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "delivery_place"
+          }
+        },
+        {
+          "column_name": "delivered_by_occupation",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "delivered_by_occupation"
+          }
+        },
+        {
+          "column_name": "number_of_children_born",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "number_of_children_born"
+          }
+        },
+        {
+          "column_name": "delivery_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "delivery_date"
+          }
+        },
+        {
+          "column_name": "delivery_time",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "delivery_time"
+          }
+        },
+        {
+          "column_name": "labour_duration",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "labour_duration"
+          }
+        },
+        {
+          "column_name": "maternal_complications_before_delivery",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "maternal_complications_before_delivery"
+          }
+        },
+        {
+          "column_name": "maternal_complications_during_and_after_delivery",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "maternal_complications_during_and_after_delivery"
+          }
+        },
+        {
+          "column_name": "visit_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "version"
+          }
+        }
+      ]
+    },
+    {
       "name": "ec_cbhs_register",
       "columns": [
         {
