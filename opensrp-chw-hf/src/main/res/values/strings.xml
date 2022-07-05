@@ -375,6 +375,11 @@
     <string name="ld_reports_subtitle">View Labour Delivery Reports</string>
     <string name="ld_report_title">Labour And Delivery Reports</string>
     <string name="mother_champion_referral">Mother Champion Referral</string>
+    <string name="ltfu_clinic_ctc">CTC</string>
+    <string name="ltfu_clinic_pwid">PWID</string>
+    <string name="ltfu_clinic_prep">PrEP</string>
+    <string name="ltfu_clinic_pmtct">PMTCT</string>
+    <string name="ltfu_clinic_tb">TB</string>
 
 
 </resources>

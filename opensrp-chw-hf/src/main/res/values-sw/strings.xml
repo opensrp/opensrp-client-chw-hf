@@ -277,4 +277,11 @@
     <string name="anc_fundal_height_min_err">Kimo cha mimba lazima kiwe sawa au zaidi ya</string>
 
 
+    <string name="ltfu_clinic_ctc">CTC</string>
+    <string name="ltfu_clinic_pwid">KLINIKI YA WAJIDUNGA</string>
+    <string name="ltfu_clinic_prep">CTC(Dawa Kinga)</string>
+    <string name="ltfu_clinic_pmtct">PMTCT</string>
+    <string name="ltfu_clinic_tb">TB</string>
+
+
 </resources>
