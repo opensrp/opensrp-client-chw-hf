@@ -271,6 +271,7 @@
     <string name="ld_registration_current_labour_complete">Recording Current Labour History is complete</string>
     <string name="ld_registration_true_labour_complete">The client has True labour</string>
     <string name="ld_registration_false_labour_complete">The client has False labour</string>
+    <string name="ld_registration_true_labour_confirmation_done">True labour confirmation is done</string>
     <string name="ld_registration_true_labour_client_admitted">The client is been admitted to labour ward</string>
 
     <string name="ld_registration_triage_action_subtitle_pending">Triage is Pending</string>
