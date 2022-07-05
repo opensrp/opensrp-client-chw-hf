@@ -261,6 +261,8 @@
     <string name="received_referrals">Rufaa Zilizopokelewa</string>
     <string name="successful_referrals">Rufaa Zilizofanikiwa</string>
     <string name="lost_to_followup_referral">Rufaa za mteja aliepotea</string>
+    <string name="referral_village">Eneo La WAJA</string>
+    <string name="referral_clinic">Kitengo</string>
 
     <!-- Labour and Delivery String Resources-->
     <string name="menu_ld">L&amp;D</string>

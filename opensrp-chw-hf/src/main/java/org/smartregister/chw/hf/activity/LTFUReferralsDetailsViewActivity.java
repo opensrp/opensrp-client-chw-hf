@@ -1,6 +1,7 @@
 package org.smartregister.chw.hf.activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
@@ -172,7 +173,7 @@ public class LTFUReferralsDetailsViewActivity extends ReferralDetailsViewActivit
         //it is memberObject
         MemberObject memberObject = new MemberObject(client);
 
-        clientReferralProblem.setText(memberObject.getProblem());
+        clientReferralProblem.setText(getReferralClinic(memberObject.getProblem(), this));
 
         int clientAge = new Period(new DateTime(memberObject.getAge()), new DateTime()).getYears();
         clientName.setText(String.format(Locale.getDefault(), "%s %s %s, %d", memberObject.getFirstName(), memberObject.getMiddleName(), memberObject.getLastName(), clientAge));
@@ -209,6 +210,23 @@ public class LTFUReferralsDetailsViewActivity extends ReferralDetailsViewActivit
             referralFacility.setText(location.getProperties().getName());
         } else {
             referralFacility.setText(locationId);
+        }
+    }
+
+    private String getReferralClinic(String key, Context context){
+        switch (key.toLowerCase()){
+            case "ctc":
+                return context.getString(R.string.ltfu_clinic_ctc);
+            case "pwid":
+                return context.getString(R.string.ltfu_clinic_pwid);
+            case "prep":
+                return context.getString(R.string.ltfu_clinic_prep);
+            case "pmtct":
+                return context.getString(R.string.ltfu_clinic_pmtct);
+            case "tb":
+                return context.getString(R.string.ltfu_clinic_tb);
+            default:
+                return key.toUpperCase();
         }
     }
 
