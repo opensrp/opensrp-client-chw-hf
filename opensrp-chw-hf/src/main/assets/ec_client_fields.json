@@ -3334,6 +3334,14 @@
             "field": "obs.formSubmissionField",
             "concept": "referral_status"
           }
+        },
+        {
+          "column_name": "on_art",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "on_art"
+          }
         }
       ]
     },
