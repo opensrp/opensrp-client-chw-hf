@@ -58,6 +58,8 @@ public class LTFUReferralsDetailsViewActivity extends ReferralDetailsViewActivit
         Intent intent = new Intent(activity, LTFUReferralsDetailsViewActivity.class);
         intent.putExtra(Constants.ReferralMemberObject.MEMBER_OBJECT, memberObject);
         LTFUReferralsDetailsViewActivity.client = client;
+        task = null;
+        isSuccessfulReferral = false;
         activity.startActivity(intent);
     }
 
@@ -146,12 +148,15 @@ public class LTFUReferralsDetailsViewActivity extends ReferralDetailsViewActivit
         }
 
         if (followupStatus != null) {
-            feedBackFollowupStatus.setText(followupStatus);
+            feedBackFollowupStatus.setText(getTranslatedFollowupStatus(followupStatus,this));
         }
 
         if (followupStatus != null && followupStatus.equalsIgnoreCase("continuing_with_services")) {
             feedBackReasonsLayout.setVisibility(View.VISIBLE);
-            feedBackReasons.setText(LTFUFeedbackDao.getReasonsForMissedAppointment(task.getIdentifier()));
+            String reasons = LTFUFeedbackDao.getReasonsForMissedAppointment(task.getIdentifier());
+            if(reasons!=null){
+                feedBackReasons.setText(getTranslatedReasonsForMissedAppointment(reasons,this));
+            }
             returnDateLayout.setVisibility(View.VISIBLE);
             returnDate.setText(dateFormatter.format(LTFUFeedbackDao.getReferralAppointmentDate(task.getIdentifier())));
         }
@@ -163,7 +168,10 @@ public class LTFUReferralsDetailsViewActivity extends ReferralDetailsViewActivit
 
         if (followupStatus != null && followupStatus.equalsIgnoreCase("client_not_found")) {
             feedBackReasonsLayout.setVisibility(View.VISIBLE);
-            feedBackReasons.setText(LTFUFeedbackDao.getReasonClientNotFound(task.getIdentifier()));
+            String reasons = LTFUFeedbackDao.getReasonClientNotFound(task.getIdentifier());
+            if(reasons!=null){
+                feedBackReasons.setText(getTranslatedReasonClientNotFound(reasons,this));
+            }
         }
 
 
@@ -225,6 +233,67 @@ public class LTFUReferralsDetailsViewActivity extends ReferralDetailsViewActivit
                 return context.getString(R.string.ltfu_clinic_pmtct);
             case "tb":
                 return context.getString(R.string.ltfu_clinic_tb);
+            default:
+                return key.toUpperCase();
+        }
+    }
+
+    private String getTranslatedFollowupStatus(String key, Context context){
+        switch (key.toLowerCase()){
+            case "continuing_with_services":
+                return context.getString(R.string.ltfu_followup_status_continuing_with_services);
+            case "client_found_ready_to_return":
+                return context.getString(R.string.ltfu_followup_status_client_found_ready_to_return);
+            case "client_has_moved_to_another_facility":
+                return context.getString(R.string.ltfu_followup_status_client_has_moved_to_another_facility);
+            case "client_has_relocated":
+                return context.getString(R.string.ltfu_followup_status_client_has_relocated);
+            case "client_does_not_want_to_return":
+                return context.getString(R.string.ltfu_followup_status_client_does_not_want_to_return);
+            case "deceased":
+                return context.getString(R.string.ltfu_followup_status_deceased);
+            case "client_not_found":
+                return context.getString(R.string.ltfu_followup_status_client_not_found);
+            default:
+                return key.toUpperCase();
+        }
+    }
+
+    private String getTranslatedReasonsForMissedAppointment(String key, Context context){
+        switch (key.toLowerCase()){
+            case "client_has_forgotten":
+                return context.getString(R.string.ltfu_reasons_for_missed_appointment_client_has_forgotten);
+            case "client_was_ill":
+                return context.getString(R.string.ltfu_reasons_for_missed_appointment_client_was_ill);
+            case "client_failed_to_disclose_his_status":
+                return context.getString(R.string.ltfu_reasons_for_missed_appointment_client_failed_to_disclose_his_status);
+            case "client_did_not_have_fare":
+                return context.getString(R.string.ltfu_reasons_for_missed_appointment_client_did_not_have_fare);
+            case "client_lives_far_away_from_the_health_facility":
+                return context.getString(R.string.ltfu_reasons_for_missed_appointment_client_lives_far_away_from_the_health_facility);
+            case "client_feels_well":
+                return context.getString(R.string.ltfu_reasons_for_missed_appointment_client_feels_well);
+            case "client_was_busy_at_work":
+                return context.getString(R.string.ltfu_reasons_for_missed_appointment_client_was_busy_at_work);
+            case "client_traveled":
+                return context.getString(R.string.ltfu_reasons_for_missed_appointment_client_traveled);
+            case "client_uses_alternative_medicine":
+                return context.getString(R.string.ltfu_reasons_for_missed_appointment_client_uses_alternative_medicine);
+            case "poor_services_at_health_facility":
+                return context.getString(R.string.ltfu_reasons_for_missed_appointment_poor_services_at_health_facility);
+            default:
+                return key.toUpperCase();
+        }
+    }
+
+    private String getTranslatedReasonClientNotFound(String key, Context context){
+        switch (key.toLowerCase()){
+            case "address_incorrect":
+                return context.getString(R.string.ltfu_reason_client_not_found_address_incorrect);
+            case "client_relocated":
+                return context.getString(R.string.ltfu_reason_client_not_found_client_relocated);
+            case "seasonal_work":
+                return context.getString(R.string.ltfu_reason_client_not_found_seasonal_work);
             default:
                 return key.toUpperCase();
         }
