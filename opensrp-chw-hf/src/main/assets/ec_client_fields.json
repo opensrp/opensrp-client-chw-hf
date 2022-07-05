@@ -5671,6 +5671,106 @@
       ]
     },
     {
+      "name": "ec_ld_postpartum_care",
+      "columns": [
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "status",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "status"
+          }
+        },
+        {
+          "column_name": "cause_of_death",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "cause_of_death"
+          }
+        },
+        {
+          "column_name": "time_of_death",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "time_of_death"
+          }
+        },
+        {
+          "column_name": "delivery_place",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "delivery_place"
+          }
+        },
+        {
+          "column_name": "delivered_by_occupation",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "delivered_by_occupation"
+          }
+        },
+        {
+          "column_name": "number_of_children_born",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "number_of_children_born"
+          }
+        },
+        {
+          "column_name": "delivery_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "delivery_date"
+          }
+        },
+        {
+          "column_name": "delivery_time",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "delivery_time"
+          }
+        },
+        {
+          "column_name": "labour_duration",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "labour_duration"
+          }
+        },
+        {
+          "column_name": "maternal_complications_before_delivery",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "maternal_complications_before_delivery"
+          }
+        },
+        {
+          "column_name": "maternal_complications_during_and_after_delivery",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "maternal_complications_during_and_after_delivery"
+          }
+        }
+      ]
+    },
+    {
       "name": "ec_cbhs_register",
       "columns": [
         {
