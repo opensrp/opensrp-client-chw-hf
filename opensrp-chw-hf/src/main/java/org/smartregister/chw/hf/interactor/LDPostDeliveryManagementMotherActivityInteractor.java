@@ -36,7 +36,7 @@ import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.utils.Constants;
-import org.smartregister.chw.hf.utils.LDDao;
+import org.smartregister.chw.hf.dao.LDDao;
 import org.smartregister.chw.hf.utils.LDVisitUtils;
 import org.smartregister.chw.ld.LDLibrary;
 import org.smartregister.chw.ld.contract.BaseLDVisitContract;
@@ -305,7 +305,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                         action = new BaseLDVisitAction.Builder(context, title)
                                 .withOptional(false)
                                 .withHelper(actionHelper)
-                                .withBaseEntityID(baseEntityId)
+                                .withBaseEntityID(org.smartregister.chw.anc.util.JsonFormUtils.generateRandomUUIDString())
                                 .withProcessingMode(BaseLDVisitAction.ProcessingMode.SEPARATE)
                                 .withFormName(Constants.JsonForm.LDPostDeliveryMotherManagement.getLdNewBornStatus())
                                 .build();
@@ -838,7 +838,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                 }
             }
             if (isChildAlive(obs)) {
-                saveChild(memberID, LDDao.getHivStatus(memberID), getRiskStatus(obs), allSharedPreferences, memberObject.getFamilyBaseEntityId(), getDeliveryDateString(obs), obs);
+                saveChild(memberID,memberObject.getBaseEntityId(), LDDao.getHivStatus(memberObject.getBaseEntityId()), getRiskStatus(obs), allSharedPreferences, memberObject.getFamilyBaseEntityId(), getDeliveryDateString(obs), obs);
             }
 
             boolean visitCompleted = true;
@@ -859,12 +859,11 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
     }
 
-    private void saveChild(String motherBaseId, String motherHivStatus, String childRiskCategory, AllSharedPreferences
+    private void saveChild(String childBaseEntityId, String motherBaseId, String motherHivStatus, String childRiskCategory, AllSharedPreferences
             allSharedPreferences, String familyBaseEntityId, String dob, JSONArray obs) {
         String uniqueChildID = AncLibrary.getInstance().getUniqueIdRepository().getNextUniqueId().getOpenmrsId();
 
         if (StringUtils.isNotBlank(uniqueChildID)) {
-            String childBaseEntityId = org.smartregister.chw.anc.util.JsonFormUtils.generateRandomUUIDString();
             try {
                 String lastName = memberObject.getLastName();
                 JSONObject pncForm = getFormAsJson(
