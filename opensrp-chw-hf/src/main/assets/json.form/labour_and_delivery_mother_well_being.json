@@ -80,6 +80,10 @@
         "v_max": {
           "value": "200",
           "err": "The pulse rate must be equal or less than 200 (bpm)"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please input the pulse rate"
         }
       },
       {
