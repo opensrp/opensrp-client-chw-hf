@@ -75,7 +75,7 @@ public class LDVaginalExaminationActionHelper implements BaseLDVisitAction.LDVis
 
             JSONObject amnioticFluid = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "amniotic_fluid");
 
-            if (org.smartregister.chw.hf.utils.LDDao.getMembraneState(baseEntityId) != null && org.smartregister.chw.hf.utils.LDDao.getMembraneState(baseEntityId).equalsIgnoreCase("ruptured")) {
+            if (org.smartregister.chw.hf.dao.LDDao.getMembraneState(baseEntityId) != null && org.smartregister.chw.hf.dao.LDDao.getMembraneState(baseEntityId).equalsIgnoreCase("ruptured")) {
                 amnioticFluid.getJSONArray("options").remove(0);
             }
         } catch (JSONException e) {
