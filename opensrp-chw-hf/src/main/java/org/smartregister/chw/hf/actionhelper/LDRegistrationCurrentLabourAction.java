@@ -52,7 +52,7 @@ public class LDRegistrationCurrentLabourAction implements BaseLDVisitAction.LDVi
         try {
             JSONObject jsonObject = new JSONObject(jsonPayload);
 
-            if (reasonsForAdmission != null && (reasonsForAdmission.equalsIgnoreCase("elective_cesarean_section") || reasonsForAdmission.equalsIgnoreCase("induction"))) {
+            if (reasonsForAdmission != null && (reasonsForAdmission.contains("elective_cesarean_section") || reasonsForAdmission.contains("induction"))) {
                 labourOnsetDate = "none";
                 labourOnsetTime = "none";
             } else {
