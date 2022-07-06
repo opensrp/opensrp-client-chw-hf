@@ -4212,7 +4212,7 @@ indicators:
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
                                INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
-                      WHERE elinbc.early_rf_1hr = 'yes'
+                      WHERE elinbc.reason_for_not_breast_feeding_within_one_hour LIKE '%replacement_feeding%'
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -4312,7 +4312,7 @@ indicators:
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
                                INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
-                      WHERE elinbc.early_rf_1hr = 'yes'
+                      WHERE elinbc.reason_for_not_breast_feeding_within_one_hour LIKE '%replacement_feeding%'
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -4412,7 +4412,7 @@ indicators:
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
                                INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
-                      WHERE elinbc.early_rf_1hr = 'yes'
+                      WHERE elinbc.reason_for_not_breast_feeding_within_one_hour LIKE '%replacement_feeding%'
                         AND (date(efm.dob, '+20 years') <= date('now'))
                         AND (date(efm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -4512,7 +4512,7 @@ indicators:
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
                                INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
-                      WHERE elinbc.early_rf_1hr = 'yes'
+                      WHERE elinbc.reason_for_not_breast_feeding_within_one_hour LIKE '%replacement_feeding%'
                         AND (date(efm.dob, '+25 years') <= date('now'))
                         AND (date(efm.dob, '+30 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -4612,7 +4612,7 @@ indicators:
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
                                INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
-                      WHERE elinbc.early_rf_1hr = 'yes'
+                      WHERE elinbc.reason_for_not_breast_feeding_within_one_hour LIKE '%replacement_feeding%'
                         AND (date(efm.dob, '+30 years') <= date('now'))
                         AND (date(efm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -4707,7 +4707,7 @@ indicators:
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
                                INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
-                      WHERE elinbc.early_rf_1hr = 'yes'
+                      WHERE elinbc.reason_for_not_breast_feeding_within_one_hour LIKE '%replacement_feeding%'
                         AND (date(efm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||

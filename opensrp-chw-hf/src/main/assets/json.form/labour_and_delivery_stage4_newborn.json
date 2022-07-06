@@ -1601,35 +1601,6 @@
         }
       },
       {
-        "key": "early_rf_1hr",
-        "type": "native_radio",
-        "label": "Was the infant fed formula milk (RF) within one hour",
-        "openmrs_entity_id": "early_rf_1hr",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "options": [
-          {
-            "key": "yes",
-            "text": "Yes",
-            "openmrs_entity_id": "yes",
-            "openmrs_entity": "concept"
-          },
-          {
-            "key": "no",
-            "text": "No",
-            "openmrs_entity_id": "no",
-            "openmrs_entity": "concept"
-          }
-        ],
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
-            }
-          }
-        }
-      },
-      {
         "key": "eye_care",
         "type": "native_radio",
         "label": "Eye Care",

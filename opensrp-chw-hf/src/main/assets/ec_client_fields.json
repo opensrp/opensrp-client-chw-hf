@@ -5963,11 +5963,11 @@
           }
         },
         {
-          "column_name": "early_rf_1hr",
+          "column_name": "reason_for_not_breast_feeding_within_one_hour",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "formSubmissionField": "early_rf_1hr"
+            "formSubmissionField": "reason_for_not_breast_feeding_within_one_hour"
           }
         },
         {
