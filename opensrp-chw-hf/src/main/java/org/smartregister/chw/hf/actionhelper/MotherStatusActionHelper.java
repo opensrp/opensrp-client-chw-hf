@@ -11,12 +11,10 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.smartregister.chw.anc.util.AppExecutors;
 import org.smartregister.chw.hf.R;
-import org.smartregister.chw.hf.interactor.LDPostDeliveryManagementMotherActivityInteractor;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hf.utils.LDDao;
 import org.smartregister.chw.ld.LDLibrary;
 import org.smartregister.chw.ld.contract.BaseLDVisitContract;
-import org.smartregister.chw.ld.domain.MemberObject;
 import org.smartregister.chw.ld.domain.Visit;
 import org.smartregister.chw.ld.domain.VisitDetail;
 import org.smartregister.chw.ld.model.BaseLDVisitAction;
@@ -191,7 +189,7 @@ public class MotherStatusActionHelper implements BaseLDVisitAction.LDVisitAction
                 } else {
                     title = MessageFormat.format(context.getString(R.string.ld_new_born_status_action_title), "of " + ordinal(i + 1) + " baby");
                 }
-                LDPostDeliveryManagementMotherActivityInteractor.NewBornActionHelper actionHelper = new LDPostDeliveryManagementMotherActivityInteractor.NewBornActionHelper(baseEntityId, delivery_date, delivery_time, numberOfChildrenBorn, status, ordinal(i + 1));
+                NewBornActionHelper actionHelper = new NewBornActionHelper(baseEntityId, delivery_date, delivery_time, numberOfChildrenBorn, status, ordinal(i + 1));
                 BaseLDVisitAction action = null;
                 try {
                     action = new BaseLDVisitAction.Builder(context, title)
