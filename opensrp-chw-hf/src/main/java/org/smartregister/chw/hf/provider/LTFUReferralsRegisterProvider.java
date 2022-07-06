@@ -47,7 +47,7 @@ public class LTFUReferralsRegisterProvider extends BaseReferralRegisterProvider 
         issuedReferralViewHolder.patientName.setText(String.format(Locale.getDefault(), "%s, %d", patientName, age));
         issuedReferralViewHolder.textViewGender.setText(ReferralUtil.getTranslatedGenderString(context, Utils.getValue(pc.getColumnmaps(), DBConstants.KEY.GENDER, false)));
         issuedReferralViewHolder.textViewService.setText(Utils.getValue(pc.getColumnmaps(), CoreConstants.DB_CONSTANTS.FOCUS, true));
-        issuedReferralViewHolder.textViewReferralClinic.setText(Utils.getValue(pc.getColumnmaps(), org.smartregister.chw.referral.util.DBConstants.Key.PROBLEM, true));
+        issuedReferralViewHolder.textViewReferralClinic.setText(getReferralClinic(Utils.getValue(pc.getColumnmaps(), org.smartregister.chw.referral.util.DBConstants.Key.PROBLEM, false)));
         issuedReferralViewHolder.textViewReferralClinic.setVisibility(View.VISIBLE);
         setReferralStatusColor(context, issuedReferralViewHolder.textReferralStatus, Utils.getValue(pc.getColumnmaps(), org.smartregister.chw.referral.util.DBConstants.Key.REFERRAL_STATUS, true));
         setVillageNameName(pc, issuedReferralViewHolder.textViewVillage);
@@ -58,6 +58,24 @@ public class LTFUReferralsRegisterProvider extends BaseReferralRegisterProvider 
     public ReferralViewHolder createViewHolder(ViewGroup parent) {
         View view = inflater().inflate(R.layout.issued_referral_register_list_row, parent, false);
         return new IssuedReferralViewHolder(view);
+    }
+
+
+    private String getReferralClinic(String key){
+        switch (key.toLowerCase()){
+            case "ctc":
+                return context.getString(R.string.ltfu_clinic_ctc);
+            case "pwid":
+                return context.getString(R.string.ltfu_clinic_pwid);
+            case "prep":
+                return context.getString(R.string.ltfu_clinic_prep);
+            case "pmtct":
+                return context.getString(R.string.ltfu_clinic_pmtct);
+            case "tb":
+                return context.getString(R.string.ltfu_clinic_tb);
+            default:
+                return key.toUpperCase();
+        }
     }
 
     private void setReferralStatusColor(Context context, TextView textViewStatus, String status) {
