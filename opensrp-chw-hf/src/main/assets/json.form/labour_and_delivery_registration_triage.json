@@ -231,6 +231,21 @@
         }
       },
       {
+        "key": "prompt_for_oxygen_saturation",
+        "type": "toaster_notes",
+        "text": "Manage the condition according to standard guideline",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:oxygen_saturation": {
+            "type": "numeric",
+            "ex": "lessThan(.,\"90\")"
+          }
+        }
+      },
+      {
         "key": "fetal_heart_rate",
         "type": "edit_text",
         "hint": "Count Fetal Heart Rate (bpm)",
