@@ -194,7 +194,7 @@ public class LDProfileActivity extends BaseLDProfileActivity {
         if (LDDao.getLabourStage(memberObject.getBaseEntityId()) == null && (LDDao.getReasonsForAdmission(memberObject.getBaseEntityId()) == null || !LDDao.getReasonsForAdmission(memberObject.getBaseEntityId()).equalsIgnoreCase("elective_cesarean_section"))) {
             currentVisitItemTitle = getString(R.string.labour_and_delivery_labour_stage_title);
             textViewRecordLD.setText(R.string.labour_and_delivery_labour_stage_title);
-        } else if ((LDDao.getReasonsForAdmission(memberObject.getBaseEntityId()) != null && LDDao.getReasonsForAdmission(memberObject.getBaseEntityId()).equalsIgnoreCase("elective_cesarean_section"))) {
+        } else if ((LDDao.getReasonsForAdmission(memberObject.getBaseEntityId()) != null && LDDao.getReasonsForAdmission(memberObject.getBaseEntityId()).equalsIgnoreCase("elective_cesarean_section")) && !LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("3")) {
             textViewRecordLD.setText(R.string.lb_mode_of_delivery);
             currentVisitItemTitle = getString(R.string.lb_mode_of_delivery);
         } else if (LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("1") || LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("2")) {
