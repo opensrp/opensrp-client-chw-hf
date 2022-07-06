@@ -5184,6 +5184,14 @@
           }
         },
         {
+          "column_name": "anc_hiv_status",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "anc_hiv_status"
+          }
+        },
+        {
           "column_name": "membrane",
           "type": "Event",
           "json_mapping": {
@@ -5483,11 +5491,26 @@
           }
         },
         {
+          "column_name": "hiv",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "hiv"
+          }
+        },
+        {
           "column_name": "forecasted_svd_time",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
             "formSubmissionField": "forecasted_svd_time"
+          }
+        },
+        {
+          "column_name": "visit_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "version"
           }
         }
       ]
@@ -5937,6 +5960,14 @@
           "json_mapping": {
             "field": "obs.fieldCode",
             "formSubmissionField": "early_bf_1hr"
+          }
+        },
+        {
+          "column_name": "early_rf_1hr",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "early_rf_1hr"
           }
         },
         {

@@ -4137,6 +4137,600 @@ indicators:
                                                        substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
                                                        '-' || '01')"
     
+  - key: "ld-9a-10-14"
+    description: "Jumla waliopimwa VVU ANC"
+    indicatorQuery: " SELECT count(DISTINCT elc.base_entity_id) as count
+                      FROM ec_ld_confirmation elc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elc.base_entity_id
+                      WHERE elc.anc_hiv_status <> 'unknown'
+                        AND (date(efm.dob, '+10 years') <= date('now'))
+                        AND (date(efm.dob, '+15 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(elc.admission_date, 7, 4) || '-' || substr(elc.admission_date, 4, 2) || '-' || '01')"
+    
+  - key: "ld-9b-10-14"
+    description: "Waliogundulika Positive kutoka ANC"
+    indicatorQuery: " SELECT count(DISTINCT elc.base_entity_id) as count
+                      FROM ec_ld_confirmation elc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elc.base_entity_id
+                      WHERE elc.anc_hiv_status = 'positive'
+                        AND (date(efm.dob, '+10 years') <= date('now'))
+                        AND (date(efm.dob, '+15 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(elc.admission_date, 7, 4) || '-' || substr(elc.admission_date, 4, 2) || '-' || '01')"
+        
+  - key: "ld-9c-10-14"
+    description: "Jumla waliopimwa VVU wakati na baada ya kujifungua"
+    indicatorQuery: " SELECT count(DISTINCT elgec.base_entity_id) as count
+                      FROM ec_ld_general_examination_consultation elgec
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elgec.base_entity_id
+                               LEFT JOIN ec_pnc_followup epf ON epf.entity_id = elgec.base_entity_id
+                      WHERE (elgec.hiv IS NOT NULL OR epf.hiv_status = 'positive' OR epf.hiv_status = 'negative')
+                        AND (date(efm.dob, '+10 years') <= date('now'))
+                        AND (date(efm.dob, '+15 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elgec.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(elgec.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+            
+  - key: "ld-9d-10-14"
+    description: "Waliogundulika Positive wakati na baada ya kujifungua"
+    indicatorQuery: " SELECT count(DISTINCT elgec.base_entity_id) as count
+                      FROM ec_ld_general_examination_consultation elgec
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elgec.base_entity_id
+                               LEFT JOIN ec_pnc_followup epf ON epf.entity_id = elgec.base_entity_id
+                      WHERE (elgec.hiv = 'positive' OR epf.hiv_status = 'positive')
+                        AND (date(efm.dob, '+10 years') <= date('now'))
+                        AND (date(efm.dob, '+15 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elgec.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(elgec.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+            
+  - key: "ld-9e-10-14"
+    description: "Waliochagua kunyonyesha maziwa ya mama pekee (EBF)"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                               INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
+                               INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
+                      WHERE elinbc.early_bf_1hr = 'yes'
+                        AND (date(efm.dob, '+10 years') <= date('now'))
+                        AND (date(efm.dob, '+15 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+            
+  - key: "ld-9f-10-14"
+    description: "Waliochagua ulishaji wa maziwa mbadala (RF)"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                               INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
+                               INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
+                      WHERE elinbc.early_rf_1hr = 'yes'
+                        AND (date(efm.dob, '+10 years') <= date('now'))
+                        AND (date(efm.dob, '+15 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+            
+  - key: "ld-9g-10-14"
+    description: "Waliopewa ARV Prophylaxis (tail) wakati wa kuruhusiwa"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                               INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
+                               INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
+                      WHERE (elinbc.provided_azt_nvp_syrup = 'yes' OR elinbc.provided_other_combinations = 'yes' OR
+                             elinbc.provided_nvp_syrup = 'yes')
+                        AND (date(efm.dob, '+10 years') <= date('now'))
+                        AND (date(efm.dob, '+15 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+  - key: "ld-9a-15-19"
+    description: "Jumla waliopimwa VVU ANC"
+    indicatorQuery: " SELECT count(DISTINCT elc.base_entity_id) as count
+                      FROM ec_ld_confirmation elc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elc.base_entity_id
+                      WHERE elc.anc_hiv_status <> 'unknown'
+                        AND (date(efm.dob, '+15 years') <= date('now'))
+                        AND (date(efm.dob, '+20 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(elc.admission_date, 7, 4) || '-' || substr(elc.admission_date, 4, 2) || '-' || '01')"
+    
+  - key: "ld-9b-15-19"
+    description: "Waliogundulika Positive kutoka ANC"
+    indicatorQuery: " SELECT count(DISTINCT elc.base_entity_id) as count
+                      FROM ec_ld_confirmation elc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elc.base_entity_id
+                      WHERE elc.anc_hiv_status = 'positive'
+                        AND (date(efm.dob, '+15 years') <= date('now'))
+                        AND (date(efm.dob, '+20 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(elc.admission_date, 7, 4) || '-' || substr(elc.admission_date, 4, 2) || '-' || '01')"
+        
+  - key: "ld-9c-15-19"
+    description: "Jumla waliopimwa VVU wakati na baada ya kujifungua"
+    indicatorQuery: " SELECT count(DISTINCT elgec.base_entity_id) as count
+                      FROM ec_ld_general_examination_consultation elgec
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elgec.base_entity_id
+                               LEFT JOIN ec_pnc_followup epf ON epf.entity_id = elgec.base_entity_id
+                      WHERE (elgec.hiv IS NOT NULL OR epf.hiv_status = 'positive' OR epf.hiv_status = 'negative')
+                        AND (date(efm.dob, '+15 years') <= date('now'))
+                        AND (date(efm.dob, '+20 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elgec.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(elgec.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+            
+  - key: "ld-9d-15-19"
+    description: "Waliogundulika Positive wakati na baada ya kujifungua"
+    indicatorQuery: " SELECT count(DISTINCT elgec.base_entity_id) as count
+                      FROM ec_ld_general_examination_consultation elgec
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elgec.base_entity_id
+                               LEFT JOIN ec_pnc_followup epf ON epf.entity_id = elgec.base_entity_id
+                      WHERE (elgec.hiv = 'positive' OR epf.hiv_status = 'positive')
+                        AND (date(efm.dob, '+15 years') <= date('now'))
+                        AND (date(efm.dob, '+20 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elgec.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(elgec.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+            
+  - key: "ld-9e-15-19"
+    description: "Waliochagua kunyonyesha maziwa ya mama pekee (EBF)"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                               INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
+                               INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
+                      WHERE elinbc.early_bf_1hr = 'yes'
+                        AND (date(efm.dob, '+15 years') <= date('now'))
+                        AND (date(efm.dob, '+20 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+            
+  - key: "ld-9f-15-19"
+    description: "Waliochagua ulishaji wa maziwa mbadala (RF)"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                               INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
+                               INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
+                      WHERE elinbc.early_rf_1hr = 'yes'
+                        AND (date(efm.dob, '+15 years') <= date('now'))
+                        AND (date(efm.dob, '+20 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+            
+  - key: "ld-9g-15-19"
+    description: "Waliopewa ARV Prophylaxis (tail) wakati wa kuruhusiwa"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                               INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
+                               INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
+                      WHERE (elinbc.provided_azt_nvp_syrup = 'yes' OR elinbc.provided_other_combinations = 'yes' OR
+                             elinbc.provided_nvp_syrup = 'yes')
+                        AND (date(efm.dob, '+15 years') <= date('now'))
+                        AND (date(efm.dob, '+20 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+  - key: "ld-9a-20-24"
+    description: "Jumla waliopimwa VVU ANC"
+    indicatorQuery: " SELECT count(DISTINCT elc.base_entity_id) as count
+                      FROM ec_ld_confirmation elc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elc.base_entity_id
+                      WHERE elc.anc_hiv_status <> 'unknown'
+                        AND (date(efm.dob, '+20 years') <= date('now'))
+                        AND (date(efm.dob, '+25 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(elc.admission_date, 7, 4) || '-' || substr(elc.admission_date, 4, 2) || '-' || '01')"
+    
+  - key: "ld-9b-20-24"
+    description: "Waliogundulika Positive kutoka ANC"
+    indicatorQuery: " SELECT count(DISTINCT elc.base_entity_id) as count
+                      FROM ec_ld_confirmation elc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elc.base_entity_id
+                      WHERE elc.anc_hiv_status = 'positive'
+                        AND (date(efm.dob, '+20 years') <= date('now'))
+                        AND (date(efm.dob, '+25 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(elc.admission_date, 7, 4) || '-' || substr(elc.admission_date, 4, 2) || '-' || '01')"
+        
+  - key: "ld-9c-20-24"
+    description: "Jumla waliopimwa VVU wakati na baada ya kujifungua"
+    indicatorQuery: " SELECT count(DISTINCT elgec.base_entity_id) as count
+                      FROM ec_ld_general_examination_consultation elgec
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elgec.base_entity_id
+                               LEFT JOIN ec_pnc_followup epf ON epf.entity_id = elgec.base_entity_id
+                      WHERE (elgec.hiv IS NOT NULL OR epf.hiv_status = 'positive' OR epf.hiv_status = 'negative')
+                        AND (date(efm.dob, '+20 years') <= date('now'))
+                        AND (date(efm.dob, '+25 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elgec.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(elgec.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+            
+  - key: "ld-9d-20-24"
+    description: "Waliogundulika Positive wakati na baada ya kujifungua"
+    indicatorQuery: " SELECT count(DISTINCT elgec.base_entity_id) as count
+                      FROM ec_ld_general_examination_consultation elgec
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elgec.base_entity_id
+                               LEFT JOIN ec_pnc_followup epf ON epf.entity_id = elgec.base_entity_id
+                      WHERE (elgec.hiv = 'positive' OR epf.hiv_status = 'positive')
+                        AND (date(efm.dob, '+20 years') <= date('now'))
+                        AND (date(efm.dob, '+25 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elgec.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(elgec.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+            
+  - key: "ld-9e-20-24"
+    description: "Waliochagua kunyonyesha maziwa ya mama pekee (EBF)"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                               INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
+                               INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
+                      WHERE elinbc.early_bf_1hr = 'yes'
+                        AND (date(efm.dob, '+20 years') <= date('now'))
+                        AND (date(efm.dob, '+25 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+            
+  - key: "ld-9f-20-24"
+    description: "Waliochagua ulishaji wa maziwa mbadala (RF)"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                               INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
+                               INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
+                      WHERE elinbc.early_rf_1hr = 'yes'
+                        AND (date(efm.dob, '+20 years') <= date('now'))
+                        AND (date(efm.dob, '+25 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+            
+  - key: "ld-9g-20-24"
+    description: "Waliopewa ARV Prophylaxis (tail) wakati wa kuruhusiwa"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                               INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
+                               INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
+                      WHERE (elinbc.provided_azt_nvp_syrup = 'yes' OR elinbc.provided_other_combinations = 'yes' OR
+                             elinbc.provided_nvp_syrup = 'yes')
+                        AND (date(efm.dob, '+20 years') <= date('now'))
+                        AND (date(efm.dob, '+25 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+  - key: "ld-9a-25-29"
+    description: "Jumla waliopimwa VVU ANC"
+    indicatorQuery: " SELECT count(DISTINCT elc.base_entity_id) as count
+                      FROM ec_ld_confirmation elc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elc.base_entity_id
+                      WHERE elc.anc_hiv_status <> 'unknown'
+                        AND (date(efm.dob, '+25 years') <= date('now'))
+                        AND (date(efm.dob, '+30 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(elc.admission_date, 7, 4) || '-' || substr(elc.admission_date, 4, 2) || '-' || '01')"
+    
+  - key: "ld-9b-25-29"
+    description: "Waliogundulika Positive kutoka ANC"
+    indicatorQuery: " SELECT count(DISTINCT elc.base_entity_id) as count
+                      FROM ec_ld_confirmation elc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elc.base_entity_id
+                      WHERE elc.anc_hiv_status = 'positive'
+                        AND (date(efm.dob, '+25 years') <= date('now'))
+                        AND (date(efm.dob, '+30 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(elc.admission_date, 7, 4) || '-' || substr(elc.admission_date, 4, 2) || '-' || '01')"
+        
+  - key: "ld-9c-25-29"
+    description: "Jumla waliopimwa VVU wakati na baada ya kujifungua"
+    indicatorQuery: " SELECT count(DISTINCT elgec.base_entity_id) as count
+                      FROM ec_ld_general_examination_consultation elgec
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elgec.base_entity_id
+                               LEFT JOIN ec_pnc_followup epf ON epf.entity_id = elgec.base_entity_id
+                      WHERE (elgec.hiv IS NOT NULL OR epf.hiv_status = 'positive' OR epf.hiv_status = 'negative')
+                        AND (date(efm.dob, '+25 years') <= date('now'))
+                        AND (date(efm.dob, '+30 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elgec.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(elgec.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+            
+  - key: "ld-9d-25-29"
+    description: "Waliogundulika Positive wakati na baada ya kujifungua"
+    indicatorQuery: " SELECT count(DISTINCT elgec.base_entity_id) as count
+                      FROM ec_ld_general_examination_consultation elgec
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elgec.base_entity_id
+                               LEFT JOIN ec_pnc_followup epf ON epf.entity_id = elgec.base_entity_id
+                      WHERE (elgec.hiv = 'positive' OR epf.hiv_status = 'positive')
+                        AND (date(efm.dob, '+25 years') <= date('now'))
+                        AND (date(efm.dob, '+30 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elgec.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(elgec.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+            
+  - key: "ld-9e-25-29"
+    description: "Waliochagua kunyonyesha maziwa ya mama pekee (EBF)"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                               INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
+                               INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
+                      WHERE elinbc.early_bf_1hr = 'yes'
+                        AND (date(efm.dob, '+25 years') <= date('now'))
+                        AND (date(efm.dob, '+30 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+            
+  - key: "ld-9f-25-29"
+    description: "Waliochagua ulishaji wa maziwa mbadala (RF)"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                               INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
+                               INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
+                      WHERE elinbc.early_rf_1hr = 'yes'
+                        AND (date(efm.dob, '+25 years') <= date('now'))
+                        AND (date(efm.dob, '+30 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+            
+  - key: "ld-9g-25-29"
+    description: "Waliopewa ARV Prophylaxis (tail) wakati wa kuruhusiwa"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                               INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
+                               INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
+                      WHERE (elinbc.provided_azt_nvp_syrup = 'yes' OR elinbc.provided_other_combinations = 'yes' OR
+                             elinbc.provided_nvp_syrup = 'yes')
+                        AND (date(efm.dob, '+25 years') <= date('now'))
+                        AND (date(efm.dob, '+30 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+  - key: "ld-9a-30-34"
+    description: "Jumla waliopimwa VVU ANC"
+    indicatorQuery: " SELECT count(DISTINCT elc.base_entity_id) as count
+                      FROM ec_ld_confirmation elc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elc.base_entity_id
+                      WHERE elc.anc_hiv_status <> 'unknown'
+                        AND (date(efm.dob, '+30 years') <= date('now'))
+                        AND (date(efm.dob, '+35 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(elc.admission_date, 7, 4) || '-' || substr(elc.admission_date, 4, 2) || '-' || '01')"
+    
+  - key: "ld-9b-30-34"
+    description: "Waliogundulika Positive kutoka ANC"
+    indicatorQuery: " SELECT count(DISTINCT elc.base_entity_id) as count
+                      FROM ec_ld_confirmation elc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elc.base_entity_id
+                      WHERE elc.anc_hiv_status = 'positive'
+                        AND (date(efm.dob, '+30 years') <= date('now'))
+                        AND (date(efm.dob, '+35 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(elc.admission_date, 7, 4) || '-' || substr(elc.admission_date, 4, 2) || '-' || '01')"
+        
+  - key: "ld-9c-30-34"
+    description: "Jumla waliopimwa VVU wakati na baada ya kujifungua"
+    indicatorQuery: " SELECT count(DISTINCT elgec.base_entity_id) as count
+                      FROM ec_ld_general_examination_consultation elgec
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elgec.base_entity_id
+                               LEFT JOIN ec_pnc_followup epf ON epf.entity_id = elgec.base_entity_id
+                      WHERE (elgec.hiv IS NOT NULL OR epf.hiv_status = 'positive' OR epf.hiv_status = 'negative')
+                        AND (date(efm.dob, '+30 years') <= date('now'))
+                        AND (date(efm.dob, '+35 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elgec.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(elgec.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+            
+  - key: "ld-9d-30-34"
+    description: "Waliogundulika Positive wakati na baada ya kujifungua"
+    indicatorQuery: " SELECT count(DISTINCT elgec.base_entity_id) as count
+                      FROM ec_ld_general_examination_consultation elgec
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elgec.base_entity_id
+                               LEFT JOIN ec_pnc_followup epf ON epf.entity_id = elgec.base_entity_id
+                      WHERE (elgec.hiv = 'positive' OR epf.hiv_status = 'positive')
+                        AND (date(efm.dob, '+30 years') <= date('now'))
+                        AND (date(efm.dob, '+35 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elgec.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(elgec.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+            
+  - key: "ld-9e-30-34"
+    description: "Waliochagua kunyonyesha maziwa ya mama pekee (EBF)"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                               INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
+                               INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
+                      WHERE elinbc.early_bf_1hr = 'yes'
+                        AND (date(efm.dob, '+30 years') <= date('now'))
+                        AND (date(efm.dob, '+35 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+            
+  - key: "ld-9f-30-34"
+    description: "Waliochagua ulishaji wa maziwa mbadala (RF)"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                               INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
+                               INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
+                      WHERE elinbc.early_rf_1hr = 'yes'
+                        AND (date(efm.dob, '+30 years') <= date('now'))
+                        AND (date(efm.dob, '+35 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+            
+  - key: "ld-9g-30-34"
+    description: "Waliopewa ARV Prophylaxis (tail) wakati wa kuruhusiwa"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                               INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
+                               INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
+                      WHERE (elinbc.provided_azt_nvp_syrup = 'yes' OR elinbc.provided_other_combinations = 'yes' OR
+                             elinbc.provided_nvp_syrup = 'yes')
+                        AND (date(efm.dob, '+30 years') <= date('now'))
+                        AND (date(efm.dob, '+35 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+  - key: "ld-9a-35+"
+    description: "Jumla waliopimwa VVU ANC"
+    indicatorQuery: " SELECT count(DISTINCT elc.base_entity_id) as count
+                      FROM ec_ld_confirmation elc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elc.base_entity_id
+                      WHERE elc.anc_hiv_status <> 'unknown'
+                        AND (date(efm.dob, '+35 years') <= date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(elc.admission_date, 7, 4) || '-' || substr(elc.admission_date, 4, 2) || '-' || '01')"
+    
+  - key: "ld-9b-35+"
+    description: "Waliogundulika Positive kutoka ANC"
+    indicatorQuery: " SELECT count(DISTINCT elc.base_entity_id) as count
+                      FROM ec_ld_confirmation elc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elc.base_entity_id
+                      WHERE elc.anc_hiv_status = 'positive'
+                        AND (date(efm.dob, '+35 years') <= date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                            date(substr(elc.admission_date, 7, 4) || '-' || substr(elc.admission_date, 4, 2) || '-' || '01')"
+        
+  - key: "ld-9c-35+"
+    description: "Jumla waliopimwa VVU wakati na baada ya kujifungua"
+    indicatorQuery: " SELECT count(DISTINCT elgec.base_entity_id) as count
+                      FROM ec_ld_general_examination_consultation elgec
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elgec.base_entity_id
+                               LEFT JOIN ec_pnc_followup epf ON epf.entity_id = elgec.base_entity_id
+                      WHERE (elgec.hiv IS NOT NULL OR epf.hiv_status = 'positive' OR epf.hiv_status = 'negative')
+                        AND (date(efm.dob, '+35 years') <= date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elgec.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(elgec.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+            
+  - key: "ld-9d-35+"
+    description: "Waliogundulika Positive wakati na baada ya kujifungua"
+    indicatorQuery: " SELECT count(DISTINCT elgec.base_entity_id) as count
+                      FROM ec_ld_general_examination_consultation elgec
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elgec.base_entity_id
+                               LEFT JOIN ec_pnc_followup epf ON epf.entity_id = elgec.base_entity_id
+                      WHERE (elgec.hiv = 'positive' OR epf.hiv_status = 'positive')
+                        AND (date(efm.dob, '+35 years') <= date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elgec.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(elgec.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+            
+  - key: "ld-9e-35+"
+    description: "Waliochagua kunyonyesha maziwa ya mama pekee (EBF)"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                               INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
+                               INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
+                      WHERE elinbc.early_bf_1hr = 'yes'
+                        AND (date(efm.dob, '+35 years') <= date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+            
+  - key: "ld-9f-35+"
+    description: "Waliochagua ulishaji wa maziwa mbadala (RF)"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                               INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
+                               INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
+                      WHERE elinbc.early_rf_1hr = 'yes'
+                        AND (date(efm.dob, '+35 years') <= date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+            
+  - key: "ld-9g-35+"
+    description: "Waliopewa ARV Prophylaxis (tail) wakati wa kuruhusiwa"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                               INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
+                               INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
+                      WHERE (elinbc.provided_azt_nvp_syrup = 'yes' OR elinbc.provided_other_combinations = 'yes' OR
+                             elinbc.provided_nvp_syrup = 'yes')
+                        AND (date(efm.dob, '+35 years') <= date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+    
   - key: "ld-15a-10-14"
     description: "Waliopewa ushauri wa uzazi wa mpango"
     indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
