@@ -69,7 +69,7 @@
           },
           {
             "key": "cesarean",
-            "text": "Cesarean",
+            "text": "caesarian",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "cesarean"
@@ -103,11 +103,11 @@
         "value": 3
       },
       {
-        "key": "delivery_mode_cesarean_reason",
+        "key": "delivery_mode_caesarian_reason",
         "type": "check_box",
-        "label": "Reason for cesarean",
+        "label": "Reason for caesarian",
         "combine_checkbox_option_values": "true",
-        "openmrs_entity_id": "delivery_mode_cesarean_reason",
+        "openmrs_entity_id": "delivery_mode_caesarian_reason",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "exclusive": [
@@ -180,7 +180,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Please select the reason for cesarean"
+          "err": "Please select the reason for caesarian"
         },
         "relevance": {
           "rules-engine": {
@@ -191,12 +191,12 @@
         }
       },
       {
-        "key": "delivery_mode_cesarean_reason_other",
+        "key": "delivery_mode_caesarian_reason_other",
         "type": "edit_text",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "openmrs_entity_id": "delivery_mode_reason",
-        "hint": "Specify other reason for cesarean delivery mode",
+        "hint": "Specify other reason for caesarian delivery mode",
         "v_required": {
           "value": true,
           "err": "Value is required"

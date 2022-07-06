@@ -79,14 +79,10 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "family_planning_methods_selected",
-        "type": "check_box",
-        "combine_checkbox_option_values": "true",
+        "type": "native_radio",
         "label": "Family planning methods selected by the client",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
-        "exclusive": [
-          "none"
-        ],
         "options": [
           {
             "key": "tubal_litigation",
