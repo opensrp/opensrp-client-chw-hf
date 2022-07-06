@@ -5296,6 +5296,14 @@
           }
         },
         {
+          "column_name": "pmtct_test_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "pmtct_test_date"
+          }
+        },
+        {
           "column_name": "last_interacted_with",
           "type": "Event",
           "json_mapping": {

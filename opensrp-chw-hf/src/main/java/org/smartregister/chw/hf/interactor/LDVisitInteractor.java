@@ -7,11 +7,11 @@ import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.actionhelper.LDHIVTestActionHelper;
 import org.smartregister.chw.hf.actionhelper.LDGeneralExaminationActionHelper;
 import org.smartregister.chw.hf.actionhelper.LDVaginalExaminationActionHelper;
+import org.smartregister.chw.hf.dao.LDDao;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hf.utils.LDVisitUtils;
 import org.smartregister.chw.ld.LDLibrary;
 import org.smartregister.chw.ld.contract.BaseLDVisitContract;
-import org.smartregister.chw.ld.dao.LDDao;
 import org.smartregister.chw.ld.domain.MemberObject;
 import org.smartregister.chw.ld.domain.Visit;
 import org.smartregister.chw.ld.domain.VisitDetail;
@@ -19,6 +19,9 @@ import org.smartregister.chw.ld.interactor.BaseLDVisitInteractor;
 import org.smartregister.chw.ld.model.BaseLDVisitAction;
 import org.smartregister.clientandeventmodel.Event;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -62,7 +65,8 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
                 evaluateGenExamination(details);
                 evaluateVaginalExamination(details);
 
-                if (LDDao.getHivStatus(memberObject.getBaseEntityId()) == null || !Objects.equals(LDDao.getHivStatus(memberObject.getBaseEntityId()), Constants.HIV_STATUS.POSITIVE)) {
+                if (LDDao.getHivStatus(memberObject.getBaseEntityId()) == null ||
+                        (!Objects.equals(LDDao.getHivStatus(memberObject.getBaseEntityId()), Constants.HIV_STATUS.POSITIVE) && testDateIsThreeMonthsAgo())) {
                     evaluateHIVStatus(details);
                 }
 
@@ -74,6 +78,29 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
         };
 
         appExecutors.diskIO().execute(runnable);
+    }
+
+    private boolean testDateIsThreeMonthsAgo(){
+        if (LDDao.getPmtctTestDate(memberObject.getBaseEntityId()) != null) {
+            try{
+                DateFormat completeDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+                String pmtctTestDate = LDDao.getPmtctTestDate(memberObject.getBaseEntityId());
+                Date testDate = completeDateFormat.parse(pmtctTestDate);
+                if (testDate != null) {
+                    Date threeMonthsAgo = new Date(System.currentTimeMillis() - (1000 * 60 * 60 * 24 * 90));
+                    if (testDate.after(threeMonthsAgo)) {
+                        return true;
+                    }else{
+                        return false;
+                    }
+                }
+                return true;
+
+            }catch (Exception e){
+                Timber.e(e);
+            }
+        }
+        return true;
     }
 
     private void evaluateHIVStatus(Map<String, List<VisitDetail>> details) throws BaseLDVisitAction.ValidationException {
