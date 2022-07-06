@@ -211,6 +211,26 @@
         }
       },
       {
+        "key": "oxygen_saturation",
+        "type": "edit_text",
+        "hint": "Oxygen Saturation (SPO2) %",
+        "openmrs_entity_id": "oxygen_saturation",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the % of oxygen saturation"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "The % of oxygen saturation must be equal or greater than 0%"
+        },
+        "v_max": {
+          "value": "100",
+          "err": "The % of oxygen saturation must be equal or less than 100%"
+        }
+      },
+      {
         "key": "fetal_heart_rate",
         "type": "edit_text",
         "hint": "Count Fetal Heart Rate (bpm)",
