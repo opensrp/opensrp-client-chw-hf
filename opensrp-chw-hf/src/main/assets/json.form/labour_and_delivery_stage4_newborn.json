@@ -1401,7 +1401,6 @@
           }
         }
       },
-
       {
         "key": "other_reason_for_not_keeping_the_baby_warm_skin_to_skin",
         "openmrs_entity_parent": "",
@@ -1593,6 +1592,35 @@
           "value": "true",
           "err": "Please enter the reason"
         },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "early_rf_1hr",
+        "type": "native_radio",
+        "label": "Was the infant fed formula milk (RF) within one hour",
+        "openmrs_entity_id": "early_rf_1hr",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_id": "yes",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_id": "no",
+            "openmrs_entity": "concept"
+          }
+        ],
         "relevance": {
           "rules-engine": {
             "ex-rules": {

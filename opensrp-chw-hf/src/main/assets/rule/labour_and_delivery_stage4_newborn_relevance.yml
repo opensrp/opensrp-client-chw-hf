@@ -461,6 +461,13 @@ condition: "step1_reason_for_not_breast_feeding_within_one_hour.contains('other'
 actions:
   - "isRelevant = true"
 ---
+name: step1_early_rf_1hr
+description: early_rf_1hr relevance
+priority: 1
+condition: "step1_early_bf_1hr.contains('no')"
+actions:
+  - "isRelevant = true"
+---
 name: step1_eye_care
 description: eye_care relevance
 priority: 1
