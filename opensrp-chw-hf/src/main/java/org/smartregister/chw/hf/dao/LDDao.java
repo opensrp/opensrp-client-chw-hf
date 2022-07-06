@@ -117,4 +117,15 @@ public class LDDao extends org.smartregister.chw.ld.dao.LDDao {
         return null;
     }
 
+    public static String getPmtctTestDate(String baseEntityId) {
+        String sql = "SELECT pmtct_test_date FROM " + Constants.TABLES.LD_CONFIRMATION + " WHERE base_entity_id = '" + baseEntityId + "'";
+
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "pmtct_test_date");
+
+        List<String> res = readData(sql, dataMap);
+        if (res != null && res.size() > 0)
+            return res.get(0);
+        return null;
+    }
+
 }
