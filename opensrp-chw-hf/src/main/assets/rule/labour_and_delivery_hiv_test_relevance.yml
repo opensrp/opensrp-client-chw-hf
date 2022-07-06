@@ -1,8 +1,8 @@
 ---
-name: step1_hiv_test_conducted
-description: hiv_test_conducted relevance
+name: step1_reason_for_no_hiv_test
+description: reasons for no HIV test relevance
 priority: 1
-condition: "step1_hiv_status.contains('unknown')"
+condition: "step1_hiv_test_conducted.contains('no')"
 actions:
   - "isRelevant = true"
 ---
