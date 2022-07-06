@@ -115,6 +115,34 @@
         }
       },
       {
+        "key": "hb_test",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hiv",
+        "type": "native_radio",
+        "label": "HB Test done",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select one"
+        }
+      },
+      {
         "key": "hb_level",
         "type": "edit_text",
         "hint": "Last Measured HB Level (g/dl)",
@@ -132,6 +160,12 @@
         "v_max": {
           "value": "20",
           "err": "HB level must be equal or less than 20 (g/dl)"
+        },
+        "relevance": {
+          "step1:hb_test": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
         }
       },
       {
@@ -212,6 +246,12 @@
         "v_required": {
           "value": "true",
           "err": "Please enter the HB test date"
+        },
+        "relevance": {
+          "step1:hb_test": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
         }
       },
       {
@@ -360,6 +400,12 @@
             "text": "Negative",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "negative"
+          },
+          {
+            "key": "none",
+            "text": "None",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "none"
           }
         ]
       },
@@ -392,6 +438,96 @@
           "step1:syphilis": {
             "type": "string",
             "ex": "equalTo(., \"positive\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_syphilis_management_not_done",
+        "type": "toaster_notes",
+        "text": "Provide management according to SOP and Standard Guideline",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:management_provided_for_syphilis": {
+            "type": "string",
+            "ex": "equalTo(., \"no\")"
+          }
+        }
+      },
+      {
+        "key": "malaria",
+        "type": "native_radio",
+        "label": "Malaria test",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "malaria",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "positive",
+            "text": "Positive",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "positive"
+          },
+          {
+            "key": "negative",
+            "text": "Negative",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "negative"
+          },
+          {
+            "key": "none",
+            "text": "None",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "none"
+          }
+        ]
+      },
+      {
+        "key": "management_provided_for_malaria",
+        "type": "native_radio",
+        "label": "Was management provided for malaria?",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "management_provided_for_malaria",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        },
+        "relevance": {
+          "step1:malaria": {
+            "type": "string",
+            "ex": "equalTo(., \"positive\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_malaria_management_not_done",
+        "type": "toaster_notes",
+        "text": "Provide management according to SOP and Standard Guideline",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:management_provided_for_malaria": {
+            "type": "string",
+            "ex": "equalTo(., \"no\")"
           }
         }
       },
