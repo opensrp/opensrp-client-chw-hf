@@ -12,6 +12,7 @@ import static org.smartregister.chw.hf.utils.Constants.TableName.HEI_FOLLOWUP;
 import static org.smartregister.chw.hf.utils.JsonFormUtils.ENCOUNTER_TYPE;
 import static org.smartregister.util.JsonFormUtils.FIELDS;
 import static org.smartregister.util.JsonFormUtils.KEY;
+import static org.smartregister.util.JsonFormUtils.STEP1;
 import static org.smartregister.util.JsonFormUtils.VALUE;
 
 import android.content.ContentValues;
@@ -776,6 +777,11 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
             }
 
             JSONArray fields = null;
+            try {
+                fields = newBornForm.getJSONObject(STEP1).getJSONArray(FIELDS);
+            } catch (JSONException e) {
+                Timber.e(e);
+            }
 
             if (fields != null && hivStatus != null && !hivStatus.equalsIgnoreCase(POSITIVE)) {
                 try {

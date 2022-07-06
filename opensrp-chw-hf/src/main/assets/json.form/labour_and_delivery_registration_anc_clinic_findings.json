@@ -252,6 +252,20 @@
         }
       },
       {
+        "key": "hiv",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hiv",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_anc_clinic_findings_calculation.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "management_provided_for_pmtct",
         "type": "native_radio",
         "label": "Was management provided for PMTCT?",
@@ -277,7 +291,7 @@
           "err": "Please answer this question"
         },
         "relevance": {
-          "step1:hiv": {
+          "step1:anc_hiv_status": {
             "type": "string",
             "ex": "equalTo(., \"positive\")"
           }
@@ -335,7 +349,7 @@
           "err": "Please answer this question"
         },
         "relevance": {
-          "step1:hiv": {
+          "step1:anc_hiv_status": {
             "type": "string",
             "ex": "equalTo(., \"positive\")"
           }

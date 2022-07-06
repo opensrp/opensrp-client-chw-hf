@@ -58,7 +58,7 @@ public class LDRegistrationAncClinicFindingsAction implements BaseLDVisitAction.
             llinUsed = CoreJsonFormUtils.getValue(jsonObject, "llin_used");
             hbLevel = CoreJsonFormUtils.getValue(jsonObject, "hb_level");
             hbTestDate = CoreJsonFormUtils.getValue(jsonObject, "hb_test_date");
-            pmtct = CoreJsonFormUtils.getValue(jsonObject, "hiv");
+            pmtct = CoreJsonFormUtils.getValue(jsonObject, "anc_hiv_status");
             syphilis = CoreJsonFormUtils.getValue(jsonObject, "syphilis");
             bloodGroup = CoreJsonFormUtils.getValue(jsonObject, "blood_group");
             rhFactor = CoreJsonFormUtils.getValue(jsonObject, "rh_factor");
