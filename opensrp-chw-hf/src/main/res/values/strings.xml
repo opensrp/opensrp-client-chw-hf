@@ -376,5 +376,6 @@
     <string name="ld_report_title">Labour And Delivery Reports</string>
     <string name="mother_champion_referral">Mother Champion Referral</string>
 
+    <string name="lb_visit_hb_test_action_title"> HB test </string>
 
 </resources>

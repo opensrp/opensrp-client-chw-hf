@@ -276,5 +276,6 @@
     <string name="missed_hei_clients">Waliokosa</string>
     <string name="anc_fundal_height_min_err">Kimo cha mimba lazima kiwe sawa au zaidi ya</string>
 
+    <string name="lb_visit_hb_test_action_title"> Kipimo cha HB </string>
 
 </resources>
