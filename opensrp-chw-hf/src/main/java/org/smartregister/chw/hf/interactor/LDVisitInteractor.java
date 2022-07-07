@@ -2,8 +2,12 @@ package org.smartregister.chw.hf.interactor;
 
 import android.content.Context;
 
+import com.google.android.gms.vision.L;
+
+import org.apache.commons.lang3.time.DateUtils;
 import org.smartregister.chw.anc.util.VisitUtils;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.actionhelper.LDHBTestActionHelper;
 import org.smartregister.chw.hf.actionhelper.LDHIVTestActionHelper;
 import org.smartregister.chw.hf.actionhelper.LDGeneralExaminationActionHelper;
 import org.smartregister.chw.hf.actionhelper.LDVaginalExaminationActionHelper;
@@ -19,6 +23,7 @@ import org.smartregister.chw.ld.interactor.BaseLDVisitInteractor;
 import org.smartregister.chw.ld.model.BaseLDVisitAction;
 import org.smartregister.clientandeventmodel.Event;
 
+import java.sql.Time;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -70,6 +75,11 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
                     evaluateHIVStatus(details);
                 }
 
+                //Todo: add HB Test if last_hb_test is more than 2 weeks ago
+                if (hbTestMoreThanTwoWeeksAgo()){
+                    evaluateHBTest(details);
+                }
+
             } catch (BaseLDVisitAction.ValidationException e) {
                 Timber.e(e);
             }
@@ -80,6 +90,28 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
         appExecutors.diskIO().execute(runnable);
     }
 
+    private boolean hbTestMoreThanTwoWeeksAgo() {
+        if (LDDao.getHbTestDate(memberObject.getBaseEntityId()) != null) {
+            try {
+                DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                String hbTestDate = LDDao.getHbTestDate(memberObject.getBaseEntityId());
+                Date testDate = dateFormat.parse(hbTestDate);
+                if (testDate != null){
+                    Date twoWeeksAgo = new Date(System.currentTimeMillis() - (1000 * 60 * 60 * 24 * 14));
+                    if (testDate.before(twoWeeksAgo)) {
+                        return true;
+                    }else {
+                        return false;
+                    }
+                }
+                return true;
+            }catch (Exception e){
+                Timber.e(e);
+            }
+        }
+        return true;
+    }
+
     private boolean testDateIsThreeMonthsAgo(){
         if (LDDao.getPmtctTestDate(memberObject.getBaseEntityId()) != null) {
             try{
@@ -88,7 +120,7 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
                 Date testDate = completeDateFormat.parse(pmtctTestDate);
                 if (testDate != null) {
                     Date threeMonthsAgo = new Date(System.currentTimeMillis() - (1000 * 60 * 60 * 24 * 90));
-                    if (testDate.after(threeMonthsAgo)) {
+                    if (testDate.before(threeMonthsAgo)) {
                         return true;
                     }else{
                         return false;
@@ -116,6 +148,22 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
                 .build();
 
         actionList.put(title, action);
+    }
+
+    private void evaluateHBTest(Map<String, List<VisitDetail>> details) throws BaseLDVisitAction.ValidationException {
+
+        String title = context.getString(R.string.lb_visit_hb_test_action_title);
+
+        LDHBTestActionHelper actionHelper = new LDHBTestActionHelper(context);
+        BaseLDVisitAction action = getBuilder(title)
+                .withOptional(false)
+                .withHelper(actionHelper)
+                .withDetails(details)
+                .withFormName(Constants.JsonForm.LDVisit.getLdHBTestForm())
+                .build();
+
+        actionList.put(title, action);
+
     }
 
     private void evaluateVaginalExamination(Map<String, List<VisitDetail>> details) throws BaseLDVisitAction.ValidationException {
