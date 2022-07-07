@@ -12,6 +12,7 @@ import static org.smartregister.chw.hf.utils.Constants.TableName.HEI_FOLLOWUP;
 import static org.smartregister.chw.hf.utils.JsonFormUtils.ENCOUNTER_TYPE;
 import static org.smartregister.util.JsonFormUtils.FIELDS;
 import static org.smartregister.util.JsonFormUtils.KEY;
+import static org.smartregister.util.JsonFormUtils.STEP1;
 import static org.smartregister.util.JsonFormUtils.VALUE;
 
 import android.content.ContentValues;
@@ -35,6 +36,7 @@ import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.actionhelper.PostDeliveryFamilyPlanningActionHelper;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hf.dao.LDDao;
 import org.smartregister.chw.hf.utils.LDVisitUtils;
@@ -119,6 +121,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                 evaluateMotherStatus(callBack);
                 evaluatePostDeliveryObservation();
                 evaluateMaternalComplicationLabour();
+                evaluateFamilyPlanning();
 
             } catch (BaseLDVisitAction.ValidationException e) {
                 Timber.e(e);
@@ -169,6 +172,22 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                 .withDetails(details)
                 .withBaseEntityID(memberObject.getBaseEntityId())
                 .withFormName(Constants.JsonForm.LDPostDeliveryMotherManagement.getLdPostDeliveryMaternalComplications())
+                .build();
+
+        actionList.put(title, action);
+    }
+
+    private void evaluateFamilyPlanning() throws BaseLDVisitAction.ValidationException {
+        String title = context.getString(R.string.ld_post_delivery_family_planning);
+
+        PostDeliveryFamilyPlanningActionHelper actionHelper = new PostDeliveryFamilyPlanningActionHelper();
+
+        BaseLDVisitAction action = getBuilder(title)
+                .withOptional(false)
+                .withHelper(actionHelper)
+                .withDetails(details)
+                .withBaseEntityID(memberObject.getBaseEntityId())
+                .withFormName(Constants.JsonForm.LDPostDeliveryMotherManagement.getLdPostDeliveryFamilyPlanning())
                 .build();
 
         actionList.put(title, action);
@@ -334,7 +353,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                                 .withOptional(false)
                                 .withHelper(actionHelper)
                                 .withDetails(details)
-                                .withBaseEntityID(baseEntityId)
+                                .withBaseEntityID(org.smartregister.chw.anc.util.JsonFormUtils.generateRandomUUIDString())
                                 .withProcessingMode(BaseLDVisitAction.ProcessingMode.SEPARATE)
                                 .withFormName(Constants.JsonForm.LDPostDeliveryMotherManagement.getLdNewBornStatus())
                                 .build();
@@ -490,10 +509,10 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                 JSONArray fields = JsonFormUtils.fields(jsonObject);
 
                 JSONObject mother_observation_module_status = JsonFormUtils.getFieldJSONObject(fields, "mother_observation_module_status");
-                assert mother_observation_module_status != null;
-                mother_observation_module_status.remove(com.vijay.jsonwizard.constants.JsonFormConstants.VALUE);
-                mother_observation_module_status.put(com.vijay.jsonwizard.constants.JsonFormConstants.VALUE, completionStatus);
-
+                if (mother_observation_module_status != null) {
+                    mother_observation_module_status.remove(com.vijay.jsonwizard.constants.JsonFormConstants.VALUE);
+                    mother_observation_module_status.put(com.vijay.jsonwizard.constants.JsonFormConstants.VALUE, completionStatus);
+                }
                 return jsonObject.toString();
 
             } catch (Exception e) {
@@ -758,6 +777,11 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
             }
 
             JSONArray fields = null;
+            try {
+                fields = newBornForm.getJSONObject(STEP1).getJSONArray(FIELDS);
+            } catch (JSONException e) {
+                Timber.e(e);
+            }
 
             if (fields != null && hivStatus != null && !hivStatus.equalsIgnoreCase(POSITIVE)) {
                 try {
@@ -1115,7 +1139,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                     }
                 }
                 if (isChildAlive(obs) && (StringUtils.isNotBlank(completionStatus) && completionStatus.equalsIgnoreCase("Fully Completed"))) {
-                    saveChild(memberID, LDDao.getHivStatus(memberID), getRiskStatus(obs), allSharedPreferences, memberObject.getFamilyBaseEntityId(), getDeliveryDateString(obs), obs);
+                    saveChild(memberID,memberObject.getBaseEntityId(), LDDao.getHivStatus(memberObject.getBaseEntityId()), getRiskStatus(obs), allSharedPreferences, memberObject.getFamilyBaseEntityId(), getDeliveryDateString(obs), obs);
                 }
 
                 LDVisitUtils.processVisits(memberID, false);
@@ -1126,12 +1150,11 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
     }
 
-    private void saveChild(String motherBaseId, String motherHivStatus, String childRiskCategory, AllSharedPreferences
+    private void saveChild(String childBaseEntityId, String motherBaseId, String motherHivStatus, String childRiskCategory, AllSharedPreferences
             allSharedPreferences, String familyBaseEntityId, String dob, JSONArray obs) {
         String uniqueChildID = AncLibrary.getInstance().getUniqueIdRepository().getNextUniqueId().getOpenmrsId();
 
         if (StringUtils.isNotBlank(uniqueChildID)) {
-            String childBaseEntityId = org.smartregister.chw.anc.util.JsonFormUtils.generateRandomUUIDString();
             try {
                 String lastName = memberObject.getLastName();
                 JSONObject pncForm = getFormAsJson(

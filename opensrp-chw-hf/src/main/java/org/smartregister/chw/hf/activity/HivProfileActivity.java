@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -55,6 +56,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 import timber.log.Timber;
 
@@ -294,6 +296,7 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void initializeCallFAB() {
         setHivFloatingMenu(new HivFloatingMenu(this, getHivMemberObject()));
@@ -309,7 +312,7 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
                     ((HivFloatingMenu) getHivFloatingMenu()).animateFAB();
                     break;
                 case R.id.refer_to_facility_layout:
-                    LFTUFormUtils.startLTFUReferral(this, getHivMemberObject().getBaseEntityId());
+                    LFTUFormUtils.startLTFUReferral(this, getHivMemberObject().getBaseEntityId(),getHivMemberObject().getGender());
                     break;
                 default:
                     Timber.d("Unknown fab action");

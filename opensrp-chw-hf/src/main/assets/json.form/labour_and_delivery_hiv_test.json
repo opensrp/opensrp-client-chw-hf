@@ -53,32 +53,6 @@
     "title": "HIV Test",
     "fields": [
       {
-        "key": "hiv_status",
-        "type": "native_radio",
-        "label": "Client HIV Status",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "hiv_status",
-        "openmrs_entity_parent": "",
-        "options": [
-          {
-            "key": "known",
-            "text": "Known",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "known"
-          },
-          {
-            "key": "unknown",
-            "text": "Unknown",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "unknown"
-          }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Please answer this question"
-        }
-      },
-      {
         "key": "hiv_test_conducted",
         "type": "native_radio",
         "label": "Has the client been tested for HIV?",
@@ -98,7 +72,15 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
-        ],
+        ]
+      },
+      {
+        "key": "reason_for_no_hiv_test",
+        "type": "edit_text",
+        "hint": "Why was the client not tested for HIV?",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_no_hiv_test",
+        "openmrs_entity_parent": "",
         "relevance": {
           "rules-engine": {
             "ex-rules": {

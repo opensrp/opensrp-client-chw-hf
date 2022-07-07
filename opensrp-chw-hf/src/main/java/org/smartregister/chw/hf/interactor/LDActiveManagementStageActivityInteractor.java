@@ -184,6 +184,8 @@ public class LDActiveManagementStageActivityInteractor extends BaseLDVisitIntera
             if (StringUtils.isNotBlank(placenta_and_membrane_expulsion)) {
                 if (placenta_and_membrane_expulsion.equalsIgnoreCase("retained_placenta")) {
                     return context.getString(R.string.ld_placent_retained_message);
+                } else {
+                    return context.getString(R.string.ld_placent_completely_removed_message);
                 }
             }
             return null;
@@ -192,11 +194,7 @@ public class LDActiveManagementStageActivityInteractor extends BaseLDVisitIntera
         @Override
         public BaseLDVisitAction.Status evaluateStatusOnPayload() {
             if (StringUtils.isNotBlank(placenta_and_membrane_expulsion)) {
-                if (placenta_and_membrane_expulsion.equalsIgnoreCase("complete_placenta")) {
-                    return BaseLDVisitAction.Status.COMPLETED;
-                } else {
-                    return BaseLDVisitAction.Status.PARTIALLY_COMPLETED;
-                }
+                return BaseLDVisitAction.Status.COMPLETED;
             } else {
                 return BaseLDVisitAction.Status.PENDING;
             }

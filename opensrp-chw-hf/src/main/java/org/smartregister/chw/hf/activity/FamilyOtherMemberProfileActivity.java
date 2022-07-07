@@ -1,9 +1,7 @@
 package org.smartregister.chw.hf.activity;
 
-import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
-import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
-
 import android.content.Context;
+import android.os.Build;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -32,7 +30,7 @@ import org.smartregister.chw.hf.dao.HfHivDao;
 import org.smartregister.chw.hf.fragment.FamilyOtherMemberProfileFragment;
 import org.smartregister.chw.hf.presenter.FamilyOtherMemberActivityPresenter;
 import org.smartregister.chw.hf.utils.Constants;
-import org.smartregister.chw.hiv.dao.HivDao;
+import org.smartregister.chw.hf.utils.LFTUFormUtils;
 import org.smartregister.chw.hiv.dao.HivIndexDao;
 import org.smartregister.chw.malaria.dao.MalariaDao;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
@@ -42,6 +40,9 @@ import org.smartregister.family.util.DBConstants;
 import org.smartregister.view.contract.BaseProfileContract;
 
 import timber.log.Timber;
+
+import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
+import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
 
 public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfileActivity {
     private FamilyMemberFloatingMenu familyFloatingMenu;
@@ -208,10 +209,6 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
     @Override
     public void updateHasPhone(boolean hasPhone) {
         super.updateHasPhone(hasPhone);
-        if (!hasPhone) {
-            familyFloatingMenu.hideFab();
-        }
-
     }
 
     @Override
@@ -220,6 +217,12 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
         onClickFloatingMenu = viewId -> {
             if (viewId == R.id.call_layout) {
                 FamilyCallDialogFragment.launchDialog(this, familyBaseEntityId);
+            }
+            if (viewId == R.id.refer_to_facility_layout) {
+                String gender = Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.GENDER, false);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                    LFTUFormUtils.startLTFUReferral(this, baseEntityId, gender);
+                }
             }
         };
     }
@@ -231,7 +234,6 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
 
     private void prepareFab() {
         familyFloatingMenu = new FamilyMemberFloatingMenu(this);
-        familyFloatingMenu.fab.setOnClickListener(v -> FamilyCallDialogFragment.launchDialog(this, familyBaseEntityId));
     }
 
     private void setupMenuOptions(Menu menu) {

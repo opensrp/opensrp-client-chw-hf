@@ -16,6 +16,6 @@ actions:
 name: step1_admit_client
 description: Admit the client
 priority: 1
-condition: "step1_true_labour.size == 1 && !step1_true_labour.contains('none')"
+condition: "step1_true_labour.size == 1"
 actions:
   - "isRelevant = true"

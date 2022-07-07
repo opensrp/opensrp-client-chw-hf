@@ -128,6 +128,7 @@ public class LDVisitUtils extends VisitUtils {
                 String motherStatusCompletionStatus = getFieldValue(obs, "mother_status_module_status");
                 String motherObservationModuleStatus = getFieldValue(obs, "mother_observation_module_status");
                 String maternalComplicationsModuleStatus = getFieldValue(obs, "maternal_complications_module_status");
+                String familyPlanningModuleStatus = getFieldValue(obs, "family_planning_module_status");
                 boolean childVisitsCompletionStatus = true;
                 for (Visit vis: visits) {
 
@@ -146,7 +147,8 @@ public class LDVisitUtils extends VisitUtils {
                 if (motherObservationModuleStatus != null && motherStatusCompletionStatus != null && maternalComplicationsModuleStatus != null) {
                     if (motherStatusCompletionStatus.equalsIgnoreCase("Fully Completed") &&
                             motherObservationModuleStatus.equalsIgnoreCase("Fully Completed") &&
-                            maternalComplicationsModuleStatus.equalsIgnoreCase("Fully Completed") && childVisitsCompletionStatus) {
+                            maternalComplicationsModuleStatus.equalsIgnoreCase("Fully Completed") &&
+                            familyPlanningModuleStatus.equalsIgnoreCase("Fully Completed") && childVisitsCompletionStatus) {
                         ldVisits.add(visit);
                     }
                 }

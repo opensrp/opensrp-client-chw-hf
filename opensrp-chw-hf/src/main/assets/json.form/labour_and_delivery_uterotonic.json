@@ -60,6 +60,7 @@
         "text_color": "#000000",
         "label_text_style": "normal",
         "type": "check_box",
+        "combine_checkbox_option_values": "true",
         "options": [
           {
             "key": "oxytocin",
@@ -77,7 +78,7 @@
           },
           {
             "key": "ergometrine",
-            "text": "Ergometrine",
+            "text": "Ergometrine (0.5mg)",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "ergometrine"
