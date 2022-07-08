@@ -74,7 +74,13 @@ indicators:
 
   - key: less-2-me-a1
     description: "Wateja wanaume chini ya miaka 2 wanaohudhuria kliniki baada ya ufuatiliaji"
-    indicatorQuery: ""
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
+                      FROM ec_ltfu_feedback elf
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
+                      WHERE
+                          elf.followup_status = 'continuing_with_services' and
+                          fm.gender = 'Male' AND
+                          (date(fm.dob, '+2 years') > date('now'))"
 
   - key: less-2-me-b1
     description: "Wateja wanaume chini ya miaka 2 waliopatikana na wako tayari kurudi kliniki baada ya ufuatiliaji"
@@ -82,7 +88,7 @@ indicators:
                       FROM ec_ltfu_feedback elf
                       INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                       WHERE
-                          elf.followup_status = 'continuing_with_services' and
+                          elf.followup_status = 'client_found_ready_to_return' and
                           fm.gender = 'Male' AND
                           (date(fm.dob, '+2 years') > date('now'))"
 
@@ -325,7 +331,13 @@ indicators:
 
   - key: less-2-ke-a1
     description: "Wateja wanawake chini ya miaka 2 wanaohudhuria kliniki baada ya ufuatiliaji"
-    indicatorQuery: ""
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
+                      FROM ec_ltfu_feedback elf
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
+                      WHERE
+                          elf.followup_status = 'continuing_with_services' and
+                          fm.gender = 'Female' AND
+                          (date(fm.dob, '+2 years') > date('now'))"
 
   - key: less-2-ke-b1
     description: "Wateja wanawake chini ya miaka 2 waliopatikana na wako tayari kurudi kliniki baada ya ufuatiliaji"
@@ -333,7 +345,7 @@ indicators:
                       FROM ec_ltfu_feedback elf
                       INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                       WHERE
-                          elf.followup_status = 'continuing_with_services' and
+                          elf.followup_status = 'client_found_ready_to_return' and
                           fm.gender = 'Female' AND
                           (date(fm.dob, '+2 years') > date('now'))"
 
@@ -582,7 +594,14 @@ indicators:
 
   - key: 2-14-me-a1
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 wanaohudhuria kliniki baada ya ufuatiliaji"
-    indicatorQuery: ""
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
+                          FROM ec_ltfu_feedback elf
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
+                          WHERE
+                              elf.followup_status = 'continuing_with_services' and
+                              fm.gender = 'Male' AND
+                              (date(fm.dob, '+2 years') <= date('now')) AND
+                              (date(fm.dob, '+14 years') > date('now'))"
 
   - key: 2-14-me-b1
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 waliopatikana na wako tayari kurudi kliniki baada ya ufuatiliaji"
@@ -590,7 +609,7 @@ indicators:
                           FROM ec_ltfu_feedback elf
                           INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
-                              elf.followup_status = 'continuing_with_services' and
+                              elf.followup_status = 'client_found_ready_to_return' and
                               fm.gender = 'Male' AND
                               (date(fm.dob, '+2 years') <= date('now')) AND
                               (date(fm.dob, '+14 years') > date('now'))"
@@ -856,7 +875,14 @@ indicators:
 
   - key: 2-14-ke-a1
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 wanaohudhuria kliniki baada ya ufuatiliaji"
-    indicatorQuery: ""
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
+                          FROM ec_ltfu_feedback elf
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
+                          WHERE
+                              elf.followup_status = 'continuing_with_services' and
+                              fm.gender = 'Female' AND
+                              (date(fm.dob, '+2 years') <= date('now')) AND
+                              (date(fm.dob, '+14 years') > date('now'))"
 
   - key: 2-14-ke-b1
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 waliopatikana na wako tayari kurudi kliniki baada ya ufuatiliaji"
@@ -864,7 +890,7 @@ indicators:
                           FROM ec_ltfu_feedback elf
                           INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
-                              elf.followup_status = 'continuing_with_services' and
+                              elf.followup_status = 'client_found_ready_to_return' and
                               fm.gender = 'Female' AND
                               (date(fm.dob, '+2 years') <= date('now')) AND
                               (date(fm.dob, '+14 years') > date('now'))"
@@ -1130,7 +1156,14 @@ indicators:
 
   - key: 15-24-me-a1
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 wanaohudhuria kliniki baada ya ufuatiliaji"
-    indicatorQuery: ""
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
+                          FROM ec_ltfu_feedback elf
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
+                          WHERE
+                              elf.followup_status = 'continuing_with_services' and
+                              fm.gender = 'Male' AND
+                              (date(fm.dob, '+15 years') <= date('now')) AND
+                              (date(fm.dob, '+24 years') > date('now'))"
 
   - key: 15-24-me-b1
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 waliopatikana na wako tayari kurudi kliniki baada ya ufuatiliaji"
@@ -1138,7 +1171,7 @@ indicators:
                           FROM ec_ltfu_feedback elf
                           INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
-                              elf.followup_status = 'continuing_with_services' and
+                              elf.followup_status = 'client_found_ready_to_return' and
                               fm.gender = 'Male' AND
                               (date(fm.dob, '+15 years') <= date('now')) AND
                               (date(fm.dob, '+24 years') > date('now'))"
@@ -1405,7 +1438,14 @@ indicators:
 
   - key: 15-24-ke-a1
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 wanaohudhuria kliniki baada ya ufuatiliaji"
-    indicatorQuery: ""
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
+                          FROM ec_ltfu_feedback elf
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
+                          WHERE
+                              elf.followup_status = 'continuing_with_services' and
+                              fm.gender = 'Female' AND
+                              (date(fm.dob, '+15 years') <= date('now')) AND
+                              (date(fm.dob, '+25 years') > date('now'))"
 
   - key: 15-24-ke-b1
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 waliopatikana na wako tayari kurudi kliniki baada ya ufuatiliaji"
@@ -1413,7 +1453,7 @@ indicators:
                           FROM ec_ltfu_feedback elf
                           INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
-                              elf.followup_status = 'continuing_with_services' and
+                              elf.followup_status = 'client_found_ready_to_return' and
                               fm.gender = 'Female' AND
                               (date(fm.dob, '+15 years') <= date('now')) AND
                               (date(fm.dob, '+25 years') > date('now'))"
@@ -1680,7 +1720,14 @@ indicators:
 
   - key: 25-49-me-a1
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 49 wanaohudhuria kliniki baada ya ufuatiliaji"
-    indicatorQuery: ""
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
+                          FROM ec_ltfu_feedback elf
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
+                          WHERE
+                              elf.followup_status = 'continuing_with_services' and
+                              fm.gender = 'Male' AND
+                              (date(fm.dob, '+25 years') <= date('now')) AND
+                              (date(fm.dob, '+50 years') > date('now'))"
 
   - key: 25-49-me-b1
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 waliopatikana na wako tayari kurudi kliniki baada ya ufuatiliaji"
@@ -1688,7 +1735,7 @@ indicators:
                           FROM ec_ltfu_feedback elf
                           INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
-                              elf.followup_status = 'continuing_with_services' and
+                              elf.followup_status = 'client_found_ready_to_return' and
                               fm.gender = 'Male' AND
                               (date(fm.dob, '+25 years') <= date('now')) AND
                               (date(fm.dob, '+50 years') > date('now'))"
@@ -1954,7 +2001,14 @@ indicators:
 
   - key: 25-49-ke-a1
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 49 wanaohudhuria kliniki baada ya ufuatiliaji"
-    indicatorQuery: ""
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
+                          FROM ec_ltfu_feedback elf
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
+                          WHERE
+                              elf.followup_status = 'continuing_with_services' and
+                              fm.gender = 'Female' AND
+                              (date(fm.dob, '+25 years') <= date('now')) AND
+                              (date(fm.dob, '+50 years') > date('now'))"
 
   - key: 25-49-ke-b1
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 waliopatikana na wako tayari kurudi kliniki baada ya ufuatiliaji"
@@ -1962,7 +2016,7 @@ indicators:
                           FROM ec_ltfu_feedback elf
                           INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
-                              elf.followup_status = 'continuing_with_services' and
+                              elf.followup_status = 'client_found_ready_to_return' and
                               fm.gender = 'Female' AND
                               (date(fm.dob, '+25 years') <= date('now')) AND
                               (date(fm.dob, '+50 years') > date('now'))"
@@ -2223,7 +2277,13 @@ indicators:
 
   - key: 60-me-a1
     description: "Wateja wanaume juu ya miaka 50 wanaohudhuria kliniki baada ya ufuatiliaji"
-    indicatorQuery: ""
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
+                          FROM ec_ltfu_feedback elf
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
+                          WHERE
+                              elf.followup_status = 'continuing_with_services' and
+                              fm.gender = 'Male' AND
+                              (date(fm.dob, '+50 years') <= date('now'))"
 
   - key: 60-me-b1
     description: "Wateja wanaume juu ya miaka 50 waliopatikana na wako tayari kurudi kliniki baada ya ufuatiliaji"
@@ -2231,7 +2291,7 @@ indicators:
                           FROM ec_ltfu_feedback elf
                           INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
-                              elf.followup_status = 'continuing_with_services' and
+                              elf.followup_status = 'client_found_ready_to_return' and
                               fm.gender = 'Male' AND
                               (date(fm.dob, '+50 years') <= date('now'))"
 
@@ -2475,7 +2535,13 @@ indicators:
 
   - key: 60-ke-a1
     description: "Wateja wanaume juu ya miaka 50 wanaohudhuria kliniki baada ya ufuatiliaji"
-    indicatorQuery: ""
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
+                          FROM ec_ltfu_feedback elf
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
+                          WHERE
+                              elf.followup_status = 'continuing_with_services' and
+                              fm.gender = 'Female' AND
+                              (date(fm.dob, '+50 years') <= date('now'))"
 
   - key: 60-ke-b1
     description: "Wateja wanamke juu ya miaka 50 waliopatikana na wako tayari kurudi kliniki baada ya ufuatiliaji"
@@ -2483,7 +2549,7 @@ indicators:
                           FROM ec_ltfu_feedback elf
                           INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
-                              elf.followup_status = 'continuing_with_services' and
+                              elf.followup_status = 'client_found_ready_to_return' and
                               fm.gender = 'Female' AND
                               (date(fm.dob, '+50 years') <= date('now'))"
 
