@@ -15,8 +15,8 @@ public class LTFUSummaryObject extends ReportObject {
     private final String[] indicatorCodesArray = new String[]{"less-2-me", "less-2-ke", "2-14-me",
             "2-14-ke", "15-24-me", "15-24-ke", "25-49-me", "25-49-ke", "60-me", "60-ke"};
     private final String[] indicatorGroups = new String[]
-            {"ctc", "pmtct", "tb", "wajidunga", "arv-yes", "arv-no", "jumla-wateja",
-                    "a1", "b1", "c1", "d1", "e1", "f1", "g1", "h1", "jumla-waliopatikana",
+            {"ctc", "pmtct", "tb", "wajidunga", "arv-yes", "arv-no",
+                    "a1", "b1", "c1", "d1", "e1", "f1", "g1", "h1",
                     "a2", "b2", "c2", "d2", "e2", "f2", "g2", "h2", "i2", "j2", "k2"};
 
     public LTFUSummaryObject(Date reportDate) {

@@ -1,5 +1,5 @@
 indicators:
-#  - Male under 2 years
+  #  - Male under 2 years
   - key: less-2-me-ctc
     description: "Wateja wanaume chini ya miaka 2 wasiofika kliniki ya CTC"
     indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
@@ -72,10 +72,6 @@ indicators:
                           fm.gender = 'Male' AND
                           (date(fm.dob, '+2 years') > date('now'))"
 
-  - key: less-2-me-jumla-wateja
-    description: "Jumla ya wateja wanaume chini ya miaka 2 wasiofika kliniki"
-    indicatorQuery: ""
-
   - key: less-2-me-a1
     description: "Wateja wanaume chini ya miaka 2 wanaohudhuria kliniki baada ya ufuatiliaji"
     indicatorQuery: ""
@@ -143,10 +139,6 @@ indicators:
                           elf.followup_status = 'client_not_found' AND
                           fm.gender = 'Male' AND
                           (date(fm.dob, '+2 years') > date('now'))"
-
-  - key: less-2-me-jumla-waliopatikana
-    description: "Jumla ya wateja wanaume waliopatikana"
-    indicatorQuery: ""
 
   - key: less-2-me-a2
     description: "Wateja wanaume chini ya miaka 2 ambao walisahau"
@@ -331,10 +323,6 @@ indicators:
                           fm.gender = 'Female' AND
                           (date(fm.dob, '+2 years') > date('now'))"
 
-  - key: less-2-ke-jumla-wateja
-    description: "Jumla ya wateja wanawake chini ya miaka 2 wasiofika kliniki"
-    indicatorQuery: ""
-
   - key: less-2-ke-a1
     description: "Wateja wanawake chini ya miaka 2 wanaohudhuria kliniki baada ya ufuatiliaji"
     indicatorQuery: ""
@@ -402,10 +390,6 @@ indicators:
                           elf.followup_status = 'client_not_found' AND
                           fm.gender = 'Female' AND
                           (date(fm.dob, '+2 years') > date('now'))"
-
-  - key: less-2-ke-jumla-waliopatikana
-    description: "Jumla ya wateja wanaume waliopatikana"
-    indicatorQuery: ""
 
   - key: less-2-ke-a2
     description: "Wateja wanawake chini ya miaka 2 ambao walisahau"
@@ -517,7 +501,7 @@ indicators:
                           fm.gender = 'Female'
                           AND (date(fm.dob, '+2 years') > date('now'))"
 
-#  Male above 2 years and below 15 years
+  #  Male above 2 years and below 15 years
   - key: 2-14-me-ctc
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 wasiofika kliniki ya CTC"
     indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
@@ -596,10 +580,6 @@ indicators:
                               (date(fm.dob, '+2 years') <= date('now')) AND
                               (date(fm.dob, '+14 years') > date('now'))"
 
-  - key: 2-14-me-jumla-wateja
-    description: "Jumla ya wateja wanaume juu ya miaka 2 na chini ya miaka 15 wasiofika kliniki"
-    indicatorQuery: ""
-
   - key: 2-14-me-a1
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 wanaohudhuria kliniki baada ya ufuatiliaji"
     indicatorQuery: ""
@@ -652,7 +632,7 @@ indicators:
                               (date(fm.dob, '+2 years') <= date('now')) AND
                               (date(fm.dob, '+14 years') > date('now'))"
 
-  - key:  2-14-me-g1
+  - key: 2-14-me-g1
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 ambao wamefariki"
     indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -673,10 +653,6 @@ indicators:
                               fm.gender = 'Male' AND
                               (date(fm.dob, '+2 years') <= date('now')) AND
                               (date(fm.dob, '+14 years') > date('now'))"
-
-  - key: 2-14-me-jumla-waliopatikana
-    description: "Jumla ya wateja wanaume waliopatikana"
-    indicatorQuery: ""
 
   - key: 2-14-me-a2
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 ambao walisahau"
@@ -878,10 +854,6 @@ indicators:
                               (date(fm.dob, '+2 years') <= date('now')) AND
                               (date(fm.dob, '+14 years') > date('now'))"
 
-  - key: 2-14-ke-jumla-wateja
-    description: "Jumla ya wateja wanawake juu ya miaka 2 na chini ya miaka 15 wasiofika kliniki"
-    indicatorQuery: ""
-
   - key: 2-14-ke-a1
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 wanaohudhuria kliniki baada ya ufuatiliaji"
     indicatorQuery: ""
@@ -934,7 +906,7 @@ indicators:
                               (date(fm.dob, '+2 years') <= date('now')) AND
                               (date(fm.dob, '+14 years') > date('now'))"
 
-  - key:  2-14-ke-g1
+  - key: 2-14-ke-g1
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 ambao wamefariki"
     indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -955,10 +927,6 @@ indicators:
                               fm.gender = 'Female' AND
                               (date(fm.dob, '+2 years') <= date('now')) AND
                               (date(fm.dob, '+14 years') > date('now'))"
-
-  - key: 2-14-ke-jumla-waliopatikana
-    description: "Jumla ya wateja wanaume waliopatikana"
-    indicatorQuery: ""
 
   - key: 2-14-ke-a2
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 ambao walisahau"
@@ -1160,10 +1128,6 @@ indicators:
                               (date(fm.dob, '+15 years') <= date('now')) AND
                               (date(fm.dob, '+24 years') > date('now'))"
 
-  - key: 15-24-me-jumla-wateja
-    description: "Jumla ya wateja wanaume juu ya miaka 15 na chini ya miaka 24 wasiofika kliniki"
-    indicatorQuery: ""
-
   - key: 15-24-me-a1
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 wanaohudhuria kliniki baada ya ufuatiliaji"
     indicatorQuery: ""
@@ -1216,7 +1180,7 @@ indicators:
                               (date(fm.dob, '+15 years') <= date('now')) AND
                               (date(fm.dob, '+24 years') > date('now'))"
 
-  - key:  15-24-me-g1
+  - key: 15-24-me-g1
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 ambao wamefariki"
     indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1237,10 +1201,6 @@ indicators:
                               fm.gender = 'Male' AND
                               (date(fm.dob, '+15 years') <= date('now')) AND
                               (date(fm.dob, '+24 years') > date('now'))"
-
-  - key: 15-24-me-jumla-waliopatikana
-    description: "Jumla ya wateja wanaume waliopatikana"
-    indicatorQuery: ""
 
   - key: 15-24-me-a2
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 ambao walisahau"
@@ -1443,10 +1403,6 @@ indicators:
                               (date(fm.dob, '+15 years') <= date('now')) AND
                               (date(fm.dob, '+25 years') > date('now'))"
 
-  - key: 15-24-ke-jumla-wateja
-    description: "Jumla ya wateja wanawake juu ya miaka 15 na chini ya miaka 25 wasiofika kliniki"
-    indicatorQuery: ""
-
   - key: 15-24-ke-a1
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 wanaohudhuria kliniki baada ya ufuatiliaji"
     indicatorQuery: ""
@@ -1499,7 +1455,7 @@ indicators:
                               (date(fm.dob, '+15 years') <= date('now')) AND
                               (date(fm.dob, '+25 years') > date('now'))"
 
-  - key:  15-24-ke-g1
+  - key: 15-24-ke-g1
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 ambao wamefariki"
     indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1520,10 +1476,6 @@ indicators:
                               fm.gender = 'Female' AND
                               (date(fm.dob, '+15 years') <= date('now')) AND
                               (date(fm.dob, '+25 years') > date('now'))"
-
-  - key: 15-24-ke-jumla-waliopatikana
-    description: "Jumla ya wateja wanaume waliopatikana"
-    indicatorQuery: ""
 
   - key: 15-24-ke-a2
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 ambao walisahau"
@@ -1726,10 +1678,6 @@ indicators:
                               (date(fm.dob, '+25 years') <= date('now')) AND
                               (date(fm.dob, '+50 years') > date('now'))"
 
-  - key: 25-49-me-jumla-wateja
-    description: "Jumla ya wateja wanaume juu ya miaka 25 na chini ya miaka 49 wasiofika kliniki"
-    indicatorQuery: ""
-
   - key: 25-49-me-a1
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 49 wanaohudhuria kliniki baada ya ufuatiliaji"
     indicatorQuery: ""
@@ -1782,7 +1730,7 @@ indicators:
                               (date(fm.dob, '+25 years') <= date('now')) AND
                               (date(fm.dob, '+50 years') > date('now'))"
 
-  - key:  25-49-me-g1
+  - key: 25-49-me-g1
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 ambao wamefariki"
     indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1803,10 +1751,6 @@ indicators:
                               fm.gender = 'Male' AND
                               (date(fm.dob, '+25 years') <= date('now')) AND
                               (date(fm.dob, '+50 years') > date('now'))"
-
-  - key: 25-49-me-jumla-waliopatikana
-    description: "Jumla ya wateja wanaume waliopatikana"
-    indicatorQuery: ""
 
   - key: 25-49-me-a2
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 ambao walisahau"
@@ -2008,10 +1952,6 @@ indicators:
                               (date(fm.dob, '+25 years') <= date('now')) AND
                               (date(fm.dob, '+50 years') > date('now'))"
 
-  - key: 25-49-ke-jumla-wateja
-    description: "Jumla ya wateja wanawake juu ya miaka 25 na chini ya miaka 49 wasiofika kliniki"
-    indicatorQuery: ""
-
   - key: 25-49-ke-a1
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 49 wanaohudhuria kliniki baada ya ufuatiliaji"
     indicatorQuery: ""
@@ -2064,7 +2004,7 @@ indicators:
                               (date(fm.dob, '+25 years') <= date('now')) AND
                               (date(fm.dob, '+50 years') > date('now'))"
 
-  - key:  25-49-ke-g1
+  - key: 25-49-ke-g1
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 ambao wamefariki"
     indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2085,10 +2025,6 @@ indicators:
                               fm.gender = 'Female' AND
                               (date(fm.dob, '+25 years') <= date('now')) AND
                               (date(fm.dob, '+50 years') > date('now'))"
-
-  - key: 25-49-ke-jumla-waliopatikana
-    description: "Jumla ya wateja wanawake waliopatikana"
-    indicatorQuery: ""
 
   - key: 25-49-ke-a2
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 ambao walisahau"
@@ -2285,10 +2221,6 @@ indicators:
                               fm.gender = 'Male' AND
                               (date(fm.dob, '+50 years') <= date('now'))"
 
-  - key: 60-me-jumla-wateja
-    description: "Jumla ya wateja wanaume juu ya miaka 25 na chini ya miaka 49 wasiofika kliniki"
-    indicatorQuery: ""
-
   - key: 60-me-a1
     description: "Wateja wanaume juu ya miaka 50 wanaohudhuria kliniki baada ya ufuatiliaji"
     indicatorQuery: ""
@@ -2337,7 +2269,7 @@ indicators:
                               fm.gender = 'Male' AND
                               (date(fm.dob, '+50 years') <= date('now'))"
 
-  - key:  60-me-g1
+  - key: 60-me-g1
     description: "Wateja wanaume juu ya miaka 50 ambao wamefariki"
     indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2356,10 +2288,6 @@ indicators:
                               elf.followup_status = 'client_not_found' AND
                               fm.gender = 'Male' AND
                               (date(fm.dob, '+50 years') <= date('now'))"
-
-  - key: 60-me-jumla-waliopatikana
-    description: "Jumla ya wateja wanaume waliopatikana"
-    indicatorQuery: ""
 
   - key: 60-me-a2
     description: "Wateja wanaume juu ya miaka 50 ambao walisahau"
@@ -2545,10 +2473,6 @@ indicators:
                               fm.gender = 'Female' AND
                               (date(fm.dob, '+50 years') <= date('now'))"
 
-  - key: 60-ke-jumla-wateja
-    description: "Jumla ya wateja wanamke juu ya miaka 25 na chini ya miaka 49 wasiofika kliniki"
-    indicatorQuery: ""
-
   - key: 60-ke-a1
     description: "Wateja wanaume juu ya miaka 50 wanaohudhuria kliniki baada ya ufuatiliaji"
     indicatorQuery: ""
@@ -2597,7 +2521,7 @@ indicators:
                               fm.gender = 'Female' AND
                               (date(fm.dob, '+50 years') <= date('now'))"
 
-  - key:  60-ke-g1
+  - key: 60-ke-g1
     description: "Wateja wanamke juu ya miaka 50 ambao wamefariki"
     indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2616,10 +2540,6 @@ indicators:
                               elf.followup_status = 'client_not_found' AND
                               fm.gender = 'Female' AND
                               (date(fm.dob, '+50 years') <= date('now'))"
-
-  - key: 60-ke-jumla-waliopatikana
-    description: "Jumla ya wateja wanamke waliopatikana"
-    indicatorQuery: ""
 
   - key: 60-ke-a2
     description: "Wateja wanamke juu ya miaka 50 ambao walisahau"
