@@ -155,6 +155,13 @@
             "openmrs_entity_id": "imminent_labour"
           },
           {
+            "key": "oedema_of_legs_and_sacrum",
+            "text": "Kuvimba kwa miguu",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "oedema_of_legs_and_sacrum"
+          },
+          {
             "key": "none",
             "text": "Hakuna",
             "value": false,
@@ -200,6 +207,7 @@
                   "severe_pain",
                   "in_labour",
                   "imminent_labour",
+                  "oedema_of_legs_and_sacrum",
                   "dizziness"
                 ]
               }
