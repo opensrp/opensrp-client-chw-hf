@@ -36,6 +36,10 @@ public class LTFUSummaryObject extends ReportObject {
     @Override
     public JSONObject getIndicatorData() throws JSONException {
         JSONObject jsonObject = new JSONObject();
+        //vertical totals
+        int jumlaWateja = 0;
+        int jumlaWaliopatikana =0;
+
         for (String indicatorCode : indicatorCodesWithGroups) {
             jsonObject.put(indicatorCode, ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate));
         }
@@ -43,8 +47,31 @@ public class LTFUSummaryObject extends ReportObject {
         for (String indicatorGroup : indicatorGroups) {
             jsonObject.put("jumla" + "-" + indicatorGroup, getTotalPerGroup(indicatorGroup));
         }
+        for(String indicatorCode: indicatorCodesArray){
+            jumlaWateja = getJumlaWateja(jsonObject, jumlaWateja, indicatorCode);
+            jumlaWaliopatikana = getJumlaWaliopatikana(jsonObject, jumlaWaliopatikana, indicatorCode);
+        }
+
+        jsonObject.put("jumla-jumla-wateja", jumlaWateja);
+        jsonObject.put("jumla-jumla-waliopatikana", jumlaWaliopatikana);
 
         return jsonObject;
+    }
+
+    private int getJumlaWateja(JSONObject jsonObject, int jumlaWateja, String indicatorCode) throws JSONException {
+        //gets the vertical total and adds the horizontal total to the jsonObject
+        int totalPerClinicForIndicator = getTotalForClinicPerGroup(indicatorCode);
+        jumlaWateja += totalPerClinicForIndicator;
+        jsonObject.put(indicatorCode + "-jumla-wateja", totalPerClinicForIndicator);
+        return jumlaWateja;
+    }
+
+    private int getJumlaWaliopatikana(JSONObject jsonObject, int jumlaWaliopatikana, String indicatorCode) throws JSONException {
+        //gets the vertical total and adds the horizontal total to the jsonObject
+        int totalFoundClientsPerCode = getTotalFoundClients(indicatorCode);
+        jumlaWaliopatikana += totalFoundClientsPerCode;
+        jsonObject.put(indicatorCode +"-jumla-waliopatikana", totalFoundClientsPerCode);
+        return jumlaWaliopatikana;
     }
 
     private int getIndicatorTotal(String indicator) {
@@ -53,6 +80,24 @@ public class LTFUSummaryObject extends ReportObject {
             if (indicatorCode.startsWith(indicator)) {
                 total += ReportDao.getReportPerIndicatorCode(indicatorCode, reportDate);
             }
+        }
+        return total;
+    }
+
+    private int getTotalForClinicPerGroup(String indicator) {
+        final String[] clinics = new String[]{"ctc", "pmtct", "tb", "wajidunga"};
+        int total = 0;
+        for(String clinic : clinics) {
+            total += getIndicatorTotal(indicator + "-" + clinic);
+        }
+       return total;
+    }
+
+    private int getTotalFoundClients(String indicator){
+        final String[] foundClientsGroup = new String[]{"a1", "b1", "d1", "e1", "f1", "g1"};
+        int total = 0;
+        for (String foundClientGroup : foundClientsGroup) {
+            total += getIndicatorTotal(indicator + "-" + foundClientGroup);
         }
         return total;
     }
