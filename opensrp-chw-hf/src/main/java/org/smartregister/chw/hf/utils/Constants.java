@@ -502,6 +502,7 @@ public class Constants extends CoreConstants {
             public static final String LD_GENERAL_EXAMINATION = "labour_and_delivery_general_examination";
             public static final String LD_VAGINAL_EXAMINATION = "labour_and_delivery_vaginal_examination";
             public static final String LD_HIV_TEST = "labour_and_delivery_hiv_test";
+            public static final String LD_HB_TEST_FORM = "labour_and_delivery_hb_test_form";
 
             public static String getLdGeneralExamination() {
                 return Utils.getLocalForm(LD_GENERAL_EXAMINATION);
@@ -513,6 +514,10 @@ public class Constants extends CoreConstants {
 
             public static String getLdHivTest() {
                 return Utils.getLocalForm(LD_HIV_TEST);
+            }
+
+            public static String getLdHBTestForm() {
+                return Utils.getLocalForm(LD_HB_TEST_FORM);
             }
 
         }
