@@ -2,9 +2,9 @@ indicators:
   #  - Male under 2 years
   - key: less-2-me-ctc
     description: "Wateja wanaume chini ya miaka 2 wasiofika kliniki ya CTC"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                       FROM ec_referral er
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                       WHERE
                           er.chw_referral_service = 'LTFU' AND
                           er.problem = 'CTC' AND
@@ -14,9 +14,9 @@ indicators:
 
   - key: less-2-me-pmtct
     description: "Wateja wanaume chini ya miaka 2 wasiofika kliniki ya PMTCT"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                       FROM ec_referral er
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                       WHERE
                           er.chw_referral_service = 'LTFU' AND
                           er.problem = 'PMTCT' AND
@@ -26,9 +26,9 @@ indicators:
 
   - key: less-2-me-tb
     description: "Wateja wanaume chini ya miaka 2 wasiofika kliniki ya wenye TB "
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                       FROM ec_referral er
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                       WHERE
                           er.chw_referral_service = 'LTFU' AND
                           er.problem = 'TB' AND
@@ -38,9 +38,9 @@ indicators:
 
   - key: less-2-me-wajidunga
     description: "Wateja wanaume chini ya miaka 2 wasiofika kliniki ya wanaojidunga"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                       FROM ec_referral er
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                       WHERE
                           er.chw_referral_service = 'LTFU' AND
                           er.problem = 'PWID' AND
@@ -50,9 +50,9 @@ indicators:
 
   - key: less-2-me-arv-yes
     description: "Wateja wanaume chini ya miaka 2 wanaotumia ARV na hawajafika kliniki"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                       FROM ec_referral er
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                       WHERE
                           er.chw_referral_service = 'LTFU' AND
                           er.on_art = 'yes' AND
@@ -62,9 +62,9 @@ indicators:
 
   - key: less-2-me-arv-no
     description: "Wateja wanaume chini ya miaka 2 wasiotumia ARV na hawajafika kliniki"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                       FROM ec_referral er
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                       WHERE
                           er.chw_referral_service = 'LTFU' AND
                           er.on_art = 'no' AND
@@ -78,9 +78,9 @@ indicators:
 
   - key: less-2-me-b1
     description: "Wateja wanaume chini ya miaka 2 waliopatikana na wako tayari kurudi kliniki baada ya ufuatiliaji"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                       WHERE
                           elf.followup_status = 'continuing_with_services' and
                           fm.gender = 'Male' AND
@@ -92,9 +92,9 @@ indicators:
 
   - key: less-2-me-d1
     description: "Wateja wanaume chini ya miaka 2 waliohamia kituo kingine bila taarifa"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                       WHERE
                           elf.followup_status = 'client_has_moved_to_another_facility' AND
                           fm.gender = 'Male' AND
@@ -102,9 +102,9 @@ indicators:
 
   - key: less-2-me-e1
     description: "Wateja wanaume chini ya miaka 2 waliohama makazi"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                       WHERE
                           elf.followup_status = 'client_has_relocated' AND
                           fm.gender = 'Male' AND
@@ -112,9 +112,9 @@ indicators:
 
   - key: less-2-me-f1
     description: "Wateja wanaume chini ya miaka 2 waliopatikana lakini hayuko tayari kurudi kliniki"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                       WHERE
                           elf.followup_status = 'client_does_not_want_to_return' AND
                           fm.gender = 'Male' AND
@@ -122,9 +122,9 @@ indicators:
 
   - key: less-2-me-g1
     description: "Wateja wanaume chini ya miaka 2 ambao wamefariki"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                       WHERE
                           elf.followup_status = 'deceased' AND
                           fm.gender = 'Male' AND
@@ -132,9 +132,9 @@ indicators:
 
   - key: less-2-me-h1
     description: "Wateja wanaume chini ya miaka 2 ambao hawajapatikana"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                       WHERE
                           elf.followup_status = 'client_not_found' AND
                           fm.gender = 'Male' AND
@@ -142,9 +142,9 @@ indicators:
 
   - key: less-2-me-a2
     description: "Wateja wanaume chini ya miaka 2 ambao walisahau"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                       WHERE
                           elf.reasons_for_missed_appointment = 'client_has_forgotten' AND
                           fm.gender = 'Male'
@@ -152,9 +152,9 @@ indicators:
 
   - key: less-2-me-b2
     description: "Wateja wanaume chini ya miaka 2 ambao walikuwa wagonjwa sana"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                       WHERE
                           elf.reasons_for_missed_appointment = 'client_was_ill' AND
                           fm.gender = 'Male'
@@ -162,9 +162,9 @@ indicators:
 
   - key: less-2-me-c2
     description: "Wateja wanaume chini ya miaka 2 ambao walishindwa kujiweka wazi"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                       WHERE
                           elf.reasons_for_missed_appointment = 'client_failed_to_disclose_his_status' AND
                           fm.gender = 'Male'
@@ -172,9 +172,9 @@ indicators:
 
   - key: less-2-me-d2
     description: "Wateja wanaume chini ya miaka 2 ambao walikosa nauli"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                       WHERE
                           elf.reasons_for_missed_appointment = 'client_did_not_have_fare' AND
                           fm.gender = 'Male'
@@ -182,9 +182,9 @@ indicators:
 
   - key: less-2-me-e2
     description: "Wateja wanaume chini ya miaka 2 ambao umbali au usafiri mgumu"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                       WHERE
                           elf.reasons_for_missed_appointment = 'client_lives_far_away_from_the_health_facility' AND
                           fm.gender = 'Male'
@@ -192,9 +192,9 @@ indicators:
 
   - key: less-2-me-f2
     description: "Wateja wanaume chini ya miaka 2 ambao wamepata nafuu"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                       WHERE
                           elf.reasons_for_missed_appointment = 'client_feels_well' AND
                           fm.gender = 'Male'
@@ -202,9 +202,9 @@ indicators:
 
   - key: less-2-me-g2
     description: "Wateja wanaume chini ya miaka 2 ambao hawakupata ruhusa kazini"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                       WHERE
                           elf.reasons_for_missed_appointment = 'client_was_busy_at_work' AND
                           fm.gender = 'Male'
@@ -212,9 +212,9 @@ indicators:
 
   - key: less-2-me-h2
     description: "Wateja wanaume chini ya miaka 2 ambao walisafiri"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                       WHERE
                           elf.reasons_for_missed_appointment = 'client_traveled' AND
                           fm.gender = 'Male'
@@ -222,9 +222,9 @@ indicators:
 
   - key: less-2-me-i2
     description: "Wateja wanaume chini ya miaka 2 ambao wanatumia tiba mbadala"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                       WHERE
                           elf.reasons_for_missed_appointment = 'client_uses_alternative_medicine' AND
                           fm.gender = 'Male'
@@ -232,9 +232,9 @@ indicators:
 
   - key: less-2-me-j2
     description: "Wateja wanaume chini ya miaka 2 ambao wameona huduma haziridhishi"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                       WHERE
                           elf.reasons_for_missed_appointment = 'poor_services_at_health_facility' AND
                           fm.gender = 'Male'
@@ -242,9 +242,9 @@ indicators:
 
   - key: less-2-me-k2
     description: "Wateja wanaume chini ya miaka 2 wenye sababu nyinginezo"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                       WHERE
                           elf.reasons_for_missed_appointment = 'other' AND
                           fm.gender = 'Male'
@@ -253,9 +253,9 @@ indicators:
   #  Female under 2 years
   - key: less-2-ke-ctc
     description: "Wateja wanawake chini ya miaka 2 wasiofika kliniki ya CTC"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                       FROM ec_referral er
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                       WHERE
                           er.chw_referral_service = 'LTFU' AND
                           er.problem = 'CTC' AND
@@ -265,9 +265,9 @@ indicators:
 
   - key: less-2-ke-pmtct
     description: "Wateja wanawake chini ya miaka 2 wasiofika kliniki ya PMTCT"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                       FROM ec_referral er
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                       WHERE
                           er.chw_referral_service = 'LTFU' AND
                           er.problem = 'PMTCT' AND
@@ -277,9 +277,9 @@ indicators:
 
   - key: less-2-ke-tb
     description: "Wateja wanawake chini ya miaka 2 wasiofika kliniki ya wenye TB "
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                       FROM ec_referral er
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                       WHERE
                           er.chw_referral_service = 'LTFU' AND
                           er.problem = 'TB' AND
@@ -289,9 +289,9 @@ indicators:
 
   - key: less-2-ke-wajidunga
     description: "Wateja wanawake chini ya miaka 2 wasiofika kliniki ya wanaojidunga"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                       FROM ec_referral er
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                       WHERE
                           er.chw_referral_service = 'LTFU' AND
                           er.problem = 'PWID' AND
@@ -301,9 +301,9 @@ indicators:
 
   - key: less-2-ke-arv-yes
     description: "Wateja wanawake chini ya miaka 2 wanaotumia ARV na hawajafika kliniki"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                       FROM ec_referral er
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                       WHERE
                           er.chw_referral_service = 'LTFU' AND
                           er.on_art = 'yes' AND
@@ -313,9 +313,9 @@ indicators:
 
   - key: less-2-ke-arv-no
     description: "Wateja wanwake chini ya miaka 2 wasiotumia ARV na hawajafika kliniki"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                       FROM ec_referral er
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                       WHERE
                           er.chw_referral_service = 'LTFU' AND
                           er.on_art = 'no' AND
@@ -329,9 +329,9 @@ indicators:
 
   - key: less-2-ke-b1
     description: "Wateja wanawake chini ya miaka 2 waliopatikana na wako tayari kurudi kliniki baada ya ufuatiliaji"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                       WHERE
                           elf.followup_status = 'continuing_with_services' and
                           fm.gender = 'Female' AND
@@ -343,9 +343,9 @@ indicators:
 
   - key: less-2-ke-d1
     description: "Wateja wanawake chini ya miaka 2 waliohamia kituo kingine bila taarifa"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                       WHERE
                           elf.followup_status = 'client_has_moved_to_another_facility' AND
                           fm.gender = 'Female' AND
@@ -353,9 +353,9 @@ indicators:
 
   - key: less-2-ke-e1
     description: "Wateja wanawake chini ya miaka 2 waliohama makazi"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                       WHERE
                           elf.followup_status = 'client_has_relocated' AND
                           fm.gender = 'Female' AND
@@ -363,9 +363,9 @@ indicators:
 
   - key: less-2-ke-f1
     description: "Wateja wanwake chini ya miaka 2 waliopatikana lakini hayuko tayari kurudi kliniki"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                       WHERE
                           elf.followup_status = 'client_does_not_want_to_return' AND
                           fm.gender = 'Female' AND
@@ -373,9 +373,9 @@ indicators:
 
   - key: less-2-ke-g1
     description: "Wateja wanawake chini ya miaka 2 ambao wamefariki"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                       WHERE
                           elf.followup_status = 'deceased' AND
                           fm.gender = 'Female' AND
@@ -383,9 +383,9 @@ indicators:
 
   - key: less-2-ke-h1
     description: "Wateja wanawake chini ya miaka 2 ambao hawajapatikana"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                       WHERE
                           elf.followup_status = 'client_not_found' AND
                           fm.gender = 'Female' AND
@@ -393,9 +393,9 @@ indicators:
 
   - key: less-2-ke-a2
     description: "Wateja wanawake chini ya miaka 2 ambao walisahau"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                       WHERE
                           elf.reasons_for_missed_appointment = 'client_has_forgotten' AND
                           fm.gender = 'Female'
@@ -403,9 +403,9 @@ indicators:
 
   - key: less-2-ke-b2
     description: "Wateja wanawake chini ya miaka 2 ambao walikuwa wagonjwa sana"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                       WHERE
                           elf.reasons_for_missed_appointment = 'client_was_ill' AND
                           fm.gender = 'Female'
@@ -413,9 +413,9 @@ indicators:
 
   - key: less-2-ke-c2
     description: "Wateja wanawake chini ya miaka 2 ambao walishindwa kujiweka wazi"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                       WHERE
                           elf.reasons_for_missed_appointment = 'client_failed_to_disclose_his_status' AND
                           fm.gender = 'Female'
@@ -423,9 +423,9 @@ indicators:
 
   - key: less-2-ke-d2
     description: "Wateja wanawake chini ya miaka 2 ambao walikosa nauli"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                       WHERE
                           elf.reasons_for_missed_appointment = 'client_did_not_have_fare' AND
                           fm.gender = 'Female'
@@ -433,9 +433,9 @@ indicators:
 
   - key: less-2-ke-e2
     description: "Wateja wanawake chini ya miaka 2 ambao umbali au usafiri mgumu"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                       WHERE
                           elf.reasons_for_missed_appointment = 'client_lives_far_away_from_the_health_facility' AND
                           fm.gender = 'Female'
@@ -443,9 +443,9 @@ indicators:
 
   - key: less-2-ke-f2
     description: "Wateja wanawake chini ya miaka 2 ambao wamepata nafuu"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                       WHERE
                           elf.reasons_for_missed_appointment = 'client_feels_well' AND
                           fm.gender = 'Female'
@@ -453,9 +453,9 @@ indicators:
 
   - key: less-2-ke-g2
     description: "Wateja wanawake chini ya miaka 2 ambao hawakupata ruhusa kazini"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                       WHERE
                           elf.reasons_for_missed_appointment = 'client_was_busy_at_work' AND
                           fm.gender = 'Female'
@@ -463,9 +463,9 @@ indicators:
 
   - key: less-2-ke-h2
     description: "Wateja wanawake chini ya miaka 2 ambao walisafiri"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                       WHERE
                           elf.reasons_for_missed_appointment = 'client_traveled' AND
                           fm.gender = 'Female'
@@ -473,9 +473,9 @@ indicators:
 
   - key: less-2-ke-i2
     description: "Wateja wanawake chini ya miaka 2 ambao wanatumia tiba mbadala"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                       WHERE
                           elf.reasons_for_missed_appointment = 'client_uses_alternative_medicine' AND
                           fm.gender = 'Female'
@@ -483,9 +483,9 @@ indicators:
 
   - key: less-2-ke-j2
     description: "Wateja wanawake chini ya miaka 2 ambao wameona huduma haziridhishi"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                       WHERE
                           elf.reasons_for_missed_appointment = 'poor_services_at_health_facility' AND
                           fm.gender = 'Female'
@@ -493,9 +493,9 @@ indicators:
 
   - key: less-2-ke-k2
     description: "Wateja wanawake chini ya miaka 2 wenye sababu nyinginezo"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
-                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                       WHERE
                           elf.reasons_for_missed_appointment = 'other' AND
                           fm.gender = 'Female'
@@ -504,9 +504,9 @@ indicators:
   #  Male above 2 years and below 15 years
   - key: 2-14-me-ctc
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 wasiofika kliniki ya CTC"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.problem = 'CTC' AND
@@ -517,9 +517,9 @@ indicators:
 
   - key: "2-14-me-pmtct"
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 wasiofika wasiofika kliniki ya PMTCT"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.problem = 'PMTCT' AND
@@ -530,9 +530,9 @@ indicators:
 
   - key: 2-14-me-tb
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 wasiofika kliniki ya wenye TB "
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.problem = 'TB' AND
@@ -543,9 +543,9 @@ indicators:
 
   - key: 2-14-me-wajidunga
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 wasiofika kliniki ya wanaojidunga"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.problem = 'PWID' AND
@@ -556,9 +556,9 @@ indicators:
 
   - key: 2-14-me-arv-yes
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 wanaotumia ARV na hawajafika kliniki"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.on_art = 'yes' AND
@@ -569,9 +569,9 @@ indicators:
 
   - key: 2-14-me-arv-NO
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 wasiotumia ARV na hawajafika kliniki"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.on_art = 'no' AND
@@ -586,9 +586,9 @@ indicators:
 
   - key: 2-14-me-b1
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 waliopatikana na wako tayari kurudi kliniki baada ya ufuatiliaji"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'continuing_with_services' and
                               fm.gender = 'Male' AND
@@ -601,9 +601,9 @@ indicators:
 
   - key: 2-14-me-d1
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 waliohamia kituo kingine bila taarifa"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'client_has_moved_to_another_facility' AND
                               fm.gender = 'Male' AND
@@ -612,9 +612,9 @@ indicators:
 
   - key: 2-14-me-e1
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 waliohama makazi"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'client_has_relocated' AND
                               fm.gender = 'Male' AND
@@ -623,9 +623,9 @@ indicators:
 
   - key: 2-14-me-f1
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 waliopatikana lakini hayuko tayari kurudi kliniki"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'client_does_not_want_to_return' AND
                               fm.gender = 'Male' AND
@@ -634,9 +634,9 @@ indicators:
 
   - key: 2-14-me-g1
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 ambao wamefariki"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'deceased' AND
                               fm.gender = 'Male' AND
@@ -645,9 +645,9 @@ indicators:
 
   - key: 2-14-me-h1
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 ambao hawajapatikana"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'client_not_found' AND
                               fm.gender = 'Male' AND
@@ -656,9 +656,9 @@ indicators:
 
   - key: 2-14-me-a2
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 ambao walisahau"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_has_forgotten' AND
                               fm.gender = 'Male' AND
@@ -667,9 +667,9 @@ indicators:
 
   - key: 2-14-me-b2
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 ambao walikuwa wagonjwa sana"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_was_ill' AND
                               fm.gender = 'Male' AND
@@ -678,9 +678,9 @@ indicators:
 
   - key: 2-14-me-c2
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 ambao walishindwa kujiweka wazi"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_failed_to_disclose_his_status' AND
                               fm.gender = 'Male' AND
@@ -689,9 +689,9 @@ indicators:
 
   - key: 2-14-me-d2
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 ambao walikosa nauli"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_did_not_have_fare' AND
                               fm.gender = 'Male' AND
@@ -700,9 +700,9 @@ indicators:
 
   - key: 2-14-me-e2
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 ambao umbali au usafiri mgumu"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_lives_far_away_from_the_health_facility' AND
                               fm.gender = 'Male' AND
@@ -711,9 +711,9 @@ indicators:
 
   - key: 2-14-me-f2
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 ambao wamepata nafuu"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_feels_well' AND
                               fm.gender = 'Male' AND
@@ -722,9 +722,9 @@ indicators:
 
   - key: 2-14-me-g2
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 ambao hawakupata ruhusa kazini"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_was_busy_at_work' AND
                               fm.gender = 'Male' AND
@@ -733,9 +733,9 @@ indicators:
 
   - key: 2-14-me-h2
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 ambao walisafiri"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_traveled' AND
                               fm.gender = 'Male' AND
@@ -744,9 +744,9 @@ indicators:
 
   - key: 2-14-me-i2
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 ambao wanatumia tiba mbadala"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_uses_alternative_medicine' AND
                               fm.gender = 'Male' AND
@@ -755,9 +755,9 @@ indicators:
 
   - key: 2-14-me-j2
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 ambao wameona huduma haziridhishi"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'poor_services_at_health_facility' AND
                               fm.gender = 'Male' AND
@@ -766,9 +766,9 @@ indicators:
 
   - key: 2-14-me-k2
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 wenye sababu nyinginezo"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'other' AND
                               fm.gender = 'Male' AND
@@ -778,9 +778,9 @@ indicators:
   #  Female above 2 years and below 15 years
   - key: 2-14-ke-ctc
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 wasiofika kliniki ya CTC"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.problem = 'CTC' AND
@@ -791,9 +791,9 @@ indicators:
 
   - key: "2-14-ke-pmtct"
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 wasiofika wasiofika kliniki ya PMTCT"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.problem = 'PMTCT' AND
@@ -804,9 +804,9 @@ indicators:
 
   - key: 2-14-ke-tb
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 wasiofika kliniki ya wenye TB "
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.problem = 'TB' AND
@@ -817,9 +817,9 @@ indicators:
 
   - key: 2-14-ke-wajidunga
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 wasiofika kliniki ya wanaojidunga"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.problem = 'PWID' AND
@@ -830,9 +830,9 @@ indicators:
 
   - key: 2-14-ke-arv-yes
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 wanaotumia ARV na hawajafika kliniki"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.on_art = 'yes' AND
@@ -843,9 +843,9 @@ indicators:
 
   - key: 2-14-ke-arv-NO
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 wasiotumia ARV na hawajafika kliniki"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.on_art = 'no' AND
@@ -860,9 +860,9 @@ indicators:
 
   - key: 2-14-ke-b1
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 waliopatikana na wako tayari kurudi kliniki baada ya ufuatiliaji"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'continuing_with_services' and
                               fm.gender = 'Female' AND
@@ -875,9 +875,9 @@ indicators:
 
   - key: 2-14-ke-d1
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 waliohamia kituo kingine bila taarifa"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'client_has_moved_to_another_facility' AND
                               fm.gender = 'Female' AND
@@ -886,9 +886,9 @@ indicators:
 
   - key: 2-14-ke-e1
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 waliohama makazi"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'client_has_relocated' AND
                               fm.gender = 'Female' AND
@@ -897,9 +897,9 @@ indicators:
 
   - key: 2-14-ke-f1
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 waliopatikana lakini hayuko tayari kurudi kliniki"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'client_does_not_want_to_return' AND
                               fm.gender = 'Female' AND
@@ -908,9 +908,9 @@ indicators:
 
   - key: 2-14-ke-g1
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 ambao wamefariki"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'deceased' AND
                               fm.gender = 'Female' AND
@@ -919,9 +919,9 @@ indicators:
 
   - key: 2-14-ke-h1
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 ambao hawajapatikana"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'client_not_found' AND
                               fm.gender = 'Female' AND
@@ -930,9 +930,9 @@ indicators:
 
   - key: 2-14-ke-a2
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 ambao walisahau"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_has_forgotten' AND
                               fm.gender = 'Female' AND
@@ -941,9 +941,9 @@ indicators:
 
   - key: 2-14-ke-b2
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 ambao walikuwa wagonjwa sana"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_was_ill' AND
                               fm.gender = 'Female' AND
@@ -952,9 +952,9 @@ indicators:
 
   - key: 2-14-ke-c2
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 ambao walishindwa kujiweka wazi"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_failed_to_disclose_his_status' AND
                               fm.gender = 'Female' AND
@@ -963,9 +963,9 @@ indicators:
 
   - key: 2-14-ke-d2
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 ambao walikosa nauli"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_did_not_have_fare' AND
                               fm.gender = 'Female' AND
@@ -974,9 +974,9 @@ indicators:
 
   - key: 2-14-ke-e2
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 ambao umbali au usafiri mgumu"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_lives_far_away_from_the_health_facility' AND
                               fm.gender = 'Female' AND
@@ -985,9 +985,9 @@ indicators:
 
   - key: 2-14-ke-f2
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 ambao wamepata nafuu"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_feels_well' AND
                               fm.gender = 'Female' AND
@@ -996,9 +996,9 @@ indicators:
 
   - key: 2-14-ke-g2
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 ambao hawakupata ruhusa kazini"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_was_busy_at_work' AND
                               fm.gender = 'Female' AND
@@ -1007,9 +1007,9 @@ indicators:
 
   - key: 2-14-ke-h2
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 ambao walisafiri"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_traveled' AND
                               fm.gender = 'Female' AND
@@ -1018,9 +1018,9 @@ indicators:
 
   - key: 2-14-ke-i2
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 ambao wanatumia tiba mbadala"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_uses_alternative_medicine' AND
                               fm.gender = 'Female' AND
@@ -1029,9 +1029,9 @@ indicators:
 
   - key: 2-14-ke-j2
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 ambao wameona huduma haziridhishi"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'poor_services_at_health_facility' AND
                               fm.gender = 'Female' AND
@@ -1040,9 +1040,9 @@ indicators:
 
   - key: 2-14-ke-k2
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 wenye sababu nyinginezo"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'other' AND
                               fm.gender = 'Female' AND
@@ -1052,9 +1052,9 @@ indicators:
   #  Male above 15 years and below 24 years
   - key: 15-24-me-ctc
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 wasiofika kliniki ya CTC"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.problem = 'CTC' AND
@@ -1065,9 +1065,9 @@ indicators:
 
   - key: "15-24-me-pmtct"
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 wasiofika wasiofika kliniki ya PMTCT"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.problem = 'PMTCT' AND
@@ -1078,9 +1078,9 @@ indicators:
 
   - key: 15-24-me-tb
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 wasiofika kliniki ya wenye TB "
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.problem = 'TB' AND
@@ -1091,9 +1091,9 @@ indicators:
 
   - key: 15-24-me-wajidunga
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 wasiofika kliniki ya wanaojidunga"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.problem = 'PWID' AND
@@ -1104,9 +1104,9 @@ indicators:
 
   - key: 15-24-me-arv-yes
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 wanaotumia ARV na hawajafika kliniki"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.on_art = 'yes' AND
@@ -1117,9 +1117,9 @@ indicators:
 
   - key: 15-24-me-arv-NO
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 wasiotumia ARV na hawajafika kliniki"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.on_art = 'no' AND
@@ -1134,9 +1134,9 @@ indicators:
 
   - key: 15-24-me-b1
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 waliopatikana na wako tayari kurudi kliniki baada ya ufuatiliaji"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'continuing_with_services' and
                               fm.gender = 'Male' AND
@@ -1149,9 +1149,9 @@ indicators:
 
   - key: 15-24-me-d1
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 waliohamia kituo kingine bila taarifa"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'client_has_moved_to_another_facility' AND
                               fm.gender = 'Male' AND
@@ -1160,9 +1160,9 @@ indicators:
 
   - key: 15-24-me-e1
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 waliohama makazi"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'client_has_relocated' AND
                               fm.gender = 'Male' AND
@@ -1171,9 +1171,9 @@ indicators:
 
   - key: 15-24-me-f1
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 waliopatikana lakini hayuko tayari kurudi kliniki"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'client_does_not_want_to_return' AND
                               fm.gender = 'Male' AND
@@ -1182,9 +1182,9 @@ indicators:
 
   - key: 15-24-me-g1
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 ambao wamefariki"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'deceased' AND
                               fm.gender = 'Male' AND
@@ -1193,9 +1193,9 @@ indicators:
 
   - key: 15-24-me-h1
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 ambao hawajapatikana"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'client_not_found' AND
                               fm.gender = 'Male' AND
@@ -1204,9 +1204,9 @@ indicators:
 
   - key: 15-24-me-a2
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 ambao walisahau"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_has_forgotten' AND
                               fm.gender = 'Male' AND
@@ -1215,9 +1215,9 @@ indicators:
 
   - key: 15-24-me-b2
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 ambao walikuwa wagonjwa sana"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_was_ill' AND
                               fm.gender = 'Male' AND
@@ -1226,9 +1226,9 @@ indicators:
 
   - key: 15-24-me-c2
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 ambao walishindwa kujiweka wazi"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_failed_to_disclose_his_status' AND
                               fm.gender = 'Male' AND
@@ -1237,9 +1237,9 @@ indicators:
 
   - key: 15-24-me-d2
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 ambao walikosa nauli"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_did_not_have_fare' AND
                               fm.gender = 'Male' AND
@@ -1248,9 +1248,9 @@ indicators:
 
   - key: 15-24-me-e2
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 ambao umbali au usafiri mgumu"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_lives_far_away_from_the_health_facility' AND
                               fm.gender = 'Male' AND
@@ -1259,9 +1259,9 @@ indicators:
 
   - key: 15-24-me-f2
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 ambao wamepata nafuu"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_feels_well' AND
                               fm.gender = 'Male' AND
@@ -1270,9 +1270,9 @@ indicators:
 
   - key: 15-24-me-g2
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 ambao hawakupata ruhusa kazini"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_was_busy_at_work' AND
                               fm.gender = 'Male' AND
@@ -1281,9 +1281,9 @@ indicators:
 
   - key: 15-24-me-h2
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 ambao walisafiri"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_traveled' AND
                               fm.gender = 'Male' AND
@@ -1292,9 +1292,9 @@ indicators:
 
   - key: 15-24-me-i2
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 ambao wanatumia tiba mbadala"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_uses_alternative_medicine' AND
                               fm.gender = 'Male' AND
@@ -1303,9 +1303,9 @@ indicators:
 
   - key: 15-24-me-j2
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 ambao wameona huduma haziridhishi"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'poor_services_at_health_facility' AND
                               fm.gender = 'Male' AND
@@ -1314,9 +1314,9 @@ indicators:
 
   - key: 15-24-me-k2
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 wenye sababu nyinginezo"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'other' AND
                               fm.gender = 'Male' AND
@@ -1327,9 +1327,9 @@ indicators:
   #  Female above 15 years and below 24 years
   - key: 15-24-ke-ctc
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 wasiofika kliniki ya CTC"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.problem = 'CTC' AND
@@ -1340,9 +1340,9 @@ indicators:
 
   - key: "15-24-ke-pmtct"
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 wasiofika wasiofika kliniki ya PMTCT"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.problem = 'PMTCT' AND
@@ -1353,9 +1353,9 @@ indicators:
 
   - key: 15-24-ke-tb
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 wasiofika kliniki ya wenye TB "
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.problem = 'TB' AND
@@ -1366,9 +1366,9 @@ indicators:
 
   - key: 15-24-ke-wajidunga
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 wasiofika kliniki ya wanaojidunga"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.problem = 'PWID' AND
@@ -1379,9 +1379,9 @@ indicators:
 
   - key: 15-24-ke-arv-yes
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 wanaotumia ARV na hawajafika kliniki"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.on_art = 'yes' AND
@@ -1392,9 +1392,9 @@ indicators:
 
   - key: 15-24-ke-arv-NO
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 wasiotumia ARV na hawajafika kliniki"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.on_art = 'no' AND
@@ -1409,9 +1409,9 @@ indicators:
 
   - key: 15-24-ke-b1
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 waliopatikana na wako tayari kurudi kliniki baada ya ufuatiliaji"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'continuing_with_services' and
                               fm.gender = 'Female' AND
@@ -1424,9 +1424,9 @@ indicators:
 
   - key: 15-24-ke-d1
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 waliohamia kituo kingine bila taarifa"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'client_has_moved_to_another_facility' AND
                               fm.gender = 'Female' AND
@@ -1435,9 +1435,9 @@ indicators:
 
   - key: 15-24-ke-e1
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 waliohama makazi"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'client_has_relocated' AND
                               fm.gender = 'Female' AND
@@ -1446,9 +1446,9 @@ indicators:
 
   - key: 15-24-ke-f1
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 waliopatikana lakini hayuko tayari kurudi kliniki"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'client_does_not_want_to_return' AND
                               fm.gender = 'Female' AND
@@ -1457,9 +1457,9 @@ indicators:
 
   - key: 15-24-ke-g1
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 ambao wamefariki"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'deceased' AND
                               fm.gender = 'Female' AND
@@ -1468,9 +1468,9 @@ indicators:
 
   - key: 15-24-ke-h1
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 ambao hawajapatikana"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'client_not_found' AND
                               fm.gender = 'Female' AND
@@ -1479,9 +1479,9 @@ indicators:
 
   - key: 15-24-ke-a2
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 ambao walisahau"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_has_forgotten' AND
                               fm.gender = 'Female' AND
@@ -1490,9 +1490,9 @@ indicators:
 
   - key: 15-24-ke-b2
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 ambao walikuwa wagonjwa sana"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_was_ill' AND
                               fm.gender = 'Female' AND
@@ -1501,9 +1501,9 @@ indicators:
 
   - key: 15-24-ke-c2
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 ambao walishindwa kujiweka wazi"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_failed_to_disclose_his_status' AND
                               fm.gender = 'Female' AND
@@ -1512,9 +1512,9 @@ indicators:
 
   - key: 15-24-ke-d2
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 ambao walikosa nauli"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_did_not_have_fare' AND
                               fm.gender = 'Female' AND
@@ -1523,9 +1523,9 @@ indicators:
 
   - key: 15-24-ke-e2
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 ambao umbali au usafiri mgumu"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_lives_far_away_from_the_health_facility' AND
                               fm.gender = 'Female' AND
@@ -1534,9 +1534,9 @@ indicators:
 
   - key: 15-24-ke-f2
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 ambao wamepata nafuu"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_feels_well' AND
                               fm.gender = 'Female' AND
@@ -1545,9 +1545,9 @@ indicators:
 
   - key: 15-24-ke-g2
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 ambao hawakupata ruhusa kazini"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_was_busy_at_work' AND
                               fm.gender = 'Female' AND
@@ -1556,9 +1556,9 @@ indicators:
 
   - key: 15-24-ke-h2
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 ambao walisafiri"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_traveled' AND
                               fm.gender = 'Female' AND
@@ -1567,9 +1567,9 @@ indicators:
 
   - key: 15-24-ke-i2
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 ambao wanatumia tiba mbadala"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_uses_alternative_medicine' AND
                               fm.gender = 'Female' AND
@@ -1578,9 +1578,9 @@ indicators:
 
   - key: 15-24-ke-j2
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 ambao wameona huduma haziridhishi"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'poor_services_at_health_facility' AND
                               fm.gender = 'Female' AND
@@ -1589,9 +1589,9 @@ indicators:
 
   - key: 15-24-ke-k2
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 wenye sababu nyinginezo"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'other' AND
                               fm.gender = 'Female' AND
@@ -1602,9 +1602,9 @@ indicators:
   #  Male above 25 years and below 49 years
   - key: 25-49-me-ctc
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 wasiofika kliniki ya CTC"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.problem = 'CTC' AND
@@ -1615,9 +1615,9 @@ indicators:
 
   - key: "25-49-me-pmtct"
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 wasiofika wasiofika kliniki ya PMTCT"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.problem = 'PMTCT' AND
@@ -1628,9 +1628,9 @@ indicators:
 
   - key: 25-49-me-tb
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 wasiofika kliniki ya wenye TB "
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.problem = 'TB' AND
@@ -1641,9 +1641,9 @@ indicators:
 
   - key: 25-49-me-wajidunga
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 wasiofika kliniki ya wanaojidunga"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.problem = 'PWID' AND
@@ -1654,9 +1654,9 @@ indicators:
 
   - key: 25-49-me-arv-yes
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 wanaotumia ARV na hawajafika kliniki"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.on_art = 'yes' AND
@@ -1667,9 +1667,9 @@ indicators:
 
   - key: 25-49-me-arv-NO
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 wasiotumia ARV na hawajafika kliniki"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.on_art = 'no' AND
@@ -1684,9 +1684,9 @@ indicators:
 
   - key: 25-49-me-b1
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 waliopatikana na wako tayari kurudi kliniki baada ya ufuatiliaji"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'continuing_with_services' and
                               fm.gender = 'Male' AND
@@ -1699,9 +1699,9 @@ indicators:
 
   - key: 25-49-me-d1
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 waliohamia kituo kingine bila taarifa"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'client_has_moved_to_another_facility' AND
                               fm.gender = 'Male' AND
@@ -1710,9 +1710,9 @@ indicators:
 
   - key: 25-49-me-e1
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 waliohama makazi"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'client_has_relocated' AND
                               fm.gender = 'Male' AND
@@ -1721,9 +1721,9 @@ indicators:
 
   - key: 25-49-me-f1
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 waliopatikana lakini hayuko tayari kurudi kliniki"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'client_does_not_want_to_return' AND
                               fm.gender = 'Male' AND
@@ -1732,9 +1732,9 @@ indicators:
 
   - key: 25-49-me-g1
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 ambao wamefariki"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'deceased' AND
                               fm.gender = 'Male' AND
@@ -1743,9 +1743,9 @@ indicators:
 
   - key: 25-49-me-h1
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 ambao hawajapatikana"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'client_not_found' AND
                               fm.gender = 'Male' AND
@@ -1754,9 +1754,9 @@ indicators:
 
   - key: 25-49-me-a2
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 ambao walisahau"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_has_forgotten' AND
                               fm.gender = 'Male' AND
@@ -1765,9 +1765,9 @@ indicators:
 
   - key: 25-49-me-b2
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 ambao walikuwa wagonjwa sana"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_was_ill' AND
                               fm.gender = 'Male' AND
@@ -1776,9 +1776,9 @@ indicators:
 
   - key: 25-49-me-c2
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 ambao walishindwa kujiweka wazi"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_failed_to_disclose_his_status' AND
                               fm.gender = 'Male' AND
@@ -1787,9 +1787,9 @@ indicators:
 
   - key: 25-49-me-d2
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 ambao walikosa nauli"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_did_not_have_fare' AND
                               fm.gender = 'Male' AND
@@ -1798,9 +1798,9 @@ indicators:
 
   - key: 25-49-me-e2
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 ambao umbali au usafiri mgumu"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_lives_far_away_from_the_health_facility' AND
                               fm.gender = 'Male' AND
@@ -1809,9 +1809,9 @@ indicators:
 
   - key: 25-49-me-f2
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 ambao wamepata nafuu"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_feels_well' AND
                               fm.gender = 'Male' AND
@@ -1820,9 +1820,9 @@ indicators:
 
   - key: 25-49-me-g2
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 ambao hawakupata ruhusa kazini"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_was_busy_at_work' AND
                               fm.gender = 'Male' AND
@@ -1831,9 +1831,9 @@ indicators:
 
   - key: 25-49-me-h2
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 ambao walisafiri"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_traveled' AND
                               fm.gender = 'Male' AND
@@ -1842,9 +1842,9 @@ indicators:
 
   - key: 25-49-me-i2
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 ambao wanatumia tiba mbadala"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_uses_alternative_medicine' AND
                               fm.gender = 'Male' AND
@@ -1853,9 +1853,9 @@ indicators:
 
   - key: 25-49-me-j2
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 ambao wameona huduma haziridhishi"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'poor_services_at_health_facility' AND
                               fm.gender = 'Male' AND
@@ -1864,9 +1864,9 @@ indicators:
 
   - key: 25-49-me-k2
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 wenye sababu nyinginezo"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'other' AND
                               fm.gender = 'Male' AND
@@ -1876,9 +1876,9 @@ indicators:
   #  Female above 25 years and below 49 years
   - key: 25-49-ke-ctc
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 wasiofika kliniki ya CTC"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.problem = 'CTC' AND
@@ -1889,9 +1889,9 @@ indicators:
 
   - key: "25-49-ke-pmtct"
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 wasiofika wasiofika kliniki ya PMTCT"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.problem = 'PMTCT' AND
@@ -1902,9 +1902,9 @@ indicators:
 
   - key: 25-49-ke-tb
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 wasiofika kliniki ya wenye TB "
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.problem = 'TB' AND
@@ -1915,9 +1915,9 @@ indicators:
 
   - key: 25-49-ke-wajidunga
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 wasiofika kliniki ya wanaojidunga"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.problem = 'PWID' AND
@@ -1928,9 +1928,9 @@ indicators:
 
   - key: 25-49-ke-arv-yes
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 wanaotumia ARV na hawajafika kliniki"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.on_art = 'yes' AND
@@ -1941,9 +1941,9 @@ indicators:
 
   - key: 25-49-ke-arv-NO
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 wasiotumia ARV na hawajafika kliniki"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.on_art = 'no' AND
@@ -1958,9 +1958,9 @@ indicators:
 
   - key: 25-49-ke-b1
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 waliopatikana na wako tayari kurudi kliniki baada ya ufuatiliaji"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'continuing_with_services' and
                               fm.gender = 'Female' AND
@@ -1973,9 +1973,9 @@ indicators:
 
   - key: 25-49-ke-d1
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 waliohamia kituo kingine bila taarifa"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'client_has_moved_to_another_facility' AND
                               fm.gender = 'Female' AND
@@ -1984,9 +1984,9 @@ indicators:
 
   - key: 25-49-ke-e1
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 waliohama makazi"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'client_has_relocated' AND
                               fm.gender = 'Female' AND
@@ -1995,9 +1995,9 @@ indicators:
 
   - key: 25-49-ke-f1
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 waliopatikana lakini hayuko tayari kurudi kliniki"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'client_does_not_want_to_return' AND
                               fm.gender = 'Female' AND
@@ -2006,9 +2006,9 @@ indicators:
 
   - key: 25-49-ke-g1
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 ambao wamefariki"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'deceased' AND
                               fm.gender = 'Female' AND
@@ -2017,9 +2017,9 @@ indicators:
 
   - key: 25-49-me-h1
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 ambao hawajapatikana"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'client_not_found' AND
                               fm.gender = 'Female' AND
@@ -2028,9 +2028,9 @@ indicators:
 
   - key: 25-49-ke-a2
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 ambao walisahau"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_has_forgotten' AND
                               fm.gender = 'Female' AND
@@ -2039,9 +2039,9 @@ indicators:
 
   - key: 25-49-ke-b2
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 ambao walikuwa wagonjwa sana"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_was_ill' AND
                               fm.gender = 'Female' AND
@@ -2050,9 +2050,9 @@ indicators:
 
   - key: 25-49-ke-c2
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 ambao walishindwa kujiweka wazi"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_failed_to_disclose_his_status' AND
                               fm.gender = 'Female' AND
@@ -2061,9 +2061,9 @@ indicators:
 
   - key: 25-49-ke-d2
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 ambao walikosa nauli"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_did_not_have_fare' AND
                               fm.gender = 'Female' AND
@@ -2072,9 +2072,9 @@ indicators:
 
   - key: 25-49-ke-e2
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 ambao umbali au usafiri mgumu"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_lives_far_away_from_the_health_facility' AND
                               fm.gender = 'Female' AND
@@ -2083,9 +2083,9 @@ indicators:
 
   - key: 25-49-ke-f2
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 ambao wamepata nafuu"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_feels_well' AND
                               fm.gender = 'Female' AND
@@ -2094,9 +2094,9 @@ indicators:
 
   - key: 25-49-ke-g2
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 ambao hawakupata ruhusa kazini"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_was_busy_at_work' AND
                               fm.gender = 'Female' AND
@@ -2105,9 +2105,9 @@ indicators:
 
   - key: 25-49-ke-h2
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 ambao walisafiri"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_traveled' AND
                               fm.gender = 'Female' AND
@@ -2116,9 +2116,9 @@ indicators:
 
   - key: 25-49-ke-i2
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 ambao wanatumia tiba mbadala"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_uses_alternative_medicine' AND
                               fm.gender = 'Female' AND
@@ -2127,9 +2127,9 @@ indicators:
 
   - key: 25-49-ke-j2
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 ambao wameona huduma haziridhishi"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'poor_services_at_health_facility' AND
                               fm.gender = 'Female' AND
@@ -2138,9 +2138,9 @@ indicators:
 
   - key: 25-49-ke-k2
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 wenye sababu nyinginezo"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'other' AND
                               fm.gender = 'Female' AND
@@ -2151,9 +2151,9 @@ indicators:
   #  Male above 50 years
   - key: 60-me-ctc
     description: "Wateja wanaume juu ya miaka 50 wasiofika kliniki ya CTC"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.problem = 'CTC' AND
@@ -2163,9 +2163,9 @@ indicators:
 
   - key: "60-me-pmtct"
     description: "Wateja wanaume juu ya miaka 50 wasiofika wasiofika kliniki ya PMTCT"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.problem = 'PMTCT' AND
@@ -2175,9 +2175,9 @@ indicators:
 
   - key: 60-me-tb
     description: "Wateja wanaume juu ya miaka 50 wasiofika kliniki ya wenye TB "
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.problem = 'TB' AND
@@ -2187,9 +2187,9 @@ indicators:
 
   - key: 60-me-wajidunga
     description: "Wateja wanaume juu ya miaka 50 wasiofika kliniki ya wanaojidunga"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.problem = 'PWID' AND
@@ -2199,9 +2199,9 @@ indicators:
 
   - key: 60-me-arv-yes
     description: "Wateja wanaume juu ya miaka 50 wanaotumia ARV na hawajafika kliniki"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.on_art = 'yes' AND
@@ -2211,9 +2211,9 @@ indicators:
 
   - key: 60-me-arv-NO
     description: "Wateja wanaume juu ya miaka 50 wasiotumia ARV na hawajafika kliniki"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.on_art = 'no' AND
@@ -2227,9 +2227,9 @@ indicators:
 
   - key: 60-me-b1
     description: "Wateja wanaume juu ya miaka 50 waliopatikana na wako tayari kurudi kliniki baada ya ufuatiliaji"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'continuing_with_services' and
                               fm.gender = 'Male' AND
@@ -2241,9 +2241,9 @@ indicators:
 
   - key: 60-me-d1
     description: "Wateja wanaume juu ya miaka 50 waliohamia kituo kingine bila taarifa"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'client_has_moved_to_another_facility' AND
                               fm.gender = 'Male' AND
@@ -2251,9 +2251,9 @@ indicators:
 
   - key: 60-me-e1
     description: "Wateja wanaume juu ya miaka 50 waliohama makazi"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'client_has_relocated' AND
                               fm.gender = 'Male' AND
@@ -2261,9 +2261,9 @@ indicators:
 
   - key: 60-me-f1
     description: "Wateja wanaume juu ya miaka 50 waliopatikana lakini hayuko tayari kurudi kliniki"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'client_does_not_want_to_return' AND
                               fm.gender = 'Male' AND
@@ -2271,9 +2271,9 @@ indicators:
 
   - key: 60-me-g1
     description: "Wateja wanaume juu ya miaka 50 ambao wamefariki"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'deceased' AND
                               fm.gender = 'Male' AND
@@ -2281,9 +2281,9 @@ indicators:
 
   - key: 60-me-h1
     description: "Wateja wanaume juu ya miaka 50 ambao hawajapatikana"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'client_not_found' AND
                               fm.gender = 'Male' AND
@@ -2291,9 +2291,9 @@ indicators:
 
   - key: 60-me-a2
     description: "Wateja wanaume juu ya miaka 50 ambao walisahau"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_has_forgotten' AND
                               fm.gender = 'Male' AND
@@ -2301,9 +2301,9 @@ indicators:
 
   - key: 60-me-b2
     description: "Wateja wanaume juu ya miaka 50 ambao walikuwa wagonjwa sana"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_was_ill' AND
                               fm.gender = 'Male' AND
@@ -2311,9 +2311,9 @@ indicators:
 
   - key: 60-me-c2
     description: "Wateja wanaume juu ya miaka 50 ambao walishindwa kujiweka wazi"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_failed_to_disclose_his_status' AND
                               fm.gender = 'Male' AND
@@ -2321,9 +2321,9 @@ indicators:
 
   - key: 60-me-d2
     description: "Wateja wanaume juu ya miaka 50 ambao walikosa nauli"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_did_not_have_fare' AND
                               fm.gender = 'Male' AND
@@ -2331,9 +2331,9 @@ indicators:
 
   - key: 60-me-e2
     description: "Wateja wanaume juu ya miaka 50 ambao umbali au usafiri mgumu"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_lives_far_away_from_the_health_facility' AND
                               fm.gender = 'Male' AND
@@ -2341,9 +2341,9 @@ indicators:
 
   - key: 60-me-f2
     description: "Wateja wanaume juu ya miaka 50 ambao wamepata nafuu"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_feels_well' AND
                               fm.gender = 'Male' AND
@@ -2351,9 +2351,9 @@ indicators:
 
   - key: 60-me-g2
     description: "Wateja wanaume juu ya miaka 50 ambao hawakupata ruhusa kazini"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_was_busy_at_work' AND
                               fm.gender = 'Male' AND
@@ -2361,9 +2361,9 @@ indicators:
 
   - key: 60-me-h2
     description: "Wateja wanaume juu  ya miaka 50 ambao walisafiri"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_traveled' AND
                               fm.gender = 'Male' AND
@@ -2371,9 +2371,9 @@ indicators:
 
   - key: 60-me-i2
     description: "Wateja wanaume juu ya miaka 50 ambao wanatumia tiba mbadala"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_uses_alternative_medicine' AND
                               fm.gender = 'Male' AND
@@ -2381,9 +2381,9 @@ indicators:
 
   - key: 60-me-j2
     description: "Wateja wanaume juu ys miaka 50 ambao wameona huduma haziridhishi"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'poor_services_at_health_facility' AND
                               fm.gender = 'Male' AND
@@ -2391,9 +2391,9 @@ indicators:
 
   - key: 60-me-k2
     description: "Wateja wanaume juu ya miaka 50 wenye sababu nyinginezo"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'other' AND
                               fm.gender = 'Male' AND
@@ -2403,9 +2403,9 @@ indicators:
   #  Female above 50 years
   - key: 60-ke-ctc
     description: "Wateja wanamke juu ya miaka 50 wasiofika kliniki ya CTC"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.problem = 'CTC' AND
@@ -2415,9 +2415,9 @@ indicators:
 
   - key: "60-ke-pmtct"
     description: "Wateja wanamke juu ya miaka 50 wasiofika wasiofika kliniki ya PMTCT"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.problem = 'PMTCT' AND
@@ -2427,9 +2427,9 @@ indicators:
 
   - key: 60-ke-tb
     description: "Wateja wanamke juu ya miaka 50 wasiofika kliniki ya wenye TB "
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.problem = 'TB' AND
@@ -2439,9 +2439,9 @@ indicators:
 
   - key: 60-ke-wajidunga
     description: "Wateja wanamke juu ya miaka 50 wasiofika kliniki ya wanaojidunga"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.problem = 'PWID' AND
@@ -2451,9 +2451,9 @@ indicators:
 
   - key: 60-ke-arv-yes
     description: "Wateja wanamke juu ya miaka 50 wanaotumia ARV na hawajafika kliniki"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.on_art = 'yes' AND
@@ -2463,9 +2463,9 @@ indicators:
 
   - key: 60-ke-arv-NO
     description: "Wateja wanamke juu ya miaka 50 wasiotumia ARV na hawajafika kliniki"
-    indicatorQuery: "SELECT count(DISTINCT er.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = er.entity_id
                           WHERE
                               er.chw_referral_service = 'LTFU' AND
                               er.on_art = 'no' AND
@@ -2479,9 +2479,9 @@ indicators:
 
   - key: 60-ke-b1
     description: "Wateja wanamke juu ya miaka 50 waliopatikana na wako tayari kurudi kliniki baada ya ufuatiliaji"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'continuing_with_services' and
                               fm.gender = 'Female' AND
@@ -2493,9 +2493,9 @@ indicators:
 
   - key: 60-ke-d1
     description: "Wateja wanamke juu ya miaka 50 waliohamia kituo kingine bila taarifa"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'client_has_moved_to_another_facility' AND
                               fm.gender = 'Female' AND
@@ -2503,9 +2503,9 @@ indicators:
 
   - key: 60-ke-e1
     description: "Wateja wanamke juu ya miaka 50 waliohama makazi"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'client_has_relocated' AND
                               fm.gender = 'Female' AND
@@ -2513,9 +2513,9 @@ indicators:
 
   - key: 60-ke-f1
     description: "Wateja wanamke juu ya miaka 50 waliopatikana lakini hayuko tayari kurudi kliniki"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'client_does_not_want_to_return' AND
                               fm.gender = 'Female' AND
@@ -2523,9 +2523,9 @@ indicators:
 
   - key: 60-ke-g1
     description: "Wateja wanamke juu ya miaka 50 ambao wamefariki"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'deceased' AND
                               fm.gender = 'Female' AND
@@ -2533,9 +2533,9 @@ indicators:
 
   - key: 60-ke-h1
     description: "Wateja wanamke juu ya miaka 50 ambao hawajapatikana"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.followup_status = 'client_not_found' AND
                               fm.gender = 'Female' AND
@@ -2543,9 +2543,9 @@ indicators:
 
   - key: 60-ke-a2
     description: "Wateja wanamke juu ya miaka 50 ambao walisahau"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_has_forgotten' AND
                               fm.gender = 'Female' AND
@@ -2553,9 +2553,9 @@ indicators:
 
   - key: 60-ke-b2
     description: "Wateja wanamke juu ya miaka 50 ambao walikuwa wagonjwa sana"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_was_ill' AND
                               fm.gender = 'Female' AND
@@ -2563,9 +2563,9 @@ indicators:
 
   - key: 60-ke-c2
     description: "Wateja wanamke juu ya miaka 50 ambao walishindwa kujiweka wazi"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_failed_to_disclose_his_status' AND
                               fm.gender = 'Female' AND
@@ -2573,9 +2573,9 @@ indicators:
 
   - key: 60-ke-d2
     description: "Wateja wanamke juu ya miaka 50 ambao walikosa nauli"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_did_not_have_fare' AND
                               fm.gender = 'Female' AND
@@ -2583,9 +2583,9 @@ indicators:
 
   - key: 60-me-e2
     description: "Wateja wanamke juu ya miaka 50 ambao umbali au usafiri mgumu"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_lives_far_away_from_the_health_facility' AND
                               fm.gender = 'Female' AND
@@ -2593,9 +2593,9 @@ indicators:
 
   - key: 60-ke-f2
     description: "Wateja wanamke juu ya miaka 50 ambao wamepata nafuu"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_feels_well' AND
                               fm.gender = 'Female' AND
@@ -2603,9 +2603,9 @@ indicators:
 
   - key: 60-ke-g2
     description: "Wateja wanamke juu ya miaka 50 ambao hawakupata ruhusa kazini"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_was_busy_at_work' AND
                               fm.gender = 'Female' AND
@@ -2613,9 +2613,9 @@ indicators:
 
   - key: 60-ke-h2
     description: "Wateja wanamke juu  ya miaka 50 ambao walisafiri"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_traveled' AND
                               fm.gender = 'Female' AND
@@ -2623,9 +2623,9 @@ indicators:
 
   - key: 60-ke-i2
     description: "Wateja wanamke juu ya miaka 50 ambao wanatumia tiba mbadala"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'client_uses_alternative_medicine' AND
                               fm.gender = 'Female' AND
@@ -2633,9 +2633,9 @@ indicators:
 
   - key: 60-ke-j2
     description: "Wateja wanamke juu ys miaka 50 ambao wameona huduma haziridhishi"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'poor_services_at_health_facility' AND
                               fm.gender = 'Female' AND
@@ -2643,9 +2643,9 @@ indicators:
 
   - key: 60-ke-k2
     description: "Wateja wanamke juu ya miaka 50 wenye sababu nyinginezo"
-    indicatorQuery: "SELECT count(DISTINCT elf.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
-                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.base_entity_id
+                          INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
                           WHERE
                               elf.reasons_for_missed_appointment = 'other' AND
                               fm.gender = 'Female' AND
