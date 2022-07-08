@@ -94,7 +94,16 @@ indicators:
 
   - key: less-2-me-c1
     description: "Wateja wanaume chini ya miaka 2 waliopatikana na wamerudi kliniki baada ya ufuatiliaji"
-    indicatorQuery: ""
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
+                      FROM ec_ltfu_feedback elf
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
+                      INNER JOIN task t on t.for = elf.entity_id
+                      WHERE
+                          elf.followup_status = 'client_found_ready_to_return'
+                          AND t.business_status = 'Complete' AND
+                              t.focus = 'LTFU Community Followup Feedback' AND
+                          fm.gender = 'Male' AND
+                          (date(fm.dob, '+2 years') > date('now'))"
 
   - key: less-2-me-d1
     description: "Wateja wanaume chini ya miaka 2 waliohamia kituo kingine bila taarifa"
@@ -351,7 +360,16 @@ indicators:
 
   - key: less-2-ke-c1
     description: "Wateja wanawake chini ya miaka 2 waliopatikana na wamerudi kliniki baada ya ufuatiliaji"
-    indicatorQuery: ""
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
+                      FROM ec_ltfu_feedback elf
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
+                      INNER JOIN task t on t.for = elf.entity_id
+                      WHERE
+                          elf.followup_status = 'client_found_ready_to_return'
+                          AND t.business_status = 'Complete' AND
+                              t.focus = 'LTFU Community Followup Feedback' AND
+                           fm.gender = 'Female' AND
+                          (date(fm.dob, '+2 years') > date('now'))"
 
   - key: less-2-ke-d1
     description: "Wateja wanawake chini ya miaka 2 waliohamia kituo kingine bila taarifa"
@@ -616,7 +634,17 @@ indicators:
 
   - key: 2-14-me-c1
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 waliopatikana na wamerudi kliniki baada ya ufuatiliaji"
-    indicatorQuery: ""
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
+                      FROM ec_ltfu_feedback elf
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
+                      INNER JOIN task t on t.for = elf.entity_id
+                      WHERE
+                          elf.followup_status = 'client_found_ready_to_return'
+                          AND t.business_status = 'Complete' AND
+                              t.focus = 'LTFU Community Followup Feedback' AND
+                           fm.gender = 'Male' AND
+                              (date(fm.dob, '+2 years') <= date('now')) AND
+                              (date(fm.dob, '+14 years') > date('now'))"
 
   - key: 2-14-me-d1
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 waliohamia kituo kingine bila taarifa"
@@ -897,7 +925,17 @@ indicators:
 
   - key: 2-14-ke-c1
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 waliopatikana na wamerudi kliniki baada ya ufuatiliaji"
-    indicatorQuery: ""
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
+                      FROM ec_ltfu_feedback elf
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
+                      INNER JOIN task t on t.for = elf.entity_id
+                      WHERE
+                          elf.followup_status = 'client_found_ready_to_return'
+                          AND t.business_status = 'Complete' AND
+                              t.focus = 'LTFU Community Followup Feedback' AND
+                           fm.gender = 'Female' AND
+                              (date(fm.dob, '+2 years') <= date('now')) AND
+                              (date(fm.dob, '+14 years') > date('now'))"
 
   - key: 2-14-ke-d1
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 waliohamia kituo kingine bila taarifa"
@@ -1178,7 +1216,17 @@ indicators:
 
   - key: 15-24-me-c1
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 waliopatikana na wamerudi kliniki baada ya ufuatiliaji"
-    indicatorQuery: ""
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
+                      FROM ec_ltfu_feedback elf
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
+                      INNER JOIN task t on t.for = elf.entity_id
+                      WHERE
+                          elf.followup_status = 'client_found_ready_to_return'
+                          AND t.business_status = 'Complete' AND
+                              t.focus = 'LTFU Community Followup Feedback' AND
+                            fm.gender = 'Male' AND
+                              (date(fm.dob, '+15 years') <= date('now')) AND
+                              (date(fm.dob, '+24 years') > date('now'))"
 
   - key: 15-24-me-d1
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 waliohamia kituo kingine bila taarifa"
@@ -1460,7 +1508,17 @@ indicators:
 
   - key: 15-24-ke-c1
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 waliopatikana na wamerudi kliniki baada ya ufuatiliaji"
-    indicatorQuery: ""
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
+                      FROM ec_ltfu_feedback elf
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
+                      INNER JOIN task t on t.for = elf.entity_id
+                      WHERE
+                          elf.followup_status = 'client_found_ready_to_return'
+                          AND t.business_status = 'Complete' AND
+                              t.focus = 'LTFU Community Followup Feedback' AND
+                            fm.gender = 'Female' AND
+                              (date(fm.dob, '+15 years') <= date('now')) AND
+                              (date(fm.dob, '+25 years') > date('now'))"
 
   - key: 15-24-ke-d1
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 waliohamia kituo kingine bila taarifa"
@@ -1742,7 +1800,17 @@ indicators:
 
   - key: 25-49-me-c1
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 waliopatikana na wamerudi kliniki baada ya ufuatiliaji"
-    indicatorQuery: ""
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
+                      FROM ec_ltfu_feedback elf
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
+                      INNER JOIN task t on t.for = elf.entity_id
+                      WHERE
+                          elf.followup_status = 'client_found_ready_to_return'
+                          AND t.business_status = 'Complete' AND
+                              t.focus = 'LTFU Community Followup Feedback' AND
+                             fm.gender = 'Male' AND
+                              (date(fm.dob, '+25 years') <= date('now')) AND
+                              (date(fm.dob, '+50 years') > date('now'))"
 
   - key: 25-49-me-d1
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 waliohamia kituo kingine bila taarifa"
@@ -2023,7 +2091,17 @@ indicators:
 
   - key: 25-49-ke-c1
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 waliopatikana na wamerudi kliniki baada ya ufuatiliaji"
-    indicatorQuery: ""
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
+                      FROM ec_ltfu_feedback elf
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
+                      INNER JOIN task t on t.for = elf.entity_id
+                      WHERE
+                          elf.followup_status = 'client_found_ready_to_return'
+                          AND t.business_status = 'Complete' AND
+                              t.focus = 'LTFU Community Followup Feedback' AND
+                               fm.gender = 'Female' AND
+                              (date(fm.dob, '+25 years') <= date('now')) AND
+                              (date(fm.dob, '+50 years') > date('now'))"
 
   - key: 25-49-ke-d1
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 waliohamia kituo kingine bila taarifa"
@@ -2297,7 +2375,16 @@ indicators:
 
   - key: 60-me-c1
     description: "Wateja wanaume juu ya miaka 50 waliopatikana na wamerudi kliniki baada ya ufuatiliaji"
-    indicatorQuery: ""
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
+                      FROM ec_ltfu_feedback elf
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
+                      INNER JOIN task t on t.for = elf.entity_id
+                      WHERE
+                          elf.followup_status = 'client_found_ready_to_return'
+                          AND t.business_status = 'Complete' AND
+                              t.focus = 'LTFU Community Followup Feedback' AND
+                                  fm.gender = 'Male' AND
+                              (date(fm.dob, '+50 years') <= date('now'))"
 
   - key: 60-me-d1
     description: "Wateja wanaume juu ya miaka 50 waliohamia kituo kingine bila taarifa"
@@ -2555,7 +2642,16 @@ indicators:
 
   - key: 60-ke-c1
     description: "Wateja wanaume juu ya miaka 50 waliopatikana na wamerudi kliniki baada ya ufuatiliaji"
-    indicatorQuery: ""
+    indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
+                      FROM ec_ltfu_feedback elf
+                      INNER JOIN ec_family_member fm on fm.base_entity_id = elf.entity_id
+                      INNER JOIN task t on t.for = elf.entity_id
+                      WHERE
+                          elf.followup_status = 'client_found_ready_to_return'
+                          AND t.business_status = 'Complete' AND
+                              t.focus = 'LTFU Community Followup Feedback' AND
+                             fm.gender = 'Female' AND
+                              (date(fm.dob, '+50 years') <= date('now'))"
 
   - key: 60-ke-d1
     description: "Wateja wanamke juu ya miaka 50 waliohamia kituo kingine bila taarifa"
