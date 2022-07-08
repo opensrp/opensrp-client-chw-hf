@@ -60,7 +60,6 @@ public class LDVisitUtils extends VisitUtils {
                 boolean isCervixStateDone = computeCompletionStatus(obs, "cervix_state");
                 boolean isCervixDilationDone = computeCompletionStatus(obs, "cervix_dilation");
                 boolean isPresentingPartDone = computeCompletionStatus(obs, "presenting_part");
-                boolean isOcciputPositionDone = computeCompletionStatus(obs, "occiput_position");
                 boolean isMouldingDone = computeCompletionStatus(obs, "moulding");
                 boolean isStationDone = computeCompletionStatus(obs, "station");
                 boolean isDecisionDone = computeCompletionStatus(obs, "decision");
@@ -102,7 +101,6 @@ public class LDVisitUtils extends VisitUtils {
                         isCervixStateDone &&
                         isCervixDilationDone &&
                         isPresentingPartDone &&
-                        isOcciputPositionDone &&
                         isMouldingDone &&
                         isStationDone &&
                         isDecisionDone &&
@@ -130,14 +128,45 @@ public class LDVisitUtils extends VisitUtils {
                 String motherStatusCompletionStatus = getFieldValue(obs, "mother_status_module_status");
                 String motherObservationModuleStatus = getFieldValue(obs, "mother_observation_module_status");
                 String maternalComplicationsModuleStatus = getFieldValue(obs, "maternal_complications_module_status");
+                String familyPlanningModuleStatus = getFieldValue(obs, "family_planning_module_status");
+                boolean childVisitsCompletionStatus = true;
+                for (Visit vis: visits) {
+
+                    if (!vis.getVisitType().equalsIgnoreCase(LDPostDeliveryManagementMotherActivityInteractor.EVENT_TYPE)) {
+                        JSONObject childVisitJson = new JSONObject(vis.getJson());
+                        JSONArray childVisitObs = childVisitJson.getJSONArray("obs");
+                        String newbornStageFourModuleStatus = getFieldValue(childVisitObs, "newborn_stage_four_module_status");
+                        assert newbornStageFourModuleStatus != null;
+                        if (newbornStageFourModuleStatus.equalsIgnoreCase("Partially Completed")) {
+                            childVisitsCompletionStatus = false;
+                        }
+                    }
+
+                }
 
                 if (motherObservationModuleStatus != null && motherStatusCompletionStatus != null && maternalComplicationsModuleStatus != null) {
                     if (motherStatusCompletionStatus.equalsIgnoreCase("Fully Completed") &&
                             motherObservationModuleStatus.equalsIgnoreCase("Fully Completed") &&
-                            maternalComplicationsModuleStatus.equalsIgnoreCase("Fully Completed")) {
+                            maternalComplicationsModuleStatus.equalsIgnoreCase("Fully Completed") &&
+                            familyPlanningModuleStatus.equalsIgnoreCase("Fully Completed") && childVisitsCompletionStatus) {
                         ldVisits.add(visit);
                     }
                 }
+
+            } else if (visit.getVisitType().contains("LND") &&
+                    visit.getVisitType().contains("Newborn") &&
+                    (visit.getVisitType().contains("1st") || visit.getVisitType().contains("2nd") || visit.getVisitType().contains("3rd") || visit.getVisitType().contains("th"))) {
+
+                JSONObject visitJson = new JSONObject(visit.getJson());
+                JSONArray obs = visitJson.getJSONArray("obs");
+                String newbornStageFourModuleStatus = getFieldValue(obs, "newborn_stage_four_module_status");
+
+                if (newbornStageFourModuleStatus != null) {
+                    if (newbornStageFourModuleStatus.equalsIgnoreCase("Fully Completed")) {
+                        ldVisits.add(visit);
+                    }
+                }
+
 
             } else {
                 ldVisits.add(visit);

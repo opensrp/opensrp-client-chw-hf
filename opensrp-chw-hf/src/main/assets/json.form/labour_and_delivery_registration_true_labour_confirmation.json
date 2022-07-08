@@ -59,7 +59,7 @@
         "options": [
           {
             "key": "painful_uterine_contraction",
-            "text": "Painful, increasing frequency and duration",
+            "text": "Regular painful uterine contraction with increasing frequency and duration",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "painful_uterine_contraction"

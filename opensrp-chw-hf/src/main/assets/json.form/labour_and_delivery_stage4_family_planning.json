@@ -1,0 +1,134 @@
+{
+  "validate_on_submit": true,
+  "show_errors_on_submit": false,
+  "count": "1",
+  "encounter_type": "Family Planning",
+  "entity_id": "",
+  "relational_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "step1": {
+    "title": "Family Planning",
+    "fields": [
+      {
+        "key": "family_planning_counselling_after_delivery",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "family_planning_counselling_after_delivery",
+        "type": "native_radio",
+        "label": "Did you receive counselling about family planning",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ]
+      },
+      {
+        "key": "family_planning_methods_selected",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "family_planning_methods_selected",
+        "type": "native_radio",
+        "label": "Family planning methods selected by the client",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "tubal_litigation",
+            "text": "Tubal ligation",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "tubal_litigation"
+          },
+          {
+            "key": "intrauterine_device",
+            "text": "Intrauterine device (IUD)",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "intrauterine_device"
+          },
+          {
+            "key": "implants",
+            "text": "Implants",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "implants"
+          },
+          {
+            "key": "progestogen_only_pills",
+            "text": "Progestogen-only pills (POP)",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "progestogen_only_pills"
+          },
+          {
+            "key": "none",
+            "text": "None",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "none"
+          }
+        ]
+      },
+      {
+        "key": "family_planning_module_status",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "family_planning_module_status",
+        "type": "hidden",
+        "value": "PENDING"
+      }
+    ]
+  }
+}

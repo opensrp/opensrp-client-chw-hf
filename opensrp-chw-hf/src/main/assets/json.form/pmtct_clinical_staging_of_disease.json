@@ -87,6 +87,9 @@
         "openmrs_entity_id": "stage_1_symptoms",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
+        "exclusive": [
+          "chk_asymptomatic"
+        ],
         "options": [
           {
             "key": "chk_asymptomatic",

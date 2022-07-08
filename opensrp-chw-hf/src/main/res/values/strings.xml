@@ -271,6 +271,7 @@
     <string name="ld_registration_current_labour_complete">Recording Current Labour History is complete</string>
     <string name="ld_registration_true_labour_complete">The client has True labour</string>
     <string name="ld_registration_false_labour_complete">The client has False labour</string>
+    <string name="ld_registration_true_labour_confirmation_done">True labour confirmation is done</string>
     <string name="ld_registration_true_labour_client_admitted">The client is been admitted to labour ward</string>
 
     <string name="ld_registration_triage_action_subtitle_pending">Triage is Pending</string>
@@ -304,7 +305,7 @@
     <string name="labour_and_delivery_cervix_dilation_monitoring_button_tittle">Cervix Dilation Monitoring</string>
     <string name="lb_fully_completed_action">Fully Completed</string>
     <string name="lb_partially_completed_action">Partially Completed</string>
-    <string name="lb_visit_vaginal_examination">Vaginal examination</string>
+    <string name="lb_visit_vaginal_assessment">Vaginal assessment</string>
     <string name="lb_visit_general_examination">General examination</string>
     <string name="lb_visit_hiv_test_status_action_title">HIV Counselling and Testing</string>
     <string name="lb_mode_of_delivery">Mode of Delivery</string>
@@ -313,13 +314,15 @@
     <string name="ld_massage_uterus_after_delivery">Massage the uterus after delivery of placenta</string>
     <string name="ld_expulsion_of_placenta">Expulsion of the placenta and membranes</string>
     <string name="ld_placent_retained_message">Placenta Retained</string>
+    <string name="ld_placent_completely_removed_message">Complete Expulsion of Placenta</string>
     <string name="ld_no_uterus_massage">The woman did not receive uterus massage</string>
     <string name="ld_mother_post_delivery_management">Immediate Postpartum Care</string>
     <string name="ld_yes_uterus_massage">The woman received uterus massage</string>
-    <string name="ld_maternal_complication_action_title">Maternal complications during labour</string>
+    <string name="ld_maternal_complication_action_title">Maternal complications</string>
     <string name="ld_new_born_status_action_title">Immediate New Born Care {0}</string>
     <string name="ld_post_delivery_observation_action_title">Post Delivery Observation</string>
     <string name="ld_mother_status_action_title">Mother\'s Status</string>
+    <string name="ld_post_delivery_family_planning">Family Planning</string>
     <string name="ld_baby_of_text">Baby of</string>
     <string name="partograph_date_time">Partograph Details recorded at {0}, {1}</string>
     <string name="fetal_well_being">Fetal Well Being</string>
@@ -365,7 +368,7 @@
     <string name="para_obstretric_history">Para {0}: Obstetric History</string>
     <string name="promised_return_date">Promised Return Date</string>
     <string name="date_of_death">Date of Death</string>
-    <string name="reasons">Reasons</string>
+    <string name="reasons">Reason</string>
     <string name="followup_status">Followup Status</string>
     <string name="feedback_date">Feedback Date</string>
     <string name="feedback_details">Feedback Details</string>
@@ -375,6 +378,31 @@
     <string name="ld_reports_subtitle">View Labour Delivery Reports</string>
     <string name="ld_report_title">Labour And Delivery Reports</string>
     <string name="mother_champion_referral">Mother Champion Referral</string>
+    <string name="ltfu_clinic_ctc">CTC</string>
+    <string name="ltfu_clinic_pwid">PWID</string>
+    <string name="ltfu_clinic_prep">PrEP</string>
+    <string name="ltfu_clinic_pmtct">PMTCT</string>
+    <string name="ltfu_clinic_tb">TB</string>
+    <string name="ltfu_followup_status_continuing_with_services">Client attending the clinic</string>
+    <string name="ltfu_followup_status_client_found_ready_to_return">Client is found and ready to return to clinic</string>
+    <string name="ltfu_followup_status_client_has_moved_to_another_facility">Client has transferred to another center without notice</string>
+    <string name="ltfu_followup_status_client_has_relocated">Client has emigrated</string>
+    <string name="ltfu_followup_status_client_does_not_want_to_return">Client is found but is not ready to return to clinic</string>
+    <string name="ltfu_followup_status_deceased">Deceased</string>
+    <string name="ltfu_followup_status_client_not_found">Client not found</string>
+    <string name="ltfu_reasons_for_missed_appointment_client_has_forgotten">Client has forgotten</string>
+    <string name="ltfu_reasons_for_missed_appointment_client_was_ill">Client was very ill</string>
+    <string name="ltfu_reasons_for_missed_appointment_client_failed_to_disclose_his_status">Client failed to disclose him\/herself</string>
+    <string name="ltfu_reasons_for_missed_appointment_client_did_not_have_fare">Client does not have a fare</string>
+    <string name="ltfu_reasons_for_missed_appointment_client_lives_far_away_from_the_health_facility">Long distance\/poor transportation</string>
+    <string name="ltfu_reasons_for_missed_appointment_client_feels_well">Client is feeling better</string>
+    <string name="ltfu_reasons_for_missed_appointment_client_was_busy_at_work">Client did not get permission from the workplace</string>
+    <string name="ltfu_reasons_for_missed_appointment_client_traveled">Client has traveled</string>
+    <string name="ltfu_reasons_for_missed_appointment_client_uses_alternative_medicine">Client uses alternative medicine</string>
+    <string name="ltfu_reasons_for_missed_appointment_poor_services_at_health_facility">Client is not satisfied with the service</string>
+    <string name="ltfu_reason_client_not_found_address_incorrect">Address incorrect</string>
+    <string name="ltfu_reason_client_not_found_client_relocated">Emigrated</string>
+    <string name="ltfu_reason_client_not_found_seasonal_work">Seasonal Agriculture\/Job</string>
 
 
 </resources>

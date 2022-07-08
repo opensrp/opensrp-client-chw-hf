@@ -20,7 +20,7 @@ public class AncBirthReviewAction implements BaseAncHomeVisitAction.AncHomeVisit
     protected MemberObject memberObject;
     private String jsonPayload;
 
-    private String name_of_hf;
+    private String delivery_place;
     private BaseAncHomeVisitAction.ScheduleStatus scheduleStatus;
     private String subTitle;
     private Context context;
@@ -51,7 +51,7 @@ public class AncBirthReviewAction implements BaseAncHomeVisitAction.AncHomeVisit
     public void onPayloadReceived(String jsonPayload) {
         try {
             JSONObject jsonObject = new JSONObject(jsonPayload);
-            name_of_hf = CoreJsonFormUtils.getValue(jsonObject, "name_of_hf");
+            delivery_place = CoreJsonFormUtils.getValue(jsonObject, "delivery_place");
         } catch (JSONException e) {
             Timber.e(e);
         }
@@ -74,12 +74,11 @@ public class AncBirthReviewAction implements BaseAncHomeVisitAction.AncHomeVisit
 
     @Override
     public String evaluateSubTitle() {
-        if (StringUtils.isBlank(name_of_hf))
+        if (StringUtils.isBlank(delivery_place))
             return null;
 
         StringBuilder stringBuilder = new StringBuilder();
 
-        //TODO ilakoze extract to string resources
         stringBuilder.append(context.getString(R.string.review_birth_emergency_plan));
 
         return stringBuilder.toString();
@@ -87,7 +86,7 @@ public class AncBirthReviewAction implements BaseAncHomeVisitAction.AncHomeVisit
 
     @Override
     public BaseAncHomeVisitAction.Status evaluateStatusOnPayload() {
-        if (StringUtils.isBlank(name_of_hf))
+        if (StringUtils.isBlank(delivery_place))
             return BaseAncHomeVisitAction.Status.PENDING;
         else {
             return BaseAncHomeVisitAction.Status.COMPLETED;

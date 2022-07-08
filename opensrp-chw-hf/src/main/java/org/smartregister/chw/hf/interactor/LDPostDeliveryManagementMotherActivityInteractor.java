@@ -36,8 +36,9 @@ import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.actionhelper.PostDeliveryFamilyPlanningActionHelper;
 import org.smartregister.chw.hf.utils.Constants;
-import org.smartregister.chw.hf.utils.LDDao;
+import org.smartregister.chw.hf.dao.LDDao;
 import org.smartregister.chw.hf.utils.LDVisitUtils;
 import org.smartregister.chw.ld.LDLibrary;
 import org.smartregister.chw.ld.contract.BaseLDVisitContract;
@@ -67,6 +68,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
@@ -81,8 +83,9 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
     protected Context context;
     final LinkedHashMap<String, BaseLDVisitAction> actionList = new LinkedHashMap<>();
-    private MemberObject memberObject;
+    private static MemberObject memberObject;
     public static final String EVENT_TYPE = "Post Delivery Mother Management";
+    private static boolean isEdit = false;
     Map<String, List<VisitDetail>> details = null;
 
     @Override
@@ -94,9 +97,10 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
     @Override
     public void calculateActions(BaseLDVisitContract.View view, MemberObject memberObject, BaseLDVisitContract.InteractorCallBack callBack) {
         context = view.getContext();
-        this.memberObject = memberObject;
+        LDPostDeliveryManagementMotherActivityInteractor.memberObject = memberObject;
 
         if (view.getEditMode()) {
+            isEdit = view.getEditMode();
             Visit lastVisit = LDLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), EVENT_TYPE);
 
             if (lastVisit != null) {
@@ -117,6 +121,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                 evaluateMotherStatus(callBack);
                 evaluatePostDeliveryObservation();
                 evaluateMaternalComplicationLabour();
+                evaluateFamilyPlanning();
 
             } catch (BaseLDVisitAction.ValidationException e) {
                 Timber.e(e);
@@ -172,13 +177,29 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         actionList.put(title, action);
     }
 
+    private void evaluateFamilyPlanning() throws BaseLDVisitAction.ValidationException {
+        String title = context.getString(R.string.ld_post_delivery_family_planning);
+
+        PostDeliveryFamilyPlanningActionHelper actionHelper = new PostDeliveryFamilyPlanningActionHelper();
+
+        BaseLDVisitAction action = getBuilder(title)
+                .withOptional(false)
+                .withHelper(actionHelper)
+                .withDetails(details)
+                .withBaseEntityID(memberObject.getBaseEntityId())
+                .withFormName(Constants.JsonForm.LDPostDeliveryMotherManagement.getLdPostDeliveryFamilyPlanning())
+                .build();
+
+        actionList.put(title, action);
+    }
+
     private static class MotherStatusActionHelper implements BaseLDVisitAction.LDVisitActionHelper {
 
         private String status;
         private String cause_of_death;
         private String time_of_death;
         private String delivery_place;
-        private String delivered_by_occupation;
+        private String designation_of_delivery_personnel;
         private String name_of_delivery_person;
         private String delivery_date;
         private String completionStatus;
@@ -214,7 +235,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
             cause_of_death = JsonFormUtils.getFieldValue(jsonPayload, "cause_of_death");
             time_of_death = JsonFormUtils.getFieldValue(jsonPayload, "time_of_death");
             delivery_place = JsonFormUtils.getFieldValue(jsonPayload, "delivery_place");
-            delivered_by_occupation = JsonFormUtils.getFieldValue(jsonPayload, "delivered_by_occupation");
+            designation_of_delivery_personnel = JsonFormUtils.getFieldValue(jsonPayload, "designation_of_delivery_personnel");
             name_of_delivery_person = JsonFormUtils.getFieldValue(jsonPayload, "name_of_delivery_person");
             delivery_date = JsonFormUtils.getFieldValue(jsonPayload, "delivery_date");
             delivery_time = JsonFormUtils.getFieldValue(jsonPayload, "delivery_time");
@@ -287,26 +308,52 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                 Timber.e(e);
             }
 
-            for (Map.Entry<String, BaseLDVisitAction> entry : actionList.entrySet()) {
-                if (entry.getKey().contains(MessageFormat.format(context.getString(R.string.ld_new_born_status_action_title), "")))
-                    actionList.remove(entry.getKey());
+            try {
+                // ConcurrentModificationException Fix
+                /*for (Map.Entry<String, BaseLDVisitAction> entry : actionList.entrySet()) {
+                    if (entry.getKey().contains(MessageFormat.format(context.getString(R.string.ld_new_born_status_action_title), "")))
+                        actionList.remove(entry.getKey());
+                }*/
+
+                Iterator<Map.Entry<String, BaseLDVisitAction>> itr = actionList.entrySet().iterator();
+                while (itr.hasNext()) {
+                    Map.Entry<String, BaseLDVisitAction> entry = itr.next();
+                    if (entry.getKey().contains(MessageFormat.format(context.getString(R.string.ld_new_born_status_action_title), ""))) {
+                        itr.remove();
+                    }
+                }
+
+            } catch (Exception e) {
+                Timber.e(e);
             }
 
+
             if (numberOfChildrenBorn > 0) {
+
                 for (int i = 0; i < numberOfChildrenBorn; i++) {
+                    // Get visit details for each individual child
+                    if (isEdit) {
+                        Visit lastVisit = LDLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), "LND " + ordinal(i + 1) + " Newborn");
+
+                        if (lastVisit != null) {
+                            details = org.smartregister.chw.ld.util.VisitUtils.getVisitGroups(LDLibrary.getInstance().visitDetailsRepository().getVisits(lastVisit.getVisitId()));
+                        }
+                    }
+
                     String title;
                     if (numberOfChildrenBorn == 1) {
                         title = MessageFormat.format(context.getString(R.string.ld_new_born_status_action_title), "");
                     } else {
                         title = MessageFormat.format(context.getString(R.string.ld_new_born_status_action_title), "of " + ordinal(i + 1) + " baby");
                     }
-                    NewBornActionHelper actionHelper = new NewBornActionHelper(baseEntityId, delivery_date, delivery_time, numberOfChildrenBorn, status);
+                    NewBornActionHelper actionHelper = new NewBornActionHelper(baseEntityId, delivery_date, delivery_time, numberOfChildrenBorn, status, ordinal(i + 1));
                     BaseLDVisitAction action = null;
                     try {
                         action = new BaseLDVisitAction.Builder(context, title)
                                 .withOptional(false)
                                 .withHelper(actionHelper)
-                                .withBaseEntityID(baseEntityId)
+                                .withDetails(details)
+                                .withBaseEntityID(org.smartregister.chw.anc.util.JsonFormUtils.generateRandomUUIDString())
                                 .withProcessingMode(BaseLDVisitAction.ProcessingMode.SEPARATE)
                                 .withFormName(Constants.JsonForm.LDPostDeliveryMotherManagement.getLdNewBornStatus())
                                 .build();
@@ -356,13 +403,13 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                 if (status.equalsIgnoreCase("alive")) {
                     if ((StringUtils.isNotBlank(delivery_place) && !delivery_place.equalsIgnoreCase("Place of delivery")) &&
                             StringUtils.isNotBlank(delivery_date)) {
-                        completed = !delivery_place.equalsIgnoreCase("At a health facility") || (StringUtils.isNotBlank(delivered_by_occupation) &&
+                        completed = !delivery_place.equalsIgnoreCase("At a health facility") || (StringUtils.isNotBlank(designation_of_delivery_personnel) &&
                                 StringUtils.isNotBlank(name_of_delivery_person));
                     }
                 } else {
                     if ((StringUtils.isNotBlank(delivery_place) && !delivery_place.equalsIgnoreCase("Place of delivery")) &&
                             StringUtils.isNotBlank(cause_of_death) && StringUtils.isNotBlank(time_of_death) && StringUtils.isNotBlank(delivery_date)) {
-                        completed = !delivery_place.equalsIgnoreCase("At a health facility") || (StringUtils.isNotBlank(delivered_by_occupation) &&
+                        completed = !delivery_place.equalsIgnoreCase("At a health facility") || (StringUtils.isNotBlank(designation_of_delivery_personnel) &&
                                 StringUtils.isNotBlank(name_of_delivery_person));
                     }
                 }
@@ -378,14 +425,14 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                     if (delivery_place.equalsIgnoreCase("Place of delivery") || StringUtils.isBlank(delivery_date)) {
                         partialCompletion = true;
                     } else if (delivery_place.equalsIgnoreCase("At a health facility")) {
-                        partialCompletion = StringUtils.isBlank(delivered_by_occupation) || StringUtils.isBlank(name_of_delivery_person);
+                        partialCompletion = StringUtils.isBlank(designation_of_delivery_personnel) || StringUtils.isBlank(name_of_delivery_person);
                     }
                 } else {
                     if (delivery_place.equalsIgnoreCase("Place of delivery") || StringUtils.isBlank(delivery_date) || StringUtils.isBlank(cause_of_death) ||
                             StringUtils.isBlank(time_of_death)) {
                         partialCompletion = true;
                     } else if (delivery_place.equalsIgnoreCase("At a health facility")) {
-                        partialCompletion = StringUtils.isBlank(delivered_by_occupation) || StringUtils.isBlank(name_of_delivery_person);
+                        partialCompletion = StringUtils.isBlank(designation_of_delivery_personnel) || StringUtils.isBlank(name_of_delivery_person);
                     }
                 }
             }
@@ -462,10 +509,10 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                 JSONArray fields = JsonFormUtils.fields(jsonObject);
 
                 JSONObject mother_observation_module_status = JsonFormUtils.getFieldJSONObject(fields, "mother_observation_module_status");
-                assert mother_observation_module_status != null;
-                mother_observation_module_status.remove(com.vijay.jsonwizard.constants.JsonFormConstants.VALUE);
-                mother_observation_module_status.put(com.vijay.jsonwizard.constants.JsonFormConstants.VALUE, completionStatus);
-
+                if (mother_observation_module_status != null) {
+                    mother_observation_module_status.remove(com.vijay.jsonwizard.constants.JsonFormConstants.VALUE);
+                    mother_observation_module_status.put(com.vijay.jsonwizard.constants.JsonFormConstants.VALUE, completionStatus);
+                }
                 return jsonObject.toString();
 
             } catch (Exception e) {
@@ -550,7 +597,8 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
     private static class MaternalComplicationLabourActionHelper implements BaseLDVisitAction.LDVisitActionHelper {
 
-        private JSONArray maternal_complication_values;
+        private String maternal_complications_before_delivery;
+        private String maternal_complications_during_and_after_delivery;
         private String completionStatus;
         private String jsonString;
         private Context context;
@@ -568,9 +616,10 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
         @Override
         public void onPayloadReceived(String jsonPayload) {
-            String maternal_complications_during_labour = JsonFormUtils.getFieldValue(jsonPayload, "maternal_complications_during_labour");
             try {
-                maternal_complication_values = new JSONArray(maternal_complications_during_labour);
+                JSONObject jsonObject = new JSONObject(jsonPayload);
+                maternal_complications_before_delivery = CoreJsonFormUtils.getCheckBoxValue(jsonObject, "maternal_complications_before_delivery");
+                maternal_complications_during_and_after_delivery = CoreJsonFormUtils.getCheckBoxValue(jsonObject, "maternal_complications_during_and_after_delivery");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -608,9 +657,9 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
         @Override
         public String evaluateSubTitle() {
-            if (maternal_complication_values.length() > 0) {
+            if (StringUtils.isNotBlank(maternal_complications_before_delivery) && StringUtils.isNotBlank(maternal_complications_during_and_after_delivery)) {
                 completionStatus = context.getString(R.string.lb_fully_completed_action);
-            } else {
+            } else if (StringUtils.isNotBlank(maternal_complications_before_delivery) || StringUtils.isNotBlank(maternal_complications_during_and_after_delivery)) {
                 completionStatus = context.getString(R.string.lb_partially_completed_action);
             }
             return completionStatus;
@@ -618,11 +667,12 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
         @Override
         public BaseLDVisitAction.Status evaluateStatusOnPayload() {
-            if (maternal_complication_values.length() > 0) {
+            if (StringUtils.isNotBlank(maternal_complications_before_delivery) && StringUtils.isNotBlank(maternal_complications_during_and_after_delivery))
                 return BaseLDVisitAction.Status.COMPLETED;
-            } else {
+            else if (StringUtils.isNotBlank(maternal_complications_before_delivery) || StringUtils.isNotBlank(maternal_complications_during_and_after_delivery))
                 return BaseLDVisitAction.Status.PARTIALLY_COMPLETED;
-            }
+            else
+                return BaseLDVisitAction.Status.PENDING;
         }
 
         @Override
@@ -637,20 +687,74 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
     private static class NewBornActionHelper implements BaseLDVisitAction.LDVisitActionHelper {
 
-        private String newbornStatus;
         private String baseEntityId;
         private Context context;
         private String deliveryDate;
         private String deliveryTime;
         private int numberOfChildrenBorn;
         private String status;
+        private String childNumber;
 
-        public NewBornActionHelper(String baseEntityId, String deliveryDate, String deliveryTime, int numberOfChildrenBorn, String status) {
+        private String newbornStatus;
+        private String still_birth_choice;
+        private String child_delivery_date;
+        private String child_delivery_time;
+        private String sex;
+        private String apgar_activity_score_at_1_minute;
+        private String apgar_pulse_score_at_1_minute;
+        private String apgar_grimace_on_stimulation_score_at_1_minute;
+        private String apgar_appearance_score_at_1_minute;
+        private String apgar_respiration_score_at_1_minute;
+        private String apgar_activity_score_at_5_minutes;
+        private String apgar_pulse_score_at_5_minutes;
+        private String apgar_grimace_on_stimulation_score_at_5_minutes;
+        private String apgar_appearance_score_at_5_minutes;
+        private String apgar_respiration_score_at_5_minutes;
+        private String resuscitation;
+        private String temperature;
+        private String weight;
+        private String heart_rate;
+        private String keep_warm;
+        private String reasons_for_not_keeping_the_baby_warm_skin_to_skin_for_low_apgar_score;
+        private String reasons_for_not_keeping_the_baby_warm_skin_to_skin_for_normal_apgar_score;
+        private String other_reason_for_not_keeping_the_baby_warm_skin_to_skin;
+        private String respiratory_rate;
+        private String cord_bleeding;
+        private String early_bf_1hr;
+        private String reason_for_not_breast_feeding_within_one_hour;
+        private String other_reason_for_not_breast_feeding_within_one_hour;
+        private String eye_care;
+        private String reason_for_not_giving_eye_care;
+        private String other_reason_for_not_giving_eye_care;
+        private String child_bcg_vaccination;
+        private String reason_for_not_providing_bcg_vacc;
+        private String child_opv0_vaccination;
+        private String risk_category;
+        private String provided_azt_nvp_syrup;
+        private String provided_other_combinations;
+        private String specify_the_combinations;
+        private String number_of_azt_nvp_days_dispensed;
+        private String reason_for_not_providing_other_combination;
+        private String other_reason_for_not_providing_other_combination;
+        private String collect_dbs;
+        private String reason_not_collecting_dbs;
+        private String sample_collection_date;
+        private String dna_pcr_collection_time;
+        private String sample_id;
+        private String provided_nvp_syrup;
+        private String number_of_nvp_days_dispensed;
+        private String reason_for_not_providing_nvp_syrup;
+        private String other_reason_for_not_providing_nvp_syrup;
+
+        private String moduleCompletionStatus;
+
+        public NewBornActionHelper(String baseEntityId, String deliveryDate, String deliveryTime, int numberOfChildrenBorn, String status, String childNumber) {
             this.baseEntityId = baseEntityId;
             this.deliveryDate = deliveryDate;
             this.deliveryTime = deliveryTime;
             this.numberOfChildrenBorn = numberOfChildrenBorn;
             this.status = status;
+            this.childNumber = childNumber;
         }
 
         @Override
@@ -673,6 +777,11 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
             }
 
             JSONArray fields = null;
+            try {
+                fields = newBornForm.getJSONObject(STEP1).getJSONArray(FIELDS);
+            } catch (JSONException e) {
+                Timber.e(e);
+            }
 
             if (fields != null && hivStatus != null && !hivStatus.equalsIgnoreCase(POSITIVE)) {
                 try {
@@ -764,6 +873,55 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         @Override
         public void onPayloadReceived(String jsonPayload) {
             newbornStatus = JsonFormUtils.getFieldValue(jsonPayload, "newborn_status");
+            still_birth_choice = JsonFormUtils.getFieldValue(jsonPayload, "still_birth_choice");
+            child_delivery_date = JsonFormUtils.getFieldValue(jsonPayload, "child_delivery_date");
+            child_delivery_time = JsonFormUtils.getFieldValue(jsonPayload, "child_delivery_time");
+            sex = JsonFormUtils.getFieldValue(jsonPayload, "sex");
+            apgar_activity_score_at_1_minute = JsonFormUtils.getFieldValue(jsonPayload, "apgar_activity_score_at_1_minute");
+            apgar_pulse_score_at_1_minute = JsonFormUtils.getFieldValue(jsonPayload, "apgar_pulse_score_at_1_minute");
+            apgar_grimace_on_stimulation_score_at_1_minute = JsonFormUtils.getFieldValue(jsonPayload, "apgar_grimace_on_stimulation_score_at_1_minute");
+            apgar_appearance_score_at_1_minute = JsonFormUtils.getFieldValue(jsonPayload, "apgar_appearance_score_at_1_minute");
+            apgar_respiration_score_at_1_minute = JsonFormUtils.getFieldValue(jsonPayload, "apgar_respiration_score_at_1_minute");
+            apgar_activity_score_at_5_minutes = JsonFormUtils.getFieldValue(jsonPayload, "apgar_activity_score_at_5_minutes");
+            apgar_pulse_score_at_5_minutes = JsonFormUtils.getFieldValue(jsonPayload, "apgar_pulse_score_at_5_minutes");
+            apgar_grimace_on_stimulation_score_at_5_minutes = JsonFormUtils.getFieldValue(jsonPayload, "apgar_grimace_on_stimulation_score_at_5_minutes");
+            apgar_appearance_score_at_5_minutes = JsonFormUtils.getFieldValue(jsonPayload, "apgar_appearance_score_at_5_minutes");
+            apgar_respiration_score_at_5_minutes = JsonFormUtils.getFieldValue(jsonPayload, "apgar_respiration_score_at_5_minutes");
+            resuscitation = JsonFormUtils.getFieldValue(jsonPayload, "resuscitation");
+            temperature = JsonFormUtils.getFieldValue(jsonPayload, "temperature");
+            weight = JsonFormUtils.getFieldValue(jsonPayload, "weight");
+            heart_rate = JsonFormUtils.getFieldValue(jsonPayload, "heart_rate");
+            keep_warm = JsonFormUtils.getFieldValue(jsonPayload, "keep_warm");
+            reasons_for_not_keeping_the_baby_warm_skin_to_skin_for_low_apgar_score = JsonFormUtils.getFieldValue(jsonPayload, "reasons_for_not_keeping_the_baby_warm_skin_to_skin_for_low_apgar_score");
+            reasons_for_not_keeping_the_baby_warm_skin_to_skin_for_normal_apgar_score = JsonFormUtils.getFieldValue(jsonPayload, "reasons_for_not_keeping_the_baby_warm_skin_to_skin_for_normal_apgar_score");
+            other_reason_for_not_keeping_the_baby_warm_skin_to_skin = JsonFormUtils.getFieldValue(jsonPayload, "other_reason_for_not_keeping_the_baby_warm_skin_to_skin");
+            respiratory_rate = JsonFormUtils.getFieldValue(jsonPayload, "respiratory_rate");
+            cord_bleeding = JsonFormUtils.getFieldValue(jsonPayload, "cord_bleeding");
+            early_bf_1hr = JsonFormUtils.getFieldValue(jsonPayload, "early_bf_1hr");
+            reason_for_not_breast_feeding_within_one_hour = JsonFormUtils.getFieldValue(jsonPayload, "reason_for_not_breast_feeding_within_one_hour");
+            other_reason_for_not_breast_feeding_within_one_hour = JsonFormUtils.getFieldValue(jsonPayload, "other_reason_for_not_breast_feeding_within_one_hour");
+            eye_care = JsonFormUtils.getFieldValue(jsonPayload, "eye_care");
+            reason_for_not_giving_eye_care = JsonFormUtils.getFieldValue(jsonPayload, "reason_for_not_giving_eye_care");
+            other_reason_for_not_giving_eye_care = JsonFormUtils.getFieldValue(jsonPayload, "other_reason_for_not_giving_eye_care");
+            child_bcg_vaccination = JsonFormUtils.getFieldValue(jsonPayload, "child_bcg_vaccination");
+            reason_for_not_providing_bcg_vacc = JsonFormUtils.getFieldValue(jsonPayload, "reason_for_not_providing_bcg_vacc");
+            child_opv0_vaccination = JsonFormUtils.getFieldValue(jsonPayload, "child_opv0_vaccination");
+            risk_category = JsonFormUtils.getFieldValue(jsonPayload, "risk_category");
+            provided_azt_nvp_syrup = JsonFormUtils.getFieldValue(jsonPayload, "provided_azt_nvp_syrup");
+            provided_other_combinations = JsonFormUtils.getFieldValue(jsonPayload, "provided_other_combinations");
+            specify_the_combinations = JsonFormUtils.getFieldValue(jsonPayload, "specify_the_combinations");
+            number_of_azt_nvp_days_dispensed = JsonFormUtils.getFieldValue(jsonPayload, "number_of_azt_nvp_days_dispensed");
+            reason_for_not_providing_other_combination = JsonFormUtils.getFieldValue(jsonPayload, "reason_for_not_providing_other_combination");
+            other_reason_for_not_providing_other_combination = JsonFormUtils.getFieldValue(jsonPayload, "other_reason_for_not_providing_other_combination");
+            collect_dbs = JsonFormUtils.getFieldValue(jsonPayload, "collect_dbs");
+            reason_not_collecting_dbs = JsonFormUtils.getFieldValue(jsonPayload, "reason_not_collecting_dbs");
+            sample_collection_date = JsonFormUtils.getFieldValue(jsonPayload, "sample_collection_date");
+            dna_pcr_collection_time = JsonFormUtils.getFieldValue(jsonPayload, "dna_pcr_collection_time");
+            sample_id = JsonFormUtils.getFieldValue(jsonPayload, "sample_id");
+            provided_nvp_syrup = JsonFormUtils.getFieldValue(jsonPayload, "provided_nvp_syrup");
+            number_of_nvp_days_dispensed = JsonFormUtils.getFieldValue(jsonPayload, "number_of_nvp_days_dispensed");
+            reason_for_not_providing_nvp_syrup = JsonFormUtils.getFieldValue(jsonPayload, "reason_for_not_providing_nvp_syrup");
+            other_reason_for_not_providing_nvp_syrup = JsonFormUtils.getFieldValue(jsonPayload, "other_reason_for_not_providing_nvp_syrup");
         }
 
         @Override
@@ -778,27 +936,147 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
         @Override
         public String postProcess(String jsonPayload) {
+
+            try {
+                JSONObject jsonObject = new JSONObject(jsonPayload);
+                jsonObject.remove(ENCOUNTER_TYPE);
+                jsonObject.putOpt(ENCOUNTER_TYPE, "LND " + childNumber + " Newborn");
+
+                JSONArray fields = JsonFormUtils.fields(jsonObject);
+
+                JSONObject newborn_stage_four_module_status = JsonFormUtils.getFieldJSONObject(fields, "newborn_stage_four_module_status");
+                assert newborn_stage_four_module_status != null;
+                newborn_stage_four_module_status.remove(com.vijay.jsonwizard.constants.JsonFormConstants.VALUE);
+                newborn_stage_four_module_status.put(com.vijay.jsonwizard.constants.JsonFormConstants.VALUE, moduleCompletionStatus);
+
+                return jsonObject.toString();
+            } catch (JSONException e) {
+                Timber.e(e);
+            }
             return null;
         }
 
         @Override
         public String evaluateSubTitle() {
+            if (StringUtils.isNotBlank(newbornStatus)) {
+                if (isFullyCompleted()) {
+                    moduleCompletionStatus = context.getString(R.string.lb_fully_completed_action);
+                } else if (isPartiallyCompleted()) {
+                    moduleCompletionStatus = context.getString(R.string.lb_partially_completed_action);
+                }
+                return moduleCompletionStatus;
+            }
             return null;
         }
 
         @Override
         public BaseLDVisitAction.Status evaluateStatusOnPayload() {
+            BaseLDVisitAction.Status status = BaseLDVisitAction.Status.PENDING;
             if (StringUtils.isNotBlank(newbornStatus)) {
-                return BaseLDVisitAction.Status.COMPLETED;
-            } else {
-                return BaseLDVisitAction.Status.PENDING;
+                if (isFullyCompleted()) {
+                    status = BaseLDVisitAction.Status.COMPLETED;
+                } else if (isPartiallyCompleted()) {
+                    status = BaseLDVisitAction.Status.PARTIALLY_COMPLETED;
+                }
             }
+
+            return status;
         }
 
         @Override
         public void onPayloadReceived(BaseLDVisitAction ldVisitAction) {
             //implement
         }
+
+        private boolean isFullyCompleted() {
+            if (newbornStatus.equalsIgnoreCase("alive")) {
+                return allFirstLevelFieldsCompleted() && breastFeedingWithin1HourCompleted() && isRiskCategoryCompleted();
+            } else {
+                return StringUtils.isNotBlank(still_birth_choice);
+            }
+        }
+
+        private boolean isPartiallyCompleted() {
+            if (newbornStatus.equalsIgnoreCase("alive")) {
+                return !allFirstLevelFieldsCompleted() || !breastFeedingWithin1HourCompleted() || !isRiskCategoryCompleted();
+            } else {
+                return StringUtils.isBlank(still_birth_choice);
+            }
+        }
+
+        private boolean allFirstLevelFieldsCompleted() {
+
+            return (StringUtils.isNotBlank(sex) && StringUtils.isNotBlank(apgar_activity_score_at_1_minute) &&
+                    StringUtils.isNotBlank(apgar_pulse_score_at_1_minute) && StringUtils.isNotBlank(apgar_grimace_on_stimulation_score_at_1_minute) &&
+                    StringUtils.isNotBlank(apgar_appearance_score_at_1_minute) && StringUtils.isNotBlank(apgar_respiration_score_at_1_minute) &&
+                    StringUtils.isNotBlank(apgar_activity_score_at_5_minutes) && StringUtils.isNotBlank(apgar_pulse_score_at_5_minutes) &&
+                    StringUtils.isNotBlank(apgar_grimace_on_stimulation_score_at_5_minutes) && StringUtils.isNotBlank(apgar_appearance_score_at_5_minutes) &&
+                    StringUtils.isNotBlank(apgar_respiration_score_at_5_minutes) && StringUtils.isNotBlank(resuscitation) &&
+                    StringUtils.isNotBlank(temperature) && StringUtils.isNotBlank(weight) &&
+                    StringUtils.isNotBlank(heart_rate) && StringUtils.isNotBlank(keep_warm) &&
+                    StringUtils.isNotBlank(respiratory_rate) && StringUtils.isNotBlank(cord_bleeding) &&
+                    StringUtils.isNotBlank(early_bf_1hr) && StringUtils.isNotBlank(eye_care) &&
+                    StringUtils.isNotBlank(child_bcg_vaccination) && StringUtils.isNotBlank(child_opv0_vaccination) &&
+                    StringUtils.isNotBlank(risk_category));
+
+        }
+
+        private boolean breastFeedingWithin1HourCompleted() {
+            if (StringUtils.isNotBlank(early_bf_1hr)) {
+                if (early_bf_1hr.equalsIgnoreCase("no")) {
+                    return StringUtils.isNotBlank(reason_for_not_breast_feeding_within_one_hour);
+                } else {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private boolean isRiskCategoryCompleted() {
+            boolean riskCategoryCompletionStatus = false;
+            if (StringUtils.isNotBlank(risk_category)) {
+                if (risk_category.equalsIgnoreCase("high")) {
+                    boolean providedAztNvpSyrupCompletion = false;
+                    boolean collectDBSCompletion = false;
+                    if (StringUtils.isNotBlank(provided_azt_nvp_syrup)) {
+                        if (provided_azt_nvp_syrup.equalsIgnoreCase("yes")) {
+                            providedAztNvpSyrupCompletion = StringUtils.isNotBlank(number_of_azt_nvp_days_dispensed);
+                        } else {
+                            if (StringUtils.isNotBlank(provided_other_combinations)) {
+                                if (provided_other_combinations.equalsIgnoreCase("yes")) {
+                                    providedAztNvpSyrupCompletion = StringUtils.isNotBlank(specify_the_combinations) && StringUtils.isNotBlank(number_of_azt_nvp_days_dispensed);
+                                } else {
+                                    providedAztNvpSyrupCompletion = StringUtils.isNotBlank(reason_for_not_providing_other_combination);
+                                }
+                            }
+                        }
+                    }
+
+                    if (StringUtils.isNotBlank(collect_dbs)) {
+                        if (collect_dbs.equalsIgnoreCase("yes")) {
+                            collectDBSCompletion = StringUtils.isNotBlank(dna_pcr_collection_time) && StringUtils.isNotBlank(sample_collection_date) && StringUtils.isNotBlank(sample_id);
+                        } else {
+                            collectDBSCompletion = StringUtils.isNotBlank(reason_not_collecting_dbs);
+                        }
+                    }
+                    riskCategoryCompletionStatus = providedAztNvpSyrupCompletion && collectDBSCompletion;
+                } else {
+                    if (StringUtils.isNotBlank(provided_nvp_syrup)) {
+                        if (provided_nvp_syrup.equalsIgnoreCase("yes")) {
+                            riskCategoryCompletionStatus = StringUtils.isNotBlank(number_of_nvp_days_dispensed);
+                        } else {
+                            riskCategoryCompletionStatus = (StringUtils.isNotBlank(reason_for_not_providing_nvp_syrup) &&
+                                    !reason_for_not_providing_nvp_syrup.equalsIgnoreCase("other")) ||
+                                    (StringUtils.isNotBlank(reason_for_not_providing_nvp_syrup) &&
+                                            reason_for_not_providing_nvp_syrup.equalsIgnoreCase("other") &&
+                                            StringUtils.isNotBlank(other_reason_for_not_providing_nvp_syrup));
+                        }
+                    }
+                }
+            }
+            return riskCategoryCompletionStatus;
+        }
+
     }
 
     @Override
@@ -808,36 +1086,20 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
     @Override
     protected void processExternalVisits(Visit visit, Map<String, BaseLDVisitAction> externalVisits, String memberID) throws Exception {
-        super.processExternalVisits(visit, externalVisits, memberID);
+        //super.processExternalVisits(visit, externalVisits, memberID);
+        if (visit != null && !externalVisits.isEmpty()) {
+            for (Map.Entry<String, BaseLDVisitAction> entry : externalVisits.entrySet()) {
+                Map<String, BaseLDVisitAction> subEvent = new HashMap<>();
+                subEvent.put(entry.getKey(), entry.getValue());
+
+                String subMemberID = entry.getValue().getBaseEntityID();
+                if (StringUtils.isBlank(subMemberID))
+                    subMemberID = memberID;
+
+                submitVisit(false, subMemberID, subEvent, visit.getVisitType());
+            }
+        }
         try {
-
-            AllSharedPreferences allSharedPreferences = ImmunizationLibrary.getInstance().context().allSharedPreferences();
-
-            JSONObject visitJson = new JSONObject(visit.getJson());
-            JSONArray obs = visitJson.getJSONArray("obs");
-            String deliveryDate = getDeliveryDateString(obs);
-
-            JSONObject removeFamilyMemberForm = new JSONObject();
-            if (isDeceased(obs)) {
-                removeFamilyMemberForm = getFormAsJson(
-                        CoreConstants.JSON_FORM.getFamilyDetailsRemoveMember(), memberID, getLocationID()
-                );
-                if (removeFamilyMemberForm != null) {
-                    JSONObject stepOne = removeFamilyMemberForm.getJSONObject(org.smartregister.chw.anc.util.JsonFormUtils.STEP1);
-                    JSONArray jsonArray = stepOne.getJSONArray(FIELDS);
-
-                    org.smartregister.chw.anc.util.JsonFormUtils.updateFormField(jsonArray, "remove_reason", "Death");
-
-                    // Need to get the date of delivery from the mother status format dd-MM-YYYY
-                    org.smartregister.chw.anc.util.JsonFormUtils.updateFormField(jsonArray, "date_died", deliveryDate);
-                    org.smartregister.chw.anc.util.JsonFormUtils.updateFormField(jsonArray, "age_at_death", memberObject.getAge());
-
-                    removeUser(null, removeFamilyMemberForm, getProviderID());
-                }
-            }
-            if (isChildAlive(obs)) {
-                saveChild(memberID, LDDao.getHivStatus(memberID), getRiskStatus(obs), allSharedPreferences, memberObject.getFamilyBaseEntityId(), getDeliveryDateString(obs), obs);
-            }
 
             boolean visitCompleted = true;
             for (Map.Entry<String, BaseLDVisitAction> entry : actionList.entrySet()) {
@@ -849,6 +1111,37 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
             }
 
             if (visitCompleted) {
+
+                AllSharedPreferences allSharedPreferences = ImmunizationLibrary.getInstance().context().allSharedPreferences();
+
+                JSONObject visitJson = new JSONObject(visit.getJson());
+                JSONArray obs = visitJson.getJSONArray("obs");
+                String deliveryDate = getDeliveryDateString(obs);
+
+                String completionStatus = getObValue(obs, "newborn_stage_four_module_status");
+
+                JSONObject removeFamilyMemberForm = new JSONObject();
+                if (isDeceased(obs)) {
+                    removeFamilyMemberForm = getFormAsJson(
+                            CoreConstants.JSON_FORM.getFamilyDetailsRemoveMember(), memberID, getLocationID()
+                    );
+                    if (removeFamilyMemberForm != null) {
+                        JSONObject stepOne = removeFamilyMemberForm.getJSONObject(org.smartregister.chw.anc.util.JsonFormUtils.STEP1);
+                        JSONArray jsonArray = stepOne.getJSONArray(FIELDS);
+
+                        org.smartregister.chw.anc.util.JsonFormUtils.updateFormField(jsonArray, "remove_reason", "Death");
+
+                        // Need to get the date of delivery from the mother status format dd-MM-YYYY
+                        org.smartregister.chw.anc.util.JsonFormUtils.updateFormField(jsonArray, "date_died", deliveryDate);
+                        org.smartregister.chw.anc.util.JsonFormUtils.updateFormField(jsonArray, "age_at_death", memberObject.getAge());
+
+                        removeUser(null, removeFamilyMemberForm, getProviderID());
+                    }
+                }
+                if (isChildAlive(obs) && (StringUtils.isNotBlank(completionStatus) && completionStatus.equalsIgnoreCase("Fully Completed"))) {
+                    saveChild(memberID,memberObject.getBaseEntityId(), LDDao.getHivStatus(memberObject.getBaseEntityId()), getRiskStatus(obs), allSharedPreferences, memberObject.getFamilyBaseEntityId(), getDeliveryDateString(obs), obs);
+                }
+
                 LDVisitUtils.processVisits(memberID, false);
             }
         } catch (Exception e) {
@@ -857,12 +1150,11 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
     }
 
-    private void saveChild(String motherBaseId, String motherHivStatus, String childRiskCategory, AllSharedPreferences
+    private void saveChild(String childBaseEntityId, String motherBaseId, String motherHivStatus, String childRiskCategory, AllSharedPreferences
             allSharedPreferences, String familyBaseEntityId, String dob, JSONArray obs) {
         String uniqueChildID = AncLibrary.getInstance().getUniqueIdRepository().getNextUniqueId().getOpenmrsId();
 
         if (StringUtils.isNotBlank(uniqueChildID)) {
-            String childBaseEntityId = org.smartregister.chw.anc.util.JsonFormUtils.generateRandomUUIDString();
             try {
                 String lastName = memberObject.getLastName();
                 JSONObject pncForm = getFormAsJson(

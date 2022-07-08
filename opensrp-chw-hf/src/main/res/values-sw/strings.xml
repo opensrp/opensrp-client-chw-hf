@@ -261,12 +261,14 @@
     <string name="received_referrals">Rufaa Zilizopokelewa</string>
     <string name="successful_referrals">Rufaa Zilizofanikiwa</string>
     <string name="lost_to_followup_referral">Rufaa za mteja aliepotea</string>
+    <string name="referral_village">Eneo La WAJA</string>
+    <string name="referral_clinic">Kitengo</string>
 
     <!-- Labour and Delivery String Resources-->
     <string name="menu_ld">L&amp;D</string>
     <string name="lb_fully_completed_action">Imemalizika kabisa</string>
     <string name="lb_partially_completed_action">Haijamalizika</string>
-    <string name="lb_visit_vaginal_examination">Vaginal examination</string>
+    <string name="lb_visit_vaginal_assessment">Vaginal examination</string>
     <string name="lb_visit_general_examination">General examination</string>
     <string name="height_in_cm">Urefu: {0} cm</string>
     <string name="fundal_height">Kimo cha mimba: {0} cm</string>
@@ -275,6 +277,39 @@
     <string name="tomorrow_hei_clients">Hudhurio la Kesho</string>
     <string name="missed_hei_clients">Waliokosa</string>
     <string name="anc_fundal_height_min_err">Kimo cha mimba lazima kiwe sawa au zaidi ya</string>
+
+
+    <string name="ltfu_clinic_ctc">CTC</string>
+    <string name="ltfu_clinic_pwid">KLINIKI YA WAJIDUNGA</string>
+    <string name="ltfu_clinic_prep">CTC(Dawa Kinga)</string>
+    <string name="ltfu_clinic_pmtct">PMTCT</string>
+    <string name="ltfu_clinic_tb">TB</string>
+    <string name="promised_return_date">Tarehe aliyoahidi kurudi</string>
+    <string name="date_of_death">Tarehe ya kifo</string>
+    <string name="reasons">Sababu</string>
+    <string name="followup_status">Matokeo ya Ufuatiliaji</string>
+    <string name="feedback_date">Tarehe ya ufuatiliaji</string>
+    <string name="feedback_details">Taarifa za mteja baada ya ufuatiliaji</string>
+    <string name="ltfu_followup_status_continuing_with_services">Mteja anahudhuria kliniki</string>
+    <string name="ltfu_followup_status_client_found_ready_to_return">Amepatikana na yupo tayari kurudi kliniki</string>
+    <string name="ltfu_followup_status_client_has_moved_to_another_facility">Amehamia kituo kingine bila taarifa</string>
+    <string name="ltfu_followup_status_client_has_relocated">Amehama makazi</string>
+    <string name="ltfu_followup_status_client_does_not_want_to_return">Amepatikana lakini hayuko tayari kurudi kliniki</string>
+    <string name="ltfu_followup_status_deceased">Amefariki</string>
+    <string name="ltfu_followup_status_client_not_found">Hajapatikana</string>
+    <string name="ltfu_reasons_for_missed_appointment_client_has_forgotten">Alisahau</string>
+    <string name="ltfu_reasons_for_missed_appointment_client_was_ill">Alikuwa mgonjwa sana</string>
+    <string name="ltfu_reasons_for_missed_appointment_client_failed_to_disclose_his_status">Ameshindwa kujiweka wazi</string>
+    <string name="ltfu_reasons_for_missed_appointment_client_did_not_have_fare">Amekosa Nauli</string>
+    <string name="ltfu_reasons_for_missed_appointment_client_lives_far_away_from_the_health_facility">Umbali\/Usafiri Mgumu</string>
+    <string name="ltfu_reasons_for_missed_appointment_client_feels_well">Amepata Nafuu</string>
+    <string name="ltfu_reasons_for_missed_appointment_client_was_busy_at_work">Hakupata ruhusa kazini</string>
+    <string name="ltfu_reasons_for_missed_appointment_client_traveled">Alisafiri</string>
+    <string name="ltfu_reasons_for_missed_appointment_client_uses_alternative_medicine">Anatumia tiba mbadala</string>
+    <string name="ltfu_reasons_for_missed_appointment_poor_services_at_health_facility">Huduma haziridhishi</string>
+    <string name="ltfu_reason_client_not_found_address_incorrect">Anwani sio sahihi</string>
+    <string name="ltfu_reason_client_not_found_client_relocated">Amehama makazi</string>
+    <string name="ltfu_reason_client_not_found_seasonal_work">Kilimo\/kazi za msimu</string>
 
 
 </resources>

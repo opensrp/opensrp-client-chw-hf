@@ -55,6 +55,21 @@
         "hint": "Gravida"
       },
       {
+        "key": "prompt_for_gravida",
+        "type": "toaster_notes",
+        "text": "Counsel on the risk of uterine rupture and closely monitor the client",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:gravida": {
+            "type": "numeric",
+            "ex": "greaterThan(.,\"5\")"
+          }
+        }
+      },
+      {
         "key": "para",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",

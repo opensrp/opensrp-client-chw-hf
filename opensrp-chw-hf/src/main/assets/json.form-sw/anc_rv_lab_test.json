@@ -732,7 +732,7 @@
         "relevance": {
           "rules-engine": {
             "ex-rules": {
-              "rules-file": "anc_fv_baseline_investigation_relevance.yml"
+              "rules-file": "anc_rv_lab_test_relevance.yml"
             }
           }
         }

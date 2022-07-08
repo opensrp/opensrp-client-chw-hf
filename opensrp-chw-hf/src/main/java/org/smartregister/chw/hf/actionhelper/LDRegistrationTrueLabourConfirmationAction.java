@@ -89,7 +89,7 @@ public class LDRegistrationTrueLabourConfirmationAction implements BaseLDVisitAc
             }
             return context.getString(R.string.ld_registration_true_labour_complete);
         } else if (isAllFieldsCompleted() && labourConfirmation.equalsIgnoreCase("false")) {
-            return context.getString(R.string.ld_registration_false_labour_complete);
+            return context.getString(R.string.ld_registration_true_labour_confirmation_done);
         }
         return "";
     }

@@ -8,10 +8,8 @@ import net.sqlcipher.database.SQLiteDatabase;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.Triple;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.core.dao.ChwNotificationDao;
-import org.smartregister.chw.core.utils.ChwDBConstants;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.core.utils.Utils;
@@ -22,19 +20,15 @@ import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.commonregistry.CommonPersonObject;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.dao.LocationsDao;
-import org.smartregister.domain.Location;
-import org.smartregister.domain.LocationProperty;
 import org.smartregister.family.util.Constants;
 import org.smartregister.family.util.DBConstants;
 import org.smartregister.location.helper.LocationHelper;
 import org.smartregister.repository.AllSharedPreferences;
 import org.smartregister.repository.EventClientRepository;
-import org.smartregister.repository.LocationRepository;
 import org.smartregister.util.FormUtils;
 import org.smartregister.view.LocationPickerView;
 
 import java.util.Collections;
-import java.util.Map;
 
 import timber.log.Timber;
 

@@ -14,7 +14,7 @@ indicators:
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
-
+  
   - key: "pnc-1a-15-19"
     description: "Waliohudhuria Ndani ya saa 48"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
@@ -210,442 +210,455 @@ indicators:
   - key: "pnc-2a-10-14"
     description: "Waliomaliza mahudhurio yote ( saa 48, siku 3-7, siku 8-28, siku 29-42)"
     indicatorQuery: " SELECT count(DISTINCT base_entity_id) as count
-                      FROM (SELECT DISTINCT epo.base_entity_id
-                            FROM ec_pregnancy_outcome epo
-                                     INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
-                                     INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
-                            WHERE epf.visit_number = 0
-                              AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+48 hours') >=
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND (date(efm.dob, '+10 years') <= date('now'))
-                              AND (date(efm.dob, '+15 years') > date('now'))
-                              AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')
-                      
-                            UNION
-                      
-                            SELECT DISTINCT epo.base_entity_id
-                            FROM ec_pregnancy_outcome epo
-                                     INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
-                                     INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
-                            WHERE date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+3 days') <=
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+8 days') >
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND (date(efm.dob, '+10 years') <= date('now'))
-                              AND (date(efm.dob, '+15 years') > date('now'))
-                              AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')
-                      
-                            UNION
-                      
-                            SELECT DISTINCT epo.base_entity_id
-                            FROM ec_pregnancy_outcome epo
-                                     INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
-                                     INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
-                            WHERE date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+8 days') <=
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+29 days') >
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND (date(efm.dob, '+10 years') <= date('now'))
-                              AND (date(efm.dob, '+15 years') > date('now'))
-                              AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')
-                      
-                            UNION
-                      
-                            SELECT DISTINCT epo.base_entity_id
-                            FROM ec_pregnancy_outcome epo
-                                     INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
-                                     INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
-                            WHERE date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+29 days') <=
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+42 days') >=
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND (date(efm.dob, '+10 years') <= date('now'))
-                              AND (date(efm.dob, '+15 years') > date('now'))
-                              AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01'))"
-  
+                      FROM (
+                               (SELECT DISTINCT epo.base_entity_id
+                                FROM ec_pregnancy_outcome epo
+                                         INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
+                                         INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
+                                WHERE epf.visit_number = 0
+                                  AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
+                                           substr(epo.delivery_date, 1, 2), '+48 hours') >=
+                                      date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                           substr(epf.followup_visit_date, 1, 2))
+                                  AND (date(efm.dob, '+10 years') <= date('now'))
+                                  AND (date(efm.dob, '+15 years') > date('now'))
+                                  AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                                      date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                           '01')) T1
+                                   INNER JOIN (SELECT DISTINCT epo.base_entity_id
+                                               FROM ec_pregnancy_outcome epo
+                                                        INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
+                                                        INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
+                                               WHERE date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+3 days') <=
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+8 days') >
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND (date(efm.dob, '+10 years') <= date('now'))
+                                                 AND (date(efm.dob, '+15 years') > date('now'))
+                                                 AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' || '01')) T2 using (base_entity_id)
+                                   INNER JOIN (SELECT DISTINCT epo.base_entity_id
+                                               FROM ec_pregnancy_outcome epo
+                                                        INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
+                                                        INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
+                                               WHERE date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+8 days') <=
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+29 days') >
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND (date(efm.dob, '+10 years') <= date('now'))
+                                                 AND (date(efm.dob, '+15 years') > date('now'))
+                                                 AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' || '01')) T3 using (base_entity_id)
+                                   INNER JOIN (SELECT DISTINCT epo.base_entity_id
+                                               FROM ec_pregnancy_outcome epo
+                                                        INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
+                                                        INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
+                                               WHERE date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+29 days') <=
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+42 days') >=
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND (date(efm.dob, '+10 years') <= date('now'))
+                                                 AND (date(efm.dob, '+15 years') > date('now'))
+                                                 AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' || '01')) T4 using (base_entity_id)
+                               )"
   - key: "pnc-2a-15-19"
     description: "Waliomaliza mahudhurio yote ( saa 48, siku 3-7, siku 8-28, siku 29-42)"
     indicatorQuery: " SELECT count(DISTINCT base_entity_id) as count
-                      FROM (SELECT DISTINCT epo.base_entity_id
-                            FROM ec_pregnancy_outcome epo
-                                     INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
-                                     INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
-                            WHERE epf.visit_number = 0
-                              AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+48 hours') >=
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND (date(efm.dob, '+15 years') <= date('now'))
-                              AND (date(efm.dob, '+20 years') > date('now'))
-                              AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')
-                      
-                            UNION
-                      
-                            SELECT DISTINCT epo.base_entity_id
-                            FROM ec_pregnancy_outcome epo
-                                     INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
-                                     INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
-                            WHERE date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+3 days') <=
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+8 days') >
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND (date(efm.dob, '+15 years') <= date('now'))
-                              AND (date(efm.dob, '+20 years') > date('now'))
-                              AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')
-                      
-                            UNION
-                      
-                            SELECT DISTINCT epo.base_entity_id
-                            FROM ec_pregnancy_outcome epo
-                                     INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
-                                     INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
-                            WHERE date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+8 days') <=
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+29 days') >
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND (date(efm.dob, '+15 years') <= date('now'))
-                              AND (date(efm.dob, '+20 years') > date('now'))
-                              AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')
-                      
-                            UNION
-                      
-                            SELECT DISTINCT epo.base_entity_id
-                            FROM ec_pregnancy_outcome epo
-                                     INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
-                                     INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
-                            WHERE date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+29 days') <=
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+42 days') >=
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND (date(efm.dob, '+15 years') <= date('now'))
-                              AND (date(efm.dob, '+20 years') > date('now'))
-                              AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01'))"
-  
+                      FROM (
+                               (SELECT DISTINCT epo.base_entity_id
+                                FROM ec_pregnancy_outcome epo
+                                         INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
+                                         INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
+                                WHERE epf.visit_number = 0
+                                  AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
+                                           substr(epo.delivery_date, 1, 2), '+48 hours') >=
+                                      date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                           substr(epf.followup_visit_date, 1, 2))
+                                  AND (date(efm.dob, '+15 years') <= date('now'))
+                                  AND (date(efm.dob, '+20 years') > date('now'))
+                                  AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                                      date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                           '01')) T1
+                                   INNER JOIN (SELECT DISTINCT epo.base_entity_id
+                                               FROM ec_pregnancy_outcome epo
+                                                        INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
+                                                        INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
+                                               WHERE date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+3 days') <=
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+8 days') >
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND (date(efm.dob, '+15 years') <= date('now'))
+                                                 AND (date(efm.dob, '+20 years') > date('now'))
+                                                 AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' || '01')) T2 using (base_entity_id)
+                                   INNER JOIN (SELECT DISTINCT epo.base_entity_id
+                                               FROM ec_pregnancy_outcome epo
+                                                        INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
+                                                        INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
+                                               WHERE date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+8 days') <=
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+29 days') >
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND (date(efm.dob, '+15 years') <= date('now'))
+                                                 AND (date(efm.dob, '+20 years') > date('now'))
+                                                 AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' || '01')) T3 using (base_entity_id)
+                                   INNER JOIN (SELECT DISTINCT epo.base_entity_id
+                                               FROM ec_pregnancy_outcome epo
+                                                        INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
+                                                        INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
+                                               WHERE date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+29 days') <=
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+42 days') >=
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND (date(efm.dob, '+15 years') <= date('now'))
+                                                 AND (date(efm.dob, '+20 years') > date('now'))
+                                                 AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' || '01')) T4 using (base_entity_id)
+                               )"
   - key: "pnc-2a-20-24"
     description: "Waliomaliza mahudhurio yote ( saa 48, siku 3-7, siku 8-28, siku 29-42)"
     indicatorQuery: " SELECT count(DISTINCT base_entity_id) as count
-                      FROM (SELECT DISTINCT epo.base_entity_id
-                            FROM ec_pregnancy_outcome epo
-                                     INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
-                                     INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
-                            WHERE epf.visit_number = 0
-                              AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+48 hours') >=
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND (date(efm.dob, '+20 years') <= date('now'))
-                              AND (date(efm.dob, '+25 years') > date('now'))
-                              AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')
-                      
-                            UNION
-                      
-                            SELECT DISTINCT epo.base_entity_id
-                            FROM ec_pregnancy_outcome epo
-                                     INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
-                                     INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
-                            WHERE date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+3 days') <=
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+8 days') >
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND (date(efm.dob, '+20 years') <= date('now'))
-                              AND (date(efm.dob, '+25 years') > date('now'))
-                              AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')
-                      
-                            UNION
-                      
-                            SELECT DISTINCT epo.base_entity_id
-                            FROM ec_pregnancy_outcome epo
-                                     INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
-                                     INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
-                            WHERE date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+8 days') <=
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+29 days') >
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND (date(efm.dob, '+20 years') <= date('now'))
-                              AND (date(efm.dob, '+25 years') > date('now'))
-                              AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')
-                      
-                            UNION
-                      
-                            SELECT DISTINCT epo.base_entity_id
-                            FROM ec_pregnancy_outcome epo
-                                     INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
-                                     INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
-                            WHERE date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+29 days') <=
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+42 days') >=
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND (date(efm.dob, '+20 years') <= date('now'))
-                              AND (date(efm.dob, '+25 years') > date('now'))
-                              AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01'))"
-  
+                      FROM (
+                               (SELECT DISTINCT epo.base_entity_id
+                                FROM ec_pregnancy_outcome epo
+                                         INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
+                                         INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
+                                WHERE epf.visit_number = 0
+                                  AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
+                                           substr(epo.delivery_date, 1, 2), '+48 hours') >=
+                                      date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                           substr(epf.followup_visit_date, 1, 2))
+                                  AND (date(efm.dob, '+20 years') <= date('now'))
+                                  AND (date(efm.dob, '+25 years') > date('now'))
+                                  AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                                      date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                           '01')) T1
+                                   INNER JOIN (SELECT DISTINCT epo.base_entity_id
+                                               FROM ec_pregnancy_outcome epo
+                                                        INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
+                                                        INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
+                                               WHERE date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+3 days') <=
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+8 days') >
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND (date(efm.dob, '+20 years') <= date('now'))
+                                                 AND (date(efm.dob, '+25 years') > date('now'))
+                                                 AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' || '01')) T2 using (base_entity_id)
+                                   INNER JOIN (SELECT DISTINCT epo.base_entity_id
+                                               FROM ec_pregnancy_outcome epo
+                                                        INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
+                                                        INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
+                                               WHERE date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+8 days') <=
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+29 days') >
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND (date(efm.dob, '+20 years') <= date('now'))
+                                                 AND (date(efm.dob, '+25 years') > date('now'))
+                                                 AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' || '01')) T3 using (base_entity_id)
+                                   INNER JOIN (SELECT DISTINCT epo.base_entity_id
+                                               FROM ec_pregnancy_outcome epo
+                                                        INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
+                                                        INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
+                                               WHERE date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+29 days') <=
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+42 days') >=
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND (date(efm.dob, '+20 years') <= date('now'))
+                                                 AND (date(efm.dob, '+25 years') > date('now'))
+                                                 AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' || '01')) T4 using (base_entity_id)
+                               )"
   - key: "pnc-2a-25-29"
     description: "Waliomaliza mahudhurio yote ( saa 48, siku 3-7, siku 8-28, siku 29-42)"
     indicatorQuery: " SELECT count(DISTINCT base_entity_id) as count
-                      FROM (SELECT DISTINCT epo.base_entity_id
-                            FROM ec_pregnancy_outcome epo
-                                     INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
-                                     INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
-                            WHERE epf.visit_number = 0
-                              AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+48 hours') >=
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND (date(efm.dob, '+25 years') <= date('now'))
-                              AND (date(efm.dob, '+30 years') > date('now'))
-                              AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')
-                      
-                            UNION
-                      
-                            SELECT DISTINCT epo.base_entity_id
-                            FROM ec_pregnancy_outcome epo
-                                     INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
-                                     INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
-                            WHERE date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+3 days') <=
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+8 days') >
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND (date(efm.dob, '+25 years') <= date('now'))
-                              AND (date(efm.dob, '+30 years') > date('now'))
-                              AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')
-                      
-                            UNION
-                      
-                            SELECT DISTINCT epo.base_entity_id
-                            FROM ec_pregnancy_outcome epo
-                                     INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
-                                     INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
-                            WHERE date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+8 days') <=
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+29 days') >
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND (date(efm.dob, '+25 years') <= date('now'))
-                              AND (date(efm.dob, '+30 years') > date('now'))
-                              AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')
-                      
-                            UNION
-                      
-                            SELECT DISTINCT epo.base_entity_id
-                            FROM ec_pregnancy_outcome epo
-                                     INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
-                                     INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
-                            WHERE date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+29 days') <=
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+42 days') >=
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND (date(efm.dob, '+25 years') <= date('now'))
-                              AND (date(efm.dob, '+30 years') > date('now'))
-                              AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01'))"
-  
+                      FROM (
+                               (SELECT DISTINCT epo.base_entity_id
+                                FROM ec_pregnancy_outcome epo
+                                         INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
+                                         INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
+                                WHERE epf.visit_number = 0
+                                  AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
+                                           substr(epo.delivery_date, 1, 2), '+48 hours') >=
+                                      date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                           substr(epf.followup_visit_date, 1, 2))
+                                  AND (date(efm.dob, '+25 years') <= date('now'))
+                                  AND (date(efm.dob, '+30 years') > date('now'))
+                                  AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                                      date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                           '01')) T1
+                                   INNER JOIN (SELECT DISTINCT epo.base_entity_id
+                                               FROM ec_pregnancy_outcome epo
+                                                        INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
+                                                        INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
+                                               WHERE date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+3 days') <=
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+8 days') >
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND (date(efm.dob, '+25 years') <= date('now'))
+                                                 AND (date(efm.dob, '+30 years') > date('now'))
+                                                 AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' || '01')) T2 using (base_entity_id)
+                                   INNER JOIN (SELECT DISTINCT epo.base_entity_id
+                                               FROM ec_pregnancy_outcome epo
+                                                        INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
+                                                        INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
+                                               WHERE date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+8 days') <=
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+29 days') >
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND (date(efm.dob, '+25 years') <= date('now'))
+                                                 AND (date(efm.dob, '+30 years') > date('now'))
+                                                 AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' || '01')) T3 using (base_entity_id)
+                                   INNER JOIN (SELECT DISTINCT epo.base_entity_id
+                                               FROM ec_pregnancy_outcome epo
+                                                        INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
+                                                        INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
+                                               WHERE date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+29 days') <=
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+42 days') >=
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND (date(efm.dob, '+25 years') <= date('now'))
+                                                 AND (date(efm.dob, '+30 years') > date('now'))
+                                                 AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' || '01')) T4 using (base_entity_id)
+                               )"
   - key: "pnc-2a-30-34"
     description: "Waliomaliza mahudhurio yote ( saa 48, siku 3-7, siku 8-28, siku 29-42)"
     indicatorQuery: " SELECT count(DISTINCT base_entity_id) as count
-                      FROM (SELECT DISTINCT epo.base_entity_id
-                            FROM ec_pregnancy_outcome epo
-                                     INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
-                                     INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
-                            WHERE epf.visit_number = 0
-                              AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+48 hours') >=
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND (date(efm.dob, '+30 years') <= date('now'))
-                              AND (date(efm.dob, '+35 years') > date('now'))
-                              AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')
-                      
-                            UNION
-                      
-                            SELECT DISTINCT epo.base_entity_id
-                            FROM ec_pregnancy_outcome epo
-                                     INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
-                                     INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
-                            WHERE date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+3 days') <=
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+8 days') >
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND (date(efm.dob, '+30 years') <= date('now'))
-                              AND (date(efm.dob, '+35 years') > date('now'))
-                              AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')
-                      
-                            UNION
-                      
-                            SELECT DISTINCT epo.base_entity_id
-                            FROM ec_pregnancy_outcome epo
-                                     INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
-                                     INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
-                            WHERE date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+8 days') <=
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+29 days') >
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND (date(efm.dob, '+30 years') <= date('now'))
-                              AND (date(efm.dob, '+35 years') > date('now'))
-                              AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')
-                      
-                            UNION
-                      
-                            SELECT DISTINCT epo.base_entity_id
-                            FROM ec_pregnancy_outcome epo
-                                     INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
-                                     INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
-                            WHERE date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+29 days') <=
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+42 days') >=
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND (date(efm.dob, '+30 years') <= date('now'))
-                              AND (date(efm.dob, '+35 years') > date('now'))
-                              AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01'))"
-  
+                      FROM (
+                               (SELECT DISTINCT epo.base_entity_id
+                                FROM ec_pregnancy_outcome epo
+                                         INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
+                                         INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
+                                WHERE epf.visit_number = 0
+                                  AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
+                                           substr(epo.delivery_date, 1, 2), '+48 hours') >=
+                                      date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                           substr(epf.followup_visit_date, 1, 2))
+                                  AND (date(efm.dob, '+30 years') <= date('now'))
+                                  AND (date(efm.dob, '+35 years') > date('now'))
+                                  AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                                      date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                           '01')) T1
+                                   INNER JOIN (SELECT DISTINCT epo.base_entity_id
+                                               FROM ec_pregnancy_outcome epo
+                                                        INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
+                                                        INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
+                                               WHERE date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+3 days') <=
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+8 days') >
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND (date(efm.dob, '+30 years') <= date('now'))
+                                                 AND (date(efm.dob, '+35 years') > date('now'))
+                                                 AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' || '01')) T2 using (base_entity_id)
+                                   INNER JOIN (SELECT DISTINCT epo.base_entity_id
+                                               FROM ec_pregnancy_outcome epo
+                                                        INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
+                                                        INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
+                                               WHERE date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+8 days') <=
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+29 days') >
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND (date(efm.dob, '+30 years') <= date('now'))
+                                                 AND (date(efm.dob, '+35 years') > date('now'))
+                                                 AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' || '01')) T3 using (base_entity_id)
+                                   INNER JOIN (SELECT DISTINCT epo.base_entity_id
+                                               FROM ec_pregnancy_outcome epo
+                                                        INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
+                                                        INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
+                                               WHERE date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+29 days') <=
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+42 days') >=
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND (date(efm.dob, '+30 years') <= date('now'))
+                                                 AND (date(efm.dob, '+35 years') > date('now'))
+                                                 AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' || '01')) T4 using (base_entity_id)
+                               )"
   - key: "pnc-2a-35+"
     description: "Waliomaliza mahudhurio yote ( saa 48, siku 3-7, siku 8-28, siku 29-42)"
     indicatorQuery: " SELECT count(DISTINCT base_entity_id) as count
-                      FROM (SELECT DISTINCT epo.base_entity_id
-                            FROM ec_pregnancy_outcome epo
-                                     INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
-                                     INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
-                            WHERE epf.visit_number = 0
-                              AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+48 hours') >=
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND (date(efm.dob, '+35 years') <= date('now'))
-                              AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')
-                      
-                            UNION
-                      
-                            SELECT DISTINCT epo.base_entity_id
-                            FROM ec_pregnancy_outcome epo
-                                     INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
-                                     INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
-                            WHERE date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+3 days') <=
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+8 days') >
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND (date(efm.dob, '+35 years') <= date('now'))
-                              AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')
-                      
-                            UNION
-                      
-                            SELECT DISTINCT epo.base_entity_id
-                            FROM ec_pregnancy_outcome epo
-                                     INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
-                                     INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
-                            WHERE date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+8 days') <=
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+29 days') >
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND (date(efm.dob, '+35 years') <= date('now'))
-                              AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')
-                      
-                            UNION
-                      
-                            SELECT DISTINCT epo.base_entity_id
-                            FROM ec_pregnancy_outcome epo
-                                     INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
-                                     INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
-                            WHERE date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+29 days') <=
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+42 days') >=
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND (date(efm.dob, '+35 years') <= date('now'))
-                              AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01'))"
+                      FROM (
+                               (SELECT DISTINCT epo.base_entity_id
+                                FROM ec_pregnancy_outcome epo
+                                         INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
+                                         INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
+                                WHERE epf.visit_number = 0
+                                  AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
+                                           substr(epo.delivery_date, 1, 2), '+48 hours') >=
+                                      date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                           substr(epf.followup_visit_date, 1, 2))
+                                  AND (date(efm.dob, '+35 years') <= date('now'))
+                                  AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                                      date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                           '01')) T1
+                                   INNER JOIN (SELECT DISTINCT epo.base_entity_id
+                                               FROM ec_pregnancy_outcome epo
+                                                        INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
+                                                        INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
+                                               WHERE date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+3 days') <=
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+8 days') >
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND (date(efm.dob, '+35 years') <= date('now'))
+                                                 AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' || '01')) T2 using (base_entity_id)
+                                   INNER JOIN (SELECT DISTINCT epo.base_entity_id
+                                               FROM ec_pregnancy_outcome epo
+                                                        INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
+                                                        INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
+                                               WHERE date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+8 days') <=
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+29 days') >
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND (date(efm.dob, '+35 years') <= date('now'))
+                                                 AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' || '01')) T3 using (base_entity_id)
+                                   INNER JOIN (SELECT DISTINCT epo.base_entity_id
+                                               FROM ec_pregnancy_outcome epo
+                                                        INNER JOIN ec_family_member efm ON efm.base_entity_id = epo.base_entity_id
+                                                        INNER JOIN ec_pnc_followup epf ON epf.entity_id = epo.base_entity_id
+                                               WHERE date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+29 days') <=
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+42 days') >=
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND (date(efm.dob, '+35 years') <= date('now'))
+                                                 AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' || '01')) T4 using (base_entity_id)
+                               )"
   
   - key: "pnc-3-10-14"
     description: "Wenye upungufu mkubwa wa damu (Hb < 8.5 g/dl)"
@@ -1007,196 +1020,214 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
                                INNER JOIN ec_family_member fm on fm.base_entity_id = epo.base_entity_id
+                               INNER JOIN ec_pnc_followup epf on fm.base_entity_id = epf.entity_id
                       WHERE epo.delivery_place = 'Birth before Arrival (BBA)'
                         AND (date(fm.dob, '+10 years') <= date('now'))
                         AND (date(fm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8a-15-19"
     description: "BBA"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
                                INNER JOIN ec_family_member fm on fm.base_entity_id = epo.base_entity_id
+                               INNER JOIN ec_pnc_followup epf on fm.base_entity_id = epf.entity_id
                       WHERE epo.delivery_place = 'Birth before Arrival (BBA)'
                         AND (date(fm.dob, '+15 years') <= date('now'))
                         AND (date(fm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8a-20-24"
     description: "BBA"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
                                INNER JOIN ec_family_member fm on fm.base_entity_id = epo.base_entity_id
+                               INNER JOIN ec_pnc_followup epf on fm.base_entity_id = epf.entity_id
                       WHERE epo.delivery_place = 'Birth before Arrival (BBA)'
                         AND (date(fm.dob, '+20 years') <= date('now'))
                         AND (date(fm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8a-25-29"
     description: "BBA"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
                                INNER JOIN ec_family_member fm on fm.base_entity_id = epo.base_entity_id
+                               INNER JOIN ec_pnc_followup epf on fm.base_entity_id = epf.entity_id
                       WHERE epo.delivery_place = 'Birth before Arrival (BBA)'
                         AND (date(fm.dob, '+25 years') <= date('now'))
                         AND (date(fm.dob, '+30 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8a-30-34"
     description: "BBA"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
                                INNER JOIN ec_family_member fm on fm.base_entity_id = epo.base_entity_id
+                               INNER JOIN ec_pnc_followup epf on fm.base_entity_id = epf.entity_id
                       WHERE epo.delivery_place = 'Birth before Arrival (BBA)'
                         AND (date(fm.dob, '+30 years') <= date('now'))
                         AND (date(fm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8a-35+"
     description: "BBA"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
                                INNER JOIN ec_family_member fm on fm.base_entity_id = epo.base_entity_id
+                               INNER JOIN ec_pnc_followup epf on fm.base_entity_id = epf.entity_id
                       WHERE epo.delivery_place = 'Birth before Arrival (BBA)'
                         AND (date(fm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8b-10-14"
     description: "TBA"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
                                INNER JOIN ec_family_member fm on fm.base_entity_id = epo.base_entity_id
+                               INNER JOIN ec_pnc_followup epf on fm.base_entity_id = epf.entity_id
                       WHERE epo.delivery_place = 'Traditional birth attendant'
                         AND (date(fm.dob, '+10 years') <= date('now'))
                         AND (date(fm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8b-15-19"
     description: "TBA"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
                                INNER JOIN ec_family_member fm on fm.base_entity_id = epo.base_entity_id
+                               INNER JOIN ec_pnc_followup epf on fm.base_entity_id = epf.entity_id
                       WHERE epo.delivery_place = 'Traditional birth attendant'
                         AND (date(fm.dob, '+15 years') <= date('now'))
                         AND (date(fm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8b-20-24"
     description: "TBA"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
                                INNER JOIN ec_family_member fm on fm.base_entity_id = epo.base_entity_id
+                               INNER JOIN ec_pnc_followup epf on fm.base_entity_id = epf.entity_id
                       WHERE epo.delivery_place = 'Traditional birth attendant'
                         AND (date(fm.dob, '+20 years') <= date('now'))
                         AND (date(fm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8b-25-29"
     description: "TBA"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
                                INNER JOIN ec_family_member fm on fm.base_entity_id = epo.base_entity_id
+                               INNER JOIN ec_pnc_followup epf on fm.base_entity_id = epf.entity_id
                       WHERE epo.delivery_place = 'Traditional birth attendant'
                         AND (date(fm.dob, '+25 years') <= date('now'))
                         AND (date(fm.dob, '+30 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8b-30-34"
     description: "TBA"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
                                INNER JOIN ec_family_member fm on fm.base_entity_id = epo.base_entity_id
+                               INNER JOIN ec_pnc_followup epf on fm.base_entity_id = epf.entity_id
                       WHERE epo.delivery_place = 'Traditional birth attendant'
                         AND (date(fm.dob, '+30 years') <= date('now'))
                         AND (date(fm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8b-35+"
     description: "TBA"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
                                INNER JOIN ec_family_member fm on fm.base_entity_id = epo.base_entity_id
+                               INNER JOIN ec_pnc_followup epf on fm.base_entity_id = epf.entity_id
                       WHERE epo.delivery_place = 'Traditional birth attendant'
                         AND (date(fm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8c-10-14"
     description: "Idadi ya waliojifungulia nyumbani"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
                                INNER JOIN ec_family_member fm on fm.base_entity_id = epo.base_entity_id
+                               INNER JOIN ec_pnc_followup epf on fm.base_entity_id = epf.entity_id
                       WHERE epo.delivery_place = 'At home'
                         AND (date(fm.dob, '+10 years') <= date('now'))
                         AND (date(fm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8c-15-19"
     description: "Idadi ya waliojifungulia nyumbani"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
                                INNER JOIN ec_family_member fm on fm.base_entity_id = epo.base_entity_id
+                               INNER JOIN ec_pnc_followup epf on fm.base_entity_id = epf.entity_id
                       WHERE epo.delivery_place = 'At home'
                         AND (date(fm.dob, '+15 years') <= date('now'))
                         AND (date(fm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8c-20-24"
     description: "Idadi ya waliojifungulia nyumbani"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
                                INNER JOIN ec_family_member fm on fm.base_entity_id = epo.base_entity_id
+                               INNER JOIN ec_pnc_followup epf on fm.base_entity_id = epf.entity_id
                       WHERE epo.delivery_place = 'At home'
                         AND (date(fm.dob, '+20 years') <= date('now'))
                         AND (date(fm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8c-25-29"
     description: "Idadi ya waliojifungulia nyumbani"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
                                INNER JOIN ec_family_member fm on fm.base_entity_id = epo.base_entity_id
+                               INNER JOIN ec_pnc_followup epf on fm.base_entity_id = epf.entity_id
                       WHERE epo.delivery_place = 'At home'
                         AND (date(fm.dob, '+25 years') <= date('now'))
                         AND (date(fm.dob, '+30 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8c-30-34"
     description: "Idadi ya waliojifungulia nyumbani"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
                                INNER JOIN ec_family_member fm on fm.base_entity_id = epo.base_entity_id
+                               INNER JOIN ec_pnc_followup epf on fm.base_entity_id = epf.entity_id
                       WHERE epo.delivery_place = 'At home'
                         AND (date(fm.dob, '+30 years') <= date('now'))
                         AND (date(fm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8c-35+"
     description: "Idadi ya waliojifungulia nyumbani"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
                                INNER JOIN ec_family_member fm on fm.base_entity_id = epo.base_entity_id
+                               INNER JOIN ec_pnc_followup epf on fm.base_entity_id = epf.entity_id
                       WHERE epo.delivery_place = 'At home'
                         AND (date(fm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
-    
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
+  
   - key: "pnc-9a-10-14"
     description: "Waliopata ushauri wa uzazi wa mpango"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
@@ -1207,7 +1238,7 @@ indicators:
                         AND (date(fm.dob, '+10 years') <= date('now'))
                         AND (date(fm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9a-15-19"
     description: "Waliopata ushauri wa uzazi wa mpango"
@@ -1219,7 +1250,7 @@ indicators:
                         AND (date(fm.dob, '+15 years') <= date('now'))
                         AND (date(fm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9a-20-24"
     description: "Waliopata ushauri wa uzazi wa mpango"
@@ -1231,7 +1262,7 @@ indicators:
                         AND (date(fm.dob, '+20 years') <= date('now'))
                         AND (date(fm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9a-25-29"
     description: "Waliopata ushauri wa uzazi wa mpango"
@@ -1243,7 +1274,7 @@ indicators:
                         AND (date(fm.dob, '+25 years') <= date('now'))
                         AND (date(fm.dob, '+30 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9a-30-34"
     description: "Waliopata ushauri wa uzazi wa mpango"
@@ -1255,7 +1286,7 @@ indicators:
                         AND (date(fm.dob, '+30 years') <= date('now'))
                         AND (date(fm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9a-35+"
     description: "Waliopata ushauri wa uzazi wa mpango"
@@ -1266,8 +1297,8 @@ indicators:
                       WHERE epf.education_counselling_given = 'yes'
                         AND (date(fm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
-    
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
+  
   - key: "pnc-9b-10-14"
     description: "Waliopata kondomu"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
@@ -1278,7 +1309,7 @@ indicators:
                         AND (date(fm.dob, '+10 years') <= date('now'))
                         AND (date(fm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9b-15-19"
     description: "Waliopata kondomu"
@@ -1290,7 +1321,7 @@ indicators:
                         AND (date(fm.dob, '+15 years') <= date('now'))
                         AND (date(fm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9b-20-24"
     description: "Waliopata kondomu"
@@ -1302,7 +1333,7 @@ indicators:
                         AND (date(fm.dob, '+20 years') <= date('now'))
                         AND (date(fm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9b-25-29"
     description: "Waliopata kondomu"
@@ -1314,7 +1345,7 @@ indicators:
                         AND (date(fm.dob, '+25 years') <= date('now'))
                         AND (date(fm.dob, '+30 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9b-30-34"
     description: "Waliopata kondomu"
@@ -1326,7 +1357,7 @@ indicators:
                         AND (date(fm.dob, '+30 years') <= date('now'))
                         AND (date(fm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9b-35+"
     description: "Waliopata kondomu"
@@ -1337,8 +1368,8 @@ indicators:
                       WHERE epf.method_provided = 'chk_condom'
                         AND (date(fm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
-    
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
+  
   - key: "pnc-9c-10-14"
     description: "Waliopata vidonge (POP)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
@@ -1349,7 +1380,7 @@ indicators:
                         AND (date(fm.dob, '+10 years') <= date('now'))
                         AND (date(fm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9c-15-19"
     description: "Waliopata vidonge (POP)"
@@ -1361,7 +1392,7 @@ indicators:
                         AND (date(fm.dob, '+15 years') <= date('now'))
                         AND (date(fm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9c-20-24"
     description: "Waliopata vidonge (POP)"
@@ -1373,7 +1404,7 @@ indicators:
                         AND (date(fm.dob, '+20 years') <= date('now'))
                         AND (date(fm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9c-25-29"
     description: "Waliopata vidonge (POP)"
@@ -1385,7 +1416,7 @@ indicators:
                         AND (date(fm.dob, '+25 years') <= date('now'))
                         AND (date(fm.dob, '+30 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9c-30-34"
     description: "Waliopata vidonge (POP)"
@@ -1397,7 +1428,7 @@ indicators:
                         AND (date(fm.dob, '+30 years') <= date('now'))
                         AND (date(fm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9c-35+"
     description: "Waliopata vidonge (POP)"
@@ -1408,8 +1439,8 @@ indicators:
                       WHERE epf.method_provided = 'chk_pills'
                         AND (date(fm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
-    
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
+  
   - key: "pnc-9d1-10-14"
     description: "Waliopata vipandikizi (Implants)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
@@ -1420,7 +1451,7 @@ indicators:
                         AND (date(fm.dob, '+10 years') <= date('now'))
                         AND (date(fm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9d1-15-19"
     description: "Waliopata vipandikizi (Implants)"
@@ -1432,7 +1463,7 @@ indicators:
                         AND (date(fm.dob, '+15 years') <= date('now'))
                         AND (date(fm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9d1-20-24"
     description: "Waliopata vipandikizi (Implants)"
@@ -1444,7 +1475,7 @@ indicators:
                         AND (date(fm.dob, '+20 years') <= date('now'))
                         AND (date(fm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9d1-25-29"
     description: "Waliopata vipandikizi (Implants)"
@@ -1456,7 +1487,7 @@ indicators:
                         AND (date(fm.dob, '+25 years') <= date('now'))
                         AND (date(fm.dob, '+30 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9d1-30-34"
     description: "Waliopata vipandikizi (Implants)"
@@ -1468,7 +1499,7 @@ indicators:
                         AND (date(fm.dob, '+30 years') <= date('now'))
                         AND (date(fm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9d1-35+"
     description: "Waliopata vipandikizi (Implants)"
@@ -1479,7 +1510,7 @@ indicators:
                       WHERE epf.method_provided = 'chk_implants'
                         AND (date(fm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9d2-10-14"
     description: "Waliopata vipandikizi ( Jadelle)"
@@ -1491,7 +1522,7 @@ indicators:
                         AND (date(fm.dob, '+10 years') <= date('now'))
                         AND (date(fm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9d2-15-19"
     description: "Waliopata vipandikizi ( Jadelle)"
@@ -1503,7 +1534,7 @@ indicators:
                         AND (date(fm.dob, '+15 years') <= date('now'))
                         AND (date(fm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9d2-20-24"
     description: "Waliopata vipandikizi ( Jadelle)"
@@ -1515,7 +1546,7 @@ indicators:
                         AND (date(fm.dob, '+20 years') <= date('now'))
                         AND (date(fm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9d2-25-29"
     description: "Waliopata vipandikizi ( Jadelle)"
@@ -1527,7 +1558,7 @@ indicators:
                         AND (date(fm.dob, '+25 years') <= date('now'))
                         AND (date(fm.dob, '+30 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9d2-30-34"
     description: "Waliopata vipandikizi ( Jadelle)"
@@ -1539,7 +1570,7 @@ indicators:
                         AND (date(fm.dob, '+30 years') <= date('now'))
                         AND (date(fm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9d2-35+"
     description: "Waliopata vipandikizi ( Jadelle)"
@@ -1550,8 +1581,8 @@ indicators:
                       WHERE epf.method_provided = 'chk_jadelle'
                         AND (date(fm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
-    
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
+  
   - key: "pnc-9e-10-14"
     description: "Waliopata kitanzi"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
@@ -1562,7 +1593,7 @@ indicators:
                         AND (date(fm.dob, '+10 years') <= date('now'))
                         AND (date(fm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9e-15-19"
     description: "Waliopata kitanzi"
@@ -1574,7 +1605,7 @@ indicators:
                         AND (date(fm.dob, '+15 years') <= date('now'))
                         AND (date(fm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9e-20-24"
     description: "Waliopata kitanzi"
@@ -1586,7 +1617,7 @@ indicators:
                         AND (date(fm.dob, '+20 years') <= date('now'))
                         AND (date(fm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9e-25-29"
     description: "Waliopata kitanzi"
@@ -1598,7 +1629,7 @@ indicators:
                         AND (date(fm.dob, '+25 years') <= date('now'))
                         AND (date(fm.dob, '+30 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9e-30-34"
     description: "Waliopata kitanzi"
@@ -1610,7 +1641,7 @@ indicators:
                         AND (date(fm.dob, '+30 years') <= date('now'))
                         AND (date(fm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9e-35+"
     description: "Waliopata kitanzi"
@@ -1621,7 +1652,7 @@ indicators:
                       WHERE epf.method_provided = 'chk_iucd'
                         AND (date(fm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9f-10-14"
     description: "Kufunga uzazi (BTL)"
@@ -1633,7 +1664,7 @@ indicators:
                         AND (date(fm.dob, '+10 years') <= date('now'))
                         AND (date(fm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9f-15-19"
     description: "Kufunga uzazi (BTL)"
@@ -1645,7 +1676,7 @@ indicators:
                         AND (date(fm.dob, '+15 years') <= date('now'))
                         AND (date(fm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9f-20-24"
     description: "Kufunga uzazi (BTL)"
@@ -1657,7 +1688,7 @@ indicators:
                         AND (date(fm.dob, '+20 years') <= date('now'))
                         AND (date(fm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9f-25-29"
     description: "Kufunga uzazi (BTL)"
@@ -1669,7 +1700,7 @@ indicators:
                         AND (date(fm.dob, '+25 years') <= date('now'))
                         AND (date(fm.dob, '+30 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9f-30-34"
     description: "Kufunga uzazi (BTL)"
@@ -1681,7 +1712,7 @@ indicators:
                         AND (date(fm.dob, '+30 years') <= date('now'))
                         AND (date(fm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9f-35+"
     description: "Kufunga uzazi (BTL)"
@@ -1692,7 +1723,78 @@ indicators:
                       WHERE epf.method_provided = 'chk_tubal_ligation'
                         AND (date(fm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
+    
+  - key: "pnc-9g-10-14"
+    description: "Rufaa kupata njia ya uzazi wa mpango"
+    indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
+                      FROM ec_pregnancy_outcome epo
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = epo.base_entity_id
+                               INNER JOIN ec_pnc_followup epf on fm.base_entity_id = epf.entity_id
+                      WHERE epf.method_provided = 'chk_referred_fp_services'
+                        AND (date(fm.dob, '+10 years') <= date('now'))
+                        AND (date(fm.dob, '+15 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
+  
+  - key: "pnc-9g-15-19"
+    description: "Rufaa kupata njia ya uzazi wa mpango"
+    indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
+                      FROM ec_pregnancy_outcome epo
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = epo.base_entity_id
+                               INNER JOIN ec_pnc_followup epf on fm.base_entity_id = epf.entity_id
+                      WHERE epf.method_provided = 'chk_referred_fp_services'
+                        AND (date(fm.dob, '+15 years') <= date('now'))
+                        AND (date(fm.dob, '+20 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
+  
+  - key: "pnc-9g-20-24"
+    description: "Rufaa kupata njia ya uzazi wa mpango"
+    indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
+                      FROM ec_pregnancy_outcome epo
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = epo.base_entity_id
+                               INNER JOIN ec_pnc_followup epf on fm.base_entity_id = epf.entity_id
+                      WHERE epf.method_provided = 'chk_referred_fp_services'
+                        AND (date(fm.dob, '+20 years') <= date('now'))
+                        AND (date(fm.dob, '+25 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
+  
+  - key: "pnc-9g-25-29"
+    description: "Rufaa kupata njia ya uzazi wa mpango"
+    indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
+                      FROM ec_pregnancy_outcome epo
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = epo.base_entity_id
+                               INNER JOIN ec_pnc_followup epf on fm.base_entity_id = epf.entity_id
+                      WHERE epf.method_provided = 'chk_referred_fp_services'
+                        AND (date(fm.dob, '+25 years') <= date('now'))
+                        AND (date(fm.dob, '+30 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
+  
+  - key: "pnc-9g-30-34"
+    description: "Rufaa kupata njia ya uzazi wa mpango"
+    indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
+                      FROM ec_pregnancy_outcome epo
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = epo.base_entity_id
+                               INNER JOIN ec_pnc_followup epf on fm.base_entity_id = epf.entity_id
+                      WHERE epf.method_provided = 'chk_referred_fp_services'
+                        AND (date(fm.dob, '+30 years') <= date('now'))
+                        AND (date(fm.dob, '+35 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
+  
+  - key: "pnc-9g-35+"
+    description: "Rufaa kupata njia ya uzazi wa mpango"
+    indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
+                      FROM ec_pregnancy_outcome epo
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = epo.base_entity_id
+                               INNER JOIN ec_pnc_followup epf on fm.base_entity_id = epf.entity_id
+                      WHERE epf.method_provided = 'chk_referred_fp_services'
+                        AND (date(fm.dob, '+35 years') <= date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
+                            date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-10a-10-14"
     description: "Waliokuja postnatal wakiwa positive"
@@ -2160,209 +2262,190 @@ indicators:
   - key: "pnc-11c-ME"
     description: "Waliomaliza mahudhurio yote ( saa 48, siku 3- 7, siku 8-28, siku 29-42)"
     indicatorQuery: " SELECT count(DISTINCT base_entity_id) as count
-                      FROM (SELECT DISTINCT ec.base_entity_id
-                            FROM ec_pregnancy_outcome epo
-                                     INNER JOIN ec_pnc_followup epf on epf.entity_id = epo.base_entity_id
-                                     INNER JOIN ec_child ec on ec.mother_entity_id = epo.base_entity_id
-                                     INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
-                                     INNER JOIN ec_family_member efm ON efm.base_entity_id = ec.base_entity_id
-                            WHERE epf.visit_number = 0
-                              AND date(substr(epo.delivery_date, 7, 4) || '-' ||
-                                       substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+48 hours') >=
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' ||
-                                       substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND efm.gender = 'Male'
-                              AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'),
-                                       '-0 months') =
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' ||
-                                       substr(epf.followup_visit_date, 4, 2) || '-' || '01')
-                      
-                      
-                            UNION
-                      
-                            SELECT DISTINCT ec.base_entity_id
-                            FROM ec_pregnancy_outcome epo
-                                     INNER JOIN ec_pnc_followup epf on epf.entity_id = epo.base_entity_id
-                                     INNER JOIN ec_child ec on ec.mother_entity_id = epo.base_entity_id
-                                     INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
-                                     INNER JOIN ec_family_member efm ON efm.base_entity_id = ec.base_entity_id
-                            WHERE date(substr(epo.delivery_date, 7, 4) || '-' ||
-                                       substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+3 days') <=
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' ||
-                                       substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND date(substr(epo.delivery_date, 7, 4) || '-' ||
-                                       substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+8 days') >
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' ||
-                                       substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND efm.gender = 'Male'
-                              AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'),
-                                       '-0 months') =
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' ||
-                                       substr(epf.followup_visit_date, 4, 2) || '-' || '01')
-                      
-                      
-                            UNION
-                      
-                            SELECT DISTINCT ec.base_entity_id
-                            FROM ec_pregnancy_outcome epo
-                                     INNER JOIN ec_pnc_followup epf on epf.entity_id = epo.base_entity_id
-                                     INNER JOIN ec_child ec on ec.mother_entity_id = epo.base_entity_id
-                                     INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
-                                     INNER JOIN ec_family_member efm ON efm.base_entity_id = ec.base_entity_id
-                            WHERE date(substr(epo.delivery_date, 7, 4) || '-' ||
-                                       substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+8 days') <=
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' ||
-                                       substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND date(substr(epo.delivery_date, 7, 4) || '-' ||
-                                       substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+29 days') >
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' ||
-                                       substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND efm.gender = 'Male'
-                              AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'),
-                                       '-0 months') =
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' ||
-                                       substr(epf.followup_visit_date, 4, 2) || '-' || '01')
-                      
-                      
-                            UNION
-                      
-                            SELECT DISTINCT ec.base_entity_id
-                            FROM ec_pregnancy_outcome epo
-                                     INNER JOIN ec_pnc_followup epf on epf.entity_id = epo.base_entity_id
-                                     INNER JOIN ec_child ec on ec.mother_entity_id = epo.base_entity_id
-                                     INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
-                                     INNER JOIN ec_family_member efm ON efm.base_entity_id = ec.base_entity_id
-                            WHERE date(substr(epo.delivery_date, 7, 4) || '-' ||
-                                       substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+29 days') <=
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' ||
-                                       substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND date(substr(epo.delivery_date, 7, 4) || '-' ||
-                                       substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '42 days') >=
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' ||
-                                       substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND efm.gender = 'Male'
-                              AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'),
-                                       '-0 months') =
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' ||
-                                       substr(epf.followup_visit_date, 4, 2) || '-' || '01'))"
-  
+                      FROM (
+                               (SELECT DISTINCT ec.base_entity_id
+                                FROM ec_pregnancy_outcome epo
+                                         INNER JOIN ec_pnc_followup epf on epf.entity_id = epo.base_entity_id
+                                         INNER JOIN ec_child ec on ec.mother_entity_id = epo.base_entity_id
+                                         INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
+                                         INNER JOIN ec_family_member efm ON efm.base_entity_id = ec.base_entity_id
+                                WHERE epf.visit_number = 0
+                                  AND date(substr(epo.delivery_date, 7, 4) || '-' ||
+                                           substr(epo.delivery_date, 4, 2) || '-' ||
+                                           substr(epo.delivery_date, 1, 2), '+48 hours') >=
+                                      date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                           substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                           substr(epf.followup_visit_date, 1, 2))
+                                  AND efm.gender = 'Male'
+                                  AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'),
+                                           '-0 months') =
+                                      date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                           substr(epf.followup_visit_date, 4, 2) || '-' || '01')) T1
+                                   INNER JOIN (SELECT DISTINCT ec.base_entity_id
+                                               FROM ec_pregnancy_outcome epo
+                                                        INNER JOIN ec_pnc_followup epf on epf.entity_id = epo.base_entity_id
+                                                        INNER JOIN ec_child ec on ec.mother_entity_id = epo.base_entity_id
+                                                        INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
+                                                        INNER JOIN ec_family_member efm ON efm.base_entity_id = ec.base_entity_id
+                                               WHERE date(substr(epo.delivery_date, 7, 4) || '-' ||
+                                                          substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+3 days') <=
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND date(substr(epo.delivery_date, 7, 4) || '-' ||
+                                                          substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+8 days') >
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND efm.gender = 'Male'
+                                                 AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'),
+                                                          '-0 months') =
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' || '01')) T2 using (base_entity_id)
+                                   INNER JOIN (SELECT DISTINCT ec.base_entity_id
+                                               FROM ec_pregnancy_outcome epo
+                                                        INNER JOIN ec_pnc_followup epf on epf.entity_id = epo.base_entity_id
+                                                        INNER JOIN ec_child ec on ec.mother_entity_id = epo.base_entity_id
+                                                        INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
+                                                        INNER JOIN ec_family_member efm ON efm.base_entity_id = ec.base_entity_id
+                                               WHERE date(substr(epo.delivery_date, 7, 4) || '-' ||
+                                                          substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+8 days') <=
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND date(substr(epo.delivery_date, 7, 4) || '-' ||
+                                                          substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+29 days') >
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND efm.gender = 'Male'
+                                                 AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'),
+                                                          '-0 months') =
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' || '01')) T3 using (base_entity_id)
+                                   INNER JOIN (SELECT DISTINCT ec.base_entity_id
+                                               FROM ec_pregnancy_outcome epo
+                                                        INNER JOIN ec_pnc_followup epf on epf.entity_id = epo.base_entity_id
+                                                        INNER JOIN ec_child ec on ec.mother_entity_id = epo.base_entity_id
+                                                        INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
+                                                        INNER JOIN ec_family_member efm ON efm.base_entity_id = ec.base_entity_id
+                                               WHERE date(substr(epo.delivery_date, 7, 4) || '-' ||
+                                                          substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+29 days') <=
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND date(substr(epo.delivery_date, 7, 4) || '-' ||
+                                                          substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '42 days') >=
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND efm.gender = 'Male'
+                                                 AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'),
+                                                          '-0 months') =
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' || '01')) T4 using (base_entity_id)
+                               )"
+    
   - key: "pnc-11c-KE"
     description: "Waliomaliza mahudhurio yote ( saa 48, siku 3- 7, siku 8-28, siku 29-42)"
     indicatorQuery: " SELECT count(DISTINCT base_entity_id) as count
-                      FROM (SELECT DISTINCT ec.base_entity_id
-                            FROM ec_pregnancy_outcome epo
-                                     INNER JOIN ec_pnc_followup epf on epf.entity_id = epo.base_entity_id
-                                     INNER JOIN ec_child ec on ec.mother_entity_id = epo.base_entity_id
-                                     INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
-                                     INNER JOIN ec_family_member efm ON efm.base_entity_id = ec.base_entity_id
-                            WHERE epf.visit_number = 0
-                              AND date(substr(epo.delivery_date, 7, 4) || '-' ||
-                                       substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+48 hours') >=
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' ||
-                                       substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND efm.gender = 'Female'
-                              AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'),
-                                       '-0 months') =
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' ||
-                                       substr(epf.followup_visit_date, 4, 2) || '-' || '01')
-                      
-                      
-                            UNION
-                      
-                            SELECT DISTINCT ec.base_entity_id
-                            FROM ec_pregnancy_outcome epo
-                                     INNER JOIN ec_pnc_followup epf on epf.entity_id = epo.base_entity_id
-                                     INNER JOIN ec_child ec on ec.mother_entity_id = epo.base_entity_id
-                                     INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
-                                     INNER JOIN ec_family_member efm ON efm.base_entity_id = ec.base_entity_id
-                            WHERE date(substr(epo.delivery_date, 7, 4) || '-' ||
-                                       substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+3 days') <=
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' ||
-                                       substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND date(substr(epo.delivery_date, 7, 4) || '-' ||
-                                       substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+8 days') >
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' ||
-                                       substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND efm.gender = 'Female'
-                              AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'),
-                                       '-0 months') =
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' ||
-                                       substr(epf.followup_visit_date, 4, 2) || '-' || '01')
-                      
-                      
-                            UNION
-                      
-                            SELECT DISTINCT ec.base_entity_id
-                            FROM ec_pregnancy_outcome epo
-                                     INNER JOIN ec_pnc_followup epf on epf.entity_id = epo.base_entity_id
-                                     INNER JOIN ec_child ec on ec.mother_entity_id = epo.base_entity_id
-                                     INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
-                                     INNER JOIN ec_family_member efm ON efm.base_entity_id = ec.base_entity_id
-                            WHERE date(substr(epo.delivery_date, 7, 4) || '-' ||
-                                       substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+8 days') <=
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' ||
-                                       substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND date(substr(epo.delivery_date, 7, 4) || '-' ||
-                                       substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+29 days') >
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' ||
-                                       substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND efm.gender = 'Female'
-                              AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'),
-                                       '-0 months') =
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' ||
-                                       substr(epf.followup_visit_date, 4, 2) || '-' || '01')
-                      
-                      
-                            UNION
-                      
-                            SELECT DISTINCT ec.base_entity_id
-                            FROM ec_pregnancy_outcome epo
-                                     INNER JOIN ec_pnc_followup epf on epf.entity_id = epo.base_entity_id
-                                     INNER JOIN ec_child ec on ec.mother_entity_id = epo.base_entity_id
-                                     INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
-                                     INNER JOIN ec_family_member efm ON efm.base_entity_id = ec.base_entity_id
-                            WHERE date(substr(epo.delivery_date, 7, 4) || '-' ||
-                                       substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '+29 days') <=
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' ||
-                                       substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND date(substr(epo.delivery_date, 7, 4) || '-' ||
-                                       substr(epo.delivery_date, 4, 2) || '-' ||
-                                       substr(epo.delivery_date, 1, 2), '42 days') >=
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' ||
-                                       substr(epf.followup_visit_date, 4, 2) || '-' ||
-                                       substr(epf.followup_visit_date, 1, 2))
-                              AND efm.gender = 'Female'
-                              AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'),
-                                       '-0 months') =
-                                  date(substr(epf.followup_visit_date, 7, 4) || '-' ||
-                                       substr(epf.followup_visit_date, 4, 2) || '-' || '01'))"
+                      FROM (
+                               (SELECT DISTINCT ec.base_entity_id
+                                FROM ec_pregnancy_outcome epo
+                                         INNER JOIN ec_pnc_followup epf on epf.entity_id = epo.base_entity_id
+                                         INNER JOIN ec_child ec on ec.mother_entity_id = epo.base_entity_id
+                                         INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
+                                         INNER JOIN ec_family_member efm ON efm.base_entity_id = ec.base_entity_id
+                                WHERE epf.visit_number = 0
+                                  AND date(substr(epo.delivery_date, 7, 4) || '-' ||
+                                           substr(epo.delivery_date, 4, 2) || '-' ||
+                                           substr(epo.delivery_date, 1, 2), '+48 hours') >=
+                                      date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                           substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                           substr(epf.followup_visit_date, 1, 2))
+                                  AND efm.gender = 'Female'
+                                  AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'),
+                                           '-0 months') =
+                                      date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                           substr(epf.followup_visit_date, 4, 2) || '-' || '01')) T1
+                                   INNER JOIN (SELECT DISTINCT ec.base_entity_id
+                                               FROM ec_pregnancy_outcome epo
+                                                        INNER JOIN ec_pnc_followup epf on epf.entity_id = epo.base_entity_id
+                                                        INNER JOIN ec_child ec on ec.mother_entity_id = epo.base_entity_id
+                                                        INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
+                                                        INNER JOIN ec_family_member efm ON efm.base_entity_id = ec.base_entity_id
+                                               WHERE date(substr(epo.delivery_date, 7, 4) || '-' ||
+                                                          substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+3 days') <=
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND date(substr(epo.delivery_date, 7, 4) || '-' ||
+                                                          substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+8 days') >
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND efm.gender = 'Female'
+                                                 AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'),
+                                                          '-0 months') =
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' || '01')) T2 using (base_entity_id)
+                                   INNER JOIN (SELECT DISTINCT ec.base_entity_id
+                                               FROM ec_pregnancy_outcome epo
+                                                        INNER JOIN ec_pnc_followup epf on epf.entity_id = epo.base_entity_id
+                                                        INNER JOIN ec_child ec on ec.mother_entity_id = epo.base_entity_id
+                                                        INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
+                                                        INNER JOIN ec_family_member efm ON efm.base_entity_id = ec.base_entity_id
+                                               WHERE date(substr(epo.delivery_date, 7, 4) || '-' ||
+                                                          substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+8 days') <=
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND date(substr(epo.delivery_date, 7, 4) || '-' ||
+                                                          substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+29 days') >
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND efm.gender = 'Female'
+                                                 AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'),
+                                                          '-0 months') =
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' || '01')) T3 using (base_entity_id)
+                                   INNER JOIN (SELECT DISTINCT ec.base_entity_id
+                                               FROM ec_pregnancy_outcome epo
+                                                        INNER JOIN ec_pnc_followup epf on epf.entity_id = epo.base_entity_id
+                                                        INNER JOIN ec_child ec on ec.mother_entity_id = epo.base_entity_id
+                                                        INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
+                                                        INNER JOIN ec_family_member efm ON efm.base_entity_id = ec.base_entity_id
+                                               WHERE date(substr(epo.delivery_date, 7, 4) || '-' ||
+                                                          substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '+29 days') <=
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND date(substr(epo.delivery_date, 7, 4) || '-' ||
+                                                          substr(epo.delivery_date, 4, 2) || '-' ||
+                                                          substr(epo.delivery_date, 1, 2), '42 days') >=
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' ||
+                                                          substr(epf.followup_visit_date, 1, 2))
+                                                 AND efm.gender = 'Female'
+                                                 AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'),
+                                                          '-0 months') =
+                                                     date(substr(epf.followup_visit_date, 7, 4) || '-' ||
+                                                          substr(epf.followup_visit_date, 4, 2) || '-' || '01')) T4 using (base_entity_id)
+                               )"
     
+  
   - key: "pnc-12a-ME"
     description: "Idadi ya watoto waliopewa BCG"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2375,7 +2458,7 @@ indicators:
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
-      
+  
   - key: "pnc-12a-KE"
     description: "Idadi ya watoto waliopewa BCG"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2400,7 +2483,7 @@ indicators:
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
-      
+  
   - key: "pnc-12b-KE"
     description: "Idadi ya watoto waliopewa OPV 0"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2494,7 +2577,7 @@ indicators:
                         AND efm.gender = 'Female'
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
-      
+  
   - key: "pnc-12f-ME"
     description: "Wenye upungufu mkubwa wa damu (Hb < 10 g/dl au viganja vyeupe sana)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2507,7 +2590,7 @@ indicators:
                         AND efm.gender = 'Male'
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
-      
+  
   - key: "pnc-12f-KE"
     description: "Wenye upungufu mkubwa wa damu (Hb < 10 g/dl au viganja vyeupe sana)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2520,7 +2603,7 @@ indicators:
                         AND efm.gender = 'Female'
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
-      
+  
   - key: "pnc-13a-ME"
     description: "Watoto wenye uambukizo mkali (septicaemia)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2533,7 +2616,7 @@ indicators:
                         AND efm.gender = 'Male'
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
-      
+  
   - key: "pnc-13a-KE"
     description: "Watoto wenye uambukizo mkali (septicaemia)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2546,7 +2629,7 @@ indicators:
                         AND efm.gender = 'Female'
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
-      
+  
   - key: "pnc-13b-ME"
     description: "Watoto wenye uambukizo kwenye kitovu"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2559,7 +2642,7 @@ indicators:
                         AND efm.gender = 'Male'
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
-      
+  
   - key: "pnc-13b-KE"
     description: "Watoto wenye uambukizo kwenye kitovu"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2572,7 +2655,7 @@ indicators:
                         AND efm.gender = 'Female'
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
-      
+  
   - key: "pnc-13c-ME"
     description: "Watoto wenye uambukizo kwenye ngozi"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2585,7 +2668,7 @@ indicators:
                         AND efm.gender = 'Male'
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
-      
+  
   - key: "pnc-13c-KE"
     description: "Watoto wenye uambukizo kwenye ngozi"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2598,7 +2681,7 @@ indicators:
                         AND efm.gender = 'Female'
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
-      
+  
   - key: "pnc-13d-ME"
     description: "Idadi ya watoto wenye jaundice"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2607,11 +2690,11 @@ indicators:
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = ec.base_entity_id
                                INNER JOIN ec_pnc_followup epf on epf.entity_id = ec.mother_entity_id
                                INNER JOIN ec_pregnancy_outcome epo on epo.base_entity_id = epf.entity_id
-                      WHERE epcf.skin_infection = 'yes'
+                      WHERE epcf.jaundice = 'yes'
                         AND efm.gender = 'Male'
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
-      
+  
   - key: "pnc-13d-KE"
     description: "Idadi ya watoto wenye jaundice"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2620,11 +2703,11 @@ indicators:
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = ec.base_entity_id
                                INNER JOIN ec_pnc_followup epf on epf.entity_id = ec.mother_entity_id
                                INNER JOIN ec_pregnancy_outcome epo on epo.base_entity_id = epf.entity_id
-                      WHERE epcf.skin_infection = 'yes'
+                      WHERE epcf.jaundice = 'yes'
                         AND efm.gender = 'Female'
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
-      
+  
   - key: "pnc-14-ME"
     description: "Vifo vya watoto wachanga waliozaliwa nyumbani (perinatal); neonatal"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2638,7 +2721,7 @@ indicators:
                         AND efm.gender = 'Male'
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
                             date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
-      
+  
   - key: "pnc-14-KE"
     description: "Vifo vya watoto wachanga waliozaliwa nyumbani (perinatal); neonatal"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2652,7 +2735,7 @@ indicators:
                         AND efm.gender = 'Male'
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
                             date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
-      
+  
   - key: "pnc-15-ME"
     description: "Waliopewa dawa ya ARV"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2665,7 +2748,7 @@ indicators:
                         AND efm.gender = 'Male'
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
-      
+  
   - key: "pnc-15-KE"
     description: "Waliopewa dawa ya ARV"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2678,7 +2761,7 @@ indicators:
                         AND efm.gender = 'Female'
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
-      
+  
   - key: "pnc-16a-ME"
     description: "Watoto wachanga wanaonyonya maziwa ya mama pekee (EBF)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2701,7 +2784,7 @@ indicators:
                         AND efm.gender = 'Female'
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
-      
+  
   - key: "pnc-16b-ME"
     description: "Watoto wachanga wanaonyweshwa maziwa mbadala (RF)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2724,7 +2807,7 @@ indicators:
                         AND efm.gender = 'Female'
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
-      
+  
   - key: "pnc-16c-ME"
     description: "Watoto wachanga wanaonyweshwa maziwa ya mama na kupatiwa chakula kingine (MF)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2736,7 +2819,7 @@ indicators:
                         AND efm.gender = 'Male'
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
-    
+  
   - key: "pnc-16c-KE"
     description: "Watoto wachanga wanaonyweshwa maziwa ya mama na kupatiwa chakula kingine (MF)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count

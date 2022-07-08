@@ -13,7 +13,7 @@ import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.core.utils.FormUtils;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.utils.Constants;
-import org.smartregister.chw.hf.utils.LDDao;
+import org.smartregister.chw.hf.dao.LDDao;
 import org.smartregister.chw.ld.domain.MemberObject;
 import org.smartregister.chw.ld.domain.VisitDetail;
 import org.smartregister.chw.ld.model.BaseLDVisitAction;

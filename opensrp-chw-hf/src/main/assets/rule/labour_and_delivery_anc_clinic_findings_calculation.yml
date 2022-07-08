@@ -1,0 +1,7 @@
+---
+name: step1_hiv
+description: hiv status calculated
+priority: 1
+condition: "true"
+actions:
+  - "calculation = step1_anc_hiv_status"

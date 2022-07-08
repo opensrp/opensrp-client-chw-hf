@@ -11,7 +11,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.hf.utils.Constants;
-import org.smartregister.chw.hf.utils.LDDao;
+import org.smartregister.chw.hf.dao.LDDao;
 import org.smartregister.chw.ld.contract.LDRegisterContract;
 import org.smartregister.chw.ld.presenter.BaseLDRegisterPresenter;
 import org.smartregister.chw.referral.util.JsonFormConstants;

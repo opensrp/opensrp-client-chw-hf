@@ -4,7 +4,8 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
-                      WHERE gest_age < 12
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.gest_age < 12 AND eaf.visit_number = 1
                         AND (date(fm.dob, '+10 years') <= date('now'))
                         AND (date(fm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -15,7 +16,8 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
-                      WHERE gest_age >= 12
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.gest_age >= 12 AND eaf.visit_number = 1
                         AND (date(fm.dob, '+10 years') <= date('now'))
                         AND (date(fm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -276,7 +278,8 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
-                      WHERE gest_age < 12
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.gest_age < 12 AND eaf.visit_number = 1
                         AND (date(fm.dob, '+15 years') <= date('now'))
                         AND (date(fm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -396,7 +399,6 @@ indicators:
                                INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
                       WHERE CAST(eaf.systolic AS INTEGER) > 140
                         AND CAST(eaf.diastolic AS INTEGER) > 90
-                        AND eaf.visit_number = 1
                         AND (date(fm.dob, '+15 years') <= date('now'))
                         AND (date(fm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -547,7 +549,8 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
-                      WHERE gest_age < 12
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.gest_age < 12 AND eaf.visit_number = 1
                         AND (date(fm.dob, '+20 years') <= date('now'))
                         AND (date(fm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -558,7 +561,8 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
-                      WHERE gest_age >= 12
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.gest_age >= 12 AND eaf.visit_number = 1
                         AND (date(fm.dob, '+20 years') <= date('now'))
                         AND (date(fm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -653,7 +657,6 @@ indicators:
                                INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
                       WHERE CAST(eaf.systolic AS INTEGER) > 140
                         AND CAST(eaf.diastolic AS INTEGER) > 90
-                        AND eaf.visit_number = 1
                         AND (date(fm.dob, '+20 years') <= date('now'))
                         AND (date(fm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -805,7 +808,8 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
-                      WHERE gest_age < 12
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.gest_age < 12 AND eaf.visit_number = 1
                         AND (date(fm.dob, '+25 years') <= date('now'))
                         AND (date(fm.dob, '+30 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -816,7 +820,8 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
-                      WHERE gest_age >= 12
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.gest_age >= 12 AND eaf.visit_number = 1
                         AND (date(fm.dob, '+25 years') <= date('now'))
                         AND (date(fm.dob, '+29 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -912,7 +917,6 @@ indicators:
                                INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
                       WHERE CAST(eaf.systolic AS INTEGER) > 140
                         AND CAST(eaf.diastolic AS INTEGER) > 90
-                        AND eaf.visit_number = 1
                         AND (date(fm.dob, '+25 years') <= date('now'))
                         AND (date(fm.dob, '+30 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -1048,7 +1052,8 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
-                      WHERE gest_age < 12
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.gest_age < 12 AND eaf.visit_number = 1
                         AND (date(fm.dob, '+30 years') <= date('now'))
                         AND (date(fm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -1059,7 +1064,8 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
-                      WHERE gest_age >= 12
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.gest_age >= 12 AND eaf.visit_number = 1
                         AND (date(fm.dob, '+30 years') <= date('now'))
                         AND (date(fm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -1151,7 +1157,6 @@ indicators:
                                INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
                       WHERE CAST(eaf.systolic AS INTEGER) > 140
                         AND CAST(eaf.diastolic AS INTEGER) > 90
-                        AND eaf.visit_number = 1
                         AND (date(fm.dob, '+30 years') <= date('now'))
                         AND (date(fm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -1287,7 +1292,8 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
-                      WHERE gest_age < 12
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.gest_age < 12 AND eaf.visit_number = 1
                         AND (date(fm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(ear.confirmation_date, 7, 4) || '-' || substr(ear.confirmation_date, 4, 2) || '-' || '01')"
@@ -1298,7 +1304,8 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
-                      WHERE gest_age >= 12
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.gest_age >= 12 AND eaf.visit_number = 1
                         AND (date(fm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(ear.confirmation_date, 7, 4) || '-' || substr(ear.confirmation_date, 4, 2) || '-' || '01')"
@@ -1399,7 +1406,6 @@ indicators:
                                INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
                       WHERE CAST(eaf.systolic AS INTEGER) > 140
                         AND CAST(eaf.diastolic AS INTEGER) > 90
-                        AND eaf.visit_number = 1
                         AND (date(fm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
@@ -1542,7 +1548,6 @@ indicators:
                              INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
                              INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
                     WHERE (ear.tt_vaccination_type LIKE '%tt2%' OR ear.tt_vaccination_type LIKE '%tt3%' OR ear.tt_vaccination_type LIKE '%tt4%' OR ear.tt_vaccination_type LIKE '%tt5%')
-                      AND medical_surgical_history LIKE '%pregnant_more_than_four%'
                       AND (date(fm.dob, '+15 years') <= date('now'))
                       AND (date(fm.dob, '+20 years') > date('now'))
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -1558,7 +1563,6 @@ indicators:
                              INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
                              INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
                     WHERE (ear.tt_vaccination_type LIKE '%tt2%' OR ear.tt_vaccination_type LIKE '%tt3%' OR ear.tt_vaccination_type LIKE '%tt4%' OR ear.tt_vaccination_type LIKE '%tt5%')
-                      AND medical_surgical_history LIKE '%pregnant_more_than_four%'
                       AND (date(fm.dob, '+20 years') <= date('now'))
                       AND (date(fm.dob, '+25 years') > date('now'))
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -1574,7 +1578,6 @@ indicators:
                              INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
                              INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
                     WHERE (ear.tt_vaccination_type LIKE '%tt2%' OR ear.tt_vaccination_type LIKE '%tt3%' OR ear.tt_vaccination_type LIKE '%tt4%' OR ear.tt_vaccination_type LIKE '%tt5%')
-                      AND medical_surgical_history LIKE '%pregnant_more_than_four%'
                       AND (date(fm.dob, '+25 years') <= date('now'))
                       AND (date(fm.dob, '+30 years') > date('now'))
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -1590,7 +1593,6 @@ indicators:
                              INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
                              INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
                     WHERE (ear.tt_vaccination_type LIKE '%tt2%' OR ear.tt_vaccination_type LIKE '%tt3%' OR ear.tt_vaccination_type LIKE '%tt4%' OR ear.tt_vaccination_type LIKE '%tt5%')
-                      AND medical_surgical_history LIKE '%pregnant_more_than_four%'
                       AND (date(fm.dob, '+30 years') <= date('now'))
                       AND (date(fm.dob, '+35 years') > date('now'))
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -1606,7 +1608,6 @@ indicators:
                              INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
                              INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
                     WHERE (ear.tt_vaccination_type LIKE '%tt2%' OR ear.tt_vaccination_type LIKE '%tt3%' OR ear.tt_vaccination_type LIKE '%tt4%' OR ear.tt_vaccination_type LIKE '%tt5%')
-                      AND medical_surgical_history LIKE '%pregnant_more_than_four%'
                       AND (date(fm.dob, '+35 years') <= date('now'))
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                           date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
@@ -3466,6 +3467,94 @@ indicators:
                                      '-' ||
                                      substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
                                      '-' || '01')"
+  
+  - key: "6a-10-14"
+    description: "Waliopewa LLIN"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.llin_provision = 'yes'
+                        AND (date(fm.dob, '+10 years') <= date('now'))
+                        AND (date(fm.dob, '+15 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+  - key: "6a-15-19"
+    description: "Waliopewa LLIN"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.llin_provision = 'yes'
+                        AND (date(fm.dob, '+15 years') <= date('now'))
+                        AND (date(fm.dob, '+20 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+  
+  - key: "6a-20-24"
+    description: "Waliopewa LLIN"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.llin_provision = 'yes'
+                        AND (date(fm.dob, '+20 years') <= date('now'))
+                        AND (date(fm.dob, '+25 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+  
+  - key: "6a-25-29"
+    description: "Waliopewa LLIN"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.llin_provision = 'yes'
+                        AND (date(fm.dob, '+25 years') <= date('now'))
+                        AND (date(fm.dob, '+30 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+  
+  - key: "6a-30-34"
+    description: "Waliopewa LLIN"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.llin_provision = 'yes'
+                        AND (date(fm.dob, '+30 years') <= date('now'))
+                        AND (date(fm.dob, '+35 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+  
+  - key: "6a-35+"
+    description: "Waliopewa LLIN"
+    indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
+                      FROM ec_anc_register ear
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
+                               INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
+                      WHERE eaf.llin_provision = 'yes'
+                        AND (date(fm.dob, '+35 years') <= date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
   
   - key: "6b-10-14"
     description: "Waliopimwa Malaria kutumia mRDT/BS"

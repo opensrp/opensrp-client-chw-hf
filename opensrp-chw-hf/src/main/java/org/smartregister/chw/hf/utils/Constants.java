@@ -542,6 +542,7 @@ public class Constants extends CoreConstants {
             public static final String LD_POST_DELIVERY_MOTHER_OBSERVATION = "labour_and_delivery_mother_observation";
             public static final String LD_POST_DELIVERY_MATERNAL_COMPLICATIONS = "labour_and_delivery_maternal_complications";
             public static final String LD_NEW_BORN_STATUS = "labour_and_delivery_stage4_newborn";
+            public static final String LD_POST_DELIVERY_FAMILY_PLANNING = "labour_and_delivery_stage4_family_planning";
 
             public static String getLdPostDeliveryManagementMotherStatus() {
                 return Utils.getLocalForm(LD_POST_DELIVERY_MANAGEMENT_MOTHER_STATUS);
@@ -557,6 +558,10 @@ public class Constants extends CoreConstants {
 
             public static String getLdNewBornStatus() {
                 return Utils.getLocalForm(LD_NEW_BORN_STATUS);
+            }
+
+            public static String getLdPostDeliveryFamilyPlanning() {
+                return Utils.getLocalForm(LD_POST_DELIVERY_FAMILY_PLANNING);
             }
 
         }
@@ -651,4 +656,20 @@ public class Constants extends CoreConstants {
         public static final String FIRST_NAME = "firstName";
         public static final String LAST_NAME = "lastName";
     }
+
+    public static final class LDFormFields {
+        public interface GeneralExamination {
+
+        }
+        public interface VaginalExamination {
+            String VAGINAL_EXAMINATION_DATE = "vaginal_exam_date";
+            String VAGINAL_EXAMINATION_TIME = "vaginal_exam_time";
+            String PRESENTING_PART = "presenting_part";
+            String OCCIPUT_POSITION = "occiput_position";
+            String MENTO_POSITION = "mento_position";
+            String SACRO_POSITION = "sacro_position";
+            String DORSO_POSITION = "dorso_position";
+        }
+    }
+
 }
