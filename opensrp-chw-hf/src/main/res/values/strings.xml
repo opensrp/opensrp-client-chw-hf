@@ -315,6 +315,7 @@
     <string name="ld_expulsion_of_placenta">Expulsion of the placenta and membranes</string>
     <string name="ld_placent_retained_message">Placenta Retained</string>
     <string name="ld_placent_completely_removed_message">Complete Expulsion of Placenta</string>
+    <string name="ld_placent_incompletely_removed_message">Incomplete Expulsion of Placenta</string>
     <string name="ld_no_uterus_massage">The woman did not receive uterus massage</string>
     <string name="ld_mother_post_delivery_management">Immediate Postpartum Care</string>
     <string name="ld_yes_uterus_massage">The woman received uterus massage</string>
