@@ -148,6 +148,7 @@ public class LDActiveManagementStageActivityInteractor extends BaseLDVisitIntera
 
         private String placenta_and_membrane_expulsion;
         private Context context;
+        private String estimated_blood_loss;
 
         @Override
         public void onJsonFormLoaded(String jsonString, Context context, Map<String, List<VisitDetail>> details) {
@@ -162,6 +163,7 @@ public class LDActiveManagementStageActivityInteractor extends BaseLDVisitIntera
         @Override
         public void onPayloadReceived(String jsonPayload) {
             placenta_and_membrane_expulsion = JsonFormUtils.getFieldValue(jsonPayload, "placenta_and_membrane_expulsion");
+            estimated_blood_loss = JsonFormUtils.getFieldValue(jsonPayload, "estimated_blood_loss");
         }
 
         @Override
@@ -182,8 +184,10 @@ public class LDActiveManagementStageActivityInteractor extends BaseLDVisitIntera
         @Override
         public String evaluateSubTitle() {
             if (StringUtils.isNotBlank(placenta_and_membrane_expulsion)) {
-                if (placenta_and_membrane_expulsion.equalsIgnoreCase("retained_placenta")) {
-                    return context.getString(R.string.ld_placent_retained_message);
+                if (placenta_and_membrane_expulsion.equalsIgnoreCase("complete_placenta")) {
+                    return context.getString(R.string.ld_placent_completely_removed_message);
+                } else {
+                    return context.getString(R.string.ld_placent_incompletely_removed_message);
                 }
             }
             return null;
@@ -191,12 +195,10 @@ public class LDActiveManagementStageActivityInteractor extends BaseLDVisitIntera
 
         @Override
         public BaseLDVisitAction.Status evaluateStatusOnPayload() {
-            if (StringUtils.isNotBlank(placenta_and_membrane_expulsion)) {
-                if (placenta_and_membrane_expulsion.equalsIgnoreCase("complete_placenta")) {
-                    return BaseLDVisitAction.Status.COMPLETED;
-                } else {
-                    return BaseLDVisitAction.Status.PARTIALLY_COMPLETED;
-                }
+            if (StringUtils.isNotBlank(placenta_and_membrane_expulsion) && StringUtils.isNotBlank(estimated_blood_loss)) {
+                return BaseLDVisitAction.Status.COMPLETED;
+            } else if (StringUtils.isBlank(estimated_blood_loss)) {
+                return BaseLDVisitAction.Status.PARTIALLY_COMPLETED;
             } else {
                 return BaseLDVisitAction.Status.PENDING;
             }

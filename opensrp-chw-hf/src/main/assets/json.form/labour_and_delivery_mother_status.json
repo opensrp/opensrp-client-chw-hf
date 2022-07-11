@@ -123,10 +123,10 @@
           "Traditional birth attendant (TBA)"
         ],
         "keys": [
-          "At a health facility",
-          "Birth before Arrival (BBA)",
-          "At home",
-          "Traditional birth attendant"
+          "at_a_health_facility",
+          "bba",
+          "at_home",
+          "tba"
         ],
         "openmrs_choice_ids": {
           "At a health facility": "At a health facility",

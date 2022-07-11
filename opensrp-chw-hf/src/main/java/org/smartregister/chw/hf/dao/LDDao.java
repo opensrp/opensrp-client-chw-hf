@@ -1,4 +1,4 @@
-package org.smartregister.chw.hf.utils;
+package org.smartregister.chw.hf.dao;
 
 import org.smartregister.chw.ld.domain.MemberObject;
 import org.smartregister.chw.ld.util.Constants;
@@ -110,6 +110,28 @@ public class LDDao extends org.smartregister.chw.ld.dao.LDDao {
         String sql = "SELECT admission_time FROM " + Constants.TABLES.LD_CONFIRMATION + " WHERE base_entity_id = '" + baseEntityId + "'";
 
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "admission_time");
+
+        List<String> res = readData(sql, dataMap);
+        if (res != null && res.size() > 0)
+            return res.get(0);
+        return null;
+    }
+
+    public static String getPmtctTestDate(String baseEntityId) {
+        String sql = "SELECT pmtct_test_date FROM " + Constants.TABLES.LD_CONFIRMATION + " WHERE base_entity_id = '" + baseEntityId + "'";
+
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "pmtct_test_date");
+
+        List<String> res = readData(sql, dataMap);
+        if (res != null && res.size() > 0)
+            return res.get(0);
+        return null;
+    }
+
+    public static String getHbTestDate(String baseEntityId) {
+        String sql = "SELECT hb_test_date FROM " + Constants.TABLES.LD_CONFIRMATION + " WHERE base_entity_id = '" + baseEntityId + "'";
+
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "hb_test_date");
 
         List<String> res = readData(sql, dataMap);
         if (res != null && res.size() > 0)
