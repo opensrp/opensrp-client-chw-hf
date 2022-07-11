@@ -19,7 +19,9 @@ import org.joda.time.DateTime;
 import org.joda.time.Period;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.interactor.LDPostDeliveryManagementMotherActivityInteractor;
+import org.smartregister.chw.hf.utils.LDReferralFormUtils;
 import org.smartregister.chw.hf.utils.LDVisitUtils;
+import org.smartregister.chw.hf.utils.LFTUFormUtils;
 import org.smartregister.chw.ld.LDLibrary;
 import org.smartregister.chw.ld.activity.BaseLDProfileActivity;
 import org.smartregister.chw.ld.dao.LDDao;
@@ -290,6 +292,10 @@ public class LDProfileActivity extends BaseLDProfileActivity {
         try {
             if (itemId == R.id.action_mode_of_delivery) {
                 startLDForm(this, memberObject.getBaseEntityId(), getLabourAndDeliveryModeOfDelivery());
+                return true;
+            }
+            if (itemId == R.id.action_ld_emergency_referral) {
+                LDReferralFormUtils.startLDEmergencyReferral(this, memberObject.getBaseEntityId());
                 return true;
             }
         } catch (Exception e) {

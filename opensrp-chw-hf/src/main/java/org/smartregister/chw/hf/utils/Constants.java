@@ -30,6 +30,7 @@ public class Constants extends CoreConstants {
 
     public static final class FOCUS {
         public static final String LOST_TO_FOLLOWUP_FOCUS = "LTFU";
+        public static final String LD_EMERGENCY = "L&D Emergency";
     }
 
     public static final class Events {
@@ -139,6 +140,7 @@ public class Constants extends CoreConstants {
         private static final String LD_CHILD_REGISTRATION = "ld_child_registration";
         private static final String LD_HEI_FIRST_VISIT = "ld_hei_first_visit";
         private static final String LTFU_REFERRAL_FORM = "referrals/ltfu_referral_form";
+        private static final String LD_EMERGENCY_REFERRAL_FORM = "referrals/labour_and_delivery_emergency_referral";
 
         public static String getNextFacilityVisitForm() {
             return NEXT_FACILITY_VISIT_FORM;
@@ -150,6 +152,10 @@ public class Constants extends CoreConstants {
 
         public static String getLtfuReferralForm() {
             return LTFU_REFERRAL_FORM;
+        }
+
+        public static String getLdEmergencyReferralForm() {
+            return LD_EMERGENCY_REFERRAL_FORM;
         }
 
         public static String getHeiNumberRegistration() {

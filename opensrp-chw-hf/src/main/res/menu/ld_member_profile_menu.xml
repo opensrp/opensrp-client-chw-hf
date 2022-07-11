@@ -14,4 +14,10 @@
         android:title="@string/ld_mode_of_delivery"
         app:showAsAction="never" />
 
+    <item
+        android:id="@+id/action_ld_emergency_referral"
+        android:enabled="true"
+        android:title="@string/ld_emergency_referral"
+        app:showAsAction="never" />
+
 </menu>
