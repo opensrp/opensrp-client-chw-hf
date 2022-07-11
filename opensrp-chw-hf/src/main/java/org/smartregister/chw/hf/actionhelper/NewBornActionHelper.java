@@ -30,7 +30,7 @@ import timber.log.Timber;
  */
 public class NewBornActionHelper implements BaseLDVisitAction.LDVisitActionHelper {
 
-    private String baseEntityId;
+    private final String baseEntityId;
     private Context context;
     private String deliveryDate;
     private String deliveryTime;
@@ -40,8 +40,6 @@ public class NewBornActionHelper implements BaseLDVisitAction.LDVisitActionHelpe
 
     private String newbornStatus;
     private String still_birth_choice;
-    private String child_delivery_date;
-    private String child_delivery_time;
     private String sex;
     private String apgar_activity_score_at_1_minute;
     private String apgar_pulse_score_at_1_minute;
@@ -58,19 +56,12 @@ public class NewBornActionHelper implements BaseLDVisitAction.LDVisitActionHelpe
     private String weight;
     private String heart_rate;
     private String keep_warm;
-    private String reasons_for_not_keeping_the_baby_warm_skin_to_skin_for_low_apgar_score;
-    private String reasons_for_not_keeping_the_baby_warm_skin_to_skin_for_normal_apgar_score;
-    private String other_reason_for_not_keeping_the_baby_warm_skin_to_skin;
     private String respiratory_rate;
     private String cord_bleeding;
     private String early_bf_1hr;
     private String reason_for_not_breast_feeding_within_one_hour;
-    private String other_reason_for_not_breast_feeding_within_one_hour;
     private String eye_care;
-    private String reason_for_not_giving_eye_care;
-    private String other_reason_for_not_giving_eye_care;
     private String child_bcg_vaccination;
-    private String reason_for_not_providing_bcg_vacc;
     private String child_opv0_vaccination;
     private String risk_category;
     private String provided_azt_nvp_syrup;
@@ -78,7 +69,6 @@ public class NewBornActionHelper implements BaseLDVisitAction.LDVisitActionHelpe
     private String specify_the_combinations;
     private String number_of_azt_nvp_days_dispensed;
     private String reason_for_not_providing_other_combination;
-    private String other_reason_for_not_providing_other_combination;
     private String collect_dbs;
     private String reason_not_collecting_dbs;
     private String sample_collection_date;
@@ -212,8 +202,6 @@ public class NewBornActionHelper implements BaseLDVisitAction.LDVisitActionHelpe
     public void onPayloadReceived(String jsonPayload) {
         newbornStatus = JsonFormUtils.getFieldValue(jsonPayload, "newborn_status");
         still_birth_choice = JsonFormUtils.getFieldValue(jsonPayload, "still_birth_choice");
-        child_delivery_date = JsonFormUtils.getFieldValue(jsonPayload, "child_delivery_date");
-        child_delivery_time = JsonFormUtils.getFieldValue(jsonPayload, "child_delivery_time");
         sex = JsonFormUtils.getFieldValue(jsonPayload, "sex");
         apgar_activity_score_at_1_minute = JsonFormUtils.getFieldValue(jsonPayload, "apgar_activity_score_at_1_minute");
         apgar_pulse_score_at_1_minute = JsonFormUtils.getFieldValue(jsonPayload, "apgar_pulse_score_at_1_minute");
@@ -230,19 +218,12 @@ public class NewBornActionHelper implements BaseLDVisitAction.LDVisitActionHelpe
         weight = JsonFormUtils.getFieldValue(jsonPayload, "weight");
         heart_rate = JsonFormUtils.getFieldValue(jsonPayload, "heart_rate");
         keep_warm = JsonFormUtils.getFieldValue(jsonPayload, "keep_warm");
-        reasons_for_not_keeping_the_baby_warm_skin_to_skin_for_low_apgar_score = JsonFormUtils.getFieldValue(jsonPayload, "reasons_for_not_keeping_the_baby_warm_skin_to_skin_for_low_apgar_score");
-        reasons_for_not_keeping_the_baby_warm_skin_to_skin_for_normal_apgar_score = JsonFormUtils.getFieldValue(jsonPayload, "reasons_for_not_keeping_the_baby_warm_skin_to_skin_for_normal_apgar_score");
-        other_reason_for_not_keeping_the_baby_warm_skin_to_skin = JsonFormUtils.getFieldValue(jsonPayload, "other_reason_for_not_keeping_the_baby_warm_skin_to_skin");
         respiratory_rate = JsonFormUtils.getFieldValue(jsonPayload, "respiratory_rate");
         cord_bleeding = JsonFormUtils.getFieldValue(jsonPayload, "cord_bleeding");
         early_bf_1hr = JsonFormUtils.getFieldValue(jsonPayload, "early_bf_1hr");
         reason_for_not_breast_feeding_within_one_hour = JsonFormUtils.getFieldValue(jsonPayload, "reason_for_not_breast_feeding_within_one_hour");
-        other_reason_for_not_breast_feeding_within_one_hour = JsonFormUtils.getFieldValue(jsonPayload, "other_reason_for_not_breast_feeding_within_one_hour");
         eye_care = JsonFormUtils.getFieldValue(jsonPayload, "eye_care");
-        reason_for_not_giving_eye_care = JsonFormUtils.getFieldValue(jsonPayload, "reason_for_not_giving_eye_care");
-        other_reason_for_not_giving_eye_care = JsonFormUtils.getFieldValue(jsonPayload, "other_reason_for_not_giving_eye_care");
         child_bcg_vaccination = JsonFormUtils.getFieldValue(jsonPayload, "child_bcg_vaccination");
-        reason_for_not_providing_bcg_vacc = JsonFormUtils.getFieldValue(jsonPayload, "reason_for_not_providing_bcg_vacc");
         child_opv0_vaccination = JsonFormUtils.getFieldValue(jsonPayload, "child_opv0_vaccination");
         risk_category = JsonFormUtils.getFieldValue(jsonPayload, "risk_category");
         provided_azt_nvp_syrup = JsonFormUtils.getFieldValue(jsonPayload, "provided_azt_nvp_syrup");
@@ -250,7 +231,6 @@ public class NewBornActionHelper implements BaseLDVisitAction.LDVisitActionHelpe
         specify_the_combinations = JsonFormUtils.getFieldValue(jsonPayload, "specify_the_combinations");
         number_of_azt_nvp_days_dispensed = JsonFormUtils.getFieldValue(jsonPayload, "number_of_azt_nvp_days_dispensed");
         reason_for_not_providing_other_combination = JsonFormUtils.getFieldValue(jsonPayload, "reason_for_not_providing_other_combination");
-        other_reason_for_not_providing_other_combination = JsonFormUtils.getFieldValue(jsonPayload, "other_reason_for_not_providing_other_combination");
         collect_dbs = JsonFormUtils.getFieldValue(jsonPayload, "collect_dbs");
         reason_not_collecting_dbs = JsonFormUtils.getFieldValue(jsonPayload, "reason_not_collecting_dbs");
         sample_collection_date = JsonFormUtils.getFieldValue(jsonPayload, "sample_collection_date");

@@ -8,6 +8,7 @@ import android.content.Context;
 
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.anc.util.AppExecutors;
 import org.smartregister.chw.hf.R;
@@ -21,6 +22,7 @@ import org.smartregister.chw.ld.model.BaseLDVisitAction;
 import org.smartregister.util.JsonFormUtils;
 
 import java.text.MessageFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
@@ -114,49 +116,7 @@ public class MotherStatusActionHelper implements BaseLDVisitAction.LDVisitAction
             assert mother_status_module_status != null;
             mother_status_module_status.remove(com.vijay.jsonwizard.constants.JsonFormConstants.VALUE);
             mother_status_module_status.put(com.vijay.jsonwizard.constants.JsonFormConstants.VALUE, completionStatus);
-
-            String deliveryDate = JsonFormUtils.getFieldValue(jsonPayload, "delivery_date");
-            String deliveryTime = JsonFormUtils.getFieldValue(jsonPayload, "delivery_time");
-            String labourOnsetDate;
-            String labourOnsetTime;
-            if (LDDao.getLabourOnsetDate(baseEntityId) != null && LDDao.getLabourOnsetTime(baseEntityId) != null) {
-                labourOnsetDate = LDDao.getLabourOnsetDate(baseEntityId);
-                labourOnsetTime = LDDao.getLabourOnsetTime(baseEntityId);
-            } else {
-                labourOnsetDate = LDDao.getAdmissionDate(baseEntityId);
-                labourOnsetTime = LDDao.getAdmissionTime(baseEntityId);
-            }
-
-            // Add a check here if delivery date is not yet filled
-            if (StringUtils.isNotBlank(deliveryDate) && StringUtils.isNotBlank(deliveryTime)) {
-
-                String labourOnsetDateTime = labourOnsetDate + " " + labourOnsetTime;
-                String deliveryDateTime = deliveryDate + " " + deliveryTime;
-
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault());
-
-                Date date1 = simpleDateFormat.parse(labourOnsetDateTime);
-                Date date2 = simpleDateFormat.parse(deliveryDateTime);
-
-                long msDiff = date2.getTime() - date1.getTime();
-
-                for (int i = 0; i < fields.length(); i++) {
-                    if (fields.getJSONObject(i).getString(KEY).equalsIgnoreCase("labour_duration")) {
-                        fields.getJSONObject(i).put(VALUE, msDiff);
-                    }
-                }
-            }
-
-        } catch (Exception e) {
-            Timber.e(e);
-        }
-
-        try {
-            // ConcurrentModificationException Fix
-                /*for (Map.Entry<String, BaseLDVisitAction> entry : actionList.entrySet()) {
-                    if (entry.getKey().contains(MessageFormat.format(context.getString(R.string.ld_new_born_status_action_title), "")))
-                        actionList.remove(entry.getKey());
-                }*/
+            updateDeliveryDuration(jsonPayload, fields);
 
             Iterator<Map.Entry<String, BaseLDVisitAction>> itr = actionList.entrySet().iterator();
             while (itr.hasNext()) {
@@ -170,45 +130,8 @@ public class MotherStatusActionHelper implements BaseLDVisitAction.LDVisitAction
             Timber.e(e);
         }
 
-
         if (numberOfChildrenBorn > 0) {
-
-            for (int i = 0; i < numberOfChildrenBorn; i++) {
-                // Get visit details for each individual child
-                if (isEdit) {
-                    Visit lastVisit = LDLibrary.getInstance().visitRepository().getLatestVisit(baseEntityId, "LND " + ordinal(i + 1) + " Newborn");
-
-                    if (lastVisit != null) {
-                        details = org.smartregister.chw.ld.util.VisitUtils.getVisitGroups(LDLibrary.getInstance().visitDetailsRepository().getVisits(lastVisit.getVisitId()));
-                    }
-                }
-
-                String title;
-                if (numberOfChildrenBorn == 1) {
-                    title = MessageFormat.format(context.getString(R.string.ld_new_born_status_action_title), "");
-                } else {
-                    title = MessageFormat.format(context.getString(R.string.ld_new_born_status_action_title), "of " + ordinal(i + 1) + " baby");
-                }
-                NewBornActionHelper actionHelper = new NewBornActionHelper(baseEntityId, delivery_date, delivery_time, numberOfChildrenBorn, status, ordinal(i + 1));
-                BaseLDVisitAction action = null;
-                try {
-                    action = new BaseLDVisitAction.Builder(context, title)
-                            .withOptional(false)
-                            .withHelper(actionHelper)
-                            .withDetails(details)
-                            .withBaseEntityID(baseEntityId)
-                            .withProcessingMode(BaseLDVisitAction.ProcessingMode.SEPARATE)
-                            .withFormName(Constants.JsonForm.LDPostDeliveryMotherManagement.getLdNewBornStatus())
-                            .build();
-
-                    actionList.put(title, action);
-                } catch (BaseLDVisitAction.ValidationException e) {
-                    Timber.e(e);
-                }
-            }
-
-            //Calling the callback method to preload the actions in the actionns list.
-            new AppExecutors().mainThread().execute(() -> callBack.preloadActions(actionList));
+            startActionForChild();
         }
         return jsonObject.toString();
 
@@ -280,5 +203,78 @@ public class MotherStatusActionHelper implements BaseLDVisitAction.LDVisitAction
             }
         }
         return partialCompletion;
+    }
+
+    private void updateDeliveryDuration(String jsonPayload, JSONArray fields) throws ParseException, JSONException {
+        String deliveryDate = JsonFormUtils.getFieldValue(jsonPayload, "delivery_date");
+        String deliveryTime = JsonFormUtils.getFieldValue(jsonPayload, "delivery_time");
+        String labourOnsetDate;
+        String labourOnsetTime;
+        if (LDDao.getLabourOnsetDate(baseEntityId) != null && LDDao.getLabourOnsetTime(baseEntityId) != null) {
+            labourOnsetDate = LDDao.getLabourOnsetDate(baseEntityId);
+            labourOnsetTime = LDDao.getLabourOnsetTime(baseEntityId);
+        } else {
+            labourOnsetDate = LDDao.getAdmissionDate(baseEntityId);
+            labourOnsetTime = LDDao.getAdmissionTime(baseEntityId);
+        }
+
+        // Add a check here if delivery date is not yet filled
+        if (StringUtils.isNotBlank(deliveryDate) && StringUtils.isNotBlank(deliveryTime)) {
+
+            String labourOnsetDateTime = labourOnsetDate + " " + labourOnsetTime;
+            String deliveryDateTime = deliveryDate + " " + deliveryTime;
+
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault());
+
+            Date date1 = simpleDateFormat.parse(labourOnsetDateTime);
+            Date date2 = simpleDateFormat.parse(deliveryDateTime);
+
+            long msDiff = date2.getTime() - date1.getTime();
+
+            for (int i = 0; i < fields.length(); i++) {
+                if (fields.getJSONObject(i).getString(KEY).equalsIgnoreCase("labour_duration")) {
+                    fields.getJSONObject(i).put(VALUE, msDiff);
+                }
+            }
+        }
+    }
+
+    private void startActionForChild() {
+        for (int i = 0; i < numberOfChildrenBorn; i++) {
+            // Get visit details for each individual child
+            if (isEdit) {
+                Visit lastVisit = LDLibrary.getInstance().visitRepository().getLatestVisit(baseEntityId, "LND " + ordinal(i + 1) + " Newborn");
+
+                if (lastVisit != null) {
+                    details = org.smartregister.chw.ld.util.VisitUtils.getVisitGroups(LDLibrary.getInstance().visitDetailsRepository().getVisits(lastVisit.getVisitId()));
+                }
+            }
+
+            String title;
+            if (numberOfChildrenBorn == 1) {
+                title = MessageFormat.format(context.getString(R.string.ld_new_born_status_action_title), "");
+            } else {
+                title = MessageFormat.format(context.getString(R.string.ld_new_born_status_action_title), "of " + ordinal(i + 1) + " baby");
+            }
+            NewBornActionHelper actionHelper = new NewBornActionHelper(baseEntityId, delivery_date, delivery_time, numberOfChildrenBorn, status, ordinal(i + 1));
+            BaseLDVisitAction action = null;
+            try {
+                action = new BaseLDVisitAction.Builder(context, title)
+                        .withOptional(false)
+                        .withHelper(actionHelper)
+                        .withDetails(details)
+                        .withBaseEntityID(baseEntityId)
+                        .withProcessingMode(BaseLDVisitAction.ProcessingMode.SEPARATE)
+                        .withFormName(Constants.JsonForm.LDPostDeliveryMotherManagement.getLdNewBornStatus())
+                        .build();
+
+                actionList.put(title, action);
+            } catch (BaseLDVisitAction.ValidationException e) {
+                Timber.e(e);
+            }
+        }
+
+        //Calling the callback method to preload the actions in the actionns list.
+        new AppExecutors().mainThread().execute(() -> callBack.preloadActions(actionList));
     }
 }

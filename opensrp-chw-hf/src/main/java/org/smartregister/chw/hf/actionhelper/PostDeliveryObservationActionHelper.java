@@ -37,7 +37,6 @@ public class PostDeliveryObservationActionHelper implements BaseLDVisitAction.LD
     private String observation_time;
     private String completionStatus;
     private Context context;
-    private Map<String, List<VisitDetail>> details;
     private String jsonString;
 
     @Override

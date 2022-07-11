@@ -25,13 +25,11 @@ public class MaternalComplicationLabourActionHelper implements BaseLDVisitAction
     private String maternal_complications_before_delivery;
     private String maternal_complications_during_and_after_delivery;
     private String completionStatus;
-    private String jsonString;
     private Context context;
 
     @Override
     public void onJsonFormLoaded(String jsonString, Context context, Map<String, List<VisitDetail>> details) {
         this.context = context;
-        this.jsonString = jsonString;
     }
 
     @Override
