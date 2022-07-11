@@ -151,7 +151,7 @@ public class LTFUReferralsDetailsViewActivity extends ReferralDetailsViewActivit
             feedBackFollowupStatus.setText(getTranslatedFollowupStatus(followupStatus,this));
         }
 
-        if (followupStatus != null && followupStatus.equalsIgnoreCase("continuing_with_services")) {
+        if (followupStatus != null && followupStatus.equalsIgnoreCase("client_found_ready_to_return")) {
             feedBackReasonsLayout.setVisibility(View.VISIBLE);
             String reasons = LTFUFeedbackDao.getReasonsForMissedAppointment(task.getIdentifier());
             if(reasons!=null){
