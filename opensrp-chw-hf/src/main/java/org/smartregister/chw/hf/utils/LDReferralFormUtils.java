@@ -1,16 +1,13 @@
 package org.smartregister.chw.hf.utils;
 
 import android.app.Activity;
-import android.os.Build;
-
-import androidx.annotation.RequiresApi;
 
 import com.vijay.jsonwizard.utils.FormUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.smartregister.chw.hf.activity.ReferralRegistrationActivity;
+import org.smartregister.chw.hf.activity.LdEmergencyReferralRegistrationActivity;
 
 import timber.log.Timber;
 
@@ -44,7 +41,7 @@ public class LDReferralFormUtils {
             formJsonObject = (new FormUtils()).getFormJsonFromRepositoryOrAssets(context, Constants.JsonForm.getLtfuReferralForm());
             if (formJsonObject != null) {
                 formJsonObject.put(Constants.REFERRAL_TASK_FOCUS, Constants.FOCUS.LOST_TO_FOLLOWUP_FOCUS);
-                ReferralRegistrationActivity.startGeneralReferralFormActivityForResults(context, baseEntityId, formJsonObject, false);
+                LdEmergencyReferralRegistrationActivity.startGeneralReferralFormActivityForResults(context, baseEntityId, formJsonObject, false);
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -57,7 +54,7 @@ public class LDReferralFormUtils {
             formJsonObject = (new FormUtils()).getFormJsonFromRepositoryOrAssets(context, Constants.JsonForm.getLdEmergencyReferralForm());
             if (formJsonObject != null) {
                 formJsonObject.put(Constants.REFERRAL_TASK_FOCUS, Constants.FOCUS.LD_EMERGENCY);
-                ReferralRegistrationActivity.startGeneralReferralFormActivityForResults(context, baseEntityId, formJsonObject, false);
+                LdEmergencyReferralRegistrationActivity.startGeneralReferralFormActivityForResults(context, baseEntityId, formJsonObject, false);
             }
         } catch (JSONException e) {
             e.printStackTrace();

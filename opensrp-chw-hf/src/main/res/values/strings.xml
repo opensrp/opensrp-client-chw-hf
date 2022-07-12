@@ -407,5 +407,6 @@
     <string name="ltfu_reason_client_not_found_seasonal_work">Seasonal Agriculture\/Job</string>
 
     <string name="lb_visit_hb_test_action_title"> HB test </string>
+    <string name="referred_for_ld_emergency">Referred</string>
 
 </resources>

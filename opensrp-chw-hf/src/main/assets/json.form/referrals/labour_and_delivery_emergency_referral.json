@@ -3,7 +3,7 @@
   "encounter_type": "Referral Registration",
   "entity_id": "",
   "relational_id": "",
-  "rules_file": "rule/general_neat_referral_form_rules.yml",
+  "rules_file": "rule/labour_and_delivery_emergency_neat_referral_form_rules.yml",
   "metadata": {
     "start": {
       "openmrs_entity_parent": "",
@@ -65,30 +65,119 @@
             "openmrs_entity_parent": ""
           },
           "properties": {
-            "text": "CHW Location"
+            "text": "Choose referral facility",
+            "searchable": "Choose referral facility"
           },
           "options": [],
           "required_status": "yes:Please specify"
         },
         {
           "name": "problem",
-          "type": "text_input_edit_text",
-          "meta_data": {
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "problem_other",
-            "openmrs_entity_parent": "problem"
-          },
+          "type": "multi_choice_checkbox",
           "properties": {
-            "hint": "Reason for referral",
-            "type": "name"
+            "text": "Problems/Complications"
           },
-          "required_status": "true:Please specify reasons for referral",
+          "meta_data": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "problem"
+          },
+          "options": [
+            {
+              "name": "aph",
+              "text": "APH",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "aph",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "prom",
+              "text": "Pre-mature Rupture of Membrane (PROM)",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "prom",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "eclampsia",
+              "text": "Eclampsia",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "eclampsia",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "pph",
+              "text": "PPH",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "pph",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "obstructed_labour",
+              "text": "Obstructed labour",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "obstructed_labour",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "retained_placenta",
+              "text": "Retained placenta",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "retained_placenta",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "sepsis",
+              "text": "Sepsis",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "sepsis",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "other_reasons",
+              "text": "Other reasons",
+              "meta_data": {
+                "openmrs_entity": "",
+                "openmrs_entity_id": "other_reasons",
+                "openmrs_entity_parent": ""
+              }
+            }
+          ],
+          "required_status": "yes:Please specify",
           "dependent_calculations": [
             "referral_date",
             "referral_time",
             "referral_type",
             "referral_status"
           ]
+        },
+        {
+          "name": "problem_other",
+          "type": "text_input_edit_text",
+          "properties": {
+            "hint": "Other reasons",
+            "type": "name"
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "problem_other",
+            "openmrs_entity_parent": "problem"
+          },
+          "required_status": "true:Please specify other reasons",
+          "subjects": "problem:map"
         }
       ]
     }

@@ -1,8 +1,11 @@
 package org.smartregister.chw.hf.dao;
 
+import static org.smartregister.chw.hf.utils.Constants.FOCUS.LD_EMERGENCY;
+
 import org.smartregister.chw.ld.domain.MemberObject;
 import org.smartregister.chw.ld.util.Constants;
 import org.smartregister.dao.AbstractDao;
+import org.smartregister.repository.AllSharedPreferences;
 import org.smartregister.util.Utils;
 
 import java.text.SimpleDateFormat;
@@ -136,6 +139,25 @@ public class LDDao extends org.smartregister.chw.ld.dao.LDDao {
         List<String> res = readData(sql, dataMap);
         if (res != null && res.size() > 0)
             return res.get(0);
+        return null;
+    }
+
+    public static Boolean isTheClientReferred(String baseEntityId) {
+        AllSharedPreferences allSharedPreferences = org.smartregister.chw.core.utils.Utils.getAllSharedPreferences();
+        String anm = allSharedPreferences.fetchRegisteredANM();
+        String currentLoaction = allSharedPreferences.fetchUserLocalityId(anm);
+
+        String sql = "SELECT base_entity_id FROM " + Constants.TABLES.LD_CONFIRMATION + " elc " +
+                " INNER JOIN task t on elc.base_entity_id = t.for " +
+                " WHERE base_entity_id = '" + baseEntityId + "' " +
+                " AND t.location = '" + currentLoaction + "' COLLATE NOCASE " +
+                " AND t.focus = '" + LD_EMERGENCY + "' COLLATE NOCASE ";
+
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "base_entity_id");
+
+        List<String> res = readData(sql, dataMap);
+        if (res != null && res.size() > 0)
+            return true;
         return null;
     }
 
