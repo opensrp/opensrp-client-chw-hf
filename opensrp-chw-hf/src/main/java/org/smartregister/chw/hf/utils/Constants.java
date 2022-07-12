@@ -30,7 +30,7 @@ public class Constants extends CoreConstants {
 
     public static final class FOCUS {
         public static final String LOST_TO_FOLLOWUP_FOCUS = "LTFU";
-        public static final String LD_EMERGENCY = "L&D Emergency";
+        public static final String LD_EMERGENCY = "Labour and Delivery Emergency";
     }
 
     public static final class Events {
