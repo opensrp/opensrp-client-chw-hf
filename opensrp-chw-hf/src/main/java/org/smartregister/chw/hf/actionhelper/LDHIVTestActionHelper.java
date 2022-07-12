@@ -17,7 +17,6 @@ import java.util.Map;
 public class LDHIVTestActionHelper implements BaseLDVisitAction.LDVisitActionHelper {
 
     private final Context context;
-    private String hiv_status;
     private String hiv_test_conducted;
     private String hiv_counselling_before_testing;
     private String hiv;
@@ -39,7 +38,6 @@ public class LDHIVTestActionHelper implements BaseLDVisitAction.LDVisitActionHel
 
     @Override
     public void onPayloadReceived(String jsonPayload) {
-        hiv_status = JsonFormUtils.getFieldValue(jsonPayload, "hiv_status");
         hiv_test_conducted = JsonFormUtils.getFieldValue(jsonPayload, "hiv_test_conducted");
         hiv_counselling_before_testing = JsonFormUtils.getFieldValue(jsonPayload, "hiv_counselling_before_testing");
         hiv = JsonFormUtils.getFieldValue(jsonPayload, "hiv");
@@ -87,27 +85,20 @@ public class LDHIVTestActionHelper implements BaseLDVisitAction.LDVisitActionHel
     }
 
     private boolean isCompleted() {
-        boolean actionCompleted = false;
-        if (StringUtils.isNotBlank(hiv_status)) {
-            if (hiv_status.equalsIgnoreCase("known")) {
-                actionCompleted = true;
-            } else {
-                if (StringUtils.isNotBlank(hiv_test_conducted) && hiv_test_conducted.equalsIgnoreCase("no")) {
-                    actionCompleted = true;
-                } else {
-                    actionCompleted = (StringUtils.isNotBlank(hiv_test_conducted) &&
-                            StringUtils.isNotBlank(hiv_counselling_before_testing) &&
-                            StringUtils.isNotBlank(hiv) &&
-                            StringUtils.isNotBlank(hiv_counselling_after_testing));
-                }
-            }
+        boolean actionCompleted;
+        if (StringUtils.isNotBlank(hiv_test_conducted) && hiv_test_conducted.equalsIgnoreCase("no")) {
+            actionCompleted = true;
+        } else {
+            actionCompleted = (StringUtils.isNotBlank(hiv_test_conducted) &&
+                    StringUtils.isNotBlank(hiv_counselling_before_testing) &&
+                    StringUtils.isNotBlank(hiv) &&
+                    StringUtils.isNotBlank(hiv_counselling_after_testing));
         }
         return actionCompleted;
     }
 
     private boolean isPartiallyCompleted() {
-        return (StringUtils.isNotBlank(hiv_status) ||
-                StringUtils.isNotBlank(hiv_test_conducted) ||
+        return (StringUtils.isNotBlank(hiv_test_conducted) ||
                 StringUtils.isNotBlank(hiv_counselling_before_testing) ||
                 StringUtils.isNotBlank(hiv) ||
                 StringUtils.isNotBlank(hiv_counselling_after_testing));
