@@ -138,8 +138,10 @@ public class LDRegistrationInteractorFlv implements LDRegistrationInteractor.Fla
     private void populateAncFindingsForm(JSONArray fields, org.smartregister.chw.anc.domain.MemberObject memberObject) throws JSONException {
         JSONObject numberOfVisits = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "number_of_visits");
         JSONObject iptDoses = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "ipt_doses");
+        JSONObject malaria = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "malaria");
         JSONObject TTDoses = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "tt_doses");
         JSONObject LLINUsed = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "llin_used");
+        JSONObject hbTestConducted = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "hb_test");
         JSONObject lastMeasuredHB = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "hb_level");
         JSONObject lastMeasuredHBDate = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "hb_test_date");
         JSONObject syphilis = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "syphilis");
@@ -151,10 +153,16 @@ public class LDRegistrationInteractorFlv implements LDRegistrationInteractor.Fla
 
         numberOfVisits.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getVisitNumber(memberObject.getBaseEntityId()));
         iptDoses.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getIptDoses(memberObject.getBaseEntityId()));
+        malaria.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getMalariaTestResults(memberObject.getBaseEntityId()));
         TTDoses.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getTTDoses(memberObject.getBaseEntityId()));
         LLINUsed.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.isLLINProvided(memberObject.getBaseEntityId()) ? "Yes" : "No");
-        lastMeasuredHB.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getLastMeasuredHB(memberObject.getBaseEntityId()));
-        lastMeasuredHBDate.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getLastMeasuredHBDate(memberObject.getBaseEntityId()));
+
+        String lastMeasuredHb = HfAncDao.getLastMeasuredHB(memberObject.getBaseEntityId());
+        hbTestConducted.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getLastMeasuredHB(lastMeasuredHb).equals("") ? "no" : "yes");
+        if (!lastMeasuredHB.equals("")) {
+            lastMeasuredHB.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getLastMeasuredHB(memberObject.getBaseEntityId()));
+            lastMeasuredHBDate.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getLastMeasuredHBDate(memberObject.getBaseEntityId()));
+        }
         syphilis.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getSyphilisTestResult(memberObject.getBaseEntityId()));
         bloodGroup.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getBloodGroup(memberObject.getBaseEntityId()));
         rhFactor.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getRhFactor(memberObject.getBaseEntityId()));
