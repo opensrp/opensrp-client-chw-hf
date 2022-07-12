@@ -1680,6 +1680,14 @@
           }
         },
         {
+          "column_name": "mRDT_for_malaria",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "mRDT_for_malaria"
+          }
+        },
+        {
           "column_name": "malaria_preventive_therapy_ipt1",
           "type": "Event",
           "json_mapping": {

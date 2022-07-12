@@ -38,9 +38,8 @@ public class LDRegistrationAncClinicFindingsAction implements BaseLDVisitAction.
     private String syphilis;
     private String bloodGroup;
     private String rhFactor;
+    private String hbTestConducted;
     private Context context;
-
-    private final DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
     public LDRegistrationAncClinicFindingsAction(MemberObject memberObject) {
         this.memberObject = memberObject;
@@ -53,20 +52,7 @@ public class LDRegistrationAncClinicFindingsAction implements BaseLDVisitAction.
 
     @Override
     public String getPreProcessed() {
-        JSONObject clinicFindingForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryAncClinicFindings());
-
-        try {
-            Date today = new Date(); //now
-            Date twoWeeksAgo = DateUtils.addDays(today, -14); //Two weeks ago
-
-            String twoWeeksAgoLimit = dateFormat.format(twoWeeksAgo);
-            clinicFindingForm.getJSONObject("global").put("two_weeks_ago_limit", twoWeeksAgoLimit);
-
-        }catch (Exception e){
-            Timber.e(e);
-        }
-
-        return clinicFindingForm.toString();
+        return null;
     }
 
     @Override
@@ -77,6 +63,7 @@ public class LDRegistrationAncClinicFindingsAction implements BaseLDVisitAction.
             iptDoses = CoreJsonFormUtils.getValue(jsonObject, "ipt_doses");
             ttDoses = CoreJsonFormUtils.getValue(jsonObject, "tt_doses");
             llinUsed = CoreJsonFormUtils.getValue(jsonObject, "llin_used");
+            hbTestConducted = CoreJsonFormUtils.getValue(jsonObject, "hb_test");
             hbLevel = CoreJsonFormUtils.getValue(jsonObject, "hb_level");
             hbTestDate = CoreJsonFormUtils.getValue(jsonObject, "hb_test_date");
             pmtct = CoreJsonFormUtils.getValue(jsonObject, "anc_hiv_status");
@@ -135,8 +122,8 @@ public class LDRegistrationAncClinicFindingsAction implements BaseLDVisitAction.
                 !StringUtils.isBlank(iptDoses) &&
                 !StringUtils.isBlank(ttDoses) &&
                 !StringUtils.isBlank(llinUsed) &&
-                !StringUtils.isBlank(hbLevel) &&
-                !StringUtils.isBlank(hbTestDate) &&
+                (!hbTestConducted.equals("yes") || (!StringUtils.isBlank(hbLevel) &&
+                        !StringUtils.isBlank(hbTestDate))) &&
                 !StringUtils.isBlank(pmtct) &&
                 !StringUtils.isBlank(syphilis) &&
                 !StringUtils.isBlank(bloodGroup) &&

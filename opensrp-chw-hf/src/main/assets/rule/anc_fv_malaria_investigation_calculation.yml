@@ -2,6 +2,6 @@
 name: step1_malaria_preventive_therapy
 description: malaria preventive therapy calculation
 priority: 1
-condition: "true"
+condition: "step1_client_on_malaria_medication.equals('no')"
 actions:
   - "calculation = !step1_malaria_preventive_therapy_ipt1.isEmpty() ? step1_malaria_preventive_therapy_ipt1 : (!step1_malaria_preventive_therapy_ipt2.isEmpty() ? step1_malaria_preventive_therapy_ipt2 : (!step1_malaria_preventive_therapy_ipt3.isEmpty() ? step1_malaria_preventive_therapy_ipt3 : step1_malaria_preventive_therapy_ipt4)) "
