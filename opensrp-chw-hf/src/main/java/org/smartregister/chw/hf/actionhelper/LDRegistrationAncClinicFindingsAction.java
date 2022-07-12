@@ -38,6 +38,7 @@ public class LDRegistrationAncClinicFindingsAction implements BaseLDVisitAction.
     private String syphilis;
     private String bloodGroup;
     private String rhFactor;
+    private String hbTestConducted;
     private Context context;
 
     public LDRegistrationAncClinicFindingsAction(MemberObject memberObject) {
@@ -62,6 +63,7 @@ public class LDRegistrationAncClinicFindingsAction implements BaseLDVisitAction.
             iptDoses = CoreJsonFormUtils.getValue(jsonObject, "ipt_doses");
             ttDoses = CoreJsonFormUtils.getValue(jsonObject, "tt_doses");
             llinUsed = CoreJsonFormUtils.getValue(jsonObject, "llin_used");
+            hbTestConducted = CoreJsonFormUtils.getValue(jsonObject, "hb_test");
             hbLevel = CoreJsonFormUtils.getValue(jsonObject, "hb_level");
             hbTestDate = CoreJsonFormUtils.getValue(jsonObject, "hb_test_date");
             pmtct = CoreJsonFormUtils.getValue(jsonObject, "anc_hiv_status");
@@ -120,8 +122,8 @@ public class LDRegistrationAncClinicFindingsAction implements BaseLDVisitAction.
                 !StringUtils.isBlank(iptDoses) &&
                 !StringUtils.isBlank(ttDoses) &&
                 !StringUtils.isBlank(llinUsed) &&
-                !StringUtils.isBlank(hbLevel) &&
-                !StringUtils.isBlank(hbTestDate) &&
+                (!hbTestConducted.equals("yes") || (!StringUtils.isBlank(hbLevel) &&
+                        !StringUtils.isBlank(hbTestDate))) &&
                 !StringUtils.isBlank(pmtct) &&
                 !StringUtils.isBlank(syphilis) &&
                 !StringUtils.isBlank(bloodGroup) &&
