@@ -1,5 +1,6 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.hf.dao.LDDao.isTheClientReferred;
 import static org.smartregister.chw.hf.utils.Constants.Events.LD_ACTIVE_MANAGEMENT_OF_3RD_STAGE_OF_LABOUR;
 import static org.smartregister.chw.hf.utils.Constants.Events.LD_PARTOGRAPHY;
 import static org.smartregister.chw.hf.utils.Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryCervixDilationMonitoring;
@@ -19,6 +20,7 @@ import org.joda.time.DateTime;
 import org.joda.time.Period;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.interactor.LDPostDeliveryManagementMotherActivityInteractor;
+import org.smartregister.chw.hf.utils.LDReferralFormUtils;
 import org.smartregister.chw.hf.utils.LDVisitUtils;
 import org.smartregister.chw.ld.LDLibrary;
 import org.smartregister.chw.ld.activity.BaseLDProfileActivity;
@@ -91,6 +93,15 @@ public class LDProfileActivity extends BaseLDProfileActivity {
         findViewById(org.smartregister.ld.R.id.primary_ld_caregiver).setVisibility(View.GONE);
         findViewById(org.smartregister.ld.R.id.family_ld_head).setVisibility(View.GONE);
 
+        Boolean isRegisteredForLd = isTheClientReferred(memberObject.getBaseEntityId());
+        if (isRegisteredForLd != null && isRegisteredForLd) {
+            referredLabel.setVisibility(View.VISIBLE);
+            referredLabel.setText(getString(R.string.referred_for_ld_emergency));
+            textViewRecordLD.setVisibility(View.GONE);
+        } else {
+            referredLabel.setVisibility(View.GONE);
+        }
+
     }
 
     private void processVisits(boolean partograph) {
@@ -130,7 +141,7 @@ public class LDProfileActivity extends BaseLDProfileActivity {
         else if (currentVisitItemTitle.equalsIgnoreCase(getString(R.string.labour_and_delivery_examination_and_consultation_button_tittle)))
             return LDLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), Constants.EVENT_TYPE.LD_GENERAL_EXAMINATION);
         else if (currentVisitItemTitle.equalsIgnoreCase(getString(R.string.ld_mother_post_delivery_management)))
-            return  LDLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), LDPostDeliveryManagementMotherActivityInteractor.EVENT_TYPE);
+            return LDLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), LDPostDeliveryManagementMotherActivityInteractor.EVENT_TYPE);
         else
             return LDLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), LD_ACTIVE_MANAGEMENT_OF_3RD_STAGE_OF_LABOUR);
     }
@@ -290,6 +301,10 @@ public class LDProfileActivity extends BaseLDProfileActivity {
         try {
             if (itemId == R.id.action_mode_of_delivery) {
                 startLDForm(this, memberObject.getBaseEntityId(), getLabourAndDeliveryModeOfDelivery());
+                return true;
+            }
+            if (itemId == R.id.action_ld_emergency_referral) {
+                LDReferralFormUtils.startLDEmergencyReferral(this, memberObject.getBaseEntityId());
                 return true;
             }
         } catch (Exception e) {

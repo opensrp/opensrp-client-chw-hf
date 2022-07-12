@@ -347,6 +347,7 @@
 
 
     <string name="ld_mode_of_delivery">Delivery</string>
+    <string name="ld_emergency_referral">Emergency Referral</string>
 
 
     <!--  String resources for Amniotic Fluid State Values Referenced programmatically in  LDPartographDetailsActivityFlv -> evaluateAmnioticFluid()  -->
@@ -406,5 +407,6 @@
     <string name="ltfu_reason_client_not_found_seasonal_work">Seasonal Agriculture\/Job</string>
 
     <string name="lb_visit_hb_test_action_title"> HB test </string>
+    <string name="referred_for_ld_emergency">Referred</string>
 
 </resources>
