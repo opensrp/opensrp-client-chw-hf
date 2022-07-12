@@ -5549,6 +5549,14 @@
           }
         },
         {
+          "column_name": "name_of_the_health_care_provider",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "name_of_the_health_care_provider"
+          }
+        },
+        {
           "column_name": "partograph_date",
           "type": "Event",
           "json_mapping": {
@@ -5714,6 +5722,38 @@
           "json_mapping": {
             "field": "obs.fieldCode",
             "formSubmissionField": "diastolic"
+          }
+        },
+        {
+          "column_name": "oxytocin_units_per_liter",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "oxytocin_units_per_liter"
+          }
+        },
+        {
+          "column_name": "oxytocin_drops_per_minute",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "oxytocin_drops_per_minute"
+          }
+        },
+        {
+          "column_name": "drugs_provided",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "drugs_provided"
+          }
+        },
+        {
+          "column_name": "iv_fluid_provided",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "iv_fluid_provided"
           }
         },
         {

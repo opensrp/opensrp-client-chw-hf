@@ -142,6 +142,17 @@ public class LDDao extends org.smartregister.chw.ld.dao.LDDao {
         return null;
     }
 
+    public static String getHealthcareProviderNameWhoConductedLastPartographSession(String baseEntityId) {
+        String sql = "SELECT name_of_the_health_care_provider FROM " + Constants.TABLES.EC_LD_PARTOGRAPH + " WHERE entity_id = '" + baseEntityId + "' ORDER BY last_interacted_with DESC LIMIT 1";
+
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "name_of_the_health_care_provider");
+
+        List<String> res = readData(sql, dataMap);
+        if (res != null && res.size() > 0)
+            return res.get(0);
+        return null;
+    }
+
     public static Boolean isTheClientReferred(String baseEntityId) {
         AllSharedPreferences allSharedPreferences = org.smartregister.chw.core.utils.Utils.getAllSharedPreferences();
         String anm = allSharedPreferences.fetchRegisteredANM();

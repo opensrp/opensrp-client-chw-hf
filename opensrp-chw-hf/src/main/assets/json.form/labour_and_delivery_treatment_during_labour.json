@@ -100,16 +100,41 @@
         }
       },
       {
-        "key": "oxytocin_dose",
+        "key": "oxytocin_units_per_liter",
+        "type": "edit_text",
+        "edit_type": "number",
+        "hint": "Oxytocin U/L",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "oxytocin_units_per_liter",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": true,
+          "err": "Please specify the Oxytoxin U/L"
+        },
+        "relevance": {
+          "step1:drugs_administered": {
+            "type": "string",
+            "ex-checkbox": [
+              {
+                "or": [
+                  "oxytocin"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "oxytocin_drops_per_minute",
         "type": "edit_text",
         "edit_type": "number",
         "hint": "Oxytocin Dose (drops/min) given",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "oxytocin_dose",
+        "openmrs_entity_id": "oxytocin_drops_per_minute",
         "openmrs_entity_parent": "",
         "v_required": {
           "value": true,
-          "err": "Please specify the drugs provided"
+          "err": "Please specify drops/minute"
         },
         "relevance": {
           "step1:drugs_administered": {
