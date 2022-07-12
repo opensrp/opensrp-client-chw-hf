@@ -1,5 +1,7 @@
 package org.smartregister.chw.hf.actionhelper;
 
+import static org.smartregister.opd.utils.OpdConstants.KEY.VALUE;
+
 import android.content.Context;
 
 import org.apache.commons.lang3.StringUtils;
@@ -59,6 +61,7 @@ public class LDPartographTimeActionHelper implements BaseLDVisitAction.LDVisitAc
 
                 JSONArray fields = partographTimeForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
                 populatePartograhDateTimeForm(fields, baseEntityId);
+                populatePartographHealthcareProviderNameForm(fields, baseEntityId);
 
                 String partographDate = null;
                 String partographTime = null;
@@ -176,5 +179,16 @@ public class LDPartographTimeActionHelper implements BaseLDVisitAction.LDVisitAc
             partographDate.put("min_date", LDDao.getLabourOnsetDate(baseEntityId));
         }
         partographDate.put("value", new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(Calendar.getInstance().getTime()));
+    }
+
+    private void populatePartographHealthcareProviderNameForm(JSONArray fields, String baseEntityId) throws JSONException {
+        JSONObject nameOfTheHealthCareProviderJsonObject = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "name_of_the_health_care_provider");
+        String nameOfHealthcareProvider = org.smartregister.chw.hf.dao.LDDao.getHealthcareProviderNameWhoConductedLastPartographSession(baseEntityId);
+
+        if (nameOfHealthcareProvider != null) {
+            nameOfTheHealthCareProviderJsonObject.put("editable", true);
+            nameOfTheHealthCareProviderJsonObject.put("read_only", true);
+            nameOfTheHealthCareProviderJsonObject.put(VALUE, nameOfHealthcareProvider);
+        }
     }
 }

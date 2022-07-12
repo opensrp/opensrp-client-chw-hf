@@ -53,6 +53,23 @@
     "title": "Partograph Time",
     "fields": [
       {
+        "key": "name_of_the_health_care_provider",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "name_of_the_health_care_provider",
+        "type": "edit_text",
+        "edit_type": "name",
+        "hint": "Name of the Healthcare Provider Conducting the Partograph Session",
+        "v_regex": {
+          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
+          "err": "Please enter a valid name"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please specify the name of the healthcare provider."
+        }
+      },
+      {
         "key": "partograph_date",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -103,11 +120,6 @@
             "type": "time",
             "ex": "greaterThan(., step1:last_partograph_monitoring_time)",
             "err": "The partograph monitoring time cannot be before the last partograph time"
-          },
-          {
-            "type": "time",
-            "ex": "greaterThan(., step1:thirty_minutes_ago)",
-            "err": "The partograph monitoring time cannot be before thirty minutes ago"
           }
         ]
       }
