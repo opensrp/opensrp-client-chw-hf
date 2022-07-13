@@ -645,12 +645,17 @@ public class Constants extends CoreConstants {
 
         public interface ClinicFindings{
 
-            public interface Syphilis {
+            interface Syphilis {
                 String SYPHILIS_RESULT_POSITIVE = "positive";
                 String SYPHILIS_RESULT_NEGATIVE = "negative";
                 String SYPHILIS_TEST_NOT_DONE = "test_not_conducted";
             }
 
+            interface Malaria {
+                String MALARIA_RESULT_POSITIVE = "positive";
+                String MALARIA_RESULT_NEGATIVE = "negative";
+                String MALARIA_TEST_NOT_DONE = "test_not_conducted";
+            }
         }
 
     }

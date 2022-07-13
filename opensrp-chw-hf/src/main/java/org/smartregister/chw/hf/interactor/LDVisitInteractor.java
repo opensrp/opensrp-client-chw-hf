@@ -77,7 +77,6 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
                     evaluateHIVStatus(details);
                 }
 
-                //Todo: add HB Test if last_hb_test is more than 2 weeks ago
                 if (hbTestMoreThanTwoWeeksAgo()){
                     evaluateHBTest(details);
                 }
@@ -85,7 +84,8 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
                 if (!syphilisTestConductedDuringRegistration())
                     evaluateSyphilisTest(details);
 
-                evaluateMalariatest(details);
+                if (!malariaTestConductedDuringRegistration())
+                    evaluateMalariatest(details);
 
             } catch (BaseLDVisitAction.ValidationException e) {
                 Timber.e(e);
@@ -97,10 +97,18 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
         appExecutors.diskIO().execute(runnable);
     }
 
+    private boolean malariaTestConductedDuringRegistration(){
+        if (LDDao.getMalariaTest(memberObject.getBaseEntityId()) != null){
+            String malariaTest = LDDao.getMalariaTest(memberObject.getBaseEntityId());
+            return !malariaTest.equalsIgnoreCase(Constants.FormConstants.ClinicFindings.Malaria.MALARIA_TEST_NOT_DONE);
+        }
+        return false;
+    }
+
     private boolean syphilisTestConductedDuringRegistration(){
         if (LDDao.getSyphilisTest(memberObject.getBaseEntityId()) != null){
-            String syphilisTestDate = LDDao.getSyphilisTest(memberObject.getBaseEntityId());
-            return !syphilisTestDate.equalsIgnoreCase(Constants.FormConstants.ClinicFindings.Syphilis.SYPHILIS_TEST_NOT_DONE);
+            String syphilisTest = LDDao.getSyphilisTest(memberObject.getBaseEntityId());
+            return !syphilisTest.equalsIgnoreCase(Constants.FormConstants.ClinicFindings.Syphilis.SYPHILIS_TEST_NOT_DONE);
         }
         return false;
     }
