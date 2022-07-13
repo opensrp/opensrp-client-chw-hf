@@ -27,7 +27,7 @@ public class LDMalariaTestActionHelper implements BaseLDVisitAction.LDVisitActio
 
     @Override
     public void onJsonFormLoaded(String s, Context context, Map<String, List<VisitDetail>> map) {
-
+        //TODO: implement
     }
 
     @Override
@@ -79,6 +79,6 @@ public class LDMalariaTestActionHelper implements BaseLDVisitAction.LDVisitActio
 
     @Override
     public void onPayloadReceived(BaseLDVisitAction baseLDVisitAction) {
-
+        //TODO: implement
     }
 }

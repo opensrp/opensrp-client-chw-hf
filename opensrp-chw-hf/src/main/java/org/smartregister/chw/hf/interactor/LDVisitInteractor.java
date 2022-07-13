@@ -2,9 +2,6 @@ package org.smartregister.chw.hf.interactor;
 
 import android.content.Context;
 
-import com.google.android.gms.vision.L;
-
-import org.apache.commons.lang3.time.DateUtils;
 import org.smartregister.chw.anc.util.VisitUtils;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.actionhelper.LDHBTestActionHelper;
