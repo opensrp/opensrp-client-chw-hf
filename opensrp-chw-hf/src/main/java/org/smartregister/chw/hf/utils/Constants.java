@@ -510,6 +510,7 @@ public class Constants extends CoreConstants {
             public static final String LD_HIV_TEST = "labour_and_delivery_hiv_test";
             public static final String LD_HB_TEST_FORM = "labour_and_delivery_hb_test_form";
             public static final String LD_SYPHILIS_TEST_FORM = "labour_and_delivery_syphilis_test";
+            public static final String LD_MALARIA_TEST_FORM = "labour_and_delivery_malaria_test";
 
             public static String getLdGeneralExamination() {
                 return Utils.getLocalForm(LD_GENERAL_EXAMINATION);
@@ -529,6 +530,10 @@ public class Constants extends CoreConstants {
 
             public static String getSyphilisTestForm() {
                 return Utils.getLocalForm(LD_SYPHILIS_TEST_FORM);
+            }
+
+            public static String getLdMalariaTestForm() {
+                return Utils.getLocalForm(LD_MALARIA_TEST_FORM);
             }
 
         }
@@ -640,12 +645,17 @@ public class Constants extends CoreConstants {
 
         public interface ClinicFindings{
 
-            public interface Syphilis {
+            interface Syphilis {
                 String SYPHILIS_RESULT_POSITIVE = "positive";
                 String SYPHILIS_RESULT_NEGATIVE = "negative";
                 String SYPHILIS_TEST_NOT_DONE = "test_not_conducted";
             }
 
+            interface Malaria {
+                String MALARIA_RESULT_POSITIVE = "positive";
+                String MALARIA_RESULT_NEGATIVE = "negative";
+                String MALARIA_TEST_NOT_DONE = "test_not_conducted";
+            }
         }
 
     }

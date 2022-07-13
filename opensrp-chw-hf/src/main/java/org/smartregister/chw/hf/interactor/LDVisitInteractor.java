@@ -2,14 +2,12 @@ package org.smartregister.chw.hf.interactor;
 
 import android.content.Context;
 
-import com.google.android.gms.vision.L;
-
-import org.apache.commons.lang3.time.DateUtils;
 import org.smartregister.chw.anc.util.VisitUtils;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.actionhelper.LDHBTestActionHelper;
 import org.smartregister.chw.hf.actionhelper.LDHIVTestActionHelper;
 import org.smartregister.chw.hf.actionhelper.LDGeneralExaminationActionHelper;
+import org.smartregister.chw.hf.actionhelper.LDMalariaTestActionHelper;
 import org.smartregister.chw.hf.actionhelper.LDSyphilisTestActionHelper;
 import org.smartregister.chw.hf.actionhelper.LDVaginalExaminationActionHelper;
 import org.smartregister.chw.hf.dao.LDDao;
@@ -76,13 +74,15 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
                     evaluateHIVStatus(details);
                 }
 
-                //Todo: add HB Test if last_hb_test is more than 2 weeks ago
                 if (hbTestMoreThanTwoWeeksAgo()){
                     evaluateHBTest(details);
                 }
 
                 if (!syphilisTestConductedDuringRegistration())
                     evaluateSyphilisTest(details);
+
+                if (!malariaTestConductedDuringRegistration())
+                    evaluateMalariatest(details);
 
             } catch (BaseLDVisitAction.ValidationException e) {
                 Timber.e(e);
@@ -94,10 +94,18 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
         appExecutors.diskIO().execute(runnable);
     }
 
+    private boolean malariaTestConductedDuringRegistration(){
+        if (LDDao.getMalariaTest(memberObject.getBaseEntityId()) != null){
+            String malariaTest = LDDao.getMalariaTest(memberObject.getBaseEntityId());
+            return !malariaTest.equalsIgnoreCase(Constants.FormConstants.ClinicFindings.Malaria.MALARIA_TEST_NOT_DONE);
+        }
+        return false;
+    }
+
     private boolean syphilisTestConductedDuringRegistration(){
         if (LDDao.getSyphilisTest(memberObject.getBaseEntityId()) != null){
-            String syphilisTestDate = LDDao.getSyphilisTest(memberObject.getBaseEntityId());
-            return !syphilisTestDate.equalsIgnoreCase(Constants.FormConstants.ClinicFindings.Syphilis.SYPHILIS_TEST_NOT_DONE);
+            String syphilisTest = LDDao.getSyphilisTest(memberObject.getBaseEntityId());
+            return !syphilisTest.equalsIgnoreCase(Constants.FormConstants.ClinicFindings.Syphilis.SYPHILIS_TEST_NOT_DONE);
         }
         return false;
     }
@@ -145,6 +153,21 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
             }
         }
         return true;
+    }
+
+    private void evaluateMalariatest(Map<String, List<VisitDetail>> details) throws BaseLDVisitAction.ValidationException {
+
+        String title = context.getString(R.string.lb_visit_malaria_test_status_action_title);
+
+        LDMalariaTestActionHelper actionHelper = new LDMalariaTestActionHelper(context);
+        BaseLDVisitAction action = getBuilder(title)
+                .withOptional(false)
+                .withHelper(actionHelper)
+                .withDetails(details)
+                .withFormName(Constants.JsonForm.LDVisit.getLdMalariaTestForm())
+                .build();
+
+        actionList.put(title, action);
     }
 
     private void evaluateSyphilisTest(Map<String, List<VisitDetail>> details) throws BaseLDVisitAction.ValidationException {
