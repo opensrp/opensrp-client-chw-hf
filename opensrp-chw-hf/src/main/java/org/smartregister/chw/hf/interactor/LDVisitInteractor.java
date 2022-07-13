@@ -83,6 +83,8 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
 
                 evaluateSyphilisTest(details);
 
+                evaluateMalariatest(details);
+
             } catch (BaseLDVisitAction.ValidationException e) {
                 Timber.e(e);
             }
