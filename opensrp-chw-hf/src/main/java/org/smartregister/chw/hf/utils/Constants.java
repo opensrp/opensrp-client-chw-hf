@@ -636,11 +636,23 @@ public class Constants extends CoreConstants {
     }
 
     public static final class FormConstants {
+
         public interface FormSubmissionFields {
             String VISIT_NUMBER = "visit_number";
             String FOLLOWUP_VISIT_DATE = "followup_visit_date";
             String FOLLOWUP_STATUS = "followup_status";
         }
+
+        public interface ClinicFindings{
+
+            public interface Syphilis {
+                String SYPHILIS_RESULT_POSITIVE = "positive";
+                String SYPHILIS_RESULT_NEGATIVE = "negative";
+                String SYPHILIS_TEST_NOT_DONE = "test_not_conducted";
+            }
+
+        }
+
     }
 
     public static final class ReportConstants {

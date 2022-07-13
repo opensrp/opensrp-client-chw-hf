@@ -82,7 +82,8 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
                     evaluateHBTest(details);
                 }
 
-                evaluateSyphilisTest(details);
+                if (!syphilisTestConductedDuringRegistration())
+                    evaluateSyphilisTest(details);
 
                 evaluateMalariatest(details);
 
@@ -94,6 +95,14 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
         };
 
         appExecutors.diskIO().execute(runnable);
+    }
+
+    private boolean syphilisTestConductedDuringRegistration(){
+        if (LDDao.getSyphilisTest(memberObject.getBaseEntityId()) != null){
+            String syphilisTestDate = LDDao.getSyphilisTest(memberObject.getBaseEntityId());
+            return !syphilisTestDate.equalsIgnoreCase(Constants.FormConstants.ClinicFindings.Syphilis.SYPHILIS_TEST_NOT_DONE);
+        }
+        return false;
     }
 
     private boolean hbTestMoreThanTwoWeeksAgo() {

@@ -2,13 +2,11 @@ package org.smartregister.chw.hf.actionhelper;
 
 import android.content.Context;
 
-import org.json.JSONObject;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.utils.JsonFormUtils;
 import org.smartregister.chw.ld.domain.VisitDetail;
 import org.smartregister.chw.ld.model.BaseLDVisitAction;
 
-import java.sql.Struct;
 import java.util.List;
 import java.util.Map;
 
@@ -29,7 +27,7 @@ public class LDSyphilisTestActionHelper implements BaseLDVisitAction.LDVisitActi
 
     @Override
     public void onJsonFormLoaded(String s, Context context, Map<String, List<VisitDetail>> map) {
-
+        //TODO: implement
     }
 
     @Override
@@ -81,6 +79,6 @@ public class LDSyphilisTestActionHelper implements BaseLDVisitAction.LDVisitActi
 
     @Override
     public void onPayloadReceived(BaseLDVisitAction baseLDVisitAction) {
-
+        //TODO: implement
     }
 }

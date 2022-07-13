@@ -5328,6 +5328,14 @@
           }
         },
         {
+          "column_name": "syphilis",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "syphilis"
+          }
+        },
+        {
           "column_name": "last_interacted_with",
           "type": "Event",
           "json_mapping": {
