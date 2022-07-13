@@ -10,6 +10,7 @@ import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.actionhelper.LDHBTestActionHelper;
 import org.smartregister.chw.hf.actionhelper.LDHIVTestActionHelper;
 import org.smartregister.chw.hf.actionhelper.LDGeneralExaminationActionHelper;
+import org.smartregister.chw.hf.actionhelper.LDMalariaTestActionHelper;
 import org.smartregister.chw.hf.actionhelper.LDSyphilisTestActionHelper;
 import org.smartregister.chw.hf.actionhelper.LDVaginalExaminationActionHelper;
 import org.smartregister.chw.hf.dao.LDDao;
@@ -144,7 +145,7 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
 
         String title = context.getString(R.string.lb_visit_malaria_test_status_action_title);
 
-        LDSyphilisTestActionHelper actionHelper = new LDSyphilisTestActionHelper(context);
+        LDMalariaTestActionHelper actionHelper = new LDMalariaTestActionHelper(context);
         BaseLDVisitAction action = getBuilder(title)
                 .withOptional(false)
                 .withHelper(actionHelper)
