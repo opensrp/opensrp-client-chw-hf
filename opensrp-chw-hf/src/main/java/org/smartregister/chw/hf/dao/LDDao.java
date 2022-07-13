@@ -183,4 +183,15 @@ public class LDDao extends org.smartregister.chw.ld.dao.LDDao {
         return null;
     }
 
+    public static String getMalariaTest(String baseEntityId) {
+        String sql = "SELECT malaria FROM " + Constants.TABLES.LD_CONFIRMATION + " WHERE base_entity_id = '" + baseEntityId + "'";
+
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "malaria");
+
+        List<String> res = readData(sql, dataMap);
+        if (res != null && res.size() > 0)
+            return res.get(0);
+        return null;
+    }
+
 }

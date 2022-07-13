@@ -5336,6 +5336,14 @@
           }
         },
         {
+          "column_name": "malaria",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "malaria"
+          }
+        },
+        {
           "column_name": "last_interacted_with",
           "type": "Event",
           "json_mapping": {
