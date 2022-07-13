@@ -416,10 +416,10 @@
             "openmrs_entity_id": "negative"
           },
           {
-            "key": "none",
-            "text": "None",
+            "key": "test_not_conducted",
+            "text": "Not conducted",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "none"
+            "openmrs_entity_id": "test_not_conducted"
           }
         ]
       },
