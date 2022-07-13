@@ -76,42 +76,6 @@
         }
       },
       {
-        "key": "reason_for_not_giving_tt_vaccination",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "reason_for_not_giving_tt_vaccination",
-        "type": "native_radio",
-        "label": "Tafadhali chagua sababu",
-        "label_text_style": "normal",
-        "text_color": "#C0C0C0",
-        "options": [
-          {
-            "key": "out_of_stock",
-            "text": "Zimeisha",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "out_of_stock"
-          },
-          {
-            "key": "completed_vaccination",
-            "text": "Amemaliza chanjo",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "completed_vaccination"
-          }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhali chagua jibu"
-        },
-        "relevance": {
-          "step1:tt_vaccination": {
-            "type": "string",
-            "ex": "equalTo(., \"no\")"
-          }
-        }
-      },
-      {
         "key": "tt1_vaccination_prompt",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -120,9 +84,9 @@
         "text": "Toa dozi ya kwanza ya pepopunda-diphtheria (TD1) na mpatie mteja tarehe ya marudio ya chanjo kulingana na muongozo wa chanjo",
         "toaster_type": "warning",
         "relevance": {
-          "step1:reason_for_not_giving_tt_vaccination": {
+          "step1:tt_vaccination": {
             "type": "string",
-            "ex": "equalTo(., \"out_of_stock\")"
+            "ex": "equalTo(., \"no\")"
           }
         }
       },

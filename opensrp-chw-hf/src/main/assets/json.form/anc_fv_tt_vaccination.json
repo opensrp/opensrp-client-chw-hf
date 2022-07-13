@@ -76,42 +76,6 @@
         }
       },
       {
-        "key": "reason_for_not_giving_tt_vaccination",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "reason_for_not_giving_tt_vaccination",
-        "type": "native_radio",
-        "label": "Please specify the reason",
-        "label_text_style": "normal",
-        "text_color": "#C0C0C0",
-        "options": [
-          {
-            "key": "out_of_stock",
-            "text": "Out of stock",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "out_of_stock"
-          },
-          {
-            "key": "completed_vaccination",
-            "text": "Completed vaccination",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "completed_vaccination"
-          }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Please select an option"
-        },
-        "relevance": {
-          "step1:tt_vaccination": {
-            "type": "string",
-            "ex": "equalTo(., \"no\")"
-          }
-        }
-      },
-      {
         "key": "tt1_vaccination_prompt",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -120,9 +84,9 @@
         "text": "Provide TD1 vaccination dose and follow-up immunization doses to the client according to immunization schedule",
         "toaster_type": "warning",
         "relevance": {
-          "step1:reason_for_not_giving_tt_vaccination": {
+          "step1:tt_vaccination": {
             "type": "string",
-            "ex": "equalTo(., \"out_of_stock\")"
+            "ex": "equalTo(., \"no\")"
           }
         }
       },
