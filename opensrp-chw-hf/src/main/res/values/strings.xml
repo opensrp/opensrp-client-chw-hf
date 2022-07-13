@@ -308,6 +308,7 @@
     <string name="lb_visit_vaginal_assessment">Vaginal assessment</string>
     <string name="lb_visit_general_examination">General examination</string>
     <string name="lb_visit_hiv_test_status_action_title">HIV Counselling and Testing</string>
+    <string name="lb_visit_syphilis_test_status_action_title">Syphilis Testing and Counselling</string>
     <string name="lb_mode_of_delivery">Mode of Delivery</string>
     <string name="ld_active_management_3rd_stage">Active Management of 3rd Stage</string>
     <string name="uterotonic">Uterotonic</string>
@@ -408,5 +409,7 @@
 
     <string name="lb_visit_hb_test_action_title"> HB test </string>
     <string name="referred_for_ld_emergency">Referred</string>
+
+    <string name="syphilis_test_result"> Syphilis test </string>
 
 </resources>
