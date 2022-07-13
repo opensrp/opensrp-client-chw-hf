@@ -10,6 +10,7 @@ import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.actionhelper.LDHBTestActionHelper;
 import org.smartregister.chw.hf.actionhelper.LDHIVTestActionHelper;
 import org.smartregister.chw.hf.actionhelper.LDGeneralExaminationActionHelper;
+import org.smartregister.chw.hf.actionhelper.LDSyphilisTestActionHelper;
 import org.smartregister.chw.hf.actionhelper.LDVaginalExaminationActionHelper;
 import org.smartregister.chw.hf.dao.LDDao;
 import org.smartregister.chw.hf.utils.Constants;
@@ -80,6 +81,8 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
                     evaluateHBTest(details);
                 }
 
+                evaluateSyphilisTest(details);
+
             } catch (BaseLDVisitAction.ValidationException e) {
                 Timber.e(e);
             }
@@ -133,6 +136,21 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
             }
         }
         return true;
+    }
+
+    private void evaluateSyphilisTest(Map<String, List<VisitDetail>> details) throws BaseLDVisitAction.ValidationException {
+
+        String title = context.getString(R.string.lb_visit_syphilis_test_status_action_title);
+
+        LDSyphilisTestActionHelper actionHelper = new LDSyphilisTestActionHelper(context);
+        BaseLDVisitAction action = getBuilder(title)
+                .withOptional(false)
+                .withHelper(actionHelper)
+                .withDetails(details)
+                .withFormName(Constants.JsonForm.LDVisit.getSyphilisTestForm())
+                .build();
+
+        actionList.put(title, action);
     }
 
     private void evaluateHIVStatus(Map<String, List<VisitDetail>> details) throws BaseLDVisitAction.ValidationException {
