@@ -47,12 +47,12 @@
     "encounter_location": ""
   },
   "step1": {
-    "title": "Chanjo ya Pepopunda (Tetenasi)",
+    "title": "Chanjo ya Pepopunda-Diphtheria",
     "fields": [
       {
         "key": "tt_vaccination",
         "type": "native_radio",
-        "label": "Mama amepatiwa chanjo ya Pepopunda (TT)?",
+        "label": "Mama amepatiwa chanjo ya Pepopunda-Diphtheria (TD)?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "tt_vaccination",
         "openmrs_entity_parent": "",
@@ -81,7 +81,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "",
         "type": "toaster_notes",
-        "text": "Toa dozi ya kwanza ya pepopunda (TT1) na mpatie mteja tarehe ya marudio ya chanjo kulingana na muongozo wa chanjo",
+        "text": "Toa dozi ya kwanza ya pepopunda-diphtheria (TD1) na mpatie mteja tarehe ya marudio ya chanjo kulingana na muongozo wa chanjo",
         "toaster_type": "warning",
         "relevance": {
           "step1:tt_vaccination": {
@@ -93,39 +93,39 @@
       {
         "key": "tt_vaccination_type",
         "type": "check_box",
-        "label": "Chanjo ipi ya pepopunda (TT) iliyotolewa?",
+        "label": "Chanjo ipi ya pepopunda-diphtheria (TD) iliyotolewa?",
         "combine_checkbox_option_values": "true",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "tt_vaccination_type",
         "openmrs_entity_parent": "",
         "options": [
           {
-            "text": "TT1",
+            "text": "TD1",
             "key": "tt1",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "tt1"
           },
           {
             "key": "tt2",
-            "text": "TT2",
+            "text": "TD2",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "tt2"
           },
           {
             "key": "tt3",
-            "text": "TT3",
+            "text": "TD3",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "tt3"
           },
           {
             "key": "tt4",
-            "text": "TT4",
+            "text": "TD4",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "tt4"
           },
           {
             "key": "tt5",
-            "text": "TT5",
+            "text": "TD5",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "tt5"
           }

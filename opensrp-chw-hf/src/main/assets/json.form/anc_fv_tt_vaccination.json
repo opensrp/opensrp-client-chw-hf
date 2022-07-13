@@ -47,12 +47,12 @@
     "encounter_location": ""
   },
   "step1": {
-    "title": "TT Vaccination",
+    "title": "TD Vaccination",
     "fields": [
       {
         "key": "tt_vaccination",
         "type": "native_radio",
-        "label": "Has the client been vaccinated for TT?",
+        "label": "Has the client been vaccinated for TD?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "tt_vaccination",
         "openmrs_entity_parent": "",
@@ -81,7 +81,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "",
         "type": "toaster_notes",
-        "text": "Provide TT1 vaccination dose and follow-up immunization doses to the client according to immunization schedule",
+        "text": "Provide TD1 vaccination dose and follow-up immunization doses to the client according to immunization schedule",
         "toaster_type": "warning",
         "relevance": {
           "step1:tt_vaccination": {
@@ -93,39 +93,39 @@
       {
         "key": "tt_vaccination_type",
         "type": "check_box",
-        "label": "What TT Vaccinations was given",
+        "label": "What TD Vaccinations were given?",
         "combine_checkbox_option_values": "true",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "tt_vaccination_type",
         "openmrs_entity_parent": "",
         "options": [
           {
-            "text": "TT1",
+            "text": "TD1",
             "key": "tt1",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "tt1"
           },
           {
             "key": "tt2",
-            "text": "TT2",
+            "text": "TD2",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "tt2"
           },
           {
             "key": "tt3",
-            "text": "TT3",
+            "text": "TD3",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "tt3"
           },
           {
             "key": "tt4",
-            "text": "TT4",
+            "text": "TD4",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "tt4"
           },
           {
             "key": "tt5",
-            "text": "TT5",
+            "text": "TD5",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "tt5"
           }
