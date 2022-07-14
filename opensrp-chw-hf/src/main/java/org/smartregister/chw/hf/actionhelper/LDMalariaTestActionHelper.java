@@ -63,7 +63,14 @@ public class LDMalariaTestActionHelper implements BaseLDVisitAction.LDVisitActio
     public String evaluateSubTitle() {
         String subtitle = "";
         if (malariaTest != null && !malariaTest.isEmpty()){
-            subtitle = context.getString(R.string.syphilis_test_result) + ": " + malariaTest;
+            subtitle = context.getString(R.string.malaria_test_result) + " : ";
+            if (malariaTest.equalsIgnoreCase("positive")){
+                subtitle += context.getString(R.string.positive);
+            }else if (malariaTest.equalsIgnoreCase("negative")){
+                subtitle += context.getString(R.string.negative);
+            }else if (malariaTest.equalsIgnoreCase("test_not_conducted")){
+                subtitle += context.getString(R.string.test_not_conducted);
+            }
         }
         return subtitle;
     }
