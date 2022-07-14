@@ -150,13 +150,6 @@
             "openmrs_entity_id": "female_genital_mutilation"
           },
           {
-            "key": "parity_chk",
-            "text": "Parity",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "parity_chk"
-          },
-          {
             "key": "closely_spaced_pregnancy",
             "text": "Closely spaced pregnancy (within 2 years)",
             "value": false,
@@ -248,6 +241,37 @@
         }
       },
       {
+        "key": "gravida",
+        "type": "edit_text",
+        "hint": "Gravida",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "gravida",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the gravida number"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter the gravida number"
+        }
+      },
+      {
+        "key": "prompt_for_gravida",
+        "type": "toaster_notes",
+        "text": "Counsel on the risk of uterine rupture and closely monitor the client",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:gravida": {
+            "type": "numeric",
+            "ex": "greaterThan(.,\"5\")"
+          }
+        }
+      },
+      {
         "key": "parity",
         "type": "edit_text",
         "hint": "Parity",
@@ -262,17 +286,29 @@
           "value": true,
           "err": "Please enter the parity number"
         },
-        "relevance": {
-          "step1:medical_surgical_history": {
-            "type": "string",
-            "ex-checkbox": [
-              {
-                "or": [
-                  "parity_chk"
-                ]
-              }
-            ]
+        "constraints": [
+          {
+            "type": "numeric",
+            "ex": "lessThan(., step1:gravida)",
+            "err": "Parity must be less than gravida"
           }
+        ]
+      },
+      {
+        "key": "no_surv_children",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "no_surv_children",
+        "type": "edit_text",
+        "edit_type": "number",
+        "hint": "Number of living children",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the number of living children"
+        },
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the number of living children"
         }
       },
       {

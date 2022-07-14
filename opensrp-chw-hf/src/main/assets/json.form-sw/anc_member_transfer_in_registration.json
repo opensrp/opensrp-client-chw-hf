@@ -182,13 +182,6 @@
             "openmrs_entity_id": "female_genital_mutilation"
           },
           {
-            "key": "parity",
-            "text": "Idadi ya mimba zilizofikia wiki 24 au zaidi",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "parity"
-          },
-          {
             "key": "closely_spaced_pregnancy",
             "text": "Mimba zilizokaribiana (chini ya miaka miwili)",
             "value": false,
@@ -325,11 +318,42 @@
         }
       },
       {
-        "key": "parity_value",
+        "key": "gravida",
+        "type": "edit_text",
+        "hint": "Idadi ya ujauzito (Gravida)",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "gravida",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Tafadhali jaza idadi ya ujauzito"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali jaza idadi ya ujauzito"
+        }
+      },
+      {
+        "key": "prompt_for_gravida",
+        "type": "toaster_notes",
+        "text": "Toa ushauri juu ya hatari ya kuchanika mfuko wa uzazi",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:gravida": {
+            "type": "numeric",
+            "ex": "greaterThan(.,\"5\")"
+          }
+        }
+      },
+      {
+        "key": "parity",
         "type": "edit_text",
         "hint": "Idadi ya mimba zilizofikia wiki 24 au zaidi",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "parity_value",
+        "openmrs_entity_id": "parity",
         "openmrs_entity_parent": "",
         "v_numeric": {
           "value": "true",
@@ -339,17 +363,29 @@
           "value": true,
           "err": "Tafadhali jaza namba halali"
         },
-        "relevance": {
-          "step1:medical_surgical_history": {
-            "type": "string",
-            "ex-checkbox": [
-              {
-                "or": [
-                  "parity"
-                ]
-              }
-            ]
+        "constraints": [
+          {
+            "type": "numeric",
+            "ex": "lessThan(., step1:gravida)",
+            "err": "Namba lazima iwe chini ya idadi ya ujauzito"
           }
+        ]
+      },
+      {
+        "key": "no_surv_children",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "no_surv_children",
+        "type": "edit_text",
+        "edit_type": "number",
+        "hint": "Idadi ya watoto walio hai",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jaza idadi ya watoto walio hai"
+        },
+        "v_numeric": {
+          "value": "true",
+          "err": "Tafadhali jaza idadi ya watoto walio hai"
         }
       },
       {

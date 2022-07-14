@@ -266,6 +266,12 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
                 ctcNumber.put("read_only", true);
             }
 
+            if (memberObject.getGravida() != null) {
+                JSONArray fields = medicalSurgicalHistoryForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+                JSONObject gravida = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "gravida");
+                gravida.put(JsonFormUtils.VALUE, memberObject.getGravida());
+            }
+
             if (details != null && !details.isEmpty()) {
                 HfAncJsonFormUtils.populateForm(medicalSurgicalHistoryForm, details);
             }

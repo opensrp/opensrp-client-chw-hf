@@ -94,7 +94,7 @@
         "options": [
           {
             "key": "chk_cough",
-            "text": "Mteja anakohoa kwa wiki 2 na zaidi",
+            "text": "Mteja anakikohozi cha muda wowote",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_cough"
