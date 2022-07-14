@@ -248,6 +248,22 @@
         }
       },
       {
+        "key": "gravida",
+        "type": "edit_text",
+        "hint": "Idadi ya ujauzito (Gravida)",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "gravida",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Tafadhali jaza idadi ya ujauzito"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali jaza idadi ya ujauzito"
+        }
+      },
+      {
         "key": "parity",
         "type": "edit_text",
         "hint": "Idadi ya mimba zilizofikia wiki 24 au zaidi",
