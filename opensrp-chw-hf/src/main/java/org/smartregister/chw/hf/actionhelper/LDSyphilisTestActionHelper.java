@@ -63,7 +63,14 @@ public class LDSyphilisTestActionHelper implements BaseLDVisitAction.LDVisitActi
     public String evaluateSubTitle() {
         String subtitle = "";
         if (syphilisTest != null && !syphilisTest.isEmpty()){
-            subtitle = context.getString(R.string.syphilis_test_result) + ": " + syphilisTest;
+            subtitle = context.getString(R.string.syphilis_test_result) + " : ";
+            if (syphilisTest.equalsIgnoreCase("positive")){
+                subtitle += context.getString(R.string.positive);
+            } else if (syphilisTest.equalsIgnoreCase("negative")){
+                subtitle += context.getString(R.string.negative);
+            }else if (syphilisTest.equalsIgnoreCase("test_not_conducted")){
+                subtitle += context.getString(R.string.test_not_conducted);
+            }
         }
         return subtitle;
     }
