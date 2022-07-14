@@ -5451,6 +5451,14 @@
           }
         },
         {
+          "column_name": "lie",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "lie"
+          }
+        },
+        {
           "column_name": "presentation",
           "type": "Event",
           "json_mapping": {
