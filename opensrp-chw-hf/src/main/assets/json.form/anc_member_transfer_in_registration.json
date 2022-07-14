@@ -325,11 +325,27 @@
         }
       },
       {
-        "key": "parity_value",
+        "key": "gravida",
+        "type": "edit_text",
+        "hint": "Gravida",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "gravida",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the gravida number"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter the gravida number"
+        }
+      },
+      {
+        "key": "parity",
         "type": "edit_text",
         "hint": "Parity",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "parity_value",
+        "openmrs_entity_id": "parity",
         "openmrs_entity_parent": "",
         "v_numeric": {
           "value": "true",
