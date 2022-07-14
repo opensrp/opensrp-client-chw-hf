@@ -150,13 +150,6 @@
             "openmrs_entity_id": "female_genital_mutilation"
           },
           {
-            "key": "parity_chk",
-            "text": "Idadi ya mimba zilizofikia wiki 24 au zaidi",
-            "value": false,
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "parity_chk"
-          },
-          {
             "key": "closely_spaced_pregnancy",
             "text": "Mimba zilizokaribiana (chini ya miaka miwili)",
             "value": false,
@@ -293,18 +286,13 @@
           "value": true,
           "err": "Tafadhali jaza namba halali"
         },
-        "relevance": {
-          "step1:medical_surgical_history": {
-            "type": "string",
-            "ex-checkbox": [
-              {
-                "or": [
-                  "parity_chk"
-                ]
-              }
-            ]
+        "constraints": [
+          {
+            "type": "numeric",
+            "ex": "lessThanEqualTo(., step1:gravida)",
+            "err": "Namba lazima iwe sawa au chini ya idadi ya ujauzito"
           }
-        }
+        ]
       },
       {
         "key": "known_on_art",
