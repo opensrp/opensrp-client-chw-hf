@@ -231,7 +231,7 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
 
     private void evaluateGenExamination(Map<String, List<VisitDetail>> details) throws BaseLDVisitAction.ValidationException {
 
-        LDGeneralExaminationActionHelper actionHelper = new LDGeneralExaminationActionHelper(context);
+        LDGeneralExaminationActionHelper actionHelper = new LDGeneralExaminationActionHelper(context, memberObject);
         BaseLDVisitAction action = getBuilder(context.getString(R.string.lb_visit_general_examination))
                 .withOptional(false)
                 .withDetails(details)
