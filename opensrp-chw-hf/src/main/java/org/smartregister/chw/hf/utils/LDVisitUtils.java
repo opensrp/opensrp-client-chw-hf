@@ -51,9 +51,7 @@ public class LDVisitUtils extends VisitUtils {
                 boolean isUrineProteinDone = computeCompletionStatus(obs, "urine_protein");
                 boolean isUrineAcetoneDone = computeCompletionStatus(obs, "urine_acetone");
                 boolean isFundalHeightDone = computeCompletionStatus(obs, "fundal_height");
-
                 boolean isPresentationDone = getFieldValue(obs, "lie").equalsIgnoreCase("transverse") || computeCompletionStatus(obs, "presentation");
-
                 boolean isContractionInTenMinutesDone = computeCompletionStatus(obs, "contraction_in_ten_minutes");
                 boolean isFetalHeartRateDone = computeCompletionStatus(obs, "fetal_heart_rate");
                 boolean isVaginalExamDateDone = computeCompletionStatus(obs, "vaginal_exam_date");
