@@ -77,7 +77,7 @@
       {
         "key": "hb_level",
         "type": "edit_text",
-        "hint": "Last Measured HB Level (g/dl)",
+        "hint": "Enter Measured HB Level (g/dl)",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "hb_level",
         "openmrs_entity_parent": "",
@@ -154,7 +154,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "hb_test_date",
         "type": "hidden",
-        "hint": "Last Measured HB Date",
+        "hint": "HB Measurement Date",
         "calculation": {
           "rules-engine": {
             "ex-rules": {
