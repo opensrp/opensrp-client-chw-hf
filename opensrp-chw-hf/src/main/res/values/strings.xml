@@ -412,5 +412,10 @@
     <string name="referred_for_ld_emergency">Referred</string>
 
     <string name="syphilis_test_result"> Syphilis test </string>
+    <string name="malaria_test_result"> Malaria test </string>
+
+    <string name="positive">Positive</string>
+    <string name="negative">Negative</string>
+    <string name="test_not_conducted">Test Not Conducted</string>
 
 </resources>
