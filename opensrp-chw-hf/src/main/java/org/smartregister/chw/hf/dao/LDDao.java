@@ -194,4 +194,26 @@ public class LDDao extends org.smartregister.chw.ld.dao.LDDao {
         return null;
     }
 
+    public static String getFundalHeight(String baseEntityId) {
+        String sql = "SELECT fundal_height FROM " + Constants.TABLES.EC_LD_GENERAL_EXAMINATION + " WHERE base_entity_id = '" + baseEntityId + "'";
+
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "fundal_height");
+
+        List<String> res = readData(sql, dataMap);
+        if (res != null && res.size() > 0)
+            return res.get(0);
+        return null;
+    }
+
+    public static String getFetalLie(String baseEntityId) {
+        String sql = "SELECT lie FROM " + Constants.TABLES.EC_LD_GENERAL_EXAMINATION + " WHERE base_entity_id = '" + baseEntityId + "'";
+
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "lie");
+
+        List<String> res = readData(sql, dataMap);
+        if (res != null && res.size() > 0)
+            return res.get(0);
+        return null;
+    }
+
 }
