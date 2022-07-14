@@ -94,7 +94,7 @@
         "options": [
           {
             "key": "chk_cough",
-            "text": "Cough for two or more weeks",
+            "text": "Cough of any duration",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_cough"
