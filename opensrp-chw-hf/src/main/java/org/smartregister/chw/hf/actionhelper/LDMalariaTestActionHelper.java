@@ -71,7 +71,6 @@ public class LDMalariaTestActionHelper implements BaseLDVisitAction.LDVisitActio
             }else if (malariaTest.equalsIgnoreCase("test_not_conducted")){
                 subtitle += context.getString(R.string.test_not_conducted);
             }
-            subtitle = subtitle+ malariaTest;
         }
         return subtitle;
     }
