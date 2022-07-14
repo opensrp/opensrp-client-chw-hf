@@ -51,10 +51,11 @@ public class LDVisitUtils extends VisitUtils {
                 boolean isUrineProteinDone = computeCompletionStatus(obs, "urine_protein");
                 boolean isUrineAcetoneDone = computeCompletionStatus(obs, "urine_acetone");
                 boolean isFundalHeightDone = computeCompletionStatus(obs, "fundal_height");
-                boolean isPresentationDone = computeCompletionStatus(obs, "presentation");
+
+                boolean isPresentationDone = getFieldValue(obs, "lie").equalsIgnoreCase("transverse") || computeCompletionStatus(obs, "presentation");
+
                 boolean isContractionInTenMinutesDone = computeCompletionStatus(obs, "contraction_in_ten_minutes");
                 boolean isFetalHeartRateDone = computeCompletionStatus(obs, "fetal_heart_rate");
-
                 boolean isVaginalExamDateDone = computeCompletionStatus(obs, "vaginal_exam_date");
                 boolean isVaginalExamTimeDone = computeCompletionStatus(obs, "vaginal_exam_time");
                 boolean isCervixStateDone = computeCompletionStatus(obs, "cervix_state");
@@ -67,17 +68,13 @@ public class LDVisitUtils extends VisitUtils {
                 boolean hivActionDone = false;
 
                 if (LDDao.getHivStatus(baseEntityId) == null || !Objects.equals(LDDao.getHivStatus(baseEntityId), org.smartregister.chw.hf.utils.Constants.HIV_STATUS.POSITIVE)) {
-                    boolean isHivStatusDone = computeCompletionStatus(obs, "hiv_status");
-                    String hivStatus = getFieldValue(obs, "hiv_status");
+                    String hivStatus = getFieldValue(obs, "hiv");
                     String hivTestConducted = getFieldValue(obs, "hiv_test_conducted");
-                    if (isHivStatusDone) {
-
-                        if (hivStatus != null && hivStatus.equalsIgnoreCase("known")) {
+                    if (hivTestConducted != null && hivTestConducted.equalsIgnoreCase("no")) {
+                        hivActionDone = true;
+                    } else {
+                        if (StringUtils.isNotBlank(hivStatus) && hivTestConducted.equalsIgnoreCase("yes")) {
                             hivActionDone = true;
-                        } else {
-                            if (StringUtils.isNotBlank(hivTestConducted) && hivTestConducted.equalsIgnoreCase("yes")) {
-                                hivActionDone = true;
-                            }
                         }
                     }
                 } else {
