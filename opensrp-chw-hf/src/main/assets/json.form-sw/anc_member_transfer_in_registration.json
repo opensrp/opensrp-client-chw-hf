@@ -372,6 +372,23 @@
         ]
       },
       {
+        "key": "no_surv_children",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "no_surv_children",
+        "type": "edit_text",
+        "edit_type": "number",
+        "hint": "Idadi ya watoto walio hai",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jaza idadi ya watoto walio hai"
+        },
+        "v_numeric": {
+          "value": "true",
+          "err": "Tafadhali jaza idadi ya watoto walio hai"
+        }
+      },
+      {
         "key": "visit_number",
         "type": "hidden",
         "openmrs_entity": "concept",

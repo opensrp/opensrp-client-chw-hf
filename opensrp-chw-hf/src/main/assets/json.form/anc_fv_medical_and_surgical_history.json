@@ -295,6 +295,23 @@
         ]
       },
       {
+        "key": "no_surv_children",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "no_surv_children",
+        "type": "edit_text",
+        "edit_type": "number",
+        "hint": "Number of living children",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the number of living children"
+        },
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the number of living children"
+        }
+      },
+      {
         "key": "known_on_art",
         "type": "hidden",
         "openmrs_entity": "concept",
