@@ -38,7 +38,7 @@ public class LDGeneralExaminationActionHelper implements BaseLDVisitAction.LDVis
     private String contraction_in_ten_minutes;
     private String fetal_heart_rate;
     private final Context context;
-    private MemberObject memberObject;
+    private final MemberObject memberObject;
 
     public LDGeneralExaminationActionHelper(Context context, MemberObject memberObject) {
         this.context = context;
@@ -59,11 +59,11 @@ public class LDGeneralExaminationActionHelper implements BaseLDVisitAction.LDVis
                 JSONObject fundalHeight = JsonFormUtils.getFieldJSONObject(fields, "fundal_height");
                 JSONObject lie = JsonFormUtils.getFieldJSONObject(fields, "lie");
 
-                if (LDDao.getFundalHeight(memberObject.getBaseEntityId()) != null && fundalHeight != null) {
+                if (fundalHeightCaptured() && fundalHeight != null) {
                     fundalHeight.put("hidden", true);
                 }
 
-                if (LDDao.getFetalLie(memberObject.getBaseEntityId()) != null && lie != null) {
+                if (featalLieCaptured() && lie != null) {
                     lie.put("hidden", true);
                 }
 
@@ -141,7 +141,7 @@ public class LDGeneralExaminationActionHelper implements BaseLDVisitAction.LDVis
                 StringUtils.isNotBlank(diastolic) &&
                 StringUtils.isNotBlank(urineAcetone) &&
                 StringUtils.isNotBlank(urineProtein) &&
-                StringUtils.isNotBlank(fundal_height) &&
+                fundalHeightCaptured() || StringUtils.isNotBlank(fundal_height) &&
                 StringUtils.isNotBlank(contraction_frequency) &&
                 StringUtils.isNotBlank(contraction_in_ten_minutes) &&
                 StringUtils.isNotBlank(fetal_heart_rate)
@@ -163,4 +163,13 @@ public class LDGeneralExaminationActionHelper implements BaseLDVisitAction.LDVis
                 StringUtils.isNotBlank(fetal_heart_rate)
         );
     }
+
+    private boolean fundalHeightCaptured() {
+        return LDDao.getFundalHeight(memberObject.getBaseEntityId()) != null;
+    }
+
+    private boolean featalLieCaptured(){
+        return LDDao.getFetalLie(memberObject.getBaseEntityId()) != null;
+    }
+
 }
