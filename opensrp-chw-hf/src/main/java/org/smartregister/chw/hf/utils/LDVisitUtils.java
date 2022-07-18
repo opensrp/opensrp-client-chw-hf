@@ -1,10 +1,11 @@
 package org.smartregister.chw.hf.utils;
 
+import static org.smartregister.chw.hf.utils.Constants.Events.LD_POST_DELIVERY_MOTHER_MANAGEMENT;
+
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.smartregister.chw.hf.interactor.LDPostDeliveryManagementMotherActivityInteractor;
 import org.smartregister.chw.hf.utils.Constants.Events;
 import org.smartregister.chw.ld.LDLibrary;
 import org.smartregister.chw.ld.dao.LDDao;
@@ -117,7 +118,7 @@ public class LDVisitUtils extends VisitUtils {
                 if (hasPlacentaAndMembraneExpelled && isUterotonicDone && isMassageOfUterusAfterDeliveryDone) {
                     ldVisits.add(visit);
                 }
-            } else if (visit.getVisitType().equalsIgnoreCase(LDPostDeliveryManagementMotherActivityInteractor.EVENT_TYPE)) {
+            } else if (visit.getVisitType().equalsIgnoreCase(LD_POST_DELIVERY_MOTHER_MANAGEMENT)) {
                 JSONObject visitJson = new JSONObject(visit.getJson());
                 JSONArray obs = visitJson.getJSONArray("obs");
                 String motherStatusCompletionStatus = getFieldValue(obs, "mother_status_module_status");
@@ -125,9 +126,9 @@ public class LDVisitUtils extends VisitUtils {
                 String maternalComplicationsModuleStatus = getFieldValue(obs, "maternal_complications_module_status");
                 String familyPlanningModuleStatus = getFieldValue(obs, "family_planning_module_status");
                 boolean childVisitsCompletionStatus = true;
-                for (Visit vis: visits) {
+                for (Visit vis : visits) {
 
-                    if (!vis.getVisitType().equalsIgnoreCase(LDPostDeliveryManagementMotherActivityInteractor.EVENT_TYPE)) {
+                    if (!vis.getVisitType().equalsIgnoreCase(LD_POST_DELIVERY_MOTHER_MANAGEMENT)) {
                         JSONObject childVisitJson = new JSONObject(vis.getJson());
                         JSONArray childVisitObs = childVisitJson.getJSONArray("obs");
                         String newbornStageFourModuleStatus = getFieldValue(childVisitObs, "newborn_stage_four_module_status");

@@ -3,6 +3,7 @@ package org.smartregister.chw.hf.activity;
 import static org.smartregister.chw.hf.dao.LDDao.isTheClientReferred;
 import static org.smartregister.chw.hf.utils.Constants.Events.LD_ACTIVE_MANAGEMENT_OF_3RD_STAGE_OF_LABOUR;
 import static org.smartregister.chw.hf.utils.Constants.Events.LD_PARTOGRAPHY;
+import static org.smartregister.chw.hf.utils.Constants.Events.LD_POST_DELIVERY_MOTHER_MANAGEMENT;
 import static org.smartregister.chw.hf.utils.Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryCervixDilationMonitoring;
 import static org.smartregister.chw.hf.utils.Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryLabourStage;
 import static org.smartregister.chw.hf.utils.Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryModeOfDelivery;
@@ -19,7 +20,6 @@ import android.widget.TextView;
 import org.joda.time.DateTime;
 import org.joda.time.Period;
 import org.smartregister.chw.hf.R;
-import org.smartregister.chw.hf.interactor.LDPostDeliveryManagementMotherActivityInteractor;
 import org.smartregister.chw.hf.utils.LDReferralFormUtils;
 import org.smartregister.chw.hf.utils.LDVisitUtils;
 import org.smartregister.chw.ld.LDLibrary;
@@ -141,7 +141,7 @@ public class LDProfileActivity extends BaseLDProfileActivity {
         else if (currentVisitItemTitle.equalsIgnoreCase(getString(R.string.labour_and_delivery_examination_and_consultation_button_tittle)))
             return LDLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), Constants.EVENT_TYPE.LD_GENERAL_EXAMINATION);
         else if (currentVisitItemTitle.equalsIgnoreCase(getString(R.string.ld_mother_post_delivery_management)))
-            return LDLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), LDPostDeliveryManagementMotherActivityInteractor.EVENT_TYPE);
+            return LDLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), LD_POST_DELIVERY_MOTHER_MANAGEMENT);
         else
             return LDLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), LD_ACTIVE_MANAGEMENT_OF_3RD_STAGE_OF_LABOUR);
     }

@@ -5,6 +5,7 @@ import static org.smartregister.chw.anc.util.DBConstants.KEY.RELATIONAL_ID;
 import static org.smartregister.chw.anc.util.JsonFormUtils.updateFormField;
 import static org.smartregister.chw.hf.interactor.AncRegisterInteractor.populatePNCForm;
 import static org.smartregister.chw.hf.utils.Constants.Events.HEI_REGISTRATION;
+import static org.smartregister.chw.hf.utils.Constants.Events.LD_POST_DELIVERY_MOTHER_MANAGEMENT;
 import static org.smartregister.chw.hf.utils.Constants.HIV_STATUS.POSITIVE;
 import static org.smartregister.chw.hf.utils.Constants.HeiHIVTestAtAge.AT_BIRTH;
 import static org.smartregister.chw.hf.utils.Constants.TableName.HEI;
@@ -82,7 +83,6 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
     protected Context context;
     final LinkedHashMap<String, BaseLDVisitAction> actionList = new LinkedHashMap<>();
     private static MemberObject memberObject;
-    public static final String EVENT_TYPE = "Post Delivery Mother Management";
     private static boolean isEdit = false;
     Map<String, List<VisitDetail>> details = null;
 
@@ -99,7 +99,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
         if (view.getEditMode()) {
             isEdit = view.getEditMode();
-            Visit lastVisit = LDLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), EVENT_TYPE);
+            Visit lastVisit = LDLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), LD_POST_DELIVERY_MOTHER_MANAGEMENT);
 
             if (lastVisit != null) {
                 details = org.smartregister.chw.ld.util.VisitUtils.getVisitGroups(LDLibrary.getInstance().visitDetailsRepository().getVisits(lastVisit.getVisitId()));
@@ -197,7 +197,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
     @Override
     protected String getEncounterType() {
-        return EVENT_TYPE;
+        return LD_POST_DELIVERY_MOTHER_MANAGEMENT;
     }
 
     @Override
