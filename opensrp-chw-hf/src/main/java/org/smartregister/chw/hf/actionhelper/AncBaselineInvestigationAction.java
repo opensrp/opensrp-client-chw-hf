@@ -3,6 +3,7 @@ package org.smartregister.chw.hf.actionhelper;
 import android.content.Context;
 
 import org.apache.commons.lang3.StringUtils;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.anc.domain.MemberObject;
@@ -11,6 +12,7 @@ import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.hf.R;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,7 +20,7 @@ import timber.log.Timber;
 
 public class AncBaselineInvestigationAction implements BaseAncHomeVisitAction.AncHomeVisitActionHelper {
     protected MemberObject memberObject;
-    private String glucose_in_urine;
+    private HashMap<String, Boolean> checkObject = new HashMap<>();
     private Context context;
 
     public AncBaselineInvestigationAction(MemberObject memberObject) {
@@ -39,7 +41,22 @@ public class AncBaselineInvestigationAction implements BaseAncHomeVisitAction.An
     public void onPayloadReceived(String jsonPayload) {
         try {
             JSONObject jsonObject = new JSONObject(jsonPayload);
-            glucose_in_urine = CoreJsonFormUtils.getValue(jsonObject, "glucose_in_urine");
+            JSONObject global = jsonObject.getJSONObject("global");
+            checkObject.clear();
+            boolean isKnownPositive = global.getBoolean("known_positive");
+            checkObject.put("glucose_in_urine", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "glucose_in_urine")));
+            checkObject.put("protein_in_urine", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "protein_in_urine")));
+            checkObject.put("blood_group", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "blood_group")));
+            checkObject.put("rh_factor", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "rh_factor")));
+            checkObject.put("hb_level_test", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "hb_level_test")));
+            checkObject.put("blood_for_glucose_test", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "blood_for_glucose_test")));
+            checkObject.put("syphilis", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "syphilis")));
+            checkObject.put("hepatitis", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "hepatitis")));
+            checkObject.put("other_stds", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "other_stds")));
+
+            if(!isKnownPositive){
+                checkObject.put("hiv_qn", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "hiv_qn")));
+            }
         } catch (JSONException e) {
             Timber.e(e);
         }
@@ -67,17 +84,33 @@ public class AncBaselineInvestigationAction implements BaseAncHomeVisitAction.An
 
     @Override
     public BaseAncHomeVisitAction.Status evaluateStatusOnPayload() {
-        if (StringUtils.isBlank(glucose_in_urine))
-            return BaseAncHomeVisitAction.Status.PENDING;
-        else {
+        String status = computeCompletionStatus();
+        if(status.equalsIgnoreCase("complete")){
             return BaseAncHomeVisitAction.Status.COMPLETED;
         }
+        if(status.equalsIgnoreCase("ongoing")){
+            return BaseAncHomeVisitAction.Status.PARTIALLY_COMPLETED;
+        }
+        return BaseAncHomeVisitAction.Status.PENDING;
     }
 
     @Override
     public String evaluateSubTitle() {
-        if (!StringUtils.isBlank(glucose_in_urine))
+        String status = computeCompletionStatus();
+        if (status.equalsIgnoreCase("complete"))
             return context.getString(R.string.baseline_investigation_conducted);
         return "";
+    }
+
+    private String computeCompletionStatus() {
+        for(Map.Entry<String, Boolean> entry : checkObject.entrySet()) {
+            if (entry.getValue()) {
+                if (checkObject.containsValue(false)) {
+                    return "ongoing";
+                }
+                return "complete";
+            }
+        }
+        return "pending";
     }
 }
