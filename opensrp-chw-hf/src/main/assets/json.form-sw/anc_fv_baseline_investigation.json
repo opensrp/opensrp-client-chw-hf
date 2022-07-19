@@ -76,11 +76,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "test_not_conducted"
           }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhali jibu swali hili"
-        }
+        ]
       },
       {
         "key": "prompt_for_glucose_in_urine",
@@ -181,11 +177,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "test_not_conducted"
           }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhali jibu swali hili"
-        }
+        ]
       },
       {
         "key": "prompt_for_protein_in_urine",
@@ -287,10 +279,6 @@
           "AB": "AB",
           "O": "O",
           "test_not_conducted": "test_not_conducted"
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhali chagua kundi la damu"
         }
       },
       {
@@ -372,10 +360,6 @@
             "openmrs_entity_id": "negative"
           }
         ],
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhali jibu swali hli"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -421,11 +405,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "test_not_conducted"
           }
-        ],
-        "v_required": {
-          "value": true,
-          "err": "Tafadhali jibu ili swali"
-        }
+        ]
       },
       {
         "key": "hb_level",
@@ -571,11 +551,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "test_not_conducted"
           }
-        ],
-        "v_required": {
-          "value": true,
-          "err": "Tafadhali jibu swali hili"
-        }
+        ]
       },
       {
         "key": "type_of_blood_for_glucose_test",
@@ -780,10 +756,6 @@
             "openmrs_entity_id": "test_not_conducted"
           }
         ],
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhali jibu swali hili"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -972,11 +944,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "test_not_conducted"
           }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhali jibu swali hili"
-        }
+        ]
       },
       {
         "key": "prescribe_anti_sy",
@@ -1109,11 +1077,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "test_not_conducted"
           }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhali jibu swali hili"
-        }
+        ]
       },
       {
         "key": "prescribe_arv_hepb_at_above_twenty_eight",
@@ -1225,11 +1189,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhali jibu swali hili"
-        }
+        ]
       },
       {
         "key": "other_stds_treatment",
