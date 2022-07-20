@@ -3,6 +3,7 @@ package org.smartregister.chw.hf.actionhelper;
 import android.content.Context;
 
 import org.apache.commons.lang3.StringUtils;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.anc.domain.MemberObject;
@@ -10,8 +11,11 @@ import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.utils.VisitUtils;
+import org.smartregister.family.util.JsonFormUtils;
 
 import java.text.MessageFormat;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,7 +25,7 @@ public class AncCounsellingAction implements BaseAncHomeVisitAction.AncHomeVisit
     protected MemberObject memberObject;
     private String jsonPayload;
 
-    private String anc_counselling;
+    private HashMap<String, Boolean> checkObject = new HashMap<>();
     private BaseAncHomeVisitAction.ScheduleStatus scheduleStatus;
     private String subTitle;
     private Context context;
@@ -52,7 +56,8 @@ public class AncCounsellingAction implements BaseAncHomeVisitAction.AncHomeVisit
     public void onPayloadReceived(String jsonPayload) {
         try {
             JSONObject jsonObject = new JSONObject(jsonPayload);
-            anc_counselling = CoreJsonFormUtils.getCheckBoxValue(jsonObject, "given_counselling");
+            checkObject.clear();
+            checkObject.put("counselling", StringUtils.isNotBlank(CoreJsonFormUtils.getCheckBoxValue(jsonObject, "given_counselling")));
         } catch (JSONException e) {
             Timber.e(e);
         }
@@ -69,25 +74,42 @@ public class AncCounsellingAction implements BaseAncHomeVisitAction.AncHomeVisit
     }
 
     @Override
-    public String postProcess(String s) {
-        return s;
+    public String postProcess(String jsonPayload) {
+        JSONObject jsonObject = null;
+        try {
+            jsonObject = new JSONObject(jsonPayload);
+            JSONArray fields = JsonFormUtils.fields(jsonObject);
+            JSONObject counsellingCompletionStatus = JsonFormUtils.getFieldJSONObject(fields, "counselling_completion_status");
+            assert counsellingCompletionStatus != null;
+            counsellingCompletionStatus.put(com.vijay.jsonwizard.constants.JsonFormConstants.VALUE, VisitUtils.getActionStatus(checkObject));
+        } catch (JSONException e) {
+            Timber.e(e);
+        }
+
+        if (jsonObject != null) {
+            return jsonObject.toString();
+        }
+        return null;
     }
 
     @Override
     public String evaluateSubTitle() {
-        if (StringUtils.isBlank(anc_counselling))
-            return null;
-
-        return context.getString(R.string.counselling_given);
+        String status = VisitUtils.getActionStatus(checkObject);
+        if (status.equalsIgnoreCase(VisitUtils.Complete))
+            return context.getString(R.string.counselling_given);
+        return "";
     }
 
     @Override
     public BaseAncHomeVisitAction.Status evaluateStatusOnPayload() {
-        if (StringUtils.isBlank(anc_counselling))
-            return BaseAncHomeVisitAction.Status.PENDING;
-        else {
+        String status = VisitUtils.getActionStatus(checkObject);
+        if (status.equalsIgnoreCase(VisitUtils.Complete)) {
             return BaseAncHomeVisitAction.Status.COMPLETED;
         }
+        if (status.equalsIgnoreCase(VisitUtils.Ongoing)) {
+            return BaseAncHomeVisitAction.Status.PARTIALLY_COMPLETED;
+        }
+        return BaseAncHomeVisitAction.Status.PENDING;
     }
 
     @Override
