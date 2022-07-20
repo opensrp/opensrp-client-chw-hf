@@ -3,6 +3,7 @@ package org.smartregister.chw.hf.actionhelper;
 import android.content.Context;
 
 import org.apache.commons.lang3.StringUtils;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.anc.domain.MemberObject;
@@ -10,7 +11,10 @@ import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.utils.VisitUtils;
+import org.smartregister.family.util.JsonFormUtils;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,7 +22,7 @@ import timber.log.Timber;
 
 public class AncTtVaccinationAction implements BaseAncHomeVisitAction.AncHomeVisitActionHelper {
     protected MemberObject memberObject;
-    protected String tt1_vaccination;
+    private HashMap<String, Boolean> checkObject = new HashMap<>();
     private String jsonPayload;
     private BaseAncHomeVisitAction.ScheduleStatus scheduleStatus;
     private String subTitle;
@@ -50,9 +54,8 @@ public class AncTtVaccinationAction implements BaseAncHomeVisitAction.AncHomeVis
     public void onPayloadReceived(String jsonPayload) {
         try {
             JSONObject jsonObject = new JSONObject(jsonPayload);
-            String checkString = "tt_vaccination";
-
-            tt1_vaccination = CoreJsonFormUtils.getValue(jsonObject, checkString);
+            checkObject.clear();
+            checkObject.put("tt_vaccination", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "tt_vaccination")));
         } catch (JSONException e) {
             Timber.e(e);
         }
@@ -69,29 +72,43 @@ public class AncTtVaccinationAction implements BaseAncHomeVisitAction.AncHomeVis
     }
 
     @Override
-    public String postProcess(String s) {
-        return s;
+    public String postProcess(String jsonPayload) {
+        JSONObject jsonObject = null;
+        try {
+            jsonObject = new JSONObject(jsonPayload);
+            JSONArray fields = JsonFormUtils.fields(jsonObject);
+            JSONObject ttVaccinationCompletionStatus = JsonFormUtils.getFieldJSONObject(fields, "tt_vaccination_completion_status");
+            assert ttVaccinationCompletionStatus != null;
+            ttVaccinationCompletionStatus.put(com.vijay.jsonwizard.constants.JsonFormConstants.VALUE, VisitUtils.getActionStatus(checkObject));
+        } catch (JSONException e) {
+            Timber.e(e);
+        }
+
+        if (jsonObject != null) {
+            return jsonObject.toString();
+        }
+        return null;
+
     }
 
     @Override
     public String evaluateSubTitle() {
-        if (StringUtils.isBlank(tt1_vaccination))
-            return null;
-
-        StringBuilder stringBuilder = new StringBuilder();
-
-        stringBuilder.append(context.getString(R.string.tt_vaccination_filled));
-
-        return stringBuilder.toString();
+        String status = VisitUtils.getActionStatus(checkObject);
+        if (status.equalsIgnoreCase(VisitUtils.Complete))
+            return context.getString(R.string.tt_vaccination_filled);
+        return "";
     }
 
     @Override
     public BaseAncHomeVisitAction.Status evaluateStatusOnPayload() {
-        if (StringUtils.isBlank(tt1_vaccination))
-            return BaseAncHomeVisitAction.Status.PENDING;
-        else {
+        String status = VisitUtils.getActionStatus(checkObject);
+        if (status.equalsIgnoreCase(VisitUtils.Complete)) {
             return BaseAncHomeVisitAction.Status.COMPLETED;
         }
+        if (status.equalsIgnoreCase(VisitUtils.Ongoing)) {
+            return BaseAncHomeVisitAction.Status.PARTIALLY_COMPLETED;
+        }
+        return BaseAncHomeVisitAction.Status.PENDING;
     }
 
     @Override
