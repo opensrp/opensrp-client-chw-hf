@@ -193,8 +193,9 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
                 JSONArray obs = jsonObject.getJSONArray("obs");
                 boolean isBaselineInvestigationComplete = computeCompletionStatusForAction(obs, "baseline_investigation_completion_status");
                 boolean isObstetricExaminationComplete = computeCompletionStatusForAction(obs, "obstetric_examination_completion_status");
+                boolean isTbScreeningComplete = computeCompletionStatusForAction(obs, "tb_screening_completion_status");
                 //TODO: check if the other fields are complete
-                if (isBaselineInvestigationComplete && isObstetricExaminationComplete) {
+                if (isBaselineInvestigationComplete && isObstetricExaminationComplete && isTbScreeningComplete) {
                     isComplete = true;
                 }
             } catch (Exception e) {
