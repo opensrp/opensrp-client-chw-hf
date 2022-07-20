@@ -198,11 +198,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "hx_abortions"
           }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Please pick at least one"
-        }
+        ]
       },
       {
         "key": "ctc_number",
@@ -222,7 +218,7 @@
         "v_max_length": {
           "value": "17",
           "is_fixed_size": "true",
-          "err":"Please enter a valid CTC Number"
+          "err": "Please enter a valid CTC Number"
         },
         "v_required": {
           "value": true,
@@ -249,10 +245,6 @@
         "openmrs_entity_parent": "",
         "v_numeric": {
           "value": "true",
-          "err": "Please enter the gravida number"
-        },
-        "v_required": {
-          "value": true,
           "err": "Please enter the gravida number"
         }
       },
@@ -282,10 +274,6 @@
           "value": "true",
           "err": "Please enter parity number"
         },
-        "v_required": {
-          "value": true,
-          "err": "Please enter the parity number"
-        },
         "constraints": [
           {
             "type": "numeric",
@@ -302,10 +290,6 @@
         "type": "edit_text",
         "edit_type": "number",
         "hint": "Number of living children",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the number of living children"
-        },
         "v_numeric": {
           "value": "true",
           "err": "Please enter the number of living children"
@@ -343,6 +327,14 @@
         "openmrs_entity_id": "visit_number",
         "openmrs_entity_parent": "",
         "value": 1
+      },
+      {
+        "key": "medical_surgical_history_completion_status",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "medical_surgical_history_completion_status",
+        "openmrs_entity_parent": "",
+        "value": "pending"
       }
     ]
   }

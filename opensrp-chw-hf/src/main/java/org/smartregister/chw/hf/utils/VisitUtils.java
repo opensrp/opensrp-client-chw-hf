@@ -191,6 +191,7 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
             try {
                 JSONObject jsonObject = new JSONObject(visit.getJson());
                 JSONArray obs = jsonObject.getJSONArray("obs");
+                boolean isMedicalAndSurgicalHistoryDone = computeCompletionStatus(obs, "medical_surgical_history_completion_status");
                 boolean isBaselineInvestigationComplete = computeCompletionStatusForAction(obs, "baseline_investigation_completion_status");
                 boolean isObstetricExaminationComplete = computeCompletionStatusForAction(obs, "obstetric_examination_completion_status");
                 boolean isTbScreeningComplete = computeCompletionStatusForAction(obs, "tb_screening_completion_status");
@@ -198,14 +199,14 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
                 boolean isPharmacyComplete = computeCompletionStatusForAction(obs, "pharmacy_completion_status");
                 boolean isTTVaccinationComplete = computeCompletionStatusForAction(obs, "tt_vaccination_completion_status");
                 boolean isCounsellingComplete = computeCompletionStatusForAction(obs, "counselling_completion_status");
-                //TODO: check if the other fields are complete
                 if (isBaselineInvestigationComplete
                         && isObstetricExaminationComplete
                         && isTbScreeningComplete
                         && isMalariaInvestigationComplete
                         && isPharmacyComplete
                         && isTTVaccinationComplete
-                        && isCounsellingComplete) {
+                        && isCounsellingComplete
+                        && isMedicalAndSurgicalHistoryDone) {
                     isComplete = true;
                 }
             } catch (Exception e) {
