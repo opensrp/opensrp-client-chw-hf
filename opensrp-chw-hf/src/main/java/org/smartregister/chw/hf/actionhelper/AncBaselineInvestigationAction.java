@@ -11,6 +11,7 @@ import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.hf.R;
+import org.smartregister.family.util.JsonFormUtils;
 
 import java.util.HashMap;
 import java.util.List;
@@ -54,7 +55,7 @@ public class AncBaselineInvestigationAction implements BaseAncHomeVisitAction.An
             checkObject.put("hepatitis", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "hepatitis")));
             checkObject.put("other_stds", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "other_stds")));
 
-            if(!isKnownPositive){
+            if (!isKnownPositive) {
                 checkObject.put("hiv_qn", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "hiv_qn")));
             }
         } catch (JSONException e) {
@@ -73,7 +74,21 @@ public class AncBaselineInvestigationAction implements BaseAncHomeVisitAction.An
     }
 
     @Override
-    public String postProcess(String s) {
+    public String postProcess(String jsonPayload) {
+        JSONObject jsonObject = null;
+        try {
+            jsonObject = new JSONObject(jsonPayload);
+            JSONArray fields = JsonFormUtils.fields(jsonObject);
+            JSONObject baselineInvestigationCompletionStatus = JsonFormUtils.getFieldJSONObject(fields, "baseline_investigation_completion_status");
+            assert baselineInvestigationCompletionStatus != null;
+            baselineInvestigationCompletionStatus.put(com.vijay.jsonwizard.constants.JsonFormConstants.VALUE, computeCompletionStatus());
+        } catch (JSONException e) {
+            Timber.e(e);
+        }
+
+        if (jsonObject != null) {
+            return jsonObject.toString();
+        }
         return null;
     }
 
@@ -85,10 +100,10 @@ public class AncBaselineInvestigationAction implements BaseAncHomeVisitAction.An
     @Override
     public BaseAncHomeVisitAction.Status evaluateStatusOnPayload() {
         String status = computeCompletionStatus();
-        if(status.equalsIgnoreCase("complete")){
+        if (status.equalsIgnoreCase("complete")) {
             return BaseAncHomeVisitAction.Status.COMPLETED;
         }
-        if(status.equalsIgnoreCase("ongoing")){
+        if (status.equalsIgnoreCase("ongoing")) {
             return BaseAncHomeVisitAction.Status.PARTIALLY_COMPLETED;
         }
         return BaseAncHomeVisitAction.Status.PENDING;
@@ -103,7 +118,7 @@ public class AncBaselineInvestigationAction implements BaseAncHomeVisitAction.An
     }
 
     private String computeCompletionStatus() {
-        for(Map.Entry<String, Boolean> entry : checkObject.entrySet()) {
+        for (Map.Entry<String, Boolean> entry : checkObject.entrySet()) {
             if (entry.getValue()) {
                 if (checkObject.containsValue(false)) {
                     return "ongoing";
