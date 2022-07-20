@@ -83,11 +83,11 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
                                 boolean isCounsellingDone = computeCompletionStatus(obs, "given_counselling");
                                 boolean isTTVaccinationDone = computeCompletionStatus(obs, ttCheckString);
 
-                                if(HfAncDao.isEligibleForTtVaccination(v.getBaseEntityId())) {
+                                if (HfAncDao.isEligibleForTtVaccination(v.getBaseEntityId())) {
                                     if (isConsultationDone && isLabTestsDone && isPharmacyDone && isCounsellingDone && isTTVaccinationDone) {
                                         ancFollowupVisitsCompleted.add(v);
                                     }
-                                }else{
+                                } else {
                                     if (isConsultationDone && isLabTestsDone && isPharmacyDone && isCounsellingDone) {
                                         ancFollowupVisitsCompleted.add(v);
                                     }
@@ -185,22 +185,23 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
         return isCancelled;
     }
 
-    public static boolean istAncVisitComplete(Visit visit){
+    public static boolean istAncVisitComplete(Visit visit) {
         boolean isComplete = false;
-        if(visit.getVisitType().equalsIgnoreCase(Constants.Events.ANC_FIRST_FACILITY_VISIT)){
-           try{
-               JSONObject jsonObject = new JSONObject(visit.getJson());
+        if (visit.getVisitType().equalsIgnoreCase(Constants.Events.ANC_FIRST_FACILITY_VISIT)) {
+            try {
+                JSONObject jsonObject = new JSONObject(visit.getJson());
                 JSONArray obs = jsonObject.getJSONArray("obs");
                 boolean isBaselineInvestigationComplete = computeCompletionStatusForAction(obs, "baseline_investigation_completion_status");
-               //TODO: check if the other fields are complete
-                if(isBaselineInvestigationComplete){
+                boolean isObstetricExaminationComplete = computeCompletionStatusForAction(obs, "obstetric_examination_completion_status");
+                //TODO: check if the other fields are complete
+                if (isBaselineInvestigationComplete && isObstetricExaminationComplete) {
                     isComplete = true;
                 }
-           }catch (Exception e){
-               Timber.e(e);
-           }
+            } catch (Exception e) {
+                Timber.e(e);
+            }
         }
-        if(visit.getVisitType().equalsIgnoreCase(Constants.Events.ANC_RECURRING_FACILITY_VISIT)){
+        if (visit.getVisitType().equalsIgnoreCase(Constants.Events.ANC_RECURRING_FACILITY_VISIT)) {
             //TODO: catch for recurring visits
         }
         return isComplete;
