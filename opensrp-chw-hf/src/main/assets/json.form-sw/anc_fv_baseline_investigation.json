@@ -1318,6 +1318,14 @@
             }
           }
         }
+      },
+      {
+        "key": "baseline_investigation_completion_status",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "baseline_investigation_completion_status",
+        "openmrs_entity_parent": "",
+        "value": "pending"
       }
     ]
   }
