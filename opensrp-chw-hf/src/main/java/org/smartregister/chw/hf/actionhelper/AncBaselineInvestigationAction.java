@@ -11,6 +11,7 @@ import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.utils.VisitUtils;
 import org.smartregister.family.util.JsonFormUtils;
 
 import java.util.HashMap;
@@ -81,7 +82,7 @@ public class AncBaselineInvestigationAction implements BaseAncHomeVisitAction.An
             JSONArray fields = JsonFormUtils.fields(jsonObject);
             JSONObject baselineInvestigationCompletionStatus = JsonFormUtils.getFieldJSONObject(fields, "baseline_investigation_completion_status");
             assert baselineInvestigationCompletionStatus != null;
-            baselineInvestigationCompletionStatus.put(com.vijay.jsonwizard.constants.JsonFormConstants.VALUE, computeCompletionStatus());
+            baselineInvestigationCompletionStatus.put(com.vijay.jsonwizard.constants.JsonFormConstants.VALUE, VisitUtils.getActionStatus(checkObject));
         } catch (JSONException e) {
             Timber.e(e);
         }
@@ -99,11 +100,11 @@ public class AncBaselineInvestigationAction implements BaseAncHomeVisitAction.An
 
     @Override
     public BaseAncHomeVisitAction.Status evaluateStatusOnPayload() {
-        String status = computeCompletionStatus();
-        if (status.equalsIgnoreCase("complete")) {
+        String status = VisitUtils.getActionStatus(checkObject);
+        if (status.equalsIgnoreCase(VisitUtils.Complete)) {
             return BaseAncHomeVisitAction.Status.COMPLETED;
         }
-        if (status.equalsIgnoreCase("ongoing")) {
+        if (status.equalsIgnoreCase(VisitUtils.Ongoing)) {
             return BaseAncHomeVisitAction.Status.PARTIALLY_COMPLETED;
         }
         return BaseAncHomeVisitAction.Status.PENDING;
@@ -111,21 +112,10 @@ public class AncBaselineInvestigationAction implements BaseAncHomeVisitAction.An
 
     @Override
     public String evaluateSubTitle() {
-        String status = computeCompletionStatus();
-        if (status.equalsIgnoreCase("complete"))
+        String status = VisitUtils.getActionStatus(checkObject);
+        if (status.equalsIgnoreCase(VisitUtils.Complete))
             return context.getString(R.string.baseline_investigation_conducted);
         return "";
     }
 
-    private String computeCompletionStatus() {
-        for (Map.Entry<String, Boolean> entry : checkObject.entrySet()) {
-            if (entry.getValue()) {
-                if (checkObject.containsValue(false)) {
-                    return "ongoing";
-                }
-                return "complete";
-            }
-        }
-        return "pending";
-    }
 }

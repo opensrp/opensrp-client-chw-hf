@@ -19,11 +19,16 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import timber.log.Timber;
 
 public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
+    public static String Complete = "complete";
+    public static String Pending = "pending";
+    public static String Ongoing = "ongoing";
+
     public static void processVisits() throws Exception {
         processVisits(AncLibrary.getInstance().visitRepository(), AncLibrary.getInstance().visitDetailsRepository());
     }
@@ -199,6 +204,18 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
             //TODO: catch for recurring visits
         }
         return isComplete;
+    }
+
+    public static String getActionStatus(Map<String, Boolean> checkObject) {
+        for (Map.Entry<String, Boolean> entry : checkObject.entrySet()) {
+            if (entry.getValue()) {
+                if (checkObject.containsValue(false)) {
+                    return Ongoing;
+                }
+                return Complete;
+            }
+        }
+        return Pending;
     }
 
 }
