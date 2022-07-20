@@ -417,5 +417,6 @@
     <string name="positive">Positive</string>
     <string name="negative">Negative</string>
     <string name="test_not_conducted">Test Not Conducted</string>
+    <string name="process_visit">Process Visit</string>
 
 </resources>

@@ -311,6 +311,7 @@
     <string name="ltfu_reason_client_not_found_address_incorrect">Anwani sio sahihi</string>
     <string name="ltfu_reason_client_not_found_client_relocated">Amehama makazi</string>
     <string name="ltfu_reason_client_not_found_seasonal_work">Kilimo\/kazi za msimu</string>
+    <string name="process_visit">Chakata Hudhurio</string>
 
 
 </resources>
