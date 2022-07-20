@@ -28,4 +28,5 @@
     <string name="error_opening_profile">Error opening client\'s profile</string>
     <string name="family">%s Family</string>
     <string name="created">Created: %s</string>
+    <string name="mapbox_access_token">pk.eyJ1IjoiYm9yZXNoYS1hZnlhIiwiYSI6ImNrYTZzODVudDBhMWIycm1vbzF6dHc4YzgifQ.EPhVvPOIeQEkKwAyyU7fIg</string>
 </resources>

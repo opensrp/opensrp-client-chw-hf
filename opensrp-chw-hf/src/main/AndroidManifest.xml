@@ -192,6 +192,10 @@
         <activity
             android:name=".activity.ChildMedicalHistoryActivity"
             android:theme="@style/HFTheme.NoActionBar" />
+        
+        <activity android:name="org.smartregister.chw.core.activity.CoreAncMemberMapActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/HFTheme.NoActionBar"/>
 
 
         <service android:name="org.smartregister.immunization.service.intent.VaccineIntentService" />
