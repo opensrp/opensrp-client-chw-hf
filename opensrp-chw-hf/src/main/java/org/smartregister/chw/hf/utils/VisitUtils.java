@@ -47,23 +47,8 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
             Date today = DateUtils.truncate(new Date(), Calendar.DATE);
             if (truncatedUpdatedDate.before(today)) {
                 if (v.getVisitType().equalsIgnoreCase(Constants.Events.ANC_FIRST_FACILITY_VISIT)) {
-                    try {
-                        JSONObject jsonObject = new JSONObject(v.getJson());
-                        JSONArray obs = jsonObject.getJSONArray("obs");
-
-                        boolean isMedicalAndSurgicalHistoryDone = computeCompletionStatus(obs, "medical_surgical_history");
-                        boolean isObstetricExaminationDone = computeCompletionStatus(obs, "abdominal_scars");
-                        boolean isBaselineInvestigationDone = computeCompletionStatus(obs, "glucose_in_urine");
-                        boolean isTTVaccinationDone = computeCompletionStatus(obs, "tt_vaccination");
-                        boolean isCounsellingDone = computeCompletionStatus(obs, "given_counselling");
-                        if (isMedicalAndSurgicalHistoryDone &&
-                                isObstetricExaminationDone &&
-                                isBaselineInvestigationDone &&
-                                isTTVaccinationDone && isCounsellingDone) {
-                            ancFirstVisitsCompleted.add(v);
-                        }
-                    } catch (Exception e) {
-                        Timber.e(e);
+                    if (istAncVisitComplete(v)) {
+                        ancFirstVisitsCompleted.add(v);
                     }
                 } else if (v.getVisitType().equalsIgnoreCase(Constants.Events.ANC_RECURRING_FACILITY_VISIT)) {
                     try {
