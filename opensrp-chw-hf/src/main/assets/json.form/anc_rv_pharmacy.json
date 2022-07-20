@@ -85,11 +85,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "medication_not_given"
           }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Please answer this question"
-        }
+        ]
       },
       {
         "key": "reason_for_giving_folic_acid",
@@ -232,10 +228,6 @@
             "openmrs_entity_id": "medication_not_given"
           }
         ],
-        "v_required": {
-          "value": "true",
-          "err": "Please select one option"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -304,6 +296,14 @@
             "ex": "equalTo(., \"other\")"
           }
         }
+      },
+      {
+        "key": "pharmacy_completion_status",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "pharmacy_completion_status",
+        "openmrs_entity_parent": "",
+        "value": "pending"
       }
     ]
   }

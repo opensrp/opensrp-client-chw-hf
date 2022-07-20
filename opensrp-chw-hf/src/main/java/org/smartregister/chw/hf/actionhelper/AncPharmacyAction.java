@@ -3,6 +3,7 @@ package org.smartregister.chw.hf.actionhelper;
 import android.content.Context;
 
 import org.apache.commons.lang3.StringUtils;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.anc.domain.MemberObject;
@@ -10,7 +11,10 @@ import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.utils.VisitUtils;
+import org.smartregister.family.util.JsonFormUtils;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,7 +24,7 @@ public class AncPharmacyAction implements BaseAncHomeVisitAction.AncHomeVisitAct
     protected MemberObject memberObject;
     private String jsonPayload;
 
-    private String iron_folate_supplements;
+    private HashMap<String, Boolean> checkObject = new HashMap<>();
     private BaseAncHomeVisitAction.ScheduleStatus scheduleStatus;
     private String subTitle;
     private Context context;
@@ -51,7 +55,14 @@ public class AncPharmacyAction implements BaseAncHomeVisitAction.AncHomeVisitAct
     public void onPayloadReceived(String jsonPayload) {
         try {
             JSONObject jsonObject = new JSONObject(jsonPayload);
-            iron_folate_supplements = CoreJsonFormUtils.getValue(jsonObject, "iron_folate_supplements");
+            JSONObject global = jsonObject.getJSONObject("global");
+            checkObject.clear();
+            int gestAge = global.getInt("gestational_age");
+            boolean dewormingGiven = global.getBoolean("deworming_given");
+            checkObject.put("iron_folate_supplements", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "iron_folate_supplements")));
+            if (gestAge >= 13 && !dewormingGiven) {
+                checkObject.put("deworming", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "deworming")));
+            }
         } catch (JSONException e) {
             Timber.e(e);
         }
@@ -68,30 +79,42 @@ public class AncPharmacyAction implements BaseAncHomeVisitAction.AncHomeVisitAct
     }
 
     @Override
-    public String postProcess(String s) {
-        return s;
+    public String postProcess(String jsonPayload) {
+        JSONObject jsonObject = null;
+        try {
+            jsonObject = new JSONObject(jsonPayload);
+            JSONArray fields = JsonFormUtils.fields(jsonObject);
+            JSONObject pharmacyCompletionStatus = JsonFormUtils.getFieldJSONObject(fields, "pharmacy_completion_status");
+            assert pharmacyCompletionStatus != null;
+            pharmacyCompletionStatus.put(com.vijay.jsonwizard.constants.JsonFormConstants.VALUE, VisitUtils.getActionStatus(checkObject));
+        } catch (JSONException e) {
+            Timber.e(e);
+        }
+
+        if (jsonObject != null) {
+            return jsonObject.toString();
+        }
+        return null;
     }
 
     @Override
     public String evaluateSubTitle() {
-        if (StringUtils.isBlank(iron_folate_supplements))
-            return null;
-
-        StringBuilder stringBuilder = new StringBuilder();
-
-        //TODO ilakoze extract to string recources
-        stringBuilder.append(context.getString(R.string.med_and_supp_issued));
-
-        return stringBuilder.toString();
+        String status = VisitUtils.getActionStatus(checkObject);
+        if (status.equalsIgnoreCase(VisitUtils.Complete))
+            return context.getString(R.string.med_and_supp_issued);
+        return "";
     }
 
     @Override
     public BaseAncHomeVisitAction.Status evaluateStatusOnPayload() {
-        if (StringUtils.isBlank(iron_folate_supplements))
-            return BaseAncHomeVisitAction.Status.PENDING;
-        else {
+        String status = VisitUtils.getActionStatus(checkObject);
+        if (status.equalsIgnoreCase(VisitUtils.Complete)) {
             return BaseAncHomeVisitAction.Status.COMPLETED;
         }
+        if (status.equalsIgnoreCase(VisitUtils.Ongoing)) {
+            return BaseAncHomeVisitAction.Status.PARTIALLY_COMPLETED;
+        }
+        return BaseAncHomeVisitAction.Status.PENDING;
     }
 
     @Override
