@@ -233,6 +233,14 @@
           }
         },
         {
+          "column_name": "hvl_sample_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "hvl_sample_id"
+          }
+        },
+        {
           "column_name": "hvl_pmtct_followup_form_submission_id",
           "type": "Event",
           "json_mapping": {
@@ -273,6 +281,14 @@
           "type": "Event",
           "json_mapping": {
             "field": "formSubmissionId"
+          }
+        },
+        {
+          "column_name": "cd4_sample_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "cd4_sample_id"
           }
         },
         {

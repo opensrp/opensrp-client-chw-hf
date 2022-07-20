@@ -51,6 +51,13 @@
     "title": "HVL Suppression",
     "fields": [
       {
+        "key": "hvl_sample_id",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hvl_sample_id",
+        "openmrs_entity_parent": ""
+      },
+      {
         "key": "hvl_result",
         "type": "edit_text",
         "hint": "HVL Results",
