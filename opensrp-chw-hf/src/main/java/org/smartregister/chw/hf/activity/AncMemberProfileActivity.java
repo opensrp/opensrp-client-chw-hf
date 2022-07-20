@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.rey.material.widget.Button;
@@ -83,6 +84,8 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     private boolean isKnownOnArt;
     private String ctcNumber;
     private String partnerBaseEntityId;
+    private TextView processVisitBtn;
+    private RelativeLayout processVisitLayout;
 
     public static void startMe(Activity activity, String baseEntityID) {
         Intent intent = new Intent(activity, AncMemberProfileActivity.class);
@@ -371,10 +374,14 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
 
     private void checkVisitStatus(Visit firstVisit) {
         boolean visitDone = firstVisit.getProcessed();
+        boolean formsCompleted = VisitUtils.istAncVisitComplete(firstVisit);
         if (!visitDone) {
             showVisitInProgress();
             textViewUndo.setVisibility(View.GONE);
             textViewAncVisitNot.setVisibility(View.GONE);
+            if(formsCompleted){
+                showCompleteVisit();
+            }
         } else {
             getButtonStatus();
         }
@@ -386,6 +393,13 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         layoutNotRecordView.setVisibility(View.VISIBLE);
         textViewNotVisitMonth.setText(getContext().getString(R.string.visit_in_progress, "ANC"));
         imageViewCross.setImageResource(R.drawable.activityrow_visit_in_progress);
+    }
+
+    private void showCompleteVisit(){
+        processVisitBtn = findViewById(R.id.textview_process_visit);
+        processVisitBtn.setOnClickListener(this);
+        processVisitLayout = findViewById(R.id.rlProcessVisitBtn);
+        processVisitLayout.setVisibility(View.VISIBLE);
     }
 
 

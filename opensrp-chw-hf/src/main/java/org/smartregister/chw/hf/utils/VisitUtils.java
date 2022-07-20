@@ -132,6 +132,18 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
         return false;
     }
 
+    public static boolean computeCompletionStatusForAction(JSONArray obs, String checkString) throws JSONException {
+        int size = obs.length();
+        for (int i = 0; i < size; i++) {
+            JSONObject checkObj = obs.getJSONObject(i);
+            if (checkObj.getString("fieldCode").equalsIgnoreCase(checkString)) {
+                String status = checkObj.getJSONArray("values").getString(0);
+                return status.equalsIgnoreCase("complete");
+            }
+        }
+        return false;
+    }
+
     public static boolean checkIfStatusIsViable(JSONArray obs) throws JSONException {
         String pregnancyStatus = "";
         int size = obs.length();
@@ -166,6 +178,27 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
             Timber.e(e);
         }
         return isCancelled;
+    }
+
+    public static boolean istAncVisitComplete(Visit visit){
+        boolean isComplete = false;
+        if(visit.getVisitType().equalsIgnoreCase(Constants.Events.ANC_FIRST_FACILITY_VISIT)){
+           try{
+               JSONObject jsonObject = new JSONObject(visit.getJson());
+                JSONArray obs = jsonObject.getJSONArray("obs");
+                boolean isBaselineInvestigationComplete = computeCompletionStatusForAction(obs, "baseline_investigation_completion_status");
+               //TODO: check if the other fields are complete
+                if(isBaselineInvestigationComplete){
+                    isComplete = true;
+                }
+           }catch (Exception e){
+               Timber.e(e);
+           }
+        }
+        if(visit.getVisitType().equalsIgnoreCase(Constants.Events.ANC_RECURRING_FACILITY_VISIT)){
+            //TODO: catch for recurring visits
+        }
+        return isComplete;
     }
 
 }
