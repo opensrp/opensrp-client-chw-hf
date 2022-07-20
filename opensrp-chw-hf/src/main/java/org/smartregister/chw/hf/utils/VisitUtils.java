@@ -194,8 +194,9 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
                 boolean isBaselineInvestigationComplete = computeCompletionStatusForAction(obs, "baseline_investigation_completion_status");
                 boolean isObstetricExaminationComplete = computeCompletionStatusForAction(obs, "obstetric_examination_completion_status");
                 boolean isTbScreeningComplete = computeCompletionStatusForAction(obs, "tb_screening_completion_status");
+                boolean isMalariaInvestigationComplete = computeCompletionStatusForAction(obs, "malaria_investigation_completion_status");
                 //TODO: check if the other fields are complete
-                if (isBaselineInvestigationComplete && isObstetricExaminationComplete && isTbScreeningComplete) {
+                if (isBaselineInvestigationComplete && isObstetricExaminationComplete && isTbScreeningComplete && isMalariaInvestigationComplete) {
                     isComplete = true;
                 }
             } catch (Exception e) {
