@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
+import com.mapbox.mapboxsdk.Mapbox;
 
 import org.smartregister.chw.core.activity.CoreFamilyRegisterActivity;
 import org.smartregister.chw.core.custom_views.NavigationMenu;
@@ -57,6 +58,7 @@ public class FamilyRegisterActivity extends CoreFamilyRegisterActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Mapbox.getInstance(this, BuildConfig.MAPBOX_SDK_ACCESS_TOKEN);
         NavigationMenu.getInstance(this, null, null);
         HealthFacilityApplication.getInstance().notifyAppContextChange(); // initialize the language (bug in translation)
 
