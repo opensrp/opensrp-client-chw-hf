@@ -664,6 +664,68 @@ indicators:
                         AND (date(efm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
+
+  - key: "ld-5b-35+"
+    description: "Matatizo kabla ya kujifungua Pre-mature Rupture of Membrane (PROM)"
+    indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                      WHERE elpc.maternal_complications_before_delivery LIKE '%chk_prom%'
+                        AND (date(efm.dob, '+35 years') <= date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
+    
+  - key: "ld-5c-10-14"
+    description: "Matatizo kabla ya kujifungua High BP"
+    indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                      WHERE elpc.maternal_complications_before_delivery LIKE '%chk_high_bp%'
+                        AND (date(efm.dob, '+10 years') <= date('now'))
+                        AND (date(efm.dob, '+15 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
+  - key: "ld-5c-15-19"
+    description: "Matatizo kabla ya kujifungua High BP"
+    indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                      WHERE elpc.maternal_complications_before_delivery LIKE '%chk_high_bp%'
+                        AND (date(efm.dob, '+15 years') <= date('now'))
+                        AND (date(efm.dob, '+20 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
+  - key: "ld-5c-20-24"
+    description: "Matatizo kabla ya kujifungua High BP"
+    indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                      WHERE elpc.maternal_complications_before_delivery LIKE '%chk_high_bp%'
+                        AND (date(efm.dob, '+20 years') <= date('now'))
+                        AND (date(efm.dob, '+25 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
+  - key: "ld-5c-25-29"
+    description: "Matatizo kabla ya kujifungua High BP"
+    indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                      WHERE elpc.maternal_complications_before_delivery LIKE '%chk_high_bp%'
+                        AND (date(efm.dob, '+25 years') <= date('now'))
+                        AND (date(efm.dob, '+30 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
+  - key: "ld-5c-30-34"
+    description: "Matatizo kabla ya kujifungua High BP"
+    indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                      WHERE elpc.maternal_complications_before_delivery LIKE '%chk_high_bp%'
+                        AND (date(efm.dob, '+30 years') <= date('now'))
+                        AND (date(efm.dob, '+35 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
+  
   - key: "ld-5c-35+"
     description: "Matatizo kabla ya kujifungua High BP"
     indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
@@ -723,6 +785,120 @@ indicators:
                         AND (date(efm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
+  
+  
+  - key: "ld-5d-10-14"
+    description: "Matatizo kabla ya kujifungua Pre-eclampsia"
+    indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
+                    FROM ec_ld_postpartum_care elpc
+                             INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                    WHERE elpc.maternal_complications_before_delivery LIKE '%chk_pre_eclampsia%'
+                      AND (date(efm.dob, '+10 years') <= date('now'))
+                      AND (date(efm.dob, '+15 years') > date('now'))
+                      AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                          date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
+  - key: "ld-5d-15-19"
+    description: "Matatizo kabla ya kujifungua Pre-eclampsia"
+    indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
+                    FROM ec_ld_postpartum_care elpc
+                             INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                    WHERE elpc.maternal_complications_before_delivery LIKE '%chk_pre_eclampsia%'
+                      AND (date(efm.dob, '+15 years') <= date('now'))
+                      AND (date(efm.dob, '+20 years') > date('now'))
+                      AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                          date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
+  - key: "ld-5d-20-24"
+    description: "Matatizo kabla ya kujifungua Pre-eclampsia"
+    indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
+                    FROM ec_ld_postpartum_care elpc
+                             INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                    WHERE elpc.maternal_complications_before_delivery LIKE '%chk_pre_eclampsia%'
+                      AND (date(efm.dob, '+20 years') <= date('now'))
+                      AND (date(efm.dob, '+25 years') > date('now'))
+                      AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                          date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
+  - key: "ld-5d-25-29"
+    description: "Matatizo kabla ya kujifungua Pre-eclampsia"
+    indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
+                    FROM ec_ld_postpartum_care elpc
+                             INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                    WHERE elpc.maternal_complications_before_delivery LIKE '%chk_pre_eclampsia%'
+                      AND (date(efm.dob, '+25 years') <= date('now'))
+                      AND (date(efm.dob, '+30 years') > date('now'))
+                      AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                          date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
+  - key: "ld-5d-30-34"
+    description: "Matatizo kabla ya kujifungua Pre-eclampsia"
+    indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
+                    FROM ec_ld_postpartum_care elpc
+                             INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                    WHERE elpc.maternal_complications_before_delivery LIKE '%chk_pre_eclampsia%'
+                      AND (date(efm.dob, '+30 years') <= date('now'))
+                      AND (date(efm.dob, '+35 years') > date('now'))
+                      AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                          date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
+
+  - key: "ld-5d-35+"
+    description: "Matatizo kabla ya kujifungua Pre-eclampsia"
+    indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                      WHERE elpc.maternal_complications_before_delivery LIKE '%chk_pre_eclampsia%'
+                        AND (date(efm.dob, '+35 years') <= date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
+  - key: "ld-5e-10-14"
+    description: "Matatizo kabla ya kujifungua eclampsia"
+    indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                      WHERE elpc.maternal_complications_before_delivery LIKE '%chk_eclampsia%'
+                        AND (date(efm.dob, '+10 years') <= date('now'))
+                        AND (date(efm.dob, '+15 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
+  - key: "ld-5e-15-19"
+    description: "Matatizo kabla ya kujifungua Eclampsia"
+    indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                      WHERE elpc.maternal_complications_before_delivery LIKE '%chk_eclampsia%'
+                        AND (date(efm.dob, '+15 years') <= date('now'))
+                        AND (date(efm.dob, '+20 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
+  - key: "ld-5e-20-24"
+    description: "Matatizo kabla ya kujifungua Eclampsia"
+    indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                      WHERE elpc.maternal_complications_before_delivery LIKE '%chk_eclampsia%'
+                        AND (date(efm.dob, '+20 years') <= date('now'))
+                        AND (date(efm.dob, '+25 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
+  - key: "ld-5e-25-29"
+    description: "Matatizo kabla ya kujifungua Eclampsia"
+    indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                      WHERE elpc.maternal_complications_before_delivery LIKE '%chk_eclampsia%'
+                        AND (date(efm.dob, '+25 years') <= date('now'))
+                        AND (date(efm.dob, '+30 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
+  - key: "ld-5e-30-34"
+    description: "Matatizo kabla ya kujifungua Eclampsia"
+    indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                      WHERE elpc.maternal_complications_before_delivery LIKE '%chk_eclampsia%'
+                        AND (date(efm.dob, '+30 years') <= date('now'))
+                        AND (date(efm.dob, '+35 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
+
+    
   - key: "ld-5e-35+"
     description: "Matatizo kabla ya kujifungua Eclampsia"
     indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
@@ -837,6 +1013,65 @@ indicators:
                       FROM ec_ld_postpartum_care elpc
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
                       WHERE elpc.maternal_complications_before_delivery LIKE '%chk_malaria%'
+                        AND (date(efm.dob, '+30 years') <= date('now'))
+                        AND (date(efm.dob, '+35 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
+  - key: "ld-5g-35+"
+    description: "Matatizo kabla ya kujifungua Malaria"
+    indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                      WHERE elpc.maternal_complications_before_delivery LIKE '%chk_malaria%'
+                        AND (date(efm.dob, '+35 years') <= date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
+  - key: "ld-5h-10-14"
+    description: "Matatizo kabla ya kujifungua HIV + Stage III au IV"
+    indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                      WHERE elpc.maternal_complications_before_delivery LIKE '%chk_hiv_stage_3_or_4%'
+                        AND (date(efm.dob, '+10 years') <= date('now'))
+                        AND (date(efm.dob, '+15 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
+  - key: "ld-5h-15-19"
+    description: "Matatizo kabla ya kujifungua HIV + Stage III au IV"
+    indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                      WHERE elpc.maternal_complications_before_delivery LIKE '%chk_hiv_stage_3_or_4%'
+                        AND (date(efm.dob, '+15 years') <= date('now'))
+                        AND (date(efm.dob, '+20 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
+  - key: "ld-5h-20-24"
+    description: "Matatizo kabla ya kujifungua HIV + Stage III au IV"
+    indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                      WHERE elpc.maternal_complications_before_delivery LIKE '%chk_hiv_stage_3_or_4%'
+                        AND (date(efm.dob, '+20 years') <= date('now'))
+                        AND (date(efm.dob, '+25 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
+  - key: "ld-5h-25-29"
+    description: "Matatizo kabla ya kujifungua HIV + Stage III au IV"
+    indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                      WHERE elpc.maternal_complications_before_delivery LIKE '%chk_hiv_stage_3_or_4%'
+                        AND (date(efm.dob, '+25 years') <= date('now'))
+                        AND (date(efm.dob, '+30 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
+  - key: "ld-5h-30-34"
+    description: "Matatizo kabla ya kujifungua HIV + Stage III au IV"
+    indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                      WHERE elpc.maternal_complications_before_delivery LIKE '%chk_hiv_stage_3_or_4%'
                         AND (date(efm.dob, '+30 years') <= date('now'))
                         AND (date(efm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
