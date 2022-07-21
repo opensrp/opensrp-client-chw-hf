@@ -7,6 +7,7 @@ import android.os.Build;
 import com.crashlytics.android.Crashlytics;
 import com.crashlytics.android.core.CrashlyticsCore;
 import com.evernote.android.job.JobManager;
+import com.mapbox.mapboxsdk.Mapbox;
 
 import org.jetbrains.annotations.NotNull;
 import org.smartregister.AllConstants;
@@ -226,6 +227,8 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
         }
         // set up processor
         FamilyLibrary.getInstance().setClientProcessorForJava(HfClientProcessor.getInstance(getApplicationContext()));
+
+        Mapbox.getInstance(this, BuildConfig.MAPBOX_SDK_ACCESS_TOKEN);
     }
 
     @Override
