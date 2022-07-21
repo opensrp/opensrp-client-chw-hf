@@ -659,11 +659,11 @@ public class HfAncDao extends AbstractDao {
     }
 
     public static String getNumberOfSurvivingChildren(String baseEntityId) {
-        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "number_of_surv_children");
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "no_surv_children");
         String sql = String.format(
-                "SELECT number_of_surv_children FROM %s WHERE base_entity_id = '%s' " +
+                "SELECT no_surv_children FROM %s WHERE base_entity_id = '%s' " +
                         "AND is_closed = 0 " +
-                        "AND number_of_surv_children IS NOT NULL ",
+                        "AND no_surv_children IS NOT NULL ",
                 "ec_anc_register",
                 baseEntityId);
         List<String> res = readData(sql, dataMap);
