@@ -2266,11 +2266,9 @@ indicators:
                                  '-' || '01')"
   - key: "ld-14a-10-14"
     description: "Wazazi waliofariki"
-    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+    indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
                       FROM ec_ld_postpartum_care elpc
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
-                               INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
-                               INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
                       WHERE elpc.status = 'died'
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
@@ -2690,11 +2688,9 @@ indicators:
                                  '-' || '01')"
   - key: "ld-14a-15-19"
     description: "Wazazi waliofariki"
-    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+    indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
                       FROM ec_ld_postpartum_care elpc
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
-                               INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
-                               INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
                       WHERE elpc.status = 'died'
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
@@ -3114,11 +3110,9 @@ indicators:
                                  '-' || '01')"
   - key: "ld-14a-20-24"
     description: "Wazazi waliofariki"
-    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+    indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
                       FROM ec_ld_postpartum_care elpc
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
-                               INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
-                               INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
                       WHERE elpc.status = 'died'
                         AND (date(efm.dob, '+20 years') <= date('now'))
                         AND (date(efm.dob, '+25 years') > date('now'))
@@ -3538,11 +3532,9 @@ indicators:
                                  '-' || '01')"
   - key: "ld-14a-25-29"
     description: "Wazazi waliofariki"
-    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+    indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
                       FROM ec_ld_postpartum_care elpc
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
-                               INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
-                               INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
                       WHERE elpc.status = 'died'
                         AND (date(efm.dob, '+25 years') <= date('now'))
                         AND (date(efm.dob, '+30 years') > date('now'))
@@ -3962,11 +3954,9 @@ indicators:
                                  '-' || '01')"
   - key: "ld-14a-30-34"
     description: "Wazazi waliofariki"
-    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+    indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
                       FROM ec_ld_postpartum_care elpc
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
-                               INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
-                               INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
                       WHERE elpc.status = 'died'
                         AND (date(efm.dob, '+30 years') <= date('now'))
                         AND (date(efm.dob, '+35 years') > date('now'))
@@ -4359,11 +4349,9 @@ indicators:
                                  '-' || '01')"
   - key: "ld-14a-35+"
     description: "Wazazi waliofariki"
-    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+    indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
                       FROM ec_ld_postpartum_care elpc
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
-                               INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
-                               INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
                       WHERE elpc.status = 'died'
                         AND (date(efm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
