@@ -1,5 +1,8 @@
 package org.smartregister.chw.hf.fragment;
 
+import static org.smartregister.util.JsonFormUtils.FIELDS;
+import static org.smartregister.util.JsonFormUtils.STEP1;
+
 import android.os.Bundle;
 
 import com.vijay.jsonwizard.utils.FormUtils;
@@ -10,6 +13,7 @@ import org.smartregister.chw.hf.activity.HeiHivResultsViewActivity;
 import org.smartregister.chw.hf.model.HeiHivResultsFragmentModel;
 import org.smartregister.chw.hf.presenter.HeiHivResultsFragmentPresenter;
 import org.smartregister.chw.hf.provider.HeiHivResultsViewProvider;
+import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.pmtct.fragment.BaseHvlResultsFragment;
 import org.smartregister.chw.pmtct.util.DBConstants;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
@@ -59,11 +63,13 @@ public class HeiHivResultsFragment extends BaseHvlResultsFragment {
 
     @Override
     public void openResultsForm(CommonPersonObjectClient client) {
+        String sampleId = Utils.getValue(client.getColumnmaps(), Constants.DBConstants.HEI_HIV_SAMPLE_ID, false);
         String baseEntityId = Utils.getValue(client.getColumnmaps(), DBConstants.KEY.BASE_ENTITY_ID, false);
         String formSubmissionId = Utils.getValue(client.getColumnmaps(), DBConstants.KEY.ENTITY_ID, false);
         try {
             JSONObject jsonForm = (new FormUtils()).getFormJsonFromRepositoryOrAssets(requireContext(), org.smartregister.chw.hf.utils.Constants.JsonForm.getHeiHivTestResults());
             if (jsonForm != null) {
+                jsonForm.getJSONObject(STEP1).getJSONArray(FIELDS).getJSONObject(0).put("value", sampleId);
                 HeiHivResultsViewActivity.startResultsForm(getContext(), jsonForm.toString(), baseEntityId, formSubmissionId);
             }
         } catch (JSONException e) {
