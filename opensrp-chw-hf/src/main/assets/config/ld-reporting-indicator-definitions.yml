@@ -1914,7 +1914,7 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT elpam.base_entity_id) as count
                       FROM ec_ld_placenta_and_membrane elpam
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpam.base_entity_id
-                      WHERE elpam.uterotonic LIKE = '%oxytocin%'
+                      WHERE elpam.uterotonic LIKE '%oxytocin%'
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -1927,7 +1927,7 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT elpam.base_entity_id) as count
                       FROM ec_ld_placenta_and_membrane elpam
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpam.base_entity_id
-                      WHERE elpam.uterotonic LIKE = '%ergometrine%'
+                      WHERE elpam.uterotonic LIKE '%ergometrine%'
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -1940,7 +1940,7 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT elpam.base_entity_id) as count
                       FROM ec_ld_placenta_and_membrane elpam
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpam.base_entity_id
-                      WHERE elpam.uterotonic LIKE = '%misoprostol%'
+                      WHERE elpam.uterotonic LIKE '%misoprostol%'
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -2338,7 +2338,7 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT elpam.base_entity_id) as count
                       FROM ec_ld_placenta_and_membrane elpam
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpam.base_entity_id
-                      WHERE elpam.uterotonic LIKE = '%oxytocin%'
+                      WHERE elpam.uterotonic LIKE '%oxytocin%'
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -2351,7 +2351,7 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT elpam.base_entity_id) as count
                       FROM ec_ld_placenta_and_membrane elpam
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpam.base_entity_id
-                      WHERE elpam.uterotonic LIKE = '%ergometrine%'
+                      WHERE elpam.uterotonic LIKE '%ergometrine%'
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -2364,7 +2364,7 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT elpam.base_entity_id) as count
                       FROM ec_ld_placenta_and_membrane elpam
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpam.base_entity_id
-                      WHERE elpam.uterotonic LIKE = '%misoprostol%'
+                      WHERE elpam.uterotonic LIKE '%misoprostol%'
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -2762,7 +2762,7 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT elpam.base_entity_id) as count
                       FROM ec_ld_placenta_and_membrane elpam
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpam.base_entity_id
-                      WHERE elpam.uterotonic LIKE = '%oxytocin%'
+                      WHERE elpam.uterotonic LIKE '%oxytocin%'
                         AND (date(efm.dob, '+20 years') <= date('now'))
                         AND (date(efm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -2775,7 +2775,7 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT elpam.base_entity_id) as count
                       FROM ec_ld_placenta_and_membrane elpam
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpam.base_entity_id
-                      WHERE elpam.uterotonic LIKE = '%ergometrine%'
+                      WHERE elpam.uterotonic LIKE '%ergometrine%'
                         AND (date(efm.dob, '+20 years') <= date('now'))
                         AND (date(efm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -2788,7 +2788,7 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT elpam.base_entity_id) as count
                       FROM ec_ld_placenta_and_membrane elpam
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpam.base_entity_id
-                      WHERE elpam.uterotonic LIKE = '%misoprostol%'
+                      WHERE elpam.uterotonic LIKE '%misoprostol%'
                         AND (date(efm.dob, '+20 years') <= date('now'))
                         AND (date(efm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -3186,7 +3186,7 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT elpam.base_entity_id) as count
                       FROM ec_ld_placenta_and_membrane elpam
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpam.base_entity_id
-                      WHERE elpam.uterotonic LIKE = '%oxytocin%'
+                      WHERE elpam.uterotonic LIKE '%oxytocin%'
                         AND (date(efm.dob, '+25 years') <= date('now'))
                         AND (date(efm.dob, '+30 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -3199,7 +3199,7 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT elpam.base_entity_id) as count
                       FROM ec_ld_placenta_and_membrane elpam
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpam.base_entity_id
-                      WHERE elpam.uterotonic LIKE = '%ergometrine%'
+                      WHERE elpam.uterotonic LIKE '%ergometrine%'
                         AND (date(efm.dob, '+25 years') <= date('now'))
                         AND (date(efm.dob, '+30 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -3212,7 +3212,7 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT elpam.base_entity_id) as count
                       FROM ec_ld_placenta_and_membrane elpam
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpam.base_entity_id
-                      WHERE elpam.uterotonic LIKE = '%misoprostol%'
+                      WHERE elpam.uterotonic LIKE '%misoprostol%'
                         AND (date(efm.dob, '+25 years') <= date('now'))
                         AND (date(efm.dob, '+30 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -3610,7 +3610,7 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT elpam.base_entity_id) as count
                       FROM ec_ld_placenta_and_membrane elpam
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpam.base_entity_id
-                      WHERE elpam.uterotonic LIKE = '%oxytocin%'
+                      WHERE elpam.uterotonic LIKE '%oxytocin%'
                         AND (date(efm.dob, '+30 years') <= date('now'))
                         AND (date(efm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -3623,7 +3623,7 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT elpam.base_entity_id) as count
                       FROM ec_ld_placenta_and_membrane elpam
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpam.base_entity_id
-                      WHERE elpam.uterotonic LIKE = '%ergometrine%'
+                      WHERE elpam.uterotonic LIKE '%ergometrine%'
                         AND (date(efm.dob, '+30 years') <= date('now'))
                         AND (date(efm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -3636,7 +3636,7 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT elpam.base_entity_id) as count
                       FROM ec_ld_placenta_and_membrane elpam
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpam.base_entity_id
-                      WHERE elpam.uterotonic LIKE = '%misoprostol%'
+                      WHERE elpam.uterotonic LIKE '%misoprostol%'
                         AND (date(efm.dob, '+30 years') <= date('now'))
                         AND (date(efm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -4030,7 +4030,7 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT elpam.base_entity_id) as count
                       FROM ec_ld_placenta_and_membrane elpam
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpam.base_entity_id
-                      WHERE elpam.uterotonic LIKE = '%oxytocin%'
+                      WHERE elpam.uterotonic LIKE '%oxytocin%'
                         AND (date(efm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(strftime('%Y-%m-%d', datetime(elpam.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
@@ -4042,7 +4042,7 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT elpam.base_entity_id) as count
                       FROM ec_ld_placenta_and_membrane elpam
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpam.base_entity_id
-                      WHERE elpam.uterotonic LIKE = '%ergometrine%'
+                      WHERE elpam.uterotonic LIKE '%ergometrine%'
                         AND (date(efm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(strftime('%Y-%m-%d', datetime(elpam.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
@@ -4054,7 +4054,7 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT elpam.base_entity_id) as count
                       FROM ec_ld_placenta_and_membrane elpam
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpam.base_entity_id
-                      WHERE elpam.uterotonic LIKE = '%misoprostol%'
+                      WHERE elpam.uterotonic LIKE '%misoprostol%'
                         AND (date(efm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(strftime('%Y-%m-%d', datetime(elpam.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
