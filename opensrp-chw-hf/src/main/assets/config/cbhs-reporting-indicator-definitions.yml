@@ -1,5 +1,5 @@
 indicators:
-  - key: 1a-jumla-me
+  - key: cbhs-1a-jumla-me
     description: "Number of Male clients enrolled to HIV services until last month"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -11,7 +11,7 @@ indicators:
                           substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 9, 2)) <
                           date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
-  - key: 1a-jumla-ke
+  - key: cbhs-1a-jumla-ke
     description: "Number of Female clients enrolled to HIV services until last month"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -23,130 +23,130 @@ indicators:
                           substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 9, 2)) <
                           date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
-  - key: 1b-jumla-me
+  - key: cbhs-1b-jumla-me
     description: "Total Male continuing with care this month"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
                       INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
                       WHERE
-                         fm.gender = 'Male' AND
-                         ecr.last_interacted_with is NOT NULL
+                         fm.gender = 'Male'
+                          AND registration_or_followup_status = 'continuing_with_services'
                           AND date(substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||
                           substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                           date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
-  - key: 1b-jumla-ke
+  - key: cbhs-1b-jumla-ke
     description: "Total Female continuing with care this month"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
                       INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
                       WHERE
-                         fm.gender = 'Female' AND
-                          ecr.last_interacted_with is NOT NULL
+                         fm.gender = 'Female'
+                          AND registration_or_followup_status = 'continuing_with_services'
                           AND date(substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||
                           substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                           date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
-  - key: 2a-jumla-me
+  - key: cbhs-2a-jumla-me
     description: "Total new male clients registered this month"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
                       INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
                       WHERE
-                      fm.gender = 'Male' AND
-                      ecr.last_interacted_with is NULL
+                      fm.gender = 'Male'
+                      AND registration_or_followup_status = 'new_client' or registration_or_followup_status is null
                       AND date(substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||
                       substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
-  - key: 2a-jumla-ke
+  - key: cbhs-2a-jumla-ke
     description: "Total new female clients registered this month"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
                       INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
                       WHERE
                       fm.gender = 'Female'
-                      AND ecr.last_interacted_with is NULL
+                      AND registration_or_followup_status = 'new_client' or registration_or_followup_status is null
                       AND date(substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||
                       substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
-  - key: "2a-1-me"
+  - key: "cbhs-2a-1-me"
     description: "Total new male clients less than one year old registered this month"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
                       INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
                       WHERE
                       fm.gender = 'Male'
-                      AND ecr.last_interacted_with is NULL
+                      AND registration_or_followup_status = 'new_client' or registration_or_followup_status is null
                       AND (date(fm.dob, '+1 years') >= date('now'))
                       AND date(substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||
                       substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
-  - key: "2a-1-ke"
+  - key: "cbhs-2a-1-ke"
     description: "Total new female clients less than one year old registered this month"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
                       INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
                       WHERE
                       fm.gender = 'Male'
-                      AND ecr.last_interacted_with is NULL
+                      AND registration_or_followup_status = 'new_client' or registration_or_followup_status is null
                       AND (date(fm.dob, '+1 years') >= date('now'))
                       AND date(substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||
                       substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
-  - key: "2a-1-5-me"
+  - key: "cbhs-2a-1-5-me"
     description: "Total new male clients registered this month for 1-5 year olds"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
                       INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
                       WHERE
                       fm.gender = 'Male'
-                      AND ecr.last_interacted_with is NULL
+                      AND registration_or_followup_status = 'new_client' or registration_or_followup_status is null
                       AND (date(fm.dob, '+1 years') <= date('now'))
                       AND (date(fm.dob, '+5 years') > date('now'))
                       AND date(substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||
                       substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
-  - key: "2a-1-5-ke"
+  - key: "cbhs-2a-1-5-ke"
     description: "Total new female clients registered this month for 1-5 year olds"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
                       INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
                       WHERE
                       fm.gender = 'Female'
-                      AND ecr.last_interacted_with is NULL
+                      AND registration_or_followup_status = 'new_client' or registration_or_followup_status is null
                       AND (date(fm.dob, '+1 years') <= date('now'))
                       AND (date(fm.dob, '+5 years') > date('now'))
                       AND date(substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||
                       substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
-  - key: "2a-6-9-me"
+  - key: "cbhs-2a-6-9-me"
     description: "Total new male clients registered this month for 6-9 year olds"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
                       INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
                       WHERE
                       fm.gender = 'Male'
-                      AND ecr.last_interacted_with is NULL
+                      AND registration_or_followup_status = 'new_client' or registration_or_followup_status is null
                       AND (date(fm.dob, '+6 years') <= date('now'))
                       AND (date(fm.dob, '+9 years') > date('now'))
                       AND date(substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||
                       substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
-  - key: "2a-6-9-ke"
+  - key: "cbhs-2a-6-9-ke"
     description: "Total new female clients registered this month for 6-9 year olds"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
                       INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
                       WHERE
                       fm.gender = 'Female'
-                      AND ecr.last_interacted_with is NULL
+                      AND registration_or_followup_status = 'new_client' or registration_or_followup_status is null
                       AND (date(fm.dob, '+6 years') <= date('now'))
                       AND (date(fm.dob, '+9 years') > date('now'))
                       AND date(substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||
@@ -160,21 +160,20 @@ indicators:
                       INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
                       WHERE
                       fm.gender = 'Male'
-                      AND ecr.last_interacted_with is NULL
                       AND (date(fm.dob, '+10 years') <= date('now'))
                       AND (date(fm.dob, '+14 years') > date('now'))
                       AND date(substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||
                       substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
-  - key: "2a-10-14-ke"
+  - key: "cbhs-2a-10-14-ke"
     description: "Total new female clients registered this month for 10-14 year olds"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
                       INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
                       WHERE
                       fm.gender = 'Female'
-                      AND ecr.last_interacted_with is NULL
+                      AND registration_or_followup_status = 'new_client'  or registration_or_followup_status is null
                       AND (date(fm.dob, '+10 years') <= date('now'))
                       AND (date(fm.dob, '+14 years') > date('now'))
                       AND date(substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||
@@ -188,21 +187,20 @@ indicators:
                       INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
                       WHERE
                       fm.gender = 'Male'
-                      AND ecr.last_interacted_with is NULL
                       AND (date(fm.dob, '+15 years') <= date('now'))
                       AND (date(fm.dob, '+19 years') > date('now'))
                       AND date(substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||
                       substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
-  - key: "2a-15-19-ke"
+  - key: "cbhs-2a-15-19-ke"
     description: "Total new female clients registered this month for 15-19 year olds"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
                       INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
                       WHERE
                       fm.gender = 'Female'
-                      AND ecr.last_interacted_with is NULL
+                      AND registration_or_followup_status = 'new_client'  or registration_or_followup_status is null
                       AND (date(fm.dob, '+15 years') <= date('now'))
                       AND (date(fm.dob, '+19 years') > date('now'))
                       AND date(substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||
@@ -216,110 +214,110 @@ indicators:
                       INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
                       WHERE
                       fm.gender = 'Male'
-                      AND ecr.last_interacted_with is NULL
+                      AND registration_or_followup_status = 'new_client'  or registration_or_followup_status is null
                       AND (date(fm.dob, '+20 years') <= date('now'))
                       AND (date(fm.dob, '+24 years') > date('now'))
                       AND date(substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||
                       substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
-  - key: "2a-20-24-ke"
+  - key: "cbhs-2a-20-24-ke"
     description: "Total new female clients registered this month for 20-24 year olds"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
                       INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
                       WHERE
                       fm.gender = 'Female'
-                      AND ecr.last_interacted_with is NULL
+                      AND registration_or_followup_status = 'new_client'  or registration_or_followup_status is null
                       AND (date(fm.dob, '+20 years') <= date('now'))
                       AND (date(fm.dob, '+24 years') > date('now'))
                       AND date(substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||
                       substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
-  - key: "2a-25-49-me"
+  - key: "cbhs-2a-25-49-me"
     description: "Total new male clients registered this month for 25-49 year olds"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
                       INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
                       WHERE
                       fm.gender = 'Male'
-                      AND ecr.last_interacted_with is NULL
+                      AND registration_or_followup_status = 'new_client' or registration_or_followup_status is null
                       AND (date(fm.dob, '+25 years') <= date('now'))
                       AND (date(fm.dob, '+29 years') > date('now'))
                       AND date(substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||
                       substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
-  - key: "2a-25-49-ke"
+  - key: "cbhs-2a-25-49-ke"
     description: "Total new female clients registered this month for 25-49 year olds"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
                       INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
                       WHERE
                       fm.gender = 'Female'
-                      AND ecr.last_interacted_with is NULL
+                      AND registration_or_followup_status = 'new_client' or registration_or_followup_status is null
                       AND (date(fm.dob, '+25 years') <= date('now'))
                       AND (date(fm.dob, '+49 years') > date('now'))
                       AND date(substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||
                       substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
-  - key: "2a-50-59-me"
+  - key: "cbhs-2a-50-59-me"
     description: "Total new male clients registered this month for 50-59 year olds"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
                       INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
                       WHERE
                       fm.gender = 'Male'
-                      AND ecr.last_interacted_with is NULL
+                      AND registration_or_followup_status = 'new_client' or registration_or_followup_status is null
                       AND (date(fm.dob, '+50 years') <= date('now'))
                       AND (date(fm.dob, '+59 years') > date('now'))
                       AND date(substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||
                       substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
-  - key: "2a-50-59-ke"
+  - key: "cbhs-2a-50-59-ke"
     description: "Total new female clients registered this month for 50-59 year olds"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
                       INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
                       WHERE
                       fm.gender = 'Female'
-                      AND ecr.last_interacted_with is NULL
+                      AND registration_or_followup_status = 'new_client' or registration_or_followup_status is null
                       AND (date(fm.dob, '+50 years') <= date('now'))
                       AND (date(fm.dob, '+59 years') > date('now'))
                       AND date(substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||
                       substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
-  - key: "2a-60-me"
+  - key: "cbhs-2a-60-me"
     description: "Total new male clients registered this month above 60 years"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
                       INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
                       WHERE
                       fm.gender = 'Male'
-                      AND ecr.last_interacted_with is NULL
+                      AND registration_or_followup_status = 'new_client' or registration_or_followup_status is null
                       AND (date(fm.dob, '+60 years') <= date('now'))
                       AND date(substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||
                       substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
-  - key: "2a-60-ke"
+  - key: "cbhs-2a-60-ke"
     description: "Total new female clients registered this month above 60 years"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
                       INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
                       WHERE
                       fm.gender = 'Female'
-                      AND ecr.last_interacted_with is NULL
+                      AND registration_or_followup_status = 'new_client' or registration_or_followup_status is null
                       AND (date(fm.dob, '+60 years') <= date('now'))
                       AND date(substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||
                       substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
-  - key: "2b-1-me"
+  - key: "cbhs-2b-1-me"
     description: "Total male with HIV infections"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -331,7 +329,7 @@ indicators:
                       substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2b-1-ke"
+  - key: "cbhs-2b-1-ke"
     description: "Total female with HIV infections"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                         FROM ec_cbhs_register ecr
@@ -343,7 +341,7 @@ indicators:
                         substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                         date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2b-2-me"
+  - key: "cbhs-2b-2-me"
     description: "Total male with Tuberculosis"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -355,7 +353,7 @@ indicators:
                       substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2b-2-ke"
+  - key: "cbhs-2b-2-ke"
     description: "Total male with Tuberculosis"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                         FROM ec_cbhs_register ecr
@@ -367,7 +365,7 @@ indicators:
                         substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                         date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2b-3-me"
+  - key: "cbhs-2b-3-me"
     description: "Total homosexuals"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -379,7 +377,7 @@ indicators:
                       substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2b-4-ke"
+  - key: "cbhs-2b-4-ke"
     description: "Total Sex workers"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                         FROM ec_cbhs_register ecr
@@ -391,7 +389,7 @@ indicators:
                         substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                         date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2b-5-me"
+  - key: "cbhs-2b-5-me"
     description: "Total male infants born with HIV infections"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -403,7 +401,7 @@ indicators:
                       substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2b-5-ke"
+  - key: "cbhs-2b-5-ke"
     description: "Total female infants born with HIV infections"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                         FROM ec_cbhs_register ecr
@@ -415,7 +413,7 @@ indicators:
                         substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                         date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2b-6-me"
+  - key: "cbhs-2b-6-me"
     description: "Total HIV  untested male infants"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -427,7 +425,7 @@ indicators:
                       substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2b-6-ke"
+  - key: "cbhs-2b-6-ke"
     description: "Total HIV untested female infants"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                         FROM ec_cbhs_register ecr
@@ -439,7 +437,7 @@ indicators:
                         substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                         date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2b-7-me"
+  - key: "cbhs-2b-7-me"
     description: "Total male children abused"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -451,7 +449,7 @@ indicators:
                       substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2b-7-ke"
+  - key: "cbhs-2b-7-ke"
     description: "Total Female children abused"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                         FROM ec_cbhs_register ecr
@@ -463,7 +461,7 @@ indicators:
                         substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                         date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2b-8-me"
+  - key: "cbhs-2b-8-me"
     description: "Total Male gender violence"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                         FROM ec_cbhs_register ecr
@@ -475,7 +473,7 @@ indicators:
                         substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                         date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2b-8-ke"
+  - key: "cbhs-2b-8-ke"
     description: "Total Female gender violence"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                           FROM ec_cbhs_register ecr
@@ -487,7 +485,7 @@ indicators:
                           substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                           date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2b-9-me"
+  - key: "cbhs-2b-9-me"
     description: "Total Male drug addicts"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                         FROM ec_cbhs_register ecr
@@ -499,7 +497,7 @@ indicators:
                         substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                         date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2b-9-ke"
+  - key: "cbhs-2b-9-ke"
     description: "Total Female drug addicts"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                           FROM ec_cbhs_register ecr
@@ -511,7 +509,7 @@ indicators:
                           substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                           date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2b-10-ke"
+  - key: "cbhs-2b-10-ke"
     description: "Total pregnant women"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                           FROM ec_cbhs_register ecr
@@ -523,7 +521,7 @@ indicators:
                           substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                           date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2b-11-ke"
+  - key: "cbhs-2b-11-ke"
     description: "Total breast feeding mothers"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                           FROM ec_cbhs_register ecr
@@ -535,15 +533,15 @@ indicators:
                           substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                           date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2c-1-me"
+  - key: "cbhs-2c-1-me"
     description: ""
     indicatorQuery: ""
 
-  - key: "2c-1-ke"
+  - key: "cbhs-2c-1-ke"
     description: ""
     indicatorQuery: ""
 
-  - key: "2c-2-me"
+  - key: "cbhs-2c-2-me"
     description: "Total male infected with HIV"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                         FROM ec_cbhs_register ecr
@@ -555,7 +553,7 @@ indicators:
                         substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                         date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2c-2-ke"
+  - key: "cbhs-2c-2-ke"
     description: "Total female infected with HIV"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                           FROM ec_cbhs_register ecr
@@ -567,7 +565,7 @@ indicators:
                           substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                           date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2c-3-me"
+  - key: "cbhs-2c-3-me"
     description: "Total male not infected with HIV"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                         FROM ec_cbhs_register ecr
@@ -579,7 +577,7 @@ indicators:
                         substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                         date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2c-3-ke"
+  - key: "cbhs-2c-3-ke"
     description: "Total female not infected with HIV"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                           FROM ec_cbhs_register ecr
@@ -591,7 +589,7 @@ indicators:
                           substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                           date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2c-4-me"
+  - key: "cbhs-2c-4-me"
     description: "Total male unknown HIV status"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                         FROM ec_cbhs_register ecr
@@ -603,7 +601,7 @@ indicators:
                         substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                         date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2c-4-ke"
+  - key: "cbhs-2c-4-ke"
     description: "Total female unknown HIV status"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                           FROM ec_cbhs_register ecr
@@ -615,7 +613,7 @@ indicators:
                           substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                           date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2d-1-me"
+  - key: "cbhs-2d-1-me"
     description: "Total male given HIV counselling and testing"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                           FROM ec_cbhs_register ecr
@@ -627,7 +625,7 @@ indicators:
                           substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                           date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2d-1-ke"
+  - key: "cbhs-2d-1-ke"
     description: "Total female given HIV counselling and testing"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                             FROM ec_cbhs_register ecr
@@ -639,7 +637,7 @@ indicators:
                             substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                             date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2d-2-me"
+  - key: "cbhs-2d-2-me"
     description: "Total male given ARV medication"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                            FROM ec_cbhs_register ecr
@@ -651,7 +649,7 @@ indicators:
                            substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                            date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2d-2-ke"
+  - key: "cbhs-2d-2-ke"
     description: "Total female given ARV medication"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                              FROM ec_cbhs_register ecr
@@ -663,7 +661,7 @@ indicators:
                              substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                              date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2d-3-me"
+  - key: "cbhs-2d-3-me"
     description: ""
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                            FROM ec_cbhs_register ecr
@@ -675,7 +673,7 @@ indicators:
                            substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                            date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2d-3-ke"
+  - key: "cbhs-2d-3-ke"
     description: ""
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                              FROM ec_cbhs_register ecr
@@ -687,7 +685,7 @@ indicators:
                              substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                              date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2d-4-me"
+  - key: "cbhs-2d-4-me"
     description: "Total male given Collaborative HIV and TB Health services"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                          FROM ec_cbhs_register ecr
@@ -699,7 +697,7 @@ indicators:
                          substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                          date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2d-4-ke"
+  - key: "cbhs-2d-4-ke"
     description: "Total female given Collaborative HIV and TB Health services"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                              FROM ec_cbhs_register ecr
@@ -711,7 +709,7 @@ indicators:
                              substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                              date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2d-5-me"
+  - key: "cbhs-2d-5-me"
     description: "Total male given services to reduce the spread of STDs"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                            FROM ec_cbhs_register ecr
@@ -723,7 +721,7 @@ indicators:
                            substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                            date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2d-5-ke"
+  - key: "cbhs-2d-5-ke"
     description: "Total female given services to reduce the spread of STDs"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                              FROM ec_cbhs_register ecr
@@ -735,7 +733,7 @@ indicators:
                              substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                              date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2d-6-me"
+  - key: "cbhs-2d-6-me"
     description: "Total male given special group services"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                          FROM ec_cbhs_register ecr
@@ -747,7 +745,7 @@ indicators:
                          substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                          date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2d-6-ke"
+  - key: "cbhs-2d-6-ke"
     description: ""
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                              FROM ec_cbhs_register ecr
@@ -759,7 +757,7 @@ indicators:
                              substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                              date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2d-7-me"
+  - key: "cbhs-2d-7-me"
     description: ""
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                              FROM ec_cbhs_register ecr
@@ -771,7 +769,7 @@ indicators:
                              substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || 01) =
                              date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2d-7-ke"
+  - key: "cbhs-2d-7-ke"
     description: ""
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                                FROM ec_cbhs_register ecr
@@ -783,7 +781,7 @@ indicators:
                                substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                                date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2d-8-me"
+  - key: "cbhs-2d-8-me"
     description: ""
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                              FROM ec_cbhs_register ecr
@@ -795,7 +793,7 @@ indicators:
                              substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                              date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2d-8-ke"
+  - key: "cbhs-2d-8-ke"
     description: ""
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                                FROM ec_cbhs_register ecr
@@ -807,7 +805,7 @@ indicators:
                                substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                                date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2d-9-me"
+  - key: "cbhs-2d-9-me"
     description: ""
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                              FROM ec_cbhs_register ecr
@@ -819,7 +817,7 @@ indicators:
                              substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                              date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2d-9-ke"
+  - key: "cbhs-2d-9-ke"
     description: ""
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                                FROM ec_cbhs_register ecr
@@ -831,7 +829,7 @@ indicators:
                                substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                                date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2d-10-me"
+  - key: "cbhs-2d-10-me"
     description: ""
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                              FROM ec_cbhs_register ecr
@@ -843,7 +841,7 @@ indicators:
                              substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                              date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2d-10-ke"
+  - key: "cbhs-2d-10-ke"
     description: ""
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                                FROM ec_cbhs_register ecr
@@ -855,7 +853,7 @@ indicators:
                                substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                                date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2d-11-me"
+  - key: "cbhs-2d-11-me"
     description: ""
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                              FROM ec_cbhs_register ecr
@@ -867,7 +865,7 @@ indicators:
                              substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                              date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months')"
 
-  - key: "2d-11-ke"
+  - key: "cbhs-2d-11-ke"
     description: ""
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                                FROM ec_cbhs_register ecr

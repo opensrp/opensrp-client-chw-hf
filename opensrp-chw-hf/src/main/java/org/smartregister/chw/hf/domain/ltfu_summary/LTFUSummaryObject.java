@@ -12,8 +12,9 @@ import java.util.List;
 public class LTFUSummaryObject extends ReportObject {
     private Date reportDate;
     private final List<String> indicatorCodesWithGroups = new ArrayList<>();
-    private final String[] indicatorCodesArray = new String[]{"less-2-me", "less-2-ke", "2-14-me",
-            "2-14-ke", "15-24-me", "15-24-ke", "25-49-me", "25-49-ke", "60-me", "60-ke"};
+    private final String[] indicatorCodesArray = new String[]{"ltfu-less-2-me", "ltfu-less-2-ke",
+            "ltfu-2-14-me", "ltfu-2-14-ke", "ltfu-15-24-me", "ltfu-15-24-ke",
+            "ltfu-25-49-me", "ltfu-25-49-ke", "ltfu-50-me", "ltfu-50-ke"};
     private final String[] indicatorGroups = new String[]
             {"ctc", "pmtct", "tb", "wajidunga", "arv-yes", "arv-no",
                     "a1", "b1", "c1", "d1", "e1", "f1", "g1", "h1",
@@ -45,15 +46,15 @@ public class LTFUSummaryObject extends ReportObject {
         }
 
         for (String indicatorGroup : indicatorGroups) {
-            jsonObject.put("jumla" + "-" + indicatorGroup, getTotalPerGroup(indicatorGroup));
+            jsonObject.put("ltfu-jumla" + "-" + indicatorGroup, getTotalPerGroup(indicatorGroup));
         }
         for(String indicatorCode: indicatorCodesArray){
             jumlaWateja = getJumlaWateja(jsonObject, jumlaWateja, indicatorCode);
             jumlaWaliopatikana = getJumlaWaliopatikana(jsonObject, jumlaWaliopatikana, indicatorCode);
         }
 
-        jsonObject.put("jumla-jumla-wateja", jumlaWateja);
-        jsonObject.put("jumla-jumla-waliopatikana", jumlaWaliopatikana);
+        jsonObject.put("ltfu-jumla-jumla-wateja", jumlaWateja);
+        jsonObject.put("ltfu-jumla-jumla-waliopatikana", jumlaWaliopatikana);
 
         return jsonObject;
     }
@@ -104,12 +105,12 @@ public class LTFUSummaryObject extends ReportObject {
 
     private int getTotalPerGroup(String indicatorGroup) {
 
-        return getIndicatorTotal("less-2-me" + "-" + indicatorGroup) +
-                getIndicatorTotal("less-2-ke" + "-" + indicatorGroup) + getIndicatorTotal("2-14-me" + "-" + indicatorGroup)
-                + getIndicatorTotal("2-14-ke" + "-" + indicatorGroup) + getIndicatorTotal("15-24-me" + "-" + indicatorGroup) +
-                getIndicatorTotal("15-24-ke" + "-" + indicatorGroup) + getIndicatorTotal("25-49-me" + "-" + indicatorGroup) +
-                getIndicatorTotal("25-49-ke" + "-" + indicatorGroup) + getIndicatorTotal("60-me" + "-" + indicatorGroup) +
-                getIndicatorTotal("60-ke" + "-" + indicatorGroup);
+        return getIndicatorTotal("ltfu-less-2-me" + "-" + indicatorGroup) +
+                getIndicatorTotal("ltfu-less-2-ke" + "-" + indicatorGroup) + getIndicatorTotal("ltfu-2-14-me" + "-" + indicatorGroup)
+                + getIndicatorTotal("ltfu-2-14-ke" + "-" + indicatorGroup) + getIndicatorTotal("ltfu-15-24-me" + "-" + indicatorGroup) +
+                getIndicatorTotal("ltfu-15-24-ke" + "-" + indicatorGroup) + getIndicatorTotal("ltfu-25-49-me" + "-" + indicatorGroup) +
+                getIndicatorTotal("ltfu-25-49-ke" + "-" + indicatorGroup) + getIndicatorTotal("ltfu-60-me" + "-" + indicatorGroup) +
+                getIndicatorTotal("ltfu-60-ke" + "-" + indicatorGroup);
 
     }
 }

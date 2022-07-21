@@ -20,6 +20,7 @@ import org.smartregister.chw.hf.domain.pmtct_reports.Pmtct24MonthsReportObject;
 import org.smartregister.chw.hf.domain.pmtct_reports.Pmtct3MonthsReportObject;
 import org.smartregister.chw.hf.domain.pmtct_reports.PmtctEIDMonthlyReportObject;
 import org.smartregister.chw.hf.domain.pnc_reports.PncMonthlyReportObject;
+import org.smartregister.util.Log;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -72,6 +73,7 @@ public class ReportUtils {
 
     public static Date getReportDate() {
         if (StringUtils.isNotBlank(reportPeriod)) {
+
             try {
                 return new SimpleDateFormat("MM-yyyy", Locale.getDefault()).parse(reportPeriod);
             } catch (ParseException e) {

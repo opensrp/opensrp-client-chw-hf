@@ -119,6 +119,7 @@ tbody .three-cols > td:nth-child(3) {
   background: #ccc;
 }
 
+
 @media print {
   .show-on-print {
     display: block;
