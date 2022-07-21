@@ -30,7 +30,7 @@ public class PncReportsActivity extends SecuredActivity implements View.OnClickL
     protected ConstraintLayout monthlyReport;
     protected AppBarLayout appBarLayout;
     Menu menu;
-    private String reportPeriod = ReportUtils.getDefaultReportPeriod();
+    protected String reportPeriod = ReportUtils.getDefaultReportPeriod();
 
     @Override
     protected void onCreation() {

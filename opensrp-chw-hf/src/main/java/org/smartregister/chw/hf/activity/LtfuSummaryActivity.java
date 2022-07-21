@@ -8,7 +8,6 @@ import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hf.utils.ReportUtils;
 
 public class LtfuSummaryActivity extends PncReportsActivity {
-    private String reportPeriod = ReportUtils.getDefaultReportPeriod();
 
     @Override
     public void onClick(View v) {
