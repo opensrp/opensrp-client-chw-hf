@@ -86,6 +86,13 @@ public class LdMonthlyReportObject extends ReportObject {
         jsonObject.put("6a+6b+6c+6d+6e+6f+6g+6h-35+", getIndicatorTotal("6a-35+") + getIndicatorTotal("6b-35+") + getIndicatorTotal("6c-35+") + getIndicatorTotal("6d-35+") + getIndicatorTotal("6e-35+") + getIndicatorTotal("6f-35+") + getIndicatorTotal("6g-35+") + getIndicatorTotal("6h-35+"));
         jsonObject.put("6a+6b+6c+6d+6e+6f+6g+6h-jumla", getIndicatorTotal("6a") + getIndicatorTotal("6b") + getIndicatorTotal("6c") + getIndicatorTotal("6d") + getIndicatorTotal("6e") + getIndicatorTotal("6f") + getIndicatorTotal("6g") + getIndicatorTotal("6h"));
 
+        jsonObject.put("9b+9d-10-14", getIndicatorTotal("9b-10-14") + getIndicatorTotal("9d-10-14"));
+        jsonObject.put("9b+9d-15-19", getIndicatorTotal("9b-15-19") + getIndicatorTotal("9d-15-19"));
+        jsonObject.put("9b+9d-20-24", getIndicatorTotal("9b-20-24") + getIndicatorTotal("9d-20-24"));
+        jsonObject.put("9b+9d-25-29", getIndicatorTotal("9b-25-29") + getIndicatorTotal("9d-25-29"));
+        jsonObject.put("9b+9d-30-34", getIndicatorTotal("9b-30-34") + getIndicatorTotal("9d-30-34"));
+        jsonObject.put("9b+9d-35+", getIndicatorTotal("9b-35+") + getIndicatorTotal("9d-35+"));
+        jsonObject.put("9b+9d-jumla", getIndicatorTotal("9b") + getIndicatorTotal("9d"));
 
         jsonObject.put("10a+10d+10e-10-14", getIndicatorTotal("10a-10-14") + getIndicatorTotal("10d-10-14") + getIndicatorTotal("10e-10-14"));
         jsonObject.put("10a+10d+10e-15-19", getIndicatorTotal("10a-15-19") + getIndicatorTotal("10d-15-19") + getIndicatorTotal("10e-15-19"));
