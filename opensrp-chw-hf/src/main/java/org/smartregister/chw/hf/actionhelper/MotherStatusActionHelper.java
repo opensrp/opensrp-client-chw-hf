@@ -263,7 +263,7 @@ public class MotherStatusActionHelper implements BaseLDVisitAction.LDVisitAction
                         .withOptional(false)
                         .withHelper(actionHelper)
                         .withDetails(details)
-                        .withBaseEntityID(baseEntityId)
+                        .withBaseEntityID(org.smartregister.chw.anc.util.JsonFormUtils.generateRandomUUIDString())
                         .withProcessingMode(BaseLDVisitAction.ProcessingMode.SEPARATE)
                         .withFormName(Constants.JsonForm.LDPostDeliveryMotherManagement.getLdNewBornStatus())
                         .build();

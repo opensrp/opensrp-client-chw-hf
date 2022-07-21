@@ -698,7 +698,42 @@
           },
           {
             "field": "eventType",
-            "field_value": "LND Newborn",
+            "field_value": "LND 1st Newborn",
+            "creates_case": [
+              "ec_ld_immediate_new_born_care"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "LND 2nd Newborn",
+            "creates_case": [
+              "ec_ld_immediate_new_born_care"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "LND 3rd Newborn",
+            "creates_case": [
+              "ec_ld_immediate_new_born_care"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "LND 4th Newborn",
+            "creates_case": [
+              "ec_ld_immediate_new_born_care"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "LND 5th Newborn",
+            "creates_case": [
+              "ec_ld_immediate_new_born_care"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "LND 6th Newborn",
             "creates_case": [
               "ec_ld_immediate_new_born_care"
             ]
