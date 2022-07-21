@@ -5344,3 +5344,258 @@ indicators:
                                  '-' ||
                                  substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
                                  '-' || '01')"
+  - key: "ld-16a-10-14-ME"
+    description: "Watoto Wachanga Waliofariki"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                               INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
+                               INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
+                      WHERE ec.gender = 'Male'
+                        AND (date(efm.dob, '+10 years') <= date('now'))
+                        AND (date(efm.dob, '+15 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                                       '-' ||
+                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                                       '-' || '01')"
+  - key: "ld-16a-10-14-KE"
+    description: "Watoto Wachanga Waliofariki"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                               INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
+                               INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
+                      WHERE ec.gender = 'Female'
+                        AND (date(efm.dob, '+10 years') <= date('now'))
+                        AND (date(efm.dob, '+15 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                                       '-' ||
+                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                                       '-' || '01')"
+  - key: "ld-16a-15-19-ME"
+    description: "Watoto Wachanga Waliofariki"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                               INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
+                               INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
+                      WHERE ec.gender = 'Male'
+                        AND (date(efm.dob, '+15 years') <= date('now'))
+                        AND (date(efm.dob, '+20 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                                       '-' ||
+                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                                       '-' || '01')"
+  - key: "ld-16a-15-19-KE"
+    description: "Watoto Wachanga Waliofariki"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                               INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
+                               INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
+                      WHERE ec.gender = 'Female'
+                        AND (date(efm.dob, '+15 years') <= date('now'))
+                        AND (date(efm.dob, '+20 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                                       '-' ||
+                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                                       '-' || '01')"
+  - key: "ld-16a-20-24-ME"
+    description: "Watoto Wachanga Waliofariki"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                               INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
+                               INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
+                      WHERE ec.gender = 'Male'
+                        AND (date(efm.dob, '+20 years') <= date('now'))
+                        AND (date(efm.dob, '+25 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                                       '-' ||
+                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                                       '-' || '01')"
+  - key: "ld-16a-20-24-KE"
+    description: "Watoto Wachanga Waliofariki"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                               INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
+                               INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
+                      WHERE ec.gender = 'Female'
+                        AND (date(efm.dob, '+20 years') <= date('now'))
+                        AND (date(efm.dob, '+25 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                                       '-' ||
+                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                                       '-' || '01')"
+  - key: "ld-16a-25-29-ME"
+    description: "Watoto Wachanga Waliofariki"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                               INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
+                               INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
+                      WHERE ec.gender = 'Male'
+                        AND (date(efm.dob, '+25 years') <= date('now'))
+                        AND (date(efm.dob, '+30 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                                       '-' ||
+                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                                       '-' || '01')"
+  - key: "ld-16a-25-29-KE"
+    description: "Watoto Wachanga Waliofariki"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                               INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
+                               INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
+                      WHERE ec.gender = 'Female'
+                        AND (date(efm.dob, '+25 years') <= date('now'))
+                        AND (date(efm.dob, '+30 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                                       '-' ||
+                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                                       '-' || '01')"
+  - key: "ld-16a-30-34-ME"
+    description: "Watoto Wachanga Waliofariki"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                               INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
+                               INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
+                      WHERE ec.gender = 'Male'
+                        AND (date(efm.dob, '+30 years') <= date('now'))
+                        AND (date(efm.dob, '+35 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                                       '-' ||
+                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                                       '-' || '01')"
+  - key: "ld-16a-30-34-KE"
+    description: "Watoto Wachanga Waliofariki"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                               INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
+                               INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
+                      WHERE ec.gender = 'Female'
+                        AND (date(efm.dob, '+30 years') <= date('now'))
+                        AND (date(efm.dob, '+35 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                                       '-' ||
+                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                                       '-' || '01')"
+  - key: "ld-16a-35+-ME"
+    description: "Watoto Wachanga Waliofariki"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                               INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
+                               INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
+                      WHERE ec.gender = 'Male'
+                        AND (date(efm.dob, '+35 years') <= date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                                       '-' ||
+                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                                       '-' || '01')"
+  - key: "ld-16a-35+-KE"
+    description: "Watoto Wachanga Waliofariki"
+    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                               INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
+                               INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
+                      WHERE ec.gender = 'Female'
+                        AND (date(efm.dob, '+35 years') <= date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                                       '-' ||
+                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                                       '-' || '01')"
+  - key: "ld-13b-10-14"
+    description: "Idadi ya wamama waliopewa rufaa"
+    indicatorQuery: " SELECT count(DISTINCT elc.base_entity_id) as count
+                      FROM ec_ld_confirmation elc
+                               INNER JOIN task t on elc.base_entity_id = t.for
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elc.base_entity_id
+                      WHERE t.focus = 'Labour And Delivery Emergency'
+                        AND (date(efm.dob, '+10 years') <= date('now'))
+                        AND (date(efm.dob, '+15 years') > date('now'))
+                        AND date(substr(strftime('%Y-%m-%d', datetime(t.authored_on / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(t.authored_on / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' ||
+                                 '01') =
+                            date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
+  - key: "ld-13b-15-19"
+    description: "Idadi ya wamama waliopewa rufaa"
+    indicatorQuery: " SELECT count(DISTINCT elc.base_entity_id) as count
+                      FROM ec_ld_confirmation elc
+                               INNER JOIN task t on elc.base_entity_id = t.for
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elc.base_entity_id
+                      WHERE t.focus = 'Labour And Delivery Emergency'
+                        AND (date(efm.dob, '+15 years') <= date('now'))
+                        AND (date(efm.dob, '+20 years') > date('now'))
+                        AND date(substr(strftime('%Y-%m-%d', datetime(t.authored_on / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(t.authored_on / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' ||
+                                 '01') =
+                            date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
+  - key: "ld-13b-20-24"
+    description: "Idadi ya wamama waliopewa rufaa"
+    indicatorQuery: " SELECT count(DISTINCT elc.base_entity_id) as count
+                      FROM ec_ld_confirmation elc
+                               INNER JOIN task t on elc.base_entity_id = t.for
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elc.base_entity_id
+                      WHERE t.focus = 'Labour And Delivery Emergency'
+                        AND (date(efm.dob, '+20 years') <= date('now'))
+                        AND (date(efm.dob, '+25 years') > date('now'))
+                        AND date(substr(strftime('%Y-%m-%d', datetime(t.authored_on / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(t.authored_on / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' ||
+                                 '01') =
+                            date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
+  - key: "ld-13b-25-29"
+    description: "Idadi ya wamama waliopewa rufaa"
+    indicatorQuery: " SELECT count(DISTINCT elc.base_entity_id) as count
+                      FROM ec_ld_confirmation elc
+                               INNER JOIN task t on elc.base_entity_id = t.for
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elc.base_entity_id
+                      WHERE t.focus = 'Labour And Delivery Emergency'
+                        AND (date(efm.dob, '+25 years') <= date('now'))
+                        AND (date(efm.dob, '+30 years') > date('now'))
+                        AND date(substr(strftime('%Y-%m-%d', datetime(t.authored_on / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(t.authored_on / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' ||
+                                 '01') =
+                            date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
+  - key: "ld-13b-30-34"
+    description: "Idadi ya wamama waliopewa rufaa"
+    indicatorQuery: " SELECT count(DISTINCT elc.base_entity_id) as count
+                      FROM ec_ld_confirmation elc
+                               INNER JOIN task t on elc.base_entity_id = t.for
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elc.base_entity_id
+                      WHERE t.focus = 'Labour And Delivery Emergency'
+                        AND (date(efm.dob, '+30 years') <= date('now'))
+                        AND (date(efm.dob, '+35 years') > date('now'))
+                        AND date(substr(strftime('%Y-%m-%d', datetime(t.authored_on / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(t.authored_on / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' ||
+                                 '01') =
+                            date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
+  - key: "ld-13b-35+"
+    description: "Idadi ya wamama waliopewa rufaa"
+    indicatorQuery: " SELECT count(DISTINCT elc.base_entity_id) as count
+                      FROM ec_ld_confirmation elc
+                               INNER JOIN task t on elc.base_entity_id = t.for
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elc.base_entity_id
+                      WHERE t.focus = 'Labour And Delivery Emergency'
+                        AND (date(efm.dob, '+35 years') <= date('now'))
+                        AND date(substr(strftime('%Y-%m-%d', datetime(t.authored_on / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(t.authored_on / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' ||
+                                 '01') =
+                            date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
