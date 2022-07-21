@@ -5733,6 +5733,14 @@
           }
         },
         {
+          "column_name": "oral_intake",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "oral_intake"
+          }
+        },
+        {
           "column_name": "moulding_options",
           "type": "Event",
           "json_mapping": {
