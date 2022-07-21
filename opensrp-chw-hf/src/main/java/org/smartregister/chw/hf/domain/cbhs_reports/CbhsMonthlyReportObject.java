@@ -4,7 +4,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.hf.dao.ReportDao;
 import org.smartregister.chw.hf.domain.ReportObject;
-import org.smartregister.util.Log;
 
 import java.util.ArrayList;
 import java.util.Date;
