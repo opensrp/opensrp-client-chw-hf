@@ -87,8 +87,6 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "medical_surgical_history",
         "type": "check_box",
-        "label_info_image_src": "img/chw.png",
-        "label_info_has_image": true,
         "label": "Any Medical and surgical History of the Client?",
         "combine_checkbox_option_values": "true",
         "label_text_style": "normal",

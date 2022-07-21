@@ -56,8 +56,6 @@
         "openmrs_entity_id": "medical_surgical_history",
         "type": "check_box",
         "combine_checkbox_option_values": "true",
-        "label_info_image_src": "img/chw.png",
-        "label_info_has_image": true,
         "label": "Historia yoyote ya Matibabu na upasuaji ya Mgonjwa?",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
