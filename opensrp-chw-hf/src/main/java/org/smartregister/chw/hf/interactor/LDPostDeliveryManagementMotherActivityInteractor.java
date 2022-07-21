@@ -255,7 +255,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                     }
                 }
                 if (isChildAlive(obs) && (StringUtils.isNotBlank(completionStatus) && completionStatus.equalsIgnoreCase("Fully Completed"))) {
-                    saveChild(memberID, LDDao.getHivStatus(memberID), getRiskStatus(obs), allSharedPreferences, memberObject.getFamilyBaseEntityId(), getDeliveryDateString(obs), obs);
+                    saveChild(memberID,memberObject.getBaseEntityId(), LDDao.getHivStatus(memberObject.getBaseEntityId()), getRiskStatus(obs), allSharedPreferences, memberObject.getFamilyBaseEntityId(), getDeliveryDateString(obs), obs);
                 }
 
                 LDVisitUtils.processVisits(memberID, false);
@@ -266,12 +266,11 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
     }
 
-    private void saveChild(String motherBaseId, String motherHivStatus, String childRiskCategory, AllSharedPreferences
+    private void saveChild(String childBaseEntityId, String motherBaseId, String motherHivStatus, String childRiskCategory, AllSharedPreferences
             allSharedPreferences, String familyBaseEntityId, String dob, JSONArray obs) {
         String uniqueChildID = AncLibrary.getInstance().getUniqueIdRepository().getNextUniqueId().getOpenmrsId();
 
         if (StringUtils.isNotBlank(uniqueChildID)) {
-            String childBaseEntityId = org.smartregister.chw.anc.util.JsonFormUtils.generateRandomUUIDString();
             try {
                 String lastName = memberObject.getLastName();
                 JSONObject pncForm = getFormAsJson(
