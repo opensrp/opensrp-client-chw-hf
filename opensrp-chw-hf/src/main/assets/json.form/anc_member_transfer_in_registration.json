@@ -334,21 +334,6 @@
         }
       },
       {
-        "key": "prompt_for_gravida",
-        "type": "toaster_notes",
-        "text": "Counsel on the risk of uterine rupture and closely monitor the client",
-        "openmrs_entity_id": "",
-        "openmrs_entity": "",
-        "openmrs_entity_parent": "",
-        "toaster_type": "problem",
-        "relevance": {
-          "step1:gravida": {
-            "type": "numeric",
-            "ex": "greaterThan(.,\"5\")"
-          }
-        }
-      },
-      {
         "key": "parity",
         "type": "edit_text",
         "hint": "Parity",
@@ -370,6 +355,22 @@
             "err": "Parity must be less than gravida"
           }
         ]
+      },
+      {
+        "key": "prompt_for_grand_multiparity",
+        "type": "toaster_notes",
+        "text": "Counsel on the risk of uterine rupture and closely monitor the client",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_member_transfer_in_registration_relevance.yml"
+            }
+          }
+        }
       },
       {
         "key": "no_surv_children",
