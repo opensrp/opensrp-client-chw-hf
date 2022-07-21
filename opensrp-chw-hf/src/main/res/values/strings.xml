@@ -327,7 +327,7 @@
     <string name="ld_mother_status_action_title">Mother\'s Status</string>
     <string name="ld_post_delivery_family_planning">Family Planning</string>
     <string name="ld_baby_of_text">Baby of</string>
-    <string name="partograph_date_time">Partograph Details recorded at {0}, {1}</string>
+    <string name="partograph_date_time">Partograph Details recorded at {0}, {1} by {2}</string>
     <string name="fetal_well_being">Fetal Well Being</string>
     <string name="fetal_heart_rate">Fetal Heart Rate: {0} bpm</string>
     <string name="fetal_moulding">Moulding: {0}</string>
