@@ -5,7 +5,6 @@ import android.widget.TextView;
 
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.utils.Constants;
-import org.smartregister.chw.hf.utils.ReportUtils;
 
 public class LtfuSummaryActivity extends PncReportsActivity {
 
