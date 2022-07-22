@@ -98,28 +98,6 @@ public class LDDao extends org.smartregister.chw.ld.dao.LDDao {
         return res.get(0);
     }
 
-    public static String getAdmissionDate(String baseEntityId) {
-        String sql = "SELECT admission_date FROM " + org.smartregister.chw.ld.util.Constants.TABLES.LD_CONFIRMATION + " WHERE base_entity_id = '" + baseEntityId + "'";
-
-        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "admission_date");
-
-        List<String> res = readData(sql, dataMap);
-        if (res != null && res.size() > 0)
-            return res.get(0);
-        return null;
-    }
-
-    public static String getAdmissionTime(String baseEntityId) {
-        String sql = "SELECT admission_time FROM " + Constants.TABLES.LD_CONFIRMATION + " WHERE base_entity_id = '" + baseEntityId + "'";
-
-        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "admission_time");
-
-        List<String> res = readData(sql, dataMap);
-        if (res != null && res.size() > 0)
-            return res.get(0);
-        return null;
-    }
-
     public static String getPmtctTestDate(String baseEntityId) {
         String sql = "SELECT pmtct_test_date FROM " + Constants.TABLES.LD_CONFIRMATION + " WHERE base_entity_id = '" + baseEntityId + "'";
 

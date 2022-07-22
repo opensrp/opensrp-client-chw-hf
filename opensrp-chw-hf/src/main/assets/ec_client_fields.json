@@ -5208,6 +5208,22 @@
           }
         },
         {
+          "column_name": "gravida",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "gravida"
+          }
+        },
+        {
+          "column_name": "para",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "para"
+          }
+        },
+        {
           "column_name": "anc_hiv_status",
           "type": "Event",
           "json_mapping": {
