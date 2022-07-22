@@ -16,7 +16,7 @@ actions:
 name: step1_prompt_for_amniotic_fluid
 description: prompt_for_amniotic_fluid
 priority: 1
-condition: "!step1_amniotic_fluid.isEmpty() && !step1_amniotic_fluid.contains('membrane_intact')"
+condition: "!step1_amniotic_fluid.isEmpty() && !step1_amniotic_fluid.contains('membrane_intact', 'membrane_ruptured_clear')"
 actions:
   - "isRelevant = true"
 ---
