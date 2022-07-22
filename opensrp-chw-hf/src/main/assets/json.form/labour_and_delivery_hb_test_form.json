@@ -75,6 +75,20 @@
         ]
       },
       {
+        "key": "no_test_reasons",
+        "type": "edit_text",
+        "hint": "Why was the test not conducted",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "no_test_reasons",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "step1:hb_test_conducted": {
+            "type": "string",
+            "ex": "equalTo(., \"no\")"
+          }
+        }
+      },
+      {
         "key": "hb_level",
         "type": "edit_text",
         "hint": "Enter Measured HB Level (g/dl)",
