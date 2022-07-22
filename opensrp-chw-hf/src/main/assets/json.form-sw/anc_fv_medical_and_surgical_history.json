@@ -56,8 +56,6 @@
         "openmrs_entity_id": "medical_surgical_history",
         "type": "check_box",
         "combine_checkbox_option_values": "true",
-        "label_info_image_src": "img/chw.png",
-        "label_info_has_image": true,
         "label": "Historia yoyote ya Matibabu na upasuaji ya Mgonjwa?",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
@@ -257,21 +255,6 @@
         }
       },
       {
-        "key": "prompt_for_gravida",
-        "type": "toaster_notes",
-        "text": "Toa ushauri juu ya hatari ya kuchanika mfuko wa uzazi",
-        "openmrs_entity_id": "",
-        "openmrs_entity": "",
-        "openmrs_entity_parent": "",
-        "toaster_type": "problem",
-        "relevance": {
-          "step1:gravida": {
-            "type": "numeric",
-            "ex": "greaterThan(.,\"5\")"
-          }
-        }
-      },
-      {
         "key": "parity",
         "type": "edit_text",
         "hint": "Idadi ya mimba zilizofikia wiki 24 au zaidi",
@@ -293,6 +276,22 @@
             "err": "Namba lazima iwe chini ya idadi ya ujauzito"
           }
         ]
+      },
+      {
+        "key": "prompt_for_grand_multiparity",
+        "type": "toaster_notes",
+        "text": "Toa ushauri juu ya hatari ya kuchanika mfuko wa uzazi",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_medical_and_surgical_history_relevance.yml"
+            }
+          }
+        }
       },
       {
         "key": "no_surv_children",
