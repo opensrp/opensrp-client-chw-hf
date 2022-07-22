@@ -7,6 +7,7 @@ import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.assetMana
 import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.locale;
 
 public class Constants extends CoreConstants {
+    public static String DEFAULT_LOCATION_NAME = "default_location_name";
     public static String pregnancyOutcome = "preg_outcome";
     public static String LOST_TO_FOLLOWUP = "lost_to_followup";
     public static String REFERRAL_TASK_FOCUS = "referral_task_focus";
