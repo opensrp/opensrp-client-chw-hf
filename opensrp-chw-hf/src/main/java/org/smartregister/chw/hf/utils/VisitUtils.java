@@ -18,6 +18,7 @@ import org.smartregister.repository.AllSharedPreferences;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -52,36 +53,36 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
                     }
                 } else if (v.getVisitType().equalsIgnoreCase(Constants.Events.ANC_RECURRING_FACILITY_VISIT)) {
                     try {
-                        JSONObject jsonObject = new JSONObject(v.getJson());
-                        JSONArray obs = jsonObject.getJSONArray("obs");
-
-                        boolean isTriageDone = computeCompletionStatus(obs, "rapid_examination");
-                        boolean isPregnancyStatusDone = computeCompletionStatus(obs, "pregnancy_status");
-
-                        String ttCheckString = "tt_vaccination";
-
-                        if (isTriageDone && isPregnancyStatusDone) {
-                            if (checkIfStatusIsViable(obs)) {
-                                boolean isConsultationDone = computeCompletionStatus(obs, "examination_findings");
-                                boolean isLabTestsDone = computeCompletionStatus(obs, "hb_level_test");
-                                boolean isPharmacyDone = computeCompletionStatus(obs, "iron_folate_supplements");
-                                boolean isCounsellingDone = computeCompletionStatus(obs, "given_counselling");
-                                boolean isTTVaccinationDone = computeCompletionStatus(obs, ttCheckString);
-
-                                if (HfAncDao.isEligibleForTtVaccination(v.getBaseEntityId())) {
-                                    if (isConsultationDone && isLabTestsDone && isPharmacyDone && isCounsellingDone && isTTVaccinationDone) {
-                                        ancFollowupVisitsCompleted.add(v);
-                                    }
-                                } else {
-                                    if (isConsultationDone && isLabTestsDone && isPharmacyDone && isCounsellingDone) {
-                                        ancFollowupVisitsCompleted.add(v);
-                                    }
-                                }
-
-                            } else {
-                                ancFollowupVisitsCompleted.add(v);
-                            }
-                        }
+//                        JSONObject jsonObject = new JSONObject(v.getJson());
+//                        JSONArray obs = jsonObject.getJSONArray("obs");
+//
+//                        boolean isTriageDone = computeCompletionStatus(obs, "rapid_examination");
+//                        boolean isPregnancyStatusDone = computeCompletionStatus(obs, "pregnancy_status");
+//
+//                        String ttCheckString = "tt_vaccination";
+//
+//                        if (isTriageDone && isPregnancyStatusDone) {
+//                            if (checkIfStatusIsViable(obs)) {
+//                                boolean isConsultationDone = computeCompletionStatus(obs, "examination_findings");
+//                                boolean isLabTestsDone = computeCompletionStatus(obs, "hb_level_test");
+//                                boolean isPharmacyDone = computeCompletionStatus(obs, "iron_folate_supplements");
+//                                boolean isCounsellingDone = computeCompletionStatus(obs, "given_counselling");
+//                                boolean isTTVaccinationDone = computeCompletionStatus(obs, ttCheckString);
+//
+//                                if (HfAncDao.isEligibleForTtVaccination(v.getBaseEntityId())) {
+//                                    if (isConsultationDone && isLabTestsDone && isPharmacyDone && isCounsellingDone && isTTVaccinationDone) {
+//                                        ancFollowupVisitsCompleted.add(v);
+//                                    }
+//                                } else {
+//                                    if (isConsultationDone && isLabTestsDone && isPharmacyDone && isCounsellingDone) {
+//                                        ancFollowupVisitsCompleted.add(v);
+//                                    }
+//                                }
+//
+//                            } else {
+//                                ancFollowupVisitsCompleted.add(v);
+//                            }
+//                        }
                     } catch (Exception e) {
                         Timber.e(e);
                     }
@@ -111,16 +112,7 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
         NCUtils.startClientProcessing();
     }
 
-    public static boolean computeCompletionStatus(JSONArray obs, String checkString) throws JSONException {
-        int size = obs.length();
-        for (int i = 0; i < size; i++) {
-            JSONObject checkObj = obs.getJSONObject(i);
-            if (checkObj.getString("fieldCode").equalsIgnoreCase(checkString)) {
-                return true;
-            }
-        }
-        return false;
-    }
+
 
     public static boolean computeCompletionStatusForAction(JSONArray obs, String checkString) throws JSONException {
         int size = obs.length();
@@ -176,22 +168,16 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
             try {
                 JSONObject jsonObject = new JSONObject(visit.getJson());
                 JSONArray obs = jsonObject.getJSONArray("obs");
-                boolean isMedicalAndSurgicalHistoryDone = computeCompletionStatus(obs, "medical_surgical_history_completion_status");
-                boolean isBaselineInvestigationComplete = computeCompletionStatusForAction(obs, "baseline_investigation_completion_status");
-                boolean isObstetricExaminationComplete = computeCompletionStatusForAction(obs, "obstetric_examination_completion_status");
-                boolean isTbScreeningComplete = computeCompletionStatusForAction(obs, "tb_screening_completion_status");
-                boolean isMalariaInvestigationComplete = computeCompletionStatusForAction(obs, "malaria_investigation_completion_status");
-                boolean isPharmacyComplete = computeCompletionStatusForAction(obs, "pharmacy_completion_status");
-                boolean isTTVaccinationComplete = computeCompletionStatusForAction(obs, "tt_vaccination_completion_status");
-                boolean isCounsellingComplete = computeCompletionStatusForAction(obs, "counselling_completion_status");
-                if (isBaselineInvestigationComplete
-                        && isObstetricExaminationComplete
-                        && isTbScreeningComplete
-                        && isMalariaInvestigationComplete
-                        && isPharmacyComplete
-                        && isTTVaccinationComplete
-                        && isCounsellingComplete
-                        && isMedicalAndSurgicalHistoryDone) {
+                HashMap<String, Boolean> completionObject = new HashMap<>();
+                completionObject.put("isMedicalAndSurgicalHistoryDone", computeCompletionStatusForAction(obs, "medical_surgical_history_completion_status"));
+                completionObject.put("isBaselineInvestigationComplete", computeCompletionStatusForAction(obs, "baseline_investigation_completion_status"));
+                completionObject.put("isObstetricExaminationComplete", computeCompletionStatusForAction(obs, "obstetric_examination_completion_status"));
+                completionObject.put("isTbScreeningComplete", computeCompletionStatusForAction(obs, "tb_screening_completion_status"));
+                completionObject.put("isMalariaInvestigationComplete", computeCompletionStatusForAction(obs, "malaria_investigation_completion_status"));
+                completionObject.put("isPharmacyComplete", computeCompletionStatusForAction(obs, "pharmacy_completion_status"));
+                completionObject.put("isTTVaccinationComplete", computeCompletionStatusForAction(obs, "tt_vaccination_completion_status"));
+                completionObject.put("isCounsellingComplete", computeCompletionStatusForAction(obs, "counselling_completion_status"));
+                if (!completionObject.containsValue(false)) {
                     isComplete = true;
                 }
             } catch (Exception e) {
@@ -202,8 +188,14 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
             try{
                 JSONObject jsonObject = new JSONObject(visit.getJson());
                 JSONArray obs = jsonObject.getJSONArray("obs");
-                boolean isTriageDone = computeCompletionStatus(obs, "triage_completion_status");
-                if(isTriageDone){
+                HashMap<String, Boolean> completionObject = new HashMap<>();
+                completionObject.put("isTriageDone", computeCompletionStatusForAction(obs, "triage_completion_status"));
+                completionObject.put("isPregnancyStatusDone", computeCompletionStatusForAction(obs, "pregnancy_status_completion_status"));
+                if(checkIfStatusIsViable(obs)){
+                    //check the other fields
+                }
+
+                if(!completionObject.containsValue(false)){
                     isComplete = true;
                 }
             }catch (Exception e) {
