@@ -199,7 +199,16 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
             }
         }
         if (visit.getVisitType().equalsIgnoreCase(Constants.Events.ANC_RECURRING_FACILITY_VISIT)) {
-            //TODO: catch for recurring visits
+            try{
+                JSONObject jsonObject = new JSONObject(visit.getJson());
+                JSONArray obs = jsonObject.getJSONArray("obs");
+                boolean isTriageDone = computeCompletionStatus(obs, "triage_completion_status");
+                if(isTriageDone){
+                    isComplete = true;
+                }
+            }catch (Exception e) {
+                Timber.e(e);
+            }
         }
         return isComplete;
     }
