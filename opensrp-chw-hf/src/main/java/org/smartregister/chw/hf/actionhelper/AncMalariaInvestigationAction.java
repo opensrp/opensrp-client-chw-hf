@@ -55,9 +55,13 @@ public class AncMalariaInvestigationAction implements BaseAncHomeVisitAction.Anc
     public void onPayloadReceived(String jsonPayload) {
         try {
             JSONObject jsonObject = new JSONObject(jsonPayload);
+            JSONObject global = jsonObject.getJSONObject("global");
+            boolean llinProvided = global.getBoolean("llin_provided");
             checkObject.clear();
             checkObject.put("client_on_malaria_medication", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "client_on_malaria_medication")));
-            checkObject.put("llin_provision", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "llin_provision")));
+            if(!llinProvided){
+                checkObject.put("llin_provision", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "llin_provision")));
+            }
         } catch (JSONException e) {
             Timber.e(e);
         }

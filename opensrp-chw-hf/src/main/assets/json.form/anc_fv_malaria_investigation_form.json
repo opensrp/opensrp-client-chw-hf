@@ -47,6 +47,7 @@
     "encounter_location": ""
   },
   "global": {
+    "llin_provided": false
   },
   "step1": {
     "title": "Malaria Investigation",

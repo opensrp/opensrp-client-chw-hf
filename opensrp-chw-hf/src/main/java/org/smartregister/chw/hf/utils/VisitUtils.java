@@ -113,7 +113,6 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
     }
 
 
-
     public static boolean computeCompletionStatusForAction(JSONArray obs, String checkString) throws JSONException {
         int size = obs.length();
         for (int i = 0; i < size; i++) {
@@ -185,21 +184,22 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
             }
         }
         if (visit.getVisitType().equalsIgnoreCase(Constants.Events.ANC_RECURRING_FACILITY_VISIT)) {
-            try{
+            try {
                 JSONObject jsonObject = new JSONObject(visit.getJson());
                 JSONArray obs = jsonObject.getJSONArray("obs");
                 HashMap<String, Boolean> completionObject = new HashMap<>();
                 completionObject.put("isTriageDone", computeCompletionStatusForAction(obs, "triage_completion_status"));
                 completionObject.put("isPregnancyStatusDone", computeCompletionStatusForAction(obs, "pregnancy_status_completion_status"));
-                if(checkIfStatusIsViable(obs)){
+                if (checkIfStatusIsViable(obs)) {
                     //check the other fields
                     completionObject.put("isConsultationDone", computeCompletionStatusForAction(obs, "consultation_completion_status"));
+                    completionObject.put("isMalariaInvestigationComplete", computeCompletionStatusForAction(obs, "malaria_investigation_completion_status"));
                 }
 
-                if(!completionObject.containsValue(false)){
+                if (!completionObject.containsValue(false)) {
                     isComplete = true;
                 }
-            }catch (Exception e) {
+            } catch (Exception e) {
                 Timber.e(e);
             }
         }
