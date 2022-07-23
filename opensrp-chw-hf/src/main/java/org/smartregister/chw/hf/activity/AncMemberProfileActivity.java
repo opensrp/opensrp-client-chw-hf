@@ -84,7 +84,6 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     private boolean isKnownOnArt;
     private String ctcNumber;
     private String partnerBaseEntityId;
-    private TextView processVisitBtn;
     private RelativeLayout processVisitLayout;
 
     public static void startMe(Activity activity, String baseEntityID) {
@@ -373,6 +372,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     }
 
     private void checkVisitStatus(Visit firstVisit) {
+        processVisitLayout = findViewById(R.id.rlProcessVisitBtn);
         boolean visitDone = firstVisit.getProcessed();
         boolean formsCompleted = VisitUtils.istAncVisitComplete(firstVisit);
         if (!visitDone) {
@@ -381,6 +381,8 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
             textViewAncVisitNot.setVisibility(View.GONE);
             if(formsCompleted){
                 showCompleteVisit();
+            }else{
+                processVisitLayout.setVisibility(View.GONE);
             }
         } else {
             getButtonStatus();
@@ -396,9 +398,8 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     }
 
     private void showCompleteVisit(){
-        processVisitBtn = findViewById(R.id.textview_process_visit);
+        TextView processVisitBtn = findViewById(R.id.textview_process_visit);
         processVisitBtn.setOnClickListener(this);
-        processVisitLayout = findViewById(R.id.rlProcessVisitBtn);
         processVisitLayout.setVisibility(View.VISIBLE);
     }
 

@@ -193,6 +193,7 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
                 completionObject.put("isPregnancyStatusDone", computeCompletionStatusForAction(obs, "pregnancy_status_completion_status"));
                 if(checkIfStatusIsViable(obs)){
                     //check the other fields
+                    completionObject.put("isConsultationDone", computeCompletionStatusForAction(obs, "consultation_completion_status"));
                 }
 
                 if(!completionObject.containsValue(false)){
