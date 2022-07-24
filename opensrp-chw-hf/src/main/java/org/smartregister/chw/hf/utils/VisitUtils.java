@@ -194,11 +194,12 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
                     //check the other fields
                     completionObject.put("isConsultationDone", computeCompletionStatusForAction(obs, "consultation_completion_status"));
                     completionObject.put("isMalariaInvestigationComplete", computeCompletionStatusForAction(obs, "malaria_investigation_completion_status"));
-                     completionObject.put("isPharmacyComplete", computeCompletionStatusForAction(obs, "pharmacy_completion_status"));
-                     if (HfAncDao.isEligibleForTtVaccination(visit.getBaseEntityId())) {
-                           completionObject.put("isTTVaccinationComplete", computeCompletionStatusForAction(obs, "tt_vaccination_completion_status"));
-                      }
-                      completionObject.put("isCounsellingComplete", computeCompletionStatusForAction(obs, "counselling_completion_status"));
+                    completionObject.put("isPharmacyComplete", computeCompletionStatusForAction(obs, "pharmacy_completion_status"));
+                    completionObject.put("isLabTestComplete", computeCompletionStatusForAction(obs, "lab_test_completion_status"));
+                    if (HfAncDao.isEligibleForTtVaccination(visit.getBaseEntityId())) {
+                        completionObject.put("isTTVaccinationComplete", computeCompletionStatusForAction(obs, "tt_vaccination_completion_status"));
+                    }
+                    completionObject.put("isCounsellingComplete", computeCompletionStatusForAction(obs, "counselling_completion_status"));
                 }
 
                 if (!completionObject.containsValue(false)) {

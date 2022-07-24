@@ -72,11 +72,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "test_not_conducted"
           }
-        ],
-        "v_required": {
-          "value": true,
-          "err": "Please answer this question"
-        }
+        ]
       },
       {
         "key": "hb_level",
@@ -222,11 +218,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "test_not_conducted"
           }
-        ],
-        "v_required": {
-          "value": true,
-          "err": "Please answer this question"
-        }
+        ]
       },
       {
         "key": "type_of_blood_for_glucose_test",
@@ -419,11 +411,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "test_not_conducted"
           }
-        ],
-        "v_required": {
-          "value": true,
-          "err": "Please answer this question"
-        }
+        ]
       },
       {
         "key": "prompt_for_glucose_in_urine",
@@ -527,11 +515,7 @@
             "openmrs_entity_id": "test_not_conducted",
             "openmrs_entity_parent": ""
           }
-        ],
-        "v_required": {
-          "value": true,
-          "err": "Please answer this question"
-        }
+        ]
       },
       {
         "key": "prompt_for_protein_in_urine",
@@ -634,10 +618,6 @@
           "O": "O",
           "test_not_conducted": "test_not_conducted"
         },
-        "v_required": {
-          "value": "true",
-          "err": "Please choose a blood group"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -725,10 +705,6 @@
             "openmrs_entity_id": "negative"
           }
         ],
-        "v_required": {
-          "value": "true",
-          "err": "Please answer this question"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -779,10 +755,6 @@
             "openmrs_entity_id": "test_not_conducted"
           }
         ],
-        "v_required": {
-          "value": "true",
-          "err": "Please answer this question"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -972,10 +944,6 @@
             "openmrs_entity_id": "test_not_conducted"
           }
         ],
-        "v_required": {
-          "value": "true",
-          "err": "Please answer this question"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -1116,10 +1084,6 @@
             "openmrs_entity_id": "test_not_conducted"
           }
         ],
-        "v_required": {
-          "value": "true",
-          "err": "Please answer this question"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -1259,6 +1223,14 @@
             }
           }
         }
+      },
+      {
+        "key": "lab_test_completion_status",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "lab_test_completion_status",
+        "openmrs_entity_parent": "",
+        "value": "pending"
       }
     ]
   }
