@@ -191,4 +191,12 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
         return Pending;
     }
 
+    public static void manualProcessVisit(Visit visit) throws Exception{
+        List<Visit> manualProcessedVisits = new ArrayList<>();
+        VisitDetailsRepository visitDetailsRepository = AncLibrary.getInstance().visitDetailsRepository();
+        VisitRepository visitRepository = AncLibrary.getInstance().visitRepository();
+        manualProcessedVisits.add(visit);
+        processVisits(manualProcessedVisits, visitRepository, visitDetailsRepository);
+    }
+
 }
