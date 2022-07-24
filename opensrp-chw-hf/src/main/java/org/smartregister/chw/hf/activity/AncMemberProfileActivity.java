@@ -374,7 +374,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     private void checkVisitStatus(Visit firstVisit) {
         processVisitLayout = findViewById(R.id.rlProcessVisitBtn);
         boolean visitDone = firstVisit.getProcessed();
-        boolean formsCompleted = VisitUtils.istAncVisitComplete(firstVisit);
+        boolean formsCompleted = VisitUtils.isAncVisitComplete(firstVisit);
         if (!visitDone) {
             showVisitInProgress();
             textViewUndo.setVisibility(View.GONE);
