@@ -181,6 +181,10 @@
             "type": "string",
             "ex": "equalTo(., \"no\")"
           }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jibu swali hili"
         }
       },
       {

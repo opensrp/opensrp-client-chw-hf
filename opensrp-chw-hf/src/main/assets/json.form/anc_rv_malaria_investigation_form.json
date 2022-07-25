@@ -176,6 +176,10 @@
             "value": false
           }
         ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        },
         "relevance": {
           "step1:client_on_malaria_medication": {
             "type": "string",
