@@ -678,6 +678,7 @@ public class Constants extends CoreConstants {
             String CBHS_REPORT = "cbhs_report";
             String LTFU_SUMMARY = "ltfu_report";
             String LD_REPORT = "ld_report";
+            String MOTHER_CHAMPION_REPORT = "mother_champion_report";
         }
 
         public interface ReportPaths {
@@ -690,6 +691,7 @@ public class Constants extends CoreConstants {
             String CBHS_REPORT_PATH = "cbhs-taarifa-ya-mwezi";
             String LTFU_REPORT_PATH = "ltfu-summary-report";
             String LD_REPORT_PATH = "labour-delivery-taarifa-ya-mwezi";
+            String MOTHER_CHAMPION_REPORT_PATH = "mother-champion-report";
         }
     }
 
