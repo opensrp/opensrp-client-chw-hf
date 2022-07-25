@@ -72,6 +72,7 @@ public class ReportUtils {
 
     public static Date getReportDate() {
         if (StringUtils.isNotBlank(reportPeriod)) {
+
             try {
                 return new SimpleDateFormat("MM-yyyy", Locale.getDefault()).parse(reportPeriod);
             } catch (ParseException e) {
