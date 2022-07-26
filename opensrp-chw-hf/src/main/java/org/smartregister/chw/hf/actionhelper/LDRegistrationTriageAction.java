@@ -26,7 +26,6 @@ public class LDRegistrationTriageAction implements BaseLDVisitAction.LDVisitActi
     private String diastolic;
     private String pulseRate;
     private String respiratoryRate;
-    private String oxygenSaturation;
     private String fetalHeartRate;
     private String temperature;
     private String weight;
@@ -55,7 +54,6 @@ public class LDRegistrationTriageAction implements BaseLDVisitAction.LDVisitActi
             diastolic = CoreJsonFormUtils.getValue(jsonObject, "diastolic");
             pulseRate = CoreJsonFormUtils.getValue(jsonObject, "pulse_rate");
             respiratoryRate = CoreJsonFormUtils.getValue(jsonObject, "respiratory_rate");
-            oxygenSaturation = CoreJsonFormUtils.getValue(jsonObject, "oxygen_saturation");
             fetalHeartRate = CoreJsonFormUtils.getValue(jsonObject, "fetal_heart_rate");
             temperature = CoreJsonFormUtils.getValue(jsonObject, "temperature");
             weight = CoreJsonFormUtils.getValue(jsonObject, "weight");
@@ -112,7 +110,6 @@ public class LDRegistrationTriageAction implements BaseLDVisitAction.LDVisitActi
                 !StringUtils.isBlank(diastolic) &&
                 !StringUtils.isBlank(pulseRate) &&
                 !StringUtils.isBlank(respiratoryRate) &&
-                !StringUtils.isBlank(oxygenSaturation) &&
                 !StringUtils.isBlank(fetalHeartRate) &&
                 !StringUtils.isBlank(temperature) &&
                 !StringUtils.isBlank(weight) &&
@@ -127,7 +124,6 @@ public class LDRegistrationTriageAction implements BaseLDVisitAction.LDVisitActi
                 !StringUtils.isBlank(diastolic) ||
                 !StringUtils.isBlank(pulseRate) ||
                 !StringUtils.isBlank(respiratoryRate) ||
-                !StringUtils.isBlank(oxygenSaturation) ||
                 !StringUtils.isBlank(fetalHeartRate) ||
                 !StringUtils.isBlank(temperature) ||
                 !StringUtils.isBlank(weight) ||
