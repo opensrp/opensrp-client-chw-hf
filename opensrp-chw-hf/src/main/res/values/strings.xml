@@ -366,6 +366,9 @@
     <string name="partograph_treatment_during_labour_drugs"> Drugs  </string>
     <string name="partograph_treatment_during_labour_iv_fluid"> IV Fluid  </string>
     <string name="partograph_treatment_during_labour_drugs_administered"> Drugs administered  </string>
+    <string name="partograph_treatment_during_labour_oxytocin_ul">Oxytocin U/L</string>
+    <string name="partograph_treatment_during_labour_none">None</string>
+    <string name="partograph_treatment_during_labour_oxytocin_drops_min">Oxytocin (drops/min)</string>
 
 
     <string name="obstetric_history_title">Obstetric History</string>
