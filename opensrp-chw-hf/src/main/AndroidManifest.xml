@@ -29,6 +29,10 @@
             android:theme="@style/HFTheme.NoActionBar"/>
         <activity android:name=".activity.LdReportsViewActivity"
             android:theme="@style/HFTheme.NoActionBar"/>
+        <activity android:name=".activity.MotherChampionReportsActivity"
+            android:theme="@style/HFTheme.NoActionBar"/>
+        <activity android:name=".activity.MotherChampionReportsViewActivity"
+            android:theme="@style/HFTheme.NoActionBar"/>
         <activity
             android:name=".activity.PncReportsActivity"
             android:theme="@style/HFTheme.NoActionBar" />
