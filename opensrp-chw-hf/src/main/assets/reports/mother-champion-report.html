@@ -63,7 +63,7 @@
     </style>
 </head>
 
-<body>
+<body onload="loadData()">
 <div class="show-on-print">
     <div class="heading">
         <h1>Majumuisho (Summary Findings) Ya Ripoti za Mwezi za Mama Vinara</h1>
@@ -86,7 +86,7 @@
         <th>Sahihi</th>
     </tr>
     </thead>
-    <tbody id="data-details">
+    <tbody id="table-body">
     </tbody>
 </table>
 <h1>B. Majumuisho ya kazi walizofanya</h1>
@@ -121,6 +121,41 @@
     </li>
 
 </ol>
+
+<script>
+  function loadData() {
+    const data = JSON.parse(Android.getData("mother-champion"));
+    const tableBody = document.getElementById("table-body");
+    if(typeof data!== undefined && data !== ""){
+        const reportData = data.nameValuePairs.reportData.values;
+        reportData.forEach((dataPoint) => {
+            //append to the table body a row with data
+            const row = document.createElement("tr");
+            const dataPointKeys = Object.keys(dataPoint.nameValuePairs);
+            dataPointKeys.forEach((key) => {
+                const cell = document.createElement("td");
+                cell.innerHTML = dataPoint.nameValuePairs[key];
+                row.appendChild(cell);
+            }
+            );
+            tableBody.appendChild(row);
+        });
+        //for part B
+        const keys = Object.keys(data.nameValuePairs);
+        keys.forEach((key) => {
+            if(key !== "reportData"){
+                const element = document.getElementById(key);
+                if(element !== null){
+                    element.innerHTML = data.nameValuePairs[key];
+                }
+            }
+        });
+    }
+  }
+
+</script>
+
+
 </body>
 
 </html>
