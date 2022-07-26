@@ -3,13 +3,9 @@ package org.smartregister.chw.hf.domain.mother_champion_repots;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.smartregister.chw.hf.dao.ReportDao;
 import org.smartregister.chw.hf.domain.ReportObject;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
-import java.util.List;
 
 public class MotherChampionReportObject extends ReportObject {
     final Date reportDate;
@@ -54,16 +50,16 @@ public class MotherChampionReportObject extends ReportObject {
         //TODO add the dataArray to the jsonObject
 
         //SAMPLE
-        JSONObject  motherChampionObject = new JSONObject();
+        JSONObject motherChampionObject = new JSONObject();
         motherChampionObject.put("id", 1);
-        motherChampionObject.put("majina_mama_vinara", "name");
-        motherChampionObject.put("namba_ya_simu", "number");
-        motherChampionObject.put("jina_lililosajiliwa", "name");
-        motherChampionObject.put("sahihi", "signed");
+        for (String motherChampionDetail : motherChampionDetails) {
+            motherChampionObject.put(motherChampionDetail, "test");
+        }
         dataArray.put(motherChampionObject);
+        //END SAMPLE
 
         jsonObject.put("reportData", dataArray);
-        for (String indicatorCode: indicatorCodes) {
+        for (String indicatorCode : indicatorCodes) {
             //jsonObject.put(indicatorCode, ReportDao.getReportPerIndicatorCode(indicatorCode));
             //TODO: remove this for test purposes
             jsonObject.put(indicatorCode, 10);
