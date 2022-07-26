@@ -546,24 +546,6 @@
         }
       },
       {
-        "key": "no_malaria_test_reason",
-        "type": "edit_text",
-        "hint": "Why was the test not conducted",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "no_malaria_test_reason",
-        "openmrs_entity_parent": "",
-        "v_required": {
-          "value": "true",
-          "err": "Please answer this question"
-        },
-        "relevance": {
-          "step1:malaria": {
-            "type": "string",
-            "ex": "equalTo(., \"test_not_conducted\")"
-          }
-        }
-      },
-      {
         "key": "blood_group",
         "type": "spinner",
         "hint": "Blood Group",
