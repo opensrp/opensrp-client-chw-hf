@@ -2,7 +2,7 @@
 name: step1_sex
 description: sex
 priority: 1
-condition: "step1_newborn_status.contains('alive')"
+condition: "step1_newborn_status.contains('alive') || step1_newborn_status.contains('still_birth')"
 actions:
   - "isRelevant = true"
 ---
