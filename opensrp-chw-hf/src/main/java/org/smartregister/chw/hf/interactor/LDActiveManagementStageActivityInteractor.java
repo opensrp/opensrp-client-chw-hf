@@ -197,7 +197,7 @@ public class LDActiveManagementStageActivityInteractor extends BaseLDVisitIntera
         public BaseLDVisitAction.Status evaluateStatusOnPayload() {
             if (StringUtils.isNotBlank(placenta_and_membrane_expulsion) && StringUtils.isNotBlank(estimated_blood_loss)) {
                 return BaseLDVisitAction.Status.COMPLETED;
-            } else if (StringUtils.isBlank(estimated_blood_loss)) {
+            } else if (StringUtils.isNotBlank(placenta_and_membrane_expulsion) && StringUtils.isBlank(estimated_blood_loss)) {
                 return BaseLDVisitAction.Status.PARTIALLY_COMPLETED;
             } else {
                 return BaseLDVisitAction.Status.PENDING;
