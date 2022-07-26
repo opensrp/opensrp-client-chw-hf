@@ -773,6 +773,34 @@
             "creates_case": [
               "ec_cbhs_register"
             ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "Mother Champion Community Services Referral",
+            "creates_case": [
+              "ec_mother_champion"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "Mother Champion Followup",
+            "creates_case": [
+              "ec_mother_champion_followup"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "Mother Champion SBCC Sessions",
+            "creates_case": [
+              "ec_sbcc"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "ANC Partner Community Followup Feedback",
+            "creates_case": [
+              "ec_anc_partner_community_feedback"
+            ]
           }
         ]
       }

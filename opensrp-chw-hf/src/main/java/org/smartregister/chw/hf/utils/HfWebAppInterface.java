@@ -10,6 +10,7 @@ import static org.smartregister.chw.hf.utils.Constants.ReportConstants.PMTCTRepo
 import static org.smartregister.util.Utils.getAllSharedPreferences;
 
 public class HfWebAppInterface {
+    private static final String DEFAULT_LOCALITY_NAME = "dfltLocName";
     Context mContext;
 
     String reportType;
@@ -75,6 +76,6 @@ public class HfWebAppInterface {
 
     @JavascriptInterface
     public String getReportingFacility() {
-        return getAllSharedPreferences().fetchCurrentLocality();
+        return getAllSharedPreferences().getPreference(DEFAULT_LOCALITY_NAME);
     }
 }

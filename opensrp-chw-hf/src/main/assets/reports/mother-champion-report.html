@@ -49,6 +49,17 @@
             font-size: 1rem;
         }
 
+        th,td {
+            text-align: left;
+            padding: 0.5rem;
+        }
+
+        .dataItem {
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 0 0.5rem;
+        }
+
         .show-on-print {
             display: none;
         }
@@ -68,56 +79,47 @@
     <div class="heading">
         <h1>Majumuisho (Summary Findings) Ya Ripoti za Mwezi za Mama Vinara</h1>
     </div>
-    <h2>Mkoa: <span class="underline" id="mkoa"></span></h2>
-    <h2>Halmashauri: <span class="underline" id="halmashauri"></span></h2>
-    <h2>Kata: <span class="underline" id="kata"></span></h2>
-    <h2>Kijiji/Mtaa:<span class="underline" id="kijiji"></span></h2>
-    <h2>Jina la kituo:<span class="underline" id="jina-la-kituo"></span></h2>
-    <h2>Mwezi: <span id="mwezi"></span></h2>
+    <h2>Jina la kituo : <span class="underline" id="jina-la-kituo"></span></h2>
+    <h2>Mwezi : <span class="underline" id="mwezi"></span></h2>
 </div>
-<h1>A. Majina ya mama vinara waliofanya kazi ndani ya mwezi husika</h1>
+<h1><b>A. Majina ya mama vinara waliofanya kazi ndani ya mwezi husika</b></h1>
 <table border="1">
     <thead>
     <tr>
         <th>No</th>
         <th>Majina ya Mama Vinara</th>
-        <th>Namba ya simu</th>
         <th>Jina lililosajiliwa</th>
-        <th>Sahihi</th>
     </tr>
     </thead>
     <tbody id="table-body">
     </tbody>
 </table>
-<h1>B. Majumuisho ya kazi walizofanya</h1>
+<br><br>
+<h1><b>B. Majumuisho ya kazi walizofanya</b></h1>
 <ol>
     <li>
         Idadi ya wateja wa PMTCT waliounganishwa kwenye kikundi/vikundi vya IGA and Ushauri Nasaha
-        <span class="underline" id="b-1"></span>
+        <span class="underline dataItem" id="b-1"></span>
     </li>
     <li>
         Idadi ya wateja wapya wa PMTCT waliofuatiliwa na mama vinara na kuanza kutumia dawa <span
-            class="underline" id="b-2"></span>
+            class="underline dataItem" id="b-2"></span>
     </li>
     <li>
         Idadi ya wateja wa PMTCT waliopotea kwenye matumizi ya dawa (LTF) na kurudishwa/kufuatiliwa
-        na mama vinara <span class="underline" id="b-3"></span>
+        na mama vinara <span class="underline dataItem" id="b-3"></span>
     </li>
     <li>
         Idadi ya vipindi alivyofundisha mama kinara/vinara kwa wateja wa PMTCT <span
-            class="underline" id="b-4"></span>
+            class="underline dataItem" id="b-4"></span>
     </li>
     <li>
-        Idadi ya wateja wa PMTCT walioelimishwa na mama kinara/vinara <span class="underline"
+        Idadi ya wateja wa PMTCT walioelimishwa na mama kinara/vinara <span class="underline dataItem"
                                                                             id="b-5"></span>
     </li>
     <li>
-        Idadi ya wenza walioelimishwa na mama vinara juu ya PMTCT <span class="underline"
-                                                                        id="b-6"></span>
-    </li>
-    <li>
         Idadi ya wenza waliofuatiliwa/kuletwa kituoni kupima na kujua hali za afya zao kwa mara ya
-        kwanza <span class="underline" id="b-7"></span>
+        kwanza <span class="underline dataItem" id="b-7"></span>
     </li>
 
 </ol>
@@ -126,6 +128,10 @@
   function loadData() {
     const data = JSON.parse(Android.getData("mother-champion"));
     const tableBody = document.getElementById("table-body");
+    const facilityNameElement = document.getElementById("jina-la-kituo");
+    facilityNameElement.innerHTML = Android.getReportingFacility();
+    const dateElement = document.getElementById("mwezi");
+    dateElement.innerHTML = Android.getDataPeriod();
     if(typeof data!== undefined && data !== ""){
         const reportData = data.nameValuePairs.reportData.values;
         reportData.forEach((dataPoint) => {
@@ -152,6 +158,8 @@
         });
     }
   }
+
+
 
 </script>
 
