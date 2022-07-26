@@ -419,5 +419,8 @@
     <string name="test_not_conducted">Test Not Conducted</string>
     <string name="mother_champion_reports_subtitle">View Mother Champion Reports</string>
     <string name="mother_champion_reports">Mother Champion Reports</string>
+    <string name="partograph_treatment_during_labour_oxytocin_ul">Oxytocin U/L</string>
+    <string name="partograph_treatment_during_labour_none">None</string>
+    <string name="partograph_treatment_during_labour_oxytocin_drops_min">Oxytocin (drops/min)</string>
 
 </resources>
