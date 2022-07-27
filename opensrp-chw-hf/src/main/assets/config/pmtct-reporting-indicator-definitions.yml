@@ -564,7 +564,7 @@ indicators:
                                INNER JOIN ec_hei_followup ehf on eh.base_entity_id = ehf.entity_id
                       WHERE eh.risk_category = 'high'
                         AND ehf.test_at_age = 'At Birth'
-                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "B"
@@ -577,7 +577,7 @@ indicators:
                         ehf.test_at_age IS NOT NULL
                         AND date(substr(fm.dob, 1, 4) || '-' || substr(fm.dob, 6, 2) || '-' || substr(fm.dob, 9, 2), '+3 months') >
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || substr(ehf.followup_visit_date, 1, 2))
-                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "C"
@@ -592,7 +592,7 @@ indicators:
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || substr(ehf.followup_visit_date, 1, 2))
                         AND date(substr(fm.dob, 1, 4) || '-' || substr(fm.dob, 6, 2) || '-' || substr(fm.dob, 9, 2), '+12 months') >=
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || substr(ehf.followup_visit_date, 1, 2))
-                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "D"
@@ -605,7 +605,7 @@ indicators:
                         ehf.test_at_age IS NOT NULL
                         AND date(substr(fm.dob, 1, 4) || '-' || substr(fm.dob, 6, 2) || '-' || substr(fm.dob, 9, 2), '+12 months') <
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || substr(ehf.followup_visit_date, 1, 2))
-                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "A1"
@@ -617,7 +617,7 @@ indicators:
                       WHERE eh.risk_category = 'high'
                         AND ehf.test_at_age = 'At Birth'
                         AND ehhr.hiv_test_result = 'positive'
-                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "B1"
@@ -632,7 +632,7 @@ indicators:
                         AND ehhr.hiv_test_result = 'positive'
                         AND date(substr(fm.dob, 1, 4) || '-' || substr(fm.dob, 6, 2) || '-' || substr(fm.dob, 9, 2), '+3 months') >
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || substr(ehf.followup_visit_date, 1, 2))
-                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "C1"
@@ -649,7 +649,7 @@ indicators:
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || substr(ehf.followup_visit_date, 1, 2))
                         AND date(substr(fm.dob, 1, 4) || '-' || substr(fm.dob, 6, 2) || '-' || substr(fm.dob, 9, 2), '+12 months') >=
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || substr(ehf.followup_visit_date, 1, 2))
-                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "D1"
@@ -664,7 +664,7 @@ indicators:
                         AND ehhr.hiv_test_result = 'positive'
                         AND date(substr(fm.dob, 1, 4) || '-' || substr(fm.dob, 6, 2) || '-' || substr(fm.dob, 9, 2), '+12 months') <
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || substr(ehf.followup_visit_date, 1, 2))
-                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "E1"
@@ -678,7 +678,7 @@ indicators:
                       WHERE ehf.test_at_age IS NOT NULL
                         AND ehhr.hiv_test_result = 'positive'
                         AND (ehr.ctc_number IS NOT NULL OR ehr.ctc_number != '' OR ehhr.ctc_number IS NOT NULL OR ehhr.ctc_number != '')
-                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "F"
@@ -688,7 +688,7 @@ indicators:
                                INNER JOIN ec_hei_followup ehf on eh.base_entity_id = ehf.entity_id
                       WHERE (ehf.prophylaxis_arv_for_high_risk_given IS NOT NULL OR
                              ehf.prophylaxis_arv_for_high_and_low_risk_given IS NOT NULL)
-                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "H"
@@ -705,7 +705,7 @@ indicators:
                         AND date(substr(fm.dob, 1, 4) || '-' || substr(fm.dob, 6, 2) || '-' || substr(fm.dob, 9, 2), '+13 months') >
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' ||
                                  substr(ehf.followup_visit_date, 1, 2))
-                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "I"
@@ -716,7 +716,7 @@ indicators:
                                INNER JOIN ec_family_member fm on fm.base_entity_id = eh.base_entity_id
                                INNER JOIN ec_hei_hiv_results ehhr on ehf.base_entity_id = ehhr.hei_followup_form_submission_id
                       WHERE ehf.test_at_age = '15 Months'
-                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "J"
@@ -727,7 +727,7 @@ indicators:
                                INNER JOIN ec_family_member fm on fm.base_entity_id = eh.base_entity_id
                                INNER JOIN ec_hei_hiv_results ehhr on ehf.base_entity_id = ehhr.hei_followup_form_submission_id
                       WHERE ehf.test_at_age = '18 Months'
-                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "H1"
@@ -745,7 +745,7 @@ indicators:
                         AND date(substr(fm.dob, 1, 4) || '-' || substr(fm.dob, 6, 2) || '-' || substr(fm.dob, 9, 2), '+13 months') >
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' ||
                                  substr(ehf.followup_visit_date, 1, 2))
-                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "I1"
@@ -757,7 +757,7 @@ indicators:
                                INNER JOIN ec_hei_hiv_results ehhr on ehf.base_entity_id = ehhr.hei_followup_form_submission_id
                       WHERE ehf.test_at_age = '15 Months'
                         AND ehhr.hiv_test_result = 'positive'
-                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "J1"
@@ -769,5 +769,5 @@ indicators:
                                INNER JOIN ec_hei_hiv_results ehhr on ehf.base_entity_id = ehhr.hei_followup_form_submission_id
                       WHERE ehf.test_at_age = '18 Months'
                         AND ehhr.hiv_test_result = 'positive'
-                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
