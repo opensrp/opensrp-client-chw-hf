@@ -56,6 +56,15 @@ public class AncObstetricExaminationAction implements BaseAncHomeVisitAction.Anc
         try {
             JSONObject jsonObject = new JSONObject(jsonPayload);
             int gestAge = Integer.parseInt(CoreJsonFormUtils.getValue(jsonObject, "gest_age"));
+            String abdominalContour = CoreJsonFormUtils.getValue(jsonObject, "abdominal_contour");
+            boolean abdominalContourCheck = !(abdominalContour.equalsIgnoreCase("Abdominal Contour") || abdominalContour.equalsIgnoreCase("Umbo la Tumbo"));
+
+            String lie = CoreJsonFormUtils.getValue(jsonObject, "lie");
+            boolean lieCheck = !(lie.equalsIgnoreCase("Lie") || lie.equalsIgnoreCase("Mlalo wa mtoto tumboni"));
+
+            String presentation = CoreJsonFormUtils.getValue(jsonObject, "presentation");
+            boolean presentationCheck = !(presentation.equalsIgnoreCase("Presentation") || presentation.equalsIgnoreCase("Kitangulizi cha mtoto"));
+
             checkObject.clear();
             checkObject.put("weight", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "weight")));
             checkObject.put("height", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "height")));
@@ -65,7 +74,7 @@ public class AncObstetricExaminationAction implements BaseAncHomeVisitAction.Anc
             checkObject.put("temperature", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "temperature")));
             checkObject.put("abdominal_scars", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "abdominal_scars")));
             checkObject.put("abdominal_movement_with_respiration", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "abdominal_movement_with_respiration")));
-            checkObject.put("abdominal_contour", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "abdominal_contour")));
+            checkObject.put("abdominal_contour", abdominalContourCheck);
             checkObject.put("abnormal_vaginal_discharge", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "abnormal_vaginal_discharge")));
             checkObject.put("vaginal_sores", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "vaginal_sores")));
             checkObject.put("vaginal_swelling", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "vaginal_swelling")));
@@ -75,10 +84,9 @@ public class AncObstetricExaminationAction implements BaseAncHomeVisitAction.Anc
                 checkObject.put("fetal_heart_rate", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "fetal_heart_rate")));
             }
             if (gestAge >= 35) {
-                checkObject.put("lie", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "lie")));
-                String lie = CoreJsonFormUtils.getValue(jsonObject, "lie");
+                checkObject.put("lie", lieCheck);
                 if (lie.contains("longitudinal")) {
-                    checkObject.put("presentation", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "presentation")));
+                    checkObject.put("presentation", presentationCheck);
                 }
             }
         } catch (JSONException e) {

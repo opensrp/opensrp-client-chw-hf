@@ -58,6 +58,10 @@ public class AncLabTestAction implements BaseAncHomeVisitAction.AncHomeVisitActi
             JSONObject global = jsonObject.getJSONObject("global");
             boolean bloodGroupComplete = global.getBoolean("blood_group_complete");
             boolean hivTestComplete = global.getBoolean("hiv_test_complete");
+
+            String bloodGroup = CoreJsonFormUtils.getValue(jsonObject, "blood_group");
+            boolean bloodGroupCheck = !(bloodGroup.equalsIgnoreCase("Blood Group") || bloodGroup.equalsIgnoreCase("Kundi la damu"));
+
             String hivStatus = global.getString("hiv_status");
             int gestAge = global.getInt("gestational_age");
             boolean hivTestAt32Complete = global.getBoolean("hiv_test_at_32_complete");
@@ -69,8 +73,7 @@ public class AncLabTestAction implements BaseAncHomeVisitAction.AncHomeVisitActi
             checkObject.put("glucose_in_urine", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "glucose_in_urine")));
             checkObject.put("protein_in_urine", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "protein_in_urine")));
             if(!bloodGroupComplete){
-                checkObject.put("blood_group", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "blood_group")));
-                String bloodGroup = CoreJsonFormUtils.getValue(jsonObject, "blood_group");
+                checkObject.put("blood_group", bloodGroupCheck);
                 if(bloodGroup.contains("test_not_conducted")){
                     checkObject.put("rh_factor", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "rh_factor")));
                 }

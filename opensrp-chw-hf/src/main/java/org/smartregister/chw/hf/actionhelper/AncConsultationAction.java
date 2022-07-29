@@ -60,6 +60,12 @@ public class AncConsultationAction implements BaseAncHomeVisitAction.AncHomeVisi
             int clientAge = global.getInt("client_age");
             int gestAge = Integer.parseInt(CoreJsonFormUtils.getValue(jsonObject, "gest_age"));
 
+            String lie = CoreJsonFormUtils.getValue(jsonObject, "lie");
+            boolean lieCheck = !(lie.equalsIgnoreCase("Lie") || lie.equalsIgnoreCase("Mlalo wa mtoto tumboni"));
+
+            String presentation = CoreJsonFormUtils.getValue(jsonObject, "presentation");
+            boolean presentationCheck = !(presentation.equalsIgnoreCase("Presentation") || presentation.equalsIgnoreCase("Kitangulizi cha mtoto"));
+
             checkObject.put("examination_findings", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "examination_findings")));
             if(clientAge < 25){
                 checkObject.put("height", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "height")));
@@ -70,10 +76,9 @@ public class AncConsultationAction implements BaseAncHomeVisitAction.AncHomeVisi
                 checkObject.put("fetal_heart_rate", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "fetal_heart_rate")));
             }
             if(gestAge >= 36){
-                checkObject.put("lie", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "lie")));
-                String lie = CoreJsonFormUtils.getValue(jsonObject, "lie");
+                checkObject.put("lie", lieCheck);
                 if (lie.contains("longitudinal")) {
-                    checkObject.put("presentation", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "presentation")));
+                    checkObject.put("presentation", presentationCheck);
                 }
             }
             checkObject.put("systolic", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "systolic")));
