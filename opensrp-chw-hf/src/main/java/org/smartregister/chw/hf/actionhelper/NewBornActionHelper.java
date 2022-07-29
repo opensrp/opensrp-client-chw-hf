@@ -2,6 +2,7 @@ package org.smartregister.chw.hf.actionhelper;
 
 import static org.smartregister.chw.hf.utils.Constants.HIV_STATUS.POSITIVE;
 import static org.smartregister.chw.hf.utils.JsonFormUtils.ENCOUNTER_TYPE;
+import static org.smartregister.util.JsonFormUtils.FIELDS;
 import static org.smartregister.util.JsonFormUtils.KEY;
 
 import android.content.Context;
@@ -110,6 +111,11 @@ public class NewBornActionHelper implements BaseLDVisitAction.LDVisitActionHelpe
         }
 
         JSONArray fields = null;
+        try {
+            fields = newBornForm.getJSONArray(FIELDS);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         if (fields != null && hivStatus != null && !hivStatus.equalsIgnoreCase(POSITIVE)) {
             try {

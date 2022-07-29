@@ -46,6 +46,13 @@
     "title": "Majibu ya kipimo cha VVU",
     "fields": [
       {
+        "key": "sample_id",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "sample_id",
+        "openmrs_entity_parent": ""
+      },
+      {
         "key": "hiv_test_result",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",

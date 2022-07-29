@@ -1,14 +1,14 @@
 ---
-name: step1_delivery_mode_cesarean_reason
+name: step1_delivery_mode_caesarian_reason
 description: Reason for cesarean delivery
 priority: 1
 condition: "step1_mode_of_delivery == 'cesarean'"
 actions:
   - "isRelevant = true"
 ---
-name: step1_delivery_mode_cesarean_reason_other
+name: step1_delivery_mode_caesarian_reason_other
 description: Reason for cesarean delivery
 priority: 1
-condition: "step1_delivery_mode_cesarean_reason.contains('others')"
+condition: "step1_delivery_mode_caesarian_reason.contains('others')"
 actions:
   - "isRelevant = true"

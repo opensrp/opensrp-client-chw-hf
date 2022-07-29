@@ -45,6 +45,13 @@
     "title": "CD4 Test Results",
     "fields": [
       {
+        "key": "cd4_sample_id",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "cd4_sample_id",
+        "openmrs_entity_parent": ""
+      },
+      {
         "key": "cd4_result",
         "type": "edit_text",
         "hint": "Fill in the CD4 count",

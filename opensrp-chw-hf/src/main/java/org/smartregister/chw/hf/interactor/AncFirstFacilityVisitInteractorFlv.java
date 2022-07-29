@@ -267,10 +267,17 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
                 ctcNumber.put("read_only", true);
             }
 
-            if (memberObject.getGravida() != null) {
+            if (memberObject.getGravida() != null && !HfAncDao.getParity(memberObject.getBaseEntityId()).isEmpty()) {
                 JSONArray fields = medicalSurgicalHistoryForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
                 JSONObject gravida = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "gravida");
+                JSONObject parity = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "parity");
                 gravida.put(JsonFormUtils.VALUE, memberObject.getGravida());
+                parity.put(JsonFormUtils.VALUE, HfAncDao.getParity(memberObject.getBaseEntityId()));
+
+                if (!HfAncDao.getNumberOfSurvivingChildren(memberObject.getBaseEntityId()).isEmpty()) {
+                    JSONObject no_surv_children = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "no_surv_children");
+                    no_surv_children.put(JsonFormUtils.VALUE, HfAncDao.getNumberOfSurvivingChildren(memberObject.getBaseEntityId()));
+                }
             }
 
             if (details != null && !details.isEmpty()) {

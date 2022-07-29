@@ -1,5 +1,8 @@
 package org.smartregister.chw.hf.fragment;
 
+import static org.smartregister.util.JsonFormUtils.FIELDS;
+import static org.smartregister.util.JsonFormUtils.STEP1;
+
 import android.os.Bundle;
 
 import com.vijay.jsonwizard.utils.FormUtils;
@@ -45,11 +48,13 @@ public class HvlResultsFragment extends BaseHvlResultsFragment {
 
     @Override
     public void openResultsForm(CommonPersonObjectClient client) {
+        String sampleId = Utils.getValue(client.getColumnmaps(), DBConstants.KEY.HVL_SAMPLE_ID, false);
         String baseEntityId = Utils.getValue(client.getColumnmaps(), DBConstants.KEY.BASE_ENTITY_ID, false);
         String formSubmissionId = Utils.getValue(client.getColumnmaps(), DBConstants.KEY.ENTITY_ID, false);
         try {
             JSONObject jsonObject = (new FormUtils()).getFormJsonFromRepositoryOrAssets(requireContext(), org.smartregister.chw.hf.utils.Constants.JsonForm.getHvlTestResultsForm());
             assert jsonObject != null;
+            jsonObject.getJSONObject(STEP1).getJSONArray(FIELDS).getJSONObject(0).put("value", sampleId);
             HvlResultsViewActivity.startResultsForm(getContext(), jsonObject.toString(), baseEntityId, formSubmissionId);
         } catch (JSONException e) {
             e.printStackTrace();

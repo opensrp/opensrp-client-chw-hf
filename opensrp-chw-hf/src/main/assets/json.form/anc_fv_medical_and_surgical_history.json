@@ -50,8 +50,6 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "medical_surgical_history",
         "type": "check_box",
-        "label_info_image_src": "img/chw.png",
-        "label_info_has_image": true,
         "label": "Any Medical and surgical History of the Patient?",
         "combine_checkbox_option_values": "true",
         "label_text_style": "normal",
@@ -244,21 +242,6 @@
         }
       },
       {
-        "key": "prompt_for_gravida",
-        "type": "toaster_notes",
-        "text": "Counsel on the risk of uterine rupture and closely monitor the client",
-        "openmrs_entity_id": "",
-        "openmrs_entity": "",
-        "openmrs_entity_parent": "",
-        "toaster_type": "problem",
-        "relevance": {
-          "step1:gravida": {
-            "type": "numeric",
-            "ex": "greaterThan(.,\"5\")"
-          }
-        }
-      },
-      {
         "key": "parity",
         "type": "edit_text",
         "hint": "Parity",
@@ -276,6 +259,22 @@
             "err": "Parity must be less than gravida"
           }
         ]
+      },
+      {
+        "key": "prompt_for_grand_multiparity",
+        "type": "toaster_notes",
+        "text": "Counsel on the risk of uterine rupture and closely monitor the client",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_medical_and_surgical_history_relevance.yml"
+            }
+          }
+        }
       },
       {
         "key": "no_surv_children",

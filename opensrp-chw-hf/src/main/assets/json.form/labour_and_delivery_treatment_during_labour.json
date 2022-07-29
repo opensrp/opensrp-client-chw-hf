@@ -67,7 +67,7 @@
         "options": [
           {
             "key": "oxytocin",
-            "text": "Oxytocin (drops/min)",
+            "text": "Oxytocin",
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "oxytocin"
@@ -109,7 +109,7 @@
         "openmrs_entity_parent": "",
         "v_required": {
           "value": true,
-          "err": "Please specify the Oxytoxin U/L"
+          "err": "Please specify the Oxytocin U/L"
         },
         "relevance": {
           "step1:drugs_administered": {
@@ -128,7 +128,7 @@
         "key": "oxytocin_drops_per_minute",
         "type": "edit_text",
         "edit_type": "number",
-        "hint": "Oxytocin Dose (drops/min) given",
+        "hint": "Oxytocin (drops/min)",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "oxytocin_drops_per_minute",
         "openmrs_entity_parent": "",

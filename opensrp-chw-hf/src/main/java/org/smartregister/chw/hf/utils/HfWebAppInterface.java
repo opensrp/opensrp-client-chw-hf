@@ -10,6 +10,7 @@ import static org.smartregister.chw.hf.utils.Constants.ReportConstants.PMTCTRepo
 import static org.smartregister.util.Utils.getAllSharedPreferences;
 
 public class HfWebAppInterface {
+    private static final String DEFAULT_LOCALITY_NAME = "dfltLocName";
     Context mContext;
 
     String reportType;
@@ -60,6 +61,10 @@ public class HfWebAppInterface {
             ReportUtils.setPrintJobName("wodi_ya_wazazi_report_ya_mwezi-" + ReportUtils.getReportPeriod() + ".pdf");
             return ReportUtils.LDReports.computeLdReport(ReportUtils.getReportDate());
         }
+        if (reportType.equalsIgnoreCase(Constants.ReportConstants.ReportTypes.MOTHER_CHAMPION_REPORT)){
+            ReportUtils.setPrintJobName("mother_champion_report_ya_mwezi-" + ReportUtils.getReportPeriod() + ".pdf");
+            return ReportUtils.MotherChampionReports.computeMotherChampionReport(ReportUtils.getReportDate());
+        }
 
         return "";
     }
@@ -71,6 +76,6 @@ public class HfWebAppInterface {
 
     @JavascriptInterface
     public String getReportingFacility() {
-        return getAllSharedPreferences().fetchCurrentLocality();
+        return getAllSharedPreferences().getPreference(DEFAULT_LOCALITY_NAME);
     }
 }

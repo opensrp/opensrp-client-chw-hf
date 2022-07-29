@@ -129,10 +129,10 @@
           "tba"
         ],
         "openmrs_choice_ids": {
-          "At a health facility": "At a health facility",
-          "Birth before Arrival (BBA)": "Birth before Arrival (BBA)",
-          "At home": "At home",
-          "Traditional birth attendant": "Traditional birth attendant"
+          "at_a_health_facility": "at_a_health_facility",
+          "bba": "bba",
+          "at_home": "at_home",
+          "tba": "tba"
         }
       },
       {
@@ -176,7 +176,7 @@
         "relevance": {
           "step1:delivery_place": {
             "type": "string",
-            "ex": "equalTo(., \"At a health facility\")"
+            "ex": "equalTo(., \"at_a_health_facility\")"
           }
         }
       },
@@ -190,7 +190,7 @@
         "relevance": {
           "step1:delivery_place": {
             "type": "string",
-            "ex": "equalTo(., \"At a health facility\")"
+            "ex": "equalTo(., \"at_a_health_facility\")"
           }
         }
       },

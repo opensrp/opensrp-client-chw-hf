@@ -180,21 +180,6 @@
         }
       },
       {
-        "key": "prompt_for_placenta_and_membrane_expulsion",
-        "type": "toaster_notes",
-        "text": "Manage according to SOP and National guideline",
-        "openmrs_entity_id": "",
-        "openmrs_entity": "",
-        "openmrs_entity_parent": "",
-        "toaster_type": "problem",
-        "relevance": {
-          "step1:placenta_removed_by_hand": {
-            "type": "string",
-            "ex": "equalTo(., \"no\")"
-          }
-        }
-      },
-      {
         "key": "conducted_mva",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -223,9 +208,24 @@
           "err": "Please select an option"
         },
         "relevance": {
-          "step1:type_of_incomplete_placenta": {
+          "step1:placenta_removed_by_hand": {
             "type": "string",
-            "ex": "equalTo(., \"retained_placenta\")"
+            "ex": "equalTo(., \"no\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_placenta_and_membrane_expulsion",
+        "type": "toaster_notes",
+        "text": "Manage according to SOP and National guideline",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:conducted_mva": {
+            "type": "string",
+            "ex": "equalTo(., \"no\")"
           }
         }
       },

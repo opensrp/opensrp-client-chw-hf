@@ -233,6 +233,14 @@
           }
         },
         {
+          "column_name": "hvl_sample_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "hvl_sample_id"
+          }
+        },
+        {
           "column_name": "hvl_pmtct_followup_form_submission_id",
           "type": "Event",
           "json_mapping": {
@@ -273,6 +281,14 @@
           "type": "Event",
           "json_mapping": {
             "field": "formSubmissionId"
+          }
+        },
+        {
+          "column_name": "cd4_sample_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "cd4_sample_id"
           }
         },
         {
@@ -3358,6 +3374,14 @@
             "field": "obs.formSubmissionField",
             "concept": "referral_status"
           }
+        },
+        {
+          "column_name": "on_art",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "on_art"
+          }
         }
       ]
     },
@@ -4730,6 +4754,13 @@
           }
         },
         {
+          "column_name": "provider_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "providerId"
+          }
+        },
+        {
           "column_name": "chw_name",
           "type": "Event",
           "json_mapping": {
@@ -5189,6 +5220,22 @@
           "json_mapping": {
             "field": "obs.formSubmissionField",
             "concept": "reasons_for_admission"
+          }
+        },
+        {
+          "column_name": "gravida",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "gravida"
+          }
+        },
+        {
+          "column_name": "para",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "para"
           }
         },
         {
@@ -5714,6 +5761,14 @@
           "json_mapping": {
             "field": "obs.fieldCode",
             "formSubmissionField": "urine_volume"
+          }
+        },
+        {
+          "column_name": "oral_intake",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "formSubmissionField": "oral_intake"
           }
         },
         {
@@ -6375,6 +6430,242 @@
           "json_mapping": {
             "field": "obs.formSubmissionField",
             "concept": "hiv_registration_date"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ec_mother_champion_followup",
+      "columns": [
+        {
+          "column_name": "entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "formSubmissionId"
+          }
+        },
+        {
+          "column_name": "relational_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "relational_id"
+          }
+        },
+        {
+          "column_name": "last_interacted_with",
+          "type": "Event",
+          "json_mapping": {
+            "field": "version"
+          }
+        },
+        {
+          "column_name": "type_of_service",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "type_of_service"
+          }
+        },
+        {
+          "column_name": "linked_to_psychosocial_group",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "linked_to_psychosocial_group"
+          }
+        },
+        {
+          "column_name": "counselling_given",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "counselling_given"
+          }
+        },
+        {
+          "column_name": "referrals_issued_other_services",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "referrals_issued_other_services"
+          }
+        },
+        {
+          "column_name": "provider_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "providerId"
+          }
+        },
+        {
+          "column_name": "chw_name",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "chw_name"
+          }
+        },
+        {
+          "column_name": "visit_number",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "visit_number"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ec_sbcc",
+      "columns": [
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "relational_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "relational_id"
+          }
+        },
+        {
+          "column_name": "last_interacted_with",
+          "type": "Event",
+          "json_mapping": {
+            "field": "version"
+          }
+        },
+        {
+          "column_name": "sbcc_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "sbcc_date"
+          }
+        },
+        {
+          "column_name": "location_type",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "location_type"
+          }
+        },
+        {
+          "column_name": "participants_number",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "participants_number"
+          }
+        },
+        {
+          "column_name": "provider_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "providerId"
+          }
+        },
+        {
+          "column_name": "chw_name",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "chw_name"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ec_anc_partner_community_feedback",
+      "columns": [
+        {
+          "column_name": "entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "formSubmissionId"
+          }
+        },
+        {
+          "column_name": "relational_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "relational_id"
+          }
+        },
+        {
+          "column_name": "last_interacted_with",
+          "type": "Event",
+          "json_mapping": {
+            "field": "version"
+          }
+        },
+        {
+          "column_name": "referral_form_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "referral_form_id"
+          }
+        },
+        {
+          "column_name": "partner_agree_attending_hf",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "partner_agree_attending_hf"
+          }
+        },
+        {
+          "column_name": "client_found",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "is_partner_found"
+          }
+        },
+        {
+          "column_name": "partner_base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "partner_base_entity_id"
+          }
+        },
+        {
+          "column_name": "provider_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "providerId"
+          }
+        },
+        {
+          "column_name": "chw_name",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "chw_name"
           }
         }
       ]

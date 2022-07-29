@@ -5,14 +5,15 @@ import android.widget.TextView;
 
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.utils.Constants;
-import org.smartregister.chw.hf.utils.ReportUtils;
 
-public class LdReportsActivity extends PncReportsActivity {
+public class MotherChampionReportsActivity extends PncReportsActivity {
+
+
     @Override
     public void onClick(View v) {
         int id = v.getId();
         if (id == R.id.pnc_monthly_report) {
-            LdReportsViewActivity.startMe(this, Constants.ReportConstants.ReportPaths.LD_REPORT_PATH, reportPeriod);
+            MotherChampionReportsViewActivity.startMe(this, Constants.ReportConstants.ReportPaths.MOTHER_CHAMPION_REPORT_PATH, reportPeriod);
         }
     }
 
@@ -20,6 +21,6 @@ public class LdReportsActivity extends PncReportsActivity {
     public void setUpToolbar() {
         super.setUpToolbar();
         TextView title = findViewById(R.id.toolbar_title);
-        title.setText(R.string.ld_report_title);
+        title.setText(R.string.mother_champion_reports);
     }
 }

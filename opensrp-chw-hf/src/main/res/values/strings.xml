@@ -327,7 +327,7 @@
     <string name="ld_mother_status_action_title">Mother\'s Status</string>
     <string name="ld_post_delivery_family_planning">Family Planning</string>
     <string name="ld_baby_of_text">Baby of</string>
-    <string name="partograph_date_time">Partograph Details recorded at {0}, {1}</string>
+    <string name="partograph_date_time">Partograph Details recorded at {0}, {1} by {2}</string>
     <string name="fetal_well_being">Fetal Well Being</string>
     <string name="fetal_heart_rate">Fetal Heart Rate: {0} bpm</string>
     <string name="fetal_moulding">Moulding: {0}</string>
@@ -366,6 +366,9 @@
     <string name="partograph_treatment_during_labour_drugs"> Drugs  </string>
     <string name="partograph_treatment_during_labour_iv_fluid"> IV Fluid  </string>
     <string name="partograph_treatment_during_labour_drugs_administered"> Drugs administered  </string>
+    <string name="partograph_treatment_during_labour_oxytocin_ul">Oxytocin U/L</string>
+    <string name="partograph_treatment_during_labour_none">None</string>
+    <string name="partograph_treatment_during_labour_oxytocin_drops_min">Oxytocin (drops/min)</string>
 
 
     <string name="obstetric_history_title">Obstetric History</string>
@@ -417,6 +420,8 @@
     <string name="positive">Positive</string>
     <string name="negative">Negative</string>
     <string name="test_not_conducted">Test Not Conducted</string>
+    <string name="mother_champion_reports_subtitle">View Mother Champion Reports</string>
+    <string name="mother_champion_reports">Mother Champion Reports</string>
     <string name="process_visit">Process Visit</string>
 
 </resources>

@@ -7,6 +7,7 @@ import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.assetMana
 import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.locale;
 
 public class Constants extends CoreConstants {
+    public static String DEFAULT_LOCATION_NAME = "default_location_name";
     public static String pregnancyOutcome = "preg_outcome";
     public static String LOST_TO_FOLLOWUP = "lost_to_followup";
     public static String REFERRAL_TASK_FOCUS = "referral_task_focus";
@@ -677,6 +678,7 @@ public class Constants extends CoreConstants {
             String CBHS_REPORT = "cbhs_report";
             String LTFU_SUMMARY = "ltfu_report";
             String LD_REPORT = "ld_report";
+            String MOTHER_CHAMPION_REPORT = "mother_champion_report";
         }
 
         public interface ReportPaths {
@@ -689,6 +691,7 @@ public class Constants extends CoreConstants {
             String CBHS_REPORT_PATH = "cbhs-taarifa-ya-mwezi";
             String LTFU_REPORT_PATH = "ltfu-summary-report";
             String LD_REPORT_PATH = "labour-delivery-taarifa-ya-mwezi";
+            String MOTHER_CHAMPION_REPORT_PATH = "mother-champion-report";
         }
     }
 

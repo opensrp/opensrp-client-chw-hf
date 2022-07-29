@@ -1,0 +1,7 @@
+---
+name: step1_prompt_for_grand_multiparity
+description: prompt_for_grand_multiparity relevance
+priority: 1
+condition: "step1_gravida >= 5 && step1_para >= 4"
+actions:
+  - "isRelevant = true"

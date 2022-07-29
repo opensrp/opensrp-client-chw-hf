@@ -42,6 +42,7 @@ public class LDPartographDetailsActivityFlv extends DefaultAncMedicalHistoryActi
 
 
                 String[] hf_params = {
+                        "name_of_the_health_care_provider",
                         "partograph_date",
                         "partograph_time",
                         "fetal_heart_rate",
@@ -162,7 +163,7 @@ public class LDPartographDetailsActivityFlv extends DefaultAncMedicalHistoryActi
         if (StringUtils.isBlank(vals.get("partograph_date"))) {
             tvPartographDateTime.setVisibility(View.GONE);
         } else {
-            tvPartographDateTime.setText(MessageFormat.format(context.getString(R.string.partograph_date_time), getMapValue(vals, "partograph_date"), getMapValue(vals, "partograph_time")));
+            tvPartographDateTime.setText(MessageFormat.format(context.getString(R.string.partograph_date_time), getMapValue(vals, "partograph_date"), getMapValue(vals, "partograph_time") ,  getMapValue(vals, "name_of_the_health_care_provider")));
         }
     }
 

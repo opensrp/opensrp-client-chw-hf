@@ -26,8 +26,10 @@ public class LDPartographTreatmentDuringLabourActionHelper implements BaseLDVisi
     private String drugsAdministered;
     private String drugs;
     private String ivFluid;
+    private String oxytocin_units_per_liter;
+    private String oxytocin_drops_per_minute;
 
-    public LDPartographTreatmentDuringLabourActionHelper(MemberObject memberObject){
+    public LDPartographTreatmentDuringLabourActionHelper(MemberObject memberObject) {
         this.memberObject = memberObject;
     }
 
@@ -48,7 +50,9 @@ public class LDPartographTreatmentDuringLabourActionHelper implements BaseLDVisi
             drugsAdministered = CoreJsonFormUtils.getValue(jsonObject, "drugs_administered");
             drugs = CoreJsonFormUtils.getValue(jsonObject, "drugs_provided");
             ivFluid = CoreJsonFormUtils.getValue(jsonObject, "iv_fluid_provided");
-        }catch (Exception e){
+            oxytocin_units_per_liter = CoreJsonFormUtils.getValue(jsonObject, "oxytocin_units_per_liter");
+            oxytocin_drops_per_minute = CoreJsonFormUtils.getValue(jsonObject, "oxytocin_drops_per_minute");
+        } catch (Exception e) {
             Timber.e(e);
         }
     }
@@ -70,16 +74,19 @@ public class LDPartographTreatmentDuringLabourActionHelper implements BaseLDVisi
 
     @Override
     public String evaluateSubTitle() {
-        String subtitle = ""+ context.getString(R.string.partograph_treatment_during_labour_drugs_administered)+"";
+        String subtitle = "" + context.getString(R.string.partograph_treatment_during_labour_drugs_administered) + "";
 
         if (drugsAdministered.contains("oxytocin"))
-            subtitle += "\n\nOxytocin (drops/min)";
+            subtitle += "\n" + context.getString(R.string.partograph_treatment_during_labour_oxytocin_ul) + " : " + oxytocin_units_per_liter + "\n" + context.getString(R.string.partograph_treatment_during_labour_oxytocin_drops_min) + " : " + oxytocin_drops_per_minute;
 
         if (drugsAdministered.contains("drugs"))
-            subtitle += "\n"+ context.getString(R.string.partograph_treatment_during_labour_drugs)+" : "+drugs;
+            subtitle += "\n" + context.getString(R.string.partograph_treatment_during_labour_drugs) + " : " + drugs;
 
         if (drugsAdministered.contains("iv_fluid"))
-            subtitle += "\n"+ context.getString(R.string.partograph_treatment_during_labour_iv_fluid)+" : "+ivFluid;
+            subtitle += "\n" + context.getString(R.string.partograph_treatment_during_labour_iv_fluid) + " : " + ivFluid;
+
+        if (drugsAdministered.contains("none"))
+            subtitle += "\n" + context.getString(R.string.partograph_treatment_during_labour_none);
 
         return StringUtils.isNotBlank(drugsAdministered) ?
                 subtitle : "";
@@ -87,9 +94,9 @@ public class LDPartographTreatmentDuringLabourActionHelper implements BaseLDVisi
 
     @Override
     public BaseLDVisitAction.Status evaluateStatusOnPayload() {
-        if (StringUtils.isNotBlank(drugsAdministered)){
+        if (StringUtils.isNotBlank(drugsAdministered)) {
             return BaseLDVisitAction.Status.COMPLETED;
-        }else{
+        } else {
             return BaseLDVisitAction.Status.PENDING;
         }
     }

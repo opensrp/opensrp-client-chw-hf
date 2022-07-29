@@ -15,6 +15,7 @@ import org.smartregister.chw.hf.domain.anc_reports.AncMonthlyReportObject;
 import org.smartregister.chw.hf.domain.cbhs_reports.CbhsMonthlyReportObject;
 import org.smartregister.chw.hf.domain.ld_reports.LdMonthlyReportObject;
 import org.smartregister.chw.hf.domain.ltfu_summary.LTFUSummaryObject;
+import org.smartregister.chw.hf.domain.mother_champion_repots.MotherChampionReportObject;
 import org.smartregister.chw.hf.domain.pmtct_reports.Pmtct12MonthsReportObject;
 import org.smartregister.chw.hf.domain.pmtct_reports.Pmtct24MonthsReportObject;
 import org.smartregister.chw.hf.domain.pmtct_reports.Pmtct3MonthsReportObject;
@@ -72,6 +73,7 @@ public class ReportUtils {
 
     public static Date getReportDate() {
         if (StringUtils.isNotBlank(reportPeriod)) {
+
             try {
                 return new SimpleDateFormat("MM-yyyy", Locale.getDefault()).parse(reportPeriod);
             } catch (ParseException e) {
@@ -158,7 +160,7 @@ public class ReportUtils {
         }
     }
 
-    public static class PNCReports{
+    public static class PNCReports {
         public static String computePncReport(Date now) {
             String report = "";
             PncMonthlyReportObject pncMonthlyReportObject = new PncMonthlyReportObject(now);
@@ -171,7 +173,7 @@ public class ReportUtils {
         }
     }
 
-    public static class ANCReports{
+    public static class ANCReports {
         public static String computeAncReport(Date now) {
             String report = "";
             AncMonthlyReportObject ancMonthlyReportObject = new AncMonthlyReportObject(now);
@@ -198,11 +200,24 @@ public class ReportUtils {
     }
 
     public static class LDReports {
-        public static String computeLdReport(Date now){
+        public static String computeLdReport(Date now) {
             String report = "";
             LdMonthlyReportObject ldMonthlyReportObject = new LdMonthlyReportObject(now);
             try {
                 report = ldMonthlyReportObject.getIndicatorDataAsGson(ldMonthlyReportObject.getIndicatorData());
+            } catch (Exception e) {
+                Timber.e(e);
+            }
+            return report;
+        }
+    }
+
+    public static class MotherChampionReports {
+        public static String computeMotherChampionReport(Date now) {
+            String report = "";
+            MotherChampionReportObject motherChampionReportObject = new MotherChampionReportObject(now);
+            try {
+                report = motherChampionReportObject.getIndicatorDataAsGson(motherChampionReportObject.getIndicatorData());
             } catch (Exception e) {
                 Timber.e(e);
             }

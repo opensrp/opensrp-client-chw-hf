@@ -69,6 +69,7 @@ public class LDProfileActivity extends BaseLDProfileActivity {
         setupViews();
         setTextViewRecordLDText();
         refreshMedicalHistory(true);
+        invalidateOptionsMenu();
     }
 
     protected void setupViews() {
