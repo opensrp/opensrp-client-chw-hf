@@ -16,11 +16,6 @@
       "openmrs_data_type": "end",
       "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
     },
-    "today": {
-      "openmrs_entity_parent": "",
-      "openmrs_entity": "encounter",
-      "openmrs_entity_id": "encounter_date"
-    },
     "deviceid": {
       "openmrs_entity_parent": "",
       "openmrs_entity": "concept",
@@ -74,11 +69,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Please select an option"
-        }
+        ]
       },
       {
         "key": "tb_symptoms_screening",
@@ -227,6 +218,14 @@
             }
           }
         }
+      },
+      {
+        "key": "tb_screening_completion_status",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "tb_screening_completion_status",
+        "openmrs_entity_parent": "",
+        "value": "pending"
       }
     ]
   }

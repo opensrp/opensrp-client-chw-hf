@@ -15,11 +15,6 @@
       "openmrs_data_type": "end",
       "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
     },
-    "today": {
-      "openmrs_entity_parent": "",
-      "openmrs_entity": "encounter",
-      "openmrs_entity_id": "encounter_date"
-    },
     "deviceid": {
       "openmrs_entity_parent": "",
       "openmrs_entity": "concept",
@@ -136,11 +131,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "none"
           }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Please answer this question"
-        }
+        ]
       },
       {
         "key": "prompt_for_rapid_examination",
@@ -173,10 +164,6 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "reasons_to_clinic",
         "openmrs_entity_parent": "",
-        "v_required": {
-          "value": true,
-          "err": "This field is required"
-        },
         "options": [
           {
             "text": "Routine Scheduled Visit",
@@ -219,10 +206,6 @@
         "exclusive": [
           "none"
         ],
-        "v_required": {
-          "value": true,
-          "err": "This field is required"
-        },
         "options": [
           {
             "key": "bleeding_vag",
@@ -408,6 +391,14 @@
             }
           }
         }
+      },
+      {
+        "key": "triage_completion_status",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "triage_completion_status",
+        "openmrs_entity_parent": "",
+        "value": "pending"
       }
     ]
   }

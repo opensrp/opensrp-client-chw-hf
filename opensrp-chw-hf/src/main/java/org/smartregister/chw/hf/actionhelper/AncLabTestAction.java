@@ -3,6 +3,7 @@ package org.smartregister.chw.hf.actionhelper;
 import android.content.Context;
 
 import org.apache.commons.lang3.StringUtils;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.anc.domain.MemberObject;
@@ -10,8 +11,11 @@ import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.utils.VisitUtils;
+import org.smartregister.family.util.JsonFormUtils;
 
 import java.text.MessageFormat;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,7 +25,7 @@ public class AncLabTestAction implements BaseAncHomeVisitAction.AncHomeVisitActi
     protected MemberObject memberObject;
     private String jsonPayload;
 
-    private String lab_tests;
+    private HashMap<String, Boolean> checkObject = new HashMap<>();
     private BaseAncHomeVisitAction.ScheduleStatus scheduleStatus;
     private String subTitle;
     private Context context;
@@ -38,7 +42,6 @@ public class AncLabTestAction implements BaseAncHomeVisitAction.AncHomeVisitActi
 
     @Override
     public String getPreProcessed() {
-
         try {
             JSONObject jsonObject = new JSONObject(jsonPayload);
             return jsonObject.toString();
@@ -52,7 +55,38 @@ public class AncLabTestAction implements BaseAncHomeVisitAction.AncHomeVisitActi
     public void onPayloadReceived(String jsonPayload) {
         try {
             JSONObject jsonObject = new JSONObject(jsonPayload);
-            lab_tests = CoreJsonFormUtils.getValue(jsonObject, "hb_level_test");
+            JSONObject global = jsonObject.getJSONObject("global");
+            boolean bloodGroupComplete = global.getBoolean("blood_group_complete");
+            boolean hivTestComplete = global.getBoolean("hiv_test_complete");
+
+            String bloodGroup = CoreJsonFormUtils.getValue(jsonObject, "blood_group");
+            boolean bloodGroupCheck = !(bloodGroup.equalsIgnoreCase("Blood Group") || bloodGroup.equalsIgnoreCase("Kundi la damu"));
+
+            String hivStatus = global.getString("hiv_status");
+            int gestAge = global.getInt("gestational_age");
+            boolean hivTestAt32Complete = global.getBoolean("hiv_test_at_32_complete");
+            boolean syphilisTestComplete = global.getBoolean("syphilis_test_complete");
+            boolean hepatitisTestComplete = global.getBoolean("hepatitis_test_complete");
+            checkObject.clear();
+            checkObject.put("hb_level_test", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "hb_level_test")));
+            checkObject.put("blood_for_glucose_test", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "blood_for_glucose_test")));
+            checkObject.put("glucose_in_urine", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "glucose_in_urine")));
+            checkObject.put("protein_in_urine", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "protein_in_urine")));
+            if(!bloodGroupComplete){
+                checkObject.put("blood_group", bloodGroupCheck);
+                if(bloodGroup.contains("test_not_conducted")){
+                    checkObject.put("rh_factor", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "rh_factor")));
+                }
+            }
+            if(!hivTestComplete || ((gestAge >= 32 && hivStatus.contains("negative")) && !hivTestAt32Complete)){
+                checkObject.put("hiv", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "hiv")));
+            }
+            if(!syphilisTestComplete){
+                checkObject.put("syphilis", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "syphilis")));
+            }
+            if(!hepatitisTestComplete){
+                checkObject.put("hepatitis", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "hepatitis")));
+            }
         } catch (JSONException e) {
             Timber.e(e);
         }
@@ -69,26 +103,42 @@ public class AncLabTestAction implements BaseAncHomeVisitAction.AncHomeVisitActi
     }
 
     @Override
-    public String postProcess(String s) {
-        return s;
+    public String postProcess(String jsonPayload) {
+        JSONObject jsonObject = null;
+        try {
+            jsonObject = new JSONObject(jsonPayload);
+            JSONArray fields = JsonFormUtils.fields(jsonObject);
+            JSONObject labTestCompletionStatus = JsonFormUtils.getFieldJSONObject(fields, "lab_test_completion_status");
+            assert labTestCompletionStatus != null;
+            labTestCompletionStatus.put(com.vijay.jsonwizard.constants.JsonFormConstants.VALUE, VisitUtils.getActionStatus(checkObject));
+        } catch (JSONException e) {
+            Timber.e(e);
+        }
+
+        if (jsonObject != null) {
+            return jsonObject.toString();
+        }
+        return null;
     }
 
     @Override
     public String evaluateSubTitle() {
-        if (StringUtils.isBlank(lab_tests))
-            return null;
-
-        //TODO ilakoze extract to string resources
-        return context.getString(R.string.lab_tests_complete);
+        String status = VisitUtils.getActionStatus(checkObject);
+        if (status.equalsIgnoreCase(VisitUtils.Complete))
+            return context.getString(R.string.lab_tests_complete);
+        return "";
     }
 
     @Override
     public BaseAncHomeVisitAction.Status evaluateStatusOnPayload() {
-        if (StringUtils.isBlank(lab_tests))
-            return BaseAncHomeVisitAction.Status.PENDING;
-        else {
+        String status = VisitUtils.getActionStatus(checkObject);
+        if (status.equalsIgnoreCase(VisitUtils.Complete)) {
             return BaseAncHomeVisitAction.Status.COMPLETED;
         }
+        if (status.equalsIgnoreCase(VisitUtils.Ongoing)) {
+            return BaseAncHomeVisitAction.Status.PARTIALLY_COMPLETED;
+        }
+        return BaseAncHomeVisitAction.Status.PENDING;
     }
 
     @Override

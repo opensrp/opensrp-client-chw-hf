@@ -3,6 +3,7 @@ package org.smartregister.chw.hf.actionhelper;
 import android.content.Context;
 
 import org.apache.commons.lang3.StringUtils;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.anc.domain.MemberObject;
@@ -10,7 +11,10 @@ import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.utils.VisitUtils;
+import org.smartregister.family.util.JsonFormUtils;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,7 +24,7 @@ public class AncMalariaInvestigationAction implements BaseAncHomeVisitAction.Anc
     protected MemberObject memberObject;
     private String jsonPayload;
 
-    private String client_on_malaria_medication;
+    private HashMap<String, Boolean> checkObject = new HashMap<>();
     private BaseAncHomeVisitAction.ScheduleStatus scheduleStatus;
     private String subTitle;
     private Context context;
@@ -51,7 +55,13 @@ public class AncMalariaInvestigationAction implements BaseAncHomeVisitAction.Anc
     public void onPayloadReceived(String jsonPayload) {
         try {
             JSONObject jsonObject = new JSONObject(jsonPayload);
-            client_on_malaria_medication = CoreJsonFormUtils.getValue(jsonObject, "client_on_malaria_medication");
+            JSONObject global = jsonObject.getJSONObject("global");
+            boolean llinProvided = global.getBoolean("llin_provided");
+            checkObject.clear();
+            checkObject.put("client_on_malaria_medication", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "client_on_malaria_medication")));
+            if(!llinProvided){
+                checkObject.put("llin_provision", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "llin_provision")));
+            }
         } catch (JSONException e) {
             Timber.e(e);
         }
@@ -68,29 +78,42 @@ public class AncMalariaInvestigationAction implements BaseAncHomeVisitAction.Anc
     }
 
     @Override
-    public String postProcess(String s) {
-        return s;
+    public String postProcess(String jsonPayload) {
+        JSONObject jsonObject = null;
+        try {
+            jsonObject = new JSONObject(jsonPayload);
+            JSONArray fields = JsonFormUtils.fields(jsonObject);
+            JSONObject malariaInvestigationCompletionStatus = JsonFormUtils.getFieldJSONObject(fields, "malaria_investigation_completion_status");
+            assert malariaInvestigationCompletionStatus != null;
+            malariaInvestigationCompletionStatus.put(com.vijay.jsonwizard.constants.JsonFormConstants.VALUE, VisitUtils.getActionStatus(checkObject));
+        } catch (JSONException e) {
+            Timber.e(e);
+        }
+
+        if (jsonObject != null) {
+            return jsonObject.toString();
+        }
+        return null;
     }
 
     @Override
     public String evaluateSubTitle() {
-        if (StringUtils.isBlank(client_on_malaria_medication))
-            return null;
-
-        StringBuilder stringBuilder = new StringBuilder();
-
-        stringBuilder.append(context.getString(R.string.malaria_investigation_complete));
-
-        return stringBuilder.toString();
+        String status = VisitUtils.getActionStatus(checkObject);
+        if (status.equalsIgnoreCase(VisitUtils.Complete))
+            return context.getString(R.string.malaria_investigation_complete);
+        return "";
     }
 
     @Override
     public BaseAncHomeVisitAction.Status evaluateStatusOnPayload() {
-        if (StringUtils.isBlank(client_on_malaria_medication))
-            return BaseAncHomeVisitAction.Status.PENDING;
-        else {
+        String status = VisitUtils.getActionStatus(checkObject);
+        if (status.equalsIgnoreCase(VisitUtils.Complete)) {
             return BaseAncHomeVisitAction.Status.COMPLETED;
         }
+        if (status.equalsIgnoreCase(VisitUtils.Ongoing)) {
+            return BaseAncHomeVisitAction.Status.PARTIALLY_COMPLETED;
+        }
+        return BaseAncHomeVisitAction.Status.PENDING;
     }
 
     @Override

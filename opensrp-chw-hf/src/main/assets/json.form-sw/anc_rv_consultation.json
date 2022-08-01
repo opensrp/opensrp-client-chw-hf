@@ -15,11 +15,6 @@
       "openmrs_data_type": "end",
       "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
     },
-    "today": {
-      "openmrs_entity_parent": "",
-      "openmrs_entity": "encounter",
-      "openmrs_entity_id": "encounter_date"
-    },
     "deviceid": {
       "openmrs_entity_parent": "",
       "openmrs_entity": "concept",
@@ -80,11 +75,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "none"
           }
-        ],
-        "v_required": {
-          "value": true,
-          "err": "Tafadhali chagua moja"
-        }
+        ]
       },
       {
         "key": "prompt_for_examination_findings",
@@ -139,10 +130,6 @@
         "v_max": {
           "value": "200",
           "err": "Urefu lazima uwe sawasawa au chini ya 200 (CM)"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Tafadhali jaza urefu"
         },
         "relevance": {
           "rules-engine": {
@@ -199,10 +186,6 @@
         "v_max": {
           "value": "300",
           "err": "Uzito lazima uwe sawasawa au chini ya 300 (KG)"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Tafadhali ingiza uzito"
         }
       },
       {
@@ -288,10 +271,6 @@
         "v_max": {
           "value": "36",
           "err": "Kimo cha mimba lazima kiwe sawa au chini ya 36 CM"
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhali ingiza kimo cha mimba"
         }
       },
       {
@@ -312,10 +291,6 @@
         "v_max": {
           "value": "300",
           "err": "Kiwango cha mapigo ya moyo wa mtoto lazima kiwe sawasawa au chini ya 300"
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhali ingiza kiwango cha mapigo ya moyo wa mtoto"
         },
         "relevance": {
           "rules-engine": {
@@ -369,10 +344,6 @@
               "rules-file": "anc_rv_consultation_relevance.yml"
             }
           }
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhali chagua chaguo kwa ajili ya mlalo wa mtoto"
         }
       },
       {
@@ -416,10 +387,6 @@
               "rules-file": "anc_rv_consultation_relevance.yml"
             }
           }
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhali chagua chaguo kwa ajili ya kitangulizi cha mtoto"
         }
       },
       {
@@ -455,10 +422,6 @@
         "v_max": {
           "value": "320",
           "err": "Thamani ya systolic lazima iwe sawasawa au chini ya 320"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Tafadhali ingiza thamani ya systolic"
         }
       },
       {
@@ -479,10 +442,6 @@
         "v_max": {
           "value": "200",
           "err":"Thamani ya diastolic lazima iwe sawasawa au chini ya 200"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Tafadhali ingiza thamani ya diastolic"
         },
         "constraints": [
           {
@@ -542,10 +501,6 @@
         "v_max": {
           "value": "200",
           "err": "Kiwango cha mpigo lazima kiwe sawasawa au chini ya 200 (bpm)"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Tafadhali ingiza kasi ya mapigo ya moyo"
         }
       },
       {
@@ -596,10 +551,6 @@
         "v_max": {
           "value": "50",
           "err": "Halijoto lazima liwe sawasawa au chini ya 50"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Tafadhali ingiza halijoto"
         }
       },
       {
@@ -652,11 +603,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "abnormal"
           }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhali jibu swali hili"
-        }
+        ]
       },
       {
         "key": "prompt_for_breasts",
@@ -693,11 +640,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "abnormal"
           }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhali jibu swali hili"
-        }
+        ]
       },
       {
         "key": "prompt_for_lymph_under_the_arm",
@@ -734,11 +677,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "abnormal"
           }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhali jibu swali hili"
-        }
+        ]
       },
       {
         "key": "prompt_for_lymph_cervical",
@@ -754,6 +693,14 @@
             "ex": "equalTo(.,\"abnormal\")"
           }
         }
+      },
+      {
+        "key": "consultation_completion_status",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "consultation_completion_status",
+        "openmrs_entity_parent": "",
+        "value": "pending"
       }
     ]
   }

@@ -15,11 +15,6 @@
       "openmrs_data_type": "end",
       "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
     },
-    "today": {
-      "openmrs_entity_parent": "",
-      "openmrs_entity": "encounter",
-      "openmrs_entity_id": "encounter_date"
-    },
     "deviceid": {
       "openmrs_entity_parent": "",
       "openmrs_entity": "concept",
@@ -196,11 +191,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "hx_abortions"
           }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Please pick at least one"
-        }
+        ]
       },
       {
         "key": "ctc_number",
@@ -220,7 +211,7 @@
         "v_max_length": {
           "value": "17",
           "is_fixed_size": "true",
-          "err":"Please enter a valid CTC Number"
+          "err": "Please enter a valid CTC Number"
         },
         "v_required": {
           "value": true,
@@ -248,10 +239,6 @@
         "v_numeric": {
           "value": "true",
           "err": "Please enter the gravida number"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Please enter the gravida number"
         }
       },
       {
@@ -264,10 +251,6 @@
         "v_numeric": {
           "value": "true",
           "err": "Please enter parity number"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Please enter the parity number"
         },
         "constraints": [
           {
@@ -301,10 +284,6 @@
         "type": "edit_text",
         "edit_type": "number",
         "hint": "Number of living children",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the number of living children"
-        },
         "v_numeric": {
           "value": "true",
           "err": "Please enter the number of living children"
@@ -342,6 +321,14 @@
         "openmrs_entity_id": "visit_number",
         "openmrs_entity_parent": "",
         "value": 1
+      },
+      {
+        "key": "medical_surgical_history_completion_status",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "medical_surgical_history_completion_status",
+        "openmrs_entity_parent": "",
+        "value": "pending"
       }
     ]
   }

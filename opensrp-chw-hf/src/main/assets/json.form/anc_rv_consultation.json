@@ -15,11 +15,6 @@
       "openmrs_data_type": "end",
       "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
     },
-    "today": {
-      "openmrs_entity_parent": "",
-      "openmrs_entity": "encounter",
-      "openmrs_entity_id": "encounter_date"
-    },
     "deviceid": {
       "openmrs_entity_parent": "",
       "openmrs_entity": "concept",
@@ -80,11 +75,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "none"
           }
-        ],
-        "v_required": {
-          "value": true,
-          "err": "Please select at least one"
-        }
+        ]
       },
       {
         "key": "prompt_for_examination_findings",
@@ -139,10 +130,6 @@
         "v_max": {
           "value": "200",
           "err": "The height must be equal or less than 200 (CM)"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Please enter the height"
         },
         "relevance": {
           "rules-engine": {
@@ -199,10 +186,6 @@
         "v_max": {
           "value": "300",
           "err": "The weight must be equal or less than 300 (KG)"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Please enter the weight"
         }
       },
       {
@@ -288,10 +271,6 @@
         "v_max": {
           "value": "36",
           "err": "Fundal height must be equal or less than 36 CM"
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the fundal height"
         }
       },
       {
@@ -312,10 +291,6 @@
         "v_max": {
           "value": "300",
           "err": "Fetal heart rate must be equal or less than 300"
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the fetal heart rate"
         },
         "relevance": {
           "rules-engine": {
@@ -369,10 +344,6 @@
               "rules-file": "anc_rv_consultation_relevance.yml"
             }
           }
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Please select an option for lie"
         }
       },
       {
@@ -416,10 +387,6 @@
               "rules-file": "anc_rv_consultation_relevance.yml"
             }
           }
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Please select an option for presentation"
         }
       },
       {
@@ -455,10 +422,6 @@
         "v_max": {
           "value": "320",
           "err": "Systolic value must be equal or less than 320"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Please enter the systolic value"
         }
       },
       {
@@ -479,10 +442,6 @@
         "v_max": {
           "value": "200",
           "err": "Diastolic value must be equal or less than 200"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Please enter the diastolic value"
         },
         "constraints": [
           {
@@ -542,10 +501,6 @@
         "v_max": {
           "value": "200",
           "err": "The pulse rate must be equal or less than 200 (bpm)"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Please enter the pulse rate"
         }
       },
       {
@@ -596,10 +551,6 @@
         "v_max": {
           "value": "50",
           "err": "Temperature must be equal or less than 50"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Please enter the temperature"
         }
       },
       {
@@ -652,11 +603,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "abnormal"
           }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Please answer this question"
-        }
+        ]
       },
       {
         "key": "prompt_for_breasts",
@@ -693,11 +640,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "abnormal"
           }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Please answer this question"
-        }
+        ]
       },
       {
         "key": "prompt_for_lymph_under_the_arm",
@@ -734,11 +677,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "abnormal"
           }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Please answer this question"
-        }
+        ]
       },
       {
         "key": "prompt_for_lymph_cervical",
@@ -754,6 +693,14 @@
             "ex": "equalTo(.,\"abnormal\")"
           }
         }
+      },
+      {
+        "key": "consultation_completion_status",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "consultation_completion_status",
+        "openmrs_entity_parent": "",
+        "value": "pending"
       }
     ]
   }

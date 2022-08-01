@@ -15,11 +15,6 @@
       "openmrs_data_type": "end",
       "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
     },
-    "today": {
-      "openmrs_entity_parent": "",
-      "openmrs_entity": "encounter",
-      "openmrs_entity_id": "encounter_date"
-    },
     "deviceid": {
       "openmrs_entity_parent": "",
       "openmrs_entity": "concept",
@@ -196,11 +191,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "hx_abortions"
           }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhali chagua angalau moja"
-        }
+        ]
       },
       {
         "key": "ctc_number",
@@ -248,10 +239,6 @@
         "v_numeric": {
           "value": "true",
           "err": "Tafadhali jaza idadi ya ujauzito"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Tafadhali jaza idadi ya ujauzito"
         }
       },
       {
@@ -263,10 +250,6 @@
         "openmrs_entity_parent": "",
         "v_numeric": {
           "value": "true",
-          "err": "Tafadhali jaza namba halali"
-        },
-        "v_required": {
-          "value": true,
           "err": "Tafadhali jaza namba halali"
         },
         "constraints": [
@@ -304,10 +287,6 @@
         "v_required": {
           "value": "true",
           "err": "Tafadhali jaza idadi ya watoto walio hai"
-        },
-        "v_numeric": {
-          "value": "true",
-          "err": "Tafadhali jaza idadi ya watoto walio hai"
         }
       },
       {
@@ -342,6 +321,14 @@
         "openmrs_entity_id": "visit_number",
         "openmrs_entity_parent": "",
         "value": 1
+      },
+      {
+        "key": "medical_surgical_history_completion_status",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "medical_surgical_history_completion_status",
+        "openmrs_entity_parent": "",
+        "value": "pending"
       }
     ]
   }
