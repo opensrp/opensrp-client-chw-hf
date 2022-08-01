@@ -129,11 +129,11 @@
         },
         "v_min": {
           "value": "0",
-          "err": "The pulse rate must be equal or greater than 0 (Breaths per minute)"
+          "err": "The respiratory rate must be equal or greater than 0 (Breaths per minute)"
         },
         "v_max": {
           "value": "100",
-          "err": "The pulse rate must be equal or less than 100 (Breaths per minute)"
+          "err": "The respiratory rate must be equal or less than 100 (Breaths per minute)"
         }
       },
       {
