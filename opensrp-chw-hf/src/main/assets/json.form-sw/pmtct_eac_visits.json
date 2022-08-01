@@ -48,7 +48,7 @@
       {
         "key": "eac_visit_notification",
         "type": "toaster_notes",
-        "text": "Nakiri tarehe na muda wa hudhulio la EAC",
+        "text": "Nakiri tarehe ya hudhurio la EAC",
         "openmrs_entity_id": "notify_retest",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -57,7 +57,7 @@
       {
         "key": "eac_visit_date",
         "type": "date_picker",
-        "hint": "Tarehe ya Udhulio la EAC",
+        "hint": "Tarehe ya hudhurio la EAC",
         "openmrs_entity_id": "eac_visit_date",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -65,19 +65,99 @@
         "max_date": "today",
         "v_required": {
           "value": "true",
-          "err": "Tafadhali ingiza Tarehe ya Udhulio la EAC"
+          "err": "Tafadhali ingiza Tarehe ya hudhurio la EAC"
         }
       },
       {
-        "key": "eac_visit_time",
-        "type": "time_picker",
-        "hint": "Wakati wa kutembelea EAC",
-        "openmrs_entity_id": "eac_visit_time",
-        "openmrs_entity": "concept",
+        "key": "summary",
         "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "summary",
+        "type": "edit_text",
+        "hint": "Muhtasari",
         "v_required": {
           "value": "true",
-          "err": "Please enter EAC visit time"
+          "err": "Tafadhali jaza muhtasari"
+        }
+      },
+      {
+        "key": "arv_intake_demonstration_done",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "arv_intake_demonstration_done",
+        "type": "native_radio",
+        "label": "Maonyesho ya unywaji wa ARV na mgonjwa/mlezi yamefanyika?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndio",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua jibu"
+        }
+      },
+      {
+        "key": "pill_count_done",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "pill_count_done",
+        "type": "native_radio",
+        "label": "Hesabu ya vidonge imefanyika?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndio",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua jibu"
+        }
+      },
+      {
+        "key": "pill_intake",
+        "type": "edit_text",
+        "hint": "Unywaji wa vidonge %",
+        "openmrs_entity_id": "pill_intake",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "v_numeric": {
+          "value": "true",
+          "err": "Tafadhali jaza % ya unywaji wa vidonge"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Unywaji wa vidonge lazima iwe sawa au zaidi ya 0%"
+        },
+        "v_max": {
+          "value": "100",
+          "err": "Unywaji wa vidonge lazima iwe sawa au chini ya 100%"
         }
       },
       {
