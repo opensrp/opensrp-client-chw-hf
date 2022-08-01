@@ -48,7 +48,7 @@
       {
         "key": "eac_visit_notification",
         "type": "toaster_notes",
-        "text": "Record EAC Visit Date and Time",
+        "text": "Record EAC Visit Date",
         "openmrs_entity_id": "notify_retest",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -69,15 +69,95 @@
         }
       },
       {
-        "key": "eac_visit_time",
-        "type": "time_picker",
-        "hint": "EAC Visit Time",
-        "openmrs_entity_id": "eac_visit_time",
-        "openmrs_entity": "concept",
+        "key": "summary",
         "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "summary",
+        "type": "edit_text",
+        "hint": "Summary",
         "v_required": {
           "value": "true",
-          "err": "Please enter EAC visit time"
+          "err": "Please enter the summary"
+        }
+      },
+      {
+        "key": "arv_intake_demonstration_done",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "arv_intake_demonstration_done",
+        "type": "native_radio",
+        "label": "ARV-intake demonstration by patient/caretaker done?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an answer"
+        }
+      },
+      {
+        "key": "pill_count_done",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "pill_count_done",
+        "type": "native_radio",
+        "label": "Pill count done?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an answer"
+        }
+      },
+      {
+        "key": "pill_intake",
+        "type": "edit_text",
+        "hint": "Pill intake %",
+        "openmrs_entity_id": "pill_intake",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the % of pill intake"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "The % of the pill intake must be equal or greater than 0"
+        },
+        "v_max": {
+          "value": "100",
+          "err": "The % of the pill intake must be equal or less than 100"
         }
       },
       {
