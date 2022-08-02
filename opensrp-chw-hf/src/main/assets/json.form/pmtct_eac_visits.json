@@ -324,7 +324,7 @@
         "hint": "Behavioral barriers",
         "v_required": {
           "value": "true",
-          "err": "Please enter the behavioral barriers details"
+          "err": "Please enter the behavioral barriers"
         },
         "relevance": {
           "step1:behavioral_barriers": {
@@ -378,7 +378,7 @@
         "hint": "Cognitive barriers",
         "v_required": {
           "value": "true",
-          "err": "Please enter the cognitive barriers details"
+          "err": "Please enter the cognitive barriers"
         },
         "relevance": {
           "step1:cognitive_barriers": {
@@ -432,7 +432,7 @@
         "hint": "Emotional barriers",
         "v_required": {
           "value": "true",
-          "err": "Please enter the emotional barriers details"
+          "err": "Please enter the emotional barriers"
         },
         "relevance": {
           "step1:emotional_barriers": {
@@ -486,7 +486,7 @@
         "hint": "Socio-economic barriers",
         "v_required": {
           "value": "true",
-          "err": "Please enter the socio-economic barriers details"
+          "err": "Please enter the socio-economic barriers"
         },
         "relevance": {
           "step1:socio_economic_barriers": {
@@ -540,7 +540,7 @@
         "hint": "Other barriers",
         "v_required": {
           "value": "true",
-          "err": "Please enter the socio-economic barriers details"
+          "err": "Please enter other barriers"
         },
         "relevance": {
           "step1:other_barriers": {
