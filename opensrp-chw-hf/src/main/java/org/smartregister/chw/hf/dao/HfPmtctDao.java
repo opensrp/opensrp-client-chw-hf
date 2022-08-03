@@ -448,4 +448,30 @@ public class HfPmtctDao extends CorePmtctDao {
 
         return date;
     }
+
+    public static int getEacSessionNumber(String baseEntityId) {
+        String sql = "SELECT eac_visit_session from ec_pmtct_eac_visit" +
+                "    WHERE  entity_id = '" + baseEntityId + "'" +
+                "ORDER BY  eac_visit_session DESC " +
+                "LIMIT  1";
+        String completionSql = "SELECT eac_completion_status from ec_pmtct_eac_visit" +
+                "    WHERE  entity_id = '" + baseEntityId + "'" +
+                "ORDER BY  eac_visit_session DESC " +
+                "LIMIT  1";
+
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "eac_visit_session");
+        DataMap<String> completionDataMap = cursor -> getCursorValue(cursor, "eac_completion_status");
+
+
+        List<String> res = readData(sql, dataMap);
+        List<String> completionRes = readData(completionSql, completionDataMap);
+
+        if (completionRes != null && completionRes.size() > 0 && completionRes.get(0) != null && completionRes.get(0).equalsIgnoreCase("complete")) {
+            return 1;
+        }
+        if(res != null && res.size() > 0 && res.get(0) != null) {
+            return Integer.parseInt(res.get(0)) + 1;
+        }
+        return 1;
+    }
 }

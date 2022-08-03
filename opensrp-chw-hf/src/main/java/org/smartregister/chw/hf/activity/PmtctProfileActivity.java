@@ -335,11 +335,16 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
             try {
                 formJsonObject = (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, org.smartregister.chw.hf.utils.Constants.JsonForm.getEacVisitsForm());
                 if (formJsonObject != null) {
+                    JSONObject global = formJsonObject.getJSONObject("global");
                     JSONArray fields = formJsonObject.getJSONObject(STEP1).getJSONArray(JsonFormConstants.FIELDS);
                     JSONObject visit_type = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "eac_visit_type");
+                    JSONObject eac_visit_session = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "eac_visit_session");
 
                     assert visit_type != null;
                     visit_type.put(VALUE, HfPmtctDao.getEacVisitType(baseEntityId));
+                    assert eac_visit_session != null;
+                    eac_visit_session.put(VALUE, HfPmtctDao.getEacSessionNumber(baseEntityId));
+                    global.put("eac_session_number", HfPmtctDao.getEacSessionNumber(baseEntityId));
 
                     startFormActivity(formJsonObject);
                 }

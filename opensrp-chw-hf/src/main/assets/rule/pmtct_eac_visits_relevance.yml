@@ -1,84 +1,14 @@
 ---
-name: step1_eac_day_1
-description: Day 1 relevance
+name: step1_additional_session
+description: relevant if the session is above 2
 priority: 1
-condition: "global_type_of_visit == 'eac_day_1'"
+condition: "global_eac_session_number > 2 "
 actions:
   - "isRelevant = true"
 ---
-name: step1_eac_day_1_time
-description: Day 1 relevance
+name: step1_patient_adherence_before_eac
+description: relevant if the session is 1
 priority: 1
-condition: "global_type_of_visit == 'eac_day_1'"
-actions:
-  - "isRelevant = true"
----
-name: step1_eac_day_2
-description: Day 2 relevance
-priority: 1
-condition: "global_type_of_visit == 'eac_day_2'"
-actions:
-  - "isRelevant = true"
----
-name: step1_eac_day_2_time
-description: Day 2 relevance
-priority: 1
-condition: "global_type_of_visit == 'eac_day_2'"
-actions:
-  - "isRelevant = true"
----
-name: step1_eac_day_3
-description: Day 1 relevance
-priority: 1
-condition: "global_type_of_visit == 'eac_day_3'"
-actions:
-  - "isRelevant = true"
----
-name: step1_eac_day_3_time
-description: Day 3 relevance
-priority: 1
-condition: "global_type_of_visit == 'eac_day_3'"
-actions:
-  - "isRelevant = true"
----
-name: step1_eac_month_1
-description: Month 1 relevance
-priority: 1
-condition: "global_type_of_visit == 'eac_month_1'"
-actions:
-  - "isRelevant = true"
----
-name: step1_eac_month_1_time
-description: Month 1 relevance
-priority: 1
-condition: "global_type_of_visit == 'eac_month_1'"
-actions:
-  - "isRelevant = true"
----
-name: step1_eac_month_2
-description: Month 2 relevance
-priority: 1
-condition: "global_type_of_visit == 'eac_month_2'"
-actions:
-  - "isRelevant = true"
----
-name: step1_eac_month_2_time
-description: Month 2 relevance
-priority: 1
-condition: "global_type_of_visit == 'eac_month_2'"
-actions:
-  - "isRelevant = true"
----
-name: step1_eac_month_3
-description: Month 3 relevance
-priority: 1
-condition: "global_type_of_visit == 'eac_month_3'"
-actions:
-  - "isRelevant = true"
----
-name: step1_eac_month_3_time
-description: Month 3 relevance
-priority: 1
-condition: "global_type_of_visit == 'eac_month_3'"
+condition: "global_eac_session_number == 1"
 actions:
   - "isRelevant = true"
