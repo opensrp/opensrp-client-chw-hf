@@ -264,7 +264,7 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
             textViewRecordEac.setVisibility(View.VISIBLE);
             textViewRecordEac.setOnClickListener(this);
             if (HfPmtctDao.getEacVisitType(baseEntityId).equalsIgnoreCase(org.smartregister.chw.hf.utils.Constants.EacVisitTypes.EAC_FIRST_VISIT)) {
-                textViewRecordEac.setText(R.string.record_eac_first_visit);
+                textViewRecordEac.setText(getContext().getString(R.string.record_eac_first_visit, HfPmtctDao.getEacSessionNumber(baseEntityId)));
             } else {
                 textViewRecordEac.setText(R.string.record_eac_second_visit);
             }
