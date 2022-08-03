@@ -11,4 +11,4 @@ description: visit_date is the date of the eac
 priority: 1
 condition: "true"
 actions:
-  - "calculation = helper.getTimeInMillis()"
+  - "calculation = helper.getDateTimeToday()"
