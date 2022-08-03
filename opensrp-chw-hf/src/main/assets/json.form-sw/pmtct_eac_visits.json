@@ -574,6 +574,27 @@
         "openmrs_entity_parent": ""
       },
       {
+        "key": "eac_visit_session",
+        "type": "hidden",
+        "openmrs_entity_id": "eac_visit_session",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": ""
+      },
+      {
+        "key": "eac_completion_status",
+        "type": "hidden",
+        "openmrs_entity_id": "eac_completion_status",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_eac_visits_calculation.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "eac",
         "type": "hidden",
         "openmrs_entity_id": "eac",

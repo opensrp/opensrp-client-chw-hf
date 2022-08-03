@@ -1,0 +1,7 @@
+---
+name: step1_eac_completion_status
+description: eac_completion_status is complete if additional_visit is no
+priority: 1
+condition: "true"
+actions:
+  - "calculation = (step1_additional_session != '' && step1_additional_session == 'no') ? 'complete' : 'incomplete'"

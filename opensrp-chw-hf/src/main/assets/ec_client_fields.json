@@ -373,6 +373,22 @@
             "field": "obs.fieldCode",
             "concept": "eac_visit_date"
           }
+        },
+        {
+          "column_name": "eac_visit_session",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "eac_visit_session"
+          }
+        },
+        {
+          "column_name": "eac_completion_status",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "eac_completion_status"
+          }
         }
       ]
     },
