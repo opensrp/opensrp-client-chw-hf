@@ -389,6 +389,14 @@
             "field": "obs.fieldCode",
             "concept": "eac_completion_status"
           }
+        },
+        {
+          "column_name": "form_submission_timestamp",
+            "type": "Event",
+            "json_mapping": {
+              "field": "obs.fieldCode",
+              "concept": "form_submission_timestamp"
+            }
         }
       ]
     },

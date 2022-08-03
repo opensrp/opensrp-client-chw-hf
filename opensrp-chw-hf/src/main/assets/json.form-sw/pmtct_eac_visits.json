@@ -614,6 +614,20 @@
         "openmrs_entity_id": "eac",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": ""
+      },
+      {
+        "key": "form_submission_timestamp",
+        "type": "hidden",
+        "openmrs_entity_id": "form_submission_timestamp",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_eac_visits_calculation.yml"
+            }
+          }
+        }
       }
     ]
   }

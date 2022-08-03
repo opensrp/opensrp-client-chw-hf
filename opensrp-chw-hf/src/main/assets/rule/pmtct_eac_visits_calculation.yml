@@ -5,3 +5,10 @@ priority: 1
 condition: "true"
 actions:
   - "calculation = (step1_additional_session != '' && step1_additional_session == 'no') ? 'complete' : 'incomplete'"
+---
+name: step1_form_submission_timestamp
+description: visit_date is the date of the eac
+priority: 1
+condition: "true"
+actions:
+  - "calculation = helper.getTimeInMillis()"
