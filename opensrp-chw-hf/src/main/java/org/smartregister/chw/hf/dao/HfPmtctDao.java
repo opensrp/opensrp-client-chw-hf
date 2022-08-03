@@ -452,11 +452,11 @@ public class HfPmtctDao extends CorePmtctDao {
     public static int getEacSessionNumber(String baseEntityId) {
         String sql = "SELECT eac_visit_session from ec_pmtct_eac_visit" +
                 "    WHERE  entity_id = '" + baseEntityId + "'" +
-                "ORDER BY  eac_visit_session DESC " +
+                "ORDER BY  form_submission_timestamp DESC " +
                 "LIMIT  1";
         String completionSql = "SELECT eac_completion_status from ec_pmtct_eac_visit" +
                 "    WHERE  entity_id = '" + baseEntityId + "'" +
-                "ORDER BY  eac_visit_session DESC " +
+                "ORDER BY  form_submission_timestamp DESC " +
                 "LIMIT  1";
 
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "eac_visit_session");
