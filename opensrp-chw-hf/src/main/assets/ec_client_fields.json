@@ -257,6 +257,14 @@
           }
         },
         {
+          "column_name": "enroll_to_eac",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "enroll_to_eac"
+          }
+        },
+        {
           "column_name": "hvl_result_date",
           "type": "Event",
           "json_mapping": {

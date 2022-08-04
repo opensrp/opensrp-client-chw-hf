@@ -41,7 +41,9 @@
     },
     "encounter_location": ""
   },
-  "global": {},
+  "global": {
+    "is_after_eac": false
+  },
   "step1": {
     "title": "HVL Results",
     "fields": [
@@ -145,6 +147,13 @@
         "v_required": {
           "value": "true",
           "err": "Please select an answer"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_hvl_test_results_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -175,6 +184,13 @@
         "v_required": {
           "value": "true",
           "err": "Please select an answer"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_hvl_test_results_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -205,6 +221,13 @@
         "v_required": {
           "value": "true",
           "err": "Please select an answer"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_hvl_test_results_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -253,6 +276,13 @@
         "v_required": {
           "value": "true",
           "err": "Please select an answer"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_hvl_test_results_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -301,6 +331,13 @@
         "v_required": {
           "value": "true",
           "err": "Please select an answer"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_hvl_test_results_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -331,6 +368,13 @@
         "v_required": {
           "value": "true",
           "err": "Please select an answer"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_hvl_test_results_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -361,6 +405,13 @@
         "v_required": {
           "value": "true",
           "err": "Please select an answer"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_hvl_test_results_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -458,11 +509,11 @@
             "openmrs_entity_id": "suitable_for_second_line_regimen"
           },
           {
-            "key": "extend_eac_sessions_before_new_viral_load",
+            "key": "extend_eac_sessions",
             "text": "Extend adherence sessions before new Viral Load (in 2-3 months’ time)",
             "value": false,
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "extend_eac_sessions_before_new_viral_load"
+            "openmrs_entity_id": "extend_eac_sessions"
           }
         ],
         "v_required": {
@@ -470,9 +521,10 @@
           "err": "Please select an answer"
         },
         "relevance": {
-          "step1:hvl_result": {
-            "type": "numeric",
-            "ex": "greaterThan(.,\"1000\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_hvl_test_results_relevance.yml"
+            }
           }
         }
       },
@@ -506,9 +558,10 @@
           "err": "Please answer this question"
         },
         "relevance": {
-          "step1:hvl_result": {
-            "type": "numeric",
-            "ex": "greaterThan(.,\"1000\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_hvl_test_results_relevance.yml"
+            }
           }
         }
       },
@@ -529,9 +582,10 @@
           "err": "Please enter the review team lead's name"
         },
         "relevance": {
-          "step1:hvl_result": {
-            "type": "numeric",
-            "ex": "greaterThan(.,\"1000\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_hvl_test_results_relevance.yml"
+            }
           }
         }
       },
@@ -541,6 +595,20 @@
         "openmrs_entity_id": "hvl_result_date",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_hvl_test_results_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "enroll_to_eac",
+        "type": "hidden",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "enroll_to_eac",
         "calculation": {
           "rules-engine": {
             "ex-rules": {
