@@ -61,10 +61,10 @@ public class AncConsultationAction implements BaseAncHomeVisitAction.AncHomeVisi
             int gestAge = Integer.parseInt(CoreJsonFormUtils.getValue(jsonObject, "gest_age"));
 
             String lie = CoreJsonFormUtils.getValue(jsonObject, "lie");
-            boolean lieCheck = !(lie.equalsIgnoreCase("Lie") || lie.equalsIgnoreCase("Mlalo wa mtoto tumboni"));
+            boolean lieCheck = StringUtils.isNotBlank(lie) && !(lie.equalsIgnoreCase("Lie") || lie.equalsIgnoreCase("Mlalo wa mtoto tumboni"));
 
             String presentation = CoreJsonFormUtils.getValue(jsonObject, "presentation");
-            boolean presentationCheck = !(presentation.equalsIgnoreCase("Presentation") || presentation.equalsIgnoreCase("Kitangulizi cha mtoto"));
+            boolean presentationCheck = StringUtils.isNotBlank(presentation) && !(presentation.equalsIgnoreCase("Presentation") || presentation.equalsIgnoreCase("Kitangulizi cha mtoto"));
 
             checkObject.put("examination_findings", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "examination_findings")));
             if(clientAge < 25){
