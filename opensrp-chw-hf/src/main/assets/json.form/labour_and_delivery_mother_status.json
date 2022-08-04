@@ -176,7 +176,7 @@
         "relevance": {
           "step1:delivery_place": {
             "type": "string",
-            "ex": "equalTo(., \"At a health facility\")"
+            "ex": "equalTo(., \"at_a_health_facility\")"
           }
         }
       },
@@ -190,7 +190,7 @@
         "relevance": {
           "step1:delivery_place": {
             "type": "string",
-            "ex": "equalTo(., \"At a health facility\")"
+            "ex": "equalTo(., \"at_a_health_facility\")"
           }
         }
       },

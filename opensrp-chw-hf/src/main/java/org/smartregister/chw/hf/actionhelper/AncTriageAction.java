@@ -3,6 +3,7 @@ package org.smartregister.chw.hf.actionhelper;
 import android.content.Context;
 
 import org.apache.commons.lang3.StringUtils;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.anc.domain.MemberObject;
@@ -10,7 +11,10 @@ import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.utils.VisitUtils;
+import org.smartregister.family.util.JsonFormUtils;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,7 +24,7 @@ public class AncTriageAction implements BaseAncHomeVisitAction.AncHomeVisitActio
     protected MemberObject memberObject;
     private String jsonPayload;
 
-    private String rapid_examination;
+    private HashMap<String, Boolean> checkObject = new HashMap<>();
     private BaseAncHomeVisitAction.ScheduleStatus scheduleStatus;
     private String subTitle;
     private Context context;
@@ -51,7 +55,10 @@ public class AncTriageAction implements BaseAncHomeVisitAction.AncHomeVisitActio
     public void onPayloadReceived(String jsonPayload) {
         try {
             JSONObject jsonObject = new JSONObject(jsonPayload);
-            rapid_examination = CoreJsonFormUtils.getValue(jsonObject, "rapid_examination");
+            checkObject.clear();
+            checkObject.put("rapid_examination", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "rapid_examination")));
+            checkObject.put("reasons_to_clinic", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "reasons_to_clinic")));
+            checkObject.put("danger_signs", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "danger_signs")));
         } catch (JSONException e) {
             Timber.e(e);
         }
@@ -68,30 +75,42 @@ public class AncTriageAction implements BaseAncHomeVisitAction.AncHomeVisitActio
     }
 
     @Override
-    public String postProcess(String s) {
-        return s;
+    public String postProcess(String jsonPayload) {
+        JSONObject jsonObject = null;
+        try {
+            jsonObject = new JSONObject(jsonPayload);
+            JSONArray fields = JsonFormUtils.fields(jsonObject);
+            JSONObject triageCompletionStatus = JsonFormUtils.getFieldJSONObject(fields, "triage_completion_status");
+            assert triageCompletionStatus != null;
+            triageCompletionStatus.put(com.vijay.jsonwizard.constants.JsonFormConstants.VALUE, VisitUtils.getActionStatus(checkObject));
+        } catch (JSONException e) {
+            Timber.e(e);
+        }
+
+        if (jsonObject != null) {
+            return jsonObject.toString();
+        }
+        return null;
     }
 
     @Override
     public String evaluateSubTitle() {
-        if (StringUtils.isBlank(rapid_examination))
-            return null;
-
-        StringBuilder stringBuilder = new StringBuilder();
-
-        //TODO ilakoze extract to string resources
-        stringBuilder.append(context.getString(R.string.triage_complete));
-
-        return stringBuilder.toString();
+        String status = VisitUtils.getActionStatus(checkObject);
+        if (status.equalsIgnoreCase(VisitUtils.Complete))
+            return context.getString(R.string.triage_complete);
+        return "";
     }
 
     @Override
     public BaseAncHomeVisitAction.Status evaluateStatusOnPayload() {
-        if (StringUtils.isBlank(rapid_examination))
-            return BaseAncHomeVisitAction.Status.PENDING;
-        else {
+        String status = VisitUtils.getActionStatus(checkObject);
+        if (status.equalsIgnoreCase(VisitUtils.Complete)) {
             return BaseAncHomeVisitAction.Status.COMPLETED;
         }
+        if (status.equalsIgnoreCase(VisitUtils.Ongoing)) {
+            return BaseAncHomeVisitAction.Status.PARTIALLY_COMPLETED;
+        }
+        return BaseAncHomeVisitAction.Status.PENDING;
     }
 
     @Override

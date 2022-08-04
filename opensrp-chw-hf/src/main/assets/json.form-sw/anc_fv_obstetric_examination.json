@@ -15,11 +15,6 @@
       "openmrs_data_type": "end",
       "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
     },
-    "today": {
-      "openmrs_entity_parent": "",
-      "openmrs_entity": "encounter",
-      "openmrs_entity_id": "encounter_date"
-    },
     "deviceid": {
       "openmrs_entity_parent": "",
       "openmrs_entity": "concept",
@@ -82,10 +77,6 @@
         "v_max": {
           "value": "300",
           "err": "Uzito lazima uwe sawasawa au chini ya 300 (KG)"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Tafadhali ingiza uzito"
         }
       },
       {
@@ -101,15 +92,11 @@
         },
         "v_min": {
           "value": "60",
-          "err":  "Urefu lazima uwe sawasawa au zaidi ya 60 (CM)"
+          "err": "Urefu lazima uwe sawasawa au zaidi ya 60 (CM)"
         },
         "v_max": {
           "value": "200",
-          "err":"Urefu lazima uwe sawasawa au chini ya 200 (CM)"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Tafadhali ingiza urefu"
+          "err": "Urefu lazima uwe sawasawa au chini ya 200 (CM)"
         }
       },
       {
@@ -201,15 +188,11 @@
         },
         "v_min": {
           "value": "0",
-          "err":"Thamani ya systolic lazima iwe sawasawa au zaidi ya 0"
+          "err": "Thamani ya systolic lazima iwe sawasawa au zaidi ya 0"
         },
         "v_max": {
           "value": "320",
           "err": "Thamani ya systolic lazima iwe sawasawa au chini ya 320"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Tafadhali ingiza thamani ya systolic "
         }
       },
       {
@@ -230,10 +213,6 @@
         "v_max": {
           "value": "200",
           "err": "Thamani ya diastolic lazima iwe sawasawa au chini ya 200"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Tafadhali ingiza thamani ya diastolic"
         },
         "constraints": [
           {
@@ -288,15 +267,11 @@
         },
         "v_min": {
           "value": "0",
-          "err":"Kiwango cha mapigo ya moyo lazima kiwe sawasawa au zaidi ya 0 (bpm)"
+          "err": "Kiwango cha mapigo ya moyo lazima kiwe sawasawa au zaidi ya 0 (bpm)"
         },
         "v_max": {
           "value": "200",
-          "err":"Kiwango cha mapigo ya moyo lazima kiwe sawasawa au chini ya 200 (bpm)"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Tafadhali ingiza kiwango cha mapigo ya moyo "
+          "err": "Kiwango cha mapigo ya moyo lazima kiwe sawasawa au chini ya 200 (bpm)"
         }
       },
       {
@@ -342,15 +317,11 @@
         },
         "v_min": {
           "value": "10",
-          "err":  "Kiwango cha joto lazima kiwe sawasawa au zaidi ya 10"
+          "err": "Kiwango cha joto lazima kiwe sawasawa au zaidi ya 10"
         },
         "v_max": {
           "value": "50",
           "err": "Kiwango cha joto lazima kiwe sawasawa au chini ya 50"
-        },
-        "v_required": {
-          "value": true,
-          "err": "Tafadhali ingiza kiwango cha joto"
         }
       },
       {
@@ -403,11 +374,7 @@
             "openmrs_entity_id": "no",
             "openmrs_entity": "concept"
           }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhali jbu swali hili"
-        }
+        ]
       },
       {
         "key": "prompt_for_abdominal_scars",
@@ -444,11 +411,7 @@
             "openmrs_entity_id": "no",
             "openmrs_entity": "concept"
           }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhali jibu swali hili"
-        }
+        ]
       },
       {
         "key": "prompt_for_abdominal_movement_with_respiration",
@@ -485,10 +448,6 @@
         "openmrs_choice_ids": {
           "distended": "distended",
           "normal_contour": "normal_contour"
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhali jibu swali hili"
         }
       },
       {
@@ -513,10 +472,6 @@
         "v_max": {
           "value": "36",
           "err": "Kimo cha mimba lazima kiwe sawa au chini ya 36 CM"
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhali ingiza kimo cha mimba"
         }
       },
       {
@@ -547,10 +502,6 @@
               "rules-file": "anc_fv_obstetric_examination_relevance.yml"
             }
           }
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhali cchagua chaguo moja kwa ajili ya kuonesha mlalo wa mtoto tumboni"
         }
       },
       {
@@ -594,10 +545,6 @@
               "rules-file": "anc_fv_obstetric_examination_relevance.yml"
             }
           }
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhali chagua chaguo kwa ajili ya kitangulizi cha mtoto"
         }
       },
       {
@@ -634,10 +581,6 @@
         "v_max": {
           "value": "300",
           "err": "Kiwango cha mapigo ya moyo wa mtoto lazima kiwe sawasawa au chini ya 300"
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhali ingiza kiawango cha mapigo ya moyo ya mtoto"
         },
         "relevance": {
           "rules-engine": {
@@ -683,11 +626,7 @@
             "openmrs_entity_id": "no",
             "openmrs_entity": "concept"
           }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhali jibu swali hili"
-        }
+        ]
       },
       {
         "key": "prompt_for_vaginal_discharge",
@@ -724,11 +663,7 @@
             "openmrs_entity_id": "no",
             "openmrs_entity": "concept"
           }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhali jibu swali hili"
-        }
+        ]
       },
       {
         "key": "prompt_for_vaginal_sores",
@@ -765,11 +700,7 @@
             "openmrs_entity_id": "no",
             "openmrs_entity": "concept"
           }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhali jibu swali hili"
-        }
+        ]
       },
       {
         "key": "prompt_for_vaginal_swelling",
@@ -785,6 +716,14 @@
             "ex": "equalTo(., \"yes\")"
           }
         }
+      },
+      {
+        "key": "obstetric_examination_completion_status",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "obstetric_examination_completion_status",
+        "openmrs_entity_parent": "",
+        "value": "pending"
       }
     ]
   }

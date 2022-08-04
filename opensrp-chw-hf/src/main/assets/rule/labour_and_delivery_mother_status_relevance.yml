@@ -9,7 +9,7 @@ actions:
 name: step1_name_of_supervising_person
 description: name_of_supervising_person relevance
 priority: 1
-condition: "step1_supervised_by_occupation.contains('student')"
+condition: "step1_designation_of_delivery_personnel.contains('student')"
 actions:
   - "isRelevant = true"
 

@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.rey.material.widget.Button;
@@ -83,6 +84,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     private boolean isKnownOnArt;
     private String ctcNumber;
     private String partnerBaseEntityId;
+    private RelativeLayout processVisitLayout;
 
     public static void startMe(Activity activity, String baseEntityID) {
         Intent intent = new Intent(activity, AncMemberProfileActivity.class);
@@ -196,7 +198,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
                     displayToast(R.string.recorded_partner_testing_results);
                     setupViews();
                 } else if (form.getString(JsonFormUtils.ENCOUNTER_TYPE).equals(org.smartregister.chw.core.utils.Utils.metadata().familyRegister.updateEventType)) {
-                    FamilyEventClient familyEventClient = new CoreAllClientsMemberModel().processJsonForm(jsonString,UpdateDetailsUtil.getFamilyBaseEntityId(getCommonPersonObjectClient()));
+                    FamilyEventClient familyEventClient = new CoreAllClientsMemberModel().processJsonForm(jsonString, UpdateDetailsUtil.getFamilyBaseEntityId(getCommonPersonObjectClient()));
                     JSONObject syncLocationField = CoreJsonFormUtils.getJsonField(new JSONObject(jsonString), STEP1, SYNC_LOCATION_ID);
                     familyEventClient.getEvent().setLocationId(CoreJsonFormUtils.getSyncLocationUUIDFromDropdown(syncLocationField));
                     familyEventClient.getEvent().setEntityType(CoreConstants.TABLE_NAME.INDEPENDENT_CLIENT);
@@ -369,12 +371,18 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
 
     }
 
-    private void checkVisitStatus(Visit firstVisit) {
-        boolean visitDone = firstVisit.getProcessed();
+    private void checkVisitStatus(Visit visit) {
+        processVisitLayout = findViewById(R.id.rlProcessVisitBtn);
+        processVisitLayout.setVisibility(View.GONE);
+        boolean visitDone = visit.getProcessed();
+        boolean formsCompleted = VisitUtils.isAncVisitComplete(visit);
         if (!visitDone) {
             showVisitInProgress();
             textViewUndo.setVisibility(View.GONE);
             textViewAncVisitNot.setVisibility(View.GONE);
+            if (formsCompleted) {
+                showCompleteVisit(visit);
+            }
         } else {
             getButtonStatus();
         }
@@ -385,7 +393,21 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         tvEdit.setVisibility(View.VISIBLE);
         layoutNotRecordView.setVisibility(View.VISIBLE);
         textViewNotVisitMonth.setText(getContext().getString(R.string.visit_in_progress, "ANC"));
-        imageViewCross.setImageResource(org.smartregister.chw.core.R.drawable.activityrow_notvisited);
+        imageViewCross.setImageResource(R.drawable.activityrow_visit_in_progress);
+    }
+
+    private void showCompleteVisit(Visit visit) {
+        TextView processVisitBtn = findViewById(R.id.textview_process_visit);
+        processVisitBtn.setOnClickListener(v -> {
+            try {
+                VisitUtils.manualProcessVisit(visit);
+                //reload views after visit is processed
+                setupViews();
+            } catch (Exception e) {
+                Timber.e(e);
+            }
+        });
+        processVisitLayout.setVisibility(View.VISIBLE);
     }
 
 
@@ -612,8 +634,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         } else if (itemId == R.id.action_ld_registration) {
             startLDRegistration();
             return true;
-        }
-        else if(itemId == org.smartregister.chw.core.R.id.action_location_info){
+        } else if (itemId == org.smartregister.chw.core.R.id.action_location_info) {
 
             JSONObject preFilledForm = getAutoPopulatedJsonEditFormString(
                     CoreConstants.JSON_FORM.getFamilyDetailsRegister(), this,

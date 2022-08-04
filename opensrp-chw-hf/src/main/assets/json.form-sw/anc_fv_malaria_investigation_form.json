@@ -15,11 +15,6 @@
       "openmrs_data_type": "end",
       "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
     },
-    "today": {
-      "openmrs_entity_parent": "",
-      "openmrs_entity": "encounter",
-      "openmrs_entity_id": "encounter_date"
-    },
     "deviceid": {
       "openmrs_entity_parent": "",
       "openmrs_entity": "concept",
@@ -47,6 +42,7 @@
     "encounter_location": ""
   },
   "global": {
+    "llin_provided": false
   },
   "step1": {
     "title": "Uchunguzi wa Malaria",
@@ -314,11 +310,7 @@
             "openmrs_entity": "concept",
             "value": false
           }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhali chagua kama Mteja amepewa chandarua cha muda mrefu"
-        }
+        ]
       },
       {
         "key": "reason_for_not_providing_llin",
@@ -372,6 +364,14 @@
             "ex": "equalTo(., \"other\")"
           }
         }
+      },
+      {
+        "key": "malaria_investigation_completion_status",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "malaria_investigation_completion_status",
+        "openmrs_entity_parent": "",
+        "value": "pending"
       }
     ]
   }

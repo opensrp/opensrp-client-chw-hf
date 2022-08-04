@@ -422,5 +422,6 @@
     <string name="test_not_conducted">Test Not Conducted</string>
     <string name="mother_champion_reports_subtitle">View Mother Champion Reports</string>
     <string name="mother_champion_reports">Mother Champion Reports</string>
+    <string name="process_visit">Process Visit</string>
 
 </resources>

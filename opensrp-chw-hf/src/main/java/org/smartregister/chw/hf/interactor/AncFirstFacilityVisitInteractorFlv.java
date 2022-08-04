@@ -43,6 +43,7 @@ import org.smartregister.domain.LocationTag;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -444,6 +445,7 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
         private final Map<String, List<VisitDetail>> details;
         BaseAncHomeVisitContract.InteractorCallBack callBack;
         private String medical_and_surgical_history_present;
+        private HashMap<String, Boolean> checkObject = new HashMap<>();
         private String visitNumber;
         private Context context;
 
@@ -467,7 +469,12 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
         public void onPayloadReceived(String jsonPayload) {
             try {
                 JSONObject jsonObject = new JSONObject(jsonPayload);
+                checkObject.clear();
                 medical_and_surgical_history_present = CoreJsonFormUtils.getCheckBoxValue(jsonObject, "medical_surgical_history");
+                checkObject.put("medical_surgical_history", StringUtils.isNotBlank(medical_and_surgical_history_present));
+                checkObject.put("gravida", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "gravida")));
+                checkObject.put("parity", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "parity")));
+                checkObject.put("no_surv_children", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "no_surv_children")));
                 visitNumber = CoreJsonFormUtils.getValue(jsonObject, "visit_number");
             } catch (JSONException e) {
                 Timber.e(e);
@@ -485,7 +492,26 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
         }
 
         @Override
-        public String postProcess(String s) {
+        public String postProcess(String jsonPayload) {
+            updateBaselineInvestigationActionBasedOnMedicalHistory();
+            JSONObject jsonObject = null;
+            try {
+                jsonObject = new JSONObject(jsonPayload);
+                JSONArray fields = org.smartregister.family.util.JsonFormUtils.fields(jsonObject);
+                JSONObject medicalSurgicalHistoryCompletionStatus = org.smartregister.family.util.JsonFormUtils.getFieldJSONObject(fields, "medical_surgical_history_completion_status");
+                assert medicalSurgicalHistoryCompletionStatus != null;
+                medicalSurgicalHistoryCompletionStatus.put(com.vijay.jsonwizard.constants.JsonFormConstants.VALUE, org.smartregister.chw.hf.utils.VisitUtils.getActionStatus(checkObject));
+            } catch (JSONException e) {
+                Timber.e(e);
+            }
+
+            if (jsonObject != null) {
+                return jsonObject.toString();
+            }
+            return null;
+        }
+
+        private void updateBaselineInvestigationActionBasedOnMedicalHistory() {
             try {
                 if (!StringUtils.isBlank(medical_and_surgical_history_present)) {
 
@@ -515,24 +541,26 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
             } catch (JSONException e) {
                 Timber.e(e);
             }
-            return super.postProcess(s);
         }
 
         @Override
         public String evaluateSubTitle() {
-            if (StringUtils.isBlank(medical_and_surgical_history_present))
-                return null;
-
-            return context.getString(R.string.medical_and_surgical_filled);
+            String status = org.smartregister.chw.hf.utils.VisitUtils.getActionStatus(checkObject);
+            if (status.equalsIgnoreCase(org.smartregister.chw.hf.utils.VisitUtils.Complete))
+                return context.getString(R.string.medical_and_surgical_filled);
+            return "";
         }
 
         @Override
         public BaseAncHomeVisitAction.Status evaluateStatusOnPayload() {
-            if (StringUtils.isBlank(medical_and_surgical_history_present)) {
-                return BaseAncHomeVisitAction.Status.PENDING;
-            } else {
+            String status = org.smartregister.chw.hf.utils.VisitUtils.getActionStatus(checkObject);
+            if (status.equalsIgnoreCase(org.smartregister.chw.hf.utils.VisitUtils.Complete)) {
                 return BaseAncHomeVisitAction.Status.COMPLETED;
             }
+            if (status.equalsIgnoreCase(org.smartregister.chw.hf.utils.VisitUtils.Ongoing)) {
+                return BaseAncHomeVisitAction.Status.PARTIALLY_COMPLETED;
+            }
+            return BaseAncHomeVisitAction.Status.PENDING;
         }
 
         @Override
