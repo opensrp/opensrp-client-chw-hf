@@ -537,4 +537,25 @@ public class HfPmtctDao extends CorePmtctDao {
         }
         return false;
     }
+
+    public static Date getDateEACRecorded(String baseEntityId){
+        String sql = "SELECT strftime('%d-%m-%Y', form_submission_timestamp) as record_date " +
+                " FROM ec_pmtct_eac_visit " +
+                " WHERE entity_id = '" + baseEntityId + "'" +
+                " ORDER BY form_submission_timestamp DESC " +
+                " LIMIT  1";
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "record_date");
+
+        SimpleDateFormat dt = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+
+        List<String> res = readData(sql, dataMap);
+        if (res != null && res.size() > 0 && res.get(0) != null) {
+            try {
+                return dt.parse(res.get(0));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
 }
