@@ -283,9 +283,10 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
                 eacVisitDoneBar.setVisibility(View.GONE);
                 textViewRecordEac.setVisibility(View.VISIBLE);
             }
-
             textViewRecordEac.setOnClickListener(this);
             textViewRecordEac.setText(getString(R.string.record_eac_first_visit, HfPmtctDao.getEacSessionNumber(baseEntityId)));
+        }else {
+            textViewRecordEac.setVisibility(View.GONE);
         }
         Visit lastFollowupVisit = getVisit(Constants.EVENT_TYPE.PMTCT_FOLLOWUP);
         if (lastFollowupVisit != null && !lastFollowupVisit.getProcessed()) {
