@@ -263,11 +263,8 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         if (HfPmtctDao.isEligibleForEac(baseEntityId)) {
             textViewRecordEac.setVisibility(View.VISIBLE);
             textViewRecordEac.setOnClickListener(this);
-            if (HfPmtctDao.getEacVisitType(baseEntityId).equalsIgnoreCase(org.smartregister.chw.hf.utils.Constants.EacVisitTypes.EAC_FIRST_VISIT)) {
-                textViewRecordEac.setText(getContext().getString(R.string.record_eac_first_visit, HfPmtctDao.getEacSessionNumber(baseEntityId)));
-            } else {
-                textViewRecordEac.setText(R.string.record_eac_second_visit);
-            }
+            textViewRecordEac.setText(getContext().getString(R.string.record_eac_first_visit, HfPmtctDao.getEacSessionNumber(baseEntityId)));
+
         }
         Visit lastFollowupVisit = getVisit(Constants.EVENT_TYPE.PMTCT_FOLLOWUP);
         if (lastFollowupVisit != null && !lastFollowupVisit.getProcessed()) {
@@ -337,11 +334,8 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
                 if (formJsonObject != null) {
                     JSONObject global = formJsonObject.getJSONObject("global");
                     JSONArray fields = formJsonObject.getJSONObject(STEP1).getJSONArray(JsonFormConstants.FIELDS);
-                    JSONObject visit_type = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "eac_visit_type");
                     JSONObject eac_visit_session = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "eac_visit_session");
 
-                    assert visit_type != null;
-                    visit_type.put(VALUE, HfPmtctDao.getEacVisitType(baseEntityId));
                     assert eac_visit_session != null;
                     eac_visit_session.put(VALUE, HfPmtctDao.getEacSessionNumber(baseEntityId));
                     global.put("eac_session_number", HfPmtctDao.getEacSessionNumber(baseEntityId));

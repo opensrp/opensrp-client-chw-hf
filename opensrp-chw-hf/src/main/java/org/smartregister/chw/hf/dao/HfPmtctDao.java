@@ -256,30 +256,6 @@ public class HfPmtctDao extends CorePmtctDao {
         return res != null && res.size() > 0;
     }
 
-    public static String getEacVisitType(String baseEntityID) {
-        String sql = "SELECT hvl_collection_date\n" +
-                "FROM (SELECT *\n" +
-                "      FROM ec_pmtct_followup\n" +
-                "      WHERE entity_id = '" + baseEntityID + "'\n" +
-                "        AND hvl_sample_id IS NOT NULL\n" +
-                "        AND hvl_collection_date IS NOT NULL\n" +
-                "      ORDER BY visit_number DESC\n" +
-                "      LIMIT 2 OFFSET 1) pm\n" +
-                "         INNER JOIN ec_pmtct_hvl_results ephr on pm.base_entity_id = ephr.hvl_pmtct_followup_form_submission_id\n" +
-                "WHERE CAST(ephr.hvl_result as INT) > 1000 AND ephr.hvl_result IS NOT NULL";
-
-        DataMap<Integer> dataMap = cursor -> getCursorIntValue(cursor, "hvl_collection_date");
-
-        List<Integer> res = readData(sql, dataMap);
-
-        if (res.size() > 0 && res.get(0) != null) {
-            if (res.size() == 1)
-                return Constants.EacVisitTypes.EAC_SECOND_VISIT;
-            else
-                return Constants.EacVisitTypes.EAC_FIRST_VISIT;
-        }
-        return Constants.EacVisitTypes.EAC_FIRST_VISIT;
-    }
 
     public static boolean isLiverFunctionTestConducted(String baseEntityID) {
         String sql = "SELECT p.base_entity_id FROM ec_pmtct_registration as p INNER JOIN (SELECT * FROM ec_pmtct_followup WHERE followup_status <> 'lost_to_followup' AND followup_status <> 'transfer_out' AND ec_pmtct_followup.entity_id = " + "'" + baseEntityID + "'" + " ORDER BY visit_number DESC LIMIT 1) as pf on pf.entity_id = p.base_entity_id WHERE (pf.liver_function_test_conducted = 'test_conducted') AND p.base_entity_id = '" + baseEntityID + "'";
