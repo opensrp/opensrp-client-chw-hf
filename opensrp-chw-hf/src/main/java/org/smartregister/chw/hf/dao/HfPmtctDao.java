@@ -17,23 +17,16 @@ import java.util.Locale;
 
 public class HfPmtctDao extends CorePmtctDao {
     public static boolean isEligibleForEac(String baseEntityID) {
-        String sql = "SELECT hvl_collection_date\n" +
-                "FROM (SELECT *\n" +
-                "      FROM ec_pmtct_followup\n" +
-                "      WHERE entity_id = '" + baseEntityID + "'\n" +
-                "        AND hvl_sample_id IS NOT NULL\n" +
-                "        AND hvl_collection_date IS NOT NULL\n" +
-                "      ORDER BY visit_number DESC\n" +
-                "      LIMIT 1) pm\n" +
-                "         INNER JOIN ec_pmtct_hvl_results ephr on pm.base_entity_id = ephr.hvl_pmtct_followup_form_submission_id\n" +
-                "WHERE CAST(ephr.hvl_result as INT) > 1000 AND ephr.hvl_result IS NOT NULL";
+        boolean enrollToEac = isToBeEnrolledToEac(baseEntityID);
+        boolean hasEacVisits = hasEacVisits(baseEntityID);
+        boolean isEacCompleted = isEacCompleted(baseEntityID);
 
-        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "hvl_collection_date");
 
-        List<String> res = readData(sql, dataMap);
-
-        if (res.size() > 0 && res.get(0) != null) {
-            return getElapsedTimeInMonths(res.get(0)) < 3;
+        if (enrollToEac) {
+            if (hasEacVisits) {
+                return !isEacCompleted;
+            }
+            return true;
         }
         return false;
     }
@@ -469,9 +462,67 @@ public class HfPmtctDao extends CorePmtctDao {
         if (completionRes != null && completionRes.size() > 0 && completionRes.get(0) != null && completionRes.get(0).equalsIgnoreCase("complete")) {
             return 1;
         }
-        if(res != null && res.size() > 0 && res.get(0) != null) {
+        if (res != null && res.size() > 0 && res.get(0) != null) {
             return Integer.parseInt(res.get(0)) + 1;
         }
         return 1;
+    }
+
+    private static boolean isToBeEnrolledToEac(String baseEntityId) {
+        String sql = "SELECT enroll_to_eac " +
+                "FROM ec_pmtct_hvl_results " +
+                "WHERE entity_id = '" + baseEntityId + "'" +
+                " ORDER BY hvl_result_date DESC" +
+                " LIMIT 1";
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "enroll_to_eac");
+        List<String> res = readData(sql, dataMap);
+        if (res != null && res.size() > 0 && res.get(0) != null) {
+            return res.get(0).equalsIgnoreCase("yes");
+        }
+        return false;
+    }
+
+    private static boolean hasEacVisits(String baseEntityId) {
+        String sql = "SELECT eac_visit_session " +
+                " FROM ec_pmtct_eac_visit " +
+                " WHERE entity_id = '" + baseEntityId + "'";
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "eac_visit_session");
+        List<String> res = readData(sql, dataMap);
+        return res != null && res.size() > 0;
+    }
+
+    private static boolean isEacCompleted(String baseEntityId) {
+        String completionSql = "SELECT strftime('%d-%m-%Y', form_submission_timestamp) as completion_date " +
+                " FROM ec_pmtct_eac_visit " +
+                " WHERE  entity_id = '" + baseEntityId + "'" +
+                " AND eac_completion_status = 'complete' " +
+                " ORDER BY  form_submission_timestamp DESC " +
+                " LIMIT  1";
+
+        String hvlResultDateSql = "SELECT hvl_result_date " +
+                " FROM ec_pmtct_hvl_results " +
+                " WHERE  entity_id = '" + baseEntityId + "'" +
+                " ORDER BY  hvl_result_date DESC " +
+                " LIMIT  1";
+        SimpleDateFormat dt = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+
+        DataMap<String> completionDateDataMap = cursor -> getCursorValue(cursor, "completion_date");
+        DataMap<String> hvlResultDateDataMap = cursor -> getCursorValue(cursor, "hvl_result_date");
+
+        List<String> completionDateRes = readData(completionSql, completionDateDataMap);
+        List<String> hvlResultDateRes = readData(hvlResultDateSql, hvlResultDateDataMap);
+
+        if (completionDateRes != null && completionDateRes.size() > 0 && completionDateRes.get(0) != null) {
+            Date completionDate = null;
+            Date hvlResultDate = null;
+            try {
+                completionDate = dt.parse(completionDateRes.get(0));
+                hvlResultDate = dt.parse(hvlResultDateRes.get(0));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            return completionDate != null && completionDate.after(hvlResultDate);
+        }
+        return false;
     }
 }
