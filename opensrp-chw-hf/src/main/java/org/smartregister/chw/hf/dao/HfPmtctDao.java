@@ -92,13 +92,35 @@ public class HfPmtctDao extends CorePmtctDao {
                 "      ORDER BY visit_number DESC\n" +
                 "      LIMIT 1) pm\n" +
                 "         INNER JOIN ec_pmtct_hvl_results ephr on pm.base_entity_id = ephr.hvl_pmtct_followup_form_submission_id\n" +
-                "WHERE CAST(ephr.hvl_result as INT) > 1000 AND ephr.hvl_result IS NOT NULL";
+                "WHERE ephr.enroll_to_eac IS NOT NULL AND ephr.enroll_to_eac = 'yes' ";
 
+        String completionSql = "SELECT strftime('%d-%m-%Y', form_submission_timestamp) as completion_date " +
+                " FROM ec_pmtct_eac_visit " +
+                " WHERE  entity_id = '" + baseEntityID + "'" +
+                " AND eac_completion_status = 'complete' " +
+                " ORDER BY  form_submission_timestamp DESC " +
+                " LIMIT  1";
+
+        SimpleDateFormat dt = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
 
         DataMap<String> hvlCollectionDateMap = cursor -> getCursorValue(cursor, "hvl_collection_date");
-        List<String> res = readData(sql, hvlCollectionDateMap);
-        if (res != null && res.size() > 0 && res.get(0) != null) {
-            return getElapsedTimeInMonths(res.get(0)) >= 3;
+        DataMap<String> completionDateMap = cursor -> getCursorValue(cursor, "completion_date");
+        List<String> hvlCollectionDateRes = readData(sql, hvlCollectionDateMap);
+        List<String> completionDateRes = readData(completionSql, completionDateMap);
+
+        if (hvlCollectionDateRes != null && hvlCollectionDateRes.size() > 0 && hvlCollectionDateRes.get(0) != null) {
+            if (completionDateRes != null && completionDateRes.size() > 0 && completionDateRes.get(0) != null) {
+                Date completionDate = null;
+                Date hvlCollectionDate = null;
+                try {
+                    completionDate = dt.parse(completionDateRes.get(0));
+                    hvlCollectionDate = dt.parse(hvlCollectionDateRes.get(0));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                return completionDate != null && completionDate.after(hvlCollectionDate);
+            }
+            return null;
         }
         return null;
     }
