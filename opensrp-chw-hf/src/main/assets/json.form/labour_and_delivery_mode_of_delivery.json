@@ -69,7 +69,7 @@
           },
           {
             "key": "cesarean",
-            "text": "caesarian",
+            "text": "Caesarian",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "cesarean"
