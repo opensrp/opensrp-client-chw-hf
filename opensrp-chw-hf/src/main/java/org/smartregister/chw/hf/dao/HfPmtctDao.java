@@ -547,4 +547,18 @@ public class HfPmtctDao extends CorePmtctDao {
         }
         return false;
     }
+
+    public static boolean isAfterEAC(String baseEntityId){
+        String sql  = "SELECT enroll_to_eac " +
+                "FROM ec_pmtct_hvl_results " +
+                "WHERE entity_id = '" + baseEntityId + "'" +
+                " ORDER BY hvl_result_date DESC" +
+                " LIMIT 1";
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "enroll_to_eac");
+        List<String> res = readData(sql, dataMap);
+        if (res != null && res.size() > 0 && res.get(0) != null) {
+            return res.get(0).equalsIgnoreCase("yes");
+        }
+        return false;
+    }
 }
