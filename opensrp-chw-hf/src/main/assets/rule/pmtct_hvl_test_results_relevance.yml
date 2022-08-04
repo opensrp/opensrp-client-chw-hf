@@ -6,20 +6,6 @@ condition: "global_is_after_eac"
 actions:
   - "isRelevant = true"
 ---
-name: step1_tb_suspect
-description: tb_suspect relevance
-priority: 1
-condition: "global_is_after_eac"
-actions:
-  - "isRelevant = true"
----
-name: step1_investigation_done
-description: investigation_done relevance
-priority: 1
-condition: "global_is_after_eac"
-actions:
-  - "isRelevant = true"
----
 name: step1_patient_presenting_oi_or_immunosuppression
 description: patient_presenting_oi_or_immunosuppression relevance
 priority: 1
