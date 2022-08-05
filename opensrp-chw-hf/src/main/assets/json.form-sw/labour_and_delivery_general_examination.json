@@ -1,0 +1,757 @@
+{
+  "validate_on_submit": true,
+  "show_errors_on_submit": false,
+  "count": "1",
+  "encounter_type": "General Examination",
+  "entity_id": "",
+  "relational_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "step1": {
+    "title": "General Examination",
+    "fields": [
+      {
+        "key": "general_condition",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "general_condition",
+        "label": "Hali ya Kiujumla",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "good",
+            "text": "Nzuri",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "good"
+          },
+          {
+            "key": "fair",
+            "text": "Kawaida",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "fair"
+          },
+          {
+            "key": "bad",
+            "text": "Mbaya",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "bad"
+          }
+        ]
+      },
+      {
+        "key": "prompt_for_general_condition",
+        "type": "toaster_notes",
+        "text": "Toa matibabu kulingana na Mwongozo wa Tiba uliopo",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:general_condition": {
+            "type": "string",
+            "ex": "equalTo(., \"bad\")"
+          }
+        }
+      },
+      {
+        "key": "pulse_rate",
+        "type": "edit_text",
+        "hint": "Kiwango cha mapigo ya moyo (midundo kwa dakika moja)",
+        "openmrs_entity_id": "pulse_rate",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "v_numeric": {
+          "value": "true",
+          "err": "Tafhadhali ingiza kiwango cha mapigo ya moyo"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Kiwango cha mapigo ya moyo lazima iwe sawa au zaidi ya 0"
+        },
+        "v_max": {
+          "value": "200",
+          "err": "Kiwango cha mapigo ya moyo lazima iwe sawa au chini ya 300"
+        }
+      },
+      {
+        "key": "prompt_for_Bradycardia",
+        "type": "toaster_notes",
+        "text": "Bainisha sababu za mapigo hafifu ya moyo na udhibiti kulingana na Mwongozo wa Tiba uliopo",
+        "openmrs_entity_id": "prompt_for_Bradycardia",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:pulse_rate": {
+            "type": "numeric",
+            "ex": "lessThan(.,\"60\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_Tachycardia",
+        "type": "toaster_notes",
+        "text": "Bainisha sababu mapigo ya haraka ya moyo na udhibiti kulingana na Mwongozo wa Tiba uliopo",
+        "openmrs_entity_id": "prompt_for_Tachycardia",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:pulse_rate": {
+            "type": "numeric",
+            "ex": "greaterThan(.,\"100\")"
+          }
+        }
+      },
+      {
+        "key": "respiratory_rate",
+        "type": "edit_text",
+        "hint": "Kiwango cha pumzi kwa dakika moja",
+        "openmrs_entity_id": "respiratory_rate",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "v_numeric": {
+          "value": "true",
+          "err": "tafadhali ingiza kiwango cha pumzi "
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Kiwango cha pumzi lazima iwe sawa au zaidi ya 0"
+        },
+        "v_max": {
+          "value": "100",
+          "err": "Kiwango cha pumzi lazima iwe sawa au chini ya 100"
+        }
+      },
+      {
+        "key": "prompt_for_respiratory_rate",
+        "type": "toaster_notes",
+        "text": "Toa matibabu kulingana na Mwongozo wa Tiba wa Taifa uliopo",
+        "openmrs_entity_id": "prompt_for_respiratory_rate",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_general_examination_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "temperature",
+        "type": "edit_text",
+        "hint": "Kiwango cha joto",
+        "openmrs_entity_id": "temperature",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "v_numeric": {
+          "value": "true",
+          "err": "Tafadhali ingiza kiwango cha joto"
+        },
+        "v_min": {
+          "value": "10",
+          "err": "Kiwango cha joto lazima iwe sawa au zaidi ya 10"
+        },
+        "v_max": {
+          "value": "50",
+          "err": "Kiwango cha joto lazima iwe sawa au chini ya 50"
+        }
+      },
+      {
+        "key": "notify_client_has_fever",
+        "type": "toaster_notes",
+        "text": "Fanya vipimo vya maabara vinavyofaa ili kupata sababu ya homa na udhibiti kulingana na Mwongozo wa Tiba",
+        "openmrs_entity_id": "notify_client_has_fever",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:temperature": {
+            "type": "numeric",
+            "ex": "greaterThan(.,\"37.8\")"
+          }
+        }
+      },
+      {
+        "key": "notify_client_has_hypothermia",
+        "type": "toaster_notes",
+        "text": "Dhibiti jotoridi la mwili la chini kulingana na Mwngozo wa Tiba uliopo",
+        "openmrs_entity_id": "notify_client_has_hypothermia",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:temperature": {
+            "type": "numeric",
+            "ex": "lessThan(.,\"36.5\")"
+          }
+        }
+      },
+      {
+        "key": "systolic",
+        "type": "edit_text",
+        "hint": "Systolic (shinikizo la damu)",
+        "openmrs_entity_id": "systolic",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "v_numeric": {
+          "value": "true",
+          "err": "Tafadhali ingiza thamani ya systolic"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Thamani ya systolic lazima iwe sawa au zaidi ya 0"
+        },
+        "v_max": {
+          "value": "320",
+          "err": "Thamani ya systolic lazima iwe sawa au chini ya 320"
+        }
+      },
+      {
+        "key": "diastolic",
+        "type": "edit_text",
+        "hint": "Diastolic (shinikizo la damu)",
+        "openmrs_entity_id": "diastolic",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "v_numeric": {
+          "value": "true",
+          "err": "Tafadhali ingiza thamani ya diastolic"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Thamani ya diastolic lazima iwe sawa au zaidi ya 0"
+        },
+        "v_max": {
+          "value": "200",
+          "err": "Thamani ya diastolic lazima iwe sawa au chini ya 200"
+        },
+        "constraints": [
+          {
+            "type": "numeric",
+            "ex": "lessThan(., step1:systolic)",
+            "err": "The diastolic value must be less than the systolic value"
+          }
+        ]
+      },
+      {
+        "key": "prompt_for_management_of_hypertension",
+        "type": "toaster_notes",
+        "text": "Dhibiti shinikizo la juu la  damu  kulingana na miongozo ya kawaida",
+        "openmrs_entity_id": "prompt_for_management_of_hypertension",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_general_examination_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_management_of_hypotension",
+        "type": "toaster_notes",
+        "text": "Bainisha sababu ya shinikizo la chini la damu na udhibiti kulingana na Mwongozo wa Tiba uliopo",
+        "openmrs_entity_id": "prompt_for_management_of_hypotension",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_general_examination_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "urine_protein",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "urine_protein",
+        "label": "Protini katika mkojo",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "nil",
+            "text": "Hakuna",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "nil"
+          },
+          {
+            "key": "+",
+            "text": "+",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "+"
+          },
+          {
+            "key": "++",
+            "text": "++",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "++"
+          },
+          {
+            "key": "+++",
+            "text": "+++",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "+++"
+          },
+          {
+            "key": "not_tested",
+            "text": "Haijapimwa",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "not_tested"
+          }
+        ]
+      },
+      {
+        "key": "urine_acetone",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "urine_acetone",
+        "label": "Acetone katika mkojo",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "nil",
+            "text": "Hakuna",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "nil"
+          },
+          {
+            "key": "+",
+            "text": "+",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "+"
+          },
+          {
+            "key": "++",
+            "text": "+",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "++"
+          },
+          {
+            "key": "+++",
+            "text": "+",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "+++"
+          },
+          {
+            "key": "not_tested",
+            "text": "Haijapimwa",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "not_tested"
+          }
+        ]
+      },
+      {
+        "key": "prompt_for_urine",
+        "type": "toaster_notes",
+        "text": "Dhibiti au toa rufaa kwa ajili ya usimamizi zaidi",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_general_examination_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "fundal_height",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "fundal_height",
+        "type": "edit_text",
+        "hint": "Kimo cha mimba (CM)",
+        "v_numeric": {
+          "value": "true",
+          "err": "Lazima iwe tarakimu"
+        },
+        "v_min": {
+          "value": "12",
+          "err": "Kimo cha mimba lazima iwe sawa au zaidi ya 12 CM"
+        },
+        "v_max": {
+          "value": "50",
+          "err": "Kimo cha mimba lazima kiwe sawa au chini ya 50 CM"
+        }
+      },
+      {
+        "key": "prompt_for_fundal_height",
+        "type": "toaster_notes",
+        "text": "Kimo cha mimba kisicho kawaida",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:fundal_height": {
+            "type": "numeric",
+            "ex": "greaterThan(.,\"36\")"
+          }
+        }
+      },
+      {
+        "key": "lie",
+        "type": "native_radio",
+        "openmrs_entity_id": "lie",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "label": "Mlalo wa mtoto tumboni",
+        "options": [
+          {
+            "key": "transverse",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "transverse",
+            "openmrs_entity_parent": "",
+            "text": "Mlalo wa usawa"
+          },
+          {
+            "key": "oblique",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "oblique",
+            "openmrs_entity_parent": "",
+            "text": "Mlalo wa upande"
+          },
+          {
+            "key": "longitudinal",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "longitudinal",
+            "openmrs_entity_parent": "",
+            "text": "Mlalo wa wima"
+          }
+        ]
+      },
+      {
+        "key": "prompt_for_lie",
+        "type": "toaster_notes",
+        "text": "Toa rufaa kwa ajili ya ushauri zaidi",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_general_examination_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "presentation",
+        "type": "native_radio",
+        "openmrs_entity_id": "presentation",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "label": "Mkao wa mtoto tumboni",
+        "options": [
+          {
+            "key": "breech",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "breech",
+            "openmrs_entity_parent": "",
+            "text": "Miguu kwanza"
+          },
+          {
+            "key": "cephalic",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "cephalic",
+            "openmrs_entity_parent": "",
+            "text": "Kichwa kwanza"
+          }
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_general_examination_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_presentation",
+        "type": "toaster_notes",
+        "text": "Dhibiti kulingana na Mwongozo wa Tiba uliopo",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:presentation": {
+            "type": "string",
+            "ex": "equalTo(.,\"breech\")"
+          }
+        }
+      },
+      {
+        "key": "contraction_frequency",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "contraction_frequency",
+        "label": "Contraction Frequency",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "1",
+            "text": "1",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "1"
+          },
+          {
+            "key": "2",
+            "text": "2",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "2"
+          },
+          {
+            "key": "3",
+            "text": "3",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "3"
+          },
+          {
+            "key": "4",
+            "text": "4",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "4"
+          },
+          {
+            "key": "5",
+            "text": "5",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "5"
+          }
+        ]
+      },
+      {
+        "key": "contraction_in_ten_minutes",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "contraction_in_ten_minutes",
+        "label": "Contraction ndani ya dakika 10",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "less_than_20_secs",
+            "text": "< sekunde 20",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "less_than_20_secs"
+          },
+          {
+            "key": "over_20_less_40_secs",
+            "text": "sekunde 20-40",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "over_20_less_40_secs"
+          },
+          {
+            "key": "over_40_secs",
+            "text": "> sekunde 40",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "over_40_secs"
+          }
+        ]
+      },
+      {
+        "key": "prompt_for_contraction_less_than_20_secs",
+        "type": "toaster_notes",
+        "text": "Slight contraction",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "info",
+        "relevance": {
+          "step1:contraction_in_ten_minutes": {
+            "type": "string",
+            "ex": "equalTo(., \"less_than_20_secs\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_contraction_over_10_less_40_secs",
+        "type": "toaster_notes",
+        "text": "Moderate contractions",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "info",
+        "relevance": {
+          "step1:contraction_in_ten_minutes": {
+            "type": "string",
+            "ex": "equalTo(., \"over_20_less_40_secs\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_contraction_over_40_secs",
+        "type": "toaster_notes",
+        "text": "Strong contractions",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "info",
+        "relevance": {
+          "step1:contraction_in_ten_minutes": {
+            "type": "string",
+            "ex": "equalTo(., \"over_40_secs\")"
+          }
+        }
+      },
+      {
+        "key": "fetal_heart_rate",
+        "type": "edit_text",
+        "hint": "Kiwango cha mapigo ya moyo wa mtoto",
+        "openmrs_entity_id": "fetal_heart_rate",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Tafadhali ingiza kiwango cha mapigo ya moyo wa mtoto"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Kiwango cha mapigo ya moyo wa mtoto lazima iwe sawa au zaidi ya 0"
+        },
+        "v_max": {
+          "value": "300",
+          "err": "Kiwango cha mapigo ya moyo wa mtoto lazimaiwe sawa au chini ya 300"
+        }
+      },
+      {
+        "key": "prompt_for_fetal_distress",
+        "type": "toaster_notes",
+        "text": "Chukua hatua au toa rufaa kwa ajili ya usimamizi zaidi",
+        "openmrs_entity_id": "prompt_for_fetal_distress",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_general_examination_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "level",
+        "type": "native_radio",
+        "label": "Level",
+        "openmrs_entity_id": "level",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "5",
+            "text": "5/5",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "normal"
+          },
+          {
+            "key": "4",
+            "text": "4/5",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "4"
+          },
+          {
+            "key": "3",
+            "text": "3/5",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "3"
+          },
+          {
+            "key": "2",
+            "text": "2/5",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "2"
+          },
+          {
+            "key": "1",
+            "text": "1/5",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "1"
+          }
+        ]
+      }
+    ]
+  }
+}
