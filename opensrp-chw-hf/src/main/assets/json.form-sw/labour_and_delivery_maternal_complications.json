@@ -1,0 +1,285 @@
+{
+  "validate_on_submit": true,
+  "show_errors_on_submit": false,
+  "count": "1",
+  "encounter_type": "Mother Observation",
+  "entity_id": "",
+  "relational_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "step1": {
+    "title": "Maternal Complications During Labour",
+    "fields": [
+      {
+        "key": "maternal_complications_before_delivery",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "maternal_complications_before_delivery",
+        "type": "check_box",
+        "combine_checkbox_option_values": "true",
+        "label": "Matatizo Kabla ya Kujifungua",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "exclusive": [
+          "chk_none"
+        ],
+        "options": [
+          {
+            "key": "chk_aph",
+            "text": "APH",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_aph"
+          },
+          {
+            "key": "chk_prom",
+            "text": "PROM",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_prom"
+          },
+          {
+            "key": "chk_high_bp",
+            "text": "High BP",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_high_bp"
+          },
+          {
+            "key": "chk_pre_eclampsia",
+            "text": "Pre eclampsia",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_pre_eclampsia"
+          },
+          {
+            "key": "chk_eclampsia",
+            "text": "Eclampsia",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_eclampsia"
+          },
+          {
+            "key": "chk_anaemia",
+            "text": "Anemia",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_anaemia"
+          },
+          {
+            "key": "chk_malaria",
+            "text": "Malaria",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_malaria"
+          },
+          {
+            "key": "chk_hiv_stage_3_or_4",
+            "text": "HIV+stage III au IV",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_hiv_stage_3_or_4"
+          },
+          {
+            "key": "chk_fgm",
+            "text": "Waliokeketwa(FGM)",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_fgm"
+          },
+          {
+            "key": "chk_other",
+            "text": "Nyingine",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_other"
+          },
+          {
+            "key": "chk_none",
+            "text": "Hakuna",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_none"
+          }
+        ]
+      },
+      {
+        "key": "maternal_complications_before_delivery_other",
+        "type": "edit_text",
+        "hint": "Matatizo mengine  Kabla ya kujifungua ",
+        "openmrs_entity_id": "maternal_complications_before_delivery_other",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jibu swali hili"
+        },
+        "relevance": {
+          "step1:maternal_complications_before_delivery": {
+            "ex-checkbox": [
+              {
+                "or": ["chk_other"]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "maternal_complications_during_and_after_delivery",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "maternal_complications_during_and_after_delivery",
+        "type": "check_box",
+        "combine_checkbox_option_values": "true",
+        "label": "Matatizo wakati na baada ya kujifungua",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "exclusive": [
+          "chk_none"
+        ],
+        "options": [
+          {
+            "key": "chk_pph",
+            "text": "PPH",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_pph"
+          },
+          {
+            "key": "chk_pre_eclampsia",
+            "text": "Pre-eclampsia",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_pre_eclampsia"
+          },
+          {
+            "key": "chk_eclampsia",
+            "text": "Eclampsia",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_eclampsia"
+          },
+          {
+            "key": "chk_obstructed_labour",
+            "text": "Obstructed labour",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_obstructed_labour"
+          },
+          {
+            "key": "chk_retained_placenta",
+            "text": "Retained placenta",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_retained_placenta"
+          },
+          {
+            "key": "chk_3_degree_tear",
+            "text": "Third degree tear",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_3_degree_tear"
+          },
+          {
+            "key": "chk_ruptured_uterus",
+            "text": "Ruptured uterus",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_ruptured_uterus"
+          },
+          {
+            "key": "chk_sepsis",
+            "text": "Uambukizo/Sepsis",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_sepsis"
+          },
+          {
+            "key": "chk_other",
+            "text": "Nyingine",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_other"
+          },
+          {
+            "key": "chk_none",
+            "text": "Hakuna",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_none"
+          }
+        ]
+      },
+      {
+        "key": "maternal_complications_during_and_after_delivery_other",
+        "type": "edit_text",
+        "hint": "Matatizo mengine wakati na baada ya kujifungua",
+        "openmrs_entity_id": "maternal_complications_during_and_after_delivery_other",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jibu swali hili"
+        },
+        "relevance": {
+          "step1:maternal_complications_during_and_after_delivery": {
+            "ex-checkbox": [
+              {
+                "or": ["chk_other"]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "maternal_complications_module_status",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "maternal_complications_module_status",
+        "type": "hidden",
+        "value": "PENDING"
+      }
+    ]
+  }
+}
