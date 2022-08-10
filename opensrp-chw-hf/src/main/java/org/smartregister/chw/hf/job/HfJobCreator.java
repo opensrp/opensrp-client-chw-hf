@@ -15,6 +15,7 @@ import org.smartregister.chw.hf.sync.intent.HfSyncTaskIntentService;
 import org.smartregister.job.ExtendedSyncServiceJob;
 import org.smartregister.job.ImageUploadServiceJob;
 import org.smartregister.job.LocationStructureServiceJob;
+import org.smartregister.job.P2pServiceJob;
 import org.smartregister.job.PullUniqueIdsServiceJob;
 import org.smartregister.job.SyncLocationsByLevelAndTagsServiceJob;
 import org.smartregister.job.SyncLocationsByTeamIdsJob;
@@ -68,6 +69,8 @@ public class HfJobCreator implements JobCreator {
                 return new ProcessVisitsServiceJob();
             case PncCloseDateServiceJob.TAG:
                 return new PncCloseDateServiceJob();
+            case P2pServiceJob.TAG:
+                return new P2pServiceJob();
             default:
                 Timber.d("Please create job and specify the right job tag");
                 return null;
