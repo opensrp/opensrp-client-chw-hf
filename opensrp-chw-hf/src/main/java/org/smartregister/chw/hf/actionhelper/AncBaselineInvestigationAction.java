@@ -48,7 +48,7 @@ public class AncBaselineInvestigationAction implements BaseAncHomeVisitAction.An
             boolean isKnownPositive = global.getBoolean("known_positive");
 
             String bloodGroup = CoreJsonFormUtils.getValue(jsonObject, "blood_group");
-            boolean bloodGroupCheck = !(bloodGroup.equalsIgnoreCase("Blood Group") || bloodGroup.equalsIgnoreCase("Kundi la damu"));
+            boolean bloodGroupCheck = StringUtils.isNotBlank(bloodGroup) && !(bloodGroup.equalsIgnoreCase("Blood Group") || bloodGroup.equalsIgnoreCase("Kundi la damu"));
 
             checkObject.put("glucose_in_urine", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "glucose_in_urine")));
             checkObject.put("protein_in_urine", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "protein_in_urine")));

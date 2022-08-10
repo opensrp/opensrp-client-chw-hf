@@ -60,7 +60,7 @@ public class AncLabTestAction implements BaseAncHomeVisitAction.AncHomeVisitActi
             boolean hivTestComplete = global.getBoolean("hiv_test_complete");
 
             String bloodGroup = CoreJsonFormUtils.getValue(jsonObject, "blood_group");
-            boolean bloodGroupCheck = !(bloodGroup.equalsIgnoreCase("Blood Group") || bloodGroup.equalsIgnoreCase("Kundi la damu"));
+            boolean bloodGroupCheck = StringUtils.isNotBlank(bloodGroup) && !(bloodGroup.equalsIgnoreCase("Blood Group") || bloodGroup.equalsIgnoreCase("Kundi la damu"));
 
             String hivStatus = global.getString("hiv_status");
             int gestAge = global.getInt("gestational_age");
