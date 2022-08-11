@@ -1313,6 +1313,15 @@ indicators:
                         AND (date(efm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
+  - key: "ld-6b-35+"
+    description: "Matatizo wakati na baada ya kujifungua Pre eclampsia"
+    indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                      WHERE elpc.maternal_complications_during_and_after_delivery LIKE '%chk_pre_eclampsia%'
+                        AND (date(efm.dob, '+35 years') <= date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
   - key: "ld-6c-35+"
     description: "Matatizo wakati na baada ya kujifungua Eclampsia"
     indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
@@ -1370,6 +1379,15 @@ indicators:
                       WHERE elpc.maternal_complications_during_and_after_delivery LIKE '%chk_obstructed_labour%'
                         AND (date(efm.dob, '+30 years') <= date('now'))
                         AND (date(efm.dob, '+35 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
+  - key: "ld-6d-35+"
+    description: "Matatizo wakati na baada ya kujifungua Obstructed Labour"
+    indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                      WHERE elpc.maternal_complications_during_and_after_delivery LIKE '%chk_obstructed_labour%'
+                        AND (date(efm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
   - key: "ld-6e-10-14"
@@ -1487,7 +1505,7 @@ indicators:
                       FROM ec_ld_postpartum_care elpc
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
                       WHERE elpc.maternal_complications_during_and_after_delivery LIKE '%chk_3_degree_tear%'
-                        AND (date(efm.dob, '+35+ years') <= date('now'))
+                        AND (date(efm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
   - key: "ld-6g-10-14"
