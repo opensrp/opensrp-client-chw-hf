@@ -1,26 +1,8 @@
 package org.smartregister.chw.hf.interactor;
 
-import static org.smartregister.chw.anc.util.Constants.TABLES.EC_CHILD;
-import static org.smartregister.chw.anc.util.DBConstants.KEY.RELATIONAL_ID;
-import static org.smartregister.chw.anc.util.JsonFormUtils.updateFormField;
-import static org.smartregister.chw.hf.interactor.AncRegisterInteractor.populatePNCForm;
-import static org.smartregister.chw.hf.utils.Constants.Events.HEI_REGISTRATION;
-import static org.smartregister.chw.hf.utils.Constants.Events.LD_POST_DELIVERY_MOTHER_MANAGEMENT;
-import static org.smartregister.chw.hf.utils.Constants.HIV_STATUS.POSITIVE;
-import static org.smartregister.chw.hf.utils.Constants.HeiHIVTestAtAge.AT_BIRTH;
-import static org.smartregister.chw.hf.utils.Constants.TableName.HEI;
-import static org.smartregister.chw.hf.utils.Constants.TableName.HEI_FOLLOWUP;
-import static org.smartregister.chw.hf.utils.JsonFormUtils.ENCOUNTER_TYPE;
-import static org.smartregister.util.JsonFormUtils.FIELDS;
-import static org.smartregister.util.JsonFormUtils.KEY;
-import static org.smartregister.util.JsonFormUtils.VALUE;
-
 import android.content.ContentValues;
 import android.content.Context;
-import android.os.Build;
 import android.util.Pair;
-
-import androidx.annotation.RequiresApi;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.Triple;
@@ -29,6 +11,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.AllConstants;
 import org.smartregister.chw.anc.AncLibrary;
+import org.smartregister.chw.anc.util.AppExecutors;
 import org.smartregister.chw.anc.util.NCUtils;
 import org.smartregister.chw.anc.util.VisitUtils;
 import org.smartregister.chw.core.utils.CoreConstants;
@@ -36,7 +19,6 @@ import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.actionhelper.MaternalComplicationLabourActionHelper;
-import org.smartregister.chw.hf.actionhelper.MotherStatusActionHelper;
 import org.smartregister.chw.hf.actionhelper.PostDeliveryFamilyPlanningActionHelper;
 import org.smartregister.chw.hf.actionhelper.PostDeliveryObservationActionHelper;
 import org.smartregister.chw.hf.utils.Constants;
@@ -75,16 +57,106 @@ import java.util.Map;
 
 import timber.log.Timber;
 
+import static org.smartregister.chw.anc.util.Constants.TABLES.EC_CHILD;
+import static org.smartregister.chw.anc.util.DBConstants.KEY.RELATIONAL_ID;
+import static org.smartregister.chw.anc.util.JsonFormUtils.updateFormField;
+import static org.smartregister.chw.hf.interactor.AncRegisterInteractor.populatePNCForm;
+import static org.smartregister.chw.hf.utils.Constants.Events.HEI_REGISTRATION;
+import static org.smartregister.chw.hf.utils.Constants.Events.LD_POST_DELIVERY_MOTHER_MANAGEMENT;
+import static org.smartregister.chw.hf.utils.Constants.HIV_STATUS.POSITIVE;
+import static org.smartregister.chw.hf.utils.Constants.HeiHIVTestAtAge.AT_BIRTH;
+import static org.smartregister.chw.hf.utils.Constants.TableName.HEI;
+import static org.smartregister.chw.hf.utils.Constants.TableName.HEI_FOLLOWUP;
+import static org.smartregister.chw.hf.utils.JsonFormUtils.ENCOUNTER_TYPE;
+import static org.smartregister.util.JsonFormUtils.FIELDS;
+import static org.smartregister.util.JsonFormUtils.KEY;
+import static org.smartregister.util.JsonFormUtils.VALUE;
+
 /**
  * Created by Kassim Sheghembe on 2022-05-16
  */
 public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisitInteractor {
 
-    protected Context context;
-    final LinkedHashMap<String, BaseLDVisitAction> actionList = new LinkedHashMap<>();
     private static MemberObject memberObject;
     private static boolean isEdit = false;
+    final LinkedHashMap<String, BaseLDVisitAction> actionList = new LinkedHashMap<>();
+    protected Context context;
     Map<String, List<VisitDetail>> details = null;
+
+    public static JSONObject populateHeiFollowupForm(JSONObject form, JSONArray fields, String familyBaseEntityId) {
+        try {
+            if (form != null) {
+                form.put(RELATIONAL_ID, familyBaseEntityId);
+
+                JSONObject stepOne = form.getJSONObject(org.smartregister.chw.anc.util.JsonFormUtils.STEP1);
+                JSONArray jsonArray = stepOne.getJSONArray(FIELDS);
+
+                if (getRiskStatus(fields).equalsIgnoreCase("high")) {
+                    updateFormField(jsonArray, "test_at_age", AT_BIRTH);
+                    updateFormField(jsonArray, "actual_age", "0d");
+                    updateFormField(jsonArray, "type_of_hiv_test", "DNA PCR");
+                }
+
+                JSONObject jsonObject;
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    jsonObject = jsonArray.getJSONObject(i);
+                    String value = getObValue(fields, jsonObject.optString(KEY));
+                    if (value != null) {
+                        jsonObject.put(VALUE, value);
+                    }
+                }
+
+                return form;
+            }
+        } catch (Exception e) {
+            Timber.e(e);
+        }
+
+        return null;
+    }
+
+    private static String getRiskStatus(JSONArray obs) throws JSONException {
+        int size = obs.length();
+        for (int i = 0; i < size; i++) {
+            JSONObject checkObj = obs.getJSONObject(i);
+            if (checkObj.getString("fieldCode").equalsIgnoreCase("risk_category")) {
+                JSONArray values = checkObj.getJSONArray("values");
+                if (values != null) {
+                    return values.getString(0);
+                }
+            }
+        }
+        return null;
+    }
+
+    private static String getObValue(JSONArray obs, String key) throws JSONException {
+        String valueString = null;
+        if (obs.length() > 0) {
+            for (int i = 0; i < obs.length(); i++) {
+                JSONObject jsonObject = obs.getJSONObject(i);
+                if (jsonObject.getString("fieldCode").equalsIgnoreCase(key)) {
+                    JSONArray values = jsonObject.getJSONArray("values");
+                    if (values != null) {
+                        valueString = values.getString(0);
+                    }
+                }
+            }
+        }
+        return valueString;
+    }
+
+    public static String ordinal(int i) {
+        String[] suffixes = new String[]{"th", "st", "nd", "rd", "th", "th", "th", "th", "th", "th"};
+        switch (i % 100) {
+            case 11:
+            case 12:
+            case 13:
+                return i + "th";
+            default:
+                return i + suffixes[i % 10];
+
+        }
+    }
 
     @Override
     public MemberObject getMemberClient(String memberID) {
@@ -330,38 +402,6 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         }
     }
 
-    public static JSONObject populateHeiFollowupForm(JSONObject form, JSONArray fields, String familyBaseEntityId) {
-        try {
-            if (form != null) {
-                form.put(RELATIONAL_ID, familyBaseEntityId);
-
-                JSONObject stepOne = form.getJSONObject(org.smartregister.chw.anc.util.JsonFormUtils.STEP1);
-                JSONArray jsonArray = stepOne.getJSONArray(FIELDS);
-
-                if (getRiskStatus(fields).equalsIgnoreCase("high")) {
-                    updateFormField(jsonArray, "test_at_age", AT_BIRTH);
-                    updateFormField(jsonArray, "actual_age", "0d");
-                    updateFormField(jsonArray, "type_of_hiv_test", "DNA PCR");
-                }
-
-                JSONObject jsonObject;
-                for (int i = 0; i < jsonArray.length(); i++) {
-                    jsonObject = jsonArray.getJSONObject(i);
-                    String value = getObValue(fields, jsonObject.optString(KEY));
-                    if (value != null) {
-                        jsonObject.put(VALUE, value);
-                    }
-                }
-
-                return form;
-            }
-        } catch (Exception e) {
-            Timber.e(e);
-        }
-
-        return null;
-    }
-
     private JSONObject populateChildRegistrationForm(JSONObject form, JSONArray obs, String motherId, String familyId) {
         try {
             form.put(DBConstants.KEY.RELATIONAL_ID, familyId);
@@ -534,20 +574,6 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         return false;
     }
 
-    private static String getRiskStatus(JSONArray obs) throws JSONException {
-        int size = obs.length();
-        for (int i = 0; i < size; i++) {
-            JSONObject checkObj = obs.getJSONObject(i);
-            if (checkObj.getString("fieldCode").equalsIgnoreCase("risk_category")) {
-                JSONArray values = checkObj.getJSONArray("values");
-                if (values != null) {
-                    return values.getString(0);
-                }
-            }
-        }
-        return null;
-    }
-
     private String getDeliveryDateString(JSONArray obs) throws JSONException {
         String deliveryDateString = null;
         if (obs.length() > 0) {
@@ -562,22 +588,6 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
             }
         }
         return deliveryDateString;
-    }
-
-    private static String getObValue(JSONArray obs, String key) throws JSONException {
-        String valueString = null;
-        if (obs.length() > 0) {
-            for (int i = 0; i < obs.length(); i++) {
-                JSONObject jsonObject = obs.getJSONObject(i);
-                if (jsonObject.getString("fieldCode").equalsIgnoreCase(key)) {
-                    JSONArray values = jsonObject.getJSONArray("values");
-                    if (values != null) {
-                        valueString = values.getString(0);
-                    }
-                }
-            }
-        }
-        return valueString;
     }
 
     private boolean isChildAlive(JSONArray obs) throws JSONException {
@@ -620,16 +630,37 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         return gender;
     }
 
-    public static String ordinal(int i) {
-        String[] suffixes = new String[]{"th", "st", "nd", "rd", "th", "th", "th", "th", "th", "th"};
-        switch (i % 100) {
-            case 11:
-            case 12:
-            case 13:
-                return i + "th";
-            default:
-                return i + suffixes[i % 10];
+    private class MotherStatusActionHelper extends org.smartregister.chw.hf.actionhelper.MotherStatusActionHelper {
+        private final BaseLDVisitContract.InteractorCallBack callBack;
 
+        public MotherStatusActionHelper(Context context, String baseEntityId, LinkedHashMap<String, BaseLDVisitAction> actionList, BaseLDVisitContract.InteractorCallBack callBack, boolean isEdit) {
+            super(context, baseEntityId, actionList, callBack, isEdit);
+            this.callBack = callBack;
+        }
+
+        @Override
+        public String postProcess(String jsonPayload) {
+            if (StringUtils.isNotBlank(status) && !status.equalsIgnoreCase("alive")) {
+                actionList.remove(context.getString(R.string.ld_post_delivery_family_planning));
+                actionList.remove(context.getString(R.string.ld_post_delivery_observation_action_title));
+            } else {
+                if (!actionList.containsKey(context.getString(R.string.ld_post_delivery_observation_action_title))) {
+                    try {
+                        evaluatePostDeliveryObservation();
+                    } catch (BaseLDVisitAction.ValidationException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (!actionList.containsKey(context.getString(R.string.ld_post_delivery_family_planning))) {
+                    try {
+                        evaluateFamilyPlanning();
+                    } catch (BaseLDVisitAction.ValidationException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+            new AppExecutors().mainThread().execute(() -> callBack.preloadActions(actionList));
+            return super.postProcess(jsonPayload);
         }
     }
 }

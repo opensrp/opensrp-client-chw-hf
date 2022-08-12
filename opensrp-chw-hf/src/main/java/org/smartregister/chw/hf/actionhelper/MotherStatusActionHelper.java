@@ -38,7 +38,7 @@ import timber.log.Timber;
  */
 public class MotherStatusActionHelper implements BaseLDVisitAction.LDVisitActionHelper {
 
-    private String status;
+    protected String status;
     private String cause_of_death;
     private String time_of_death;
     private String delivery_place;
