@@ -1078,12 +1078,15 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "resuscitation",
         "label": "Resuscitation",
-        "text_color": "#000000",
-        "type": "native_radio",
+        "type": "check_box",
+        "combine_checkbox_option_values": "true",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
         "options": [
           {
             "key": "no_resuscitation",
             "text": "No Resuscitation",
+            "value": false,
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no_resuscitation"
@@ -1091,6 +1094,7 @@
           {
             "key": "suction_only",
             "text": "Suction Only",
+            "value": false,
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "suction_only"
@@ -1098,6 +1102,7 @@
           {
             "key": "suction_and_bag_mask",
             "text": "Suction and Bag Mask",
+            "value": false,
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "suction_and_bag_mask"
@@ -1105,6 +1110,7 @@
           {
             "key": "stimulation",
             "text": "Stimulation",
+            "value": false,
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "stimulation"
