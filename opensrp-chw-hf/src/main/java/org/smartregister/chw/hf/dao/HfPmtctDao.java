@@ -431,9 +431,9 @@ public class HfPmtctDao extends CorePmtctDao {
 
     public static Date getNextFacilityVisitDate(String baseEntityID) {
         //get next followup visit date
-        String sql = "SELECT next_facility_visit_date FROM ec_pmtct_followup WHERE followup_status <> 'lost_to_followup' AND followup_status <> 'transfer_out' AND entity_id = '" + baseEntityID + "'"
-                + " ORDER BY visit_number DESC "
-                + "LIMIT 1";
+        String sql = "SELECT next_facility_visit_date FROM ec_pmtct_registration " +
+                "     WHERE followup_status <> 'lost_to_followup' " +
+                "     AND followup_status <> 'transfer_out' AND base_entity_id = '" + baseEntityID + "'";
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "next_facility_visit_date");
 
         List<String> res = readData(sql, dataMap);

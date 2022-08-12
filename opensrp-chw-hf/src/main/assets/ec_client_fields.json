@@ -57,6 +57,14 @@
             "field": "obs.fieldCode",
             "concept": "next_facility_visit_date"
           }
+        },
+        {
+          "column_name": "followup_status",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "followup_status"
+          }
         }
       ]
     },
