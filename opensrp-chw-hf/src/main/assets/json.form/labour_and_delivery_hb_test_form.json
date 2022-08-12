@@ -147,6 +147,21 @@
         }
       },
       {
+        "key": "prompt_to_provide_management",
+        "type": "toaster_notes",
+        "text": "Provide management according to SOP and standard guideline",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:management_provided_for_hb_level": {
+            "type": "string",
+            "ex": "equalTo(., \"no\")"
+          }
+        }
+      },
+      {
         "key": "prompt_for_moderate_anaemia_management",
         "type": "toaster_notes",
         "text": "Manage the mild anaemia according to standard guidelines",

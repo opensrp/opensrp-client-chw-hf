@@ -113,6 +113,13 @@
             "openmrs_entity_id": "progestogen_only_pills"
           },
           {
+            "key": "condom",
+            "text": "Condom",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "condom"
+          },
+          {
             "key": "none",
             "text": "None",
             "value": false,
