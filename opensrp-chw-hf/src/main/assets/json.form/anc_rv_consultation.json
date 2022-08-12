@@ -514,7 +514,7 @@
         "relevance": {
           "step1:pulse_rate": {
             "type": "numeric",
-            "ex": "lessThan(.,\"70\")"
+            "ex": "lessThan(.,\"60\")"
           }
         }
       },
@@ -529,7 +529,7 @@
         "relevance": {
           "step1:pulse_rate": {
             "type": "numeric",
-            "ex": "greaterThan(.,\"140\")"
+            "ex": "greaterThan(.,\"100\")"
           }
         }
       },
