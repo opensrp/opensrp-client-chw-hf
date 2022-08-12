@@ -43,7 +43,7 @@
     "encounter_location": ""
   },
   "step1": {
-    "title": "Obstetric History",
+    "title": "Historia ya Uzazi",
     "fields": [
       {
         "key": "gravida",

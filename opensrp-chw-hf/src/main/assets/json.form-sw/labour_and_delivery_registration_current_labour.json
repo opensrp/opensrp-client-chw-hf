@@ -43,7 +43,7 @@
     "encounter_location": ""
   },
   "step1": {
-    "title": "Current Labour History",
+    "title": "Historia ya Sasa ya Labour",
     "fields": [
       {
         "key": "labour_onset_date",
