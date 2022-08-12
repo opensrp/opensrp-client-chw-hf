@@ -29,6 +29,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.AllConstants;
 import org.smartregister.chw.anc.AncLibrary;
+import org.smartregister.chw.anc.util.AppExecutors;
 import org.smartregister.chw.anc.util.NCUtils;
 import org.smartregister.chw.anc.util.VisitUtils;
 import org.smartregister.chw.core.utils.CoreConstants;
@@ -193,6 +194,39 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
     private BaseLDVisitAction.Builder getBuilder(String title) {
         return new BaseLDVisitAction.Builder(context, title);
+    }
+
+    private class MotherStatusActionHelper extends org.smartregister.chw.hf.actionhelper.MotherStatusActionHelper{
+        private final BaseLDVisitContract.InteractorCallBack callBack;
+        public MotherStatusActionHelper(Context context, String baseEntityId, LinkedHashMap<String, BaseLDVisitAction> actionList, BaseLDVisitContract.InteractorCallBack callBack, boolean isEdit) {
+            super(context, baseEntityId, actionList, callBack, isEdit);
+            this.callBack = callBack;
+        }
+
+        @Override
+        public String postProcess(String jsonPayload) {
+            if(StringUtils.isNotBlank(status) && !status.equalsIgnoreCase("alive")){
+                actionList.remove(context.getString(R.string.ld_post_delivery_family_planning));
+                actionList.remove(context.getString(R.string.ld_post_delivery_observation_action_title));
+            }else{
+                if(!actionList.containsKey(context.getString(R.string.ld_post_delivery_observation_action_title))){
+                    try {
+                        evaluatePostDeliveryObservation();
+                    } catch (BaseLDVisitAction.ValidationException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if(!actionList.containsKey(context.getString(R.string.ld_post_delivery_family_planning))){
+                    try {
+                        evaluateFamilyPlanning();
+                    } catch (BaseLDVisitAction.ValidationException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+            new AppExecutors().mainThread().execute(() -> callBack.preloadActions(actionList));
+            return super.postProcess(jsonPayload);
+        }
     }
 
     @Override
