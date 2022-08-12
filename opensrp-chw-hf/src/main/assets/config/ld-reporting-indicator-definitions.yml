@@ -1322,12 +1322,62 @@ indicators:
                         AND (date(efm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
+  - key: "ld-6c-10-14"
+    description: "Matatizo wakati na baada ya kujifungua Eclampsia"
+    indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                      WHERE elpc.maternal_complications_during_and_after_delivery LIKE '%chk_eclampsia%'
+                        AND (date(efm.dob, '+10 years') <= date('now'))
+                        AND (date(efm.dob, '+15 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
+  - key: "ld-6c-15-19"
+    description: "Matatizo wakati na baada ya kujifungua Eclampsia"
+    indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                      WHERE elpc.maternal_complications_during_and_after_delivery LIKE '%chk_eclampsia%'
+                        AND (date(efm.dob, '+15 years') <= date('now'))
+                        AND (date(efm.dob, '+20 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
+  - key: "ld-6c-20-24"
+    description: "Matatizo wakati na baada ya kujifungua Eclampsia"
+    indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                      WHERE elpc.maternal_complications_during_and_after_delivery LIKE '%chk_eclampsia%'
+                        AND (date(efm.dob, '+20 years') <= date('now'))
+                        AND (date(efm.dob, '+25 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
+  - key: "ld-6c-25-29"
+    description: "Matatizo wakati na baada ya kujifungua Eclampsia"
+    indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                      WHERE elpc.maternal_complications_during_and_after_delivery LIKE '%chk_eclampsia%'
+                        AND (date(efm.dob, '+25 years') <= date('now'))
+                        AND (date(efm.dob, '+30 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
+  - key: "ld-6c-30-34"
+    description: "Matatizo wakati na baada ya kujifungua Eclampsia"
+    indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
+                      FROM ec_ld_postpartum_care elpc
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
+                      WHERE elpc.maternal_complications_during_and_after_delivery LIKE '%chk_eclampsia%'
+                        AND (date(efm.dob, '+30 years') <= date('now'))
+                        AND (date(efm.dob, '+35 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
   - key: "ld-6c-35+"
     description: "Matatizo wakati na baada ya kujifungua Eclampsia"
     indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
                       FROM ec_ld_postpartum_care elpc
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
-                      WHERE elpc.maternal_complications_during_and_after_delivery LIKE '%chk_pre_eclampsia%'
+                      WHERE elpc.maternal_complications_during_and_after_delivery LIKE '%chk_eclampsia%'
                         AND (date(efm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
