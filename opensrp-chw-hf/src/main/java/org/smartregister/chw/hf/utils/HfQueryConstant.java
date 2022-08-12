@@ -416,7 +416,7 @@ public interface HfQueryConstant {
             "  AND ec_family_member.base_entity_id IN (%s)\n" +
             "  AND ec_family_member.base_entity_id NOT IN (\n" +
             "    SELECT ec_anc_register.base_entity_id AS base_entity_id\n" +
-            "    FROM ec_anc_register\n" +
+            "    FROM ec_anc_register where ec_anc_register.is_closed is 0\n" +
             "    UNION ALL\n" +
             "    SELECT ec_pregnancy_outcome.base_entity_id AS base_entity_id\n" +
             "    FROM ec_pregnancy_outcome\n" +
@@ -429,10 +429,7 @@ public interface HfQueryConstant {
             "    UNION ALL\n" +
             "    SELECT ec_tb_register.base_entity_id AS base_entity_id\n" +
             "    FROM ec_tb_register\n" +
-            "    WHERE ec_tb_register.tb_case_closure_date is null\n" +
-            "    UNION ALL\n" +
-            "    SELECT ec_hiv_register.base_entity_id AS base_entity_id\n" +
-            "    FROM ec_hiv_register)\n" +
+            "    WHERE ec_tb_register.tb_case_closure_date is null)\n" +
             ")\n" +
             "ORDER BY last_interacted_with DESC;";
 }
