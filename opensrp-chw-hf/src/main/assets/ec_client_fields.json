@@ -6069,7 +6069,7 @@
           "column_name": "apgar_score_at_1_minute",
           "type": "Event",
           "json_mapping": {
-            "field": "obs.fieldCode",
+            "field": "obs.formSubmissionField",
             "formSubmissionField": "apgar_score_at_1_minute"
           }
         },
@@ -6077,7 +6077,7 @@
           "column_name": "apgar_score_at_5_minutes",
           "type": "Event",
           "json_mapping": {
-            "field": "obs.fieldCode",
+            "field": "obs.formSubmissionField",
             "formSubmissionField": "apgar_score_at_5_minutes"
           }
         },

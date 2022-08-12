@@ -254,7 +254,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                         removeUser(null, removeFamilyMemberForm, getProviderID());
                     }
                 }
-                if (isChildAlive(obs) && (StringUtils.isNotBlank(completionStatus) && completionStatus.equalsIgnoreCase("Fully Completed"))) {
+                if ((StringUtils.isNotBlank(completionStatus) && completionStatus.equalsIgnoreCase("Fully Completed"))) {
                     saveChild(memberID,memberObject.getBaseEntityId(), LDDao.getHivStatus(memberObject.getBaseEntityId()), getRiskStatus(obs), allSharedPreferences, memberObject.getFamilyBaseEntityId(), getDeliveryDateString(obs), obs);
                 }
 
@@ -300,6 +300,30 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
                 }
 
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            try {
+                JSONObject removeChildForm;
+                if(!isChildAlive(obs)){
+                    removeChildForm = getFormAsJson(
+                            Constants.JsonForm.getMarkChildAsDeceased(), childBaseEntityId, getLocationID()
+                    );
+
+                    if (removeChildForm != null) {
+                        JSONObject stepOne = removeChildForm.getJSONObject(org.smartregister.chw.anc.util.JsonFormUtils.STEP1);
+                        JSONArray jsonArray = stepOne.getJSONArray(FIELDS);
+
+
+                        // Need to get the date of delivery from the mother status format dd-MM-YYYY
+                        updateFormField(jsonArray, "dob", dob);
+                        updateFormField(jsonArray, "date_died", dob);
+                        updateFormField(jsonArray, "age_at_death","0d");
+
+                        removeUser(null, removeChildForm, getProviderID());
+                    }
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
