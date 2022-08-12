@@ -317,9 +317,9 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
 
                         // Need to get the date of delivery from the mother status format dd-MM-YYYY
-                        org.smartregister.chw.anc.util.JsonFormUtils.updateFormField(jsonArray, "dob", dob);
-                        org.smartregister.chw.anc.util.JsonFormUtils.updateFormField(jsonArray, "date_died", dob);
-                        org.smartregister.chw.anc.util.JsonFormUtils.updateFormField(jsonArray, "age_at_death","0d");
+                        updateFormField(jsonArray, "dob", dob);
+                        updateFormField(jsonArray, "date_died", dob);
+                        updateFormField(jsonArray, "age_at_death","0d");
 
                         removeUser(null, removeChildForm, getProviderID());
                     }
