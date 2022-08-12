@@ -281,6 +281,46 @@
             "ex": "equalTo(.,\"negative\")"
           }
         }
+      },
+      {
+        "key": "next_facility_visit_date",
+        "type": "hidden",
+        "openmrs_entity_id": "next_facility_visit_date",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "step1:is_transfer_in_client": {
+            "type": "string",
+            "ex": "equalTo(.,\"yes\")"
+          }
+        },
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_form_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "followup_status",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "followup_status",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "step1:is_transfer_in_client": {
+            "type": "string",
+            "ex": "equalTo(.,\"yes\")"
+          }
+        },
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_form_calculation.yml"
+            }
+          }
+        }
       }
     ]
   }
