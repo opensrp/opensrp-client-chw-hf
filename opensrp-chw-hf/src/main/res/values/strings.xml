@@ -100,8 +100,8 @@
     <string name="pmtct_counselling">Counselling given</string>
     <string name="pmtct_tb_screening">TB Screening Complete</string>
     <string name="pmtct_clinical_disease_staging">Clinical Staging of Disease is Complete</string>
-    <string name="given_arv_prescription">ARV prophylaxis Given</string>
-    <string name="not_given_arv_prescription">ARV prophylaxis Not Given</string>
+    <string name="given_arv_prescription">ARV Prescription Given</string>
+    <string name="not_given_arv_prescription">ARV Prescription Not Given</string>
     <string name="cd4_sample_collected">CD4 Sample Collected</string>
     <string name="pmtct_counselling_not_given">Counselling Not Given</string>
     <string name="pmtct_baseline_investigation_complete">Baseline Investigation Complete</string>
@@ -155,7 +155,7 @@
     <string name="pmtct_baseline_investigation_title">Baseline Investigation</string>
     <string name="cd4_sample_collection">CD4 Sample Collection</string>
     <string name="hvl_sample_collection">HVL Sample Collection</string>
-    <string name="arv_prescription_title">ARV prophylaxis</string>
+    <string name="arv_prescription_title">ARV prescription</string>
     <string name="tb_screening_title">TB Screening</string>
     <string name="pmtct_followup_status">Followup Status:</string>
     <string name="continuing_with_services">Continuing with Services</string>
