@@ -87,6 +87,10 @@
               "rules-file": "labour_and_delivery_hiv_test_relevance.yml"
             }
           }
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter the reason"
         }
       },
       {
