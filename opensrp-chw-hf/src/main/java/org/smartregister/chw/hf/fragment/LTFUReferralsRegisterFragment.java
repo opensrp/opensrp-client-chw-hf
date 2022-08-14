@@ -7,10 +7,10 @@ import org.smartregister.chw.core.fragment.BaseReferralRegisterFragment;
 import org.smartregister.chw.core.utils.Utils;
 import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
-import org.smartregister.chw.hf.activity.LTFUReferralsDetailsViewActivity;
+import org.smartregister.chw.hf.activity.ReferralsDetailsViewActivity;
 import org.smartregister.chw.hf.model.LTFUModel;
 import org.smartregister.chw.hf.presenter.ReferralFragmentPresenter;
-import org.smartregister.chw.hf.provider.LTFUReferralsRegisterProvider;
+import org.smartregister.chw.hf.provider.ReferralsRegisterProvider;
 import org.smartregister.chw.referral.domain.MemberObject;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.cursoradapter.RecyclerViewPaginatedAdapter;
@@ -41,7 +41,7 @@ public class LTFUReferralsRegisterFragment extends BaseReferralRegisterFragment 
 
     @Override
     public void initializeAdapter(Set<org.smartregister.configurableviews.model.View> visibleColumns, String tableName) {
-        LTFUReferralsRegisterProvider referralRegisterProvider = new LTFUReferralsRegisterProvider(getActivity(), registerActionHandler, paginationViewHandler);
+        ReferralsRegisterProvider referralRegisterProvider = new ReferralsRegisterProvider(getActivity(), registerActionHandler, paginationViewHandler);
         clientAdapter = new RecyclerViewPaginatedAdapter(null, referralRegisterProvider, context().commonrepository(this.tablename));
         clientAdapter.setCurrentlimit(20);
         clientsView.setAdapter(clientAdapter);
@@ -86,7 +86,7 @@ public class LTFUReferralsRegisterFragment extends BaseReferralRegisterFragment 
     }
 
     private void goToReferralsDetails(CommonPersonObjectClient client) {
-        handler.postDelayed(() -> LTFUReferralsDetailsViewActivity.startLTFUReferralsDetailsViewActivity(getActivity(), new MemberObject(client), client), 100);
+        handler.postDelayed(() -> ReferralsDetailsViewActivity.startReferralsDetailsViewActivity(getActivity(), new MemberObject(client), client), 100);
     }
 
 }

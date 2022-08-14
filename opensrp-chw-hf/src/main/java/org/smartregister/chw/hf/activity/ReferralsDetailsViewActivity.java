@@ -33,7 +33,7 @@ import java.util.Locale;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
 
-public class LTFUReferralsDetailsViewActivity extends ReferralDetailsViewActivity {
+public class ReferralsDetailsViewActivity extends ReferralDetailsViewActivity {
     private static CommonPersonObjectClient client;
     private static Task task;
     private static boolean isSuccessfulReferral = false;
@@ -54,19 +54,19 @@ public class LTFUReferralsDetailsViewActivity extends ReferralDetailsViewActivit
     private CustomFontTextView feedBackFollowupStatus;
     private CustomFontTextView referralType;
 
-    public static void startLTFUReferralsDetailsViewActivity(Activity activity, MemberObject memberObject, CommonPersonObjectClient client) {
-        Intent intent = new Intent(activity, LTFUReferralsDetailsViewActivity.class);
+    public static void startReferralsDetailsViewActivity(Activity activity, MemberObject memberObject, CommonPersonObjectClient client) {
+        Intent intent = new Intent(activity, ReferralsDetailsViewActivity.class);
         intent.putExtra(Constants.ReferralMemberObject.MEMBER_OBJECT, memberObject);
-        LTFUReferralsDetailsViewActivity.client = client;
+        ReferralsDetailsViewActivity.client = client;
         task = null;
         isSuccessfulReferral = false;
         activity.startActivity(intent);
     }
 
-    public static void startLTFUSuccessfulReferralDetailsViewActivity(Activity activity, MemberObject memberObject, CommonPersonObjectClient client, Task passedTask) {
-        Intent intent = new Intent(activity, LTFUReferralsDetailsViewActivity.class);
+    public static void startSuccessfulReferralDetailsViewActivity(Activity activity, MemberObject memberObject, CommonPersonObjectClient client, Task passedTask) {
+        Intent intent = new Intent(activity, ReferralsDetailsViewActivity.class);
         intent.putExtra(Constants.ReferralMemberObject.MEMBER_OBJECT, memberObject);
-        LTFUReferralsDetailsViewActivity.client = client;
+        ReferralsDetailsViewActivity.client = client;
         task = passedTask;
         isSuccessfulReferral = true;
         activity.startActivity(intent);

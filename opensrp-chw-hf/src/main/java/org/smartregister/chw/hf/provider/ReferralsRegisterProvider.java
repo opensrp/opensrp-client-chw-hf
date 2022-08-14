@@ -24,10 +24,10 @@ import java.util.Locale;
 
 import androidx.core.content.ContextCompat;
 
-public class LTFUReferralsRegisterProvider extends BaseReferralRegisterProvider {
+public class ReferralsRegisterProvider extends BaseReferralRegisterProvider {
     private final Context context;
 
-    public LTFUReferralsRegisterProvider(Context context, View.OnClickListener onClickListener, View.OnClickListener paginationClickListener) {
+    public ReferralsRegisterProvider(Context context, View.OnClickListener onClickListener, View.OnClickListener paginationClickListener) {
         super(context, onClickListener, paginationClickListener);
         this.context = context;
     }
