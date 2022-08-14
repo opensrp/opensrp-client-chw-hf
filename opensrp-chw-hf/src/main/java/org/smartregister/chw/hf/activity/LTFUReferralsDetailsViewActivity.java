@@ -237,8 +237,15 @@ public class LTFUReferralsDetailsViewActivity extends ReferralDetailsViewActivit
             case "tb":
                 return context.getString(R.string.ltfu_clinic_tb);
             default:
-                return key.toUpperCase();
+                return removeSquareBrackets(key);
         }
+    }
+
+    private String removeSquareBrackets(String text){
+        if(text.startsWith("[") && text.endsWith("]")){
+            return text.substring(1, text.length() - 1).toUpperCase();
+        }
+        return text.toUpperCase();
     }
 
     private String getTranslatedFollowupStatus(String key, Context context) {
