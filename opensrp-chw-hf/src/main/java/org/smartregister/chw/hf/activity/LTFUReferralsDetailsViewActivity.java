@@ -121,11 +121,14 @@ public class LTFUReferralsDetailsViewActivity extends ReferralDetailsViewActivit
         ViewGroup preManagementServicesServices = findViewById(R.id.client_pre_referral_management_layout);
         preManagementServicesServices.setVisibility(View.GONE);
         problemLayout.setVisibility(View.VISIBLE);
-        CustomFontTextView problemLabel = findViewById(R.id.client_referral_problem_label);
-        problemLabel.setText(R.string.referral_clinic);
+        MemberObject memberObject = new MemberObject(client);
+        if (memberObject.getReferralType().equalsIgnoreCase("LTFU")) {
+            CustomFontTextView problemLabel = findViewById(R.id.client_referral_problem_label);
+            problemLabel.setText(R.string.referral_clinic);
 
-        CustomFontTextView referralVillageLabel = findViewById(R.id.referral_facility_label);
-        referralVillageLabel.setText(R.string.referral_village);
+            CustomFontTextView referralVillageLabel = findViewById(R.id.referral_facility_label);
+            referralVillageLabel.setText(R.string.referral_village);
+        }
 
         obtainReferralDetails();
 
@@ -148,14 +151,14 @@ public class LTFUReferralsDetailsViewActivity extends ReferralDetailsViewActivit
         }
 
         if (followupStatus != null) {
-            feedBackFollowupStatus.setText(getTranslatedFollowupStatus(followupStatus,this));
+            feedBackFollowupStatus.setText(getTranslatedFollowupStatus(followupStatus, this));
         }
 
         if (followupStatus != null && followupStatus.equalsIgnoreCase("client_found_ready_to_return")) {
             feedBackReasonsLayout.setVisibility(View.VISIBLE);
             String reasons = LTFUFeedbackDao.getReasonsForMissedAppointment(task.getIdentifier());
-            if(reasons!=null){
-                feedBackReasons.setText(getTranslatedReasonsForMissedAppointment(reasons,this));
+            if (reasons != null) {
+                feedBackReasons.setText(getTranslatedReasonsForMissedAppointment(reasons, this));
             }
             returnDateLayout.setVisibility(View.VISIBLE);
             returnDate.setText(dateFormatter.format(LTFUFeedbackDao.getReferralAppointmentDate(task.getIdentifier())));
@@ -169,8 +172,8 @@ public class LTFUReferralsDetailsViewActivity extends ReferralDetailsViewActivit
         if (followupStatus != null && followupStatus.equalsIgnoreCase("client_not_found")) {
             feedBackReasonsLayout.setVisibility(View.VISIBLE);
             String reasons = LTFUFeedbackDao.getReasonClientNotFound(task.getIdentifier());
-            if(reasons!=null){
-                feedBackReasons.setText(getTranslatedReasonClientNotFound(reasons,this));
+            if (reasons != null) {
+                feedBackReasons.setText(getTranslatedReasonClientNotFound(reasons, this));
             }
         }
 
@@ -178,7 +181,7 @@ public class LTFUReferralsDetailsViewActivity extends ReferralDetailsViewActivit
     }
 
     private void obtainReferralDetails() {
-        //it is memberObject
+
         MemberObject memberObject = new MemberObject(client);
 
         clientReferralProblem.setText(getReferralClinic(memberObject.getProblem(), this));
@@ -221,8 +224,8 @@ public class LTFUReferralsDetailsViewActivity extends ReferralDetailsViewActivit
         }
     }
 
-    private String getReferralClinic(String key, Context context){
-        switch (key.toLowerCase()){
+    private String getReferralClinic(String key, Context context) {
+        switch (key.toLowerCase()) {
             case "ctc":
                 return context.getString(R.string.ltfu_clinic_ctc);
             case "pwid":
@@ -238,8 +241,8 @@ public class LTFUReferralsDetailsViewActivity extends ReferralDetailsViewActivit
         }
     }
 
-    private String getTranslatedFollowupStatus(String key, Context context){
-        switch (key.toLowerCase()){
+    private String getTranslatedFollowupStatus(String key, Context context) {
+        switch (key.toLowerCase()) {
             case "continuing_with_services":
                 return context.getString(R.string.ltfu_followup_status_continuing_with_services);
             case "client_found_ready_to_return":
@@ -259,8 +262,8 @@ public class LTFUReferralsDetailsViewActivity extends ReferralDetailsViewActivit
         }
     }
 
-    private String getTranslatedReasonsForMissedAppointment(String key, Context context){
-        switch (key.toLowerCase()){
+    private String getTranslatedReasonsForMissedAppointment(String key, Context context) {
+        switch (key.toLowerCase()) {
             case "client_has_forgotten":
                 return context.getString(R.string.ltfu_reasons_for_missed_appointment_client_has_forgotten);
             case "client_was_ill":
@@ -286,8 +289,8 @@ public class LTFUReferralsDetailsViewActivity extends ReferralDetailsViewActivit
         }
     }
 
-    private String getTranslatedReasonClientNotFound(String key, Context context){
-        switch (key.toLowerCase()){
+    private String getTranslatedReasonClientNotFound(String key, Context context) {
+        switch (key.toLowerCase()) {
             case "address_incorrect":
                 return context.getString(R.string.ltfu_reason_client_not_found_address_incorrect);
             case "client_relocated":
