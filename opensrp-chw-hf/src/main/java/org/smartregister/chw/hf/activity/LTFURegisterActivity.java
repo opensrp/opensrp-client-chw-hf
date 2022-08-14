@@ -40,6 +40,7 @@ public class LTFURegisterActivity extends BaseReferralRegister implements Bottom
         bottomNavigationView.getMenu().clear();
 
         bottomNavigationView.inflateMenu(R.menu.referrals_bottom_nav_menu);
+        bottomNavigationView.getMenu().removeItem(R.id.action_issued_referrals);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
     }
 
