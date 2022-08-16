@@ -728,7 +728,7 @@
       {
         "key": "prompt_for_amniotic_fluid",
         "type": "toaster_notes",
-        "text": "Take action per National guideline",
+        "text": "Manage according to standard guideline",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
