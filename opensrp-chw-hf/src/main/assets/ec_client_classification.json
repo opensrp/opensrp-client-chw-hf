@@ -677,14 +677,14 @@
           },
           {
             "field": "eventType",
-            "field_value": "Post Delivery Mother Management",
+            "field_value": "Close LD",
             "closes_case": [
               "ec_ld_confirmation"
             ]
           },
           {
             "field": "eventType",
-            "field_value": "Post Delivery Mother Management",
+            "field_value": "Close LD",
             "creates_case": [
               "ec_pregnancy_outcome"
             ]
@@ -693,6 +693,7 @@
             "field": "eventType",
             "field_value": "Post Delivery Mother Management",
             "creates_case": [
+              "ec_ld_confirmation",
               "ec_ld_postpartum_care"
             ]
           },

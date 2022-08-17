@@ -8,6 +8,7 @@ import static org.smartregister.chw.hf.utils.Constants.JsonForm.LabourAndDeliver
 import static org.smartregister.chw.hf.utils.Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryLabourStage;
 import static org.smartregister.chw.hf.utils.Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryModeOfDelivery;
 import static org.smartregister.chw.hf.utils.LDVisitUtils.shouldProcessPartographVisit;
+import static org.smartregister.util.Utils.getAllSharedPreferences;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -19,6 +20,10 @@ import android.widget.TextView;
 
 import org.joda.time.DateTime;
 import org.joda.time.Period;
+import org.json.JSONObject;
+import org.smartregister.chw.core.dao.ChwNotificationDao;
+import org.smartregister.chw.core.utils.CoreConstants;
+import org.smartregister.chw.hf.BuildConfig;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.utils.LDReferralFormUtils;
 import org.smartregister.chw.hf.utils.LDVisitUtils;
@@ -28,7 +33,10 @@ import org.smartregister.chw.ld.dao.LDDao;
 import org.smartregister.chw.ld.domain.MemberObject;
 import org.smartregister.chw.ld.domain.Visit;
 import org.smartregister.chw.ld.util.Constants;
+import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.domain.AlertStatus;
+import org.smartregister.family.util.Utils;
+import org.smartregister.repository.AllSharedPreferences;
 
 import java.util.Date;
 
@@ -143,8 +151,10 @@ public class LDProfileActivity extends BaseLDProfileActivity {
             return LDLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), Constants.EVENT_TYPE.LD_GENERAL_EXAMINATION);
         else if (currentVisitItemTitle.equalsIgnoreCase(getString(R.string.ld_mother_post_delivery_management)))
             return LDLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), LD_POST_DELIVERY_MOTHER_MANAGEMENT);
-        else
+        else if (currentVisitItemTitle.equalsIgnoreCase(getString(R.string.ld_active_management_3rd_stage)))
             return LDLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), LD_ACTIVE_MANAGEMENT_OF_3RD_STAGE_OF_LABOUR);
+        else
+            return LDLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), LD_POST_DELIVERY_MOTHER_MANAGEMENT);
     }
 
     private void setUpEditButton() {
@@ -181,6 +191,8 @@ public class LDProfileActivity extends BaseLDProfileActivity {
                 openActiveManagementStage();
             } else if (((TextView) view).getText().equals(getString(R.string.ld_mother_post_delivery_management))) {
                 openPostDeliveryManagementMother(false);
+            } else if (((TextView) view).getText().equals(getString(R.string.ld_discharge_client))) {
+                closeLDVisit(memberObject.getBaseEntityId());
             }
         } else if (id == R.id.textview_process_partograph) {
             processPartographEvent();
@@ -222,6 +234,9 @@ public class LDProfileActivity extends BaseLDProfileActivity {
             }
         } else if (LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("3") && (LDDao.getModeOfDelivery(memberObject.getBaseEntityId()) == null || (LDDao.getModeOfDelivery(memberObject.getBaseEntityId()) != null && !LDDao.getModeOfDelivery(memberObject.getBaseEntityId()).equals("cesarean")))) {
             textViewRecordLD.setText(R.string.ld_active_management_3rd_stage);
+        } else if (LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("complete")) {
+            textViewRecordLD.setText(R.string.ld_discharge_client);
+            currentVisitItemTitle = getString(R.string.ld_discharge_client);
         } else if (LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("4") || (LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("3") && (LDDao.getModeOfDelivery(memberObject.getBaseEntityId()) != null && LDDao.getModeOfDelivery(memberObject.getBaseEntityId()).equals("cesarean")))) {
             textViewRecordLD.setText(R.string.ld_mother_post_delivery_management);
             currentVisitItemTitle = getString(R.string.ld_mother_post_delivery_management);
@@ -312,6 +327,29 @@ public class LDProfileActivity extends BaseLDProfileActivity {
             Timber.e(e);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public static void closeLDVisit(String baseEntityId) {
+        AllSharedPreferences sharedPreferences = getAllSharedPreferences();
+        Event baseEvent = (Event) new Event()
+                .withBaseEntityId(baseEntityId)
+                .withEventDate(new Date())
+                .withEventType(org.smartregister.chw.hf.utils.Constants.Events.CLOSE_LD)
+                .withFormSubmissionId(org.smartregister.util.JsonFormUtils.generateRandomUUIDString())
+                .withEntityType(CoreConstants.TABLE_NAME.LABOUR_AND_DELIVERY)
+                .withProviderId(sharedPreferences.fetchRegisteredANM())
+                .withLocationId(ChwNotificationDao.getSyncLocationId(baseEntityId))
+                .withTeamId(sharedPreferences.fetchDefaultTeamId(sharedPreferences.fetchRegisteredANM()))
+                .withTeam(sharedPreferences.fetchDefaultTeam(sharedPreferences.fetchRegisteredANM()))
+                .withClientDatabaseVersion(BuildConfig.DATABASE_VERSION)
+                .withClientApplicationVersion(BuildConfig.VERSION_CODE)
+                .withDateCreated(new Date());
+        org.smartregister.chw.hf.utils.JsonFormUtils.tagSyncMetadata(Utils.context().allSharedPreferences(), baseEvent);
+        try {
+            org.smartregister.chw.anc.util.NCUtils.processEvent(baseEvent.getBaseEntityId(), new JSONObject(org.smartregister.chw.anc.util.JsonFormUtils.gson.toJson(baseEvent)));
+        } catch (Exception e) {
+            Timber.e(e);
+        }
     }
 
 }

@@ -66,6 +66,7 @@ public class Constants extends CoreConstants {
         public static final String LD_GENERAL_EXAMINATION = "LD General Examination";
         public static final String LD_ACTIVE_MANAGEMENT_OF_3RD_STAGE_OF_LABOUR = "LD Active Management of 3rd Stage Of Labour";
         public static final String LD_POST_DELIVERY_MOTHER_MANAGEMENT = "Post Delivery Mother Management";
+        public static final String CLOSE_LD = "Close LD";
     }
 
     public static final class TableName {

@@ -243,10 +243,13 @@ public class MotherStatusActionHelper implements BaseLDVisitAction.LDVisitAction
         for (int i = 0; i < numberOfChildrenBorn; i++) {
             // Get visit details for each individual child
             if (isEdit) {
-                Visit lastVisit = LDLibrary.getInstance().visitRepository().getLatestVisit(baseEntityId, "LND " + ordinal(i + 1) + " Newborn");
-
+                Visit lastVisit = LDLibrary.getInstance().visitRepository().getLatestVisit(baseEntityId, "Post Delivery Mother Management");
                 if (lastVisit != null) {
-                    details = org.smartregister.chw.ld.util.VisitUtils.getVisitGroups(LDLibrary.getInstance().visitDetailsRepository().getVisits(lastVisit.getVisitId()));
+                    Visit lastImmediateNewBornCareVisit = LDLibrary.getInstance().visitRepository().getVisitsByParentVisitId(lastVisit.getVisitId(), "LND " + ordinal(i + 1) + " Newborn").get(0);
+
+                    if (lastImmediateNewBornCareVisit != null) {
+                        details = org.smartregister.chw.ld.util.VisitUtils.getVisitGroups(LDLibrary.getInstance().visitDetailsRepository().getVisits(lastImmediateNewBornCareVisit.getVisitId()));
+                    }
                 }
             }
 

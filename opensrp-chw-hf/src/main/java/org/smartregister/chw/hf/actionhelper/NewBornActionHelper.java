@@ -341,8 +341,7 @@ public class NewBornActionHelper implements BaseLDVisitAction.LDVisitActionHelpe
                 StringUtils.isNotBlank(heart_rate) && StringUtils.isNotBlank(keep_warm) &&
                 StringUtils.isNotBlank(respiratory_rate) && StringUtils.isNotBlank(cord_bleeding) &&
                 StringUtils.isNotBlank(early_bf_1hr) && StringUtils.isNotBlank(eye_care) &&
-                StringUtils.isNotBlank(child_bcg_vaccination) && StringUtils.isNotBlank(child_opv0_vaccination) &&
-                StringUtils.isNotBlank(risk_category));
+                StringUtils.isNotBlank(child_bcg_vaccination) && StringUtils.isNotBlank(child_opv0_vaccination));
 
     }
 
@@ -359,6 +358,11 @@ public class NewBornActionHelper implements BaseLDVisitAction.LDVisitActionHelpe
 
     private boolean isRiskCategoryCompleted() {
         boolean riskCategoryCompletionStatus = false;
+
+        String hivStatus = LDDao.getHivStatus(baseEntityId);
+        if(!hivStatus.equalsIgnoreCase(POSITIVE))
+            return true;
+
         if (StringUtils.isNotBlank(risk_category)) {
             if (risk_category.equalsIgnoreCase("high")) {
                 boolean providedAztNvpSyrupCompletion = false;

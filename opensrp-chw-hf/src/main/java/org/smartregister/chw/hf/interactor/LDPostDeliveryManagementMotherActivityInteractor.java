@@ -1,5 +1,21 @@
 package org.smartregister.chw.hf.interactor;
 
+import static org.smartregister.chw.anc.util.Constants.TABLES.EC_CHILD;
+import static org.smartregister.chw.anc.util.DBConstants.KEY.RELATIONAL_ID;
+import static org.smartregister.chw.anc.util.JsonFormUtils.updateFormField;
+import static org.smartregister.chw.hf.interactor.AncRegisterInteractor.populatePNCForm;
+import static org.smartregister.chw.hf.utils.Constants.Events.HEI_REGISTRATION;
+import static org.smartregister.chw.hf.utils.Constants.Events.LD_POST_DELIVERY_MOTHER_MANAGEMENT;
+import static org.smartregister.chw.hf.utils.Constants.HIV_STATUS.POSITIVE;
+import static org.smartregister.chw.hf.utils.Constants.HeiHIVTestAtAge.AT_BIRTH;
+import static org.smartregister.chw.hf.utils.Constants.TableName.HEI;
+import static org.smartregister.chw.hf.utils.Constants.TableName.HEI_FOLLOWUP;
+import static org.smartregister.chw.hf.utils.JsonFormUtils.ENCOUNTER_TYPE;
+import static org.smartregister.chw.hf.utils.LDVisitUtils.isDeceased;
+import static org.smartregister.util.JsonFormUtils.FIELDS;
+import static org.smartregister.util.JsonFormUtils.KEY;
+import static org.smartregister.util.JsonFormUtils.VALUE;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.util.Pair;
@@ -56,21 +72,6 @@ import java.util.List;
 import java.util.Map;
 
 import timber.log.Timber;
-
-import static org.smartregister.chw.anc.util.Constants.TABLES.EC_CHILD;
-import static org.smartregister.chw.anc.util.DBConstants.KEY.RELATIONAL_ID;
-import static org.smartregister.chw.anc.util.JsonFormUtils.updateFormField;
-import static org.smartregister.chw.hf.interactor.AncRegisterInteractor.populatePNCForm;
-import static org.smartregister.chw.hf.utils.Constants.Events.HEI_REGISTRATION;
-import static org.smartregister.chw.hf.utils.Constants.Events.LD_POST_DELIVERY_MOTHER_MANAGEMENT;
-import static org.smartregister.chw.hf.utils.Constants.HIV_STATUS.POSITIVE;
-import static org.smartregister.chw.hf.utils.Constants.HeiHIVTestAtAge.AT_BIRTH;
-import static org.smartregister.chw.hf.utils.Constants.TableName.HEI;
-import static org.smartregister.chw.hf.utils.Constants.TableName.HEI_FOLLOWUP;
-import static org.smartregister.chw.hf.utils.JsonFormUtils.ENCOUNTER_TYPE;
-import static org.smartregister.util.JsonFormUtils.FIELDS;
-import static org.smartregister.util.JsonFormUtils.KEY;
-import static org.smartregister.util.JsonFormUtils.VALUE;
 
 /**
  * Created by Kassim Sheghembe on 2022-05-16
@@ -219,6 +220,9 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
     }
 
     private void evaluatePostDeliveryObservation() throws BaseLDVisitAction.ValidationException {
+        if (details != null && details.containsKey("status") && details.get("status").get(0).getDetails().equalsIgnoreCase("died")) {
+            return;
+        }
         String title = context.getString(R.string.ld_post_delivery_observation_action_title);
         PostDeliveryObservationActionHelper actionHelper = new PostDeliveryObservationActionHelper();
         BaseLDVisitAction action = getBuilder(title)
@@ -248,6 +252,9 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
     }
 
     private void evaluateFamilyPlanning() throws BaseLDVisitAction.ValidationException {
+        if (details != null && details.containsKey("status") && details.get("status").get(0).getDetails().equalsIgnoreCase("died")) {
+            return;
+        }
         String title = context.getString(R.string.ld_post_delivery_family_planning);
 
         PostDeliveryFamilyPlanningActionHelper actionHelper = new PostDeliveryFamilyPlanningActionHelper();
@@ -308,7 +315,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
                 String completionStatus = getObValue(obs, "newborn_stage_four_module_status");
 
-                JSONObject removeFamilyMemberForm = new JSONObject();
+                JSONObject removeFamilyMemberForm;
                 if (isDeceased(obs)) {
                     removeFamilyMemberForm = getFormAsJson(
                             CoreConstants.JSON_FORM.getFamilyDetailsRemoveMember(), memberID, getLocationID()
@@ -327,10 +334,10 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                     }
                 }
                 if ((StringUtils.isNotBlank(completionStatus) && completionStatus.equalsIgnoreCase("Fully Completed"))) {
-                    saveChild(memberID,memberObject.getBaseEntityId(), LDDao.getHivStatus(memberObject.getBaseEntityId()), getRiskStatus(obs), allSharedPreferences, memberObject.getFamilyBaseEntityId(), getDeliveryDateString(obs), obs);
+                    saveChild(memberID, memberObject.getBaseEntityId(), LDDao.getHivStatus(memberObject.getBaseEntityId()), getRiskStatus(obs), allSharedPreferences, memberObject.getFamilyBaseEntityId(), getDeliveryDateString(obs), obs);
                 }
 
-                LDVisitUtils.processVisits(memberID, false);
+                LDVisitUtils.processVisits(memberObject.getBaseEntityId(), false);
             }
         } catch (Exception e) {
             Timber.e(e);
@@ -378,7 +385,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
             try {
                 JSONObject removeChildForm;
-                if(!isChildAlive(obs)){
+                if (!isChildAlive(obs)) {
                     removeChildForm = getFormAsJson(
                             Constants.JsonForm.getMarkChildAsDeceased(), childBaseEntityId, getLocationID()
                     );
@@ -391,7 +398,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                         // Need to get the date of delivery from the mother status format dd-MM-YYYY
                         updateFormField(jsonArray, "dob", dob);
                         updateFormField(jsonArray, "date_died", dob);
-                        updateFormField(jsonArray, "age_at_death","0d");
+                        updateFormField(jsonArray, "age_at_death", "0d");
 
                         removeUser(null, removeChildForm, getProviderID());
                     }
@@ -560,20 +567,6 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         return org.smartregister.Context.getInstance().allSharedPreferences().fetchRegisteredANM();
     }
 
-    private boolean isDeceased(JSONArray obs) throws JSONException {
-        int size = obs.length();
-        for (int i = 0; i < size; i++) {
-            JSONObject checkObj = obs.getJSONObject(i);
-            if (checkObj.getString("fieldCode").equalsIgnoreCase("status")) {
-                JSONArray values = checkObj.getJSONArray("values");
-                if (values != null) {
-                    return values.get(0).equals("deceased");
-                }
-            }
-        }
-        return false;
-    }
-
     private String getDeliveryDateString(JSONArray obs) throws JSONException {
         String deliveryDateString = null;
         if (obs.length() > 0) {
@@ -662,5 +655,12 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
             new AppExecutors().mainThread().execute(() -> callBack.preloadActions(actionList));
             return super.postProcess(jsonPayload);
         }
+    }
+
+    protected String getParentVisitEventID(Visit visit, String parentEventType) {
+        if (visit.getVisitType().contains("Newborn"))
+            return visitRepository().getParentVisitEventID(memberObject.getBaseEntityId(), parentEventType, visit.getDate());
+        else
+            return super.getParentVisitEventID(visit, parentEventType);
     }
 }

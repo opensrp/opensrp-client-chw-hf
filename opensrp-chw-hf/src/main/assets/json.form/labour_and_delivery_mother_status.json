@@ -306,6 +306,14 @@
         "openmrs_entity_id": "labour_duration",
         "label": "Labour information/conditions",
         "type": "hidden"
+      },
+      {
+        "key": "labour_stage",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "labour_stage",
+        "type": "hidden",
+        "value": "complete"
       }
     ]
   }

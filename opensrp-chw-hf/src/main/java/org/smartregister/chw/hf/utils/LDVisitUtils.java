@@ -140,13 +140,22 @@ public class LDVisitUtils extends VisitUtils {
 
                 }
 
-                if (motherObservationModuleStatus != null && motherStatusCompletionStatus != null && maternalComplicationsModuleStatus != null) {
-                    if (motherStatusCompletionStatus.equalsIgnoreCase("Fully Completed") &&
-                            motherObservationModuleStatus.equalsIgnoreCase("Fully Completed") &&
-                            maternalComplicationsModuleStatus.equalsIgnoreCase("Fully Completed") &&
-                            familyPlanningModuleStatus.equalsIgnoreCase("Fully Completed") && childVisitsCompletionStatus) {
-                        ldVisits.add(visit);
-                    }
+                if (isDeceased(obs) &&
+                        motherStatusCompletionStatus != null &&
+                        maternalComplicationsModuleStatus != null &&
+                        motherStatusCompletionStatus.equalsIgnoreCase("Fully Completed") &&
+                        maternalComplicationsModuleStatus.equalsIgnoreCase("Fully Completed") &&
+                        childVisitsCompletionStatus) {
+                    ldVisits.add(visit);
+                } else if (motherStatusCompletionStatus != null &&
+                        maternalComplicationsModuleStatus != null &&
+                        motherObservationModuleStatus != null &&
+                        familyPlanningModuleStatus != null &&
+                        motherStatusCompletionStatus.equalsIgnoreCase("Fully Completed") &&
+                        motherObservationModuleStatus.equalsIgnoreCase("Fully Completed") &&
+                        maternalComplicationsModuleStatus.equalsIgnoreCase("Fully Completed") &&
+                        familyPlanningModuleStatus.equalsIgnoreCase("Fully Completed") && childVisitsCompletionStatus) {
+                    ldVisits.add(visit);
                 }
 
             } else if (visit.getVisitType().contains("LND") &&
@@ -221,6 +230,18 @@ public class LDVisitUtils extends VisitUtils {
         boolean hasContractionEveryHalfAnHour = computeCompletionStatus(obs, "contraction_every_half_hour_time");
 
         return hasPartographDate && hasPartographTime && (hasRespiratoryRate || hasPulseRate || hasAmnioticFluid || hasFetalHeartRate || hasTemperature || hasSystolic || hasDiastolic || hasUrineProtein || hasUrineAcetone || hasUrineVolume || hasCervixDilation || hasDescentPresentingPart || hasContractionEveryHalfHourFrequency || hasContractionEveryHalfAnHour || hasMolding);
+    }
+
+    public static boolean isDeceased(JSONArray obs) throws JSONException {
+        int size = obs.length();
+        for (int i = 0; i < size; i++) {
+            JSONObject checkObj = obs.getJSONObject(i);
+            if (checkObj.getString("fieldCode").equalsIgnoreCase("status")) {
+                JSONArray values = checkObj.getJSONArray("values");
+                return values.get(0).equals("deceased") || values.get(0).equals("died");
+            }
+        }
+        return false;
     }
 
 }
