@@ -38,15 +38,14 @@
 
             <TextView
                 android:id="@+id/login_title_text_view"
+                android:fontFamily="@font/google_sans_bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:gravity="center_horizontal"
                 android:text="@string/login_title"
                 android:textColor="#272727"
-                android:textSize="@dimen/login_title_text_size"
-                android:textStyle="bold"
-                android:typeface="sans" />
+                android:textSize="@dimen/login_title_text_size" />
 
             <TextView
                 android:id="@+id/login_build_text_view"
@@ -55,6 +54,7 @@
                 android:layout_marginBottom="5dp"
                 android:gravity="center_horizontal"
                 android:text="@string/app_version"
+                android:fontFamily="@font/google_sans_regular"
                 android:textColor="#999999"
                 android:textSize="@dimen/login_build_text_view_textSize" />
 
@@ -80,6 +80,7 @@
                 android:cursorVisible="true"
                 android:ems="10"
                 android:hint="@string/username"
+                android:fontFamily="@font/google_sans_regular"
                 android:imeOptions="actionNext"
                 android:inputType="text"
                 android:lines="1"
@@ -98,6 +99,7 @@
                 android:layout_marginTop="15dp"
                 android:layout_weight="8"
                 android:background="@drawable/rounded_corner_edit_text_bg"
+                android:fontFamily="@font/google_sans_regular"
                 android:cursorVisible="true"
                 android:ems="10"
                 android:hint="@string/password"
@@ -133,6 +135,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@id/login_show_password_checkbox"
+                    android:fontFamily="@font/google_sans_regular"
                     android:text="@string/show_password_text"
                     android:textColor="#585858"
                     android:textSize="@dimen/login_edit_text_textSize" />
@@ -146,6 +149,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_weight="8"
                 android:background="@drawable/login_button_bg"
+                android:fontFamily="@font/google_sans_bold"
                 android:ems="10"
                 android:shadowColor="#ffffff"
                 android:shadowDx="0"
