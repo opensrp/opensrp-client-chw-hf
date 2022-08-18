@@ -90,10 +90,17 @@ condition: "step1_risk_category != ''"
 actions:
   - "calculation = 0"
 ---
+name: step1_delivery_date
+description: delivery_date calculation
+priority: 1
+condition: "true"
+actions:
+  - "calculation = global_number_of_children_born == 1 ? global_delivery_date : step1_child_delivery_date"
+---
 name: step1_next_facility_visit_date
 description: next_facility_visit_date calculation
-priority: 1
-condition: "step1_delivery_date != ''"
+priority: 2
+condition: "step1_delivery_date != '' && step1_delivery_date != '0'"
 actions:
   - "calculation = helper.addDuration(step1_delivery_date, '6w')"
 ---
@@ -110,13 +117,6 @@ priority: 1
 condition: "step1_reasons_for_not_keeping_the_baby_warm_skin_to_skin_for_low_apgar_score != '' || step1_reasons_for_not_keeping_the_baby_warm_skin_to_skin_for_normal_apgar_score != ''"
 actions:
   - "calculation = step1_reasons_for_not_keeping_the_baby_warm_skin_to_skin_for_low_apgar_score != ''? step1_reasons_for_not_keeping_the_baby_warm_skin_to_skin_for_low_apgar_score :  step1_reasons_for_not_keeping_the_baby_warm_skin_to_skin_for_normal_apgar_score"
----
-name: step1_delivery_date
-description: delivery_date calculation
-priority: 1
-condition: "true"
-actions:
-  - "calculation = global_number_of_children_born == 1 ? global_delivery_date : step1_child_delivery_date"
 ---
 name: step1_delivery_time
 description: delivery_time calculation
