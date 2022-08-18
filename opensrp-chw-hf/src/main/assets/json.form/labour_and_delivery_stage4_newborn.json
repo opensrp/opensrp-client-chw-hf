@@ -1160,9 +1160,10 @@
         "openmrs_entity_parent": "",
         "toaster_type": "warning",
         "relevance": {
-          "step1:temperature": {
-            "type": "numeric",
-            "ex": "greaterThan(.,\"37.8\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
           }
         }
       },
@@ -1175,9 +1176,10 @@
         "openmrs_entity_parent": "",
         "toaster_type": "warning",
         "relevance": {
-          "step1:temperature": {
-            "type": "numeric",
-            "ex": "lessThan(.,\"36.5\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
           }
         }
       },
@@ -1720,9 +1722,10 @@
         "openmrs_entity_parent": "",
         "toaster_type": "problem",
         "relevance": {
-          "step1:child_bcg_vaccination": {
-            "type": "string",
-            "ex": "equalTo(., \"no\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
           }
         }
       },
@@ -1750,9 +1753,10 @@
           "err": "Please select a reason"
         },
         "relevance": {
-          "step1:child_bcg_vaccination": {
-            "type": "string",
-            "ex": "equalTo(., \"no\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
           }
         }
       },
@@ -1796,9 +1800,10 @@
         "openmrs_entity_parent": "",
         "toaster_type": "problem",
         "relevance": {
-          "step1:child_opv0_vaccination": {
-            "type": "string",
-            "ex": "equalTo(., \"no\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
           }
         }
       },

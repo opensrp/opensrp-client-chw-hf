@@ -670,4 +670,39 @@ priority: 1
 condition: "global_number_of_children_born > 1 && step1_newborn_status.contains('alive')"
 actions:
   - "isRelevant = true"
+---
+name: step1_notify_client_has_fever
+description: notify_client_has_fever relevance
+priority: 1
+condition: "step1_temperature != '' && step1_temperature != '0' && step1_temperature > 37.8"
+actions:
+  - "isRelevant = true"
+---
+name: step1_notify_client_has_hypothermia
+description: notify_client_has_hypothermia relevance
+priority: 1
+condition: "step1_temperature != '' && step1_temperature != '0' && step1_temperature < 36.5"
+actions:
+  - "isRelevant = true"
+---
+name: step1_prompt_for_bcg_vacc_not_provided
+description: prompt_for_bcg_vacc_not_provided relevance
+priority: 1
+condition: "step1_child_bcg_vaccination.contains('no')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_reason_for_not_providing_bcg_vacc
+description: reason_for_not_providing_bcg_vacc relevance
+priority: 1
+condition: "step1_child_bcg_vaccination.contains('no')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_prompt_for_opv0_vacc_not_provided
+description: prompt_for_opv0_vacc_not_provided relevance
+priority: 1
+condition: "step1_child_opv0_vaccination.contains('no')"
+actions:
+  - "isRelevant = true"
 
