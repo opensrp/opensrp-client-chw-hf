@@ -42,7 +42,6 @@ public class AdvancedSearchFragment extends BaseRegisterFragment implements Adva
     private View advancedSearchForm;
     private ImageButton backButton;
     private Button searchButton;
-    private Button retryButton;
     private TextView searchCriteria;
     private TextView matchingResults;
     private TextInputEditText firstName;
@@ -118,7 +117,7 @@ public class AdvancedSearchFragment extends BaseRegisterFragment implements Adva
         searchCriteria = view.findViewById(R.id.search_criteria);
         matchingResults = view.findViewById(R.id.matching_results);
         searchButton = view.findViewById(R.id.advanced_form_search_btn);
-        retryButton = view.findViewById(R.id.retry_connection_button);
+        Button retryButton = view.findViewById(R.id.retry_connection_button);
 
         retryButton.setOnClickListener(v -> updateOnNetworkChange(view));
 
