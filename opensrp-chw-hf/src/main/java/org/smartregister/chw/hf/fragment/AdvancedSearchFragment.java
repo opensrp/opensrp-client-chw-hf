@@ -40,7 +40,6 @@ public class AdvancedSearchFragment extends BaseRegisterFragment implements Adva
     private View advancedSearchForm;
     private ImageButton backButton;
     private Button searchButton;
-    private Button advancedSearchToolbarSearchButton;
     private TextView searchCriteria;
     private TextView matchingResults;
     private MaterialEditText searchName;
@@ -127,7 +126,6 @@ public class AdvancedSearchFragment extends BaseRegisterFragment implements Adva
 
         searchCriteria = view.findViewById(R.id.search_criteria);
         matchingResults = view.findViewById(R.id.matching_results);
-        advancedSearchToolbarSearchButton = view.findViewById(R.id.search);
         searchButton = view.findViewById(R.id.advanced_form_search_btn);
 
         setUpSearchButtons();
@@ -182,11 +180,6 @@ public class AdvancedSearchFragment extends BaseRegisterFragment implements Adva
     }
 
     private void setUpSearchButtons() {
-        advancedSearchToolbarSearchButton.setEnabled(false);
-        advancedSearchToolbarSearchButton.setTextColor(getResources().getColor(R.color.contact_complete_grey_border));
-        advancedSearchToolbarSearchButton.setOnClickListener(registerActionHandler);
-
-
         searchButton.setEnabled(false);
         searchButton.setTextColor(getResources().getColor(R.color.contact_complete_grey_border));
         searchButton.setOnClickListener(registerActionHandler);
@@ -206,14 +199,10 @@ public class AdvancedSearchFragment extends BaseRegisterFragment implements Adva
 
     private void checkTextFields() {
         if (anySearchableFieldHasValue()) {
-            advancedSearchToolbarSearchButton.setEnabled(true);
-            advancedSearchToolbarSearchButton.setTextColor(getResources().getColor(R.color.white));
 
             searchButton.setEnabled(true);
             searchButton.setTextColor(getResources().getColor(R.color.white));
         } else {
-            advancedSearchToolbarSearchButton.setEnabled(false);
-            advancedSearchToolbarSearchButton.setTextColor(getResources().getColor(R.color.contact_complete_grey_border));
 
             searchButton.setEnabled(false);
             searchButton.setTextColor(getResources().getColor(R.color.contact_complete_grey_border));
@@ -252,9 +241,7 @@ public class AdvancedSearchFragment extends BaseRegisterFragment implements Adva
 
     @Override
     public void onViewClicked(View view) {
-        if (view.getId() == R.id.search) {
-            search();
-        } else if (view.getId() == R.id.advanced_form_search_btn) {
+     if (view.getId() == R.id.advanced_form_search_btn) {
             search();
         } else if (view.getId() == R.id.back_button) {
             switchViews(false);
@@ -313,7 +300,6 @@ public class AdvancedSearchFragment extends BaseRegisterFragment implements Adva
             clientsView.setVisibility(View.VISIBLE);
             backButton.setVisibility(View.VISIBLE);
             searchButton.setVisibility(View.GONE);
-            advancedSearchToolbarSearchButton.setVisibility(View.GONE);
 
             if (titleLabelView != null) {
                 titleLabelView.setText(getString(R.string.search_results));
@@ -332,7 +318,6 @@ public class AdvancedSearchFragment extends BaseRegisterFragment implements Adva
             listViewLayout.setVisibility(View.GONE);
             clientsView.setVisibility(View.INVISIBLE);
             searchButton.setVisibility(View.VISIBLE);
-            advancedSearchToolbarSearchButton.setVisibility(View.VISIBLE);
 
             if (titleLabelView != null) {
                 if (isLocal) {

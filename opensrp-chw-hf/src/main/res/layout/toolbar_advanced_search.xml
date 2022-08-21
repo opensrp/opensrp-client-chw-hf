@@ -48,7 +48,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
-                        android:text="@string/search_menu"
+                        android:text="@string/global_search"
                         android:layout_margin="3dp"
                         android:layout_toEndOf="@+id/imageButton"
                         android:layout_toRightOf="@+id/imageButton"
@@ -56,22 +56,6 @@
                         android:textColor="@color/white" />
 
 
-                    <Button
-                        android:id="@+id/search"
-                        style="?android:attr/borderlessButtonStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentEnd="true"
-                        android:layout_gravity="end|center_horizontal|end"
-                        android:background="@color/transparent"
-                        android:paddingStart="@dimen/advanced_search_toolbar_drawable_padding"
-                        android:paddingEnd="@dimen/advanced_search_toolbar_drawable_padding"
-                        android:text="@string/search_menu"
-                        android:textAllCaps="true"
-                        android:textAppearance="?android:textAppearanceSmall"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/advanced_search_toolbar_text_size" />
                 </RelativeLayout>
             </LinearLayout>
         </androidx.appcompat.widget.Toolbar>
