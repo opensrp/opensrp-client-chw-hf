@@ -1,5 +1,7 @@
 package org.smartregister.chw.hf.fragment;
 
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -8,15 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
-import com.rengwuxian.materialedittext.MaterialEditText;
 
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.activity.AllClientsRegisterActivity;
@@ -33,22 +31,23 @@ import org.smartregister.view.fragment.BaseRegisterFragment;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
+
+import static androidx.core.content.ContextCompat.getSystemService;
 
 public class AdvancedSearchFragment extends BaseRegisterFragment implements AdvancedSearchContract.View {
 
     protected AdvancedSearchTextWatcher advancedSearchTextwatcher = new AdvancedSearchTextWatcher();
-    protected HashMap<String, String> searchFormData = new HashMap<>();
     protected Map<String, View> advancedFormSearchableFields = new HashMap<>();
     private View listViewLayout;
     private View advancedSearchForm;
     private ImageButton backButton;
     private Button searchButton;
+    private Button retryButton;
     private TextView searchCriteria;
     private TextView matchingResults;
     private TextInputEditText firstName;
     private TextInputEditText lastName;
-    private boolean isLocal = false;
+    private final boolean isLocal;
     private boolean listMode = false;
 
     public AdvancedSearchFragment(boolean isLocal) {
@@ -115,9 +114,15 @@ public class AdvancedSearchFragment extends BaseRegisterFragment implements Adva
         backButton = view.findViewById(R.id.back_button);
         backButton.setOnClickListener(registerActionHandler);
 
+
         searchCriteria = view.findViewById(R.id.search_criteria);
         matchingResults = view.findViewById(R.id.matching_results);
         searchButton = view.findViewById(R.id.advanced_form_search_btn);
+        retryButton = view.findViewById(R.id.retry_connection_button);
+
+        retryButton.setOnClickListener(v -> updateOnNetworkChange(view));
+
+        updateOnNetworkChange(view);
 
         setUpSearchButtons();
 
@@ -125,6 +130,25 @@ public class AdvancedSearchFragment extends BaseRegisterFragment implements Adva
 
         resetForm();
 
+    }
+
+
+    private void updateOnNetworkChange(View view){
+        if(isNetworkConnected()){
+            view.findViewById(R.id.advanced_search_form).setVisibility(View.VISIBLE);
+            view.findViewById(R.id.advanced_search_offline).setVisibility(View.GONE);
+        }else{
+            view.findViewById(R.id.advanced_search_form).setVisibility(View.GONE);
+            view.findViewById(R.id.advanced_search_offline).setVisibility(View.VISIBLE);
+        }
+    }
+
+    private boolean isNetworkConnected() {
+        ConnectivityManager connectivityManager
+                = getSystemService(requireContext(), ConnectivityManager.class);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
     public void populateSearchableFields(View view) {
