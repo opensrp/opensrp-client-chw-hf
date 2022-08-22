@@ -1,5 +1,6 @@
 package org.smartregister.chw.hf.utils;
 
+import static org.smartregister.chw.hf.interactor.LDPostDeliveryManagementMotherActivityInteractor.ordinal;
 import static org.smartregister.chw.hf.utils.Constants.Events.LD_POST_DELIVERY_MOTHER_MANAGEMENT;
 
 import org.apache.commons.lang3.StringUtils;
@@ -126,15 +127,31 @@ public class LDVisitUtils extends VisitUtils {
                 String maternalComplicationsModuleStatus = getFieldValue(obs, "maternal_complications_module_status");
                 String familyPlanningModuleStatus = getFieldValue(obs, "family_planning_module_status");
                 boolean childVisitsCompletionStatus = true;
-                for (Visit vis : visits) {
 
-                    if (!vis.getVisitType().equalsIgnoreCase(LD_POST_DELIVERY_MOTHER_MANAGEMENT)) {
-                        JSONObject childVisitJson = new JSONObject(vis.getJson());
-                        JSONArray childVisitObs = childVisitJson.getJSONArray("obs");
-                        String newbornStageFourModuleStatus = getFieldValue(childVisitObs, "newborn_stage_four_module_status");
-                        assert newbornStageFourModuleStatus != null;
-                        if (newbornStageFourModuleStatus.equalsIgnoreCase("Partially Completed")) {
-                            childVisitsCompletionStatus = false;
+                String number_children_string = getFieldValue(obs, "number_of_children_born");
+                int numberOfChildrenBorn = 0;
+
+                if (number_children_string != null) {
+                    numberOfChildrenBorn = Integer.parseInt(number_children_string);
+                }
+                for (int i = 0; i < numberOfChildrenBorn; i++) {
+                    // Get visit details for each individual child
+                    Visit immediateNewBornCareVisit = LDLibrary.getInstance().visitRepository().getVisitsByParentVisitId(visit.getVisitId(), "LND " + ordinal(i + 1) + " Newborn").get(0);
+
+                    if (immediateNewBornCareVisit.getVisitType().contains("LND") &&
+                            immediateNewBornCareVisit.getVisitType().contains("Newborn") &&
+                            (immediateNewBornCareVisit.getVisitType().contains("1st") || immediateNewBornCareVisit.getVisitType().contains("2nd") || immediateNewBornCareVisit.getVisitType().contains("3rd") || immediateNewBornCareVisit.getVisitType().contains("th"))) {
+
+                        JSONObject immediateNewBornCareVisitJson = new JSONObject(immediateNewBornCareVisit.getJson());
+                        JSONArray immediateNewBornCareObs = immediateNewBornCareVisitJson.getJSONArray("obs");
+                        String newbornStageFourModuleStatus = getFieldValue(immediateNewBornCareObs, "newborn_stage_four_module_status");
+
+                        if (newbornStageFourModuleStatus != null) {
+                            if (newbornStageFourModuleStatus.equalsIgnoreCase("Fully Completed")) {
+                                ldVisits.add(immediateNewBornCareVisit);
+                            } else {
+                                childVisitsCompletionStatus = false;
+                            }
                         }
                     }
 
@@ -157,21 +174,6 @@ public class LDVisitUtils extends VisitUtils {
                         familyPlanningModuleStatus.equalsIgnoreCase("Fully Completed") && childVisitsCompletionStatus) {
                     ldVisits.add(visit);
                 }
-
-            } else if (visit.getVisitType().contains("LND") &&
-                    visit.getVisitType().contains("Newborn") &&
-                    (visit.getVisitType().contains("1st") || visit.getVisitType().contains("2nd") || visit.getVisitType().contains("3rd") || visit.getVisitType().contains("th"))) {
-
-                JSONObject visitJson = new JSONObject(visit.getJson());
-                JSONArray obs = visitJson.getJSONArray("obs");
-                String newbornStageFourModuleStatus = getFieldValue(obs, "newborn_stage_four_module_status");
-
-                if (newbornStageFourModuleStatus != null) {
-                    if (newbornStageFourModuleStatus.equalsIgnoreCase("Fully Completed")) {
-                        ldVisits.add(visit);
-                    }
-                }
-
 
             } else {
                 ldVisits.add(visit);
