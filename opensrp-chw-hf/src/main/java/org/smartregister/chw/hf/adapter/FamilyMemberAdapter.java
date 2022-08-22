@@ -126,7 +126,7 @@ public class FamilyMemberAdapter extends ArrayAdapter<Entity> {
         if (view.getTag() instanceof CommonPersonObjectClient) {
             CommonPersonObjectClient commonPersonObjectClient = (CommonPersonObjectClient) view.getTag();
             String entityType = Utils.getValue(commonPersonObjectClient.getColumnmaps(), ChildDBConstants.KEY.ENTITY_TYPE, false);
-            if (CoreConstants.TABLE_NAME.FAMILY_MEMBER.equals(entityType) || CoreConstants.TABLE_NAME.INDEPENDENT_CLIENT.equals(entityType)) {
+            if (CoreConstants.TABLE_NAME.CHILD.equals(entityType) || CoreConstants.TABLE_NAME.FAMILY_MEMBER.equals(entityType) || CoreConstants.TABLE_NAME.INDEPENDENT_CLIENT.equals(entityType)) {
                 if (!(isAncMember(commonPersonObjectClient.entityId()) && !isPncMember(commonPersonObjectClient.entityId()))) {
                     goToOtherMemberProfileActivity(commonPersonObjectClient, fragmentArguments);
                 }
