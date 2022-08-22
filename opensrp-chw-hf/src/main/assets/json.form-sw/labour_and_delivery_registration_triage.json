@@ -1,0 +1,510 @@
+{
+  "count": "1",
+  "skip_blank_steps": true,
+  "encounter_type": "Labour and Delivery Registration Triage",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "step1": {
+    "title": "Triage",
+    "fields": [
+      {
+        "key": "systolic",
+        "type": "edit_text",
+        "hint": "Shinikizo la damu (Systolic)",
+        "openmrs_entity_id": "systolic",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "v_numeric": {
+          "value": "true",
+          "err": "Jaza Shinikizo la damu (Systolic)"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Systolic iwe sawa na au zaidi ya 0"
+        },
+        "v_max": {
+          "value": "320",
+          "err": "Systolic iwe sawa na au pungufu ya 320"
+        }
+      },
+      {
+        "key": "diastolic",
+        "type": "edit_text",
+        "hint": "Shinikizo la damu (Diastolic)",
+        "openmrs_entity_id": "diastolic",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "v_numeric": {
+          "value": "true",
+          "err": "Jaza Shinikizo la damu (Diastolic)"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Diastolic iwe sawa na au zaidi ya 0"
+        },
+        "v_max": {
+          "value": "200",
+          "err": "Diastolic iwe sawa na au pungufu ya 200"
+        },
+        "constraints": [
+          {
+            "type": "numeric",
+            "ex": "lessThan(., step1:systolic)",
+            "err": "The diastolic value must be less than the systolic value"
+          }
+        ]
+      },
+      {
+        "key": "prompt_for_management_of_hypertension",
+        "type": "toaster_notes",
+        "text": "Dhibiti Shinikizo la damu kulingana na muongozo wa tiba uliopo",
+        "openmrs_entity_id": "prompt_for_management_of_hypertension",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_triage_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_management_of_hypotension",
+        "type": "toaster_notes",
+        "text": "Bainisha sababu ya Shinikizo la damu la chini na utibu kulingana na muongozo wa tiba uliopo",
+        "openmrs_entity_id": "prompt_for_management_of_hypotension",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_triage_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "pulse_rate",
+        "type": "edit_text",
+        "hint": "Mapigo ya moyo (mdundo kwa dakika moja)",
+        "openmrs_entity_id": "pulse_rate",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "v_numeric": {
+          "value": "true",
+          "err": "Jaza kiwango cha mapigo ya moyo"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Mapigo ya moyo yawe sawa na au zaidi ya 0 (bpm)"
+        },
+        "v_max": {
+          "value": "200",
+          "err": "Mapigo ya moyo yawe sawa na au chini ya 200 (bpm)"
+        }
+      },
+      {
+        "key": "prompt_for_Bradycardia",
+        "type": "toaster_notes",
+        "text": "Chunguza sababu ya mapigo hafifu ya moyo na utibu kulingana na muongozo wa tiba uliopo",
+        "openmrs_entity_id": "prompt_for_Bradycardia",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:pulse_rate": {
+            "type": "numeric",
+            "ex": "lessThan(.,\"60\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_Tachycardia",
+        "type": "toaster_notes",
+        "text": "Chunguza sababu ya tachycardia na utibu kulingana na muongozo wa tiba uliopo",
+        "openmrs_entity_id": "prompt_for_Tachycardia",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:pulse_rate": {
+            "type": "numeric",
+            "ex": "greaterThan(.,\"100\")"
+          }
+        }
+      },
+      {
+        "key": "respiratory_rate",
+        "type": "edit_text",
+        "hint": "Kiwango cha Upumuaji kwa dakika",
+        "openmrs_entity_id": "respiratory_rate",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "v_numeric": {
+          "value": "true",
+          "err": "Jaza Kiwango cha Upumuaji kwa dakika"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Kiwango cha Upumuaji kiwe sawa na au zaidi ya 0"
+        },
+        "v_max": {
+          "value": "100",
+          "err": "Kiwango cha Upumuaji kiwe sawa na au pungufu ya 100"
+        }
+      },
+      {
+        "key": "prompt_for_respiratory_rate",
+        "type": "toaster_notes",
+        "text": "Tibu kulingana na muongozo wa tiba uliopo",
+        "openmrs_entity_id": "prompt_for_respiratory_rate",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_triage_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "oxygen_saturation",
+        "type": "edit_text",
+        "hint": "Kiwango cha SPO2",
+        "openmrs_entity_id": "oxygen_saturation",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "v_numeric": {
+          "value": "true",
+          "err": "Jaza kiwango cha SPO2"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Asilimia ya SPO2 iwe sawa na au zaidi ya 0%"
+        },
+        "v_max": {
+          "value": "100",
+          "err": "Asilimia ya SPO2 iwe sawa na au pungufu ya 100%"
+        }
+      },
+      {
+        "key": "prompt_for_oxygen_saturation",
+        "type": "toaster_notes",
+        "text": "Tibu kulingana na muongozo wa tiba uliopo",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:oxygen_saturation": {
+            "type": "numeric",
+            "ex": "lessThan(.,\"90\")"
+          }
+        }
+      },
+      {
+        "key": "fetal_heart_rate",
+        "type": "edit_text",
+        "hint": "Hesabu mapigo ya moyo ya mtoto (bpm)",
+        "openmrs_entity_id": "fetal_heart_rate",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Jaza kiwango cha mapigo ya moyo kwa mtoto"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Mapigo ya moyo ya mtoto yawe sawa na au zaidi ya 0"
+        },
+        "v_max": {
+          "value": "300",
+          "err": "Mapigo ya moyo ya mtoto yawe sawa na au pungufu ya 300"
+        }
+      },
+      {
+        "key": "prompt_for_fetal_distress",
+        "type": "toaster_notes",
+        "text": "Toa rufaa kwa matibabu zaidi",
+        "openmrs_entity_id": "prompt_for_fetal_distress",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_triage_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "temperature",
+        "type": "edit_text",
+        "hint": "Kiwango cha Joto (C)",
+        "openmrs_entity_id": "temperature",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "v_numeric": {
+          "value": "true",
+          "err": "Jaza Kiwango cha Joto"
+        },
+        "v_min": {
+          "value": "10",
+          "err": "Kiwango cha Joto kiwe sawa na au zaidi ya 10"
+        },
+        "v_max": {
+          "value": "50",
+          "err": "Kiwango cha Joto kiwe sawa na au pungufu ya 50"
+        }
+      },
+      {
+        "key": "notify_client_has_fever",
+        "type": "toaster_notes",
+        "text": "Mfanyie mama vipimo kwa ajili ya kubainisha sababu ya homa na udhibiti kulingana na muongozo wa tiba uliopo",
+        "openmrs_entity_id": "notify_client_has_fever",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:temperature": {
+            "type": "numeric",
+            "ex": "greaterThan(.,\"37.8\")"
+          }
+        }
+      },
+      {
+        "key": "notify_client_has_hypothermia",
+        "type": "toaster_notes",
+        "text": "Dhibiti hali ya jotoridi la mwili la chini kulingana na muongozo wa tiba uliopo",
+        "openmrs_entity_id": "notify_client_has_hypothermia",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:temperature": {
+            "type": "numeric",
+            "ex": "lessThan(.,\"36.5\")"
+          }
+        }
+      },
+      {
+        "key": "weight",
+        "type": "edit_text",
+        "hint": "Uzito (KG)",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "weight",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Jaza uzito"
+        },
+        "v_min": {
+          "value": "20",
+          "err": "Uzito uwe sawa na au zaidi ya 20 (KG)"
+        },
+        "v_max": {
+          "value": "300",
+          "err": "Uzito uwe sawa na au pungufu ya 300 (KG)"
+        }
+      },
+      {
+        "key": "height",
+        "type": "edit_text",
+        "hint": "Urefu (cm)",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "height",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Jaza Urefu"
+        },
+        "v_min": {
+          "value": "60",
+          "err": "Urefu uwe sawa na au zaidi ya 60 (cm)"
+        },
+        "v_max": {
+          "value": "200",
+          "err": "Urefu uwe sawa na au pungufu ya 200 (cm)"
+        }
+      },
+      {
+        "key": "prompt_for_short_stature",
+        "type": "toaster_notes",
+        "text": "Mshauri mteja kujifungua kituo cha afya kutokana na hatari kubwa ya kupata uchunguzi pingamizi",
+        "openmrs_entity_id": "prompt_for_short_stature",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:height": {
+            "type": "numeric",
+            "ex": "lessThan(.,\"145\")"
+          }
+        }
+      },
+      {
+        "key": "danger_signs",
+        "type": "check_box",
+        "label": "Dalili za hatari alizonazo mteja",
+        "combine_checkbox_option_values": "true",
+        "openmrs_entity_id": "danger_signs",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "exclusive": [
+          "none"
+        ],
+        "options": [
+          {
+            "key": "bleeding_vag",
+            "text": "Bleeding Vaginally",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "bleeding_vag"
+          },
+          {
+            "key": "severe_headache",
+            "text": "Severe Headache",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "severe_headache"
+          },
+          {
+            "key": "severe_abdominal_pain",
+            "text": "Severe Abdominal Pain",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "severely_abdominal_pain"
+          },
+          {
+            "key": "convulsion",
+            "text": "Convulsion",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "convulsion"
+          },
+          {
+            "key": "blurred_vision",
+            "text": "Blurred Vision",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "blurred_vision"
+          },
+          {
+            "key": "severe_breathing_difficulty",
+            "text": "Severe Breathing Difficulty",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "severe_breathing_difficulty"
+          },
+          {
+            "key": "unconscious",
+            "text": "Unconscious",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "unconscious"
+          },
+          {
+            "key": "reduced_fetal_movement",
+            "text": "Reduced Fetal Movement",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "reduced_fetal_movement"
+          },
+          {
+            "key": "dizziness",
+            "text": "Dizziness",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "dizziness"
+          },
+          {
+            "key": "pale_anaemic",
+            "text": "Pale/Anaemic",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "pale_anaemic"
+          },
+          {
+            "key": "none",
+            "text": "None",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "none"
+          }
+        ]
+      },
+      {
+        "key": "danger_signs_present_toaster",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "",
+        "type": "toaster_notes",
+        "text": "Tibu kulingana na muongozo wa tiba uliopo",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:danger_signs": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "bleeding_vag",
+                  "severe_headache",
+                  "unconscious",
+                  "reduced_fetal_movement",
+                  "dizziness",
+                  "blurred_vision",
+                  "severe_abdominal_pain",
+                  "severe_breathing_difficulty",
+                  "convulsion"
+                ]
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}
