@@ -821,6 +821,13 @@
             "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_farmer"
+          },
+          {
+            "key": "chk_traditional_healer",
+            "text": "Mtoa huduma ya Tiba Asili",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_traditional_healer"
           }
         ],
         "v_required": {
