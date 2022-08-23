@@ -1,0 +1,312 @@
+{
+  "validate_on_submit": true,
+  "show_errors_on_submit": false,
+  "count": "1",
+  "encounter_type": "PPFP",
+  "entity_id": "",
+  "relational_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "step1": {
+    "title": "Mother - Status",
+    "fields": [
+      {
+        "key": "status",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "status",
+        "label": "Hali ya Mama kiafya",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "alive",
+            "text": "Yupo Hai",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "alive"
+          },
+          {
+            "key": "died",
+            "text": "Amefariki",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "died"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Chagua kimojawapo"
+        }
+      },
+      {
+        "key": "cause_of_death",
+        "type": "edit_text",
+        "hint": "Chanzo cha kifo cha mama",
+        "openmrs_entity_id": "cause_of_death",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "step1:status": {
+            "type": "string",
+            "ex": "equalTo(., \"died\")"
+          }
+        }
+      },
+      {
+        "key": "time_of_death",
+        "type": "time_picker",
+        "hint": "Muda mama kufariki",
+        "openmrs_entity_id": "time_of_death",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "step1:status": {
+            "type": "string",
+            "ex": "equalTo(., \"died\")"
+          }
+        }
+      },
+      {
+        "key": "delivery_place",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "delivery_place",
+        "openmrs_data_type": "select one",
+        "type": "spinner",
+        "hint": "Mahali ambapo mama alijifungua",
+        "values": [
+          "Kwenye kituo cha afya",
+          "Amejifungua njiani kabla ya kufika kituo cha afya",
+          "Amejifungulia nyumbani",
+          "Amejifungulia kwa mkunga wa jadi"
+        ],
+        "keys": [
+          "at_a_health_facility",
+          "bba",
+          "at_home",
+          "tba"
+        ],
+        "openmrs_choice_ids": {
+          "at_a_health_facility": "at_a_health_facility",
+          "bba": "bba",
+          "at_home": "at_home",
+          "tba": "tba"
+        }
+      },
+      {
+        "key": "designation_of_delivery_personnel",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "designation_of_delivery_personnel",
+        "openmrs_data_type": "select one",
+        "type": "spinner",
+        "hint": "Cheo cha Aliyezalisha",
+        "values": [
+          "Medical doctor",
+          "Obstetrician",
+          "Assistant midwife officer",
+          "Clinical officer",
+          "Midwife officer",
+          "Gyenocologist",
+          "Nurse",
+          "Student"
+        ],
+        "keys": [
+          "medical_doctor",
+          "obstetrician",
+          "assistant_midwife_officer",
+          "clinical_officer",
+          "midwife_officer",
+          "gynecologist",
+          "nurse",
+          "student"
+        ],
+        "openmrs_choice_ids": {
+          "medical_doctor": "medical_doctor",
+          "obstetrician": "obstetrician",
+          "assistant_midwife_officer": "assistant_midwife_officer",
+          "clinical_officer": "clinical_officer",
+          "midwife_officer": "midwife_officer",
+          "gynecologist": "gynecologist",
+          "nurse": "nurse",
+          "student": "student"
+        },
+        "relevance": {
+          "step1:delivery_place": {
+            "type": "string",
+            "ex": "equalTo(., \"at_a_health_facility\")"
+          }
+        }
+      },
+      {
+        "key": "name_of_delivery_person",
+        "type": "edit_text",
+        "hint": "Jina la aliyezalisha",
+        "openmrs_entity_id": "name_of_delivery_person",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "step1:delivery_place": {
+            "type": "string",
+            "ex": "equalTo(., \"at_a_health_facility\")"
+          }
+        }
+      },
+      {
+        "key": "supervised_by_occupation",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "supervised_by_occupation",
+        "openmrs_data_type": "select one",
+        "type": "spinner",
+        "hint": "Amesimamiwa na?",
+        "values": [
+          "Medical doctor",
+          "Obstetrician",
+          "Assistant midwife officer",
+          "Clinical officer",
+          "Midwife officer",
+          "Gyenecologist",
+          "Nurse"
+        ],
+        "keys": [
+          "medical_doctor",
+          "obstetrician",
+          "assistant_midwife_officer",
+          "clinical_officer",
+          "midwife_officer",
+          "gynecologist",
+          "nurse"
+        ],
+        "openmrs_choice_ids": {
+          "medical_doctor": "medical_doctor",
+          "obstetrician": "obstetrician",
+          "assistant_midwife_officer": "assistant_midwife_officer",
+          "clinical_officer": "clinical_officer",
+          "midwife_officer": "midwife_officer",
+          "gynecologist": "gynecologist",
+          "nurse": "nurse"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_mother_status_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "name_of_supervising_person",
+        "type": "edit_text",
+        "hint": "Jina la msimamizi",
+        "openmrs_entity_id": "name_of_supervising_person",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_mother_status_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "number_of_children_born",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "number_of_children_born",
+        "type": "edit_text",
+        "hint": "Idadi ya Watoto waliyozaliwa Hai",
+        "v_numeric_integer": {
+          "value": "true",
+          "err": "Please enter a valid number"
+        },
+        "v_max": {
+          "value": "5",
+          "err": "Idadi ya watoto walizaliwa hai iwe sawa na au pungufu ya 5"
+        },
+        "v_min": {
+          "value": "1",
+          "err": "Idadi ya watoto waliozaliwa hai iwe zaidi ya 0"
+        }
+      },
+      {
+        "key": "delivery_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "delivery_date",
+        "type": "date_picker",
+        "hint": "Tarehe ya Mama kujifungua",
+        "expanded": false,
+        "min_date": "today-2y",
+        "max_date": "today"
+      },
+      {
+        "key": "delivery_time",
+        "type": "time_picker",
+        "hint": "Muda wa mama kujifungua",
+        "openmrs_entity_id": "delivery_time",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": ""
+      },
+      {
+        "key": "mother_status_module_status",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "mother_status_module_status",
+        "type": "hidden",
+        "value": "PENDING"
+      },
+      {
+        "key": "labour_duration",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "labour_duration",
+        "label": "Labour information/conditions",
+        "type": "hidden"
+      }
+    ]
+  }
+}

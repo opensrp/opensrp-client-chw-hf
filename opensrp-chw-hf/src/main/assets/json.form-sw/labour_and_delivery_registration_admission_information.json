@@ -1,0 +1,382 @@
+{
+  "count": "1",
+  "skip_blank_steps": true,
+  "encounter_type": "Labour and Delivery Registration Admission Information",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "step1": {
+    "title": "Admission Information",
+    "fields": [
+      {
+        "key": "admission_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "admission_date",
+        "type": "date_picker",
+        "hint": "Tarehe ya kulazwa",
+        "expanded": false,
+        "min_date": "today-2y",
+        "max_date": "today"
+      },
+      {
+        "key": "admission_time",
+        "type": "time_picker",
+        "hint": "Muda wa kulazwa",
+        "openmrs_entity_id": "admission_time",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": ""
+      },
+      {
+        "key": "admitting_person_name",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "admitting_person_name",
+        "type": "edit_text",
+        "input_type": "name",
+        "hint": "Jina la Daktari/Muuguzi Anayemlaza mteja",
+        "v_regex": {
+          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
+          "err": "Jaza jina la Daktari/Muuguzi anayemlaza mteja"
+        }
+      },
+      {
+        "key": "admission_from",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "admission_from",
+        "type": "native_radio",
+        "label": "Amelazwa akitokea wapi?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "home",
+            "text": "NYUMBANI",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "home"
+          },
+          {
+            "key": "antenatal_ward",
+            "text": "WODI YA WAJAWAZITO",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "antenatal_ward"
+          },
+          {
+            "key": "referral",
+            "text": "RUFAA",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "referral"
+          }
+        ]
+      },
+      {
+        "key": "name_of_hf",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "name_of_hf",
+        "openmrs_data_type": "text",
+        "type": "tree",
+        "hint": "Amepewa rufaa akitokea",
+        "tree": [],
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali chaguo kituo cha Afya"
+        },
+        "relevance": {
+          "step1:admission_from": {
+            "type": "string",
+            "ex": "equalTo(., \"referral\")"
+          }
+        }
+      },
+      {
+        "key": "reason_for_referral",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_referral",
+        "type": "edit_text",
+        "hint": "Sababu ya kutoa rufaa/Huduma iliyotolewa",
+        "relevance": {
+          "step1:admission_from": {
+            "type": "string",
+            "ex": "equalTo(., \"referral\")"
+          }
+        }
+      },
+      {
+        "key": "reasons_for_admission",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reasons_for_admission",
+        "type": "check_box",
+        "combine_checkbox_option_values": "true",
+        "label": "Tafadhali chagua sababu ya kumlaza mteja",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "labour_pain",
+            "text": "Maumivu ya labor",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "labour_pain"
+          },
+          {
+            "key": "observation",
+            "text": "Uangalizi",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "observation"
+          },
+          {
+            "key": "prom",
+            "text": "PROM",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "prom"
+          },
+          {
+            "key": "elective_cesarean_section",
+            "text": "Upasuaji uliopangwa",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "elective_cesarean_section"
+          },
+          {
+            "key": "induction",
+            "text": "Kuanzisha uchungu",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "induction"
+          },
+          {
+            "key": "other",
+            "text": "Sababu Nyinginezo",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other"
+          }
+        ],
+        "relevance": {
+          "step1:admission_from": {
+            "type": "string",
+            "ex": "notEqualTo(., \"referral\")"
+          }
+        }
+      },
+      {
+        "key": "other_reason_for_admission",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reason_for_admission",
+        "type": "edit_text",
+        "hint": "Taja sababu nyinginezo za kumlaza myeja",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jaza sababu"
+        },
+        "relevance": {
+          "step1:reasons_for_admission": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "other"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "danger_signs",
+        "type": "check_box",
+        "label": "Dalili za Hatari",
+        "combine_checkbox_option_values": "true",
+        "openmrs_entity_id": "danger_signs",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "exclusive": [
+          "none"
+        ],
+        "options": [
+          {
+            "key": "bleeding_vag",
+            "text": "Bleeding Vaginally",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "bleeding_vag"
+          },
+          {
+            "key": "severe_headache",
+            "text": "Severe Headache",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "severe_headache"
+          },
+          {
+            "key": "severe_abdominal_pain",
+            "text": "Severe Abdominal Pain",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "severely_abdominal_pain"
+          },
+          {
+            "key": "convulsion",
+            "text": "Convulsion",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "convulsion"
+          },
+          {
+            "key": "blurred_vision",
+            "text": "Blurred Vision",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "blurred_vision"
+          },
+          {
+            "key": "severe_breathing_difficulty",
+            "text": "Severe Breathing Difficulty",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "severe_breathing_difficulty"
+          },
+          {
+            "key": "unconscious",
+            "text": "Unconscious",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "unconscious"
+          },
+          {
+            "key": "reduced_fetal_movement",
+            "text": "Reduced Fetal Movement",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "reduced_fetal_movement"
+          },
+          {
+            "key": "dizziness",
+            "text": "Dizziness",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "dizziness"
+          },
+          {
+            "key": "pale_anaemic",
+            "text": "Pale/Anaemic",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "pale_anaemic"
+          },
+          {
+            "key": "other",
+            "text": "Other (Specify)",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other"
+          },
+          {
+            "key": "none",
+            "text": "None",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "none"
+          }
+        ]
+      },
+      {
+        "key": "other_danger_signs",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_danger_signs",
+        "type": "edit_text",
+        "hint": "Fafanua dalili nyinginezo za hatari",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali fafanua dalili nyinginezo za hatari"
+        },
+        "relevance": {
+          "step1:danger_signs": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "other"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "danger_signs_present_toaster",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "",
+        "type": "toaster_notes",
+        "text": "Toa matibabu kulingana na muongozo wa tiba uliyopo",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:danger_signs": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "bleeding_vag",
+                  "severe_headache",
+                  "unconscious",
+                  "reduced_fetal_movement",
+                  "dizziness",
+                  "blurred_vision",
+                  "severe_abdominal_pain",
+                  "severe_breathing_difficulty",
+                  "convulsion"
+                ]
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

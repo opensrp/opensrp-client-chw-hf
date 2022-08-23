@@ -1,0 +1,128 @@
+{
+  "validate_on_submit": true,
+  "show_errors_on_submit": false,
+  "count": "1",
+  "encounter_type": "Partograph Period",
+  "entity_id": "",
+  "relational_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "global": {},
+  "step1": {
+    "title": "Muda ya Kujaza Patografu",
+    "fields": [
+      {
+        "key": "name_of_the_health_care_provider",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "name_of_the_health_care_provider",
+        "type": "edit_text",
+        "edit_type": "name",
+        "hint": "Jina la mtoa huduma anayejaza patografu",
+        "v_regex": {
+          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
+          "err": "Tafadhali jaza jina sahihi"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jaza jina la mtoa huduma"
+        }
+      },
+      {
+        "key": "partograph_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "partograph_date",
+        "type": "date_picker",
+        "hint": "Tarehe ya kujaza Patografu",
+        "expanded": false,
+        "min_date": "today-2y",
+        "max_date": "today"
+      },
+      {
+        "key": "last_partograph_monitoring_time",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "last_partograph_monitoring_time",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_partograph_monitoring_time_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "thirty_minutes_ago",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "thirty_minutes_ago",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_partograph_monitoring_time_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "partograph_time",
+        "type": "time_picker",
+        "hint": "Muda wa kujaza Patografu",
+        "openmrs_entity_id": "partograph_time",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "constraints": [
+          {
+            "type": "time",
+            "ex": "greaterThan(., step1:last_partograph_monitoring_time)",
+            "err": "The partograph monitoring time cannot be before the last partograph time"
+          }
+        ]
+      }
+    ]
+  }
+}
