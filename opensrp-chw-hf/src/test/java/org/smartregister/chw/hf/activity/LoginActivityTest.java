@@ -10,9 +10,12 @@ import android.widget.EditText;
 
 import androidx.test.core.app.ApplicationProvider;
 
+import com.mapbox.mapboxsdk.net.ConnectivityReceiver;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -41,6 +44,11 @@ public class LoginActivityTest extends BaseActivityUnitTest {
 
     @Mock
     private Button loginButton;
+
+    @BeforeClass
+    public static void beforeAppInitialize() {
+        ReflectionHelpers.setStaticField(ConnectivityReceiver.class, "INSTANCE", Mockito.mock(ConnectivityReceiver.class));
+    }
 
     @Before
     public void setUp() {
