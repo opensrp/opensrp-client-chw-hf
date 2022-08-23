@@ -93,140 +93,120 @@
           {
             "key": "known_on_art",
             "text": "On ART before this pregnancy",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "known_on_art"
           },
           {
             "key": "diabetes_mellitus",
             "text": "Diabetes Mellitus",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "diabetes_mellitus"
           },
           {
             "key": "sickle_cell_disease",
             "text": "Sickle Cell Disease",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "sickle_cell_disease"
           },
           {
             "key": "heart_diseases",
             "text": "Heart Diseases",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "heart_diseases"
           },
           {
             "key": "thyroid_diseases",
             "text": "Thyroid Diseases",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "thyroid_diseases"
           },
           {
             "key": "blood_transfusion",
             "text": "Blood transfusion",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "blood_transfusion"
           },
           {
             "key": "epilepsy",
             "text": "Epilepsy",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "epilepsy"
           },
           {
             "key": "previous_c_s",
             "text": "Previous C/S",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "previous_c_s"
           },
           {
             "key": "myomectomy",
             "text": "Myomectomy",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "myomectomy"
           },
           {
             "key": "third_degree_tear",
             "text": "Third Degree Tear",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "third_degree_tear"
           },
           {
             "key": "repaired_fistula",
             "text": "Repaired Fistula",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "repaired_fistula"
           },
           {
             "key": "female_genital_mutilation",
             "text": "Female Genital Mutilation",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "female_genital_mutilation"
           },
           {
             "key": "closely_spaced_pregnancy",
             "text": "Closely spaced pregnancy (within 2 years)",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "closely_spaced_pregnancy"
           },
           {
             "key": "pregnant_more_than_four",
             "text": "Pregnant four or more times",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "pregnant_more_than_four"
           },
           {
             "key": "hx_hemorrhage",
             "text": "History of Hemorrhage",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "hx_hemorrhage"
           },
           {
             "key": "history_of_high_blood_pressure",
             "text": "History of high blood pressure",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "history_of_high_blood_pressure"
           },
           {
             "key": "anaemia",
             "text": "Anaemia",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "anaemia"
           },
           {
             "key": "difficult_delivery",
             "text": "Difficult delivery (Vacuum, episiotomy)",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "difficult_delivery"
           },
           {
             "key": "hx_abortions",
             "text": "History of Abortions",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "hx_abortions"
           },
           {
             "key": "none",
             "text": "None",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "none"
           }

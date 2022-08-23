@@ -2,11 +2,13 @@ package org.smartregister.chw.hf.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 
 import com.vijay.jsonwizard.constants.JsonFormConstants;
 import com.vijay.jsonwizard.domain.Form;
 
 import org.json.JSONObject;
+import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.interactor.LDPostDeliveryManagementMotherActivityInteractor;
 import org.smartregister.chw.ld.activity.BaseLDVisitActivity;
 import org.smartregister.chw.ld.model.BaseLDVisitAction;
@@ -50,31 +52,45 @@ public class LDPostDeliveryManagementMotherActivity extends BaseLDVisitActivity 
     }
 
     @Override
-    public void submittedAndClose() {
-        boolean completionStatus = true;
+    public void initializeActions(LinkedHashMap<String, BaseLDVisitAction> map) {
+        //Clearing the action List before recreation
+        actionList.clear();
 
-        for (Map.Entry<String, BaseLDVisitAction> entry : this.actionList.entrySet()) {
-            String actionStatus = entry.getValue().getActionStatus().toString();
-            if (actionStatus.equalsIgnoreCase("PARTIALLY_COMPLETED")) {
-                completionStatus = false;
+        //Rearranging the actions according to a specific arrangement
+        if (map.containsKey(getString(R.string.ld_mother_status_action_title))) {
+            BaseLDVisitAction mothersStatusAction = map.get(getString(R.string.ld_mother_status_action_title));
+            actionList.put(getString(R.string.ld_mother_status_action_title), mothersStatusAction);
+        }
+        if (map.containsKey(getString(R.string.ld_post_delivery_observation_action_title))) {
+            BaseLDVisitAction postDeliveryObservationsAction = map.get(getString(R.string.ld_post_delivery_observation_action_title));
+            actionList.put(getString(R.string.ld_post_delivery_observation_action_title), postDeliveryObservationsAction);
+        }
+        
+        if (map.containsKey(getString(R.string.ld_maternal_complication_action_title))) {
+            BaseLDVisitAction martenalComplicationsAction = map.get(getString(R.string.ld_maternal_complication_action_title));
+            actionList.put(getString(R.string.ld_maternal_complication_action_title), martenalComplicationsAction);
+        }
+        if (map.containsKey(getString(R.string.ld_post_delivery_family_planning))) {
+            BaseLDVisitAction familyPlanningAction = map.get(getString(R.string.ld_post_delivery_family_planning));
+            actionList.put(getString(R.string.ld_post_delivery_family_planning), familyPlanningAction);
+        }
+        //====================End of Necessary evil ====================================
+
+
+        for (Map.Entry<String, BaseLDVisitAction> entry : map.entrySet()) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                actionList.putIfAbsent(entry.getKey(), entry.getValue());
+            } else {
+                actionList.put(entry.getKey(), entry.getValue());
             }
         }
 
-        if (completionStatus) {
-
-            Intent intent = new Intent(this, LDRegisterActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-            finish();
-
+        if (mAdapter != null) {
+            mAdapter.notifyDataSetChanged();
         }
-
-        super.submittedAndClose();
-    }
-
-    @Override
-    public void initializeActions(LinkedHashMap<String, BaseLDVisitAction> map) {
-        actionList.clear();
+        displayProgressBar(false);
+        
+        
         super.initializeActions(map);
     }
 }

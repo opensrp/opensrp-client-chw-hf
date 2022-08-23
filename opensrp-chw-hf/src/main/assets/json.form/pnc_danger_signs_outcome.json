@@ -77,104 +77,87 @@
           {
             "key": "Fever",
             "openmrs_choice_id": "",
-            "text": "Fever",
-            "value": false
+            "text": "Fever"
           },
           {
             "key": "Bleeding_vaginally",
             "openmrs_choice_id": "",
-            "text": "Bleeding vaginally",
-            "value": false
+            "text": "Bleeding vaginally"
           },
           {
             "key": "Severe_headache",
             "openmrs_choice_id": "",
-            "text": "Severe headache",
-            "value": false
+            "text": "Severe headache"
           },
           {
             "key": "Convulsions",
             "openmrs_choice_id": "",
-            "text": "Convulsions",
-            "value": false
+            "text": "Convulsions"
           },
           {
             "key": "Difficulty_breathing",
             "openmrs_choice_id": "",
-            "text": "Difficulty breathing",
-            "value": false
+            "text": "Difficulty breathing"
           },
           {
             "key": "Severe_abdominal_pain",
             "openmrs_choice_id": "",
-            "text": "Severe abdominal pain",
-            "value": false
+            "text": "Severe abdominal pain"
           },
           {
             "key": "Vaginal_discharge_with_a_bad_smell",
             "openmrs_choice_id": "",
-            "text": "Vaginal discharge with a bad smell",
-            "value": false
+            "text": "Vaginal discharge with a bad smell"
           },
           {
             "key": "Redness_around_the_umbilical_cord_foul_smelling_discharge_from_the_umbilical_cord",
             "openmrs_choice_id": "",
-            "text": "Redness around the umbilical cord, foul-smelling discharge from the umbilical cord",
-            "value": false
+            "text": "Redness around the umbilical cord, foul-smelling discharge from the umbilical cord"
           },
           {
             "key": "Excessive_crying",
             "openmrs_choice_id": "",
-            "text": "Excessive crying",
-            "value": false
+            "text": "Excessive crying"
           },
           {
             "key": "Fast_breathing",
             "openmrs_choice_id": "",
-            "text": "Fast breathing",
-            "value": false
+            "text": "Fast breathing"
           },
           {
             "key": "Chest_indrawing",
             "openmrs_choice_id": "",
-            "text": "Chest indrawing",
-            "value": false
+            "text": "Chest indrawing"
           },
           {
             "key": "Unable_to_suck",
             "openmrs_choice_id": "",
-            "text": "Unable to suck",
-            "value": false
+            "text": "Unable to suck"
           },
           {
             "key": "No_movement",
             "openmrs_choice_id": "",
-            "text": "No movement",
-            "value": false
+            "text": "No movement"
           },
           {
             "key": "Pale_or_jaundiced",
             "openmrs_choice_id": "",
-            "text": "Pale or jaundiced",
-            "value": false
+            "text": "Pale or jaundiced"
           },
           {
             "key": "Lethargy",
             "openmrs_choice_id": "",
-            "text": "Lethargy",
-            "value": false
+            "text": "Lethargy"
           },
           {
             "key": "Other",
             "openmrs_choice_id": "",
-            "text": "Other",
-            "value": false
+            "text": "Other"
           },
           {
             "key": "None",
             "openmrs_choice_id": "",
-            "text": "None",
-            "value": false
+            "text": "None"
           }
         ],
         "exclusive": [

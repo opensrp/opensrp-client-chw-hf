@@ -65,21 +65,18 @@
           {
             "key": "oxytocin",
             "text": "Oxytocin (10 IU within 1 minute after delivery)",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "oxytocin"
           },
           {
             "key": "misoprostol",
             "text": "Misoprostol (400 mcg orally OR 600 mcg sublingual)",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "misoprostol"
           },
           {
             "key": "ergometrine",
             "text": "Ergometrine (0.5mg)",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "ergometrine"
           }

@@ -1,5 +1,8 @@
 package org.smartregister.chw.hf.interactor;
 
+import static com.vijay.jsonwizard.widgets.TimePickerFactory.KEY.KEY;
+import static com.vijay.jsonwizard.widgets.TimePickerFactory.KEY.VALUE;
+
 import android.content.Context;
 
 import org.apache.commons.lang3.StringUtils;
@@ -128,11 +131,42 @@ public class LDRegistrationInteractorFlv implements LDRegistrationInteractor.Fla
         JSONObject childrenAlive = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "children_alive");
         JSONObject parity = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "para");
         JSONObject lastMenstrualPeriod = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "last_menstrual_period");
+        JSONObject pastMedicalSurgicalHistory = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "past_medical_surgical_history");
 
         gravida.put(org.smartregister.family.util.JsonFormUtils.VALUE, memberObject.getGravida());
         parity.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getParity(memberObject.getBaseEntityId()));
         childrenAlive.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getNumberOfSurvivingChildren(memberObject.getBaseEntityId()));
         lastMenstrualPeriod.put(org.smartregister.family.util.JsonFormUtils.VALUE, memberObject.getLastMenstrualPeriod());
+        JSONArray historyValues;
+
+        String pastMedicalAndSurgicalHistory = HfAncDao.getMedicalAndSurgicalHistory(memberObject.getBaseEntityId());
+        if (pastMedicalAndSurgicalHistory.startsWith("[")) {
+            try {
+                historyValues = new JSONArray(pastMedicalAndSurgicalHistory);
+                for (int i = 0; i < historyValues.length(); i++) {
+                    String value = historyValues.getString(i);
+                    setCheckBoxValues(pastMedicalSurgicalHistory.getJSONArray("options"), value);
+                }
+            } catch (Exception e) {
+                Timber.e(e);
+            }
+        } else {
+            setCheckBoxValues(pastMedicalSurgicalHistory.getJSONArray("options"), pastMedicalAndSurgicalHistory);
+        }
+    }
+
+    private void setCheckBoxValues(JSONArray options, String value) {
+        for (int j = 0; j < options.length(); j++) {
+            JSONObject option = null;
+            try {
+                option = options.getJSONObject(j);
+                if (option.getString(KEY).equals(value)) {
+                    option.put(VALUE, true);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private void populateAncFindingsForm(JSONArray fields, org.smartregister.chw.anc.domain.MemberObject memberObject) throws JSONException {

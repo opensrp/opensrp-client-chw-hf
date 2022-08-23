@@ -38,7 +38,7 @@ public class LDMalariaTestActionHelper implements BaseLDVisitAction.LDVisitActio
     @Override
     public void onPayloadReceived(String jsonPayload) {
         try{
-            malariaTest = JsonFormUtils.getFieldValue(jsonPayload, "malaria_test");
+            malariaTest = JsonFormUtils.getFieldValue(jsonPayload, "malaria");
         }catch (Exception e){
             Timber.e(e);
         }

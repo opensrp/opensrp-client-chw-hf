@@ -7,19 +7,42 @@
     android:background="@color/white">
 
     <LinearLayout
+        android:id="@+id/client_avatar_wrapper"
+        android:layout_width="70dp"
+        android:layout_height="90dp"
+        android:paddingStart="@dimen/register_list_item_padding"
+        android:paddingLeft="@dimen/register_list_item_padding"
+        android:paddingTop="@dimen/register_list_top_bottom_padding"
+        android:paddingEnd="@dimen/register_list_item_padding"
+        android:paddingRight="@dimen/register_list_item_padding"
+        android:paddingBottom="@dimen/register_list_top_bottom_padding">
+
+        <ImageView
+            android:id="@+id/client_avatar"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:gravity="center"
+            android:hapticFeedbackEnabled="true"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:src="@mipmap/ic_member" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/child_column"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:layout_toStartOf="@+id/ll_opdRegisterListRow_clientActionWrapper"
         android:layout_toLeftOf="@+id/ll_opdRegisterListRow_clientActionWrapper"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/client_avatar_wrapper"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
@@ -46,17 +69,17 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:paddingLeft="0dp"
-            android:paddingBottom="@dimen/register_list_item_padding"
             android:text="Patient Name, Age"
-            android:textColor="@color/text_black"
-            android:textSize="@dimen/child_register_title_size"
-            android:textStyle="normal" />
+            android:textColor="@color/black"
+            android:fontFamily="@font/google_sans_bold"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingBottom="4dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingTop="8dp"
+            android:paddingBottom="4dp">
 
             <TextView
                 android:id="@+id/tv_opdRegisterListRow_registerType"
@@ -64,13 +87,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left|center_horizontal"
+                android:fontFamily="@font/google_sans_regular"
                 android:layout_marginStart="0dp"
                 android:layout_marginEnd="0dp"
                 android:paddingStart="0dp"
                 android:paddingEnd="0dp"
                 android:text="Child"
                 android:textColor="@color/text_blue"
-                android:textSize="@dimen/child_register_list_desc_size"
                 android:textStyle="normal" />
 
             <TextView
@@ -81,11 +104,12 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:text="\u2022"
+                android:textColor="@color/primary"
                 android:textSize="@dimen/child_register_list_desc_size" />
 
-            <org.smartregister.view.customcontrols.CustomFontTextView
+            <TextView
                 android:id="@+id/tv_opdRegisterListRow_gender"
-                style="@style/CustomFontTextViewStyle.ClientList.Light"
+                android:fontFamily="@font/google_sans_regular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left|center_horizontal"
@@ -95,7 +119,6 @@
                 android:paddingEnd="0dp"
                 android:text="Male"
                 android:textColor="@color/light_grey_text"
-                android:textSize="@dimen/child_register_list_desc_size"
                 android:textStyle="normal" />
 
 
@@ -107,11 +130,12 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:text="\u2022"
+                android:textColor="@color/primary"
                 android:textSize="@dimen/child_register_list_desc_size" />
 
-            <org.smartregister.view.customcontrols.CustomFontTextView
+            <TextView
                 android:id="@+id/tv_opdRegisterListRow_location"
-                style="@style/CustomFontTextViewStyle.ClientList.Light"
+                android:fontFamily="@font/google_sans_regular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left|center_horizontal"
@@ -121,7 +145,6 @@
                 android:paddingEnd="0dp"
                 android:text="Lavington"
                 android:textColor="@color/light_grey_text"
-                android:textSize="@dimen/child_register_list_desc_size"
                 android:textStyle="normal" />
 
         </LinearLayout>
@@ -186,8 +209,8 @@
 
     <com.rey.material.widget.ImageView
         android:id="@+id/go_to_profile_image_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_gravity="center"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
@@ -196,13 +219,8 @@
         android:background="@color/transparent"
         android:gravity="center"
         android:hapticFeedbackEnabled="true"
-        android:paddingLeft="10dp"
-        android:src="@drawable/row_goto"
-        android:textAllCaps="true"
-        android:textAppearance="?android:textAppearanceSmall"
-        android:textColor="@color/vaccine_blue_bg_st"
-        android:textSize="15sp"
-        android:typeface="normal"
+        android:src="@drawable/baseline_keyboard_arrow_right"
+        android:tint="@color/me_page_arrow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

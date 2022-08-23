@@ -345,28 +345,28 @@ actions:
 name: step1_prompt_for_normal_apgar_score_at_5_minutes
 description: prompt_for_normal_apgar_score_at_5_minutes relevance
 priority: 1
-condition: "step1_newborn_status == 'alive' && step1_apgar_score_at_5_minutes != '' && step1_apgar_score_at_5_minutes >= 7 "
+condition: "step1_newborn_status == 'alive' && step1_apgar_score_at_5_minutes!= ''  && step1_apgar_score_at_5_minutes!= '0'  && step1_apgar_score_at_5_minutes >= 7 "
 actions:
   - "isRelevant = true"
 ---
 name: step1_prompt_for_abnormal_apgar_score_at_5_minutes
 description: prompt_for_abnormal_apgar_score_at_5_minutes relevance
 priority: 1
-condition: "step1_newborn_status == 'alive' && step1_apgar_score_at_5_minutes != '' && step1_apgar_score_at_5_minutes > 0  && step1_apgar_score_at_5_minutes < 7 "
+condition: "step1_newborn_status == 'alive' && step1_apgar_score_at_5_minutes!= '' && step1_apgar_score_at_5_minutes!= '0'  && step1_apgar_score_at_5_minutes > 0  && step1_apgar_score_at_5_minutes < 7 "
 actions:
   - "isRelevant = true"
 ---
 name: step1_prompt_for_normal_apgar_score_at_1_minute
 description: prompt_for_normal_apgar_score_at_1_minute relevance
 priority: 1
-condition: "step1_newborn_status == 'alive' && step1_apgar_score_at_1_minute >= 7 "
+condition: "step1_newborn_status == 'alive' && step1_apgar_score_at_1_minute!= '' && step1_apgar_score_at_1_minute!= '0'  && step1_apgar_score_at_1_minute >= 7 "
 actions:
   - "isRelevant = true"
 ---
 name: step1_prompt_for_abnormal_apgar_score_at_1_minute
 description: prompt_for_abnormal_apgar_score_at_1_minute relevance
 priority: 1
-condition: "step1_newborn_status == 'alive' && step1_apgar_score_at_1_minute > 0  && step1_apgar_score_at_1_minute < 7 "
+condition: "step1_newborn_status == 'alive' && step1_apgar_score_at_1_minute!= ''  && step1_apgar_score_at_1_minute!= '0' && step1_apgar_score_at_1_minute > 0  && step1_apgar_score_at_1_minute < 7 "
 actions:
   - "isRelevant = true"
 ---
@@ -394,14 +394,14 @@ actions:
 name: step1_prompt_for_underweight
 description: prompt_for_underweight relevance
 priority: 1
-condition: "step1_weight != '' && step1_weight < 2.5"
+condition: "step1_weight != '' && step1_weight != '0' && step1_weight < 2.5"
 actions:
   - "isRelevant = true"
 ---
 name: step1_prompt_for_overweight
 description: prompt_for_overweight relevance
 priority: 1
-condition: "step1_weight != '' && step1_weight > 3.8"
+condition: "step1_weight != '' && step1_weight != '0' && step1_weight > 3.8"
 actions:
   - "isRelevant = true"
 ---
@@ -625,14 +625,14 @@ actions:
 name: step1_prompt_for_respiratory_rate
 description:  prompt for respiratory rate management
 priority: 1
-condition: "step1_respiratory_rate < 40 || step1_respiratory_rate > 60"
+condition: "step1_respiratory_rate != '' && step1_respiratory_rate != '0' && step1_respiratory_rate != '0' && (step1_respiratory_rate < 40 || step1_respiratory_rate > 60)"
 actions:
   - "isRelevant = true"
 ---
 name: step1_prompt_for_fetal_distress
 description: prompt for fetal distress
 priority: 1
-condition: "!step1_heart_rate.isEmpty() && (step1_heart_rate > 160 || step1_heart_rate < 120)"
+condition: "step1_heart_rate != '' && step1_heart_rate != '0' && step1_heart_rate != '0' && (step1_heart_rate > 160 || step1_heart_rate < 120)"
 actions:
   - "isRelevant = true"
 ---
@@ -668,6 +668,41 @@ name: step1_child_delivery_time
 description: child_delivery_time relevance
 priority: 1
 condition: "global_number_of_children_born > 1 && step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_notify_client_has_fever
+description: notify_client_has_fever relevance
+priority: 1
+condition: "step1_temperature != '' && step1_temperature != '0' && step1_temperature > 37.8"
+actions:
+  - "isRelevant = true"
+---
+name: step1_notify_client_has_hypothermia
+description: notify_client_has_hypothermia relevance
+priority: 1
+condition: "step1_temperature != '' && step1_temperature != '0' && step1_temperature < 36.5"
+actions:
+  - "isRelevant = true"
+---
+name: step1_prompt_for_bcg_vacc_not_provided
+description: prompt_for_bcg_vacc_not_provided relevance
+priority: 1
+condition: "step1_child_bcg_vaccination.contains('no')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_reason_for_not_providing_bcg_vacc
+description: reason_for_not_providing_bcg_vacc relevance
+priority: 1
+condition: "step1_child_bcg_vaccination.contains('no')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_prompt_for_opv0_vacc_not_provided
+description: prompt_for_opv0_vacc_not_provided relevance
+priority: 1
+condition: "step1_child_opv0_vaccination.contains('no')"
 actions:
   - "isRelevant = true"
 

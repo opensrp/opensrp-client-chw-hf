@@ -11,6 +11,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.anc.util.AppExecutors;
+import org.smartregister.chw.core.utils.FormUtils;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.dao.LDDao;
 import org.smartregister.chw.hf.utils.Constants;
@@ -19,6 +20,7 @@ import org.smartregister.chw.ld.contract.BaseLDVisitContract;
 import org.smartregister.chw.ld.domain.Visit;
 import org.smartregister.chw.ld.domain.VisitDetail;
 import org.smartregister.chw.ld.model.BaseLDVisitAction;
+import org.smartregister.chw.referral.util.JsonFormConstants;
 import org.smartregister.util.JsonFormUtils;
 
 import java.text.MessageFormat;
@@ -71,7 +73,36 @@ public class MotherStatusActionHelper implements BaseLDVisitAction.LDVisitAction
 
     @Override
     public String getPreProcessed() {
-        return null;
+        JSONObject motherStatusForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.LDPostDeliveryMotherManagement.getLdPostDeliveryManagementMotherStatus());
+        try {
+            JSONArray fields = motherStatusForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+
+            String modeOfDelivery = LDDao.getModeOfDelivery(baseEntityId);
+
+            if (modeOfDelivery != null && !modeOfDelivery.isEmpty()) {
+                JSONObject modeOfDeliveryQuestion = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "mode_of_delivery");
+                modeOfDeliveryQuestion.put("type", "hidden");
+
+            }
+
+            if (modeOfDelivery.equalsIgnoreCase("cesarean")) {
+                JSONObject placeOfDelivery = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "delivery_place");
+                placeOfDelivery.getJSONArray("values").remove(3);
+                placeOfDelivery.getJSONArray("values").remove(2);
+                placeOfDelivery.getJSONArray("values").remove(1);
+                placeOfDelivery.getJSONArray("keys").remove(3);
+                placeOfDelivery.getJSONArray("keys").remove(2);
+                placeOfDelivery.getJSONArray("keys").remove(1);
+                placeOfDelivery.getJSONArray("openmrs_choice_ids").remove(3);
+                placeOfDelivery.getJSONArray("openmrs_choice_ids").remove(2);
+                placeOfDelivery.getJSONArray("openmrs_choice_ids").remove(1);
+            }
+
+        } catch (JSONException e) {
+            Timber.e(e);
+        }
+
+        return motherStatusForm.toString();
     }
 
     @Override
@@ -243,10 +274,13 @@ public class MotherStatusActionHelper implements BaseLDVisitAction.LDVisitAction
         for (int i = 0; i < numberOfChildrenBorn; i++) {
             // Get visit details for each individual child
             if (isEdit) {
-                Visit lastVisit = LDLibrary.getInstance().visitRepository().getLatestVisit(baseEntityId, "LND " + ordinal(i + 1) + " Newborn");
-
+                Visit lastVisit = LDLibrary.getInstance().visitRepository().getLatestVisit(baseEntityId, "Post Delivery Mother Management");
                 if (lastVisit != null) {
-                    details = org.smartregister.chw.ld.util.VisitUtils.getVisitGroups(LDLibrary.getInstance().visitDetailsRepository().getVisits(lastVisit.getVisitId()));
+                    Visit lastImmediateNewBornCareVisit = LDLibrary.getInstance().visitRepository().getVisitsByParentVisitId(lastVisit.getVisitId(), "LND " + ordinal(i + 1) + " Newborn").get(0);
+
+                    if (lastImmediateNewBornCareVisit != null) {
+                        details = org.smartregister.chw.ld.util.VisitUtils.getVisitGroups(LDLibrary.getInstance().visitDetailsRepository().getVisits(lastImmediateNewBornCareVisit.getVisitId()));
+                    }
                 }
             }
 

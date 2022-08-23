@@ -152,6 +152,21 @@
         }
       },
       {
+        "key": "pmtct_test_date",
+        "type": "hidden",
+        "label": "HIV Test Results",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hiv",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_hiv_test_relevance.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "hiv_counselling_after_testing",
         "type": "native_radio",
         "label": "Was the client provided with counselling after HIV testing?",

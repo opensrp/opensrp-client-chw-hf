@@ -58,14 +58,12 @@
           {
             "key": "yes",
             "text": "Yes",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
             "text": "No",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
@@ -87,105 +85,90 @@
           {
             "key": "chk_hiv_info",
             "text": "HIV transmission, presentation, treatment, disease progression & prevention",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_hiv_info"
           },
           {
             "key": "chk_disclosure",
             "text": "Disclosure and identifying treatment supporter",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_disclosure"
           },
           {
             "key": "chk_promote_testing",
             "text": "Promoting Index testing and couple testing",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_promote_testing"
           },
           {
             "key": "chk_ayf_services",
             "text": "Adolescent and youth-friendly services (Adherence, Retention e.t.c)",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_ayf_services"
           },
           {
             "key": "chk_prevention_diseases",
             "text": "Prevention of diseases, use of bed nets, environmental and personal hygiene",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_prevention_diseases"
           },
           {
             "key": "chk_imp_cpt",
             "text": "Importance of CPT, CrPET and TPT",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_imp_cpt"
           },
           {
             "key": "chk_imp_adherence",
             "text": "Importance of adherence, how to remind, plan, what to do when travelling, sick, etc. Refer to adherence checklist",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_imp_adherence"
           },
           {
             "key": "chk_imp_support_group",
             "text": "Importance of CBS and HIV support group",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_imp_support_group"
           },
           {
             "key": "chk_imp_appointment",
             "text": "Importance of appointment, dates and time, planning transport",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_imp_appointment"
           },
           {
             "key": "chk_sti_rti",
             "text": "STIs/RTIs Syndromes",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_sti_rti"
           },
           {
             "key": "chk_imp_insurance",
             "text": "Importance of processing and using health insurance to cover treatment costs",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_imp_insurance"
           },
           {
             "key": "chk_non_communicable_diseases_prevention",
             "text": "Non-communicable diseases preventions (Nutrition, Exercise, lifestyle, etc)",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_non_communicable_diseases_prevention"
           },
           {
             "key": "chk_eac_sessions",
             "text": "EAC sessions if HVL > 1000 copies/ml",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_eac_sessions"
           },
           {
             "key": "chk_infant_feeding_options",
             "text": "Infant feeding options in the context of HIV",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_infant_feeding_options"
           },
           {
             "key": "chk_living_with_hiv",
             "text": "How to live with HIV",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_living_with_hiv"
           }

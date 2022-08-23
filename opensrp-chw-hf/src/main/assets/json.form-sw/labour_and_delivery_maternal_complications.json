@@ -68,77 +68,66 @@
           {
             "key": "chk_aph",
             "text": "APH",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_aph"
           },
           {
             "key": "chk_prom",
             "text": "PROM",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_prom"
           },
           {
             "key": "chk_high_bp",
             "text": "High BP",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_high_bp"
           },
           {
             "key": "chk_pre_eclampsia",
             "text": "Pre eclampsia",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_pre_eclampsia"
           },
           {
             "key": "chk_eclampsia",
             "text": "Eclampsia",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_eclampsia"
           },
           {
             "key": "chk_anaemia",
             "text": "Anemia",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_anaemia"
           },
           {
             "key": "chk_malaria",
             "text": "Malaria",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_malaria"
           },
           {
             "key": "chk_hiv_stage_3_or_4",
             "text": "HIV+stage III au IV",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_hiv_stage_3_or_4"
           },
           {
             "key": "chk_fgm",
             "text": "Waliokeketwa(FGM)",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_fgm"
           },
           {
             "key": "chk_other",
             "text": "Nyingine",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_other"
           },
           {
             "key": "chk_none",
             "text": "Hakuna",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_none"
           }
@@ -182,70 +171,60 @@
           {
             "key": "chk_pph",
             "text": "PPH",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_pph"
           },
           {
             "key": "chk_pre_eclampsia",
             "text": "Pre-eclampsia",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_pre_eclampsia"
           },
           {
             "key": "chk_eclampsia",
             "text": "Eclampsia",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_eclampsia"
           },
           {
             "key": "chk_obstructed_labour",
             "text": "Obstructed labour",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_obstructed_labour"
           },
           {
             "key": "chk_retained_placenta",
             "text": "Retained placenta",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_retained_placenta"
           },
           {
             "key": "chk_3_degree_tear",
             "text": "Third degree tear",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_3_degree_tear"
           },
           {
             "key": "chk_ruptured_uterus",
             "text": "Ruptured uterus",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_ruptured_uterus"
           },
           {
             "key": "chk_sepsis",
             "text": "Uambukizo/Sepsis",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_sepsis"
           },
           {
             "key": "chk_other",
             "text": "Nyingine",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_other"
           },
           {
             "key": "chk_none",
             "text": "Hakuna",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_none"
           }

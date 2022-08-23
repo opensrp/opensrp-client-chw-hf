@@ -60,4 +60,17 @@ public class LDReferralFormUtils {
             e.printStackTrace();
         }
     }
+
+    public static void startLDChildEmergencyReferral(Activity context, String baseEntityId) {
+        JSONObject formJsonObject;
+        try {
+            formJsonObject = (new FormUtils()).getFormJsonFromRepositoryOrAssets(context, Constants.JsonForm.getLdChildEmergencyReferralForm());
+            if (formJsonObject != null) {
+                formJsonObject.put(Constants.REFERRAL_TASK_FOCUS, Constants.FOCUS.LD_CHILD_EMERGENCY);
+                LdEmergencyReferralRegistrationActivity.startGeneralReferralFormActivityForResults(context, baseEntityId, formJsonObject, false);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
 }

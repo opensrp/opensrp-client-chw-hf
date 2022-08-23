@@ -658,6 +658,21 @@ public class HfAncDao extends AbstractDao {
         return "";
     }
 
+    public static String getMedicalAndSurgicalHistory(String baseEntityId) {
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "medical_surgical_history");
+        String sql = String.format(
+                "SELECT medical_surgical_history FROM %s WHERE base_entity_id = '%s' " +
+                        "AND is_closed = 0 " +
+                        "AND medical_surgical_history IS NOT NULL ",
+                "ec_anc_register",
+                baseEntityId);
+        List<String> res = readData(sql, dataMap);
+        if (res != null && res.size() > 0) {
+            return res.get(0);
+        }
+        return "";
+    }
+
     public static String getNumberOfSurvivingChildren(String baseEntityId) {
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "no_surv_children");
         String sql = String.format(

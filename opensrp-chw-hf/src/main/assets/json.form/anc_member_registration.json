@@ -169,21 +169,18 @@
           {
             "key": "chk_vaginally",
             "text": "Vaginally",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "1170AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           },
           {
             "key": "chk_cesarean_section",
             "text": "Cesarean section",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "1171AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           },
           {
             "key": "chk_miscarriage",
             "text": "Miscarriage",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "1171AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           }
@@ -213,21 +210,18 @@
           {
             "key": "chk_vaginally",
             "text": "Vaginally",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "1170AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           },
           {
             "key": "chk_cesarean_section",
             "text": "Cesarean section",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "1171AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           },
           {
             "key": "chk_miscarriage",
             "text": "Miscarriage",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "1171AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           }

@@ -32,6 +32,7 @@ public class HfHivIndexContactsRegisterProvider extends CoreHivIndexContactsProv
     public void getView(Cursor cursor, SmartRegisterClient smartRegisterClient, RegisterViewHolder registerViewHolder) {
         super.getView(cursor, smartRegisterClient, registerViewHolder);
         registerViewHolder.getDueWrapper().setVisibility(View.GONE);
+        ((HfRegisterViewHolder) registerViewHolder).goToProfileWrapper.setVisibility(View.VISIBLE);
 
         showLatestHivReferralDay((CommonPersonObjectClient) smartRegisterClient, (HfRegisterViewHolder) registerViewHolder);
     }
@@ -44,32 +45,33 @@ public class HfHivIndexContactsRegisterProvider extends CoreHivIndexContactsProv
 
     private void showLatestHivReferralDay(CommonPersonObjectClient client, HfHivIndexContactsRegisterProvider.HfRegisterViewHolder viewHolder) {
         HfReferralUtils.displayReferralDay(client, CoreConstants.TASKS_FOCUS.SUSPECTED_HIV, viewHolder.textViewReferralDay);
-        displayReferralSent(client,viewHolder);
+        displayReferralSent(client, viewHolder);
     }
 
-    private void displayReferralSent(CommonPersonObjectClient client,HfHivIndexContactsRegisterProvider.HfRegisterViewHolder viewHolder){
+    private void displayReferralSent(CommonPersonObjectClient client, HfHivIndexContactsRegisterProvider.HfRegisterViewHolder viewHolder) {
         String baseEntityId = client.entityId();
         HivIndexContactObject hivIndexContactObject = HivIndexDao.getMember(baseEntityId);
         if (HivIndexDao.isReferralSent(baseEntityId)) {
             viewHolder.textViewReferralDay.setVisibility(View.VISIBLE);
             String referralDay = viewHolder.itemView.getContext().getString(R.string.referral_sent);
             viewHolder.textViewReferralDay.setText(referralDay);
-        }  else if (!hivIndexContactObject.getHasTheContactClientBeenTested().equals("") && hivIndexContactObject.getCtcNumber().equals("")){
+        } else if (!hivIndexContactObject.getHasTheContactClientBeenTested().equals("") && hivIndexContactObject.getCtcNumber().equals("")) {
             viewHolder.textViewReferralDay.setVisibility(View.VISIBLE);
             String pendingCtcRegistration = viewHolder.itemView.getContext().getString(R.string.pending_ctc_registration);
             viewHolder.textViewReferralDay.setText(pendingCtcRegistration);
-        }
-        else {
+        } else {
             viewHolder.textViewReferralDay.setVisibility(View.GONE);
         }
     }
 
     public class HfRegisterViewHolder extends RegisterViewHolder {
         public TextView textViewReferralDay;
+        public View goToProfileWrapper;
 
         public HfRegisterViewHolder(View itemView) {
             super(itemView);
             textViewReferralDay = itemView.findViewById(R.id.text_view_referral_day);
+            goToProfileWrapper = itemView.findViewById(R.id.go_to_profile_wrapper);
         }
     }
 }

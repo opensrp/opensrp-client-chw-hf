@@ -72,14 +72,12 @@
           {
             "key": "test_conducted",
             "text": "Liver Function Test conducted",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "test_conducted"
           },
           {
             "key": "test_not_conducted",
             "text": "Liver Function Test not conducted",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "test_not_conducted"
           }
@@ -166,14 +164,12 @@
           {
             "key": "yes",
             "text": "Yes",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
             "text": "No",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
@@ -203,14 +199,12 @@
           {
             "key": "elevated_liver_enzymes",
             "text": "Elevated Liver enzymes",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "elevated_liver_enzymes"
           },
           {
             "key": "normal",
             "text": "Normal",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "normal"
           }
@@ -268,14 +262,12 @@
           {
             "key": "test_conducted",
             "text": "Renal Function Test conducted",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "test_conducted"
           },
           {
             "key": "test_not_conducted",
             "text": "Renal Function Test not conducted",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "test_not_conducted"
           }
@@ -362,14 +354,12 @@
           {
             "key": "yes",
             "text": "Yes",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
             "text": "No",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
@@ -399,14 +389,12 @@
           {
             "key": "elevated_serum_creatinine",
             "text": "Elevated Serum Creatinine",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "elevated_serum_creatinine"
           },
           {
             "key": "normal",
             "text": "Normal",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "normal"
           }

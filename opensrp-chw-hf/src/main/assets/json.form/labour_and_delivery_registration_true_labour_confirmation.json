@@ -60,28 +60,24 @@
           {
             "key": "painful_uterine_contraction",
             "text": "Regular painful uterine contraction with increasing frequency and duration",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "painful_uterine_contraction"
           },
           {
             "key": "bloody_vaginal_discharge",
             "text": "Show (Bloody mucoid vaginal discharge)",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "bloody_vaginal_discharge"
           },
           {
             "key": "effacement_and_dilatation",
             "text": "Effacement and dilatation of cervix",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "effacement_and_dilatation"
           },
           {
             "key": "progressive_descent",
             "text": "Progressive descent of the presenting part",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "progressive_descent"
           },
@@ -89,8 +85,7 @@
             "key": "none",
             "openmrs_entity": "concept",
             "openmrs_choice_id": "none",
-            "text": "None",
-            "value": false
+            "text": "None"
           }
         ],
         "v_required": {
@@ -143,14 +138,12 @@
           {
             "key": "yes",
             "text": "Yes",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
             "text": "No",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }

@@ -87,42 +87,36 @@
           {
             "key": "tubal_litigation",
             "text": "Tubal ligation",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "tubal_litigation"
           },
           {
             "key": "intrauterine_device",
             "text": "Intrauterine device (IUD)",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "intrauterine_device"
           },
           {
             "key": "implants",
             "text": "Implants",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "implants"
           },
           {
             "key": "progestogen_only_pills",
             "text": "Progestogen-only pills (POP)",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "progestogen_only_pills"
           },
           {
             "key": "condom",
             "text": "Condom",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "condom"
           },
           {
             "key": "none",
             "text": "None",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "none"
           }

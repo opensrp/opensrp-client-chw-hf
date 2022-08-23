@@ -32,6 +32,7 @@ public class Constants extends CoreConstants {
     public static final class FOCUS {
         public static final String LOST_TO_FOLLOWUP_FOCUS = "LTFU";
         public static final String LD_EMERGENCY = "Labour and Delivery Emergency";
+        public static final String LD_CHILD_EMERGENCY = "Labour and Delivery Child Emergency";
     }
 
     public static final class Events {
@@ -66,6 +67,7 @@ public class Constants extends CoreConstants {
         public static final String LD_GENERAL_EXAMINATION = "LD General Examination";
         public static final String LD_ACTIVE_MANAGEMENT_OF_3RD_STAGE_OF_LABOUR = "LD Active Management of 3rd Stage Of Labour";
         public static final String LD_POST_DELIVERY_MOTHER_MANAGEMENT = "Post Delivery Mother Management";
+        public static final String CLOSE_LD = "Close LD";
     }
 
     public static final class TableName {
@@ -144,6 +146,7 @@ public class Constants extends CoreConstants {
         private static final String LD_HEI_FIRST_VISIT = "ld_hei_first_visit";
         private static final String LTFU_REFERRAL_FORM = "referrals/ltfu_referral_form";
         private static final String LD_EMERGENCY_REFERRAL_FORM = "referrals/labour_and_delivery_emergency_referral";
+        private static final String LD_CHILD_EMERGENCY_REFERRAL_FORM = "referrals/labour_and_delivery_child_emergency_referral";
 
         public static String getNextFacilityVisitForm() {
             return NEXT_FACILITY_VISIT_FORM;
@@ -159,6 +162,10 @@ public class Constants extends CoreConstants {
 
         public static String getLdEmergencyReferralForm() {
             return LD_EMERGENCY_REFERRAL_FORM;
+        }
+
+        public static String getLdChildEmergencyReferralForm() {
+            return LD_CHILD_EMERGENCY_REFERRAL_FORM;
         }
 
         public static String getHeiNumberRegistration() {

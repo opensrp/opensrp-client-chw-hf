@@ -210,112 +210,96 @@
           {
             "key": "bleeding_vag",
             "text": "Kutokwa na damu ukeni",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "bleeding_vag"
           },
           {
             "key": "headache_visual_disturbance",
             "text": "Maumivu ya kichwa na changamoto ya kuona",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "headache_visual_disturbance"
           },
           {
             "key": "severely_pale",
             "text": "Kupauka sana",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "severely_pale"
           },
           {
             "key": "severe_vomiting",
             "text": "Kutapika sana",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "severe_vomiting"
           },
           {
             "key": "convulsion",
             "text": "Degedege",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "convulsion"
           },
           {
             "key": "looking_very_ill",
             "text": "Kuonekana mgonjwa sana (mchovu, kusinzia), ",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "looking_very_ill"
           },
           {
             "key": "fever",
             "text": "Homa",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "fever"
           },
           {
             "key": "unconscious",
             "text": "Kupoteza fahamu",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "unconscious"
           },
           {
             "key": "severe_pain",
             "text": "Maumivu makali",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "severe_pain"
           },
           {
             "key": "severe_breathing_difficulty",
             "text": "Kupumua kwa shida sana",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "severe_breathing_difficulty"
           },
           {
             "key": "in_labour",
             "text": "Kusikia uchungu wa kujifungua",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "in_labour"
           },
           {
             "key": "imminent_labour",
             "text": "Kujifungua hivi karibuni",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "imminent_labour"
           },
           {
             "key": "reduced_fetal_movement",
             "text": "Kupungua au kutosikia mtoto akicheza",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "reduced_fetal_movement"
           },
           {
             "key": "sacrum_oedema",
             "text": "Edema ya uso na sacrum",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "sacrum_oedema"
           },
           {
             "key": "other",
             "text": "Nyingine (Bainisha)",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "other"
           },
           {
             "key": "none",
             "text": "Hakuna",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "none"
           }

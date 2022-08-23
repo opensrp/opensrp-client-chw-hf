@@ -117,63 +117,54 @@
           {
             "key": "fetal_distress",
             "text": "Fetal distress",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "fetal_distress"
           },
           {
             "key": "previous_scare",
             "text": "Previous scare",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "previous_scare"
           },
           {
             "key": "maternal_request",
             "text": "Ombi la mama anayejifungua",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "maternal_request"
           },
           {
             "key": "failed_induction",
             "text": "Failed induction",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "failed_induction"
           },
           {
             "key": "malpresentation",
             "text": "Malpresentation",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "malpresentation"
           },
           {
             "key": "prolonged_labor",
             "text": "Prolonged labor",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "prolonged_labor"
           },
           {
             "key": "obstructed_labor",
             "text": "Obstructed labor",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "obstructed_labor"
           },
           {
             "key": "multiple_gastation",
             "text": "Multiple gestation",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "multiple_gastation"
           },
           {
             "key": "others",
             "text": "Nyingine",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "others"
           }

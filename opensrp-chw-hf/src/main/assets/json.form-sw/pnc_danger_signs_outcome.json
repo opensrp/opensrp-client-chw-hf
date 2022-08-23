@@ -77,104 +77,87 @@
           {
             "key": "Fever",
             "openmrs_choice_id": "",
-            "text": "Homa",
-            "value": false
+            "text": "Homa"
           },
           {
             "key": "Bleeding_vaginally",
             "openmrs_choice_id": "",
-            "text": "Damu kutoka ukeni",
-            "value": false
+            "text": "Damu kutoka ukeni"
           },
           {
             "key": "Severe_headache",
             "openmrs_choice_id": "",
-            "text": "Maumivu ya kichwa",
-            "value": false
+            "text": "Maumivu ya kichwa"
           },
           {
             "key": "Convulsions",
             "openmrs_choice_id": "",
-            "text": "Degedege",
-            "value": false
+            "text": "Degedege"
           },
           {
             "key": "Difficulty_breathing",
             "openmrs_choice_id": "",
-            "text": "Kushindwa kupumua",
-            "value": false
+            "text": "Kushindwa kupumua"
           },
           {
             "key": "Severe_abdominal_pain",
             "openmrs_choice_id": "",
-            "text": "Maumivu makali ya tumbo",
-            "value": false
+            "text": "Maumivu makali ya tumbo"
           },
           {
             "key": "Vaginal_discharge_with_a_bad_smell",
             "openmrs_choice_id": "",
-            "text": "Kutoka uchafu / majimaji ukeni yenye harufu mbaya",
-            "value": false
+            "text": "Kutoka uchafu / majimaji ukeni yenye harufu mbaya"
           },
           {
             "key": "Redness_around_the_umbilical_cord_foul_smelling_discharge_from_the_umbilical_cord",
             "openmrs_choice_id": "",
-            "text": "Uambukizo kwenye kitovu",
-            "value": false
+            "text": "Uambukizo kwenye kitovu"
           },
           {
             "key": "Excessive_crying",
             "openmrs_choice_id": "",
-            "text": "Mtoto kulia sana",
-            "value": false
+            "text": "Mtoto kulia sana"
           },
           {
             "key": "Fast_breathing",
             "openmrs_choice_id": "",
-            "text": "Kushindwa kupumua",
-            "value": false
+            "text": "Kushindwa kupumua"
           },
           {
             "key": "Chest_indrawing",
             "openmrs_choice_id": "",
-            "text": "Kifua kikovu",
-            "value": false
+            "text": "Kifua kikovu"
           },
           {
             "key": "Unable_to_suck",
             "openmrs_choice_id": "",
-            "text": "Kushindwa kunyonya",
-            "value": false
+            "text": "Kushindwa kunyonya"
           },
           {
             "key": "No_movement",
             "openmrs_choice_id": "",
-            "text": "Hakuna harakati",
-            "value": false
+            "text": "Hakuna harakati"
           },
           {
             "key": "Pale_or_jaundiced",
             "openmrs_choice_id": "",
-            "text": "Mwili kuwa njano",
-            "value": false
+            "text": "Mwili kuwa njano"
           },
           {
             "key": "Lethargy",
             "openmrs_choice_id": "",
-            "text": "Uchovu",
-            "value": false
+            "text": "Uchovu"
           },
           {
             "key": "Other",
             "openmrs_choice_id": "",
-            "text": "Nyingine",
-            "value": false
+            "text": "Nyingine"
           },
           {
             "key": "None",
             "openmrs_choice_id": "",
-            "text": "Hakuna",
-            "value": false
+            "text": "Hakuna"
           }
         ],
         "exclusive": [

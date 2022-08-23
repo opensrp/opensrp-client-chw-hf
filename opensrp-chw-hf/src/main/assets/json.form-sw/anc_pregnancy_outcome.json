@@ -67,7 +67,6 @@
           {
             "key": "alive",
             "text": "Yupo Mzima",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "alive",
             "openmrs_entity_parent": ""
@@ -75,7 +74,6 @@
           {
             "key": "deceased",
             "text": "Amefariki",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "deceased",
             "openmrs_entity_parent": ""
@@ -138,7 +136,6 @@
           {
             "key": "born_alive",
             "text": "Mtoto alizaliwa mzima",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "born_alive",
             "openmrs_entity_parent": ""
@@ -146,7 +143,6 @@
           {
             "key": "born_alive_died",
             "text": "Mtoto alizaliwa hai, lakini akafariki baadaye",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "born_alive_died",
             "openmrs_entity_parent": ""
@@ -154,7 +150,6 @@
           {
             "key": "still_born",
             "text": "Mtoto alizaliwa akiwa amekwisha fariki",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "still_born",
             "openmrs_entity_parent": ""
@@ -162,7 +157,6 @@
           {
             "key": "alive_with_problem",
             "text": "Mtoto alizaliwa hai, lakini aamekutwa na matatizo (i.e: ulemavu, matatizo ya kupumua)",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "alive_with_problem",
             "openmrs_entity_parent": ""
@@ -170,7 +164,6 @@
           {
             "key": "miscarriage",
             "text": "Mimba iliharibika",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "miscarriage",
             "openmrs_entity_parent": ""
@@ -474,7 +467,6 @@
           {
             "key": "gave_birth_alone",
             "text": "Alijifungua nyumbani akiwa peke yake",
-            "value": false,
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "gave_birth_alone"
@@ -482,7 +474,6 @@
           {
             "key": "gave_birth_with_help",
             "text": "Alijifungua nyumbani akisaidiiwa na mwanafamilia/rafiki/jirani",
-            "value": false,
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "gave_birth_with_help"
@@ -490,7 +481,6 @@
           {
             "key": "midwife_help",
             "text": "Alijifungua nyumbani akisaidiwa na mkunga wa jadi",
-            "value": false,
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "midwife_help"
@@ -521,7 +511,6 @@
           {
             "key": "facility_family_member",
             "text": "Alisindikizwa na wanafamilia.",
-            "value": false,
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "facility_family_member"
@@ -529,7 +518,6 @@
           {
             "key": "facility_midwife",
             "text": "Alisindikizwa na Mkunga wa Jadi",
-            "value": false,
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "facility_midwife"
@@ -537,7 +525,6 @@
           {
             "key": "alone",
             "text": "Alikuja peke yake",
-            "value": false,
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "alone"
@@ -545,7 +532,6 @@
           {
             "key": "other_pple",
             "text": "Alisindikizwa na watu wengine",
-            "value": false,
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "other_pple"
@@ -553,7 +539,6 @@
           {
             "key": "other_chw",
             "text": "Alisindikizwa na Mtoa huduma ngazi ya Jamii",
-            "value": false,
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "other_chw"

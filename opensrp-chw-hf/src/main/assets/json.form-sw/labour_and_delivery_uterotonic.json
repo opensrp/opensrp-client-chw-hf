@@ -65,21 +65,18 @@
           {
             "key": "oxytocin",
             "text": "Oxytocin (10IU ndani ya dakika moja baada ya kujifungua)",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "oxytocin"
           },
           {
             "key": "misoprostol",
             "text": "Misoprostol (400mcg au 600mcg chini ya ulimi)",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "misoprostol"
           },
           {
             "key": "ergometrine",
             "text": "Ergometrine (0.5mg)",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "ergometrine"
           }

@@ -71,14 +71,12 @@
           {
             "key": "missed_appointment",
             "text": "Missed Appointment",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "missed_appointment"
           },
           {
             "key": "mother_champion_services",
             "text": "Mother Champion Community Services",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "mother_champion_services"
           }

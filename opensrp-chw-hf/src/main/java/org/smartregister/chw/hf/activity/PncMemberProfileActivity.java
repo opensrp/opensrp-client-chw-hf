@@ -1,5 +1,12 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
+import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
+import static org.smartregister.chw.hf.utils.JsonFormUtils.SYNC_LOCATION_ID;
+import static org.smartregister.chw.hf.utils.JsonFormUtils.getAutoPopulatedJsonEditFormString;
+import static org.smartregister.util.JsonFormUtils.STEP1;
+import static org.smartregister.util.Utils.getAllSharedPreferences;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -7,6 +14,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.vijay.jsonwizard.utils.FormUtils;
@@ -60,15 +69,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import androidx.recyclerview.widget.RecyclerView;
 import timber.log.Timber;
-
-import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
-import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
-import static org.smartregister.chw.hf.utils.JsonFormUtils.SYNC_LOCATION_ID;
-import static org.smartregister.chw.hf.utils.JsonFormUtils.getAutoPopulatedJsonEditFormString;
-import static org.smartregister.util.JsonFormUtils.STEP1;
-import static org.smartregister.util.Utils.getAllSharedPreferences;
 
 public class PncMemberProfileActivity extends CorePncMemberProfileActivity implements PncMemberProfileContract.View {
 
@@ -228,8 +229,15 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
         menu.findItem(org.smartregister.chw.core.R.id.action_location_info).setVisible(UpdateDetailsUtil.isIndependentClient(memberObject.getBaseEntityId()));
         List<ChildModel> childModels = HfPncDao.childrenForPncWoman(memberObject.getBaseEntityId());
         for (int i = 0; i < childModels.size(); i++) {
-            menu.add(0, R.id.action_pnc_registration, 100 + i, getString(R.string.edit_child_form_title, childModels.get(i).getFirstName()));
-            menuItemEditNames.put(getString(R.string.edit_child_form_title, childModels.get(i).getFirstName()), childModels.get(i).getBaseEntityId());
+            String nameOfMenuItem;
+            if (childModels.get(i).getFirstName().startsWith("Baby of")) {
+                nameOfMenuItem = getString(R.string.edit_child_form_title_for_child_without_names, childModels.get(i).getFirstName());
+            } else {
+                nameOfMenuItem = getString(R.string.edit_child_form_title, childModels.get(i).getFirstName());
+            }
+
+            menu.add(0, R.id.action_pnc_registration, 100 + i, nameOfMenuItem);
+            menuItemEditNames.put(nameOfMenuItem, childModels.get(i).getBaseEntityId());
         }
         menu.findItem(R.id.action__pnc_remove_member).setVisible(false);
         menu.findItem(R.id.action__pnc_danger_sign_outcome).setVisible(false);
@@ -263,7 +271,7 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
                         CoreConstants.JSON_FORM.getFamilyMemberRegister());
             }
             return true;
-        } else if(itemId == org.smartregister.chw.core.R.id.action_location_info){
+        } else if (itemId == org.smartregister.chw.core.R.id.action_location_info) {
 
             String familyBaseEntityId = UpdateDetailsUtil.getFamilyBaseEntityId(getCommonPersonObjectClient());
             JSONObject preFilledForm = getAutoPopulatedJsonEditFormString(
@@ -356,7 +364,7 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
                         new FamilyProfileInteractor().saveRegistration(familyEventClient, jsonString, true, (FamilyProfileContract.InteractorCallBack) pncMemberProfilePresenter());
                     }
                 } else if (form.getString(JsonFormUtils.ENCOUNTER_TYPE).equals(org.smartregister.chw.core.utils.Utils.metadata().familyRegister.updateEventType)) {
-                    FamilyEventClient familyEventClient = new CoreAllClientsMemberModel().processJsonForm(jsonString,UpdateDetailsUtil.getFamilyBaseEntityId(getCommonPersonObjectClient()));
+                    FamilyEventClient familyEventClient = new CoreAllClientsMemberModel().processJsonForm(jsonString, UpdateDetailsUtil.getFamilyBaseEntityId(getCommonPersonObjectClient()));
                     JSONObject syncLocationField = CoreJsonFormUtils.getJsonField(new JSONObject(jsonString), STEP1, SYNC_LOCATION_ID);
                     familyEventClient.getEvent().setLocationId(CoreJsonFormUtils.getSyncLocationUUIDFromDropdown(syncLocationField));
                     familyEventClient.getEvent().setEntityType(CoreConstants.TABLE_NAME.INDEPENDENT_CLIENT);

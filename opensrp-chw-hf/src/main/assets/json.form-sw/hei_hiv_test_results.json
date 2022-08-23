@@ -65,14 +65,12 @@
           {
             "key": "positive",
             "text": "Chanya",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "positive"
           },
           {
             "key": "negative",
             "text": "Hasi",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "negative"
           }
@@ -95,14 +93,12 @@
           {
             "key": "yes",
             "text": "Ndio",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
             "text": "Hapana",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
@@ -172,14 +168,12 @@
           {
             "key": "yes",
             "text": "Ndio",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
             "text": "Hapana",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
@@ -244,14 +238,12 @@
           {
             "key": "yes",
             "text": "Ndio",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
             "text": "Hapana",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }

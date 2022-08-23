@@ -6,46 +6,70 @@
     android:layout_height="wrap_content"
     android:background="@color/white">
 
+    <LinearLayout
+        android:id="@+id/client_avatar_wrapper"
+        android:layout_width="70dp"
+        android:layout_height="90dp"
+        android:paddingStart="@dimen/register_list_item_padding"
+        android:paddingLeft="@dimen/register_list_item_padding"
+        android:paddingTop="@dimen/register_list_top_bottom_padding"
+        android:paddingEnd="@dimen/register_list_item_padding"
+        android:paddingRight="@dimen/register_list_item_padding"
+        android:paddingBottom="@dimen/register_list_top_bottom_padding">
+
+        <ImageView
+            android:id="@+id/client_avatar"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:gravity="center"
+            android:hapticFeedbackEnabled="true"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:src="@mipmap/ic_member" />
+
+    </LinearLayout>
+
     <RelativeLayout
         android:id="@+id/patient_column"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/client_avatar_wrapper"
         app:layout_constraintTop_toTopOf="parent">
 
-        <org.smartregister.view.customcontrols.CustomFontTextView
+        <TextView
             android:id="@+id/patient_name_and_age"
             style="@style/CustomFontTextViewStyle.ClientList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
+            android:fontFamily="@font/google_sans_medium"
             android:maxLines="1"
             android:paddingStart="0dp"
-            android:paddingBottom="4dp"
             android:paddingLeft="0dp"
+            android:paddingBottom="8dp"
             android:singleLine="true"
             android:text="Patient Name, 33"
-            android:textColor="@color/text_black"
-            android:textSize="@dimen/register_list_title_size" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
-        <org.smartregister.view.customcontrols.CustomFontTextView
+        <TextView
             android:id="@+id/pnc_period"
-            style="@style/CustomFontTextViewStyle.ClientList.Light"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/patient_name_and_age"
+            android:fontFamily="@font/google_sans_regular"
             android:paddingStart="0dp"
             android:paddingLeft="0dp"
             android:paddingTop="0dp"
             android:text="PNC day 2"
             android:textColor="@color/light_grey_text"
-            android:textSize="@dimen/register_list_desc_size"
             android:textStyle="bold" />
 
         <TextView
@@ -56,8 +80,9 @@
             android:layout_marginStart="@dimen/referral_item_margin"
             android:layout_marginEnd="@dimen/referral_item_margin"
             android:layout_toEndOf="@id/pnc_period"
-            android:textStyle="bold"
-            android:text="." />
+            android:text="\u00b7"
+            android:textColor="@color/primary"
+            android:textSize="18sp" />
 
         <org.smartregister.view.customcontrols.CustomFontTextView
             android:id="@+id/village_town"
@@ -71,7 +96,6 @@
             android:paddingTop="0dp"
             android:text="Lavington #445"
             android:textColor="@color/light_grey_text"
-            android:textSize="@dimen/register_list_desc_size"
             android:textStyle="bold" />
 
         <TextView
@@ -140,23 +164,16 @@
 
     <com.rey.material.widget.ImageView
         android:id="@+id/go_to_profile_image_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_gravity="center"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
         android:adjustViewBounds="true"
         android:background="@color/transparent"
         android:gravity="center"
         android:hapticFeedbackEnabled="true"
-        android:paddingLeft="10dp"
-        android:src="@drawable/row_goto"
-        android:textAllCaps="true"
-        android:textAppearance="?android:textAppearanceSmall"
-        android:textColor="@color/vaccine_blue_bg_st"
-        android:textSize="15sp"
-        android:typeface="normal"
+        android:src="@drawable/baseline_keyboard_arrow_right"
+        android:tint="@color/me_page_arrow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -112,7 +112,9 @@
     <string name="mother_general_examination">Uchunguzi wa Afya ya Mama</string>
     <string name="child_general_examination_complete">Uchunguzi wa Afya ya Mtoto %s Umekamilika</string>
     <string name="child_general_examination">Uchunguzi wa Afya ya Mtoto %s</string>
+    <string name="child_general_examination_for_children_without_names">Uchunguzi wa Afya ya %s</string>
     <string name="children_general_examination">Uchunguzi wa Afya ya Mtoto %s - %d</string>
+    <string name="children_general_examination_for_children_without_names">Uchunguzi wa Afya ya %s - %d</string>
     <string name="immunization_complete">Chanjo zimekamilika</string>
     <string name="immunization_title">Chanjo</string>
     <string name="nutritional_supplements_complete">Virutubisho vya Lishe Umekamilika</string>
@@ -313,6 +315,8 @@
     <string name="ltfu_reason_client_not_found_client_relocated">Amehama makazi</string>
     <string name="ltfu_reason_client_not_found_seasonal_work">Kilimo\/kazi za msimu</string>
     <string name="process_visit">Chakata Hudhurio</string>
+    <string name="edit_child_form_title">Hariri taarifa za mtoto %1$s</string>
+    <string name="edit_child_form_title_for_child_without_names">Hariri taarifa za %1$s</string>
 
 
 </resources>

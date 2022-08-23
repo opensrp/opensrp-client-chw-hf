@@ -58,14 +58,12 @@
           {
             "key": "yes",
             "text": "Ndio",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
             "text": "Hapana",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
@@ -90,49 +88,42 @@
           {
             "key": "chk_cough",
             "text": "Mteja anakikohozi cha muda wowote",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_cough"
           },
           {
             "key": "chk_sputum",
             "text": "Mteja anakohoa makohozi yaliyochanganyika na damu",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_sputum"
           },
           {
             "key": "chk_fevers",
             "text": "Mteja amekuwa na Homa kwa zaidi ya wiki mbili",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_fevers"
           },
           {
             "key": "chk_weight_loss",
             "text": "Mteja anapoteza Uzito",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_weight_loss"
           },
           {
             "key": "chk_weight_loss_subsequent_visit",
             "text": "Mteja amepungua uzito katika mfululizo mahudhulio",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_weight_loss_subsequent_visit"
           },
           {
             "key": "chk_excessive_sweating",
             "text": "Mteja amekuwa akitoka na jasho jingi sana usiku kwa wiki mbili au zaidi",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_excessive_sweating"
           },
           {
             "key": "chk_none",
             "text": "Hakuna",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_none"
           }
@@ -161,14 +152,12 @@
           {
             "key": "positive",
             "text": "Chanya",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "positive"
           },
           {
             "key": "negative",
             "text": "Hazi",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "negative"
           }
@@ -222,14 +211,12 @@
           {
             "key": "yes",
             "text": "Ndio",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
             "text": "Hapana",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
@@ -291,14 +278,12 @@
           {
             "key": "yes",
             "text": "Ndio",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
             "text": "Hapana",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
@@ -328,14 +313,12 @@
           {
             "key": "yes",
             "text": "Ndiyo",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
             "text": "Hapana",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
@@ -365,21 +348,18 @@
           {
             "key": "out_of_medicine",
             "text": "Dawa zimeisha",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "out_of_medicine"
           },
           {
             "key": "client_refused_medication",
             "text": "Mteja amekataa kuchukua dawa",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "client_refused_medication"
           },
           {
             "key": "client_allergic_to_tpt",
             "text": "Mteja huyu ana mzio na dawa za TPT",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "client_allergic_to_tpt"
           }

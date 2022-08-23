@@ -73,14 +73,12 @@
           {
             "key": "missed_appointment",
             "text": "Amekosa kwenye miadi yake",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "missed_appointment"
           },
           {
             "key": "lost_to_followup",
             "text": "Mteja amepotea katika Ufuatiliaji",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "lost_to_followup"
           }

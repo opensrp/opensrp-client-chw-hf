@@ -1086,7 +1086,6 @@
           {
             "key": "no_resuscitation",
             "text": "Hajasaidiwa kupumua(No resuscitation)",
-            "value": false,
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no_resuscitation"
@@ -1094,7 +1093,6 @@
           {
             "key": "suction_only",
             "text": "Suction only",
-            "value": false,
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "suction_only"
@@ -1102,7 +1100,6 @@
           {
             "key": "suction_and_bag_mask",
             "text": "Suction and bag mask",
-            "value": false,
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "suction_and_bag_mask"
@@ -1110,7 +1107,6 @@
           {
             "key": "stimulation",
             "text": "stimulation",
-            "value": false,
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "stimulation"
@@ -1876,14 +1872,12 @@
           {
             "key": "yes",
             "text": "Ndiyo",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
             "text": "Hapana",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
@@ -1909,14 +1903,12 @@
           {
             "key": "yes",
             "text": "Ndiyo",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
             "text": "Hapana",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
@@ -1985,21 +1977,18 @@
           {
             "key": "out_of_stock",
             "text": "Dawa zimekwisha",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "out_of_stock"
           },
           {
             "key": "medication_expired",
             "text": "Muda wa matumizi wa dawa umeisha",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "medication_expired"
           },
           {
             "key": "other",
             "text": "Nyingine(bainisha)",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "other"
           }
@@ -2131,14 +2120,12 @@
           {
             "key": "yes",
             "text": "Ndiyo",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
             "text": "Hapana",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
@@ -2192,28 +2179,24 @@
           {
             "key": "out_of_stock",
             "text": "zimeisha",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "out_of_stock"
           },
           {
             "key": "medication_expired",
             "text": "Muda wa matumizi wa dawa umeisha",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "medication_expired"
           },
           {
             "key": "home_delivery",
             "text": "Kajifungulia nyumbani",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "home_delivery"
           },
           {
             "key": "other",
             "text": "Nyingine taja",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "other"
           }

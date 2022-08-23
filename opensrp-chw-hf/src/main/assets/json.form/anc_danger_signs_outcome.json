@@ -114,68 +114,57 @@
           {
             "key": "Fever",
             "openmrs_choice_id": "Fever",
-            "text": "Fever",
-            "value": false
+            "text": "Fever"
           },
           {
             "key": "Bleeding_vaginally",
             "openmrs_choice_id": "Bleeding_vaginally",
-            "text": "Bleeding vaginally",
-            "value": false
+            "text": "Bleeding vaginally"
           },
           {
             "key": "Severe_headache",
             "openmrs_choice_id": "Severe_headache",
-            "text": "Severe headache",
-            "value": false
+            "text": "Severe headache"
           },
           {
             "key": "Convulsions",
             "openmrs_choice_id": "Convulsions",
-            "text": "Convulsions",
-            "value": false
+            "text": "Convulsions"
           },
           {
             "key": "Difficulty_breathing",
             "openmrs_choice_id": "Difficulty_breathing",
-            "text": "Difficulty breathing",
-            "value": false
+            "text": "Difficulty breathing"
           },
           {
             "key": "Severe_abdominal_pain",
             "openmrs_choice_id": "Severe_abdominal_pain",
-            "text": "Severe abdominal pain",
-            "value": false
+            "text": "Severe abdominal pain"
           },
           {
             "key": "Swelling_of_the_face_and/or_hands",
             "openmrs_choice_id": "Swelling_of_the_face_and",
-            "text": "Swelling of the face and/or hands",
-            "value": false
+            "text": "Swelling of the face and/or hands"
           },
           {
             "key": "Discoloured_or_watery_liquid_vaginal_discharge_with_a_bad_smell",
             "openmrs_choice_id": "Discoloured_or_watery_liquid_vaginal_discharge_with_a_bad_smell",
-            "text": "Discoloured or watery, liquid vaginal discharge with a bad smell",
-            "value": false
+            "text": "Discoloured or watery, liquid vaginal discharge with a bad smell"
           },
           {
             "key": "No_movement_unusual_movement_for_a_child_in_the_womb",
             "openmrs_choice_id": "No_movement_unusual_movement_for_a_child_in_the_womb",
-            "text": "No movement / unusual movement for a child in the womb",
-            "value": false
+            "text": "No movement / unusual movement for a child in the womb"
           },
           {
             "key": "Other",
             "openmrs_choice_id": "Other",
-            "text": "Other",
-            "value": false
+            "text": "Other"
           },
           {
             "key": "None",
             "openmrs_choice_id": "None",
-            "text": "None",
-            "value": false
+            "text": "None"
           }
         ],
         "exclusive": [
