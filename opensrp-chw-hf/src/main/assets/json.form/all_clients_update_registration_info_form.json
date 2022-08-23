@@ -138,7 +138,7 @@
           "label": "Age"
         },
         "min_date": "today-120y",
-        "max_date": "today-5y",
+        "max_date": "today",
         "v_required": {
           "value": "true",
           "err": "Please enter the date of birth"
@@ -200,10 +200,6 @@
         "v_numeric": {
           "value": "true",
           "err": "Number must begin with 0 and must be a total of 10 digits in length"
-        },
-        "v_min": {
-          "value": "5",
-          "err": "Age must be equal or greater than 5"
         },
         "v_max": {
           "value": "120",
