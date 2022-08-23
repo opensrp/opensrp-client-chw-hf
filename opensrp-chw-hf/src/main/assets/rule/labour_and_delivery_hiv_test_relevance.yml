@@ -26,3 +26,10 @@ priority: 1
 condition: "step1_hiv_test_conducted.contains('yes')"
 actions:
   - "isRelevant = true"
+---
+name: step1_pmtct_test_date
+description: pmtct_test_date calculation
+priority: 1
+condition: "step1_hiv_test_conducted.contains('yes')"
+actions:
+  - "calculation = helper.getDateToday()"

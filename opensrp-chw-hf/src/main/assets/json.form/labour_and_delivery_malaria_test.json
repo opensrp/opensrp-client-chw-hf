@@ -46,11 +46,11 @@
     "title": "Malaria Test",
     "fields": [
       {
-        "key": "malaria_test",
+        "key": "malaria",
         "type": "native_radio",
         "label": "Malaria test results",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "syphilis",
+        "openmrs_entity_id": "malaria",
         "openmrs_entity_parent": "",
         "options": [
           {

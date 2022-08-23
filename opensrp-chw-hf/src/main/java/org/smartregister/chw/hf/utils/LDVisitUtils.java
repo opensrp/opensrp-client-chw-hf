@@ -1,6 +1,9 @@
 package org.smartregister.chw.hf.utils;
 
 import static org.smartregister.chw.hf.interactor.LDPostDeliveryManagementMotherActivityInteractor.ordinal;
+import static org.smartregister.chw.hf.interactor.LDVisitInteractor.hbTestMoreThanTwoWeeksAgo;
+import static org.smartregister.chw.hf.interactor.LDVisitInteractor.malariaTestConductedDuringRegistration;
+import static org.smartregister.chw.hf.interactor.LDVisitInteractor.syphilisTestConductedDuringRegistration;
 import static org.smartregister.chw.hf.utils.Constants.Events.LD_POST_DELIVERY_MOTHER_MANAGEMENT;
 
 import org.apache.commons.lang3.StringUtils;
@@ -81,6 +84,28 @@ public class LDVisitUtils extends VisitUtils {
                     hivActionDone = true;
                 }
 
+                boolean malariaActionDone = true;
+                if (!malariaTestConductedDuringRegistration(baseEntityId)) {
+                    String malariaTest = getFieldValue(obs, "malaria");
+                    if (malariaTest == null || malariaTest.isEmpty())
+                        malariaActionDone = false;
+                }
+
+                boolean syphilisActionDone = true;
+                if (!syphilisTestConductedDuringRegistration(baseEntityId)) {
+                    String syphilisTest = getFieldValue(obs, "syphilis");
+                    if (syphilisTest == null || syphilisTest.isEmpty())
+                        syphilisActionDone = false;
+                }
+
+                boolean hbActionDone = true;
+                if (hbTestMoreThanTwoWeeksAgo(baseEntityId)) {
+                    String hbTest = getFieldValue(obs, "hb_test_conducted");
+                    if (hbTest == null || hbTest.isEmpty())
+                        hbActionDone = false;
+                }
+
+
                 if (isGeneralConditionDone &&
                         isPulseRateDone &&
                         isRespiratoryRateDone &&
@@ -101,6 +126,9 @@ public class LDVisitUtils extends VisitUtils {
                         isMouldingDone &&
                         isStationDone &&
                         isDecisionDone &&
+                        syphilisActionDone &&
+                        malariaActionDone &&
+                        hbActionDone &&
                         hivActionDone) {
                     ldVisits.add(visit);
                 }

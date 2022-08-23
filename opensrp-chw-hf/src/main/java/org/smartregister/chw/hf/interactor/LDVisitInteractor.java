@@ -4,9 +4,9 @@ import android.content.Context;
 
 import org.smartregister.chw.anc.util.VisitUtils;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.actionhelper.LDGeneralExaminationActionHelper;
 import org.smartregister.chw.hf.actionhelper.LDHBTestActionHelper;
 import org.smartregister.chw.hf.actionhelper.LDHIVTestActionHelper;
-import org.smartregister.chw.hf.actionhelper.LDGeneralExaminationActionHelper;
 import org.smartregister.chw.hf.actionhelper.LDMalariaTestActionHelper;
 import org.smartregister.chw.hf.actionhelper.LDSyphilisTestActionHelper;
 import org.smartregister.chw.hf.actionhelper.LDVaginalExaminationActionHelper;
@@ -22,14 +22,15 @@ import org.smartregister.chw.ld.interactor.BaseLDVisitInteractor;
 import org.smartregister.chw.ld.model.BaseLDVisitAction;
 import org.smartregister.clientandeventmodel.Event;
 
-import java.sql.Time;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 import timber.log.Timber;
 
@@ -74,14 +75,14 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
                     evaluateHIVStatus(details);
                 }
 
-                if (hbTestMoreThanTwoWeeksAgo()){
+                if (hbTestMoreThanTwoWeeksAgo(memberObject.getBaseEntityId())) {
                     evaluateHBTest(details);
                 }
 
-                if (!syphilisTestConductedDuringRegistration())
+                if (!syphilisTestConductedDuringRegistration(memberObject.getBaseEntityId()))
                     evaluateSyphilisTest(details);
 
-                if (!malariaTestConductedDuringRegistration())
+                if (!malariaTestConductedDuringRegistration(memberObject.getBaseEntityId()))
                     evaluateMalariatest(details);
 
             } catch (BaseLDVisitAction.ValidationException e) {
@@ -94,61 +95,61 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
         appExecutors.diskIO().execute(runnable);
     }
 
-    private boolean malariaTestConductedDuringRegistration(){
-        if (LDDao.getMalariaTest(memberObject.getBaseEntityId()) != null){
-            String malariaTest = LDDao.getMalariaTest(memberObject.getBaseEntityId());
+    public static boolean malariaTestConductedDuringRegistration(String baseEntityId) {
+        if (LDDao.getMalariaTest(baseEntityId) != null) {
+            String malariaTest = LDDao.getMalariaTest(baseEntityId);
             return !malariaTest.equalsIgnoreCase(Constants.FormConstants.ClinicFindings.Malaria.MALARIA_TEST_NOT_DONE);
         }
         return false;
     }
 
-    private boolean syphilisTestConductedDuringRegistration(){
-        if (LDDao.getSyphilisTest(memberObject.getBaseEntityId()) != null){
-            String syphilisTest = LDDao.getSyphilisTest(memberObject.getBaseEntityId());
+    public static boolean syphilisTestConductedDuringRegistration(String baseEntityId) {
+        if (LDDao.getSyphilisTest(baseEntityId) != null) {
+            String syphilisTest = LDDao.getSyphilisTest(baseEntityId);
             return !syphilisTest.equalsIgnoreCase(Constants.FormConstants.ClinicFindings.Syphilis.SYPHILIS_TEST_NOT_DONE);
         }
         return false;
     }
 
-    private boolean hbTestMoreThanTwoWeeksAgo() {
-        if (LDDao.getHbTestDate(memberObject.getBaseEntityId()) != null) {
+    public static boolean hbTestMoreThanTwoWeeksAgo(String baseEntityId) {
+        if (LDDao.getHbTestDate(baseEntityId) != null) {
             try {
                 DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-                String hbTestDate = LDDao.getHbTestDate(memberObject.getBaseEntityId());
+                String hbTestDate = LDDao.getHbTestDate(baseEntityId);
                 Date testDate = dateFormat.parse(hbTestDate);
-                if (testDate != null){
+                if (testDate != null) {
                     Date twoWeeksAgo = new Date(System.currentTimeMillis() - (1000 * 60 * 60 * 24 * 14));
                     if (testDate.before(twoWeeksAgo)) {
                         return true;
-                    }else {
+                    } else {
                         return false;
                     }
                 }
                 return true;
-            }catch (Exception e){
+            } catch (Exception e) {
                 Timber.e(e);
             }
         }
         return true;
     }
 
-    private boolean testDateIsThreeMonthsAgo(){
+    private boolean testDateIsThreeMonthsAgo() {
         if (LDDao.getPmtctTestDate(memberObject.getBaseEntityId()) != null) {
-            try{
-                DateFormat completeDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+            try {
+                DateFormat completeDateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
                 String pmtctTestDate = LDDao.getPmtctTestDate(memberObject.getBaseEntityId());
                 Date testDate = completeDateFormat.parse(pmtctTestDate);
                 if (testDate != null) {
-                    Date threeMonthsAgo = new Date(System.currentTimeMillis() - (1000 * 60 * 60 * 24 * 90));
+                    Date threeMonthsAgo = new Date(System.currentTimeMillis() - TimeUnit.DAYS.toMillis(90));
                     if (testDate.before(threeMonthsAgo)) {
                         return true;
-                    }else{
+                    } else {
                         return false;
                     }
                 }
                 return true;
 
-            }catch (Exception e){
+            } catch (Exception e) {
                 Timber.e(e);
             }
         }
@@ -161,7 +162,7 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
 
         LDMalariaTestActionHelper actionHelper = new LDMalariaTestActionHelper(context);
         BaseLDVisitAction action = getBuilder(title)
-                .withOptional(false)
+                .withOptional(true)
                 .withHelper(actionHelper)
                 .withDetails(details)
                 .withFormName(Constants.JsonForm.LDVisit.getLdMalariaTestForm())
@@ -176,7 +177,7 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
 
         LDSyphilisTestActionHelper actionHelper = new LDSyphilisTestActionHelper(context);
         BaseLDVisitAction action = getBuilder(title)
-                .withOptional(false)
+                .withOptional(true)
                 .withHelper(actionHelper)
                 .withDetails(details)
                 .withFormName(Constants.JsonForm.LDVisit.getSyphilisTestForm())
@@ -191,7 +192,7 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
 
         LDHIVTestActionHelper actionHelper = new LDHIVTestActionHelper(context);
         BaseLDVisitAction action = getBuilder(title)
-                .withOptional(false)
+                .withOptional(true)
                 .withHelper(actionHelper)
                 .withDetails(details)
                 .withFormName(Constants.JsonForm.LDVisit.getLdHivTest())
@@ -206,7 +207,7 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
 
         LDHBTestActionHelper actionHelper = new LDHBTestActionHelper(context);
         BaseLDVisitAction action = getBuilder(title)
-                .withOptional(false)
+                .withOptional(true)
                 .withHelper(actionHelper)
                 .withDetails(details)
                 .withFormName(Constants.JsonForm.LDVisit.getLdHBTestForm())
@@ -219,7 +220,7 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
     private void evaluateVaginalExamination(Map<String, List<VisitDetail>> details) throws BaseLDVisitAction.ValidationException {
         LDVaginalExaminationActionHelper actionHelper = new LDVaginalExaminationActionHelper(context, memberObject.getBaseEntityId());
         BaseLDVisitAction action = getBuilder(context.getString(R.string.lb_visit_vaginal_assessment))
-                .withOptional(false)
+                .withOptional(true)
                 .withDetails(details)
                 .withHelper(actionHelper)
                 .withFormName(Constants.JsonForm.LDVisit.getLdVaginalExamination())
