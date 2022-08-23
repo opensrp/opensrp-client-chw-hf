@@ -1,0 +1,49 @@
+---
+name: step1_significant_drop_in_viral_load
+description: significant_drop_in_viral_load relevance
+priority: 1
+condition: "global_is_after_eac"
+actions:
+  - "isRelevant = true"
+---
+name: step1_patient_presenting_oi_or_immunosuppression
+description: patient_presenting_oi_or_immunosuppression relevance
+priority: 1
+condition: "global_is_after_eac"
+actions:
+  - "isRelevant = true"
+---
+name: step1_use_of_traditional_medications
+description: use_of_traditional_medications relevance
+priority: 1
+condition: "global_is_after_eac"
+actions:
+  - "isRelevant = true"
+---
+name: step1_history_of_arv_side_effects
+description: history_of_arv_side_effects relevance
+priority: 1
+condition: "global_is_after_eac"
+actions:
+  - "isRelevant = true"
+---
+name: step1_plan_for_patient
+description: plan_for_patient relevance
+priority: 1
+condition: "global_is_after_eac && step1_hvl_result > 1000"
+actions:
+  - "isRelevant = true"
+---
+name: step1_plan_for_patient_comment
+description: plan_for_patient_comment relevance
+priority: 1
+condition: "global_is_after_eac && step1_hvl_result > 1000"
+actions:
+  - "isRelevant = true"
+---
+name: step1_review_team_lead_name
+description: review_team_lead_name relevance
+priority: 1
+condition: "global_is_after_eac && step1_hvl_result > 1000"
+actions:
+  - "isRelevant = true"

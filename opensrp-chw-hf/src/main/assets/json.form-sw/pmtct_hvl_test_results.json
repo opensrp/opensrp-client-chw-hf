@@ -41,7 +41,9 @@
     },
     "encounter_location": ""
   },
-  "global": {},
+  "global": {
+    "is_after_eac": false
+  },
   "step1": {
     "title": "HVL Results",
     "fields": [
@@ -96,10 +98,9 @@
         "toaster_info_text": "Rudia kupima wingi wa virusi baada ya mwezi wa 6, 12 na 18",
         "toaster_type": "info",
         "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "pmtct_hvl_suppression_relevance.yml"
-            }
+          "step1:hvl_result": {
+            "type": "numeric",
+            "ex": "lessThanEqualTo(.,\"1000\")"
           }
         }
       },
@@ -119,11 +120,403 @@
         }
       },
       {
+        "key": "significant_drop_in_viral_load",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "significant_drop_in_viral_load",
+        "type": "native_radio",
+        "label": "Was it a significant drop in the Viral Load (fulfilling criteria of good response to EAC)?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an answer"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_hvl_test_results_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "patient_presenting_oi_or_immunosuppression",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "patient_presenting_oi_or_immunosuppression",
+        "type": "native_radio",
+        "label": "Is this patient presenting any other OI or signs of immunosuppression?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an answer"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_hvl_test_results_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "describe_patient_presenting_oi_or_immunosuppression",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "describe_patient_presenting_oi_or_immunosuppression",
+        "type": "edit_text",
+        "hint": "Describe the presenting OI or signs of immunosuppression",
+        "v_required": {
+          "value": "true",
+          "err": "Please answer the question"
+        },
+        "relevance": {
+          "step1:patient_presenting_oi_or_immunosuppression": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
+        "key": "history_of_chronic_diarrhea_or_vomiting",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "history_of_chronic_diarrhea_or_vomiting",
+        "type": "native_radio",
+        "label": "History of chronic diarrhea or vomiting?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an answer"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_hvl_test_results_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "use_of_traditional_medications",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "use_of_traditional_medications",
+        "type": "native_radio",
+        "label": "Use of traditional medications?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an answer"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_hvl_test_results_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "history_of_arv_side_effects",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "history_of_arv_side_effects",
+        "type": "native_radio",
+        "label": "History of side-effects with ARV?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an answer"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_hvl_test_results_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "describe_history_of_arv_side_effects",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "describe_history_of_arv_side_effects",
+        "type": "edit_text",
+        "hint": "Describe symptom and possible drug",
+        "v_required": {
+          "value": "true",
+          "err": "Please answer the question"
+        },
+        "relevance": {
+          "step1:history_of_arv_side_effects": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
+        "key": "arv_regimen_plan",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "arv_regimen_plan",
+        "type": "native_radio",
+        "label": "Regarding the ARV regimen, what is the plan?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "continue_current_regimen",
+            "text": "Continue current regimen",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "continue_current_regimen"
+          },
+          {
+            "key": "refer_to_doctor",
+            "text": "Refer to doctor for further management",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "refer_to_doctor"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an answer"
+        },
+        "relevance": {
+          "step1:hvl_result": {
+            "type": "numeric",
+            "ex": "lessThanEqualTo(.,\"1000\")"
+          }
+        }
+      },
+      {
+        "key": "assessor_name",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "assessor_name",
+        "type": "edit_text",
+        "hint": "Assessor's Name",
+        "edit_type": "name",
+        "v_regex": {
+          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
+          "err": "Please enter a valid name"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the assessor's name"
+        },
+        "relevance": {
+          "step1:hvl_result": {
+            "type": "numeric",
+            "ex": "lessThanEqualTo(.,\"1000\")"
+          }
+        }
+      },
+      {
+        "key": "plan_for_patient",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "plan_for_patient",
+        "type": "native_radio",
+        "label": "What is the plan for this patient?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "suitable_for_second_line_regimen",
+            "text": "Patient is suitable for Second-line Regimen",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "suitable_for_second_line_regimen"
+          },
+          {
+            "key": "extend_eac_sessions",
+            "text": "Extend adherence sessions before new Viral Load (in 2-3 months’ time)",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "extend_eac_sessions"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an answer"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_hvl_test_results_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "new_regimen",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "new_regimen",
+        "type": "edit_text",
+        "hint": "New regimen",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the new regimen"
+        },
+        "relevance": {
+          "step1:plan_for_patient": {
+            "type": "string",
+            "ex": "equalTo(., \"suitable_for_second_line_regimen\")"
+          }
+        }
+      },
+      {
+        "key": "plan_for_patient_comment",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "plan_for_patient_comment",
+        "type": "edit_text",
+        "hint": "Comment",
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_hvl_test_results_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "review_team_lead_name",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "review_team_lead_name",
+        "type": "edit_text",
+        "hint": "Review Team Lead Name",
+        "edit_type": "name",
+        "v_regex": {
+          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
+          "err": "Please enter a valid name"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the review team lead's name"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_hvl_test_results_relevance.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "hvl_result_date",
         "type": "hidden",
         "openmrs_entity_id": "hvl_result_date",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_hvl_test_results_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "enroll_to_eac",
+        "type": "hidden",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "enroll_to_eac",
         "calculation": {
           "rules-engine": {
             "ex-rules": {

@@ -11,11 +11,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.vijay.jsonwizard.utils.FormUtils;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.time.DateUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -61,6 +64,7 @@ import org.smartregister.opd.utils.OpdDbConstants;
 import org.smartregister.repository.AllSharedPreferences;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -261,13 +265,28 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
             rlBaselineResults.setVisibility(View.VISIBLE);
         }
         if (HfPmtctDao.isEligibleForEac(baseEntityId)) {
-            textViewRecordEac.setVisibility(View.VISIBLE);
-            textViewRecordEac.setOnClickListener(this);
-            if (HfPmtctDao.getEacVisitType(baseEntityId).equalsIgnoreCase(org.smartregister.chw.hf.utils.Constants.EacVisitTypes.EAC_FIRST_VISIT)) {
-                textViewRecordEac.setText(R.string.record_eac_first_visit);
-            } else {
-                textViewRecordEac.setText(R.string.record_eac_second_visit);
+            Date lastEac = HfPmtctDao.getDateEACRecorded(baseEntityId);
+            RelativeLayout  eacVisitDoneBar = findViewById(R.id.eac_visit_done_bar);
+            TextView eacVisitDoneText = findViewById(R.id.textview_eac_visit_done);
+            if (lastEac != null) {
+                Date now = DateUtils.truncate(new Date(), Calendar.DATE);
+                Date lastEacTruncated = DateUtils.truncate(lastEac, Calendar.DATE);
+                if (now.equals(lastEacTruncated)) {
+                    textViewRecordEac.setVisibility(View.GONE);
+                    eacVisitDoneBar.setVisibility(View.VISIBLE);
+                    eacVisitDoneText.setText(getString(R.string.eac_visit_done, HfPmtctDao.getEacSessionNumber(baseEntityId) - 1 ));
+                } else {
+                    eacVisitDoneBar.setVisibility(View.GONE);
+                    textViewRecordEac.setVisibility(View.VISIBLE);
+                }
+            }else{
+                eacVisitDoneBar.setVisibility(View.GONE);
+                textViewRecordEac.setVisibility(View.VISIBLE);
             }
+            textViewRecordEac.setOnClickListener(this);
+            textViewRecordEac.setText(getString(R.string.record_eac_first_visit, HfPmtctDao.getEacSessionNumber(baseEntityId)));
+        }else {
+            textViewRecordEac.setVisibility(View.GONE);
         }
         Visit lastFollowupVisit = getVisit(Constants.EVENT_TYPE.PMTCT_FOLLOWUP);
         if (lastFollowupVisit != null && !lastFollowupVisit.getProcessed()) {
@@ -335,11 +354,13 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
             try {
                 formJsonObject = (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, org.smartregister.chw.hf.utils.Constants.JsonForm.getEacVisitsForm());
                 if (formJsonObject != null) {
+                    JSONObject global = formJsonObject.getJSONObject("global");
                     JSONArray fields = formJsonObject.getJSONObject(STEP1).getJSONArray(JsonFormConstants.FIELDS);
-                    JSONObject visit_type = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "eac_visit_type");
+                    JSONObject eac_visit_session = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "eac_visit_session");
 
-                    assert visit_type != null;
-                    visit_type.put(VALUE, HfPmtctDao.getEacVisitType(baseEntityId));
+                    assert eac_visit_session != null;
+                    eac_visit_session.put(VALUE, HfPmtctDao.getEacSessionNumber(baseEntityId));
+                    global.put("eac_session_number", HfPmtctDao.getEacSessionNumber(baseEntityId));
 
                     startFormActivity(formJsonObject);
                 }

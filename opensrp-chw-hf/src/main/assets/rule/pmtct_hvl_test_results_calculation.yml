@@ -5,3 +5,10 @@ priority: 1
 condition: "true"
 actions:
   - "calculation = helper.getDateToday()"
+---
+name: step1_enroll_to_eac
+description: enroll to eac is 'yes' if the hvl result is greater than 1000 for before eac or if plan for patient is enroll_to_eac after eac
+priority: 1
+condition: "true"
+actions:
+  - "calculation = (step1_hvl_result > 1000 && !global_is_after_eac) || (step1_plan_for_patient.contains('extend_eac_sessions') && global_is_after_eac ) ? 'yes' : 'no'"
