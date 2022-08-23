@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
     <item
         android:id="@+id/action_home"
         android:enabled="true"
@@ -12,6 +13,14 @@
         android:enabled="true"
         android:icon="@drawable/ic_done_grey"
         android:title="@string/successful_referrals"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_issued_referrals"
+        android:enabled="true"
+        android:icon="@drawable/ic_check"
+        android:title="@string/issued_referrals"
+        android:visible="true"
+        tools:visible="true"
         app:showAsAction="ifRoom" />
 
 </menu>

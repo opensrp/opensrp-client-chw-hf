@@ -1,0 +1,202 @@
+{
+  "validate_on_submit": true,
+  "show_errors_on_submit": false,
+  "count": "1",
+  "encounter_type": "Treatment during Labour",
+  "entity_id": "",
+  "relational_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "step1": {
+    "title": "Matibabu Kipindi cha Labour",
+    "fields": [
+      {
+        "key": "drugs_administered",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "drugs_administered",
+        "type": "check_box",
+        "label": "Dawa zilizotolewa",
+        "combine_checkbox_option_values": "true",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "exclusive": [
+          "none"
+        ],
+        "options": [
+          {
+            "key": "oxytocin",
+            "text": "Oxytocine",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "oxytocin"
+          },
+          {
+            "key": "drugs",
+            "text": "Dawa(Bainisha)",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "drugs"
+          },
+          {
+            "key": "iv_fluid",
+            "text": "IV Fluid(Bainisha)",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "iv_fluid"
+          },
+          {
+            "key": "none",
+            "text": "Hakuna",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "none"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali Jibu swali hili"
+        }
+      },
+      {
+        "key": "oxytocin_units_per_liter",
+        "type": "edit_text",
+        "edit_type": "number",
+        "hint": "Oxytocin U/L",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "oxytocin_units_per_liter",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali jibu swali hili"
+        },
+        "relevance": {
+          "step1:drugs_administered": {
+            "type": "string",
+            "ex-checkbox": [
+              {
+                "or": [
+                  "oxytocin"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "oxytocin_drops_per_minute",
+        "type": "edit_text",
+        "edit_type": "number",
+        "hint": "Oxytocin(Matone/dakika)",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "oxytocin_drops_per_minute",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali jibu swali hili"
+        },
+        "relevance": {
+          "step1:drugs_administered": {
+            "type": "string",
+            "ex-checkbox": [
+              {
+                "or": [
+                  "oxytocin"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "drugs_provided",
+        "type": "edit_text",
+        "hint": "Dawa(Bainisha)",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "drugs_provided",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali jibu swali hili"
+        },
+        "relevance": {
+          "step1:drugs_administered": {
+            "type": "string",
+            "ex-checkbox": [
+              {
+                "or": [
+                  "drugs"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "iv_fluid_provided",
+        "type": "edit_text",
+        "hint": "IV Fluid(Bainisha)",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "iv_fluid_provided",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali jibu swali hili"
+        },
+        "relevance": {
+          "step1:drugs_administered": {
+            "type": "string",
+            "ex-checkbox": [
+              {
+                "or": [
+                  "iv_fluid"
+                ]
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

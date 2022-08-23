@@ -1,0 +1,272 @@
+{
+  "count": "1",
+  "skip_blank_steps": true,
+  "encounter_type": "Labour and Delivery Registration Current Labour",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "step1": {
+    "title": "Historia ya Sasa ya Labour",
+    "fields": [
+      {
+        "key": "labour_onset_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "labour_onset_date",
+        "type": "date_picker",
+        "hint": "Tarehe ya uchungu Kuanza",
+        "expanded": false,
+        "min_date": "today-2y",
+        "max_date": "today"
+      },
+      {
+        "key": "labour_onset_time",
+        "type": "time_picker",
+        "hint": "Muda wa Uchungu kuanza",
+        "openmrs_entity_id": "labour_onset_time",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": ""
+      },
+      {
+        "key": "membrane",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "membrane",
+        "type": "native_radio",
+        "label": "Chupa Imepasuka?",
+        "options": [
+          {
+            "key": "ruptured",
+            "text": "Ndiyo",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "ruptured",
+            "openmrs_entity_id": "1"
+          },
+          {
+            "key": "intact",
+            "text": "Hapana",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "intact"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali Jibu swali hili"
+        }
+      },
+      {
+        "key": "membrane_ruptured_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "membrane_ruptured_date",
+        "type": "date_picker",
+        "hint": "Tarehe ya Chupa Kupasuka",
+        "expanded": false,
+        "min_date": "today-2y",
+        "max_date": "today",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali ingiza tarehe ya Chupa ilipopasuka "
+        },
+        "relevance": {
+          "step1:membrane": {
+            "type": "string",
+            "ex": "equalTo(., \"ruptured\")"
+          }
+        }
+      },
+      {
+        "key": "membrane_ruptured_time",
+        "type": "time_picker",
+        "hint": "Muda wa Chupa ilipopasuka",
+        "openmrs_entity_id": "membrane_ruptured_time",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali ingiza muda wa chupa ilipopasuka"
+        },
+        "relevance": {
+          "step1:membrane": {
+            "type": "string",
+            "ex": "equalTo(., \"ruptured\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_ruptured_membrane",
+        "type": "toaster_notes",
+        "text": "Toa Matibabu kulingana na Muongozo wa tiba uliopo",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_registration_current_labour_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_prom",
+        "type": "toaster_notes",
+        "text": "Mteja ana PROM,Toa Matibabu kulingana na Muongozo wa tiba uliopo",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_registration_current_labour_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "labour_onset_timestamp",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "labour_onset_timestamp",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_registration_current_labour_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "membrane_raptured_date_timestamp",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "membrane_raptured_date_timestamp",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_registration_current_labour_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "fetal_movement",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "fetal_movement",
+        "type": "spinner",
+        "hint": "Uchezaji wa Mtoto",
+        "values": [
+          "Upo",
+          "Hakuna"
+        ],
+        "keys": [
+          "present",
+          "absent"
+        ],
+        "openmrs_choice_ids": {
+          "present": "present",
+          "absent": "absent"
+        }
+      },
+      {
+        "key": "movement_status",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "movement_status",
+        "type": "spinner",
+        "hint": "Hali ya Uchezaji wa Mtoto",
+        "values": [
+          "Anacheza Vizuri(Active)",
+          "Umepungua"
+        ],
+        "keys": [
+          "active",
+          "reduced"
+        ],
+        "openmrs_choice_ids": {
+          "present": "active",
+          "absent": "reduced"
+        },
+        "relevance": {
+          "step1:fetal_movement": {
+            "type": "string",
+            "ex": "equalTo(., \"present\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_fetal_movement",
+        "type": "toaster_notes",
+        "text": "Toa Matibabu kulingana na Muongozo wa tiba uliopo",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:fetal_movement": {
+            "type": "string",
+            "ex": "equalTo(., \"absent\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_reduced_fetal_movement",
+        "type": "toaster_notes",
+        "text": "Toa Matibabu kulingana na Muongozo wa tiba uliopo",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:movement_status": {
+            "type": "string",
+            "ex": "equalTo(., \"reduced\")"
+          }
+        }
+      }
+    ]
+  }
+}

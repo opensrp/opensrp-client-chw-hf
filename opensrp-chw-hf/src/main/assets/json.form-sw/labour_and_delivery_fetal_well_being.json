@@ -1,0 +1,264 @@
+{
+  "validate_on_submit": true,
+  "show_errors_on_submit": false,
+  "count": "1",
+  "encounter_type": "LD Partograph - Fetal Well-being",
+  "entity_id": "",
+  "relational_id": "",
+  "global": {
+
+  },
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "step1": {
+    "title": "Well-being of a fetal",
+    "fields": [
+      {
+        "key": "fetal_heart_rate",
+        "type": "edit_text",
+        "hint": "Kiwango cha mapigo ya moyo wa mtoto",
+        "openmrs_entity_id": "fetal_heart_rate",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Tafadhali andika kiwango cha mapigo ya moyo wa mtoto"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Kiwango cha mapigo ya moyo wa mtoto iwe sawa au zaidi ya 0"
+        },
+        "v_max": {
+          "value": "300",
+          "err": "Kiwango cha mapigo ya moyo wa mtoto iwe sawa au chini ya 300"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali ingiza kiwango cha mapigo ya moyo wa mtoto"
+        }
+      },
+      {
+        "key": "prompt_for_fetal_distress",
+        "type": "toaster_notes",
+        "text": "Toa matibabu kulingana na Mwongozo wa Tiba uliopo",
+        "openmrs_entity_id": "prompt_for_fetal_distress",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_fetal_wellbeing_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "moulding_options",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "moulding_options",
+        "label": "Kubonywa kwa kichwa",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "Ø",
+            "text": "⌀",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "Ø"
+          },
+          {
+            "key": "+",
+            "text": "+",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "+"
+          },
+          {
+            "key": "++",
+            "text": "++",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "++"
+          },
+          {
+            "key": "+++",
+            "text": "+++",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "+++"
+          }
+        ]
+      },
+      {
+        "key": "prompt_for_moulding",
+        "type": "toaster_notes",
+        "text": "Toa matibabu kulingana na Mwongozo wa Tiba uliopo",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_fetal_wellbeing_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "caput",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "caput",
+        "label": "Caput",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "Ø",
+            "text": "⌀",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "Ø"
+          },
+          {
+            "key": "+",
+            "text": "+",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "+"
+          },
+          {
+            "key": "++",
+            "text": "++",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "++"
+          },
+          {
+            "key": "+++",
+            "text": "+++",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "+++"
+          }
+        ]
+      },
+      {
+        "key": "prompt_for_caput",
+        "type": "toaster_notes",
+        "text": "Toa matibabu kulingana na Mwongozo wa Tiba uliopo",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_fetal_wellbeing_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "amniotic_fluid",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "amniotic_fluid",
+        "label": "Maji ya chupa",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "membrane_intact",
+            "text": "Bado kupasuka",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "membrane_intact"
+          },
+          {
+            "key": "membrane_ruptured_liquor_clear",
+            "text": "Maji yako safi",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "membrane_ruptured_liquor_clear"
+          },
+          {
+            "key": "meconium_stained_liquor",
+            "text": "Maji yana uchafu ",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "meconium_stained_liquor"
+          },
+          {
+            "key": "blood_stained_liquor",
+            "text": "Maji yana damu",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "blood_stained_liquor"
+          }
+        ]
+      },
+      {
+        "key": "prompt_for_amniotic_fluid",
+        "type": "toaster_notes",
+        "text": "Toa matibabu kulingana na Mwongozo wa Tiba uliopo",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_fetal_wellbeing_relevance.yml"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

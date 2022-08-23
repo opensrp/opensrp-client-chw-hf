@@ -1,0 +1,214 @@
+{
+  "validate_on_submit": true,
+  "show_errors_on_submit": false,
+  "count": "1",
+  "encounter_type": "Mode of Delivery",
+  "entity_id": "",
+  "relational_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "step1": {
+    "title": "Jinsi ya kujifungua",
+    "fields": [
+      {
+        "key": "mode_of_delivery",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "mode_of_delivery",
+        "label": "Jinsi ya kujifungua",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "spontaneous_vaginal_delivery",
+            "text": "Kujifungua kwa njia ya kawaida ",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "spontaneous_vaginal_delivery"
+          },
+          {
+            "key": "cesarean",
+            "text": "Kujifungua kwa njia ya upasuaji",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "cesarean"
+          },
+          {
+            "key": "vacuum_extraction",
+            "text": "Vacuum extraction",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "vacuum_extraction"
+          },
+          {
+            "key": "breech_delivery",
+            "text": "Kujifungua kwa mtoto mfu",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "breech_delivery"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali chagua chaguzi moja"
+        }
+      },
+      {
+        "key": "labour_stage",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "labour_stage",
+        "type": "hidden",
+        "value": 3
+      },
+      {
+        "key": "delivery_mode_caesarian_reason",
+        "type": "check_box",
+        "label": "Sababu ya kujifungua kwa njia ya upasuaji",
+        "combine_checkbox_option_values": "true",
+        "openmrs_entity_id": "delivery_mode_caesarian_reason",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "exclusive": [
+          "none"
+        ],
+        "options": [
+          {
+            "key": "fetal_distress",
+            "text": "Fetal distress",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "fetal_distress"
+          },
+          {
+            "key": "previous_scare",
+            "text": "Previous scare",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "previous_scare"
+          },
+          {
+            "key": "maternal_request",
+            "text": "Ombi la mama anayejifungua",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "maternal_request"
+          },
+          {
+            "key": "failed_induction",
+            "text": "Failed induction",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "failed_induction"
+          },
+          {
+            "key": "malpresentation",
+            "text": "Malpresentation",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "malpresentation"
+          },
+          {
+            "key": "prolonged_labor",
+            "text": "Prolonged labor",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "prolonged_labor"
+          },
+          {
+            "key": "obstructed_labor",
+            "text": "Obstructed labor",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "obstructed_labor"
+          },
+          {
+            "key": "multiple_gastation",
+            "text": "Multiple gestation",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "multiple_gastation"
+          },
+          {
+            "key": "others",
+            "text": "Nyingine",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "others"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua sababu ya kujfiungua kwa njia ya upasuaji"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_mode_of_delivery_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "delivery_mode_caesarian_reason_other",
+        "type": "edit_text",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "openmrs_entity_id": "delivery_mode_reason",
+        "hint": "Bainisha sababu nyingine ya kujifungua kwa njia ya upasuaji",
+        "v_required": {
+          "value": true,
+          "err": "Thamani inahitajika"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_mode_of_delivery_relevance.yml"
+            }
+          }
+        }
+      }
+    ]
+  }
+}
