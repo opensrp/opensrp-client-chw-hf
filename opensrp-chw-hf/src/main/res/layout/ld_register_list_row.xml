@@ -67,6 +67,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingTop="8dp"
             android:orientation="horizontal">
 
             <org.smartregister.view.customcontrols.CustomFontTextView
@@ -83,8 +84,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/register_dot_separator_margin"
                 android:text="@string/interpunct"
-                android:textColor="@color/primary"
-                android:textSize="18sp" />
+                android:textColor="@color/primary" />
 
             <org.smartregister.view.customcontrols.CustomFontTextView
                 android:id="@+id/text_view_gender"

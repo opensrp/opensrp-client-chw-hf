@@ -53,18 +53,18 @@
             android:maxLines="1"
             android:paddingStart="0dp"
             android:paddingLeft="0dp"
-            android:paddingBottom="4dp"
+            android:paddingBottom="8dp"
             android:singleLine="true"
-            android:textColor="@color/black"
             android:text="Patient Name, 33"
+            android:textColor="@color/black"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/pnc_period"
-            android:fontFamily="@font/google_sans_regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/patient_name_and_age"
+            android:fontFamily="@font/google_sans_regular"
             android:paddingStart="0dp"
             android:paddingLeft="0dp"
             android:paddingTop="0dp"

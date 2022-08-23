@@ -52,7 +52,7 @@
             android:maxLines="1"
             android:paddingStart="0dp"
             android:paddingLeft="0dp"
-            android:paddingBottom="4dp"
+            android:paddingBottom="8dp"
             android:singleLine="true"
             android:text=""
             android:fontFamily="@font/google_sans_bold"
