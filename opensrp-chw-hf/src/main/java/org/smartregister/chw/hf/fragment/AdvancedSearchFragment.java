@@ -1,5 +1,7 @@
 package org.smartregister.chw.hf.fragment;
 
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -12,7 +14,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.rengwuxian.materialedittext.MaterialEditText;
+import com.google.android.material.textfield.TextInputEditText;
 
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.activity.AllClientsRegisterActivity;
@@ -29,24 +31,22 @@ import org.smartregister.view.fragment.BaseRegisterFragment;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
+
+import static androidx.core.content.ContextCompat.getSystemService;
 
 public class AdvancedSearchFragment extends BaseRegisterFragment implements AdvancedSearchContract.View {
 
     protected AdvancedSearchTextWatcher advancedSearchTextwatcher = new AdvancedSearchTextWatcher();
-    protected HashMap<String, String> searchFormData = new HashMap<>();
     protected Map<String, View> advancedFormSearchableFields = new HashMap<>();
     private View listViewLayout;
     private View advancedSearchForm;
     private ImageButton backButton;
     private Button searchButton;
-    private Button advancedSearchToolbarSearchButton;
     private TextView searchCriteria;
     private TextView matchingResults;
-    private MaterialEditText searchName;
-    private MaterialEditText firstName;
-    private MaterialEditText lastName;
-    private boolean isLocal = false;
+    private TextInputEditText firstName;
+    private TextInputEditText lastName;
+    private final boolean isLocal;
     private boolean listMode = false;
 
     public AdvancedSearchFragment(boolean isLocal) {
@@ -56,20 +56,8 @@ public class AdvancedSearchFragment extends BaseRegisterFragment implements Adva
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_advanced_search, container, false);
 
         View view = inflater.inflate(R.layout.fragment_advanced_search, container, false);
-
-        if (!isLocal) {
-            view.findViewById(R.id.search_name_ll).setVisibility(View.GONE);
-            view.findViewById(R.id.first_name_ll).setVisibility(View.VISIBLE);
-            view.findViewById(R.id.last_name_ll).setVisibility(View.VISIBLE);
-        } else {
-            view.findViewById(R.id.search_name_ll).setVisibility(View.VISIBLE);
-            view.findViewById(R.id.first_name_ll).setVisibility(View.GONE);
-            view.findViewById(R.id.last_name_ll).setVisibility(View.GONE);
-        }
 
         rootView = view;//handle to the root
 
@@ -125,10 +113,15 @@ public class AdvancedSearchFragment extends BaseRegisterFragment implements Adva
         backButton = view.findViewById(R.id.back_button);
         backButton.setOnClickListener(registerActionHandler);
 
+
         searchCriteria = view.findViewById(R.id.search_criteria);
         matchingResults = view.findViewById(R.id.matching_results);
-        advancedSearchToolbarSearchButton = view.findViewById(R.id.search);
         searchButton = view.findViewById(R.id.advanced_form_search_btn);
+        Button retryButton = view.findViewById(R.id.retry_connection_button);
+
+        retryButton.setOnClickListener(v -> updateOnNetworkChange(view));
+
+        updateOnNetworkChange(view);
 
         setUpSearchButtons();
 
@@ -138,10 +131,26 @@ public class AdvancedSearchFragment extends BaseRegisterFragment implements Adva
 
     }
 
-    public void populateSearchableFields(View view) {
 
-        searchName = view.findViewById(R.id.search_name);
-        searchName.addTextChangedListener(advancedSearchTextwatcher);
+    private void updateOnNetworkChange(View view){
+        if(isNetworkConnected()){
+            view.findViewById(R.id.advanced_search_form).setVisibility(View.VISIBLE);
+            view.findViewById(R.id.advanced_search_offline).setVisibility(View.GONE);
+        }else{
+            view.findViewById(R.id.advanced_search_form).setVisibility(View.GONE);
+            view.findViewById(R.id.advanced_search_offline).setVisibility(View.VISIBLE);
+        }
+    }
+
+    private boolean isNetworkConnected() {
+        ConnectivityManager connectivityManager
+                = getSystemService(requireContext(), ConnectivityManager.class);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
+    public void populateSearchableFields(View view) {
 
         firstName = view.findViewById(R.id.first_name);
         firstName.addTextChangedListener(advancedSearchTextwatcher);
@@ -151,7 +160,6 @@ public class AdvancedSearchFragment extends BaseRegisterFragment implements Adva
 
         advancedFormSearchableFields.put(Constants.DB.FIRST_NAME, firstName);
         advancedFormSearchableFields.put(Constants.DB.LAST_NAME, lastName);
-        advancedFormSearchableFields.put(Constants.DB.FIRST_NAME, searchName);
     }
 
     private void resetForm() {
@@ -182,11 +190,6 @@ public class AdvancedSearchFragment extends BaseRegisterFragment implements Adva
     }
 
     private void setUpSearchButtons() {
-        advancedSearchToolbarSearchButton.setEnabled(false);
-        advancedSearchToolbarSearchButton.setTextColor(getResources().getColor(R.color.contact_complete_grey_border));
-        advancedSearchToolbarSearchButton.setOnClickListener(registerActionHandler);
-
-
         searchButton.setEnabled(false);
         searchButton.setTextColor(getResources().getColor(R.color.contact_complete_grey_border));
         searchButton.setOnClickListener(registerActionHandler);
@@ -206,14 +209,10 @@ public class AdvancedSearchFragment extends BaseRegisterFragment implements Adva
 
     private void checkTextFields() {
         if (anySearchableFieldHasValue()) {
-            advancedSearchToolbarSearchButton.setEnabled(true);
-            advancedSearchToolbarSearchButton.setTextColor(getResources().getColor(R.color.white));
 
             searchButton.setEnabled(true);
             searchButton.setTextColor(getResources().getColor(R.color.white));
         } else {
-            advancedSearchToolbarSearchButton.setEnabled(false);
-            advancedSearchToolbarSearchButton.setTextColor(getResources().getColor(R.color.contact_complete_grey_border));
 
             searchButton.setEnabled(false);
             searchButton.setTextColor(getResources().getColor(R.color.contact_complete_grey_border));
@@ -252,9 +251,7 @@ public class AdvancedSearchFragment extends BaseRegisterFragment implements Adva
 
     @Override
     public void onViewClicked(View view) {
-        if (view.getId() == R.id.search) {
-            search();
-        } else if (view.getId() == R.id.advanced_form_search_btn) {
+     if (view.getId() == R.id.advanced_form_search_btn) {
             search();
         } else if (view.getId() == R.id.back_button) {
             switchViews(false);
@@ -272,12 +269,8 @@ public class AdvancedSearchFragment extends BaseRegisterFragment implements Adva
 
         Map<String, String> searchParams = new HashMap<>();
 
-        String fn = "";
-        if (isLocal) {
-            fn = Objects.requireNonNull(searchName.getText()).toString().trim();
-        } else {
-            fn = firstName.getText().toString().trim();
-        }
+        String fn = firstName.getText().toString().trim();
+
         String ln = lastName.getText().toString().trim();
 
         if (!TextUtils.isEmpty(fn)) {
@@ -313,7 +306,6 @@ public class AdvancedSearchFragment extends BaseRegisterFragment implements Adva
             clientsView.setVisibility(View.VISIBLE);
             backButton.setVisibility(View.VISIBLE);
             searchButton.setVisibility(View.GONE);
-            advancedSearchToolbarSearchButton.setVisibility(View.GONE);
 
             if (titleLabelView != null) {
                 titleLabelView.setText(getString(R.string.search_results));
@@ -332,7 +324,6 @@ public class AdvancedSearchFragment extends BaseRegisterFragment implements Adva
             listViewLayout.setVisibility(View.GONE);
             clientsView.setVisibility(View.INVISIBLE);
             searchButton.setVisibility(View.VISIBLE);
-            advancedSearchToolbarSearchButton.setVisibility(View.VISIBLE);
 
             if (titleLabelView != null) {
                 if (isLocal) {
@@ -341,8 +332,6 @@ public class AdvancedSearchFragment extends BaseRegisterFragment implements Adva
                     titleLabelView.setText(getString(R.string.global_search));
                 }
             }
-
-
             listMode = false;
         }
     }
