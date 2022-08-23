@@ -102,20 +102,17 @@
           {
             "key": "mRDT",
             "openmrs_choice_id": "",
-            "text": "mRDT",
-            "value": false
+            "text": "mRDT"
           },
           {
             "key": "mRDT_not_done",
             "openmrs_choice_id": "",
-            "text": "mRDT not done",
-            "value": false
+            "text": "mRDT not done"
           },
           {
             "key": "Other_tests",
             "openmrs_choice_id": "",
-            "text": "Other tests",
-            "value": false
+            "text": "Other tests"
           }
         ],
         "v_required": {
@@ -135,14 +132,12 @@
           {
             "key": "stock_out",
             "openmrs_choice_id": "",
-            "text": "Stock out",
-            "value": false
+            "text": "Stock out"
           },
           {
             "key": "mRDT_done_within_14_days",
             "openmrs_choice_id": "",
-            "text": "mRDT done within 14 days",
-            "value": false
+            "text": "mRDT done within 14 days"
           }
         ],
         "relevance": {
@@ -188,32 +183,27 @@
           {
             "key": "mRDT_positive",
             "openmrs_choice_id": "",
-            "text": "mRDT positive",
-            "value": false
+            "text": "mRDT positive"
           },
           {
             "key": "mRDT_negative",
             "openmrs_choice_id": "",
-            "text": "mRDT negative",
-            "value": false
+            "text": "mRDT negative"
           },
           {
             "key": "Malaria_parasite_seen",
             "openmrs_choice_id": "",
-            "text": "Malaria parasite seen",
-            "value": false
+            "text": "Malaria parasite seen"
           },
           {
             "key": "No_malaria_parasite_seen",
             "openmrs_choice_id": "",
-            "text": "No malaria parasite seen",
-            "value": false
+            "text": "No malaria parasite seen"
           },
           {
             "key": "Other_test_results",
             "openmrs_choice_id": "",
-            "text": "Other test results",
-            "value": false
+            "text": "Other test results"
           }
         ],
         "v_required": {
@@ -253,20 +243,17 @@
           {
             "key": "Uncomplicated_malaria",
             "openmrs_choice_id": "",
-            "text": "Uncomplicated malaria",
-            "value": false
+            "text": "Uncomplicated malaria"
           },
           {
             "key": "Severe_malaria",
             "openmrs_choice_id": "",
-            "text": "Severe malaria",
-            "value": false
+            "text": "Severe malaria"
           },
           {
             "key": "Other_diagnosis",
             "openmrs_choice_id": "",
-            "text": "Other diagnosis",
-            "value": false
+            "text": "Other diagnosis"
           }
         ],
         "v_required": {
@@ -306,44 +293,37 @@
           {
             "key": "ALU_1_x_6_strips",
             "openmrs_choice_id": "",
-            "text": "ALU 1 x 6 strips",
-            "value": false
+            "text": "ALU 1 x 6 strips"
           },
           {
             "key": "ALU_2_x_6_strips",
             "openmrs_choice_id": "",
-            "text": "ALU 2 x 6 strips",
-            "value": false
+            "text": "ALU 2 x 6 strips"
           },
           {
             "key": "ALU_3_x_6_strips",
             "openmrs_choice_id": "",
-            "text": "ALU 3 x 6 strips",
-            "value": false
+            "text": "ALU 3 x 6 strips"
           },
           {
             "key": "ALU_4_x_6_strips",
             "openmrs_choice_id": "",
-            "text": "ALU 4 x 6 strips",
-            "value": false
+            "text": "ALU 4 x 6 strips"
           },
           {
             "key": "Injection_artesunate",
             "openmrs_choice_id": "",
-            "text": "Injection artesunate",
-            "value": false
+            "text": "Injection artesunate"
           },
           {
             "key": "Paracetamol",
             "openmrs_choice_id": "",
-            "text": "Paracetamol",
-            "value": false
+            "text": "Paracetamol"
           },
           {
             "key": "Other_drugs",
             "openmrs_choice_id": "NA",
-            "text": "Other drugs",
-            "value": false
+            "text": "Other drugs"
           }
         ],
         "relevance": {

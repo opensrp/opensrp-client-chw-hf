@@ -59,15 +59,13 @@
             "key": "yes",
             "text": "Yes",
             "openmrs_entity_id": "yes",
-            "openmrs_entity": "concept",
-            "value": false
+            "openmrs_entity": "concept"
           },
           {
             "key": "no",
             "text": "No",
             "openmrs_entity_id": "no",
-            "openmrs_entity": "concept",
-            "value": false
+            "openmrs_entity": "concept"
           }
         ]
       },
@@ -208,15 +206,13 @@
             "key": "ipt1",
             "text": "IPT1",
             "openmrs_entity_id": "ipt1",
-            "openmrs_entity": "concept",
-            "value": false
+            "openmrs_entity": "concept"
           },
           {
             "key": "medication_not_given",
             "text": "Malaria medication not given",
             "openmrs_entity_id": "medication_not_given",
-            "openmrs_entity": "concept",
-            "value": false
+            "openmrs_entity": "concept"
           }
         ],
         "v_required": {
@@ -300,15 +296,13 @@
             "key": "yes",
             "text": "Yes",
             "openmrs_entity_id": "yes",
-            "openmrs_entity": "concept",
-            "value": false
+            "openmrs_entity": "concept"
           },
           {
             "key": "no",
             "text": "No",
             "openmrs_entity_id": "no",
-            "openmrs_entity": "concept",
-            "value": false
+            "openmrs_entity": "concept"
           }
         ]
       },

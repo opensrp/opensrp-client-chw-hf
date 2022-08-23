@@ -113,63 +113,54 @@
           {
             "key": "chk_haemoglobin",
             "text": "Haemoglobin level",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "21AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           },
           {
             "key": "chk_urine_analysis_uti",
             "text": "Urine analysis for UTI",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "302AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           },
           {
             "key": "chk_urine_analysis_protein",
             "text": "Urine analysis for protein and sugar",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "1875AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           },
           {
             "key": "chk_hiv",
             "text": "HIV test",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "1356AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           },
           {
             "key": "chk_syphilis",
             "text": "Syphilis test",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "299AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           },
           {
             "key": "chk_malaria",
             "text": "Malaria test",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "1643AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           },
           {
             "key": "chk_tb",
             "text": "TB screening",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "164800AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           },
           {
             "key": "chk_other",
             "text": "Other test",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           },
           {
             "key": "chk_none",
             "text": "None",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "164369AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           }
@@ -201,49 +192,42 @@
           {
             "key": "chk_tetanus",
             "text": "Tetanus toxoid (TT)",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "84879AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           },
           {
             "key": "chk_malaria",
             "text": "Malaria prevention (IPTp-SP)",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "105232AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           },
           {
             "key": "chk_iron",
             "text": "Iron and Folic acid (FEFO) tablets",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "773AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           },
           {
             "key": "chk_albendazole",
             "text": "Albendazole / Medandozle",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "159922AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           },
           {
             "key": "chk_calcuim",
             "text": "Calcium supplement",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "72650AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           },
           {
             "key": "chk_other",
             "text": "Other immunisation or medicine",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           },
           {
             "key": "chk_none",
             "text": "None",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "164369AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           }

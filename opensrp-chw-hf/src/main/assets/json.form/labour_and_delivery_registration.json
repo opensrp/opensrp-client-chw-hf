@@ -444,77 +444,66 @@
           {
             "key": "bleeding_vag",
             "text": "Bleeding Vaginally",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "bleeding_vag"
           },
           {
             "key": "severe_headache",
             "text": "Severe Headache",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "severe_headache"
           },
           {
             "key": "severe_abdominal_pain",
             "text": "Severe Abdominal Pain",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "severely_abdominal_pain"
           },
           {
             "key": "convulsion",
             "text": "Convulsion",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "convulsion"
           },
           {
             "key": "blurred_vision",
             "text": "Blurred Vision",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "blurred_vision"
           },
           {
             "key": "severe_breathing_difficulty",
             "text": "Severe Breathing Difficulty",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "severe_breathing_difficulty"
           },
           {
             "key": "unconscious",
             "text": "Unconscious",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "unconscious"
           },
           {
             "key": "reduced_fetal_movement",
             "text": "Reduced Fetal Movement",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "reduced_fetal_movement"
           },
           {
             "key": "dizziness",
             "text": "Dizziness",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "dizziness"
           },
           {
             "key": "pale_anaemic",
             "text": "Pale/Anaemic",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "pale_anaemic"
           },
           {
             "key": "none",
             "text": "None",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "none"
           }
@@ -545,28 +534,24 @@
           {
             "key": "painful_uterine_contraction",
             "text": "Painful, increasing frequency and duration",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "painful_uterine_contraction"
           },
           {
             "key": "bloody_vaginal_discharge",
             "text": "Show (Bloody mucoid vaginal discharge)",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "bloody_vaginal_discharge"
           },
           {
             "key": "effacement_and_dilatation",
             "text": "Effacement and dilatation of cervix",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "effacement_and_dilatation"
           },
           {
             "key": "progressive_descent",
             "text": "Progressive descent of the presenting part",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "progressive_descent"
           }
@@ -677,70 +662,60 @@
           {
             "key": "bleeding_vag",
             "text": "Bleeding Vaginally",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "bleeding_vag"
           },
           {
             "key": "severe_headache",
             "text": "Severe Headache",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "severe_headache"
           },
           {
             "key": "severe_abdominal_pain",
             "text": "Severe Abdominal Pain",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "severely_abdominal_pain"
           },
           {
             "key": "convulsion",
             "text": "Convulsion",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "convulsion"
           },
           {
             "key": "blurred_vision",
             "text": "Blurred Vision",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "blurred_vision"
           },
           {
             "key": "severe_breathing_difficulty",
             "text": "Severe Breathing Difficulty",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "severe_breathing_difficulty"
           },
           {
             "key": "unconscious",
             "text": "Unconscious",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "unconscious"
           },
           {
             "key": "reduced_fetal_movement",
             "text": "Reduced Fetal Movement",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "reduced_fetal_movement"
           },
           {
             "key": "dizziness",
             "text": "Dizziness",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "dizziness"
           },
           {
             "key": "none",
             "text": "None",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "none"
           }
@@ -1104,14 +1079,12 @@
           {
             "key": "chk_one",
             "text": "1",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_one"
           },
           {
             "key": "chk_two",
             "text": "2",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_two"
           }
@@ -1181,14 +1154,12 @@
           {
             "key": "yes",
             "text": "Yes",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
             "text": "No",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }

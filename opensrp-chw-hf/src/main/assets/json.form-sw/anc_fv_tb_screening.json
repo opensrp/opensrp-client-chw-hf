@@ -58,14 +58,12 @@
           {
             "key": "yes",
             "text": "Ndiyo",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
             "text": "Hapana",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
@@ -86,49 +84,42 @@
           {
             "key": "chk_cough",
             "text": "Mteja anakohoa kwa wiki 2 na zaidi",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_cough"
           },
           {
             "key": "chk_sputum",
             "text": "Mteja anakohoa makohozi yaliyochanganyika na damu",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_sputum"
           },
           {
             "key": "chk_fevers",
             "text": "Mteja amekuwa na Homa kwa zaidi ya wiki mbili",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_fevers"
           },
           {
             "key": "chk_weight_loss",
             "text": "Mteja anapoteza Uzito",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_weight_loss"
           },
           {
             "key": "chk_weight_loss_subsequent_visit",
             "text": "Mteja amepungua uzito katika mfululizo mahudhulio",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_weight_loss_subsequent_visit"
           },
           {
             "key": "chk_excessive_sweating",
             "text": "Mteja amekuwa akitoka na jasho jingi sana usiku kwa wiki mbili au zaidi",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_excessive_sweating"
           },
           {
             "key": "chk_none",
             "text": "Hakuna",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_none"
           }
@@ -157,14 +148,12 @@
           {
             "key": "positive",
             "text": "Chanya",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "positive"
           },
           {
             "key": "negative",
             "text": "Hasi",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "negative"
           }

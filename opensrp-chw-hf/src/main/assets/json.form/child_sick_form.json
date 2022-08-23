@@ -201,32 +201,27 @@
           {
             "key": "Bloody_diarrhoea",
             "openmrs_choice_id": "138868AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-            "text": "Bloody diarrhoea",
-            "value": false
+            "text": "Bloody diarrhoea"
           },
           {
             "key": "Fever",
             "openmrs_choice_id": "140238AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-            "text": "Fever",
-            "value": false
+            "text": "Fever"
           },
           {
             "key": "Vomiting",
             "openmrs_choice_id": "122983AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-            "text": "Vomiting",
-            "value": false
+            "text": "Vomiting"
           },
           {
             "key": "Other",
             "openmrs_choice_id": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-            "text": "Other",
-            "value": false
+            "text": "Other"
           },
           {
             "key": "None",
             "openmrs_choice_id": "164369AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-            "text": "None",
-            "value": false
+            "text": "None"
           }
         ],
         "exclusive": [
@@ -351,32 +346,27 @@
           {
             "key": "ORS_solution",
             "openmrs_choice_id": "351AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-            "text": "ORS solution",
-            "value": false
+            "text": "ORS solution"
           },
           {
             "key": "IV_infusion_drip",
             "openmrs_choice_id": "162651AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-            "text": "IV infusion (drip)",
-            "value": false
+            "text": "IV infusion (drip)"
           },
           {
             "key": "Zinc",
             "openmrs_choice_id": "86672AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-            "text": "Zinc",
-            "value": false
+            "text": "Zinc"
           },
           {
             "key": "Other_treatments",
             "openmrs_choice_id": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-            "text": "Other treatments",
-            "value": false
+            "text": "Other treatments"
           },
           {
             "key": "None",
             "openmrs_choice_id": "164369AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-            "text": "None",
-            "value": false
+            "text": "None"
           }
         ],
         "exclusive": [
@@ -466,20 +456,17 @@
           {
             "key": "ORS_Packs",
             "openmrs_choice_id": "351AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-            "text": "ORS Packs",
-            "value": false
+            "text": "ORS Packs"
           },
           {
             "key": "Zinc_pills",
             "openmrs_choice_id": "86672AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-            "text": "Zinc (pills)",
-            "value": false
+            "text": "Zinc (pills)"
           },
           {
             "key": "Other_drugs",
             "openmrs_choice_id": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-            "text": "Other drugs",
-            "value": false
+            "text": "Other drugs"
           }
         ],
         "relevance": {

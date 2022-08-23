@@ -90,21 +90,18 @@
           {
             "key": "home",
             "text": "HOME",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "home"
           },
           {
             "key": "antenatal_ward",
             "text": "ANTENATAL WARD",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "antenatal_ward"
           },
           {
             "key": "referral",
             "text": "REFERRAL",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "referral"
           }
@@ -158,42 +155,36 @@
           {
             "key": "labour_pain",
             "text": "Labor Pain",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "labour_pain"
           },
           {
             "key": "observation",
             "text": "Observation",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "observation"
           },
           {
             "key": "prom",
             "text": "PROM",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "prom"
           },
           {
             "key": "elective_cesarean_section",
             "text": "Elective C/S",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "elective_cesarean_section"
           },
           {
             "key": "induction",
             "text": "Induction of labor",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "induction"
           },
           {
             "key": "other",
             "text": "Other",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "other"
           }
@@ -243,84 +234,72 @@
           {
             "key": "bleeding_vag",
             "text": "Bleeding Vaginally",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "bleeding_vag"
           },
           {
             "key": "severe_headache",
             "text": "Severe Headache",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "severe_headache"
           },
           {
             "key": "severe_abdominal_pain",
             "text": "Severe Abdominal Pain",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "severely_abdominal_pain"
           },
           {
             "key": "convulsion",
             "text": "Convulsion",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "convulsion"
           },
           {
             "key": "blurred_vision",
             "text": "Blurred Vision",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "blurred_vision"
           },
           {
             "key": "severe_breathing_difficulty",
             "text": "Severe Breathing Difficulty",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "severe_breathing_difficulty"
           },
           {
             "key": "unconscious",
             "text": "Unconscious",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "unconscious"
           },
           {
             "key": "reduced_fetal_movement",
             "text": "Reduced Fetal Movement",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "reduced_fetal_movement"
           },
           {
             "key": "dizziness",
             "text": "Dizziness",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "dizziness"
           },
           {
             "key": "pale_anaemic",
             "text": "Pale/Anaemic",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "pale_anaemic"
           },
           {
             "key": "other",
             "text": "Other (Specify)",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "other"
           },
           {
             "key": "none",
             "text": "None",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "none"
           }

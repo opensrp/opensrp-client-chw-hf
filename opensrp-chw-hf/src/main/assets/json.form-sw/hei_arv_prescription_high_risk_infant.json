@@ -66,14 +66,12 @@
           {
             "key": "yes",
             "text": "Ndiyo",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
             "text": "Hapana",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
@@ -96,14 +94,12 @@
           {
             "key": "yes",
             "text": "Ndiyo",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
             "text": "Hapana",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
@@ -182,21 +178,18 @@
           {
             "key": "out_of_stock",
             "text": "Dawa zimekwisha",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "out_of_stock"
           },
           {
             "key": "medication_expired",
             "text": "Muda wa matumizi wa dawa umeisha",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "medication_expired"
           },
           {
             "key": "other",
             "text": "Nyingine (Bainisha)",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "other"
           }

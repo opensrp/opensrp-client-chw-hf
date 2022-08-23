@@ -114,68 +114,57 @@
           {
             "key": "Fever",
             "openmrs_choice_id": "Fever",
-            "text": "Homa",
-            "value": false
+            "text": "Homa"
           },
           {
             "key": "Bleeding_vaginally",
             "openmrs_choice_id": "Bleeding_vaginally",
-            "text": "Kutokwa na damu ukeni",
-            "value": false
+            "text": "Kutokwa na damu ukeni"
           },
           {
             "key": "Severe_headache",
             "openmrs_choice_id": "Severe_headache",
-            "text": "Maumivu makali ya kichwa",
-            "value": false
+            "text": "Maumivu makali ya kichwa"
           },
           {
             "key": "Convulsions",
             "openmrs_choice_id": "Convulsions",
-            "text": "degedege",
-            "value": false
+            "text": "degedege"
           },
           {
             "key": "Difficulty_breathing",
             "openmrs_choice_id": "Difficulty_breathing",
-            "text": "Kupumua kwa shida",
-            "value": false
+            "text": "Kupumua kwa shida"
           },
           {
             "key": "Severe_abdominal_pain",
             "openmrs_choice_id": "Severe_abdominal_pain",
-            "text": "Maumivu makali ya tumbo",
-            "value": false
+            "text": "Maumivu makali ya tumbo"
           },
           {
             "key": "Swelling_of_the_face_and/or_hands",
             "openmrs_choice_id": "Swelling_of_the_face_and",
-            "text": "Kuvimba kwa uso na/au mikono",
-            "value": false
+            "text": "Kuvimba kwa uso na/au mikono"
           },
           {
             "key": "Discoloured_or_watery_liquid_vaginal_discharge_with_a_bad_smell",
             "openmrs_choice_id": "Discoloured_or_watery_liquid_vaginal_discharge_with_a_bad_smell",
-            "text": "Kutowa na majimaji yenye rangirangi na harufu mbaya ukeni",
-            "value": false
+            "text": "Kutowa na majimaji yenye rangirangi na harufu mbaya ukeni"
           },
           {
             "key": "No_movement_unusual_movement_for_a_child_in_the_womb",
             "openmrs_choice_id": "No_movement_unusual_movement_for_a_child_in_the_womb",
-            "text": "Hakuna uchezaji/uchezaji usiyo wa kawaida wa mtoto tumboni",
-            "value": false
+            "text": "Hakuna uchezaji/uchezaji usiyo wa kawaida wa mtoto tumboni"
           },
           {
             "key": "Other",
             "openmrs_choice_id": "Other",
-            "text": "Nyingine",
-            "value": false
+            "text": "Nyingine"
           },
           {
             "key": "None",
             "openmrs_choice_id": "None",
-            "text": "Hakuna",
-            "value": false
+            "text": "Hakuna"
           }
         ],
         "exclusive": [

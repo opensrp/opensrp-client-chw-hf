@@ -401,77 +401,66 @@
           {
             "key": "bleeding_vag",
             "text": "Bleeding Vaginally",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "bleeding_vag"
           },
           {
             "key": "severe_headache",
             "text": "Severe Headache",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "severe_headache"
           },
           {
             "key": "severe_abdominal_pain",
             "text": "Severe Abdominal Pain",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "severely_abdominal_pain"
           },
           {
             "key": "convulsion",
             "text": "Convulsion",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "convulsion"
           },
           {
             "key": "blurred_vision",
             "text": "Blurred Vision",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "blurred_vision"
           },
           {
             "key": "severe_breathing_difficulty",
             "text": "Severe Breathing Difficulty",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "severe_breathing_difficulty"
           },
           {
             "key": "unconscious",
             "text": "Unconscious",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "unconscious"
           },
           {
             "key": "reduced_fetal_movement",
             "text": "Reduced Fetal Movement",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "reduced_fetal_movement"
           },
           {
             "key": "dizziness",
             "text": "Dizziness",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "dizziness"
           },
           {
             "key": "pale_anaemic",
             "text": "Pale/Anaemic",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "pale_anaemic"
           },
           {
             "key": "none",
             "text": "None",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "none"
           }

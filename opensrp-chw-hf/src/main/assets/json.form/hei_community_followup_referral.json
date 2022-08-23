@@ -73,14 +73,12 @@
           {
             "key": "missed_appointment",
             "text": "Missed Appointment",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "missed_appointment"
           },
           {
             "key": "lost_to_followup",
             "text": "Lost to followup client",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "lost_to_followup"
           }

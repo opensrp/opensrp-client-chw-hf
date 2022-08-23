@@ -58,14 +58,12 @@
           {
             "key": "positive",
             "text": "Positive",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "positive"
           },
           {
             "key": "negative",
             "text": "Negative",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "negative"
           },

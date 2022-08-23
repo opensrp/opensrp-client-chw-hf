@@ -58,14 +58,12 @@
           {
             "key": "yes",
             "text": "Yes",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
             "text": "No",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
@@ -86,49 +84,42 @@
           {
             "key": "chk_cough",
             "text": "Cough for two or more weeks",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_cough"
           },
           {
             "key": "chk_sputum",
             "text": "Coughing up blood-stained sputum (hemoptysis)",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_sputum"
           },
           {
             "key": "chk_fevers",
             "text": "Fevers for two or more weeks?",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_fevers"
           },
           {
             "key": "chk_weight_loss",
             "text": "Noticeable weight loss for new patients or 3 kgs",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_weight_loss"
           },
           {
             "key": "chk_weight_loss_subsequent_visit",
             "text": "Weight loss in a month (subsequent visit)",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_weight_loss_subsequent_visit"
           },
           {
             "key": "chk_excessive_sweating",
             "text": "Excessive sweating at night for two or more weeks",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_excessive_sweating"
           },
           {
             "key": "chk_none",
             "text": "None",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_none"
           }
@@ -157,14 +148,12 @@
           {
             "key": "positive",
             "text": "Positive",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "positive"
           },
           {
             "key": "negative",
             "text": "Negative",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "negative"
           }

@@ -58,14 +58,12 @@
           {
             "key": "yes",
             "text": "Ndio",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
             "text": "Hapana",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
@@ -87,105 +85,90 @@
           {
             "key": "chk_hiv_info",
             "text": "Maambukizi ya VVU, Matibabu, Maendeleo ya Ugonjwa na jinsi ya kujikinga",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_hiv_info"
           },
           {
             "key": "chk_disclosure",
             "text": "Uwazi wa hali ya maambukizi  ya VVU na kubainisha msaidizi wa kimatibabu",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_disclosure"
           },
           {
             "key": "chk_promote_testing",
             "text": "Kuhamasisha upimaji wa wenza na wenza walio katika mnyororo wa kingono",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_promote_testing"
           },
           {
             "key": "chk_ayf_services",
             "text": "Huduma rafiki za afya kwa vijana (Ufuasi mzuri wa dawa na kubaki kwenye matunzo)",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_ayf_services"
           },
           {
             "key": "chk_prevention_diseases",
             "text": "Jinsi ya Kujikinga na Magonjwa, kutumia chandarua na usafi wa mazingira na Binafsi",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_prevention_diseases"
           },
           {
             "key": "chk_imp_cpt",
             "text": "Umuhimu wa CPT, CrPET na TPT",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_imp_cpt"
           },
           {
             "key": "chk_imp_adherence",
             "text": "Umuhimu wa ufuasi mzuri wa dawa, Jinsi ya kukumbuka kumeza dawa, kuandaa mpango na Jinsi ya kufanya wakati wa kusafiri au wakati unaumwa",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_imp_adherence"
           },
           {
             "key": "chk_imp_support_group",
             "text": "Umuhimu wa CBS na Vikundi vya msaada vya watu wanaishi na VVU",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_imp_support_group"
           },
           {
             "key": "chk_imp_appointment",
             "text": "Umuhimu wa miadi, tarehe, muda na mpango wa kusafiri",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_imp_appointment"
           },
           {
             "key": "chk_sti_rti",
             "text": "Magonjwa ya STIs/RTIs",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_sti_rti"
           },
           {
             "key": "chk_imp_insurance",
             "text": "Umuhimu wa kughalimikiwa matibabu kwa kutumia Bima ya Afya",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_imp_insurance"
           },
           {
             "key": "chk_non_communicable_diseases_prevention",
             "text": "Jinsi ya kujikinga na Magonjwa yasiyoambukiza (muhimu kuzingatia lishe, kufanya mazoezi, mtindo wa Maisha)",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_non_communicable_diseases_prevention"
           },
           {
             "key": "chk_eac_sessions",
             "text": "Ushauri mahususi wa Ufuasi mzuri wa dawa/ matibabu, kama HVL > 1000 copies/ml",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_eac_sessions"
           },
           {
             "key": "chk_infant_feeding_options",
             "text": "Chaguzi za kulisha watoto wachanga katika muktadha wa VVU",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_infant_feeding_options"
           },
           {
             "key": "chk_living_with_hiv",
             "text": "Jinsi ya kuishi na maambukizi ya VVU",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_living_with_hiv"
           }

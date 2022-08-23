@@ -68,21 +68,18 @@
           {
             "key": "chk_intact",
             "text": "Intact",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_intact"
           },
           {
             "key": "chk_bleeding",
             "text": "Bleeding",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_bleeding"
           },
           {
             "key": "chk_tear",
             "text": "Tear",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_tear"
           }

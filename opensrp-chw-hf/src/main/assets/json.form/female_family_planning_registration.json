@@ -111,8 +111,7 @@
         "options": [
           {
             "key": "pregnant_option",
-            "text": "Verify that the woman is not pregnant",
-            "value": false
+            "text": "Verify that the woman is not pregnant"
           }
         ]
       },

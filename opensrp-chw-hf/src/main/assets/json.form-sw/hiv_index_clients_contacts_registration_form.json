@@ -434,14 +434,12 @@
           {
             "key": "biological_child_under_15",
             "text": "Mtoto wa chini ya miaka 15",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "biological_child_under_15"
           },
           {
             "key": "siblings_under_15",
             "text": "Ndugu wa kuzaliwa chini ya miaka 15",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "siblings_under_15"
           }
@@ -471,21 +469,18 @@
           {
             "key": "sexual_partner",
             "text": "Mwenzi wa kingono",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "sexual_partner"
           },
           {
             "key": "needle_sharing_partner",
             "text": "Mshirika wa kujidunga",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "needle_sharing_partner"
           },
           {
             "key": "biological_father",
             "text": "Baba Mzazi",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "biological_father"
           }
@@ -515,21 +510,18 @@
           {
             "key": "sexual_partner",
             "text": "Mshiriki wa kingono",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "sexual_partner"
           },
           {
             "key": "needle_sharing_partner",
             "text": "Mshiriki wa kujidunga",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "needle_sharing_partner"
           },
           {
             "key": "biological_mother",
             "text": "Mama Mzazi",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "biological_mother"
           }
@@ -587,14 +579,12 @@
           {
             "key": "yes",
             "text": "Ndio",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
             "text": "Hapana",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
@@ -624,14 +614,12 @@
           {
             "key": "yes",
             "text": "Ndio",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
             "text": "Hapana",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
@@ -661,14 +649,12 @@
           {
             "key": "yes",
             "text": "Ndio",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
             "text": "Hapana",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
@@ -698,14 +684,12 @@
           {
             "key": "yes",
             "text": "Ndio",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
             "text": "Hapana",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
@@ -735,14 +719,12 @@
           {
             "key": "yes",
             "text": "Ndio",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
             "text": "Hapana",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
@@ -768,28 +750,24 @@
           {
             "key": "client_referral",
             "text": "Rufaa ya Mteja",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "client_referral"
           },
           {
             "key": "provider_referral",
             "text": "Rufaa ya Mtoa huduma",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "provider_referral"
           },
           {
             "key": "contract_referral",
             "text": "Rufaa ya Mkataba",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "contract_referral"
           },
           {
             "key": "dual_referral",
             "text": "Ufuatiliaji kwa njia mbili",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "dual_referral"
           }

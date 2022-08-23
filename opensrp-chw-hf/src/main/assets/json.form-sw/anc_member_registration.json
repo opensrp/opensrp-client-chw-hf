@@ -169,21 +169,18 @@
           {
             "key": "chk_vaginally",
             "text": "Njia ya kawaida",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "1170AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           },
           {
             "key": "chk_cesarean_section",
             "text": "Njia ya upasuaji",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "1171AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           },
           {
             "key": "chk_miscarriage",
             "text": "Mimba kuharibika",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "1171AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           }
@@ -213,21 +210,18 @@
           {
             "key": "chk_vaginally",
             "text": "Njia ya kawaida",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "1170AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           },
           {
             "key": "chk_cesarean_section",
             "text": "Njia ya upasuaji",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "1171AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           },
           {
             "key": "chk_miscarriage",
             "text": "Mimba kuharibika",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "1171AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           }

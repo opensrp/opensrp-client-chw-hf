@@ -58,15 +58,13 @@
             "key": "yes",
             "text": "Yes",
             "openmrs_entity_id": "yes",
-            "openmrs_entity": "concept",
-            "value": false
+            "openmrs_entity": "concept"
           },
           {
             "key": "no",
             "text": "No",
             "openmrs_entity_id": "no",
-            "openmrs_entity": "concept",
-            "value": false
+            "openmrs_entity": "concept"
           }
         ]
       },
@@ -87,88 +85,77 @@
             "text": "Fever and chills",
             "openmrs_entity_id": "fever",
             "openmrs_entity": "concept",
-            "openmrs_entity_parent": "",
-            "value": false
+            "openmrs_entity_parent": ""
           },
           {
             "key": "headache",
             "text": "Headache",
             "openmrs_entity_id": "headache",
             "openmrs_entity": "concept",
-            "openmrs_entity_parent": "",
-            "value": false
+            "openmrs_entity_parent": ""
           },
           {
             "key": "pallor",
             "text": "Pallor",
             "opemrs_entity_id": "pallor",
             "openmrs_entity": "concept",
-            "openmrs_entity_parent": "",
-            "value": false
+            "openmrs_entity_parent": ""
           },
           {
             "key": "diarrhea",
             "text": "Diarrhea",
             "openmrs_entity_id": "diarrhea",
             "openmrs_entity": "concept",
-            "openmrs_entity_parent": "",
-            "value": false
+            "openmrs_entity_parent": ""
           },
           {
             "key": "nausea_and_vomiting",
             "text": "Nausea And Vomiting",
             "openmrs_entity_id": "nausea_and_vomiting",
             "openmrs_entity": "concept",
-            "openmrs_entity_parent": "",
-            "value": false
+            "openmrs_entity_parent": ""
           },
           {
             "key": "joint_pains",
             "text": "Joint Pains",
             "openmrs_entity_id": "joint_pains",
             "openmrs_entity": "concept",
-            "openmrs_entity_parent": "",
-            "value": false
+            "openmrs_entity_parent": ""
           },
           {
             "key": "body_ache",
             "text": "Body Ache",
             "openmrs_entity_id": "body_ache",
             "openmrs_entity": "concept",
-            "openmrs_entity_parent": "",
-            "value": false
+            "openmrs_entity_parent": ""
           },
           {
             "key": "poor_appetite",
             "text": "Poor Appetite",
             "openmrs_entity_id": "poor_appetite",
             "openmrs_entity": "concept",
-            "openmrs_entity_parent": "",
-            "value": false
+            "openmrs_entity_parent": ""
           },
           {
             "key": "body_weakness",
             "text": "Body Weakness",
             "openmrs_entity_id": "body_weakness",
             "openmrs_entity": "concept",
-            "openmrs_entity_parent": "",
-            "value": false
+            "openmrs_entity_parent": ""
           },
           {
             "key": "enlarged_spleen",
             "text": "Enlarged Spleen",
             "openmrs_entity_id": "enlarged_spleen",
             "openmrs_entity": "concept",
-            "openmrs_entity_parent": "",
-            "value": false
+            "openmrs_entity_parent": ""
           },
           {
             "key": "none",
             "text": "None of the above",
             "openmrs_entity_id": "none",
             "openmrs_entity": "concept",
-            "openmrs_entity_parent": "",
-            "value": false
+            "openmrs_entity_parent": ""
           }
         ],
         "v_required": {
@@ -348,15 +335,13 @@
             "key": "ipt1",
             "text": "IPT1",
             "openmrs_entity_id": "ipt1",
-            "openmrs_entity": "concept",
-            "value": false
+            "openmrs_entity": "concept"
           },
           {
             "key": "medication_not_given",
             "text": "Malaria medication not given",
             "openmrs_entity_id": "medication_not_given",
-            "openmrs_entity": "concept",
-            "value": false
+            "openmrs_entity": "concept"
           }
         ],
         "v_required": {
@@ -383,15 +368,13 @@
             "key": "ipt2",
             "text": "IPT2",
             "openmrs_entity_id": "ipt2",
-            "openmrs_entity": "concept",
-            "value": false
+            "openmrs_entity": "concept"
           },
           {
             "key": "medication_not_given",
             "text": "Malaria medication not given",
             "openmrs_entity_id": "medication_not_given",
-            "openmrs_entity": "concept",
-            "value": false
+            "openmrs_entity": "concept"
           }
         ],
         "v_required": {
@@ -418,15 +401,13 @@
             "key": "ipt3",
             "text": "IPT3",
             "openmrs_entity_id": "ipt3",
-            "openmrs_entity": "concept",
-            "value": false
+            "openmrs_entity": "concept"
           },
           {
             "key": "medication_not_given",
             "text": "Malaria medication not given",
             "openmrs_entity_id": "medication_not_given",
-            "openmrs_entity": "concept",
-            "value": false
+            "openmrs_entity": "concept"
           }
         ],
         "v_required": {
@@ -453,15 +434,13 @@
             "key": "ipt4",
             "text": "IPT4",
             "openmrs_entity_id": "ipt4",
-            "openmrs_entity": "concept",
-            "value": false
+            "openmrs_entity": "concept"
           },
           {
             "key": "medication_not_given",
             "text": "Malaria medication not given",
             "openmrs_entity_id": "medication_not_given",
-            "openmrs_entity": "concept",
-            "value": false
+            "openmrs_entity": "concept"
           }
         ],
         "v_required": {
@@ -545,15 +524,13 @@
             "key": "yes",
             "text": "Yes",
             "openmrs_entity_id": "yes",
-            "openmrs_entity": "concept",
-            "value": false
+            "openmrs_entity": "concept"
           },
           {
             "key": "no",
             "text": "No",
             "openmrs_entity_id": "no",
-            "openmrs_entity": "concept",
-            "value": false
+            "openmrs_entity": "concept"
           }
         ],
         "relevance": {

@@ -123,8 +123,7 @@
         "options": [
           {
             "key": "pregnant_option",
-            "text": "Hakikisha kwamba yeye siyo mjamzito",
-            "value": false
+            "text": "Hakikisha kwamba yeye siyo mjamzito"
           }
         ]
       },

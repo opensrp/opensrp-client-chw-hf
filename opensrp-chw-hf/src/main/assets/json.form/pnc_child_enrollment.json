@@ -299,21 +299,18 @@
           {
             "key": "chk_none",
             "text": "None",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_none"
           },
           {
             "key": "chk_chlorhexidine",
             "text": "Chlorhexidine applied to umbilical stump",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_chlorhexidine"
           },
           {
             "key": "chk_skin_contact",
             "text": "Skin to skin contact for at least 2 hours",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_skin_contact"
           }

@@ -117,63 +117,54 @@
           {
             "key": "chk_haemoglobin",
             "text": "Wingi wa damu",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "21AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           },
           {
             "key": "chk_urine_analysis_uti",
             "text": "Kipimo cha maambukizi kwenye njia ya mkojo",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "302AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           },
           {
             "key": "chk_urine_analysis_protein",
             "text": "Kipimo cha kuangalia uwepo wa protini na sukari kwenye mkojo",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "1875AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           },
           {
             "key": "chk_hiv",
             "text": "Kipimo cha VVU",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "1356AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           },
           {
             "key": "chk_syphilis",
             "text": "Kipimo cha kaswende",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "299AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           },
           {
             "key": "chk_malaria",
             "text": "Kipimo cha malaria",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "1643AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           },
           {
             "key": "chk_tb",
             "text": "Uchunguzi wa kifua kikuu",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "164800AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           },
           {
             "key": "chk_other",
             "text": "Vipimo vingine",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           },
           {
             "key": "chk_none",
             "text": "Vipimo havijafanyika",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "164369AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           }
@@ -205,49 +196,42 @@
           {
             "key": "chk_tetanus",
             "text": "Chanjo ya pepopunda",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "84879AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           },
           {
             "key": "chk_malaria",
             "text": "Tiba kinga ya malaria wakati wa ujauzito (IPTp-SP)",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "105232AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           },
           {
             "key": "chk_iron",
             "text": "Dawa za kuongeza damu (FEFO)",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "773AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           },
           {
             "key": "chk_albendazole",
             "text": "Albendazole / Medandozle",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "159922AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           },
           {
             "key": "chk_calcuim",
             "text": "Calcium supplement",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "72650AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           },
           {
             "key": "chk_other",
             "text": "Dawa nyingine au chanjo nyingine",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           },
           {
             "key": "chk_none",
             "text": "Hajapewa dawa au chanjo yoyote",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "164369AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           }

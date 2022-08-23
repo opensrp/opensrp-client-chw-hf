@@ -68,28 +68,24 @@
           {
             "key": "oxytocin",
             "text": "Oxytocin",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "oxytocin"
           },
           {
             "key": "drugs",
             "text": "Drugs (Specify)",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "drugs"
           },
           {
             "key": "iv_fluid",
             "text": "IV Fluid (Specify)",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "iv_fluid"
           },
           {
             "key": "none",
             "text": "None",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "none"
           }
