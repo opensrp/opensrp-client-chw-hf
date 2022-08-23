@@ -80,13 +80,13 @@ public class MotherStatusActionHelper implements BaseLDVisitAction.LDVisitAction
             String modeOfDelivery = LDDao.getModeOfDelivery(baseEntityId);
 
             if (modeOfDelivery != null && !modeOfDelivery.isEmpty()) {
-                JSONObject modeOfDeliveryQuestion = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "mode_of_delivery");
+                JSONObject modeOfDeliveryQuestion = JsonFormUtils.getFieldJSONObject(fields, "mode_of_delivery");
                 modeOfDeliveryQuestion.put("type", "hidden");
 
             }
 
             if (modeOfDelivery.equalsIgnoreCase("cesarean")) {
-                JSONObject placeOfDelivery = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "delivery_place");
+                JSONObject placeOfDelivery = JsonFormUtils.getFieldJSONObject(fields, "delivery_place");
                 placeOfDelivery.getJSONArray("values").remove(3);
                 placeOfDelivery.getJSONArray("values").remove(2);
                 placeOfDelivery.getJSONArray("values").remove(1);
