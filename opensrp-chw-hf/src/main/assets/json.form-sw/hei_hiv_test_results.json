@@ -65,14 +65,12 @@
           {
             "key": "positive",
             "text": "Chanya",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "positive"
           },
           {
             "key": "negative",
             "text": "Hasi",
-            "value": false,
             "openmrs_entity": "concept",
             "openmrs_entity_id": "negative"
           }
