@@ -265,6 +265,14 @@
           }
         },
         {
+          "column_name": "enroll_to_eac",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "enroll_to_eac"
+          }
+        },
+        {
           "column_name": "hvl_result_date",
           "type": "Event",
           "json_mapping": {
@@ -381,6 +389,30 @@
             "field": "obs.fieldCode",
             "concept": "eac_visit_date"
           }
+        },
+        {
+          "column_name": "eac_visit_session",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "eac_visit_session"
+          }
+        },
+        {
+          "column_name": "eac_completion_status",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "eac_completion_status"
+          }
+        },
+        {
+          "column_name": "form_submission_timestamp",
+            "type": "Event",
+            "json_mapping": {
+              "field": "obs.fieldCode",
+              "concept": "form_submission_timestamp"
+            }
         }
       ]
     },

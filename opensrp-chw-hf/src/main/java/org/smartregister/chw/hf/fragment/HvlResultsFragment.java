@@ -10,6 +10,7 @@ import com.vijay.jsonwizard.utils.FormUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.hf.activity.HvlResultsViewActivity;
+import org.smartregister.chw.hf.dao.HfPmtctDao;
 import org.smartregister.chw.hf.model.HvlResultsFragmentModel;
 import org.smartregister.chw.hf.presenter.HvlResultsFragmentPresenter;
 import org.smartregister.chw.pmtct.fragment.BaseHvlResultsFragment;
@@ -55,6 +56,8 @@ public class HvlResultsFragment extends BaseHvlResultsFragment {
             JSONObject jsonObject = (new FormUtils()).getFormJsonFromRepositoryOrAssets(requireContext(), org.smartregister.chw.hf.utils.Constants.JsonForm.getHvlTestResultsForm());
             assert jsonObject != null;
             jsonObject.getJSONObject(STEP1).getJSONArray(FIELDS).getJSONObject(0).put("value", sampleId);
+            JSONObject global = jsonObject.getJSONObject("global");
+            global.put("is_after_eac", HfPmtctDao.isAfterEAC(baseEntityId));
             HvlResultsViewActivity.startResultsForm(getContext(), jsonObject.toString(), baseEntityId, formSubmissionId);
         } catch (JSONException e) {
             e.printStackTrace();

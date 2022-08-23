@@ -48,7 +48,7 @@
       {
         "key": "eac_visit_notification",
         "type": "toaster_notes",
-        "text": "Record EAC Visit Date and Time",
+        "text": "Record EAC Visit Date",
         "openmrs_entity_id": "notify_retest",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -69,15 +69,515 @@
         }
       },
       {
-        "key": "eac_visit_time",
-        "type": "time_picker",
-        "hint": "EAC Visit Time",
-        "openmrs_entity_id": "eac_visit_time",
-        "openmrs_entity": "concept",
+        "key": "summary",
         "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "summary",
+        "type": "edit_text",
+        "hint": "Summary",
         "v_required": {
           "value": "true",
-          "err": "Please enter EAC visit time"
+          "err": "Please enter the summary"
+        }
+      },
+      {
+        "key": "arv_intake_demonstration_done",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "arv_intake_demonstration_done",
+        "type": "native_radio",
+        "label": "ARV-intake demonstration by patient/caretaker done?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an answer"
+        }
+      },
+      {
+        "key": "pill_count_done",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "pill_count_done",
+        "type": "native_radio",
+        "label": "Pill count done?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an answer"
+        }
+      },
+      {
+        "key": "pill_intake",
+        "type": "edit_text",
+        "hint": "Pill intake %",
+        "openmrs_entity_id": "pill_intake",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the % of pill intake"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "The % of the pill intake must be equal or greater than 0"
+        },
+        "v_max": {
+          "value": "100",
+          "err": "The % of the pill intake must be equal or less than 100"
+        }
+      },
+      {
+        "key": "additional_session",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "additional_session",
+        "type": "native_radio",
+        "label": "Does the client require an additional session?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an answer"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_eac_visits_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "patient_adherence_before_eac",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "patient_adherence_before_eac",
+        "type": "native_radio",
+        "label": "Your impression about patient’s adherence before EAC",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "likely_to_be_good",
+            "text": "Likely to be good",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "likely_to_be_good"
+          },
+          {
+            "key": "likely_to_be_not_good",
+            "text": "Likely to be NOT good (relevant barriers identified)",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "likely_to_be_not_good"
+          },
+          {
+            "key": "clearly_poor",
+            "text": "Clearly poor (defaulter)",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "clearly_poor"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an answer"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_eac_visits_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "patient_adherence_during_and_after_eac",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "patient_adherence_during_and_after_eac",
+        "type": "native_radio",
+        "label": "Your impression about patient’s adherence during and after EAC",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "likely_to_be_good",
+            "text": "Likely to be good",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "likely_to_be_good"
+          },
+          {
+            "key": "likely_to_be_not_good",
+            "text": "Likely to be NOT good (relevant barriers identified and not cleared)",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "likely_to_be_not_good"
+          },
+          {
+            "key": "clearly_poor",
+            "text": "Clearly poor (defaulter)",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "clearly_poor"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an answer"
+        }
+      },
+      {
+        "key": "eac_barriers_identified_prompt",
+        "type": "toaster_notes",
+        "text": "Major remaining barriers identified after EAC sessions",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:additional_session": {
+            "type": "string",
+            "ex": "equalTo(., \"no\")"
+          }
+        }
+      },
+      {
+        "key": "behavioral_barriers",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "behavioral_barriers",
+        "type": "native_radio",
+        "label": "Behavioral",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an answer"
+        },
+        "relevance": {
+          "step1:additional_session": {
+            "type": "string",
+            "ex": "equalTo(., \"no\")"
+          }
+        }
+      },
+      {
+        "key": "behavioral_barriers_details",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "behavioral_barriers_details",
+        "type": "edit_text",
+        "hint": "Behavioral barriers",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the behavioral barriers"
+        },
+        "relevance": {
+          "step1:behavioral_barriers": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
+        "key": "cognitive_barriers",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "cognitive_barriers",
+        "type": "native_radio",
+        "label": "Cognitive",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an answer"
+        },
+        "relevance": {
+          "step1:additional_session": {
+            "type": "string",
+            "ex": "equalTo(., \"no\")"
+          }
+        }
+      },
+      {
+        "key": "cognitive_barriers_details",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "cognitive_barriers_details",
+        "type": "edit_text",
+        "hint": "Cognitive barriers",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the cognitive barriers"
+        },
+        "relevance": {
+          "step1:cognitive_barriers": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
+        "key": "emotional_barriers",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "emotional_barriers",
+        "type": "native_radio",
+        "label": "Emotional",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an answer"
+        },
+        "relevance": {
+          "step1:additional_session": {
+            "type": "string",
+            "ex": "equalTo(., \"no\")"
+          }
+        }
+      },
+      {
+        "key": "emotional_barriers_details",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "emotional_barriers_details",
+        "type": "edit_text",
+        "hint": "Emotional barriers",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the emotional barriers"
+        },
+        "relevance": {
+          "step1:emotional_barriers": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
+        "key": "socio_economic_barriers",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "socio_economic_barriers",
+        "type": "native_radio",
+        "label": "Socio-economic",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an answer"
+        },
+        "relevance": {
+          "step1:additional_session": {
+            "type": "string",
+            "ex": "equalTo(., \"no\")"
+          }
+        }
+      },
+      {
+        "key": "socio_economic_barriers_details",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "socio_economic_barriers_details",
+        "type": "edit_text",
+        "hint": "Socio-economic barriers",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the socio-economic barriers"
+        },
+        "relevance": {
+          "step1:socio_economic_barriers": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
+        "key": "other_barriers",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_barriers",
+        "type": "native_radio",
+        "label": "Others (Disclosure, Religion...)",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an answer"
+        },
+        "relevance": {
+          "step1:additional_session": {
+            "type": "string",
+            "ex": "equalTo(., \"no\")"
+          }
+        }
+      },
+      {
+        "key": "other_barriers_details",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_barriers_details",
+        "type": "edit_text",
+        "hint": "Other barriers",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter other barriers"
+        },
+        "relevance": {
+          "step1:other_barriers": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
+        "key": "counsellor_name",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "counsellor_name",
+        "type": "edit_text",
+        "hint": "Counsellor's name",
+        "edit_type": "name",
+        "v_regex": {
+          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
+          "err": "Please enter a valid name"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the counsellor's name"
         }
       },
       {
@@ -88,11 +588,46 @@
         "openmrs_entity_parent": ""
       },
       {
+        "key": "eac_visit_session",
+        "type": "hidden",
+        "openmrs_entity_id": "eac_visit_session",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": ""
+      },
+      {
+        "key": "eac_completion_status",
+        "type": "hidden",
+        "openmrs_entity_id": "eac_completion_status",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_eac_visits_calculation.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "eac",
         "type": "hidden",
         "openmrs_entity_id": "eac",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": ""
+      },
+      {
+        "key": "form_submission_timestamp",
+        "type": "hidden",
+        "openmrs_entity_id": "form_submission_timestamp",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_eac_visits_calculation.yml"
+            }
+          }
+        }
       }
     ]
   }
