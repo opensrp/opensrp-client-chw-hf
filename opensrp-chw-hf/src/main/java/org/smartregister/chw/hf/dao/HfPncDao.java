@@ -66,7 +66,7 @@ public class HfPncDao extends PNCDao {
                 "FROM ec_child c " +
                 "INNER JOIN ec_family_member fm on fm.base_entity_id = c.base_entity_id " +
                 "WHERE c.mother_entity_id = '" + baseEntityId + "' COLLATE NOCASE " +
-                "AND c.entry_point = 'PNC' " +
+                "AND (c.entry_point = 'PNC'  OR  c.entry_point = 'LD') " +
                 "AND c.is_closed = 0 " +
                 "AND fm.is_closed = 0 " +
                 "AND ( date (c.dob, '+49 days') > date()) " +

@@ -1,0 +1,162 @@
+{
+  "form": "Referral form",
+  "encounter_type": "Referral Registration",
+  "entity_id": "",
+  "relational_id": "",
+  "rules_file": "rule/labour_and_delivery_emergency_neat_referral_form_rules.yml",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "steps": [
+    {
+      "title": "L&D Child Emergency Referral Form",
+      "fields": [
+        {
+          "name": "chw_referral_hf",
+          "type": "spinner",
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chw_referral_hf",
+            "openmrs_entity_parent": ""
+          },
+          "properties": {
+            "text": "Choose referral facility",
+            "searchable": "Choose referral facility"
+          },
+          "options": [],
+          "required_status": "yes:Please specify"
+        },
+        {
+          "name": "problem",
+          "type": "multi_choice_checkbox",
+          "properties": {
+            "text": "Problems/Complications"
+          },
+          "meta_data": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "problem"
+          },
+          "options": [
+            {
+              "name": "birth_asphyxia",
+              "text": "Birth Asphyxia",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "birth_asphyxia",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "neo_respiratory_distress",
+              "text": "Neonatal Respiratory Distress",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "neo_respiratory_distress",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "early_neonatal_sepsis",
+              "text": "Early Neonatal Sepsis",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "early_neonatal_sepsis",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "congenital_anomalies",
+              "text": "Congenital Anomalies",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "congenital_anomalies",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "prematurity",
+              "text": "Prematurity",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "prematurity",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "other_reasons",
+              "text": "Other reasons",
+              "meta_data": {
+                "openmrs_entity": "",
+                "openmrs_entity_id": "other_reasons",
+                "openmrs_entity_parent": ""
+              }
+            }
+          ],
+          "required_status": "yes:Please specify",
+          "dependent_calculations": [
+            "referral_date",
+            "referral_time",
+            "referral_type",
+            "referral_status"
+          ]
+        },
+        {
+          "name": "problem_other",
+          "type": "text_input_edit_text",
+          "properties": {
+            "hint": "Other reasons",
+            "type": "name"
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "problem_other",
+            "openmrs_entity_parent": "problem"
+          },
+          "required_status": "true:Please specify other reasons",
+          "subjects": "problem:map"
+        }
+      ]
+    }
+  ]
+}

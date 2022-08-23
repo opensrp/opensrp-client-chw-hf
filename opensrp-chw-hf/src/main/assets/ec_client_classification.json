@@ -684,7 +684,7 @@
           },
           {
             "field": "eventType",
-            "field_value": "Close LD",
+            "field_value": "Post Delivery Mother Management",
             "creates_case": [
               "ec_pregnancy_outcome"
             ]

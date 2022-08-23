@@ -133,7 +133,9 @@
     <string name="mother_general_examination">Mother\'s General Examination</string>
     <string name="child_general_examination_complete">Child\'s General Examination Complete</string>
     <string name="child_general_examination">Baby %s\'s General Examination</string>
+    <string name="child_general_examination_for_children_without_names">%s\'s General Examination</string>
     <string name="children_general_examination">Baby %s\'s General Examination - %d</string>
+    <string name="children_general_examination_for_children_without_names">%s\'s General Examination - %d</string>
     <string name="immunization_complete">Immunization Complete</string>
     <string name="immunization_title">Immunization</string>
     <string name="nutritional_supplements_complete">Nutritional Supplements Complete</string>
@@ -424,5 +426,9 @@
     <string name="mother_champion_reports_subtitle">View Mother Champion Reports</string>
     <string name="mother_champion_reports">Mother Champion Reports</string>
     <string name="process_visit">Process Visit</string>
+
+    <string name="refer_child_for_emergency">Refer %1$s\'s for Emergency</string>
+    <string name="edit_child_form_title">Edit baby %1$s\'s details</string>
+    <string name="edit_child_form_title_for_child_without_names">Edit %1$s\'s details</string>
 
 </resources>

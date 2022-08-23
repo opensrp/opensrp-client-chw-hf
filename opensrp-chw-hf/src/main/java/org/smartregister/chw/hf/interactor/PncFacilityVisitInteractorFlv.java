@@ -47,7 +47,7 @@ public class PncFacilityVisitInteractorFlv implements AncFirstFacilityVisitInter
             if (head_circumference != null) {
                 JSONObject v_min = head_circumference.getJSONObject("v_min");
                 v_min.put("value", currentMinHeadCircumference);
-                v_min.put("err", context.getString(R.string.head_circumference_min_err, String.valueOf(currentMinHeadCircumference)) );
+                v_min.put("err", context.getString(R.string.head_circumference_min_err, String.valueOf(currentMinHeadCircumference)));
             }
         } catch (JSONException e) {
             Timber.e(e);
@@ -123,8 +123,14 @@ public class PncFacilityVisitInteractorFlv implements AncFirstFacilityVisitInter
                     JsonFormUtils.populateForm(childGeneralExamForm, childDetails);
                 }
             }
-            if(children.size() == 1){
-                BaseAncHomeVisitAction childGeneralExamination = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.child_general_examination, child.getFirstName()))
+            if (children.size() == 1) {
+                String childName = child.getFirstName();
+                if (childName.startsWith("Baby of")) {
+                    childName = context.getString(R.string.child_general_examination_for_children_without_names, child.getFirstName());
+                } else {
+                    childName = context.getString(R.string.child_general_examination, child.getFirstName());
+                }
+                BaseAncHomeVisitAction childGeneralExamination = new BaseAncHomeVisitAction.Builder(context, childName)
                         .withOptional(false)
                         .withDetails(childDetails)
                         .withBaseEntityID(child.getBaseEntityId())
@@ -133,10 +139,16 @@ public class PncFacilityVisitInteractorFlv implements AncFirstFacilityVisitInter
                         .withFormName(Constants.JsonForm.getPncChildGeneralExamination())
                         .withHelper(new PncChildGeneralExamination(memberObject))
                         .build();
-                actionList.put(context.getString(R.string.child_general_examination, child.getFirstName()), childGeneralExamination);
-            }
-            else {
-                BaseAncHomeVisitAction childGeneralExamination = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.children_general_examination, child.getFirstName(), index))
+
+                actionList.put(childName, childGeneralExamination);
+            } else {
+                String childName = child.getFirstName();
+                if (childName.startsWith("Baby of")) {
+                    childName = context.getString(R.string.children_general_examination_for_children_without_names, child.getFirstName(), index);
+                } else {
+                    childName = context.getString(R.string.children_general_examination, child.getFirstName(), index);
+                }
+                BaseAncHomeVisitAction childGeneralExamination = new BaseAncHomeVisitAction.Builder(context, childName)
                         .withOptional(false)
                         .withDetails(childDetails)
                         .withBaseEntityID(child.getBaseEntityId())
@@ -145,7 +157,7 @@ public class PncFacilityVisitInteractorFlv implements AncFirstFacilityVisitInter
                         .withFormName(Constants.JsonForm.getPncChildGeneralExamination())
                         .withHelper(new PncChildGeneralExamination(memberObject))
                         .build();
-                actionList.put(context.getString(R.string.children_general_examination, child.getFirstName(), index), childGeneralExamination);
+                actionList.put(childName, childGeneralExamination);
             }
             index++;
         }

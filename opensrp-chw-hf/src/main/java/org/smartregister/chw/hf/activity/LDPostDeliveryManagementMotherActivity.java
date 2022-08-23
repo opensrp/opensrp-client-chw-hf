@@ -52,29 +52,6 @@ public class LDPostDeliveryManagementMotherActivity extends BaseLDVisitActivity 
     }
 
     @Override
-    public void submittedAndClose() {
-        boolean completionStatus = true;
-
-        for (Map.Entry<String, BaseLDVisitAction> entry : this.actionList.entrySet()) {
-            String actionStatus = entry.getValue().getActionStatus().toString();
-            if (actionStatus.equalsIgnoreCase("PARTIALLY_COMPLETED")) {
-                completionStatus = false;
-            }
-        }
-
-        if (completionStatus) {
-
-            Intent intent = new Intent(this, LDRegisterActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-            finish();
-
-        }
-
-        super.submittedAndClose();
-    }
-
-    @Override
     public void initializeActions(LinkedHashMap<String, BaseLDVisitAction> map) {
         //Clearing the action List before recreation
         actionList.clear();

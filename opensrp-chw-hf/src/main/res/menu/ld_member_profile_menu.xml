@@ -20,4 +20,12 @@
         android:title="@string/ld_emergency_referral"
         app:showAsAction="never" />
 
+    <item
+        android:id="@+id/action_child_emergency_registration"
+        android:enabled="true"
+        android:visible="false"
+        android:title="@string/refer_child_for_emergency"
+        android:orderInCategory="200"
+        app:showAsAction="never" />
+
 </menu>
