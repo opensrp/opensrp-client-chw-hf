@@ -36,6 +36,7 @@ public class HfHivRegisterProvider extends CoreHivProvider {
     public void getView(Cursor cursor, SmartRegisterClient smartRegisterClient, RegisterViewHolder registerViewHolder) {
         super.getView(cursor, smartRegisterClient, registerViewHolder);
         registerViewHolder.getDueWrapper().setVisibility(View.GONE);
+        ((HfRegisterViewHolder) registerViewHolder).goToProfileWrapper.setVisibility(View.VISIBLE);
 
         CommonPersonObjectClient commonPersonObjectClient = ((CommonPersonObjectClient) smartRegisterClient);
         List<HivIndexContactObject> hivIndexContactObjects = HivIndexDao.getIndexContacts(commonPersonObjectClient.entityId());
@@ -75,11 +76,13 @@ public class HfHivRegisterProvider extends CoreHivProvider {
     public class HfRegisterViewHolder extends RegisterViewHolder {
         public TextView textViewReferralDay;
         public TextView textViewReElicit;
+        public View goToProfileWrapper;
 
         public HfRegisterViewHolder(View itemView) {
             super(itemView);
             textViewReferralDay = itemView.findViewById(R.id.text_view_referral_day);
             textViewReElicit = itemView.findViewById(R.id.text_view_re_elicit);
+            goToProfileWrapper = itemView.findViewById(R.id.go_to_profile_wrapper);
         }
     }
 }

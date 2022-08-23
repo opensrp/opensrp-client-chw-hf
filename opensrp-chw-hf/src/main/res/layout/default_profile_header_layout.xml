@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/text_view_ga"
+        android:fontFamily="@font/google_sans_regular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/register_member_village_size" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="@dimen/profile_dot_separator_margin"
+        android:layout_marginRight="@dimen/profile_dot_separator_margin"
+        android:text="\u00b7"
+        android:textSize="18sp"
+        android:textColor="@color/primary" />
+
+    <TextView
+        android:id="@+id/text_view_address"
+        android:fontFamily="@font/google_sans_regular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingStart="0dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/register_member_village_size" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="@dimen/profile_dot_separator_margin"
+        android:layout_marginRight="@dimen/profile_dot_separator_margin"
+        android:text="\u00b7"
+        android:textSize="18sp"
+        android:textColor="@color/primary" />
+
+    <TextView
+        android:id="@+id/text_view_id"
+        android:fontFamily="@font/google_sans_regular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:paddingStart="0dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/register_member_village_size" />
+</LinearLayout>
+
+
+

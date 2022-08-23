@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/collapsing_toolbar_appbarlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/light_gray">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/collapsing_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/ChwHivTheme.AppBarOverlay.Light"
+                app:contentInsetEnd="0dp"
+                app:contentInsetLeft="0dp"
+                app:contentInsetRight="0dp"
+                app:contentInsetStart="0dp"
+                app:contentInsetStartWithNavigation="0dp"
+                app:layout_collapseMode="pin">
+
+                <org.smartregister.view.customcontrols.CustomFontTextView
+                    android:id="@+id/toolbar_title"
+                    style="@style/CustomFontTextViewStyle.ClientList"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|start"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="0dp"
+                    android:text="@string/hiv_return_to_index_contacts_page"
+                    android:textColor="@color/customAppThemeBlue"
+                    android:textSize="17sp" />
+            </androidx.appcompat.widget.Toolbar>
+
+            <LinearLayout
+                android:id="@+id/profile_name_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:background="@color/other_member_profile_bg"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingTop="10dp"
+                app:layout_collapseMode="parallax">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imageview_profile"
+                    android:layout_width="@dimen/client_profile_pic_width"
+                    android:layout_height="@dimen/client_profile_pic_height"
+                    android:layout_gravity="center_horizontal"
+                    app:civ_border_color="#FFFFFFFF"
+                    app:civ_border_width="0dp" />
+
+                <TextView
+                    android:id="@+id/textview_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp"
+                    android:paddingLeft="0dp"
+                    android:text="Jane Doe"
+                    android:fontFamily="@font/google_sans_bold"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/activity_title_size" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:id="@+id/textview_gender"
+                        android:fontFamily="@font/google_sans_regular"
+                        android:textSize="16sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:paddingLeft="0dp"
+                        android:text="Male"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textColor="@color/text_black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/profile_dot_separator_margin"
+                        android:layout_marginRight="@dimen/profile_dot_separator_margin"
+                        android:text="\u00b7"
+                        android:textSize="18sp"
+                        android:textColor="@color/primary" />
+
+                    <TextView
+                        android:id="@+id/textview_address"
+                        android:fontFamily="@font/google_sans_regular"
+                        android:textSize="16sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:paddingLeft="0dp"
+                        android:text="Mwananyamala"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textColor="@color/text_black"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/village_town_dot"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/profile_dot_separator_margin"
+                        android:layout_marginRight="@dimen/profile_dot_separator_margin"
+                        android:text="\u00b7"
+                        android:textSize="18sp"
+                        android:textColor="@color/primary"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/textview_unique_id"
+                        android:fontFamily="@font/google_sans_regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal"
+                        android:paddingLeft="0dp"
+                        android:text="ID: 25398735"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textColor="@color/text_black" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="200dp"
+                    android:layout_height="0.2dp"
+                    android:background="@color/primary"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:alpha="0.5"/>
+
+                <TextView
+                    android:id="@+id/test_results"
+                    android:fontFamily="@font/google_sans_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center_horizontal"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="0dp"
+                    android:text="HIV Positive"
+                    android:textAllCaps="true"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:textSize="@dimen/register_member_village_size" />
+
+                <TextView
+                    android:id="@+id/associated_hiv_index_title"
+                    android:fontFamily="@font/google_sans_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="0dp"
+                    android:paddingTop="@dimen/register_list_top_bottom_min_padding"
+                    android:text="@string/associated_index_client"
+                    android:textAllCaps="true"
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/register_list_desc_size"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/associated_hiv_index_name"
+                    android:fontFamily="@font/google_sans_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="0dp"
+                    android:paddingTop="@dimen/register_list_top_bottom_min_padding"
+                    android:text="@string/primary_care_giver"
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/register_list_desc_size"
+                    android:visibility="gone" />
+                <View
+                    android:id="@+id/view_record_two"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/light_grey" />
+            </LinearLayout>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <include
+                    android:id="@+id/record_hiv_followup_visit"
+                    layout="@layout/index_contact_follow_up_visit_view" />
+
+                <include layout="@layout/content_hiv_index_contact_profile" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </com.google.android.material.appbar.AppBarLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
