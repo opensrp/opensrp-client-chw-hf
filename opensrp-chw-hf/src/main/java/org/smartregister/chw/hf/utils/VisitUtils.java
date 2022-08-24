@@ -232,7 +232,7 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
                 getSyncHelper().addEvent(baseEvent.getBaseEntityId(), eventJson);
 
                 // process details
-                processVisitDetails(visitGroupId, v, visitDetailsRepository, v.getVisitId(), v.getBaseEntityId(), baseEvent.getFormSubmissionId());
+                processVisitDetails(visitGroupId, v, visitDetailsRepository, v.getVisitId(), v.getBaseEntityId());
 
                 visitRepository.completeProcessing(v.getVisitId());
             }
@@ -247,7 +247,7 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
         context.startService(new Intent(context, RecurringIntentService.class));
     }
 
-    private static void processVisitDetails(String visitGroupId, Visit visit, VisitDetailsRepository visitDetailsRepository, String visitID, String baseEntityID, String formSubmissionId) throws Exception {
+    private static void processVisitDetails(String visitGroupId, Visit visit, VisitDetailsRepository visitDetailsRepository, String visitID, String baseEntityID) {
         List<VisitDetail> visitDetailList = visitDetailsRepository.getVisits(visitID);
         for (VisitDetail visitDetail : visitDetailList) {
             if (!visitDetail.getProcessed()) {
