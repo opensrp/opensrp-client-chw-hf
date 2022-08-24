@@ -52,8 +52,6 @@
         "type": "check_box",
         "combine_checkbox_option_values": "true",
         "label": "Historia yoyote ya Matibabu na upasuaji ya Mgonjwa?",
-        "label_text_style": "normal",
-        "text_color": "#C0C0C0",
         "exclusive": [
           "none"
         ],
@@ -276,17 +274,6 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "known_on_art",
         "openmrs_entity_parent": "",
-        "relevance": {
-          "step1:medical_surgical_history": {
-            "ex-checkbox": [
-              {
-                "or": [
-                  "known_on_art"
-                ]
-              }
-            ]
-          }
-        },
         "calculation": {
           "rules-engine": {
             "ex-rules": {

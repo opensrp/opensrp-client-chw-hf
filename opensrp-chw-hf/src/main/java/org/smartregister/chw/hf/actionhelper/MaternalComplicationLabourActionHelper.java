@@ -8,6 +8,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.utils.HfAncJsonFormUtils;
 import org.smartregister.chw.ld.domain.VisitDetail;
 import org.smartregister.chw.ld.model.BaseLDVisitAction;
 import org.smartregister.util.JsonFormUtils;
@@ -41,8 +42,8 @@ public class MaternalComplicationLabourActionHelper implements BaseLDVisitAction
     public void onPayloadReceived(String jsonPayload) {
         try {
             JSONObject jsonObject = new JSONObject(jsonPayload);
-            maternal_complications_before_delivery = CoreJsonFormUtils.getCheckBoxValue(jsonObject, "maternal_complications_before_delivery");
-            maternal_complications_during_and_after_delivery = CoreJsonFormUtils.getCheckBoxValue(jsonObject, "maternal_complications_during_and_after_delivery");
+            maternal_complications_before_delivery = HfAncJsonFormUtils.getCheckBoxValue(jsonObject, "maternal_complications_before_delivery");
+            maternal_complications_during_and_after_delivery = HfAncJsonFormUtils.getCheckBoxValue(jsonObject, "maternal_complications_during_and_after_delivery");
         } catch (JSONException e) {
             e.printStackTrace();
         }
