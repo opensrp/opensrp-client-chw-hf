@@ -1,18 +1,27 @@
 package org.smartregister.chw.hf.utils;
 
+import android.content.Context;
+import android.content.Intent;
+
 import com.google.gson.Gson;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.anc.AncLibrary;
 import org.smartregister.chw.anc.domain.Visit;
+import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.anc.repository.VisitDetailsRepository;
 import org.smartregister.chw.anc.repository.VisitRepository;
+import org.smartregister.chw.anc.util.JsonFormUtils;
 import org.smartregister.chw.anc.util.NCUtils;
+import org.smartregister.chw.core.dao.ChwNotificationDao;
 import org.smartregister.chw.hf.dao.HfAncDao;
 import org.smartregister.clientandeventmodel.Event;
+import org.smartregister.immunization.service.intent.RecurringIntentService;
+import org.smartregister.immunization.service.intent.VaccineIntentService;
 import org.smartregister.repository.AllSharedPreferences;
 
 import java.util.ArrayList;
@@ -24,6 +33,8 @@ import java.util.Map;
 import java.util.UUID;
 
 import timber.log.Timber;
+
+import static org.smartregister.chw.anc.util.NCUtils.getSyncHelper;
 
 public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
     public static String Complete = "complete";
@@ -197,6 +208,68 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
         VisitRepository visitRepository = AncLibrary.getInstance().visitRepository();
         manualProcessedVisits.add(visit);
         processVisits(manualProcessedVisits, visitRepository, visitDetailsRepository);
+    }
+
+    public static void processVisits(List<Visit> visits, VisitRepository visitRepository, VisitDetailsRepository visitDetailsRepository) throws Exception {
+        String visitGroupId = UUID.randomUUID().toString();
+        for (Visit v : visits) {
+            if (!v.getProcessed()) {
+
+                // persist to db
+                Event baseEvent = new Gson().fromJson(v.getPreProcessedJson(), Event.class);
+                if (StringUtils.isBlank(baseEvent.getFormSubmissionId()))
+                    baseEvent.setFormSubmissionId(UUID.randomUUID().toString());
+
+                String locationId = ChwNotificationDao.getSyncLocationId(baseEvent.getBaseEntityId());
+
+                baseEvent.addDetails(org.smartregister.chw.anc.util.Constants.HOME_VISIT_GROUP, visitGroupId);
+
+
+                AllSharedPreferences allSharedPreferences = AncLibrary.getInstance().context().allSharedPreferences();
+                JsonFormUtils.tagEvent(allSharedPreferences, baseEvent);
+                baseEvent.setLocationId(locationId);
+                JSONObject eventJson = new JSONObject(JsonFormUtils.gson.toJson(baseEvent));
+                getSyncHelper().addEvent(baseEvent.getBaseEntityId(), eventJson);
+
+                // process details
+                processVisitDetails(visitGroupId, v, visitDetailsRepository, v.getVisitId(), v.getBaseEntityId());
+
+                visitRepository.completeProcessing(v.getVisitId());
+            }
+        }
+
+        // process after all events are saved
+        NCUtils.startClientProcessing();
+
+        // process vaccines and services
+        Context context = AncLibrary.getInstance().context().applicationContext();
+        context.startService(new Intent(context, VaccineIntentService.class));
+        context.startService(new Intent(context, RecurringIntentService.class));
+    }
+
+    private static void processVisitDetails(String visitGroupId, Visit visit, VisitDetailsRepository visitDetailsRepository, String visitID, String baseEntityID) {
+        List<VisitDetail> visitDetailList = visitDetailsRepository.getVisits(visitID);
+        for (VisitDetail visitDetail : visitDetailList) {
+            if (!visitDetail.getProcessed()) {
+                if (org.smartregister.chw.anc.util.Constants.HOME_VISIT_TASK.SERVICE.equalsIgnoreCase(visitDetail.getPreProcessedType())) {
+                    saveVisitDetailsAsServiceRecord(visitGroupId, visitDetail, baseEntityID, visit.getDate());
+                    visitDetailsRepository.completeProcessing(visitDetail.getVisitDetailsId());
+                    continue;
+                }
+
+
+                if (
+                        org.smartregister.chw.anc.util.Constants.HOME_VISIT_TASK.VACCINE.equalsIgnoreCase(visitDetail.getParentCode()) ||
+                                org.smartregister.chw.anc.util.Constants.HOME_VISIT_TASK.VACCINE.equalsIgnoreCase(visitDetail.getPreProcessedType())
+                ) {
+                    saveVisitDetailsAsVaccine(visitGroupId, visitDetail, baseEntityID, visit.getDate());
+                    visitDetailsRepository.completeProcessing(visitDetail.getVisitDetailsId());
+                    continue;
+                }
+
+                visitDetailsRepository.completeProcessing(visitDetail.getVisitDetailsId());
+            }
+        }
     }
 
 }
