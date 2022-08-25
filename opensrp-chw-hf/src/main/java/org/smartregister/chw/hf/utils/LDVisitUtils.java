@@ -161,8 +161,9 @@ public class LDVisitUtils extends VisitUtils {
                 boolean hasPlacentaAndMembraneExpelled = computeCompletionStatus(obs, "placenta_and_membrane_expulsion");
                 boolean isUterotonicDone = computeCompletionStatus(obs, "uterotonic");
                 boolean isMassageOfUterusAfterDeliveryDone = computeCompletionStatus(obs, "uterus_massage_after_delivery");
+                boolean isEclampsiaManagementDone = computeCompletionStatus(obs, "has_signs_of_eclampsia");
 
-                if (hasPlacentaAndMembraneExpelled && isUterotonicDone && isMassageOfUterusAfterDeliveryDone) {
+                if (hasPlacentaAndMembraneExpelled && isUterotonicDone && isMassageOfUterusAfterDeliveryDone && isEclampsiaManagementDone) {
                     ldVisits.add(visit);
                 }
             } else if (visit.getVisitType().equalsIgnoreCase(LD_POST_DELIVERY_MOTHER_MANAGEMENT)) {

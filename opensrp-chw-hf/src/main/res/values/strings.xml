@@ -316,6 +316,7 @@
     <string name="ld_active_management_3rd_stage">Active Management of 3rd Stage</string>
     <string name="uterotonic">Uterotonic</string>
     <string name="ld_massage_uterus_after_delivery">Massage the uterus after delivery of placenta</string>
+    <string name="ld_eclampsia_management">Eclampsia and Pre-Eclampsia Management</string>
     <string name="ld_expulsion_of_placenta">Expulsion of the placenta and membranes</string>
     <string name="ld_placent_retained_message">Placenta Retained</string>
     <string name="ld_placent_completely_removed_message">Complete Expulsion of Placenta</string>
@@ -433,5 +434,8 @@
     <string name="record">Edit</string>
     <string name="undo">Cancel</string>
     <string name="undo_test_result">Are you sure you want to cancel the %1$s result?</string>
+
+    <string name="ld_management_of_eclampsia">Management of Pre-Eclampsia/Eclampsia Done</string>
+    <string name="ld_client_has_no_signs_of_eclampsia">The client has no signs of Pre-Eclampsia/Eclampsia</string>
 
 </resources>
