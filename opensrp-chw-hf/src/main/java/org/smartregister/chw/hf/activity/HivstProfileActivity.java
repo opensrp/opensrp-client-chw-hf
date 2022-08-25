@@ -24,6 +24,8 @@ import org.smartregister.domain.AlertStatus;
 import androidx.annotation.NonNull;
 import timber.log.Timber;
 
+import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
+
 public class HivstProfileActivity extends CoreHivstProfileActivity {
 
     public static void startProfile(Activity activity, String baseEntityId) {
@@ -44,7 +46,11 @@ public class HivstProfileActivity extends CoreHivstProfileActivity {
 
     @Override
     protected void startHivServicesRegistration() {
-        //Implement
+        try {
+            HivRegisterActivity.startHIVFormActivity(this, memberObject.getBaseEntityId(), HIV_REGISTRATION, (new com.vijay.jsonwizard.utils.FormUtils()).getFormJsonFromRepositoryOrAssets(this, HIV_REGISTRATION).toString());
+        } catch (JSONException e) {
+            Timber.e(e);
+        }
     }
 
     @Override
@@ -84,14 +90,11 @@ public class HivstProfileActivity extends CoreHivstProfileActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        menu.findItem(org.smartregister.chw.core.R.id.action_cbhs_registration).setVisible(!HivDao.isRegisteredForHiv(memberObject.getBaseEntityId()));
+        menu.findItem(org.smartregister.chw.core.R.id.action_hiv_registration).setVisible(!HivDao.isRegisteredForHiv(memberObject.getBaseEntityId()));
         return true;
     }
 
 
-    private void checkPhoneNumberProvided(boolean hasPhoneNumber) {
-        baseHivstFloatingMenu.redrawWithOption(baseHivstFloatingMenu, hasPhoneNumber);
-    }
 
     @Override
     protected void removeMember() {
