@@ -38,7 +38,7 @@
     <string name="anc_first_visit_medical_and_surgical_history">Medical And Surgical History</string>
     <string name="anc_first_visit_baseline_investigation">Baseline Investigation</string>
     <string name="anc_first_visit_obstetric_examination">Obstetric Examination</string>
-    <string name="anc_first_visit_tt_vaccination">TD Vaccination</string>
+    <string name="anc_first_visit_tt_vaccination">Td Vaccination</string>
     <string name="anc_first_and_recurring_visit_counselling">Counselling</string>
     <string name="anc_recuring_visit_triage">Triage</string>
     <string name="anc_recuring_visit_cunsultation">Consultation</string>
@@ -81,7 +81,7 @@
     <string name="medical_and_surgical_filled">Medical And Surgical History Filled</string>
     <string name="obstetric_exam_complete">Obstetric Examination Complete</string>
     <string name="baseline_investigation_conducted">Baseline Investigation Conducted</string>
-    <string name="tt_vaccination_filled">TD Vaccination Filled</string>
+    <string name="tt_vaccination_filled">Td Vaccination Filled</string>
     <string name="counselling_given">Counselling given</string>
     <string name="partner_registered">Partner Registered</string>
     <string name="partner_tested">Partner Tested</string>
