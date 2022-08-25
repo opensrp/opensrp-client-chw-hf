@@ -212,7 +212,6 @@
     <string name="remove">THIBITISHA</string>
     <string name="month">Mwezi</string>
     <string name="print_report">Chapa</string>
-    <string name="record">Rekodi</string>
     <string name="child_followup">Fuatilio la %s</string>
     <string name="record_child_followup">Rekodi fuatilio la Mtoto</string>
     <string name="saved_child_followup">Umefanikiwa kuhifadhi taarifa za udhurio la Mtoto</string>
@@ -317,6 +316,9 @@
     <string name="process_visit">Chakata Hudhurio</string>
     <string name="edit_child_form_title">Hariri taarifa za mtoto %1$s</string>
     <string name="edit_child_form_title_for_child_without_names">Hariri taarifa za %1$s</string>
+    <string name="record">Badili</string>
+    <string name="undo">Futa</string>
+    <string name="undo_test_result">Unauhakika unataka kufuta majibu ya %1$s?</string>
 
 
 </resources>

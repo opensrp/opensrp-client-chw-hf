@@ -146,7 +146,6 @@
     <string name="hiv_testing_not_done">HIV Testing Not Done</string>
     <string name="hiv_testing_done">HIV Testing Done</string>
     <string name="pnc_hiv_testing">HIV Testing</string>
-    <string name="record">Record</string>
     <string name="child_followup">%s\'s Followup</string>
     <string name="record_child_followup">Record The Child\'s followup</string>
     <string name="saved_child_followup">Child\'s followup details saved successfully</string>
@@ -431,5 +430,8 @@
     <string name="refer_child_for_emergency">Refer %1$s\'s for Emergency</string>
     <string name="edit_child_form_title">Edit baby %1$s\'s details</string>
     <string name="edit_child_form_title_for_child_without_names">Edit %1$s\'s details</string>
+    <string name="record">Edit</string>
+    <string name="undo">Cancel</string>
+    <string name="undo_test_result">Are you sure you want to cancel the %1$s result?</string>
 
 </resources>
