@@ -29,7 +29,7 @@ android {
         applicationId "org.smartregister.chw.hf"
         minSdkVersion 18
         targetSdkVersion 28
-        versionCode 11
+        versionCode 12
         versionName "1.2.14"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
