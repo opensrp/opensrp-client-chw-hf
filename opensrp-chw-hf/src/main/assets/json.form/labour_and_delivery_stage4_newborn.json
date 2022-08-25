@@ -1077,7 +1077,7 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "resuscitation",
-        "label": "Resuscitation",
+        "label": "Resuscitation (Choose the last method done)",
         "type": "native_radio",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
@@ -1803,6 +1803,37 @@
         }
       },
       {
+        "key": "reason_for_not_providing_opv0_vacc",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_providing_opv0_vacc",
+        "type": "spinner",
+        "hint": "Reason as to why the OPV 0 vaccine was not given",
+        "values": [
+          "Out of stock vaccine",
+          "Home delivery"
+        ],
+        "keys": [
+          "out_of_stock_vaccine",
+          "home_delivery"
+        ],
+        "openmrs_choice_ids": {
+          "out_of_stock_vaccine": "out_of_stock_vaccine",
+          "home_delivery": "home_delivery"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select a reason"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "child_hepatitis_b_vaccination",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -1825,6 +1856,53 @@
             "openmrs_entity_id": "no"
           }
         ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_hepatitis_b_not_provided",
+        "type": "toaster_notes",
+        "text": "Provide Hepatitis B vaccine to the infant at the first Postnatal care visit or as soon as the Hepatitis B vaccine will be available.",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "reason_for_not_providing_hepatitis_b_vacc",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_providing_hepatitis_b_vacc",
+        "type": "spinner",
+        "hint": "Reason as to why the Hepatitis B vaccine was not given",
+        "values": [
+          "Out of stock vaccine",
+          "Home delivery"
+        ],
+        "keys": [
+          "out_of_stock_vaccine",
+          "home_delivery"
+        ],
+        "openmrs_choice_ids": {
+          "out_of_stock_vaccine": "out_of_stock_vaccine",
+          "home_delivery": "home_delivery"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select a reason"
+        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {

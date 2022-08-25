@@ -712,4 +712,25 @@ priority: 1
 condition: "step1_child_opv0_vaccination.contains('no')"
 actions:
   - "isRelevant = true"
+---
+name: step1_reason_for_not_providing_opv0_vacc
+description: reason_for_not_providing_opv0_vacc relevance
+priority: 1
+condition: "step1_child_opv0_vaccination.contains('no')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_prompt_for_hepatitis_b_not_provided
+description: prompt_for_hepatitis_b_not_provided relevance
+priority: 1
+condition: "step1_child_hepatitis_b_vaccination.contains('no')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_reason_for_not_providing_hepatitis_b_vacc
+description: reason_for_not_providing_hepatitis_b_vacc relevance
+priority: 1
+condition: "step1_child_hepatitis_b_vaccination.contains('no')"
+actions:
+  - "isRelevant = true"
 
