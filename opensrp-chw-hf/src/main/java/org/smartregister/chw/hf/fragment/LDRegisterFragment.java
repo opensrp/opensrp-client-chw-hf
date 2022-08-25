@@ -30,22 +30,19 @@ import java.util.List;
 import timber.log.Timber;
 
 public class LDRegisterFragment extends BaseLDRegisterFragment {
+    private Toolbar toolbar;
 
     @Override
     public void setupViews(View view) {
         initializePresenter();
         super.setupViews(view);
 
-        Toolbar toolbar = view.findViewById(org.smartregister.R.id.register_toolbar);
+        toolbar = view.findViewById(org.smartregister.R.id.register_toolbar);
         toolbar.setContentInsetsAbsolute(0, 0);
         toolbar.setContentInsetsRelative(0, 0);
         toolbar.setContentInsetStartWithNavigation(0);
 
-        try {
-            NavigationMenu.getInstance(getActivity(), null, toolbar);
-        } catch (NullPointerException e) {
-            Timber.e(e);
-        }
+
         View navbarContainer = view.findViewById(org.smartregister.chw.core.R.id.register_nav_bar_container);
         navbarContainer.setFocusable(false);
 
@@ -148,5 +145,15 @@ public class LDRegisterFragment extends BaseLDRegisterFragment {
 
     protected void openProfile(String baseEntityId) {
         LDProfileActivity.startProfileActivity(getActivity(), baseEntityId);
+    }
+
+    @Override
+    protected void onResumption() {
+        super.onResumption();
+        try {
+            NavigationMenu.getInstance(getActivity(), null, toolbar);
+        } catch (NullPointerException e) {
+            Timber.e(e);
+        }
     }
 }
