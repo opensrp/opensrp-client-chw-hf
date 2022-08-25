@@ -5,6 +5,7 @@ import static org.smartregister.chw.hf.interactor.LDVisitInteractor.hbTestMoreTh
 import static org.smartregister.chw.hf.interactor.LDVisitInteractor.malariaTestConductedDuringRegistration;
 import static org.smartregister.chw.hf.interactor.LDVisitInteractor.syphilisTestConductedDuringRegistration;
 import static org.smartregister.chw.hf.utils.Constants.Events.LD_POST_DELIVERY_MOTHER_MANAGEMENT;
+import static org.smartregister.chw.hf.utils.Constants.HIV_STATUS.POSITIVE;
 
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
@@ -88,7 +89,7 @@ public class LDVisitUtils extends VisitUtils {
 
                 boolean hivActionDone = false;
 
-                if (LDDao.getHivStatus(baseEntityId) == null || (!Objects.equals(LDDao.getHivStatus(baseEntityId), org.smartregister.chw.hf.utils.Constants.HIV_STATUS.POSITIVE) && LDVisitInteractor.testDateIsThreeMonthsAgo(baseEntityId))) {
+                if (LDDao.getHivStatus(baseEntityId) == null || (!Objects.equals(LDDao.getHivStatus(baseEntityId), POSITIVE) && LDVisitInteractor.testDateIsThreeMonthsAgo(baseEntityId))) {
                     String hivStatus = getFieldValue(obs, "hiv");
                     String hivTestConducted = getFieldValue(obs, "hiv_test_conducted");
                     if (hivTestConducted != null && hivTestConducted.equalsIgnoreCase("no")) {
