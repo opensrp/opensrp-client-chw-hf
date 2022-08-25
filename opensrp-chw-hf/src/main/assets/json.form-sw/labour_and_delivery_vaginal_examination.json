@@ -752,7 +752,7 @@
         "options": [
           {
             "key": "spontaneous_vaginal_delivery",
-            "text": "Spontaneous vaginal delivery",
+            "text": "Vaginal delivery",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "spontaneous_vaginal_delivery"
