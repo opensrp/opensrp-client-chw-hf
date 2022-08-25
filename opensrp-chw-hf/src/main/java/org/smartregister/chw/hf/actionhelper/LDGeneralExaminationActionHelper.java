@@ -59,11 +59,11 @@ public class LDGeneralExaminationActionHelper implements BaseLDVisitAction.LDVis
                 JSONObject fundalHeight = JsonFormUtils.getFieldJSONObject(fields, "fundal_height");
                 JSONObject lie = JsonFormUtils.getFieldJSONObject(fields, "lie");
 
-                if (fundalHeightCaptured() && fundalHeight != null) {
+                if (fundalHeightCaptured(memberObject.getBaseEntityId()) && fundalHeight != null) {
                     fundalHeight.put("hidden", true);
                 }
 
-                if (featalLieCaptured() && lie != null) {
+                if (featalLieCaptured(memberObject.getBaseEntityId()) && lie != null) {
                     lie.put("hidden", true);
                 }
 
@@ -141,7 +141,7 @@ public class LDGeneralExaminationActionHelper implements BaseLDVisitAction.LDVis
                 StringUtils.isNotBlank(diastolic) &&
                 StringUtils.isNotBlank(urineAcetone) &&
                 StringUtils.isNotBlank(urineProtein) &&
-                fundalHeightCaptured() || StringUtils.isNotBlank(fundal_height) &&
+                fundalHeightCaptured(memberObject.getBaseEntityId()) || StringUtils.isNotBlank(fundal_height) &&
                 StringUtils.isNotBlank(contraction_frequency) &&
                 StringUtils.isNotBlank(contraction_in_ten_minutes) &&
                 StringUtils.isNotBlank(fetal_heart_rate)
@@ -164,12 +164,12 @@ public class LDGeneralExaminationActionHelper implements BaseLDVisitAction.LDVis
         );
     }
 
-    private boolean fundalHeightCaptured() {
-        return LDDao.getFundalHeight(memberObject.getBaseEntityId()) != null;
+    public static boolean fundalHeightCaptured(String baseEntityId) {
+        return LDDao.getFundalHeight(baseEntityId) != null;
     }
 
-    private boolean featalLieCaptured(){
-        return LDDao.getFetalLie(memberObject.getBaseEntityId()) != null;
+    public static boolean featalLieCaptured(String baseEntityId){
+        return LDDao.getFetalLie(baseEntityId) != null;
     }
 
 }

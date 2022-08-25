@@ -552,6 +552,7 @@ public class Constants extends CoreConstants {
             public static final String LD_ACTIVE_MANAGEMENT_UTERONICS = "labour_and_delivery_uterotonic";
             public static final String LD_ACTIVE_MANAGEMENT_EXPULSION_PLACENTA = "labour_and_delivery_placenta_and_membrane";
             public static final String LD_ACTIVE_MANAGEMENT_MASSAGE_UTERUS = "labour_and_delivery_uterus";
+            public static final String LD_ACTIVE_ECLAMPSIA_MANAGEMENT= "labour_and_delivery_eclampsia_management_form";
 
             public static String getLDActiveManagementUteronics() {
                 return Utils.getLocalForm(LD_ACTIVE_MANAGEMENT_UTERONICS);
@@ -563,6 +564,10 @@ public class Constants extends CoreConstants {
 
             public static String getLdActiveManagementMassageUterus() {
                 return Utils.getLocalForm(LD_ACTIVE_MANAGEMENT_MASSAGE_UTERUS);
+            }
+
+            public static String getLdActiveEclampsiaManagement() {
+                return Utils.getLocalForm(LD_ACTIVE_ECLAMPSIA_MANAGEMENT);
             }
 
         }
@@ -719,6 +724,7 @@ public class Constants extends CoreConstants {
             String MENTO_POSITION = "mento_position";
             String SACRO_POSITION = "sacro_position";
             String DORSO_POSITION = "dorso_position";
+            String MOULDING = "moulding";
         }
     }
 

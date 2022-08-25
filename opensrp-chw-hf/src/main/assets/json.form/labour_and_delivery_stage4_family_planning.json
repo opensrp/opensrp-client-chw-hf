@@ -115,12 +115,37 @@
             "openmrs_entity_id": "condom"
           },
           {
+            "key": "other",
+            "text": "Other (Specify)",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other"
+          },
+          {
             "key": "none",
             "text": "None",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "none"
           }
         ]
+      },
+      {
+        "key": "other_family_planning_methods_selected",
+        "type": "edit_text",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_family_planning_methods_selected",
+        "openmrs_entity_parent": "",
+        "edit_type": "name",
+        "hint": "Other family planning methods selected",
+        "v_required": {
+          "value": "true",
+          "err": "Please fill the other family planning methods"
+        },
+        "relevance": {
+          "step1:family_planning_methods_selected": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
+          }
+        }
       },
       {
         "key": "family_planning_module_status",

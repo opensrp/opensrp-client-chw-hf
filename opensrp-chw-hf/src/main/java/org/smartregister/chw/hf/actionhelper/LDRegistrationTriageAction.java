@@ -5,6 +5,7 @@ import android.content.Context;
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.smartregister.chw.hf.utils.HfAncJsonFormUtils;
 import org.smartregister.chw.ld.domain.MemberObject;
 import org.smartregister.chw.ld.domain.VisitDetail;
 import org.smartregister.chw.ld.model.BaseLDVisitAction;
@@ -57,7 +58,7 @@ public class LDRegistrationTriageAction implements BaseLDVisitAction.LDVisitActi
             fetalHeartRate = CoreJsonFormUtils.getValue(jsonObject, "fetal_heart_rate");
             temperature = CoreJsonFormUtils.getValue(jsonObject, "temperature");
             weight = CoreJsonFormUtils.getValue(jsonObject, "weight");
-            dangerSigns = CoreJsonFormUtils.getCheckBoxValue(jsonObject, "danger_signs");
+            dangerSigns = HfAncJsonFormUtils.getCheckBoxValue(jsonObject, "danger_signs");
         } catch (JSONException e) {
             Timber.e(e);
         }

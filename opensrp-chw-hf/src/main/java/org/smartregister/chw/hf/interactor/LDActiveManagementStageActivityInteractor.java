@@ -67,6 +67,7 @@ public class LDActiveManagementStageActivityInteractor extends BaseLDVisitIntera
                 evaluateUterotonic(details);
                 evaluateExpulsionOfPlacenta(details);
                 evaluateMassageUterusAfterDelivery(details);
+                evaluateEclampsiaManagement(details);
 
             } catch (BaseLDVisitAction.ValidationException e) {
                 Timber.e(e);
@@ -134,6 +135,22 @@ public class LDActiveManagementStageActivityInteractor extends BaseLDVisitIntera
                 .withHelper(actionHelper)
                 .withBaseEntityID(memberObject.getBaseEntityId())
                 .withFormName(Constants.JsonForm.LDActiveManagement.getLdActiveManagementMassageUterus())
+                .build();
+
+        actionList.put(title, action);
+
+    }
+
+    private void evaluateEclampsiaManagement(Map<String, List<VisitDetail>> details) throws BaseLDVisitAction.ValidationException {
+        String title = context.getString(R.string.ld_eclampsia_management);
+
+        EclampsiaManagementActionHelper actionHelper = new EclampsiaManagementActionHelper();
+        BaseLDVisitAction action = getBuilder(title)
+                .withOptional(true)
+                .withDetails(details)
+                .withHelper(actionHelper)
+                .withBaseEntityID(memberObject.getBaseEntityId())
+                .withFormName(Constants.JsonForm.LDActiveManagement.getLdActiveEclampsiaManagement())
                 .build();
 
         actionList.put(title, action);
@@ -265,6 +282,68 @@ public class LDActiveManagementStageActivityInteractor extends BaseLDVisitIntera
                 } else {
                     return BaseLDVisitAction.Status.PARTIALLY_COMPLETED;
                 }
+            } else {
+                return BaseLDVisitAction.Status.PENDING;
+            }
+        }
+
+        @Override
+        public void onPayloadReceived(BaseLDVisitAction ldVisitAction) {
+            //Todo: Implement here
+        }
+    }
+
+    private static class EclampsiaManagementActionHelper implements BaseLDVisitAction.LDVisitActionHelper {
+
+        private String has_signs_of_eclampsia;
+        private Context context;
+
+        @Override
+        public void onJsonFormLoaded(String jsonString, Context context, Map<String, List<VisitDetail>> details) {
+            this.context = context;
+        }
+
+        @Override
+        public String getPreProcessed() {
+            return null;
+        }
+
+        @Override
+        public void onPayloadReceived(String jsonPayload) {
+            has_signs_of_eclampsia = JsonFormUtils.getFieldValue(jsonPayload, "has_signs_of_eclampsia");
+        }
+
+        @Override
+        public BaseLDVisitAction.ScheduleStatus getPreProcessedStatus() {
+            return null;
+        }
+
+        @Override
+        public String getPreProcessedSubTitle() {
+            return null;
+        }
+
+        @Override
+        public String postProcess(String jsonPayload) {
+            return null;
+        }
+
+        @Override
+        public String evaluateSubTitle() {
+            if (StringUtils.isNotBlank(has_signs_of_eclampsia)) {
+                if (has_signs_of_eclampsia.equalsIgnoreCase("yes")) {
+                    return (context.getString(R.string.ld_management_of_eclampsia));
+                } else {
+                    return context.getString(R.string.ld_client_has_no_signs_of_eclampsia);
+                }
+            }
+            return null;
+        }
+
+        @Override
+        public BaseLDVisitAction.Status evaluateStatusOnPayload() {
+            if (StringUtils.isNotBlank(has_signs_of_eclampsia)) {
+                return BaseLDVisitAction.Status.COMPLETED;
             } else {
                 return BaseLDVisitAction.Status.PENDING;
             }

@@ -470,7 +470,7 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
             try {
                 JSONObject jsonObject = new JSONObject(jsonPayload);
                 checkObject.clear();
-                medical_and_surgical_history_present = CoreJsonFormUtils.getCheckBoxValue(jsonObject, "medical_surgical_history");
+                medical_and_surgical_history_present = HfAncJsonFormUtils.getCheckBoxValue(jsonObject, "medical_surgical_history");
                 checkObject.put("medical_surgical_history", StringUtils.isNotBlank(medical_and_surgical_history_present));
                 checkObject.put("gravida", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "gravida")));
                 checkObject.put("parity", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "parity")));

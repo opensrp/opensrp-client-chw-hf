@@ -112,6 +112,10 @@
             "type": "string",
             "ex": "equalTo(., \"yes\")"
           }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the HB level results"
         }
       },
       {

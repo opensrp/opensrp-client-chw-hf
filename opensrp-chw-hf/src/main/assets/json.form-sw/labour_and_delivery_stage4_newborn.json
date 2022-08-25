@@ -1078,8 +1078,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "resuscitation",
         "label": "Kupumua kwa kusaidiwa (Resuscitation)",
-        "type": "check_box",
-        "combine_checkbox_option_values": "true",
+        "type": "native_radio",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [
@@ -1795,6 +1794,37 @@
           "step1:child_opv0_vaccination": {
             "type": "string",
             "ex": "equalTo(., \"no\")"
+          }
+        }
+      },
+      {
+        "key": "child_hepatitis_b_vaccination",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "child_hepatitis_b_vaccination",
+        "type": "native_radio",
+        "label": "Was Hepatitis B vaccine given?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
           }
         }
       },

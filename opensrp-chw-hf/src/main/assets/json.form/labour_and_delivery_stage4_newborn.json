@@ -1077,9 +1077,8 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "resuscitation",
-        "label": "Resuscitation",
-        "type": "check_box",
-        "combine_checkbox_option_values": "true",
+        "label": "Resuscitation (Choose the last method done)",
+        "type": "native_radio",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [
@@ -1684,7 +1683,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "child_bcg_vaccination",
         "type": "native_radio",
-        "label": "Was BCG vaccination given?",
+        "label": "Was BCG vaccine given?",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [
@@ -1712,7 +1711,7 @@
       {
         "key": "prompt_for_bcg_vacc_not_provided",
         "type": "toaster_notes",
-        "text": "Provide BCG vaccination to the infant at the first Postnatal care visit or as soon as the BCG vaccine will be available. BCG should not be provided beyond 12-months of infant age",
+        "text": "Provide BCG vaccine to the infant at the first Postnatal care visit or as soon as the BCG vaccine will be available. BCG should not be provided beyond 12-months of infant age",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -1731,7 +1730,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "reason_for_not_providing_bcg_vacc",
         "type": "spinner",
-        "hint": "Reason as to why the BCG vaccination was not given",
+        "hint": "Reason as to why the BCG vaccine was not given",
         "values": [
           "Out of stock vaccine",
           "Home delivery"
@@ -1762,7 +1761,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "child_opv0_vaccination",
         "type": "native_radio",
-        "label": "Was OPV 0 vaccination given?",
+        "label": "Was OPV 0 vaccine given?",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [
@@ -1795,6 +1794,115 @@
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
         "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "reason_for_not_providing_opv0_vacc",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_providing_opv0_vacc",
+        "type": "spinner",
+        "hint": "Reason as to why the OPV 0 vaccine was not given",
+        "values": [
+          "Out of stock vaccine",
+          "Home delivery"
+        ],
+        "keys": [
+          "out_of_stock_vaccine",
+          "home_delivery"
+        ],
+        "openmrs_choice_ids": {
+          "out_of_stock_vaccine": "out_of_stock_vaccine",
+          "home_delivery": "home_delivery"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select a reason"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "child_hepatitis_b_vaccination",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "child_hepatitis_b_vaccination",
+        "type": "native_radio",
+        "label": "Was Hepatitis B vaccine given?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_hepatitis_b_not_provided",
+        "type": "toaster_notes",
+        "text": "Provide Hepatitis B vaccine to the infant at the first Postnatal care visit or as soon as the Hepatitis B vaccine will be available.",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "reason_for_not_providing_hepatitis_b_vacc",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_providing_hepatitis_b_vacc",
+        "type": "spinner",
+        "hint": "Reason as to why the Hepatitis B vaccine was not given",
+        "values": [
+          "Out of stock vaccine",
+          "Home delivery"
+        ],
+        "keys": [
+          "out_of_stock_vaccine",
+          "home_delivery"
+        ],
+        "openmrs_choice_ids": {
+          "out_of_stock_vaccine": "out_of_stock_vaccine",
+          "home_delivery": "home_delivery"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select a reason"
+        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {

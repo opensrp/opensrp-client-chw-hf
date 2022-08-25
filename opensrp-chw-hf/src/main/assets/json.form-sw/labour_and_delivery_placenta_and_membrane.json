@@ -120,7 +120,7 @@
         "options": [
           {
             "key": "retained_product",
-            "text": "Membreni/lobes zimebaki",
+            "text": "Mabaki ya Membreni/lobes",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "retained_product"
@@ -149,7 +149,7 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "placenta_removed_by_hand",
-        "label": "Ameondolewa kwa mkono kondo la nyuma",
+        "label": "Ameondolewa kwa mkono kondo la nyuma/Mabaki ya Membreni/lobes",
         "text_color": "#000000",
         "type": "native_radio",
         "options": [
@@ -173,9 +173,9 @@
           "err": "Tafadhali jibu swali hili"
         },
         "relevance": {
-          "step1:type_of_incomplete_placenta": {
+          "step1:placenta_and_membrane_expulsion": {
             "type": "string",
-            "ex": "equalTo(., \"retained_placenta\")"
+            "ex": "equalTo(., \"incomplete_placenta\")"
           }
         }
       },
@@ -258,44 +258,24 @@
           "err": "Tafadhali Jibu swali hili"
         },
         "relevance": {
-          "step1:type_of_incomplete_placenta": {
+          "step1:placenta_and_membrane_expulsion": {
             "type": "string",
-            "ex": "equalTo(., \"retained_placenta\")"
+            "ex": "equalTo(., \"incomplete_placenta\")"
           }
         }
       },
       {
-        "key": "administered_magnesium_sulphate",
+        "key": "prompt_for_provision_of_antibiotics",
+        "type": "toaster_notes",
+        "text": "Provide the client with  antibiotic",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
         "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "administered_magnesium_sulphate",
-        "label": "Je,Mteja amepewa Magnesium sulphate",
-        "text_color": "#000000",
-        "type": "native_radio",
-        "options": [
-          {
-            "key": "yes",
-            "text": "Ndiyo",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "yes"
-          },
-          {
-            "key": "no",
-            "text": "Hapana",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "no"
-          }
-        ],
-        "v_required": {
-          "value": true,
-          "err": "Tafdhali jibu swali hili"
-        },
+        "toaster_type": "problem",
         "relevance": {
-          "step1:type_of_incomplete_placenta": {
+          "step1:administered_antibiotics": {
             "type": "string",
-            "ex": "equalTo(., \"retained_placenta\")"
+            "ex": "equalTo(., \"no\")"
           }
         }
       },
@@ -388,9 +368,9 @@
           "err": "Tafadhali jibu swali hili"
         },
         "relevance": {
-          "step1:type_of_incomplete_placenta": {
-            "type": "string",
-            "ex": "equalTo(., \"retained_placenta\")"
+          "step1:estimated_blood_loss": {
+            "type": "numeric",
+            "ex": "greaterThan(.,\"500\")"
           }
         }
       },

@@ -5,10 +5,3 @@ priority: 1
 condition: "true"
 actions:
   - "calculation = step1_vaginal_exam_date == global_labour_onset_date? global_labour_onset_time : '00:00'"
----
-name: step1_moulding
-description: moulding calculated
-priority: 1
-condition: "true"
-actions:
-  - "calculation = step1_presenting_part == 'breech'? step1_moulding_yes_no_na : step1_moulding_yes_no"

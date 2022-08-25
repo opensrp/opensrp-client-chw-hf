@@ -227,22 +227,6 @@
         ]
       },
       {
-        "key": "prompt_for_presenting_part",
-        "type": "toaster_notes",
-        "text": "Take action or refer for further management",
-        "openmrs_entity_id": "",
-        "openmrs_entity": "",
-        "openmrs_entity_parent": "",
-        "toaster_type": "problem",
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "labour_and_delivery_vaginal_examination_relevance.yml"
-            }
-          }
-        }
-      },
-      {
         "key": "occiput_position",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -488,45 +472,13 @@
         }
       },
       {
-        "key": "moulding",
+        "key": "prompt_for_presenting_part",
+        "type": "toaster_notes",
+        "text": "Take action or refer for further management",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
         "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "moulding",
-        "label": "Moulding",
-        "text_color": "#000000",
-        "type": "hidden",
-        "calculation": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "labour_and_delivery_vaginal_examination_calculation.yml"
-            }
-          }
-        }
-      },
-      {
-        "key": "moulding_yes_no",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "moulding",
-        "label": "Moulding",
-        "text_color": "#000000",
-        "type": "native_radio",
-        "options": [
-          {
-            "key": "yes",
-            "text": "Yes",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "yes"
-          },
-          {
-            "key": "no",
-            "text": "No",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "no"
-          }
-        ],
+        "toaster_type": "problem",
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -536,7 +488,7 @@
         }
       },
       {
-        "key": "moulding_yes_no_na",
+        "key": "moulding",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "moulding",
@@ -557,13 +509,6 @@
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
-          },
-          {
-            "key": "na",
-            "text": "NA",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "na"
           }
         ],
         "relevance": {
@@ -752,7 +697,7 @@
         "options": [
           {
             "key": "spontaneous_vaginal_delivery",
-            "text": "Spontaneous vaginal delivery",
+            "text": "Vaginal delivery",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "spontaneous_vaginal_delivery"

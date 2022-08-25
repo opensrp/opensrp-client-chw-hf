@@ -11,6 +11,7 @@ import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.utils.HfAncJsonFormUtils;
 import org.smartregister.chw.hf.utils.VisitUtils;
 import org.smartregister.family.util.JsonFormUtils;
 
@@ -57,7 +58,7 @@ public class AncCounsellingAction implements BaseAncHomeVisitAction.AncHomeVisit
         try {
             JSONObject jsonObject = new JSONObject(jsonPayload);
             checkObject.clear();
-            checkObject.put("counselling", StringUtils.isNotBlank(CoreJsonFormUtils.getCheckBoxValue(jsonObject, "given_counselling")));
+            checkObject.put("counselling", StringUtils.isNotBlank(HfAncJsonFormUtils.getCheckBoxValue(jsonObject, "given_counselling")));
         } catch (JSONException e) {
             Timber.e(e);
         }

@@ -1,0 +1,7 @@
+---
+name: step1_prompt_for_not_administering_magnesium_sulphate
+description: prompt_for_not_administering_magnesium_sulphate relevance
+priority: 1
+condition: "step1_reason_for_not_administering_magnesium_sulphate.contains('lack_of_skills') || step1_reason_for_not_administering_magnesium_sulphate.contains('out_of_stock')"
+actions:
+  - "isRelevant = true"

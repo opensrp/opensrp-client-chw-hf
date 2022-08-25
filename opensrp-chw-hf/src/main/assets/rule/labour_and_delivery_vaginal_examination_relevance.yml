@@ -27,13 +27,6 @@ condition: "step1_moulding_options == 'sutures_overlapped_reducible' ||  step1_m
 actions:
   - "isRelevant = true"
 ---
-name: step1_moulding
-description: moulding relevance
-priority: 1
-condition: "!global_moulding.contains('yes')"
-actions:
-  - "isRelevant = true"
----
 name: step1_moulding_options
 description: moulding_options relevance
 priority: 1
@@ -69,16 +62,9 @@ condition: "step1_presenting_part == 'shoulder'"
 actions:
   - "isRelevant = true"
 ---
-name: step1_moulding_yes_no_na
-description: relevance for moulding options yes, no and na
+name: step1_moulding
+description: relevance for moulding
 priority: 1
-condition: "step1_presenting_part == 'breech' && step1_presenting_part != ''"
-actions:
-  - "isRelevant = true"
----
-name: step1_moulding_yes_no
-description: relevance for moulding options yes, no and na
-priority: 1
-condition: "step1_presenting_part != 'breech' && step1_presenting_part != ''"
+condition: "!global_moulding.contains('yes') && step1_presenting_part != 'breech' && step1_presenting_part != 'shoulder' && step1_presenting_part != ''"
 actions:
   - "isRelevant = true"
