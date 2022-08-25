@@ -177,7 +177,7 @@
           },
           {
             "key": "test_not_conducted",
-            "text": "TB Test not conducted",
+            "text": "Test not conducted",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "test_not_conducted"
           }

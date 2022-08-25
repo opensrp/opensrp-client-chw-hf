@@ -307,6 +307,37 @@
             "ex": "equalTo(., \"other\")"
           }
         }
+      },
+      {
+        "key": "number_of_arv_regimes_days_dispensed",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "number_of_arv_regimes_days_dispensed",
+        "type": "edit_text",
+        "edit_type": "number",
+        "hint": "Idadi ya Siku Iliyotolewa",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jaza idadi ya siku iliyotolewa"
+        },
+        "v_numeric_integer": {
+          "value": "true",
+          "err": "Tafadhali ingiza namba halali"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Idadi ya siku iliyotolewa inatakiwa iwe zaidi ya 0"
+        },
+        "v_max": {
+          "value": "180",
+          "err": "Idadi ya siku iliyotolewa inatakiwa iwe sawa na au chini ya 180"
+        },
+        "relevance": {
+          "step1:prescribed_regimes": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
       }
     ]
   }
