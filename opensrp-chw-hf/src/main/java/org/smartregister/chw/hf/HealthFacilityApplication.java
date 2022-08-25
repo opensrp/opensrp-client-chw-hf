@@ -52,6 +52,7 @@ import org.smartregister.chw.hf.repository.HfTaskRepository;
 import org.smartregister.chw.hf.sync.HfClientProcessor;
 import org.smartregister.chw.hf.sync.HfSyncConfiguration;
 import org.smartregister.chw.hiv.HivLibrary;
+import org.smartregister.chw.hivst.HivstLibrary;
 import org.smartregister.chw.ld.LDLibrary;
 import org.smartregister.chw.malaria.MalariaLibrary;
 import org.smartregister.chw.pmtct.PmtctLibrary;
@@ -240,6 +241,10 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
         HivLibrary.init(this);
         HivLibrary.getInstance().setAppVersion(BuildConfig.VERSION_CODE);
         HivLibrary.getInstance().setDatabaseVersion(BuildConfig.DATABASE_VERSION);
+
+        //Setup hivst library
+        HivstLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
+
 
         //Setup tb library
         TbLibrary.init(this);
