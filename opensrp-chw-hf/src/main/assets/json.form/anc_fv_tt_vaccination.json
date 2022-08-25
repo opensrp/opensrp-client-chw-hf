@@ -42,12 +42,12 @@
     "encounter_location": ""
   },
   "step1": {
-    "title": "TD Vaccination",
+    "title": "Td Vaccination",
     "fields": [
       {
         "key": "tt_vaccination",
         "type": "native_radio",
-        "label": "Has the client been vaccinated for TD?",
+        "label": "Has the client been vaccinated for Td?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "tt_vaccination",
         "openmrs_entity_parent": "",
@@ -84,7 +84,7 @@
       {
         "key": "tt_vaccination_type",
         "type": "check_box",
-        "label": "What TD Vaccinations were given?",
+        "label": "What Td Vaccinations were given?",
         "combine_checkbox_option_values": "true",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "tt_vaccination_type",

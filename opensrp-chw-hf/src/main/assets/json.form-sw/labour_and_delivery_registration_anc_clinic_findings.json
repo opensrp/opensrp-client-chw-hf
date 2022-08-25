@@ -80,18 +80,18 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "tt_doses",
         "type": "edit_text",
-        "hint": "Dosi za TD",
+        "hint": "Dosi za Td",
         "v_numeric": {
           "value": "true",
-          "err": "Jaza Idadi ya dosi za TD"
+          "err": "Jaza Idadi ya dosi za Td"
         },
         "v_min": {
           "value": "0",
-          "err": "Idadi ya Dosi za TD iwe sawa na au zaidi ya 0"
+          "err": "Idadi ya Dosi za Td iwe sawa na au zaidi ya 0"
         },
         "v_max": {
           "value": "5",
-          "err": "Idadi ya Dosi za TD iwe sawa na au pungufu ya 5"
+          "err": "Idadi ya Dosi za Td iwe sawa na au pungufu ya 5"
         }
       },
       {

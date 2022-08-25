@@ -47,7 +47,7 @@
       {
         "key": "tt_vaccination",
         "type": "native_radio",
-        "label": "Mama amepatiwa chanjo ya Pepopunda-Diphtheria (TD)?",
+        "label": "Mama amepatiwa chanjo ya Pepopunda-Diphtheria (Td)?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "tt_vaccination",
         "openmrs_entity_parent": "",
@@ -84,7 +84,7 @@
       {
         "key": "tt_vaccination_type",
         "type": "check_box",
-        "label": "Chanjo ipi ya pepopunda-diphtheria (TD) iliyotolewa?",
+        "label": "Chanjo ipi ya pepopunda-diphtheria (Td) iliyotolewa?",
         "combine_checkbox_option_values": "true",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "tt_vaccination_type",
