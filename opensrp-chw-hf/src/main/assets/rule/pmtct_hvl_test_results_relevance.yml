@@ -13,6 +13,13 @@ condition: "global_is_after_eac"
 actions:
   - "isRelevant = true"
 ---
+name: step1_history_of_chronic_diarrhea_or_vomiting
+description: history_of_chronic_diarrhea_or_vomiting relevance
+priority: 1
+condition: "global_is_after_eac"
+actions:
+  - "isRelevant = true"
+---
 name: step1_use_of_traditional_medications
 description: use_of_traditional_medications relevance
 priority: 1
@@ -30,20 +37,20 @@ actions:
 name: step1_plan_for_patient
 description: plan_for_patient relevance
 priority: 1
-condition: "global_is_after_eac && step1_hvl_result > 1000"
+condition: "global_is_after_eac && step1_hvl_result >= 1000"
 actions:
   - "isRelevant = true"
 ---
 name: step1_plan_for_patient_comment
 description: plan_for_patient_comment relevance
 priority: 1
-condition: "global_is_after_eac && step1_hvl_result > 1000"
+condition: "global_is_after_eac && step1_hvl_result >= 1000"
 actions:
   - "isRelevant = true"
 ---
 name: step1_review_team_lead_name
 description: review_team_lead_name relevance
 priority: 1
-condition: "global_is_after_eac && step1_hvl_result > 1000"
+condition: "global_is_after_eac && step1_hvl_result >= 1000"
 actions:
   - "isRelevant = true"
