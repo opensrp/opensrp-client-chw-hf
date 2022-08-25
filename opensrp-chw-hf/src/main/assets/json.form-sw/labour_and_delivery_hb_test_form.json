@@ -107,6 +107,10 @@
           "value": "20",
           "err": "Kiwango cha damu lazima iwe sawa au chini ya 20 (g/dl)"
         },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jibu hili swali"
+        },
         "relevance": {
           "step1:hb_test_conducted": {
             "type": "string",
