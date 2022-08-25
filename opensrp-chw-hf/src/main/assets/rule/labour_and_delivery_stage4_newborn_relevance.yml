@@ -622,6 +622,13 @@ condition: "step1_newborn_status.contains('alive')"
 actions:
   - "isRelevant = true"
 ---
+name: step1_child_hepatitis_b_vaccination
+description: child_hepatitis_b_vaccination relevance
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
 name: step1_prompt_for_respiratory_rate
 description:  prompt for respiratory rate management
 priority: 1
