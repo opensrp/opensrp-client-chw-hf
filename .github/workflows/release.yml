@@ -1,17 +1,16 @@
 # This workflow will build a Java project with Gradle
 # For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-gradle
 
-name: Snapshot Release
+name: APK Release
 
 on:
   push:
     tags:
-      - v[0-9]+.[0-9]+.[0-9]+-SNAPSHOT
-      - v[0-9]+.[0-9]+.[0-9]+-[0-9a-zA-Z]+-SNAPSHOT
-      - v[0-9]+.[0-9]+.[0-9]+-[0-9a-zA-Z]+-[0-9a-zA-Z]+-SNAPSHOT
+      - v[0-9]+.[0-9]+.[0-9]+
+      - v[0-9]+.[0-9]+.[0-9]+-[0-9a-zA-Z]+
+      - v[0-9]+.[0-9]+.[0-9]+-[0-9a-zA-Z]+-[0-9a-zA-Z]+
 env:
-  NEXUS_USERNAME: ${{ secrets.NEXUS_USERNAME }}
-  NEXUS_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
+  CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
 jobs:
   release:
@@ -21,6 +20,11 @@ jobs:
         uses: styfle/cancel-workflow-action@0.9.1
         with:
           access_token: ${{ github.token }}
+
+      - name: Decode Keystore file
+        run: echo $ENCODED_KEYSTORE | base64 -di > "${HOME}"/zeir.keystore.jks
+        env:
+          ENCODED_KEYSTORE: ${{ secrets.KEYSTORE_FILE }}
 
       - name: Checkout 🛎️
         uses: actions/checkout@v2
@@ -35,13 +39,42 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Run unit tests with Gradle
-        run: ./gradlew :opensrp-client-chw-hf:clean :opensrp-client-chw-hf:testDebugUnitTest --stacktrace
+      - name: Decode & Generate local.properties file
+        run: echo $LOCAL_PROPERTIES | base64 -di > local.properties
+        env:
+          LOCAL_PROPERTIES: ${{ secrets.LOCAL_PROPERTIES }}
 
-      - name: Generate & upload library snapshot artifact AAR (Android Archive) file
-        run: ./gradlew :opensrp-client-chw-hf:uploadArchives -PmavenLocal=false --stacktrace -PsonatypeUsername=${{ secrets.NEXUS_USERNAME }} -PsonatypePassword=${{ secrets.NEXUS_PASSWORD }}
+      - name: Decode & Generate keystore.properties file
+        run: echo $KEYSTORE_PROPERTIES | base64 -di > keystore.properties
+        env:
+          KEYSTORE_PROPERTIES: ${{ secrets.KEYSTORE_PROPERTIES }}
 
-      - name: Github Release
-        uses: softprops/action-gh-release@v1
+      - name: Decode google-services.json
+        env:
+          FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
+        run: echo $FIREBASE_CONFIG > opensrp-chw-hf/google-services.json
+
+      - name: Generate AAB (Android App Bundle) file
+        run: ./gradlew :opensrp-chw-hf:bundleRelease -x :opensrp-chw-hf:testDebugUnitTest --stacktrace
+
+      - name: Upload AAB file to tag assets
+        uses: svenstaro/upload-release-action@v2
         with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: opensrp-chw-hf/build/outputs/bundle/release/opensrp-chw-hf-release.aab
+          asset_name: "opensrp-chw-hf-$tag.aab"
+          tag: ${{ github.ref }}
+          overwrite: true
+
+      - name: Generate APK (Android App PacKage) file
+        run: ./gradlew :opensrp-chw-hf:assembleRelease -x :opensrp-chw-hf:testDebugUnitTest --stacktrace
+
+      - name: Upload APK file to tag assets
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: opensrp-chw-hf/build/outputs/apk/release/opensrp-chw-hf-release.apk
+          asset_name: "opensrp-chw-hf-$tag.apk"
+          tag: ${{ github.ref }}
           prerelease: ${{ contains(github.ref, '-alpha') || contains(github.ref, '-beta') }}
+          overwrite: true

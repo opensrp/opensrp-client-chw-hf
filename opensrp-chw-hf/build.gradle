@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'jacoco'
 apply plugin: 'com.github.kt3k.coveralls'
 apply plugin: 'io.fabric'
+apply from: '../properties.gradle'
 
 buildscript {
     repositories {
@@ -23,6 +24,21 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+    signingConfigs {
+        release {
+
+            v1SigningEnabled true
+            v2SigningEnabled true
+
+            //Store your keystore.properties file in the project root folder
+            keyAlias System.getenv("KEYSTORE_ALIAS")?: project.KEYSTORE_ALIAS
+            keyPassword System.getenv("KEY_PASSWORD") ?: project.KEY_PASSWORD
+            storePassword System.getenv("KEYSTORE_PASSWORD") ?: project.KEYSTORE_PASSWORD
+
+            //Save your keystore file as ~/ba.keystore.jks (in your home directory)
+            storeFile file(System.getProperty("user.home") + "/ba.keystore.jks")
+        }
     }
 
     defaultConfig {
