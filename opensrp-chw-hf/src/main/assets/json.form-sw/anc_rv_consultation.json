@@ -536,7 +536,7 @@
       {
         "key": "temperature",
         "type": "edit_text",
-        "hint": "Halijoto (C)",
+        "hint": "Halijoto (\u2103)",
         "openmrs_entity_id": "temperature",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
