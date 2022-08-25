@@ -117,19 +117,72 @@
       },
       {
         "key": "reason_for_not_administering_magnesium_sulphate",
-        "type": "edit_text",
-        "hint": "Please specify the reason(s)",
-        "openmrs_entity_id": "reason_for_not_administering_magnesium_sulphate",
-        "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "v_required": {
-          "value": true,
-          "err": "Please specify the reason(s)"
-        },
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_administering_magnesium_sulphate",
+        "type": "native_radio",
+        "label": "Please specify the reasons",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "out_of_stock",
+            "text": "Out of stock",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "out_of_stock"
+          },
+          {
+            "key": "lack_of_skills",
+            "text": "Lack of Skills",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "lack_of_skills"
+          },
+          {
+            "key": "other",
+            "text": "Other (Specify)",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other"
+          }
+        ],
         "relevance": {
           "step1:administered_magnesium_sulphate": {
             "type": "string",
             "ex": "equalTo(., \"no\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_not_administering_magnesium_sulphate",
+        "type": "toaster_notes",
+        "text": "Refer the client for further management.",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_eclampsia_management_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "other_reason_for_for_not_administering_magnesium_sulphate",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reason_for_for_not_administering_magnesium_sulphate",
+        "type": "edit_text",
+        "hint": "Specify other reasons for not administering Magnesium Sulphate",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the reason"
+        },
+        "relevance": {
+          "step1:reason_for_not_administering_magnesium_sulphate": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
           }
         }
       }
