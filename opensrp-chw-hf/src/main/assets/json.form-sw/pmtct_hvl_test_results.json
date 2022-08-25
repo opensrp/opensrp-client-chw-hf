@@ -45,7 +45,7 @@
     "is_after_eac": false
   },
   "step1": {
-    "title": "HVL Results",
+    "title": "HVL Suppression",
     "fields": [
       {
         "key": "hvl_sample_id",
@@ -91,7 +91,7 @@
       {
         "key": "notify_continue_regimen",
         "type": "toaster_notes",
-        "text": "Mteja aendelee kutumia dawa zake alizonazo kwa sasa",
+        "text": "Continue current regimen",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -100,14 +100,14 @@
         "relevance": {
           "step1:hvl_result": {
             "type": "numeric",
-            "ex": "lessThanEqualTo(.,\"1000\")"
+            "ex": "lessThan(.,\"1000\")"
           }
         }
       },
       {
         "key": "notify_continue_eac",
         "type": "toaster_notes",
-        "text": "Mteja ataunganisha katika EAC",
+        "text": "Mteja ataunganishwa katika EAC",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
@@ -115,7 +115,7 @@
         "relevance": {
           "step1:hvl_result": {
             "type": "numeric",
-            "ex": "greaterThan(.,\"1000\")"
+            "ex": "greaterThanEqualTo(.,\"1000\")"
           }
         }
       },
@@ -372,7 +372,7 @@
         "relevance": {
           "step1:hvl_result": {
             "type": "numeric",
-            "ex": "lessThanEqualTo(.,\"1000\")"
+            "ex": "lessThan(.,\"1000\")"
           }
         }
       },
@@ -395,7 +395,7 @@
         "relevance": {
           "step1:hvl_result": {
             "type": "numeric",
-            "ex": "lessThanEqualTo(.,\"1000\")"
+            "ex": "lessThan(.,\"1000\")"
           }
         }
       },
@@ -437,15 +437,42 @@
         }
       },
       {
-        "key": "new_regimen",
-        "openmrs_entity_parent": "",
+        "key": "second_line",
+        "type": "spinner",
+        "hint": "New Regimen\nSecond Line",
+        "openmrs_entity_id": "second_line",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "new_regimen",
-        "type": "edit_text",
-        "hint": "New regimen",
+        "openmrs_entity_parent": "",
+        "values": [
+          "2f-A (TDF+FTC+LPV/r)",
+          "2h-A (TDF+FTC+ATV/r)",
+          "2s-A (AZT+3TC+ATV/r)",
+          "2g-A (ABC+3TC+LPV/r)",
+          "2k-A (ABC+3TC+ATV/r)",
+          "2n-A (AZT+3TC+LPV/r)",
+          "2x-A (Other 2nd line)"
+        ],
+        "keys": [
+          "2_fA",
+          "2_hA",
+          "2_sA",
+          "2_gA",
+          "2_kA",
+          "2_nA",
+          "2_xA"
+        ],
+        "openmrs_choice_ids": {
+          "2_fA": "2_fA",
+          "2_hA": "2_hA",
+          "2_sA": "2_sA",
+          "2_gA": "2_gA",
+          "2_kA": "2_kA",
+          "2_nA": "2_nA",
+          "2_xA": "2_xA"
+        },
         "v_required": {
-          "value": "true",
-          "err": "Please enter the new regimen"
+          "value": true,
+          "err": "Please answer this question"
         },
         "relevance": {
           "step1:plan_for_patient": {
