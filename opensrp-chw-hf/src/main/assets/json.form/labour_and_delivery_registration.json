@@ -770,6 +770,10 @@
         "v_required": {
           "value": "true",
           "err": "Please enter the gravida number"
+        },
+        "v_max": {
+          "value": "35",
+          "err": "Temperature must be equal or less than 50"
         }
       },
       {

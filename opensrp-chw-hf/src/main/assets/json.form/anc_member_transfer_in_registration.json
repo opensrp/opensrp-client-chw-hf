@@ -257,7 +257,7 @@
         "type": "hidden",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "hiv",
-        "value" : "positive",
+        "value": "positive",
         "openmrs_entity_parent": "",
         "relevance": {
           "step1:medical_surgical_history": {
@@ -304,6 +304,10 @@
         "v_required": {
           "value": true,
           "err": "Please enter the gravida number"
+        },
+        "v_max": {
+          "value": "35",
+          "err": "Temperature must be equal or less than 50"
         }
       },
       {

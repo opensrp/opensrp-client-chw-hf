@@ -218,6 +218,10 @@
         "v_numeric": {
           "value": "true",
           "err": "Tafadhali jaza idadi ya ujauzito"
+        },
+        "v_max": {
+          "value": "35",
+          "err": "Temperature must be equal or less than 50"
         }
       },
       {

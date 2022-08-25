@@ -52,7 +52,11 @@
         "openmrs_entity_id": "gravida",
         "type": "edit_text",
         "edit_type": "number",
-        "hint": "Gravida"
+        "hint": "Gravida",
+        "v_max": {
+          "value": "35",
+          "err": "Temperature must be equal or less than 50"
+        }
       },
       {
         "key": "para",
