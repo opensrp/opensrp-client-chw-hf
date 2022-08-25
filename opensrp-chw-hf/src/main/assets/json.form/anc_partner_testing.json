@@ -186,10 +186,6 @@
           "is_fixed_size": "true",
           "err":"Please enter a valid CTC Number"
         },
-        "v_required": {
-          "value": true,
-          "err": "Please enter a valid CTC Number"
-        },
         "relevance": {
           "step1:partner_hiv": {
             "type": "string",

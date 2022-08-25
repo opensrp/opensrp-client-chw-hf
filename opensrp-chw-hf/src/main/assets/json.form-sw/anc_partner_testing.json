@@ -186,10 +186,6 @@
           "is_fixed_size": "true",
           "err":"Tafadhali jaza namba ya CTC ya mteja"
         },
-        "v_required": {
-          "value": true,
-          "err": "Tafadhali jaza namba ya CTC ya mteja"
-        },
         "relevance": {
           "step1:partner_hiv": {
             "type": "string",
