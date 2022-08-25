@@ -10,6 +10,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.smartregister.chw.hf.actionhelper.LDGeneralExaminationActionHelper;
+import org.smartregister.chw.hf.interactor.LDVisitInteractor;
 import org.smartregister.chw.hf.utils.Constants.Events;
 import org.smartregister.chw.ld.LDLibrary;
 import org.smartregister.chw.ld.dao.LDDao;
@@ -55,22 +57,38 @@ public class LDVisitUtils extends VisitUtils {
                 boolean isDiastolicDone = computeCompletionStatus(obs, "diastolic");
                 boolean isUrineProteinDone = computeCompletionStatus(obs, "urine_protein");
                 boolean isUrineAcetoneDone = computeCompletionStatus(obs, "urine_acetone");
-                boolean isFundalHeightDone = computeCompletionStatus(obs, "fundal_height");
-                boolean isPresentationDone = getFieldValue(obs, "lie").equalsIgnoreCase("transverse") || computeCompletionStatus(obs, "presentation");
+
+                boolean isFundalHeightDone = true;
+                if (!LDGeneralExaminationActionHelper.fundalHeightCaptured(baseEntityId))
+                    isFundalHeightDone = computeCompletionStatus(obs, "fundal_height");
+
+                boolean isPresentationDone = true;
+                if (!LDGeneralExaminationActionHelper.featalLieCaptured(baseEntityId))
+                    isPresentationDone = getFieldValue(obs, "lie").equalsIgnoreCase("transverse") || computeCompletionStatus(obs, "presentation");
+
                 boolean isContractionInTenMinutesDone = computeCompletionStatus(obs, "contraction_in_ten_minutes");
                 boolean isFetalHeartRateDone = computeCompletionStatus(obs, "fetal_heart_rate");
                 boolean isVaginalExamDateDone = computeCompletionStatus(obs, "vaginal_exam_date");
                 boolean isVaginalExamTimeDone = computeCompletionStatus(obs, "vaginal_exam_time");
                 boolean isCervixStateDone = computeCompletionStatus(obs, "cervix_state");
                 boolean isCervixDilationDone = computeCompletionStatus(obs, "cervix_dilation");
-                boolean isPresentingPartDone = computeCompletionStatus(obs, "presenting_part");
-                boolean isMouldingDone = computeCompletionStatus(obs, "moulding");
+                boolean isPresentingPartDone = true;
+                if (LDDao.getPresentingPart(baseEntityId) == null)
+                    isPresentingPartDone = computeCompletionStatus(obs, "presenting_part");
+
+                boolean isMouldingDone;
+                String presentingPart = getFieldValue(obs, "presenting_part");
+                if (presentingPart != null && !presentingPart.equalsIgnoreCase("breech") && !presentingPart.equalsIgnoreCase("shoulder")) {
+                    isMouldingDone = computeCompletionStatus(obs, "moulding");
+                } else {
+                    isMouldingDone = true;
+                }
                 boolean isStationDone = computeCompletionStatus(obs, "station");
                 boolean isDecisionDone = computeCompletionStatus(obs, "decision");
 
                 boolean hivActionDone = false;
 
-                if (LDDao.getHivStatus(baseEntityId) == null || !Objects.equals(LDDao.getHivStatus(baseEntityId), org.smartregister.chw.hf.utils.Constants.HIV_STATUS.POSITIVE)) {
+                if (LDDao.getHivStatus(baseEntityId) == null || (!Objects.equals(LDDao.getHivStatus(baseEntityId), org.smartregister.chw.hf.utils.Constants.HIV_STATUS.POSITIVE) && LDVisitInteractor.testDateIsThreeMonthsAgo(baseEntityId))) {
                     String hivStatus = getFieldValue(obs, "hiv");
                     String hivTestConducted = getFieldValue(obs, "hiv_test_conducted");
                     if (hivTestConducted != null && hivTestConducted.equalsIgnoreCase("no")) {

@@ -71,7 +71,7 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
                 evaluateVaginalExamination(details);
 
                 if (LDDao.getHivStatus(memberObject.getBaseEntityId()) == null ||
-                        (!Objects.equals(LDDao.getHivStatus(memberObject.getBaseEntityId()), Constants.HIV_STATUS.POSITIVE) && testDateIsThreeMonthsAgo())) {
+                        (!Objects.equals(LDDao.getHivStatus(memberObject.getBaseEntityId()), Constants.HIV_STATUS.POSITIVE) && testDateIsThreeMonthsAgo(memberObject.getBaseEntityId()))) {
                     evaluateHIVStatus(details);
                 }
 
@@ -133,11 +133,11 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
         return true;
     }
 
-    private boolean testDateIsThreeMonthsAgo() {
-        if (LDDao.getPmtctTestDate(memberObject.getBaseEntityId()) != null) {
+    public static boolean testDateIsThreeMonthsAgo(String baseEntityId) {
+        if (LDDao.getPmtctTestDate(baseEntityId) != null) {
             try {
                 DateFormat completeDateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
-                String pmtctTestDate = LDDao.getPmtctTestDate(memberObject.getBaseEntityId());
+                String pmtctTestDate = LDDao.getPmtctTestDate(baseEntityId);
                 Date testDate = completeDateFormat.parse(pmtctTestDate);
                 if (testDate != null) {
                     Date threeMonthsAgo = new Date(System.currentTimeMillis() - TimeUnit.DAYS.toMillis(90));

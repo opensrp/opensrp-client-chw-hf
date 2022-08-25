@@ -719,6 +719,7 @@ public class Constants extends CoreConstants {
             String MENTO_POSITION = "mento_position";
             String SACRO_POSITION = "sacro_position";
             String DORSO_POSITION = "dorso_position";
+            String MOULDING = "moulding";
         }
     }
 
