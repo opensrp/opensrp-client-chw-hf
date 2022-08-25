@@ -100,7 +100,7 @@
         "relevance": {
           "step1:hvl_result": {
             "type": "numeric",
-            "ex": "lessThanEqualTo(.,\"1000\")"
+            "ex": "lessThan(.,\"1000\")"
           }
         }
       },
@@ -115,7 +115,7 @@
         "relevance": {
           "step1:hvl_result": {
             "type": "numeric",
-            "ex": "greaterThan(.,\"1000\")"
+            "ex": "greaterThanEqualTo(.,\"1000\")"
           }
         }
       },
@@ -372,7 +372,7 @@
         "relevance": {
           "step1:hvl_result": {
             "type": "numeric",
-            "ex": "lessThanEqualTo(.,\"1000\")"
+            "ex": "lessThan(.,\"1000\")"
           }
         }
       },
@@ -395,7 +395,7 @@
         "relevance": {
           "step1:hvl_result": {
             "type": "numeric",
-            "ex": "lessThanEqualTo(.,\"1000\")"
+            "ex": "lessThan(.,\"1000\")"
           }
         }
       },
