@@ -43,10 +43,6 @@ public class AncRecurringFacilityVisitActivity extends AncFirstFacilityVisitActi
         actionList.clear();
 
         //Necessary evil to rearrange the actions according to a specific arrangement
-        if (map.containsKey(getString(R.string.anc_recuring_visit_triage))) {
-            BaseAncHomeVisitAction triageAncHomeVisitAction = map.get(getString(R.string.anc_recuring_visit_triage));
-            actionList.put(getString(R.string.anc_recuring_visit_triage), triageAncHomeVisitAction);
-        }
         if (map.containsKey(getString(R.string.anc_recuring_visit_pregnancy_status))) {
             BaseAncHomeVisitAction pregnancyStatusAncHomeVisitAction = map.get(getString(R.string.anc_recuring_visit_pregnancy_status));
             actionList.put(getString(R.string.anc_recuring_visit_pregnancy_status), pregnancyStatusAncHomeVisitAction);
