@@ -9,14 +9,28 @@ actions:
 name: step2_relationship_above_15_male
 description: relationship_above_15 relevance
 priority: 1
-condition: "step2_age_calculated >= 15 && step2_sex == 'Male' "
+condition: "step2_age_calculated >= 15 && step2_sex == 'Male' && (step2_age_calculated < (global_index_client_age + 15) || global_index_client_age > 15 )"
 actions:
   - "isRelevant = true"
 ---
 name: step2_relationship_above_15_female
 description: relationship_above_15 relevance
 priority: 1
-condition: "step2_age_calculated >= 15 && step2_sex == 'Female' "
+condition: "step2_age_calculated >= 15 && step2_sex == 'Female' && (step2_age_calculated < (global_index_client_age + 15) || global_index_client_age > 15 ) "
+actions:
+  - "isRelevant = true"
+---
+name: step2_relationship_above_15_male_for_possible_parents
+description: relationship_above_15 relevance
+priority: 1
+condition: "step2_age_calculated >= 15 && step2_sex == 'Male' && (step2_age_calculated >= (global_index_client_age + 15) && global_index_client_age < 15) "
+actions:
+  - "isRelevant = true"
+---
+name: step2_relationship_above_15_female_for_possible_parents
+description: relationship_above_15 relevance
+priority: 1
+condition: "step2_age_calculated >= 15 && step2_sex == 'Female' && (step2_age_calculated >= (global_index_client_age + 15) && global_index_client_age < 15)"
 actions:
   - "isRelevant = true"
 ---
