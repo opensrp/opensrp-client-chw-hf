@@ -16,9 +16,16 @@ actions:
 name: "ctc_number_visibility"
 description: "ctc_number visibility"
 priority: 1
-condition: "test_results.containsKey('positive') && enrolled_to_clinic.containsKey('yes')"
+condition: "test_results.containsKey('positive') && enrolled_to_clinic.containsKey('yes') && action_taken_hiv_problems.containsKey('tested')"
 actions:
   - "ctc_number_visibility =  true"
+---
+name: "prompt_for_ctc_enrollment_visibility"
+description: "prompt_for_ctc_enrollment visibility"
+priority: 1
+condition: "test_results.containsKey('positive') && enrolled_to_clinic.containsKey('no') && action_taken_hiv_problems.containsKey('tested')"
+actions:
+  - "prompt_for_ctc_enrollment_visibility =  true"
 ---
 name: "hiv_facility_visit_date_calculation"
 description: "hiv_facility_visit_date calculation"
