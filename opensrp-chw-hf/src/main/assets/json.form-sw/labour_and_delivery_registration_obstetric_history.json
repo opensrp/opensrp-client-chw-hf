@@ -55,7 +55,7 @@
         "hint": "Mimba ambazo mama amewahi kupata(gravidity)",
         "v_max": {
           "value": "35",
-          "err": "Temperature must be equal or less than 50"
+          "err": "Gravidity lazima iwe sawa au chini ya 35"
         }
       },
       {
