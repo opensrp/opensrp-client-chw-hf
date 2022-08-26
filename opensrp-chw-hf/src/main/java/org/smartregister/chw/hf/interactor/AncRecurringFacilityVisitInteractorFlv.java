@@ -205,34 +205,9 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
     ) throws BaseAncHomeVisitAction.ValidationException {
 
         Context context = view.getContext();
-        JSONObject triageForm = null;
-        try {
-            triageForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.TRIAGE);
-            triageForm.getJSONObject("global").put("last_menstrual_period", memberObject.getLastMenstrualPeriod());
-            triageForm.getJSONObject("global").put("current_visit_number", HfAncDao.getVisitNumber(baseEntityId));
-            JSONArray fields = triageForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
-            JSONObject gest_age = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "gest_age");
-            if (gest_age != null) {
-                gest_age.put("value", memberObject.getGestationAge());
-            }
-            if (details != null && !details.isEmpty()) {
-                HfAncJsonFormUtils.populateForm(triageForm, details);
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        BaseAncHomeVisitAction triage = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_triage))
-                .withOptional(false)
-                .withDetails(details)
-                .withJsonPayload(triageForm.toString())
-                .withFormName(Constants.JsonForm.AncRecurringVisit.getTriage())
-                .withHelper(new AncTriageAction(memberObject))
-                .build();
-        actionList.put(context.getString(R.string.anc_recuring_visit_triage), triage);
 
         BaseAncHomeVisitAction pregnancyStatus = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_pregnancy_status))
-                .withOptional(true)
+                .withOptional(false)
                 .withDetails(details)
                 .withFormName(Constants.JsonForm.AncRecurringVisit.getPregnancyStatus())
                 .withHelper(new AncPregnancyStatusAction(view, memberObject, callBack, details))
@@ -285,6 +260,23 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
         public String postProcess(String s) {
             Context context = view.getContext();
             if (pregnancy_status.equals("viable")) {
+                JSONObject triageForm = null;
+                try {
+                    triageForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.TRIAGE);
+                    triageForm.getJSONObject("global").put("last_menstrual_period", memberObject.getLastMenstrualPeriod());
+                    triageForm.getJSONObject("global").put("current_visit_number", HfAncDao.getVisitNumber(baseEntityId));
+                    JSONArray fields = triageForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+                    JSONObject gest_age = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "gest_age");
+                    if (gest_age != null) {
+                        gest_age.put("value", memberObject.getGestationAge());
+                    }
+                    if (details != null && !details.isEmpty()) {
+                        HfAncJsonFormUtils.populateForm(triageForm, details);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
                 JSONObject consultationForm = null;
                 try {
                     consultationForm = setMinFundalHeight(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.CONSULTATION), memberObject.getBaseEntityId());
@@ -379,6 +371,18 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
 
                 if (pregnancy_status != null) {
                     try {
+                        BaseAncHomeVisitAction triage = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_triage))
+                                .withOptional(true)
+                                .withDetails(details)
+                                .withJsonPayload(triageForm.toString())
+                                .withFormName(Constants.JsonForm.AncRecurringVisit.getTriage())
+                                .withHelper(new AncTriageAction(memberObject))
+                                .build();
+                        actionList.put(context.getString(R.string.anc_recuring_visit_triage), triage);
+                    } catch (BaseAncHomeVisitAction.ValidationException e) {
+                        e.printStackTrace();
+                    }
+                    try {
                         BaseAncHomeVisitAction consultation = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_cunsultation))
                                 .withOptional(true)
                                 .withDetails(details)
@@ -466,7 +470,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                             birthReviewForm.getJSONObject("global").put("household_support_identified", HfAncBirthEmergencyPlanDao.isHouseholdSupportIdentified(baseEntityId));
                             birthReviewForm.getJSONObject("global").put("blood_donor_identified", HfAncBirthEmergencyPlanDao.isBloodDonorIdentified(baseEntityId));
                         } catch (JSONException e) {
-                           Timber.e(e);
+                            Timber.e(e);
                         }
                         try {
                             BaseAncHomeVisitAction birthReview = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_review_birth_and_emergency_plan))
@@ -483,6 +487,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                     }
                 }
             } else {
+                actionList.remove(context.getString(R.string.anc_recuring_visit_triage));
                 actionList.remove(context.getString(R.string.anc_recuring_visit_cunsultation));
                 actionList.remove(context.getString(R.string.anc_recuring_visit_lab_tests));
                 actionList.remove(context.getString(R.string.anc_recuring_visit_pharmacy));
