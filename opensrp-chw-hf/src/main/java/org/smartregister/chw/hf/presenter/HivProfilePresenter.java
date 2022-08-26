@@ -15,19 +15,18 @@ import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.activity.HivProfileActivity;
 import org.smartregister.chw.hf.contract.HivProfileContract;
-import org.smartregister.chw.hf.custom_view.HivFloatingMenu;
 import org.smartregister.chw.hf.model.HfAllClientsRegisterModel;
 import org.smartregister.chw.hf.model.HivTbReferralTasksAndFollowupFeedbackModel;
 import org.smartregister.chw.hiv.dao.HivIndexDao;
 import org.smartregister.chw.hiv.domain.HivIndexContactObject;
 import org.smartregister.chw.hiv.domain.HivMemberObject;
+import org.smartregister.family.util.Utils;
 import org.smartregister.opd.contract.OpdRegisterActivityContract;
 import org.smartregister.opd.pojo.OpdDiagnosisAndTreatmentForm;
 import org.smartregister.opd.pojo.OpdEventClient;
 import org.smartregister.opd.pojo.RegisterParams;
 
 import java.util.List;
-import java.util.Objects;
 
 import timber.log.Timber;
 
@@ -76,6 +75,12 @@ public class HivProfilePresenter extends CoreHivProfilePresenter
         }
 
         JSONObject form = model.getFormAsJson(formName, entityId, currentLocationId);
+
+        if (formName.equalsIgnoreCase(CoreConstants.JSON_FORM.getHivIndexClientsContactsRegistrationForm())) {
+            JSONObject global = form.getJSONObject("global");
+            global.put("index_client_age", Utils.getAgeFromDate(hivMemberObject.getAge()));
+        }
+
         if (getView() != null)
             getView().startFormActivity(form, hivMemberObject, ((HivProfileActivity) getView()).getString(R.string.register_hiv_index_clients_contacts));
 

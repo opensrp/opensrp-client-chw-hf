@@ -25,7 +25,15 @@ description: set relationship
 priority: 1
 condition: "true"
 actions:
-  - "calculation = step2_age_calculated >= 15 ? (step2_sex == 'Female' ? step2_relationship_above_15_female : step2_relationship_above_15_male) : step2_relationship_under_15"
+  - "calculation = step2_age_calculated >= 15 ?
+  (
+    step2_sex == 'Female' ?
+      ((step2_age_calculated >= (global_index_client_age + 15)) ? step2_relationship_above_15_female_for_possible_parents : step2_relationship_above_15_female)
+      :
+      (step2_age_calculated >= (global_index_client_age + 15)) ? step2_relationship_above_15_male_for_possible_parents : step2_relationship_above_15_male
+  )
+  :
+  step2_relationship_under_15"
 ---
 name: step2_first_name
 description: set first name as the one added in step one

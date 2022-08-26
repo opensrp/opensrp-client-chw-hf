@@ -70,6 +70,24 @@
         ]
       },
       {
+        "key": "tb_registration_number",
+        "type": "edit_text",
+        "openmrs_entity_id": "tb_registration_number",
+        "hint": "TB Clinic Number",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "step1:on_tb_treatment": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the clients TB Clinic Number"
+        }
+      },
+      {
         "key": "tb_symptoms_screening",
         "type": "check_box",
         "label": "Please select if the client has any of the following TB symptoms",
@@ -156,6 +174,12 @@
             "text": "Negative",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "negative"
+          },
+          {
+            "key": "test_not_conducted",
+            "text": "Test not conducted",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "test_not_conducted"
           }
         ],
         "v_required": {

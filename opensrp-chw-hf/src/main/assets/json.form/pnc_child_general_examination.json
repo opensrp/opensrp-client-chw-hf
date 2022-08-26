@@ -287,7 +287,7 @@
       {
         "key": "temperature",
         "type": "edit_text",
-        "hint": "Temperature (C)",
+        "hint": "Temperature (\u2103)",
         "openmrs_entity_id": "temperature",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -707,7 +707,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "child_bcg_vaccination",
         "type": "native_radio",
-        "label": "Was BCG vaccination given?",
+        "label": "Was BCG vaccination administered?",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [

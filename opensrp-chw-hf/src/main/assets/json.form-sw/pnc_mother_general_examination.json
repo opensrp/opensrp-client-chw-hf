@@ -299,13 +299,13 @@
       {
         "key": "temperature",
         "type": "edit_text",
-        "hint": "Joto (C)",
+        "hint": "Joto (\u2103)",
         "openmrs_entity_id": "temperature",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "v_numeric": {
           "value": "true",
-          "err": "Ingiza kiasi cha Joto (C)"
+          "err": "Ingiza kiasi cha Joto (\u2103)"
         },
         "v_min": {
           "value": "10",
@@ -317,7 +317,7 @@
         },
         "v_required": {
           "value": true,
-          "err": "Ingiza kiasi cha Joto (C)"
+          "err": "Ingiza kiasi cha Joto (\u2103)"
         }
       },
       {

@@ -667,14 +667,14 @@ actions:
 name: step1_child_delivery_date
 description: child_delivery_date relevance
 priority: 1
-condition: "global_number_of_children_born > 1 && step1_newborn_status.contains('alive')"
+condition: "global_child_number != '1st' && step1_newborn_status.contains('alive')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_child_delivery_time
 description: child_delivery_time relevance
 priority: 1
-condition: "global_number_of_children_born > 1 && step1_newborn_status.contains('alive')"
+condition: "global_child_number != '1st' && step1_newborn_status.contains('alive')"
 actions:
   - "isRelevant = true"
 ---

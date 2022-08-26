@@ -162,7 +162,7 @@
         "openmrs_entity_parent": "",
         "toaster_type": "warning",
         "relevance": {
-          "step1:height_calculated": {
+          "step1:height": {
             "type": "numeric",
             "ex": "lessThan(.,\"145\")"
           }
@@ -536,7 +536,7 @@
       {
         "key": "temperature",
         "type": "edit_text",
-        "hint": "Halijoto (C)",
+        "hint": "Halijoto (\u2103)",
         "openmrs_entity_id": "temperature",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",

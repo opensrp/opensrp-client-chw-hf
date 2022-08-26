@@ -80,18 +80,18 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "tt_doses",
         "type": "edit_text",
-        "hint": "Dosi za TD",
+        "hint": "Dosi za Td",
         "v_numeric": {
           "value": "true",
-          "err": "Jaza Idadi ya dosi za TD"
+          "err": "Jaza Idadi ya dosi za Td"
         },
         "v_min": {
           "value": "0",
-          "err": "Idadi ya Dosi za TD iwe sawa na au zaidi ya 0"
+          "err": "Idadi ya Dosi za Td iwe sawa na au zaidi ya 0"
         },
         "v_max": {
           "value": "5",
-          "err": "Idadi ya Dosi za TD iwe sawa na au pungufu ya 5"
+          "err": "Idadi ya Dosi za Td iwe sawa na au pungufu ya 5"
         }
       },
       {
@@ -303,6 +303,28 @@
         }
       },
       {
+        "key": "pmtct_test_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "pmtct_test_date",
+        "type": "date_picker",
+        "hint": "Tarehe ya mwisho kupima PMTCT",
+        "expanded": false,
+        "min_date": "today-2y",
+        "max_date": "today",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jaza tarehe ya mwisho kupima PMTCT"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_triage_relevance.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "management_provided_for_pmtct",
         "type": "native_radio",
         "label": "Je Tiba ilitolewa kwa ajili ya PMTCT",
@@ -335,28 +357,6 @@
         }
       },
       {
-        "key": "pmtct_test_date",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "pmtct_test_date",
-        "type": "date_picker",
-        "hint": "Tarehe ya mwisho kupima PMTCT",
-        "expanded": false,
-        "min_date": "today-2y",
-        "max_date": "today",
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhali jaza tarehe ya mwisho kupima PMTCT"
-        },
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "labour_and_delivery_triage_relevance.yml"
-            }
-          }
-        }
-      },
-      {
         "key": "art_prescription",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -384,9 +384,25 @@
           "err": "Tafadhali jibu swali"
         },
         "relevance": {
-          "step1:anc_hiv_status": {
+          "step1:management_provided_for_pmtct": {
             "type": "string",
-            "ex": "equalTo(., \"positive\")"
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_art_management",
+        "type": "toaster_notes",
+        "text": "Provide management according to SOP and standard guideline",
+        "openmrs_entity_id": "prompt_for_art_management",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_anc_clinic_findings_relevance.yml"
+            }
           }
         }
       },

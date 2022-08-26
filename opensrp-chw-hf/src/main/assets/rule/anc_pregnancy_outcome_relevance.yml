@@ -113,6 +113,13 @@ condition: "step1_apgar_score != ''"
 actions:
   - "calculation = ['apgar_score':step1_apgar_score]"
 ---
+name: step1_apgar_score_calculated
+description: apgar_score_calculated info
+priority: 1
+condition: "step1_apgar_score != ''"
+actions:
+  - "calculation = step1_apgar_score"
+---
 name: step1_prompt_for_abnormal_apgar_score
 description: prompt_for_abnormal_apgar_score info
 priority: 1
