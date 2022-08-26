@@ -5,3 +5,45 @@ priority: 1
 condition: "step1_gravida >= 5 && step1_parity >= 4"
 actions:
   - "isRelevant = true"
+---
+name: step1_gravida_read_only
+description: gravida_read_only relevant if is first pregnancy
+priority: 1
+condition: "step1_medical_surgical_history.contains('first_pregnancy_at_or_above_thirty_five')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_parity_read_only
+description: parity_read_only relevant if is first pregnancy
+priority: 1
+condition: "step1_medical_surgical_history.contains('first_pregnancy_at_or_above_thirty_five')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_no_surv_children_read_only
+description: no_surv_children_read_only relevant if is first pregnancy
+priority: 1
+condition: "step1_medical_surgical_history.contains('first_pregnancy_at_or_above_thirty_five')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_gravida_text
+description: gravida_text relevant if is first pregnancy
+priority: 1
+condition: "!step1_medical_surgical_history.contains('first_pregnancy_at_or_above_thirty_five')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_parity_text
+description: parity_read_only relevant if is first pregnancy
+priority: 1
+condition: "!step1_medical_surgical_history.contains('first_pregnancy_at_or_above_thirty_five')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_no_surv_children_text
+description: no_surv_children_read_only relevant if is first pregnancy
+priority: 1
+condition: "!step1_medical_surgical_history.contains('first_pregnancy_at_or_above_thirty_five')"
+actions:
+  - "isRelevant = true"
