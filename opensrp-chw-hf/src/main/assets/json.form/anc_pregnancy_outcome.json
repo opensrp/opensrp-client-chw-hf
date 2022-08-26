@@ -635,6 +635,20 @@
             }
           },
           {
+            "key": "apgar_score_calculated",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "apgar_score_calculated",
+            "type": "hidden",
+            "calculation": {
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "anc_pregnancy_outcome_relevance.yml"
+                }
+              }
+            }
+          },
+          {
             "key": "prompt_for_normal_apgar_score",
             "type": "toaster_notes",
             "text": "APGAR score, Normal: {apgar_score}",
@@ -643,7 +657,7 @@
             "openmrs_entity_parent": "",
             "toaster_type": "positive",
             "relevance": {
-              "step1:apgar_score": {
+              "step1:apgar_score_calculated": {
                 "type": "numeric",
                 "ex": "greaterThanEqualTo(.,\"7\")"
               }
@@ -665,7 +679,7 @@
             "openmrs_entity_parent": "",
             "toaster_type": "problem",
             "relevance": {
-              "step1:apgar_score": {
+              "step1:apgar_score_calculated": {
                 "type": "numeric",
                 "ex": "lessThanEqualTo(.,\"6\")"
               }
