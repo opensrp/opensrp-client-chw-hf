@@ -162,7 +162,7 @@
         "openmrs_entity_parent": "",
         "toaster_type": "warning",
         "relevance": {
-          "step1:height_calculated": {
+          "step1:height": {
             "type": "numeric",
             "ex": "lessThan(.,\"145\")"
           }

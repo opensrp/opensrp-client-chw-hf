@@ -85,7 +85,7 @@ public class MotherStatusActionHelper implements BaseLDVisitAction.LDVisitAction
 
             }
 
-            if (modeOfDelivery.equalsIgnoreCase("cesarean")) {
+            if (modeOfDelivery.equalsIgnoreCase("cesarean") || modeOfDelivery.equalsIgnoreCase("vacuum_extraction")) {
                 JSONObject placeOfDelivery = JsonFormUtils.getFieldJSONObject(fields, "delivery_place");
                 placeOfDelivery.getJSONArray("values").remove(3);
                 placeOfDelivery.getJSONArray("values").remove(2);
