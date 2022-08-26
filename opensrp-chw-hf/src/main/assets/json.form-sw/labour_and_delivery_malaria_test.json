@@ -46,11 +46,11 @@
     "title": "Kipimo cha Malaria",
     "fields": [
       {
-        "key": "malaria_test",
+        "key": "malaria",
         "type": "native_radio",
         "label": "Majibu ya Kipimo cha Malaria",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "syphilis",
+        "openmrs_entity_id": "malaria",
         "openmrs_entity_parent": "",
         "options": [
           {
@@ -99,7 +99,7 @@
           "err": "Tafadhali jibu swali hili"
         },
         "relevance": {
-          "step1:malaria_test": {
+          "step1:malaria": {
             "type": "string",
             "ex": "equalTo(., \"positive\")"
           }
@@ -121,20 +121,60 @@
         }
       },
       {
-        "key": "no_malaria_test_reason",
-        "type": "edit_text",
-        "hint": "Sababu ya kipimo cha Malaria kutokufanyika",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "no_malaria_test_reason",
+        "key": "reason_for_not_conducting_malaria_test",
         "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_conducting_malaria_test",
+        "type": "spinner",
+        "hint": "Sababu ya kipimo cha malaria kutokufanyika",
+        "values": [
+          "Vifaa vya kupima vimeisha",
+          "Mteja alikuwa katika hali ya dharura",
+          "Mteja alikataa kupimwa",
+          "Tunaendelea kumshauri mteja",
+          "Nyingine (Bainisha)"
+        ],
+        "keys": [
+          "test_kits_out_of_stock",
+          "client_was_in_an_emergency_situation",
+          "client_refused_to_be_tested",
+          "still_counselling_the_client",
+          "other"
+        ],
+        "openmrs_choice_ids": {
+          "test_kits_out_of_stock": "test_kits_out_of_stock",
+          "client_was_in_an_emergency_situation": "client_was_in_an_emergency_situation",
+          "client_refused_to_be_tested": "client_refused_to_be_tested",
+          "still_counselling_the_client": "still_counselling_the_client",
+          "Other": "other"
+        },
         "v_required": {
           "value": "true",
-          "err": "Tafadhali jibu swali hili"
+          "err": "Tafadhali chagua sababu"
         },
         "relevance": {
-          "step1:malaria_test": {
+          "step1:malaria": {
             "type": "string",
             "ex": "equalTo(., \"test_not_conducted\")"
+          }
+        }
+      },
+      {
+        "key": "other_reason_for_not_conducting_malaria_test",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reason_for_not_conducting_malaria_test",
+        "type": "edit_text",
+        "hint": "Elezea sababu ya Kutokufanyika kwa kipimo cha Malaria",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jaza sababu"
+        },
+        "relevance": {
+          "step1:reason_for_not_conducting_malaria_test": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
           }
         }
       }
