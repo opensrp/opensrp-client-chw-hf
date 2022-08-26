@@ -639,7 +639,8 @@
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "apgar_score_calculated",
-            "type": "hidden",
+            "type": "edit_text",
+            "hidden": true,
             "calculation": {
               "rules-engine": {
                 "ex-rules": {
