@@ -55,7 +55,7 @@
         "hint": "Gravida",
         "v_max": {
           "value": "35",
-          "err": "Temperature must be equal or less than 50"
+          "err": "Gravida must be equal to or less than 35"
         }
       },
       {
