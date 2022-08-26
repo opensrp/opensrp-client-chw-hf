@@ -123,17 +123,7 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
         try {
             JSONObject jsonObject = new JSONObject(visit.getJson());
             JSONArray obs = jsonObject.getJSONArray("obs");
-            int size = obs.length();
-            for (int i = 0; i < size; i++) {
-                JSONObject checkObj = obs.getJSONObject(i);
-                if (checkObj.getString("fieldCode").equalsIgnoreCase("pregnancy_status")) {
-                    JSONArray values = checkObj.getJSONArray("values");
-                    if (!(values.getString(0).equalsIgnoreCase("viable"))) {
-                        isCancelled = true;
-                        break;
-                    }
-                }
-            }
+            isCancelled = !checkIfStatusIsViable(obs);
         } catch (Exception e) {
             Timber.e(e);
         }
@@ -167,9 +157,9 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
                 JSONObject jsonObject = new JSONObject(visit.getJson());
                 JSONArray obs = jsonObject.getJSONArray("obs");
                 HashMap<String, Boolean> completionObject = new HashMap<>();
-                completionObject.put("isTriageDone", computeCompletionStatusForAction(obs, "triage_completion_status"));
                 completionObject.put("isPregnancyStatusDone", computeCompletionStatusForAction(obs, "pregnancy_status_completion_status"));
                 if (checkIfStatusIsViable(obs)) {
+                    completionObject.put("isTriageDone", computeCompletionStatusForAction(obs, "triage_completion_status"));
                     completionObject.put("isConsultationDone", computeCompletionStatusForAction(obs, "consultation_completion_status"));
                     completionObject.put("isMalariaInvestigationComplete", computeCompletionStatusForAction(obs, "malaria_investigation_completion_status"));
                     completionObject.put("isPharmacyComplete", computeCompletionStatusForAction(obs, "pharmacy_completion_status"));
@@ -208,6 +198,9 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
         VisitRepository visitRepository = AncLibrary.getInstance().visitRepository();
         manualProcessedVisits.add(visit);
         processVisits(manualProcessedVisits, visitRepository, visitDetailsRepository);
+        if(visit.getVisitType().equalsIgnoreCase(Constants.Events.ANC_RECURRING_FACILITY_VISIT) && isNextVisitsCancelled(visit)){
+            createCancelledEvent(visit.getJson());
+        }
     }
 
     public static void processVisits(List<Visit> visits, VisitRepository visitRepository, VisitDetailsRepository visitDetailsRepository) throws Exception {
