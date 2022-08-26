@@ -44,49 +44,49 @@ actions:
 name: "place_where_test_was_conducted_visibility"
 description: "place_where_test_was_conducted visibility"
 priority: 1
-condition: "test_results['positive'] != null && has_the_contact_client_been_tested['yes'] != null && eligibility_for_testing['yes'] != null"
+condition: "test_results['positive'] != null && has_the_contact_client_been_tested['yes'] != null && eligibility_for_testing['yes'] != null  && has_the_client_been_reached['yes'] != null"
 actions:
   - "place_where_test_was_conducted_visibility = true"
 ---
 name: "client_test_date_visibility"
 description: "client_test_date visibility"
 priority: 1
-condition: "(test_results['positive'] != null || test_results['negative'] != null) && has_the_contact_client_been_tested['yes'] != null && eligibility_for_testing['yes'] != null"
+condition: "(test_results['positive'] != null || test_results['negative'] != null) && has_the_contact_client_been_tested['yes'] != null && eligibility_for_testing['yes'] != null && has_the_client_been_reached['yes'] != null"
 actions:
   - "client_test_date_visibility = true"
 ---
 name: "toast_enroll_the_client_to_prep_visibility"
 description: "toast_enroll_the_client_to_prep visibility"
 priority: 2
-condition: "relationship == 'sex_partner' && test_results['negative'] != null "
+condition: "relationship == 'sex_partner' && test_results['negative'] != null && has_the_contact_client_been_tested['yes'] != null && eligibility_for_testing['yes'] != null  && has_the_client_been_reached['yes'] != null"
 actions:
   - "toast_enroll_the_client_to_prep_visibility = true"
 ---
 name: "enrolled_to_prep_visibility"
 description: "enrolled_to_prep visibility"
 priority: 2
-condition: "relationship == 'sex_partner' && test_results['negative'] != null "
+condition: "relationship == 'sex_partner' && test_results['negative'] != null && has_the_contact_client_been_tested['yes'] != null && eligibility_for_testing['yes'] != null  && has_the_client_been_reached['yes'] != null"
 actions:
   - "enrolled_to_prep_visibility = true"
 ---
 name: "reason_for_not_being_enrolled_to_prep_visibility"
 description: "reason_for_not_being_enrolled_to_prep visibility"
 priority: 3
-condition: "test_results['negative'] != null && enrolled_to_prep['no'] != null "
+condition: "test_results['negative'] != null && enrolled_to_prep['no'] != null && relationship == 'sex_partner' && has_the_contact_client_been_tested['yes'] != null && eligibility_for_testing['yes'] != null  && has_the_client_been_reached['yes'] != null "
 actions:
   - "reason_for_not_being_enrolled_to_prep_visibility = true"
 ---
 name: "enrolled_to_clinic_visibility"
 description: "enrolled_to_clinic visibility"
 priority: 1
-condition: "test_results['positive'] != null && has_the_contact_client_been_tested['yes'] != null && eligibility_for_testing['yes'] != null"
+condition: "test_results['positive'] != null && has_the_contact_client_been_tested['yes'] != null && eligibility_for_testing['yes'] != null  && has_the_client_been_reached['yes'] != null"
 actions:
   - "enrolled_to_clinic_visibility =  true"
 ---
 name: "ctc_number_visibility"
 description: "ctc_number visibility"
 priority: 1
-condition: "(test_results['positive'] != null && enrolled_to_clinic['yes'] != null) || reasons_for_ineligibility_for_testing.value == 'The contact is known HIV positive'"
+condition: "(test_results['positive'] != null && enrolled_to_clinic['yes'] != null && has_the_contact_client_been_tested['yes'] != null && eligibility_for_testing['yes'] != null  && has_the_client_been_reached['yes'] != null) || ( (reasons_for_ineligibility_for_testing.value == 'The contact is known HIV positive' || reasons_for_ineligibility_for_testing.value ==  'Mteja tayari amekwisha pima na ana HIV') && eligibility_for_testing['no'] != null  && has_the_client_been_reached['yes'] != null )"
 actions:
   - "ctc_number_visibility =  true"
 ---
