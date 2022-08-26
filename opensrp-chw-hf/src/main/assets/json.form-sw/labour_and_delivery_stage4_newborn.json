@@ -1803,7 +1803,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "child_hepatitis_b_vaccination",
         "type": "native_radio",
-        "label": "Was Hepatitis B vaccine given?",
+        "label": "Was Hepatitis B vaccination administered?",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [
