@@ -316,7 +316,7 @@
     <string name="ld_active_management_3rd_stage">Active Management of 3rd Stage</string>
     <string name="uterotonic">Uterotonic</string>
     <string name="ld_massage_uterus_after_delivery">Massage the uterus after delivery of placenta</string>
-    <string name="ld_eclampsia_management">Eclampsia and Pre-Eclampsia Management</string>
+    <string name="ld_eclampsia_management">Pre-Eclampsia and Eclampsia Management</string>
     <string name="ld_expulsion_of_placenta">Expulsion of the placenta and membranes</string>
     <string name="ld_placent_retained_message">Placenta Retained</string>
     <string name="ld_placent_completely_removed_message">Complete Expulsion of Placenta</string>
