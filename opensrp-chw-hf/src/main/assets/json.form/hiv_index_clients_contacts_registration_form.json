@@ -551,7 +551,7 @@
           },
           {
             "key": "biological_father",
-            "text": "Biological Father",
+            "text": "Biological Father (If the mother is deceased)",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "biological_father"
           }

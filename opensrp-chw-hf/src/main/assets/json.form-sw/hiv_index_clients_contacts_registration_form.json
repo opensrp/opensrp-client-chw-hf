@@ -551,7 +551,7 @@
           },
           {
             "key": "biological_father",
-            "text": "Baba Mzazi",
+            "text": "Baba Mzazi (Kama mama amefariki)",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "biological_father"
           }
