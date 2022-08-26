@@ -303,6 +303,28 @@
         }
       },
       {
+        "key": "pmtct_test_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "pmtct_test_date",
+        "type": "date_picker",
+        "hint": "Last PMTCT test Date",
+        "expanded": false,
+        "min_date": "today-2y",
+        "max_date": "today",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the last PMTCT test date"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_triage_relevance.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "management_provided_for_pmtct",
         "type": "native_radio",
         "label": "Was management provided for PMTCT?",
@@ -335,28 +357,6 @@
         }
       },
       {
-        "key": "pmtct_test_date",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "pmtct_test_date",
-        "type": "date_picker",
-        "hint": "Last PMTCT test Date",
-        "expanded": false,
-        "min_date": "today-2y",
-        "max_date": "today",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the last PMTCT test date"
-        },
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "labour_and_delivery_triage_relevance.yml"
-            }
-          }
-        }
-      },
-      {
         "key": "art_prescription",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -384,9 +384,25 @@
           "err": "Please answer this question"
         },
         "relevance": {
-          "step1:anc_hiv_status": {
+          "step1:management_provided_for_pmtct": {
             "type": "string",
-            "ex": "equalTo(., \"positive\")"
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_art_management",
+        "type": "toaster_notes",
+        "text": "Provide management according to SOP and standard guideline",
+        "openmrs_entity_id": "prompt_for_art_management",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_anc_clinic_findings_relevance.yml"
+            }
           }
         }
       },
