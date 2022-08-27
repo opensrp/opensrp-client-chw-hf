@@ -166,7 +166,7 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
     }
 
     private void showHeiNumberOrRegistration(String baseEntityId) {
-        textViewRecordHeiNumber = findViewById(R.id.textview_record_eac);
+        textViewRecordHeiNumber = findViewById(R.id.textview_record_hei_number);
         if (!HeiDao.hasHeiNumber(baseEntityId)) {
             textViewRecordHeiNumber.setVisibility(View.VISIBLE);
             textViewRecordHeiNumber.setText(getString(R.string.record_hei_number));
@@ -194,7 +194,7 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
             intent.putExtra(Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID, baseEntityId);
             startActivity(intent);
         }
-        if (id == R.id.textview_record_eac) {
+        if (id == R.id.textview_record_hei_number) {
             JSONObject jsonForm = org.smartregister.chw.core.utils.FormUtils.getFormUtils().getFormJson(getHeiNumberRegistration());
             startFormActivity(jsonForm);
         }
