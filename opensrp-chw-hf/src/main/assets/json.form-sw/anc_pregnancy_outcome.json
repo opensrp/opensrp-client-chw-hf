@@ -175,6 +175,21 @@
         }
       },
       {
+        "key": "prompt_for_child_with_problem",
+        "type": "toaster_notes",
+        "text": "Dhibiti hali hii kulingana na muongozo uliopo",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:preg_outcome": {
+            "type": "string",
+            "ex": "equalTo(., \"alive_with_problem\")"
+          }
+        }
+      },
+      {
         "key": "reason_child_died",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -632,6 +647,21 @@
             "v_required": {
               "value": true,
               "err": "Tafadhali weka agpar score"
+            }
+          },
+          {
+            "key": "apgar_score_calculated",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "apgar_score_calculated",
+            "type": "edit_text",
+            "hidden": true,
+            "calculation": {
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "anc_pregnancy_outcome_relevance.yml"
+                }
+              }
             }
           },
           {
