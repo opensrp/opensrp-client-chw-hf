@@ -88,6 +88,20 @@
         }
       },
       {
+        "key": "gravida_minus_para",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "gravida_minus_para",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_registration_obstetric_history_calculation.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "prompt_for_grand_multiparity",
         "type": "toaster_notes",
         "text": "Counsel on the risk of uterine rupture and closely monitor the client",
@@ -117,8 +131,8 @@
         "constraints": [
           {
             "type": "numeric",
-            "ex": "lessThan(., step1:gravida)",
-            "err": "Abortions must be less than gravida"
+            "ex": "lessThanEqualTo(., step1:gravida_minus_para)",
+            "err": "Sum of Para and Abortions should not exceed the Gravida"
           }
         ],
         "v_required": {
@@ -134,20 +148,6 @@
         "type": "edit_text",
         "edit_type": "number",
         "hint": "Number of children alive"
-      },
-      {
-        "key": "gravida_minus_para",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "gravida_minus_para",
-        "type": "hidden",
-        "calculation": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "labour_and_delivery_registration_obstetric_history_calculation.yml"
-            }
-          }
-        }
       },
       {
         "key": "last_menstrual_period",
