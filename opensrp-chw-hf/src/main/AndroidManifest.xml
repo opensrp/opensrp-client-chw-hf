@@ -13,6 +13,14 @@
         android:theme="@style/HFTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:theme, android:icon">
+        <activity
+            android:name=".activity.RequestPhoneNumberCollectionPermission"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".activity.ReferralRegistrationActivity"
             android:theme="@style/HFTheme.NoActionBar"/>
         <activity android:name=".activity.LdEmergencyReferralRegistrationActivity"

@@ -319,6 +319,11 @@
     <string name="record">Badili</string>
     <string name="undo">Futa</string>
     <string name="undo_test_result">Unauhakika unataka kufuta majibu ya %1$s?</string>
+    <string name="callPhonePermissionRequestDenyButton">Hapana</string>
+    <string name="callPhonePermissionRequestGrantButton">Ruhusu</string>
+    <string name="callPhoneRequestTitle">Ruhusu Ukusanyaji wa Nambari ya Simu</string>
+    <string name="callPhoneRequestMessage">Mtoa Huduma wa Afya ngazi ya kituoni hukusanya nambari za simu za wateja zitakazotumika kwa ufuatiliaji, tathmini na uchambuzi wa ziara zinazofanywa na wateja kwenye kituo cha afya.</string>
+
 
 
 </resources>

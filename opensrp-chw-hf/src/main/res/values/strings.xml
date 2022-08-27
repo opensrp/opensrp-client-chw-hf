@@ -437,5 +437,10 @@
 
     <string name="ld_management_of_eclampsia">Management of Pre-Eclampsia/Eclampsia Done</string>
     <string name="ld_client_has_no_signs_of_eclampsia">The client has no signs of Pre-Eclampsia/Eclampsia</string>
+    <string name="callPhonePermissionRequestDenyButton">No Thanks</string>
+    <string name="callPhonePermissionRequestGrantButton">Grant</string>
+    <string name="callPhoneRequestTitle">Allow Phone Number Collection</string>
+    <string name="callPhoneRequestMessage">Facility Healthcare Worker collect user phone numbers to be used for monitoring, evaluation and analysis of visits conducted by clients at the health facility.</string>
+
 
 </resources>
