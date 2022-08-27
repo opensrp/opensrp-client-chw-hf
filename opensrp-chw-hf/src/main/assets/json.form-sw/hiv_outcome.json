@@ -53,103 +53,6 @@
       "title": "Matokeo ya Vipimo vya VVU",
       "fields": [
         {
-          "name": "problem",
-          "type": "multi_choice_checkbox",
-          "properties": {
-            "text": "Chagua dalili za hatari za VVU alizonazo mteja"
-          },
-          "meta_data": {
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "problem"
-          },
-          "options": [
-            {
-              "name": "frequent_fever",
-              "text": "Homa za mara kwa mara",
-              "meta_data": {
-                "openmrs_entity": "",
-                "openmrs_entity_id": "frequent_fever",
-                "openmrs_entity_parent": ""
-              }
-            },
-            {
-              "name": "weight_loss",
-              "text": "Kupungua uzito",
-              "meta_data": {
-                "openmrs_entity": "",
-                "openmrs_entity_id": "weight_loss",
-                "openmrs_entity_parent": ""
-              }
-            },
-            {
-              "name": "rashes",
-              "text": "Vipele mwilini",
-              "meta_data": {
-                "openmrs_entity": "",
-                "openmrs_entity_id": "rashes",
-                "openmrs_entity_parent": ""
-              }
-            },
-            {
-              "name": "fatigue",
-              "text": "Uchovu / Kulegea mwili",
-              "meta_data": {
-                "openmrs_entity": "",
-                "openmrs_entity_id": "fatigue",
-                "openmrs_entity_parent": ""
-              }
-            },
-            {
-              "name": "mouth_ulcers",
-              "text": "Vidonda mdomoni",
-              "meta_data": {
-                "openmrs_entity": "",
-                "openmrs_entity_id": "mouth_ulcers",
-                "openmrs_entity_parent": ""
-              }
-            },
-            {
-              "name": "Other",
-              "text": "Dalili nyinginezo",
-              "meta_data": {
-                "openmrs_entity": "",
-                "openmrs_entity_id": "Other",
-                "openmrs_entity_parent": ""
-              }
-            },
-            {
-              "name": "None",
-              "text": "Hana dalili za hatari",
-              "is_exclusive": true,
-              "meta_data": {
-                "openmrs_entity": "",
-                "openmrs_entity_id": "None",
-                "openmrs_entity_parent": ""
-              }
-            }
-          ],
-          "required_status": "yes:Tafadhali chagua dalili za hatari",
-          "dependent_calculations": [
-            "hiv_facility_visit_date"
-          ]
-        },
-        {
-          "name": "problem_other",
-          "type": "text_input_edit_text",
-          "properties": {
-            "hint": "Dalili nyingine",
-            "type": "name"
-          },
-          "meta_data": {
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "problem_other",
-            "openmrs_entity_parent": "problem"
-          },
-          "required_status": "true:Tafadhali jaza dalili nyingine za hatari",
-          "subjects": "problem:map"
-        },
-        {
           "name": "action_taken_hiv_problems",
           "type": "radio_group",
           "properties": {
@@ -190,7 +93,10 @@
               }
             }
           ],
-          "required_status": "yes:Tafadhali chagua hatua zilizochukuliwa"
+          "required_status": "yes:Tafadhali chagua hatua zilizochukuliwa",
+          "dependent_calculations": [
+            "hiv_facility_visit_date"
+          ]
         },
         {
           "name": "test_results",
@@ -258,7 +164,7 @@
             }
           ],
           "required_status": "yes:Tafadhali jaza jibu sahihi",
-          "subjects": "test_results:map"
+          "subjects": "test_results:map, action_taken_hiv_problems:map"
         },
         {
           "name": "ctc_number",
@@ -283,7 +189,19 @@
             }
           ],
           "required_status": "true:Tafadhali jaza namba ya CTC ya mteja",
-          "subjects": "enrolled_to_clinic:map"
+          "subjects": "enrolled_to_clinic:map,test_results:map, action_taken_hiv_problems:map"
+        },
+        {
+          "name": "prompt_for_ctc_enrollment",
+          "type": "toast_notification",
+          "properties": {
+            "notification_type": "info",
+            "dismissible": "no",
+            "text": "Mpatie rufaa mteja kwenda CTC kwaajili ya uthibitisho na uandikishaji",
+            "background_color": "#082455",
+            "text_color": "#EBEE2F"
+          },
+          "subjects": "enrolled_to_clinic:map, test_results:map, action_taken_hiv_problems:map"
         },
         {
           "name": "comment_hiv_problems",

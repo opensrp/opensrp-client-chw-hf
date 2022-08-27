@@ -470,8 +470,8 @@
         },
         "v_min": {},
         "v_max": {
-          "value": "36",
-          "err": "Fundal height must be equal or less than 36 CM"
+          "value": "50",
+          "err": "Fundal height must be equal or less than 50 CM"
         }
       },
       {
