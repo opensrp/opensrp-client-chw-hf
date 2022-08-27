@@ -222,7 +222,7 @@
           },
           {
             "key": "membrane_ruptured_liquor_clear",
-            "text": "Membrane ruptured liquor clear (\u2103)",
+            "text": "Membrane ruptured liquor clear (C)",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "membrane_ruptured_liquor_clear"
