@@ -210,10 +210,121 @@
       },
       {
         "key": "gravida",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "gravida",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_medical_and_surgical_history_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "parity",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "parity",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_medical_and_surgical_history_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "no_surv_children",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "no_surv_children",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_medical_and_surgical_history_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "gravida_read_only",
+        "type": "edit_text",
+        "read_only": "true",
+        "hint": "Gravida",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "gravida_read_only",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_medical_and_surgical_history_relevance.yml"
+            }
+          }
+        },
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_medical_and_surgical_history_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "parity_read_only",
+        "type": "edit_text",
+        "read_only": "true",
+        "hint": "Parity",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "parity_read_only",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_medical_and_surgical_history_relevance.yml"
+            }
+          }
+        },
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_medical_and_surgical_history_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "no_surv_children_read_only",
+        "type": "edit_text",
+        "read_only": "true",
+        "hint": "Number of living children",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "no_surv_children_read_only",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_medical_and_surgical_history_relevance.yml"
+            }
+          }
+        },
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_medical_and_surgical_history_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "gravida_text",
         "type": "edit_text",
         "hint": "Gravida",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "gravida",
+        "openmrs_entity_id": "gravida_text",
         "openmrs_entity_parent": "",
         "v_numeric": {
           "value": "true",
@@ -222,14 +333,25 @@
         "v_max": {
           "value": "35",
           "err": "Gravida must be equal to or less than 35"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_medical_and_surgical_history_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please answer"
         }
       },
       {
-        "key": "parity",
+        "key": "parity_text",
         "type": "edit_text",
         "hint": "Parity",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "parity",
+        "openmrs_entity_id": "parity_text",
         "openmrs_entity_parent": "",
         "v_numeric": {
           "value": "true",
@@ -238,10 +360,21 @@
         "constraints": [
           {
             "type": "numeric",
-            "ex": "lessThan(., step1:gravida)",
+            "ex": "lessThan(., step1:gravida_text)",
             "err": "Parity must be less than gravida"
           }
-        ]
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_medical_and_surgical_history_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please answer"
+        }
       },
       {
         "key": "prompt_for_grand_multiparity",
@@ -260,16 +393,23 @@
         }
       },
       {
-        "key": "no_surv_children",
+        "key": "no_surv_children_text",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "no_surv_children",
+        "openmrs_entity_id": "no_surv_children_text",
         "type": "edit_text",
         "edit_type": "number",
         "hint": "Number of living children",
-        "v_numeric": {
-          "value": "true",
-          "err": "Please enter the number of living children"
+        "v_required": {
+          "value": true,
+          "err": "Please answer"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_medical_and_surgical_history_relevance.yml"
+            }
+          }
         }
       },
       {
