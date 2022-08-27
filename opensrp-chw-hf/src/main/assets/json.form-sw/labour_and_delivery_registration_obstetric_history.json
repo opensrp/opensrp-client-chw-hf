@@ -1,6 +1,5 @@
 {
   "count": "1",
-  "skip_blank_steps": true,
   "encounter_type": "Labour and Delivery Registration Obstretric History",
   "entity_id": "",
   "metadata": {
@@ -43,77 +42,50 @@
     "encounter_location": ""
   },
   "step1": {
-    "title": "Historia ya Uzazi",
+    "title": "Obstetric History",
     "fields": [
       {
         "key": "gravida",
-        "openmrs_entity_parent": "",
+        "type": "edit_text",
+        "hint": "Gravida",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "gravida",
-        "type": "edit_text",
-        "edit_type": "number",
-        "hint": "Mimba ambazo mama amewahi kupata(gravidity)",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the gravida number"
+        },
         "v_max": {
           "value": "35",
-          "err": "Gravidity lazima iwe sawa au chini ya 35"
+          "err": "Gravida must be equal to or less than 35"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please answer"
         }
       },
       {
         "key": "para",
-        "openmrs_entity_parent": "",
+        "type": "edit_text",
+        "hint": "Parity",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "para",
-        "type": "edit_text",
-        "edit_type": "number",
-        "hint": "Watoto waliozaliwa(parity)",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter parity number"
+        },
         "constraints": [
           {
             "type": "numeric",
             "ex": "lessThanEqualTo(., step1:gravida)",
             "err": "Parity must be equal to or less than gravida"
           }
-        ]
-      },
-      {
-        "key": "prompt_for_grand_multiparity",
-        "type": "toaster_notes",
-        "text": "Mshauri mama kuhusu hatari  ya kupasuka kwa mfuko wa uzazi  na mpatie uangalizi wa karibu",
-        "openmrs_entity_id": "",
-        "openmrs_entity": "",
-        "openmrs_entity_parent": "",
-        "toaster_type": "problem",
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "labour_and_delivery_registration_obstetric_history_relevance.yml"
-            }
-          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please answer"
         }
-      },
-      {
-        "key": "number_of_abortion",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "number_of_abortion",
-        "type": "edit_text",
-        "edit_type": "number",
-        "hint": "Mimba zilizoharibika",
-        "constraints": [
-          {
-            "type": "numeric",
-            "ex": "lessThanEqualTo(., step1:gravida_minus_para)",
-            "err": "Sum of Para and Abortions should not exceed the Gravida"
-          }
-        ]
-      },
-      {
-        "key": "children_alive",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "children_alive",
-        "type": "edit_text",
-        "edit_type": "number",
-        "hint": "Idadi ya watoto walio hai"
       },
       {
         "key": "gravida_minus_para",
@@ -130,12 +102,60 @@
         }
       },
       {
+        "key": "prompt_for_grand_multiparity",
+        "type": "toaster_notes",
+        "text": "Counsel on the risk of uterine rupture and closely monitor the client",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_registration_obstetric_history_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "number_of_abortion",
+        "type": "edit_text",
+        "hint": "Number of abortions",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "number_of_abortion",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter parity number"
+        },
+        "constraints": [
+          {
+            "type": "numeric",
+            "ex": "lessThanEqualTo(., step1:gravida_minus_para)",
+            "err": "Sum of Para and Abortions should not exceed the Gravida"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please answer"
+        }
+      },
+      {
+        "key": "children_alive",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "children_alive",
+        "type": "edit_text",
+        "edit_type": "number",
+        "hint": "Number of children alive"
+      },
+      {
         "key": "last_menstrual_period",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "last_menstrual_period",
         "type": "date_picker",
-        "hint": "Tarehe ya kwanza ya hedhi ya mara mwisho (LNMP)",
+        "hint": "Last Normal Menstrual Period (LNMP)",
         "label_info_title": "LNMP",
         "label_info_text": "LNMP = first day of Last Normal Menstrual Period. If the exact date is unknown, but the period of the month is known, use day 5 for beginning of the month, day 15 for middle of the month and day 25 for end of the month.",
         "expanded": false,
@@ -162,7 +182,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "",
         "type": "edit_text",
-        "hint": "Umri wa mamba kwa wiki",
+        "hint": "Gestational Age (GA) in Weeks",
         "read_only": true,
         "calculation": {
           "rules-engine": {
@@ -178,7 +198,7 @@
         "openmrs_entity": "",
         "openmrs_entity_id": "",
         "type": "edit_text",
-        "hint": "Tarehe ya matazamio ya kujifungua(EDD)",
+        "hint": "Expected Date of Delivery (EDD)",
         "read_only": true,
         "calculation": {
           "rules-engine": {
@@ -207,14 +227,136 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "past_medical_surgical_history",
-        "type": "edit_text",
-        "hint": "Historia ya Matibabu na Upasuaji",
-        "relevance": {
-          "step1:para": {
-            "type": "numeric",
-            "ex": "greaterThan(.,\"0\")"
+        "type": "check_box",
+        "label": "Any Medical and surgical History of the Patient?",
+        "combine_checkbox_option_values": "true",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "exclusive": [
+          "none"
+        ],
+        "options": [
+          {
+            "key": "diabetes_mellitus",
+            "text": "Diabetes Mellitus",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "diabetes_mellitus"
+          },
+          {
+            "key": "sickle_cell_disease",
+            "text": "Sickle Cell Disease",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "sickle_cell_disease"
+          },
+          {
+            "key": "heart_diseases",
+            "text": "Heart Diseases",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "heart_diseases"
+          },
+          {
+            "key": "thyroid_diseases",
+            "text": "Thyroid Diseases",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "thyroid_diseases"
+          },
+          {
+            "key": "blood_transfusion",
+            "text": "Blood transfusion",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "blood_transfusion"
+          },
+          {
+            "key": "known_on_art",
+            "text": "On ART",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "known_on_art"
+          },
+          {
+            "key": "epilepsy",
+            "text": "Epilepsy",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "epilepsy"
+          },
+          {
+            "key": "previous_c_s",
+            "text": "Previous C/S",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "previous_c_s"
+          },
+          {
+            "key": "myomectomy",
+            "text": "Myomectomy",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "myomectomy"
+          },
+          {
+            "key": "third_degree_tear",
+            "text": "Third Degree Tear",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "third_degree_tear"
+          },
+          {
+            "key": "repaired_fistula",
+            "text": "Repaired Fistula",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "repaired_fistula"
+          },
+          {
+            "key": "female_genital_mutilation",
+            "text": "Female Genital Mutilation",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "female_genital_mutilation"
+          },
+          {
+            "key": "closely_spaced_pregnancy",
+            "text": "Closely spaced pregnancy (within 2 years)",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "closely_spaced_pregnancy"
+          },
+          {
+            "key": "pregnant_more_than_four",
+            "text": "Pregnant four or more times",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "pregnant_more_than_four"
+          },
+          {
+            "key": "hx_hemorrhage",
+            "text": "History of Hemorrhage",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "hx_hemorrhage"
+          },
+          {
+            "key": "history_of_high_blood_pressure",
+            "text": "History of high blood pressure",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "history_of_high_blood_pressure"
+          },
+          {
+            "key": "anaemia",
+            "text": "Anaemia",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "anaemia"
+          },
+          {
+            "key": "difficult_delivery",
+            "text": "Difficult delivery (Vacuum, episiotomy)",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "difficult_delivery"
+          },
+          {
+            "key": "hx_abortions",
+            "text": "History of Abortions",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "hx_abortions"
+          },
+          {
+            "key": "none",
+            "text": "None",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "none"
           }
-        }
+        ]
       }
     ]
   }

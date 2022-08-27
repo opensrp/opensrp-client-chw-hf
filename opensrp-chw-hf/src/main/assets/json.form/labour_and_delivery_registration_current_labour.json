@@ -246,9 +246,10 @@
         "openmrs_entity_parent": "",
         "toaster_type": "problem",
         "relevance": {
-          "step1:fetal_movement": {
-            "type": "string",
-            "ex": "equalTo(., \"absent\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_registration_current_labour_relevance.yml"
+            }
           }
         }
       },
@@ -261,9 +262,10 @@
         "openmrs_entity_parent": "",
         "toaster_type": "problem",
         "relevance": {
-          "step1:movement_status": {
-            "type": "string",
-            "ex": "equalTo(., \"reduced\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_registration_current_labour_relevance.yml"
+            }
           }
         }
       }
