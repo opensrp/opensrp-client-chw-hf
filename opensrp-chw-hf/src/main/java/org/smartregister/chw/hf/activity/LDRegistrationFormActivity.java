@@ -138,6 +138,7 @@ public class LDRegistrationFormActivity extends BaseLDVisitActivity {
         if (mAdapter != null) {
             mAdapter.notifyDataSetChanged();
         }
+        redrawVisitUI();
         displayProgressBar(false);
     }
 

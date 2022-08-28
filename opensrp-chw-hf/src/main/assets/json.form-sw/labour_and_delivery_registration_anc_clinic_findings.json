@@ -317,10 +317,9 @@
           "err": "Tafadhali jaza tarehe ya mwisho kupima PMTCT"
         },
         "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "labour_and_delivery_triage_relevance.yml"
-            }
+          "step1:anc_hiv_status": {
+            "type": "string",
+            "ex": "notEqualTo(., \"unknown\")"
           }
         }
       },

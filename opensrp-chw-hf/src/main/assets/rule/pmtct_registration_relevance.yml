@@ -2,7 +2,7 @@
 name: step2_ctc_number
 description: ctc_number relevance
 priority: 1
-condition: "step1_known_on_art.contains('yes') || step2_hiv_status.contains('positive')"
+condition: "step1_known_on_art.contains('yes') || (!step2_hiv.equals('') && step2_hiv_status.contains('positive'))"
 actions:
   - "isRelevant = true"
 ---
@@ -16,6 +16,6 @@ actions:
 name: step2_is_test_at_32
 description: is_test_at_32 relevance
 priority: 1
-condition: "step2_gest_age >= 32 && step2_hiv.contains('negative')"
+condition: "!step2_gest_age.equals('') && !step2_hiv.equals('') && step2_gest_age >= 32 && step2_hiv.contains('negative')"
 actions:
   - "isRelevant = true"

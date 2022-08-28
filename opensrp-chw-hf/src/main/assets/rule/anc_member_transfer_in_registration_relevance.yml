@@ -2,6 +2,13 @@
 name: step1_prompt_for_grand_multiparity
 description: prompt_for_grand_multiparity relevance
 priority: 1
-condition: "step1_gravida >= 5 && step1_parity >= 4"
+condition: "!step1_gravida.equals('') && !step1_parity.equals('') && step1_gravida >= 5 && step1_parity >= 4"
+actions:
+  - "isRelevant = true"
+---
+name: step1_no_surv_children
+description: no_surv_children relevance
+priority: 1
+condition: "!step1_para.equals('') && step1_para > 0"
 actions:
   - "isRelevant = true"

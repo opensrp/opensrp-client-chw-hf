@@ -16,42 +16,42 @@ actions:
 name: step3_known_last_menstrual_period
 description: lmp_entered relevance
 priority: 1
-condition: "((step2_uss.contains('present_gestation_sac') && step2_upt.contains('positive')) || (step2_uss.contains('absent_gestation_sac') && step2_upt.contains('positive')) || (step2_upt.isEmpty() && step2_uss.contains('present_gestation_sac')) || (step2_upt.contains('positive') && step2_uss.isEmpty())) && !step3_last_menstrual_period_unknown.contains('lmp_unknown')"
+condition: "((step2_uss.contains('present_gestation_sac') && step2_upt.contains('positive')) || (step2_uss.contains('absent_gestation_sac') && step2_upt.contains('positive')) || (step2_upt.equals('') && step2_uss.contains('present_gestation_sac')) || (step2_upt.contains('positive') && step2_uss.equals(''))) && !step3_last_menstrual_period_unknown.contains('lmp_unknown')"
 actions:
   - "isRelevant = true"
 ---
 name: step3_last_menstrual_period_unknown
 description: last_menstrual_period_unknown relevance
 priority: 1
-condition: "((step2_uss.contains('present_gestation_sac') && step2_upt.contains('positive')) || (step2_uss.contains('absent_gestation_sac') && step2_upt.contains('positive')) || (step2_upt.isEmpty() && step2_uss.contains('present_gestation_sac')) || (step2_upt.contains('positive') && step2_uss.isEmpty()))"
+condition: "((step2_uss.contains('present_gestation_sac') && step2_upt.contains('positive')) || (step2_uss.contains('absent_gestation_sac') && step2_upt.contains('positive')) || (step2_upt.equals('') && step2_uss.contains('present_gestation_sac')) || (step2_upt.contains('positive') && step2_uss.equals('')))"
 actions:
   - "isRelevant = true"
 ---
 name: step3_fundal_height
 description: fundal_height relevance
 priority: 1
-condition: "((step2_uss.contains('present_gestation_sac') && step2_upt.contains('positive')) || (step2_uss.contains('absent_gestation_sac') && step2_upt.contains('positive')) || (step2_upt.isEmpty() && step2_uss.contains('present_gestation_sac')) || (step2_upt.contains('positive') && step2_uss.isEmpty())) && step3_last_menstrual_period_unknown.contains('lmp_unknown')"
+condition: "((step2_uss.contains('present_gestation_sac') && step2_upt.contains('positive')) || (step2_uss.contains('absent_gestation_sac') && step2_upt.contains('positive')) || (step2_upt.equals('') && step2_uss.contains('present_gestation_sac')) || (step2_upt.contains('positive') && step2_uss.equals(''))) && step3_last_menstrual_period_unknown.contains('lmp_unknown')"
 actions:
   - "isRelevant = true"
 ---
 name: step3_estimated_last_menstrual_period
 description: estimated_last_menstrual_period relevance
 priority: 1
-condition: " ((step2_uss.contains('present_gestation_sac') && step2_upt.contains('positive')) || (step2_uss.contains('absent_gestation_sac') && step2_upt.contains('positive')) || (step2_upt.isEmpty() && step2_uss.contains('present_gestation_sac')) || (step2_upt.contains('positive') && step2_uss.isEmpty())) && step3_last_menstrual_period_unknown.contains('lmp_unknown')"
+condition: " ((step2_uss.contains('present_gestation_sac') && step2_upt.contains('positive')) || (step2_uss.contains('absent_gestation_sac') && step2_upt.contains('positive')) || (step2_upt.equals('') && step2_uss.contains('present_gestation_sac')) || (step2_upt.contains('positive') && step2_uss.equals(''))) && step3_last_menstrual_period_unknown.contains('lmp_unknown')"
 actions:
   - "isRelevant = true"
 ---
 name: step3_gest_age_note
 description: gest_age_note relevance
 priority: 1
-condition: "((step2_uss.contains('present_gestation_sac') && step2_upt.contains('positive')) || (step2_uss.contains('absent_gestation_sac') && step2_upt.contains('positive')) || (step2_upt.isEmpty() && step2_uss.contains('present_gestation_sac')) || (step2_upt.contains('positive') && step2_uss.isEmpty()))"
+condition: "((step2_uss.contains('present_gestation_sac') && step2_upt.contains('positive')) || (step2_uss.contains('absent_gestation_sac') && step2_upt.contains('positive')) || (step2_upt.equals('') && step2_uss.contains('present_gestation_sac')) || (step2_upt.contains('positive') && step2_uss.equals('')))"
 actions:
   - "isRelevant = true"
 ---
 name: step3_edd
 description: edd_note relevance
 priority: 1
-condition: "((step2_uss.contains('present_gestation_sac') && step2_upt.contains('positive')) || (step2_uss.contains('absent_gestation_sac') && step2_upt.contains('positive')) || (step2_upt.isEmpty() && step2_uss.contains('present_gestation_sac')) || (step2_upt.contains('positive') && step2_uss.isEmpty()))"
+condition: "((step2_uss.contains('present_gestation_sac') && step2_upt.contains('positive')) || (step2_uss.contains('absent_gestation_sac') && step2_upt.contains('positive')) || (step2_upt.equals('') && step2_uss.contains('present_gestation_sac')) || (step2_upt.contains('positive') && step2_uss.equals('')))"
 actions:
   - "isRelevant = true"
 ---

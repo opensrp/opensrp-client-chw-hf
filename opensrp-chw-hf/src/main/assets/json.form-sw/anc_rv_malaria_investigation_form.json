@@ -201,16 +201,16 @@
             "ex-checkbox": [
               {
                 "or": [
-                    "fever_and_chills",
-                    "headache",
-                    "pallor",
-                    "diarrhea",
-                    "nausea_and_vomiting",
-                    "joint_pains",
-                    "body_ache",
-                    "poor_appetite",
-                    "body_weakness",
-                    "enlarged_spleen"
+                  "fever_and_chills",
+                  "headache",
+                  "pallor",
+                  "diarrhea",
+                  "nausea_and_vomiting",
+                  "joint_pains",
+                  "body_ache",
+                  "poor_appetite",
+                  "body_weakness",
+                  "enlarged_spleen"
                 ]
               }
             ]
@@ -548,7 +548,6 @@
         "openmrs_entity_id": "reason_for_not_providing_llin",
         "type": "spinner",
         "hint": "Sababu ya mteja kutokupewa chandarua cha muda mrefu (LLINs)",
-
         "values": [
           "Bidhaa zimeisha",
           "Mteja alikataa",

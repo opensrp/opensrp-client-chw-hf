@@ -137,7 +137,9 @@
           "step1:vagina_observation": {
             "ex-checkbox": [
               {
-                "or": ["chk_bleeding"]
+                "or": [
+                  "chk_bleeding"
+                ]
               }
             ]
           }

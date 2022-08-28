@@ -497,7 +497,7 @@
         "v_max_length": {
           "value": "23",
           "is_fixed_size": "true",
-          "err":"Tafadhali weka namba sahihi"
+          "err": "Tafadhali weka namba sahihi"
         },
         "v_regex": {
           "value": "^\\d{8}-\\d{5}-\\d{5}-\\d{2}$",

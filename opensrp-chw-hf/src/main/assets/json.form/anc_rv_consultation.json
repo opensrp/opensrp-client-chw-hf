@@ -214,7 +214,7 @@
         "relevance": {
           "rules-engine": {
             "ex-rules": {
-              "rules-file": "anc_fv_obstetric_examination_relevance.yml"
+              "rules-file": "anc_rv_consultation_relevance.yml"
             }
           }
         }
@@ -295,7 +295,7 @@
         "relevance": {
           "rules-engine": {
             "ex-rules": {
-              "rules-file": "anc_fv_obstetric_examination_relevance.yml"
+              "rules-file": "anc_rv_consultation_relevance.yml"
             }
           }
         }
@@ -311,7 +311,7 @@
         "relevance": {
           "rules-engine": {
             "ex-rules": {
-              "rules-file": "anc_fv_obstetric_examination_relevance.yml"
+              "rules-file": "anc_rv_consultation_relevance.yml"
             }
           }
         }

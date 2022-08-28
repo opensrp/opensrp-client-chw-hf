@@ -35,5 +35,5 @@ description: hiv_status calculation
 priority: 1
 condition: "true"
 actions:
-  - "calculation = !step1_hiv_status_question.isEmpty() ? step1_hiv_status_question : global_hiv_status_mother ? 'positive' : 'negative'"
+  - "calculation = !step1_hiv_status_question.equals('') ? step1_hiv_status_question : global_hiv_status_mother ? 'positive' : 'negative'"
 

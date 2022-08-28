@@ -9,7 +9,7 @@ actions:
 name: step1_bmi
 description: BMI calculated
 priority: 1
-condition: "true"
+condition: "!step1_weight.equals('') && !step1_height.equals('')"
 actions:
   - "calculation = Float.parseFloat(step1_weight) / (Float.parseFloat(step1_height) * Float.parseFloat(step1_height) / 10000)"
 

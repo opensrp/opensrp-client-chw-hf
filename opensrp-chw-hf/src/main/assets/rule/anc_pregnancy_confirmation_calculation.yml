@@ -2,14 +2,14 @@
 name: step3_gest_age
 description: Gestational age calculated
 priority: 1
-condition: "((step2_uss.contains('present_gestation_sac') && step2_upt.contains('positive')) || (step2_uss.contains('absent_gestation_sac') && step2_upt.contains('positive')) || (step2_upt.isEmpty() && step2_uss.contains('present_gestation_sac')) || (step2_upt.contains('positive') && step2_uss.isEmpty()))"
+condition: "((step2_uss.contains('present_gestation_sac') && step2_upt.contains('positive')) || (step2_uss.contains('absent_gestation_sac') && step2_upt.contains('positive')) || (step2_upt.equals('') && step2_uss.contains('present_gestation_sac')) || (step2_upt.contains('positive') && step2_uss.equals('')))"
 actions:
   - "calculation = step3_fundal_height == '' ? ((helper.getDifferenceDays(step3_last_menstrual_period)-helper.getDifferenceDays(helper.getDateToday())) /7) : step3_fundal_height"
 ---
 name: step3_gest_age_note
 description: Gestational age calculated
 priority: 1
-condition:  "((step2_uss.contains('present_gestation_sac') && step2_upt.contains('positive')) || (step2_uss.contains('absent_gestation_sac') && step2_upt.contains('positive')) || (step2_upt.isEmpty() && step2_uss.contains('present_gestation_sac')) || (step2_upt.contains('positive') && step2_uss.isEmpty()))"
+condition:  "((step2_uss.contains('present_gestation_sac') && step2_upt.contains('positive')) || (step2_uss.contains('absent_gestation_sac') && step2_upt.contains('positive')) || (step2_upt.equals('') && step2_uss.contains('present_gestation_sac')) || (step2_upt.contains('positive') && step2_uss.equals('')))"
 actions:
   - "calculation = step3_gest_age"
 ---

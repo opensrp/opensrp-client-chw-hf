@@ -84,9 +84,9 @@
         ],
         "openmrs_choice_ids": {
           "medical_officer": "medical_officer",
-          "assistant_medical_officer": "assistant_medical_officer" ,
-          "clinical_officer": "clinical_officer" ,
-          "assistant_clinical_officer":  "assistant_clinical_officer",
+          "assistant_medical_officer": "assistant_medical_officer",
+          "clinical_officer": "clinical_officer",
+          "assistant_clinical_officer": "assistant_clinical_officer",
           "nurse": "nurse"
         },
         "v_required": {
@@ -145,7 +145,6 @@
         "key": "cd4_sample_id",
         "type": "edit_text",
         "hint": "CD4 Sample ID",
-        "edit_type": "number",
         "openmrs_entity_id": "cd4_sample_id",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",

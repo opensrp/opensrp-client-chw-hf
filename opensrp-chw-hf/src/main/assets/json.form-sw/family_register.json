@@ -340,7 +340,7 @@
         },
         "v_max": {
           "value": "120",
-          "err":  "Umri unapaswa kuwa sawa au chini 120"
+          "err": "Umri unapaswa kuwa sawa au chini 120"
         },
         "relevance": {
           "rules-engine": {

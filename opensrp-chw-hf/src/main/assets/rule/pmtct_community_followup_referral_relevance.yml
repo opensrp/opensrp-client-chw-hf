@@ -2,6 +2,6 @@
 name: "step1_last_client_visit_date"
 description: "last client visit date relevance"
 priority: 1
-condition: "(!step1_reasons_for_issuing_community_referral.isEmpty() && step1_reasons_for_issuing_community_referral != 'Other' && step1_reasons_for_issuing_community_referral != 'mother_champion_services')"
+condition: "(!step1_reasons_for_issuing_community_referral.equals('') && step1_reasons_for_issuing_community_referral != 'Other' && step1_reasons_for_issuing_community_referral != 'mother_champion_services')"
 actions:
   - "isRelevant = true"

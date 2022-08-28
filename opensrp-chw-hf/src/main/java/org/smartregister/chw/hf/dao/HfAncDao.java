@@ -390,7 +390,7 @@ public class HfAncDao extends AbstractDao {
         );
 
         List<String> res = readData(sql, dataMap);
-        return res.size() > 0;
+        return res.size() > 0 && !res.get(0).equalsIgnoreCase("null") && !res.get(0).equalsIgnoreCase("0");
     }
 
     public static String getClientCtcNumber(String baseEntityId) {

@@ -147,7 +147,14 @@
         "openmrs_entity_id": "children_alive",
         "type": "edit_text",
         "edit_type": "number",
-        "hint": "Number of children alive"
+        "hint": "Number of children alive",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_registration_obstetric_history_calculation.yml"
+            }
+          }
+        }
       },
       {
         "key": "last_menstrual_period",

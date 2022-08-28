@@ -1,1 +1,343 @@
-{"validate_on_submit":true,"show_errors_on_submit":false,"count":"2","encounter_type":"Malaria Confirmation","entity_id":"","relational_id":"","metadata":{"start":{"openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_data_type":"start","openmrs_entity_id":"163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"end":{"openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_data_type":"end","openmrs_entity_id":"163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"today":{"openmrs_entity_parent":"","openmrs_entity":"encounter","openmrs_entity_id":"encounter_date"},"deviceid":{"openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_data_type":"deviceid","openmrs_entity_id":"163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"subscriberid":{"openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_data_type":"subscriberid","openmrs_entity_id":"163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"simserial":{"openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_data_type":"simserial","openmrs_entity_id":"163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"phonenumber":{"openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_data_type":"phonenumber","openmrs_entity_id":"163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"encounter_location":"","look_up":{"entity_id":"","value":""}},"step1":{"title":"Malaria Confirmation","next":"step2","fields":[{"key":"date_chw_malaria_test","openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_entity_id":"162869AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","type":"hidden","calculation":{"rules-engine":{"ex-rules":{"rules-file":"malaria_confirmation_calculation.yml"}}}},{"key":"fever_malaria_chw","openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_entity_id":"fever_malaria_chw","type":"spinner","hint":"Je, mtu huyu ana homa au alipima malaria katika siku 14 zilizopita kwenye kituo cha afya?","values":["Ana homa","Alipimwa na kuwa na malaria katika siku 14 zilizopita katika kituo cha afya"],"v_required":{"value":"true","err":"Tafadhali chagua chaguo moja"},"openmrs_choice_ids":{"Has a fever":"has_fever_conceptID","Tested positive for malaria in the last 14 days at a health facility":"positive_for_malaria_conceptID"}},{"key":"fever_duration","openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_entity_id":"1731AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","type":"spinner","hint":"Muda wa homa?","values":["Chini ya masaa 24","Zaidi ya masaa 24"],"openmrs_choice_ids":{"Less than 24 hrs":"164449AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","More than 24 hrs":"164449AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"v_required":{"value":"true","err":"Tafadhali chagua chaguo moja"},"relevance":{"rules-engine":{"ex-rules":{"rules-file":"malaria_confirmation_relevance.yml"}}}},{"key":"malaria_results","openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_entity_id":"1643AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","type":"spinner","hint":"Matokeo ya mRDT","values":["Chanya","Hasi","Haijafanyika"],"openmrs_choice_ids":{"Positive":"703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","Negative":"664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","Not done":"160414AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"v_required":{"value":"true","err":"Tafadhali chagua chaguo moja"},"relevance":{"rules-engine":{"ex-rules":{"rules-file":"malaria_confirmation_relevance.yml"}}}},{"key":"date_hf_malaria_test","openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_entity_id":"date_hf_malaria_test","type":"date_picker","hint":"Tarehe ya kufanyika kwa kipimo cha malaria katika kituo cha afya","expanded":false,"max_date":"today","v_required":{"value":"true","err":"Tafahdali ingiza tarehe ya kufanyika kwa kipimo cha malaria katika kituo cha afya"},"relevance":{"rules-engine":{"ex-rules":{"rules-file":"malaria_confirmation_relevance.yml"}}}},{"key":"malaria_test_date","openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_entity_id":"163724AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","type":"hidden","calculation":{"rules-engine":{"ex-rules":{"rules-file":"malaria_confirmation_calculation.yml"}}}},{"key":"malaria","openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_entity_id":"163725AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","type":"hidden","calculation":{"rules-engine":{"ex-rules":{"rules-file":"malaria_confirmation_calculation.yml"}}}},{"key":"malaria_treat","openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_entity_id":"malaria_treat","type":"spinner","hint":"Matibabu yaliyotolewa","values":["ALU 6","ALU 12","ALU 18","ALU 24","Hayakutolewa","Matibabu mengine"],"openmrs_choice_ids":{"ALU 6":"1072AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","ALU 12":"1072AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","ALU 18":"1072AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","ALU 24":"1072AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","Not given":"164369AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","Other treatment":"5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"v_required":{"value":"true","err":"Tafadhali chagua chaguo moja"},"relevance":{"rules-engine":{"ex-rules":{"rules-file":"malaria_confirmation_relevance.yml"}}}}]},"step2":{"title":"Malaria Prevention","fields":[{"key":"fam_llin","openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_entity_id":"fam_llin","type":"spinner","hint":"Je, una chandarua chenye dawa inayodumu kwa muda mrefu (LLIN)?","values":["Ndiyo","Hapana"],"openmrs_choice_ids":{"Yes":"1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","No":"1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"v_required":{"value":"true","err":"Tafadhali chagua chaguzi moja"}},{"key":"llin_2days","openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_entity_id":"llin_2days","type":"spinner","hint":"Je, ulilala chini ya chandarua (LLIN) jana usiku?","values":["Ndiyo","Hapana"],"openmrs_choice_ids":{"Yes":"1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","No":"1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"v_required":{"value":"true","err":"Tafadhali chagua chaguzi moja"},"relevance":{"rules-engine":{"ex-rules":{"rules-file":"malaria_confirmation_relevance.yml"}}}},{"key":"llin_condition","openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_entity_id":"llin_condition","type":"spinner","hint":"Hali ya chandarua (LLIN)","values":["Nzuri","Mbaya"],"openmrs_choice_ids":{"Okay":"1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","Bad":"1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"v_required":{"value":"true","err":"Tafadhali chagua chaguzi moja"},"relevance":{"rules-engine":{"ex-rules":{"rules-file":"malaria_confirmation_relevance.yml"}}}},{"key":"malaria_edu_chw","openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_entity_id":"1379AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","type":"spinner","hint":"Mada za malaria zilizojadiliwa","values":["Muhtasari wa ugonjwa wa malaria","Kuzuia Malaria","Malaria isiyo ngumu","Ml\\alaria kali","Malaria wakati wa ujauzito","Hakuna"],"openmrs_choice_ids":{"Overview on malaria":"116128AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","Malaria prevention":"164884AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","Uncomplicated malaria":"159950AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","Severe malaria":"160155AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","Malaria in pregnancy":"135361AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","None":"164369AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"v_required":{"value":"true","err":"Tafadhali chagua chaguzi moja"}}]}}
+{
+  "validate_on_submit": true,
+  "show_errors_on_submit": false,
+  "count": "2",
+  "encounter_type": "Malaria Confirmation",
+  "entity_id": "",
+  "relational_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "step1": {
+    "title": "Malaria Confirmation",
+    "next": "step2",
+    "fields": [
+      {
+        "key": "date_chw_malaria_test",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "162869AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "malaria_confirmation_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "fever_malaria_chw",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "fever_malaria_chw",
+        "type": "spinner",
+        "hint": "Je, mtu huyu ana homa au alipima malaria katika siku 14 zilizopita kwenye kituo cha afya?",
+        "values": [
+          "Ana homa",
+          "Alipimwa na kuwa na malaria katika siku 14 zilizopita katika kituo cha afya"
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua chaguo moja"
+        },
+        "openmrs_choice_ids": {
+          "Has a fever": "has_fever_conceptID",
+          "Tested positive for malaria in the last 14 days at a health facility": "positive_for_malaria_conceptID"
+        }
+      },
+      {
+        "key": "fever_duration",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "1731AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "type": "spinner",
+        "hint": "Muda wa homa?",
+        "values": [
+          "Chini ya masaa 24",
+          "Zaidi ya masaa 24"
+        ],
+        "openmrs_choice_ids": {
+          "Less than 24 hrs": "164449AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "More than 24 hrs": "164449AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua chaguo moja"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "malaria_confirmation_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "malaria_results",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "1643AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "type": "spinner",
+        "hint": "Matokeo ya mRDT",
+        "values": [
+          "Chanya",
+          "Hasi",
+          "Haijafanyika"
+        ],
+        "openmrs_choice_ids": {
+          "Positive": "703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "Negative": "664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "Not done": "160414AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua chaguo moja"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "malaria_confirmation_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "date_hf_malaria_test",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "date_hf_malaria_test",
+        "type": "date_picker",
+        "hint": "Tarehe ya kufanyika kwa kipimo cha malaria katika kituo cha afya",
+        "expanded": false,
+        "max_date": "today",
+        "v_required": {
+          "value": "true",
+          "err": "Tafahdali ingiza tarehe ya kufanyika kwa kipimo cha malaria katika kituo cha afya"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "malaria_confirmation_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "malaria_test_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "163724AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "malaria_confirmation_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "malaria",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "163725AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "malaria_confirmation_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "malaria_treat",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "malaria_treat",
+        "type": "spinner",
+        "hint": "Matibabu yaliyotolewa",
+        "values": [
+          "ALU 6",
+          "ALU 12",
+          "ALU 18",
+          "ALU 24",
+          "Hayakutolewa",
+          "Matibabu mengine"
+        ],
+        "openmrs_choice_ids": {
+          "ALU 6": "1072AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "ALU 12": "1072AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "ALU 18": "1072AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "ALU 24": "1072AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "Not given": "164369AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "Other treatment": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua chaguo moja"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "malaria_confirmation_relevance.yml"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "step2": {
+    "title": "Malaria Prevention",
+    "fields": [
+      {
+        "key": "fam_llin",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "fam_llin",
+        "type": "spinner",
+        "hint": "Je, una chandarua chenye dawa inayodumu kwa muda mrefu (LLIN)?",
+        "values": [
+          "Ndiyo",
+          "Hapana"
+        ],
+        "openmrs_choice_ids": {
+          "Yes": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "No": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua chaguzi moja"
+        }
+      },
+      {
+        "key": "llin_2days",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "llin_2days",
+        "type": "spinner",
+        "hint": "Je, ulilala chini ya chandarua (LLIN) jana usiku?",
+        "values": [
+          "Ndiyo",
+          "Hapana"
+        ],
+        "openmrs_choice_ids": {
+          "Yes": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "No": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua chaguzi moja"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "malaria_confirmation_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "llin_condition",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "llin_condition",
+        "type": "spinner",
+        "hint": "Hali ya chandarua (LLIN)",
+        "values": [
+          "Nzuri",
+          "Mbaya"
+        ],
+        "openmrs_choice_ids": {
+          "Okay": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "Bad": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua chaguzi moja"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "malaria_confirmation_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "malaria_edu_chw",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "1379AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "type": "spinner",
+        "hint": "Mada za malaria zilizojadiliwa",
+        "values": [
+          "Muhtasari wa ugonjwa wa malaria",
+          "Kuzuia Malaria",
+          "Malaria isiyo ngumu",
+          "Ml\\alaria kali",
+          "Malaria wakati wa ujauzito",
+          "Hakuna"
+        ],
+        "openmrs_choice_ids": {
+          "Overview on malaria": "116128AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "Malaria prevention": "164884AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "Uncomplicated malaria": "159950AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "Severe malaria": "160155AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "Malaria in pregnancy": "135361AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "None": "164369AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua chaguzi moja"
+        }
+      }
+    ]
+  }
+}

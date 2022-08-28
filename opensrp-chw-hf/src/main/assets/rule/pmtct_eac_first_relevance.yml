@@ -2,13 +2,13 @@
 name: step1_eac_day_2
 description: EAC day 2 date relevance
 priority: 1
-condition: "!step1_eac_day_1.isEmpty() && (helper.getDifferenceDays(step1_eac_day_1)-helper.getDifferenceDays(helper.getDateToday())) >= 1"
+condition: "!step1_eac_day_1.equals('') && (helper.getDifferenceDays(step1_eac_day_1)-helper.getDifferenceDays(helper.getDateToday())) >= 1"
 actions:
   - "isRelevant = true"
 ---
 name: step1_eac_day_3
 description: EAC day 3 date relevance
 priority: 1
-condition: "!step1_eac_day_2.isEmpty() && (helper.getDifferenceDays(step1_eac_day_2)-helper.getDifferenceDays(helper.getDateToday())) >= 1"
+condition: "!step1_eac_day_2.equals('') && (helper.getDifferenceDays(step1_eac_day_2)-helper.getDifferenceDays(helper.getDateToday())) >= 1"
 actions:
   - "isRelevant = true"
