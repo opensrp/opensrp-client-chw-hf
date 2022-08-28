@@ -364,6 +364,13 @@
         "v_numeric": {
           "value": "true",
           "err": "Tafadhali jaza idadi ya watoto walio hai"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_member_transfer_in_registration_relevance.yml"
+            }
+          }
         }
       },
       {
