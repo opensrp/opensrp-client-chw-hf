@@ -102,7 +102,8 @@
         "key": "gest_age",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "gest_age_consultation",
+        "openmrs_entity_id": "gest_age",
+
         "type": "hidden",
         "calculation": {
           "rules-engine": {
@@ -696,6 +697,7 @@
       },
       {
         "key": "consultation_completion_status",
+
         "type": "hidden",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "consultation_completion_status",

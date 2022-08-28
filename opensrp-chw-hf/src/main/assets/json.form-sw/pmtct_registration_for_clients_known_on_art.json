@@ -78,6 +78,7 @@
       },
       {
         "key": "known_on_art",
+
         "type": "hidden",
         "openmrs_entity_id": "known_on_art",
         "openmrs_entity": "concept",
@@ -132,6 +133,7 @@
       },
       {
         "key": "test_results",
+
         "type": "hidden",
         "openmrs_entity_id": "test_results",
         "openmrs_entity": "concept",
@@ -140,6 +142,7 @@
       },
       {
         "key": "ctc_number",
+
         "type": "hidden",
         "openmrs_entity_id": "ctc_number",
         "openmrs_entity": "concept",

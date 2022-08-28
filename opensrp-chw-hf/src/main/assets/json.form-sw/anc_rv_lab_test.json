@@ -1179,6 +1179,7 @@
       },
       {
         "key": "hiv_test_at_32",
+
         "type": "hidden",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "hiv_test_at_32",
@@ -1203,6 +1204,7 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "date_anc_hiv_test",
+
         "type": "hidden",
         "calculation": {
           "rules-engine": {
@@ -1221,6 +1223,7 @@
       },
       {
         "key": "lab_test_completion_status",
+
         "type": "hidden",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "lab_test_completion_status",

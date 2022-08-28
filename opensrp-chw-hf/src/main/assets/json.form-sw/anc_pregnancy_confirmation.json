@@ -156,6 +156,7 @@
       },
       {
         "key": "task_id",
+
         "type": "hidden",
         "openmrs_entity_id": "task_id",
         "openmrs_entity": "concept",
@@ -423,6 +424,7 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "last_menstrual_period",
+
         "type": "hidden",
         "calculation": {
           "rules-engine": {
@@ -483,6 +485,7 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "gest_age",
+
         "type": "hidden",
         "calculation": {
           "rules-engine": {
@@ -530,6 +533,7 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "pregnancy_confirmation_status",
+
         "type": "hidden",
         "calculation": {
           "rules-engine": {
@@ -544,6 +548,7 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "pregnancy_confirmation_date",
+
         "type": "hidden",
         "calculation": {
           "rules-engine": {

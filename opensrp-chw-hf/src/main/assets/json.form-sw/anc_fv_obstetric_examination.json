@@ -50,6 +50,7 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "gest_age",
+
         "type": "hidden",
         "calculation": {
           "rules-engine": {
@@ -719,6 +720,7 @@
       },
       {
         "key": "obstetric_examination_completion_status",
+
         "type": "hidden",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "obstetric_examination_completion_status",

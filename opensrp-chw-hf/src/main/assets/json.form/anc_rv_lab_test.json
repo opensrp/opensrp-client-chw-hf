@@ -108,9 +108,10 @@
         "openmrs_entity_parent": "",
         "toaster_type": "problem",
         "relevance": {
-          "step1:hb_level": {
-            "type": "numeric",
-            "ex": "lessThanEqualTo(.,\"8.5\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_lab_test_relevance.yml"
+            }
           }
         }
       },
@@ -1208,13 +1209,6 @@
           "rules-engine": {
             "ex-rules": {
               "rules-file": "anc_fv_baseline_investigation_calculation.yml"
-            }
-          }
-        },
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "anc_rv_lab_test_relevance.yml"
             }
           }
         }

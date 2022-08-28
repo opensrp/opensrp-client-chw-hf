@@ -56,6 +56,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "anc_danger_signs_visitdate",
         "openmrs_entity_parent": "",
+
         "type": "hidden",
         "calculation": {
           "rules-engine": {

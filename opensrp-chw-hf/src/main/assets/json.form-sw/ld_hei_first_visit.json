@@ -219,6 +219,7 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "prophylaxis_arv_for_high_risk_given",
+
         "type": "hidden",
         "value": "true"
       },
@@ -350,6 +351,7 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "prophylaxis_arv_for_high_and_low_risk_given",
+
         "type": "hidden",
         "value": "true"
       },
@@ -408,6 +410,7 @@
       },
       {
         "key": "followup_status",
+
         "type": "hidden",
         "openmrs_entity_id": "followup_status",
         "openmrs_entity": "concept",
@@ -416,6 +419,7 @@
       },
       {
         "key": "weight",
+
         "type": "hidden",
         "openmrs_entity_id": "weight",
         "openmrs_entity": "concept",
@@ -423,6 +427,7 @@
       },
       {
         "key": "next_facility_visit_date",
+
         "type": "hidden",
         "openmrs_entity_id": "next_facility_visit_date",
         "openmrs_entity": "concept",
@@ -430,6 +435,7 @@
       },
       {
         "key": "type_of_hiv_test",
+
         "type": "hidden",
         "openmrs_entity_id": "type_of_hiv_test",
         "openmrs_entity": "concept",
@@ -437,6 +443,7 @@
       },
       {
         "key": "test_at_age",
+
         "type": "hidden",
         "openmrs_entity_id": "test_at_age",
         "openmrs_entity": "concept",
@@ -444,6 +451,7 @@
       },
       {
         "key": "actual_age",
+
         "type": "hidden",
         "openmrs_entity_id": "actual_age",
         "openmrs_entity": "concept",

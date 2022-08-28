@@ -1606,6 +1606,7 @@
       },
       {
         "key": "hiv_status",
+
         "type": "hidden",
         "openmrs_entity_id": "hiv_status",
         "openmrs_entity": "concept",

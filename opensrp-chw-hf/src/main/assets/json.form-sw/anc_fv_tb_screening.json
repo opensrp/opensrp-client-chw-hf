@@ -223,6 +223,7 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "tb_status",
+
         "type": "hidden",
         "calculation": {
           "rules-engine": {
@@ -234,6 +235,7 @@
       },
       {
         "key": "tb_screening_completion_status",
+
         "type": "hidden",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "tb_screening_completion_status",

@@ -84,9 +84,9 @@
         ],
         "openmrs_choice_ids": {
           "medical_officer": "medical_officer",
-          "assistant_medical_officer": "assistant_medical_officer" ,
-          "clinical_officer": "clinical_officer" ,
-          "assistant_clinical_officer":  "assistant_clinical_officer",
+          "assistant_medical_officer": "assistant_medical_officer",
+          "clinical_officer": "clinical_officer",
+          "assistant_clinical_officer": "assistant_clinical_officer",
           "nurse": "nurse"
         },
         "v_required": {

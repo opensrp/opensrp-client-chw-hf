@@ -23,20 +23,20 @@ actions:
 name: step1_prompt_for_tpt_eligibility
 description: prompt_for_tpt_eligibility relevance
 priority: 1
-condition: "!step1_has_been_provided_with_tpt_before.contains('yes') && !step1_has_been_provided_with_tpt_before.isEmpty()"
+condition: "!step1_has_been_provided_with_tpt_before.contains('yes') && !step1_has_been_provided_with_tpt_before.equals('')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_prompt_for_tpt_ineligibility
 description: prompt_for_tpt_ineligibility relevance
 priority: 1
-condition: "step1_has_been_provided_with_tpt_before.contains('yes') && !step1_has_been_provided_with_tpt_before.isEmpty()"
+condition: "step1_has_been_provided_with_tpt_before.contains('yes') && !step1_has_been_provided_with_tpt_before.equals('')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_is_client_provided_with_tpt
 description: is_client_provided_with_tpt relevance
 priority: 1
-condition: "(step1_has_been_provided_with_tpt_before.contains('no') && !step1_has_been_provided_with_tpt_before.isEmpty() && !global_is_provided_with_tpt_before) || step1_completed_tpt.contains('no')"
+condition: "(step1_has_been_provided_with_tpt_before.contains('no') && !step1_has_been_provided_with_tpt_before.equals('') && !global_is_provided_with_tpt_before) || step1_completed_tpt.contains('no')"
 actions:
   - "isRelevant = true"

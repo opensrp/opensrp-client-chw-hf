@@ -182,6 +182,7 @@
       },
       {
         "key": "malaria_preventive_therapy",
+
         "type": "hidden",
         "openmrs_entity_id": "malaria_preventive_therapy",
         "openmrs_entity": "concept",
@@ -361,6 +362,7 @@
       },
       {
         "key": "malaria_investigation_completion_status",
+
         "type": "hidden",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "malaria_investigation_completion_status",

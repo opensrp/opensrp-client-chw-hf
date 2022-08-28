@@ -155,6 +155,7 @@
       },
       {
         "key": "type_of_hiv_test",
+
         "type": "hidden",
         "openmrs_entity_id": "type_of_hiv_test",
         "openmrs_entity": "concept",
@@ -163,6 +164,7 @@
       },
       {
         "key": "test_at_age",
+
         "type": "hidden",
         "openmrs_entity_id": "test_at_age",
         "openmrs_entity": "concept",
@@ -170,6 +172,7 @@
       },
       {
         "key": "actual_age",
+
         "type": "hidden",
         "openmrs_entity_id": "actual_age",
         "openmrs_entity": "concept",

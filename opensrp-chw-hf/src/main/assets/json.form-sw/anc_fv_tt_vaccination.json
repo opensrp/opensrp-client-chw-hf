@@ -134,6 +134,7 @@
       },
       {
         "key": "tt_vaccination_completion_status",
+
         "type": "hidden",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "tt_vaccination_completion_status",

@@ -16,7 +16,7 @@ actions:
 name: step1_prompt_for_fetal_distress
 description: prompt for fetal distress
 priority: 1
-condition: "step1_fetal_heart_rate > 160 || step1_fetal_heart_rate < 120"
+condition: "!step1_fetal_heart_rate.equals('') && (step1_fetal_heart_rate > 160 || step1_fetal_heart_rate < 120)"
 actions:
   - "isRelevant = true"
 ---
@@ -44,14 +44,14 @@ actions:
 name: step1_prompt_for_management_of_hypertension
 description: prompt_for_management_of_hypertension
 priority: 1
-condition: "step1_systolic >= 140 || step1_diastolic >= 90"
+condition: "(!step1_systolic.equals('') && step1_systolic >= 140) || (!step1_diastolic.equals('') && step1_diastolic >= 90)"
 actions:
   - "isRelevant = true"
 ---
 name: step1_prompt_for_management_of_hypotension
 description: prompt_for_management_of_hypotension
 priority: 1
-condition: "step1_systolic < 90 || step1_diastolic < 60"
+condition: "(!step1_systolic.equals('') && step1_systolic < 90) || (!step1_diastolic.equals('') && step1_diastolic < 60)"
 actions:
   - "isRelevant = true"
 ---

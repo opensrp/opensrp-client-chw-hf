@@ -604,6 +604,7 @@
       },
       {
         "key": "partner_hiv_test_at_32",
+
         "type": "hidden",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "partner_hiv_test_at_32",
@@ -618,6 +619,7 @@
       },
       {
         "key": "partner_hiv_test_number",
+
         "type": "hidden",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "partner_hiv_test_number",
@@ -625,6 +627,7 @@
       },
       {
         "key": "gest_age",
+
         "type": "hidden",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "gest_age",

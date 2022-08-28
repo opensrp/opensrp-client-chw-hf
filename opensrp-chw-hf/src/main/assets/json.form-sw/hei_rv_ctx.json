@@ -173,6 +173,7 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "followup_visit_date",
+
         "type": "hidden",
         "calculation": {
           "rules-engine": {

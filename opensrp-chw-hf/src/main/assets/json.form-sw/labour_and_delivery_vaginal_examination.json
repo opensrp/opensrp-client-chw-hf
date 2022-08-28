@@ -70,6 +70,7 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "labour_onset_time",
+
         "type": "hidden",
         "calculation": {
           "rules-engine": {
@@ -494,6 +495,7 @@
         "openmrs_entity_id": "moulding",
         "label": "Moulding",
         "text_color": "#000000",
+
         "type": "hidden",
         "calculation": {
           "rules-engine": {

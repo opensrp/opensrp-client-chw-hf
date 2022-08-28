@@ -562,6 +562,7 @@
       },
       {
         "key": "apgar_score_at_1_minute",
+
         "type": "hidden",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "",
@@ -999,6 +1000,7 @@
       },
       {
         "key": "apgar_score_at_5_minutes",
+
         "type": "hidden",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "",
@@ -1385,6 +1387,7 @@
       },
       {
         "key": "reasons_for_not_keeping_the_baby_warm_skin_to_skin",
+
         "type": "hidden",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "reasons_for_not_keeping_the_baby_warm_skin_to_skin",
@@ -2256,6 +2259,7 @@
       },
       {
         "key": "type_of_hiv_test",
+
         "type": "hidden",
         "openmrs_entity_id": "type_of_hiv_test",
         "openmrs_entity": "concept",
@@ -2273,6 +2277,7 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "prophylaxis_arv_for_high_risk_given",
+
         "type": "hidden",
         "calculation": {
           "rules-engine": {
@@ -2287,6 +2292,7 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "prophylaxis_arv_for_high_and_low_risk_given",
+
         "type": "hidden",
         "calculation": {
           "rules-engine": {
@@ -2301,6 +2307,7 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "visit_number",
+
         "type": "hidden",
         "calculation": {
           "rules-engine": {
@@ -2315,6 +2322,7 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "next_facility_visit_date",
+
         "type": "hidden",
         "calculation": {
           "rules-engine": {
@@ -2329,6 +2337,7 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "followup_visit_date",
+
         "type": "hidden",
         "calculation": {
           "rules-engine": {
@@ -2343,6 +2352,7 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "newborn_stage_four_module_status",
+
         "type": "hidden",
         "value": "PENDING"
       }

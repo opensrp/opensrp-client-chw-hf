@@ -280,6 +280,7 @@
       },
       {
         "key": "partner_registered",
+
         "type": "hidden",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "partner_registered",

@@ -313,7 +313,6 @@
         "openmrs_entity_id": "reason_for_not_providing_llin",
         "type": "spinner",
         "hint": "Reason as to why the client was not provided with LLINs",
-
         "values": [
           "Out of stock",
           "The client refused",

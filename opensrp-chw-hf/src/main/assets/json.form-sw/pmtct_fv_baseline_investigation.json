@@ -50,6 +50,7 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "liver_function_test_conducted",
+
         "type": "hidden",
         "calculation": {
           "rules-engine": {
@@ -240,6 +241,7 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "renal_function_test_conducted",
+
         "type": "hidden",
         "calculation": {
           "rules-engine": {

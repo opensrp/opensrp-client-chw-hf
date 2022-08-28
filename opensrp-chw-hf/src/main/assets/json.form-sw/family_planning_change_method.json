@@ -57,6 +57,7 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "fp_change_or_stop_date",
+
         "type": "hidden",
         "calculation": {
           "rules-engine": {
@@ -406,6 +407,7 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "iucd_removal",
+
         "type": "hidden",
         "calculation": {
           "rules-engine": {
@@ -440,6 +442,7 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "implanon_nxt_removal",
+
         "type": "hidden",
         "calculation": {
           "rules-engine": {
@@ -474,6 +477,7 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "jadelle_removal",
+
         "type": "hidden",
         "calculation": {
           "rules-engine": {

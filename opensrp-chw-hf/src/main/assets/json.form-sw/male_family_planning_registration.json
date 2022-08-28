@@ -57,6 +57,7 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "fp_reg_date",
+
         "type": "hidden",
         "calculation": {
           "rules-engine": {
@@ -161,6 +162,7 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "ecp",
+
         "type": "hidden",
         "calculation": {
           "rules-engine": {
@@ -203,8 +205,7 @@
         "openmrs_entity_parent": "190AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "fp_start_condom",
-        "type": "edit_text",
-        "hidden": true,
+        "type": "hidden",
         "calculation": {
           "rules-engine": {
             "ex-rules": {

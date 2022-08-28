@@ -210,6 +210,7 @@
       },
       {
         "key": "gravida",
+
         "type": "hidden",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "gravida",
@@ -224,6 +225,7 @@
       },
       {
         "key": "parity",
+
         "type": "hidden",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "parity",
@@ -238,6 +240,7 @@
       },
       {
         "key": "no_surv_children",
+
         "type": "hidden",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "no_surv_children",
@@ -414,6 +417,7 @@
       },
       {
         "key": "known_on_art",
+
         "type": "hidden",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "known_on_art",
@@ -428,6 +432,7 @@
       },
       {
         "key": "visit_number",
+
         "type": "hidden",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "visit_number",
@@ -436,6 +441,7 @@
       },
       {
         "key": "medical_surgical_history_completion_status",
+
         "type": "hidden",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "medical_surgical_history_completion_status",

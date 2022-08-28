@@ -168,6 +168,7 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "labour_onset_timestamp",
+
         "type": "hidden",
         "calculation": {
           "rules-engine": {
@@ -182,6 +183,7 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "membrane_raptured_date_timestamp",
+
         "type": "hidden",
         "calculation": {
           "rules-engine": {
