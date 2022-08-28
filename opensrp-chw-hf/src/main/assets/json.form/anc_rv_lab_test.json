@@ -1187,7 +1187,7 @@
         "calculation": {
           "rules-engine": {
             "ex-rules": {
-              "rules-file": "anc_fv_baseline_investigation_calculation.yml"
+              "rules-file": "anc_rv_lab_test_calculation.yml"
             }
           }
         }
@@ -1208,7 +1208,7 @@
         "calculation": {
           "rules-engine": {
             "ex-rules": {
-              "rules-file": "anc_fv_baseline_investigation_calculation.yml"
+              "rules-file": "anc_rv_lab_test_calculation.yml"
             }
           }
         }
