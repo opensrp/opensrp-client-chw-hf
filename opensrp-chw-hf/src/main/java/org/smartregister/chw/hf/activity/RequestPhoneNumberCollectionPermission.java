@@ -34,8 +34,11 @@ public class RequestPhoneNumberCollectionPermission extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (ContextCompat.checkSelfPermission(RequestPhoneNumberCollectionPermission.this,
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && ContextCompat.checkSelfPermission(RequestPhoneNumberCollectionPermission.this,
                 Manifest.permission.READ_PHONE_NUMBERS) == PackageManager.PERMISSION_GRANTED) {
+            startLoginActivity();
+        }else if (ContextCompat.checkSelfPermission(RequestPhoneNumberCollectionPermission.this,
+                Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
             startLoginActivity();
         }
         setContentView(R.layout.activity_request_call_phone_permission);
@@ -48,6 +51,8 @@ public class RequestPhoneNumberCollectionPermission extends FragmentActivity {
     public void onClickGrant(View view) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             checkPermission(Manifest.permission.READ_PHONE_NUMBERS, READ_PHONE_NUMBERS_PERMISSION_CODE);
+        } else {
+            checkPermission(Manifest.permission.READ_PHONE_STATE, READ_PHONE_NUMBERS_PERMISSION_CODE);
         }
     }
 
