@@ -44,6 +44,6 @@ actions:
 name: step1_no_surv_children_text
 description: no_surv_children_read_only relevant if is first pregnancy
 priority: 1
-condition: "!step1_medical_surgical_history.contains('first_pregnancy_at_or_above_thirty_five')"
+condition: "!step1_medical_surgical_history.contains('first_pregnancy_at_or_above_thirty_five') && !step1_parity.equals('') && step1_parity > 0"
 actions:
   - "isRelevant = true"
