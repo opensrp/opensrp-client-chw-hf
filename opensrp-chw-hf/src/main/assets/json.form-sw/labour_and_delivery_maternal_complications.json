@@ -148,7 +148,9 @@
           "step1:maternal_complications_before_delivery": {
             "ex-checkbox": [
               {
-                "or": ["chk_other"]
+                "or": [
+                  "chk_other"
+                ]
               }
             ]
           }
@@ -245,7 +247,9 @@
           "step1:maternal_complications_during_and_after_delivery": {
             "ex-checkbox": [
               {
-                "or": ["chk_other"]
+                "or": [
+                  "chk_other"
+                ]
               }
             ]
           }
@@ -256,7 +260,6 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "maternal_complications_module_status",
-
         "type": "hidden",
         "value": "PENDING"
       }

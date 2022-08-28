@@ -131,7 +131,6 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "person",
         "openmrs_entity_id": "last_name",
-
         "type": "hidden",
         "hint": "Surname as Family name"
       },

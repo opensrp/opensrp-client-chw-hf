@@ -291,7 +291,6 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "",
-
         "type": "hidden",
         "calculation": {
           "rules-engine": {
@@ -341,7 +340,7 @@
         },
         "v_max": {
           "value": "120",
-          "err":  "Umri unapaswa kuwa sawa au chini 120"
+          "err": "Umri unapaswa kuwa sawa au chini 120"
         },
         "relevance": {
           "rules-engine": {
@@ -686,7 +685,6 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "",
-
         "type": "hidden",
         "calculation": {
           "rules-engine": {
@@ -701,7 +699,6 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "",
-
         "type": "hidden",
         "values": ""
       },

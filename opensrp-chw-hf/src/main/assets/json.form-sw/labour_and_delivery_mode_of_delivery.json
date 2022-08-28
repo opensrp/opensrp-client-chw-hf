@@ -99,7 +99,6 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "labour_stage",
-
         "type": "hidden",
         "value": 3
       },

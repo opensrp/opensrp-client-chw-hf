@@ -326,7 +326,6 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "entry_point",
-
         "type": "hidden",
         "value": "PNC"
       }
@@ -347,7 +346,6 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "person",
         "openmrs_entity_id": "last_name",
-
         "type": "hidden",
         "calculation": {
           "rules-engine": {
@@ -362,7 +360,6 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "person",
         "openmrs_entity_id": "first_name",
-
         "type": "hidden",
         "calculation": {
           "rules-engine": {
@@ -377,7 +374,6 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "person",
         "openmrs_entity_id": "middle_name",
-
         "type": "hidden",
         "calculation": {
           "rules-engine": {
@@ -392,7 +388,6 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "person",
         "openmrs_entity_id": "birthdate",
-
         "type": "hidden",
         "calculation": {
           "rules-engine": {
@@ -407,7 +402,6 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "person",
         "openmrs_entity_id": "gender",
-
         "type": "hidden",
         "calculation": {
           "rules-engine": {
@@ -419,7 +413,6 @@
       },
       {
         "key": "risk_category",
-
         "type": "hidden",
         "openmrs_entity_id": "risk_category",
         "openmrs_entity": "concept",
@@ -428,7 +421,6 @@
       },
       {
         "key": "delivery_date",
-
         "type": "hidden",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",

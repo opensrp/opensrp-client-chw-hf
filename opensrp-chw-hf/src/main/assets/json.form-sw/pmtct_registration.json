@@ -284,7 +284,6 @@
       },
       {
         "key": "next_facility_visit_date",
-
         "type": "hidden",
         "openmrs_entity_id": "next_facility_visit_date",
         "openmrs_entity": "concept",
@@ -305,7 +304,6 @@
       },
       {
         "key": "followup_status",
-
         "type": "hidden",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "followup_status",

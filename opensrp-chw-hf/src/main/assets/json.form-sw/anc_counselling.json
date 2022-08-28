@@ -131,7 +131,6 @@
       },
       {
         "key": "counselling_completion_status",
-
         "type": "hidden",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "counselling_completion_status",

@@ -1,1 +1,200 @@
-{"count":"1","encounter_type":"PNC HIV Test Results","entity_id":"","global":{},"metadata":{"start":{"openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_data_type":"start","openmrs_entity_id":"163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"end":{"openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_data_type":"end","openmrs_entity_id":"163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"today":{"openmrs_entity_parent":"","openmrs_entity":"encounter","openmrs_entity_id":"encounter_date"},"deviceid":{"openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_data_type":"deviceid","openmrs_entity_id":"163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"subscriberid":{"openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_data_type":"subscriberid","openmrs_entity_id":"163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"simserial":{"openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_data_type":"simserial","openmrs_entity_id":"163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"phonenumber":{"openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_data_type":"phonenumber","openmrs_entity_id":"163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"encounter_location":""},"step1":{"title":"HIV Test Results","fields":[{"key":"hiv_test_result","openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_entity_id":"hiv_status","type":"native_radio","label":"Chagua majibu ya Kipimo cha VVU","label_text_style":"normal","text_color":"#C0C0C0","options":[{"key":"positive","text":"Chanya","value":false,"openmrs_entity":"concept","openmrs_entity_id":"positive"},{"key":"negative","text":"Hasi","value":false,"openmrs_entity":"concept","openmrs_entity_id":"negative"},{"key":"test_not_conducted","text":"Kipimo hakijafanyika","openmrs_entity":"concept","openmrs_entity_id":"test_not_conducted"}],"v_required":{"value":"true","err":"Tafadhali chagua mojawapo"}},{"key":"reason_for_not_conducting_hiv_test","openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_entity_id":"reason_for_not_conducting_hiv_test","type":"spinner","hint":"Sababu za kutofanyika kwa kipimo cha VVU","values":["Tumeishiwa na Vitendanishi","Mteja alikuwa katika hali ya Udharula","Mteja amekataa kupimwa","bado tunaendelea kumpa ushauri mteja","Nyingine bainisha"],"keys":["test_kits_out_of_stock","client_was_in_an_emergency_situation","client_refused_to_be_tested","still_counselling_the_client","other"],"openmrs_choice_ids":{"test_kits_out_of_stock":"test_kits_out_of_stock","client_was_in_an_emergency_situation":"client_was_in_an_emergency_situation","client_refused_to_be_tested":"client_refused_to_be_tested","still_counselling_the_client":"still_counselling_the_client","Other":"other"},"v_required":{"value":"true","err":"Tafadhali chagua sababu"},"relevance":{"step1:hiv_test_result":{"type":"string","ex":"equalTo(., \"test_not_conducted\")"}}},{"key":"other_reason_for_not_conducting_hiv_test","openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_entity_id":"other_reason_for_not_conducting_hiv_test","type":"edit_text","hint":"Bainisha sababu nyingine za kutokufanya kipimo cha VVU","edit_type":"name","v_required":{"value":"true","err":"Tafadhali weka sababu"},"relevance":{"step1:reason_for_not_conducting_hiv_test":{"type":"string","ex":"equalTo(., \"other\")"}}},{"key":"hiv_test_result_date","openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_entity_id":"hiv_test_result_date","type":"date_picker","hint":"Tarehe ya kupokea majibu","expanded":false,"min_date":"today-3y","max_date":"today","v_required":{"value":"true","err":"Tafadhali chagua Tarehe ya kupokea majibu"},"relevance":{"step1:hiv_test_result":{"type":"string","ex":"notEqualTo(., \"test_not_conducted\")"}}},{"key":"register_pmtct","type":"toaster_notes","text":"Sajili Mteja huyu kwa huduma za PMTCT na ufuatiliaji","openmrs_entity_id":"register_pmtct","openmrs_entity":"concept","openmrs_entity_parent":"","toaster_type":"problem","relevance":{"step1:hiv_test_result":{"type":"string","ex":"equalTo(.,\"positive\")"}}},{"key":"prescribe_arv","type":"toaster_notes","text":"Mpatie mteja huyu ARV kwa kufuata muongozo wa Wizara ya Afya","openmrs_entity_id":"prescribe_arv","openmrs_entity":"concept","openmrs_entity_parent":"","toaster_type":"problem","relevance":{"step1:hiv_test_result":{"type":"string","ex":"equalTo(.,\"positive\")"}}}]}}
+{
+  "count": "1",
+  "encounter_type": "PNC HIV Test Results",
+  "entity_id": "",
+  "global": {},
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "step1": {
+    "title": "HIV Test Results",
+    "fields": [
+      {
+        "key": "hiv_test_result",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hiv_status",
+        "type": "native_radio",
+        "label": "Chagua majibu ya Kipimo cha VVU",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "positive",
+            "text": "Chanya",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "positive"
+          },
+          {
+            "key": "negative",
+            "text": "Hasi",
+            "value": false,
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "negative"
+          },
+          {
+            "key": "test_not_conducted",
+            "text": "Kipimo hakijafanyika",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "test_not_conducted"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua mojawapo"
+        }
+      },
+      {
+        "key": "reason_for_not_conducting_hiv_test",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_conducting_hiv_test",
+        "type": "spinner",
+        "hint": "Sababu za kutofanyika kwa kipimo cha VVU",
+        "values": [
+          "Tumeishiwa na Vitendanishi",
+          "Mteja alikuwa katika hali ya Udharula",
+          "Mteja amekataa kupimwa",
+          "bado tunaendelea kumpa ushauri mteja",
+          "Nyingine bainisha"
+        ],
+        "keys": [
+          "test_kits_out_of_stock",
+          "client_was_in_an_emergency_situation",
+          "client_refused_to_be_tested",
+          "still_counselling_the_client",
+          "other"
+        ],
+        "openmrs_choice_ids": {
+          "test_kits_out_of_stock": "test_kits_out_of_stock",
+          "client_was_in_an_emergency_situation": "client_was_in_an_emergency_situation",
+          "client_refused_to_be_tested": "client_refused_to_be_tested",
+          "still_counselling_the_client": "still_counselling_the_client",
+          "Other": "other"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua sababu"
+        },
+        "relevance": {
+          "step1:hiv_test_result": {
+            "type": "string",
+            "ex": "equalTo(., \"test_not_conducted\")"
+          }
+        }
+      },
+      {
+        "key": "other_reason_for_not_conducting_hiv_test",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reason_for_not_conducting_hiv_test",
+        "type": "edit_text",
+        "hint": "Bainisha sababu nyingine za kutokufanya kipimo cha VVU",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali weka sababu"
+        },
+        "relevance": {
+          "step1:reason_for_not_conducting_hiv_test": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
+          }
+        }
+      },
+      {
+        "key": "hiv_test_result_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hiv_test_result_date",
+        "type": "date_picker",
+        "hint": "Tarehe ya kupokea majibu",
+        "expanded": false,
+        "min_date": "today-3y",
+        "max_date": "today",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua Tarehe ya kupokea majibu"
+        },
+        "relevance": {
+          "step1:hiv_test_result": {
+            "type": "string",
+            "ex": "notEqualTo(., \"test_not_conducted\")"
+          }
+        }
+      },
+      {
+        "key": "register_pmtct",
+        "type": "toaster_notes",
+        "text": "Sajili Mteja huyu kwa huduma za PMTCT na ufuatiliaji",
+        "openmrs_entity_id": "register_pmtct",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:hiv_test_result": {
+            "type": "string",
+            "ex": "equalTo(.,\"positive\")"
+          }
+        }
+      },
+      {
+        "key": "prescribe_arv",
+        "type": "toaster_notes",
+        "text": "Mpatie mteja huyu ARV kwa kufuata muongozo wa Wizara ya Afya",
+        "openmrs_entity_id": "prescribe_arv",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:hiv_test_result": {
+            "type": "string",
+            "ex": "equalTo(.,\"positive\")"
+          }
+        }
+      }
+    ]
+  }
+}

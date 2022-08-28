@@ -294,7 +294,6 @@
       },
       {
         "key": "pharmacy_completion_status",
-
         "type": "hidden",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "pharmacy_completion_status",

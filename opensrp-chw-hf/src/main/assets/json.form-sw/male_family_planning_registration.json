@@ -57,7 +57,6 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "fp_reg_date",
-
         "type": "hidden",
         "calculation": {
           "rules-engine": {
@@ -162,7 +161,6 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "ecp",
-
         "type": "hidden",
         "calculation": {
           "rules-engine": {

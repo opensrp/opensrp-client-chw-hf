@@ -56,7 +56,6 @@
         "openmrs_entity": "",
         "openmrs_entity_id": "pnc_danger_signs_visitdate",
         "openmrs_entity_parent": "",
-
         "type": "hidden",
         "calculation": {
           "rules-engine": {

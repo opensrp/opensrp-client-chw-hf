@@ -712,7 +712,6 @@
       },
       {
         "key": "hiv",
-
         "type": "hidden",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "hiv",
@@ -1279,7 +1278,6 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "date_anc_hiv_test",
-
         "type": "hidden",
         "calculation": {
           "rules-engine": {
@@ -1304,7 +1302,6 @@
       },
       {
         "key": "hiv_test_at_32",
-
         "type": "hidden",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "hiv_test_at_32",
@@ -1319,7 +1316,6 @@
       },
       {
         "key": "baseline_investigation_completion_status",
-
         "type": "hidden",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "baseline_investigation_completion_status",

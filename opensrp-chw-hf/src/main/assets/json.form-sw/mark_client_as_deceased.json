@@ -87,7 +87,6 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "160417AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
         "openmrs_data_type": "select one",
-
         "type": "hidden",
         "value": "Death"
       },

@@ -270,7 +270,6 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "person",
         "openmrs_entity_id": "birthdate",
-
         "type": "hidden",
         "hint": "Tarehe ya kuzaliwa",
         "expanded": false,
@@ -289,7 +288,6 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "",
-
         "type": "hidden",
         "calculation": {
           "rules-engine": {
@@ -304,7 +302,6 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "person",
         "openmrs_entity_id": "birthdateApprox",
-
         "type": "hidden",
         "label": "",
         "value": "true",
@@ -362,7 +359,6 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "",
-
         "type": "hidden",
         "calculation": {
           "rules-engine": {
@@ -377,7 +373,6 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "",
-
         "type": "hidden",
         "calculation": {
           "rules-engine": {
@@ -619,7 +614,6 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "relationship",
-
         "type": "hidden",
         "calculation": {
           "rules-engine": {

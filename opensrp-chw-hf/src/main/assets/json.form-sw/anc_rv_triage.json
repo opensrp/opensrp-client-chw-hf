@@ -60,7 +60,6 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "edd",
-
         "type": "hidden",
         "calculation": {
           "rules-engine": {
@@ -75,7 +74,6 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "last_menstrual_period",
-
         "type": "hidden",
         "calculation": {
           "rules-engine": {
@@ -366,7 +364,6 @@
       },
       {
         "key": "visit_number",
-
         "type": "hidden",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "visit_number",
@@ -381,7 +378,6 @@
       },
       {
         "key": "triage_completion_status",
-
         "type": "hidden",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "triage_completion_status",

@@ -582,7 +582,6 @@
       },
       {
         "key": "eac_visit_type",
-
         "type": "hidden",
         "openmrs_entity_id": "eac_visit_type",
         "openmrs_entity": "concept",
@@ -590,7 +589,6 @@
       },
       {
         "key": "eac_visit_session",
-
         "type": "hidden",
         "openmrs_entity_id": "eac_visit_session",
         "openmrs_entity": "concept",
@@ -598,7 +596,6 @@
       },
       {
         "key": "eac_completion_status",
-
         "type": "hidden",
         "openmrs_entity_id": "eac_completion_status",
         "openmrs_entity": "concept",
@@ -613,7 +610,6 @@
       },
       {
         "key": "eac",
-
         "type": "hidden",
         "openmrs_entity_id": "eac",
         "openmrs_entity": "concept",
@@ -621,7 +617,6 @@
       },
       {
         "key": "form_submission_timestamp",
-
         "type": "hidden",
         "openmrs_entity_id": "form_submission_timestamp",
         "openmrs_entity": "concept",

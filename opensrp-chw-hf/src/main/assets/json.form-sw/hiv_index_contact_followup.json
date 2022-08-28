@@ -179,7 +179,7 @@
             },
             {
               "name": "the_client_refused_to_be_tested",
-              "text":  "Mteja alikataa kupimwa",
+              "text": "Mteja alikataa kupimwa",
               "meta_data": {
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "the_client_refused_to_be_tested",

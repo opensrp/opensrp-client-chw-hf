@@ -164,7 +164,7 @@
           "options": [],
           "required_status": "yes:Tafadhali chagua"
         },
-         {
+        {
           "name": "last_appointment_date",
           "type": "datetime_picker",
           "properties": {

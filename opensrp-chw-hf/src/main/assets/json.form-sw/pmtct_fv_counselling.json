@@ -186,7 +186,6 @@
       },
       {
         "key": "visit_number",
-
         "type": "hidden",
         "openmrs_entity_id": "visit_number",
         "openmrs_entity": "concept",
@@ -194,7 +193,6 @@
       },
       {
         "key": "followup_status",
-
         "type": "hidden",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "followup_status",

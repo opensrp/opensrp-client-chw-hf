@@ -85,7 +85,6 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "last_partograph_monitoring_time",
-
         "type": "hidden",
         "calculation": {
           "rules-engine": {
@@ -100,7 +99,6 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "thirty_minutes_ago",
-
         "type": "hidden",
         "calculation": {
           "rules-engine": {

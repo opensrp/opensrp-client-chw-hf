@@ -156,7 +156,6 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "",
-
         "type": "hidden",
         "calculation": {
           "rules-engine": {
@@ -549,7 +548,6 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "",
-
         "type": "hidden",
         "calculation": {
           "rules-engine": {
@@ -564,7 +562,6 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "",
-
         "type": "hidden",
         "calculation": {
           "rules-engine": {
@@ -917,7 +914,6 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "person_attribute",
         "openmrs_entity_id": "Registration_Reason",
-
         "type": "hidden",
         "calculation": {
           "rules-engine": {

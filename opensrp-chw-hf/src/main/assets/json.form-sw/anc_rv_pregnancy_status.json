@@ -104,7 +104,6 @@
       },
       {
         "key": "pregnancy_status_completion_status",
-
         "type": "hidden",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "pregnancy_status_completion_status",

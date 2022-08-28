@@ -184,7 +184,7 @@
         "v_max_length": {
           "value": "17",
           "is_fixed_size": "true",
-          "err":"Tafadhali jaza namba ya CTC ya mteja"
+          "err": "Tafadhali jaza namba ya CTC ya mteja"
         },
         "relevance": {
           "step1:partner_hiv": {
@@ -567,7 +567,7 @@
           "other"
         ],
         "openmrs_choice_ids": {
-          "out_of_stock":  "out_of_stock",
+          "out_of_stock": "out_of_stock",
           "client_did_not_agree_medication": "client_did_not_agree_medication",
           "the_client_refused_to_be_tested": "the_client_refused_to_be_tested",
           "client_is_allergic_to_medication": "client_is_allergic_to_medication",
@@ -604,7 +604,6 @@
       },
       {
         "key": "partner_hiv_test_at_32",
-
         "type": "hidden",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "partner_hiv_test_at_32",
@@ -619,7 +618,6 @@
       },
       {
         "key": "partner_hiv_test_number",
-
         "type": "hidden",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "partner_hiv_test_number",
@@ -627,7 +625,6 @@
       },
       {
         "key": "gest_age",
-
         "type": "hidden",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "gest_age",

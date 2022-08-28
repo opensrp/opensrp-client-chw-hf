@@ -210,8 +210,8 @@
         ],
         "openmrs_choice_ids": {
           "birth_asphyxia": "birth_asphyxia",
-          "neonatal_respiratory_distress":  "neonatal_respiratory_distress",
-          "prematurity":  "prematurity",
+          "neonatal_respiratory_distress": "neonatal_respiratory_distress",
+          "prematurity": "prematurity",
           "early_neonatal_sepsis": "early_neonatal_sepsis"
         },
         "v_required": {
@@ -1606,7 +1606,6 @@
       },
       {
         "key": "hiv_status",
-
         "type": "hidden",
         "openmrs_entity_id": "hiv_status",
         "openmrs_entity": "concept",
