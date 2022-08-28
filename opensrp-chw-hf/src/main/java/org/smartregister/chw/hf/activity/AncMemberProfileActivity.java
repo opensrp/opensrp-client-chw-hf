@@ -356,7 +356,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
             int obsSize = obs.length();
             for (int i = 0; i < obsSize; i++) {
                 JSONObject checkObj = obs.getJSONObject(i);
-                if (checkObj.getString("fieldCode").equalsIgnoreCase("known_on_art")) {
+                if (checkObj.getString("fieldCode").equalsIgnoreCase("known_on_art") && checkObj.getString("values").contains("true")) {
                     hivPositive = true;
                     isKnownOnArt = true;
                 } else if (checkObj.getString("fieldCode").equalsIgnoreCase("hiv")) {
