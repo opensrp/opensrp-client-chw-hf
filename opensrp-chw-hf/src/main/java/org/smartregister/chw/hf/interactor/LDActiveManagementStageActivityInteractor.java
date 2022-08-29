@@ -296,6 +296,7 @@ public class LDActiveManagementStageActivityInteractor extends BaseLDVisitIntera
     private static class EclampsiaManagementActionHelper implements BaseLDVisitAction.LDVisitActionHelper {
 
         private String has_signs_of_eclampsia;
+        private String administered_magnesium_sulphate;
         private Context context;
 
         @Override
@@ -311,6 +312,7 @@ public class LDActiveManagementStageActivityInteractor extends BaseLDVisitIntera
         @Override
         public void onPayloadReceived(String jsonPayload) {
             has_signs_of_eclampsia = JsonFormUtils.getFieldValue(jsonPayload, "has_signs_of_eclampsia");
+            administered_magnesium_sulphate = JsonFormUtils.getFieldValue(jsonPayload, "administered_magnesium_sulphate");
         }
 
         @Override
@@ -332,7 +334,10 @@ public class LDActiveManagementStageActivityInteractor extends BaseLDVisitIntera
         public String evaluateSubTitle() {
             if (StringUtils.isNotBlank(has_signs_of_eclampsia)) {
                 if (has_signs_of_eclampsia.equalsIgnoreCase("yes")) {
-                    return (context.getString(R.string.ld_management_of_eclampsia));
+                    if (administered_magnesium_sulphate.equalsIgnoreCase("yes"))
+                        return (context.getString(R.string.ld_management_of_eclampsia));
+                    else
+                        return (context.getString(R.string.ld_management_of_eclampsia_not_done));
                 } else {
                     return context.getString(R.string.ld_client_has_no_signs_of_eclampsia);
                 }

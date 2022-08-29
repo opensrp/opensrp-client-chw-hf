@@ -194,7 +194,7 @@ public class LDRegistrationInteractorFlv implements LDRegistrationInteractor.Fla
         LLINUsed.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.isLLINProvided(memberObject.getBaseEntityId()) ? "Yes" : "No");
 
         String lastMeasuredHb = HfAncDao.getLastMeasuredHB(memberObject.getBaseEntityId());
-        hbTestConducted.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getLastMeasuredHB(lastMeasuredHb).equals("") ? "no" : "yes");
+        hbTestConducted.put(org.smartregister.family.util.JsonFormUtils.VALUE, lastMeasuredHb.equals("") ? "no" : "yes");
         if (!lastMeasuredHB.equals("")) {
             lastMeasuredHB.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getLastMeasuredHB(memberObject.getBaseEntityId()));
             lastMeasuredHBDate.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getLastMeasuredHBDate(memberObject.getBaseEntityId()));

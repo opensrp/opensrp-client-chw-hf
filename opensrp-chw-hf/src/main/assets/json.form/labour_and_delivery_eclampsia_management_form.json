@@ -149,6 +149,10 @@
             "type": "string",
             "ex": "equalTo(., \"no\")"
           }
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please select an option"
         }
       },
       {
