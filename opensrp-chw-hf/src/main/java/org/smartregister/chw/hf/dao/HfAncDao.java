@@ -598,6 +598,26 @@ public class HfAncDao extends AbstractDao {
         return "";
     }
 
+
+    public static boolean getSyphilisTreatment(String baseEntityId) {
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "syphilis_treatment");
+
+        String sql = String.format(
+                "SELECT syphilis_treatment FROM %s WHERE entity_id = '%s' " +
+                        "AND is_closed = 0 " +
+                        "AND syphilis_treatment IS NOT NULL " +
+                        "ORDER BY visit_date DESC LIMIT 1 ",
+                "ec_anc_followup",
+                baseEntityId
+        );
+
+        List<String> res = readData(sql, dataMap);
+        if (res != null && res.size() > 0) {
+            return res.get(0).equalsIgnoreCase("yes");
+        }
+        return false;
+    }
+
     public static String getBloodGroup(String baseEntityId) {
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "blood_group");
         String sql = String.format(
