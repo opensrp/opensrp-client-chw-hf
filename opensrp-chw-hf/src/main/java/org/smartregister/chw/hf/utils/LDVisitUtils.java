@@ -254,7 +254,7 @@ public class LDVisitUtils extends VisitUtils {
                 baseEvent.addDetails(Constants.LD_VISIT_GROUP, visitGroupId);
 
                 AllSharedPreferences allSharedPreferences = LDLibrary.getInstance().context().allSharedPreferences();
-                org.smartregister.chw.anc.util.JsonFormUtils.tagEvent(allSharedPreferences, baseEvent);
+                JsonFormUtils.tagEvent(allSharedPreferences, baseEvent);
 
                 String syncLocationId = ChwNotificationDao.getSyncLocationId(baseEvent.getBaseEntityId());
                 if (syncLocationId != null) {

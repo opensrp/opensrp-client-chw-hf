@@ -2,7 +2,6 @@ package org.smartregister.chw.hf.activity;
 
 import com.vijay.jsonwizard.activities.JsonWizardFormActivity;
 import com.vijay.jsonwizard.constants.JsonFormConstants;
-import com.vijay.jsonwizard.factory.FileSourceFactoryHelper;
 import com.vijay.jsonwizard.utils.NativeFormLangUtils;
 
 import org.smartregister.chw.hf.fragment.AncJsonFormFragment;

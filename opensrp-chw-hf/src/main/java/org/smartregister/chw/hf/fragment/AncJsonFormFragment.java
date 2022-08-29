@@ -38,7 +38,7 @@ public class AncJsonFormFragment extends JsonFormFragment {
             newReturnIntent.putExtra("json", jsonObject.toString());
 
             newReturnIntent.putExtra(JsonFormConstants.SKIP_VALIDATION,
-                    Boolean.valueOf("true").toString());
+                    "true");
 
 
             getActivity().setResult(Activity.RESULT_OK, newReturnIntent);

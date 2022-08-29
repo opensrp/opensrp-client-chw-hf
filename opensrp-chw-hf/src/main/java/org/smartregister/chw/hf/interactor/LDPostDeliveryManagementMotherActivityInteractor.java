@@ -472,7 +472,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
             baseEvent.setLocationId(syncLocationId);
         }
 
-        org.smartregister.chw.anc.util.NCUtils.processEvent(baseEvent.getBaseEntityId(), new JSONObject(org.smartregister.chw.anc.util.JsonFormUtils.gson.toJson(baseEvent)));
+        NCUtils.processEvent(baseEvent.getBaseEntityId(), new JSONObject(org.smartregister.chw.anc.util.JsonFormUtils.gson.toJson(baseEvent)));
     }
 
     private String removeUser(String familyID, JSONObject closeFormJsonString, String providerId) throws Exception {
