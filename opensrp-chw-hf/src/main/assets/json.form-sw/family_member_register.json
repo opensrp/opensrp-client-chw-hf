@@ -337,7 +337,7 @@
           "err": "Namba lazima iwe jumla ya tarakimu 10 kwa urefu"
         },
         "v_regex": {
-          "value": "(0[0-9]{9})|\\s*",
+          "value": "(0[6-7][1-9][0-9][0-9]{6})|\\s*",
           "err": "Namba lazima iwe na tarakimu 10 na lazima ianze na 06 au 07."
         }
       },
@@ -353,7 +353,7 @@
           "err": "Namba lazima iwe jumla ya tarakimu 10 kwa urefu"
         },
         "v_regex": {
-          "value": "(0[0-9]{9})|\\s*",
+          "value": "(0[6-7][1-9][0-9][0-9]{6})|\\s*",
           "err": "Namba lazima iwe na tarakimu 10 na lazima ianze na 06 au 07."
         }
       },
@@ -410,16 +410,23 @@
         "openmrs_entity": "person_attribute",
         "openmrs_entity_id": "National_ID",
         "type": "edit_text",
+        "mask": "########-#####-#####-##",
+        "mask_hint": "12345678912345678912",
+        "allowed_chars": "0123456789",
         "hint": "Namba ya kitambulisho cha taifa k.m 12345678-91234-56789-12",
         "edit_type": "number",
         "v_max_length": {
           "value": "23",
           "is_fixed_size": "true",
-          "err": "Please enter a valid national id"
+          "err": "Tafadhali jaza namba halali"
         },
         "v_regex": {
           "value": "^\\d{8}-\\d{5}-\\d{5}-\\d{2}$",
           "err": "Namba ya kitambulisho cha kitaifa inapaswa kuwa ya umbizo (XXXXXXXX-XXXXX-XXXXX-XX)"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali jaza namba halali"
         },
         "relevance": {
           "step1:id_avail": {
@@ -439,16 +446,23 @@
         "openmrs_entity": "person_attribute",
         "openmrs_entity_id": "Voter_Registration_Number",
         "type": "edit_text",
+        "mask": "T-####-####-###-#",
+        "mask_hint": "123456789123",
+        "allowed_chars": "0123456789",
         "hint": "Namba ya kitambulisho cha mpiga kura k.m T-1234-5678-912-3",
         "edit_type": "number",
         "v_max_length": {
           "value": "17",
           "is_fixed_size": "true",
-          "err": "Please enter a valid voters registration"
+          "err": "Tafadhali jaza namba halali"
         },
         "v_regex": {
           "value": "^T-\\d{4}-\\d{4}-\\d{3}-\\d{1}$",
           "err": "Namba ya usajili wa mpiga kura inapaswa kuwa ya umbizo (T-XXXX-XXXX-XXX-X)"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali jaza namba halali"
         },
         "relevance": {
           "step1:id_avail": {
@@ -468,16 +482,23 @@
         "openmrs_entity": "person_attribute",
         "openmrs_entity_id": "Driver_License_Number",
         "type": "edit_text",
+        "mask": "##########",
+        "mask_hint": "1234567891",
+        "allowed_chars": "0123456789",
         "hint": "Namba ya leseni ya udereva k.m 1234567891",
         "edit_type": "number",
         "v_max_length": {
           "value": "10",
           "is_fixed_size": "true",
-          "err": "Please enter a valid drivers license number"
+          "err": "Tafadhali jaza namba halali"
         },
         "v_regex": {
           "value": "^([0-9]{10})",
           "err": "Namba ya leseni ya udereva inapaswa kuwa ya umbizo (XXXXXXXXX)"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali jaza namba halali"
         },
         "relevance": {
           "step1:id_avail": {
