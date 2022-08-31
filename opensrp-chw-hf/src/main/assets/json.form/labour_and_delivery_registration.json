@@ -941,22 +941,22 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "tt_doses",
         "type": "edit_text",
-        "hint": "TT Doses",
+        "hint": "Td Doses",
         "v_numeric": {
           "value": "true",
-          "err": "Please enter the TT dose number"
+          "err": "Please enter the Td dose number"
         },
         "v_min": {
           "value": "0",
-          "err": "TT dose must be equal or greater than 0"
+          "err": "Td dose must be equal or greater than 0"
         },
         "v_max": {
           "value": "5",
-          "err": "TT dose must be equal or less than 5"
+          "err": "Td dose must be equal or less than 5"
         },
         "v_required": {
           "value": "true",
-          "err": "Please enter the TT dose number"
+          "err": "Please enter the Td dose number"
         }
       },
       {

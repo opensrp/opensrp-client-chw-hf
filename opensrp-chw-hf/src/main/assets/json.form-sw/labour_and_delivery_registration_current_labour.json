@@ -235,6 +235,10 @@
             "type": "string",
             "ex": "equalTo(., \"present\")"
           }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select one"
         }
       },
       {
