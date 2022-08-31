@@ -269,8 +269,8 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
             RelativeLayout  eacVisitDoneBar = findViewById(R.id.eac_visit_done_bar);
             TextView eacVisitDoneText = findViewById(R.id.textview_eac_visit_done);
             if (lastEac != null) {
-                Date now = DateUtils.truncate(new Date(), Calendar.DATE);
-                Date lastEacTruncated = DateUtils.truncate(lastEac, Calendar.DATE);
+                Date now = new Date(Calendar.getInstance().getTimeInMillis() - Calendar.getInstance().getTimeInMillis() % (24 * 60 * 60 * 1000));
+                Date lastEacTruncated = new Date(lastEac.getTime() - lastEac.getTime() % (24 * 60 * 60 * 1000));
                 if (now.equals(lastEacTruncated)) {
                     textViewRecordEac.setVisibility(View.GONE);
                     eacVisitDoneBar.setVisibility(View.VISIBLE);
