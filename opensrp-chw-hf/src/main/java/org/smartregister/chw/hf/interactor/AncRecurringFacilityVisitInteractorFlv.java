@@ -1,5 +1,7 @@
 package org.smartregister.chw.hf.interactor;
 
+import static org.smartregister.chw.hf.interactor.AncFirstFacilityVisitInteractorFlv.initializeHealthFacilitiesList;
+
 import android.content.Context;
 
 import org.apache.commons.lang3.StringUtils;
@@ -65,47 +67,6 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
             return context.getString(R.string.anc_pregnacy_status_viable);
         }
         return "";
-    }
-
-    private static JSONObject initializeHealthFacilitiesList(JSONObject form) {
-        HfLocationRepository locationRepository = new HfLocationRepository();
-        List<Location> locations = locationRepository.getAllLocationsWithTags();
-        if (locations != null && form != null) {
-
-            Collections.sort(locations, (location1, location2) -> StringUtils.capitalize(location1.getProperties().getName()).compareTo(StringUtils.capitalize(location2.getProperties().getName())));
-            try {
-                JSONArray fields = form.getJSONObject(Constants.JsonFormConstants.STEP1)
-                        .getJSONArray(JsonFormConstants.FIELDS);
-                JSONObject referralHealthFacilities = null;
-                for (int i = 0; i < fields.length(); i++) {
-                    if (fields.getJSONObject(i)
-                            .getString(JsonFormConstants.KEY).equals(Constants.JsonFormConstants.NAME_OF_HF)
-                    ) {
-                        referralHealthFacilities = fields.getJSONObject(i);
-                        break;
-                    }
-                }
-                JSONArray tree = referralHealthFacilities.getJSONArray("tree");
-                String parentTagName = "Region";
-                for (Location location : locations) {
-                    Set<LocationTag> locationTags = location.getLocationTags();
-                    if (locationTags.iterator().next().getName().equalsIgnoreCase(parentTagName)) {
-                        JSONObject treeNode = new JSONObject();
-                        treeNode.put("name", StringUtils.capitalize(location.getProperties().getName()));
-                        treeNode.put("key", StringUtils.capitalize(location.getProperties().getName()));
-
-                        JSONArray childNodes = setChildNodes(locations, location.getId(), parentTagName);
-                        if (childNodes != null)
-                            treeNode.put("nodes", childNodes);
-
-                        tree.put(treeNode);
-                    }
-                }
-            } catch (JSONException e) {
-                Timber.e(e);
-            }
-        }
-        return form;
     }
 
     private static JSONArray setChildNodes(List<Location> locations, String parentLocationId, String parentTagName) {

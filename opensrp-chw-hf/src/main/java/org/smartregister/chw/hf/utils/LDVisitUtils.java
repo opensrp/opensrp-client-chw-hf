@@ -7,10 +7,14 @@ import static org.smartregister.chw.hf.interactor.LDVisitInteractor.syphilisTest
 import static org.smartregister.chw.hf.utils.Constants.Events.LD_POST_DELIVERY_MOTHER_MANAGEMENT;
 import static org.smartregister.chw.hf.utils.Constants.HIV_STATUS.POSITIVE;
 
+import com.google.gson.Gson;
+
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.smartregister.chw.anc.util.JsonFormUtils;
+import org.smartregister.chw.core.dao.ChwNotificationDao;
 import org.smartregister.chw.hf.actionhelper.LDGeneralExaminationActionHelper;
 import org.smartregister.chw.hf.interactor.LDVisitInteractor;
 import org.smartregister.chw.hf.utils.Constants.Events;
@@ -20,12 +24,16 @@ import org.smartregister.chw.ld.domain.Visit;
 import org.smartregister.chw.ld.repository.VisitDetailsRepository;
 import org.smartregister.chw.ld.repository.VisitRepository;
 import org.smartregister.chw.ld.util.Constants;
+import org.smartregister.chw.ld.util.NCUtils;
 import org.smartregister.chw.ld.util.VisitUtils;
+import org.smartregister.clientandeventmodel.Event;
+import org.smartregister.repository.AllSharedPreferences;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 
 /**
  * Created by Kassim Sheghembe on 2022-05-10
@@ -229,8 +237,37 @@ public class LDVisitUtils extends VisitUtils {
         }
 
         if (ldVisits.size() > 0) {
-            processVisits(ldVisits, visitRepository, visitDetailsRepository);
+            processVisits(ldVisits, visitRepository, visitDetailsRepository, baseEntityId);
         }
+    }
+
+    public static void processVisits(List<Visit> visits, VisitRepository visitRepository, VisitDetailsRepository visitDetailsRepository, String baseEntityId) throws Exception {
+        String visitGroupId = UUID.randomUUID().toString();
+        for (Visit v : visits) {
+            if (!v.getProcessed()) {
+
+                // persist to db
+                Event baseEvent = new Gson().fromJson(v.getPreProcessedJson(), Event.class);
+                if (StringUtils.isBlank(baseEvent.getFormSubmissionId()))
+                    baseEvent.setFormSubmissionId(UUID.randomUUID().toString());
+
+                baseEvent.addDetails(Constants.LD_VISIT_GROUP, visitGroupId);
+
+                AllSharedPreferences allSharedPreferences = LDLibrary.getInstance().context().allSharedPreferences();
+                JsonFormUtils.tagEvent(allSharedPreferences, baseEvent);
+
+                String syncLocationId = ChwNotificationDao.getSyncLocationId(baseEvent.getBaseEntityId());
+                if (syncLocationId != null) {
+                    // Allows setting the ID for sync purposes
+                    baseEvent.setLocationId(syncLocationId);
+                }
+
+                org.smartregister.chw.anc.util.NCUtils.processEvent(baseEvent.getBaseEntityId(), new JSONObject(JsonFormUtils.gson.toJson(baseEvent)));
+                visitRepository.completeProcessing(v.getVisitId());
+            }
+        }
+        // process after all events are saved
+        NCUtils.startClientProcessing();
     }
 
     public static boolean computeCompletionStatus(JSONArray obs, String checkString) throws JSONException {

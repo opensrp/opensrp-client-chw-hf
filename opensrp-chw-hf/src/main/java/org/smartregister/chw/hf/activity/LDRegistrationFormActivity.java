@@ -8,6 +8,7 @@ import android.os.Build;
 import com.vijay.jsonwizard.constants.JsonFormConstants;
 import com.vijay.jsonwizard.domain.Form;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.core.R;
 import org.smartregister.chw.core.task.RunnableTask;
@@ -34,6 +35,7 @@ import timber.log.Timber;
  * 06/05/2022
  */
 public class LDRegistrationFormActivity extends BaseLDVisitActivity {
+    public static String LABOUR_AND_DELIVERY_REGISTRATION_ADMISSION_INFORMATION;
 
     public static void startMe(Activity activity, String baseEntityID, Boolean isEditMode, String fullName, String age) {
         Intent intent = new Intent(activity, LDRegistrationFormActivity.class);
@@ -66,8 +68,22 @@ public class LDRegistrationFormActivity extends BaseLDVisitActivity {
         form.setActionBarBackground(R.color.family_actionbar);
         form.setWizard(false);
 
-        Intent intent = new Intent(this, Utils.metadata().familyMemberFormActivity);
-        intent.putExtra(org.smartregister.family.util.Constants.JSON_FORM_EXTRA.JSON, jsonForm.toString());
+        Intent intent;
+
+        try {
+            if (jsonForm.getString("encounter_type").equals("Labour and Delivery Registration Admission Information")) {
+                LABOUR_AND_DELIVERY_REGISTRATION_ADMISSION_INFORMATION = jsonForm.toString();
+                intent = new Intent(this, LDRegistrationAdmissionInformationJsonWizardFormActivity.class);
+            } else {
+                intent = new Intent(this, Utils.metadata().familyMemberFormActivity);
+                intent.putExtra(org.smartregister.family.util.Constants.JSON_FORM_EXTRA.JSON, jsonForm.toString());
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+            intent = new Intent(this, Utils.metadata().familyMemberFormActivity);
+            intent.putExtra(org.smartregister.family.util.Constants.JSON_FORM_EXTRA.JSON, jsonForm.toString());
+        }
+
         intent.putExtra(org.smartregister.family.util.Constants.WizardFormActivity.EnableOnCloseDialog, false);
         intent.putExtra(JsonFormConstants.JSON_FORM_KEY.FORM, form);
         startActivityForResult(intent, JsonFormUtils.REQUEST_CODE_GET_JSON);

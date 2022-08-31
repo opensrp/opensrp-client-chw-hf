@@ -69,7 +69,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "entry_point",
         "type": "edit_text",
-        "value": "LD"
+        "value": "PNC"
       },
       {
         "key": "unique_id",

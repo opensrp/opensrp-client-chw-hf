@@ -53,6 +53,11 @@ public class AdvancedSearchFragment extends BaseRegisterFragment implements Adva
         this.isLocal = isLocal;
     }
 
+    public AdvancedSearchFragment() {
+        // doesn't do anything special
+        isLocal = false;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

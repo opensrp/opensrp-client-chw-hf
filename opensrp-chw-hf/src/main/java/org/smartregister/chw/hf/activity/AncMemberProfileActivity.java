@@ -135,10 +135,8 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
 
     @Override
     public void setFamilyLocation() {
-        if (!StringUtils.isBlank(getMemberGPS())) {
-            view_family_location_row.setVisibility(View.VISIBLE);
-            rlFamilyLocation.setVisibility(View.VISIBLE);
-        }
+        view_family_location_row.setVisibility(View.GONE);
+        rlFamilyLocation.setVisibility(View.GONE);
     }
 
     private String getMemberGPS() {

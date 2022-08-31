@@ -64,12 +64,12 @@ public class HfSyncConfiguration extends SyncConfiguration {
 
     @Override
     public List<String> getSynchronizedLocationTags() {
-        return Arrays.asList("Country","Zone","Region","District","Council","Ward","Facility");
+        return Arrays.asList("Facility");
     }
 
     @Override
     public String getTopAllowedLocationLevel() {
-        return "Region";
+        return "Country";
     }
 
     @Override

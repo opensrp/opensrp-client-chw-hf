@@ -7,6 +7,7 @@ import android.content.Intent;
 import com.vijay.jsonwizard.constants.JsonFormConstants;
 import com.vijay.jsonwizard.domain.Form;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.anc.activity.BaseAncHomeVisitActivity;
 import org.smartregister.chw.anc.domain.MemberObject;
@@ -30,6 +31,7 @@ import timber.log.Timber;
  * 11-10-2021
  */
 public class AncFirstFacilityVisitActivity extends BaseAncHomeVisitActivity {
+    public static String ANC_BIRTH_REVIEW_AND_EMERGENCY_PLAN;
 
     public static void startMe(Activity activity, String baseEntityID, Boolean isEditMode) {
         Intent intent = new Intent(activity, AncFirstFacilityVisitActivity.class);
@@ -57,8 +59,22 @@ public class AncFirstFacilityVisitActivity extends BaseAncHomeVisitActivity {
         form.setActionBarBackground(R.color.family_actionbar);
         form.setWizard(false);
 
-        Intent intent = new Intent(this, Utils.metadata().familyMemberFormActivity);
-        intent.putExtra(org.smartregister.family.util.Constants.JSON_FORM_EXTRA.JSON, jsonForm.toString());
+        Intent intent;
+
+        try {
+            if (jsonForm.getString("encounter_type").equals("Emergency Plan")) {
+                ANC_BIRTH_REVIEW_AND_EMERGENCY_PLAN = jsonForm.toString();
+                intent = new Intent(this, AncBirthReviewAndEmergencyPlanJsonWizardFormActivity.class);
+            } else {
+                intent = new Intent(this, Utils.metadata().familyMemberFormActivity);
+                intent.putExtra(org.smartregister.family.util.Constants.JSON_FORM_EXTRA.JSON, jsonForm.toString());
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+            intent = new Intent(this, Utils.metadata().familyMemberFormActivity);
+            intent.putExtra(org.smartregister.family.util.Constants.JSON_FORM_EXTRA.JSON, jsonForm.toString());
+        }
+
         intent.putExtra(org.smartregister.family.util.Constants.WizardFormActivity.EnableOnCloseDialog, false);
         intent.putExtra(JsonFormConstants.JSON_FORM_KEY.FORM, form);
         startActivityForResult(intent, JsonFormUtils.REQUEST_CODE_GET_JSON);

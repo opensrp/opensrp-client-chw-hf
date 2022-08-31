@@ -30,6 +30,7 @@ import org.smartregister.chw.anc.AncLibrary;
 import org.smartregister.chw.anc.util.AppExecutors;
 import org.smartregister.chw.anc.util.NCUtils;
 import org.smartregister.chw.anc.util.VisitUtils;
+import org.smartregister.chw.core.dao.ChwNotificationDao;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.hf.HealthFacilityApplication;
@@ -361,11 +362,11 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                 pncForm = populateChildRegistrationForm(pncForm, obs, motherBaseId, familyBaseEntityId);
                 processChild(pncForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS), allSharedPreferences, childBaseEntityId, familyBaseEntityId, motherBaseId, uniqueChildID, lastName, dob);
                 if (pncForm != null) {
-                    saveChildRegistration(pncForm.toString(), EC_CHILD);
+                    saveChildRegistration(pncForm.toString(), EC_CHILD, motherBaseId);
                 }
                 if (motherHivStatus.equals(POSITIVE) && pncForm != null) {
                     pncForm.put(ENCOUNTER_TYPE, HEI_REGISTRATION);
-                    saveChildRegistration(pncForm.toString(), HEI);
+                    saveChildRegistration(pncForm.toString(), HEI, motherBaseId);
 
                     JSONObject heiFollowupForm = getFormAsJson(
                             Constants.JsonForm.getLdHeiFirstVisit(),
@@ -374,7 +375,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                     );
 
                     heiFollowupForm = populateHeiFollowupForm(heiFollowupForm, obs, familyBaseEntityId);
-                    saveChildRegistration(heiFollowupForm.toString(), HEI_FOLLOWUP);
+                    saveChildRegistration(heiFollowupForm.toString(), HEI_FOLLOWUP, motherBaseId);
 
 
                 }
@@ -461,12 +462,17 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
     }
 
-    private void saveChildRegistration(final String jsonString, String table) throws Exception {
+    private void saveChildRegistration(final String jsonString, String table, String motherBaseId) throws Exception {
         AllSharedPreferences allSharedPreferences = AncLibrary.getInstance().context().allSharedPreferences();
         Event baseEvent = org.smartregister.chw.anc.util.JsonFormUtils.processJsonForm(allSharedPreferences, jsonString, table);
 
-        NCUtils.addEvent(allSharedPreferences, baseEvent);
-        NCUtils.startClientProcessing();
+        String syncLocationId = ChwNotificationDao.getSyncLocationId(motherBaseId);
+        if (syncLocationId != null) {
+            // Allows setting the ID for sync purposes
+            baseEvent.setLocationId(syncLocationId);
+        }
+
+        NCUtils.processEvent(baseEvent.getBaseEntityId(), new JSONObject(org.smartregister.chw.anc.util.JsonFormUtils.gson.toJson(baseEvent)));
     }
 
     private String removeUser(String familyID, JSONObject closeFormJsonString, String providerId) throws Exception {
