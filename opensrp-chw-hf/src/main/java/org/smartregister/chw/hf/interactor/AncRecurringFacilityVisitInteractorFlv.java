@@ -32,7 +32,6 @@ import org.smartregister.chw.hf.actionhelper.AncTriageAction;
 import org.smartregister.chw.hf.actionhelper.AncTtVaccinationAction;
 import org.smartregister.chw.hf.dao.HfAncBirthEmergencyPlanDao;
 import org.smartregister.chw.hf.dao.HfAncDao;
-import org.smartregister.chw.hf.repository.HfLocationRepository;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hf.utils.ContactUtil;
 import org.smartregister.chw.hf.utils.HfAncJsonFormUtils;
@@ -42,7 +41,6 @@ import org.smartregister.domain.LocationTag;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -53,6 +51,7 @@ import timber.log.Timber;
 public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityVisitInteractor.Flavor {
     String baseEntityId;
     LinkedHashMap<String, BaseAncHomeVisitAction> actionList = new LinkedHashMap<>();
+    private JSONObject birthReviewForm;
 
     public AncRecurringFacilityVisitInteractorFlv(String baseEntityId) {
         this.baseEntityId = baseEntityId;
@@ -157,6 +156,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
 
         dateMap.putAll(ContactUtil.getContactWeeks(isFirst, lastContact, lastMenstrualPeriod));
 
+        birthReviewForm = initializeHealthFacilitiesList(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.BIRTH_REVIEW_AND_EMERGENCY_PLAN));
         evaluateMedicalAndSurgicalHistory(view, memberObject, callBack, details);
 
         return actionList;
@@ -422,7 +422,6 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                     }
 
                     if (!HfAncBirthEmergencyPlanDao.isAllFilled(baseEntityId)) {
-                        JSONObject birthReviewForm = initializeHealthFacilitiesList(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.BIRTH_REVIEW_AND_EMERGENCY_PLAN));
                         try {
                             birthReviewForm.getJSONObject("global").put("delivery_place_identified", HfAncBirthEmergencyPlanDao.isDeliveryPlaceIdentified(baseEntityId));
                             birthReviewForm.getJSONObject("global").put("transport_identified", HfAncBirthEmergencyPlanDao.isTransportMethodIdentified(baseEntityId));
