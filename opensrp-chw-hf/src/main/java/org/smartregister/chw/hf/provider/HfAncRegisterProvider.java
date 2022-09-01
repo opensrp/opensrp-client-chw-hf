@@ -27,6 +27,8 @@ import org.smartregister.view.contract.SmartRegisterClient;
 import java.text.MessageFormat;
 import java.util.Set;
 
+import timber.log.Timber;
+
 public class HfAncRegisterProvider extends ChwAncRegisterProvider {
     private final LayoutInflater inflater;
     private View.OnClickListener onClickListener;
@@ -55,9 +57,15 @@ public class HfAncRegisterProvider extends ChwAncRegisterProvider {
             int age = Years.yearsBetween(new DateTime(dobString), new DateTime()).getYears();
             String gaLocation;
             if(StringUtils.isNotBlank(lmpString)){
+                String gestationString = "";
+                try {
+                    gestationString = NCUtils.gestationAgeString(lmpString, context, false);
+                }catch (Exception e){
+                    Timber.e(e);
+                }
                gaLocation = MessageFormat.format("{0}: {1} {2} {3} {4}",
                         context.getString(R.string.gestation_age_initial),
-                        NCUtils.gestationAgeString(lmpString, context, false),
+                       gestationString,
                         context.getString(R.string.abbrv_weeks),
                         context.getString(R.string.interpunct),
                         Utils.getValue(pc.getColumnmaps(), DBConstants.KEY.VILLAGE_TOWN, true));
