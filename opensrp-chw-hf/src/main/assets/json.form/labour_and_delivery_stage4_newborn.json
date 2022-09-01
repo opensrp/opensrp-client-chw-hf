@@ -153,6 +153,10 @@
               "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
             }
           }
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please select an option"
         }
       },
       {
