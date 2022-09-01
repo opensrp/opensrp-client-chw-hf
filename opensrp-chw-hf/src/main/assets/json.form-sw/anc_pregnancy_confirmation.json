@@ -211,7 +211,16 @@
         "label": "Chagua aina ya kipimo cha Ujauzito kilichofanyika",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
+        "exclusive": [
+          "fundal_palpation"
+        ],
         "options": [
+          {
+            "key": "fundal_palpation",
+            "text": "Fundal Palpation",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "fundal_palpation"
+          },
           {
             "key": "upt",
             "text": "Kipimo cha Mkojo",
