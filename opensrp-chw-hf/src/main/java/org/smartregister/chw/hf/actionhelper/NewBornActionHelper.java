@@ -108,6 +108,7 @@ public class NewBornActionHelper implements BaseLDVisitAction.LDVisitActionHelpe
             newBornForm.getJSONObject("global").put("delivery_time", deliveryTime);
             newBornForm.getJSONObject("global").put("number_of_children_born", numberOfChildrenBorn);
             newBornForm.getJSONObject("global").put("child_number", childNumber);
+            newBornForm.getJSONObject("global").put("mother_status", status);
         } catch (Exception e) {
             Timber.e(e);
         }

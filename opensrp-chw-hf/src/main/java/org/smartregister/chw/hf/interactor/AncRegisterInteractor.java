@@ -1,5 +1,21 @@
 package org.smartregister.chw.hf.interactor;
 
+import static org.smartregister.chw.anc.util.Constants.TABLES.EC_CHILD;
+import static org.smartregister.chw.anc.util.DBConstants.KEY.DELIVERY_DATE;
+import static org.smartregister.chw.anc.util.DBConstants.KEY.DOB;
+import static org.smartregister.chw.anc.util.DBConstants.KEY.LAST_NAME;
+import static org.smartregister.chw.anc.util.DBConstants.KEY.MOTHER_ENTITY_ID;
+import static org.smartregister.chw.anc.util.DBConstants.KEY.RELATIONAL_ID;
+import static org.smartregister.chw.anc.util.DBConstants.KEY.UNIQUE_ID;
+import static org.smartregister.chw.anc.util.JsonFormUtils.updateFormField;
+import static org.smartregister.chw.hf.utils.Constants.Events.HEI_REGISTRATION;
+import static org.smartregister.chw.hf.utils.Constants.HIV_STATUS.POSITIVE;
+import static org.smartregister.chw.hf.utils.Constants.JSON_FORM_EXTRA.HIV_STATUS;
+import static org.smartregister.chw.hf.utils.Constants.JSON_FORM_EXTRA.RISK_CATEGORY;
+import static org.smartregister.chw.hf.utils.Constants.TableName.HEI;
+import static org.smartregister.chw.hf.utils.JsonFormUtils.ENCOUNTER_TYPE;
+import static org.smartregister.util.JsonFormUtils.getFieldJSONObject;
+
 import com.vijay.jsonwizard.constants.JsonFormConstants;
 
 import org.apache.commons.lang3.StringUtils;
@@ -29,21 +45,6 @@ import java.util.Map;
 
 import timber.log.Timber;
 
-import static org.smartregister.chw.anc.util.Constants.TABLES.EC_CHILD;
-import static org.smartregister.chw.anc.util.DBConstants.KEY.DOB;
-import static org.smartregister.chw.anc.util.DBConstants.KEY.LAST_NAME;
-import static org.smartregister.chw.anc.util.DBConstants.KEY.MOTHER_ENTITY_ID;
-import static org.smartregister.chw.anc.util.DBConstants.KEY.RELATIONAL_ID;
-import static org.smartregister.chw.anc.util.DBConstants.KEY.UNIQUE_ID;
-import static org.smartregister.chw.anc.util.JsonFormUtils.updateFormField;
-import static org.smartregister.chw.hf.utils.Constants.Events.HEI_REGISTRATION;
-import static org.smartregister.chw.hf.utils.Constants.HIV_STATUS.POSITIVE;
-import static org.smartregister.chw.hf.utils.Constants.JSON_FORM_EXTRA.HIV_STATUS;
-import static org.smartregister.chw.hf.utils.Constants.JSON_FORM_EXTRA.RISK_CATEGORY;
-import static org.smartregister.chw.hf.utils.Constants.TableName.HEI;
-import static org.smartregister.chw.hf.utils.JsonFormUtils.ENCOUNTER_TYPE;
-import static org.smartregister.util.JsonFormUtils.getFieldJSONObject;
-
 public class AncRegisterInteractor extends BaseAncRegisterInteractor {
     private String locationID;
 
@@ -62,6 +63,7 @@ public class AncRegisterInteractor extends BaseAncRegisterInteractor {
                 updateFormField(jsonArray, RISK_CATEGORY, childRiskCategory);
                 updateFormField(jsonArray, UNIQUE_ID, uniqueChildID);
                 updateFormField(jsonArray, DOB, dob);
+                updateFormField(jsonArray, DELIVERY_DATE, dob);
                 updateFormField(jsonArray, LAST_NAME, lastName);
                 for (int i = 0; i < jsonArray.length(); i++) {
                     jsonObject = jsonArray.getJSONObject(i);
@@ -114,7 +116,7 @@ public class AncRegisterInteractor extends BaseAncRegisterInteractor {
                     String motherBaseId = form.optString(Constants.JSON_FORM_EXTRA.ENTITY_TYPE);
 
                     JSONArray fields = org.smartregister.util.JsonFormUtils.fields(form);
-                    JSONObject deliveryDate = getFieldJSONObject(fields, DBConstants.KEY.DELIVERY_DATE);
+                    JSONObject deliveryDate = getFieldJSONObject(fields, DELIVERY_DATE);
                     JSONObject famNameObject = getFieldJSONObject(fields, DBConstants.KEY.FAM_NAME);
                     JSONObject riskCategoryObject = getFieldJSONObject(fields, RISK_CATEGORY);
                     JSONObject hivStatusObject = getFieldJSONObject(fields, HIV_STATUS);
@@ -200,7 +202,7 @@ public class AncRegisterInteractor extends BaseAncRegisterInteractor {
     private void saveRegistration(final String jsonString, String table) throws Exception {
         AllSharedPreferences allSharedPreferences = AncLibrary.getInstance().context().allSharedPreferences();
         Event baseEvent = JsonFormUtils.processJsonForm(allSharedPreferences, jsonString, table);
-        JsonFormUtils.tagEvent(allSharedPreferences,baseEvent);
+        JsonFormUtils.tagEvent(allSharedPreferences, baseEvent);
         String syncLocationId = ChwNotificationDao.getSyncLocationId(baseEvent.getBaseEntityId());
         if (syncLocationId != null) {
             // Allows setting the ID for sync purposes

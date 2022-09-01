@@ -124,3 +124,10 @@ priority: 1
 condition: "true"
 actions:
   - "calculation = global_child_number == '1st' ? global_delivery_time : step1_child_delivery_time"
+---
+name: step1_mother_status
+description: mother_status calculation
+priority: 1
+condition: "true"
+actions:
+  - "calculation = global_mother_status"
