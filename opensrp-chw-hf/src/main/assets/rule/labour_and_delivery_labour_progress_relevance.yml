@@ -19,3 +19,10 @@ condition: "(step1_descent_presenting_part == 5 && global_partograph_duration >=
 priority: 1
 actions:
   - "isRelevant = true"
+---
+name: step1_contraction_every_half_hour_time
+description: contraction_every_half_hour_time
+condition: "step1_contraction_every_half_hour_frequency != ''"
+priority: 1
+actions:
+  - "isRelevant = true"
