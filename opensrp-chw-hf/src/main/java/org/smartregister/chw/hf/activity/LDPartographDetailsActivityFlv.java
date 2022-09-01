@@ -270,7 +270,7 @@ public class LDPartographDetailsActivityFlv extends DefaultAncMedicalHistoryActi
     }
 
     private void evaluateContraction(Context context, Map<String, String> vals, TextView tvContraction) {
-        if (StringUtils.isBlank(vals.get("contraction_every_half_hour_frequency"))) {
+        if (StringUtils.isBlank(vals.get("contraction_every_half_hour_frequency")) || StringUtils.isBlank(vals.get("contraction_every_half_hour_time"))) {
             tvContraction.setVisibility(View.GONE);
         } else {
             String contractionsTimeValue = getMapValue(vals, "contraction_every_half_hour_time");
