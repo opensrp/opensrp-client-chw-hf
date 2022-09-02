@@ -180,23 +180,23 @@
         "type": "spinner",
         "hint": "Designation of Delivery Person",
         "values": [
-          "Medical doctor",
           "Obstetrician",
-          "Assistant midwife officer",
+          "Gynecologist",
+          "Medical doctor",
+          "Assistant Nurse officer",
           "Clinical officer",
           "Midwife officer",
-          "Gynecologist",
-          "Nurse",
+          "Enrolled Nurse",
           "Student"
         ],
         "keys": [
-          "medical_doctor",
           "obstetrician",
-          "assistant_midwife_officer",
+          "gynecologist",
+          "medical_doctor",
+          "assistant_nurse_officer",
           "clinical_officer",
           "midwife_officer",
-          "gynecologist",
-          "nurse",
+          "enrolled_nurse",
           "student"
         ],
         "openmrs_choice_ids": {
