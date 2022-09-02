@@ -75,6 +75,14 @@ public class HfWebAppInterface {
     }
 
     @JavascriptInterface
+    public String getDataPeriod(String reportKey) {
+        if(reportType.equalsIgnoreCase(Constants.ReportConstants.ReportTypes.PMTCT_REPORT)){
+            return ReportUtils.getReportPeriodForCohortReport(reportKey);
+        }
+        return ReportUtils.getReportPeriod();
+    }
+
+    @JavascriptInterface
     public String getReportingFacility() {
         return getAllSharedPreferences().getPreference(DEFAULT_LOCALITY_NAME);
     }
