@@ -406,6 +406,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
                 VisitUtils.manualProcessVisit(visit);
                 //reload views after visit is processed
                 setupViews();
+                presenter().refreshProfileBottom();
             } catch (Exception e) {
                 Timber.e(e);
             }
