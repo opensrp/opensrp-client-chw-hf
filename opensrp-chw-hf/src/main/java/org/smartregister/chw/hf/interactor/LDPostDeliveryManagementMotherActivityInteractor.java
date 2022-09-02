@@ -35,6 +35,7 @@ import org.smartregister.chw.anc.util.VisitUtils;
 import org.smartregister.chw.core.dao.ChwNotificationDao;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
+import org.smartregister.chw.core.utils.CoreReferralUtils;
 import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.actionhelper.MaternalComplicationLabourActionHelper;
@@ -472,7 +473,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
     private void saveChildRegistration(final String jsonString, String table, String motherBaseId) throws Exception {
         AllSharedPreferences allSharedPreferences = AncLibrary.getInstance().context().allSharedPreferences();
         Event baseEvent = org.smartregister.chw.anc.util.JsonFormUtils.processJsonForm(allSharedPreferences, jsonString, table);
-
+        org.smartregister.chw.anc.util.JsonFormUtils.tagEvent(allSharedPreferences, baseEvent);
         String syncLocationId = ChwNotificationDao.getSyncLocationId(motherBaseId);
         if (syncLocationId != null) {
             // Allows setting the ID for sync purposes
