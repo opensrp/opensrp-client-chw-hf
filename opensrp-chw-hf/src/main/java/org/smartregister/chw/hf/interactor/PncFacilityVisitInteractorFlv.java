@@ -143,7 +143,7 @@ public class PncFacilityVisitInteractorFlv implements AncFirstFacilityVisitInter
                 actionList.put(childName, childGeneralExamination);
             } else {
                 String childName = child.getFirstName();
-                if (childName.startsWith("Baby of")) {
+                if (childName != null && childName.startsWith("Baby of")) {
                     childName = context.getString(R.string.children_general_examination_for_children_without_names, child.getFirstName(), index);
                 } else {
                     childName = context.getString(R.string.children_general_examination, child.getFirstName(), index);
