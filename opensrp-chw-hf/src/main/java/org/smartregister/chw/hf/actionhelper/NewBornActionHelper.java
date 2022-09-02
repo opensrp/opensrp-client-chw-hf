@@ -80,6 +80,7 @@ public class NewBornActionHelper implements BaseLDVisitAction.LDVisitActionHelpe
     private String number_of_nvp_days_dispensed;
     private String reason_for_not_providing_nvp_syrup;
     private String other_reason_for_not_providing_nvp_syrup;
+    private int apgarScoreAt5Minutes = -1;
 
     private String moduleCompletionStatus;
 
@@ -223,6 +224,13 @@ public class NewBornActionHelper implements BaseLDVisitAction.LDVisitActionHelpe
         apgar_appearance_score_at_5_minutes = JsonFormUtils.getFieldValue(jsonPayload, "apgar_appearance_score_at_5_minutes");
         apgar_respiration_score_at_5_minutes = JsonFormUtils.getFieldValue(jsonPayload, "apgar_respiration_score_at_5_minutes");
         resuscitation = JsonFormUtils.getFieldValue(jsonPayload, "resuscitation");
+
+        try {
+            apgarScoreAt5Minutes = Integer.parseInt(apgar_respiration_score_at_5_minutes);
+        } catch (Exception e) {
+            Timber.e(e);
+        }
+
         temperature = JsonFormUtils.getFieldValue(jsonPayload, "temperature");
         weight = JsonFormUtils.getFieldValue(jsonPayload, "weight");
         heart_rate = JsonFormUtils.getFieldValue(jsonPayload, "heart_rate");
@@ -338,13 +346,23 @@ public class NewBornActionHelper implements BaseLDVisitAction.LDVisitActionHelpe
                 StringUtils.isNotBlank(apgar_appearance_score_at_1_minute) && StringUtils.isNotBlank(apgar_respiration_score_at_1_minute) &&
                 StringUtils.isNotBlank(apgar_activity_score_at_5_minutes) && StringUtils.isNotBlank(apgar_pulse_score_at_5_minutes) &&
                 StringUtils.isNotBlank(apgar_grimace_on_stimulation_score_at_5_minutes) && StringUtils.isNotBlank(apgar_appearance_score_at_5_minutes) &&
-                StringUtils.isNotBlank(apgar_respiration_score_at_5_minutes) && StringUtils.isNotBlank(resuscitation) &&
+                StringUtils.isNotBlank(apgar_respiration_score_at_5_minutes) && resuscitationsComplete() &&
                 StringUtils.isNotBlank(temperature) && StringUtils.isNotBlank(weight) &&
                 StringUtils.isNotBlank(heart_rate) && StringUtils.isNotBlank(keep_warm) &&
                 StringUtils.isNotBlank(respiratory_rate) && StringUtils.isNotBlank(cord_bleeding) &&
                 StringUtils.isNotBlank(early_bf_1hr) && StringUtils.isNotBlank(eye_care) &&
                 StringUtils.isNotBlank(child_bcg_vaccination) && StringUtils.isNotBlank(child_opv0_vaccination));
 
+    }
+
+    private boolean resuscitationsComplete() {
+        if (apgarScoreAt5Minutes == -1) {
+            return false;
+        } else if (apgarScoreAt5Minutes > 6) {
+            return true;
+        } else {
+            return StringUtils.isNotBlank(resuscitation);
+        }
     }
 
     private boolean breastFeedingWithin1HourCompleted() {
@@ -362,7 +380,7 @@ public class NewBornActionHelper implements BaseLDVisitAction.LDVisitActionHelpe
         boolean riskCategoryCompletionStatus = false;
 
         String hivStatus = LDDao.getHivStatus(baseEntityId);
-        if(!hivStatus.equalsIgnoreCase(POSITIVE))
+        if (!hivStatus.equalsIgnoreCase(POSITIVE))
             return true;
 
         if (StringUtils.isNotBlank(risk_category)) {
