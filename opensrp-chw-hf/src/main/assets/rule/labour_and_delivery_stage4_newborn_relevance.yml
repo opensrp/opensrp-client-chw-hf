@@ -373,7 +373,7 @@ actions:
 name: step1_resuscitation
 description: resuscitation relevance
 priority: 1
-condition: "step1_newborn_status.contains('alive') && && step1_apgar_score_at_5_minute > 0  && step1_apgar_score_at_5_minute > 6"
+condition: "step1_newborn_status.contains('alive') && step1_apgar_score_at_5_minute > 0  && step1_apgar_score_at_5_minute > 6"
 actions:
   - "isRelevant = true"
 ---
