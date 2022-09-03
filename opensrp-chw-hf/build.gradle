@@ -196,7 +196,7 @@ android {
     flavorDimensions 'baseDimension'
     productFlavors {
         nacp {
-            applicationId "org.smartregister.chw.nacp.hf"
+            applicationId "org.smartregister.chw.moh.hf"
             minSdkVersion 21
             targetSdkVersion 30
             versionCode 8
