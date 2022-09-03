@@ -301,6 +301,13 @@
           "value": true,
           "err": "Please enter the weight"
         }
+      },
+      {
+        "key": "delivery_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "delivery_date",
+        "type": "hidden"
       }
     ]
   }

@@ -211,7 +211,16 @@
         "label": "Select the type of test conducted",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
+        "exclusive": [
+          "fundal_palpation"
+        ],
         "options": [
+          {
+            "key": "fundal_palpation",
+            "text": "Fundal Palpation",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "fundal_palpation"
+          },
           {
             "key": "upt",
             "text": "UPT",
@@ -228,6 +237,39 @@
         "v_required": {
           "value": "true",
           "err": "Please select the type of pregnancy conducted"
+        }
+      },
+      {
+        "key": "fundal_palpation",
+        "type": "native_radio",
+        "openmrs_entity_id": "fundal_palpation",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "label": "Fundal Palpation Results",
+        "options": [
+          {
+            "text": "Fetal parts detected",
+            "key": "fetal_parts_detected",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "fetal_parts_detected"
+          },
+          {
+            "text": "Fetal parts not detected",
+            "key": "fetal_parts_not_detected",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "fetal_parts_not_detected"
+          }
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_pregnancy_confirmation_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select the Fundal Palpation results"
         }
       },
       {

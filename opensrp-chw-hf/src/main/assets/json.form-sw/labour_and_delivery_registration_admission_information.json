@@ -307,7 +307,11 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "none"
           }
-        ]
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please fill this question"
+        }
       },
       {
         "key": "other_danger_signs",

@@ -1519,6 +1519,14 @@
           }
         },
         {
+          "column_name": "other_medical_surgical_history",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "other_medical_surgical_history"
+          }
+        },
+        {
           "column_name": "blood_group",
           "type": "Event",
           "json_mapping": {

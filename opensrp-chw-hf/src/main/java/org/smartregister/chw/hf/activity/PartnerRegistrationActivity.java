@@ -187,7 +187,7 @@ public class PartnerRegistrationActivity extends SecuredActivity implements View
         if (requestCode == EXISTING_PARTNER_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             String partner_id = data.getStringExtra(INTENT_BASE_ENTITY_ID);
             savePartnerDetails(partner_id, clientBaseEntityId);
-            startActivity(new Intent(this, AncRegisterActivity.class));
+            finish();
 
         }
         if (requestCode == NEW_PARTNER_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
@@ -205,7 +205,7 @@ public class PartnerRegistrationActivity extends SecuredActivity implements View
                     registerParam.setEditMode(false);
                     registerParam.setFormTag(OpdJsonFormUtils.formTag(OpdUtils.context().allSharedPreferences()));
                     saveForm(jsonString, registerParam);
-                    startActivity(new Intent(this, AncRegisterActivity.class));
+                    finish();
 
                 }
             } catch (JSONException e) {

@@ -330,6 +330,9 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         if (HfAncDao.isPartnerRegistered(memberObject.getBaseEntityId()) && (!partnerTestedAll || retestPartnerAt32)) {
             partnerTestingView.setVisibility(View.VISIBLE);
             partnerTestingBottomView.setVisibility(View.VISIBLE);
+        } else {
+            partnerTestingView.setVisibility(View.GONE);
+            partnerTestingBottomView.setVisibility(View.GONE);
         }
 
         this.findViewById(R.id.family_anc_head).setVisibility(View.GONE);
@@ -403,6 +406,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
                 VisitUtils.manualProcessVisit(visit);
                 //reload views after visit is processed
                 setupViews();
+                presenter().refreshProfileBottom();
             } catch (Exception e) {
                 Timber.e(e);
             }
@@ -443,6 +447,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        setupViews();
         ancMemberProfilePresenter().fetchTasks();
         if (notificationAndReferralRecyclerView != null && notificationAndReferralRecyclerView.getAdapter() != null) {
             notificationAndReferralRecyclerView.getAdapter().notifyDataSetChanged();

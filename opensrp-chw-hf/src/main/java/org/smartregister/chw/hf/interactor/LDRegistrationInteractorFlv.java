@@ -2,7 +2,6 @@ package org.smartregister.chw.hf.interactor;
 
 import static com.vijay.jsonwizard.widgets.TimePickerFactory.KEY.KEY;
 import static com.vijay.jsonwizard.widgets.TimePickerFactory.KEY.VALUE;
-
 import static org.smartregister.chw.hf.interactor.AncFirstFacilityVisitInteractorFlv.initializeHealthFacilitiesList;
 
 import android.content.Context;
@@ -15,7 +14,6 @@ import org.smartregister.chw.anc.util.AppExecutors;
 import org.smartregister.chw.core.dao.AncDao;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.core.utils.FormUtils;
-import org.smartregister.chw.hf.BuildConfig;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.actionhelper.LDRegistrationAdmissionAction;
 import org.smartregister.chw.hf.actionhelper.LDRegistrationAncClinicFindingsAction;
@@ -26,23 +24,16 @@ import org.smartregister.chw.hf.actionhelper.LDRegistrationTriageAction;
 import org.smartregister.chw.hf.actionhelper.LDRegistrationTrueLabourConfirmationAction;
 import org.smartregister.chw.hf.dao.HfAncDao;
 import org.smartregister.chw.hf.dao.HfPmtctDao;
-import org.smartregister.chw.hf.repository.HfLocationRepository;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.ld.contract.BaseLDVisitContract;
 import org.smartregister.chw.ld.domain.MemberObject;
 import org.smartregister.chw.ld.domain.VisitDetail;
 import org.smartregister.chw.ld.model.BaseLDVisitAction;
 import org.smartregister.chw.referral.util.JsonFormConstants;
-import org.smartregister.domain.Location;
-import org.smartregister.domain.LocationTag;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import timber.log.Timber;
 
@@ -66,6 +57,7 @@ public class LDRegistrationInteractorFlv implements LDRegistrationInteractor.Fla
         JSONObject parity = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "para");
         JSONObject lastMenstrualPeriod = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "last_menstrual_period");
         JSONObject pastMedicalSurgicalHistory = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "past_medical_surgical_history");
+        JSONObject otherPastMedicalSurgicalHistory = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "other_past_medical_surgical_history");
 
         gravida.put(org.smartregister.family.util.JsonFormUtils.VALUE, memberObject.getGravida());
         parity.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getParity(memberObject.getBaseEntityId()));
@@ -87,6 +79,8 @@ public class LDRegistrationInteractorFlv implements LDRegistrationInteractor.Fla
         } else {
             setCheckBoxValues(pastMedicalSurgicalHistory.getJSONArray("options"), pastMedicalAndSurgicalHistory);
         }
+        String otherPastMedicalAndSurgicalHistory = HfAncDao.getOtherMedicalAndSurgicalHistory(memberObject.getBaseEntityId());
+        otherPastMedicalSurgicalHistory.put(org.smartregister.family.util.JsonFormUtils.VALUE, otherPastMedicalAndSurgicalHistory);
     }
 
     private void setCheckBoxValues(JSONArray options, String value) {
@@ -138,8 +132,11 @@ public class LDRegistrationInteractorFlv implements LDRegistrationInteractor.Fla
 
         bloodGroup.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getBloodGroup(memberObject.getBaseEntityId()));
         rhFactor.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getRhFactor(memberObject.getBaseEntityId()));
-        if (HfAncDao.getHivStatus(memberObject.getBaseEntityId()) != null && !HfAncDao.getHivStatus(memberObject.getBaseEntityId()).equalsIgnoreCase("null"))
+        if (HfAncDao.isClientKnownOnArt(memberObject.getBaseEntityId())) {
+            pmtct.put(org.smartregister.family.util.JsonFormUtils.VALUE, "known_on_art_before_this_pregnancy");
+        } else if (HfAncDao.getHivStatus(memberObject.getBaseEntityId()) != null && !HfAncDao.getHivStatus(memberObject.getBaseEntityId()).equalsIgnoreCase("null")) {
             pmtct.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getHivStatus(memberObject.getBaseEntityId()).equalsIgnoreCase("positive") ? "positive" : "negative");
+        }
         pmtctTestDate.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getHivTestDate(memberObject.getBaseEntityId()));
         artPrescription.put(org.smartregister.family.util.JsonFormUtils.VALUE, (HfPmtctDao.isPrescribedArtRegimes(memberObject.getBaseEntityId()) || HfAncDao.isClientKnownOnArt(memberObject.getBaseEntityId())) ? "yes" : "no");
         managementProvidedForPmtct.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfPmtctDao.isRegisteredForPmtct(memberObject.getBaseEntityId()) ? "yes" : "no");

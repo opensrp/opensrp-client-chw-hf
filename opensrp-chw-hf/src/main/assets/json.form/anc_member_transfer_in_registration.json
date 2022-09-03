@@ -205,6 +205,12 @@
             "openmrs_entity_id": "hx_abortions"
           },
           {
+            "key": "other",
+            "text": "Others (Specify)",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other"
+          },
+          {
             "key": "none",
             "text": "None",
             "openmrs_entity": "concept",
@@ -214,6 +220,29 @@
         "v_required": {
           "value": "true",
           "err": "Please pick at least one"
+        }
+      },
+      {
+        "key": "other_medical_surgical_history",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_medical_surgical_history",
+        "type": "edit_text",
+        "hint": "Specify other medical and surgical history",
+        "v_required": {
+          "value": "true",
+          "err": "Please specify the other medical surgical history"
+        },
+        "relevance": {
+          "step1:medical_surgical_history": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "other"
+                ]
+              }
+            ]
+          }
         }
       },
       {
@@ -499,6 +528,84 @@
           "step2:height": {
             "type": "numeric",
             "ex": "lessThan(.,\"145\")"
+          }
+        }
+      },
+      {
+        "key": "has_the_client_received_ipt_doses_from_previous_facility",
+        "type": "native_radio",
+        "label": "Has the client has received any IPT doses in the previous clinic",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "has_the_client_received_ipt_doses_from_previous_facility",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_registration_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "last_ipt_dose_provided_from_previous_facility",
+        "type": "native_radio",
+        "label": "Please select the last IPT dose provided from the previous facility",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "last_ipt_dose_provided_from_previous_facility",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "ipt1",
+            "text": "IPT1",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "ipt1"
+          },
+          {
+            "key": "ipt2",
+            "text": "IPT2",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "ipt2"
+          },
+          {
+            "key": "ipt3",
+            "text": "IPT3",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "ipt3"
+          },
+          {
+            "key": "ipt4",
+            "text": "IPT4",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "ipt4"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_registration_relevance.yml"
+            }
           }
         }
       },

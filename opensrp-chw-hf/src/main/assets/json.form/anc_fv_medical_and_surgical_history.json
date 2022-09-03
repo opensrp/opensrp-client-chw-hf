@@ -169,8 +169,37 @@
             "text": "History of Abortions",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "hx_abortions"
+          },
+          {
+            "key": "other",
+            "text": "Others (Specify)",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other"
           }
         ]
+      },
+      {
+        "key": "other_medical_surgical_history",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_medical_surgical_history",
+        "type": "edit_text",
+        "hint": "Specify other medical and surgical history",
+        "v_required": {
+          "value": "true",
+          "err": "Please specify the other medical surgical history"
+        },
+        "relevance": {
+          "step1:medical_surgical_history": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "other"
+                ]
+              }
+            ]
+          }
+        }
       },
       {
         "key": "ctc_number",

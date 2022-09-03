@@ -6,10 +6,12 @@ import static org.smartregister.chw.anc.util.JsonFormUtils.updateFormField;
 import static org.smartregister.chw.hf.interactor.AncRegisterInteractor.populatePNCForm;
 import static org.smartregister.chw.hf.utils.Constants.Events.HEI_REGISTRATION;
 import static org.smartregister.chw.hf.utils.Constants.Events.LD_POST_DELIVERY_MOTHER_MANAGEMENT;
+import static org.smartregister.chw.hf.utils.Constants.Events.PNC_NO_MOTHER_REGISTRATION;
 import static org.smartregister.chw.hf.utils.Constants.HIV_STATUS.POSITIVE;
 import static org.smartregister.chw.hf.utils.Constants.HeiHIVTestAtAge.AT_BIRTH;
 import static org.smartregister.chw.hf.utils.Constants.TableName.HEI;
 import static org.smartregister.chw.hf.utils.Constants.TableName.HEI_FOLLOWUP;
+import static org.smartregister.chw.hf.utils.Constants.TableName.NO_MOTHER_PNC;
 import static org.smartregister.chw.hf.utils.JsonFormUtils.ENCOUNTER_TYPE;
 import static org.smartregister.chw.hf.utils.LDVisitUtils.isDeceased;
 import static org.smartregister.util.JsonFormUtils.FIELDS;
@@ -361,10 +363,15 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
                 pncForm = populatePNCForm(pncForm, obs, familyBaseEntityId, motherBaseId, childRiskCategory, uniqueChildID, dob, lastName);
                 pncForm = populateChildRegistrationForm(pncForm, obs, motherBaseId, familyBaseEntityId);
                 processChild(pncForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS), allSharedPreferences, childBaseEntityId, familyBaseEntityId, motherBaseId, uniqueChildID, lastName, dob);
-                if (pncForm != null) {
-                    saveChildRegistration(pncForm.toString(), EC_CHILD, motherBaseId);
+                saveChildRegistration(pncForm.toString(), EC_CHILD, motherBaseId);
+                String motherStatus = LDVisitUtils.getFieldValue(obs, "mother_status");
+
+                if (motherStatus != null && motherStatus.equals("died")) {
+                    pncForm.put(ENCOUNTER_TYPE, PNC_NO_MOTHER_REGISTRATION);
+                    saveChildRegistration(pncForm.toString(), NO_MOTHER_PNC, motherBaseId);
                 }
-                if (motherHivStatus.equals(POSITIVE) && pncForm != null) {
+
+                if (motherHivStatus.equals(POSITIVE)) {
                     pncForm.put(ENCOUNTER_TYPE, HEI_REGISTRATION);
                     saveChildRegistration(pncForm.toString(), HEI, motherBaseId);
 
@@ -465,7 +472,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
     private void saveChildRegistration(final String jsonString, String table, String motherBaseId) throws Exception {
         AllSharedPreferences allSharedPreferences = AncLibrary.getInstance().context().allSharedPreferences();
         Event baseEvent = org.smartregister.chw.anc.util.JsonFormUtils.processJsonForm(allSharedPreferences, jsonString, table);
-
+        org.smartregister.chw.anc.util.JsonFormUtils.tagEvent(allSharedPreferences, baseEvent);
         String syncLocationId = ChwNotificationDao.getSyncLocationId(motherBaseId);
         if (syncLocationId != null) {
             // Allows setting the ID for sync purposes
