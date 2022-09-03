@@ -200,7 +200,7 @@ android {
             minSdkVersion 21
             targetSdkVersion 30
             versionCode 8
-            versionName "1.0.8"
+            versionName "1.1.0"
             testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
             multiDexEnabled true
             buildConfigField "String", 'opensrp_url', '"http://50.116.15.4:8082/opensrp/"'
