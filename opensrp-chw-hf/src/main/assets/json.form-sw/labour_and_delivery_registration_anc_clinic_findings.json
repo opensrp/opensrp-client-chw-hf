@@ -272,7 +272,7 @@
           },
           {
             "key": "positive",
-            "text": "1",
+            "text": "1 (Diagnosed during this pregnancy)",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "positive"
           },
@@ -281,11 +281,17 @@
             "text": "2",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "negative"
+          },
+          {
+            "key": "known_on_art_before_this_pregnancy",
+            "text": "Known on ART before this pregnancy",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "known_on_art_before_this_pregnancy"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhali, chagua moja"
+          "err": "Please select one"
         }
       },
       {
@@ -319,7 +325,7 @@
         "relevance": {
           "step1:anc_hiv_status": {
             "type": "string",
-            "ex": "notEqualTo(., \"unknown\")"
+            "ex": "equalTo(., \"negative\")"
           }
         }
       },
