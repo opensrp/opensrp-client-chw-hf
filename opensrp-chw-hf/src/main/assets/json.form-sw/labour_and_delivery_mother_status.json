@@ -179,7 +179,7 @@
             "ex": "equalTo(., \"at_a_health_facility\")"
           }
         }
-      },,
+      },
       {
         "key": "name_of_delivery_person",
         "type": "edit_text",
