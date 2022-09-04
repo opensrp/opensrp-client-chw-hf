@@ -2,7 +2,6 @@ package org.smartregister.chw.hf.utils;
 
 import static org.smartregister.chw.core.utils.CoreConstants.INTENT_KEY.CLIENT;
 import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
-import static org.smartregister.opd.utils.OpdDbConstants.KEY.BASE_ENTITY_ID;
 import static org.smartregister.opd.utils.OpdDbConstants.KEY.REGISTER_TYPE;
 import static org.smartregister.util.Utils.showShortToast;
 
