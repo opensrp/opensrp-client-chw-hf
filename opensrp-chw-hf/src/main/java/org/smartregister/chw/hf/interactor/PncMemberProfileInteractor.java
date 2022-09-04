@@ -1,5 +1,7 @@
 package org.smartregister.chw.hf.interactor;
 
+import static org.smartregister.util.Utils.getName;
+
 import android.widget.TextView;
 
 import org.apache.commons.lang3.StringUtils;
@@ -23,8 +25,6 @@ import java.util.Set;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import timber.log.Timber;
-
-import static org.smartregister.util.Utils.getName;
 
 public class PncMemberProfileInteractor extends CorePncMemberProfileInteractor
         implements PncMemberProfileContract.Interactor {

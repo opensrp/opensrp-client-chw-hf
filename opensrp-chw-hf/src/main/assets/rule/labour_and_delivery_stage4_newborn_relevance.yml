@@ -370,10 +370,10 @@ condition: "step1_newborn_status == 'alive' && step1_apgar_score_at_1_minute!= '
 actions:
   - "isRelevant = true"
 ---
-name: step1_resuscitation
+name: step1_resuscitation_question
 description: resuscitation relevance
 priority: 1
-condition: "step1_newborn_status.contains('alive') && step1_apgar_score_at_5_minute > 0  && step1_apgar_score_at_5_minute > 6"
+condition: "step1_newborn_status.contains('alive') && step1_apgar_score_at_5_minutes > 0  && step1_apgar_score_at_5_minutes < 7"
 actions:
   - "isRelevant = true"
 ---

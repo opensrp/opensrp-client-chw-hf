@@ -4,6 +4,8 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+
 import org.apache.commons.text.WordUtils;
 import org.joda.time.DateTime;
 import org.joda.time.Period;
@@ -20,8 +22,6 @@ import org.smartregister.opd.utils.ConfigurationInstancesHelper;
 import org.smartregister.opd.utils.OpdDbConstants;
 
 import java.util.Map;
-
-import androidx.annotation.NonNull;
 
 public class HfOpdRegisterProvider extends OpdRegisterProvider {
     private final Context context;

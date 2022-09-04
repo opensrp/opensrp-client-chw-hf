@@ -5,6 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.holder.ReferralCardViewHolder;
 import org.smartregister.chw.hf.listener.CommunityIndexFollowupFeedbackRecyclerClickListener;
@@ -13,9 +16,6 @@ import org.smartregister.commonregistry.CommonPersonObjectClient;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 
 public class HivIndexFollowupCardViewAdapter extends RecyclerView.Adapter<ReferralCardViewHolder>{
     private List<HivIndexFollowupFeedbackDetailsModel> tasksAndFollowupFeedbackModel;

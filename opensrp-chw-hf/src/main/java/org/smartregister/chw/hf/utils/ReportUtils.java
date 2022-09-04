@@ -1,5 +1,10 @@
 package org.smartregister.chw.hf.utils;
 
+import static org.smartregister.chw.hf.utils.Constants.ReportConstants.PMTCTReportKeys.EID_MONTHLY;
+import static org.smartregister.chw.hf.utils.Constants.ReportConstants.PMTCTReportKeys.THREE_MONTHS;
+import static org.smartregister.chw.hf.utils.Constants.ReportConstants.PMTCTReportKeys.TWELVE_MONTHS;
+import static org.smartregister.chw.hf.utils.Constants.ReportConstants.PMTCTReportKeys.TWENTY_FOUR_MONTHS;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build;
@@ -8,6 +13,9 @@ import android.print.PrintDocumentAdapter;
 import android.print.PrintManager;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+
+import androidx.annotation.RequiresApi;
+import androidx.webkit.WebViewAssetLoader;
 
 import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
@@ -29,14 +37,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-import androidx.annotation.RequiresApi;
-import androidx.webkit.WebViewAssetLoader;
 import timber.log.Timber;
-
-import static org.smartregister.chw.hf.utils.Constants.ReportConstants.PMTCTReportKeys.EID_MONTHLY;
-import static org.smartregister.chw.hf.utils.Constants.ReportConstants.PMTCTReportKeys.THREE_MONTHS;
-import static org.smartregister.chw.hf.utils.Constants.ReportConstants.PMTCTReportKeys.TWELVE_MONTHS;
-import static org.smartregister.chw.hf.utils.Constants.ReportConstants.PMTCTReportKeys.TWENTY_FOUR_MONTHS;
 
 public class ReportUtils {
     private static final int year = Calendar.getInstance().get(Calendar.YEAR);

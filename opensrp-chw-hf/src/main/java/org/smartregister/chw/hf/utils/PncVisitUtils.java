@@ -2,7 +2,6 @@ package org.smartregister.chw.hf.utils;
 
 import com.google.gson.Gson;
 
-import org.apache.commons.lang3.time.DateUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -17,7 +16,6 @@ import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.clientandeventmodel.Obs;
 import org.smartregister.repository.AllSharedPreferences;
 
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;

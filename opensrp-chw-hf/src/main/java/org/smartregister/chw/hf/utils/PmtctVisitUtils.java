@@ -1,6 +1,7 @@
 package org.smartregister.chw.hf.utils;
 
-import org.apache.commons.lang3.time.DateUtils;
+import static org.smartregister.util.Utils.getAllSharedPreferences;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,8 +28,6 @@ import java.util.Locale;
 import java.util.UUID;
 
 import timber.log.Timber;
-
-import static org.smartregister.util.Utils.getAllSharedPreferences;
 
 public class PmtctVisitUtils extends VisitUtils {
     public static void processVisits() throws Exception {

@@ -1,5 +1,7 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -33,8 +35,6 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import timber.log.Timber;
-
-import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
 
 public class ReferralTaskViewActivity extends BaseReferralTaskViewActivity implements View.OnClickListener {
 

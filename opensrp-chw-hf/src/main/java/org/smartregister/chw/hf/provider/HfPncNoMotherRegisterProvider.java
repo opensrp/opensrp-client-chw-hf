@@ -1,5 +1,7 @@
 package org.smartregister.chw.hf.provider;
 
+import static org.smartregister.util.Utils.getName;
+
 import android.content.Context;
 import android.database.Cursor;
 import android.view.LayoutInflater;
@@ -26,8 +28,6 @@ import org.smartregister.view.contract.SmartRegisterClient;
 
 import java.text.MessageFormat;
 import java.util.Set;
-
-import static org.smartregister.util.Utils.getName;
 
 public class HfPncNoMotherRegisterProvider extends ChwPncRegisterProvider {
     private final LayoutInflater inflater;

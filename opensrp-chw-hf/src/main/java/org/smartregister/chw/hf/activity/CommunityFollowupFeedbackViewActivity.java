@@ -1,5 +1,9 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
+import static org.smartregister.chw.hiv.util.Constants.Tables.HIV_COMMUNITY_FEEDBACK;
+import static org.smartregister.chw.tb.util.Constants.Tables.TB_COMMUNITY_FEEDBACK;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -34,10 +38,6 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import timber.log.Timber;
-
-import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
-import static org.smartregister.chw.hiv.util.Constants.Tables.HIV_COMMUNITY_FEEDBACK;
-import static org.smartregister.chw.tb.util.Constants.Tables.TB_COMMUNITY_FEEDBACK;
 
 /**
  * Created by cozej4 on 6/21/20.

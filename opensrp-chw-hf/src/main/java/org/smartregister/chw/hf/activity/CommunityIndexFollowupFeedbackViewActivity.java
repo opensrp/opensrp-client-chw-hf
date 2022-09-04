@@ -1,5 +1,7 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,8 +18,6 @@ import org.smartregister.family.util.Utils;
 import org.smartregister.view.customcontrols.CustomFontTextView;
 
 import timber.log.Timber;
-
-import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
 
 public class CommunityIndexFollowupFeedbackViewActivity extends BaseReferralTaskViewActivity {
     public HivIndexFollowupFeedbackDetailsModel followupFeedbackDetailsModel;

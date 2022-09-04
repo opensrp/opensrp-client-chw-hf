@@ -1,5 +1,7 @@
 package org.smartregister.chw.hf.provider;
 
+import static org.smartregister.util.Utils.getName;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
@@ -30,8 +32,6 @@ import java.util.Date;
 import java.util.Set;
 
 import timber.log.Timber;
-
-import static org.smartregister.util.Utils.getName;
 
 public class HfPmtctRegisterProvider extends CorePmtctRegisterProvider {
 

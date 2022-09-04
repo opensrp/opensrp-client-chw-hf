@@ -1,14 +1,12 @@
 package org.smartregister.chw.hf.rule;
 
+import androidx.annotation.Nullable;
+
 import org.joda.time.DateTime;
 import org.joda.time.Days;
 import org.smartregister.chw.core.rule.HeiFollowupRule;
-import org.smartregister.chw.hf.dao.HeiDao;
-import org.smartregister.chw.hf.utils.Constants;
 
 import java.util.Date;
-
-import androidx.annotation.Nullable;
 
 public class HfHeiFollowupRule extends HeiFollowupRule {
     public HfHeiFollowupRule(Date startDate, @Nullable Date latestFollowupDate, String baseEntityId) {

@@ -4,13 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.fragment.app.Fragment;
-
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 
 import org.jetbrains.annotations.NotNull;
 import org.smartregister.chw.core.activity.CoreHivRegisterActivity;
-import org.smartregister.chw.hf.fragment.HivFollowupFragment;
 import org.smartregister.chw.hf.fragment.HivRegisterFragment;
 import org.smartregister.chw.hiv.fragment.BaseHivCommunityFollowupRegisterFragment;
 import org.smartregister.chw.hiv.fragment.BaseHivRegisterFragment;

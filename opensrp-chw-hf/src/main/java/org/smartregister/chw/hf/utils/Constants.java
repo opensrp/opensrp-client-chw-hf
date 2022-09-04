@@ -1,10 +1,10 @@
 package org.smartregister.chw.hf.utils;
 
-import org.smartregister.chw.core.utils.CoreConstants;
-import org.smartregister.chw.core.utils.Utils;
-
 import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.assetManager;
 import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.locale;
+
+import org.smartregister.chw.core.utils.CoreConstants;
+import org.smartregister.chw.core.utils.Utils;
 
 public class Constants extends CoreConstants {
     public static String DEFAULT_LOCATION_NAME = "default_location_name";

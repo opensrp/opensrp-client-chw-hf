@@ -5,12 +5,12 @@ import android.content.Context;
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.smartregister.chw.core.utils.CoreJsonFormUtils;
+import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.utils.HfAncJsonFormUtils;
 import org.smartregister.chw.ld.domain.MemberObject;
 import org.smartregister.chw.ld.domain.VisitDetail;
 import org.smartregister.chw.ld.model.BaseLDVisitAction;
-import org.smartregister.chw.core.utils.CoreJsonFormUtils;
-import org.smartregister.chw.hf.R;
 
 import java.util.List;
 import java.util.Map;

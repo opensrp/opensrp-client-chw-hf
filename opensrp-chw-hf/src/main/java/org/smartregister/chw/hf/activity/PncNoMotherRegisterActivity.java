@@ -1,7 +1,18 @@
 package org.smartregister.chw.hf.activity;
 
+import static com.vijay.jsonwizard.utils.FormUtils.fields;
+import static com.vijay.jsonwizard.utils.FormUtils.getFieldJSONObject;
+import static org.smartregister.chw.hf.utils.Constants.Events.PNC_NO_MOTHER_REGISTRATION;
+import static org.smartregister.chw.pmtct.util.NCUtils.getClientProcessorForJava;
+import static org.smartregister.chw.pmtct.util.NCUtils.getSyncHelper;
+import static org.smartregister.family.util.JsonFormUtils.STEP2;
+import static org.smartregister.util.JsonFormUtils.STEP1;
+import static org.smartregister.util.Utils.getAllSharedPreferences;
+
 import android.app.Activity;
 import android.content.Intent;
+
+import androidx.annotation.NonNull;
 
 import com.vijay.jsonwizard.constants.JsonFormConstants;
 import com.vijay.jsonwizard.domain.Form;
@@ -34,17 +45,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import androidx.annotation.NonNull;
 import timber.log.Timber;
-
-import static com.vijay.jsonwizard.utils.FormUtils.fields;
-import static com.vijay.jsonwizard.utils.FormUtils.getFieldJSONObject;
-import static org.smartregister.chw.hf.utils.Constants.Events.PNC_NO_MOTHER_REGISTRATION;
-import static org.smartregister.chw.pmtct.util.NCUtils.getClientProcessorForJava;
-import static org.smartregister.chw.pmtct.util.NCUtils.getSyncHelper;
-import static org.smartregister.family.util.JsonFormUtils.STEP2;
-import static org.smartregister.util.JsonFormUtils.STEP1;
-import static org.smartregister.util.Utils.getAllSharedPreferences;
 
 public class PncNoMotherRegisterActivity extends SecuredActivity {
     private static String formName;

@@ -2,7 +2,6 @@ package org.smartregister.chw.hf.repository;
 
 import net.sqlcipher.Cursor;
 
-
 import org.smartregister.domain.Location;
 import org.smartregister.domain.LocationTag;
 import org.smartregister.repository.LocationRepository;

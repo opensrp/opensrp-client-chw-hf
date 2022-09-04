@@ -2,11 +2,11 @@ package org.smartregister.chw.hf.job;
 
 import android.content.Intent;
 
+import androidx.annotation.NonNull;
+
 import org.smartregister.AllConstants;
 import org.smartregister.chw.hf.sync.intent.ProcessVisitsIntentService;
 import org.smartregister.job.BaseJob;
-
-import androidx.annotation.NonNull;
 
 public class ProcessVisitsServiceJob extends BaseJob {
 

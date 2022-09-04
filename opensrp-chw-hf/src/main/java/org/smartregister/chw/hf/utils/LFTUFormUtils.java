@@ -3,6 +3,8 @@ package org.smartregister.chw.hf.utils;
 import android.app.Activity;
 import android.os.Build;
 
+import androidx.annotation.RequiresApi;
+
 import com.vijay.jsonwizard.utils.FormUtils;
 
 import org.json.JSONArray;
@@ -10,7 +12,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.hf.activity.ReferralRegistrationActivity;
 
-import androidx.annotation.RequiresApi;
 import timber.log.Timber;
 
 public class LFTUFormUtils {

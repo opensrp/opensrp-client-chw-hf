@@ -5,6 +5,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.core.content.ContextCompat;
+
 import org.joda.time.DateTime;
 import org.joda.time.Years;
 import org.smartregister.chw.core.holders.ReferralViewHolder;
@@ -21,8 +23,6 @@ import org.smartregister.family.util.Utils;
 import org.smartregister.repository.LocationRepository;
 
 import java.util.Locale;
-
-import androidx.core.content.ContextCompat;
 
 public class ReferralsRegisterProvider extends BaseReferralRegisterProvider {
     private final Context context;
