@@ -1095,6 +1095,20 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "resuscitation",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "resuscitation_question",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "resuscitation_question",
         "label": "Resuscitation (Choose the last method done)",
         "type": "native_radio",
         "label_text_style": "normal",
