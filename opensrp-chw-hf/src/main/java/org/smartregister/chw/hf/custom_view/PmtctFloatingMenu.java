@@ -1,5 +1,7 @@
 package org.smartregister.chw.hf.custom_view;
 
+import static org.smartregister.chw.core.utils.Utils.redrawWithOption;
+
 import android.app.Activity;
 import android.content.Context;
 import android.view.View;
@@ -17,8 +19,6 @@ import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.activity.HeiProfileActivity;
 import org.smartregister.chw.pmtct.domain.MemberObject;
 import org.smartregister.chw.pmtct.fragment.BasePmtctCallDialogFragment;
-
-import static org.smartregister.chw.core.utils.Utils.redrawWithOption;
 
 public class PmtctFloatingMenu extends CorePmtctFloatingMenu {
     public FloatingActionButton fab;

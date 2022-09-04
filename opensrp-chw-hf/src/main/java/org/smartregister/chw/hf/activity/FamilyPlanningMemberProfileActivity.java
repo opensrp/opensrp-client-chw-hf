@@ -1,5 +1,7 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
@@ -27,8 +29,6 @@ import org.smartregister.domain.Task;
 import java.util.Set;
 
 import timber.log.Timber;
-
-import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
 
 public class FamilyPlanningMemberProfileActivity extends CoreFamilyPlanningMemberProfileActivity implements FamilyPlanningMemberProfileContract.View {
 

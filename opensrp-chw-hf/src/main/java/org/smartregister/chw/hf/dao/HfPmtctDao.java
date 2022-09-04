@@ -3,7 +3,6 @@ package org.smartregister.chw.hf.dao;
 import org.joda.time.LocalDate;
 import org.joda.time.Months;
 import org.smartregister.chw.core.dao.CorePmtctDao;
-import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.pmtct.domain.MemberObject;
 
 import java.text.ParseException;

@@ -3,6 +3,10 @@ package org.smartregister.chw.hf.fragment;
 import android.database.Cursor;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.loader.content.CursorLoader;
+import androidx.loader.content.Loader;
+
 import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.Nullable;
 import org.smartregister.chw.anc.util.DBConstants;
@@ -30,9 +34,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
-import androidx.annotation.NonNull;
-import androidx.loader.content.CursorLoader;
-import androidx.loader.content.Loader;
 import timber.log.Timber;
 
 public class HtsRegisterFragment extends CoreHivRegisterFragment {

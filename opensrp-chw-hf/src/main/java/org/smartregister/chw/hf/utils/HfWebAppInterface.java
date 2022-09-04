@@ -1,13 +1,13 @@
 package org.smartregister.chw.hf.utils;
 
-import android.content.Context;
-import android.webkit.JavascriptInterface;
-
 import static org.smartregister.chw.hf.utils.Constants.ReportConstants.PMTCTReportKeys.EID_MONTHLY;
 import static org.smartregister.chw.hf.utils.Constants.ReportConstants.PMTCTReportKeys.THREE_MONTHS;
 import static org.smartregister.chw.hf.utils.Constants.ReportConstants.PMTCTReportKeys.TWELVE_MONTHS;
 import static org.smartregister.chw.hf.utils.Constants.ReportConstants.PMTCTReportKeys.TWENTY_FOUR_MONTHS;
 import static org.smartregister.util.Utils.getAllSharedPreferences;
+
+import android.content.Context;
+import android.webkit.JavascriptInterface;
 
 public class HfWebAppInterface {
     private static final String DEFAULT_LOCALITY_NAME = "dfltLocName";

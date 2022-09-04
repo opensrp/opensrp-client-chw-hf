@@ -1,5 +1,12 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.AllConstants.LocationConstants.SPECIAL_TAG_FOR_OPENMRS_TEAM_MEMBERS;
+import static org.smartregister.chw.core.utils.CoreConstants.EventType.PMTCT_COMMUNITY_FOLLOWUP;
+import static org.smartregister.chw.hf.utils.Constants.JsonFormConstants.STEP1;
+import static org.smartregister.chw.hf.utils.JsonFormUtils.SYNC_LOCATION_ID;
+import static org.smartregister.chw.hf.utils.JsonFormUtils.getAutoPopulatedJsonEditFormString;
+import static org.smartregister.util.JsonFormUtils.VALUE;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -15,10 +22,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.vijay.jsonwizard.utils.FormUtils;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.time.DateUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -72,17 +82,7 @@ import java.util.Locale;
 
 import javax.annotation.Nullable;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.recyclerview.widget.RecyclerView;
 import timber.log.Timber;
-
-import static org.smartregister.AllConstants.LocationConstants.SPECIAL_TAG_FOR_OPENMRS_TEAM_MEMBERS;
-import static org.smartregister.chw.core.utils.CoreConstants.EventType.PMTCT_COMMUNITY_FOLLOWUP;
-import static org.smartregister.chw.hf.utils.Constants.JsonFormConstants.STEP1;
-import static org.smartregister.chw.hf.utils.JsonFormUtils.SYNC_LOCATION_ID;
-import static org.smartregister.chw.hf.utils.JsonFormUtils.getAutoPopulatedJsonEditFormString;
-import static org.smartregister.util.JsonFormUtils.VALUE;
 
 public class PmtctProfileActivity extends CorePmtctProfileActivity {
     private static String baseEntityId;

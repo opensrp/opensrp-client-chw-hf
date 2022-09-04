@@ -1,10 +1,30 @@
 package org.smartregister.chw.hf.activity;
 
+import static com.vijay.jsonwizard.utils.FormUtils.fields;
+import static com.vijay.jsonwizard.utils.FormUtils.getFieldJSONObject;
+import static org.smartregister.AllConstants.LocationConstants.SPECIAL_TAG_FOR_OPENMRS_TEAM_MEMBERS;
+import static org.smartregister.chw.hf.utils.Constants.Events.PARTNER_REGISTRATION_EVENT;
+import static org.smartregister.chw.hf.utils.Constants.PartnerRegistrationConstants.EXISTING_PARTNER_REQUEST_CODE;
+import static org.smartregister.chw.hf.utils.Constants.PartnerRegistrationConstants.INTENT_BASE_ENTITY_ID;
+import static org.smartregister.chw.hf.utils.Constants.PartnerRegistrationConstants.NEW_PARTNER_REQUEST_CODE;
+import static org.smartregister.chw.hf.utils.Constants.PartnerRegistrationConstants.PARTNER_BASE_ENTITY_ID;
+import static org.smartregister.chw.hf.utils.JsonFormUtils.METADATA;
+import static org.smartregister.chw.hf.utils.JsonFormUtils.SYNC_LOCATION_ID;
+import static org.smartregister.chw.pmtct.util.NCUtils.getClientProcessorForJava;
+import static org.smartregister.chw.pmtct.util.NCUtils.getSyncHelper;
+import static org.smartregister.family.util.JsonFormUtils.STEP2;
+import static org.smartregister.util.JsonFormUtils.ENCOUNTER_LOCATION;
+import static org.smartregister.util.JsonFormUtils.STEP1;
+import static org.smartregister.util.Utils.getAllSharedPreferences;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.vijay.jsonwizard.constants.JsonFormConstants;
 import com.vijay.jsonwizard.domain.Form;
@@ -43,26 +63,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
-import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import timber.log.Timber;
-
-import static com.vijay.jsonwizard.utils.FormUtils.fields;
-import static com.vijay.jsonwizard.utils.FormUtils.getFieldJSONObject;
-import static org.smartregister.AllConstants.LocationConstants.SPECIAL_TAG_FOR_OPENMRS_TEAM_MEMBERS;
-import static org.smartregister.chw.hf.utils.Constants.Events.PARTNER_REGISTRATION_EVENT;
-import static org.smartregister.chw.hf.utils.Constants.PartnerRegistrationConstants.EXISTING_PARTNER_REQUEST_CODE;
-import static org.smartregister.chw.hf.utils.Constants.PartnerRegistrationConstants.INTENT_BASE_ENTITY_ID;
-import static org.smartregister.chw.hf.utils.Constants.PartnerRegistrationConstants.NEW_PARTNER_REQUEST_CODE;
-import static org.smartregister.chw.hf.utils.Constants.PartnerRegistrationConstants.PARTNER_BASE_ENTITY_ID;
-import static org.smartregister.chw.hf.utils.JsonFormUtils.METADATA;
-import static org.smartregister.chw.hf.utils.JsonFormUtils.SYNC_LOCATION_ID;
-import static org.smartregister.chw.pmtct.util.NCUtils.getClientProcessorForJava;
-import static org.smartregister.chw.pmtct.util.NCUtils.getSyncHelper;
-import static org.smartregister.family.util.JsonFormUtils.STEP2;
-import static org.smartregister.util.JsonFormUtils.ENCOUNTER_LOCATION;
-import static org.smartregister.util.JsonFormUtils.STEP1;
-import static org.smartregister.util.Utils.getAllSharedPreferences;
 
 public class PartnerRegistrationActivity extends SecuredActivity implements View.OnClickListener {
 

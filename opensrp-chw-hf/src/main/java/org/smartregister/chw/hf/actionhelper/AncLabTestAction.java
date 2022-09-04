@@ -14,7 +14,6 @@ import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.utils.VisitUtils;
 import org.smartregister.family.util.JsonFormUtils;
 
-import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

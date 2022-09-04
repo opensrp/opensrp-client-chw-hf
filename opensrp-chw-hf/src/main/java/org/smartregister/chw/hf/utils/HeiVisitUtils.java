@@ -2,7 +2,6 @@ package org.smartregister.chw.hf.utils;
 
 import com.google.gson.Gson;
 
-import org.apache.commons.lang3.time.DateUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.smartregister.chw.anc.AncLibrary;

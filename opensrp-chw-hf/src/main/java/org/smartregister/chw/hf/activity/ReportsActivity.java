@@ -6,16 +6,16 @@ import android.os.Build;
 import android.view.Menu;
 import android.view.View;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import com.google.android.material.appbar.AppBarLayout;
 
 import org.smartregister.chw.core.job.ChwIndicatorGeneratingJob;
 import org.smartregister.chw.hf.R;
 import org.smartregister.view.activity.SecuredActivity;
 import org.smartregister.view.customcontrols.CustomFontTextView;
-
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.Toolbar;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 public class ReportsActivity extends SecuredActivity implements View.OnClickListener {
     protected CustomFontTextView toolBarTextView;

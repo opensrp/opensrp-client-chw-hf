@@ -1,5 +1,7 @@
 package org.smartregister.chw.hf.utils;
 
+import static org.smartregister.AllConstants.LocationConstants.SPECIAL_TAG_FOR_OPENMRS_TEAM_MEMBERS;
+
 import android.content.Context;
 import android.util.Pair;
 
@@ -31,8 +33,6 @@ import org.smartregister.view.LocationPickerView;
 import java.util.Collections;
 
 import timber.log.Timber;
-
-import static org.smartregister.AllConstants.LocationConstants.SPECIAL_TAG_FOR_OPENMRS_TEAM_MEMBERS;
 
 /**
  * Created by keyman on 13/11/2018.

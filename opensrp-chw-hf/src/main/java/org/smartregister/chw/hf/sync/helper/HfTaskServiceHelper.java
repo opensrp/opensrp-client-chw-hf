@@ -1,5 +1,7 @@
 package org.smartregister.chw.hf.sync.helper;
 
+import androidx.annotation.NonNull;
+
 import org.smartregister.CoreLibrary;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.location.helper.LocationHelper;
@@ -10,8 +12,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
-
-import androidx.annotation.NonNull;
 
 public class HfTaskServiceHelper extends TaskServiceHelper {
 

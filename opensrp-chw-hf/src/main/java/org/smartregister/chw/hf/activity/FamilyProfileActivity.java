@@ -7,6 +7,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
+
 import org.smartregister.chw.anc.activity.BaseAncMemberProfileActivity;
 import org.smartregister.chw.core.activity.CoreAboveFiveChildProfileActivity;
 import org.smartregister.chw.core.activity.CoreChildProfileActivity;
@@ -28,9 +31,6 @@ import org.smartregister.family.adapter.ViewPagerAdapter;
 import org.smartregister.family.util.Constants;
 
 import java.util.HashMap;
-
-import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
 
 public class FamilyProfileActivity extends CoreFamilyProfileActivity {
     private TextView tvEventDate;

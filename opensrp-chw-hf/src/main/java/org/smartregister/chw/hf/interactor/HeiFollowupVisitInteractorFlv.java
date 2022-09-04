@@ -1,5 +1,8 @@
 package org.smartregister.chw.hf.interactor;
 
+import static org.smartregister.chw.core.utils.Utils.getCommonPersonObjectClient;
+import static org.smartregister.chw.core.utils.Utils.getDuration;
+
 import android.content.Context;
 
 import org.apache.commons.lang3.StringUtils;
@@ -42,9 +45,6 @@ import java.util.Map;
 import java.util.Set;
 
 import timber.log.Timber;
-
-import static org.smartregister.chw.core.utils.Utils.getCommonPersonObjectClient;
-import static org.smartregister.chw.core.utils.Utils.getDuration;
 
 public class HeiFollowupVisitInteractorFlv implements PmtctFollowupVisitInteractor.Flavor {
     LinkedHashMap<String, BasePmtctHomeVisitAction> actionList = new LinkedHashMap<>();

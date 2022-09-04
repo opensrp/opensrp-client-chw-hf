@@ -1,5 +1,8 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
+import static org.smartregister.chw.malaria.util.Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,9 +31,6 @@ import org.smartregister.family.util.Utils;
 import java.util.Set;
 
 import timber.log.Timber;
-
-import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
-import static org.smartregister.chw.malaria.util.Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID;
 
 public class MalariaProfileActivity extends CoreMalariaProfileActivity implements MalariaProfileContract.InteractorCallback {
 

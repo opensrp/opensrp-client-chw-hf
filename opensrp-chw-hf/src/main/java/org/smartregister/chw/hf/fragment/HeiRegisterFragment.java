@@ -6,6 +6,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import androidx.appcompat.widget.Toolbar;
+import androidx.loader.content.CursorLoader;
+import androidx.loader.content.Loader;
+
 import com.google.android.material.tabs.TabLayout;
 
 import org.apache.commons.lang3.StringUtils;
@@ -27,9 +31,6 @@ import org.smartregister.view.customcontrols.CustomFontTextView;
 import java.text.MessageFormat;
 import java.util.Set;
 
-import androidx.appcompat.widget.Toolbar;
-import androidx.loader.content.CursorLoader;
-import androidx.loader.content.Loader;
 import timber.log.Timber;
 
 public class HeiRegisterFragment extends BasePmtctRegisterFragment {

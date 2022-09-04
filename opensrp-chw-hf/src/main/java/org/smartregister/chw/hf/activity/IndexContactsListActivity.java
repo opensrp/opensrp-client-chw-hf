@@ -1,5 +1,7 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.hiv.util.Constants.ActivityPayload.HIV_MEMBER_OBJECT;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,8 +11,6 @@ import org.smartregister.chw.hf.presenter.IndexContactsListActivityPresenter;
 import org.smartregister.chw.hiv.activity.BaseIndexContactsListActivity;
 import org.smartregister.chw.hiv.domain.HivMemberObject;
 import org.smartregister.chw.hiv.interactor.BaseHivIndexContactsListInteractor;
-
-import static org.smartregister.chw.hiv.util.Constants.ActivityPayload.HIV_MEMBER_OBJECT;
 
 public class IndexContactsListActivity extends BaseIndexContactsListActivity {
 

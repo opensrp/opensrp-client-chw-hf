@@ -1,10 +1,14 @@
 package org.smartregister.chw.hf.provider;
 
+import static org.smartregister.chw.hf.utils.Constants.PartnerRegistrationConstants.INTENT_BASE_ENTITY_ID;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
+
+import androidx.annotation.NonNull;
 
 import org.apache.commons.text.WordUtils;
 import org.joda.time.DateTime;
@@ -20,10 +24,6 @@ import org.smartregister.opd.provider.OpdRegisterProvider;
 import org.smartregister.opd.utils.ConfigurationInstancesHelper;
 
 import java.util.Map;
-
-import androidx.annotation.NonNull;
-
-import static org.smartregister.chw.hf.utils.Constants.PartnerRegistrationConstants.INTENT_BASE_ENTITY_ID;
 
 public class HfMaleClientRegisterProvider extends OpdRegisterProvider {
     private final Context context;

@@ -5,6 +5,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.MenuItem;
 
+import androidx.annotation.MenuRes;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.vijay.jsonwizard.constants.JsonFormConstants;
 import com.vijay.jsonwizard.domain.Form;
@@ -34,9 +38,6 @@ import org.smartregister.view.fragment.BaseRegisterFragment;
 import java.util.HashMap;
 import java.util.Map;
 
-import androidx.annotation.MenuRes;
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import timber.log.Timber;
 
 public class PncRegisterActivity extends CorePncRegisterActivity implements BottomNavigationView.OnNavigationItemSelectedListener {

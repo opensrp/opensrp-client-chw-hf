@@ -1,5 +1,8 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.core.utils.Utils.getCommonPersonObjectClient;
+import static org.smartregister.chw.core.utils.Utils.getDuration;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -29,9 +32,6 @@ import java.util.Date;
 import java.util.LinkedHashMap;
 
 import timber.log.Timber;
-
-import static org.smartregister.chw.core.utils.Utils.getCommonPersonObjectClient;
-import static org.smartregister.chw.core.utils.Utils.getDuration;
 
 public class HeiFollowupVisitActivity extends BasePmtctHomeVisitActivity {
     public static void startHeiFollowUpActivity(Activity activity, String baseEntityID, Boolean editMode) {

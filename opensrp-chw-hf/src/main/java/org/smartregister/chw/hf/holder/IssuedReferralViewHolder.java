@@ -3,10 +3,10 @@ package org.smartregister.chw.hf.holder;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
 import org.smartregister.chw.core.holders.ReferralViewHolder;
 import org.smartregister.chw.hf.R;
-
-import androidx.annotation.NonNull;
 
 public class IssuedReferralViewHolder extends ReferralViewHolder {
     public TextView patientName;

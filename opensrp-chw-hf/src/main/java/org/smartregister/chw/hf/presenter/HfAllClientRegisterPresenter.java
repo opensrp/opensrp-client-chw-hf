@@ -1,14 +1,11 @@
 package org.smartregister.chw.hf.presenter;
 
-import android.app.Activity;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.Triple;
 import org.json.JSONObject;
-
 import org.smartregister.chw.core.presenter.CoreAllClientsRegisterPresenter;
 import org.smartregister.chw.hf.interactor.HfAllClientsRegisterInteractor;
 import org.smartregister.domain.FetchStatus;

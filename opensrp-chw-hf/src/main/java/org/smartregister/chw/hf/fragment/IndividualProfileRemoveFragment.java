@@ -1,5 +1,7 @@
 package org.smartregister.chw.hf.fragment;
 
+import static org.smartregister.chw.core.utils.CoreReferralUtils.getCommonRepository;
+
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -26,8 +28,6 @@ import org.smartregister.family.util.Constants;
 import org.smartregister.family.util.DBConstants;
 
 import java.util.Set;
-
-import static org.smartregister.chw.core.utils.CoreReferralUtils.getCommonRepository;
 
 public class IndividualProfileRemoveFragment extends CoreIndividualProfileRemoveFragment {
 

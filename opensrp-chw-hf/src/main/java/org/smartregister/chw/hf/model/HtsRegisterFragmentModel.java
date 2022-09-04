@@ -1,6 +1,8 @@
 package org.smartregister.chw.hf.model;
 
 
+import androidx.annotation.NonNull;
+
 import org.jetbrains.annotations.NotNull;
 import org.smartregister.chw.core.utils.ChildDBConstants;
 import org.smartregister.chw.core.utils.CoreConstants;
@@ -11,8 +13,6 @@ import org.smartregister.family.util.DBConstants;
 
 import java.util.HashSet;
 import java.util.Set;
-
-import androidx.annotation.NonNull;
 
 public class HtsRegisterFragmentModel extends BaseHivRegisterFragmentModel {
 

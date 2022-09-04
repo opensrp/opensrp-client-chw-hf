@@ -1,5 +1,7 @@
 package org.smartregister.chw.hf.fragment;
 
+import static androidx.core.content.ContextCompat.getSystemService;
+
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -31,8 +33,6 @@ import org.smartregister.view.fragment.BaseRegisterFragment;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static androidx.core.content.ContextCompat.getSystemService;
 
 public class AdvancedSearchFragment extends BaseRegisterFragment implements AdvancedSearchContract.View {
 

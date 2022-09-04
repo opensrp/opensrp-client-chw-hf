@@ -1,5 +1,9 @@
 package org.smartregister.chw.hf.interactor;
 
+import static org.smartregister.chw.anc.util.VisitUtils.getVisitDetailsOnly;
+import static org.smartregister.chw.anc.util.VisitUtils.getVisitGroups;
+import static org.smartregister.chw.anc.util.VisitUtils.getVisitsOnly;
+
 import android.content.Context;
 
 import org.smartregister.chw.anc.contract.BaseAncMedicalHistoryContract;
@@ -11,10 +15,6 @@ import org.smartregister.chw.hf.utils.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.smartregister.chw.anc.util.VisitUtils.getVisitDetailsOnly;
-import static org.smartregister.chw.anc.util.VisitUtils.getVisitGroups;
-import static org.smartregister.chw.anc.util.VisitUtils.getVisitsOnly;
 
 public class AncMedicalHistoryInteractor extends CoreBaseAncMedicalHistoryInteractor {
     @Override
@@ -40,14 +40,14 @@ public class AncMedicalHistoryInteractor extends CoreBaseAncMedicalHistoryIntera
     public static List<Visit> getVisits(String memberID, String... eventTypes) {
 
         List<Visit> visits = new ArrayList<>();
-              if(eventTypes != null && eventTypes.length > 0) {
-                    for (String eventType : eventTypes) {
-                        List<Visit>  visit= getVisitsOnly(memberID, eventType);
-                        visits.addAll(visit);
-                    }
-              } else{
-                getVisitsOnly(memberID, Constants.Events.ANC_FIRST_FACILITY_VISIT);
-              }
+        if (eventTypes != null && eventTypes.length > 0) {
+            for (String eventType : eventTypes) {
+                List<Visit> visit = getVisitsOnly(memberID, eventType);
+                visits.addAll(visit);
+            }
+        } else {
+            getVisitsOnly(memberID, Constants.Events.ANC_FIRST_FACILITY_VISIT);
+        }
 
         int x = 0;
         while (visits.size() > x) {

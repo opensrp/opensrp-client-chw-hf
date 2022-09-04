@@ -1,12 +1,13 @@
 package org.smartregister.chw.hf.utils;
 
+import static org.smartregister.chw.anc.util.NCUtils.getSyncHelper;
+
 import android.content.Context;
 import android.content.Intent;
 
 import com.google.gson.Gson;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.time.DateUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,8 +34,6 @@ import java.util.Map;
 import java.util.UUID;
 
 import timber.log.Timber;
-
-import static org.smartregister.chw.anc.util.NCUtils.getSyncHelper;
 
 public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
     public static String Complete = "complete";

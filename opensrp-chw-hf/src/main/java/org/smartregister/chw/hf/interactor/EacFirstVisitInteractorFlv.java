@@ -5,7 +5,6 @@ import android.content.Context;
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.smartregister.chw.pmtct.util.JsonFormUtils;
 import org.smartregister.chw.core.interactor.CorePmtctHomeVisitInteractor;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.core.utils.FormUtils;
@@ -17,6 +16,7 @@ import org.smartregister.chw.pmtct.domain.MemberObject;
 import org.smartregister.chw.pmtct.domain.Visit;
 import org.smartregister.chw.pmtct.domain.VisitDetail;
 import org.smartregister.chw.pmtct.model.BasePmtctHomeVisitAction;
+import org.smartregister.chw.pmtct.util.JsonFormUtils;
 import org.smartregister.chw.pmtct.util.VisitUtils;
 
 import java.text.MessageFormat;

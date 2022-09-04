@@ -1,9 +1,11 @@
 package org.smartregister.chw.hf.interactor;
 
+import static org.smartregister.client.utils.constants.JsonFormConstants.STEP1;
+import static org.smartregister.client.utils.constants.JsonFormConstants.VALUE;
+
 import org.json.JSONObject;
 import org.smartregister.chw.anc.util.JsonFormUtils;
 import org.smartregister.chw.anc.util.NCUtils;
-import org.smartregister.chw.core.dao.ChwNotificationDao;
 import org.smartregister.chw.core.interactor.CorePmtctProfileInteractor;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
@@ -13,9 +15,6 @@ import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.repository.AllSharedPreferences;
 
 import timber.log.Timber;
-
-import static org.smartregister.client.utils.constants.JsonFormConstants.STEP1;
-import static org.smartregister.client.utils.constants.JsonFormConstants.VALUE;
 
 public class PmtctProfileInteractor extends CorePmtctProfileInteractor {
     public void createPmtctCommunityFollowupReferralEvent(AllSharedPreferences allSharedPreferences, String jsonString, String entityID) {

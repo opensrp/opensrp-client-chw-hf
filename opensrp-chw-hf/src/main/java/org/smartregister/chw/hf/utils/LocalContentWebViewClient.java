@@ -5,11 +5,11 @@ import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 
-import org.smartregister.chw.hf.activity.PmtctReportsViewActivity;
-
 import androidx.annotation.RequiresApi;
 import androidx.webkit.WebViewAssetLoader;
 import androidx.webkit.WebViewClientCompat;
+
+import org.smartregister.chw.hf.activity.PmtctReportsViewActivity;
 
 public class LocalContentWebViewClient extends WebViewClientCompat {
     private final WebViewAssetLoader mAssetLoader;

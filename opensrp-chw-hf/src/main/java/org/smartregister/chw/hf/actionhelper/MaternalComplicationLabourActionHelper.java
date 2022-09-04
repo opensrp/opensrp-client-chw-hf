@@ -6,7 +6,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.utils.HfAncJsonFormUtils;
 import org.smartregister.chw.ld.domain.VisitDetail;

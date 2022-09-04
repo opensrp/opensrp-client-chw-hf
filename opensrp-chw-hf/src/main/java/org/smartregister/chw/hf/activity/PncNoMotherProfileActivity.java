@@ -1,5 +1,9 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.core.utils.Utils.getDuration;
+import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
+import static org.smartregister.util.Utils.getName;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Gravity;
@@ -32,10 +36,6 @@ import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.util.Utils;
 
 import timber.log.Timber;
-
-import static org.smartregister.chw.core.utils.Utils.getDuration;
-import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
-import static org.smartregister.util.Utils.getName;
 
 public class PncNoMotherProfileActivity extends PncMemberProfileActivity {
     private static String caregiverName;

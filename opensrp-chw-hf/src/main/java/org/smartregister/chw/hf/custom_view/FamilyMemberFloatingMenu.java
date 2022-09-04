@@ -1,13 +1,13 @@
 package org.smartregister.chw.hf.custom_view;
 
+import static org.smartregister.chw.core.utils.Utils.redrawWithOption;
+
 import android.content.Context;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.smartregister.chw.core.custom_views.CoreFamilyMemberFloatingMenu;
 import org.smartregister.chw.hf.R;
-
-import static org.smartregister.chw.core.utils.Utils.redrawWithOption;
 
 public class FamilyMemberFloatingMenu extends CoreFamilyMemberFloatingMenu {
     public FamilyMemberFloatingMenu(Context context) {
