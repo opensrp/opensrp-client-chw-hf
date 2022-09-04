@@ -2,6 +2,7 @@ package org.smartregister.chw.hf.utils;
 
 import static org.smartregister.chw.core.utils.CoreConstants.INTENT_KEY.CLIENT;
 import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
+import static org.smartregister.opd.utils.OpdDbConstants.KEY.BASE_ENTITY_ID;
 import static org.smartregister.opd.utils.OpdDbConstants.KEY.REGISTER_TYPE;
 import static org.smartregister.util.Utils.showShortToast;
 
@@ -136,7 +137,7 @@ public class AllClientsUtils {
     }
 
     private static void goToLDProfile(Activity activity, CommonPersonObjectClient patient) {
-        LDProfileActivity.startProfileActivity(activity, patient.entityId());
+        LDProfileActivity.startProfileActivity(activity, patient.getCaseId());
     }
 
     private static Intent initProfileActivityIntent(Activity activity, CommonPersonObjectClient patient, Bundle bundle, Class clazz) {
