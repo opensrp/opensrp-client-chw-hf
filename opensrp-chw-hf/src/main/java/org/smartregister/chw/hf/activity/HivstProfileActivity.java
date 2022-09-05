@@ -3,13 +3,8 @@ package org.smartregister.chw.hf.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.Toast;
-
-import com.sun.xml.bind.v2.TODO;
 
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
@@ -22,9 +17,7 @@ import org.smartregister.chw.core.presenter.CoreHivstMemberProfilePresenter;
 import org.smartregister.chw.core.utils.FormUtils;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hiv.dao.HivDao;
-import org.smartregister.chw.hivst.custom_views.BaseHivstFloatingMenu;
 import org.smartregister.chw.hivst.dao.HivstDao;
-import org.smartregister.chw.hivst.listener.OnClickFloatingMenu;
 import org.smartregister.chw.hivst.util.Constants;
 import org.smartregister.domain.AlertStatus;
 
