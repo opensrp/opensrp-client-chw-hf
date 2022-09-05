@@ -837,6 +837,13 @@
             "creates_case":[
               "ec_hivst_mobilization"
             ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "HTS Registration",
+            "creates_case":[
+              "ec_hts_register"
+            ]
           }
         ]
       }
