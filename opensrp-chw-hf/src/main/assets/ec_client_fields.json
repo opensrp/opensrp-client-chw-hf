@@ -408,11 +408,11 @@
         },
         {
           "column_name": "form_submission_timestamp",
-            "type": "Event",
-            "json_mapping": {
-              "field": "obs.fieldCode",
-              "concept": "form_submission_timestamp"
-            }
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "form_submission_timestamp"
+          }
         }
       ]
     },
@@ -6839,7 +6839,7 @@
           }
         },
         {
-          "column_name":  "kit_for",
+          "column_name": "kit_for",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
@@ -6861,6 +6861,22 @@
             "field": "obs.fieldCode",
             "concept": "hivst_result"
           }
+        },
+        {
+          "column_name": "collection_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "collection_date"
+          }
+        },
+        {
+          "column_name": "result_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "result_date"
+          }
         }
       ]
     },
@@ -6875,7 +6891,7 @@
           }
         },
         {
-          "column_name":  "mobilization_date",
+          "column_name": "mobilization_date",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
@@ -6883,7 +6899,7 @@
           }
         },
         {
-          "column_name":  "female_clients_reached",
+          "column_name": "female_clients_reached",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
@@ -6891,7 +6907,7 @@
           }
         },
         {
-          "column_name":  "male_clients_reached",
+          "column_name": "male_clients_reached",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
@@ -6899,7 +6915,7 @@
           }
         },
         {
-          "column_name":  "male_condoms_issued",
+          "column_name": "male_condoms_issued",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
@@ -6907,7 +6923,7 @@
           }
         },
         {
-          "column_name":  "female_condoms_issued",
+          "column_name": "female_condoms_issued",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
@@ -6915,7 +6931,6 @@
           }
         }
       ]
-
     }
   ]
 }
