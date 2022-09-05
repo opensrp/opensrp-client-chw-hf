@@ -258,6 +258,20 @@
             }
           }
         }
+      },
+      {
+        "key": "register_to_hts",
+        "type": "hidden",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "register_to_hts",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "hivst_results_calculation.yml"
+            }
+          }
+        }
       }
     ]
   }
