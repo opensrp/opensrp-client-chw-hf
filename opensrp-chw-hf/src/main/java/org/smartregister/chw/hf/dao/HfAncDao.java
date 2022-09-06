@@ -260,6 +260,23 @@ public class HfAncDao extends AbstractDao {
         return "null";
     }
 
+    public static String malariaLastIptDose(String baseEntityId) {
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "malaria_preventive_therapy");
+
+        String sql = String.format(
+                "SELECT malaria_preventive_therapy FROM %s WHERE base_entity_id = '%s' " +
+                        "AND is_closed = 0",
+                "ec_anc_register",
+                baseEntityId
+        );
+
+        List<String> res = readData(sql, dataMap);
+        if (res != null && res.size() > 0 && res.get(0) != null) {
+            return res.get(0);
+        }
+        return "null";
+    }
+
     public static String malariaDosageIpt2(String baseEntityId) {
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "malaria_preventive_therapy_ipt2");
 

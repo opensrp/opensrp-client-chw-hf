@@ -280,10 +280,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                     malariaInvestigationForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.getMalariaInvestigation());
                     malariaInvestigationForm.getJSONObject("global").put("gestational_age", memberObject.getGestationAge());
                     malariaInvestigationForm.getJSONObject("global").put("llin_provided", HfAncDao.isLLINProvided(baseEntityId));
-                    malariaInvestigationForm.getJSONObject("global").put("malaria_preventive_therapy_ipt1", HfAncDao.malariaDosageIpt1(memberObject.getBaseEntityId()));
-                    malariaInvestigationForm.getJSONObject("global").put("malaria_preventive_therapy_ipt2", HfAncDao.malariaDosageIpt2(memberObject.getBaseEntityId()));
-                    malariaInvestigationForm.getJSONObject("global").put("malaria_preventive_therapy_ipt3", HfAncDao.malariaDosageIpt3(memberObject.getBaseEntityId()));
-                    malariaInvestigationForm.getJSONObject("global").put("malaria_preventive_therapy_ipt4", HfAncDao.malariaDosageIpt4(memberObject.getBaseEntityId()));
+                    malariaInvestigationForm.getJSONObject("global").put("malaria_preventive_therapy", HfAncDao.malariaLastIptDose(memberObject.getBaseEntityId()));
                     if (details != null && !details.isEmpty()) {
                         HfAncJsonFormUtils.populateForm(malariaInvestigationForm, details);
                     }
