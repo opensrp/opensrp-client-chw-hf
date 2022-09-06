@@ -286,15 +286,16 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
 
                 JSONObject labTestForm = null;
                 try {
+                    String hivStatus = HfAncDao.getHivStatus(baseEntityId);
                     labTestForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.LAB_TESTS);
                     labTestForm.getJSONObject("global").put("gestational_age", memberObject.getGestationAge());
                     labTestForm.getJSONObject("global").put("hepatitis_test_complete", HfAncDao.isTestConducted(Constants.DBConstants.ANC_HEPATITIS, baseEntityId));
                     labTestForm.getJSONObject("global").put("malaria_test_complete", HfAncDao.isTestConducted(Constants.DBConstants.ANC_MRDT_FOR_MALARIA, baseEntityId));
                     labTestForm.getJSONObject("global").put("syphilis_test_complete", HfAncDao.isTestConducted(Constants.DBConstants.ANC_SYPHILIS, baseEntityId));
-                    labTestForm.getJSONObject("global").put("hiv_test_complete", HfAncDao.isTestConducted(Constants.DBConstants.ANC_HIV, baseEntityId));
+                    labTestForm.getJSONObject("global").put("hiv_test_complete", hivStatus.equals("positive") || HfAncDao.isTestConducted(Constants.DBConstants.ANC_HIV, baseEntityId));
                     labTestForm.getJSONObject("global").put("hiv_test_at_32_complete", HfAncDao.isHivTestConductedAtWk32(baseEntityId));
                     labTestForm.getJSONObject("global").put("blood_group_complete", HfAncDao.isBloodGroupTestConducted(baseEntityId));
-                    labTestForm.getJSONObject("global").put("hiv_status", HfAncDao.getHivStatus(baseEntityId));
+                    labTestForm.getJSONObject("global").put("hiv_status", hivStatus);
                     JSONArray fields = labTestForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
                     JSONObject hivTestNumberField = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "hiv_test_number");
                     hivTestNumberField.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getNextHivTestNumber(memberObject.getBaseEntityId()));
