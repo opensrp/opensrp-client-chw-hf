@@ -57,73 +57,73 @@
         "options": [
           {
             "key": "chk_sexual_relationship",
-            "text": "1. Sexual relationship",
+            "text": "Sexual relationship",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_sexual_relationship"
           },
           {
             "key": "chk_birth_emergency_plan",
-            "text": "2. Birth and emergency plan",
+            "text": "Birth and emergency plan",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_birth_emergency_plan"
           },
           {
             "key": "chk_danger_signs",
-            "text": "3. Danger signs",
+            "text": "Danger signs",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_danger_signs"
           },
           {
             "key": "chk_discussion_std_hiv",
-            "text": "4. Discussion on STI/RTI/HIV",
+            "text": "Discussion on STI/RTI/HIV",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_discussion_std_hiv"
           },
           {
             "key": "chk_condom_use",
-            "text": "5. Condom use",
+            "text": "Condom use",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_condom_use"
           },
           {
             "key": "chk_advice_gravid",
-            "text": "6. Advice on common gravid discomfort",
+            "text": "Advice on common gravid discomfort",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_advice_gravid"
           },
           {
             "key": "chk_self_care",
-            "text": "7. Self care",
+            "text": "Self care",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_self_care"
           },
           {
             "key": "chk_healthy_eating",
-            "text": "8. Healthy eating",
+            "text": "Healthy eating",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_healthy_eating"
           },
           {
             "key": "chk_physical_activity",
-            "text": "9. Physical activity",
+            "text": "Physical activity",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_physical_activity"
           },
           {
             "key": "chk_use_folic_acid",
-            "text": "10. Daily use of Iron folic acid",
+            "text": "Daily use of Iron folic acid",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_use_folic_acid"
           },
           {
             "key": "chk_counsel_llin",
-            "text": "11. Provide and counsel on use of LLIN",
+            "text": "Provide and counsel on use of LLIN",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_counsel_llin"
           },
           {
             "key": "chk_child_feeding",
-            "text": "12. Child Feeding",
+            "text": "Child Feeding",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_child_feeding"
           }
