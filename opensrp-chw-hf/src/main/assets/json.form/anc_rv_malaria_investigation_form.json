@@ -339,7 +339,7 @@
           },
           {
             "key": "medication_not_given",
-            "text": "Malaria medication not given",
+            "text": "Malaria preventive therapy not given",
             "openmrs_entity_id": "medication_not_given",
             "openmrs_entity": "concept"
           }
@@ -372,7 +372,7 @@
           },
           {
             "key": "medication_not_given",
-            "text": "Malaria medication not given",
+            "text": "Malaria preventive therapy not given",
             "openmrs_entity_id": "medication_not_given",
             "openmrs_entity": "concept"
           }
@@ -405,7 +405,7 @@
           },
           {
             "key": "medication_not_given",
-            "text": "Malaria medication not given",
+            "text": "Malaria preventive therapy not given",
             "openmrs_entity_id": "medication_not_given",
             "openmrs_entity": "concept"
           }
@@ -438,7 +438,7 @@
           },
           {
             "key": "medication_not_given",
-            "text": "Malaria medication not given",
+            "text": "Malaria preventive therapy not given",
             "openmrs_entity_id": "medication_not_given",
             "openmrs_entity": "concept"
           }
