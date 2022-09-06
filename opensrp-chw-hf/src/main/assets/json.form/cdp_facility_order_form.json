@@ -51,7 +51,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "condom_order_date",
         "type": "date_picker",
-        "hint": "Condom Order Date",
+        "hint": "Condom order date",
         "expanded": false,
         "min_date": "today",
         "max_date": "today",
@@ -127,11 +127,11 @@
             "openmrs_entity_id": "familia"
           },
           {
-            "key": "others",
-            "text": "Others",
+            "key": "other",
+            "text": "Other",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "others"
+            "openmrs_entity_id": "other"
           }
         ],
         "v_required": {
@@ -153,7 +153,7 @@
         "relevance": {
           "step1:condom_brand": {
             "type": "string",
-            "ex": "equalTo(., \"others\")"
+            "ex": "equalTo(., \"other\")"
           }
         }
       },
@@ -180,7 +180,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "msd_code",
         "type": "edit_text",
-        "hint": "MSD Code Facility",
+        "hint": "MSD code of the facility",
         "v_required": {
           "value": "true",
           "err": "Please enter the MSD code"
