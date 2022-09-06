@@ -16,7 +16,7 @@ public class OrderRequestDetailsActivity extends BaseOrderDetailsActivity {
     }
 
     @Override
-    protected int getMainContentView() {
+    public int getMainContentView() {
         return R.layout.activity_order_request_details;
     }
 }
