@@ -407,6 +407,10 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
                 //reload views after visit is processed
                 setupViews();
                 presenter().refreshProfileBottom();
+                if (!baseEntityID.isEmpty()) {
+                    memberObject = getMemberObject(baseEntityID);
+                    ((AncMemberProfilePresenter) presenter()).refreshProfileTopSection(memberObject);
+                }
             } catch (Exception e) {
                 Timber.e(e);
             }
@@ -448,6 +452,10 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     protected void onResume() {
         super.onResume();
         setupViews();
+        if (!baseEntityID.isEmpty()) {
+            memberObject = getMemberObject(baseEntityID);
+            ((AncMemberProfilePresenter) presenter()).refreshProfileTopSection(memberObject);
+        }
         ancMemberProfilePresenter().fetchTasks();
         if (notificationAndReferralRecyclerView != null && notificationAndReferralRecyclerView.getAdapter() != null) {
             notificationAndReferralRecyclerView.getAdapter().notifyDataSetChanged();
