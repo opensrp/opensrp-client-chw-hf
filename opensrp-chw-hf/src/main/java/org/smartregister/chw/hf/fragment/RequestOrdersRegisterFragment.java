@@ -20,4 +20,14 @@ public class RequestOrdersRegisterFragment extends CoreOrdersRegisterFragment {
         view.findViewById(R.id.tab_layout).setVisibility(View.GONE);
         tabs.setVisibility(View.VISIBLE);
     }
+
+    @Override
+    protected void refreshSyncProgressSpinner() {
+        if (syncProgressBar != null) {
+            syncProgressBar.setVisibility(android.view.View.GONE);
+        }
+        if (syncButton != null) {
+            syncButton.setVisibility(android.view.View.GONE);
+        }
+    }
 }
