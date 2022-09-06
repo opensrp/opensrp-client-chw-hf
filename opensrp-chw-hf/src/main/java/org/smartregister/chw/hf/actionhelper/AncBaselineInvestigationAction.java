@@ -10,8 +10,12 @@ import org.smartregister.chw.anc.domain.MemberObject;
 import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
+import org.smartregister.chw.core.utils.FormUtils;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.dao.HfAncDao;
+import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hf.utils.VisitUtils;
+import org.smartregister.chw.referral.util.JsonFormConstants;
 import org.smartregister.family.util.JsonFormUtils;
 
 import java.util.HashMap;
@@ -24,9 +28,11 @@ public class AncBaselineInvestigationAction implements BaseAncHomeVisitAction.An
     protected MemberObject memberObject;
     private HashMap<String, Boolean> checkObject = new HashMap<>();
     private Context context;
+    private boolean isClientOnART;
 
-    public AncBaselineInvestigationAction(MemberObject memberObject) {
+    public AncBaselineInvestigationAction(MemberObject memberObject, boolean isClientOnART) {
         this.memberObject = memberObject;
+        this.isClientOnART = isClientOnART;
     }
 
     @Override
@@ -36,7 +42,19 @@ public class AncBaselineInvestigationAction implements BaseAncHomeVisitAction.An
 
     @Override
     public String getPreProcessed() {
-        return null;
+        JSONObject baselineInvestigationForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncFirstVisit.getBaselineInvestigation());
+        try {
+            baselineInvestigationForm.getJSONObject("global").put("gestational_age", memberObject.getGestationAge());
+            baselineInvestigationForm.getJSONObject("global").put("known_positive", isClientOnART);
+            JSONArray fields = baselineInvestigationForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+            JSONObject hivTestNumberField = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "hiv_test_number");
+            if (hivTestNumberField != null) {
+                hivTestNumberField.put(JsonFormUtils.VALUE, HfAncDao.getNextHivTestNumber(memberObject.getBaseEntityId()));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return baselineInvestigationForm.toString();
     }
 
     @Override
