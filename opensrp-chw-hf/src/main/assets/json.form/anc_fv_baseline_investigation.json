@@ -471,7 +471,7 @@
         "type": "spinner",
         "hint": "Reason as to why the HB Level test was not conducted",
         "values": [
-          "Stock out of Cuvettes Cartridges",
+          "Cuvette Cartridges Out of Stock",
           "Haemoque machine out of order",
           "The client was in an emergency situation",
           "The client refused to be tested",
