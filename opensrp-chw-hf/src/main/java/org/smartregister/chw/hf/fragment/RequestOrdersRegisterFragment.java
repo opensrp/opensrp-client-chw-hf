@@ -6,6 +6,7 @@ import com.google.android.material.tabs.TabLayout;
 
 import org.smartregister.chw.core.fragment.CoreOrdersRegisterFragment;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.presenter.RequestOrdersRegisterFragmentPresenter;
 
 public class RequestOrdersRegisterFragment extends CoreOrdersRegisterFragment {
 
@@ -29,5 +30,10 @@ public class RequestOrdersRegisterFragment extends CoreOrdersRegisterFragment {
         if (syncButton != null) {
             syncButton.setVisibility(android.view.View.GONE);
         }
+    }
+
+    @Override
+    protected void initializePresenter() {
+        presenter = new RequestOrdersRegisterFragmentPresenter(this, model());
     }
 }

@@ -54,7 +54,6 @@ public class HfClientProcessor extends CoreClientProcessor {
     protected void processEvents(ClientClassification clientClassification, Table vaccineTable, Table serviceTable, EventClient eventClient, Event event, String eventType) throws Exception {
         super.processEvents(clientClassification, vaccineTable, serviceTable, eventClient, event, eventType);
 
-        //TODO: For other events
         switch (eventType) {
             case ANC_FIRST_FACILITY_VISIT:
             case ANC_RECURRING_FACILITY_VISIT:
@@ -70,6 +69,12 @@ public class HfClientProcessor extends CoreClientProcessor {
                 }
                 processVisitEvent(eventClient);
                 processEvent(eventClient.getEvent(), eventClient.getClient(), clientClassification);
+                break;
+            case org.smartregister.chw.cdp.util.Constants.EVENT_TYPE.CDP_CONDOM_ORDER:
+                if (eventClient.getEvent() == null) {
+                    return;
+                }
+                processCDPOrderEvent(eventClient.getEvent(), org.smartregister.chw.cdp.util.Constants.TABLES.CDP_ORDERS_RECEIVE);
                 break;
             default:
                 break;
