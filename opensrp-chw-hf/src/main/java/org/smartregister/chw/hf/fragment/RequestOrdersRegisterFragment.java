@@ -18,10 +18,10 @@ public class RequestOrdersRegisterFragment extends CoreOrdersRegisterFragment {
     }
 
     @Override
-    protected void setUpTabLayout(View view) {
+    protected TabLayout getTabLayout(View view) {
         TabLayout tabs = view.findViewById(R.id.requests_tab_layout);
-        view.findViewById(R.id.tab_layout).setVisibility(View.GONE);
         tabs.setVisibility(View.VISIBLE);
+        return tabs;
     }
 
     @Override
