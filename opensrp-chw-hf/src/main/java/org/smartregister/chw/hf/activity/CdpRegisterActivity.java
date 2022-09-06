@@ -5,15 +5,25 @@ import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 import org.smartregister.chw.cdp.listener.BaseCdpBottomNavigationListener;
 import org.smartregister.chw.core.activity.CoreCdpRegisterActivity;
 import org.smartregister.chw.core.fragment.CoreOrdersRegisterFragment;
+import org.smartregister.chw.hf.fragment.RequestOrdersRegisterFragment;
 import org.smartregister.helper.BottomNavigationHelper;
 import org.smartregister.listener.BottomNavigationListener;
 import org.smartregister.view.fragment.BaseRegisterFragment;
+
+import androidx.fragment.app.Fragment;
 
 public class CdpRegisterActivity extends CoreCdpRegisterActivity {
 
     @Override
     protected BaseRegisterFragment getRegisterFragment() {
-        return new CoreOrdersRegisterFragment();
+        return new RequestOrdersRegisterFragment();
+    }
+
+    @Override
+    protected Fragment[] getOtherFragments() {
+        return new Fragment[]{
+                new CoreOrdersRegisterFragment()
+        };
     }
 
     @Override
