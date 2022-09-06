@@ -508,7 +508,9 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
                 lastNotDoneVisit = null;
             }
         }
-        Visit latestVisit = getVisit(ANC_FIRST_FACILITY_VISIT);
+        Visit latestVisit = getVisit(ANC_RECURRING_FACILITY_VISIT);
+        if (latestVisit == null)
+            latestVisit = getVisit(ANC_FIRST_FACILITY_VISIT);
         String visitDate = latestVisit != null ? new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(latestVisit.getDate()) : null;
         String lastVisitNotDone = lastNotDoneVisit != null ? new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(lastNotDoneVisit.getDate()) : null;
 

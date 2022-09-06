@@ -16,6 +16,6 @@ actions:
 name: step1_hiv
 description: Calculated field for hiv status
 priority: 1
-condition: "!global_known_positive.equals('') && !step1_hiv_qn.equals('')"
+condition: "!global_known_positive.equals('')"
 actions:
   - "calculation = global_known_positive ? 'positive' : step1_hiv_qn"
