@@ -6,7 +6,7 @@ import com.google.android.material.tabs.TabLayout;
 
 import org.smartregister.chw.core.fragment.CoreOrdersRegisterFragment;
 import org.smartregister.chw.hf.R;
-import org.smartregister.chw.hf.activity.OrderDetailsActivity;
+import org.smartregister.chw.hf.activity.OrderRequestDetailsActivity;
 import org.smartregister.chw.hf.presenter.RequestOrdersRegisterFragmentPresenter;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 
@@ -41,6 +41,6 @@ public class RequestOrdersRegisterFragment extends CoreOrdersRegisterFragment {
 
     @Override
     public void showDetails(CommonPersonObjectClient cp) {
-        OrderDetailsActivity.startMe(requireActivity(), cp);
+        OrderRequestDetailsActivity.startMe(requireActivity(), cp);
     }
 }
