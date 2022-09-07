@@ -1,0 +1,37 @@
+---
+name: step1_gest_age
+description: Gestational age calculated
+priority: 1
+condition: "true"
+actions:
+  - "calculation = (helper.getDifferenceDays(global_last_menstrual_period)-helper.getDifferenceDays(helper.getDateToday())) /7"
+
+---
+name: step1_gest_age_note
+description: Gestational age calculated
+priority: 1
+condition: "true"
+actions:
+  - "calculation = step1_gest_age + ' weeks'"
+---
+name: step1_visit_number
+description: Visit Number
+priority: 1
+condition: "true"
+actions:
+  - "calculation = global_current_visit_number + 1"
+---
+name: step1_edd
+description: Estimated Delivery Date Calculated
+priority: 1
+condition: "true"
+actions:
+  - "calculation =  step1_last_menstrual_period != '' ? helper.addDuration(step1_last_menstrual_period,'280d') : '' "
+
+---
+name: step1_last_menstrual_period
+description: last_menstrual_period calculation
+priority: 1
+condition: "true"
+actions:
+  - "calculation = step1_gest_age == '' ? '' : helper.subtractDuration(helper.getDateToday(), step1_gest_age+'w')"
