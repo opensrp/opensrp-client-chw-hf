@@ -3,6 +3,7 @@ package org.smartregister.chw.hf.presenter;
 import org.smartregister.chw.cdp.contract.BaseOrdersRegisterFragmentContract;
 import org.smartregister.chw.cdp.presenter.BaseOrdersRegisterFragmentPresenter;
 import org.smartregister.chw.cdp.util.Constants;
+import org.smartregister.chw.cdp.util.DBConstants;
 
 public class RequestOrdersRegisterFragmentPresenter extends BaseOrdersRegisterFragmentPresenter {
     public RequestOrdersRegisterFragmentPresenter(BaseOrdersRegisterFragmentContract.View view, BaseOrdersRegisterFragmentContract.Model model) {
@@ -10,7 +11,8 @@ public class RequestOrdersRegisterFragmentPresenter extends BaseOrdersRegisterFr
     }
 
     @Override
-    public String getMainTable() {
-        return Constants.TABLES.CDP_ORDERS_RECEIVE;
+    public String getMainCondition() {
+        return super.getMainCondition() +  " AND " + getMainTable() + "." + DBConstants.KEY.REQUEST_TYPE + " = '" + Constants.ORDER_TYPES.COMMUNITY_TO_FACILITY_ORDER + "'";
     }
+
 }
