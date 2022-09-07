@@ -1,7 +1,9 @@
 package org.smartregister.chw.hf.utils;
 
 import static org.smartregister.chw.anc.util.NCUtils.getSyncHelper;
+import static org.smartregister.chw.hf.utils.LDVisitUtils.getFieldValue;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
@@ -93,7 +95,9 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
     }
 
     private static void createEventToMoveAncClientsWithStillBirthToPnc(String json) throws Exception {
-        String pregnancyStatus = JsonFormUtils.getFieldValue(json, "pregnancy_status");
+        JSONObject visitJson = new JSONObject(json);
+        JSONArray obs = visitJson.getJSONArray("obs");
+        String pregnancyStatus = getFieldValue(obs, "pregnancy_status");
         if (pregnancyStatus.equalsIgnoreCase("intrauterine_fetal_death")) {
             Event baseEvent = new Gson().fromJson(json, Event.class);
             baseEvent.setFormSubmissionId(UUID.randomUUID().toString());
@@ -204,7 +208,7 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
         return Pending;
     }
 
-    public static void manualProcessVisit(Visit visit) throws Exception {
+    public static void manualProcessVisit(Visit visit, Context context) throws Exception {
         List<Visit> manualProcessedVisits = new ArrayList<>();
         VisitDetailsRepository visitDetailsRepository = AncLibrary.getInstance().visitDetailsRepository();
         VisitRepository visitRepository = AncLibrary.getInstance().visitRepository();
@@ -213,6 +217,7 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
         if (visit.getVisitType().equalsIgnoreCase(Constants.Events.ANC_RECURRING_FACILITY_VISIT) && isNextVisitsCancelled(visit)) {
             createCancelledEvent(visit.getJson());
             createEventToMoveAncClientsWithStillBirthToPnc(visit.getJson());
+            ((Activity)context).finish();
         }
     }
 

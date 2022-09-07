@@ -405,7 +405,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         TextView processVisitBtn = findViewById(R.id.textview_process_visit);
         processVisitBtn.setOnClickListener(v -> {
             try {
-                VisitUtils.manualProcessVisit(visit);
+                VisitUtils.manualProcessVisit(visit,AncMemberProfileActivity.this);
                 //reload views after visit is processed
                 setupViews();
                 presenter().refreshProfileBottom();
