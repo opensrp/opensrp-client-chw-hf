@@ -13,6 +13,28 @@
         android:theme="@style/HFTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:theme, android:icon">
+        <activity
+            android:name=".activity.LoginActivity"
+            android:icon="@drawable/ic_launcher"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:roundIcon="@drawable/ic_launcher_round"
+            android:screenOrientation="portrait"
+            android:theme="@style/HFTheme.Login"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize">
+        </activity>
+        <activity
+            android:name=".activity.RequestPhoneNumberCollectionPermission"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.AncBirthReviewAndEmergencyPlanJsonWizardFormActivity"
+            android:theme="@style/HFTheme.NoActionBar"/>
+        <activity android:name=".activity.LDRegistrationAdmissionInformationJsonWizardFormActivity"
+            android:theme="@style/HFTheme.NoActionBar"/>
         <activity android:name=".activity.ReferralRegistrationActivity"
             android:theme="@style/HFTheme.NoActionBar"/>
         <activity android:name=".activity.LdEmergencyReferralRegistrationActivity"
@@ -73,19 +95,6 @@
         <activity
             android:name=".activity.HeiMedicalHistoryActivity"
             android:theme="@style/HFTheme.NoActionBar" />
-        <activity
-            android:name=".activity.LoginActivity"
-            android:launchMode="singleTask"
-            android:roundIcon="@drawable/ic_launcher_round"
-            android:screenOrientation="portrait"
-            android:theme="@style/HFTheme.Login"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustResize">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
             android:name="org.smartregister.family.activity.FamilyWizardFormActivity"
             android:launchMode="singleTask"

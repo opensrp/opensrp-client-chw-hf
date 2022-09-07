@@ -4,4 +4,4 @@ description: malaria preventive therapy calculation
 priority: 1
 condition: "step1_client_on_malaria_medication.equals('no')"
 actions:
-  - "calculation = !step1_malaria_preventive_therapy_ipt1.isEmpty() ? step1_malaria_preventive_therapy_ipt1 : (!step1_malaria_preventive_therapy_ipt2.isEmpty() ? step1_malaria_preventive_therapy_ipt2 : (!step1_malaria_preventive_therapy_ipt3.isEmpty() ? step1_malaria_preventive_therapy_ipt3 : step1_malaria_preventive_therapy_ipt4)) "
+  - "calculation = !step1_malaria_preventive_therapy_ipt1.equals('') ? step1_malaria_preventive_therapy_ipt1 : (!step1_malaria_preventive_therapy_ipt2.equals('') ? step1_malaria_preventive_therapy_ipt2 : (!step1_malaria_preventive_therapy_ipt3.equals('') ? step1_malaria_preventive_therapy_ipt3 : step1_malaria_preventive_therapy_ipt4)) "

@@ -1,5 +1,7 @@
 package org.smartregister.chw.hf.interactor;
 
+import static org.smartregister.chw.hf.interactor.AncFirstFacilityVisitInteractorFlv.initializeHealthFacilitiesList;
+
 import android.content.Context;
 
 import org.apache.commons.lang3.StringUtils;
@@ -30,7 +32,6 @@ import org.smartregister.chw.hf.actionhelper.AncTriageAction;
 import org.smartregister.chw.hf.actionhelper.AncTtVaccinationAction;
 import org.smartregister.chw.hf.dao.HfAncBirthEmergencyPlanDao;
 import org.smartregister.chw.hf.dao.HfAncDao;
-import org.smartregister.chw.hf.repository.HfLocationRepository;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hf.utils.ContactUtil;
 import org.smartregister.chw.hf.utils.HfAncJsonFormUtils;
@@ -40,7 +41,6 @@ import org.smartregister.domain.LocationTag;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,6 +51,7 @@ import timber.log.Timber;
 public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityVisitInteractor.Flavor {
     String baseEntityId;
     LinkedHashMap<String, BaseAncHomeVisitAction> actionList = new LinkedHashMap<>();
+    private JSONObject birthReviewForm;
 
     public AncRecurringFacilityVisitInteractorFlv(String baseEntityId) {
         this.baseEntityId = baseEntityId;
@@ -65,47 +66,6 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
             return context.getString(R.string.anc_pregnacy_status_viable);
         }
         return "";
-    }
-
-    private static JSONObject initializeHealthFacilitiesList(JSONObject form) {
-        HfLocationRepository locationRepository = new HfLocationRepository();
-        List<Location> locations = locationRepository.getAllLocationsWithTags();
-        if (locations != null && form != null) {
-
-            Collections.sort(locations, (location1, location2) -> StringUtils.capitalize(location1.getProperties().getName()).compareTo(StringUtils.capitalize(location2.getProperties().getName())));
-            try {
-                JSONArray fields = form.getJSONObject(Constants.JsonFormConstants.STEP1)
-                        .getJSONArray(JsonFormConstants.FIELDS);
-                JSONObject referralHealthFacilities = null;
-                for (int i = 0; i < fields.length(); i++) {
-                    if (fields.getJSONObject(i)
-                            .getString(JsonFormConstants.KEY).equals(Constants.JsonFormConstants.NAME_OF_HF)
-                    ) {
-                        referralHealthFacilities = fields.getJSONObject(i);
-                        break;
-                    }
-                }
-                JSONArray tree = referralHealthFacilities.getJSONArray("tree");
-                String parentTagName = "Region";
-                for (Location location : locations) {
-                    Set<LocationTag> locationTags = location.getLocationTags();
-                    if (locationTags.iterator().next().getName().equalsIgnoreCase(parentTagName)) {
-                        JSONObject treeNode = new JSONObject();
-                        treeNode.put("name", StringUtils.capitalize(location.getProperties().getName()));
-                        treeNode.put("key", StringUtils.capitalize(location.getProperties().getName()));
-
-                        JSONArray childNodes = setChildNodes(locations, location.getId(), parentTagName);
-                        if (childNodes != null)
-                            treeNode.put("nodes", childNodes);
-
-                        tree.put(treeNode);
-                    }
-                }
-            } catch (JSONException e) {
-                Timber.e(e);
-            }
-        }
-        return form;
     }
 
     private static JSONArray setChildNodes(List<Location> locations, String parentLocationId, String parentTagName) {
@@ -196,6 +156,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
 
         dateMap.putAll(ContactUtil.getContactWeeks(isFirst, lastContact, lastMenstrualPeriod));
 
+        birthReviewForm = initializeHealthFacilitiesList(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.BIRTH_REVIEW_AND_EMERGENCY_PLAN));
         evaluateMedicalAndSurgicalHistory(view, memberObject, callBack, details);
 
         return actionList;
@@ -205,34 +166,9 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
     ) throws BaseAncHomeVisitAction.ValidationException {
 
         Context context = view.getContext();
-        JSONObject triageForm = null;
-        try {
-            triageForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.TRIAGE);
-            triageForm.getJSONObject("global").put("last_menstrual_period", memberObject.getLastMenstrualPeriod());
-            triageForm.getJSONObject("global").put("current_visit_number", HfAncDao.getVisitNumber(baseEntityId));
-            JSONArray fields = triageForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
-            JSONObject gest_age = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "gest_age");
-            if (gest_age != null) {
-                gest_age.put("value", memberObject.getGestationAge());
-            }
-            if (details != null && !details.isEmpty()) {
-                HfAncJsonFormUtils.populateForm(triageForm, details);
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        BaseAncHomeVisitAction triage = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_triage))
-                .withOptional(false)
-                .withDetails(details)
-                .withJsonPayload(triageForm.toString())
-                .withFormName(Constants.JsonForm.AncRecurringVisit.getTriage())
-                .withHelper(new AncTriageAction(memberObject))
-                .build();
-        actionList.put(context.getString(R.string.anc_recuring_visit_triage), triage);
 
         BaseAncHomeVisitAction pregnancyStatus = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_pregnancy_status))
-                .withOptional(true)
+                .withOptional(false)
                 .withDetails(details)
                 .withFormName(Constants.JsonForm.AncRecurringVisit.getPregnancyStatus())
                 .withHelper(new AncPregnancyStatusAction(view, memberObject, callBack, details))
@@ -285,6 +221,23 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
         public String postProcess(String s) {
             Context context = view.getContext();
             if (pregnancy_status.equals("viable")) {
+                JSONObject triageForm = null;
+                try {
+                    triageForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.TRIAGE);
+                    triageForm.getJSONObject("global").put("last_menstrual_period", memberObject.getLastMenstrualPeriod());
+                    triageForm.getJSONObject("global").put("current_visit_number", HfAncDao.getVisitNumber(baseEntityId));
+                    JSONArray fields = triageForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+                    JSONObject gest_age = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "gest_age");
+                    if (gest_age != null) {
+                        gest_age.put("value", memberObject.getGestationAge());
+                    }
+                    if (details != null && !details.isEmpty()) {
+                        HfAncJsonFormUtils.populateForm(triageForm, details);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
                 JSONObject consultationForm = null;
                 try {
                     consultationForm = setMinFundalHeight(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.CONSULTATION), memberObject.getBaseEntityId());
@@ -379,6 +332,18 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
 
                 if (pregnancy_status != null) {
                     try {
+                        BaseAncHomeVisitAction triage = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_triage))
+                                .withOptional(true)
+                                .withDetails(details)
+                                .withJsonPayload(triageForm.toString())
+                                .withFormName(Constants.JsonForm.AncRecurringVisit.getTriage())
+                                .withHelper(new AncTriageAction(memberObject))
+                                .build();
+                        actionList.put(context.getString(R.string.anc_recuring_visit_triage), triage);
+                    } catch (BaseAncHomeVisitAction.ValidationException e) {
+                        e.printStackTrace();
+                    }
+                    try {
                         BaseAncHomeVisitAction consultation = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_cunsultation))
                                 .withOptional(true)
                                 .withDetails(details)
@@ -457,7 +422,6 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                     }
 
                     if (!HfAncBirthEmergencyPlanDao.isAllFilled(baseEntityId)) {
-                        JSONObject birthReviewForm = initializeHealthFacilitiesList(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.BIRTH_REVIEW_AND_EMERGENCY_PLAN));
                         try {
                             birthReviewForm.getJSONObject("global").put("delivery_place_identified", HfAncBirthEmergencyPlanDao.isDeliveryPlaceIdentified(baseEntityId));
                             birthReviewForm.getJSONObject("global").put("transport_identified", HfAncBirthEmergencyPlanDao.isTransportMethodIdentified(baseEntityId));
@@ -466,7 +430,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                             birthReviewForm.getJSONObject("global").put("household_support_identified", HfAncBirthEmergencyPlanDao.isHouseholdSupportIdentified(baseEntityId));
                             birthReviewForm.getJSONObject("global").put("blood_donor_identified", HfAncBirthEmergencyPlanDao.isBloodDonorIdentified(baseEntityId));
                         } catch (JSONException e) {
-                           Timber.e(e);
+                            Timber.e(e);
                         }
                         try {
                             BaseAncHomeVisitAction birthReview = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_review_birth_and_emergency_plan))
@@ -483,6 +447,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                     }
                 }
             } else {
+                actionList.remove(context.getString(R.string.anc_recuring_visit_triage));
                 actionList.remove(context.getString(R.string.anc_recuring_visit_cunsultation));
                 actionList.remove(context.getString(R.string.anc_recuring_visit_lab_tests));
                 actionList.remove(context.getString(R.string.anc_recuring_visit_pharmacy));

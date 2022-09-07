@@ -136,7 +136,7 @@ public class AllClientsUtils {
     }
 
     private static void goToLDProfile(Activity activity, CommonPersonObjectClient patient) {
-        LDProfileActivity.startProfileActivity(activity, patient.entityId());
+        LDProfileActivity.startProfileActivity(activity, patient.getCaseId());
     }
 
     private static Intent initProfileActivityIntent(Activity activity, CommonPersonObjectClient patient, Bundle bundle, Class clazz) {

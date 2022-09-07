@@ -1,5 +1,10 @@
 package org.smartregister.chw.hf.utils;
 
+import static org.smartregister.chw.hf.utils.Constants.ReportConstants.PMTCTReportKeys.EID_MONTHLY;
+import static org.smartregister.chw.hf.utils.Constants.ReportConstants.PMTCTReportKeys.THREE_MONTHS;
+import static org.smartregister.chw.hf.utils.Constants.ReportConstants.PMTCTReportKeys.TWELVE_MONTHS;
+import static org.smartregister.chw.hf.utils.Constants.ReportConstants.PMTCTReportKeys.TWENTY_FOUR_MONTHS;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build;
@@ -9,7 +14,11 @@ import android.print.PrintManager;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
+import androidx.annotation.RequiresApi;
+import androidx.webkit.WebViewAssetLoader;
+
 import org.apache.commons.lang3.StringUtils;
+import org.joda.time.DateTime;
 import org.json.JSONException;
 import org.smartregister.chw.hf.domain.anc_reports.AncMonthlyReportObject;
 import org.smartregister.chw.hf.domain.cbhs_reports.CbhsMonthlyReportObject;
@@ -28,8 +37,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-import androidx.annotation.RequiresApi;
-import androidx.webkit.WebViewAssetLoader;
 import timber.log.Timber;
 
 public class ReportUtils {
@@ -90,6 +97,40 @@ public class ReportUtils {
 
     public static void setReportPeriod(String reportPeriod) {
         ReportUtils.reportPeriod = reportPeriod;
+    }
+
+    public static String getReportPeriodForCohortReport(String reportKey) {
+        int minusPeriod;
+        switch (reportKey) {
+            case THREE_MONTHS:
+                minusPeriod = 3;
+                break;
+            case TWELVE_MONTHS:
+                minusPeriod = 12;
+                break;
+            case TWENTY_FOUR_MONTHS:
+                minusPeriod = 24;
+                break;
+            case EID_MONTHLY:
+                return reportPeriod;
+            default:
+                minusPeriod = 0;
+                break;
+        }
+        return getReportPeriodWithStartingMonth(minusPeriod);
+    }
+
+    private static String getReportPeriodWithStartingMonth(int minusPeriod) {
+        try {
+            DateTime endTime = new DateTime(new SimpleDateFormat("MM-yyyy", Locale.getDefault()).parse(reportPeriod));
+            DateTime startTime = endTime.minusMonths(minusPeriod);
+
+            return "" + startTime.getMonthOfYear() + "-" + startTime.getYear() + " to " + endTime.getMonthOfYear() + "-" + endTime.getYear();
+
+        } catch (ParseException e) {
+            Timber.e(e);
+        }
+        return reportPeriod;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)

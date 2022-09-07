@@ -80,18 +80,18 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "tt_doses",
         "type": "edit_text",
-        "hint": "TT Doses",
+        "hint": "Td Doses",
         "v_numeric": {
           "value": "true",
-          "err": "Please enter the TT dose number"
+          "err": "Please enter the Td dose number"
         },
         "v_min": {
           "value": "0",
-          "err": "TT dose must be equal or greater than 0"
+          "err": "Td dose must be equal or greater than 0"
         },
         "v_max": {
           "value": "5",
-          "err": "TT dose must be equal or less than 5"
+          "err": "Td dose must be equal or less than 5"
         }
       },
       {
@@ -272,7 +272,7 @@
           },
           {
             "key": "positive",
-            "text": "1",
+            "text": "1 (Diagnosed during this pregnancy)",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "positive"
           },
@@ -281,6 +281,12 @@
             "text": "2",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "negative"
+          },
+          {
+            "key": "known_on_art_before_this_pregnancy",
+            "text": "Known on ART before this pregnancy",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "known_on_art_before_this_pregnancy"
           }
         ],
         "v_required": {
@@ -299,6 +305,27 @@
             "ex-rules": {
               "rules-file": "labour_and_delivery_anc_clinic_findings_calculation.yml"
             }
+          }
+        }
+      },
+      {
+        "key": "pmtct_test_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "pmtct_test_date",
+        "type": "date_picker",
+        "hint": "Last PMTCT test Date",
+        "expanded": false,
+        "min_date": "today-2y",
+        "max_date": "today",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the last PMTCT test date"
+        },
+        "relevance": {
+          "step1:anc_hiv_status": {
+            "type": "string",
+            "ex": "equalTo(., \"negative\")"
           }
         }
       },
@@ -335,28 +362,6 @@
         }
       },
       {
-        "key": "pmtct_test_date",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "pmtct_test_date",
-        "type": "date_picker",
-        "hint": "Last PMTCT test Date",
-        "expanded": false,
-        "min_date": "today-2y",
-        "max_date": "today",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the last PMTCT test date"
-        },
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "labour_and_delivery_triage_relevance.yml"
-            }
-          }
-        }
-      },
-      {
         "key": "art_prescription",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -384,9 +389,25 @@
           "err": "Please answer this question"
         },
         "relevance": {
-          "step1:anc_hiv_status": {
+          "step1:management_provided_for_pmtct": {
             "type": "string",
-            "ex": "equalTo(., \"positive\")"
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_art_management",
+        "type": "toaster_notes",
+        "text": "Provide management according to SOP and standard guideline",
+        "openmrs_entity_id": "prompt_for_art_management",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_anc_clinic_findings_relevance.yml"
+            }
           }
         }
       },

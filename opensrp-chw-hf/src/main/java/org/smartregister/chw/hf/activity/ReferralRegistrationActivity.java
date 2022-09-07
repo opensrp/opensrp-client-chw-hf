@@ -1,5 +1,7 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.AllConstants.LocationConstants.SPECIAL_TAG_FOR_OPENMRS_TEAM_MEMBERS;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,8 +28,6 @@ import java.util.Collections;
 import java.util.List;
 
 import timber.log.Timber;
-
-import static org.smartregister.AllConstants.LocationConstants.SPECIAL_TAG_FOR_OPENMRS_TEAM_MEMBERS;
 
 public class ReferralRegistrationActivity extends BaseIssueReferralActivity {
     private static String BASE_ENTITY_ID;

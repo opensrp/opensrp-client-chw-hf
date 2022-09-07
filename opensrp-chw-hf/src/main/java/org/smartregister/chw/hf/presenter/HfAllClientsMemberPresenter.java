@@ -1,5 +1,7 @@
 package org.smartregister.chw.hf.presenter;
 
+import static org.smartregister.util.Utils.getName;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.Triple;
 import org.smartregister.chw.anc.util.NCUtils;
@@ -13,8 +15,6 @@ import org.smartregister.family.util.DBConstants;
 import org.smartregister.family.util.Utils;
 
 import java.text.MessageFormat;
-
-import static org.smartregister.util.Utils.getName;
 
 public class HfAllClientsMemberPresenter extends CoreAllClientsMemberPresenter {
     public HfAllClientsMemberPresenter(CoreAllClientsMemberProfileActivity allClientsMemberProfileActivity, String baseEntityId) {

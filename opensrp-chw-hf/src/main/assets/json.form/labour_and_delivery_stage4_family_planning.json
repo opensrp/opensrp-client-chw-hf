@@ -75,6 +75,22 @@
         ]
       },
       {
+        "key": "prompt_for_counseling_the_client",
+        "type": "toaster_notes",
+        "text": "Provide Counselling according to SOP and National Guidelines",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_info_text": "Provide Counselling according to SOP and National Guidelines",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:family_planning_counselling_after_delivery": {
+            "type": "string",
+            "ex": "equalTo(., \"no\")"
+          }
+        }
+      },
+      {
         "key": "family_planning_methods_selected",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",

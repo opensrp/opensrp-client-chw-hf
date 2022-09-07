@@ -1,0 +1,21 @@
+---
+name: step1_date_anc_hiv_test
+description: date of hiv test calculation
+priority: 1
+condition: "(!global_hiv_test_complete || (global_gestational_age >= 32 && !global_hiv_test_at_32_complete)) && !step1_hiv.equals('test_not_conducted')"
+actions:
+  - "calculation = helper.getDateToday()"
+---
+name: step1_hiv_test_at_32
+description: Record true if test was conducted at gestational age of 32 or more
+priority: 1
+condition: "true"
+actions:
+  - "calculation = global_gestational_age >= 32 ? 'true' : 'false'"
+---
+name: step1_hiv
+description: Calculated field for hiv status
+priority: 1
+condition: "!global_known_positive.equals('') && !step1_hiv_qn.equals('')"
+actions:
+  - "calculation = global_known_positive ? 'positive' : step1_hiv_qn"

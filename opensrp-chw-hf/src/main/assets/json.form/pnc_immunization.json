@@ -48,7 +48,7 @@
       {
         "key": "tetanus_vaccination",
         "type": "native_radio",
-        "label": "Was Diphtheria/Tetanus vaccine given?",
+        "label": "Was Diphtheria/Tetanus vaccination administered?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "tetanus_vaccination",
         "openmrs_entity_parent": "",
@@ -96,7 +96,7 @@
       {
         "key": "hepatitis_b_vaccination",
         "type": "native_radio",
-        "label": "Was Hepatitis B vaccination given?",
+        "label": "Was Hepatitis B vaccination administered?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "hepatitis_b_vaccination",
         "openmrs_entity_parent": "",

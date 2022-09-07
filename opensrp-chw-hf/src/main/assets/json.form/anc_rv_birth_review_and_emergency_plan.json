@@ -92,10 +92,14 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "name_of_hf",
-        "openmrs_data_type": "text",
-        "type": "tree",
-        "hint": "Health Facility",
-        "tree": [],
+        "buttonText": "Select Health Facility",
+        "sort": true,
+        "maxSelectable": 1,
+        "dialogTitle": "Health Facility",
+        "searchHint": "Type Health Facility Name",
+        "options": [
+        ],
+        "type": "multi_select_list",
         "v_required": {
           "value": true,
           "err": "Please select the health facility"

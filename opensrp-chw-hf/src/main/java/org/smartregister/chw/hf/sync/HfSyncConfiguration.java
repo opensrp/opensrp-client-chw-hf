@@ -6,7 +6,6 @@ import org.smartregister.SyncFilter;
 import org.smartregister.chw.hf.BuildConfig;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -64,12 +63,12 @@ public class HfSyncConfiguration extends SyncConfiguration {
 
     @Override
     public List<String> getSynchronizedLocationTags() {
-        return Arrays.asList("Country","Zone","Region","District","Council","Ward","Facility");
+        return Arrays.asList("Facility");
     }
 
     @Override
     public String getTopAllowedLocationLevel() {
-        return "Region";
+        return "Country";
     }
 
     @Override

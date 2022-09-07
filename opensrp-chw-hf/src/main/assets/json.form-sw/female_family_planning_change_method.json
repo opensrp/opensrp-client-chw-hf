@@ -232,7 +232,6 @@
           }
         }
       },
-
       {
         "key": "no_condoms",
         "openmrs_entity_parent": "190AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
@@ -405,7 +404,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "fp_start_iucd",
         "type": "date_picker",
-       "hint": "Tarehe ya kuweka kitanzi",
+        "hint": "Tarehe ya kuweka kitanzi",
         "max_date": "today",
         "relevance": {
           "rules-engine": {
@@ -586,7 +585,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "",
         "type": "toaster_notes",
-       "text": "Mwambie mwanamke achunguze dalili zifuatazo:\n- Kutokwa (usaha, damu) kwenye tovuti ya sindano\n- SPumba au mkono wa zabuni kwenye tovuti ya sindano",
+        "text": "Mwambie mwanamke achunguze dalili zifuatazo:\n- Kutokwa (usaha, damu) kwenye tovuti ya sindano\n- SPumba au mkono wa zabuni kwenye tovuti ya sindano",
         "toaster_info_text": "Mwambie mwanamke achunguze dalili zifuatazo:\n- Kutokwa (usaha, damu) kwenye tovuti ya sindano\n- SPumba au mkono wa zabuni kwenye tovuti ya sindano",
         "toaster_type": "info",
         "relevance": {
@@ -668,7 +667,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "",
         "type": "toaster_notes",
-         "text": "Tarehe kutoa: {jadelle_removal}",
+        "text": "Tarehe kutoa: {jadelle_removal}",
         "toaster_info_text": "Tarehe kutoa: {jadelle_removal}",
         "toaster_type": "info",
         "relevance": {
@@ -726,7 +725,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "",
         "type": "toaster_notes",
-         "text": "Tumia kondomu kwa miezi mitatu kuzuia ujazito",
+        "text": "Tumia kondomu kwa miezi mitatu kuzuia ujazito",
         "toaster_info_text": "Tumia kondomu kwa miezi mitatu kuzuia ujazito",
         "toaster_type": "info",
         "relevance": {

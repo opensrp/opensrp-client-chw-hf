@@ -62,7 +62,7 @@
         "v_max_length": {
           "value": "21",
           "is_fixed_size": "true",
-          "err":"Please enter a valid HEI Number"
+          "err": "Please enter a valid HEI Number"
         },
         "v_required": {
           "value": true,

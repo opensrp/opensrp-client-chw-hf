@@ -232,7 +232,7 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
         List<ChildModel> childModels = HfPncDao.childrenForPncWoman(memberObject.getBaseEntityId());
         for (int i = 0; i < childModels.size(); i++) {
             String nameOfMenuItem;
-            if (childModels.get(i).getFirstName().startsWith("Baby of")) {
+            if (childModels.get(i).getFirstName() != null && childModels.get(i).getFirstName().startsWith("Baby of")) {
                 nameOfMenuItem = getString(R.string.edit_child_form_title_for_child_without_names, childModels.get(i).getFirstName());
             } else {
                 nameOfMenuItem = getString(R.string.edit_child_form_title, childModels.get(i).getFirstName());

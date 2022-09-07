@@ -14,6 +14,6 @@ function loadData(reportKey, reportType) {
       element.innerHTML = data.nameValuePairs[key];
     }
   });
-  reportPeriod.innerHTML = Android.getDataPeriod();
+  reportPeriod.innerHTML = Android.getDataPeriod(reportKey);
   reportingFacility.innerHTML = Android.getReportingFacility();
 }

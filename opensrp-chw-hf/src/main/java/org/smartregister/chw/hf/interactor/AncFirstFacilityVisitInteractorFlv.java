@@ -20,7 +20,6 @@ import org.smartregister.chw.anc.util.JsonFormUtils;
 import org.smartregister.chw.anc.util.VisitUtils;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.core.utils.FormUtils;
-import org.smartregister.chw.hf.BuildConfig;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.actionhelper.AncBaselineInvestigationAction;
 import org.smartregister.chw.hf.actionhelper.AncBirthReviewAction;
@@ -40,9 +39,6 @@ import org.smartregister.chw.referral.util.JsonFormConstants;
 import org.smartregister.domain.Location;
 import org.smartregister.domain.LocationTag;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -57,38 +53,32 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
     JSONObject baselineInvestigationForm = null;
     private boolean shouldShowBaselineInvestigationForOnART = false;
 
-    private static JSONObject initializeHealthFacilitiesList(JSONObject form) {
+    public static JSONObject initializeHealthFacilitiesList(JSONObject form) {
         HfLocationRepository locationRepository = new HfLocationRepository();
         List<Location> locations = locationRepository.getAllLocationsWithTags();
         if (locations != null && form != null) {
 
-            Collections.sort(locations, (location1, location2) -> StringUtils.capitalize(location1.getProperties().getName()).compareTo(StringUtils.capitalize(location2.getProperties().getName())));
             try {
+
                 JSONArray fields = form.getJSONObject(Constants.JsonFormConstants.STEP1)
                         .getJSONArray(JsonFormConstants.FIELDS);
-                JSONObject referralHealthFacilities = null;
-                for (int i = 0; i < fields.length(); i++) {
-                    if (fields.getJSONObject(i)
-                            .getString(JsonFormConstants.KEY).equals(Constants.JsonFormConstants.NAME_OF_HF)
-                    ) {
-                        referralHealthFacilities = fields.getJSONObject(i);
-                        break;
-                    }
-                }
-                JSONArray tree = referralHealthFacilities.getJSONArray("tree");
-                String parentTagName = "Region";
+
+                JSONObject referralHealthFacilities = org.smartregister.family.util.JsonFormUtils.getFieldJSONObject(fields, Constants.JsonFormConstants.NAME_OF_HF);
+
+                JSONArray options = referralHealthFacilities.getJSONArray("options");
+                String healthFacilityTagName = "Facility";
                 for (Location location : locations) {
                     Set<LocationTag> locationTags = location.getLocationTags();
-                    if (locationTags.iterator().next().getName().equalsIgnoreCase(parentTagName)) {
-                        JSONObject treeNode = new JSONObject();
-                        treeNode.put("name", StringUtils.capitalize(location.getProperties().getName()));
-                        treeNode.put("key", StringUtils.capitalize(location.getProperties().getName()));
+                    if (locationTags.iterator().next().getName().equalsIgnoreCase(healthFacilityTagName)) {
+                        JSONObject optionNode = new JSONObject();
+                        optionNode.put("text", StringUtils.capitalize(location.getProperties().getName()));
+                        optionNode.put("key", StringUtils.capitalize(location.getProperties().getName()));
+                        JSONObject propertyObject = new JSONObject();
+                        propertyObject.put("presumed-id", location.getProperties().getUid());
+                        propertyObject.put("confirmed-id", location.getProperties().getUid());
+                        optionNode.put("property", propertyObject);
 
-                        JSONArray childNodes = setChildNodes(locations, location.getId(), parentTagName);
-                        if (childNodes != null)
-                            treeNode.put("nodes", childNodes);
-
-                        tree.put(treeNode);
+                        options.put(optionNode);
                     }
                 }
             } catch (JSONException e) {
@@ -96,38 +86,6 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
             }
         }
         return form;
-    }
-
-    private static JSONArray setChildNodes(List<Location> locations, String parentLocationId, String parentTagName) {
-        JSONArray nodes = new JSONArray();
-        ArrayList<String> locationHierarchyTags = new ArrayList<>(Arrays.asList(BuildConfig.LOCATION_HIERACHY));
-        try {
-            for (Location location : locations) {
-                Set<LocationTag> locationTags = location.getLocationTags();
-                String childTagName = locationHierarchyTags.get(locationHierarchyTags.indexOf(parentTagName) + 1);
-                if (locationTags.iterator().next().getName().equalsIgnoreCase(childTagName) && location.getProperties().getParentId().equals(parentLocationId)) {
-                    JSONObject childNode = new JSONObject();
-                    try {
-                        childNode.put("name", StringUtils.capitalize(location.getProperties().getName()));
-                        childNode.put("key", StringUtils.capitalize(location.getProperties().getName()));
-
-                        JSONArray childNodes = setChildNodes(locations, location.getId(), childTagName);
-                        if (childNodes != null)
-                            childNode.put("nodes", childNodes);
-
-                        nodes.put(childNode);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        if (nodes.length() > 0) {
-            return nodes;
-        } else return null;
-
     }
 
     private static JSONObject setMinFundalHeight(JSONObject form, String baseEntityId, Context context) {
@@ -269,13 +227,13 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
 
             if (memberObject.getGravida() != null && !HfAncDao.getParity(memberObject.getBaseEntityId()).isEmpty()) {
                 JSONArray fields = medicalSurgicalHistoryForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
-                JSONObject gravida = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "gravida");
-                JSONObject parity = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "parity");
+                JSONObject gravida = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "gravida_text");
+                JSONObject parity = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "parity_text");
                 gravida.put(JsonFormUtils.VALUE, memberObject.getGravida());
                 parity.put(JsonFormUtils.VALUE, HfAncDao.getParity(memberObject.getBaseEntityId()));
 
                 if (!HfAncDao.getNumberOfSurvivingChildren(memberObject.getBaseEntityId()).isEmpty()) {
-                    JSONObject no_surv_children = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "no_surv_children");
+                    JSONObject no_surv_children = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "no_surv_children_text");
                     no_surv_children.put(JsonFormUtils.VALUE, HfAncDao.getNumberOfSurvivingChildren(memberObject.getBaseEntityId()));
                 }
             }

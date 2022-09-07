@@ -1,16 +1,15 @@
 package org.smartregister.chw.hf.model;
 
+import androidx.annotation.NonNull;
+
 import org.smartregister.chw.core.utils.ChildDBConstants;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.pmtct.model.BaseHvlResultsFragmentModel;
 import org.smartregister.cursoradapter.SmartRegisterQueryBuilder;
 import org.smartregister.family.util.DBConstants;
-import org.yaml.snakeyaml.scanner.Constant;
 
 import java.util.HashSet;
 import java.util.Set;
-
-import androidx.annotation.NonNull;
 
 public class HeiHivResultsFragmentModel extends BaseHvlResultsFragmentModel {
 

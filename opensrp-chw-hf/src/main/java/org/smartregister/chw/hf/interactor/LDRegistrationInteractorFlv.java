@@ -2,6 +2,7 @@ package org.smartregister.chw.hf.interactor;
 
 import static com.vijay.jsonwizard.widgets.TimePickerFactory.KEY.KEY;
 import static com.vijay.jsonwizard.widgets.TimePickerFactory.KEY.VALUE;
+import static org.smartregister.chw.hf.interactor.AncFirstFacilityVisitInteractorFlv.initializeHealthFacilitiesList;
 
 import android.content.Context;
 
@@ -13,7 +14,6 @@ import org.smartregister.chw.anc.util.AppExecutors;
 import org.smartregister.chw.core.dao.AncDao;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.core.utils.FormUtils;
-import org.smartregister.chw.hf.BuildConfig;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.actionhelper.LDRegistrationAdmissionAction;
 import org.smartregister.chw.hf.actionhelper.LDRegistrationAncClinicFindingsAction;
@@ -23,23 +23,17 @@ import org.smartregister.chw.hf.actionhelper.LDRegistrationPastObstetricHistoryA
 import org.smartregister.chw.hf.actionhelper.LDRegistrationTriageAction;
 import org.smartregister.chw.hf.actionhelper.LDRegistrationTrueLabourConfirmationAction;
 import org.smartregister.chw.hf.dao.HfAncDao;
-import org.smartregister.chw.hf.repository.HfLocationRepository;
+import org.smartregister.chw.hf.dao.HfPmtctDao;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.ld.contract.BaseLDVisitContract;
 import org.smartregister.chw.ld.domain.MemberObject;
 import org.smartregister.chw.ld.domain.VisitDetail;
 import org.smartregister.chw.ld.model.BaseLDVisitAction;
 import org.smartregister.chw.referral.util.JsonFormConstants;
-import org.smartregister.domain.Location;
-import org.smartregister.domain.LocationTag;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import timber.log.Timber;
 
@@ -52,76 +46,7 @@ public class LDRegistrationInteractorFlv implements LDRegistrationInteractor.Fla
     static JSONObject ancClinicForm = null;
     static JSONObject ancTriageForm = null;
     LinkedHashMap<String, BaseLDVisitAction> actionList = new LinkedHashMap<>();
-
-    private static JSONObject initializeHealthFacilitiesList(JSONObject form) {
-        HfLocationRepository locationRepository = new HfLocationRepository();
-        List<Location> locations = locationRepository.getAllLocationsWithTags();
-        if (locations != null && form != null) {
-
-            Collections.sort(locations, (location1, location2) -> StringUtils.capitalize(location1.getProperties().getName()).compareTo(StringUtils.capitalize(location2.getProperties().getName())));
-            try {
-                JSONArray fields = form.getJSONObject(Constants.JsonFormConstants.STEP1)
-                        .getJSONArray(JsonFormConstants.FIELDS);
-                JSONObject referralHealthFacilities = null;
-                for (int i = 0; i < fields.length(); i++) {
-                    if (fields.getJSONObject(i)
-                            .getString(JsonFormConstants.KEY).equals(Constants.JsonFormConstants.NAME_OF_HF)
-                    ) {
-                        referralHealthFacilities = fields.getJSONObject(i);
-                        break;
-                    }
-                }
-                JSONArray tree = referralHealthFacilities.getJSONArray("tree");
-                String parentTagName = "Region";
-                for (Location location : locations) {
-                    Set<LocationTag> locationTags = location.getLocationTags();
-                    if (locationTags.iterator().next().getName().equalsIgnoreCase(parentTagName)) {
-                        JSONObject treeNode = new JSONObject();
-                        treeNode.put("name", StringUtils.capitalize(location.getProperties().getName()));
-                        treeNode.put("key", StringUtils.capitalize(location.getProperties().getName()));
-
-                        JSONArray childNodes = setChildNodes(locations, location.getId(), parentTagName);
-                        if (childNodes != null)
-                            treeNode.put("nodes", childNodes);
-
-                        tree.put(treeNode);
-                    }
-                }
-            } catch (JSONException e) {
-                Timber.e(e);
-            }
-        }
-        return form;
-    }
-
-    private static JSONArray setChildNodes(List<Location> locations, String parentLocationId, String parentTagName) {
-        JSONArray nodes = new JSONArray();
-        ArrayList<String> locationHierarchyTags = new ArrayList<>(Arrays.asList(BuildConfig.LOCATION_HIERACHY));
-
-        for (Location location : locations) {
-            Set<LocationTag> locationTags = location.getLocationTags();
-            String childTagName = locationHierarchyTags.get(locationHierarchyTags.indexOf(parentTagName) + 1);
-            if (locationTags.iterator().next().getName().equalsIgnoreCase(childTagName) && location.getProperties().getParentId().equals(parentLocationId)) {
-                JSONObject childNode = new JSONObject();
-                try {
-                    childNode.put("name", StringUtils.capitalize(location.getProperties().getName()));
-                    childNode.put("key", StringUtils.capitalize(location.getProperties().getName()));
-
-                    JSONArray childNodes = setChildNodes(locations, location.getId(), childTagName);
-                    if (childNodes != null)
-                        childNode.put("nodes", childNodes);
-
-                    nodes.put(childNode);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        if (nodes.length() > 0) {
-            return nodes;
-        } else return null;
-
-    }
+    private static JSONObject admissionInformationForm;
 
     public LDRegistrationInteractorFlv(String baseEntityId) {
     }
@@ -132,6 +57,7 @@ public class LDRegistrationInteractorFlv implements LDRegistrationInteractor.Fla
         JSONObject parity = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "para");
         JSONObject lastMenstrualPeriod = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "last_menstrual_period");
         JSONObject pastMedicalSurgicalHistory = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "past_medical_surgical_history");
+        JSONObject otherPastMedicalSurgicalHistory = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "other_past_medical_surgical_history");
 
         gravida.put(org.smartregister.family.util.JsonFormUtils.VALUE, memberObject.getGravida());
         parity.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getParity(memberObject.getBaseEntityId()));
@@ -153,6 +79,8 @@ public class LDRegistrationInteractorFlv implements LDRegistrationInteractor.Fla
         } else {
             setCheckBoxValues(pastMedicalSurgicalHistory.getJSONArray("options"), pastMedicalAndSurgicalHistory);
         }
+        String otherPastMedicalAndSurgicalHistory = HfAncDao.getOtherMedicalAndSurgicalHistory(memberObject.getBaseEntityId());
+        otherPastMedicalSurgicalHistory.put(org.smartregister.family.util.JsonFormUtils.VALUE, otherPastMedicalAndSurgicalHistory);
     }
 
     private void setCheckBoxValues(JSONArray options, String value) {
@@ -179,11 +107,13 @@ public class LDRegistrationInteractorFlv implements LDRegistrationInteractor.Fla
         JSONObject lastMeasuredHB = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "hb_level");
         JSONObject lastMeasuredHBDate = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "hb_test_date");
         JSONObject syphilis = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "syphilis");
+        JSONObject managementProvidedForSyphilis = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "management_provided_for_syphilis");
         JSONObject bloodGroup = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "blood_group");
         JSONObject rhFactor = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "rh_factor");
         JSONObject pmtct = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "anc_hiv_status");
         JSONObject pmtctTestDate = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "pmtct_test_date");
         JSONObject artPrescription = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "art_prescription");
+        JSONObject managementProvidedForPmtct = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "management_provided_for_pmtct");
 
         numberOfVisits.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getVisitNumber(memberObject.getBaseEntityId()));
         iptDoses.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getIptDoses(memberObject.getBaseEntityId()));
@@ -192,18 +122,24 @@ public class LDRegistrationInteractorFlv implements LDRegistrationInteractor.Fla
         LLINUsed.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.isLLINProvided(memberObject.getBaseEntityId()) ? "Yes" : "No");
 
         String lastMeasuredHb = HfAncDao.getLastMeasuredHB(memberObject.getBaseEntityId());
-        hbTestConducted.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getLastMeasuredHB(lastMeasuredHb).equals("") ? "no" : "yes");
+        hbTestConducted.put(org.smartregister.family.util.JsonFormUtils.VALUE, lastMeasuredHb.equals("") ? "no" : "yes");
         if (!lastMeasuredHB.equals("")) {
             lastMeasuredHB.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getLastMeasuredHB(memberObject.getBaseEntityId()));
             lastMeasuredHBDate.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getLastMeasuredHBDate(memberObject.getBaseEntityId()));
         }
         syphilis.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getSyphilisTestResult(memberObject.getBaseEntityId()));
+        managementProvidedForSyphilis.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getSyphilisTreatment(memberObject.getBaseEntityId()) ? "yes" : "no");
+
         bloodGroup.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getBloodGroup(memberObject.getBaseEntityId()));
         rhFactor.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getRhFactor(memberObject.getBaseEntityId()));
-        if (HfAncDao.getHivStatus(memberObject.getBaseEntityId()) != null && !HfAncDao.getHivStatus(memberObject.getBaseEntityId()).equalsIgnoreCase("null"))
+        if (HfAncDao.isClientKnownOnArt(memberObject.getBaseEntityId())) {
+            pmtct.put(org.smartregister.family.util.JsonFormUtils.VALUE, "known_on_art_before_this_pregnancy");
+        } else if (HfAncDao.getHivStatus(memberObject.getBaseEntityId()) != null && !HfAncDao.getHivStatus(memberObject.getBaseEntityId()).equalsIgnoreCase("null")) {
             pmtct.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getHivStatus(memberObject.getBaseEntityId()).equalsIgnoreCase("positive") ? "positive" : "negative");
+        }
         pmtctTestDate.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getHivTestDate(memberObject.getBaseEntityId()));
-        artPrescription.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.isClientKnownOnArt(memberObject.getBaseEntityId()) ? "yes" : "no");
+        artPrescription.put(org.smartregister.family.util.JsonFormUtils.VALUE, (HfPmtctDao.isPrescribedArtRegimes(memberObject.getBaseEntityId()) || HfAncDao.isClientKnownOnArt(memberObject.getBaseEntityId())) ? "yes" : "no");
+        managementProvidedForPmtct.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfPmtctDao.isRegisteredForPmtct(memberObject.getBaseEntityId()) ? "yes" : "no");
     }
 
 
@@ -278,6 +214,10 @@ public class LDRegistrationInteractorFlv implements LDRegistrationInteractor.Fla
                 .withHelper(new TrueLabourConfirmationAction(memberObject, actionList, details, callBack, context))
                 .build();
         actionList.put(context.getString(R.string.ld_registration_true_labour_title), ldRegistrationTrueLabourConfirmation);
+
+        admissionInformationForm = initializeHealthFacilitiesList(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryAdmissionInformation()));
+
+
     }
 
     private static class TrueLabourConfirmationAction extends LDRegistrationTrueLabourConfirmationAction {
@@ -299,7 +239,6 @@ public class LDRegistrationInteractorFlv implements LDRegistrationInteractor.Fla
             if (labourConfirmation.equalsIgnoreCase("true")) {
                 //Adding the next actions when true labour confirmation is completed and the client is confirmed with True Labour.
                 try {
-                    JSONObject admissionInformationForm = initializeHealthFacilitiesList(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryAdmissionInformation()));
                     BaseLDVisitAction ldRegistrationAdmissionInformation = new BaseLDVisitAction.Builder(context, context.getString(R.string.ld_registration_admission_information_title))
                             .withOptional(false)
                             .withDetails(details)

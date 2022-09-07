@@ -169,8 +169,37 @@
             "text": "Historia ya kuharibika kwa mimba",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "hx_abortions"
+          },
+          {
+            "key": "other",
+            "text": "Others (Specify)",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other"
           }
         ]
+      },
+      {
+        "key": "other_medical_surgical_history",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_medical_surgical_history",
+        "type": "edit_text",
+        "hint": "Specify other medical and surgical history",
+        "v_required": {
+          "value": "true",
+          "err": "Please specify the other medical surgical history"
+        },
+        "relevance": {
+          "step1:medical_surgical_history": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "other"
+                ]
+              }
+            ]
+          }
+        }
       },
       {
         "key": "ctc_number",
@@ -210,10 +239,121 @@
       },
       {
         "key": "gravida",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "gravida",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_medical_and_surgical_history_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "parity",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "parity",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_medical_and_surgical_history_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "no_surv_children",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "no_surv_children",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_medical_and_surgical_history_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "gravida_read_only",
+        "type": "edit_text",
+        "read_only": "true",
+        "hint": "Idadi ya ujauzito (Gravida)",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "gravida_read_only",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_medical_and_surgical_history_relevance.yml"
+            }
+          }
+        },
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_medical_and_surgical_history_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "parity_read_only",
+        "type": "edit_text",
+        "read_only": "true",
+        "hint": "Idadi ya mimba zilizofikia wiki 24 au zaidi (Parity)",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "parity_read_only",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_medical_and_surgical_history_relevance.yml"
+            }
+          }
+        },
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_medical_and_surgical_history_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "no_surv_children_read_only",
+        "type": "edit_text",
+        "read_only": "true",
+        "hint": "Idadi ya watoto walio hai",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "no_surv_children_read_only",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_medical_and_surgical_history_relevance.yml"
+            }
+          }
+        },
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_medical_and_surgical_history_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "gravida_text",
         "type": "edit_text",
         "hint": "Idadi ya ujauzito (Gravida)",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "gravida",
+        "openmrs_entity_id": "gravida_text",
         "openmrs_entity_parent": "",
         "v_numeric": {
           "value": "true",
@@ -221,15 +361,26 @@
         },
         "v_max": {
           "value": "35",
-          "err": "Temperature must be equal or less than 50"
+          "err": "Idadi ya ujauzito lazima iwe sawa au chini ya 35"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_medical_and_surgical_history_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali jibu swali hili"
         }
       },
       {
-        "key": "parity",
+        "key": "parity_text",
         "type": "edit_text",
-        "hint": "Idadi ya mimba zilizofikia wiki 24 au zaidi",
+        "hint": "Idadi ya mimba zilizofikia wiki 24 au zaidi (Parity)",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "parity",
+        "openmrs_entity_id": "parity_text",
         "openmrs_entity_parent": "",
         "v_numeric": {
           "value": "true",
@@ -238,10 +389,21 @@
         "constraints": [
           {
             "type": "numeric",
-            "ex": "lessThan(., step1:gravida)",
+            "ex": "lessThan(., step1:gravida_text)",
             "err": "Namba lazima iwe chini ya idadi ya ujauzito"
           }
-        ]
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_medical_and_surgical_history_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali jibu swali hili"
+        }
       },
       {
         "key": "prompt_for_grand_multiparity",
@@ -260,16 +422,23 @@
         }
       },
       {
-        "key": "no_surv_children",
+        "key": "no_surv_children_text",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "no_surv_children",
+        "openmrs_entity_id": "no_surv_children_text",
         "type": "edit_text",
         "edit_type": "number",
         "hint": "Idadi ya watoto walio hai",
         "v_required": {
-          "value": "true",
-          "err": "Tafadhali jaza idadi ya watoto walio hai"
+          "value": true,
+          "err": "Tafadhali jibu swali hili"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_fv_medical_and_surgical_history_relevance.yml"
+            }
+          }
         }
       },
       {

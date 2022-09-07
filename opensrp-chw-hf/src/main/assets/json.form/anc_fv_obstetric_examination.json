@@ -307,7 +307,7 @@
       {
         "key": "temperature",
         "type": "edit_text",
-        "hint": "Temperature (C)",
+        "hint": "Temperature (\u2103)",
         "openmrs_entity_id": "temperature",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -470,8 +470,8 @@
         },
         "v_min": {},
         "v_max": {
-          "value": "36",
-          "err": "Fundal height must be equal or less than 36 CM"
+          "value": "50",
+          "err": "Fundal height must be equal or less than 50 CM"
         }
       },
       {

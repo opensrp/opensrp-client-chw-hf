@@ -3,6 +3,9 @@ package org.smartregister.chw.hf.activity;
 import android.content.Intent;
 import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 
 import org.smartregister.AllConstants;
@@ -18,9 +21,6 @@ import org.smartregister.helper.BottomNavigationHelper;
 import org.smartregister.opd.contract.OpdRegisterActivityContract;
 import org.smartregister.opd.presenter.BaseOpdRegisterActivityPresenter;
 import org.smartregister.view.fragment.BaseRegisterFragment;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 
 import java.util.Arrays;
 import java.util.List;

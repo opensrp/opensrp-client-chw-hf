@@ -1,9 +1,15 @@
 package org.smartregister.chw.hf.fragment;
 
+import static org.smartregister.chw.hf.utils.HfReferralUtils.REGISTER_TYPE;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 
 import org.smartregister.chw.core.fragment.CoreAllClientsRegisterFragment;
 import org.smartregister.chw.core.utils.CoreConstants;
@@ -17,12 +23,6 @@ import org.smartregister.commonregistry.CommonRepository;
 import org.smartregister.cursoradapter.RecyclerViewPaginatedAdapter;
 import org.smartregister.opd.configuration.OpdConfiguration;
 import org.smartregister.opd.utils.ConfigurationInstancesHelper;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
-
-import static org.smartregister.chw.hf.utils.HfReferralUtils.REGISTER_TYPE;
 
 public class AllMaleClientsRegisterFragment extends CoreAllClientsRegisterFragment {
 

@@ -2,7 +2,7 @@
 name: step1_date_anc_hiv_test
 description: date of hiv test calculation
 priority: 1
-condition: "true"
+condition: "!step1_hiv.equals('test_not_conducted')"
 actions:
   - "calculation = helper.getDateToday()"
 ---
@@ -16,6 +16,6 @@ actions:
 name: step1_hiv
 description: Calculated field for hiv status
 priority: 1
-condition: "true"
+condition: "!global_known_positive.equals('') && !step1_hiv_qn.equals('')"
 actions:
   - "calculation = global_known_positive ? 'positive' : step1_hiv_qn"

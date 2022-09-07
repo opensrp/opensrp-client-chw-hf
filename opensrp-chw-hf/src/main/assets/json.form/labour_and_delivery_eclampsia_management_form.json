@@ -49,14 +49,14 @@
     }
   },
   "step1": {
-    "title": "Eclampsia and Pre-Eclampsia Management",
+    "title": "Pre-Eclampsia and Eclampsia Management",
     "fields": [
       {
         "key": "has_signs_of_eclampsia",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "has_signs_of_eclampsia",
-        "label": "Does the client have signs of eclampsia/pre-eclampsia?",
+        "label": "Does the client have signs of pre-eclampsia/eclampsia?",
         "text_color": "#000000",
         "type": "native_radio",
         "options": [
@@ -149,6 +149,10 @@
             "type": "string",
             "ex": "equalTo(., \"no\")"
           }
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please select an option"
         }
       },
       {

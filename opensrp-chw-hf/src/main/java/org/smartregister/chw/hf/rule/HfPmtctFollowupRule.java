@@ -1,5 +1,8 @@
 package org.smartregister.chw.hf.rule;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 import org.smartregister.chw.core.rule.PmtctFollowUpRule;
@@ -8,9 +11,6 @@ import org.smartregister.chw.core.utils.CoreConstants;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 public class HfPmtctFollowupRule extends PmtctFollowUpRule {
     private final String baseEntityId;

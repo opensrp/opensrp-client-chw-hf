@@ -107,7 +107,7 @@
           "err": "Namba ya simu lazima iwe na tarakimu 10 na lazima ianze na 06 au 07"
         },
         "v_regex": {
-          "value": "(0[6-7][1-9][1-9][0-9]{6})|\\s*",
+          "value": "(0[6-7][1-9][0-9][0-9]{6})|\\s*",
           "err": "Namba ya simu lazima iwe na tarakimu 10 na lazima ianze na 06 au 07"
         },
         "v_required": {
@@ -145,7 +145,6 @@
         "key": "cd4_sample_id",
         "type": "edit_text",
         "hint": "Namba ya utambulisho ya sampuli ya CD4",
-        "edit_type": "number",
         "openmrs_entity_id": "cd4_sample_id",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",

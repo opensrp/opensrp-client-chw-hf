@@ -1,1 +1,102 @@
-{"count":"1","encounter_type":"PMTCT Follow-up Visit","entity_id":"","metadata":{"start":{"openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_data_type":"start","openmrs_entity_id":"163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"end":{"openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_data_type":"end","openmrs_entity_id":"163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"today":{"openmrs_entity_parent":"","openmrs_entity":"encounter","openmrs_entity_id":"encounter_date"},"deviceid":{"openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_data_type":"deviceid","openmrs_entity_id":"163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"subscriberid":{"openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_data_type":"subscriberid","openmrs_entity_id":"163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"simserial":{"openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_data_type":"simserial","openmrs_entity_id":"163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"phonenumber":{"openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_data_type":"phonenumber","openmrs_entity_id":"163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"encounter_location":""},"global":{},"step1":{"title":"HVL Suppression","fields":[{"key":"hvl_suppression_after_eac_1","type":"edit_text","hint":"Ukandamizaji wa HVL","openmrs_entity_id":"hvl_suppression_after_eac_1","openmrs_entity":"concept","openmrs_entity_parent":"","v_numeric":{"value":"true","err":"Tafadhali weka thamani halali"},"v_required":{"value":true,"err":"Tafadhali weka thamani ya ukandamizaji wa HVL"}},{"key":"notify_continue_regimen","type":"toaster_notes","text":"Endelea na regimen ya sasa","openmrs_entity_id":"","openmrs_entity":"","openmrs_entity_parent":"","toaster_info_text":"Rudia HVL baada ya miezi 6, 12 na 18","toaster_type":"info","relevance":{"step1:hvl_suppression_after_eac_1":{"type":"numeric","ex":"lessThanEqualTo(.,\"1000\")"}}},{"key":"notify_continue_eac_second","type":"toaster_notes","text":"Mteja ataandikishwa kwenye EAC ya pili","openmrs_entity_id":"","openmrs_entity":"","openmrs_entity_parent":"","toaster_type":"problem","relevance":{"step1:hvl_suppression_after_eac_1":{"type":"numeric","ex":"greaterThan(.,\"1000\")"}}}]}}
+{
+  "count": "1",
+  "encounter_type": "PMTCT Follow-up Visit",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "global": {},
+  "step1": {
+    "title": "HVL Suppression",
+    "fields": [
+      {
+        "key": "hvl_suppression_after_eac_1",
+        "type": "edit_text",
+        "hint": "Ukandamizaji wa HVL",
+        "openmrs_entity_id": "hvl_suppression_after_eac_1",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Tafadhali weka thamani halali"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali weka thamani ya ukandamizaji wa HVL"
+        }
+      },
+      {
+        "key": "notify_continue_regimen",
+        "type": "toaster_notes",
+        "text": "Endelea na regimen ya sasa",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_info_text": "Rudia HVL baada ya miezi 6, 12 na 18",
+        "toaster_type": "info",
+        "relevance": {
+          "step1:hvl_suppression_after_eac_1": {
+            "type": "numeric",
+            "ex": "lessThanEqualTo(.,\"1000\")"
+          }
+        }
+      },
+      {
+        "key": "notify_continue_eac_second",
+        "type": "toaster_notes",
+        "text": "Mteja ataandikishwa kwenye EAC ya pili",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:hvl_suppression_after_eac_1": {
+            "type": "numeric",
+            "ex": "greaterThan(.,\"1000\")"
+          }
+        }
+      }
+    ]
+  }
+}

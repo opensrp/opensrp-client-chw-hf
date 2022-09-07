@@ -1,5 +1,7 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.getMalariaConfirmation;
+
 import android.app.Activity;
 import android.content.Intent;
 
@@ -7,8 +9,6 @@ import org.smartregister.chw.core.activity.CoreMalariaRegisterActivity;
 import org.smartregister.chw.hf.fragment.MalariaRegisterFragment;
 import org.smartregister.helper.BottomNavigationHelper;
 import org.smartregister.view.fragment.BaseRegisterFragment;
-
-import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.getMalariaConfirmation;
 
 public class MalariaRegisterActivity extends CoreMalariaRegisterActivity {
 

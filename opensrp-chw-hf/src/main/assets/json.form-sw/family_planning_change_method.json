@@ -280,7 +280,7 @@
         },
         "v_min": {
           "value": "0",
-          "err":  "Nambari lazima iwe sawa au zaidi ya 0"
+          "err": "Nambari lazima iwe sawa au zaidi ya 0"
         },
         "relevance": {
           "rules-engine": {

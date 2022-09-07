@@ -53,6 +53,20 @@
     "title": "Immediate Newborn Care",
     "fields": [
       {
+        "key": "mother_status",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "mother_status",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_calculation.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "delivery_date",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -139,6 +153,10 @@
               "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
             }
           }
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please select an option"
         }
       },
       {
@@ -1077,6 +1095,20 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "resuscitation",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "resuscitation_question",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "resuscitation_question",
         "label": "Resuscitation (Choose the last method done)",
         "type": "native_radio",
         "label_text_style": "normal",
@@ -1097,18 +1129,18 @@
             "openmrs_entity_id": "suction_only"
           },
           {
-            "key": "suction_and_bag_mask",
-            "text": "Suction and Bag Mask",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "suction_and_bag_mask"
-          },
-          {
             "key": "stimulation",
             "text": "Stimulation",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "stimulation"
+          },
+          {
+            "key": "suction_and_bag_mask",
+            "text": "Suction and Bag Mask",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "suction_and_bag_mask"
           }
         ],
         "relevance": {
@@ -1122,7 +1154,7 @@
       {
         "key": "temperature",
         "type": "edit_text",
-        "hint": "Temperature (C)",
+        "hint": "Temperature (\u2103)",
         "openmrs_entity_id": "temperature",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -1683,7 +1715,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "child_bcg_vaccination",
         "type": "native_radio",
-        "label": "Was BCG vaccine given?",
+        "label": "Was BCG vaccination administered?",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [
@@ -1761,7 +1793,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "child_opv0_vaccination",
         "type": "native_radio",
-        "label": "Was OPV 0 vaccine given?",
+        "label": "Was OPV 0 vaccination administered?",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [
@@ -1839,7 +1871,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "child_hepatitis_b_vaccination",
         "type": "native_radio",
-        "label": "Was Hepatitis B vaccine given?",
+        "label": "Was Hepatitis B vaccination administered?",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [

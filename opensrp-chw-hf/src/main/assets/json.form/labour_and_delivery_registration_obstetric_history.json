@@ -1,6 +1,5 @@
 {
   "count": "1",
-  "skip_blank_steps": true,
   "encounter_type": "Labour and Delivery Registration Obstretric History",
   "entity_id": "",
   "metadata": {
@@ -47,32 +46,60 @@
     "fields": [
       {
         "key": "gravida",
-        "openmrs_entity_parent": "",
+        "type": "edit_text",
+        "hint": "Gravida",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "gravida",
-        "type": "edit_text",
-        "edit_type": "number",
-        "hint": "Gravida",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the gravida number"
+        },
         "v_max": {
           "value": "35",
-          "err": "Temperature must be equal or less than 50"
+          "err": "Gravida must be equal to or less than 35"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please answer"
         }
       },
       {
         "key": "para",
-        "openmrs_entity_parent": "",
+        "type": "edit_text",
+        "hint": "Parity",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "para",
-        "type": "edit_text",
-        "edit_type": "number",
-        "hint": "Para",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter parity number"
+        },
         "constraints": [
           {
             "type": "numeric",
             "ex": "lessThanEqualTo(., step1:gravida)",
             "err": "Parity must be equal to or less than gravida"
           }
-        ]
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please answer"
+        }
+      },
+      {
+        "key": "gravida_minus_para",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "gravida_minus_para",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_registration_obstetric_history_calculation.yml"
+            }
+          }
+        }
       },
       {
         "key": "prompt_for_grand_multiparity",
@@ -92,19 +119,26 @@
       },
       {
         "key": "number_of_abortion",
-        "openmrs_entity_parent": "",
+        "type": "edit_text",
+        "hint": "Number of abortions",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "number_of_abortion",
-        "type": "edit_text",
-        "edit_type": "number",
-        "hint": "Number of abortions",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter parity number"
+        },
         "constraints": [
           {
             "type": "numeric",
-            "ex": "lessThanEqualTo(., step1:gravida_minus_para)",
+            "ex": "lessThan(., step1:gravida_minus_para)",
             "err": "Sum of Para and Abortions should not exceed the Gravida"
           }
-        ]
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please answer"
+        }
       },
       {
         "key": "children_alive",
@@ -113,15 +147,8 @@
         "openmrs_entity_id": "children_alive",
         "type": "edit_text",
         "edit_type": "number",
-        "hint": "Number of children alive"
-      },
-      {
-        "key": "gravida_minus_para",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "gravida_minus_para",
-        "type": "hidden",
-        "calculation": {
+        "hint": "Number of children alive",
+        "relevance": {
           "rules-engine": {
             "ex-rules": {
               "rules-file": "labour_and_delivery_registration_obstetric_history_calculation.yml"
@@ -331,12 +358,41 @@
             "openmrs_entity_id": "hx_abortions"
           },
           {
+            "key": "other",
+            "text": "Others (Specify)",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other"
+          },
+          {
             "key": "none",
             "text": "None",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "none"
           }
         ]
+      },
+      {
+        "key": "other_past_medical_surgical_history",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_past_medical_surgical_history",
+        "type": "edit_text",
+        "hint": "Specify other medical and surgical history",
+        "v_required": {
+          "value": "true",
+          "err": "Please specify the other medical surgical history"
+        },
+        "relevance": {
+          "step1:past_medical_surgical_history": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "other"
+                ]
+              }
+            ]
+          }
+        }
       }
     ]
   }

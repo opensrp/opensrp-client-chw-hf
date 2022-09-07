@@ -164,7 +164,7 @@
             }
           ],
           "required_status": "yes:Please select the answer",
-          "subjects": "test_results:map"
+          "subjects": "test_results:map, action_taken_hiv_problems:map"
         },
         {
           "name": "ctc_number",
@@ -189,7 +189,19 @@
             }
           ],
           "required_status": "true:Please fill client's CTC number",
-          "subjects": "enrolled_to_clinic:map,test_results:map"
+          "subjects": "enrolled_to_clinic:map,test_results:map, action_taken_hiv_problems:map"
+        },
+        {
+          "name": "prompt_for_ctc_enrollment",
+          "type": "toast_notification",
+          "properties": {
+            "notification_type": "info",
+            "dismissible": "no",
+            "text": "Refer the client to CTC for verification and enrollment",
+            "background_color": "#082455",
+            "text_color": "#EBEE2F"
+          },
+          "subjects": "enrolled_to_clinic:map, test_results:map, action_taken_hiv_problems:map"
         },
         {
           "name": "comment_hiv_problems",

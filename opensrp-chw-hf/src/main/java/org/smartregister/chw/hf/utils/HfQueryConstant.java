@@ -413,6 +413,7 @@ public interface HfQueryConstant {
             "                    on ec_family_member.base_entity_id = ec_ld_confirmation.base_entity_id\n" +
             "where ec_family_member.date_removed is null\n" +
             "  AND ec_ld_confirmation.is_closed is 0\n" +
+            "  AND ec_ld_confirmation.labour_confirmation = 'true'\n" +
             "  AND ec_family_member.base_entity_id IN (%s)\n" +
             "  AND ec_family_member.base_entity_id NOT IN (\n" +
             "    SELECT ec_anc_register.base_entity_id AS base_entity_id\n" +

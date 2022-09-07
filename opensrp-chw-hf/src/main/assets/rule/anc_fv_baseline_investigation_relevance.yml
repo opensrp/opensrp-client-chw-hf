@@ -3,7 +3,7 @@
 name: step1_prompt_for_moderate_anaemia_management
 description:  prompt for moderate anaemia management
 priority: 1
-condition: "Float.parseFloat(step1_hb_level) > 8.5 && Float.parseFloat(step1_hb_level) <= 11"
+condition: "!step1_hb_level.equals('') && Float.parseFloat(step1_hb_level) > 8.5 && Float.parseFloat(step1_hb_level) <= 11.4"
 actions:
   - "isRelevant = true"
 ---
@@ -24,7 +24,7 @@ actions:
 name: step1_prompt_for_hypoglycaemia
 description:  prompt for hypoglycaemia
 priority: 1
-condition: "(step1_type_of_blood_for_glucose_test.equals('rbg') && step1_blood_for_glucose < 3.9) || (step1_type_of_blood_for_glucose_test.equals('gtt') && step1_blood_for_glucose < 3.5) || (step1_type_of_blood_for_glucose_test.equals('fbg') && step1_blood_for_glucose < 3.9) "
+condition: "(step1_type_of_blood_for_glucose_test.equals('rbg') && !step1_blood_for_glucose.equals('') && step1_blood_for_glucose < 3.9) || (step1_type_of_blood_for_glucose_test.equals('gtt') && !step1_blood_for_glucose.equals('') && step1_blood_for_glucose < 3.5) || (step1_type_of_blood_for_glucose_test.equals('fbg') && !step1_blood_for_glucose.equals('') && step1_blood_for_glucose < 3.9) "
 actions:
   - "isRelevant = true"
 ---

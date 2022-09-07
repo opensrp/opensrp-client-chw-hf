@@ -58,7 +58,7 @@ actions:
 name: step1_prompt_for_moderate_anaemia_management
 description:  prompt for moderate anaemia management
 priority: 1
-condition: "Float.parseFloat(step1_hb_level) > 8.5 && Float.parseFloat(step1_hb_level) <= 11"
+condition: "!step1_hb_level.equals('') && Float.parseFloat(step1_hb_level) > 8.5 && Float.parseFloat(step1_hb_level) <= 11.4"
 actions:
   - "isRelevant = true"
 ---
@@ -72,14 +72,14 @@ actions:
 name: step1_prompt_for_gestational_diabetes_mellitus
 description:  prompt for gestational diabetes mellitus
 priority: 1
-condition: " (step1_type_of_blood_for_glucose_test.equals('rbg') && step1_blood_for_glucose > 11.1) ||  (step1_type_of_blood_for_glucose_test.equals('gtt') && step1_blood_for_glucose > 7.8) || (step1_type_of_blood_for_glucose_test.equals('fbg') && step1_blood_for_glucose > 7.8) "
+condition: " (step1_type_of_blood_for_glucose_test.equals('rbg') && !step1_blood_for_glucose.equals('') && Float.parseFloat(step1_blood_for_glucose) > 11.1) ||  (step1_type_of_blood_for_glucose_test.equals('gtt') && !step1_blood_for_glucose.equals('') && Float.parseFloat(step1_blood_for_glucose) > 7.8) || (step1_type_of_blood_for_glucose_test.equals('fbg') && !step1_blood_for_glucose.equals('') && Float.parseFloat(step1_blood_for_glucose) > 7.8) "
 actions:
   - "isRelevant = true"
 ---
 name: step1_prompt_for_hypoglycaemia
 description:  prompt for hypoglycaemia
 priority: 1
-condition: "(step1_type_of_blood_for_glucose_test.equals('rbg') && step1_blood_for_glucose < 3.9) || (step1_type_of_blood_for_glucose_test.equals('fbg') && step1_blood_for_glucose < 3.9) || (step1_type_of_blood_for_glucose_test.equals('gtt') && step1_blood_for_glucose < 3.5) "
+condition: "(step1_type_of_blood_for_glucose_test.equals('rbg') && !step1_blood_for_glucose.equals('') && Float.parseFloat(step1_blood_for_glucose) < 3.9) || (step1_type_of_blood_for_glucose_test.equals('fbg') && !step1_blood_for_glucose.equals('') && Float.parseFloat(step1_blood_for_glucose) < 3.9) || (step1_type_of_blood_for_glucose_test.equals('gtt') && !step1_blood_for_glucose.equals('') && Float.parseFloat(step1_blood_for_glucose) < 3.5) "
 actions:
   - "isRelevant = true"
 ---
@@ -108,5 +108,12 @@ name: step1_hiv_counselling_after_testing
 description: show the hiv counselling question after getting the test results
 priority: 1
 condition: "step1_hiv.contains('positive') || step1_hiv.contains('negative')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_prompt_for_severe_anaemia_treatment
+description: show the hiv counselling question after getting the test results
+priority: 1
+condition: "!step1_hb_level.equals('') && Float.parseFloat(step1_hb_level) <= 8.5"
 actions:
   - "isRelevant = true"

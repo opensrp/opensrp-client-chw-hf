@@ -1,5 +1,8 @@
 package org.smartregister.chw.hf.fragment;
 
+import static android.view.View.GONE;
+import static org.smartregister.util.Utils.getName;
+
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
@@ -13,9 +16,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.smartregister.chw.anc.fragment.BaseAncWomanCallDialogFragment;
 import org.smartregister.chw.anc.listener.BaseAncWomanCallWidgetDialogListener;
 import org.smartregister.chw.hf.R;
-
-import static android.view.View.GONE;
-import static org.smartregister.util.Utils.getName;
 
 public class PncNoMotherCallDialogFragment extends BaseAncWomanCallDialogFragment {
 

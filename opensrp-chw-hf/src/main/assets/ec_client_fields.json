@@ -204,6 +204,13 @@
             "field": "obs.fieldCode",
             "concept": "completed_tpt"
           }
+        },{
+          "column_name": "prescribed_regimes",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "prescribed_regimes"
+          }
         },
         {
           "column_name": "visit_number",
@@ -1509,6 +1516,14 @@
           "json_mapping": {
             "field": "obs.fieldCode",
             "concept": "medical_surgical_history"
+          }
+        },
+        {
+          "column_name": "other_medical_surgical_history",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "other_medical_surgical_history"
           }
         },
         {

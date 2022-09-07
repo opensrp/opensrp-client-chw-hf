@@ -1,5 +1,7 @@
 package org.smartregister.chw.hf.presenter;
 
+import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
+
 import com.nerdstone.neatformcore.domain.model.NFormViewData;
 import com.vijay.jsonwizard.utils.FormUtils;
 
@@ -17,8 +19,6 @@ import org.smartregister.chw.hiv.util.JsonFormConstants;
 
 import java.util.Calendar;
 import java.util.HashMap;
-
-import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
 
 public class HivFormActivityActivityPresenter extends BaseHivFormsActivityPresenter {
 

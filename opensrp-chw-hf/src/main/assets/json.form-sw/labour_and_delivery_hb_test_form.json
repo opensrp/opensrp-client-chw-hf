@@ -55,32 +55,60 @@
       {
         "key": "hb_test_conducted",
         "type": "native_radio",
-        "label": "Je, kipimo cha HB kimefanyika?",
+        "label": "Has the HB test been conducted?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "hb_test_conducted",
         "openmrs_entity_parent": "",
         "options": [
           {
             "key": "yes",
-            "text": "Ndio",
+            "text": "Yes",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
-            "text": "Hapana",
+            "text": "No",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
         ]
       },
       {
-        "key": "no_test_reasons",
-        "type": "edit_text",
-        "hint": "Kwanini kipimo hakikufanyika?",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "no_test_reasons",
+        "key": "reason_for_not_conducting_hb_test",
         "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_conducting_hb_test",
+        "type": "spinner",
+        "hint": "Kwanini kipimo hakikufanyika?",
+        "values": [
+          "Stock out of Cuvettes Cartridges",
+          "Haemoque machine out of order",
+          "The client was in an emergency situation",
+          "The client refused to be tested",
+          "We are still counselling the client",
+          "Other"
+        ],
+        "keys": [
+          "stock_out_of_cuvettes_cartridges",
+          "haemoque_machine_out_of_order",
+          "the_client_was_in_an_emergency_situation",
+          "the_client_refused_to_be_tested",
+          "we_are_still_counselling_the_client",
+          "other"
+        ],
+        "openmrs_choice_ids": {
+          "stock_out_of_cuvettes_cartridges": "stock_out_of_cuvettes_cartridges",
+          "haemoque_machine_out_of_order": "haemoque_machine_out_of_order",
+          "the_client_was_in_an_emergency_situation": "the_client_was_in_an_emergency_situation",
+          "the_client_refused_to_be_tested": "the_client_refused_to_be_tested",
+          "we_are_still_counselling_the_client": "we_are_still_counselling_the_client",
+          "other": "other"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select a reason"
+        },
         "relevance": {
           "step1:hb_test_conducted": {
             "type": "string",
@@ -89,59 +117,78 @@
         }
       },
       {
+        "key": "other_reason_hb_test_not_conducted",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reason_hb_test_not_conducted",
+        "type": "edit_text",
+        "hint": "Specify other reasons for not conducting the HB Level Test",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the reason"
+        },
+        "relevance": {
+          "step1:reason_for_not_conducting_hb_test": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
+          }
+        }
+      },
+      {
         "key": "hb_level",
         "type": "edit_text",
-        "hint": "Ingiza kiwango cha damu kilichopimwa (g/dl)",
+        "hint": "Enter Measured HB Level (g/dl)",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "hb_level",
         "openmrs_entity_parent": "",
         "v_numeric": {
           "value": "true",
-          "err": "Tafadhali ingiza kiwango cha damu"
+          "err": "Please enter the HB level"
         },
         "v_min": {
           "value": "0",
-          "err": "Kiwango cha damu lazima iwe sawa au zaidi ya 0 (g/dl)"
+          "err": "HB level must be equal or greater than 0 (g/dl)"
         },
         "v_max": {
           "value": "20",
-          "err": "Kiwango cha damu lazima iwe sawa au chini ya 20 (g/dl)"
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhali jibu hili swali"
+          "err": "HB level must be equal or less than 20 (g/dl)"
         },
         "relevance": {
           "step1:hb_test_conducted": {
             "type": "string",
             "ex": "equalTo(., \"yes\")"
           }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the HB level results"
         }
       },
       {
         "key": "management_provided_for_hb_level",
         "type": "native_radio",
-        "label": "Je, usimamizi ulitolewa kwa ajili ya kiwango cha damu kisicho cha kawaida?",
+        "label": "Was management provided for abnormal HB Level?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "management_provided_for_hb_level",
         "openmrs_entity_parent": "",
         "options": [
           {
             "key": "yes",
-            "text": "Ndio",
+            "text": "Yes",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
-            "text": "Hapana",
+            "text": "No",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhali jibu hili swali"
+          "err": "Please answer this question"
         },
         "relevance": {
           "step1:hb_level": {

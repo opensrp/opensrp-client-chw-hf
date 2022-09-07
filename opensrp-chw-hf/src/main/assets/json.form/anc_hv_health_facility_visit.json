@@ -191,7 +191,7 @@
         "options": [
           {
             "key": "chk_tetanus",
-            "text": "Tetanus toxoid (TT)",
+            "text": "Tetanus toxoid (Td)",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "84879AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
           },

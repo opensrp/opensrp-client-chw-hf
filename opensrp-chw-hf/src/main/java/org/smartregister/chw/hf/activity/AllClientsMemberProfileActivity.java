@@ -1,10 +1,17 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
+import static org.smartregister.chw.hf.utils.JsonFormUtils.getAutoPopulatedJsonEditFormString;
+import static org.smartregister.util.Utils.getName;
+
 import android.content.Context;
 import android.os.Build;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+
+import androidx.annotation.RequiresApi;
+import androidx.viewpager.widget.ViewPager;
 
 import com.vijay.jsonwizard.utils.FormUtils;
 
@@ -39,13 +46,7 @@ import org.smartregister.family.model.BaseFamilyOtherMemberProfileActivityModel;
 import org.smartregister.family.util.DBConstants;
 import org.smartregister.view.contract.BaseProfileContract;
 
-import androidx.annotation.RequiresApi;
-import androidx.viewpager.widget.ViewPager;
 import timber.log.Timber;
-
-import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
-import static org.smartregister.chw.hf.utils.JsonFormUtils.getAutoPopulatedJsonEditFormString;
-import static org.smartregister.util.Utils.getName;
 
 public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfileActivity {
 

@@ -92,13 +92,17 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "name_of_hf",
-        "openmrs_data_type": "text",
-        "type": "tree",
-        "hint": "Kituo cha Afya",
-        "tree": [],
+        "buttonText": "Select Health Facility",
+        "sort": true,
+        "maxSelectable": 1,
+        "dialogTitle": "Health Facility",
+        "searchHint": "Type Health Facility Name",
+        "options": [
+        ],
+        "type": "multi_select_list",
         "v_required": {
           "value": true,
-          "err": "Tafadhali chagua kituo cha afya"
+          "err": "Please select the health facility"
         },
         "relevance": {
           "step1:delivery_place": {

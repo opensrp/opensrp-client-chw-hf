@@ -112,13 +112,17 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "name_of_hf",
-        "openmrs_data_type": "text",
-        "type": "tree",
-        "hint": "Amepewa rufaa akitokea",
-        "tree": [],
+        "buttonText": "Select Referred From",
+        "sort": true,
+        "maxSelectable": 1,
+        "dialogTitle": "Health Facility",
+        "searchHint": "Referred From",
+        "options": [
+        ],
+        "type": "multi_select_list",
         "v_required": {
           "value": true,
-          "err": "Tafadhali chaguo kituo cha Afya"
+          "err": "Please Referred From"
         },
         "relevance": {
           "step1:admission_from": {
@@ -303,7 +307,11 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "none"
           }
-        ]
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please fill this question"
+        }
       },
       {
         "key": "other_danger_signs",

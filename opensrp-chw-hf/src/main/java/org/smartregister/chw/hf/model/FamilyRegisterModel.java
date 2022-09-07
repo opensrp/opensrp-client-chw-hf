@@ -1,5 +1,9 @@
 package org.smartregister.chw.hf.model;
 
+import static org.smartregister.AllConstants.LocationConstants.SPECIAL_TAG_FOR_OPENMRS_TEAM_MEMBERS;
+import static org.smartregister.chw.hf.utils.JsonFormUtils.SYNC_LOCATION_ID;
+import static org.smartregister.util.JsonFormUtils.STEP1;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
@@ -11,10 +15,6 @@ import java.util.Collections;
 import java.util.List;
 
 import timber.log.Timber;
-
-import static org.smartregister.AllConstants.LocationConstants.SPECIAL_TAG_FOR_OPENMRS_TEAM_MEMBERS;
-import static org.smartregister.chw.hf.utils.JsonFormUtils.SYNC_LOCATION_ID;
-import static org.smartregister.util.JsonFormUtils.STEP1;
 
 public class FamilyRegisterModel extends BaseFamilyRegisterModel {
 

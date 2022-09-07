@@ -340,7 +340,7 @@
         },
         "v_max": {
           "value": "120",
-          "err":  "Umri unapaswa kuwa sawa au chini 120"
+          "err": "Umri unapaswa kuwa sawa au chini 120"
         },
         "relevance": {
           "rules-engine": {
@@ -426,7 +426,7 @@
           "err": "Namba inatakiwa iwe na tarakimu 10"
         },
         "v_regex": {
-          "value": "(0[6-7][1-9][1-9][0-9]{6})|\\s*",
+          "value": "(0[6-7][1-9][0-9][0-9]{6})|\\s*",
           "err": "Nambari lazima iwe na tarakimu 10 na lazima ianze na 06 u 07."
         }
       },
@@ -837,7 +837,7 @@
           "err": "Namba ya simu inatakiwa kuwa na tarakimu 10"
         },
         "v_regex": {
-          "value": "(0[6-7][1-9][1-9][0-9]{6})|\\s*",
+          "value": "(0[6-7][1-9][0-9][0-9]{6})|\\s*",
           "err": "Namba lazima iwe na tarakimu 10 na lazima ianze na 06 au 07."
         }
       },

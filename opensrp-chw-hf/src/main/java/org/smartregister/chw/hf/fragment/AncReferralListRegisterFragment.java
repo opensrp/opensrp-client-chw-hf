@@ -4,6 +4,9 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import androidx.loader.content.CursorLoader;
+import androidx.loader.content.Loader;
+
 import org.apache.commons.lang3.StringUtils;
 import org.smartregister.chw.core.fragment.CoreAncRegisterFragment;
 import org.smartregister.chw.core.utils.CoreConstants;
@@ -28,8 +31,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import androidx.loader.content.CursorLoader;
-import androidx.loader.content.Loader;
 import timber.log.Timber;
 
 public class AncReferralListRegisterFragment extends CoreAncRegisterFragment {

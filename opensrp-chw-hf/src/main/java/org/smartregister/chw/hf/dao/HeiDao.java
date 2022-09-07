@@ -120,6 +120,8 @@ public class HeiDao extends AbstractDao {
         if (weeks >= 6 && getNextHivTestAge(baseEntityID).equals(Constants.HeiHIVTestAtAge.AT_6_WEEKS) && riskCategoryRes != null && riskCategoryRes.get(0) != null && riskCategoryRes.get(0).equals("high")) {
             return prophylaxisArvForHighAndLowRiskRes == null || prophylaxisArvForHighAndLowRiskRes.get(0) == null;
         } else if (weeks < 6 && getNextHivTestAge(baseEntityID).equals(Constants.HeiHIVTestAtAge.AT_BIRTH) && riskCategoryRes != null && riskCategoryRes.get(0) != null && riskCategoryRes.get(0).equals("low")) {
+            if (weeks < 3)
+                return false;
             return prophylaxisArvForHighAndLowRiskRes == null || prophylaxisArvForHighAndLowRiskRes.get(0) == null;
         } else return false;
     }

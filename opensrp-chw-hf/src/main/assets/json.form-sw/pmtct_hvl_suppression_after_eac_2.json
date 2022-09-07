@@ -1,1 +1,378 @@
-{"count":"1","encounter_type":"PMTCT Follow-up Visit","entity_id":"","metadata":{"start":{"openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_data_type":"start","openmrs_entity_id":"163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"end":{"openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_data_type":"end","openmrs_entity_id":"163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"today":{"openmrs_entity_parent":"","openmrs_entity":"encounter","openmrs_entity_id":"encounter_date"},"deviceid":{"openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_data_type":"deviceid","openmrs_entity_id":"163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"subscriberid":{"openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_data_type":"subscriberid","openmrs_entity_id":"163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"simserial":{"openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_data_type":"simserial","openmrs_entity_id":"163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"phonenumber":{"openmrs_entity_parent":"","openmrs_entity":"concept","openmrs_data_type":"phonenumber","openmrs_entity_id":"163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"encounter_location":""},"global":{},"step1":{"title":"HVL Suppression","fields":[{"key":"hvl_suppression_after_eac_2","type":"edit_text","hint":"Ukandamizaji wa HVL","openmrs_entity_id":"hvl_suppression_after_eac_2","openmrs_entity":"concept","openmrs_entity_parent":"","v_numeric":{"value":"true","err":"Tafadhali weka thamani halali"},"v_required":{"value":true,"err":"Tafadhali weka thamani ya ukandamizaji wa HVL"}},{"key":"notify_continue_regimen","type":"toaster_notes","text":"Endelea na regimen ya sasa","openmrs_entity_id":"","openmrs_entity":"","openmrs_entity_parent":"","toaster_info_text":"Rudia HVL baada ya miezi 6, 12 na 18","toaster_type":"info","relevance":{"step1:hvl_suppression_after_eac_2":{"type":"numeric","ex":"lessThanEqualTo(.,\"1000\")"}}},{"key":"choose_presc_line","type":"spinner","hint":"Agiza regimen mpya","openmrs_entity_id":"choose_presc_line","openmrs_entity":"concept","openmrs_entity_parent":"","values":["Mstari wa Kwanza","Mstari wa Pili","Mstari wa Tatu"],"keys":["first_line","second_line","third_line"],"openmrs_choice_ids":{"first_line":"first_line","second_line":"second_line","third_line":"third_line"},"relevance":{"step1:hvl_suppression_after_eac_2":{"type":"numeric","ex":"greaterThan(.,\"1000\")"}},"v_required":{"value":true,"err":"Tafadhali jibu swali hili"}},{"key":"first_line","type":"spinner","hint":"Maagizo ya ARVs Mstari wa Kwanza","openmrs_entity_id":"first_line","openmrs_entity":"concept","openmrs_entity_parent":"","values":["1gA","1pA","1rA","1uA","1hA","1xA"],"keys":["1_gA","1_pA","1_rA","1_uA","1_hA","1_xA"],"openmrs_choice_ids":{"1_gA":"1_gA","1_pA":"1_pA","1_rA":"1_rA","1_uA":"1_uA","1_hA":"1_hA","1_xA":"1_xA"},"relevance":{"step1:choose_presc_line":{"type":"string","ex":"equalTo(.,\"first_line\")"}},"v_required":{"value":true,"err":"Tafadhali jibu swali hili"}},{"key":"second_line","type":"spinner","hint":"Dawa ya Mstari wa Pili wa ARVs","openmrs_entity_id":"second_line","openmrs_entity":"concept","openmrs_entity_parent":"","values":["2fA","2hA","2sA","2GA","2kA","2nA","2uA","2xA"],"keys":["2_fA","2_hA","2_sA","2_GA","2_kA","2_nA","2_uA","2_xA"],"openmrs_choice_ids":{"2_fA":"2_fA","2_hA":"2_hA","2_sA":"2_sA","2_GA":"2_GA","2_kA":"2_kA","2_nA":"2_nA","2_uA":"2_uA","2_xA":"2_xA"},"relevance":{"step1:choose_presc_line":{"type":"string","ex":"equalTo(.,\"second_line\")"}},"v_required":{"value":true,"err":"Tafadhali jibu swali hili"}},{"key":"third_line","type":"spinner","hint":"Maagizo ya ARVs Mstari wa Tatu","openmrs_entity_id":"third_line","openmrs_entity":"concept","openmrs_entity_parent":"","values":["3yA","3wA","3kA","3tA","3hA","3gA","3zA","3xA"],"keys":["3_wA","3_kA","3_tA","3_hA","3_gA","3_zA","3_xA","3_yA"],"openmrs_choice_ids":{"3_wA":"3_wA","3_kA":"3_kA","3_tA":"3_tA","3_hA":"3_hA","3_gA":"3_gA","3_zA":"3_zA","3_xA":"3_xA","3_yA":"3_yA"},"relevance":{"step1:choose_presc_line":{"type":"string","ex":"equalTo(.,\"third_line\")"}},"v_required":{"value":true,"err":"Tafadhali jibu swali hili"}},{"type":"hidden","key":"eac_day_1","openmrs_entity_id":"eac_day_1","openmrs_entity":"concept","openmrs_entity_parent":"","calculation":{"rules-engine":{"ex-rules":{"rules-file":"pmtct_hvl_suppression_calculation.yml"}}}},{"type":"hidden","key":"eac_day_2","openmrs_entity_id":"eac_day_2","openmrs_entity":"concept","openmrs_entity_parent":"","calculation":{"rules-engine":{"ex-rules":{"rules-file":"pmtct_hvl_suppression_calculation.yml"}}}},{"type":"hidden","key":"eac_day_3","openmrs_entity_id":"eac_day_3","openmrs_entity":"concept","openmrs_entity_parent":"","relevance":{"step1:hvl_suppression_after_eac_2":{"type":"numeric","ex":"greaterThan(.,\"1000\")"}},"calculation":{"rules-engine":{"ex-rules":{"rules-file":"pmtct_hvl_suppression_calculation.yml"}}}},{"type":"hidden","key":"eac_month_1","openmrs_entity_id":"eac_month_1","openmrs_entity":"concept","openmrs_entity_parent":"","calculation":{"rules-engine":{"ex-rules":{"rules-file":"pmtct_hvl_suppression_calculation.yml"}}}},{"type":"hidden","key":"eac_month_2","openmrs_entity_id":"eac_month_2","openmrs_entity":"concept","openmrs_entity_parent":"","calculation":{"rules-engine":{"ex-rules":{"rules-file":"pmtct_hvl_suppression_calculation.yml"}}}},{"type":"hidden","key":"eac_month_3","openmrs_entity_id":"eac_month_3","openmrs_entity":"concept","openmrs_entity_parent":"","calculation":{"rules-engine":{"ex-rules":{"rules-file":"pmtct_hvl_suppression_calculation.yml"}}}},{"type":"hidden","key":"hvl_suppression","hint":"HVL Suppression","openmrs_entity_id":"hvl_suppression","openmrs_entity":"concept","openmrs_entity_parent":"","calculation":{"rules-engine":{"ex-rules":{"rules-file":"pmtct_hvl_suppression_calculation.yml"}}}},{"type":"hidden","key":"hvl_suppression_after_eac_1","hint":"HVL Suppression","openmrs_entity_id":"hvl_suppression_after_eac_1","openmrs_entity":"concept","openmrs_entity_parent":"","calculation":{"rules-engine":{"ex-rules":{"rules-file":"pmtct_hvl_suppression_calculation.yml"}}}}]}}
+{
+  "count": "1",
+  "encounter_type": "PMTCT Follow-up Visit",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "global": {},
+  "step1": {
+    "title": "HVL Suppression",
+    "fields": [
+      {
+        "key": "hvl_suppression_after_eac_2",
+        "type": "edit_text",
+        "hint": "Ukandamizaji wa HVL",
+        "openmrs_entity_id": "hvl_suppression_after_eac_2",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "v_numeric": {
+          "value": "true",
+          "err": "Tafadhali weka thamani halali"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali weka thamani ya ukandamizaji wa HVL"
+        }
+      },
+      {
+        "key": "notify_continue_regimen",
+        "type": "toaster_notes",
+        "text": "Endelea na regimen ya sasa",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_info_text": "Rudia HVL baada ya miezi 6, 12 na 18",
+        "toaster_type": "info",
+        "relevance": {
+          "step1:hvl_suppression_after_eac_2": {
+            "type": "numeric",
+            "ex": "lessThanEqualTo(.,\"1000\")"
+          }
+        }
+      },
+      {
+        "key": "choose_presc_line",
+        "type": "spinner",
+        "hint": "Agiza regimen mpya",
+        "openmrs_entity_id": "choose_presc_line",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "values": [
+          "Mstari wa Kwanza",
+          "Mstari wa Pili",
+          "Mstari wa Tatu"
+        ],
+        "keys": [
+          "first_line",
+          "second_line",
+          "third_line"
+        ],
+        "openmrs_choice_ids": {
+          "first_line": "first_line",
+          "second_line": "second_line",
+          "third_line": "third_line"
+        },
+        "relevance": {
+          "step1:hvl_suppression_after_eac_2": {
+            "type": "numeric",
+            "ex": "greaterThan(.,\"1000\")"
+          }
+        },
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali jibu swali hili"
+        }
+      },
+      {
+        "key": "first_line",
+        "type": "spinner",
+        "hint": "Maagizo ya ARVs Mstari wa Kwanza",
+        "openmrs_entity_id": "first_line",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "values": [
+          "1gA",
+          "1pA",
+          "1rA",
+          "1uA",
+          "1hA",
+          "1xA"
+        ],
+        "keys": [
+          "1_gA",
+          "1_pA",
+          "1_rA",
+          "1_uA",
+          "1_hA",
+          "1_xA"
+        ],
+        "openmrs_choice_ids": {
+          "1_gA": "1_gA",
+          "1_pA": "1_pA",
+          "1_rA": "1_rA",
+          "1_uA": "1_uA",
+          "1_hA": "1_hA",
+          "1_xA": "1_xA"
+        },
+        "relevance": {
+          "step1:choose_presc_line": {
+            "type": "string",
+            "ex": "equalTo(.,\"first_line\")"
+          }
+        },
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali jibu swali hili"
+        }
+      },
+      {
+        "key": "second_line",
+        "type": "spinner",
+        "hint": "Dawa ya Mstari wa Pili wa ARVs",
+        "openmrs_entity_id": "second_line",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "values": [
+          "2fA",
+          "2hA",
+          "2sA",
+          "2GA",
+          "2kA",
+          "2nA",
+          "2uA",
+          "2xA"
+        ],
+        "keys": [
+          "2_fA",
+          "2_hA",
+          "2_sA",
+          "2_GA",
+          "2_kA",
+          "2_nA",
+          "2_uA",
+          "2_xA"
+        ],
+        "openmrs_choice_ids": {
+          "2_fA": "2_fA",
+          "2_hA": "2_hA",
+          "2_sA": "2_sA",
+          "2_GA": "2_GA",
+          "2_kA": "2_kA",
+          "2_nA": "2_nA",
+          "2_uA": "2_uA",
+          "2_xA": "2_xA"
+        },
+        "relevance": {
+          "step1:choose_presc_line": {
+            "type": "string",
+            "ex": "equalTo(.,\"second_line\")"
+          }
+        },
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali jibu swali hili"
+        }
+      },
+      {
+        "key": "third_line",
+        "type": "spinner",
+        "hint": "Maagizo ya ARVs Mstari wa Tatu",
+        "openmrs_entity_id": "third_line",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "values": [
+          "3yA",
+          "3wA",
+          "3kA",
+          "3tA",
+          "3hA",
+          "3gA",
+          "3zA",
+          "3xA"
+        ],
+        "keys": [
+          "3_wA",
+          "3_kA",
+          "3_tA",
+          "3_hA",
+          "3_gA",
+          "3_zA",
+          "3_xA",
+          "3_yA"
+        ],
+        "openmrs_choice_ids": {
+          "3_wA": "3_wA",
+          "3_kA": "3_kA",
+          "3_tA": "3_tA",
+          "3_hA": "3_hA",
+          "3_gA": "3_gA",
+          "3_zA": "3_zA",
+          "3_xA": "3_xA",
+          "3_yA": "3_yA"
+        },
+        "relevance": {
+          "step1:choose_presc_line": {
+            "type": "string",
+            "ex": "equalTo(.,\"third_line\")"
+          }
+        },
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali jibu swali hili"
+        }
+      },
+      {
+        "type": "hidden",
+        "key": "eac_day_1",
+        "openmrs_entity_id": "eac_day_1",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_hvl_suppression_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "type": "hidden",
+        "key": "eac_day_2",
+        "openmrs_entity_id": "eac_day_2",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_hvl_suppression_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "type": "hidden",
+        "key": "eac_day_3",
+        "openmrs_entity_id": "eac_day_3",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "step1:hvl_suppression_after_eac_2": {
+            "type": "numeric",
+            "ex": "greaterThan(.,\"1000\")"
+          }
+        },
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_hvl_suppression_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "type": "hidden",
+        "key": "eac_month_1",
+        "openmrs_entity_id": "eac_month_1",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_hvl_suppression_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "type": "hidden",
+        "key": "eac_month_2",
+        "openmrs_entity_id": "eac_month_2",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_hvl_suppression_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "type": "hidden",
+        "key": "eac_month_3",
+        "openmrs_entity_id": "eac_month_3",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_hvl_suppression_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "type": "hidden",
+        "key": "hvl_suppression",
+        "hint": "HVL Suppression",
+        "openmrs_entity_id": "hvl_suppression",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_hvl_suppression_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "type": "hidden",
+        "key": "hvl_suppression_after_eac_1",
+        "hint": "HVL Suppression",
+        "openmrs_entity_id": "hvl_suppression_after_eac_1",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_hvl_suppression_calculation.yml"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

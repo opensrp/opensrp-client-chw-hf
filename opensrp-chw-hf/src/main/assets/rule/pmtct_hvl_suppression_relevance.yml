@@ -23,6 +23,6 @@ actions:
 name: step1_notify_continue_regimen_followup
 description: notification to continue regimen relevance
 priority: 1
-condition: "!step1_hvl_result.isEmpty() && step1_hvl_result <= 1000"
+condition: "!step1_hvl_result.equals('') && step1_hvl_result <= 1000"
 actions:
   - "isRelevant = true"

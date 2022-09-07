@@ -95,7 +95,7 @@ description: delivery_date calculation
 priority: 1
 condition: "true"
 actions:
-  - "calculation = global_number_of_children_born == 1 ? global_delivery_date : step1_child_delivery_date"
+  - "calculation = global_child_number == '1st' ? global_delivery_date : step1_child_delivery_date"
 ---
 name: step1_next_facility_visit_date
 description: next_facility_visit_date calculation
@@ -123,4 +123,18 @@ description: delivery_time calculation
 priority: 1
 condition: "true"
 actions:
-  - "calculation = global_number_of_children_born == 1 ? global_delivery_time : step1_child_delivery_time"
+  - "calculation = global_child_number == '1st' ? global_delivery_time : step1_child_delivery_time"
+---
+name: step1_mother_status
+description: mother_status calculation
+priority: 1
+condition: "true"
+actions:
+  - "calculation = global_mother_status"
+---
+name: step1_resuscitation
+description: resuscitation calculation
+priority: 1
+condition: "step1_newborn_status.contains('alive') && step1_apgar_score_at_5_minutes > 0"
+actions:
+  - "calculation = step1_apgar_score_at_5_minutes < 7 ? step1_resuscitation_question : 'no_resuscitation'"

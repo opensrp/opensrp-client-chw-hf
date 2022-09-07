@@ -8,7 +8,6 @@ import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 
 import org.jetbrains.annotations.NotNull;
 import org.smartregister.chw.core.activity.CoreHivRegisterActivity;
-import org.smartregister.chw.hf.fragment.HivFollowupFragment;
 import org.smartregister.chw.hf.fragment.HivRegisterFragment;
 import org.smartregister.chw.hiv.fragment.BaseHivCommunityFollowupRegisterFragment;
 import org.smartregister.chw.hiv.fragment.BaseHivRegisterFragment;
@@ -39,8 +38,7 @@ public class HivRegisterActivity extends CoreHivRegisterActivity {
     @NotNull
     @Override
     protected BaseHivCommunityFollowupRegisterFragment[] getOtherFragments() {
-        return new HivFollowupFragment[]{
-                new HivFollowupFragment()};
+        return new BaseHivCommunityFollowupRegisterFragment[0];
     }
 
     @Override
@@ -62,6 +60,7 @@ public class HivRegisterActivity extends CoreHivRegisterActivity {
             bottomNavigationView.getMenu().removeItem(org.smartregister.chw.hiv.R.id.action_received_referrals);
 
             bottomNavigationView.inflateMenu(getMenuResource());
+            bottomNavigationView.getMenu().removeItem(org.smartregister.chw.hiv.R.id.action_received_referrals);
             bottomNavigationHelper.disableShiftMode(bottomNavigationView);
 
             BottomNavigationListener hivBottomNavigationListener = getBottomNavigation(this);

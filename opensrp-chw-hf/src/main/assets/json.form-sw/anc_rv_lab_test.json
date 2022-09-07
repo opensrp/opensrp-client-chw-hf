@@ -82,7 +82,7 @@
         },
         "v_min": {
           "value": "0",
-          "err":"Kiwango cha damu (HB) lazima kiwe sawasawa au zaidi ya 0 (g/dl)"
+          "err": "Kiwango cha damu (HB) lazima kiwe sawasawa au zaidi ya 0 (g/dl)"
         },
         "v_max": {
           "value": "20",
@@ -1186,7 +1186,7 @@
         "calculation": {
           "rules-engine": {
             "ex-rules": {
-              "rules-file": "anc_fv_baseline_investigation_calculation.yml"
+              "rules-file": "anc_rv_lab_test_calculation.yml"
             }
           }
         }
@@ -1207,7 +1207,7 @@
         "calculation": {
           "rules-engine": {
             "ex-rules": {
-              "rules-file": "anc_fv_baseline_investigation_calculation.yml"
+              "rules-file": "anc_rv_lab_test_calculation.yml"
             }
           }
         },

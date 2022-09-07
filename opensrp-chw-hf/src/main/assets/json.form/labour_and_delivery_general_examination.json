@@ -187,7 +187,7 @@
       {
         "key": "temperature",
         "type": "edit_text",
-        "hint": "Temperature (C)",
+        "hint": "Temperature (\u2103)",
         "openmrs_entity_id": "temperature",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",

@@ -137,7 +137,9 @@
           "step1:vagina_observation": {
             "ex-checkbox": [
               {
-                "or": ["chk_bleeding"]
+                "or": [
+                  "chk_bleeding"
+                ]
               }
             ]
           }
@@ -467,7 +469,7 @@
       {
         "key": "temperature",
         "type": "edit_text",
-        "hint": "Temperature (C)",
+        "hint": "Temperature (\u2103)",
         "openmrs_entity_id": "temperature",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",

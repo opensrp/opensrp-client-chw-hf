@@ -1,5 +1,7 @@
 package org.smartregister.chw.hf.utils;
 
+import static org.smartregister.chw.hiv.util.DBConstants.Key.HIV_COMMUNITY_FOLLOWUP_VISIT_DATE;
+
 import android.view.View;
 import android.widget.TextView;
 
@@ -11,8 +13,6 @@ import org.smartregister.commonregistry.CommonPersonObjectClient;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
-
-import static org.smartregister.chw.hiv.util.DBConstants.Key.HIV_COMMUNITY_FOLLOWUP_VISIT_DATE;
 
 public class HfHivTbFeedbackUtils {
     public static void displayReferralDay(CommonPersonObjectClient client, TextView textViewReferralDay) {

@@ -84,9 +84,9 @@
         ],
         "openmrs_choice_ids": {
           "medical_officer": "medical_officer",
-          "assistant_medical_officer": "assistant_medical_officer" ,
-          "clinical_officer": "clinical_officer" ,
-          "assistant_clinical_officer":  "assistant_clinical_officer",
+          "assistant_medical_officer": "assistant_medical_officer",
+          "clinical_officer": "clinical_officer",
+          "assistant_clinical_officer": "assistant_clinical_officer",
           "nurse": "nurse"
         },
         "v_required": {
@@ -107,7 +107,7 @@
           "err": "Number must be a total of 10 digits and must start with 06 au 07."
         },
         "v_regex": {
-          "value": "(0[6-7][1-9][1-9][0-9]{6})|\\s*",
+          "value": "(0[6-7][1-9][0-9][0-9]{6})|\\s*",
           "err": "Number must be 10 digits and must start with 06 or 07."
         },
         "v_required": {

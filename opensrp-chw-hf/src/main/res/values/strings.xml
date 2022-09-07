@@ -38,7 +38,7 @@
     <string name="anc_first_visit_medical_and_surgical_history">Medical And Surgical History</string>
     <string name="anc_first_visit_baseline_investigation">Baseline Investigation</string>
     <string name="anc_first_visit_obstetric_examination">Obstetric Examination</string>
-    <string name="anc_first_visit_tt_vaccination">TD Vaccination</string>
+    <string name="anc_first_visit_tt_vaccination">Td Vaccination</string>
     <string name="anc_first_and_recurring_visit_counselling">Counselling</string>
     <string name="anc_recuring_visit_triage">Triage</string>
     <string name="anc_recuring_visit_cunsultation">Consultation</string>
@@ -81,7 +81,7 @@
     <string name="medical_and_surgical_filled">Medical And Surgical History Filled</string>
     <string name="obstetric_exam_complete">Obstetric Examination Complete</string>
     <string name="baseline_investigation_conducted">Baseline Investigation Conducted</string>
-    <string name="tt_vaccination_filled">TD Vaccination Filled</string>
+    <string name="tt_vaccination_filled">Td Vaccination Filled</string>
     <string name="counselling_given">Counselling given</string>
     <string name="partner_registered">Partner Registered</string>
     <string name="partner_tested">Partner Tested</string>
@@ -195,7 +195,7 @@
     <string name="arv_prescription_nvp">ARV prophylaxis (NVP)</string>
     <string name="hei_number">Hei Number: %s</string>
     <string name="record_hei_number">Record Hei Number</string>
-    <string name="anc_visit_malaria_investigation">Malaria Investigation</string>
+    <string name="anc_visit_malaria_investigation">Malaria Investigation and Management</string>
     <string name="malaria_investigation_complete">Malaria Investigation Complete</string>
     <string name="anc_followup_client_registration">ANC Followup Client Registration</string>
     <string name="next_visit">Next Visit</string>
@@ -316,7 +316,7 @@
     <string name="ld_active_management_3rd_stage">Active Management of 3rd Stage</string>
     <string name="uterotonic">Uterotonic</string>
     <string name="ld_massage_uterus_after_delivery">Massage the uterus after delivery of placenta</string>
-    <string name="ld_eclampsia_management">Eclampsia and Pre-Eclampsia Management</string>
+    <string name="ld_eclampsia_management">Pre-Eclampsia and Eclampsia Management</string>
     <string name="ld_expulsion_of_placenta">Expulsion of the placenta and membranes</string>
     <string name="ld_placent_retained_message">Placenta Retained</string>
     <string name="ld_placent_completely_removed_message">Complete Expulsion of Placenta</string>
@@ -436,6 +436,12 @@
     <string name="undo_test_result">Are you sure you want to cancel the %1$s result?</string>
 
     <string name="ld_management_of_eclampsia">Management of Pre-Eclampsia/Eclampsia Done</string>
+    <string name="ld_management_of_eclampsia_not_done">Management of Pre-Eclampsia/Eclampsia Is Not Done</string>
     <string name="ld_client_has_no_signs_of_eclampsia">The client has no signs of Pre-Eclampsia/Eclampsia</string>
+    <string name="callPhonePermissionRequestDenyButton">No Thanks</string>
+    <string name="callPhonePermissionRequestGrantButton">Grant</string>
+    <string name="callPhoneRequestTitle">Allow Phone Number Collection</string>
+    <string name="callPhoneRequestMessage">Facility Healthcare Worker collect user phone numbers to be used for monitoring, evaluation and analysis of visits conducted by clients at the health facility.</string>
+
 
 </resources>

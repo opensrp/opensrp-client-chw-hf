@@ -254,7 +254,7 @@ public class HfAncDao extends AbstractDao {
         );
 
         List<String> res = readData(sql, dataMap);
-        if (res.get(0) != null) {
+        if (res != null && res.size() > 0 && res.get(0) != null) {
             return res.get(0);
         }
         return "null";
@@ -390,7 +390,7 @@ public class HfAncDao extends AbstractDao {
         );
 
         List<String> res = readData(sql, dataMap);
-        return res.size() > 0;
+        return res.size() > 0 && !res.get(0).equalsIgnoreCase("null") && !res.get(0).equalsIgnoreCase("0");
     }
 
     public static String getClientCtcNumber(String baseEntityId) {
@@ -456,7 +456,7 @@ public class HfAncDao extends AbstractDao {
         );
 
         List<String> res = readData(sql, dataMap);
-        if (res.get(0) != null) {
+        if (res != null && res.size() > 0 && res.get(0) != null) {
             return res.get(0);
         }
         return "12";
@@ -598,6 +598,26 @@ public class HfAncDao extends AbstractDao {
         return "";
     }
 
+
+    public static boolean getSyphilisTreatment(String baseEntityId) {
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "syphilis_treatment");
+
+        String sql = String.format(
+                "SELECT syphilis_treatment FROM %s WHERE entity_id = '%s' " +
+                        "AND is_closed = 0 " +
+                        "AND syphilis_treatment IS NOT NULL " +
+                        "ORDER BY visit_date DESC LIMIT 1 ",
+                "ec_anc_followup",
+                baseEntityId
+        );
+
+        List<String> res = readData(sql, dataMap);
+        if (res != null && res.size() > 0) {
+            return res.get(0).equalsIgnoreCase("yes");
+        }
+        return false;
+    }
+
     public static String getBloodGroup(String baseEntityId) {
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "blood_group");
         String sql = String.format(
@@ -664,6 +684,21 @@ public class HfAncDao extends AbstractDao {
                 "SELECT medical_surgical_history FROM %s WHERE base_entity_id = '%s' " +
                         "AND is_closed = 0 " +
                         "AND medical_surgical_history IS NOT NULL ",
+                "ec_anc_register",
+                baseEntityId);
+        List<String> res = readData(sql, dataMap);
+        if (res != null && res.size() > 0) {
+            return res.get(0);
+        }
+        return "";
+    }
+
+    public static String getOtherMedicalAndSurgicalHistory(String baseEntityId) {
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "other_medical_surgical_history");
+        String sql = String.format(
+                "SELECT other_medical_surgical_history FROM %s WHERE base_entity_id = '%s' " +
+                        "AND is_closed = 0 " +
+                        "AND other_medical_surgical_history IS NOT NULL ",
                 "ec_anc_register",
                 baseEntityId);
         List<String> res = readData(sql, dataMap);

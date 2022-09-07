@@ -2,21 +2,21 @@
 name: step1_prompt_for_moderate_anaemia_management
 description:  prompt for moderate anaemia management
 priority: 1
-condition: "Float.parseFloat(step1_hb_level) > 8.5 && Float.parseFloat(step1_hb_level) <= 11"
+condition: "!step1_hb_level.equals('') && Float.parseFloat(step1_hb_level) > 8.5 && Float.parseFloat(step1_hb_level) <= 11.4"
 actions:
   - "isRelevant = true"
 ---
 name: step1_prompt_for_management_of_hypertension
 description: prompt_for_management_of_hypertension
 priority: 1
-condition: "step1_systolic >= 140 || step1_diastolic >= 90"
+condition: "(!step1_systolic.equals('') && step1_systolic >= 140) || (!step1_diastolic.equals('') && step1_diastolic >= 90)"
 actions:
   - "isRelevant = true"
 ---
 name: step1_prompt_for_management_of_hypotension
 description: prompt_for_management_of_hypotension
 priority: 1
-condition: "step1_systolic < 90 || step1_diastolic < 60"
+condition: "(!step1_systolic.equals('') && step1_systolic < 90) || (!step1_diastolic.equals('') && step1_diastolic < 60)"
 actions:
   - "isRelevant = true"
 ---

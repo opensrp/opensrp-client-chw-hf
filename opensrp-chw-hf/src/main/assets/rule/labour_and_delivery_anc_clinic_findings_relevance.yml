@@ -1,0 +1,7 @@
+---
+name: step1_prompt_for_art_management
+description: prompt_for_art_management relevance
+priority: 1
+condition: "step1_management_provided_for_pmtct.contains('no') || step1_art_prescription.contains('no') "
+actions:
+  - "isRelevant = true"

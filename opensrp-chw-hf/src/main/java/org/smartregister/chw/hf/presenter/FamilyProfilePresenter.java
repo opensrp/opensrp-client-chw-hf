@@ -1,5 +1,7 @@
 package org.smartregister.chw.hf.presenter;
 
+import static org.smartregister.chw.hf.utils.JsonFormUtils.getAutoPopulatedJsonEditFormString;
+
 import org.json.JSONObject;
 import org.smartregister.chw.core.contract.FamilyProfileExtendedContract;
 import org.smartregister.chw.core.model.CoreChildProfileModel;
@@ -13,8 +15,6 @@ import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.family.contract.FamilyProfileContract;
 
 import timber.log.Timber;
-
-import static org.smartregister.chw.hf.utils.JsonFormUtils.getAutoPopulatedJsonEditFormString;
 
 public class FamilyProfilePresenter extends CoreFamilyProfilePresenter {
 

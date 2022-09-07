@@ -9,6 +9,6 @@ actions:
 name: step1_prompt_for_management_of_hypotension
 description: prompt_for_management_of_hypotension
 priority: 1
-condition: "step1_systolic < 100 || step1_diastolic < 60"
+condition: "(!step1_systolic.equals('') && step1_systolic < 100) || (!step1_diastolic.equals('') && step1_diastolic < 60)"
 actions:
   - "isRelevant = true"

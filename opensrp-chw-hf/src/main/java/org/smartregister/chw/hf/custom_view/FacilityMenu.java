@@ -3,10 +3,11 @@ package org.smartregister.chw.hf.custom_view;
 import android.app.Activity;
 import android.view.View;
 
+import androidx.appcompat.widget.Toolbar;
+
 import org.smartregister.chw.core.custom_views.NavigationMenu;
 import org.smartregister.chw.hf.presenter.HfNavigationPresenter;
 
-import androidx.appcompat.widget.Toolbar;
 import timber.log.Timber;
 
 public class FacilityMenu extends NavigationMenu {

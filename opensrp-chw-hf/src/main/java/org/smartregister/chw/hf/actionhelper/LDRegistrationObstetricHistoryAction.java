@@ -102,7 +102,7 @@ public class LDRegistrationObstetricHistoryAction implements BaseLDVisitAction.L
     private boolean isAllFieldsCompleted() {
         return !StringUtils.isBlank(gravida) &&
                 !StringUtils.isBlank(para) &&
-                !StringUtils.isBlank(childrenAlive) &&
+                isNumberOfChildrenAliveFilled() &&
                 !StringUtils.isBlank(numberOfAbortion) &&
                 !StringUtils.isBlank(lastMenstrualPeriod);
     }
@@ -113,9 +113,22 @@ public class LDRegistrationObstetricHistoryAction implements BaseLDVisitAction.L
     private boolean isAnyFieldCompleted() {
         return !StringUtils.isBlank(gravida) ||
                 !StringUtils.isBlank(para) ||
-                !StringUtils.isBlank(childrenAlive) ||
+                isNumberOfChildrenAliveFilled() ||
                 !StringUtils.isBlank(numberOfAbortion) ||
                 !StringUtils.isBlank(lastMenstrualPeriod);
     }
 
+    private boolean isNumberOfChildrenAliveFilled() {
+        if (!StringUtils.isBlank(para)) {
+            try {
+                int paraNumber = Integer.parseInt(para);
+                if (paraNumber > 0) {
+                    return !StringUtils.isBlank(childrenAlive);
+                }
+            } catch (Exception e) {
+                Timber.e(e);
+            }
+        }
+        return true;
+    }
 }

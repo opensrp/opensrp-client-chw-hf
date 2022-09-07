@@ -1,12 +1,13 @@
 package org.smartregister.chw.hf.utils;
 
+import static org.smartregister.chw.anc.util.NCUtils.getSyncHelper;
+
 import android.content.Context;
 import android.content.Intent;
 
 import com.google.gson.Gson;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.time.DateUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -34,8 +35,6 @@ import java.util.UUID;
 
 import timber.log.Timber;
 
-import static org.smartregister.chw.anc.util.NCUtils.getSyncHelper;
-
 public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
     public static String Complete = "complete";
     public static String Pending = "pending";
@@ -55,8 +54,8 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
 
 
         for (Visit v : visits) {
-            Date truncatedUpdatedDate = DateUtils.truncate(v.getUpdatedAt(), Calendar.DATE);
-            Date today = DateUtils.truncate(new Date(), Calendar.DATE);
+            Date truncatedUpdatedDate = new Date(v.getUpdatedAt().getTime() - v.getUpdatedAt().getTime() % (24 * 60 * 60 * 1000));
+            Date today = new Date(Calendar.getInstance().getTimeInMillis() - Calendar.getInstance().getTimeInMillis() % (24 * 60 * 60 * 1000));
             if (truncatedUpdatedDate.before(today)) {
                 if (v.getVisitType().equalsIgnoreCase(Constants.Events.ANC_FIRST_FACILITY_VISIT)) {
                     if (isAncVisitComplete(v)) {
@@ -123,17 +122,7 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
         try {
             JSONObject jsonObject = new JSONObject(visit.getJson());
             JSONArray obs = jsonObject.getJSONArray("obs");
-            int size = obs.length();
-            for (int i = 0; i < size; i++) {
-                JSONObject checkObj = obs.getJSONObject(i);
-                if (checkObj.getString("fieldCode").equalsIgnoreCase("pregnancy_status")) {
-                    JSONArray values = checkObj.getJSONArray("values");
-                    if (!(values.getString(0).equalsIgnoreCase("viable"))) {
-                        isCancelled = true;
-                        break;
-                    }
-                }
-            }
+            isCancelled = !checkIfStatusIsViable(obs);
         } catch (Exception e) {
             Timber.e(e);
         }
@@ -167,9 +156,9 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
                 JSONObject jsonObject = new JSONObject(visit.getJson());
                 JSONArray obs = jsonObject.getJSONArray("obs");
                 HashMap<String, Boolean> completionObject = new HashMap<>();
-                completionObject.put("isTriageDone", computeCompletionStatusForAction(obs, "triage_completion_status"));
                 completionObject.put("isPregnancyStatusDone", computeCompletionStatusForAction(obs, "pregnancy_status_completion_status"));
                 if (checkIfStatusIsViable(obs)) {
+                    completionObject.put("isTriageDone", computeCompletionStatusForAction(obs, "triage_completion_status"));
                     completionObject.put("isConsultationDone", computeCompletionStatusForAction(obs, "consultation_completion_status"));
                     completionObject.put("isMalariaInvestigationComplete", computeCompletionStatusForAction(obs, "malaria_investigation_completion_status"));
                     completionObject.put("isPharmacyComplete", computeCompletionStatusForAction(obs, "pharmacy_completion_status"));
@@ -208,6 +197,9 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
         VisitRepository visitRepository = AncLibrary.getInstance().visitRepository();
         manualProcessedVisits.add(visit);
         processVisits(manualProcessedVisits, visitRepository, visitDetailsRepository);
+        if(visit.getVisitType().equalsIgnoreCase(Constants.Events.ANC_RECURRING_FACILITY_VISIT) && isNextVisitsCancelled(visit)){
+            createCancelledEvent(visit.getJson());
+        }
     }
 
     public static void processVisits(List<Visit> visits, VisitRepository visitRepository, VisitDetailsRepository visitDetailsRepository) throws Exception {

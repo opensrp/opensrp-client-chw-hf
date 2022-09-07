@@ -241,9 +241,10 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
                       FROM ec_ld_postpartum_care elpc
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
-                      WHERE elpc.delivery_place = 'at_a_health_facility'
-                        AND (date(efm.dob, '+10 years') <= date('now'))
+                      WHERE
+                        (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
+                        AND elpc.delivery_place = 'at_a_health_facility'
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
   - key: "ld-2e-15-19"
@@ -251,9 +252,10 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
                       FROM ec_ld_postpartum_care elpc
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
-                      WHERE elpc.delivery_place = 'at_a_health_facility'
-                        AND (date(efm.dob, '+15 years') <= date('now'))
+                      WHERE
+                        (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
+                        AND elpc.delivery_place = 'at_a_health_facility'
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
   - key: "ld-2e-20-24"
@@ -261,9 +263,10 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
                       FROM ec_ld_postpartum_care elpc
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
-                      WHERE elpc.delivery_place = 'at_a_health_facility'
-                        AND (date(efm.dob, '+20 years') <= date('now'))
+                      WHERE
+                        (date(efm.dob, '+20 years') <= date('now'))
                         AND (date(efm.dob, '+25 years') > date('now'))
+                        AND elpc.delivery_place = 'at_a_health_facility'
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
   - key: "ld-2e-25-30"
@@ -271,9 +274,10 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
                       FROM ec_ld_postpartum_care elpc
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
-                      WHERE elpc.delivery_place = 'at_a_health_facility'
-                        AND (date(efm.dob, '+25 years') <= date('now'))
+                      WHERE
+                        (date(efm.dob, '+25 years') <= date('now'))
                         AND (date(efm.dob, '+30 years') > date('now'))
+                        AND elpc.delivery_place = 'at_a_health_facility'
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
   - key: "ld-2e-30-34"
@@ -281,9 +285,10 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
                       FROM ec_ld_postpartum_care elpc
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
-                      WHERE elpc.delivery_place = 'at_a_health_facility'
-                        AND (date(efm.dob, '+30 years') <= date('now'))
+                      WHERE
+                        (date(efm.dob, '+30 years') <= date('now'))
                         AND (date(efm.dob, '+35 years') > date('now'))
+                        AND elpc.delivery_place = 'at_a_health_facility'
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
   - key: "ld-2e-35+"
@@ -291,8 +296,9 @@ indicators:
     indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
                       FROM ec_ld_postpartum_care elpc
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
-                      WHERE elpc.delivery_place = 'at_a_health_facility'
-                        AND (date(efm.dob, '+35 years') <= date('now'))
+                      WHERE
+                        (date(efm.dob, '+35 years') <= date('now'))
+                        AND elpc.delivery_place = 'at_a_health_facility'
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
   - key: "ld-3a-10-14"
@@ -844,59 +850,6 @@ indicators:
                         AND (date(efm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
-  
-  
-  - key: "ld-5d-10-14"
-    description: "Matatizo kabla ya kujifungua Pre-eclampsia"
-    indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
-                    FROM ec_ld_postpartum_care elpc
-                             INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
-                    WHERE elpc.maternal_complications_before_delivery LIKE '%chk_pre_eclampsia%'
-                      AND (date(efm.dob, '+10 years') <= date('now'))
-                      AND (date(efm.dob, '+15 years') > date('now'))
-                      AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                          date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
-  - key: "ld-5d-15-19"
-    description: "Matatizo kabla ya kujifungua Pre-eclampsia"
-    indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
-                    FROM ec_ld_postpartum_care elpc
-                             INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
-                    WHERE elpc.maternal_complications_before_delivery LIKE '%chk_pre_eclampsia%'
-                      AND (date(efm.dob, '+15 years') <= date('now'))
-                      AND (date(efm.dob, '+20 years') > date('now'))
-                      AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                          date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
-  - key: "ld-5d-20-24"
-    description: "Matatizo kabla ya kujifungua Pre-eclampsia"
-    indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
-                    FROM ec_ld_postpartum_care elpc
-                             INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
-                    WHERE elpc.maternal_complications_before_delivery LIKE '%chk_pre_eclampsia%'
-                      AND (date(efm.dob, '+20 years') <= date('now'))
-                      AND (date(efm.dob, '+25 years') > date('now'))
-                      AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                          date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
-  - key: "ld-5d-25-29"
-    description: "Matatizo kabla ya kujifungua Pre-eclampsia"
-    indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
-                    FROM ec_ld_postpartum_care elpc
-                             INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
-                    WHERE elpc.maternal_complications_before_delivery LIKE '%chk_pre_eclampsia%'
-                      AND (date(efm.dob, '+25 years') <= date('now'))
-                      AND (date(efm.dob, '+30 years') > date('now'))
-                      AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                          date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
-  - key: "ld-5d-30-34"
-    description: "Matatizo kabla ya kujifungua Pre-eclampsia"
-    indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
-                    FROM ec_ld_postpartum_care elpc
-                             INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
-                    WHERE elpc.maternal_complications_before_delivery LIKE '%chk_pre_eclampsia%'
-                      AND (date(efm.dob, '+30 years') <= date('now'))
-                      AND (date(efm.dob, '+35 years') > date('now'))
-                      AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                          date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
-
   - key: "ld-5d-35+"
     description: "Matatizo kabla ya kujifungua Pre-eclampsia"
     indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
@@ -956,8 +909,6 @@ indicators:
                         AND (date(efm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
-
-    
   - key: "ld-5e-35+"
     description: "Matatizo kabla ya kujifungua Eclampsia"
     indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
@@ -1144,7 +1095,6 @@ indicators:
                         AND (date(efm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
-    
   - key: "ld-5i-10-14"
     description: "Matatizo kabla ya kujifungua Waliokekektwa (FGM)"
     indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
@@ -2086,10 +2036,7 @@ indicators:
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                                       '-' ||
-                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                                       '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-10b-10-14"
     description: "Watoto Waliozaliwa mmoja Waliozaliwa hai Uzito<2.5kg"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2102,10 +2049,7 @@ indicators:
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                                       '-' ||
-                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                                       '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-10c-10-14"
     description: "Watoto Waliozaliwa mmoja Waliozaliwa hai Uzito =>2.5kg"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2118,10 +2062,7 @@ indicators:
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                                       '-' ||
-                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                                       '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-10d-10-14"
     description: "Watoto Waliozaliwa mmoja Waliozaliwa wafu Macerated (MSB)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2134,10 +2075,7 @@ indicators:
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                                       '-' ||
-                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                                       '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-10e-10-14"
     description: "Watoto Waliozaliwa mmoja Waliozaliwa wafu Fresh (FSB)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2150,10 +2088,7 @@ indicators:
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                                       '-' ||
-                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                                       '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-10f-10-14"
     description: "Watoto Waliozaliwa mmoja Waliozaliwa na mama wenye VVU"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2166,10 +2101,7 @@ indicators:
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                                       '-' ||
-                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                                       '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-10g-10-14"
     description: "Watoto Waliozaliwa mmoja Waliopewa dawa za ARV"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2183,10 +2115,7 @@ indicators:
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                 '-' ||
-                                 substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                 '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-10h-10-14"
     description: "Watoto Watoto wenye APGAR Score chini ya 7 katika dakika 5"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2199,10 +2128,7 @@ indicators:
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                 '-' ||
-                                 substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                 '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11a-10-14"
     description: "Watoto Waliozaliwa mapacha Jumla ya watoto waliozaliwa hai"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2214,10 +2140,7 @@ indicators:
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                                       '-' ||
-                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                                       '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11b-10-14"
     description: "Watoto Waliozaliwa mapacha Waliozaliwa hai Uzito<2.5kg"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2230,10 +2153,7 @@ indicators:
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                                       '-' ||
-                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                                       '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11c-10-14"
     description: "Watoto Waliozaliwa mapacha Waliozaliwa hai Uzito =>2.5kg"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2246,10 +2166,7 @@ indicators:
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                                       '-' ||
-                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                                       '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11d-10-14"
     description: "Watoto Waliozaliwa mapacha Waliozaliwa wafu Macerated (MSB)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2262,10 +2179,7 @@ indicators:
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                                       '-' ||
-                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                                       '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11e-10-14"
     description: "Watoto Waliozaliwa mapacha Waliozaliwa wafu Fresh (FSB)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2278,10 +2192,7 @@ indicators:
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                                       '-' ||
-                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                                       '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11f-10-14"
     description: "Watoto Waliozaliwa mapacha Waliozaliwa na mama wenye VVU"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2294,10 +2205,7 @@ indicators:
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                                       '-' ||
-                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                                       '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11g-10-14"
     description: "Watoto Waliozaliwa mapacha Waliopewa dawa za ARV"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2311,10 +2219,7 @@ indicators:
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                 '-' ||
-                                 substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                 '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11h-10-14"
     description: "Watoto Waliozaliwa mapacha wenye APGAR Score chini ya 7 katika dakika 5"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2327,10 +2232,7 @@ indicators:
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                 '-' ||
-                                 substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                 '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-12a-10-14"
     description: "Watoto waliosaidiwa kupumua, Idadi ya watoto Waliosaidiwa kupumua - Suction "
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2342,10 +2244,7 @@ indicators:
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                 '-' ||
-                                 substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                 '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-12b-10-14"
     description: "Watoto waliosaidiwa kupumua, Idadi ya watoto waliosaidiwa kupumua- stimulation "
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2357,10 +2256,7 @@ indicators:
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                 '-' ||
-                                 substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                 '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-12c-10-14"
     description: "Watoto waliosaidiwa kupumua, Idadi ya watoto waliosaidiwa kupumua- bag and mask"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2372,10 +2268,7 @@ indicators:
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                 '-' ||
-                                 substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                 '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-13a-10-14"
     description: "Idadi ya watoto walionyonyeshwa ndani ya saa moja baada ya kuzaliwa"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2387,10 +2280,7 @@ indicators:
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                 '-' ||
-                                 substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                 '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-14a-10-14"
     description: "Wazazi waliofariki"
     indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
@@ -2400,12 +2290,9 @@ indicators:
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                                       '-' ||
-                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                                       '-' || '01')"
-    
-    
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+
+
   - key: "ld-7e-15-19"
     description: "EmOC Amefanyiwa MVA/D&C"
     indicatorQuery: " SELECT count(DISTINCT elpam.base_entity_id) as count
@@ -2508,10 +2395,7 @@ indicators:
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                                       '-' ||
-                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                                       '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-10b-15-19"
     description: "Watoto Waliozaliwa mmoja Waliozaliwa hai Uzito<2.5kg"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2524,10 +2408,7 @@ indicators:
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                                       '-' ||
-                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                                       '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-10c-15-19"
     description: "Watoto Waliozaliwa mmoja Waliozaliwa hai Uzito =>2.5kg"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2540,10 +2421,7 @@ indicators:
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                                       '-' ||
-                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                                       '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-10d-15-19"
     description: "Watoto Waliozaliwa mmoja Waliozaliwa wafu Macerated (MSB)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2556,10 +2434,7 @@ indicators:
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                                       '-' ||
-                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                                       '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-10e-15-19"
     description: "Watoto Waliozaliwa mmoja Waliozaliwa wafu Fresh (FSB)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2572,10 +2447,7 @@ indicators:
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                                       '-' ||
-                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                                       '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-10f-15-19"
     description: "Watoto Waliozaliwa mmoja Waliozaliwa na mama wenye VVU"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2588,10 +2460,7 @@ indicators:
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                                       '-' ||
-                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                                       '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-10g-15-19"
     description: "Watoto Waliozaliwa mmoja Waliopewa dawa za ARV"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2605,10 +2474,7 @@ indicators:
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                 '-' ||
-                                 substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                 '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-10h-15-19"
     description: "Watoto Watoto wenye APGAR Score chini ya 7 katika dakika 5"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2621,10 +2487,7 @@ indicators:
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                 '-' ||
-                                 substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                 '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11a-15-19"
     description: "Watoto Waliozaliwa mapacha Jumla ya watoto waliozaliwa hai"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2636,10 +2499,7 @@ indicators:
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                                       '-' ||
-                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                                       '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11b-15-19"
     description: "Watoto Waliozaliwa mapacha Waliozaliwa hai Uzito<2.5kg"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2652,10 +2512,7 @@ indicators:
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                                       '-' ||
-                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                                       '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11c-15-19"
     description: "Watoto Waliozaliwa mapacha Waliozaliwa hai Uzito =>2.5kg"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2668,10 +2525,7 @@ indicators:
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                                       '-' ||
-                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                                       '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11d-15-19"
     description: "Watoto Waliozaliwa mapacha Waliozaliwa wafu Macerated (MSB)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2684,10 +2538,7 @@ indicators:
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                                       '-' ||
-                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                                       '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11e-15-19"
     description: "Watoto Waliozaliwa mapacha Waliozaliwa wafu Fresh (FSB)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2700,10 +2551,7 @@ indicators:
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                                       '-' ||
-                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                                       '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11f-15-19"
     description: "Watoto Waliozaliwa mapacha Waliozaliwa na mama wenye VVU"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2716,10 +2564,7 @@ indicators:
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                                       '-' ||
-                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                                       '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11g-15-19"
     description: "Watoto Waliozaliwa mapacha Waliopewa dawa za ARV"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2733,10 +2578,7 @@ indicators:
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                 '-' ||
-                                 substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                 '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11h-15-19"
     description: "Watoto Waliozaliwa mapacha wenye APGAR Score chini ya 7 katika dakika 5"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2749,10 +2591,7 @@ indicators:
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                 '-' ||
-                                 substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                 '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-12a-15-19"
     description: "Watoto waliosaidiwa kupumua, Idadi ya watoto Waliosaidiwa kupumua - Suction "
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2764,10 +2603,7 @@ indicators:
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                 '-' ||
-                                 substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                 '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-12b-15-19"
     description: "Watoto waliosaidiwa kupumua, Idadi ya watoto waliosaidiwa kupumua- stimulation "
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2779,10 +2615,7 @@ indicators:
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                 '-' ||
-                                 substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                 '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-12c-15-19"
     description: "Watoto waliosaidiwa kupumua, Idadi ya watoto waliosaidiwa kupumua- bag and mask"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2794,10 +2627,7 @@ indicators:
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                 '-' ||
-                                 substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                 '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-13a-15-19"
     description: "Idadi ya watoto walionyonyeshwa ndani ya saa moja baada ya kuzaliwa"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2809,10 +2639,7 @@ indicators:
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                 '-' ||
-                                 substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                 '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-14a-15-19"
     description: "Wazazi waliofariki"
     indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
@@ -2822,12 +2649,8 @@ indicators:
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                                       '-' ||
-                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                                       '-' || '01')"
-    
-    
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+
   - key: "ld-7e-20-24"
     description: "EmOC Amefanyiwa MVA/D&C"
     indicatorQuery: " SELECT count(DISTINCT elpam.base_entity_id) as count
@@ -3106,10 +2929,7 @@ indicators:
                         AND (date(efm.dob, '+20 years') <= date('now'))
                         AND (date(efm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                                       '-' ||
-                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                                       '-' || '01')"
+                           date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11e-20-24"
     description: "Watoto Waliozaliwa mapacha Waliozaliwa wafu Fresh (FSB)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -3122,10 +2942,7 @@ indicators:
                         AND (date(efm.dob, '+20 years') <= date('now'))
                         AND (date(efm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                                       '-' ||
-                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                                       '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11f-20-24"
     description: "Watoto Waliozaliwa mapacha Waliozaliwa na mama wenye VVU"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -3138,10 +2955,7 @@ indicators:
                         AND (date(efm.dob, '+20 years') <= date('now'))
                         AND (date(efm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                                       '-' ||
-                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                                       '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11g-20-24"
     description: "Watoto Waliozaliwa mapacha Waliopewa dawa za ARV"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -3244,12 +3058,9 @@ indicators:
                         AND (date(efm.dob, '+20 years') <= date('now'))
                         AND (date(efm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                                       '-' ||
-                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                                       '-' || '01')"
-    
-    
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+
+
   - key: "ld-7e-25-29"
     description: "EmOC Amefanyiwa MVA/D&C"
     indicatorQuery: " SELECT count(DISTINCT elpam.base_entity_id) as count
@@ -3528,10 +3339,7 @@ indicators:
                         AND (date(efm.dob, '+25 years') <= date('now'))
                         AND (date(efm.dob, '+30 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                                       '-' ||
-                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                                       '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11e-25-29"
     description: "Watoto Waliozaliwa mapacha Waliozaliwa wafu Fresh (FSB)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -3544,10 +3352,7 @@ indicators:
                         AND (date(efm.dob, '+25 years') <= date('now'))
                         AND (date(efm.dob, '+30 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                                       '-' ||
-                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                                       '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11f-25-29"
     description: "Watoto Waliozaliwa mapacha Waliozaliwa na mama wenye VVU"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -3560,10 +3365,7 @@ indicators:
                         AND (date(efm.dob, '+25 years') <= date('now'))
                         AND (date(efm.dob, '+30 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                                       '-' ||
-                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                                       '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11g-25-29"
     description: "Watoto Waliozaliwa mapacha Waliopewa dawa za ARV"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -3666,12 +3468,9 @@ indicators:
                         AND (date(efm.dob, '+25 years') <= date('now'))
                         AND (date(efm.dob, '+30 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                                       '-' ||
-                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                                       '-' || '01')"
-    
-    
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+
+
   - key: "ld-7e-30-34"
     description: "EmOC Amefanyiwa MVA/D&C"
     indicatorQuery: " SELECT count(DISTINCT elpam.base_entity_id) as count
@@ -3950,10 +3749,7 @@ indicators:
                         AND (date(efm.dob, '+30 years') <= date('now'))
                         AND (date(efm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                                       '-' ||
-                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                                       '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11e-30-34"
     description: "Watoto Waliozaliwa mapacha Waliozaliwa wafu Fresh (FSB)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -3966,10 +3762,7 @@ indicators:
                         AND (date(efm.dob, '+30 years') <= date('now'))
                         AND (date(efm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                                       '-' ||
-                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                                       '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11f-30-34"
     description: "Watoto Waliozaliwa mapacha Waliozaliwa na mama wenye VVU"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -3982,10 +3775,7 @@ indicators:
                         AND (date(efm.dob, '+30 years') <= date('now'))
                         AND (date(efm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                                       '-' ||
-                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                                       '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11g-30-34"
     description: "Watoto Waliozaliwa mapacha Waliopewa dawa za ARV"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -4088,12 +3878,9 @@ indicators:
                         AND (date(efm.dob, '+30 years') <= date('now'))
                         AND (date(efm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                                       '-' ||
-                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                                       '-' || '01')"
-    
-    
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+
+
   - key: "ld-7e-35+"
     description: "EmOC Amefanyiwa MVA/D&C"
     indicatorQuery: " SELECT count(DISTINCT elpam.base_entity_id) as count
@@ -4353,10 +4140,7 @@ indicators:
                         AND CAST(elpc.number_of_children_born AS FLOAT) > 1
                         AND (date(efm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                                       '-' ||
-                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                                       '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11e-35+"
     description: "Watoto Waliozaliwa mapacha Waliozaliwa wafu Fresh (FSB)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -4368,10 +4152,7 @@ indicators:
                         AND CAST(elpc.number_of_children_born AS FLOAT) > 1
                         AND (date(efm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                                       '-' ||
-                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                                       '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11f-35+"
     description: "Watoto Waliozaliwa mapacha Waliozaliwa na mama wenye VVU"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -4383,10 +4164,7 @@ indicators:
                         AND CAST(elpc.number_of_children_born AS FLOAT) > 1
                         AND (date(efm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
-                                                       '-' ||
-                                                       substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
-                                                       '-' || '01')"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11g-35+"
     description: "Watoto Waliozaliwa mapacha Waliopewa dawa za ARV"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -4838,7 +4616,7 @@ indicators:
                                  '-' ||
                                  substr(strftime('%Y-%m-%d', datetime(elgec.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
                                  '-' || '01')"
-            
+
   - key: "ld-9e-25-29"
     description: "Waliochagua kunyonyesha maziwa ya mama pekee (EBF)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -5344,7 +5122,7 @@ indicators:
                                  '-' ||
                                  substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
                                  '-' || '01')"
-    
+
   - key: "ld-15a-30-34"
     description: "Waliopewa ushauri wa uzazi wa mpango"
     indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
@@ -5410,7 +5188,7 @@ indicators:
                                  '-' ||
                                  substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
                                  '-' || '01')"
-    
+
   - key: "ld-15a-35+"
     description: "Waliopewa ushauri wa uzazi wa mpango"
     indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count

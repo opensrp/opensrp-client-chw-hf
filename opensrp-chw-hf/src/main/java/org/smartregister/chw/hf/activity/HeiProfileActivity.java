@@ -1,5 +1,13 @@
 package org.smartregister.chw.hf.activity;
 
+import static com.vijay.jsonwizard.constants.JsonFormConstants.VALUE;
+import static org.smartregister.chw.core.utils.Utils.getCommonPersonObjectClient;
+import static org.smartregister.chw.core.utils.Utils.getDuration;
+import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
+import static org.smartregister.chw.hf.utils.Constants.JsonForm.getHeiNumberRegistration;
+import static org.smartregister.client.utils.constants.JsonFormConstants.FIELDS;
+import static org.smartregister.client.utils.constants.JsonFormConstants.STEP1;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
@@ -11,6 +19,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 
 import com.vijay.jsonwizard.utils.FormUtils;
 
@@ -57,17 +68,7 @@ import java.util.Map;
 
 import javax.annotation.Nullable;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import timber.log.Timber;
-
-import static com.vijay.jsonwizard.constants.JsonFormConstants.VALUE;
-import static org.smartregister.chw.core.utils.Utils.getCommonPersonObjectClient;
-import static org.smartregister.chw.core.utils.Utils.getDuration;
-import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
-import static org.smartregister.chw.hf.utils.Constants.JsonForm.getHeiNumberRegistration;
-import static org.smartregister.client.utils.constants.JsonFormConstants.FIELDS;
-import static org.smartregister.client.utils.constants.JsonFormConstants.STEP1;
 
 public class HeiProfileActivity extends BasePmtctProfileActivity {
 
@@ -166,7 +167,7 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
     }
 
     private void showHeiNumberOrRegistration(String baseEntityId) {
-        textViewRecordHeiNumber = findViewById(R.id.textview_record_eac);
+        textViewRecordHeiNumber = findViewById(R.id.textview_record_hei_number);
         if (!HeiDao.hasHeiNumber(baseEntityId)) {
             textViewRecordHeiNumber.setVisibility(View.VISIBLE);
             textViewRecordHeiNumber.setText(getString(R.string.record_hei_number));
@@ -194,7 +195,7 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
             intent.putExtra(Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID, baseEntityId);
             startActivity(intent);
         }
-        if (id == R.id.textview_record_eac) {
+        if (id == R.id.textview_record_hei_number) {
             JSONObject jsonForm = org.smartregister.chw.core.utils.FormUtils.getFormUtils().getFormJson(getHeiNumberRegistration());
             startFormActivity(jsonForm);
         }

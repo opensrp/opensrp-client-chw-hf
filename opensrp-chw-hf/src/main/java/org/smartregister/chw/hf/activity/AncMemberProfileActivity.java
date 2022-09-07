@@ -1,5 +1,14 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
+import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
+import static org.smartregister.chw.hf.utils.Constants.Events.ANC_FIRST_FACILITY_VISIT;
+import static org.smartregister.chw.hf.utils.Constants.Events.ANC_RECURRING_FACILITY_VISIT;
+import static org.smartregister.chw.hf.utils.Constants.PartnerRegistrationConstants.INTENT_BASE_ENTITY_ID;
+import static org.smartregister.chw.hf.utils.JsonFormUtils.SYNC_LOCATION_ID;
+import static org.smartregister.chw.hf.utils.JsonFormUtils.getAutoPopulatedJsonEditFormString;
+import static org.smartregister.util.JsonFormUtils.STEP1;
+
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
@@ -11,6 +20,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.rey.material.widget.Button;
@@ -69,17 +80,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Set;
 
-import androidx.recyclerview.widget.RecyclerView;
 import timber.log.Timber;
-
-import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
-import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
-import static org.smartregister.chw.hf.utils.Constants.Events.ANC_FIRST_FACILITY_VISIT;
-import static org.smartregister.chw.hf.utils.Constants.Events.ANC_RECURRING_FACILITY_VISIT;
-import static org.smartregister.chw.hf.utils.Constants.PartnerRegistrationConstants.INTENT_BASE_ENTITY_ID;
-import static org.smartregister.chw.hf.utils.JsonFormUtils.SYNC_LOCATION_ID;
-import static org.smartregister.chw.hf.utils.JsonFormUtils.getAutoPopulatedJsonEditFormString;
-import static org.smartregister.util.JsonFormUtils.STEP1;
 
 public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     private CommonPersonObjectClient commonPersonObjectClient;
@@ -137,10 +138,8 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
 
     @Override
     public void setFamilyLocation() {
-        if (!StringUtils.isBlank(getMemberGPS())) {
-            view_family_location_row.setVisibility(View.VISIBLE);
-            rlFamilyLocation.setVisibility(View.VISIBLE);
-        }
+        view_family_location_row.setVisibility(View.GONE);
+        rlFamilyLocation.setVisibility(View.GONE);
     }
 
     private String getMemberGPS() {
@@ -158,7 +157,8 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         menu.findItem(R.id.action_hivst_registration).setVisible(!HivstDao.isRegisteredForHivst(baseEntityID));
 
 
-        menu.findItem(R.id.action_ld_registration).setVisible(!LDDao.isRegisteredForLD(baseEntityID));
+        if (memberObject.getGestationAge() >= 24)
+            menu.findItem(R.id.action_ld_registration).setVisible(!LDDao.isRegisteredForLD(baseEntityID));
         partnerBaseEntityId = HfAncDao.getPartnerBaseEntityId(memberObject.getBaseEntityId());
         if (StringUtils.isBlank(partnerBaseEntityId)) {
             menu.findItem(R.id.action_anc_partner_followup_referral).setVisible(true);
@@ -335,6 +335,9 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         if (HfAncDao.isPartnerRegistered(memberObject.getBaseEntityId()) && (!partnerTestedAll || retestPartnerAt32)) {
             partnerTestingView.setVisibility(View.VISIBLE);
             partnerTestingBottomView.setVisibility(View.VISIBLE);
+        } else {
+            partnerTestingView.setVisibility(View.GONE);
+            partnerTestingBottomView.setVisibility(View.GONE);
         }
 
         this.findViewById(R.id.family_anc_head).setVisibility(View.GONE);
@@ -359,7 +362,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
             int obsSize = obs.length();
             for (int i = 0; i < obsSize; i++) {
                 JSONObject checkObj = obs.getJSONObject(i);
-                if (checkObj.getString("fieldCode").equalsIgnoreCase("known_on_art")) {
+                if (checkObj.getString("fieldCode").equalsIgnoreCase("known_on_art") && checkObj.getString("values").contains("true")) {
                     hivPositive = true;
                     isKnownOnArt = true;
                 } else if (checkObj.getString("fieldCode").equalsIgnoreCase("hiv")) {
@@ -408,6 +411,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
                 VisitUtils.manualProcessVisit(visit);
                 //reload views after visit is processed
                 setupViews();
+                presenter().refreshProfileBottom();
             } catch (Exception e) {
                 Timber.e(e);
             }
@@ -448,6 +452,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        setupViews();
         ancMemberProfilePresenter().fetchTasks();
         if (notificationAndReferralRecyclerView != null && notificationAndReferralRecyclerView.getAdapter() != null) {
             notificationAndReferralRecyclerView.getAdapter().notifyDataSetChanged();

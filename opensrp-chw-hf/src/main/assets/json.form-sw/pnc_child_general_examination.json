@@ -287,25 +287,25 @@
       {
         "key": "temperature",
         "type": "edit_text",
-        "hint": "Joto (C)",
+        "hint": "Joto (\u2103)",
         "openmrs_entity_id": "temperature",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "v_numeric": {
           "value": "true",
-          "err": "Tafadhali ingiza Joto (C)"
+          "err": "Tafadhali ingiza Joto (\u2103)"
         },
         "v_min": {
           "value": "10",
-          "err": "Joto lazima iwe sawa au kubwa kuliko 10 (C)"
+          "err": "Joto lazima iwe sawa au kubwa kuliko 10 (\u2103)"
         },
         "v_max": {
           "value": "50",
-          "err": "Joto lazima iwe sawa au kubwa kuliko 50 (C)"
+          "err": "Joto lazima iwe sawa au kubwa kuliko 50 (\u2103)"
         },
         "v_required": {
           "value": true,
-          "err": "Tafadhali ingiza Joto (C)"
+          "err": "Tafadhali ingiza Joto (\u2103)"
         }
       },
       {

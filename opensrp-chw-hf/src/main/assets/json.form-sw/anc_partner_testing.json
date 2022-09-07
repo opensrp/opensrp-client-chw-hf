@@ -184,10 +184,6 @@
         "v_max_length": {
           "value": "17",
           "is_fixed_size": "true",
-          "err":"Tafadhali jaza namba ya CTC ya mteja"
-        },
-        "v_required": {
-          "value": true,
           "err": "Tafadhali jaza namba ya CTC ya mteja"
         },
         "relevance": {
@@ -571,7 +567,7 @@
           "other"
         ],
         "openmrs_choice_ids": {
-          "out_of_stock":  "out_of_stock",
+          "out_of_stock": "out_of_stock",
           "client_did_not_agree_medication": "client_did_not_agree_medication",
           "the_client_refused_to_be_tested": "the_client_refused_to_be_tested",
           "client_is_allergic_to_medication": "client_is_allergic_to_medication",

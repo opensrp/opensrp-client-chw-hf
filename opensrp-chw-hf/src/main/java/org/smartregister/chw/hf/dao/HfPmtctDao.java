@@ -3,7 +3,6 @@ package org.smartregister.chw.hf.dao;
 import org.joda.time.LocalDate;
 import org.joda.time.Months;
 import org.smartregister.chw.core.dao.CorePmtctDao;
-import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.pmtct.domain.MemberObject;
 
 import java.text.ParseException;
@@ -557,5 +556,25 @@ public class HfPmtctDao extends CorePmtctDao {
             }
         }
         return null;
+    }
+
+    public static boolean isPrescribedArtRegimes(String baseEntityId){
+        String sql = "SELECT prescribed_regimes " +
+                " FROM ec_pmtct_followup " +
+                " WHERE entity_id = '" + baseEntityId + "'" +
+                " ORDER BY visit_number DESC " +
+                " LIMIT  1";
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "prescribed_regimes");
+
+
+        List<String> res = readData(sql, dataMap);
+        if (res != null && res.size() > 0 && res.get(0) != null) {
+            try {
+                return res.get(0).equalsIgnoreCase("yes");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
     }
 }

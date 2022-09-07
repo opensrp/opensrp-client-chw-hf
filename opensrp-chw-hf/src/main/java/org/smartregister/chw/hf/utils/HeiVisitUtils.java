@@ -2,7 +2,6 @@ package org.smartregister.chw.hf.utils;
 
 import com.google.gson.Gson;
 
-import org.apache.commons.lang3.time.DateUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.smartregister.chw.anc.AncLibrary;
@@ -37,8 +36,8 @@ public class HeiVisitUtils extends VisitUtils {
 
 
         for (Visit v : visits) {
-            Date truncatedUpdatedDate = DateUtils.truncate(v.getUpdatedAt(), Calendar.DATE);
-            Date today = DateUtils.truncate(new Date(), Calendar.DATE);
+            Date truncatedUpdatedDate = new Date(v.getUpdatedAt().getTime() - v.getUpdatedAt().getTime() % (24 * 60 * 60 * 1000));
+            Date today = new Date(Calendar.getInstance().getTimeInMillis() - Calendar.getInstance().getTimeInMillis() % (24 * 60 * 60 * 1000));
 
             if (truncatedUpdatedDate.before(today) && v.getVisitType().equalsIgnoreCase(Constants.Events.HEI_FOLLOWUP)) {
                 try {

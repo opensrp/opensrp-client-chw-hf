@@ -154,6 +154,10 @@
               "rules-file": "labor_and_delivery_registration_current_labor_relevance.yml"
             }
           }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select at least one"
         }
       },
       {

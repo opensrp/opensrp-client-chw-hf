@@ -118,7 +118,7 @@
           "client_was_in_an_emergency_situation": "client_was_in_an_emergency_situation",
           "client_refused_to_be_tested": "client_refused_to_be_tested",
           "still_counselling_the_client": "still_counselling_the_client",
-          "known_on_art":  "known_on_art",
+          "known_on_art": "known_on_art",
           "Other": "other"
         },
         "v_required": {
@@ -184,10 +184,6 @@
         "v_max_length": {
           "value": "17",
           "is_fixed_size": "true",
-          "err":"Please enter a valid CTC Number"
-        },
-        "v_required": {
-          "value": true,
           "err": "Please enter a valid CTC Number"
         },
         "relevance": {

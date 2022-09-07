@@ -74,6 +74,24 @@
         }
       },
       {
+        "key": "tb_registration_number",
+        "type": "edit_text",
+        "openmrs_entity_id": "tb_registration_number",
+        "hint": "Namba ya Kliniki ya TB ya mteja",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "step1:on_tb_treatment": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jaza namba ya Kliniki ya TB"
+        }
+      },
+      {
         "key": "tb_symptoms_screening",
         "type": "check_box",
         "label": "Tafadhali chagua kama Mteja ana dalili zifuatazo za Kifua Kikuu?",
@@ -160,6 +178,12 @@
             "text": "Hazi",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "negative"
+          },
+          {
+            "key": "test_not_conducted",
+            "text": "Kipimo cha TB hakijafanyika",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "test_not_conducted"
           }
         ],
         "v_required": {
@@ -405,7 +429,6 @@
             "ex": "equalTo(., \"yes\")"
           }
         }
-
       }
     ]
   }
