@@ -56,8 +56,8 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: opensrp-chw-hf/build/outputs/bundle/release/opensrp-chw-hf-release.aab
-          asset_name: "opensrp-chw-hf-$tag.aab"
+          file: opensrp-chw-hf/build/outputs/bundle/release/opensrp-hf-ba-release.aab
+          asset_name: "opensrp-hf-ba-$tag.aab"
           tag: ${{ github.ref }}
           overwrite: true
 
@@ -68,8 +68,8 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: opensrp-chw-hf/build/outputs/apk/release/opensrp-chw-hf-release.apk
-          asset_name: "opensrp-chw-hf-$tag.apk"
+          file: opensrp-chw-hf/build/outputs/apk/release/opensrp-hf-ba-release.apk
+          asset_name: "opensrp-hf-ba-$tag.apk"
           tag: ${{ github.ref }}
           prerelease: ${{ contains(github.ref, '-alpha') || contains(github.ref, '-beta') }}
           overwrite: true
