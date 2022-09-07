@@ -59,12 +59,13 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
     }
 
     private static String getPregnancyStatusString(String pregnancyStatus, Context context) {
-        if (pregnancyStatus.equals("intrauterine_fetal_death")) {
-            return context.getString(R.string.anc_pregnacy_status_fetal_death);
-        } else if (pregnancyStatus.equals("spontaneous_abortion")) {
-            return context.getString(R.string.anc_pregnacy_status_spontaneous_abortion);
-        } else if (pregnancyStatus.equals("viable")) {
-            return context.getString(R.string.anc_pregnacy_status_viable);
+        switch (pregnancyStatus) {
+            case "intrauterine_fetal_death":
+                return context.getString(R.string.anc_pregnacy_status_fetal_death);
+            case "spontaneous_abortion":
+                return context.getString(R.string.anc_pregnacy_status_spontaneous_abortion);
+            case "viable":
+                return context.getString(R.string.anc_pregnacy_status_viable);
         }
         return "";
     }
