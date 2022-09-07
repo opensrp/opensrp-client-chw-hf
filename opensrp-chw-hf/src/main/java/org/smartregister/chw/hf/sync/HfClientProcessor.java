@@ -70,12 +70,6 @@ public class HfClientProcessor extends CoreClientProcessor {
                 processVisitEvent(eventClient);
                 processEvent(eventClient.getEvent(), eventClient.getClient(), clientClassification);
                 break;
-            case org.smartregister.chw.cdp.util.Constants.EVENT_TYPE.CDP_CONDOM_ORDER:
-                if (eventClient.getEvent() == null) {
-                    return;
-                }
-                processCDPOrderEvent(eventClient.getEvent(), org.smartregister.chw.cdp.util.Constants.TABLES.CDP_ORDERS_RECEIVE);
-                break;
             default:
                 break;
         }
