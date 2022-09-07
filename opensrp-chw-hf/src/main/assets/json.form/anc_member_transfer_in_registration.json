@@ -545,6 +545,12 @@
         "v_required": {
           "value": "true",
           "err": "Please answer this question"
+        },
+        "relevance": {
+          "step2:gest_age_note": {
+            "type": "numeric",
+            "ex": "greaterThanEqualTo(.,\"13\")"
+          }
         }
       },
       {

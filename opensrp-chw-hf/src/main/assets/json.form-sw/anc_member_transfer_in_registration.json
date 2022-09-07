@@ -493,6 +493,82 @@
         }
       },
       {
+        "key": "has_the_client_received_ipt_doses_from_previous_facility",
+        "type": "native_radio",
+        "label": "Has the client has received any IPT doses in the previous clinic",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "has_the_client_received_ipt_doses_from_previous_facility",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        },
+        "relevance": {
+          "step2:gest_age_note": {
+            "type": "numeric",
+            "ex": "greaterThanEqualTo(.,\"13\")"
+          }
+        }
+      },
+      {
+        "key": "malaria_preventive_therapy",
+        "type": "native_radio",
+        "label": "Please select the last IPT dose provided from the previous facility",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "malaria_preventive_therapy",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "ipt1",
+            "text": "IPT1",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "ipt1"
+          },
+          {
+            "key": "ipt2",
+            "text": "IPT2",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "ipt2"
+          },
+          {
+            "key": "ipt3",
+            "text": "IPT3",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "ipt3"
+          },
+          {
+            "key": "ipt4",
+            "text": "IPT4",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "ipt4"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        },
+        "relevance": {
+          "step2:has_the_client_received_ipt_doses_from_previous_facility": {
+            "type": "string",
+            "ex": "equalTo(.,\"yes\")"
+          }
+        }
+      },
+      {
         "key": "hiv",
         "type": "native_radio",
         "label": "Majibu ya Virusi vya Ukimwi ya mteja kutoka katika kituo alichotoka",
