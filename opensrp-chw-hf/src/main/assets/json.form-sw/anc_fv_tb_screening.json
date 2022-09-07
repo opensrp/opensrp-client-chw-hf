@@ -259,6 +259,21 @@
         }
       },
       {
+        "key": "prompt_for_other_treatment",
+        "type": "toaster_notes",
+        "text": "Toa rufaa kwa huduma zaidi",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:investigate_for_tb": {
+            "type": "string",
+            "ex": "equalTo(., \"negative\")"
+          }
+        }
+      },
+      {
         "key": "prompt_for_tb_treatment",
         "type": "toaster_notes",
         "text": "Mpe rufaa mteja kwa ajili ya Matibabu ya Kifua kikuu",
