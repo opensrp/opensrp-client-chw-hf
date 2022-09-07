@@ -57,7 +57,7 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: opensrp-chw-hf/build/outputs/bundle/release/opensrp-chw-hf-release.aab
-          asset_name: "opensrp-chw-hf-$tag.aab"
+          asset_name: "opensrp-hf-ba-$tag.aab"
           tag: ${{ github.ref }}
           overwrite: true
 
@@ -69,7 +69,7 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: opensrp-chw-hf/build/outputs/apk/release/opensrp-chw-hf-release.apk
-          asset_name: "opensrp-chw-hf-$tag.apk"
+          asset_name: "opensrp-hf-ba-$tag.apk"
           tag: ${{ github.ref }}
           prerelease: ${{ contains(github.ref, '-alpha') || contains(github.ref, '-beta') }}
           overwrite: true
