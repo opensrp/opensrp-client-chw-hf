@@ -158,10 +158,10 @@
         }
       },
       {
-        "key": "distributed_condoms",
+        "key": "quantity_response",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "distributed_condoms",
+        "openmrs_entity_id": "quantity_response",
         "type": "edit_text",
         "hint": "Number of condoms distributed (Pieces)",
         "edit_type": "number",
