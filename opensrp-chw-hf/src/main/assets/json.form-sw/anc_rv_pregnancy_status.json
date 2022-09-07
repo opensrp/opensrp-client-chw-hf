@@ -109,6 +109,64 @@
         "openmrs_entity_id": "pregnancy_status_completion_status",
         "openmrs_entity_parent": "",
         "value": "pending"
+      },
+      {
+        "key": "delivery_place",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "delivery_place",
+        "openmrs_data_type": "select one",
+        "type": "spinner",
+        "hint": "Mahali ambapo Mama alijifungulia",
+        "values": [
+          "Kwenye Kituo cha Afya",
+          "Amejifungua Njiani kabla ya kufika kwenye Kituo",
+          "Amejifungulia Nyumbani",
+          "Amejifungulia kwa Mkunga wa Jadi"
+        ],
+        "keys": [
+          "At a health facility",
+          "Birth before Arrival (BBA)",
+          "At home",
+          "Traditional birth attendant"
+        ],
+        "openmrs_choice_ids": {
+          "At a health facility": "At a health facility",
+          "Birth before Arrival (BBA)": "Birth before Arrival (BBA)",
+          "At home": "At home",
+          "Traditional birth attendant": "Traditional birth attendant"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua chaguo moja"
+        },
+        "relevance": {
+          "step1:pregnancy_status": {
+            "type": "string",
+            "ex": "equalTo(.,\"intrauterine_fetal_death\")"
+          }
+        }
+      },
+      {
+        "key": "delivery_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "delivery_date",
+        "type": "date_picker",
+        "hint": "Tarehe ya Mama kujifungua",
+        "expanded": false,
+        "min_date": "today-2y",
+        "max_date": "today",
+        "relevance": {
+          "step1:pregnancy_status": {
+            "type": "string",
+            "ex": "equalTo(.,\"intrauterine_fetal_death\")"
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua tarehe ya kujifungua"
+        }
       }
     ]
   }
