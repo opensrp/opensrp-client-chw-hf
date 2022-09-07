@@ -70,6 +70,10 @@ public class IndividualProfileRemoveFragment extends CoreIndividualProfileRemove
                         pClient.setColumnmaps(personObject.getColumnmaps());
 
                         goToPatientDetailActivity(pClient);
+                    } else {
+                        Intent intent = new Intent(getActivity(), AllClientsRegisterActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
                     }
                 }
             }
