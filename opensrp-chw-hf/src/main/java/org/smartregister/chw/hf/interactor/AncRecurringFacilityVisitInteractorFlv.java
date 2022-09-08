@@ -71,35 +71,6 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
         }
     }
 
-    private static JSONArray setChildNodes(List<Location> locations, String parentLocationId, String parentTagName) {
-        JSONArray nodes = new JSONArray();
-        ArrayList<String> locationHierarchyTags = new ArrayList<>(Arrays.asList(BuildConfig.LOCATION_HIERACHY));
-
-        for (Location location : locations) {
-            Set<LocationTag> locationTags = location.getLocationTags();
-            String childTagName = locationHierarchyTags.get(locationHierarchyTags.indexOf(parentTagName) + 1);
-            if (locationTags.iterator().next().getName().equalsIgnoreCase(childTagName) && location.getProperties().getParentId().equals(parentLocationId)) {
-                JSONObject childNode = new JSONObject();
-                try {
-                    childNode.put("name", StringUtils.capitalize(location.getProperties().getName()));
-                    childNode.put("key", StringUtils.capitalize(location.getProperties().getName()));
-
-                    JSONArray childNodes = setChildNodes(locations, location.getId(), childTagName);
-                    if (childNodes != null)
-                        childNode.put("nodes", childNodes);
-
-                    nodes.put(childNode);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        if (nodes.length() > 0) {
-            return nodes;
-        } else return null;
-
-    }
-
     private static JSONObject setMinFundalHeight(JSONObject form, String baseEntityId) {
         String fundalHeight = HfAncDao.getFundalHeight(baseEntityId);
         try {
