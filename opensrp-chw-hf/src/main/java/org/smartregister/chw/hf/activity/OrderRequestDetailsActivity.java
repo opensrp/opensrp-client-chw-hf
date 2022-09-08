@@ -2,6 +2,7 @@ package org.smartregister.chw.hf.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.view.View;
 
 import org.json.JSONObject;
 import org.smartregister.chw.cdp.activity.BaseOrderDetailsActivity;
@@ -19,8 +20,10 @@ public class OrderRequestDetailsActivity extends BaseOrderDetailsActivity {
     }
 
     @Override
-    public int getMainContentView() {
-        return R.layout.activity_order_request_details;
+    protected void setupViews() {
+        super.setupViews();
+
+        btnGroup.setVisibility(View.VISIBLE);
     }
 
     @Override
