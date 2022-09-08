@@ -24,6 +24,8 @@ public class OrderRequestDetailsActivity extends BaseOrderDetailsActivity {
         super.setupViews();
 
         btnGroup.setVisibility(View.VISIBLE);
+        if(client!= null && presenter!= null)
+            presenter.refreshViewPageBottom(client);
     }
 
     @Override
