@@ -10,7 +10,9 @@ import org.smartregister.chw.anc.domain.MemberObject;
 import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
+import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hf.utils.VisitUtils;
+import org.smartregister.chw.referral.util.JsonFormConstants;
 import org.smartregister.family.util.JsonFormUtils;
 
 import java.util.HashMap;
@@ -41,6 +43,17 @@ public class AncPregnancyStatusAction implements BaseAncHomeVisitAction.AncHomeV
 
         try {
             JSONObject jsonObject = new JSONObject(jsonPayload);
+            int gestationAge = memberObject.getGestationAge();
+            JSONArray fields = jsonObject.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+            JSONObject pregnancyStatusObject = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "pregnancy_status");
+
+            if (pregnancyStatusObject != null) {
+                if (gestationAge >= 28) {
+                    pregnancyStatusObject.getJSONArray("options").remove(1);
+                } else {
+                    pregnancyStatusObject.getJSONArray("options").remove(2);
+                }
+            }
             return jsonObject.toString();
         } catch (Exception e) {
             Timber.e(e);

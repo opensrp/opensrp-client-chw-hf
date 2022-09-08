@@ -66,6 +66,7 @@ import org.smartregister.family.domain.FamilyEventClient;
 import org.smartregister.family.interactor.FamilyProfileInteractor;
 import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.family.util.Utils;
+import org.smartregister.opd.utils.OpdDbConstants;
 import org.smartregister.repository.AllSharedPreferences;
 import org.smartregister.view.customcontrols.CustomFontTextView;
 
@@ -148,7 +149,8 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         super.onCreateOptionsMenu(menu);
         menu.findItem(R.id.anc_danger_signs_outcome).setVisible(false);
         menu.findItem(R.id.action_anc_registration).setVisible(false);
-        menu.findItem(R.id.action_remove_member).setVisible(false);
+        menu.findItem(R.id.action_remove_member).setVisible(true);
+        menu.findItem(R.id.action_remove_member).setTitle(getString(R.string.mark_as_deceased));
         menu.findItem(R.id.action_pregnancy_out_come).setVisible(!HfAncDao.isClientClosed(baseEntityID));
         menu.findItem(R.id.action_malaria_diagnosis).setVisible(false);
 
@@ -403,10 +405,14 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         TextView processVisitBtn = findViewById(R.id.textview_process_visit);
         processVisitBtn.setOnClickListener(v -> {
             try {
-                VisitUtils.manualProcessVisit(visit);
+                VisitUtils.manualProcessVisit(visit,AncMemberProfileActivity.this);
                 //reload views after visit is processed
                 setupViews();
                 presenter().refreshProfileBottom();
+                if (!baseEntityID.isEmpty()) {
+                    memberObject = getMemberObject(baseEntityID);
+                    ((AncMemberProfilePresenter) presenter()).refreshProfileTopSection(memberObject);
+                }
             } catch (Exception e) {
                 Timber.e(e);
             }
@@ -448,6 +454,10 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     protected void onResume() {
         super.onResume();
         setupViews();
+        if (!baseEntityID.isEmpty()) {
+            memberObject = getMemberObject(baseEntityID);
+            ((AncMemberProfilePresenter) presenter()).refreshProfileTopSection(memberObject);
+        }
         ancMemberProfilePresenter().fetchTasks();
         if (notificationAndReferralRecyclerView != null && notificationAndReferralRecyclerView.getAdapter() != null) {
             notificationAndReferralRecyclerView.getAdapter().notifyDataSetChanged();
@@ -508,7 +518,9 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
                 lastNotDoneVisit = null;
             }
         }
-        Visit latestVisit = getVisit(ANC_FIRST_FACILITY_VISIT);
+        Visit latestVisit = getVisit(ANC_RECURRING_FACILITY_VISIT);
+        if (latestVisit == null)
+            latestVisit = getVisit(ANC_FIRST_FACILITY_VISIT);
         String visitDate = latestVisit != null ? new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(latestVisit.getDate()) : null;
         String lastVisitNotDone = lastNotDoneVisit != null ? new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(lastNotDoneVisit.getDate()) : null;
 
@@ -647,6 +659,9 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
             if (preFilledForm != null)
                 UpdateDetailsUtil.startUpdateClientDetailsActivity(preFilledForm, this);
             return true;
+        } else if (itemId == org.smartregister.chw.core.R.id.action_remove_member) {
+            removeMember();
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
@@ -665,6 +680,18 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         } catch (Exception e) {
             Timber.e(e);
         }
+    }
+
+    protected void removeMember() {
+        CommonPersonObjectClient commonPersonObjectClient = getClientDetailsByBaseEntityID(memberObject.getBaseEntityId());
+        if (commonPersonObjectClient.getColumnmaps().get("entity_type").toString().equals(CoreConstants.TABLE_NAME.INDEPENDENT_CLIENT)) {
+            commonPersonObjectClient.getColumnmaps().put(OpdDbConstants.KEY.REGISTER_TYPE, CoreConstants.REGISTER_TYPE.INDEPENDENT);
+        }
+
+        IndividualProfileRemoveActivity.startIndividualProfileActivity(this,
+                commonPersonObjectClient,
+                memberObject.getFamilyBaseEntityId(), memberObject.getFamilyHead(),
+                memberObject.getPrimaryCareGiver(), FpRegisterActivity.class.getCanonicalName());
     }
 
 

@@ -1,7 +1,9 @@
 package org.smartregister.chw.hf.utils;
 
 import static org.smartregister.chw.anc.util.NCUtils.getSyncHelper;
+import static org.smartregister.chw.hf.utils.LDVisitUtils.getFieldValue;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
@@ -77,6 +79,7 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
             for (Visit v : ancFollowupVisitsCompleted) {
                 if (isNextVisitsCancelled(v)) {
                     createCancelledEvent(v.getJson());
+                    createEventToMoveAncClientsWithStillBirthToPnc(v.getJson());
                 }
             }
         }
@@ -89,6 +92,20 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
         AllSharedPreferences allSharedPreferences = AncLibrary.getInstance().context().allSharedPreferences();
         NCUtils.addEvent(allSharedPreferences, baseEvent);
         NCUtils.startClientProcessing();
+    }
+
+    private static void createEventToMoveAncClientsWithStillBirthToPnc(String json) throws Exception {
+        JSONObject visitJson = new JSONObject(json);
+        JSONArray obs = visitJson.getJSONArray("obs");
+        String pregnancyStatus = getFieldValue(obs, "pregnancy_status");
+        if (pregnancyStatus.equalsIgnoreCase("intrauterine_fetal_death")) {
+            Event baseEvent = new Gson().fromJson(json, Event.class);
+            baseEvent.setFormSubmissionId(UUID.randomUUID().toString());
+            baseEvent.setEventType("Transfer to PNC");
+            AllSharedPreferences allSharedPreferences = AncLibrary.getInstance().context().allSharedPreferences();
+            NCUtils.addEvent(allSharedPreferences, baseEvent);
+            NCUtils.startClientProcessing();
+        }
     }
 
     public static boolean computeCompletionStatusForAction(JSONArray obs, String checkString) throws JSONException {
@@ -191,14 +208,16 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
         return Pending;
     }
 
-    public static void manualProcessVisit(Visit visit) throws Exception{
+    public static void manualProcessVisit(Visit visit, Context context) throws Exception {
         List<Visit> manualProcessedVisits = new ArrayList<>();
         VisitDetailsRepository visitDetailsRepository = AncLibrary.getInstance().visitDetailsRepository();
         VisitRepository visitRepository = AncLibrary.getInstance().visitRepository();
         manualProcessedVisits.add(visit);
         processVisits(manualProcessedVisits, visitRepository, visitDetailsRepository);
-        if(visit.getVisitType().equalsIgnoreCase(Constants.Events.ANC_RECURRING_FACILITY_VISIT) && isNextVisitsCancelled(visit)){
+        if (visit.getVisitType().equalsIgnoreCase(Constants.Events.ANC_RECURRING_FACILITY_VISIT) && isNextVisitsCancelled(visit)) {
             createCancelledEvent(visit.getJson());
+            createEventToMoveAncClientsWithStillBirthToPnc(visit.getJson());
+            ((Activity)context).finish();
         }
     }
 

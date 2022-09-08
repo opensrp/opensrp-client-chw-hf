@@ -99,7 +99,7 @@
         }
       },
       {
-        "key": "gest_age",
+        "key": "gest_age_consultation",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "gest_age_consultation",

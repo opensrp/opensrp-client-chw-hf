@@ -282,44 +282,6 @@
         }
       },
       {
-        "key": "hiv",
-        "type": "hidden",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "hiv",
-        "value": "positive",
-        "openmrs_entity_parent": "",
-        "relevance": {
-          "step1:medical_surgical_history": {
-            "ex-checkbox": [
-              {
-                "or": [
-                  "known_on_art"
-                ]
-              }
-            ]
-          }
-        }
-      },
-      {
-        "key": "known_on_art",
-        "type": "hidden",
-        "openmrs_entity_id": "known_on_art",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "value": "yes",
-        "relevance": {
-          "step1:medical_surgical_history": {
-            "ex-checkbox": [
-              {
-                "or": [
-                  "known_on_art"
-                ]
-              }
-            ]
-          }
-        }
-      },
-      {
         "key": "gravida",
         "type": "edit_text",
         "hint": "Gravida",
@@ -409,6 +371,34 @@
         "openmrs_entity_id": "visit_number",
         "openmrs_entity_parent": "",
         "value": 1
+      },
+      {
+        "key": "hiv",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hiv",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_member_transfer_in_registration_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "known_on_art",
+        "type": "hidden",
+        "openmrs_entity_id": "known_on_art",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_member_transfer_in_registration_calculation.yml"
+            }
+          }
+        }
       }
     ]
   },
@@ -557,19 +547,18 @@
           "err": "Please answer this question"
         },
         "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "pmtct_registration_relevance.yml"
-            }
+          "step2:gest_age_note": {
+            "type": "numeric",
+            "ex": "greaterThanEqualTo(.,\"13\")"
           }
         }
       },
       {
-        "key": "last_ipt_dose_provided_from_previous_facility",
+        "key": "malaria_preventive_therapy",
         "type": "native_radio",
         "label": "Please select the last IPT dose provided from the previous facility",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "last_ipt_dose_provided_from_previous_facility",
+        "openmrs_entity_id": "malaria_preventive_therapy",
         "openmrs_entity_parent": "",
         "options": [
           {
@@ -602,10 +591,9 @@
           "err": "Please answer this question"
         },
         "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "pmtct_registration_relevance.yml"
-            }
+          "step2:has_the_client_received_ipt_doses_from_previous_facility": {
+            "type": "string",
+            "ex": "equalTo(.,\"yes\")"
           }
         }
       },

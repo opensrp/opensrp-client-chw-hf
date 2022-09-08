@@ -187,9 +187,10 @@
           "err": "Tafadhali jaza namba ya CTC ya mteja"
         },
         "relevance": {
-          "step1:partner_hiv": {
-            "type": "string",
-            "ex": "equalTo(.,\"positive\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_partner_testing_relevance.yml"
+            }
           }
         }
       },

@@ -66,85 +66,85 @@
         "options": [
           {
             "key": "chk_maternal_nutrition",
-            "text": "3. Lishe kwa mama wakati wa kunyonyesha",
+            "text": "Lishe kwa mama wakati wa kunyonyesha",
             "openmrs_entity": "",
             "openmrs_entity_id": ""
           },
           {
             "key": "chk_hiv_aids",
-            "text": "5. Umuhimu wa kupata ushauri nasaha na kupima VVU",
+            "text": "Umuhimu wa kupata ushauri nasaha na kupima VVU",
             "openmrs_entity": "",
             "openmrs_entity_id": ""
           },
           {
             "key": "chk_pmtc_for_mother",
-            "text": "6. Kuzuia mambukizi ya VVU kutoka kwa mama kwenda kwa mtoto",
+            "text": "Kuzuia mambukizi ya VVU kutoka kwa mama kwenda kwa mtoto",
             "openmrs_entity": "",
             "openmrs_entity_id": ""
           },
           {
             "key": "chk_malaria_prevention",
-            "text": "7. Kuzuia malaria kwa watoto wenye umri chini ya miaka mitano",
+            "text": "Kuzuia malaria kwa watoto wenye umri chini ya miaka mitano",
             "openmrs_entity": "",
             "openmrs_entity_id": ""
           },
           {
             "key": "chk_hiv_exposed_infant",
-            "text": "15. Ufuatiliaji wa mtoto aliyezaliwa na mama mwenye VVU",
+            "text": "Ufuatiliaji wa mtoto aliyezaliwa na mama mwenye VVU",
             "openmrs_entity": "",
             "openmrs_entity_id": ""
           },
           {
             "key": "chk_breast_feeding",
-            "text": "16. Unyonyeshaji wa maziwa ya mama",
+            "text": "Unyonyeshaji wa maziwa ya mama",
             "openmrs_entity": "",
             "openmrs_entity_id": ""
           },
           {
             "key": "chk_birth_registration",
-            "text": "19. Usajili wa vizazi",
+            "text": "Usajili wa vizazi",
             "openmrs_entity": "",
             "openmrs_entity_id": ""
           },
           {
             "key": "chk_complementary_feeding",
-            "text": "20. Kumlisha mtoto vyakula vya nyongeza",
+            "text": "Kumlisha mtoto vyakula vya nyongeza",
             "openmrs_entity": "",
             "openmrs_entity_id": ""
           },
           {
             "key": "chk_growth_and_dev",
-            "text": "21. Makuzi na maendeleo ya awali ya mtoto",
+            "text": "Makuzi na maendeleo ya awali ya mtoto",
             "openmrs_entity": "",
             "openmrs_entity_id": ""
           },
           {
             "key": "chk_immunization",
-            "text": "22. Chanjo",
+            "text": "Chanjo",
             "openmrs_entity": "",
             "openmrs_entity_id": ""
           },
           {
             "key": "chk_newborn_danger",
-            "text": "23. Dalili za hatari kwa mtoto mchanga",
+            "text": "Dalili za hatari kwa mtoto mchanga",
             "openmrs_entity": "",
             "openmrs_entity_id": ""
           },
           {
             "key": "chk_infection",
-            "text": "24. Kuzuia maambukizi katika jamii",
+            "text": "Kuzuia maambukizi katika jamii",
             "openmrs_entity": "",
             "openmrs_entity_id": ""
           },
           {
             "key": "chk_prevention_of_accidents",
-            "text": "25. Kuzuia ajali kwa watoto chini ya miaka Mitano",
+            "text": "Kuzuia ajali kwa watoto chini ya miaka Mitano",
             "openmrs_entity": "",
             "openmrs_entity_id": ""
           },
           {
             "key": "chk_gender_issues",
-            "text": "26. Jinsia",
+            "text": "Jinsia",
             "openmrs_entity": "",
             "openmrs_entity_id": ""
           },
