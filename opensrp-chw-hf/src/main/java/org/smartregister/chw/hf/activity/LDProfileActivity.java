@@ -23,8 +23,12 @@ import org.joda.time.DateTime;
 import org.joda.time.Period;
 import org.json.JSONObject;
 import org.smartregister.chw.core.dao.ChwNotificationDao;
+import org.smartregister.chw.core.dataloader.CoreFamilyMemberDataLoader;
+import org.smartregister.chw.core.form_data.NativeFormsDataBinder;
 import org.smartregister.chw.core.model.ChildModel;
 import org.smartregister.chw.core.utils.CoreConstants;
+import org.smartregister.chw.core.utils.CoreJsonFormUtils;
+import org.smartregister.chw.core.utils.UpdateDetailsUtil;
 import org.smartregister.chw.hf.BuildConfig;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.dao.HfPncDao;
@@ -40,6 +44,8 @@ import org.smartregister.chw.ld.util.Constants;
 import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.domain.AlertStatus;
+import org.smartregister.family.util.DBConstants;
+import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.family.util.Utils;
 import org.smartregister.repository.AllSharedPreferences;
 
@@ -311,10 +317,10 @@ public class LDProfileActivity extends BaseLDProfileActivity {
         if (LDDao.getLabourStage(memberObject.getBaseEntityId()) != null) {
             int labourStage = 1;
             try {
-                if(LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("complete")){
+                if (LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("complete")) {
                     labourStage = 4;
-                }else
-                labourStage = Integer.parseInt(LDDao.getLabourStage(memberObject.getBaseEntityId()));
+                } else
+                    labourStage = Integer.parseInt(LDDao.getLabourStage(memberObject.getBaseEntityId()));
             } catch (Exception e) {
                 Timber.e(e);
             }
@@ -342,6 +348,15 @@ public class LDProfileActivity extends BaseLDProfileActivity {
                 return true;
             } else if (itemId == R.id.action_child_emergency_registration) {
                 getChildEmergencyReferralMenuItem(item);
+            } else if (itemId == R.id.action_member_registration) {
+                if (UpdateDetailsUtil.isIndependentClient(memberObject.getBaseEntityId())) {
+                    startFormForEdit(org.smartregister.chw.core.R.string.registration_info,
+                            CoreConstants.JSON_FORM.getAllClientUpdateRegistrationInfoForm());
+                } else {
+                    startFormForEdit(org.smartregister.chw.core.R.string.edit_member_form_title,
+                            CoreConstants.JSON_FORM.getFamilyMemberRegister());
+                }
+                return true;
             }
         } catch (Exception e) {
             Timber.e(e);
@@ -391,6 +406,57 @@ public class LDProfileActivity extends BaseLDProfileActivity {
 
     protected List<CommonPersonObjectClient> getChildren(MemberObject memberObject) {
         return new PncMemberProfileInteractor().pncChildrenUnder29Days(memberObject.getBaseEntityId());
+    }
+
+    public void startFormForEdit(Integer title_resource, String formName) {
+
+        JSONObject form = null;
+        CommonPersonObjectClient client = org.smartregister.chw.core.utils.Utils.clientForEdit(memberObject.getBaseEntityId());
+
+        if (formName.equals(CoreConstants.JSON_FORM.getFamilyMemberRegister())) {
+            form = CoreJsonFormUtils.getAutoPopulatedJsonEditMemberFormString(
+                    (title_resource != null) ? getResources().getString(title_resource) : null,
+                    CoreConstants.JSON_FORM.getFamilyMemberRegister(),
+                    this, client,
+                    Utils.metadata().familyMemberRegister.updateEventType, memberObject.getLastName(), false);
+        } else if (formName.equals(CoreConstants.JSON_FORM.getAncRegistration())) {
+            form = CoreJsonFormUtils.getAutoJsonEditAncFormString(
+                    memberObject.getBaseEntityId(), this, formName, CoreConstants.EventType.UPDATE_ANC_REGISTRATION, getResources().getString(title_resource));
+        } else if (formName.equalsIgnoreCase(CoreConstants.JSON_FORM.getAllClientUpdateRegistrationInfoForm())) {
+            String titleString = title_resource != null ? getResources().getString(title_resource) : null;
+            CommonPersonObjectClient commonPersonObjectClient = UpdateDetailsUtil.getFamilyRegistrationDetails(memberObject.getFamilyBaseEntityId());
+            String uniqueID = commonPersonObjectClient.getColumnmaps().get(DBConstants.KEY.UNIQUE_ID);
+            boolean isPrimaryCareGiver = commonPersonObjectClient.getCaseId().equalsIgnoreCase(memberObject.getFamilyBaseEntityId());
+
+            NativeFormsDataBinder binder = new NativeFormsDataBinder(getContext(), memberObject.getBaseEntityId());
+            binder.setDataLoader(new CoreFamilyMemberDataLoader(memberObject.getFamilyName(), isPrimaryCareGiver, titleString,
+                    org.smartregister.chw.core.utils.Utils.metadata().familyMemberRegister.updateEventType, uniqueID));
+            JSONObject jsonObject = binder.getPrePopulatedForm(CoreConstants.JSON_FORM.getAllClientUpdateRegistrationInfoForm());
+
+            try {
+                if (jsonObject != null) {
+                    UpdateDetailsUtil.startUpdateClientDetailsActivity(jsonObject, this);
+                }
+            } catch (Exception e) {
+                Timber.e(e);
+            }
+        }
+
+        try {
+            assert form != null;
+            startFormActivity(form);
+        } catch (Exception e) {
+            Timber.e(e);
+        }
+    }
+
+    public void startFormActivity(JSONObject jsonForm) {
+        Intent intent = org.smartregister.chw.core.utils.Utils.formActivityIntent(this, jsonForm.toString());
+        startActivityForResult(intent, JsonFormUtils.REQUEST_CODE_GET_JSON);
+    }
+
+    public Context getContext() {
+        return this;
     }
 
 }
