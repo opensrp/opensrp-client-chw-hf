@@ -167,6 +167,21 @@
           "value": "true",
           "err": "Tafadhali chagua tarehe ya kujifungua"
         }
+      },
+      {
+        "key": "preg_outcome",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "type": "hidden",
+        "openmrs_entity_id": "preg_outcome",
+        "value": "still_born",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_pregnancy_status_calculation.yml"
+            }
+          }
+        }
       }
     ]
   }
