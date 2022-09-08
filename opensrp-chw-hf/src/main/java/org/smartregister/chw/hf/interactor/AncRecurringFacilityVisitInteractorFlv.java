@@ -66,8 +66,9 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                 return context.getString(R.string.anc_pregnacy_status_spontaneous_abortion);
             case "viable":
                 return context.getString(R.string.anc_pregnacy_status_viable);
+            default:
+                return "";
         }
-        return "";
     }
 
     private static JSONArray setChildNodes(List<Location> locations, String parentLocationId, String parentTagName) {
