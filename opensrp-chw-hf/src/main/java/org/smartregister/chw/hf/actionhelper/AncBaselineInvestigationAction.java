@@ -71,7 +71,8 @@ public class AncBaselineInvestigationAction implements BaseAncHomeVisitAction.An
             checkObject.put("glucose_in_urine", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "glucose_in_urine")));
             checkObject.put("protein_in_urine", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "protein_in_urine")));
             checkObject.put("blood_group", bloodGroupCheck);
-            checkObject.put("rh_factor", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "rh_factor")));
+            if (!bloodGroup.equalsIgnoreCase("test_not_conducted"))
+                checkObject.put("rh_factor", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "rh_factor")));
             checkObject.put("hb_level_test", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "hb_level_test")));
             checkObject.put("blood_for_glucose_test", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "blood_for_glucose_test")));
             checkObject.put("syphilis", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "syphilis")));

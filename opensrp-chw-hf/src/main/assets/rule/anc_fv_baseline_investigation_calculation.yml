@@ -2,9 +2,9 @@
 name: step1_date_anc_hiv_test
 description: date of hiv test calculation
 priority: 1
-condition: "!step1_hiv.equals('test_not_conducted')"
+condition: "true"
 actions:
-  - "calculation = helper.getDateToday()"
+  - "calculation = !step1_hiv.equals('test_not_conducted')?helper.getDateToday() : ''"
 ---
 name: step1_hiv_test_at_32
 description: Record true if test was conducted at gestational age of 32 or more
