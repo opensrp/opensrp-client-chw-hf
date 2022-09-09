@@ -19,8 +19,6 @@ import com.gkemon.XMLtoPDF.model.FailureResponse;
 import com.gkemon.XMLtoPDF.model.SuccessResponse;
 
 import org.apache.commons.lang3.StringUtils;
-import org.joda.time.DateTime;
-import org.joda.time.Period;
 import org.smartregister.chw.anc.domain.Visit;
 import org.smartregister.chw.anc.presenter.BaseAncMedicalHistoryPresenter;
 import org.smartregister.chw.core.activity.CoreAncMedicalHistoryActivity;
@@ -33,6 +31,8 @@ import org.smartregister.chw.ld.domain.MemberObject;
 import java.text.MessageFormat;
 import java.util.List;
 import java.util.Locale;
+
+import timber.log.Timber;
 
 public class LDPartographDetailsActivity extends CoreAncMedicalHistoryActivity {
     private static MemberObject ldMemberObject;
@@ -133,7 +133,12 @@ public class LDPartographDetailsActivity extends CoreAncMedicalHistoryActivity {
         headerLayout.setVisibility(View.VISIBLE);
 
 
-        int age = new Period(new DateTime(ldMemberObject.getAge()), new DateTime()).getYears();
+        int age = 0;
+        try {
+            age = Integer.parseInt(ldMemberObject.getAge());
+        } catch (Exception e) {
+            Timber.e(e);
+        }
         View mView = findViewById(R.id.main_layout);
         PdfGenerator.getBuilder()
                 .setContext(LDPartographDetailsActivity.this)
