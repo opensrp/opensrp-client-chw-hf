@@ -160,6 +160,24 @@
         }
       },
       {
+        "key": "receiving_order_facility",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "receiving_order_facility",
+        "buttonText": "Select Facility",
+        "sort": true,
+        "maxSelectable": 1,
+        "dialogTitle": "Choose Health Facility Receiving Order",
+        "searchHint": "Type Health Facility Name",
+        "options": [
+        ],
+        "type": "multi_select_list",
+        "v_required": {
+          "value": true,
+          "err": "Please select the health facility"
+        }
+      },
+      {
         "key": "msd_code",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
