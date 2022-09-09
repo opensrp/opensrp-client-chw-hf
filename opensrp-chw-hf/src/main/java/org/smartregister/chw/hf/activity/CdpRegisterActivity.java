@@ -4,16 +4,20 @@ import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 
 import org.smartregister.chw.cdp.listener.BaseCdpBottomNavigationListener;
 import org.smartregister.chw.core.activity.CoreCdpRegisterActivity;
-import org.smartregister.chw.core.fragment.CoreOrdersRegisterFragment;
+import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.fragment.OrdersRegisterFragment;
 import org.smartregister.chw.hf.fragment.RequestOrdersRegisterFragment;
 import org.smartregister.helper.BottomNavigationHelper;
 import org.smartregister.listener.BottomNavigationListener;
+import org.smartregister.repository.AllSharedPreferences;
 import org.smartregister.view.fragment.BaseRegisterFragment;
 
 import androidx.fragment.app.Fragment;
 
+import static org.smartregister.util.Utils.getAllSharedPreferences;
+
 public class CdpRegisterActivity extends CoreCdpRegisterActivity {
+    private final String userLocationTag = getAllSharedPreferences().fetchUserLocationTag();
 
     @Override
     protected BaseRegisterFragment getRegisterFragment() {
@@ -44,5 +48,13 @@ public class CdpRegisterActivity extends CoreCdpRegisterActivity {
             BottomNavigationListener familyBottomNavigationListener = new BaseCdpBottomNavigationListener(this);
             bottomNavigationView.setOnNavigationItemSelectedListener(familyBottomNavigationListener);
         }
+    }
+
+    @Override
+    public int getMenuResource() {
+        if (userLocationTag.contains("msd_code")) {
+            return R.menu.bottom_nav_cdp_msd_facility;
+        }
+        return super.getMenuResource();
     }
 }
