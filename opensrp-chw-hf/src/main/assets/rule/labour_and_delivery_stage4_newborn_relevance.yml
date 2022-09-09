@@ -706,6 +706,13 @@ condition: "step1_child_bcg_vaccination.contains('no')"
 actions:
   - "isRelevant = true"
 ---
+name: step1_other_reason_for_not_providing_bcg_vacc
+description: other_reason_for_not_providing_bcg_vacc relevance
+priority: 1
+condition: "step1_reason_for_not_providing_bcg_vacc.contains('others')"
+actions:
+  - "isRelevant = true"
+---
 name: step1_prompt_for_opv0_vacc_not_provided
 description: prompt_for_opv0_vacc_not_provided relevance
 priority: 1
@@ -720,6 +727,13 @@ condition: "step1_child_opv0_vaccination.contains('no')"
 actions:
   - "isRelevant = true"
 ---
+name: step1_other_reason_for_not_providing_opv0_vacc
+description: other_reason_for_not_providing_opv0_vacc relevance
+priority: 1
+condition: "step1_reason_for_not_providing_opv0_vacc.contains('others')"
+actions:
+  - "isRelevant = true"
+---
 name: step1_prompt_for_hepatitis_b_not_provided
 description: prompt_for_hepatitis_b_not_provided relevance
 priority: 1
@@ -731,6 +745,34 @@ name: step1_reason_for_not_providing_hepatitis_b_vacc
 description: reason_for_not_providing_hepatitis_b_vacc relevance
 priority: 1
 condition: "step1_child_hepatitis_b_vaccination.contains('no')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_other_reason_for_not_providing_hepatitis_b_injection
+description: other_reason_for_not_providing_hepatitis_b_injection relevance
+priority: 1
+condition: "step1_reason_for_not_providing_hepatitis_b_vacc.contains('others')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_child_vitamin_k_injection
+description: child_vitamin_k_injection relevance
+priority: 1
+condition: "step1_newborn_status.contains('alive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_reason_for_not_providing_vitamin_k_injection
+description: reason_for_not_providing_vitamin_k_injection relevance
+priority: 1
+condition: "step1_child_vitamin_k_injection.contains('no')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_other_reason_for_not_providing_vitamin_k_injection
+description: other_reason_for_not_providing_vitamin_k_injection relevance
+priority: 1
+condition: "step1_reason_for_not_providing_vitamin_k_injection.contains('others')"
 actions:
   - "isRelevant = true"
 
