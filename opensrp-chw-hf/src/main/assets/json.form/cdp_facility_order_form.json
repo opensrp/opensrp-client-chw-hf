@@ -46,21 +46,6 @@
     "title": "Record Order",
     "fields": [
       {
-        "key": "condom_order_date",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "condom_order_date",
-        "type": "date_picker",
-        "hint": "Condom order date",
-        "expanded": false,
-        "min_date": "today",
-        "max_date": "today",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the order date"
-        }
-      },
-      {
         "key": "condom_type",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -158,10 +143,10 @@
         }
       },
       {
-        "key": "requested_condoms_from_facility",
+        "key": "requested_condoms",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "requested_condoms_from_facility",
+        "openmrs_entity_id": "requested_condoms",
         "type": "edit_text",
         "hint": "Number of condoms ordered (Pieces)",
         "edit_type": "number",
@@ -184,6 +169,34 @@
         "v_required": {
           "value": "true",
           "err": "Please enter the MSD code"
+        }
+      },
+      {
+        "key": "request_type",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "request_type",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "cdp_condom_order_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "condom_order_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "condom_order_date",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "cdp_condom_order_calculation.yml"
+            }
+          }
         }
       }
     ]
