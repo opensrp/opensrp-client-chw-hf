@@ -207,7 +207,7 @@ indicators:
                         AND (date(efm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
-  - key: "ld-2d-25-30"
+  - key: "ld-2d-25-29"
     description: "Waliojifungua nyumbani (H) bila msaada wa TBA"
     indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
                       FROM ec_ld_postpartum_care elpc
@@ -269,7 +269,7 @@ indicators:
                         AND elpc.delivery_place = 'at_a_health_facility'
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
-  - key: "ld-2e-25-30"
+  - key: "ld-2e-25-29"
     description: "Waliozalishwa na watoa huduma wenye ujuzi"
     indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
                       FROM ec_ld_postpartum_care elpc
@@ -458,7 +458,7 @@ indicators:
                         AND (date(efm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01')"
-  - key: "ld-4b-25-30"
+  - key: "ld-4b-25-29"
     description: "Waliojifungua Vacuum (VM)"
     indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
                       FROM ec_ld_postpartum_care elpc
@@ -2033,10 +2033,11 @@ indicators:
                                INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
                       WHERE elpc.number_of_children_born = 1
+                        AND elinbc.newborn_status ='alive'
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-10b-10-14"
     description: "Watoto Waliozaliwa mmoja Waliozaliwa hai Uzito<2.5kg"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2049,7 +2050,7 @@ indicators:
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-10c-10-14"
     description: "Watoto Waliozaliwa mmoja Waliozaliwa hai Uzito =>2.5kg"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2062,7 +2063,7 @@ indicators:
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-10d-10-14"
     description: "Watoto Waliozaliwa mmoja Waliozaliwa wafu Macerated (MSB)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2070,12 +2071,12 @@ indicators:
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
                                INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
-                      WHERE elinbc.still_birth_choice = 'msb'
-                        AND elpc.number_of_children_born = 1
+                      WHERE elpc.number_of_children_born = 1
+                        AND elinbc.still_birth_choice = 'msb'
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-10e-10-14"
     description: "Watoto Waliozaliwa mmoja Waliozaliwa wafu Fresh (FSB)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2088,7 +2089,7 @@ indicators:
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-10f-10-14"
     description: "Watoto Waliozaliwa mmoja Waliozaliwa na mama wenye VVU"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2101,7 +2102,7 @@ indicators:
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-10g-10-14"
     description: "Watoto Waliozaliwa mmoja Waliopewa dawa za ARV"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2115,7 +2116,7 @@ indicators:
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-10h-10-14"
     description: "Watoto Watoto wenye APGAR Score chini ya 7 katika dakika 5"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2125,10 +2126,11 @@ indicators:
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
                       WHERE CAST(elinbc.apgar_score_at_5_minutes AS FLOAT) < 7
                         AND elpc.number_of_children_born = 1
+                        AND elinbc.newborn_status ='alive'
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11a-10-14"
     description: "Watoto Waliozaliwa mapacha Jumla ya watoto waliozaliwa hai"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2137,10 +2139,11 @@ indicators:
                                INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
                       WHERE CAST(elpc.number_of_children_born AS FLOAT) > 1
+                        AND elinbc.newborn_status ='alive'
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11b-10-14"
     description: "Watoto Waliozaliwa mapacha Waliozaliwa hai Uzito<2.5kg"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2153,7 +2156,7 @@ indicators:
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11c-10-14"
     description: "Watoto Waliozaliwa mapacha Waliozaliwa hai Uzito =>2.5kg"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2166,7 +2169,7 @@ indicators:
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11d-10-14"
     description: "Watoto Waliozaliwa mapacha Waliozaliwa wafu Macerated (MSB)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2179,7 +2182,7 @@ indicators:
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11e-10-14"
     description: "Watoto Waliozaliwa mapacha Waliozaliwa wafu Fresh (FSB)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2192,7 +2195,7 @@ indicators:
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11f-10-14"
     description: "Watoto Waliozaliwa mapacha Waliozaliwa na mama wenye VVU"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2205,7 +2208,7 @@ indicators:
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11g-10-14"
     description: "Watoto Waliozaliwa mapacha Waliopewa dawa za ARV"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2219,7 +2222,7 @@ indicators:
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11h-10-14"
     description: "Watoto Waliozaliwa mapacha wenye APGAR Score chini ya 7 katika dakika 5"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2229,10 +2232,11 @@ indicators:
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
                       WHERE CAST(elinbc.apgar_score_at_5_minutes AS FLOAT) < 7
                         AND CAST(elpc.number_of_children_born AS FLOAT) > 1
+                        AND elinbc.newborn_status ='alive'
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-12a-10-14"
     description: "Watoto waliosaidiwa kupumua, Idadi ya watoto Waliosaidiwa kupumua - Suction "
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2244,7 +2248,7 @@ indicators:
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-12b-10-14"
     description: "Watoto waliosaidiwa kupumua, Idadi ya watoto waliosaidiwa kupumua- stimulation "
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2256,7 +2260,7 @@ indicators:
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-12c-10-14"
     description: "Watoto waliosaidiwa kupumua, Idadi ya watoto waliosaidiwa kupumua- bag and mask"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2268,7 +2272,7 @@ indicators:
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-13a-10-14"
     description: "Idadi ya watoto walionyonyeshwa ndani ya saa moja baada ya kuzaliwa"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2280,7 +2284,7 @@ indicators:
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-14a-10-14"
     description: "Wazazi waliofariki"
     indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
@@ -2290,7 +2294,7 @@ indicators:
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
 
 
   - key: "ld-7e-15-19"
@@ -2392,10 +2396,11 @@ indicators:
                                INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
                       WHERE elpc.number_of_children_born = 1
+                        AND elinbc.newborn_status ='alive'
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-10b-15-19"
     description: "Watoto Waliozaliwa mmoja Waliozaliwa hai Uzito<2.5kg"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2408,7 +2413,7 @@ indicators:
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-10c-15-19"
     description: "Watoto Waliozaliwa mmoja Waliozaliwa hai Uzito =>2.5kg"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2421,7 +2426,7 @@ indicators:
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-10d-15-19"
     description: "Watoto Waliozaliwa mmoja Waliozaliwa wafu Macerated (MSB)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2429,12 +2434,12 @@ indicators:
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
                                INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
-                      WHERE elinbc.still_birth_choice = 'msb'
-                        AND elpc.number_of_children_born = 1
+                      WHERE elpc.number_of_children_born = 1
+                        AND elinbc.still_birth_choice = 'msb'
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-10e-15-19"
     description: "Watoto Waliozaliwa mmoja Waliozaliwa wafu Fresh (FSB)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2447,7 +2452,7 @@ indicators:
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-10f-15-19"
     description: "Watoto Waliozaliwa mmoja Waliozaliwa na mama wenye VVU"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2460,7 +2465,7 @@ indicators:
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-10g-15-19"
     description: "Watoto Waliozaliwa mmoja Waliopewa dawa za ARV"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2474,7 +2479,7 @@ indicators:
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-10h-15-19"
     description: "Watoto Watoto wenye APGAR Score chini ya 7 katika dakika 5"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2484,10 +2489,11 @@ indicators:
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
                       WHERE CAST(elinbc.apgar_score_at_5_minutes AS FLOAT) < 7
                         AND elpc.number_of_children_born = 1
+                        AND elinbc.newborn_status ='alive'
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11a-15-19"
     description: "Watoto Waliozaliwa mapacha Jumla ya watoto waliozaliwa hai"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2496,10 +2502,11 @@ indicators:
                                INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
                       WHERE CAST(elpc.number_of_children_born AS FLOAT) > 1
+                        AND elinbc.newborn_status ='alive'
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11b-15-19"
     description: "Watoto Waliozaliwa mapacha Waliozaliwa hai Uzito<2.5kg"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2512,7 +2519,7 @@ indicators:
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11c-15-19"
     description: "Watoto Waliozaliwa mapacha Waliozaliwa hai Uzito =>2.5kg"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2525,7 +2532,7 @@ indicators:
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11d-15-19"
     description: "Watoto Waliozaliwa mapacha Waliozaliwa wafu Macerated (MSB)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2538,7 +2545,7 @@ indicators:
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11e-15-19"
     description: "Watoto Waliozaliwa mapacha Waliozaliwa wafu Fresh (FSB)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2551,7 +2558,7 @@ indicators:
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11f-15-19"
     description: "Watoto Waliozaliwa mapacha Waliozaliwa na mama wenye VVU"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2564,7 +2571,7 @@ indicators:
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11g-15-19"
     description: "Watoto Waliozaliwa mapacha Waliopewa dawa za ARV"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2578,7 +2585,7 @@ indicators:
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11h-15-19"
     description: "Watoto Waliozaliwa mapacha wenye APGAR Score chini ya 7 katika dakika 5"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2588,10 +2595,11 @@ indicators:
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
                       WHERE CAST(elinbc.apgar_score_at_5_minutes AS FLOAT) < 7
                         AND CAST(elpc.number_of_children_born AS FLOAT) > 1
+                        AND elinbc.newborn_status ='alive'
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-12a-15-19"
     description: "Watoto waliosaidiwa kupumua, Idadi ya watoto Waliosaidiwa kupumua - Suction "
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2603,7 +2611,7 @@ indicators:
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-12b-15-19"
     description: "Watoto waliosaidiwa kupumua, Idadi ya watoto waliosaidiwa kupumua- stimulation "
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2615,7 +2623,7 @@ indicators:
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-12c-15-19"
     description: "Watoto waliosaidiwa kupumua, Idadi ya watoto waliosaidiwa kupumua- bag and mask"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2627,7 +2635,7 @@ indicators:
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-13a-15-19"
     description: "Idadi ya watoto walionyonyeshwa ndani ya saa moja baada ya kuzaliwa"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2639,7 +2647,7 @@ indicators:
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-14a-15-19"
     description: "Wazazi waliofariki"
     indicatorQuery: " SELECT count(DISTINCT elpc.base_entity_id) as count
@@ -2649,7 +2657,7 @@ indicators:
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
 
   - key: "ld-7e-20-24"
     description: "EmOC Amefanyiwa MVA/D&C"
@@ -2750,6 +2758,7 @@ indicators:
                                INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
                       WHERE elpc.number_of_children_born = 1
+                        AND elinbc.newborn_status ='alive'
                         AND (date(efm.dob, '+20 years') <= date('now'))
                         AND (date(efm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -2796,8 +2805,8 @@ indicators:
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
                                INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
-                      WHERE elinbc.still_birth_choice = 'msb'
-                        AND elpc.number_of_children_born = 1
+                      WHERE elpc.number_of_children_born = 1
+                        AND elinbc.still_birth_choice = 'msb'
                         AND (date(efm.dob, '+20 years') <= date('now'))
                         AND (date(efm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -2863,6 +2872,7 @@ indicators:
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
                       WHERE CAST(elinbc.apgar_score_at_5_minutes AS FLOAT) < 7
                         AND elpc.number_of_children_born = 1
+                        AND elinbc.newborn_status ='alive'
                         AND (date(efm.dob, '+20 years') <= date('now'))
                         AND (date(efm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -2878,6 +2888,7 @@ indicators:
                                INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
                       WHERE CAST(elpc.number_of_children_born AS FLOAT) > 1
+                        AND elinbc.newborn_status ='alive'
                         AND (date(efm.dob, '+20 years') <= date('now'))
                         AND (date(efm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -2929,7 +2940,7 @@ indicators:
                         AND (date(efm.dob, '+20 years') <= date('now'))
                         AND (date(efm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                           date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                           date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11e-20-24"
     description: "Watoto Waliozaliwa mapacha Waliozaliwa wafu Fresh (FSB)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2942,7 +2953,7 @@ indicators:
                         AND (date(efm.dob, '+20 years') <= date('now'))
                         AND (date(efm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11f-20-24"
     description: "Watoto Waliozaliwa mapacha Waliozaliwa na mama wenye VVU"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2955,7 +2966,7 @@ indicators:
                         AND (date(efm.dob, '+20 years') <= date('now'))
                         AND (date(efm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11g-20-24"
     description: "Watoto Waliozaliwa mapacha Waliopewa dawa za ARV"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -2982,6 +2993,7 @@ indicators:
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
                       WHERE CAST(elinbc.apgar_score_at_5_minutes AS FLOAT) < 7
                         AND CAST(elpc.number_of_children_born AS FLOAT) > 1
+                        AND elinbc.newborn_status ='alive'
                         AND (date(efm.dob, '+20 years') <= date('now'))
                         AND (date(efm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -3058,7 +3070,7 @@ indicators:
                         AND (date(efm.dob, '+20 years') <= date('now'))
                         AND (date(efm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
 
 
   - key: "ld-7e-25-29"
@@ -3160,6 +3172,7 @@ indicators:
                                INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
                       WHERE elpc.number_of_children_born = 1
+                        AND elinbc.newborn_status ='alive'
                         AND (date(efm.dob, '+25 years') <= date('now'))
                         AND (date(efm.dob, '+30 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -3206,8 +3219,8 @@ indicators:
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
                                INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
-                      WHERE elinbc.still_birth_choice = 'msb'
-                        AND elpc.number_of_children_born = 1
+                      WHERE elpc.number_of_children_born = 1
+                        AND elinbc.still_birth_choice = 'msb'
                         AND (date(efm.dob, '+25 years') <= date('now'))
                         AND (date(efm.dob, '+30 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -3273,6 +3286,7 @@ indicators:
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
                       WHERE CAST(elinbc.apgar_score_at_5_minutes AS FLOAT) < 7
                         AND elpc.number_of_children_born = 1
+                        AND elinbc.newborn_status ='alive'
                         AND (date(efm.dob, '+25 years') <= date('now'))
                         AND (date(efm.dob, '+30 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -3288,6 +3302,7 @@ indicators:
                                INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
                       WHERE CAST(elpc.number_of_children_born AS FLOAT) > 1
+                        AND elinbc.newborn_status ='alive'
                         AND (date(efm.dob, '+25 years') <= date('now'))
                         AND (date(efm.dob, '+30 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -3339,7 +3354,7 @@ indicators:
                         AND (date(efm.dob, '+25 years') <= date('now'))
                         AND (date(efm.dob, '+30 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11e-25-29"
     description: "Watoto Waliozaliwa mapacha Waliozaliwa wafu Fresh (FSB)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -3352,7 +3367,7 @@ indicators:
                         AND (date(efm.dob, '+25 years') <= date('now'))
                         AND (date(efm.dob, '+30 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11f-25-29"
     description: "Watoto Waliozaliwa mapacha Waliozaliwa na mama wenye VVU"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -3365,7 +3380,7 @@ indicators:
                         AND (date(efm.dob, '+25 years') <= date('now'))
                         AND (date(efm.dob, '+30 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11g-25-29"
     description: "Watoto Waliozaliwa mapacha Waliopewa dawa za ARV"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -3392,6 +3407,7 @@ indicators:
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
                       WHERE CAST(elinbc.apgar_score_at_5_minutes AS FLOAT) < 7
                         AND CAST(elpc.number_of_children_born AS FLOAT) > 1
+                        AND elinbc.newborn_status ='alive'
                         AND (date(efm.dob, '+25 years') <= date('now'))
                         AND (date(efm.dob, '+30 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -3468,7 +3484,7 @@ indicators:
                         AND (date(efm.dob, '+25 years') <= date('now'))
                         AND (date(efm.dob, '+30 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
 
 
   - key: "ld-7e-30-34"
@@ -3570,6 +3586,7 @@ indicators:
                                INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
                       WHERE elpc.number_of_children_born = 1
+                        AND elinbc.newborn_status ='alive'
                         AND (date(efm.dob, '+30 years') <= date('now'))
                         AND (date(efm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -3616,8 +3633,8 @@ indicators:
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
                                INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
-                      WHERE elinbc.still_birth_choice = 'msb'
-                        AND elpc.number_of_children_born = 1
+                      WHERE elpc.number_of_children_born = 1
+                        AND elinbc.still_birth_choice = 'msb'
                         AND (date(efm.dob, '+30 years') <= date('now'))
                         AND (date(efm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -3683,6 +3700,7 @@ indicators:
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
                       WHERE CAST(elinbc.apgar_score_at_5_minutes AS FLOAT) < 7
                         AND elpc.number_of_children_born = 1
+                        AND elinbc.newborn_status ='alive'
                         AND (date(efm.dob, '+30 years') <= date('now'))
                         AND (date(efm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -3698,6 +3716,7 @@ indicators:
                                INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
                       WHERE CAST(elpc.number_of_children_born AS FLOAT) > 1
+                        AND elinbc.newborn_status ='alive'
                         AND (date(efm.dob, '+30 years') <= date('now'))
                         AND (date(efm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -3749,7 +3768,7 @@ indicators:
                         AND (date(efm.dob, '+30 years') <= date('now'))
                         AND (date(efm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11e-30-34"
     description: "Watoto Waliozaliwa mapacha Waliozaliwa wafu Fresh (FSB)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -3762,7 +3781,7 @@ indicators:
                         AND (date(efm.dob, '+30 years') <= date('now'))
                         AND (date(efm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11f-30-34"
     description: "Watoto Waliozaliwa mapacha Waliozaliwa na mama wenye VVU"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -3775,7 +3794,7 @@ indicators:
                         AND (date(efm.dob, '+30 years') <= date('now'))
                         AND (date(efm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11g-30-34"
     description: "Watoto Waliozaliwa mapacha Waliopewa dawa za ARV"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -3802,6 +3821,7 @@ indicators:
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
                       WHERE CAST(elinbc.apgar_score_at_5_minutes AS FLOAT) < 7
                         AND CAST(elpc.number_of_children_born AS FLOAT) > 1
+                        AND elinbc.newborn_status ='alive'
                         AND (date(efm.dob, '+30 years') <= date('now'))
                         AND (date(efm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -3878,7 +3898,7 @@ indicators:
                         AND (date(efm.dob, '+30 years') <= date('now'))
                         AND (date(efm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
 
 
   - key: "ld-7e-35+"
@@ -3973,6 +3993,7 @@ indicators:
                                INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
                       WHERE elpc.number_of_children_born = 1
+                        AND elinbc.newborn_status ='alive'
                         AND (date(efm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
@@ -4016,8 +4037,8 @@ indicators:
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
                                INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
-                      WHERE elinbc.still_birth_choice = 'msb'
-                        AND elpc.number_of_children_born = 1
+                      WHERE elpc.number_of_children_born = 1
+                        AND elinbc.still_birth_choice = 'msb'
                         AND (date(efm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
@@ -4079,6 +4100,7 @@ indicators:
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
                       WHERE CAST(elinbc.apgar_score_at_5_minutes AS FLOAT) < 7
                         AND elpc.number_of_children_born = 1
+                        AND elinbc.newborn_status ='alive'
                         AND (date(efm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
@@ -4093,6 +4115,7 @@ indicators:
                                INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
                       WHERE CAST(elpc.number_of_children_born AS FLOAT) > 1
+                        AND elinbc.newborn_status ='alive'
                         AND (date(efm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
@@ -4140,7 +4163,7 @@ indicators:
                         AND CAST(elpc.number_of_children_born AS FLOAT) > 1
                         AND (date(efm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11e-35+"
     description: "Watoto Waliozaliwa mapacha Waliozaliwa wafu Fresh (FSB)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -4152,7 +4175,7 @@ indicators:
                         AND CAST(elpc.number_of_children_born AS FLOAT) > 1
                         AND (date(efm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11f-35+"
     description: "Watoto Waliozaliwa mapacha Waliozaliwa na mama wenye VVU"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -4164,7 +4187,7 @@ indicators:
                         AND CAST(elpc.number_of_children_born AS FLOAT) > 1
                         AND (date(efm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
-                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(efm.delivery_date, 4, 2) || '-' || '01'))"
+                            date((substr(elpc.delivery_date, 7, 4) || '-' || substr(elpc.delivery_date, 4, 2) || '-' || '01'))"
   - key: "ld-11g-35+"
     description: "Watoto Waliozaliwa mapacha Waliopewa dawa za ARV"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
@@ -4190,6 +4213,7 @@ indicators:
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
                       WHERE CAST(elinbc.apgar_score_at_5_minutes AS FLOAT) < 7
                         AND CAST(elpc.number_of_children_born AS FLOAT) > 1
+                        AND elinbc.newborn_status ='alive'
                         AND (date(efm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
@@ -4273,7 +4297,7 @@ indicators:
                       WHERE elc.anc_hiv_status <> 'unknown'
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
-                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(elc.admission_date, 7, 4) || '-' || substr(elc.admission_date, 4, 2) || '-' || '01')"
     
   - key: "ld-9b-10-14"
@@ -4284,7 +4308,7 @@ indicators:
                       WHERE elc.anc_hiv_status = 'positive'
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
-                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(elc.admission_date, 7, 4) || '-' || substr(elc.admission_date, 4, 2) || '-' || '01')"
         
   - key: "ld-9c-10-14"
@@ -4324,7 +4348,9 @@ indicators:
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
                                INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
+                               INNER JOIN ec_ld_confirmation elc ON efm.base_entity_id = elc.base_entity_id
                       WHERE elinbc.early_bf_1hr = 'yes'
+                        AND elc.hiv = 'positive'
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -4373,7 +4399,7 @@ indicators:
                       WHERE elc.anc_hiv_status <> 'unknown'
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
-                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(elc.admission_date, 7, 4) || '-' || substr(elc.admission_date, 4, 2) || '-' || '01')"
     
   - key: "ld-9b-15-19"
@@ -4384,7 +4410,7 @@ indicators:
                       WHERE elc.anc_hiv_status = 'positive'
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
-                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(elc.admission_date, 7, 4) || '-' || substr(elc.admission_date, 4, 2) || '-' || '01')"
         
   - key: "ld-9c-15-19"
@@ -4424,7 +4450,9 @@ indicators:
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
                                INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
+                               INNER JOIN ec_ld_confirmation elc ON efm.base_entity_id = elc.base_entity_id
                       WHERE elinbc.early_bf_1hr = 'yes'
+                        AND elc.hiv = 'positive'
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -4473,7 +4501,7 @@ indicators:
                       WHERE elc.anc_hiv_status <> 'unknown'
                         AND (date(efm.dob, '+20 years') <= date('now'))
                         AND (date(efm.dob, '+25 years') > date('now'))
-                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(elc.admission_date, 7, 4) || '-' || substr(elc.admission_date, 4, 2) || '-' || '01')"
     
   - key: "ld-9b-20-24"
@@ -4484,7 +4512,7 @@ indicators:
                       WHERE elc.anc_hiv_status = 'positive'
                         AND (date(efm.dob, '+20 years') <= date('now'))
                         AND (date(efm.dob, '+25 years') > date('now'))
-                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(elc.admission_date, 7, 4) || '-' || substr(elc.admission_date, 4, 2) || '-' || '01')"
         
   - key: "ld-9c-20-24"
@@ -4524,7 +4552,9 @@ indicators:
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
                                INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
+                               INNER JOIN ec_ld_confirmation elc ON efm.base_entity_id = elc.base_entity_id
                       WHERE elinbc.early_bf_1hr = 'yes'
+                        AND elc.hiv = 'positive'
                         AND (date(efm.dob, '+20 years') <= date('now'))
                         AND (date(efm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -4573,7 +4603,7 @@ indicators:
                       WHERE elc.anc_hiv_status <> 'unknown'
                         AND (date(efm.dob, '+25 years') <= date('now'))
                         AND (date(efm.dob, '+30 years') > date('now'))
-                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(elc.admission_date, 7, 4) || '-' || substr(elc.admission_date, 4, 2) || '-' || '01')"
     
   - key: "ld-9b-25-29"
@@ -4584,7 +4614,7 @@ indicators:
                       WHERE elc.anc_hiv_status = 'positive'
                         AND (date(efm.dob, '+25 years') <= date('now'))
                         AND (date(efm.dob, '+30 years') > date('now'))
-                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(elc.admission_date, 7, 4) || '-' || substr(elc.admission_date, 4, 2) || '-' || '01')"
         
   - key: "ld-9c-25-29"
@@ -4624,7 +4654,9 @@ indicators:
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
                                INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
+                               INNER JOIN ec_ld_confirmation elc ON efm.base_entity_id = elc.base_entity_id
                       WHERE elinbc.early_bf_1hr = 'yes'
+                        AND elc.hiv = 'positive'
                         AND (date(efm.dob, '+25 years') <= date('now'))
                         AND (date(efm.dob, '+30 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -4673,7 +4705,7 @@ indicators:
                       WHERE elc.anc_hiv_status <> 'unknown'
                         AND (date(efm.dob, '+30 years') <= date('now'))
                         AND (date(efm.dob, '+35 years') > date('now'))
-                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(elc.admission_date, 7, 4) || '-' || substr(elc.admission_date, 4, 2) || '-' || '01')"
     
   - key: "ld-9b-30-34"
@@ -4684,7 +4716,7 @@ indicators:
                       WHERE elc.anc_hiv_status = 'positive'
                         AND (date(efm.dob, '+30 years') <= date('now'))
                         AND (date(efm.dob, '+35 years') > date('now'))
-                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(elc.admission_date, 7, 4) || '-' || substr(elc.admission_date, 4, 2) || '-' || '01')"
         
   - key: "ld-9c-30-34"
@@ -4724,7 +4756,9 @@ indicators:
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
                                INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
+                               INNER JOIN ec_ld_confirmation elc ON efm.base_entity_id = elc.base_entity_id
                       WHERE elinbc.early_bf_1hr = 'yes'
+                        AND elc.hiv = 'positive'
                         AND (date(efm.dob, '+30 years') <= date('now'))
                         AND (date(efm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -4772,7 +4806,7 @@ indicators:
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elc.base_entity_id
                       WHERE elc.anc_hiv_status <> 'unknown'
                         AND (date(efm.dob, '+35 years') <= date('now'))
-                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(elc.admission_date, 7, 4) || '-' || substr(elc.admission_date, 4, 2) || '-' || '01')"
     
   - key: "ld-9b-35+"
@@ -4782,7 +4816,7 @@ indicators:
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elc.base_entity_id
                       WHERE elc.anc_hiv_status = 'positive'
                         AND (date(efm.dob, '+35 years') <= date('now'))
-                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-1 months') =
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(elc.admission_date, 7, 4) || '-' || substr(elc.admission_date, 4, 2) || '-' || '01')"
         
   - key: "ld-9c-35+"
@@ -4820,7 +4854,9 @@ indicators:
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elpc.base_entity_id
                                INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
+                               INNER JOIN ec_ld_confirmation elc ON efm.base_entity_id = elc.base_entity_id
                       WHERE elinbc.early_bf_1hr = 'yes'
+                        AND elc.hiv = 'positive'
                         AND (date(efm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
@@ -5257,6 +5293,8 @@ indicators:
                                INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
                       WHERE ec.gender = 'Male'
+                        AND ec.dod IS NOT NULL
+                        AND elinbc.still_birth_choice IS NULL
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -5272,6 +5310,8 @@ indicators:
                                INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
                       WHERE ec.gender = 'Female'
+                        AND ec.dod IS NOT NULL
+                        AND elinbc.still_birth_choice IS NULL
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -5287,6 +5327,8 @@ indicators:
                                INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
                       WHERE ec.gender = 'Male'
+                        AND ec.dod IS NOT NULL
+                        AND elinbc.still_birth_choice IS NULL
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -5302,6 +5344,8 @@ indicators:
                                INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
                       WHERE ec.gender = 'Female'
+                        AND ec.dod IS NOT NULL
+                        AND elinbc.still_birth_choice IS NULL
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -5317,6 +5361,8 @@ indicators:
                                INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
                       WHERE ec.gender = 'Male'
+                        AND ec.dod IS NOT NULL
+                        AND elinbc.still_birth_choice IS NULL
                         AND (date(efm.dob, '+20 years') <= date('now'))
                         AND (date(efm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -5332,6 +5378,8 @@ indicators:
                                INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
                       WHERE ec.gender = 'Female'
+                        AND ec.dod IS NOT NULL
+                        AND elinbc.still_birth_choice IS NULL
                         AND (date(efm.dob, '+20 years') <= date('now'))
                         AND (date(efm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -5347,6 +5395,8 @@ indicators:
                                INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
                       WHERE ec.gender = 'Male'
+                        AND ec.dod IS NOT NULL
+                        AND elinbc.still_birth_choice IS NULL
                         AND (date(efm.dob, '+25 years') <= date('now'))
                         AND (date(efm.dob, '+30 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -5362,6 +5412,8 @@ indicators:
                                INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
                       WHERE ec.gender = 'Female'
+                        AND ec.dod IS NOT NULL
+                        AND elinbc.still_birth_choice IS NULL
                         AND (date(efm.dob, '+25 years') <= date('now'))
                         AND (date(efm.dob, '+30 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -5377,6 +5429,8 @@ indicators:
                                INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
                       WHERE ec.gender = 'Male'
+                        AND ec.dod IS NOT NULL
+                        AND elinbc.still_birth_choice IS NULL
                         AND (date(efm.dob, '+30 years') <= date('now'))
                         AND (date(efm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -5392,6 +5446,8 @@ indicators:
                                INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
                       WHERE ec.gender = 'Female'
+                        AND ec.dod IS NOT NULL
+                        AND elinbc.still_birth_choice IS NULL
                         AND (date(efm.dob, '+30 years') <= date('now'))
                         AND (date(efm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -5407,6 +5463,8 @@ indicators:
                                INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
                       WHERE ec.gender = 'Male'
+                        AND ec.dod IS NOT NULL
+                        AND elinbc.still_birth_choice IS NULL
                         AND (date(efm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
@@ -5421,6 +5479,8 @@ indicators:
                                INNER JOIN ec_child ec ON efm.base_entity_id = ec.mother_entity_id
                                INNER JOIN ec_ld_immediate_new_born_care elinbc ON ec.base_entity_id = elinbc.base_entity_id
                       WHERE ec.gender = 'Female'
+                        AND ec.dod IS NOT NULL
+                        AND elinbc.still_birth_choice IS NULL
                         AND (date(efm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(strftime('%Y-%m-%d', datetime(elpc.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||

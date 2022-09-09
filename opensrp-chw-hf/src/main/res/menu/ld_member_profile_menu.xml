@@ -28,4 +28,13 @@
         android:orderInCategory="200"
         app:showAsAction="never" />
 
+
+    <item
+        android:id="@+id/action_mark_newborn_as_deceased"
+        android:enabled="true"
+        android:visible="false"
+        android:title="@string/mark_newborn_as_deceased"
+        android:orderInCategory="200"
+        app:showAsAction="never" />
+
 </menu>

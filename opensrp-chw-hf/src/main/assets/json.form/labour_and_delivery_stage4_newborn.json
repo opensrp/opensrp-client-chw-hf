@@ -175,6 +175,10 @@
               "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
             }
           }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please the delivery date"
         }
       },
       {
@@ -190,7 +194,11 @@
               "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
             }
           }
-        }
+        },
+        "v_required": {
+        "value": "true",
+        "err": "Please the delivery time"
+      }
       },
       {
         "key": "sex",

@@ -109,6 +109,8 @@ public class LdMonthlyReportObject extends ReportObject {
         jsonObject.put("11a+11d+11e-30-34", getIndicatorTotal("11a-30-34") + getIndicatorTotal("11d-30-34") + getIndicatorTotal("11e-30-34"));
         jsonObject.put("11a+11d+11e-35+", getIndicatorTotal("11a-35+") + getIndicatorTotal("11d-35+") + getIndicatorTotal("11e-35+"));
         jsonObject.put("11a+11d+11e-jumla", getIndicatorTotal("11a") + getIndicatorTotal("11d") + getIndicatorTotal("11e"));
+        jsonObject.put("16a-jumla-ME", getIndicatorTotalSpecific("16a", "ME"));
+        jsonObject.put("16a-jumla-KE", getIndicatorTotalSpecific("16a", "KE"));
 
         return jsonObject;
     }
@@ -119,6 +121,14 @@ public class LdMonthlyReportObject extends ReportObject {
             if (indicatorCode.startsWith(indicator)) {
                 total += ReportDao.getReportPerIndicatorCode("ld-" + indicatorCode, reportDate);
             }
+        }
+        return total;
+    }
+
+    public int getIndicatorTotalSpecific(String indicator, String postfix){
+        int total = 0;
+        for(String ageGroup : indicatorAgeGroups){
+            total += ReportDao.getReportPerIndicatorCode("ld-" + indicator + "-" +ageGroup + "-" + postfix, reportDate);
         }
         return total;
     }

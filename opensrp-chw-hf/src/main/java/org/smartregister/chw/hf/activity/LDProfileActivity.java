@@ -1,5 +1,6 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.hf.activity.HeiProfileActivity.getClientDetailsByBaseEntityID;
 import static org.smartregister.chw.hf.dao.LDDao.isTheClientReferred;
 import static org.smartregister.chw.hf.utils.Constants.Events.LD_ACTIVE_MANAGEMENT_OF_3RD_STAGE_OF_LABOUR;
 import static org.smartregister.chw.hf.utils.Constants.Events.LD_PARTOGRAPHY;
@@ -47,6 +48,7 @@ import org.smartregister.domain.AlertStatus;
 import org.smartregister.family.util.DBConstants;
 import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.family.util.Utils;
+import org.smartregister.opd.utils.OpdDbConstants;
 import org.smartregister.repository.AllSharedPreferences;
 
 import java.util.Date;
@@ -333,6 +335,12 @@ public class LDProfileActivity extends BaseLDProfileActivity {
             menu.add(0, R.id.action_child_emergency_registration, 100 + i, nameOfMenuItem);
             menuItemEditNames.put(nameOfMenuItem, childModels.get(i).getBaseEntityId());
         }
+
+        for (int i = 0; i < childModels.size(); i++) {
+            String nameOfMenuItem = getString(R.string.mark_newborn_as_deceased, childModels.get(i).getFirstName());
+            menu.add(0, R.id.action_mark_newborn_as_deceased, 200 + i, nameOfMenuItem);
+            menuItemEditNames.put(nameOfMenuItem, childModels.get(i).getBaseEntityId());
+        }
         return true;
     }
 
@@ -348,6 +356,8 @@ public class LDProfileActivity extends BaseLDProfileActivity {
                 return true;
             } else if (itemId == R.id.action_child_emergency_registration) {
                 getChildEmergencyReferralMenuItem(item);
+            } else if (itemId == R.id.action_mark_newborn_as_deceased) {
+                getDeceasedChildMenuItem(item);
             } else if (itemId == R.id.action_member_registration) {
                 if (UpdateDetailsUtil.isIndependentClient(memberObject.getBaseEntityId())) {
                     startFormForEdit(org.smartregister.chw.core.R.string.registration_info,
@@ -397,6 +407,28 @@ public class LDProfileActivity extends BaseLDProfileActivity {
                 for (Map.Entry<String, String> entry : menuItemEditNames.entrySet()) {
                     if (entry.getKey().equalsIgnoreCase(item.getTitle().toString()) && entry.getValue().equalsIgnoreCase(child.entityId())) {
                         LDReferralFormUtils.startLDChildEmergencyReferral(this, child.entityId());
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
+    private boolean getDeceasedChildMenuItem(MenuItem item) {
+        if (getChildren(memberObject).size() > 0) {
+            for (CommonPersonObjectClient child : getChildren(memberObject)) {
+                for (Map.Entry<String, String> entry : menuItemEditNames.entrySet()) {
+                    if (entry.getKey().equalsIgnoreCase(item.getTitle().toString()) && entry.getValue().equalsIgnoreCase(child.entityId())) {
+
+                        CommonPersonObjectClient commonPersonObjectClient = getClientDetailsByBaseEntityID(child.entityId());
+                        if (commonPersonObjectClient.getColumnmaps().get("entity_type").toString().equals(CoreConstants.TABLE_NAME.INDEPENDENT_CLIENT)) {
+                            commonPersonObjectClient.getColumnmaps().put(OpdDbConstants.KEY.REGISTER_TYPE, CoreConstants.REGISTER_TYPE.INDEPENDENT);
+                        }
+
+                        IndividualProfileRemoveActivity.startIndividualProfileActivity(this,
+                                commonPersonObjectClient,
+                                memberObject.getFamilyBaseEntityId(), memberObject.getFamilyHead(),
+                                memberObject.getPrimaryCareGiver(), LDProfileActivity.class.getCanonicalName());
                     }
                 }
             }
