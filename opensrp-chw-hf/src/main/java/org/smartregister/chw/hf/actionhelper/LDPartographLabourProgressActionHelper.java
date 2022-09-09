@@ -72,7 +72,7 @@ public class LDPartographLabourProgressActionHelper implements BaseLDVisitAction
         return progressOfLabourForm.toString();
     }
 
-    private void setPatographAlerts(JSONObject form){
+    private void setPatographAlerts(JSONObject form) {
 
         String cervixDilationAlertLimit = "";
         String cervixDilationActionLimit = "";
@@ -104,7 +104,7 @@ public class LDPartographLabourProgressActionHelper implements BaseLDVisitAction
             cervixDilationAlertLimit = String.valueOf(alertLimit);
             cervixDilationActionLimit = String.valueOf(actionLimit);
 
-        }catch (ParseException e){
+        } catch (ParseException e) {
             Timber.e(e);
         }
 
@@ -112,7 +112,7 @@ public class LDPartographLabourProgressActionHelper implements BaseLDVisitAction
             form.getJSONObject("global").put("cervix_dilation_alert_limit", cervixDilationAlertLimit);
             form.getJSONObject("global").put("cervix_dilation_action_limit", cervixDilationActionLimit);
             form.getJSONObject("global").put("partograph_duration", partographDuration);
-        }catch (Exception e){
+        } catch (Exception e) {
             Timber.e(e);
         }
     }
@@ -180,7 +180,6 @@ public class LDPartographLabourProgressActionHelper implements BaseLDVisitAction
                 StringUtils.isNotBlank(contractionFrequency);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     private void populateLabourProgressForm(JSONArray fields, String baseEntityId) throws JSONException {
         JSONObject cervixDilation = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "cervix_dilation");
         JSONObject descentPresentingPart = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "descent_presenting_part");
@@ -189,7 +188,7 @@ public class LDPartographLabourProgressActionHelper implements BaseLDVisitAction
 
             //Limit number of selectors
             int cervixDilationValue = Integer.parseInt(LDDao.getCervixDilation(baseEntityId));
-            int numberOfSelectors = 10-cervixDilationValue;
+            int numberOfSelectors = 11 - cervixDilationValue;
             cervixDilation.put("number_of_selectors", numberOfSelectors);
         }
 
