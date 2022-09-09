@@ -98,7 +98,7 @@ public class LDVaginalExaminationActionHelper implements BaseLDVisitAction.LDVis
 
             JSONObject amnioticFluid = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "amniotic_fluid");
 
-            if (org.smartregister.chw.hf.dao.LDDao.getMembraneState(baseEntityId) != null && org.smartregister.chw.hf.dao.LDDao.getMembraneState(baseEntityId).equalsIgnoreCase("ruptured")) {
+            if (LDDao.getMembraneState(baseEntityId) != null && LDDao.getMembraneState(baseEntityId).equalsIgnoreCase("ruptured")) {
                 amnioticFluid.getJSONArray("options").remove(0);
             }
         } catch (JSONException e) {
@@ -116,7 +116,7 @@ public class LDVaginalExaminationActionHelper implements BaseLDVisitAction.LDVis
         presenting_part = JsonFormUtils.getFieldValue(jsonPayload, "presenting_part");
 
         //If the presenting part is null, trying to make sure that it was not previously filled.
-        if(presenting_part == null)
+        if (presenting_part == null)
             presenting_part = LDDao.getPresentingPart(baseEntityId);
 
         if (LDDao.getMoulding(baseEntityId) != null && !LDDao.getMoulding(baseEntityId).equalsIgnoreCase("yes") && !StringUtils.isNotBlank(presenting_part) && !presenting_part.equalsIgnoreCase("breech") && !presenting_part.equalsIgnoreCase("shoulder")) {

@@ -77,7 +77,7 @@
             "text": "Yes",
             "openmrs_entity_parent": "",
             "openmrs_entity": "ruptured",
-            "openmrs_entity_id": "1"
+            "openmrs_entity_id": "ruptured"
           },
           {
             "key": "intact",
