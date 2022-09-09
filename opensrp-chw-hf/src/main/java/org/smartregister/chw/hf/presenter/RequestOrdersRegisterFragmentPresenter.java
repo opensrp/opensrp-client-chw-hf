@@ -17,8 +17,8 @@ public class RequestOrdersRegisterFragmentPresenter extends BaseOrdersRegisterFr
     @Override
     public String getMainCondition() {
         if (userLocationTag.contains("msd_code")) {
-            return super.getMainCondition() + " AND " + getMainTable() + "." + DBConstants.KEY.REQUEST_TYPE + " = '" + Constants.ORDER_TYPES.FACILITY_TO_FACILITY_ORDER + "'" +
-                                            " OR " + getMainTable() + "." + DBConstants.KEY.REQUEST_TYPE + " = '" + Constants.ORDER_TYPES.COMMUNITY_TO_FACILITY_ORDER + "'" ;
+            return super.getMainCondition() + " AND (" + getMainTable() + "." + DBConstants.KEY.REQUEST_TYPE + " = '" + Constants.ORDER_TYPES.FACILITY_TO_FACILITY_ORDER + "'" +
+                                            " OR " + getMainTable() + "." + DBConstants.KEY.REQUEST_TYPE + " = '" + Constants.ORDER_TYPES.COMMUNITY_TO_FACILITY_ORDER + "') " ;
         }
         return super.getMainCondition() + " AND " + getMainTable() + "." + DBConstants.KEY.REQUEST_TYPE + " = '" + Constants.ORDER_TYPES.COMMUNITY_TO_FACILITY_ORDER + "'";
     }
