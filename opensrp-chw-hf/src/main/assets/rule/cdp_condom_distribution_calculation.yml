@@ -1,0 +1,35 @@
+---
+name: step1_stock_event_type
+description: stock_event_type for distribution is decrement
+priority: 1
+condition: "true"
+actions:
+  - "calculation = 'decrement' "
+---
+name: step1_condom_restock_date
+description: condom_restock_date
+priority: 1
+condition: "true"
+actions:
+  - "calculation = helper.getTimeInMillis() "
+---
+name: step1_condom_type
+description: condom_type
+priority: 1
+condition: "true"
+actions:
+  - "calculation = global_condom_type"
+---
+name: step1_provided_male_condoms
+description: provided_male_condoms
+priority: 1
+condition: "true"
+actions:
+  - "calculation = global_condom_type == 'male_condom' ? step1_quantity_response : 0"
+---
+name: step1_provided_female_condoms
+description: provided_female_condoms
+priority: 1
+condition: "true"
+actions:
+  - "calculation = global_condom_type == 'female_condom' ? step1_quantity_response : 0"

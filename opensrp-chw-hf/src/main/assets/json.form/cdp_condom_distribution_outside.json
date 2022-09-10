@@ -46,50 +46,6 @@
     "title": "Condom Distribution",
     "fields": [
       {
-        "key": "condom_distribution_date",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "condom_distribution_date",
-        "type": "date_picker",
-        "hint": "Condom distribution date",
-        "expanded": false,
-        "min_date": "today-1m",
-        "max_date": "today",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the distribution date"
-        }
-      },
-      {
-        "key": "condom_type",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "condom_type",
-        "label": "Select condom type",
-        "text_color": "#000000",
-        "type": "native_radio",
-        "options": [
-          {
-            "key": "male_condom",
-            "text": "Male",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "male_condom"
-          },
-          {
-            "key": "female_condom",
-            "text": "Female",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "female_condom"
-          }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Please select the condom type"
-        }
-      },
-      {
         "key": "condom_brand",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -175,206 +131,73 @@
         }
       },
       {
-        "key": "distribution_point",
+        "key": "condom_type",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "distribution_point",
-        "label": "Select distribution point",
-        "text_color": "#000000",
-        "type": "native_radio",
-        "options": [
-          {
-            "key": "pos",
-            "text": "POS",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "pos"
-          },
-          {
-            "key": "cso_ngo",
-            "text": "CSO/NGO",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "cso_ngo"
-          },
-          {
-            "key": "workplace",
-            "text": "Workplace",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "workplace"
-          }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Please select the distribution point"
-        }
-      },
-      {
-        "key": "point_of_service",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "point_of_service",
-        "label": "Select point of service",
-        "text_color": "#000000",
-        "type": "native_radio",
-        "options": [
-          {
-            "key": "ctc",
-            "text": "CTC",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "ctc"
-          },
-          {
-            "key": "rch_clinic",
-            "text": "RCH Clinic",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "rch_clinic"
-          },
-          {
-            "key": "opd",
-            "text": "OPD",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "opd"
-          },
-          {
-            "key": "tb_clinic",
-            "text": "TB Clinic",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "tb_clinic"
-          },
-          {
-            "key": "outreach",
-            "text": "Outreach",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "outreach"
-          },
-          {
-            "key": "other",
-            "text": "Other (Specify)",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "other"
-          }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Please select the point of service"
-        },
-        "relevance": {
-          "step1:distribution_point": {
-            "type": "string",
-            "ex": "equalTo(., \"pos\")"
+        "openmrs_entity_id": "condom_type",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "cdp_condom_distribution_calculation.yml"
+            }
           }
         }
       },
       {
-        "key": "other_pos",
+        "key": "provided_male_condoms",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "other_pos",
-        "type": "edit_text",
-        "hint": "Other point of service",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the other condom brand"
-        },
-        "relevance": {
-          "step1:point_of_service": {
-            "type": "string",
-            "ex": "equalTo(., \"other\")"
+        "openmrs_entity_id": "male_condoms_offset",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "cdp_condom_distribution_calculation.yml"
+            }
           }
         }
       },
       {
-        "key": "cso_ngo_name",
+        "key": "provided_female_condoms",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "cso_ngo_name",
-        "type": "edit_text",
-        "hint": "Name of the CSO/NGO",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the name"
-        },
-        "relevance": {
-          "step1:distribution_point": {
-            "type": "string",
-            "ex": "equalTo(., \"cso_ngo\")"
+        "openmrs_entity_id": "female_condoms_offset",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "cdp_condom_distribution_calculation.yml"
+            }
           }
         }
       },
       {
-        "key": "workplace_name",
+        "key": "stock_event_type",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "workplace_name",
-        "type": "edit_text",
-        "hint": "Name of the workplace",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the name"
-        },
-        "relevance": {
-          "step1:distribution_point": {
-            "type": "string",
-            "ex": "equalTo(., \"workplace\")"
+        "openmrs_entity_id": "stock_event_type",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "cdp_condom_distribution_calculation.yml"
+            }
           }
         }
       },
       {
-        "key": "distributing_person_name",
+        "key": "condom_restock_date",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "distributing_person_name",
-        "type": "edit_text",
-        "hint": "Distributing person's name",
-        "edit_type": "name",
-        "v_regex": {
-          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
-          "err": "Please enter a valid name"
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the name"
-        }
-      },
-      {
-        "key": "distributing_person_position",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "distributing_person_position",
-        "type": "edit_text",
-        "hint": "Distributing person's position",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the position"
-        }
-      },
-      {
-        "key": "distributing_person_phone",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "distributing_person_phone",
-        "type": "edit_text",
-        "hint": "Distributing person's phone number",
-        "edit_type": "number",
-        "v_numeric": {
-          "value": "true",
-          "err": "Number must be a total of 10 digits in length"
-        },
-        "v_regex": {
-          "value": "(0[6-7][1-9][0-9][0-9]{6})|\\s*",
-          "err": "Number must be 10 digits and must start with 06 or 07."
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the phone number"
+        "openmrs_entity_id": "condom_restock_date",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "cdp_condom_distribution_calculation.yml"
+            }
+          }
         }
       }
     ]
