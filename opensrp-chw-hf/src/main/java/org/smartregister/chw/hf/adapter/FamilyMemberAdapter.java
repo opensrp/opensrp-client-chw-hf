@@ -25,7 +25,9 @@ import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.activity.AllClientsMemberProfileActivity;
 import org.smartregister.chw.hf.activity.FamilyOtherMemberProfileActivity;
 import org.smartregister.chw.hf.dao.HfPncDao;
+import org.smartregister.chw.hf.dao.LDDao;
 import org.smartregister.chw.hf.domain.Entity;
+import org.smartregister.chw.hf.utils.AllClientsUtils;
 import org.smartregister.chw.hf.utils.PullEventClientRecordUtil;
 import org.smartregister.chw.pmtct.util.PmtctUtil;
 import org.smartregister.commonregistry.CommonPersonObject;
@@ -63,7 +65,7 @@ public class FamilyMemberAdapter extends ArrayAdapter<Entity> {
         TextView tvGender = convertView.findViewById(R.id.gender);
         ImageView profile = convertView.findViewById(org.smartregister.family.R.id.profile);
         // Populate the data into the template view using the data object
-        String fullName = String.format(Locale.getDefault(),"%s %s %s, %s", isNull(member.getFirstName()), isNull(member.getMiddleName()), isNull(member.getLastName()), getAge(member.getBirthdate()));
+        String fullName = String.format(Locale.getDefault(), "%s %s %s, %s", isNull(member.getFirstName()), isNull(member.getMiddleName()), isNull(member.getLastName()), getAge(member.getBirthdate()));
         tvName.setText(fullName);
 
         tvGender.setText(PmtctUtil.getGenderTranslated(getContext(), member.getGender()));
@@ -124,11 +126,11 @@ public class FamilyMemberAdapter extends ArrayAdapter<Entity> {
         }
     }
 
-    private String getAge(Date birthDate){
+    private String getAge(Date birthDate) {
         DateTime birthDateTime = new DateTime(birthDate.getTime());
         DateTime now = new DateTime(new Date().getTime());
-        int age =  now.getYear() - birthDateTime.getYear();
-        if(age == 0){
+        int age = now.getYear() - birthDateTime.getYear();
+        if (age == 0) {
             return now.getMonthOfYear() - birthDateTime.getMonthOfYear() + " M";
         }
         return String.valueOf(age);
@@ -140,10 +142,19 @@ public class FamilyMemberAdapter extends ArrayAdapter<Entity> {
             CommonPersonObjectClient commonPersonObjectClient = (CommonPersonObjectClient) view.getTag();
             String entityType = Utils.getValue(commonPersonObjectClient.getColumnmaps(), ChildDBConstants.KEY.ENTITY_TYPE, false);
             if (CoreConstants.TABLE_NAME.CHILD.equals(entityType) || CoreConstants.TABLE_NAME.FAMILY_MEMBER.equals(entityType) || CoreConstants.TABLE_NAME.INDEPENDENT_CLIENT.equals(entityType)) {
-                if (!(isAncMember(commonPersonObjectClient.entityId()) && !isPncMember(commonPersonObjectClient.entityId()))) {
+                if (isAncMember(commonPersonObjectClient.entityId())) {
+                    AllClientsUtils.goToAncProfile((Activity) getContext(), commonPersonObjectClient);
+                } else if (isPncMember(commonPersonObjectClient.entityId())) {
+                    AllClientsUtils.gotToPncProfile((Activity) getContext(), commonPersonObjectClient, fragmentArguments);
+                } else if (isLDMember(commonPersonObjectClient.entityId())) {
+                    AllClientsUtils.goToLDProfile((Activity) getContext(), commonPersonObjectClient);
+                } else if (CoreConstants.TABLE_NAME.CHILD.equals(entityType)) {
+                    AllClientsUtils.goToChildProfile((Activity) getContext(), commonPersonObjectClient, fragmentArguments);
+                } else {
                     goToOtherMemberProfileActivity(commonPersonObjectClient, fragmentArguments);
                 }
             }
+            ((Activity) getContext()).finish();
         }
     }
 
@@ -171,6 +182,10 @@ public class FamilyMemberAdapter extends ArrayAdapter<Entity> {
 
     private boolean isAncMember(String entityId) {
         return AncDao.isANCMember(entityId);
+    }
+
+    private boolean isLDMember(String entityId) {
+        return LDDao.isRegisteredForLD(entityId);
     }
 
     private final Listener<String> pullEventClientRecordListener = new Listener<String>() {
