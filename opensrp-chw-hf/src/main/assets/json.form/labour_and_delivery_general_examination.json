@@ -81,7 +81,11 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "bad"
           }
-        ]
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select the general condition of the client"
+        }
       },
       {
         "key": "prompt_for_general_condition",
