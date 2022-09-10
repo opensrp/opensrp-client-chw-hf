@@ -398,7 +398,7 @@
         <service android:name="org.smartregister.sync.intent.LocationIntentService" />
         <service android:name=".sync.intent.HfSyncTaskIntentService" />
         <service android:name="org.smartregister.sync.intent.PlanIntentService" />
-        <service android:name="org.smartregister.chw.core.sync.intent.SyncClientEventsPerTaskIntentService" />
+        <service android:name=".sync.intent.HfSyncClientEventsPerTaskIntentService" />
         <service android:name="org.smartregister.chw.core.sync.intent.CloseExpiredReferralsIntentService" />
         <service android:name="org.smartregister.sync.intent.SyncLocationsByTeamIdsIntentService" />
         <service android:name="org.smartregister.sync.intent.SyncLocationsByLevelAndTagsIntentService" />
