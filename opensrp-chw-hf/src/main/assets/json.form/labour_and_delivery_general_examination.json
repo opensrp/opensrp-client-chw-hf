@@ -639,7 +639,7 @@
         "relevance": {
           "step1:contraction_frequency": {
             "type": "string",
-            "ex": "equalTo(., \"no_contraction\")"
+            "ex": "notEqualTo(., \"no_contraction\")"
           }
         },
         "v_required": {
