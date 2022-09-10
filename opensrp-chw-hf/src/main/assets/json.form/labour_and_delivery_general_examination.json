@@ -637,9 +637,10 @@
           }
         ],
         "relevance": {
-          "step1:contraction_frequency": {
-            "type": "string",
-            "ex": "notEqualTo(., \"no_contraction\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_general_examination_relevance.yml"
+            }
           }
         },
         "v_required": {
