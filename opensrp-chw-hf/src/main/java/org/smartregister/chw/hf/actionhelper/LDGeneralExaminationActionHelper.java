@@ -35,7 +35,6 @@ public class LDGeneralExaminationActionHelper implements BaseLDVisitAction.LDVis
     private String urineAcetone;
     private String fundal_height;
     private String contraction_frequency;
-    private String contraction_in_ten_minutes;
     private String fetal_heart_rate;
     private final Context context;
     private final MemberObject memberObject;
@@ -86,7 +85,6 @@ public class LDGeneralExaminationActionHelper implements BaseLDVisitAction.LDVis
         urineAcetone = JsonFormUtils.getFieldValue(jsonPayload, "urine_acetone");
         fundal_height = JsonFormUtils.getFieldValue(jsonPayload, "fundal_height");
         contraction_frequency = JsonFormUtils.getFieldValue(jsonPayload, "contraction_frequency");
-        contraction_in_ten_minutes = JsonFormUtils.getFieldValue(jsonPayload, "contraction_in_ten_minutes");
         fetal_heart_rate = JsonFormUtils.getFieldValue(jsonPayload, "fetal_heart_rate");
     }
 
@@ -143,7 +141,6 @@ public class LDGeneralExaminationActionHelper implements BaseLDVisitAction.LDVis
                 StringUtils.isNotBlank(urineProtein) &&
                 fundalHeightCaptured(memberObject.getBaseEntityId()) || StringUtils.isNotBlank(fundal_height) &&
                 StringUtils.isNotBlank(contraction_frequency) &&
-                StringUtils.isNotBlank(contraction_in_ten_minutes) &&
                 StringUtils.isNotBlank(fetal_heart_rate)
         );
     }
@@ -159,7 +156,6 @@ public class LDGeneralExaminationActionHelper implements BaseLDVisitAction.LDVis
                 StringUtils.isNotBlank(urineProtein) ||
                 StringUtils.isNotBlank(fundal_height) ||
                 StringUtils.isNotBlank(contraction_frequency) ||
-                StringUtils.isNotBlank(contraction_in_ten_minutes) ||
                 StringUtils.isNotBlank(fetal_heart_rate)
         );
     }
