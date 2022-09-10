@@ -8,7 +8,6 @@ import org.json.JSONObject;
 import org.smartregister.chw.cdp.activity.BaseOrderDetailsActivity;
 import org.smartregister.chw.cdp.util.Constants;
 import org.smartregister.chw.core.utils.FormUtils;
-import org.smartregister.chw.hf.R;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.family.util.JsonFormUtils;
 
@@ -24,7 +23,7 @@ public class OrderRequestDetailsActivity extends BaseOrderDetailsActivity {
         super.setupViews();
 
         btnGroup.setVisibility(View.VISIBLE);
-        if(client!= null && presenter!= null)
+        if (client != null && presenter != null)
             presenter.refreshViewPageBottom(client);
     }
 
