@@ -449,6 +449,20 @@
           "value": "true",
           "err": "Please enter the phone number"
         }
+      },
+      {
+        "key": "stock_event_type",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "stock_event_type",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "cdp_receive_condom_msd_calculation.yml"
+            }
+          }
+        }
       }
     ]
   }
