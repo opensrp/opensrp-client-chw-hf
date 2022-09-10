@@ -463,6 +463,20 @@
             }
           }
         }
+      },
+      {
+        "key": "condom_restock_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "condom_restock_date",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "cdp_receive_condom_msd_calculation.yml"
+            }
+          }
+        }
       }
     ]
   }
