@@ -75,7 +75,7 @@ public class LDVisitUtils extends VisitUtils {
                 if (!LDGeneralExaminationActionHelper.featalLieCaptured(baseEntityId))
                     isPresentationDone = getFieldValue(obs, "lie").equalsIgnoreCase("transverse") || computeCompletionStatus(obs, "presentation");
 
-                boolean isContractionInTenMinutesDone = computeCompletionStatus(obs, "contraction_in_ten_minutes");
+
                 boolean isFetalHeartRateDone = computeCompletionStatus(obs, "fetal_heart_rate");
                 boolean isVaginalExamDateDone = computeCompletionStatus(obs, "vaginal_exam_date");
                 boolean isVaginalExamTimeDone = computeCompletionStatus(obs, "vaginal_exam_time");
@@ -143,7 +143,6 @@ public class LDVisitUtils extends VisitUtils {
                         isUrineAcetoneDone &&
                         isFundalHeightDone &&
                         isPresentationDone &&
-                        isContractionInTenMinutesDone &&
                         isFetalHeartRateDone &&
                         isVaginalExamDateDone &&
                         isVaginalExamTimeDone &&
