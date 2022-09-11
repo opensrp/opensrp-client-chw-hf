@@ -86,9 +86,9 @@ public class LDPartographDetailsActivity extends CoreAncMedicalHistoryActivity {
         }
 
         clientName.setText(MessageFormat.format(getString(org.smartregister.ld.R.string.partograph_client_name), ldMemberObject.getFirstName(), ldMemberObject.getMiddleName(), ldMemberObject.getLastName()));
-        gravida.setText(MessageFormat.format(getString(org.smartregister.ld.R.string.partograph_gravida), org.smartregister.chw.ld.dao.LDDao.getGravida(ldMemberObject.getBaseEntityId())));
-        para.setText(MessageFormat.format(getString(org.smartregister.ld.R.string.partograph_para), org.smartregister.chw.ld.dao.LDDao.getPara(ldMemberObject.getBaseEntityId())));
-        admissionDate.setText(MessageFormat.format(getString(org.smartregister.ld.R.string.partograph_admission_date), org.smartregister.chw.ld.dao.LDDao.getAdmissionDate(ldMemberObject.getBaseEntityId())));
+        gravida.setText(MessageFormat.format(getString(org.smartregister.ld.R.string.partograph_gravida), LDDao.getGravida(ldMemberObject.getBaseEntityId())));
+        para.setText(MessageFormat.format(getString(org.smartregister.ld.R.string.partograph_para), LDDao.getPara(ldMemberObject.getBaseEntityId())));
+        admissionDate.setText(MessageFormat.format(getString(org.smartregister.ld.R.string.partograph_admission_date), LDDao.getAdmissionDate(ldMemberObject.getBaseEntityId())));
         admissionTime.setText(MessageFormat.format(getString(org.smartregister.ld.R.string.partograph_admission_time), LDDao.getAdmissionTime(ldMemberObject.getBaseEntityId())));
     }
 

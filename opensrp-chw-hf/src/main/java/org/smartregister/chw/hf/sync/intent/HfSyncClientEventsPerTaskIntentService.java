@@ -2,7 +2,6 @@ package org.smartregister.chw.hf.sync.intent;
 
 import android.content.Intent;
 
-import com.google.common.collect.Lists;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -11,7 +10,6 @@ import org.smartregister.chw.core.sync.intent.SyncClientEventsPerTaskIntentServi
 import org.smartregister.chw.hf.dao.LDDao;
 import org.smartregister.domain.FetchStatus;
 import org.smartregister.domain.Response;
-import org.smartregister.domain.Task;
 
 import java.util.List;
 
