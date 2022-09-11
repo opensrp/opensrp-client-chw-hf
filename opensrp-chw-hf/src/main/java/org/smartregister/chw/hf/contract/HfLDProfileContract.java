@@ -1,0 +1,33 @@
+package org.smartregister.chw.hf.contract;
+
+import org.smartregister.chw.ld.contract.LDProfileContract;
+import org.smartregister.domain.Task;
+import org.smartregister.repository.AllSharedPreferences;
+
+import java.util.Set;
+
+public interface HfLDProfileContract extends LDProfileContract {
+    interface View extends LDProfileContract.View {
+        void setClientTasks(Set<Task> taskList);
+    }
+
+    interface Presenter extends LDProfileContract.Presenter {
+        void fetchTasks();
+
+        void setEntityId(String entityId);
+
+        void createReferralEvent(AllSharedPreferences allSharedPreferences, String jsonString) throws Exception;
+
+    }
+
+    interface Interactor extends LDProfileContract.Interactor {
+        void createReferralEvent(AllSharedPreferences allSharedPreferences, String jsonString, String entityID) throws Exception;
+
+        void getClientTasks(String planId, String baseEntityId, HfLDProfileContract.InteractorCallBack callback);
+    }
+
+
+    interface InteractorCallBack {
+        void setClientTasks(Set<Task> taskList);
+    }
+}

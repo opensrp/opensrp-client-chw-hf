@@ -13,8 +13,8 @@
     <string name="mark_done">Mark Done</string>
     <string name="mark_as_done">Referral received</string>
     <string name="view_profile">View Profile</string>
-    <string name="chw_phone">CHW Phone</string>
-    <string name="chw">CHW</string>
+    <string name="chw_phone">Provider\'s Phone</string>
+    <string name="chw">Provider\'s Name</string>
     <string name="referral_date">Referral date</string>
     <string name="problem">Problem</string>
     <string name="phone">Phone</string>

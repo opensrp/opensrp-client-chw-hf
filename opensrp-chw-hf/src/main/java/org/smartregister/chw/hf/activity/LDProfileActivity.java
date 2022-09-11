@@ -1,5 +1,6 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.core.utils.Utils.getCommonPersonObjectClient;
 import static org.smartregister.chw.hf.activity.HeiProfileActivity.getClientDetailsByBaseEntityID;
 import static org.smartregister.chw.hf.dao.LDDao.isTheClientReferred;
 import static org.smartregister.chw.hf.utils.Constants.Events.LD_ACTIVE_MANAGEMENT_OF_3RD_STAGE_OF_LABOUR;
@@ -18,7 +19,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import org.joda.time.DateTime;
 import org.joda.time.Period;
@@ -32,8 +37,12 @@ import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.core.utils.UpdateDetailsUtil;
 import org.smartregister.chw.hf.BuildConfig;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.adapter.ReferralCardViewAdapter;
+import org.smartregister.chw.hf.contract.HfLDProfileContract;
 import org.smartregister.chw.hf.dao.HfPncDao;
+import org.smartregister.chw.hf.interactor.LDProfileInteractor;
 import org.smartregister.chw.hf.interactor.PncMemberProfileInteractor;
+import org.smartregister.chw.hf.presenter.LDProfilePresenter;
 import org.smartregister.chw.hf.utils.LDReferralFormUtils;
 import org.smartregister.chw.hf.utils.LDVisitUtils;
 import org.smartregister.chw.ld.LDLibrary;
@@ -45,6 +54,7 @@ import org.smartregister.chw.ld.util.Constants;
 import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.domain.AlertStatus;
+import org.smartregister.domain.Task;
 import org.smartregister.family.util.DBConstants;
 import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.family.util.Utils;
@@ -55,10 +65,13 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import timber.log.Timber;
 
-public class LDProfileActivity extends BaseLDProfileActivity {
+public class LDProfileActivity extends BaseLDProfileActivity implements HfLDProfileContract.View {
+    protected RecyclerView notificationAndReferralRecyclerView;
+    protected RelativeLayout notificationAndReferralLayout;
     public static final String LD_PROFILE_ACTION = "LD_PROFILE_ACTION";
     private String partographVisitTitle;
     private String currentVisitItemTitle = "";
@@ -82,6 +95,12 @@ public class LDProfileActivity extends BaseLDProfileActivity {
     }
 
     @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        initializeNotificationReferralRecyclerView();
+    }
+
+    @Override
     protected void onCreation() {
         super.onCreation();
         partographVisitTitle = getString(R.string.labour_and_delivery_partograph_button_title);
@@ -95,6 +114,7 @@ public class LDProfileActivity extends BaseLDProfileActivity {
         setTextViewRecordLDText();
         refreshMedicalHistory(true);
         invalidateOptionsMenu();
+        ((LDProfilePresenter) profilePresenter).fetchTasks();
     }
 
     protected void setupViews() {
@@ -128,6 +148,14 @@ public class LDProfileActivity extends BaseLDProfileActivity {
             referredLabel.setVisibility(View.GONE);
         }
 
+    }
+
+    @Override
+    protected void initializePresenter() {
+        showProgressBar(true);
+        profilePresenter = new LDProfilePresenter(this, new LDProfileInteractor(), memberObject);
+        fetchProfileData();
+        profilePresenter.refreshProfileBottom();
     }
 
     private void processVisits(boolean partograph) {
@@ -489,6 +517,21 @@ public class LDProfileActivity extends BaseLDProfileActivity {
 
     public Context getContext() {
         return this;
+    }
+
+    protected void initializeNotificationReferralRecyclerView() {
+        notificationAndReferralLayout = findViewById(org.smartregister.chw.core.R.id.notification_and_referral_row);
+        notificationAndReferralRecyclerView = findViewById(org.smartregister.chw.core.R.id.notification_and_referral_recycler_view);
+        notificationAndReferralRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    public void setClientTasks(Set<Task> taskList) {
+        if (notificationAndReferralRecyclerView != null && taskList.size() > 0) {
+            RecyclerView.Adapter mAdapter = new ReferralCardViewAdapter(taskList, this, getCommonPersonObjectClient(memberObject.getBaseEntityId()), CoreConstants.REGISTERED_ACTIVITIES.ANC_REGISTER_ACTIVITY);
+            notificationAndReferralRecyclerView.setAdapter(mAdapter);
+            notificationAndReferralLayout.setVisibility(View.VISIBLE);
+            findViewById(R.id.view_notification_and_referral_row).setVisibility(View.VISIBLE);
+        }
     }
 
 }

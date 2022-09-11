@@ -96,6 +96,23 @@
                 android:textColor="@android:color/black" />
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/text_view_referral_day"
+            android:fontFamily="@font/google_sans_regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center_vertical"
+            android:background="@color/referral_text_background"
+            android:backgroundTint="@color/referral_text_background"
+            android:padding="4dp"
+            android:layout_marginTop = "4dp"
+            android:layout_marginLeft = "8dp"
+            android:text="@string/referral_day"
+            android:textColor="@color/due_vaccine_red"
+            android:textSize="@dimen/referral_text_size"
+            android:textStyle="normal"
+            android:visibility="gone" />
+
     </LinearLayout>
 
     <LinearLayout
