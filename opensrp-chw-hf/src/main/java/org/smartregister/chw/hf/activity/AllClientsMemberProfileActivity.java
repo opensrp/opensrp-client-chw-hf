@@ -37,6 +37,7 @@ import org.smartregister.chw.hf.presenter.HfAllClientsMemberPresenter;
 import org.smartregister.chw.hf.utils.AllClientsUtils;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hf.utils.LFTUFormUtils;
+import org.smartregister.chw.hivst.dao.HivstDao;
 import org.smartregister.chw.ld.dao.LDDao;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.family.adapter.ViewPagerAdapter;
@@ -58,6 +59,7 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
         String gender = Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.GENDER, false);
         menu.findItem(R.id.action_location_info).setVisible(true);
         menu.findItem(R.id.action_pregnancy_out_come).setVisible(false);
+        menu.findItem(R.id.action_hivst_registration).setVisible(!HivstDao.isRegisteredForHivst(baseEntityId));
         if (BuildConfig.BUILD_FOR_BORESHA_AFYA_SOUTH) {
             AllClientsUtils.updateHivMenuItems(baseEntityId, menu);
             // AllClientsUtils.updateTbMenuItems(baseEntityId, menu);
@@ -280,6 +282,12 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
         } catch (Exception e) {
             Timber.e(e);
         }
+    }
+
+    @Override
+    protected void startHivstRegistration(){
+        String gender = Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.GENDER, false);
+        HivstRegisterActivity.startHivstRegistrationActivity(AllClientsMemberProfileActivity.this, baseEntityId, gender);
     }
 
     @Override

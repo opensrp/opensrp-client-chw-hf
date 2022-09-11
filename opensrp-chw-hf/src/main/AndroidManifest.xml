@@ -47,6 +47,12 @@
             android:theme="@style/HFTheme.NoActionBar"/>
         <activity android:name=".activity.LtfuSummaryViewActivity"
             android:theme="@style/HFTheme.NoActionBar"/>
+        <activity android:name=".activity.HivstRegisterActivity"
+            android:theme="@style/HFTheme.NoActionBar"/>
+        <activity android:name=".activity.HivstProfileActivity"
+            android:theme="@style/HFTheme.NoActionBar"/>
+        <activity android:name=".activity.HivstResultViewActivity"
+            android:theme="@style/HFTheme.NoActionBar"/>
         <activity android:name=".activity.LdReportsActivity"
             android:theme="@style/HFTheme.NoActionBar"/>
         <activity android:name=".activity.LdReportsViewActivity"

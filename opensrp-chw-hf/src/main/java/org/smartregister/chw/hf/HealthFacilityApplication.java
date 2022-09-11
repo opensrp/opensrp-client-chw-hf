@@ -33,6 +33,7 @@ import org.smartregister.chw.hf.activity.FpRegisterActivity;
 import org.smartregister.chw.hf.activity.HeiRegisterActivity;
 import org.smartregister.chw.hf.activity.HivIndexContactsContactsRegisterActivity;
 import org.smartregister.chw.hf.activity.HivRegisterActivity;
+import org.smartregister.chw.hf.activity.HivstRegisterActivity;
 import org.smartregister.chw.hf.activity.HtsRegisterActivity;
 import org.smartregister.chw.hf.activity.LDRegisterActivity;
 import org.smartregister.chw.hf.activity.LTFURegisterActivity;
@@ -53,6 +54,7 @@ import org.smartregister.chw.hf.repository.HfTaskRepository;
 import org.smartregister.chw.hf.sync.HfClientProcessor;
 import org.smartregister.chw.hf.sync.HfSyncConfiguration;
 import org.smartregister.chw.hiv.HivLibrary;
+import org.smartregister.chw.hivst.HivstLibrary;
 import org.smartregister.chw.ld.LDLibrary;
 import org.smartregister.chw.malaria.MalariaLibrary;
 import org.smartregister.chw.pmtct.PmtctLibrary;
@@ -131,6 +133,8 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
             registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.REPORTS, ReportsActivity.class);
             registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.LD, LDRegisterActivity.class);
             registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.LTFU_REFERRALS_REGISTER_ACTIVITY, LTFURegisterActivity.class);
+            registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.HIV_SELF_TESTING_REGISTER_ACTIVITY, HivstRegisterActivity.class);
+
 //          TODO uncomment these when NACP is ready to test these modules
             //registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.TB_REGISTER_ACTIVITY, TbRegisterActivity.class);
         }
@@ -242,6 +246,10 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
         HivLibrary.init(this);
         HivLibrary.getInstance().setAppVersion(BuildConfig.VERSION_CODE);
         HivLibrary.getInstance().setDatabaseVersion(BuildConfig.DATABASE_VERSION);
+
+        //Setup hivst library
+        HivstLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
+
 
         //Setup tb library
         TbLibrary.init(this);

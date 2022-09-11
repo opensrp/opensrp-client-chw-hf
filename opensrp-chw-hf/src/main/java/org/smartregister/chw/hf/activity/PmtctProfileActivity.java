@@ -55,6 +55,7 @@ import org.smartregister.chw.hf.presenter.FamilyOtherMemberActivityPresenter;
 import org.smartregister.chw.hf.presenter.PmtctProfilePresenter;
 import org.smartregister.chw.hf.utils.LFTUFormUtils;
 import org.smartregister.chw.hf.utils.PmtctVisitUtils;
+import org.smartregister.chw.hivst.dao.HivstDao;
 import org.smartregister.chw.pmtct.PmtctLibrary;
 import org.smartregister.chw.pmtct.dao.PmtctDao;
 import org.smartregister.chw.pmtct.domain.Visit;
@@ -131,6 +132,7 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
         menu.findItem(R.id.action_remove_member).setVisible(false);
+        menu.findItem(R.id.action_hivst_registration).setVisible(HivstDao.isRegisteredForHivst(baseEntityId));
         return true;
     }
 
@@ -166,11 +168,20 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
                 if (preFilledForm != null)
                     UpdateDetailsUtil.startUpdateClientDetailsActivity(preFilledForm, this);
                 return true;
+            } else if (itemId == org.smartregister.chw.core.R.id.action_hivst_registration){
+                startHivstRegistration();
+                return true;
             }
         } catch (JSONException e) {
             Timber.e(e);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void startHivstRegistration(){
+        CommonPersonObjectClient commonPersonObjectClient = getClientDetailsByBaseEntityID(baseEntityId);
+        String gender = org.smartregister.chw.core.utils.Utils.getValue(commonPersonObjectClient.getColumnmaps(), org.smartregister.family.util.DBConstants.KEY.GENDER, false);
+        HivstRegisterActivity.startHivstRegistrationActivity(this, baseEntityId, gender);
     }
 
 
