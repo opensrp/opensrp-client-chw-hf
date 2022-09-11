@@ -471,7 +471,7 @@
         "type": "spinner",
         "hint": "Reason as to why the HB Level test was not conducted",
         "values": [
-          "Stock out of Cuvettes Cartridges",
+          "Cuvette Cartridges Out of Stock",
           "Haemoque machine out of order",
           "The client was in an emergency situation",
           "The client refused to be tested",
@@ -1284,12 +1284,6 @@
             "ex-rules": {
               "rules-file": "anc_fv_baseline_investigation_calculation.yml"
             }
-          }
-        },
-        "relevance": {
-          "step1:hiv": {
-            "type": "string",
-            "ex": "notEqualTo(., \"test_not_conducted\")"
           }
         }
       },

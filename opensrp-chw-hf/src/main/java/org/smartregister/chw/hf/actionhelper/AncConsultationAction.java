@@ -58,7 +58,12 @@ public class AncConsultationAction implements BaseAncHomeVisitAction.AncHomeVisi
             JSONObject global = jsonObject.getJSONObject("global");
             checkObject.clear();
             int clientAge = global.getInt("client_age");
-            int gestAge = Integer.parseInt(CoreJsonFormUtils.getValue(jsonObject, "gest_age"));
+            int gestAge = 12;
+            try {
+                gestAge = Integer.parseInt(CoreJsonFormUtils.getValue(jsonObject, "gest_age_consultation"));
+            } catch (Exception e) {
+                Timber.e(e);
+            }
 
             String lie = CoreJsonFormUtils.getValue(jsonObject, "lie");
             boolean lieCheck = StringUtils.isNotBlank(lie) && !(lie.equalsIgnoreCase("Lie") || lie.equalsIgnoreCase("Mlalo wa mtoto tumboni"));
@@ -67,15 +72,15 @@ public class AncConsultationAction implements BaseAncHomeVisitAction.AncHomeVisi
             boolean presentationCheck = StringUtils.isNotBlank(presentation) && !(presentation.equalsIgnoreCase("Presentation") || presentation.equalsIgnoreCase("Kitangulizi cha mtoto"));
 
             checkObject.put("examination_findings", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "examination_findings")));
-            if(clientAge < 25){
+            if (clientAge < 25) {
                 checkObject.put("height", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "height")));
             }
             checkObject.put("weight", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "weight")));
-            if(gestAge >= 20){
+            if (gestAge >= 20) {
                 checkObject.put("fundal_height", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "fundal_height")));
                 checkObject.put("fetal_heart_rate", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "fetal_heart_rate")));
             }
-            if(gestAge >= 36){
+            if (gestAge >= 36) {
                 checkObject.put("lie", lieCheck);
                 if (lie.contains("longitudinal")) {
                     checkObject.put("presentation", presentationCheck);

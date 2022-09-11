@@ -1,4 +1,18 @@
 ---
+name: step1_notify_continue_eac
+description: notify_continue_eac if is before eac and viral load is greater or equal to 1000
+priority: 1
+condition: "!global_is_after_eac && step1_hvl_result >= 1000"
+actions:
+  - "isRelevant = true"
+---
+name: step1_discuss_plan_prompt
+description: discuss_plan_prompt if is after eac and viral load is greater or equal to 1000
+priority: 1
+condition: "global_is_after_eac && step1_hvl_result >= 1000"
+actions:
+  - "isRelevant = true"
+---
 name: step1_significant_drop_in_viral_load
 description: significant_drop_in_viral_load relevance
 priority: 1

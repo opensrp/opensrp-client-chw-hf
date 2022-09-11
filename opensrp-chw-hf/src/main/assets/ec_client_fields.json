@@ -1575,6 +1575,14 @@
           }
         },
         {
+          "column_name": "reason_for_not_conducting_partner_hiv_test",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "reason_for_not_conducting_partner_hiv_test"
+          }
+        },
+        {
           "column_name": "partner_hiv_test_at_32",
           "type": "Event",
           "json_mapping": {

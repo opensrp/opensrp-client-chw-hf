@@ -339,7 +339,7 @@
           },
           {
             "key": "medication_not_given",
-            "text": "Malaria medication not given",
+            "text": "Malaria preventive therapy not given",
             "openmrs_entity_id": "medication_not_given",
             "openmrs_entity": "concept"
           }
@@ -351,7 +351,7 @@
         "relevance": {
           "rules-engine": {
             "ex-rules": {
-              "rules-file": "anc_fv_malaria_investigation_relevance.yml"
+              "rules-file": "anc_rv_malaria_investigation_relevance.yml"
             }
           }
         }
@@ -372,7 +372,7 @@
           },
           {
             "key": "medication_not_given",
-            "text": "Malaria medication not given",
+            "text": "Malaria preventive therapy not given",
             "openmrs_entity_id": "medication_not_given",
             "openmrs_entity": "concept"
           }
@@ -384,7 +384,7 @@
         "relevance": {
           "rules-engine": {
             "ex-rules": {
-              "rules-file": "anc_fv_malaria_investigation_relevance.yml"
+              "rules-file": "anc_rv_malaria_investigation_relevance.yml"
             }
           }
         }
@@ -405,7 +405,7 @@
           },
           {
             "key": "medication_not_given",
-            "text": "Malaria medication not given",
+            "text": "Malaria preventive therapy not given",
             "openmrs_entity_id": "medication_not_given",
             "openmrs_entity": "concept"
           }
@@ -417,7 +417,7 @@
         "relevance": {
           "rules-engine": {
             "ex-rules": {
-              "rules-file": "anc_fv_malaria_investigation_relevance.yml"
+              "rules-file": "anc_rv_malaria_investigation_relevance.yml"
             }
           }
         }
@@ -438,7 +438,7 @@
           },
           {
             "key": "medication_not_given",
-            "text": "Malaria medication not given",
+            "text": "Malaria preventive therapy not given",
             "openmrs_entity_id": "medication_not_given",
             "openmrs_entity": "concept"
           }
@@ -450,7 +450,7 @@
         "relevance": {
           "rules-engine": {
             "ex-rules": {
-              "rules-file": "anc_fv_malaria_investigation_relevance.yml"
+              "rules-file": "anc_rv_malaria_investigation_relevance.yml"
             }
           }
         }
@@ -488,7 +488,7 @@
         "relevance": {
           "rules-engine": {
             "ex-rules": {
-              "rules-file": "anc_fv_malaria_investigation_relevance.yml"
+              "rules-file": "anc_rv_malaria_investigation_relevance.yml"
             }
           }
         }
@@ -536,7 +536,7 @@
         "relevance": {
           "rules-engine": {
             "ex-rules": {
-              "rules-file": "anc_fv_malaria_investigation_relevance.yml"
+              "rules-file": "anc_rv_malaria_investigation_relevance.yml"
             }
           }
         }

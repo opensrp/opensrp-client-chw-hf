@@ -844,6 +844,13 @@
             "creates_case":[
               "ec_hts_register"
             ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "Transfer to PNC",
+            "creates_case": [
+              "ec_pregnancy_outcome"
+            ]
           }
         ]
       }

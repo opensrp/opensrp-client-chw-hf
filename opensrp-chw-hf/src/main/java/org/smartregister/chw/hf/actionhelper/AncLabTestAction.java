@@ -41,12 +41,6 @@ public class AncLabTestAction implements BaseAncHomeVisitAction.AncHomeVisitActi
 
     @Override
     public String getPreProcessed() {
-        try {
-            JSONObject jsonObject = new JSONObject(jsonPayload);
-            return jsonObject.toString();
-        } catch (Exception e) {
-            Timber.e(e);
-        }
         return null;
     }
 

@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.vijay.jsonwizard.constants.JsonFormConstants;
-import com.vijay.jsonwizard.fragments.JsonFormFragment;
+import com.vijay.jsonwizard.fragments.JsonWizardFormFragment;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -13,7 +13,7 @@ import org.smartregister.chw.hf.utils.Constants;
 
 import timber.log.Timber;
 
-public class AncJsonFormFragment extends JsonFormFragment {
+public class AncJsonFormFragment extends JsonWizardFormFragment {
 
     public static AncJsonFormFragment getFormFragment(String stepName) {
         AncJsonFormFragment jsonFormFragment = new AncJsonFormFragment();

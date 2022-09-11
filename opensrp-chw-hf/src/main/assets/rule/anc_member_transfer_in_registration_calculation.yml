@@ -60,5 +60,19 @@ priority: 1
 condition: "true"
 actions:
   - "calculation = helper.getDateToday()"
+---
+name: step1_hiv
+description: hiv calculated
+priority: 1
+condition: "true"
+actions:
+  - "calculation = step1_medical_surgical_history.contains('known_on_art')? 'positive':''"
+---
+name: step1_known_on_art
+description: known_on_art calculated
+priority: 1
+condition: "true"
+actions:
+  - "calculation = step1_medical_surgical_history.contains('known_on_art')? 'yes':''"
 
 
