@@ -5,7 +5,6 @@ import org.smartregister.chw.hf.contract.HfLDProfileContract;
 import org.smartregister.chw.ld.domain.MemberObject;
 import org.smartregister.chw.ld.presenter.BaseLDProfilePresenter;
 import org.smartregister.domain.Task;
-import org.smartregister.repository.AllSharedPreferences;
 
 import java.util.Set;
 
@@ -29,10 +28,5 @@ public class LDProfilePresenter extends BaseLDProfilePresenter implements HfLDPr
     @Override
     public void setEntityId(String entityId) {
         memberObject.getBaseEntityId();
-    }
-
-    @Override
-    public void createReferralEvent(AllSharedPreferences allSharedPreferences, String jsonString) throws Exception {
-
     }
 }

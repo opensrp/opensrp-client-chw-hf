@@ -16,13 +16,9 @@ public interface HfLDProfileContract extends LDProfileContract {
 
         void setEntityId(String entityId);
 
-        void createReferralEvent(AllSharedPreferences allSharedPreferences, String jsonString) throws Exception;
-
     }
 
     interface Interactor extends LDProfileContract.Interactor {
-        void createReferralEvent(AllSharedPreferences allSharedPreferences, String jsonString, String entityID) throws Exception;
-
         void getClientTasks(String planId, String baseEntityId, HfLDProfileContract.InteractorCallBack callback);
     }
 
