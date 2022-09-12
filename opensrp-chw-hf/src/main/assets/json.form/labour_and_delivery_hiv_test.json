@@ -156,7 +156,7 @@
         "type": "hidden",
         "label": "HIV Test Results",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "hiv",
+        "openmrs_entity_id": "pmtct_test_date",
         "openmrs_entity_parent": "",
         "calculation": {
           "rules-engine": {

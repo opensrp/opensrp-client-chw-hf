@@ -5653,3 +5653,98 @@ indicators:
                                  substr(strftime('%Y-%m-%d', datetime(t.authored_on / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' ||
                                  '01') =
                             date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
+
+  - key: "ld-9h-10-14"
+    description: "Waliopata rufaa kwenda kliniki ya huduma na matibabu"
+    indicatorQuery: " SELECT count(DISTINCT elgec.base_entity_id) as count
+                      FROM ec_ld_general_examination_consultation elgec
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elgec.base_entity_id
+							   INNER JOIN ec_ld_confirmation elc ON elc.base_entity_id = elgec.base_entity_id
+                               LEFT JOIN ec_pnc_followup epf ON epf.entity_id = elgec.base_entity_id
+                      WHERE (elgec.hiv = 'positive')
+                        AND (date(efm.dob, '+10 years') <= date('now'))
+                        AND (date(efm.dob, '+15 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elgec.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(elgec.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
+  - key: "ld-9h-15-19"
+    description: "Waliopata rufaa kwenda kliniki ya huduma na matibabu"
+    indicatorQuery: " SELECT count(DISTINCT elgec.base_entity_id) as count
+                      FROM ec_ld_general_examination_consultation elgec
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elgec.base_entity_id
+							   INNER JOIN ec_ld_confirmation elc ON elc.base_entity_id = elgec.base_entity_id
+                               LEFT JOIN ec_pnc_followup epf ON epf.entity_id = elgec.base_entity_id
+                      WHERE (elgec.hiv = 'positive')
+                        AND (date(efm.dob, '+15 years') <= date('now'))
+                        AND (date(efm.dob, '+20 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elgec.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(elgec.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
+  - key: "ld-9h-20-24"
+    description: "Waliopata rufaa kwenda kliniki ya huduma na matibabu"
+    indicatorQuery: " SELECT count(DISTINCT elgec.base_entity_id) as count
+                      FROM ec_ld_general_examination_consultation elgec
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elgec.base_entity_id
+							   INNER JOIN ec_ld_confirmation elc ON elc.base_entity_id = elgec.base_entity_id
+                               LEFT JOIN ec_pnc_followup epf ON epf.entity_id = elgec.base_entity_id
+                      WHERE (elgec.hiv = 'positive')
+                        AND (date(efm.dob, '+20 years') <= date('now'))
+                        AND (date(efm.dob, '+25 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elgec.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(elgec.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
+  - key: "ld-9h-25-29"
+    description: "Waliopata rufaa kwenda kliniki ya huduma na matibabu"
+    indicatorQuery: " SELECT count(DISTINCT elgec.base_entity_id) as count
+                      FROM ec_ld_general_examination_consultation elgec
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elgec.base_entity_id
+							   INNER JOIN ec_ld_confirmation elc ON elc.base_entity_id = elgec.base_entity_id
+                               LEFT JOIN ec_pnc_followup epf ON epf.entity_id = elgec.base_entity_id
+                      WHERE (elgec.hiv = 'positive')
+                        AND (date(efm.dob, '+25 years') <= date('now'))
+                        AND (date(efm.dob, '+30 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elgec.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(elgec.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
+  - key: "ld-9h-30-34"
+    description: "Waliopata rufaa kwenda kliniki ya huduma na matibabu"
+    indicatorQuery: " SELECT count(DISTINCT elgec.base_entity_id) as count
+                      FROM ec_ld_general_examination_consultation elgec
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elgec.base_entity_id
+							   INNER JOIN ec_ld_confirmation elc ON elc.base_entity_id = elgec.base_entity_id
+                               LEFT JOIN ec_pnc_followup epf ON epf.entity_id = elgec.base_entity_id
+                      WHERE (elgec.hiv = 'positive')
+                        AND (date(efm.dob, '+30 years') <= date('now'))
+                        AND (date(efm.dob, '+35 years') > date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elgec.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(elgec.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"
+
+  - key: "ld-9h-35+"
+    description: "Waliopata rufaa kwenda kliniki ya huduma na matibabu"
+    indicatorQuery: " SELECT count(DISTINCT elgec.base_entity_id) as count
+                      FROM ec_ld_general_examination_consultation elgec
+                               INNER JOIN ec_family_member efm ON efm.base_entity_id = elgec.base_entity_id
+							   INNER JOIN ec_ld_confirmation elc ON elc.base_entity_id = elgec.base_entity_id
+                               LEFT JOIN ec_pnc_followup epf ON epf.entity_id = elgec.base_entity_id
+                      WHERE (elgec.hiv = 'positive')
+                        AND (date(efm.dob, '+35 years') <= date('now'))
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(strftime('%Y-%m-%d', datetime(elgec.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                                 '-' ||
+                                 substr(strftime('%Y-%m-%d', datetime(elgec.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
+                                 '-' || '01')"

@@ -24,7 +24,8 @@ public class HfSyncClientEventsPerTaskIntentService extends SyncClientEventsPerT
         if (motherBaseEntityIds != null) {
             try {
                 JSONArray baseEntityIds = new JSONArray(new Gson().toJson(motherBaseEntityIds));
-                fetchEventsForBaseEntityIds(baseEntityIds);
+                if (baseEntityIds.length() > 0)
+                    fetchEventsForBaseEntityIds(baseEntityIds);
             } catch (Exception e) {
                 Timber.e(e);
             }
