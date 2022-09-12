@@ -49,8 +49,11 @@ import org.smartregister.chw.hiv.dao.HivIndexDao;
 import org.smartregister.chw.hiv.domain.HivIndexContactObject;
 import org.smartregister.chw.hiv.domain.HivMemberObject;
 import org.smartregister.chw.hiv.util.HivUtil;
+import org.smartregister.chw.hivst.dao.HivstDao;
 import org.smartregister.chw.tb.util.Constants;
+import org.smartregister.commonregistry.CommonPersonObject;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
+import org.smartregister.commonregistry.CommonRepository;
 import org.smartregister.family.contract.FamilyProfileContract;
 import org.smartregister.family.domain.FamilyEventClient;
 import org.smartregister.family.interactor.FamilyProfileInteractor;
@@ -191,11 +194,25 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
                 if (preFilledForm != null)
                     UpdateDetailsUtil.startUpdateClientDetailsActivity(preFilledForm, this);
                 return true;
+            } else if (itemId == R.id.action_hivst_registration) {
+                startHivstRegistration();
+                return true;
             }
         } catch (JSONException e) {
             Timber.e(e);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void startHivstRegistration() {
+        CommonRepository commonRepository = org.smartregister.family.util.Utils.context().commonrepository(org.smartregister.family.util.Utils.metadata().familyMemberRegister.tableName);
+
+        final CommonPersonObject commonPersonObject = commonRepository.findByBaseEntityId(getHivMemberObject().getBaseEntityId());
+        final CommonPersonObjectClient client = new CommonPersonObjectClient(commonPersonObject.getCaseId(), commonPersonObject.getDetails(), "");
+        client.setColumnmaps(commonPersonObject.getColumnmaps());
+        String gender = org.smartregister.family.util.Utils.getValue(commonPersonObject.getColumnmaps(), org.smartregister.family.util.DBConstants.KEY.GENDER, false);
+
+        HivstRegisterActivity.startHivstRegistrationActivity(this, getHivMemberObject().getBaseEntityId(), gender);
     }
 
     @Override
@@ -212,6 +229,7 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
             menu.findItem(R.id.action_pregnancy_confirmation).setVisible(true);
             menu.findItem(R.id.action_pregnancy_out_come).setVisible(true);
         }
+        menu.findItem(R.id.action_hivst_registration).setVisible(!HivstDao.isRegisteredForHivst(getHivMemberObject().getBaseEntityId()));
         return true;
     }
 

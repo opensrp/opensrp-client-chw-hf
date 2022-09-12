@@ -54,11 +54,14 @@ import org.smartregister.chw.hf.model.FamilyProfileModel;
 import org.smartregister.chw.hf.presenter.AncMemberProfilePresenter;
 import org.smartregister.chw.hf.utils.VisitUtils;
 import org.smartregister.chw.hiv.dao.HivDao;
+import org.smartregister.chw.hivst.dao.HivstDao;
 import org.smartregister.chw.ld.dao.LDDao;
 import org.smartregister.chw.pmtct.dao.PmtctDao;
 import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.commonregistry.AllCommonsRepository;
+import org.smartregister.commonregistry.CommonPersonObject;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
+import org.smartregister.commonregistry.CommonRepository;
 import org.smartregister.domain.AlertStatus;
 import org.smartregister.domain.Task;
 import org.smartregister.family.contract.FamilyProfileContract;
@@ -153,6 +156,8 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         menu.findItem(R.id.action_remove_member).setTitle(getString(R.string.mark_as_deceased));
         menu.findItem(R.id.action_pregnancy_out_come).setVisible(!HfAncDao.isClientClosed(baseEntityID));
         menu.findItem(R.id.action_malaria_diagnosis).setVisible(false);
+        menu.findItem(R.id.action_hivst_registration).setVisible(!HivstDao.isRegisteredForHivst(baseEntityID));
+
 
         if (memberObject.getGestationAge() >= 28)
             menu.findItem(R.id.action_ld_registration).setVisible(!LDDao.isRegisteredForLD(baseEntityID));
@@ -659,6 +664,9 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
             if (preFilledForm != null)
                 UpdateDetailsUtil.startUpdateClientDetailsActivity(preFilledForm, this);
             return true;
+        } else if(itemId == R.id.action_hivst_registration){
+            startHivstRegistration();
+            return true;
         } else if (itemId == org.smartregister.chw.core.R.id.action_remove_member) {
             removeMember();
             return true;
@@ -682,6 +690,17 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         }
     }
 
+    private void startHivstRegistration() {
+        CommonRepository commonRepository = Utils.context().commonrepository(Utils.metadata().familyMemberRegister.tableName);
+
+        final CommonPersonObject commonPersonObject = commonRepository.findByBaseEntityId(memberObject.getBaseEntityId());
+        final CommonPersonObjectClient client =
+                new CommonPersonObjectClient(commonPersonObject.getCaseId(), commonPersonObject.getDetails(), "");
+        client.setColumnmaps(commonPersonObject.getColumnmaps());
+        String gender = Utils.getValue(commonPersonObject.getColumnmaps(), org.smartregister.family.util.DBConstants.KEY.GENDER, false);
+        HivstRegisterActivity.startHivstRegistrationActivity(this, baseEntityID, gender);
+    }
+    
     protected void removeMember() {
         CommonPersonObjectClient commonPersonObjectClient = getClientDetailsByBaseEntityID(memberObject.getBaseEntityId());
         if (commonPersonObjectClient.getColumnmaps().get("entity_type").toString().equals(CoreConstants.TABLE_NAME.INDEPENDENT_CLIENT)) {

@@ -41,8 +41,11 @@ import org.smartregister.chw.hiv.dao.HivDao;
 import org.smartregister.chw.hiv.dao.HivIndexDao;
 import org.smartregister.chw.hiv.domain.HivIndexContactObject;
 import org.smartregister.chw.hiv.util.DBConstants;
+import org.smartregister.chw.hivst.dao.HivstDao;
 import org.smartregister.chw.tb.util.Constants;
+import org.smartregister.commonregistry.CommonPersonObject;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
+import org.smartregister.commonregistry.CommonRepository;
 import org.smartregister.family.contract.FamilyProfileContract;
 import org.smartregister.family.domain.FamilyEventClient;
 import org.smartregister.family.interactor.FamilyProfileInteractor;
@@ -145,6 +148,9 @@ public class HivIndexContactProfileActivity extends CoreHivIndexContactProfileAc
                 if (preFilledForm != null)
                     UpdateDetailsUtil.startUpdateClientDetailsActivity(preFilledForm, this);
                 return true;
+            } else if (itemId == R.id.action_hivst_registration){
+                startHivstRegistration();
+                return true;
             }
         } catch (JSONException e) {
             Timber.e(e);
@@ -152,10 +158,22 @@ public class HivIndexContactProfileActivity extends CoreHivIndexContactProfileAc
         return super.onOptionsItemSelected(item);
     }
 
+    private void startHivstRegistration(){
+        CommonRepository commonRepository = org.smartregister.family.util.Utils.context().commonrepository(org.smartregister.family.util.Utils.metadata().familyMemberRegister.tableName);
+
+        final CommonPersonObject commonPersonObject = commonRepository.findByBaseEntityId(getHivIndexContactObject().getBaseEntityId());
+        final CommonPersonObjectClient client = new CommonPersonObjectClient(commonPersonObject.getCaseId(), commonPersonObject.getDetails(), "");
+        client.setColumnmaps(commonPersonObject.getColumnmaps());
+        String gender = org.smartregister.family.util.Utils.getValue(commonPersonObject.getColumnmaps(), org.smartregister.family.util.DBConstants.KEY.GENDER, false);
+
+        HivstRegisterActivity.startHivstRegistrationActivity(this, getHivIndexContactObject().getBaseEntityId(), gender);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(org.smartregister.chw.core.R.menu.hiv_profile_menu, menu);
         menu.findItem(R.id.action_issue_hiv_community_followup_referral).setVisible(true);
+        menu.findItem(R.id.action_hivst_registration).setVisible(HivstDao.isRegisteredForHivst(getHivIndexContactObject().getBaseEntityId()));
         menu.findItem(org.smartregister.chw.core.R.id.action_location_info).setVisible(UpdateDetailsUtil.isIndependentClient(getHivIndexContactObject().getBaseEntityId()));
         return true;
     }
