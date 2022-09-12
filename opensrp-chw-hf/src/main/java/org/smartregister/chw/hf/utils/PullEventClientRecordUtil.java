@@ -24,6 +24,7 @@ import org.smartregister.sync.intent.SyncIntentService;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import timber.log.Timber;
@@ -102,6 +103,12 @@ public class PullEventClientRecordUtil {
             JSONArray clients = getOutOFCatchmentJsonArray(new JSONObject(response.payload()), "clients");
 
             HealthFacilityApplication.getInstance().getEcSyncHelper().batchSave(events, clients);
+
+            List<EventClient> clientEventsSaved = CoreLibrary.getInstance().context().getEventClientRepository().getEventsByBaseEntityIdsAndSyncStatus("Synced", Arrays.asList(baseEntityId));
+            for (EventClient eventClient : clientEventsSaved) {
+                eventClient.setClient(client);
+            }
+            eventClientList.addAll(clientEventsSaved);
             HfClientProcessor.getInstance(context.applicationContext()).processClient(eventClientList);
 
         } catch (Exception e) {

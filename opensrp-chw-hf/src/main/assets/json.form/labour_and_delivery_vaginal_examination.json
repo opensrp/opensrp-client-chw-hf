@@ -63,7 +63,11 @@
         "hint": "Vaginal examination Date",
         "expanded": false,
         "min_date": "today-2y",
-        "max_date": "today"
+        "max_date": "today",
+        "v_required": {
+          "value": true,
+          "err": "Please select the examination date"
+        }
       },
       {
         "key": "labour_onset_time",
@@ -92,7 +96,11 @@
             "ex": "greaterThan(., step1:labour_onset_time)",
             "err": "The vaginal examination time cannot be before labour onset time"
           }
-        ]
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please select the examination time"
+        }
       },
       {
         "key": "cervix_state",
@@ -437,6 +445,10 @@
               "rules-file": "labour_and_delivery_vaginal_examination_relevance.yml"
             }
           }
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please select the correct answer"
         }
       },
       {
@@ -517,6 +529,10 @@
               "rules-file": "labour_and_delivery_vaginal_examination_relevance.yml"
             }
           }
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please select an answer"
         }
       },
       {
@@ -668,7 +684,11 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "blood_stained_liquor"
           }
-        ]
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please select the correct answer"
+        }
       },
       {
         "key": "prompt_for_amniotic_fluid",

@@ -7,6 +7,7 @@ import static org.smartregister.chw.hf.utils.Constants.Events.LD_ACTIVE_MANAGEME
 import static org.smartregister.chw.hf.utils.Constants.Events.LD_GENERAL_EXAMINATION;
 import static org.smartregister.chw.hf.utils.Constants.Events.LD_PARTOGRAPHY;
 import static org.smartregister.chw.hf.utils.Constants.Events.LD_POST_DELIVERY_MOTHER_MANAGEMENT;
+import static org.smartregister.chw.hf.utils.Constants.Events.LD_REGISTRATION;
 import static org.smartregister.chw.hf.utils.Constants.Events.PNC_VISIT;
 
 import android.content.Context;
@@ -60,6 +61,7 @@ public class HfClientProcessor extends CoreClientProcessor {
             case HEI_FOLLOWUP:
             case PNC_VISIT:
             case LD_PARTOGRAPHY:
+            case LD_REGISTRATION:
             case LD_ACTIVE_MANAGEMENT_OF_3RD_STAGE_OF_LABOUR:
             case LD_GENERAL_EXAMINATION:
             case LD_POST_DELIVERY_MOTHER_MANAGEMENT:

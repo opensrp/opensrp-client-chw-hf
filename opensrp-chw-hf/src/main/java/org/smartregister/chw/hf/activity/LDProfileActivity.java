@@ -1,5 +1,7 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.core.utils.Utils.getCommonPersonObjectClient;
+import static org.smartregister.chw.hf.activity.HeiProfileActivity.getClientDetailsByBaseEntityID;
 import static org.smartregister.chw.hf.dao.LDDao.isTheClientReferred;
 import static org.smartregister.chw.hf.utils.Constants.Events.LD_ACTIVE_MANAGEMENT_OF_3RD_STAGE_OF_LABOUR;
 import static org.smartregister.chw.hf.utils.Constants.Events.LD_PARTOGRAPHY;
@@ -17,18 +19,30 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import org.joda.time.DateTime;
 import org.joda.time.Period;
 import org.json.JSONObject;
 import org.smartregister.chw.core.dao.ChwNotificationDao;
+import org.smartregister.chw.core.dataloader.CoreFamilyMemberDataLoader;
+import org.smartregister.chw.core.form_data.NativeFormsDataBinder;
 import org.smartregister.chw.core.model.ChildModel;
 import org.smartregister.chw.core.utils.CoreConstants;
+import org.smartregister.chw.core.utils.CoreJsonFormUtils;
+import org.smartregister.chw.core.utils.UpdateDetailsUtil;
 import org.smartregister.chw.hf.BuildConfig;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.adapter.ReferralCardViewAdapter;
+import org.smartregister.chw.hf.contract.HfLDProfileContract;
 import org.smartregister.chw.hf.dao.HfPncDao;
+import org.smartregister.chw.hf.interactor.LDProfileInteractor;
 import org.smartregister.chw.hf.interactor.PncMemberProfileInteractor;
+import org.smartregister.chw.hf.presenter.LDProfilePresenter;
 import org.smartregister.chw.hf.utils.LDReferralFormUtils;
 import org.smartregister.chw.hf.utils.LDVisitUtils;
 import org.smartregister.chw.ld.LDLibrary;
@@ -40,17 +54,24 @@ import org.smartregister.chw.ld.util.Constants;
 import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.domain.AlertStatus;
+import org.smartregister.domain.Task;
+import org.smartregister.family.util.DBConstants;
+import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.family.util.Utils;
+import org.smartregister.opd.utils.OpdDbConstants;
 import org.smartregister.repository.AllSharedPreferences;
 
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import timber.log.Timber;
 
-public class LDProfileActivity extends BaseLDProfileActivity {
+public class LDProfileActivity extends BaseLDProfileActivity implements HfLDProfileContract.View {
+    protected RecyclerView notificationAndReferralRecyclerView;
+    protected RelativeLayout notificationAndReferralLayout;
     public static final String LD_PROFILE_ACTION = "LD_PROFILE_ACTION";
     private String partographVisitTitle;
     private String currentVisitItemTitle = "";
@@ -74,6 +95,12 @@ public class LDProfileActivity extends BaseLDProfileActivity {
     }
 
     @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        initializeNotificationReferralRecyclerView();
+    }
+
+    @Override
     protected void onCreation() {
         super.onCreation();
         partographVisitTitle = getString(R.string.labour_and_delivery_partograph_button_title);
@@ -87,6 +114,7 @@ public class LDProfileActivity extends BaseLDProfileActivity {
         setTextViewRecordLDText();
         refreshMedicalHistory(true);
         invalidateOptionsMenu();
+        ((LDProfilePresenter) profilePresenter).fetchTasks();
     }
 
     protected void setupViews() {
@@ -120,6 +148,14 @@ public class LDProfileActivity extends BaseLDProfileActivity {
             referredLabel.setVisibility(View.GONE);
         }
 
+    }
+
+    @Override
+    protected void initializePresenter() {
+        showProgressBar(true);
+        profilePresenter = new LDProfilePresenter(this, new LDProfileInteractor(), memberObject);
+        fetchProfileData();
+        profilePresenter.refreshProfileBottom();
     }
 
     private void processVisits(boolean partograph) {
@@ -311,10 +347,10 @@ public class LDProfileActivity extends BaseLDProfileActivity {
         if (LDDao.getLabourStage(memberObject.getBaseEntityId()) != null) {
             int labourStage = 1;
             try {
-                if(LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("complete")){
+                if (LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("complete")) {
                     labourStage = 4;
-                }else
-                labourStage = Integer.parseInt(LDDao.getLabourStage(memberObject.getBaseEntityId()));
+                } else
+                    labourStage = Integer.parseInt(LDDao.getLabourStage(memberObject.getBaseEntityId()));
             } catch (Exception e) {
                 Timber.e(e);
             }
@@ -325,6 +361,12 @@ public class LDProfileActivity extends BaseLDProfileActivity {
         for (int i = 0; i < childModels.size(); i++) {
             String nameOfMenuItem = getString(R.string.refer_child_for_emergency, childModels.get(i).getFirstName());
             menu.add(0, R.id.action_child_emergency_registration, 100 + i, nameOfMenuItem);
+            menuItemEditNames.put(nameOfMenuItem, childModels.get(i).getBaseEntityId());
+        }
+
+        for (int i = 0; i < childModels.size(); i++) {
+            String nameOfMenuItem = getString(R.string.mark_newborn_as_deceased, childModels.get(i).getFirstName());
+            menu.add(0, R.id.action_mark_newborn_as_deceased, 200 + i, nameOfMenuItem);
             menuItemEditNames.put(nameOfMenuItem, childModels.get(i).getBaseEntityId());
         }
         return true;
@@ -342,6 +384,17 @@ public class LDProfileActivity extends BaseLDProfileActivity {
                 return true;
             } else if (itemId == R.id.action_child_emergency_registration) {
                 getChildEmergencyReferralMenuItem(item);
+            } else if (itemId == R.id.action_mark_newborn_as_deceased) {
+                getDeceasedChildMenuItem(item);
+            } else if (itemId == R.id.action_member_registration) {
+                if (UpdateDetailsUtil.isIndependentClient(memberObject.getBaseEntityId())) {
+                    startFormForEdit(org.smartregister.chw.core.R.string.registration_info,
+                            CoreConstants.JSON_FORM.getAllClientUpdateRegistrationInfoForm());
+                } else {
+                    startFormForEdit(org.smartregister.chw.core.R.string.edit_member_form_title,
+                            CoreConstants.JSON_FORM.getFamilyMemberRegister());
+                }
+                return true;
             }
         } catch (Exception e) {
             Timber.e(e);
@@ -389,8 +442,96 @@ public class LDProfileActivity extends BaseLDProfileActivity {
         return true;
     }
 
+    private boolean getDeceasedChildMenuItem(MenuItem item) {
+        if (getChildren(memberObject).size() > 0) {
+            for (CommonPersonObjectClient child : getChildren(memberObject)) {
+                for (Map.Entry<String, String> entry : menuItemEditNames.entrySet()) {
+                    if (entry.getKey().equalsIgnoreCase(item.getTitle().toString()) && entry.getValue().equalsIgnoreCase(child.entityId())) {
+
+                        CommonPersonObjectClient commonPersonObjectClient = getClientDetailsByBaseEntityID(child.entityId());
+                        if (commonPersonObjectClient.getColumnmaps().get("entity_type").toString().equals(CoreConstants.TABLE_NAME.INDEPENDENT_CLIENT)) {
+                            commonPersonObjectClient.getColumnmaps().put(OpdDbConstants.KEY.REGISTER_TYPE, CoreConstants.REGISTER_TYPE.INDEPENDENT);
+                        }
+
+                        IndividualProfileRemoveActivity.startIndividualProfileActivity(this,
+                                commonPersonObjectClient,
+                                memberObject.getFamilyBaseEntityId(), memberObject.getFamilyHead(),
+                                memberObject.getPrimaryCareGiver(), LDProfileActivity.class.getCanonicalName());
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
     protected List<CommonPersonObjectClient> getChildren(MemberObject memberObject) {
         return new PncMemberProfileInteractor().pncChildrenUnder29Days(memberObject.getBaseEntityId());
+    }
+
+    public void startFormForEdit(Integer title_resource, String formName) {
+
+        JSONObject form = null;
+        CommonPersonObjectClient client = org.smartregister.chw.core.utils.Utils.clientForEdit(memberObject.getBaseEntityId());
+
+        if (formName.equals(CoreConstants.JSON_FORM.getFamilyMemberRegister())) {
+            form = CoreJsonFormUtils.getAutoPopulatedJsonEditMemberFormString(
+                    (title_resource != null) ? getResources().getString(title_resource) : null,
+                    CoreConstants.JSON_FORM.getFamilyMemberRegister(),
+                    this, client,
+                    Utils.metadata().familyMemberRegister.updateEventType, memberObject.getLastName(), false);
+        } else if (formName.equals(CoreConstants.JSON_FORM.getAncRegistration())) {
+            form = CoreJsonFormUtils.getAutoJsonEditAncFormString(
+                    memberObject.getBaseEntityId(), this, formName, CoreConstants.EventType.UPDATE_ANC_REGISTRATION, getResources().getString(title_resource));
+        } else if (formName.equalsIgnoreCase(CoreConstants.JSON_FORM.getAllClientUpdateRegistrationInfoForm())) {
+            String titleString = title_resource != null ? getResources().getString(title_resource) : null;
+            CommonPersonObjectClient commonPersonObjectClient = UpdateDetailsUtil.getFamilyRegistrationDetails(memberObject.getFamilyBaseEntityId());
+            String uniqueID = commonPersonObjectClient.getColumnmaps().get(DBConstants.KEY.UNIQUE_ID);
+            boolean isPrimaryCareGiver = commonPersonObjectClient.getCaseId().equalsIgnoreCase(memberObject.getFamilyBaseEntityId());
+
+            NativeFormsDataBinder binder = new NativeFormsDataBinder(getContext(), memberObject.getBaseEntityId());
+            binder.setDataLoader(new CoreFamilyMemberDataLoader(memberObject.getFamilyName(), isPrimaryCareGiver, titleString,
+                    org.smartregister.chw.core.utils.Utils.metadata().familyMemberRegister.updateEventType, uniqueID));
+            JSONObject jsonObject = binder.getPrePopulatedForm(CoreConstants.JSON_FORM.getAllClientUpdateRegistrationInfoForm());
+
+            try {
+                if (jsonObject != null) {
+                    UpdateDetailsUtil.startUpdateClientDetailsActivity(jsonObject, this);
+                }
+            } catch (Exception e) {
+                Timber.e(e);
+            }
+        }
+
+        try {
+            assert form != null;
+            startFormActivity(form);
+        } catch (Exception e) {
+            Timber.e(e);
+        }
+    }
+
+    public void startFormActivity(JSONObject jsonForm) {
+        Intent intent = org.smartregister.chw.core.utils.Utils.formActivityIntent(this, jsonForm.toString());
+        startActivityForResult(intent, JsonFormUtils.REQUEST_CODE_GET_JSON);
+    }
+
+    public Context getContext() {
+        return this;
+    }
+
+    protected void initializeNotificationReferralRecyclerView() {
+        notificationAndReferralLayout = findViewById(org.smartregister.chw.core.R.id.notification_and_referral_row);
+        notificationAndReferralRecyclerView = findViewById(org.smartregister.chw.core.R.id.notification_and_referral_recycler_view);
+        notificationAndReferralRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    public void setClientTasks(Set<Task> taskList) {
+        if (notificationAndReferralRecyclerView != null && taskList.size() > 0) {
+            RecyclerView.Adapter mAdapter = new ReferralCardViewAdapter(taskList, this, getCommonPersonObjectClient(memberObject.getBaseEntityId()), CoreConstants.REGISTERED_ACTIVITIES.ANC_REGISTER_ACTIVITY);
+            notificationAndReferralRecyclerView.setAdapter(mAdapter);
+            notificationAndReferralLayout.setVisibility(View.VISIBLE);
+            findViewById(R.id.view_notification_and_referral_row).setVisibility(View.VISIBLE);
+        }
     }
 
 }

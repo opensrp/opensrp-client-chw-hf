@@ -175,6 +175,10 @@
               "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
             }
           }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please the delivery date"
         }
       },
       {
@@ -190,7 +194,11 @@
               "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
             }
           }
-        }
+        },
+        "v_required": {
+        "value": "true",
+        "err": "Please the delivery time"
+      }
       },
       {
         "key": "sex",
@@ -215,6 +223,10 @@
               "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
             }
           }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select the sex"
         }
       },
       {
@@ -1764,21 +1776,36 @@
         "type": "spinner",
         "hint": "Reason as to why the BCG vaccine was not given",
         "values": [
-          "Out of stock vaccine",
-          "Home delivery"
+          "Out of stock",
+          "Others (Specify)"
         ],
         "keys": [
           "out_of_stock_vaccine",
-          "home_delivery"
+          "others"
         ],
         "openmrs_choice_ids": {
           "out_of_stock_vaccine": "out_of_stock_vaccine",
-          "home_delivery": "home_delivery"
+          "others": "others"
         },
         "v_required": {
           "value": "true",
           "err": "Please select a reason"
         },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "other_reason_for_not_providing_bcg_vacc",
+        "type": "edit_text",
+        "hint": "Please specify the other reason(s)",
+        "openmrs_entity_id": "other_reason_for_not_providing_bcg_vacc",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -1842,21 +1869,36 @@
         "type": "spinner",
         "hint": "Reason as to why the OPV 0 vaccine was not given",
         "values": [
-          "Out of stock vaccine",
-          "Home delivery"
+          "Out of stock",
+          "Others (Specify)"
         ],
         "keys": [
           "out_of_stock_vaccine",
-          "home_delivery"
+          "others"
         ],
         "openmrs_choice_ids": {
           "out_of_stock_vaccine": "out_of_stock_vaccine",
-          "home_delivery": "home_delivery"
+          "others": "others"
         },
         "v_required": {
           "value": "true",
           "err": "Please select a reason"
         },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "other_reason_for_not_providing_opv0_vacc",
+        "type": "edit_text",
+        "hint": "Please specify the other reason(s)",
+        "openmrs_entity_id": "other_reason_for_not_providing_opv0_vacc",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -1921,20 +1963,112 @@
         "hint": "Reason as to why the Hepatitis B vaccine was not given",
         "values": [
           "Out of stock vaccine",
-          "Home delivery"
+          "Others (Specify)"
         ],
         "keys": [
           "out_of_stock_vaccine",
-          "home_delivery"
+          "others"
         ],
         "openmrs_choice_ids": {
           "out_of_stock_vaccine": "out_of_stock_vaccine",
-          "home_delivery": "home_delivery"
+          "others": "others"
         },
         "v_required": {
           "value": "true",
           "err": "Please select a reason"
         },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "other_reason_for_not_providing_hepatitis_b_injection",
+        "type": "edit_text",
+        "hint": "Please specify the other reason(s)",
+        "openmrs_entity_id": "other_reason_for_not_providing_hepatitis_b_injection",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "child_vitamin_k_injection",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "child_vitamin_k_injection",
+        "type": "native_radio",
+        "label": "Was Vitamin K Injection administered?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "reason_for_not_providing_vitamin_k_injection",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_providing_vitamin_k_injection",
+        "type": "spinner",
+        "hint": "Reason as to why the Vitamin K Injection was not administered",
+        "values": [
+          "Out of stock",
+          "Others (Specify)"
+        ],
+        "keys": [
+          "out_of_stock_vaccine",
+          "others"
+        ],
+        "openmrs_choice_ids": {
+          "out_of_stock": "out_of_stock",
+          "others": "others"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select a reason"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_stage4_newborn_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "other_reason_for_not_providing_vitamin_k_injection",
+        "type": "edit_text",
+        "hint": "Please specify the other reason(s)",
+        "openmrs_entity_id": "other_reason_for_not_providing_vitamin_k_injection",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -2332,12 +2466,6 @@
             "text": "Medication expired",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "medication_expired"
-          },
-          {
-            "key": "home_delivery",
-            "text": "Home delivery",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "home_delivery"
           },
           {
             "key": "other",

@@ -100,7 +100,7 @@ public class AllClientsUtils {
         }
     }
 
-    private static void goToChildProfile(Activity activity, CommonPersonObjectClient patient, Bundle bundle) {
+    public static void goToChildProfile(Activity activity, CommonPersonObjectClient patient, Bundle bundle) {
         String dobString = Utils.getDuration(Utils.getValue(patient.getColumnmaps(), DBConstants.KEY.DOB, false));
         Integer yearOfBirth = CoreChildUtils.dobStringToYear(dobString);
         Intent intent;
@@ -118,24 +118,24 @@ public class AllClientsUtils {
         activity.startActivity(intent);
     }
 
-    private static void gotToPncProfile(Activity activity, CommonPersonObjectClient patient, Bundle bundle) {
+    public static void gotToPncProfile(Activity activity, CommonPersonObjectClient patient, Bundle bundle) {
         patient.getColumnmaps().putAll(CoreChwApplication.pncRegisterRepository().getPncCommonPersonObject(patient.entityId()).getColumnmaps());
         activity.startActivity(initProfileActivityIntent(activity, patient, bundle, PncMemberProfileActivity.class));
     }
 
-    private static void goToAncProfile(Activity activity, CommonPersonObjectClient patient) {
+    public static void goToAncProfile(Activity activity, CommonPersonObjectClient patient) {
         AncMemberProfileActivity.startMe(activity, patient.getCaseId());
     }
 
-    private static void gotToMalariaProfile(Activity activity, CommonPersonObjectClient patient) {
+    public static void gotToMalariaProfile(Activity activity, CommonPersonObjectClient patient) {
         MalariaProfileActivity.startMalariaActivity(activity, patient.getCaseId());
     }
 
-    private static void goToFamilyPlanningProfile(Activity activity, CommonPersonObjectClient patient) {
+    public static void goToFamilyPlanningProfile(Activity activity, CommonPersonObjectClient patient) {
         FamilyPlanningMemberProfileActivity.startFpMemberProfileActivity(activity, FpDao.getMember(patient.getCaseId()));
     }
 
-    private static void goToLDProfile(Activity activity, CommonPersonObjectClient patient) {
+    public static void goToLDProfile(Activity activity, CommonPersonObjectClient patient) {
         LDProfileActivity.startProfileActivity(activity, patient.getCaseId());
     }
 

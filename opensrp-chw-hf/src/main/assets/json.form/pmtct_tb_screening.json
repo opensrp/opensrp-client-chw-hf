@@ -208,6 +208,61 @@
         }
       },
       {
+        "key": "reason_for_not_conducting_tb_test",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_conducting_tb_test",
+        "type": "spinner",
+        "hint": "Reason as to why the TB test was not conducted",
+        "values": [
+          "The client was in an emergency situation",
+          "The client refused to be tested",
+          "We are still counselling the client",
+          "Other (Specify)"
+        ],
+        "keys": [
+          "client_was_in_an_emergency_situation",
+          "client_refused_to_be_tested",
+          "still_counselling_the_client",
+          "other"
+        ],
+        "openmrs_choice_ids": {
+          "client_was_in_an_emergency_situation": "client_was_in_an_emergency_situation",
+          "client_refused_to_be_tested": "client_refused_to_be_tested",
+          "still_counselling_the_client": "still_counselling_the_client",
+          "Other": "other"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select a reason"
+        },
+        "relevance": {
+          "step1:investigate_for_tb": {
+            "type": "string",
+            "ex": "equalTo(., \"test_not_conducted\")"
+          }
+        }
+      },
+      {
+        "key": "other_reason_for_not_conducting_tb_test",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reason_for_not_conducting_tb_test",
+        "type": "edit_text",
+        "hint": "Specify other reasons for not conducting TB test",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the reason"
+        },
+        "relevance": {
+          "step1:reason_for_not_conducting_tb_test": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
+          }
+        }
+      },
+      {
         "key": "prompt_for_tb_treatment",
         "type": "toaster_notes",
         "text": "Refer the client for TB treatment",

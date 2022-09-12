@@ -19,6 +19,7 @@ import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
 import org.smartregister.chw.anc.util.AppExecutors;
 import org.smartregister.chw.anc.util.VisitUtils;
+import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.core.utils.FormUtils;
 import org.smartregister.chw.hf.BuildConfig;
 import org.smartregister.chw.hf.R;
@@ -58,43 +59,16 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
     }
 
     private static String getPregnancyStatusString(String pregnancyStatus, Context context) {
-        if (pregnancyStatus.equals("intrauterine_fetal_death")) {
-            return context.getString(R.string.anc_pregnacy_status_fetal_death);
-        } else if (pregnancyStatus.equals("spontaneous_abortion")) {
-            return context.getString(R.string.anc_pregnacy_status_spontaneous_abortion);
-        } else if (pregnancyStatus.equals("viable")) {
-            return context.getString(R.string.anc_pregnacy_status_viable);
+        switch (pregnancyStatus) {
+            case "intrauterine_fetal_death":
+                return context.getString(R.string.anc_pregnacy_status_fetal_death);
+            case "spontaneous_abortion":
+                return context.getString(R.string.anc_pregnacy_status_spontaneous_abortion);
+            case "viable":
+                return context.getString(R.string.anc_pregnacy_status_viable);
+            default:
+                return "";
         }
-        return "";
-    }
-
-    private static JSONArray setChildNodes(List<Location> locations, String parentLocationId, String parentTagName) {
-        JSONArray nodes = new JSONArray();
-        ArrayList<String> locationHierarchyTags = new ArrayList<>(Arrays.asList(BuildConfig.LOCATION_HIERACHY));
-
-        for (Location location : locations) {
-            Set<LocationTag> locationTags = location.getLocationTags();
-            String childTagName = locationHierarchyTags.get(locationHierarchyTags.indexOf(parentTagName) + 1);
-            if (locationTags.iterator().next().getName().equalsIgnoreCase(childTagName) && location.getProperties().getParentId().equals(parentLocationId)) {
-                JSONObject childNode = new JSONObject();
-                try {
-                    childNode.put("name", StringUtils.capitalize(location.getProperties().getName()));
-                    childNode.put("key", StringUtils.capitalize(location.getProperties().getName()));
-
-                    JSONArray childNodes = setChildNodes(locations, location.getId(), childTagName);
-                    if (childNodes != null)
-                        childNode.put("nodes", childNodes);
-
-                    nodes.put(childNode);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        if (nodes.length() > 0) {
-            return nodes;
-        } else return null;
-
     }
 
     private static JSONObject setMinFundalHeight(JSONObject form, String baseEntityId) {
@@ -157,12 +131,12 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
         dateMap.putAll(ContactUtil.getContactWeeks(isFirst, lastContact, lastMenstrualPeriod));
 
         birthReviewForm = initializeHealthFacilitiesList(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.BIRTH_REVIEW_AND_EMERGENCY_PLAN));
-        evaluateMedicalAndSurgicalHistory(view, memberObject, callBack, details);
+        evaluatePregnancyStatus(view, memberObject, callBack, details);
 
         return actionList;
     }
 
-    private void evaluateMedicalAndSurgicalHistory(BaseAncHomeVisitContract.View view, MemberObject memberObject, BaseAncHomeVisitContract.InteractorCallBack callBack, Map<String, List<VisitDetail>> details
+    private void evaluatePregnancyStatus(BaseAncHomeVisitContract.View view, MemberObject memberObject, BaseAncHomeVisitContract.InteractorCallBack callBack, Map<String, List<VisitDetail>> details
     ) throws BaseAncHomeVisitAction.ValidationException {
 
         Context context = view.getContext();
@@ -175,6 +149,12 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                 .build();
         actionList.put(context.getString(R.string.anc_recuring_visit_pregnancy_status), pregnancyStatus);
 
+        //Refreshing the last menstrual period from from details when the action form is recreated during update/edit
+        if (details != null && details.containsKey("last_menstrual_period")) {
+            List<VisitDetail> lastMenstrualPeriod = details.get("last_menstrual_period");
+            if (lastMenstrualPeriod != null && lastMenstrualPeriod.size() > 0)
+                refreshConsultation(context, lastMenstrualPeriod.get(0).getDetails());
+        }
 
     }
 
@@ -273,10 +253,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                     malariaInvestigationForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.getMalariaInvestigation());
                     malariaInvestigationForm.getJSONObject("global").put("gestational_age", memberObject.getGestationAge());
                     malariaInvestigationForm.getJSONObject("global").put("llin_provided", HfAncDao.isLLINProvided(baseEntityId));
-                    malariaInvestigationForm.getJSONObject("global").put("malaria_preventive_therapy_ipt1", HfAncDao.malariaDosageIpt1(memberObject.getBaseEntityId()));
-                    malariaInvestigationForm.getJSONObject("global").put("malaria_preventive_therapy_ipt2", HfAncDao.malariaDosageIpt2(memberObject.getBaseEntityId()));
-                    malariaInvestigationForm.getJSONObject("global").put("malaria_preventive_therapy_ipt3", HfAncDao.malariaDosageIpt3(memberObject.getBaseEntityId()));
-                    malariaInvestigationForm.getJSONObject("global").put("malaria_preventive_therapy_ipt4", HfAncDao.malariaDosageIpt4(memberObject.getBaseEntityId()));
+                    malariaInvestigationForm.getJSONObject("global").put("malaria_preventive_therapy", HfAncDao.malariaLastIptDose(memberObject.getBaseEntityId()));
                     if (details != null && !details.isEmpty()) {
                         HfAncJsonFormUtils.populateForm(malariaInvestigationForm, details);
                     }
@@ -286,15 +263,16 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
 
                 JSONObject labTestForm = null;
                 try {
+                    String hivStatus = HfAncDao.getHivStatus(baseEntityId);
                     labTestForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.LAB_TESTS);
                     labTestForm.getJSONObject("global").put("gestational_age", memberObject.getGestationAge());
                     labTestForm.getJSONObject("global").put("hepatitis_test_complete", HfAncDao.isTestConducted(Constants.DBConstants.ANC_HEPATITIS, baseEntityId));
                     labTestForm.getJSONObject("global").put("malaria_test_complete", HfAncDao.isTestConducted(Constants.DBConstants.ANC_MRDT_FOR_MALARIA, baseEntityId));
                     labTestForm.getJSONObject("global").put("syphilis_test_complete", HfAncDao.isTestConducted(Constants.DBConstants.ANC_SYPHILIS, baseEntityId));
-                    labTestForm.getJSONObject("global").put("hiv_test_complete", HfAncDao.isTestConducted(Constants.DBConstants.ANC_HIV, baseEntityId));
+                    labTestForm.getJSONObject("global").put("hiv_test_complete", hivStatus.equals("positive") || HfAncDao.isTestConducted(Constants.DBConstants.ANC_HIV, baseEntityId));
                     labTestForm.getJSONObject("global").put("hiv_test_at_32_complete", HfAncDao.isHivTestConductedAtWk32(baseEntityId));
                     labTestForm.getJSONObject("global").put("blood_group_complete", HfAncDao.isBloodGroupTestConducted(baseEntityId));
-                    labTestForm.getJSONObject("global").put("hiv_status", HfAncDao.getHivStatus(baseEntityId));
+                    labTestForm.getJSONObject("global").put("hiv_status", hivStatus);
                     JSONArray fields = labTestForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
                     JSONObject hivTestNumberField = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "hiv_test_number");
                     hivTestNumberField.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getNextHivTestNumber(memberObject.getBaseEntityId()));
@@ -337,7 +315,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                                 .withDetails(details)
                                 .withJsonPayload(triageForm.toString())
                                 .withFormName(Constants.JsonForm.AncRecurringVisit.getTriage())
-                                .withHelper(new AncTriageAction(memberObject))
+                                .withHelper(new MyAncTriageAction(memberObject, context))
                                 .build();
                         actionList.put(context.getString(R.string.anc_recuring_visit_triage), triage);
                     } catch (BaseAncHomeVisitAction.ValidationException e) {
@@ -461,6 +439,44 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
         }
     }
 
+    private class MyAncTriageAction extends AncTriageAction {
+        private Context context;
+
+        public MyAncTriageAction(MemberObject memberObject, Context context) {
+            super(memberObject);
+            this.context = context;
+        }
+
+        @Override
+        public String postProcess(String jsonPayload) {
+            JSONObject jsonObject = null;
+            try {
+                jsonObject = new JSONObject(jsonPayload);
+                String lastMenstrualPeriod = CoreJsonFormUtils.getValue(jsonObject, "last_menstrual_period");
+                refreshConsultation(context, lastMenstrualPeriod);
+            } catch (Exception e) {
+                Timber.e(e);
+            }
+            return super.postProcess(jsonPayload);
+        }
+    }
+
+    private void refreshConsultation(Context context, String lastMenstrualPeriod) {
+        if (actionList.containsKey(context.getString(R.string.anc_recuring_visit_cunsultation))) {
+            BaseAncHomeVisitAction consultation = actionList.get(context.getString(R.string.anc_recuring_visit_cunsultation));
+            String consultationJsonPayload = consultation.getJsonPayload();
+
+            JSONObject consultationJsonPayloadObject = null;
+            try {
+                consultationJsonPayloadObject = new JSONObject(consultationJsonPayload);
+                consultationJsonPayloadObject.getJSONObject("global").put("last_menstrual_period", lastMenstrualPeriod);
+                consultation.setJsonPayload(consultationJsonPayloadObject.toString());
+                consultation.evaluateStatus();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
 }
 

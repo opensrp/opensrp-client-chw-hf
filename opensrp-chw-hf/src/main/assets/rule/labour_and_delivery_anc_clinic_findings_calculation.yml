@@ -4,4 +4,4 @@ description: hiv status calculated
 priority: 1
 condition: "true"
 actions:
-  - "calculation = step1_anc_hiv_status.equals('known_on_art_before_this_pregnancy') ? positive : step1_anc_hiv_status  "
+  - "calculation = step1_anc_hiv_status.equals('known_on_art_before_this_pregnancy') ? 'positive' : step1_anc_hiv_status  "

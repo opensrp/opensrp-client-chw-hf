@@ -37,7 +37,9 @@ import org.smartregister.chw.hf.presenter.HfAllClientsMemberPresenter;
 import org.smartregister.chw.hf.utils.AllClientsUtils;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hf.utils.LFTUFormUtils;
+import org.smartregister.chw.hivst.dao.HivstDao;
 import org.smartregister.chw.ld.dao.LDDao;
+import org.smartregister.chw.malaria.dao.MalariaDao;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.family.adapter.ViewPagerAdapter;
 import org.smartregister.family.fragment.BaseFamilyOtherMemberProfileFragment;
@@ -58,6 +60,7 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
         String gender = Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.GENDER, false);
         menu.findItem(R.id.action_location_info).setVisible(true);
         menu.findItem(R.id.action_pregnancy_out_come).setVisible(false);
+        menu.findItem(R.id.action_hivst_registration).setVisible(!HivstDao.isRegisteredForHivst(baseEntityId));
         if (BuildConfig.BUILD_FOR_BORESHA_AFYA_SOUTH) {
             AllClientsUtils.updateHivMenuItems(baseEntityId, menu);
             // AllClientsUtils.updateTbMenuItems(baseEntityId, menu);
@@ -76,7 +79,8 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
             menu.findItem(R.id.action_ld_registration).setVisible(false);
         }
         menu.findItem(R.id.action_sick_child_follow_up).setVisible(false);
-        menu.findItem(R.id.action_malaria_diagnosis).setVisible(false);
+        if (BuildConfig.ENABLED_MALARIA_MODULE)
+            menu.findItem(R.id.action_malaria_diagnosis).setVisible(!MalariaDao.isRegisteredForMalaria(baseEntityId));
         return true;
     }
 
@@ -108,6 +112,9 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
                     CoreConstants.JSON_FORM.getFamilyDetailsRegister(), this,
                     getFamilyRegistrationDetails(), Utils.metadata().familyRegister.updateEventType);
             if (preFilledForm != null) startFormActivity(preFilledForm);
+            return true;
+        } else if (itemId == org.smartregister.chw.core.R.id.action_malaria_diagnosis) {
+            startHfMalariaFollowupForm();
             return true;
         }
 
@@ -258,7 +265,7 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
 
     @Override
     protected void startHfMalariaFollowupForm() {
-        //Do nothing - not required for HF
+        MalariaFollowUpVisitActivityHelper.startMalariaFollowUpActivity(this, baseEntityId);
     }
 
     @Override
@@ -283,6 +290,12 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
     }
 
     @Override
+    protected void startHivstRegistration() {
+        String gender = Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.GENDER, false);
+        HivstRegisterActivity.startHivstRegistrationActivity(AllClientsMemberProfileActivity.this, baseEntityId, gender);
+    }
+
+    @Override
     protected void setIndependentClient(boolean isIndependentClient) {
         super.isIndependent = isIndependentClient;
     }
@@ -293,9 +306,9 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
         if (viewId == R.id.call_layout) {
             FamilyCallDialogFragment.launchDialog(this, familyBaseEntityId);
         }
-        if (viewId == R.id.refer_to_facility_layout){
+        if (viewId == R.id.refer_to_facility_layout) {
             String gender = Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.GENDER, false);
-            LFTUFormUtils.startLTFUReferral(this, baseEntityId,gender);
+            LFTUFormUtils.startLTFUReferral(this, baseEntityId, gender);
         }
     }
 

@@ -1,0 +1,42 @@
+---
+name: step1_malaria_preventive_therapy_ipt1
+description: malaria preventive therapy should be recorded if gestational age is greater than 13
+priority: 1
+condition: "global_gestational_age >= 13 && !global_malaria_preventive_therapy.equals('ipt1') && !global_malaria_preventive_therapy.equals('ipt2') && !global_malaria_preventive_therapy.equals('ipt3') && !global_malaria_preventive_therapy.equals('ipt4') && (!step1_client_on_malaria_medication.equals('') && step1_client_on_malaria_medication.equals('no')) && ((!step1_mRDT_for_malaria.equals('') && !step1_mRDT_for_malaria.equals('positive')) || (step1_malaria_symptoms_screening!= null && step1_malaria_symptoms_screening.contains('none')))"
+actions:
+  - "isRelevant = true"
+---
+name: step1_malaria_preventive_therapy_ipt2
+description: malaria preventive therapy ipt2 if ipt1 is given
+priority: 1
+condition: "global_malaria_preventive_therapy.equals('ipt1') && (!step1_client_on_malaria_medication.equals('') && step1_client_on_malaria_medication.equals('no')) && ((!step1_mRDT_for_malaria.equals('') && !step1_mRDT_for_malaria.equals('positive')) || (step1_malaria_symptoms_screening!= null && step1_malaria_symptoms_screening.contains('none')))"
+actions:
+  - "isRelevant = true"
+---
+name: step1_malaria_preventive_therapy_ipt3
+description: malaria preventive therapy ipt3 if ipt2 is given
+priority: 1
+condition: "global_malaria_preventive_therapy.equals('ipt2') && (!step1_client_on_malaria_medication.equals('') && step1_client_on_malaria_medication.equals('no')) && ((!step1_mRDT_for_malaria.equals('') && !step1_mRDT_for_malaria.equals('positive')) || (step1_malaria_symptoms_screening!= null && step1_malaria_symptoms_screening.contains('none')))"
+actions:
+  - "isRelevant = true"
+---
+name: step1_malaria_preventive_therapy_ipt4
+description: malaria preventive therapy ipt4 if ipt3 is given
+priority: 1
+condition: "global_malaria_preventive_therapy.equals('ipt3') && (!step1_client_on_malaria_medication.equals('') && step1_client_on_malaria_medication.equals('no')) && ((!step1_mRDT_for_malaria.equals('') && !step1_mRDT_for_malaria.equals('positive')) || (step1_malaria_symptoms_screening!= null && step1_malaria_symptoms_screening.contains('none')))"
+actions:
+  - "isRelevant = true"
+---
+name: step1_reason_for_not_giving_malaria_medication
+description: reasons for not giving malaria medication relevance
+priority: 1
+condition: "step1_malaria_preventive_therapy_ipt1.contains('medication_not_given') || step1_malaria_preventive_therapy_ipt2.contains('medication_not_given') || step1_malaria_preventive_therapy_ipt3.contains('medication_not_given') || step1_malaria_preventive_therapy_ipt4.contains('medication_not_given')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_llin_provision
+description: llin provision relevance
+priority: 1
+condition: "!global_llin_provided"
+actions:
+  - "isRelevant = true"

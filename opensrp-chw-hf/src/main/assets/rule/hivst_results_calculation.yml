@@ -1,0 +1,18 @@
+---
+name: step1_hivst_result
+description: hivst_result calculation
+priority: 1
+condition: "true"
+actions:
+  - "calculation = (step1_disclose_result != '' && step1_disclose_result == 'no') ?
+                    'client_did_not_disclose' : step1_client_test_result != '' ? step1_client_test_result
+                     : step1_peer_test_result != '' ? step1_peer_test_result : step1_sexual_partner_test_result != '' ?
+                        step1_sexual_partner_test_result : '' "
+
+---
+name: step1_register_to_hts
+description: register to hts is yes if client results are reactive or non-reactive
+priority: 1
+condition: "true"
+actions:
+  - "calculation = step1_client_test_result != '' && (step1_client_test_result == 'reactive' || step1_client_test_result == 'non_reactive') ? 'yes' : 'no'"

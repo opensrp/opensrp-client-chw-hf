@@ -437,7 +437,11 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "test_not_conducted"
           }
-        ]
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
       },
       {
         "key": "management_provided_for_syphilis",

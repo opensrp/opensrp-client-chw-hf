@@ -62,20 +62,26 @@ public class HfAncDao extends AbstractDao {
 
 
     public static boolean isPartnerTestedForHiv(String baseEntityId) {
-        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "partner_hiv");
+        DataMap<String> partnerHivDataMap = cursor -> getCursorValue(cursor, "partner_hiv");
+        DataMap<String> reasonForNotConductingPartnerHivTestDataMap = cursor -> getCursorValue(cursor, "reason_for_not_conducting_partner_hiv_test");
 
         String sql = String.format(
-                "SELECT partner_hiv FROM %s WHERE base_entity_id = '%s' " +
+                "SELECT partner_hiv, reason_for_not_conducting_partner_hiv_test FROM %s WHERE base_entity_id = '%s' " +
                         "AND partner_hiv is not null " +
                         "AND is_closed = 0",
                 "ec_anc_register",
                 baseEntityId
         );
 
-        List<String> res = readData(sql, dataMap);
+        List<String> partnerHivRes = readData(sql, partnerHivDataMap);
+        List<String> reasonForNotConductingPartnerHivTestRes = readData(sql, reasonForNotConductingPartnerHivTestDataMap);
 
-        if (res.size() == 1) {
-            return !res.get(0).equalsIgnoreCase("test_not_conducted");
+        if (partnerHivRes.size() == 1) {
+            if (!partnerHivRes.get(0).equalsIgnoreCase("test_not_conducted"))
+                return !partnerHivRes.get(0).equalsIgnoreCase("test_not_conducted");
+            else if (reasonForNotConductingPartnerHivTestRes.size() == 1) {
+                return reasonForNotConductingPartnerHivTestRes.get(0).equalsIgnoreCase("known_on_art");
+            }
         }
 
         return false;
@@ -248,6 +254,23 @@ public class HfAncDao extends AbstractDao {
 
         String sql = String.format(
                 "SELECT malaria_preventive_therapy_ipt1 FROM %s WHERE base_entity_id = '%s' " +
+                        "AND is_closed = 0",
+                "ec_anc_register",
+                baseEntityId
+        );
+
+        List<String> res = readData(sql, dataMap);
+        if (res != null && res.size() > 0 && res.get(0) != null) {
+            return res.get(0);
+        }
+        return "null";
+    }
+
+    public static String malariaLastIptDose(String baseEntityId) {
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "malaria_preventive_therapy");
+
+        String sql = String.format(
+                "SELECT malaria_preventive_therapy FROM %s WHERE base_entity_id = '%s' " +
                         "AND is_closed = 0",
                 "ec_anc_register",
                 baseEntityId

@@ -91,6 +91,14 @@
         "value": "Died"
       },
       {
+        "key": "cause_of_death",
+        "type": "edit_text",
+        "hint": "Cause of death",
+        "openmrs_entity_id": "cause_of_death",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": ""
+      },
+      {
         "key": "dob",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",

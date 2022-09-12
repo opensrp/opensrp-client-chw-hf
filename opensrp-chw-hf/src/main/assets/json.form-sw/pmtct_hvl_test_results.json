@@ -113,9 +113,26 @@
         "openmrs_entity_parent": "",
         "toaster_type": "problem",
         "relevance": {
-          "step1:hvl_result": {
-            "type": "numeric",
-            "ex": "greaterThanEqualTo(.,\"1000\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_hvl_test_results_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "discuss_plan_prompt",
+        "type": "toaster_notes",
+        "text": "Jadili Mpango wa matibabu ya Mteja Huyu",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_hvl_test_results_relevance.yml"
+            }
           }
         }
       },

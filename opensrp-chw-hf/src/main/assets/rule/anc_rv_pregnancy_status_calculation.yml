@@ -1,0 +1,7 @@
+---
+name: step1_preg_outcome
+description: Gestational age calculated
+priority: 1
+condition: "true"
+actions:
+  - "calculation = step1_pregnancy_status.contains('intrauterine_fetal_death') ? 'still_born' : '' "

@@ -1,5 +1,6 @@
 package org.smartregister.chw.hf.dao;
 
+import static org.smartregister.chw.hf.utils.Constants.FOCUS.LD_CHILD_EMERGENCY;
 import static org.smartregister.chw.hf.utils.Constants.FOCUS.LD_EMERGENCY;
 
 import org.smartregister.chw.ld.domain.MemberObject;
@@ -192,6 +193,17 @@ public class LDDao extends org.smartregister.chw.ld.dao.LDDao {
         if (res != null && res.size() > 0)
             return res.get(0);
         return null;
+    }
+
+
+    public static List<String> getBaseEntityIdsOfMothersForChildrenWithEmergencyReferrals() {
+        String sql = "SELECT ec.mother_entity_id as mother_entity_id FROM task t" +
+                " INNER JOIN ec_child ec ON ec.base_entity_id = t.for " +
+                " WHERE " +
+                " focus LIKE '%" + LD_CHILD_EMERGENCY + "%' AND  ec.mother_entity_id NOT IN (SELECT base_entity_id FROM ec_family_member)";
+
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "mother_entity_id");
+        return readData(sql, dataMap);
     }
 
 }

@@ -53,6 +53,12 @@
             android:theme="@style/HFTheme.NoActionBar"/>
         <activity android:name=".activity.LtfuSummaryViewActivity"
             android:theme="@style/HFTheme.NoActionBar"/>
+        <activity android:name=".activity.HivstRegisterActivity"
+            android:theme="@style/HFTheme.NoActionBar"/>
+        <activity android:name=".activity.HivstProfileActivity"
+            android:theme="@style/HFTheme.NoActionBar"/>
+        <activity android:name=".activity.HivstResultViewActivity"
+            android:theme="@style/HFTheme.NoActionBar"/>
         <activity android:name=".activity.LdReportsActivity"
             android:theme="@style/HFTheme.NoActionBar"/>
         <activity android:name=".activity.LdReportsViewActivity"
@@ -362,6 +368,7 @@
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
             android:name=".activity.LDPartographDetailsActivity"
+            android:screenOrientation="landscape"
             android:theme="@style/HFTheme.NoActionBar" />
 
         <activity
@@ -403,7 +410,7 @@
         <service android:name="org.smartregister.sync.intent.LocationIntentService" />
         <service android:name=".sync.intent.HfSyncTaskIntentService" />
         <service android:name="org.smartregister.sync.intent.PlanIntentService" />
-        <service android:name="org.smartregister.chw.core.sync.intent.SyncClientEventsPerTaskIntentService" />
+        <service android:name=".sync.intent.HfSyncClientEventsPerTaskIntentService" />
         <service android:name="org.smartregister.chw.core.sync.intent.CloseExpiredReferralsIntentService" />
         <service android:name="org.smartregister.sync.intent.SyncLocationsByTeamIdsIntentService" />
         <service android:name="org.smartregister.sync.intent.SyncLocationsByLevelAndTagsIntentService" />

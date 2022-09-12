@@ -19,18 +19,30 @@ import org.smartregister.chw.core.utils.Utils;
 import org.smartregister.chw.hf.activity.LDProfileActivity;
 import org.smartregister.chw.hf.model.LDRegisterFragmentModel;
 import org.smartregister.chw.hf.presenter.LDRegisterFragmentPresenter;
+import org.smartregister.chw.hf.provider.HfLDRegisterProvider;
 import org.smartregister.chw.ld.fragment.BaseLDRegisterFragment;
+import org.smartregister.chw.ld.provider.LDRegisterProvider;
 import org.smartregister.commonregistry.CommonRepository;
+import org.smartregister.cursoradapter.RecyclerViewPaginatedAdapter;
 import org.smartregister.cursoradapter.SmartRegisterQueryBuilder;
 import org.smartregister.view.customcontrols.CustomFontTextView;
 
 import java.text.MessageFormat;
 import java.util.List;
+import java.util.Set;
 
 import timber.log.Timber;
 
 public class LDRegisterFragment extends BaseLDRegisterFragment {
     private Toolbar toolbar;
+
+    @Override
+    public void initializeAdapter(Set<org.smartregister.configurableviews.model.View> visibleColumns) {
+        LDRegisterProvider LDRegisterProvider = new HfLDRegisterProvider(getActivity(), paginationViewHandler, registerActionHandler, visibleColumns);
+        clientAdapter = new RecyclerViewPaginatedAdapter(null, LDRegisterProvider, context().commonrepository(this.tablename));
+        clientAdapter.setCurrentlimit(20);
+        clientsView.setAdapter(clientAdapter);
+    }
 
     @Override
     public void setupViews(View view) {

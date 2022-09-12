@@ -54,11 +54,14 @@ import org.smartregister.chw.hf.model.FamilyProfileModel;
 import org.smartregister.chw.hf.presenter.AncMemberProfilePresenter;
 import org.smartregister.chw.hf.utils.VisitUtils;
 import org.smartregister.chw.hiv.dao.HivDao;
+import org.smartregister.chw.hivst.dao.HivstDao;
 import org.smartregister.chw.ld.dao.LDDao;
 import org.smartregister.chw.pmtct.dao.PmtctDao;
 import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.commonregistry.AllCommonsRepository;
+import org.smartregister.commonregistry.CommonPersonObject;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
+import org.smartregister.commonregistry.CommonRepository;
 import org.smartregister.domain.AlertStatus;
 import org.smartregister.domain.Task;
 import org.smartregister.family.contract.FamilyProfileContract;
@@ -66,6 +69,7 @@ import org.smartregister.family.domain.FamilyEventClient;
 import org.smartregister.family.interactor.FamilyProfileInteractor;
 import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.family.util.Utils;
+import org.smartregister.opd.utils.OpdDbConstants;
 import org.smartregister.repository.AllSharedPreferences;
 import org.smartregister.view.customcontrols.CustomFontTextView;
 
@@ -148,11 +152,14 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         super.onCreateOptionsMenu(menu);
         menu.findItem(R.id.anc_danger_signs_outcome).setVisible(false);
         menu.findItem(R.id.action_anc_registration).setVisible(false);
-        menu.findItem(R.id.action_remove_member).setVisible(false);
+        menu.findItem(R.id.action_remove_member).setVisible(true);
+        menu.findItem(R.id.action_remove_member).setTitle(getString(R.string.mark_as_deceased));
         menu.findItem(R.id.action_pregnancy_out_come).setVisible(!HfAncDao.isClientClosed(baseEntityID));
         menu.findItem(R.id.action_malaria_diagnosis).setVisible(false);
+        menu.findItem(R.id.action_hivst_registration).setVisible(!HivstDao.isRegisteredForHivst(baseEntityID));
 
-        if (memberObject.getGestationAge() >= 24)
+
+        if (memberObject.getGestationAge() >= 28)
             menu.findItem(R.id.action_ld_registration).setVisible(!LDDao.isRegisteredForLD(baseEntityID));
         partnerBaseEntityId = HfAncDao.getPartnerBaseEntityId(memberObject.getBaseEntityId());
         if (StringUtils.isBlank(partnerBaseEntityId)) {
@@ -403,10 +410,14 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         TextView processVisitBtn = findViewById(R.id.textview_process_visit);
         processVisitBtn.setOnClickListener(v -> {
             try {
-                VisitUtils.manualProcessVisit(visit);
+                VisitUtils.manualProcessVisit(visit,AncMemberProfileActivity.this);
                 //reload views after visit is processed
                 setupViews();
                 presenter().refreshProfileBottom();
+                if (!baseEntityID.isEmpty()) {
+                    memberObject = getMemberObject(baseEntityID);
+                    ((AncMemberProfilePresenter) presenter()).refreshProfileTopSection(memberObject);
+                }
             } catch (Exception e) {
                 Timber.e(e);
             }
@@ -448,6 +459,10 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     protected void onResume() {
         super.onResume();
         setupViews();
+        if (!baseEntityID.isEmpty()) {
+            memberObject = getMemberObject(baseEntityID);
+            ((AncMemberProfilePresenter) presenter()).refreshProfileTopSection(memberObject);
+        }
         ancMemberProfilePresenter().fetchTasks();
         if (notificationAndReferralRecyclerView != null && notificationAndReferralRecyclerView.getAdapter() != null) {
             notificationAndReferralRecyclerView.getAdapter().notifyDataSetChanged();
@@ -508,7 +523,9 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
                 lastNotDoneVisit = null;
             }
         }
-        Visit latestVisit = getVisit(ANC_FIRST_FACILITY_VISIT);
+        Visit latestVisit = getVisit(ANC_RECURRING_FACILITY_VISIT);
+        if (latestVisit == null)
+            latestVisit = getVisit(ANC_FIRST_FACILITY_VISIT);
         String visitDate = latestVisit != null ? new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(latestVisit.getDate()) : null;
         String lastVisitNotDone = lastNotDoneVisit != null ? new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(lastNotDoneVisit.getDate()) : null;
 
@@ -647,6 +664,12 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
             if (preFilledForm != null)
                 UpdateDetailsUtil.startUpdateClientDetailsActivity(preFilledForm, this);
             return true;
+        } else if(itemId == R.id.action_hivst_registration){
+            startHivstRegistration();
+            return true;
+        } else if (itemId == org.smartregister.chw.core.R.id.action_remove_member) {
+            removeMember();
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
@@ -665,6 +688,29 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         } catch (Exception e) {
             Timber.e(e);
         }
+    }
+
+    private void startHivstRegistration() {
+        CommonRepository commonRepository = Utils.context().commonrepository(Utils.metadata().familyMemberRegister.tableName);
+
+        final CommonPersonObject commonPersonObject = commonRepository.findByBaseEntityId(memberObject.getBaseEntityId());
+        final CommonPersonObjectClient client =
+                new CommonPersonObjectClient(commonPersonObject.getCaseId(), commonPersonObject.getDetails(), "");
+        client.setColumnmaps(commonPersonObject.getColumnmaps());
+        String gender = Utils.getValue(commonPersonObject.getColumnmaps(), org.smartregister.family.util.DBConstants.KEY.GENDER, false);
+        HivstRegisterActivity.startHivstRegistrationActivity(this, baseEntityID, gender);
+    }
+    
+    protected void removeMember() {
+        CommonPersonObjectClient commonPersonObjectClient = getClientDetailsByBaseEntityID(memberObject.getBaseEntityId());
+        if (commonPersonObjectClient.getColumnmaps().get("entity_type").toString().equals(CoreConstants.TABLE_NAME.INDEPENDENT_CLIENT)) {
+            commonPersonObjectClient.getColumnmaps().put(OpdDbConstants.KEY.REGISTER_TYPE, CoreConstants.REGISTER_TYPE.INDEPENDENT);
+        }
+
+        IndividualProfileRemoveActivity.startIndividualProfileActivity(this,
+                commonPersonObjectClient,
+                memberObject.getFamilyBaseEntityId(), memberObject.getFamilyHead(),
+                memberObject.getPrimaryCareGiver(), FpRegisterActivity.class.getCanonicalName());
     }
 
 

@@ -1,5 +1,6 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.core.utils.Utils.getCommonPersonObjectClient;
 import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
 import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
 import static org.smartregister.chw.hf.utils.JsonFormUtils.SYNC_LOCATION_ID;
@@ -49,6 +50,7 @@ import org.smartregister.chw.hf.interactor.PncMemberProfileInteractor;
 import org.smartregister.chw.hf.model.FamilyProfileModel;
 import org.smartregister.chw.hf.presenter.PncMemberProfilePresenter;
 import org.smartregister.chw.hf.utils.PncVisitUtils;
+import org.smartregister.chw.hivst.dao.HivstDao;
 import org.smartregister.chw.malaria.dao.MalariaDao;
 import org.smartregister.chw.pmtct.dao.PmtctDao;
 import org.smartregister.chw.pmtct.util.NCUtils;
@@ -241,6 +243,8 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
         }
         menu.findItem(R.id.action__pnc_remove_member).setVisible(false);
         menu.findItem(R.id.action__pnc_danger_sign_outcome).setVisible(false);
+        menu.findItem(R.id.action_hivst_registration).setVisible(!HivstDao.isRegisteredForHivst(baseEntityID));
+
 
         if (MalariaDao.isRegisteredForMalaria(baseEntityID)) {
             menu.findItem(R.id.action_malaria_followup_visit).setVisible(true);
@@ -280,8 +284,17 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
             if (preFilledForm != null)
                 UpdateDetailsUtil.startUpdateClientDetailsActivity(preFilledForm, this);
             return true;
+        } else if (itemId == org.smartregister.chw.core.R.id.action_hivst_registration){
+            startHivstRegistration();
+            return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void startHivstRegistration(){
+        CommonPersonObjectClient commonPersonObjectClient = getCommonPersonObjectClient();
+        String gender = Utils.getValue(commonPersonObjectClient.getColumnmaps(), org.smartregister.family.util.DBConstants.KEY.GENDER, false);
+        HivstRegisterActivity.startHivstRegistrationActivity(this, baseEntityID,gender);
     }
 
     public void startFormForEdit(Integer title_resource, String formName) {
