@@ -178,18 +178,6 @@
         }
       },
       {
-        "key": "msd_code",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "msd_code",
-        "type": "edit_text",
-        "hint": "MSD code of the facility",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the MSD code"
-        }
-      },
-      {
         "key": "request_type",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
