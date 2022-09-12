@@ -2,7 +2,6 @@ package org.smartregister.chw.hf.contract;
 
 import org.smartregister.chw.ld.contract.LDProfileContract;
 import org.smartregister.domain.Task;
-import org.smartregister.repository.AllSharedPreferences;
 
 import java.util.Set;
 
