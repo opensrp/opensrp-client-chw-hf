@@ -45,5 +45,10 @@
         android:visible="false"
         android:title="@string/pnc_registration"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_hivst_registration"
+        android:enabled="true"
+        android:title="@string/hivst_registration"
+        app:showAsAction="never" />
 
 </menu>
