@@ -22,13 +22,13 @@ public class HfSyncConfiguration extends SyncConfiguration {
 
     @Override
     public SyncFilter getSyncFilterParam() {
-        return SyncFilter.LOCATION_ID;
+        return SyncFilter.TEAM_ID;
     }
 
     @Override
     public String getSyncFilterValue() {
         String providerId = org.smartregister.Context.getInstance().allSharedPreferences().fetchRegisteredANM();
-        return org.smartregister.Context.getInstance().allSharedPreferences().fetchUserLocalityId(providerId);
+        return org.smartregister.Context.getInstance().allSharedPreferences().fetchDefaultTeamId(providerId);
     }
 
     @Override
