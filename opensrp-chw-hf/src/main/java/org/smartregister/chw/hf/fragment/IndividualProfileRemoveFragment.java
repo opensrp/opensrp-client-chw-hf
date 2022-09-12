@@ -67,7 +67,7 @@ public class IndividualProfileRemoveFragment extends CoreIndividualProfileRemove
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     if (familyBaseEntityId != null) { //Independent clients don't belong to family
                         CommonPersonObject personObject = getCommonRepository(Utils.metadata().familyRegister.tableName).findByBaseEntityId(familyBaseEntityId);
-                        if (personObject.getCaseId() != null) {
+                        if (personObject != null) {
                             CommonPersonObjectClient pClient = new CommonPersonObjectClient(personObject.getCaseId(),
                                     personObject.getDetails(), "");
                             pClient.setColumnmaps(personObject.getColumnmaps());
