@@ -27,10 +27,10 @@ public class RequestOrdersRegisterFragment extends CoreOrdersRegisterFragment {
     @Override
     protected void refreshSyncProgressSpinner() {
         if (syncProgressBar != null) {
-            syncProgressBar.setVisibility(android.view.View.GONE);
+            syncProgressBar.setVisibility(View.GONE);
         }
         if (syncButton != null) {
-            syncButton.setVisibility(android.view.View.GONE);
+            syncButton.setVisibility(View.GONE);
         }
     }
 
