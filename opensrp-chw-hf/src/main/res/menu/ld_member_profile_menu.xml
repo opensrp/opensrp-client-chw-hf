@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_anc_member_registration"
+        android:id="@+id/action_member_registration"
         android:enabled="true"
         android:title="@string/registration_info"
         app:showAsAction="never" />
@@ -25,6 +25,15 @@
         android:enabled="true"
         android:visible="false"
         android:title="@string/refer_child_for_emergency"
+        android:orderInCategory="200"
+        app:showAsAction="never" />
+
+
+    <item
+        android:id="@+id/action_mark_newborn_as_deceased"
+        android:enabled="true"
+        android:visible="false"
+        android:title="@string/mark_newborn_as_deceased"
         android:orderInCategory="200"
         app:showAsAction="never" />
 

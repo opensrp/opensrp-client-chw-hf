@@ -193,6 +193,10 @@
             "openmrs_entity_id": "other"
           }
         ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select the reasons"
+        },
         "relevance": {
           "step1:admission_from": {
             "type": "string",

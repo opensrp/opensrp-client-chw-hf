@@ -81,7 +81,11 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "bad"
           }
-        ]
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select the general condition of the client"
+        }
       },
       {
         "key": "prompt_for_general_condition",
@@ -532,6 +536,10 @@
               "rules-file": "labour_and_delivery_general_examination_relevance.yml"
             }
           }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select the presentation"
         }
       },
       {
@@ -558,6 +566,13 @@
         "text_color": "#000000",
         "type": "native_radio",
         "options": [
+          {
+            "key": "no_contraction",
+            "text": "No contraction",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no_contraction"
+          },
           {
             "key": "1",
             "text": "1",
@@ -624,7 +639,18 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "over_40_secs"
           }
-        ]
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "labour_and_delivery_general_examination_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select the contraction time"
+        }
       },
       {
         "key": "prompt_for_contraction_less_than_20_secs",

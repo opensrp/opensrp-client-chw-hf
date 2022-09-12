@@ -47,3 +47,10 @@ priority: 1
 condition: "step1_lie.contains('longitudinal') || step1_lie.contains('oblique')"
 actions:
   - "isRelevant = true"
+---
+name: step1_contraction_in_ten_minutes
+description:  contraction_in_ten_minutes prompt
+priority: 1
+condition: "!step1_contraction_frequency.equals('') && !step1_contraction_frequency.contains('no_contraction') "
+actions:
+  - "isRelevant = true"

@@ -10,7 +10,7 @@ import org.smartregister.chw.core.job.ChwIndicatorGeneratingJob;
 import org.smartregister.chw.core.job.CloseExpiredReferralsServiceJob;
 import org.smartregister.chw.core.job.SyncTaskWithClientEventsServiceJob;
 import org.smartregister.chw.core.job.VaccineRecurringServiceJob;
-import org.smartregister.chw.core.sync.intent.SyncClientEventsPerTaskIntentService;
+import org.smartregister.chw.hf.sync.intent.HfSyncClientEventsPerTaskIntentService;
 import org.smartregister.chw.hf.sync.intent.HfSyncTaskIntentService;
 import org.smartregister.job.ExtendedSyncServiceJob;
 import org.smartregister.job.ImageUploadServiceJob;
@@ -54,7 +54,7 @@ public class HfJobCreator implements JobCreator {
        /*     case PlanIntentServiceJob.TAG:
                 return new PlanIntentServiceJob();*/
             case SyncTaskWithClientEventsServiceJob.TAG:
-                return new SyncTaskWithClientEventsServiceJob(SyncClientEventsPerTaskIntentService.class);
+                return new SyncTaskWithClientEventsServiceJob(HfSyncClientEventsPerTaskIntentService.class);
             case CloseExpiredReferralsServiceJob.TAG:
                 return new CloseExpiredReferralsServiceJob();
             case SyncLocationsByTeamIdsJob.TAG:

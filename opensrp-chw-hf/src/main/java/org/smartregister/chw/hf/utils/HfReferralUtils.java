@@ -48,7 +48,7 @@ public class HfReferralUtils extends CoreReferralUtils {
     public static String getReferralDueFilter(String tableName, String taskFocus) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(
-                " SELECT distinct (task.for) ")
+                        " SELECT distinct (task.for) ")
                 .append(" FROM task ")
                 .append(" INNER JOIN %t ON %t.base_entity_id = task.for ")
                 .append(" WHERE task.business_status = 'Referred' ")
@@ -80,6 +80,9 @@ public class HfReferralUtils extends CoreReferralUtils {
                     break;
                 case CoreConstants.REGISTER_TYPE.FAMILY_PLANNING:
                     focus = CoreConstants.TASKS_FOCUS.FP_SIDE_EFFECTS;
+                    break;
+                case CoreConstants.REGISTER_TYPE.LD:
+                    focus = Constants.FOCUS.LD_EMERGENCY;
                     break;
                 default:
                     focus = CoreConstants.REGISTER_TYPE.OTHER;

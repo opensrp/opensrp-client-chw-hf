@@ -12,7 +12,7 @@ import java.util.List;
 public class LdMonthlyReportObject extends ReportObject {
     private final Date reportDate;
     private final List<String> indicatorCodesWithAgeGroups = new ArrayList<>();
-    private final String[] indicatorCodesArray = new String[]{"2a", "2b", "2c", "2d", "2e", "3a", "4a", "4b", "4c", "4d", "5a", "5b", "5c", "5d", "5e", "5f", "5g", "5h", "5i", "6a", "6b", "6c", "6d", "6e", "6f", "6g", "6h", "7a", "7b", "7c", "7d", "7e", "7f", "8a", "8b", "8c", "8d", "8e", "9a", "9b", "9c", "9d", "9e", "9f", "9g", "10a", "10b", "10c", "10d", "10e", "10f", "10g", "10h", "11a", "11b", "11c", "11d", "11e", "11f", "11g", "11h", "12a", "12b", "12c", "13a", "13b", "14a", "15a", "15b", "15c", "15d", "15e"};
+    private final String[] indicatorCodesArray = new String[]{"2a", "2b", "2c", "2d", "2e", "3a", "4a", "4b", "4c", "4d", "5a", "5b", "5c", "5d", "5e", "5f", "5g", "5h", "5i", "6a", "6b", "6c", "6d", "6e", "6f", "6g", "6h", "7a", "7b", "7c", "7d", "7e", "7f", "8a", "8b", "8c", "8d", "8e", "9a", "9b", "9c", "9d", "9e", "9f", "9g", "10a", "10b", "10c", "10d", "10e", "10f", "10g", "10h", "11a", "11b", "11c", "11d", "11e", "11f", "11g", "11h", "12a", "12b", "12c", "13a", "13b", "13c", "14a", "15a", "15b", "15c", "15d", "15e"};
     private final String[] indicatorAgeGroups = new String[]{"10-14", "15-19", "20-24", "25-29", "30-34", "35+"};
 
 
@@ -109,6 +109,8 @@ public class LdMonthlyReportObject extends ReportObject {
         jsonObject.put("11a+11d+11e-30-34", getIndicatorTotal("11a-30-34") + getIndicatorTotal("11d-30-34") + getIndicatorTotal("11e-30-34"));
         jsonObject.put("11a+11d+11e-35+", getIndicatorTotal("11a-35+") + getIndicatorTotal("11d-35+") + getIndicatorTotal("11e-35+"));
         jsonObject.put("11a+11d+11e-jumla", getIndicatorTotal("11a") + getIndicatorTotal("11d") + getIndicatorTotal("11e"));
+        jsonObject.put("16a-jumla-ME", getIndicatorTotalSpecific("16a", "ME"));
+        jsonObject.put("16a-jumla-KE", getIndicatorTotalSpecific("16a", "KE"));
 
         return jsonObject;
     }
@@ -119,6 +121,14 @@ public class LdMonthlyReportObject extends ReportObject {
             if (indicatorCode.startsWith(indicator)) {
                 total += ReportDao.getReportPerIndicatorCode("ld-" + indicatorCode, reportDate);
             }
+        }
+        return total;
+    }
+
+    public int getIndicatorTotalSpecific(String indicator, String postfix){
+        int total = 0;
+        for(String ageGroup : indicatorAgeGroups){
+            total += ReportDao.getReportPerIndicatorCode("ld-" + indicator + "-" +ageGroup + "-" + postfix, reportDate);
         }
         return total;
     }
