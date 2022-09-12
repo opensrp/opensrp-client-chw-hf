@@ -204,7 +204,8 @@
             "field": "obs.fieldCode",
             "concept": "completed_tpt"
           }
-        },{
+        },
+        {
           "column_name": "prescribed_regimes",
           "type": "Event",
           "json_mapping": {
@@ -415,11 +416,11 @@
         },
         {
           "column_name": "form_submission_timestamp",
-            "type": "Event",
-            "json_mapping": {
-              "field": "obs.fieldCode",
-              "concept": "form_submission_timestamp"
-            }
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "form_submission_timestamp"
+          }
         }
       ]
     },
@@ -6905,6 +6906,9 @@
           "json_mapping": {
             "field": "condom_restock_date"
           }
+        },
+        {
+          "column_name": "processed_form_submission_ids"
         }
       ]
     },
