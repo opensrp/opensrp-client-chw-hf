@@ -128,6 +128,7 @@ android {
             buildConfigField "String", 'DEFAULT_LOCATION', '"Facility"'
             buildConfigField "boolean", "BUILD_FOR_BORESHA_AFYA_SOUTH", "true"
             buildConfigField "boolean", "BUILD_FOR_PMTCT_CASE_BASED_MANAGEMENT", "true"
+            buildConfigField "boolean", "ENABLED_MALARIA_MODULE", "false"
             buildConfigField "String[]", 'FACILITY_LEVEL', '{"MOH Jhpiego Facility Name", "Health Facility", "Facility"}'
         }
 
@@ -149,6 +150,7 @@ android {
             buildConfigField "String", 'DEFAULT_LOCATION', '"Facility"'
             buildConfigField "boolean", "BUILD_FOR_BORESHA_AFYA_SOUTH", "true"
             buildConfigField "boolean", "BUILD_FOR_PMTCT_CASE_BASED_MANAGEMENT", "false"
+            buildConfigField "boolean", "ENABLED_MALARIA_MODULE", "false"
             buildConfigField "String[]", 'FACILITY_LEVEL', '{"MOH Jhpiego Facility Name", "Health Facility", "Facility"}'
             testCoverageEnabled true
         }

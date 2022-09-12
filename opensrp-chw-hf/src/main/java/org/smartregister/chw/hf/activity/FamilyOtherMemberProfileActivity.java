@@ -35,7 +35,6 @@ import org.smartregister.chw.hf.presenter.FamilyOtherMemberActivityPresenter;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hf.utils.LFTUFormUtils;
 import org.smartregister.chw.hiv.dao.HivIndexDao;
-import org.smartregister.chw.hivst.dao.HivstDao;
 import org.smartregister.chw.malaria.dao.MalariaDao;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.family.fragment.BaseFamilyOtherMemberProfileFragment;
@@ -144,7 +143,7 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
     }
 
     @Override
-    protected void startHivstRegistration(){
+    protected void startHivstRegistration() {
         String gender = Utils.getValue(commonPersonObject.getColumnmaps(), org.smartregister.family.util.DBConstants.KEY.GENDER, false);
         HivstRegisterActivity.startHivstRegistrationActivity(FamilyOtherMemberProfileActivity.this, baseEntityId, gender);
     }
@@ -252,15 +251,9 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
         menu.findItem(R.id.action_remove_member).setVisible(false);
         menu.findItem(R.id.action_tb_registration).setVisible(false);
         menu.findItem(R.id.action_pregnancy_out_come).setVisible(false);
-        menu.findItem(R.id.action_hivst_registration).setVisible(!HivstDao.isRegisteredForHivst(baseEntityId));
 
-        if (MalariaDao.isRegisteredForMalaria(baseEntityId)) {
-            menu.findItem(R.id.action_malaria_followup_visit).setTitle(R.string.hf_malaria_follow_up);
-            menu.findItem(R.id.action_malaria_followup_visit).setVisible(true);
-            menu.findItem(R.id.action_malaria_diagnosis).setVisible(false);
-        } else {
-            menu.findItem(R.id.action_malaria_diagnosis).setVisible(false);
-        }
+        if (BuildConfig.ENABLED_MALARIA_MODULE)
+            menu.findItem(R.id.action_malaria_diagnosis).setVisible(!MalariaDao.isRegisteredForMalaria(baseEntityId));
 
         if (isOfReproductiveAge(commonPersonObject, gender)) {
             if (gender.equalsIgnoreCase("female") && !AncDao.isANCMember(baseEntityId)) {
@@ -283,8 +276,10 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
         if (i == org.smartregister.chw.core.R.id.action_pregnancy_confirmation) {
             startPregnancyConfirmation();
             return true;
+        } else if (i == org.smartregister.chw.core.R.id.action_malaria_diagnosis) {
+            startHfMalariaFollowupForm();
+            return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 

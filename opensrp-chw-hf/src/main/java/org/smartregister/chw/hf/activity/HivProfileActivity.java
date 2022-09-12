@@ -49,6 +49,7 @@ import org.smartregister.chw.hiv.dao.HivIndexDao;
 import org.smartregister.chw.hiv.domain.HivIndexContactObject;
 import org.smartregister.chw.hiv.domain.HivMemberObject;
 import org.smartregister.chw.hiv.util.HivUtil;
+import org.smartregister.chw.malaria.dao.MalariaDao;
 import org.smartregister.chw.hivst.dao.HivstDao;
 import org.smartregister.chw.tb.util.Constants;
 import org.smartregister.commonregistry.CommonPersonObject;
@@ -197,11 +198,18 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
             } else if (itemId == R.id.action_hivst_registration) {
                 startHivstRegistration();
                 return true;
+            } else if (itemId == org.smartregister.chw.core.R.id.action_malaria_diagnosis) {
+                startHfMalariaFollowupForm();
+                return true;
             }
         } catch (JSONException e) {
             Timber.e(e);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    protected void startHfMalariaFollowupForm() {
+        MalariaFollowUpVisitActivityHelper.startMalariaFollowUpActivity(this, getHivMemberObject().getFamilyBaseEntityId());
     }
 
     private void startHivstRegistration() {
@@ -230,6 +238,7 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
             menu.findItem(R.id.action_pregnancy_out_come).setVisible(true);
         }
         menu.findItem(R.id.action_hivst_registration).setVisible(!HivstDao.isRegisteredForHivst(getHivMemberObject().getBaseEntityId()));
+        menu.findItem(R.id.action_malaria_diagnosis).setVisible(!MalariaDao.isRegisteredForMalaria(getHivMemberObject().getBaseEntityId()));
         return true;
     }
 
@@ -331,7 +340,7 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
                     ((HivFloatingMenu) getHivFloatingMenu()).animateFAB();
                     break;
                 case R.id.refer_to_facility_layout:
-                    LFTUFormUtils.startLTFUReferral(this, getHivMemberObject().getBaseEntityId(),getHivMemberObject().getGender());
+                    LFTUFormUtils.startLTFUReferral(this, getHivMemberObject().getBaseEntityId(), getHivMemberObject().getGender());
                     break;
                 default:
                     Timber.d("Unknown fab action");
