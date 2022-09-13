@@ -55,7 +55,6 @@ public class HfClientProcessor extends CoreClientProcessor {
     protected void processEvents(ClientClassification clientClassification, Table vaccineTable, Table serviceTable, EventClient eventClient, Event event, String eventType) throws Exception {
         super.processEvents(clientClassification, vaccineTable, serviceTable, eventClient, event, eventType);
 
-        //TODO: For other events
         switch (eventType) {
             case ANC_FIRST_FACILITY_VISIT:
             case ANC_RECURRING_FACILITY_VISIT:
