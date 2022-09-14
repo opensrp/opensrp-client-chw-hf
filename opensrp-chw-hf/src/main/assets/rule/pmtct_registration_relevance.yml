@@ -19,3 +19,10 @@ priority: 1
 condition: "!step2_gest_age.equals('') && !step2_hiv.equals('') && step2_gest_age >= 32 && step2_hiv.contains('negative')"
 actions:
   - "isRelevant = true"
+---
+name: step1_pmtct_register_date_from_originating_facility
+description: pmtct_register_date_from_originating_facility relevance
+priority: 1
+condition: "step1_is_transfer_in_client.equals('yes') && step1_known_on_art.equals('yes')"
+actions:
+  - "isRelevant = true"

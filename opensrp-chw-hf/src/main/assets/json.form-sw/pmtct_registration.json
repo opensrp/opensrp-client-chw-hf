@@ -147,9 +147,10 @@
           "err": "Tafadhali ingiza tarehe ya usajili katika huduma za PMTCT katika Kituo cha Afya alichotokea"
         },
         "relevance": {
-          "step1:is_transfer_in_client": {
-            "type": "string",
-            "ex": "equalTo(.,\"yes\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_registration_relevance.yml"
+            }
           }
         }
       }
