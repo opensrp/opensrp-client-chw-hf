@@ -1,6 +1,7 @@
 package org.smartregister.chw.hf.actionhelper;
 
 import static org.smartregister.chw.hf.interactor.LDPostDeliveryManagementMotherActivityInteractor.ordinal;
+import static org.smartregister.chw.hf.utils.Constants.HIV_STATUS.POSITIVE;
 import static org.smartregister.util.JsonFormUtils.KEY;
 import static org.smartregister.util.JsonFormUtils.VALUE;
 
@@ -85,7 +86,7 @@ public class MotherStatusActionHelper implements BaseLDVisitAction.LDVisitAction
 
             }
 
-            if (modeOfDelivery.equalsIgnoreCase("cesarean") || modeOfDelivery.equalsIgnoreCase("vacuum_extraction")) {
+            if (modeOfDelivery != null && (modeOfDelivery.equalsIgnoreCase("cesarean") || modeOfDelivery.equalsIgnoreCase("vacuum_extraction"))) {
                 JSONObject placeOfDelivery = JsonFormUtils.getFieldJSONObject(fields, "delivery_place");
                 placeOfDelivery.getJSONArray("values").remove(3);
                 placeOfDelivery.getJSONArray("values").remove(2);
@@ -96,6 +97,12 @@ public class MotherStatusActionHelper implements BaseLDVisitAction.LDVisitAction
                 placeOfDelivery.getJSONArray("openmrs_choice_ids").remove(3);
                 placeOfDelivery.getJSONArray("openmrs_choice_ids").remove(2);
                 placeOfDelivery.getJSONArray("openmrs_choice_ids").remove(1);
+            }
+
+            JSONObject hivJsonObject = JsonFormUtils.getFieldJSONObject(fields, "hiv");
+            String hivStatus = LDDao.getHivStatus(baseEntityId);
+            if (hivJsonObject != null && hivStatus != null && hivStatus.equalsIgnoreCase(POSITIVE)) {
+                hivJsonObject.put(VALUE, hivStatus);
             }
 
         } catch (JSONException e) {
