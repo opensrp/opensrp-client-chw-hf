@@ -190,20 +190,6 @@
         "openmrs_entity_id": "prophylaxis_arv_for_high_and_low_risk_given",
         "type": "hidden",
         "value": "true"
-      },
-      {
-        "key": "followup_visit_date",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "followup_visit_date",
-        "type": "hidden",
-        "calculation": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "hei_followup_visit_date_calculation.yml"
-            }
-          }
-        }
       }
     ]
   }
