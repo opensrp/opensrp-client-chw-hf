@@ -2035,7 +2035,7 @@ indicators:
                                INNER JOIN ec_pnc_followup epf on epf.entity_id = epo.base_entity_id
                                INNER JOIN ec_child ec on ec.mother_entity_id = epo.base_entity_id
                                INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
-                      WHERE epo.hiv_status = 'positive'
+                      WHERE epo.hiv = 'positive'
                         AND epcf.feeding_options = 'ebf'
                         AND (date(fm.dob, '+10 years') <= date('now'))
                         AND (date(fm.dob, '+15 years') > date('now'))
@@ -2050,7 +2050,7 @@ indicators:
                                INNER JOIN ec_pnc_followup epf on epf.entity_id = epo.base_entity_id
                                INNER JOIN ec_child ec on ec.mother_entity_id = epo.base_entity_id
                                INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
-                      WHERE epo.hiv_status = 'positive'
+                      WHERE epo.hiv = 'positive'
                         AND epcf.feeding_options = 'ebf'
                         AND (date(fm.dob, '+15 years') <= date('now'))
                         AND (date(fm.dob, '20 years') > date('now'))
@@ -2065,7 +2065,7 @@ indicators:
                                INNER JOIN ec_pnc_followup epf on epf.entity_id = epo.base_entity_id
                                INNER JOIN ec_child ec on ec.mother_entity_id = epo.base_entity_id
                                INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
-                      WHERE epo.hiv_status = 'positive'
+                      WHERE epo.hiv = 'positive'
                         AND epcf.feeding_options = 'ebf'
                         AND (date(fm.dob, '+20 years') <= date('now'))
                         AND (date(fm.dob, '+25 years') > date('now'))
@@ -2080,7 +2080,7 @@ indicators:
                                INNER JOIN ec_pnc_followup epf on epf.entity_id = epo.base_entity_id
                                INNER JOIN ec_child ec on ec.mother_entity_id = epo.base_entity_id
                                INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
-                      WHERE epo.hiv_status = 'positive'
+                      WHERE epo.hiv = 'positive'
                         AND epcf.feeding_options = 'ebf'
                         AND (date(fm.dob, '+25 years') <= date('now'))
                         AND (date(fm.dob, '+30 years') > date('now'))
@@ -2095,7 +2095,7 @@ indicators:
                                INNER JOIN ec_pnc_followup epf on epf.entity_id = epo.base_entity_id
                                INNER JOIN ec_child ec on ec.mother_entity_id = epo.base_entity_id
                                INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
-                      WHERE epo.hiv_status = 'positive'
+                      WHERE epo.hiv = 'positive'
                         AND epcf.feeding_options = 'ebf'
                         AND (date(fm.dob, '+30 years') <= date('now'))
                         AND (date(fm.dob, '+35 years') > date('now'))
@@ -2110,7 +2110,7 @@ indicators:
                                INNER JOIN ec_pnc_followup epf on epf.entity_id = epo.base_entity_id
                                INNER JOIN ec_child ec on ec.mother_entity_id = epo.base_entity_id
                                INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
-                      WHERE epo.hiv_status = 'positive'
+                      WHERE epo.hiv = 'positive'
                         AND epcf.feeding_options = 'ebf'
                         AND (date(fm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
@@ -2124,7 +2124,7 @@ indicators:
                                INNER JOIN ec_pnc_followup epf on epf.entity_id = epo.base_entity_id
                                INNER JOIN ec_child ec on ec.mother_entity_id = epo.base_entity_id
                                INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
-                      WHERE epo.hiv_status = 'positive'
+                      WHERE epo.hiv = 'positive'
                         AND epcf.feeding_options = 'rf'
                         AND (date(fm.dob, '+10 years') <= date('now'))
                         AND (date(fm.dob, '+15 years') > date('now'))
@@ -2139,7 +2139,7 @@ indicators:
                                INNER JOIN ec_pnc_followup epf on epf.entity_id = epo.base_entity_id
                                INNER JOIN ec_child ec on ec.mother_entity_id = epo.base_entity_id
                                INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
-                      WHERE epo.hiv_status = 'positive'
+                      WHERE epo.hiv = 'positive'
                         AND epcf.feeding_options = 'rf'
                         AND (date(fm.dob, '+15 years') <= date('now'))
                         AND (date(fm.dob, '20 years') > date('now'))
@@ -2154,7 +2154,7 @@ indicators:
                                INNER JOIN ec_pnc_followup epf on epf.entity_id = epo.base_entity_id
                                INNER JOIN ec_child ec on ec.mother_entity_id = epo.base_entity_id
                                INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
-                      WHERE epo.hiv_status = 'positive'
+                      WHERE epo.hiv = 'positive'
                         AND epcf.feeding_options = 'rf'
                         AND (date(fm.dob, '+20 years') <= date('now'))
                         AND (date(fm.dob, '+25 years') > date('now'))
@@ -2169,7 +2169,7 @@ indicators:
                                INNER JOIN ec_pnc_followup epf on epf.entity_id = epo.base_entity_id
                                INNER JOIN ec_child ec on ec.mother_entity_id = epo.base_entity_id
                                INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
-                      WHERE epo.hiv_status = 'positive'
+                      WHERE epo.hiv = 'positive'
                         AND epcf.feeding_options = 'rf'
                         AND (date(fm.dob, '+25 years') <= date('now'))
                         AND (date(fm.dob, '+30 years') > date('now'))
@@ -2184,7 +2184,7 @@ indicators:
                                INNER JOIN ec_pnc_followup epf on epf.entity_id = epo.base_entity_id
                                INNER JOIN ec_child ec on ec.mother_entity_id = epo.base_entity_id
                                INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
-                      WHERE epo.hiv_status = 'positive'
+                      WHERE epo.hiv = 'positive'
                         AND epcf.feeding_options = 'rf'
                         AND (date(fm.dob, '+30 years') <= date('now'))
                         AND (date(fm.dob, '+35 years') > date('now'))
@@ -2199,7 +2199,7 @@ indicators:
                                INNER JOIN ec_pnc_followup epf on epf.entity_id = epo.base_entity_id
                                INNER JOIN ec_child ec on ec.mother_entity_id = epo.base_entity_id
                                INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
-                      WHERE epo.hiv_status = 'positive'
+                      WHERE epo.hiv = 'positive'
                         AND epcf.feeding_options = 'rf'
                         AND (date(fm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
