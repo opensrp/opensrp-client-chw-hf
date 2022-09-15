@@ -53,6 +53,7 @@ import org.smartregister.chw.hf.model.FamilyProfileModel;
 import org.smartregister.chw.hf.model.PmtctFollowupFeedbackModel;
 import org.smartregister.chw.hf.presenter.FamilyOtherMemberActivityPresenter;
 import org.smartregister.chw.hf.presenter.PmtctProfilePresenter;
+import org.smartregister.chw.hf.utils.HfHomeVisitUtil;
 import org.smartregister.chw.hf.utils.LFTUFormUtils;
 import org.smartregister.chw.hf.utils.PmtctVisitUtils;
 import org.smartregister.chw.hivst.dao.HivstDao;
@@ -506,9 +507,9 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            pmtctRegisterDate = PmtctDao.getPmtctRegisterDate(memberObject.getBaseEntityId());
-            followUpVisitDate = PmtctDao.getPmtctFollowUpVisitDate(memberObject.getBaseEntityId());
-            pmtctFollowUpRule = HomeVisitUtil.getPmtctVisitStatus(pmtctRegisterDate, followUpVisitDate, baseEntityId);
+            pmtctRegisterDate = HfPmtctDao.getPmtctRegisterDate(memberObject.getBaseEntityId());
+            followUpVisitDate = HfPmtctDao.getNextFacilityVisitDate(memberObject.getBaseEntityId());
+            pmtctFollowUpRule = HfHomeVisitUtil.getPmtctVisitStatus(pmtctRegisterDate, followUpVisitDate, baseEntityId);
             return null;
         }
 

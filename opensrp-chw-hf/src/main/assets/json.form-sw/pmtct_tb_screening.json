@@ -289,9 +289,15 @@
         "options": [
           {
             "key": "yes",
-            "text": "Ndio",
+            "text": "Ndio (Amemaliza TPT)",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "partial_complete",
+            "text": "Ndio (Lakini hajamaliza TPT)",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "partial_complete"
           },
           {
             "key": "no",
@@ -385,7 +391,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "is_client_provided_with_tpt",
         "type": "native_radio",
-        "label": "Je, Mteja huyu amepewa TPT?",
+        "label": "Je, Mteja huyu amepewa TPT leo?",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [
@@ -471,7 +477,7 @@
           "err": "Tafadhali ingiza namba halali"
         },
         "v_min": {
-          "value": "0",
+          "value": "1",
           "err": "Idadi ya siku iliyotolewa inatakiwa iwe zaidi ya 0"
         },
         "v_max": {
