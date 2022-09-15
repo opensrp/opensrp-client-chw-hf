@@ -78,7 +78,7 @@ public class Pmtct3MonthsReportObject extends ReportObject {
     }
 
     private int getIndicatorF3() {
-        return ReportDao.getReportPerIndicatorCode("F3", reportDate);
+        return getIndicatorA3() + getIndicatorD3() - getIndicatorE3();
     }
 
     private int getIndicatorJ3() {

@@ -634,7 +634,7 @@ public class Constants extends CoreConstants {
 
     public static final class JSON_FORM_EXTRA {
         public static final String RISK_CATEGORY = "risk_category";
-        public static final String HIV_STATUS = "hiv_status";
+        public static final String HIV_STATUS = "hiv";
     }
 
     public static final class HIV_STATUS {

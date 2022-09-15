@@ -65,9 +65,9 @@ public class Pmtct12MonthsReportObject extends ReportObject {
     }
 
     private float getIndicatorK12() {
-        // K12 = E12 /(D12-J12) * 100
-        if (ReportDao.getReportPerIndicatorCode("D12", reportDate) - ReportDao.getReportPerIndicatorCode("J12", reportDate) > 0) {
-            return ((ReportDao.getReportPerIndicatorCode("E12", reportDate) * 1f) / (getIndicatorD12() - ReportDao.getReportPerIndicatorCode("J12", reportDate))) * 100;
+        int denominator = (getIndicatorD12() - ReportDao.getReportPerIndicatorCode("J12", reportDate));
+        if (denominator > 0) {
+            return ((ReportDao.getReportPerIndicatorCode("E12", reportDate) * 1f) / denominator) * 100;
         }
         return 0;
     }
