@@ -192,8 +192,8 @@ public class AncRegisterInteractor extends BaseAncRegisterInteractor {
                     jsonObjectList.add(jsonObject);
                     jsonObjectMap.put(formattedKey, jsonObjectList);
                 }
-            } catch (JSONException e) {
-                e.printStackTrace();
+            } catch (Exception e) {
+                Timber.e(e);
             }
         }
         return jsonObjectMap;
