@@ -2,28 +2,28 @@
 name: step1_health_status
 description: health_status
 priority: 1
-condition: "step1_followup_status != '' && !step1_followup_status.equals('transfer_out')"
+condition: "step1_followup_status != '' && !step1_followup_status.equals('transfer_out') && !step1_followup_status.equals('lost_to_followup')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_infant_feeding_practice
 description: infant_feeding_practice
 priority: 1
-condition: "step1_followup_status != '' && !step1_followup_status.equals('transfer_out')"
+condition: "step1_followup_status != '' && !step1_followup_status.equals('transfer_out') && !step1_followup_status.equals('lost_to_followup')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_weight
 description: weight
 priority: 1
-condition: "step1_followup_status != '' && !step1_followup_status.equals('transfer_out')"
+condition: "step1_followup_status != '' && !step1_followup_status.equals('transfer_out') && !step1_followup_status.equals('lost_to_followup')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_name_of_hf
 description: name_of_hf
 priority: 1
-condition: "step1_followup_status != '' && step1_followup_status.equals('transfer_out')"
+condition: "step1_followup_status != '' && step1_followup_status.equals('transfer_out') && !step1_followup_status.equals('lost_to_followup')"
 actions:
   - "isRelevant = true"
 ---

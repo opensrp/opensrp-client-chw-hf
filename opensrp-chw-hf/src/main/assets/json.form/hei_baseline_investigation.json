@@ -60,6 +60,7 @@
         "keys": [
           "infant_and_mother",
           "infant_with_other_caregiver",
+          "transfer_out",
           "lost_to_followup"
         ],
         "openmrs_choice_ids": {
@@ -75,22 +76,27 @@
       },
       {
         "key": "name_of_hf",
-        "openmrs_entity_id": "name_of_hf",
-        "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
-        "hint": "Transferred Clinic Name",
-        "type": "tree",
-        "tree": [],
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "name_of_hf",
+        "buttonText": "Select Health Facility",
+        "sort": true,
+        "maxSelectable": 1,
+        "dialogTitle": "Health Facility",
+        "searchHint": "Type Health Facility Name",
+        "options": [
+        ],
+        "type": "multi_select_list",
+        "v_required": {
+          "value": true,
+          "err": "Please select the health facility"
+        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
               "rules-file": "hei_baseline_investigation_relevance.yml"
             }
           }
-        },
-        "v_required": {
-          "value": true,
-          "err": "Please specify the transferred clinic"
         }
       },
       {

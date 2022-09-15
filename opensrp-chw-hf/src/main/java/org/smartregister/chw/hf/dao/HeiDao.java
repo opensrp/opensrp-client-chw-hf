@@ -117,11 +117,9 @@ public class HeiDao extends AbstractDao {
 
         int weeks = getElapsedTimeInWeeks(simpleDateFormat.format(dob));
 
-        if (weeks >= 6 && getNextHivTestAge(baseEntityID).equals(Constants.HeiHIVTestAtAge.AT_6_WEEKS) && riskCategoryRes != null && riskCategoryRes.get(0) != null && riskCategoryRes.get(0).equals("high")) {
+        if (weeks >= 3 && getNextHivTestAge(baseEntityID).equals(Constants.HeiHIVTestAtAge.AT_6_WEEKS) && riskCategoryRes != null && riskCategoryRes.get(0) != null && riskCategoryRes.get(0).equals("high")) {
             return prophylaxisArvForHighAndLowRiskRes == null || prophylaxisArvForHighAndLowRiskRes.get(0) == null;
         } else if (weeks < 6 && getNextHivTestAge(baseEntityID).equals(Constants.HeiHIVTestAtAge.AT_BIRTH) && riskCategoryRes != null && riskCategoryRes.get(0) != null && riskCategoryRes.get(0).equals("low")) {
-            if (weeks < 3)
-                return false;
             return prophylaxisArvForHighAndLowRiskRes == null || prophylaxisArvForHighAndLowRiskRes.get(0) == null;
         } else return false;
     }
@@ -217,7 +215,7 @@ public class HeiDao extends AbstractDao {
                 return Constants.HeiHIVTestAtAge.AT_15_MONTHS;
             else if (months >= 9)
                 return Constants.HeiHIVTestAtAge.AT_9_MONTHS;
-            else if (weeks >= 6)
+            else if (weeks >= 4)
                 return Constants.HeiHIVTestAtAge.AT_6_WEEKS;
             else return Constants.HeiHIVTestAtAge.AT_BIRTH;
         } else return Constants.HeiHIVTestAtAge.AT_BIRTH;
