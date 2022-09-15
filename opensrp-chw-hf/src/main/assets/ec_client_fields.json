@@ -2693,11 +2693,11 @@
           }
         },
         {
-          "column_name": "hiv_status",
+          "column_name": "hiv",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "hiv_status"
+            "concept": "hiv"
           }
         },
         {

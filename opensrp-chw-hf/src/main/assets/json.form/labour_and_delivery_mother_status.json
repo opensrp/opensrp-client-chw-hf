@@ -350,6 +350,13 @@
         "openmrs_entity_id": "labour_stage",
         "type": "hidden",
         "value": "complete"
+      },
+      {
+        "key": "hiv",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hiv",
+        "type": "hidden"
       }
     ]
   }

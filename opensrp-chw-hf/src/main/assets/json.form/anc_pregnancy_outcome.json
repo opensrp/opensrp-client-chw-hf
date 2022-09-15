@@ -200,19 +200,22 @@
           "Birth Asphyxia",
           "Neonatal Respiratory Distress",
           "Prematurity",
-          "Early Neonatal Sepsis"
+          "Early Neonatal Sepsis",
+          "Others (Specify)"
         ],
         "keys": [
           "birth_asphyxia",
           "neonatal_respiratory_distress",
           "prematurity",
-          "early_neonatal_sepsis"
+          "early_neonatal_sepsis",
+          "others"
         ],
         "openmrs_choice_ids": {
           "birth_asphyxia": "birth_asphyxia",
           "neonatal_respiratory_distress": "neonatal_respiratory_distress",
           "prematurity": "prematurity",
-          "early_neonatal_sepsis": "early_neonatal_sepsis"
+          "early_neonatal_sepsis": "early_neonatal_sepsis",
+          "others": "others"
         },
         "v_required": {
           "value": "true",
@@ -222,6 +225,25 @@
           "step1:preg_outcome": {
             "type": "string",
             "ex": "equalTo(., \"born_alive_died\")"
+          }
+        }
+      },
+      {
+        "key": "other_reasons_for_child_death",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reasons_for_child_death",
+        "type": "edit_text",
+        "hint": "Specify other reasons as to why the child died",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the reason"
+        },
+        "relevance": {
+          "step1:reason_child_died": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
           }
         }
       },
@@ -267,10 +289,10 @@
             "openmrs_entity": "concept"
           },
           {
-            "key": "test_not_conducted",
-            "text": "HIV Test not conducted",
+            "key": "unknown",
+            "text": "Unknown",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "test_not_conducted"
+            "openmrs_entity_id": "unknown"
           }
         ],
         "v_required": {
@@ -282,64 +304,6 @@
             "ex-rules": {
               "rules-file": "anc_pregnancy_outcome_relevance.yml"
             }
-          }
-        }
-      },
-      {
-        "key": "reason_for_not_conducting_hiv_test",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "reason_for_not_conducting_hiv_test",
-        "type": "spinner",
-        "hint": "Reason as to why the HIV test was not conducted",
-        "values": [
-          "Test kits are out of stock",
-          "The client was in an emergency situation",
-          "The client refused to be tested",
-          "We are still counselling the client",
-          "Other (Specify)"
-        ],
-        "keys": [
-          "test_kits_out_of_stock",
-          "client_was_in_an_emergency_situation",
-          "client_refused_to_be_tested",
-          "still_counselling_the_client",
-          "other"
-        ],
-        "openmrs_choice_ids": {
-          "test_kits_out_of_stock": "test_kits_out_of_stock",
-          "client_was_in_an_emergency_situation": "client_was_in_an_emergency_situation",
-          "client_refused_to_be_tested": "client_refused_to_be_tested",
-          "still_counselling_the_client": "still_counselling_the_client",
-          "Other": "other"
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Please select a reason"
-        },
-        "relevance": {
-          "step1:hiv_status_question": {
-            "type": "string",
-            "ex": "equalTo(., \"test_not_conducted\")"
-          }
-        }
-      },
-      {
-        "key": "other_reason_for_not_conducting_hiv_test",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "other_reason_for_not_conducting_hiv_test",
-        "type": "edit_text",
-        "hint": "Specify other reasons for not conducting HIV test",
-        "edit_type": "name",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the reason"
-        },
-        "relevance": {
-          "step1:reason_for_not_conducting_hiv_test": {
-            "type": "string",
-            "ex": "equalTo(., \"other\")"
           }
         }
       },
@@ -640,7 +604,7 @@
             "type": "numbers_selector",
             "number_of_selectors": "11",
             "start_number": "0",
-            "max_value": "2",
+            "max_value": "10",
             "text_size": "18px",
             "text_color": "#000000",
             "selected_text_color": "#ffffff",
@@ -1605,9 +1569,9 @@
         ]
       },
       {
-        "key": "hiv_status",
+        "key": "hiv",
         "type": "hidden",
-        "openmrs_entity_id": "hiv_status",
+        "openmrs_entity_id": "hiv",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "calculation": {

@@ -147,9 +147,10 @@
           "err": "Please enter the date of PMTCT Registration at the originating health facility"
         },
         "relevance": {
-          "step1:is_transfer_in_client": {
-            "type": "string",
-            "ex": "equalTo(.,\"yes\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_registration_relevance.yml"
+            }
           }
         }
       }
