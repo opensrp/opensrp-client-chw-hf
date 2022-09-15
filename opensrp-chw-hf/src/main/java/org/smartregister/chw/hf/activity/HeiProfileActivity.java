@@ -43,6 +43,8 @@ import org.smartregister.chw.hf.presenter.HeiProfilePresenter;
 import org.smartregister.chw.hf.rule.HfHeiFollowupRule;
 import org.smartregister.chw.hf.utils.HeiVisitUtils;
 import org.smartregister.chw.hf.utils.HfChildUtils;
+import org.smartregister.chw.hiv.dao.HivDao;
+import org.smartregister.chw.hiv.domain.HivMemberObject;
 import org.smartregister.chw.pmtct.PmtctLibrary;
 import org.smartregister.chw.pmtct.activity.BasePmtctProfileActivity;
 import org.smartregister.chw.pmtct.dao.PmtctDao;
@@ -197,6 +199,23 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
         }
         if (id == R.id.textview_record_hei_number) {
             JSONObject jsonForm = org.smartregister.chw.core.utils.FormUtils.getFormUtils().getFormJson(getHeiNumberRegistration());
+
+            try {
+                JSONArray fields = jsonForm.getJSONObject(STEP1).getJSONArray(FIELDS);
+                JSONObject heiNumber = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "hei_number");
+                String motherBaseEntityId = HeiDao.getMotherBaseEntityId(baseEntityId);
+
+                HivMemberObject hivMemberObject = HivDao.getMember(motherBaseEntityId);
+                if (hivMemberObject != null && StringUtils.isNotBlank(hivMemberObject.getCtcNumber())) {
+                    String motherCtcNumber = hivMemberObject.getCtcNumber();
+                    String heiNumberMask = motherCtcNumber + "-C##";
+                    heiNumber.put("mask", heiNumberMask);
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
             startFormActivity(jsonForm);
         }
     }

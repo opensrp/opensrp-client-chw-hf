@@ -51,7 +51,7 @@
         "openmrs_entity_id": "hei_number",
         "type": "mask_edit_text",
         "mask": "##-##-####-######-C##",
-        "mask_hint": "12345678912345",
+        "mask_hint": "1234567891234567",
         "allowed_chars": "0123456789",
         "hint": "Namba ya HEI",
         "edit_type": "number",
