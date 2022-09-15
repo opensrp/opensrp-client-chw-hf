@@ -202,7 +202,7 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
             JSONObject jsonForm = org.smartregister.chw.core.utils.FormUtils.getFormUtils().getFormJson(getHeiNumberRegistration());
 
             try {
-                JSONArray fields = jsonForm.getJSONObject(org.smartregister.chw.hf.utils.Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+                JSONArray fields = jsonForm.getJSONObject(org.smartregister.chw.hf.utils.Constants.JsonFormConstants.STEP1).getJSONArray(FIELDS);
                 JSONObject heiNumber = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "hei_number");
                 String motherBaseEntityId = HeiDao.getMotherBaseEntityId(baseEntityId);
 
