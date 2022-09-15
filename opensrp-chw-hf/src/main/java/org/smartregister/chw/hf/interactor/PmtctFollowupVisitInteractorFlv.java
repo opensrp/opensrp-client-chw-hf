@@ -1,5 +1,8 @@
 package org.smartregister.chw.hf.interactor;
 
+import static org.smartregister.util.JsonFormUtils.FIELDS;
+import static org.smartregister.util.JsonFormUtils.STEP1;
+
 import android.content.Context;
 
 import org.apache.commons.lang3.StringUtils;
@@ -160,8 +163,19 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
             tbScreeningForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.getPmtctTbScreening());
             JSONObject global = tbScreeningForm.getJSONObject("global");
 
-            global.put("is_provided_with_tpt_before", HfPmtctDao.hasTheClientBeenProvidedWithTpt(memberObject.getBaseEntityId()));
-            global.put("has_the_client_completed_tpt", HfPmtctDao.hasTheClientCompletedTpt(memberObject.getBaseEntityId()));
+            String hasTheClientEverBeenProvidedWithTpTBefore = HfPmtctDao.hasTheClientBeenProvidedWithTpt(memberObject.getBaseEntityId());
+
+            global.put("is_provided_with_tpt_before", (hasTheClientEverBeenProvidedWithTpTBefore != null && !hasTheClientEverBeenProvidedWithTpTBefore.equals("no")) || HfPmtctDao.hasTheClientBeenProvidedWithTptInPreviousSessions(memberObject.getBaseEntityId()));
+            global.put("has_the_client_completed_tpt", (hasTheClientEverBeenProvidedWithTpTBefore != null && hasTheClientEverBeenProvidedWithTpTBefore.equals("yes")) || HfPmtctDao.hasTheClientCompletedTpt(memberObject.getBaseEntityId()));
+
+            JSONArray fields = tbScreeningForm.getJSONObject(STEP1).getJSONArray(FIELDS);
+            JSONObject hasBeenProvidedWithTptBefore = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "has_been_provided_with_tpt_before");
+            if (HfPmtctDao.hasTheClientBeenProvidedWithTptInPreviousSessions(memberObject.getBaseEntityId())) {
+                hasBeenProvidedWithTptBefore.remove("relevance");
+                hasBeenProvidedWithTptBefore.put("value", "partial");
+                hasBeenProvidedWithTptBefore.put("type", "hidden");
+            }
+
             //loads details to the form
             if (details != null && !details.isEmpty()) {
                 JsonFormUtils.populateForm(tbScreeningForm, details);

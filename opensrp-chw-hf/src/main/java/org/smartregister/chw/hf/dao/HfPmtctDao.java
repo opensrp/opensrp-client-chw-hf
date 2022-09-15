@@ -326,23 +326,33 @@ public class HfPmtctDao extends CorePmtctDao {
         return res != null && res.size() > 0 && res.get(0) != null;
     }
 
-    public static boolean hasTheClientBeenProvidedWithTpt(String baseEntityID) {
-        String sql = "SELECT has_been_provided_with_tpt_before, is_client_provided_with_tpt FROM ec_pmtct_followup  WHERE (has_been_provided_with_tpt_before IS NOT NULL OR is_client_provided_with_tpt IS NOT NULL)  AND entity_id = '" + baseEntityID + "' ORDER BY visit_number DESC LIMIT 1";
+    public static String hasTheClientBeenProvidedWithTpt(String baseEntityID) {
+        String sql = "SELECT has_been_provided_with_tpt_before FROM ec_pmtct_followup  WHERE has_been_provided_with_tpt_before IS NOT NULL  AND entity_id = '" + baseEntityID + "' ORDER BY visit_number DESC LIMIT 1";
 
         DataMap<String> hasBeenProvidedWithTptBeforeDataMap = cursor -> getCursorValue(cursor, "has_been_provided_with_tpt_before");
         List<String> hasBeenProvidedWithTptBeforeRes = readData(sql, hasBeenProvidedWithTptBeforeDataMap);
+
+
+        if (hasBeenProvidedWithTptBeforeRes != null && hasBeenProvidedWithTptBeforeRes.size() > 0 && hasBeenProvidedWithTptBeforeRes.get(0) != null) {
+            return hasBeenProvidedWithTptBeforeRes.get(0);
+        } else {
+            return null;
+        }
+
+    }
+
+
+    public static boolean hasTheClientBeenProvidedWithTptInPreviousSessions(String baseEntityID) {
+        String sql = "SELECT is_client_provided_with_tpt FROM ec_pmtct_followup  WHERE (is_client_provided_with_tpt IS NOT NULL)  AND entity_id = '" + baseEntityID + "' ORDER BY visit_number DESC LIMIT 1";
 
         DataMap<String> isClientProvidedWithTptDataMap = cursor -> getCursorValue(cursor, "is_client_provided_with_tpt");
         List<String> isClientProvidedWithTptRes = readData(sql, isClientProvidedWithTptDataMap);
 
         if (isClientProvidedWithTptRes != null && isClientProvidedWithTptRes.size() > 0 && isClientProvidedWithTptRes.get(0) != null) {
             return isClientProvidedWithTptRes.get(0).equals("yes");
-        } else if (hasBeenProvidedWithTptBeforeRes != null && hasBeenProvidedWithTptBeforeRes.size() > 0 && hasBeenProvidedWithTptBeforeRes.get(0) != null) {
-            return hasBeenProvidedWithTptBeforeRes.get(0).equals("yes");
         } else {
             return false;
         }
-
     }
 
     public static boolean hasTheClientCompletedTpt(String baseEntityID) {
@@ -523,8 +533,8 @@ public class HfPmtctDao extends CorePmtctDao {
         return false;
     }
 
-    public static boolean isAfterEAC(String baseEntityId){
-        String sql  = "SELECT enroll_to_eac " +
+    public static boolean isAfterEAC(String baseEntityId) {
+        String sql = "SELECT enroll_to_eac " +
                 "FROM ec_pmtct_hvl_results " +
                 "WHERE entity_id = '" + baseEntityId + "'" +
                 " ORDER BY hvl_result_date DESC" +
@@ -537,7 +547,7 @@ public class HfPmtctDao extends CorePmtctDao {
         return false;
     }
 
-    public static Date getDateEACRecorded(String baseEntityId){
+    public static Date getDateEACRecorded(String baseEntityId) {
         String sql = "SELECT strftime('%d-%m-%Y', form_submission_timestamp) as record_date " +
                 " FROM ec_pmtct_eac_visit " +
                 " WHERE entity_id = '" + baseEntityId + "'" +
@@ -558,7 +568,7 @@ public class HfPmtctDao extends CorePmtctDao {
         return null;
     }
 
-    public static boolean isPrescribedArtRegimes(String baseEntityId){
+    public static boolean isPrescribedArtRegimes(String baseEntityId) {
         String sql = "SELECT prescribed_regimes " +
                 " FROM ec_pmtct_followup " +
                 " WHERE entity_id = '" + baseEntityId + "'" +

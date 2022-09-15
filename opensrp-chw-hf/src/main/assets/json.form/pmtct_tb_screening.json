@@ -289,9 +289,15 @@
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Yes (Has completed TPT)",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "partial_complete",
+            "text": "Yes (But has not completed TPT)",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "partial_complete"
           },
           {
             "key": "no",
@@ -385,7 +391,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "is_client_provided_with_tpt",
         "type": "native_radio",
-        "label": "Has the client been provided with TPT?",
+        "label": "Has the client been provided with TPT today?",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [
@@ -471,7 +477,7 @@
           "err": "Please enter a valid number"
         },
         "v_min": {
-          "value": "0",
+          "value": "1",
           "err": "Number of dispensed days should be greater than 0"
         },
         "v_max": {
