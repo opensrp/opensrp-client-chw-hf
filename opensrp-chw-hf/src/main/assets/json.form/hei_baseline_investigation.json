@@ -54,17 +54,19 @@
         "values": [
           "Infant and Mother (IM)",
           "Infant with other caregiver (IC)",
-          "Transit (O)"
+          "Transit (O)",
+          "Lost to Followup"
         ],
         "keys": [
           "infant_and_mother",
           "infant_with_other_caregiver",
-          "transfer_out"
+          "lost_to_followup"
         ],
         "openmrs_choice_ids": {
           "infant_and_mother": "infant_and_mother",
           "infant_with_other_caregiver": "infant_with_other_caregiver",
-          "transfer_out": "transfer_out"
+          "transfer_out": "transfer_out",
+          "lost_to_followup": "lost_to_followup"
         },
         "v_required": {
           "value": true,

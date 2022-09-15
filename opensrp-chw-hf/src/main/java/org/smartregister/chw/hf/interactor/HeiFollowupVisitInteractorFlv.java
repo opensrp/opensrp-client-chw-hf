@@ -277,7 +277,7 @@ public class HeiFollowupVisitInteractorFlv implements PmtctFollowupVisitInteract
 
         @Override
         public String postProcess(String s) {
-            if (!visit_type.equalsIgnoreCase("transfer_out")) {
+            if (!visit_type.equalsIgnoreCase("transfer_out") && !visit_type.equalsIgnoreCase("lost_to_followup")) {
                 JSONObject dnaPcrForm = null;
                 try {
                     dnaPcrForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.getHeiDnaPcrSampleCollection());

@@ -443,7 +443,7 @@ indicators:
                                            from (
                                                     SELECT T1.base_entity_id, T1.mother_entity_id,
                                                            GROUP_CONCAT(T1.followup_status, ',') grouped_followp_status
-                                                    FROM (SELECT ec_hei.base_entity_id, ec_hei.followup_status, mother_entity_id
+                                                    FROM (SELECT ec_hei.base_entity_id, ec_hei_followup.followup_status, mother_entity_id
                                                           FROM ec_hei
                                                                    INNER JOIN ec_hei_followup
                                                                               on ec_hei.base_entity_id = ec_hei_followup.entity_id
