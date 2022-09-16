@@ -224,7 +224,7 @@ public class PncNoMotherProfileActivity extends PncMemberProfileActivity {
                 String encounterType = form.getString(JsonFormUtils.ENCOUNTER_TYPE);
                 if (encounterType.equals(org.smartregister.chw.hf.utils.Constants.Events.PNC_CHILD_FOLLOWUP)) {
                     try {
-                        AllSharedPreferences allSharedPreferences = org.smartregister.util.Utils.getAllSharedPreferences();
+                        AllSharedPreferences allSharedPreferences = Utils.getAllSharedPreferences();
                         Event baseEvent = org.smartregister.chw.anc.util.JsonFormUtils.processJsonForm(allSharedPreferences, jsonString, org.smartregister.chw.hf.utils.Constants.TableName.PNC_FOLLOWUP);
                         org.smartregister.chw.pmtct.util.JsonFormUtils.tagEvent(allSharedPreferences, baseEvent);
                         JSONObject global = form.getJSONObject("global");
