@@ -44,6 +44,7 @@ import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.core.utils.HomeVisitUtil;
 import org.smartregister.chw.core.utils.UpdateDetailsUtil;
 import org.smartregister.chw.core.utils.VisitSummary;
+import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.adapter.ReferralCardViewAdapter;
 import org.smartregister.chw.hf.dao.FamilyDao;
@@ -156,8 +157,11 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         menu.findItem(R.id.action_remove_member).setTitle(getString(R.string.mark_as_deceased));
         menu.findItem(R.id.action_pregnancy_out_come).setVisible(!HfAncDao.isClientClosed(baseEntityID));
         menu.findItem(R.id.action_malaria_diagnosis).setVisible(false);
-        menu.findItem(R.id.action_hivst_registration).setVisible(!HivstDao.isRegisteredForHivst(baseEntityID));
 
+        if(HealthFacilityApplication.getApplicationFlavor().hasHivst()){
+            int age = memberObject.getAge();
+            menu.findItem(R.id.action_hivst_registration).setVisible(!HivstDao.isRegisteredForHivst(baseEntityID) && age>= 18);
+        }
 
         if (memberObject.getGestationAge() >= 28)
             menu.findItem(R.id.action_ld_registration).setVisible(!LDDao.isRegisteredForLD(baseEntityID));

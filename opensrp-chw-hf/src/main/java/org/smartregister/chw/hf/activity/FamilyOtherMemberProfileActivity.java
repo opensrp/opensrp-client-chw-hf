@@ -35,6 +35,7 @@ import org.smartregister.chw.hf.presenter.FamilyOtherMemberActivityPresenter;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hf.utils.LFTUFormUtils;
 import org.smartregister.chw.hiv.dao.HivIndexDao;
+import org.smartregister.chw.hivst.dao.HivstDao;
 import org.smartregister.chw.malaria.dao.MalariaDao;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.family.fragment.BaseFamilyOtherMemberProfileFragment;
@@ -264,6 +265,11 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
             menu.findItem(R.id.action_fp_initiation).setVisible(false);
         }
 
+        if(HealthFacilityApplication.getApplicationFlavor().hasHivst()){
+            String dob = Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.DOB, false);
+            int age = Utils.getAgeFromDate(dob);
+            menu.findItem(R.id.action_hivst_registration).setVisible(!HivstDao.isRegisteredForHivst(baseEntityId) && age >= 18);
+        }
 
         if (BuildConfig.BUILD_FOR_BORESHA_AFYA_SOUTH) {
             menu.findItem(R.id.action_hiv_registration).setVisible(!(HfHivDao.isHivMember(baseEntityId) || HivIndexDao.isRegisteredIndex(baseEntityId)));

@@ -42,6 +42,7 @@ import org.smartregister.chw.core.utils.UpdateDetailsUtil;
 import org.smartregister.chw.fp.dao.FpDao;
 import org.smartregister.chw.fp.util.FamilyPlanningConstants;
 import org.smartregister.chw.hf.BuildConfig;
+import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.adapter.ReferralCardViewAdapter;
 import org.smartregister.chw.hf.contract.PncMemberProfileContract;
@@ -243,8 +244,10 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
         }
         menu.findItem(R.id.action__pnc_remove_member).setVisible(false);
         menu.findItem(R.id.action__pnc_danger_sign_outcome).setVisible(false);
-        menu.findItem(R.id.action_hivst_registration).setVisible(!HivstDao.isRegisteredForHivst(baseEntityID));
-
+        if(HealthFacilityApplication.getApplicationFlavor().hasHivst()){
+            int age = memberObject.getAge();
+            menu.findItem(R.id.action_hivst_registration).setVisible(!HivstDao.isRegisteredForHivst(baseEntityID) && age >= 18);
+        }
 
         if (MalariaDao.isRegisteredForMalaria(baseEntityID)) {
             menu.findItem(R.id.action_malaria_followup_visit).setVisible(true);

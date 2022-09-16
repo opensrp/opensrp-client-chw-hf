@@ -30,6 +30,7 @@ import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.core.utils.UpdateDetailsUtil;
 import org.smartregister.chw.core.utils.Utils;
+import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.adapter.HivIndexFollowupCardViewAdapter;
 import org.smartregister.chw.hf.contract.HivIndexContactProfileContract;
@@ -173,7 +174,12 @@ public class HivIndexContactProfileActivity extends CoreHivIndexContactProfileAc
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(org.smartregister.chw.core.R.menu.hiv_profile_menu, menu);
         menu.findItem(R.id.action_issue_hiv_community_followup_referral).setVisible(true);
-        menu.findItem(R.id.action_hivst_registration).setVisible(HivstDao.isRegisteredForHivst(getHivIndexContactObject().getBaseEntityId()));
+        CommonPersonObjectClient commonPersonObject = getCommonPersonObjectClient();
+        if(HealthFacilityApplication.getApplicationFlavor().hasHivst()) {
+            String dob = Utils.getValue(commonPersonObject.getColumnmaps(), org.smartregister.family.util.DBConstants.KEY.DOB, false);
+            int age = Utils.getAgeFromDate(dob);
+            menu.findItem(R.id.action_hivst_registration).setVisible(HivstDao.isRegisteredForHivst(getHivIndexContactObject().getBaseEntityId()) && age >= 18);
+        }
         menu.findItem(org.smartregister.chw.core.R.id.action_location_info).setVisible(UpdateDetailsUtil.isIndependentClient(getHivIndexContactObject().getBaseEntityId()));
         return true;
     }

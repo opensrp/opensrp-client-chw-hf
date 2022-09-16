@@ -94,6 +94,12 @@ import timber.log.Timber;
 public class HealthFacilityApplication extends CoreChwApplication implements CoreApplication {
     private CommonFtsObject commonFtsObject;
 
+    private static final Flavor flavor = new DefaultHFApplicationFlv();
+
+    public static Flavor getApplicationFlavor(){
+        return flavor;
+    }
+
     @Override
     public FamilyMetadata getMetadata() {
         return FormUtils.getFamilyMetadata(new FamilyProfileActivity(), getDefaultLocationLevel(), getFacilityHierarchy(), getFamilyLocationFields());
@@ -354,5 +360,11 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
                 .LAST_INTERACTED_WITH, ChildDBConstants.KEY.DATE_CREATED, DBConstants.KEY.DATE_REMOVED, DBConstants.KEY.DOB, ChildDBConstants.KEY.ENTRY_POINT
         });
         return map;
+    }
+
+    public interface Flavor {
+        boolean hasCdp();
+
+        boolean hasHivst();
     }
 }

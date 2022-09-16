@@ -28,6 +28,7 @@ import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.Utils;
 import org.smartregister.chw.fp.util.FamilyPlanningConstants;
 import org.smartregister.chw.hf.BuildConfig;
+import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.custom_view.FamilyMemberFloatingMenu;
 import org.smartregister.chw.hf.dataloader.FamilyMemberDataLoader;
@@ -60,7 +61,6 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
         String gender = Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.GENDER, false);
         menu.findItem(R.id.action_location_info).setVisible(true);
         menu.findItem(R.id.action_pregnancy_out_come).setVisible(false);
-        menu.findItem(R.id.action_hivst_registration).setVisible(!HivstDao.isRegisteredForHivst(baseEntityId));
         if (BuildConfig.BUILD_FOR_BORESHA_AFYA_SOUTH) {
             AllClientsUtils.updateHivMenuItems(baseEntityId, menu);
             // AllClientsUtils.updateTbMenuItems(baseEntityId, menu);
@@ -81,6 +81,12 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
         menu.findItem(R.id.action_sick_child_follow_up).setVisible(false);
         if (BuildConfig.ENABLED_MALARIA_MODULE)
             menu.findItem(R.id.action_malaria_diagnosis).setVisible(!MalariaDao.isRegisteredForMalaria(baseEntityId));
+
+        if(HealthFacilityApplication.getApplicationFlavor().hasHivst()){
+            String dob = Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.DOB, false);
+            int age = Utils.getAgeFromDate(dob);
+            menu.findItem(R.id.action_hivst_registration).setVisible(!HivstDao.isRegisteredForHivst(baseEntityId) && age >= 18);
+        }
         return true;
     }
 

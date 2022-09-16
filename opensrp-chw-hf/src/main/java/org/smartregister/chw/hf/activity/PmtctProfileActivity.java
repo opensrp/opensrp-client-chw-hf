@@ -44,6 +44,7 @@ import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.core.utils.FpUtil;
 import org.smartregister.chw.core.utils.HomeVisitUtil;
 import org.smartregister.chw.core.utils.UpdateDetailsUtil;
+import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.adapter.PmtctReferralCardViewAdapter;
 import org.smartregister.chw.hf.custom_view.PmtctFloatingMenu;
@@ -133,7 +134,10 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
         menu.findItem(R.id.action_remove_member).setVisible(false);
-        menu.findItem(R.id.action_hivst_registration).setVisible(HivstDao.isRegisteredForHivst(baseEntityId));
+        if(HealthFacilityApplication.getApplicationFlavor().hasHivst()) {
+            int age = memberObject.getAge();
+            menu.findItem(R.id.action_hivst_registration).setVisible(HivstDao.isRegisteredForHivst(baseEntityId) && age >= 18);
+        }
         return true;
     }
 

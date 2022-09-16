@@ -3,6 +3,7 @@ package org.smartregister.chw.hf.model;
 import org.smartregister.chw.core.model.NavigationOption;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.BuildConfig;
+import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
 
 import java.util.ArrayList;
@@ -39,9 +40,15 @@ public class NavigationModel implements org.smartregister.chw.core.model.Navigat
                 if (BuildConfig.BUILD_FOR_PMTCT_CASE_BASED_MANAGEMENT) {
                     navigationOptions.addAll(Arrays.asList(op1, op3, op15, op4, op13, op14, op12));
                 } else if (BuildConfig.ENABLED_MALARIA_MODULE) {
-                    navigationOptions.addAll(Arrays.asList(op1, op9, op17, op8, op10, op3, op15, op4, op5, op13, op14, op7, op12, op16));
+                    navigationOptions.addAll(Arrays.asList(op1, op9, op8, op10, op3, op15, op4, op5, op13, op14, op7, op12, op16));
                 } else {
-                    navigationOptions.addAll(Arrays.asList(op1, op9, op17, op8, op10, op18, op3, op15, op4, op5, op13, op14, op12, op16));
+                    navigationOptions.addAll(Arrays.asList(op1, op9, op8, op10, op3, op15, op4, op5, op13, op14, op12, op16));
+                }
+                if(HealthFacilityApplication.getApplicationFlavor().hasHivst()){
+                    navigationOptions.add(2, op17);
+                }
+                if(HealthFacilityApplication.getApplicationFlavor().hasCdp()){
+                    navigationOptions.add(5, op18);
                 }
             } else {
                 navigationOptions.addAll(Arrays.asList(op1, op2, op3, op4, op5, op6, op7, op12));
