@@ -3010,6 +3010,21 @@
             "field": "obs.fieldCode",
             "concept": "skin_infection"
           }
+        },
+        {
+          "column_name": "hiv_antibody_test",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "hiv_antibody_test"
+          }
+        },
+        {
+          "column_name": "last_interacted_with",
+          "type": "Event",
+          "json_mapping": {
+            "field": "version"
+          }
         }
       ]
     },

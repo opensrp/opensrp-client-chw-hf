@@ -1,6 +1,5 @@
 package org.smartregister.chw.hf.activity;
 
-import static org.smartregister.chw.core.utils.Utils.getCommonPersonObjectClient;
 import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
 import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
 import static org.smartregister.chw.hf.utils.JsonFormUtils.SYNC_LOCATION_ID;
@@ -284,17 +283,17 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
             if (preFilledForm != null)
                 UpdateDetailsUtil.startUpdateClientDetailsActivity(preFilledForm, this);
             return true;
-        } else if (itemId == org.smartregister.chw.core.R.id.action_hivst_registration){
+        } else if (itemId == org.smartregister.chw.core.R.id.action_hivst_registration) {
             startHivstRegistration();
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
-    private void startHivstRegistration(){
+    private void startHivstRegistration() {
         CommonPersonObjectClient commonPersonObjectClient = getCommonPersonObjectClient();
         String gender = Utils.getValue(commonPersonObjectClient.getColumnmaps(), org.smartregister.family.util.DBConstants.KEY.GENDER, false);
-        HivstRegisterActivity.startHivstRegistrationActivity(this, baseEntityID,gender);
+        HivstRegisterActivity.startHivstRegistrationActivity(this, baseEntityID, gender);
     }
 
     public void startFormForEdit(Integer title_resource, String formName) {

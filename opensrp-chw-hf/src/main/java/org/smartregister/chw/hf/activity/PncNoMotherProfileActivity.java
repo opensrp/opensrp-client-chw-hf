@@ -2,6 +2,10 @@ package org.smartregister.chw.hf.activity;
 
 import static org.smartregister.chw.core.utils.Utils.getDuration;
 import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
+import static org.smartregister.chw.hf.utils.JsonFormUtils.SYNC_LOCATION_ID;
+import static org.smartregister.util.JsonFormUtils.FIELDS;
+import static org.smartregister.util.JsonFormUtils.STEP1;
+import static org.smartregister.util.JsonFormUtils.VALUE;
 import static org.smartregister.util.Utils.getName;
 
 import android.app.Activity;
@@ -12,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.joda.time.DateTime;
 import org.joda.time.Days;
@@ -20,20 +25,35 @@ import org.joda.time.format.DateTimeFormatter;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.smartregister.chw.anc.AncLibrary;
 import org.smartregister.chw.anc.domain.MemberObject;
 import org.smartregister.chw.anc.util.Constants;
 import org.smartregister.chw.anc.util.DBConstants;
 import org.smartregister.chw.core.interactor.CoreChildProfileInteractor;
+import org.smartregister.chw.core.model.CoreAllClientsMemberModel;
 import org.smartregister.chw.core.utils.CoreConstants;
+import org.smartregister.chw.core.utils.CoreJsonFormUtils;
+import org.smartregister.chw.core.utils.UpdateDetailsUtil;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.custom_view.PncNoMotherFloatingMenu;
 import org.smartregister.chw.hf.dao.HfPncDao;
+import org.smartregister.chw.hf.model.FamilyProfileModel;
 import org.smartregister.chw.hf.utils.HfChildUtils;
 import org.smartregister.chw.hf.utils.PncVisitUtils;
+import org.smartregister.chw.pmtct.util.NCUtils;
 import org.smartregister.chw.pnc.PncLibrary;
+import org.smartregister.clientandeventmodel.Event;
+import org.smartregister.clientandeventmodel.Obs;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
+import org.smartregister.family.contract.FamilyProfileContract;
+import org.smartregister.family.domain.FamilyEventClient;
+import org.smartregister.family.interactor.FamilyProfileInteractor;
 import org.smartregister.family.util.JsonFormUtils;
+import org.smartregister.repository.AllSharedPreferences;
 import org.smartregister.util.Utils;
+
+import java.util.ArrayList;
+import java.util.UUID;
 
 import timber.log.Timber;
 
@@ -66,6 +86,8 @@ public class PncNoMotherProfileActivity extends PncMemberProfileActivity {
             jsonForm.getJSONObject("global").put("baseEntityId", childBaseEntityId);
             jsonForm.getJSONObject("global").put("is_eligible_for_bcg", HfPncDao.isChildEligibleForBcg(childBaseEntityId));
             jsonForm.getJSONObject("global").put("is_eligible_for_opv0", HfPncDao.isChildEligibleForOpv0(childBaseEntityId));
+            jsonForm.getJSONObject("global").put("anti_body_test_conducted", HfPncDao.hasHivAntibodyTestBeenConducted(childBaseEntityId));
+            jsonForm.getJSONObject("global").put("is_a_child_without_mother", HfPncDao.isAChildWithoutMother(childBaseEntityId));
             activity.startActivityForResult(org.smartregister.chw.core.utils.FormUtils.getStartFormActivity(jsonForm, activity.getString(R.string.record_child_followup), activity), JsonFormUtils.REQUEST_CODE_GET_JSON);
         } catch (JSONException e) {
             Timber.e(e);
@@ -187,5 +209,80 @@ public class PncNoMotherProfileActivity extends PncMemberProfileActivity {
         } else {
             super.onClick(v);
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode != RESULT_OK)
+            return;
+
+        if (requestCode == JsonFormUtils.REQUEST_CODE_GET_JSON) {
+            String jsonString = data.getStringExtra(org.smartregister.family.util.Constants.JSON_FORM_EXTRA.JSON);
+            try {
+                JSONObject form = new JSONObject(jsonString);
+                String encounterType = form.getString(JsonFormUtils.ENCOUNTER_TYPE);
+                if (encounterType.equals(org.smartregister.chw.hf.utils.Constants.Events.PNC_CHILD_FOLLOWUP)) {
+                    try {
+                        AllSharedPreferences allSharedPreferences = org.smartregister.util.Utils.getAllSharedPreferences();
+                        Event baseEvent = org.smartregister.chw.anc.util.JsonFormUtils.processJsonForm(allSharedPreferences, jsonString, org.smartregister.chw.hf.utils.Constants.TableName.PNC_FOLLOWUP);
+                        org.smartregister.chw.pmtct.util.JsonFormUtils.tagEvent(allSharedPreferences, baseEvent);
+                        JSONObject global = form.getJSONObject("global");
+                        baseEvent.setBaseEntityId(global.getString("baseEntityId"));
+
+                        NCUtils.processEvent(baseEvent.getBaseEntityId(), new JSONObject(org.smartregister.chw.pmtct.util.JsonFormUtils.gson.toJson(baseEvent)));
+
+                        JSONArray fields = form.getJSONObject(STEP1).getJSONArray(FIELDS);
+                        JSONObject hivAntibodyTest = JsonFormUtils.getFieldJSONObject(fields, "hiv_antibody_test");
+                        if (hivAntibodyTest != null && hivAntibodyTest.has(VALUE) && hivAntibodyTest.getString(VALUE).equalsIgnoreCase("positive")) {
+                            createHeiRegistrationEvent(global.getString("baseEntityId"));
+                        }
+                        Toast.makeText(this, getString(R.string.saved_child_followup), Toast.LENGTH_SHORT).show();
+                    } catch (Exception ex) {
+                        Timber.e(ex);
+                    }
+                } else if (encounterType.equalsIgnoreCase(CoreConstants.EventType.UPDATE_CHILD_REGISTRATION)) {
+                    String childBaseEntityId = form.getString(JsonFormUtils.ENTITY_ID);
+                    FamilyEventClient familyEventClient =
+                            new FamilyProfileModel(memberObject.getFamilyName()).processUpdateMemberRegistration(jsonString, childBaseEntityId);
+                    familyEventClient.getEvent().setEventType(CoreConstants.EventType.UPDATE_CHILD_REGISTRATION);
+                    new FamilyProfileInteractor().saveRegistration(familyEventClient, jsonString, true, (FamilyProfileContract.InteractorCallBack) pncMemberProfilePresenter());
+                } else if (form.getString(JsonFormUtils.ENCOUNTER_TYPE).equals(org.smartregister.chw.core.utils.Utils.metadata().familyRegister.updateEventType)) {
+                    FamilyEventClient familyEventClient = new CoreAllClientsMemberModel().processJsonForm(jsonString, UpdateDetailsUtil.getFamilyBaseEntityId(getCommonPersonObjectClient()));
+                    JSONObject syncLocationField = CoreJsonFormUtils.getJsonField(new JSONObject(jsonString), STEP1, SYNC_LOCATION_ID);
+                    familyEventClient.getEvent().setLocationId(CoreJsonFormUtils.getSyncLocationUUIDFromDropdown(syncLocationField));
+                    familyEventClient.getEvent().setEntityType(CoreConstants.TABLE_NAME.INDEPENDENT_CLIENT);
+                    new FamilyProfileInteractor().saveRegistration(familyEventClient, jsonString, true, (FamilyProfileContract.InteractorCallBack) pncMemberProfilePresenter());
+                }
+            } catch (JSONException jsonException) {
+                Timber.e(jsonException);
+            }
+        }
+    }
+
+    private static void createHeiRegistrationEvent(String baseEntityId) throws Exception {
+        Event baseEvent = new Event();
+        baseEvent.setFormSubmissionId(UUID.randomUUID().toString());
+        baseEvent.setEventType("HEI Registration");
+        baseEvent.addObs(
+                (new Obs())
+                        .withFormSubmissionField("risk_category")
+                        .withValue("high")
+                        .withFieldCode("risk_category")
+                        .withFieldType("formsubmissionField")
+                        .withFieldDataType("text")
+                        .withParentCode("")
+                        .withHumanReadableValues(new ArrayList<>()));
+
+
+        baseEvent.setBaseEntityId(baseEntityId);
+        baseEvent.setEntityType(org.smartregister.chw.hf.utils.Constants.TableName.HEI);
+
+        AllSharedPreferences allSharedPreferences = AncLibrary.getInstance().context().allSharedPreferences();
+
+        org.smartregister.chw.anc.util.JsonFormUtils.tagEvent(allSharedPreferences, baseEvent);
+        org.smartregister.chw.anc.util.NCUtils.addEvent(allSharedPreferences, baseEvent);
+        org.smartregister.chw.anc.util.NCUtils.startClientProcessing();
+
     }
 }
