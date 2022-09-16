@@ -589,8 +589,7 @@
             "field_value": "PNC No Mother Registration",
             "creates_case": [
               "ec_no_mother_pnc",
-              "ec_child",
-              "ec_hei"
+              "ec_child"
             ]
           },
           {

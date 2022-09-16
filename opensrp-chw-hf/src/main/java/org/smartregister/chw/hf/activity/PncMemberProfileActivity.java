@@ -1,6 +1,5 @@
 package org.smartregister.chw.hf.activity;
 
-import static org.smartregister.chw.core.utils.Utils.getCommonPersonObjectClient;
 import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
 import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
 import static org.smartregister.chw.hf.utils.JsonFormUtils.SYNC_LOCATION_ID;
@@ -64,6 +63,7 @@ import org.smartregister.family.domain.FamilyEventClient;
 import org.smartregister.family.interactor.FamilyProfileInteractor;
 import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.family.util.Utils;
+import org.smartregister.opd.utils.OpdDbConstants;
 import org.smartregister.repository.AllSharedPreferences;
 
 import java.util.Date;
@@ -287,17 +287,20 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
             if (preFilledForm != null)
                 UpdateDetailsUtil.startUpdateClientDetailsActivity(preFilledForm, this);
             return true;
-        } else if (itemId == org.smartregister.chw.core.R.id.action_hivst_registration){
+        } else if (itemId == org.smartregister.chw.core.R.id.action_hivst_registration) {
             startHivstRegistration();
+            return true;
+        } else if (itemId == R.id.action_mark_as_deceased) {
+            removeMember();
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
-    private void startHivstRegistration(){
+    private void startHivstRegistration() {
         CommonPersonObjectClient commonPersonObjectClient = getCommonPersonObjectClient();
         String gender = Utils.getValue(commonPersonObjectClient.getColumnmaps(), org.smartregister.family.util.DBConstants.KEY.GENDER, false);
-        HivstRegisterActivity.startHivstRegistrationActivity(this, baseEntityID,gender);
+        HivstRegisterActivity.startHivstRegistrationActivity(this, baseEntityID, gender);
     }
 
     public void startFormForEdit(Integer title_resource, String formName) {
@@ -528,5 +531,17 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
         } catch (Exception e) {
             Timber.e(e);
         }
+    }
+
+    protected void removeMember() {
+        CommonPersonObjectClient commonPersonObjectClient = getClientDetailsByBaseEntityID(memberObject.getBaseEntityId());
+        if (commonPersonObjectClient.getColumnmaps().get("entity_type").equals(CoreConstants.TABLE_NAME.INDEPENDENT_CLIENT)) {
+            commonPersonObjectClient.getColumnmaps().put(OpdDbConstants.KEY.REGISTER_TYPE, CoreConstants.REGISTER_TYPE.INDEPENDENT);
+        }
+
+        IndividualProfileRemoveActivity.startIndividualProfileActivity(this,
+                commonPersonObjectClient,
+                memberObject.getFamilyBaseEntityId(), memberObject.getFamilyHead(),
+                memberObject.getPrimaryCareGiver(), FpRegisterActivity.class.getCanonicalName());
     }
 }

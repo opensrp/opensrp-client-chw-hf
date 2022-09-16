@@ -285,6 +285,97 @@
         }
       },
       {
+        "key": "hiv_antibody_test",
+        "type": "native_radio",
+        "label": "HIV Anti-Body Test",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hiv_antibody_test",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "positive",
+            "text": "Positive",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "positive"
+          },
+          {
+            "key": "negative",
+            "text": "Negative",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "negative"
+          },
+          {
+            "key": "test_not_conducted",
+            "text": "HIV Antibody Test not conducted",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "test_not_conducted"
+          }
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pnc_mother_general_examination_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please answer this question"
+        }
+      },
+      {
+        "key": "reason_for_not_conducting_hiv_antibody_test",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_conducting_hiv_antibody_test",
+        "type": "spinner",
+        "hint": "Reason as to why the HIV Antibody test was not conducted",
+        "values": [
+          "Test kits are out of stock",
+          "The child was in an emergency situation",
+          "Other (Specify)"
+        ],
+        "keys": [
+          "test_kits_out_of_stock",
+          "client_was_in_an_emergency_situation",
+          "other"
+        ],
+        "openmrs_choice_ids": {
+          "test_kits_out_of_stock": "test_kits_out_of_stock",
+          "client_was_in_an_emergency_situation": "client_was_in_an_emergency_situation",
+          "Other": "other"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select a reason"
+        },
+        "relevance": {
+          "step1:hiv_antibody_test": {
+            "type": "string",
+            "ex": "equalTo(., \"test_not_conducted\")"
+          }
+        }
+      },
+      {
+        "key": "other_reason_for_not_conducting_hiv_antibody_test",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reason_for_not_conducting_hiv_antibody_test",
+        "type": "edit_text",
+        "hint": "Specify other reasons for not conducting HIV Antibody test",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the reason"
+        },
+        "relevance": {
+          "step1:reason_for_not_conducting_hiv_antibody_test": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
+          }
+        }
+      },
+      {
         "key": "temperature",
         "type": "edit_text",
         "hint": "Temperature (\u2103)",

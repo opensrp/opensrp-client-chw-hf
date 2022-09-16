@@ -182,4 +182,23 @@ public class HfPncDao extends PNCDao {
             return 0;
 
     }
+
+    public static boolean hasHivAntibodyTestBeenConducted(String baseEntityID) {
+        String sql = "SELECT hiv_antibody_test  FROM ec_pnc_child_followup WHERE entity_id='" + baseEntityID + "' AND hiv_antibody_test IS NOT NULL  ORDER BY last_interacted_with DESC LIMIT 1";
+        DataMap<String> map = cursor -> getCursorValue(cursor, "hiv_antibody_test");
+        List<String> res = readData(sql, map);
+
+        if (res != null && res.size() > 0 && res.get(0) != null) {
+            return !res.get(0).equals("test_not_conducted");
+        } else
+            return false;
+    }
+
+    public static boolean isAChildWithoutMother(String baseEntityID) {
+        String sql = "SELECT base_entity_id  FROM ec_no_mother_pnc WHERE base_entity_id='" + baseEntityID + "'";
+        DataMap<String> map = cursor -> getCursorValue(cursor, "base_entity_id");
+        List<String> res = readData(sql, map);
+
+        return res != null && res.size() > 0 && res.get(0) != null;
+    }
 }

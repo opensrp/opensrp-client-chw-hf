@@ -46,10 +46,10 @@
     "title": "HIV Test Results",
     "fields": [
       {
-        "key": "hiv_test_result",
+        "key": "hiv",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "hiv_status",
+        "openmrs_entity_id": "hiv",
         "type": "native_radio",
         "label": "Select the HIV test result",
         "label_text_style": "normal",
@@ -112,7 +112,7 @@
           "err": "Please select a reason"
         },
         "relevance": {
-          "step1:hiv_test_result": {
+          "step1:hiv": {
             "type": "string",
             "ex": "equalTo(., \"test_not_conducted\")"
           }

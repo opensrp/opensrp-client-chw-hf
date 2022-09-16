@@ -1,6 +1,6 @@
 ---
 name: step1_prompt_for_moderate_anaemia_management
-description:  prompt for moderate anaemia management
+description: prompt for moderate anaemia management
 priority: 1
 condition: "!step1_hb_level.equals('') && Float.parseFloat(step1_hb_level) > 8.5 && Float.parseFloat(step1_hb_level) <= 11.4"
 actions:
@@ -24,5 +24,12 @@ name: step1_prompt_for_mental_illness
 description: prompt_for_mental_illness
 priority: 1
 condition: "step1_puerperal_psychosis.contains('yes') || step1_mental_illness_symptom.contains('yes')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_hiv_antibody_test
+description: hiv_antibody_test
+priority: 1
+condition: "!global_anti_body_test_conducted && global_is_a_child_without_mother"
 actions:
   - "isRelevant = true"

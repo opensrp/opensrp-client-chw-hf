@@ -25,12 +25,12 @@ public class PncNoMotherRegisterFragmentPresenter extends BasePncRegisterFragmen
 
     @Override
     public String getMainCondition() {
-        return Constants.TableName.NO_MOTHER_PNC + "." + "is_closed is 0";
+        return "";
     }
 
     @Override
     public String getDefaultSortQuery() {
-        return getMainTable() + ".last_interacted_with DESC";
+        return "lastInteractedWith DESC";
     }
 
 }
