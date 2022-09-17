@@ -22,7 +22,6 @@ import org.smartregister.chw.hf.actionhelper.HeiCtxAction;
 import org.smartregister.chw.hf.actionhelper.HeiDnaPcrTestAction;
 import org.smartregister.chw.hf.actionhelper.NextFollowupVisitAction;
 import org.smartregister.chw.hf.dao.HeiDao;
-import org.smartregister.chw.hf.repository.HfLocationRepository;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.pmtct.PmtctLibrary;
 import org.smartregister.chw.pmtct.contract.BasePmtctHomeVisitContract;
@@ -39,7 +38,6 @@ import org.smartregister.domain.LocationTag;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -250,6 +248,14 @@ public class HeiFollowupVisitInteractorFlv implements PmtctFollowupVisitInteract
                     JSONObject actualAge = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "actual_age");
                     CommonPersonObjectClient client = getCommonPersonObjectClient(memberObject.getBaseEntityId());
                     actualAge.put(JsonFormUtils.VALUE, getDuration(org.smartregister.family.util.Utils.getValue(client.getColumnmaps(), org.smartregister.family.util.DBConstants.KEY.DOB, false)));
+
+                    String heiNumber = HeiDao.getHeiNumber(memberObject.getBaseEntityId());
+                    if (!StringUtils.isBlank(heiNumber)) {
+                        JSONObject sampleId = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "sample_id");
+                        sampleId.put(JsonFormUtils.VALUE, heiNumber);
+                        sampleId.put("editable", true);
+                        sampleId.put("read_only", true);
+                    }
 
                     //loads details to the form
                     if (details != null && !details.isEmpty()) {
