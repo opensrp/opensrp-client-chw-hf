@@ -67,7 +67,7 @@ public class AncLabTestAction implements BaseAncHomeVisitAction.AncHomeVisitActi
             checkObject.put("protein_in_urine", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "protein_in_urine")));
             if(!bloodGroupComplete){
                 checkObject.put("blood_group", bloodGroupCheck);
-                if(bloodGroup.contains("test_not_conducted")){
+                if(!bloodGroup.contains("test_not_conducted")){
                     checkObject.put("rh_factor", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "rh_factor")));
                 }
             }
