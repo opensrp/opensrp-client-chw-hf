@@ -15,7 +15,9 @@
         android:paddingTop="@dimen/register_list_top_bottom_padding"
         android:paddingEnd="@dimen/register_list_item_padding"
         android:paddingRight="@dimen/register_list_item_padding"
-        android:paddingBottom="@dimen/register_list_top_bottom_padding">
+        android:paddingBottom="@dimen/register_list_top_bottom_padding"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <ImageView
             android:id="@+id/client_avatar"
@@ -33,17 +35,18 @@
 
     <LinearLayout
         android:id="@+id/child_column"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:layout_toStartOf="@+id/ll_opdRegisterListRow_clientActionWrapper"
-        android:layout_toLeftOf="@+id/ll_opdRegisterListRow_clientActionWrapper"
         android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/go_to_profile_image_view"
         app:layout_constraintStart_toEndOf="@+id/client_avatar_wrapper"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintWidth_default="spread">
 
         <TextView
             android:id="@+id/tv_opdRegisterListRow_parentName"
@@ -67,11 +70,11 @@
             android:layout_marginStart="0dp"
             android:layout_marginEnd="0dp"
             android:ellipsize="end"
+            android:fontFamily="@font/google_sans_bold"
             android:maxLines="1"
             android:paddingLeft="0dp"
             android:text="Patient Name, Age"
             android:textColor="@color/black"
-            android:fontFamily="@font/google_sans_bold"
             android:textStyle="bold" />
 
         <LinearLayout
@@ -87,9 +90,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left|center_horizontal"
-                android:fontFamily="@font/google_sans_regular"
                 android:layout_marginStart="0dp"
                 android:layout_marginEnd="0dp"
+                android:fontFamily="@font/google_sans_regular"
                 android:paddingStart="0dp"
                 android:paddingEnd="0dp"
                 android:text="Child"
@@ -109,12 +112,12 @@
 
             <TextView
                 android:id="@+id/tv_opdRegisterListRow_gender"
-                android:fontFamily="@font/google_sans_regular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left|center_horizontal"
                 android:layout_marginStart="0dp"
                 android:layout_marginEnd="0dp"
+                android:fontFamily="@font/google_sans_regular"
                 android:paddingStart="0dp"
                 android:paddingEnd="0dp"
                 android:text="Male"
@@ -135,12 +138,12 @@
 
             <TextView
                 android:id="@+id/tv_opdRegisterListRow_location"
-                android:fontFamily="@font/google_sans_regular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left|center_horizontal"
                 android:layout_marginStart="0dp"
                 android:layout_marginEnd="0dp"
+                android:fontFamily="@font/google_sans_regular"
                 android:paddingStart="0dp"
                 android:paddingEnd="0dp"
                 android:text="Lavington"

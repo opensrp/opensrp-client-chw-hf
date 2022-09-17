@@ -32,7 +32,7 @@
 
     <LinearLayout
         android:id="@+id/patient_column"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/client_avatar_wrapper"
         android:layout_centerVertical="true"
