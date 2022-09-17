@@ -20,7 +20,7 @@ public class PncCloseDateIntentService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-       List<MemberObject> memberObjectList = HfPncDao.getPncMembersWithMoreThan49Days();
+       List<MemberObject> memberObjectList = HfPncDao.getPncMembersWithMoreThan42Days();
        if(memberObjectList != null && memberObjectList.size()> 0){
            for(MemberObject memberObject : memberObjectList){
                PncMemberProfileActivity.closePncMemberVisits(memberObject.getBaseEntityId());

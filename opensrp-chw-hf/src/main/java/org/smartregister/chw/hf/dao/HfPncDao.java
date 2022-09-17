@@ -78,7 +78,7 @@ public class HfPncDao extends PNCDao {
         return readData(sql, dataMap);
     }
 
-    public static List<MemberObject> getPncMembersWithMoreThan49Days() {
+    public static List<MemberObject> getPncMembersWithMoreThan42Days() {
         String sql = "select m.base_entity_id,\n" +
                 "       m.unique_id,\n" +
                 "       m.relational_id,\n" +
@@ -103,7 +103,7 @@ public class HfPncDao extends PNCDao {
                 "        inner join ec_pregnancy_outcome epo on m.base_entity_id = epo.base_entity_id\n" +
                 "         left join ec_family_member fh on fh.base_entity_id = f.family_head\n" +
                 "where cast(julianday(datetime('now')) - julianday(datetime(substr(epo.delivery_date, 7,4)\n" +
-                "                || '-' || substr(epo.delivery_date, 4,2) || '-' || substr(epo.delivery_date, 1,2))) as integer) >= 49\n" +
+                "                || '-' || substr(epo.delivery_date, 4,2) || '-' || substr(epo.delivery_date, 1,2))) as integer) >= 43\n" +
                 "  AND epo.is_closed = 0 ";
 
         DataMap<MemberObject> dataMap = cursor -> {
