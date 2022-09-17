@@ -1,5 +1,14 @@
 package org.smartregister.chw.hf.activity;
 
+import static com.vijay.jsonwizard.constants.JsonFormConstants.VALUE;
+import static org.smartregister.chw.core.utils.Utils.getCommonPersonObjectClient;
+import static org.smartregister.chw.core.utils.Utils.getDuration;
+import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
+import static org.smartregister.chw.hf.utils.Constants.JsonForm.getHeiNumberRegistration;
+import static org.smartregister.client.utils.constants.JsonFormConstants.FIELDS;
+import static org.smartregister.client.utils.constants.JsonFormConstants.STEP1;
+import static org.smartregister.util.Utils.getName;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
@@ -11,6 +20,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 
 import com.vijay.jsonwizard.utils.FormUtils;
 
@@ -61,18 +73,7 @@ import java.util.Map;
 
 import javax.annotation.Nullable;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import timber.log.Timber;
-
-import static com.vijay.jsonwizard.constants.JsonFormConstants.VALUE;
-import static org.smartregister.chw.core.utils.Utils.getCommonPersonObjectClient;
-import static org.smartregister.chw.core.utils.Utils.getDuration;
-import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
-import static org.smartregister.chw.hf.utils.Constants.JsonForm.getHeiNumberRegistration;
-import static org.smartregister.client.utils.constants.JsonFormConstants.FIELDS;
-import static org.smartregister.client.utils.constants.JsonFormConstants.STEP1;
-import static org.smartregister.util.Utils.getName;
 
 public class HeiProfileActivity extends BasePmtctProfileActivity {
 
@@ -138,7 +139,8 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
         textViewRecordPmtct.setOnClickListener(this);
 
         view_hvl_results_row.setVisibility(View.VISIBLE);
-        rlHvlResults.setVisibility(View.VISIBLE);
+        if (HeiDao.hasHivResults(baseEntityId))
+            rlHvlResults.setVisibility(View.VISIBLE);
 
         TextView tvHeiResultsTitle = findViewById(R.id.textview_hvl_results);
         TextView tvHeiResultsSubTitle = findViewById(R.id.tv_view_hvl_results);
