@@ -1,5 +1,12 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.AllConstants.LocationConstants.SPECIAL_TAG_FOR_OPENMRS_TEAM_MEMBERS;
+import static org.smartregister.chw.core.utils.CoreConstants.EventType.PMTCT_COMMUNITY_FOLLOWUP;
+import static org.smartregister.chw.hf.utils.Constants.JsonFormConstants.STEP1;
+import static org.smartregister.chw.hf.utils.JsonFormUtils.SYNC_LOCATION_ID;
+import static org.smartregister.chw.hf.utils.JsonFormUtils.getAutoPopulatedJsonEditFormString;
+import static org.smartregister.util.JsonFormUtils.VALUE;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -14,6 +21,10 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.vijay.jsonwizard.utils.FormUtils;
 
@@ -66,6 +77,7 @@ import org.smartregister.family.util.Utils;
 import org.smartregister.opd.utils.OpdDbConstants;
 import org.smartregister.repository.AllSharedPreferences;
 
+import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Collections;
@@ -75,17 +87,7 @@ import java.util.Locale;
 
 import javax.annotation.Nullable;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.recyclerview.widget.RecyclerView;
 import timber.log.Timber;
-
-import static org.smartregister.AllConstants.LocationConstants.SPECIAL_TAG_FOR_OPENMRS_TEAM_MEMBERS;
-import static org.smartregister.chw.core.utils.CoreConstants.EventType.PMTCT_COMMUNITY_FOLLOWUP;
-import static org.smartregister.chw.hf.utils.Constants.JsonFormConstants.STEP1;
-import static org.smartregister.chw.hf.utils.JsonFormUtils.SYNC_LOCATION_ID;
-import static org.smartregister.chw.hf.utils.JsonFormUtils.getAutoPopulatedJsonEditFormString;
-import static org.smartregister.util.JsonFormUtils.VALUE;
 
 public class PmtctProfileActivity extends CorePmtctProfileActivity {
     private static String baseEntityId;
@@ -324,6 +326,23 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         if (hivMemberObject != null && StringUtils.isNotBlank(hivMemberObject.getCtcNumber())) {
             tv.setVisibility(View.VISIBLE);
             tv.setText(hivMemberObject.getCtcNumber());
+        }
+    }
+
+    @Override
+    public void setProfileViewWithData() {
+        super.setProfileViewWithData();
+        TextView linkedMotherChampion = (TextView) findViewById(R.id.linked_to_mother_champion);
+        if (HfPmtctDao.hasBeenReferredForMotherChampionServices(baseEntityId)) {
+            //Checking if CTC Number is visible before showing an additional separator
+            if (textViewClientRegNumber.getVisibility() == View.VISIBLE)
+                findViewById(R.id.family_head_separator).setVisibility(View.VISIBLE);
+
+            linkedMotherChampion.setVisibility(View.VISIBLE);
+            linkedMotherChampion.setText(MessageFormat.format(getString(R.string.linked_to_mother_champion), HfPmtctDao.getLinkedMotherChampionLocation(baseEntityId)));
+        } else {
+            findViewById(R.id.family_head_separator).setVisibility(View.GONE);
+            linkedMotherChampion.setVisibility(View.GONE);
         }
     }
 

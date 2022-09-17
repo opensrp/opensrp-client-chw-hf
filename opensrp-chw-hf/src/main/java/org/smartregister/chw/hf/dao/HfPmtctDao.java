@@ -587,4 +587,30 @@ public class HfPmtctDao extends CorePmtctDao {
         }
         return false;
     }
+
+    public static boolean hasBeenReferredForMotherChampionServices(String baseEntityId) {
+        String sql = "SELECT reasons_for_issuing_community_referral FROM ec_mother_champion WHERE reasons_for_issuing_community_referral = 'mother_champion_services' AND entity_id = '" + baseEntityId + "' ";
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "reasons_for_issuing_community_referral");
+
+        List<String> res = readData(sql, dataMap);
+        if (res != null && res.size() > 0 && res.get(0) != null) {
+            try {
+                return true;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
+
+    public static String getLinkedMotherChampionLocation(String baseEntityId) {
+        String sql = "SELECT mother_champion_location FROM ec_mother_champion WHERE reasons_for_issuing_community_referral = 'mother_champion_services' AND entity_id = '" + baseEntityId + "' ORDER BY last_interacted_with DESC LIMIT 1 ";
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "mother_champion_location");
+
+        List<String> res = readData(sql, dataMap);
+        if (res != null && res.size() > 0 && res.get(0) != null) {
+            return res.get(0);
+        }
+        return null;
+    }
 }

@@ -443,6 +443,8 @@
     <string name="callPhonePermissionRequestGrantButton">Grant</string>
     <string name="callPhoneRequestTitle">Allow Phone Number Collection</string>
     <string name="callPhoneRequestMessage">Facility Healthcare Worker collect user phone numbers to be used for monitoring, evaluation and analysis of visits conducted by clients at the health facility.</string>
+    <string name="referral_for_mother_champion_services_sent">Linked to Mother Champion Community Services</string>
+    <string name="linked_to_mother_champion">Linked to Mother Champion in {0}</string>
 
 
 </resources>

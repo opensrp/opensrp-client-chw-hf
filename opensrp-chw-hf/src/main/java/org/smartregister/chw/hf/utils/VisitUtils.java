@@ -22,6 +22,7 @@ import org.smartregister.chw.anc.util.JsonFormUtils;
 import org.smartregister.chw.anc.util.NCUtils;
 import org.smartregister.chw.core.dao.ChwNotificationDao;
 import org.smartregister.chw.hf.dao.HfAncDao;
+import org.smartregister.chw.pmtct.dao.PmtctDao;
 import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.immunization.service.intent.RecurringIntentService;
 import org.smartregister.immunization.service.intent.VaccineIntentService;
@@ -80,6 +81,9 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
                 if (isNextVisitsCancelled(v)) {
                     createCancelledEvent(v.getJson());
                     createEventToMoveAncClientsWithStillBirthToPnc(v.getJson());
+                    if (PmtctDao.isRegisteredForPmtct(v.getBaseEntityId())) {
+                        createClosePmtctEvent(v.getJson());
+                    }
                 }
             }
         }
@@ -106,6 +110,13 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
             NCUtils.addEvent(allSharedPreferences, baseEvent);
             NCUtils.startClientProcessing();
         }
+    }
+
+    protected static Event createClosePmtctEvent(String jsonString) {
+        Event closePmtctEvent = new Gson().fromJson(jsonString, Event.class);
+        closePmtctEvent.setEntityType(org.smartregister.chw.pmtct.util.Constants.TABLES.PMTCT_REGISTRATION);
+        closePmtctEvent.setEventType(Constants.Events.PMTCT_CLOSE_VISITS);
+        return closePmtctEvent;
     }
 
     public static boolean computeCompletionStatusForAction(JSONArray obs, String checkString) throws JSONException {
@@ -217,7 +228,7 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
         if (visit.getVisitType().equalsIgnoreCase(Constants.Events.ANC_RECURRING_FACILITY_VISIT) && isNextVisitsCancelled(visit)) {
             createCancelledEvent(visit.getJson());
             createEventToMoveAncClientsWithStillBirthToPnc(visit.getJson());
-            ((Activity)context).finish();
+            ((Activity) context).finish();
         }
     }
 

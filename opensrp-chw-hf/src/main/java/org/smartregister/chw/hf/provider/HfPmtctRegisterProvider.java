@@ -8,8 +8,11 @@ import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
@@ -24,6 +27,7 @@ import org.smartregister.chw.hf.utils.HfHomeVisitUtil;
 import org.smartregister.chw.pmtct.fragment.BasePmtctRegisterFragment;
 import org.smartregister.chw.pmtct.util.DBConstants;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
+import org.smartregister.provider.PmtctRegisterProvider;
 import org.smartregister.util.Utils;
 import org.smartregister.view.contract.SmartRegisterClient;
 
@@ -45,6 +49,12 @@ public class HfPmtctRegisterProvider extends CorePmtctRegisterProvider {
         this.context = context;
     }
 
+    @Override
+    public PmtctRegisterProvider.RegisterViewHolder createViewHolder(ViewGroup parent) {
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = inflater.inflate(R.layout.hf_hiv_register_list_row_item, parent, false);
+        return new HfRegisterViewHolder(view);
+    }
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -109,6 +119,19 @@ public class HfPmtctRegisterProvider extends CorePmtctRegisterProvider {
             registerViewHolder.dueButton.setOnClickListener(null);
             String baseEntityId = smartRegisterClient.entityId();
             Utils.startAsyncTask(new UpdatePmtctDueButtonStatusTask(registerViewHolder, baseEntityId), null);
+            displayReferralSent(pc, (HfRegisterViewHolder) registerViewHolder);
+        }
+    }
+
+    private void displayReferralSent(CommonPersonObjectClient client, HfRegisterViewHolder viewHolder) {
+        String baseEntityId = client.entityId();
+
+        if (HfPmtctDao.hasBeenReferredForMotherChampionServices(baseEntityId)) {
+            viewHolder.textViewReferralDay.setVisibility(View.VISIBLE);
+            String referralDay = viewHolder.itemView.getContext().getString(R.string.referral_for_mother_champion_services_sent);
+            viewHolder.textViewReferralDay.setText(referralDay);
+        } else {
+            viewHolder.textViewReferralDay.setVisibility(View.GONE);
         }
     }
 
@@ -214,6 +237,18 @@ public class HfPmtctRegisterProvider extends CorePmtctRegisterProvider {
             dueButton.setText(context.getString(org.smartregister.chw.core.R.string.visit_done));
             dueButton.setBackgroundColor(context.getResources().getColor(org.smartregister.chw.core.R.color.transparent));
             dueButton.setOnClickListener(null);
+        }
+    }
+
+
+    public class HfRegisterViewHolder extends PmtctRegisterProvider.RegisterViewHolder {
+        public TextView textViewReferralDay;
+        public View goToProfileWrapper;
+
+        public HfRegisterViewHolder(View itemView) {
+            super(itemView);
+            textViewReferralDay = itemView.findViewById(R.id.text_view_referral_day);
+            goToProfileWrapper = itemView.findViewById(R.id.go_to_profile_wrapper);
         }
     }
 }
