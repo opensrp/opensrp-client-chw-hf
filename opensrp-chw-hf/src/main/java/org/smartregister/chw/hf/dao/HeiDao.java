@@ -15,6 +15,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import timber.log.Timber;
+
 public class HeiDao extends AbstractDao {
     public static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
 
@@ -69,7 +71,15 @@ public class HeiDao extends AbstractDao {
     }
 
     public static boolean isEligibleForDnaCprHivTest(String baseEntityID) {
-        return true;
+        try {
+            String riskLevel = getRiskLevel(baseEntityID);
+            DateTime dobDateTime = new DateTime(getMember(baseEntityID).getDob());
+            int weeks = getElapsedTimeInWeeks(simpleDateFormat.format(dobDateTime.toDate()));
+            return riskLevel != null && riskLevel.equalsIgnoreCase("low_risk") && weeks >= 4;
+        } catch (Exception e) {
+            Timber.e(e);
+            return true;
+        }
     }
 
     public static boolean isEligibleForArvPrescriptionForHighRisk(String baseEntityID) {
