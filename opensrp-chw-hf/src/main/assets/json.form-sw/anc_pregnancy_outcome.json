@@ -235,7 +235,6 @@
         "openmrs_entity_id": "other_reasons_for_child_death",
         "type": "edit_text",
         "hint": "Sababu nyingine zilizopelekea mtoto kufariki",
-        "edit_type": "name",
         "v_required": {
           "value": "true",
           "err": "Tafadhali jaza sababu"
@@ -243,7 +242,7 @@
         "relevance": {
           "step1:reason_child_died": {
             "type": "string",
-            "ex": "equalTo(., \"other\")"
+            "ex": "equalTo(., \"others\")"
           }
         }
       },
@@ -1529,7 +1528,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "child_opv0_vaccination",
             "type": "native_radio",
-            "label": "Je, Mtoto amepata chanjo ya OPV0?",
+            "label": "Je, Mtoto amepata chanjo ya OPV 0?",
             "label_text_style": "normal",
             "text_color": "#C0C0C0",
             "options": [
@@ -1554,7 +1553,7 @@
           {
             "key": "prompt_for_opv0_vacc_not_provided",
             "type": "toaster_notes",
-            "text": "Mtoto amepoteza nafasi ya kupata OPV-0, Mpatie OPV-1 katika udhulio la kwanza la PNC",
+            "text": "Mpatie chanjo ya OPV 0 mtoto kwenye udhurio la kwanza la baada ya kujifungua (PNC) au mara tu chanjo ya OPV 0 itakapo kuwepo.OPV 0 haitakiwi kutolewa baada ya mtoto kufikisha siku 14",
             "openmrs_entity_id": "",
             "openmrs_entity": "",
             "openmrs_entity_parent": "",
