@@ -323,6 +323,7 @@
     <string name="callPhonePermissionRequestGrantButton">Ruhusu</string>
     <string name="callPhoneRequestTitle">Ruhusu Ukusanyaji wa Nambari ya Simu</string>
     <string name="callPhoneRequestMessage">Mtoa Huduma wa Afya ngazi ya kituoni hukusanya nambari za simu za wateja zitakazotumika kwa ufuatiliaji, tathmini na uchambuzi wa ziara zinazofanywa na wateja kwenye kituo cha afya.</string>
+    <string name="referral_for_mother_champion_services_sent">Ameunganishwa na Mama Kinara</string>
 
 
 

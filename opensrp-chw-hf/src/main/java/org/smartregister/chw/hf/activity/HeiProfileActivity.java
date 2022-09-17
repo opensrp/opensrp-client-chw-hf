@@ -269,13 +269,6 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
         textViewGender.setText(PmtctUtil.getGenderTranslated(this, memberObject.getGender()));
         textViewLocation.setText(memberObject.getAddress());
         textViewUniqueID.setText(memberObject.getUniqueId());
-
-        if (StringUtils.isNotBlank(memberObject.getFamilyHead()) && memberObject.getFamilyHead().equals(memberObject.getBaseEntityId())) {
-            findViewById(org.smartregister.pmtct.R.id.family_malaria_head).setVisibility(View.VISIBLE);
-        }
-        if (StringUtils.isNotBlank(memberObject.getPrimaryCareGiver()) && memberObject.getPrimaryCareGiver().equals(memberObject.getBaseEntityId())) {
-            findViewById(org.smartregister.pmtct.R.id.primary_malaria_caregiver).setVisibility(View.VISIBLE);
-        }
     }
 
     @Override
