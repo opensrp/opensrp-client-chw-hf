@@ -1,13 +1,5 @@
 package org.smartregister.chw.hf.activity;
 
-import static com.vijay.jsonwizard.constants.JsonFormConstants.VALUE;
-import static org.smartregister.chw.core.utils.Utils.getCommonPersonObjectClient;
-import static org.smartregister.chw.core.utils.Utils.getDuration;
-import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
-import static org.smartregister.chw.hf.utils.Constants.JsonForm.getHeiNumberRegistration;
-import static org.smartregister.client.utils.constants.JsonFormConstants.FIELDS;
-import static org.smartregister.client.utils.constants.JsonFormConstants.STEP1;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
@@ -20,12 +12,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-
 import com.vijay.jsonwizard.utils.FormUtils;
 
 import org.apache.commons.lang3.StringUtils;
+import org.joda.time.DateTime;
+import org.joda.time.Period;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -70,7 +61,18 @@ import java.util.Map;
 
 import javax.annotation.Nullable;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import timber.log.Timber;
+
+import static com.vijay.jsonwizard.constants.JsonFormConstants.VALUE;
+import static org.smartregister.chw.core.utils.Utils.getCommonPersonObjectClient;
+import static org.smartregister.chw.core.utils.Utils.getDuration;
+import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
+import static org.smartregister.chw.hf.utils.Constants.JsonForm.getHeiNumberRegistration;
+import static org.smartregister.client.utils.constants.JsonFormConstants.FIELDS;
+import static org.smartregister.client.utils.constants.JsonFormConstants.STEP1;
+import static org.smartregister.util.Utils.getName;
 
 public class HeiProfileActivity extends BasePmtctProfileActivity {
 
@@ -166,6 +168,33 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
             showVisitInProgress();
             setUpEditButton();
         }
+
+        Map<String, String> motherDetails = getMotherDetails();
+        if (motherDetails != null) {
+            showMotherDetails(motherDetails);
+        }
+    }
+
+    private void showMotherDetails(Map<String, String> motherDetails) {
+        String firstName = getName(
+                Utils.getValue(motherDetails, DBConstants.KEY.FIRST_NAME, true),
+                Utils.getValue(motherDetails, DBConstants.KEY.MIDDLE_NAME, true));
+        String fullName = getName(firstName, Utils.getValue(motherDetails, DBConstants.KEY.LAST_NAME, true));
+        String dobString = Utils.getValue(motherDetails, DBConstants.KEY.DOB, false);
+        int age = new Period(new DateTime(dobString), new DateTime()).getYears();
+        textViewMotherName.setVisibility(View.VISIBLE);
+        textViewMotherName.setText(String.format(Locale.getDefault(), "%s, %d", fullName, age));
+    }
+
+    private Map<String, String> getMotherDetails() {
+        String motherBaseEntityId = HeiDao.getMotherBaseEntityId(baseEntityId);
+        if (StringUtils.isNotBlank(motherBaseEntityId)) {
+            CommonPersonObjectClient motherClient = getCommonPersonObjectClient(motherBaseEntityId);
+            if (motherClient.getColumnmaps() != null) {
+                return motherClient.getColumnmaps();
+            }
+        }
+        return null;
     }
 
     private void showHeiNumberOrRegistration(String baseEntityId) {

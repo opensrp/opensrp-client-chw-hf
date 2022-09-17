@@ -1,12 +1,5 @@
 package org.smartregister.chw.hf.activity;
 
-import static org.smartregister.AllConstants.LocationConstants.SPECIAL_TAG_FOR_OPENMRS_TEAM_MEMBERS;
-import static org.smartregister.chw.core.utils.CoreConstants.EventType.PMTCT_COMMUNITY_FOLLOWUP;
-import static org.smartregister.chw.hf.utils.Constants.JsonFormConstants.STEP1;
-import static org.smartregister.chw.hf.utils.JsonFormUtils.SYNC_LOCATION_ID;
-import static org.smartregister.chw.hf.utils.JsonFormUtils.getAutoPopulatedJsonEditFormString;
-import static org.smartregister.util.JsonFormUtils.VALUE;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -21,10 +14,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.vijay.jsonwizard.utils.FormUtils;
 
@@ -42,7 +31,6 @@ import org.smartregister.chw.core.rule.PmtctFollowUpRule;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.core.utils.FpUtil;
-import org.smartregister.chw.core.utils.HomeVisitUtil;
 import org.smartregister.chw.core.utils.UpdateDetailsUtil;
 import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
@@ -57,6 +45,8 @@ import org.smartregister.chw.hf.presenter.PmtctProfilePresenter;
 import org.smartregister.chw.hf.utils.HfHomeVisitUtil;
 import org.smartregister.chw.hf.utils.LFTUFormUtils;
 import org.smartregister.chw.hf.utils.PmtctVisitUtils;
+import org.smartregister.chw.hiv.dao.HivDao;
+import org.smartregister.chw.hiv.domain.HivMemberObject;
 import org.smartregister.chw.hivst.dao.HivstDao;
 import org.smartregister.chw.pmtct.PmtctLibrary;
 import org.smartregister.chw.pmtct.dao.PmtctDao;
@@ -85,7 +75,17 @@ import java.util.Locale;
 
 import javax.annotation.Nullable;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.recyclerview.widget.RecyclerView;
 import timber.log.Timber;
+
+import static org.smartregister.AllConstants.LocationConstants.SPECIAL_TAG_FOR_OPENMRS_TEAM_MEMBERS;
+import static org.smartregister.chw.core.utils.CoreConstants.EventType.PMTCT_COMMUNITY_FOLLOWUP;
+import static org.smartregister.chw.hf.utils.Constants.JsonFormConstants.STEP1;
+import static org.smartregister.chw.hf.utils.JsonFormUtils.SYNC_LOCATION_ID;
+import static org.smartregister.chw.hf.utils.JsonFormUtils.getAutoPopulatedJsonEditFormString;
+import static org.smartregister.util.JsonFormUtils.VALUE;
 
 public class PmtctProfileActivity extends CorePmtctProfileActivity {
     private static String baseEntityId;
@@ -134,7 +134,7 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
         menu.findItem(R.id.action_remove_member).setVisible(false);
-        if(HealthFacilityApplication.getApplicationFlavor().hasHivst()) {
+        if (HealthFacilityApplication.getApplicationFlavor().hasHivst()) {
             int age = memberObject.getAge();
             menu.findItem(R.id.action_hivst_registration).setVisible(HivstDao.isRegisteredForHivst(baseEntityId) && age >= 18);
         }
@@ -173,7 +173,7 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
                 if (preFilledForm != null)
                     UpdateDetailsUtil.startUpdateClientDetailsActivity(preFilledForm, this);
                 return true;
-            } else if (itemId == org.smartregister.chw.core.R.id.action_hivst_registration){
+            } else if (itemId == org.smartregister.chw.core.R.id.action_hivst_registration) {
                 startHivstRegistration();
                 return true;
             }
@@ -183,7 +183,7 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void startHivstRegistration(){
+    private void startHivstRegistration() {
         CommonPersonObjectClient commonPersonObjectClient = getClientDetailsByBaseEntityID(baseEntityId);
         String gender = org.smartregister.chw.core.utils.Utils.getValue(commonPersonObjectClient.getColumnmaps(), org.smartregister.family.util.DBConstants.KEY.GENDER, false);
         HivstRegisterActivity.startHivstRegistrationActivity(this, baseEntityId, gender);
@@ -282,7 +282,7 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         }
         if (HfPmtctDao.isEligibleForEac(baseEntityId)) {
             Date lastEac = HfPmtctDao.getDateEACRecorded(baseEntityId);
-            RelativeLayout  eacVisitDoneBar = findViewById(R.id.eac_visit_done_bar);
+            RelativeLayout eacVisitDoneBar = findViewById(R.id.eac_visit_done_bar);
             TextView eacVisitDoneText = findViewById(R.id.textview_eac_visit_done);
             if (lastEac != null) {
                 Date now = new Date(Calendar.getInstance().getTimeInMillis() - Calendar.getInstance().getTimeInMillis() % (24 * 60 * 60 * 1000));
@@ -290,18 +290,18 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
                 if (now.equals(lastEacTruncated)) {
                     textViewRecordEac.setVisibility(View.GONE);
                     eacVisitDoneBar.setVisibility(View.VISIBLE);
-                    eacVisitDoneText.setText(getString(R.string.eac_visit_done, HfPmtctDao.getEacSessionNumber(baseEntityId) - 1 ));
+                    eacVisitDoneText.setText(getString(R.string.eac_visit_done, HfPmtctDao.getEacSessionNumber(baseEntityId) - 1));
                 } else {
                     eacVisitDoneBar.setVisibility(View.GONE);
                     textViewRecordEac.setVisibility(View.VISIBLE);
                 }
-            }else{
+            } else {
                 eacVisitDoneBar.setVisibility(View.GONE);
                 textViewRecordEac.setVisibility(View.VISIBLE);
             }
             textViewRecordEac.setOnClickListener(this);
             textViewRecordEac.setText(getString(R.string.record_eac_first_visit, HfPmtctDao.getEacSessionNumber(baseEntityId)));
-        }else {
+        } else {
             textViewRecordEac.setVisibility(View.GONE);
         }
         Visit lastFollowupVisit = getVisit(Constants.EVENT_TYPE.PMTCT_FOLLOWUP);
@@ -316,6 +316,15 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
             showStatusLabel(R.string.lost_to_followup, org.smartregister.pmtct.R.drawable.high_risk_label, org.smartregister.pmtct.R.color.high_risk_text_red);
         }
 
+        setClientCtcNumber(textViewClientRegNumber);
+    }
+
+    private void setClientCtcNumber(TextView tv) {
+        HivMemberObject hivMemberObject = HivDao.getMember(memberObject.getBaseEntityId());
+        if (hivMemberObject != null && StringUtils.isNotBlank(hivMemberObject.getCtcNumber())) {
+            tv.setVisibility(View.VISIBLE);
+            tv.setText(hivMemberObject.getCtcNumber());
+        }
     }
 
     private void showStatusLabel(int stringResource, int backgroundResource, int textColorResource) {
