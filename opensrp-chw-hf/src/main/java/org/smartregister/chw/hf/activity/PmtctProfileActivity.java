@@ -42,7 +42,6 @@ import org.smartregister.chw.core.rule.PmtctFollowUpRule;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.core.utils.FpUtil;
-import org.smartregister.chw.core.utils.HomeVisitUtil;
 import org.smartregister.chw.core.utils.UpdateDetailsUtil;
 import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
@@ -57,6 +56,8 @@ import org.smartregister.chw.hf.presenter.PmtctProfilePresenter;
 import org.smartregister.chw.hf.utils.HfHomeVisitUtil;
 import org.smartregister.chw.hf.utils.LFTUFormUtils;
 import org.smartregister.chw.hf.utils.PmtctVisitUtils;
+import org.smartregister.chw.hiv.dao.HivDao;
+import org.smartregister.chw.hiv.domain.HivMemberObject;
 import org.smartregister.chw.hivst.dao.HivstDao;
 import org.smartregister.chw.pmtct.PmtctLibrary;
 import org.smartregister.chw.pmtct.dao.PmtctDao;
@@ -316,6 +317,15 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
             showStatusLabel(R.string.lost_to_followup, org.smartregister.pmtct.R.drawable.high_risk_label, org.smartregister.pmtct.R.color.high_risk_text_red);
         }
 
+        setClientCtcNumber(textViewClientRegNumber);
+    }
+
+    private void setClientCtcNumber(TextView tv) {
+        HivMemberObject hivMemberObject = HivDao.getMember(memberObject.getBaseEntityId());
+        if(hivMemberObject!= null && StringUtils.isNotBlank(hivMemberObject.getCtcNumber())){
+            tv.setVisibility(View.VISIBLE);
+            tv.setText(hivMemberObject.getCtcNumber());
+        }
     }
 
     private void showStatusLabel(int stringResource, int backgroundResource, int textColorResource) {
