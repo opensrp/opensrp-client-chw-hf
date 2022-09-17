@@ -1,0 +1,7 @@
+---
+name: step1_results_provided_to_parents
+description: results_provided_to_parents
+priority: 1
+condition: "step1_hiv_test_result != ''"
+actions:
+  - "isRelevant = true"

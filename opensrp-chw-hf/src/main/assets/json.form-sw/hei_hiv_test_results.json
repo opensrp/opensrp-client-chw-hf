@@ -183,9 +183,10 @@
           "err": "Tafadhali chagua jibu"
         },
         "relevance": {
-          "step1:confirmation_hiv_test_result": {
-            "type": "string",
-            "ex": "equalTo(.,\"yes\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "hei_hiv_test_results_relevance.yml"
+            }
           }
         }
       },
