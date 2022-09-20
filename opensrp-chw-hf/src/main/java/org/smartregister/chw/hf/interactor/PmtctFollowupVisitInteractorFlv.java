@@ -462,6 +462,7 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
                 actionList.remove(context.getString(R.string.clinical_staging_of_hiv));
                 actionList.remove(context.getString(R.string.tb_screening_title));
                 actionList.remove(context.getString(R.string.arv_prescription_title));
+                actionList.remove(context.getString(R.string.next_visit));
             }
             new AppExecutors().mainThread().execute(() -> callBack.preloadActions(actionList));
             return super.postProcess(s);
