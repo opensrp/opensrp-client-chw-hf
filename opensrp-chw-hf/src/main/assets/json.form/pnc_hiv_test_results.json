@@ -152,7 +152,7 @@
           "err": "Please select the date of receiving the results"
         },
         "relevance": {
-          "step1:hiv_test_result": {
+          "step1:hiv": {
             "type": "string",
             "ex": "notEqualTo(., \"test_not_conducted\")"
           }

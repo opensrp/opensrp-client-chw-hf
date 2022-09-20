@@ -51,7 +51,7 @@ public class PncHivTestingAction implements BaseAncHomeVisitAction.AncHomeVisitA
    public void onPayloadReceived(String jsonPayload) {
       try {
          JSONObject jsonObject = new JSONObject(jsonPayload);
-         hiv_test_result = CoreJsonFormUtils.getValue(jsonObject, "hiv_test_result");
+         hiv_test_result = CoreJsonFormUtils.getValue(jsonObject, "hiv");
       } catch (JSONException e) {
          Timber.e(e);
       }

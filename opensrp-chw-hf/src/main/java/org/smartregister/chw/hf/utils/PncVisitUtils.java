@@ -54,7 +54,7 @@ public class PncVisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
                         boolean isMotherGeneralExaminationDone = computeCompletionStatus(obs, "systolic");
                         boolean isFamilyPlanningServicesDone = computeCompletionStatus(obs, "education_counselling_given");
                         boolean isImmunizationDone = computeCompletionStatus(obs, "tetanus_vaccination") || computeCompletionStatus(obs, "hepatitis_b_vaccination");
-                        boolean isHivTestingDone = computeCompletionStatus(obs, "hiv_status");
+                        boolean isHivTestingDone = computeCompletionStatus(obs, "hiv");
                         boolean isNutritionSupplementsDone = computeCompletionStatus(obs, "iron_and_folic_acid");
 
                         if (HfPncDao.isMotherEligibleForHivTest(baseEntityId)) {
