@@ -692,7 +692,7 @@ indicators:
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "G"
-    description: "children_who_were_given_proprophylactic_therapy"
+    description: "children_who_were_given_ctx_therapy"
     indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
                       FROM ec_pmtct_registration epmtc
                                INNER JOIN ec_hei eh on epmtc.base_entity_id = eh.mother_entity_id
