@@ -91,6 +91,7 @@ public class HfPmtctRegisterProvider extends CorePmtctRegisterProvider {
                 viewHolder.dueButton.setOnClickListener(onClickListener);
                 viewHolder.registerColumns.setOnClickListener(v -> viewHolder.patientColumn.performClick());
                 viewHolder.registerColumns.setOnClickListener(v -> viewHolder.dueButton.performClick());
+                viewHolder.dueWrapper.setVisibility(View.VISIBLE);
             }
 
 

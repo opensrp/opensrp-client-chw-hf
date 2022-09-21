@@ -118,7 +118,7 @@
         "key": "hb_test",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "hiv",
+        "openmrs_entity_id": "hb_test",
         "type": "native_radio",
         "label": "HB Test done",
         "label_text_style": "normal",
