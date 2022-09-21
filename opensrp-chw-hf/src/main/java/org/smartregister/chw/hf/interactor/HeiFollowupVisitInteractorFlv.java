@@ -100,6 +100,16 @@ public class HeiFollowupVisitInteractorFlv implements PmtctFollowupVisitInteract
 
         JSONObject baselineInvestigationForm = initializeHealthFacilitiesList(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.getHeiBaselineInvestigation()));
 
+        JSONArray fields = null;
+        try {
+            fields = baselineInvestigationForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+            //update visit number
+            JSONObject visitNumber = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "visit_number");
+            visitNumber.put(JsonFormUtils.VALUE, HeiDao.getVisitNumber(memberObject.getBaseEntityId()));
+        } catch (JSONException e) {
+            Timber.e(e);
+        }
+
         evaluateBaselineInvestigationAction(actionList, details, memberObject, context, baselineInvestigationForm);
     }
 
