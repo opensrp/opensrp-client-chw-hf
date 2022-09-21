@@ -17,7 +17,9 @@ import org.smartregister.clientandeventmodel.Obs;
 import org.smartregister.repository.AllSharedPreferences;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -105,6 +107,8 @@ public class PncVisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
                     if (isMotherFoundPositive(v)) {
                         createHeiRegistrationEvent(v.getJson());
                     }
+                } else {
+                    processVisits(Collections.singletonList(v), visitRepository, visitDetailsRepository);
                 }
             }
         }
