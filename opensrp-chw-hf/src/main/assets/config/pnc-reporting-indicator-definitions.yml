@@ -2730,7 +2730,7 @@ indicators:
                                INNER JOIN ec_pregnancy_outcome epo on epo.base_entity_id = ec.mother_entity_id
                       WHERE epo.delivery_place = 'At home'
                         AND preg_outcome = 'born_alive_died'
-                        AND efm.gender = 'Male'
+                        AND efm.gender = 'Female'
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
                             date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
   
