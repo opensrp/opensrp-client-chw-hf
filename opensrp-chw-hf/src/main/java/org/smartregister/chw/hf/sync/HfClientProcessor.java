@@ -3,12 +3,13 @@ package org.smartregister.chw.hf.sync;
 import static org.smartregister.chw.hf.utils.Constants.Events.ANC_FIRST_FACILITY_VISIT;
 import static org.smartregister.chw.hf.utils.Constants.Events.ANC_RECURRING_FACILITY_VISIT;
 import static org.smartregister.chw.hf.utils.Constants.Events.HEI_FOLLOWUP;
+import static org.smartregister.chw.hf.utils.Constants.Events.HEI_NEGATIVE_INFANT;
+import static org.smartregister.chw.hf.utils.Constants.Events.HEI_POSITIVE_INFANT;
 import static org.smartregister.chw.hf.utils.Constants.Events.LD_ACTIVE_MANAGEMENT_OF_3RD_STAGE_OF_LABOUR;
 import static org.smartregister.chw.hf.utils.Constants.Events.LD_GENERAL_EXAMINATION;
 import static org.smartregister.chw.hf.utils.Constants.Events.LD_PARTOGRAPHY;
 import static org.smartregister.chw.hf.utils.Constants.Events.LD_POST_DELIVERY_MOTHER_MANAGEMENT;
 import static org.smartregister.chw.hf.utils.Constants.Events.LD_REGISTRATION;
-import static org.smartregister.chw.hf.utils.Constants.Events.PMTCT_CLOSE_VISITS;
 import static org.smartregister.chw.hf.utils.Constants.Events.PNC_VISIT;
 import static org.smartregister.chw.hf.utils.Constants.FormConstants.FormSubmissionFields.CTC_NUMBER;
 import static org.smartregister.chw.hf.utils.Constants.FormConstants.FormSubmissionFields.HIV_TEST_RESULT;
@@ -78,6 +79,8 @@ public class HfClientProcessor extends CoreClientProcessor {
                 processEvent(eventClient.getEvent(), eventClient.getClient(), clientClassification);
                 break;
             case HEI_FOLLOWUP:
+            case HEI_POSITIVE_INFANT:
+            case HEI_NEGATIVE_INFANT:
                 processVisitEvent(eventClient);
                 processEvent(eventClient.getEvent(), eventClient.getClient(), clientClassification);
                 processHeiFollowupCEvent(eventClient.getEvent());

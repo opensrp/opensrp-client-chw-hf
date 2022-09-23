@@ -2710,29 +2710,59 @@ indicators:
   
   - key: "pnc-14-ME"
     description: "Vifo vya watoto wachanga waliozaliwa nyumbani (perinatal); neonatal"
-    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
-                      FROM ec_child ec
-                               INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
-                               INNER JOIN ec_family_member efm ON efm.base_entity_id = ec.base_entity_id
-                               INNER JOIN ec_pregnancy_outcome epo on epo.base_entity_id = ec.mother_entity_id
-                      WHERE epo.delivery_place = 'At home'
-                        AND (preg_outcome = 'born_alive_died')
-                        AND efm.gender = 'Male'
-                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+    indicatorQuery: " SELECT SUM(T1.count) as count
+                      FROM (
+                      
+                            SELECT 'from_ld' as source, count(DISTINCT ec.base_entity_id) as count
+                            FROM ec_child ec
+                                     INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
+                                     INNER JOIN ec_family_member efm ON efm.base_entity_id = ec.base_entity_id
+                                     INNER JOIN ec_pregnancy_outcome epo on epo.base_entity_id = ec.mother_entity_id
+                            WHERE epo.delivery_place = 'At home'
+                              AND (preg_outcome = 'born_alive_died')
+                              AND efm.gender = 'Male'
+                              AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                                  date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')
+                      
+                            UNION
+                      
+                            SELECT 'from_pregnancy_outcome' as source, count(DISTINCT epo.base_entity_id) as count
+                            FROm ec_pregnancy_outcome epo
+                            WHERE epo.delivery_place = 'At home'
+                              AND preg_outcome = 'born_alive_died'
+                              AND sex_of_the_deceased_child = 'Male'
+                              AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                                  date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')
+                      
+                      ) as T1"
   
   - key: "pnc-14-KE"
     description: "Vifo vya watoto wachanga waliozaliwa nyumbani (perinatal); neonatal"
-    indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
-                      FROM ec_child ec
-                               INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
-                               INNER JOIN ec_family_member efm ON efm.base_entity_id = ec.base_entity_id
-                               INNER JOIN ec_pregnancy_outcome epo on epo.base_entity_id = ec.mother_entity_id
-                      WHERE epo.delivery_place = 'At home'
-                        AND preg_outcome = 'born_alive_died'
-                        AND efm.gender = 'Female'
-                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
+    indicatorQuery: " SELECT SUM(T1.count) as count
+                      FROM (
+                      
+                            SELECT 'from_ld' as source, count(DISTINCT ec.base_entity_id) as count
+                            FROM ec_child ec
+                                     INNER JOIN ec_pnc_child_followup epcf on epcf.entity_id = ec.base_entity_id
+                                     INNER JOIN ec_family_member efm ON efm.base_entity_id = ec.base_entity_id
+                                     INNER JOIN ec_pregnancy_outcome epo on epo.base_entity_id = ec.mother_entity_id
+                            WHERE epo.delivery_place = 'At home'
+                              AND (preg_outcome = 'born_alive_died')
+                              AND efm.gender = 'Female'
+                              AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                                  date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')
+                      
+                            UNION
+                      
+                            SELECT 'from_pregnancy_outcome' as source, count(DISTINCT epo.base_entity_id) as count
+                            FROm ec_pregnancy_outcome epo
+                            WHERE epo.delivery_place = 'At home'
+                              AND preg_outcome = 'born_alive_died'
+                              AND sex_of_the_deceased_child = 'Female'
+                              AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                                  date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')
+                      
+                      ) as T1"
   
   - key: "pnc-15-ME"
     description: "Waliopewa dawa ya ARV"

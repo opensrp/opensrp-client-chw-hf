@@ -450,7 +450,7 @@ public class HeiDao extends AbstractDao {
     }
 
     public static void saveAntiBodyTestResults(String baseEntityID, String formSubmissionId, String hivTestResults, String hivTestResultsDate, String ctcNumber) {
-        String sql = String.format("INSERT INTO hiv_test_result (id, entity_id, base_entity_id, hei_followup_form_submission_id, hiv_test_result, hiv_test_result_date, ctc_number) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s') ON CONFLICT (id) DO UPDATE SET hiv_test_result = '%s', hiv_test_result_date = '%s', ctc_number = '%s'", baseEntityID, baseEntityID, formSubmissionId, formSubmissionId, hivTestResults, hivTestResultsDate, ctcNumber, hivTestResults, hivTestResultsDate, ctcNumber);
+        String sql = String.format("INSERT INTO ec_hei_hiv_results (id, entity_id, base_entity_id, hei_followup_form_submission_id, hiv_test_result, hiv_test_result_date, ctc_number) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s') ON CONFLICT (id) DO UPDATE SET hiv_test_result = '%s', hiv_test_result_date = '%s', ctc_number = '%s'", baseEntityID, baseEntityID, formSubmissionId, formSubmissionId, hivTestResults, hivTestResultsDate, ctcNumber, hivTestResults, hivTestResultsDate, ctcNumber);
         updateDB(sql);
     }
 }

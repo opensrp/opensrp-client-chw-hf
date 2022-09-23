@@ -574,12 +574,16 @@
               "ec_hei"
             ],
             "creates_case": [
-              "ec_hiv_register"
+              "ec_hiv_register",
+              "ec_hei_followup"
             ]
           },
           {
             "field": "eventType",
             "field_value": "HEI Negative Infant",
+            "creates_case": [
+              "ec_hei_followup"
+            ],
             "closes_case": [
               "ec_hei"
             ]
