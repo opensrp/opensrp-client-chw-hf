@@ -74,6 +74,10 @@ public class HeiDao extends AbstractDao {
         try {
             String riskLevel = getRiskLevel(baseEntityID);
             DateTime dobDateTime = new DateTime(getMember(baseEntityID).getDob());
+            int months = getElapsedTimeInMonths(simpleDateFormat.format(dobDateTime.toDate()));
+            if (months >= 15) {
+                return false;
+            }
             int weeks = getElapsedTimeInWeeks(simpleDateFormat.format(dobDateTime.toDate()));
             if (riskLevel != null && riskLevel.equalsIgnoreCase("high_risk")) {
                 return true;

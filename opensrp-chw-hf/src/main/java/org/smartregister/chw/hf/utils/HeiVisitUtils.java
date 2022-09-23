@@ -196,6 +196,7 @@ public class HeiVisitUtils extends VisitUtils {
         closePmtctEvent.setEntityType(org.smartregister.chw.pmtct.util.Constants.TABLES.PMTCT_REGISTRATION);
         closePmtctEvent.setEventType(Constants.Events.PMTCT_CLOSE_VISITS);
         closePmtctEvent.setBaseEntityId(HeiDao.getMotherBaseEntityId(baseEntityId));
+        closePmtctEvent.setFormSubmissionId(JsonFormUtils.generateRandomUUIDString());
         return closePmtctEvent;
     }
 

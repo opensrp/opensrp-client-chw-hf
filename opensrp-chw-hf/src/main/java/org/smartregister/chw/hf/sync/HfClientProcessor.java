@@ -78,7 +78,6 @@ public class HfClientProcessor extends CoreClientProcessor {
                 processEvent(eventClient.getEvent(), eventClient.getClient(), clientClassification);
                 break;
             case HEI_FOLLOWUP:
-            case PMTCT_CLOSE_VISITS:
                 processVisitEvent(eventClient);
                 processEvent(eventClient.getEvent(), eventClient.getClient(), clientClassification);
                 processHeiFollowupCEvent(eventClient.getEvent());
