@@ -299,6 +299,9 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
         } else if (itemId == R.id.action_mark_as_deceased) {
             removeMember();
             return true;
+        } else if (itemId == R.id.action_pmtct_register) {
+            startPmtctRegistration();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
