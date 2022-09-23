@@ -11,7 +11,6 @@ import org.smartregister.chw.anc.domain.MemberObject;
 import org.smartregister.chw.anc.domain.Visit;
 import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
-import org.smartregister.chw.anc.util.JsonFormUtils;
 import org.smartregister.chw.anc.util.VisitUtils;
 import org.smartregister.chw.core.model.ChildModel;
 import org.smartregister.chw.core.utils.FormUtils;
@@ -24,6 +23,7 @@ import org.smartregister.chw.hf.actionhelper.PncMotherGeneralExaminationAction;
 import org.smartregister.chw.hf.actionhelper.PncNutrionSupplementAction;
 import org.smartregister.chw.hf.dao.HfPncDao;
 import org.smartregister.chw.hf.utils.Constants;
+import org.smartregister.chw.hf.utils.HfAncJsonFormUtils;
 import org.smartregister.chw.referral.util.JsonFormConstants;
 
 import java.util.Collections;
@@ -88,7 +88,7 @@ public class PncFacilityVisitInteractorFlv implements AncFirstFacilityVisitInter
 
             //loads details to the form
             if (details != null && !details.isEmpty()) {
-                org.smartregister.chw.anc.util.JsonFormUtils.populateForm(motherGeneralExaminationForm, details);
+                HfAncJsonFormUtils.populateForm(motherGeneralExaminationForm, details);
             }
         } catch (JSONException e) {
             Timber.e(e);
@@ -120,7 +120,7 @@ public class PncFacilityVisitInteractorFlv implements AncFirstFacilityVisitInter
                     childDetails = VisitUtils.getVisitGroups(AncLibrary.getInstance().visitDetailsRepository().getVisits(lastVisit.getVisitId()));
                 }
                 if (childDetails != null && !childDetails.isEmpty()) {
-                    JsonFormUtils.populateForm(childGeneralExamForm, childDetails);
+                    HfAncJsonFormUtils.populateForm(childGeneralExamForm, childDetails);
                 }
             }
             if (children.size() == 1) {
