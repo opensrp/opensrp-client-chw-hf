@@ -17,7 +17,6 @@ import org.smartregister.clientandeventmodel.Obs;
 import org.smartregister.repository.AllSharedPreferences;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
