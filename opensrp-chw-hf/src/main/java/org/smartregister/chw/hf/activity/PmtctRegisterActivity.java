@@ -1,8 +1,12 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.hf.utils.Constants.HIV_STATUS.POSITIVE;
 import static org.smartregister.chw.hf.utils.Constants.JsonForm.getPmtctRegistration;
 import static org.smartregister.chw.hf.utils.Constants.JsonForm.getPmtctRegistrationForClientsKnownOnArtForm;
 import static org.smartregister.chw.hf.utils.Constants.JsonForm.getPmtctRegistrationForTiClientsForm;
+import static org.smartregister.chw.pmtct.util.Constants.EVENT_TYPE.PMTCT_REGISTRATION;
+import static org.smartregister.util.JsonFormUtils.FIELDS;
+import static org.smartregister.util.JsonFormUtils.VALUE;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,6 +14,8 @@ import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.core.activity.CorePmtctRegisterActivity;
 import org.smartregister.chw.core.utils.FormUtils;
@@ -20,11 +26,14 @@ import org.smartregister.chw.hf.fragment.PmtctRegisterFragment;
 import org.smartregister.chw.hf.listener.HfFamilyBottomNavListener;
 import org.smartregister.chw.hf.presenter.PmtctRegisterPresenter;
 import org.smartregister.chw.hf.utils.Constants;
+import org.smartregister.chw.hf.utils.PncVisitUtils;
 import org.smartregister.chw.pmtct.interactor.BasePmtctRegisterInteractor;
 import org.smartregister.chw.pmtct.model.BasePmtctRegisterModel;
 import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.helper.BottomNavigationHelper;
 import org.smartregister.view.fragment.BaseRegisterFragment;
+
+import timber.log.Timber;
 
 public class PmtctRegisterActivity extends CorePmtctRegisterActivity {
     private static final String CTC_NUMBER = "ctc_number";
@@ -95,5 +104,36 @@ public class PmtctRegisterActivity extends CorePmtctRegisterActivity {
 
     public String getCtcNumber() {
         return ctcNumber;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode != RESULT_OK)
+            return;
+
+        if (requestCode == JsonFormUtils.REQUEST_CODE_GET_JSON) {
+            String jsonString = data.getStringExtra(org.smartregister.family.util.Constants.JSON_FORM_EXTRA.JSON);
+            try {
+                JSONObject form = new JSONObject(jsonString);
+                if (form.getString(JsonFormUtils.ENCOUNTER_TYPE).equals(PMTCT_REGISTRATION)) {
+                    JSONArray fields = form.getJSONArray(FIELDS);
+                    JSONObject testResultsJsonObject = JsonFormUtils.getFieldJSONObject(fields, "test_results");
+                    String testResult = POSITIVE;
+                    if (testResultsJsonObject != null) {
+                        testResult = testResultsJsonObject.getString(VALUE);
+                    }
+
+                    try {
+                        if (testResult.equalsIgnoreCase(POSITIVE))
+                            PncVisitUtils.createHeiRegistrationEvent(form.getString("entity_id"));
+                    } catch (Exception e) {
+                        Timber.e(e);
+                    }
+                }
+            } catch (JSONException jsonException) {
+                Timber.e(jsonException);
+            }
+        }
     }
 }

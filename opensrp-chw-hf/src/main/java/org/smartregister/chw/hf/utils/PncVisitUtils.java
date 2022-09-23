@@ -11,6 +11,7 @@ import org.smartregister.chw.anc.repository.VisitDetailsRepository;
 import org.smartregister.chw.anc.repository.VisitRepository;
 import org.smartregister.chw.anc.util.NCUtils;
 import org.smartregister.chw.core.model.ChildModel;
+import org.smartregister.chw.hf.dao.HeiDao;
 import org.smartregister.chw.hf.dao.HfPncDao;
 import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.clientandeventmodel.Obs;
@@ -103,9 +104,6 @@ public class PncVisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
                     }
                     processVisits(completedMotherVisit, visitRepository, visitDetailsRepository);
                     processVisits(completedChildVisit, visitRepository, visitDetailsRepository);
-                    if (isMotherFoundPositive(v)) {
-                        createHeiRegistrationEvent(v.getJson());
-                    }
                 } else {
                     processVisits(Collections.singletonList(v), visitRepository, visitDetailsRepository);
                 }
@@ -125,39 +123,37 @@ public class PncVisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
         return false;
     }
 
-    private static void createHeiRegistrationEvent(String json) throws Exception {
-        JSONObject jsonObject = new JSONObject(json);
-        String motherBaseEntityId = jsonObject.getString("baseEntityId");
+    public static void createHeiRegistrationEvent(String motherBaseEntityId) throws Exception {
         List<ChildModel> childModels = HfPncDao.childrenForPncWoman(motherBaseEntityId);
         for (ChildModel childModel : childModels) {
-            String jsonForChild = json;
-            JSONObject jsonObjectForChild = new JSONObject(jsonForChild);
-            jsonObjectForChild.put("baseEntityId", childModel.getBaseEntityId());
-            jsonObjectForChild.put("mother_entity_id", motherBaseEntityId);
-            jsonObjectForChild.put("relational_id", motherBaseEntityId);
-            jsonObjectForChild.put("birthdate", childModel.getDateOfBirth());
+            if (HeiDao.getMember(childModel.getBaseEntityId()) == null) {
+                JSONObject jsonObjectForChild = new JSONObject();
+                jsonObjectForChild.put("baseEntityId", childModel.getBaseEntityId());
+                jsonObjectForChild.put("mother_entity_id", motherBaseEntityId);
+                jsonObjectForChild.put("relational_id", motherBaseEntityId);
+                jsonObjectForChild.put("birthdate", childModel.getDateOfBirth());
 
-            String childBaseEntityId = childModel.getBaseEntityId();
-            Event baseEvent = new Gson().fromJson(jsonForChild, Event.class);
-            baseEvent.setFormSubmissionId(UUID.randomUUID().toString());
-            baseEvent.setEventType("HEI Registration");
+                String childBaseEntityId = childModel.getBaseEntityId();
+                Event baseEvent = new Gson().fromJson(jsonObjectForChild.toString(), Event.class);
+                baseEvent.setFormSubmissionId(UUID.randomUUID().toString());
+                baseEvent.setEventType(Constants.Events.HEI_REGISTRATION);
+
+                baseEvent.addObs(
+                        (new Obs())
+                                .withFormSubmissionField("risk_category")
+                                .withValue("high")
+                                .withFieldCode("risk_category")
+                                .withFieldType("formsubmissionField")
+                                .withFieldDataType("text")
+                                .withParentCode("")
+                                .withHumanReadableValues(new ArrayList<>()));
 
 
-            baseEvent.addObs(
-                    (new Obs())
-                            .withFormSubmissionField("risk_category")
-                            .withValue("high")
-                            .withFieldCode("risk_category")
-                            .withFieldType("formsubmissionField")
-                            .withFieldDataType("text")
-                            .withParentCode("")
-                            .withHumanReadableValues(new ArrayList<>()));
-
-
-            baseEvent.setBaseEntityId(childBaseEntityId);
-            AllSharedPreferences allSharedPreferences = AncLibrary.getInstance().context().allSharedPreferences();
-            NCUtils.addEvent(allSharedPreferences, baseEvent);
-            NCUtils.startClientProcessing();
+                baseEvent.setBaseEntityId(childBaseEntityId);
+                AllSharedPreferences allSharedPreferences = AncLibrary.getInstance().context().allSharedPreferences();
+                NCUtils.addEvent(allSharedPreferences, baseEvent);
+                NCUtils.startClientProcessing();
+            }
         }
 
     }

@@ -4,6 +4,7 @@ import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
 import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
 import static org.smartregister.chw.hf.utils.JsonFormUtils.SYNC_LOCATION_ID;
 import static org.smartregister.chw.hf.utils.JsonFormUtils.getAutoPopulatedJsonEditFormString;
+import static org.smartregister.chw.pmtct.util.Constants.EVENT_TYPE.PMTCT_REGISTRATION;
 import static org.smartregister.util.JsonFormUtils.STEP1;
 import static org.smartregister.util.Utils.getAllSharedPreferences;
 
@@ -397,6 +398,12 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
                     familyEventClient.getEvent().setLocationId(CoreJsonFormUtils.getSyncLocationUUIDFromDropdown(syncLocationField));
                     familyEventClient.getEvent().setEntityType(CoreConstants.TABLE_NAME.INDEPENDENT_CLIENT);
                     new FamilyProfileInteractor().saveRegistration(familyEventClient, jsonString, true, (FamilyProfileContract.InteractorCallBack) pncMemberProfilePresenter());
+                } else if (form.getString(JsonFormUtils.ENCOUNTER_TYPE).equals(PMTCT_REGISTRATION)) {
+                    try {
+                        PncVisitUtils.createHeiRegistrationEvent(memberObject.getBaseEntityId());
+                    } catch (Exception e) {
+                        Timber.e(e);
+                    }
                 }
             } catch (JSONException jsonException) {
                 Timber.e(jsonException);
