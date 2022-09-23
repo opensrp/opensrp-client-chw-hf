@@ -8,6 +8,7 @@ import static org.smartregister.chw.hf.utils.Constants.Events.LD_GENERAL_EXAMINA
 import static org.smartregister.chw.hf.utils.Constants.Events.LD_PARTOGRAPHY;
 import static org.smartregister.chw.hf.utils.Constants.Events.LD_POST_DELIVERY_MOTHER_MANAGEMENT;
 import static org.smartregister.chw.hf.utils.Constants.Events.LD_REGISTRATION;
+import static org.smartregister.chw.hf.utils.Constants.Events.PMTCT_CLOSE_VISITS;
 import static org.smartregister.chw.hf.utils.Constants.Events.PNC_VISIT;
 import static org.smartregister.chw.hf.utils.Constants.FormConstants.FormSubmissionFields.CTC_NUMBER;
 import static org.smartregister.chw.hf.utils.Constants.FormConstants.FormSubmissionFields.HIV_TEST_RESULT;
@@ -77,6 +78,7 @@ public class HfClientProcessor extends CoreClientProcessor {
                 processEvent(eventClient.getEvent(), eventClient.getClient(), clientClassification);
                 break;
             case HEI_FOLLOWUP:
+            case PMTCT_CLOSE_VISITS:
                 processVisitEvent(eventClient);
                 processEvent(eventClient.getEvent(), eventClient.getClient(), clientClassification);
                 processHeiFollowupCEvent(eventClient.getEvent());
