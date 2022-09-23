@@ -228,7 +228,7 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
         if (notificationAndReferralRecyclerView != null && notificationAndReferralRecyclerView.getAdapter() != null) {
             notificationAndReferralRecyclerView.getAdapter().notifyDataSetChanged();
         }
-
+        invalidateOptionsMenu();
     }
 
     @Override
