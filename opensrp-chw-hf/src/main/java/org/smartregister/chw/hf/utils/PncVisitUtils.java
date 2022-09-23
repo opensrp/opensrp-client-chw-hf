@@ -137,6 +137,7 @@ public class PncVisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
                 Event baseEvent = new Gson().fromJson(jsonObjectForChild.toString(), Event.class);
                 baseEvent.setFormSubmissionId(UUID.randomUUID().toString());
                 baseEvent.setEventType(Constants.Events.HEI_REGISTRATION);
+                baseEvent.setEventDate(new Date());
 
                 baseEvent.addObs(
                         (new Obs())
