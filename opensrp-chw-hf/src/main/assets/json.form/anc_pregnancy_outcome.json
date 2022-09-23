@@ -206,6 +206,11 @@
           "Female",
           "Ambiguous"
         ],
+        "openmrs_choice_ids": {
+          "Male": "Male",
+          "Female": "Female",
+          "Ambiguous": "Ambiguous"
+        },
         "relevance": {
           "step1:preg_outcome": {
             "type": "string",

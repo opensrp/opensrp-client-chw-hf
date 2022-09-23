@@ -195,17 +195,22 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "sex_of_the_deceased_child",
         "type": "spinner",
-        "hint": "Sex of the Deceased Child",
+        "hint": "Jinsi ya mtoto aliyefariki",
         "values": [
-          "Male",
-          "Female",
-          "Ambiguous"
+          "Me",
+          "Ke",
+          "Jinsi Tata"
         ],
         "keys": [
           "Male",
           "Female",
           "Ambiguous"
         ],
+        "openmrs_choice_ids": {
+          "Male": "Male",
+          "Female": "Female",
+          "Ambiguous": "Ambiguous"
+        },
         "relevance": {
           "step1:preg_outcome": {
             "type": "string",
