@@ -1145,7 +1145,11 @@
               }
             }
           }
-        ]
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the number of children"
+        }
       },
       {
         "key": "no_children_no",
@@ -1598,7 +1602,11 @@
               }
             }
           }
-        ]
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the number of children"
+        }
       },
       {
         "key": "hiv",
