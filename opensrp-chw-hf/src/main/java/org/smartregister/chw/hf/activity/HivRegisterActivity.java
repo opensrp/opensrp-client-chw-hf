@@ -10,7 +10,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.smartregister.chw.core.activity.CoreHivRegisterActivity;
 import org.smartregister.chw.hf.fragment.HivRegisterFragment;
-import org.smartregister.chw.hiv.activity.BaseHivFormsActivity;
 import org.smartregister.chw.hiv.fragment.BaseHivCommunityFollowupRegisterFragment;
 import org.smartregister.chw.hiv.fragment.BaseHivRegisterFragment;
 import org.smartregister.family.util.JsonFormUtils;
