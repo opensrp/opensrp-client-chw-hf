@@ -325,7 +325,7 @@
           "err": "Please enter a valid number"
         },
         "v_min": {
-          "value": "0",
+          "value": "1",
           "err": "Number of dispensed days should be greater than 0"
         },
         "v_max": {

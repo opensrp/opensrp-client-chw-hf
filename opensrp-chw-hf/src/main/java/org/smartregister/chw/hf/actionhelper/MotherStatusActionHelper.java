@@ -1,7 +1,6 @@
 package org.smartregister.chw.hf.actionhelper;
 
 import static org.smartregister.chw.hf.interactor.LDPostDeliveryManagementMotherActivityInteractor.ordinal;
-import static org.smartregister.chw.hf.utils.Constants.HIV_STATUS.POSITIVE;
 import static org.smartregister.util.JsonFormUtils.KEY;
 import static org.smartregister.util.JsonFormUtils.VALUE;
 
@@ -101,7 +100,7 @@ public class MotherStatusActionHelper implements BaseLDVisitAction.LDVisitAction
 
             JSONObject hivJsonObject = JsonFormUtils.getFieldJSONObject(fields, "hiv");
             String hivStatus = LDDao.getHivStatus(baseEntityId);
-            if (hivJsonObject != null && hivStatus != null && hivStatus.equalsIgnoreCase(POSITIVE)) {
+            if (hivJsonObject != null && hivStatus != null) {
                 hivJsonObject.put(VALUE, hivStatus);
             }
 

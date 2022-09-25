@@ -317,7 +317,11 @@
         "hint": "Delivery Date",
         "expanded": false,
         "min_date": "today-2y",
-        "max_date": "today"
+        "max_date": "today",
+        "v_required": {
+          "value": true,
+          "err": "Please select the delivery date"
+        }
       },
       {
         "key": "delivery_time",
@@ -325,7 +329,11 @@
         "hint": "Delivery Time",
         "openmrs_entity_id": "delivery_time",
         "openmrs_entity": "concept",
-        "openmrs_entity_parent": ""
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": true,
+          "err": "Please select the delivery time"
+        }
       },
       {
         "key": "mother_status_module_status",
@@ -356,7 +364,8 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "hiv",
-        "type": "hidden"
+        "type": "edit_text",
+        "hidden": true
       }
     ]
   }

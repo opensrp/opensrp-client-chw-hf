@@ -344,10 +344,20 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
         }
 
 
+        JSONObject ttVaccinationForm = null;
+        try {
+            ttVaccinationForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncFirstVisit.getTtVaccination());
+            if (details != null && !details.isEmpty()) {
+                HfAncJsonFormUtils.populateForm(ttVaccinationForm, details);
+            }
+        } catch (Exception e) {
+            Timber.e(e);
+        }
         if (HfAncDao.isEligibleForTtVaccination(memberObject.getBaseEntityId())) {
             BaseAncHomeVisitAction vaccinationAction = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_first_visit_tt_vaccination))
                     .withOptional(true)
                     .withDetails(details)
+                    .withJsonPayload(ttVaccinationForm.toString())
                     .withFormName(Constants.JsonForm.AncFirstVisit.getTtVaccination())
                     .withHelper(new AncTtVaccinationAction(memberObject))
                     .build();

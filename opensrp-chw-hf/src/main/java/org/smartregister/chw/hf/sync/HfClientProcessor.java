@@ -3,18 +3,25 @@ package org.smartregister.chw.hf.sync;
 import static org.smartregister.chw.hf.utils.Constants.Events.ANC_FIRST_FACILITY_VISIT;
 import static org.smartregister.chw.hf.utils.Constants.Events.ANC_RECURRING_FACILITY_VISIT;
 import static org.smartregister.chw.hf.utils.Constants.Events.HEI_FOLLOWUP;
+import static org.smartregister.chw.hf.utils.Constants.Events.HEI_NEGATIVE_INFANT;
+import static org.smartregister.chw.hf.utils.Constants.Events.HEI_POSITIVE_INFANT;
 import static org.smartregister.chw.hf.utils.Constants.Events.LD_ACTIVE_MANAGEMENT_OF_3RD_STAGE_OF_LABOUR;
 import static org.smartregister.chw.hf.utils.Constants.Events.LD_GENERAL_EXAMINATION;
 import static org.smartregister.chw.hf.utils.Constants.Events.LD_PARTOGRAPHY;
 import static org.smartregister.chw.hf.utils.Constants.Events.LD_POST_DELIVERY_MOTHER_MANAGEMENT;
 import static org.smartregister.chw.hf.utils.Constants.Events.LD_REGISTRATION;
 import static org.smartregister.chw.hf.utils.Constants.Events.PNC_VISIT;
+import static org.smartregister.chw.hf.utils.Constants.FormConstants.FormSubmissionFields.CTC_NUMBER;
+import static org.smartregister.chw.hf.utils.Constants.FormConstants.FormSubmissionFields.HIV_TEST_RESULT;
+import static org.smartregister.chw.hf.utils.Constants.FormConstants.FormSubmissionFields.HIV_TEST_RESULT_DATE;
+import static org.smartregister.chw.hf.utils.Constants.FormConstants.FormSubmissionFields.TYPE_OF_HIV_TEST;
 
 import android.content.Context;
 
 import org.apache.commons.lang3.StringUtils;
 import org.smartregister.chw.anc.util.NCUtils;
 import org.smartregister.chw.core.sync.CoreClientProcessor;
+import org.smartregister.chw.hf.dao.HeiDao;
 import org.smartregister.chw.pmtct.util.Constants;
 import org.smartregister.domain.Event;
 import org.smartregister.domain.Obs;
@@ -58,7 +65,6 @@ public class HfClientProcessor extends CoreClientProcessor {
         switch (eventType) {
             case ANC_FIRST_FACILITY_VISIT:
             case ANC_RECURRING_FACILITY_VISIT:
-            case HEI_FOLLOWUP:
             case PNC_VISIT:
             case LD_PARTOGRAPHY:
             case LD_REGISTRATION:
@@ -71,6 +77,13 @@ public class HfClientProcessor extends CoreClientProcessor {
                 }
                 processVisitEvent(eventClient);
                 processEvent(eventClient.getEvent(), eventClient.getClient(), clientClassification);
+                break;
+            case HEI_FOLLOWUP:
+            case HEI_POSITIVE_INFANT:
+            case HEI_NEGATIVE_INFANT:
+                processVisitEvent(eventClient);
+                processEvent(eventClient.getEvent(), eventClient.getClient(), clientClassification);
+                processHeiFollowupCEvent(eventClient.getEvent());
                 break;
             default:
                 break;
@@ -111,5 +124,29 @@ public class HfClientProcessor extends CoreClientProcessor {
             Timber.e(e);
         }
         return value;
+    }
+
+    private void processHeiFollowupCEvent(Event event) {
+        List<Obs> heiFollowupObs = event.getObs();
+        String typeOfHivTest = null;
+        String hivTestResult = null;
+        String hivTestResultDate = null;
+        String ctcNumber = null;
+        if (heiFollowupObs.size() > 0) {
+            for (Obs obs : heiFollowupObs) {
+                if (TYPE_OF_HIV_TEST.equals(obs.getFormSubmissionField())) {
+                    typeOfHivTest = (String) obs.getValue();
+                } else if (HIV_TEST_RESULT.equals(obs.getFormSubmissionField())) {
+                    hivTestResult = (String) obs.getValue();
+                } else if (HIV_TEST_RESULT_DATE.equals(obs.getFormSubmissionField())) {
+                    hivTestResultDate = (String) obs.getValue();
+                } else if (CTC_NUMBER.equals(obs.getFormSubmissionField())) {
+                    ctcNumber = (String) obs.getValue();
+                }
+            }
+
+            if (typeOfHivTest != null && typeOfHivTest.equals("Antibody Test"))
+                HeiDao.saveAntiBodyTestResults(event.getBaseEntityId(), event.getFormSubmissionId(), hivTestResult, hivTestResultDate, ctcNumber);
+        }
     }
 }

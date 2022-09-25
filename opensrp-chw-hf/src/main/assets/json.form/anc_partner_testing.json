@@ -167,10 +167,10 @@
         }
       },
       {
-        "key": "ctc_number",
+        "key": "partner_ctc_number",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "ctc_number",
+        "openmrs_entity_id": "partner_ctc_number",
         "type": "mask_edit_text",
         "mask": "##-##-####-######",
         "mask_hint": "12345678912345",

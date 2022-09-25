@@ -691,6 +691,16 @@ indicators:
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
   
+  - key: "G"
+    description: "children_who_were_given_ctx_therapy"
+    indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
+                      FROM ec_hei eh
+                               INNER JOIN ec_hei_followup ehf on ehf.entity_id = eh.base_entity_id
+                               INNER JOIN ec_family_member efm on efm.base_entity_id = eh.base_entity_id
+                      WHERE ehf.prescribed_ctx = 'yes'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
+  
   - key: "H"
     description: "children_who_were_tested_for_hiv_at_9_months_to_12_months"
     indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
@@ -769,5 +779,18 @@ indicators:
                                INNER JOIN ec_hei_hiv_results ehhr on ehf.base_entity_id = ehhr.hei_followup_form_submission_id
                       WHERE ehf.test_at_age = '18 Months'
                         AND ehhr.hiv_test_result = 'positive'
+                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                            date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
+  
+  - key: "K"
+    description: "children_found_positive_and_linked_to_ctc"
+    indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
+                      FROM ec_hei eh
+                               INNER JOIN ec_hei_followup ehf on eh.base_entity_id = ehf.entity_id
+                               INNER JOIN ec_family_member fm on fm.base_entity_id = eh.base_entity_id
+                               INNER JOIN ec_hei_hiv_results ehhr on ehf.base_entity_id = ehhr.hei_followup_form_submission_id
+                      WHERE
+                        ehhr.hiv_test_result = 'positive'
+                        AND ehhr.ctc_number IS NOT NULL
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"

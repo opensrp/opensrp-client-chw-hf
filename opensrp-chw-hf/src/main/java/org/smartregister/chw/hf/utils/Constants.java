@@ -125,7 +125,6 @@ public class Constants extends CoreConstants {
         private static final String PMTCT_TB_SCREENING = "pmtct_tb_screening";
         private static final String PMTCT_ARV_LINE = "pmtct_prescription_line_selection";
         private static final String HEI_DNA_PCR_SAMPLE_COLLECTION = "hei_dna_pcr_sample_collection";
-        private static final String HEI_ANTIBODY_TEST_SAMPLE_COLLECTION = "hei_antibody_test_sample_collection";
         private static final String HEI_ARV_PRESCRIPTION_HIGH_RISK_INFANT = "hei_arv_prescription_high_risk_infant";
         private static final String HEI_ARV_PRESCRIPTION_HIGH_OR_LOW_RISK_INFANT = "hei_arv_prescription_high_or_low_risk_infant";
         private static final String HEI_CTX_PRESCRIPTION = "hei_rv_ctx";
@@ -198,10 +197,6 @@ public class Constants extends CoreConstants {
 
         public static String getHeiCtxPrescription() {
             return HEI_CTX_PRESCRIPTION;
-        }
-
-        public static String getHeiAntibodyTestSampleCollection() {
-            return HEI_ANTIBODY_TEST_SAMPLE_COLLECTION;
         }
 
         public static String getHeiHivTestResults() {
@@ -656,6 +651,10 @@ public class Constants extends CoreConstants {
             String VISIT_NUMBER = "visit_number";
             String FOLLOWUP_VISIT_DATE = "followup_visit_date";
             String FOLLOWUP_STATUS = "followup_status";
+            String TYPE_OF_HIV_TEST = "type_of_hiv_test";
+            String HIV_TEST_RESULT = "hiv_test_result";
+            String HIV_TEST_RESULT_DATE = "hiv_test_result_date";
+            String CTC_NUMBER = "ctc_number";
         }
 
         public interface ClinicFindings{

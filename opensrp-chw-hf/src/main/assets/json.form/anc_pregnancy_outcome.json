@@ -190,6 +190,39 @@
         }
       },
       {
+        "key": "sex_of_the_deceased_child",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "sex_of_the_deceased_child",
+        "type": "spinner",
+        "hint": "Sex of the Deceased Child",
+        "values": [
+          "Male",
+          "Female",
+          "Ambiguous"
+        ],
+        "keys": [
+          "Male",
+          "Female",
+          "Ambiguous"
+        ],
+        "openmrs_choice_ids": {
+          "Male": "Male",
+          "Female": "Female",
+          "Ambiguous": "Ambiguous"
+        },
+        "relevance": {
+          "step1:preg_outcome": {
+            "type": "string",
+            "ex": "equalTo(., \"born_alive_died\")"
+          }
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select the sex"
+        }
+      },
+      {
         "key": "reason_child_died",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -1112,7 +1145,11 @@
               }
             }
           }
-        ]
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the number of children"
+        }
       },
       {
         "key": "no_children_no",
@@ -1565,7 +1602,11 @@
               }
             }
           }
-        ]
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the number of children"
+        }
       },
       {
         "key": "hiv",

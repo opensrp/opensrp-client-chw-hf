@@ -4,6 +4,7 @@ import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
 import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
 import static org.smartregister.chw.hf.utils.JsonFormUtils.SYNC_LOCATION_ID;
 import static org.smartregister.chw.hf.utils.JsonFormUtils.getAutoPopulatedJsonEditFormString;
+import static org.smartregister.chw.pmtct.util.Constants.EVENT_TYPE.PMTCT_REGISTRATION;
 import static org.smartregister.util.JsonFormUtils.STEP1;
 import static org.smartregister.util.Utils.getAllSharedPreferences;
 
@@ -45,11 +46,13 @@ import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.adapter.ReferralCardViewAdapter;
 import org.smartregister.chw.hf.contract.PncMemberProfileContract;
+import org.smartregister.chw.hf.dao.HfAncDao;
 import org.smartregister.chw.hf.dao.HfPncDao;
 import org.smartregister.chw.hf.interactor.PncMemberProfileInteractor;
 import org.smartregister.chw.hf.model.FamilyProfileModel;
 import org.smartregister.chw.hf.presenter.PncMemberProfilePresenter;
 import org.smartregister.chw.hf.utils.PncVisitUtils;
+import org.smartregister.chw.hiv.dao.HivDao;
 import org.smartregister.chw.hivst.dao.HivstDao;
 import org.smartregister.chw.malaria.dao.MalariaDao;
 import org.smartregister.chw.pmtct.dao.PmtctDao;
@@ -78,6 +81,9 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
 
     private CommonPersonObjectClient commonPersonObjectClient;
     private PncMemberProfilePresenter pncMemberProfilePresenter;
+    private boolean hivPositive;
+    private boolean isKnownOnArt;
+    private String ctcNumber;
 
     public static void startMe(Activity activity, String baseEntityID, MemberObject memberObject) {
         Intent intent = new Intent(activity, PncMemberProfileActivity.class);
@@ -223,7 +229,7 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
         if (notificationAndReferralRecyclerView != null && notificationAndReferralRecyclerView.getAdapter() != null) {
             notificationAndReferralRecyclerView.getAdapter().notifyDataSetChanged();
         }
-
+        invalidateOptionsMenu();
     }
 
     @Override
@@ -244,7 +250,7 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
         }
         menu.findItem(R.id.action__pnc_remove_member).setVisible(false);
         menu.findItem(R.id.action__pnc_danger_sign_outcome).setVisible(false);
-        if(HealthFacilityApplication.getApplicationFlavor().hasHivst()){
+        if (HealthFacilityApplication.getApplicationFlavor().hasHivst()) {
             int age = memberObject.getAge();
             menu.findItem(R.id.action_hivst_registration).setVisible(!HivstDao.isRegisteredForHivst(baseEntityID) && age >= 18);
         }
@@ -260,6 +266,7 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
         } else {
             menu.findItem(R.id.action_fp_initiation_pnc).setVisible(false);
         }
+        menu.findItem(R.id.action_pmtct_register).setVisible(!PmtctDao.isRegisteredForPmtct(baseEntityID) && (hivPositive || HivDao.isRegisteredForHiv(baseEntityID) || HfAncDao.getHivStatus(baseEntityID).equalsIgnoreCase("positive")));
         return true;
     }
 
@@ -292,6 +299,9 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
             return true;
         } else if (itemId == R.id.action_mark_as_deceased) {
             removeMember();
+            return true;
+        } else if (itemId == R.id.action_pmtct_register) {
+            startPmtctRegistration();
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -388,6 +398,12 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
                     familyEventClient.getEvent().setLocationId(CoreJsonFormUtils.getSyncLocationUUIDFromDropdown(syncLocationField));
                     familyEventClient.getEvent().setEntityType(CoreConstants.TABLE_NAME.INDEPENDENT_CLIENT);
                     new FamilyProfileInteractor().saveRegistration(familyEventClient, jsonString, true, (FamilyProfileContract.InteractorCallBack) pncMemberProfilePresenter());
+                } else if (form.getString(JsonFormUtils.ENCOUNTER_TYPE).equals(PMTCT_REGISTRATION)) {
+                    try {
+                        PncVisitUtils.createHeiRegistrationEvent(memberObject.getBaseEntityId());
+                    } catch (Exception e) {
+                        Timber.e(e);
+                    }
                 }
             } catch (JSONException jsonException) {
                 Timber.e(jsonException);
@@ -428,6 +444,41 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
         Visit latestVisit = getVisit(org.smartregister.chw.hf.utils.Constants.Events.PNC_VISIT);
         if (latestVisit != null && !latestVisit.getProcessed()) {
             showVisitInProgress();
+        }
+        try {
+            setHivPositive(latestVisit);
+        } catch (Exception e) {
+            Timber.e(e);
+        }
+    }
+
+    private void setHivPositive(Visit latestVisit) throws JSONException {
+        hivPositive = false;
+        ctcNumber = null;
+        isKnownOnArt = false;
+        JSONObject jsonObject = null;
+
+        jsonObject = new JSONObject(latestVisit.getJson());
+
+
+        if (jsonObject != null) {
+            JSONArray obs = jsonObject.getJSONArray("obs");
+            int obsSize = obs.length();
+            for (int i = 0; i < obsSize; i++) {
+                JSONObject checkObj = obs.getJSONObject(i);
+                if (checkObj.getString("fieldCode").equalsIgnoreCase("known_on_art") && checkObj.getString("values").contains("true")) {
+                    hivPositive = true;
+                    isKnownOnArt = true;
+                } else if (checkObj.getString("fieldCode").equalsIgnoreCase("hiv")) {
+                    JSONArray values = checkObj.getJSONArray("values");
+                    if (values.getString(0).equalsIgnoreCase("positive")) {
+                        hivPositive = true;
+                    }
+                } else if (checkObj.getString("fieldCode").equalsIgnoreCase("ctc_number")) {
+                    JSONArray values = checkObj.getJSONArray("values");
+                    ctcNumber = values.getString(0);
+                }
+            }
         }
     }
 
@@ -527,9 +578,17 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
 
     protected void startPmtctRegistration() {
         try {
-            PmtctRegisterActivity.startPmtctRegistrationActivity(this, baseEntityID, "", false);
+            if (HivDao.isRegisteredForHiv(baseEntityID) || (HfAncDao.getHivStatus(baseEntityID).equalsIgnoreCase("positive") && !HfAncDao.getClientCtcNumber(baseEntityID).equals("null"))) {
+                String ctcNumber = HfAncDao.getClientCtcNumber(baseEntityID);
+                if (ctcNumber.equals("null"))
+                    ctcNumber = HivDao.getMember(baseEntityID).getCtcNumber();
+                PmtctRegisterActivity.startPmtctRegistrationActivity(this, baseEntityID, ctcNumber, true);
+            } else {
+                PmtctRegisterActivity.startPmtctRegistrationActivity(this, baseEntityID, ctcNumber, isKnownOnArt || HfAncDao.isClientKnownOnArt(baseEntityID));
+            }
         } catch (Exception e) {
             Timber.e(e);
+            PmtctRegisterActivity.startPmtctRegistrationActivity(this, baseEntityID, "", false);
         }
     }
 

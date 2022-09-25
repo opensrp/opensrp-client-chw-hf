@@ -1,15 +1,24 @@
 package org.smartregister.chw.hf.actionhelper;
 
+import static org.smartregister.chw.core.utils.Utils.getCommonPersonObjectClient;
+import static org.smartregister.chw.core.utils.Utils.getDuration;
+
 import android.content.Context;
 
 import org.apache.commons.lang3.StringUtils;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.dao.HeiDao;
+import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.pmtct.domain.MemberObject;
 import org.smartregister.chw.pmtct.domain.VisitDetail;
 import org.smartregister.chw.pmtct.model.BasePmtctHomeVisitAction;
+import org.smartregister.chw.pmtct.util.JsonFormUtils;
+import org.smartregister.chw.referral.util.JsonFormConstants;
+import org.smartregister.commonregistry.CommonPersonObjectClient;
 
 import java.util.List;
 import java.util.Map;
@@ -38,6 +47,17 @@ public class HeiAntibodyTestAction implements BasePmtctHomeVisitAction.PmtctHome
     public String getPreProcessed() {
         try {
             JSONObject jsonObject = new JSONObject(jsonPayload);
+            JSONArray fields = jsonObject.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+
+            //update fields
+            JSONObject testAtAge = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "test_at_age");
+            testAtAge.put(JsonFormUtils.VALUE, HeiDao.getNextHivTestAge(memberObject.getBaseEntityId()));
+
+            JSONObject actualAge = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "actual_age");
+            CommonPersonObjectClient client = getCommonPersonObjectClient(memberObject.getBaseEntityId());
+            actualAge.put(JsonFormUtils.VALUE, getDuration(org.smartregister.family.util.Utils.getValue(client.getColumnmaps(), org.smartregister.family.util.DBConstants.KEY.DOB, false)));
+
+
             return jsonObject.toString();
         } catch (JSONException e) {
             e.printStackTrace();
