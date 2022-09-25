@@ -89,6 +89,18 @@
         }
       },
       {
+        "key": "mother_champion_location",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "mother_champion_location",
+        "type": "spinner",
+        "hint": "Mother Champion Location",
+        "v_required": {
+          "value": true,
+          "err": "Please enter the Mother Champion Location"
+        }
+      },
+      {
         "key": "comment_pmtct_community_followup",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",

@@ -1,10 +1,10 @@
 ---
-name: "comment_visibility"
-description: "comment calculation"
+name: "refer_to_chw_calculation"
+description: "refer_to_chw calculation"
 priority: 1
-condition: "refer_to_chw['yes'] != null"
+condition: "true"
 actions:
-  - "comment_visibility = true"
+  - "refer_to_chw_calculation  = 'yes'"
 ---
 name: "hiv_index_contact_community_followup_referral_date_calculation"
 description: "hiv_index_contact_community_followup_referral_date calculation"

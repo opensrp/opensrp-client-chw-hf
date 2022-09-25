@@ -57,6 +57,18 @@
         "toaster_type": "info"
       },
       {
+        "key": "chw_location",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "chw_location",
+        "type": "spinner",
+        "hint": "CHW/Mother Champion Location",
+        "v_required": {
+          "value": true,
+          "err": "Please enter the Mother Champion Location"
+        }
+      },
+      {
         "key": "anc_partner_followup_comment",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",

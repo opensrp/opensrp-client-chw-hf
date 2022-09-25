@@ -1,6 +1,7 @@
 package org.smartregister.chw.hf.activity;
 
 import static com.vijay.jsonwizard.constants.JsonFormConstants.VALUE;
+import static org.smartregister.AllConstants.LocationConstants.SPECIAL_TAG_FOR_OPENMRS_TEAM_MEMBERS;
 import static org.smartregister.chw.core.utils.Utils.getCommonPersonObjectClient;
 import static org.smartregister.chw.core.utils.Utils.getDuration;
 import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
@@ -56,6 +57,7 @@ import org.smartregister.chw.pmtct.domain.Visit;
 import org.smartregister.chw.pmtct.util.Constants;
 import org.smartregister.chw.pmtct.util.PmtctUtil;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
+import org.smartregister.dao.LocationsDao;
 import org.smartregister.domain.AlertStatus;
 import org.smartregister.family.contract.FamilyProfileContract;
 import org.smartregister.family.domain.FamilyEventClient;
@@ -66,6 +68,7 @@ import org.smartregister.family.util.Utils;
 import org.smartregister.repository.AllSharedPreferences;
 
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
@@ -357,6 +360,11 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
         } else if (itemId == R.id.action_issue_pmtct_followup_referral) {
             try {
                 JSONObject form = (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, org.smartregister.chw.hf.utils.Constants.JsonForm.getHeiCommunityFollowupReferral());
+
+                //adds the chw locations under the current facility
+                JSONObject motherChampionLocationField = CoreJsonFormUtils.getJsonField(form, org.smartregister.util.JsonFormUtils.STEP1, "mother_champion_location");
+                CoreJsonFormUtils.addLocationsToDropdownField(LocationsDao.getLocationsByTags(
+                        Collections.singleton(SPECIAL_TAG_FOR_OPENMRS_TEAM_MEMBERS)), motherChampionLocationField);
 
                 JSONObject reasonsForIssuingCommunityReferral = CoreJsonFormUtils.getJsonField(form, STEP1, "reasons_for_issuing_community_referral");
 

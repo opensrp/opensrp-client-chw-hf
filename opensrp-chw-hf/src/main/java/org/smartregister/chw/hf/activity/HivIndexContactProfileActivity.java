@@ -1,5 +1,6 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.AllConstants.LocationConstants.SPECIAL_TAG_FOR_OPENMRS_TEAM_MEMBERS;
 import static org.smartregister.chw.hf.utils.JsonFormUtils.SYNC_LOCATION_ID;
 import static org.smartregister.chw.hf.utils.JsonFormUtils.getAutoPopulatedJsonEditFormString;
 import static org.smartregister.chw.hiv.util.Constants.ActivityPayload.HIV_MEMBER_OBJECT;
@@ -47,12 +48,15 @@ import org.smartregister.chw.tb.util.Constants;
 import org.smartregister.commonregistry.CommonPersonObject;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.commonregistry.CommonRepository;
+import org.smartregister.dao.LocationsDao;
+import org.smartregister.domain.Location;
 import org.smartregister.family.contract.FamilyProfileContract;
 import org.smartregister.family.domain.FamilyEventClient;
 import org.smartregister.family.interactor.FamilyProfileInteractor;
 import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.opd.utils.OpdConstants;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -139,7 +143,9 @@ public class HivIndexContactProfileActivity extends CoreHivIndexContactProfileAc
         int itemId = item.getItemId();
         try {
             if (itemId == R.id.action_issue_hiv_community_followup_referral) {
-                HivRegisterActivity.startHIVFormActivity(this, getHivIndexContactObject().getBaseEntityId(), CoreConstants.JSON_FORM.getHivIndexContactCommunityFollowupReferral(), (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getHivIndexContactCommunityFollowupReferral()).toString());
+                JSONObject formJsonObject = (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getHivIndexContactCommunityFollowupReferral());
+                initializeHealthFacilitiesList(formJsonObject);
+                HivRegisterActivity.startHIVFormActivity(this, getHivIndexContactObject().getBaseEntityId(), CoreConstants.JSON_FORM.getHivIndexContactCommunityFollowupReferral(), formJsonObject.toString());
                 return true;
             } else if (itemId == R.id.action_location_info) {
                 //use this method in hf to get the chw_location instead of encounter_location for chw
@@ -157,6 +163,48 @@ public class HivIndexContactProfileActivity extends CoreHivIndexContactProfileAc
             Timber.e(e);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void initializeHealthFacilitiesList(JSONObject form) {
+        //overrides and loads the list of chw under that facility
+        JSONArray steps;
+        List<Location> locationList = LocationsDao.getLocationsByTags(Collections.singleton(SPECIAL_TAG_FOR_OPENMRS_TEAM_MEMBERS));
+        try {
+            JSONArray options = new JSONArray();
+            for (Location location : locationList) {
+                JSONObject option = new JSONObject();
+                option.put("name", StringUtils.capitalize(location.getProperties().getName()));
+                option.put("text", StringUtils.capitalize(location.getProperties().getName()));
+                JSONObject metaData = new JSONObject();
+                metaData.put("openmrs_entity", "location_uuid");
+                metaData.put("openmrs_entity_id", location.getProperties().getUid());
+                option.put("meta_data", metaData);
+
+                options.put(option);
+            }
+
+            steps = form.getJSONArray("steps");
+            JSONObject step = steps.getJSONObject(0);
+            JSONArray fields = step.getJSONArray("fields");
+            int i = 0;
+            int j = 0;
+            int fieldCount = fields.length();
+            int optionCount = options.length();
+            while (i < fieldCount) {
+                JSONObject field = fields.getJSONObject(i);
+                if (field.getString("name").equals("chw_referral_hf")) {
+                    JSONArray optionsArr = field.getJSONArray("options");
+                    while (j < optionCount) {
+                        optionsArr.put(options.get(j));
+                        j++;
+                    }
+                    break;
+                }
+                i++;
+            }
+        } catch (JSONException e) {
+            Timber.e(e);
+        }
     }
 
     private void startHivstRegistration(){

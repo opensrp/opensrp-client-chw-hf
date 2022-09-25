@@ -7,10 +7,12 @@ import android.os.Bundle;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.smartregister.chw.core.activity.CoreHivRegisterActivity;
 import org.smartregister.chw.hf.fragment.HivRegisterFragment;
 import org.smartregister.chw.hiv.fragment.BaseHivCommunityFollowupRegisterFragment;
 import org.smartregister.chw.hiv.fragment.BaseHivRegisterFragment;
+import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.helper.BottomNavigationHelper;
 import org.smartregister.listener.BottomNavigationListener;
 
@@ -69,6 +71,15 @@ public class HivRegisterActivity extends CoreHivRegisterActivity {
         }
     }
 
+    @Override
+    public void startFormActivity(@Nullable String formName, @Nullable String entityId, @Nullable String metaData) {
+        Intent intent = new Intent(this, HivFormsActivity.class);
+        intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.BASE_ENTITY_ID, entityId);
+        intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.JSON_FORM, metaData);
+        intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.USE_DEFAULT_NEAT_FORM_LAYOUT, false);
+
+        this.startActivityForResult(intent, JsonFormUtils.REQUEST_CODE_GET_JSON);
+    }
 
 }
  
