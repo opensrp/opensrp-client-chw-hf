@@ -10,22 +10,27 @@ import android.widget.TextView;
 import org.smartregister.chw.core.provider.CoreHivIndexContactsProvider;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.dao.HivIndexFollowupFeedbackDao;
+import org.smartregister.chw.hf.model.HivIndexFollowupFeedbackDetailsModel;
 import org.smartregister.chw.hf.utils.HfReferralUtils;
 import org.smartregister.chw.hiv.dao.HivIndexDao;
 import org.smartregister.chw.hiv.domain.HivIndexContactObject;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.view.contract.SmartRegisterClient;
 
+import java.util.List;
 import java.util.Set;
 
 
 public class HfHivIndexContactsRegisterProvider extends CoreHivIndexContactsProvider {
 
     private final LayoutInflater inflater;
+    private Context context;
 
     public HfHivIndexContactsRegisterProvider(Context context, Set visibleColumns, View.OnClickListener onClickListener, View.OnClickListener paginationClickListener) {
         super(context, visibleColumns, onClickListener, paginationClickListener);
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        this.context = context;
     }
 
     @Override
@@ -51,14 +56,27 @@ public class HfHivIndexContactsRegisterProvider extends CoreHivIndexContactsProv
     private void displayReferralSent(CommonPersonObjectClient client, HfHivIndexContactsRegisterProvider.HfRegisterViewHolder viewHolder) {
         String baseEntityId = client.entityId();
         HivIndexContactObject hivIndexContactObject = HivIndexDao.getMember(baseEntityId);
-        if (HivIndexDao.isReferralSent(baseEntityId)) {
+
+        List<HivIndexFollowupFeedbackDetailsModel> hivIndexFollowupFeedbackDetailsModels = HivIndexFollowupFeedbackDao.getHivIndexFollowupFeedback(baseEntityId);
+
+        if (hivIndexFollowupFeedbackDetailsModels.size() > 0) {
+            viewHolder.textViewReferralDay.setVisibility(View.VISIBLE);
+            String referralDay = viewHolder.itemView.getContext().getString(R.string.index_contact_has_feedback_from_community);
+            viewHolder.textViewReferralDay.setText(referralDay);
+            viewHolder.textViewReferralDay.setTextColor(context.getResources().getColor(R.color.primary));
+            viewHolder.textViewReferralDay.setBackgroundColor(context.getResources().getColor(R.color.green_overlay));
+        } else if (HivIndexDao.isReferralSent(baseEntityId)) {
             viewHolder.textViewReferralDay.setVisibility(View.VISIBLE);
             String referralDay = viewHolder.itemView.getContext().getString(R.string.referral_sent);
             viewHolder.textViewReferralDay.setText(referralDay);
+            viewHolder.textViewReferralDay.setTextColor(context.getResources().getColor(R.color.due_vaccine_red));
+            viewHolder.textViewReferralDay.setBackgroundColor(context.getResources().getColor(R.color.referral_text_background));
         } else if (!hivIndexContactObject.getHasTheContactClientBeenTested().equals("") && hivIndexContactObject.getCtcNumber().equals("")) {
             viewHolder.textViewReferralDay.setVisibility(View.VISIBLE);
             String pendingCtcRegistration = viewHolder.itemView.getContext().getString(R.string.pending_ctc_registration);
             viewHolder.textViewReferralDay.setText(pendingCtcRegistration);
+            viewHolder.textViewReferralDay.setTextColor(context.getResources().getColor(R.color.due_vaccine_red));
+            viewHolder.textViewReferralDay.setBackgroundColor(context.getResources().getColor(R.color.referral_text_background));
         } else {
             viewHolder.textViewReferralDay.setVisibility(View.GONE);
         }

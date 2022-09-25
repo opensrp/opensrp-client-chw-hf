@@ -62,6 +62,7 @@
     <string name="none_option_for_medical_surgical_history">Hakuna</string>
     <string name="record_ctc_number">Rekodi namba ya CTC</string>
     <string name="referral_sent">Rufaa Imetumwa</string>
+    <string name="index_contact_has_feedback_from_community">Ana majibu ya ufwatiliaji kutoka ngazi ya jamii</string>
     <string name="pending_ctc_registration">Usajili wa CTC haujakamilika</string>
     <string name="record_anc_first_visit">Rekodi Hudhurio la Kwanza la ANC</string>
     <string name="record_anc_followup_visit">Rekodi Hudhurio la Ufuatiliaji la ANC</string>

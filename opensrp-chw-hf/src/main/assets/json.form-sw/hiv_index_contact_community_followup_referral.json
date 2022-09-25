@@ -65,40 +65,22 @@
           }
         },
         {
-          "name": "refer_to_chw",
-          "type": "radio_group",
-          "properties": {
-            "text": "Mpe rufaa kwa ajili ya ufuatiliaji wa huduma za VVU katika ngazi ya jamii?"
-          },
+          "name": "chw_referral_hf",
+          "type": "spinner",
           "meta_data": {
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "refer_to_chw",
+            "openmrs_entity_id": "chw_referral_hf",
             "openmrs_entity_parent": ""
           },
-          "options": [
-            {
-              "name": "yes",
-              "text": "Ndio",
-              "meta_data": {
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "yes",
-                "openmrs_entity_parent": ""
-              }
-            },
-            {
-              "name": "no",
-              "text": "Hapana",
-              "meta_data": {
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "no",
-                "openmrs_entity_parent": ""
-              }
-            }
-          ],
+          "properties": {
+            "text": "Eneo la Waja"
+          },
+          "options": [],
+          "required_status": "yes:Tafadhali chagua",
           "dependent_calculations": [
-            "hiv_index_contact_community_followup_referral_date"
-          ],
-          "required_status": "yes:Tafadhali jibu swali hili"
+            "hiv_index_contact_community_followup_referral_date",
+            "refer_to_chw"
+          ]
         },
         {
           "name": "comment",
@@ -111,8 +93,7 @@
             "openmrs_entity_id": "comment",
             "openmrs_entity_parent": ""
           },
-          "required_status": "false",
-          "subjects": "refer_to_chw:map"
+          "required_status": "false"
         }
       ]
     }

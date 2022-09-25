@@ -1,5 +1,7 @@
 package org.smartregister.chw.hf.presenter;
 
+import static org.smartregister.AllConstants.LocationConstants.SPECIAL_TAG_FOR_OPENMRS_TEAM_MEMBERS;
+
 import android.content.Context;
 
 import com.vijay.jsonwizard.utils.FormUtils;
@@ -11,13 +13,17 @@ import org.smartregister.chw.anc.domain.MemberObject;
 import org.smartregister.chw.core.contract.AncMemberProfileContract;
 import org.smartregister.chw.core.presenter.CoreAncMemberProfilePresenter;
 import org.smartregister.chw.core.utils.CoreConstants;
+import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.dao.HfAncDao;
 import org.smartregister.chw.hf.interactor.AncMemberProfileInteractor;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.referral.util.JsonFormConstants;
+import org.smartregister.dao.LocationsDao;
 import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.repository.AllSharedPreferences;
+
+import java.util.Collections;
 
 import timber.log.Timber;
 
@@ -65,6 +71,11 @@ public class AncMemberProfilePresenter extends CoreAncMemberProfilePresenter {
     public void startPartnerFollowupReferralForm(MemberObject memberObject) {
         try {
             JSONObject formJsonObject = (new FormUtils()).getFormJsonFromRepositoryOrAssets((Context) getView(), CoreConstants.JSON_FORM.getAncPartnerCommunityFollowupReferral());
+            //adds the chw locations under the current facility
+            JSONObject chwLocations = CoreJsonFormUtils.getJsonField(formJsonObject, org.smartregister.util.JsonFormUtils.STEP1, "chw_location");
+            CoreJsonFormUtils.addLocationsToDropdownField(LocationsDao.getLocationsByTags(
+                    Collections.singleton(SPECIAL_TAG_FOR_OPENMRS_TEAM_MEMBERS)), chwLocations);
+
             getView().startFormActivity(formJsonObject);
         } catch (Exception e) {
             Timber.e(e);

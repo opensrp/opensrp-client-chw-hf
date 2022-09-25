@@ -89,6 +89,18 @@
         }
       },
       {
+        "key": "mother_champion_location",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "mother_champion_location",
+        "type": "spinner",
+        "hint": "Chagua Eneo la Mama Kinara",
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali chagua eneo alipo mama kinara"
+        }
+      },
+      {
         "key": "comment_pmtct_community_followup",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",

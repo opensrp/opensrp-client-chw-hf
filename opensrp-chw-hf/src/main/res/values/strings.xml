@@ -76,6 +76,7 @@
     <string name="none_option_for_medical_surgical_history">None</string>
     <string name="record_ctc_number">Record CTC Number</string>
     <string name="referral_sent">Community Followup Referral Sent</string>
+    <string name="index_contact_has_feedback_from_community">Has Feedback from Community</string>
     <string name="pending_ctc_registration">Pending CTC Registration</string>
     <string name="menu_independent">Independent</string>
     <string name="medical_and_surgical_filled">Medical And Surgical History Filled</string>

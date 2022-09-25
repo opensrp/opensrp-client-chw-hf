@@ -57,6 +57,18 @@
         "toaster_type": "info"
       },
       {
+        "key": "chw_location",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "chw_location",
+        "type": "spinner",
+        "hint": "Chagua Eneo la WAJA/Mama Kinara",
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali chagua eneo alipo mama kinara"
+        }
+      },
+      {
         "key": "anc_partner_followup_comment",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",

@@ -65,40 +65,22 @@
           }
         },
         {
-          "name": "refer_to_chw",
-          "type": "radio_group",
-          "properties": {
-            "text": "Send Followup Referral to CHW?"
-          },
+          "name": "chw_referral_hf",
+          "type": "spinner",
           "meta_data": {
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "refer_to_chw",
+            "openmrs_entity_id": "chw_referral_hf",
             "openmrs_entity_parent": ""
           },
-          "options": [
-            {
-              "name": "yes",
-              "text": "Yes",
-              "meta_data": {
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "yes",
-                "openmrs_entity_parent": ""
-              }
-            },
-            {
-              "name": "no",
-              "text": "No",
-              "meta_data": {
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "no",
-                "openmrs_entity_parent": ""
-              }
-            }
-          ],
+          "properties": {
+            "text": "CHW Location"
+          },
+          "options": [],
           "dependent_calculations": [
-            "hiv_index_contact_community_followup_referral_date"
+            "hiv_index_contact_community_followup_referral_date",
+            "refer_to_chw"
           ],
-          "required_status": "yes:Please select the answer"
+          "required_status": "yes:Please specify"
         },
         {
           "name": "comment",
@@ -111,8 +93,7 @@
             "openmrs_entity_id": "comment",
             "openmrs_entity_parent": ""
           },
-          "required_status": "false",
-          "subjects": "refer_to_chw:map"
+          "required_status": "false"
         }
       ]
     }
