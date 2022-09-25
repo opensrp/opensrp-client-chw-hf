@@ -16,7 +16,6 @@ import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.repository.AllSharedPreferences;
 import org.smartregister.util.Utils;
 
-import java.util.Date;
 import java.util.HashMap;
 
 import timber.log.Timber;
@@ -33,11 +32,10 @@ public class HivFormsInteractor extends BaseHivFormsInteractor {
                         );
 
 
-
                 AllSharedPreferences allSharedPreferences = Utils.getAllSharedPreferences();
                 org.smartregister.chw.anc.util.JsonFormUtils.tagEvent(allSharedPreferences, event);
 
-                NFormViewData syncLocation = (NFormViewData)valuesHashMap.get("chw_referral_hf").getValue();
+                NFormViewData syncLocation = (NFormViewData) valuesHashMap.get("chw_referral_hf").getValue();
                 event.setLocationId(syncLocation.getMetadata().get("openmrs_entity_id").toString());
 
                 Timber.i("Event = %s", new Gson().toJson(event));
