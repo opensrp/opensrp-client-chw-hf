@@ -41,9 +41,9 @@ public class PmtctVisitUtils extends VisitUtils {
 
 
         for (Visit v : visits) {
-            Date truncatedUpdatedDate = new Date(v.getUpdatedAt().getTime() - v.getUpdatedAt().getTime() % (24 * 60 * 60 * 1000));
-            Date today = new Date(Calendar.getInstance().getTimeInMillis() - Calendar.getInstance().getTimeInMillis() % (24 * 60 * 60 * 1000));
-            if (truncatedUpdatedDate.before(today) && v.getVisitType().equalsIgnoreCase(org.smartregister.chw.pmtct.util.Constants.EVENT_TYPE.PMTCT_FOLLOWUP)) {
+            Date updatedAtDate = new Date(v.getUpdatedAt().getTime());
+            int daysDiff = TimeUtils.getElapsedDays(updatedAtDate);
+            if (daysDiff > 1 && v.getVisitType().equalsIgnoreCase(org.smartregister.chw.pmtct.util.Constants.EVENT_TYPE.PMTCT_FOLLOWUP)) {
                 try {
                     JSONObject jsonObject = new JSONObject(v.getJson());
                     String baseEntityId = jsonObject.getString("baseEntityId");
