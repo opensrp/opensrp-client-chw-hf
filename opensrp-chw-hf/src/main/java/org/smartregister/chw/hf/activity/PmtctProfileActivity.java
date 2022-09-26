@@ -1,12 +1,5 @@
 package org.smartregister.chw.hf.activity;
 
-import static org.smartregister.AllConstants.LocationConstants.SPECIAL_TAG_FOR_OPENMRS_TEAM_MEMBERS;
-import static org.smartregister.chw.core.utils.CoreConstants.EventType.PMTCT_COMMUNITY_FOLLOWUP;
-import static org.smartregister.chw.hf.utils.Constants.JsonFormConstants.STEP1;
-import static org.smartregister.chw.hf.utils.JsonFormUtils.SYNC_LOCATION_ID;
-import static org.smartregister.chw.hf.utils.JsonFormUtils.getAutoPopulatedJsonEditFormString;
-import static org.smartregister.util.JsonFormUtils.VALUE;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -22,16 +15,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.vijay.jsonwizard.utils.FormUtils;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.time.DateUtils;
-import org.joda.time.DateTime;
-import org.joda.time.Days;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -83,7 +69,6 @@ import org.smartregister.repository.AllSharedPreferences;
 
 import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -91,7 +76,17 @@ import java.util.Locale;
 
 import javax.annotation.Nullable;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.recyclerview.widget.RecyclerView;
 import timber.log.Timber;
+
+import static org.smartregister.AllConstants.LocationConstants.SPECIAL_TAG_FOR_OPENMRS_TEAM_MEMBERS;
+import static org.smartregister.chw.core.utils.CoreConstants.EventType.PMTCT_COMMUNITY_FOLLOWUP;
+import static org.smartregister.chw.hf.utils.Constants.JsonFormConstants.STEP1;
+import static org.smartregister.chw.hf.utils.JsonFormUtils.SYNC_LOCATION_ID;
+import static org.smartregister.chw.hf.utils.JsonFormUtils.getAutoPopulatedJsonEditFormString;
+import static org.smartregister.util.JsonFormUtils.VALUE;
 
 public class PmtctProfileActivity extends CorePmtctProfileActivity {
     private static String baseEntityId;
@@ -537,6 +532,22 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         startActivity(intent);
     }
 
+    @Override
+    public void refreshMedicalHistory(boolean hasHistory) {
+        Visit lastFollowupVisit = getVisit(Constants.EVENT_TYPE.PMTCT_FOLLOWUP);
+        if (lastFollowupVisit != null) {
+            rlLastVisit.setVisibility(View.VISIBLE);
+            findViewById(R.id.view_notification_and_referral_row).setVisibility(View.VISIBLE);
+        } else {
+            rlLastVisit.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
+    public void openMedicalHistory() {
+        PmtctMedicalHistoryActivity.startMe(this, memberObject);
+    }
+
     private class UpdateVisitDueTask extends AsyncTask<Void, Void, Void> {
         private PmtctFollowUpRule pmtctFollowUpRule;
 
@@ -576,22 +587,6 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
                 Timber.e(e);
             }
         }
-    }
-
-    @Override
-    public void refreshMedicalHistory(boolean hasHistory) {
-        Visit lastFollowupVisit = getVisit(Constants.EVENT_TYPE.PMTCT_FOLLOWUP);
-        if (lastFollowupVisit != null) {
-            rlLastVisit.setVisibility(View.VISIBLE);
-            findViewById(R.id.view_notification_and_referral_row).setVisibility(View.VISIBLE);
-        } else {
-            rlLastVisit.setVisibility(View.GONE);
-        }
-    }
-
-    @Override
-    public void openMedicalHistory() {
-        PmtctMedicalHistoryActivity.startMe(this, memberObject);
     }
 
 
