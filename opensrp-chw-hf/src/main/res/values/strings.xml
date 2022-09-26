@@ -448,4 +448,144 @@
     <string name="linked_to_mother_champion">Linked to Mother Champion in {0}</string>
 
 
+    <!-- PMTCT Medical History -->
+    <string name="pmtct_visit">PMTCT Visits</string>
+    <string name="pmtct_visit_title">PMTCT Visit {0}: {1}</string>
+    <string name="pmtct_followup_status_continuing_with_services">Continuing with Services (CTN)</string>
+    <string name="pmtct_followup_status_transfer_out">Transfer Out</string>
+    <string name="pmtct_followup_status_lost_to_followup">Lost to Followup</string>
+
+    <string name="pmtct_counselling_topics_provided">Counselling Topics Provided:</string>
+    <string name="pmtct_counselling_topics_provided_chk_hiv_info">HIV transmission, presentation, treatment, disease progression &amp; prevention</string>
+    <string name="pmtct_counselling_topics_provided_chk_disclosure">Disclosure and identifying treatment supporter</string>
+    <string name="pmtct_counselling_topics_provided_chk_promote_testing">Promoting Index testing and couple testing</string>
+    <string name="pmtct_counselling_topics_provided_chk_ayf_services">Adolescent and youth-friendly services (Adherence, Retention e.t.c)</string>
+    <string name="pmtct_counselling_topics_provided_chk_prevention_diseases">Prevention of diseases, use of bed nets, environmental and personal hygiene</string>
+    <string name="pmtct_counselling_topics_provided_chk_imp_cpt">Importance of CPT, CrPET and TPT</string>
+    <string name="pmtct_counselling_topics_provided_chk_imp_adherence">Importance of adherence, how to remind, plan, what to do when travelling, sick, etc</string>
+    <string name="pmtct_counselling_topics_provided_chk_imp_support_group">Importance of CBS and HIV support group</string>
+    <string name="pmtct_counselling_topics_provided_chk_imp_appointment">Importance of appointment, dates and time, planning transport</string>
+    <string name="pmtct_counselling_topics_provided_chk_sti_rti">STIs/RTIs Syndromes</string>
+    <string name="pmtct_counselling_topics_provided_chk_imp_insurance">Importance of processing and using health insurance to cover treatment costs</string>
+    <string name="pmtct_counselling_topics_provided_chk_non_communicable_diseases_prevention">Non-communicable diseases preventions</string>
+    <string name="pmtct_counselling_topics_provided_chk_eac_sessions">EAC sessions if HVL > 1000 copies/ml</string>
+    <string name="pmtct_counselling_topics_provided_chk_infant_feeding_options">Infant feeding options in the context of HIV</string>
+    <string name="pmtct_counselling_topics_provided_chk_living_with_hiv">How to live with HIV</string>
+
+    <string name="pmtct_clinical_staging_disease">Clinical Staging of the disease:</string>
+    <string name="pmtct_clinical_staging_disease_stage_1">Stage 1</string>
+    <string name="pmtct_clinical_staging_disease_stage_2">Stage 2</string>
+    <string name="pmtct_clinical_staging_disease_stage_3">Stage 3</string>
+    <string name="pmtct_clinical_staging_disease_stage_4">Stage 4</string>
+
+    <string name="pmtct_symptoms">Symptoms:</string>
+    <string name="pmtct_clinical_staging_symptoms_chk_asymptomatic">Asymptomatic</string>
+    <string name="pmtct_clinical_staging_symptoms_chk_pgl">Persistent generalized lymphadenopathy (PGL) Unexplained, asymptomatic hepatosplenomegaly</string>
+    <string name="pmtct_clinical_staging_symptoms_chk_ppe">Papular pruritic eruptions (PPE)</string>
+    <string name="pmtct_clinical_staging_symptoms_chk_seb_derm">Seborrheic dermatitis</string>
+    <string name="pmtct_clinical_staging_symptoms_chk_fung_infection">Fungal nail infections</string>
+    <string name="pmtct_clinical_staging_symptoms_chk_seb_dermatitis">Seborrheic dermatitis</string>
+    <string name="pmtct_clinical_staging_symptoms_chk_ang_cheilities">Angular cheilitis</string>
+    <string name="pmtct_clinical_staging_symptoms_chk_lin_erythema">Linear gingival erythema</string>
+    <string name="pmtct_clinical_staging_symptoms_chk_hpv_infection">Extensive HPV or molluscum infection (>5% of body area/face)</string>
+    <string name="pmtct_clinical_staging_symptoms_chk_oral_ulcer">Recurrent oral ulcerations (>2 episodes/ in 6 months)</string>
+    <string name="pmtct_clinical_staging_symptoms_chk_par_enlargement">Parotid enlargement</string>
+    <string name="pmtct_clinical_staging_symptoms_chk_herp_zoster">Herpes zoster (>1 episode/12 months)</string>
+    <string name="pmtct_clinical_staging_symptoms_chk_rec_uri">Recurrent or chronic upper respiratory infection (URI)</string>
+    <string name="pmtct_clinical_staging_symptoms_chk_mod_malnutrition">Unexplained moderate malnutrition (-2SD or Z score) not responding to standard therapy</string>
+    <string name="pmtct_clinical_staging_symptoms_chk_per_diarrhoea">Unexplained persistent diarrhoea (>14 days)</string>
+    <string name="pmtct_clinical_staging_symptoms_chk_per_fever">Unexplained persistent fever</string>
+    <string name="pmtct_clinical_staging_symptoms_chk_oral_candidiasis">Oral candidiasis (outside neonatal period)</string>
+    <string name="pmtct_clinical_staging_symptoms_chk_oral_leucoplakia">Oral hairy Leucoplakia</string>
+    <string name="pmtct_clinical_staging_symptoms_chk_pul_tuberculosis">Pulmonary tuberculosis</string>
+    <string name="pmtct_clinical_staging_symptoms_chk_rec_pneumonia">Severe recurrent presumed bacterial pneumonia (>2 episodes/12 months)</string>
+    <string name="pmtct_clinical_staging_symptoms_chk_acute_gingivitis">Acute necrotizing ulcerative gingivitis/periodontitis</string>
+    <string name="pmtct_clinical_staging_symptoms_chk_lym_pneumonitis">Lymphoid interstitial pneumonitis (LIP)</string>
+    <string name="pmtct_clinical_staging_symptoms_chk_unexp_anaemia">Unexplained anaemia, neutropenia, or thrombocytopenia for >1 mo.</string>
+    <string name="pmtct_clinical_staging_symptoms_chk_sev_wasting">Unexplained severe wasting or severe malnutrition (-3 SD or Z score) not responding to standard therapy</string>
+    <string name="pmtct_clinical_staging_symptoms_chk_pneu_penumonia">Pneumocystis pneumonia</string>
+    <string name="pmtct_clinical_staging_symptoms_chk_recurrent_bacinf">Recurrent severe bacterial infections</string>
+    <string name="pmtct_clinical_staging_symptoms_chk_orol_hsv">Chronic orolabial or cutaneous HSV</string>
+    <string name="pmtct_clinical_staging_symptoms_chk_extra_tuber">Extra-pulmonary tuberculosis</string>
+    <string name="pmtct_clinical_staging_symptoms_chk_kap_sarcoma">Kaposi’s sarcoma</string>
+    <string name="pmtct_clinical_staging_symptoms_chk_oes_candidiasis">Oesophageal candidiasis</string>
+    <string name="pmtct_clinical_staging_symptoms_chk_cns_toxoplasmosis">CNS toxoplasmosis</string>
+    <string name="pmtct_clinical_staging_symptoms_chk_crypt_meningitis">Cryptococcal meningitis</string>
+    <string name="pmtct_clinical_staging_symptoms_chk_ende_mycosis">Any disseminated endemic mycosis</string>
+    <string name="pmtct_clinical_staging_symptoms_chk_cryp_isos">Cryptosporidiosis or Isosporiasis</string>
+    <string name="pmtct_clinical_staging_symptoms_chk_cmv_organ">CMV infection of organ other than liver, spleen, lymph nodes</string>
+    <string name="pmtct_clinical_staging_symptoms_chk_dis_mycobacterial">Disseminated mycobacterial disease other</string>
+
+    <string name="pmtct_tb_registration_number">TB Clinic Number:</string>
+    <string name="pmtct_tb_symptoms_screening">TB Symptoms Screening:</string>
+    <string name="pmtct_tb_symptoms_screening_chk_cough">Cough of any duration</string>
+    <string name="pmtct_tb_symptoms_screening_chk_sputum">Coughing up blood-stained sputum (hemoptysis)</string>
+    <string name="pmtct_tb_symptoms_screening_chk_fevers">Fevers for two or more weeks</string>
+    <string name="pmtct_tb_symptoms_screening_chk_weight_loss">Noticeable weight loss for new patients or 3 kgs</string>
+    <string name="pmtct_tb_symptoms_screening_chk_weight_loss_subsequent_visit">Weight loss in a month (subsequent visit)</string>
+    <string name="pmtct_tb_symptoms_screening_chk_excessive_sweating">Excessive sweating at night for two or more weeks</string>
+    <string name="pmtct_tb_symptoms_screening_chk_none">None</string>
+
+    <string name="pmtct_investigate_for_tb">Investigation for TB:</string>
+    <string name="pmtct_investigate_for_tb_positive">Positive</string>
+    <string name="pmtct_investigate_for_tb_negative">Negative</string>
+    <string name="pmtct_investigate_for_tb_test_not_conducted">Test not conducted</string>
+
+    <string name="pmtct_reason_for_not_conducting_tb_test">Reasons for not conducting TB Test:</string>
+    <string name="client_was_in_an_emergency_situation">The client was in an emergency situation"</string>
+    <string name="client_refused_to_be_tested">The client refused to be tested</string>
+    <string name="still_counselling_the_client">We are still counselling the client</string>
+    <string name="other">Other</string>
+
+    <string name="pmtct_other_reason_for_not_conducting_tb_test">Other reasons for not conducting TB Test:</string>
+
+    <string name="pmtct_has_been_provided_with_tpt_before">Provided with TPT before:</string>
+    <string name="pmtct_has_been_provided_with_tpt_before_yes">Yes (Has completed TPT)</string>
+    <string name="pmtct_has_been_provided_with_tpt_before_partial_complete">Yes (But has not completed TPT)</string>
+    <string name="pmtct_has_been_provided_with_tpt_before_no">No</string>
+
+    <string name="pmtct_completed_tpt">Has completed TPT:</string>
+    <string name="pmtct_is_client_provided_with_tpt">Provided with TPT:</string>
+    <string name="pmtct_reason_for_not_providing_tpt">Reason for not providing TPT:</string>
+    <string name="out_of_medicine">Stock out of medicine</string>
+    <string name="client_refused_medication">The client refused medication</string>
+    <string name="client_allergic_to_tpt">Client is allergic to TPT</string>
+    <string name="pmtct_number_of_tpt_days_dispensed">Number of TPT days dispensed:</string>
+    <string name="pmtct_prescribed_regimes">Client Prescribed ARVs Regimes:</string>
+    <string name="pmtct_arv_line">ARV Line:</string>
+    <string name="pmtct_arv_line_first_line">First Line</string>
+    <string name="pmtct_arv_line_second_line">Second Line</string>
+    <string name="pmtct_arv_line_third_line">Third Line</string>
+
+    <string name="pmtct_arv_prescription">ARV Prescription</string>
+    <string name="pmtct_1_gA">1g-A (TDF+3TC+EFV)</string>
+    <string name="pmtct_1_bA">1b-A (AZT+3TC+NVP)</string>
+    <string name="pmtct_1_cA">1c-A (AZT+3TC+EFV)</string>
+    <string name="pmtct_1_kA">1k-A (ABC+3TC+EFV)</string>
+    <string name="pmtct_1_pA">1p-A (ABC+3TC+DTG)</string>
+    <string name="pmtct_1_rA">1r-A (TDF+3TC+DTG)</string>
+    <string name="pmtct_1_uA">1u-A (AZT+3TC+DTG)</string>
+    <string name="pmtct_1_qA">1q-A (TDF+FTC+DTG)</string>
+    <string name="pmtct_1_xA">1x-A (Other 1st line)</string>
+    <string name="pmtct_2_fA">2f-A (TDF+FTC+LPV/r)</string>
+    <string name="pmtct_2_hA">2h-A (TDF+FTC+ATV/r)</string>
+    <string name="pmtct_2_sA">2s-A (AZT+3TC+ATV/r)</string>
+    <string name="pmtct_2_gA">2g-A (ABC+3TC+LPV/r)</string>
+    <string name="pmtct_2_kA">2k-A (ABC+3TC+ATV/r)</string>
+    <string name="pmtct_2_nA">2n-A (AZT+3TC+LPV/r)</string>
+    <string name="pmtct_2_xA">2x-A (Other 2nd line)</string>
+    <string name="pmtct_3_yA">3y-A (DTG+DRV/r+AZT+3TC)</string>
+    <string name="pmtct_3_wA">3w-A (RAL+DRV/r+AZT+3TC)</string>
+    <string name="pmtct_3_kA">3k-A (DTG+LPV/r+AZT+3TC)</string>
+    <string name="pmtct_3_tA">3t-A (DTG+LPV/r+TDF+FTC)</string>
+    <string name="pmtct_3_hA">3h-A (RAL+LPV/r+AZT+3TC)</string>
+    <string name="pmtct_3_gA">3g-A (RAL+LPV/r+TDF+FTC)</string>
+    <string name="pmtct_3_zA">3z-A (DTG+ATV/r+AZT+3TC)</string>
+    <string name="pmtct_3_xA">3x-A (Other 3rd line)</string>
+
+    <string name="pmtct_reason_for_not_prescribing_arv">Reason for not prescribing ARVs:</string>
+    <string name="pmtct_other_reason_for_not_prescribing_arv">Other reason for not prescribing ARVs:</string>
+    <string name="pmtct_number_of_arv_regimes_days_dispensed">Number of ARVs days dispensed:</string>
+    <string name="pmtctc_next_facility_visit_date">Next Facility Visit Date:</string>
+
 </resources>

@@ -117,7 +117,7 @@
           },
           {
             "key": "chk_fevers",
-            "text": "Fevers for two or more weeks?",
+            "text": "Fevers for two or more weeks",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_fevers"
           },

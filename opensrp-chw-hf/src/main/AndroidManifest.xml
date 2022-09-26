@@ -381,6 +381,10 @@
             android:theme="@style/HFTheme.NoActionBar" />
 
         <activity
+            android:name=".activity.PmtctMedicalHistoryActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+
+        <activity
             android:name=".activity.LDPostDeliveryManagementMotherActivity"
             android:screenOrientation="portrait"
             android:theme="@style/HFTheme.NoActionBar" />

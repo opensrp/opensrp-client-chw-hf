@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <org.smartregister.view.customcontrols.CustomFontTextView
+        android:id="@+id/title"
+        style="@style/CustomFontTextViewStyle.ClientList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="@string/pmtct_visit_title"
+        android:textColor="@color/medical_text_inner"
+        android:textSize="16sp" />
+
+    <org.smartregister.view.customcontrols.CustomFontTextView
+        android:id="@+id/followup_status"
+        style="@style/CustomFontTextViewStyle.ClientList.ThreeLines"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:maxLines="10"
+        android:text="@string/pmtct_followup_status"
+        android:textColor="@color/medical_sub_text_inner"
+        android:textSize="14sp" />
+
+    <org.smartregister.view.customcontrols.CustomFontTextView
+        android:id="@+id/counselling_topics_provided"
+        style="@style/CustomFontTextViewStyle.ClientList.ThreeLines"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:maxLines="10"
+        android:text="@string/pmtct_counselling_topics_provided"
+        android:textColor="@color/medical_sub_text_inner"
+        android:textSize="14sp" />
+
+    <org.smartregister.view.customcontrols.CustomFontTextView
+        android:id="@+id/clinical_staging_disease"
+        style="@style/CustomFontTextViewStyle.ClientList.ThreeLines"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:maxLines="10"
+        android:text="@string/pmtct_clinical_staging_disease"
+        android:textColor="@color/medical_sub_text_inner"
+        android:textSize="14sp" />
+
+    <org.smartregister.view.customcontrols.CustomFontTextView
+        android:id="@+id/symptoms"
+        style="@style/CustomFontTextViewStyle.ClientList.ThreeLines"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:maxLines="10"
+        android:text="@string/pmtct_symptoms"
+        android:textColor="@color/medical_sub_text_inner"
+        android:textSize="14sp" />
+
+
+    <org.smartregister.view.customcontrols.CustomFontTextView
+        android:id="@+id/tb_registration_number"
+        style="@style/CustomFontTextViewStyle.ClientList.ThreeLines"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:maxLines="10"
+        android:text="@string/pmtct_tb_registration_number"
+        android:textColor="@color/medical_sub_text_inner"
+        android:textSize="14sp" />
+
+
+    <org.smartregister.view.customcontrols.CustomFontTextView
+        android:id="@+id/tb_symptoms_screening"
+        style="@style/CustomFontTextViewStyle.ClientList.ThreeLines"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:maxLines="10"
+        android:text="@string/pmtct_tb_symptoms_screening"
+        android:textColor="@color/medical_sub_text_inner"
+        android:textSize="14sp" />
+
+
+    <org.smartregister.view.customcontrols.CustomFontTextView
+        android:id="@+id/investigate_for_tb"
+        style="@style/CustomFontTextViewStyle.ClientList.ThreeLines"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:maxLines="10"
+        android:text="@string/pmtct_investigate_for_tb"
+        android:textColor="@color/medical_sub_text_inner"
+        android:textSize="14sp" />
+
+    <org.smartregister.view.customcontrols.CustomFontTextView
+        android:id="@+id/reason_for_not_conducting_tb_test"
+        style="@style/CustomFontTextViewStyle.ClientList.ThreeLines"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:maxLines="10"
+        android:text="@string/pmtct_reason_for_not_conducting_tb_test"
+        android:textColor="@color/medical_sub_text_inner"
+        android:textSize="14sp" />
+
+    <org.smartregister.view.customcontrols.CustomFontTextView
+        android:id="@+id/other_reason_for_not_conducting_tb_test"
+        style="@style/CustomFontTextViewStyle.ClientList.ThreeLines"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:maxLines="10"
+        android:text="@string/pmtct_other_reason_for_not_conducting_tb_test"
+        android:textColor="@color/medical_sub_text_inner"
+        android:textSize="14sp" />
+
+    <org.smartregister.view.customcontrols.CustomFontTextView
+        android:id="@+id/has_been_provided_with_tpt_before"
+        style="@style/CustomFontTextViewStyle.ClientList.ThreeLines"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:maxLines="10"
+        android:text="@string/pmtct_has_been_provided_with_tpt_before"
+        android:textColor="@color/medical_sub_text_inner"
+        android:textSize="14sp" />
+
+    <org.smartregister.view.customcontrols.CustomFontTextView
+        android:id="@+id/completed_tpt"
+        style="@style/CustomFontTextViewStyle.ClientList.ThreeLines"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:maxLines="10"
+        android:text="@string/pmtct_completed_tpt"
+        android:textColor="@color/medical_sub_text_inner"
+        android:textSize="14sp" />
+
+
+    <org.smartregister.view.customcontrols.CustomFontTextView
+        android:id="@+id/is_client_provided_with_tpt"
+        style="@style/CustomFontTextViewStyle.ClientList.ThreeLines"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:maxLines="10"
+        android:text="@string/pmtct_is_client_provided_with_tpt"
+        android:textColor="@color/medical_sub_text_inner"
+        android:textSize="14sp" />
+
+    <org.smartregister.view.customcontrols.CustomFontTextView
+        android:id="@+id/reason_for_not_providing_tpt"
+        style="@style/CustomFontTextViewStyle.ClientList.ThreeLines"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:maxLines="10"
+        android:text="@string/pmtct_reason_for_not_providing_tpt"
+        android:textColor="@color/medical_sub_text_inner"
+        android:textSize="14sp" />
+
+    <org.smartregister.view.customcontrols.CustomFontTextView
+        android:id="@+id/number_of_tpt_days_dispensed"
+        style="@style/CustomFontTextViewStyle.ClientList.ThreeLines"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:maxLines="10"
+        android:text="@string/pmtct_number_of_tpt_days_dispensed"
+        android:textColor="@color/medical_sub_text_inner"
+        android:textSize="14sp" />
+
+    <org.smartregister.view.customcontrols.CustomFontTextView
+        android:id="@+id/prescribed_regimes"
+        style="@style/CustomFontTextViewStyle.ClientList.ThreeLines"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:maxLines="10"
+        android:text="@string/pmtct_prescribed_regimes"
+        android:textColor="@color/medical_sub_text_inner"
+        android:textSize="14sp" />
+
+    <org.smartregister.view.customcontrols.CustomFontTextView
+        android:id="@+id/arv_line"
+        style="@style/CustomFontTextViewStyle.ClientList.ThreeLines"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:maxLines="10"
+        android:text="@string/pmtct_arv_line"
+        android:textColor="@color/medical_sub_text_inner"
+        android:textSize="14sp" />
+
+    <org.smartregister.view.customcontrols.CustomFontTextView
+        android:id="@+id/arv_prescription"
+        style="@style/CustomFontTextViewStyle.ClientList.ThreeLines"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:maxLines="10"
+        android:text="@string/pmtct_arv_prescription"
+        android:textColor="@color/medical_sub_text_inner"
+        android:textSize="14sp" />
+
+    <org.smartregister.view.customcontrols.CustomFontTextView
+        android:id="@+id/reason_for_not_prescribing_arv"
+        style="@style/CustomFontTextViewStyle.ClientList.ThreeLines"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:maxLines="10"
+        android:text="@string/pmtct_reason_for_not_prescribing_arv"
+        android:textColor="@color/medical_sub_text_inner"
+        android:textSize="14sp" />
+
+    <org.smartregister.view.customcontrols.CustomFontTextView
+        android:id="@+id/other_reason_for_not_prescribing_arv"
+        style="@style/CustomFontTextViewStyle.ClientList.ThreeLines"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:maxLines="10"
+        android:text="@string/pmtct_other_reason_for_not_prescribing_arv"
+        android:textColor="@color/medical_sub_text_inner"
+        android:textSize="14sp" />
+
+    <org.smartregister.view.customcontrols.CustomFontTextView
+        android:id="@+id/number_of_arv_regimes_days_dispensed"
+        style="@style/CustomFontTextViewStyle.ClientList.ThreeLines"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:maxLines="10"
+        android:text="@string/pmtct_number_of_arv_regimes_days_dispensed"
+        android:textColor="@color/medical_sub_text_inner"
+        android:textSize="14sp" />
+
+
+
+    <org.smartregister.view.customcontrols.CustomFontTextView
+        android:id="@+id/next_facility_visit_date"
+        style="@style/CustomFontTextViewStyle.ClientList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:maxLines="10"
+        android:text="@string/next_facility_visit_date"
+        android:textColor="@color/black"
+        android:textSize="15sp" />
+
+
+
+    <View
+        android:id="@+id/view_baseline_results_row"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/dark_grey"
+        android:visibility="visible" />
+
+</LinearLayout>
