@@ -29,6 +29,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.vijay.jsonwizard.utils.FormUtils;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.time.DateUtils;
+import org.joda.time.DateTime;
+import org.joda.time.Days;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -56,6 +59,7 @@ import org.smartregister.chw.hf.presenter.PmtctProfilePresenter;
 import org.smartregister.chw.hf.utils.HfHomeVisitUtil;
 import org.smartregister.chw.hf.utils.LFTUFormUtils;
 import org.smartregister.chw.hf.utils.PmtctVisitUtils;
+import org.smartregister.chw.hf.utils.TimeUtils;
 import org.smartregister.chw.hiv.dao.HivDao;
 import org.smartregister.chw.hiv.domain.HivMemberObject;
 import org.smartregister.chw.hivst.dao.HivstDao;
@@ -287,9 +291,8 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
             RelativeLayout eacVisitDoneBar = findViewById(R.id.eac_visit_done_bar);
             TextView eacVisitDoneText = findViewById(R.id.textview_eac_visit_done);
             if (lastEac != null) {
-                Date now = new Date(Calendar.getInstance().getTimeInMillis() - Calendar.getInstance().getTimeInMillis() % (24 * 60 * 60 * 1000));
-                Date lastEacTruncated = new Date(lastEac.getTime() - lastEac.getTime() % (24 * 60 * 60 * 1000));
-                if (now.equals(lastEacTruncated)) {
+                int days = TimeUtils.getElapsedDays(lastEac);
+                if (days < 1) {
                     textViewRecordEac.setVisibility(View.GONE);
                     eacVisitDoneBar.setVisibility(View.VISIBLE);
                     eacVisitDoneText.setText(getString(R.string.eac_visit_done, HfPmtctDao.getEacSessionNumber(baseEntityId) - 1));
