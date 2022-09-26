@@ -575,5 +575,21 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         }
     }
 
+    @Override
+    public void refreshMedicalHistory(boolean hasHistory) {
+        Visit lastFollowupVisit = getVisit(Constants.EVENT_TYPE.PMTCT_FOLLOWUP);
+        if (lastFollowupVisit != null) {
+            rlLastVisit.setVisibility(View.VISIBLE);
+            findViewById(R.id.view_notification_and_referral_row).setVisibility(View.VISIBLE);
+        } else {
+            rlLastVisit.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
+    public void openMedicalHistory() {
+        PmtctMedicalHistoryActivity.startMe(this, memberObject);
+    }
+
 
 }
