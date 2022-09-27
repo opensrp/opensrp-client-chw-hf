@@ -88,7 +88,7 @@ actions:
 name: step1_hiv_status_question
 description: hiv question relevance
 priority: 1
-condition: "((step1_preg_outcome == 'born_alive' || step1_preg_outcome == 'alive_with_problem') && !global_hiv_status_mother)"
+condition: "(step1_mothers_condition == 'alive' && !global_hiv_status_mother)"
 actions:
   - "isRelevant = true"
 ---
