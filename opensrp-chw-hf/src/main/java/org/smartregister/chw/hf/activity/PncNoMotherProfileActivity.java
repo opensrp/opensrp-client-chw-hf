@@ -2,6 +2,7 @@ package org.smartregister.chw.hf.activity;
 
 import static org.smartregister.chw.core.utils.Utils.getDuration;
 import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
+import static org.smartregister.chw.hf.utils.Constants.Events.HEI_REGISTRATION;
 import static org.smartregister.chw.hf.utils.JsonFormUtils.SYNC_LOCATION_ID;
 import static org.smartregister.util.JsonFormUtils.FIELDS;
 import static org.smartregister.util.JsonFormUtils.STEP1;
@@ -53,6 +54,7 @@ import org.smartregister.repository.AllSharedPreferences;
 import org.smartregister.util.Utils;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.UUID;
 
 import timber.log.Timber;
@@ -263,7 +265,7 @@ public class PncNoMotherProfileActivity extends PncMemberProfileActivity {
     private static void createHeiRegistrationEvent(String baseEntityId) throws Exception {
         Event baseEvent = new Event();
         baseEvent.setFormSubmissionId(UUID.randomUUID().toString());
-        baseEvent.setEventType("HEI Registration");
+        baseEvent.setEventType(HEI_REGISTRATION);
         baseEvent.addObs(
                 (new Obs())
                         .withFormSubmissionField("risk_category")
@@ -275,6 +277,7 @@ public class PncNoMotherProfileActivity extends PncMemberProfileActivity {
                         .withHumanReadableValues(new ArrayList<>()));
 
 
+        baseEvent.setEventDate(new Date());
         baseEvent.setBaseEntityId(baseEntityId);
         baseEvent.setEntityType(org.smartregister.chw.hf.utils.Constants.TableName.HEI);
 

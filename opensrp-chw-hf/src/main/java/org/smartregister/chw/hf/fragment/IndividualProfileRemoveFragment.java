@@ -19,9 +19,12 @@ import org.smartregister.chw.hf.activity.AllClientsRegisterActivity;
 import org.smartregister.chw.hf.activity.AncRegisterActivity;
 import org.smartregister.chw.hf.activity.FamilyRegisterActivity;
 import org.smartregister.chw.hf.activity.IndividualProfileRemoveActivity;
+import org.smartregister.chw.hf.dao.HeiDao;
 import org.smartregister.chw.hf.model.FamilyRemoveMemberModel;
 import org.smartregister.chw.hf.presenter.FamilyRemoveMemberPresenter;
 import org.smartregister.chw.hf.provider.HfFamilyRemoveMemberProvider;
+import org.smartregister.chw.hf.utils.HeiVisitUtils;
+import org.smartregister.chw.pmtct.domain.MemberObject;
 import org.smartregister.commonregistry.CommonPersonObject;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.family.util.Constants;
@@ -66,6 +69,16 @@ public class IndividualProfileRemoveFragment extends CoreIndividualProfileRemove
                     Intent intent = new Intent(getActivity(), AllClientsRegisterActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     if (familyBaseEntityId != null) { //Independent clients don't belong to family
+
+                        // Checking if the removed client was a child and enrolled into HEI.
+                        if (removalType.equals(CoreConstants.EventType.REMOVE_CHILD)) {
+                            MemberObject memberObject = HeiDao.getMember(pc.getCaseId());
+                            if (memberObject != null) {
+                                //The child was enrolled in HEI, and the mother should exit PMTCT if she only had this single child
+                                HeiVisitUtils.closePmtctForDeceasedHei(memberObject.getBaseEntityId());
+                            }
+                        }
+
                         CommonPersonObject personObject = getCommonRepository(Utils.metadata().familyRegister.tableName).findByBaseEntityId(familyBaseEntityId);
                         if (personObject != null) {
                             CommonPersonObjectClient pClient = new CommonPersonObjectClient(personObject.getCaseId(),
