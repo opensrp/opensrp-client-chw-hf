@@ -117,7 +117,7 @@ public class PmtctRegisterActivity extends CorePmtctRegisterActivity {
             try {
                 JSONObject form = new JSONObject(jsonString);
                 if (form.getString(JsonFormUtils.ENCOUNTER_TYPE).equals(PMTCT_REGISTRATION)) {
-                    JSONArray fields = form.getJSONArray(FIELDS);
+                    JSONArray fields = form.getJSONObject("step2").getJSONArray(FIELDS);
                     JSONObject testResultsJsonObject = JsonFormUtils.getFieldJSONObject(fields, "test_results");
                     String testResult = POSITIVE;
                     if (testResultsJsonObject != null) {
