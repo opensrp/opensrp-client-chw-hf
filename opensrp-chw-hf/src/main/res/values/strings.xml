@@ -588,4 +588,73 @@
     <string name="pmtct_number_of_arv_regimes_days_dispensed">Number of ARVs days dispensed:</string>
     <string name="pmtctc_next_facility_visit_date">Next Facility Visit Date:</string>
 
+    <!-- PNC Medical History -->
+    <string name="pnc_key_education_counselling_given">Education/counselling given</string>
+    <string name="pnc_key_iec_given">IEC materials given</string>
+    <string name="pnc_key_using_family_planning_method">Using Family Planning Method</string>
+    <string name="pnc_key_method_provided">Family Planning Method Provided</string>
+    <string name="pnc_key_reason_for_not_providing_fp_method">Reason for not providing FP methods</string>
+    <string name="pnc_key_systolic">Systolic (Blood Pressure)</string>
+    <string name="pnc_key_diastolic">Diastolic (Blood Pressure)</string>
+    <string name="pnc_key_hb_level_test">HB Level Test</string>
+    <string name="pnc_key_hb_level">HB Level (g/dl)</string>
+    <string name="pnc_key_reason_for_not_conducting_hb_test">Reason for not conducting HB Level (g/dl)</string>
+    <string name="pnc_key_other_reason_hb_test_not_conducted">Other reason for why the HB Level test was not conducted</string>
+    <string name="pnc_key_temperature">Temperature (℃)</string>
+    <string name="pnc_key_weight">Weight (KG)</string>
+    <string name="pnc_key_breast_milk_flow">Has Breast Milk Flow</string>
+    <string name="pnc_key_bruised_nipples">Has Bruised Nipples</string>
+    <string name="pnc_key_engorgement_mastitis">Has Engorgement or Mastitis</string>
+    <string name="pnc_key_engorgement_abscess">Has Abscess</string>
+    <string name="pnc_key_perineum_infection">Has Perineum Infection</string>
+    <string name="pnc_key_uterus_assessment">Uterus Assessment</string>
+    <string name="pnc_key_lochia_assessment">Lochia Assessment</string>
+    <string name="pnc_key_vaginal_assessment">Vaginal Assessment</string>
+    <string name="pnc_key_fistula">Has Fistula</string>
+    <string name="pnc_key_puerperal_psychosis">Has Puerperal Psychosis</string>
+    <string name="pnc_key_mental_illness_symptom">Has Any Signs of Mental Illness</string>
+    <string name="pnc_key_iron_and_folic_acid">Iron and Folic acid Provided</string>
+    <string name="pnc_key_reason_for_not_giving_iron_and_folic_acid">Reason as to why Iron and Folic acid was not given</string>
+    <string name="pnc_key_other_reason_for_not_giving_iron_and_folic_acid">Other reasons as to why Iron and Folic acid was not given</string>
+    <string name="pnc_key_vitamin_a">Vitamin A Provided</string>
+    <string name="pnc_key_reason_for_not_giving_vitamin_a">Reason as to why Vitamin A was not given</string>
+    <string name="pnc_key_other_reason_for_not_giving_vitamin_a">Other reasons as to why Vitamin A was not given</string>
+    <string name="pnc_key_tetanus_vaccination">Administered Diphtheria/Tetanus vaccination</string>
+    <string name="pnc_key_hepatitis_b_vaccination">Administered Hepatitis B vaccination</string>
+    <string name="pnc_key_hiv">HIV Test Result</string>
+    <string name="pnc_key_reason_for_not_conducting_hiv_test">Reason for not conducting HIV Test</string>
+    <string name="pnc_key_other_reason_for_not_conducting_hiv_test">Other reason for not conducting HIV Test</string>
+    <string name="pnc_key_hiv_test_result_date">HIV Test Results Date</string>
+    <string name="pnc_key_abscess">Has Abscess</string>
+    <string name="chk_normal_involution">Normal/involution has taken place</string>
+    <string name="chk_pain">Pain</string>
+    <string name="chk_distended">Distended</string>
+    <string name="lochia_rubra">Lochia Rubra</string>
+    <string name="lochia_serosa">Lochia Serosa</string>
+    <string name="lochia_alba">Lochia Alba</string>
+
+    <!--PNC Child Medical History-->
+
+    <string name="pnc_visit_less_than_48_hours">Less Than 48 hours</string>
+    <string name="pnc_visit_3_to_7_days">3–7 Days</string>
+    <string name="pnc_visit_8_to_28_days">8–28 Days</string>
+    <string name="pnc_visit_29_to_42_days">29–42 Days</string>
+    <string name="pnc_medical_history_child_general_examination_title">Child General Examination On Visit </string>
+    <string name="pnc_key_height">Height</string>
+    <string name="pnc_key_head_circumference">Head Circumference</string>
+    <string name="pnc_key_upper_arm_circumference">Arm Circumference</string>
+    <string name="pnc_key_feeding_options">Feeding Options</string>
+
+    <string name="pnc_key_child_activeness">Child\'s activeness</string>
+    <string name="pnc_key_septicaemia">Child has high risk of infection (Septicaemia)</string>
+    <string name="pnc_key_umbilical_cord">Umbilical Cord Assessment</string>
+    <string name="pnc_key_jaundice">Has Jaundice</string>
+    <string name="pnc_key_skin_infection">Has Skin Infection</string>
+    <string name="pnc_key_kangaroo_enrollment">Kangaroo Enrollment</string>
+    <string name="chk_smell_bad">Smell bad</string>
+    <string name="chk_infection">Infection</string>
+    <string name="chk_descended">Distended</string>
+    <string name="chk_delayed_off">Delayed off</string>
+    <string name="chk_no_abnormalities">No Abnormalities</string>
+
 </resources>

@@ -2,6 +2,8 @@ package org.smartregister.chw.hf.utils;
 
 import com.google.gson.Gson;
 
+import org.joda.time.Days;
+import org.joda.time.LocalDate;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -178,6 +180,23 @@ public class PncVisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
             Timber.e(e);
         }
         return isPositive;
+    }
+
+    public static int getElapsedTimeDays(Date startDate, Date endDate) {
+        if (startDate == null || endDate == null)
+            return 0;
+
+        Calendar startDateCal = Calendar.getInstance();
+        startDateCal.setTimeInMillis(startDate.getTime());
+
+        Calendar endDateCal = Calendar.getInstance();
+        endDateCal.setTimeInMillis(endDate.getTime());
+
+        LocalDate startLocalDate = new LocalDate(startDateCal.get(Calendar.YEAR), startDateCal.get(Calendar.MONTH) + 1, startDateCal.get(Calendar.DAY_OF_MONTH));
+        LocalDate endLocalDate = new LocalDate(endDateCal.get(Calendar.YEAR), endDateCal.get(Calendar.MONTH) + 1, endDateCal.get(Calendar.DAY_OF_MONTH));
+
+
+        return Days.daysBetween(startLocalDate, endLocalDate).getDays();
     }
 
 }

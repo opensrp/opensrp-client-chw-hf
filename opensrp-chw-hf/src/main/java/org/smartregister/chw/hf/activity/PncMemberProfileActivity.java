@@ -69,6 +69,7 @@ import org.smartregister.family.util.Utils;
 import org.smartregister.opd.utils.OpdDbConstants;
 import org.smartregister.repository.AllSharedPreferences;
 
+import java.text.MessageFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -602,5 +603,18 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
                 commonPersonObjectClient,
                 memberObject.getFamilyBaseEntityId(), memberObject.getFamilyHead(),
                 memberObject.getPrimaryCareGiver(), FpRegisterActivity.class.getCanonicalName());
+    }
+
+
+    @Override
+    public void setLastVisit(Date lastVisitDate) {
+        Visit lastFollowupVisit = getVisit(org.smartregister.chw.hf.utils.Constants.Events.PNC_VISIT);
+
+        if (lastFollowupVisit != null) {
+            rlLastVisit.setVisibility(View.VISIBLE);
+            view_last_visit_row.setVisibility(View.VISIBLE);
+            String x = lastFollowupVisit.getDate().toString();
+            tvLastVisitDate.setText(MessageFormat.format(getString(org.smartregister.chw.pnc.R.string.pnc_last_visit_text), x));
+        }
     }
 }
