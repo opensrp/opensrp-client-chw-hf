@@ -1,11 +1,14 @@
 package org.smartregister.chw.hf.activity;
 
 import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
+import static org.smartregister.chw.hf.utils.Constants.HIV_STATUS.POSITIVE;
 import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
 import static org.smartregister.chw.hf.utils.JsonFormUtils.SYNC_LOCATION_ID;
 import static org.smartregister.chw.hf.utils.JsonFormUtils.getAutoPopulatedJsonEditFormString;
 import static org.smartregister.chw.pmtct.util.Constants.EVENT_TYPE.PMTCT_REGISTRATION;
+import static org.smartregister.util.JsonFormUtils.FIELDS;
 import static org.smartregister.util.JsonFormUtils.STEP1;
+import static org.smartregister.util.JsonFormUtils.VALUE;
 import static org.smartregister.util.Utils.getAllSharedPreferences;
 
 import android.app.Activity;
@@ -400,8 +403,16 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
                     familyEventClient.getEvent().setEntityType(CoreConstants.TABLE_NAME.INDEPENDENT_CLIENT);
                     new FamilyProfileInteractor().saveRegistration(familyEventClient, jsonString, true, (FamilyProfileContract.InteractorCallBack) pncMemberProfilePresenter());
                 } else if (form.getString(JsonFormUtils.ENCOUNTER_TYPE).equals(PMTCT_REGISTRATION)) {
+                    JSONArray fields = form.getJSONObject("step2").getJSONArray(FIELDS);
+                    JSONObject testResultsJsonObject = JsonFormUtils.getFieldJSONObject(fields, "test_results");
+                    String testResult = POSITIVE;
+                    if (testResultsJsonObject != null) {
+                        testResult = testResultsJsonObject.getString(VALUE);
+                    }
+
                     try {
-                        PncVisitUtils.createHeiRegistrationEvent(memberObject.getBaseEntityId());
+                        if (testResult.equalsIgnoreCase(POSITIVE))
+                            PncVisitUtils.createHeiRegistrationEvent(form.getString("entity_id"));
                     } catch (Exception e) {
                         Timber.e(e);
                     }
@@ -617,4 +628,5 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
             tvLastVisitDate.setText(MessageFormat.format(getString(org.smartregister.chw.pnc.R.string.pnc_last_visit_text), x));
         }
     }
+
 }
