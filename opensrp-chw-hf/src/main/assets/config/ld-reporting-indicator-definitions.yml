@@ -4333,7 +4333,7 @@ indicators:
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elgec.base_entity_id
 							   INNER JOIN ec_ld_confirmation elc ON elc.base_entity_id = elgec.base_entity_id
                                LEFT JOIN ec_pnc_followup epf ON epf.entity_id = elgec.base_entity_id
-                      WHERE (elc.hiv = 'positive' OR epf.hiv_status = 'positive')
+                      WHERE (elc.hiv = 'positive' OR epf.hiv = 'positive')
                         AND (date(efm.dob, '+10 years') <= date('now'))
                         AND (date(efm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -4436,7 +4436,7 @@ indicators:
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elgec.base_entity_id
 							   INNER JOIN ec_ld_confirmation elc ON elc.base_entity_id = elgec.base_entity_id
                                LEFT JOIN ec_pnc_followup epf ON epf.entity_id = elgec.base_entity_id
-                      WHERE (elc.hiv = 'positive' OR epf.hiv_status = 'positive')
+                      WHERE (elc.hiv = 'positive' OR epf.hiv = 'positive')
                         AND (date(efm.dob, '+15 years') <= date('now'))
                         AND (date(efm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -4539,7 +4539,7 @@ indicators:
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elgec.base_entity_id
 							   INNER JOIN ec_ld_confirmation elc ON elc.base_entity_id = elgec.base_entity_id
                                LEFT JOIN ec_pnc_followup epf ON epf.entity_id = elgec.base_entity_id
-                      WHERE (elc.hiv = 'positive' OR epf.hiv_status = 'positive')
+                      WHERE (elc.hiv = 'positive' OR epf.hiv = 'positive')
                         AND (date(efm.dob, '+20 years') <= date('now'))
                         AND (date(efm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -4642,7 +4642,7 @@ indicators:
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elgec.base_entity_id
 							   INNER JOIN ec_ld_confirmation elc ON elc.base_entity_id = elgec.base_entity_id
                                LEFT JOIN ec_pnc_followup epf ON epf.entity_id = elgec.base_entity_id
-                      WHERE (elc.hiv = 'positive' OR epf.hiv_status = 'positive')
+                      WHERE (elc.hiv = 'positive' OR epf.hiv = 'positive')
                         AND (date(efm.dob, '+25 years') <= date('now'))
                         AND (date(efm.dob, '+30 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -4745,7 +4745,7 @@ indicators:
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elgec.base_entity_id
 							   INNER JOIN ec_ld_confirmation elc ON elc.base_entity_id = elgec.base_entity_id
                                LEFT JOIN ec_pnc_followup epf ON epf.entity_id = elgec.base_entity_id
-                      WHERE (elc.hiv = 'positive' OR epf.hiv_status = 'positive')
+                      WHERE (elc.hiv = 'positive' OR epf.hiv = 'positive')
                         AND (date(efm.dob, '+30 years') <= date('now'))
                         AND (date(efm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -4845,7 +4845,7 @@ indicators:
                                INNER JOIN ec_family_member efm ON efm.base_entity_id = elgec.base_entity_id
 							   INNER JOIN ec_ld_confirmation elc ON elc.base_entity_id = elgec.base_entity_id
                                LEFT JOIN ec_pnc_followup epf ON epf.entity_id = elgec.base_entity_id
-                      WHERE (elc.hiv = 'positive' OR epf.hiv_status = 'positive')
+                      WHERE (elc.hiv = 'positive' OR epf.hiv = 'positive')
                         AND (date(efm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(strftime('%Y-%m-%d', datetime(elgec.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
