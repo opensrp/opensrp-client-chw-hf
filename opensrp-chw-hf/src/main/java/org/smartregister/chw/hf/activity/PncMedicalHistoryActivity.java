@@ -111,6 +111,7 @@ public class PncMedicalHistoryActivity extends CorePncMedicalHistoryActivity {
                         case "feeding_options":
                             growthData.put(entry.getKey(), val);
                             break;
+                        default:
                     }
                 }
 
@@ -258,6 +259,7 @@ public class PncMedicalHistoryActivity extends CorePncMedicalHistoryActivity {
                         case "hiv_test_result_date":
                             hivMap.put(visitDetail.getVisitKey(), visitDetail.getDetails());
                             break;
+                        default:
                     }
                 }
             }
