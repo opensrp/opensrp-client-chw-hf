@@ -107,7 +107,7 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
         new SetIndexClientsTask(getHivMemberObject()).execute();
     }
 
-    protected void startUpdateCtcNumber(Activity activity, String baseEntityID) throws JSONException {
+    public static void startUpdateCtcNumber(Activity activity, String baseEntityID) throws JSONException {
         Intent intent = new Intent(activity, HivFormsActivity.class);
         intent.putExtra(org.smartregister.chw.hiv.util.Constants.ActivityPayload.BASE_ENTITY_ID, baseEntityID);
         JSONObject form = (new FormUtils()).getFormJsonFromRepositoryOrAssets(activity, org.smartregister.chw.hf.utils.Constants.JsonForm.getHivClientUpdateCtcNumber());

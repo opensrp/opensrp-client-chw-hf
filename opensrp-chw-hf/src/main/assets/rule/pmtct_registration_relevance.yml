@@ -2,7 +2,14 @@
 name: step2_ctc_number
 description: ctc_number relevance
 priority: 1
-condition: "step1_known_on_art.contains('yes') || (!step2_hiv_status.equals('') && step2_hiv_status.contains('positive'))"
+condition: "step1_known_on_art.contains('yes') || step2_has_the_client_been_provided_with_ctc_number.contains('yes')"
+actions:
+  - "isRelevant = true"
+---
+name: step2_has_the_client_been_provided_with_ctc_number
+description: has_the_client_been_provided_with_ctc_number relevance
+priority: 1
+condition: "(!step2_hiv_status.equals('') && step2_hiv_status.contains('positive'))"
 actions:
   - "isRelevant = true"
 ---

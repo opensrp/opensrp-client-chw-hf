@@ -222,6 +222,39 @@
         }
       },
       {
+        "key": "has_the_client_been_provided_with_ctc_number",
+        "type": "native_radio",
+        "label": "Je mteja amepewa namba ya CTC?",
+        "openmrs_entity_id": "has_the_client_been_provided_with_ctc_number",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndio",
+            "openmrs_entity_id": "yes",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "openmrs_entity_id": "no",
+            "openmrs_entity": "concept"
+          }
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_registration_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please answer this question"
+        }
+      },
+      {
         "key": "ctc_number",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",

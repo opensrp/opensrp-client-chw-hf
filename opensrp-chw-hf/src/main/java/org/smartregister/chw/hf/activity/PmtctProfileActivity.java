@@ -1,5 +1,13 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.AllConstants.LocationConstants.SPECIAL_TAG_FOR_OPENMRS_TEAM_MEMBERS;
+import static org.smartregister.chw.core.utils.CoreConstants.EventType.PMTCT_COMMUNITY_FOLLOWUP;
+import static org.smartregister.chw.hf.activity.HivProfileActivity.startUpdateCtcNumber;
+import static org.smartregister.chw.hf.utils.Constants.JsonFormConstants.STEP1;
+import static org.smartregister.chw.hf.utils.JsonFormUtils.SYNC_LOCATION_ID;
+import static org.smartregister.chw.hf.utils.JsonFormUtils.getAutoPopulatedJsonEditFormString;
+import static org.smartregister.util.JsonFormUtils.VALUE;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -14,6 +22,10 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.vijay.jsonwizard.utils.FormUtils;
 
@@ -76,17 +88,7 @@ import java.util.Locale;
 
 import javax.annotation.Nullable;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.recyclerview.widget.RecyclerView;
 import timber.log.Timber;
-
-import static org.smartregister.AllConstants.LocationConstants.SPECIAL_TAG_FOR_OPENMRS_TEAM_MEMBERS;
-import static org.smartregister.chw.core.utils.CoreConstants.EventType.PMTCT_COMMUNITY_FOLLOWUP;
-import static org.smartregister.chw.hf.utils.Constants.JsonFormConstants.STEP1;
-import static org.smartregister.chw.hf.utils.JsonFormUtils.SYNC_LOCATION_ID;
-import static org.smartregister.chw.hf.utils.JsonFormUtils.getAutoPopulatedJsonEditFormString;
-import static org.smartregister.util.JsonFormUtils.VALUE;
 
 public class PmtctProfileActivity extends CorePmtctProfileActivity {
     private static String baseEntityId;
@@ -390,7 +392,16 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         int id = view.getId();
 
         if (id == R.id.textview_record_pmtct) {
-            PmtctFollowupVisitActivity.startPmtctFollowUpActivity(this, baseEntityId, false);
+            TextView textView = findViewById(R.id.textview_record_pmtct);
+            if (textView.getText().equals(getResources().getString(R.string.record_ctc_number))) {
+                try {
+                    startUpdateCtcNumber(PmtctProfileActivity.this, baseEntityId);
+                }catch (Exception e){
+                    Timber.e(e);
+                }
+            } else {
+                PmtctFollowupVisitActivity.startPmtctFollowUpActivity(this, baseEntityId, false);
+            }
         } else if (id == R.id.textview_record_eac) {
             JSONObject formJsonObject;
             try {
@@ -569,7 +580,16 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
 
             profilePresenter.recordPmtctButton(visitStatus);
 
-            if (HfPmtctDao.isTransferInClient(baseEntityId)) {
+            HivMemberObject hivMemberObject = HivDao.getMember(baseEntityId);
+            String ctcNumber = null;
+            String statusAfterTesting = null;
+            if (hivMemberObject != null) {
+                ctcNumber = hivMemberObject.getCtcNumber();
+                statusAfterTesting = hivMemberObject.getClientHivStatusAfterTesting();
+            }
+            if (ctcNumber == null || ctcNumber.equals("") && statusAfterTesting != null && statusAfterTesting.equalsIgnoreCase("positive")) {
+                textViewRecordPmtct.setText(R.string.record_ctc_number);
+            } else if (HfPmtctDao.isTransferInClient(baseEntityId)) {
                 textViewRecordPmtct.setText(R.string.record_pmtct);
             } else {
                 textViewRecordPmtct.setText(R.string.record_first_pmtct);
