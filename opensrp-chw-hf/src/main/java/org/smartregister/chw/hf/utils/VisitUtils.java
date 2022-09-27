@@ -116,6 +116,7 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
         Event closePmtctEvent = new Gson().fromJson(jsonString, Event.class);
         closePmtctEvent.setEntityType(org.smartregister.chw.pmtct.util.Constants.TABLES.PMTCT_REGISTRATION);
         closePmtctEvent.setEventType(Constants.Events.PMTCT_CLOSE_VISITS);
+        closePmtctEvent.setEventDate(new Date());
         return closePmtctEvent;
     }
 

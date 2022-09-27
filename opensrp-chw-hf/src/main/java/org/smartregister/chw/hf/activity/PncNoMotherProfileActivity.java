@@ -278,6 +278,7 @@ public class PncNoMotherProfileActivity extends PncMemberProfileActivity {
 
 
         baseEvent.setEventDate(new Date());
+        baseEvent.setDateCreated(new Date());
         baseEvent.setBaseEntityId(baseEntityId);
         baseEvent.setEntityType(org.smartregister.chw.hf.utils.Constants.TableName.HEI);
 
