@@ -107,9 +107,10 @@
         "toaster_info_text": "Rudia kupima wingi wa virusi baada ya mwezi wa 6, 12 na 18",
         "toaster_type": "info",
         "relevance": {
-          "step1:hvl_result": {
-            "type": "numeric",
-            "ex": "lessThan(.,\"1000\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_hvl_test_results_relevance.yml"
+            }
           }
         }
       },
@@ -396,9 +397,10 @@
           "err": "Please select an answer"
         },
         "relevance": {
-          "step1:hvl_result": {
-            "type": "numeric",
-            "ex": "lessThan(.,\"1000\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_hvl_test_results_relevance.yml"
+            }
           }
         }
       },
@@ -419,9 +421,10 @@
           "err": "Please enter the assessor's name"
         },
         "relevance": {
-          "step1:hvl_result": {
-            "type": "numeric",
-            "ex": "lessThan(.,\"1000\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_hvl_test_results_relevance.yml"
+            }
           }
         }
       },

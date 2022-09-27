@@ -36,10 +36,9 @@ public class HeiVisitUtils extends VisitUtils {
 
 
         for (Visit v : visits) {
-            Date truncatedUpdatedDate = new Date(v.getUpdatedAt().getTime() - v.getUpdatedAt().getTime() % (24 * 60 * 60 * 1000));
-            Date today = new Date(Calendar.getInstance().getTimeInMillis() - Calendar.getInstance().getTimeInMillis() % (24 * 60 * 60 * 1000));
-
-            if (truncatedUpdatedDate.before(today) && v.getVisitType().equalsIgnoreCase(Constants.Events.HEI_FOLLOWUP)) {
+            Date updatedAtDate = new Date(v.getUpdatedAt().getTime());
+            int daysDiff = TimeUtils.getElapsedDays(updatedAtDate);
+            if (daysDiff > 1 && v.getVisitType().equalsIgnoreCase(Constants.Events.HEI_FOLLOWUP)) {
                 try {
                     heiFollowupVisits.add(v);
                 } catch (Exception e) {

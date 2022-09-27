@@ -68,3 +68,24 @@ priority: 1
 condition: "global_is_after_eac && step1_hvl_result >= 1000"
 actions:
   - "isRelevant = true"
+---
+name: step1_arv_regimen_plan
+description: arv_regimen_plan relevance
+priority: 1
+condition: "global_is_after_eac && step1_hvl_result < 1000"
+actions:
+  - "isRelevant = true"
+---
+name: step1_assessor_name
+description: assessor_name relevance
+priority: 1
+condition: "global_is_after_eac && step1_hvl_result < 1000"
+actions:
+  - "isRelevant = true"
+---
+name: step1_notify_continue_regimen
+description: notify_continue_regimen relevance
+priority: 1
+condition: "global_is_after_eac && step1_hvl_result < 1000"
+actions:
+  - "isRelevant = true"
