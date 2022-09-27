@@ -112,12 +112,20 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
         }
     }
 
-    protected static Event createClosePmtctEvent(String jsonString) {
+    protected static void createClosePmtctEvent(String jsonString) {
         Event closePmtctEvent = new Gson().fromJson(jsonString, Event.class);
         closePmtctEvent.setEntityType(org.smartregister.chw.pmtct.util.Constants.TABLES.PMTCT_REGISTRATION);
         closePmtctEvent.setEventType(Constants.Events.PMTCT_CLOSE_VISITS);
+        closePmtctEvent.setFormSubmissionId(UUID.randomUUID().toString());
         closePmtctEvent.setEventDate(new Date());
-        return closePmtctEvent;
+        try {
+            AllSharedPreferences allSharedPreferences = AncLibrary.getInstance().context().allSharedPreferences();
+            NCUtils.addEvent(allSharedPreferences, closePmtctEvent);
+            NCUtils.startClientProcessing();
+        } catch (Exception e) {
+            Timber.e(e);
+        }
+
     }
 
     public static boolean computeCompletionStatusForAction(JSONArray obs, String checkString) throws JSONException {
@@ -229,6 +237,9 @@ public class VisitUtils extends org.smartregister.chw.anc.util.VisitUtils {
         if (visit.getVisitType().equalsIgnoreCase(Constants.Events.ANC_RECURRING_FACILITY_VISIT) && isNextVisitsCancelled(visit)) {
             createCancelledEvent(visit.getJson());
             createEventToMoveAncClientsWithStillBirthToPnc(visit.getJson());
+            if (PmtctDao.isRegisteredForPmtct(visit.getBaseEntityId())) {
+                createClosePmtctEvent(visit.getJson());
+            }
             ((Activity) context).finish();
         }
     }
