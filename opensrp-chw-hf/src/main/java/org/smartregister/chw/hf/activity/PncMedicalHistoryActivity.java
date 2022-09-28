@@ -1,5 +1,8 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.hf.utils.Constants.Events.PNC_CHILD_FOLLOWUP;
+import static org.smartregister.chw.hf.utils.Constants.Events.PNC_VISIT;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -74,6 +77,9 @@ public class PncMedicalHistoryActivity extends CorePncMedicalHistoryActivity {
 
             for (int i = visits.size() - 1; i >= 0; i--) {
                 Visit visit = visits.get(i);
+                if (!visit.getVisitType().equals(PNC_CHILD_FOLLOWUP)) {
+                    continue;
+                }
                 Map<String, String> childVisitDetails = new HashMap<>();
 
                 // Note the below HashMap are only used for ordering and categorization os the keys
@@ -189,9 +195,11 @@ public class PncMedicalHistoryActivity extends CorePncMedicalHistoryActivity {
             List<Map<String, String>> healthFacilityVisits = new ArrayList<>();
             int x = visits.size() - 1;
             while (x >= 0) {
-                Map<String, String> healthFacilityVisitMap = new LinkedHashMap<>();
-                extractHealthFacilityVisits(visits, healthFacilityVisitMap, x);
-                healthFacilityVisits.add(healthFacilityVisitMap);
+                if (visits.get(x).getVisitType().equals(PNC_VISIT)) {
+                    Map<String, String> healthFacilityVisitMap = new LinkedHashMap<>();
+                    extractHealthFacilityVisits(visits, healthFacilityVisitMap, x);
+                    healthFacilityVisits.add(healthFacilityVisitMap);
+                }
                 x--;
             }
 
