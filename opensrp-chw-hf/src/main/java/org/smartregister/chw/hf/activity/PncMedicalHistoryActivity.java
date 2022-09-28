@@ -1,10 +1,16 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.hf.utils.Constants.Events.PNC_CHILD_FOLLOWUP;
+import static org.smartregister.chw.hf.utils.Constants.Events.PNC_VISIT;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
+import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
+import android.text.style.BulletSpan;
 import android.text.style.StyleSpan;
 import android.view.View;
 
@@ -63,6 +69,7 @@ public class PncMedicalHistoryActivity extends CorePncMedicalHistoryActivity {
 
     private class HfMedicalHistoryFlavor extends BaMedicalHistoryActivityHelper {
         private final StyleSpan boldSpan = new StyleSpan(android.graphics.Typeface.BOLD);
+        private final StyleSpan italicSpan = new StyleSpan(Typeface.ITALIC);
         private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
 
         @Override
@@ -74,6 +81,9 @@ public class PncMedicalHistoryActivity extends CorePncMedicalHistoryActivity {
 
             for (int i = visits.size() - 1; i >= 0; i--) {
                 Visit visit = visits.get(i);
+                if (!visit.getVisitType().equals(PNC_CHILD_FOLLOWUP)) {
+                    continue;
+                }
                 Map<String, String> childVisitDetails = new HashMap<>();
 
                 // Note the below HashMap are only used for ordering and categorization os the keys
@@ -86,6 +96,7 @@ public class PncMedicalHistoryActivity extends CorePncMedicalHistoryActivity {
                     String val = getText(entry.getValue());
 
                     switch (entry.getKey()) {
+
                         // general examination
                         case "child_activeness":
                         case "hb_level":
@@ -162,17 +173,26 @@ public class PncMedicalHistoryActivity extends CorePncMedicalHistoryActivity {
             Context context = PncMedicalHistoryActivity.this;
             if (growth_data != null && growth_data.size() > 0) {
 
-                List<String> nutritionDetails = new ArrayList<>();
+                List<SpannableStringBuilder> nutritionDetails = new ArrayList<>();
                 for (Map.Entry<String, String> entry : growth_data.entrySet()) {
                     SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
-                    spannableStringBuilder.append(getStringResource(context, "pnc_key_", entry.getKey()), boldSpan, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE).append(" : ").append(getStringResource(context, "", entry.getValue()));
 
-                    nutritionDetails.add(spannableStringBuilder.toString());
+                    spannableStringBuilder.append(getStringResource(context, "pnc_key_", entry.getKey()), boldSpan, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE).append(" : ");
+                    if (entry.getValue().contains(",")) {
+                        String[] values = entry.getValue().split(",");
+                        for (String value : values) {
+                            spannableStringBuilder.append("\n");
+                            spannableStringBuilder.append(getStringResource(context, "", value) + "\n", new BulletSpan(10), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                        }
+                    } else {
+                        spannableStringBuilder.append(getStringResource(context, "", entry.getValue()), italicSpan, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    }
 
+                    nutritionDetails.add(spannableStringBuilder);
                 }
                 MedicalHistory medicalHistory = new MedicalHistory();
                 medicalHistory.setTitle(context.getString(titleStringResourceId) + " " + ++visitNumber + " : " + simpleDateFormat.format(date));
-                medicalHistory.setText(nutritionDetails);
+                medicalHistory.setSpannableStringBuilders(nutritionDetails);
 
                 if (medicalHistories == null) {
                     medicalHistories = new ArrayList<>();
@@ -189,9 +209,11 @@ public class PncMedicalHistoryActivity extends CorePncMedicalHistoryActivity {
             List<Map<String, String>> healthFacilityVisits = new ArrayList<>();
             int x = visits.size() - 1;
             while (x >= 0) {
-                Map<String, String> healthFacilityVisitMap = new LinkedHashMap<>();
-                extractHealthFacilityVisits(visits, healthFacilityVisitMap, x);
-                healthFacilityVisits.add(healthFacilityVisitMap);
+                if (visits.get(x).getVisitType().equals(PNC_VISIT)) {
+                    Map<String, String> healthFacilityVisitMap = new LinkedHashMap<>();
+                    extractHealthFacilityVisits(visits, healthFacilityVisitMap, x);
+                    healthFacilityVisits.add(healthFacilityVisitMap);
+                }
                 x--;
             }
 
@@ -218,15 +240,19 @@ public class PncMedicalHistoryActivity extends CorePncMedicalHistoryActivity {
             Map<String, String> familyPlanning = new HashMap<>();
             Map<String, String> suppliments = new HashMap<>();
             Map<String, String> hivMap = new HashMap<>();
+            Map<String, String> systolicAndDiastolicValues = new HashMap<>();
 
             for (String key : map.keySet()) {
                 List<VisitDetail> visitDetails = map.get(key);
                 for (VisitDetail visitDetail : visitDetails) {
 
                     switch (visitDetail.getVisitKey()) {
-                        // general examination
+                        //Blood Pressure
                         case "systolic":
                         case "diastolic":
+                            systolicAndDiastolicValues.put(visitDetail.getVisitKey(), visitDetail.getDetails());
+
+                        // general examination
                         case "hb_level":
                         case "temperature":
                         case "weight":
@@ -266,6 +292,12 @@ public class PncMedicalHistoryActivity extends CorePncMedicalHistoryActivity {
 
             healthFacilityVisitMap.put("followup_visit_date", map.get("followup_visit_date").get(0).getDetails());
             healthFacilityVisitMap.putAll(generalExamination);
+
+
+            Map<String, String> pressureMap = new HashMap<>();
+            pressureMap.put("blood_pressure", systolicAndDiastolicValues.get("systolic")+"/"+systolicAndDiastolicValues.get("diastolic"));
+            healthFacilityVisitMap.putAll(pressureMap);
+
             healthFacilityVisitMap.putAll(familyPlanning);
             healthFacilityVisitMap.putAll(suppliments);
             healthFacilityVisitMap.putAll(hivMap);
@@ -291,23 +323,31 @@ public class PncMedicalHistoryActivity extends CorePncMedicalHistoryActivity {
                 }
                 MedicalHistory medicalHistory = new MedicalHistory();
                 medicalHistory.setTitle(MessageFormat.format(PncMedicalHistoryActivity.this.getString(org.smartregister.chw.core.R.string.pnc_health_facility_visit_num), x + " " + visitTypeSubTitle));
-                List<String> hfDetails = new ArrayList<>();
+                List<SpannableStringBuilder> hfDetails = new ArrayList<>();
 
                 List<String> keysNotIncluded = Arrays.asList("followup_visit_date", "visit_number", "anc_visit_date");
-
                 for (String key : healthFacilityVisit.keySet()) {
                     if (!keysNotIncluded.contains(key)) {
                         String value = healthFacilityVisit.get(key);
                         if (StringUtils.isNotBlank(value)) {
 
                             SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
-                            spannableStringBuilder.append(getStringResource(context, "pnc_key_", key), boldSpan, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE).append(" : ").append(getStringResource(context, "", value));
+                            spannableStringBuilder.append(getStringResource(context, "pnc_key_", key), boldSpan, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE).append(" : ");
+                            if (value.contains(",")) {
+                                String[] listValues = value.split(",");
+                                for (String itemValue : listValues) {
+                                    spannableStringBuilder.append("\n");
+                                    spannableStringBuilder.append(getStringResource(context, "", itemValue) + "\n", new BulletSpan(10), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                                }
+                            } else {
+                                spannableStringBuilder.append(getStringResource(context, "", value), italicSpan, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                            }
 
-                            hfDetails.add(spannableStringBuilder.toString());
+                            hfDetails.add(spannableStringBuilder);
                         }
                     }
                 }
-                medicalHistory.setText(hfDetails);
+                medicalHistory.setSpannableStringBuilders(hfDetails);
                 medicalHistories.add(medicalHistory);
                 x--;
             }

@@ -656,5 +656,13 @@
     <string name="chk_descended">Distended</string>
     <string name="chk_delayed_off">Delayed off</string>
     <string name="chk_no_abnormalities">No Abnormalities</string>
+    <string name="chk_condom">Condoms</string>
+    <string name="chk_pills">Pills (Progestogen-only pill)</string>
+    <string name="chk_injectable">Injectable (After 42 days)</string>
+    <string name="chk_jadelle">Jadelle</string>
+    <string name="chk_implants">Implanon/NXT</string>
+    <string name="chk_iucd">PPIUCD (Within 48 hours after delivery or after 42 days of PNC)</string>
+    <string name="chk_tubal_ligation">Bilateral Tubal Ligation (BTL)</string>
+    <string name="chk_referred_fp_services">Referred for other FP services</string>
 
 </resources>
