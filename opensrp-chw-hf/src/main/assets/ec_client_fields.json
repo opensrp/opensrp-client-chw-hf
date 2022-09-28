@@ -2741,6 +2741,14 @@
           }
         },
         {
+          "column_name": "hiv_status_question",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "hiv_status_question"
+          }
+        },
+        {
           "column_name": "hepatitis_b_vaccination",
           "type": "Event",
           "json_mapping": {
@@ -3025,6 +3033,14 @@
           "json_mapping": {
             "field": "obs.fieldCode",
             "concept": "child_bcg_vaccination"
+          }
+        },
+        {
+          "column_name": "child_opv0_vaccination",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "child_opv0_vaccination"
           }
         },
         {
