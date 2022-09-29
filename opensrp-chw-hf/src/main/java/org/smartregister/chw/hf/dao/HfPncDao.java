@@ -201,4 +201,14 @@ public class HfPncDao extends PNCDao {
 
         return res != null && res.size() > 0 && res.get(0) != null;
     }
+
+
+    public static boolean isMotherEligibleForVitaminA(String baseEntityId) {
+        String sql = "SELECT vitamin_a FROM ec_pnc_followup WHERE vitamin_a = 'yes' AND entity_id = '" + baseEntityId + "'";
+
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "vitamin_a");
+        List<String> res = readData(sql, dataMap);
+
+        return res == null || res.size() == 0 || res.get(0) == null || res.get(0).equals("no");
+    }
 }
