@@ -10,6 +10,7 @@ import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.dao.HfPncDao;
 
 import java.util.List;
 import java.util.Map;
@@ -37,12 +38,15 @@ public class PncNutrionSupplementAction implements BaseAncHomeVisitAction.AncHom
 
     @Override
     public String getPreProcessed() {
-
+        JSONObject nutritionSupplementForm = null;
+        JSONObject global = null;
         try {
-            JSONObject jsonObject = new JSONObject(jsonPayload);
-            return jsonObject.toString();
-        } catch (Exception e) {
-            Timber.e(e);
+            nutritionSupplementForm = new JSONObject(jsonPayload);
+            global = nutritionSupplementForm.getJSONObject("global");
+            global.put("is_eligible_for_vitamin_a", HfPncDao.isMotherEligibleForVitaminA(memberObject.getBaseEntityId()));
+            return nutritionSupplementForm.toString();
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
         return null;
     }

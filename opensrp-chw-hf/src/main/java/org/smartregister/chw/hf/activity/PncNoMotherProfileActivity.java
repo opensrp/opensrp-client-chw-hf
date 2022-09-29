@@ -30,6 +30,8 @@ import org.smartregister.chw.anc.AncLibrary;
 import org.smartregister.chw.anc.domain.MemberObject;
 import org.smartregister.chw.anc.util.Constants;
 import org.smartregister.chw.anc.util.DBConstants;
+import org.smartregister.chw.core.dao.ChildDao;
+import org.smartregister.chw.core.domain.Child;
 import org.smartregister.chw.core.interactor.CoreChildProfileInteractor;
 import org.smartregister.chw.core.model.CoreAllClientsMemberModel;
 import org.smartregister.chw.core.utils.CoreConstants;
@@ -43,6 +45,7 @@ import org.smartregister.chw.hf.utils.HfChildUtils;
 import org.smartregister.chw.hf.utils.PncVisitUtils;
 import org.smartregister.chw.pmtct.util.NCUtils;
 import org.smartregister.chw.pnc.PncLibrary;
+import org.smartregister.chw.pnc.util.PncUtil;
 import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.clientandeventmodel.Obs;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
@@ -53,8 +56,10 @@ import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.repository.AllSharedPreferences;
 import org.smartregister.util.Utils;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 import java.util.UUID;
 
 import timber.log.Timber;
@@ -85,9 +90,14 @@ public class PncNoMotherProfileActivity extends PncMemberProfileActivity {
     public static void startChildForm(Activity activity, String childBaseEntityId) {
         JSONObject jsonForm = org.smartregister.chw.core.utils.FormUtils.getFormUtils().getFormJson(org.smartregister.chw.hf.utils.Constants.JsonForm.getPncChildGeneralExamination());
         try {
+            Child child = ChildDao.getChild(childBaseEntityId);
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ", Locale.getDefault());
+            int ageInDays = PncUtil.getDaysDifference(dateFormat.format(child.getDateOfBirth()));
+
+            child.getDateOfBirth();
             jsonForm.getJSONObject("global").put("baseEntityId", childBaseEntityId);
             jsonForm.getJSONObject("global").put("is_eligible_for_bcg", HfPncDao.isChildEligibleForBcg(childBaseEntityId));
-            jsonForm.getJSONObject("global").put("is_eligible_for_opv0", HfPncDao.isChildEligibleForOpv0(childBaseEntityId));
+            jsonForm.getJSONObject("global").put("is_eligible_for_opv0", ageInDays <= 14 && HfPncDao.isChildEligibleForOpv0(childBaseEntityId));
             jsonForm.getJSONObject("global").put("anti_body_test_conducted", HfPncDao.hasHivAntibodyTestBeenConducted(childBaseEntityId));
             jsonForm.getJSONObject("global").put("is_a_child_without_mother", HfPncDao.isAChildWithoutMother(childBaseEntityId));
             activity.startActivityForResult(org.smartregister.chw.core.utils.FormUtils.getStartFormActivity(jsonForm, activity.getString(R.string.record_child_followup), activity), JsonFormUtils.REQUEST_CODE_GET_JSON);

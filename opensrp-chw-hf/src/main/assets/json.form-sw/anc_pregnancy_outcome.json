@@ -1133,7 +1133,7 @@
           {
             "key": "prompt_for_opv0_vacc_not_provided",
             "type": "toaster_notes",
-            "text": "Mtoto amepoteza nafasi ya kupata OPV-0, Mpatie OPV-1 katika udhulio la kwanza la PNC",
+            "text": "Mpatie chanjo ya OPV 0 mtoto kwenye udhurio la kwanza la baada ya kujifungua(PNC) au mara tu chanjo ya OPV 0 itakapo kuwepo.OPV 0 haitakiwi kutolewa baada ya mtoto kufikisha siku 14",
             "openmrs_entity_id": "",
             "openmrs_entity": "",
             "openmrs_entity_parent": "",

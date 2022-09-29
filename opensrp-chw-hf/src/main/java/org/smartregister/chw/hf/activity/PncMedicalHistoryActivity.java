@@ -251,6 +251,7 @@ public class PncMedicalHistoryActivity extends CorePncMedicalHistoryActivity {
                         case "systolic":
                         case "diastolic":
                             systolicAndDiastolicValues.put(visitDetail.getVisitKey(), visitDetail.getDetails());
+                            break;
 
                         // general examination
                         case "hb_level":

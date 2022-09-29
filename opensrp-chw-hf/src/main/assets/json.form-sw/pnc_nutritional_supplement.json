@@ -41,6 +41,7 @@
     },
     "encounter_location": ""
   },
+  "global": {},
   "step1": {
     "title": "Virutubisho vya Lishe",
     "fields": [
@@ -150,6 +151,13 @@
         "v_required": {
           "value": "true",
           "err": "Tafadhali jibu swali hili"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pnc_nutritional_supplement_relevance.yml"
+            }
+          }
         }
       },
       {

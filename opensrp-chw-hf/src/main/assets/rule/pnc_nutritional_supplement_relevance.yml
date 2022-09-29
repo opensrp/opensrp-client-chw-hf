@@ -1,0 +1,7 @@
+---
+name: step1_vitamin_a
+description: vitamin_a relevance
+priority: 1
+condition: "global_is_eligible_for_vitamin_a"
+actions:
+  - "isRelevant = true"

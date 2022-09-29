@@ -108,12 +108,11 @@ public class AncRegisterInteractor extends BaseAncRegisterInteractor {
             try {
                 JSONObject form = new JSONObject(jsonString);
                 encounterType = form.optString(Constants.JSON_FORM_EXTRA.ENCOUNTER_TYPE);
+                String motherBaseId = form.optString(Constants.JSON_FORM_EXTRA.ENTITY_TYPE);
 
                 if (encounterType.equalsIgnoreCase(Constants.EVENT_TYPE.PREGNANCY_OUTCOME)) {
                     String tableName = CoreConstants.TABLE_NAME.ANC_PREGNANCY_OUTCOME;
-                    saveRegistration(form.toString(), tableName);
-
-                    String motherBaseId = form.optString(Constants.JSON_FORM_EXTRA.ENTITY_TYPE);
+                    saveRegistration(form.toString(), tableName, motherBaseId);
 
                     JSONArray fields = org.smartregister.util.JsonFormUtils.fields(form);
                     JSONObject deliveryDate = getFieldJSONObject(fields, DELIVERY_DATE);
@@ -150,9 +149,9 @@ public class AncRegisterInteractor extends BaseAncRegisterInteractor {
                         lmp.put(JsonFormUtils.VALUE, dateTimeFormat.print(lmpDate));
                     }
 
-                    saveRegistration(form.toString(), table);
+                    saveRegistration(form.toString(), table, motherBaseId);
                 } else {
-                    saveRegistration(jsonString, table);
+                    saveRegistration(jsonString, table, motherBaseId);
                 }
             } catch (Exception e) {
                 Timber.e(e);
@@ -199,11 +198,11 @@ public class AncRegisterInteractor extends BaseAncRegisterInteractor {
         return jsonObjectMap;
     }
 
-    private void saveRegistration(final String jsonString, String table) throws Exception {
+    private void saveRegistration(final String jsonString, String table, String motherBaseId) throws Exception {
         AllSharedPreferences allSharedPreferences = AncLibrary.getInstance().context().allSharedPreferences();
         Event baseEvent = JsonFormUtils.processJsonForm(allSharedPreferences, jsonString, table);
         JsonFormUtils.tagEvent(allSharedPreferences, baseEvent);
-        String syncLocationId = ChwNotificationDao.getSyncLocationId(baseEvent.getBaseEntityId());
+        String syncLocationId = ChwNotificationDao.getSyncLocationId(motherBaseId);
         if (syncLocationId != null) {
             // Allows setting the ID for sync purposes
             baseEvent.setLocationId(syncLocationId);
@@ -257,12 +256,12 @@ public class AncRegisterInteractor extends BaseAncRegisterInteractor {
                 pncForm = populatePNCForm(pncForm, childFields, familyBaseEntityId, motherBaseId, childRiskCategory, uniqueChildID, dob, lastName);
                 processPncChild(childFields, allSharedPreferences, childBaseEntityId, familyBaseEntityId, motherBaseId, uniqueChildID, lastName, dob);
                 if (pncForm != null) {
-                    saveRegistration(pncForm.toString(), EC_CHILD);
+                    saveRegistration(pncForm.toString(), EC_CHILD, motherBaseId);
                     saveVaccineEvents(childFields, childBaseEntityId, dob);
                 }
                 if (motherHivStatus.equals(POSITIVE) && pncForm != null) {
                     pncForm.put(ENCOUNTER_TYPE, HEI_REGISTRATION);
-                    saveRegistration(pncForm.toString(), HEI);
+                    saveRegistration(pncForm.toString(), HEI, motherBaseId);
                 }
 
             } catch (Exception e) {
