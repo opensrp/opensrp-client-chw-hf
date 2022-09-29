@@ -83,7 +83,7 @@
           "err": "Please enter the number"
         },
         "relevance": {
-          "step1:prep_status": {
+          "step1:prep_drug_offered": {
             "type": "string",
             "ex": "equalTo(., \"tdf_ftc\")"
           }

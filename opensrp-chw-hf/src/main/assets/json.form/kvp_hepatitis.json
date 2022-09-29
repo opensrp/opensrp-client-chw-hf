@@ -61,7 +61,7 @@
           },
           {
             "key": "positive_and_referred",
-            "text": "Positve and referred",
+            "text": "Positive and referred",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "positive_and_referred"
           },
@@ -89,7 +89,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "hep_c_screening",
         "type": "native_radio",
-        "label": "Client screened for Hepatitis C virus (HBV)",
+        "label": "Client screened for Hepatitis C virus (HCV)",
         "options": [
           {
             "key": "positive",
@@ -99,7 +99,7 @@
           },
           {
             "key": "positive_and_referred",
-            "text": "Positve and referred",
+            "text": "Positive and referred",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "positive_and_referred"
           },

@@ -443,7 +443,7 @@
         "options": [
           {
             "key": "disabled",
-            "text": "Long distance drivers",
+            "text": "Disabled",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "disabled"

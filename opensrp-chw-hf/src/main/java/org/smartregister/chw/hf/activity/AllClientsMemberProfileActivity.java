@@ -308,10 +308,10 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
         String gender = AllClientsUtils.getClientGender(baseEntityId);
         String dob = Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.DOB, false);
         int age = Utils.getAgeFromDate(dob);
-        if (gender.equalsIgnoreCase(Constants.GENDER.MALE)) {
+        if(gender.equalsIgnoreCase(Constants.GENDER.MALE)){
             KvpRegisterActivity.startKvpScreeningMale(AllClientsMemberProfileActivity.this, baseEntityId, gender, age);
         }
-        if (gender.equalsIgnoreCase(Constants.GENDER.FEMALE)) {
+        if(gender.equalsIgnoreCase(Constants.GENDER.FEMALE)){
             KvpRegisterActivity.startKvpScreeningFemale(AllClientsMemberProfileActivity.this, baseEntityId, gender, age);
         }
     }

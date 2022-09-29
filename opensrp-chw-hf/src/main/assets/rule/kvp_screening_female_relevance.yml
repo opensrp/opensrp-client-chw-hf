@@ -9,7 +9,7 @@ actions:
 name: step3_risk_of_having_sexual_intercourse
 description: risk_of_having_sexual_intercourse relevance
 priority: 1
-condition: "step3_sexual_intercourse.equals('no') && (global_age >= 15 && global_age <= 24)"
+condition: "step3_sexual_intercourse.equals('no') && (global_age >= 10 && global_age <= 24)"
 actions:
   - "isRelevant = true"
 ---
@@ -37,7 +37,7 @@ actions:
 name: step6_client_in_school
 description: client_in_school relevance
 priority: 1
-condition: "step3_risk_of_having_sexual_intercourse.equals('yes') || (step5_main_income_source_is_sex.equals('no') && (global_age >= 15 && global_age <= 24))"
+condition: "step3_risk_of_having_sexual_intercourse.equals('yes') || (step5_main_income_source_is_sex.equals('no') && (global_age >= 10 && global_age <= 24))"
 actions:
   - "isRelevant = true"
 ---

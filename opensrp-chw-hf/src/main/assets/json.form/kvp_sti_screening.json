@@ -81,13 +81,13 @@
         "options": [
           {
             "key": "treated",
-            "text": "Positive",
+            "text": "Treated",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "treated"
           },
           {
             "key": "referral",
-            "text": "Negative",
+            "text": "Referral",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "referral"
           },
