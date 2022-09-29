@@ -628,6 +628,7 @@
     <string name="pnc_key_abscess">Has Abscess</string>
     <string name="pnc_key_child_bcg_vaccination">BCG vaccination Provided</string>
     <string name="pnc_key_child_opv0_vaccination">OPV0 vaccination Provided</string>
+    <string name="pnc_key_blood_pressure">Blood Pressure (mmHg)</string>
     <string name="chk_normal_involution">Normal/involution has taken place</string>
     <string name="chk_pain">Pain</string>
     <string name="chk_distended">Distended</string>
