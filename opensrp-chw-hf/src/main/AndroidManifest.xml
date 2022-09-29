@@ -31,6 +31,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.KvpRegisterActivity"
+            android:theme="@style/HFTheme.NoActionBar"/>
+        <activity android:name=".activity.KvpProfileActivity"
+            android:theme="@style/HFTheme.NoActionBar"/>
+        <activity android:name=".activity.KvpServiceActivity"
+            android:theme="@style/HFTheme.NoActionBar"/>
+        <activity android:name=".activity.KvpBioMedicalServiceActivity"
+            android:theme="@style/HFTheme.NoActionBar"/>
+        <activity android:name=".activity.KvpBehavioralServiceActivity"
+            android:theme="@style/HFTheme.NoActionBar"/>
+        <activity android:name=".activity.KvpStructuralServiceActivity"
+            android:theme="@style/HFTheme.NoActionBar"/>
+        <activity android:name=".activity.KvpOtherServiceActivity"
+            android:theme="@style/HFTheme.NoActionBar"/>
+        <activity android:name=".activity.PrEPRegisterActivity"
+            android:theme="@style/HFTheme.NoActionBar"/>
+        <activity android:name=".activity.PrEPProfileActivity"
+            android:theme="@style/HFTheme.NoActionBar"/>
+        <activity android:name=".activity.PrEPVisitActivity"
+            android:theme="@style/HFTheme.NoActionBar"/>
         <activity android:name=".activity.CdpRegisterActivity"
             android:theme="@style/HFTheme.NoActionBar"/>
         <activity android:name=".activity.OrderDetailsActivity"

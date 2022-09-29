@@ -71,6 +71,10 @@ public class HfClientProcessor extends CoreClientProcessor {
             case LD_ACTIVE_MANAGEMENT_OF_3RD_STAGE_OF_LABOUR:
             case LD_GENERAL_EXAMINATION:
             case LD_POST_DELIVERY_MOTHER_MANAGEMENT:
+            case org.smartregister.chw.kvp.util.Constants.EVENT_TYPE.KVP_BEHAVIORAL_SERVICE_VISIT:
+            case org.smartregister.chw.kvp.util.Constants.EVENT_TYPE.KVP_BIO_MEDICAL_SERVICE_VISIT:
+            case org.smartregister.chw.kvp.util.Constants.EVENT_TYPE.KVP_STRUCTURAL_SERVICE_VISIT:
+            case org.smartregister.chw.kvp.util.Constants.EVENT_TYPE.KVP_OTHER_SERVICE_VISIT:
             case Constants.EVENT_TYPE.PMTCT_FOLLOWUP:
                 if (eventClient.getEvent() == null) {
                     return;

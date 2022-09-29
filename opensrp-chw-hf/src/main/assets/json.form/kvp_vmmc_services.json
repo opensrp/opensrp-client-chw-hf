@@ -1,0 +1,88 @@
+{
+  "count": "1",
+  "encounter_type": "KVP VMMC",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "global": {},
+  "step1": {
+    "title": "VMMC",
+    "fields": [
+      {
+        "key": "vmcc_provided",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "vmcc_provided",
+        "type": "native_radio",
+        "label": "Was the client provided with VMMC services?",
+        "options": [
+          {
+            "key": "provided",
+            "text": "Provided",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "provided"
+          },
+          {
+            "key": "not_provided",
+            "text": "Not provided",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "not_provided"
+          },
+          {
+            "key": "referred",
+            "text": "Referred",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "referred"
+          },
+          {
+            "key": "not_applicable",
+            "text": "Not applicable",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "not_applicable"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an answer"
+        }
+      }
+    ]
+  }
+}

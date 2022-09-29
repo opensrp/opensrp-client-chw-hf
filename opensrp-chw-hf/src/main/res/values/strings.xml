@@ -446,6 +446,25 @@
     <string name="callPhoneRequestMessage">Facility Healthcare Worker collect user phone numbers to be used for monitoring, evaluation and analysis of visits conducted by clients at the health facility.</string>
     <string name="referral_for_mother_champion_services_sent">Linked to Mother Champion Community Services</string>
     <string name="linked_to_mother_champion">Linked to Mother Champion in {0}</string>
+    <string name="kvp_screening">KVP Screening</string>
+    <string name="kvp_client_status">Client Status</string>
+    <string name="kvp_hts">HTS</string>
+    <string name="kvp_prep_and_pep">PrEP and PEP</string>
+    <string name="kvp_condom_provision">Condom Provision</string>
+    <string name="kvp_family_planning">Family Planning</string>
+    <string name="kvp_tb_screening">TB Screening</string>
+    <string name="kvp_sti_screening">STI Screening</string>
+    <string name="kvp_heptitis_screening">Hepatitis Screening</string>
+    <string name="kvp_vmmc">VMMC</string>
+    <string name="kvp_cervical_screening">Cervical Screening</string>
+    <string name="kvp_mat">MAT</string>
+    <string name="kvp_iec_sbcc">IEC/SBCC</string>
+    <string name="kvp_health_education">Health Education</string>
+    <string name="kvp_gbv_analysis">GBV Analysis</string>
+    <string name="kvp_other_services_referrals">Other Services and Referrals</string>
+    <string name="prep_visit_type">Visit Type</string>
+    <string name="prep_initiation">PrEP Initiation</string>
+    <string name="prep_screening">PrEP Screening</string>
 
 
     <!-- PMTCT Medical History -->

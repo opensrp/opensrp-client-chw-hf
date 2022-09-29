@@ -1,17 +1,9 @@
 package org.smartregister.chw.hf.utils;
 
-import static org.smartregister.chw.core.utils.CoreConstants.INTENT_KEY.CLIENT;
-import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
-import static org.smartregister.opd.utils.OpdDbConstants.KEY.REGISTER_TYPE;
-import static org.smartregister.util.Utils.showShortToast;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
 
 import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
@@ -40,7 +32,9 @@ import org.smartregister.chw.hiv.dao.HivDao;
 import org.smartregister.chw.pmtct.dao.PmtctDao;
 import org.smartregister.chw.tb.dao.TbDao;
 import org.smartregister.clientandeventmodel.Client;
+import org.smartregister.commonregistry.CommonPersonObject;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
+import org.smartregister.commonregistry.CommonRepository;
 import org.smartregister.family.domain.FamilyEventClient;
 import org.smartregister.family.util.Constants;
 import org.smartregister.family.util.DBConstants;
@@ -50,6 +44,14 @@ import org.smartregister.opd.utils.OpdDbConstants;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
+
+import static org.smartregister.chw.core.utils.CoreConstants.INTENT_KEY.CLIENT;
+import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
+import static org.smartregister.opd.utils.OpdDbConstants.KEY.REGISTER_TYPE;
+import static org.smartregister.util.Utils.showShortToast;
 
 public class AllClientsUtils {
 
@@ -243,5 +245,14 @@ public class AllClientsUtils {
 
     public static void updatePmtctMenuItems(String baseEntityId, Menu menu) {
         menu.findItem(R.id.action_pmtct_register).setVisible(!PmtctDao.isRegisteredForPmtct(baseEntityId));
+    }
+
+    public static String getClientGender(String baseEntityId) {
+        CommonRepository commonRepository = Utils.context().commonrepository(Utils.metadata().familyMemberRegister.tableName);
+
+        final CommonPersonObject commonPersonObject = commonRepository.findByBaseEntityId(baseEntityId);
+        final CommonPersonObjectClient client = new CommonPersonObjectClient(commonPersonObject.getCaseId(), commonPersonObject.getDetails(), "");
+        client.setColumnmaps(commonPersonObject.getColumnmaps());
+        return Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.GENDER, false);
     }
 }

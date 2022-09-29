@@ -1,0 +1,88 @@
+{
+  "count": "1",
+  "encounter_type": "KVP GBV Analysis",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "global": {},
+  "step1": {
+    "title": "GBV Analysis",
+    "fields": [
+      {
+        "key": "gbv_screening",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "gbv_screening",
+        "type": "native_radio",
+        "label": "Gender Based Violence (GBV) screening (physical, psychological, emotional)",
+        "options": [
+          {
+            "key": "case_reported",
+            "text": "Case Reported",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "case_reported"
+          },
+          {
+            "key": "case_not_reported",
+            "text": "Case not reported",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "case_not_reported"
+          },
+          {
+            "key": "received_post_gbv_care",
+            "text": "Received post GBV care",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "received_post_gbv_care"
+          },
+          {
+            "key": "referred",
+            "text": "Referred",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "referred"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an answer"
+        }
+      }
+    ]
+  }
+}

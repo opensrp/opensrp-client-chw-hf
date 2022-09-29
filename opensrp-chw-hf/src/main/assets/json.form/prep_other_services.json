@@ -1,0 +1,273 @@
+{
+  "count": "1",
+  "encounter_type": "PrEP Other Services",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "global": {},
+  "step1": {
+    "title": "PrEP Other Services",
+    "fields": [
+      {
+        "key": "health_edu_sti_provided",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "health_edu_sti_provided",
+        "label": "Health education on sexually transmitted infection provided?",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an answer"
+        }
+      },
+      {
+        "key": "sti_rti_screening",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "sti_rti_screening",
+        "label": "Screened for STI/RTI",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "positive",
+            "text": "Positive",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "positive"
+          },
+          {
+            "key": "negative",
+            "text": "Negative",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "negative"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an answer"
+        }
+      },
+      {
+        "key": "sti_rti_treatment",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "sti_rti_treatment",
+        "label": "STI/RTI treatment",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "treated",
+            "text": "Treated",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "treated"
+          },
+          {
+            "key": "referred",
+            "text": "Referred",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "referred"
+          },
+          {
+            "key": "not_applicable",
+            "text": "Not applicable",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "not_applicable"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an answer"
+        },
+        "relevance": {
+          "step1:sti_rti_screening": {
+            "type": "string",
+            "ex": "equalTo(., \"positive\")"
+          }
+        }
+      },
+      {
+        "key": "provided_male_condoms",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "provided_male_condoms",
+        "type": "edit_text",
+        "hint": "Number of male condoms given",
+        "v_numeric": {
+          "value": "true",
+          "err":"Please enter the number"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the number"
+        }
+      },
+      {
+        "key": "provided_female_condoms",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "provided_female_condoms",
+        "type": "edit_text",
+        "hint": "Number of female condoms given",
+        "v_numeric": {
+          "value": "true",
+          "err":"Please enter the number"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the number"
+        }
+      },
+      {
+        "key": "iec_sbcc_materials",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "iec_sbcc_materials",
+        "type": "edit_text",
+        "hint": "Number of IEC/SBCC materials provided to the client",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the number"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the number"
+        }
+      },
+      {
+        "key": "services_and_referral",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "services_and_referral",
+        "label": "Other services and referral",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "rch",
+            "text": "RCH",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "rch"
+          },
+          {
+            "key": "mental_health",
+            "text": "Mental health",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "mental_health"
+          },
+          {
+            "key": "covid_vaccine",
+            "text": "Covid-19 vaccine",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "covid_vaccine"
+          },
+          {
+            "key": "legal_services",
+            "text": "Legal services",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "legal_services"
+          },
+          {
+            "key": "iga",
+            "text": "IGA",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "iga"
+          },
+          {
+            "key": "other",
+            "text": "Other (Specify)",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an answer"
+        }
+      },
+      {
+        "key": "services_and_referral_other",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "services_and_referral_other",
+        "type": "edit_text",
+        "hint": "Other",
+        "v_required": {
+          "value": "true",
+          "err": "Please specify"
+        },
+        "relevance": {
+          "step1:other_services_and_referral": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
+          }
+        }
+      }
+    ]
+  }
+}

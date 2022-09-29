@@ -727,4 +727,9 @@ public class Constants extends CoreConstants {
         }
     }
 
+    public interface GENDER {
+        String MALE = "male";
+        String FEMALE = "female";
+    }
+
 }

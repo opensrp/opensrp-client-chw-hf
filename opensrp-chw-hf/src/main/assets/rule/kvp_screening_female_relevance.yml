@@ -1,0 +1,84 @@
+---
+name: step2_drug_injection
+description: drug_injection relevance
+priority: 1
+condition: "step1_drug_use.equals('yes')"
+actions:
+  - "isRelevant = true"
+---
+name: step3_risk_of_having_sexual_intercourse
+description: risk_of_having_sexual_intercourse relevance
+priority: 1
+condition: "step3_sexual_intercourse.equals('no') && (global_age >= 15 && global_age <= 24)"
+actions:
+  - "isRelevant = true"
+---
+name: step4_hiv_status
+description: hiv_status relevance
+priority: 1
+condition: "step3_sexual_intercourse.equals('yes')"
+actions:
+  - "isRelevant = true"
+---
+name: step4_hiv_positive_partner
+description: hiv_positive_partner relevance
+priority: 1
+condition: "step4_hiv_status.equals('negative')"
+actions:
+  - "isRelevant = true"
+---
+name: step5_sex_for_money
+description: sex_for_money relevance
+priority: 1
+condition: "!step4_hiv_status.isEmpty()"
+actions:
+  - "isRelevant = true"
+---
+name: step6_client_in_school
+description: client_in_school relevance
+priority: 1
+condition: "step3_risk_of_having_sexual_intercourse.equals('yes') || (step5_main_income_source_is_sex.equals('no') && (global_age >= 15 && global_age <= 24))"
+actions:
+  - "isRelevant = true"
+---
+name: step8_prompt_for_sdc_kvp
+description: prompt_for_sdc_kvp relevance
+priority: 1
+condition: "step4_hiv_status.equals('positive') || step4_hiv_positive_partner.equals('yes')"
+actions:
+  - "isRelevant = true"
+---
+name: step8_prompt_for_fsw_kvp
+description: prompt_for_fsw_kvp relevance
+priority: 1
+condition: "step5_sex_for_money.equals('yes') && step5_main_income_source_is_sex.equals('yes')"
+actions:
+  - "isRelevant = true"
+---
+name: step8_prompt_for_ovp_kvp
+description: prompt_for_ovp_kvp relevance
+priority: 1
+condition: "(!step7_prisoner_or_inmate.equals('not_applicable') || !step7_mobile_population.equals('not_applicable') || !step7_other_groups_at_risk.equals('not_applicable'))"
+actions:
+  - "isRelevant = true"
+---
+name: step8_prompt_for_agyw_kvp
+description: prompt_for_agyw_kvp relevance
+priority: 1
+condition: "!step6_harsh_condition_impact.isEmpty()"
+actions:
+  - "isRelevant = true"
+---
+name: step8_prompt_for_pwud_kvp
+description: prompt_for_pwud_kvp relevance
+priority: 1
+condition: "step1_drug_use.equals('yes')"
+actions:
+  - "isRelevant = true"
+---
+name: step8_prompt_for_pwid_kvp
+description: prompt_for_pwid_kvp relevance
+priority: 1
+condition: "step2_drug_injection.equals('yes')"
+actions:
+  - "isRelevant = true"

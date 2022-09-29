@@ -1,17 +1,10 @@
 package org.smartregister.chw.hf.activity;
 
-import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
-import static org.smartregister.chw.hf.utils.JsonFormUtils.getAutoPopulatedJsonEditFormString;
-import static org.smartregister.util.Utils.getName;
-
 import android.content.Context;
 import android.os.Build;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
-
-import androidx.annotation.RequiresApi;
-import androidx.viewpager.widget.ViewPager;
 
 import com.vijay.jsonwizard.utils.FormUtils;
 
@@ -39,6 +32,7 @@ import org.smartregister.chw.hf.utils.AllClientsUtils;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hf.utils.LFTUFormUtils;
 import org.smartregister.chw.hivst.dao.HivstDao;
+import org.smartregister.chw.kvp.dao.KvpDao;
 import org.smartregister.chw.ld.dao.LDDao;
 import org.smartregister.chw.malaria.dao.MalariaDao;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
@@ -48,7 +42,13 @@ import org.smartregister.family.model.BaseFamilyOtherMemberProfileActivityModel;
 import org.smartregister.family.util.DBConstants;
 import org.smartregister.view.contract.BaseProfileContract;
 
+import androidx.annotation.RequiresApi;
+import androidx.viewpager.widget.ViewPager;
 import timber.log.Timber;
+
+import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
+import static org.smartregister.chw.hf.utils.JsonFormUtils.getAutoPopulatedJsonEditFormString;
+import static org.smartregister.util.Utils.getName;
 
 public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfileActivity {
 
@@ -73,19 +73,21 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
         } else
             menu.findItem(R.id.action_anc_registration).setVisible(false);
 
-        if (isOfReproductiveAge(commonPersonObject, gender) && gender.equalsIgnoreCase("female") && !LDDao.isRegisteredForLD(baseEntityId)) {
-            menu.findItem(R.id.action_ld_registration).setVisible(true);
-        } else {
-            menu.findItem(R.id.action_ld_registration).setVisible(false);
+        if (HealthFacilityApplication.getApplicationFlavor().hasLD()) {
+            menu.findItem(R.id.action_ld_registration).setVisible(isOfReproductiveAge(commonPersonObject, gender) && gender.equalsIgnoreCase("female") && !LDDao.isRegisteredForLD(baseEntityId));
         }
+
         menu.findItem(R.id.action_sick_child_follow_up).setVisible(false);
-        if (BuildConfig.ENABLED_MALARIA_MODULE)
+        if (HealthFacilityApplication.getApplicationFlavor().hasMalaria())
             menu.findItem(R.id.action_malaria_diagnosis).setVisible(!MalariaDao.isRegisteredForMalaria(baseEntityId));
 
-        if(HealthFacilityApplication.getApplicationFlavor().hasHivst()){
+        if (HealthFacilityApplication.getApplicationFlavor().hasHivst()) {
             String dob = Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.DOB, false);
             int age = Utils.getAgeFromDate(dob);
             menu.findItem(R.id.action_hivst_registration).setVisible(!HivstDao.isRegisteredForHivst(baseEntityId) && age >= 18);
+        }
+        if (HealthFacilityApplication.getApplicationFlavor().hasKvpPrEP()) {
+            menu.findItem(R.id.action_kvp_prep_registration).setVisible(!KvpDao.isRegisteredForKvp(baseEntityId));
         }
         return true;
     }
@@ -299,6 +301,19 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
     protected void startHivstRegistration() {
         String gender = Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.GENDER, false);
         HivstRegisterActivity.startHivstRegistrationActivity(AllClientsMemberProfileActivity.this, baseEntityId, gender);
+    }
+
+    @Override
+    protected void startKvpPrEPRegistration() {
+        String gender = AllClientsUtils.getClientGender(baseEntityId);
+        String dob = Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.DOB, false);
+        int age = Utils.getAgeFromDate(dob);
+        if (gender.equalsIgnoreCase(Constants.GENDER.MALE)) {
+            KvpRegisterActivity.startKvpScreeningMale(AllClientsMemberProfileActivity.this, baseEntityId, gender, age);
+        }
+        if (gender.equalsIgnoreCase(Constants.GENDER.FEMALE)) {
+            KvpRegisterActivity.startKvpScreeningFemale(AllClientsMemberProfileActivity.this, baseEntityId, gender, age);
+        }
     }
 
     @Override

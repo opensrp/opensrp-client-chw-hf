@@ -37,12 +37,14 @@ import org.smartregister.chw.hf.activity.HivIndexContactsContactsRegisterActivit
 import org.smartregister.chw.hf.activity.HivRegisterActivity;
 import org.smartregister.chw.hf.activity.HivstRegisterActivity;
 import org.smartregister.chw.hf.activity.HtsRegisterActivity;
+import org.smartregister.chw.hf.activity.KvpRegisterActivity;
 import org.smartregister.chw.hf.activity.LDRegisterActivity;
 import org.smartregister.chw.hf.activity.LTFURegisterActivity;
 import org.smartregister.chw.hf.activity.LoginActivity;
 import org.smartregister.chw.hf.activity.MalariaRegisterActivity;
 import org.smartregister.chw.hf.activity.PmtctRegisterActivity;
 import org.smartregister.chw.hf.activity.PncRegisterActivity;
+import org.smartregister.chw.hf.activity.PrEPRegisterActivity;
 import org.smartregister.chw.hf.activity.ReferralRegisterActivity;
 import org.smartregister.chw.hf.activity.ReportsActivity;
 import org.smartregister.chw.hf.configs.AllClientsRegisterRowOptions;
@@ -57,6 +59,7 @@ import org.smartregister.chw.hf.sync.HfClientProcessor;
 import org.smartregister.chw.hf.sync.HfSyncConfiguration;
 import org.smartregister.chw.hiv.HivLibrary;
 import org.smartregister.chw.hivst.HivstLibrary;
+import org.smartregister.chw.kvp.KvpLibrary;
 import org.smartregister.chw.ld.LDLibrary;
 import org.smartregister.chw.malaria.MalariaLibrary;
 import org.smartregister.chw.pmtct.PmtctLibrary;
@@ -92,11 +95,10 @@ import io.ona.kujaku.KujakuLibrary;
 import timber.log.Timber;
 
 public class HealthFacilityApplication extends CoreChwApplication implements CoreApplication {
+    private static final Flavor flavor = new DefaultHFApplicationFlv();
     private CommonFtsObject commonFtsObject;
 
-    private static final Flavor flavor = new DefaultHFApplicationFlv();
-
-    public static Flavor getApplicationFlavor(){
+    public static Flavor getApplicationFlavor() {
         return flavor;
     }
 
@@ -142,7 +144,8 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
             registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.LD, LDRegisterActivity.class);
             registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.LTFU_REFERRALS_REGISTER_ACTIVITY, LTFURegisterActivity.class);
             registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.HIV_SELF_TESTING_REGISTER_ACTIVITY, HivstRegisterActivity.class);
-
+            registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.KVP_REGISTER_ACTIVITY, KvpRegisterActivity.class);
+            registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.PrEP_REGISTER_ACTIVITY, PrEPRegisterActivity.class);
             registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.CDP_REGISTER_ACTIVITY, CdpRegisterActivity.class);
 //          TODO uncomment these when NACP is ready to test these modules
             //registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.TB_REGISTER_ACTIVITY, TbRegisterActivity.class);
@@ -243,9 +246,14 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
         ReportingLibrary.init(context, getRepository(), null, BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
         AncLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
         PncLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
-        MalariaLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
+        if (flavor.hasMalaria()) {
+            MalariaLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
+        }
         FpLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
-        CdpLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
+
+        if (flavor.hasCdp()) {
+            CdpLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
+        }
 
         //setup referral library
         ReferralLibrary.init(this);
@@ -258,8 +266,13 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
         HivLibrary.getInstance().setDatabaseVersion(BuildConfig.DATABASE_VERSION);
 
         //Setup hivst library
-        HivstLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
+        if (flavor.hasHivst()) {
+            HivstLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
+        }
 
+        if (flavor.hasKvpPrEP()) {
+            KvpLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
+        }
 
         //Setup tb library
         TbLibrary.init(this);
@@ -270,7 +283,9 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
         PmtctLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
 
         //Setup L&D library
-        LDLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
+        if (flavor.hasLD()) {
+            LDLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
+        }
 
         //Needed for all clients register
         OpdLibrary.init(context, getRepository(),
@@ -366,5 +381,13 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
         boolean hasCdp();
 
         boolean hasHivst();
+
+        boolean hasKvpPrEP();
+
+        boolean hasMalaria();
+
+        boolean hasLD();
+
+        boolean hasChildModule();
     }
 }

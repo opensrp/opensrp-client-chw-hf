@@ -1,0 +1,373 @@
+{
+  "count": "1",
+  "encounter_type": "PrEP Initiation",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "global": {},
+  "step1": {
+    "title": "PrEP Initiation",
+    "fields": [
+      {
+        "key": "prep_drug_offered",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "prep_drug_offered",
+        "label": "Type of PrEP drug offered",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "tdf_ftc",
+            "text": "TDF/FTC",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "tdf_ftc"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an answer"
+        }
+      },
+      {
+        "key": "prep_pills_number",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "prep_pills_number",
+        "type": "edit_text",
+        "hint": "Number of PrEP pills dispensed",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the number"
+        },
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the number"
+        },
+        "relevance": {
+          "step1:prep_status": {
+            "type": "string",
+            "ex": "equalTo(., \"tdf_ftc\")"
+          }
+        }
+      },
+      {
+        "key": "prep_adherence",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "prep_adherence",
+        "label": "PrEP adherence",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "good",
+            "text": "Good",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "good"
+          },
+          {
+            "key": "poor",
+            "text": "Poor",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "poor"
+          },
+          {
+            "key": "not_applicable",
+            "text": "Not applicable",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "not_applicable"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an answer"
+        }
+      },
+      {
+        "key": "poor_prep_adherence_reason",
+        "type": "check_box",
+        "label": "Reasons for poor PrEP adherence",
+        "combine_checkbox_option_values": "true",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "poor_prep_adherence_reason",
+        "openmrs_entity_parent": "",
+        "exclusive": [
+          "not_applicable"
+        ],
+        "options": [
+          {
+            "key": "forgotten",
+            "text": "Forgotten",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "forgotten"
+          },
+          {
+            "key": "lost_out_of_drugs",
+            "text": "Lost/run out of drugs",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "lost_out_of_drugs"
+          },
+          {
+            "key": "pill_burden",
+            "text": "Pill burden",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "pill_burden"
+          },
+          {
+            "key": "side_effects",
+            "text": "Side effects",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "side_effects"
+          },
+          {
+            "key": "stigma",
+            "text": "Stigma",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "stigma"
+          },
+          {
+            "key": "not_at_risk",
+            "text": "Not at risk",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "not_at_risk"
+          },
+          {
+            "key": "others",
+            "text": "Others",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "others"
+          },
+          {
+            "key": "not_applicable",
+            "text": "Not applicable",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "not_applicable"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select at least one"
+        },
+        "relevance": {
+          "step1:prep_adherence": {
+            "type": "string",
+            "ex": "equalTo(., \"poor\")"
+          }
+        }
+      },
+      {
+        "key": "prep_side_effects",
+        "type": "check_box",
+        "label": "PrEP side effects",
+        "combine_checkbox_option_values": "true",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "prep_side_effects",
+        "openmrs_entity_parent": "",
+        "exclusive": [
+          "not_applicable",
+          "no_side_effects"
+        ],
+        "options": [
+          {
+            "key": "nausea",
+            "text": "Nausea",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "nausea"
+          },
+          {
+            "key": "abdominal_pain",
+            "text": "Abdominal pain",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "abdominal_pain"
+          },
+          {
+            "key": "headache",
+            "text": "Headache",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "headache"
+          },
+          {
+            "key": "diarrhea",
+            "text": "Diarrhea",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "diarrhea"
+          },
+          {
+            "key": "loss_of_appetite",
+            "text": "Loss of appetite",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "loss_of_appetite"
+          },
+          {
+            "key": "dizziness",
+            "text": "Dizziness",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "dizziness"
+          },
+          {
+            "key": "others",
+            "text": "Others",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "others"
+          },
+          {
+            "key": "no_side_effects",
+            "text": "No side effects",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no_side_effects"
+          },
+          {
+            "key": "not_applicable",
+            "text": "Not applicable",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "not_applicable"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select at least one"
+        }
+      },
+      {
+        "key": "reasons_stopping_prep",
+        "type": "check_box",
+        "label": "Reason(s) for stopping PrEP medication",
+        "combine_checkbox_option_values": "true",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reasons_stopping_prep",
+        "openmrs_entity_parent": "",
+        "exclusive": [
+          "not_applicable"
+        ],
+        "options": [
+          {
+            "key": "hiv_positive",
+            "text": "HIV positive",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "hiv_positive"
+          },
+          {
+            "key": "side_effect_or_allergy",
+            "text": "Drugs side effect or allergy",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "side_effect_or_allergy"
+          },
+          {
+            "key": "poor_adherence",
+            "text": "Poor adherence",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "poor_adherence"
+          },
+          {
+            "key": "client_decision",
+            "text": "Client's decision",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "client_decision"
+          },
+          {
+            "key": "not_at_risk",
+            "text": "Client has stopped, not at risk",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "not_at_risk"
+          },
+          {
+            "key": "others",
+            "text": "Others (Specify)",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "others"
+          },
+          {
+            "key": "not_applicable",
+            "text": "Not applicable",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "not_applicable"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select at least one"
+        }
+      },
+      {
+        "key": "other_reason_stopping_prep",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reason_stopping_prep",
+        "type": "edit_text",
+        "hint": "Other reason",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the reason"
+        },
+        "relevance": {
+          "step1:reasons_stopping_prep": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "others"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "next_visit_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "next_visit_date",
+        "type": "date_picker",
+        "hint": "Next visit date",
+        "expanded": false,
+        "min_date": "today",
+        "max_date": "today+1y",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the next visit date"
+        }
+      }
+    ]
+  }
+}

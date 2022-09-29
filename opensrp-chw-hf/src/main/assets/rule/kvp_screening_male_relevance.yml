@@ -1,0 +1,63 @@
+---
+name: step2_drug_injection
+description: drug_injection relevance
+priority: 1
+condition: "step1_drug_use.equals('yes')"
+actions:
+  - "isRelevant = true"
+---
+name: step4_sexual_intercourse_with
+description: sexual_intercourse_with relevance
+priority: 1
+condition: "step3_sexual_intercourse.equals('yes')"
+actions:
+  - "isRelevant = true"
+---
+name: step5_hiv_status
+description: hiv_status relevance
+priority: 1
+condition: "step3_sexual_intercourse.equals('yes')"
+actions:
+  - "isRelevant = true"
+---
+name: step5_hiv_positive_partner
+description: hiv_positive_partner relevance
+priority: 1
+condition: "step5_hiv_status.equals('negative')"
+actions:
+  - "isRelevant = true"
+---
+name: step7_prompt_for_sdc_kvp
+description: prompt_for_sdc_kvp relevance
+priority: 1
+condition: "step5_hiv_status.equals('positive') || step5_hiv_positive_partner.equals('yes')"
+actions:
+  - "isRelevant = true"
+---
+name: step7_prompt_for_msm_kvp
+description: prompt_for_msm_kvp relevance
+priority: 1
+condition: "step4_sexual_intercourse_with.equals('man') || step4_sexual_intercourse_with.equals('both')"
+actions:
+  - "isRelevant = true"
+---
+name: step7_prompt_for_pwud_kvp
+description: prompt_for_pwud_kvp relevance
+priority: 1
+condition: "step1_drug_use.equals('yes')"
+actions:
+  - "isRelevant = true"
+---
+name: step7_prompt_for_pwid_kvp
+description: prompt_for_pwid_kvp relevance
+priority: 1
+condition: "step2_drug_injection.equals('yes')"
+actions:
+  - "isRelevant = true"
+---
+name: step7_prompt_for_ovp_kvp
+description: prompt_for_ovp_kvp relevance
+priority: 1
+condition: "(!step6_prisoner_or_inmate.equals('not_applicable') || !step6_mobile_population.equals('not_applicable') || !step6_other_groups_at_risk.equals('not_applicable'))"
+actions:
+  - "isRelevant = true"
