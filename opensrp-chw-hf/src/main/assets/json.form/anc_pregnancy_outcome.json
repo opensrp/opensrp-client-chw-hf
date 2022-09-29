@@ -1133,7 +1133,7 @@
           {
             "key": "prompt_for_opv0_vacc_not_provided",
             "type": "toaster_notes",
-            "text": "Missed opportunity for OPV-0, provide OPV-1 at first postnatal care visit",
+            "text": "Provide OPV 0 vaccination to the infant at the first Postnatal care visit or as soon as the OPV 0 vaccine will be available. OPV 0 should not be provided beyond 14 days",
             "openmrs_entity_id": "",
             "openmrs_entity": "",
             "openmrs_entity_parent": "",
