@@ -69,10 +69,6 @@ public class NavigationModel implements org.smartregister.chw.core.model.Navigat
                 if (HealthFacilityApplication.getApplicationFlavor().hasMalaria()) {
                     navigationOptions.add(14, op7);
                 }
-                if(HealthFacilityApplication.getApplicationFlavor().hasKvpPrEP()){
-                    navigationOptions.add(6,op20);
-                    navigationOptions.add(6,op19);
-                }
             } else {
                 navigationOptions.addAll(Arrays.asList(op1, op2, op3, op4, op5, op6, op7, op12));
             }
