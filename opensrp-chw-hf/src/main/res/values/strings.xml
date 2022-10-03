@@ -656,6 +656,9 @@
     <string name="lochia_alba">Lochia Alba</string>
 
     <!--PNC Child Medical History-->
+    <string name="self_testing_reports_subtitle">View Self Testing Report</string>
+    <string name="selftesting_reports">Self Testing Reports</string>
+    <string name="selftesting_reports_title">Self Testing Reports</string>
 
     <string name="pnc_visit_less_than_48_hours">Less Than 48 hours</string>
     <string name="pnc_visit_3_to_7_days">3–7 Days</string>

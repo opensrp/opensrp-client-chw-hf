@@ -5,6 +5,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Toast;
 
@@ -39,6 +40,10 @@ public class HfReportsViewActivity extends AppCompatActivity {
         int reportTitle = getIntent().getIntExtra(ARG_REPORT_TITLE, 0);
         setUpToolbar(reportTitle);
         WebView webView = findViewById(R.id.webview);
+
+        webView.loadUrl("");
+        WebSettings webSettings = webView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
         ReportUtils.setReportPeriod(reportDate);
         ReportUtils.loadReportView(reportPath, webView, this, reportType);
     }

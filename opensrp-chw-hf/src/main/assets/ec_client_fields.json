@@ -6994,6 +6994,14 @@
             "field": "obs.fieldCode",
             "concept": "collection_date"
           }
+        },
+        {
+          "column_name": "condoms_given",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "condoms_given"
+          }
         }
       ]
     },

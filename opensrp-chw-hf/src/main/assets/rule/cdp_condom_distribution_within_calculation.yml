@@ -1,0 +1,28 @@
+---
+name: step1_stock_event_type
+description: stock_event_type for distribution is decrement
+priority: 1
+condition: "true"
+actions:
+  - "calculation = 'decrement' "
+---
+name: step1_quantity_response
+description: quantity response is the number of condoms provided
+priority: 1
+condition: "true"
+actions:
+  - "calculation = step1_condom_type == 'male_condom' ? step1_provided_male_condoms : step1_provided_female_condoms"
+---
+name: step1_male_condoms
+description: stock on hand of male condoms
+priority: 1
+condition: "true"
+actions:
+  - "calculation = global_male_condom_count"
+---
+name: step1_female_condoms
+description: stock on hand of female condoms
+priority: 1
+condition: "true"
+actions:
+  - "calculation = global_female_condom_count"

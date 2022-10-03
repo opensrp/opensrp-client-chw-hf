@@ -17,3 +17,5 @@ function loadData(reportKey, reportType) {
   reportPeriod.innerHTML = Android.getDataPeriod(reportKey);
   reportingFacility.innerHTML = Android.getReportingFacility();
 }
+
+
