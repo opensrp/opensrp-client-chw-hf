@@ -60,7 +60,7 @@ public class NavigationModel implements org.smartregister.chw.core.model.Navigat
                         navigationOptions.add(2, op15);
                     }
                     else{
-                        navigationOptions.add(6, op15);
+                        navigationOptions.add(10, op15);
                     }
                 }
                 if(HealthFacilityApplication.getApplicationFlavor().hasChildModule()) {
