@@ -1,0 +1,14 @@
+---
+name: step1_provided_male_condoms
+description: provided_male_condoms
+priority: 1
+condition: "step1_condom_type == 'male_condom'"
+actions:
+  - "isRelevant = true"
+---
+name: step1_provided_female_condoms
+description: provided_female_condoms
+priority: 1
+condition: "step1_condom_type == 'female_condom'"
+actions:
+  - "isRelevant = true"

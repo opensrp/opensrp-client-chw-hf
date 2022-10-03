@@ -3,6 +3,8 @@ package org.smartregister.chw.hf.activity;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 
 import org.smartregister.chw.core.activity.CoreCdpRegisterActivity;
+import org.smartregister.chw.core.custom_views.NavigationMenu;
+import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.fragment.CdpReceiveMsdRegisterFragment;
 import org.smartregister.chw.hf.fragment.OrdersRegisterFragment;
@@ -30,6 +32,15 @@ public class CdpRegisterActivity extends CoreCdpRegisterActivity {
                 new OrdersRegisterFragment(),
                 new CdpReceiveMsdRegisterFragment()
         };
+    }
+
+    @Override
+    protected void onResumption() {
+        super.onResumption();
+        NavigationMenu menu = NavigationMenu.getInstance(this, null, null);
+        if (menu != null) {
+            menu.getNavigationAdapter().setSelectedView(CoreConstants.DrawerMenu.CDP_HF);
+        }
     }
 
     @Override
