@@ -61,7 +61,7 @@ android {
 
     defaultConfig {
         applicationId "org.smartregister.chw.hf"
-        minSdkVersion 18
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 11
         versionName "1.2.13"
@@ -226,7 +226,7 @@ android {
         }
         ba {
             applicationId "org.smartregister.chw.hf"
-            minSdkVersion 18
+            minSdkVersion 21
             targetSdkVersion 28
             versionCode 11
             versionName "1.2.13"

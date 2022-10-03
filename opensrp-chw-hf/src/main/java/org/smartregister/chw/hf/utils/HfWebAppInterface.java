@@ -65,6 +65,10 @@ public class HfWebAppInterface {
             ReportUtils.setPrintJobName("mother_champion_report_ya_mwezi-" + ReportUtils.getReportPeriod() + ".pdf");
             return ReportUtils.MotherChampionReports.computeMotherChampionReport(ReportUtils.getReportDate());
         }
+        if (reportType.equalsIgnoreCase(Constants.ReportConstants.ReportTypes.SELF_TESTING_REPORT)){
+            ReportUtils.setPrintJobName("self_testing_report_ya_mwezi-" + ReportUtils.getReportPeriod() + ".pdf");
+            return ReportUtils.SelfTestingReport.computeReport(ReportUtils.getReportDate());
+        }
 
         return "";
     }

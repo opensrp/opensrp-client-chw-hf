@@ -341,6 +341,9 @@
     <string name="kvp_gbv_analysis">GBV Analysis</string>
     <string name="kvp_other_services_referrals">Other Services and Referrals</string>
     <string name="prep_visit_type">Visit Type</string>
+    <string name="self_testing_reports_subtitle">View Self Testing Report</string>
+    <string name="selftesting_reports">Self Testing Reports</string>
+    <string name="selftesting_reports_title">Self Testing Reports</string>
 
 
 </resources>
