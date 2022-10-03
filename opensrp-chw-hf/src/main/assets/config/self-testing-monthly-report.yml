@@ -85,7 +85,7 @@ indicators:
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
 					  WHERE hivst_result='reactive'
-					  AND (date(efm.dob, '+50 years') >= date('now'))
+					  AND (date('now')-date(efm.dob))>=50
 					  AND (efm.gender='Male')
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                       date(substr(ehr.result_date, 7, 4) || '-' || substr(ehr.result_date, 4, 2) || '-' || '01')"
@@ -179,7 +179,7 @@ indicators:
     			  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
     			  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
     			  WHERE hivst_result='reactive'
-    			  AND (date(efm.dob, '+50 years') >= date('now'))
+    			  AND (date('now')-date(efm.dob))>=50
     			  AND (client_group='pwid')
     			  AND (efm.gender='Male')
                   AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -274,7 +274,7 @@ indicators:
     	  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
     	  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
     	  WHERE hivst_result='reactive'
-    	  AND (date(efm.dob, '+50 years') >= date('now'))
+    	  AND (date('now')-date(efm.dob))>=50
     	  AND (client_group='prisoners')
     	  AND (efm.gender='Male')
           AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -369,7 +369,7 @@ indicators:
               INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
               INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
               WHERE hivst_result='reactive'
-              AND (date(efm.dob, '+50 years') >= date('now'))
+              AND (date('now')-date(efm.dob))>=50
               AND (client_group='msm')
               AND (efm.gender='Male')
               AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -464,7 +464,7 @@ indicators:
             INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
             INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
             WHERE hivst_result='reactive'
-            AND (date(efm.dob, '+50 years') >= date('now'))
+            AND (date('now')-date(efm.dob))>=50
             AND (client_group='others')
             AND (efm.gender='Male')
             AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -560,7 +560,7 @@ indicators:
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
 					  WHERE focus='Suspected HIV'
 					  AND (efm.gender='Male')
-					  AND (date(efm.dob, '+50 years') >= date('now'))
+					  AND (date('now')-date(efm.dob))>=50
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                       date(substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 1, 4) ||'-' ||
                       substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 6, 2) ||'-' || '01')"
@@ -663,7 +663,7 @@ indicators:
 					  WHERE focus='Suspected HIV'
 					  AND (efm.gender='Male')
 					  AND (client_group='pwid')
-					  AND (date(efm.dob, '+50 years') >= date('now'))
+					  AND (date('now')-date(efm.dob))>=50
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                           date(substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 1, 4) ||'-' ||
                           substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 6, 2) ||'-' || '01')"
@@ -766,7 +766,7 @@ indicators:
 					  WHERE focus='Suspected HIV'
 					  AND (efm.gender='Male')
 					  AND (client_group='prisoners')
-					  AND (date(efm.dob, '+50 years') >= date('now'))
+					  AND (date('now')-date(efm.dob))>=50
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                           date(substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 1, 4) ||'-' ||
                           substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 6, 2) ||'-' || '01')"
@@ -869,7 +869,7 @@ indicators:
 					  WHERE focus='Suspected HIV'
 					  AND (efm.gender='Male')
 					  AND (client_group='msm')
-					  AND (date(efm.dob, '+50 years') >= date('now'))
+					  AND (date('now')-date(efm.dob))>=50
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                           date(substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 1, 4) ||'-' ||
                           substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 6, 2) ||'-' || '01')"
@@ -972,7 +972,7 @@ indicators:
 					  WHERE focus='Suspected HIV'
 					  AND (efm.gender='Male')
 					  AND (client_group='others')
-					  AND (date(efm.dob, '+50 years') >= date('now'))
+					  AND (date('now')-date(efm.dob))>=50
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                           date(substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 1, 4) ||'-' ||
                           substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 6, 2) ||'-' || '01')"
@@ -1062,7 +1062,7 @@ indicators:
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
 					  WHERE hivst_result='reactive'
-					  AND (date(efm.dob, '+50 years') >= date('now'))
+					  AND (date('now')-date(efm.dob))>=50
 					  AND (efm.gender='Female')
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                       date(substr(ehr.result_date, 7, 4) || '-' || substr(ehr.result_date, 4, 2) || '-' || '01')"
@@ -1156,7 +1156,7 @@ indicators:
     			  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
     			  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
     			  WHERE hivst_result='reactive'
-    			  AND (date(efm.dob, '+50 years') >= date('now'))
+    			  AND (date('now')-date(efm.dob))>=50
     			  AND (client_group='pwid')
     			  AND (efm.gender='Female')
                   AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -1251,7 +1251,7 @@ indicators:
     	  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
     	  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
     	  WHERE hivst_result='reactive'
-    	  AND (date(efm.dob, '+50 years') >= date('now'))
+    	  AND (date('now')-date(efm.dob))>=50
     	  AND (client_group='prisoners')
     	  AND (efm.gender='Female')
           AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -1346,7 +1346,7 @@ indicators:
               INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
               INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
               WHERE hivst_result='reactive'
-              AND (date(efm.dob, '+50 years') >= date('now'))
+              AND (date('now')-date(efm.dob))>=50
               AND (client_group='msm')
               AND (efm.gender='Female')
               AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -1465,7 +1465,7 @@ indicators:
             INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
             INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
             WHERE hivst_result='reactive'
-            AND (date(efm.dob, '+50 years') >= date('now'))
+            AND (date('now')-date(efm.dob))>=50
             AND (client_group='others')
             AND (efm.gender='Female')
             AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -1561,7 +1561,7 @@ indicators:
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
 					  WHERE focus='Suspected HIV'
 					  AND (efm.gender='Female')
-					  AND (date(efm.dob, '+50 years') >= date('now'))
+					  AND (date('now')-date(efm.dob))>=50
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                       date(substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 1, 4) ||'-' ||
                       substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 6, 2) ||'-' || '01')"
@@ -1664,7 +1664,7 @@ indicators:
 					  WHERE focus='Suspected HIV'
 					  AND (efm.gender='Female')
 					  AND (client_group='pwid')
-					  AND (date(efm.dob, '+50 years') >= date('now'))
+					  AND (date('now')-date(efm.dob))>=50
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                           date(substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 1, 4) ||'-' ||
                           substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 6, 2) ||'-' || '01')"
@@ -1767,7 +1767,7 @@ indicators:
 					  WHERE focus='Suspected HIV'
 					  AND (efm.gender='Female')
 					  AND (client_group='prisoners')
-					  AND (date(efm.dob, '+50 years') >= date('now'))
+					  AND (date('now')-date(efm.dob))>=50
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                           date(substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 1, 4) ||'-' ||
                           substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 6, 2) ||'-' || '01')"
@@ -1870,7 +1870,7 @@ indicators:
 					  WHERE focus='Suspected HIV'
 					  AND (efm.gender='Female')
 					  AND (client_group='msm')
-					  AND (date(efm.dob, '+50 years') >= date('now'))
+					  AND (date('now')-date(efm.dob))>=50
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                           date(substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 1, 4) ||'-' ||
                           substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 6, 2) ||'-' || '01')"
@@ -1999,7 +1999,7 @@ indicators:
 					  WHERE focus='Suspected HIV'
 					  AND (efm.gender='Female')
 					  AND (client_group='others')
-					  AND (date(efm.dob, '+50 years') >= date('now'))
+					  AND (date('now')-date(efm.dob))>=50
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                       date(substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 1, 4) ||'-' ||
                       substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 6, 2) ||'-' || '01')"
@@ -2087,7 +2087,7 @@ indicators:
     			  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehf.entity_id
     			  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
     			  WHERE self_test_kit_given='yes'
-    			  AND (date(efm.dob, '+50 years') >= date('now'))
+    			  AND (date('now')-date(efm.dob))>=50
 				  AND (efm.gender='Male')
                   AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                   date(substr(collection_date, 7, 4) || '-' || substr(collection_date, 4, 2) || '-' || '01')"
@@ -2181,7 +2181,7 @@ indicators:
     			  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehf.entity_id
     			  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
     			  WHERE self_test_kit_given='yes'
-    			  AND (date(efm.dob, '+50 years') >= date('now'))
+    			  AND (date('now')-date(efm.dob))>=50
                   AND (client_group='pwid')
 				  AND (efm.gender='Male')
                   AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -2276,7 +2276,7 @@ indicators:
     			  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehf.entity_id
     			  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
     			  WHERE self_test_kit_given='yes'
-    			  AND (date(efm.dob, '+50 years') >= date('now'))
+    			  AND (date('now')-date(efm.dob))>=50
                   AND (client_group='prisoners')
 				  AND (efm.gender='Male')
                   AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -2371,7 +2371,7 @@ indicators:
     			  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehf.entity_id
     			  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
     			  WHERE self_test_kit_given='yes'
-    			  AND (date(efm.dob, '+50 years') >= date('now'))
+    			  AND (date('now')-date(efm.dob))>=50
                   AND (client_group='msm')
 				  AND (efm.gender='Male')
                   AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -2466,7 +2466,7 @@ indicators:
     			  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehf.entity_id
     			  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
     			  WHERE self_test_kit_given='yes'
-    			  AND (date(efm.dob, '+50 years') >= date('now'))
+    			  AND (date('now')-date(efm.dob))>=50
                   AND (client_group='others')
 				  AND (efm.gender='Male')
                   AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -2556,7 +2556,7 @@ indicators:
     			  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehf.entity_id
     			  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
     			  WHERE self_test_kit_given='yes'
-    			  AND (date(efm.dob, '+50 years') >= date('now'))
+    			  AND (date('now')-date(efm.dob))>=50
 				  AND (efm.gender='Female')
                   AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                   date(substr(collection_date, 7, 4) || '-' || substr(collection_date, 4, 2) || '-' || '01')"
@@ -2650,7 +2650,7 @@ indicators:
     			  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehf.entity_id
     			  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
     			  WHERE self_test_kit_given='yes'
-    			  AND (date(efm.dob, '+50 years') >= date('now'))
+    			  AND (date('now')-date(efm.dob))>=50
                   AND (client_group='pwid')
 				  AND (efm.gender='Female')
                   AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -2745,7 +2745,7 @@ indicators:
     			  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehf.entity_id
     			  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
     			  WHERE self_test_kit_given='yes'
-    			  AND (date(efm.dob, '+50 years') >= date('now'))
+    			  AND (date('now')-date(efm.dob))>=50
                   AND (client_group='prisoners')
 				  AND (efm.gender='Female')
                   AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -2840,7 +2840,7 @@ indicators:
     			  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehf.entity_id
     			  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
     			  WHERE self_test_kit_given='yes'
-    			  AND (date(efm.dob, '+50 years') >= date('now'))
+    			  AND (date('now')-date(efm.dob))>=50
                   AND (client_group='msm')
 				  AND (efm.gender='Female')
                   AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -2959,13 +2959,13 @@ indicators:
     			  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehf.entity_id
     			  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
     			  WHERE self_test_kit_given='yes'
-    			  AND (date(efm.dob, '+50 years') >= date('now'))
+    			  AND (date('now')-date(efm.dob))>=50
                   AND (client_group='others')
 				  AND (efm.gender='Female')
                   AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                   date(substr(collection_date, 7, 4) || '-' || substr(collection_date, 4, 2) || '-' || '01')"
-    
-    
+
+
   #     // 2 and age 15-19
   - key: "hivst-2-15-19-ME"
     description: "Idadi ya wateja wa kiume waliopewa condom kwa umri wa miaka 15 - 19"
@@ -2974,7 +2974,7 @@ indicators:
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehf.entity_id
 					  WHERE condoms_given='yes'
 					  AND efm.gender = 'Male'
-					  AND  15<=(date('Now')-date(efm.dob))  AND (date('Now')-date(efm.dob))<=19 
+					  AND  15<=(date('Now')-date(efm.dob))  AND (date('Now')-date(efm.dob))<=19
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                       date(substr(ehf.collection_date, 7, 4) || '-' || substr(ehf.collection_date, 4, 2) || '-' || '01')"
   #     // 2 and age 20-24
@@ -3065,7 +3065,7 @@ indicators:
 					  WHERE client_group='pwid'
 					  AND condoms_given='yes'
 					  AND efm.gender = 'Male'
-    				  AND  15<=(date('Now')-date(efm.dob))  AND (date('Now')-date(efm.dob))<=19 
+    				  AND  15<=(date('Now')-date(efm.dob))  AND (date('Now')-date(efm.dob))<=19
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                       date(substr(ehf.collection_date, 7, 4) || '-' || substr(ehf.collection_date, 4, 2) || '-' || '01')"
   #     // 2-i and age 20-24
@@ -3170,7 +3170,7 @@ indicators:
 					  WHERE client_group='prisoners'
 					  AND condoms_given='yes'
 					  AND efm.gender = 'Male'
-    				  AND  15<=(date('Now')-date(efm.dob))  AND (date('Now')-date(efm.dob))<=19 
+    				  AND  15<=(date('Now')-date(efm.dob))  AND (date('Now')-date(efm.dob))<=19
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                       date(substr(ehf.collection_date, 7, 4) || '-' || substr(ehf.collection_date, 4, 2) || '-' || '01')"
   #     // 2-ii and age 20-24
@@ -3674,7 +3674,7 @@ indicators:
 					  WHERE ehr.hivst_result!='client_did_not_disclose'
 					  AND ehf.self_test_kit_given='yes'
 					  AND efm.gender = 'Male'
-					  AND  15<=(date('Now')-date(efm.dob))  AND (date('Now')-date(efm.dob))<=19 
+					  AND  15<=(date('Now')-date(efm.dob))  AND (date('Now')-date(efm.dob))<=19
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                                date(substr(strftime('%Y-%m-%d', datetime(ehr.collection_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
                                    '-' ||
@@ -3813,7 +3813,7 @@ indicators:
 					  AND ehf.self_test_kit_given='yes'
 					  AND ehreg.client_group='pwid'
 					  AND efm.gender = 'Male'
-    				  AND  15<=(date('Now')-date(efm.dob))  AND (date('Now')-date(efm.dob))<=19 
+    				  AND  15<=(date('Now')-date(efm.dob))  AND (date('Now')-date(efm.dob))<=19
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                                date(substr(strftime('%Y-%m-%d', datetime(ehr.collection_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
                                    '-' ||
@@ -3940,7 +3940,7 @@ indicators:
 					  AND ehf.self_test_kit_given='yes'
 					  AND ehreg.client_group='prisoners'
 					  AND efm.gender = 'Male'
-    				  AND  15<=(date('Now')-date(efm.dob))  AND (date('Now')-date(efm.dob))<=19 
+    				  AND  15<=(date('Now')-date(efm.dob))  AND (date('Now')-date(efm.dob))<=19
                      AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                                date(substr(strftime('%Y-%m-%d', datetime(ehr.collection_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
                                    '-' ||
@@ -4609,7 +4609,7 @@ indicators:
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehf.entity_id
 					  WHERE condoms_given='yes'
 					  AND efm.gender = 'Female'
-					  AND  15<=(date('Now')-date(efm.dob))  AND (date('Now')-date(efm.dob))<=19 
+					  AND  15<=(date('Now')-date(efm.dob))  AND (date('Now')-date(efm.dob))<=19
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                       date(substr(ehf.collection_date, 7, 4) || '-' || substr(ehf.collection_date, 4, 2) || '-' || '01')"
   #     // 2 and age 20-24
@@ -4701,7 +4701,7 @@ indicators:
 					  WHERE client_group='pwid'
 					  AND condoms_given='yes'
 					  AND efm.gender = 'Female'
-    				  AND  15<=(date('Now')-date(efm.dob))  AND (date('Now')-date(efm.dob))<=19 
+    				  AND  15<=(date('Now')-date(efm.dob))  AND (date('Now')-date(efm.dob))<=19
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                       date(substr(ehf.collection_date, 7, 4) || '-' || substr(ehf.collection_date, 4, 2) || '-' || '01')"
   #     // 2-i and age 20-24
@@ -4806,7 +4806,7 @@ indicators:
 					  WHERE client_group='prisoners'
 					  AND condoms_given='yes'
 					  AND efm.gender = 'Female'
-    				  AND  15<=(date('Now')-date(efm.dob))  AND (date('Now')-date(efm.dob))<=19 
+    				  AND  15<=(date('Now')-date(efm.dob))  AND (date('Now')-date(efm.dob))<=19
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                       date(substr(ehf.collection_date, 7, 4) || '-' || substr(ehf.collection_date, 4, 2) || '-' || '01')"
   #     // 2-ii and age 20-24
@@ -5333,7 +5333,7 @@ indicators:
 					  WHERE ehr.hivst_result!='client_did_not_disclose'
 					  AND ehf.self_test_kit_given='yes'
 					  AND efm.gender = 'Female'
-					  AND  15<=(date('Now')-date(efm.dob))  AND (date('Now')-date(efm.dob))<=19 
+					  AND  15<=(date('Now')-date(efm.dob))  AND (date('Now')-date(efm.dob))<=19
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                                date(substr(strftime('%Y-%m-%d', datetime(ehr.collection_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
                                    '-' ||
@@ -5471,7 +5471,7 @@ indicators:
 					  AND ehf.self_test_kit_given='yes'
 					  AND ehreg.client_group='pwid'
 					  AND efm.gender = 'Female'
-    				  AND  15<=(date('Now')-date(efm.dob))  AND (date('Now')-date(efm.dob))<=19 
+    				  AND  15<=(date('Now')-date(efm.dob))  AND (date('Now')-date(efm.dob))<=19
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                                date(substr(strftime('%Y-%m-%d', datetime(ehr.collection_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
                                    '-' ||
@@ -5598,7 +5598,7 @@ indicators:
 					  AND ehf.self_test_kit_given='yes'
 					  AND ehreg.client_group='prisoners'
 					  AND efm.gender = 'Female'
-    				  AND  15<=(date('Now')-date(efm.dob))  AND (date('Now')-date(efm.dob))<=19 
+    				  AND  15<=(date('Now')-date(efm.dob))  AND (date('Now')-date(efm.dob))<=19
                      AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                                date(substr(strftime('%Y-%m-%d', datetime(ehr.collection_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
                                    '-' ||
@@ -5730,7 +5730,7 @@ indicators:
                                    '-' ||
                                    substr(strftime('%Y-%m-%d', datetime(ehr.collection_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
                                    '-' || '01')"
-    
+
   #     // 7-iii and age 15-19
   - key: "hivst-7-iii-15-19-KE"
     description: "Idadi ya wateja wa kike waliopewa condom kwa umri wa miaka 15 - 19 na ni fsw (wanawake wanaojiuza)"
