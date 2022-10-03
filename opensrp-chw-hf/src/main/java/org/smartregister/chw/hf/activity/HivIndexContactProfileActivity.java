@@ -226,7 +226,7 @@ public class HivIndexContactProfileActivity extends CoreHivIndexContactProfileAc
         if(HealthFacilityApplication.getApplicationFlavor().hasHivst()) {
             String dob = Utils.getValue(commonPersonObject.getColumnmaps(), org.smartregister.family.util.DBConstants.KEY.DOB, false);
             int age = Utils.getAgeFromDate(dob);
-            menu.findItem(R.id.action_hivst_registration).setVisible(HivstDao.isRegisteredForHivst(getHivIndexContactObject().getBaseEntityId()) && age >= 18);
+            menu.findItem(R.id.action_hivst_registration).setVisible(HivstDao.isRegisteredForHivst(getHivIndexContactObject().getBaseEntityId()) && age >= 15);
         }
         menu.findItem(org.smartregister.chw.core.R.id.action_location_info).setVisible(UpdateDetailsUtil.isIndependentClient(getHivIndexContactObject().getBaseEntityId()));
         return true;

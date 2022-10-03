@@ -159,7 +159,7 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
 
         if (HealthFacilityApplication.getApplicationFlavor().hasHivst()) {
             int age = memberObject.getAge();
-            menu.findItem(R.id.action_hivst_registration).setVisible(!HivstDao.isRegisteredForHivst(baseEntityID) && age >= 18);
+            menu.findItem(R.id.action_hivst_registration).setVisible(!HivstDao.isRegisteredForHivst(baseEntityID) && age >= 15);
         }
 
         if (HealthFacilityApplication.getApplicationFlavor().hasLD()) {
