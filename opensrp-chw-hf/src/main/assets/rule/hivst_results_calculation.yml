@@ -16,3 +16,11 @@ priority: 1
 condition: "true"
 actions:
   - "calculation = step1_client_test_result != '' && (step1_client_test_result == 'reactive' || step1_client_test_result == 'non_reactive') ? 'yes' : 'no'"
+
+---
+name: step1_result_date
+description: result_date calculation
+priority: 1
+condition: "true"
+actions:
+  - "calculation = helper.getDateToday()"
