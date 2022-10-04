@@ -7426,6 +7426,14 @@
           }
         },
         {
+          "column_name": "issuing_organization",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "issuing_organization"
+          }
+        },
+        {
           "column_name": "date_updated",
           "type": "Event",
           "json_mapping": {
