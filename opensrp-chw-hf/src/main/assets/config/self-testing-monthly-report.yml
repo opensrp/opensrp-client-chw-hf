@@ -4,7 +4,6 @@ indicators:
     indicatorQuery: " SELECT count( efm.base_entity_id) as count
 					  FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
-					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
 					  INNER JOIN ec_hivst_register ehreg ON ehreg.base_entity_id=ehf.entity_id
 					  WHERE ehr.hivst_result='reactive'
 					  AND (date(efm.dob, '+15 years') <= date('now'))
@@ -17,7 +16,6 @@ indicators:
     indicatorQuery: " SELECT count( efm.base_entity_id) as count
 					  FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
-					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
 					  INNER JOIN ec_hivst_register ehreg ON ehreg.base_entity_id=ehf.entity_id
 					  WHERE ehr.hivst_result='reactive'
 					  AND (date(efm.dob, '+20 years') <= date('now'))
@@ -74,7 +72,6 @@ indicators:
     indicatorQuery: " SELECT count( efm.base_entity_id) as count
 					  FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
-					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
 					  INNER JOIN ec_hivst_register ehreg ON ehreg.base_entity_id=ehf.entity_id
 					  WHERE ehr.hivst_result='reactive'
 					  AND (date(efm.dob, '+45 years') <= date('now'))
@@ -984,7 +981,6 @@ indicators:
     indicatorQuery: " SELECT count( efm.base_entity_id) as count
 					  FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
-					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
 					  INNER JOIN ec_hivst_register ehreg ON ehreg.base_entity_id=ehf.entity_id
 					  WHERE ehr.hivst_result='reactive'
 					  AND (date(efm.dob, '+15 years') <= date('now'))
@@ -997,7 +993,6 @@ indicators:
     indicatorQuery: " SELECT count( efm.base_entity_id) as count
 					  FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
-					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
 					  INNER JOIN ec_hivst_register ehreg ON ehreg.base_entity_id=ehf.entity_id
 					  WHERE ehr.hivst_result='reactive'
 					  AND (date(efm.dob, '+20 years') <= date('now'))
@@ -1054,7 +1049,6 @@ indicators:
     indicatorQuery: " SELECT count( efm.base_entity_id) as count
 					  FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
-					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
 					  INNER JOIN ec_hivst_register ehreg ON ehreg.base_entity_id=ehf.entity_id
 					  WHERE ehr.hivst_result='reactive'
 					  AND (date(efm.dob, '+45 years') <= date('now'))
