@@ -7461,6 +7461,14 @@
           }
         },
         {
+          "column_name": "uic_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "uic_id"
+          }
+        },
+        {
           "column_name": "prep_qualified",
           "type": "Event",
           "json_mapping": {
