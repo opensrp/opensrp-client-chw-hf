@@ -55,6 +55,13 @@ public class CbhsMonthlyReportObject extends ReportObject {
         indicatorCodesWithAgeGroups.add("cbhs-2a-" + indicatorAgeGroups[16]);
         indicatorCodesWithAgeGroups.add("cbhs-2a-" + indicatorAgeGroups[17]);
 
+        indicatorCodesWithAgeGroups.add("cbhs-5-jumla");
+        indicatorCodesWithAgeGroups.add("cbhs-5-deseased");
+        indicatorCodesWithAgeGroups.add("cbhs-5-continue-with-clinic-from-elsewhere");
+        indicatorCodesWithAgeGroups.add("cbhs-5-moved");
+        indicatorCodesWithAgeGroups.add("cbhs-5-absconded");
+        indicatorCodesWithAgeGroups.add("cbhs-5-completed_and_qualified_from_the_services");
+
         indicatorCodesWithAgeGroups.remove("cbhs--2b-3-jumla-ke");
         indicatorCodesWithAgeGroups.remove("cbhs-2b-4-jumla-me");
 
