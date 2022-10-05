@@ -1,11 +1,11 @@
 indicators:
   - key: "hivst-8-15-19-ME"
     description: "Jumla ya wateja (Binafsi) waliopata majibu chanya (Reactive) baada ya kujipima VVU Umri 15-19"
-    indicatorQuery: " SELECT count( efm.base_entity_id) as count
-					  FROM ec_hivst_results ehr
- 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
-					  INNER JOIN ec_hivst_register ehreg ON ehreg.base_entity_id=ehf.entity_id
-					  WHERE ehr.hivst_result='reactive'
+    indicatorQuery: " SELECT count(DISTINCT efm.base_entity_id) as count
+                      FROM ec_hivst_results ehr
+					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
+					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
+					  WHERE hivst_result='reactive'
 					  AND (date(efm.dob, '+15 years') <= date('now'))
                       AND (date(efm.dob, '+20 years') > date('now'))
 					  AND (efm.gender='Male')
@@ -13,11 +13,11 @@ indicators:
                       date(substr(ehr.result_date, 7, 4) || '-' || substr(ehr.result_date, 4, 2) || '-' || '01')"
   - key: "hivst-8-20-24-ME"
     description: "Jumla ya wateja (Binafsi) waliopata majibu chanya (Reactive) baada ya kujipima VVU Umri 20-24"
-    indicatorQuery: " SELECT count( efm.base_entity_id) as count
-					  FROM ec_hivst_results ehr
- 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
-					  INNER JOIN ec_hivst_register ehreg ON ehreg.base_entity_id=ehf.entity_id
-					  WHERE ehr.hivst_result='reactive'
+    indicatorQuery: " SELECT count(DISTINCT efm.base_entity_id) as count
+                      FROM ec_hivst_results ehr
+					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
+					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
+					  WHERE hivst_result='reactive'
 					  AND (date(efm.dob, '+20 years') <= date('now'))
                       AND (date(efm.dob, '+25 years') > date('now'))
 					  AND (efm.gender='Male')
@@ -69,11 +69,11 @@ indicators:
                       date(substr(ehr.result_date, 7, 4) || '-' || substr(ehr.result_date, 4, 2) || '-' || '01')"
   - key: "hivst-8-45-49-ME"
     description: "Jumla ya wateja (Binafsi) waliopata majibu chanya (Reactive) baada ya kujipima VVU Umri 45-49"
-    indicatorQuery: " SELECT count( efm.base_entity_id) as count
-					  FROM ec_hivst_results ehr
- 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
-					  INNER JOIN ec_hivst_register ehreg ON ehreg.base_entity_id=ehf.entity_id
-					  WHERE ehr.hivst_result='reactive'
+    indicatorQuery: " SELECT count(DISTINCT efm.base_entity_id) as count
+                      FROM ec_hivst_results ehr
+					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
+					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
+					  WHERE hivst_result='reactive'
 					  AND (date(efm.dob, '+45 years') <= date('now'))
                       AND (date(efm.dob, '+50 years') > date('now'))
 					  AND (efm.gender='Male')
@@ -978,11 +978,11 @@ indicators:
                           substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 6, 2) ||'-' || '01')"
   - key: "hivst-8-15-19-KE"
     description: "Jumla ya wateja (Binafsi) waliopata majibu chanya (Reactive) baada ya kujipima VVU Umri 15-19"
-    indicatorQuery: " SELECT count( efm.base_entity_id) as count
-					  FROM ec_hivst_results ehr
- 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
-					  INNER JOIN ec_hivst_register ehreg ON ehreg.base_entity_id=ehf.entity_id
-					  WHERE ehr.hivst_result='reactive'
+    indicatorQuery: " SELECT count(DISTINCT efm.base_entity_id) as count
+                      FROM ec_hivst_results ehr
+					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
+					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
+					  WHERE hivst_result='reactive'
 					  AND (date(efm.dob, '+15 years') <= date('now'))
                       AND (date(efm.dob, '+20 years') > date('now'))
 					  AND (efm.gender='Female')
@@ -990,11 +990,11 @@ indicators:
                       date(substr(ehr.result_date, 7, 4) || '-' || substr(ehr.result_date, 4, 2) || '-' || '01')"
   - key: "hivst-8-20-24-KE"
     description: "Jumla ya wateja (Binafsi) waliopata majibu chanya (Reactive) baada ya kujipima VVU Umri 20-24"
-    indicatorQuery: " SELECT count( efm.base_entity_id) as count
-					  FROM ec_hivst_results ehr
- 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
-					  INNER JOIN ec_hivst_register ehreg ON ehreg.base_entity_id=ehf.entity_id
-					  WHERE ehr.hivst_result='reactive'
+    indicatorQuery: " SELECT count(DISTINCT efm.base_entity_id) as count
+                      FROM ec_hivst_results ehr
+					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
+					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
+					  WHERE hivst_result='reactive'
 					  AND (date(efm.dob, '+20 years') <= date('now'))
                       AND (date(efm.dob, '+25 years') > date('now'))
 					  AND (efm.gender='Female')
@@ -1046,11 +1046,11 @@ indicators:
                       date(substr(ehr.result_date, 7, 4) || '-' || substr(ehr.result_date, 4, 2) || '-' || '01')"
   - key: "hivst-8-45-49-KE"
     description: "Jumla ya wateja (Binafsi) waliopata majibu chanya (Reactive) baada ya kujipima VVU Umri 45-49"
-    indicatorQuery: " SELECT count( efm.base_entity_id) as count
-					  FROM ec_hivst_results ehr
- 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
-					  INNER JOIN ec_hivst_register ehreg ON ehreg.base_entity_id=ehf.entity_id
-					  WHERE ehr.hivst_result='reactive'
+    indicatorQuery: " SELECT count(DISTINCT efm.base_entity_id) as count
+                      FROM ec_hivst_results ehr
+					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
+					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
+					  WHERE hivst_result='reactive'
 					  AND (date(efm.dob, '+45 years') <= date('now'))
                       AND (date(efm.dob, '+50 years') > date('now'))
 					  AND (efm.gender='Female')
