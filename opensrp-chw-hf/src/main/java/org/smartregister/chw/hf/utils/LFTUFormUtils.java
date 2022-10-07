@@ -1,9 +1,6 @@
 package org.smartregister.chw.hf.utils;
 
 import android.app.Activity;
-import android.os.Build;
-
-import androidx.annotation.RequiresApi;
 
 import com.vijay.jsonwizard.utils.FormUtils;
 
@@ -38,7 +35,6 @@ public class LFTUFormUtils {
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static void startLTFUReferral(Activity context, String baseEntityId, String gender, int age) {
         JSONObject formJsonObject;
         try {
@@ -71,7 +67,6 @@ public class LFTUFormUtils {
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     private static void removeFieldOption(JSONArray fields, String fieldName, String fieldOptionName) throws JSONException {
         int position = 0;
         boolean found = false;
