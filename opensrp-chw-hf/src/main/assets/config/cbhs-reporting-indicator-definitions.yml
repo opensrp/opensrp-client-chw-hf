@@ -816,7 +816,7 @@ indicators:
                                INNER JOIN ec_cbhs_followup ecf on ecf.entity_id = ecr.base_entity_id
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
                       WHERE
-                        ecf.hiv_services_provided LIKE '%services_to_prevent_the_spread_of_stds%' AND fm.gender = 'Male'
+                        ecf.hiv_services_provided LIKE '%prevention_of_the_spread_of_stds_service%' AND fm.gender = 'Male'
                         AND date(substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
                                  '-' ||
                                  substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) ||
@@ -830,7 +830,7 @@ indicators:
                                INNER JOIN ec_cbhs_followup ecf on ecf.entity_id = ecr.base_entity_id
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
                       WHERE
-                         ecf.hiv_services_provided LIKE '%services_to_prevent_the_spread_of_stds%' AND fm.gender = 'Female'
+                         ecf.hiv_services_provided LIKE '%prevention_of_the_spread_of_stds_service%' AND fm.gender = 'Female'
                         AND date(substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
                                  '-' ||
                                  substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) ||
@@ -844,7 +844,7 @@ indicators:
                                INNER JOIN ec_cbhs_followup ecf on ecf.entity_id = ecr.base_entity_id
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
                       WHERE fm.gender = 'Male'
-                        AND ecf.hiv_services_provided LIKE '%special_group_services%'
+                        AND ecf.hiv_services_provided LIKE '%for_special_group_services%'
                         AND date(substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
                                  '-' ||
                                  substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) ||
@@ -858,7 +858,7 @@ indicators:
                                INNER JOIN ec_cbhs_followup ecf on ecf.entity_id = ecr.base_entity_id
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
                       WHERE fm.gender = 'Female'
-                        AND ecf.hiv_services_provided LIKE '%special_group_services%'
+                        AND ecf.hiv_services_provided LIKE '%for_special_group_services%'
                         AND date(substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
                                  '-' ||
                                  substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) ||
@@ -872,7 +872,7 @@ indicators:
                                INNER JOIN ec_cbhs_followup ecf on ecf.entity_id = ecr.base_entity_id
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
                       WHERE fm.gender = 'Male'
-                        AND ecf.hiv_services_provided LIKE '%services_to_prevent_gender_violence_and_child_abuse%'
+                        AND ecf.hiv_services_provided LIKE '%prevention_of_gender_based_violence_and_child_abuse_services%'
                         AND date(substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
                                  '-' ||
                                  substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) ||
@@ -886,7 +886,7 @@ indicators:
                                INNER JOIN ec_cbhs_followup ecf on ecf.entity_id = ecr.base_entity_id
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
                       WHERE fm.gender = 'Female'
-                        AND ecf.hiv_services_provided LIKE '%services_to_prevent_gender_violence_and_child_abuse%'
+                        AND ecf.hiv_services_provided LIKE '%prevention_of_gender_based_violence_and_child_abuse_services%'
                         AND date(substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
                                  '-' ||
                                  substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) ||
@@ -984,7 +984,7 @@ indicators:
                                INNER JOIN ec_cbhs_followup ecf on ecf.entity_id = ecr.base_entity_id
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
                       WHERE fm.gender = 'Male'
-                        AND ecf.hiv_services_provided LIKE '%self_test_kits_distribution_services%'
+                        AND ecf.hiv_services_provided LIKE '%distribution_of_self_test_kits%'
                         AND date(substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
                                  '-' ||
                                  substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) ||
@@ -998,7 +998,7 @@ indicators:
                                INNER JOIN ec_cbhs_followup ecf on ecf.entity_id = ecr.base_entity_id
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
                       WHERE fm.gender = 'Female'
-                        AND ecf.hiv_services_provided LIKE '%self_test_kits_distribution_services%'
+                        AND ecf.hiv_services_provided LIKE '%distribution_of_self_test_kits%'
                         AND date(substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
                                  '-' ||
                                  substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) ||
@@ -1012,7 +1012,7 @@ indicators:
                                INNER JOIN ec_cbhs_followup ecf on ecf.entity_id = ecr.base_entity_id
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
                       WHERE
-                        ecf.registration_or_followup_status <> 'new_client' AND ecf.registration_or_followup_status <> 'continuing_with_services'
+                        ecf.registration_or_followup_status <> 'client_continues_with_clinic_from_elsewhere' AND  ecf.registration_or_followup_status <> 'new_client' AND ecf.registration_or_followup_status <> 'continuing_with_services'
                         AND date(substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
                                  '-' ||
                                  substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) ||
