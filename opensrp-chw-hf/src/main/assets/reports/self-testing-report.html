@@ -1,0 +1,1846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <script src="./report-script.js"></script>
+
+    <style>
+    *{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+body{
+    font-family: Helvetica;
+    -webkit-font-smoothing: antialiased;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+
+/* Table Styles */
+
+.table-wrapper{
+    margin: 10px;
+    margin-right: 10px;
+}
+
+.fl-table {
+    border-radius: 5px;
+    font-size: 10px;
+    font-weight: normal;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    background-color: white;
+}
+
+.fl-table td, .fl-table th {
+    padding: 5px;
+}
+
+
+ul {
+    width: 100%;
+}
+ul li {
+    width: 49%;
+    display: inline-block;
+}
+
+ul li > * {
+    width: 30%;
+    margin-bottom: 5px;
+}
+
+.no-data {
+  background: #ccc;
+}
+
+
+    </style>
+</head>
+
+<body onload="loadData('monthly', 'anc')">
+
+<div class="table-wrapper">
+    <table class="fl-table">
+        <thead>
+        <tr>
+            <th colspan="16">
+                <div style="line-height: 0.001;">
+                    <h5>FOMU YA RIPOTI YA UHAMASISHAJI, UFUATILIAJI WASHIRIKA NA HUDUMA ZA JIPIME
+                        VVU NGAZI YA JAMII </h5>
+                    <h5>TAARIFA YA [MWEZI/MWAKA]: 09-2022 </h5>
+                    <h5>KITUONI: Kitungwa </h5>
+                </div>
+            </th>
+        </tr>
+        </thead>
+        <thead>
+        <tr>
+            <th>B</th>
+            <th rowspan="2">VIASHIRIA VYA TAKWIMU</th>
+            <th>JUMLA KUU</th>
+            <th colspan="13">WANAUME(ME)</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th></th>
+            <td></td>
+            <td></td>
+            <th>&#60;1</th>
+            <th>1-4</th>
+            <th>5-9</th>
+            <th>10-14</th>
+            <th>15-19</th>
+            <th>20-24</th>
+            <th>25-29</th>
+            <th>30-34</th>
+            <th>35-39</th>
+            <th>40-44</th>
+            <th>45-49</th>
+            <th>&#62;50</th>
+            <th>JUMLA KUU(ME)</th>
+        </tr>
+        <tr>
+            <th>B1</th>
+            <td colspan="15">UHAMASISHAJI WA UPIMAJI VVU</td>
+        </tr>
+        <tr>
+            <th>1</th>
+            <td>Jumla ya wateja waliohamasishwa kwa ajili ya huduma ya upimaji wa maambukizi ya
+                VVU.
+            </td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+        </tr>
+        <tr>
+            <th>2</th>
+            <td>Jumla ya wateja waliogawiwa kondom katika kipindi cha ripoti.</td>
+            <td align="center" id="hivst-2-jumla-both-ME"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" id="hivst-2-15-19-ME"></td>
+            <td align="center" id="hivst-2-20-24-ME"></td>
+            <td align="center" id="hivst-2-25-29-ME"></td>
+            <td align="center" id="hivst-2-30-34-ME"></td>
+            <td align="center" id="hivst-2-35-39-ME"></td>
+            <td align="center" id="hivst-2-40-44-ME"></td>
+            <td align="center" id="hivst-2-45-49-ME"></td>
+            <td align="center" id="hivst-2->50-ME"></td>
+            <td align="center" id="hivst-2-jumla-ME"></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td>i) Wajidunga dawa za kulevya</td>
+            <td align="center" id="hivst-2-i-jumla-both-ME"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" id="hivst-2-i-15-19-ME"></td>
+            <td align="center" id="hivst-2-i-20-24-ME"></td>
+            <td align="center" id="hivst-2-i-25-29-ME"></td>
+            <td align="center" id="hivst-2-i-30-34-ME"></td>
+            <td align="center" id="hivst-2-i-35-39-ME"></td>
+            <td align="center" id="hivst-2-i-40-44-ME"></td>
+            <td align="center" id="hivst-2-i-45-49-ME"></td>
+            <td align="center" id="hivst-2-i->50-ME"></td>
+            <td align="center" id="hivst-2-i-jumla-ME"></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td>ii) Wafungwa/Mahabusu</td>
+            <td align="center" id="hivst-2-ii-jumla-both-ME"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" id="hivst-2-ii-15-19-ME"></td>
+            <td align="center" id="hivst-2-ii-20-24-ME"></td>
+            <td align="center" id="hivst-2-ii-25-29-ME"></td>
+            <td align="center" id="hivst-2-ii-30-34-ME"></td>
+            <td align="center" id="hivst-2-ii-35-39-ME"></td>
+            <td align="center" id="hivst-2-ii-40-44-ME"></td>
+            <td align="center" id="hivst-2-ii-45-49-ME"></td>
+            <td align="center" id="hivst-2-ii->50-ME"></td>
+            <td align="center" id="hivst-2-ii-jumla-ME"></td>
+        </tr>
+
+        <tr>
+            <th></th>
+            <td>iii)Wanawake wanaofanya biashara ya ngono</td>
+            <td align="center" id="hivst-2-iii-jumla-both-ME"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td>iv)Wanaume wanaofanya ngono na wanaume wenzao</td>
+            <td align="center" id="hivst-2-iv-jumla-both-ME"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" id="hivst-2-iv-15-19-ME"></td>
+            <td align="center" id="hivst-2-iv-20-24-ME"></td>
+            <td align="center" id="hivst-2-iv-25-29-ME"></td>
+            <td align="center" id="hivst-2-iv-30-34-ME"></td>
+            <td align="center" id="hivst-2-iv-35-39-ME"></td>
+            <td align="center" id="hivst-2-iv-40-44-ME"></td>
+            <td align="center" id="hivst-2-iv-45-49-ME"></td>
+            <td align="center" id="hivst-2-iv->50-ME"></td>
+            <td align="center" id="hivst-2-iv-jumla-ME"></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td>v)Vijana rika balehe</td>
+            <td align="center" id="hivst-2-v-jumla-both-ME"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td>vi)Makundi Mengine</td>
+            <td align="center" id="hivst-2-vi-jumla-both-ME"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" id="hivst-2-vi-15-19-ME"></td>
+            <td align="center" id="hivst-2-vi-20-24-ME"></td>
+            <td align="center" id="hivst-2-vi-25-29-ME"></td>
+            <td align="center" id="hivst-2-vi-30-34-ME"></td>
+            <td align="center" id="hivst-2-vi-35-39-ME"></td>
+            <td align="center" id="hivst-2-vi-40-44-ME"></td>
+            <td align="center" id="hivst-2-vi-45-49-ME"></td>
+            <td align="center" id="hivst-2-vi->50-ME"></td>
+            <td align="center" id="hivst-2-vi-jumla-ME"></td>
+        </tr>
+
+        <tr>
+            <th class="no-data">B2</th>
+            <td class="no-data" colspan="15">HUDUMA YA JIPIME VVU</td>
+        </tr>
+        <tr>
+            <th>3</th>
+            <td>JUMLA YA KUTENDANISHI VYA JIPIME VVU VILIVYOSAMBAZWA(BiNAFSI)</td>
+            <td align="center" id="hivst-3-jumla-both-ME">0</td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" id="hivst-3-15-19-ME"></td>
+            <td align="center" id="hivst-3-20-24-ME"></td>
+            <td align="center" id="hivst-3-25-29-ME"></td>
+            <td align="center" id="hivst-3-30-34-ME"></td>
+            <td align="center" id="hivst-3-35-39-ME"></td>
+            <td align="center" id="hivst-3-40-44-ME"></td>
+            <td align="center" id="hivst-3-45-49-ME"></td>
+            <td align="center" id="hivst-3->50-ME"></td>
+            <td align="center" id="hivst-3-jumla-ME"></td>
+        </tr>
+        <tr>
+            <th>3 i</th>
+            <td>Wajidunga dawa za kulevyatd>
+            <td align="center" id="hivst-3-i-jumla-both-ME">0</td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" id="hivst-3-i-15-19-ME"></td>
+            <td align="center" id="hivst-3-i-20-24-ME"></td>
+            <td align="center" id="hivst-3-i-25-29-ME"></td>
+            <td align="center" id="hivst-3-i-30-34-ME"></td>
+            <td align="center" id="hivst-3-i-35-39-ME"></td>
+            <td align="center" id="hivst-3-i-40-44-ME"></td>
+            <td align="center" id="hivst-3-i-45-49-ME"></td>
+            <td align="center" id="hivst-3-i->50-ME"></td>
+            <td align="center" id="hivst-3-i-jumla-ME"></td>
+        </tr>
+        <tr>
+            <th>3 ii</th>
+            <td>Wafungwa/Mahabusu</td>
+            <td align="center" id="hivst-3-ii-jumla-both-ME">0</td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" id="hivst-3-ii-15-19-ME"></td>
+            <td align="center" id="hivst-3-ii-20-24-ME"></td>
+            <td align="center" id="hivst-3-ii-25-29-ME"></td>
+            <td align="center" id="hivst-3-ii-30-34-ME"></td>
+            <td align="center" id="hivst-3-ii-35-39-ME"></td>
+            <td align="center" id="hivst-3-ii-40-44-ME"></td>
+            <td align="center" id="hivst-3-ii-45-49-ME"></td>
+            <td align="center" id="hivst-3-ii->50-ME"></td>
+            <td align="center" id="hivst-3-ii-jumla-ME"></td>
+        </tr>
+        <tr>
+            <th>3 iii</th>
+            <td>Wanawake wanaofanya biashara ya ngono</td>
+            <td align="center" id="hivst-3-iii-jumla-both-ME">0</td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+        </tr>
+        <tr>
+            <th>3 iv</th>
+            <td>iv) Wanaume wanaofanya ngono na wanaume wenzao</td>
+            <td align="center" id="hivst-3-iv-jumla-both-ME">0</td>
+            <td align="center" class="no-data" id="hivst-3-iv-<1-ME"></td>
+            <td align="center" class="no-data" id="hivst-3-iv-1-4-ME"></td>
+            <td align="center" class="no-data" id="hivst-3-iv-5-9-ME"></td>
+            <td align="center" class="no-data" id="hivst-3-iv-10-14-ME"></td>
+            <td align="center" id="hivst-3-iv-15-19-ME"></td>
+            <td align="center" id="hivst-3-iv-20-24-ME"></td>
+            <td align="center" id="hivst-3-iv-25-29-ME"></td>
+            <td align="center" id="hivst-3-iv-30-34-ME"></td>
+            <td align="center" id="hivst-3-iv-35-39-ME"></td>
+            <td align="center" id="hivst-3-iv-40-44-ME"></td>
+            <td align="center" id="hivst-3-iv-45-49-ME"></td>
+            <td align="center" id="hivst-3-iv->50-ME"></td>
+            <td align="center" id="hivst-3-iv-jumla-ME"></td>
+        </tr>
+        <tr>
+            <th>3 v</th>
+            <td>Vijana rika balehe</td>
+            <td align="center" id="hivst-3-v-jumla-both-ME"></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+        </tr>
+        <tr>
+            <th>3 vi</th>
+            <td>Makundi Mengine</td>
+            <td align="center" id="hivst-3-vi-jumla-both-ME">0</td>
+            <td align="center" class="no-data" id="hivst-3-vi-<1-ME"></td>
+            <td align="center" class="no-data" id="hivst-3-vi-1-4-ME"></td>
+            <td align="center" class="no-data" id="hivst-3-vi-5-9-ME"></td>
+            <td align="center" class="no-data" id="hivst-3-vi-10-14-ME"></td>
+            <td align="center" id="hivst-3-vi-15-19-ME"></td>
+            <td align="center" id="hivst-3-vi-20-24-ME"></td>
+            <td align="center" id="hivst-3-vi-25-29-ME"></td>
+            <td align="center" id="hivst-3-vi-30-34-ME"></td>
+            <td align="center" id="hivst-3-vi-35-39-ME"></td>
+            <td align="center" id="hivst-3-vi-40-44-ME"></td>
+            <td align="center" id="hivst-3-vi-45-49-ME"></td>
+            <td align="center" id="hivst-3-vi->50-ME"></td>
+            <td align="center" id="hivst-3-vi-jumla-ME"></td>
+        </tr>
+        <tr>
+            <th>4</th>
+            <td> Jumla ya vitendanishi vya kujipima VVU vilivyosambazwa (Washirika wa Ngono, Rafiki
+                Rika)
+            </td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+        </tr>
+
+        <tr>
+            <th>5</th>
+            <td> Jumla ya vitendanishi vya kujipima VVU vilivyosambazwa (Binafsi, Washrika wa Ngono,
+                Rafiki rika); 3+4
+            </td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+        </tr>
+
+        <tr>
+            <th>6</th>
+            <td>Jumla ya wateja (Washrika wa ngono, Rafiki rika) waliotumia vitendanishi vya
+                kujipima VVU na kurudisha majibu
+            </td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+        </tr>
+
+        <tr>
+            <th>7</th>
+            <td>Jumla ya wateja (Binafsi) waliotumia vitendanishi vya kujipima VVU na kurudisha
+                majibu
+            </td>
+            <td align="center" id="hivst-7-jumla-both-ME"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" id="hivst-7-15-19-ME"></td>
+            <td align="center" id="hivst-7-20-24-ME"></td>
+            <td align="center" id="hivst-7-25-29-ME"></td>
+            <td align="center" id="hivst-7-30-34-ME"></td>
+            <td align="center" id="hivst-7-35-39-ME"></td>
+            <td align="center" id="hivst-7-40-44-ME"></td>
+            <td align="center" id="hivst-7-45-49-ME"></td>
+            <td align="center" id="hivst-7->50-ME"></td>
+            <td align="center" id="hivst-7-jumla-ME"></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td>i)Wajidunga dawa za kulevya</td>
+            <td align="center" id="hivst-7-i-jumla-both-ME"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" id="hivst-7-i-15-19-ME"></td>
+            <td align="center" id="hivst-7-i-20-24-ME"></td>
+            <td align="center" id="hivst-7-i-25-29-ME"></td>
+            <td align="center" id="hivst-7-i-30-34-ME"></td>
+            <td align="center" id="hivst-7-i-35-39-ME"></td>
+            <td align="center" id="hivst-7-i-40-44-ME"></td>
+            <td align="center" id="hivst-7-i-45-49-ME"></td>
+            <td align="center" id="hivst-7-i->50-ME"></td>
+            <td align="center" id="hivst-7-i-jumla-ME"></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td>ii)Wafungwa/Mahabusu</td>
+            <td align="center" id="hivst-7-ii-jumla-both-ME"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" id="hivst-7-ii-15-19-ME"></td>
+            <td align="center" id="hivst-7-ii-20-24-ME"></td>
+            <td align="center" id="hivst-7-ii-25-29-ME"></td>
+            <td align="center" id="hivst-7-ii-30-34-ME"></td>
+            <td align="center" id="hivst-7-ii-35-39-ME"></td>
+            <td align="center" id="hivst-7-ii-40-44-ME"></td>
+            <td align="center" id="hivst-7-ii-45-49-ME"></td>
+            <td align="center" id="hivst-7-ii->50-ME"></td>
+            <td align="center" id="hivst-7-ii-jumla-ME"></td>
+        </tr>
+
+        <tr>
+            <th></th>
+            <td>iii)Wanawake wanaofanya biashara ya ngono</td>
+            <td align="center" id="hivst-7-iii-jumla-both-ME"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+        </tr>
+
+        <tr>
+            <th></th>
+            <td>iv)Wanaume wanaofanya ngono na wanaume wenzao</td>
+            <td align="center" id="hivst-7-iv-jumla-both-ME"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" id="hivst-7-iv-15-19-ME"></td>
+            <td align="center" id="hivst-7-iv-20-24-ME"></td>
+            <td align="center" id="hivst-7-iv-25-29-ME"></td>
+            <td align="center" id="hivst-7-iv-30-34-ME"></td>
+            <td align="center" id="hivst-7-iv-35-39-ME"></td>
+            <td align="center" id="hivst-7-iv-40-44-ME"></td>
+            <td align="center" id="hivst-7-iv-45-49-ME"></td>
+            <td align="center" id="hivst-7-iv->50-ME"></td>
+            <td align="center" id="hivst-7-iv-jumla-ME"></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td>v)Vijana rika balehe</td>
+            <td align="center" id="hivst-7-v-jumla-both-ME"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td>vi)Makundi Mengine</td>
+            <td align="center" id="hivst-7-vi-jumla-both-ME"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" id="hivst-7-vi-15-19-ME"></td>
+            <td align="center" id="hivst-7-vi-20-24-ME"></td>
+            <td align="center" id="hivst-7-vi-25-29-ME"></td>
+            <td align="center" id="hivst-7-vi-30-34-ME"></td>
+            <td align="center" id="hivst-7-vi-35-39-ME"></td>
+            <td align="center" id="hivst-7-vi-40-44-ME"></td>
+            <td align="center" id="hivst-7-vi-45-49-ME"></td>
+            <td align="center" id="hivst-7-vi->50-ME"></td>
+            <td align="center" id="hivst-7-vi-jumla-ME"></td>
+        </tr>
+
+        <tr>
+            <th>8</th>
+            <td id="hivst-8">Jumla ya wateja (Binafsi) waliopata majibu chanya (Reactive) baada ya
+                kujipima VVU
+            </td>
+            <td align="center" id="hivst-8-jumla-both-ME">0</td>
+            <td align="center" class="no-data" id="hivst-8-<1-ME"></td>
+            <td align="center" class="no-data" id="hivst-8-1-4-ME"></td>
+            <td align="center" class="no-data" id="hivst-8-5-9-ME"></td>
+            <td align="center" class="no-data" id="hivst-8-10-14-ME"></td>
+            <td align="center" id="hivst-8-15-19-ME"></td>
+            <td align="center" id="hivst-8-20-24-ME"></td>
+            <td align="center" id="hivst-8-25-29-ME"></td>
+            <td align="center" id="hivst-8-30-34-ME"></td>
+            <td align="center" id="hivst-8-35-39-ME"></td>
+            <td align="center" id="hivst-8-40-44-ME"></td>
+            <td align="center" id="hivst-8-45-49-ME"></td>
+            <td align="center" id="hivst-8->50-ME"></td>
+            <td align="center" id="hivst-8-jumla-ME"></td>
+        </tr>
+        <tr>
+            <th>8 i</th>
+            <td id="hivst-8-i">Wajidunga dawa za kulevya</td>
+            <td align="center" id="hivst-8-i-jumla-both-ME"></td>
+            <td align="center" class="no-data" id="hivst-8-i-<1-ME"></td>
+            <td align="center" class="no-data" id="hivst-8-i-1-4-ME"></td>
+            <td align="center" class="no-data" id="hivst-8-i-5-9-ME"></td>
+            <td align="center" class="no-data" id="hivst-8-i-10-14-ME"></td>
+            <td align="center" id="hivst-8-i-15-19-ME"></td>
+            <td align="center" id="hivst-8-i-20-24-ME"></td>
+            <td align="center" id="hivst-8-i-25-29-ME"></td>
+            <td align="center" id="hivst-8-i-30-34-ME"></td>
+            <td align="center" id="hivst-8-i-35-39-ME"></td>
+            <td align="center" id="hivst-8-i-40-44-ME"></td>
+            <td align="center" id="hivst-8-i-45-49-ME"></td>
+            <td align="center" id="hivst-8-i->50-ME"></td>
+            <td align="center" id="hivst-8-i-jumla-ME"></td>
+        </tr>
+        <tr>
+            <th>8 ii</th>
+            <td id="hivst-8-ii">Wafungwa/Mahabusu</td>
+            <td align="center" id="hivst-8-ii-jumla-both-ME"></td>
+            <td align="center" class="no-data" id="hivst-8-ii-<1-ME"></td>
+            <td align="center" class="no-data" id="hivst-8-ii-1-4-ME"></td>
+            <td align="center" class="no-data" id="hivst-8-ii-5-9-ME"></td>
+            <td align="center" class="no-data" id="hivst-8-ii-10-14-ME"></td>
+            <td align="center" id="hivst-8-ii-15-19-ME"></td>
+            <td align="center" id="hivst-8-ii-20-24-ME"></td>
+            <td align="center" id="hivst-8-ii-25-29-ME"></td>
+            <td align="center" id="hivst-8-ii-30-34-ME"></td>
+            <td align="center" id="hivst-8-ii-35-39-ME"></td>
+            <td align="center" id="hivst-8-ii-40-44-ME"></td>
+            <td align="center" id="hivst-8-ii-45-49-ME"></td>
+            <td align="center" id="hivst-8-ii->50-ME"></td>
+            <td align="center" id="hivst-8-ii-jumla-ME"></td>
+            </td>
+        </tr>
+
+        <tr>
+            <th>8 iii</th>
+            <td id="hivst-8-iii">Wanawake wanaofanya biashara ya ngono</td>
+            <td align="center" id="hivst-8-iii-jumla-both-ME"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+        </tr>
+
+        <tr>
+            <th>8 iv</th>
+            <td id="hivst-8-iv">Wanaume wanaofanya ngono na wanaume wenzao</td>
+            <td align="center" id="hivst-8-iv-jumla-both-ME"></td>
+            <td align="center" class="no-data" id="hivst-8-iv-<1-ME"></td>
+            <td align="center" class="no-data" id="hivst-8-iv-1-4-ME"></td>
+            <td align="center" class="no-data" id="hivst-8-iv-5-9-ME"></td>
+            <td align="center" class="no-data" id="hivst-8-iv-10-14-ME"></td>
+            <td align="center" id="hivst-8-iv-15-19-ME"></td>
+            <td align="center" id="hivst-8-iv-20-24-ME"></td>
+            <td align="center" id="hivst-8-iv-25-29-ME"></td>
+            <td align="center" id="hivst-8-iv-30-34-ME"></td>
+            <td align="center" id="hivst-8-iv-35-39-ME"></td>
+            <td align="center" id="hivst-8-iv-40-44-ME"></td>
+            <td align="center" id="hivst-8-iv-45-49-ME"></td>
+            <td align="center" id="hivst-8-iv->50-ME"></td>
+            <td align="center" id="hivst-8-iv-jumla-ME"></td>
+        </tr>
+        <tr>
+            <th>8 v</th>
+            <td>Vijana rika balehe</td>
+            <td align="center" id="hivst-8-v-jumla-both-ME"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            >
+        </tr>
+        <tr>
+            <th>8 vi</th>
+            <td>Makundi Mengine</td>
+            <td align="center" id="hivst-8-vi-jumla-both-ME"></td>
+            <td align="center" class="no-data" id="hivst-8-vi-<1-ME"></td>
+            <td align="center" class="no-data" id="hivst-8-vi-1-4-ME"></td>
+            <td align="center" class="no-data" id="hivst-8-vi-5-9-ME"></td>
+            <td align="center" class="no-data" id="hivst-8-vi-10-14-ME"></td>
+            <td align="center" id="hivst-8-vi-15-19-ME"></td>
+            <td align="center" id="hivst-8-vi-20-24-ME"></td>
+            <td align="center" id="hivst-8-vi-25-29-ME"></td>
+            <td align="center" id="hivst-8-vi-30-34-ME"></td>
+            <td align="center" id="hivst-8-vi-35-39-ME"></td>
+            <td align="center" id="hivst-8-vi-40-44-ME"></td>
+            <td align="center" id="hivst-8-vi-45-49-ME"></td>
+            <td align="center" id="hivst-8-vi->50-ME"></td>
+            <td align="center" id="hivst-8-vi-jumla-ME"></td>
+            >
+        </tr>
+
+        <tr>
+            <th>9</th>
+            <td id="hivst-9-1-1">Jumla ya wateja (Binafsi) waliopewa rufaa kwenda kituo/Eneo la
+                upimaji wa maambukizi ya VVU
+            </td>
+            <td align="center" id="hivst-9-jumla-both-ME"></td>
+            <td align="center" class="no-data" id="hivst-9-<1-ME"></td>
+            <td align="center" class="no-data" id="hivst-9-1-4-ME"></td>
+            <td align="center" class="no-data" id="hivst-9-5-9-ME"></td>
+            <td align="center" class="no-data" id="hivst-9-10-14-ME"></td>
+            <td align="center" id="hivst-9-15-19-ME"></td>
+            <td align="center" id="hivst-9-20-24-ME"></td>
+            <td align="center" id="hivst-9-25-29-ME"></td>
+            <td align="center" id="hivst-9-30-34-ME"></td>
+            <td align="center" id="hivst-9-35-39-ME"></td>
+            <td align="center" id="hivst-9-40-44-ME"></td>
+            <td align="center" id="hivst-9-45-49-ME"></td>
+            <td align="center" id="hivst-9->50-ME"></td>
+            <td align="center" id="hivst-9-jumla-ME"></td>
+        </tr>
+
+        <tr>
+            <th>9 i</th>
+            <td>Wajidunga dawa za kulevya</td>
+            <td align="center" id="hivst-9-i-jumla-both-ME"></td>
+            <td align="center" class="no-data" id="hivst-9-i-<1-ME"></td>
+            <td align="center" class="no-data" id="hivst-9-i-1-4-ME"></td>
+            <td align="center" class="no-data" id="hivst-9-i-5-9-ME"></td>
+            <td align="center" class="no-data" id="hivst-9-i-10-14-ME"></td>
+            <td align="center" id="hivst-9-i-15-19-ME"></td>
+            <td align="center" id="hivst-9-i-20-24-ME"></td>
+            <td align="center" id="hivst-9-i-25-29-ME"></td>
+            <td align="center" id="hivst-9-i-30-34-ME"></td>
+            <td align="center" id="hivst-9-i-35-39-ME"></td>
+            <td align="center" id="hivst-9-i-40-44-ME"></td>
+            <td align="center" id="hivst-9-i-45-49-ME"></td>
+            <td align="center" id="hivst-9-i->50-ME"></td>
+            <td align="center" id="hivst-9-i-jumla-ME"></td>
+        </tr>
+
+        <tr>
+            <th>9 ii</th>
+            <td>Wafungwa/Mahabusu</td>
+            <td align="center" id="hivst-9-ii-jumla-both-ME"></td>
+            <td align="center" class="no-data" id="hivst-9-ii-<1-ME"></td>
+            <td align="center" class="no-data" id="hivst-9-ii-1-4-ME"></td>
+            <td align="center" class="no-data" id="hivst-9-ii-5-9-ME"></td>
+            <td align="center" class="no-data" id="hivst-9-ii-10-14-ME"></td>
+            <td align="center" id="hivst-9-ii-15-19-ME"></td>
+            <td align="center" id="hivst-9-ii-20-24-ME"></td>
+            <td align="center" id="hivst-9-ii-25-29-ME"></td>
+            <td align="center" id="hivst-9-ii-30-34-ME"></td>
+            <td align="center" id="hivst-9-ii-35-39-ME"></td>
+            <td align="center" id="hivst-9-ii-40-44-ME"></td>
+            <td align="center" id="hivst-9-ii-45-49-ME"></td>
+            <td align="center" id="hivst-9-ii->50-ME"></td>
+            <td align="center" id="hivst-9-ii-jumla-ME"></td>
+        </tr>
+
+        <tr>
+            <th>9 iii</th>
+            <td>Wanawake wanaofanya biashara ya ngono</td>
+            <td align="center" id="hivst-9-iii-jumla-both-ME"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+        </tr>
+
+        <tr>
+            <th>9 iv</th>
+            <td>Wanaume wanaofanya ngono na wanaume wenzao</td>
+            <td align="center" id="hivst-9-iv-jumla-both-ME"></td>
+            <td align="center" class="no-data" id="hivst-9-iv-<1-ME"></td>
+            <td align="center" class="no-data" id="hivst-9-iv-1-4-ME"></td>
+            <td align="center" class="no-data" id="hivst-9-iv-5-9-ME"></td>
+            <td align="center" class="no-data" id="hivst-9-iv-10-14-ME"></td>
+            <td align="center" id="hivst-9-iv-15-19-ME"></td>
+            <td align="center" id="hivst-9-iv-20-24-ME"></td>
+            <td align="center" id="hivst-9-iv-25-29-ME"></td>
+            <td align="center" id="hivst-9-iv-30-34-ME"></td>
+            <td align="center" id="hivst-9-iv-35-39-ME"></td>
+            <td align="center" id="hivst-9-iv-40-44-ME"></td>
+            <td align="center" id="hivst-9-iv-45-49-ME"></td>
+            <td align="center" id="hivst-9-iv->50-ME"></td>
+            <td align="center" id="hivst-9-iv-jumla-ME"></td>
+        </tr>
+
+
+        <tr>
+            <th>9 v</th>
+            <td>Vijana rika balehe<</td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+        </tr>
+
+        <tr>
+            <th>9 vi</th>
+            <td>Makundi Mengine</td>
+            <td align="center" id="hivst-9-vi-jumla-both-ME"></td>
+            <td align="center" class="no-data" id="hivst-9-vi-<1-ME"></td>
+            <td align="center" class="no-data" id="hivst-9-vi-1-4-ME"></td>
+            <td align="center" class="no-data" id="hivst-9-vi-5-9-ME"></td>
+            <td align="center" class="no-data" id="hivst-9-vi-10-14-ME"></td>
+            <td align="center" id="hivst-9-vi-15-19-ME"></td>
+            <td align="center" id="hivst-9-vi-20-24-ME"></td>
+            <td align="center" id="hivst-9-vi-25-29-ME"></td>
+            <td align="center" id="hivst-9-vi-30-34-ME"></td>
+            <td align="center" id="hivst-9-vi-35-39-ME"></td>
+            <td align="center" id="hivst-9-vi-40-44-ME"></td>
+            <td align="center" id="hivst-9-vi-45-49-ME"></td>
+            <td align="center" id="hivst-9-vi->50-ME"></td>
+            <td align="center" id="hivst-9-vi-jumla-ME"></td>
+        </tr>
+
+        <tr class="no-data">
+            <th>B3</th>
+            <td>UFUATILIAJI WA WASHIRIKA WA INDEX</td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+        </tr>
+
+        <tr>
+            <th>10</th>
+            <td>Jumla ya washirika wa ngono,watoto wa kuzaa na wajidunga Walioorodheshwa kwa
+                ufuatiliaji kwenye jamii mwezi huu
+            </td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+        </tr>
+
+        <tr>
+            <th>11</th>
+            <td>Jumla ya washirika wa ngono,watoto wa kuzaa na wajidunga Walioorodheshwa na kufikiwa
+                Mwezi huu
+            </td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+        </tr>
+
+        <tr>
+            <th>12</th>
+            <td>Jumla ya washirika wa ngono,watoto wa kuzaa na wajidunga Wasioorodheshwa na
+                wamefikiwa Mwezi huu
+            </td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+        </tr>
+
+        <tr>
+            <th>13</th>
+            <td>Jumla ya washirika wa Ngono, watoto wa kuzaa na wajidunga Waliowahi kuorodheshwa
+                bila kufikiwa kwa miezi yote iliyopita (Jumla Endelevu)
+            </td>
+            <td align="center"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+        </tr>
+
+        <tbody>
+    </table>
+    <table class="fl-table">
+
+        <thead>
+        <tr>
+            <th>B</th>
+            <th rowspan="2">VIASHIRIA VYA TAKWIMU</th>
+            <th>JUMLA KUU</th>
+            <th colspan="13">WANAWAKE(KE)</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th></th>
+            <td></td>
+            <td></td>
+            <th>&#60;1</th>
+            <th>1-4</th>
+            <th>5-9</th>
+            <th>10-14</th>
+            <th>15-19</th>
+            <th>20-24</th>
+            <th>25-29</th>
+            <th>30-34</th>
+            <th>35-39</th>
+            <th>40-44</th>
+            <th>45-49</th>
+            <th>&#62;50</th>
+            <th>JUMLA KUU(KE)</th>
+        </tr>
+        <tr>
+            <th>B1</th>
+            <td colspan="15">UHAMASISHAJI WA UPIMAJI VVU</td>
+        </tr>
+        <tr>
+            <th>1</th>
+            <td>Jumla ya wateja waliohamasishwa kwa ajili ya huduma ya upimaji wa maambukizi ya
+                VVU.
+            </td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+        </tr>
+        <tr>
+            <th>2</th>
+            <td>Jumla ya wateja waliogawiwa kondom katika kipindi cha ripoti.</td>
+            <td align="center" id="hivst-2-jumla-both-KE"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" id="hivst-2-15-19-KE"></td>
+            <td align="center" id="hivst-2-20-24-KE"></td>
+            <td align="center" id="hivst-2-25-29-KE"></td>
+            <td align="center" id="hivst-2-30-34-KE"></td>
+            <td align="center" id="hivst-2-35-39-KE"></td>
+            <td align="center" id="hivst-2-40-44-KE"></td>
+            <td align="center" id="hivst-2-45-49-KE"></td>
+            <td align="center" id="hivst-2->50-KE"></td>
+            <td align="center" id="hivst-2-jumla-KE"></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td>i) Wajidunga dawa za kulevya</td>
+            <td align="center" id="hivst-2-i-jumla-both-KE"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" id="hivst-2-i-15-19-KE"></td>
+            <td align="center" id="hivst-2-i-20-24-KE"></td>
+            <td align="center" id="hivst-2-i-25-29-KE"></td>
+            <td align="center" id="hivst-2-i-30-34-KE"></td>
+            <td align="center" id="hivst-2-i-35-39-KE"></td>
+            <td align="center" id="hivst-2-i-40-44-KE"></td>
+            <td align="center" id="hivst-2-i-45-49-KE"></td>
+            <td align="center" id="hivst-2-i->50-KE"></td>
+            <td align="center" id="hivst-2-i-jumla-KE"></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td>ii) Wafungwa/Mahabusu</td>
+            <td align="center" id="hivst-2-ii-jumla-both-KE"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" id="hivst-2-ii-15-19-KE"></td>
+            <td align="center" id="hivst-2-ii-20-24-KE"></td>
+            <td align="center" id="hivst-2-ii-25-29-KE"></td>
+            <td align="center" id="hivst-2-ii-30-34-KE"></td>
+            <td align="center" id="hivst-2-ii-35-39-KE"></td>
+            <td align="center" id="hivst-2-ii-40-44-KE"></td>
+            <td align="center" id="hivst-2-ii-45-49-KE"></td>
+            <td align="center" id="hivst-2-ii->50-KE"></td>
+            <td align="center" id="hivst-2-ii-jumla-KE"></td>
+        </tr>
+
+        <tr>
+            <th></th>
+            <td>iii)Wanawake wanaofanya biashara ya ngono</td>
+            <td align="center" id="hivst-2-iii-jumla-both-KE"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" id="hivst-2-iii-15-19-KE"></td>
+            <td align="center" id="hivst-2-iii-20-24-KE"></td>
+            <td align="center" id="hivst-2-iii-25-29-KE"></td>
+            <td align="center" id="hivst-2-iii-30-34-KE"></td>
+            <td align="center" id="hivst-2-iii-35-39-KE"></td>
+            <td align="center" id="hivst-2-iii-40-44-KE"></td>
+            <td align="center" id="hivst-2-iii-45-49-KE"></td>
+            <td align="center" id="hivst-2-iii->50-KE"></td>
+            <td align="center" id="hivst-2-iii-jumla-KE"></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td>iv)Wanaume wanaofanya ngono na wanaume wenzao</td>
+            <td align="center" id="hivst-2-iv-jumla-both-KE"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td>v)Vijana rika balehe</td>
+            <td align="center" id="hivst-2-v-jumla-both-KE"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" id="hivst-2-v-15-19-KE"></td>
+            <td align="center" id="hivst-2-v-20-24-KE"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" id="hivst-2-v-jumla-KE"></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td>vi)Makundi Mengine</td>
+            <td align="center" id="hivst-2-vi-jumla-both-KE"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" id="hivst-2-vi-15-19-KE"></td>
+            <td align="center" id="hivst-2-vi-20-24-KE"></td>
+            <td align="center" id="hivst-2-vi-25-29-KE"></td>
+            <td align="center" id="hivst-2-vi-30-34-KE"></td>
+            <td align="center" id="hivst-2-vi-35-39-KE"></td>
+            <td align="center" id="hivst-2-vi-40-44-KE"></td>
+            <td align="center" id="hivst-2-vi-45-49-KE"></td>
+            <td align="center" id="hivst-2-vi->50-KE"></td>
+            <td align="center" id="hivst-2-vi-jumla-KE"></td>
+        </tr>
+
+        <tr>
+            <th class="no-data">B2</th>
+            <td class="no-data" colspan="15">HUDUMA YA JIPIKE VVU</td>
+        </tr>
+        <tr>
+            <th>3</th>
+            <td>JUMLA YA KUTENDANISHI VYA JIPIKE VVU VILIVYOSAMBAZWA(BiNAFSI)</td>
+            <td align="center" id="hivst-3-jumla-both-KE"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" id="hivst-3-15-19-KE"></td>
+            <td align="center" id="hivst-3-20-24-KE"></td>
+            <td align="center" id="hivst-3-25-29-KE"></td>
+            <td align="center" id="hivst-3-30-34-KE"></td>
+            <td align="center" id="hivst-3-35-39-KE"></td>
+            <td align="center" id="hivst-3-40-44-KE"></td>
+            <td align="center" id="hivst-3-45-49-KE"></td>
+            <td align="center" id="hivst-3->50-KE"></td>
+            <td align="center" id="hivst-3-jumla-KE"></td>
+        </tr>
+        <tr>
+            <th>3 i</th>
+            <td>Wajidunga dawa za kulevyatd>
+            <td align="center" id="hivst-3-i-jumla-both-KE"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" id="hivst-3-i-15-19-KE"></td>
+            <td align="center" id="hivst-3-i-20-24-KE"></td>
+            <td align="center" id="hivst-3-i-25-29-KE"></td>
+            <td align="center" id="hivst-3-i-30-34-KE"></td>
+            <td align="center" id="hivst-3-i-35-39-KE"></td>
+            <td align="center" id="hivst-3-i-40-44-KE"></td>
+            <td align="center" id="hivst-3-i-45-49-KE"></td>
+            <td align="center" id="hivst-3-i->50-KE"></td>
+            <td align="center" id="hivst-3-i-jumla-KE"></td>
+        </tr>
+        <tr>
+            <th>3 ii</th>
+            <td>Wafungwa/Mahabusu</td>
+            <td align="center" id="hivst-3-ii-jumla-both-KE"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" id="hivst-3-ii-15-19-KE"></td>
+            <td align="center" id="hivst-3-ii-20-24-KE"></td>
+            <td align="center" id="hivst-3-ii-25-29-KE"></td>
+            <td align="center" id="hivst-3-ii-30-34-KE"></td>
+            <td align="center" id="hivst-3-ii-35-39-KE"></td>
+            <td align="center" id="hivst-3-ii-40-44-KE"></td>
+            <td align="center" id="hivst-3-ii-45-49-KE"></td>
+            <td align="center" id="hivst-3-ii->50-KE"></td>
+            <td align="center" id="hivst-3-ii-jumla-KE"></td>
+        </tr>
+        <tr>
+            <th>3 iii</th>
+            <td>Wanawake wanaofanya biashara ya ngono</td>
+            <td align="center" id="hivst-3-iii-jumla-both-KE"></td>
+            <td align="center" class="no-data" id="hivst-3-iii-<1-KE"></td>
+            <td align="center" class="no-data" id="hivst-3-iii-1-4-KE"></td>
+            <td align="center" class="no-data" id="hivst-3-iii-5-9-KE"></td>
+            <td align="center" class="no-data" id="hivst-3-iii-10-14-KE"></td>
+            <td align="center" id="hivst-3-iii-15-19-KE"></td>
+            <td align="center" id="hivst-3-iii-20-24-KE"></td>
+            <td align="center" id="hivst-3-iii-25-29-KE"></td>
+            <td align="center" id="hivst-3-iii-30-34-KE"></td>
+            <td align="center" id="hivst-3-iii-35-39-KE"></td>
+            <td align="center" id="hivst-3-iii-40-44-KE"></td>
+            <td align="center" id="hivst-3-iii-45-49-KE"></td>
+            <td align="center" id="hivst-3-iii->50-KE"></td>
+            <td align="center" id="hivst-3-iii-jumla-KE"></td>
+        </tr>
+        <tr>
+            <th>3 iv</th>
+            <td>iv) Wanaume wanaofanya ngono na wanaume wenzao</td>
+            <td align="center" id="hivst-3-iv-jumla-both-KE"></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+        </tr>
+        <tr>
+            <th>3 v</th>
+            <td>Vijana rika balehe</td>
+            <td align="center" id="hivst-3-v-jumla-both-KE"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" id="hivst-3-v-15-19-KE"></td>
+            <td align="center" id="hivst-3-v-20-24-KE"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" id="hivst-3-v-jumla-KE"></td>
+        </tr>
+        <tr>
+            <th>3 vi</th>
+            <td>Makundi Mengine</td>
+            <td align="center" id="hivst-3-vi-jumla-both-KE"></td>
+            <td align="center" class="no-data" id="hivst-3-vi-<1-KE"></td>
+            <td align="center" class="no-data" id="hivst-3-vi-1-4-KE"></td>
+            <td align="center" class="no-data" id="hivst-3-vi-5-9-KE"></td>
+            <td align="center" class="no-data" id="hivst-3-vi-10-14-KE"></td>
+            <td align="center" id="hivst-3-vi-15-19-KE"></td>
+            <td align="center" id="hivst-3-vi-20-24-KE"></td>
+            <td align="center" id="hivst-3-vi-25-29-KE"></td>
+            <td align="center" id="hivst-3-vi-30-34-KE"></td>
+            <td align="center" id="hivst-3-vi-35-39-KE"></td>
+            <td align="center" id="hivst-3-vi-40-44-KE"></td>
+            <td align="center" id="hivst-3-vi-45-49-KE"></td>
+            <td align="center" id="hivst-3-vi->50-KE"></td>
+            <td align="center" id="hivst-3-vi-jumla-KE"></td>
+        </tr>
+        <tr>
+            <th>4</th>
+            <td> Jumla ya vitendanishi vya kujipima VVU vilivyosambazwa (Washirika wa Ngono, Rafiki
+                Rika)
+            </td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+        </tr>
+
+        <tr>
+            <th>5</th>
+            <td> Jumla ya vitendanishi vya kujipima VVU vilivyosambazwa (Binafsi, Washrika wa Ngono,
+                Rafiki rika); 3+4
+            </td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+        </tr>
+
+        <tr>
+            <th>6</th>
+            <td>Jumla ya wateja (Washrika wa ngono, Rafiki rika) waliotumia vitendanishi vya
+                kujipima VVU na kurudisha majibu
+            </td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+        </tr>
+
+        <tr>
+            <th>7</th>
+            <td>Jumla ya wateja (Binafsi) waliotumia vitendanishi vya kujipima VVU na kurudisha
+                majibu
+            </td>
+            <td align="center" id="hivst-7-jumla-both-KE"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" id="hivst-7-15-19-KE"></td>
+            <td align="center" id="hivst-7-20-24-KE"></td>
+            <td align="center" id="hivst-7-25-29-KE"></td>
+            <td align="center" id="hivst-7-30-34-KE"></td>
+            <td align="center" id="hivst-7-35-39-KE"></td>
+            <td align="center" id="hivst-7-40-44-KE"></td>
+            <td align="center" id="hivst-7-45-49-KE"></td>
+            <td align="center" id="hivst-7->50-KE"></td>
+            <td align="center" id="hivst-7-jumla-KE"></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td>i)Wajidunga dawa za kulevya</td>
+            <td align="center" id="hivst-7-i-jumla-both-KE"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" id="hivst-7-i-15-19-KE"></td>
+            <td align="center" id="hivst-7-i-20-24-KE"></td>
+            <td align="center" id="hivst-7-i-25-29-KE"></td>
+            <td align="center" id="hivst-7-i-30-34-KE"></td>
+            <td align="center" id="hivst-7-i-35-39-KE"></td>
+            <td align="center" id="hivst-7-i-40-44-KE"></td>
+            <td align="center" id="hivst-7-i-45-49-KE"></td>
+            <td align="center" id="hivst-7-i->50-KE"></td>
+            <td align="center" id="hivst-7-i-jumla-KE"></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td>ii)Wafungwa/Mahabusu</td>
+            <td align="center" id="hivst-7-ii-jumla-both-KE"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" id="hivst-7-ii-15-19-KE"></td>
+            <td align="center" id="hivst-7-ii-20-24-KE"></td>
+            <td align="center" id="hivst-7-ii-25-29-KE"></td>
+            <td align="center" id="hivst-7-ii-30-34-KE"></td>
+            <td align="center" id="hivst-7-ii-35-39-KE"></td>
+            <td align="center" id="hivst-7-ii-40-44-KE"></td>
+            <td align="center" id="hivst-7-ii-45-49-KE"></td>
+            <td align="center" id="hivst-7-ii->50-KE"></td>
+            <td align="center" id="hivst-7-ii-jumla-KE"></td>
+        </tr>
+
+        <tr>
+            <th></th>
+            <td>iii)Wanawake wanaofanya biashara ya ngono</td>
+            <td align="center" id="hivst-7-iii-jumla-both-KE"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" id="hivst-7-iii-15-19-KE"></td>
+            <td align="center" id="hivst-7-iii-20-24-KE"></td>
+            <td align="center" id="hivst-7-iii-25-29-KE"></td>
+            <td align="center" id="hivst-7-iii-30-34-KE"></td>
+            <td align="center" id="hivst-7-iii-35-39-KE"></td>
+            <td align="center" id="hivst-7-iii-40-44-KE"></td>
+            <td align="center" id="hivst-7-iii-45-49-KE"></td>
+            <td align="center" id="hivst-7-iii->50-KE"></td>
+            <td align="center" id="hivst-7-iii-jumla-KE"></td>
+        </tr>
+
+        <tr>
+            <th></th>
+            <td>iv)Wanaume wanaofanya ngono na wanaume wenzao</td>
+            <td align="center" id="hivst-7-iv-jumla-both-KE"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td>v)Vijana rika balehe</td>
+            <td align="center" id="hivst-7-v-jumla-both-KE"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" id="hivst-7-v-15-19-KE"></td>
+            <td align="center" id="hivst-7-v-20-24-KE"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" id="hivst-7-v-jumla-KE"></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td>vi)Makundi Mengine</td>
+            <td align="center" id="hivst-7-vi-jumla-both-KE"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" id="hivst-7-vi-15-19-KE"></td>
+            <td align="center" id="hivst-7-vi-20-24-KE"></td>
+            <td align="center" id="hivst-7-vi-25-29-KE"></td>
+            <td align="center" id="hivst-7-vi-30-34-KE"></td>
+            <td align="center" id="hivst-7-vi-35-39-KE"></td>
+            <td align="center" id="hivst-7-vi-40-44-KE"></td>
+            <td align="center" id="hivst-7-vi-45-49-KE"></td>
+            <td align="center" id="hivst-7-vi->50-KE"></td>
+            <td align="center" id="hivst-7-vi-jumla-KE"></td>
+        </tr>
+
+        <tr>
+            <th>8</th>
+            <td>Jumla ya wateja (Binafsi) waliopata majibu chanya (Reactive) baada ya kujipima VVU
+            </td>
+            <td align="center" id="hivst-8-jumla-both-KE"></td>
+            <td align="center" class="no-data" id="hivst-8-<1-KE"></td>
+            <td align="center" class="no-data" id="hivst-8-1-4-KE"></td>
+            <td align="center" class="no-data" id="hivst-8-5-9-KE"></td>
+            <td align="center" class="no-data" id="hivst-8-10-14-KE"></td>
+            <td align="center" id="hivst-8-15-19-KE"></td>
+            <td align="center" id="hivst-8-20-24-KE"></td>
+            <td align="center" id="hivst-8-25-29-KE"></td>
+            <td align="center" id="hivst-8-30-34-KE"></td>
+            <td align="center" id="hivst-8-35-39-KE"></td>
+            <td align="center" id="hivst-8-40-44-KE"></td>
+            <td align="center" id="hivst-8-45-49-KE"></td>
+            <td align="center" id="hivst-8->50-KE"></td>
+            <td align="center" id="hivst-8-jumla-KE"></td>
+        </tr>
+        <tr>
+            <th>8 i</th>
+            <td>Wajidunga dawa za kulevya</td>
+            <td align="center" id="hivst-8-i-jumla-both-KE"></td>
+            <td align="center" class="no-data" id="hivst-8-i-<1-KE"></td>
+            <td align="center" class="no-data" id="hivst-8-i-1-4-KE"></td>
+            <td align="center" class="no-data" id="hivst-8-i-5-9-KE"></td>
+            <td align="center" class="no-data" id="hivst-8-i-10-14-KE"></td>
+            <td align="center" id="hivst-8-i-15-19-KE"></td>
+            <td align="center" id="hivst-8-i-20-24-KE"></td>
+            <td align="center" id="hivst-8-i-25-29-KE"></td>
+            <td align="center" id="hivst-8-i-30-34-KE"></td>
+            <td align="center" id="hivst-8-i-35-39-KE"></td>
+            <td align="center" id="hivst-8-i-40-44-KE"></td>
+            <td align="center" id="hivst-8-i-45-49-KE"></td>
+            <td align="center" id="hivst-8-i->50-KE"></td>
+            <td align="center" id="hivst-8-i-jumla-KE"></td>
+        </tr>
+        <tr>
+            <th>8 ii</th>
+            <td>Wafungwa/Mahabusu</td>
+            <td align="center" id="hivst-8-ii-jumla-both-KE"></td>
+            <td align="center" class="no-data" id="hivst-8-ii-<1-KE"></td>
+            <td align="center" class="no-data" id="hivst-8-ii-1-4-KE"></td>
+            <td align="center" class="no-data" id="hivst-8-ii-5-9-KE"></td>
+            <td align="center" class="no-data" id="hivst-8-ii-10-14-KE"></td>
+            <td align="center" id="hivst-8-ii-15-19-KE"></td>
+            <td align="center" id="hivst-8-ii-20-24-KE"></td>
+            <td align="center" id="hivst-8-ii-25-29-KE"></td>
+            <td align="center" id="hivst-8-ii-30-34-KE"></td>
+            <td align="center" id="hivst-8-ii-35-39-KE"></td>
+            <td align="center" id="hivst-8-ii-40-44-KE"></td>
+            <td align="center" id="hivst-8-ii-45-49-KE"></td>
+            <td align="center" id="hivst-8-ii->50-KE"></td>
+            <td align="center" id="hivst-8-ii-jumla-KE"></td>
+            </td>
+        </tr>
+
+        <tr>
+            <th>8 iii</th>
+            <td>Wanawake wanaofanya biashara ya ngono</td>
+            <td align="center" id="hivst-8-iii-jumla-both-KE"></td>
+            <td align="center" class="no-data" id="hivst-8-iii-<1-KE"></td>
+            <td align="center" class="no-data" id="hivst-8-iii-1-4-KE"></td>
+            <td align="center" class="no-data" id="hivst-8-iii-5-9-KE"></td>
+            <td align="center" class="no-data" id="hivst-8-iii-10-14-KE"></td>
+            <td align="center" id="hivst-8-iii-15-19-KE"></td>
+            <td align="center" id="hivst-8-iii-20-24-KE"></td>
+            <td align="center" id="hivst-8-iii-25-29-KE"></td>
+            <td align="center" id="hivst-8-iii-30-34-KE"></td>
+            <td align="center" id="hivst-8-iii-35-39-KE"></td>
+            <td align="center" id="hivst-8-iii-40-44-KE"></td>
+            <td align="center" id="hivst-8-iii-45-49-KE"></td>
+            <td align="center" id="hivst-8-iii->50-KE"></td>
+            <td align="center" id="hivst-8-iii-jumla-KE"></td>
+        </tr>
+
+        <tr>
+            <th>8 iv</th>
+            <td>Wanaume wanaofanya ngono na wanaume wenzao</td>
+            <td align="center" id="hivst-8-iv-jumla-both-KE"></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+        </tr>
+        <tr>
+            <th>8 v</th>
+            <td>Vijana rika balehe</td>
+            <td align="center" id="hivst-8-v-jumla-both-KE"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" id="hivst-8-v-15-19-KE"></td>
+            <td align="center" id="hivst-8-v-20-24-KE"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" id="hivst-8-v-jumla-KE"></td>
+            >
+        </tr>
+        <tr>
+            <th>8 vi</th>
+            <td>Makundi Mengine</td>
+            <td align="center" id="hivst-8-vi-jumla-both-KE"></td>
+            <td align="center" class="no-data" id="hivst-8-vi-<1-KE"></td>
+            <td align="center" class="no-data" id="hivst-8-vi-1-4-KE"></td>
+            <td align="center" class="no-data" id="hivst-8-vi-5-9-KE"></td>
+            <td align="center" class="no-data" id="hivst-8-vi-10-14-KE"></td>
+            <td align="center" id="hivst-8-vi-15-19-KE"></td>
+            <td align="center" id="hivst-8-vi-20-24-KE"></td>
+            <td align="center" id="hivst-8-vi-25-29-KE"></td>
+            <td align="center" id="hivst-8-vi-30-34-KE"></td>
+            <td align="center" id="hivst-8-vi-35-39-KE"></td>
+            <td align="center" id="hivst-8-vi-40-44-KE"></td>
+            <td align="center" id="hivst-8-vi-45-49-KE"></td>
+            <td align="center" id="hivst-8-vi->50-KE"></td>
+            <td align="center" id="hivst-8-vi-jumla-KE"></td>
+            >
+        </tr>
+
+        <tr>
+            <th>9</th>
+            <td>Jumla ya wateja (Binafsi) waliopewa rufaa kwenda kituo/Eneo la upimaji wa maambukizi
+                ya VVU
+            </td>
+            <td align="center" id="hivst-9-jumla-both-KE"></td>
+            <td align="center" class="no-data" id="hivst-9-<1-KE"></td>
+            <td align="center" class="no-data" id="hivst-9-1-4-KE"></td>
+            <td align="center" class="no-data" id="hivst-9-5-9-KE"></td>
+            <td align="center" class="no-data" id="hivst-9-10-14-KE"></td>
+            <td align="center" id="hivst-9-15-19-KE"></td>
+            <td align="center" id="hivst-9-20-24-KE"></td>
+            <td align="center" id="hivst-9-25-29-KE"></td>
+            <td align="center" id="hivst-9-30-34-KE"></td>
+            <td align="center" id="hivst-9-35-39-KE"></td>
+            <td align="center" id="hivst-9-40-44-KE"></td>
+            <td align="center" id="hivst-9-45-49-KE"></td>
+            <td align="center" id="hivst-9->50-KE"></td>
+            <td align="center" id="hivst-9-jumla-KE"></td>
+        </tr>
+
+        <tr>
+            <th>9 i</th>
+            <td>Wajidunga dawa za kulevya</td>
+            <td align="center" id="hivst-9-i-jumla-both-KE"></td>
+            <td align="center" class="no-data" id="hivst-9-i-<1-KE"></td>
+            <td align="center" class="no-data" id="hivst-9-i-1-4-KE"></td>
+            <td align="center" class="no-data" id="hivst-9-i-5-9-KE"></td>
+            <td align="center" class="no-data" id="hivst-9-i-10-14-KE"></td>
+            <td align="center" id="hivst-9-i-15-19-KE"></td>
+            <td align="center" id="hivst-9-i-20-24-KE"></td>
+            <td align="center" id="hivst-9-i-25-29-KE"></td>
+            <td align="center" id="hivst-9-i-30-34-KE"></td>
+            <td align="center" id="hivst-9-i-35-39-KE"></td>
+            <td align="center" id="hivst-9-i-40-44-KE"></td>
+            <td align="center" id="hivst-9-i-45-49-KE"></td>
+            <td align="center" id="hivst-9-i->50-KE"></td>
+            <td align="center" id="hivst-9-i-jumla-KE"></td>
+        </tr>
+
+        <tr>
+            <th>9 ii</th>
+            <td>Wafungwa/Mahabusu</td>
+            <td align="center" id="hivst-9-ii-jumla-both-KE"></td>
+            <td align="center" class="no-data" id="hivst-9-ii-<1-KE"></td>
+            <td align="center" class="no-data" id="hivst-9-ii-1-4-KE"></td>
+            <td align="center" class="no-data" id="hivst-9-ii-5-9-KE"></td>
+            <td align="center" class="no-data" id="hivst-9-ii-10-14-KE"></td>
+            <td align="center" id="hivst-9-ii-15-19-KE"></td>
+            <td align="center" id="hivst-9-ii-20-24-KE"></td>
+            <td align="center" id="hivst-9-ii-25-29-KE"></td>
+            <td align="center" id="hivst-9-ii-30-34-KE"></td>
+            <td align="center" id="hivst-9-ii-35-39-KE"></td>
+            <td align="center" id="hivst-9-ii-40-44-KE"></td>
+            <td align="center" id="hivst-9-ii-45-49-KE"></td>
+            <td align="center" id="hivst-9-ii->50-KE"></td>
+            <td align="center" id="hivst-9-ii-jumla-KE"></td>
+        </tr>
+
+        <tr>
+            <th>9 iii</th>
+            <td>Wanawake wanaofanya biashara ya ngono</td>
+            <td align="center" id="hivst-9-iii-jumla-both-KE"></td>
+            <td align="center" class="no-data" id="hivst-9-iii-<1-KE"></td>
+            <td align="center" class="no-data" id="hivst-9-iii-1-4-KE"></td>
+            <td align="center" class="no-data" id="hivst-9-iii-5-9-KE"></td>
+            <td align="center" class="no-data" id="hivst-9-iii-10-14-KE"></td>
+            <td align="center" id="hivst-9-iii-15-19-KE"></td>
+            <td align="center" id="hivst-9-iii-20-24-KE"></td>
+            <td align="center" id="hivst-9-iii-25-29-KE"></td>
+            <td align="center" id="hivst-9-iii-30-34-KE"></td>
+            <td align="center" id="hivst-9-iii-35-39-KE"></td>
+            <td align="center" id="hivst-9-iii-40-44-KE"></td>
+            <td align="center" id="hivst-9-iii-45-49-KE"></td>
+            <td align="center" id="hivst-9-iii->50-KE"></td>
+            <td align="center" id="hivst-9-iii-jumla-KE"></td>
+        </tr>
+
+        <tr>
+            <th>9 iv</th>
+            <td>Wanaume wanaofanya ngono na wanaume wenzao</td>
+            <td align="center" id="hivst-9-iv-jumla-both-KE"></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+            <td align="center" class="no-data" ></td>
+        </tr>
+
+
+        <tr>
+            <th>9 v</th>
+            <td>Vijana rika balehe<</td>
+            <td align="center" id="hivst-9-v-jumla-both-KE"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" id="hivst-9-v-15-19-KE"></td>
+            <td align="center" id="hivst-9-v-20-24-KE"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" id="hivst-9-v-jumla-KE"></td>
+        </tr>
+
+        <tr>
+            <th>9 vi</th>
+            <td>Makundi Mengine</td>
+            <td align="center" id="hivst-9-vi-jumla-both-KE"></td>
+            <td align="center" class="no-data" id="hivst-9-vi-<1-KE"></td>
+            <td align="center" class="no-data" id="hivst-9-vi-1-4-KE"></td>
+            <td align="center" class="no-data" id="hivst-9-vi-5-9-KE"></td>
+            <td align="center" class="no-data" id="hivst-9-vi-10-14-KE"></td>
+            <td align="center" id="hivst-9-vi-15-19-KE"></td>
+            <td align="center" id="hivst-9-vi-20-24-KE"></td>
+            <td align="center" id="hivst-9-vi-25-29-KE"></td>
+            <td align="center" id="hivst-9-vi-30-34-KE"></td>
+            <td align="center" id="hivst-9-vi-35-39-KE"></td>
+            <td align="center" id="hivst-9-vi-40-44-KE"></td>
+            <td align="center" id="hivst-9-vi-45-49-KE"></td>
+            <td align="center" id="hivst-9-vi->50-KE"></td>
+            <td align="center" id="hivst-9-vi-jumla-KE"></td>
+        </tr>
+
+        <tr class="no-data">
+            <th>B3</th>
+            <td>UFUATILIAJI WA WASHIRIKA WA INDEX</td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+        </tr>
+
+        <tr>
+            <th>10</th>
+            <td>Jumla ya washirika wa ngono,watoto wa kuzaa na wajidunga Walioorodheshwa kwa
+                ufuatiliaji kwenye jamii mwezi huu
+            </td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+        </tr>
+
+        <tr>
+            <th>11</th>
+            <td>Jumla ya washirika wa ngono,watoto wa kuzaa na wajidunga Walioorodheshwa na kufikiwa
+                Mwezi huu
+            </td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+        </tr>
+
+        <tr>
+            <th>12</th>
+            <td>Jumla ya washirika wa ngono,watoto wa kuzaa na wajidunga Wasioorodheshwa na
+                wamefikiwa Mwezi huu
+            </td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center"></td>
+        </tr>
+
+        <tr>
+            <th>13</th>
+            <td>Jumla ya washirika wa Ngono, watoto wa kuzaa na wajidunga Waliowahi kuorodheshwa
+                bila kufikiwa kwa miezi yote iliyopita (Jumla Endelevu)
+            </td>
+            <td align="center"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+        </tr>
+
+        <tbody>
+    </table>
+</div>
+
+
+</body>
+</html>

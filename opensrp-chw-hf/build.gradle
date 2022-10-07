@@ -61,7 +61,7 @@ android {
 
     defaultConfig {
         applicationId "org.smartregister.chw.hf"
-        minSdkVersion 18
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 11
         versionName "1.2.13"
@@ -226,7 +226,7 @@ android {
         }
         ba {
             applicationId "org.smartregister.chw.hf"
-            minSdkVersion 18
+            minSdkVersion 21
             targetSdkVersion 28
             versionCode 11
             versionName "1.2.13"
@@ -284,7 +284,7 @@ flavors.each { productFlavorName ->
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation('org.smartregister:opensrp-client-chw-core:1.5.35.0-NACP-SNAPSHOT@aar') {
+    implementation('org.smartregister:opensrp-client-chw-core:1.5.35.4-NACP-SNAPSHOT@aar') {
 //    implementation(project(":opensrp-chw-core")) {
         transitive = true
         exclude group: 'com.android.support', module: 'appcompat-v7'

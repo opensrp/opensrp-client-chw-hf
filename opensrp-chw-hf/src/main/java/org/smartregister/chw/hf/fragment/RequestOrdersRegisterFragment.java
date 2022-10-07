@@ -1,14 +1,20 @@
 package org.smartregister.chw.hf.fragment;
 
+import android.content.Intent;
 import android.view.View;
 
 import com.google.android.material.tabs.TabLayout;
 
+import org.json.JSONObject;
+import org.smartregister.chw.cdp.util.Constants;
 import org.smartregister.chw.core.fragment.CoreOrdersRegisterFragment;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.activity.OrderRequestDetailsActivity;
 import org.smartregister.chw.hf.presenter.RequestOrdersRegisterFragmentPresenter;
+import org.smartregister.chw.hf.utils.JsonFormUtils;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
+
+import static org.smartregister.chw.core.utils.FormUtils.getStartFormActivity;
 
 public class RequestOrdersRegisterFragment extends CoreOrdersRegisterFragment {
 
@@ -30,7 +36,22 @@ public class RequestOrdersRegisterFragment extends CoreOrdersRegisterFragment {
             syncProgressBar.setVisibility(View.GONE);
         }
         if (syncButton != null) {
-            syncButton.setVisibility(View.GONE);
+            syncButton.setVisibility(View.VISIBLE);
+            syncButton.setPadding(0, 0, 10, 0);
+            syncButton.setImageDrawable(context().getDrawable(org.smartregister.cdp.R.drawable.ic_add_white_24));
+            syncButton.setOnClickListener(view -> {
+                startDistributionForm();
+            });
+        }
+    }
+
+    private void startDistributionForm() {
+        try {
+            JSONObject form = model().getDistributionFormAsJson(Constants.FORMS.CDP_CONDOM_DISTRIBUTION_WITHIN);
+            Intent startFormIntent = getStartFormActivity(form, null, requireActivity());
+            requireActivity().startActivityForResult(startFormIntent, JsonFormUtils.REQUEST_CODE_GET_JSON);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

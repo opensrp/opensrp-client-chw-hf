@@ -256,7 +256,7 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
         menu.findItem(R.id.action__pnc_danger_sign_outcome).setVisible(false);
         if (HealthFacilityApplication.getApplicationFlavor().hasHivst()) {
             int age = memberObject.getAge();
-            menu.findItem(R.id.action_hivst_registration).setVisible(!HivstDao.isRegisteredForHivst(baseEntityID) && age >= 18);
+            menu.findItem(R.id.action_hivst_registration).setVisible(!HivstDao.isRegisteredForHivst(baseEntityID) && age >= 15);
         }
 
         if (MalariaDao.isRegisteredForMalaria(baseEntityID)) {

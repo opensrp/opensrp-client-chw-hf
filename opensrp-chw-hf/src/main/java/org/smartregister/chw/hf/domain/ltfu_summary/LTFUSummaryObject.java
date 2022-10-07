@@ -16,7 +16,7 @@ public class LTFUSummaryObject extends ReportObject {
             "ltfu-2-14-me", "ltfu-2-14-ke", "ltfu-15-24-me", "ltfu-15-24-ke",
             "ltfu-25-49-me", "ltfu-25-49-ke", "ltfu-50-me", "ltfu-50-ke"};
     private final String[] indicatorGroups = new String[]
-            {"ctc", "pmtct", "tb", "wajidunga", "arv-yes", "arv-no",
+            {"ctc","prep", "pmtct", "tb", "wajidunga", "arv-yes", "arv-no",
                     "a1", "b1", "c1", "d1", "e1", "f1", "g1", "h1",
                     "a2", "b2", "c2", "d2", "e2", "f2", "g2", "h2", "i2", "j2", "k2"};
 
@@ -86,7 +86,7 @@ public class LTFUSummaryObject extends ReportObject {
     }
 
     private int getTotalForClinicPerGroup(String indicator) {
-        final String[] clinics = new String[]{"ctc", "pmtct", "tb", "wajidunga"};
+        final String[] clinics = new String[]{"ctc", "prep", "pmtct", "tb", "wajidunga"};
         int total = 0;
         for(String clinic : clinics) {
             total += getIndicatorTotal(indicator + "-" + clinic);
@@ -109,8 +109,8 @@ public class LTFUSummaryObject extends ReportObject {
                 getIndicatorTotal("ltfu-less-2-ke" + "-" + indicatorGroup) + getIndicatorTotal("ltfu-2-14-me" + "-" + indicatorGroup)
                 + getIndicatorTotal("ltfu-2-14-ke" + "-" + indicatorGroup) + getIndicatorTotal("ltfu-15-24-me" + "-" + indicatorGroup) +
                 getIndicatorTotal("ltfu-15-24-ke" + "-" + indicatorGroup) + getIndicatorTotal("ltfu-25-49-me" + "-" + indicatorGroup) +
-                getIndicatorTotal("ltfu-25-49-ke" + "-" + indicatorGroup) + getIndicatorTotal("ltfu-60-me" + "-" + indicatorGroup) +
-                getIndicatorTotal("ltfu-60-ke" + "-" + indicatorGroup);
+                getIndicatorTotal("ltfu-25-49-ke" + "-" + indicatorGroup) + getIndicatorTotal("ltfu-50-me" + "-" + indicatorGroup) +
+                getIndicatorTotal("ltfu-50-ke" + "-" + indicatorGroup);
 
     }
 }
