@@ -329,7 +329,8 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
         }
         if (viewId == R.id.refer_to_facility_layout) {
             String gender = Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.GENDER, false);
-            LFTUFormUtils.startLTFUReferral(this, baseEntityId, gender);
+            String dob = Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.DOB, false);
+            LFTUFormUtils.startLTFUReferral(this, baseEntityId, gender, Utils.getAgeFromDate(dob));
         }
     }
 

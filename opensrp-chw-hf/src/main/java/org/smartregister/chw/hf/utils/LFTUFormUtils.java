@@ -39,13 +39,13 @@ public class LFTUFormUtils {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public static void startLTFUReferral(Activity context, String baseEntityId, String gender) {
+    public static void startLTFUReferral(Activity context, String baseEntityId, String gender, int age) {
         JSONObject formJsonObject;
         try {
             formJsonObject = (new FormUtils()).getFormJsonFromRepositoryOrAssets(context, Constants.JsonForm.getLtfuReferralForm());
             if (formJsonObject != null) {
                 formJsonObject.put(Constants.REFERRAL_TASK_FOCUS, Constants.FOCUS.LOST_TO_FOLLOWUP_FOCUS);
-                if (gender.equalsIgnoreCase("Male")) {
+                if (gender.equalsIgnoreCase("Male") && age > 2) {
                     JSONArray steps = formJsonObject.getJSONArray("steps");
                     JSONObject step = steps.getJSONObject(0);
                     JSONArray fields = step.getJSONArray("fields");

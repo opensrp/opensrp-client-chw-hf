@@ -1,5 +1,8 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
+import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
+
 import android.content.Context;
 import android.os.Build;
 import android.view.Menu;
@@ -43,9 +46,6 @@ import org.smartregister.family.util.DBConstants;
 import org.smartregister.view.contract.BaseProfileContract;
 
 import timber.log.Timber;
-
-import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
-import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
 
 public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfileActivity {
     private FamilyMemberFloatingMenu familyFloatingMenu;
@@ -243,7 +243,7 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
             if (viewId == R.id.refer_to_facility_layout) {
                 String gender = Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.GENDER, false);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                    LFTUFormUtils.startLTFUReferral(this, baseEntityId, gender);
+                    LFTUFormUtils.startLTFUReferral(this, baseEntityId, gender, Utils.getAgeFromDate(dob));
                 }
             }
         };
