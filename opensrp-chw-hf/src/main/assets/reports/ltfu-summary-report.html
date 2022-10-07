@@ -50,6 +50,10 @@
             font-weight: normal;
         }
 
+        .no-data {
+            background: #ccc;
+        }
+
         .table-title {
             width: 30%;
             background-color: #ccc;
@@ -73,13 +77,15 @@
             }
         }
 
+
     </style>
 </head>
 
 <body onload="onLoad()">
 <div class="show-on-print">
     <div class="heading">
-        <h1>Muhtasari wa mwezi ngazi ya jamii kwa wateja wasiofika kliniki ya tiba na matunzo kama ilivyopangwa</h1>
+        <h1>Muhtasari wa mwezi ngazi ya jamii kwa wateja wasiofika kliniki ya tiba na matunzo kama
+            ilivyopangwa</h1>
     </div>
     <h2>Jina la kituo : <span class="underline" id="jina-la-kituo"></span></h2>
     <h2>Mwezi : <span class="underline" id="mwezi"></span></h2>
@@ -97,7 +103,7 @@
         <th colspan="2">Miaka 2 - 14</th>
         <th colspan="2">Miaka 15 - 24</th>
         <th colspan="2">Miaka 25 - 49</th>
-        <th colspan="2">Miaka 60+</th>
+        <th colspan="2">Miaka 50+</th>
     </tr>
     <tr>
         <th>ME</th>
@@ -128,16 +134,30 @@
         <td id="jumla-ctc"></td>
     </tr>
     <tr>
+        <th colspan="2">PrEP</th>
+        <td id="less-2-me-prep"></td>
+        <td id="less-2-ke-prep"></td>
+        <td id="2-14-me-prep"></td>
+        <td id="2-14-ke-prep"></td>
+        <td id="15-24-me-prep"></td>
+        <td id="15-24-ke-prep"></td>
+        <td id="25-49-me-prep"></td>
+        <td id="25-49-ke-prep"></td>
+        <td id="50-me-prep"></td>
+        <td id="50-ke-prep"></td>
+        <td id="jumla-prep"></td>
+    </tr>
+    <tr>
         <th colspan="2">PMTCT</th>
         <td id="less-2-me-pmtct"></td>
         <td id="less-2-ke-pmtct"></td>
-        <td id="2-14-me-pmtct"></td>
+        <td class="no-data"></td>
         <td id="2-14-ke-pmtct"></td>
-        <td id="15-24-me-pmtct"></td>
+        <td class="no-data"></td>
         <td id="15-24-ke-pmtct"></td>
-        <td id="25-49-me-pmtct"></td>
+        <td class="no-data"></td>
         <td id="25-49-ke-pmtct"></td>
-        <td id="50-me-pmtct"></td>
+        <td class="no-data"></td>
         <td id="50-ke-pmtct"></td>
         <td id="jumla-pmtct"></td>
     </tr>
@@ -157,8 +177,8 @@
     </tr>
     <tr>
         <th colspan="2">Kliniki Ya Wajidunga</th>
-        <td id="less-2-me-wajidunga"></td>
-        <td id="less-2-ke-wajidunga"></td>
+        <td class="no-data"></td>
+        <td class="no-data"></td>
         <td id="2-14-me-wajidunga"></td>
         <td id="2-14-ke-wajidunga"></td>
         <td id="15-24-me-wajidunga"></td>
@@ -234,7 +254,7 @@
         <th colspan="2">Miaka 2 - 14</th>
         <th colspan="2">Miaka 15 - 24</th>
         <th colspan="2">Miaka 25 - 49</th>
-        <th colspan="2">Miaka 60+</th>
+        <th colspan="2">Miaka 50+</th>
     </tr>
     <tr>
         <th>ME</th>
@@ -396,7 +416,7 @@
         <th colspan="2">Miaka 2 - 14</th>
         <th colspan="2">Miaka 15 - 24</th>
         <th colspan="2">Miaka 25 - 49</th>
-        <th colspan="2">Miaka 60+</th>
+        <th colspan="2">Miaka 50+</th>
     </tr>
     <tr>
         <th>ME</th>
@@ -589,6 +609,7 @@
             }
         })
     }
+
 
 
 </script>

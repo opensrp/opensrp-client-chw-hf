@@ -296,6 +296,7 @@
     <string name="feedback_details">Taarifa za mteja baada ya ufuatiliaji</string>
     <string name="ltfu_followup_status_continuing_with_services">Mteja anahudhuria kliniki</string>
     <string name="ltfu_followup_status_client_found_ready_to_return">Amepatikana na yupo tayari kurudi kliniki</string>
+    <string name="ltfu_followup_status_client_found_and_has_returned_to_clinic">Amepatikana na amerudi kliniki</string>
     <string name="ltfu_followup_status_client_has_moved_to_another_facility">Amehamia kituo kingine bila taarifa</string>
     <string name="ltfu_followup_status_client_has_relocated">Amehama makazi</string>
     <string name="ltfu_followup_status_client_does_not_want_to_return">Amepatikana lakini hayuko tayari kurudi kliniki</string>

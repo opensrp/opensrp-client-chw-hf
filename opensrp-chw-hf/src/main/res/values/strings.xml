@@ -397,6 +397,7 @@
     <string name="ltfu_clinic_tb">TB</string>
     <string name="ltfu_followup_status_continuing_with_services">Client attending the clinic</string>
     <string name="ltfu_followup_status_client_found_ready_to_return">Client is found and ready to return to clinic</string>
+    <string name="ltfu_followup_status_client_found_and_has_returned_to_clinic">Client is found and has returned to clinic</string>
     <string name="ltfu_followup_status_client_has_moved_to_another_facility">Client has transferred to another center without notice</string>
     <string name="ltfu_followup_status_client_has_relocated">Client has emigrated</string>
     <string name="ltfu_followup_status_client_does_not_want_to_return">Client is found but is not ready to return to clinic</string>

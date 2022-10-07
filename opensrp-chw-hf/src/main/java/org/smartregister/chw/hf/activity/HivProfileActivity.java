@@ -50,8 +50,8 @@ import org.smartregister.chw.hiv.dao.HivIndexDao;
 import org.smartregister.chw.hiv.domain.HivIndexContactObject;
 import org.smartregister.chw.hiv.domain.HivMemberObject;
 import org.smartregister.chw.hiv.util.HivUtil;
-import org.smartregister.chw.malaria.dao.MalariaDao;
 import org.smartregister.chw.hivst.dao.HivstDao;
+import org.smartregister.chw.malaria.dao.MalariaDao;
 import org.smartregister.chw.tb.util.Constants;
 import org.smartregister.commonregistry.CommonPersonObject;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
@@ -238,7 +238,7 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
             menu.findItem(R.id.action_pregnancy_confirmation).setVisible(true);
             menu.findItem(R.id.action_pregnancy_out_come).setVisible(true);
         }
-        if(HealthFacilityApplication.getApplicationFlavor().hasHivst()) {
+        if (HealthFacilityApplication.getApplicationFlavor().hasHivst()) {
             String dob = Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.DOB, false);
             int age = Utils.getAgeFromDate(dob);
             menu.findItem(R.id.action_hivst_registration).setVisible(!HivstDao.isRegisteredForHivst(getHivMemberObject().getBaseEntityId()) && age >= 15);
@@ -334,6 +334,8 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
     public void initializeCallFAB() {
         setHivFloatingMenu(new HivFloatingMenu(this, getHivMemberObject()));
 
+        int age = Utils.getAgeFromDate(getHivMemberObject().getAge());
+
         OnClickFloatingMenu onClickFloatingMenu = viewId -> {
             switch (viewId) {
                 case R.id.hiv_fab:
@@ -345,7 +347,7 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
                     ((HivFloatingMenu) getHivFloatingMenu()).animateFAB();
                     break;
                 case R.id.refer_to_facility_layout:
-                    LFTUFormUtils.startLTFUReferral(this, getHivMemberObject().getBaseEntityId(), getHivMemberObject().getGender());
+                    LFTUFormUtils.startLTFUReferral(this, getHivMemberObject().getBaseEntityId(), getHivMemberObject().getGender(), age);
                     break;
                 default:
                     Timber.d("Unknown fab action");
