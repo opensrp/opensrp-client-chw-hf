@@ -254,6 +254,8 @@ public class ReferralsDetailsViewActivity extends ReferralDetailsViewActivity {
                 return context.getString(R.string.ltfu_followup_status_continuing_with_services);
             case "client_found_ready_to_return":
                 return context.getString(R.string.ltfu_followup_status_client_found_ready_to_return);
+            case "client_found_and_has_returned_to_clinic":
+                return context.getString(R.string.ltfu_followup_status_client_found_and_has_returned_to_clinic);
             case "client_has_moved_to_another_facility":
                 return context.getString(R.string.ltfu_followup_status_client_has_moved_to_another_facility);
             case "client_has_relocated":
