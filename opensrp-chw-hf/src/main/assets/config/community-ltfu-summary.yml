@@ -140,7 +140,6 @@ indicators:
                       WHERE
                           elf.followup_status = 'client_found_and_has_returned_to_clinic'
                           AND t.business_status = 'Complete' AND
-                              t.focus = 'LTFU Community Followup Feedback' AND
                           fm.gender = 'Male' AND
                           (date(fm.dob, '+2 years') > date('now')) AND
                           date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -496,7 +495,6 @@ indicators:
                       WHERE
                           elf.followup_status = 'client_found_and_has_returned_to_clinic'
                           AND t.business_status = 'Complete' AND
-                              t.focus = 'LTFU Community Followup Feedback' AND
                            fm.gender = 'Female' AND
                           (date(fm.dob, '+2 years') > date('now')) AND
                           date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -861,7 +859,6 @@ indicators:
                         WHERE
                             elf.followup_status = 'client_found_and_has_returned_to_clinic'
                             AND t.business_status = 'Complete' AND
-                            t.focus = 'LTFU Community Followup Feedback' AND
                             fm.gender = 'Male' AND
                             (date(fm.dob, '+2 years') <= date('now')) AND
                             (date(fm.dob, '+15 years') > date('now')) AND
@@ -1243,7 +1240,6 @@ indicators:
                       WHERE
                       elf.followup_status = 'client_found_and_has_returned_to_clinic'
                       AND t.business_status = 'Complete' AND
-                      t.focus = 'LTFU Community Followup Feedback' AND
                       fm.gender = 'Female' AND
                       (date(fm.dob, '+2 years') <= date('now')) AND
                       (date(fm.dob, '+15 years') > date('now')) AND
@@ -1625,7 +1621,6 @@ indicators:
                       WHERE
                       elf.followup_status = 'client_found_and_has_returned_to_clinic'
                       AND t.business_status = 'Complete' AND
-                      t.focus = 'LTFU Community Followup Feedback' AND
                       fm.gender = 'Male' AND
                       (date(fm.dob, '+15 years') <= date('now')) AND
                       (date(fm.dob, '+25 years') > date('now')) AND
@@ -2005,7 +2000,6 @@ indicators:
                       WHERE
                           elf.followup_status = 'client_found_and_has_returned_to_clinic'
                           AND t.business_status = 'Complete' AND
-                          t.focus = 'LTFU Community Followup Feedback' AND
                           fm.gender = 'Female' AND
                           (date(fm.dob, '+15 years') <= date('now')) AND
                           (date(fm.dob, '+25 years') > date('now')) AND
@@ -2388,7 +2382,6 @@ indicators:
                       WHERE
                           elf.followup_status = 'client_found_and_has_returned_to_clinic'
                           AND t.business_status = 'Complete' AND
-                              t.focus = 'LTFU Community Followup Feedback' AND
                              fm.gender = 'Male' AND
                               (date(fm.dob, '+25 years') <= date('now')) AND
                               (date(fm.dob, '+50 years') > date('now')) AND
@@ -2770,7 +2763,6 @@ indicators:
                       WHERE
                           elf.followup_status = 'client_found_and_has_returned_to_clinic'
                           AND t.business_status = 'Complete' AND
-                          t.focus = 'LTFU Community Followup Feedback' AND
                           fm.gender = 'Female' AND
                           (date(fm.dob, '+25 years') <= date('now')) AND
                           (date(fm.dob, '+50 years') > date('now')) AND
@@ -3141,7 +3133,6 @@ indicators:
                       WHERE
                           elf.followup_status = 'client_found_and_has_returned_to_clinic'
                           AND t.business_status = 'Complete' AND
-                          t.focus = 'LTFU Community Followup Feedback' AND
                           fm.gender = 'Male' AND
                           (date(fm.dob, '+50 years') <= date('now')) AND
                           date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -3498,7 +3489,6 @@ indicators:
                       WHERE
                           elf.followup_status = 'client_found_and_has_returned_to_clinic'
                           AND t.business_status = 'Complete' AND
-                              t.focus = 'LTFU Community Followup Feedback' AND
                               fm.gender = 'Female' AND
                               (date(fm.dob, '+50 years') <= date('now')) AND
                               date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
