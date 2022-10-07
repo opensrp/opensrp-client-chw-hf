@@ -77,7 +77,7 @@ indicators:
                       substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
-  - key: "cbhs-2a-1-jumla-me"
+  - key: "cbhs-2a-1-me"
     description: "Total new male clients less than one year old registered this month"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -91,7 +91,7 @@ indicators:
                       substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
-  - key: "cbhs-2a-1-jumla-ke"
+  - key: "cbhs-2a-1-ke"
     description: "Total new female clients less than one year old registered this month"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -158,14 +158,14 @@ indicators:
                       INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
                       WHERE
                       fm.gender = 'Female'
-                      AND (registration_or_followup_status = 'new_client' or registration_or_followup_status is null)
+                      AND (ecf.registration_or_followup_status = 'new_client' or ecr.registration_or_followup_status is null)
                       AND (date(fm.dob, '+6 years') <= date('now'))
                       AND (date(fm.dob, '+10 years') > date('now'))
                       AND date(substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||
                       substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
-  - key: "2a-10-14-me"
+  - key: "cbhs-2a-10-14-me"
     description: "Total new male clients registered this month for 10-14 year olds"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -195,7 +195,7 @@ indicators:
                       substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
-  - key: "2a-15-19-me"
+  - key: "cbhs-2a-15-19-me"
     description: "Total new male clients registered this month for 15-19 year olds"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -295,7 +295,7 @@ indicators:
                       fm.gender = 'Male'
                       AND (ecf.registration_or_followup_status = 'new_client' or ecr.registration_or_followup_status is null)
                       AND (date(fm.dob, '+50 years') <= date('now'))
-                      AND (date(fm.dob, '+59 years') > date('now'))
+                      AND (date(fm.dob, '+60 years') > date('now'))
                       AND date(substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||
                       substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
@@ -310,7 +310,7 @@ indicators:
                       fm.gender = 'Female'
                       AND (ecf.registration_or_followup_status = 'new_client' or ecr.registration_or_followup_status is null)
                       AND (date(fm.dob, '+50 years') <= date('now'))
-                      AND (date(fm.dob, '+59 years') > date('now'))
+                      AND (date(fm.dob, '+60 years') > date('now'))
                       AND date(substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||
                       substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
@@ -547,7 +547,7 @@ indicators:
                           substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                           date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
-  - key: "cbhs-2b-11-jumla-jumla-ke"
+  - key: "cbhs-2b-11-jumla-ke"
     description: "Total breast feeding mothers"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                           FROM ec_cbhs_register ecr
@@ -559,7 +559,7 @@ indicators:
                           substr(strftime('%Y-%m-%d', datetime(ecr.hiv_registration_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                           date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
-  - key: "cbhs-2c-2-me"
+  - key: "cbhs-2c-2-jumla-me"
     description: "Total male infected with HIV"
     indicatorQuery: " SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -582,7 +582,7 @@ indicators:
                                               2) || '-' || '01') =
                                   date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))))"
 
-  - key: "cbhs-2c-2-ke"
+  - key: "cbhs-2c-2-jumla-ke"
     description: "Total female infected with HIV"
     indicatorQuery: " SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -605,7 +605,7 @@ indicators:
                                               2) || '-' || '01') =
                                   date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))))"
 
-  - key: "cbhs-2c-3-me"
+  - key: "cbhs-2c-3-jumla-me"
     description: "Total male not infected with HIV"
     indicatorQuery: " SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -628,7 +628,7 @@ indicators:
                                               2) || '-' || '01') =
                                   date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))))"
 
-  - key: "cbhs-2c-3-ke"
+  - key: "cbhs-2c-3-jumla-ke"
     description: "Total female not infected with HIV"
     indicatorQuery: " SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -651,7 +651,7 @@ indicators:
                                               2) || '-' || '01') =
                                   date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))))"
 
-  - key: "cbhs-2c-4-me"
+  - key: "cbhs-2c-4-jumla-me"
     description: "Total male unknown HIV status"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -674,7 +674,7 @@ indicators:
                                               2) || '-' || '01') =
                                   date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))))"
 
-  - key: "cbhs-2c-4-ke"
+  - key: "cbhs-2c-4-jumla-ke"
     description: "Total female unknown HIV status"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -815,8 +815,8 @@ indicators:
                       FROM ec_cbhs_register ecr
                                INNER JOIN ec_cbhs_followup ecf on ecf.entity_id = ecr.base_entity_id
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
-                      WHERE fm.gender = 'Male'
-                        AND ecf.hiv_services_provided = 'services_to_prevent_the_spread_of_stds'
+                      WHERE
+                        ecf.hiv_services_provided LIKE '%services_to_prevent_the_spread_of_stds%' AND fm.gender = 'Male'
                         AND date(substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
                                  '-' ||
                                  substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) ||
@@ -829,8 +829,8 @@ indicators:
                       FROM ec_cbhs_register ecr
                                INNER JOIN ec_cbhs_followup ecf on ecf.entity_id = ecr.base_entity_id
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
-                      WHERE fm.gender = 'Female'
-                        AND ecf.hiv_services_provided = 'services_to_prevent_the_spread_of_stds'
+                      WHERE
+                         ecf.hiv_services_provided LIKE '%services_to_prevent_the_spread_of_stds%' AND fm.gender = 'Female'
                         AND date(substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
                                  '-' ||
                                  substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) ||
@@ -844,7 +844,7 @@ indicators:
                                INNER JOIN ec_cbhs_followup ecf on ecf.entity_id = ecr.base_entity_id
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
                       WHERE fm.gender = 'Male'
-                        AND ecf.hiv_services_provided = 'special_group_services'
+                        AND ecf.hiv_services_provided LIKE '%special_group_services%'
                         AND date(substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
                                  '-' ||
                                  substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) ||
@@ -858,7 +858,7 @@ indicators:
                                INNER JOIN ec_cbhs_followup ecf on ecf.entity_id = ecr.base_entity_id
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
                       WHERE fm.gender = 'Female'
-                        AND ecf.hiv_services_provided = 'special_group_services'
+                        AND ecf.hiv_services_provided LIKE '%special_group_services%'
                         AND date(substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
                                  '-' ||
                                  substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) ||
@@ -872,7 +872,7 @@ indicators:
                                INNER JOIN ec_cbhs_followup ecf on ecf.entity_id = ecr.base_entity_id
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
                       WHERE fm.gender = 'Male'
-                        AND ecf.hiv_services_provided = 'services_to_prevent_gender_violence_and_child_abuse'
+                        AND ecf.hiv_services_provided LIKE '%services_to_prevent_gender_violence_and_child_abuse%'
                         AND date(substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
                                  '-' ||
                                  substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) ||
@@ -886,7 +886,7 @@ indicators:
                                INNER JOIN ec_cbhs_followup ecf on ecf.entity_id = ecr.base_entity_id
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
                       WHERE fm.gender = 'Female'
-                        AND ecf.hiv_services_provided = 'services_to_prevent_gender_violence_and_child_abuse'
+                        AND ecf.hiv_services_provided LIKE '%services_to_prevent_gender_violence_and_child_abuse%'
                         AND date(substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
                                  '-' ||
                                  substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) ||
@@ -900,7 +900,7 @@ indicators:
                                INNER JOIN ec_cbhs_followup ecf on ecf.entity_id = ecr.base_entity_id
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
                       WHERE fm.gender = 'Male'
-                        AND ecf.hiv_services_provided = 'psychological_services'
+                        AND ecf.hiv_services_provided LIKE '%psychological_services%'
                         AND date(substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
                                  '-' ||
                                  substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) ||
@@ -914,7 +914,7 @@ indicators:
                                INNER JOIN ec_cbhs_followup ecf on ecf.entity_id = ecr.base_entity_id
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
                       WHERE fm.gender = 'Female'
-                        AND ecf.hiv_services_provided = 'psychological_services'
+                        AND ecf.hiv_services_provided LIKE '%psychological_services%'
                         AND date(substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
                                  '-' ||
                                  substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) ||
@@ -928,7 +928,7 @@ indicators:
                                INNER JOIN ec_cbhs_followup ecf on ecf.entity_id = ecr.base_entity_id
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
                       WHERE fm.gender = 'Male'
-                        AND ecf.hiv_services_provided = 'information_about_fgm'
+                        AND ecf.hiv_services_provided LIKE '%information_about_fgm%'
                         AND date(substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
                                  '-' ||
                                  substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) ||
@@ -942,7 +942,7 @@ indicators:
                                INNER JOIN ec_cbhs_followup ecf on ecf.entity_id = ecr.base_entity_id
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
                       WHERE fm.gender = 'Female'
-                        AND ecf.hiv_services_provided = 'information_about_fgm'
+                        AND ecf.hiv_services_provided LIKE '%information_about_fgm%'
                         AND date(substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
                                  '-' ||
                                  substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) ||
@@ -956,7 +956,7 @@ indicators:
                                INNER JOIN ec_cbhs_followup ecf on ecf.entity_id = ecr.base_entity_id
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
                       WHERE fm.gender = 'Male'
-                        AND ecf.hiv_services_provided = 'family_planning_and_condom_distribution_services'
+                        AND ecf.hiv_services_provided LIKE '%family_planning_and_condom_distribution_services%'
                         AND date(substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
                                  '-' ||
                                  substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) ||
@@ -970,7 +970,7 @@ indicators:
                                INNER JOIN ec_cbhs_followup ecf on ecf.entity_id = ecr.base_entity_id
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
                       WHERE fm.gender = 'Female'
-                        AND ecf.hiv_services_provided = 'family_planning_and_condom_distribution_services'
+                        AND ecf.hiv_services_provided LIKE '%family_planning_and_condom_distribution_services%'
                         AND date(substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
                                  '-' ||
                                  substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) ||
@@ -984,7 +984,7 @@ indicators:
                                INNER JOIN ec_cbhs_followup ecf on ecf.entity_id = ecr.base_entity_id
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
                       WHERE fm.gender = 'Male'
-                        AND ecf.hiv_services_provided = 'self_test_kits_distribution_services'
+                        AND ecf.hiv_services_provided LIKE '%self_test_kits_distribution_services%'
                         AND date(substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
                                  '-' ||
                                  substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) ||
@@ -998,7 +998,7 @@ indicators:
                                INNER JOIN ec_cbhs_followup ecf on ecf.entity_id = ecr.base_entity_id
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ecr.base_entity_id
                       WHERE fm.gender = 'Female'
-                        AND ecf.hiv_services_provided = 'self_test_kits_distribution_services'
+                        AND ecf.hiv_services_provided LIKE '%self_test_kits_distribution_services%'
                         AND date(substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
                                  '-' ||
                                  substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) ||

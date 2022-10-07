@@ -335,6 +335,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/reports_bg_green"
                 android:minHeight="150dp"
+                android:visibility="gone"
                 android:paddingVertical="30dp">
 
                 <ImageView
@@ -436,6 +437,7 @@
                 android:id="@+id/self_testing_reports"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:background="@drawable/reports_bg_blue_green"
                 app:layout_constraintTop_toBottomOf="@id/mother_champion_reports"
                 app:layout_constraintStart_toStartOf="parent"
