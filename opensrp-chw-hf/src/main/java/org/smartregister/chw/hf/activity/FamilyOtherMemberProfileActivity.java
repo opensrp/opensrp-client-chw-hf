@@ -1,8 +1,5 @@
 package org.smartregister.chw.hf.activity;
 
-import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
-import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
-
 import android.content.Context;
 import android.os.Build;
 import android.view.Menu;
@@ -46,6 +43,9 @@ import org.smartregister.family.util.DBConstants;
 import org.smartregister.view.contract.BaseProfileContract;
 
 import timber.log.Timber;
+
+import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
+import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
 
 public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfileActivity {
     private FamilyMemberFloatingMenu familyFloatingMenu;
@@ -153,6 +153,11 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
 
     @Override
     protected void startKvpPrEPRegistration() {
+        //do nothing--> this is for chw
+    }
+
+    @Override
+    protected void startKvpRegistration() {
         String gender = AllClientsUtils.getClientGender(baseEntityId);
         String dob = Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.DOB, false);
         int age = Utils.getAgeFromDate(dob);
@@ -162,6 +167,14 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
         if (gender.equalsIgnoreCase(Constants.GENDER.FEMALE)) {
             KvpRegisterActivity.startKvpScreeningFemale(FamilyOtherMemberProfileActivity.this, baseEntityId, gender, age);
         }
+    }
+
+    @Override
+    protected void startPrEPRegistration() {
+        String gender = AllClientsUtils.getClientGender(baseEntityId);
+        String dob = Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.DOB, false);
+        int age = Utils.getAgeFromDate(dob);
+        PrEPRegisterActivity.startMe(this, baseEntityId, gender, age);
     }
 
     @Override
@@ -292,7 +305,7 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
         }
 
         if (HealthFacilityApplication.getApplicationFlavor().hasKvpPrEP()) {
-            menu.findItem(R.id.action_kvp_prep_registration).setVisible(!KvpDao.isRegisteredForKvp(baseEntityId));
+            menu.findItem(R.id.action_kvp_registration).setVisible(!KvpDao.isRegisteredForKvp(baseEntityId));
         }
 
         if (BuildConfig.BUILD_FOR_BORESHA_AFYA_SOUTH) {

@@ -87,7 +87,7 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
             menu.findItem(R.id.action_hivst_registration).setVisible(!HivstDao.isRegisteredForHivst(baseEntityId) && age >= 15);
         }
         if (HealthFacilityApplication.getApplicationFlavor().hasKvpPrEP()) {
-            menu.findItem(R.id.action_kvp_prep_registration).setVisible(!KvpDao.isRegisteredForKvp(baseEntityId));
+            menu.findItem(R.id.action_kvp_registration).setVisible(!KvpDao.isRegisteredForKvp(baseEntityId));
         }
         return true;
     }
@@ -305,6 +305,11 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
 
     @Override
     protected void startKvpPrEPRegistration() {
+        //do nothing--> this is for chw
+    }
+
+    @Override
+    protected void startKvpRegistration() {
         String gender = AllClientsUtils.getClientGender(baseEntityId);
         String dob = Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.DOB, false);
         int age = Utils.getAgeFromDate(dob);
@@ -314,6 +319,14 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
         if(gender.equalsIgnoreCase(Constants.GENDER.FEMALE)){
             KvpRegisterActivity.startKvpScreeningFemale(AllClientsMemberProfileActivity.this, baseEntityId, gender, age);
         }
+    }
+
+    @Override
+    protected void startPrEPRegistration() {
+        String gender = AllClientsUtils.getClientGender(baseEntityId);
+        String dob = Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.DOB, false);
+        int age = Utils.getAgeFromDate(dob);
+        PrEPRegisterActivity.startMe(this, baseEntityId, gender, age);
     }
 
     @Override
