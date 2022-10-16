@@ -34,11 +34,9 @@ import timber.log.Timber;
 public class KvpBioMedicalServiceInteractor extends BaseKvpVisitInteractor {
 
     private String visitType;
-    private String baseEntityId;
 
-    public KvpBioMedicalServiceInteractor(String visitType, String baseEntityId) {
+    public KvpBioMedicalServiceInteractor(String visitType) {
         this.visitType = visitType;
-        this.baseEntityId = baseEntityId;
     }
 
     @Override
@@ -82,7 +80,19 @@ public class KvpBioMedicalServiceInteractor extends BaseKvpVisitInteractor {
 
         //update other_kvp_category
         JSONObject other_kvp_category = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "other_kvp_category");
-        KvpJsonFormUtils.removeOptionFromCheckboxListWithKey(other_kvp_category, KvpDao.getDominantKVPGroup(baseEntityId));
+        KvpJsonFormUtils.removeOptionFromCheckboxListWithKey(other_kvp_category, KvpDao.getDominantKVPGroup(memberObject.getBaseEntityId()));
+        if (memberObject.getGender().equalsIgnoreCase(Constants.MALE)) {
+            //remove FSW, AGYW
+            //TODO: extract keys to constant
+            KvpJsonFormUtils.removeOptionFromCheckboxListWithKey(other_kvp_category, "fsw");
+            KvpJsonFormUtils.removeOptionFromCheckboxListWithKey(other_kvp_category, "agyw");
+        }
+        if (memberObject.getGender().equalsIgnoreCase(Constants.FEMALE)) {
+            //remove MSM
+            //TODO: extract keys to constant
+            KvpJsonFormUtils.removeOptionFromCheckboxListWithKey(other_kvp_category, "msm");
+        }
+
 
         KvpClientStatusActionHelper actionHelper = new KvpClientStatusActionHelper();
         BaseKvpVisitAction action = getBuilder(context.getString(R.string.kvp_client_status))
