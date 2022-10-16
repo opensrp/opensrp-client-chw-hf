@@ -46,6 +46,56 @@
     "title": "PrEP Initiation",
     "fields": [
       {
+        "key": "prep_status",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "prep_status",
+        "label": "PrEP status in this visit",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "initiated",
+            "text": "Initiated",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "initiated"
+          },
+          {
+            "key": "continuing",
+            "text": "Continuing",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "continuing"
+          },
+          {
+            "key": "re_start",
+            "text": "Re-start",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "re_start"
+          },
+          {
+            "key": "not_initiated",
+            "text": "Not initiated",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "not_initiated"
+          },
+          {
+            "key": "discontinued_quit",
+            "text": "Discontinued/Quit",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "discontinued_quit"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an answer"
+        }
+      },
+      {
         "key": "prep_drug_offered",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",

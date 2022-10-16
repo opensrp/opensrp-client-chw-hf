@@ -46,56 +46,6 @@
     "title": "PrEP Screening",
     "fields": [
       {
-        "key": "prep_status",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "prep_status",
-        "label": "Hali ya PrEP katika hudhurio",
-        "text_color": "#000000",
-        "type": "native_radio",
-        "options": [
-          {
-            "key": "initiated",
-            "text": "Ameanza",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "initiated"
-          },
-          {
-            "key": "continuing",
-            "text": "Anaendelea",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "continuing"
-          },
-          {
-            "key": "re_start",
-            "text": "Ameanza upya tena",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "re_start"
-          },
-          {
-            "key": "not_initiated",
-            "text": "Hajaanza",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "not_initiated"
-          },
-          {
-            "key": "discontinued_quit",
-            "text": "Ameachishwa/Acha",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "discontinued_quit"
-          }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhali chagua jibu"
-        }
-      },
-      {
         "key": "diabetes",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
