@@ -198,6 +198,24 @@
         }
       },
       {
+        "key": "other_poor_prep_adherence_reason",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_poor_prep_adherence_reason",
+        "type": "edit_text",
+        "hint": "Nyingine (Taja)",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali Taja"
+        },
+        "relevance": {
+          "step1:poor_prep_adherence_reason": {
+            "type": "string",
+            "ex": "equalTo(., \"others\")"
+          }
+        }
+      },
+      {
         "key": "prep_side_effects",
         "type": "check_box",
         "label": "Maudhi madogo madogo ya PrEP",
@@ -268,6 +286,24 @@
         "v_required": {
           "value": "true",
           "err": "Tafadhali chagua angalau moja"
+        }
+      },
+      {
+        "key": "other_prep_side_effects",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_prep_side_effects",
+        "type": "edit_text",
+        "hint": "Nyingine (Taja)",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali Taja"
+        },
+        "relevance": {
+          "step1:prep_side_effects": {
+            "type": "string",
+            "ex": "equalTo(., \"others\")"
+          }
         }
       },
       {
