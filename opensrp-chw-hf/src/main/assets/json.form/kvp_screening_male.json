@@ -376,6 +376,21 @@
         }
       },
       {
+        "key": "prompt_counsel_for_testing",
+        "type": "toaster_notes",
+        "text": "Counsel for HIV testing",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step5:hiv_status": {
+            "type": "string",
+            "ex": "equalTo(., \"unknown\")"
+          }
+        }
+      },
+      {
         "key": "is_sdc",
         "type": "hidden",
         "openmrs_entity": "concept",
