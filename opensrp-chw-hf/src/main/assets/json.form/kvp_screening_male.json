@@ -340,11 +340,11 @@
     "next": "step7",
     "fields": [
       {
-        "key": "prisoner_or_inmate",
+        "key": "prisoner_or_rumandee",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "prisoner_or_inmate",
-        "label": "Is the client a prisoner or an inmate?",
+        "openmrs_entity_id": "prisoner_or_rumandee",
+        "label": "Is the client a prisoner or an rumandee?",
         "text_color": "#000000",
         "type": "native_radio",
         "options": [
