@@ -9,7 +9,6 @@ import com.vijay.jsonwizard.constants.JsonFormConstants;
 import com.vijay.jsonwizard.domain.Form;
 
 import org.json.JSONObject;
-import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
 import org.smartregister.chw.core.task.RunnableTask;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.interactor.PrEPVisitInteractor;
@@ -18,7 +17,6 @@ import org.smartregister.chw.kvp.activity.BaseKvpVisitActivity;
 import org.smartregister.chw.kvp.model.BaseKvpVisitAction;
 import org.smartregister.chw.kvp.presenter.BaseKvpVisitPresenter;
 import org.smartregister.chw.kvp.util.Constants;
-import org.smartregister.chw.pmtct.model.BasePmtctHomeVisitAction;
 import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.family.util.Utils;
 import org.smartregister.util.LangUtils;
