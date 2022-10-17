@@ -7,6 +7,8 @@ import org.smartregister.chw.hf.utils.HeiVisitUtils;
 import org.smartregister.chw.hf.utils.PmtctVisitUtils;
 import org.smartregister.chw.hf.utils.PncVisitUtils;
 import org.smartregister.chw.hf.utils.VisitUtils;
+import org.smartregister.chw.kvp.util.KvpVisitsUtil;
+import org.smartregister.chw.kvp.util.PrEPVisitsUtil;
 
 import timber.log.Timber;
 
@@ -26,6 +28,8 @@ public class ProcessVisitsIntentService extends IntentService {
             VisitUtils.processVisits();
             HeiVisitUtils.processVisits();
             PmtctVisitUtils.processVisits();
+            KvpVisitsUtil.processVisits();
+            PrEPVisitsUtil.processVisits();
         } catch (Exception e) {
             Timber.e(e);
         }
