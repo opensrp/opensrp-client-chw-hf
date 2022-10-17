@@ -70,7 +70,7 @@ public class PrEPVisitInteractor extends BaseKvpVisitInteractor {
 
         PrEPScreeningActionHelper actionHelper = new PrEPScreeningActionHelper();
         BaseKvpVisitAction action = getBuilder(context.getString(R.string.prep_screening))
-                .withOptional(false)
+                .withOptional(true)
                 .withDetails(details)
                 .withHelper(actionHelper)
                 .withFormName(Constants.PrEP_FOLLOWUP_FORMS.SCREENING)
@@ -83,7 +83,7 @@ public class PrEPVisitInteractor extends BaseKvpVisitInteractor {
 
         PrEPInitiationActionHelper actionHelper = new PrEPInitiationActionHelper();
         BaseKvpVisitAction action = getBuilder(context.getString(R.string.prep_initiation))
-                .withOptional(false)
+                .withOptional(true)
                 .withDetails(details)
                 .withHelper(actionHelper)
                 .withFormName(Constants.PrEP_FOLLOWUP_FORMS.INITIATION)
@@ -96,7 +96,7 @@ public class PrEPVisitInteractor extends BaseKvpVisitInteractor {
 
         PrEPOtherServicesActionHelper actionHelper = new PrEPOtherServicesActionHelper();
         BaseKvpVisitAction action = getBuilder(context.getString(R.string.other_services))
-                .withOptional(false)
+                .withOptional(true)
                 .withDetails(details)
                 .withHelper(actionHelper)
                 .withFormName(Constants.PrEP_FOLLOWUP_FORMS.OTHER_SERVICES)
