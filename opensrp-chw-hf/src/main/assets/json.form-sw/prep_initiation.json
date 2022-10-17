@@ -93,6 +93,13 @@
         "v_required": {
           "value": "true",
           "err": "Tafadhali chagua jibu"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "prep_initiation_relevance.yml"
+            }
+          }
         }
       },
       {
