@@ -12,13 +12,16 @@ import org.smartregister.chw.core.task.RunnableTask;
 import org.smartregister.chw.hf.interactor.PrEPVisitInteractor;
 import org.smartregister.chw.hf.schedulers.HfScheduleTaskExecutor;
 import org.smartregister.chw.kvp.activity.BaseKvpVisitActivity;
+import org.smartregister.chw.kvp.model.BaseKvpVisitAction;
 import org.smartregister.chw.kvp.presenter.BaseKvpVisitPresenter;
 import org.smartregister.chw.kvp.util.Constants;
+import org.smartregister.chw.pmtct.model.BasePmtctHomeVisitAction;
 import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.family.util.Utils;
 import org.smartregister.util.LangUtils;
 
 import java.util.Date;
+import java.util.LinkedHashMap;
 
 public class PrEPVisitActivity extends BaseKvpVisitActivity {
 
@@ -53,6 +56,12 @@ public class PrEPVisitActivity extends BaseKvpVisitActivity {
         Runnable runnable = () -> HfScheduleTaskExecutor.getInstance().execute(memberObject.getBaseEntityId(), Constants.EVENT_TYPE.PrEP_FOLLOWUP_VISIT, new Date());
         Utils.startAsyncTask(new RunnableTask(runnable), null);
         super.submittedAndClose();
+    }
+
+    @Override
+    public void initializeActions(LinkedHashMap<String, BaseKvpVisitAction> map) {
+        actionList.clear();
+        super.initializeActions(map);
     }
 
     @Override

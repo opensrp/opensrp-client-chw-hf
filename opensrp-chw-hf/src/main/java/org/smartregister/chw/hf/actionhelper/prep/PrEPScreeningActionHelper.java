@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class PrEPScreeningActionHelper implements BaseKvpVisitAction.KvpVisitActionHelper {
 
-    private String prep_status;
+    protected String should_initiate;
     private String jsonPayload;
 
     @Override
@@ -38,7 +38,7 @@ public class PrEPScreeningActionHelper implements BaseKvpVisitAction.KvpVisitAct
     public void onPayloadReceived(String jsonPayload) {
         try {
             JSONObject jsonObject = new JSONObject(jsonPayload);
-            prep_status = CoreJsonFormUtils.getValue(jsonObject, "prep_status");
+            should_initiate = CoreJsonFormUtils.getValue(jsonObject, "should_initiate");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -66,8 +66,8 @@ public class PrEPScreeningActionHelper implements BaseKvpVisitAction.KvpVisitAct
 
     @Override
     public BaseKvpVisitAction.Status evaluateStatusOnPayload() {
-        if (StringUtils.isBlank(prep_status))
-            return BaseKvpVisitAction.Status.PENDING;
+        if (StringUtils.isNotBlank(should_initiate) && should_initiate.equalsIgnoreCase("no"))
+            return BaseKvpVisitAction.Status.PARTIALLY_COMPLETED;
         else {
             return BaseKvpVisitAction.Status.COMPLETED;
         }
