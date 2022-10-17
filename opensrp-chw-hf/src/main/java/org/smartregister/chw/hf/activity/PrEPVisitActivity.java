@@ -3,12 +3,15 @@ package org.smartregister.chw.hf.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 
 import com.vijay.jsonwizard.constants.JsonFormConstants;
 import com.vijay.jsonwizard.domain.Form;
 
 import org.json.JSONObject;
+import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
 import org.smartregister.chw.core.task.RunnableTask;
+import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.interactor.PrEPVisitInteractor;
 import org.smartregister.chw.hf.schedulers.HfScheduleTaskExecutor;
 import org.smartregister.chw.kvp.activity.BaseKvpVisitActivity;
@@ -22,6 +25,7 @@ import org.smartregister.util.LangUtils;
 
 import java.util.Date;
 import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class PrEPVisitActivity extends BaseKvpVisitActivity {
 
@@ -61,7 +65,32 @@ public class PrEPVisitActivity extends BaseKvpVisitActivity {
     @Override
     public void initializeActions(LinkedHashMap<String, BaseKvpVisitAction> map) {
         actionList.clear();
-        super.initializeActions(map);
+
+        //Necessary evil to rearrange the actions according to a specific arrangement
+
+        if (map.containsKey(getString(R.string.prep_visit_type))) {
+            BaseKvpVisitAction visitTypeAction = map.get(getString(R.string.prep_visit_type));
+            actionList.put(getString(R.string.prep_visit_type), visitTypeAction);
+        }
+        if (map.containsKey(getString(R.string.prep_screening))) {
+            BaseKvpVisitAction prepScreeningAction = map.get(getString(R.string.prep_screening));
+            actionList.put(getString(R.string.prep_screening), prepScreeningAction);
+        }
+
+
+        for (Map.Entry<String, BaseKvpVisitAction> entry : map.entrySet()) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                actionList.putIfAbsent(entry.getKey(), entry.getValue());
+            } else {
+                actionList.put(entry.getKey(), entry.getValue());
+            }
+        }
+        //====================End of Necessary evil ====================================
+
+        if (mAdapter != null) {
+            mAdapter.notifyDataSetChanged();
+        }
+        displayProgressBar(false);
     }
 
     @Override
