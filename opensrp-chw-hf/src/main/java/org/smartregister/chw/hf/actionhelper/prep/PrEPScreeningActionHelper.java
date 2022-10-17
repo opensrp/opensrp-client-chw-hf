@@ -66,9 +66,11 @@ public class PrEPScreeningActionHelper implements BaseKvpVisitAction.KvpVisitAct
 
     @Override
     public BaseKvpVisitAction.Status evaluateStatusOnPayload() {
-        if (StringUtils.isNotBlank(should_initiate) && should_initiate.equalsIgnoreCase("no"))
+        if (StringUtils.isBlank(should_initiate)) {
+            return BaseKvpVisitAction.Status.PENDING;
+        } else if (should_initiate.equalsIgnoreCase("no")) {
             return BaseKvpVisitAction.Status.PARTIALLY_COMPLETED;
-        else {
+        } else {
             return BaseKvpVisitAction.Status.COMPLETED;
         }
     }
