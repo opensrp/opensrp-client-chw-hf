@@ -1,0 +1,77 @@
+---
+name: step1_blood_pressure
+description: check if client is eligible to initiate for prep
+priority: 1
+condition: "step1_diabetes != '' && step1_diabetes != 'not_treated'"
+actions:
+  - "isRelevant = true "
+---
+name: step1_kidney_disease
+description: check if client is eligible to initiate for prep
+priority: 1
+condition: "step1_blood_pressure != '' && step1_blood_pressure != 'not_treated'"
+actions:
+  - "isRelevant = true "
+---
+name: step1_nephrotoxic_drugs
+description: check if client is eligible to initiate for prep
+priority: 1
+condition: "step1_kidney_disease != '' && step1_kidney_disease != 'not_treated'"
+actions:
+  - "isRelevant = true "
+---
+name: step1_tested_hbv
+description: check if client is eligible to initiate for prep
+priority: 1
+condition: "step1_nephrotoxic_drugs != '' && step1_nephrotoxic_drugs != 'yes'"
+actions:
+  - "isRelevant = true "
+---
+name: step1_tested_hcv
+description: check if client is eligible to initiate for prep
+priority: 1
+condition: "step1_nephrotoxic_drugs != '' && step1_nephrotoxic_drugs != 'yes'"
+actions:
+  - "isRelevant = true "
+---
+name: step1_tested_crcl
+description: check if client is eligible to initiate for prep
+priority: 1
+condition: "step1_nephrotoxic_drugs != '' && step1_nephrotoxic_drugs != 'yes'"
+actions:
+  - "isRelevant = true "
+---
+name: step1_weight_35_or_above
+description: check if client is eligible to initiate for prep
+priority: 1
+condition: "step1_nephrotoxic_drugs != '' && step1_nephrotoxic_drugs != 'yes'"
+actions:
+  - "isRelevant = true "
+---
+name: step1_acute_hiv
+description: check if client is eligible to initiate for prep
+priority: 1
+condition: "step1_weight_35_or_above != '' && step1_weight_35_or_above != 'no'"
+actions:
+  - "isRelevant = true "
+---
+name: step1_substantial_criteria
+description: check if client is eligible to initiate for prep
+priority: 1
+condition: "step1_acute_hiv != '' && step1_acute_hiv != 'yes'"
+actions:
+  - "isRelevant = true "
+---
+name: step1_prompt_for_prep_eligibility
+description: check if client is eligible to initiate for prep
+priority: 1
+condition: "step1_diabetes != '' && step1_should_initiate == 'yes'"
+actions:
+  - "isRelevant = true "
+---
+name: step1_prompt_for_prep_ineligibility
+description: check if client is eligible to initiate for prep
+priority: 1
+condition: "step1_diabetes != '' && step1_should_initiate != 'yes'"
+actions:
+  - "isRelevant = true "
