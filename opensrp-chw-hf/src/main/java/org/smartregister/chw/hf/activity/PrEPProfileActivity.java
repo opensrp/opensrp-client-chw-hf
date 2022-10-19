@@ -2,8 +2,10 @@ package org.smartregister.chw.hf.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.view.View;
 
 import org.smartregister.chw.core.activity.CoreKvpProfileActivity;
+import org.smartregister.chw.hf.R;
 import org.smartregister.chw.kvp.util.Constants;
 
 public class PrEPProfileActivity extends CoreKvpProfileActivity {
@@ -18,6 +20,16 @@ public class PrEPProfileActivity extends CoreKvpProfileActivity {
 
     @Override
     public void openFollowupVisit() {
-      PrEPVisitActivity.startPrEPVisitActivity(this,memberObject.getBaseEntityId(), false);
+        PrEPVisitActivity.startPrEPVisitActivity(this, memberObject.getBaseEntityId(), false);
+    }
+
+    @Override
+    public void onClick(View view) {
+        int id = view.getId();
+        if (id == R.id.textview_continue) {
+            PrEPVisitActivity.startPrEPVisitActivity(this, memberObject.getBaseEntityId(), true);
+        } else {
+            super.onClick(view);
+        }
     }
 }

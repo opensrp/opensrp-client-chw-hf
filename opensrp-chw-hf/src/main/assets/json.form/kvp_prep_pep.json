@@ -126,7 +126,7 @@
         "relevance": {
           "step1:enrolled_to_prep": {
             "type": "string",
-            "ex": "equalTo(., \"enrolled\")"
+            "ex": "notEqualTo(., \"enrolled\")"
           }
         }
       }

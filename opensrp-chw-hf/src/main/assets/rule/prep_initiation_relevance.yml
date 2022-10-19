@@ -1,0 +1,7 @@
+---
+name: step1_prep_drug_offered
+description: prep_drug_offered
+priority: 1
+condition: "!(step1_prep_status == 'not_initiated' || step1_prep_status == 'discontinued_quit' )"
+actions:
+  - "isRelevant = true "

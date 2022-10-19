@@ -96,6 +96,24 @@
         }
       },
       {
+        "key": "other_previous_hiv_testing_method",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_previous_hiv_testing_method",
+        "type": "edit_text",
+        "hint": "Other(Specify)",
+        "v_required": {
+          "value": "true",
+          "err": "Please specify"
+        },
+        "relevance": {
+          "step1:previous_hiv_testing_method": {
+            "type": "string",
+            "ex": "equalTo(., \"other_method\")"
+          }
+        }
+      },
+      {
         "key": "testing_site",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",

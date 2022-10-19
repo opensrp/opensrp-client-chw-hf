@@ -1,6 +1,9 @@
 package org.smartregister.chw.hf.interactor;
 
 import org.apache.commons.lang3.StringUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.smartregister.chw.core.utils.FormUtils;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.actionhelper.kvp.KvpCervicalCancerScreeningActionHelper;
 import org.smartregister.chw.hf.actionhelper.kvp.KvpClientStatusActionHelper;
@@ -14,10 +17,13 @@ import org.smartregister.chw.hf.actionhelper.kvp.KvpStiScreeningActionHelper;
 import org.smartregister.chw.hf.actionhelper.kvp.KvpTbScreeningActionHelper;
 import org.smartregister.chw.hf.actionhelper.kvp.KvpVmmcActionHelper;
 import org.smartregister.chw.kvp.contract.BaseKvpVisitContract;
+import org.smartregister.chw.kvp.dao.KvpDao;
 import org.smartregister.chw.kvp.domain.VisitDetail;
 import org.smartregister.chw.kvp.interactor.BaseKvpVisitInteractor;
 import org.smartregister.chw.kvp.model.BaseKvpVisitAction;
 import org.smartregister.chw.kvp.util.Constants;
+import org.smartregister.chw.kvp.util.KvpJsonFormUtils;
+import org.smartregister.chw.referral.util.JsonFormConstants;
 
 import java.util.List;
 import java.util.Map;
@@ -56,7 +62,7 @@ public class KvpBioMedicalServiceInteractor extends BaseKvpVisitInteractor {
                 evaluateVmmc(details);
                 evaluateCervicalScreening(details);
                 evaluateMat(details);
-            } catch (BaseKvpVisitAction.ValidationException e) {
+            } catch (Exception e) {
                 Timber.e(e);
             }
 
@@ -66,7 +72,26 @@ public class KvpBioMedicalServiceInteractor extends BaseKvpVisitInteractor {
         appExecutors.diskIO().execute(runnable);
     }
 
-    private void evaluateClientStatus(Map<String, List<VisitDetail>> details) throws BaseKvpVisitAction.ValidationException {
+    private void evaluateClientStatus(Map<String, List<VisitDetail>> details) throws Exception {
+
+        JSONObject clientStatusForm = FormUtils.getFormUtils().getFormJson(Constants.KVP_BIO_MEDICAL_SERVICE_FORMS.KVP_CLIENT_STATUS);
+        JSONArray fields = clientStatusForm.getJSONObject(org.smartregister.chw.hf.utils.Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+
+        //update other_kvp_category
+        JSONObject other_kvp_category = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "other_kvp_category");
+        KvpJsonFormUtils.removeOptionFromCheckboxListWithKey(other_kvp_category, KvpDao.getDominantKVPGroup(memberObject.getBaseEntityId()));
+        if (memberObject.getGender().equalsIgnoreCase(Constants.MALE)) {
+            //remove FSW, AGYW
+            //TODO: extract keys to constant
+            KvpJsonFormUtils.removeOptionFromCheckboxListWithKey(other_kvp_category, "fsw");
+            KvpJsonFormUtils.removeOptionFromCheckboxListWithKey(other_kvp_category, "agyw");
+        }
+        if (memberObject.getGender().equalsIgnoreCase(Constants.FEMALE)) {
+            //remove MSM
+            //TODO: extract keys to constant
+            KvpJsonFormUtils.removeOptionFromCheckboxListWithKey(other_kvp_category, "msm");
+        }
+
 
         KvpClientStatusActionHelper actionHelper = new KvpClientStatusActionHelper();
         BaseKvpVisitAction action = getBuilder(context.getString(R.string.kvp_client_status))
@@ -74,6 +99,7 @@ public class KvpBioMedicalServiceInteractor extends BaseKvpVisitInteractor {
                 .withDetails(details)
                 .withHelper(actionHelper)
                 .withFormName(Constants.KVP_BIO_MEDICAL_SERVICE_FORMS.KVP_CLIENT_STATUS)
+                .withJsonPayload(clientStatusForm.toString())
                 .build();
 
         actionList.put(context.getString(R.string.kvp_client_status), action);

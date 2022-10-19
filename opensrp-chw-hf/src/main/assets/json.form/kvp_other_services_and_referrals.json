@@ -113,6 +113,24 @@
           "value": "true",
           "err": "Please pick at least one"
         }
+      },
+      {
+        "key": "other_other_services_referrals_provided",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_other_services_referrals_provided",
+        "type": "edit_text",
+        "hint": "Other(Specify)",
+        "v_required": {
+          "value": "true",
+          "err": "Please specify"
+        },
+        "relevance": {
+          "step1:other_services_referrals_provided": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
+          }
+        }
       }
     ]
   }

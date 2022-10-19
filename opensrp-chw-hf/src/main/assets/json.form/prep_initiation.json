@@ -46,6 +46,56 @@
     "title": "PrEP Initiation",
     "fields": [
       {
+        "key": "prep_status",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "prep_status",
+        "label": "PrEP status in this visit",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "initiated",
+            "text": "Initiated",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "initiated"
+          },
+          {
+            "key": "continuing",
+            "text": "Continuing",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "continuing"
+          },
+          {
+            "key": "re_start",
+            "text": "Re-start",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "re_start"
+          },
+          {
+            "key": "not_initiated",
+            "text": "Not initiated",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "not_initiated"
+          },
+          {
+            "key": "discontinued_quit",
+            "text": "Discontinued/Quit",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "discontinued_quit"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an answer"
+        }
+      },
+      {
         "key": "prep_drug_offered",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -65,6 +115,13 @@
         "v_required": {
           "value": "true",
           "err": "Please select an answer"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "prep_initiation_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -198,6 +255,24 @@
         }
       },
       {
+        "key": "other_poor_prep_adherence_reason",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_poor_prep_adherence_reason",
+        "type": "edit_text",
+        "hint": "Other(Specify)",
+        "v_required": {
+          "value": "true",
+          "err": "Please specify"
+        },
+        "relevance": {
+          "step1:poor_prep_adherence_reason": {
+            "type": "string",
+            "ex": "equalTo(., \"others\")"
+          }
+        }
+      },
+      {
         "key": "prep_side_effects",
         "type": "check_box",
         "label": "PrEP side effects",
@@ -268,6 +343,24 @@
         "v_required": {
           "value": "true",
           "err": "Please select at least one"
+        }
+      },
+      {
+        "key": "other_prep_side_effects",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_prep_side_effects",
+        "type": "edit_text",
+        "hint": "Other(Specify)",
+        "v_required": {
+          "value": "true",
+          "err": "Please specify"
+        },
+        "relevance": {
+          "step1:prep_side_effects": {
+            "type": "string",
+            "ex": "equalTo(., \"others\")"
+          }
         }
       },
       {

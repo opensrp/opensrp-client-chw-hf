@@ -75,6 +75,20 @@
           "value": "true",
           "err": "Please select an answer"
         }
+      },
+      {
+        "key": "is_pwud",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "is_pwud",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_screening_female_calculation.yml"
+            }
+          }
+        }
       }
     ]
   },
@@ -114,6 +128,20 @@
           "rules-engine": {
             "ex-rules": {
               "rules-file": "kvp_screening_female_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "is_pwid",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "is_pwid",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_screening_female_calculation.yml"
             }
           }
         }
@@ -319,6 +347,35 @@
             "ex": "equalTo(., \"yes\")"
           }
         }
+      },
+      {
+        "key": "prompt_counsel_for_testing",
+        "type": "toaster_notes",
+        "text": "Counsel for HIV testing",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step4:hiv_status": {
+            "type": "string",
+            "ex": "equalTo(., \"unknown\")"
+          }
+        }
+      },
+      {
+        "key": "is_sdc",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "is_sdc",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_screening_female_calculation.yml"
+            }
+          }
+        }
       }
     ]
   },
@@ -394,6 +451,20 @@
           "step5:sex_for_money": {
             "type": "string",
             "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
+        "key": "is_fsw",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "is_fsw",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_screening_female_calculation.yml"
+            }
           }
         }
       }
@@ -488,6 +559,20 @@
             "ex": "equalTo(., \"no\")"
           }
         }
+      },
+      {
+        "key": "is_agyw",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "is_agyw",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_screening_female_calculation.yml"
+            }
+          }
+        }
       }
     ]
   },
@@ -496,11 +581,11 @@
     "next": "step8",
     "fields": [
       {
-        "key": "prisoner_or_inmate",
+        "key": "prisoner_or_rumandee",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "prisoner_or_inmate",
-        "label": "Is the client a prisoner or an inmate?",
+        "openmrs_entity_id": "prisoner_or_rumandee",
+        "label": "Is the client a prisoner or a rumandee?",
         "text_color": "#000000",
         "type": "native_radio",
         "options": [
@@ -630,12 +715,109 @@
           "value": "true",
           "err": "Please select an answer"
         }
+      },
+      {
+        "key": "is_ovp_kvp",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "is_ovp_kvp",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_screening_female_calculation.yml"
+            }
+          }
+        }
       }
     ]
   },
   "step8": {
     "title": "PrEP Analysis",
     "next": "step9",
+    "fields": [
+      {
+        "key": "should_enroll",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "should_enroll",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_screening_female_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prep_assessment",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "prep_assessment",
+        "label": "Has the client been assessed for the use of PrEP?",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an answer"
+        }
+      },
+      {
+        "key": "prep_qualified",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "prep_qualified",
+        "label": "Is the client qualified to receive PrEP?",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an answer"
+        },
+        "relevance": {
+          "step8:prep_assessment": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      }
+    ]
+  },
+  "step9": {
+    "title": "KVP Enrollment",
     "fields": [
       {
         "key": "prompt_for_sdc_kvp",
@@ -734,74 +916,21 @@
         }
       },
       {
-        "key": "prep_assessment",
-        "openmrs_entity_parent": "",
+        "key": "prompt_no_group",
+        "type": "toaster_notes",
+        "text": "The client does not fall in any of the KVP groups and won't be enrolled to KVP friendly services",
+        "openmrs_entity_id": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "prep_assessment",
-        "label": "Has the client been assessed for the use of PrEP?",
-        "text_color": "#000000",
-        "type": "native_radio",
-        "options": [
-          {
-            "key": "yes",
-            "text": "Yes",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "yes"
-          },
-          {
-            "key": "no",
-            "text": "No",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "no"
+        "openmrs_entity_parent": "",
+        "toaster_type": "info",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_screening_female_relevance.yml"
+            }
           }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Please select an answer"
         }
       },
-      {
-        "key": "prep_qualified",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "prep_qualified",
-        "label": "Is the client qualified to receive PrEP?",
-        "text_color": "#000000",
-        "type": "native_radio",
-        "options": [
-          {
-            "key": "yes",
-            "text": "Yes",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "yes"
-          },
-          {
-            "key": "no",
-            "text": "No",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "no"
-          }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Please select an answer"
-        },
-        "relevance": {
-          "step8:prep_assessment": {
-            "type": "string",
-            "ex": "equalTo(., \"yes\")"
-          }
-        }
-      }
-    ]
-  },
-  "step9": {
-    "title": "KVP Enrollment",
-    "fields": [
       {
         "key": "birth_region",
         "openmrs_entity_parent": "",
@@ -813,6 +942,13 @@
         "v_required": {
           "value": "true",
           "err": "Please answer this question"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_screening_female_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -828,6 +964,13 @@
         "v_required": {
           "value": "true",
           "err": "Please answer this question"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_screening_female_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -906,6 +1049,13 @@
         "v_required": {
           "value": "true",
           "err": "Please select an answer"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_screening_female_relevance.yml"
+            }
+          }
         }
       }
     ]

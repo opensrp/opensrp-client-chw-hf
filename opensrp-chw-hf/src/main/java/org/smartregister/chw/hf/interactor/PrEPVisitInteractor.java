@@ -1,6 +1,7 @@
 package org.smartregister.chw.hf.interactor;
 
 import org.apache.commons.lang3.StringUtils;
+import org.smartregister.chw.anc.util.AppExecutors;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.actionhelper.prep.PrEPInitiationActionHelper;
 import org.smartregister.chw.hf.actionhelper.prep.PrEPOtherServicesActionHelper;
@@ -20,6 +21,7 @@ import timber.log.Timber;
 public class PrEPVisitInteractor extends BaseKvpVisitInteractor {
 
     String visitType;
+    protected BaseKvpVisitContract.InteractorCallBack callBack;
 
     public PrEPVisitInteractor(String visitType) {
         this.visitType = visitType;
@@ -35,12 +37,11 @@ public class PrEPVisitInteractor extends BaseKvpVisitInteractor {
 
     @Override
     protected void populateActionList(BaseKvpVisitContract.InteractorCallBack callBack) {
+        this.callBack = callBack;
         final Runnable runnable = () -> {
             try {
                 evaluateVisitType(details);
                 evaluatePrEPScreening(details);
-                evaluatePrEPInitiation(details);
-                evaluateOtherServices(details);
 
             } catch (BaseKvpVisitAction.ValidationException e) {
                 Timber.e(e);
@@ -69,7 +70,7 @@ public class PrEPVisitInteractor extends BaseKvpVisitInteractor {
 
         PrEPScreeningActionHelper actionHelper = new PrEPScreeningActionHelper();
         BaseKvpVisitAction action = getBuilder(context.getString(R.string.prep_screening))
-                .withOptional(false)
+                .withOptional(true)
                 .withDetails(details)
                 .withHelper(actionHelper)
                 .withFormName(Constants.PrEP_FOLLOWUP_FORMS.SCREENING)
@@ -82,7 +83,7 @@ public class PrEPVisitInteractor extends BaseKvpVisitInteractor {
 
         PrEPInitiationActionHelper actionHelper = new PrEPInitiationActionHelper();
         BaseKvpVisitAction action = getBuilder(context.getString(R.string.prep_initiation))
-                .withOptional(false)
+                .withOptional(true)
                 .withDetails(details)
                 .withHelper(actionHelper)
                 .withFormName(Constants.PrEP_FOLLOWUP_FORMS.INITIATION)
@@ -95,7 +96,7 @@ public class PrEPVisitInteractor extends BaseKvpVisitInteractor {
 
         PrEPOtherServicesActionHelper actionHelper = new PrEPOtherServicesActionHelper();
         BaseKvpVisitAction action = getBuilder(context.getString(R.string.other_services))
-                .withOptional(false)
+                .withOptional(true)
                 .withDetails(details)
                 .withHelper(actionHelper)
                 .withFormName(Constants.PrEP_FOLLOWUP_FORMS.OTHER_SERVICES)
@@ -112,5 +113,24 @@ public class PrEPVisitInteractor extends BaseKvpVisitInteractor {
     @Override
     protected String getTableName() {
         return Constants.TABLES.PrEP_FOLLOWUP;
+    }
+
+    private class PrEPScreeningActionHelper extends org.smartregister.chw.hf.actionhelper.prep.PrEPScreeningActionHelper {
+        @Override
+        public String postProcess(String s) {
+            if(should_initiate.equalsIgnoreCase("yes")){
+                try {
+                    evaluatePrEPInitiation(details);
+                    evaluateOtherServices(details);
+                } catch (BaseKvpVisitAction.ValidationException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                actionList.remove(context.getString(R.string.prep_initiation));
+                actionList.remove(context.getString(R.string.other_services));
+            }
+            new AppExecutors().mainThread().execute(() -> callBack.preloadActions(actionList));
+            return super.postProcess(s);
+        }
     }
 }

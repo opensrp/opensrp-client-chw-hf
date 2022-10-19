@@ -37,48 +37,76 @@ actions:
 name: step6_client_in_school
 description: client_in_school relevance
 priority: 1
-condition: "step3_risk_of_having_sexual_intercourse.equals('yes') || (step5_main_income_source_is_sex.equals('no') && (global_age >= 10 && global_age <= 24))"
+condition: "(global_age >= 10 && global_age <= 24)"
 actions:
   - "isRelevant = true"
 ---
-name: step8_prompt_for_sdc_kvp
+name: step9_prompt_for_sdc_kvp
 description: prompt_for_sdc_kvp relevance
 priority: 1
-condition: "step4_hiv_status.equals('positive') || step4_hiv_positive_partner.equals('yes')"
+condition: "step4_is_sdc.equals('yes')"
 actions:
   - "isRelevant = true"
 ---
-name: step8_prompt_for_fsw_kvp
+name: step9_prompt_for_fsw_kvp
 description: prompt_for_fsw_kvp relevance
 priority: 1
-condition: "step5_sex_for_money.equals('yes') && step5_main_income_source_is_sex.equals('yes')"
+condition: "step5_is_fsw.equals('yes')"
 actions:
   - "isRelevant = true"
 ---
-name: step8_prompt_for_ovp_kvp
+name: step9_prompt_for_ovp_kvp
 description: prompt_for_ovp_kvp relevance
 priority: 1
-condition: "(!step7_prisoner_or_inmate.equals('not_applicable') || !step7_mobile_population.equals('not_applicable') || !step7_other_groups_at_risk.equals('not_applicable'))"
+condition: "step7_is_ovp_kvp.equals('yes')"
 actions:
   - "isRelevant = true"
 ---
-name: step8_prompt_for_agyw_kvp
+name: step9_prompt_for_agyw_kvp
 description: prompt_for_agyw_kvp relevance
 priority: 1
-condition: "!step6_harsh_condition_impact.isEmpty()"
+condition: "step6_is_agyw.equals('yes')"
 actions:
   - "isRelevant = true"
 ---
-name: step8_prompt_for_pwud_kvp
+name: step9_prompt_for_pwud_kvp
 description: prompt_for_pwud_kvp relevance
 priority: 1
-condition: "step1_drug_use.equals('yes')"
+condition: "step1_is_pwud.equals('yes')"
 actions:
   - "isRelevant = true"
 ---
-name: step8_prompt_for_pwid_kvp
+name: step9_prompt_for_pwid_kvp
 description: prompt_for_pwid_kvp relevance
 priority: 1
-condition: "step2_drug_injection.equals('yes')"
+condition: "step2_is_pwid.equals('yes')"
+actions:
+  - "isRelevant = true"
+---
+name: step9_prompt_no_group
+description: prompt_no_group
+priority: 1
+condition: "step8_should_enroll.equals('no')"
+actions:
+  - "isRelevant = true"
+---
+name: step9_birth_region
+description: prompt_no_group
+priority: 1
+condition: "step8_should_enroll.equals('yes')"
+actions:
+  - "isRelevant = true"
+---
+name: step9_enrollment_date
+description: prompt_no_group
+priority: 1
+condition: "step8_should_enroll.equals('yes')"
+actions:
+  - "isRelevant = true"
+---
+name: step9_client_group
+description: prompt_no_group
+priority: 1
+condition: "step8_should_enroll.equals('yes')"
 actions:
   - "isRelevant = true"

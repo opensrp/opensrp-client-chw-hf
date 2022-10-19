@@ -1,0 +1,12 @@
+---
+name: step1_should_initiate
+description: check if client is eligible to initiate for prep
+priority: 1
+condition: "true"
+actions:
+  - "calculation= ((step1_diabetes != '' && step1_diabetes == 'not_treated')
+                    || (step1_blood_pressure != '' && step1_blood_pressure == 'not_treated')
+                    || (step1_kidney_disease != '' && step1_kidney_disease == 'not_treated')
+                    || (step1_nephrotoxic_drugs != '' && step1_nephrotoxic_drugs == 'yes')
+                    || (step1_weight_35_or_above != '' && step1_weight_35_or_above == 'no')
+                    || (step1_acute_hiv != '' && step1_acute_hiv == 'yes')) ? 'no' : 'yes'"

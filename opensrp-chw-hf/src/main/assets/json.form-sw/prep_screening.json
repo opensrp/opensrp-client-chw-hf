@@ -46,56 +46,6 @@
     "title": "PrEP Screening",
     "fields": [
       {
-        "key": "prep_status",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "prep_status",
-        "label": "Hali ya PrEP katika hudhurio",
-        "text_color": "#000000",
-        "type": "native_radio",
-        "options": [
-          {
-            "key": "initiated",
-            "text": "Ameanza",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "initiated"
-          },
-          {
-            "key": "continuing",
-            "text": "Anaendelea",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "continuing"
-          },
-          {
-            "key": "re_start",
-            "text": "Ameanza upya tena",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "re_start"
-          },
-          {
-            "key": "not_initiated",
-            "text": "Hajaanza",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "not_initiated"
-          },
-          {
-            "key": "discontinued_quit",
-            "text": "Ameachishwa/Acha",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "discontinued_quit"
-          }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhali chagua jibu"
-        }
-      },
-      {
         "key": "diabetes",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -120,7 +70,7 @@
           },
           {
             "key": "not_diabetic",
-            "text": "Hana (endelea)",
+            "text": "Hana",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "not_diabetic"
@@ -156,7 +106,7 @@
           },
           {
             "key": "normal",
-            "text": "Hana (endelea)",
+            "text": "Hana",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "normal"
@@ -165,6 +115,13 @@
         "v_required": {
           "value": "true",
           "err": "Tafadhali chagua jibu"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "prep_screening_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -192,7 +149,7 @@
           },
           {
             "key": "no_disease",
-            "text": "Hana (endelea)",
+            "text": "Hana",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no_disease"
@@ -201,6 +158,13 @@
         "v_required": {
           "value": "true",
           "err": "Tafadhali chagua jibu"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "prep_screening_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -230,6 +194,13 @@
         "v_required": {
           "value": "true",
           "err": "Tafadhali chagua jibu"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "prep_screening_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -266,6 +237,13 @@
         "v_required": {
           "value": "true",
           "err": "Tafadhali chagua jibu"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "prep_screening_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -344,6 +322,13 @@
         "v_required": {
           "value": "true",
           "err": "Tafadhali chagua jibu"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "prep_screening_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -415,6 +400,13 @@
         "v_required": {
           "value": "true",
           "err": "Tafadhali chagua jibu"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "prep_screening_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -467,32 +459,39 @@
         }
       },
       {
-        "key": "prep_eligibility",
+        "key": "weight_35_or_above",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "prep_eligibility",
-        "label": "Umri => 15  na uzito > 35 KG",
+        "openmrs_entity_id": "weight_35_or_above",
+        "label": "Mteja ana Uzito sawa au zaidi ya 35 KG",
         "text_color": "#000000",
         "type": "native_radio",
         "options": [
           {
-            "key": "yes_continue",
-            "text": "Ndio: Endelea",
+            "key": "yes",
+            "text": "Ndiyo",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "yes_continue"
+            "openmrs_entity_id": "yes"
           },
           {
-            "key": "no_prep",
-            "text": "Hapana: Asipewe huduma (PrEP)",
+            "key": "no",
+            "text": "Hapana",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "no_prep"
+            "openmrs_entity_id": "no"
           }
         ],
         "v_required": {
           "value": "true",
           "err": "Tafadhali chagua jibu"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "prep_screening_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -505,23 +504,30 @@
         "type": "native_radio",
         "options": [
           {
-            "key": "yes_not_eligible",
-            "text": "Ndio: Acha/Hastahili",
+            "key": "yese",
+            "text": "Ndio",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "yes_not_eligible"
+            "openmrs_entity_id": "yes"
           },
           {
-            "key": "no_symptoms_continue",
-            "text": "Hana: Endelea",
+            "key": "no",
+            "text": "Hana",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "no_symptoms_continue"
+            "openmrs_entity_id": "no"
           }
         ],
         "v_required": {
           "value": "true",
           "err": "Tafadhali chagua jibu"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "prep_screening_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -551,6 +557,27 @@
         "v_required": {
           "value": "true",
           "err": "Tafadhali chagua jibu"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "prep_screening_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "should_initiate",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "should_initiate",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "prep_screening_calculation.yml"
+            }
+          }
         }
       },
       {
@@ -560,7 +587,30 @@
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",
-        "toaster_type": "info"
+        "toaster_type": "info",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "prep_screening_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_prep_ineligibility",
+        "type": "toaster_notes",
+        "text": "This client is ineligible for PrEP",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "prep_screening_relevance.yml"
+            }
+          }
+        }
       }
     ]
   }

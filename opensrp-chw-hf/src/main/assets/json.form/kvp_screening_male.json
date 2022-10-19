@@ -75,6 +75,20 @@
           "value": "true",
           "err": "Please select an answer"
         }
+      },
+      {
+        "key": "is_pwud",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "is_pwud",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_screening_male_calculation.yml"
+            }
+          }
+        }
       }
     ]
   },
@@ -114,6 +128,20 @@
           "rules-engine": {
             "ex-rules": {
               "rules-file": "kvp_screening_male_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "is_pwid",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "is_pwid",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_screening_male_calculation.yml"
             }
           }
         }
@@ -198,6 +226,20 @@
           "rules-engine": {
             "ex-rules": {
               "rules-file": "kvp_screening_male_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "is_msm",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "is_msm",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_screening_male_calculation.yml"
             }
           }
         }
@@ -332,6 +374,35 @@
             "ex": "equalTo(., \"yes\")"
           }
         }
+      },
+      {
+        "key": "prompt_counsel_for_testing",
+        "type": "toaster_notes",
+        "text": "Counsel for HIV testing",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step5:hiv_status": {
+            "type": "string",
+            "ex": "equalTo(., \"unknown\")"
+          }
+        }
+      },
+      {
+        "key": "is_sdc",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "is_sdc",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_screening_male_calculation.yml"
+            }
+          }
+        }
       }
     ]
   },
@@ -340,11 +411,11 @@
     "next": "step7",
     "fields": [
       {
-        "key": "prisoner_or_inmate",
+        "key": "prisoner_or_rumandee",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "prisoner_or_inmate",
-        "label": "Is the client a prisoner or an inmate?",
+        "openmrs_entity_id": "prisoner_or_rumandee",
+        "label": "Is the client a prisoner or a rumandee?",
         "text_color": "#000000",
         "type": "native_radio",
         "options": [
@@ -474,6 +545,20 @@
           "value": "true",
           "err": "Please select an answer"
         }
+      },
+      {
+        "key": "is_ovp_kvp",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "is_ovp_kvp",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_screening_male_calculation.yml"
+            }
+          }
+        }
       }
     ]
   },
@@ -482,81 +567,15 @@
     "next": "step8",
     "fields": [
       {
-        "key": "prompt_for_sdc_kvp",
-        "type": "toaster_notes",
-        "text": "The client falls in SDC KVP group\nThe client should be enrolled to KVP friendly services",
-        "openmrs_entity_id": "",
+        "key": "should_enroll",
+        "type": "hidden",
         "openmrs_entity": "concept",
+        "openmrs_entity_id": "should_enroll",
         "openmrs_entity_parent": "",
-        "toaster_type": "problem",
-        "relevance": {
+        "calculation": {
           "rules-engine": {
             "ex-rules": {
-              "rules-file": "kvp_screening_male_relevance.yml"
-            }
-          }
-        }
-      },
-      {
-        "key": "prompt_for_msm_kvp",
-        "type": "toaster_notes",
-        "text": "The client falls in MSM KVP group\nThe client should be enrolled to KVP friendly services",
-        "openmrs_entity_id": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "toaster_type": "problem",
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "kvp_screening_male_relevance.yml"
-            }
-          }
-        }
-      },
-      {
-        "key": "prompt_for_pwud_kvp",
-        "type": "toaster_notes",
-        "text": "The client falls in PWUD KVP group\nThe client should be enrolled to KVP friendly services",
-        "openmrs_entity_id": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "toaster_type": "problem",
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "kvp_screening_male_relevance.yml"
-            }
-          }
-        }
-      },
-      {
-        "key": "prompt_for_pwid_kvp",
-        "type": "toaster_notes",
-        "text": "The client falls in PWID KVP group\nThe client should be enrolled to KVP friendly services",
-        "openmrs_entity_id": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "toaster_type": "problem",
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "kvp_screening_male_relevance.yml"
-            }
-          }
-        }
-      },
-      {
-        "key": "prompt_for_ovp_kvp",
-        "type": "toaster_notes",
-        "text": "The client falls in Other vulnerable population KVP group\nThe client should be enrolled to KVP friendly services",
-        "openmrs_entity_id": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "toaster_type": "problem",
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "kvp_screening_male_relevance.yml"
+              "rules-file": "kvp_screening_male_calculation.yml"
             }
           }
         }
@@ -631,6 +650,102 @@
     "title": "KVP Enrollment",
     "fields": [
       {
+        "key": "prompt_for_sdc_kvp",
+        "type": "toaster_notes",
+        "text": "The client falls in SDC KVP group\nThe client should be enrolled to KVP friendly services",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_screening_male_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_msm_kvp",
+        "type": "toaster_notes",
+        "text": "The client falls in MSM KVP group\nThe client should be enrolled to KVP friendly services",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_screening_male_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_pwud_kvp",
+        "type": "toaster_notes",
+        "text": "The client falls in PWUD KVP group\nThe client should be enrolled to KVP friendly services",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_screening_male_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_pwid_kvp",
+        "type": "toaster_notes",
+        "text": "The client falls in PWID KVP group\nThe client should be enrolled to KVP friendly services",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_screening_male_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_no_group",
+        "type": "toaster_notes",
+        "text": "The client does not fall in any of the KVP groups and won't be enrolled to KVP friendly services",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "info",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_screening_male_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_ovp_kvp",
+        "type": "toaster_notes",
+        "text": "The client falls in Other vulnerable population KVP group\nThe client should be enrolled to KVP friendly services",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_screening_male_relevance.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "birth_region",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -641,6 +756,13 @@
         "v_required": {
           "value": "true",
           "err": "Please answer this question"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_screening_male_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -656,6 +778,13 @@
         "v_required": {
           "value": "true",
           "err": "Please answer this question"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_screening_male_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -727,6 +856,13 @@
         "v_required": {
           "value": "true",
           "err": "Please select an answer"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_screening_male_relevance.yml"
+            }
+          }
         }
       }
     ]
