@@ -358,7 +358,7 @@
           "err": "Please specify"
         },
         "relevance": {
-          "step1:other_services_and_referral": {
+          "step1:services_and_referral": {
             "type": "string",
             "ex": "equalTo(., \"other\")"
           }

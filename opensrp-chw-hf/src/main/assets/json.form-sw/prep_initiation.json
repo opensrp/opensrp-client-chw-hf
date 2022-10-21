@@ -358,8 +358,13 @@
         },
         "relevance": {
           "step1:prep_side_effects": {
-            "type": "string",
-            "ex": "equalTo(., \"others\")"
+            "ex-checkbox": [
+              {
+                "or": [
+                  "others"
+                ]
+              }
+            ]
           }
         }
       },

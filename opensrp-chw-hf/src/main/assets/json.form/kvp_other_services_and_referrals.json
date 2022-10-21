@@ -127,8 +127,13 @@
         },
         "relevance": {
           "step1:other_services_referrals_provided": {
-            "type": "string",
-            "ex": "equalTo(., \"other\")"
+            "ex-checkbox": [
+              {
+                "or": [
+                  "other"
+                ]
+              }
+            ]
           }
         }
       }
