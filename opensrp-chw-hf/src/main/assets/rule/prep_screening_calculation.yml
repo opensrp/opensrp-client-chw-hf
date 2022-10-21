@@ -9,4 +9,5 @@ actions:
                     || (step1_kidney_disease != '' && step1_kidney_disease == 'not_treated')
                     || (step1_nephrotoxic_drugs != '' && step1_nephrotoxic_drugs == 'yes')
                     || (step1_weight_35_or_above != '' && step1_weight_35_or_above == 'no')
+                    || (step1_crcl_results != '' && step1_crcl_results == 'less_than_60' )
                     || (step1_acute_hiv != '' && step1_acute_hiv == 'yes')) ? 'no' : 'yes'"

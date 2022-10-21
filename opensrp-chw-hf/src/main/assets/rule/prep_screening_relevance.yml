@@ -44,7 +44,7 @@ actions:
 name: step1_weight_35_or_above
 description: check if client is eligible to initiate for prep
 priority: 1
-condition: "step1_nephrotoxic_drugs != '' && step1_nephrotoxic_drugs != 'yes'"
+condition: "step1_tested_crcl != '' && (step1_tested_crcl == 'no' || (step1_tested_crcl == 'yes' && step1_crcl_results != '' && step1_crcl_results != 'less_than_60')) "
 actions:
   - "isRelevant = true "
 ---
