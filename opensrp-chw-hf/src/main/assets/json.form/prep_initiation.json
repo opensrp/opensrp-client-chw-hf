@@ -180,6 +180,13 @@
         "v_required": {
           "value": "true",
           "err": "Please select an answer"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "prep_initiation_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -343,6 +350,13 @@
         "v_required": {
           "value": "true",
           "err": "Please select at least one"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "prep_initiation_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -426,6 +440,13 @@
         "v_required": {
           "value": "true",
           "err": "Please select at least one"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "prep_initiation_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -464,6 +485,13 @@
         "v_required": {
           "value": "true",
           "err": "Please enter the next visit date"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "prep_initiation_relevance.yml"
+            }
+          }
         }
       }
     ]
