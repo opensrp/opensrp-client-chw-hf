@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class PrEPInitiationActionHelper implements BaseKvpVisitAction.KvpVisitActionHelper {
 
-    private String prep_drug_offered;
+    private String prep_status;
     private String jsonPayload;
 
     @Override
@@ -38,7 +38,7 @@ public class PrEPInitiationActionHelper implements BaseKvpVisitAction.KvpVisitAc
     public void onPayloadReceived(String jsonPayload) {
         try {
             JSONObject jsonObject = new JSONObject(jsonPayload);
-            prep_drug_offered = CoreJsonFormUtils.getValue(jsonObject, "prep_drug_offered");
+            prep_status = CoreJsonFormUtils.getValue(jsonObject, "prep_status");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -66,7 +66,7 @@ public class PrEPInitiationActionHelper implements BaseKvpVisitAction.KvpVisitAc
 
     @Override
     public BaseKvpVisitAction.Status evaluateStatusOnPayload() {
-        if (StringUtils.isBlank(prep_drug_offered))
+        if (StringUtils.isBlank(prep_status))
             return BaseKvpVisitAction.Status.PENDING;
         else {
             return BaseKvpVisitAction.Status.COMPLETED;
