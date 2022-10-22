@@ -364,10 +364,6 @@
             "openmrs_entity_id": "no_evidence_low_vl"
           }
         ],
-        "v_required": {
-          "value": "true",
-          "err": "Please select an answer"
-        },
         "relevance": {
           "step5:hiv_positive_partner": {
             "type": "string",

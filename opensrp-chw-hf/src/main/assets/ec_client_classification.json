@@ -907,6 +907,13 @@
           },
           {
             "field": "eventType",
+            "field_value": "PrEP Follow-up Visit",
+            "creates_case": [
+              "ec_prep_register"
+            ]
+          },
+          {
+            "field": "eventType",
             "field_value": "PrEP Client Not Eligible",
             "closes_case": [
               "ec_prep_register"

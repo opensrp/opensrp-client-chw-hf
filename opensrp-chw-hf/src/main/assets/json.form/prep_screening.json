@@ -420,14 +420,14 @@
         "options": [
           {
             "key": "greater_than_60",
-            "text": "> 60 ml/min, offer PrEP",
+            "text": "> 60 ml/min",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "greater_than_60"
           },
           {
             "key": "less_than_60",
-            "text": "< 60 ml/min, Do not offer PrEP",
+            "text": "< 60 ml/min",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "less_than_60"

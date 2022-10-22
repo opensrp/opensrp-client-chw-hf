@@ -12,8 +12,9 @@ import org.smartregister.chw.kvp.model.BaseKvpVisitAction;
 import java.util.List;
 import java.util.Map;
 
-public class KvpHtsActionHelper implements BaseKvpVisitAction.KvpVisitActionHelper{
+public class KvpHtsActionHelper implements BaseKvpVisitAction.KvpVisitActionHelper {
 
+    protected String hiv_status;
     private String previous_hiv_testing_method;
     private String jsonPayload;
 
@@ -39,6 +40,7 @@ public class KvpHtsActionHelper implements BaseKvpVisitAction.KvpVisitActionHelp
         try {
             JSONObject jsonObject = new JSONObject(jsonPayload);
             previous_hiv_testing_method = CoreJsonFormUtils.getValue(jsonObject, "previous_hiv_testing_method");
+            hiv_status = CoreJsonFormUtils.getValue(jsonObject, "hiv_status");
         } catch (JSONException e) {
             e.printStackTrace();
         }

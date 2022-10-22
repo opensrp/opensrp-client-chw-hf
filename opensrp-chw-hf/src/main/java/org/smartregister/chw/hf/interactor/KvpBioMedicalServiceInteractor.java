@@ -3,6 +3,7 @@ package org.smartregister.chw.hf.interactor;
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.smartregister.chw.anc.util.AppExecutors;
 import org.smartregister.chw.core.utils.FormUtils;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.actionhelper.kvp.KvpCervicalCancerScreeningActionHelper;
@@ -10,7 +11,6 @@ import org.smartregister.chw.hf.actionhelper.kvp.KvpClientStatusActionHelper;
 import org.smartregister.chw.hf.actionhelper.kvp.KvpCondomProvisionActionHelper;
 import org.smartregister.chw.hf.actionhelper.kvp.KvpFamilyPlanningActionHelper;
 import org.smartregister.chw.hf.actionhelper.kvp.KvpHepatitisActionHelper;
-import org.smartregister.chw.hf.actionhelper.kvp.KvpHtsActionHelper;
 import org.smartregister.chw.hf.actionhelper.kvp.KvpMatActionHelper;
 import org.smartregister.chw.hf.actionhelper.kvp.KvpPrepPepActionHelper;
 import org.smartregister.chw.hf.actionhelper.kvp.KvpStiScreeningActionHelper;
@@ -32,6 +32,7 @@ import timber.log.Timber;
 
 public class KvpBioMedicalServiceInteractor extends BaseKvpVisitInteractor {
 
+    protected BaseKvpVisitContract.InteractorCallBack callBack;
     private String visitType;
 
     public KvpBioMedicalServiceInteractor(String visitType) {
@@ -49,18 +50,21 @@ public class KvpBioMedicalServiceInteractor extends BaseKvpVisitInteractor {
 
     @Override
     protected void populateActionList(BaseKvpVisitContract.InteractorCallBack callBack) {
+        this.callBack = callBack;
         final Runnable runnable = () -> {
             try {
                 evaluateClientStatus(details);
                 evaluateHts(details);
-                evaluatePrepPep(details);
                 evaluateCondomProvision(details);
                 evaluateFamilyPlanning(details);
                 evaluateTbScreening(details);
                 evaluateStiScreening(details);
                 evaluateHepatitis(details);
-                evaluateVmmc(details);
-                evaluateCervicalScreening(details);
+                if (memberObject.getGender().equalsIgnoreCase(Constants.MALE)) {
+                    evaluateVmmc(details);
+                } else {
+                    evaluateCervicalScreening(details);
+                }
                 evaluateMat(details);
             } catch (Exception e) {
                 Timber.e(e);
@@ -243,5 +247,22 @@ public class KvpBioMedicalServiceInteractor extends BaseKvpVisitInteractor {
     @Override
     protected String getTableName() {
         return Constants.TABLES.KVP_FOLLOW_UP;
+    }
+
+    private class KvpHtsActionHelper extends org.smartregister.chw.hf.actionhelper.kvp.KvpHtsActionHelper {
+        @Override
+        public String postProcess(String s) {
+            if (StringUtils.isBlank(hiv_status) || !(hiv_status.equalsIgnoreCase("positive") || hiv_status.equalsIgnoreCase("known_positive"))) {
+                try {
+                    evaluatePrepPep(details);
+                } catch (BaseKvpVisitAction.ValidationException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                actionList.remove(context.getString(R.string.kvp_prep_and_pep));
+            }
+            new AppExecutors().mainThread().execute(() -> callBack.preloadActions(actionList));
+            return super.postProcess(s);
+        }
     }
 }
