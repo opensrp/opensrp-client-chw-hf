@@ -5,7 +5,6 @@ import android.content.Context;
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.kvp.domain.VisitDetail;
 import org.smartregister.chw.kvp.model.BaseKvpVisitAction;
@@ -13,10 +12,10 @@ import org.smartregister.chw.kvp.model.BaseKvpVisitAction;
 import java.util.List;
 import java.util.Map;
 
-public class KvpHtsActionHelper implements BaseKvpVisitAction.KvpVisitActionHelper{
+public class KvpHtsActionHelper implements BaseKvpVisitAction.KvpVisitActionHelper {
 
-    private String previous_hiv_testing_method;
     protected String hiv_status;
+    private String previous_hiv_testing_method;
     private String jsonPayload;
 
     @Override
