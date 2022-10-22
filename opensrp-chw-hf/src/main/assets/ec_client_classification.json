@@ -907,7 +907,7 @@
           },
           {
             "field": "eventType",
-            "field_value": "PrEP FFollow-up Visit",
+            "field_value": "PrEP Follow-up Visit",
             "creates_case": [
               "ec_prep_register"
             ]
