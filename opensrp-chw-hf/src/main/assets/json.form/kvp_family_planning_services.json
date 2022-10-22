@@ -84,12 +84,6 @@
             "openmrs_entity_id": "iucd"
           },
           {
-            "key": "condom",
-            "text": "Condom",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "condom"
-          },
-          {
             "key": "traditional",
             "text": "Traditional",
             "openmrs_entity": "concept",
@@ -118,6 +112,35 @@
             "text": "Refused",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "refused"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an answer"
+        }
+      },
+      {
+        "key": "condom_provided",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "condom_provided",
+        "label": "Was the client also provided with condom as a family planning method?",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
           }
         ],
         "v_required": {
