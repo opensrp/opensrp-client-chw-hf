@@ -59,8 +59,11 @@ public class KvpBioMedicalServiceInteractor extends BaseKvpVisitInteractor {
                 evaluateTbScreening(details);
                 evaluateStiScreening(details);
                 evaluateHepatitis(details);
-                evaluateVmmc(details);
-                evaluateCervicalScreening(details);
+                if (memberObject.getGender().equalsIgnoreCase(Constants.MALE)) {
+                    evaluateVmmc(details);
+                } else {
+                    evaluateCervicalScreening(details);
+                }
                 evaluateMat(details);
             } catch (Exception e) {
                 Timber.e(e);
