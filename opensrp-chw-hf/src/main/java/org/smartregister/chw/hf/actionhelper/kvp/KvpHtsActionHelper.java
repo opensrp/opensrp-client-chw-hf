@@ -5,6 +5,7 @@ import android.content.Context;
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.kvp.domain.VisitDetail;
 import org.smartregister.chw.kvp.model.BaseKvpVisitAction;
@@ -15,6 +16,7 @@ import java.util.Map;
 public class KvpHtsActionHelper implements BaseKvpVisitAction.KvpVisitActionHelper{
 
     private String previous_hiv_testing_method;
+    protected String hiv_status;
     private String jsonPayload;
 
     @Override
@@ -39,6 +41,7 @@ public class KvpHtsActionHelper implements BaseKvpVisitAction.KvpVisitActionHelp
         try {
             JSONObject jsonObject = new JSONObject(jsonPayload);
             previous_hiv_testing_method = CoreJsonFormUtils.getValue(jsonObject, "previous_hiv_testing_method");
+            hiv_status = CoreJsonFormUtils.getValue(jsonObject, "hiv_status");
         } catch (JSONException e) {
             e.printStackTrace();
         }
