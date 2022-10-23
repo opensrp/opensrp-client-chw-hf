@@ -410,6 +410,13 @@
             android:theme="@style/HFTheme.NoActionBar" />
 
         <activity
+            android:name=".activity.KvpMedicalHistoryActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.PrEPMedicalHistoryActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+
+        <activity
             android:name=".activity.SelfTestingReportsActivity"
             android:theme="@style/HFTheme.NoActionBar" />
         <activity

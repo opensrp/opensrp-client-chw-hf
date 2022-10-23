@@ -691,4 +691,120 @@
     <string name="chk_tubal_ligation">Bilateral Tubal Ligation (BTL)</string>
     <string name="chk_referred_fp_services">Referred for other FP services</string>
 
+
+    <string name="view_visits_history">View Visits History</string>
+    <string name="visits_history">Visits History</string>
+    <string name="kvp_visit_title">KVP Visit {0}: {1}</string>
+
+    <!--    KVP Medical History-->
+    <string name="kvp_previous_hiv_testing_method">Previous HIV testing method: </string>
+    <string name="kvp_other_previous_hiv_testing_method">Other previous HIV testing method:</string>
+    <string name="kvp_testing_site">Client\'s testing site:</string>
+    <string name="kvp_testing_approach">Client\'s testing approach:</string>
+    <string name="kvp_tested_hiv">Was the client tested for HIV:</string>
+    <string name="kvp_hiv_status">HIV Testing Results:</string>
+    <string name="kvp_ctc_services">Enrollment to CTC services:</string>
+    <string name="kvp_ctc_number">CTC Number:</string>
+    <string name="kvp_kits_distributed">HIVST kits distributed:</string>
+    <string name="kvp_vmcc_provided">VMMC services provided:</string>
+    <string name="kvp_treatment_provided">Treatment provided to the client:</string>
+    <string name="kvp_iec_sbcc_materials">Number of IEC/SBCC materials provided:</string>
+    <string name="kvp_mat_provided">Client provided with MAT services:</string>
+    <string name="kvp_other_services_referrals_provided">Other services/referrals provided to the client:</string>
+    <string name="kvp_other_other_services_referrals_provided">Other services/referrals provided to the client:</string>
+    <string name="kvp_enrolled_to_prep">Was the client enrolled in PrEP services:</string>
+    <string name="kvp_pep_provision">PEP provision after the client was at risk of contracting HIV:</string>
+    <string name="kvp_condoms_given">Was the client given condoms:</string>
+    <string name="kvp_type_of_issued_condoms">Types of condoms issued:</string>
+    <string name="kvp_number_of_male_condoms_issued">Number of Male condoms issued:</string>
+    <string name="kvp_number_of_female_condoms_issued">Number of Female condoms issued:</string>
+    <string name="kvp_hep_b_screening">Client screened for Hepatitis B virus (HBV):</string>
+    <string name="kvp_hep_c_screening">Client screened for Hepatitis C virus (HCV):</string>
+    <string name="kvp_health_education_provided">Health education provided to the client:</string>
+    <string name="kvp_gbv_screening">Gender Based Violence (GBV) screening:</string>
+    <string name="kvp_family_planning_service">Family planning service provided:</string>
+    <string name="kvp_cervical_cancer_screening">Was the client screened for Cervical Cancer:</string>
+
+    <string name="hivst">HIVST</string>
+    <string name="hiv_cv_test">HIV conventional test</string>
+    <string name="hivst_and_hiv_cv_test">HIVST and HIV conventional test</string>
+    <string name="other_method">Other method</string>
+    <string name="not_tested">Not tested</string>
+    <string name="refused_results">Client refused to receive results</string>
+    <string name="known_positive">Known Positive</string>
+    <string name="enrolled_but_not_on_arv">Enrolled but not initiated on ARV</string>
+    <string name="enrolled_and_on_arv">Enrolled and initiated on ARV</string>
+    <string name="not_applicable">Not applicable</string>
+    <string name="provided">Provided</string>
+    <string name="not_provided">Not provided</string>
+    <string name="referred">Referred</string>
+    <string name="presumptive">Presumptive</string>
+    <string name="not_presumptive">Not presumptive</string>
+    <string name="not_screened">Not screened</string>
+    <string name="no_but_referral_given">No, but the client was issued a referral</string>
+    <string name="rch">RCH</string>
+    <string name="mental_health">Mental health</string>
+    <string name="covid_vaccine">Covid-19 vaccine</string>
+    <string name="legal_services">Legal services</string>
+    <string name="iga">IGA</string>
+    <string name="male_condoms">Male Condoms</string>
+    <string name="female_condoms">Female Condoms</string>
+    <string name="positive_and_referred">Positive and referred</string>
+    <string name="sti">STI</string>
+    <string name="hbv_hcv">HBV and HCV</string>
+    <string name="tb">TB</string>
+    <string name="gbv">GBV</string>
+    <string name="pep">PEP</string>
+    <string name="vmmc">VMMC</string>
+    <string name="cacx">CaCx</string>
+    <string name="drug_use_disorder">Drug use disorder</string>
+    <string name="hiv_aids">HIV and AIDS couple</string>
+    <string name="case_reported">Case Reported</string>
+    <string name="case_not_reported">Case not reported</string>
+    <string name="received_post_gbv_care">Received post GBV care</string>
+    <string name="tl_vasectomy">TL/Vasectomy</string>
+
+    <!--    PrEP Medical History-->
+    <string name="prep_place">Place:</string>
+    <string name="prep_diabetes">Diabetes:</string>
+    <string name="prep_blood_pressure">Blood pressure:</string>
+    <string name="prep_kidney_disease">Kidney disease:</string>
+    <string name="prep_nephrotoxic_drugs">client using medicine/drugs which affect kidney (Nephrotoxic drugs):</string>
+    <string name="prep_tested_hbv">Tested for HBV:</string>
+    <string name="prep_hbv_results">HBV results:</string>
+    <string name="prep_tested_hcv">Tested for HCV:</string>
+    <string name="prep_hcv_results">HCV results:</string>
+    <string name="prep_tested_crcl">Tested for Serum Creatinine (CrCL):</string>
+    <string name="prep_crcl_results">Creatinine Clearance (CrCL) results:</string>
+    <string name="prep_weight_35_or_above">Weighs 35 KG or above:</string>
+    <string name="prep_acute_hiv">Has symptoms of acute HIV infection:</string>
+    <string name="prep_substantial_criteria">Client screened for substantial criteria:</string>
+    <string name="prep_prep_status">PrEP status in this visit:</string>
+    <string name="prep_prep_drug_offered">Type of PrEP drug offered:</string>
+    <string name="prep_prep_pills_number">Number of PrEP pills dispensed:</string>
+    <string name="prep_prep_adherence">PrEP adherence:</string>
+    <string name="prep_poor_prep_adherence_reason">Reasons for poor PrEP adherence:</string>
+    <string name="prep_other_poor_prep_adherence_reason">Other Reasons for poor PrEP adherence:</string>
+    <string name="prep_prep_side_effects">PrEP side effects:</string>
+    <string name="prep_other_prep_side_effects">Other PrEP side effects:</string>
+    <string name="prep_reasons_stopping_prep">Reason(s) for stopping PrEP medication:</string>
+    <string name="prep_other_reason_stopping_prep">Other reason:</string>
+
+
+    <string name="facility">Health Facility</string>
+    <string name="community_outreach">Community/Outreach</string>
+    <string name="transfer_in">Transfer in</string>
+    <string name="visited_another_facility">Visited another facility (refill/outreach/transit)</string>
+    <string name="treated">Treated/is doing well</string>
+    <string name="not_treated">Not treated/not doing well</string>
+    <string name="not_diabetic">Not diabetic</string>
+    <string name="normal">Has normal blood pressure</string>
+    <string name="no_disease">Has no kidney disease</string>
+    <string name="greater_than_60">&gt; 60 ml/min, offer PrEP</string>
+    <string name="less_than_60">&lt; 60 ml/min, Do not offer PrEP</string>
+    <string name="no_results">No results</string>
+
+
+
+
 </resources>
