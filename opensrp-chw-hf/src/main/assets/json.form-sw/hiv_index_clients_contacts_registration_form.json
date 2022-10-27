@@ -57,15 +57,15 @@
         "openmrs_entity": "person",
         "openmrs_entity_id": "fam_name",
         "type": "edit_text",
-        "hint": "Jina la ukoo",
+        "hint": "Jina la Ukoo",
         "edit_type": "name",
         "v_required": {
           "value": "true",
-          "err": "Tafadhali weka jina la ukoo"
+          "err": "Tafadhali weka Jina la Ukoo"
         },
         "v_regex": {
           "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
-          "err": "Tafadhali weka jina la ukoo"
+          "err": "Tafadhali weka Jina la Ukoo"
         }
       },
       {
@@ -74,11 +74,11 @@
         "openmrs_entity": "person",
         "openmrs_entity_id": "first_name",
         "type": "edit_text",
-        "hint": "Jina la kwanza",
+        "hint": "Jina la Kwanza",
         "edit_type": "name",
         "v_required": {
           "value": "true",
-          "err": "Tafadhali weka jina la kwanza"
+          "err": "Tafadhali weka Jina la Kwanza"
         },
         "v_regex": {
           "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
@@ -91,7 +91,7 @@
         "openmrs_entity": "person",
         "openmrs_entity_id": "middle_name",
         "type": "edit_text",
-        "hint": "Jina la kati",
+        "hint": "Jina la Kati",
         "edit_type": "name",
         "v_regex": {
           "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
@@ -99,7 +99,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Tafadhali weka jina la kati"
+          "err": "Tafadhali weka Jina la Kati"
         }
       },
       {
@@ -190,7 +190,7 @@
         "openmrs_entity": "person",
         "openmrs_entity_id": "last_name",
         "type": "edit_text",
-        "hint": "Jina la ukoo",
+        "hint": "Jina la Ukoo",
         "edit_type": "name",
         "read_only": true,
         "v_regex": {
@@ -199,7 +199,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Tafadhali weka jina la ukoo"
+          "err": "Tafadhali weka Jina la Ukoo"
         },
         "calculation": {
           "rules-engine": {
@@ -219,7 +219,7 @@
         "edit_type": "name",
         "v_required": {
           "value": "true",
-          "err": "Tafadhali weka jina la kwanza"
+          "err": "Tafadhali weka Jina la Kwanza"
         },
         "v_regex": {
           "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-]*",
@@ -240,7 +240,7 @@
         "openmrs_entity": "person",
         "openmrs_entity_id": "middle_name",
         "type": "edit_text",
-        "hint": "Jina la kati",
+        "hint": "Jina la Kati",
         "edit_type": "name",
         "v_regex": {
           "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-]*",
@@ -248,7 +248,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Tafadhali weka jina la kati"
+          "err": "Tafadhali weka Jina la Kati"
         },
         "read_only": true,
         "calculation": {
