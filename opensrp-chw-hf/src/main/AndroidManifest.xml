@@ -3,6 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="org.smartregister.chw.hf">
 
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
     <application
         android:name=".HealthFacilityApplication"
         android:allowBackup="true"
@@ -21,78 +33,108 @@
             android:roundIcon="@drawable/ic_launcher_round"
             android:screenOrientation="portrait"
             android:theme="@style/HFTheme.Login"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustResize">
-        </activity>
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"></activity>
         <activity
             android:name=".activity.RequestPhoneNumberCollectionPermission"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.KvpRegisterActivity"
-            android:theme="@style/HFTheme.NoActionBar"/>
-        <activity android:name=".activity.KvpProfileActivity"
-            android:theme="@style/HFTheme.NoActionBar"/>
-        <activity android:name=".activity.KvpServiceActivity"
-            android:theme="@style/HFTheme.NoActionBar"/>
-        <activity android:name=".activity.KvpBioMedicalServiceActivity"
-            android:theme="@style/HFTheme.NoActionBar"/>
-        <activity android:name=".activity.KvpBehavioralServiceActivity"
-            android:theme="@style/HFTheme.NoActionBar"/>
-        <activity android:name=".activity.KvpStructuralServiceActivity"
-            android:theme="@style/HFTheme.NoActionBar"/>
-        <activity android:name=".activity.KvpOtherServiceActivity"
-            android:theme="@style/HFTheme.NoActionBar"/>
-        <activity android:name=".activity.PrEPRegisterActivity"
-            android:theme="@style/HFTheme.NoActionBar"/>
-        <activity android:name=".activity.PrEPProfileActivity"
-            android:theme="@style/HFTheme.NoActionBar"/>
-        <activity android:name=".activity.PrEPVisitActivity"
-            android:theme="@style/HFTheme.NoActionBar"/>
-        <activity android:name=".activity.CdpRegisterActivity"
-            android:theme="@style/HFTheme.NoActionBar"/>
-        <activity android:name=".activity.OrderDetailsActivity"
-            android:theme="@style/HFTheme.NoActionBar"/>
-        <activity android:name=".activity.OrderRequestDetailsActivity"
-            android:theme="@style/HFTheme.NoActionBar"/>
-        <activity android:name=".activity.AncBirthReviewAndEmergencyPlanJsonWizardFormActivity"
-            android:theme="@style/HFTheme.NoActionBar"/>
-        <activity android:name=".activity.LDRegistrationAdmissionInformationJsonWizardFormActivity"
-            android:theme="@style/HFTheme.NoActionBar"/>
-        <activity android:name=".activity.ReferralRegistrationActivity"
-            android:theme="@style/HFTheme.NoActionBar"/>
-        <activity android:name=".activity.LdEmergencyReferralRegistrationActivity"
-            android:theme="@style/HFTheme.NoActionBar"/>
-        <activity android:name=".activity.LTFURegisterActivity"
-            android:theme="@style/HFTheme.NoActionBar"/>
-        <activity android:name=".activity.ReferralsDetailsViewActivity"
-            android:theme="@style/HFTheme.NoActionBar"/>
-        <activity android:name=".activity.LtfuSummaryActivity"
-            android:theme="@style/HFTheme.NoActionBar"/>
-        <activity android:name=".activity.LtfuSummaryViewActivity"
-            android:theme="@style/HFTheme.NoActionBar"/>
-        <activity android:name=".activity.HivstRegisterActivity"
-            android:theme="@style/HFTheme.NoActionBar"/>
-        <activity android:name=".activity.HivstProfileActivity"
-            android:theme="@style/HFTheme.NoActionBar"/>
-        <activity android:name=".activity.HivstResultViewActivity"
-            android:theme="@style/HFTheme.NoActionBar"/>
-        <activity android:name=".activity.LdReportsActivity"
-            android:theme="@style/HFTheme.NoActionBar"/>
-        <activity android:name=".activity.LdReportsViewActivity"
-            android:theme="@style/HFTheme.NoActionBar"/>
-        <activity android:name=".activity.MotherChampionReportsActivity"
-            android:theme="@style/HFTheme.NoActionBar"/>
-        <activity android:name=".activity.MotherChampionReportsViewActivity"
-            android:theme="@style/HFTheme.NoActionBar"/>
+        <activity
+            android:name=".activity.KvpRegisterActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.KvpProfileActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.KvpServiceActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.KvpBioMedicalServiceActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.KvpBehavioralServiceActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.KvpStructuralServiceActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.KvpOtherServiceActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.PrEPRegisterActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.PrEPProfileActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.PrEPVisitActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.CdpRegisterActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.OrderDetailsActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.OrderRequestDetailsActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.AncBirthReviewAndEmergencyPlanJsonWizardFormActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.LDRegistrationAdmissionInformationJsonWizardFormActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.ReferralRegistrationActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.LdEmergencyReferralRegistrationActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.LTFURegisterActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.ReferralsDetailsViewActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.LtfuSummaryActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.LtfuSummaryViewActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.HivstRegisterActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.HivstProfileActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.HivstResultViewActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.LdReportsActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.LdReportsViewActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.MotherChampionReportsActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.MotherChampionReportsViewActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
         <activity
             android:name=".activity.PncReportsActivity"
             android:theme="@style/HFTheme.NoActionBar" />
-        <activity android:name=".activity.CbhsReportsActivity"
+        <activity
+            android:name=".activity.CbhsReportsActivity"
             android:theme="@style/HFTheme.NoActionBar" />
-        <activity android:name=".activity.CbhsReportsViewActivity"
+        <activity
+            android:name=".activity.CbhsReportsViewActivity"
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
             android:name=".activity.PncReportsViewActivity"
@@ -366,22 +408,18 @@
         <activity
             android:name=".activity.PncFacilityVisitActivity"
             android:theme="@style/HFTheme.NoActionBar" />
-
         <activity
             android:name=".activity.LDRegisterActivity"
             android:screenOrientation="portrait"
             android:theme="@style/HFTheme.NoActionBar" />
-
         <activity
             android:name=".activity.LDProfileActivity"
             android:screenOrientation="portrait"
             android:theme="@style/HFTheme.NoActionBar" />
-
         <activity
             android:name=".activity.LDRegistrationFormActivity"
             android:screenOrientation="portrait"
             android:theme="@style/HFTheme.NoActionBar" />
-
         <activity
             android:name=".activity.LDPartographActivity"
             android:screenOrientation="portrait"
@@ -390,25 +428,20 @@
             android:name=".activity.LDPartographDetailsActivity"
             android:screenOrientation="landscape"
             android:theme="@style/HFTheme.NoActionBar" />
-
         <activity
             android:name=".activity.LDGeneralExaminationVisitActivity"
             android:theme="@style/HFTheme.NoActionBar" />
-
         <activity
             android:name=".activity.LDActiveManagementStageActivity"
             android:screenOrientation="portrait"
             android:theme="@style/HFTheme.NoActionBar" />
-
         <activity
             android:name=".activity.PmtctMedicalHistoryActivity"
             android:theme="@style/HFTheme.NoActionBar" />
-
         <activity
             android:name=".activity.LDPostDeliveryManagementMotherActivity"
             android:screenOrientation="portrait"
             android:theme="@style/HFTheme.NoActionBar" />
-
         <activity
             android:name=".activity.KvpMedicalHistoryActivity"
             android:theme="@style/HFTheme.NoActionBar" />
@@ -421,6 +454,22 @@
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
             android:name=".activity.SelfTestingReportsViewActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+
+        <activity
+            android:name=".activity.CdpReportsViewActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+
+        <activity
+            android:name=".activity.CdpReportsActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+
+        <activity
+            android:name=".activity.KvpReportsViewActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+
+        <activity
+            android:name=".activity.KvpReportsActivity"
             android:theme="@style/HFTheme.NoActionBar" />
 
         <meta-data
@@ -461,19 +510,5 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
     </application>
-
-    <uses-feature android:name="android.hardware.camera" />
-
-    <uses-feature android:name="android.hardware.camera.autofocus" />
-
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-
-    <uses-permission android:name="android.permission.CALL_PHONE" />
 
 </manifest>

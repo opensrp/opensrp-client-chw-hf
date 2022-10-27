@@ -886,6 +886,20 @@
           },
           {
             "field": "eventType",
+            "field_value": "CDP Distribution Within Facility",
+            "creates_case": [
+              "ec_cdp_issuing_hf"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "CDP Distribution Outside Facility",
+            "creates_case": [
+              "ec_cdp_issuing_hf"
+            ]
+          },
+          {
+            "field": "eventType",
             "field_value": "KVP Registration",
             "creates_case": [
               "ec_kvp_register"
@@ -893,9 +907,31 @@
           },
           {
             "field": "eventType",
+            "field_value": "KVP Behavioral Service Visit",
+            "creates_case": [
+              "ec_kvp_behavioral_services"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "KVP Structural Service Visit",
+            "creates_case": [
+              "ec_kvp_structural_services"
+            ]
+          },
+          {
+            "field": "eventType",
             "field_value": "KVP Bio Medical Service Visit",
             "creates_case": [
-              "ec_kvp_register"
+              "ec_kvp_register",
+              "ec_kvp_bio_medical_services"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "KVP Other Service Visit",
+            "creates_case": [
+              "ec_kvp_other_services"
             ]
           },
           {
@@ -917,6 +953,13 @@
             "field_value": "PrEP Client Not Eligible",
             "closes_case": [
               "ec_prep_register"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "PrEP Follow-up Visit",
+            "creates_case": [
+              "ec_prep_followup"
             ]
           }
         ]

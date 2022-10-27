@@ -185,13 +185,14 @@ public class HfChwRepository extends CoreChwRepository {
                 String ldReportingIndicatorConfigFile = "config/ld-reporting-indicator-definitions.yml";
                 String motherChampionReportingIndicatorConfigFile = "config/mother_champion-reporting-indicator-definitions.yml";
                 String selfTestingIndicatorConfigFile = "config/self-testing-monthly-report.yml";
+                String kvpTestingIndicatorConfigFile = "config/kvp-monthly-report.yml";
                 String ltfuIndicatorConfigFile = "config/community-ltfu-summary.yml";
 
                 for (String configFile : Collections.unmodifiableList(
                         Arrays.asList(indicatorsConfigFile, ancIndicatorConfigFile,
                                 pmtctIndicatorConfigFile, pncIndicatorConfigFile,
                                 cbhsReportingIndicatorConfigFile, ldReportingIndicatorConfigFile,
-                                motherChampionReportingIndicatorConfigFile,selfTestingIndicatorConfigFile,ltfuIndicatorConfigFile))) {
+                                motherChampionReportingIndicatorConfigFile,selfTestingIndicatorConfigFile,kvpTestingIndicatorConfigFile,ltfuIndicatorConfigFile))) {
                     reportingLibraryInstance.readConfigFile(configFile, db);
                 }
 

@@ -69,6 +69,142 @@ public class ReportDao extends AbstractDao {
             return new ArrayList<>();
     }
 
+    public static List<Map<String, String>> getHfIssuingCdpStockLog(Date reportDate) {
+
+        String query1 = " SELECT point_of_service,other_pos ,female_condoms_offset,male_condoms_offset\n" +
+                "        FROM ec_cdp_issuing_hf\n" +
+                "        WHERE point_of_service='rch_clinic' \n" +
+                " OR point_of_service='ctc' OR point_of_service='opd' OR point_of_service='other'\n" +
+                " OR point_of_service='tb_clinic' OR point_of_service='outreach'  \n" +
+                "        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =\n" +
+                "        date(substr(condom_restock_date, 7, 4) || '-' || substr(condom_restock_date, 4, 2) || '-' || '01')";
+
+
+        String query2 =
+                "SELECT  requester,cof.condom_type as condom_type,quantity_response\n" +
+                        "                       FROM ec_cdp_order_feedback cof\n" +
+                        "      INNER JOIN ec_cdp_orders eco ON eco.form_submission_id = cof.request_reference\n" +
+                        "  INNER JOIN task t ON t.for = eco.base_entity_id\n" +
+                        "        WHERE (t.status='IN_PROGRESS'OR t.status='COMPLETED') \n" +
+                        "  AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =\n" +
+                        "      date(substr(strftime('%Y-%m-%d', datetime(response_at / 1000, 'unixepoch', 'localtime')),\n" +
+                        "                  1, 4) ||\n" +
+                        "           '-' ||\n" +
+                        "           substr(strftime('%Y-%m-%d', datetime(response_at / 1000, 'unixepoch', 'localtime')),\n" +
+                        "                  6, 2) ||\n" +
+                        "           '-' || '01')\n";
+
+
+        String queryDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(reportDate);
+
+        query1 = query1.contains("%s") ? query1.replaceAll("%s", queryDate) : query1;
+        query2 = query2.contains("%s") ? query2.replaceAll("%s", queryDate) : query2;
+
+        DataMap<Map<String, String>> map1 = cursor -> {
+            Map<String, String> data1 = new HashMap<>();
+            data1.put("point_of_service", cursor.getString(cursor.getColumnIndex("point_of_service")));
+            data1.put("other_point_of_service", cursor.getString(cursor.getColumnIndex("other_pos")));
+            data1.put("female_condoms_offset", cursor.getString(cursor.getColumnIndex("female_condoms_offset")));
+            data1.put("male_condoms_offset", cursor.getString(cursor.getColumnIndex("male_condoms_offset")));
+            return data1;
+        };
+
+        DataMap<Map<String, String>> map2= cursor2 -> {
+            Map<String, String> data2 = new HashMap<>();
+            data2.put("requester", cursor2.getString(cursor2.getColumnIndex("requester")));
+            data2.put("quantity_response", cursor2.getString(cursor2.getColumnIndex("quantity_response")));
+            data2.put("condom_type", cursor2.getString(cursor2.getColumnIndex("condom_type")));
+            return data2;
+        };
+
+        List<Map<String, String>> res1 = readData(query1, map1);
+        List<Map<String, String>> res2 = readData(query2, map2);
+        List<Map<String, String>> res = new ArrayList<>();
+        res.addAll(res1);
+        res.addAll(res2);
+
+        if (res.size() > 0) {
+            return res;
+        } else
+            return new ArrayList<>();
+    }
+
+    public static List<Map<String, String>> getHfCdpStockLog(Date reportDate)
+    {
+        String sql = " SELECT female_condoms_offset,male_condoms_offset,issuing_organization,male_condom_brand,female_condom_brand\n" +
+                "                FROM ec_cdp_stock_log\n" +
+                "                WHERE (issuing_organization='MSD' OR issuing_organization='PSI' OR issuing_organization='T-MARC')\n" +
+                "\t\t\t\t AND (male_condom_brand !='other' AND female_condom_brand !='other')\n" +
+                "                 AND date(substr(strftime('%Y-%m-%d', datetime(date_updated / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||\n" +
+                "                 substr(strftime('%Y-%m-%d', datetime(date_updated / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =\n" +
+                "                 date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))\n" +
+                "                 UNION\n" +
+                "                 SELECT female_condoms_offset,male_condoms_offset,other_issuing_organization,male_condom_brand,female_condom_brand\n" +
+                "                 FROM ec_cdp_stock_log\n" +
+                "                 WHERE issuing_organization='other'\n" +
+                "\t\t\t\t AND (male_condom_brand !='other' AND female_condom_brand !='other')\n" +
+                "                 AND date(substr(strftime('%Y-%m-%d', datetime(date_updated / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||\n" +
+                "                 substr(strftime('%Y-%m-%d', datetime(date_updated / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =\n" +
+                "                 date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))\n" +
+                "\t\t\t\t UNION\n" +
+                "\t\t\t\t SELECT female_condoms_offset,male_condoms_offset,other_issuing_organization,other_male_condom_brand,other_female_condom_brand\n" +
+                "                 FROM ec_cdp_stock_log\n" +
+                "                 WHERE issuing_organization='other'\n" +
+                "\t\t\t\t AND (male_condom_brand ='other' OR female_condom_brand ='other')\n" +
+                "                 AND date(substr(strftime('%Y-%m-%d', datetime(date_updated / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||\n" +
+                "                 substr(strftime('%Y-%m-%d', datetime(date_updated / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =\n" +
+                "                 date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))\n" +
+                "\t\t\t\t UNION\n" +
+                "\t\t\t\t SELECT female_condoms_offset,male_condoms_offset,issuing_organization,other_male_condom_brand,other_female_condom_brand\n" +
+                "                FROM ec_cdp_stock_log\n" +
+                "                WHERE (issuing_organization='MSD' OR issuing_organization='PSI' OR issuing_organization='T-MARC')\n" +
+                "\t\t\t\t AND (male_condom_brand ='other' OR female_condom_brand ='other')\n" +
+                "                 AND date(substr(strftime('%Y-%m-%d', datetime(date_updated / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||\n" +
+                "                 substr(strftime('%Y-%m-%d', datetime(date_updated / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =\n" +
+                "                 date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))\n" +
+                "\t\t\t\tUNION\n" +
+                "                SELECT ec_cdp_order_feedback.quantity_response as female_condoms_offset,'-' as male_condoms_offset,location.name,'-' as male_condom_brand,ec_cdp_order_feedback.condom_brand\n" +
+                "                 FROM ec_cdp_order_feedback\n" +
+                "                INNER JOIN task ON ec_cdp_order_feedback.request_reference = task.reason_reference\n" +
+                "                INNER JOIN location ON task.group_id = location.uuid\n" +
+                "                WHERE ec_cdp_order_feedback.condom_type='female_condom' AND\n" +
+                "                 task.status = 'COMPLETED' AND\n" +
+                "                date(substr(strftime('%Y-%m-%d', datetime(response_at / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' || substr(strftime('%Y-%m-%d', datetime(response_at / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =\n" +
+                "                 date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))\n" +
+                "                UNION ALL\n" +
+                "                SELECT '-' as female_condoms_offset,ec_cdp_order_feedback.quantity_response as male_condoms_offset,location.name,ec_cdp_order_feedback.condom_brand,'-' as female_condom_brand\n" +
+                "                 FROM ec_cdp_order_feedback\n" +
+                "                INNER JOIN task ON ec_cdp_order_feedback.request_reference = task.reason_reference\n" +
+                "                INNER JOIN location ON task.group_id = location.uuid\n" +
+                "                WHERE ec_cdp_order_feedback.condom_type='male_condom' AND\n" +
+                "                 task.status = 'COMPLETED' AND\n" +
+                "                date(substr(strftime('%Y-%m-%d', datetime(response_at / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' || substr(strftime('%Y-%m-%d', datetime(response_at / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =\n" +
+                "                 date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))\n";
+
+        String queryDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(reportDate);
+
+        sql = sql.contains("%s") ? sql.replaceAll("%s", queryDate) : sql;
+
+        DataMap<Map<String, String>> map = cursor -> {
+            Map<String, String> data = new HashMap<>();
+            data.put("female_condoms_offset", cursor.getString(cursor.getColumnIndex("female_condoms_offset")));
+            data.put("male_condoms_offset", cursor.getString(cursor.getColumnIndex("male_condoms_offset")));
+            data.put("issuing_organization", cursor.getString(cursor.getColumnIndex("issuing_organization")));
+            data.put("male_condom_brand", cursor.getString(cursor.getColumnIndex("male_condom_brand")));
+            data.put("female_condom_brand", cursor.getString(cursor.getColumnIndex("female_condom_brand")));
+
+            return data;
+        };
+
+        List<Map<String, String>> res = readData(sql, map);
+
+
+        if (res != null && res.size() > 0) {
+            return res;
+        } else
+            return new ArrayList<>();
+    }
+
     public static int getReportPerIndicatorCode(String indicatorCode, Date reportDate) {
         String reportDateString = simpleDateFormat.format(reportDate);
         String sql = "SELECT indicator_value\n" +

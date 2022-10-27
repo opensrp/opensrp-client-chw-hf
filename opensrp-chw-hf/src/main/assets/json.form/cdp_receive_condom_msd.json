@@ -313,11 +313,25 @@
         "type": "native_radio",
         "options": [
           {
-            "key": "msd",
+            "key": "MSD",
             "text": "MSD",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "msd"
+            "openmrs_entity_id": "MSD"
+          },
+          {
+            "key": "PSI",
+            "text": "PSI",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "PSI"
+          },
+          {
+            "key": "T-MARC",
+            "text": "T-MARC",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "T-MARC"
           },
           {
             "key": "other",

@@ -1,12 +1,12 @@
 indicators:
-  - key: "hivst-8-15-19-ME"
+  - key: "hivst-8-18-19-ME"
     description: "Jumla ya wateja (Binafsi) waliopata majibu chanya (Reactive) baada ya kujipima VVU Umri 15-19"
     indicatorQuery: " SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
 					  WHERE hivst_result='reactive'
-					  AND (date(efm.dob, '+15 years') <= date('now'))
+					  AND (date(efm.dob, '+18 years') <= date('now'))
                       AND (date(efm.dob, '+20 years') > date('now'))
 					  AND (efm.gender='Male')
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -89,13 +89,13 @@ indicators:
 					  AND (efm.gender='Male')
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                       date(substr(ehr.result_date, 7, 4) || '-' || substr(ehr.result_date, 4, 2) || '-' || '01')"
-  - key: "hivst-8-i-15-19-ME"
+  - key: "hivst-8-i-18-19-ME"
     description: "Wajidunga dawa za kulevya Umri 15-19"
     indicatorQuery: " SELECT count(DISTINCT efm.base_entity_id) as count FROM ec_hivst_results ehr
     			  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
     			  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
     			  WHERE hivst_result='reactive'
-    			  AND (date(efm.dob, '+15 years') <= date('now'))
+    			  AND (date(efm.dob, '+18 years') <= date('now'))
                   AND (date(efm.dob, '+20 years') > date('now'))
                   AND (client_group='pwid')
     			  AND (efm.gender='Male')
@@ -184,13 +184,13 @@ indicators:
     			  AND (efm.gender='Male')
                   AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                   date(substr(ehr.result_date, 7, 4) || '-' || substr(ehr.result_date, 4, 2) || '-' || '01')"
-  - key: "hivst-8-ii-15-19-ME"
+  - key: "hivst-8-ii-18-19-ME"
     description: "Wafungwa Umri 15-19"
     indicatorQuery: " SELECT count(DISTINCT efm.base_entity_id) as count FROM ec_hivst_results ehr
     	  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
     	  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
     	  WHERE hivst_result='reactive'
-    	  AND (date(efm.dob, '+15 years') <= date('now'))
+    	  AND (date(efm.dob, '+18 years') <= date('now'))
           AND (date(efm.dob, '+20 years') > date('now'))
           AND (client_group='prisoners')
     	  AND (efm.gender='Male')
@@ -279,13 +279,13 @@ indicators:
     	  AND (efm.gender='Male')
           AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
           date(substr(ehr.result_date, 7, 4) || '-' || substr(ehr.result_date, 4, 2) || '-' || '01')"
-  - key: "hivst-8-iv-15-19-ME"
+  - key: "hivst-8-iv-18-19-ME"
     description: "Wanaume wanaofanya ngono na wanaume wenzao Umri 15-19"
     indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count FROM ec_hivst_results ehr
             INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
             INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
             WHERE hivst_result='reactive'
-            AND (date(efm.dob, '+15 years') <= date('now'))
+            AND (date(efm.dob, '+18 years') <= date('now'))
             AND (date(efm.dob, '+20 years') > date('now'))
             AND (client_group='msm')
             AND (efm.gender='Male')
@@ -374,13 +374,13 @@ indicators:
               AND (efm.gender='Male')
               AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
               date(substr(ehr.result_date, 7, 4) || '-' || substr(ehr.result_date, 4, 2) || '-' || '01')"
-  - key: "hivst-8-vi-15-19-ME"
+  - key: "hivst-8-vi-18-19-ME"
     description: "Makundi Mengine Umri 15-19"
     indicatorQuery: " SELECT count(DISTINCT efm.base_entity_id) as count FROM ec_hivst_results ehr
              INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
              INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
              WHERE hivst_result='reactive'
-             AND (date(efm.dob, '+15 years') <= date('now'))
+             AND (date(efm.dob, '+18 years') <= date('now'))
              AND (date(efm.dob, '+20 years') > date('now'))
              AND (client_group='others')
              AND (efm.gender='Male')
@@ -469,14 +469,14 @@ indicators:
             AND (efm.gender='Male')
             AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
             date(substr(ehr.result_date, 7, 4) || '-' || substr(ehr.result_date, 4, 2) || '-' || '01')"
-  - key: "hivst-9-15-19-ME"
+  - key: "hivst-9-18-19-ME"
     description: "Jumla ya wateja (Binafsi) waliopewa rufaa kwenda kituo/Eneo la upimaji wa maambukizi ya VVU 15-19"
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
 					  WHERE focus='Suspected HIV'
 					  AND (efm.gender='Male')
-					  AND (date(efm.dob, '+15 years') <= date('now'))
+					  AND (date(efm.dob, '+18 years') <= date('now'))
                       AND (date(efm.dob, '+20 years') > date('now'))
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                           date(substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 1, 4) ||'-' ||
@@ -564,7 +564,7 @@ indicators:
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                       date(substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 1, 4) ||'-' ||
                       substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 6, 2) ||'-' || '01')"
-  - key: "hivst-9-i-15-19-ME"
+  - key: "hivst-9-i-18-19-ME"
     description: "Rufaa kwa Wajidunga dawa za kulevya Umri 15-19"
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
@@ -572,7 +572,7 @@ indicators:
 					  WHERE focus='Suspected HIV'
 					  AND (efm.gender='Male')
 					  AND (client_group='pwid')
-					  AND (date(efm.dob, '+15 years') <= date('now'))
+					  AND (date(efm.dob, '+18 years') <= date('now'))
                       AND (date(efm.dob, '+20 years') > date('now'))
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                           date(substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 1, 4) ||'-' ||
@@ -667,7 +667,7 @@ indicators:
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                           date(substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 1, 4) ||'-' ||
                           substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 6, 2) ||'-' || '01')"
-  - key: "hivst-9-ii-15-19-ME"
+  - key: "hivst-9-ii-18-19-ME"
     description: "Rufaa kwa Wafungwa Umri 15-19"
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
@@ -675,7 +675,7 @@ indicators:
 					  WHERE focus='Suspected HIV'
 					  AND (efm.gender='Male')
 					  AND (client_group='prisoners')
-					  AND (date(efm.dob, '+15 years') <= date('now'))
+					  AND (date(efm.dob, '+18 years') <= date('now'))
                       AND (date(efm.dob, '+20 years') > date('now'))
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                           date(substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 1, 4) ||'-' ||
@@ -770,7 +770,7 @@ indicators:
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                           date(substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 1, 4) ||'-' ||
                           substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 6, 2) ||'-' || '01')"
-  - key: "hivst-9-iv-15-19-ME"
+  - key: "hivst-9-iv-18-19-ME"
     description: "Rufaa kwa Wanaume wanaofanya ngono na wanaume wenzao Umri 15-19"
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
@@ -778,7 +778,7 @@ indicators:
 					  WHERE focus='Suspected HIV'
 					  AND (efm.gender='Male')
 					  AND (client_group='msm')
-					  AND (date(efm.dob, '+15 years') <= date('now'))
+					  AND (date(efm.dob, '+18 years') <= date('now'))
                       AND (date(efm.dob, '+20 years') > date('now'))
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                           date(substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 1, 4) ||'-' ||
@@ -873,7 +873,7 @@ indicators:
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                           date(substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 1, 4) ||'-' ||
                           substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 6, 2) ||'-' || '01')"
-  - key: "hivst-9-vi-15-19-ME"
+  - key: "hivst-9-vi-18-19-ME"
     description: "Rufaa kwa Makundi Mengine Umri 15-19"
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
@@ -881,7 +881,7 @@ indicators:
 					  WHERE focus='Suspected HIV'
 					  AND (efm.gender='Male')
 					  AND (client_group='others')
-					  AND (date(efm.dob, '+15 years') <= date('now'))
+					  AND (date(efm.dob, '+18 years') <= date('now'))
                       AND (date(efm.dob, '+20 years') > date('now'))
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                           date(substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 1, 4) ||'-' ||
@@ -976,14 +976,14 @@ indicators:
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                           date(substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 1, 4) ||'-' ||
                           substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 6, 2) ||'-' || '01')"
-  - key: "hivst-8-15-19-KE"
+  - key: "hivst-8-18-19-KE"
     description: "Jumla ya wateja (Binafsi) waliopata majibu chanya (Reactive) baada ya kujipima VVU Umri 15-19"
     indicatorQuery: " SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
 					  WHERE hivst_result='reactive'
-					  AND (date(efm.dob, '+15 years') <= date('now'))
+					  AND (date(efm.dob, '+18 years') <= date('now'))
                       AND (date(efm.dob, '+20 years') > date('now'))
 					  AND (efm.gender='Female')
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -1066,13 +1066,13 @@ indicators:
 					  AND (efm.gender='Female')
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                       date(substr(ehr.result_date, 7, 4) || '-' || substr(ehr.result_date, 4, 2) || '-' || '01')"
-  - key: "hivst-8-i-15-19-KE"
+  - key: "hivst-8-i-18-19-KE"
     description: "Wajidunga dawa za kulevya Umri 15-19"
     indicatorQuery: " SELECT count(DISTINCT efm.base_entity_id) as count FROM ec_hivst_results ehr
     			  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
     			  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
     			  WHERE hivst_result='reactive'
-    			  AND (date(efm.dob, '+15 years') <= date('now'))
+    			  AND (date(efm.dob, '+18 years') <= date('now'))
                   AND (date(efm.dob, '+20 years') > date('now'))
                   AND (client_group='pwid')
     			  AND (efm.gender='Female')
@@ -1161,13 +1161,13 @@ indicators:
     			  AND (efm.gender='Female')
                   AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                   date(substr(ehr.result_date, 7, 4) || '-' || substr(ehr.result_date, 4, 2) || '-' || '01')"
-  - key: "hivst-8-ii-15-19-KE"
+  - key: "hivst-8-ii-18-19-KE"
     description: "Wafungwa Umri 15-19"
     indicatorQuery: " SELECT count(DISTINCT efm.base_entity_id) as count FROM ec_hivst_results ehr
     	  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
     	  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
     	  WHERE hivst_result='reactive'
-    	  AND (date(efm.dob, '+15 years') <= date('now'))
+    	  AND (date(efm.dob, '+18 years') <= date('now'))
           AND (date(efm.dob, '+20 years') > date('now'))
           AND (client_group='prisoners')
     	  AND (efm.gender='Female')
@@ -1256,13 +1256,13 @@ indicators:
     	  AND (efm.gender='Female')
           AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
           date(substr(ehr.result_date, 7, 4) || '-' || substr(ehr.result_date, 4, 2) || '-' || '01')"
-  - key: "hivst-8-iii-15-19-KE"
+  - key: "hivst-8-iii-18-19-KE"
     description: "Wanaume wanaofanya ngono na wanaume wenzao Umri 15-19"
     indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count FROM ec_hivst_results ehr
             INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
             INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
             WHERE hivst_result='reactive'
-            AND (date(efm.dob, '+15 years') <= date('now'))
+            AND (date(efm.dob, '+18 years') <= date('now'))
             AND (date(efm.dob, '+20 years') > date('now'))
             AND (client_group='fsw')
             AND (efm.gender='Female')
@@ -1351,13 +1351,13 @@ indicators:
               AND (efm.gender='Female')
               AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
               date(substr(ehr.result_date, 7, 4) || '-' || substr(ehr.result_date, 4, 2) || '-' || '01')"
-  - key: "hivst-8-v-15-19-KE"
+  - key: "hivst-8-v-18-19-KE"
     description: "Vijana rika la balehe 15-19"
     indicatorQuery: " SELECT count(DISTINCT efm.base_entity_id) as count FROM ec_hivst_results ehr
              INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
              INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
              WHERE hivst_result='reactive'
-             AND (date(efm.dob, '+15 years') <= date('now'))
+             AND (date(efm.dob, '+18 years') <= date('now'))
              AND (date(efm.dob, '+20 years') > date('now'))
              AND (client_group='agyw')
              AND (efm.gender='Female')
@@ -1375,13 +1375,13 @@ indicators:
             AND (efm.gender='Female')
             AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
             date(substr(ehr.result_date, 7, 4) || '-' || substr(ehr.result_date, 4, 2) || '-' || '01')"
-  - key: "hivst-8-vi-15-19-KE"
+  - key: "hivst-8-vi-18-19-KE"
     description: "Makundi Mengine Umri 15-19"
     indicatorQuery: " SELECT count(DISTINCT efm.base_entity_id) as count FROM ec_hivst_results ehr
              INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
              INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
              WHERE hivst_result='reactive'
-             AND (date(efm.dob, '+15 years') <= date('now'))
+             AND (date(efm.dob, '+18 years') <= date('now'))
              AND (date(efm.dob, '+20 years') > date('now'))
              AND (client_group='others')
              AND (efm.gender='Female')
@@ -1470,14 +1470,14 @@ indicators:
             AND (efm.gender='Female')
             AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
             date(substr(ehr.result_date, 7, 4) || '-' || substr(ehr.result_date, 4, 2) || '-' || '01')"
-  - key: "hivst-9-15-19-KE"
+  - key: "hivst-9-18-19-KE"
     description: "Jumla ya wateja (Binafsi) waliopewa rufaa kwenda kituo/Eneo la upimaji wa maambukizi ya VVU 15-19"
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
 					  WHERE focus='Suspected HIV'
 					  AND (efm.gender='Female')
-					  AND (date(efm.dob, '+15 years') <= date('now'))
+					  AND (date(efm.dob, '+18 years') <= date('now'))
                       AND (date(efm.dob, '+20 years') > date('now'))
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                           date(substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 1, 4) ||'-' ||
@@ -1565,7 +1565,7 @@ indicators:
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                       date(substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 1, 4) ||'-' ||
                       substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 6, 2) ||'-' || '01')"
-  - key: "hivst-9-i-15-19-KE"
+  - key: "hivst-9-i-18-19-KE"
     description: "Rufaa kwa Wajidunga dawa za kulevya Umri 15-19"
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
@@ -1573,7 +1573,7 @@ indicators:
 					  WHERE focus='Suspected HIV'
 					  AND (efm.gender='Female')
 					  AND (client_group='pwid')
-					  AND (date(efm.dob, '+15 years') <= date('now'))
+					  AND (date(efm.dob, '+18 years') <= date('now'))
                       AND (date(efm.dob, '+20 years') > date('now'))
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                           date(substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 1, 4) ||'-' ||
@@ -1668,7 +1668,7 @@ indicators:
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                           date(substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 1, 4) ||'-' ||
                           substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 6, 2) ||'-' || '01')"
-  - key: "hivst-9-ii-15-19-KE"
+  - key: "hivst-9-ii-18-19-KE"
     description: "Rufaa kwa Wafungwa Umri 15-19"
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
@@ -1676,7 +1676,7 @@ indicators:
 					  WHERE focus='Suspected HIV'
 					  AND (efm.gender='Female')
 					  AND (client_group='prisoners')
-					  AND (date(efm.dob, '+15 years') <= date('now'))
+					  AND (date(efm.dob, '+18 years') <= date('now'))
                       AND (date(efm.dob, '+20 years') > date('now'))
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                           date(substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 1, 4) ||'-' ||
@@ -1771,7 +1771,7 @@ indicators:
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                           date(substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 1, 4) ||'-' ||
                           substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 6, 2) ||'-' || '01')"
-  - key: "hivst-9-iii-15-19-KE"
+  - key: "hivst-9-iii-18-19-KE"
     description: "Rufaa kwa Wanaume wanaofanya ngono na wanaume wenzao Umri 15-19"
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
@@ -1779,7 +1779,7 @@ indicators:
 					  WHERE focus='Suspected HIV'
 					  AND (efm.gender='Female')
 					  AND (client_group='fsw')
-					  AND (date(efm.dob, '+15 years') <= date('now'))
+					  AND (date(efm.dob, '+18 years') <= date('now'))
                       AND (date(efm.dob, '+20 years') > date('now'))
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                           date(substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 1, 4) ||'-' ||
@@ -1874,7 +1874,7 @@ indicators:
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                           date(substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 1, 4) ||'-' ||
                           substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 6, 2) ||'-' || '01')"
-  - key: "hivst-9-v-15-19-KE"
+  - key: "hivst-9-v-18-19-KE"
     description: "Vijana Rika La Balehe Umri(KE) 15-19"
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
@@ -1882,7 +1882,7 @@ indicators:
 					  WHERE focus='Suspected HIV'
 					  AND (efm.gender='Female')
 					  AND (client_group='agyw')
-					  AND (date(efm.dob, '+15 years') <= date('now'))
+					  AND (date(efm.dob, '+18 years') <= date('now'))
                       AND (date(efm.dob, '+20 years') > date('now'))
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                           date(substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 1, 4) ||'-' ||
@@ -1900,7 +1900,7 @@ indicators:
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                           date(substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 1, 4) ||'-' ||
                           substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 6, 2) ||'-' || '01')"
-  - key: "hivst-9-vi-15-19-KE"
+  - key: "hivst-9-vi-18-19-KE"
     description: "Rufaa kwa Makundi Mengine Umri 15-19"
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
@@ -1908,7 +1908,7 @@ indicators:
 					  WHERE focus='Suspected HIV'
 					  AND (efm.gender='Female')
 					  AND (client_group='others')
-					  AND (date(efm.dob, '+15 years') <= date('now'))
+					  AND (date(efm.dob, '+18 years') <= date('now'))
                       AND (date(efm.dob, '+20 years') > date('now'))
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                           date(substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 1, 4) ||'-' ||
@@ -2004,13 +2004,13 @@ indicators:
                       date(substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 1, 4) ||'-' ||
                       substr(strftime('%Y-%m-%d', datetime(authored_on / 1000, 'unixepoch', 'localtime')), 6, 2) ||'-' || '01')"
 
-  - key: "hivst-3-15-19-ME"
+  - key: "hivst-3-18-19-ME"
     description: "JUMLA YA KUTENDANISHI VYA JIPIME VVU VILIVYOSAMBAZWA(BiNAFSI) Umri 15-19"
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM ec_hivst_followup ehf
     			  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehf.entity_id
     			  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
     			  WHERE self_test_kit_given='yes'
-    			  AND (date(efm.dob, '+15 years') <= date('now'))
+    			  AND (date(efm.dob, '+18 years') <= date('now'))
                   AND (date(efm.dob, '+20 years') > date('now'))
 				  AND (efm.gender='Male')
                   AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -2091,13 +2091,13 @@ indicators:
 				  AND (efm.gender='Male')
                   AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                   date(substr(collection_date, 7, 4) || '-' || substr(collection_date, 4, 2) || '-' || '01')"
-  - key: "hivst-3-i-15-19-ME"
+  - key: "hivst-3-i-18-19-ME"
     description: "Wajidunga dawa za kulevya Umri 15-19"
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM ec_hivst_followup ehf
     			  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehf.entity_id
     			  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
     			  WHERE self_test_kit_given='yes'
-    			  AND (date(efm.dob, '+15 years') <= date('now'))
+    			  AND (date(efm.dob, '+18 years') <= date('now'))
                   AND (date(efm.dob, '+20 years') > date('now'))
                   AND (client_group='pwid')
 				  AND (efm.gender='Male')
@@ -2186,13 +2186,13 @@ indicators:
 				  AND (efm.gender='Male')
                   AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                   date(substr(collection_date, 7, 4) || '-' || substr(collection_date, 4, 2) || '-' || '01')"
-  - key: "hivst-3-ii-15-19-ME"
+  - key: "hivst-3-ii-18-19-ME"
     description: "Wafungwa Umri 15-19"
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM ec_hivst_followup ehf
     			  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehf.entity_id
     			  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
     			  WHERE self_test_kit_given='yes'
-    			  AND (date(efm.dob, '+15 years') <= date('now'))
+    			  AND (date(efm.dob, '+18 years') <= date('now'))
                   AND (date(efm.dob, '+20 years') > date('now'))
                   AND (client_group='prisoners')
 				  AND (efm.gender='Male')
@@ -2281,13 +2281,13 @@ indicators:
 				  AND (efm.gender='Male')
                   AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                   date(substr(collection_date, 7, 4) || '-' || substr(collection_date, 4, 2) || '-' || '01')"
-  - key: "hivst-3-iv-15-19-ME"
+  - key: "hivst-3-iv-18-19-ME"
     description: "Wanaume wanaofanya ngono na wanaume wenzao Umri 15-19"
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM ec_hivst_followup ehf
     			  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehf.entity_id
     			  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
     			  WHERE self_test_kit_given='yes'
-    			  AND (date(efm.dob, '+15 years') <= date('now'))
+    			  AND (date(efm.dob, '+18 years') <= date('now'))
                   AND (date(efm.dob, '+20 years') > date('now'))
                   AND (client_group='msm')
 				  AND (efm.gender='Male')
@@ -2376,13 +2376,13 @@ indicators:
 				  AND (efm.gender='Male')
                   AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                   date(substr(collection_date, 7, 4) || '-' || substr(collection_date, 4, 2) || '-' || '01')"
-  - key: "hivst-3-vi-15-19-ME"
+  - key: "hivst-3-vi-18-19-ME"
     description: "Makundi Mengine Umri 15-19"
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM ec_hivst_followup ehf
     			  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehf.entity_id
     			  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
     			  WHERE self_test_kit_given='yes'
-    			  AND (date(efm.dob, '+15 years') <= date('now'))
+    			  AND (date(efm.dob, '+18 years') <= date('now'))
                   AND (date(efm.dob, '+20 years') > date('now'))
                   AND (client_group='others')
 				  AND (efm.gender='Male')
@@ -2473,13 +2473,13 @@ indicators:
                   date(substr(collection_date, 7, 4) || '-' || substr(collection_date, 4, 2) || '-' || '01')"
 
 
-  - key: "hivst-3-15-19-KE"
+  - key: "hivst-3-18-19-KE"
     description: "JUMLA YA KUTENDANISHI VYA JIPIME VVU VILIVYOSAMBAZWA(BiNAFSI) Umri 15-19"
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM ec_hivst_followup ehf
     			  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehf.entity_id
     			  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
     			  WHERE self_test_kit_given='yes'
-    			  AND (date(efm.dob, '+15 years') <= date('now'))
+    			  AND (date(efm.dob, '+18 years') <= date('now'))
                   AND (date(efm.dob, '+20 years') > date('now'))
 				  AND (efm.gender='Female')
                   AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -2560,13 +2560,13 @@ indicators:
 				  AND (efm.gender='Female')
                   AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                   date(substr(collection_date, 7, 4) || '-' || substr(collection_date, 4, 2) || '-' || '01')"
-  - key: "hivst-3-i-15-19-KE"
+  - key: "hivst-3-i-18-19-KE"
     description: "Wajidunga dawa za kulevya Umri 15-19"
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM ec_hivst_followup ehf
     			  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehf.entity_id
     			  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
     			  WHERE self_test_kit_given='yes'
-    			  AND (date(efm.dob, '+15 years') <= date('now'))
+    			  AND (date(efm.dob, '+18 years') <= date('now'))
                   AND (date(efm.dob, '+20 years') > date('now'))
                   AND (client_group='pwid')
 				  AND (efm.gender='Female')
@@ -2655,13 +2655,13 @@ indicators:
 				  AND (efm.gender='Female')
                   AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                   date(substr(collection_date, 7, 4) || '-' || substr(collection_date, 4, 2) || '-' || '01')"
-  - key: "hivst-3-ii-15-19-KE"
+  - key: "hivst-3-ii-18-19-KE"
     description: "Wafungwa Umri 15-19"
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM ec_hivst_followup ehf
     			  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehf.entity_id
     			  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
     			  WHERE self_test_kit_given='yes'
-    			  AND (date(efm.dob, '+15 years') <= date('now'))
+    			  AND (date(efm.dob, '+18 years') <= date('now'))
                   AND (date(efm.dob, '+20 years') > date('now'))
                   AND (client_group='prisoners')
 				  AND (efm.gender='Female')
@@ -2750,13 +2750,13 @@ indicators:
 				  AND (efm.gender='Female')
                   AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                   date(substr(collection_date, 7, 4) || '-' || substr(collection_date, 4, 2) || '-' || '01')"
-  - key: "hivst-3-iii-15-19-KE"
+  - key: "hivst-3-iii-18-19-KE"
     description: "Wanaume wanaofanya ngono na wanaume wenzao Umri 15-19"
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM ec_hivst_followup ehf
     			  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehf.entity_id
     			  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
     			  WHERE self_test_kit_given='yes'
-    			  AND (date(efm.dob, '+15 years') <= date('now'))
+    			  AND (date(efm.dob, '+18 years') <= date('now'))
                   AND (date(efm.dob, '+20 years') > date('now'))
                   AND (client_group='fsw')
 				  AND (efm.gender='Female')
@@ -2845,13 +2845,13 @@ indicators:
 				  AND (efm.gender='Female')
                   AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                   date(substr(collection_date, 7, 4) || '-' || substr(collection_date, 4, 2) || '-' || '01')"
-  - key: "hivst-3-v-15-19-KE"
+  - key: "hivst-3-v-18-19-KE"
     description: "Vijana Rika La Balehe Umri 15-19"
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM ec_hivst_followup ehf
     			  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehf.entity_id
     			  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
     			  WHERE self_test_kit_given='yes'
-    			  AND (date(efm.dob, '+15 years') <= date('now'))
+    			  AND (date(efm.dob, '+18 years') <= date('now'))
                   AND (date(efm.dob, '+20 years') > date('now'))
                   AND (client_group='agyw')
 				  AND (efm.gender='Female')
@@ -2869,13 +2869,13 @@ indicators:
 				  AND (efm.gender='Female')
                   AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                   date(substr(collection_date, 7, 4) || '-' || substr(collection_date, 4, 2) || '-' || '01')"
-  - key: "hivst-3-vi-15-19-KE"
+  - key: "hivst-3-vi-18-19-KE"
     description: "Makundi Mengine Umri 15-19"
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM ec_hivst_followup ehf
     			  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehf.entity_id
     			  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
     			  WHERE self_test_kit_given='yes'
-    			  AND (date(efm.dob, '+15 years') <= date('now'))
+    			  AND (date(efm.dob, '+18 years') <= date('now'))
                   AND (date(efm.dob, '+20 years') > date('now'))
                   AND (client_group='others')
 				  AND (efm.gender='Female')
@@ -2967,7 +2967,7 @@ indicators:
 
 
   #     // 2 and age 15-19
-  - key: "hivst-2-15-19-ME"
+  - key: "hivst-2-18-19-ME"
     description: "Idadi ya wateja wa kiume waliopewa condom kwa umri wa miaka 15 - 19"
     indicatorQuery: "SELECT count(efm.base_entity_id) as count
                       FROM ec_hivst_followup ehf
@@ -3056,7 +3056,7 @@ indicators:
                       date(substr(ehf.collection_date, 7, 4) || '-' || substr(ehf.collection_date, 4, 2) || '-' || '01')"
 
   #     // 2-i and age 15-19
-  - key: "hivst-2-i-15-19-ME"
+  - key: "hivst-2-i-18-19-ME"
     description: "Idadi ya wateja wa kiume waliopewa condom kwa umri wa miaka 15 - 19 na ni wajidunga madawa ya kulevya"
     indicatorQuery: "SELECT count(efm.base_entity_id) as count
                       FROM ec_hivst_register ehr
@@ -3161,7 +3161,7 @@ indicators:
                       date(substr(ehf.collection_date, 7, 4) || '-' || substr(ehf.collection_date, 4, 2) || '-' || '01')"
 
   #     // 2-ii and age 15-19
-  - key: "hivst-2-ii-15-19-ME"
+  - key: "hivst-2-ii-18-19-ME"
     description: "Idadi ya wateja wa kiume waliopewa condom kwa umri wa miaka 15 - 19 na ni wafungwa wa mahabusu"
     indicatorQuery: "SELECT count(efm.base_entity_id) as count
                       FROM ec_hivst_register ehr
@@ -3266,7 +3266,7 @@ indicators:
                       date(substr(ehf.collection_date, 7, 4) || '-' || substr(ehf.collection_date, 4, 2) || '-' || '01')"
 
   #     // 2-iii and age 15-19
-  - key: "hivst-2-iii-15-19-ME"
+  - key: "hivst-2-iii-18-19-ME"
     description: "Idadi ya wateja wa kike waliopewa condom kwa umri wa miaka 15 - 19 na ni fsw (wanawake wanaojiuza)"
     indicatorQuery: "SELECT count(efm.base_entity_id) as count
                        FROM ec_hivst_register ehr
@@ -3346,7 +3346,7 @@ indicators:
 
 
   #     // 2-iv and age 15-19
-  - key: "hivst-2-iv-15-19-ME"
+  - key: "hivst-2-iv-18-19-ME"
     description: "Idadi ya wateja wa kiume waliopewa condom kwa umri wa miaka 15 - 19 na ni msm (male sex with male)"
     indicatorQuery: "SELECT count(efm.base_entity_id) as count
                        FROM ec_hivst_register ehr
@@ -3451,7 +3451,7 @@ indicators:
                        date(substr(ehf.collection_date, 7, 4) || '-' || substr(ehf.collection_date, 4, 2) || '-' || '01')"
 
   #     // 2-v and age 15-19
-  - key: "hivst-2-v-15-19-ME"
+  - key: "hivst-2-v-18-19-ME"
     description: "Idadi ya wateja wa kike waliopewa condom kwa umri wa miaka 15 - 19 na ni vijana rila la balehe"
     indicatorQuery: "SELECT count(efm.base_entity_id) as count
                        FROM ec_hivst_register ehr
@@ -3556,7 +3556,7 @@ indicators:
                        date(substr(ehf.collection_date, 7, 4) || '-' || substr(ehf.collection_date, 4, 2) || '-' || '01')"
 
   #     // 2-vi and age 15-19
-  - key: "hivst-2-vi-15-19-ME"
+  - key: "hivst-2-vi-18-19-ME"
     description: "Idadi ya wateja wa kiume waliopewa condom kwa umri wa miaka 15 - 19 na ni makundi ya others"
     indicatorQuery: "SELECT count(efm.base_entity_id) as count
                        FROM ec_hivst_register ehr
@@ -3664,7 +3664,7 @@ indicators:
   #Question 7
 
   #     // 7 and age 15-19
-  - key: "hivst-7-15-19-ME"
+  - key: "hivst-7-18-19-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 15 - 19"
     indicatorQuery: "SELECT count(efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
@@ -3810,7 +3810,7 @@ indicators:
 
 
   #     // 7-i and age 15-19
-  - key: "hivst-7-i-15-19-ME"
+  - key: "hivst-7-i-18-19-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 15 - 19 na ni wajidunga madawa ya kulevya"
     indicatorQuery: "SELECT count(efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
@@ -3962,7 +3962,7 @@ indicators:
                                    '-' || '01')"
 
   #     // 7-ii and age 15-19
-  - key: "hivst-7-ii-15-19-ME"
+  - key: "hivst-7-ii-18-19-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 15 - 19 na ni wafungwa wa mahabusu"
     indicatorQuery: "SELECT count(efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
@@ -4115,7 +4115,7 @@ indicators:
                                    '-' || '01')"
 
   #     // 7-iii and age 15-19
-  - key: "hivst-7-iii-15-19-ME"
+  - key: "hivst-7-iii-18-19-ME"
     description: "Idadi ya wateja wa kike waliopewa condom kwa umri wa miaka 15 - 19 na ni fsw (wanawake wanaojiuza)"
     indicatorQuery: "SELECT count(efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
@@ -4211,7 +4211,7 @@ indicators:
                                    '-' || '01')"
 
   #     // 7-iv and age 15-19
-  - key: "hivst-7-iv-15-19-ME"
+  - key: "hivst-7-iv-18-19-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 15 - 19 na ni msm (male sex with male)"
     indicatorQuery: "SELECT count(efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
@@ -4364,7 +4364,7 @@ indicators:
                                    '-' || '01')"
 
   #     // 7-v and age 15-19
-  - key: "hivst-7-v-15-19-ME"
+  - key: "hivst-7-v-18-19-ME"
     description: "Idadi ya wateja wa kike waliopewa condom kwa umri wa miaka 15 - 19 na ni vijana rila la balehe"
     indicatorQuery: "SELECT count(efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
@@ -4517,7 +4517,7 @@ indicators:
                                    '-' || '01')"
 
   #     // 7-vi and age 15-19
-  - key: "hivst-7-vi-15-19-ME"
+  - key: "hivst-7-vi-18-19-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 15 - 19 na ni makundi ya others"
     indicatorQuery: "SELECT count(efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
@@ -4672,7 +4672,7 @@ indicators:
   # wanawake Qns 2 and 7
   #start with question 2
   #     // 2 and age 15-19
-  - key: "hivst-2-15-19-KE"
+  - key: "hivst-2-18-19-KE"
     description: "Idadi ya wateja wa kike waliopewa condom kwa umri wa miaka 15 - 19"
     indicatorQuery: "SELECT count(efm.base_entity_id) as count
                       FROM ec_hivst_followup ehf
@@ -4762,7 +4762,7 @@ indicators:
 
 
   #     // 2-i and age 15-19
-  - key: "hivst-2-i-15-19-KE"
+  - key: "hivst-2-i-18-19-KE"
     description: "Idadi ya wateja wa kike waliopewa condom kwa umri wa miaka 15 - 19 na ni wajidunga madawa ya kulevya"
     indicatorQuery: "SELECT count(efm.base_entity_id) as count
                       FROM ec_hivst_register ehr
@@ -4867,7 +4867,7 @@ indicators:
                       date(substr(ehf.collection_date, 7, 4) || '-' || substr(ehf.collection_date, 4, 2) || '-' || '01')"
 
   #     // 2-ii and age 15-19
-  - key: "hivst-2-ii-15-19-KE"
+  - key: "hivst-2-ii-18-19-KE"
     description: "Idadi ya wateja wa kike waliopewa condom kwa umri wa miaka 15 - 19 na ni wafungwa wa mahabusu"
     indicatorQuery: "SELECT count(efm.base_entity_id) as count
                       FROM ec_hivst_register ehr
@@ -4972,7 +4972,7 @@ indicators:
                       date(substr(ehf.collection_date, 7, 4) || '-' || substr(ehf.collection_date, 4, 2) || '-' || '01')"
 
   #     // 2-iii and age 15-19
-  - key: "hivst-2-iii-15-19-KE"
+  - key: "hivst-2-iii-18-19-KE"
     description: "Idadi ya wateja wa kike waliopewa condom kwa umri wa miaka 15 - 19 na ni fsw (wanawake wanaojiuza)"
     indicatorQuery: "SELECT count(efm.base_entity_id) as count
                        FROM ec_hivst_register ehr
@@ -5076,7 +5076,7 @@ indicators:
                        AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                        date(substr(ehf.collection_date, 7, 4) || '-' || substr(ehf.collection_date, 4, 2) || '-' || '01')"
   #     // 2-iv and age 15-19
-  - key: "hivst-2-iv-15-19-KE"
+  - key: "hivst-2-iv-18-19-KE"
     description: "Idadi ya wateja wa kike waliopewa condom kwa umri wa miaka 15 - 19 na ni msm (male sex with male)"
     indicatorQuery: "SELECT count(efm.base_entity_id) as count
                        FROM ec_hivst_register ehr
@@ -5181,7 +5181,7 @@ indicators:
                        date(substr(ehf.collection_date, 7, 4) || '-' || substr(ehf.collection_date, 4, 2) || '-' || '01')"
 
   #     // 2-v and age 15-19
-  - key: "hivst-2-v-15-19-KE"
+  - key: "hivst-2-v-18-19-KE"
     description: "Idadi ya wateja wa kike waliopewa condom kwa umri wa miaka 15 - 19 na ni vijana rila la balehe"
     indicatorQuery: "SELECT count(efm.base_entity_id) as count
                        FROM ec_hivst_register ehr
@@ -5287,7 +5287,7 @@ indicators:
 
 
   #     // 2-vi and age 15-19
-  - key: "hivst-2-vi-15-19-KE"
+  - key: "hivst-2-vi-18-19-KE"
     description: "Idadi ya wateja wa kike waliopewa condom kwa umri wa miaka 15 - 19 na ni makundi ya others"
     indicatorQuery: "SELECT count(efm.base_entity_id) as count
                        FROM ec_hivst_register ehr
@@ -5393,7 +5393,7 @@ indicators:
 
   #Question 7
   #     // 7 and age 15-19
-  - key: "hivst-7-15-19-KE"
+  - key: "hivst-7-18-19-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 15 - 19"
     indicatorQuery: "SELECT count(efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
@@ -5538,7 +5538,7 @@ indicators:
                                    '-' || '01')"
 
   #     // 7-i and age 15-19
-  - key: "hivst-7-i-15-19-KE"
+  - key: "hivst-7-i-18-19-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 15 - 19 na ni wajidunga madawa ya kulevya"
     indicatorQuery: "SELECT count(efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
@@ -5690,7 +5690,7 @@ indicators:
                                    '-' || '01')"
 
   #     // 7-ii and age 15-19
-  - key: "hivst-7-ii-15-19-KE"
+  - key: "hivst-7-ii-18-19-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 15 - 19 na ni wafungwa wa mahabusu"
     indicatorQuery: "SELECT count(efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
@@ -5843,7 +5843,7 @@ indicators:
                                    '-' || '01')"
 
   #     // 7-iii and age 15-19
-  - key: "hivst-7-iii-15-19-KE"
+  - key: "hivst-7-iii-18-19-KE"
     description: "Idadi ya wateja wa kike waliopewa condom kwa umri wa miaka 15 - 19 na ni fsw (wanawake wanaojiuza)"
     indicatorQuery: "SELECT count(efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
@@ -5997,7 +5997,7 @@ indicators:
                                    '-' || '01')"
 
   #     // 7-iv and age 15-19
-  - key: "hivst-7-iv-15-19-KE"
+  - key: "hivst-7-iv-18-19-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 15 - 19 na ni msm (male sex with male)"
     indicatorQuery: "SELECT count(efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
@@ -6149,7 +6149,7 @@ indicators:
                                    substr(strftime('%Y-%m-%d', datetime(ehr.collection_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
                                    '-' || '01')"
   #     // 7-v and age 15-19
-  - key: "hivst-7-v-15-19-KE"
+  - key: "hivst-7-v-18-19-KE"
     description: "Idadi ya wateja wa kike waliopewa condom kwa umri wa miaka 15 - 19 na ni vijana rila la balehe"
     indicatorQuery: "SELECT count(efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
@@ -6305,7 +6305,7 @@ indicators:
 
 
   #     // 7-vi and age 15-19
-  - key: "hivst-7-vi-15-19-KE"
+  - key: "hivst-7-vi-18-19-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 15 - 19 na ni makundi ya others"
     indicatorQuery: "SELECT count(efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
@@ -6456,3 +6456,41 @@ indicators:
                                    '-' ||
                                    substr(strftime('%Y-%m-%d', datetime(ehr.collection_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
                                    '-' || '01')"
+  - key: "hivst-4-a"
+    description: "Jumla ya vitendanishi vya kujipima VVU vilivyosambazwa (Washirika wa Ngono, Rafiki Rika)"
+    indicatorQuery: " SELECT count(id) as count FROM ec_hivst_results
+                     WHERE kit_for='peer_friend' OR kit_for='sexual_partner'
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(result_date, 7, 4) || '-' || substr(result_date, 4, 2) || '-' || '01')"
+  - key: "hivst-5-a"
+    description: "Jumla ya vitendanishi vya kujipima VVU vilivyosambazwa (Binafsi, Washrika wa Ngono, Rafiki rika)"
+    indicatorQuery: " SELECT count(id) as count FROM ec_hivst_results
+                      WHERE kit_for='client' OR kit_for='peer_friend' OR kit_for='sexual_partner'
+                      AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                      date(substr(result_date, 7, 4) || '-' || substr(result_date, 4, 2) || '-' || '01')"
+  - key: "hivst-6-a"
+    description: "Jumla ya wateja (Washrika wa ngono, Rafiki rika) waliotumia vitendanishi vya kujipima VVU na kurudisha majibu"
+    indicatorQuery: " SELECT count(id) as count FROM ec_hivst_results
+                  WHERE (kit_for='peer_friend' OR kit_for='sexual_partner' )
+                  AND (hivst_result !='not_returned')
+                  AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                  date(substr(result_date, 7, 4) || '-' || substr(result_date, 4, 2) || '-' || '01')"
+  - key: "hivst-4-b"
+    description: "B- Jumla ya vitendanishi vya kujipima VVU vilivyosambazwa (Washirika wa Ngono, Rafiki Rika)"
+    indicatorQuery: " SELECT count(id) as count FROM ec_hivst_results
+                     WHERE kit_for!='client'
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(result_date, 7, 4) || '-' || substr(result_date, 4, 2) || '-' || '01')"
+  - key: "hivst-5-b"
+    description: "B- Jumla ya vitendanishi vya kujipima VVU vilivyosambazwa (Binafsi, Washrika wa Ngono, Rafiki rika)"
+    indicatorQuery: " SELECT count(id) as count FROM ec_hivst_results
+                      WHERE kit_for IS NOT NULL
+                      AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                      date(substr(result_date, 7, 4) || '-' || substr(result_date, 4, 2) || '-' || '01')"
+  - key: "hivst-6-b"
+    description: "B- Jumla ya wateja (Washrika wa ngono, Rafiki rika) waliotumia vitendanishi vya kujipima VVU na kurudisha majibu"
+    indicatorQuery: "SELECT count(id) as count FROM ec_hivst_results
+                  WHERE kit_for!='client'
+                  AND (hivst_result !='not_returned')
+                  AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                  date(substr(result_date, 7, 4) || '-' || substr(result_date, 4, 2) || '-' || '01')"

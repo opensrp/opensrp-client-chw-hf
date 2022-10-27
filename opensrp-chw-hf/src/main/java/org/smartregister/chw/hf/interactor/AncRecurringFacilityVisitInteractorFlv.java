@@ -21,7 +21,6 @@ import org.smartregister.chw.anc.util.AppExecutors;
 import org.smartregister.chw.anc.util.VisitUtils;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.core.utils.FormUtils;
-import org.smartregister.chw.hf.BuildConfig;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.actionhelper.AncBirthReviewAction;
 import org.smartregister.chw.hf.actionhelper.AncConsultationAction;
@@ -37,15 +36,10 @@ import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hf.utils.ContactUtil;
 import org.smartregister.chw.hf.utils.HfAncJsonFormUtils;
 import org.smartregister.chw.referral.util.JsonFormConstants;
-import org.smartregister.domain.Location;
-import org.smartregister.domain.LocationTag;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import timber.log.Timber;
 

@@ -345,6 +345,13 @@
     <string name="self_testing_reports_subtitle">View Self Testing Report</string>
     <string name="selftesting_reports">Self Testing Reports</string>
     <string name="selftesting_reports_title">Self Testing Reports</string>
+    <string name="condom_distribution_reports_subtitle">View Condom Distribution Report</string>
+    <string name="condom_distribution_reports">Condom Distribution Reports</string>
+    <string name="cdp_reports">CDP REPORTS</string>
+    <string name="cdp_issuing_report">CDP Issuing Report</string>
+    <string name="cdp_receiving_report">CDP Receiving Report</string>
+    <string name="kvp_reports">KVP REPORTS</string>
+    <string name="kvp_reports_subtitle">View Reports For KVP</string>
 
 
 </resources>

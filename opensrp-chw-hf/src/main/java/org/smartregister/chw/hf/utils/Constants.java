@@ -682,6 +682,11 @@ public class Constants extends CoreConstants {
             String EID_MONTHLY = "eid_monthly";
         }
 
+        public interface CDPReportKeys {
+            String ISSUING_REPORTS = "issuing_reports";
+            String RECEIVING_REPORTS = "receiving_reports";
+        }
+
         public interface ReportTypes {
             String PMTCT_REPORT = "pmtct_report";
             String ANC_REPORT = "anc_report";
@@ -691,6 +696,8 @@ public class Constants extends CoreConstants {
             String LD_REPORT = "ld_report";
             String MOTHER_CHAMPION_REPORT = "mother_champion_report";
             String SELF_TESTING_REPORT = "self_testing_report";
+            String CONDOM_DISTRIBUTION_REPORT = "condom_distribution_report";
+            String KVP_REPORT = "kvp_report";
         }
 
         public interface ReportPaths {
@@ -705,6 +712,9 @@ public class Constants extends CoreConstants {
             String LD_REPORT_PATH = "labour-delivery-taarifa-ya-mwezi";
             String MOTHER_CHAMPION_REPORT_PATH = "mother-champion-report";
             String SELF_TESTING_REPORT_PATH = "self-testing-report";
+            String CONDOM_DISTRIBUTION_ISSUING_REPORT_PATH = "condom-distribution-issuing-report";
+            String CONDOM_DISTRIBUTION_RECEIVING_REPORT_PATH = "condom-distribution-receiving-report";
+            String KVP_REPORT_PATH = "kvp-report";
         }
     }
 

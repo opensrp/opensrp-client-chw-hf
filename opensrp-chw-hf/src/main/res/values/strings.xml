@@ -690,6 +690,13 @@
     <string name="chk_iucd">PPIUCD (Within 48 hours after delivery or after 42 days of PNC)</string>
     <string name="chk_tubal_ligation">Bilateral Tubal Ligation (BTL)</string>
     <string name="chk_referred_fp_services">Referred for other FP services</string>
+    <string name="condom_distribution_reports_subtitle">View Condom Distribution Report</string>
+    <string name="condom_distribution_reports">Condom Distribution Reports</string>
+    <string name="cdp_reports">CDP REPORTS</string>
+    <string name="cdp_issuing_report">CDP Issuing Report</string>
+    <string name="cdp_receiving_report">CDP Receiving Report</string>
+    <string name="kvp_reports">KVP REPORTS</string>
+    <string name="kvp_reports_subtitle">View Reports For KVP</string>
 
 
     <string name="view_visits_history">View Visits History</string>

@@ -22,6 +22,9 @@ import org.joda.time.DateTime;
 import org.json.JSONException;
 import org.smartregister.chw.hf.domain.anc_reports.AncMonthlyReportObject;
 import org.smartregister.chw.hf.domain.cbhs_reports.CbhsMonthlyReportObject;
+import org.smartregister.chw.hf.domain.cdp_reports.CdpIssuingReportObject;
+import org.smartregister.chw.hf.domain.cdp_reports.CdpReceivingReportObject;
+import org.smartregister.chw.hf.domain.kvp_reports.KvpMonthlyReportObject;
 import org.smartregister.chw.hf.domain.ld_reports.LdMonthlyReportObject;
 import org.smartregister.chw.hf.domain.ltfu_summary.LTFUSummaryObject;
 import org.smartregister.chw.hf.domain.mother_champion_repots.MotherChampionReportObject;
@@ -157,7 +160,13 @@ public class ReportUtils {
                 .build();
         mWebView.setWebViewClient(new LocalContentWebViewClient(assetLoader));
         mWebView.addJavascriptInterface(new HfWebAppInterface(context, reportType), "Android");
-        mWebView.loadUrl("https://appassets.androidplatform.net/assets/reports/" + reportPath + ".html");
+
+        if (reportType.equals(Constants.ReportConstants.ReportTypes.CONDOM_DISTRIBUTION_REPORT)){
+            mWebView.loadUrl("https://appassets.androidplatform.net/assets/reports/cdp_reports/" + reportPath + ".html");
+        }else {
+            mWebView.loadUrl("https://appassets.androidplatform.net/assets/reports/" + reportPath + ".html");
+        }
+
     }
 
     public static class PMTCTReports {
@@ -286,6 +295,54 @@ public class ReportUtils {
             SelfTestingMonthlyReportObject selfTestingMonthlyReportObject = new SelfTestingMonthlyReportObject(now);
             try {
                 report = selfTestingMonthlyReportObject.getIndicatorDataAsGson(selfTestingMonthlyReportObject.getIndicatorData());
+            } catch (Exception e) {
+                Timber.e(e);
+            }
+            return report;
+        }
+    }
+
+    public static class KvpReport {
+        public static String computeReport(Date now) {
+            String report = "";
+            KvpMonthlyReportObject kvpMonthlyReportObject = new KvpMonthlyReportObject(now);
+            try {
+                report = kvpMonthlyReportObject.getIndicatorDataAsGson(kvpMonthlyReportObject.getIndicatorData());
+            } catch (Exception e) {
+                Timber.e(e);
+            }
+            return report;
+        }
+    }
+
+    public static class CDPReports {
+        public static String computeIssuingReports(Date startDate) {
+            CdpIssuingReportObject cdpIssuingReportObject = new CdpIssuingReportObject(startDate);
+            try {
+                return cdpIssuingReportObject.getIndicatorDataAsGson(cdpIssuingReportObject.getIndicatorData());
+            } catch (JSONException e) {
+                Timber.e(e);
+            }
+            return "";
+        }
+
+//        public static String computeReceivingReports(Date startDate, Context context) {
+//            CdpReceivingReportObject cdpReceivingReportObject = new CdpReceivingReportObject(startDate,context);
+//            try {
+//                return cdpReceivingReportObject.getIndicatorDataAsGson(cdpReceivingReportObject.getIndicatorData());
+//            } catch (JSONException e) {
+//                Timber.e(e);
+//            }
+//            return "";
+//        }
+    }
+
+    public static class CBHSReport {
+        public static String computeReport(Date now) {
+            String report = "";
+            CdpReceivingReportObject cdpReceivingReportObject = new CdpReceivingReportObject(now);
+            try {
+                report = cdpReceivingReportObject.getIndicatorDataAsGson(cdpReceivingReportObject.getIndicatorData());
             } catch (Exception e) {
                 Timber.e(e);
             }
