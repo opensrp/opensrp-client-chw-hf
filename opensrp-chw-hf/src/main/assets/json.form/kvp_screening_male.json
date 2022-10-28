@@ -251,10 +251,10 @@
     "next": "step6",
     "fields": [
       {
-        "key": "hiv_status",
+        "key": "hiv_status_on_screening",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "hiv_status",
+        "openmrs_entity_id": "hiv_status_on_screening",
         "label": "What is the client's HIV status?",
         "text_color": "#000000",
         "type": "native_radio",

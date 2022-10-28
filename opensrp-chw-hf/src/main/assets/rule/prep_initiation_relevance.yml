@@ -23,13 +23,13 @@ actions:
 name: step1_prep_adherence
 description: step1_prep_adherence
 priority: 1
-condition: "step1_prep_status != '' && step1_prep_status != 'not_initiated'"
+condition: "step1_prep_status != '' && step1_prep_status != 'not_initiated' && step1_prep_status != 'initiated' && step1_prep_status != 're_start'"
 actions:
   - "isRelevant = true "
 ---
 name: step1_prep_side_effects
 description: step1_prep_side_effects
 priority: 1
-condition: "step1_prep_status != '' && step1_prep_status != 'not_initiated'"
+condition: "step1_prep_status != '' && step1_prep_status != 'not_initiated' && step1_prep_status != 'initiated' && step1_prep_status != 're_start'"
 actions:
   - "isRelevant = true "

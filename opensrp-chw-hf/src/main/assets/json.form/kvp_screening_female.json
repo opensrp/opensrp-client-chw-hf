@@ -224,10 +224,10 @@
     "next": "step5",
     "fields": [
       {
-        "key": "hiv_status",
+        "key": "hiv_status_on_screening",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "hiv_status",
+        "openmrs_entity_id": "hiv_status_on_screening",
         "label": "What is the client's HIV status?",
         "text_color": "#000000",
         "type": "native_radio",
@@ -517,32 +517,38 @@
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "exclusive": [
-          "chk_none"
+          "not_applicable"
         ],
         "options": [
           {
             "key": "sex_for_material",
             "text": "In the last 6 months the client has had sex to get things or money",
-            "openmrs_entity": "person_attribute",
+            "openmrs_entity": "concept",
             "openmrs_entity_id": "sex_for_material"
           },
           {
             "key": "sexually_abused",
             "text": "A victim who continues to be sexually abused",
-            "openmrs_entity": "person_attribute",
+            "openmrs_entity": "concept",
             "openmrs_entity_id": "sexually_abused"
           },
           {
             "key": "sex_last_three_months",
             "text": "Has had sex in the last 3 months",
-            "openmrs_entity": "person_attribute",
+            "openmrs_entity": "concept",
             "openmrs_entity_id": "sex_last_three_months"
           },
           {
             "key": "infected_with_sexual_disease",
             "text": "Infected with a sexual disease in the last 3 months",
-            "openmrs_entity": "person_attribute",
+            "openmrs_entity": "concept",
             "openmrs_entity_id": "infected_with_sexual_disease"
+          },
+          {
+            "key": "not_applicable",
+            "text": "Not applicable",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "not_applicable"
           }
         ],
         "v_required": {
