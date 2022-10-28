@@ -340,11 +340,7 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "other"
           }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Please select an answer"
-        }
+        ]
       },
       {
         "key": "services_and_referral_other",
